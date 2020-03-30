@@ -1,7 +1,7 @@
 ---
 title: Een Azure-bestandsshare maken
 titleSuffix: Azure Files
-description: Een Azure-bestands share maken met behulp van de Azure Portal, Power shell of de Azure CLI.
+description: Een Azure-bestandsshare maken met de Azure-portal, PowerShell of Azure CLI.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -9,87 +9,87 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: ed6abbac7c5953eaec4fa4584248d0d98b49ba63
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596878"
 ---
 # <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
-Als u een Azure-bestands share wilt maken, moet u drie vragen beantwoorden over hoe u deze gaat gebruiken:
+Als u een Azure-bestandsshare wilt maken, moet u drie vragen beantwoorden over hoe u het gaat gebruiken:
 
-- **Wat zijn de prestatie vereisten voor uw Azure-bestands share?**  
-    Azure Files biedt standaard bestands shares die worden gehost op op de vaste schijf gebaseerde hardware (op basis van HDD) en Premium-bestands shares, die worden gehost op op schijven gebaseerde (op SSD gebaseerde) hardware.
+- **Wat zijn de prestatievereisten voor uw Azure-bestandsshare?**  
+    Azure Files biedt standaard bestandsshares, die worden gehost op hardware op basis van harde schijven (HDD) en premium bestandsshares, die worden gehost op hardware op basis van solid-state schijven (SSD-gebaseerde hardware).
 
-- **Welk formaat bestands share hebt u nodig?**  
-    Standaard bestands shares kunnen Maxi maal 100 TiB beslaan, maar deze functie is niet standaard ingeschakeld. Als u een bestands share nodig hebt die groter is dan 5 TiB, moet u de functie voor grote bestands shares inschakelen voor uw opslag account. Premium-bestands shares kunnen Maxi maal 100 TiB beslaan zonder enige speciale instelling, maar Premium-bestands shares worden echter wel ingericht, in plaats van betalen naar gebruik als standaard bestands shares. Dit betekent dat het inrichten van een bestands share veel groter is dan wat u nodig hebt om de totale kosten voor opslag te verhogen.
+- **Welke grootte bestandsshare heb je nodig?**  
+    Standaard bestandsshares kunnen maximaal 100 TiB omvatten, maar deze functie is niet standaard ingeschakeld; Als u een bestandsshare nodig hebt dat groter is dan 5 TiB, moet u de functie voor het delen van bestanden voor uw opslagaccount inschakelen. Premium bestandsaandelen kunnen tot 100 TiB omvatten zonder speciale instelling, maar premium bestandsaandelen zijn ingericht, in plaats van te betalen terwijl u gaat als standaard bestandsaandelen. Dit betekent dat het inrichten van een bestandsaandeel veel groter is dan wat u nodig hebt, waardoor de totale opslagkosten toenemen.
 
-- **Wat zijn uw redundantie vereisten voor uw Azure-bestands share?**  
-    Standaard bestands shares bieden lokaal redundante (LRS), zone redundante (ZRS), geo-redundante (GRS) of geo-zone-redundante opslag (GZRS), maar de functie voor grote bestands shares wordt alleen ondersteund op lokaal redundante en zone redundante bestands shares. Premium-bestands shares bieden geen ondersteuning voor enige vorm van geo-redundantie.
+- **Wat zijn uw redundantievereisten voor uw Azure-bestandsshare?**  
+    Standaard bestandsshares bieden lokaal redundante (LRS), zone redundante (ZRS), geo-redundante (GRS) of geo-zone-redundante (GZRS) opslag, maar de grote file share-functie wordt alleen ondersteund op lokaal redundante en zone redundante bestandsshares. Premium bestandsaandelen ondersteunen geen enkele vorm van georedundantie.
 
-    Premium-bestands shares zijn beschikbaar met lokale redundantie in de meeste regio's die opslag accounts bieden en met zone redundantie in een kleinere subset van regio's. Zie de pagina [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=storage) voor Azure als u wilt weten of Premium-bestands shares op dit moment beschikbaar zijn in uw regio. Zie [Azure Storage redundantie](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)voor informatie over REGIO'S die ZRS ondersteunen.
+    Premium bestandsshares zijn beschikbaar met lokaal redundantie in de meeste regio's die opslagaccounts aanbieden en met zoneredundantie in een kleinere subset van regio's. Zie de producten die beschikbaar zijn [op regiopagina](https://azure.microsoft.com/global-infrastructure/services/?products=storage) voor Azure om erachter te komen of er momenteel premium bestandsshares beschikbaar zijn in uw regio. Zie [Redundantie azure storage](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)voor informatie over regio's die ZRS ondersteunen.
 
-Zie [planning voor een Azure files-implementatie](storage-files-planning.md)voor meer informatie over deze drie opties.
+Zie [Plannen voor een Azure-bestandsimplementatie voor](storage-files-planning.md)meer informatie over deze drie opties.
 
 ## <a name="prerequisites"></a>Vereisten
 - In dit artikel wordt ervan uitgegaan dat u al een Azure-abonnement hebt gemaakt. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
-- Als u Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Als u de Azure CLI wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Als u Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie.](https://docs.microsoft.com/powershell/azure/install-az-ps)
+- Als u de Azure CLI wilt gebruiken, [installeert u de nieuwste versie.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## <a name="create-a-storage-account"></a>Create a storage account
-Azure-bestands shares worden geïmplementeerd in *opslag accounts*. Dit zijn objecten op het hoogste niveau die een gedeelde opslag groep vertegenwoordigen. Deze opslag groep kan worden gebruikt voor het implementeren van meerdere bestands shares. 
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
+Azure-bestandsshares worden geïmplementeerd in *opslagaccounts,* objecten op het hoogste niveau die een gedeelde opslaggroep vertegenwoordigen. Deze opslaggroep kan worden gebruikt om meerdere bestandsshares te implementeren. 
 
-Azure ondersteunt meerdere typen opslag accounts voor verschillende opslag scenario's die klanten kunnen hebben, maar er zijn twee hoofd typen opslag accounts voor Azure Files. Welk type opslag account u moet maken, is afhankelijk van of u een standaard bestands share of een Premium-bestands share wilt maken: 
+Azure ondersteunt meerdere typen opslagaccounts voor verschillende opslagscenario's die klanten kunnen hebben, maar er zijn twee belangrijke typen opslagaccounts voor Azure-bestanden. Welk opslagaccounttype u moet maken, is afhankelijk van of u een standaardbestandsshare of een premium bestandsshare wilt maken: 
 
-- **GPv2-opslag accounts (General version 2)** : met GPv2-opslag accounts kunt u Azure-bestands shares implementeren op standaard/harde schijf (op basis van HDD). Naast het opslaan van Azure-bestands shares kunnen GPv2-opslag accounts andere opslag resources, zoals BLOB-containers, wacht rijen of tabellen, opslaan. 
+- **GPv2-opslagaccounts (Version 2) voor**algemeen gebruik: met GPv2-opslagaccounts u Azure-bestandsshares implementeren op standaard/harde schijfgebaseerde (HDD-gebaseerde) hardware. Naast het opslaan van Azure-bestandsshares kunnen GPv2-opslagaccounts andere opslagbronnen opslaan, zoals blobcontainers, wachtrijen of tabellen. 
 
-- **FileStorage-opslag accounts**: met FileStorage-opslag accounts kunt u Azure-bestands shares implementeren op op schijven gebaseerde en op basis van een op SSD (op apparaat gebaseerde) harde hardware. FileStorage-accounts kunnen alleen worden gebruikt voor het opslaan van Azure-bestands shares. Er kunnen geen andere opslag resources (BLOB-containers, wacht rijen, tabellen, enzovoort) worden geïmplementeerd in een FileStorage-account.
+- **FileStorage-opslagaccounts:** met opslagaccounts voor Bestandsopslag u Azure-bestandsshares implementeren op hardware op basis van schijfgebaseerde schijfgebaseerde schijfgebaseerde schijven op basis van premium/solid-state. FileStorage-accounts kunnen alleen worden gebruikt om Azure-bestandsshares op te slaan. er kunnen geen andere opslagbronnen (blobcontainers, wachtrijen, tabellen, enz.) worden geïmplementeerd in een FileStorage-account.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Als u een opslag account wilt maken via de Azure Portal, selecteert u **+ een resource maken** in het dash board. Zoek in het resulterende Azure Marketplace-Zoek venster naar **Storage-account** en selecteer het resulterende Zoek resultaat. Dit leidt tot een overzichts pagina voor opslag accounts. Selecteer **maken** om door te gaan met de wizard voor het maken van het opslag account.
+Als u een opslagaccount wilt maken via de Azure-portal, selecteert u **+ Een resource maken** vanuit het dashboard. Zoek in het resulterende Azure Marketplace-zoekvenster naar **een opslagaccount** en selecteer het resulterende zoekresultaat. Dit zal leiden tot een overzichtspagina voor opslagaccounts; selecteer **Maken** om verder te gaan met de wizard Opslagaccount maken.
 
-![Een scherm afbeelding van de optie snel maken van het opslag account in een browser](media/storage-how-to-create-file-share/create-storage-account-0.png)
+![Een schermafbeelding van de optie Snel maken van het opslagaccount in een browser](media/storage-how-to-create-file-share/create-storage-account-0.png)
 
-#### <a name="the-basics-section"></a>De sectie basis beginselen
-De eerste sectie die u moet volt ooien om een opslag account te maken, is voorzien van een **label.** Dit bevat alle vereiste velden voor het maken van een opslag account. Als u een GPv2-opslag account wilt maken, moet u ervoor zorgen dat het keuze rondje **prestaties** is ingesteld op *standaard* en dat de vervolg keuzelijst **account type** is geselecteerd voor *StorageV2 (algemeen gebruik v2)* .
+#### <a name="the-basics-section"></a>De sectie Basisbeginselen
+De eerste sectie die moet worden voltooid om een opslagaccount te maken, heeft het label **Basics.** Dit bevat alle vereiste velden om een opslagaccount te maken. Als u een GPv2-opslagaccount wilt maken, moet u ervoor zorgen dat de keuzerondje **Prestaties** is ingesteld op *Standaard* en de vervolgkeuzelijst **Accountsoort** is geselecteerd op *StorageV2 (v2 voor algemeen gebruik).*
 
-![Een scherm afbeelding van het keuze rondje prestaties met de standaard geselecteerd en het soort account waarvoor StorageV2 is geselecteerd](media/storage-how-to-create-file-share/create-storage-account-1.png)
+![Een schermafbeelding van de knop Prestatiekeuzerondje met standaard geselecteerd en Accountsoort met StorageV2 geselecteerd](media/storage-how-to-create-file-share/create-storage-account-1.png)
 
-Als u een FileStorage-opslag account wilt maken, moet u ervoor zorgen dat het keuze rondje **prestaties** is ingesteld op *Premium* en dat de vervolg keuzelijst **account type** is geselecteerd voor *FileStorage*.
+Als u een FileStorage-opslagaccount wilt maken, moet u ervoor zorgen dat de keuzerondje **Prestaties** is ingesteld op *Premium* en dat de vervolgkeuzelijst **Accountsoort** is geselecteerd in *FileStorage.*
 
-![Een scherm afbeelding van het keuze rondje prestaties met de selectie vakjes geselecteerd en account type waarvoor FileStorage is geselecteerd](media/storage-how-to-create-file-share/create-storage-account-2.png)
+![Een schermafbeelding van de knop Prestatiekeuzerondje met Premium geselecteerd en Accountsoort met FileStorage geselecteerd](media/storage-how-to-create-file-share/create-storage-account-2.png)
 
-De andere basis velden zijn onafhankelijk van de keuze van het opslag account:
-- **Abonnement**: het abonnement voor het opslag account dat moet worden geïmplementeerd. 
-- **Resource groep**: de resource groep voor het opslag account dat moet worden geïmplementeerd. U kunt een nieuwe resource groep maken of een bestaande resource groep gebruiken. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken.
-- **Naam van het opslag account**: de naam van de bron van het opslag account die moet worden gemaakt. Deze naam moet globaal uniek zijn, maar kan ook een wille keurige naam hebben. De naam van het opslag account wordt gebruikt als de server naam wanneer u een Azure-bestands share koppelt via SMB.
-- **Locatie**: de regio voor het opslag account dat moet worden geïmplementeerd. Dit kan de regio zijn die is gekoppeld aan de resource groep of een andere beschik bare regio.
-- **Replicatie**: Hoewel dit een gelabelde replicatie is, betekent dit veld in feite **Redundantie**; Dit is het gewenste redundantie niveau: lokale redundantie (LRS), zone redundantie (ZRS), geo-redundantie (GRS) en geo-zone-redundantie. Deze vervolg keuzelijst bevat ook geo-redundantie met lees toegang (RA-GRS) en de geo-zone redundantie met lees toegang (RA-GZRS), die niet van toepassing zijn op Azure-bestands shares. een bestands share die is gemaakt in een opslag account waarvoor deze optie is geselecteerd, is respectievelijk geo-redundant of geo-zone-redundant. Afhankelijk van uw regio of het geselecteerde type opslag account zijn sommige redundantie opties mogelijk niet toegestaan.
-- **Toegangs niveau**: dit veld is niet van toepassing op Azure files. u kunt dan een van de keuze rondjes kiezen.
+De andere basisvelden zijn onafhankelijk van de keuze van het opslagaccount:
+- **Abonnement**: Het abonnement voor het opslagaccount dat moet worden geïmplementeerd. 
+- **Resourcegroep:** de resourcegroep voor het opslagaccount dat moet worden geïmplementeerd. U een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken.
+- **Naam van het opslagaccount:** de naam van de bron van het opslagaccount die moet worden gemaakt. Deze naam moet wereldwijd uniek zijn, maar anders kan elke naam die u wenst. De naam van het opslagaccount wordt gebruikt als servernaam wanneer u een Azure-bestandsshare monteert via SMB.
+- **Locatie**: De regio waar het opslagaccount moet worden geïmplementeerd. Dit kan de regio zijn die is gekoppeld aan de resourcegroep of een andere beschikbare regio.
+- **Replicatie:** Hoewel dit is gelabeld replicatie, dit veld betekent eigenlijk **redundantie**; dit is het gewenste redundantieniveau: lokaal redundantie (LRS), zone redundantie (ZRS), geo-redundantie (GRS) en geo-zone-redundantie. Deze vervolgkeuzelijst bevat ook read-access georedundantie (RA-GRS) en read-access geo-zone redundantie (RA-GZRS), die niet van toepassing zijn op Azure-bestandsshares; elk bestandsaandeel dat is gemaakt in een opslagaccount met deze geselecteerde, is eigenlijk respectievelijk geo-redundant of geo-zone-redundant. Afhankelijk van uw regio of geselecteerde opslagaccounttype zijn sommige redundantieopties mogelijk niet toegestaan.
+- **Toegangslaag:** dit veld is niet van toepassing op Azure-bestanden, zodat u een van de radioknoppen kiezen.
 
-#### <a name="the-networking-blade"></a>De Blade netwerk
-In het gedeelte netwerken kunt u netwerk opties configureren. Deze instellingen zijn optioneel voor het maken van het opslag account en kunnen later indien gewenst worden geconfigureerd. Zie [Azure files Networking-overwegingen](storage-files-networking-overview.md)voor meer informatie over deze opties.
+#### <a name="the-networking-blade"></a>Het netwerkblad
+Met de netwerksectie u netwerkopties configureren. Deze instellingen zijn optioneel voor het aanmaken van het opslagaccount en kunnen desgewenst later worden geconfigureerd. Zie [Azure Files-netwerkoverwegingen](storage-files-networking-overview.md)voor meer informatie over deze opties.
 
-#### <a name="the-advanced-blade"></a>De Blade Geavanceerd
-De sectie Geavanceerd bevat verschillende belang rijke instellingen voor Azure-bestands shares:
+#### <a name="the-advanced-blade"></a>Het geavanceerde mes
+De geavanceerde sectie bevat een aantal belangrijke instellingen voor Azure-bestandsshares:
 
-- **Beveiligde overdracht vereist**: dit veld geeft aan of voor het opslag account versleuteling moet worden uitgevoerd voor communicatie naar het opslag account. U wordt aangeraden dit in te scha kelen. Als u SMB 2,1-ondersteuning nodig hebt, moet u dit echter uitschakelen. We raden u aan om versleuteling uit te scha kelen die u de toegang tot een virtueel netwerk met Service-eind punten en/of privé-eind punten beperkt.
-- **Grote bestands shares**: dit veld schakelt het opslag account in voor bestands shares van maxi maal 100 Tib. Als u deze functie inschakelt, wordt uw opslag account beperkt tot alleen lokaal redundante opslag en zone-redundante Storage-opties. Zodra een GPv2-opslag account is ingeschakeld voor grote bestands shares, kunt u de mogelijkheid voor grote bestands shares niet uitschakelen. FileStorage-opslag accounts (opslag accounts voor Premium-bestands shares) beschikken niet over deze optie, omdat alle Premium-bestands shares kunnen worden geschaald tot 100 TiB. 
+- **Beveiligde overdracht vereist**: Dit veld geeft aan of het opslagaccount versleuteling vereist tijdens het transport voor communicatie naar het opslagaccount. We raden u aan dit ingeschakeld te laten, maar als u ondersteuning voor SMB 2.1 nodig hebt, moet u dit uitschakelen. We raden u aan versleuteling uit te schakelen waarmee u de toegang tot uw opslagaccount beperkt tot een virtueel netwerk met serviceeindpunten en/of privéeindpunten.
+- **Grote bestandsaandelen**: Met dit veld kan de opslagaccount voor bestandsshares tot 100 TiB worden verdeeld. Als u deze functie inschakelt, beperkt u uw opslagaccount tot alleen lokaal redundante en zoneredundante opslagopties. Zodra een GPv2-opslagaccount is ingeschakeld voor grote bestandsshares, u de grote bestandsshare-mogelijkheid niet uitschakelen. FileStorage-opslagaccounts (opslagaccounts voor premium bestandsshares) hebben deze optie niet, omdat alle premium bestandsshares kunnen worden opgeschaald tot 100 TiB. 
 
-![Een scherm opname van de belang rijke geavanceerde instellingen die van toepassing zijn op Azure Files](media/storage-how-to-create-file-share/create-storage-account-3.png)
+![Een schermafbeelding van de belangrijke geavanceerde instellingen die van toepassing zijn op Azure Files](media/storage-how-to-create-file-share/create-storage-account-3.png)
 
-De overige instellingen die beschikbaar zijn op het tabblad Geavanceerd (verouderde BLOB-verwijderen, een hiërarchische naam ruimte voor Azure Data Lake opslag van de 2 en NFSv3 voor Blob-opslag) zijn niet van toepassing op Azure Files.
+De andere instellingen die beschikbaar zijn op het tabblad geavanceerd (blob soft-delete, hiërarchische naamruimte voor Azure Data Lake-opslag gen 2 en NFSv3 voor blobopslag) zijn niet van toepassing op Azure-bestanden.
 
 #### <a name="tags"></a>Tags
-Tags zijn naam/waarde-paren waarmee u resources kunt categoriseren en een geconsolideerde factuur kunt weer geven door hetzelfde label op meerdere resources en resource groepen toe te passen. Deze zijn optioneel en kunnen worden toegepast nadat het maken van een opslag account is gemaakt.
+Tags zijn naam-/waardeparen waarmee u resources categoriseren en geconsolideerde facturering weergeven door dezelfde tag toe te passen op meerdere bronnen en resourcegroepen. Deze zijn optioneel en kunnen worden toegepast na het maken van een opslagaccount.
 
-#### <a name="review--create"></a>Controleren en maken
-De laatste stap voor het maken van het opslag account is door de knop **maken** te selecteren op het tabblad **controleren + maken** . Deze knop is niet beschikbaar als alle vereiste velden voor een opslag account niet zijn gevuld.
+#### <a name="review--create"></a>Controleren + maken
+De laatste stap om het opslagaccount te maken, is door de knop **Maken** te selecteren op het tabblad **Controleren + maken.** Deze knop is niet beschikbaar als alle vereiste velden voor een opslagaccount niet zijn gevuld.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Als u een opslag account wilt maken met behulp van Power shell, zullen we de cmdlet `New-AzStorageAccount` gebruiken. Deze cmdlet heeft veel opties. alleen de vereiste opties worden weer gegeven. Zie de [`New-AzStorageAccount` cmdlet-documentatie](/powershell/module/az.storage/new-azstorageaccount)voor meer informatie over geavanceerde opties.
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+Om een opslagaccount aan te maken `New-AzStorageAccount` met PowerShell, gebruiken we de cmdlet. Deze cmdlet heeft vele opties; alleen de vereiste opties worden weergegeven. Zie de [ `New-AzStorageAccount` cmdlet-documentatie](/powershell/module/az.storage/new-azstorageaccount)voor meer informatie over geavanceerde opties.
 
-Om het maken van het opslag account en de volgende bestands share te vereenvoudigen, worden in variabelen verschillende para meters opgeslagen. U kunt de variabele inhoud vervangen door de waarden die u wilt, maar houd er rekening mee dat de naam van het opslag account globaal uniek moet zijn.
+Om het aanmaken van het opslagaccount en het daaropvolgende bestandsaandeel te vereenvoudigen, slaan we verschillende parameters op in variabelen. U de variabele inhoud vervangen door de waarden die u wenst, maar houd er rekening mee dat de naam van het opslagaccount wereldwijd uniek moet zijn.
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -97,7 +97,7 @@ $storageAccountName = "mystorageacct$(Get-Random)"
 $region = "westus2"
 ```
 
-Als u een opslag account wilt maken dat standaard Azure-bestands shares kan opslaan, wordt de volgende opdracht gebruikt. De para meter `-SkuName` is gekoppeld aan het type redundantie gewenst; Als u een geografisch redundant of geo-zone-redundant opslag account wilt, moet u ook de para meter `-EnableLargeFileShare` verwijderen.
+Als u een opslagaccount wilt maken dat standaard Azure-bestandsshares kan opslaan, gebruiken we de volgende opdracht. De `-SkuName` parameter heeft betrekking op het gewenste type redundantie; Als u een geo-redundant of geo-zone-redundante opslagaccount `-EnableLargeFileShare` wenst, moet u ook de parameter verwijderen.
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -109,7 +109,7 @@ $storAcct = New-AzStorageAccount `
     -EnableLargeFileShare
 ```
 
-Als u een opslag account wilt maken waarmee Premium Azure-bestands shares kunnen worden opgeslagen, wordt de volgende opdracht gebruikt. Houd er rekening mee dat de para meter `-SkuName` is gewijzigd om zowel `Premium` als het gewenste redundantie niveau van lokaal redundante (`LRS`) op te geven. De para meter `-Kind` is `FileStorage` in plaats van `StorageV2` omdat Premium-bestands shares moeten worden gemaakt in een FileStorage-opslag account in plaats van een GPv2-opslag account.
+Als u een opslagaccount wilt maken dat premium Azure-bestandsshares kan opslaan, gebruiken we de volgende opdracht. Houd er `-SkuName` rekening mee dat `Premium` de parameter is gewijzigd in`LRS`beide en het gewenste redundantieniveau van lokaal redundante ( ). De `-Kind` parameter `FileStorage` is `StorageV2` in plaats van omdat premium bestandsshares moeten worden gemaakt in een FileStorage-opslagaccount in plaats van een GPv2-opslagaccount.
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -120,10 +120,10 @@ $storAcct = New-AzStorageAccount `
     -Kind FileStorage 
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Als u een opslag account wilt maken met behulp van de Azure CLI, gebruikt u de opdracht AZ Storage account create. Deze opdracht heeft veel opties; alleen de vereiste opties worden weer gegeven. Zie de [`az storage account create`-opdracht documentatie](/cli/azure/storage/account)voor meer informatie over de geavanceerde opties.
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+Als u een opslagaccount wilt maken met de Azure CLI, gebruiken we de opdracht az-opslagaccount maken. Deze opdracht heeft vele opties; alleen de vereiste opties worden weergegeven. Zie de [ `az storage account create` opdrachtdocumentatie](/cli/azure/storage/account)voor meer informatie over de geavanceerde opties.
 
-Om het maken van het opslag account en de volgende bestands share te vereenvoudigen, worden in variabelen verschillende para meters opgeslagen. U kunt de variabele inhoud vervangen door de waarden die u wilt, maar houd er rekening mee dat de naam van het opslag account globaal uniek moet zijn.
+Om het aanmaken van het opslagaccount en het daaropvolgende bestandsaandeel te vereenvoudigen, slaan we verschillende parameters op in variabelen. U de variabele inhoud vervangen door de waarden die u wenst, maar houd er rekening mee dat de naam van het opslagaccount wereldwijd uniek moet zijn.
 
 ```azurecli-interactive
 resourceGroupName="myResourceGroup"
@@ -131,7 +131,7 @@ storageAccountName="mystorageacct$RANDOM"
 region="westus2"
 ```
 
-Als u een opslag account wilt maken dat standaard Azure-bestands shares kan opslaan, wordt de volgende opdracht gebruikt. De para meter `--sku` is gekoppeld aan het type redundantie gewenst; Als u een geografisch redundant of geo-zone-redundant opslag account wilt, moet u ook de para meter `--enable-large-file-share` verwijderen.
+Als u een opslagaccount wilt maken dat standaard Azure-bestandsshares kan opslaan, gebruiken we de volgende opdracht. De `--sku` parameter heeft betrekking op het gewenste type redundantie; Als u een geo-redundant of geo-zone-redundante opslagaccount `--enable-large-file-share` wenst, moet u ook de parameter verwijderen.
 
 ```azurecli-interactive
 az storage account create \
@@ -143,7 +143,7 @@ az storage account create \
     --output none
 ```
 
-Als u een opslag account wilt maken waarmee Premium Azure-bestands shares kunnen worden opgeslagen, wordt de volgende opdracht gebruikt. Houd er rekening mee dat de para meter `--sku` is gewijzigd om zowel `Premium` als het gewenste redundantie niveau van lokaal redundante (`LRS`) op te geven. De para meter `--kind` is `FileStorage` in plaats van `StorageV2` omdat Premium-bestands shares moeten worden gemaakt in een FileStorage-opslag account in plaats van een GPv2-opslag account.
+Als u een opslagaccount wilt maken dat premium Azure-bestandsshares kan opslaan, gebruiken we de volgende opdracht. Houd er `--sku` rekening mee dat `Premium` de parameter is gewijzigd in`LRS`beide en het gewenste redundantieniveau van lokaal redundante ( ). De `--kind` parameter `FileStorage` is `StorageV2` in plaats van omdat premium bestandsshares moeten worden gemaakt in een FileStorage-opslagaccount in plaats van een GPv2-opslagaccount.
 
 ```azurecli-interactive
 az storage account create \
@@ -157,31 +157,31 @@ az storage account create \
 ---
 
 ## <a name="create-file-share"></a>Bestandsshare maken
-Wanneer u uw opslag account hebt gemaakt, hoeft u alleen nog maar uw bestands share te maken. Dit proces is grotendeels hetzelfde, ongeacht of u een Premium-bestands share of een standaard bestands share gebruikt. Het belangrijkste verschil is het **quotum** en wat het vertegenwoordigt.
+Zodra u uw opslagaccount hebt gemaakt, blijft het alleen maar om uw bestandsshare te maken. Dit proces is meestal hetzelfde, ongeacht of u een premium bestandsshare of een standaard bestandsshare gebruikt. Het belangrijkste verschil is het **quotum** en wat het vertegenwoordigt.
 
-Voor standaard bestands shares is dit een bovengrens van de Azure-bestands share, waardoor eind gebruikers deze niet kunnen starten. Het primaire doel voor het quotum voor een standaard bestands share is budget: "Ik wil deze bestands share niet groter maken dan dit punt". Als er geen quotum is opgegeven, kan de standaard bestands share tot 100 TiB (of 5 TiB als de eigenschap grote bestands shares niet is ingesteld voor een opslag account).
+Voor standaardbestandsshares is dit een bovengrens van het Azure-bestandsaandeel, waarboven eindgebruikers niet kunnen gaan. Het primaire doel voor quota voor een standaardbestandsaandeel is budgetteering: "Ik wil niet dat dit bestandsaandeel verder groeit dan dit punt". Als een quotum niet is opgegeven, kan standaard bestandsshare maximaal 100 TiB (of 5 TiB omvatten als de eigenschap grote bestandsshares niet is ingesteld voor een opslagaccount).
 
-Voor Premium-bestands shares is het quotum overbelast met de gemiddelde **ingerichte grootte**. De ingerichte grootte is het bedrag waarvoor u wordt gefactureerd, ongeacht het werkelijke gebruik. Wanneer u een Premium-bestands share inricht, moet u rekening houden met twee factoren: 1) de toekomstige groei van het aandeel van een ruimte gebruiks perspectief en 2) de IOPS die vereist is voor uw werk belasting. Elke ingerichte GiB geeft u recht op extra gereserveerde en burst-IOPS. Zie [Premium-bestands shares inrichten](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)voor meer informatie over het plannen van een Premium-bestands share.
+Voor premium bestandsaandelen wordt het quotum overbelast tot een **ingerichte grootte**. De ingerichte grootte is het bedrag waarvoor u in rekening wordt gebracht, ongeacht het werkelijke gebruik. Wanneer u een premium bestandsshare indient, wilt u twee factoren in overweging nemen: 1) de toekomstige groei van het aandeel vanuit het perspectief van ruimtegebruik en 2) de IOPS die nodig is voor uw werkbelasting. Elke ingerichte GiB geeft u recht op extra gereserveerde en burst IOPS. Zie [het inrichten van premium bestandsshares](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)voor meer informatie over het plannen van een premium bestandsaandeel .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Als u uw opslag account zojuist hebt gemaakt, kunt u ernaar navigeren vanuit het scherm implementatie door **naar resource te gaan**. Als u het opslag account eerder hebt gemaakt, kunt u ernaar navigeren via de resource groep waarin het is opgenomen. Selecteer in het opslag account de tegel gelabelde **Bestands shares** (u kunt ook naar **Bestands shares** gaan via de inhouds opgave van het opslag account).
+Als u zojuist uw opslagaccount hebt gemaakt, u ernaar navigeren vanaf het implementatiescherm door **Ga naar resource te**selecteren. Als u het opslagaccount eerder hebt gemaakt, u ernaar navigeren via de brongroep die het account bevat. Eenmaal in het opslagaccount selecteert u de tegel met het label **Bestandsshares** (u ook naar **Bestandsshares** navigeren via de inhoudsopgave voor het opslagaccount).
 
-![Een scherm opname van de tegel bestands shares](media/storage-how-to-create-file-share/create-file-share-1.png)
+![Een schermafbeelding van de tegel Bestandsshares](media/storage-how-to-create-file-share/create-file-share-1.png)
 
-In de vermelding van de bestands share ziet u alle bestands shares die u eerder hebt gemaakt in dit opslag account. een lege tabel als er nog geen bestands shares zijn gemaakt. Selecteer **+ Bestands share** om een nieuwe bestands share te maken.
+In de lijst met bestandsshare's ziet u alle bestandsshares die u eerder in dit opslagaccount hebt gemaakt. een lege tabel als er nog geen bestandsshares zijn gemaakt. Selecteer **+ Bestandsshare** om een nieuwe bestandsshare te maken.
 
-De Blade nieuwe bestands share moet op het scherm worden weer gegeven. Vul de velden op de Blade nieuwe bestands share in om een bestands share te maken:
+Het nieuwe bestandsshareblad moet op het scherm verschijnen. Vul de velden in het nieuwe bestandsshareblad in om een bestandsshare te maken:
 
-- **Naam**: de naam van de bestands share die u wilt maken.
-- **Quotum**: het quotum van de bestands share voor standaard bestands shares; de ingerichte grootte van de bestands share voor Premium-bestands shares.
+- **Naam**: de naam van de bestandsshare die moet worden gemaakt.
+- **Quotum**: Het quotum van het bestandsaandeel voor standaardbestandsaandelen; de ingerichte omvang van het bestandsaandeel voor premium bestandsaandelen.
 
-Selecteer **maken** om de nieuwe share te volt ooien. Als uw opslag account zich in een virtueel netwerk bevindt, kunt u geen Azure-bestands share maken, tenzij uw client zich ook in het virtuele netwerk bevindt. U kunt dit tijdgebonden beperkings punt ook omzeilen met behulp van de cmdlet Azure PowerShell `New-AzRmStorageShare`.
+Selecteer **Maken** om het nieuwe aandeel te maken. Houd er rekening mee dat als uw opslagaccount zich in een virtueel netwerk bevindt, u geen Azure-bestandsshare maken, tenzij uw client zich ook in het virtuele netwerk bevindt. U ook werken rond deze point-in-time `New-AzRmStorageShare` beperking met behulp van de Azure PowerShell cmdlet.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-U kunt de Azure-bestands share maken met de cmdlet [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) . Bij de volgende Power shell-opdrachten wordt ervan uitgegaan dat u de variabelen `$resourceGroupName` en `$storageAccountName` zoals hierboven gedefinieerd hebt ingesteld in de sectie een opslag account maken met Azure PowerShell. 
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+U de Azure-bestandsshare maken met de [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) cmdlet. De volgende PowerShell-opdrachten gaan ervan `$resourceGroupName` uit `$storageAccountName` dat u de variabelen hebt ingesteld en zoals hierboven gedefinieerd in het maken van een opslagaccount met Azure PowerShell. 
 
 > [!Important]  
-> Voor Premium-bestands shares verwijst de para meter `-QuotaGiB` naar de ingerichte grootte van de bestands share. De ingerichte grootte van de bestands share is de hoeveelheid die wordt gefactureerd, ongeacht het gebruik. Standaard bestands shares worden gefactureerd op basis van het gebruik in plaats van de ingerichte grootte.
+> Voor premium bestandsaandelen `-QuotaGiB` verwijst de parameter naar de ingerichte grootte van het bestandsaandeel. De ingerichte grootte van het bestandsaandeel is het bedrag waarvoor u in rekening wordt gebracht, ongeacht het gebruik. Standaard bestandsaandelen worden gefactureerd op basis van gebruik in plaats van ingerichte grootte.
 
 ```azurepowershell-interactive
 $shareName = "myshare"
@@ -194,10 +194,10 @@ New-AzRmStorageShare `
 ```
 
 > [!Note]  
-> De naam van de bestandsshare mag alleen uit kleine letters bestaan. Zie [shares, directory's, bestanden en meta gegevens benoemen en hiernaar verwijzen](https://msdn.microsoft.com/library/azure/dn167011.aspx)voor meer informatie over de naamgeving van bestands shares en bestanden.
+> De naam van de bestandsshare mag alleen uit kleine letters bestaan. Zie [Aandelen, mappen, bestanden en metagegevens benoemen en verwijzen](https://msdn.microsoft.com/library/azure/dn167011.aspx)voor meer informatie over het benoemen van bestandsshares en bestanden.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Voordat we een Azure-bestands share met de Azure CLI kunnen maken, moet u een opslag account sleutel ophalen om het maken van de bestands share te autoriseren met. U kunt dit doen met de [`az storage account keys list`](/cli/azure/storage/account/keys) opdracht:
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+Voordat we een Azure-bestandsshare kunnen maken met de Azure CLI, moet u een opslagaccountsleutel krijgen om de bewerking voor het maken van bestandsdelen te autoriseren. Dit kan met [`az storage account keys list`](/cli/azure/storage/account/keys) de opdracht:
 
 ```azurecli-interactive
 storageAccountKey=$(az storage account keys list \
@@ -206,10 +206,10 @@ storageAccountKey=$(az storage account keys list \
     --query "[0].value" | tr -d '"')
 ```
 
-Zodra u de sleutel voor het opslag account hebt, kunt u de Azure-bestands share maken met de opdracht [`az storage share create`](/cli/azure/storage/share) . 
+Zodra u de opslagaccountsleutel hebt, u [`az storage share create`](/cli/azure/storage/share) de Azure-bestandsshare maken met de opdracht. 
 
 > [!Important]  
-> Voor Premium-bestands shares verwijst de para meter `--quota` naar de ingerichte grootte van de bestands share. De ingerichte grootte van de bestands share is de hoeveelheid die wordt gefactureerd, ongeacht het gebruik. Standaard bestands shares worden gefactureerd op basis van het gebruik in plaats van de ingerichte grootte.
+> Voor premium bestandsaandelen `--quota` verwijst de parameter naar de ingerichte grootte van het bestandsaandeel. De ingerichte grootte van het bestandsaandeel is het bedrag waarvoor u in rekening wordt gebracht, ongeacht het gebruik. Standaard bestandsaandelen worden gefactureerd op basis van gebruik in plaats van ingerichte grootte.
 
 ```azurecli-interactive
 shareName="myshare"
@@ -222,14 +222,14 @@ az storage share create \
     --output none
 ```
 
-Deze opdracht mislukt als het opslag account zich in een virtueel netwerk bevindt en de computer waarop u deze opdracht aanroept, geen deel uitmaakt van het virtuele netwerk. U kunt dit tijdstip beperken met behulp van de Azure PowerShell `New-AzRmStorageShare` cmdlet zoals hierboven wordt beschreven, of door de Azure CLI uit te voeren vanaf een computer die deel uitmaakt van het virtuele netwerk, inclusief via een VPN-verbinding.
+Deze opdracht mislukt als het opslagaccount zich in een virtueel netwerk bevindt en de computer waarvan u deze opdracht inroept, geen deel uitmaakt van het virtuele netwerk. U deze beperking van point-in-time omzeilen door de Azure PowerShell-cmdlet `New-AzRmStorageShare` zoals hierboven beschreven te gebruiken, of door de Azure CLI uit te voeren vanaf een computer die deel uitmaakt van het virtuele netwerk, ook via een VPN-verbinding.
 
 ---
 
 > [!Note]  
-> De naam van de bestandsshare mag alleen uit kleine letters bestaan. Zie [shares, directory's, bestanden en meta gegevens benoemen en hiernaar verwijzen](https://msdn.microsoft.com/library/azure/dn167011.aspx)voor meer informatie over de naamgeving van bestands shares en bestanden.
+> De naam van de bestandsshare mag alleen uit kleine letters bestaan. Zie [Aandelen, mappen, bestanden en metagegevens benoemen en verwijzen](https://msdn.microsoft.com/library/azure/dn167011.aspx)voor meer informatie over het benoemen van bestandsshares en bestanden.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Plan voor een implementatie van Azure files](storage-files-planning.md) of [plan een implementatie van Azure file sync](storage-sync-files-planning.md). 
-- [Overzicht van netwerken](storage-files-networking-overview.md).
-- Verbinding maken en koppelen van een bestands share in [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md)en [Linux](storage-how-to-use-files-linux.md).
+- [Plan voor een implementatie van Azure Files](storage-files-planning.md) of Plan voor een implementatie van Azure File [Sync](storage-sync-files-planning.md). 
+- [Netwerkoverzicht](storage-files-networking-overview.md).
+- Maak verbinding en monteer een bestandsshare op [Windows,](storage-how-to-use-files-windows.md) [macOS](storage-how-to-use-files-mac.md)en [Linux.](storage-how-to-use-files-linux.md)

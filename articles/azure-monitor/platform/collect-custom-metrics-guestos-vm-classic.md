@@ -1,6 +1,6 @@
 ---
-title: Gegevens van klassieke Windows-VM'S naar Azure Monitor Data Base voor metrische gegevens verzenden
-description: De metrische gegevens van het gast besturingssysteem verzenden naar het Azure Monitor van een virtuele Windows-machine (klassiek)
+title: Klassieke Windows VM-statistieken verzenden naar Azure Monitor-statistiekendatabase
+description: Statistieken van gastbesturingssysteemverzenden naar het Azure Monitor-gegevensarchief voor een virtuele Windows-machine (klassiek)
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
@@ -8,58 +8,58 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
 ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655807"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Metrische gegevens van het gast besturingssysteem verzenden naar de data base van de Azure Monitor metrics voor een virtuele Windows-machine (klassiek)
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Gaststatistieken van besturingssysteem verzenden naar de Azure Monitor-metrische gegevensdatabase voor een virtuele Windows-machine (klassiek)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Met de [uitbrei ding voor de Azure monitor diagnostische gegevens](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (bekend als ' wad ' of ' diagnostiek ') kunt u metrische gegevens en logboeken verzamelen van het gast besturingssysteem (gast besturingssysteem) dat wordt uitgevoerd als onderdeel van een virtuele machine, Cloud service of service Fabric cluster. De uitbrei ding kan telemetrie verzenden naar een [groot aantal verschillende locaties.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+Met de azure monitor [diagnostics-extensie](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (bekend als WAD of Diagnostics) u statistieken en logboeken verzamelen van het gastbesturingssysteem (Guest OS) dat wordt uitgevoerd als onderdeel van een virtuele machine, cloudservice of Service Fabric-cluster. De extensie kan telemetrie naar [veel verschillende locaties verzenden.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-In dit artikel wordt het proces beschreven voor het verzenden van de prestatie gegevens voor het gast besturingssysteem voor een Windows-virtuele machine (klassiek) naar de data base van de Azure Monitor metriek. Te beginnen met diagnostische gegevens van versie 1,11, kunt u metrische gegevens rechtstreeks naar de opslag voor metrische gegevens van Azure Monitor schrijven, waar de metrische gegevens van het standaard platform al zijn verzameld. 
+In dit artikel wordt het proces beschreven voor het verzenden van gastbesturingssysteemprestatiestatistieken voor een virtuele Windows-machine (klassiek) naar de azure monitor-metrische database. Vanaf Diagnostics versie 1.11 u statistieken rechtstreeks schrijven naar de Azure Monitor-statistiekenwinkel, waar standaardplatformstatistieken al zijn verzameld. 
 
-Door ze op deze locatie op te slaan, hebt u toegang tot dezelfde acties als voor platform metrische gegevens. Acties omvatten bijna realtime waarschuwingen, grafieken, route ring, toegang vanaf een REST API en meer. In het verleden schreef de diagnostische uitbrei ding naar Azure Storage, maar niet naar de Azure Monitor gegevens opslag. 
+Als u ze op deze locatie opslaat, hebt u toegang tot dezelfde acties als voor platformstatistieken. Acties omvatten near-real-time waarschuwingen, grafieken, routering, toegang vanuit een REST API en meer. In het verleden is de extensie Diagnostische gegevens geschreven naar Azure Storage, maar niet naar het Azure Monitor-gegevensarchief. 
 
-Het proces dat wordt beschreven in dit artikel, werkt alleen op klassieke virtuele machines waarop het Windows-besturings systeem wordt uitgevoerd.
+Het proces dat in dit artikel wordt beschreven, werkt alleen op klassieke virtuele machines waarop het Windows-besturingssysteem wordt uitgevoerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U moet een [service beheerder of mede beheerder](../../cost-management-billing/manage/add-change-subscription-administrator.md) zijn voor uw Azure-abonnement. 
+- U moet een [servicebeheerder of co-beheerder](../../cost-management-billing/manage/add-change-subscription-administrator.md) zijn van uw Azure-abonnement. 
 
-- Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
+- Uw abonnement moet zijn geregistreerd bij [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- U moet [Azure PowerShell](/powershell/azure) of [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) hebben geïnstalleerd.
+- U moet [Azure PowerShell](/powershell/azure) of [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) hebben geïnstalleerd.
 
-- De VM-resource moet zich in een regio bevinden [die aangepaste metrische gegevens ondersteunt](metrics-custom-overview.md#supported-regions).
+- Uw VM-bron moet zich in een [regio bevinden die aangepaste statistieken ondersteunt.](metrics-custom-overview.md#supported-regions)
 
-## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Een klassieke virtuele machine en een opslag account maken
+## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Een klassiek virtueel machine- en opslagaccount maken
 
-1. Maak een klassieke virtuele machine met behulp van de Azure Portal.
-   ![klassieke VM maken](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
+1. Maak een klassieke VM met behulp van de Azure-portal.
+   ![Klassieke VM maken](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
 
-1. Wanneer u deze virtuele machine maakt, kiest u de optie voor het maken van een nieuw klassiek opslag account. We gebruiken dit opslag account in latere stappen.
+1. Wanneer u deze virtuele machine maakt, kiest u de optie om een nieuw klassiek opslagaccount te maken. We gebruiken dit opslagaccount in latere stappen.
 
-1. Ga in het Azure Portal naar de Blade resource voor **opslag accounts** . Selecteer **sleutels**en noteer de naam van het opslag account en de sleutel van het opslag account. U hebt deze informatie nodig in latere stappen.
-   toegangs sleutels voor opslag ![](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
+1. Ga in de Azure-portal naar het bronblad **voor opslagaccounts.** Selecteer **Sleutels**en neem nota van de naam van het opslagaccount en de opslagaccountsleutel. U hebt deze informatie in latere stappen nodig.
+   ![Opslagtoegangssleutels](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
-Maak een Service Principle in uw Azure Active Directory-Tenant met behulp van de instructies in [Create a Service Principal](../../active-directory/develop/howto-create-service-principal-portal.md). Let op het volgende tijdens dit proces: 
-- Maak een nieuw client geheim voor deze app.
-- Sla de sleutel en de client-ID op voor gebruik in latere stappen.
+Maak een serviceprincipe in uw Azure Active Directory-tenant met behulp van de instructies bij [Een serviceprincipal maken.](../../active-directory/develop/howto-create-service-principal-portal.md) Let op het volgende tijdens het doorlopen van dit proces: 
+- Maak nieuwe client geheim voor deze app.
+- Bewaar de sleutel en de client-id voor gebruik in latere stappen.
 
-Geef deze app ' bewaking metrische gegevens Uitgever ' door aan de resource waarvoor u metrische gegevens wilt verzenden. U kunt een resource groep of een volledig abonnement gebruiken.  
+Geef deze app 'Monitoring Metrics Publisher'-machtigingen aan de bron waartegen u statistieken wilt uitzenden. U een resourcegroep of een volledig abonnement gebruiken.  
 
 > [!NOTE]
-> De diagnostische uitbrei ding maakt gebruik van de service-principal voor het verifiëren van Azure Monitor en het verzenden van metrische gegevens voor uw klassieke VM.
+> De extensie Diagnostische gegevens gebruikt de serviceprincipal om te verifiëren tegen Azure Monitor en statistieken uit te zenden voor uw klassieke VM.
 
-## <a name="author-diagnostics-extension-configuration"></a>Configuratie van de extensie voor diagnostische gegevens van auteur
+## <a name="author-diagnostics-extension-configuration"></a>Configuratie van de extensie Auteur Diagnostics
 
-1. Bereid het configuratie bestand voor de diagnostische extensie voor. Dit bestand bepaalt welke logboeken en prestatie meter items de diagnostische uitbrei ding moet worden verzameld voor uw klassieke VM. Hier volgt een voor beeld:
+1. Bereid het configuratiebestand voor diagnostische extensie voor. Dit bestand bepaalt welke logboeken en prestatietellers de diagnostische extensie moet verzamelen voor uw klassieke VM. Hier volgt een voorbeeld:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -105,7 +105,7 @@ Geef deze app ' bewaking metrische gegevens Uitgever ' door aan de resource waar
     <IsEnabled>true</IsEnabled>
     </DiagnosticsConfiguration>
     ```
-1. Geef in de sectie ' SinksConfig ' van het diagnostische bestand als volgt een nieuwe Azure Monitor-Sink op:
+1. Definieer in het gedeelte 'SinksConfig' van uw diagnosebestand een nieuwe Azure Monitor-sink als volgt:
 
     ```xml
     <SinksConfig>
@@ -118,7 +118,7 @@ Geef deze app ' bewaking metrische gegevens Uitgever ' door aan de resource waar
     </SinksConfig>
     ```
 
-1. In het gedeelte van het configuratie bestand waarin de lijst met prestatie meter items die moeten worden verzameld, worden de prestatie meter items gerouteerd naar de Azure Monitor sink "AzMonSink".
+1. In het gedeelte van uw configuratiebestand waar de lijst met prestatiemeteritems wordt vermeld, wordt de prestatiemeteritems doorverwezen naar de Azure Monitor-sink "AzMonSink".
 
     ```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
@@ -127,7 +127,7 @@ Geef deze app ' bewaking metrische gegevens Uitgever ' door aan de resource waar
     </PerformanceCounters>
     ```
 
-1. Definieer in de persoonlijke configuratie het Azure Monitor-account. Voeg vervolgens de gegevens van de Service-Principal toe om gegevens te verzenden.
+1. Definieer in de privéconfiguratie het Azure Monitor-account. Voeg vervolgens de belangrijkste servicegegevens toe die u wilt gebruiken om statistieken uit te zenden.
 
     ```xml
     <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -143,65 +143,65 @@ Geef deze app ' bewaking metrische gegevens Uitgever ' door aan de resource waar
 
 1. Sla dit bestand lokaal op.
 
-## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>De diagnostische uitbrei ding implementeren voor uw Cloud service
+## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>De diagnostics-extensie implementeren voor uw cloudservice
 
-1. Start Power shell en meld u aan.
+1. Start PowerShell en meld je aan.
 
     ```powershell
     Login-AzAccount
     ```
 
-1. Begin met het instellen van de context voor uw klassieke virtuele machine.
+1. Begin met het instellen van de context voor uw klassieke VM.
 
     ```powershell
     $VM = Get-AzureVM -ServiceName <VM’s Service_Name> -Name <VM Name>
     ```
 
-1. Stel de context in van het klassieke opslag account dat is gemaakt met de virtuele machine.
+1. Stel de context in van het klassieke opslagaccount dat met de VM is gemaakt.
 
     ```powershell
     $StorageContext = New-AzStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
     ```
 
-1.  Stel het pad naar de diagnostische bestanden in op een variabele met behulp van de volgende opdracht:
+1.  Stel het gegevenspad van Diagnostics in op een variabele met de volgende opdracht:
 
     ```powershell
     $diagconfig = “<path of the diagnostics configuration file with the Azure Monitor sink configured>”
     ```
 
-1.  Bereid de update voor uw klassieke VM voor met het diagnostische bestand waarvan de Azure Monitor-sink is geconfigureerd.
+1.  Bereid de update voor uw klassieke VM voor met het diagnostischbestand waarop de Azure Monitor-sink is geconfigureerd.
 
     ```powershell
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $diagconfig -VM $VM -StorageContext $Storage_Context
     ```
 
-1.  Implementeer de update op uw virtuele machine door de volgende opdracht uit te voeren:
+1.  Implementeer de update naar uw VM door de volgende opdracht uit te voeren:
 
     ```powershell
     Update-AzureVM -ServiceName "ClassicVMWAD7216" -Name "ClassicVMWAD" -VM $VM_Update.VM
     ```
 
 > [!NOTE]
-> Het is nog verplicht een opslag account op te geven als onderdeel van de installatie van de diagnostische uitbrei ding. Alle logboeken of prestatie meter items die zijn opgegeven in het configuratie bestand voor diagnostische gegevens worden naar het opgegeven opslag account geschreven.
+> Het is nog steeds verplicht om een opslagaccount aan te bieden als onderdeel van de installatie van de Diagnostics-extensie. Logboeken of prestatiemeteritems die zijn opgegeven in het config-bestand Diagnostics, worden naar het opgegeven opslagaccount geschreven.
 
-## <a name="plot-the-metrics-in-the-azure-portal"></a>De metrische gegevens in het Azure Portal uitzetten
+## <a name="plot-the-metrics-in-the-azure-portal"></a>De statistieken in de Azure-portal uitzetten
 
 1.  Ga naar Azure Portal. 
 
-1.  Selecteer in het menu links de optie **monitor.**
+1.  Selecteer Monitor in het **linkermenu.**
 
-1.  Selecteer **metrische gegevens**op de Blade **monitor** .
+1.  Selecteer op het **blad Monitor** de optie **Metrische gegevens**.
 
-    ![Gegevens navigeren](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
+    ![Navigeren door statistieken](./media/collect-custom-metrics-guestos-vm-classic/navigate-metrics.png)
 
-1. Selecteer in de vervolg keuzelijst resources uw klassieke VM.
+1. Selecteer in de vervolgkeuzelijst resources uw klassieke vm.
 
-1. Selecteer in de vervolg keuzelijst naam ruimten de optie **Azure. VM. Windows. gast**.
+1. Selecteer **azure.vm.windows.guest**in het vervolgkeuzemenu namespaces .
 
-1. Selecteer in de vervolg keuzelijst metrische gegevens **tussen geheugen\toegewezen bytes die in gebruik**zijn.
-   meet gegevens ![tekenen](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
+1. Selecteer in de vervolgkeuzelijst Statistieken de optie **Geheugen\Vastgelegde bytes in gebruik**.
+   ![Plotstatistieken](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [aangepaste metrische gegevens](metrics-custom-overview.md).
+- Meer informatie over [aangepaste statistieken](metrics-custom-overview.md).
 

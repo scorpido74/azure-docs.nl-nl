@@ -1,83 +1,83 @@
 ---
-title: Problemen met de beschikbaarheids tests van Azure-toepassing Insights oplossen | Microsoft Docs
-description: Problemen met webtests oplossen in Azure-toepassing Insights. Ontvang een waarschuwing wanneer een website niet meer beschikbaar is of traag reageert.
+title: Problemen met de beschikbaarheidstests voor Azure Application Insights oplossen | Microsoft Documenten
+description: Problemen met webtests oplossen in Azure Application Insights. Ontvang een waarschuwing wanneer een website niet meer beschikbaar is of traag reageert.
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: f135aa6c0a4a55f8a42fd858572cc811e25b27c5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671100"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
-Dit artikel helpt u bij het oplossen van veelvoorkomende problemen die zich kunnen voordoen bij het gebruik van beschikbaarheids bewaking.
+In dit artikel u veelvoorkomende problemen oplossen die zich kunnen voordoen bij het gebruik van beschikbaarheidsbewaking.
 
 ## <a name="ssltls-errors"></a>SSL/TLS-fouten
 
-|Symptoom/fout bericht| Mogelijke oorzaken|
+|Symptoom/foutmelding| Mogelijke oorzaken|
 |--------|------|
-|Kan geen beveiligd SSL/TLS-kanaal maken  | SSL-versie. Alleen TLS 1,0, 1,1 en 1,2 worden ondersteund. **SSLv3 wordt niet ondersteund.**
-|TLSv 1.2-record laag: waarschuwing (niveau: onherstelbaar, beschrijving: ongeldige record-MAC)| Zie stack Exchange-thread voor [meer informatie](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake).
-|Een URL die mislukt is, is een CDN (Content Delivery Network) | Dit kan worden veroorzaakt door een onjuiste configuratie in uw CDN |  
+|Kan ssl/tls secure channel niet maken  | SSL-versie. Alleen TLS 1.0, 1.1 en 1.2 worden ondersteund. **SSLv3 wordt niet ondersteund.**
+|TLSv1.2 Record Layer: Alert (Niveau: Fatal, Beschrijving: Bad Record MAC)| Zie StackExchange-thread voor [meer informatie](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake).
+|URL die mislukt, is naar een CDN (Content Delivery Network) | Dit kan worden veroorzaakt door een verkeerde configuratie op uw CDN |  
 
 ### <a name="possible-workaround"></a>Mogelijke tijdelijke oplossing
 
-* Als de Url's die het probleem ondervinden, altijd tot afhankelijke resources zijn, is het raadzaam om **afhankelijke aanvragen** voor de webtest uit te scha kelen.
+* Als de URL's die het probleem ervaren altijd afhankelijk zijn van resources, wordt aanbevolen om **afhankelijke aanvragen** voor de webtest uit te schakelen.
 
-## <a name="test-fails-only-from-certain-locations"></a>Test mislukt alleen op bepaalde locaties
+## <a name="test-fails-only-from-certain-locations"></a>Test mislukt alleen vanaf bepaalde locaties
 
-|Symptoom/fout bericht| Mogelijke oorzaken|
+|Symptoom/foutmelding| Mogelijke oorzaken|
 |----|---------|
-|Een verbindings poging is mislukt omdat de verbonden partij na een bepaalde tijd niet goed heeft gereageerd  | Test agents op bepaalde locaties worden geblokkeerd door een firewall.|
-|    |Het opnieuw routeren van bepaalde IP-adressen vindt plaats via (load balancers, geo Traffic managers, Azure Express route). 
-|    |Als u Azure ExpressRoute gebruikt, zijn er scenario's waarin pakketten kunnen worden verwijderd in gevallen waarin [asymmetrische route ring plaatsvindt](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
+|Een verbindingspoging is mislukt omdat de verbonden partij na een bepaalde periode niet correct heeft gereageerd  | Testagenten op bepaalde locaties worden geblokkeerd door een firewall.|
+|    |Het omleiden van bepaalde IP-adressen vindt plaats via (Load Balancers, Geo traffic managers, Azure Express Route.) 
+|    |Als u Azure ExpressRoute gebruikt, zijn er scenario's waarin pakketten kunnen worden verwijderd in gevallen waarin [Asymmetrische routering plaatsvindt.](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing)|
 
-## <a name="test-failure-with-a-protocol-violation-error"></a>Fout in de test fout met een schending van het Protocol
+## <a name="test-failure-with-a-protocol-violation-error"></a>Fout testen met een fout in protocolschending
 
-|Symptoom/fout bericht| Mogelijke oorzaken| Mogelijke oplossingen |
+|Symptoom/foutmelding| Mogelijke oorzaken| Mogelijke resoluties |
 |----|---------|-----|
-|De server heeft een schending van het protocol doorgevoerd. Sectie = ResponseHeader Details = CR moet worden gevolgd door LF | Dit gebeurt wanneer er een onjuiste koptekst wordt gedetecteerd. Het is in het bijzonder dat sommige headers geen gebruikmaken van CRLF om het einde van de regel aan te geven, wat in strijd is met de HTTP-specificatie. Application Insights dwingt deze HTTP-specificatie af en mislukt de antwoorden met ongeldige headers.| a. Neem contact op met de website van de host provider/CDN-provider om de defecte servers te herstellen. <br> b. Als de mislukte aanvragen resources zijn (bijvoorbeeld stijl bestanden, afbeeldingen, scripts), kunt u overwegen het parseren van afhankelijke aanvragen uit te scha kelen. Als u dit doet, verliest u de mogelijkheid om de beschik baarheid van die bestanden te bewaken).
+|De server heeft een protocolschending begaan. Section=ResponseHeader Detail=CR moet worden gevolgd door LF | Dit gebeurt wanneer misvormde kopteksten worden gedetecteerd. In het bijzonder gebruiken sommige headers crlf niet om het einde van de regel aan te geven, wat in strijd is met de HTTP-specificatie. Application Insights dwingt deze HTTP-specificatie af en faalt in reacties met misvormde headers.| a. Neem contact op met de websitehostprovider / CDN-provider om de defecte servers op te lossen. <br> b. In het geval dat de mislukte aanvragen resources zijn (bijvoorbeeld stijlbestanden, afbeeldingen, scripts), u overwegen om het ontleden van afhankelijke aanvragen uit te schakelen. Houd er rekening mee dat als u dit doet, u de mogelijkheid verliest om de beschikbaarheid van die bestanden te controleren).
 
 > [!NOTE]
-> De URL mislukt mogelijk niet bij browsers met een beperkte validatie van HTTP-headers. Zie dit blogbericht voor een gedetailleerde uitleg van dit probleem: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+> De URL mag niet mislukken in browsers met een ontspannen validatie van HTTP-headers. Zie dit blogbericht voor een gedetailleerde uitleg van dit probleem: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-## <a name="common-troubleshooting-questions"></a>Veelgestelde vragen over het oplossen van problemen
+## <a name="common-troubleshooting-questions"></a>Veelvoorkomende probleemoplossingsvragen
 
-### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Site ziet er goed uit, maar er worden test fouten weer gegeven? Waarom Application Insights waarschuwing?
+### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>De site ziet er goed uit, maar ik constateer testfouten Waarom waarschuwt Application Insights mij?
 
-   * Is het **parseren van afhankelijke aanvragen** ingeschakeld voor uw test? Dit resulteert in een strikte controle op resources zoals scripts, installatie kopieën, enzovoort. Deze typen fouten zijn mogelijk niet merkbaar in een browser. Controleer alle afbeeldingen, scripts, stijlmodellen en andere bestanden geladen door de pagina. Als er een fout optreedt, wordt de test gerapporteerd als mislukt, zelfs als de HTML-hoofd pagina zonder problemen wordt geladen. Als u de test voor dergelijke bron fouten wilt desensitize, schakelt u het parseren van afhankelijke aanvragen uit de test configuratie uit.
+   * Is er in uw test **Parse afhankelijke aanvragen** ingeschakeld? Dat resulteert in een strikte controle op middelen zoals scripts, afbeeldingen etc. Dit soort fouten is mogelijk niet merkbaar in een browser. Controleer alle afbeeldingen, scripts, stijlmodellen en andere bestanden geladen door de pagina. Als een van hen mislukt, wordt de test gerapporteerd als mislukt, zelfs als de hoofd-HTML-pagina zonder problemen wordt geladen. Als u de test wilt desensibiliseren voor dergelijke resourcefouten, schakelt u de parse-afhankelijke aanvragen uit de testconfiguratie uit.
 
-   * Als u de conflicteert van ruis van tijdelijke netwerk problemen etc. wilt verminderen, moet u ervoor zorgen dat de configuratie voor test fouten opnieuw proberen is ingeschakeld. U kunt ook testen vanaf meer locaties en de drempel waarde voor waarschuwings regels dienovereenkomstig beheren om te voor komen dat er locatie-specifieke problemen optreden die onnodige waarschuwingen veroorzaken.
+   * Om de kans op ruis door tijdelijke netwerkblips enz. U ook vanaf meer locaties testen en de drempelwaarde voor waarschuwingsregels dienovereenkomstig beheren om locatiespecifieke problemen te voorkomen die onnodige waarschuwingen veroorzaken.
 
-   * Klik op een van de rode punten van de beschikbaarheids ervaring of een beschikbaarheids fout in de zoek Verkenner om de details te bekijken van de reden waarom de fout is gerapporteerd. Het test resultaat, samen met de gecorreleerde telemetrie aan de server zijde (indien ingeschakeld), helpt te begrijpen waarom de test is mislukt. Veelvoorkomende oorzaken van tijdelijke problemen zijn netwerk-of verbindings problemen.
+   * Klik op een van de rode stippen uit de beschikbaarheidservaring of een beschikbaarheidsfout van de zoekverkenner om de details te zien van waarom we de fout hebben gemeld. Het testresultaat, samen met de gecorreleerde telemetrie aan de serverzijde (indien ingeschakeld) moet helpen begrijpen waarom de test is mislukt. Veelvoorkomende oorzaken van tijdelijke problemen zijn netwerk- of verbindingsproblemen.
 
-   * Is de test time-out opgegaan? Tests worden na twee minuten afgebroken. Als uw ping-of multi-step-test langer dan twee minuten duurt, zullen we dit melden als een fout. U kunt de test opsplitsen in meerdere records die in korte duur kunnen worden voltooid.
+   * Heeft de test time-out? We aborteren tests na 2 minuten. Als uw ping- of multi-step test langer dan 2 minuten duurt, zullen we dit als een fout melden. Overweeg om de test op te splitsen in meerdere exemplaren die in kortere duur kunnen worden voltooid.
 
-   * Zijn alle locaties van het rapport mislukt of slechts een deel ervan? Als er slechts enkele gerapporteerde fouten zijn, kan dit worden veroorzaakt door netwerk-en CDN-problemen. Klik opnieuw op de rode punten om te begrijpen waarom de locatie fouten heeft gerapporteerd.
+   * Hebben alle locaties melding gemaakt van falen, of slechts enkele van hen? Als slechts enkele gemelde storingen, kan dit te wijten zijn aan netwerk / CDN problemen. Nogmaals, te klikken op de rode stippen moet helpen begrijpen waarom de locatie gemeld mislukkingen.
 
-### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Ik heb geen e-mail bericht ontvangen toen de waarschuwing werd geactiveerd of is opgelost of beide?
+### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Ik heb geen e-mail ontvangen wanneer de waarschuwing geactiveerd, of opgelost of beide?
 
-Controleer de configuratie van de klassieke waarschuwingen om te bevestigen dat uw e-mail adres direct wordt weer gegeven of dat een distributie lijst die u op, is geconfigureerd voor het ontvangen van meldingen. Als dat het geval is, controleert u de configuratie van de distributie lijst om te bevestigen dat het externe e-mail berichten kan ontvangen. Controleer ook of de e-mail beheerder mogelijk beleids regels heeft geconfigureerd die dit probleem kunnen veroorzaken.
+Controleer de configuratie van klassieke waarschuwingen om te controleren of uw e-mail rechtstreeks wordt vermeld, of een distributielijst waarin u zich bevindt, is geconfigureerd om meldingen te ontvangen. Als dit het is, controleer dan de configuratie van de distributielijst om te bevestigen dat het externe e-mails kan ontvangen. Controleer ook of uw e-mailbeheerder beleid heeft geconfigureerd dat dit probleem kan veroorzaken.
 
-### <a name="i-did-not-receive-the-webhook-notification"></a>Ik heb de webhook-melding niet ontvangen?
+### <a name="i-did-not-receive-the-webhook-notification"></a>Heb ik de webhook-melding niet ontvangen?
 
-Controleer of de toepassing die de webhook-melding ontvangt, beschikbaar is en de webhook-aanvragen verwerkt. Zie [voor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) meer informatie.
+Controleer of de toepassing die de webhook-melding ontvangt beschikbaar is en verwerkt met succes de webhook-verzoeken. Zie [dit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) voor meer informatie.
 
-### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Onregelmatige test fout met een protocol fout
+### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Onregelmatige testfout met een protocolfout?
 
-De fout 'Schending van protocol... CR moet worden gevolgd door LF' geeft een probleem met de server (of afhankelijkheden) aan. Dit gebeurt wanneer onjuist gevormde headers zijn ingesteld in het antwoord. Dit kan worden veroorzaakt door load balancers of CDN's. Het is in het bijzonder mogelijk dat er geen CRLF wordt gebruikt om het einde van de regel aan te geven, wat in strijd is met de HTTP-specificatie en daarom niet kan worden gevalideerd op het niveau van de .NET-webaanvraag. Inspecteer het antwoord op Spot headers. Dit kan een schending opleveren.
+De fout 'Schending van protocol... CR moet worden gevolgd door LF' geeft een probleem met de server (of afhankelijkheden) aan. Dit gebeurt wanneer onjuist gevormde headers zijn ingesteld in het antwoord. Dit kan worden veroorzaakt door load balancers of CDN's. In het bijzonder gebruiken sommige headers crlf niet om het einde van de regel aan te geven, wat in strijd is met de HTTP-specificatie en daarom de validatie op .NET WebRequest-niveau mislukken. Controleer het antwoord op kopteksten ter plaatse, die mogelijk in overtreding zijn.
 
 > [!NOTE]
-> De URL mislukt mogelijk niet bij browsers met een beperkte validatie van HTTP-headers. Zie dit blogbericht voor een gedetailleerde uitleg van dit probleem: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+> De URL mag niet mislukken in browsers met een ontspannen validatie van HTTP-headers. Zie dit blogbericht voor een gedetailleerde uitleg van dit probleem: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Ik zie geen verwante telemetrie aan de server zijde voor het vaststellen van test fouten? *
+### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Ik zie geen gerelateerde telemetrie aan de serverzijde om testfouten te diagnosticeren?*
 
-Als u Application Insights hebt ingesteld voor uw app aan serverzijde, kan dit komen doordat er [steekproeven](../../azure-monitor/app/sampling.md) worden uitgevoerd. Selecteer een ander beschikbaarheids resultaat.
+Als u Application Insights hebt ingesteld voor uw app aan serverzijde, kan dit komen doordat er [steekproeven](../../azure-monitor/app/sampling.md) worden uitgevoerd. Selecteer een ander beschikbaarheidsresultaat.
 
 ### <a name="can-i-call-code-from-my-web-test"></a>Kan ik code aanroepen via mijn webtest?
 
@@ -93,11 +93,11 @@ De twee voorwaarden kunnen door elkaar worden gebruikt. 'Beschikbaarheidstest' i
    Er zijn twee mogelijke oplossingen:
 
    * Configureer uw firewall om binnenkomende aanvragen van de [IP-adressen van onze webtestagents](../../azure-monitor/app/ip-addresses.md) toe te staan.
-   * Schrijf uw eigen code om uw interne server periodiek te testen. Voer de code uit als achtergrondproces op een testserver achter de firewall. De resultaten van het testproces kunnen worden verzonden naar Application Insights door de API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) te gebruiken in het SDK-kernpakket. Hiervoor moet uw testserver uitgaande toegang hebben tot het opname-eindpunt van Application Insights, maar dit is een veel kleiner beveiligingsrisico dan wanneer u binnenkomende aanvragen toestaat. De resultaten worden weer gegeven op de Blades voor beschik baarheids webtests, maar de ervaring is enigszins vereenvoudigd, wat beschikbaar is voor testen die zijn gemaakt via de portal. Aangepaste beschikbaarheids tests worden ook weer gegeven als beschikbaarheids resultaten in analyses, zoek acties en metrische gegevens.
+   * Schrijf uw eigen code om uw interne server periodiek te testen. Voer de code uit als achtergrondproces op een testserver achter de firewall. De resultaten van het testproces kunnen worden verzonden naar Application Insights door de API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) te gebruiken in het SDK-kernpakket. Hiervoor moet uw testserver uitgaande toegang hebben tot het opname-eindpunt van Application Insights, maar dit is een veel kleiner beveiligingsrisico dan wanneer u binnenkomende aanvragen toestaat. De resultaten zullen verschijnen in de beschikbaarheid web tests bladen hoewel de ervaring zal iets worden vereenvoudigd van wat beschikbaar is voor tests gemaakt via het portaal. Aangepaste beschikbaarheidstests worden ook weergegeven als beschikbaarheidsresultaten in Analytics, Search en Metrics.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Het uploaden van een webtest met meerdere stappen mislukt
 
-Dit kan een van de volgende oorzaken hebben:
+Enkele redenen waarom dit zou kunnen gebeuren:
    * Er is een limiet van 300 K.
    * Lussen worden niet ondersteund.
    * Verwijzingen naar andere webtests worden niet ondersteund.
@@ -105,28 +105,28 @@ Dit kan een van de volgende oorzaken hebben:
 
 ### <a name="my-multi-step-test-doesnt-complete"></a>Mijn test met meerdere stappen wordt niet voltooid
 
-Er is een limiet van 100 aanvragen per test. De test wordt ook gestopt als deze langer dan twee minuten wordt uitgevoerd.
+Er is een limiet van 100 aanvragen per test. Ook wordt de test gestopt als deze langer dan twee minuten duurt.
 
 ### <a name="how-can-i-run-a-test-with-client-certificates"></a>Hoe voer ik een test uit met clientcertificaten?
 
 Dit wordt momenteel niet ondersteund.
 
-## <a name="who-receives-the-classic-alert-notifications"></a>Wie ontvangt de (klassieke) waarschuwings meldingen?
+## <a name="who-receives-the-classic-alert-notifications"></a>Wie ontvangt de (klassieke) waarschuwingsmeldingen?
 
-Deze sectie is alleen van toepassing op klassieke waarschuwingen en helpt u bij het optimaliseren van uw waarschuwings meldingen om ervoor te zorgen dat alleen de gewenste ontvangers meldingen ontvangen. Raadpleeg het [overzichts artikel over waarschuwingen](../platform/alerts-overview.md)voor meer informatie over het verschil tussen [klassieke waarschuwingen](../platform/alerts-classic.overview.md)en de nieuwe waarschuwingen. Voor het beheren van waarschuwings meldingen in de nieuwe waarschuwings ervaring gebruikt u [actie groepen](../platform/action-groups.md).
+Deze sectie is alleen van toepassing op klassieke waarschuwingen en helpt u uw waarschuwingsmeldingen te optimaliseren om ervoor te zorgen dat alleen uw gewenste ontvangers meldingen ontvangen. Voor meer informatie over het verschil tussen [klassieke waarschuwingen](../platform/alerts-classic.overview.md)en de nieuwe waarschuwingen ervaring verwijzen naar de [waarschuwingen overzicht artikel](../platform/alerts-overview.md). Als u de meldingsmelding in de nieuwe waarschuwingen wilt beheren, gebruikt u [actiegroepen](../platform/action-groups.md).
 
-* We raden u aan specifieke ontvangers te gebruiken voor klassieke waarschuwings meldingen.
+* We raden het gebruik van specifieke ontvangers aan voor klassieke waarschuwingsmeldingen.
 
-* Voor waarschuwingen over storingen van de X-Y-locaties wordt de optie voor het selectie vakje voor **bulk/groep** , indien ingeschakeld, verzonden naar gebruikers met rollen beheerder/mede beheerder.  In wezen worden _alle_ beheerders van het _abonnement_ meldingen ontvangen.
+* Voor waarschuwingen over storingen van X uit Y-locaties wordt de optie **bulk/groep,** indien ingeschakeld, naar gebruikers met beheerders-/co-beheerdersrollen verzendt.  In wezen ontvangen _alle_ beheerders van het _abonnement_ meldingen.
 
-* Voor waarschuwingen over de metrische gegevens over de beschik baarheid wordt de optie voor **bulk/groep** -selectie in-of uitgeschakeld, verzonden naar gebruikers met de rollen eigenaar, bijdrager of lezer in het abonnement. In feite hebben _alle_ gebruikers met toegang tot het abonnement de Application Insights-resource binnen bereik en ontvangen ze meldingen. 
+* Voor waarschuwingen over beschikbaarheidsstatistieken wordt de optie **bulk/groep** ingeschakeld als deze is ingeschakeld, wordt u naar gebruikers met eigenaar, bijdrager of lezer in het abonnement verzendt. In feite zijn _alle_ gebruikers met toegang tot het abonnement de Application Insights-bron in het bereik en ontvangen ze meldingen. 
 
 > [!NOTE]
-> Als u momenteel de optie voor het selectie vakje **massaal/groep** gebruikt en deze functie uitschakelt, kunt u de wijziging niet meer ongedaan maken.
+> Als u momenteel de optie **bulk/groep** gebruikt en uitschakelt, u de wijziging niet terugdraaien.
 
-Gebruik de nieuwe waarschuwings ervaring/bijna realtime waarschuwingen als u gebruikers op basis van hun rollen wilt waarschuwen. Met [actie groepen](../platform/action-groups.md)kunt u e-mail meldingen configureren voor gebruikers met een van de rollen Inzender/eigenaar/lezer (niet gecombineerd als één optie).
+Gebruik de nieuwe waarschuwingservaring/bijna realtime waarschuwingen als u gebruikers op de hoogte moet stellen op basis van hun rollen. Met [actiegroepen](../platform/action-groups.md)u e-mailmeldingen configureren aan gebruikers met een van de rollen tussen de inzender/eigenaar/lezer (niet gecombineerd als één optie).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Webtest met meerdere stappen](availability-multistep.md)
-* [URL-ping-tests](monitor-web-app-availability.md)
+* [Webtesten in meerdere stappen](availability-multistep.md)
+* [URL-pingtests](monitor-web-app-availability.md)

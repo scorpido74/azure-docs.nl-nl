@@ -1,6 +1,6 @@
 ---
-title: Web Application firewall-gegevens verbinden met Azure Sentinel
-description: Meer informatie over het verbinden van micro soft Web Application Firewall-gegevens met Azure Sentinel.
+title: Firewallgegevens voor webtoepassingen verbinden met Azure Sentinel
+description: Meer informatie over het verbinden van firewallgegevens van Microsoft-webtoepassingen met Azure Sentinel.
 author: yelevin
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
@@ -10,39 +10,39 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: a5cef16694fa2cfae036152d22cfa4473956fc72
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588175"
 ---
-# <a name="connect-data-from-microsoft-web-application-firewall"></a>Verbinding maken met gegevens van micro soft Web Application Firewall
+# <a name="connect-data-from-microsoft-web-application-firewall"></a>Gegevens van microsoft-webtoepassingsfirewall verbinden
 
 
 
-U kunt Logboeken streamen vanuit de micro soft Web Application Firewall van de Azure-toepassing-gateway (WAF). Met deze WAF worden uw toepassingen beschermd tegen veelvoorkomende beveiligings problemen, zoals SQL-injectie en cross-site scripting, en kunt u regels aanpassen om fout-positieven te verminderen. Volg deze instructies voor het streamen van uw micro soft Web Application firewall-logboeken naar Azure Sentinel.
+U logboeken streamen vanaf de Microsoft-firewall (Microsoft Web Application Firewall) van de Azure Application Gateway. Deze WAF beschermt uw toepassingen tegen veelvoorkomende webkwetsbaarheden zoals SQL-injectie en cross-site scripting, en stelt u in staat regels aan te passen om fout-positieven te verminderen. Volg deze instructies om uw Firewall van Microsoft Web-toepassingen te streamen naar Azure Sentinel.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een bestaande toepassings gateway resource
+- Een bestaande gatewaybron voor toepassingen
 
-## <a name="connect-to-microsoft-web-application-firewall"></a>Verbinding maken met micro soft Web Application Firewall
+## <a name="connect-to-microsoft-web-application-firewall"></a>Verbinding maken met microsoft-webtoepassingsfirewall
 
-Als u al micro soft Web Application Firewall hebt, zorg er dan voor dat u een bestaande gateway resource hebt.
-Zodra uw micro soft-Web Application Firewall is geïmplementeerd en gegevens heeft opgehaald, kunnen de waarschuwings gegevens eenvoudig worden gestreamd naar Azure Sentinel.
+Als u al een firewall voor Microsoft-webtoepassingen hebt, controleert u of u een bestaande gatewaybron hebt.
+Zodra uw Firewall voor Microsoft-webtoepassingen is geïmplementeerd en gegevens worden opgehaald, kunnen de waarschuwingsgegevens eenvoudig worden gestreamd naar Azure Sentinel.
     
-1. Selecteer in de Azure-Sentinel-Portal de optie **Data connectors**.
-1. Selecteer op de pagina Data connectors de tegel **WAF** .
-1. Ga naar [Application Gateway resource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) en kies uw WAF.
+1. Selecteer **gegevensconnectors**in de Azure Sentinel-portal .
+1. Selecteer op de pagina Gegevensconnectors de **Tegel WAF.**
+1. Ga naar [Application Gateway-bron](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) en kies uw WAF.
     1. Selecteer **Diagnostische instellingen**.
     1. Selecteer **+ Diagnostische instelling toevoegen** onder de tabel.
-    1. Typ op de pagina **Diagnostische instellingen** een **naam** en selecteer **verzenden naar log Analytics**.
-    1. Selecteer onder **log Analytics werk ruimte** de Azure Sentinel-werk ruimte.
-    1. Selecteer de logboek typen die u wilt analyseren. We raden het volgende aan: ApplicationGatewayAccessLog en ApplicationGatewayFirewallLog.
-1. Als u het relevante schema in Log Analytics voor de micro soft Web Application Firewall-waarschuwingen wilt gebruiken, zoekt u naar **AzureDiagnostics**.
+    1. Typ **op** de pagina Diagnostische instellingen een **naam** en selecteer **Verzenden naar logboekanalyse**.
+    1. Selecteer **onder Log Analytics Workspace** de Azure Sentinel-werkruimte.
+    1. Selecteer de logboektypen die u wilt analyseren. Wij raden u aan: ApplicationGatewayAccessLog en ApplicationGatewayFirewallLog.
+1. Als u het relevante schema wilt gebruiken in Log Analytics voor de firewallwaarschuwingen van Microsoft-webtoepassingen, zoekt u naar **AzureDiagnostics**.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit document hebt u geleerd hoe u micro soft Web Application Firewall verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
-- Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+In dit document hebt u geleerd hoe u de firewall van Microsoft-webtoepassingen verbinden met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
+- Meer informatie over hoe u [inzicht krijgt in uw gegevens en potentiële bedreigingen.](quickstart-get-visibility.md)
+- Aan de slag met [het detecteren van bedreigingen met Azure Sentinel.](tutorial-detect-threats-built-in.md)

@@ -6,66 +6,66 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367071"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Foutafhandeling in grafische Azure Automation-runbooks
 
-Een belang rijk aandachtspunt voor uw Azure Automation grafische runbook is de identificatie van problemen die het runbook kan ondervinden tijdens de uitvoering. Deze problemen kunnen geslaagde pogingen, verwachte foutstatussen en onverwachte foutvoorwaarden zijn.
+Een belangrijk ontwerpprincipe waarmee rekening moet worden gehouden voor uw grafische runbook azure automation is de identificatie van problemen die het runbook kan ondervinden tijdens de uitvoering. Deze problemen kunnen geslaagde pogingen, verwachte foutstatussen en onverwachte foutvoorwaarden zijn.
 
-Als er sprake is van een niet-afsluit fout die optreedt bij een runbook-activiteit, wordt de activiteit vaak door Windows Power shell verwerkt door de volgende activiteit te verwerken, ongeacht de fout. De fout genereert waarschijnlijk een uitzondering, maar de volgende activiteit mag wel worden uitgevoerd.
+Als er vaak een niet-beëindigende fout optreedt bij een runbook-activiteit, verwerkt Windows PowerShell de activiteit door alle activiteiten te verwerken die volgen, ongeacht de fout. De fout genereert waarschijnlijk een uitzondering, maar de volgende activiteit mag wel worden uitgevoerd.
 
-Uw grafische runbook moet fout verwerkings code bevatten om te kunnen omgaan met uitvoerings problemen. Als u de uitvoer van een activiteit wilt valideren of een fout wilt verwerken, kunt u een Power shell-code activiteit gebruiken, voorwaardelijke logica definiëren op de uitvoer koppeling van de activiteit of een andere methode Toep assen.
+Uw grafische runbook moet foutafhandelingscode bevatten om uitvoeringsproblemen op te lossen. Als u de uitvoer van een activiteit wilt valideren of een fout wilt verwerken, u een PowerShell-codeactiviteit gebruiken, voorwaardelijke logica definiëren op de uitvoerkoppeling van de activiteit of een andere methode toepassen.
 
-Azure Automation grafische runbooks zijn verbeterd met de mogelijkheid om fout afhandeling te bieden. U kunt nu van uitzonderingen niet-afsluitfouten maken en foutkoppelingen tussen activiteiten maken. Dankzij het verbeterde proces kan uw runbook fouten opvangen en gerealiseerde of onverwachte voor waarden beheren. 
+Grafische Azure Automation-runbooks zijn verbeterd en bieden nu de mogelijkheid om foutafhandeling op te nemen. U kunt nu van uitzonderingen niet-afsluitfouten maken en foutkoppelingen tussen activiteiten maken. Het verbeterde proces stelt uw runbook in staat om fouten op te vangen en gerealiseerde of onverwachte omstandigheden te beheren. 
 
 >[!NOTE]
->Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor de installatie-instructies voor AZ module op uw Hybrid Runbook Worker. Voor uw Automation-account kunt u uw modules bijwerken naar de nieuwste versie met behulp van [het bijwerken van Azure PowerShell-modules in azure Automation](automation-update-azure-modules.md).
+>Dit artikel is bijgewerkt voor het gebruik van de nieuwe Azure PowerShell Az-module. De AzureRM-module kan nog worden gebruikt en krijgt bugoplossingen tot ten minste december 2020. Zie voor meer informatie over de nieuwe Az-module en compatibiliteit met AzureRM [Introductie van de nieuwe Az-module van Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Zie [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)voor installatie-instructies voor az-modules op uw hybride runbookworker. Voor uw Automatiseringsaccount u uw modules bijwerken naar de nieuwste versie met [Azure PowerShell-modules bijwerken in Azure Automation.](automation-update-azure-modules.md)
 
-## <a name="powershell-error-types"></a>Power Shell-fout typen
+## <a name="powershell-error-types"></a>PowerShell-fouttypen
 
-De typen Power shell-fouten die zich kunnen voordoen tijdens het uitvoeren van een runbook, zijn afsluit fouten en niet-afsluit fouten.
+De typen PowerShell-fouten die kunnen optreden tijdens de uitvoering van het runbook, zijn beëindigingsfouten en niet-beëindigende fouten.
  
-### <a name="terminating-error"></a>Fout bij beëindigen
+### <a name="terminating-error"></a>Beëindigingsfout
 
-Een afsluit fout is een ernstige fout tijdens de uitvoering, waardoor de uitvoering van een opdracht of script volledig wordt gestopt. Voor beelden zijn niet-bestaande cmdlets, syntaxis fouten waardoor een cmdlet niet kan worden uitgevoerd en andere fatale fouten.
+Een beëindigingsfout is een ernstige fout tijdens de uitvoering die een opdracht- of scriptuitvoering volledig stopt. Voorbeelden hiervan zijn niet-bestaande cmdlets, syntaxisfouten die voorkomen dat een cmdlet wordt uitgevoerd en andere fatale fouten.
 
-### <a name="non-terminating-error"></a>Niet-afsluit fout
+### <a name="non-terminating-error"></a>Niet-beëindigingsfout
 
-Een niet-afsluit fout is een niet-ernstige fout waardoor de uitvoering ondanks de fout situatie kan worden voortgezet. Voor beelden zijn onder andere operationele fouten, zoals het bestand niet gevonden fouten en machtigingen.
+Een niet-beëindigende fout is een niet-ernstige fout die het mogelijk maakt de uitvoering door te zetten ondanks de foutvoorwaarde. Voorbeelden hiervan zijn operationele fouten, zoals bestand niet gevonden fouten en machtigingen problemen.
 
 ## <a name="when-to-use-error-handling"></a>Wanneer foutafhandeling gebruiken
 
-Gebruik fout afhandeling in uw runbook wanneer een kritieke activiteit een fout of uitzonde ring genereert. Het is belang rijk om te voor komen dat de volgende activiteit in het runbook wordt verwerkt en om de fout op de juiste wijze af te handelen. Het afhandelen van de fout is met name van belang wanneer uw runbooks ondersteuning bieden voor een bedrijfs-of service proces.
+Gebruik foutafhandeling in uw runbook wanneer een kritieke activiteit een fout of uitzondering genereert. Het is belangrijk om te voorkomen dat de volgende activiteit in het runbook wordt verwerkt en dat de fout op de juiste manier wordt verwerkt. Het afhandelen van de fout is vooral essentieel wanneer uw runbooks een bedrijfs- of servicebewerkingsproces ondersteunen.
 
-Voor elke activiteit die een fout kan veroorzaken, kunt u een fout koppeling toevoegen die verwijst naar een andere activiteit. De doel activiteit kan elk type zijn, inclusief code activiteit, aanroep van een cmdlet, aanroep van een ander runbook, enzovoort. De doel activiteit kan ook uitgaande koppelingen hebben, hetzij normale als koppelingen naar fouten. Met de koppelingen kan het runbook complexe logica voor fout afhandeling implementeren zonder dat hiervoor een code activiteit wordt toegepast.
+Voor elke activiteit die een fout kan veroorzaken, u een foutkoppeling toevoegen die naar een andere activiteit wijst. De bestemmingsactiviteit kan van elk type zijn, inclusief codeactiviteit, aanroepen van een cmdlet, aanroepen van een ander runbook, enzovoort. De bestemmingsactiviteit kan ook uitgaande koppelingen hebben, gewone of foutkoppelingen. Met de koppelingen kan het runbook complexe logica voor foutafhandeling implementeren zonder gebruik te maken van een codeactiviteit.
 
-De aanbevolen procedure is het maken van een specifiek runbook voor fout afhandeling met algemene functionaliteit, maar deze procedure is niet verplicht. Denk bijvoorbeeld aan een runbook dat probeert een virtuele machine te starten en een toepassing erop te installeren. Als de virtuele machine niet correct wordt gestart, geldt het volgende:
+De aanbevolen praktijk is het maken van een speciale foutafhandelingsrunbook met algemene functionaliteit, maar deze praktijk is niet verplicht. Denk bijvoorbeeld aan een runbook dat een virtuele machine probeert te starten en er een toepassing op installeert. Als de VM niet correct wordt gestart, gaat het als het gaat om de
 
-1. Hiermee wordt een melding over dit probleem verzonden.
-2. Start een ander runbook dat in plaats daarvan automatisch een nieuwe VM inricht.
+1. Hiermee stuurt u een melding over dit probleem.
+2. Hiermee start u een ander runbook dat automatisch een nieuwe virtuele machine indient.
 
-Eén oplossing is het maken van een fout koppeling in het runbook dat verwijst naar een activiteit die stap één afhandelt. Het runbook kan bijvoorbeeld de `Write-Warning` cmdlet koppelen aan een activiteit voor stap twee, zoals de cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) .
+Een oplossing is om een foutkoppeling in het runbook te hebben die wijst op een activiteit die stap één verwerkt. Het runbook kan de `Write-Warning` cmdlet bijvoorbeeld verbinden met een activiteit voor stap twee, zoals de cmdlet [Start-AzAutomationRunbook.](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0)
 
-U kunt dit gedrag ook generaliseren voor gebruik in veel runbooks door deze twee activiteiten in een afzonderlijke runbook voor fout afhandeling te plaatsen. Voordat uw oorspronkelijke runbook het runbook voor fout afhandeling aanroept, kan het een aangepast bericht maken op basis van de gegevens en het vervolgens door geven als een para meter voor het runbook voor fout afhandeling.
+U dit gedrag ook generaliseren voor gebruik in veel runbooks door deze twee activiteiten in een afzonderlijke runbook voor foutafhandeling te plaatsen. Voordat uw oorspronkelijke runbook deze foutafhandelingsrunbook aanroept, kan het een aangepast bericht uit de gegevens construeren en het vervolgens als parameter doorgeven aan de runbook voor foutafhandeling.
 
 ## <a name="how-to-use-error-handling"></a>Hoe foutafhandeling te gebruiken
 
-Elke activiteit in het runbook heeft een configuratie-instelling waarmee uitzonde ringen in niet-afsluit fouten worden uitgeschakeld. Deze instelling is standaard uitgeschakeld. U wordt aangeraden deze instelling in te scha kelen voor elke activiteit waarbij uw runbook fouten verwerkt. Deze instelling zorgt ervoor dat het runbook zowel afsluit-als niet-afsluit fouten in de activiteit verwerkt als niet-afsluit fouten, met behulp van een fout koppeling.  
+Elke activiteit in uw runbook heeft een configuratie-instelling die uitzonderingen omtoontin niet-beëindigende fouten. Deze instelling is standaard uitgeschakeld. We raden u aan deze instelling in te schakelen voor elke activiteit waarbij uw runbook fouten verwerkt. Deze instelling zorgt ervoor dat het runbook zowel beëindigings- als niet-beëindigingsfouten in de activiteit verwerkt als niet-beëindigende fouten, met behulp van een foutkoppeling.  
 
-Nadat u de configuratie-instelling hebt ingeschakeld, moet u in uw runbook een activiteit maken waarmee de fout wordt afgehandeld. Als de activiteit een fout veroorzaakt, worden de uitgaande fout koppelingen gevolgd. De gewone koppelingen worden niet gevolgd, zelfs niet als de activiteit ook regel matig uitvoer produceert.<br><br> ![Voorbeeld van foutkoppeling voor Automation-runbook](media/automation-runbook-graphical-error-handling/error-link-example.png)
+Nadat u de configuratie-instelling hebt ingemaakt, maakt u een activiteit die de fout verwerkt. Als de activiteit een fout oplevert, worden de uitgaande foutkoppelingen gevolgd. De reguliere links worden niet gevolgd, zelfs als de activiteit ook regelmatig output oplevert.<br><br> ![Voorbeeld van foutkoppeling voor Automation-runbook](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
-In het volgende voor beeld wordt met een runbook een variabele opgehaald die de computer naam van een virtuele machine bevat. Vervolgens wordt geprobeerd de virtuele machine te starten met de volgende activiteit.<br><br> ![Voor beeld van fout afhandeling in Automation-runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
+In het volgende voorbeeld haalt een runbook een variabele op die de computernaam van een vm bevat. Vervolgens wordt geprobeerd om de VM te starten met de volgende activiteit.<br><br> ![Voorbeeld van het uitvoeren van runbook-foutafhandeling voor automatisering](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-De `Get-AutomationVariable`-activiteit en de cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) zijn geconfigureerd om uitzonde ringen te converteren naar fouten. Als er problemen zijn bij het ophalen van de variabele of het starten van de virtuele machine, genereert de code fouten.<br><br> instellingen voor het verwerken van de activiteit voor fout afhandeling van ![Automation-runbook](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png).
+De `Get-AutomationVariable` activiteit en de [Cmdlet Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) zijn geconfigureerd om uitzonderingen om te zetten in fouten. Als er problemen zijn met het verkrijgen van de variabele of het starten van de VM, genereert de code fouten.<br><br> ![Activiteitsinstellingen](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)voor foutafhandeling van de automatiseringsrunboek .
 
-Fout koppelingen stromen van deze activiteiten naar een enkele `error management` code-activiteit. Deze activiteit is geconfigureerd met een eenvoudige Power shell-expressie die gebruikmaakt van het sleutel woord `throw` om de verwerking te stoppen, samen met `$Error.Exception.Message` om het bericht op te halen waarin de huidige uitzonde ring wordt beschreven.<br><br> code voorbeeld voor fout afhandeling van ![Automation-runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Foutkoppelingen vloeien van deze `error management` activiteiten over naar één codeactiviteit. Deze activiteit is geconfigureerd met een eenvoudige `throw` PowerShell-expressie die `$Error.Exception.Message` het trefwoord gebruikt om de verwerking te stoppen, samen met het bericht dat de huidige uitzondering beschrijft.<br><br> ![Voorbeeld van het uitvoeren van runbook-foutverwerkingscode voor automatisering](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Grafisch ontwerpen in Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow) voor meer informatie over koppelingen en koppelingstypen in grafische runbooks.
 
-* Zie [runbook-uitvoering in azure Automation](automation-runbook-execution.md)voor meer informatie over het uitvoeren van een runbook, het bewaken van runbook-taken en andere technische details.
+* Zie [Runbook-uitvoering in Azure Automation](automation-runbook-execution.md)voor meer informatie over runbook-uitvoering, het bewaken van runbook-taken en andere technische details.

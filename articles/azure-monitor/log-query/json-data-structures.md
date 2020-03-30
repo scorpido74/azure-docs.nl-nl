@@ -1,35 +1,35 @@
 ---
-title: Werken met teken reeksen in Azure Monitor-logboek query's | Microsoft Docs
-description: In dit artikel vindt u een zelf studie voor het gebruik van Azure Monitor Log Analytics in de Azure Portal voor het opvragen en analyseren van logboek gegevens in Azure Monitor.
+title: Werken met tekenreeksen in Azure Monitor-logboekquery's | Microsoft Documenten
+description: In dit artikel vindt u een zelfstudie voor het gebruik van Azure Monitor Log Analytics in de Azure-portal voor het opvragen en analyseren van logboekgegevens in Azure Monitor.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 8be4f318149590ff08b73fda719e99a17220ec2e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670148"
 ---
-# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Werken met JSON en gegevens structuren in Azure Monitor-logboek query's
+# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Werken met JSON- en gegevensstructuren in azure monitor-logboekquery's
 
 > [!NOTE]
-> U moet aan de [slag met Azure Monitor Log Analytics om](get-started-portal.md) aan de slag te gaan [met Azure monitor logboek query's](get-started-queries.md) voordat u deze les voltooit.
+> U moet aan [de slag gaan met Azure Monitor Log Analytics](get-started-portal.md) en Aan de slag met Azure [Monitor-logboekquery's](get-started-queries.md) voordat u deze les voltooit.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Geneste objecten zijn objecten die andere objecten bevatten in een matrix of een kaart van sleutel-waardeparen. Deze objecten worden weer gegeven als JSON-teken reeksen. In dit artikel wordt beschreven hoe JSON wordt gebruikt om gegevens op te halen en geneste objecten te analyseren.
+Geneste objecten zijn objecten die andere objecten in een array of een kaart van sleutelwaardeparen bevatten. Deze objecten worden weergegeven als JSON-tekenreeksen. In dit artikel wordt beschreven hoe JSON wordt gebruikt om gegevens op te halen en geneste objecten te analyseren.
 
-## <a name="working-with-json-strings"></a>Werken met JSON-teken reeksen
-Gebruik `extractjson` om toegang te krijgen tot een specifiek JSON-element in een bekend pad. Voor deze functie is een padexpressie vereist die gebruikmaakt van de volgende conventies.
+## <a name="working-with-json-strings"></a>Werken met JSON-snaren
+Gebruiken `extractjson` om toegang te krijgen tot een specifiek JSON-element in een bekend pad. Deze functie vereist een padexpressie die de volgende conventies gebruikt.
 
-- _$_ om te verwijzen naar de hoofdmap
-- Gebruik de vier Kante haak of punt notatie om te verwijzen naar indexen en elementen, zoals aangegeven in de volgende voor beelden.
+- _$_ om naar de hoofdmap te verwijzen
+- Gebruik de beugel of puntnotatie om te verwijzen naar indexen en elementen zoals geïllustreerd in de volgende voorbeelden.
 
 
-Gebruik haakjes voor indexen en punten om elementen van elkaar te scheiden:
+Gebruik haakjes voor indexen en stippen om elementen te scheiden:
 
 ```Kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
@@ -37,7 +37,7 @@ print hosts_report
 | extend status = extractjson("$.hosts[0].status", hosts_report)
 ```
 
-Dit is hetzelfde resultaat als u alleen de vier Kante haken gebruikt:
+Dit is hetzelfde resultaat met alleen de haken notatie:
 
 ```Kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
@@ -45,7 +45,7 @@ print hosts_report
 | extend status = extractjson("$['hosts'][0]['status']", hosts_report)
 ```
 
-Als er slechts één element is, kunt u alleen de punt notatie gebruiken:
+Als er slechts één element is, u alleen de dot notatie gebruiken:
 
 ```Kusto
 let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
@@ -57,7 +57,7 @@ print hosts_report
 ## <a name="working-with-objects"></a>Met objecten werken
 
 ### <a name="parsejson"></a>parsejson
-Om toegang te krijgen tot meerdere elementen in uw JSON-structuur, is het eenvoudiger om deze te openen als een dynamisch object. Gebruik `parsejson` om tekst gegevens naar een dynamisch object te casten. Wanneer de gegevens zijn geconverteerd naar een dynamisch type, kunnen er extra functies worden gebruikt voor het analyseren van de informatie.
+Als u toegang hebt tot meerdere elementen in uw json-structuur, is het eenvoudiger om toegang te krijgen tot het object als een dynamisch object. Tekstgegevens `parsejson` casten naar een dynamisch object. Eenmaal geconverteerd naar een dynamisch type, kunnen extra functies worden gebruikt om de gegevens te analyseren.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -67,8 +67,8 @@ print hosts_object
 
 
 
-### <a name="arraylength"></a>arraylength
-Gebruik `arraylength` om het aantal elementen in een matrix te tellen:
+### <a name="arraylength"></a>arraylengte
+Gebruik `arraylength` om het aantal elementen in een array te tellen:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -77,7 +77,7 @@ print hosts_object
 ```
 
 ### <a name="mvexpand"></a>mvexpand
-Gebruik `mvexpand` om de eigenschappen van een object te splitsen in afzonderlijke rijen.
+Hiermee `mvexpand` u de eigenschappen van een object in afzonderlijke rijen splitsen.
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -87,8 +87,8 @@ print hosts_object
 
 ![mvexpand](media/json-data-structures/mvexpand.png)
 
-### <a name="buildschema"></a>buildschema
-Gebruik `buildschema` om het schema op te halen dat alle waarden van een object toelaten:
+### <a name="buildschema"></a>bouwschema
+Gebruik `buildschema` om het schema op te halen dat alle waarden van een object toelaat:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
@@ -110,9 +110,9 @@ De uitvoer is een schema in JSON-indeling:
     }
 }
 ```
-In deze uitvoer worden de namen van de object velden en de bijbehorende gegevens typen beschreven. 
+Deze uitvoer beschrijft de namen van de objectvelden en de overeenkomende gegevenstypen. 
 
-Geneste objecten kunnen verschillende schema's hebben, zoals in het volgende voor beeld:
+Geneste objecten kunnen verschillende schema's hebben, zoals in het volgende voorbeeld:
 
 ```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"status":"stopped", "rate":"3", "range":100}]}');
@@ -121,15 +121,15 @@ print hosts_object
 ```
 
 
-![Schema maken](media/json-data-structures/buildschema.png)
+![Schema samenstellen](media/json-data-structures/buildschema.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie andere lessen voor het gebruik van logboek query's in Azure Monitor:
+Bekijk andere lessen voor het gebruik van logboekquery's in Azure Monitor:
 
-- [Teken reeks bewerkingen](string-operations.md)
-- [Datum-en tijd bewerkingen](datetime-operations.md)
-- [Aggregatie functies](aggregations.md)
+- [Tekenreeksbewerkingen](string-operations.md)
+- [Datum- en tijdbewerkingen](datetime-operations.md)
+- [Aggregatiefuncties](aggregations.md)
 - [Geavanceerde aggregaties](advanced-aggregations.md)
 - [Geavanceerde query's schrijven](advanced-query-writing.md)
 - [Joins](joins.md)
-- [Diagrammen](charts.md)
+- [Grafieken](charts.md)

@@ -1,6 +1,6 @@
 ---
-title: Tekst parameters van Azure Monitor werkmappen
-description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters. Meer informatie over para meters voor werkmap tekst.
+title: Tekstparameters voor Azure Monitor-werkmappen
+description: Vereenvoudig complexe rapportage met vooraf gebouwde en aangepaste geparameteriseerde werkmappen. Meer informatie over de parameters van werkmaptekst.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,45 +10,45 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c5fb585d0eb6aeb7866c2ab04b324ee31fe903ca
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658046"
 ---
-# <a name="workbook-text-parameters"></a>Werkmap tekst parameters
+# <a name="workbook-text-parameters"></a>Tekstparameters voor werkmap
 
-TextBox-para meters bieden een eenvoudige manier om tekst invoer van werkmap gebruikers te verzamelen. Ze worden gebruikt wanneer het niet praktisch is om een vervolg keuzelijst te gebruiken voor het verzamelen van de invoer (bijvoorbeeld een wille keurige drempel waarde of algemene filters). Met werkmappen kunnen auteurs de standaard waarde van het tekstvak uit een query ophalen. Zo kunt u interessante scenario's zoals het instellen van de standaard drempel waarde op basis van de P95 van de metriek.
+Tekstvakparameters bieden een eenvoudige manier om tekstinvoer van werkmapgebruikers te verzamelen. Ze worden gebruikt wanneer het niet praktisch is om een drop-down te gebruiken om de invoer te verzamelen (bijvoorbeeld een willekeurige drempel of generieke filters). Met werkmappen kunnen auteurs de standaardwaarde van het tekstvak uit een query halen. Dit maakt interessante scenario's mogelijk, zoals het instellen van de standaarddrempel op basis van de p95 van de statistiek.
 
-Een veelvoorkomend gebruik van tekst vakken is de interne variabelen die worden gebruikt door andere besturings elementen van de werkmap. Dit wordt gedaan door gebruik te maken van een query voor standaard waarden en het besturings element in Lees modus onzichtbaar in te stellen. Een gebruiker kan bijvoorbeeld een drempel waarde uit een formule (geen gebruiker) laten bestaan en vervolgens de drempel waarde in volgende query's gebruiken.
+Een veelgebruikt gebruik van tekstvakken is als interne variabelen die worden gebruikt door andere werkmapbesturingselementen. Dit wordt gedaan door gebruik te maken van een query voor standaardwaarden en het invoerbesturingselement onzichtbaar te maken in de leesmodus. Een gebruiker wil bijvoorbeeld dat een drempelwaarde afkomstig is van een formule (geen gebruiker) en vervolgens de drempelwaarde in volgende query's gebruikt.
 
-## <a name="creating-a-text-parameter"></a>Een tekst parameter maken
-1. Beginnen met een lege werkmap in de bewerkings modus.
-2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
-3. Klik op de knop Blue _para meter toevoegen_ .
-4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam: `SlowRequestThreshold`
-    2. Parameter type: `Text`
-    3. Vereist: `checked`
-    4. Standaard waarde ophalen uit query: `unchecked`
-5. Kies opslaan op de werk balk om de para meter te maken.
+## <a name="creating-a-text-parameter"></a>Een tekstparameter maken
+1. Begin met een lege werkmap in de bewerkingsmodus.
+2. Kies _Parameters toevoegen_ in de koppelingen in de werkmap.
+3. Klik op de blauwe _knop Parameter toevoegen._
+4. Voer in het nieuwe parametervenster dat wordt weergegeven:
+    1. Parameternaam:`SlowRequestThreshold`
+    2. Parametertype:`Text`
+    3. Vereist:`checked`
+    4. Standaardwaarde ophalen uit query:`unchecked`
+5. Kies 'Opslaan' op de werkbalk om de parameter te maken.
 
-    ![Afbeelding van het maken van een tekst parameter](./media/workbooks-text/text-create.png)
+    ![Afbeelding met de aanmaak van een tekstparameter](./media/workbooks-text/text-create.png)
 
-Zo ziet de werkmap eruit als Lees modus.
+Zo ziet de werkmap eruit in de leesmodus.
 
-![Afbeelding waarin een tekst parameter wordt weer gegeven in Lees modus](./media/workbooks-text/text-readmode.png)
+![Afbeelding met een tekstparameter in de leesmodus](./media/workbooks-text/text-readmode.png)
 
-## <a name="referencing-a-text-parameter"></a>Verwijzen naar een tekst parameter
-1. Voeg een besturings element query toe aan de werkmap door de blauwe `Add query` koppeling te selecteren en een Application Insights resource te selecteren.
-2. Voeg in het vak KQL dit fragment toe:
+## <a name="referencing-a-text-parameter"></a>Een tekstparameter verwijzen
+1. Voeg een querybesturingselement toe aan `Add query` de werkmap door de blauwe koppeling te selecteren en selecteer een application insights-bron.
+2. Voeg in het vak KQL het volgtte:
     ```kusto
     requests
     | summarize AllRequests = count(), SlowRequests = countif(duration >= {SlowRequestThreshold}) by name
     | extend SlowRequestPercent = 100.0 * SlowRequests / AllRequests
     | order by SlowRequests desc
     ```
-3. Met de para meter text met de waarde 500, gekoppeld aan het besturings element query, voert u de volgende query effectief uit:
+3. Door de tekstparameter met een waarde van 500 te gebruiken in combinatie met het querybesturingselement voert u de onderstaande query effectief uit:
     ```kusto
     requests
     | summarize AllRequests = count(), SlowRequests = countif(duration >= 500) by name
@@ -57,33 +57,33 @@ Zo ziet de werkmap eruit als Lees modus.
     ```
 4. Query uitvoeren om de resultaten te bekijken
 
-    ![Afbeelding met een tekst parameter waarnaar wordt verwezen in KQL](./media/workbooks-text/text-reference.png)
+    ![Afbeelding met een tekstparameter waarnaar wordt verwezen in KQL](./media/workbooks-text/text-reference.png)
 
 
-## <a name="setting-default-values"></a>Standaard waarden instellen
-1. Beginnen met een lege werkmap in de bewerkings modus.
-2. Kies _para meters toevoegen_ uit de koppelingen in de werkmap.
-3. Klik op de knop Blue _para meter toevoegen_ .
-4. Typ in het deel venster nieuwe para meters dat verschijnt:
-    1. Parameter naam: `SlowRequestThreshold`
-    2. Parameter type: `Text`
-    3. Vereist: `checked`
-    4. Standaard waarde ophalen uit query: `checked`
-5. Voeg in het vak KQL dit fragment toe:
+## <a name="setting-default-values"></a>Standaardwaarden instellen
+1. Begin met een lege werkmap in de bewerkingsmodus.
+2. Kies _Parameters toevoegen_ in de koppelingen in de werkmap.
+3. Klik op de blauwe _knop Parameter toevoegen._
+4. Voer in het nieuwe parametervenster dat wordt weergegeven:
+    1. Parameternaam:`SlowRequestThreshold`
+    2. Parametertype:`Text`
+    3. Vereist:`checked`
+    4. Standaardwaarde ophalen uit query:`checked`
+5. Voeg in het vak KQL het volgtte:
     ```kusto
     requests
     | summarize round(percentile(duration, 95), 2)
     ```
-    Met deze query wordt de standaard waarde van het tekstvak ingesteld op de 95e percentiel duur voor alle aanvragen in de app.
-6. Query uitvoeren om het resultaat te bekijken
-7. Kies opslaan op de werk balk om de para meter te maken.
+    Met deze query wordt de standaardwaarde van het tekstvak ingesteld op de 95e percentielduur voor alle aanvragen in de app.
+6. Query uitvoeren om het resultaat te zien
+7. Kies 'Opslaan' op de werkbalk om de parameter te maken.
 
-    ![Afbeelding met een tekst parameter met de standaard waarde van KQL](./media/workbooks-text/text-default-value.png)
+    ![Afbeelding met een tekstparameter met standaardwaarde van KQL](./media/workbooks-text/text-default-value.png)
 
 > [!NOTE]
-> Hoewel in dit voor beeld Application Insights gegevens worden opgevraagd, kan de benadering worden gebruikt voor elke gegevens bron op basis van het logboek, Log Analytics Azure-resource grafiek, enzovoort.
+> Terwijl in dit voorbeeld toepassingsstatistiekengegevens worden opgevraagd, kan de aanpak worden gebruikt voor elke op logboeken gebaseerde gegevensbron - Log Analytics, Azure Resource Graph, enz.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
-* De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.
+* [Ga aan de slag met](workbooks-visualizations.md) het leren van meer over werkmappen met veel uitgebreide visualisatiesopties.
+* [Beheer](workbooks-access-control.md) en deel de toegang tot uw werkmapbronnen.

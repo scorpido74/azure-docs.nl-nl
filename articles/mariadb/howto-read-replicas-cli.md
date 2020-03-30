@@ -1,123 +1,123 @@
 ---
-title: Lees replica's beheren-Azure CLI, REST API-Azure Database for MariaDB
-description: In dit artikel wordt beschreven hoe u in Azure Database for MariaDB Lees replica's instelt en beheert met behulp van de Azure CLI en REST API.
+title: Lees-replica's beheren - Azure CLI, REST API - Azure Database voor MariaDB
+description: In dit artikel wordt beschreven hoe u leesreplica's in Azure Database voor MariaDB instellen en beheren met behulp van de Azure CLI- en REST-API.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: e9353bb5d472cc8dc798e7e09aed2183e48124ed
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: abf80e98881b73bed53c5a939a79bc8b3a9de2db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765831"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530577"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van de Azure CLI en REST API
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Lees-replica's maken en beheren in Azure Database voor MariaDB met behulp van de Azure CLI- en REST-API
 
-In dit artikel wordt beschreven hoe u in de Azure Database for MariaDB-service Lees replica's maakt en beheert met behulp van de Azure CLI en REST API.
+In dit artikel leert u hoe u leesreplica's maakt en beheert in de Azure Database for MariaDB-service met behulp van de Azure CLI- en REST-API.
 
-## <a name="azure-cli"></a>Azure CLI
-U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
+## <a name="azure-cli"></a>Azure-CLI
+U leesreplica's maken en beheren met de Azure CLI.
 
 ### <a name="prerequisites"></a>Vereisten
 
 - [Installeer Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- Een [Azure database for MariaDB-server](quickstart-create-mariadb-server-database-using-azure-portal.md) die wordt gebruikt als de hoofd server. 
+- Een [Azure-database voor MariaDB-server](quickstart-create-mariadb-server-database-using-azure-portal.md) die wordt gebruikt als hoofdserver. 
 
 > [!IMPORTANT]
-> De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for MariaDB-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de hoofd server zich in een van deze prijs categorieën bevindt.
+> De functie leesreplica is alleen beschikbaar voor Azure Database voor MariaDB-servers in de prijzenlagen Algemeen Doel of Geheugengeoptimaliseerd. Zorg ervoor dat de hoofdserver zich in een van deze prijsniveaus bevindt.
 
-### <a name="create-a-read-replica"></a>Een lees replica maken
+### <a name="create-a-read-replica"></a>Een gelezen replica maken
 
-Een lees replica-server kan worden gemaakt met behulp van de volgende opdracht:
+Er kan een leesreplicaserver worden gemaakt met de volgende opdracht:
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-De opdracht `az mariadb server replica create` vereist de volgende para meters:
+De `az mariadb server replica create` opdracht vereist de volgende parameters:
 
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
-| name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
-| source-server | mydemoserver | De naam of ID van de bestaande hoofd server waaruit moet worden gerepliceerd. |
+| resource-group |  myResourceGroup |  De brongroep waarde replicaserver wordt gemaakt.  |
+| name | mydemoreplicaserver | De naam van de nieuwe replicaserver die is gemaakt. |
+| source-server | mydemoserver | De naam of id van de bestaande hoofdserver om van te repliceren. |
 
-Als u een lees replica wilt maken, gebruikt u de para meter `--location`. 
+Als u een replica voor `--location` het gebied sinterland wilt maken, gebruikt u de parameter. 
 
 > [!NOTE]
-> Replicatie van meerdere regio's is beschikbaar als preview-versie.
+> Replicatie tussen regio's is in preview.
 
-In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
+In het onderstaande VOORBEELD CLI wordt de replica in West-US gemaakt.
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
 
 > [!NOTE]
-> Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
+> Ga voor meer informatie over welke regio's u een replica maken in het [artikel Voor replicaconcepten](concepts-read-replicas.md). 
 
 > [!NOTE]
-> Lees replica's worden gemaakt met dezelfde server configuratie als de Master. De configuratie van de replica server kan worden gewijzigd nadat deze is gemaakt. Het is raadzaam om de configuratie van de replica server te behouden in gelijke of hogere waarden dan de Master om ervoor te zorgen dat de replica kan blijven werken met de Master.
+> Leesreplica's worden gemaakt met dezelfde serverconfiguratie als de stramien. De configuratie van de replicaserver kan worden gewijzigd nadat deze is gemaakt. Het wordt aanbevolen dat de configuratie van de replicaserver op gelijke of grotere waarden wordt gehouden dan de master om ervoor te zorgen dat de replica het model kan bijhouden.
 
-### <a name="list-replicas-for-a-master-server"></a>Replica's voor een hoofd server weer geven
+### <a name="list-replicas-for-a-master-server"></a>Replica's voor een hoofdserver weergeven
 
-Als u alle replica's voor een bepaalde hoofd server wilt weer geven, voert u de volgende opdracht uit: 
+Voer de volgende opdracht uit om alle replica's voor een bepaalde hoofdserver weer te geven: 
 
 ```azurecli-interactive
 az mariadb server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-De opdracht `az mariadb server replica list` vereist de volgende para meters:
+De `az mariadb server replica list` opdracht vereist de volgende parameters:
 
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
-| servernaam | mydemoserver | De naam of ID van de hoofd server. |
+| resource-group |  myResourceGroup |  De brongroep waarde replicaserver wordt gemaakt.  |
+| servernaam | mydemoserver | De naam of id van de hoofdserver. |
 
-### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
+### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replicaserver stoppen
 
 > [!IMPORTANT]
-> Het stoppen van de replicatie naar een server is onomkeerbaar. Zodra de replicatie tussen een hoofd-en replica is gestopt, kan deze niet meer ongedaan worden gemaakt. De replica-server wordt vervolgens een zelfstandige server en ondersteunt nu lezen en schrijven. Deze server kan niet opnieuw in een replica worden gemaakt.
+> Het stoppen van replicatie naar een server is onomkeerbaar. Zodra replicatie is gestopt tussen een stramien en replica, kan deze niet ongedaan worden gemaakt. De replicaserver wordt dan een standalone server en ondersteunt nu zowel lezen als schrijven. Deze server kan niet opnieuw worden omgezet in een replica.
 
-Replicatie naar een lees replica-server kan worden gestopt met de volgende opdracht:
+Replicatie naar een leesreplicaserver kan worden gestopt met de volgende opdracht:
 
 ```azurecli-interactive
 az mariadb server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-De opdracht `az mariadb server replica stop` vereist de volgende para meters:
+De `az mariadb server replica stop` opdracht vereist de volgende parameters:
 
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resource groep waar de replica-server bestaat.  |
-| name | mydemoreplicaserver | De naam van de replica server waarvoor replicatie moet worden gestopt. |
+| resource-group |  myResourceGroup |  De brongroep waarin de replicaserver bestaat.  |
+| name | mydemoreplicaserver | De naam van de replicaserver om de replicatie te stoppen. |
 
-### <a name="delete-a-replica-server"></a>Een replica server verwijderen
+### <a name="delete-a-replica-server"></a>Een replicaserver verwijderen
 
-Het verwijderen van een lees replica-server kan worden uitgevoerd door de opdracht **[AZ mariadb server delete](/cli/azure/mariadb/server)** uit te voeren.
+Het verwijderen van een lees-replicaserver kan worden gedaan door de opdracht **[az mariadb-server verwijderen uit te](/cli/azure/mariadb/server)** voeren.
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoreplicaserver
 ```
 
-### <a name="delete-a-master-server"></a>Een hoofd server verwijderen
+### <a name="delete-a-master-server"></a>Een hoofdserver verwijderen
 
 > [!IMPORTANT]
 > Als u een hoofdserver verwijdert, wordt de replicatie naar alle replicaservers gestopt en wordt de hoofdserver zelf verwijderd. Replicaservers worden zelfstandige servers die nu zowel lees-als schrijfbewerkingen ondersteunen.
 
-Als u een master server wilt verwijderen, kunt u de opdracht **[AZ mariadb server delete](/cli/azure/mariadb/server)** uitvoeren.
+Als u een hoofdserver wilt verwijderen, u de opdracht voor het verwijderen van de **[AZ-mariadb-server uitvoeren.](/cli/azure/mariadb/server)**
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="rest-api"></a>REST-API
-U kunt met behulp van de [Azure rest API](/rest/api/azure/)Lees replica's maken en beheren.
+## <a name="rest-api"></a>REST API
+U leesreplica's maken en beheren met de [Azure REST API.](/rest/api/azure/)
 
-### <a name="create-a-read-replica"></a>Een lees replica maken
-U kunt een lees replica maken met behulp van de [API Create](/rest/api/mariadb/servers/create):
+### <a name="create-a-read-replica"></a>Een gelezen replica maken
+U een leesreplica maken met de [API maken:](/rest/api/mariadb/servers/create)
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{replicaName}?api-version=2017-12-01
@@ -134,27 +134,27 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 > [!NOTE]
-> Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica. 
+> Ga voor meer informatie over welke regio's u een replica maken in het [artikel Voor replicaconcepten](concepts-read-replicas.md). 
 
-Als u de para meter `azure.replication_support` niet hebt ingesteld op **replica** op een master server met algemeen of geoptimaliseerd voor geheugen en u de server opnieuw hebt opgestart, wordt een fout bericht weer gegeven. Voer de volgende twee stappen uit voordat u een replica maakt.
+Als u de `azure.replication_support` parameter niet hebt ingesteld op **REPLICA** op een hoofdserver voor algemeen gebruik of geheugengeoptimaliseerden en de server opnieuw hebt opgestart, ontvangt u een fout. Voer deze twee stappen uit voordat u een replica maakt.
 
-Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instellingen als de hoofd server. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofd server worden gewijzigd: generatie van compute, vCores, opslag en back-up van Bewaar periode. De prijs categorie kan ook onafhankelijk worden gewijzigd, met uitzonde ring van of van de Basic-laag.
+Er wordt een replica gemaakt met dezelfde reken- en opslaginstellingen als het stramien. Nadat een replica is gemaakt, kunnen verschillende instellingen onafhankelijk van de hoofdserver worden gewijzigd: rekengeneratie, vCores, opslag en back-upbewaarperiode. De prijscategorie kan ook onafhankelijk worden gewijzigd, behalve van of naar de basislaag.
 
 
 > [!IMPORTANT]
-> Werk de replica-instelling bij naar een gelijke of grotere waarde voordat een master server-instelling wordt bijgewerkt naar een nieuwe waarde. Met deze actie wordt de replica zo aangepast dat er wijzigingen in de master worden aangebracht.
+> Voordat een hoofdserverinstelling wordt bijgewerkt naar een nieuwe waarde, werkt u de replica-instelling bij naar een evengrote of grotere waarde. Met deze actie kan de replica gelijke tred houden met eventuele wijzigingen in het model.
 
-### <a name="list-replicas"></a>Replica's weer geven
-U kunt de lijst met replica's van een hoofd server weer geven met behulp van de [replica lijst-API](/rest/api/mariadb/replicas/listbyserver):
+### <a name="list-replicas"></a>Replica's weergeven
+U de lijst met replica's van een hoofdserver bekijken met behulp van de [API voor replicalijst:](/rest/api/mariadb/replicas/listbyserver)
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replica server stoppen
-U kunt de replicatie tussen een hoofd server en een lees replica stoppen met de [Update-API](/rest/api/mariadb/servers/update).
+### <a name="stop-replication-to-a-replica-server"></a>Replicatie naar een replicaserver stoppen
+U de replicatie tussen een hoofdserver en een gelezen replica stoppen met behulp van de [update-API.](/rest/api/mariadb/servers/update)
 
-Nadat u de replicatie naar een hoofd server en een lees replica hebt gestopt, kunt u deze niet meer ongedaan maken. De Lees replica wordt een zelfstandige server die zowel lees-als schrijf bewerkingen ondersteunt. De zelfstandige server kan niet opnieuw in een replica worden gemaakt.
+Nadat u de replicatie naar een hoofdserver en een gelezen replica hebt gestopt, kan deze niet ongedaan worden gemaakt. De gelezen replica wordt een standalone server die zowel leest als schrijft ondersteunt. De standalone server kan niet opnieuw worden omgezet in een replica.
 
 ```http
 PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{masterServerName}?api-version=2017-12-01
@@ -168,10 +168,10 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-### <a name="delete-a-master-or-replica-server"></a>Een Master-of replica server verwijderen
-Als u een Master-of replica server wilt verwijderen, gebruikt u de [API verwijderen](/rest/api/mariadb/servers/delete):
+### <a name="delete-a-master-or-replica-server"></a>Een stramien- of replicaserver verwijderen
+Als u een stramien- of replicaserver wilt verwijderen, gebruikt u de [delete-API:](/rest/api/mariadb/servers/delete)
 
-Wanneer u een master-server verwijdert, wordt de replicatie naar alle Lees replica's gestopt. De Lees replica's worden zelfstandige servers die nu zowel lees-als schrijf bewerkingen ondersteunen.
+Wanneer u een hoofdserver verwijdert, wordt replicatie naar alle gelezen replica's gestopt. De gelezen replica's worden standalone servers die nu ondersteuning voor zowel leest en schrijft.
 
 ```http
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}?api-version=2017-12-01
@@ -180,4 +180,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [lezen van replica's](concepts-read-replicas.md)
+- Meer informatie over [gelezen replica's](concepts-read-replicas.md)

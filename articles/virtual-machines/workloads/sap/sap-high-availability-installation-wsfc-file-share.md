@@ -1,6 +1,6 @@
 ---
-title: Installatie van de hoge Beschik baarheid van SAP NetWeaver op een Windows-failovercluster en bestands share voor SAP ASCS/SCS-exemplaren in azure | Microsoft Docs
-description: Installatie van de hoge Beschik baarheid van SAP NetWeaver op een Windows-failovercluster en bestands share voor SAP ASCS/SCS-instanties
+title: INSTALLATIE met hoge beschikbaarheid van SAP NetWeaver op een Windows-failovercluster en bestandsshare voor SAP ASCS/SCS-exemplaren op Azure | Microsoft Documenten
+description: INSTALLATIE met hoge beschikbaarheid van SAP NetWeaver op een Windows-failovercluster en bestandsshare voor SAP ASCS/SCS-exemplaren
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -17,13 +17,13 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617334"
 ---
-# <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Een hoge Beschik baarheid van SAP NetWeaver installeren op een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-exemplaren in azure
+# <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver-hoge beschikbaarheid installeren op een Windows-failovercluster en bestandsshare voor SAP ASCS/SCS-exemplaren op Azure
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -89,7 +89,7 @@ ms.locfileid: "77617334"
 
 [sap-official-ha-file-share-document]:https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Multi-SID-configuratie met hoge Beschik baarheid van SAP)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID configuratie met hoge beschikbaarheid)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -197,55 +197,55 @@ ms.locfileid: "77617334"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-In dit artikel wordt beschreven hoe u een SAP-systeem met hoge Beschik baarheid installeert en configureert op Azure met behulp van WSFC (Windows Server failover cluster) en Scale-out bestandsserver als optie voor het clusteren van SAP ASCS/SCS-instanties.
+In dit artikel wordt beschreven hoe u een SAP-systeem met hoge beschikbaarheid op Azure installeert en configureert, met WSFC (Windows Server Failover Cluster) en Scale-Out File Server als optie voor het clusteren van SAP ASCS/SCS-exemplaren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Lees de volgende artikelen voordat u de installatie start:
+Voordat u de installatie start, controleert u de volgende artikelen:
 
-* [Architectuur handleiding: een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van de bestands share][sap-high-availability-guide-wsfc-file-share]
+* [Architectuurhandleiding: een SAP ASCS/SCS-exemplaar clusteren op een Windows-failovercluster met bestandsshare][sap-high-availability-guide-wsfc-file-share]
 
-* [Azure Infrastructure SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties][sap-high-availability-infrastructure-wsfc-file-share]
+* [Azure-infrastructuur sap-hoge beschikbaarheid voorbereiden met behulp van een Windows-failovercluster en bestandsshare voor SAP ASCS/SCS-exemplaren][sap-high-availability-infrastructure-wsfc-file-share]
 
-* [Hoge Beschik baarheid voor SAP net-Weaver op Azure-Vm's][high-availability-guide]
+* [Hoge beschikbaarheid voor SAP NetWeaver op Azure VM's][high-availability-guide]
 
-U hebt de volgende uitvoer bare bestanden en Dll's van SAP nodig:
-* SAP software Provisioning Manager (SWPM)-installatie programma versie SPS25 of hoger.
-* SAP kernel 7,49 of hoger
+U hebt de volgende uitvoerbare en DLL's van SAP nodig:
+* SAP Software Provisioning Manager (SWPM) installatietool versie SPS25 of hoger.
+* SAP Kernel 7.49 of hoger
 
 > [!IMPORTANT]
-> Het clusteren van SAP ASCS/SCS-instanties met behulp van een bestands share wordt ondersteund voor SAP NetWeaver 7,40 (en hoger) met SAP kernel 7,49 (en hoger).
+> Het clusteren van SAP ASCS/SCS-exemplaren met behulp van een bestandsshare wordt ondersteund voor SAP NetWeaver 7.40 (en hoger), met SAP Kernel 7.49 (en hoger).
 >
 
 
-De configuratie van het database beheersysteem (DBMS) wordt niet beschreven, omdat de instellingen variëren afhankelijk van het DBMS dat u gebruikt. We gaan echter ervan uit dat hoge Beschik baarheid met betrekking tot het DBMS is gericht op de functionaliteit die verschillende DBMS-leveranciers ondersteunen voor Azure. Deze functies omvatten AlwaysOn of database spiegeling voor SQL Server, en Oracle Data Guard voor Oracle-data bases. In het scenario dat we in dit artikel gebruiken, hebben we niet meer beveiliging aan het DBMS toegevoegd.
+We beschrijven de setup van het Database Management System (DBMS) niet omdat de instellingen variëren afhankelijk van de DBMS die u gebruikt. We gaan er echter van uit dat problemen met hoge beschikbaarheid bij de DBMS worden aangepakt met de functionaliteiten die verschillende DBMS-leveranciers voor Azure ondersteunen. Dergelijke functionaliteiten omvatten AlwaysOn of database mirroring voor SQL Server en Oracle Data Guard voor Oracle-databases. In het scenario dat we in dit artikel gebruiken, hebben we niet meer bescherming toegevoegd aan de DBMS.
 
 Er zijn geen speciale overwegingen wanneer verschillende DBMS-services communiceren met dit soort geclusterde SAP ASCS/SCS-configuratie in Azure.
 
 > [!NOTE]
-> De installatie procedures van SAP NetWeaver ABAP-systemen, Java-systemen en ABAP en Java-systemen zijn bijna identiek. Het belangrijkste verschil is dat een SAP ABAP-systeem één ASCS-exemplaar heeft. Het SAP Java-systeem heeft één SCS-exemplaar. Het SAP ABAP + Java-systeem heeft een ASCS-exemplaar en een SCS-exemplaar dat wordt uitgevoerd in dezelfde micro soft failover cluster-groep. Eventuele verschillen in de installatie van elke SAP NetWeaver-installatie stack worden expliciet genoemd. U kunt ervan uitgaan dat alle andere delen hetzelfde zijn.  
+> De installatieprocedures van SAP NetWeaver ABAP-systemen, Java-systemen en ABAP+Java-systemen zijn vrijwel identiek. Het belangrijkste verschil is dat een SAP ABAP-systeem één ASCS-instantie heeft. Het SAP Java-systeem heeft één SCS-exemplaar. Het SAP ABAP+Java-systeem heeft één ASCS-instantie en één SCS-exemplaar dat wordt uitgevoerd in dezelfde Microsoft-failoverclustergroep. Eventuele installatieverschillen voor elke SAP NetWeaver-installatiestack worden expliciet vermeld. U ervan uitgaan dat alle andere onderdelen hetzelfde zijn.  
 >
 >
 
-## <a name="prepare-an-sap-global-host-on-the-sofs-cluster"></a>Een SAP Global host voorbereiden op het SOFS-cluster
+## <a name="prepare-an-sap-global-host-on-the-sofs-cluster"></a>Een SAP-wereldwijde host voorbereiden op het SOFS-cluster
 
-Maak het volgende volume en deze bestands share op het SOFS-cluster:
+Maak de volgende volume- en bestandsshare op het SOFS-cluster:
 
-* `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\`-structuur van het SAP GLOBALHOST-bestand op SOFS cluster Shared volume (CSV)
+* SAP GLOBALHOST-bestandsstructuur `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` op gedeeld sOFS-clustervolume (CSV)
 
-* SAPMNT-bestands share
+* SAPMNT-bestandsshare
 
-* Stel beveiliging in voor de bestands share SAPMNT en de map met volledig beheer voor:
-    * De \<domein > \ SAP_\<SID > _GlobalAdmin gebruikers groep
-    * De SAP ASCS/SCS-cluster knooppunt computer objecten \<domein > \ClusterNode1 $ en \<domein > \ClusterNode2 $
+* Stel beveiliging in op de SAPMNT-bestandsshare en -map met volledige controle voor:
+    * De \<gebruikersgroep\<DOMAIN>\SAP_ SID>_GlobalAdmin
+    * Het DOMEIN DOMEIN VAN de SAP \<ASCS/SCS-clusterknooppuntcomputerobjecten>\ClusterNode1$ en \<DOMEIN>\ClusterNode2$
 
-Als u een CSV-volume met mirror-tolerantie wilt maken, voert u de volgende Power shell-cmdlet uit op een van de SOFS-cluster knooppunten:
+Als u een CSV-volume met spiegeltolerantie wilt maken, voert u de volgende PowerShell-cmdlet uit op een van de SOFS-clusterknooppunten:
 
 
 ```powershell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR1 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
-Voer het volgende Power shell-script uit op een van de SOFS-cluster knooppunten om SAPMNT te maken en te configureren en beveiliging te delen:
+Als u SAPMNT wilt maken en map en beveiliging wilt delen, voert u het volgende PowerShell-script uit op een van de SOFS-clusterknooppunten:
 
 ```powershell
 # Create SAPMNT on file share
@@ -288,56 +288,56 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
  ```
 
-## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Een virtuele-hostnaam maken voor het geclusterde SAP ASCS/SCS-exemplaar
+## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Een virtuele hostnaam maken voor het geclusterde SAP ASCS/SCS-exemplaar
 
-Maak een SAP ASCS/SCS-cluster netwerk naam (bijvoorbeeld **PR1-ASCS [10.0.6.7]** ), zoals beschreven in [een virtuele hostnaam maken voor het geclusterde SAP ASCS/SCS-exemplaar][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host].
-
-
-## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>Een ASCS-SCS en ERS-instanties in het cluster installeren
-
-### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Een ASCS/SCS-exemplaar installeren op het eerste ASCS/SCS-cluster knooppunt
-
-Installeer een SAP ASCS/SCS-exemplaar op het eerste cluster knooppunt. Als u het exemplaar wilt installeren, gaat u in het SAP SWPM-installatie programma naar:
-
-**\<Product >**  >  **\<DBMS >**  > **installatie** > **toepassings server ABAP** (of **Java**) > **systeem met hoge Beschik baarheid** > **ASCS/SCS-exemplaar** > **eerste cluster knooppunt**.
-
-### <a name="add-a-probe-port"></a>Een test poort toevoegen
-
-Configureer een SAP-cluster bron, de SAP-SID-IP-test poort, met behulp van Power shell. Voer deze configuratie uit op een van de SAP ASCS/SCS-cluster knooppunten, zoals beschreven [in dit artikel][sap-high-availability-installation-wsfc-shared-disk-add-probe-port].
-
-### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>Een ASCS/SCS-exemplaar op het tweede ASCS/SCS-cluster knooppunt installeren
-
-Installeer een SAP ASCS/SCS-exemplaar op het tweede cluster knooppunt. Als u het exemplaar wilt installeren, gaat u in het SAP SWPM-installatie programma naar:
-
-**\<Product >**  >  **\<DBMS >**  > **installatie** > **toepassings server ABAP** (of **Java**) > **systeem met hoge Beschik baarheid** > **ASCS/SCS-exemplaar** > **extra cluster knooppunt**.
+Maak een SAP ASCS/SCS-clusternetwerknaam (bijvoorbeeld **pr1-ascs [10.0.6.7]**), zoals beschreven in [Een virtuele hostnaam maken voor het geclusterde SAP ASCS/SCS-exemplaar][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host].
 
 
-## <a name="update-the-sap-ascsscs-instance-profile"></a>Het SAP ASCS/SCS-exemplaar profiel bijwerken
+## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>Een ASCS/SCS- en ERS-exemplaren in het cluster installeren
 
-Werk de para meters bij in het SAP ASCS/SCS-exemplaar profiel \<SID >_ASCS/SCS\<Nr >_ \<host >.
+### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Een ASCS/SCS-exemplaar installeren op het eerste ASCS/SCS-clusterknooppunt
+
+Installeer een SAP ASCS/SCS-exemplaar op het eerste clusterknooppunt. Ga naar:
+
+**\<Product>**  >  ** \<DBMS>**  >  **Installation** > **Application Server ABAP** (of **Java)**>**Ascs/SCS** >  **instance** > **First clusternode**.
+
+### <a name="add-a-probe-port"></a>Een sondepoort toevoegen
+
+Configureer een SAP-clusterbron, de SAP-SID-IP-sondepoort, met PowerShell. Voer deze configuratie uit op een van de SAP ASCS/SCS-clusterknooppunten, zoals beschreven [in dit artikel.][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]
+
+### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>Een ASCS/SCS-exemplaar installeren op het tweede ASCS/SCS-clusterknooppunt
+
+Installeer een SAP ASCS/SCS-exemplaar op het tweede clusterknooppunt. Ga naar:
+
+**\<Product>**  >  ** \<DBMS>**  >  **Installation** > **Application Server ABAP** (of **Java)**> acs/SCS-exemplaar **High-Availability System** > **ASCS/SCS instance** > **Extra clusterknooppunt .**
+
+
+## <a name="update-the-sap-ascsscs-instance-profile"></a>Het SAP ASCS/SCS-instantieprofiel bijwerken
+
+Parameters bijwerken in het SAP ASCS/SCS-instantieprofiel \<SID>_ASCS/SCS\<Nr>_ \<Host>.
 
 
 | Parameternaam | Parameterwaarde |
 | --- | --- |
 | gw/netstat_once | **0** |
-| enque/encni/set_so_keepalive  | **echte** |
+| enque/encni/set_so_keepalive  | **Waar** |
 | service/ha_check_node | **1** |
 
-Start het SAP ASCS/SCS-exemplaar opnieuw op. Stel `KeepAlive` para meters in op beide SAP ASCS/SCS-cluster knooppunten Volg de instructies voor [het instellen van Register vermeldingen op de cluster knooppunten van het SAP ASCS/SCS-exemplaar][high-availability-guide]. 
+Start de instantie SAP ASCS/SCS opnieuw. Stel `KeepAlive` parameters in op beide SAP ASCS/SCS-clusterknooppunten volg de instructies voor [Het instellen van registervermeldingen op de clusterknooppunten van de instantie SAP ASCS/SCS.][high-availability-guide] 
 
-## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Een DBMS-exemplaar en SAP-toepassings servers installeren
+## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Een DBMS-instantie en SAP-toepassingsservers installeren
 
-Voltooi de installatie van uw SAP-systeem door het volgende te installeren:
+Rond uw SAP-systeeminstallatie af door het installeren van:
 * Een DBMS-exemplaar.
-* Een primaire SAP-toepassings server.
-* Een extra SAP-toepassings server.
+* Een primaire SAP-toepassingsserver.
+* Een extra SAP-toepassingsserver.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een ASCS/SCS-exemplaar installeren op een failovercluster zonder gedeelde schijven-officiële SAP-richt lijnen voor een bestands share met hoge Beschik baarheid][sap-official-ha-file-share-document]
+* [Een ASCS/SCS-exemplaar installeren op een failovercluster zonder gedeelde schijven - Officiële SAP-richtlijnen voor het delen van bestanden met hoge beschikbaarheid][sap-official-ha-file-share-document]
 
 * [Opslagruimten Direct in Windows Server 2016][s2d-in-win-2016]
 
-* [Overzicht van Scale-out bestandsserver voor toepassings gegevens][sofs-overview]
+* [Overzicht van Scale-Out Bestandsserver voor toepassingsgegevens][sofs-overview]
 
-* [Wat is er nieuw in opslag in Windows Server 2016][new-in-win-2016-storage]
+* [Nieuwe artikelen in opslag in Windows Server 2016][new-in-win-2016-storage]

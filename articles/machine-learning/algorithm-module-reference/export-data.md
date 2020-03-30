@@ -1,7 +1,7 @@
 ---
-title: 'Gegevens exporteren: module verwijzing'
+title: 'Gegevens exporteren: moduleverwijzing'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u de module gegevens exporteren in Azure Machine Learning kunt gebruiken om resultaten, tussenliggende gegevens en werk gegevens van uw pijp lijnen op te slaan in de Cloud opslag buiten Azure Machine Learning.
+description: Lees hoe u de module Gegevens exporteren in Azure Machine Learning gebruikt om resultaten, tussengegevens en werkgegevens uit uw pijplijnen op te slaan in cloudopslagbestemmingen buiten Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,51 +9,51 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 40d8e298237b6110fee04aefbb7b79c5f3bac6f0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 807771fd4018c9666f059c965370ebc36d0105df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598609"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456298"
 ---
-# <a name="export-data-module"></a>Gegevens module exporteren
+# <a name="export-data-module"></a>Module Gegevens exporteren
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module om resultaten, tussenliggende gegevens en werk gegevens van uw pijp lijnen op te slaan in opslag locaties in de Cloud. 
+Gebruik deze module om resultaten, tussenliggende gegevens en werkgegevens van uw pijplijnen op te slaan in cloudopslagbestemmingen. 
 
-Deze module biedt ondersteuning voor het exporteren van uw gegevens naar de volgende Cloud gegevens Services:
+Deze module ondersteunt het exporteren van uw gegevens naar de volgende cloudgegevensservices:
 
 - Azure Blob-container
 - Azure-bestandsshare
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Voordat u uw gegevens exporteert, moet u eerst een gegevens opslag registreren in uw Azure Machine Learning-werk ruimte. Zie [toegang tot gegevens in azure Storage-services](../how-to-access-data.md)voor meer informatie.
+Voordat u uw gegevens exporteert, moet u eerst een gegevensarchief registreren in uw Azure Machine Learning-werkruimte. Zie [Access-gegevens in Azure-opslagservices](../how-to-access-data.md)voor meer informatie.
 
-## <a name="how-to-configure-export-data"></a>Export gegevens configureren
+## <a name="how-to-configure-export-data"></a>Exportgegevens configureren
 
-1. Voeg de module **gegevens exporteren** toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden in de categorie **invoer en uitvoer** .
+1. Voeg de module **Gegevens exporteren** toe aan uw pijplijn in de ontwerper. U deze module vinden in de categorie **Invoer en uitvoer.**
 
-1. Verbind gegevens met het **exporteren** naar de module die de gegevens bevat die u wilt exporteren.
+1. Koppel **Exportgegevens** aan de module die de gegevens bevat die u wilt exporteren.
 
-1. Selecteer **gegevens exporteren** om het deel venster **Eigenschappen** te openen.
+1. Selecteer **Gegevens exporteren** om het deelvenster Eigenschappen **te** openen.
 
-1. Selecteer een bestaande gegevens opslag in de vervolg keuzelijst voor **gegevens opslag**. U kunt ook een nieuw gegevens archief maken. Raadpleeg de informatie [in azure Storage-services om toegang te krijgen tot de gegevens](../how-to-access-data.md).
+1. Selecteer voor **Gegevensarchief**een bestaand gegevensarchief in de vervolgkeuzelijst. U ook een nieuwe datastore maken. Controleer hoe u [access-gegevens in Azure-opslagservices bezoekt.](../how-to-access-data.md)
 
-1. Het selectie vakje, **uitvoer opnieuw genereren**, bepaalt of de module moet worden uitgevoerd om de uitvoer tijdens de uitvoering opnieuw te genereren. 
+1. Het selectievakje **Regenerate output**bepaalt of de module moet worden uitgevoerd om de uitvoer bij het uitvoeren van de looptijd te regenereren. 
 
-    Deze optie is standaard niet geselecteerd, wat betekent dat als de module met dezelfde para meters eerder is uitgevoerd, de uitvoer van de laatste uitvoering opnieuw wordt gebruikt om de uitvoerings tijd te verminderen. 
+    Het is standaard niet geselecteerd, wat betekent dat als de module eerder met dezelfde parameters is uitgevoerd, het systeem de uitvoer van de laatste uitvoering opnieuw gebruikt om de runtime te verkorten. 
 
-    Als deze is geselecteerd, voert het systeem de module opnieuw uit om de uitvoer opnieuw te genereren.
+    Als deze optie is geselecteerd, voert het systeem de module opnieuw uit om de uitvoer te regenereren.
 
-1. Definieer het pad in het gegevens archief waarin de gegevens zich bevinden. Het pad is een relatief pad. De lege paden of URL-paden zijn niet toegestaan.
+1. Definieer het pad in het gegevensarchief waar de gegevens zich bevinden. Het pad is een relatief pad. De lege paden of een URL-paden zijn niet toegestaan.
 
 
-1. Selecteer bij **bestands indeling**de indeling waarin de gegevens moeten worden opgeslagen.
+1. Selecteer **bij Bestandsindeling**de indeling waarin gegevens moeten worden opgeslagen.
  
-1. Voer de pijplijn uit.
+1. Verzend de pijplijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

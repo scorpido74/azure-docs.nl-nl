@@ -1,85 +1,85 @@
 ---
-title: Veelgestelde vragen over Azure dev Spaces
+title: Veelgestelde vragen over Azure Dev Spaces
 services: azure-dev-spaces
 ms.date: 01/28/2020
 ms.topic: conceptual
-description: Antwoorden vinden op enkele veelgestelde vragen over Azure dev Spaces
-keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 7439af9c5f936d309df655ca6fa301c39fa3f9ec
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+description: Antwoorden vinden op enkele van de veelgestelde vragen over Azure Dev Spaces
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s '
+ms.openlocfilehash: e7b4620faa01aa9f6d46c34bafb1c623c338beb7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117798"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240503"
 ---
-# <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Veelgestelde vragen over Azure dev Spaces
+# <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Veelgestelde vragen over Azure Dev Spaces
 
-Dit is een oplossing voor veelgestelde vragen over Azure dev Spaces.
+Hiermee worden veelgestelde vragen over Azure Dev Spaces beantwoord.
 
-## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Welke Azure-regio's bevatten momenteel Azure dev Spaces?
+## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Welke Azure-regio's bieden momenteel Azure Dev Spaces?
 
-Zie [ondersteunde regio's][supported-regions] voor een volledige lijst met beschik bare regio's.
+Zie [ondersteunde regio's][supported-regions] voor een volledige lijst met beschikbare regio's.
 
-## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>Kan ik mijn AKS-cluster migreren met Azure-ontwikkel ruimten naar een andere regio?
+## <a name="can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region"></a>Kan ik mijn AKS-cluster migreren met Azure Dev Spaces naar een andere regio?
 
-Ja, als u uw AKS-cluster met Azure-ontwikkel ruimten wilt verplaatsen naar een andere [ondersteunde regio][supported-regions], raden we u aan om een nieuw cluster in de andere regio te maken en Azure dev Spaces te installeren en te configureren en uw resources en toepassingen te implementeren in uw nieuwe cluster. Zie [Migrate to Azure Kubernetes service (AKS) (Engelstalig)][aks-migration]voor meer informatie over het migreren van AKS.
+Ja, als u uw AKS-cluster wilt verplaatsen met Azure Dev Spaces naar een andere [ondersteunde regio,][supported-regions]raden we u aan een nieuw cluster in de andere regio te maken en azure dev Spaces te installeren en te configureren en uw resources en toepassingen te implementeren in uw nieuwe cluster. Zie Migreren naar Azure Kubernetes [Service (AKS) voor][aks-migration]meer informatie over het migreren van AKS.
 
-## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Kan ik Azure dev Spaces gebruiken met bestaande Dockerfiles-of helm-grafieken?
+## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Kan ik Azure Dev Spaces gebruiken met bestaande Dockerfiles of Helm-diagrammen?
 
-Ja, als uw project al een Dockerfile-of helm-grafiek bevat, kunt u deze bestanden gebruiken met Azure dev Spaces. Wanneer u `azds prep`uitvoert, gebruikt u de para meter `--chart` en geeft u de locatie van de grafiek op. Met Azure dev Spaces wordt nog steeds een bestand *azds. yaml* en *Dockerfile. Developer* gegenereerd, maar wordt geen bestaande Dockerfile of een helm-grafiek vervangen of gewijzigd. Mogelijk moet u de *azds. yaml* -en *Dockerfile.* -bestanden wijzigen om alles goed te laten werken met uw bestaande toepassing wanneer u `azds up`uitvoert.
+Ja, als uw project al een Dockerfile of een Helm-diagram heeft, u deze bestanden gebruiken met Azure Dev Spaces. Wanneer u `azds prep`uitvoert, `--chart` gebruikt u de parameter en geeft u de locatie van de grafiek op. Azure Dev Spaces genereert nog steeds een *bestand azds.yaml* en *Dockerfile.develop,* maar het zal een bestaand Dockerfile of een Helm-diagram niet vervangen of wijzigen. Het kan nodig zijn om de *azds.yaml* en *Dockerfile.develop* bestanden te wijzigen `azds up`om alles correct te laten werken met uw bestaande toepassing bij het uitvoeren van .
 
-Wanneer u uw eigen Dockerfile-of helm-grafiek gebruikt, gelden de volgende beperkingen:
-* Als er slechts één Dockerfile wordt gebruikt, moet dit alles bevatten wat u nodig hebt om ontwikkelings scenario's mogelijk te maken, zoals de taal-SDK, niet alleen de runtime. Als u gebruikmaakt van een afzonderlijke Dockerfile voor Azure-ontwikkel ruimten, zoals een Dockerfile. ontwikkelen, moet alles wat u nodig hebt om ontwikkel scenario's in te scha kelen, in die Dockerfile zijn opgenomen.
-* Uw helm-grafiek moet ondersteuning bieden voor het door geven van een deel van of de gehele afbeeldings code als waarde uit *Values. yaml*.
-* Als u iets wijzigt met inkomend verkeer, kunt u uw helm-grafiek ook bijwerken om de ingangs oplossing van Azure dev Spaces te gebruiken.
-* Als u de [routerings mogelijkheden van Azure dev Spaces][dev-spaces-routing]wilt gebruiken, moeten alle services voor een afzonderlijk project binnen een enkele Kubernetes-naam ruimte passen en moeten ze worden geïmplementeerd met eenvoudige naam, bijvoorbeeld *service-a*. In de standaard helm-grafieken kunt u deze naamgevings update uitvoeren door een waarde voor de eigenschap *fullnameOverride* op te geven.
+Bij het gebruik van uw eigen Dockerfile- of Helm-diagram zijn er de volgende beperkingen:
+* Als u slechts één Dockerfile gebruikt, moet het alles bevatten wat u nodig hebt om ontwikkelingsscenario's in te schakelen, zoals de taal-SDK, niet alleen de runtime. Als u een afzonderlijk Dockerfile voor Azure Dev Spaces gebruikt, zoals een Dockerfile.develop, moet alles wat u nodig hebt om ontwikkelscenario's in te schakelen, in dat Dockerfile worden opgenomen.
+* Uw helmdiagram moet het passeren van een deel van of de volledige afbeeldingstag ondersteunen als waarde van *values.yaml*.
+* Als u iets wijzigt met binnendringen, u uw Helm-diagram ook bijwerken om de ingress-oplossing van Azure Dev Spaces te gebruiken.
+* Als u de [routeringsmogelijkheden van Azure Dev Spaces][dev-spaces-routing]wilt gebruiken, moeten alle services voor een afzonderlijk project binnen één Naamruimte van Kubernetes passen en moeten ze worden geïmplementeerd met eenvoudige naamgeving, bijvoorbeeld *service-a.* In standaardhelmdiagrammen kan deze naamgevingsupdate worden uitgevoerd door een waarde op te geven voor de eigenschap *fullnameOverride.*
 
-Als u uw eigen Dockerfile-of helm-grafiek wilt vergelijken met een bestaande versie die werkt met Azure dev Spaces, controleert u de bestanden die in de [Quick][quickstart-cli]start zijn gegenereerd.
+Als u uw eigen Dockerfile- of Helm-diagram wilt vergelijken met een bestaande versie die werkt met Azure Dev Spaces, controleert u de bestanden die in de [quickstart zijn][quickstart-cli]gegenereerd.
 
 
-## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Kan ik de bestanden wijzigen die zijn gegenereerd door Azure dev Spaces?
+## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Kan ik de bestanden wijzigen die zijn gegenereerd door Azure Dev Spaces?
 
-Ja, u kunt het *azds. yaml* -bestand, de Dockerfile-en helm-grafiek [die door Azure dev Spaces is gegenereerd, wijzigen wanneer u uw project voorbereidt][dev-spaces-prep]. Het wijzigen van deze bestanden verandert de manier waarop het project wordt gemaakt en uitgevoerd.
+Ja, u het *azds.yaml-bestand,* dockerfile en helmdiagram wijzigen [dat is gegenereerd door Azure Dev Spaces bij de voorbereiding van uw project.][dev-spaces-prep] Als u deze bestanden wijzigt, verandert de manier waarop het project wordt gebouwd en uitgevoerd.
 
-## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>Kan ik Azure dev Spaces gebruiken zonder een openbaar IP-adres?
+## <a name="can-i-use-azure-dev-spaces-without-a-public-ip-address"></a>Kan ik Azure Dev Spaces gebruiken zonder een openbaar IP-adres?
 
-Nee, u kunt geen Azure dev-ruimten inrichten op een AKS-cluster zonder een openbaar IP-adres. Er is een openbaar IP-adres [nodig door Azure dev Spaces voor route ring][dev-spaces-routing].
+Nee, u Azure Dev Spaces niet inrichten op een AKS-cluster zonder een openbaar IP-adres. Azure Dev Spaces heeft een openbaar IP-ip [nodig voor routering.][dev-spaces-routing]
 
-## <a name="can-i-use-my-own-ingress-with-azure-dev-spaces"></a>Kan ik mijn eigen ingangen gebruiken met Azure dev Spaces?
+## <a name="can-i-use-my-own-ingress-with-azure-dev-spaces"></a>Kan ik mijn eigen ingress gebruiken met Azure Dev Spaces?
 
-Ja, u kunt uw eigen inkomend verkeer configureren aan de kant van de ingangen die Azure dev Spaces maakt. U kunt bijvoorbeeld [traefik][ingress-traefik] of [NGINX][ingress-nginx]gebruiken.
+Ja, u uw eigen binnendringen configureren samen met de inbinnendringen die Azure Dev Spaces maakt. U bijvoorbeeld [traefik][ingress-traefik] of [NGINX][ingress-nginx]gebruiken.
 
-## <a name="can-i-use-https-with-azure-dev-spaces"></a>Kan ik HTTPS gebruiken met Azure dev Spaces?
+## <a name="can-i-use-https-with-azure-dev-spaces"></a>Kan ik HTTPS gebruiken met Azure Dev Spaces?
 
-Ja, u kunt uw eigen inkomend verkeer configureren met HTTPS met behulp van [traefik][ingress-https-traefik] of [NGINX][ingress-https-nginx].
+Ja, u uw eigen binnendringen configureren met HTTPS met behulp van [traefik][ingress-https-traefik] of [NGINX.][ingress-https-nginx]
 
-## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Kan ik Azure dev Spaces gebruiken in een cluster dat gebruikmaakt van CNI in plaats van kubenet? 
+## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Kan ik Azure Dev Spaces gebruiken op een cluster dat CNI gebruikt in plaats van kubenet? 
 
-Ja, u kunt Azure dev Spaces gebruiken in een AKS-cluster dat gebruikmaakt van CNI voor netwerken. U kunt bijvoorbeeld Azure dev Spaces gebruiken in een AKS-cluster met [bestaande Windows-containers][windows-containers], die gebruikmaken van cni voor netwerken. Meer informatie over het gebruik van CNI voor netwerken met Azure dev Spaces is [hier](configure-networking.md#using-azure-cni)beschikbaar.
+Ja, u Azure Dev Spaces gebruiken op een AKS-cluster dat CNI gebruikt voor netwerken. U bijvoorbeeld Azure Dev Spaces gebruiken op een AKS-cluster met [bestaande Windows-containers][windows-containers], waarmee CNI wordt gebruikt voor netwerken. Meer informatie over het gebruik van CNI voor netwerken met Azure Dev Spaces is [hier](configure-networking.md#using-azure-cni)beschikbaar.
 
-## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Kan ik Azure dev Spaces gebruiken met Windows-containers?
+## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Kan ik Azure Dev Spaces gebruiken met Windows Containers?
 
-Momenteel is Azure dev Spaces alleen bedoeld om te worden uitgevoerd op Linux en alleen knoop punten, maar u kunt Azure dev-ruimten uitvoeren op een AKS-cluster met [bestaande Windows-containers][windows-containers].
+Momenteel is Azure Dev Spaces alleen bedoeld om op Linux-pods en -knooppunten te draaien, maar u Azure Dev Spaces uitvoeren op een AKS-cluster met [bestaande Windows-containers.][windows-containers]
 
-## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Kan ik Azure dev Spaces gebruiken op AKS-clusters waarop de door API server geautoriseerde IP-adresbereiken zijn ingeschakeld?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Kan ik Azure Dev Spaces gebruiken op AKS-clusters met API-server geautoriseerde IP-adresbereiken ingeschakeld?
 
-Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met [API-server geautoriseerde IP-][aks-auth-range] adresbereiken ingeschakeld. Meer informatie over het gebruik van een AKS-cluster met API-server geautoriseerde IP-adresbereiken ingeschakeld met Azure dev Spaces is [hier](configure-networking.md#using-api-server-authorized-ip-ranges)beschikbaar.
+Ja, u Azure Dev Spaces gebruiken op AKS-clusters met [API-server geautoriseerde IP-adresbereiken][aks-auth-range] ingeschakeld. Meer informatie over het gebruik van een AKS-clusters met API-server geautoriseerde IP-adresbereiken ingeschakeld met Azure Dev Spaces is [hier](configure-networking.md#using-api-server-authorized-ip-ranges)beschikbaar.
 
-## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Kan ik Azure dev Spaces gebruiken in AKS-clusters met beperkt uitgaand verkeer voor cluster knooppunten?
+## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Kan ik Azure Dev Spaces gebruiken op AKS-clusters met beperkt uitgangsverkeer voor clusterknooppunten?
 
-Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met beperkt uitgaand [verkeer voor cluster knooppunten][aks-restrict-egress-traffic] die zijn ingeschakeld wanneer de juiste FQDN-namen zijn toegestaan. Meer informatie over het gebruik van een AKS-cluster met beperkt uitgaand verkeer voor knoop punten die zijn ingeschakeld met Azure dev Spaces is [hier](configure-networking.md#ingress-and-egress-network-traffic-requirements)beschikbaar.
+Ja, u Azure Dev Spaces gebruiken op AKS-clusters met [beperkt uitgangsverkeer voor clusterknooppunten][aks-restrict-egress-traffic] ingeschakeld zodra de juiste FQDN's zijn toegestaan. Meer informatie over het gebruik van een AKS-clusters met beperkt uitgangsverkeer voor clusterknooppunten die zijn ingeschakeld met Azure Dev Spaces, is [hier](configure-networking.md#ingress-and-egress-network-traffic-requirements)beschikbaar.
 
-## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Kan ik Azure dev Spaces gebruiken in AKS-clusters met RBAC-functionaliteit?
+## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Kan ik Azure Dev Spaces gebruiken op AKS-clusters met RBAC??
 
-Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met of zonder RBAC ingeschakeld.
+Ja, u Azure Dev Spaces gebruiken op AKS-clusters met of zonder RBAC ingeschakeld.
 
-## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Wat gebeurt er wanneer ik inschakelingen voor het project in Visual Studio Activeer?
+## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Wat gebeurt er als ik inschakel voor het project in Visual Studio?
 
-Wanneer u Visual Studio gebruikt om uw project voor te bereiden, hebt u de mogelijkheid om in te scha kelen voor uw service. Als u inschakelt, wordt er een openbaar eind punt gemaakt voor toegang tot uw service wanneer deze wordt uitgevoerd op uw AKS-cluster. Dit is optioneel. Als u geen ingang inschakelt, is uw service alleen toegankelijk vanuit uw AKS-cluster.
+Wanneer u Visual Studio gebruikt om uw project voor te bereiden, u binnendringen inschakelen voor uw service. Als u inschakeling inschakelt, wordt een openbaar eindpunt gemaakt om toegang te krijgen tot uw service wanneer deze wordt uitgevoerd op uw AKS-cluster, wat optioneel is. Als u invallen niet inschakelt, is uw service alleen toegankelijk vanuit uw AKS-cluster.
 
-## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Kan ik pod Managed Identities gebruiken met Azure dev Spaces?
+## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Kan ik podbeheerde identiteiten gebruiken met Azure Dev Spaces?
 
-Azure dev Spaces biedt momenteel geen ondersteuning voor het gebruik van [pod Managed Identities][aks-pod-managed-id] op AKS-clusters waarvoor Azure dev Spaces zijn ingeschakeld. Als er pod beheerde identiteiten zijn geïnstalleerd en u deze wilt verwijderen, kunt u meer informatie vinden in de [opmerkingen][aks-pod-managed-id-uninstall]bij het verwijderen.
+Azure Dev Spaces biedt momenteel geen ondersteuning voor het gebruik van [podbeheerde identiteiten][aks-pod-managed-id] op AKS-clusters met Azure Dev Spaces ingeschakeld. Als u podbeheerde identiteiten hebt geïnstalleerd en deze wilt verwijderen, u meer details vinden in de [notities verwijderen.][aks-pod-managed-id-uninstall]
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
@@ -89,8 +89,8 @@ Azure dev Spaces biedt momenteel geen ondersteuning voor het gebruik van [pod Ma
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
-[dev-spaces-prep]: how-dev-spaces-works.md#prepare-your-code
-[dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works
+[dev-spaces-prep]: how-dev-spaces-works-prep.md
+[dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-nginx]: how-to/ingress-https-nginx.md#configure-the-nginx-ingress-controller-to-use-https

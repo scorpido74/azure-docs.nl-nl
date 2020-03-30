@@ -1,51 +1,51 @@
 ---
-title: Aangepaste beschikbaarheids tests maken en uitvoeren met behulp van Azure Functions
-description: In dit document wordt beschreven hoe u een Azure-functie maakt met TrackAvailability () die regel matig wordt uitgevoerd op basis van de configuratie gegeven in de functie Timer trigger. De resultaten van deze test worden verzonden naar uw Application Insights-resource, waar u de gegevens van beschikbaarheids resultaten kunt opvragen en waarschuwen. Aangepaste tests bieden u de mogelijkheid om complexere beschikbaarheids tests te schrijven dan mogelijk is met behulp van de portal-gebruikers interface, een app te bewaken in uw Azure VNET, het eindpunt adres te wijzigen of een beschikbaarheids test te maken als deze niet beschikbaar is in uw regio.
+title: Aangepaste beschikbaarheidstests maken en uitvoeren met Azure-functies
+description: Dit document gaat over het maken van een Azure-functie met TrackAvailability() die periodiek wordt uitgevoerd volgens de configuratie in de functie TimerTrigger. De resultaten van deze test worden verzonden naar uw Application Insights-bron, waar u de gegevens over de beschikbaarheidsresultaten opvragen en erop waarschuwen. Met aangepaste tests u complexere beschikbaarheidstests schrijven dan mogelijk is via de portal-gebruikersinterface, een app in uw Azure VNET controleren, het eindpuntadres wijzigen of een beschikbaarheidstest maken als deze niet beschikbaar is in uw regio.
 ms.topic: conceptual
 author: morgangrobin
 ms.author: mogrobin
 ms.date: 11/22/2019
 ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665796"
 ---
-# <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Aangepaste beschikbaarheids tests maken en uitvoeren met behulp van Azure Functions
+# <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Aangepaste beschikbaarheidstests maken en uitvoeren met Azure-functies
 
-In dit artikel wordt beschreven hoe u een Azure-functie maakt met TrackAvailability () die regel matig wordt uitgevoerd op basis van de configuratie die is opgegeven in de timer trigger-functie met uw eigen bedrijfs logica. De resultaten van deze test worden verzonden naar uw Application Insights-resource, waar u de gegevens van beschikbaarheids resultaten kunt opvragen en waarschuwen. Zo kunt u aangepaste tests maken die vergelijkbaar zijn met wat u kunt doen met behulp van [beschikbaarheids controle](../../azure-monitor/app/monitor-web-app-availability.md) in de portal. Aangepaste tests bieden u de mogelijkheid om complexere beschikbaarheids tests te schrijven dan mogelijk is met behulp van de portal-gebruikers interface, een app te bewaken in uw Azure VNET, het eindpunt adres te wijzigen of een beschikbaarheids test te maken, zelfs als deze functie niet beschikbaar is in uw regio.
+In dit artikel wordt ingaan op het maken van een Azure-functie met TrackAvailability() die periodiek wordt uitgevoerd volgens de configuratie die is opgegeven in de functie TimerTrigger met uw eigen bedrijfslogica. De resultaten van deze test worden verzonden naar uw Application Insights-bron, waar u de gegevens over de beschikbaarheidsresultaten opvragen en erop waarschuwen. Hiermee u aangepaste tests maken die vergelijkbaar zijn met wat u doen via [Availability Monitoring](../../azure-monitor/app/monitor-web-app-availability.md) in de portal. Met aangepaste tests u complexere beschikbaarheidstests schrijven dan mogelijk is via de portal-gebruikersinterface, een app in uw Azure VNET controleren, het eindpuntadres wijzigen of een beschikbaarheidstest maken, zelfs als deze functie niet beschikbaar is in uw regio.
 
 > [!NOTE]
-> Dit voor beeld is uitsluitend bedoeld om u te laten zien hoe de API-aanroep van TrackAvailability () in een Azure-functie werkt. Het schrijven van de onderliggende HTTP-test code/bedrijfs logica die is vereist om deze in te scha kelen in een volledig functionele beschikbaarheids test, is niet mogelijk. Als u dit voor beeld doorloopt, maakt u standaard een beschikbaarheids test waarbij er altijd een fout wordt gegenereerd.
+> Dit voorbeeld is uitsluitend bedoeld om u de mechanica te laten zien van hoe de API-aanroep TrackAvailability() werkt binnen een Azure-functie. Niet hoe de onderliggende HTTP-testcode/bedrijfslogica te schrijven die nodig zou zijn om dit om te zetten in een volledig functionele beschikbaarheidstest. Als u dit voorbeeld standaard doorloopt, maakt u een beschikbaarheidstest die altijd een fout genereert.
 
-## <a name="create-timer-triggered-function"></a>Door timer geactiveerde functie maken
+## <a name="create-timer-triggered-function"></a>Timer geactiveerd, functie maken
 
-- Als u een Application Insights resource hebt:
-    - Azure Functions maakt standaard een Application Insights resource, maar als u een van de al gemaakte resources wilt gebruiken, moet u opgeven dat tijdens het maken.
-    - Volg de instructies voor het [maken van een Azure functions resource en timer geactiveerde functie](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (stoppen voor opschonen) met de volgende opties.
-        -  Selecteer het tabblad **controle** in de buurt van de bovenkant.
+- Als u een Resource Voor Application Insights hebt:
+    - Standaard maakt Azure Functions een Application Insights-bron, maar als u een van uw reeds gemaakte resources wilt gebruiken, moet u dat tijdens het maken opgeven.
+    - Volg de instructies voor het [maken van een Azure Functions-bron en timergeactiveerde functie](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (stoppen voordat u opruimt) met de volgende opties.
+        -  Selecteer het tabblad **Controle** in de buurt van de bovenkant.
 
-            ![ Een Azure Functions-app maken met uw eigen app Insights-resource](media/availability-azure-functions/create-function-app.png)
+            ![ Een Azure Functions-app maken met uw eigen App Insights-bron](media/availability-azure-functions/create-function-app.png)
 
-        - Selecteer de vervolg keuzelijst Application Insights en typ of selecteer de naam van uw resource.
+        - Selecteer het vervolgkeuzeveld Toepassingsstatistieken en typ of selecteer de naam van uw resource.
 
-            ![Bestaande Application Insights resource selecteren](media/availability-azure-functions/app-insights-resource.png)
+            ![Bestaande Application Insights-bron selecteren](media/availability-azure-functions/app-insights-resource.png)
 
-        - Selecteer **controleren + maken**
-- Als u nog geen Application Insights resource hebt gemaakt voor de door de timer geactiveerde functie:
-    - Wanneer u uw Azure Functions-toepassing maakt, wordt er standaard een Application Insights resource voor u gemaakt.
-    - Volg de instructies voor het [maken van een Azure functions resource en timer geactiveerde functie](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (stoppen voor opschonen).
+        - Selecteer **Controleren + maken**
+- Als u nog geen Application Insights-bron hebt gemaakt voor de geactiveerde functie voor uw timer:
+    - Bij het maken van uw Azure Functions-toepassing wordt standaard een Application Insights-bron voor u gemaakt.
+    - Volg de instructies voor het [maken van een Azure Functions-bron en timergeactiveerde functie](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (stoppen voordat u wordt opschonen).
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
-Kopieer de onderstaande code naar het bestand run. CSX (de vooraf bestaande code wordt vervangen). Als u dit wilt doen, gaat u naar uw Azure Functions-toepassing en selecteert u de timer functie aan de linkerkant.
+Kopieer de onderstaande code naar het run.csx-bestand (dit vervangt de reeds bestaande code). Ga hiervoor naar de toepassing Azure Functions en selecteer de functie timertrigger aan de linkerkant.
 
 >[!div class="mx-imgBorder"]
->![Azure function run. CSX in Azure Portal](media/availability-azure-functions/runcsx.png)
+>![Run.csx van azure-functie in Azure-portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> Voor het eindpunt adres gebruikt u: `EndpointAddress= https://dc.services.visualstudio.com/v2/track`. Tenzij uw resource zich in een regio bevindt als Azure Government of Azure China in dat geval raadpleegt u dit artikel over [het overschrijven van de standaard eindpunten](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) en het juiste eind punt van het telemetrie-kanaal voor uw regio selecteren.
+> Voor het eindpuntadres dat `EndpointAddress= https://dc.services.visualstudio.com/v2/track`u zou gebruiken: . Tenzij uw resource zich bevindt in een regio zoals Azure Government of Azure China, raadpleegt u dit artikel over [het overschrijven van de standaardeindpunten](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) en selecteert u het juiste eindpunt voor telemetriekanaal voor uw regio.
 
 ```C#
 #load "runAvailabilityTest.csx"
@@ -127,7 +127,7 @@ public async static Task Run(TimerInfo myTimer, ILogger log)
 
 ```
 
-Selecteer aan de rechter kant onder bestanden weer geven de optie **toevoegen**. Roep de nieuwe bestands **functie. proj** aan met de volgende configuratie.
+Selecteer rechts onder Bestanden weergeven de optie **Toevoegen**. Roep de nieuwe **bestandsfunctie.proj** aan met de volgende configuratie.
 
 ```C#
 <Project Sdk="Microsoft.NET.Sdk">
@@ -142,9 +142,9 @@ Selecteer aan de rechter kant onder bestanden weer geven de optie **toevoegen**.
 ```
 
 >[!div class="mx-imgBorder"]
->Klik ![aan de rechter kant op toevoegen. Geef een naam op voor de bestands functie. proj](media/availability-azure-functions/addfile.png)
+>![Voeg aan de rechterkant toe. Geef de bestandsfunctie.proj een naam](media/availability-azure-functions/addfile.png)
 
-Selecteer aan de rechter kant onder bestanden weer geven de optie **toevoegen**. Roep het nieuwe bestand **runAvailabilityTest. CSX** aan met de volgende configuratie.
+Selecteer rechts onder Bestanden weergeven de optie **Toevoegen**. Bel het nieuwe bestand **runAvailabilityTest.csx** met de volgende configuratie.
 
 ```C#
 public async static Task RunAvailbiltyTestAsync(ILogger log)
@@ -155,34 +155,34 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ```
 
-## <a name="check-availability"></a>Beschik baarheid controleren
+## <a name="check-availability"></a>Beschikbaarheid controleren
 
-Om ervoor te zorgen dat alles werkt, kunt u de grafiek bekijken op het tabblad Beschik baarheid van uw Application Insights-resource.
+Om er zeker van te zijn dat alles werkt, u de grafiek bekijken op het tabblad Beschikbaarheid van uw application insights-bron.
 
 > [!NOTE]
-> Als u uw eigen bedrijfs logica in runAvailabilityTest. CSX hebt geïmplementeerd, ziet u succes volle resultaten als in de onderstaande scherm afbeeldingen. als dat niet het geval is, ziet u niet de resultaten.
+> Als u uw eigen bedrijfslogica in runAvailabilityTest.csx dan hebt uitgevoerd zult u succesvolle resultaten zoals in screenshots hieronder zien, als u niet toen hebt gedaan zult u ontbroken resultaten zien.
 
 >[!div class="mx-imgBorder"]
->![tabblad Beschik baarheid met succes volle resultaten](media/availability-azure-functions/availtab.png)
+>![Tabblad Beschikbaarheid met succesvolle resultaten](media/availability-azure-functions/availtab.png)
 
-Wanneer u uw test instelt met behulp van Azure Functions ziet u dat in tegens telling tot het gebruik van **test toevoegen** op het tabblad Beschik baarheid, de naam van uw test niet wordt weer gegeven en u er geen interactie mee kunt doen. De resultaten worden gevisualiseerd, maar er wordt een overzichts weergave weer gegeven in plaats van de gedetailleerde weer gave die u krijgt wanneer u een beschikbaarheids test maakt via de portal.
+Wanneer u uw test instelt met Azure-functies, zult u merken dat in tegenstelling tot het gebruik **van Add-test** op het tabblad Beschikbaarheid, de naam van uw test niet wordt weergegeven en dat u er geen interactie mee hebben. De resultaten worden gevisualiseerd, maar u krijgt een overzichtsweergave in plaats van dezelfde gedetailleerde weergave die u krijgt wanneer u een beschikbaarheidstest maakt via de portal.
 
-Als u de details van de end-to-end-trans actie wilt bekijken, selecteert u **geslaagd** of **mislukt** onder inzoomen en selecteert u vervolgens een voor beeld. U kunt ook naar de end-to-end-transactie details gaan door een gegevens punt in de grafiek te selecteren.
-
->[!div class="mx-imgBorder"]
->![Selecteer een test voor de beschik baarheid van de voor beeld](media/availability-azure-functions/sample.png)
+Als u de end-to-end transactiegegevens wilt bekijken, selecteert u **Geslaagd** of **Mislukt** onder inzoomen en selecteert u een voorbeeld. U ook naar de end-to-end transactiedetails gaan door een gegevenspunt in de grafiek te selecteren.
 
 >[!div class="mx-imgBorder"]
->![end-to-end-transactie Details](media/availability-azure-functions/end-to-end.png)
-
-Als u alles hebt uitgevoerd als is (zonder bedrijfs logica toe te voegen), ziet u dat de test is mislukt.
-
-## <a name="query-in-logs-analytics"></a>Query in Logboeken (analyse)
-
-U kunt Logboeken (analyse) gebruiken om de beschikbaarheids resultaten, afhankelijkheden en meer weer te geven. Ga voor meer informatie over Logboeken naar het [overzicht van logboek query's](../../azure-monitor/log-query/log-query-overview.md).
+>![Een voorbeeldbeschikbaarheidstest selecteren](media/availability-azure-functions/sample.png)
 
 >[!div class="mx-imgBorder"]
->resultaten van ![-Beschik baarheid](media/availability-azure-functions/availabilityresults.png)
+>![End-to-end transactiegegevens](media/availability-azure-functions/end-to-end.png)
+
+Als je liep alles zoals is (zonder toevoeging van zakelijke logica), dan zul je zien dat de test is mislukt.
+
+## <a name="query-in-logs-analytics"></a>Query in logboeken (Analytics)
+
+U Logboeken(analyses) gebruiken om u beschikbaarheidsresultaten, afhankelijkheden en meer weer te geven. Ga voor meer informatie over Logboeken naar [Overzicht van querylogboeken](../../azure-monitor/log-query/log-query-overview.md).
+
+>[!div class="mx-imgBorder"]
+>![Beschikbaarheidsresultaten](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
 >![Afhankelijkheden](media/availability-azure-functions/dependencies.png)
@@ -190,4 +190,4 @@ U kunt Logboeken (analyse) gebruiken om de beschikbaarheids resultaten, afhankel
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Toepassingskaart](../../azure-monitor/app/app-map.md)
-- [Transactie diagnostiek](../../azure-monitor/app/transaction-diagnostics.md)
+- [Diagnostische gegevens voor transacties](../../azure-monitor/app/transaction-diagnostics.md)

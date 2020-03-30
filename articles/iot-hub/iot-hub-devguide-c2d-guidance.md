@@ -1,6 +1,6 @@
 ---
-title: Opties voor Azure IoT Hub Cloud-naar-apparaat | Microsoft Docs
-description: 'Hand leiding voor ontwikkel aars: richt lijnen voor het gebruik van directe methoden, de gewenste eigenschappen van apparaten en Cloud-naar-apparaat-berichten voor communicatie tussen Cloud en apparaat.'
+title: Azure IoT Hub-cloud-naar-apparaatopties | Microsoft Documenten
+description: Handleiding voor ontwikkelaars - richtlijnen voor het gebruik van directe methoden, de gewenste eigenschappen van device twin of cloud-to-device-berichten voor communicatie tussen cloud en apparaat.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,38 +9,38 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: a2ca9a167d50619ed2963b13515c0a772d712570
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77591265"
 ---
-# <a name="cloud-to-device-communications-guidance"></a>Richt lijnen voor communicatie tussen Cloud en apparaat
+# <a name="cloud-to-device-communications-guidance"></a>Communicatierichtlijnen voor cloud-to-device
 
-IoT Hub biedt drie opties voor apparaat-apps om functionaliteit beschikbaar te maken voor een back-end-app:
+IoT Hub biedt drie opties voor apparaat-apps om functionaliteit bloot te stellen aan een back-end-app:
 
-* [Directe methoden](iot-hub-devguide-direct-methods.md) voor communicatie waarvoor onmiddellijke bevestiging van het resultaat is vereist. Directe methoden worden vaak gebruikt voor interactieve controle van apparaten, zoals het inschakelen van een ventilator.
+* [Directe communicatiemethoden](iot-hub-devguide-direct-methods.md) die onmiddellijke bevestiging van het resultaat vereisen. Directe methoden worden vaak gebruikt voor interactieve bediening van apparaten, zoals het inschakelen van een ventilator.
 
-* De [gewenste eigenschappen](iot-hub-devguide-device-twins.md) voor langlopende opdrachten die het apparaat in een bepaalde status willen zetten. Stel bijvoorbeeld het verzend interval van de telemetrie in op 30 minuten.
+* [Twin's gewenste eigenschappen](iot-hub-devguide-device-twins.md) voor langlopende commando's bedoeld om het apparaat in een bepaalde gewenste toestand te brengen. Stel bijvoorbeeld het telemetrie-verzendinterval in op 30 minuten.
 
-* [Cloud-naar-apparaat-berichten](iot-hub-devguide-messages-c2d.md) voor eenrichtings meldingen naar de apparaat-app.
+* [Cloud-to-device-berichten](iot-hub-devguide-messages-c2d.md) voor eenrichtingsmeldingen naar de apparaat-app.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Hier volgt een gedetailleerde vergelijking van de verschillende communicatie opties van Cloud naar apparaat.
+Hier is een gedetailleerde vergelijking van de verschillende cloud-to-device communicatie-opties.
 
-|  | Directe methoden | Gewenste eigenschappen van twee | Cloud-naar-apparaat-berichten |
+|  | Directe methoden | Twin's gewenste eigenschappen | Cloud-to-device berichten |
 | ---- | ------- | ---------- | ---- |
-| Scenario | Opdrachten waarvoor onmiddellijke bevestiging is vereist, zoals het inschakelen van een ventilator. | Langlopende opdrachten die bedoeld zijn om het apparaat in een bepaalde status te zetten. Stel bijvoorbeeld het verzend interval van de telemetrie in op 30 minuten. | Eenrichtings meldingen naar de apparaat-app. |
-| Gegevensstroom | Twee richtingen. De apparaat-app kan direct op de methode reageren. De back-end van de oplossing ontvangt het resultaat context afhankelijk van de aanvraag. | Eén richting. De app van het apparaat ontvangt een melding met de eigenschaps wijziging. | Eén richting. De app van het apparaat ontvangt het bericht
-| Duurzaamheid | Er is geen verbinding gemaakt met apparaten die niet zijn verbonden. Er wordt een melding weer gegeven dat het apparaat niet is verbonden met de back-end van de oplossing. | Eigenschapwaarden worden bewaard in het dubbele apparaat. Het apparaat wordt tijdens de volgende keer opnieuw verbinding gelezen. Eigenschaps waarden kunnen worden opgehaald met de [IOT hub query taal](iot-hub-devguide-query-language.md). | Berichten kunnen Maxi maal 48 uur worden bewaard door IoT Hub. |
-| Host | Eén apparaat met behulp van **deviceId**of meerdere apparaten met behulp van [taken](iot-hub-devguide-jobs.md). | Eén apparaat met behulp van **deviceId**of meerdere apparaten met behulp van [taken](iot-hub-devguide-jobs.md). | Eén apparaat op **deviceId**. |
-| Grootte | De maximale grootte van de directe methode lading is 128 KB. | De maximale grootte van de gewenste eigenschappen is 32 KB. | Maxi maal 64 KB-berichten. |
-| Frequency | Hoog. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Gemiddeld. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. | Laag. Zie [IOT hub limieten](iot-hub-devguide-quotas-throttling.md)voor meer informatie. |
-| Protocol | Beschikbaar via MQTT of AMQP. | Beschikbaar via MQTT of AMQP. | Beschikbaar op alle protocollen. Het apparaat moet worden gecontroleerd wanneer HTTPS wordt gebruikt. |
+| Scenario | Opdrachten die onmiddellijke bevestiging vereisen, zoals het inschakelen van een ventilator. | Langlopende opdrachten die bedoeld zijn om het apparaat in een bepaalde gewenste toestand te plaatsen. Stel bijvoorbeeld het telemetrie-verzendinterval in op 30 minuten. | One-way meldingen aan de apparaat-app. |
+| Gegevensstroom | Twee richtingen. De apparaat-app kan meteen op de methode reageren. De back-end van de oplossing ontvangt de uitkomst contextueel aan de aanvraag. | One-way. De apparaat-app ontvangt een melding met de eigenschapswijziging. | One-way. De apparaat-app ontvangt het bericht
+| Duurzaamheid | Losgekoppelde apparaten worden niet gecontacteerd. De back-end van de oplossing wordt gemeld dat het apparaat niet is aangesloten. | Eigenschapswaarden blijven behouden in de apparaattweeling. Apparaat zal het lezen bij de volgende heraansluiting. Eigenschapwaarden kunnen worden opgehaald met de [iot-hubquerytaal](iot-hub-devguide-query-language.md). | Berichten kunnen maximaal 48 uur worden bewaard door IoT Hub. |
+| Doelen | Eén apparaat met **deviceId**of meerdere apparaten die [taken](iot-hub-devguide-jobs.md)gebruiken. | Eén apparaat met **deviceId**of meerdere apparaten die [taken](iot-hub-devguide-jobs.md)gebruiken. | Eén apparaat per **apparaatId**. |
+| Grootte | Maximale directe methode payload grootte is 128 KB. | Maximale gewenste eigenschappen grootte is 32 KB. | Maximaal 64 KB-berichten. |
+| Frequency | Hoog. Zie [IoT Hub-limieten voor](iot-hub-devguide-quotas-throttling.md)meer informatie. | Gemiddeld. Zie [IoT Hub-limieten voor](iot-hub-devguide-quotas-throttling.md)meer informatie. | Laag. Zie [IoT Hub-limieten voor](iot-hub-devguide-quotas-throttling.md)meer informatie. |
+| Protocol | Beschikbaar via MQTT of AMQP. | Beschikbaar via MQTT of AMQP. | Beschikbaar op alle protocollen. Apparaat moet worden gepeild wanneer u HTTPS gebruikt. |
 
-Meer informatie over het gebruik van directe methoden, gewenste eigenschappen en Cloud-naar-apparaat-berichten in de volgende zelf studies:
+Meer informatie over het gebruik van directe methoden, gewenste eigenschappen en cloud-to-device-berichten in de volgende zelfstudies:
 
 * [Directe methoden gebruiken](quickstart-control-device-node.md)
-* [Gewenste eigenschappen gebruiken om apparaten te configureren](tutorial-device-twins.md) 
+* [De gewenste eigenschappen gebruiken om apparaten te configureren](tutorial-device-twins.md) 
 * [Cloud-naar-apparaat-berichten verzenden](iot-hub-node-node-c2d.md)

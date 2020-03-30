@@ -1,94 +1,94 @@
 ---
-title: Gebruik Azure HPC cache en Azure NetApp Files
-description: Azure HPC cache gebruiken om de toegang tot gegevens die zijn opgeslagen met Azure NetApp Files te verbeteren
+title: Azure HPC-cache en Azure NetApp-bestanden gebruiken
+description: Azure HPC-cache gebruiken om de toegang tot gegevens die zijn opgeslagen met Azure NetApp-bestanden te verbeteren
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: c6259dabd5ee9c53d37a3396f36832720a103c23
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 38f9d0338ce4c47024d670e6d3ee89a97faecc91
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582173"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238682"
 ---
-# <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Een Azure HPC-cache gebruiken met Azure NetApp Files
+# <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>Azure HPC-cache gebruiken met Azure NetApp-bestanden
 
-U kunt [Azure NetApp files](https://azure.microsoft.com/services/netapp/) als een opslag doel gebruiken voor uw Azure HPC-cache. In dit artikel wordt uitgelegd hoe de twee services kunnen samen werken, en krijgt u tips voor het instellen hiervan.
+U [Azure NetApp-bestanden](https://azure.microsoft.com/services/netapp/) gebruiken als opslagdoel voor uw Azure HPC-cache. In dit artikel wordt uitgelegd hoe de twee services kunnen samenwerken en geeft het tips om ze in te stellen.
 
-Azure NetApp Files zijn ONTAP-besturings systeem gecombineerd met de schaal baarheid en snelheid van Microsoft Azure. Deze combi natie stelt gebruikers in staat om werk stromen naar de cloud te verplaatsen zonder code te herschrijven.
+Azure NetApp Files combineert hun ONTAP-besturingssysteem met de schaalbaarheid en snelheid van Microsoft Azure. Met deze combinatie kunnen gebruikers gevestigde workflows naar de cloud verplaatsen zonder code te herschrijven.
 
-Het toevoegen van een Azure HPC-cache onderdeel kan bestands toegang verbeteren door meerdere Azure NetApp Files volumes te presen teren in één geaggregeerde naam ruimte. Het kan Edge-caching bieden voor volumes in een andere service regio. Het kan ook de prestaties verbeteren op aanvraag voor volumes die zijn gemaakt bij lagere service niveaus om kosten te besparen.
+Het toevoegen van een Azure HPC-cachecomponent kan de bestandstoegang verbeteren door meerdere Azure NetApp-bestandenvolumes in één geaggregeerde naamruimte te presenteren. Het kan edge caching bieden voor volumes in een ander servicegebied. Het kan ook de prestaties op aanvraag verbeteren voor volumes die zijn gemaakt op serviceniveaus op een lager niveau om kosten te besparen.
 
 ## <a name="overview"></a>Overzicht
 
-Als u een Azure NetApp Files systeem als back-end-opslag met Azure HPC cache wilt gebruiken, volgt u dit proces.
+Als u een Azure NetApp Files-systeem wilt gebruiken als back-endopslag met Azure HPC-cache, volgt u dit proces.
 
-1. Maak het Azure NetApp Files systeem en de volumes volgens de richt lijnen in [plan uw systeem hieronder](#plan-your-azure-netapp-files-system).
-1. Maak de Azure HPC-cache in de regio waar u bestands toegang nodig hebt. (Gebruik de instructies in [een Azure HPC-cache maken](hpc-cache-create.md).)
-1. [Geef opslag doelen](#create-storage-targets-in-the-cache) in de cache op die verwijzen naar de Azure NetApp files volumes. Maak één cache-opslag doel voor elk uniek IP-adres dat wordt gebruikt voor toegang tot de volumes.
-1. Laat clients [de Azure HPC-cache koppelen](#mount-storage-targets) in plaats van Azure NetApp files-volumes rechtstreeks te koppelen.
+1. Maak hieronder het Azure NetApp Files-systeem en de volgende volumes volgens de richtlijnen in [Uw systeem plannen.](#plan-your-azure-netapp-files-system)
+1. Maak de Azure HPC-cache in het gebied waar u bestandstoegang nodig hebt. (Gebruik de instructies in [Een Azure HPC-cache maken](hpc-cache-create.md).)
+1. [Definieer opslagdoelen](#create-storage-targets-in-the-cache) in de cache die wijzen op de Azure NetApp-bestandenvolumes. Maak één cacheopslagdoel voor elk uniek IP-adres dat wordt gebruikt om toegang te krijgen tot de volumes.
+1. Laat clients [de Azure HPC-cache monteren](#mount-storage-targets) in plaats van azure NetApp-bestandenrechtstreeks te monteren.
 
-## <a name="plan-your-azure-netapp-files-system"></a>Uw Azure NetApp Files-systeem plannen
+## <a name="plan-your-azure-netapp-files-system"></a>Uw Azure NetApp-bestandensysteem plannen
 
-Let bij het plannen van uw Azure NetApp Files-systeem op de items in deze sectie om ervoor te zorgen dat u het probleemloos kunt integreren met de HPC-cache van Azure.
+Let bij het plannen van uw Azure NetApp Files-systeem op de items in deze sectie om ervoor te zorgen dat u het probleemloos integreren met Azure HPC-cache.
 
-Lees ook de [documentatie van Azure NetApp files](../azure-netapp-files/index.yml) voordat u volumes maakt voor gebruik met de Azure HPC-cache.
+Lees ook de [documentatie van Azure NetApp Files](../azure-netapp-files/index.yml) voordat u volumes maakt voor gebruik met Azure HPC-cache.
 
-### <a name="nfs-client-access-only"></a>Alleen NFS-client toegang
+### <a name="nfs-client-access-only"></a>Nfs-clienttoegang alleen
 
-Azure HPC cache biedt momenteel alleen ondersteuning voor NFS-toegang. Het kan niet worden gebruikt met SMB-ACL of de POSIX-modus bits-volumes.
+Azure HPC-cache ondersteunt momenteel alleen NFS-toegang. Het kan niet worden gebruikt met SMB ACL of POSIX mode bit volumes.
 
-### <a name="exclusive-subnet-for-azure-netapp-files"></a>Exclusief subnet voor Azure NetApp Files
+### <a name="exclusive-subnet-for-azure-netapp-files"></a>Exclusief subnet voor Azure NetApp-bestanden
 
-Azure NetApp Files gebruikt één gedelegeerd subnet voor de volumes. Andere resources kunnen dat subnet niet gebruiken. Daarnaast kan slechts één subnet in een virtueel netwerk worden gebruikt voor Azure NetApp Files. Meer informatie vindt u in de [richt lijnen voor het plannen van Azure NetApp files-netwerken](../azure-netapp-files/azure-netapp-files-network-topologies.md).
+Azure NetApp Files gebruikt één gedelegeerd subnet voor de volumes. Geen andere bronnen kunnen dat subnet gebruiken. Ook kan slechts één subnet in een virtueel netwerk worden gebruikt voor Azure NetApp-bestanden. Meer informatie vindt u in [richtlijnen voor netwerkplanning van Azure NetApp Files](../azure-netapp-files/azure-netapp-files-network-topologies.md).
 
-### <a name="delegated-subnet-size"></a>Grootte van overgedragen subnet
+### <a name="delegated-subnet-size"></a>Gedelegeerde subnetgrootte
 
-Gebruik de minimale grootte voor het gedelegeerde subnet wanneer u een Azure NetApp Files-systeem maakt voor gebruik met de Azure HPC-cache.
+Gebruik de minimale grootte voor het gedelegeerde subnet bij het maken van een Azure NetApp Files-systeem voor gebruik met Azure HPC-cache.
 
-De minimale grootte, die wordt opgegeven met het netmasker/28, biedt 16 IP-adressen. In de praktijk gebruikt Azure NetApp Files slechts drie van die beschik bare IP-adressen voor toegang tot het volume. Dit betekent dat u in uw Azure HPC-cache slechts drie opslag doelen moet maken voor alle volumes.
+De minimale grootte, die is opgegeven met het netmask /28, biedt 16 IP-adressen. In de praktijk gebruikt Azure NetApp Files slechts drie van deze beschikbare IP-adressen voor volumetoegang. Dit betekent dat u slechts drie opslagdoelen hoeft te maken in uw Azure HPC-cache om alle volumes te dekken.
 
-Als het overgedragen subnet te groot is, is het mogelijk dat de Azure NetApp Files-volumes meer IP-adressen gebruiken dan één Azure HPC-cache-exemplaar kan verwerken. Eén cache kan Maxi maal tien opslag doelen hebben.
+Als het gedelegeerde subnet te groot is, kunnen de Azure NetApp-bestandendelen meer IP-adressen gebruiken dan één Azure HPC-cache-instantie aankan. Een enkele cache kan maximaal tien opslagdoelen hebben.
 
-In het Quick start-voor beeld in Azure NetApp Files-documentatie wordt 10.7.0.0/16 gebruikt voor het gedelegeerde subnet. Dit geeft een subnet dat te groot is.
+In het voorbeeld snel aan de start in de documentatie van Azure NetApp Files wordt 10.7.0.0/16 gebruikt voor het gedelegeerde subnet, dat een te groot subnet geeft.
 
-### <a name="capacity-pool-service-level"></a>Service niveau capaciteits groep
+### <a name="capacity-pool-service-level"></a>Serviceniveau capaciteitspool
 
-Wanneer u het service niveau voor uw capaciteits groep kiest, moet u rekening houden met uw werk stroom. Als u regel matig gegevens naar het Azure NetApp Files-volume schrijft, kunnen de prestaties van de cache worden beperkt als het tijdstip van de back-up traag is. Kies een hoog service niveau voor volumes die regel matig worden geschreven.
+Houd bij het kiezen van het serviceniveau voor uw capaciteitspool rekening met uw werkstroom. Als u vaak gegevens terugschrijft naar het Azure NetApp Files-volume, kunnen de prestaties van de cache worden beperkt als de terugschrijftijd traag is. Kies een hoog serviceniveau voor volumes met frequente schrijfbewerkingen.
 
-Voor volumes met een laag service niveau kan ook een vertraging aan het begin van een taak worden weer gegeven terwijl de inhoud van de cache vooraf wordt ingevuld. Nadat de cache is uitgevoerd met een goede werkset bestanden, moet de vertraging onopgemerkt worden.
+Volumes met lage serviceniveaus kunnen ook enige vertraging vertonen aan het begin van een taak, terwijl de cache inhoud vooraf vult. Nadat de cache is up and running met een goede werkset van bestanden, moet de vertraging onmerkbaar worden.
 
-Het is belang rijk dat het service niveau van de capaciteits groep van tevoren wordt gepland, omdat het niet kan worden gewijzigd nadat het is gemaakt. Een nieuw volume moet worden gemaakt in een andere capaciteits groep en de gegevens worden gekopieerd.
+Het is belangrijk om het serviceniveau van de capaciteitspool van tevoren te plannen, omdat het niet kan worden gewijzigd na het maken. Er moet een nieuw volume worden gemaakt in een andere capaciteitsgroep en de gegevens worden gekopieerd.
 
-Houd er rekening mee dat u de opslag limiet van een volume en de grootte van de capaciteits groep kunt wijzigen zonder de toegang te onderbreken.
+Houd er rekening mee dat u het opslagquotum van een volume en de grootte van de capaciteitsgroep wijzigen zonder de toegang te verstoren.
 
-## <a name="create-storage-targets-in-the-cache"></a>Opslag doelen maken in de cache
+## <a name="create-storage-targets-in-the-cache"></a>Opslagdoelen maken in de cache
 
-Nadat uw Azure NetApp Files systeem is ingesteld en de Azure HPC-cache is gemaakt, definieert u de opslag doelen in de cache die naar de bestandssysteem volumes verwijzen.
+Nadat uw Azure NetApp-bestandensysteem is ingesteld en de Azure HPC-cache is gemaakt, definieert u opslagdoelen in de cache die naar de bestandssysteemvolumes wijzen.
 
-Maak één opslag doel voor elk IP-adres dat wordt gebruikt door uw Azure NetApp Files volumes. Het IP-adres wordt weer gegeven op de pagina koppelings instructies van het volume.
+Maak één opslagdoel voor elk IP-adres dat wordt gebruikt door uw Azure NetApp-bestandenvolumes. Het IP-adres wordt vermeld op de pagina bevestigingsinstructies van het volume.
 
-Als meerdere volumes hetzelfde IP-adres hebben, kunt u één opslag doel gebruiken voor al deze.  
+Als meerdere volumes hetzelfde IP-adres delen, u voor elk van deze volumes één opslagdoel gebruiken.  
 
-Volg de [koppelings instructies in de documentatie van Azure NetApp files](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) om de te gebruiken IP-adressen te vinden.
+Volg de [bevestigingsinstructies in de documentatie van Azure NetApp-bestanden](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) om de IP-adressen te vinden die u wilt gebruiken.
 
-U kunt ook IP-adressen vinden met de Azure CLI:
+U ook IP-adressen vinden met de Azure CLI:
 
-```bash
+```azurecli
 az netappfiles volume list -g ${RESOURCE_GROUP} --account-name ${ANF_ACCOUNT} --pool-name ${POOL} --query "[].mountTargets[].ipAddress" | grep -Ee '[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+' | tr -d '"' | tr -d , | sort | uniq
 ```
 
-Export namen op het Azure NetApp Files systeem hebben één padcomponent. Maak geen opslag doel voor het exporteren van de basis ``/`` in Azure NetApp Files, omdat die export geen toegang tot het bestand biedt.
+Exportnamen op het Azure NetApp Files-systeem hebben één padcomponent. Probeer geen opslagdoel voor de hoofdexport ``/`` in Azure NetApp-bestanden te maken, omdat die export geen bestandstoegang biedt.
 
-Er zijn geen speciale beperkingen voor de virtuele naam ruimte paden voor deze opslag doelen.
+Er zijn geen speciale beperkingen voor virtuele naamruimtepaden voor deze opslagdoelen.
 
-## <a name="mount-storage-targets"></a>Opslag doelen koppelen
+## <a name="mount-storage-targets"></a>Opslagdoelen monteren
 
-Client computers moeten de cache koppelen in plaats van de Azure NetApp Files-volumes rechtstreeks te koppelen. Volg de instructies in [de Azure HPC-cache koppelen](hpc-cache-mount.md).
+Clientmachines moeten de cache monteren in plaats van de Azure NetApp Files-volumes rechtstreeks te monteren. Volg de instructies in [De Azure HPC-cache monteren.](hpc-cache-mount.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het instellen en gebruiken van [Azure NetApp files](../azure-netapp-files/index.yml)
-* [Neem contact op met de ondersteuning](hpc-cache-support-ticket.md)voor hulp bij het plannen en instellen van uw Azure HPC-cache systeem voor het gebruik van Azure NetApp files.
+* Meer informatie over het instellen en gebruiken van [Azure NetApp-bestanden](../azure-netapp-files/index.yml)
+* Neem [contact op met ondersteuning](hpc-cache-support-ticket.md)voor het plannen en instellen van uw Azure HPC-cachesysteem voor het gebruik van Azure NetApp-bestanden.

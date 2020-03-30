@@ -1,33 +1,33 @@
 ---
-title: Uitvoer binding van Azure Functions signalerings service
-description: Meer informatie over het verzenden van signaal service berichten van Azure Functions.
+title: Uitvoerbinding van Azure Functions SignalR-service
+description: Meer informatie over het verzenden van SignalR Service-berichten vanuit Azure-functies.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77530248"
 ---
-# <a name="signalr-service-output-binding-for-azure-functions"></a>Uitvoer binding van de signaal/service voor Azure Functions
+# <a name="signalr-service-output-binding-for-azure-functions"></a>SignalR-serviceuitvoerbinding voor Azure-functies
 
-De *signaal* uitvoer binding gebruiken om een of meer berichten te verzenden met behulp van de Azure signalerings service. U kunt een bericht verzenden naar:
+Gebruik de *signaalbinding van SignalR* om een of meer berichten te verzenden met Azure SignalR Service. U een bericht uitzenden naar:
 
 - Alle verbonden clients
-- Verbonden clients die zijn geverifieerd voor een specifieke gebruiker
+- Verbonden clients geverifieerd met een specifieke gebruiker
 
-Met de uitvoer binding kunt u ook groepen beheren.
+Met de uitvoerbinding u ook groepen beheren.
 
-Zie het [overzicht](functions-bindings-signalr-service.md)voor meer informatie over de installatie-en configuratie details.
+Zie het [overzicht](functions-bindings-signalr-service.md)voor informatie over de installatie en configuratiedetails.
 
-## <a name="broadcast-to-all-clients"></a>Broadcasten naar alle clients
+## <a name="broadcast-to-all-clients"></a>Uitzending naar alle clients
 
-In het volgende voor beeld ziet u een functie die een bericht verzendt met behulp van de uitvoer binding naar alle verbonden clients. Het *doel* is de naam van de methode die op elke client moet worden aangeroepen. De eigenschap *Arguments* is een matrix met nul of meer objecten die moeten worden door gegeven aan de client methode.
+In het volgende voorbeeld wordt een functie weergegeven die een bericht verzendt met de uitvoerbinding naar alle verbonden clients. Het *doel* is de naam van de methode die op elke client moet worden aangeroepen. De eigenschap *Argumenten* is een array van nul of meer objecten die aan de clientmethode moeten worden doorgegeven.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -44,11 +44,11 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u bindende gegevens in het *bestand function.json:*
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -60,7 +60,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de C# script code:
+Hier is de C# Script code:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -79,11 +79,11 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u bindende gegevens in het *bestand function.json:*
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -95,7 +95,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de JavaScript-code:
+Hier is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -108,9 +108,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u bindende gegevens in het *bestand function.json:*
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -122,7 +122,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de python-code:
+Hier is de Python-code:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -155,9 +155,9 @@ public SignalRMessage sendMessage(
 
 ## <a name="send-to-a-user"></a>Verzenden naar een gebruiker
 
-U kunt alleen een bericht verzenden naar verbindingen die zijn geverifieerd voor een gebruiker door de *gebruikers-id* in te stellen in het signaal bericht.
+U een bericht alleen verzenden naar verbindingen die zijn geverifieerd naar een gebruiker door de *gebruikersnaam* in te stellen in het SignalR-bericht.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -176,9 +176,9 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -190,7 +190,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de C# script code:
+Hier is de C# Script code:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -211,9 +211,9 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -225,7 +225,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de JavaScript-code:
+Hier is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -240,9 +240,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u bindende gegevens in het *bestand function.json:*
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -254,7 +254,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de python-code:
+Hier is de Python-code:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -288,11 +288,11 @@ public SignalRMessage sendMessage(
 
 ---
 
-## <a name="send-to-a-group"></a>Naar een groep verzenden
+## <a name="send-to-a-group"></a>Verzenden naar een groep
 
-U kunt alleen een bericht verzenden naar verbindingen die zijn toegevoegd aan een groep door de *groeps naam* in het signaal bericht in te stellen.
+U een bericht alleen verzenden naar verbindingen die aan een groep zijn toegevoegd door de *groepsnaam* in het SignalR-bericht in te stellen.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```cs
 [FunctionName("SendMessage")]
@@ -311,9 +311,9 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -325,7 +325,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de C# script code:
+Hier is de C# Script code:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -346,9 +346,9 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -360,7 +360,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de JavaScript-code:
+Hier is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -375,9 +375,9 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u bindende gegevens in het *bestand function.json:*
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -389,7 +389,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de python-code:
+Hier is de Python-code:
 
 ```python
 def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
@@ -423,15 +423,15 @@ public SignalRMessage sendMessage(
 
 ---
 
-## <a name="group-management"></a>Groeps beheer
+## <a name="group-management"></a>Groepsbeheer
 
-Met de seingevings service kunnen gebruikers worden toegevoegd aan groepen. Berichten kunnen vervolgens naar een groep worden verzonden. U kunt de `SignalR` uitvoer binding gebruiken om het groepslid maatschap van een gebruiker te beheren.
+SignalR Service stelt gebruikers in staat om aan groepen te worden toegevoegd. Berichten kunnen vervolgens naar een groep worden verzonden. U `SignalR` de uitvoerbinding gebruiken om het groepslidmaatschap van een gebruiker te beheren.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ### <a name="add-user-to-a-group"></a>Gebruiker toevoegen aan een groep
 
-In het volgende voor beeld wordt een gebruiker toegevoegd aan een groep.
+In het volgende voorbeeld wordt een gebruiker aan een groep toegevoegd.
 
 ```csharp
 [FunctionName("addToGroup")]
@@ -452,9 +452,9 @@ public static Task AddToGroup(
 }
 ```
 
-### <a name="remove-user-from-a-group"></a>Gebruiker verwijderen uit een groep
+### <a name="remove-user-from-a-group"></a>Gebruiker uit een groep verwijderen
 
-In het volgende voor beeld wordt een gebruiker verwijderd uit een groep.
+In het volgende voorbeeld wordt een gebruiker uit een groep verwijderd.
 
 ```csharp
 [FunctionName("removeFromGroup")]
@@ -476,15 +476,15 @@ public static Task RemoveFromGroup(
 ```
 
 > [!NOTE]
-> Als u de `ClaimsPrincipal` correct wilt laten binden, moet u de verificatie-instellingen hebben geconfigureerd in Azure Functions.
+> Om de `ClaimsPrincipal` juiste gebondening te krijgen, moet u de verificatie-instellingen in Azure-functies hebben geconfigureerd.
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 ### <a name="add-user-to-a-group"></a>Gebruiker toevoegen aan een groep
 
-In het volgende voor beeld wordt een gebruiker toegevoegd aan een groep.
+In het volgende voorbeeld wordt een gebruiker aan een groep toegevoegd.
 
-Voor beeld van *functie. json*
+Voorbeeld *functie.json*
 
 ```json
 {
@@ -496,7 +496,7 @@ Voor beeld van *functie. json*
 }
 ```
 
-*Run. CSX*
+*Run.csx*
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -518,11 +518,11 @@ public static Task Run(
 }
 ```
 
-### <a name="remove-user-from-a-group"></a>Gebruiker verwijderen uit een groep
+### <a name="remove-user-from-a-group"></a>Gebruiker uit een groep verwijderen
 
-In het volgende voor beeld wordt een gebruiker verwijderd uit een groep.
+In het volgende voorbeeld wordt een gebruiker uit een groep verwijderd.
 
-Voor beeld van *functie. json*
+Voorbeeld *functie.json*
 
 ```json
 {
@@ -534,7 +534,7 @@ Voor beeld van *functie. json*
 }
 ```
 
-*Run. CSX*
+*Run.csx*
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -557,15 +557,15 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Als u de `ClaimsPrincipal` correct wilt laten binden, moet u de verificatie-instellingen hebben geconfigureerd in Azure Functions.
+> Om de `ClaimsPrincipal` juiste gebondening te krijgen, moet u de verificatie-instellingen in Azure-functies hebben geconfigureerd.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ### <a name="add-user-to-a-group"></a>Gebruiker toevoegen aan een groep
 
-In het volgende voor beeld wordt een gebruiker toegevoegd aan een groep.
+In het volgende voorbeeld wordt een gebruiker aan een groep toegevoegd.
 
-Voor beeld van *functie. json*
+Voorbeeld *functie.json*
 
 ```json
 {
@@ -577,7 +577,7 @@ Voor beeld van *functie. json*
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -589,11 +589,11 @@ module.exports = async function (context, req) {
 };
 ```
 
-### <a name="remove-user-from-a-group"></a>Gebruiker verwijderen uit een groep
+### <a name="remove-user-from-a-group"></a>Gebruiker uit een groep verwijderen
 
-In het volgende voor beeld wordt een gebruiker verwijderd uit een groep.
+In het volgende voorbeeld wordt een gebruiker uit een groep verwijderd.
 
-Voor beeld van *functie. json*
+Voorbeeld *functie.json*
 
 ```json
 {
@@ -605,7 +605,7 @@ Voor beeld van *functie. json*
 }
 ```
 
-*index. js*
+*index.js*
 
 ```javascript
 module.exports = async function (context, req) {
@@ -621,9 +621,9 @@ module.exports = async function (context, req) {
 
 ### <a name="add-user-to-a-group"></a>Gebruiker toevoegen aan een groep
 
-In het volgende voor beeld wordt een gebruiker toegevoegd aan een groep.
+In het volgende voorbeeld wordt een gebruiker aan een groep toegevoegd.
 
-Voor beeld van *functie. json*
+Voorbeeld *functie.json*
 
 ```json
 {
@@ -635,7 +635,7 @@ Voor beeld van *functie. json*
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -646,11 +646,11 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
     }))
 ```
 
-### <a name="remove-user-from-a-group"></a>Gebruiker verwijderen uit een groep
+### <a name="remove-user-from-a-group"></a>Gebruiker uit een groep verwijderen
 
-In het volgende voor beeld wordt een gebruiker verwijderd uit een groep.
+In het volgende voorbeeld wordt een gebruiker uit een groep verwijderd.
 
-Voor beeld van *functie. json*
+Voorbeeld *functie.json*
 
 ```json
 {
@@ -662,7 +662,7 @@ Voor beeld van *functie. json*
 }
 ```
 
-*\_\_init. py__*
+*\_\_init.py__*
 
 ```python
 def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
@@ -677,7 +677,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 ### <a name="add-user-to-a-group"></a>Gebruiker toevoegen aan een groep
 
-In het volgende voor beeld wordt een gebruiker toegevoegd aan een groep.
+In het volgende voorbeeld wordt een gebruiker aan een groep toegevoegd.
 
 ```java
 @FunctionName("addToGroup")
@@ -697,9 +697,9 @@ public SignalRGroupAction addToGroup(
 }
 ```
 
-### <a name="remove-user-from-a-group"></a>Gebruiker verwijderen uit een groep
+### <a name="remove-user-from-a-group"></a>Gebruiker uit een groep verwijderen
 
-In het volgende voor beeld wordt een gebruiker verwijderd uit een groep.
+In het volgende voorbeeld wordt een gebruiker uit een groep verwijderd.
 
 ```java
 @FunctionName("removeFromGroup")
@@ -725,31 +725,31 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `SignalRConnectionInfo`.
+In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `SignalRConnectionInfo` die u instelt in het *function.json-bestand* en het kenmerk.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
+|functie.json, eigenschap | Eigenschap Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**| N.v.t. | moet worden ingesteld op `signalRConnectionInfo`.|
-|**direction**| N.v.t. | moet worden ingesteld op `in`.|
-|**naam**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
-|**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
-|**Naam**|**Naam**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
-|**connectionStringSetting**|**ConnectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
+|**Type**| N.v.t. | Moet ingesteld `signalRConnectionInfo`zijn op.|
+|**direction**| N.v.t. | Moet ingesteld `in`zijn op.|
+|**Naam**| N.v.t. | Variabele naam die wordt gebruikt in functiecode voor het object verbindingsinfo. |
+|**hubNaam**|**HubName**| Deze waarde moet worden ingesteld op de naam van de SignalR-hub waarvoor de verbindingsgegevens worden gegenereerd.|
+|**Userid**|**Userid**| Optioneel: de waarde van de claim voor gebruikers-id's die moet worden ingesteld in het access key-token. |
+|**verbindingstekenreeksinstelling**|**Instelling voor verbindingstekenreeks**| De naam van de app-instelling die de koppelingstekenreeks van SignalR Service bevat (standaard bij 'AzureSignalRConnectionString') |
 
 ### <a name="signalr"></a>SignalR
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `SignalR`.
+In de volgende tabel worden de bindende configuratie-eigenschappen uitgelegd `SignalR` die u instelt in het *function.json-bestand* en het kenmerk.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
+|functie.json, eigenschap | Eigenschap Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**| N.v.t. | moet worden ingesteld op `signalR`.|
-|**direction**| N.v.t. | moet worden ingesteld op `out`.|
-|**naam**| N.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
-|**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
-|**connectionStringSetting**|**ConnectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
+|**Type**| N.v.t. | Moet ingesteld `signalR`zijn op.|
+|**direction**| N.v.t. | Moet ingesteld `out`zijn op.|
+|**Naam**| N.v.t. | Variabele naam die wordt gebruikt in functiecode voor het object verbindingsinfo. |
+|**hubNaam**|**HubName**| Deze waarde moet worden ingesteld op de naam van de SignalR-hub waarvoor de verbindingsgegevens worden gegenereerd.|
+|**verbindingstekenreeksinstelling**|**Instelling voor verbindingstekenreeks**| De naam van de app-instelling die de koppelingstekenreeks van SignalR Service bevat (standaard bij 'AzureSignalRConnectionString') |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [De URL en het toegangs token van het service-eind punt retour neren (invoer binding)](./functions-bindings-signalr-service-input.md)
+- [De URL en het toegangstoken voor serviceeindpunt (invoerbinding) retourneren](./functions-bindings-signalr-service-input.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: query Apache HBase in azure HDInsight-HBase shell'
-description: In deze Quick Start leert u hoe u Apache HBase shell kunt gebruiken om Apache HBase-query's uit te voeren.
-keywords: hdinsight,hadoop,HBase
+title: 'Snelstart: Query Apache HBase in Azure HDInsight - HBase Shell'
+description: In deze quickstart leert u hoe u Apache HBase Shell gebruiken om Apache HBase-query's uit te voeren.
+keywords: hdinsight, hadoop, HBase
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,61 +10,61 @@ ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
 ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79371066"
 ---
-# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Snelstartgids: query Apache HBase in azure HDInsight met HBase shell
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>Snelstart: Query Apache HBase in Azure HDInsight met HBase Shell
 
-In deze Quick Start leert u hoe u Apache HBase shell kunt gebruiken om een HBase-tabel te maken, gegevens in te voegen en vervolgens een query uit te voeren op de tabel.
+In deze snelstart leert u hoe u Apache HBase Shell gebruiken om een HBase-tabel te maken, gegevens in te voegen en vervolgens de tabel op te vragen.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache HBase-cluster. Zie [cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md) om een HDInsight-cluster te maken.  Zorg ervoor dat u het cluster type **HBase** kiest.
+* Een Apache HBase cluster. Zie [Cluster maken](../hadoop/apache-hadoop-linux-tutorial-get-started.md) om een HDInsight-cluster te maken.  Zorg ervoor dat u het **clustertype HBase** kiest.
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-a-table-and-manipulate-data"></a>Een tabel maken en gegevens bewerken
+## <a name="create-a-table-and-manipulate-data"></a>Een tabel maken en gegevens manipuleren
 
 Voor de meeste mensen worden de gegevens weergegeven in een tabelindeling:
 
-![Gegevens in tabel vorm van HDInsight Apache HBase](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
+![HDInsight Apache HBase tabelgegevens](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
 
-In HBase (een implementatie van [Bigtable](https://cloud.google.com/bigtable/)), zien dezelfde gegevens er als volgt uit:
+In HBase (een implementatie van [Cloud BigTable)](https://cloud.google.com/bigtable/)lijken dezelfde gegevens op:
 
-![Gegevens van HDInsight Apache HBase BigTable](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
+![HDInsight Apache HBase BigTable-gegevens](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
 
-U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apache HBase shell gebruiken om HBase-tabellen te maken, gegevens in te voegen en gegevens op te vragen.
+U SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apache HBase Shell gebruiken om HBase-tabellen te maken, gegevens in te voegen en querygegevens in te voegen.
 
-1. Gebruik `ssh` opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik `ssh` de opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande `CLUSTERNAME` opdracht door de naam van uw cluster te vervangen en voer de opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Gebruik `hbase shell` opdracht om de HBase-interactieve shell te starten. Voer de volgende opdracht in voor uw SSH-verbinding:
+2. Gebruik `hbase shell` de opdracht om de interactieve shell Van HBase te starten. Voer de volgende opdracht in uw SSH-verbinding in:
 
     ```bash
     hbase shell
     ```
 
-3. Gebruik `create` opdracht om een HBase-tabel met twee kolom families te maken. Voer de volgende opdracht in:
+3. Gebruik `create` de opdracht om een HBase-tabel met families met twee kolommen te maken. Voer de volgende opdracht in:
 
     ```hbase
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. Gebruik `list` opdracht om alle tabellen in HBase weer te geven. Voer de volgende opdracht in:
+4. Gebruik `list` de opdracht om alle tabellen in HBase weer te geven. Voer de volgende opdracht in:
 
     ```hbase
     list
     ```
 
-5. Gebruik `put` opdracht om in een opgegeven rij in een bepaalde tabel waarden in te voegen voor een opgegeven kolom. Voer de volgende opdracht in:
+5. De `put` opdracht gebruiken om waarden in een bepaalde kolom in een bepaalde rij in een bepaalde tabel in te voegen. Voer de volgende opdracht in:
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -73,55 +73,55 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apa
     put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
     ```
 
-6. Gebruik `scan` opdracht om de `Contacts` tabel gegevens te scannen en te retour neren. Voer de volgende opdracht in:
+6. Gebruik `scan` de opdracht om `Contacts` de tabelgegevens te scannen en terug te sturen. Voer de volgende opdracht in:
 
     ```hbase
     scan 'Contacts'
     ```
 
-7. Gebruik `get` opdracht om de inhoud van een rij op te halen. Voer de volgende opdracht in:
+7. De `get` opdracht gebruiken om de inhoud van een rij op te halen. Voer de volgende opdracht in:
 
     ```hbase
     get 'Contacts', '1000'
     ```
 
-    U ziet vergelijk bare resultaten als met de `scan` opdracht omdat er slechts één rij is.
+    U ziet vergelijkbare resultaten `scan` als het gebruik van de opdracht omdat er slechts één rij is.
 
-8. Gebruik `delete` opdracht voor het verwijderen van een celwaarde in een tabel. Voer de volgende opdracht in:
+8. De `delete` opdracht gebruiken om een celwaarde in een tabel te verwijderen. Voer de volgende opdracht in:
 
     ```hbase
     delete 'Contacts', '1000', 'Office:Address'
     ```
 
-9. Gebruik `disable` opdracht om de tabel uit te scha kelen. Voer de volgende opdracht in:
+9. Gebruik `disable` de opdracht om de tabel uit te schakelen. Voer de volgende opdracht in:
 
     ```hbase
     disable 'Contacts'
     ```
 
-10. Gebruik `drop` opdracht om een tabel uit HBase te verwijderen. Voer de volgende opdracht in:
+10. Gebruik `drop` de opdracht om een tabel van HBase te laten vallen. Voer de volgende opdracht in:
 
     ```hbase
     drop 'Contacts'
     ```
 
-11. Gebruik `exit` opdracht om de HBase-interactieve shell te stoppen. Voer de volgende opdracht in:
+11. Gebruik `exit` de opdracht om de interactieve hbase-shell te stoppen. Voer de volgende opdracht in:
 
     ```hbase
     exit
     ```
 
-Zie [Introduction to Apache HBase schema design](http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf)(Engelstalig) voor meer informatie over het HBase-tabel schema. Zie de [Naslag Gids voor Apache HBase](https://hbase.apache.org/book.html#quickstart)voor meer HBase-opdrachten.
+Zie [Inleiding tot Apache HBase-schemaontwerp](http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf)voor meer informatie over het hbase-tabelschema. Raadpleeg de [Snelzoekgids voor Apache HBase](https://hbase.apache.org/book.html#quickstart) voor meer HBase-opdrachten.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u de quickstart hebt voltooid, u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
-Als u een cluster wilt verwijderen, raadpleegt u [een HDInsight-cluster verwijderen met behulp van uw browser, Power shell of de Azure cli](../hdinsight-delete-cluster.md).
+Zie [Een HDInsight-cluster verwijderen met uw browser, PowerShell of Azure CLI](../hdinsight-delete-cluster.md)als u een cluster wilt verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u Apache HBase shell kunt gebruiken om een HBase-tabel te maken, gegevens in te voegen en vervolgens een query uit te voeren op de tabel. Voor meer informatie over gegevens die zijn opgeslagen in HBase, leert u in het volgende artikel hoe u query's kunt uitvoeren met Apache Spark.
+In deze snelstart hebt u geleerd hoe u Apache HBase Shell gebruiken om een HBase-tabel te maken, gegevens in te voegen en vervolgens de tabel op te vragen. In het volgende artikel ziet u hoe u query's uitvoert met Apache Spark voor meer informatie over gegevens die zijn opgeslagen in HBase.
 
 > [!div class="nextstepaction"]
-> [Apache Spark gebruiken om Apache HBase-gegevens te lezen en te schrijven](../hdinsight-using-spark-query-hbase.md)
+> [Apache Spark gebruiken om Apache HBase-gegevens te lezen en schrijven](../hdinsight-using-spark-query-hbase.md)

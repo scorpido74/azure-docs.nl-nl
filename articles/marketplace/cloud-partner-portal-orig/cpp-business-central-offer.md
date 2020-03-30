@@ -1,24 +1,23 @@
 ---
-title: Dynamics 365 Business Central-aanbieding voor Azure Marketplace
-description: Afgeschaft en gekoppeld aan de bijbehorende PC-artikelen; was "legt uit hoe u een Dynamics 365 Business Central-aanbod maakt in Cloud Partner-portal."
-services: Dynamics 365 Business Central, AppSource Marketplace,
-author: ChJenk
+title: Dynamics 365 Business Central-aanbieding voor de Azure Marketplace
+description: Afgeschaft en gekoppeld aan overeenkomstige pc-artikelen; was Legt uit hoe je een Dynamics 365 Business Central-aanbieding maken in Cloud Partner Portal.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: pabutler
-ms.openlocfilehash: 772f96f4e8d5c3c87c2e62cd01500075a5327210
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d791a2e3d9e393c876c1f519dc9cd700428e9810
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819541"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276135"
 ---
-# <a name="dynamics-365-business-central-offer"></a>Dynamics 365 Business Central-aanbieding
+# <a name="dynamics-365-business-central-offer"></a>Aanbieding voor Dynamics 365 Business Central
 
-De [Cloud Partner-Portal](https://cloudpartner.azure.com/) biedt geen ondersteuning meer voor het maken en beheren van Dynamics 365 Business Central-aanbiedingen. Deze functionaliteit is in plaats daarvan verplaatst naar de portal van micro soft [Partner Center](https://partner.microsoft.com/). Zie [een nieuwe aanbieding voor Dynamics 365 Business Central maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)voor meer informatie.
+De [Cloud Partner Portal](https://cloudpartner.azure.com/) ondersteunt niet langer de creatie en het beheer van Dynamics 365 Business Central-aanbiedingen. In plaats daarvan is deze functionaliteit verplaatst naar de Microsoft [Partner Center-portal.](https://partner.microsoft.com/) Zie [Een nieuw Dynamics 365 Business Central-aanbod maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voordat u een nieuwe aanbieding voor Dynamics 365 Business Central maakt, moet u [een partner centrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lezen en vervolgens het [dash board voor commerciële Marketplace](https://partner.microsoft.com/dashboard/directory) openen met de geselecteerde **overzichts** pagina. Volg de instructies in [een nieuwe Dynamics 365 Business Central-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) om uw aanbieding te maken.
+Voordat u een nieuwe Dynamics 365 Business Central-aanbieding maakt, leest u [Een Partnercentrum-account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) en opent u het [dashboard Commerciële Marktplaats](https://partner.microsoft.com/dashboard/directory) met de geselecteerde **overzichtspagina.** Volg de instructies in [Een nieuwe Dynamics 365 Business Central-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) om uw aanbieding te maken.

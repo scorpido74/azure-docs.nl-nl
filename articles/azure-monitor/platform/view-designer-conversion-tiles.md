@@ -1,5 +1,5 @@
 ---
-title: De tegel conversies van Azure Monitor Designer naar Workbooks weer geven
+title: Conversies van Azure Monitor-weergave voor werkmappen
 description: ''
 author: austonli
 ms.author: aul
@@ -7,27 +7,27 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658623"
 ---
-# <a name="azure-monitor-view-designer-tile-conversions"></a>Conversies van de tegel Designer Azure Monitor weer geven
-[View Designer](view-designer.md) is een functie van Azure monitor waarmee u aangepaste weer gaven kunt maken waarmee u gegevens in uw werk ruimte log Analytics kunt visualiseren, met grafieken, lijsten en tijd lijnen. Ze worden gefaseerd en vervangen door werkmappen die extra functionaliteit bieden. Dit artikel bevat informatie over het converteren van verschillende tegels naar werkmappen.
+# <a name="azure-monitor-view-designer-tile-conversions"></a>Conversies voor designertegels in Azure Monitor-weergave
+[View designer](view-designer.md) is een functie van Azure Monitor waarmee u aangepaste weergaven maken om gegevens in uw Log Analytics-werkruimte te visualiseren, met grafieken, lijsten en tijdlijnen. Ze worden uitgefaseerd en vervangen door werkmappen die extra functionaliteit bieden. In dit artikel vindt u details voor het converteren van verschillende tegels naar werkmappen.
 
-## <a name="donut--list-tile"></a>Tegel voor ring-& lijst
+## <a name="donut--list-tile"></a>&-lijsttegel Donut &
 
-![Ring lijst](media/view-designer-conversion-tiles/donut-list.png)
+![Donutlijst](media/view-designer-conversion-tiles/donut-list.png)
 
-Het opnieuw maken van de ring & lijst tegel in werkmappen omvat twee afzonderlijke visualisaties. Voor de ring deel zijn er twee opties.
-Voor beide beginnen door **query toevoegen** te selecteren en de oorspronkelijke query in de weer gave designer in de cel te plakken.
+Het opnieuw maken van de & lijsttegel in werkmappen omvat twee afzonderlijke visualisaties. Voor de donut gedeelte zijn er twee opties.
+Voor beide beginnen met het selecteren **van Query toevoegen** en plakken de oorspronkelijke query van weergaveontwerper in de cel.
 
-**Optie 1:** **Cirkel diagram** selecteren in de vervolg keuzelijst voor **visualisaties** : ![snelmenu van cirkel diagram](media/view-designer-conversion-tiles/pie-chart.png)
+**Optie 1:** **Cirkeldiagram selecteren** in de ![ **vervolgkeuzelijst Visualisatie:** menu cirkeldiagramvisualisatie](media/view-designer-conversion-tiles/pie-chart.png)
 
-**Optie 2:** Selecteer **instellen op query** in de vervolg keuzelijst **visualisatie** en voeg `| render piechart` toe aan de query:
+**Optie 2:** Selecteer **Instellen op query** in de **vervolgkeuzelijst Visualisatie** en voeg aan de query toe: `| render piechart`
 
- ![Visualisatie menu](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Visualisatiemenu](media/view-designer-conversion-tiles/set-by-query.png)
 
 **Voorbeeld**
 
@@ -46,16 +46,16 @@ search *
 | render piechart
 ```
 
-Zie het artikel over [algemene taken](view-designer-conversion-tasks.md)voor het maken van een lijst en het inschakelen van sparklines.
+Zie het artikel over [veelvoorkomende taken](view-designer-conversion-tasks.md)voor het maken van een lijst en het inschakelen van sparklines.
 
-Hieronder ziet u een voor beeld van hoe de tegel ring & List kan worden hergeïnterpreteerd in werkmappen:
+Hieronder volgt een voorbeeld van hoe de &-lijsttegel van de donut opnieuw kan worden geïnterpreteerd in werkmappen:
 
-![Donut lijst werkmappen](media/view-designer-conversion-tiles/donut-workbooks.png)
+![Werkmappen met donutlijst](media/view-designer-conversion-tiles/donut-workbooks.png)
 
-## <a name="line-chart--list-tile"></a>Tegel & lijst met lijn diagrammen
-![Lijst met lijn grafieken](media/view-designer-conversion-tiles/line-list.png) 
+## <a name="line-chart--list-tile"></a>Lijndiagram & lijsttegel
+![Lijst met lijndiagrammen](media/view-designer-conversion-tiles/line-list.png) 
 
-Als u het deel van de lijn diagram opnieuw wilt maken, moet u de query als volgt bijwerken:
+Als u de query als volgt wilt opnieuw maken, wordt de query als volgt bijgewerkt:
 
 Oorspronkelijke query
 ```KQL
@@ -69,15 +69,15 @@ search *
 | make-series Count = count() default=0 on TimeGenerated from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain} by Type
 ```
 
-Er zijn twee opties voor het visualiseren van het lijn diagram
+Er zijn twee opties voor het visualiseren van het lijndiagram
 
-**Optie 1:** Selecteer **lijn diagram** in de vervolg keuzelijst voor **Visualisaties** :
+**Optie 1:** Selecteer **Lijndiagram** in de **vervolgkeuzelijst Visualisatie:**
  
- ![Menu lijn diagram](media/view-designer-conversion-tiles/line-visualization.png)
+ ![Menu Lijndiagram](media/view-designer-conversion-tiles/line-visualization.png)
 
-**Optie 2:** Selecteer **instellen op query** in de vervolg keuzelijst **visualisatie** en voeg `| render linechart` toe aan de query:
+**Optie 2:** Selecteer **Instellen op query** in de **vervolgkeuzelijst Visualisatie** en voeg aan de query toe: `| render linechart`
 
- ![Visualisatie menu](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Visualisatiemenu](media/view-designer-conversion-tiles/set-by-query.png)
 
 **Voorbeeld**
 
@@ -87,17 +87,17 @@ search *
 | render linechart_
 ```
 
-Zie het artikel over [algemene taken](view-designer-conversion-tasks.md)voor het maken van een lijst en het inschakelen van sparklines.
+Zie het artikel over [veelvoorkomende taken](view-designer-conversion-tasks.md)voor het maken van een lijst en het inschakelen van sparklines.
 
-Hieronder ziet u een voor beeld van hoe de tegel van het lijn diagram & lijst kan worden hergeïnterpreteerd in werkmappen:
+Hieronder volgt een voorbeeld van hoe het lijndiagram & lijsttegel opnieuw kan worden geïnterpreteerd in werkmappen:
 
-![Werkmappen met lijn grafieken](media/view-designer-conversion-tiles/line-workbooks.png)
+![Werkmappen met lijndiagramlijst](media/view-designer-conversion-tiles/line-workbooks.png)
 
-## <a name="number--list-tile"></a>Tegel & lijst nummer
+## <a name="number--list-tile"></a>Menu & nummer
 
- ![Tegel lijst](media/view-designer-conversion-tiles/tile-list-example.png)
+ ![Lijst met tegels](media/view-designer-conversion-tiles/tile-list-example.png)
 
-Voor de tegel getal werkt u de query als volgt bij:
+Werk de query bij voor de getaltegel als volgt:
 
 Oorspronkelijke query
 ```KQL
@@ -112,25 +112,25 @@ search *
 | summarize Count = count()
 ```
 
-Wijzig de vervolg keuzelijst voor visualisaties naar **tegels** en selecteer vervolgens **tegel instellingen**.
- Visualisatie van ![tegel](media/view-designer-conversion-tiles/tile-visualization.png)
+Wijzig de vervolgkeuzelijst Visualisatie in **Tegels** en selecteer **tegelinstellingen**.
+ ![Tegelvisualisatie](media/view-designer-conversion-tiles/tile-visualization.png)
 
-Laat de sectie **titel** leeg en selecteer **links**. Wijzig de waarde voor de **kolom gebruik:** om het **aantal**en de **kolom weergave** te wijzigen in een **groot aantal**:
+Laat de sectie **Titel** leeg en selecteer **Links**. De waarde voor **gebruik wijzigen:** **tellen**en **Kolomrenderer** in **Groot getal:**
 
-![Tegel instellingen](media/view-designer-conversion-tiles/tile-settings.png)
+![Tegelinstellingen](media/view-designer-conversion-tiles/tile-settings.png)
 
  
-Zie het artikel over [algemene taken](view-designer-conversion-tasks.md)voor het maken van een lijst en het inschakelen van sparklines.
+Zie het artikel over [veelvoorkomende taken](view-designer-conversion-tasks.md)voor het maken van een lijst en het inschakelen van sparklines.
 
-Hieronder ziet u een voor beeld van hoe de tegel nummer & lijst kan worden hergeïnterpreteerd in werkmappen:
+Hieronder volgt een voorbeeld van hoe het getal & lijsttegel opnieuw kan worden geïnterpreteerd in werkmappen:
 
-![Aantal werkmappen in lijst](media/view-designer-conversion-tiles/number-workbooks.png)
+![Werkmappen met nummerlijst](media/view-designer-conversion-tiles/number-workbooks.png)
 
 ## <a name="timeline--list"></a>Tijdlijn en lijst
 
- ![Tijdlijn lijst](media/view-designer-conversion-tiles/time-list.png)
+ ![Tijdlijnlijst](media/view-designer-conversion-tiles/time-list.png)
 
-Voor de tijd lijn werkt u de query als volgt bij:
+Update uw query als volgt voor de tijdlijn:
 
 Oorspronkelijke query
 ```KQL
@@ -144,21 +144,21 @@ search *
 | summarize Count = count() by Computer, bin(TimeGenerated,{TimeRange:grain})
 ```
 
-Er zijn twee opties voor het visualiseren van de query als een staaf diagram:
+Er zijn twee opties voor het visualiseren van de query als een staafdiagram:
 
-**Optie 1:** **Staaf diagram** selecteren in de vervolg keuzelijst voor **visualisaties** : ![Barchart-visualisatie](media/view-designer-conversion-tiles/bar-visualization.png)
+**Optie 1:** **Staafdiagram selecteren** in de ![ **vervolgkeuzelijst Visualisatie:** Visualisatie van staafdiagram](media/view-designer-conversion-tiles/bar-visualization.png)
  
-**Optie 2:** Selecteer **instellen op query** in de vervolg keuzelijst **visualisatie** en voeg `| render barchart` toe aan de query:
+**Optie 2:** Selecteer **Instellen op query** in de **vervolgkeuzelijst Visualisatie** en voeg aan de query toe: `| render barchart`
 
- ![Visualisatie menu](media/view-designer-conversion-tiles/set-by-query.png)
+ ![Menu Visualisatie](media/view-designer-conversion-tiles/set-by-query.png)
 
  
-Zie het artikel over [algemene taken](view-designer-conversion-tasks.md)voor het maken van een lijst en het inschakelen van sparklines.
+Zie het artikel over [veelvoorkomende taken](view-designer-conversion-tasks.md)voor het maken van een lijst en het inschakelen van sparklines.
 
-Hieronder ziet u een voor beeld van hoe de tegel van de tijdlijn & lijst kan worden hergeïnterpreteerd in werkmappen:
+Hieronder volgt een voorbeeld van hoe de & lijsttegel van de tijdlijn opnieuw kan worden geïnterpreteerd in werkmappen:
 
-![Werkmappen van de tijdlijn lijst](media/view-designer-conversion-tiles/time-workbooks.png)
+![Werkmappen met tijdlijnlijst](media/view-designer-conversion-tiles/time-workbooks.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van de overgang ontwerp weer geven naar werkmappen](view-designer-conversion-overview.md)
+- [Overzicht van de overgang van weergaveontwerper naar werkmappen](view-designer-conversion-overview.md)

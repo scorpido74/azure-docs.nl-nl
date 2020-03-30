@@ -1,86 +1,85 @@
 ---
-title: Een bestaande Azure-containers-aanbieding bijwerken | Azure Marketplace
-description: Het bijwerken van een bestaande container aanbieding op Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Een bestaande Azure-containeraanbieding bijwerken | Azure Marketplace
+description: Een bestaande containeraanbieding bijwerken op Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pabutler
-ms.openlocfilehash: 40cd375b11eb5b7ad5943fea9839b6339a7d002f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 74f97b082c07e17a59a1615c4b1245434c497ab5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823085"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279943"
 ---
-# <a name="update-an-existing-container-offer"></a>Een bestaande container aanbieding bijwerken
+# <a name="update-an-existing-container-offer"></a>Een bestaande containeraanbieding bijwerken
 
-In dit artikel worden de verschillende aspecten beschreven van het bijwerken van uw container aanbod in de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
+In dit artikel worden de verschillende aspecten van het bijwerken van uw containeraanbod in de [Cloud Partner Portal doorgenomen.](https://cloudpartner.azure.com/)
 
-Er zijn verschillende redenen waarom u uw aanbieding wilt bijwerken, zoals:
+Er zijn verschillende redenen waarom u uw aanbieding zou willen bijwerken, zoals:
 
--  De versie van een nieuwe container installatie kopie wordt toegevoegd aan bestaande Sku's.
--  Nieuwe Sku's toevoegen.
--  De meta gegevens van de Marketplace voor de aanbieding of afzonderlijke Sku's bijwerken.
+-  Een nieuwe containerafbeeldingsversie toevoegen aan bestaande SKU's.
+-  Het toevoegen van nieuwe SKU's.
+-  Het bijwerken van de marktplaatsmetadata voor de aanbieding of individuele SKU's.
 
-Om u te helpen bij deze wijzigingen, biedt de Portal de functies **compare** en **history** .  
+Om u te helpen bij deze wijzigingen, biedt de portal de functies **Vergelijken** en **Geschiedenis.**  
 
 
-## <a name="unpermitted-changes-to-a-container-offer-or-sku"></a>Niet-toegestane wijzigingen in een container aanbod of SKU
+## <a name="unpermitted-changes-to-a-container-offer-or-sku"></a>Niet-toegestane wijzigingen in een containeraanbieding of SKU
 
-Er zijn kenmerken van een container aanbod of SKU die niet kunnen worden gewijzigd nadat de aanbieding Live is op Azure Marketplace. U kunt de volgende instellingen niet wijzigen:
+Er zijn kenmerken van een containeraanbieding of SKU die niet kunnen worden gewijzigd nadat de aanbieding live is op de Azure Marketplace. U de volgende instellingen niet wijzigen:
 
--  **Aanbiedings-id** en **uitgevers-id** van de aanbieding
--  **SKU-id** van bestaande sku's
--  Versie Tags, bijvoorbeeld: `1.0.1`
--  Wijzigingen in het facturerings-en licentie model voor bestaande Sku's
+-  **Id van aanbieding** en **publisher ID** van de aanbieding
+-  **SKU-id** van bestaande SKU's
+-  Versietags, bijvoorbeeld:`1.0.1`
+-  Wijzigingen in facturering/licentiemodel in bestaande SKU's
 
-## <a name="common-update-operations"></a>Algemene update bewerkingen
+## <a name="common-update-operations"></a>Algemene updatebewerkingen
 
-De volgende update bewerkingen zijn gebruikelijk.
+De volgende updatebewerkingen zijn gebruikelijk.
 
-### <a name="update-container-image-version-for-a-sku"></a>Versie van container installatie kopie bijwerken voor een SKU
+### <a name="update-container-image-version-for-a-sku"></a>Containerafbeeldingsversie voor een SKU bijwerken
 
-Het is gebruikelijk dat een container installatie kopie regel matig wordt bijgewerkt met beveiligings patches, extra functies, enzovoort. In dit scenario wilt u de container installatie kopie die door uw SKU wordt verwezen, bijwerken met behulp van de volgende stappen:
+Het is gebruikelijk dat een containerafbeelding periodiek wordt bijgewerkt met beveiligingspatches, extra functies, enzovoort. In dit scenario wilt u de containerafbeelding bijwerken waarnaar uw SKU verwijst met de volgende stappen:
 
-1. Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
-2. Zoek onder **alle aanbiedingen**de aanbieding die u wilt bijwerken.
-3. Selecteer op het tabblad **sku's** de SKU die is gekoppeld aan de container installatie kopie die moet worden bijgewerkt.
-4. Selecteer onder **container installatie kopie** **+ nieuwe afbeeldings versie** om een nieuwe container installatie kopie toe te voegen.
-5. Geef de nieuwe versies van de container **installatie kopie**op. De versie van de installatie kopie moet dezelfde Tags richtlijnen als eerdere versies volgen. Versie Tags moeten de indeling X. Y. Z hebben, waarbij X, Y en Z gehele getallen zijn. Controleer of de nieuwe versie die u opgeeft, groter is dan alle vorige versies.
-6. Selecteer **publiceren** om de werk stroom te starten om de nieuwe versie van de container installatie kopie naar Azure Marketplace te publiceren.
+1. Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/).
+2. Zoek **onder Alle aanbiedingen**de aanbieding die u wilt bijwerken.
+3. Selecteer op het tabblad **SKU** de SKU die is gekoppeld aan de containerafbeelding die u wilt bijwerken.
+4. Selecteer **onder Containerafbeelding**de optie **+ Nieuwe afbeeldingsversie** om een nieuwe containerafbeelding toe te voegen.
+5. Geef de nieuwe **versies van containerafbeeldingen op.** De afbeeldingsversie moet dezelfde richtlijnen voor tags volgen als eerdere versies. Versietags moeten van het formulier X.Y.Z zijn, waarbij X, Y en Z gehele getallen zijn. Controleer of de nieuwe versie die u aanbiedt groter is dan alle vorige versies.
+6. Selecteer **Publiceren** om de werkstroom te starten om uw nieuwe containerafbeeldingsversie te publiceren op de Azure Marketplace.
 
 ### <a name="add-a-new-sku"></a>Een nieuwe SKU toevoegen
 
 Gebruik de volgende stappen om een nieuwe SKU beschikbaar te maken voor uw aanbieding:
 
-1. Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
-2. Zoek onder **alle aanbiedingen**de aanbieding die u wilt bijwerken.
-3. Selecteer op het tabblad **sku's** de optie **nieuwe SKU toevoegen** en geef in het pop-upvenster een **SKU-id** op.
-4. Publiceer de container opnieuw met behulp van de stappen die worden beschreven in de aanbieding voor de [publicatie container](./cpp-publish-offer.md).
-5. Selecteer **publiceren** om de werk stroom te starten om uw nieuwe SKU te publiceren.
+1. Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/).
+2. Zoek **onder Alle aanbiedingen**de aanbieding die u wilt bijwerken.
+3. Selecteer onder het tabblad **SKU's** de optie **Nieuwe SKU toevoegen** en geef een **SKU-id** op in het pop-upvenster.
+4. Publiceer de container opnieuw met de stappen die zijn beschreven in [aanbieding Voor de container publiceren](./cpp-publish-offer.md).
+5. Selecteer **Publiceren** om de werkstroom te starten om uw nieuwe SKU te publiceren.
 
-### <a name="update-offer-marketplace-metadata"></a>Update aanbieding Marketplace-meta gegevens
+### <a name="update-offer-marketplace-metadata"></a>Update bieden marktplaats metadata
 
-Voer de volgende stappen uit om de Marketplace-meta gegevens bij te werken die zijn gekoppeld aan uw aanbieding. (Bijvoorbeeld: Bedrijfs naam, logo's, enzovoort)
+Gebruik de volgende stappen om de metagegevens van de marktplaats bij te werken die aan uw aanbieding zijn gekoppeld. (Bijvoorbeeld: bedrijfsnaam, logo's en etc.)
 
-1. Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
-2. Zoek onder **alle aanbiedingen**de aanbieding die u wilt bijwerken.
-3. Ga naar het tabblad **Marketplace** . Volg de instructies in het artikel aanbieding van de [publicatie container](./cpp-publish-offer.md) maken om meta gegevens te wijzigen.
-4. Selecteer **publiceren** om de werk stroom te starten om uw wijzigingen te publiceren.
+1. Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/).
+2. Zoek **onder Alle aanbiedingen**de aanbieding die u wilt bijwerken.
+3. Ga naar het tabblad **Marketplace.** Gebruik de instructies in het artikel [Aanbiedingsaanbod publiceren](./cpp-publish-offer.md) om metagegevens wijzigingen aan te brengen.
+4. Selecteer **Publiceren** om de werkstroom te starten om uw wijzigingen te publiceren.
 
 ## <a name="compare-feature"></a>Functie vergelijken
 
-Wanneer u wijzigingen aanbrengt in een gepubliceerde aanbieding, kunt u de functie **compare** gebruiken om de wijzigingen die u hebt aangebracht, te controleren.
+Wanneer u wijzigingen aanbrengt in een gepubliceerde aanbieding, u de functie **Vergelijken** gebruiken om de wijzigingen die u hebt aangebracht te controleren.
 
-### <a name="to-use-the-compare-feature"></a>De functie Compare gebruiken:
+### <a name="to-use-the-compare-feature"></a>Ga als u de functie Vergelijken gebruiken:
 
-1. Selecteer op elk moment in het bewerkings proces vergelijken voor uw aanbieding.
-2. Bekijk de kant-en-zij-versies van marketing assets en meta gegevens.
+1. Selecteer Op elk moment in het bewerkingsproces de optie Vergelijken voor uw aanbieding.
+2. Kijk naar side-by-side versies van marketing assets en metadata.
 
 
-## <a name="history-of-publishing-actions"></a>Geschiedenis van publicatie acties
+## <a name="history-of-publishing-actions"></a>Geschiedenis van publicatieacties
 
-Als u historische publicatie activiteiten wilt zien, selecteert u het tabblad **geschiedenis** in de linkernavigatiebalk van Cloud Partner-Portal. U kunt de tijds tempels zien die worden gemaakt tijdens de levens duur van uw aanbiedingen in azure Marketplace.
+Als u historische publicatieactiviteiten wilt bekijken, selecteert u het tabblad **Geschiedenis** op de linkernavigatiemenubalk van Cloud Partner Portal. U de tijdstempelacties zien die zijn uitgevoerd tijdens de levensduur van uw Azure Marketplace-aanbiedingen.

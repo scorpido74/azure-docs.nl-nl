@@ -1,46 +1,46 @@
 ---
-title: Open bare toegang tot het netwerk weigeren-Azure Portal-Azure Database for MariaDB
-description: Meer informatie over het configureren van toegang tot open bare netwerken met behulp van Azure Portal voor uw Azure Database for MariaDB
+title: Openbare netwerktoegang weigeren - Azure-portal - Azure-database voor MariaDB
+description: Meer informatie over het configureren van Openbare Netwerktoegang weigeren met Azure-portal voor uw Azure-database voor MariaDB
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 87b6033e486e9009573436628d0183c8a022aced
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79375237"
 ---
-# <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Open bare netwerk toegang in Azure Database for MariaDB weigeren met Azure Portal
+# <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>Openbare netwerktoegang in Azure-database voor MariaDB weigeren met Azure-portal
 
-In dit artikel wordt beschreven hoe u een Azure Database for MariaDB server kunt configureren om alle open bare configuraties te weigeren en alleen verbindingen via persoonlijke eind punten toe te staan om de netwerk beveiliging verder uit te breiden.
+In dit artikel wordt beschreven hoe u een Azure Database voor MariaDB-server configureren om alle openbare configuraties te weigeren en alleen verbindingen via privéeindpunten toe te staan om de netwerkbeveiliging verder te verbeteren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze handleiding, hebt u het volgende nodig:
+Om deze handleiding te voltooien, moet u het:
 
-* Een [Azure database for MariaDB](quickstart-create-MariaDB-server-database-using-azure-portal.md)
+* Een [Azure-database voor MariaDB](quickstart-create-MariaDB-server-database-using-azure-portal.md)
 
-## <a name="set-deny-public-network-access"></a>Instellen van open bare netwerk toegang weigeren
+## <a name="set-deny-public-network-access"></a>Toegang tot openbare netwerken weigeren instellen
 
-Voer de volgende stappen uit om de MariaDB-server in te stellen voor toegang tot open bare netwerken:
+Volg de volgende stappen om MariaDB-server Deny Public Network Access in te stellen:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)uw bestaande Azure database for MariaDB-server.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)uw bestaande Azure-database voor MariaDB-server.
 
-1. Klik op de pagina MariaDB-server onder **instellingen**op **verbindings beveiliging** om de pagina verbindings beveiliging configureren te openen.
+1. Klik op de pagina MariaDB-server onder **Instellingen**op **Verbindingsbeveiliging** om de pagina met verbindingsbeveiliging te openen.
 
-1. Selecteer in open bare netwerk toegang weigeren de optie **Ja** om open bare toegang voor uw MariaDB-server in te scha kelen.
+1. Selecteer in Openbare netwerktoegang weigeren de optie **Ja** om de toegang van het publiek voor uw MariaDB-server te weigeren.
 
-    ![Netwerk toegang Azure Database for MariaDB weigeren](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
+    ![Azure Database voor MariaDB Deny-netwerktoegang](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
 
 1. Klik op **Opslaan** om de wijzigingen op te slaan.
 
-1. Bij een melding wordt bevestigd dat de instelling verbindings beveiliging is ingeschakeld.
+1. Een melding bevestigt dat de verbindingsbeveiligingsinstelling is ingeschakeld.
 
-    ![Azure Database for MariaDB netwerk toegang weigeren](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
+    ![Azure Database voor MariaDB Deny netwerktoegang succes](./media/howto-deny-public-network-access/deny-public-network-access-success.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [het maken van waarschuwingen over metrische gegevens](howto-alert-metric.md).
+Meer informatie over [het maken van waarschuwingen over statistieken](howto-alert-metric.md).

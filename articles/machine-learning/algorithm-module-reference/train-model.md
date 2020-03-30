@@ -1,7 +1,7 @@
 ---
-title: 'Train model: module verwijzing'
+title: 'Treinmodel: modulereferentie'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module **Train model** in azure machine learning voor het trainen van een classificatie of regressie model.
+description: Meer informatie over het gebruik van de module **Treinmodel** in Azure Machine Learning om een classificatie- of regressiemodel te trainen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,71 +9,71 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0a9728e05aee27e74054a77e2c9be7dc08968207
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137921"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455856"
 ---
-# <a name="train-model-module"></a>Module Train-Model
+# <a name="train-model-module"></a>Treinmodelmodule
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module om een classificatie of regressie model te trainen. De training vindt plaats nadat u een model hebt gedefinieerd en de para meters hebt ingesteld, en dat gelabelde gegevens vereist. U kunt ook het **Train-model** gebruiken om een bestaand model opnieuw te trainen met nieuwe gegevens. 
+Gebruik deze module om een classificatie- of regressiemodel te trainen. Training vindt plaats nadat u een model hebt gedefinieerd en de parameters hebt ingesteld, en vereist gecodeerde gegevens. U **Train Model** ook gebruiken om een bestaand model om te scholen met nieuwe gegevens. 
 
-## <a name="how-the-training-process-works"></a>Hoe het trainings proces werkt
+## <a name="how-the-training-process-works"></a>Hoe het trainingsproces werkt
 
-In Azure Machine Learning is het maken en gebruiken van een machine learning model doorgaans een proces dat uit drie stappen bestaat. 
+In Azure Machine Learning is het maken en gebruiken van een machine learning-model meestal een proces in drie stappen. 
 
-1. U configureert een model door een bepaald type algoritme te kiezen en de para meters of Hyper parameters te definiëren. Kies een van de volgende model typen: 
+1. U configureert een model door een bepaald type algoritme te kiezen en de parameters of hyperparameters te definiëren. Kies een van de volgende modeltypen: 
 
-    + **Classificatie** modellen, gebaseerd op Neural-netwerken, beslissings structuren en beslissings bossen en andere algoritmen.
-    + **Regressie** modellen, die standaard lineaire regressie kunnen bevatten, of die gebruikmaken van andere algoritmen, waaronder Neural netwerken en Bayesiaanse regressie.  
+    + **Classificatiemodellen,** gebaseerd op neurale netwerken, beslissingsbomen en beslissingsbossen en andere algoritmen.
+    + **Regressiemodellen,** die standaard lineaire regressie kunnen bevatten, of die andere algoritmen gebruiken, waaronder neurale netwerken en Bayesiaanse regressie.  
 
-2. Geef een gegevensset op die een label heeft en die gegevens bevat die compatibel zijn met het algoritme. Verbind zowel de gegevens als het model om het **model te trainen**.
+2. Geef een gegevensset op die is gelabeld en gegevens heeft die compatibel zijn met het algoritme. Sluit zowel de gegevens als het model aan **op Train Model**.
 
-    Wat de training produceert, is een specifieke binaire indeling, de iLearner, die de statistische patronen inkapselt die zijn geleerd van de gegevens. U kunt deze indeling niet rechtstreeks wijzigen of lezen. andere modules kunnen echter dit getrainde model gebruiken. 
+    Wat training oplevert is een specifiek binair formaat, de iLearner, dat de statistische patronen inkapselt die uit de gegevens zijn geleerd. U deze indeling niet rechtstreeks wijzigen of lezen; andere modules kunnen dit getrainde model echter gebruiken. 
     
-    U kunt ook de eigenschappen van het model weer geven. Zie de sectie met resultaten voor meer informatie.
+    U ook de eigenschappen van het model weergeven. Zie de sectie Resultaten voor meer informatie.
 
-3. Nadat de training is voltooid, kunt u het getrainde model met een van de [Score modules](./score-model.md)gebruiken om voor spellingen te doen op nieuwe gegevens.
+3. Nadat de training is voltooid, gebruikt u het getrainde model met een van de [scoremodules](./score-model.md)om voorspellingen te doen over nieuwe gegevens.
 
-## <a name="how-to-use-train-model"></a>Train model gebruiken 
+## <a name="how-to-use-train-model"></a>Treinmodel gebruiken 
   
-1.  Configureer in Azure Machine Learning een classificatie model of regressie model.
+1.  Configureer in Azure Machine Learning een classificatiemodel of regressiemodel.
     
-2. Voeg de module **Train model** toe aan de pijp lijn.  U kunt deze module vinden onder de categorie **machine learning** . Vouw **Train**uit en sleep de module **Train model** naar uw pijp lijn.
+2. Voeg de module **Treinmodel** toe aan de pijplijn.  U vindt deze module onder de categorie **Machine Learning.** Vouw **Train**uit en sleep vervolgens de module **Treinmodel** in uw pijplijn.
   
-3.  Koppel de niet-getrainde modus aan de linkerkant. Koppel de trainings gegevensset aan de rechter invoer van **Train model**.
+3.  Bevestig aan de linkerkant de ongetrainde modus. Bevestig de trainingsgegevensset aan de rechterinvoer van **Train Model**.
 
-    De trainings gegevensset moet een kolom Label bevatten. Alle rijen zonder labels worden genegeerd.
+    De trainingsgegevensset moet een labelkolom bevatten. Alle rijen zonder labels worden genegeerd.
   
-4.  Klik bij **Label kolom**op **kolom bewerken** in het rechter paneel van de module en kies één kolom die de resultaten bevat die het model kan gebruiken voor de training.
+4.  Klik bij **de kolom Label**op Kolom **bewerken** in het rechterdeelvenster van de module en kies één kolom met resultaten die het model kan gebruiken voor training.
   
-    - Voor classificatie problemen moet de kolom label **categorische** waarden of **discrete** waarden bevatten. Enkele voor beelden zijn een Ja/Nee-classificatie, een ziekte classificatie code of naam of een inkomsten groep.  Als u een noncategorical-kolom selecteert, wordt er tijdens de training een fout geretourneerd door de module.
+    - Voor classificatieproblemen moet de labelkolom **categorische** waarden of **afzonderlijke** waarden bevatten. Enkele voorbeelden zijn een ja/nee-classificatie, een ziekteclassificatiecode of -naam of een inkomensgroep.  Als u een niet-categorische kolom kiest, geeft de module een fout tijdens de training.
   
-    -   Voor regressie problemen moet de kolom label **numerieke** gegevens bevatten die de variabele antwoord vertegenwoordigt. In het ideale geval duiden de numerieke gegevens op een doorlopende schaal. 
+    -   Voor regressieproblemen moet de labelkolom **numerieke** gegevens bevatten die de antwoordvariabele vertegenwoordigen. Idealiter vertegenwoordigen de numerieke gegevens een continue schaal. 
     
-    Voor beelden hiervan zijn een score voor een credit risico, de geschatte tijd voor het mislukken van een harde schijf of het verwachte aantal aanroepen naar een Call Center op een bepaalde dag of tijd.  Als u geen numerieke kolom kiest, wordt er mogelijk een fout bericht weer geven.
+    Voorbeelden hiervan zijn een credit risk score, de verwachte tijd om te mislukken voor een harde schijf, of het voorspelde aantal oproepen naar een call center op een bepaalde dag of tijd.  Als u geen numerieke kolom kiest, krijgt u mogelijk een foutmelding.
   
-    -   Als u niet opgeeft welke label kolom u wilt gebruiken, wordt Azure Machine Learning afleiden dat de juiste label kolom is door gebruik te maken van de meta gegevens van de gegevensset. Als de verkeerde kolom wordt gekozen, gebruikt u de kolom kiezer om deze te corrigeren.
+    -   Als u niet opgeeft welke labelkolom u wilt gebruiken, probeert Azure Machine Learning met behulp van de metagegevens van de gegevensset af te leiden welke de juiste labelkolom is. Als de verkeerde kolom wordt geselecteerd, gebruikt u de kolomkiezer om deze te corrigeren.
   
     > [!TIP] 
-    > Als u problemen ondervindt met het gebruik van de kolom kiezer, raadpleegt u het artikel [kolommen in gegevensset selecteren](./select-columns-in-dataset.md) voor tips. Hierin worden enkele algemene scenario's en tips beschreven voor het gebruik van de opties **with Rules** en **op naam** .
+    > Zie het artikel [Kolommen selecteren in gegevensset](./select-columns-in-dataset.md) voor tips als u problemen hebt met het gebruik van de kolomkiezer. Het beschrijft een aantal veelvoorkomende scenario's en tips voor het gebruik van de **opties MET REGELS** en **NAAM.**
   
-5.  Voer de pijplijn uit. Als u veel gegevens hebt, kan dit enige tijd duren.
+5.  Verzend de pijplijn. Als u veel gegevens hebt, kan dit even duren.
 
-## <a name="bkmk_results"></a>Levert
+## <a name="results"></a><a name="bkmk_results"></a>Resultaten
 
-Nadat het model is getraind:
+Nadat het model is opgeleid:
 
 
-+ Als u het model in andere pijp lijnen wilt gebruiken, selecteert u de module en selecteert u het pictogram **gegevensset registreren** onder het tabblad **uitvoer** in het rechterdeel venster. U kunt opgeslagen modellen openen in het module palet onder **gegevens sets**.
++ Als u het model in andere pijplijnen wilt gebruiken, selecteert u de module en selecteert u het pictogram **Gegevensset registreren** onder het tabblad **Uitvoer** in het rechterdeelvenster. U hebt toegang tot opgeslagen modellen in het modulepalet onder **Gegevenssets**.
 
-+ Als u het model wilt gebruiken bij het voors pellen van nieuwe waarden, verbindt u het met de module [score model](./score-model.md) , samen met nieuwe invoer gegevens.
++ Als u het model wilt gebruiken bij het voorspellen van nieuwe waarden, verbindt u het met de module [Scoremodel,](./score-model.md) samen met nieuwe invoergegevens.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

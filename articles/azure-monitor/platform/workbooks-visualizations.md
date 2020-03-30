@@ -1,6 +1,6 @@
 ---
-title: Visualisaties van Azure Monitor werkmap
-description: Meer informatie over alle Azure Monitor werkmap visualisaties-onderdelen, zoals tekst, grafieken, rasters, structuren en grafieken.
+title: Azure Monitor-werkmapvisualisaties
+description: Meer informatie over alle onderdelen van azure monitor-werkmapvisualisaties, waaronder - tekst, grafieken, rasters, bomen en grafieken.
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,157 +10,157 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658027"
 ---
-# <a name="azure-monitor-workbook-visualizations"></a>Visualisaties van Azure Monitor werkmap
+# <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor-werkmapvisualisaties
 
-Azure Monitor werkmappen ondersteunen een aantal verschillende stijlen van visualisaties om te voldoen aan uw rapportage behoeften. In dit artikel vindt u voor beelden van elk type visualisatie.
+Azure Monitor-werkmappen ondersteunen een aantal verschillende stijlen visualisaties om aan uw rapportagebehoeften te voldoen. In dit artikel vindt u voorbeelden van elk type visualisatie.
 
 ## <a name="text"></a>Tekst
 
-Met werkmappen kunnen auteurs tekst blokken in hun werkmappen bevatten. De tekst kan een menselijke analyse zijn van telemetrie, informatie om gebruikers te helpen bij het interpreteren van uw gegevens, sectie koppen, enzovoort.
+Met werkmappen kunnen auteurs tekstblokken opnemen in hun werkmappen. De tekst kan menselijke analyse van telemetrie zijn, informatie om gebruikers te helpen uw gegevens te interpreteren, sectiekoppen, enz.
 
-![Scherm opname van Apdex-tabel met tekst](./media/workbooks-visualizations/apdex.png)
+![Schermafbeelding van de tabel Apdex met tekst](./media/workbooks-visualizations/apdex.png)
 
-Tekst wordt toegevoegd aan de hand van een besturings element voor een prijs opwaardering, waarmee het besturings element voor volledige opmaak
+Tekst wordt toegevoegd via een Markdown-besturingselement dat voorziet in volledige opmaakbesturingselement.
 
-![Scherm opname van onbewerkte prijs opgave die de gerenderde tabel bouwt](./media/workbooks-visualizations/markdown.png)
+![Schermafbeelding van ruwe markdown die de gerenderde tabel bouwt](./media/workbooks-visualizations/markdown.png)
 
-### <a name="add-a-text-control"></a>Een besturings element tekst toevoegen
+### <a name="add-a-text-control"></a>Een tekstbesturingselement toevoegen
 
-1. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht **bewerken** .
-2. Gebruik de koppeling **tekst toevoegen** om een besturings element tekst toe te voegen aan de werkmap.
-3. Prijs verlaging toevoegen aan het besturings element.
-4. Klik op de knop **bewerken is voltooid** om de opgemaakte tekst te bekijken.
+1. Schakel de werkmap over naar de bewerkingsmodus door op het werkbalkitem **Bewerken** te klikken.
+2. Gebruik de koppeling **Tekst toevoegen** om een tekstbesturingselement toe te voegen aan de werkmap.
+3. Markdown toevoegen aan het besturingselement.
+4. Klik op de knop **Gereed bewerken** om de opgemaakte tekst weer te geven.
 
 > [!TIP]
-> Gebruik dit [Cheat-blad voor prijs verlaging](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) om meer te weten te komen over verschillende opmaak opties.
+> Gebruik dit [spiekbriefje van Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) voor meer informatie over verschillende opmaakopties.
 
-## <a name="charts"></a>Diagrammen
+## <a name="charts"></a>Grafieken
 
-Met werkmappen kunnen bewakings gegevens worden weer gegeven als grafieken. Ondersteunde grafiek typen zijn onder andere lijn-, staaf-, staaf-categorische, vlak-, spreidings-en cirkel-en tijd diagrammen. Auteurs kunnen ervoor kiezen om de hoogte, breedte, kleuren palet, legenda, titels, no-data-bericht, enzovoort van de grafiek aan te passen.
+Met werkmappen kunnen bewakingsgegevens worden gepresenteerd als grafieken. Ondersteunde grafiektypen zijn lijn, balk, balk categorisch, gebied, spreidingspercelen, cirkel en tijd. Auteurs kunnen ervoor kiezen om de hoogte, breedte, kleurenpalet, legenda, titels, no-data bericht, etc. van de grafiek aan te passen.
 
-Werkmappen ondersteunen grafieken voor logboeken en metrische gegevens bronnen. 
+Werkmappen ondersteunen grafieken voor zowel logboeken als metrische gegevensbronnen. 
 
-### <a name="adding-a-log-chart"></a>Een logboek grafiek toevoegen
+### <a name="adding-a-log-chart"></a>Een logboekdiagram toevoegen
 
-1. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht **bewerken** .
-2. Gebruik de koppeling **query toevoegen** om een besturings element voor een logboek query toe te voegen aan de werkmap.
-3. Selecteer het query type als **logboek**, resource type (bijvoorbeeld Application Insights) en de resources om het doel te bereiken.
-4. Gebruik de query-editor om de [KQL](https://docs.microsoft.com/azure/kusto/query/) voor uw analyse in te voeren (bijvoorbeeld trend van aanvragen).
-5. Stel de visualisatie in op een van de volgende elementen: **vlak**, **staaf**, **staaf (categorische)** , **lijn**, **cirkel**, **sprei ding**of **tijd**.
-6. Stel andere para meters in als dat nodig is, zoals een tijds bereik, visualisatie, grootte, kleuren palet en legenda.
+1. Schakel de werkmap over naar de bewerkingsmodus door op het werkbalkitem **Bewerken** te klikken.
+2. Gebruik de koppeling **Query toevoegen** om een logboekquerybesturingselement toe te voegen aan de werkmap.
+3. Selecteer het querytype als **Logboek,** resourcetype (bijvoorbeeld Toepassingsinzichten) en de resources die u wilt targeten.
+4. Gebruik de queryeditor om de [KQL](https://docs.microsoft.com/azure/kusto/query/) in te voeren voor uw analyse (bijvoorbeeld trend van aanvragen).
+5. Stel de visualisatie in op een van: **Gebied**, **Balk**, **Staaf (categorisch),** **Lijn**, **Cirkel,** **Spreiding**of **Tijd**.
+6. Stel indien nodig andere parameters in- zoals tijdbereik, visualisatie, grootte, kleurenpalet en legenda.
 
-![Scherm afbeelding van de logboek grafiek in de bewerkings modus](./media/workbooks-visualizations/log-chart.png)
+![Schermafbeelding van logboekdiagram in de bewerkingsmodus](./media/workbooks-visualizations/log-chart.png)
 
-#### <a name="log-chart-parameters"></a>Para meters van het logboek diagram
+#### <a name="log-chart-parameters"></a>Parameters van logboekdiagram
 
 | Parameter | Uitleg | Voorbeeld |
 | ------------- |:-------------|:-------------|
-| `Query Type` | Het type query dat moet worden gebruikt | Log, Azure-resource grafiek, etc. |
-| `Resource Type` | Het bron type van het doel | Application Insights, Log Analytics of Azure-eerst |
-| `Resources` | Een set resources waaruit de metrische waarde moet worden opgehaald | MyApp1 |
-| `Time Range` | Het tijd venster voor het weer geven van de logboek grafiek | Vorig uur, afgelopen 24 uur, etc. |
-| `Visualization` | De visualisatie die moet worden gebruikt | Vlak, staaf, lijn, cirkel, sprei ding, tijd, staaf categorische |
-| `Size` | De verticale grootte van het besturings element | Klein, gemiddeld, groot of volledig |
-| `Color palette` | Het kleuren palet dat in de grafiek moet worden gebruikt. Genegeerd in de modus met meerdere metrieken of segmenten. | Blauw, groen, rood, etc. |
-| `Legend` | De aggregatie functie die moet worden gebruikt voor de legenda | Som of gemiddelde van waarden of Max, min, eerste, laatste waarde |
-| `Query` | Een KQL-query waarmee gegevens worden geretourneerd in de indeling die wordt verwacht door de grafiek visualisatie | _vraagt \|-reeks aanvragen = aantal () standaard = 0 op tijds tempel van geleden (1d) tot nu () stap 1U_ |
+| `Query Type` | Het type query dat moet worden gebruikt | Logboek, Azure Resource Graph, enz. |
+| `Resource Type` | Het resourcetype dat u wilt targeten | Toepassingsinzichten, Logboekanalyse of Azure-first |
+| `Resources` | Een set resources om de waarde van de statistieken te halen uit | MyApp1 (MyApp1) |
+| `Time Range` | Het tijdvenster om het logboekdiagram weer te geven | Laatste uur, Laatste 24 uur, enz. |
+| `Visualization` | De visualisatie die u wilt gebruiken | Gebied, Bar, Lijn, Pie, Scatter, Tijd, balk categorisch |
+| `Size` | De verticale grootte van het besturingselement | Klein, gemiddeld, groot of vol |
+| `Color palette` | Het kleurenpalet dat u in de grafiek wilt gebruiken. Genegeerd in de multimetrische of gesegmenteerde modus. | Blauw, groen, rood, enz. |
+| `Legend` | De aggregatiefunctie die u voor de legenda moet gebruiken | Som of Gemiddelde van waarden of Max, Min, Eerste, Laatste waarde |
+| `Query` | Elke KQL-query die gegevens retourneert in de indeling die wordt verwacht door de grafiekvisualisatie | _aanvragen \| make-series Requests = count() default = 0 on timestamp from ago(1d) to now() stap 1h_ |
 
 ### <a name="adding-a-metric-chart"></a>Een metrische grafiek toevoegen
 
-1. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht **bewerken** .
-2. Gebruik de koppeling **metrische gegevens toevoegen** om een metrische besturings element toe te voegen aan de werkmap.
-3. Selecteer een resource type (bijvoorbeeld opslag account), de resources die het doel moeten zijn, de metrische naam ruimte en naam en de aggregatie die moet worden gebruikt.
-4. Stel andere para meters in als dat nodig is, zoals een tijds bereik, Split-op, visualisatie, grootte en kleuren palet.
+1. Schakel de werkmap over naar de bewerkingsmodus door op het werkbalkitem **Bewerken** te klikken.
+2. Gebruik de **koppeling Metrische koppeling toevoegen** om een metrische besturingselement toe te voegen aan de werkmap.
+3. Selecteer een resourcetype (bijvoorbeeld Opslagaccount), de resources die u wilt targeten, de metrische naamruimte en naam en de te gebruiken aggregatie.
+4. Stel indien nodig andere parameters in, zoals tijdbereik, split-by, visualisatie, grootte en kleurenpalet.
 
-![Scherm opname van grafiek met metrische gegevens in de bewerkings modus](./media/workbooks-visualizations/metric-chart.png)
+![Schermafbeelding van metrische grafiek in de bewerkingsmodus](./media/workbooks-visualizations/metric-chart.png)
 
-#### <a name="metric-chart-parameters"></a>Metrische diagram parameters
+#### <a name="metric-chart-parameters"></a>Parameters voor metrische grafieken
 
 | Parameter | Uitleg | Voorbeeld |
 | ------------- |:-------------|:-------------|
-| `Resource Type` | Het bron type van het doel | Opslag of virtuele machine. |
-| `Resources` | Een set resources waaruit de metrische waarde moet worden opgehaald | MyStorage1 |
-| `Namespace` | De naam ruimte met de metriek | Opslag >-BLOB |
-| `Metric` | De metrische gegevens voor visualiseren | Opslag > BLOB-> transacties |
-| `Aggregation` | De aggregatie functie die moet worden toegepast op de metriek | Som, aantal, gemiddelde, etc. |
-| `Time Range` | Het tijd venster voor het weer geven van de metriek in | Vorig uur, afgelopen 24 uur, etc. |
-| `Visualization` | De visualisatie die moet worden gebruikt | Vlak, staaf, lijn, sprei ding, Raster |
-| `Split By` | De metriek voor een dimensie eventueel splitsen | Trans acties op geo-type |
-| `Size` | De verticale grootte van het besturings element | Klein, gemiddeld of groot |
-| `Color palette` | Het kleuren palet dat in de grafiek moet worden gebruikt. Wordt genegeerd als de para meter `Split by` wordt gebruikt | Blauw, groen, rood, etc. |
+| `Resource Type` | Het resourcetype dat u wilt targeten | Opslag of virtuele machine. |
+| `Resources` | Een set resources om de waarde van de statistieken te halen uit | MyStorage1 |
+| `Namespace` | De naamruimte met de statistiek | Opslag > Blob |
+| `Metric` | De statistiek die u wilt visualiseren | Opslag > >-transacties |
+| `Aggregation` | De aggregatiefunctie die moet worden toegepast op de statistiek | Som, telling, gemiddelde, enz. |
+| `Time Range` | Het tijdvenster waarin de statistiek moet worden weergegeven | Laatste uur, Laatste 24 uur, enz. |
+| `Visualization` | De visualisatie die u wilt gebruiken | Gebied, Bar, Lijn, Verstrooiing, Raster |
+| `Split By` | De statistiek eventueel splitsen op een dimensie | Transacties op geotype |
+| `Size` | De verticale grootte van het besturingselement | Klein, gemiddeld of groot |
+| `Color palette` | Het kleurenpalet dat u in de grafiek wilt gebruiken. Genegeerd als `Split by` de parameter wordt gebruikt | Blauw, groen, rood, enz. |
 
 ## <a name="grids"></a>Rasters
 
-Rasters of tabellen zijn een veelgebruikte manier om gegevens te presen teren aan gebruikers. Met werkmappen kunnen gebruikers de kolommen van het raster afzonderlijk opmaken om een uitgebreide gebruikers interface te bieden voor hun rapporten.
+Rasters of tabellen zijn een veelvoorkomende manier om gegevens aan gebruikers te presenteren. Met werkmappen kunnen gebruikers de kolommen van het raster afzonderlijk stylen om een uitgebreide gebruikersinterface voor hun rapporten te bieden.
 
-In het onderstaande voor beeld ziet u een raster waarin pictogrammen, Heatmaps en Spark-balken worden gecombineerd om complexe gegevens te presen teren. De werkmap bevat ook sorteren, een zoekvak en een go-to-Analytics-knop.
+In het onderstaande voorbeeld ziet u een raster dat pictogrammen, heatmaps en spark-bars combineert om complexe informatie weer te geven. De werkmap biedt ook sorteren, een zoekvak en een go-to-analytics-knop.
 
-![Scherm opname van raster op basis van logboek](./media/workbooks-visualizations/grid.png)
+![Schermafbeelding van logboekraster](./media/workbooks-visualizations/grid.png)
 
-### <a name="adding-a-log-based-grid"></a>Een op een logboek gebaseerd raster toevoegen
+### <a name="adding-a-log-based-grid"></a>Een op logboeken gebaseerd raster toevoegen
 
-1. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht **bewerken** .
-2. Gebruik de koppeling **query toevoegen** om een besturings element voor een logboek query toe te voegen aan de werkmap.
-3. Selecteer het query type als **logboek**, resource type (bijvoorbeeld Application Insights) en de resources om het doel te bereiken.
-4. Gebruik de query-editor om de KQL voor uw analyse in te voeren (bijvoorbeeld Vm's met geheugen onder een drempel waarde)
-5. Visualisatie instellen op **raster**
-6. Stel andere para meters in als dat nodig is, zoals het tijds bereik, de grootte, het kleuren palet en de legenda.
+1. Schakel de werkmap over naar de bewerkingsmodus door op het werkbalkitem **Bewerken** te klikken.
+2. Gebruik de koppeling **Query toevoegen** om een logboekquerybesturingselement toe te voegen aan de werkmap.
+3. Selecteer het querytype als **Logboek,** resourcetype (bijvoorbeeld Toepassingsinzichten) en de resources die u wilt targeten.
+4. De queryeditor gebruiken om de KQL in te voeren voor uw analyse (bijvoorbeeld VM's met geheugen onder een drempelwaarde)
+5. De visualisatie instellen op **Raster**
+6. Stel indien nodig andere parameters in- zoals tijdbereik, grootte, kleurenpalet en legenda.
 
-![Scherm opname van raster query op basis van logboek](./media/workbooks-visualizations/grid-query.png)
+![Schermafbeelding van op logboeken gebaseerde rasterquery](./media/workbooks-visualizations/grid-query.png)
 
-## <a name="tiles"></a>Pagina's
+## <a name="tiles"></a>Tegels
 
-Tegels zijn een zeer handige manier om samenvattings gegevens te presen teren in werkmappen. In de onderstaande afbeelding ziet u een algemeen gebruik van tegels-samen vatting op app-niveau boven op een gedetailleerd raster.
+Tegels zijn een zeer nuttige manier om overzichtsgegevens in werkmappen te presenteren. De afbeelding hieronder toont een veelgebruikte use case van tegels - samenvatting op app-niveau bovenop een gedetailleerd raster.
 
-![Scherm opname van de weer gave samen vatting van Tegel](./media/workbooks-visualizations/tiles-summary.png)
+![Schermafbeelding van de overzichtsweergave van tegels](./media/workbooks-visualizations/tiles-summary.png)
 
-Werkmap tegels bieden ondersteuning voor een titel, subtitel, grote tekst, pictogrammen, kleur overgangen op basis van metrische gegevens, vonk lijnen/staven, voet tekst, enzovoort.
+Werkmaptegels ondersteunen het weergeven van een titel, ondertitel, grote tekst, pictogrammen, op metrische basis gebaseerde verlopen, sparkline/bars, voettekst, enz.
 
 ### <a name="adding-a-tile"></a>Een tegel toevoegen
 
-1. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht _bewerken_ .
-2. Gebruik de koppeling **query toevoegen** om een besturings element voor een logboek query toe te voegen aan de werkmap. 
-3. Selecteer het query type als **logboek**, resource type (bijvoorbeeld Application Insights) en de resources om het doel te bereiken.
-4. De query-editor gebruiken om de KQL voor uw analyse in te voeren
+1. Schakel de werkmap over naar de bewerkingsmodus door op het werkbalkitem _Bewerken_ te klikken.
+2. Gebruik de koppeling **Query toevoegen** om een logboekquerybesturingselement toe te voegen aan de werkmap. 
+3. Selecteer het querytype als **Logboek,** resourcetype (bijvoorbeeld Toepassingsinzichten) en de resources die u wilt targeten.
+4. De queryeditor gebruiken om de KQL in te voeren voor uw analyse
     ```kusto
     requests
     | summarize Requests = count() by appName, name
     | top 7 by Requests desc
     ```
-5. Grootte instellen op **volledig**
+5. Grootte instellen op **Volledig**
 6. De visualisatie instellen op **tegels**
-7. Klik op de knop **tegel instellingen** om het deel venster instellingen te openen
-8. In de **velden naast elkaar**instellen:
-    * Titel: `name`
-    * Links: `Requests`, renderer: `Big Number`, kleuren palet: `Green to Red`, minimale waarde: `0`
-    * Onder: `appName`
-9. Klik op de knop **opslaan en sluiten** onder aan het deel venster.
+7. Klik op de knop **Tegelinstellingen** om het instellingenvenster te openen
+8. Stel **in tegelvelden**het gewenste aantal in:
+    * Titel:`name`
+    * Links: `Requests`, Renderer: `Big Number`, `Green to Red`Kleurenpalet: , Min-waarde:`0`
+    * Onder:`appName`
+9. Klik op de knop **Opslaan en sluiten** onder aan het deelvenster.
 
-![Scherm opname van de weer gave samen vatting van Tegel](./media/workbooks-visualizations/tile-settings.png)
+![Schermafbeelding van de overzichtsweergave van tegels](./media/workbooks-visualizations/tile-settings.png)
 
-Dit is de manier waarop de tegels in de Lees modus worden weer geven:
+Dit is hoe de tegels eruit zullen zien in de leesmodus:
 
-![Scherm opname van de weer gave samen vatting van Tegel](./media/workbooks-visualizations/tiles-read-mode.png)
+![Schermafbeelding van de overzichtsweergave van tegels](./media/workbooks-visualizations/tiles-read-mode.png)
 
-## <a name="trees"></a>Mapstructuren
+## <a name="trees"></a>Bomen
 
-Werkmappen ondersteunen hiërarchische weer gaven via structuur rasters. Met structuren kunnen sommige rijen worden uitgebreid naar het volgende niveau voor een inzoom ervaring.
+Werkmappen ondersteunen hiërarchische weergaven via structuurrasters. Met bomen kunnen sommige rijen worden uitbreidbaar naar het volgende niveau voor een drill-down-ervaring.
 
-In het onderstaande voor beeld ziet u de metrische gegevens over de container status (werkset-grootte) visualiseren als een structuur raster. De knoop punten op het hoogste niveau hier zijn knoop punten van Azure Kubernetes service (AKS), het volgende niveau is een Peul en het laatste niveau is containers. U kunt uw kolommen zoals in een raster (heatmap, pictogrammen en koppelingen) ook opmaken. De onderliggende gegevens bron in dit geval is een Log Analytics-werk ruimte met AKS-Logboeken.
+In het onderstaande voorbeeld worden containerstatusstatistieken (werksetgrootte) weergegeven die zijn gevisualiseerd als een raster voor bomen. De knooppunten op het hoogste niveau zijn hier AKS-knooppunten (Azure Kubernetes Service), het volgende niveau zijn pods en het uiteindelijke niveau zijn containers. Merk op dat u uw kolommen nog steeds opmaken zoals in een raster (heatmap, pictogrammen, koppeling). De onderliggende gegevensbron in dit geval is een Log Analytics-werkruimte met AKS-logboeken.
 
-![Scherm opname van de weer gave samen vatting van Tegel](./media/workbooks-visualizations/trees.png)
+![Schermafbeelding van de overzichtsweergave van tegels](./media/workbooks-visualizations/trees.png)
 
-### <a name="adding-a-tree-grid"></a>Een structuur raster toevoegen
-1. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht _bewerken_ .
-2. Gebruik de koppeling **query toevoegen** om een besturings element voor een logboek query toe te voegen aan de werkmap. 
-3. Selecteer het query type als **logboek**, resource type (bijvoorbeeld Application Insights) en de resources om het doel te bereiken.
-4. De query-editor gebruiken om de KQL voor uw analyse in te voeren
+### <a name="adding-a-tree-grid"></a>Een boomraster toevoegen
+1. Schakel de werkmap over naar de bewerkingsmodus door op het werkbalkitem _Bewerken_ te klikken.
+2. Gebruik de koppeling **Query toevoegen** om een logboekquerybesturingselement toe te voegen aan de werkmap. 
+3. Selecteer het querytype als **Logboek,** resourcetype (bijvoorbeeld Toepassingsinzichten) en de resources die u wilt targeten.
+4. De queryeditor gebruiken om de KQL in te voeren voor uw analyse
     ```kusto
     requests
     | summarize Requests = count() by ParentId = appName, Id = name
@@ -171,44 +171,44 @@ In het onderstaande voor beeld ziet u de metrische gegevens over de container st
     | project Name, Kind, Requests, Id, ParentId
     | order by Requests desc
     ```
-5. Visualisatie instellen op **raster**
-6. Klik op de knop **kolom instellingen** om het deel venster instellingen te openen
-7. Stel in de sectie **structuur/groep per instellingen** onderaan het volgende in:
-    * Structuur type: `Parent/Child`
-    * Id-veld: `Id`
-    * Bovenliggend id-veld: `ParentId`
-    * Uitvouwen weer geven op: `Name`
-    * Vouw het hoogste niveau van de structuur uit: `checked`
-8. In het gedeelte _kolommen_ bovenaan, stelt u het volgende in:
-    * _Id_ -kolom weergave: `Hidden`
-    * _Bovenliggende id_ -kolom weergave: `Hidden`
-    * _Aanvragen_ -kolom renderer: `Bar`, kleur: `Blue`, minimum waarde: `0`
-9. Klik op de knop _opslaan en sluiten_ onder aan het deel venster.    
+5. De visualisatie instellen op **Raster**
+6. Klik op de knop **Kolominstellingen** om het deelvenster Instellingen te openen
+7. Stel in de sectie **Structuur/Groep op instellingen** onderaan het volgende in:
+    * Boomtype:`Parent/Child`
+    * Id-veld:`Id`
+    * Bovenliggend-idveld:`ParentId`
+    * De uitvouwer weergeven op:`Name`
+    * Vouw het bovenste niveau van de boom uit:`checked`
+8. Stel in de sectie _Kolommen_ bovenaan het volgende in:
+    * _Id_ - Kolomrenderer:`Hidden`
+    * _Bovenliggende id_ - Kolomrenderer:`Hidden`
+    * _Aanvragen_ - Kolomrenderer: `Bar` `Blue`, Kleur: , Minimumwaarde:`0`
+9. Klik op de knop _Opslaan en sluiten_ onder aan het deelvenster.    
 
-![Scherm opname van de weer gave samen vatting van Tegel](./media/workbooks-visualizations/tree-settings.png)
+![Schermafbeelding van de overzichtsweergave van tegels](./media/workbooks-visualizations/tree-settings.png)
 
-### <a name="tree-settings"></a>Structuur instellingen
+### <a name="tree-settings"></a>Structuurinstellingen
 
 | Instelling | Uitleg |
 |:------------- |:-------------|
 | `Id Field` | De unieke id van elke rij in het raster |
-| `Parent Id Field` | De id van het bovenliggende item van de huidige rij |
-| `Show the expander on` | De kolom waarin de structuur weergave wordt weer gegeven. Het is gebruikelijk dat structuur rasters hun id en bovenliggend id-veld verbergen, omdat ze niet goed leesbaar zijn. In plaats daarvan wordt de uitbrei ding weer gegeven in een veld met een meer Lees bare waarde, zoals de naam van de entiteit |
-| `Expand the top level of the tree` | Als u dit selectie vakje inschakelt, wordt het structuur raster uitgebreid op het hoogste niveau. Dit is handig als u standaard meer informatie wilt weer geven |
+| `Parent Id Field` | De id van de bovenliggende van de huidige rij |
+| `Show the expander on` | De kolom waarop de tree expander te tonen. Het is gebruikelijk dat boomrasters hun id- en bovenliggende id-veld verbergen omdat ze niet erg leesbaar zijn. In plaats daarvan wordt de uitvouwer weergegeven op een veld met een meer leesbare waarde, zoals de naam van de entiteit |
+| `Expand the top level of the tree` | Indien aangevinkt, wordt het boomraster op het hoogste niveau uitgebreid. Handig als u standaard meer informatie wilt weergeven |
 
 ## <a name="graphs"></a>Grafieken
 
-Werkmappen ondersteunen het visualiseren van wille keurige grafieken op basis van gegevens uit Logboeken om de relaties tussen bewakings entiteiten weer te geven.
+Werkmappen ondersteunen het visualiseren van willekeurige grafieken op basis van gegevens uit logboeken om de relaties tussen bewakingsentiteiten weer te geven.
 
-In de volgende grafiek ziet u gegevens die in/uit een computer worden uitgestroomd via verschillende poorten naar/van externe computers. Het is gekleurd op type (computer versus poort versus extern IP-adres) en de rand grootten komen overeen met de hoeveelheid gegevens die tussen tussen worden geplaatst. De onderliggende gegevens zijn afkomstig van KQL query gericht op VM-verbindingen.
+De onderstaande grafiek toont gegevens die in/uit een computer stromen via verschillende poort-naar-/van externe computers. Het wordt gekleurd op type (computer vs. poort versus extern IP) en de randgroottekomt overeen met de hoeveelheid gegevens die ertussen binnenstromen. De onderliggende gegevens zijn afkomstig van VM-verbindingen voor KQL-querytargeting.
 
-![Scherm opname van de weer gave samen vatting van Tegel](./media/workbooks-visualizations/graph.png)
+![Schermafbeelding van de overzichtsweergave van tegels](./media/workbooks-visualizations/graph.png)
 
 ### <a name="adding-a-graph"></a>Een grafiek toevoegen
-1. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht _bewerken_ .
-2. Gebruik de koppeling **query toevoegen** om een besturings element voor een logboek query toe te voegen aan de werkmap. 
-3. Selecteer het query type als **logboek**, resource type (bijvoorbeeld Application Insights) en de resources om het doel te bereiken.
-4. De query-editor gebruiken om de KQL voor uw analyse in te voeren
+1. Schakel de werkmap over naar de bewerkingsmodus door op het werkbalkitem _Bewerken_ te klikken.
+2. Gebruik de koppeling **Query toevoegen** om een logboekquerybesturingselement toe te voegen aan de werkmap. 
+3. Selecteer het querytype als **Logboek,** resourcetype (bijvoorbeeld Toepassingsinzichten) en de resources die u wilt targeten.
+4. De queryeditor gebruiken om de KQL in te voeren voor uw analyse
     ```kusto
     let data = dependencies
     | summarize Calls = count() by App = appName, Request = operation_Name, Dependency = name
@@ -230,9 +230,9 @@ In de volgende grafiek ziet u gegevens die in/uit een computer worden uitgestroo
     nodes
     | union (links)
     ```
-7. De visualisatie instellen op **Graph**
-8. Klik op de knop **grafiek instellingen** om het deel venster instellingen te openen
-9. Stel in _indelings velden_ onderaan het volgende in:
+7. De visualisatie instellen op **Grafiek**
+8. Klik op de knop **Grafiekinstellingen** om het instellingenvenster te openen
+9. Stel in _Indelingsvelden_ onderaan het gewenste aantal in:
     * `Node Id`: `Id`
     * `Source Id`: `SourceId`
     * `Target Id`: `TargetId`
@@ -242,15 +242,15 @@ In de volgende grafiek ziet u gegevens die in/uit een computer worden uitgestroo
     * `Coloring Type`: `Categorical`
     * `Node Color Field`: `Kind`
     * `Color palette`: `Pastel`
-10. Stel in _instellingen voor knooppunt indeling_ bovenaan het volgende in:
-    * _Bovenste inhoud_: gebruik de kolom `Name`, de kolom weergave: `Text`
-    * _Inhoud centreren_-kolom gebruiken: `Calls`, kolom weergave: `Big Number`, kleuren palet: `None`
-    * _Onderste inhoud_-gebruik kolom: `Kind`, kolom weergave: `Text`
-10. Klik op de knop _opslaan en sluiten_ onder aan het deel venster.
+10. Stel boven in Instellingen voor _knooppuntindeling:_
+    * _Topinhoud_- Kolom `Name`gebruiken: , Kolomrenderer:`Text`
+    * _Inhoud centreren_- `Calls`Kolom gebruiken: `Big Number`, Kolomrenderer: , Kleurenpalet:`None`
+    * _Bodeminhoud_- Kolom `Kind`gebruiken: , Kolomrenderer:`Text`
+10. Klik op de knop _Opslaan en sluiten_ onder aan het deelvenster.
 
-![Scherm opname van de weer gave samen vatting van Tegel](./media/workbooks-visualizations/graph-settings.png)
+![Schermafbeelding van de overzichtsweergave van tegels](./media/workbooks-visualizations/graph-settings.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Implementeer](workbooks-automate.md) werkmappen met Azure Resource Manager.
-* De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.
+* [Werkmappen implementeren](workbooks-automate.md) met Azure Resource Manager.
+* [Beheer](workbooks-access-control.md) en deel de toegang tot uw werkmapbronnen.

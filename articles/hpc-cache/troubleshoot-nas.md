@@ -1,115 +1,115 @@
 ---
-title: Problemen met de NFS-opslag doelen van Azure HPC cache oplossen
-description: Tips voor het voor komen en oplossen van configuratie fouten en andere problemen die kunnen leiden tot fouten bij het maken van een NFS-opslag doel
+title: Problemen oplossen azure HPC Cache NFS-opslagdoelen
+description: Tips om configuratiefouten en andere problemen te voorkomen en op te lossen die kunnen leiden tot fouten bij het maken van een NFS-opslagdoel
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: rohogue
 ms.openlocfilehash: c88ffb9e87bc0688cc87b816efaa8e101e23407c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77652085"
 ---
-# <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Problemen met de NAS-configuratie en NFS-opslag doelen oplossen
+# <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Problemen met NAS-configuratie en NFS-opslagdoel oplossen
 
-Dit artikel bevat oplossingen voor enkele veelvoorkomende configuratie fouten en andere problemen die kunnen voor komen dat Azure HPC-cache een NFS-opslag systeem kan toevoegen als opslag doel.
+In dit artikel vindt u oplossingen voor een aantal veelvoorkomende configuratiefouten en andere problemen die kunnen voorkomen dat Azure HPC-cache een NFS-opslagsysteem toevoegt als opslagdoel.
 
-Dit artikel bevat informatie over het controleren van poorten en het inschakelen van toegang tot het hoofd niveau van een NAS-systeem. Het bevat ook gedetailleerde informatie over minder veelvoorkomende problemen die ertoe kunnen leiden dat het maken van NFS-opslag doel mislukt.
+In dit artikel vindt u informatie over het controleren van poorten en hoe u roottoegang tot een NAS-systeem inschakelen. Het bevat ook gedetailleerde informatie over minder voorkomende problemen die ertoe kunnen leiden dat nfs-opslagdoelcreatie mislukt.
 
 > [!TIP]
-> Lees de [vereisten voor NFS-opslag doelen](hpc-cache-prereqs.md#nfs-storage-requirements)voordat u deze hand leiding gebruikt.
+> Lees voordat u deze handleiding [gebruikt, vereisten voor NFS-opslagdoelen.](hpc-cache-prereqs.md#nfs-storage-requirements)
 
-Als de oplossing voor uw probleem hier niet is opgenomen, [opent u een ondersteunings ticket](hpc-cache-support-ticket.md) zodat micro soft-service en-ondersteuning met u kunnen samen werken om het probleem te onderzoeken en op te lossen.
+Als de oplossing voor uw probleem hier niet is opgenomen, opent u [een ondersteuningsticket](hpc-cache-support-ticket.md) zodat Microsoft Service en Support met u kunnen samenwerken om het probleem te onderzoeken en op te lossen.
 
-## <a name="check-port-settings"></a>Poort instellingen controleren
+## <a name="check-port-settings"></a>Poortinstellingen controleren
 
-Azure HPC-cache vereist lees-/schrijftoegang tot verschillende UDP/TCP-poorten op het back-end NAS-opslag systeem. Zorg ervoor dat deze poorten toegankelijk zijn op het NAS-systeem en dat verkeer wordt toegestaan aan deze poorten via alle firewalls tussen het opslag systeem en het cache-subnet. U moet mogelijk met de firewall en netwerk beheerder voor uw Data Center werken om deze configuratie te controleren.
+Azure HPC-cache heeft lees-/schrijftoegang nodig tot verschillende UDP/TCP-poorten op het back-end NAS-opslagsysteem. Zorg ervoor dat deze poorten toegankelijk zijn op het NAS-systeem en ook dat verkeer is toegestaan naar deze poorten via firewalls tussen het opslagsysteem en het subnet cache. Mogelijk moet u samenwerken met firewall- en netwerkbeheerders voor uw datacenter om deze configuratie te verifiëren.
 
-De poorten zijn verschillend voor opslag systemen van verschillende leveranciers. Controleer daarom de vereisten van uw systeem bij het instellen van een opslag doel.
+De poorten zijn verschillend voor opslagsystemen van verschillende leveranciers, dus controleer de vereisten van uw systeem bij het instellen van een opslagdoel.
 
-In het algemeen moet de cache toegang hebben tot deze poorten:
+Over het algemeen heeft de cache toegang nodig tot deze poorten:
 
 | Protocol | Poort  | Service  |
 |----------|-------|----------|
-| TCP/UDP  | 111   | rpcbind  |
+| TCP/UDP  | 111   | rpcbind rpcbind  |
 | TCP/UDP  | 2049  | NFS      |
 | TCP/UDP  | 4045  | nlockmgr |
-| TCP/UDP  | 4046  | gekoppeld   |
+| TCP/UDP  | 4046  | gemonteerd   |
 | TCP/UDP  | 4047  | status   |
 
-Gebruik de volgende ``rpcinfo`` opdracht voor meer informatie over de specifieke poorten die nodig zijn voor uw systeem. Met deze opdracht hieronder worden de poorten weer gegeven en worden de relevante resultaten in een tabel opgemaakt. (Gebruik het IP-adres van uw systeem in plaats van de *< storage_IP >* term.)
+Als u wilt weten welke specifieke poorten ``rpcinfo`` nodig zijn voor uw systeem, gebruikt u de volgende opdracht. Deze opdracht hieronder geeft een overzicht van de poorten en maakt de relevante resultaten op in een tabel. (Gebruik het IP-adres van uw systeem in plaats van de *<storage_IP>* term.)
 
-U kunt deze opdracht geven vanuit elke Linux-client waarop de NFS-infra structuur is geïnstalleerd. Als u een-client in het cluster-subnet gebruikt, kunt u hiermee ook de connectiviteit tussen het subnet en het opslag systeem controleren.
+U deze opdracht uitvoeren vanaf elke Linux-client waarop de NFS-infrastructuur is geïnstalleerd. Als u een client in het clustersubnet gebruikt, kan deze ook helpen bij het verifiëren van de verbinding tussen het subnet en het opslagsysteem.
 
 ```bash
 rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
 ```
 
-Zorg ervoor dat alle poorten die door de ``rpcinfo`` query worden geretourneerd, onbeperkt verkeer van het subnet van de Azure HPC-cache toestaan.
+Zorg ervoor dat alle poorten ``rpcinfo`` die door de query zijn geretourneerd, onbeperkt verkeer toestaan van het subnet van de Azure HPC-cache.
 
-Controleer deze instellingen zowel op de NAS zelf als op alle firewalls tussen het opslag systeem en het cache-subnet.
+Controleer deze instellingen zowel op de NAS zelf als op alle firewalls tussen het opslagsysteem en het cachesubnet.
 
-## <a name="check-root-access"></a>Toegang tot hoofdmap controleren
+## <a name="check-root-access"></a>Hoofdtoegang controleren
 
-De Azure HPC-cache moet toegang hebben tot de export van uw opslag systeem om het opslag doel te maken. Met name de exports worden gekoppeld als gebruiker-ID 0.
+Azure HPC-cache heeft toegang nodig tot de export van uw opslagsysteem om het opslagdoel te maken. In het bijzonder, het mounts de export als gebruiker ID 0.
 
-Verschillende opslag systemen gebruiken verschillende methoden om deze toegang in te scha kelen:
+Verschillende opslagsystemen gebruiken verschillende methoden om deze toegang mogelijk te maken:
 
-* Linux-servers voegen doorgaans ``no_root_squash`` toe aan het geëxporteerde pad in ``/etc/exports``.
-* NetApp-en EMC-systemen bepalen doorgaans de toegang tot de export regels die zijn gekoppeld aan specifieke IP-adressen of netwerken.
+* Linux-servers voegen ``no_root_squash`` over het algemeen ``/etc/exports``toe aan het geëxporteerde pad in .
+* NetApp- en EMC-systemen beheren doorgaans de toegang met exportregels die zijn gekoppeld aan specifieke IP-adressen of netwerken.
 
-Als u regels voor exporteren gebruikt, moet u er rekening mee houden dat de cache meerdere verschillende IP-adressen van het cache-subnet kan gebruiken. Toegang vanaf het volledige bereik van mogelijke subnet-IP-adressen toestaan.
+Als u exportregels gebruikt, moet u er rekening mee houden dat de cache meerdere verschillende IP-adressen uit het subnet cache kan gebruiken. Toegang toestaan vanuit het volledige scala aan mogelijke subnet IP-adressen.
 
-Werk samen met de leverancier van uw NAS-opslag om het juiste toegangs niveau voor de cache in te scha kelen.
+Werk samen met uw NAS-opslagleverancier om het juiste toegangsniveau voor de cache mogelijk te maken.
 
-### <a name="allow-root-access-on-directory-paths"></a>Toegang tot hoofdmap toestaan voor Directory paden
+### <a name="allow-root-access-on-directory-paths"></a>Roottoegang toestaan op mappaden
 <!-- linked in prereqs article -->
 
-Voor NAS-systemen die hiërarchische directory's exporteren, moet Azure HPC-cache toegang hebben tot de hoofdmap voor elk export niveau.
+Voor NAS-systemen die hiërarchische mappen exporteren, heeft Azure HPC-cache roottoegang nodig tot elk exportniveau.
 
-Een systeem kan bijvoorbeeld drie exports als volgt weer geven:
+Een systeem kan bijvoorbeeld drie uitvoer als deze weergeven:
 
 * ``/ifs``
 * ``/ifs/accounting``
 * ``/ifs/accounting/payroll``
 
-De export ``/ifs/accounting/payroll`` is een onderliggend item van ``/ifs/accounting``en ``/ifs/accounting`` is zelf een onderliggend element van ``/ifs``.
+De ``/ifs/accounting/payroll`` export is ``/ifs/accounting``een ``/ifs/accounting`` kind van , ``/ifs``en is zelf een kind van .
 
-Als u de ``payroll`` exporteren als een HPC-cache-opslag doel, wordt de cache echt gekoppeld ``/ifs/`` en wordt de map payroll van daaruit geopend. Azure HPC-cache heeft ``/ifs`` alleen toegang tot de hoofdmap nodig om de ``/ifs/accounting/payroll`` te kunnen exporteren.
+Als u ``payroll`` de export toevoegt als een opslagdoel voor ``/ifs/`` de HPC-cache, wordt de cache vanaf daar daadwerkelijk gemonteerd en toegang tot de salarismap. Azure HPC-cache heeft ``/ifs`` dus roottoegang ``/ifs/accounting/payroll`` nodig om toegang te krijgen tot de export.
 
-Deze vereiste houdt verband met de manier waarop de cache bestanden indexeert en conflicten met bestanden voor komt, met behulp van bestands ingangen die het opslag systeem biedt.
+Deze vereiste is gerelateerd aan de manier waarop de cache bestanden indexeert en bestandsbotsingen vermijdt, met behulp van bestandsgrepen die het opslagsysteem biedt.
 
-Een NAS-systeem met hiërarchische uitvoer kan verschillende bestands ingangen geven voor hetzelfde bestand als het bestand wordt opgehaald uit verschillende exports. Een client kan bijvoorbeeld ``/ifs/accounting`` koppelen en toegang krijgen tot het bestand ``payroll/2011.txt``. Een andere client koppelt ``/ifs/accounting/payroll`` en opent het bestand ``2011.txt``. Afhankelijk van hoe het opslag systeem bestands ingangen toewijst, kunnen deze twee clients hetzelfde bestand met verschillende bestands ingangen ontvangen (één voor ``<mount2>/payroll/2011.txt`` en één voor ``<mount3>/2011.txt``).
+Een NAS-systeem met hiërarchische export kan verschillende bestandsgrepen voor hetzelfde bestand geven als het bestand wordt opgehaald uit verschillende exporten. Een client kan bijvoorbeeld ``/ifs/accounting`` het bestand ``payroll/2011.txt``monteren en openen. Een andere ``/ifs/accounting/payroll`` client monteert ``2011.txt``en opent het bestand. Afhankelijk van hoe het opslagsysteem bestandsgrepen toewijst, kunnen deze twee clients hetzelfde bestand ontvangen met verschillende bestandsgrepen (één voor ``<mount2>/payroll/2011.txt`` en één voor ``<mount3>/2011.txt``).
 
-Het back-end-opslag systeem houdt interne aliassen voor bestands ingangen bij, maar de Azure HPC-cache kan niet bepalen welke bestands ingangen in de index naar hetzelfde item verwijzen. Het is dus mogelijk dat de cache verschillende schrijf bewerkingen voor hetzelfde bestand kan hebben en dat de wijzigingen onjuist worden toegepast omdat deze niet overeenkomen met het bestand.
+Het back-endopslagsysteem bewaart interne aliassen voor bestandsgrepen, maar Azure HPC Cache kan niet zien welke bestandsgrepen in de index hetzelfde item verwijzen. Het is dus mogelijk dat de cache verschillende schrijft in de cache kan hebben voor hetzelfde bestand en de wijzigingen onjuist kan toepassen omdat het niet weet dat ze hetzelfde bestand zijn.
 
-Als u wilt voor komen dat er conflicten ontstaan met bestanden in meerdere uitvoer bewerkingen, koppelt Azure HPC cache automatisch de meest recente uitvoer in het pad (``/ifs`` in het voor beeld) en gebruikt de bestands ingang die van die export is opgegeven. Als meerdere exports hetzelfde basispad gebruiken, moet Azure HPC-cache toegang hebben tot het pad naar de hoofdmap.
+Om deze mogelijke bestandsbotsing voor bestanden in meerdere exporten te voorkomen, monteert Azure``/ifs`` HPC Cache automatisch de meest ondieper beschikbare export in het pad (in het voorbeeld) en gebruikt het de bestandsgreep die uit die export wordt gegeven. Als meerdere exporten hetzelfde basispad gebruiken, heeft Azure HPC-cache roottoegang tot dat pad nodig.
 
-## <a name="enable-export-listing"></a>Export vermelding inschakelen
+## <a name="enable-export-listing"></a>Exportaanbieding inschakelen
 <!-- link in prereqs article -->
 
-De NAS moet de exports vermelden wanneer de Azure HPC-cache deze opvraagt.
+De NAS moet de export vermelden wanneer de Azure HPC-cache deze opvraagt.
 
-Op de meeste NFS-opslag systemen kunt u dit testen door de volgende query te verzenden vanaf een Linux-client: ``showmount -e <storage IP address>``
+Op de meeste NFS-opslagsystemen u dit testen door de volgende query van een Linux-client te verzenden:``showmount -e <storage IP address>``
 
-Gebruik, indien mogelijk, een Linux-client uit hetzelfde virtuele netwerk als uw cache.
+Gebruik indien mogelijk een Linux-client uit hetzelfde virtuele netwerk als uw cache.
 
-Als met deze opdracht geen uitvoer wordt vermeld, kan de cache problemen met het maken van een verbinding met uw opslag systeem krijgen. Werk samen met de leverancier van uw NAS om de export vermelding in te scha kelen.
+Als met die opdracht de export niet wordt vermeld, heeft de cache problemen met het maken van verbinding met uw opslagsysteem. Werk samen met uw NAS-leverancier om exportvermelding in te schakelen.
 
-## <a name="adjust-vpn-packet-size-restrictions"></a>Beperkingen voor VPN-pakket grootte aanpassen
+## <a name="adjust-vpn-packet-size-restrictions"></a>Beperkingen voor vpn-pakketgrootte aanpassen
 <!-- link in prereqs article -->
 
-Als u een VPN tussen de cache en uw NAS-apparaat hebt, kan het VPN de volledige 1500-bytes Ethernet-pakketten blok keren. Dit probleem kan optreden als grote uitwisselingen tussen de NAS en het Azure HPC-cache-exemplaar niet zijn voltooid, maar kleinere updates werken zoals verwacht.
+Als u een VPN hebt tussen de cache en uw NAS-apparaat, kan de VPN 1500-byte Ethernet-pakketten op ware grootte blokkeren. U dit probleem hebben als grote uitwisselingen tussen de NAS en de instantie Azure HPC-cache niet worden voltooid, maar kleinere updates werken zoals verwacht.
 
-Er is geen eenvoudige manier om te bepalen of uw systeem dit probleem heeft tenzij u de details van uw VPN-configuratie kent. Hier volgen enkele methoden die u kunnen helpen bij het controleren op dit probleem.
+Er is geen eenvoudige manier om te bepalen of uw systeem dit probleem heeft, tenzij u de details van uw VPN-configuratie kent. Hier zijn een paar methoden die u kunnen helpen controleren op dit probleem.
 
-* Gebruik pakket-sniffs aan beide zijden van de VPN om te detecteren welke pakketten zijn overgedragen.
-* Als uw VPN ping-opdrachten toestaat, kunt u de verzen ding van een pakket op volledige grootte testen.
+* Gebruik packet sniffers aan beide zijden van de VPN om te detecteren welke pakketten succesvol worden overgedragen.
+* Als uw VPN ping-opdrachten toestaat, u het verzenden van een pakket op ware grootte testen.
 
-  Voer een ping-opdracht via de VPN-verbinding met de NAS uit met deze opties. (Gebruik het IP-adres van uw opslag systeem in plaats van de *< storage_IP >* waarde.)
+  Voer met deze opties een ping-opdracht uit via de VPN naar de NAS. (Gebruik het IP-adres van uw opslagsysteem in plaats van de *<storage_IP>* waarde.)
 
    ```bash
    ping -M do -s 1472 -c 1 <storage_IP>
@@ -117,9 +117,9 @@ Er is geen eenvoudige manier om te bepalen of uw systeem dit probleem heeft tenz
 
   Dit zijn de opties in de opdracht:
 
-  * ``-M do``-niet fragmenteren
-  * ``-c 1``-slechts één pakket verzenden
-  * ``-s 1472``: Stel de grootte van de payload in op 1472 bytes. Dit is de maximale payload-waarde voor een 1500-byte-pakket na de accounting voor de Ethernet-overhead.
+  * ``-M do``- Niet fragmenteren
+  * ``-c 1``- Stuur slechts één pakket
+  * ``-s 1472``- Stel de grootte van het laadvermogen in op 1472 bytes. Dit is de maximale grootte payload voor een 1500-byte pakket na de boekhouding voor de Ethernet overhead.
 
   Een geslaagd antwoord ziet er zo uit:
 
@@ -128,16 +128,16 @@ Er is geen eenvoudige manier om te bepalen of uw systeem dit probleem heeft tenz
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  Als de ping mislukt met 1472 bytes, moet u de MSS-verbinding op het VPN configureren om ervoor te zorgen dat het externe systeem de maximale frame grootte correct detecteert. Lees de [documentatie van VPN gateway IPSec/IKE-para meters](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) voor meer informatie.
+  Als de ping mislukt met 1472 bytes, moet u mogelijk MSS-klemmen op de VPN configureren om het externe systeem de maximale framegrootte goed te laten detecteren. Lees de [documentatie over de parameters van VPN Gateway IPsec/IKE](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) voor meer informatie.
 
-## <a name="check-for-acl-security-style"></a>Controleren op ACL-beveiligings stijl
+## <a name="check-for-acl-security-style"></a>Controleren op ACL-beveiligingsstijl
 
-Sommige NAS-systemen gebruiken een hybride beveiligings stijl waarmee Acl's (Access Control Lists) worden gecombineerd met de traditionele POSIX-of UNIX-beveiliging.
+Sommige NAS-systemen gebruiken een hybride beveiligingsstijl die toegangscontrolelijsten (ACL's) combineert met traditionele POSIX- of UNIX-beveiliging.
 
-Als uw systeem de beveiligings stijl rapporteert als UNIX of POSIX zonder het acroniem ' ACL'S ' op te nemen, heeft dit probleem geen invloed op u.
+Als uw systeem zijn beveiligingsstijl als UNIX of POSIX rapporteert zonder het acroniem "ACL" op te nemen, heeft dit probleem geen invloed op u.
 
-Voor systemen die gebruikmaken van Acl's, moet Azure HPC cache aanvullende gebruikersspecifieke waarden bijhouden om de toegang tot het bestand te beheren. Dit doet u door een toegangs cache in te scha kelen. Er is geen besturings element aan de gebruiker gericht om de toegangs cache in te scha kelen, maar u kunt een ondersteunings ticket openen om aan te vragen dat het wordt ingeschakeld voor de betrokken opslag doelen op uw cache systeem.
+Voor systemen die ACL's gebruiken, moet Azure HPC-cache aanvullende gebruikersspecifieke waarden bijhouden om de toegang tot bestanden te beheren. Dit wordt gedaan door een toegangscache in te schakelen. Er is geen besturingselement dat door de gebruiker is gericht om de toegangscache in te schakelen, maar u wel een ondersteuningsticket openen om te vragen dat het wordt ingeschakeld voor de getroffen opslagdoelen op uw cachesysteem.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een probleem ondervindt dat niet in dit artikel is opgelost, [opent u een ondersteunings ticket](hpc-cache-support-ticket.md) om hulp te krijgen bij de deskundige.
+Als je een probleem hebt dat niet is aangepakt in dit artikel, [open je een ondersteuningsticket](hpc-cache-support-ticket.md) om deskundige hulp te krijgen.

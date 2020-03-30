@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, overzicht
 ms.topic: overview
 ms.date: 10/23/2019
 ms.openlocfilehash: a9297ebc116d75cfe1d4f37d4e9ada7d5198beae
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77620167"
 ---
 # <a name="azure-and-jenkins"></a>Azure en Jenkins
@@ -22,18 +22,18 @@ Dit artikel is een inleiding tot het gebruik van Azure met Jenkins en biedt deta
 Host Jenkins in Azure om de automatisering van uw build te centraliseren en de schaal van de implementatie aan te passen zodra de behoeften van softwareprojecten groeien. U kunt Jenkins implementeren in Azure met behulp van:
  
 - [De Jenkins-oplossingssjabloon](install-jenkins-solution-template.md) in Azure Marketplace.
-- [Virtuele machines van Azure](/azure/virtual-machines/linux/overview). Zie onze [zelfstudie](tutorial-jenkins-github-docker-cicd.md) om een Jenkins-exemplaar te maken op een VM.
+- [Azure virtuele machines](/azure/virtual-machines/linux/overview). Zie onze [zelfstudie](tutorial-jenkins-github-docker-cicd.md) om een Jenkins-exemplaar te maken op een VM.
 - Raadpleeg de [instructies](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) voor het uitvoeren van een Kubernetes-cluster in [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Bewaak en beheer uw Azure Jenkins-implementatie met behulp van [Azure monitor-logboeken](/azure/log-analytics/log-analytics-overview) en de [Azure cli](/cli/azure).
+Uw Azure Jenkins-implementatie bewaken en beheren met Azure [Monitor-logboeken](/azure/log-analytics/log-analytics-overview) en de [Azure CLI.](/cli/azure)
 
 ## <a name="scale-your-build-automation-on-demand"></a>Automatisering van uw build schalen op aanvraag
 
-Voeg buildagents toe aan een bestaande Jenkins-implementatie om de capaciteit van uw Jenkins-build te schalen als het aantal builds groeit en de complexiteit van taken en pijplijnen toeneemt. U kunt deze build-agents uitvoeren op virtuele machines van Azure met behulp van de [Azure VM agents-invoeg toepassing](https://plugins.jenkins.io/azure-vm-agents). Zie onze [zelfstudie](/azure/jenkins/jenkins-azure-vm-agents) voor meer details.
+Voeg buildagents toe aan een bestaande Jenkins-implementatie om de capaciteit van uw Jenkins-build te schalen als het aantal builds groeit en de complexiteit van taken en pijplijnen toeneemt. U deze buildagents uitvoeren op virtuele Azure-machines met behulp van de [Azure VM Agents-invoegservice.](https://plugins.jenkins.io/azure-vm-agents) Zie onze [zelfstudie](/azure/jenkins/jenkins-azure-vm-agents) voor meer details.
 
 Zodra Jenkins-taken en -pijplijnen zijn geconfigureerd voor gebruik met een [Azure-service-principal](/azure/azure-resource-manager/resource-group-overview), kunnen deze referenties worden gebruikt om:
 
-- U kunt het bouwen van artefacten veilig opslaan en archiveren in [Azure Storage](/azure/storage/common/storage-introduction) met behulp van de [Azure Storage-invoeg toepassing](https://plugins.jenkins.io/windows-azure-storage). Raadpleeg de [Instructies voor Jenkins-opslag](storage-java-jenkins-continuous-integration-solution.md) voor meer informatie.
+- Sla artefacten voor het bouwen van azure-bestanden veilig op in [Azure Storage](/azure/storage/common/storage-introduction) met de [Azure Storage-invoegtoepassing](https://plugins.jenkins.io/windows-azure-storage). Raadpleeg de [Instructies voor Jenkins-opslag](storage-java-jenkins-continuous-integration-solution.md) voor meer informatie.
 - Beheer en configureer Azure-resources met [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline).
 
 ## <a name="deploy-your-code-into-azure-services"></a>Uw code implementeren in Azure-services
@@ -43,4 +43,4 @@ Gebruik Jenkins-invoegtoepassingen om toepassingen te implementeren in Azure als
  Invoegtoepassingen kunnen worden geïmplementeerd in de volgende services en omgevingen:
 
 - [Azure App Service op Linux](/azure/app-service/containers/app-service-linux-intro). Bekijk de [zelfstudie](java-deploy-webapp-tutorial.md) om aan de slag te gaan.
-- [Azure App Service](/azure/app-service/overview). Bekijk de [instructies](deploy-Jenkins-app-service-plugin.md) om aan de slag te gaan.
+- [Azure App-service](/azure/app-service/overview). Bekijk de [instructies](deploy-Jenkins-app-service-plugin.md) om aan de slag te gaan.

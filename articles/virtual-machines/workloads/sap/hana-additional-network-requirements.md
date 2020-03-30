@@ -1,6 +1,6 @@
 ---
-title: Aanvullende netwerk vereisten voor SAP HANA op Azure (grote exemplaren) | Microsoft Docs
-description: Aanvullende netwerk vereisten voor SAP HANA op Azure (grote exemplaren).
+title: Aanvullende netwerkvereisten voor SAP HANA op Azure (grote exemplaren) | Microsoft Documenten
+description: Aanvullende netwerkvereisten voor SAP HANA op Azure (grote exemplaren).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,57 +14,57 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 66bbd8b462ac35756be0fae6eba940ba0aba6c4b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614570"
 ---
-# <a name="additional-network-requirements-for-large-instances"></a>Aanvullende netwerk vereisten voor grote instanties
+# <a name="additional-network-requirements-for-large-instances"></a>Aanvullende netwerkvereisten voor grote exemplaren
 
-Mogelijk hebt u extra netwerk vereisten als onderdeel van een implementatie van grote exemplaren van SAP HANA op Azure.
+Mogelijk hebt u aanvullende netwerkvereisten als onderdeel van een implementatie van grote exemplaren van SAP HANA op Azure.
 
 ## <a name="add-more-ip-addresses-or-subnets"></a>Meer IP-adressen of subnetten toevoegen
 
-Gebruik de Azure Portal, Power shell of de Azure CLI wanneer u meer IP-adressen of subnets toevoegt.
+Gebruik de Azure-portal, PowerShell of de Azure CLI wanneer u meer IP-adressen of subnetten toevoegt.
 
-Voeg het nieuwe IP-adres bereik als een nieuw bereik toe aan de adres ruimte van het virtuele netwerk in plaats van een nieuw samengevoegd bereik te genereren. Deze wijziging verzenden naar micro soft. Hierdoor kunt u verbinding maken vanaf het nieuwe IP-adres bereik tot de HANA grote instantie-eenheden in uw client. U kunt een ondersteunings aanvraag voor Azure openen om de nieuwe adres ruimte van het virtuele netwerk toe te voegen. Nadat u een bevestiging hebt ontvangen, voert u de volgende stappen uit.
+Voeg het nieuwe IP-adresbereik toe als een nieuw bereik aan de virtuele netwerkadresruimte, in plaats van een nieuw geaggregeerd bereik te genereren. Dien deze wijziging in bij Microsoft. Zo u vanuit dat nieuwe IP-adresbereik verbinding maken met de HANA-grote instance-eenheden in uw client. U een Azure-ondersteuningsaanvraag openen om de nieuwe virtuele netwerkadresruimte toegevoegd te krijgen. Nadat u een bevestiging hebt ontvangen, voert u de volgende stappen uit.
 
-Zie [een virtueel netwerk maken met behulp van de Azure Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)om een extra subnet te maken op basis van de Azure Portal. Zie [een virtueel netwerk maken met Power shell](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)voor informatie over het maken van een van Power shell.
+Zie Een virtueel netwerk maken met [de Azure-portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)als u een extra subnet wilt maken vanuit de Azure-portal. Zie Een virtueel netwerk [maken met PowerShell](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)als u er een wilt maken met PowerShell.
 
 ## <a name="add-virtual-networks"></a>Virtuele netwerken toevoegen
 
-Nadat u eerst een of meer virtuele Azure-netwerken hebt verbonden, wilt u mogelijk extra verbinding maken met SAP HANA op Azure (grote exemplaren). Dien eerst een ondersteunings aanvraag voor Azure in. Neem in die aanvraag de specifieke gegevens op die de specifieke Azure-implementatie identificeren. Neem ook het bereik van de IP-adres ruimte of de bereiken van de adres ruimte van het virtuele Azure-netwerk op. SAP HANA op Service beheer van micro soft biedt vervolgens de benodigde informatie die u nodig hebt om verbinding te maken met de extra virtuele netwerken en Azure ExpressRoute. Voor elk virtueel netwerk hebt u een unieke autorisatie sleutel nodig om verbinding te maken met het ExpressRoute-circuit naar HANA grote instanties.
+Nadat u in eerste instantie een of meer virtuele Azure-netwerken hebt verbonden, u aanvullende netwerken verbinden die toegang hebben tot SAP HANA op Azure (grote exemplaren). Dien eerst een Azure-ondersteuningsaanvraag in. Neem in dat verzoek de specifieke informatie op die de specifieke Azure-implementatie identificeert. Neem ook het IP-adresruimtebereik of -bereik van de azure-locatieadresruimte voor virtuele netwerken op. SAP HANA op Microsoft Service Management biedt vervolgens de nodige informatie die u nodig hebt om de extra virtuele netwerken en Azure ExpressRoute met elkaar te verbinden. Voor elk virtueel netwerk hebt u een unieke autorisatiesleutel nodig om verbinding te maken met het ExpressRoute-circuit met grote exemplaren van hana.
 
-## <a name="increase-expressroute-circuit-bandwidth"></a>Band breedte van het ExpressRoute-circuit verhogen
+## <a name="increase-expressroute-circuit-bandwidth"></a>Bandbreedte expressroute-circuit vergroten
 
-Neem contact op met SAP HANA op Service beheer van micro soft. Als u de band breedte van de SAP HANA op Azure (grote instanties) ExpressRoute-circuit wilt verg Roten, moet u een Azure-ondersteunings aanvraag maken. (U kunt een verhoging aanvragen voor een band breedte van één circuit tot Maxi maal 10 Gbps.) Nadat de bewerking is voltooid, ontvangt u een melding. u hoeft niets anders te doen om deze hogere snelheid in Azure in te scha kelen.
+Raadpleeg SAP HANA over Microsoft Service Management. Als ze u adviseren om de bandbreedte van het SAP HANA op Azure (large instances) ExpressRoute-circuit te vergroten, maakt u een Azure-ondersteuningsaanvraag. (U een verhoging aanvragen voor een enkele circuitbandbreedte tot maximaal 10 Gbps.) U ontvangt dan een melding nadat de bewerking is voltooid; u hoeft niets anders te doen om deze hogere snelheid in Azure in te schakelen.
 
-## <a name="add-an-additional-expressroute-circuit"></a>Een extra ExpressRoute-circuit toevoegen
+## <a name="add-an-additional-expressroute-circuit"></a>Voeg een extra ExpressRoute-circuit toe
 
-Neem contact op met SAP HANA op Service beheer van micro soft. Als u wordt geadviseerd een extra ExpressRoute-circuit toe te voegen, maakt u een ondersteunings aanvraag voor Azure (met inbegrip van een aanvraag voor het verkrijgen van autorisatie gegevens om verbinding te maken met het nieuwe circuit). Voordat u de aanvraag doet, moet u de adres ruimte definiëren die wordt gebruikt voor de virtuele netwerken. SAP HANA in micro soft Service Management kan vervolgens autorisatie geven.
+Raadpleeg SAP HANA over Microsoft Service Management. Als ze u adviseren om een extra ExpressRoute-circuit toe te voegen, maakt u een Azure-ondersteuningsaanvraag (inclusief een verzoek om autorisatiegegevens te krijgen om verbinding te maken met het nieuwe circuit). Voordat u de aanvraag indient, moet u de adresruimte definiëren die op de virtuele netwerken wordt gebruikt. SAP HANA op Microsoft Service Management kan dan autorisatie verlenen.
 
-Wanneer het nieuwe circuit is gemaakt en de SAP HANA op de configuratie van micro soft Service Management is voltooid, ontvangt u een melding met de informatie die u nodig hebt om door te gaan. U kunt geen Azure Virtual Networks verbinden met dit extra circuit als ze al zijn verbonden met een andere SAP HANA op een Azure (grote instantie) ExpressRoute-circuit in dezelfde Azure-regio.
+Wanneer het nieuwe circuit wordt gemaakt en de SAP HANA op Microsoft Service Management-configuratie is voltooid, ontvangt u een melding met de informatie die u nodig hebt om verder te gaan. U geen virtuele Azure-netwerken verbinden met dit aanvullende circuit als ze al zijn verbonden met een ander SAP HANA op Azure (large instance) ExpressRoute-circuit in dezelfde Azure-regio.
 
 ## <a name="delete-a-subnet"></a>Een subnet verwijderen
 
-Als u een subnet van een virtueel netwerk wilt verwijderen, kunt u de Azure Portal, Power shell of de Azure CLI gebruiken. Als uw IP-adres bereik of adres ruimte van het virtuele netwerk van Azure een geaggregeerd bereik was, is er geen follow-up voor u met micro soft. (Houd er wel rekening mee dat het virtuele netwerk nog bezig is met het door geven van de BGP-route adres ruimte die het verwijderde subnet bevat.) Mogelijk hebt u het adres bereik of de adres ruimte van het virtuele netwerk van Azure gedefinieerd als meerdere IP-adresbereiken, waarvan er een is toegewezen aan het verwijderde subnet. Zorg ervoor dat u dit verwijdert uit de adres ruimte van uw virtuele netwerk. Informeer vervolgens SAP HANA over micro soft-Service beheer om het te verwijderen uit de bereiken die SAP HANA op Azure (grote instanties) kunnen communiceren met.
+Als u een subnet voor virtueel netwerk wilt verwijderen, u de Azure-portal, PowerShell of Azure CLI gebruiken. Als uw IP-adresbereik voor een Azure-netwerk of adresruimte een geaggregeerd bereik was, wordt er geen follow-up voor u met Microsoft uitgevoerd. (Houd er echter rekening mee dat het virtuele netwerk nog steeds de adresruimte van de BGP-route voortplant die het verwijderde subnet bevat.) Mogelijk hebt u het azure-virtuele netwerkadresbereik of adresruimte gedefinieerd als meerdere IP-adresbereiken, waarvan er één is toegewezen aan uw verwijderde subnet. Zorg ervoor dat u dat uit uw virtuele netwerkadresruimte verwijdert. Informeer SAP HANA over Microsoft Service Management om het uit de reeksen te verwijderen waarmee SAP HANA op Azure (grote exemplaren) mag communiceren.
 
-Zie [een subnet verwijderen](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet)voor meer informatie.
+Zie [Een subnet verwijderen](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet)voor meer informatie .
 
 ## <a name="delete-a-virtual-network"></a>Een virtueel netwerk verwijderen
 
-Zie [een virtueel netwerk verwijderen](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network)voor meer informatie.
+Zie Een [virtueel netwerk verwijderen](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network)voor informatie.
 
-SAP HANA op Service beheer van micro soft verwijdert de bestaande autorisaties op het SAP HANA op Azure (grote instanties) ExpressRoute-circuit. Ook wordt het IP-adres bereik of de adres ruimte van het virtuele netwerk van Azure voor de communicatie met HANA grote instanties verwijderd.
+SAP HANA op Microsoft Service Management verwijdert de bestaande autorisaties op het SAP HANA op Azure (large instances) ExpressRoute-circuit. Het verwijdert ook het IP-adresbereik van azure's of adresruimte voor de communicatie met HANA-grote exemplaren.
 
-Nadat u het virtuele netwerk hebt verwijderd, opent u een ondersteunings aanvraag voor Azure om het bereik of de bereiken voor de IP-adres ruimte die moeten worden verwijderd, op te geven.
+Nadat u het virtuele netwerk hebt verwijderd, opent u een Azure-ondersteuningsverzoek om het IP-adresbereik of de te verwijderen bereiken op te geven.
 
-Als u alles wilt verwijderen, verwijdert u de ExpressRoute-verbinding, de virtuele netwerk gateway, het open bare IP-adres van de virtuele netwerk gateway en het virtuele netwerk.
+Verwijder de ExpressRoute-verbinding, de virtuele netwerkgateway, het openbare IP-netwerkgateway en het virtuele netwerk.
 
 ## <a name="delete-an-expressroute-circuit"></a>Een ExpressRoute-circuit verwijderen
 
-Als u een extra SAP HANA op Azure (grote instanties) ExpressRoute-circuit wilt verwijderen, opent u een ondersteunings aanvraag voor Azure met SAP HANA in micro soft Service Management. Vraag of het circuit moet worden verwijderd. Binnen het Azure-abonnement kunt u het virtuele netwerk indien nodig verwijderen of hand haven. U moet echter wel de verbinding tussen het ExpressRoute-circuit van de HANA-grote instanties en de gekoppelde virtuele netwerk gateway verwijderen.
+Als u een extra SAP HANA op azure(large instances) ExpressRoute-circuit wilt verwijderen, opent u een Azure-ondersteuningsaanvraag met SAP HANA op Microsoft Service Management. Verzoek dat het circuit wordt verwijderd. Binnen het Azure-abonnement u het virtuele netwerk verwijderen of behouden, indien nodig. U moet echter de verbinding tussen het HANA-circuit voor grote exemplaren ExpressRoute en de gekoppelde virtuele netwerkgateway verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,113 +1,113 @@
 ---
-title: Over service netten
-description: Verkrijg een overzicht van de service netten, hun architectuur en mogelijkheden, en welke criteria u moet overwegen wanneer u er een moet selecteren om te implementeren.
+title: Over servicemazen
+description: Krijg een overzicht van servicemazen, hun architectuur en mogelijkheden en welke criteria u moet overwegen bij het selecteren van een te implementeren.
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594308"
 ---
-# <a name="about-service-meshes"></a>Over service netten
+# <a name="about-service-meshes"></a>Over servicemazen
 
-Een service-net biedt mogelijkheden als verkeers beheer, tolerantie, beleid, beveiliging, sterke identiteit en de waarneem baarheid van uw workloads. Uw toepassing is losgekoppeld van deze operationele mogelijkheden en het service-net verplaatst deze uit de toepassingslaag en omlaag naar de laag van de infra structuur.
+Een servicemesh biedt mogelijkheden zoals verkeersbeheer, tolerantie, beleid, beveiliging, sterke identiteit en waarneembaarheid voor uw workloads. Uw toepassing is losgekoppeld van deze operationele mogelijkheden en de servicemesh verplaatst ze uit de toepassingslaag en naar de infrastructuurlaag.
 
-## <a name="scenarios"></a>Scenario 's
+## <a name="scenarios"></a>Scenario's
 
-Dit zijn enkele van de scenario's die kunnen worden ingeschakeld voor uw workloads wanneer u een service-net gebruikt:
+Dit zijn enkele van de scenario's die kunnen worden ingeschakeld voor uw workloads wanneer u een servicemesh gebruikt:
 
-- **Alle verkeer in het cluster versleutelen** : Hiermee schakelt u wederzijdse TLS in tussen opgegeven services in het cluster. Dit kan worden uitgebreid tot binnenkomend en uitgaand verkeer op de netwerk verbinding. Biedt een veilige standaard optie zonder wijzigingen die nodig zijn voor toepassings code en-infra structuur.
+- **Al het verkeer in het cluster versleutelen** - Schakel wederzijdse TLS tussen opgegeven services in het cluster in. Dit kan worden uitgebreid tot binnendringen en uitwijken bij de netwerkperimeter. Biedt standaard een veilige optie zonder wijzigingen die nodig zijn voor toepassingscode en infrastructuur.
 
-- **Canarische en gefaseerde implementaties** : Geef voor waarden op voor een subset van verkeer dat wordt gerouteerd naar een set nieuwe services in het cluster. Bij een geslaagde test van de Canarische versie verwijdert u de voorwaardelijke route ring en de fase neemt geleidelijk% van al het verkeer naar de nieuwe service toe. Uiteindelijk wordt al het verkeer omgeleid naar de nieuwe service.
+- **Canarische en gefaseerde implementaties** - Geef voorwaarden op voor een subset van verkeer die moet worden doorgestuurd naar een reeks nieuwe services in het cluster. Bij een succesvolle test van de vrijgave van kanarie, verwijder voorwaardelijke routering en geleidelijk verhogen % van al het verkeer naar nieuwe dienst. Uiteindelijk zal al het verkeer worden doorverwezen naar nieuwe service.
 
-- **Verkeers beheer en manipulatie** : een beleid maken voor een service waarmee het aantal verkeer naar een versie van een service van een bepaalde oorsprong wordt beperkt. Of een beleid waarmee een strategie voor opnieuw proberen wordt toegepast op klassen van fouten tussen opgegeven services. Gespiegeld live verkeer naar nieuwe versies van services tijdens een migratie of om problemen op te lossen. Injectie fouten tussen services in een test omgeving om de tolerantie te testen.
+- **Verkeersbeheer en -manipulatie** - Maak een beleid voor een service die al het verkeer beperkt tot een versie van een service van een specifieke oorsprong. Of een beleid dat een strategie voor het opnieuw proberen toepast op klassen van fouten tussen opgegeven services. Spiegel live verkeer naar nieuwe versies van services tijdens een migratie of naar foutopsporing problemen. Injecteer fouten tussen services in een testomgeving om tolerantie te testen.
 
-- Bedieping **: krijg** inzicht in de manier waarop uw services het verkeer aansluiten dat tussen hen loopt. U kunt metrische gegevens, logboeken en traceringen verkrijgen voor al het verkeer in het cluster, en uit-en uitgangen. Voeg gedistribueerde tracerings mogelijkheden toe aan uw toepassingen.
+- **Waarneembaarheid** - Krijg inzicht in hoe uw services worden verbonden het verkeer dat tussen hen stroomt. Verkrijg statistieken, logboeken en traces voor al het verkeer in het cluster en ingress/uitgang. Voeg gedistribueerde traceringsmogelijkheden toe aan uw toepassingen.
 
 ## <a name="architecture"></a>Architectuur
 
-Een service-net bestaat doorgaans uit een besturings vlak en het gegevens vlak.
+Een servicemesh bestaat meestal uit een controlevlak en het gegevensvlak.
 
-Het **besturings vlak** bevat een aantal onderdelen die ondersteuning bieden voor het beheer van het service-net. Dit geldt meestal voor een beheer interface die een gebruikers interface of API kan zijn. Er zijn ook onderdelen waarmee de regel en beleids definities worden beheerd die bepalen hoe het service-net specifieke mogelijkheden moet implementeren. Er zijn ook onderdelen die aspecten van beveiliging beheren, zoals sterke identiteit en certificaten voor mTLS. Service netten hebben doorgaans meestal een meet-of waarneem bare component waarmee metrische gegevens en telemetrie van de werk belastingen worden verzameld en geaggregeerd.
+Het **besturingsvlak** heeft een aantal componenten die het beheer van de servicemesh ondersteunen. Dit omvat meestal een beheerinterface die een gebruikersinterface of een API kan zijn. Er zullen ook meestal componenten zijn die de regel- en beleidsdefinities beheren die bepalen hoe de servicemesh specifieke mogelijkheden moet implementeren. Er zijn ook componenten die aspecten van beveiliging beheren, zoals sterke identiteit en certificaten voor mTLS. Servicemazen hebben meestal ook een basis voor metrische gegevens of waarneembaarheid die statistieken en telemetrie van de workloads verzamelt en verzamelt.
 
-Het **gegevens vlak** bestaat doorgaans uit een proxy die transparant is geïnjecteerd als een zijspan wagen voor uw werk belastingen. Deze proxy is geconfigureerd voor het beheren van al het netwerk verkeer in en uit de Pod met uw werk belasting. Hierdoor kan de proxy worden geconfigureerd om verkeer te beveiligen via mTLS, dynamisch verkeer te routeren, beleid toe te passen op verkeer en metrische gegevens en tracerings informatie te verzamelen. 
+Het **gegevensvlak** bestaat meestal uit een proxy die transparant wordt geïnjecteerd als een zijspan voor uw workloads. Deze proxy is geconfigureerd om al het netwerkverkeer in en uit de pod met uw werkbelasting te beheren. Hierdoor kan de proxy worden geconfigureerd om verkeer te beveiligen via mTLS, dynamisch routeverkeer, beleid toe te passen op verkeer en om statistieken te verzamelen en informatie te traceren. 
 
-![Typische architectuur voor Service-Mesh](media/servicemesh/typical-architecture.png)
+![Typische servicemesh-architectuur](media/servicemesh/typical-architecture.png)
 
 ## <a name="capabilities"></a>Functionaliteit
 
-Elk van de service netten hebben een natuurlijke en focus op het ondersteunen van specifieke scenario's, maar u zult doorgaans ontdekken dat er een aantal van de volgende mogelijkheden wordt geïmplementeerd.
+Elk van de servicemazen heeft een natuurlijke pasvorm en focus op het ondersteunen van specifieke scenario's, maar u zult meestal merken dat de meeste een aantal, zo niet alle, van de volgende mogelijkheden zullen implementeren.
 
-### <a name="traffic-management"></a>Verkeers beheer 
+### <a name="traffic-management"></a>Verkeersmanagement 
 
-- **Protocol** -laag 7 (http, grpc)
-- **Dynamische route ring** : voorwaardelijk, gewicht, spie gelen
-- **Tolerantie** : time-outs, nieuwe pogingen, circuit onderbrekers
-- **Beleid** : toegangs beheer, frequentie limieten, quota's
-- **Testen** -fout injectie
+- **Protocol** – laag 7 (http, grpc)
+- **Dynamic Routing** – conditioneel, weging, spiegelen
+- **Veerkracht** – time-outs, nieuwe pogingen, stroomonderbrekers
+- **Beleid** – toegangscontrole, tarieflimieten, quota
+- **Testen** - foutinjectie
 
 ### <a name="security"></a>Beveiliging
 
-- **Versleuteling** – mTLS, certificaat beheer, externe certificerings instantie
-- **Sterke identiteit** – SPIFFE of vergelijkbaar
-- **Verificatie:** authenticatie, autorisatie
+- **Versleuteling** – mTLS, certificaatbeheer, externe CA
+- **Sterke identiteit** – SPIFFE of iets dergelijks
+- **Auth** – authenticatie, autorisatie
 
-### <a name="observability"></a>Waarneem bare
+### <a name="observability"></a>Observability
 
-- **Metrische** gegevens: gouden metrische gegevens, Prometheus, grafana
-- **Tracering** -traceringen over workloads
-- **Verkeer** : cluster, binnenkomend/uitgaand
+- **Metrics** – golden metrics, prometheus, grafana
+- **Tracering** - sporen tussen workloads
+- **Verkeer** – cluster, binnendringen/uitgang
 
-### <a name="mesh"></a>Strekt
+### <a name="mesh"></a>Mesh
 
-- **Ondersteunde Compute** -Kubernetes, virtual machines
-- **Multi-cluster** -gateways, Federatie
+- **Ondersteunde Compute** - Kubernetes, virtuele machines
+- **Meerdere cluster -** gateways, federatie
 
-## <a name="selection-criteria"></a>Selectie criteria
+## <a name="selection-criteria"></a>Selectiecriteria
 
-Voordat u een service-net selecteert, moet u ervoor zorgen dat u inzicht krijgt in uw vereisten en de redenen voor het installeren van een service-net. Probeer de volgende vragen te beantwoorden.
+Voordat u een servicemesh selecteert, moet u ervoor zorgen dat u uw vereisten en de redenen voor het installeren van een servicemesh begrijpt. Probeer de volgende vragen te stellen.
 
-- **Is een ingangs controller voldoende voor mijn behoeften?** -Soms is het mogelijk dat een functie zoals een/b-test of het splitsen van verkeer bij de inkomen voldoende is om het vereiste scenario te ondersteunen. Voeg geen ingewikkelde complexiteit toe aan uw omgeving.
+- **Is een Ingress Controller voldoende voor mijn behoeften?** - Soms is het voldoende om een vermogen als a/b-testen of het splitsen van het verkeer bij de inbinnendringen te hebben om het vereiste scenario te ondersteunen. Voeg geen complexiteit toe aan uw omgeving zonder opwaartse.
 
-- **Kunnen mijn werk belastingen en omgeving de extra overhead verdragen?** -Alle extra onderdelen die vereist zijn voor de ondersteuning van het service-net vereisen extra resources zoals CPU en geheugen. Daarnaast voegen alle proxy's en de bijbehorende beleids controles latentie toe aan uw verkeer. Als u werk belastingen hebt die zeer gevoelig zijn voor latentie of als u de extra resources niet kunt leveren voor de service mesh-onderdelen, kunt u het opnieuw overwegen.
+- **Kunnen mijn workloads en omgeving de extra overheadkosten tolereren?** - Alle extra componenten die nodig zijn om de servicemesh te ondersteunen, vereisen extra bronnen zoals cpu en geheugen. Bovendien voegen alle proxy's en bijbehorende beleidscontroles latentie toe aan uw verkeer. Als u workloads hebt die zeer gevoelig zijn voor latentie of die geen extra resources kunnen bieden voor de onderdelen van het servicemesh, moet u deze opnieuw overwegen.
 
-- **Is het toevoegen van extra complexiteit onnodig?** -Als de reden voor het installeren van een service-net is het verkrijgen van een mogelijkheid die niet nood zakelijk is voor het bedrijf of operationele teams, moet u nagaan of de extra complexiteit van installatie, onderhoud en configuratie waard is.
+- **Is dit het toevoegen van extra complexiteit onnodig?** - Als de reden voor het installeren van een servicemesh is om een mogelijkheid te krijgen die niet noodzakelijkerwijs essentieel is voor de bedrijfs- of operationele teams, overweeg dan of de extra complexiteit van installatie, onderhoud en configuratie de moeite waard is.
 
-- **Kan dit in een incrementele benadering worden goedgekeurd?** -Sommige service netten die een groot aantal mogelijkheden bieden, kunnen in een meer incrementele benadering worden aangenomen. Installeer alleen de onderdelen die u nodig hebt om ervoor te zorgen dat uw succes is. Als u meer vertrouwen hebt en er aanvullende mogelijkheden zijn vereist, kunt u deze verkennen. Het is niet meer nodig om *Alles* vanaf het begin te installeren.
+- **Kan dit stapsgewijs worden aangepakt?** - Sommige van de service mazen die veel mogelijkheden bieden kunnen worden aangenomen in een meer incrementele aanpak. Installeer alleen de onderdelen die u nodig hebt om uw succes te garanderen. Zodra u meer vertrouwen en extra mogelijkheden nodig zijn, dan verkennen die. Weersta de drang om *alles* vanaf het begin te installeren.
 
-Als u na een zorgvuldige overweging hebt besloten dat u een service-net nodig hebt om de vereiste mogelijkheden te bieden, dan is uw volgende beslissing het *service-net?*
+Als u na zorgvuldige afweging besluit dat u een servicemesh nodig hebt om de vereiste mogelijkheden te bieden, dan is uw volgende beslissing *welke servicemesh?*
 
-Houd rekening met de volgende gebieden en welke hiervan het meest zijn afgestemd op uw behoeften. Dit leidt u naar de beste aanpassing voor uw omgeving en workloads. In het gedeelte [volgende stappen](#next-steps) vindt u meer informatie over specifieke service netten en hoe deze worden toegewezen aan deze gebieden.
+Houd rekening met de volgende gebieden en welke van hen zijn het meest afgestemd op uw eisen. Dit zal u begeleiden naar de beste pasvorm voor uw omgeving en werklast. De volgende [stappen](#next-steps) sectie zal u naar meer gedetailleerde informatie over specifieke service mazen en hoe ze in kaart brengen aan deze gebieden.
 
-- Beheer van **technische** verkeer, beleid, beveiliging, waarneembaar
+- **Technisch** - verkeersmanagement, beleid, beveiliging, waarneembaarheid
 
-- **Business** -Commercial Support, Foundation (CNCF), OSS-licentie, governance
+- **Business** - commerciële ondersteuning, stichting (CNCF), OSS licentie, governance
 
-- **Operationeel** : installatie/upgrades, resource vereisten, prestatie vereisten, integraties (metrische gegevens, telemetrie, Dash boards, hulpprogram MA'S, SMI), gemengde werk belastingen (Linux en Windows-knooppunt groepen), compute (Kubernetes, virtual machines), multi-cluster
+- **Operationeel** – installatie/upgrades, resourcevereisten, prestatievereisten, integraties (metrics, telemetrie, dashboards, tools, SMI), mixed workloads (Linux en Windows node pools), compute (Kubernetes, virtuele machines), multi-cluster
 
-- **Beveiliging** -verificatie, identiteit, certificaat beheer en rotatie, pluggable externe CA
+- **Beveiliging** - auth, identiteit, certificaatbeheer en rotatie, pluggable externe CA
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende documentatie bevat meer informatie over service netten die u kunt uitproberen op Azure Kubernetes service (AKS):
+De volgende documentatie bevat meer informatie over servicemazen die u uitproberen op Azure Kubernetes Service (AKS):
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Istio...][istio-about]
+> [Meer informatie over Istio ...][istio-about]
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Linkerd...][linkerd-about]
+> [Meer informatie over Linkerd ...][linkerd-about]
 
 > [!div class="nextstepaction"]
-> [Meer informatie over consul...][consul-about]
+> [Meer informatie over Consul ...][consul-about]
 
-Het is ook mogelijk dat u SMI (Service Mesh Interface) wilt verkennen, een standaard interface voor service netten op Kubernetes:
+U ook Service Mesh Interface (SMI) verkennen, een standaardinterface voor servicemazen op Kubernetes:
 
-- [Service net interface (SMI)][smi]
+- [Service Mesh-interface (SMI)][smi]
 
 
 <!-- LINKS - external -->

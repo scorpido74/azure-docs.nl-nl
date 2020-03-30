@@ -1,6 +1,6 @@
 ---
-title: Systeem updates Toep assen in Azure Security Center | Microsoft Docs
-description: In dit document wordt beschreven hoe u de Azure Security Center aanbevelingen implementeert **systeem updates Toep assen** en **opnieuw opstarten na systeem updates**.
+title: Systeemupdates toepassen in Azure Security Center | Microsoft Documenten
+description: In dit document ziet u hoe u de aanbevelingen van het Azure Security Center implementeert **Systeemupdates toepassen** en **Opnieuw opstarten na systeemupdates.**
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,71 +14,71 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
 ms.openlocfilehash: 3f27753b0775f44cbdf9d4c478a19e423b8e1f19
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604548"
 ---
-# <a name="apply-system-updates-in-azure-security-center"></a>Systeem updates Toep assen in Azure Security Center
-Azure Security Center bewaakt dagelijks Windows-en Linux-virtuele machines (Vm's) en computers voor ontbrekende updates van het besturings systeem. Security Center haalt een lijst met beschik bare beveiligings-en essentiële updates op van Windows Update of Windows Server Update Services (WSUS), afhankelijk van welke service op een Windows-computer is geconfigureerd. Security Center controleert ook op de nieuwste updates in Linux-systemen. Als op uw virtuele machine of computer een systeem update ontbreekt, wordt Security Center aanbevolen om systeem updates toe te passen.
+# <a name="apply-system-updates-in-azure-security-center"></a>Systeemupdates toepassen in Azure Security Center
+Azure Security Center controleert dagelijks virtuele Windows- en Linux-machines (VM's) en computers op ontbrekende updates van het besturingssysteem. Security Center haalt dagelijks een lijst met beschikbare beveiligingsupdates en essentiële updates op van Windows Update of WSUS, afhankelijk van welke service is geconfigureerd op een Windows-computer. Security Center controleert ook op de nieuwste updates voor Linux-systemen. Als op uw VM of computer een systeemupdate ontbreekt, ziet u een melding van Security Center met het verzoek om systeemupdates toe te passen.
 
-## <a name="implement-the-recommendation"></a>De aanbeveling implementeren
-Systeem updates Toep assen wordt weer gegeven als aanbeveling in Security Center. Als op uw virtuele machine of computer een systeem update ontbreekt, wordt deze aanbeveling weer gegeven onder **aanbevelingen** en onder **Compute**.  Als u de aanbeveling selecteert, wordt het dash board **systeem updates Toep assen** geopend.
+## <a name="implement-the-recommendation"></a>De aanbeveling uitvoeren
+Systeemupdates toepassen wordt gepresenteerd als een aanbeveling in Security Center. Als uw vm of computer een systeemupdate mist, wordt deze aanbeveling weergegeven onder **Aanbevelingen** en onder **Berekenen**.  Als u de aanbeveling selecteert, wordt het dashboard **Systeemupdates toepassen** geopend.
 
-In dit voor beeld gebruiken we **reken kracht**.
+In dit voorbeeld gebruiken we **Compute**.
 
-1. Selecteer **berekenen** onder het hoofd menu van Security Center.
+1. Selecteer **Berekenen** onder het hoofdmenu Van het Beveiligingscentrum.
 
-   ![Reken proces selecteren][1]
+   ![Compute selecteren][1]
 
-2. Selecteer onder **Compute**de optie **ontbrekende systeem updates**. Het dash board **systeem updates Toep assen** wordt geopend.
+2. Selecteer **onder Berekenen**de optie **Ontbrekende systeemupdates**. Het dashboard **Systeemupdates toepassen** wordt geopend.
 
-   ![Het dash board systeem updates Toep assen][2]
+   ![Dashboard systeemupdates toepassen][2]
 
-   De bovenkant van het dash board biedt:
+   De bovenkant van het dashboard biedt:
 
-    - Het totale aantal virtuele Windows-en Linux-machines en computers waarop systeem updates ontbreken.
-    - Het totale aantal essentiële updates dat op uw Vm's en computers ontbreekt.
-    - Het totale aantal beveiligings updates dat op uw Vm's en computers ontbreekt.
+    - Het totale aantal Windows- en Linux-VM's en computers dat systeemupdates mist.
+    - Het totale aantal kritieke updates dat ontbreekt in uw VM's en computers.
+    - Het totale aantal beveiligingsupdates dat ontbreekt in uw VM's en computers.
 
-   De onderkant van het dash board bevat alle ontbrekende updates op uw Vm's en computers en de ernst van de ontbrekende update.  De lijst bevat:
+   De onderkant van het dashboard bevat alle ontbrekende updates op uw VM's en computers en de ernst van de ontbrekende update.  De lijst bevat:
 
     - NAAM: naam van de ontbrekende update.
-    - Geen. VAN Vm's & COMPUTERS: totaal aantal Vm's en computers waarop deze update ontbreekt.
+    - №. VAN VM's & COMPUTERS: Totaal aantal VM's en computers die deze update missen.
     - STATUS: de huidige status van de aanbeveling:
 
-      - Open: de aanbeveling is nog niet verholpen.
-      - Wordt uitgevoerd: de aanbeveling wordt momenteel toegepast op deze resources en er hoeft geen actie te worden ondernomen.
+      - Open: De aanbeveling is nog niet behandeld.
+      - Wordt uitgevoerd: de aanbeveling wordt momenteel toegepast op deze resources en u hoeft geen actie te ondernemen.
       - Opgelost: de aanbeveling is al voltooid. (Als het probleem is opgelost, wordt de vermelding grijs).
 
-    - Ernst: Hiermee wordt de ernst van de betreffende aanbeveling beschreven:
+    - ERNST: hiermee wordt de ernst van deze bepaalde aanbeveling beschreven:
 
-      - Hoog: er bestaat een beveiligings probleem met een zinvolle resource (toepassing, virtuele machine of netwerk beveiligings groep) en vereist aandacht.
-      - Gemiddeld: er zijn niet-kritieke of extra stappen nodig om een proces te volt ooien of een beveiligings probleem op te lossen.
-      - Laag: er moet een beveiligings probleem worden opgelost, maar dit vereist geen onmiddellijke aandacht. (Aanbevelingen met de ernstaanduiding Laag worden niet standaard weergegeven, maar u kunt hierop filteren als u deze aanbevelingen wilt bekijken.)
+      - Hoog: er bestaat een beveiligingsprobleem voor een belangrijke resource (toepassing, virtuele machine, netwerkbeveiligingsgroep) en dit probleem vereist uw aandacht.
+      - Gemiddeld: er zijn niet-kritieke of extra stappen nodig om een proces te voltooien of een beveiligingsprobleem op te lossen.
+      - Laag: een beveiligingsprobleem moet worden opgelost, maar dit vereist niet uw onmiddellijke aandacht. (Aanbevelingen met de ernstaanduiding Laag worden niet standaard weergegeven, maar u kunt hierop filteren als u deze aanbevelingen wilt bekijken.)
 
-3. Selecteer een ontbrekende update in de lijst om de details weer te geven.
+3. Selecteer een ontbrekende update in de lijst om details weer te geven.
 
-   ![Ontbrekende beveiligings update][3]
+   ![Ontbrekende beveiligingsupdate][3]
 
-4. Selecteer het **Zoek** pictogram in het bovenste lint.  De zoek query van een Azure Monitor Logboeken wordt geopend op de computers waarop de update ontbreekt.
+4. Selecteer het pictogram **Zoeken** op het bovenste lint.  Een Azure Monitor registreert zoekopdracht opent gefilterd op de computers die de update ontbreekt.
 
-   ![Azure Monitor logboeken zoeken][4]
+   ![Azure Monitor registreert zoeken][4]
 
-5. Selecteer een computer in de lijst voor meer informatie. Er wordt een ander Zoek resultaat geopend met informatie die alleen voor die computer wordt gefilterd.
+5. Selecteer een computer in de lijst voor meer informatie. Een ander zoekresultaat wordt geopend met informatie die alleen voor die computer wordt gefilterd.
 
-    ![Azure Monitor logboeken zoeken][5]
+    ![Azure Monitor registreert zoeken][5]
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+Zie de volgende onderwerpen voor meer informatie over Security Center:
 
 * [Setting security policies in Azure Security Center](tutorial-security-policy.md) (Beveiligingsbeleid instellen in Azure Security Center): leer hoe u beveiligingsbeleid voor uw Azure-abonnementen en -resourcegroepen configureert.
-* [Aanbevelingen voor beveiliging in azure Security Center](security-center-recommendations.md) : Ontdek hoe aanbevelingen u helpen uw Azure-resources te beveiligen.
-* [Beveiligings status controleren in azure Security Center](security-center-monitoring.md) --meer informatie over het controleren van de status van uw Azure-resources.
-* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center): ontdek hoe u beveiligingswaarschuwingen kunt beheren en erop kunt reageren.
-* [Partneroplossingen bewaken met Azure Security Center](security-center-partner-solutions.md): leer hoe u de integriteitsstatus van uw partneroplossingen kunt bewaken.
-* [Azure-beveiligings blog](https://blogs.msdn.com/b/azuresecurity/) : vind blog berichten over beveiliging en naleving van Azure.
+* [Beveiligingsaanbevelingen beheren in Azure Security Center:](security-center-recommendations.md) lees hoe aanbevelingen u helpen uw Azure-bronnen te beschermen.
+* [Bewaking van de beveiligingsstatus in Azure Security Center:](security-center-monitoring.md) meer informatie over het bewaken van de status van uw Azure-resources.
+* [Beveiligingswaarschuwingen beheren en beantwoorden in Azure Security Center:](security-center-managing-and-responding-alerts.md) meer informatie over het beheren en reageren op beveiligingswaarschuwingen.
+* [Partnersoplossingen bewaken met Azure Security Center:](security-center-partner-solutions.md) meer informatie over het bewaken van de status van uw partneroplossingen.
+* [Azure Security-blog](https://blogs.msdn.com/b/azuresecurity/) : zoek blogberichten over Azure-beveiliging en -naleving.
 
 <!--Image references-->
 [1]: ./media/security-center-apply-system-updates/missing-system-updates.png

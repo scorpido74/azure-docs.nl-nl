@@ -1,7 +1,7 @@
 ---
-title: 'Regressie van de beslissings structuur verbeterd: module verwijzing'
+title: 'Boosted Decision Tree Regression: Module Reference'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u met behulp van de versterkte regressie module voor de beslissings structuur in Azure Machine Learning een ensemble van regressie structuren kunt maken.
+description: Meer informatie over het gebruik van de module Boosted Decision Tree Regression in Azure Machine Learning om een ensemble van regressiebomen te maken met behulp van boosting.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,91 +9,91 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 10821639fb26af935326bda0bff7895105da675c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 79a2ccae31fac31d8d10bb643c35a41a3d7cb5d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919954"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456723"
 ---
-# <a name="boosted-decision-tree-regression-module"></a>Regressie module voor versterkte beslissings structuur
+# <a name="boosted-decision-tree-regression-module"></a>De module Voor versterkte beslissingsstructuurregressie
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module om een ensemble van regressie structuren te maken met behulp van Boosting. *Versterking* houdt in dat elke boom structuur afhankelijk is van eerdere structuren. Het algoritme leert u door het aanpassen van de rest van de bomen die erop werden gevolgd. Zo kunt u in een beslissings structuur een ensemble verhogen om de nauw keurigheid van een klein risico van minder behoefte aan te nemen.  
+Gebruik deze module om een ensemble van regressiebomen te maken met behulp van boosting. *Stimuleren* betekent dat elke boom afhankelijk is van eerdere bomen. Het algoritme leert door het aanbrengen van de restanten van de bomen die eraan vooraf gingen. Dus, het stimuleren van een beslissing boom ensemble heeft de neiging om de nauwkeurigheid te verbeteren met een klein risico van minder dekking.  
   
-Deze regressie methode is een *gelabelde*leer methode en vereist daarom een gegevensset met de naam. De label kolom moet numerieke waarden bevatten.  
+Deze regressiemethode is een begeleide leermethode en vereist daarom een *gelabelde gegevensset.* De labelkolom moet numerieke waarden bevatten.  
 
 > [!NOTE]
-> Gebruik deze module alleen met gegevens sets die numerieke variabelen gebruiken.  
+> Gebruik deze module alleen met gegevenssets die numerieke variabelen gebruiken.  
 
-Nadat u het model hebt gedefinieerd, traint u het met het [Train model](./train-model.md).
+Nadat u het model hebt gedefinieerd, traint u het met behulp van het [treinmodel.](./train-model.md)
 
   
-## <a name="more-about-boosted-regression-trees"></a>Meer informatie over versterkte regressie structuren  
+## <a name="more-about-boosted-regression-trees"></a>Meer over versterkte regressiebomen  
 
-Versterking is een van de klassieke methoden voor het maken van ensemble-modellen, samen met behulp van de inbagging, wille keurige forests enzovoort.  In Azure Machine Learning gebruiken versterkte beslissings structuren een efficiënte implementatie van het Boost-algoritme voor de bloedkleur overgang. Verbetering van de kleur overgang is een machine learning techniek voor regressie problemen. Hiermee wordt elke regressie structuur op een stapsgewijse manier gebouwd, waarbij een vooraf gedefinieerde verlies functie wordt gebruikt om de fout in elke stap te meten en in de volgende weer te corrigeren. Daarom is het Voorspellings model eigenlijk een ensemble van zwakkere Voorspellings modellen.  
+Boosting is een van de vele klassieke methoden voor het maken van ensemble modellen, samen met zakken, willekeurige bossen, enzovoort.  In Azure Machine Learning gebruiken gepromote beslissingsbomen een efficiënte implementatie van het MART-verloopboosting-algoritme. Gradiëntstimuleren is een machine learning-techniek voor regressieproblemen. Het bouwt elke regressieboom op een stapsgewijze manier, met behulp van een vooraf gedefinieerde verliesfunctie om de fout in elke stap te meten en te corrigeren in de volgende. Aldus is het voorspellingsmodel eigenlijk een ensemble van zwakkere voorspellingsmodellen.  
   
-Bij regressie problemen bouwt het versterking van een reeks structuren op een stapsgewijse manier en selecteert de optimale boom structuur met een wille keurige differentiatie functie.  
+In regressieproblemen bouwt het stimuleren van een reeks bomen op een stapsgewijze manier en selecteert vervolgens de optimale boom met behulp van een willekeurige differentieerbare verliesfunctie.  
   
-Zie de volgende artikelen voor meer informatie:  
+Zie voor meer informatie de volgende artikelen:  
   
 + [https://wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting](https://wikipedia.org/wiki/Gradient_boosting)
 
-    In dit Wikipedia-artikel over verloop versterking wordt een achtergrond op gestimuleerde structuren geboden. 
+    Dit Wikipedia-artikel over gradiëntstimuleren biedt enige achtergrond informatie over gebooste bomen. 
   
 -  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
-    Micro soft Research: van RankNet tot LambdaRank naar LambdaMART: een overzicht. Door J.C. Burges.
+    Microsoft Research: Van RankNet tot LambdaRank tot LambdaMART: Een overzicht. Door J.C. Burges.
 
-De methode voor het verhogen van de kleur overgang kan ook worden gebruikt voor classificatie problemen door deze te verminderen tot regressie met een geschikte verlies functie. Zie voor meer informatie over de implementatie van de versterkte bomen voor classificatie taken, [twee klasse boosted beslissings structuur](./two-class-boosted-decision-tree.md).  
+De gradiëntboostmethode kan ook worden gebruikt voor classificatieproblemen door ze te reduceren tot regressie met een geschikte verliesfunctie. Zie [Two-Class Boosted Decision Tree](./two-class-boosted-decision-tree.md)voor meer informatie over de implementatie van gepromote bomen voor classificatietaken.  
 
-## <a name="how-to-configure-boosted-decision-tree-regression"></a>Verbetering van de regressie beslissings structuur configureren
+## <a name="how-to-configure-boosted-decision-tree-regression"></a>Boosted Decision Tree Regression configureren
 
-1.  Voeg de **Uitgeboostte beslissings structuur** module toe aan uw pijp lijn. U kunt deze module vinden onder **machine learning**, **initialiseren**, onder de categorie **regressie** . 
+1.  Voeg de module **Boosted Decision Tree** toe aan uw pijplijn. U deze module vinden onder **Machine Learning**, **Initialiseren**, onder de categorie **Regressie.** 
   
-2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
+2.  Geef op hoe u het model wilt trainen door de optie **Trainer-modus maken in** te stellen.  
   
-    -   **Eén para meter**: Selecteer deze optie als u weet hoe u het model wilt configureren en geef een specifieke set waarden als argumenten op. 
+    -   **Eén parameter:** selecteer deze optie als u weet hoe u het model wilt configureren en geef een specifieke set waarden op als argumenten. 
      
-    -   **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.    
+    -   **Parameterbereik:** Selecteer deze optie als u niet zeker bent van de beste parameters en een parametersweep wilt uitvoeren. Selecteer een reeks waarden om over te herhalen en de [Tune Model Hyperparameters](tune-model-hyperparameters.md) herhalen over alle mogelijke combinaties van de instellingen die u hebt opgegeven om de hyperparameters te bepalen die de optimale resultaten opleveren.    
    
   
-3. **Maximum aantal Leaves per boom structuur**: Hiermee geeft u het maximum aantal Terminal knooppunten (bladeren) op dat in een wille keurige structuur kan worden gemaakt.  
+3. **Maximum aantal bladeren per boom**: Geef het maximum aantal terminalknooppunten (bladeren) aan dat in elke boom kan worden gemaakt.  
 
-    Door deze waarde te verg Roten, kunt u de grootte van de structuur verg Roten, waardoor het risico op overschrijding en een langere tijd beter is.  
+    Door deze waarde te verhogen, u mogelijk de grootte van de boom vergroten en een betere precisie krijgen, met het risico van overfitting en langere trainingstijd.  
 
-4. **Minimum aantal steek proeven per blad knooppunt**: geeft het minimum aantal cases aan dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken.
+4. **Minimumaantal monsters per bladknooppunt**: Geef het minimumaantal gevallen aan dat nodig is om een eindknooppunt (blad) in een boom te maken.
 
-    Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaard waarde 1 kan zelfs een enkele case ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde op 5 verhoogt, moeten de opleidings gegevens ten minste 5 gevallen bevatten die aan dezelfde voor waarden voldoen.
+    Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaardwaarde van 1 kan bijvoorbeeld zelfs één aanvraag ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde verhoogt tot 5, moeten de trainingsgegevens ten minste 5 gevallen bevatten die aan dezelfde voorwaarden voldoen.
 
-5. **Leer tempo**: Typ een getal tussen 0 en 1 dat de stap grootte tijdens het leren definieert. Het leer tempo bepaalt hoe snel of traag de kenniser convergeert met de optimale oplossing. Als de grootte van de stap te groot is, kunt u de optimale oplossing overschrijden. Als de grootte van de stap te klein is, neemt de training meer tijd in beslag op de beste oplossing.
+5. **Leersnelheid**: Typ een getal tussen 0 en 1 dat de stapgrootte definieert tijdens het leren. Het leerpercentage bepaalt hoe snel of langzaam de leerling convergeert op de optimale oplossing. Als de stapgrootte te groot is, u de optimale oplossing overshooten. Als de stapgrootte te klein is, duurt het langer om te convergeren naar de beste oplossing.
 
-6. **Aantal geconstrueerde structuren**: hier wordt het totale aantal beslissings structuren aangegeven dat in de ensemble moet worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar de trainings tijd wordt verhoogd.
+6. **Aantal bomen gebouwd**: Geef het totale aantal beslissingsbomen aan dat in het ensemble moet worden gemaakt. Door meer beslissingsbomen te maken, u mogelijk een betere dekking krijgen, maar de trainingstijd neemt toe.
 
-    Deze waarde bepaalt ook het aantal structuren dat wordt weer gegeven wanneer het getrainde model wordt gevisualiseerd. Als u één boom structuur wilt zien of afdrukken, kunt u de waarde instellen op 1. Er wordt echter slechts één structuur geproduceerd (de boom structuur met de initiële set para meters) en er worden geen verdere herhalingen uitgevoerd.
+    Deze waarde bepaalt ook het aantal bomen dat wordt weergegeven bij het visualiseren van het getrainde model. Als u één boom wilt zien of afdrukken, u de waarde instellen op 1; er wordt echter slechts één boom geproduceerd (de boom met de oorspronkelijke set parameters) en er worden geen verdere iteraties uitgevoerd.
 
-7. **Wille keurig getal Seed**: Typ een optioneel niet-negatief geheel getal dat moet worden gebruikt als de wille keurige Seed-waarde. Het opgeven van een Seed zorgt voor een reproduceer baarheid van alle uitvoeringen die dezelfde gegevens en para meters hebben.
+7. **Willekeurig getalzaad**: Typ een optioneel niet-negatief geheel om te gebruiken als willekeurige zaadwaarde. Het opgeven van een zaad zorgt voor reproduceerbaarheid voor runs met dezelfde gegevens en parameters.
 
-    Standaard is de wille keurige Seed ingesteld op 0, wat betekent dat de aanvankelijke Seed-waarde wordt opgehaald uit de systeem klok.
+    Standaard wordt het willekeurige zaad ingesteld op 0, wat betekent dat de initiële zaadwaarde wordt verkregen uit de systeemklok.
   
 
-9. Voeg een trainings gegevensset en een van de trainings modules toe:
+9. Voeg een trainingsgegevensset en een van de trainingsmodules toe:
 
-    - Als u de optie **trainers modus maken** instelt op **één para meter**, gebruikt u de module [Train model](train-model.md) .  
+    - Als u de optie **De trainermodus maken** instelt op **Eén parameter,** gebruikt u de module [Treinmodel.](train-model.md)  
   
     
 
-10. Voer de pijplijn uit.  
+10. Verzend de pijplijn.  
   
 ## <a name="results"></a>Resultaten
 
-Nadat de training is voltooid:
+Na de training is voltooid:
 
-+ Als u het model voor scores wilt gebruiken, verbindt u het met het [score model](./score-model.md)om waarden te voors pellen voor nieuwe invoer voorbeelden.
++ Als u het model wilt gebruiken om te scoren, verbindt u het met [scoremodel](./score-model.md)om waarden voor nieuwe invoervoorbeelden te voorspellen.
 
-+ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van het **getrainde model** en klikt u op pictogram **gegevensset registreren** . De kopie van het getrainde model wordt als een module in de module structuur opgeslagen en wordt niet bijgewerkt op opeenvolgende uitvoeringen van de pijp lijn.
++ Als u een momentopname van het getrainde model wilt opslaan, selecteert u het tabblad **Uitvoer** in het rechterdeelvenster van **Het getrainde model** en klikt u op Pictogram **Gegevensset gegevensset registreren.** De kopie van het getrainde model wordt opgeslagen als een module in de modulestructuur en wordt niet bijgewerkt op opeenvolgende runs van de pijplijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

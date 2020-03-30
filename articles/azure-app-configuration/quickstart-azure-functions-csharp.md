@@ -7,51 +7,53 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 71a330523f1d3393a365fec29fb66f5c9773b6cc
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 2f6efdad7ab0685e58d2edd73bc36b758e8dbae2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207061"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245494"
 ---
-# <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Snelstartgids: een Azure Functions-app maken met Azure-app configuratie
+# <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Snelstart: een Azure-app maken met Azure-app-configuratie
 
-In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure Functions-app om opslag en beheer van alle toepassings instellingen gescheiden van uw code te centraliseren.
+In deze quickstart neemt u de Azure App Configuration-service op in een Azure Functions-app om de opslag en het beheer van al uw toepassingsinstellingen te centraliseren, gescheiden van uw code.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) met de werk belasting **Azure Development** .
-- [Azure Functions-hulpprogram ma's](../azure-functions/functions-develop-vs.md#check-your-tools-version)
+- Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) met de **Azure-ontwikkelworkload.**
+- [Azure-functies](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
+## <a name="create-an-app-configuration-store"></a>Een app-configuratiearchief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **configuratie verkenner** >  **+ maken** om de volgende sleutel-waardeparen toe te voegen:
+6. Selecteer **Configuratieverkenner** > **+ Sleutelwaarde maken** > **Key-value** om de volgende sleutelwaardeparen toe te voegen:
 
     | Sleutel | Waarde |
     |---|---|
     | TestApp:Settings:Message | Gegevens van Azure App Configuration |
 
-    Laat het **Label** en het **inhouds type** nu leeg.
+    Laat **label en** **inhoudstype** voorlopig leeg.
+
+7. Selecteer **Toepassen**.
 
 ## <a name="create-a-functions-app"></a>Een functie-app maken
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
+## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratiearchief
 
-1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** naar het `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-pakket en voeg dit toe aan uw project. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
+1. Klik met de rechtermuisknop op uw project en selecteer **NuGet-pakketten beheren.** Zoek **op het** tabblad Bladeren `Microsoft.Extensions.Configuration.AzureAppConfiguration` naar en voeg het NuGet-pakket toe aan uw project. Als u deze niet vinden, schakelt u het selectievakje **Prerelease opnemen** in.
 
-2. Open *Function1.cs*en voeg de naam ruimten van de .net core-configuratie en de configuratie provider voor de configuratie van de app toe.
+2. Open *Function1.cs*en voeg de naamruimten van de .NET Core-configuratie en de configuratieprovider appconfiguratie toe.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. Voeg een `static` eigenschap met de naam `Configuration` toe om een singleton-exemplaar van `IConfiguration`te maken. Voeg vervolgens een `static`-constructor toe om verbinding te maken met de app-configuratie door `AddAzureAppConfiguration()`aan te roepen. Hiermee wordt de configuratie eenmaal geladen bij het opstarten van de toepassing. Hetzelfde configuratie-exemplaar wordt later gebruikt voor alle functions-aanroepen.
+3. Voeg `static` een `Configuration` eigenschap toe die is `IConfiguration`vernoemd naar een singleton-exemplaar van . Voeg vervolgens `static` een constructor toe om `AddAzureAppConfiguration()`verbinding te maken met app-configuratie door aan te roepen . Dit laadt de configuratie eenmaal bij het opstarten van de toepassing. Dezelfde configuratie-instantie wordt later voor alle oproepen van Functies gebruikt.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -64,7 +66,7 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
     }
     ```
 
-4. Werk de `Run`-methode bij om waarden te lezen uit de configuratie.
+4. Werk `Run` de methode bij om waarden uit de configuratie te lezen.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -83,13 +85,13 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
 
 ## <a name="test-the-function-locally"></a>De functie lokaal testen
 
-1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit en start u de opdracht prompt zodat de wijziging kan worden doorgevoerd:
+1. Stel een omgevingsvariabele met de naam **ConnectionString**in en stel deze in op de toegangssleutel voor uw App Configuration Store. Als u de opdrachtprompt van Windows gebruikt, voert u de volgende opdracht uit en start u de opdrachtprompt opnieuw om de wijziging van kracht te laten worden:
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 
-    Als u Windows Power shell gebruikt, voert u de volgende opdracht uit:
+    Als u Windows PowerShell gebruikt, voert u de volgende opdracht uit:
 
     ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
@@ -101,13 +103,13 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
         export ConnectionString='connection-string-of-your-app-configuration-store'
     ```
 
-2. Druk op F5 om de functie te testen. Accepteer desgevraagd de aanvraag van Visual Studio om **Azure Functions Core-hulpprogramma's (CLI)** te downloaden en installeren. Mogelijk moet u ook een firewall-uitzonde ring inschakelen, zodat de hulpprogram ma's HTTP-aanvragen kunnen afhandelen.
+2. Druk op F5 om uw functie te testen. Accepteer desgevraagd het verzoek van Visual Studio om **CLI-hulpprogramma's (Azure Functions Core)** te downloaden en te installeren. Mogelijk moet u ook een firewalluitzondering inschakelen, zodat de hulpprogramma's HTTP-aanvragen kunnen afhandelen.
 
 3. Kopieer de URL van uw functie vanuit de uitvoer van de Azure Functions-runtime.
 
     ![Quickstart over foutopsporing in functies in Visual Studio](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Plak de URL van de HTTP-aanvraag in de adresbalk van uw browser. In de volgende afbeelding ziet u het antwoord in de browser op de lokale GET-aanvraag die door de functie wordt geretourneerd.
+4. Plak de URL van de HTTP-aanvraag in de adresbalk van uw browser. In de volgende afbeelding wordt het antwoord in de browser weergegeven op de lokale GET-aanvraag die door de functie wordt geretourneerd.
 
     ![Quickstart over lokaal opstarten functies](./media/quickstarts/dotnet-core-function-launch-local.png)
 
@@ -117,7 +119,7 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een Azure Functions-app via de [app-configuratie provider](https://go.microsoft.com/fwlink/?linkid=2074664). Ga door naar de volgende zelf studie voor meer informatie over het configureren van uw Azure Functions-app om configuratie-instellingen dynamisch te vernieuwen.
+In deze quickstart hebt u een nieuwe app-configuratiewinkel gemaakt en deze gebruikt met een Azure Functions-app via de [app-configuratieprovider.](https://go.microsoft.com/fwlink/?linkid=2074664) Ga door naar de volgende zelfstudie voor meer informatie over het configureren van de App Azure Functions om de configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
 > [Dynamische configuratie inschakelen](./enable-dynamic-configuration-azure-functions-csharp.md)

@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: a6b915e2735b45ac876ca98d279a15e4a371fbfd
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594241"
 ---
-Gebruik in een bash shell op Linux, het [Windows-subsysteem voor Linux][install-wsl] of MacOS het volgende `curl` om de consul helm-grafiek versie te downloaden:
+In een bash-gebaseerde shell op Linux, Windows `curl` Subsystem voor [Linux][install-wsl] of MacOS, gebruiken om de Consul Helm grafiek release te downloaden als volgt:
 
 ```bash
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions

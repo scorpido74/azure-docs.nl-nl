@@ -1,7 +1,7 @@
 ---
 title: Apache Pig gebruiken
 titleSuffix: Azure HDInsight
-description: Meer informatie over het gebruik van Pig met Apache Hadoop op HDInsight.
+description: Meer informatie over het gebruik van Pig with Apache Hadoop op HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,54 +10,54 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: ea960a92aee1c9447bb12d27cffdc42de9fd907a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672120"
 ---
-# <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Apache Pig gebruiken met Apache Hadoop op HDInsight
+# <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Gebruik Apache Pig met Apache Hadoop op HDInsight
 
-Meer informatie over het gebruik van [Apache Pig](https://pig.apache.org/) met HDInsight.
+Meer informatie over het gebruik [van Apache Pig](https://pig.apache.org/) met HDInsight.
 
-Apache Pig is een platform voor het maken van Program ma's voor Apache Hadoop met behulp van een procedure taal die wordt aangeduid als *varken Latijn*. Pig is een alternatief voor Java voor het maken van *MapReduce* -oplossingen en is opgenomen in azure HDInsight. Gebruik de volgende tabel om de verschillende manieren te ontdekken waarop varken kan worden gebruikt met HDInsight:
+Apache Pig is een platform voor het maken van programma's voor Apache Hadoop met behulp van een procedurele taal bekend als *Pig Latin*. Pig is een alternatief voor Java voor het maken van *MapReduce-oplossingen* en is inbegrepen bij Azure HDInsight. Gebruik de volgende tabel om de verschillende manieren te ontdekken waarop Pig kan worden gebruikt met HDInsight:
 
-## <a id="why"></a>Waarom Apache Pig gebruiken
+## <a name="why-use-apache-pig"></a><a id="why"></a>Waarom Apache Pig gebruiken
 
-Een van de uitdagingen van het verwerken van gegevens met behulp van MapReduce in Hadoop is het implementeren van de verwerkings logica door alleen een kaart en een functie verminderen te gebruiken. Voor complexe verwerking moet u vaak de verwerking verstoren naar meerdere MapReduce-bewerkingen die samen worden gekoppeld om het gewenste resultaat te krijgen.
+Een van de uitdagingen van het verwerken van gegevens met behulp van MapReduce in Hadoop is het implementeren van uw verwerkingslogica door alleen een kaart en een reducefunctie te gebruiken. Voor complexe verwerking moet u de verwerking vaak opsplitsen in meerdere MapReduce-bewerkingen die aan elkaar zijn geketend om het gewenste resultaat te bereiken.
 
-Met Pig kunt u een verwerking definiëren als een reeks trans formaties die de gegevens doorloopt om de gewenste uitvoer te produceren.
+Met Pig u de verwerking definiëren als een reeks transformaties waar de gegevens doorheen stromen om de gewenste output te produceren.
 
-Met de Latijnse taal van het varken kunt u de gegevens stroom beschrijven van onbewerkte invoer, via een of meer trans formaties om de gewenste uitvoer te produceren. Latijnse Program ma's voor Pig volgen dit algemene patroon:
+Met de Latijnse varkenstaal u de gegevensstroom van ruwe invoer, via een of meer transformaties, beschrijven om de gewenste uitvoer te produceren. Pig Latin programma's volgen dit algemene patroon:
 
-* **Laden**: gegevens lezen die moeten worden gemanipuleerd vanuit het bestands systeem.
+* **Laden**: Lees gegevens die moeten worden gemanipuleerd vanuit het bestandssysteem.
 
-* **Trans formatie**: gegevens bewerken.
+* **Transformeren:** de gegevens manipuleren.
 
-* **Dump of Store**: uitvoer gegevens naar het scherm of sla het op voor verwerking.
+* **Dump en bewaar:** Uitvoer gegevens naar het scherm of sla deze op voor verwerking.
 
 ### <a name="user-defined-functions"></a>Door de gebruiker gedefinieerde functies
 
-Pig-Latijns biedt ook ondersteuning voor door de gebruiker gedefinieerde functies (UDF), waarmee u externe componenten kunt aanroepen die logica implementeren die moeilijk te model leren in de Latijnse Latijns.
+Pig Latin ondersteunt ook door de gebruiker gedefinieerde functies (UDF), waarmee u externe componenten aanroepen die logica implementeren die moeilijk te modelleren is in Pig Latin.
 
-Zie voor meer informatie over Pig-Latijns de hand [leiding voor varkens Latijns naslag handleiding 1](https://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) en de [referentie hand leiding voor varkens Latijns 2](https://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html).
+Zie Pig Latin Reference [Manual 1](https://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) en [Pig Latin Reference Manual 2](https://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html)voor meer informatie over Pig Latin.
 
-## <a id="data"></a>Voorbeeld gegevens
+## <a name="example-data"></a><a id="data"></a>Voorbeeldgegevens
 
-HDInsight biedt diverse voor beelden van gegevens sets die zijn opgeslagen in de `/example/data` en `/HdiSamples` directory's. Deze directory's bevinden zich in de standaard opslag voor uw cluster. Het Pig-voor beeld in dit document maakt gebruik van het *log4j* -bestand van `/example/data/sample.log`.
+HDInsight biedt verschillende voorbeeldgegevenssets, die `/example/data` `/HdiSamples` worden opgeslagen in de mappen en mappen. Deze mappen bevinden zich in de standaardopslag voor uw cluster. In het voorbeeld Pig in dit document `/example/data/sample.log`wordt het *log4j-bestand* van .
 
-Elk logboek in het bestand bestaat uit een regel met velden die een `[LOG LEVEL]` veld bevat om het type en de ernst weer te geven, bijvoorbeeld:
+Elk logboek in het bestand bestaat uit `[LOG LEVEL]` een veldenlijn die een veld bevat om het type en de ernst weer te geven, bijvoorbeeld:
 
     2012-02-03 20:26:41 SampleClass3 [ERROR] verbose detail for id 1527353937
 
-In het vorige voor beeld is het logboek niveau fout.
+In het vorige voorbeeld is het logboekniveau FOUT.
 
 > [!NOTE]  
-> U kunt ook een log4j-bestand genereren met behulp van het hulp programma [Apache log4j](https://en.wikipedia.org/wiki/Log4j) logging en dat bestand vervolgens uploaden naar uw blob. Zie [gegevens uploaden naar HDInsight](hdinsight-upload-data.md) voor instructies. Zie [Azure Blob Storage gebruiken met hdinsight](hdinsight-hadoop-use-blob-storage.md)voor meer informatie over hoe blobs in azure Storage worden gebruikt in combi natie met hdinsight.
+> U ook een log4j-bestand genereren met behulp van het logboekregistratieprogramma [Apache Log4j](https://en.wikipedia.org/wiki/Log4j) en dat bestand vervolgens uploaden naar uw blob. Zie [Gegevens uploaden naar HDInsight](hdinsight-upload-data.md) voor instructies. Zie [Azure Blob Storage gebruiken met HDInsight](hdinsight-hadoop-use-blob-storage.md)voor meer informatie over hoe blobs in Azure-opslag worden gebruikt met HDInsight.
 
-## <a id="job"></a>Voorbeeld taak
+## <a name="example-job"></a><a id="job"></a>Voorbeeldtaak
 
-Met de volgende waarde van de Latijnse taak wordt het `sample.log` bestand geladen uit de standaard opslag voor uw HDInsight-cluster. Vervolgens wordt een reeks trans formaties uitgevoerd die resulteren in een telling van het aantal keren dat elk logboek niveau is opgetreden in de invoer gegevens. De resultaten worden geschreven naar STDOUT.
+Met de volgende functie `sample.log` Pig Latin wordt het bestand geladen vanuit de standaardopslag voor uw HDInsight-cluster. Vervolgens voert het een reeks transformaties uit die resulteren in een telling van hoe vaak elk logboekniveau in de invoergegevens heeft plaatsgevonden. De resultaten zijn geschreven naar SOAOUT.
 
     ```
     LOGS = LOAD 'wasb:///example/data/sample.log';
@@ -69,27 +69,27 @@ Met de volgende waarde van de Latijnse taak wordt het `sample.log` bestand gelad
     DUMP RESULT;
     ```
 
-De volgende afbeelding toont een samen vatting van wat elke trans formatie naar de gegevens doet.
+De volgende afbeelding toont een overzicht van wat elke transformatie met de gegevens doet.
 
-![Grafische weer gave van de trans formaties][image-hdi-pig-data-transformation]
+![Grafische weergave van de transformaties][image-hdi-pig-data-transformation]
 
-## <a id="run"></a>De Latijnse taak van de Pig uitvoeren
+## <a name="run-the-pig-latin-job"></a><a id="run"></a>Voer de baan Pig Latin uit
 
-HDInsight kan met behulp van verschillende methoden de Latijnse taken van Pig uitvoeren. Gebruik de volgende tabel om te bepalen welke methode het meest geschikt is voor u en volg de koppeling voor een overzicht.
+HDInsight kan Pig Latin-taken uitvoeren met behulp van verschillende methoden. Gebruik de volgende tabel om te beslissen welke methode geschikt is voor u en volg vervolgens de koppeling voor een walkthrough.
 
-## <a name="pig-and-sql-server-integration-services"></a>Varken en SQL Server Integration Services
+## <a name="pig-and-sql-server-integration-services"></a>Pig- en SQL Server-integratieservices
 
-U kunt SQL Server Integration Services (SSIS) gebruiken om een Pig-taak uit te voeren. Het Azure Feature Pack voor SSIS bevat de volgende onderdelen die werken met Pig-taken op HDInsight.
+U SQL Server Integration Services (SSIS) gebruiken om een Pig-taak uit te voeren. Het Azure Feature Pack voor SSIS biedt de volgende componenten die werken met Pig-taken op HDInsight.
 
-* [Azure HDInsight Pig-taak][pigtask]
+* [Azure HDInsight-varkenstaak][pigtask]
 
-* [Verbindings beheer voor Azure-abonnementen][connectionmanager]
+* [Azure Subscription Connection Manager][connectionmanager]
 
-Meer informatie over het Azure Feature Pack [voor SSIS.][ssispack]
+Lees hier meer over het Azure Feature Pack voor [SSIS.][ssispack]
 
-## <a id="nextsteps"></a>Volgende stappen
+## <a name="next-steps"></a><a id="nextsteps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u Pig met HDInsight kunt gebruiken, kunt u de volgende koppelingen gebruiken om andere manieren te ontdekken om met Azure HDInsight te werken.
+Nu u hebt geleerd hoe u Pig met HDInsight gebruiken, gebruikt u de volgende koppelingen om andere manieren te verkennen om met Azure HDInsight te werken.
 
 * [Gegevens uploaden naar HDInsight](hdinsight-upload-data.md)
 * [Apache Hive gebruiken met HDInsight](./hadoop/hdinsight-use-hive.md)

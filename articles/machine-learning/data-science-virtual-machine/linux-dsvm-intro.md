@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: een CentOS-Data Science Virtual Machine maken'
+title: 'Snelstart: maak een CentOS Data Science Virtual Machine'
 titleSuffix: Azure Data Science Virtual Machine
-description: Configureer en maak een Data Science Virtual Machine voor Linux (CentOS) om analyses en machine learning te maken.
+description: Configureer en maak een Data Science Virtual Machine voor Linux (CentOS) om analytics en machine learning te doen.
 ms.service: machine-learning
 ms.subservice: data-science-vm
 author: gvashishtha
@@ -9,130 +9,130 @@ ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.openlocfilehash: 73541b31125ee6e99dc2351e26f6a564a1603487
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77526022"
 ---
-# <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Quick Start: een CentOS (Linux)-Data Science Virtual Machine instellen in azure
+# <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Snelstart: Een CentOS (Linux) Data Science Virtual Machine instellen in Azure
 
-Ga aan de slag met een op CentOS gebaseerd Data Science Virtual Machine.
+Ga aan de slag met een Op CentOS gebaseerde Data Science Virtual Machine.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u een CentOS-Data Science Virtual Machine wilt maken, moet u een **Azure-abonnement**hebben. [Maak een gratis abonnement](https://azure.com/free).
+Als u een CentOS Data Science Virtual Machine wilt maken, moet u een **Azure-abonnement**hebben. [Maak een gratis abonnement](https://azure.com/free)aan.
 
-## <a name="create-your-centos-data-science-virtual-machine"></a>Uw CentOS-Data Science Virtual Machine maken
+## <a name="create-your-centos-data-science-virtual-machine"></a>Maak uw CentOS Data Science Virtual Machine
 
-Hier volgen de stappen voor het maken van een instantie van de CentOS Data Science Virtual Machine:
+Dit zijn de stappen om een exemplaar van de CentOS Data Science Virtual Machine te maken:
 
-1. Ga naar de [Azure Portal](https://portal.azure.com). U wordt mogelijk gevraagd om u aan te melden bij uw Azure-account als u nog niet bent aangemeld. 
-1. Typ ' data Science virtual machine ' in de zoek balk en selecteer de CentOS-DSVM.
+1. Ga naar de [Azure-portal.](https://portal.azure.com) Mogelijk wordt u gevraagd u aan te melden bij uw Azure-account als u nog niet bent aangemeld. 
+1. Typ 'virtuele machine voor data science' in de zoekbalk en selecteer de CentOS DSVM.
 
-    ![CentOS Zoek resultaat](./media/linux-dsvm-intro/search-centos.png)
+    ![CentOS-zoekresultaten](./media/linux-dsvm-intro/search-centos.png)
 
-1. Selecteer in het volgende venster **maken**.
+1. Selecteer in het volgende venster **Maken**.
 
     [![](media/linux-dsvm-intro/create-centos.png "Button to create a CentOS machine")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
-1. U moet worden omgeleid naar de Blade een virtuele machine maken.
+1. U moet worden doorgestuurd naar het blad 'Maak een virtuele machine'.
    
-   ![Tabblad basis informatie dat overeenkomt met de virtuele machine CentOS](./media/linux-dsvm-intro/review-create-centos.png)
+   ![Tabblad Basisdie overeenkomt met CentOS Virtual Machine](./media/linux-dsvm-intro/review-create-centos.png)
 
-1. Voer de volgende informatie in voor het configureren van elke stap van de wizard:
+1. Voer de volgende gegevens in om elke stap van de wizard te configureren:
 
-    1. **Basis beginselen**:
+    1. **Basics**:
     
-       * **Abonnement**: als u meer dan één abonnement hebt, selecteert u de computer waarop de machine wordt gemaakt en gefactureerd. U hebt privileges voor het maken van resources nodig voor dit abonnement.
-       * **Resource groep**: Maak een nieuwe groep of gebruik een bestaande.
-       * **Naam van de virtuele machine**: Voer de naam van de virtuele machine in. Dit wordt weer gegeven in uw Azure Portal.
-       * **Regio**: Selecteer het Data Center dat het meest geschikt is. Voor de snelste netwerk toegang is het het Data Center dat het meren deel van uw gegevens heeft of zich het dichtst bij uw fysieke locatie bevindt. Meer informatie over [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/).
-       * **Afbeelding**: behoud de standaard waarde.
-       * **Grootte**: dit moet automatisch worden ingevuld met een grootte die geschikt is voor algemene werk belastingen. Meer informatie over de [grootten van virtuele Linux-machines in azure](../../virtual-machines/linux/sizes.md).
-       * **Verificatie type**: Selecteer ' wacht woord ' voor een snellere installatie. 
+       * **Abonnement:** Als u meer dan één abonnement hebt, selecteert u het abonnement waarop de machine wordt gemaakt en gefactureerd. U hebt privileges voor het maken van resources nodig voor dit abonnement.
+       * **Resourcegroep:** maak een nieuwe groep of gebruik een bestaande groep.
+       * **Naam virtuele machine**: Voer de naam van de virtuele machine in. Dit is hoe het wordt weergegeven in uw Azure-portal.
+       * **Regio**: Selecteer het datacenter dat het meest geschikt is. Voor snelste netwerktoegang is dit het datacenter dat de meeste gegevens heeft of het dichtst bij uw fysieke locatie staat. Meer informatie over [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Afbeelding**: Laat de standaardwaarde achter.
+       * **Grootte:** dit moet automatisch worden ingevuld met een grootte die geschikt is voor algemene workloads. Lees meer over [Linux VM-formaten in Azure](../../virtual-machines/linux/sizes.md).
+       * **Verificatietype:** Selecteer 'Wachtwoord' voor een snellere installatie. 
          
          > [!NOTE]
-         > Als u JupyterHub wilt gebruiken, zorg er dan voor dat u ' wacht woord ' selecteert, omdat JupyterHub *niet* is geconfigureerd voor het gebruik van open bare SSH-sleutels.
+         > Als u van plan bent JupyterHub te gebruiken, moet u 'Wachtwoord' selecteren, omdat JupyterHub *niet* is geconfigureerd om openbare SSH-sleutels te gebruiken.
 
-       * **Gebruikers naam**: Voer de gebruikers naam van de beheerder in. Dit is de gebruikers naam die u gaat gebruiken om u aan te melden bij uw virtuele machine en hoeft niet hetzelfde te zijn als uw Azure-gebruikers naam. Gebruik *geen* hoofd letters.
+       * **Gebruikersnaam**: Voer de gebruikersnaam van de beheerder in. Dit is de gebruikersnaam die u gebruikt om u aan te melden bij uw virtuele machine en hoeft niet dezelfde te zijn als uw Azure-gebruikersnaam. Gebruik *geen* hoofdletters.
          
          > [!NOTE]
-         > Als u hoofdletter kapitalen gebruikt in uw gebruikers naam, werkt JupyterHub niet en wordt er een interne server fout van 500 aangetroffen.
+         > Als u hoofdletters in uw gebruikersnaam gebruikt, werkt JupyterHub niet en krijgt u een fout van 500 interne servers.
 
-       * **Wacht woord**: Voer het wacht woord in dat u wilt gebruiken om u aan te melden bij de virtuele machine.    
+       * **Wachtwoord:** Voer het wachtwoord in dat u gebruikt om u aan te melden bij uw virtuele machine.    
     
    1. Selecteer **Controleren + maken**.
-   1. **Controleren en maken**
-      * Controleer of alle informatie die u hebt ingevoerd juist is. 
+   1. **Controleren+maken**
+      * Controleer of alle ingevoerde gegevens juist zijn. 
       * Selecteer **Maken**.
     
-    De inrichting duurt ongeveer 5 minuten. De status wordt weer gegeven in de Azure Portal.
+    De inrichting duurt ongeveer 5 minuten. De status wordt weergegeven in de Azure-portal.
 
-## <a name="how-to-access-the-centos-data-science-virtual-machine"></a>Toegang tot de CentOS-Data Science Virtual Machine
+## <a name="how-to-access-the-centos-data-science-virtual-machine"></a>Toegang krijgen tot de CentOS Data Science Virtual Machine
 
-U kunt op een van de volgende drie manieren toegang krijgen tot de CentOS-DSVM:
+U de CentOS DSVM op drie manieren openen:
 
-  * SSH voor terminal-sessies
+  * SSH voor terminalsessies
   * X2Go voor grafische sessies
-  * JupyterHub en Jjupyterlab voor Jupyter-notebooks
+  * JupyterHub en Jupyterlab voor Jupyter Notebooks
 
-U kunt ook een Data Science Virtual Machine aan Azure Notebooks koppelen om Jupyter-notebooks op de virtuele machine uit te voeren en de beperkingen van de gratis servicelaag over te slaan. Zie [Azure notebooks projecten beheren en configureren](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)voor meer informatie.
+U ook een Virtuele Data Science-machine aan Azure-notitieblokken koppelen om Jupyter-notitieblokken op de VM uit te voeren en de beperkingen van de gratis servicelaag te omzeilen. Zie [Azure Notebooks-projecten beheren en configureren](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)voor meer informatie.
 
 ### <a name="ssh"></a>SSH
 
-Nadat de VM is gemaakt, kunt u zich met SSH aanmelden als deze is geconfigureerd met SSH-toegang. Gebruik de account referenties die u hebt gemaakt in de sectie **basis beginselen** van stap 3 voor de tekst shell-interface. In Windows kunt u een SSH-client hulpprogramma downloaden, zoals [putty](https://www.putty.org). Als u liever een grafisch bureau blad (X Window-Systeem) hebt, kunt u X11 door sturen gebruiken op PuTTy.
+Nadat de VM is gemaakt, als deze is geconfigureerd met SSH-toegang, u zich aanmelden met behulp van SSH. Gebruik de accountreferenties die u hebt gemaakt in de sectie **Basisbeginselen** van stap 3 voor de interface van de tekstshell. Op Windows u een SSH-clienttool zoals [PuTTY](https://www.putty.org)downloaden. Als u de voorkeur geeft aan een grafisch bureaublad (X Window System), u X11 forwarding gebruiken op PuTTY.
 
 > [!NOTE]
-> De client X2Go beter dan X11 doorsturen tests uitgevoerd. Het is raadzaam om met behulp van de client X2Go voor een grafische interface voor het bureaublad.
+> De X2Go-client presteerde beter dan X11 forwarding tijdens het testen. We raden u aan de X2Go-client te gebruiken voor een grafische desktopinterface.
 
 ### <a name="x2go"></a>X2Go
 
-De virtuele Linux-machine is al ingericht met de X2Go-server en is klaar om client verbindingen te accepteren. Voor verbinding met het bureaublad van de Linux-VM-grafische, voer de volgende procedure op de client:
+De Linux VM is al ingericht met X2Go Server en klaar om clientverbindingen te accepteren. Voer de volgende procedure op uw client uit om verbinding te maken met het grafische bureaublad van Linux VM:
 
-1. Down load en installeer de X2Go-client voor uw client platform via [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
-1. Noteer het open bare IP-adres van de virtuele machine, dat u in de Azure Portal kunt vinden door de virtuele machine die u zojuist hebt gemaakt, te openen.
+1. Download en installeer de X2Go-client voor uw clientplatform van [X2Go.](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)
+1. Noteer het openbare IP-adres van de virtuele machine, dat u vinden in de Azure-portal door de virtuele machine te openen die u zojuist hebt gemaakt.
 
-   ![IP-adres van CentOS-computer](./media/linux-dsvm-intro/centos-ip-address.png)
+   ![CentOS machine IP-adres](./media/linux-dsvm-intro/centos-ip-address.png)
 
-1. Voer de X2Go-client uit. Als het venster nieuwe sessie niet automatisch wordt pop-up, gaat u naar sessie-> nieuwe sessie.
+1. Voer de X2Go-client uit. Als het venster 'Nieuwe sessie' niet automatisch wordt weergegeven, gaat u naar Sessie-> Nieuwe sessie.
 
-1. Voer in het venster resulterende configuratie de volgende configuratie parameters in:
-   * **Tabblad sessie**:
-     * **Host**: Voer het IP-adres in van de virtuele machine die u eerder hebt genoteerd.
-     * **Aanmelding**: Voer de gebruikers naam in op de virtuele Linux-machine.
-     * **SSH-poort**: de standaard waarde is 25.
-     * **Sessie type**: Wijzig de waarde in **xfce**. De Linux-VM ondersteunt momenteel alleen het XFCE-bureau blad.
-   * **Tabblad Media**: u kunt geluids ondersteuning en afdrukken via clients uitschakelen als u deze niet nodig hebt.
-   * **Gedeelde mappen**: als u directory's wilt gebruiken van uw client machines die zijn gekoppeld aan de virtuele Linux-machine, voegt u de client computer directory's toe die u wilt delen met de virtuele machine op dit tabblad.
+1. Voer in het resulterende configuratievenster de volgende configuratieparameters in:
+   * **Tabblad Sessie:**
+     * **Host:** Voer het IP-adres van uw VM in, waar u eerder nota van hebt genomen.
+     * **Login**: Voer de gebruikersnaam in op de Linux VM.
+     * **SSH-poort**: Laat het op 22, de standaardwaarde.
+     * **Sessietype:** wijzig de waarde in **XFCE**. Momenteel ondersteunt de Linux VM alleen de XFCE-desktop.
+   * **Tabblad Media**: U geluidsondersteuning en clientafdrukken uitschakelen als u deze niet hoeft te gebruiken.
+   * **Gedeelde mappen:** Als u mappen van uw clientmachines wilt monteren op de Linux-VM, voegt u de clientmachinemappen toe die u met de VM wilt delen op dit tabblad.
 
    ![X2go-configuratie](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Selecteer **OK**.
-1. Klik op het vak in het rechterdeel venster van het venster X2Go om het aanmeldings scherm voor uw virtuele machine weer te geven.
-1. Voer het wacht woord voor uw virtuele machine in.
+1. Klik op het vakje in het rechterdeelvenster van het X2Go-venster om het aanmeldingsscherm voor uw vm weer te geven.
+1. Voer het wachtwoord voor uw vm in.
 1. Selecteer **OK**.
-1. Mogelijk moet u X2Go toestemming geven om uw firewall te omzeilen om verbinding te kunnen maken.
+1. Het kan zijn dat u X2Go toestemming moet geven om uw firewall te omzeilen om de verbinding te voltooien.
 1. U ziet nu de grafische interface voor uw CentOS DSVM. 
 
 
-### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub en Jjupyterlab
+### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub en JupyterLab
 
-De CentOS DSVM voert [JupyterHub](https://github.com/jupyterhub/jupyterhub), een Jupyter-server voor meerdere gebruikers. Voer de volgende stappen uit om verbinding te maken:
+De CentOS DSVM draait [JupyterHub](https://github.com/jupyterhub/jupyterhub), een multiuser Jupyter server. Ga als volgt te werk om verbinding te maken:
 
-   1. Noteer het open bare IP-adres voor uw virtuele machine door de virtuele machine in de Azure Portal te zoeken en te selecteren.
+   1. Noteer het openbare IP-adres voor uw vm door te zoeken naar en het selecteren van uw VM in de Azure-portal.
 
-       ![IP-adres van CentOS-computer](./media/linux-dsvm-intro/centos-ip-address.png)
+       ![CentOS machine IP-adres](./media/linux-dsvm-intro/centos-ip-address.png)
 
-   1. Open vanaf uw lokale computer een webbrowser en ga naar https:\//your-VM-IP: 8000, vervang ' Your-VM-IP ' door het IP-adres dat u eerder hebt genoteerd.
-   1. Voer de gebruikers naam en het wacht woord in die u hebt gebruikt om de virtuele machine te maken en meld u aan. 
+   1. Open vanaf uw lokale machine een webbrowser\/en navigeer naar https: /your-vm-ip:8000, waarbij u "your-vm-ip" vervangt door het IP-adres waar u eerder nota van hebt genomen.
+   1. Voer de gebruikersnaam en het wachtwoord in die u hebt gebruikt om de vm te maken en meld u aan. 
 
-      ![Jupyter-aanmelding invoeren](./media/dsvm-ubuntu-intro/jupyter-login.png)
+      ![Ga in op Jupyter-aanmelding](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
-   1. Blader door de vele beschik bare voor beelden van notitie blokken.
+   1. Blader door de vele voorbeeldnotitieblokken die beschikbaar zijn.
 
-Jjupyterlab, is de volgende generatie van Jupyter notebooks en JupyterHub, ook beschikbaar. Meld u aan bij JupyterHub en blader vervolgens naar de URL https:\//your-VM-IP: 8000/User/uw-username/Lab, waarbij u uw-gebruikers naam vervangt door de gebruikers naam die u hebt gekozen bij het configureren van de virtuele machine.
+JupyterLab, de volgende generatie Jupyter notebooks en JupyterHub, is ook beschikbaar. Om toegang te krijgen tot het, meld je aan bij\/JupyterHub en blader je naar de URL https: /your-vm-ip:8000/user/your-username/lab, waarbij je "je gebruikersnaam" vervangt door de gebruikersnaam die je hebt gekozen bij het configureren van de VM.
 
-U kunt Jjupyterlab instellen als de standaard notebook server door deze regel toe te voegen aan `/etc/jupyterhub/jupyterhub_config.py`:
+U JupyterLab instellen als de standaardnotebookserver door deze regel toe te voegen aan: `/etc/jupyterhub/jupyterhub_config.py`
 
 ```python
 c.Spawner.default_url = '/lab'
@@ -140,10 +140,10 @@ c.Spawner.default_url = '/lab'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Hier ziet u hoe u kunt doorgaan met uw learning en verkennen:
+Zo u uw leerproces en verkenning voortzetten:
 
-* In het overzicht van de [gegevens wetenschap op het data Science virtual machine voor Linux](linux-dsvm-walkthrough.md) ziet u hoe u verschillende algemene data Science-taken kunt uitvoeren met de Linux-DSVM die hier is ingericht. 
-* Bekijk de verschillende hulpprogram ma's voor gegevens wetenschap op het DSVM door de hulpprogram ma's die in dit artikel worden beschreven, uit te proberen. U kunt `dsvm-more-info` ook uitvoeren in de shell in de virtuele machine voor een basis kennis Making en voor verwijzingen naar meer informatie over de hulpprogram ma's die op de DSVM zijn geïnstalleerd.  
-* Leer hoe u end-to-end analytische oplossingen systematisch bouwt met behulp van het [team data Science process](https://aka.ms/tdsp).
-* Ga naar de [Azure AI Gallery](https://gallery.azure.ai/) voor voor beelden van machine learning en gegevens analyse die gebruikmaken van de Azure AI-Services.
-* Raadpleeg de juiste [referentie documentatie](./reference-centos-vm.md) voor deze virtuele machine.
+* De walkthrough [Data science op de Data Science Virtual Machine voor Linux](linux-dsvm-walkthrough.md) laat zien hoe je verschillende veelvoorkomende data science taken uitvoeren met de Linux DSVM die hier is ingericht. 
+* Ontdek de verschillende data science tools op de DSVM door het uitproberen van de tools beschreven in dit artikel. U `dsvm-more-info` ook in de shell in de virtuele machine draaien voor een basisintroductie en voor aanwijzers naar meer informatie over de hulpprogramma's die op de DSVM zijn geïnstalleerd.  
+* Leer hoe u end-to-end analytische oplossingen systematisch bouwen met behulp van het [Team Data Science Process.](https://aka.ms/tdsp)
+* Ga naar de [Azure AI Gallery](https://gallery.azure.ai/) voor voorbeelden van machine learning en gegevensanalyse die gebruikmaken van de Azure AI-services.
+* Raadpleeg de juiste [referentiedocumentatie](./reference-centos-vm.md) voor deze virtuele machine.

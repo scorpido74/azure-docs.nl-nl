@@ -4,17 +4,17 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8872ebc45294487f1a22c3417b308fe6267df613
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594114"
 ---
 ```bash
 kubectl describe pod -l "app=voting-analytics, version=1.0" -n voting | egrep "istio-proxy:|voting-analytics:" -A2
 ```
 
-De `istio-proxy`-container is automatisch geïnjecteerd door Istio om het netwerk verkeer van en naar uw onderdelen te beheren, zoals wordt weer gegeven in de volgende voorbeeld uitvoer:
+De `istio-proxy` container is automatisch geïnjecteerd door Istio om het netwerkverkeer van en naar uw componenten te beheren, zoals wordt weergegeven in de volgende voorbeelduitvoer:
 
 ```console
   voting-analytics:

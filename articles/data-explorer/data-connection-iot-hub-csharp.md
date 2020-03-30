@@ -1,6 +1,6 @@
 ---
-title: Een IoT Hub gegevens verbinding maken voor Azure Data Explorer met behulp vanC#
-description: In dit artikel leert u hoe u een IoT Hub gegevens verbinding voor Azure Data Explorer maakt met behulp C#van.
+title: 'Een IoT Hub-gegevensverbinding voor Azure Data Explorer maken met C #'
+description: In dit artikel leert u hoe u een IoT Hub-gegevensverbinding voor Azure Data Explorer maakt met C#.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,38 +8,38 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: 0cac03e50bf46910f8430b745803107b60905769
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667387"
 ---
-# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-c-preview"></a>Een IoT Hub gegevens verbinding maken voor Azure Data Explorer met behulp C# van (preview)
+# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-c-preview"></a>Een IoT Hub-gegevensverbinding voor Azure Data Explorer maken met C# (Voorbeeld)
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
-> * [C#](data-connection-iot-hub-csharp.md)
+> * [C #](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager-sjabloon](data-connection-iot-hub-resource-manager.md)
 
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt opname (gegevens laden) van Event Hubs, IoT hubs en blobs die zijn geschreven naar BLOB-containers. In dit artikel maakt u een IoT Hub gegevens verbinding voor Azure Data Explorer met behulp C#van.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt opname (gegevensladen) van gebeurtenishubs, IoT-hubs en blobs die zijn geschreven naar blobcontainers. In dit artikel maakt u een IoT Hub-gegevensverbinding voor Azure Data Explorer met C#.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als Visual Studio 2019 niet is geïnstalleerd, kunt u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* [Een cluster en data base](create-cluster-database-csharp.md) maken
-* [Tabel-en kolom toewijzing](net-standard-ingest-data.md#create-a-table-on-your-test-cluster) maken
-* [Data Base-en tabel beleid](database-table-policies-csharp.md) instellen (optioneel)
-* Maak een [IOT hub waarvoor een gedeeld toegangs beleid is geconfigureerd](ingest-data-iot-hub.md#create-an-iot-hub).
+* Als u Visual Studio 2019 niet hebt geïnstalleerd, u de **gratis** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+* Een [cluster en database maken](create-cluster-database-csharp.md)
+* Tabel- [en kolomtoewijzing maken](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* [Database- en tabelbeleid](database-table-policies-csharp.md) instellen (optioneel)
+* Maak een [IoT-hub met een beleid voor gedeelde toegang geconfigureerd](ingest-data-iot-hub.md#create-an-iot-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-an-iot-hub-data-connection"></a>Een IoT Hub gegevens verbinding toevoegen 
+## <a name="add-an-iot-hub-data-connection"></a>Een IoT Hub-gegevensverbinding toevoegen 
 
-In het volgende voor beeld ziet u hoe u een IoT Hub gegevens verbinding programmatisch kunt toevoegen. Zie [Azure Data Explorer-tabel verbinden met IOT hub](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub) voor het toevoegen van een IOT hub-gegevens verbinding met behulp van de Azure Portal.
+In het volgende voorbeeld ziet u hoe u een IoT Hub-gegevensverbinding programmatisch toevoegt. Zie [Azure Data Explorer-tabel verbinden met IoT Hub](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub) voor het toevoegen van een Iot Hub-gegevensverbinding via de Azure-portal.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -76,22 +76,22 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
             new IotHubDataConnection(iotHubResourceId, consumerGroup, sharedAccessPolicyName, tableName: tableName, location: location, mappingRuleName: mappingRuleName, dataFormat: dataFormat));
 ```
 
-|**Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**|
+|**Instelling** | **Voorgestelde waarde** | **Veldbeschrijving**|
 |---|---|---|
-| tenantId | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | Uw Tenant-ID. Ook bekend als Directory-ID.|
-| subscriptionId | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | De abonnements-ID die u gebruikt voor het maken van resources.|
-| clientId | *xxxxxxxx-xxxxx-XXXX-XXXX-xxxxxxxxx* | De client-ID van de toepassing die toegang heeft tot bronnen in uw Tenant.|
-| clientSecret | *xxxxxxxxxxxxxx* | Het client geheim van de toepassing die toegang heeft tot bronnen in uw Tenant. |
-| resourceGroupName | *testrg* | De naam van de resource groep die het cluster bevat.|
+| tenantId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Je pacht-id. Ook wel directory ID genoemd.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | De abonnements-ID die u gebruikt voor het maken van resources.|
+| clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | De client-id van de toepassing die toegang heeft tot bronnen in uw tenant.|
+| clientGeheim | *xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx* | Het clientgeheim van de toepassing die toegang heeft tot bronnen in uw tenant. |
+| resourceGroupName | *testrg* | De naam van de resourcegroep die uw cluster bevat.|
 | clusterName | *mykustocluster* | De naam van uw cluster.|
-| databaseName | *mykustodatabase* | De naam van de doel database in uw cluster.|
-| dataConnection | *myeventhubconnect* | De gewenste naam van uw gegevens verbinding.|
-| tableName | *StormEvents* | De naam van de doel tabel in de doel database.|
-| mappingRuleName | *StormEvents_CSV_Mapping* | De naam van de kolom toewijzing die is gerelateerd aan de doel tabel.|
-| dataFormat | *bestand* | De gegevens indeling van het bericht.|
-| iotHubResourceId | *Resource-ID* | De resource-ID van uw IoT-hub die de gegevens voor opname bevat. |
+| Databasenaam | *mykustodatabase* | De naam van de doeldatabase in uw cluster.|
+| gegevensConnectionName | *myeventhubconnect* | De gewenste naam van uw gegevensverbinding.|
+| tableName | *StormEvenementen* | De naam van de doeltabel in de doeldatabase.|
+| mappingRuleName | *StormEvents_CSV_Mapping* | De naam van uw kolomtoewijzing met betrekking tot de doeltabel.|
+| gegevensOpmaken | *Csv* | De gegevensindeling van het bericht.|
+| iotHubResourceId | *Resource-id* | De resource-ID van uw IoT-hub die de gegevens bevat voor opname. |
 | sharedAccessPolicyName | *iothubforread* | De naam van het beleid voor gedeelde toegang dat de machtigingen definieert voor apparaten en services om verbinding te maken met IoT Hub. |
-| consumerGroup | *$Default* | De consumenten groep van uw Event Hub.|
-| location | *US - centraal* | De locatie van de bron van de gegevens verbinding.|
+| consumerGroup | *$Default* | De consumentengroep van uw eventhub.|
+| location | *VS - centraal* | De locatie van de bron voor gegevensverbindingen.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

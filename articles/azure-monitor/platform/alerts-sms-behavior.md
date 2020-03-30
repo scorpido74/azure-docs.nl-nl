@@ -1,6 +1,6 @@
 ---
-title: Gedrag van SMS-waarschuwingen in actie groepen
-description: SMS-bericht indeling en reageren op SMS-berichten om u af te melden, u opnieuw aan te melden of om hulp te vragen.
+title: Gedrag van sms-waarschuwingen in actiegroepen
+description: Sms-berichtindeling en reageren op sms-berichten om je af te melden, opnieuw in te schrijven of hulp te vragen.
 author: dkamstra
 ms.author: dukek
 services: monitoring
@@ -8,41 +8,41 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
 ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665303"
 ---
-# <a name="sms-alert-behavior-in-action-groups"></a>Gedrag van SMS-waarschuwingen in actie groepen
+# <a name="sms-alert-behavior-in-action-groups"></a>Sms-waarschuwingsgedrag in actiegroepen
 
 ## <a name="overview"></a>Overzicht 
-Met actie groepen kunt u een lijst met acties configureren. Deze groepen worden gebruikt bij het definiëren van waarschuwingen. controleren of een bepaalde actie groep wordt gewaarschuwd wanneer de waarschuwing wordt geactiveerd. Een van de ondersteunde acties is SMS; SMS-meldingen bieden ondersteuning voor bidirectionele communicatie. Een gebruiker kan reageren op een SMS om:
+Met actiegroepen u een lijst met acties configureren. Deze groepen worden gebruikt bij het definiëren van waarschuwingen; ervoor te zorgen dat een bepaalde actiegroep wordt aangemeld wanneer de waarschuwing wordt geactiveerd. Een van de ondersteunde acties is SMS; SMS-meldingen ondersteunen bidirectionele communicatie. Een gebruiker kan reageren op een sms op:
 
-- **Afmelden bij waarschuwingen:** Een gebruiker kan zich afmelden voor alle SMS-waarschuwingen voor alle actie groepen of voor één actie groep.
-- Opnieuw **Abonneren op waarschuwingen:** Een gebruiker kan opnieuw worden geabonneerd op alle SMS-waarschuwingen voor alle actie groepen of in één actie groep.  
-- **Hulp vragen:** Een gebruiker kan om meer informatie vragen over de SMS. Deze worden omgeleid naar dit artikel.
+- **Afmelden voor waarschuwingen:** Een gebruiker kan zich afmelden voor alle sms-berichten voor alle actiegroepen of één actiegroep.
+- **Abonneer u opnieuw op waarschuwingen:** Een gebruiker kan zich opnieuw abonneren op alle sms-berichten voor alle actiegroepen of één actiegroep.  
+- **Hulp aanvragen:** Een gebruiker kan vragen om meer informatie over de SMS. Ze worden doorgestuurd naar dit artikel.
 
-In dit artikel wordt het gedrag van de SMS-waarschuwingen beschreven en de reactie acties die de gebruiker kan uitvoeren op basis van de land instelling van de gebruiker:
+Dit artikel behandelt het gedrag van de SMS-waarschuwingen en de reactieacties die de gebruiker kan uitvoeren op basis van de landinstelling van de gebruiker:
 
-## <a name="receiving-an-sms-alert"></a>Een SMS-bericht ontvangen
-Een SMS-ontvanger die is geconfigureerd als onderdeel van een actie groep ontvangt een SMS wanneer een waarschuwing wordt geactiveerd. De SMS bevat de volgende informatie:
-* De kortenaam van de actie groep waaraan deze waarschuwing is verzonden
+## <a name="receiving-an-sms-alert"></a>Een sms-melding ontvangen
+Een sms-ontvanger die is geconfigureerd als onderdeel van een actiegroep, ontvangt een sms wanneer een waarschuwing wordt geactiveerd. De SMS bevat de volgende informatie:
+* Shortname van de actiegroep deze waarschuwing is verzonden naar
 * Titel van de waarschuwing
 
-| STUREN | Beschrijving |
+| REPLY | Beschrijving |
 | ----- | ----------- |
-| `<Action Group Short name>` uitschakelen | Schakelt verdere SM'S uit van de actie groep |
-| `<Action Group Short name>` inschakelen | Hiermee schakelt u SMS opnieuw in voor de actie groep |
-| STOP | Schakelt verdere SM'S uit van alle actie groepen |
-| START | Hiermee schakelt u SMS van alle actie groepen opnieuw in |
-| HELP | Er wordt een antwoord naar de gebruiker verzonden met een koppeling naar dit artikel. |
+| Uitschakelen`<Action Group Short name>` | Hiermee schakelt u verdere sms'en van de actiegroep uit |
+| Inschakelen`<Action Group Short name>` | Maakt sms'en van de actiegroep opnieuw in gebruik |
+| Stoppen | Hiermee schakelt u verdere SMS van alle actiegroepen uit |
+| Start | Maakt sms'jes van ALLE actiegroepen opnieuw in gebruik |
+| HELP | Er wordt een antwoord naar de gebruiker gestuurd met een link naar dit artikel. |
 
 >[!NOTE]
->Als een gebruiker zich afmeldt bij SMS-waarschuwingen, maar vervolgens wordt toegevoegd aan een nieuwe actie groep; ze ontvangen SMS-waarschuwingen voor die nieuwe actie groep, maar blijven afgemeld bij alle vorige actie groepen.
+>Als een gebruiker zich heeft afgemeld voor sms-berichten, maar vervolgens wordt toegevoegd aan een nieuwe actiegroep; ze ontvangen sms-berichten voor die nieuwe actiegroep, maar blijven zich afmelden voor alle vorige actiegroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](alerts-overview.md) en lees hoe u waarschuwingen ontvangt  
-Meer informatie over de [limiet voor SMS-tarieven](alerts-rate-limiting.md)  
-Meer informatie over [actie groepen](../../azure-monitor/platform/action-groups.md)
+Een [overzicht van waarschuwingen voor activiteitenlogboeken](alerts-overview.md) en meer informatie over hoe u wordt gewaarschuwd  
+Meer informatie over [sms-tariefbeperking](alerts-rate-limiting.md)  
+Meer informatie over [actiegroepen](../../azure-monitor/platform/action-groups.md)
 

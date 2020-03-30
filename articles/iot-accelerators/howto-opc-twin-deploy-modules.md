@@ -1,6 +1,6 @@
 ---
-title: Een volledig nieuwe OPC-dubbele module voor Azure implementeren | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de OPC twee ledig kunt implementeren met behulp van de IoT Edge Blade van de Azure Portal en ook met AZ CLI.
+title: Opc Twin-module implementeren voor Azure vanaf nul | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u OPC Twin vanaf nul implementeert met het IoT Edge-blad van de Azure-portal en ook met AZ CLI.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 96a4afff3e58bfa1ebf661909f380aa525fea76e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6c8ceeaf49d8ebfa15a83118e8b518190f6ff85e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820141"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241059"
 ---
-# <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC dubbele module en afhankelijkheden helemaal zelf implementeren
+# <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Opc Twin-module en afhankelijkheden vanaf nul implementeren
 
-De OPC-dubbele module wordt uitgevoerd op IoT Edge en biedt verschillende Edge-services aan de OPC Device-dubbele en register Services. 
+De OPC Twin-module draait op IoT Edge en biedt verschillende edge-services aan de opc-apparaattweeling- en registerservices. 
 
-Er zijn verschillende opties voor het implementeren van modules op uw [Azure IOT Edge](https://azure.microsoft.com/services/iot-edge/) gateway.
+Er zijn verschillende opties om modules te implementeren voor uw [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) Gateway, waaronder
 
-- [Implementeren vanaf de IoT Edge Blade van Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
+- [Implementeren vanuit het IoT Edge-blade van Azure-portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal)
 - [Implementeren met AZ CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor-cli)
 
 > [!NOTE]
-> Zie de GitHub- [opslag plaats](https://github.com/Azure/azure-iiot-components)voor meer informatie over de implementatie details en instructies.
+> Zie de [GitHub-repository](https://github.com/Azure/azure-iiot-components)voor meer informatie over implementatiegegevens en -instructies.
 
 ## <a name="deployment-manifest"></a>Distributiemanifest
 
-Alle modules worden geïmplementeerd met een implementatie manifest.  Hieronder ziet u een voor beeld van een manifest voor het implementeren van de [OPC-Uitgever](https://github.com/Azure/iot-edge-opc-publisher) en de [OPC dubbele](https://github.com/Azure/azure-iiot-opc-twin-module) .
+Alle modules worden geïmplementeerd met behulp van een implementatiemanifest.  Hieronder vindt u een voorbeeldmanifest voor het implementeren van zowel [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) als [OPC Twin.](https://github.com/Azure/azure-iiot-opc-twin-module)
 
 ```json
 {
@@ -105,59 +105,59 @@ Alle modules worden geïmplementeerd met een implementatie manifest.  Hieronder 
 }
 ```
 
-## <a name="deploying-from-azure-portal"></a>Implementeren vanaf Azure Portal
+## <a name="deploying-from-azure-portal"></a>Implementeren vanuit Azure-portal
 
-De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te implementeren, is via de Azure Portal.  
+De eenvoudigste manier om de modules te implementeren op een Azure IoT Edge-gateway-apparaat is via de Azure-portal.  
 
 ### <a name="prerequisites"></a>Vereisten
 
-1. Implementeer de OPC-dubbele [afhankelijkheden](howto-opc-twin-deploy-dependencies.md) en haal het resulterende `.env`-bestand op. Let op de geïmplementeerde `hub name` van de `PCS_IOTHUBREACT_HUB_NAME` variabele in het resulterende `.env`-bestand.
+1. Implementeer de [OPC Twin-afhankelijkheden](howto-opc-twin-deploy-dependencies.md) `.env` en verkregen het resulterende bestand. Let op `hub name` de `PCS_IOTHUBREACT_HUB_NAME` geïmplementeerde variabele `.env` in het resulterende bestand.
 
-2. Registreer en start een [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) -of [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IOT Edge gateway en noteer de `device id`.
+2. Registreer en start [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) een [Linux-](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) of Windows `device id`IoT Edge-gateway en noteer de .
 
-### <a name="deploy-to-an-edge-device"></a>Implementeren op een edge-apparaat
+### <a name="deploy-to-an-edge-device"></a>Implementeren op een randapparaat
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) en navigeer naar uw IOT-hub.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) en navigeer naar uw IoT-hub.
 
-2. Selecteer **IOT Edge** in het menu aan de linkerkant.
+2. Selecteer **IoT Edge** in het linkermenu.
 
-3. Klik op de ID van het doel apparaat in de lijst met apparaten.
+3. Klik op de id van het doelapparaat in de lijst met apparaten.
 
 4. Selecteer **Modules instellen**.
 
-5. Selecteer in de sectie **implementatie modules** van de pagina de module **toevoegen** en **IOT Edge.**
+5. Selecteer **Toevoegen** en **IoT Edge Module** in het gedeelte **Implementatiemodules** van de pagina.
 
-6. Gebruik in het dialoog venster **aangepaste Module IoT Edge** `opctwin` als naam voor de module en geef vervolgens de URI van de container *installatie kopie* op als
+6. Geef in het dialoogvenster Aangepaste `opctwin` **IoT Edge-module** de naam voor de module op en geef vervolgens de container Image *URI* op als
 
    ```bash
    mcr.microsoft.com/iotedge/opc-twin:latest
    ```
 
-   Gebruik de volgende JSON als *container opties*voor het maken van containers:
+   Gebruik als *opties voor het maken van containers*de volgende JSON:
 
    ```json
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
    ```
 
-   Vul zo nodig de optionele velden in. Zie [EdgeAgent gewenste eigenschappen](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties)voor meer informatie over de opties voor het maken van containers, het opnieuw opstarten van beleid en de gewenste status. Zie voor meer informatie over de module twee [gewenste eigenschappen definiëren of bijwerken](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties).
+   Vul indien nodig de optionele velden in. Zie [EdgeAgent gewenste eigenschappen](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub#edgeagent-desired-properties)voor meer informatie over opties voor het maken van containers, het beleid opnieuw starten en de gewenste status. Zie Gewenste eigenschappen definiëren [of bijwerken voor](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)meer informatie over de moduletwin.
 
-7. Selecteer **Opslaan** en herhaal stap **5**.  
+7. Selecteer **Opslaan** en herhalen stap **5**.  
 
-8. Gebruik in het dialoog venster aangepaste module IoT Edge `opcpublisher` als naam voor de module en de URI van de container *installatie kopie* als 
+8. Gebruik in het dialoogvenster Aangepaste `opcpublisher` IoT Edge-module als naam voor de module en de *containerafbeelding URI* als 
 
    ```bash
    mcr.microsoft.com/iotedge/opc-publisher:latest
    ```
 
-   Gebruik de volgende JSON als *container opties*voor het maken van containers:
+   Gebruik als *opties voor het maken van containers*de volgende JSON:
 
    ```json
    {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--to","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
    ```
 
-9. Selecteer **Opslaan** en klik vervolgens op **volgende** om door te gaan naar de sectie routes.
+9. Selecteer **Opslaan** en vervolgens **Volgende** om door te gaan naar de sectie routes.
 
-10. Plak het volgende op het tabblad routes: 
+10. Plak op het tabblad Routes het volgende 
 
     ```json
     {
@@ -168,42 +168,42 @@ De eenvoudigste manier om de modules op een Azure IoT Edge gateway-apparaat te i
     }
     ```
 
-    en selecteer **volgende**
+    en selecteer **Volgende**
 
-11. Controleer uw implementatie-informatie en-manifest.  Deze moet eruitzien als in het bovenstaande implementatie manifest.  Selecteer **Indienen**.
+11. Bekijk uw implementatiegegevens en manifest.  Het moet lijken op de bovenstaande inzet manifest.  Selecteer **Indienen**.
 
-12. Zodra u modules hebt geïmplementeerd op uw apparaat, kunt u ze weer geven op de pagina **Details van apparaat** van de portal. Op deze pagina ziet u de naam van elke geïmplementeerde module, evenals nuttige informatie, zoals de implementatie status en afsluit code.
+12. Zodra u modules op uw apparaat hebt geïmplementeerd, u ze allemaal bekijken op de pagina **Apparaatdetails** van de portal. Op deze pagina wordt de naam van elke geïmplementeerde module weergegeven, evenals nuttige informatie zoals de implementatiestatus en afsluitcode.
 
-## <a name="deploying-using-azure-cli"></a>Implementeren met behulp van Azure CLI
+## <a name="deploying-using-azure-cli"></a>Implementeren met Azure CLI
 
 ### <a name="prerequisites"></a>Vereisten
 
-1. Installeer [hier](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)de nieuwste versie van de [Azure-opdracht regel interface (AZ)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) .
+1. Installeer vanaf [hier](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)de nieuwste versie van de [Azure command line interface (AZ).](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
 ### <a name="quickstart"></a>Snelstartgids
 
-1. Sla het bovenstaande implementatie manifest op in een `deployment.json`-bestand.  
+1. Sla het bovenstaande implementatiemanifest op in een `deployment.json` bestand.  
 
-2. Gebruik de volgende opdracht om de configuratie toe te passen op een IoT Edge apparaat:
+2. Gebruik de volgende opdracht om de configuratie toe te passen op een IoT Edge-apparaat:
 
-   ```bash
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content ./deployment.json
    ```
 
-   De para meter `device id` is hoofdletter gevoelig. De inhouds parameter verwijst naar het manifest bestand van de implementatie dat u hebt opgeslagen. 
-    ![AZ IoT Edge set-modules output](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
+   De `device id` parameter is hoofdlettergevoelig. De inhoudsparameter verwijst naar het manifestbestand dat u hebt opgeslagen. 
+    ![az IoT Edge set-modules output](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/set-modules.png)
 
-3. Zodra u modules hebt geïmplementeerd op uw apparaat, kunt u ze weer geven met de volgende opdracht:
+3. Zodra u modules op uw apparaat hebt geïmplementeerd, u ze allemaal bekijken met de volgende opdracht:
 
-   ```bash
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-   De para meter voor de apparaat-ID is hoofdletter gevoelig. ![AZ IOT hub module-uitvoer van de lijst met identiteiten](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
+   De parameter apparaat-ID is hoofdlettergevoelig. ![uitvoer van az iot-hubmodule-identiteiten](https://docs.microsoft.com/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u OPC twee ledig kunt implementeren, is dit de voorgestelde volgende stap:
+Nu u hebt geleerd hoe u OPC Twin vanaf nul implementeren, is hier de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
-> [OPC van twee tot een bestaand project implementeren](howto-opc-twin-deploy-existing.md)
+> [OPC Twin implementeren in een bestaand project](howto-opc-twin-deploy-existing.md)

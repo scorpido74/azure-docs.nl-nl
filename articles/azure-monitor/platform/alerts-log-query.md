@@ -1,31 +1,31 @@
 ---
-title: Waarschuwings query's vastleggen in Azure Monitor | Microsoft Docs
-description: Biedt aanbevelingen voor het schrijven van efficiënte query's voor logboek waarschuwingen in Azure Monitor updates en een proces voor het converteren van bestaande query's.
+title: Waarschuwingsquery's aanmelden in Azure Monitor | Microsoft Documenten
+description: Bevat aanbevelingen voor het schrijven van efficiënte query's voor logboekwaarschuwingen in Azure Monitor-updates en een proces voor het converteren van bestaande query's.
 author: yossi-y
 ms.author: yossiy
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
 ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77667785"
 ---
-# <a name="log-alert-queries-in-azure-monitor"></a>Waarschuwings query's vastleggen in Azure Monitor
-[Waarschuwings regels op basis van Azure monitor logboeken](alerts-unified-log.md) worden regel matig uitgevoerd, zodat u zeker weet dat ze zijn geschreven om de overhead en latentie te minimaliseren. Dit artikel bevat aanbevelingen voor het schrijven van efficiënte query's voor logboek waarschuwingen en een proces voor het converteren van bestaande query's. 
+# <a name="log-alert-queries-in-azure-monitor"></a>Waarschuwingsquery's aanmelden in Azure Monitor
+[Waarschuwingsregels op basis van Azure Monitor-logboeken](alerts-unified-log.md) worden regelmatig uitgevoerd, dus u moet ervoor zorgen dat ze zijn geschreven om overhead en latentie te minimaliseren. In dit artikel vindt u aanbevelingen voor het schrijven van efficiënte query's voor logboekwaarschuwingen en een proces voor het converteren van bestaande query's. 
 
-## <a name="types-of-log-queries"></a>Typen logboek query's
-[Logboek query's in azure monitor](../log-query/log-query-overview.md) beginnen met een tabel of een operator voor [zoeken](/azure/kusto/query/searchoperator) of [samen voegen](/azure/kusto/query/unionoperator) .
+## <a name="types-of-log-queries"></a>Typen logboekquery's
+[Log query's in Azure Monitor](../log-query/log-query-overview.md) beginnen met een tabel of een [zoek-](/azure/kusto/query/searchoperator) of [vakbondsoperator.](/azure/kusto/query/unionoperator)
 
-De volgende query ligt bijvoorbeeld binnen het bereik van de tabel _SecurityEvent_ en zoekt naar een specifieke gebeurtenis-id. Dit is de enige tabel die de query moet verwerken.
+De volgende query wordt bijvoorbeeld beperkt tot de _securityevent-tabel_ en zoekt naar specifieke gebeurtenis-id. Dit is de enige tabel die de query moet verwerken.
 
 ``` Kusto
 SecurityEvent | where EventID == 4624 
 ```
 
-Met query's die beginnen met `search` of `union` kunt u zoeken in meerdere kolommen in een tabel of zelfs op meerdere tabellen. In de volgende voor beelden ziet u meerdere methoden voor het zoeken naar de term _geheugen_:
+Query's die `search` `union` beginnen met of u toestaan om te zoeken in meerdere kolommen in een tabel of zelfs meerdere tabellen. In de volgende voorbeelden worden meerdere methoden weergegeven voor het zoeken in de term _Geheugen:_
 
 ```Kusto
 search "Memory"
@@ -35,12 +35,12 @@ search ObjectName == "Memory"
 union * | where ObjectName == "Memory"
 ```
 
-Hoewel `search` en `union` handig zijn tijdens het verkennen van gegevens, zijn ze minder efficiënt dan het gebruik van een tabel, omdat ze moeten scannen over meerdere tabellen. Omdat query's in waarschuwings regels met regel matige tussen pozen worden uitgevoerd, kan dit leiden tot buitensporige overhead bij het toevoegen van latentie aan de waarschuwing. Als gevolg van deze overhead moeten query's voor waarschuwings regels voor logboeken in azure altijd beginnen met een tabel om een duidelijk bereik te definiëren. Dit verbetert de prestaties van query's en de relevantie van de resultaten.
+Hoewel `search` `union` en nuttig zijn tijdens het verkennen van gegevens, zijn ze minder efficiënt dan het gebruik van een tabel, omdat ze in meerdere tabellen moeten scannen. Aangezien query's in waarschuwingsregels regelmatig worden uitgevoerd, kan dit leiden tot overmatige overhead toevoegen van latentie aan de waarschuwing. Vanwege deze overhead moeten query's voor logboekwaarschuwingsregels in Azure altijd beginnen met een tabel om een duidelijk bereik te definiëren, wat zowel de queryprestaties als de relevantie van de resultaten verbetert.
 
 ## <a name="unsupported-queries"></a>Niet-ondersteunde query's
-Vanaf 11 januari 2019, het maken of wijzigen van logboek waarschuwings regels die gebruikmaken van `search`, of `union` Opera tors worden niet ondersteund in de Azure Portal. Als u deze opera tors in een waarschuwings regel gebruikt, wordt er een fout bericht weer gegeven. Deze wijziging heeft geen invloed op bestaande waarschuwings regels en waarschuwings regels die zijn gemaakt en bewerkt met de Log Analytics-API. U moet nog steeds de waarschuwings regels wijzigen die gebruikmaken van deze typen query's om de efficiëntie te verbeteren.  
+Vanaf 11 januari 2019 worden logboekwaarschuwingsregels die `search`worden `union` gebruikt of operators worden niet ondersteund in Azure-portal. Als u deze operatoren in een waarschuwingsregel gebruikt, wordt een foutbericht weergegeven. Bestaande waarschuwingsregels en waarschuwingsregels die zijn gemaakt en bewerkt met de Api log Analytics, worden niet beïnvloed door deze wijziging. U moet nog steeds overwegen om alle waarschuwingsregels te wijzigen die dit soort query's gebruiken om hun efficiëntie te verbeteren.  
 
-Het vastleggen van waarschuwings regels met behulp van [query's voor meerdere resources](../log-query/cross-workspace-query.md) wordt niet beïnvloed door deze wijziging omdat query's voor meerdere bronnen gebruikmaken van `union`, waarmee het query bereik wordt beperkt tot specifieke resources. Dit is niet hetzelfde als `union *` dat niet kan worden gebruikt.  Het volgende voor beeld is geldig in een waarschuwings regel voor logboeken:
+Logwaarschuwingsregels met [behulp van query's met cross-resource](../log-query/cross-workspace-query.md) worden `union`niet beïnvloed door deze wijziging, omdat het gebruik van queryquery's met verschillende bronnen wordt gebruikt, waardoor het querybereik wordt beperkt tot specifieke bronnen. Dit is geen `union *` equivalent waarvan niet kan worden gebruikt.  Het volgende voorbeeld is geldig in een regel voor logboekwaarschuwingen:
 
 ```Kusto
 union 
@@ -50,13 +50,13 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
->Er wordt een [query voor meerdere resources](../log-query/cross-workspace-query.md) in logboek waarschuwingen ondersteund in de nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Azure Monitor maakt standaard gebruik van de [verouderde log Analytics waarschuwings-API](api-alerts.md) voor het maken van nieuwe logboek waarschuwings regels van Azure Portal, tenzij u overschakelt van [VERouderde API voor logboek waarschuwingen](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Na de switch wordt de nieuwe API de standaard instelling voor nieuwe waarschuwings regels in Azure Portal en kunt u regels voor het maken van query logboek waarschuwingen voor meerdere resources. U kunt waarschuwings regels voor het query logboek voor [meerdere resources](../log-query/cross-workspace-query.md) maken zonder de switch te maken met behulp van de [arm-sjabloon voor de scheduledQueryRules-API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , maar deze waarschuwings regel kan wel worden beheerd met [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en niet vanuit Azure Portal.
+>Logboekwaarschuwingen voor [cross-resourcequery's](../log-query/cross-workspace-query.md) worden ondersteund in de nieuwe [api voor geplandeQueryregels](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Azure Monitor gebruikt standaard de [verouderde Log Analytics Alert API](api-alerts.md) voor het maken van nieuwe logboekwaarschuwingsregels vanuit Azure portal, tenzij u overstapt van de verouderde Api voor [logboekwaarschuwingen.](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) Na de switch wordt de nieuwe API de standaardvoor nieuwe waarschuwingsregels in azure-portal en u regels voor waarschuwingen voor querylogboeken met meerdere resources maken. U [waarschuwingsregels voor querylogboeken met meerdere bronnen](../log-query/cross-workspace-query.md) maken zonder de overstap te maken met de [ARM-sjabloon voor de geplande QueryRules-API,](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) maar deze waarschuwingsregel is beheersbaar via [de GeplandeQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en niet vanuit azure-portal.
 
 ## <a name="examples"></a>Voorbeelden
-De volgende voor beelden zijn logboek query's die gebruikmaken van `search` en `union` en stappen bieden die u kunt gebruiken om deze query's te wijzigen voor gebruik met waarschuwings regels.
+De volgende voorbeelden zijn logboekquery's die gebruik maken `search` van en `union` stappen bieden die u gebruiken om deze query's te wijzigen voor gebruik met waarschuwingsregels.
 
 ### <a name="example-1"></a>Voorbeeld 1
-U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query die prestatie gegevens ophaalt met behulp van `search`: 
+U wilt een logboekwaarschuwingsregel maken met de volgende `search`query waarmee prestatiegegevens worden opgehaald met : 
 
 ``` Kusto
 search * | where Type == 'Perf' and CounterName == '% Free Space' 
@@ -65,7 +65,7 @@ search * | where Type == 'Perf' and CounterName == '% Free Space'
 ```
   
 
-Als u deze query wilt wijzigen, gebruikt u de volgende query om de tabel te identificeren waarvan de eigenschappen horen:
+Als u deze query wilt wijzigen, gaat u aan de slag met de volgende query om de tabel te identificeren waartoe de eigenschappen behoren:
 
 ``` Kusto
 search * | where CounterName == '% Free Space'
@@ -73,9 +73,9 @@ search * | where CounterName == '% Free Space'
 ```
  
 
-Het resultaat van deze query geeft aan dat de eigenschap _CounterName_ afkomstig is van de _prestatie_ tabel. 
+Het resultaat van deze query laat zien dat de eigenschap _CounterName_ afkomstig is uit de _perf-tabel._ 
 
-U kunt dit resultaat gebruiken om de volgende query te maken die u zou gebruiken voor de waarschuwings regel:
+U dit resultaat gebruiken om de volgende query te maken die u zou gebruiken voor de waarschuwingsregel:
 
 ``` Kusto
 Perf 
@@ -86,7 +86,7 @@ Perf
 
 
 ### <a name="example-2"></a>Voorbeeld 2
-U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query die prestatie gegevens ophaalt met behulp van `search`: 
+U wilt een logboekwaarschuwingsregel maken met de volgende `search`query waarmee prestatiegegevens worden opgehaald met : 
 
 ``` Kusto
 search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"  
@@ -96,7 +96,7 @@ search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"
 ```
   
 
-Als u deze query wilt wijzigen, gebruikt u de volgende query om de tabel te identificeren waarvan de eigenschappen horen:
+Als u deze query wilt wijzigen, gaat u aan de slag met de volgende query om de tabel te identificeren waartoe de eigenschappen behoren:
 
 ``` Kusto
 search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use" 
@@ -104,9 +104,9 @@ search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use"
 ```
  
 
-Het resultaat van deze query geeft aan dat de eigenschap _ObjectName_ en _CounterName_ afkomstig is uit de _prestatie_ tabel. 
+Het resultaat van deze query geeft aan dat de eigenschap _ObjectName_ en _CounterName_ afkomstig is uit de _tabel Perf._ 
 
-U kunt dit resultaat gebruiken om de volgende query te maken die u zou gebruiken voor de waarschuwings regel:
+U dit resultaat gebruiken om de volgende query te maken die u zou gebruiken voor de waarschuwingsregel:
 
 ``` Kusto
 Perf 
@@ -119,7 +119,7 @@ Perf
 
 ### <a name="example-3"></a>Voorbeeld 3
 
-U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query waarbij zowel `search` als `union` worden gebruikt voor het ophalen van prestatie gegevens: 
+U wilt een logboekwaarschuwingsregel maken met de `search` `union` volgende query die beide gebruikt en prestatiegegevens ophalen: 
 
 ``` Kusto
 search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
@@ -128,16 +128,16 @@ search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceN
 ```
  
 
-Als u deze query wilt wijzigen, gebruikt u de volgende query om de tabel te identificeren waarvan de eigenschappen in het eerste deel van de query deel uitmaken: 
+Als u deze query wilt wijzigen, gaat u aan de slag met de volgende query om de tabel te identificeren waartoe de eigenschappen in het eerste deel van de query behoren: 
 
 ``` Kusto
 search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
 | summarize by $table 
 ```
 
-Het resultaat van deze query geeft aan dat al deze eigenschappen afkomstig zijn uit de _prestatie_ tabel. 
+Het resultaat van deze query zou laten zien dat al deze eigenschappen afkomstig waren uit de _perf-tabel._ 
 
-Gebruik nu `union` met `withsource` opdracht om te bepalen welke bron tabel elke rij heeft bijgedragen.
+Gebruik `union` nu `withsource` met opdracht om te bepalen welke brontabel elke rij heeft bijgedragen.
 
 ``` Kusto
 union withsource=table * | where CounterName == "% Processor Utility" 
@@ -145,9 +145,9 @@ union withsource=table * | where CounterName == "% Processor Utility"
 ```
  
 
-Het resultaat van deze query geeft aan dat deze eigenschappen ook afkomstig zijn uit de _prestatie_ tabel. 
+Het resultaat van deze query zou laten zien dat deze eigenschappen ook afkomstig waren uit de _perf-tabel._ 
 
-U kunt deze resultaten gebruiken om de volgende query te maken die u zou gebruiken voor de waarschuwings regel: 
+U deze resultaten gebruiken om de volgende query te maken die u zou gebruiken voor de waarschuwingsregel: 
 
 ``` Kusto
 Perf 
@@ -160,8 +160,8 @@ Perf
 | count 
 ``` 
 
-### <a name="example-4"></a>Voor beeld 4
-U wilt een waarschuwings regel voor het logboek maken met behulp van de volgende query die de resultaten van twee `search` query's samenvoegt:
+### <a name="example-4"></a>Voorbeeld 4
+U wilt een logboekwaarschuwingsregel maken met de volgende `search` query die de resultaten van twee query's samenvoegt:
 
 ```Kusto
 search Type == 'SecurityEvent' and EventID == '4625' 
@@ -176,7 +176,7 @@ on Hour
 ```
  
 
-Als u de query wilt wijzigen, gebruikt u de volgende query om de tabel te identificeren die de eigenschappen aan de linkerkant van de samen voeging bevat: 
+Als u de query wilt wijzigen, gaat u aan de slag met de volgende query om de tabel te identificeren die de eigenschappen aan de linkerkant van de join bevat: 
 
 ``` Kusto
 search Type == 'SecurityEvent' and EventID == '4625' 
@@ -184,9 +184,9 @@ search Type == 'SecurityEvent' and EventID == '4625'
 ```
  
 
-Het resultaat geeft aan dat de eigenschappen aan de linkerkant van de samen voeging deel uitmaken van de tabel _SecurityEvent_ . 
+Het resultaat geeft aan dat de eigenschappen aan de linkerkant van de join behoren tot de tabel _SecurityEvent._ 
 
-Gebruik nu de volgende query om de tabel te identificeren die de eigenschappen in de rechter kant van de koppeling bevat: 
+Gebruik nu de volgende query om de tabel te identificeren die de eigenschappen aan de rechterkant van de join bevat: 
 
  
 ``` Kusto
@@ -195,9 +195,9 @@ search in (Heartbeat) OSType == 'Windows'
 ```
 
  
-Het resultaat geeft aan dat de eigenschappen in de rechter kant van de samen voeging deel uitmaken van de heartbeat-tabel. 
+Het resultaat geeft aan dat de eigenschappen aan de rechterkant van de join behoren tot heartbeattabel. 
 
-U kunt deze resultaten gebruiken om de volgende query te maken die u zou gebruiken voor de waarschuwings regel: 
+U deze resultaten gebruiken om de volgende query te maken die u zou gebruiken voor de waarschuwingsregel: 
 
 
 ``` Kusto
@@ -215,6 +215,6 @@ on Hour
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [logboek waarschuwingen](alerts-log.md) in azure monitor.
-- Meer informatie over [logboek query's](../log-query/log-query-overview.md).
+- Meer informatie over [logboekwaarschuwingen](alerts-log.md) in Azure Monitor.
+- Meer informatie over [logboekquery's](../log-query/log-query-overview.md).
 

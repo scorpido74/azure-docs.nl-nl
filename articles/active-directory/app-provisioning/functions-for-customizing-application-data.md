@@ -1,6 +1,6 @@
 ---
-title: Expressies schrijven voor kenmerk toewijzingen in azure AD
-description: Informatie over het gebruik van expressietoewijzingen kenmerkwaarden omzetten in een acceptabele indeling tijdens de geautomatiseerde inrichting van objecten van de SaaS-app in Azure Active Directory.
+title: Expressies schrijven voor kenmerktoewijzingen in Azure AD
+description: Meer informatie over het gebruik van expressietoewijzingen om kenmerkwaarden om te zetten in een acceptabele indeling tijdens het geautomatiseerd inrichten van SaaS-app-objecten in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,690 +15,690 @@ ms.date: 02/05/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc41a18063202bfefb9ddf7238de17fc691984af
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77612140"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Expressies schrijven voor kenmerktoewijzingen in Azure Active Directory
-Bij het configureren van inrichting tot een SaaS-toepassing, is een van de typen kenmerktoewijzingen die u kunt opgeven een expressie-toewijzing. Voor deze, moet u een script-achtige-expressie waarmee u uw gebruikers om gegevens te transformeren naar indelingen die meer geschikt is voor de SaaS-toepassing kunt schrijven.
+Wanneer u de inrichting configureert voor een SaaS-toepassing, is een van de typen kenmerktoewijzingen die u opgeven een expressietoewijzing. Hiervoor moet u een scriptachtige expressie schrijven waarmee u de gegevens van uw gebruikers omzetten in indelingen die acceptabeler zijn voor de SaaS-toepassing.
 
-## <a name="syntax-overview"></a>Overzicht van de syntaxis
-De syntaxis voor expressies voor kenmerktoewijzingen is doet denken aan van Visual Basic voor toepassingen (VBA)-functies.
+## <a name="syntax-overview"></a>Overzicht van syntaxis
+De syntaxis voor expressies voor kenmerktoewijzingen doet denken aan vba-functies (Visual Basic for Applications).
 
-* De volledige expressie moet worden gedefinieerd in termen van functies, die bestaan uit een naam, gevolgd door argumenten tussen haakjes: <br>
-  *Functie naam (`<<argument 1>>`,`<<argument N>>`)*
-* Functies in elkaar kan worden genest. Bijvoorbeeld: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
-* U kunt drie verschillende typen argumenten doorgeven in functies:
+* De volledige expressie moet worden gedefinieerd in termen van functies, die bestaan uit een naam gevolgd door argumenten tussen haakjes: <br>
+  *FunctieNaam.`<<argument 1>>``<<argument N>>`*
+* U functies in elkaar nesten. Bijvoorbeeld: <br> *FunctionOne(FunctionTwo)`<<argument1>>`*
+* U drie verschillende typen argumenten doorgeven aan functies:
   
-  1. Kenmerken moeten tussen rechte haakjes worden geplaatst. Bijvoorbeeld: [attributeName]
-  2. Tekenreeksconstanten moeten tussen dubbele aanhalingstekens worden geplaatst. Bijvoorbeeld: "VS"
-  3. Andere functies. Bijvoorbeeld: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
-* Voor tekenreeksconstanten, als u een backslash (\) of een aanhalingsteken (") in de tekenreeks, moet moet deze worden voorafgegaan door het symbool backslash (\). Bijvoorbeeld: "bedrijfs naam: \\" Contoso\\""
+  1. Kenmerken, die moeten worden ingesloten in vierkante haakjes. Bijvoorbeeld: [attributeName]
+  2. String constanten, die moeten worden ingesloten in dubbele aanhalingstekens. Bijvoorbeeld: "Verenigde Staten"
+  3. Andere functies. Bijvoorbeeld: FunctionOne(`<<argument1>>`, FunctionTwo)`<<argument2>>`
+* Voor tekenreeksconstanten moet, als u een backslash ( \ ) of aanhalingsteken ( " ) in de tekenreeks nodig hebt, deze worden ontsnapt met het symbool backslash ( \ ). Bijvoorbeeld: "Bedrijfsnaam: \\"Contoso\\""
 
 ## <a name="list-of-functions"></a>Lijst met functies
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Toetewerk](#append) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Count](#count) &nbsp; [BitAnd](#bitand) &nbsp; &nbsp; &nbsp; [CStr](#cstr) [Coalesce](#coalesce) &nbsp; &nbsp; [CBool](#cbool) &nbsp; &nbsp; [ConvertToBase64](#converttobase64) &nbsp; [ConvertToUTF8Hex](#converttoutf8hex) BitAnd &nbsp; &nbsp; CBool &nbsp; &nbsp; Coalesce &nbsp; ConvertToBase64 &nbsp; ConvertToUTF8Hex Count CStr &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Guid](#guid) &nbsp; &nbsp; [InStr](#instr) &nbsp; [IIF](#iif) &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; [DateFromNum](#datefromnum) &nbsp; &nbsp; &nbsp; [IsNull](#isnull) DatumFromnum &nbsp; &nbsp; formatdatetime &nbsp; &nbsp; [IsNullOrEmpty](#isnullorempty) Guid &nbsp; &nbsp; IIF Instr &nbsp; Isnull &nbsp; isnullorempty &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; IsPresent [IsString](#isstring) &nbsp; &nbsp; &nbsp; &nbsp; [Item](#item) &nbsp; [Left](#left) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Join](#join) [Not](#not) [Mid](#mid) [IsPresent](#ispresent) &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) Join Left &nbsp; &nbsp; Mid &nbsp; NormalizeDiacritics Not IsPresent IsS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; [Split](#split) [RemoveDuplicates](#removeduplicates) &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) RemoveDuplicates&nbsp; Vervangen&nbsp; SelectUniqueValue&nbsp; &nbsp; SingleAppRoleAssignment Split&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ Stripruimten](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word) [Switch](#switch) &nbsp; [ToLower](#tolower) &nbsp; [ToUpper](#toupper) schakelen&nbsp; &nbsp; om&nbsp; toLower&nbsp; ToUpper Word&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 
 ---
 ### <a name="append"></a>Toevoegen
-**Functieassembly**<br> Append(Source, suffix)
+**Functie:**<br> Toevoegen(bron, achtervoegsel)
 
-**Beschrijvingen**<br> Neemt een tekenreekswaarde bron en het achtervoegsel toegevoegd aan het einde van deze.
+**Beschrijving:**<br> Hiermee wordt een brontekenreekswaarde toegevoegd en wordt het achtervoegsel toegevoegd aan het einde ervan.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject. |
-| **achtervoegsel** |Vereist |Tekenreeks |De tekenreeks die u wilt toevoegen aan het einde van de bronwaarde. |
+| **Bron** |Vereist |Tekenreeks |Meestal de naam van het kenmerk van het bronobject. |
+| **Achtervoegsel** |Vereist |Tekenreeks |De tekenreeks die u wilt toevoegen aan het einde van de bronwaarde. |
 
 ---
 ### <a name="bitand"></a>BitAnd
-**Functieassembly**<br> BitAnd (waarde1, waarde2)
+**Functie:**<br> BitAnd(waarde1, waarde2)
 
-**Beschrijvingen**<br> Deze functie converteert beide para meters naar de binaire weer gave en stelt een bit in op:
+**Beschrijving:**<br> Deze functie zet beide parameters om in de binaire weergave en stelt een beetje in op:
 
-0: als een of beide van de corresponderende bits in waarde1 en Value2 0 zijn                                                  
-1: als beide corresponderende bits 1 zijn.                                    
+0 - als een of beide van de overeenkomstige bits in waarde1 en waarde2 0 zijn                                                  
+1 - als beide van de overeenkomstige bits 1 zijn.                                    
 
-Met andere woorden: het retourneert 0 in alle gevallen, behalve wanneer de overeenkomstige bits van beide para meters 1 zijn.
+Met andere woorden, het retourneert 0 in alle gevallen, behalve wanneer de bijbehorende bits van beide parameters 1 zijn.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Value1** |Vereist |num |Numerieke waarde die moet worden AND'ed met Value2|
-| **enzovoort** |Vereist |num |Numerieke waarde die moet worden AND'ed met waarde1|
+| **waarde1** |Vereist |num |Numerieke waarde die moet worden en'ed met waarde2|
+| **waarde2** |Vereist |num |Numerieke waarde die moet worden en'ed met waarde1|
 
 **Voorbeeld:**<br>
-BitAnd (& HF, & HF7)                                                                                
-11110111 en 00000111 = 00000111 so BitAnd retourneert 7, de binaire waarde van 00000111
+BitAnd (&HF, &HF7)                                                                                
+11110111 EN 00000111 = 00000111 dus BitAnd retourneert 7, de binaire waarde van 00000111
 
 ---
-### <a name="cbool"></a>CBool
-**Functieassembly**<br> CBool (expr)
+### <a name="cbool"></a>CBool CBool
+**Functie:**<br> CBool(Expressie)
 
-**Beschrijvingen**<br> CBool retourneert een Booleaanse waarde op basis van de geëvalueerde expressie. Als de expressie resulteert in een waarde die niet gelijk is aan nul, retourneert CBool True, anders wordt false geretourneerd.
+**Beschrijving:**<br> CBool retourneert een booleaan op basis van de geëvalueerde expressie. Als de expressie evalueert tot een niet-nulwaarde, retourneert CBool True, anders retourneert False..
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **expressie** |Vereist | expression | Een geldige expressie |
+| **Expressie** |Vereist | expressie | Elke geldige expressie |
 
 **Voorbeeld:**<br>
-CBool ([attribute1] = [attribute2])                                                                    
-Retourneert waar als beide kenmerken dezelfde waarde hebben.
+CBool([attribuut1] = [attribuut2])                                                                    
+Geeft als resultaat True als beide kenmerken dezelfde waarde hebben.
 
 ---
-### <a name="coalesce"></a>Voeg
-**Functieassembly**<br> Coalesce (source1, source2,..., defaultValue)
+### <a name="coalesce"></a>Samenvoegen
+**Functie:**<br> Coalesce(bron1, bron2, ..., defaultValue)
 
-**Beschrijvingen**<br> Retourneert de eerste bron waarde die niet NULL is. Als alle argumenten NULL zijn en defaultValue aanwezig is, wordt de defaultValue geretourneerd. Als alle argumenten NULL zijn en defaultValue niet aanwezig is, retourneert Coalesce NULL.
+**Beschrijving:**<br> Geeft als resultaat de eerste bronwaarde die niet NULL is. Als alle argumenten NULL zijn en standaardWaarde aanwezig is, wordt de standaardwaarde geretourneerd. Als alle argumenten NULL zijn en standaardWaarde niet aanwezig is, retourneert Coalesce NULL.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **source1 ... Bronn** | Vereist | Tekenreeks |Vereist, variabele-aantal keren. Doorgaans de naam van het kenmerk van het bronobject. |
-| **Standaard** | Optioneel | Tekenreeks | De standaard waarde die moet worden gebruikt wanneer alle bron waarden NULL zijn. Lege tekenreeks ("").
+| **bron1 ... bronN** | Vereist | Tekenreeks |Vereist, variabel aantal keren. Meestal de naam van het kenmerk van het bronobject. |
+| **Standaardwaarde** | Optioneel | Tekenreeks | Standaardwaarde die moet worden gebruikt wanneer alle bronwaarden NULL zijn. Kan een lege tekenreeks zijn ("").
 
 ---
-### <a name="converttobase64"></a>ConvertToBase64
-**Functieassembly**<br> ConvertToBase64 (bron)
+### <a name="converttobase64"></a>Converttobase64
+**Functie:**<br> ConvertToBase64(bron)
 
-**Beschrijvingen**<br> De functie ConvertToBase64 converteert een teken reeks naar een Unicode base64-teken reeks.
+**Beschrijving:**<br> De functie ConvertToBase64 converteert een tekenreeks naar een Unicode base64-tekenreeks.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |De teken reeks die moet worden geconverteerd naar basis 64|
+| **Bron** |Vereist |Tekenreeks |Tekenreeks die moet worden omgezet in basis 64|
 
 **Voorbeeld:**<br>
-ConvertToBase64 ("Hallo wereld!")                                                                                                        
-Retourneert "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
+ConvertToBase64("Hallo wereld!")                                                                                                        
+Retourneert "SablagwabABvACAAdwBvAHIAbABkACEA"
 
 ---
-### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
-**Functieassembly**<br> ConvertToUTF8Hex (bron)
+### <a name="converttoutf8hex"></a>ConverttoUTF8Hex
+**Functie:**<br> ConvertToUTF8Hex(bron)
 
-**Beschrijvingen**<br> De functie ConvertToUTF8Hex converteert een teken reeks naar een UTF8 hexadecimale waarde.
+**Beschrijving:**<br> Met de functie ConvertToUTF8Hex wordt een tekenreeks omgezet in een UTF8 Hex-gecodeerde waarde.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |Teken reeks die moet worden geconverteerd naar UTF8 hex|
+| **Bron** |Vereist |Tekenreeks |Tekenreeks die moet worden omgezet in UTF8 Hex|
 
 **Voorbeeld:**<br>
-ConvertToUTF8Hex ("Hallo wereld!")                                                                                                         
-Retourneert 48656C6C6F20776F726C6421
+ConvertToUTF8Hex("Hallo wereld!")                                                                                                         
+Geeft als resultaat 48656C6C6F20776F726C6421
 
 ---
 ### <a name="count"></a>Count
-**Functieassembly**<br> Count (kenmerk)
+**Functie:**<br> Aantal(kenmerk)
 
-**Beschrijvingen**<br> De functie Count retourneert het aantal elementen in een kenmerk met meerdere waarden
+**Beschrijving:**<br> De functie Aantal retourneert het aantal elementen in een kenmerk met meerdere waarden
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **geschreven** |Vereist |geschreven |Kenmerk met meerdere waarden waarvoor elementen worden geteld|
+| **Kenmerk** |Vereist |kenmerk |Kenmerk met meerdere waarden met elementen geteld|
 
 ---
-### <a name="cstr"></a>CStr
-**Functieassembly**<br> CStr (waarde)
+### <a name="cstr"></a>Cstr
+**Functie:**<br> CStr(waarde)
 
-**Beschrijvingen**<br> De functie CStr zet een waarde om in een teken reeks gegevens type.
+**Beschrijving:**<br> De functie CStr converteert een waarde naar een tekenreeksgegevenstype.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **value** |Vereist | Numeriek, verwijzing of Booleaanse waarde | Dit kan een numerieke waarde, een referentie kenmerk of een Boolean zijn. |
+| **value** |Vereist | numeriek, referentie of booleaan | Kan een numerieke waarde, referentiekenmerk of Booleaan zijn. |
 
 **Voorbeeld:**<br>
-CStr ([DN])                                                            
-Retourneert "CN = Joe, DC = contoso, DC = com"
+CStr([dn])                                                            
+Retourneert "cn=Joe,dc=contoso,dc=com"
 
 ---
-### <a name="datefromnum"></a>DateFromNum
-**Functieassembly**<br> DateFromNum (waarde)
+### <a name="datefromnum"></a>DatumFromNum
+**Functie:**<br> DatumUitNum(waarde)
 
-**Beschrijvingen**<br> Met de functie DateFromNum wordt een waarde in de datum notatie van AD geconverteerd naar een DateTime-type.
+**Beschrijving:**<br> De functie DateFromNum converteert een waarde in de datumnotatie van AD naar een Datumtijdtype.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **value** |Vereist | Date | De AD-datum die moet worden geconverteerd naar een DateTime-type |
+| **value** |Vereist | Date | AD-datum die moet worden geconverteerd naar datetime-type |
 
 **Voorbeeld:**<br>
-DateFromNum([lastLogonTimestamp])                                                                                                   
-DateFromNum(129699324000000000)                                                            
-Retourneert een datum/tijd die 2012-01-01 23:00:00 vertegenwoordigt
+DatumFromNum([laatsteLogonTimestamp])                                                                                                   
+Datumuitnum(1296993240000000000)                                                            
+Geeft als resultaat een datumtijd van 2012-01-01 23:00:00
 
 ---
-### <a name="formatdatetime"></a>formatDateTime
-**Functieassembly**<br> FormatDateTime (bron, inputFormat, uitvoerindeling)
+### <a name="formatdatetime"></a>FormatDateTime
+**Functie:**<br> FormatDateTime(bron, invoerOpmaak, uitvoerOpmaak)
 
-**Beschrijvingen**<br> Neemt een tekenreeks met datum van de ene indeling en converteert naar een andere indeling.
+**Beschrijving:**<br> Hiermee neemt u een datumtekenreeks uit de ene notatie en zet deze om in een andere indeling.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject. |
-| **inputFormat** |Vereist |Tekenreeks |De verwachte notatie van de bronwaarde. Zie [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)voor ondersteunde indelingen. |
-| **Output** |Vereist |Tekenreeks |Indeling van de uitvoerdatum. |
+| **Bron** |Vereist |Tekenreeks |Meestal de naam van het kenmerk van het bronobject. |
+| **invoerOpmaak** |Vereist |Tekenreeks |Verwachte indeling van de bronwaarde. Zie [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)voor ondersteunde indelingen . |
+| **Outputformat** |Vereist |Tekenreeks |Opmaak van de uitvoerdatum. |
 
 ---
-### <a name="guid"></a>Guid
-**Functieassembly**<br> GUID ()
+### <a name="guid"></a>GUID
+**Functie:**<br> Guid()
 
-**Beschrijvingen**<br> De functie-GUID genereert een nieuwe wille keurige GUID
+**Beschrijving:**<br> De functie Guid genereert een nieuwe willekeurige GUID
 
 ---
-### <a name="iif"></a>IIF
-**Functieassembly**<br> IIF (voor waarde, valueIfTrue, valueIfFalse)
+### <a name="iif"></a>Iif
+**Functie:**<br> IIF(voorwaarde, valueIfTrue,valueIfFalse)
 
-**Beschrijvingen**<br> De functie IIF retourneert een van een set mogelijke waarden op basis van een opgegeven voor waarde.
+**Beschrijving:**<br> De functie IIF retourneert een van een set mogelijke waarden op basis van een bepaalde voorwaarde.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **regeling** |Vereist |Variabele of expressie |Een waarde of expressie die als waar of ONWAAR kan worden geëvalueerd. |
-| **valueIfTrue** |Vereist |Variabele of teken reeks | Als de voor waarde wordt geëvalueerd als waar, wordt de geretourneerde waarde. |
-| **valueIfFalse** |Vereist |Variabele of teken reeks |Als de voor waarde wordt geëvalueerd als onwaar, wordt de geretourneerde waarde.|
+| **Voorwaarde** |Vereist |Variabele of expressie |Elke waarde of expressie die kan worden geëvalueerd op waar of onwaar. |
+| **valueIfTrue** |Vereist |Variabele of tekenreeks | Als de voorwaarde wordt geëvalueerd op waar, wordt de geretourneerde waarde geretourneerd. |
+| **waardeAlsFalse** |Vereist |Variabele of tekenreeks |Als de voorwaarde wordt geëvalueerd als false, wordt de geretourneerde waarde geretourneerd.|
 
 **Voorbeeld:**<br>
-IIF ([land] = "USA", [land], [afdeling])
+IIF([land]="USA",[land],[afdeling])
 
 ---
-### <a name="instr"></a>InStr
-**Functieassembly**<br> InStr (waarde1, waarde2, begin, compareType)
+### <a name="instr"></a>Instr
+**Functie:**<br> InStr(waarde1,value2,start,compareType)
 
-**Beschrijvingen**<br> De functie InStr zoekt het eerste exemplaar van een subtekenreeks in een teken reeks
+**Beschrijving:**<br> Met de functie InStr wordt het eerste optreden van een subtekenreeks in een tekenreeks gevonden
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Value1** |Vereist |Tekenreeks |Teken reeks die moet worden doorzocht |
-| **enzovoort** |Vereist |Tekenreeks |Teken reeks die moet worden gevonden |
-| **start** |Optioneel |Geheel getal |Begin positie om de subtekenreeks te vinden|
+| **waarde1** |Vereist |Tekenreeks |Tekenreeks die moet worden doorzocht |
+| **waarde2** |Vereist |Tekenreeks |Tekenreeks die moet worden gevonden |
+| **Start** |Optioneel |Geheel getal |Startpositie om de subtekenreeks te vinden|
 | **compareType** |Optioneel |Enum |Kan vbTextCompare of vbBinaryCompare zijn |
 
 **Voorbeeld:**<br>
-InStr ("Quick Brown Fox", "snel")                                                                             
+InStr("De snelle bruine vos","snel")                                                                             
 Evalues tot 5
 
-InStr (' herhaald ', ' e ', 3, vbBinaryCompare)                                                                                  
+InStr("repEated","e",3,vbBinaryCompare)                                                                                  
 Evalueert tot 7
 
 ---
-### <a name="isnull"></a>IsNull
-**Functieassembly**<br> IsNull (expressie)
+### <a name="isnull"></a>Isnull
+**Functie:**<br> IsNull(Expressie)
 
-**Beschrijvingen**<br> Als de expressie resulteert in null, retourneert de functie IsNull de waarde True. Voor een kenmerk wordt een null-waarde uitgedrukt door het ontbreken van het kenmerk.
+**Beschrijving:**<br> Als de expressie wordt geëvalueerd naar Null, retourneert de functie IsNull true. Voor een kenmerk wordt een Null uitgedrukt door het ontbreken van het kenmerk.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **expressie** |Vereist |expression |Expressie die moet worden geëvalueerd |
+| **Expressie** |Vereist |expressie |Expressie die moet worden geëvalueerd |
 
 **Voorbeeld:**<br>
-IsNull ([displayName])                                                                                                
-Retourneert waar als het kenmerk niet aanwezig is
+IsNull([displayName])                                                                                                
+Geeft als resultaat True als het kenmerk niet aanwezig is
 
 ---
 ### <a name="isnullorempty"></a>IsNullorEmpty
-**Functieassembly**<br> IsNullOrEmpty (expr)
+**Functie:**<br> IsnullorEmpty(expressie)
 
-**Beschrijvingen**<br> Als de expressie Null of een lege teken reeks is, retourneert de functie IsNullOrEmpty ' True '. Voor een-kenmerk resulteert dit in waar als het kenmerk ontbreekt of aanwezig is, maar een lege teken reeks is.
-De inverse van deze functie heeft de naam IsPresent.
+**Beschrijving:**<br> Als de expressie null of een lege tekenreeks is, retourneert de functie IsNullOrEmpty true. Voor een kenmerk wordt dit geëvalueerd naar True als het kenmerk afwezig is of aanwezig is, maar een lege tekenreeks is.
+Het omgekeerde van deze functie wordt IsPresent genoemd.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **expressie** |Vereist |expression |Expressie die moet worden geëvalueerd |
+| **Expressie** |Vereist |expressie |Expressie die moet worden geëvalueerd |
 
 **Voorbeeld:**<br>
-IsNullOrEmpty ([displayName])                                               
-Retourneert waar als het kenmerk niet aanwezig is of een lege teken reeks is
+IsNullOrEmpty([displayName])                                               
+Geeft als resultaat True als het kenmerk niet aanwezig is of een lege tekenreeks is
 
 ---
-### <a name="ispresent"></a>IsPresent
-**Functieassembly**<br> IsPresent (expr)
+### <a name="ispresent"></a>Isaanwezig
+**Functie:**<br> IsPresent(Expressie)
 
-**Beschrijvingen**<br> Als de expressie resulteert in een teken reeks die niet null en niet leeg is, retourneert de functie IsPresent de waarde True. De inverse van deze functie heeft de naam IsNullOrEmpty.
+**Beschrijving:**<br> Als de expressie evalueert tot een tekenreeks die niet Null is en niet leeg is, retourneert de functie IsPresent true. Het omgekeerde van deze functie wordt IsNullOrEmpty genoemd.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **expressie** |Vereist |expression |Expressie die moet worden geëvalueerd |
+| **Expressie** |Vereist |expressie |Expressie die moet worden geëvalueerd |
 
 **Voorbeeld:**<br>
-Switch (IsPresent ([directManager]), [directManager], IsPresent ([skiplevelManager]), [skiplevelManager], IsPresent ([Director]), [Director])
+Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])
 
 ---
 ### <a name="isstring"></a>IsString
-**Functieassembly**<br> IsString (expr)
+**Functie:**<br> IsString(Expressie)
 
-**Beschrijvingen**<br> Als de expressie kan worden geëvalueerd als een teken reeks type, wordt de functie IsString geëvalueerd als True.
+**Beschrijving:**<br> Als de expressie kan worden geëvalueerd tot een tekenreekstype, evalueert de functie IsString naar True.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **expressie** |Vereist |expression |Expressie die moet worden geëvalueerd |
+| **Expressie** |Vereist |expressie |Expressie die moet worden geëvalueerd |
 
 ---
 ### <a name="item"></a>Item
-**Functieassembly**<br> Item (kenmerk, index)
+**Functie:**<br> Item(attribuut, index)
 
-**Beschrijvingen**<br> De functie item retourneert één item uit een teken reeks/kenmerk met meerdere waarden.
+**Beschrijving:**<br> De functie Item retourneert één item uit een tekenreeks met meerdere waarden/kenmerk.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **geschreven** |Vereist |Kenmerk |Kenmerk met meerdere waarden dat moet worden doorzocht |
-| **TabIndex** |Vereist |Geheel getal | Index naar een item in de teken reeks met meerdere waarden|
+| **Kenmerk** |Vereist |Kenmerk |Kenmerk met meerdere waarden dat moet worden doorzocht |
+| **Index** |Vereist |Geheel getal | Indexeren naar een item in de tekenreeks met meerdere waarden|
 
 **Voorbeeld:**<br>
-Item ([proxyAddresses], 1)
+Item([proxyAdressen], 1)
 
 ---
 ### <a name="join"></a>Koppelen
-**Functieassembly**<br> Deelnemen aan (scheidingsteken, bron1, bron2,...)
+**Functie:**<br> Join(separator, bron1, bron2, ...)
 
-**Beschrijvingen**<br> Samen voegen () is vergelijkbaar met Append (), behalve dat het meerdere **bron** teken reeks waarden kan combi neren in één teken reeks en elke waarde wordt gescheiden door een **scheidings** teken reeks.
+**Beschrijving:**<br> Join() is vergelijkbaar met Append(), behalve dat het meerdere **brontekenreekswaarden** kan combineren tot één tekenreeks en elke waarde wordt gescheiden door een **scheidingstekenreeks.**
 
-Als een van de bron waarden een kenmerk met meerdere waarden is, wordt elke waarde in dat kenmerk samengevoegd, gescheiden door de waarde voor het scheidings teken.
+Als een van de bronwaarden een kenmerk met meerdere waarden is, wordt elke waarde in dat kenmerk samengevoegd, gescheiden door de scheidingswaarde.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **scheiding** |Vereist |Tekenreeks |De tekenreeks die wordt gebruikt om de bronwaarden scheiden wanneer ze worden samengevoegd tot één tekenreeks. Kan ' ' als er geen scheidingsteken vereist is. |
-| **source1 ... Bronn** |Vereist, variabele-aantal keren |Tekenreeks |De tekenreeks die waarden die moeten worden samengevoegd. |
+| **Scheidingsteken** |Vereist |Tekenreeks |Tekenreeks die wordt gebruikt om bronwaarden te scheiden wanneer ze in één tekenreeks worden samengevoegd. Kan "" zijn als er geen scheidingsteken nodig is. |
+| **bron1 ... bronN** |Vereist, variabel aantal keren |Tekenreeks |Tekenreekswaarden die moeten worden samengevoegd. |
 
 ---
-### <a name="left"></a>Gebleven
-**Functieassembly**<br> Left (teken reeks, NumChars)
+### <a name="left"></a>Links
+**Functie:**<br> Links(Tekenreeks, NumChars)
 
-**Beschrijvingen**<br> De functie Left retourneert een opgegeven aantal tekens vanaf de linkerkant van een teken reeks. Als numChars = 0, retourneert u een lege teken reeks.
-Als numChars < 0, wordt de invoer teken reeks geretourneerd.
-Als teken reeks null is, retourneert een lege teken reeks.
-Als teken reeks minder tekens bevat dan het getal dat is opgegeven in numChars, wordt een teken reeks geretourneerd die identiek is aan de teken reeks (dat wil zeggen, met alle tekens in para meter 1).
+**Beschrijving:**<br> De functie Links retourneert een opgegeven aantal tekens links van een tekenreeks. Als numChars = 0, retourneert u de lege tekenreeks.
+Als numChars < 0, retourneert u de invoertekenreeks.
+Als tekenreeks null is, retourneert u de lege tekenreeks.
+Als tekenreeks minder tekens bevat dan het getal dat is opgegeven in numChars, wordt een tekenreeks die identiek is aan tekenreeks (dat wil zeggen alle tekens in parameter 1) geretourneerd.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **String** |Vereist |Kenmerk | De teken reeks waaruit tekens moeten worden opgehaald |
-| **NumChars** |Vereist |Geheel getal | Een getal waarmee het aantal tekens wordt aangegeven dat moet worden geretourneerd vanaf het begin (links) van de teken reeks|
+| **Tekenreeks** |Vereist |Kenmerk | De tekenreeks om tekens terug te sturen uit |
+| **NumChars NumChars** |Vereist |Geheel getal | Een getal dat het aantal tekens aankaart dat moet terugkeren vanaf het begin (links) van de tekenreeks|
 
 **Voorbeeld:**<br>
-Left ("John splinter", 3)                                                            
+Links ("John Doe", 3)                                                            
 Retourneert "Joh"
 
 ---
 ### <a name="mid"></a>Mid
-**Functieassembly**<br> Mid (bron, start, lengte)
+**Functie:**<br> Midden(bron, begin, lengte)
 
-**Beschrijvingen**<br> Retourneert een subtekenreeks van de bronwaarde. Een subtekenreeks is een tekenreeks zijn met slechts enkele van de tekens uit de brontekenreeks.
+**Beschrijving:**<br> Geeft als resultaat een subtekenreeks van de bronwaarde. Een subtekenreeks is een tekenreeks die slechts enkele tekens uit de brontekenreeks bevat.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |Doorgaans de naam van het kenmerk. |
-| **start** |Vereist |geheel getal |Index in de **bron** teken reeks waarin de subtekenreeks moet worden gestart. Het eerste teken in de tekenreeks index 1 hebben, tweede teken wordt index 2 hebben, enzovoort. |
-| **lange** |Vereist |geheel getal |De lengte van de subtekenreeks. Als de lengte van de **bron** teken reeks eindigt, wordt met de functie subtekenreeks geretourneerd vanuit **Start** index tot het einde van de **bron** teken reeks. |
+| **Bron** |Vereist |Tekenreeks |Meestal de naam van het attribuut. |
+| **Start** |Vereist |geheel getal |Index in de **brontekenreeks** waar subtekenreeks moet beginnen. Eerste teken in de tekenreeks heeft een index van 1, het tweede teken heeft index 2, enzovoort. |
+| **Lengte** |Vereist |geheel getal |Lengte van de substring. Als de lengte buiten de **brontekenreeks** eindigt, retourneert de functie subtekenreeks van **beginindex** tot het einde van de **brontekenreeks.** |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
-**Functieassembly**<br> NormalizeDiacritics(source)
+**Functie:**<br> NormaliserenDiacritics(bron)
 
-**Beschrijvingen**<br> Vereist een tekenreeksargument. Retourneert de tekenreeks, maar met diakritische tekens vervangen door gelijkwaardige niet-diakritische tekens. Doorgaans gebruikt voor het omzetten van namen van de eerste en laatste diakritische tekens bevatten (accenttekens) in de geldige waarden die kunnen worden gebruikt in verschillende gebruikers-id, zoals de UPN-namen, SAM-accountnamen en e-mailadressen.
+**Beschrijving:**<br> Vereist één tekenreeksargument. Geeft als resultaat de tekenreeks, maar met diakritische tekens die zijn vervangen door gelijkwaardige niet-diakritische tekens. Meestal wordt gebruikt om voornamen en achternamen met diakritische tekens (accentmarkeringen) om te zetten in wettelijke waarden die kunnen worden gebruikt in verschillende gebruikers-id's, zoals gebruikershoofdnamen, SAM-accountnamen en e-mailadressen.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks | Meestal een voor naam-of achternaam-kenmerk. |
+| **Bron** |Vereist |Tekenreeks | Meestal een voor- of achternaamattribuut. |
 
 ---
 ### <a name="not"></a>Not
-**Functieassembly**<br> NOT(Source)
+**Functie:**<br> Niet(bron)
 
-**Beschrijvingen**<br> Hiermee wordt de Booleaanse waarde van de **bron**gespiegeld. Als de **bron** waarde '*True*' is, wordt '*False*' geretourneerd. Anders wordt '*True*' geretourneerd.
+**Beschrijving:**<br> Hiermee draait u de booleaanse waarde van de **bron**om. Als **de bronwaarde** *" True " is,* retourneert "*False*". Anders geeft het '*Waar '* terug.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Booleaanse tekenreeks |Verwachte **bron** waarden zijn ' True ' of ' false '. |
+| **Bron** |Vereist |Booleaanse tekenreeks |Verwachte **bronwaarden** zijn 'Waar' of 'Onwaar'. |
 
 ---
-### <a name="numfromdate"></a>NumFromDate
-**Functieassembly**<br> NumFromDate (waarde)
+### <a name="numfromdate"></a>NumFromDate NumfromDate
+**Functie:**<br> NumFromDate(waarde)
 
-**Beschrijvingen**<br> Met de functie NumFromDate wordt een DateTime-waarde geconverteerd naar Active Directory indeling die is vereist om kenmerken zoals [accountExpires](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires)in te stellen. Gebruik deze functie om DateTime-waarden die zijn ontvangen van Cloud-HR-apps, zoals workday en SuccessFactors, te converteren naar hun equivalente advertentie voorstelling. 
+**Beschrijving:**<br> De functie NumFromDate converteert een DatumTijd-waarde naar Active Directory-indeling die vereist is om kenmerken zoals accountExpires in te [stellen.](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires) Gebruik deze functie om DateTime-waarden die zijn ontvangen van HR-apps in de cloud, zoals Workday en SuccessFactors, om te zetten in hun gelijkwaardige AD-weergave. 
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **value** |Vereist | Tekenreeks | Datum en tijd teken reeks in de ondersteunde indeling. Zie https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspxvoor ondersteunde indelingen. |
+| **value** |Vereist | Tekenreeks | Datumtekenreeks in de ondersteunde indeling. Zie https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspxvoor ondersteunde indelingen . |
 
 **Voorbeeld:**<br>
-* Voor beeld van workday <br>
-  Als u wilt toewijzen van het kenmerk *ContractEndDate* van workday dat in het veld *2020-12-31-08:00* tot *accountExpires* in AD is ingedeeld, kunt u deze functie gebruiken en de tijd zone verschuiving wijzigen zodat deze overeenkomt met uw land instelling. 
+* Voorbeeld van werkdag <br>
+  Ervan uitgaande dat u het kenmerk *ContractEndDate* van Workday, dat in de indeling *2020-12-31-08:00* is, wilt toewijzen aan het veld *Verloopt* in AD, u deze functie als volgt gebruiken en de tijdzone-compensatie wijzigen om overeen te komen met uw landinstelling. 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
-* SuccessFactors-voor beeld <br>
-  Als u wilt dat het kenmerk *EndDate* van SuccessFactors wordt toegewezen in het veld format *M/d/jjjj uu: mm: ss tt* to *accountExpires* in AD, kunt u deze functie gebruiken en de tijd zone-offset wijzigen zodat deze overeenkomt met uw land instelling.
+* Voorbeeld van SuccessFactors <br>
+  Ervan uitgaande dat u het *kenmerk endDate* van SuccessFactors in kaart wilt brengen, dat in de indeling *M/d/yyyy hh:mm:ss tt* naar *accountExpires* veld in AD is, u deze functie gebruiken en de tijdzone-offset wijzigen om overeen te komen met uw landinstelling.
   `NumFromDate(Join("",FormatDateTime([endDate],"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
 
 
 ---
-### <a name="removeduplicates"></a>RemoveDuplicates
-**Functieassembly**<br> RemoveDuplicates (kenmerk)
+### <a name="removeduplicates"></a>Duplicaten verwijderen
+**Functie:**<br> Duplicaten verwijderen(kenmerk)
 
-**Beschrijvingen**<br> De functie RemoveDuplicates gebruikt een teken reeks met meerdere waarden en zorg ervoor dat elke waarde uniek is.
+**Beschrijving:**<br> De functie Duplicaten verwijderen neemt een tekenreeks met meerdere waarden en zorgt ervoor dat elke waarde uniek is.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **geschreven** |Vereist |Kenmerk met meerdere waarden |Kenmerk met meerdere waarden waarvoor duplicaten worden verwijderd|
+| **Kenmerk** |Vereist |Kenmerk met meerdere waarden |Kenmerk met meerdere waarden waarbij duplicaten zijn verwijderd|
 
 **Voorbeeld:**<br>
-RemoveDuplicates ([proxyAddresses])                                                                                                       
-Retourneert een gezuiverd proxyAddress attribuut-kenmerk waarbij alle dubbele waarden zijn verwijderd
+Duplicaten verwijderen([proxyAdressen])                                                                                                       
+Retourneert een ontsmet proxyAdres-kenmerk waarbij alle dubbele waarden zijn verwijderd
 
 ---
 ### <a name="replace"></a>Vervangen
-**Functieassembly**<br> Vervang (bron, oldValue, regexPattern, regexGroupName, vervangende waarde, replacementAttributeName, sjabloon)
+**Functie:**<br> Vervangen(bron, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
-**Beschrijvingen**<br>
-Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opgegeven parameters:
+**Beschrijving:**<br>
+Hiermee worden waarden binnen een tekenreeks vervangen. Het werkt anders, afhankelijk van de opgegeven parameters:
 
-* Wanneer **oldValue** en **replacementValue** worden gegeven:
+* Wanneer **oldValue** en **vervangingWaarde** zijn verstrekt:
   
-  * Vervangt alle exemplaren van **oldValue** in de **bron** door **replacementValue**
-* Wanneer **oldValue** en **sjabloon** worden gegeven:
+  * Vervangt alle exemplaren van **oudWaarde** in de **bron** door **vervangingWaarde**
+* Wanneer **oldValue** en **sjabloon** zijn opgegeven:
   
-  * Vervangt alle exemplaren van de **oldValue** in de **sjabloon** door de **bron** waarde
-* Wanneer **regexPattern** en **replacementValue** worden gegeven:
+  * Vervangt alle exemplaren van de **oudeWaarde** in de **sjabloon** door de **bronwaarde**
+* Wanneer **regexPattern** en **vervangingwaarde** worden verstrekt:
 
-  * De functie past de **regexPattern** toe op de **bron** teken reeks en u kunt de regex-groeps namen gebruiken om de teken reeks voor **replacementValue** te maken
-* Als **regexPattern**, **regexGroupName**, **replacementValue** worden gegeven:
+  * De functie past de **regexPattern** toe op de **brontekenreeks** en u de regex-groepsnamen gebruiken om de tekenreeks te construeren voor **vervangingWaarde**
+* Wanneer **regexPattern**, **regexGroupName**, **vervangingswaarde** wordt verstrekt:
   
-  * De functie past de **regexPattern** toe op de **bron** teken reeks en vervangt alle waarden die overeenkomen met **regexGroupName** met **replacementValue**
-* Als **regexPattern**, **regexGroupName**, **replacementAttributeName** worden gegeven:
+  * De functie past de **regexPattern** toe op de **brontekenreeks** en vervangt alle waarden die overeenkomen met **regexGroupName** door **vervangingWaarde**
+* Wanneer **regexPattern**, **regexGroupName**, **vervangendeAttribuutName** worden verstrekt:
   
-  * Als de **bron** geen waarde heeft, wordt de **bron** geretourneerd
-  * Als de **bron** een waarde heeft, past de functie **de regexPattern** toe op de **bron** teken reeks en worden alle waarden die overeenkomen met **regexGroupName** vervangen door de waarde die is gekoppeld aan **replacementAttributeName**
+  * Als **bron** geen waarde heeft, wordt **de bron** geretourneerd
+  * Als **bron** een waarde heeft, past de functie de **regexPattern** toe op de **brontekenreeks** en vervangt alle waarden die overeenkomen met **regexGroupName** door de waarde die is gekoppeld aan **vervangendeKenmerken**
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |Doorgaans naam van het kenmerk van het **bron** object. |
-| **oldValue** |Optioneel |Tekenreeks |De waarde die moet worden vervangen in de **bron** of de **sjabloon**. |
-| **regexPattern** |Optioneel |Tekenreeks |Regex-patroon voor de waarde die in de **bron**moet worden vervangen. Of, wanneer **replacementPropertyName** wordt gebruikt, patroon om waarde uit **replacementPropertyName**te halen. |
-| **regexGroupName** |Optioneel |Tekenreeks |De naam van de groep in **regexPattern**. Alleen wanneer **replacementPropertyName** wordt gebruikt, wordt de waarde van deze groep geëxtraheerd als **replacementValue** van **replacementPropertyName**. |
-| **replacementValue** |Optioneel |Tekenreeks |Nieuwe waarde te vervangen door oude met. |
-| **replacementAttributeName** |Optioneel |Tekenreeks |Naam van het kenmerk dat moet worden gebruikt voor de vervangings waarde |
-| **sjabloon** |Optioneel |Tekenreeks |Als u een **sjabloon** waarde opgeeft, worden de **oude** waarden in de sjabloon gezocht en vervangen door de **bron** waarde. |
+| **Bron** |Vereist |Tekenreeks |Meestal de naam van het kenmerk van het **bronobject.** |
+| **Oldvalue** |Optioneel |Tekenreeks |Waarde die moet worden vervangen in **bron** of **sjabloon**. |
+| **regexPatroon** |Optioneel |Tekenreeks |Regex-patroon voor de waarde die in **de bron**moet worden vervangen . Of, wanneer **vervangenPropertyName** wordt gebruikt, patroon om waarde te extraheren uit **vervangenPropertyName**. |
+| **regexGroupName** |Optioneel |Tekenreeks |Naam van de groep in **regexPattern**. Alleen wanneer **vervangenPropertyName** wordt gebruikt, halen we de waarde van deze groep als **vervangingWaarde** uit **vervangendePropertyName**. |
+| **vervangingWaarde** |Optioneel |Tekenreeks |Nieuwe waarde om oude te vervangen met. |
+| **vervangingAttribuutNaam** |Optioneel |Tekenreeks |Naam van het kenmerk dat moet worden gebruikt voor vervangingswaarde |
+| **Sjabloon** |Optioneel |Tekenreeks |Wanneer **de sjabloonwaarde** wordt opgegeven, zoeken we naar **oldValue** in de sjabloon en vervangen deze door **bronwaarde.** |
 
 ---
-### <a name="selectuniquevalue"></a>SelectUniqueValue
-**Functieassembly**<br> SelectUniqueValue (uniqueValueRule1, uniqueValueRule2, uniqueValueRule3,...)
+### <a name="selectuniquevalue"></a>SelecteerUnieke Waarde
+**Functie:**<br> SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, ...)
 
-**Beschrijvingen**<br> Minimaal twee argumenten die zijn gedefinieerd met behulp van expressies aanmaakregels voor unieke waarde is vereist. De functie evalueert van elke regel en controleert vervolgens of de waarde uniek in de doel-app/directory gegenereerd. De eerste unieke waarde gevonden, worden de geretourneerd. Als alle waarden al in het doel bestaat, wordt de vermelding ophalen verwekt en de reden wordt vastgelegd in de auditlogboeken. Er is geen bovengrens voor het aantal argumenten die kan worden opgegeven.
+**Beschrijving:**<br> Vereist een minimum van twee argumenten, die unieke regels voor het genereren van waarde gedefinieerd met behulp van expressies. De functie evalueert elke regel en controleert vervolgens de waarde die is gegenereerd op uniciteit in de doel-app/map. De eerste unieke waarde gevonden zal zijn degene die is geretourneerd. Als alle waarden al in het doel bestaan, wordt de vermelding geblokkeerd en wordt de reden geregistreerd in de controlelogboeken. Er is geen bovengrens aan het aantal argumenten dat kan worden verstrekt.
 
 > [!NOTE]
-> - Dit is een functie op het hoogste niveau, kunnen niet worden genest.
+> - Dit is een functie op het hoogste niveau, het kan niet worden genest.
 > - Deze functie kan niet worden toegepast op kenmerken met een overeenkomende prioriteit.  
-> - Deze functie is alleen bedoeld om te worden gebruikt voor bewerkingen voor het item maken. Wanneer u het gebruikt met een-kenmerk, moet u de eigenschap **toewijzing Toep assen** instellen op **alleen tijdens het maken**van een object.
-> - Deze functie wordt momenteel alleen ondersteund voor werk dagen Active Directory het inrichten van de gebruiker. Het kan niet worden gebruikt met andere inrichtings toepassingen. 
+> - Deze functie is alleen bedoeld om te worden gebruikt voor entry creaties. Wanneer u het kenmerk gebruikt, stelt u de eigenschap **Toewijzing toepassen** in **op Alleen tijdens het maken van objecten**.
+> - Deze functie wordt momenteel alleen ondersteund voor 'Workday to Active Directory User Provisioning'. Het kan niet worden gebruikt met andere inrichtingstoepassingen. 
 
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **uniqueValueRule1 ... uniqueValueRuleN** |Ten minste zijn 2 afhankelijk van de vereiste, geen hoofdletters |Tekenreeks | Lijst met regels voor het genereren van unieke waarden om te evalueren. |
+| **uniqueValueRule1 ... uniqueValueRuleN** |Ten minste 2 zijn vereist, geen bovengrens |Tekenreeks | Lijst van unieke regels voor het genereren van waarde om te evalueren. |
 
 
 ---
-### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
-**Functieassembly**<br> SingleAppRoleAssignment([appRoleAssignments])
+### <a name="singleapproleassignment"></a>SingleAppRoleAssignment (SingleAppRoleAssignment)
+**Functie:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**Beschrijvingen**<br> Retourneert één appRoleAssignment uit de lijst met alle appRoleAssignments die zijn toegewezen aan een gebruiker voor een bepaalde toepassing. Deze functie is vereist om het appRoleAssignments-object om te zetten in een teken reeks met een enkele rolnaam. Houd er rekening mee dat de best practice ervoor moet zorgen dat er slechts één appRoleAssignment wordt toegewezen aan één gebruiker tegelijk. als er meerdere rollen zijn toegewezen, kan de geretourneerde functie teken reeks mogelijk niet voorspelbaar zijn. 
+**Beschrijving:**<br> Retourneert één appRoleAssignment uit de lijst met alle appRoleAssignments die aan een gebruiker voor een bepaalde toepassing zijn toegewezen. Deze functie is vereist om het object appRoleAssignments om te zetten in één rolnaamtekenreeks. Houd er rekening mee dat de beste praktijk is om ervoor te zorgen dat slechts één appRoleAssignment aan één gebruiker tegelijk wordt toegewezen en dat als meerdere rollen zijn toegewezen, de geretourneerde roltekenreeks mogelijk niet voorspelbaar is. 
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **AppRoleAssignments** |Vereist |Tekenreeks |object **[appRoleAssignments]** . |
+| **[appRoleAssignments]** |Vereist |Tekenreeks |**[appRoleAssignments]** object. |
 
 ---
 ### <a name="split"></a>Splitsen
-**Functieassembly**<br> Splitsen (bron, scheidings teken)
+**Functie:**<br> Splitsen(bron, scheidingsteken)
 
-**Beschrijvingen**<br> Hiermee splitst u een teken reeks in een matrix met meerdere waarden met behulp van het opgegeven scheidings teken.
+**Beschrijving:**<br> Splitst een tekenreeks op in een array met meerdere waarden met behulp van het opgegeven scheidingstekenteken.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |**bron** waarde die moet worden bijgewerkt. |
-| **vorm** |Vereist |Tekenreeks |Hiermee geeft u het teken op dat wordt gebruikt om de teken reeks te splitsen (bijvoorbeeld: ",") |
+| **Bron** |Vereist |Tekenreeks |**bronwaarde** bij te werken. |
+| **Scheidingsteken** |Vereist |Tekenreeks |Hiermee geeft u het teken op dat wordt gebruikt om de tekenreeks te splitsen (voorbeeld:",") |
 
 ---
-### <a name="stripspaces"></a>StripSpaces
-**Functieassembly**<br> StripSpaces(source)
+### <a name="stripspaces"></a>Stripruimten
+**Functie:**<br> StripSpaces(bron)
 
-**Beschrijvingen**<br> Verwijdert alle spaties ("") tekens uit de brontekenreeks.
+**Beschrijving:**<br> Hiermee verwijdert u alle spatie (" ") tekens uit de brontekenreeks.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |**bron** waarde die moet worden bijgewerkt. |
+| **Bron** |Vereist |Tekenreeks |**bronwaarde** bij te werken. |
 
 ---
 ### <a name="switch"></a>Switch
-**Functieassembly**<br> Switch (bron, defaultValue, key1, value1, key2, waarde2,...)
+**Functie:**<br> Switch(bron, standaardWaarde, toets1, waarde1, toets2, waarde2, ...)
 
-**Beschrijvingen**<br> Als de **bron** waarde overeenkomt met een **sleutel**, retourneert **waarde** voor die **sleutel**. Als de **bron** waarde niet overeenkomt met een sleutel, wordt **DefaultValue**geretourneerd.  **Sleutel** -en **waarde** -para meters moeten altijd in paren zijn. De functie verwacht altijd een even aantal parameters. De functie mag niet worden gebruikt voor referentiële kenmerken, zoals Manager. 
+**Beschrijving:**<br> Wanneer **de bronwaarde** overeenkomt met een **sleutel**, retourneert **de waarde** voor die **sleutel**. Als **de bronwaarde** niet overeenkomt met sleutels, retourneert **standaardWaarde**.  **Sleutel-** en **waardeparameters** moeten altijd in paren worden geleverd. De functie verwacht altijd een even aantal parameters. De functie mag niet worden gebruikt voor referentiële kenmerken zoals manager. 
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |**Bron** waarde die moet worden bijgewerkt. |
-| **Standaard** |Optioneel |Tekenreeks |De standaardwaarde moet worden gebruikt wanneer de bron komt niet overeen met alle sleutels. Lege tekenreeks (""). |
-| **sleutel** |Vereist |Tekenreeks |**Sleutel** voor het vergelijken van de **bron** waarde met. |
-| **value** |Vereist |Tekenreeks |Vervangings waarde voor de **bron** die overeenkomt met de sleutel. |
+| **Bron** |Vereist |Tekenreeks |**Bronwaarde** om bij te werken. |
+| **Standaardwaarde** |Optioneel |Tekenreeks |Standaardwaarde die moet worden gebruikt wanneer de bron niet overeenkomt met sleutels. Kan een lege tekenreeks zijn (""). |
+| **Sleutel** |Vereist |Tekenreeks |**Sleutel** om **de bronwaarde** mee te vergelijken. |
+| **value** |Vereist |Tekenreeks |Vervangingswaarde voor de **bron** die overeenkomt met de sleutel. |
 
 ---
 ### <a name="tolower"></a>ToLower
-**Functieassembly**<br> ToLower (bron, cultuur)
+**Functie:**<br> ToLower (bron, cultuur)
 
-**Beschrijvingen**<br> Neemt een *bron* teken reeks waarde en converteert deze in kleine letters met de opgegeven cultuur regels. Als er geen *cultuur* gegevens zijn opgegeven, wordt de invariante cultuur gebruikt.
+**Beschrijving:**<br> Hiermee wordt een *brontekenreekswaarde* gebruikt en wordt deze omgezet in kleine letters met behulp van de opgegeven cultuurregels. Als er geen *cultuurinfo* wordt gespecificeerd, dan zal het invariantcultuur gebruiken.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject |
-| **culturele** |Optioneel |Tekenreeks |De notatie voor de cultuur naam op basis van RFC 4646 is *languagecode2-Country/regioncode2*, waarbij *languagecode2* de taal code van twee letters is en *land/regioncode2* de subcultuurcode van twee letters is. Voor beelden zijn ja-JP voor Japans (Japan) en en-US voor Engels (Verenigde Staten). In gevallen waarin een taal code van twee letters niet beschikbaar is, wordt er een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
+| **Bron** |Vereist |Tekenreeks |Meestal naam van het kenmerk van het bronobject |
+| **Cultuur** |Optioneel |Tekenreeks |Het formaat voor de cultuurnaam op basis van RFC 4646 is *languagecode2-country/regioncode2*, waarbij *languagecode2* de taalcode van twee letters is en *land/regioncode2* de subcultuurcode van twee letters. Voorbeelden hiervan zijn ja-JP voor Japans (Japan) en en-VS voor Engels (Verenigde Staten). In gevallen waarin een taalcode van twee letters niet beschikbaar is, wordt een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
 
 ---
-### <a name="toupper"></a>toUpper
-**Functieassembly**<br> ToUpper (bron, cultuur)
+### <a name="toupper"></a>Toupper
+**Functie:**<br> ToUpper(bron, cultuur)
 
-**Beschrijvingen**<br> Neemt een *bron* teken reeks waarde en converteert deze in hoofd letters met de opgegeven cultuur regels. Als er geen *cultuur* gegevens zijn opgegeven, wordt de invariante cultuur gebruikt.
+**Beschrijving:**<br> Hiermee wordt een *brontekenreekswaarde* gebruikt en wordt deze omgezet in hoofdletters met behulp van de opgegeven cultuurregels. Als er geen *cultuurinfo* wordt gespecificeerd, dan zal het invariantcultuur gebruiken.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject. |
-| **culturele** |Optioneel |Tekenreeks |De notatie voor de cultuur naam op basis van RFC 4646 is *languagecode2-Country/regioncode2*, waarbij *languagecode2* de taal code van twee letters is en *land/regioncode2* de subcultuurcode van twee letters is. Voor beelden zijn ja-JP voor Japans (Japan) en en-US voor Engels (Verenigde Staten). In gevallen waarin een taal code van twee letters niet beschikbaar is, wordt er een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
+| **Bron** |Vereist |Tekenreeks |Meestal de naam van het kenmerk van het bronobject. |
+| **Cultuur** |Optioneel |Tekenreeks |Het formaat voor de cultuurnaam op basis van RFC 4646 is *languagecode2-country/regioncode2*, waarbij *languagecode2* de taalcode van twee letters is en *land/regioncode2* de subcultuurcode van twee letters. Voorbeelden hiervan zijn ja-JP voor Japans (Japan) en en-VS voor Engels (Verenigde Staten). In gevallen waarin een taalcode van twee letters niet beschikbaar is, wordt een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
 
 ---
 ### <a name="word"></a>Word
-**Functieassembly**<br> Woord (teken reeks, WordNumber, scheidings tekens)
+**Functie:**<br> Word(Tekenreeks, Woordnummer, scheidingstekens)
 
-**Beschrijvingen**<br> De functie Word retourneert een woord dat deel uitmaakt van een teken reeks, op basis van para meters die de scheidings tekens beschrijven die moeten worden gebruikt en het woord nummer dat moet worden geretourneerd. Elke teken reeks in een teken reeks gescheiden door de tekens van de spaties wordt aangeduid als woorden:
+**Beschrijving:**<br> De functie Word retourneert een woord in een tekenreeks, op basis van parameters die de te gebruiken scheidingstekens beschrijven en het woordnummer dat moet worden geretourneerd. Elke reeks tekens in tekenreeks die wordt gescheiden door een van de tekens in de limiters, wordt aangeduid als woorden:
 
-Als getal < 1 retourneert een lege teken reeks.
-Als de teken reeks null is, wordt een lege teken reeks geretourneerd.
-Als teken reeks minder dan cijfer woorden bevat, of teken reeks geen woorden die zijn geïdentificeerd door scheidings tekens, wordt een lege teken reeks geretourneerd.
+Als getal < 1, wordt de lege tekenreeks geretourneerd.
+Als tekenreeks null is, retourneert lege tekenreeks.
+Als tekenreeks minder dan getalwoorden bevat of als tekenreeks geen woorden bevat die door de limiters zijn geïdentificeerd, wordt een lege tekenreeks geretourneerd.
 
-**Instellen**<br> 
+**Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereist/ Herhalen | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **String** |Vereist |Kenmerk met meerdere waarden |De teken reeks waarmee een woord moet worden geretourneerd.|
-| **WordNumber** |Vereist | Geheel getal | Nummer waarmee het woord nummer moet worden geretourneerd|
-| **scheidings tekens** |Vereist |Tekenreeks| Een teken reeks die de scheidings tekens vertegenwoordigt die moeten worden gebruikt voor het identificeren van woorden|
+| **Tekenreeks** |Vereist |Kenmerk met meerdere waarden |Tekenreeks om een woord terug te geven van.|
+| **WordGetal** |Vereist | Geheel getal | Nummer dat aankaart welk woordnummer moet worden retournerd|
+| **Scheidingstekens** |Vereist |Tekenreeks| Een tekenreeks die de scheidingsteken(s) weergeeft die moet worden gebruikt om woorden te identificeren|
 
 **Voorbeeld:**<br>
-Word ("Quick Brown Fox", 3, "")                                                                                       
-Retourneert ' bruin '
+Woord("De snelle bruine vos",3," ")                                                                                       
+Retourneert 'bruin'
 
-Word ("This, string! heeft & veel scheidings tekens", 3, ",! & #")                                                                       
-Retourneert "has"
+Woord("Dit,string!heeft veel scheidingstekens&", 3,",!&#")                                                                       
+Retouren "heeft"
 
 ---
 
 ## <a name="examples"></a>Voorbeelden
-### <a name="strip-known-domain-name"></a>Bekende domeinnaam van strook/lijn
-U moet de domeinnaam van een bekend van e-mailadres van een gebruiker om op te halen van de naam van een gebruiker verwijderen. <br>
-Bijvoorbeeld, als het domein 'contoso.com' is, kan u de volgende expressie:
+### <a name="strip-known-domain-name"></a>Bekende domeinnaam strippen
+U moet een bekende domeinnaam uit de e-mail van een gebruiker halen om een gebruikersnaam te verkrijgen. <br>
+Als het domein bijvoorbeeld 'contoso.com' is, u de volgende expressie gebruiken:
 
-**Expressie** <br>
+**Expressie:** <br>
 `Replace([mail], "@contoso.com", , ,"", ,)`
 
-**Voor beeld van invoer/uitvoer:** <br>
+**Voorbeeldinvoer/uitvoer:** <br>
 
-* **Invoer** (mail): "john.doe@contoso.com"
-* **Uitvoer**: "John. Splinter"
+* **INPUT** (e-mail): "john.doe@contoso.com
+* **OUTPUT**: "john.doe"
 
-### <a name="append-constant-suffix-to-user-name"></a>Constante achtervoegsel toevoegen aan de gebruikersnaam van
-Als u van een Sandbox met Salesforce gebruikmaakt, moet u mogelijk een extra achtervoegsel toevoegen aan uw gebruikersnamen voordat deze worden gesynchroniseerd.
+### <a name="append-constant-suffix-to-user-name"></a>Constant achtervoegsel toevoegen aan gebruikersnaam
+Als u een Salesforce Sandbox gebruikt, moet u mogelijk een extra achtervoegsel toevoegen aan al uw gebruikersnamen voordat u deze synchroniseert.
 
-**Expressie** <br>
+**Expressie:** <br>
 `Append([userPrincipalName], ".test")`
 
-**Voor beeld van invoer/uitvoer:** <br>
+**Voorbeeldinvoer/-uitvoer:** <br>
 
-* **Invoer**: (userPrincipalName): "John.Doe@contoso.com"
-* **Uitvoer**: "John.Doe@contoso.com.test"
+* **INVOER**: (userPrincipalName): "John.Doe@contoso.com
+* **OUTPUT**:John.Doe@contoso.com.test"
 
-### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Gebruikersalias genereren door samenvoegen van onderdelen van de voornaam en achternaam
-U moet een gebruiker alias genereren door te nemen van de eerste 3 letters van de voornaam van de gebruiker en eerste 5 letters van de achternaam van de gebruiker.
+### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Gebruikersalias genereren door delen van voor- en achternaam te
+U moet een gebruikersalias genereren door de eerste 3 letters van de voornaam van de gebruiker en de eerste 5 letters van de achternaam van de gebruiker te nemen.
 
-**Expressie** <br>
+**Expressie:** <br>
 `Append(Mid([givenName], 1, 3), Mid([surname], 1, 5))`
 
-**Voor beeld van invoer/uitvoer:** <br>
+**Voorbeeldinvoer/-uitvoer:** <br>
 
-* **Invoer** (voor gegeven): John
-* **Invoer** (achternaam): "Splinter"
-* **Uitvoer**: "JohDoe"
+* **INPUT** (givenName): "John"
+* **INPUT** (achternaam): "Doe"
+* **OUTPUT**: "JohDoe"
 
-### <a name="remove-diacritics-from-a-string"></a>Diakritische tekens verwijderen uit een tekenreeks
-U moet vervangen van tekens lang zijn accenttekens met gelijkwaardige tekens die geen accenttekens bevatten.
+### <a name="remove-diacritics-from-a-string"></a>Diacritics uit een tekenreeks verwijderen
+U moet tekens met accentmarkeringen vervangen door gelijkwaardige tekens die geen accentmarkeringen bevatten.
 
-**Expressie** <br>
-NormalizeDiacritics([givenName])
+**Expressie:** <br>
+NormaliseerDiacritics([givenName])
 
-**Voor beeld van invoer/uitvoer:** <br>
+**Voorbeeldinvoer/-uitvoer:** <br>
 
-* **Invoer** (voor OpgegevenNaam): "Zoë"
-* **Uitvoer**: "Zoe"
+* **INPUT** (givenName): "Zoë"
+* **OUTPUT**: "Zoe"
 
-### <a name="split-a-string-into-a-multi-valued-array"></a>Een teken reeks splitsen in een matrix met meerdere waarden
-U moet een door komma's gescheiden lijst met teken reeksen maken en deze opsplitsen in een matrix die kan worden aangesloten op een kenmerk met meerdere waarden, zoals het kenmerk PermissionSets van Sales Force. In dit voor beeld is een lijst met machtigingen sets ingevuld in extensionAttribute5 in azure AD.
+### <a name="split-a-string-into-a-multi-valued-array"></a>Een tekenreeks splitsen in een array met meerdere waarden
+U moet een door komma's afgebakende lijst met tekenreeksen opnemen in een array die kan worden aangesloten op een kenmerk met meerdere waarden, zoals het kenmerk PermissionSets van Salesforce. In dit voorbeeld is een lijst met machtigingssets ingevuld in extensieAttribute5 in Azure AD.
 
-**Expressie** <br>
-Splitsen ([extensionAttribute5], ",")
+**Expressie:** <br>
+Splitsen([extensieAttribuut5], ",")
 
-**Voor beeld van invoer/uitvoer:** <br>
+**Voorbeeldinvoer/-uitvoer:** <br>
 
-* **Invoer** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
-* **Output**: ["PermissionSetOne", "PermissionSetTwo"]
+* **INPUT** (extensieAttribuut5): "PermissionSetOne, PermisionSetTwo"
+* **UITVOER**: ["PermissionSetone", "PermissionSettwo"]
 
-### <a name="output-date-as-a-string-in-a-certain-format"></a>Uitvoerdatum als een tekenreeks in een bepaalde indeling
-Wilt u datums verzenden naar een SaaS-toepassing in een bepaalde indeling. <br>
-U wilt bijvoorbeeld datums voor ServiceNow.
+### <a name="output-date-as-a-string-in-a-certain-format"></a>Uitvoerdatum als tekenreeks in een bepaalde indeling
+U wilt datums naar een SaaS-toepassing in een bepaalde indeling verzenden. <br>
+U wilt bijvoorbeeld datums opmaken voor ServiceNow.
 
-**Expressie** <br>
+**Expressie:** <br>
 
 `FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
 
-**Voor beeld van invoer/uitvoer:**
+**Voorbeeldinvoer/-uitvoer:**
 
-* **Invoer** (extensionAttribute1): "20150123105347.1 z"
-* **Uitvoer**: "2015-01-23"
+* **INPUT** (extensieAttribuut1): "20150123105347.1Z"
+* **OUTPUT**: "2015-01-23"
 
-### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Vervangen door een waarde op basis van vooraf gedefinieerde set opties
+### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Een waarde vervangen op basis van vooraf gedefinieerde set opties
 
-U moet voor het definiëren van de tijdzone van de gebruiker op basis van de status opgeslagen in Azure AD. <br>
-Als de status code komt niet overeen met een van de vooraf gedefinieerde opties, gebruikt u standaardwaarde van 'Australië/Sydney'.
+U moet de tijdzone van de gebruiker definiëren op basis van de statuscode die is opgeslagen in Azure AD. <br>
+Als de statuscode niet overeenkomt met een van de vooraf gedefinieerde opties, gebruikt u de standaardwaarde 'Australië/Sydney'.
 
-**Expressie** <br>
+**Expressie:** <br>
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
-**Voor beeld van invoer/uitvoer:**
+**Voorbeeldinvoer/-uitvoer:**
 
-* **Invoer** (status): "Qld"
-* **Uitvoer**: "Australië/Brisbane"
+* **INVOER** (status): "QLD"
+* **OUTPUT**: "Australië/Brisbane"
 
-### <a name="replace-characters-using-a-regular-expression"></a>Tekens vervangen met een reguliere expressie
-U moet tekens vinden die overeenkomen met een reguliere expressie waarde en deze verwijderen.
+### <a name="replace-characters-using-a-regular-expression"></a>Tekens vervangen met een normale expressie
+U moet tekens vinden die overeenkomen met een normale expressiewaarde en deze verwijderen.
 
-**Expressie** <br>
+**Expressie:** <br>
 
-Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
+Vervangen([mailNickname], ,,[a-zA-Z_]*",, "",
 
-**Voor beeld van invoer/uitvoer:**
+**Voorbeeldinvoer/-uitvoer:**
 
-* **Invoer** (mailnickname: "john_doe72"
-* **Uitvoer**: "72"
+* **INPUT** (mailNickname: "john_doe72"
+* **OUTPUT**: "72"
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Gegenereerde userPrincipalName-waarde converteren naar kleine letters
-In het onderstaande voor beeld wordt de UPN-waarde gegenereerd door het samen voegen van de bron velden PreferredFirstName en PreferredLastName en de functie ToLower werkt op de gegenereerde teken reeks om alle tekens te converteren naar kleine letters. 
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>UPN-waarde (generated userPrincipalName) converteren naar kleine letters
+In het onderstaande voorbeeld wordt de UPN-waarde gegenereerd door de bronvelden PreferredFirstName en PreferredLastName samen te stellen en werkt de functie ToLower op de gegenereerde tekenreeks om alle tekens om te zetten in kleine letters. 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
 
-**Voor beeld van invoer/uitvoer:**
+**Voorbeeldinvoer/-uitvoer:**
 
-* **Invoer** (PreferredFirstName): "John"
-* **Invoer** (PreferredLastName): "Smith"
-* **Uitvoer**: "john.smith@contoso.com"
+* **INPUT** (PreferredFirstName): "John"
+* **INPUT** (PreferredLastName): "Smith"
+* **OUTPUT**:john.smith@contoso.com"
 
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Genereren van unieke waarde voor kenmerk userPrincipalName (UPN)
-Gebaseerd op van de gebruiker voornaam, de tweede voornaam en achternaam, moet u het genereren van een waarde op voor het UPN-kenmerk en controleer de uniek in de-AD-doeldirectory voordat u de waarde toewijzen aan het UPN-kenmerk.
+### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Unieke waarde genereren voor het kenmerk USERPrincipalName (UPN)
+Op basis van de voornaam, de tweede naam en achternaam van de gebruiker moet u een waarde voor het KENMERK UPN genereren en controleren op de uniciteit ervan in de doel-AD-map voordat u de waarde toekent aan het kenmerk UPN.
 
-**Expressie** <br>
+**Expressie:** <br>
 
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
@@ -706,30 +706,30 @@ Gebaseerd op van de gebruiker voornaam, de tweede voornaam en achternaam, moet u
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
 
-**Voor beeld van invoer/uitvoer:**
+**Voorbeeldinvoer/-uitvoer:**
 
-* **Invoer** (PreferredFirstName): "John"
-* **Invoer** (PreferredLastName): "Smith"
-* **Uitvoer**: "John.Smith@contoso.com" als de UPN-waarde van John.Smith@contoso.com niet al in de directory bestaat
-* **Uitvoer**: "J.Smith@contoso.com" als de UPN-waarde van John.Smith@contoso.com al in de map bestaat
-* **Uitvoer**: "Jo.Smith@contoso.com" als de bovenstaande twee UPN-waarden al aanwezig zijn in de map
+* **INPUT** (PreferredFirstName): "John"
+* **INPUT** (PreferredLastName): "Smith"
+* **UITVOER**:John.Smith@contoso.com" " als John.Smith@contoso.com upn-waarde van niet al bestaat in de directory
+* **UITVOER**:J.Smith@contoso.com" " als John.Smith@contoso.com upn-waarde van al bestaat in de directory
+* **UITVOER**:Jo.Smith@contoso.com" " als de bovenstaande twee UPN-waarden al in de map staan
 
-### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>Stroom-mail waarde indien niet NULL, anders flow userPrincipalName
-U wilt het kenmerk mail stroomren als het aanwezig is. Als dat niet het geval is, wilt u in plaats daarvan de waarde van userPrincipalName door lopen.
+### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>Stroommailwaarde als niet NULL, anders stromen userPrincipalName
+U wilt het e-mailkenmerk doorsturen als deze aanwezig is. Als dit niet het is, wilt u in plaats daarvan de waarde van userPrincipalName doorstromen.
 
-**Expressie** <br>
+**Expressie:** <br>
 `Coalesce([mail],[userPrincipalName])`
 
-**Voor beeld van invoer/uitvoer:** <br>
+**Voorbeeldinvoer/-uitvoer:** <br>
 
-* **Invoer** (mail): null
-* **Invoer** (userPrincipalName): "John.Doe@contoso.com"
-* **Uitvoer**: "John.Doe@contoso.com"
+* **INVOER** (e-mail): NULL
+* **INVOER** (userPrincipalName):John.Doe@contoso.com"
+* **OUTPUT**:John.Doe@contoso.com"
 
-## <a name="related-articles"></a>Gerelateerde artikelen
-* [Gebruikers inrichting en ongedaan maken van de inrichting van SaaS-apps automatiseren](../app-provisioning/user-provisioning.md)
-* [Kenmerk toewijzingen aanpassen voor het inrichten van gebruikers](../app-provisioning/customize-application-attributes.md)
-* [Filters voor het inrichten van gebruikers in bereik](define-conditional-rules-for-provisioning-user-accounts.md)
+## <a name="related-articles"></a>Verwante artikelen
+* [Gebruikersvoorziening/deprovisioning automatiseren naar SaaS-apps](../app-provisioning/user-provisioning.md)
+* [Kenmerkentoewijzingen aanpassen voor gebruikersinrichting](../app-provisioning/customize-application-attributes.md)
+* [Scoping-filters voor gebruikersinrichting](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Using SCIM to enable automatic provisioning of users and groups from Azure Active Directory to applications](../app-provisioning/use-scim-to-provision-users-and-groups.md) (SCIM gebruiken om in te stellen dat gebruikers en groepen van Azure Active Directory automatisch worden ingericht voor toepassingen)
-* [Meldingen voor het inrichten van accounts](../app-provisioning/user-provisioning.md)
-* [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)
+* [Meldingen over accountinrichting](../app-provisioning/user-provisioning.md)
+* [Lijst met handleidingen voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)

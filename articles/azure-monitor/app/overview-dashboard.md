@@ -1,59 +1,59 @@
 ---
-title: Overzichts dashboard voor Azure-toepassing Insights | Microsoft Docs
-description: Bewaak toepassingen met Azure-toepassing inzicht en overzicht dashboard functionaliteit.
+title: Overzichtsdashboard Azure Application Insights | Microsoft Documenten
+description: Beheer toepassingen met Azure Application Insights en Overview Dashboard-functionaliteit.
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669893"
 ---
-# <a name="application-insights-overview-dashboard"></a>Application Insights-overzichts dashboard
+# <a name="application-insights-overview-dashboard"></a>Overzichtsdashboard voor toepassingsinzichten
 
-Application Insights heeft altijd een overzichts venster weer gegeven waarmee u de status en prestaties van uw toepassing snel, in één oogopslag kunt beoordelen. Het nieuwe overzichts dashboard biedt een snellere, flexibeler ervaring.
+Application Insights heeft altijd een overzichtsvenster met een overzicht som gemaakt, zodat de status en prestaties van uw toepassing in één oogopslag snel en in één oogopslag kunnen worden beoordeeld. Het nieuwe overzichtsdashboard biedt een snellere flexibelere ervaring.
 
-## <a name="how-do-i-test-out-the-new-experience"></a>Hoe kan ik de nieuwe ervaring testen?
+## <a name="how-do-i-test-out-the-new-experience"></a>Hoe test ik de nieuwe ervaring?
 
-Het nieuwe overzichts dashboard wordt nu standaard gestart:
+Het nieuwe overzichtsdashboard wordt nu standaard gelanceerd:
 
-![Voorbeeld venster Overzicht](./media/overview-dashboard/overview.png)
+![Deelvenster Voorbeeld van overzicht](./media/overview-dashboard/overview.png)
 
 ## <a name="better-performance"></a>Betere prestaties
 
-De selectie van het tijds bereik is vereenvoudigd tot een eenvoudige interface met één klik.
+De selectie van tijdsbereik is vereenvoudigd tot een eenvoudige interface met één klik.
 
 ![Tijdsbereik](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-De algehele prestaties zijn aanzienlijk verhoogd. U hebt één klik toegang tot populaire functies, zoals **zoeken** en **analyses**. Elke standaard KPI-tegel die dynamisch wordt bijgewerkt, biedt inzicht in de bijbehorende Application Insights-functies. Voor meer informatie over mislukte aanvragen selecteert u **fouten** in de kop van de **onderzoek** :
+De algehele prestaties zijn sterk toegenomen. Je hebt met één klik toegang tot populaire functies zoals **Zoeken** en **Analytics.** Elke standaard-KPI-tegel die dynamisch wordt bijgewerkt, biedt inzicht in de bijbehorende Application Insights-functies. Selecteer **Fouten** onder de kop **Onderzoeken** voor meer informatie over mislukte aanvragen:
 
 ![Fouten](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Toepassingsdashboard
 
-Toepassings dashboard maakt gebruik van de bestaande dash board-technologie in azure om een volledig aanpas bare weer gave van uw toepassings status en-prestaties te bieden.
+Het toepassingsdashboard maakt gebruik van de bestaande dashboardtechnologie binnen Azure om een volledig aanpasbare weergave van uw toepassingsstatus en -prestaties te bieden.
 
-Als u het standaard dashboard wilt openen, selecteert u _toepassings dashboard_ in de linkerbovenhoek.
+Als u toegang wilt krijgen tot het standaarddashboard, selecteert u _Toepassingsdashboard_ in de linkerbovenhoek.
 
 ![Dashboardweergave](./media/overview-dashboard/app-insights-overview-dashboard-05.png)
 
-Als dit de eerste keer is dat u het dash board opent, wordt er een standaard weergave geopend:
+Als dit de eerste keer is dat u toegang krijgt tot het dashboard, wordt een standaardweergave gestart:
 
 ![Dashboardweergave](./media/overview-dashboard/0001-dashboard.png)
 
-U kunt de standaard weergave gebruiken als u dat wilt. U kunt ook toevoegen en verwijderen uit het dash board om het beste te voldoen aan de behoeften van uw team.
+U de standaardweergave behouden als u deze leuk vindt. Of u ook toevoegen, en verwijderen uit het dashboard om het beste te passen bij de behoeften van uw team.
 
 > [!NOTE]
-> Alle gebruikers met toegang tot de Application Insights resource delen dezelfde toepassings dashboard ervaring. Wijzigingen die door een gebruiker zijn aangebracht, wijzigen de weer gave voor alle gebruikers.
+> Alle gebruikers met toegang tot de Application Insights-bron delen dezelfde toepassingsdashboardervaring. Wijzigingen die door één gebruiker zijn aangebracht, wijzigen de weergave voor alle gebruikers.
 
-Als u terug wilt gaan naar de overzichts ervaring, selecteert u:
+Als u terug wilt navigeren naar de overzichtservaring selecteert u het volgende:
 
-![Knop overzicht](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
+![Knop Overzicht](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als u **tegel instellingen configureren** selecteert en een aangepast tijds bereik van meer dan 31 dagen instelt, wordt uw dash board niet meer dan 31 dagen aan gegevens weer gegeven, zelfs met de standaard Bewaar periode van 90 dagen. Er is momenteel geen oplossing voor dit gedrag.
+Als u **tegelinstellingen configureren** selecteert en een aangepast tijdsbereik van meer dan 31 dagen instelt, wordt uw dashboard niet langer dan 31 dagen weergegeven, zelfs niet met de standaardgegevensretentie van 90 dagen. Er is momenteel geen tijdelijke oplossing voor dit gedrag.
 
 ## <a name="next-steps"></a>Volgende stappen
 

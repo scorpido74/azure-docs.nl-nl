@@ -1,136 +1,132 @@
 ---
-title: Interactieve rapporten maken Azure Monitor voor VM's met werkmappen | Microsoft Docs
-description: Vereenvoudig complexe rapportage met vooraf gedefinieerde en aangepaste werkmappen met para meters voor Azure Monitor voor VM's.
+title: "Interactieve rapporten maken: Azure Monitor voor VM's met werkmappen"
+description: Vereenvoudig complexe rapportage met vooraf gedefinieerde en aangepaste geparameteriseerde werkmappen voor Azure Monitor voor VM's.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670668"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480450"
 ---
-# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interactieve rapporten maken Azure Monitor voor VM's met werkmappen
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interactieve rapporten maken: Azure Monitor voor VM's met werkmappen
 
-Werkmappen combi neren tekst, [logboek query's](../log-query/query-language.md), metrische gegevens en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere team leden die toegang hebben tot dezelfde Azure-resources.
+Werkmappen combineren tekst, [logboekquery's,](../log-query/query-language.md)statistieken en parameters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere teamleden die toegang hebben tot dezelfde Azure-resources.
 
 Werkmappen zijn handig voor scenario's zoals:
 
-* Het gebruik van uw virtuele machine verkennen wanneer u de metrische gegevens die van belang zijn, vooraf niet kent: CPU-gebruik, schijf ruimte, geheugen, netwerk afhankelijkheden, enzovoort. In tegens telling tot andere hulpprogram ma's voor gebruiks analyse kunt u met werkmappen meerdere soorten visualisaties en analyses combi neren, waardoor ze ideaal zijn voor dit soort vrije-vorm onderzoek.
-* Uitleg over uw team hoe een onlangs ingerichte virtuele machine wordt uitgevoerd, door metrische gegevens voor sleutel items en andere logboek gebeurtenissen weer te geven.
-* Het delen van de resultaten van een experiment voor het wijzigen van de grootte van uw virtuele machine met andere leden van uw team. U kunt de doel stellingen voor het experiment uitleggen met tekst, vervolgens elk gebruik van metrische gegevens en analyse query's weer geven die worden gebruikt voor het evalueren van het experiment, samen met duidelijke aanroep-outs voor of elke metriek boven of onder het doel ligt.
-* Rapportage van de impact van een storing in het gebruik van uw virtuele machine, het combi neren van gegevens, tekst uitleg en een bespreking van de volgende stappen om te voor komen dat er storingen in de toekomst worden vermeden.
+* Het verkennen van het gebruik van uw virtuele machine wanneer u niet weet wat de statistieken van belang op voorhand: CPU-gebruik, schijfruimte, geheugen, netwerk afhankelijkheden, enz. In tegenstelling tot andere hulpprogramma's voor gebruiksanalyse, u met werkmappen meerdere soorten visualisaties en analyses combineren, waardoor ze ideaal zijn voor dit soort verkenning en verkenning in vrije vorm.
+* Uw team uitleggen hoe een recent ingerichte VM presteert, door statistieken weer te geven voor belangrijke tellers en andere logboekgebeurtenissen.
+* Het delen van de resultaten van een formaat experiment van uw VM met andere leden van uw team. U de doelen voor het experiment met tekst uitleggen en vervolgens elke gebruiksmetrische en analysequery's weergeven die worden gebruikt om het experiment te evalueren, samen met duidelijke call-outs voor de vraag of elke statistiek boven of onder het doel was.
+* Het rapporteren van de impact van een storing op het gebruik van uw VM, het combineren van gegevens, tekstuitleg en een discussie over de volgende stappen om uitval in de toekomst te voorkomen.
 
-Azure Monitor voor VM's bevat verschillende werkmappen om aan de slag te gaan, en in de volgende tabel ziet u een overzicht.
+In de volgende tabel worden de werkmappen samengevat die Azure Monitor voor VM's bevat om u op weg te helpen.
 
 | Werkmap | Beschrijving | Bereik |
 |----------|-------------|-------|
-| Prestaties | Biedt een aanpas bare versie van onze weer gave top N-lijsten en-diagrammen in één werkmap die gebruikmaakt van alle Log Analytics prestatie meter items die u hebt ingeschakeld.| Op schaal |
-| Prestatiemeteritems | Een bovenste N grafiek weergave in een breed scala aan prestatie meter items. | Op schaal |
-| Verbindingen | Verbindingen bieden een gedetailleerde weer gave van de inkomende en uitgaande verbindingen van uw bewaakte Vm's. | Op schaal |
-| Actieve poorten | Geeft een lijst van de processen die zijn gekoppeld aan de poorten op de bewaakte Vm's en hun activiteiten in de gekozen periode. | Op schaal |
-| Open poorten | Geeft het aantal poorten open op uw bewaakte Vm's en de details van die open poorten. | Op schaal |
-| Mislukte verbindingen | Hier wordt het aantal mislukte verbindingen weer gegeven op uw bewaakte Vm's, de fout trend en als het percentage storingen in de loop van de tijd toeneemt. | Op schaal |
-| Beveiliging en audit | Een analyse van uw TCP/IP-verkeer dat rapporteert over algemene verbindingen, schadelijke verbindingen, waarbij de IP-eind punten zich globaal bevinden.  Als u alle functies wilt inschakelen, moet u de beveiligings detectie inschakelen. | Op schaal |
-| TCP Traffic | Een gerangschikt rapport voor uw bewaakte Vm's en hun verzonden, ontvangen en totale netwerk verkeer in een raster en wordt weer gegeven als een trend lijn. | Op schaal |
-| Vergelijking van verkeer | Met deze werkmappen kunt u trends in het netwerk verkeer vergelijken voor één computer of een groep machines. | Op schaal |
-| Prestaties | Biedt een aanpas bare versie van onze prestatie weergave die gebruikmaakt van alle Log Analytics prestatie meter items die u hebt ingeschakeld. | Eén VM | 
-| Verbindingen | Verbindingen bieden een gedetailleerde weer gave van de binnenkomende en uitgaande verbindingen van uw VM. | Eén VM |
+| Prestaties | Biedt een aanpasbare versie van onze toplijst- en grafiekenweergave in één werkmap die gebruikmaakt van alle prestatiemeteritems van Log Analytics die u hebt ingeschakeld.| Op schaal |
+| Prestatiemeteritems | Een top-n-grafiekweergave over een brede set prestatiemeteritems. | Op schaal |
+| Verbindingen | Verbindingen bieden een diepgaand beeld van de inkomende en uitgaande verbindingen van uw bewaakte VM's. | Op schaal |
+| Actieve poorten | Bevat een lijst met de processen die zijn gebonden aan de poorten op de bewaakte VM's en hun activiteit in het gekozen tijdsbestek. | Op schaal |
+| Open poorten | Geeft het aantal poorten dat is geopend op uw bewaakte VM's en de details op die geopende poorten. | Op schaal |
+| Mislukte verbindingen | Geef het aantal mislukte verbindingen weer op de bewaakte VM's, de fouttrend en als het percentage fouten in de loop van de tijd toeneemt. | Op schaal |
+| Beveiliging en audit | Een analyse van uw TCP/IP-verkeer dat rapporteert over algemene verbindingen, schadelijke verbindingen, waarbij de IP-eindpunten zich wereldwijd bevinden.  Om alle functies in te schakelen, moet u beveiligingsdetectie inschakelen. | Op schaal |
+| TCP Traffic | Een gerangschikt rapport voor uw bewaakte VM's en hun verzonden, ontvangen en totale netwerkverkeer in een raster en weergegeven als een trendlijn. | Op schaal |
+| Vergelijking van verkeer | Met deze werkmappen u netwerkverkeerstrends voor één machine of een groep machines vergelijken. | Op schaal |
+| Prestaties | Biedt een aanpasbare versie van onze prestatieweergave die gebruikmaakt van alle prestatiemeteritems van Log Analytics die u hebt ingeschakeld. | Eén VM | 
+| Verbindingen | Verbindingen bieden een diepgaand overzicht van de inkomende en uitgaande verbindingen van uw vm. | Eén VM |
  
-## <a name="starting-with-a-template-or-saved-workbook"></a>Beginnen met een sjabloon of opgeslagen werkmap
+## <a name="creating-a-new-workbook"></a>Een nieuwe werkmap maken
 
-Een werkmap bestaat uit secties die bestaan uit onafhankelijk Bewerk bare grafieken, tabellen, tekst en invoer besturings elementen. Voor een beter begrip van werkmappen kunt u beginnen met het openen van een sjabloon en het maken van een aangepaste werkmap door lopen. 
+Een werkmap bestaat uit secties die bestaan uit onafhankelijk bewerkbare grafieken, tabellen, tekst en invoerbesturingselementen. Om werkmappen beter te begrijpen, beginnen we met het openen van een sjabloon en lopen we door het maken van een aangepaste werkmap. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-2. Selecteer **virtual machines**.
+2. Selecteer **Virtuele machines**.
 
 3. Selecteer een VM in de lijst.
 
-4. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)** .
+4. Selecteer op de VM-pagina in de sectie **Monitoring** de optie **Insights**.
 
-5. Selecteer op de pagina voor het maken van de VM-inzichten het tabblad **prestaties** of **kaarten** en selecteer vervolgens **werkmappen weer geven** op de koppeling op de pagina. 
+5. Selecteer op de pagina VM-statistieken het tabblad **Prestaties** of **Kaarten** en selecteer **Werkmappen weergeven** in de koppeling op de pagina. Selecteer Ga naar Galerie **in**de vervolgkeuzelijst .
 
-    ![Scherm afbeelding van navigatie naar werkmappen](media/vminsights-workbooks/workbook-option-01.png)
+    ![Schermafbeelding van de vervolgkeuzelijst Werkmap](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
 
-6. Selecteer in de vervolg keuzelijst **Ga naar galerie** onder aan de lijst.
+    Hiermee wordt de werkmapgalerie gestart met een aantal vooraf gebouwde werkmappen om u op weg te helpen.
 
-    ![Scherm afbeelding van vervolg keuzelijst werkmap](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
+7. Maak een nieuwe werkmap door **Nieuw te**selecteren .
 
-    De werkmap galerie wordt gestart met een aantal vooraf gemaakte werkmappen waarmee u aan de slag kunt gaan.
+    ![Schermafbeelding van werkmapgalerie](media/vminsights-workbooks/workbook-gallery-01.png)
 
-7. We beginnen met de **standaard sjabloon**, die zich onder de kop **Quick Start**bevindt.
+## <a name="editing-workbook-sections"></a>Werkmapsecties bewerken
 
-    ![Scherm opname van werkmap galerie](media/vminsights-workbooks/workbook-gallery-01.png)
+Werkmappen hebben twee modi: **bewerkingsmodus**en **leesmodus**. Wanneer een nieuwe werkmap voor het eerst wordt gestart, wordt deze geopend in **de bewerkingsmodus.** Het toont alle inhoud van de werkmap, inclusief alle stappen en parameters die anders verborgen zijn. **De leesmodus** biedt een vereenvoudigde weergave van rapportstijl. Leesmodus u de complexiteit die ging in het maken van een rapport, terwijl nog steeds met de onderliggende mechanica slechts een paar klikken verwijderd wanneer dat nodig is voor wijziging abstract.
 
-## <a name="editing-workbook-sections"></a>Werkmap secties bewerken
+![Besturingselementen voor bewerkingsbesturingselementen voor de sectie bewerken van de sectie Voor VMs-werkmappen](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
-Werkmappen hebben twee modi: **bewerkings modus**en **Lees modus**. Wanneer de standaard sjabloon werkmap voor het eerst wordt gestart, wordt deze in de **bewerkings modus**geopend. Hierin wordt alle inhoud van de werkmap weer gegeven, inclusief alle stappen en para meters die op een andere manier verborgen zijn. De **Lees modus** toont een vereenvoudigde rapport stijl weergave. Met de Lees modus kunt u de complexiteit die is opgetreden bij het maken van een rapport, opsplitsen, terwijl de onderliggende mechanismen nog maar een paar muis klikken hebben wanneer dat nodig is voor aanpassing.
+1. Wanneer u klaar bent met het bewerken van een sectie, klikt u op **Gereed bewerken** in de linkerbenedenhoek van de sectie.
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+2. Als u een duplicaat van een sectie wilt maken, klikt u op het pictogram **Deze sectie klonen.** Het maken van dubbele secties is een geweldige manier om een query te herhalen zonder eerdere iteraties te verliezen.
 
-1. Wanneer u klaar bent met het bewerken van een sectie, klikt u op **gereed bewerken** in de linkerbenedenhoek van de sectie.
+3. Als u een sectie in een werkmap wilt omhoog wilt verplaatsen, klikt u op het pictogram **Omhoog** of **Omlaag.**
 
-2. Als u een duplicaat van een sectie wilt maken, klikt u op het pictogram **deze sectie klonen** . Het maken van dubbele secties is een uitstekende manier om een query te herhalen zonder dat vorige herhalingen verloren gaan.
+4. Als u een sectie permanent wilt verwijderen, klikt u op het pictogram **Verwijderen.**
 
-3. Als u een sectie in een werkmap omhoog wilt verplaatsen, klikt u op het pictogram **omhoog** of **omlaag** .
+## <a name="adding-text-and-markdown-sections"></a>Secties voor tekst en Markdown toevoegen
 
-4. Als u een sectie permanent wilt verwijderen, klikt u op het pictogram **verwijderen** .
+Door koppen, uitleg en commentaar toe te voegen aan uw werkmappen, u een reeks tabellen en grafieken omzetten in een verhaal. Tekstsecties in werkmappen ondersteunen de [syntaxis van markeren](https://daringfireball.net/projects/markdown/) voor tekstopmaak, zoals koppen, vetgedrukte, cursief en lijsten met opsommingstekens.
 
-## <a name="adding-text-and-markdown-sections"></a>Secties voor tekst en prijs verlaging toevoegen
+Als u een tekstsectie aan uw werkmap wilt toevoegen, gebruikt u de knop **Tekst toevoegen** onder aan de werkmap of onder aan een sectie.
 
-Door koppen, uitleg en commentaar toe te voegen aan uw werkmappen kunt u een set tabellen en grafieken omzetten in een verhalende tabel. Tekst secties in werkmappen ondersteunen de [Afkortings syntaxis](https://daringfireball.net/projects/markdown/) voor tekst opmaak, zoals kopteksten, vet, cursief en lijsten met opsommings tekens.
+## <a name="adding-query-sections"></a>Secties voor query's toevoegen
 
-Als u een tekst sectie wilt toevoegen aan uw werkmap, gebruikt u de knop **tekst toevoegen** onder aan de werkmap of aan de onderkant van een sectie.
+![Sectie Query in werkmappen](media/vminsights-workbooks/005-workbook-query-section.png)
 
-## <a name="adding-query-sections"></a>Query secties toevoegen
+Als u querysectie wilt toevoegen aan uw werkmap, gebruikt u de knop **Query toevoegen** onder aan de werkmap of onder aan een sectie.
 
-![Query sectie in werkmappen](media/vminsights-workbooks/005-workbook-query-section.png)
+Querysecties zijn zeer flexibel en kunnen worden gebruikt om vragen te beantwoorden zoals:
 
-Als u een query sectie wilt toevoegen aan uw werkmap, gebruikt u de knop **query toevoegen** onder aan de werkmap of aan de onderkant van een sectie.
+* Hoe was mijn CPU-gebruik in dezelfde periode als een toename van het netwerkverkeer?
+* Wat was de trend in de beschikbare schijfruimte in de afgelopen maand?
+* Hoeveel netwerkverbindingsfouten heeft mijn VM de afgelopen twee weken ervaren? 
 
-Query secties zijn zeer flexibel en kunnen worden gebruikt om vragen te beantwoorden zoals:
+U bent ook niet alleen beperkt tot query's vanuit de context van de virtuele machine waarvan u de werkmap hebt gestart. U query's uitvoeren op meerdere virtuele machines en Log Analytics-werkruimten, zolang u toegang hebt tot deze bronnen.
 
-* Hoe was mijn CPU-gebruik gedurende dezelfde periode als een toename in het netwerk verkeer?
-* Wat was de trend in de beschik bare schijf ruimte in de afgelopen maand?
-* Hoeveel problemen met de netwerk verbinding hebben mijn VM-ervaring in de afgelopen twee weken? 
+Gegevens opnemen van andere Log Analytics-werkruimten of uit **workspace** een specifieke Application Insights-app met behulp van de werkruimte-id. Voor meer informatie over cross-resource query's, raadpleegt u de [officiële richtlijnen](../log-query/cross-workspace-query.md).
 
-U kunt ook niet alleen een query uitvoeren vanuit de context van de virtuele machine waaruit u de werkmap hebt gestart. U kunt een query uitvoeren op meerdere virtuele machines, evenals Log Analytics werk ruimten, zolang u hiervoor toegangs rechten voor deze resources hebt.
+### <a name="advanced-analytic-query-settings"></a>Geavanceerde analytische query-instellingen
 
-Voor het toevoegen van gegevens uit andere Log Analytics werk ruimten of van een specifieke Application Insights-app met behulp van de **werk ruimte** -id. Raadpleeg de [officiële richt lijnen](../log-query/cross-workspace-query.md)voor meer informatie over query's voor meerdere resources.
+Elke sectie heeft zijn eigen geavanceerde instellingen, ![die toegankelijk zijn](media/vminsights-workbooks/006-settings.png) via de instellingen Workbooks sectie bewerken besturingselementen pictogram gelegen aan de rechterkant van de knop **Parameters toevoegen.**
 
-### <a name="advanced-analytic-query-settings"></a>Geavanceerde instellingen voor analytische query's
-
-Elke sectie heeft zijn eigen geavanceerde instellingen, die toegankelijk zijn via de sectie instellingen ![werkmappen bewerkings besturings elementen](media/vminsights-workbooks/006-settings.png) pictogram rechts van de knop **para meters toevoegen** .
-
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/007-settings-expanded.png)
+![Besturingselementen voor bewerkingsbesturingselementen voor de sectie bewerken van de sectie Voor VMs-werkmappen](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
-| **Aangepaste breedte**    | Hiermee maakt u een item een wille keurige grootte, zodat u veel items op één regel kunt aanpassen, zodat u uw grafieken en tabellen beter in uitgebreide, interactieve rapporten ordent.  |
-| **Voorwaardelijk zichtbaar** | Geef op of u de stappen wilt verbergen op basis van een para meter in de Lees modus. |
-| **Een para meter exporteren**| Een geselecteerde rij in het raster of diagram toestaan om waarden te wijzigen of zichtbaar te maken.  |
-| **Query weer geven wanneer deze niet wordt bewerkt** | Hiermee wordt de query boven de grafiek of tabel weer gegeven, zelfs in de Lees modus.
-| **De knop openen in Analytics weer geven wanneer deze niet wordt bewerkt** | Hiermee voegt u het pictogram voor een blauw analyse aan de rechter bovenhoek van de grafiek toe om toegang met één klik toe te staan.|
+| **Aangepaste breedte**    | Hiermee maakt u van een item een willekeurige grootte, zodat u veel items op één regel plaatsen, zodat u uw grafieken en tabellen beter ordenen in rijke interactieve rapporten.  |
+| **Voorwaardelijk zichtbaar** | Geef op om stappen te verbergen op basis van een parameter in de leesmodus. |
+| **Een parameter exporteren**| Laat een geselecteerde rij in het raster of de grafiek ertoe leiden dat latere stappen waarden wijzigen of zichtbaar worden.  |
+| **Query weergeven wanneer deze niet wordt bewerkt** | Hiermee geeft u de query boven de grafiek of tabel weer, zelfs in de leesmodus.
+| **Knop Openen weergeven in analytics wanneer u niet bewerkt wordt** | Hiermee voegt u het blauwe Analytics-pictogram toe aan de rechterhoek van de grafiek om toegang met één klik mogelijk te maken.|
 
-De meeste van deze instellingen zijn redelijk intuïtief, maar om **een para meter** te kunnen exporteren, is het beter om een werkmap te onderzoeken die gebruikmaakt van deze functionaliteit.
+De meeste van deze instellingen zijn vrij intuïtief, maar om te begrijpen **Een parameter exporteren** is het beter om een werkmap te onderzoeken die gebruik maakt van deze functionaliteit.
 
-Een van de vooraf gemaakte werkmappen- **TCP-verkeer**bevat informatie over verbindings gegevens van een virtuele machine.
+Een van de vooraf gebouwde werkmappen - **TCP Traffic**, biedt informatie over verbindingsstatistieken van een VM.
 
-De eerste sectie van de werkmap is gebaseerd op logboek query gegevens. De tweede sectie is ook gebaseerd op logboek query gegevens, maar als u een rij in de eerste tabel selecteert, wordt de inhoud van de grafieken interactief bijgewerkt:
+Het eerste deel van de werkmap is gebaseerd op logboekquerygegevens. De tweede sectie is ook gebaseerd op logquerygegevens, maar het selecteren van een rij in de eerste tabel zal de inhoud van de grafieken interactief bijwerken:
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![Besturingselementen voor bewerkingsbesturingselementen voor de sectie bewerken van de sectie Voor VMs-werkmappen](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
-Het gedrag is mogelijk via het gebruik van de optie **Wanneer een item is geselecteerd, een** geavanceerde instellingen voor de para meter exporteren, die zijn ingeschakeld in de logboek query van de tabel.
+Het gedrag is mogelijk door het gebruik van de **Optie Waarin een item is geselecteerd, exporteert u een geavanceerde parameterinstellingen** die zijn ingeschakeld in de logboekquery van de tabel.
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/009-settings-export.png)
+![Besturingselementen voor bewerkingsbesturingselementen voor de sectie bewerken van de sectie Voor VMs-werkmappen](media/vminsights-workbooks/009-settings-export.png)
 
-De tweede logboek query gebruikt vervolgens de geëxporteerde waarden wanneer een rij is geselecteerd voor het maken van een set waarden die vervolgens worden gebruikt door de kop en grafieken van de sectie. Als er geen rij is geselecteerd, worden de koptekst en grafieken van de sectie verborgen. 
+De tweede logboekquery maakt vervolgens gebruik van de geëxporteerde waarden wanneer een rij is geselecteerd om een set waarden te maken die vervolgens worden gebruikt door de sectiekop en grafieken. Als er geen rij is geselecteerd, worden de sectiekop en grafieken verborgen. 
 
-De verborgen para meter in de tweede sectie gebruikt bijvoorbeeld de volgende verwijzing van de rij die in het raster is geselecteerd:
+De verborgen parameter in de tweede sectie gebruikt bijvoorbeeld de volgende verwijzing uit de rij die in het raster is geselecteerd:
 
 ```
 VMConnection
@@ -139,58 +135,58 @@ VMConnection
 | summarize Sent = sum(BytesSent), Received = sum(BytesReceived) by bin(TimeGenerated, {TimeRange:grain})
 ```
 
-## <a name="adding-metrics-sections"></a>Secties met metrische gegevens toevoegen
+## <a name="adding-metrics-sections"></a>Secties voor metrische gegevens toevoegen
 
-Met metrische secties beschikt u over volledige toegang tot het opnemen van Azure Monitor metrische gegevens in uw interactieve rapporten. In Azure Monitor voor VM's bevatten de vooraf gemaakte werkmappen meestal analytische query gegevens in plaats van metrische gegevens.  U kunt ervoor kiezen om werkmappen met metrische gegevens te maken, zodat u optimaal kunt profiteren van het beste van beide functies op één plek. U hebt ook de mogelijkheid om de metrische gegevens van resources op te halen in een van de abonnementen waartoe u toegang hebt.
+Metrische gegevens geven u volledige toegang tot azure monitor-metrische gegevens in uw interactieve rapporten. In Azure Monitor voor VM's bevatten de vooraf gebouwde werkmappen doorgaans analytische querygegevens in plaats van metrische gegevens.  U ervoor kiezen om werkmappen met metrische gegevens te maken, zodat u optimaal profiteren van het beste van beide functies op één plek. U hebt ook de mogelijkheid om metrische gegevens op te halen uit bronnen in een van de abonnementen waartoe u toegang hebt.
 
-Hier volgt een voor beeld van gegevens van virtuele machines die worden opgehaald in een werkmap om een raster visualisatie van CPU-prestaties te bieden:
+Hier is een voorbeeld van virtuele machinegegevens die in een werkmap worden getrokken om een rastervisualisatie van CPU-prestaties te bieden:
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/010-metrics-grid.png)
+![Besturingselementen voor bewerkingsbesturingselementen voor de sectie bewerken van de sectie Voor VMs-werkmappen](media/vminsights-workbooks/010-metrics-grid.png)
 
-## <a name="adding-parameter-sections"></a>Parameter secties toevoegen
+## <a name="adding-parameter-sections"></a>Secties voor parameters toevoegen
 
-Met de para meters van de werkmap kunt u waarden in de werkmap wijzigen zonder de query-of tekst secties hand matig te bewerken. Dit betekent dat het niet nodig is om inzicht te krijgen in de onderliggende analyse query taal en de potentiële doel groep van rapporten op basis van een werkmap aanzienlijk uit te breiden.
+Met werkmapparameters u waarden in de werkmap wijzigen zonder dat u de query- of tekstsecties handmatig hoeft te bewerken. Dit verwijdert de vereiste om de onderliggende analytics-querytaal te begrijpen en vergroot de potentiële doelgroep van rapportage op basis van werkmap sterk.
 
-De waarden van para meters worden vervangen in de secties query, tekst of andere para meters door de naam van de para meter tussen accolades, zoals ``{parameterName}``, te plaatsen. Namen van para meters zijn beperkt tot vergelijk bare regels als Java script-id's, alfabetische tekens of onderstrepings tekens, gevolgd door een alfanumeriek of onderstrepings teken. Zo is **a1** toegestaan, maar **1a** is niet toegestaan.
+De waarden van parameters worden vervangen in query-, tekst- of andere parametersecties door de naam van de parameter in accolades te plaatsen, zoals ``{parameterName}``. Parameternamen zijn beperkt tot vergelijkbare regels als JavaScript-id's, alfabetische tekens of underscores, gevolgd door alfanumerieke tekens of underscores. **A1** is bijvoorbeeld toegestaan, maar **1a** is niet toegestaan.
 
-Para meters zijn lineair, vanaf de bovenkant van een werkmap en doorlopend naar latere stappen.  Para meters die later in een werkmap zijn gedeclareerd, kunnen para meters overschrijven die eerder zijn gedeclareerd. Op deze manier kunt u ook para meters gebruiken om toegang te krijgen tot de waarden van eerder gedefinieerde para meters. Binnen de stap zelf van een para meter zijn para meters ook lineair, van links naar rechts, waarbij para meters aan de rechter kant kunnen afhankelijk zijn van een para meter die eerder in diezelfde stap is gedeclareerd.
+Parameters zijn lineair, vanaf de bovenkant van een werkmap en stromen naar latere stappen.  Parameters die later in een werkmap worden gedeclareerd, kunnen parameters overschrijven die eerder zijn gedeclareerd. Hiermee kunnen ook parameters die query's gebruiken om toegang te krijgen tot de waarden van eerder gedefinieerde parameters. Binnen de stap van een parameter zelf zijn parameters ook lineair, van links naar rechts, waarbij parameters rechts kunnen afhangen van een parameter die eerder in diezelfde stap is gedeclareerd.
  
-Er zijn vier verschillende typen para meters die momenteel worden ondersteund:
+Er zijn vier verschillende soorten parameters, die momenteel worden ondersteund:
 
 |                  |      |
 | ---------------- |:-----|
-| **Tekst**    | Hiermee kan de gebruiker een tekstvak bewerken en kunt u optioneel een query opgeven om de standaard waarde in te vullen. |
-| **Vervolg keuzelijst** | Hiermee kan de gebruiker kiezen uit een reeks waarden. |
-| **Tijds bereik kiezer**| Hiermee kan de gebruiker kiezen uit een vooraf gedefinieerde set waarden voor tijds bereik of een aangepaste periode kiezen.|
-| **Resource kiezer** | Hiermee kan de gebruiker kiezen uit de resources die zijn geselecteerd voor de werkmap.|
+| **Tekst**    | Hiermee kan de gebruiker een tekstvak bewerken en u optioneel een query leveren om de standaardwaarde in te vullen. |
+| **Vervolgkeuzelijst** | Hiermee kan de gebruiker kiezen uit een set waarden. |
+| **Tijdbereikkiezer**| Hiermee kan de gebruiker kiezen uit een vooraf gedefinieerde set tijdbereikwaarden of kiezen uit een aangepast tijdsbereik.|
+| **Resourcekiezer** | Hiermee kan de gebruiker kiezen uit de bronnen die voor de werkmap zijn geselecteerd.|
 
-### <a name="using-a-text-parameter"></a>Een tekst parameter gebruiken
+### <a name="using-a-text-parameter"></a>Een tekstparameter gebruiken
 
-De waarde die een gebruiker in het tekstvak typt, wordt rechtstreeks in de query vervangen zonder een Escape of aanhalings teken. Als de waarde die u nodig hebt, een teken reeks is, moet de query aanhalings tekens hebben rondom de para meter (bijvoorbeeld **{para meter}** ).
+De waarde die een gebruiker in het tekstvak typt, wordt direct in de query vervangen, zonder te ontsnappen of te citeren. Als de waarde die u nodig hebt een tekenreeks is, moet de query aanhalingstekens rond de parameter hebben (zoals **{parameter}'**).
 
-Met de para meter text kan de waarde in een tekstvak overal worden gebruikt. Dit kan een tabel naam, kolom naam, functie naam, operator, enzovoort zijn.  Het type van de tekst parameter heeft de instelling **standaard waarde ophalen uit Analytics query**, waarmee de auteur van de werkmap een query kan gebruiken om de standaard waarde voor het tekstvak te vullen.
+Met de parameter tekst kan de waarde in een tekstvak overal worden gebruikt. Het kan een tabelnaam, kolomnaam, functienaam, operator, enz.  Het tekstparametertype heeft een instelling **Standaardwaarde ophalen van analysequery**, waarmee de auteur van de werkmap een query kan gebruiken om de standaardwaarde voor dat tekstvak in te vullen.
 
-Wanneer u de standaard waarde van een logboek query gebruikt, wordt alleen de eerste waarde van de eerste rij (rij 0, kolom 0) als de standaard waarde gebruikt. Daarom is het raadzaam om uw query te beperken tot slechts één rij en één kolom. Alle andere gegevens die door de query worden geretourneerd, worden genegeerd. 
+Wanneer u de standaardwaarde van een logboekquery gebruikt, wordt alleen de eerste waarde van de eerste rij (rij 0, kolom 0) gebruikt als standaardwaarde. Daarom is het raadzaam om uw query te beperken tot slechts één rij en één kolom. Alle andere gegevens die door de query worden geretourneerd, worden genegeerd. 
 
-Welke waarde de query retourneert, wordt direct vervangen zonder Escape of aanhalings tekens. Als de query geen rijen retourneert, is het resultaat van de para meter een lege teken reeks (als de para meter niet is vereist) of niet gedefinieerd (als de para meter is vereist).
+Welke waarde de query retourneert, wordt direct vervangen door geen ontkomen of aanhalen. Als de query geen rijen retourneert, is het resultaat van de parameter een lege tekenreeks (als de parameter niet vereist is) of ongedefinieerd (als de parameter vereist is).
 
-### <a name="using-a-drop-down"></a>Een vervolg keuzelijst gebruiken
+### <a name="using-a-drop-down"></a>Een vervolgkeuzelijst gebruiken
 
-Met het parameter type dropdown kunt u een vervolg keuzelijst maken, waardoor een of meer waarden kunnen worden geselecteerd.
+Met het parametertype vervolgkeuzelijst u een vervolgkeuzebesturingselement maken, zodat u een of meerdere waarden selecteren.
 
-De vervolg keuzelijst wordt gevuld met een logboek query of JSON. Als de query één kolom retourneert, zijn de waarden in die kolom zowel de waarde als het label in het vervolg keuzemenu. Als de query twee kolommen retourneert, is de eerste kolom de waarde en de tweede kolom is het label dat in de vervolg keuzelijst wordt weer gegeven. Als de query drie kolommen retourneert, wordt de derde kolom gebruikt om de standaard selectie in die vervolg keuzelijst aan te geven. Deze kolom kan elk wille keurig type zijn, maar het eenvoudigste is het gebruik van BOOL of numeric-typen, waarbij 0 false is en 1 True is.
+De vervolgkeuzelijst wordt ingevuld door een logboekquery of JSON. Als de query één kolom retourneert, zijn de waarden in die kolom zowel de waarde als het label in het vervolgkeuzebesturingselement. Als de query twee kolommen retourneert, is de eerste kolom de waarde en is de tweede kolom het label dat wordt weergegeven in de vervolgkeuzelijst. Als de query drie kolommen retourneert, wordt de derde kolom gebruikt om de standaardselectie in die vervolgkeuzelijst aan te geven. Deze kolom kan elk type zijn, maar de eenvoudigste is het gebruik van ol of numerieke typen, waarbij 0 vals is en 1 waar is.
 
-Als de kolom een teken reeks type is, wordt Null/lege teken reeks als onwaar beschouwd en wordt een andere waarde als True beschouwd. Voor vervolg keuzelijsten met één selectie wordt de eerste waarde met de waarde True gebruikt als de standaard selectie.  Voor vervolg keuzelijsten met meerdere selecties worden alle waarden met de waarde True als de standaard geselecteerde set gebruikt. De items in de vervolg keuzelijst worden weer gegeven in de volg orde waarin de query rijen heeft geretourneerd. 
+Als de kolom een tekenreekstype is, wordt null/lege tekenreeks als onwaar beschouwd en wordt elke andere waarde als waar beschouwd. Voor enkele selectievervolgkeuzewaarden wordt de eerste waarde met een werkelijke waarde gebruikt als standaardselectie.  Voor meerdere vervolgkeuzevervolgkeuzewaarden worden alle waarden met een werkelijke waarde gebruikt als de standaardgeselecteerde set. De items in de vervolgkeuzelijst worden weergegeven in de volgorde waarin de query rijen heeft geretourneerd. 
 
-Laten we eens kijken naar de para meters die aanwezig zijn in het overzichts rapport verbindingen. Klik op het bewerkings symbool naast **richting**.
+Laten we eens kijken naar de parameters die aanwezig zijn in het rapport Verbindingenoverzicht. Klik op het bewerkingssymbool naast **Richting**.
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![Besturingselementen voor bewerkingsbesturingselementen voor de sectie bewerken van de sectie Voor VMs-werkmappen](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
-Hiermee wordt de menu opdracht **para meter bewerken** geopend.
+Hiermee wordt het **menu-item Parameter bewerken** gestart.
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+![Besturingselementen voor bewerkingsbesturingselementen voor de sectie bewerken van de sectie Voor VMs-werkmappen](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
-Met de JSON kunt u een wille keurige tabel genereren die is gevuld met inhoud. De volgende JSON genereert bijvoorbeeld twee waarden in de vervolg keuzelijst:
+Met de JSON u een willekeurige tabel genereren die is gevuld met inhoud. De volgende JSON genereert bijvoorbeeld twee waarden in de vervolgkeuzelijst:
 
 ```
 [
@@ -199,7 +195,7 @@ Met de JSON kunt u een wille keurige tabel genereren die is gevuld met inhoud. D
 ]
 ```
 
-Een meer van toepassing voor beeld is het gebruik van een vervolg keuzelijst voor het kiezen van een aantal prestatie meter items op naam:
+Een meer toepasselijk voorbeeld is het gebruik van een vervolgkeuzelijst om te kiezen uit een set prestatiemeteritems op naam:
 
 ```
 Perf
@@ -210,42 +206,42 @@ Perf
 
 De query geeft de resultaten als volgt weer:
 
-![De vervolg keuzelijst voor prestatie meter items](media/vminsights-workbooks/013-workbook-edit-parameter-perf-counters.png)
+![Perf teller dropdown](media/vminsights-workbooks/013-workbook-edit-parameter-perf-counters.png)
 
-De vervolg keuzelijst is uiterst krachtige hulp middelen voor het aanpassen en maken van interactieve rapporten.
+Drop-downs zijn ongelooflijk krachtige tools voor het aanpassen en maken van interactieve rapporten.
 
-### <a name="time-range-parameters"></a>Tijds bereik parameters
+### <a name="time-range-parameters"></a>Parameters voor tijdbereik
 
-Hoewel u uw eigen para meter voor een aangepast tijds bereik kunt maken via het parameter type vervolg keuzelijst, kunt u ook het parameter type out-of-Box time-out gebruiken als u niet dezelfde mate van flexibiliteit nodig hebt. 
+Hoewel u uw eigen parameter voor het aangepaste tijdbereik maken via het type vervolgkeuzeparameter, u ook het parametertype out-of-box-tijdbereik gebruiken als u niet dezelfde mate van flexibiliteit nodig hebt. 
 
-De para meters voor het tijds bereik hebben 15 standaardbereiken van vijf minuten tot de laatste 90 dagen. Er is ook een optie voor het toestaan van aangepaste tijds bereik selectie, waarmee de operator van het rapport expliciete start-en stop waarden voor het tijds bereik kan kiezen.
+Parametertypen voor tijdsbereik hebben 15 standaardbereiken die van vijf minuten tot de laatste 90 dagen gaan. Er is ook een optie om aangepaste tijdbereikselectie toe te staan, waardoor de operator van het rapport expliciete start- en stopwaarden voor het tijdsbereik kan kiezen.
 
-### <a name="resource-picker"></a>Resource kiezer
+### <a name="resource-picker"></a>Resourcekiezer
 
-Met het parameter type voor de resource kiezer kunt u het bereik van uw rapport beperken tot bepaalde typen resources. Een voor beeld van een vooraf gemaakte werkmap die gebruikmaakt van het type resource kiezer, is de werk blad **prestaties** .
+Het parametertype resourcekiezer geeft u de mogelijkheid om uw rapport te gebruiken voor bepaalde typen resources. Een voorbeeld van een vooraf gebouwde werkmap die gebruikmaakt van het type resourcekiezer, is de werkmap **Prestaties.**
 
-![Vervolg keuzelijst voor werk ruimten](media/vminsights-workbooks/014-workbook-edit-parameter-workspaces.png)
+![Vervolgkeuzelijst voor werkruimten](media/vminsights-workbooks/014-workbook-edit-parameter-workspaces.png)
 
 ## <a name="saving-and-sharing-workbooks-with-your-team"></a>Werkmappen opslaan en delen met uw team
 
-Werkmappen worden opgeslagen in een Log Analytics werk ruimte of een bron van een virtuele machine, afhankelijk van de manier waarop u toegang hebt tot de werkmappen-galerie. De werkmap kan worden opgeslagen in de **mijn rapporten** sectie die privé is van u of in de sectie **gedeelde rapporten** die toegankelijk is voor iedereen die toegang heeft tot de resource. Als u alle werkmappen in de resource wilt weer geven, klikt u op de knop **openen** in de actie balk.
+Werkmappen worden opgeslagen in een Logboekanalysewerkruimte of een bron voor virtuele machines, afhankelijk van hoe u toegang krijgt tot de werkmappengalerie. De werkmap kan worden opgeslagen in de sectie **Mijn rapporten** die privé voor u is of in de sectie **Gedeelde rapporten** die toegankelijk is voor iedereen die toegang heeft tot de bron. Als u alle werkmappen in de resource wilt weergeven, klikt u op de knop **Openen** op de actiebalk.
 
-Een werkmap delen die momenteel deel uitmaken van **mijn rapporten**:
+Een werkmap delen die momenteel in **Mijn rapporten**staat:
 
-1. Klik op **openen** in de actie balk
-2. Klik op de '... ' Naast de werkmap die u wilt delen
-3. Klik op **verplaatsen naar gedeelde rapporten**.
+1. Klik **op Openen** op de actiebalk
+2. Klik op de "..." knop naast de werkmap die u wilt delen
+3. Klik **op Verplaatsen naar gedeelde rapporten**.
 
-Als u een werkmap met een koppeling of via e-mail wilt delen, klikt u op **delen** in de actie balk. Houd er rekening mee dat ontvangers van de koppeling toegang nodig hebben tot deze resource in de Azure Portal om de werkmap weer te geven. Voor het maken van bewerkingen moeten ontvangers ten minste Inzender machtigingen hebben voor de resource.
+Als u een werkmap wilt delen met een koppeling of via e-mail, klikt u op **Delen** in de actiebalk. Houd er rekening mee dat ontvangers van de koppeling toegang tot deze bron in de Azure-portal nodig hebben om de werkmap te bekijken. Om bewerkingen uit te voeren, hebben ontvangers ten minste inzendermachtigingen voor de bron nodig.
 
-Een koppeling naar een werkmap vastmaken aan een Azure-dash board:
+Een koppeling aan een werkmap vastmaken aan een Azure-dashboard:
 
-1. Klik op **openen** in de actie balk
-2. Klik op de '... ' Naast de werkmap die u wilt vastmaken
+1. Klik **op Openen** op de actiebalk
+2. Klik op de "..." knop naast de werkmap die u wilt vastmaken
 3. Klik op **Vastmaken aan dashboard**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure-VM-prestaties weer geven](vminsights-performance.md)om beperkingen en algemene VM-prestaties te identificeren.
+- Zie [Azure VM Performance weergeven](vminsights-performance.md)om beperkingen en algemene VM-prestaties te identificeren.
 
-- Zie [Azure monitor voor VM's kaart weer geven](vminsights-maps.md)voor meer informatie over gedetecteerde toepassings afhankelijkheden.
+- Zie [Azure Monitor for VM-toewijzing weergeven voor](vminsights-maps.md)meer informatie over gedetecteerde toepassingsafhankelijkheden.

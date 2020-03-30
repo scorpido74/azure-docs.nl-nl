@@ -1,79 +1,79 @@
 ---
-title: 'Azure VPN Gateway: waarschuwingen voor diagnostische logboek gebeurtenissen configureren'
-description: Stappen voor het configureren van waarschuwingen voor gebeurtenissen van VPN Gateway Diagnostische logboeken
+title: 'Azure VPN-gateway: waarschuwingen configureren voor diagnostische logboekgebeurtenissen'
+description: Stappen om waarschuwingen te configureren voor diagnostische logboekgebeurtenissen van VPN-gateway
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: eb8f0204771b204af740c4ddc8e359499520a012
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b587fa31f1aa42e8dbd5a9d2430c0117891f2091
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239789"
 ---
-# <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Waarschuwingen instellen voor diagnostische logboek gebeurtenissen van VPN Gateway
+# <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Waarschuwingen instellen voor diagnostische logboekgebeurtenissen van VPN Gateway
 
-Dit artikel helpt u bij het instellen van waarschuwingen op basis van diagnostische logboek gebeurtenissen van Azure VPN Gateway met behulp van Azure Log Analytics. 
+Met dit artikel u waarschuwingen instellen op basis van diagnostische logboekgebeurtenissen van Azure VPN Gateway met Azure Log Analytics. 
 
 De volgende logboeken zijn beschikbaar in Azure:
 
 |***Naam*** | ***Beschrijving*** |
 |---        | ---               |
-|GatewayDiagnosticLog | Bevat Diagnostische logboeken voor configuratie gebeurtenissen van de gateway, primaire wijzigingen en onderhouds gebeurtenissen |
-|TunnelDiagnosticLog | Bevat status wijzigings gebeurtenissen voor de tunnel. Tunnel Connect/Disconnect-gebeurtenissen hebben een samenvattings reden voor de status wijziging, indien van toepassing |
-|RouteDiagnosticLog | Registreert wijzigingen aan statische routes en BGP-gebeurtenissen die optreden op de gateway |
-|IKEDiagnosticLog | Registreert IKE-besturings berichten en gebeurtenissen op de gateway |
-|P2SDiagnosticLog | Registreert Point-to-site Control-berichten en gebeurtenissen op de gateway |
+|GatewayDiagnosticLog | Bevat diagnostische logboeken voor gatewayconfiguratiegebeurtenissen, primaire wijzigingen en onderhoudsgebeurtenissen |
+|TunnelDiagnosticLog | Bevat wijzigingsgebeurtenissen in de tunnelstatus. Gebeurtenissen tussen tunnelverbinding en verbinding maken hebben een samengevatte reden voor de statuswijziging indien van toepassing |
+|RouteDiagnoslog | Registreert wijzigingen in statische routes en BGP-gebeurtenissen die zich voordoen op de gateway |
+|IKEDiagnosticLog | Ike-controleberichten en gebeurtenissen op de gateway logboeken |
+|P2SDiagnosticLog | Logt point-to-site controleberichten en gebeurtenissen op de gateway |
 
-## <a name="setup"></a>Waarschuwingen instellen
+## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>Waarschuwingen instellen in de Azure-portal
 
-Met de volgende voorbeeld stappen wordt een waarschuwing gemaakt voor een verbindings gebeurtenis waarbij een site-naar-site-VPN-tunnel is betrokken:
+In de volgende voorbeeldstappen wordt een waarschuwing gegenereerd voor een gebeurtenis waarbij een VPN-tunnel van site-to-site wordt betrokken:
 
 
-1. Zoek in het Azure Portal naar **log Analytics** onder **alle services** en selecteer **log Analytics werk ruimten**.
+1. Zoek in de Azure-portal naar **Log Analytics** onder **Alle services** en selecteer **Log Analytics-werkruimten**.
 
-   ![Selecties voor het naar Log Analytics werk ruimten gaan](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Create")
+   ![Selecties voor het gaan naar Log Analytics-werkruimten](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Maken")
 
-2. Selecteer **maken** op de pagina **log Analytics** .
+2. Selecteer **Maken** op de pagina **Log Analytics.**
 
-   ![Pagina Log Analytics met de knop maken](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Selecteer")
+   ![Pagina Logboekanalyse met knop Maken](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Selecteer")
 
-3. Selecteer **nieuwe maken** en vul de details in.
+3. Selecteer **Nieuw maken** en vul de details in.
 
-   ![Details voor het maken van een Log Analytics-werk ruimte](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Selecteer")
+   ![Gegevens voor het maken van een Log Analytics-werkruimte](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Selecteer")
 
-4. Zoek uw VPN-gateway op de Blade **bewaking** > **Diagnostische instellingen** .
+4. Zoek uw VPN-gateway op het blade met de**instellingen voor monitordiagnostiek.** **Monitor** > 
 
-   ![Selecties voor het zoeken naar de VPN-gateway in Diagnostische instellingen](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Selecteer")
+   ![Selecties voor het vinden van de VPN-gateway in diagnostische instellingen](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Selecteer")
 
-5. Als u Diagnostische gegevens wilt inschakelen, dubbelklikt u op de gateway en selecteert u vervolgens **Diagnostische gegevens inschakelen**.
+5. Als u diagnostische gegevens wilt inschakelen, dubbelklikt u op de gateway en selecteert u **Diagnostische gegevens inschakelen**.
 
-   ![Selecties voor het inschakelen van diagnostische gegevens](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Selecteer")
+   ![Selecties voor het inschakelen van diagnostiek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Selecteer")
 
-6. Vul de details in en zorg ervoor dat **verzenden naar log Analytics** en **TunnelDiagnosticLog** zijn geselecteerd. Kies de Log Analytics-werk ruimte die u in stap 3 hebt gemaakt.
+6. Vul de gegevens in en zorg ervoor dat **Send to Log Analytics** en **TunnelDiagnosticLog** zijn geselecteerd. Kies de Logboekanalysewerkruimte die u in stap 3 hebt gemaakt.
 
-   ![Geselecteerde selectie vakjes](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Selecteer")
+   ![Geselecteerde selectievakjes](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Selecteer")
 
    > [!NOTE]
-   > Het kan een paar uur duren voordat de gegevens in eerste instantie worden weer gegeven.
+   > Het kan een paar uur duren voordat de gegevens in eerste instantie worden weergegeven.
 
-7. Ga naar het overzicht van de resource van de virtuele netwerk gateway en selecteer **waarschuwingen** op het tabblad **bewaking** . Maak vervolgens een nieuwe waarschuwings regel of bewerk een bestaande waarschuwings regel.
+7. Ga naar het overzicht voor de bron van de virtuele netwerkgateway en selecteer **Waarschuwingen** op het tabblad **Controle.** Maak vervolgens een nieuwe waarschuwingsregel of bewerk een bestaande waarschuwingsregel.
 
-   ![Selecties voor het maken van een nieuwe waarschuwings regel](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Selecteer")
+   ![Selecties voor het maken van een nieuwe waarschuwingsregel](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Selecteer")
 
-   ![punt-naar-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Selecteer")
-8. Selecteer de Log Analytics-werk ruimte en de resource.
+   ![point-to-site](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Selecteer")
+8. Selecteer de werkruimte Log Analytics en de bron.
 
-   ![Selecties voor werk ruimte en resource](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Selecteer")
+   ![Selecties voor werkruimte en resource](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Selecteer")
 
-9. Selecteer **aangepaste logboek zoekactie** als de signaal logica onder **voor waarde toevoegen**.
+9. Selecteer **Aangepaste logboekzoekopdracht** als de signaallogica onder **Voorwaarde toevoegen**.
 
-   ![Selecties voor een aangepaste zoek opdracht in Logboeken](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Selecteer")
+   ![Selecties voor een aangepaste logboekzoekopdracht](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Selecteer")
 
-10. Voer in het tekstvak **Zoekquery** te volgende query in. Vervang de waarden in < > en TimeGenerated naar wens.
+10. Voer in het tekstvak **Zoekquery** te volgende query in. Vervang de waarden in <> en TimeGenerated naar gelang van het geval.
 
     ```
     AzureDiagnostics
@@ -86,18 +86,115 @@ Met de volgende voorbeeld stappen wordt een waarschuwing gemaakt voor een verbin
     | sort by TimeGenerated asc
     ```
 
-    Stel de drempel waarde in op 0 en selecteer **gereed**.
+    Stel de drempelwaarde in op 0 en selecteer **Gereed**.
 
-    ![Een query invoeren en een drempel waarde selecteren](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Selecteer")
+    ![Een query invoeren en een drempelwaarde selecteren](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Selecteer")
 
-11. Selecteer op de pagina **regel maken** de optie **Nieuw maken** onder de sectie **actie groepen** . Vul de details in en selecteer **OK**.
+11. Selecteer **op** de pagina Regel maken de optie **Nieuw maken** onder de sectie **ACTIEGROEPEN.** Vul de details in en selecteer **OK**.
 
-    ![Details voor een nieuwe actie groep](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Selecteer")
+    ![Details voor een nieuwe actiegroep](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Selecteer")
 
-12. Vul op de pagina **regel maken** de details in voor het **aanpassen van acties** en zorg ervoor dat de juiste naam wordt weer gegeven in de sectie naam van de **actie groep** . Selecteer **waarschuwings regel maken** om de regel te maken.
+12. Vul op de pagina **Regel maken** de details voor **Acties aanpassen** in en controleer of de juiste naam wordt weergegeven in de sectie **ACTIEGROEPNAAM.** Selecteer **Waarschuwingsregel maken** om de regel te maken.
 
     ![Selecties voor het maken van een regel](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Selecteer")
 
+## <a name="set-up-alerts-by-using-powershell"></a><a name="setuppowershell"></a>Waarschuwingen instellen met PowerShell
+
+In de volgende voorbeeldstappen wordt een waarschuwing gemaakt voor een verbinding waarbij een vpn-tunnel van site-to-site wordt betrokken.
+
+1. Maak een log analytics-werkruimte:
+
+   ```powershell
+   $Location           = 'westus2'
+   $ResourceGroupName  = 'TestRG1'
+   $Sku                = 'pergb2018'
+   $WorkspaceName      = 'LogAnalyticsWS123'
+
+   New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku $Sku -ResourceGroupName $ResourceGroupName
+   ```
+
+2. Schakel diagnostische gegevens in voor de VPN-gateway:
+
+   ```powershell
+   $ResourceGroupName  = 'TestRG1'
+   $VpnGatewayName     = 'VNet1GW'
+   $WorkspaceName      = 'LogAnalyticsWS123'
+
+   $VpnGateway         = Get-AzVirtualNetworkGateway -Name $VpnGatewayName -ResourceGroupName $ResourceGroupName
+   $Workspace          = Get-AzOperationalInsightsWorkspace -Name $WorkspaceName -ResourceGroupName $ResourceGroupName
+
+   Set-AzDiagnosticSetting `
+       -Name 'VPN tunnel' `
+       -ResourceId $VpnGateway.Id `
+       -WorkspaceId $Workspace.ResourceId `
+       -Enabled $true `
+       -Category 'TunnelDiagnosticLog'
+   ```
+
+3. Maak een actiegroep.
+
+   Met deze code wordt een actiegroep gegenereerd die een e-mailmelding verzendt wanneer een waarschuwing wordt geactiveerd:
+
+   ```powershell
+   $ActionGroupName            = 'EmailAdmins'   # Max. 60 characters long
+   $ActionGroupShortName       = 'EmailAdmins'   # Max. 12 characters long
+   $ActionGroupReceiverName    = 'My receiver Name'
+   $EmailAddress               = 'xyz@contoso.com'
+   $ResourceGroupName          = 'TestRG1'
+
+   $ActionGroupReceiver = New-AzActionGroupReceiver -Name $ActionGroupReceiverName -UseCommonAlertSchema -EmailReceiver -EmailAddress $EmailAddress
+
+   Set-AzActionGroup `
+      -ResourceGroupName $ResourceGroupName `
+      -Name $ActionGroupName `
+      -ShortName $ActionGroupShortName `
+      -Receiver @($ActionGroupReceiver)
+   ```
+
+4. Maak een waarschuwingsregel op basis van een aangepaste logboekzoekopdracht:
+
+   ```powershell
+   $ActionGroupName    = 'EmailAdmins'
+   $EmailSubject       = 'Redmond VPN tunnel is disconnected'
+   $Location           = 'westus2'
+   $RemoteIp           = '104.42.209.46'
+   $ResourceGroupName  = 'TestRG1'
+   $VpnGatewayName     = 'VNet1GW'
+   $WorkspaceName      = 'LogAnalyticsWS123'
+
+   $VpnGateway         = Get-AzVirtualNetworkGateway -Name $VpnGatewayName -ResourceGroupName $ResourceGroupName
+   $Workspace          = Get-AzOperationalInsightsWorkspace -Name $WorkspaceName -ResourceGroupName $ResourceGroupName
+
+   $Query = @"
+   AzureDiagnostics |
+   where Category == "TunnelDiagnosticLog" |
+   where TimeGenerated > ago(5m) |
+   where _ResourceId == tolower("$($VpnGateway.id)") |
+   where remoteIP_s == "$($RemoteIp)" |
+   where status_s == "Disconnected" |
+   project TimeGenerated, OperationName, instance_s, Resource, ResourceGroup, _ResourceId |
+   sort by TimeGenerated asc
+   "@
+
+   $Source             = New-AzScheduledQueryRuleSource -Query $Query -DataSourceId $Workspace.ResourceId
+   $Schedule           = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes 5 -TimeWindowInMinutes 5
+   $TriggerCondition   = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator 'GreaterThan' -Threshold 0
+
+   $ActionGroup        = Get-AzActionGroup -ResourceGroupName $ResourceGroupName -Name $ActionGroupName
+   $AznsActionGroup    = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup $ActionGroup.Id -EmailSubject $EmailSubject
+   $AlertingAction     = New-AzScheduledQueryRuleAlertingAction -AznsAction $AznsActionGroup -Severity '1' -Trigger $TriggerCondition
+
+   New-AzScheduledQueryRule `
+       -ResourceGroupName $ResourceGroupName `
+       -Location $Location `
+       -Action $AlertingAction `
+       -Enabled $true `
+       -Description 'The tunnel between Azure and Redmond with IP address 104.42.209.46 is disconnected' `
+       -Schedule $Schedule `
+       -Source $Source `
+       -Name 'The Azure to Redmond tunnel is disconnected'
+   ```
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [waarschuwingen instellen voor VPN gateway metrische gegevens](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)voor het configureren van waarschuwingen voor metrische gegevens van de tunnel.
+Zie [Waarschuwingen instellen op VPN Gateway-statistieken](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)voor het configureren van waarschuwingen voor tunnelstatistieken.

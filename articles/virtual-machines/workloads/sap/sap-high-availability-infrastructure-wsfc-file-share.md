@@ -1,6 +1,6 @@
 ---
-title: Azure-infra structuur voor SAP ASCS/SCS HA met WSFC-& bestands share | Microsoft Docs
-description: Azure-infrastructuur voorbereiding voor SAP hoge Beschik baarheid met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties
+title: Azure-infrastructuur voor SAP ASCS/SCS HA met WSFC-&delen van bestanden | Microsoft Documenten
+description: Azure-infrastructuurvoorbereiding voor SAP-hoge beschikbaarheid met behulp van een Windows-failovercluster en bestandsshare voor SAP ASCS/SCS-exemplaren
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -17,13 +17,13 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4abae94ded92aca075fcb41a7cd42491e92d41d6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77591537"
 ---
-# <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties
+# <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infrastructuur voorbereiden op hoge beschikbaarheid van SAP met behulp van een Windows-failovercluster en bestandsshare voor SAP ASCS/SCS-exemplaren
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -99,7 +99,7 @@ ms.locfileid: "77591537"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Multi-SID-configuratie met hoge Beschik baarheid van SAP)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID configuratie met hoge beschikbaarheid)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -207,73 +207,73 @@ ms.locfileid: "77591537"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-In dit artikel worden de voorbereidende stappen voor Azure-infra structuur beschreven die nodig zijn voor het installeren en configureren van hoogwaardige SAP-systemen op een Windows Server failover clustering cluster (WSFC) met scale-out bestands share als optie voor het clusteren van SAP ASCS/SCS-instanties.
+In dit artikel worden de voorbereidende stappen voor Azure-infrastructuur beschreven die nodig zijn voor het installeren en configureren van SAP-systemen met hoge beschikbaarheid op een WSFC (Failover clustering cluster (Windows Server Failover), waarbij schaal-out bestandsshare wordt gebruikt als een optie voor het clusteren van SAP ASCS/SCS-exemplaren.
 
 ## <a name="prerequisite"></a>Vereiste
 
-Lees het volgende artikel voordat u de installatie start:
+Voordat u de installatie start, controleert u het volgende artikel:
 
-* [Architectuur handleiding: cluster SAP ASCS/SCS instances op een Windows-failovercluster met behulp van de bestands share][sap-high-availability-guide-wsfc-file-share]
+* [Architectuurhandleiding: CLUSTER SAP ASCS/SCS-exemplaren op een Windows-failovercluster met bestandsshare][sap-high-availability-guide-wsfc-file-share]
 
 
 ## <a name="host-names-and-ip-addresses"></a>Hostnamen en IP-adressen
 
-| Rol van virtuele hostnaam | Naam van virtuele host | Statisch IP-adres | Beschikbaarheidsset |
+| Rol virtuele hostnaam | Virtuele hostnaam | Statisch IP-adres | Beschikbaarheidsset |
 | --- | --- | --- | --- |
-| Eerste cluster knooppunt ASCS/SCS-cluster | ascs-1 | 10.0.6.4 | ascs-as |
-| Tweede cluster knooppunt ASCS/SCS-cluster | ascs-2 | 10.0.6.5 | ascs-as |
-| Cluster netwerk naam |ascs-cl | 10.0.6.6 | N.v.t. |
-| Naam van SAP PR1 ASCS-cluster netwerk |PR1-ascs | 10.0.6.7 | N.v.t. |
+| Eerste clusterknooppunt ASCS/SCS-cluster | ascs-1 | 10.0.6.4 | ascs-as |
+| Ascs/SCS-cluster tweede clusterknooppunt | ascs-2 | 10.0.6.5 | ascs-as |
+| Clusternetwerknaam |ascs-cl | 10.0.6.6 | N.v.t. |
+| SAP PR1 ASCS-clusternetwerknaam |pr1-ascs | 10.0.6.7 | N.v.t. |
 
 
 **Tabel 1**: ASCS/SCS-cluster
 
-| SAP \<SID > | SAP-ASCS/SCS-instantie nummer |
+| SAP \<SID> | SAP ASCS/SCS-instantienummer |
 | --- | --- |
-| PR1 | 00 |
+| PR1 (PR1) | 00 |
 
-**Tabel 2**: Details van SAP ASCS/SCS-instantie
+**Tabel 2**: SAP ASCS/SCS instance details
 
 
-| Rol van virtuele hostnaam | Naam van virtuele host | Statisch IP-adres | Beschikbaarheidsset |
+| Rol virtuele hostnaam | Virtuele hostnaam | Statisch IP-adres | Beschikbaarheidsset |
 | --- | --- | --- | --- |
-| Eerste cluster knooppunt | sofs-1 | 10.0.6.10 | sofs-as |
-| Tweede cluster knooppunt | sofs-2 | 10.0.6.11 | sofs-as |
-| Derde cluster knooppunt | sofs-3 | 10.0.6.12 | sofs-as |
-| Cluster netwerk naam | sofs-cl | 10.0.6.13 | N.v.t. |
-| SAP Global host name | sapglobal | IP-adressen van alle cluster knooppunten gebruiken | N.v.t. |
+| Eerste clusterknooppunt | sofs-1 | 10.0.6.10 | sofs-as |
+| Tweede clusterknooppunt | sofs-2 | 10.0.6.11 | sofs-as |
+| Derde clusterknooppunt | sofs-3 | 10.0.6.12 | sofs-as |
+| Clusternetwerknaam | sofs-cl | 10.0.6.13 | N.v.t. |
+| SAP wereldwijde hostnaam | sapglobal | IP's van alle clusterknooppunten gebruiken | N.v.t. |
 
-**Tabel 3**: cluster scale-out bestandsserver
-
-
-## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Vm's implementeren voor een SAP ASCS/SCS-cluster, een DBMS-cluster (Data Base Management System) en SAP-toepassings server exemplaren
-
-Voer de volgende handelingen uit om de Azure-infra structuur voor te bereiden:
-
-* [Bereid de infra structuur voor op de architectuur sjablonen 1, 2 en 3][sap-high-availability-infrastructure-wsfc-shared-disk].
-
-* [Maak een virtueel Azure-netwerk][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network].
-
-* [Stel de vereiste IP-adressen voor DNS][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]in.
-
-* [Stel statische IP-adressen in voor de virtuele machines van SAP][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip].
-
-* [Stel een statisch IP-adres in voor de interne Load Balancer van Azure][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb].
-
-* [Stel de standaard regels voor ASCS/SCS-verdeling in voor de interne Load Balancer van Azure][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
-
-* [Wijzig de ASCS/SCS-standaard regels voor taak verdeling voor de interne Azure-Load Balancer][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules].
-
-* [Virtuele Windows-machines toevoegen aan het domein][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
-
-* [Voeg register vermeldingen toe aan cluster knooppunten van het SAP ASCS/SCS-exemplaar][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
-
-* Wanneer u Windows Server 2016 gebruikt, raden we u aan [Azure-cloudwitness][deploy-cloud-witness]te configureren.
+**Tabel 3**: Scale-Out File Server-cluster
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Het Scale-out bestandsserver cluster hand matig implementeren 
+## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>VM's implementeren voor een SAP ASCS/SCS-cluster, een DMS-cluster (Database Management System) en SAP Application Server-exemplaren
 
-U kunt het micro soft Scale-out bestandsserver-cluster hand matig implementeren, zoals beschreven in de blog [opslagruimten direct in azure][ms-blog-s2d-in-azure]door de volgende code uit te voeren:  
+Voer het volgende uit om de Azure-infrastructuur voor te bereiden:
+
+* [Bereid de infrastructuur voor op architecturale sjablonen 1, 2 en 3][sap-high-availability-infrastructure-wsfc-shared-disk].
+
+* [Een virtueel Azure-netwerk maken.][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]
+
+* [Stel de vereiste DNS-IP-adressen in.][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]
+
+* [Stel statische IP-adressen in voor de virtuele SAP-machines.][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]
+
+* [Stel een statisch IP-adres in voor de interne loadbalancer van Azure][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb].
+
+* [Stel standaard ASCS/SCS-taakverdelingsregels in voor de interne load balancer van Azure][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
+
+* [Wijzig de standaardregels voor taakverdeling van ASCS/SCS voor de interne load balancer van Azure][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules].
+
+* [Windows-virtuele machines toevoegen aan het domein][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
+
+* [Voeg registervermeldingen toe op beide clusterknooppunten van de instantie SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
+
+* Wanneer u Windows Server 2016 gebruikt, raden we u aan [Azure Cloud Witness te][deploy-cloud-witness]configureren.
+
+
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Het cluster Scale-Out Bestandsserver handmatig implementeren 
+
+U het Microsoft Scale-Out File Server-cluster handmatig implementeren, zoals beschreven in de blog [Storage Spaces Direct in Azure,][ms-blog-s2d-in-azure]door de volgende code uit te voeren:  
 
 
 ```powershell
@@ -306,52 +306,52 @@ $SAPGlobalHostName = "sapglobal"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 ```
 
-## <a name="deploy-scale-out-file-server-automatically"></a>Scale-out bestandsserver automatisch implementeren
+## <a name="deploy-scale-out-file-server-automatically"></a>Scale-Out Bestandsserver automatisch implementeren
 
-U kunt de implementatie van Scale-out bestandsserver ook automatiseren door Azure Resource Manager sjablonen te gebruiken in een bestaand virtueel netwerk en Active Directory omgeving.
+U ook de implementatie van Scale-Out Bestandsserver automatiseren met Azure Resource Manager-sjablonen in een bestaand virtueel netwerk en Active Directory-omgeving.
 
 > [!IMPORTANT]
-> We raden u aan drie of meer cluster knooppunten te hebben voor Scale-out bestandsserver met spie gelen in drie richtingen.
+> We raden u aan drie of meer clusterknooppunten te hebben voor Scale-Out Bestandsserver met drierichtingsmirroring.
 >
-> In de gebruikers interface van de Scale-out bestandsserver Resource Manager-sjabloon moet u het aantal VM'S opgeven.
+> In de gebruikersinterface van de indeling bestandsserverbronbeheer moet u het aantal vm's opgeven.
 >
 
 ### <a name="use-managed-disks"></a>Beheerde schijven gebruiken
 
-De Azure Resource Manager sjabloon voor het implementeren van Scale-out bestandsserver met Opslagruimten Direct en Azure Managed Disks is beschikbaar op [github][arm-sofs-s2d-managed-disks].
+De sjabloon Azure Resource Manager voor het implementeren van Scale-Out Bestandsserver met Storage Spaces Direct en Azure Managed Disks is beschikbaar op [GitHub.][arm-sofs-s2d-managed-disks]
 
-U wordt aangeraden Managed Disks te gebruiken.
+We raden u aan Beheerde schijven te gebruiken.
 
-![Afbeelding 1: scherm van de gebruikers interface voor Scale-out bestandsserver Resource Manager-sjabloon met beheerde schijven][sap-ha-guide-figure-8010]
+![Figuur 1: UI-scherm voor scale-out bestandsserverbronbeheersjabloon met beheerde schijven][sap-ha-guide-figure-8010]
 
-_**Afbeelding 1**: scherm van de gebruikers interface voor scale-out bestandsserver Resource Manager-sjabloon met beheerde schijven_
+_**Figuur 1**: UI-scherm voor scale-out bestandsserverbronbeheersjabloon met beheerde schijven_
 
 Ga als volgt te werk in de sjabloon:
-1. Voer in het vak **aantal vm's** het minimum aantal van **2**in.
-2. Voer in het vak **aantal VM-schijven** het minimale aantal schijven in op **3** (2 schijven + 1 reserve schijf = 3 schijven).
-3. Voer in het vak **Sofs name** de naam in van het SAP Global host Network, **sapglobalhost**.
-4. Voer in het vak **share naam** de naam van de bestands share in, **sapmnt**.
+1. Voer in het vak **Vm count** een minimumaantal van **2**in.
+2. Voer in het vak **Vm Disk Count** een minimum aantal schijven in van **3** (2 schijven + 1 reserveschijf = 3 schijven).
+3. Voer in het vak **Sofs Name** de naam van het SAP global host-netwerk in, **sapglobalhost.**
+4. Voer in het vak **Naam van delen** de naam van het bestandsaandeel in, **sapmnt**.
 
-### <a name="use-unmanaged-disks"></a>Niet-beheerde schijven gebruiken
+### <a name="use-unmanaged-disks"></a>Onbeheerde schijven gebruiken
 
-De Azure Resource Manager sjabloon voor het implementeren van Scale-out bestandsserver met Opslagruimten Direct en Azure unmanaged disks is beschikbaar op [github][arm-sofs-s2d-non-managed-disks].
+De sjabloon Azure Resource Manager voor het implementeren van Scale-Out Bestandsserver met Direct-opslagruimten en Azure Unmanaged Disks is beschikbaar op [GitHub.][arm-sofs-s2d-non-managed-disks]
 
-![Afbeelding 2: het scherm van de gebruikers interface voor de Scale-out bestandsserver Azure Resource Manager sjabloon zonder Managed disks][sap-ha-guide-figure-8011]
+![Figuur 2: UI-scherm voor de sjabloon Azure Resource Manager van Scale-Out File Server zonder beheerde schijven][sap-ha-guide-figure-8011]
 
-_**Afbeelding 2**: het scherm van de gebruikers interface voor de scale-out bestandsserver Azure Resource Manager sjabloon zonder Managed disks_
+_**Figuur 2**: UI-scherm voor de sjabloon Azure Resource Manager van Scale-Out File Server zonder beheerde schijven_
 
-Selecteer **Premium Storage**in het vak **type opslag account** . Alle andere instellingen zijn hetzelfde als de instellingen voor beheerde schijven.
+Selecteer **Premium-opslag**in het vak **Opslagaccounttype** . Alle andere instellingen zijn hetzelfde als de instellingen voor beheerde schijven.
 
-## <a name="adjust-cluster-timeout-settings"></a>Time-outinstellingen voor het cluster aanpassen
+## <a name="adjust-cluster-timeout-settings"></a>Instellingen voor clustertime-out aanpassen
 
-Nadat u het Windows Scale-out bestandsserver-cluster hebt geïnstalleerd, past u de drempel waarden voor time-outs voor failover detectie aan voor waarden in Azure. De para meters die moeten worden gewijzigd, worden beschreven in de [drempel waarden voor het afstemmen van failover cluster netwerk][tuning-failover-cluster-network-thresholds]. Ervan uitgaande dat uw geclusterde virtuele machines zich in hetzelfde subnet bevinden, wijzigt u de volgende para meters in deze waarden:
+Nadat u het Windows Scale-Out File Server-cluster hebt geïnstalleerd, past u time-outdrempels voor failoverdetectie aan aan de omstandigheden in Azure. De te wijzigen parameters worden gedocumenteerd in [Drempelwaarden voor failoverclusternetwerk.][tuning-failover-cluster-network-thresholds] Als u ervan uitgaat dat uw geclusterde VM's zich in hetzelfde subnet bevinden, wijzigt u de volgende parameters in deze waarden:
 
-- SameSubNetDelay = 2000
+- SamesubnetDelay = 2000
 - SameSubNetThreshold = 15
 - RoutingHistoryLength = 30
 
-Deze instellingen zijn getest met klanten en bieden een goede inbreuk. Ze zijn robuust genoeg, maar ze bieden ook een snelle failover in real-fout situaties of een VM-fout.
+Deze instellingen werden getest met klanten, en bieden een goed compromis. Ze zijn veerkrachtig genoeg, maar ze bieden ook snel genoeg failover in echte foutomstandigheden of VM-fout.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een hoge Beschik baarheid van SAP NetWeaver installeren op een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties][sap-high-availability-installation-wsfc-file-share]
+* [SAP NetWeaver-hoge beschikbaarheid installeren op een Windows-failovercluster en bestandsshare voor SAP ASCS/SCS-exemplaren][sap-high-availability-installation-wsfc-file-share]
