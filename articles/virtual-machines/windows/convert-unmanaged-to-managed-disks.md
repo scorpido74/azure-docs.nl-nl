@@ -1,40 +1,40 @@
 ---
 title: Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven
-description: Een Windows-VM van niet-beheerde schijven converteren naar beheerde schijven met behulp van Power shell in het Resource Manager-implementatie model
+description: Een Windows-vm converteren van niet-beheerde schijven naar beheerde schijven met PowerShell in het implementatiemodel Resource Manager
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460129"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven
 
-Als u bestaande virtuele Windows-machines (Vm's) hebt die gebruikmaken van niet-beheerde schijven, kunt u de Vm's converteren om beheerde schijven te gebruiken via de [Azure Managed disks](managed-disks-overview.md) -service. Dit proces converteert zowel de besturingssysteem schijf als eventuele gekoppelde gegevens schijven.
+Als u bestaande Virtuele Windows-machines (VM's) hebt die onbeheerde schijven gebruiken, u de VM's converteren naar beheerde schijven via de [Azure Managed Disks-service.](managed-disks-overview.md) Hiermee wordt zowel de osschijf als eventuele gekoppelde gegevensschijven geconverteerd.
 
  
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 
-* Controleer [het plan voor de migratie naar Managed disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
+* Plan [voor de migratie naar beheerde schijven bekijken](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
 
-* Raadpleeg [de veelgestelde vragen over migratie naar Managed disks](faq-for-disks.md#migrate-to-managed-disks).
+* Bekijk [de veelgestelde vragen over migratie naar beheerde schijven](faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
-* De oorspronkelijke VHD's en het opslagaccount die vóór de conversie werden gebruikt door de VM worden niet verwijderd. Hiervoor worden nog altijd kosten in rekening gebracht. Als u wilt voorkomen dat er kosten worden doorberekend voor de artefacten, verwijdert u de oorspronkelijke VHD-blobs nadat u hebt gecontroleerd of de conversie is voltooid. Als u deze niet-gekoppelde schijven wilt kunnen verwijderen, raadpleegt u ons artikel niet- [gekoppelde door Azure beheerde en onbeheerde schijven zoeken en verwijderen](find-unattached-disks.md).
+* De oorspronkelijke VHD's en het opslagaccount die vóór de conversie werden gebruikt door de VM worden niet verwijderd. Hiervoor worden nog altijd kosten in rekening gebracht. Als u wilt voorkomen dat er kosten worden doorberekend voor de artefacten, verwijdert u de oorspronkelijke VHD-blobs nadat u hebt gecontroleerd of de conversie is voltooid. Als u deze niet-gekoppelde schijven moet vinden om ze te verwijderen, raadpleegt u ons artikel [Ongekoppelde Azure-beheerde en onbeheerde schijven zoeken en verwijderen.](find-unattached-disks.md)
 
 
-## <a name="convert-single-instance-vms"></a>Vm's met één exemplaar converteren
-In deze sectie wordt beschreven hoe u virtuele Azure-machines met één exemplaar converteert van niet-beheerde schijven naar beheerde schijven. (Als uw Vm's zich in een beschikbaarheidsset bevinden, raadpleegt u de volgende sectie.) 
+## <a name="convert-single-instance-vms"></a>VM's met één instantie converteren
+In deze sectie wordt uitgelegd hoe u Azure VM's met één instantie converteert van niet-beheerde schijven naar beheerde schijven. (Als uw VM's zich in een beschikbaarheidsset bevinden, raadpleegt u de volgende sectie.) 
 
-1. Hef de toewijzing van de virtuele machine op met behulp van de cmdlet [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) . In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup`ongedaan gemaakt: 
+1. Deallocate de VM met behulp van de [Stop-AzVM-cmdlet.](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) In het volgende voorbeeld wordt `myVM` de VM `myResourceGroup`toegewezen die is vernoemd in de resourcegroep met de naam : 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -42,7 +42,7 @@ In deze sectie wordt beschreven hoe u virtuele Azure-machines met één exemplaa
    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
    ```
 
-2. Converteer de virtuele machine naar Managed disks met behulp van de cmdlet [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) . Met het volgende proces wordt de vorige VM geconverteerd, met inbegrip van de besturingssysteem schijf en alle gegevens schijven, en wordt de virtuele machine gestart:
+2. Converteer de VM naar beheerde schijven met de cmdlet [ConvertTo-AzVMManagedDisk.](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) Met het volgende proces wordt de vorige vm, inclusief de osschijf en eventuele gegevensschijven, geconverteerd en wordt de virtuele machine gestart:
 
    ```azurepowershell-interactive
    ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
@@ -50,11 +50,11 @@ In deze sectie wordt beschreven hoe u virtuele Azure-machines met één exemplaa
 
 
 
-## <a name="convert-vms-in-an-availability-set"></a>Vm's in een beschikbaarheidsset converteren
+## <a name="convert-vms-in-an-availability-set"></a>VM's converteren in een beschikbaarheidsset
 
-Als de virtuele machines die u wilt converteren naar Managed disks zich in een beschikbaarheidsset bevinden, moet u eerst de beschikbaarheidsset converteren naar een beheerde beschikbaarheidsset.
+Als de VM's die u wilt converteren naar beheerde schijven zich in een beschikbaarheidsset bevinden, moet u eerst de beschikbaarheidsset converteren naar een beheerde beschikbaarheidsset.
 
-1. Converteer de beschikbaarheidsset met behulp van de cmdlet [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) . In het volgende voor beeld wordt de beschikbaarheidsset met de naam `myAvailabilitySet` in de resource groep met de naam `myResourceGroup`bijgewerkt:
+1. Converteer de beschikbaarheidsset met de cmdlet [Update-AzAvailabilitySet.](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) In het volgende voorbeeld wordt `myAvailabilitySet` de beschikbaarheidsset bijgewerkt met de naam resourcegroep met de naam: `myResourceGroup`
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -64,14 +64,14 @@ Als de virtuele machines die u wilt converteren naar Managed disks zich in een b
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
    ```
 
-   Als de regio waar uw beschikbaarheidsset zich bevindt slechts 2 beheerde fout domeinen bevat, maar het aantal onbeheerde fout domeinen 3 is, wordt met deze opdracht een fout weer gegeven die vergelijkbaar is met ' het opgegeven aantal fout domeinen 3 moet in het bereik van 1 tot 2 liggen. ' Als u de fout wilt oplossen, werkt u het fout domein bij naar 2 en werkt u `Sku` als volgt bij `Aligned`:
+   Als het gebied waar uw beschikbaarheidsset zich bevindt slechts 2 beheerde foutdomeinen heeft, maar het aantal onbeheerde foutdomeinen 3 is, wordt in deze opdracht een fout weergegeven die vergelijkbaar is met 'Het aantal opgegeven foutdomeinen 3 moet in het bereik 1 tot en met 2 vallen'. Als u de fout wilt oplossen, `Sku` werkt `Aligned` u het foutdomein bij naar 2 en werkt u het volgende bij:
 
    ```azurepowershell-interactive
    $avSet.PlatformFaultDomainCount = 2
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
    ```
 
-2. Toewijzing van virtuele machines in de beschikbaarheidsset ongedaan maken en converteren. Met het volgende script wordt elke virtuele machine van elkaar verwijderd met behulp van de cmdlet [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) , wordt deze geconverteerd met behulp van [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk)en wordt deze automatisch opnieuw gestart, net zo ver het conversie proces:
+2. Detoewijzing en converteer de VM's in de beschikbaarheidsset. In het volgende script wordt elke VM gedereerd met behulp van de [Stop-AzVM-cmdlet,](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) wordt deze geconverteerd met [convertto-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk)en wordt deze automatisch gestart als afgezien van het conversieproces:
 
    ```azurepowershell-interactive
    $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -87,24 +87,24 @@ Als de virtuele machines die u wilt converteren naar Managed disks zich in een b
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als er een fout optreedt tijdens de conversie, of als een virtuele machine een mislukte status heeft vanwege problemen in een vorige conversie, voert u de `ConvertTo-AzVMManagedDisk`-cmdlet opnieuw uit. Bij een eenvoudige nieuwe poging wordt de blok kering doorgaans opgeheven.
-Voordat u converteert, moet u ervoor zorgen dat alle VM-extensies de status ' provisioning geslaagd ' hebben of dat de conversie mislukt met de fout code 409.
+Als er een fout optreedt tijdens de conversie of als een vm in een `ConvertTo-AzVMManagedDisk` mislukte staat is als gevolg van problemen in een eerdere conversie, voert u de cmdlet opnieuw uit. Een eenvoudige poging deblokkeert meestal de situatie.
+Voordat u converteert, controleert u of alle VM-extensies in de status 'Geslaagd inrichten' staan of dat de conversie mislukt met de foutcode 409.
 
-## <a name="convert-using-the-azure-portal"></a>Converteren met behulp van de Azure Portal
+## <a name="convert-using-the-azure-portal"></a>Converteren met de Azure-portal
 
-U kunt ook niet-beheerde schijven converteren naar Managed disks met behulp van de Azure Portal.
+U ook onbeheerde schijven converteren naar beheerde schijven met behulp van de Azure-portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-2. Selecteer de virtuele machine in de lijst met virtuele machines in de portal.
-3. Selecteer in de Blade voor de virtuele machine **schijven** in het menu.
-4. Selecteer boven aan de Blade **schijven** **migreren naar Managed disks**.
-5. Als uw virtuele machine zich in een beschikbaarheidsset bevindt, wordt er een waarschuwing weer gegeven op de Blade **migreren naar Managed disks** die u eerst moet converteren van de beschikbaarheidsset. De waarschuwing moet een koppeling hebben waarop u kunt klikken om de beschikbaarheidsset te converteren. Zodra de beschikbaarheidsset is geconverteerd of als uw virtuele machine zich niet in een beschikbaarheidsset bevindt, klikt u op **migreren** om het proces van het migreren van uw schijven naar Managed disks te starten.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Selecteer de VM in de lijst met VM's in de portal.
+3. Selecteer **Schijven** in het menu in het blad voor de virtuele machine.
+4. Selecteer Migreren **naar beheerde schijven**boven aan het **hoofdvan schijven** .
+5. Als uw vm zich in een beschikbaarheidsset bevindt, wordt er een waarschuwing weergegeven op het blade **Migreren naar beheerde schijven** die u eerst moet converteren naar de beschikbaarheidsset. De waarschuwing moet een koppeling hebben waarop u klikken om de beschikbaarheidsset om te zetten. Zodra de beschikbaarheidsset is geconverteerd of als uw vm zich niet in een beschikbaarheidsset bevindt, klikt u op **Migreren** om het proces van het migreren van uw schijven naar beheerde schijven te starten.
 
-De virtuele machine wordt gestopt en opnieuw opgestart nadat de migratie is voltooid.
+De VM wordt gestopt en opnieuw gestart nadat de migratie is voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Standaard Managed disks converteren naar Premium](convert-disk-storage.md)
+[Standaard beheerde schijven converteren naar premium](convert-disk-storage.md)
 
-Maak een alleen-lezen kopie van een virtuele machine met behulp van [moment opnamen](snapshot-copy-managed-disk.md).
+Neem een alleen-lezen kopie van een vm met behulp van [snapshots](snapshot-copy-managed-disk.md).
 

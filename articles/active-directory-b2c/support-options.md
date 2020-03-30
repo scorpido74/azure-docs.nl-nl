@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning voor Azure Active Directory B2C | Microsoft Docs
-description: Informatie over het indienen van ondersteunings aanvragen voor Azure Active Directory B2C.
+title: Ondersteuning voor Azure Active Directory B2C | Microsoft Documenten
+description: Ondersteuningsaanvragen voor Azure Active Directory B2C indienen.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,58 +11,58 @@ ms.date: 12/06/2016
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5195241003b1ce4ea505002e2cc3c10410e6cde1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183717"
 ---
-# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: aanvragen voor bestands ondersteuning
-U kunt de volgende stappen gebruiken om ondersteunings aanvragen voor Azure Active Directory B2C (Azure AD B2C) op te nemen in de Azure Portal:
+# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: aanvragen voor bestandsondersteuning
+U ondersteuningsaanvragen voor Azure Active Directory B2C (Azure AD B2C) op de Azure-portal indienen met de volgende stappen:
 
-1. Schakel over van uw B2C-Tenant naar een andere Tenant waaraan een Azure-abonnement is gekoppeld. Normaal gesp roken is de Tenant van uw werk nemer of de standaard Tenant die voor u is gemaakt toen u zich registreerde voor een Azure-abonnement. Zie [hoe een Azure-abonnement is gerelateerd aan Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)voor meer informatie.
+1. Schakel over van uw B2C-tenant naar een andere tenant met een Azure-abonnement. Dit laatste is doorgaans uw werknemertenant of de standaardtenant die voor u is gemaakt toen u zich aanmeldde voor een Azure-abonnement. Zie voor meer informatie [hoe een Azure-abonnement is gerelateerd aan Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-    ![Azure Portal met gemarkeerde Tenant selectie](./media/support-options/support-switch-dir.png)
+    ![Azure-portal met tenantselectie gemarkeerd](./media/support-options/support-switch-dir.png)
 
-1. Klik na het overschakelen van tenants op **Help en ondersteuning**.
+1. Nadat u van huurder bent overgestapt, klikt u op **Help + ondersteuning**.
 
-    ![De tegel Help en ondersteuning is gemarkeerd in Azure Portal](./media/support-options/support-support.png)
+    ![App + ondersteuningstegel gemarkeerd in Azure-portal](./media/support-options/support-support.png)
 
-1. Klik op **nieuwe ondersteunings aanvraag**.
+1. Klik **op Nieuw ondersteuningsverzoek**.
 
-    ![Nieuwe tegel voor ondersteunings aanvraag gemarkeerd in Azure Portal](./media/support-options/support-new.png)
+    ![Nieuwe tegel ondersteuningsaanvraag die is gemarkeerd in Azure-portal](./media/support-options/support-new.png)
 
-1. Op de Blade **basis beginselen** gebruikt u deze gegevens en klikt u op **volgende**.
+1. Gebruik **deze** gegevens in het blad Basics en klik op **Volgende**.
 
-    * **Probleem type** is **technisch**.
+    * **Probleemtype** is **technisch**.
     * Kies het juiste **abonnement**.
-    * De **service** is **Active Directory**.
-    * Kies het juiste **ondersteunings plan**. Als u er nog geen hebt, kunt u zich [hier](https://azure.microsoft.com/support/plans/)aanmelden.
+    * **Service** is **Active Directory**.
+    * Kies het juiste **ondersteuningsplan**. Als u niet beschikt over een, u zich aanmelden voor een [hier](https://azure.microsoft.com/support/plans/).
 
-     ![Pagina basis pagina's met de knop Volgende gemarkeerd in Azure Portal](./media/support-options/support-basics.png)
+     ![Basispagina met knop Volgende gemarkeerd in Azure-portal](./media/support-options/support-basics.png)
 
-1. Gebruik op de Blade **probleem** de volgende informatie en klik op **volgende**.
+1. Gebruik deze gegevens in het **blade Probleem** en klik op **Volgende**.
 
-    * Kies het juiste **Ernst** niveau.
-    * **Probleem type** is **B2C**.
-    * Kies de juiste **categorie**.
-    * Beschrijf uw probleem in het **detail** veld. Geef details op, zoals de B2C-Tenant naam, de beschrijving van het probleem, fout berichten, correlatie-Id's (indien beschikbaar), enzovoort.
-    * Geef in het veld **tijds** periode de datum en tijd (inclusief de tijd zone) op die het probleem heeft voorgedaan.
-    * Upload, onder **bestand uploaden**, alle scherm afbeeldingen en bestanden die u denkt bij het oplossen van het probleem.
+    * Kies het juiste **ernstniveau.**
+    * **Probleemtype** is **B2C**.
+    * Kies de juiste **rubriek**.
+    * Beschrijf uw probleem in het veld **Details.** Geef details zoals de naam van de B2C-tenant, beschrijving van het probleem, foutmeldingen, correlatie-id's (indien beschikbaar), enzovoort.
+    * Geef in het veld **Tijdframe** de datum en tijd (inclusief tijdzone) op waarop het probleem is opgetreden.
+    * Upload **onder Het uploaden van**bestanden alle screenshots en bestanden waarvan u denkt dat ze zouden helpen bij het oplossen van het probleem.
 
-     ![Probleem pagina met de knop Volgende gemarkeerd in Azure Portal](./media/support-options/support-problem.png)
+     ![Probleempagina met knop Volgende gemarkeerd in Azure-portal](./media/support-options/support-problem.png)
 
-1. Voeg op de Blade **contact gegevens** uw contact gegevens toe. Klik op **Create**.
+1. Voeg in het blad **Contactgegevens** uw contactgegevens toe. Klik **op Maken**.
 
-    ![De pagina contact gegevens met de knop maken is gemarkeerd in de portal](./media/support-options/support-contact.png)
+    ![Pagina Contactgegevens met knop Maken gemarkeerd in portal](./media/support-options/support-contact.png)
 
-1. Nadat u uw ondersteunings aanvraag hebt ingediend, kunt u deze bewaken door te klikken op **Help en ondersteuning** op de start Board en vervolgens **ondersteunings aanvragen te beheren**.
+1. Nadat u uw ondersteuningsverzoek hebt ingediend, u deze controleren door op **Help + ondersteuning** op het startbord te klikken en vervolgens **ondersteuningsverzoeken beheren.**
 
-## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Bekend probleem: een ondersteunings aanvraag indienen in de context van een B2C-Tenant
+## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Bekend probleem: Het indienen van een ondersteuningsverzoek in het kader van een B2C-tenant
 
-Als u stap 2 hierboven hebt gemist en een ondersteunings aanvraag wilt maken in de context van uw B2C-Tenant, ziet u de volgende fout melding.
+Als u hierboven beschreven stap 2 hebt gemist en probeert een ondersteuningsverzoek te maken in de context van uw B2C-tenant, ziet u de volgende fout.
 
 > [!IMPORTANT]
-> Probeer u niet te registreren voor een nieuw Azure-abonnement in uw B2C-Tenant.
+> Probeer je niet aan te melden voor een nieuw Azure-abonnement in uw B2C-tenant.
 
-![Er is geen abonnements fout weer gegeven in Azure Portal](./media/support-options/support-no-sub.png)
+![Er wordt geen abonnementsfout weergegeven in Azure-portal](./media/support-options/support-no-sub.png)

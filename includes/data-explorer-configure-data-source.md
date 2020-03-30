@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
 ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78305015"
 ---
-## <a name="configure-the-data-source"></a>De gegevens bron configureren
+## <a name="configure-the-data-source"></a>De gegevensbron configureren
 
-U voert de volgende stappen uit om Azure Data Explorer te configureren als een gegevens bron voor uw dash board-hulp programma. Deze stappen worden in deze sectie nader besproken:
+U voert de volgende stappen uit om Azure Data Explorer te configureren als gegevensbron voor uw dashboardhulpprogramma. We behandelen deze stappen in deze sectie in meer detail:
 
-1. Maak een service-principal voor Azure Active Directory (Azure AD). De service-principal wordt gebruikt door uw dash board om toegang te krijgen tot de Azure Data Explorer-service.
+1. Maak een Azure Active Directory (Azure AD) serviceprincipal. De serviceprincipal wordt door uw dashboardhulpprogramma gebruikt om toegang te krijgen tot de Azure Data Explorer-service.
 
-1. Voeg de Azure AD-Service-Principal toe aan de rol *viewers* in de Azure Data Explorer-data base.
+1. Voeg de azure AD-serviceprincipal toe aan de *kijkersrol* in de Azure Data Explorer-database.
 
-1. Geef de verbindings eigenschappen van uw dash board-hulp programma op op basis van informatie van de Azure AD-Service-Principal en test vervolgens de verbinding.
+1. Geef de verbindingseigenschappen van uw dashboardhulpprogramma op op basis van informatie van de Azure AD-serviceprincipal en test de verbinding.
 
 ### <a name="create-a-service-principal"></a>Een service-principal maken
 
-U kunt de service-principal maken in het [Azure Portal](#azure-portal) of met behulp van de [Azure cli](#azure-cli) -opdracht regel ervaring. Ongeacht de methode die u gebruikt, krijgt u na het maken van de waarden voor vier verbindings eigenschappen die u in latere stappen gaat gebruiken.
+U de serviceprincipal maken in de [Azure-portal](#azure-portal) of de Azure CLI-opdrachtregelervaring gebruiken. [Azure CLI](#azure-cli) Ongeacht welke methode u gebruikt, na het maken krijgt u waarden voor vier verbindingseigenschappen die u in latere stappen zult gebruiken.
 
-#### <a name="azure-portal"></a>Azure-portal
+#### <a name="azure-portal"></a>Azure Portal
 
-1. Volg de instructies in de [documentatie van Azure Portal](/azure/active-directory/develop/howto-create-service-principal-portal)om de service-principal te maken.
+1. Als u de serviceprincipal wilt maken, volgt u de instructies in de [azure-portaldocumentatie.](/azure/active-directory/develop/howto-create-service-principal-portal)
 
-    1. Wijs in de sectie [toepassing aan een rol toewijzen](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) een roltype van het type **lezer** toe aan uw Azure Data Explorer-cluster.
+    1. Wijs in de sectie [De toepassing toewijzen aan een rol](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) een roltype **Reader** toe aan uw Azure Data Explorer-cluster.
 
-    1. In de sectie [waarden ophalen voor aanmelden](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) kopieert u de drie eigenschaps waarden die zijn opgenomen in de stappen: **Directory-ID** (Tenant-ID), **toepassings-id**en **wacht woord**.
+    1. Kopieer in de sectie [Waarden voor aanmelden](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) de drie eigenschapswaarden die in de stappen worden behandeld: **Directory-id** (tenant-id), **toepassings-id**en **wachtwoord**.
 
-1. In de Azure Portal selecteert u **abonnementen** en kopieert u vervolgens de id voor het abonnement waarin u de Service-Principal hebt gemaakt.
+1. Selecteer in de Azure-portal **Abonnementen** en kopieer vervolgens de id voor het abonnement waarin u de serviceprincipal hebt gemaakt.
 
-    ![Abonnements-ID-Portal](media/data-explorer-configure-data-source/subscription-id-portal.png)
+    ![Abonnement-ID - portal](media/data-explorer-configure-data-source/subscription-id-portal.png)
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure-CLI
 
-1. Een service-principal maken. Stel een geschikt bereik en een roltype van `reader`in.
+1. Een service-principal maken. Stel een passend bereik en `reader`een roltype .
 
     ```azurecli
     az ad sp create-for-rbac --name "https://{UrlToYourDashboard}:{PortNumber}" --role "reader" \
                              --scopes /subscriptions/{SubID}/resourceGroups/{ResourceGroupName}
     ```
 
-    Zie [een Azure-service-principal maken met Azure cli](/cli/azure/create-an-azure-service-principal-azure-cli)voor meer informatie.
+    Zie [Een Azure-serviceprincipal maken met Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)voor meer informatie.
 
-1. De opdracht retourneert een resultaatset als de volgende. Kopieer de drie eigenschaps waarden: **appID**, **Password**en **Tenant**.
+1. De opdracht retourneert een resultaatset als volgt. Kopieer de drie eigenschapswaarden: **appID,** **wachtwoord**en **tenant**.
 
 
     ```json
@@ -61,7 +61,7 @@ U kunt de service-principal maken in het [Azure Portal](#azure-portal) of met be
     }
     ```
 
-1. Een lijst met uw abonnementen ophalen.
+1. Ontvang een lijst met uw abonnementen.
 
     ```azurecli
     az account list --output table
@@ -69,48 +69,48 @@ U kunt de service-principal maken in het [Azure Portal](#azure-portal) of met be
 
     Kopieer de juiste abonnements-ID.
 
-    ![Abonnements-ID-CLI](media/data-explorer-configure-data-source/subscription-id-cli.png)
+    ![Abonnement-ID - CLI](media/data-explorer-configure-data-source/subscription-id-cli.png)
 
-### <a name="add-the-service-principal-to-the-viewers-role"></a>De Service-Principal toevoegen aan de rol viewers
+### <a name="add-the-service-principal-to-the-viewers-role"></a>De serviceprincipal toevoegen aan de kijkersrol
 
-Nu u een Service-Principal hebt, voegt u deze toe aan de rol *kijkers* in de Azure Data Explorer-data base. U kunt deze taak uitvoeren onder **machtigingen** in de Azure Portal, of onder **query** met behulp van een beheer opdracht.
+Nu u een serviceprincipal hebt, voegt u deze toe aan de *kijkersrol* in de Azure Data Explorer-database. U deze taak uitvoeren onder **Machtigingen** in de Azure-portal of onder **Query** met behulp van een beheeropdracht.
 
-#### <a name="azure-portal---permissions"></a>Azure Portal-machtigingen
+#### <a name="azure-portal---permissions"></a>Azure-portal - Machtigingen
 
-1. Ga in het Azure Portal naar uw Azure Data Explorer-cluster.
+1. Ga in de Azure-portal naar uw Azure Data Explorer-cluster.
 
-1. Selecteer in de sectie **overzicht** de data base met de StormEvents-voorbeeld gegevens.
+1. Selecteer in de sectie **Overzicht** de database met de voorbeeldgegevens van StormEvents.
 
-    ![Data base selecteren](media/data-explorer-configure-data-source/select-database.png)
+    ![Database selecteren](media/data-explorer-configure-data-source/select-database.png)
 
-1. Selecteer **machtigingen** en vervolgens **toevoegen**.
+1. Selecteer **Machtigingen** **en voeg toe**.
 
-    ![Database machtigingen](media/data-explorer-configure-data-source/database-permissions.png)
+    ![Databasemachtigingen](media/data-explorer-configure-data-source/database-permissions.png)
 
-1. Selecteer onder **database machtigingen toevoegen**de rol van de **kijker** en **Selecteer vervolgens principals**.
+1. Selecteer **onder Databasemachtigingen toevoegen**de rol **Viewer** en **selecteer principals**.
 
-    ![Database machtigingen toevoegen](media/data-explorer-configure-data-source/add-permission.png)
+    ![Databasemachtigingen toevoegen](media/data-explorer-configure-data-source/add-permission.png)
 
-1. Zoek naar de service-principal die u hebt gemaakt. Selecteer de principal en **Selecteer**.
+1. Zoek naar de serviceprincipal die u hebt gemaakt. Selecteer de hoofdsom **en selecteer .**
 
-    ![Machtigingen beheren in de Azure Portal](media/data-explorer-configure-data-source/new-principals.png)
+    ![Machtigingen beheren in de Azure-portal](media/data-explorer-configure-data-source/new-principals.png)
 
 1. Selecteer **Opslaan**.
 
-    ![Machtigingen beheren in de Azure Portal](media/data-explorer-configure-data-source/save-permission.png)
+    ![Machtigingen beheren in de Azure-portal](media/data-explorer-configure-data-source/save-permission.png)
 
-#### <a name="management-command---query"></a>Beheer opdracht-query
+#### <a name="management-command---query"></a>Opdracht Beheer - Query
 
-1. Ga in het Azure Portal naar uw Azure Data Explorer-cluster en selecteer **query**.
+1. Ga in de Azure-portal naar uw Azure Data Explorer-cluster en selecteer **Query**.
 
-    ![Query's uitvoeren](media/data-explorer-configure-data-source/query.png)
+    ![Query’s uitvoeren](media/data-explorer-configure-data-source/query.png)
 
-1. Voer de volgende opdracht uit in het query-venster. Gebruik de toepassings-ID en Tenant-ID van de Azure Portal of CLI.
+1. Voer de volgende opdracht uit in het queryvenster. Gebruik de toepassings-id en tenant-id van de Azure-portal of CLI.
 
     ```kusto
     .add database {TestDatabase} viewers ('aadapp={ApplicationID};{TenantID}')
     ```
 
-    De opdracht retourneert een resultaatset als de volgende. In dit voor beeld is de eerste rij voor een bestaande gebruiker in de data base en de tweede rij voor de service-principal die zojuist is toegevoegd.
+    De opdracht retourneert een resultaatset als volgt. In dit voorbeeld is de eerste rij voor een bestaande gebruiker in de database en de tweede rij is voor de serviceprincipal die net is toegevoegd.
 
-    ![Resultatenset](media/data-explorer-configure-data-source/result-set.png)
+    ![Resultaatset](media/data-explorer-configure-data-source/result-set.png)

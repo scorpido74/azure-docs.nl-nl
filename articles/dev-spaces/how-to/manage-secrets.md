@@ -1,31 +1,31 @@
 ---
-title: Geheimen beheren bij het werken met een Azure dev Space
+title: Geheimen beheren wanneer u met een Azure Dev Space werkt
 services: azure-dev-spaces
 ms.date: 12/03/2019
 ms.topic: conceptual
-description: Meer informatie over hoe u Kubernetes-geheimen kunt gebruiken tijdens het uitvoeren of bouwen tijdens het ontwikkelen van toepassingen met Azure dev Spaces
-keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers
+description: Meer informatie over het gebruik van Kubernetes-geheimen tijdens het uitvoeren of het opbouwen van tijd bij het ontwikkelen van toepassingen met Azure Dev Spaces
+keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
 ms.openlocfilehash: d9dd0de348612bbb3baf5fb351c1c9af1c228c1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75438466"
 ---
-# <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Geheimen beheren bij het werken met een Azure dev Space
+# <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Geheimen beheren wanneer u met een Azure Dev Space werkt
 
-Uw services kunnen bepaalde wachtwoorden, connectiestrings en andere geheimen vereisen, zoals voor databases of andere beveiligde Azure-services. Door de waarden van deze geheimen in configuratiebestanden in te stellen, kunt u ze als omgevingsvariabelen beschikbaar maken in uw code.  Deze configuratie bestanden moeten worden verwerkt om te voor komen dat de beveiliging van de geheimen in gevaar komt.
+Voor uw services zijn mogelijk bepaalde wachtwoorden, verbindingstekenreeksen en andere geheimen vereist, zoals voor databases of andere beveiligde Azure-services. Door de waarden van deze geheimen in configuratiebestanden in te stellen, u ze beschikbaar maken in uw code als omgevingsvariabelen.  Deze configuratiebestanden moeten met zorg worden behandeld om te voorkomen dat de beveiliging van de geheimen in het gedrang komt.
 
-## <a name="storing-and-using-runtime-secrets"></a>Opslaan en gebruiken van runtime geheimen
+## <a name="storing-and-using-runtime-secrets"></a>Runtime-geheimen opslaan en gebruiken
 
-Azure dev Spaces biedt twee aanbevolen, gestroomlijnde opties voor het opslaan van geheimen in helm-grafieken die worden gegenereerd door de Azure dev Spaces-client hulpprogramma's: in het `values.dev.yaml`-bestand en direct in `azds.yaml`. Het is niet raadzaam om geheimen op te slaan in `values.yaml`.
+Azure Dev Spaces biedt twee aanbevolen, gestroomlijnde opties voor het opslaan van geheimen in Helm-diagrammen die worden gegenereerd door de azure Dev Spaces-clienttooling: in het `values.dev.yaml` bestand en direct in `azds.yaml`. Het is niet aan te `values.yaml`raden om geheimen op te slaan in.
 
 > [!NOTE]
-> De volgende benaderingen laten zien hoe u geheimen kunt opslaan en gebruiken voor helm-grafieken die door het client hulpprogramma worden gegenereerd. Als u uw eigen helm-grafiek maakt, kunt u het helm-diagram rechtstreeks gebruiken om geheimen te beheren en op te slaan.
+> De volgende benaderingen laten u zien hoe u geheimen opslaan en gebruiken voor Helm-diagrammen die worden gegenereerd door de clienttooling. Als u uw eigen Helm-diagram maakt, u de Helm-grafiek rechtstreeks gebruiken om geheimen te beheren en op te slaan.
 
-### <a name="using-valuesdevyaml"></a>Waarden. dev. yaml gebruiken
+### <a name="using-valuesdevyaml"></a>Waarden.dev.yaml gebruiken
 
-In een project dat u al hebt voor bereid met Azure dev Spaces, maakt u een `values.dev.yaml`-bestand in dezelfde map als `azds.yaml` om uw geheime sleutels en waarden te definiëren. Bijvoorbeeld:
+Maak in een project dat u al hebt `values.dev.yaml` voorbereid met Azure `azds.yaml` Dev Spaces een bestand in dezelfde map als om uw geheime sleutels en waarden te definiëren. Bijvoorbeeld:
 
 ```yaml
 secrets:
@@ -35,7 +35,7 @@ secrets:
     key: "secretkeyhere"
 ```
 
-Controleer of het `azds.yaml` bestand verwijst naar `values.dev.yaml` optioneel met behulp van een `?`. Bijvoorbeeld:
+Controleer `azds.yaml` de bestandsverwijzingen `values.dev.yaml` als `?`optioneel met behulp van een . Bijvoorbeeld:
 
 ```yaml
 install:
@@ -44,9 +44,9 @@ install:
   - secrets.dev.yaml?
 ```
 
-Als u aanvullende geheime bestanden hebt, kunt u deze hier ook toevoegen.
+Als u extra geheime bestanden hebt, u deze hier ook toevoegen.
 
-Werk uw service bij of Controleer uw geheimen als omgevings variabelen. Bijvoorbeeld:
+Werk of verifieer uw service als omgevingsvariabelen als omgevingsvariabelen. Bijvoorbeeld:
 
 ```javascript
 var redisPort = process.env.REDIS_PORT
@@ -54,24 +54,24 @@ var host = process.env.REDIS_HOST
 var theKey = process.env.REDIS_KEY
 ```
     
-Voer uw bijgewerkte services uit met behulp van `azds up`.
+Voer uw bijgewerkte `azds up`services uit met behulp van .
 
 ```console
 azds up
 ```
  
-Gebruik `kubectl` om te controleren of uw geheimen zijn gemaakt.
+Gebruik `kubectl` om te controleren of je geheimen zijn gemaakt.
 
 ```console
 kubectl get secret --namespace default -o yaml 
 ```
 
 > [!IMPORTANT]
-> Het is niet raadzaam om geheimen op te slaan in broncode beheer. Als u Git wilt gebruiken, voegt u `values.dev.yaml` toe aan het `.gitignore`-bestand om te voor komen dat geheimen in broncode beheer worden doorgevoerd.
+> Het is niet aan te raden om geheimen op te slaan in bronbeheer. Als u Git `values.dev.yaml` gebruikt, voegt u het `.gitignore` bestand toe om te voorkomen dat u geheimen in bronbeheer begaat.
 
-### <a name="using-azdsyaml"></a>Azds. yaml gebruiken
+### <a name="using-azdsyaml"></a>Met behulp van azds.yaml
 
-In een project dat u al hebt voor bereid met Azure dev Spaces, voegt u geheime sleutels en waarde toe met *$PLACEHOLDER* syntaxis onder *configuraties. develope. install. set* in `azds.yaml`. Bijvoorbeeld:
+Voeg in een project dat u al hebt voorbereid met Azure Dev Spaces geheime sleutels en `azds.yaml`waarde toe met behulp van *$PLACEHOLDER* syntaxis onder *configurations.develop.install.set* in . Bijvoorbeeld:
 
 ```yaml
 configurations:
@@ -87,9 +87,9 @@ configurations:
 ```
 
 > [!NOTE]
-> U kunt geheime waarden rechtstreeks invoeren zonder *$PLACEHOLDER* syntaxis in `azds.yaml`te gebruiken. Deze methode wordt echter niet aanbevolen, omdat `azds.yaml` wordt opgeslagen in broncode beheer.
+> U geheime waarden *$PLACEHOLDER* rechtstreeks invoeren `azds.yaml`zonder $PLACEHOLDER syntaxis te gebruiken in. Deze aanpak wordt echter niet `azds.yaml` aanbevolen omdat deze is opgeslagen in bronbeheer.
      
-Maak een `.env`-bestand in dezelfde map als `azds.yaml` om uw *$PLACEHOLDER* waarden te definiëren. Bijvoorbeeld:
+Maak `.env` een bestand in `azds.yaml` dezelfde map als om uw *$PLACEHOLDER* waarden te definiëren. Bijvoorbeeld:
 
 ```
 REDIS_PORT=3333
@@ -98,9 +98,9 @@ REDIS_KEY=myrediskey
 ```
 
 > [!IMPORTANT]
-> Het is niet raadzaam om geheimen op te slaan in broncode beheer. Als u Git wilt gebruiken, voegt u `.env` toe aan het `.gitignore`-bestand om te voor komen dat geheimen in broncode beheer worden doorgevoerd.
+> Het is niet aan te raden om geheimen op te slaan in bronbeheer. Als u Git `.env` gebruikt, voegt u het `.gitignore` bestand toe om te voorkomen dat u geheimen in bronbeheer begaat.
 
-Werk uw service bij of Controleer uw geheimen als omgevings variabelen. Bijvoorbeeld:
+Werk of verifieer uw service als omgevingsvariabelen als omgevingsvariabelen. Bijvoorbeeld:
 
 ```javascript
 var redisPort = process.env.REDIS_PORT
@@ -108,23 +108,23 @@ var host = process.env.REDIS_HOST
 var theKey = process.env.REDIS_KEY
 ```
     
-Voer uw bijgewerkte services uit met behulp van `azds up`.
+Voer uw bijgewerkte `azds up`services uit met behulp van .
 
 ```console
 azds up
 ```
  
-Gebruik `kubectl` om te controleren of uw geheimen zijn gemaakt.
+Gebruik `kubectl` om te controleren of je geheimen zijn gemaakt.
 
 ```console
 kubectl get secret --namespace default -o yaml 
 ```
 
-## <a name="using-secrets-as-build-arguments"></a>Geheimen gebruiken als bouw argumenten
+## <a name="using-secrets-as-build-arguments"></a>Geheimen gebruiken als bouwargumenten
 
-In de vorige sectie wordt uitgelegd hoe u geheimen opslaat en gebruikt om te gebruiken tijdens de uitvoer tijd van de container. U kunt ook een geheim gebruiken in de bouw tijd van de container, zoals een wacht woord voor een persoonlijke NuGet, met behulp van `azds.yaml`.
+De vorige sectie liet zien hoe je geheimen opslaan en gebruiken om te gebruiken tijdens de runtime van containers. U ook elk geheim gebruiken tijdens de bouwtijd van containers, zoals een wachtwoord voor een privé-NuGet, met behulp van `azds.yaml`.
 
-In `azds.yaml`stelt u de aanmaak tijd geheimen in *configuraties. ontwikkelen. build. args* met de `<variable name>: ${secret.<secret name>.<secret key>}` syntaxis. Bijvoorbeeld:
+Stel `azds.yaml`in , stel de build tijd geheimen in *configuraties.develop.build.args* met behulp van de `<variable name>: ${secret.<secret name>.<secret key>}` syntaxis. Bijvoorbeeld:
 
 ```yaml
 configurations:
@@ -137,12 +137,12 @@ configurations:
         MYTOKEN: ${secret.mynugetsecret.pattoken}
 ```
 
-In het bovenstaande voor beeld is *mynugetsecret* een bestaand geheim en is *pattoken* een bestaande sleutel.
+In het bovenstaande voorbeeld, *mynugetsecret* is een bestaand geheim en *pattoken* is een bestaande sleutel.
 
 >[!NOTE]
-> Geheime namen en sleutels kunnen het `.` teken bevatten. Gebruik `\` om `.` te escapen wanneer geheimen worden door gegeven als argumenten voor samen stellen. Als u bijvoorbeeld een geheim met de naam *foo. Bar* wilt door geven met de sleutel van *token*: `MYTOKEN: ${secret.foo\.bar.token}`. Bovendien kunnen geheimen worden geëvalueerd met voor voegsel en achtervoegsel tekst. Bijvoorbeeld `MYURL: eus-${secret.foo\.bar.token}-version1`. Ook kunnen geheimen die beschikbaar zijn in de ruimten voor ouders en groot ouders worden door gegeven als build-argumenten.
+> Geheime namen en toetsen `.` kunnen het teken bevatten. Gebruik `\` om `.` te ontsnappen bij het doorgeven van geheimen als argumenten op te bouwen. Bijvoorbeeld om een geheim met de naam *foo.bar* door te geven met de sleutel van *token:* `MYTOKEN: ${secret.foo\.bar.token}`. Daarnaast kunnen geheimen worden geëvalueerd met voorvoegsel en postfixtekst. Bijvoorbeeld `MYURL: eus-${secret.foo\.bar.token}-version1`. Ook geheimen beschikbaar in ouder en grootouder ruimtes kunnen worden doorgegeven als argumenten te bouwen.
 
-Gebruik in uw Dockerfile de *ARG* -instructie om het geheim te verbruiken en gebruik dezelfde variabele later in de Dockerfile. Bijvoorbeeld:
+Gebruik in uw Dockerfile de *ARG-richtlijn* om het geheim te gebruiken en gebruik die zelfde variabele later in het Dockerfile. Bijvoorbeeld:
 
 ```dockerfile
 ...
@@ -152,7 +152,7 @@ ARG NUGET_EXTERNAL_FEED_ENDPOINTS="{'endpointCredentials': [{'endpoint':'PRIVATE
 ...
 ```
 
-Werk de services die in uw cluster worden uitgevoerd bij met deze wijzigingen. Voer de volgende opdracht op de opdrachtregel uit:
+Werk de services die in uw cluster worden uitgevoerd bij met deze wijzigingen. Voer de opdracht uit op de opdrachtregel:
 
 ```
 azds up
@@ -160,5 +160,5 @@ azds up
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met deze methoden kunt u nu veilig verbinding maken met een Data Base, een Azure-cache voor redis of beveiligde Azure-Services openen.
+Met deze methoden u nu veilig verbinding maken met een database, een Azure-cache voor Redis of toegang krijgen tot beveiligde Azure-services.
  

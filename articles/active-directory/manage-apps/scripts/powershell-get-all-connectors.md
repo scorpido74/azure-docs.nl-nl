@@ -1,6 +1,6 @@
 ---
-title: 'Power shell-voor beeld: alle toepassings proxy connector groepen weer geven'
-description: Power shell-voor beeld met een lijst met alle Azure Active Directory (Azure AD) connector groepen en connectors in uw Directory.
+title: PowerShell-voorbeeld - Alle toepassingsproxy-connectorgroepen weergeven
+description: PowerShell-voorbeeld met alle Azure Active Directory-connectorgroepen en -connectoren voor azure active directory (Azure AD)
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53af7f3f9049edc23ed4226f43e7fe67398c29f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75482112"
 ---
-# <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>Alle connector groepen en connectors in de Directory ophalen
+# <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>Alle verbindingsgroepen en connectoren in de map downloaden
 
-In dit Power shell-voorbeeld script wordt een lijst weer gegeven met alle Azure Active Directory-toepassings proxy connector groepen en-connectors in uw Directory.
+In dit voorbeeld van PowerShell-script worden alle Azure Active Directory-connectorgroepen en -connectoren voor azure active directory (Azure AD) application proxy en connectoren in uw map weergegeven.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +29,7 @@ In dit Power shell-voorbeeld script wordt een lijst weer gegeven met alle Azure 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [Preview-versie van de AzureAD v2 Power shell voor Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
+Voor dit voorbeeld is de [AzureAD V2 PowerShell for Graph-module](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) of de [AzureAD V2 PowerShell voor graph-modulepreviewversie](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) vereist.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -39,11 +39,11 @@ Voor dit voor beeld is de [AzureAD v2 Power shell voor Graph module](https://doc
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Hiermee wordt een lijst opgehaald met alle connector groepen, of indien opgegeven, Details van de opgegeven connector groep. |
-| [Get-AzureADApplicationProxyConnectorGroupMembers](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroupmembers?view=azureadps-2.0) | Hiermee haalt u alle Application proxy-connectors die zijn gekoppeld aan elke connector groep.|
+| [Get-AzureADApplicationProxyConnectorGroup](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroup?view=azureadps-2.0) | Hiermee haalt u een lijst op met alle verbindingsgroepen of, indien opgegeven, details van de opgegeven verbindingsgroep. |
+| [Get-AzureADApplicationProxyConnectorGroupGroupMembers](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplicationproxyconnectorgroupmembers?view=azureadps-2.0) | Hiermee worden alle toepassingsproxyconnectors gekoppeld aan elke connectorgroep.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van Azure AD Power shell-module](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)voor meer informatie over de Azure AD Power shell-module.
+Zie azure [AD PowerShell-moduleoverzicht](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)voor meer informatie over de Azure AD PowerShell-module.
 
-Raadpleeg voor andere Power shell-voor beelden voor toepassings proxy [Azure AD Power shell-voor beelden voor azure AD-toepassingsproxy](../application-proxy-powershell-samples.md).
+Zie [Azure AD PowerShell-voorbeelden voor](../application-proxy-powershell-samples.md)andere PowerShell-voorbeelden voor andere PowerShell-toepassingen.

@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 79fb8517ec6880e8a3eae0e74275567a24644b87
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175838"
 ---
 ## <a name="deployment-customization"></a>Implementatieaanpassing
 
-Het implementatieproces wordt ervan uitgegaan dat het ZIP-bestand dat u een kant-en-klaar-app bevat. Standaard worden zonder aanpassingen uitgevoerd. Om in te schakelen de dezelfde buildprocessen die u aan met continue integratie, moet u het volgende toevoegen aan uw toepassing-instellingen:
+Het implementatieproces gaat ervan uit dat het .zip-bestand dat u pusht een kant-en-klare app bevat. Standaard worden er geen aanpassingen uitgevoerd. Als u dezelfde buildprocessen wilt inschakelen die u met continue integratie krijgt, voegt u het volgende toe aan de toepassingsinstellingen:
 
     SCM_DO_BUILD_DURING_DEPLOYMENT=true 
 
-Wanneer u ZIP-push implementeren, deze instelling is **false** standaard. De standaardwaarde is **waar** voor continue integratie-implementaties. Als de waarde **waar**, uw instellingen met betrekking tot implementatie worden gebruikt tijdens de implementatie. U kunt deze instellingen configureren als app-instellingen of in een configuratiebestand .deployment die zich in de hoofdmap van het ZIP-bestand. Zie voor meer informatie, [opslagplaats en met betrekking tot implementatie-instellingen](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings) in de implementatie.
+Wanneer u .zip push-implementatie gebruikt, is deze instelling standaard **onwaar.** De standaardinstelling **geldt** voor implementaties voor continue integratie. Wanneer u bent ingesteld op **true,** worden uw implementatiegerelateerde instellingen gebruikt tijdens de implementatie. U deze instellingen configureren als app-instellingen of in een configuratiebestand met .deployment dat zich in de hoofdmap van uw .zip-bestand bevindt. Zie [Repository- en implementatiegerelateerde instellingen](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings) voor meer informatie in de implementatieverwijzing.

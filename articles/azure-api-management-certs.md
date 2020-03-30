@@ -1,6 +1,6 @@
 ---
-title: Een Azure-Service beheer certificaat uploaden | Microsoft Docs
-description: Meer informatie over het uploaden van het Service beheer certificaat voor de Azure Portal.
+title: Een Azure Service Management Certificate uploaden | Microsoft Documenten
+description: Meer informatie over het uploaden van het Service Management-certificaat voor de Azure-portal.
 services: cloud-services
 documentationcenter: .net
 author: georgewallace
@@ -11,45 +11,45 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
 ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78329116"
 ---
-# <a name="upload-an-azure-service-management-certificate"></a>Een Azure Service Management-certificaat uploaden
-Met beheer certificaten kunt u verifiëren met het klassieke implementatie model van Azure. Veel Program ma's en hulpprogram ma's (zoals Visual Studio of de Azure SDK) gebruiken deze certificaten om de configuratie en implementatie van verschillende Azure-Services te automatiseren. 
+# <a name="upload-an-azure-service-management-certificate"></a>Een Azure Service Management Certificate uploaden
+Met beheercertificaten u zich verifiëren met het klassieke implementatiemodel van Azure. Veel programma's en hulpprogramma's (zoals Visual Studio of de Azure SDK) gebruiken deze certificaten om de configuratie en implementatie van verschillende Azure-services te automatiseren. 
 
 > [!WARNING]
-> Wees voorzichtig! Met deze typen certificaten kunnen gebruikers die met hen worden geverifieerd, het abonnement beheren waaraan ze zijn gekoppeld.
+> Wees voorzichtig! Met deze typen certificaten kan iedereen die zich met hen verifieert, het abonnement beheren waaraan hij of zij is gekoppeld.
 >
 >
 
-Zie [Certificaten-overzicht voor azure Cloud Services](cloud-services/cloud-services-certs-create.md#what-are-management-certificates)als u meer informatie wilt over Azure-certificaten (inclusief het maken van een zelfondertekend certificaat).
+Zie [Certificatenoverzicht voor Azure Cloud Services](cloud-services/cloud-services-certs-create.md#what-are-management-certificates)als u meer informatie wilt over Azure-certificaten (waaronder het maken van een zelfondertekend certificaat.
 
-U kunt ook [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) gebruiken om client code te verifiëren voor automatiserings doeleinden.
+U [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) ook gebruiken om clientcode te verifiëren voor automatiseringsdoeleinden.
 
-**Opmerking:** U moet een mede beheerder zijn van het abonnement om bewerkingen onder beheer certificaten uit te voeren. [Meer informatie](https://go.microsoft.com/fwlink/?linkid=849300) over het toevoegen of verwijderen van co-beheerders vanuit een nieuwe Azure-Portal 
+**Let op:** U moet een medebeheerder zijn bij het abonnement om bewerkingen uit te voeren onder Beheercertificaten. [Meer informatie](https://go.microsoft.com/fwlink/?linkid=849300) over het toevoegen of verwijderen van medebeheerders uit nieuwe Azure Portal 
 
-## <a name="upload-a-management-certificate"></a>Een beheer certificaat uploaden
-Zodra u een beheer certificaat hebt gemaakt (. cer-bestand met alleen de open bare sleutel), kunt u het uploaden naar de portal. Wanneer het certificaat beschikbaar is in de portal, kan iedereen met een overeenkomend certificaat (persoonlijke sleutel) verbinding maken via de beheer-API en toegang krijgen tot de resources voor het gekoppelde abonnement.
+## <a name="upload-a-management-certificate"></a>Een beheercertificaat uploaden
+Zodra u een beheercertificaat hebt gemaakt (.cer-bestand met alleen de openbare sleutel) u deze uploaden naar de portal. Wanneer het certificaat beschikbaar is in de portal, kan iedereen met een overeenkomend certificaat (privésleutel) verbinding maken via de Beheer-API en toegang krijgen tot de bronnen voor het bijbehorende abonnement.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Klik op **alle services** onder de lijst van de Azure-service en selecteer vervolgens **abonnementen** in de _algemene_ service groep.
+1. Log in bij de [Azure-portal](https://portal.azure.com).
+2. Klik op **Alle services** onder in de Azure-servicelijst en selecteer **Abonnementen** in de servicegroep _Algemeen._
 
-    ![Menu abonnement](./media/azure-api-management-certs/subscriptions_menu.png)
+    ![Menu Abonnement](./media/azure-api-management-certs/subscriptions_menu.png)
 
-3. Zorg ervoor dat u het juiste abonnement selecteert dat u wilt koppelen aan het certificaat.     
-4. Nadat u het juiste abonnement hebt geselecteerd, drukt u op **beheer certificaten** in de groep _instellingen_ .
+3. Selecteer het juiste abonnement dat u aan het certificaat wilt koppelen.     
+4. Nadat u het juiste abonnement hebt geselecteerd, drukt u op **Beheercertificaten** in de groep _Instellingen._
 
     ![Instellingen](./media/azure-api-management-certs/mgmtcerts_menu.png)
 
-5. Druk op de knop **uploaden** .
+5. Druk op de knop **Uploaden.**
 
-    ![Pagina uploads op certificaten](./media/azure-api-management-certs/certificates_page.png)
-6. Vul de dialoog gegevens in en druk op **uploaden**.
+    ![Uploaden op de pagina certificaten](./media/azure-api-management-certs/certificates_page.png)
+6. Vul de dialoogvenstergegevens in en druk op **Uploaden**.
 
     ![Instellingen](./media/azure-api-management-certs/certificate_details.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u een beheer certificaat aan een abonnement hebt gekoppeld, kunt u (nadat u het overeenkomende certificaat lokaal hebt geïnstalleerd) via een programma verbinding maken met het [klassieke implementatie model rest API](/azure/?pivot=sdkstools) en de verschillende Azure-resources automatiseren die ook aan het abonnement zijn gekoppeld.
+Nu u een beheercertificaat aan een abonnement hebt gekoppeld, u (nadat u het overeenkomende certificaat lokaal hebt geïnstalleerd) programmatisch verbinding maken met de [klassieke implementatiemodel REST API](/azure/?pivot=sdkstools) en de verschillende Azure-bronnen automatiseren die ook aan dat abonnement zijn gekoppeld.

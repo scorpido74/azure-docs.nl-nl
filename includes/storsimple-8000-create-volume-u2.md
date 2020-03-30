@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176088"
 ---
 #### <a name="to-create-a-volume"></a>Een volume maken
@@ -45,7 +45,7 @@ ms.locfileid: "67176088"
          1. Geef een **naam** voor uw ACR op.
          2. Geef onder **iSCSI-initiatornaam** het IQN (iSCI Qualified Name) van uw Windows-host op. Als u het IQN niet hebt, gaat u naar [Het IQN van een Windows Server-host ophalen](#get-the-iqn-of-a-windows-server-host).
 
-      1. Klik op **Create**. Er wordt een volume gemaakt met de opgegeven instellingen.
+      1. Klik **op Maken**. Er wordt een volume gemaakt met de opgegeven instellingen.
 
          ![Klik op Maken](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 

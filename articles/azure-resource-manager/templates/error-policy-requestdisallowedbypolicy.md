@@ -1,24 +1,24 @@
 ---
 title: RequestDisallowedByPolicy-fout
-description: Beschrijft de oorzaak van de RequestDisallowedByPolicy-fout bij het implementeren van resources met Azure Resource Manager.
+description: Beschrijft de oorzaak van de fout RequestDisallowedByPolicy bij het implementeren van resources met Azure Resource Manager.
 author: genlin
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75477666"
 ---
-# <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>RequestDisallowedByPolicy-fout met Azure-resource beleid
+# <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Fout van RequestDisallowedByPolicy aanvragen met Azure-bronbeleid
 
-In dit artikel wordt de oorzaak van de RequestDisallowedByPolicy-fout beschreven. deze fout kan ook worden opgelost.
+In dit artikel wordt de oorzaak van de fout RequestDisallowedByPolicy beschreven, maar biedt ook oplossing voor deze fout.
 
 ## <a name="symptom"></a>Symptoom
 
-Tijdens de implementatie ontvangt u mogelijk een **RequestDisallowedByPolicy** -fout die voor komt dat u de resources maakt. In het volgende voor beeld ziet u de fout:
+Tijdens de implementatie ontvangt u mogelijk een fout **van RequestDisallowedByPolicy** waardoor u de resources niet maken. In het volgende voorbeeld wordt de fout weergegeven:
 
 ```json
 {
@@ -31,13 +31,13 @@ Tijdens de implementatie ontvangt u mogelijk een **RequestDisallowedByPolicy** -
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Gebruik een van de volgende methoden om details op te halen over het beleid dat uw implementatie heeft geblokkeerd:
+Als u details wilt ophalen over het beleid dat uw implementatie heeft geblokkeerd, gebruikt u de volgende methoden:
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Geef in Power shell de beleids-id als de para meter `Id` op om details op te halen over het beleid dat uw implementatie heeft geblokkeerd.
+Geef in PowerShell die beleids-id op als parameter `Id` om details op te halen over het beleid dat uw implementatie heeft geblokkeerd.
 
 ```powershell
 (Get-AzPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -45,7 +45,7 @@ Geef in Power shell de beleids-id als de para meter `Id` op om details op te hal
 
 ### <a name="azure-cli"></a>Azure-CLI
 
-Geef in azure CLI de naam op van de beleids definitie:
+Geef in Azure CLI de naam van de beleidsdefinitie op:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -53,8 +53,8 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Oplossing
 
-Voor beveiliging of naleving kunnen uw abonnements beheerders beleids regels toewijzen die beperken hoe bronnen worden geïmplementeerd. Uw abonnement kan bijvoorbeeld een beleid hebben dat voor komt dat open bare IP-adressen, netwerk beveiligings groepen, door de gebruiker gedefinieerde routes of route tabellen worden gemaakt. In het fout bericht in de sectie **symptomen** wordt de naam van het beleid weer gegeven.
-U kunt dit probleem oplossen door de bron beleidsregels te controleren en te bepalen hoe u resources implementeert die voldoen aan het beleid.
+Voor beveiliging of naleving kunnen uw abonnementsbeheerders beleidsregels toewijzen die de manier beperken waarop resources worden geïmplementeerd. Uw abonnement kan bijvoorbeeld een beleid hebben dat voorkomt dat openbare IP-adressen, netwerkbeveiligingsgroepen, door de gebruiker gedefinieerde routes of routetabellen worden gemaakt. Het foutbericht in de sectie **Symptomen** toont de naam van het beleid.
+Als u dit probleem wilt oplossen, controleert u het resourcebeleid en bepaalt u hoe resources moeten worden geïmplementeerd die aan dat beleid voldoen.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 37d4c295fe8a89a8b32364f42e8fb4c5a4caf777
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176558"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Updates installeren via Azure Portal
@@ -61,6 +61,6 @@ ms.locfileid: "67176558"
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate16m.png)
 
-9. Nadat de updates zijn geïnstalleerd, ziet u een bericht voor dit effect in de blade met updates. Versie van de software ook gewijzigd in **10.0.10288.0**. 
+9. Nadat de updates zijn geïnstalleerd, wordt hierover een bericht weergegeven op de blade Apparaatupdates. De softwareversie verandert ook in **10.0.10288.0**. 
 
     ![apparaat bijwerken](../includes/media/storsimple-virtual-array-install-update-via-portal/azupdate17m.png)

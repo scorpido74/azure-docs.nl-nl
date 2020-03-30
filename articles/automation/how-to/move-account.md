@@ -1,6 +1,6 @@
 ---
 title: Uw Azure Automation-account verplaatsen naar een ander abonnement
-description: In dit artikel wordt beschreven hoe u uw Automation-account kunt verplaatsen naar een ander abonnement
+description: In dit artikel wordt beschreven hoe u uw Automation-account verplaatsen naar een ander abonnement
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -10,38 +10,38 @@ ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1aa759a2984764169eb28935e095d0f7c0f90c08
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969835"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Uw Azure Automation-account verplaatsen naar een ander abonnement
 
-Azure biedt u de mogelijkheid om sommige resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement. U kunt resources verplaatsen via de Azure Portal, Power shell, de Azure CLI of de REST API. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie over het proces.
+Azure biedt u de mogelijkheid om bepaalde resources te verplaatsen naar een nieuwe brongroep of -abonnement. U resources verplaatsen via de Azure-portal, PowerShell, de Azure CLI of de REST-API. Zie Resources verplaatsen naar [een nieuwe resourcegroep of -abonnement voor](../../azure-resource-manager/management/move-resource-group-and-subscription.md)meer informatie over het proces.
 
-Azure Automation accounts zijn een van de resources die kunnen worden verplaatst. In dit artikel leert u de stappen om Automation-accounts te verplaatsen naar een andere resource of een ander abonnement.
+Azure Automation-accounts zijn een van de resources die kunnen worden verplaatst. In dit artikel leert u de stappen om Automatiseringsaccounts naar een andere bron of abonnement te verplaatsen.
 
-De stappen op hoog niveau voor het verplaatsen van uw Automation-account zijn:
+De stappen op hoog niveau om uw Automatiseringsaccount te verplaatsen zijn:
 
 1. Verwijder uw oplossingen.
-2. De werk ruimte ontkoppelen.
-3. Verplaats het Automation-account.
-4. Verwijder de run as-accounts en maak deze opnieuw.
-5. Schakel uw oplossingen opnieuw in.
+2. Koppel de koppeling van uw werkruimte los.
+3. Verplaats het automatiseringsaccount.
+4. Verwijder en maak de Run As-accounts opnieuw.
+5. Maak uw oplossingen opnieuw in schakelen.
 
 ## <a name="remove-solutions"></a>Oplossingen verwijderen
 
-Als u uw werk ruimte wilt ontkoppelen van uw Automation-account, moeten deze oplossingen uit uw werk ruimte worden verwijderd:
-- **Wijzigingen bijhouden en inventaris**
+Als u uw werkruimte wilt loskoppelen van uw Automatiseringsaccount, moeten deze oplossingen uit uw werkruimte worden verwijderd:
+- **Wijzigingen bijhouden en Inventaris**
 - **Updatebeheer**
-- **Vm's buiten kantoor uren starten/stoppen**
+- **Vm's starten/stoppen tijdens de vrije uren**
 
-Zoek in uw resource groep elke oplossing en selecteer **verwijderen**. Bevestig op de pagina **resources verwijderen** de resources die moeten worden verwijderd en selecteer **verwijderen**.
+Zoek in uw resourcegroep elke oplossing en selecteer **Verwijderen**. Bevestig op de pagina **Resources verwijderen** de te verwijderen resources en selecteer **Verwijderen**.
 
-![Oplossingen van de Azure Portal verwijderen](../media/move-account/delete-solutions.png)
+![Oplossingen verwijderen uit de Azure-portal](../media/move-account/delete-solutions.png)
 
-U kunt dezelfde taak uitvoeren met de cmdlet [Remove-azurermresource gebruiken](/powershell/module/azurerm.resources/remove-azurermresource) , zoals wordt weer gegeven in het volgende voor beeld:
+U dezelfde taak uitvoeren met de cmdlet [Remove-AzureRmResource](/powershell/module/azurerm.resources/remove-azurermresource) zoals weergegeven in het volgende voorbeeld:
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -51,100 +51,100 @@ Remove-AzureRmResource -ResourceType 'Microsoft.OperationsManagement/solutions' 
 Remove-AzureRmResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM($workspaceName)" -ResourceGroupName $resourceGroupName
 ```
 
-### <a name="additional-steps-for-startstop-vms"></a>Aanvullende stappen voor het starten/stoppen van Vm's
+### <a name="additional-steps-for-startstop-vms"></a>Aanvullende stappen voor VM's starten/stoppen
 
-Voor de oplossing **Vm's starten/stoppen** moet u ook de waarschuwings regels verwijderen die zijn gemaakt door de oplossing.
+Voor de **VM's starten/stoppen** moet u ook de waarschuwingsregels verwijderen die door de oplossing zijn gemaakt.
 
-Ga in het Azure Portal naar de resource groep en selecteer **bewaking** > **waarschuwingen** > regels voor het **beheren**van waarschuwingen.
+Ga in de Azure-portal naar uw resourcegroep en selecteer > **Waarschuwingsregels bewaken** > **Beheren**. **Monitoring**
 
-![Pagina waarschuwingen met een selectie van waarschuwings regels beheren](../media/move-account/alert-rules.png)
+![Pagina Waarschuwingen met selectie van waarschuwingsregels beheren](../media/move-account/alert-rules.png)
 
-Op de pagina **regels** ziet u een lijst met de waarschuwingen die zijn geconfigureerd in die resource groep. De oplossing **Vm's starten/stoppen** maakt drie waarschuwings regels:
+Op de pagina **Regels** ziet u een lijst met de waarschuwingen die zijn geconfigureerd in die brongroep. Met **de OPLOSSING Vm's starten/stoppen** worden drie waarschuwingsregels gemaakt:
 
 * AutoStop_VM_Child
 * ScheduledStartStop_Parent
 * SequencedStartStop_Parent
 
-Selecteer deze drie waarschuwings regels en selecteer vervolgens **verwijderen**. Met deze actie worden deze waarschuwings regels verwijderd.
+Selecteer deze drie waarschuwingsregels en selecteer **Verwijderen**. Met deze actie worden deze waarschuwingsregels verwijderd.
 
-![Pagina regels die de bevestiging van het verwijderen van geselecteerde regels aanvragen](../media/move-account/delete-rules.png)
+![Regelspagina met het verzoek om bevestiging van verwijdering voor geselecteerde regels](../media/move-account/delete-rules.png)
 
 > [!NOTE]
-> Als u geen waarschuwings regels ziet op de pagina **regels** , wijzigt u de **status** zodat **Uitgeschakelde** waarschuwingen worden weer gegeven, omdat u deze mogelijk hebt uitgeschakeld.
+> Als u geen waarschuwingsregels ziet op de pagina **Regels,** wijzigt u de **status** om **uitgeschakelde** waarschuwingen weer te geven, omdat u deze mogelijk hebt uitgeschakeld.
 
-Wanneer de waarschuwings regels worden verwijderd, verwijdert u de actie groep die is gemaakt voor de meldingen van de Vm's van de **Start/Stop-** oplossing.
+Wanneer de waarschuwingsregels worden verwijderd, verwijdert u de actiegroep die is gemaakt voor de meldingen **van vm's voor start/stop.**
 
-Selecteer in de Azure Portal > **waarschuwingen** **controleren** > **actie groepen beheren**.
+Selecteer in de Azure-portal de optie > **Monitorwaarschuwingen Actiegroepen** > **beheren**. **Monitor**
 
-Selecteer **StartStop_VM_Notification** in de lijst. Selecteer op de pagina actie groep de optie **verwijderen**.
+Selecteer **StartStop_VM_Notification** in de lijst. Selecteer **verwijderen**op de pagina met de actiegroep .
 
-![Pagina actie groep, selecteer verwijderen](../media/move-account/delete-action-group.png)
+![Actiegroeppagina, selecteer verwijderen](../media/move-account/delete-action-group.png)
 
-Op dezelfde manier kunt u uw actie groep verwijderen met behulp van Power shell met de cmdlet [Remove-AzureRmActionGroup](/powershell/module/azurerm.insights/remove-azurermactiongroup) , zoals in het volgende voor beeld wordt weer gegeven:
+U ook uw actiegroep verwijderen met powershell met de cmdlet [Remove-AzureRmActionGroup,](/powershell/module/azurerm.insights/remove-azurermactiongroup) zoals te zien is in het volgende voorbeeld:
 
 ```azurepowershell-interactive
 Remove-AzureRmActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification
 ```
 
-## <a name="unlink-your-workspace"></a>Uw werk ruimte ontkoppelen
+## <a name="unlink-your-workspace"></a>De koppeling van uw werkruimte ontkoppelen
 
-Selecteer in de Azure Portal **Automation-account** > **gerelateerde resources** > **gekoppelde werk ruimte**. Selecteer **werk ruimte ontkoppelen** om de werk ruimte te ontkoppelen van uw Automation-account.
+Selecteer in de Azure-portal de optie De**werkruimte Gekoppelde werkruimte**voor **automatiseringsaccount** > gerelateerde**resources** > . Selecteer **Werkruimte ontkoppelen** om de koppeling van de werkruimte los te koppelen aan uw Automatiseringsaccount.
 
-![Een werk ruimte ontkoppelen van een Automation-account](../media/move-account/unlink-workspace.png)
+![Een werkruimte loskoppelen van een Automatiseringsaccount](../media/move-account/unlink-workspace.png)
 
-## <a name="move-your-automation-account"></a>Uw Automation-account verplaatsen
+## <a name="move-your-automation-account"></a>Uw Automatiseringsaccount verplaatsen
 
-Nadat u de vorige items hebt verwijderd, kunt u door gaan met het verwijderen van uw Automation-account en de runbooks. Blader in het Azure Portal naar de resource groep van uw Automation-account. Selecteer **verplaatsen** > **verplaatsen naar een ander abonnement**.
+Nadat u de vorige items hebt verwijderd, u uw Automatiseringsaccount en de bijbehorende runbooks blijven verwijderen. Blader in de Azure-portal naar de brongroep van uw Automatiseringsaccount. Selecteer **Verplaatsen** > **naar een ander abonnement**selecteren .
 
-![De pagina resource groep, verplaatsen naar een ander abonnement](../media/move-account/move-resources.png)
+![Pagina Resourcegroep, naar een ander abonnement gaan](../media/move-account/move-resources.png)
 
-Selecteer de resources in de resource groep die u wilt verplaatsen. Zorg ervoor dat u uw **Automation-account**, **Runbook**en **log Analytics werkruimte** resources opneemt.
+Selecteer de resources in uw resourcegroep die u wilt verplaatsen. Zorg ervoor dat u uw **automatiseringsaccount,** **runbook**en **logboekanalysewerkruimtebronnen** opneemt.
 
-Nadat de verplaatsing is voltooid, zijn er extra stappen vereist om alles wat werk gaat doen.
+Nadat de verhuizing is voltooid, zijn er extra stappen nodig om alles te laten werken.
 
-## <a name="re-create-run-as-accounts"></a>Run as-accounts opnieuw maken
+## <a name="re-create-run-as-accounts"></a>Run As-accounts opnieuw maken
 
-[Run as-accounts](../manage-runas-account.md) maken een service-principal in azure Active Directory om te verifiëren met Azure-resources. Wanneer u abonnementen wijzigt, wordt het bestaande uitvoeren als-account niet meer gebruikt voor het Automation-account.
+[Uitvoeren Als accounts](../manage-runas-account.md) een serviceprincipal maken in Azure Active Directory om te verifiëren met Azure-bronnen. Wanneer u abonnementen wijzigt, maakt het automatiseringsaccount geen gebruik meer van het bestaande Run As-account.
 
-Ga naar uw Automation-account in het nieuwe abonnement en selecteer **uitvoeren als-accounts** onder **account instellingen**. U ziet dat de uitvoeren als-accounts nu onvolledig worden weer gegeven.
+Ga naar uw Automatiseringsaccount in het nieuwe abonnement en selecteer **Uitvoeren als accounts** onder **Accountinstellingen**. U ziet dat de accounts uitvoeren als nu als onvolledig worden weergegeven.
 
-![Run as-accounts zijn onvolledig](../media/move-account/run-as-accounts.png)
+![Uitvoeren Omdat accounts onvolledig zijn](../media/move-account/run-as-accounts.png)
 
-Selecteer elk uitvoeren als-account. Selecteer op de pagina **Eigenschappen** de optie **verwijderen** om het uitvoeren als-account te verwijderen.
+Selecteer elke Run As-account. Selecteer **op** de pagina Eigenschappen de optie **Verwijderen** om het account Uitvoeren als te verwijderen.
 
 > [!NOTE]
-> Als u geen machtigingen hebt om de run as-accounts te maken of weer te geven, ziet u het volgende bericht: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` voor meer informatie over de vereiste machtigingen voor het configureren van een run as-account, raadpleegt u de [machtigingen die zijn vereist voor het configureren van run as-accounts](../manage-runas-account.md#permissions).
+> Als u geen machtigingen hebt om de Run As-accounts te maken `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` of weer te geven, ziet u het volgende bericht: Zie Machtigingen die nodig zijn om Run As-accounts te configureren voor meer informatie over de machtigingen die nodig zijn om [Run As-accounts te configureren.](../manage-runas-account.md#permissions)
 
-Nadat de run as-accounts zijn verwijderd, selecteert u **maken** onder **Azure uitvoeren als-account**. Selecteer op de pagina **uitvoeren als-account voor Azure toevoegen** de optie **maken** om het uitvoeren als-account en de service-principal te maken. Herhaal de voor gaande stappen met het **klassieke uitvoeren als-account van Azure**.
+Nadat de Run As-accounts zijn verwijderd, selecteert u **Maken** onder **Azure Run As-account**. Selecteer op de pagina **Azure Run As-account toevoegen** de optie **Maken** om de run as-account en serviceprincipal te maken. Herhaal de voorgaande stappen met het **Azure Classic Run As-account**.
 
 ## <a name="enable-solutions"></a>Oplossingen inschakelen
 
-Nadat u de run as-accounts opnieuw hebt gemaakt, schakelt u de oplossingen die u hebt verwijderd voordat u deze verplaatst opnieuw in. Als u **Wijzigingen bijhouden en inventaris** en **updatebeheer**wilt inschakelen, selecteert u de betreffende mogelijkheid in uw Automation-account. Kies de Log Analytics-werk ruimte die u hebt verplaatst en selecteer **inschakelen**.
+Nadat u de run As-accounts opnieuw hebt gemaakt, schakelt u de oplossingen die u vóór de verhuizing hebt verwijderd, opnieuw in. Als u **Wijzigingstracking en voorraadbeheer** **wilt**inschakelen, selecteert u de desbetreffende mogelijkheid in uw automatiseringsaccount. Kies de werkruimte Log Analytics die u hebt verplaatst en selecteer **Inschakelen**.
 
-![Oplossingen opnieuw inschakelen in het verplaatste Automation-account](../media/move-account/reenable-solutions.png)
+![Oplossingen opnieuw inschakelen in uw verplaatste automatiseringsaccount](../media/move-account/reenable-solutions.png)
 
-Computers waarop de oplossingen worden uitgevoerd, zijn zichtbaar wanneer u de bestaande Log Analytics-werk ruimte hebt verbonden.
+Machines die zijn aangesloten bij uw oplossingen zijn zichtbaar wanneer u de bestaande Log Analytics-werkruimte hebt aangesloten.
 
-Als u de **virtuele machines starten/stoppen** buiten kantoor uren wilt inschakelen, moet u de oplossing opnieuw implementeren. Selecteer onder **gerelateerde resources**de optie **Vm's starten/stoppen** > meer **informatie over en schakel de oplossing** in > **maken** om de implementatie te starten.
+Als u de **VM's start/stop wilt** inschakelen tijdens off-hours oplossing, moet u de oplossing opnieuw implementeren. Selecteer **VMs** >  **starten/stoppen**onder Gerelateerde resources**Meer informatie over en schakel de oplossing** > **Maken** in om de implementatie te starten.
 
-Kies op de pagina **oplossing toevoegen** de log Analytics-werk ruimte en het Automation-account.
+Kies op de pagina **Oplossing toevoegen** uw Log Analytics Workspace- en Automation-account.
 
-![Menu oplossing toevoegen](../media/move-account/add-solution-vm.png)
+![Menu Oplossing toevoegen](../media/move-account/add-solution-vm.png)
 
-Zie [VM's buiten bedrijfsuren starten/stoppen-oplossing in azure Automation](../automation-solution-vm-management.md)voor gedetailleerde instructies voor het configureren van de oplossing.
+Zie [Vm's starten/stoppen tijdens off-hours oplossing in Azure Automation](../automation-solution-vm-management.md)voor gedetailleerde instructies over het configureren van de oplossing.
 
 ## <a name="post-move-verification"></a>Verificatie na verplaatsing
 
-Wanneer de verplaatsing is voltooid, controleert u de volgende taken die moeten worden gecontroleerd:
+Controleer de volgende lijst met taken die moeten worden geverifieerd wanneer de verhuizing is voltooid:
 
-|Mogelijkheid|Tests|Koppeling voor probleem oplossing|
+|Mogelijkheid|Testen|Koppeling probleemoplossing|
 |---|---|---|
-|Runbooks|Een runbook kan worden uitgevoerd en er verbinding mee worden gemaakt met Azure-resources.|[Problemen met runbooks oplossen](../troubleshoot/runbooks.md)
-|Broncodebeheer|U kunt een hand matige synchronisatie uitvoeren op uw broncode beheer opslag plaats.|[Integratie van bronbeheer](../source-control-integration.md)|
-|Wijzigingen bijhouden en inventaris|Controleer of er actuele inventarisatie gegevens van uw computers worden weer gegeven.|[Problemen met het bijhouden van wijzigingen oplossen](../troubleshoot/change-tracking.md)|
-|Updatebeheer|Controleer of u uw computers ziet en ze zijn in orde.</br>Voer een test implementatie van de software-update uit.|[Problemen met update beheer oplossen](../troubleshoot/update-management.md)|
-|Gedeelde bronnen|Controleer of u al uw gedeelde bronnen ziet, zoals [referenties](../shared-resources/credentials.md), [variabelen](../shared-resources/variables.md), enzovoort.|
+|Runbooks|Een runbook kan met succes worden uitgevoerd en verbinding maken met Azure-bronnen.|[Runbooks oplossen van problemen](../troubleshoot/runbooks.md)
+|Broncodebeheer|U een handmatige synchronisatie uitvoeren op uw bronbesturingselementrepo.|[Integratie van bronbeheer](../source-control-integration.md)|
+|Tracking en voorraad wijzigen|Controleer of u actuele voorraadgegevens van uw machines ziet.|[Problemen met het bijhouden van wijzigingen oplossen](../troubleshoot/change-tracking.md)|
+|Updatebeheer|Controleer of je je machines ziet en dat ze gezond zijn.</br>Een implementatie van testsoftware-updates uitvoeren.|[Problemen met updatebeheer oplossen](../troubleshoot/update-management.md)|
+|Gedeelde resources|Controleer of u al uw gedeelde bronnen ziet, zoals [referenties,](../shared-resources/credentials.md) [variabelen,](../shared-resources/variables.md)enz.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [resources verplaatsen in azure](../../azure-resource-manager/management/move-support-resources.md)voor meer informatie over het verplaatsen van resources in Azure.
+Zie Resources verplaatsen in Azure voor meer informatie over het verplaatsen van resources [in Azure.](../../azure-resource-manager/management/move-support-resources.md)

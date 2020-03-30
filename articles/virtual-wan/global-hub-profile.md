@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual WAN Global of hub-based VPN-profielen downloaden | Microsoft Docs
-description: Meer informatie over de geautomatiseerde schaal bare vertakking-to-Branch connectiviteit van Virtual WAN, beschik bare regio's en partners.
+title: Azure Virtual WAN global of hub-based VPN-profielen downloaden | Microsoft Documenten
+description: Meer informatie over virtuele WAN-geautomatiseerde schaalbare branch-to-branch-connectiviteit, beschikbare regio's en partners.
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
@@ -8,43 +8,43 @@ ms.topic: conceptual
 ms.date: 1/31/2020
 ms.author: alzam
 ms.openlocfilehash: 3b7e765dbd024d46939e8989993f0c882b2a8f4b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965227"
 ---
-# <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>Een globaal of op de hub gebaseerd profiel voor VPN-clients van de gebruiker downloaden
+# <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>Een wereldwijd of hub-gebaseerd profiel downloaden voor VPN-clients van gebruikers
 
-Azure Virtual WAN biedt twee soorten connectiviteit voor externe gebruikers: globaal en op basis van de hub. Gebruik de volgende secties voor meer informatie over en het downloaden van een profiel.
+Azure Virtual WAN biedt twee soorten connectiviteit voor externe gebruikers: globaal en hubgebaseerd. Gebruik de volgende secties om meer te weten te komen over en een profiel te downloaden.
 
-## <a name="global-profile"></a>Algemeen profiel
+## <a name="global-profile"></a>Wereldwijd profiel
 
-Het profiel verwijst naar een load balancer dat alle VPN-hubs van de actieve gebruiker bevat. De gebruiker wordt omgeleid naar de hub die zich het dichtst bij de geografische locatie van de gebruiker bevindt. Dit type verbinding is handig wanneer gebruikers regel matig naar verschillende locaties reizen. Het **globale** profiel downloaden:
+Het profiel wijst naar een load balancer die alle actieve User VPN-hubs bevat. De gebruiker wordt doorverwezen naar de hub die het dichtst bij de geografische locatie van de gebruiker ligt. Dit type connectiviteit is handig wanneer gebruikers vaak naar verschillende locaties reizen. Ga als lid van het globale profiel als lid van het **wereldprofiel:**
 
 1. Navigeer naar uw virtuele WAN.
-2. Klik op **VPN-gebruikers configuratie**.
+2. Klik **op Gebruikers-VPN-configuratie**.
 3. Markeer de configuratie waarvoor u het profiel wilt downloaden.
-4. Klik op **VPN-gebruikers profiel voor virtuele WAN downloaden**.
+4. Klik **op Virtueel WAN-gebruikersVPN-profiel downloaden**.
 
-   ![Algemeen profiel](./media/global-hub-profile/global1.png)
+   ![Wereldwijd profiel](./media/global-hub-profile/global1.png)
 
-## <a name="hub-based-profile"></a>Op de hub gebaseerd profiel
+## <a name="hub-based-profile"></a>Profiel op basis van hub's
 
-Het profiel verwijst naar één hub. De gebruiker kan alleen verbinding maken met de betreffende hub met behulp van dit profiel. Het op de **hub gebaseerde** profiel downloaden:
+Het profiel wijst naar één hub. De gebruiker kan alleen verbinding maken met de specifieke hub met behulp van dit profiel. Ga als lid van het **hubprofiel:**
 
 1. Navigeer naar uw virtuele WAN.
-2. Klik op **hub** op de pagina overzicht.
+2. Klik **op Hub** op de pagina Overzicht.
 
-    ![Hub-profiel 1](./media/global-hub-profile/hub1.png)
-3. Klik op **gebruikers VPN (punt naar site)** .
-4. Klik op **VPN-gebruikers profiel voor virtuele hub downloaden**.
+    ![Hubprofiel 1](./media/global-hub-profile/hub1.png)
+3. Klik **op GebruikersVPN (Punt naar site)**.
+4. Klik **op Virtueel VPN-profiel van de hubgebruiker downloaden**.
 
-   ![Hub-profiel 2](./media/global-hub-profile/hub2.png)
+   ![Hubprofiel 2](./media/global-hub-profile/hub2.png)
 5. Controleer **EAPTLS**.
-6. Klik op **profiel genereren en downloaden**.
+6. Klik **op Profiel genereren en downloaden**.
 
-   ![Hub-profiel 3](./media/global-hub-profile/download.png)
+   ![Hubprofiel 3](./media/global-hub-profile/download.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

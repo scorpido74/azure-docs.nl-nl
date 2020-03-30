@@ -1,6 +1,6 @@
 ---
-title: Instellingen voor Azure AD-functies configureren in PIM-Azure AD | Microsoft Docs
-description: Meer informatie over het configureren van instellingen voor Azure AD-functies in Azure AD Privileged Identity Management (PIM).
+title: Azure AD-rolinstellingen configureren in PIM - Azure AD | Microsoft Documenten
+description: Meer informatie over het configureren van Azure AD-rolinstellingen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,202 +15,202 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78205021"
 ---
-# <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure AD-functies configureren in Privileged Identity Management
+# <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Azure AD-rolinstellingen configureren in Privileged Identity Management
 
-Een beheerder van een bevoegde rol kan Privileged Identity Management (PIM) in hun Azure Active Directory (Azure AD)-organisatie aanpassen, met inbegrip van het wijzigen van de ervaring voor een gebruiker die een in aanmerking komende roltoewijzing activeert.
+Een bevoegde rolbeheerder kan Privileged Identity Management (PIM) aanpassen in zijn Azure Active Directory (Azure AD)-organisatie, inclusief het wijzigen van de ervaring voor een gebruiker die een in aanmerking komende roltoewijzing activeert.
 
-## <a name="determine-your-version-of-pim"></a>Uw versie van PIM bepalen
+## <a name="determine-your-version-of-pim"></a>Bepaal uw versie van PIM
 
-Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged Identity Management bijgewerkt naar een nieuwe versie die overeenkomt met de ervaringen van Azure-resource rollen. Hiermee maakt u aanvullende functies en [wijzigingen in de bestaande API](azure-ad-roles-features.md#api-changes). Terwijl de nieuwe versie wordt geïmplementeerd, zijn de procedures die u in dit artikel volgt, afhankelijk van de versie van Privileged Identity Management die u momenteel hebt. Volg de stappen in deze sectie om te bepalen welke versie van Privileged Identity Management u hebt. Nadat u uw versie van Privileged Identity Management weet, kunt u de procedures in dit artikel selecteren die overeenkomen met die versie.
+Vanaf november 2019 wordt het gedeelte Azure AD-rollen van Privileged Identity Management bijgewerkt naar een nieuwe versie die overeenkomt met de ervaringen voor Azure-bronrollen. Dit zorgt voor extra functies en [wijzigingen in de bestaande API.](azure-ad-roles-features.md#api-changes) Terwijl de nieuwe versie wordt uitgerold, zijn welke procedures u in dit artikel volgt, afhankelijk van de versie van Privileged Identity Management die u momenteel hebt. Volg de stappen in deze sectie om te bepalen welke versie van Privileged Identity Management u hebt. Nadat u uw versie van Privileged Identity Management hebt weten, u de procedures in dit artikel selecteren die overeenkomen met die versie.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
-1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met een gebruiker die zich in de rol [Van Privileged role administrator](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
+1. Azure **AD Privileged Identity Management openen**. Als u boven aan de overzichtspagina een banner hebt staan, volgt u de instructies op het tabblad **Nieuwe versie** van dit artikel. Volg anders de instructies op het tabblad **Vorige versie.**
 
   [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-Volg de stappen in dit artikel voor het goed keuren of weigeren van aanvragen voor Azure AD-rollen.
+Volg de stappen in dit artikel om aanvragen voor Azure AD-rollen goed te keuren of te weigeren.
 
 # <a name="new-version"></a>[Nieuwe versie](#tab/new)
 
 ## <a name="open-role-settings"></a>Rolinstellingen openen
 
-Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
+Volg deze stappen om de instellingen voor een Azure AD-rol te openen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker in de beheerdersrol [privileged Role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
-gt
-1. Open **Azure AD Privileged Identity Management** &gt; **functies van Azure AD** &gt; **rol**.
+1. Meld u aan bij [azure portal](https://portal.azure.com/) met een gebruiker in de rol Privileged [Role Administrator.](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+Gt
+1. Azure **AD Privileged Identity Management** &gt; **Azure AD-rollenrolinstellingen** &gt; **openen**.
 
-    ![Pagina rolinstellingen die Azure AD-rollen weer geven](./media/pim-how-to-change-default-settings/role-settings.png)
+    ![Pagina Met pagina Met Azure AD-rollen met functie-instellingen](./media/pim-how-to-change-default-settings/role-settings.png)
 
 1. Selecteer de rol waarvan u de instellingen wilt configureren.
 
-    ![Pagina Details van de functie-instelling met een lijst met verschillende toewijzings-en activerings instellingen](./media/pim-how-to-change-default-settings/role-settings-page.png)
+    ![Functie-instelling details pagina met verschillende toewijzing en activering instellingen](./media/pim-how-to-change-default-settings/role-settings-page.png)
 
-1. Selecteer **bewerken** om de pagina functie-instellingen te openen.
+1. Selecteer **Bewerken** om de pagina Rolinstellingen te openen.
 
-    ![Pagina Rolinstellingen bewerken met opties voor het bijwerken van de toewijzings-en activerings instellingen](./media/pim-how-to-change-default-settings/role-settings-edit.png)
+    ![Pagina Rolinstellingen bewerken met opties voor het bijwerken van toewijzings- en activeringsinstellingen](./media/pim-how-to-change-default-settings/role-settings-edit.png)
 
-    In het instellingen deel venster voor elke rol zijn er verschillende instellingen die u kunt configureren.
+    In het venster Rolinstelling voor elke rol zijn er verschillende instellingen die u configureren.
 
-## <a name="assignment-duration"></a>Toewijzings duur
+## <a name="assignment-duration"></a>Toewijzingsduur
 
-U kunt kiezen uit twee opties voor de toewijzings duur voor elk toewijzings type (in aanmerking komend en actief) wanneer u instellingen voor een rol configureert. Deze opties worden de standaard maximale duur wanneer een gebruiker wordt toegewezen aan de rol in Privileged Identity Management.
+U kiezen uit twee opties voor toewijzingsduur voor elk toewijzingstype (in aanmerking komend en actief) wanneer u instellingen voor een rol configureert. Deze opties worden de standaard maximale duur wanneer een gebruiker is toegewezen aan de rol in Privileged Identity Management.
 
-U kunt kiezen uit een van **deze opties** voor de gewenste duur van de toewijzing:
-
-| | |
-| --- | --- |
-| **Permanente toewijzing in aanmerking komend toestaan** | Globale beheerders en beheerders met geprivilegieerde rollen kunnen een permanente, in aanmerking komende toewijzing toewijzen. |
-| **In aanmerking komende toewijzing laten verlopen na** | Globale beheerders en beheerders met geprivilegieerde rollen kunnen vereisen dat alle in aanmerking komende toewijzingen een opgegeven begin-en eind datum hebben. |
-
-En u kunt een van deze **actieve** toewijzings duur opties kiezen:
+U een van deze **in aanmerking komende** opties voor de duur van de toewijzing kiezen:
 
 | | |
 | --- | --- |
-| **Permanente actieve toewijzing toestaan** | Globale beheerders en beheerders met geprivilegieerde rollen kunnen permanente actieve toewijzing toewijzen. |
-| **Actieve toewijzing laten verlopen na** | Globale beheerders en beheerders met geprivilegieerde rollen kunnen vereisen dat alle actieve toewijzingen een opgegeven begin-en eind datum hebben. |
+| **Permanente toewijzing toestaan** | Globale beheerders en bevoorrechte rolbeheerders kunnen permanente toewijzing toewijzen. |
+| **In aanmerking komende toewijzing aflopen na** | Globale beheerders en bevoorrechte rolbeheerders kunnen vereisen dat alle in aanmerking komende toewijzingen een opgegeven begin- en einddatum hebben. |
+
+En u een van deze opties voor **actieve** toewijzingsduur kiezen:
+
+| | |
+| --- | --- |
+| **Permanente actieve toewijzing toestaan** | Globale beheerders en bevoorrechte rolbeheerders kunnen permanente actieve toewijzing toewijzen. |
+| **Actieve toewijzing verlopen na** | Globale beheerders en bevoorrechte rolbeheerders kunnen vereisen dat alle actieve toewijzingen een opgegeven begin- en einddatum hebben. |
 
 > [!NOTE]
-> Alle toewijzingen met een opgegeven eind datum kunnen worden vernieuwd door globale beheerders en beheerders met verhoogde bevoegdheden. Gebruikers kunnen ook selfservice aanvragen initiëren om roltoewijzingen uit te [breiden of te vernieuwen](pim-resource-roles-renew-extend.md).
+> Alle toewijzingen met een opgegeven einddatum kunnen worden verlengd door globale beheerders en bevoorrechte rolbeheerders. Gebruikers kunnen ook selfserviceaanvragen initiëren om [roltoewijzingen uit](pim-resource-roles-renew-extend.md)te breiden of te vernieuwen.
 
-## <a name="require-multi-factor-authentication"></a>Multi-factor Authentication vereisen
+## <a name="require-multi-factor-authentication"></a>Meervoudige verificatie vereisen
 
-Privileged Identity Management biedt een optionele afdwinging van Azure Multi-Factor Authentication voor twee verschillende scenario's.
+Privileged Identity Management biedt optionele handhaving van Azure Multi-Factor Authentication voor twee verschillende scenario's.
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multi-Factor Authentication vereisen voor actieve toewijzing
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multifactorauthenticatie vereisen bij actieve toewijzing
 
-In sommige gevallen wilt u mogelijk een gebruiker toewijzen aan een rol voor een korte duur (bijvoorbeeld één dag). In dit geval hoeven de toegewezen gebruikers geen activering aan te vragen. In dit scenario kan Privileged Identity Management multi-factor Authentication niet afdwingen wanneer de gebruiker hun roltoewijzing gebruikt, omdat ze al actief zijn in de rol vanaf het moment dat deze wordt toegewezen.
+In sommige gevallen u een gebruiker voor een korte duur (bijvoorbeeld één dag) aan een rol toewijzen. In dit geval hoeven de toegewezen gebruikers geen activering aan te vragen. In dit scenario kan Privileged Identity Management geen meervoudige verificatie afdwingen wanneer de gebruiker zijn roltoewijzing gebruikt omdat hij al actief is in de rol vanaf het moment dat deze is toegewezen.
 
-Als u er zeker van wilt zijn dat de beheerder die aan de toewijzing voldoet, de vraag is, kunt u multi-factor Authentication afdwingen voor actieve toewijzing door het selectie vakje **multi-factor Authentication op actieve toewijzing vereisen** in te scha kelen.
+Als u ervoor wilt zorgen dat de beheerder die de toewijzing vervult, de taak is wie hij zegt dat ze zijn, u multi-factor authenticatie afdwingen bij actieve toewijzing door het vak **Multifactorverificatie vereisen in actieve toewijzing aan** te vinken.
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Multi-Factor Authentication vereisen bij activering
 
-U kunt vereisen dat gebruikers die in aanmerking komen voor een rol bewijzen dat ze Azure Multi-Factor Authentication gebruiken voordat ze kunnen activeren. Multi-factor Authentication zorgt ervoor dat de gebruiker er zeker van is dat ze een redelijke zekerheid hebben. Het afdwingen van deze optie beschermt kritieke resources in situaties waarin het gebruikers account mogelijk is aangetast.
+U gebruikers die in aanmerking komen voor een rol vereisen dat ze bewijzen wie ze Azure Multi-Factor Authentication gebruiken voordat ze kunnen worden geactiveerd. Multi-factor authenticatie zorgt ervoor dat de gebruiker is wie ze zeggen dat ze zijn met redelijke zekerheid. Als u deze optie afdwingt, worden kritieke resources beschermd in situaties waarin het gebruikersaccount mogelijk is gecompromitteerd.
 
-Als u multi-factor Authentication vóór activering wilt vereisen, schakelt u het selectie vakje **multi-factor Authentication vereisen bij activering** in op het tabblad toewijzing van de **instelling rol bewerken**.
+Als u multifactorverificatie wilt vereisen voordat u wordt geactiveerd, schakelt u het selectievakje **Multifactorverificatie vereisen bij activering in** het tabblad Toewijzing van De **rolinstelling Bewerken in**.
 
-Zie [multi-factor Authentication en privileged Identity Management](pim-how-to-require-mfa.md)voor meer informatie.
+Zie [Multi-factor authenticatie en Privileged Identity Management](pim-how-to-require-mfa.md)voor meer informatie.
 
-## <a name="activation-maximum-duration"></a>Maximale activerings duur
+## <a name="activation-maximum-duration"></a>Maximale duur activering
 
-Gebruik de schuif regelaar **maximale duur activering** om de maximum tijd in uren in te stellen dat een rol actief blijft voordat deze verloopt. Deze waarde kan een tot 24 uur zijn.
+Gebruik de schuifregelaar **Activering seinmaximale duur** om de maximale tijd in te stellen, in uren, dat een rol actief blijft voordat deze verloopt. Deze waarde kan van één tot 24 uur zijn.
 
-## <a name="require-justification"></a>Reden vereisen
+## <a name="require-justification"></a>Rechtvaardiging vereisen
 
-U kunt vereisen dat gebruikers een zakelijke reden opgeven wanneer ze het product activeren. Als u dit wilt doen, schakelt u het selectie vakje **uitvulling vereist op actieve toewijzing** of het vakje **uitvulling vereisen bij activering** in.
+U vereisen dat gebruikers een zakelijke rechtvaardiging invoeren wanneer ze worden geactiveerd. Als u rechtvaardiging wilt vereisen, schakelt u het vak **Eis voor actieve toewijzing** of het selectievakje **Motivering op activering vereisen in.**
 
-## <a name="require-approval-to-activate"></a>Goed keuring vereist om te activeren
+## <a name="require-approval-to-activate"></a>Goedkeuring vereisen om te activeren
 
-Als er meerdere goed keurders worden ingesteld, wordt de goed keuring voltooid zodra een van deze goed keurt of weigert. U kunt geen goed keuring vereisen van ten minste twee gebruikers. Voer de volgende stappen uit om goed keuring te vereisen voor het activeren van een rol.
+Als u meerdere fiatteurs instelt, wordt de goedkeuring voltooid zodra een van hen dit goedkeurt of weigert. U geen goedkeuring van ten minste twee gebruikers nodig hebben. Voer deze stappen uit om goedkeuring te vereisen om een rol te activeren.
 
-1. Controleer het selectie vakje **goed keuring vereisen om te activeren** .
+1. Schakel het selectievakje **Goedkeuring vereisen in om te activeren.**
 
-1. Selecteer **goed keurders selecteren**.
+1. Selecteer **Select van de goeders**.
 
-    ![Selecteer een gebruikers-of groeps deel venster voor het selecteren van goed keurders](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Een gebruiker of groepsvenster selecteren om fiatteurs te selecteren](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Selecteer ten minste één gebruiker en klik vervolgens op **selecteren**. U moet ten minste één fiatteur selecteren. Er zijn geen standaard fiatteurs.
+1. Selecteer ten minste één gebruiker en klik op **Selecteren**. U moet ten minste één goedkeurder selecteren. Er zijn geen standaard fiatteurs.
 
-    Uw selecties worden weer gegeven in de lijst met geselecteerde goed keurders.
+    Uw selecties worden weergegeven in de lijst met geselecteerde goedkeurders.
 
-1. Wanneer u de instellingen van uw rol hebt opgegeven, selecteert u **bijwerken** om uw wijzigingen op te slaan.
+1. Zodra u al uw rolinstellingen hebt opgegeven, selecteert u **Bijwerken** om uw wijzigingen op te slaan.
 
 # <a name="previous-version"></a>[Vorige versie](#tab/previous)
 
 ## <a name="open-role-settings"></a>Rolinstellingen openen
 
-Volg deze stappen om de instellingen voor een Azure AD-functie te openen.
+Volg deze stappen om de instellingen voor een Azure AD-rol te openen.
 
-1. Open **Azure AD privileged Identity Management**.
+1. Azure **AD Privileged Identity Management openen**.
 
 1. Selecteer **Azure AD-rollen**.
 
-1. **Instellingen**selecteren.
+1. Selecteer **Instellingen**.
 
-    ![Azure AD-rollen-instellingen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
+    ![Azure AD-rollen - Instellingen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
-1. Selecteer **rollen**.
+1. Selecteer **Rollen**.
 
 1. Selecteer de rol waarvan u de instellingen wilt configureren.
 
-    ![Azure AD-rollen-instellingen rollen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
+    ![Azure AD-rollen - Rollen instellen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
 
-    Op de pagina instellingen voor elke rol zijn verschillende instellingen die u kunt configureren. Deze instellingen zijn alleen van invloed op gebruikers die **in aanmerking komen** voor toewijzingen, niet **permanente** toewijzingen.
+    Op de instellingenpagina voor elke rol zijn er verschillende instellingen die u configureren. Deze instellingen hebben alleen betrekking op gebruikers die **in aanmerking komen** voor toewijzingen, niet op **permanente** toewijzingen.
 
 ## <a name="activations"></a>Activeringen
 
-Gebruik de schuif regelaar **activeringen** om de maximale tijd in uren in te stellen dat een rol actief blijft voordat deze verloopt. Deze waarde kan tussen 1 en 72 uur liggen.
+Gebruik de schuifregelaar **Activeringen** om de maximale tijd in te stellen, in uren, dat een rol actief blijft voordat deze verloopt. Deze waarde kan tussen de 1 en 72 uur liggen.
 
 ## <a name="notifications"></a>Meldingen
 
-Gebruik de optie **meldingen** om op te geven of beheerders e-mail meldingen zullen ontvangen wanneer rollen worden geactiveerd. Deze melding kan handig zijn voor het detecteren van ongeoorloofde of illegitimate activeringen.
+Gebruik de **overschakeling meldingen** om aan te geven of beheerders e-mailmeldingen ontvangen wanneer rollen worden geactiveerd. Deze melding kan handig zijn voor het detecteren van ongeautoriseerde of onwettige activeringen.
 
-Wanneer deze optie is ingesteld op **inschakelen**, worden meldingen verzonden naar:
+Wanneer u bent ingesteld op **Inschakelen,** worden meldingen verzonden naar:
 
-- Beheerder van geprivilegieerde rol
+- Bevoegde rolbeheerder
 - Beveiligingsbeheerder
 - Globale beheerder
 
-Zie [e-mail meldingen in privileged Identity Management](pim-email-notifications.md)voor meer informatie.
+Zie [E-mailmeldingen in Privileged Identity Management](pim-email-notifications.md)voor meer informatie.
 
-## <a name="incidentrequest-ticket"></a>Incident/aanvraag ticket
+## <a name="incidentrequest-ticket"></a>Incident/Request ticket
 
-Gebruik de switch **incident/aanvraag ticket** om in aanmerking komende beheerders te vragen om een ticket nummer op te nemen wanneer ze hun rol activeren. Met deze procedure kunt u toegangs controles voor rollen effectiever uitvoeren.
+Gebruik de **ticketswitch Incident/Request** om in aanmerking komende beheerders te verplichten een ticketnummer op te nemen wanneer ze hun rol activeren. Deze praktijk kan roltoegangsaudits effectiever maken.
 
-## <a name="multi-factor-authentication"></a>Meervoudige verificatie
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Gebruik de schakel optie **multi-factor Authentication** om op te geven of gebruikers hun identiteit moeten verifiëren met MFA voordat ze hun rollen kunnen activeren. Ze hoeven hun identiteit slechts eenmaal per sessie te verifiëren, niet elke keer dat ze een rol activeren. Er zijn twee tips die u moet onthouden wanneer u MFA inschakelt:
+Gebruik de **multi-factor verificatieschakelaar** om aan te geven of gebruikers hun identiteit met MFA moeten verifiëren voordat ze hun rollen kunnen activeren. Ze hoeven hun identiteit slechts één keer per sessie te verifiëren, niet elke keer dat ze een rol activeren. Er zijn twee tips om in gedachten te houden wanneer u MFA inschakelt:
 
-- Gebruikers met micro soft-accounts voor hun e-mail adressen (meestal @outlook.com, maar niet altijd) kunnen zich niet registreren voor Azure Multi-Factor Authentication. Als u rollen wilt toewijzen aan gebruikers met micro soft-accounts, moet u deze permanent beheerder maken of multi-factor Authentication uitschakelen voor die rol.
-- U kunt Azure Multi-Factor Authentication niet uitschakelen voor rollen met een hoge bevoegdheden voor Azure AD en Office 365. Deze veiligheids functie helpt bij het beveiligen van de volgende rollen:  
+- Gebruikers die Microsoft-accounts hebben voor hun @outlook.come-mailadressen (meestal , maar niet altijd) kunnen zich niet registreren voor Azure Multi-Factor Authentication. Als u rollen wilt toewijzen aan gebruikers met Microsoft-accounts, moet u ze permanente beheerders maken of meervoudige verificatie voor die rol uitschakelen.
+- U Azure Multi-Factor Authentication niet uitschakelen voor zeer bevoorrechte rollen voor Azure AD en Office 365. Deze veiligheidsfunctie helpt de volgende rollen te beschermen:  
   
-  - Azure Information Protection beheerder
+  - Azure Information Protection-beheerder
   - Factureringsbeheerder
-  - Beheerder van de Cloud toepassing
-  - Beheerder voor naleving
+  - Beheerder van cloudtoepassingen
+  - Compliancebeheerder
   - Voorwaardelijke-toegangsbeheerder
   - Dynamics 365-beheerder
-  - Toegangs fiatteur voor klanten-LockBox
-  - Schrijvers van mappen
+  - Klant LockBox-toegangsfiattor
+  - Directory schrijvers
   - Exchange-beheerder
   - Globale beheerder
-  - InTune-beheerder
-  - Power BI beheerder
-  - Beheerder van geprivilegieerde rol
+  - Intune-beheerder
+  - Power BI-beheerder
+  - Bevoegde rolbeheerder
   - Beveiligingsbeheerder
   - SharePoint-beheerder
-  - Skype voor bedrijven-beheerder
-  - Gebruikers beheerder
+  - Skype voor Bedrijven-beheerder
+  - Gebruikersbeheerder
 
-Zie [multi-factor Authentication en privileged Identity Management](pim-how-to-require-mfa.md)voor meer informatie.
+Zie [Multi-factor authenticatie en Privileged Identity Management](pim-how-to-require-mfa.md)voor meer informatie.
 
-## <a name="require-approval"></a>Goed keuring vereisen
+## <a name="require-approval"></a>Goedkeuring vereisen
 
-Als u de vereiste goed keuring wilt delegeren om een rol te activeren, voert u de volgende stappen uit.
+Als u de vereiste goedkeuring wilt delegeren om een rol te activeren, voert u deze stappen uit.
 
-1. Stel de schakel optie **goed keuring vereisen** in op **ingeschakeld**. Het deel venster wordt uitgebreid met opties voor het selecteren van goed keurders.
+1. Stel de **goedkeuringsschakelaar vereisen** in **op Ingeschakeld**. Het deelvenster wordt uitgebreid met opties om fiatteurs te selecteren.
 
-    ![Azure AD-rollen-instellingen-goed keuring vereisen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![Azure AD-rollen - Instellingen - Goedkeuring vereisen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
-    Als u geen goed keurders opgeeft, wordt de beheerder van de bevoegde rol de standaard fiatteur. vervolgens moet alle activerings aanvragen voor deze rol worden goedgekeurd.
+    Als u geen fiatteurs opgeeft, wordt de beheerder van de bevoegde rol de standaardfiatteur en moet deze vervolgens alle activeringsaanvragen voor deze rol goedkeuren.
 
-1. Als u goed keurders wilt toevoegen, klikt u op **fiatteurs selecteren**.
+1. Als u fiattes wilt toevoegen, klikt u op **Goederen selecteren**.
 
-    ![Azure AD-rollen-instellingen-goed keuring vereisen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
+    ![Azure AD-rollen - Instellingen - Goedkeuring vereisen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. Selecteer een of meer goed keurders naast de beheerder van de geprivilegieerde rol en klik vervolgens op **selecteren**. We raden u aan ten minste twee goed keurders toe te voegen. Zelfs als u uzelf als fiatteur toevoegt, kunt u een functie activering niet zelf goed keuren. Uw selecties worden weer gegeven in de lijst met geselecteerde goed keurders.
+1. Selecteer een of meer fiatteurs naast de beheerder van de bevoegde rol en klik op **Selecteren**. We raden u aan ten minste twee fiatteurs toe te voegen. Zelfs als je jezelf toevoegt als een goedkeurder, kun je een rolactivering niet zelf goedkeuren. Uw selecties worden weergegeven in de lijst met geselecteerde goedkeurders.
 
-1. Nadat u de instellingen van uw rol hebt opgegeven, selecteert u **Opslaan** om uw wijzigingen op te slaan.
+1. Nadat u al uw rolinstellingen hebt opgegeven, selecteert u **Opslaan** om uw wijzigingen op te slaan.
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure AD-rollen toewijzen in Privileged Identity Management](pim-how-to-add-role-to-user.md)
-- [Beveiligings waarschuwingen configureren voor Azure AD-rollen in Privileged Identity Management](pim-how-to-configure-security-alerts.md)
+- [Beveiligingswaarschuwingen configureren voor Azure AD-rollen in Privileged Identity Management](pim-how-to-configure-security-alerts.md)

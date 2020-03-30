@@ -9,16 +9,16 @@ ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: bf526ebeebb18e22f133383e7956d68584db2486
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176569"
 ---
 Wanneer u een virtuele netwerkgateway maakt, moet u de gewenste gateway-SKU opgeven. Wanneer u een hogere gateway-SKU selecteert, wordt meer CPU en bandbreedte van het netwerk toegewezen aan de gateway. Daardoor kan de gateway hogere netwerkdoorvoer aan het virtuele netwerk ondersteunen. 
 
-Virtuele netwerkgateways voor ExpressRoute, kunnen de volgende SKU's gebruiken: 
+ExpressRoute virtuele netwerkgateways kunnen de volgende SKU's gebruiken: 
 
 * Standard
 * HighPerformance
-* UltraPerformance
+* Ultraperformance

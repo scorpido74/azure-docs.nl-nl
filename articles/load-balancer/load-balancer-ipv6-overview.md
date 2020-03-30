@@ -1,10 +1,10 @@
 ---
-title: Overzicht van IPv6-Azure Load Balancer
-description: Met dit leer traject kunt u aan de slag met IPv6-ondersteuning voor Azure Load Balancer en virtuele machines met taak verdeling.
+title: Overzicht van IPv6 - Azure Load Balancer
+description: Ga met dit leerpad aan de slag met IPv6-ondersteuning voor Azure Load Balancer en vm's die in balans zijn met de belasting.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6-, azure-load balancer, dual-stack, openbaar IP-adres, systeemeigen IPv6-, mobiele, iot
+keywords: ipv6, azure load balancer, dual stack, public ip, native ipv6, mobile, iot
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,79 +14,79 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
 ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931990"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Overzicht van IPv6 voor Azure Load Balancer
 
 
 >[!NOTE] 
->Deze inhoud is vervangen door [IPv6 voor Azure VNet-overzicht](https://docs.microsoft.com/azure/virtual-network/ipv6-overview). Azure raadt nieuwe IPv6-implementaties aan om de nieuwe functies van IPv6 voor virtuele netwerken van Azure te gebruiken.
+>Deze inhoud is vervangen door [IPv6 voor Azure VNet Overview](https://docs.microsoft.com/azure/virtual-network/ipv6-overview). Azure raadt nieuwe IPv6-implementaties aan de nieuwe IPv6-functies voor Virtual Networks te gebruiken.
 
 >[!NOTE]
->Azure Load Balancer ondersteunt twee verschillende typen: Basic en Standard. In dit artikel wordt Basic Load Balancer beschreven. Zie [Standard Load Balancer Overview](load-balancer-standard-overview.md)voor meer informatie over Standard Load Balancer.
+>Azure Load Balancer ondersteunt twee verschillende typen: Basic en Standard. In dit artikel wordt Basic Load Balancer beschreven. Zie Overzicht van Standaard load [balancer](load-balancer-standard-overview.md)voor meer informatie over Standard Load Balancer.
 
-Basis-SKU Internet gerichte load balancers kan worden geïmplementeerd met een IPv6-adres. Naast de IPv4-connectiviteit, kunnen de volgende mogelijkheden worden toegepast:
+Basic SKU-internetgebaseerde load balancers kunnen worden geïmplementeerd met een IPv6-adres. Naast IPv4-connectiviteit maakt dit de volgende mogelijkheden mogelijk:
 
-* Systeem eigen end-to-end IPv6-connectiviteit tussen open bare internetclients en Azure Virtual Machines (Vm's) via de load balancer.
-* Systeem eigen end-to-end IPv6-verbinding met uitgaand verkeer tussen Vm's en open bare Internet-clients met IPv6-functionaliteit.
+* Native end-to-end IPv6-connectiviteit tussen openbare internetclients en Azure Virtual Machines (VM's) via de load balancer.
+* Native end-to-end IPv6-uitgaande connectiviteit tussen VM's en openbare IPv6-clients met IPv6-functionaliteit.
 
-In de volgende afbeelding ziet u de IPv6-functionaliteit voor Azure Load Balancer.
+De volgende afbeelding illustreert de IPv6-functionaliteit voor Azure Load Balancer.
 
 ![Azure Load Balancer met IPv6](./media/load-balancer-ipv6-overview/load-balancer-ipv6.png)
 
-Na de implementatie kan een IPv4-of IPv6-Internet-client communiceren met de open bare IPv4-of IPv6-adressen (of hostnamen) van de Azure Internet gerichte Load Balancer. De load balancer stuurt de IPv6-pakketten naar de privé-IPv6-adressen van de virtuele machines met behulp van Network Address Translation (NAT). De IPv6-Internet-client kan niet rechtstreeks communiceren met het IPv6-adres van de Vm's.
+Eenmaal geïmplementeerd kan een Internetclient met IPv4- of IPv6-client communiceren met de openbare IPv4- of IPv6-adressen (of hostnamen) van de Azure-internetgestuurde load balancer. De load balancer leidt de IPv6-pakketten naar de privé IPv6-adressen van de VM's met behulp van network address translation (NAT). De IPv6-internetclient kan niet rechtstreeks communiceren met het IPv6-adres van de VM's.
 
 ## <a name="features"></a>Functies
 
-Systeem eigen IPv6-ondersteuning voor virtuele machines die via Azure Resource Manager worden geïmplementeerd biedt het volgende:
+Native IPv6-ondersteuning voor VM's die zijn geïmplementeerd via Azure Resource Manager biedt:
 
-1. IPv6-Services met gelijke taak verdeling voor IPv6-clients op het Internet
-2. Systeem eigen IPv6-en IPv4-eind punten op Vm's ("dubbele gestapeld")
-3. Binnenkomende en uitgaande systeem eigen IPv6-verbindingen
-4. Ondersteunde protocollen, zoals TCP, UDP en HTTP (S), bieden een volledige reeks service architecturen
+1. IPv6-services voor IPv6-clients op internet met laadbalans
+2. Native IPv6- en IPv4-eindpunten op VM's ('dual stacked')
+3. Binnenkomende en uitgaande native IPv6-verbindingen
+4. Ondersteunde protocollen zoals TCP, UDP en HTTP(S) maken een volledig scala aan servicearchitecturen mogelijk
 
 ## <a name="benefits"></a>Voordelen
 
-Deze functionaliteit maakt de volgende belang rijke voor delen mogelijk:
+Deze functionaliteit biedt de volgende voordelen:
 
-* Voldoen aan wettelijke voor Schriften die vereisen dat nieuwe toepassingen toegankelijk zijn voor alleen IPv6-clients
-* Mobiele en Internet der dingen (IOT)-ontwikkel aars in staat stellen om met dubbele gestapelde (IPv4 + IPv6) Azure Virtual Machines de groeiende mobiele & IOT-markten te verhelpen
+* Voldoen aan overheidsvoorschriften die vereisen dat nieuwe toepassingen toegankelijk zijn voor IPv6-clients
+* Mobile en Internet of Things (IOT)-ontwikkelaars in staat stellen om dual-stacked (IPv4+IPv6) Azure Virtual Machines te gebruiken om de groeiende mobiele & IOT-markten aan te pakken
 
 ## <a name="details-and-limitations"></a>Details en beperkingen
 
 Details
 
-* De Azure DNS-service bevat zowel IPv4 A-als IPv6 AAAA-naam records en reageert beide records voor de load balancer. De client kiest voor welk adres (IPv4 of IPv6) moet worden gecommuniceerd.
-* Wanneer een virtuele machine verbinding initieert met een IPv6-apparaat dat is verbonden met een openbaar netwerk, is het IPv6-bron adres van de virtuele machine NAT (Network Address Translation) naar het open bare IPv6-adres van de load balancer.
-* Vm's met het Linux-besturings systeem moeten worden geconfigureerd voor het ontvangen van een IP-adres via DHCP. Veel Linux-installatie kopieën in de Azure-galerie zijn al geconfigureerd voor de ondersteuning van IPv6 zonder aanpassing. Zie [Configure DHCPv6 for Linux vm's](load-balancer-ipv6-for-linux.md) voor meer informatie.
-* Als u een status test met uw load balancer wilt gebruiken, maakt u een IPv4-test en gebruikt u deze met zowel IPv4-als IPv6-eind punten. Als de service op uw virtuele machine uitvalt, worden de IPv4-en IPv6-eind punten uit de rotatie gehaald.
+* De Azure DNS-service bevat zowel IPv4 A- als IPv6 AAAA-naamrecords en reageert met beide records voor de load balancer. De client kiest met welk adres (IPv4 of IPv6) hij wil communiceren.
+* Wanneer een VM een verbinding met een openbaar iPv6-apparaat met internetinitieert, is het iPv6-adres van de VM netwerkadres (NAT) vertaald naar het openbare IPv6-adres van de load balancer.
+* VM's waarop het Linux-besturingssysteem wordt uitgevoerd, moeten zijn geconfigureerd om een IPv6 IP-adres via DHCP te ontvangen. Veel van de Linux-afbeeldingen in de Azure Gallery zijn al geconfigureerd om IPv6 zonder wijziging te ondersteunen. Zie [DHCPv6 configureren voor Linux VM's voor](load-balancer-ipv6-for-linux.md) meer informatie
+* Als u ervoor kiest om een health probe te gebruiken met uw load balancer, maakt u een IPv4-sonde en gebruikt u deze met zowel de IPv4- als de IPv6-eindpunten. Als de service op uw VM uitvalt, worden zowel de IPv4- als de IPv6-eindpunten uit de rotatie gehaald.
 
 Beperkingen
 
-* U kunt geen IPv6-taakverdelings regels toevoegen in de Azure Portal. De regels kunnen alleen worden gemaakt via de sjabloon, CLI, Power shell.
-* U mag bestaande Vm's niet upgraden voor het gebruik van IPv6-adressen. U moet nieuwe Vm's implementeren.
-* Er kan één IPv6-adres worden toegewezen aan één netwerk interface in elke VM.
-* De open bare IPv6-adressen kunnen niet worden toegewezen aan een virtuele machine. Ze kunnen alleen worden toegewezen aan een load balancer.
-* U kunt de achterwaartse DNS-zoek opdracht voor uw open bare IPv6-adressen niet configureren.
-* De virtuele machines met de IPv6-adressen kunnen geen deel uitmaken van een Azure-Cloud service. Ze kunnen worden verbonden met een Azure-Virtual Network (VNet) en met elkaar communiceren via hun IPv4-adressen.
-* Privé-IPv6-adressen kunnen worden geïmplementeerd op afzonderlijke Vm's in een resource groep, maar kunnen niet worden geïmplementeerd in een resource groep via schaal sets.
-* Virtuele Azure-machines kunnen geen verbinding maken via IPv6 naar andere Vm's, andere Azure-Services of on-premises apparaten. Ze kunnen alleen communiceren met de Azure-load balancer via IPv6. Ze kunnen echter met behulp van IPv4 communiceren met deze andere resources.
-* De beveiliging van de netwerk beveiligings groep (NSG) voor IPv4 wordt ondersteund in implementaties met dubbele stack (IPv4 + IPv6). Nsg's zijn niet van toepassing op de IPv6-eind punten.
-* Het IPv6-eind punt op de virtuele machine wordt niet rechtstreeks aan Internet blootgesteld. Het bevindt zich achter een load balancer. Alleen de poorten die zijn opgegeven in de load balancer regels, zijn toegankelijk via IPv6.
-* Het wijzigen van de IdleTimeout-para meter voor IPv6 wordt **momenteel niet ondersteund**. De standaard waarde is vier minuten.
-* Het wijzigen van de loadDistributionMethod-para meter voor IPv6 wordt **momenteel niet ondersteund**.
-* Gereserveerde IPv6 Ip's (waarbij IPAllocationMethod = static) worden **momenteel niet ondersteund**.
-* NAT64 (omzetting van IPv6 naar IPv4) wordt niet ondersteund.
+* U geen IPv6-taakverdelingsregels toevoegen aan de Azure-portal. De regels kunnen alleen worden gemaakt via de sjabloon, CLI, PowerShell.
+* U mag bestaande VM's niet upgraden om IPv6-adressen te gebruiken. U moet nieuwe VM's implementeren.
+* Eén IPv6-adres kan worden toegewezen aan één netwerkinterface in elke vm.
+* De openbare IPv6-adressen kunnen niet aan een vm worden toegewezen. Ze kunnen alleen worden toegewezen aan een load balancer.
+* U de reverse DNS-lookup niet configureren voor uw openbare IPv6-adressen.
+* De VM's met de IPv6-adressen kunnen geen lid zijn van een Azure Cloud Service. Ze kunnen worden verbonden met een Azure Virtual Network (VNet) en met elkaar communiceren via hun IPv4-adressen.
+* Privé-IPv6-adressen kunnen worden geïmplementeerd op afzonderlijke VM's in een resourcegroep, maar kunnen niet worden geïmplementeerd in een resourcegroep via schaalsets.
+* Azure VM's kunnen geen verbinding maken via IPv6 met andere VM's, andere Azure-services of on-premises apparaten. Ze kunnen alleen communiceren met de Azure load balancer via IPv6. Ze kunnen echter communiceren met deze andere bronnen met IPv4.
+* Network Security Group (NSG) bescherming voor IPv4 wordt ondersteund in dual-stack (IPv4+ IPv6) implementaties. NSG's zijn niet van toepassing op de IPv6-eindpunten.
+* Het IPv6-eindpunt op de VM wordt niet rechtstreeks aan het internet blootgesteld. Het is achter een load balancer. Alleen de poorten die in de regels voor load balancer zijn opgegeven, zijn toegankelijk via IPv6.
+* Als u de parameter IdleTimeout voor IPv6 **wijzigt, wordt deze momenteel niet ondersteund.** De standaardinstelling is vier minuten.
+* Het wijzigen van de parameter loadDistributionMethod voor IPv6 **wordt momenteel niet ondersteund.**
+* Gereserveerde IPv6 IP's (waarbij IPAllocationMethod = statisch) **momenteel niet worden ondersteund**.
+* NAT64 (vertaling van IPv6 naar IPv4) wordt niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het implementeren van een load balancer met IPv6.
 
-* [Beschik baarheid van IPv6 per regio](https://go.microsoft.com/fwlink/?linkid=828357)
-* [Een load balancer met IPv6 implementeren met behulp van een sjabloon](load-balancer-ipv6-internet-template.md)
-* [Een load balancer met IPv6 implementeren met behulp van Azure PowerShell](load-balancer-ipv6-internet-ps.md)
-* [Een load balancer met IPv6 implementeren met behulp van Azure CLI](load-balancer-ipv6-internet-cli.md)
+* [Beschikbaarheid van IPv6 per regio](https://go.microsoft.com/fwlink/?linkid=828357)
+* [Een load balancer implementeren met IPv6 met behulp van een sjabloon](load-balancer-ipv6-internet-template.md)
+* [Een load balancer implementeren met IPv6 met Azure PowerShell](load-balancer-ipv6-internet-ps.md)
+* [Een load balancer implementeren met IPv6 met Azure CLI](load-balancer-ipv6-internet-cli.md)

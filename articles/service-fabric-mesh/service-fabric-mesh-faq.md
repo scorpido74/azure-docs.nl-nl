@@ -1,48 +1,48 @@
 ---
-title: Veelgestelde vragen over Azure Service Fabric mesh
-description: Meer informatie over veelgestelde vragen en antwoorden voor Azure Service Fabric net.
+title: Veelgestelde vragen voor Azure Service Fabric Mesh
+description: Meer informatie over veelgestelde vragen en antwoorden voor Azure Service Fabric Mesh.
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252495"
 ---
-# <a name="commonly-asked-service-fabric-mesh-questions"></a>Veelgestelde vragen over Service Fabric mesh
+# <a name="commonly-asked-service-fabric-mesh-questions"></a>Veelgestelde Service Fabric Mesh-vragen
 
-Azure Service Fabric Mesh is een volledig beheerde service waarmee ontwikkelaars microservices-toepassingen kunnen implementeren zonder virtuele machines, opslag of netwerken hoeven te beheren. In dit artikel vindt u antwoorden op veelgestelde vragen.
+Azure Service Fabric Mesh is een volledig beheerde service waarmee ontwikkelaars microservices-toepassingen kunnen implementeren zonder virtuele machines, opslag of netwerken hoeven te beheren. Dit artikel heeft antwoorden op veelgestelde vragen.
 
-## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Hoe kan ik een probleem melden of een vraag stellen?
+## <a name="how-do-i-report-an-issue-or-ask-a-question"></a>Hoe rapporteer ik een probleem of stel ik een vraag?
 
-Stel vragen, krijg antwoorden van micro soft-technici en Meld problemen met de [service-Fabric-mesh-preview github opslag plaats](https://aka.ms/sfmeshissues).
+Stel vragen, krijg antwoorden van Microsoft-technici en rapporteer problemen in de [GitHub-repo voor service-fabric-mesh-preview.](https://aka.ms/sfmeshissues)
 
 ## <a name="quota-and-cost"></a>Quota en kosten
 
-### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Wat zijn de kosten voor deelname aan de preview?
+### <a name="what-is-the-cost-of-participating-in-the-preview"></a>Wat zijn de kosten van deelname aan de preview?
 
-Er worden momenteel geen kosten in rekening gebracht voor het implementeren van toepassingen of containers naar de mesh-preview. Kijk of er updates in mogelijk zijn voor de facturering. We raden u echter aan om de resources die u implementeert, te verwijderen, tenzij u ze actief testen.
+Er zijn momenteel geen kosten verbonden aan het implementeren van toepassingen of containers in de mesh-preview. Let op updates in mei voor de inschakeling voor facturering. We raden u echter aan de resources die u implementeert te verwijderen en ze niet te laten draaien, tenzij u ze actief test.
 
-### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Is er een quotum limiet van het aantal kern geheugens en RAM?
+### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>Is er een quotumlimiet van het aantal kernen en RAM?
 
-Ja. De quota's voor elk abonnement zijn:
+Ja. De quota voor elk abonnement zijn:
 
-- Aantal toepassingen: 5
+- Aantal aanvragen: 5
 - Kernen per toepassing: 12
 - Totaal RAM per toepassing: 48 GB
-- Eind punten voor netwerk en ingang: 5
-- Azure-volumes die u kunt koppelen: 10
-- Aantal service replica's: 3
-- De grootste container die u kunt implementeren, is beperkt tot 4 kernen en 16 GB RAM-geheugen.
-- U kunt gedeeltelijke kernen toewijzen aan uw containers in stappen van 0,5 kernen, Maxi maal 6 kernen.
+- Netwerk- en ingress-eindpunten: 5
+- Azure-volumes die u koppelen: 10
+- Aantal servicereplica's: 3
+- De grootste container die u implementeren is beperkt tot 4 cores en 16GB RAM.
+- U gedeeltelijke kernen toewijzen aan uw containers in stappen van 0,5 cores, tot maximaal 6 cores.
 
 ### <a name="how-long-can-i-leave-my-application-deployed"></a>Hoe lang kan ik mijn toepassing laten implementeren?
 
-De levens duur van een toepassing is momenteel beperkt tot twee dagen. Dit is om het gebruik te maximaliseren van de gratis kernen die aan de preview-versie zijn toegewezen. Als gevolg hiervan is het alleen toegestaan om een bepaalde implementatie gedurende 48 uur continu uit te voeren, waarna de tijd wordt afgesloten.
+We hebben momenteel de levensduur van een aanvraag beperkt tot twee dagen. Dit is om het gebruik van de gratis kernen toegewezen aan de preview te maximaliseren. Als gevolg hiervan mag u een bepaalde implementatie slechts 48 uur continu uitvoeren, waarna deze wordt afgesloten.
 
-Als dit het geval is, kunt u valideren dat het systeem is afgesloten door de `az mesh app show` opdracht uit te voeren in de Azure CLI. Controleren of deze retourneert `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
+Als u dit ziet gebeuren, u valideren dat `az mesh app show` het systeem het systeem afsluit door de opdracht uit te voeren in de Azure CLI. Controleren of het retourneert`"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
 Bijvoorbeeld: 
 
@@ -73,87 +73,87 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 }
 ```
 
-Als u de resource groep wilt verwijderen, gebruikt u de opdracht `az group delete <nameOfResourceGroup>`.
+Als u de brongroep `az group delete <nameOfResourceGroup>` wilt verwijderen, gebruikt u de opdracht.
 
 ## <a name="deployments"></a>Implementaties
 
-### <a name="what-container-images-are-supported"></a>Welke container installatie kopieën worden ondersteund?
+### <a name="what-container-images-are-supported"></a>Welke containerafbeeldingen worden ondersteund?
 
-Als u ontwikkelt op een update van Windows najaar Crea tors (versie 1709), kunt u alleen Windows versie 1709 docker-installatie kopieën gebruiken.
+Als u een Windows Fall Creators Update -machine (versie 1709) ontwikkelt, u alleen afbeeldingen van Windows-versie 1709-docker gebruiken.
 
-Als u op een computer met Windows 10 april 2018 (versie 1803) ontwikkelt, kunt u Windows-versie 1709 of Windows-versie 1803 docker-installatie kopieën gebruiken.
+Als u een Windows 10 April 2018-update (versie 1803) ontwikkelt, u windows-versie 1709 of Windows-versie 1803-dockerafbeeldingen gebruiken.
 
-De volgende container besturingssysteem installatie kopieën kunnen worden gebruikt voor het implementeren van services:
-- Windows-windowsservercore en nano server
+De volgende container-BE-afbeeldingen kunnen worden gebruikt om services te implementeren:
+- Windows - windowsservercore en nanoserver
     - Windows Server 1709
-    - WindowsServer 1803
+    - Windows Server 1803
     - Windows Server 1809
     - Windows Server 2019 LTSC
 - Linux
     - Geen bekende beperkingen
 
 > [!NOTE]
-> Visual Studio-hulp middelen voor net biedt nog geen ondersteuning voor de implementatie in Windows Server 2019-en 1809-containers.
+> Visual Studio-tooling voor Mesh biedt nog geen ondersteuning voor implementatie in Windows Server 2019- en 1809-containers.
 
-### <a name="what-types-of-applications-can-i-deploy"></a>Welke typen toepassingen kan ik implementeren? 
+### <a name="what-types-of-applications-can-i-deploy"></a>Welke soorten toepassingen kan ik implementeren? 
 
-U kunt alles implementeren dat wordt uitgevoerd in containers die passen binnen de beperkingen die zijn ingesteld voor een toepassings bron (zie hierboven voor meer informatie over quota's). Als we detecteren dat u net gebruikt voor het uitvoeren van illegale werk belastingen of het beledigen van het systeem (d.w.z. mijn bouw), behouden wij ons het recht voor uw implementaties te beëindigen en blokkerings lijst uw abonnement uit te voeren op de service. Neem contact met ons op als u vragen hebt over het uitvoeren van een bepaalde werk belasting. 
+U alles implementeren dat wordt uitgevoerd in containers die passen binnen de beperkingen die zijn geplaatst op een toepassingsbron (zie hierboven voor meer informatie over quota). Als we vaststellen dat u Mesh gebruikt voor het uitvoeren van illegale workloads of misbruik maken van het systeem (d.w.z. mining), behouden we ons het recht voor om uw implementaties te beëindigen en uw abonnement te blokkeren vanaf het uitvoeren van de service. Neem contact met ons op als u vragen heeft over het uitvoeren van een specifieke werklast. 
 
-## <a name="developer-experience-issues"></a>Problemen met ontwikkelaars ervaring
+## <a name="developer-experience-issues"></a>Problemen met de ervaring van ontwikkelaars
 
-### <a name="dns-resolution-from-a-container-doesnt-work"></a>DNS-omzetting vanuit een container werkt niet
+### <a name="dns-resolution-from-a-container-doesnt-work"></a>DNS-resolutie van een container werkt niet
 
-Uitgaande DNS-query's van een container naar de Service Fabric DNS-service kunnen in bepaalde omstandigheden mislukken. Dit wordt onderzocht. Beperken:
+Uitgaande DNS-query's van een container naar de DNS-service Service Fabric kunnen onder bepaalde omstandigheden mislukken. Dit wordt onderzocht. Om te beperken:
 
-- Gebruik Windows najaar Creators update (versie 1709) of hoger als uw basis container installatie kopie.
-- Als de service naam alleen werkt, probeert u de volledig gekwalificeerde naam: ServiceName. ApplicationName.
-- Voeg in het docker-bestand voor uw service `EXPOSE <port>` toe waarbij de poort de poort is waarop u uw service weergeeft. Bijvoorbeeld:
+- Gebruik Windows Fall Creators-update (versie 1709) of hoger als afbeelding van uw basiscontainer.
+- Als de servicenaam alleen niet werkt, probeert u de volledig gekwalificeerde naam: ServiceName.ApplicationName.
+- Voeg in het Docker-bestand `EXPOSE <port>` voor uw service toe waar de poort is waar u uw service op blootstelt. Bijvoorbeeld:
 
 ```Dockerfile
 EXPOSE 80
 ```
 
-### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>DNS werkt niet hetzelfde als voor Service Fabric-ontwikkelings clusters en in het net
+### <a name="dns-does-not-work-the-same-as-it-does-for-service-fabric-development-clusters-and-in-mesh"></a>DNS werkt niet hetzelfde als voor Service Fabric-ontwikkelingsclusters en in Mesh
 
-Mogelijk moet u in uw lokale ontwikkel cluster op een andere manier verwijzen naar services dan in azure mesh.
+Mogelijk moet u in uw cluster voor lokale ontwikkeling anders naar services verwijzen dan in Azure Mesh.
 
-Gebruik `{serviceName}.{applicationName}`in uw lokale ontwikkel cluster. Gebruik `{servicename}`in azure Service Fabric net. 
+In uw lokale `{serviceName}.{applicationName}`ontwikkeling cluster gebruik . Gebruik in Azure Service `{servicename}`Fabric Mesh . 
 
-Azure mesh biedt momenteel geen ondersteuning voor DNS-omzetting in toepassingen.
+Azure Mesh biedt momenteel geen ondersteuning voor DNS-resolutie voor alle toepassingen.
 
-Zie voor andere bekende DNS-problemen met het uitvoeren van een Service Fabric-ontwikkelings cluster in Windows 10: [fout opsporing in Windows-containers](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) en [bekende DNS-problemen](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
+Zie: Windows-containers en [bekende DNS-problemen](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues) [debuggen](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) voor andere bekende DNS-problemen bij het uitvoeren van een cluster voor de ontwikkeling van servicefabric op Windows 10.
 
 ### <a name="networking"></a>Netwerken
 
-De NAT van het ServiceFabric-netwerk verdwijnt wanneer u uw app uitvoert op uw lokale machine. Als u wilt vaststellen of dit is gebeurd, voert u het volgende uit vanaf een opdracht prompt:
+Het ServiceFabric-netwerk NAT kan verdwijnen tijdens het gebruik van uw app op uw lokale machine. Voer het volgende uit vanaf een opdrachtprompt om te bepalen of dit is gebeurd:
 
-`docker network ls` en noteer of `servicefabric_nat` wordt vermeld.  Als dat niet het geval is, voert u de volgende opdracht uit: `docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
+`docker network ls`en let `servicefabric_nat` op of wordt vermeld.  Als dit niet het zo is, voert u de volgende opdracht uit:`docker network create -d=nat --subnet 10.128.0.0/24 --gateway 10.128.0.1 servicefabric_nat`
 
-Hiermee wordt het probleem opgelost, zelfs wanneer de app al lokaal en in een slechte staat wordt geïmplementeerd.
+Dit zal het probleem oplossen, zelfs als de app al lokaal en in een ongezonde staat is geïmplementeerd.
 
 ### <a name="issues-running-multiple-apps"></a>Problemen met het uitvoeren van meerdere apps
 
-U kunt de CPU-Beschik baarheid en de limieten voor alle toepassingen vast. Beperken:
-- Maak een cluster met vijf knoop punten.
-- Verminder het CPU-gebruik in Services in de app die is geïmplementeerd. Wijzig bijvoorbeeld in het bestand service. yaml van uw service `cpu: 1.0` in `cpu: 0.5`
+Mogelijk u cpu-beschikbaarheid en limieten tegenkomen die voor alle toepassingen worden opgelost. Om te beperken:
+- Maak een cluster met vijf nodes.
+- Verminder het CPU-gebruik in services in de app die wordt geïmplementeerd. Wijzig bijvoorbeeld in het bestand service.yaml `cpu: 1.0` van uw service`cpu: 0.5`
 
-Meerdere toepassingen kunnen niet worden geïmplementeerd op een cluster met één knoop punt. Beperken:
-- Gebruik een cluster met vijf knoop punten wanneer u meerdere apps implementeert op een lokaal cluster.
-- Apps verwijderen die momenteel niet worden getest.
+Meerdere toepassingen kunnen niet worden geïmplementeerd in een cluster met één knooppunt. Om te beperken:
+- Gebruik een cluster met vijf knooppunten bij het implementeren van meerdere apps in een lokaal cluster.
+- Verwijder apps die u momenteel niet test.
 
-### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>VS-hulp middelen heeft beperkte ondersteuning voor Windows-containers
+### <a name="vs-tooling-has-limited-support-for-windows-containers"></a>VS Tooling heeft beperkte ondersteuning voor Windows-containers
 
-Visual Studio-hulpprogram ma's bieden alleen ondersteuning voor het implementeren van Windows-containers met een basis besturingssysteem versie van Windows Server 1709 en 1803 vandaag. 
+De Visual Studio-tooling ondersteunt vandaag de dag alleen het implementeren van Windows Containers met een basisversie van Windows Server 1709 en 1803. 
 
-## <a name="feature-gaps-and-other-known-issues"></a>Hiaten van functies en andere bekende problemen
+## <a name="feature-gaps-and-other-known-issues"></a>Functiehiaten en andere bekende problemen
 
-### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>Na de implementatie van mijn toepassing heeft de netwerk bron die eraan is gekoppeld, geen IP-adres
+### <a name="after-deploying-my-application-the-network-resource-associated-with-it-does-not-have-an-ip-address"></a>Na het implementeren van mijn toepassing heeft de netwerkbron die eraan is gekoppeld geen IP-adres
 
-Er is een bekend probleem waarbij het IP-adres niet onmiddellijk beschikbaar is. Controleer de status van de netwerk bron in een paar minuten om het bijbehorende IP-adres te zien.
+Er is een bekend probleem waarbij het IP-adres niet onmiddellijk beschikbaar komt. Controleer de status van de netwerkbron in een paar minuten om het bijbehorende IP-adres te bekijken.
 
-### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Mijn toepassing heeft geen toegang tot de juiste netwerk/volume bron
+### <a name="my-application-fails-to-access-the-right-networkvolume-resource"></a>Mijn toepassing heeft geen toegang tot de juiste netwerk-/volumebron
 
-Gebruik in uw toepassings model de volledige Resource-ID voor netwerken en volumes om toegang te krijgen tot de bijbehorende resource. Hier volgt een voor beeld van het Quick start-voor beeld:
+Gebruik in uw toepassingsmodel de volledige resource-id voor netwerken en volumes om toegang te krijgen tot de bijbehorende bron. Hier is een voorbeeld van het voorbeeld snelstart:
 
 ```json
 "networkRefs": [
@@ -163,10 +163,10 @@ Gebruik in uw toepassings model de volledige Resource-ID voor netwerken en volum
 ]
 ```
 
-### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Wanneer ik uitschaal, worden alle containers beïnvloed, inclusief het uitvoeren van
+### <a name="when-i-scale-out-all-of-my-containers-are-affected-including-running-ones"></a>Wanneer ik uitschaal, worden al mijn containers beïnvloed, inclusief het uitvoeren van
 
-Dit is een bug en er wordt een oplossing geïmplementeerd.
+Dit is een bug en een oplossing wordt geïmplementeerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees het [overzicht](service-fabric-mesh-overview.md)voor meer informatie over service Fabric net.
+Lees het [overzicht](service-fabric-mesh-overview.md)voor meer informatie over Service Fabric Mesh.

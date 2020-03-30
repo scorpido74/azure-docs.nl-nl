@@ -1,15 +1,15 @@
 ---
-title: Migreren van Java SDK naar maven
+title: Migreren van Java SDK naar Maven
 description: U moet de oudere Java-toepassingen die de Service Fabric Java SDK gebruikten, bijwerken om Service Fabric Java-afhankelijkheden op te halen van Maven. Als u de stappen in dit artikel hebt uitgevoerd, moeten de oudere Java-toepassingen zonder problemen kunnen worden gebouwd.
 author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
 ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609805"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Bestaande Java Service Fabric-toepassingen bijwerken voor het ophalen van Java-bibliotheken van Maven
@@ -79,7 +79,7 @@ Betrouwbare ondersteuning voor stateless services in Service Fabric voor uw toep
   }
   ```
 
-### <a name="others"></a>Overige
+### <a name="others"></a>Andere
 #### <a name="transport"></a>Transport
 
 Ondersteuning van transportlaag voor Service Fabric Java-toepassing. U hoeft deze afhankelijkheid niet expliciet toe te voegen aan uw Reliable Actor- of Service-toepassingen, tenzij u programmeert op de transportlaag.
@@ -158,7 +158,7 @@ task copyDeps <<{
     }
 }
 ```
-Om de afhankelijkheden van Maven op te halen, worden de ``build.gradle`` **bijgewerkte** onderdelen nu als volgt:
+Om nu afhankelijkheden op te halen van Maven, moet het **bijgewerkte bestand ** ``build.gradle`` de volgende onderdelen bevatten:
 ```
 repositories {
         mavenCentral()
@@ -232,7 +232,7 @@ dependencies {
 .
 .
 ```
-Om de afhankelijkheden van Maven op te halen, worden de ``build.gradle`` **bijgewerkte** onderdelen nu als volgt:
+Om nu afhankelijkheden op te halen van Maven, moet het **bijgewerkte bestand ** ``build.gradle`` de volgende onderdelen bevatten:
 ```
 repositories {
     mavenCentral()
@@ -304,7 +304,7 @@ task copyDeps<< {
     }
 }
 ```
-Om de afhankelijkheden van Maven op te halen, worden de ``build.gradle`` **bijgewerkte** onderdelen nu als volgt:
+Om nu afhankelijkheden op te halen van Maven, moet het **bijgewerkte bestand ** ``build.gradle`` de volgende onderdelen bevatten:
 ```
 repositories {
     mavenCentral()
@@ -404,7 +404,7 @@ task copyDeps<< {
         }
 }
 ```
-Om de afhankelijkheden van Maven op te halen, worden de ``build.gradle`` **bijgewerkte** onderdelen nu als volgt:
+Om nu afhankelijkheden op te halen van Maven, moet het **bijgewerkte bestand ** ``build.gradle`` de volgende onderdelen bevatten:
 ```
 repositories {
     mavenCentral()

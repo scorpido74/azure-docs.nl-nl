@@ -1,33 +1,33 @@
 ---
-title: Een app die wordt uitgevoerd in azure Service Fabric net automatisch schalen
-description: Informatie over het configureren van beleid voor automatisch schalen voor de services van een Service Fabric-NET-toepassing.
+title: Een app automatisch schalen die wordt uitgevoerd in Azure Service Fabric-mesh
+description: Meer informatie over het configureren van beleid voor automatische schade waarden voor de services van een Service Fabric Mesh-toepassing.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461971"
 ---
-# <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Beleid voor automatisch schalen voor een Service Fabric-NET-toepassing maken
-Een van de belangrijkste voor delen van het implementeren van toepassingen naar Service Fabric net is de mogelijkheid om uw services eenvoudig in of uit te schalen. Dit moet worden gebruikt voor het verwerken van verschillende belasting hoeveelheden van uw services of het verbeteren van de beschik baarheid. U kunt handmatig schalen van uw services in- of uitschalen of instellen van beleid voor automatisch schalen.
+# <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Autoscale-beleid maken voor een Service Fabric Mesh-toepassing
+Een van de belangrijkste voordelen van het implementeren van applicaties naar Service Fabric Mesh is de mogelijkheid voor u om uw services eenvoudig in of uit te schalen. Dit moet worden gebruikt voor het verwerken van verschillende hoeveelheden belasting op uw services of het verbeteren van de beschikbaarheid. U uw services handmatig schalen in of uit- of uitschalen of beleid voor automatisch schalen instellen.
 
-[Automatisch schalen](service-fabric-mesh-scalability.md#autoscaling-service-instances) kunt u het nummer van uw service-instanties (horizontaal schalen) dynamisch te schalen. Automatisch schalen biedt grote flexibiliteit en kunt inrichten of verwijdering van service-exemplaren op basis van gebruik van CPU of geheugen.
+[Met automatisch schalen](service-fabric-mesh-scalability.md#autoscaling-service-instances) u het aantal service-exemplaren dynamisch schalen (horizontaal schalen). Automatisch schalen geeft een grote elasticiteit en maakt het mogelijk om service-exemplaren in te richten of te verwijderen op basis van CPU- of geheugengebruik.
 
-## <a name="options-for-creating-an-auto-scaling-policy-trigger-and-mechanism"></a>Opties voor het maken van een functie voor automatisch schalen van beleid, trigger en een mechanisme
-Een functie voor automatisch schalen van beleid is gedefinieerd voor elke service die u wilt schalen. Het beleid is gedefinieerd in het bronbestand voor YAML-service of de JSON-sjabloon voor implementatie. Elk beleid voor vergroten/verkleinen bestaat uit twee delen: een trigger en een mechanisme voor vergroten/verkleinen.
+## <a name="options-for-creating-an-auto-scaling-policy-trigger-and-mechanism"></a>Opties voor het maken van een beleid voor automatisch schalen, trigger en mechanisme
+Voor elke service die u wilt schalen, wordt een beleid voor automatisch schalen gedefinieerd. Het beleid wordt gedefinieerd in het YAML-servicebronbestand of de JSON-implementatiesjabloon. Elk schalingsbeleid bestaat uit twee delen: een trigger en een schalingsmechanisme.
 
-De trigger wordt gedefinieerd wanneer een beleid voor automatisch schalen wordt aangeroepen.  Geef het type van de trigger (gemiddelde belasting) en de metrische gegevens moeten worden bewaakt (CPU of geheugen).  Boven en ondergrenzen load-drempelwaarden die zijn opgegeven als een percentage. Het schaalinterval bepaalt hoe vaak u wilt controleren (in seconden) het gebruik van de opgegeven (zoals gemiddelde CPU-belasting) voor alle instanties van de huidige geïmplementeerde service.  Het mechanisme wordt geactiveerd wanneer de bewaakte metrische gegevens onder de laagste drempel komt of boven de hoogste drempelwaarde toeneemt.  
+De trigger definieert wanneer een beleid voor automatisch schalen wordt aangeroepen.  Geef het soort trigger (gemiddelde belasting) en de statistiek op die moet worden bewaakt (CPU of geheugen).  Bovenste en lagere belastingsdrempels opgegeven als percentage. Het schaalinterval bepaalt hoe vaak het opgegeven gebruik (zoals de gemiddelde CPU-belasting) moet worden gecontroleerd in alle momenteel geïmplementeerde service-exemplaren.  Het mechanisme wordt geactiveerd wanneer de bewaakte statistiek onder de ondergrens zakt of boven de bovengrens stijgt.  
 
-Het mechanisme voor vergroten/verkleinen definieert hoe u de schaal bewerking niet uitvoeren wanneer het beleid wordt geactiveerd.  Geef het soort mechanisme (replica toevoegen/verwijderen), de minimale en maximale replica telt (als gehele getallen).  Het aantal service-replica's wordt nooit worden geschaald, onder het minimale aantal of boven het maximale aantal.  De schaal verhoging ook opgeven als een geheel getal, dit is het aantal replica's die worden toegevoegd of verwijderd in een bewerking voor vergroten/verkleinen.  
+Het schaalmechanisme definieert hoe u de schaalbewerking uitvoert wanneer het beleid wordt geactiveerd.  Geef het soort mechanisme op (replica toevoegen/verwijderen), het minimum- en maximale aantal replica's (als gehele getallen).  Het aantal servicereplica's wordt nooit geschaald onder het minimumaantal of boven het maximumaantal.  Geef ook de schaaltoename op als een geheel getal, het aantal replica's dat wordt toegevoegd of verwijderd in een schaalbewerking.  
 
-## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>Een functie voor automatisch schalen van beleid in een JSON-sjabloon definiëren
+## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>Een beleid voor automatisch schalen definiëren in een JSON-sjabloon
 
-Het volgende voorbeeld ziet een beleid voor automatisch schalen in een JSON-sjabloon voor implementatie.  Het beleid voor automatisch schalen is gedeclareerd in een eigenschap van de service kunnen worden geschaald.  In dit voorbeeld wordt een gemiddelde belasting CPU trigger gedefinieerd.  Het mechanisme wordt geactiveerd als de gemiddelde CPU-belasting van alle geïmplementeerde exemplaren vallen onder 0.2 (20%) of uitvalt hierboven 0,8 (80%).  Elke 60 seconden, de CPU-belasting wordt gecontroleerd.  Het mechanisme voor vergroten/verkleinen is gedefinieerd als u wilt toevoegen of verwijderen van instanties als het beleid wordt geactiveerd.  Service-exemplaren wordt toegevoegd of verwijderd in stappen van één.  Een minimum aantal exemplaren van een en een maximum aantal exemplaren van 40 wordt ook gedefinieerd.
+In het volgende voorbeeld wordt een beleid voor automatisch schalen weergegeven in een JSON-implementatiesjabloon.  Het beleid voor automatisch schalen wordt gedeclareerd in een eigenschap van de service die moet worden geschaald.  In dit voorbeeld wordt een CPU-trigger voor gemiddelde belasting gedefinieerd.  Het mechanisme wordt geactiveerd als de gemiddelde CPU-belasting van alle geïmplementeerde exemplaren onder 0,2 (20%) daalt of hoger gaat dan 0,8 (80%).  De CPU-belasting wordt elke 60 seconden gecontroleerd.  Het schaalmechanisme wordt gedefinieerd om instanties toe te voegen of te verwijderen als het beleid wordt geactiveerd.  Service-exemplaren worden in stappen van één toegevoegd of verwijderd.  Er wordt ook een minimum aantal instanties van één en een maximumaantal instanties van 40 gedefinieerd.
 
 ```json
 {
@@ -79,8 +79,8 @@ Het volgende voorbeeld ziet een beleid voor automatisch schalen in een JSON-sjab
 }
 ```
 
-## <a name="define-an-autoscale-policy-in-a-serviceyaml-resource-file"></a>Een beleid voor automatisch schalen definiëren in een bronbestand service.yaml
-Het volgende voorbeeld ziet een beleid voor automatisch schalen in een service-bronbestand (YAML).  Het beleid voor automatisch schalen is gedeclareerd als een eigenschap van de service kunnen worden geschaald.  In dit voorbeeld wordt een gemiddelde belasting CPU trigger gedefinieerd.  Het mechanisme wordt geactiveerd als de gemiddelde CPU-belasting van alle geïmplementeerde exemplaren vallen onder 0.2 (20%) of uitvalt hierboven 0,8 (80%).  Elke 60 seconden, de CPU-belasting wordt gecontroleerd.  Het mechanisme voor vergroten/verkleinen is gedefinieerd als u wilt toevoegen of verwijderen van instanties als het beleid wordt geactiveerd.  Service-exemplaren wordt toegevoegd of verwijderd in stappen van één.  Een minimum aantal exemplaren van een en een maximum aantal exemplaren van 40 wordt ook gedefinieerd.
+## <a name="define-an-autoscale-policy-in-a-serviceyaml-resource-file"></a>Een autoscale-beleid definiëren in een resourcebestand van service.yaml
+In het volgende voorbeeld wordt een beleid voor automatisch schalen weergegeven in een YAML-bestand (Service Resource).  Het beleid voor automatisch schalen wordt gedeclareerd als een eigenschap van de te schalen service.  In dit voorbeeld wordt een CPU-trigger voor gemiddelde belasting gedefinieerd.  Het mechanisme wordt geactiveerd als de gemiddelde CPU-belasting van alle geïmplementeerde exemplaren onder 0,2 (20%) daalt of hoger gaat dan 0,8 (80%).  De CPU-belasting wordt elke 60 seconden gecontroleerd.  Het schaalmechanisme wordt gedefinieerd om instanties toe te voegen of te verwijderen als het beleid wordt geactiveerd.  Service-exemplaren worden in stappen van één toegevoegd of verwijderd.  Er wordt ook een minimum aantal instanties van één en een maximumaantal instanties van 40 gedefinieerd.
 
 ```yaml
 ## Service definition ##
@@ -115,4 +115,4 @@ application:
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [handmatig een service schaalt](service-fabric-mesh-tutorial-template-scale-services.md)
+Meer informatie over het [handmatig schalen van een service](service-fabric-mesh-tutorial-template-scale-services.md)

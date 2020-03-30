@@ -1,24 +1,24 @@
 ---
-title: Een cluster op Windows beveiligen met behulp van certificaten
-description: Beveiligde communicatie binnen een Azure-Service Fabric zelfstandig of op een on-premises cluster, en tussen clients en het cluster.
+title: Een cluster beveiligen op Windows met behulp van certificaten
+description: Beveiligde communicatie binnen een Azure Service Fabric-standalone of on-premises cluster, evenals tussen clients en het cluster.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: 5a18f957dfb7143f403d5ac30ea184023021f12c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75613921"
 ---
-# <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Een zelfstandige cluster in Windows beveiligen met behulp van X. 509-certificaten
-In dit artikel wordt beschreven hoe u de communicatie tussen de verschillende knoop punten van uw zelfstandige Windows-cluster kunt beveiligen. Ook wordt beschreven hoe u clients verifieert die verbinding maken met dit cluster met behulp van X. 509-certificaten. Verificatie zorgt ervoor dat alleen gemachtigde gebruikers toegang hebben tot het cluster en de geïmplementeerde toepassingen en beheer taken uitvoeren. Certificaat beveiliging moet worden ingeschakeld op het cluster als het cluster wordt gemaakt.  
+# <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Een zelfstandig cluster op Windows beveiligen met X.509-certificaten
+In dit artikel wordt beschreven hoe u de communicatie tussen de verschillende knooppunten van uw zelfstandige Windows-cluster beveiligen. Het beschrijft ook hoe u clients verifiëren die verbinding maken met dit cluster met behulp van X.509-certificaten. Verificatie zorgt ervoor dat alleen geautoriseerde gebruikers toegang hebben tot het cluster en de geïmplementeerde toepassingen en beheertaken kunnen uitvoeren. Certificaatbeveiliging moet zijn ingeschakeld op het cluster wanneer het cluster wordt gemaakt.  
 
-Zie [scenario's voor cluster beveiliging](service-fabric-cluster-security.md)voor meer informatie over de beveiliging van het cluster, zoals de beveiliging van knoop punt naar knoop punt, beveiliging van client naar knoop punt en toegangs beheer op basis van rollen.
+Zie [Clusterbeveiligingsscenario's](service-fabric-cluster-security.md)voor meer informatie over clusterbeveiliging, zoals beveiliging van knooppunt tot knooppunt, beveiliging van client-naar-node en op rollen gebaseerde toegangscontrole.
 
-## <a name="which-certificates-do-you-need"></a>Welke certificaten hebt u nodig?
-Om te beginnen, moet u [het service Fabric voor Windows Server-pakket downloaden](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) naar een van de knoop punten in uw cluster. In het gedownloade pakket vindt u een bestand met de naam ClusterConfig. x509. een. json. Open het bestand en controleer de sectie voor beveiliging in het gedeelte Eigenschappen:
+## <a name="which-certificates-do-you-need"></a>Welke certificaten heb je nodig?
+Download om te beginnen [het Service Fabric for Windows Server-pakket](service-fabric-cluster-creation-for-windows-server.md#download-the-service-fabric-for-windows-server-package) naar een van de knooppunten in uw cluster. In het gedownloade pakket vindt u een ClusterConfig.X509.MultiMachine.json-bestand. Open het bestand en controleer de sectie voor beveiliging onder de sectie Eigenschappen:
 
 ```JSON
 "security": {
@@ -106,31 +106,31 @@ Om te beginnen, moet u [het service Fabric voor Windows Server-pakket downloaden
 },
 ```
 
-In deze sectie worden de certificaten beschreven die u nodig hebt om uw zelfstandige Windows-cluster te beveiligen. Als u een cluster certificaat opgeeft, stelt u de waarde van ClusterCredentialType in op _x509_. Als u een server certificaat voor externe verbindingen opgeeft, stelt u de ServerCredentialType in op _x509_. Hoewel dit niet verplicht is, raden we u aan beide certificaten te hebben voor een goed beveiligd cluster. Als u deze waarden instelt op *x509*, moet u ook de bijbehorende certificaten opgeven of service Fabric een uitzonde ring genereert. In sommige scenario's wilt u misschien alleen de _ClientCertificateThumbprints_ of de _ReverseProxyCertificate_opgeven. In deze scenario's hoeft u _ClusterCredentialType_ of _ServerCredentialType_ niet in te stellen op _x509_.
+In deze sectie worden de certificaten beschreven die u nodig hebt om uw zelfstandige Windows-cluster te beveiligen. Als u een clustercertificaat opgeeft, stelt u de waarde van ClusterCredentialType in op _X509_. Als u een servercertificaat opgeeft voor externe verbindingen, stelt u het ServerCredentialType in op _X509_. Hoewel niet verplicht, raden we u aan beide certificaten te hebben voor een goed beveiligd cluster. Als u deze waarden instelt op *X509,* moet u ook de bijbehorende certificaten opgeven of met Service Fabric wordt een uitzondering gemaakt. In sommige scenario's u alleen de _ClientCertificateThumbprints_ of het _ReverseProxyCertificate_opgeven. In deze scenario's hoeft u _clustercredentialtype_ of _ServerCredentialType_ niet in te stellen op _X509._
 
 
 > [!NOTE]
-> Een [vinger afdruk](https://en.wikipedia.org/wiki/Public_key_fingerprint) is de primaire identiteit van een certificaat. Zie [een vinger afdruk van een certificaat ophalen](https://msdn.microsoft.com/library/ms734695.aspx)voor informatie over de vinger afdruk van de certificaten die u maakt.
+> Een [duimafdruk](https://en.wikipedia.org/wiki/Public_key_fingerprint) is de primaire identiteit van een certificaat. Zie [Een duimafdruk van een certificaat ophalen](https://msdn.microsoft.com/library/ms734695.aspx)voor de duimafdruk van de certificaten die u maakt.
 > 
 > 
 
-De volgende tabel geeft een lijst van de certificaten die u nodig hebt voor de installatie van het cluster:
+In de volgende tabel worden de certificaten weergegeven die u nodig hebt voor de installatie van uw cluster:
 
 | **CertificateInformation-instelling** | **Beschrijving** |
 | --- | --- |
-| ClusterCertificate |Aanbevolen voor een test omgeving. Dit certificaat is vereist voor het beveiligen van de communicatie tussen de knoop punten in een cluster. U kunt twee verschillende certificaten, een primaire en een secundaire, voor upgrades gebruiken. Stel de vinger afdruk van het primaire certificaat in in het gedeelte vinger afdruk en de secundaire in de ThumbprintSecondary variabelen. |
-| ClusterCertificateCommonNames |Aanbevolen voor een productie omgeving. Dit certificaat is vereist voor het beveiligen van de communicatie tussen de knoop punten in een cluster. U kunt een of twee algemene namen van cluster certificaten gebruiken. De CertificateIssuerThumbprint komt overeen met de vinger afdruk van de verlener van dit certificaat. Als er meer dan één certificaat met dezelfde algemene naam wordt gebruikt, kunt u meerdere verleners vingerafdrukken opgeven.|
-| ClusterCertificateIssuerStores |Aanbevolen voor een productie omgeving. Dit certificaat komt overeen met de uitgever van het cluster certificaat. U kunt de algemene naam van de certificaat verlener en de bijbehorende winkel naam onder deze sectie opgeven, in plaats van de vinger afdruk van de verlener onder ClusterCertificateCommonNames.  Dit maakt het eenvoudig om certificaten van de cluster uitgever te rolloveren. Meerdere verleners kunnen worden opgegeven als meer dan één cluster certificaat wordt gebruikt. Een lege IssuerCommonName whitelists alle certificaten in de bijbehorende archieven die zijn opgegeven onder X509StoreNames.|
-| ServerCertificate |Aanbevolen voor een test omgeving. Dit certificaat wordt weer gegeven aan de client wanneer deze probeert verbinding te maken met dit cluster. Voor het gemak kunt u ervoor kiezen om hetzelfde certificaat te gebruiken voor ClusterCertificate en ServerCertificate. U kunt twee verschillende server certificaten, een primaire en een secundaire, voor upgrades gebruiken. Stel de vinger afdruk van het primaire certificaat in in het gedeelte vinger afdruk en de secundaire in de ThumbprintSecondary variabelen. |
-| ServerCertificateCommonNames |Aanbevolen voor een productie omgeving. Dit certificaat wordt weer gegeven aan de client wanneer deze probeert verbinding te maken met dit cluster. De CertificateIssuerThumbprint komt overeen met de vinger afdruk van de verlener van dit certificaat. Als er meer dan één certificaat met dezelfde algemene naam wordt gebruikt, kunt u meerdere verleners vingerafdrukken opgeven. Voor het gemak kunt u ervoor kiezen om hetzelfde certificaat te gebruiken voor ClusterCertificateCommonNames en ServerCertificateCommonNames. U kunt een of twee algemene namen voor server certificaten gebruiken. |
-| ServerCertificateIssuerStores |Aanbevolen voor een productie omgeving. Dit certificaat komt overeen met de uitgever van het server certificaat. U kunt de algemene naam van de certificaat verlener en de bijbehorende winkel naam onder deze sectie opgeven, in plaats van de vinger afdruk van de verlener onder ServerCertificateCommonNames.  Dit maakt het eenvoudig om certificaten van de server verlener te rolloveren. Meerdere verleners kunnen worden opgegeven als er meerdere server certificaten worden gebruikt. Een lege IssuerCommonName whitelists alle certificaten in de bijbehorende archieven die zijn opgegeven onder X509StoreNames.|
-| ClientCertificateThumbprints |Installeer deze reeks certificaten op de geverifieerde clients. U kunt een aantal verschillende client certificaten hebben geïnstalleerd op de computers die u toegang wilt geven tot het cluster. Stel de vinger afdruk van elk certificaat in de variabele CertificateThumbprint in. Als u IsAdmin instelt op *True*, kan de client waarop dit certificaat is geïnstalleerd, beheer activiteiten op het cluster uitvoeren. Als IsAdmin *False*is, kan de client met dit certificaat de acties uitvoeren die alleen worden toegestaan voor gebruikers toegangs rechten, meestal alleen-lezen. Zie op [rollen gebaseerde Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)voor meer informatie over rollen. |
-| ClientCertificateCommonNames |Stel de algemene naam in van het eerste client certificaat voor de CertificateCommonName. De CertificateIssuerThumbprint is de vinger afdruk voor de verlener van dit certificaat. Zie [werken met certificaten](https://msdn.microsoft.com/library/ms731899.aspx)voor meer informatie over algemene namen en de uitgever. |
-| ClientCertificateIssuerStores |Aanbevolen voor een productie omgeving. Dit certificaat komt overeen met de verlener van het client certificaat (zowel admin-als niet-beheerders rollen). U kunt de algemene naam van de certificaat verlener en de bijbehorende winkel naam onder deze sectie opgeven, in plaats van de vinger afdruk van de verlener onder ClientCertificateCommonNames.  Dit maakt het eenvoudig om certificaten van client Issues te laten overschakelen. Meerdere verleners kunnen worden opgegeven als er meerdere client certificaten worden gebruikt. Een lege IssuerCommonName whitelists alle certificaten in de bijbehorende archieven die zijn opgegeven onder X509StoreNames.|
-| ReverseProxyCertificate |Aanbevolen voor een test omgeving. Dit optionele certificaat kan worden opgegeven als u de [omgekeerde proxy](service-fabric-reverseproxy.md)wilt beveiligen. Zorg ervoor dat reverseProxyEndpointPort is ingesteld in nodeTypes als u dit certificaat gebruikt. |
-| ReverseProxyCertificateCommonNames |Aanbevolen voor een productie omgeving. Dit optionele certificaat kan worden opgegeven als u de [omgekeerde proxy](service-fabric-reverseproxy.md)wilt beveiligen. Zorg ervoor dat reverseProxyEndpointPort is ingesteld in nodeTypes als u dit certificaat gebruikt. |
+| Clustercertificaat |Aanbevolen voor een testomgeving. Dit certificaat is vereist om de communicatie tussen de knooppunten op een cluster te beveiligen. U twee verschillende certificaten, een primaire en een secundaire, gebruiken voor een upgrade. Stel de duimafdruk van het primaire certificaat in de sectie Duimafdruk en die van de secundaire in de ThumbprintSecondary variabelen. |
+| ClusterCertificateCommonNames |Aanbevolen voor een productieomgeving. Dit certificaat is vereist om de communicatie tussen de knooppunten op een cluster te beveiligen. U een of twee algemene namen van het clustercertificaat gebruiken. De CertificateIssuerThumbprint komt overeen met de duimafdruk van de uitgever van dit certificaat. Als er meer dan één certificaat met dezelfde algemene naam wordt gebruikt, u meerdere duimafdrukken van uitgevende instellingen opgeven.|
+| ClusterCertificateIssuerStores |Aanbevolen voor een productieomgeving. Dit certificaat komt overeen met de uitgever van het clustercertificaat. U de algemene naam van de uitgever en de bijbehorende winkelnaam onder deze sectie opgeven in plaats van de duimafdruk van de uitgever op te geven onder ClusterCertificateCommonNames.  Dit maakt het eenvoudig om clusteruitgevende certificaten te rolloveren. Meerdere emittenten kunnen worden opgegeven als er meer dan één clustercertificaat wordt gebruikt. Met een lege IssuerCommonName worden alle certificaten in de bijbehorende winkels vermeld onder X509StoreNames.|
+| ServerCertificate |Aanbevolen voor een testomgeving. Dit certificaat wordt aan de client gepresenteerd wanneer het probeert verbinding te maken met dit cluster. Voor het gemak u ervoor kiezen om hetzelfde certificaat te gebruiken voor ClusterCertificate en ServerCertificate. U twee verschillende servercertificaten gebruiken, een primaire en een secundaire, voor een upgrade. Stel de duimafdruk van het primaire certificaat in de sectie Duimafdruk en die van de secundaire in de ThumbprintSecondary variabelen. |
+| Namen van servercertificatecommonnames |Aanbevolen voor een productieomgeving. Dit certificaat wordt aan de client gepresenteerd wanneer het probeert verbinding te maken met dit cluster. De CertificateIssuerThumbprint komt overeen met de duimafdruk van de uitgever van dit certificaat. Als er meer dan één certificaat met dezelfde algemene naam wordt gebruikt, u meerdere duimafdrukken van uitgevende instellingen opgeven. Voor het gemak u ervoor kiezen om hetzelfde certificaat te gebruiken voor ClusterCertificateCommonNames en ServerCertificateCommonNames. U een of twee algemene namen van servercertificaten gebruiken. |
+| ServerCertificateIssuerStores |Aanbevolen voor een productieomgeving. Dit certificaat komt overeen met de uitgever van het servercertificaat. U de algemene naam van de uitgever en de bijbehorende winkelnaam onder deze sectie opgeven in plaats van de duimafdruk van de uitgever op te geven onder ServerCertificateCommonNames.  Dit maakt het eenvoudig om serveruitgevende certificaten te rolloveren. Meerdere emittenten kunnen worden opgegeven als er meer dan één servercertificaat wordt gebruikt. Met een lege IssuerCommonName worden alle certificaten in de bijbehorende winkels vermeld onder X509StoreNames.|
+| ClientCertificateThumbprints |Installeer deze set certificaten op de geverifieerde clients. U een aantal verschillende clientcertificaten laten installeren op de machines die u toegang tot het cluster wilt toestaan. Stel de duimafdruk van elk certificaat in de variabele CertificateThumbprint. Als u IsAdmin *op true instelt,* kan de client met dit certificaat erop administratorbeheeractiviteiten op het cluster uitvoeren. Als IsAdmin *onwaar*is, kan de client met dit certificaat de acties uitvoeren die alleen zijn toegestaan voor gebruikerstoegangsrechten, meestal alleen-lezen. Zie [RBAC (Role-Based Access Control) voor](service-fabric-cluster-security.md#role-based-access-control-rbac)meer informatie over rollen. |
+| ClientCertificateCommonNames |Stel de algemene naam in van het eerste clientcertificaat voor de CertificateCommonName. De CertificateIssuerThumbprint is de duimafdruk voor de uitgever van dit certificaat. Zie [Werken met certificaten](https://msdn.microsoft.com/library/ms731899.aspx)voor meer informatie over algemene namen en de uitgever. |
+| ClientCertificateIssuerStores |Aanbevolen voor een productieomgeving. Dit certificaat komt overeen met de uitgever van het clientcertificaat (zowel admin- als niet-beheerdersrollen). U de algemene naam van de uitgever en de bijbehorende winkelnaam onder deze sectie opgeven in plaats van de duimafdruk van de uitgever op te geven onder ClientCertificateCommonNames.  Dit maakt het eenvoudig om clientissuer certificaten te rolloveren. Meerdere emittenten kunnen worden opgegeven als er meer dan één clientcertificaat wordt gebruikt. Met een lege IssuerCommonName worden alle certificaten in de bijbehorende winkels vermeld onder X509StoreNames.|
+| ReverseProxyCertificaat |Aanbevolen voor een testomgeving. Dit optionele certificaat kan worden opgegeven als u uw [omgekeerde proxy](service-fabric-reverseproxy.md)wilt beveiligen. Zorg ervoor dat reverseProxyEndpointPort is ingesteld in nodeTypes als u dit certificaat gebruikt. |
+| ReverseProxyCertificateCommonNames |Aanbevolen voor een productieomgeving. Dit optionele certificaat kan worden opgegeven als u uw [omgekeerde proxy](service-fabric-reverseproxy.md)wilt beveiligen. Zorg ervoor dat reverseProxyEndpointPort is ingesteld in nodeTypes als u dit certificaat gebruikt. |
 
-Hier volgt een voor beeld van een cluster configuratie waarin de cluster-, server-en client certificaten zijn opgenomen. Voor cluster/server-reverseProxy certificaten kan de vinger afdruk en de algemene naam niet samen worden geconfigureerd voor hetzelfde certificaat type.
+Hier is een voorbeeldclusterconfiguratie waarbij het cluster, de server en de clientcertificaten zijn verstrekt. Voor cluster/server/reverseProxy-certificaten kunnen de duimafdruk en de algemene naam niet samen worden geconfigureerd voor hetzelfde certificaattype.
 
  ```JSON
  {
@@ -241,58 +241,58 @@ Hier volgt een voor beeld van een cluster configuratie waarin de cluster-, serve
 }
  ```
 
-## <a name="certificate-rollover"></a>Certificaat overschakeling
-Wanneer u een algemene certificaat naam gebruikt in plaats van een vinger afdruk, is voor certificaat overschakeling geen cluster configuratie-upgrade vereist. Zorg ervoor dat de nieuwe lijst met vinger afdruk voor de upgrade van de certificaat verleners samen met de oude wordt weer geven. U moet eerst een configuratie-upgrade uitvoeren met de nieuwe vinger afdrukken van de verlener, en vervolgens de nieuwe certificaten (cluster/server certificaat en certificaten van certificerings instanties) installeren in de Store. Bewaar het oude certificaat van de certificaat houder ten minste twee uur na de installatie van het nieuwe certificaat van de certificerings instantie.
-Als u de archiefen van de uitgever gebruikt, moet er geen configuratie-upgrade worden uitgevoerd voor de certificaat overschakeling van de verlener. Installeer het nieuwe certificaat van de certificerings instantie met een laatste verval datum in het bijbehorende certificaat archief en verwijder het oude certificaat van de certificerings instantie na een paar uur.
+## <a name="certificate-rollover"></a>Certificaatrollover
+Wanneer u een gemeenschappelijke certificaatnaam gebruikt in plaats van een duimafdruk, vereist certificaatrollover geen upgrade van de clusterconfiguratie. Voor upgrades van duimafdrukken van uitgevers moet u ervoor zorgen dat de nieuwe lijst met duimafdruk en de oude lijst wordt doorsneden. U moet eerst een config-upgrade uitvoeren met de nieuwe duimafdrukken van de uitgever en vervolgens de nieuwe certificaten (zowel cluster-/servercertificaten als emittentcertificaten) in de winkel installeren. Bewaar het oude certificaat van de uitgever ten minste twee uur nadat u het nieuwe emittentcertificaat hebt geïnstalleerd, in het certificaatarchief.
+Als u emittentwinkels gebruikt, hoeft er geen config-upgrade te worden uitgevoerd voor het overrollen van emittentcertificaten. Installeer het nieuwe emittentcertificaat met een laatste vervaldatum in het bijbehorende certificaatarchief en verwijder het oude certificaat van de uitgever na een paar uur.
 
-## <a name="acquire-the-x509-certificates"></a>De X. 509-certificaten ophalen
-Als u de communicatie binnen het cluster wilt beveiligen, moet u eerst X. 509-certificaten voor uw cluster knooppunten verkrijgen. Als u de verbinding met dit cluster met geautoriseerde computers/gebruikers wilt beperken, moet u bovendien certificaten voor de client computers verkrijgen en installeren.
+## <a name="acquire-the-x509-certificates"></a>De X.509-certificaten verkrijgen
+Als u de communicatie binnen het cluster wilt beveiligen, moet u eerst X.509-certificaten voor uw clusterknooppunten verkrijgen. Om de verbinding met dit cluster te beperken tot geautoriseerde machines/gebruikers, moet u certificaten voor de clientmachines verkrijgen en installeren.
 
-Voor clusters met productie-workloads gebruikt u een door de [certificerings instantie (CA)](https://en.wikipedia.org/wiki/Certificate_authority)ondertekend X. 509-certificaat om het cluster te beveiligen. Zie [How to Schaf a Certificate (een certificaat verkrijgen](https://msdn.microsoft.com/library/aa702761.aspx)) voor meer informatie over het verkrijgen van deze certificaten.
+Voor clusters waarop productieworkloads worden uitgevoerd, gebruikt u een [certificaatinstantie (CA)](https://en.wikipedia.org/wiki/Certificate_authority)-ondertekend X.509-certificaat om het cluster te beveiligen. Zie [Een certificaat verkrijgen](https://msdn.microsoft.com/library/aa702761.aspx)voor meer informatie over het verkrijgen van deze certificaten.
 
-Voor clusters die u voor test doeleinden gebruikt, kunt u ervoor kiezen om een zelfondertekend certificaat te gebruiken.
+Voor clusters die u voor testdoeleinden gebruikt, u ervoor kiezen om een zelfondertekend certificaat te gebruiken.
 
 ## <a name="optional-create-a-self-signed-certificate"></a>Optioneel: een zelfondertekend certificaat maken
-Eén manier om een zelfondertekend certificaat te maken dat goed kan worden beveiligd, is door het script CertSetup. ps1 in de map Service Fabric SDK in de map C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. te gebruiken. Bewerk dit bestand om de standaard naam van het certificaat te wijzigen. (Zoek naar de waarde CN = ServiceFabricDevClusterCert.) Voer dit script uit als `.\CertSetup.ps1 -Install`.
+Een manier om een zelfondertekend certificaat te maken dat correct kan worden beveiligd, is door het Script CertSetup.ps1 te gebruiken in de map Service Fabric SDK in de map C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. Bewerk dit bestand om de standaardnaam van het certificaat te wijzigen. (Zoek naar de waarde CN=ServiceFabricDevClusterCert.) Voer dit `.\CertSetup.ps1 -Install`script uit als .
 
-Exporteer het certificaat nu naar een. pfx-bestand met een beveiligd wacht woord. Haal eerst de vinger afdruk van het certificaat op. 
-1. Voer in het menu **Start** de optie **computer certificaten beheren**uit. 
+Exporteer het certificaat nu naar een .pfx-bestand met een beveiligd wachtwoord. Haal eerst de duimafdruk van het certificaat. 
+1. Voer in het menu **Start** **computercertificaten beheren**uit . 
 
-2. Ga naar de **lokale map Computer\Personal** en zoek het certificaat dat u hebt gemaakt. 
+2. Ga naar de map **Lokale computer\Personal** en zoek het certificaat dat u hebt gemaakt. 
 
-3. Dubbel klik op het certificaat om het te openen, selecteer het tabblad **Details** en schuif omlaag naar het veld **vinger afdruk** . 
+3. Dubbelklik op het certificaat om het te openen, selecteer het tabblad **Details** en blader omlaag naar het veld **Duimafdruk.** 
 
-4. Verwijder de spaties en kopieer de waarde van de vinger afdruk naar de volgende Power shell-opdracht. 
+4. Verwijder de spaties en kopieer de duimafdrukwaarde naar de volgende PowerShell-opdracht. 
 
-5. Wijzig de `String` waarde in een geschikt beveiligd wacht woord om het te beveiligen en voer het volgende uit in Power shell:
+5. Wijzig `String` de waarde in een geschikt beveiligd wachtwoord om het te beveiligen en voer het volgende uit in PowerShell:
 
    ```powershell   
    $pswd = ConvertTo-SecureString -String "1234" -Force –AsPlainText
    Get-ChildItem -Path cert:\localMachine\my\<Thumbprint> | Export-PfxCertificate -FilePath C:\mypfx.pfx -Password $pswd
    ```
 
-6. Voer de volgende Power shell-opdracht uit om de details te zien van een certificaat dat op de computer is geïnstalleerd:
+6. Voer de volgende PowerShell-opdracht uit om de details van een certificaat dat op de machine is geïnstalleerd, te bekijken:
 
    ```powershell
    $cert = Get-Item Cert:\LocalMachine\My\<Thumbprint>
    Write-Host $cert.ToString($true)
    ```
 
-Als u een Azure-abonnement hebt, volgt u de stappen in [een service Fabric-cluster maken met behulp van Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
+Als u een Azure-abonnement hebt, volgt u ook de stappen in [Een cluster Servicefabric maken met Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 
 ## <a name="install-the-certificates"></a>De certificaten installeren
-Nadat u certificaten hebt, kunt u deze installeren op de cluster knooppunten. Op uw knoop punten moet de meest recente Windows Power Shell 3. x zijn geïnstalleerd. Herhaal deze stappen voor elk knoop punt voor cluster-en server certificaten en eventuele secundaire certificaten.
+Nadat u certificaten hebt, u deze installeren op de clusterknooppunten. Uw knooppunten moeten de nieuwste Windows PowerShell 3.x hebben geïnstalleerd. Herhaal deze stappen op elk knooppunt voor zowel cluster- als servercertificaten en secundaire certificaten.
 
-1. Kopieer het pfx-bestand of de bestanden naar het knoop punt.
+1. Kopieer het .pfx-bestand of de pfx-bestanden naar het knooppunt.
 
-2. Open een Power shell-venster als beheerder en voer de volgende opdrachten in. Vervang *$Pswd* door het wacht woord dat u hebt gebruikt om dit certificaat te maken. Vervang *$PfxFilePath* door het volledige pad van het pfx-bestand dat is gekopieerd naar dit knoop punt.
+2. Open een PowerShell-venster als beheerder en voer de volgende opdrachten in. Vervang *$pswd* door het wachtwoord dat u hebt gebruikt om dit certificaat te maken. Vervang *$PfxFilePath* door het volledige pad van de .pfx gekopieerd naar dit knooppunt.
    
     ```powershell
     $pswd = "1234"
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. Stel nu het toegangs beheer in voor dit certificaat zodat het Service Fabric proces, dat wordt uitgevoerd onder het netwerk service account, het kan gebruiken door het volgende script uit te voeren. Geef de vinger afdruk van het certificaat en de **netwerk service** voor het service account op. U kunt controleren of de Acl's op het certificaat juist zijn door het certificaat te openen in **Start** > **computer certificaten te beheren** en **alle taken** te bekijken > **persoonlijke sleutels te beheren**.
+3. Stel nu het toegangscontrolebesturingselement in op dit certificaat, zodat het Service Fabric-proces, dat wordt uitgevoerd onder het Network Service-account, het kan gebruiken door het volgende script uit te voeren. Geef de duimafdruk van het certificaat en **de netwerkservice** voor het serviceaccount. U controleren of de ACL's op het certificaat correct zijn **All Tasks** > door het certificaat te openen in **Computercertificaten starten** > **beheren** en alle taken**privésleutels beheren**te bekijken.
    
     ```powershell
     param
@@ -329,33 +329,33 @@ Nadat u certificaten hebt, kunt u deze installeren op de cluster knooppunten. Op
     # Observe the access rights currently assigned to this certificate
     get-acl $keyFullPath| fl
     ```
-4. Herhaal de vorige stappen voor elk server certificaat. U kunt deze stappen ook gebruiken om de client certificaten te installeren op de computers die u toegang wilt geven tot het cluster.
+4. Herhaal de vorige stappen voor elk servercertificaat. U deze stappen ook gebruiken om de clientcertificaten te installeren op de machines die u toegang tot het cluster wilt toestaan.
 
 ## <a name="create-the-secure-cluster"></a>Het beveiligde cluster maken
-Nadat u de sectie beveiliging van het bestand ClusterConfig. x509. een. json hebt geconfigureerd, kunt u door gaan naar de sectie [het cluster maken](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) voor het configureren van de knoop punten en het maken van het zelfstandige cluster. Vergeet niet om het bestand ClusterConfig. x509. json te gebruiken tijdens het maken van het cluster. Uw opdracht kan er bijvoorbeeld als volgt uitzien:
+Nadat u het beveiligingsgedeelte van het clusterbestand ClusterConfig.X509.MultiMachine.json hebt geconfigureerd, u overgaan tot de sectie [Het cluster maken](service-fabric-cluster-creation-for-windows-server.md#create-the-cluster) om de knooppunten te configureren en het zelfstandige cluster te maken. Vergeet niet om het bestand ClusterConfig.X509.MultiMachine.json te gebruiken terwijl u het cluster maakt. Uw opdracht kan er bijvoorbeeld als volgt uitzien:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Nadat u het beveiligde zelfstandige Windows-cluster hebt uitgevoerd en de geverifieerde clients hebt ingesteld om er verbinding mee te maken, volgt u de stappen in de sectie [verbinding maken met een cluster met behulp van Power shell](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) om verbinding mee te maken. Bijvoorbeeld:
+Nadat u het beveiligde standalone Windows-cluster hebt uitgevoerd en de geverifieerde clients hebt ingesteld om verbinding te maken, volgt u de stappen in de sectie [Verbinding maken met een cluster met PowerShell](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) om er verbinding mee te maken. Bijvoorbeeld:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-U kunt vervolgens andere Power shell-opdrachten uitvoeren om met dit cluster te werken. U kunt bijvoorbeeld [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) uitvoeren om een lijst met knoop punten op dit beveiligde cluster weer te geven.
+U vervolgens andere PowerShell-opdrachten uitvoeren om met dit cluster te werken. U bijvoorbeeld [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) uitvoeren om een lijst met knooppunten op dit beveiligde cluster weer te geven.
 
 
-Als u het cluster wilt verwijderen, maakt u verbinding met het knoop punt op het cluster waar u het Service Fabric-pakket hebt gedownload, opent u een opdracht regel en gaat u naar de map pakket. Voer nu de volgende opdracht uit:
+Als u het cluster wilt verwijderen, maakt u verbinding met het knooppunt op het cluster waar u het Service Fabric-pakket hebt gedownload, opent u een opdrachtregel en gaat u naar de pakketmap. Voer nu de volgende opdracht uit:
 
 ```powershell
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
 > [!NOTE]
-> Onjuiste certificaat configuratie kan verhinderen dat het cluster tijdens de implementatie komt. Zoek in de **Logboeken toepassingen en services** van Logboeken groep > **micro soft-service Fabric**om beveiligings problemen zelf te diagnosticeren.
+> Onjuiste certificaatconfiguratie voorkomt mogelijk dat het cluster tijdens de implementatie wordt ingevoerd. Als u beveiligingsproblemen zelf wilt diagnosticeren, kijkt u in de **Groep Toepassingen en Services van logboeken** > van logboeken**van logboeken microsoft-service**.
 > 
 > 
 

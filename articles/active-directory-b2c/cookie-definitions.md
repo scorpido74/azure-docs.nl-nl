@@ -1,7 +1,7 @@
 ---
 title: Cookiedefinities
 titleSuffix: Azure AD B2C
-description: Bevat definities voor de cookies die in Azure Active Directory B2C worden gebruikt.
+description: Bevat definities voor de cookies die worden gebruikt in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,42 +12,42 @@ ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189511"
 ---
-# <a name="cookies-definitions-for-azure-ad-b2c"></a>Cookie definities voor Azure AD B2C
+# <a name="cookies-definitions-for-azure-ad-b2c"></a>Cookies definities voor Azure AD B2C
 
-De volgende secties bevatten informatie over de cookies die in Azure Active Directory B2C (Azure AD B2C) worden gebruikt.
+In de volgende secties vindt u informatie over de cookies die worden gebruikt in Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="samesite"></a>SameSite
 
-De B2C-service van Microsoft Azure AD is compatibel met SameSite-browser configuraties, inclusief ondersteuning voor `SameSite=None` met het `Secure`-kenmerk.
+De Microsoft Azure AD B2C-service is compatibel met `SameSite=None` SameSite-browserconfiguraties, inclusief ondersteuning voor het `Secure` kenmerk.
 
-Webbrowsers kunnen de toegang tot sites beveiligen door een nieuw beveiligd standaard model toe te passen dat alle cookies moet worden beschermd tegen externe toegang tenzij anders wordt aangegeven. De Chrome-browser is de eerste voor het implementeren van deze wijziging, vanaf [Chrome 80 in februari 2020](https://www.chromium.org/updates/same-site). Voor meer informatie over het voorbereiden van de wijziging in Chrome raadpleegt u [ontwikkel aars: bereid u voor op nieuwe SameSite = geen; Beveiligde cookie-instellingen](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html) in de chroom-blog.
+Om de toegang tot sites te waarborgen, introduceren webbrowsers een nieuw secure-by-default-model dat ervan uitgaat dat alle cookies moeten worden beschermd tegen externe toegang, tenzij anders is opgegeven. De Chrome-browser is de eerste die deze wijziging implementeert, te beginnen met [Chrome 80 in februari 2020.](https://www.chromium.org/updates/same-site) Zie [Ontwikkelaars: Klaar voor nieuwe SameSite=None voor meer informatie over de voorbereiding op de wijziging in Chrome. Beveiligde cookie-instellingen](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html) op de Chromium Blog.
 
-Ontwikkel aars moeten de nieuwe cookie-instelling `SameSite=None`gebruiken om cookies aan te wijzen voor toegang tussen sites. Wanneer het `SameSite=None` kenmerk aanwezig is, moet u een aanvullend `Secure` kenmerk gebruiken zodat cookies voor meerdere locaties alleen toegankelijk zijn via HTTPS-verbindingen. Valideer en test al uw toepassingen, met inbegrip van de toepassingen die gebruikmaken van Azure AD B2C.
+Ontwikkelaars moeten de nieuwe cookie-instelling `SameSite=None`gebruiken om cookies aan te wijzen voor toegang tot verschillende locaties. Wanneer `SameSite=None` het kenmerk aanwezig `Secure` is, moet een extra attribuut worden gebruikt, zodat cross-site cookies alleen toegankelijk zijn via HTTPS-verbindingen. Valideer en test al uw toepassingen, inclusief de toepassingen die Azure AD B2C gebruiken.
 
-Ga voor meer informatie naar:
+Zie voor meer informatie:
 
-* [SameSite cookie wijzigingen in Chrome browser verwerken](../active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser.md)
-* [Effect op websites van de klant en micro soft-Services en-producten in Chrome versie 80 of hoger](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)
+* [SameSite-cookiewijzigingen in Chrome-browser verwerken](../active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser.md)
+* [Effect op websites van klanten en Microsoft-services en -producten in Chrome-versie 80 of hoger](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)
 
 ## <a name="cookies"></a>Cookies
 
-De volgende tabel geeft een lijst van de cookies die worden gebruikt in Azure AD B2C.
+In de volgende tabel worden de cookies weergegeven die worden gebruikt in Azure AD B2C.
 
-| Name | Domain | Verval | Doel |
+| Name | Domain | Verloopdatum | Doel |
 | ----------- | ------ | -------------------------- | --------- |
-| `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | Einde van [browser sessie](session-behavior.md) | Bevat gegevens van het lidmaatschap van gebruikers via tenants. De tenants een gebruiker is lid van en het niveau van lidmaatschap (beheerder of gebruiker). |
-| `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, brandend domein | Einde van [browser sessie](session-behavior.md) | Wordt gebruikt voor het routeren van aanvragen naar het geschikte productie-exemplaar. |
-| `x-ms-cpim-trans` | b2clogin.com, login.microsoftonline.com, brandend domein | Einde van [browser sessie](session-behavior.md) | Wordt gebruikt voor het bijhouden van de trans acties (aantal authenticatie aanvragen naar Azure AD B2C) en de huidige trans actie. |
-| `x-ms-cpim-sso:{Id}` | b2clogin.com, login.microsoftonline.com, brandend domein | Einde van [browser sessie](session-behavior.md) | Wordt gebruikt voor het onderhouden van de SSO-sessie. |
-| `x-ms-cpim-cache:{id}_n` | b2clogin.com, login.microsoftonline.com, brandend domein | Einde van [browser sessie](session-behavior.md), geslaagde verificatie | Wordt gebruikt voor het onderhouden van de status van de aanvraag. |
-| `x-ms-cpim-csrf` | b2clogin.com, login.microsoftonline.com, brandend domein | Einde van [browser sessie](session-behavior.md) | Token voor aanvraag vervalsing op meerdere sites gebruikt voor CRSF-beveiliging. |
-| `x-ms-cpim-dc` | b2clogin.com, login.microsoftonline.com, brandend domein | Einde van [browser sessie](session-behavior.md) | Wordt gebruikt voor Azure AD B2C netwerk routering. |
-| `x-ms-cpim-ctx` | b2clogin.com, login.microsoftonline.com, brandend domein | Einde van [browser sessie](session-behavior.md) | Context |
-| `x-ms-cpim-rp` | b2clogin.com, login.microsoftonline.com, brandend domein | Einde van [browser sessie](session-behavior.md) | Gebruikt voor het opslaan van lidmaatschaps gegevens voor de resource provider Tenant. |
-| `x-ms-cpim-rc` | b2clogin.com, login.microsoftonline.com, brandend domein | Einde van [browser sessie](session-behavior.md) | Wordt gebruikt voor het opslaan van de relay-cookie. |
+| `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | Einde [browsersessie](session-behavior.md) | Houdt gebruikerslidmaatschapsgegevens vast voor huurders. De tenants waarvan een gebruiker lid is en het lidmaatschapsniveau (beheerder of gebruiker). |
+| `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, branded domein | Einde [browsersessie](session-behavior.md) | Wordt gebruikt om aanvragen door te sturen naar de juiste productie-instantie. |
+| `x-ms-cpim-trans` | b2clogin.com, login.microsoftonline.com, branded domein | Einde [browsersessie](session-behavior.md) | Wordt gebruikt voor het bijhouden van de transacties (aantal verificatieaanvragen voor Azure AD B2C) en de huidige transactie. |
+| `x-ms-cpim-sso:{Id}` | b2clogin.com, login.microsoftonline.com, branded domein | Einde [browsersessie](session-behavior.md) | Wordt gebruikt voor het onderhouden van de SSO-sessie. |
+| `x-ms-cpim-cache:{id}_n` | b2clogin.com, login.microsoftonline.com, branded domein | Einde [browsersessie](session-behavior.md), succesvolle verificatie | Wordt gebruikt voor het onderhouden van de aanvraagstatus. |
+| `x-ms-cpim-csrf` | b2clogin.com, login.microsoftonline.com, branded domein | Einde [browsersessie](session-behavior.md) | Cross-Site Request Forgery-token dat wordt gebruikt voor CRSF-bescherming. |
+| `x-ms-cpim-dc` | b2clogin.com, login.microsoftonline.com, branded domein | Einde [browsersessie](session-behavior.md) | Wordt gebruikt voor Azure AD B2C-netwerkroutering. |
+| `x-ms-cpim-ctx` | b2clogin.com, login.microsoftonline.com, branded domein | Einde [browsersessie](session-behavior.md) | Context |
+| `x-ms-cpim-rp` | b2clogin.com, login.microsoftonline.com, branded domein | Einde [browsersessie](session-behavior.md) | Wordt gebruikt voor het opslaan van lidmaatschapsgegevens voor de tenant van de resourceprovider. |
+| `x-ms-cpim-rc` | b2clogin.com, login.microsoftonline.com, branded domein | Einde [browsersessie](session-behavior.md) | Gebruikt voor het opslaan van de relais cookie. |

@@ -1,58 +1,58 @@
 ---
-title: Services en containers voor het automatisch schalen van Azure Service Fabric
-description: Met Azure Service Fabric kunt u beleids regels voor automatisch schalen instellen voor services en containers.
+title: Azure Service Fabric Automatisch schalen services en containers
+description: Met Azure Service Fabric u automatisch schaalbeleid instellen voor services en containers.
 author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75452088"
 ---
 # <a name="introduction-to-auto-scaling"></a>Inleiding tot automatisch schalen
-Automatisch schalen is een extra mogelijkheid van Service Fabric om uw services dynamisch te schalen op basis van de belasting die door de Services wordt gerapporteerd of op basis van het gebruik van resources. Automatisch schalen biedt een fantastische elasticiteit en maakt het inrichten van aanvullende instanties of partities van uw service op aanvraag mogelijk. Het volledige automatische schaal proces is geautomatiseerd en transparant en wanneer u uw beleid hebt ingesteld voor een service, hoeft u geen hand matige schaal bewerkingen op service niveau uit te stellen. Automatisch schalen kan worden ingeschakeld op het moment dat de service wordt gemaakt, of op elk gewenst moment door de service bij te werken.
+Automatisch schalen is een extra mogelijkheid van Service Fabric om uw services dynamisch te schalen op basis van de belasting die services rapporteren of op basis van hun gebruik van resources. Automatisch schalen geeft een grote elasticiteit en maakt het mogelijk om extra exemplaren of partities van uw service op aanvraag in te richten. Het volledige automatische schalingproces is geautomatiseerd en transparant en zodra u uw beleid voor een service hebt ingesteld, is er geen noodzaak voor handmatige schalingsbewerkingen op serviceniveau. Automatisch schalen kan worden ingeschakeld op het moment van het maken van service of op elk gewenst moment door de service bij te werken.
 
-Een veelvoorkomend scenario waarbij automatisch schalen nuttig is wanneer de belasting van een bepaalde service in de loop van de tijd verschilt. Een service zoals een gateway kan bijvoorbeeld worden geschaald op basis van de hoeveelheid resources die nodig zijn om binnenkomende aanvragen af te handelen. Laten we eens kijken naar een voor beeld van hoe deze schaal regels eruitzien:
-* Als alle exemplaren van mijn gateway gemiddeld meer dan twee kernen gebruiken, kunt u de Gateway Service uitschalen door nog één exemplaar toe te voegen. Doe dit elk uur, maar u hebt nooit meer dan zeven exemplaren in totaal.
-* Als alle exemplaren van mijn gateway gemiddeld minder dan 0,5 kernen gebruiken, schaalt u de service in door één exemplaar te verwijderen. Doe dit elk uur, maar nooit minder dan drie exemplaren in totaal.
+Een veelvoorkomend scenario waarbij automatisch schalen nuttig is, is wanneer de belasting van een bepaalde service in de loop van de tijd varieert. Een service zoals een gateway kan bijvoorbeeld schalen op basis van de hoeveelheid resources die nodig zijn om binnenkomende aanvragen af te handelen. Laten we eens kijken naar een voorbeeld van hoe die schaalregels eruit kunnen zien:
+* Als alle exemplaren van mijn gateway gemiddeld meer dan twee cores gebruiken, schaal dan de gatewayservice door nog een exemplaar toe te voegen. Doe dit elk uur, maar nooit meer dan zeven exemplaren in totaal.
+* Als alle exemplaren van mijn gateway gemiddeld minder dan 0,5 cores gebruiken, schaal dan de service in door één exemplaar te verwijderen. Doe dit elk uur, maar nooit minder dan drie exemplaren in totaal.
 
-Automatisch schalen wordt ondersteund voor zowel containers als normale Service Fabric Services. Als u automatisch schalen wilt gebruiken, moet u gebruikmaken van versie 6,2 of hoger van de Service Fabric runtime. 
+Automatisch schalen wordt ondersteund voor zowel containers als reguliere Service Fabric-services. Als u automatisch schalen wilt gebruiken, moet u worden uitgevoerd op versie 6.2 of hoger van de runtime van Service Fabric. 
 
-In de rest van dit artikel wordt het schaal beleid beschreven, manieren om automatisch schalen in te scha kelen of uit te scha kelen en voor beelden van het gebruik van deze functie.
+In de rest van dit artikel worden de schalingsbeleidsregels beschreven, manieren om automatisch schalen in- of uit te schakelen en worden voorbeelden gegeven over het gebruik van deze functie.
 
-## <a name="describing-auto-scaling"></a>Een beschrijving van automatisch schalen
-U kunt beleid voor automatisch schalen definiëren voor elke service in een Service Fabric cluster. Elk schaal beleid bestaat uit twee delen:
-* Met de **trigger voor schalen** wordt beschreven wanneer het schalen van de service wordt uitgevoerd. De voor waarden die in de trigger zijn gedefinieerd, worden periodiek gecontroleerd om te bepalen of een service moet worden geschaald of niet.
+## <a name="describing-auto-scaling"></a>Automatische schaling beschrijven
+Beleid voor automatisch schalen kan worden gedefinieerd voor elke service in een cluster van Servicefabric. Elk schaalbeleid bestaat uit twee delen:
+* **Scaling trigger** beschrijft wanneer het schalen van de service zal worden uitgevoerd. Voorwaarden die in de trigger worden gedefinieerd, worden periodiek gecontroleerd om te bepalen of een service al dan niet moet worden geschaald.
 
-* Het **schaal mechanisme** beschrijft hoe schalen wordt uitgevoerd wanneer deze wordt geactiveerd. Het mechanisme wordt alleen toegepast wanneer aan de voor waarden van de trigger wordt voldaan.
+* **Het schalingmechanisme** beschrijft hoe schalen wordt uitgevoerd wanneer het wordt geactiveerd. Mechanisme wordt alleen toegepast wanneer aan de voorwaarden van de trigger is voldaan.
 
-Alle triggers die momenteel worden ondersteund, werken met [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md)over de belasting of met fysieke metrische gegevens, zoals CPU of geheugen gebruik. In beide gevallen wordt de gerapporteerde belasting voor de metrische gegevens door Service Fabric gecontroleerd en wordt de trigger regel matig geëvalueerd om te bepalen of schalen nodig is.
+Alle triggers die momenteel worden ondersteund, werken met [logische belastingsstatistieken](service-fabric-cluster-resource-manager-metrics.md)of met fysieke statistieken zoals CPU of geheugengebruik. Hoe dan ook, Service Fabric controleert de gerapporteerde belasting voor de statistiek en evalueert de trigger periodiek om te bepalen of schaling nodig is.
 
-Er zijn twee mechanismen die momenteel worden ondersteund voor automatisch schalen. De eerste is bedoeld voor stateless Services of voor containers waarbij automatisch schalen wordt uitgevoerd door [instanties](service-fabric-concepts-replica-lifecycle.md)toe te voegen of te verwijderen. Voor stateful en stateless Services kan automatisch schalen ook worden uitgevoerd door benoemde [partities](service-fabric-concepts-partitioning.md) van de service toe te voegen of te verwijderen.
+Er zijn twee mechanismen die momenteel worden ondersteund voor automatisch schalen. De eerste is bedoeld voor stateless services of voor containers waarbij automatisch schalen wordt uitgevoerd door [instanties](service-fabric-concepts-replica-lifecycle.md)toe te voegen of te verwijderen. Voor zowel stateful als stateless services kan automatisch schalen ook worden uitgevoerd door benoemde [partities](service-fabric-concepts-partitioning.md) van de service toe te voegen of te verwijderen.
 
 > [!NOTE]
-> Momenteel wordt slechts één schaal beleid per service ondersteund, en slechts één schaalings trigger per schaal beleid.
+> Momenteel is er ondersteuning voor slechts één schalingsbeleid per service en slechts één schaaltrigger per schaalbeleid.
 
-## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Gemiddelde partitie-load trigger met op exemplaren gebaseerd schalen
-Het eerste type trigger is gebaseerd op het laden van exemplaren in een stateless service partitie. Metrische belastingen worden eerst vloeiend gemaakt om de belasting voor elk exemplaar van een partitie te verkrijgen. vervolgens worden deze waarden gemiddeld verdeeld over alle exemplaren van de partitie. Er zijn drie factoren die bepalen wanneer de service wordt geschaald:
+## <a name="average-partition-load-trigger-with-instance-based-scaling"></a>Gemiddelde trigger voor partitiebelasting met op instantie gebaseerdschalen
+Het eerste type trigger is gebaseerd op de belasting van instanties in een stateless servicepartitie. Metrische belastingen worden eerst gladgestreken om de belasting voor elk exemplaar van een partitie te verkrijgen, en vervolgens worden deze waarden gemiddeld over alle exemplaren van de partitie. Er zijn drie factoren die bepalen wanneer de service wordt geschaald:
 
-* _Onderste belasting drempel_ is een waarde die bepaalt wanneer de service wordt **geschaald**. Als de gemiddelde belasting van alle exemplaren van de partities lager is dan deze waarde, wordt de service geschaald in.
-* _Drempel_ waarde voor laden van boven is een getal dat bepaalt wanneer de service wordt **uitgeschaald**. Als de gemiddelde belasting van alle exemplaren van de partitie hoger is dan deze waarde, wordt de service uitgeschaald.
-* Het interval voor het _schalen_ bepaalt hoe vaak de trigger wordt gecontroleerd. Als de trigger is ingeschakeld, wordt het mechanisme toegepast als er wordt geschaald. Als schalen niet nodig is, wordt er geen actie ondernomen. In beide gevallen wordt de trigger niet opnieuw gecontroleerd voordat het schaal interval opnieuw verloopt.
+* _Lagere belastingsdrempel_ is een waarde die bepaalt wanneer de service wordt **geschaald in**. Als de gemiddelde belasting van alle exemplaren van de partities lager is dan deze waarde, wordt de service ingeschaald.
+* _Bovenste belastingsdrempel_ is een waarde die bepaalt wanneer de service wordt **uitgeschaald.** Als de gemiddelde belasting van alle exemplaren van de partitie hoger is dan deze waarde, wordt de service uitgeschaald.
+* _Het schaalinterval_ bepaalt hoe vaak de trigger wordt gecontroleerd. Zodra de trigger is gecontroleerd, als schalen nodig is, wordt het mechanisme toegepast. Als schalen niet nodig is, wordt er geen actie ondernomen. In beide gevallen wordt trigger niet opnieuw gecontroleerd voordat het schaalinterval opnieuw verloopt.
 
-Deze trigger kan alleen worden gebruikt met stateless Services (stateless containers of Service Fabric Services). Als een service meerdere partities heeft, wordt de trigger voor elke partitie afzonderlijk geëvalueerd en wordt op elke partitie het opgegeven mechanisme onafhankelijk van elkaar toegepast. In dit geval is het mogelijk dat sommige partities van de service worden uitgeschaald, sommige worden geschaald en sommige niet tegelijkertijd worden geschaald, op basis van de belasting van de services.
+Deze trigger kan alleen worden gebruikt voor stateless services (stateless containers of Service Fabric services). In het geval dat een service meerdere partities heeft, wordt de trigger voor elke partitie afzonderlijk geëvalueerd en wordt het opgegeven mechanisme onafhankelijk van elkaar op de partitie toegepast. Vandaar, in dit geval, is het mogelijk dat sommige van de partities van de dienst zal worden geschaald, zullen sommige worden ingeschaald in, en sommige zullen niet worden geschaald op alle op hetzelfde moment, op basis van hun belasting.
 
-Het enige mechanisme dat met deze trigger kan worden gebruikt, is PartitionInstanceCountScaleMechanism. Er zijn drie factoren die bepalen hoe dit mechanisme wordt toegepast:
-* _Schaal verhoging_ bepaalt hoeveel instanties worden toegevoegd of verwijderd wanneer het mechanisme wordt geactiveerd.
-* _Maximum aantal exemplaren_ definieert de bovengrens voor schalen. Als het aantal exemplaren van de partitie deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting. U kunt deze limiet overs Laan door de waarde-1 op te geven. in dat geval wordt de service zo veel mogelijk uitgeschaald (de limiet is het aantal knoop punten dat beschikbaar is in het cluster).
-* _Minimum aantal exemplaren_ definieert de ondergrens voor schalen. Als het aantal exemplaren van de partitie deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting.
+Het enige mechanisme dat kan worden gebruikt met deze trigger is PartitionInstanceCountScaleMechanism. Er zijn drie factoren die bepalen hoe dit mechanisme wordt toegepast:
+* _Schaaltoename_ bepaalt hoeveel exemplaren worden toegevoegd of verwijderd wanneer het mechanisme wordt geactiveerd.
+* _Het maximumaantal instance_ definieert de bovengrens voor schalen. Als het aantal exemplaren van de partitie deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting. Het is mogelijk om deze limiet weg te laten door de waarde van -1 op te geven, en in dat geval wordt de service zoveel mogelijk uitgeschaald (de limiet is het aantal knooppunten dat beschikbaar is in het cluster).
+* _Minimumaantal instantie_ definieert de ondergrens voor schalen. Als het aantal exemplaren van de partitie deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting.
 
 ## <a name="setting-auto-scaling-policy"></a>Beleid voor automatisch schalen instellen
 
-### <a name="using-application-manifest"></a>Toepassings manifest gebruiken
+### <a name="using-application-manifest"></a>Toepassingsmanifest gebruiken
 ``` xml
 <LoadMetrics>
 <LoadMetric Name="MetricB" Weight="High"/>
@@ -64,7 +64,7 @@ Het enige mechanisme dat met deze trigger kan worden gebruikt, is PartitionInsta
 </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
-### <a name="using-c-apis"></a>Api's C# gebruiken
+### <a name="using-c-apis"></a>C# API's gebruiken
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatelessServiceDescription serviceDescription = new StatelessServiceDescription();
@@ -85,7 +85,7 @@ serviceDescription.ScalingPolicies.Add(policy);
 serviceDescription.ServicePackageActivationMode = ServicePackageActivationMode.ExclusiveProcess
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
-### <a name="using-powershell"></a>Power shell gebruiken
+### <a name="using-powershell"></a>Powershell gebruiken
 ```posh
 $mechanism = New-Object -TypeName System.Fabric.Description.PartitionInstanceCountScaleMechanism
 $mechanism.MinInstanceCount = 1
@@ -106,35 +106,35 @@ $scalingpolicies.Add($scalingpolicy)
 Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName" -ScalingPolicies $scalingpolicies
 ```
 
-## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Gemiddelde trigger voor service belasting met schalen op basis van partities
-De tweede trigger is gebaseerd op de belasting van alle partities van één service. Metrische belastingen worden eerst vloeiend gemaakt om de belasting voor elke replica of elk exemplaar van een partitie te verkrijgen. Voor stateful Services wordt de belasting van de partitie beschouwd als de belasting van de primaire replica. voor stateless Services is de belasting van de partitie de gemiddelde belasting van alle exemplaren van de partitie. Deze waarden worden gemiddeld verdeeld over alle partities van de service en deze waarde wordt gebruikt om automatisch schalen te activeren. Hetzelfde als in het vorige mechanisme zijn er drie factoren die bepalen wanneer de service wordt geschaald:
+## <a name="average-service-load-trigger-with-partition-based-scaling"></a>Gemiddelde trigger voor servicebelasting met op partitiegebaseerde schalen
+De tweede trigger is gebaseerd op de belasting van alle partities van één service. Metrische belastingen worden eerst gladgestreken om de belasting voor elke replica of instantie van een partitie te verkrijgen. Voor stateful services wordt de belasting van de partitie beschouwd als de belasting van de primaire replica, terwijl voor stateloze services de belasting van de partitie de gemiddelde belasting is van alle exemplaren van de partitie. Deze waarden worden gemiddeld over alle partities van de service en deze waarde wordt gebruikt om de automatische schaling te activeren. Hetzelfde als in het vorige mechanisme, zijn er drie factoren die bepalen wanneer de service zal worden geschaald:
 
-* _Onderste belasting drempel_ is een waarde die bepaalt wanneer de service wordt **geschaald**. Als de gemiddelde belasting van alle partities van de service lager is dan deze waarde, wordt de service geschaald in.
-* _Drempel_ waarde voor laden van boven is een getal dat bepaalt wanneer de service wordt **uitgeschaald**. Als de gemiddelde belasting van alle partities van de service hoger is dan deze waarde, wordt de service uitgeschaald.
-* Het interval voor het _schalen_ bepaalt hoe vaak de trigger wordt gecontroleerd. Als de trigger is ingeschakeld, wordt het mechanisme toegepast als er wordt geschaald. Als schalen niet nodig is, wordt er geen actie ondernomen. In beide gevallen wordt de trigger niet opnieuw gecontroleerd voordat het schaal interval opnieuw verloopt.
+* _Lagere belastingsdrempel_ is een waarde die bepaalt wanneer de service wordt **geschaald in**. Als de gemiddelde belasting van alle partities van de service lager is dan deze waarde, wordt de service ingeschaald.
+* _Bovenste belastingsdrempel_ is een waarde die bepaalt wanneer de service wordt **uitgeschaald.** Als de gemiddelde belasting van alle partities van de service hoger is dan deze waarde, wordt de service uitgeschaald.
+* _Het schaalinterval_ bepaalt hoe vaak de trigger wordt gecontroleerd. Zodra de trigger is gecontroleerd, als schalen nodig is, wordt het mechanisme toegepast. Als schalen niet nodig is, wordt er geen actie ondernomen. In beide gevallen wordt trigger niet opnieuw gecontroleerd voordat het schaalinterval opnieuw verloopt.
 
-Deze trigger kan worden gebruikt met stateful en stateless Services. Het enige mechanisme dat met deze trigger kan worden gebruikt, is AddRemoveIncrementalNamedPartitionScalingMechanism. Wanneer de service is geschaald, wordt er een nieuwe partitie toegevoegd en wanneer de service wordt geschaald in een van de bestaande partities, wordt verwijderd. Er zijn beperkingen die worden gecontroleerd wanneer de service wordt gemaakt of bijgewerkt en het maken of bijwerken van de service mislukt als aan deze voor waarden niet wordt voldaan:
-* Het benoemde partitie schema moet worden gebruikt voor de service.
-* Partitie namen moeten opeenvolgende gehele getallen zijn, zoals ' 0 ', ' 1 ',...
-* De eerste partitie naam moet ' 0 ' zijn.
+Deze trigger kan zowel worden gebruikt met stateful en stateless services. Het enige mechanisme dat kan worden gebruikt met deze trigger is AddRemoveIncrementalNamedPartitionScalingMechanism. Wanneer de service wordt uitgeschaald, wordt een nieuwe partitie toegevoegd en wanneer de service wordt geschaald in een van de bestaande partities. Er zijn beperkingen die worden gecontroleerd wanneer de service wordt gemaakt of bijgewerkt en het maken/bijwerken van de service mislukt als niet aan deze voorwaarden wordt voldaan:
+* Het benoemde partitieschema moet worden gebruikt voor de service.
+* Partitienamen moeten opeenvolgende gehele getallen zijn, zoals "0", "1", ...
+* De naam van de eerste partitie moet "0" zijn.
 
-Als bijvoorbeeld een service voor het eerst met drie partities wordt gemaakt, is de enige geldige mogelijkheid voor partitie namen 0, 1 en 2.
+Als een service bijvoorbeeld in eerste instantie wordt gemaakt met drie partities, is de enige geldige mogelijkheid voor partitienamen '0', '1' en '2'.
 
-De daad werkelijke bewerking voor automatisch schalen die wordt uitgevoerd, geldt ook voor dit navolgende schema:
-* Als de huidige partities van de service de naam 0, 1 en 2 hebben, wordt de partitie die wordt toegevoegd voor uitschalen, aangeduid met de naam ' 3 '.
-* Als de huidige partities van de service de naam 0, 1 en 2 hebben, dan is de partitie die wordt verwijderd voor schalen in, de partitie met de naam 2.
+De werkelijke automatische schalingbewerking die wordt uitgevoerd, respecteert ook dit naamgevingsschema:
+* Als de huidige partities van de service de naam "0", "1" en "2" krijgen, wordt de partitie die wordt toegevoegd voor het uitschalen "3" genoemd.
+* Als huidige partities van de service de naam "0", "1" en "2" krijgen, dan is de partitie die wordt verwijderd voor het inschalen partitie met de naam "2".
 
-Hetzelfde als bij het mechanisme dat gebruikmaakt van schalen door instanties toe te voegen of te verwijderen, zijn er drie para meters die bepalen hoe dit mechanisme wordt toegepast:
-* _Schaal verhoging_ bepaalt hoeveel partities worden toegevoegd of verwijderd wanneer het mechanisme wordt geactiveerd.
-* _Maximum aantal partities_ definieert de bovengrens voor schalen. Als het aantal partities van de service deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting. U kunt deze limiet overs Laan door de waarde-1 op te geven. in dat geval wordt de service zo veel mogelijk uitgeschaald (de limiet is de werkelijke capaciteit van het cluster).
-* _Minimum aantal exemplaren_ definieert de ondergrens voor schalen. Als het aantal partities van de service deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting.
+Hetzelfde als bij mechanisme dat schaling gebruikt door instanties toe te voegen of te verwijderen, zijn er drie parameters die bepalen hoe dit mechanisme wordt toegepast:
+* _Schaaltoename_ bepaalt hoeveel partities worden toegevoegd of verwijderd wanneer het mechanisme wordt geactiveerd.
+* _Het maximale aantal partities_ definieert de bovengrens voor schalen. Als het aantal partities van de service deze limiet bereikt, wordt de service niet uitgeschaald, ongeacht de belasting. Het is mogelijk om deze limiet weg te laten door de waarde van -1 op te geven, en in dat geval wordt de service zoveel mogelijk uitgeschroefd (de limiet is de werkelijke capaciteit van het cluster).
+* _Minimumaantal instantie_ definieert de ondergrens voor schalen. Als het aantal partities van de service deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting.
 
 > [!WARNING] 
-> Wanneer AddRemoveIncrementalNamedPartitionScalingMechanism wordt gebruikt met stateful Services, worden er door Service Fabric partities toegevoegd of verwijderd zonder dat er een **melding of waarschuwing**wordt weer gegeven. Het opnieuw partitioneren van gegevens wordt niet uitgevoerd wanneer het schaal mechanisme wordt geactiveerd. In het geval van een schaal bewerking worden nieuwe partities leeg en in het geval van een schaal bewerking **wordt de partitie met alle gegevens die deze bevat, verwijderd**.
+> Wanneer AddRemoveIncrementalNamedPartitionScalingMechanism wordt gebruikt met stateful services, voegt of verwijdert Service Fabric partities **zonder melding of waarschuwing.** Het opnieuw verdelen van gegevens wordt niet uitgevoerd wanneer het schalingsmechanisme wordt geactiveerd. In het geval van scale-up werking, nieuwe partities zal leeg zijn, en in het geval van scale down operatie, **partitie zal worden verwijderd samen met alle gegevens die het bevat**.
 
 ## <a name="setting-auto-scaling-policy"></a>Beleid voor automatisch schalen instellen
 
-### <a name="using-application-manifest"></a>Toepassings manifest gebruiken
+### <a name="using-application-manifest"></a>Toepassingsmanifest gebruiken
 ``` xml
 <ServiceScalingPolicies>
     <ScalingPolicy>
@@ -143,7 +143,7 @@ Hetzelfde als bij het mechanisme dat gebruikmaakt van schalen door instanties to
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
-### <a name="using-c-apis"></a>Api's C# gebruiken
+### <a name="using-c-apis"></a>C# API's gebruiken
 ```csharp
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
@@ -162,7 +162,7 @@ serviceUpdate.ScalingPolicies = new List<ScalingPolicyDescription>;
 serviceUpdate.ScalingPolicies.Add(policy);
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), serviceUpdate);
 ```
-### <a name="using-powershell"></a>Power shell gebruiken
+### <a name="using-powershell"></a>Powershell gebruiken
 ```posh
 $mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
@@ -185,7 +185,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ## <a name="auto-scaling-based-on-resources"></a>Automatisch schalen op basis van resources
 
-Om te zorgen dat de bron monitor service kan worden geschaald op basis van de werkelijke resources
+Om de resourcemonitorservice te laten schalen op basis van werkelijke resources
 
 ``` json
 "fabricSettings": [
@@ -195,8 +195,8 @@ Om te zorgen dat de bron monitor service kan worden geschaald op basis van de we
     "ResourceMonitorService"
 ],
 ```
-Er zijn twee metrische gegevens die werkelijke fysieke resources vertegenwoordigen. Een van deze is servicefabric:/_CpuCores die het werkelijke CPU-gebruik vertegenwoordigen (dus 0,5 staat voor een halve kern) en de andere servicefabric:/-_MemoryInMB die het geheugen gebruik in MB aangeeft.
-ResourceMonitorService is verantwoordelijk voor het bijhouden van het CPU-en geheugen gebruik van gebruikers services. Met deze service wordt gewogen zwevend gemiddelde toegepast, zodat er rekening wordt gehouden met mogelijke korte tijdige pieken. Bron bewaking wordt ondersteund voor zowel container-als niet-container toepassingen in Windows en voor containers in Linux. Automatisch schalen op resources is alleen ingeschakeld voor services die zijn geactiveerd in het [exclusieve proces model](service-fabric-hosting-model.md#exclusive-process-model).
+Er zijn twee statistieken die werkelijke fysieke resources vertegenwoordigen. Een van hen is servicefabric: / _CpuCores die de werkelijke cpu-gebruik vertegenwoordigen (dus 0,5 vertegenwoordigt de helft van een kern) en de andere wordt servicefabric: / _MemoryInMB die het geheugengebruik in DE's vertegenwoordigt.
+ResourceMonitorService is verantwoordelijk voor het bijhouden van het cpu- en geheugengebruik van gebruikersservices. Deze dienst zal het gewogen voortschrijdend gemiddelde toepassen om rekening te houden met potentiële kortstondige pieken. Resourcemonitoring wordt ondersteund voor zowel gecontaineriseerde als niet-gecontaineriseerde toepassingen op Windows en voor containerized toepassingen op Linux. Automatisch schalen op resources is alleen ingeschakeld voor services die zijn geactiveerd in [het exclusieve procesmodel.](service-fabric-hosting-model.md#exclusive-process-model)
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [schaal baarheid van toepassingen](service-fabric-concepts-scalability.md).
+Meer informatie over [schaalbaarheid van toepassingen](service-fabric-concepts-scalability.md).

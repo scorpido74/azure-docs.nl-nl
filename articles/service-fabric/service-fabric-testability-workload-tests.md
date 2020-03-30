@@ -1,29 +1,29 @@
 ---
-title: Fouten simuleren in azure Service Fabric-apps
-description: Meer informatie over hoe u uw Azure Service Fabric-Services kunt beveiligen tegen probleemloze en niet-uitgestelde fouten.
+title: Fouten in Azure Service Fabric-apps simuleren
+description: Meer informatie over hoe u uw Azure Service Fabric-services verharden tegen gracieuze en onsierlijke fouten.
 author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645987"
 ---
-# <a name="simulate-failures-during-service-workloads"></a>Storingen simuleren tijdens servicewerkbelastingen
-De test scenario's in azure Service Fabric ontwikkel aars in staat stellen geen zorgen te maken over afzonderlijke storingen. Er zijn echter scenario's, waarbij een expliciete interleaving van de werk belasting en storingen van de client mogelijk nodig is. De interleaving van de werk belasting en fouten van de client zorgt ervoor dat de service daad werkelijk een actie uitvoert wanneer er een fout optreedt. Op basis van het niveau van de controle die de test baarheid biedt, kunnen deze nauw keurige punten van de werk belasting worden uitgevoerd. Deze inductie van fouten in verschillende statussen in de toepassing kan fouten opsporen en de kwaliteit verbeteren.
+# <a name="simulate-failures-during-service-workloads"></a>Fouten simuleren tijdens serviceworkloads
+De testabiliteitsscenario's in Azure Service Fabric stellen ontwikkelaars in staat zich geen zorgen te maken over het omgaan met individuele fouten. Er zijn echter scenario's waarin een expliciete interleaving van clientworkload en fouten nodig kan zijn. Het interleaving van clientworkload en fouten zorgt ervoor dat de service daadwerkelijk enige actie uitvoert wanneer er een storing optreedt. Gezien de mate van controle die testabiliteit biedt, kunnen deze zich op precieze punten van de werkbelastinguitvoering bevinden. Deze inductie van fouten op verschillende toestanden in de toepassing kan bugs vinden en de kwaliteit verbeteren.
 
-## <a name="sample-custom-scenario"></a>Voor beeld van aangepast scenario
-In deze test wordt een scenario weer gegeven dat de zakelijke workload interleaveert met gepaste en niet- [respijt fouten](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). De fouten moeten in het midden van de service bewerkingen worden veroorzaakt of worden berekend voor de beste resultaten.
+## <a name="sample-custom-scenario"></a>Voorbeeld van aangepast scenario
+Deze test toont een scenario dat de zakelijke werklast interleaves met [sierlijke en onsierlijke mislukkingen](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). De fouten moeten worden veroorzaakt in het midden van servicebewerkingen of berekenen voor de beste resultaten.
 
-We gaan een voor beeld bekijken van een service die vier werk belastingen beschikbaar maakt: A, B, C en D. elk komt overeen met een set werk stromen en kan worden berekend, opgeslagen of gecombineerd. In het geval van eenvoud zullen we de workloads in ons voor beeld samen stellen. De verschillende fouten die in dit voor beeld worden uitgevoerd, zijn:
+Laten we een voorbeeld van een service doorlopen die vier workloads blootlegt: A, B, C en D. Elke service komt overeen met een set werkstromen en kan compute, storage of een mix zijn. Omwille van de eenvoud, zullen we de belasting in ons voorbeeld abstraheren. De verschillende fouten die in dit voorbeeld worden uitgevoerd zijn:
 
-* RestartNode: er is een niet-verwerkings fout opgetreden tijdens het simuleren van een computer opnieuw opstarten.
-* RestartDeployedCodePackage: er is een niet-verwerkings fout opgetreden tijdens het simuleren van het service-hostproces.
-* RemoveReplica: er is een fout opgetreden tijdens het simuleren van het verwijderen van de replica.
-* MovePrimary: er is een probleemloze fout opgetreden bij het simuleren van replica verplaatsingen die zijn geactiveerd door de Service Fabric load balancer.
+* RestartNode: Onsierlijke fout om een machine opnieuw op te starten simuleren.
+* Opnieuw opstartenCodePakket: onsierlijke fout om servicehostprocescrashes te simuleren.
+* RemoveReplica: Sierlijke fout om het verwijderen van replica's te simuleren.
+* MovePrimary: Sierlijke fout om replicabewegingen te simuleren die worden geactiveerd door de load balancer van servicefabric.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

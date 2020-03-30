@@ -1,32 +1,32 @@
 ---
-title: Poort nummer van een service opgeven met behulp van para meters
-description: Laat zien hoe u para meters kunt gebruiken om de poort voor een toepassing op te geven in Service Fabric
+title: Poortnummer van een service opgeven met behulp van parameters
+description: Toont u hoe u parameters gebruikt om de poort voor een toepassing in Service Fabric op te geven
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609856"
 ---
-# <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Het poort nummer van een service opgeven met behulp van para meters in Service Fabric
+# <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Het poortnummer van een service opgeven met behulp van parameters in Service Fabric
 
-In dit artikel leest u hoe u het poort nummer van een service kunt opgeven met behulp van de para meters in Service Fabric met Visual Studio.
+In dit artikel ziet u hoe u het poortnummer van een service opgeeft met behulp van parameters in Service Fabric met behulp van Visual Studio.
 
-## <a name="procedure-for-specifying-the-port-number-of-a-service-using-parameters"></a>Procedure voor het opgeven van het poort nummer van een service met behulp van para meters
+## <a name="procedure-for-specifying-the-port-number-of-a-service-using-parameters"></a>Procedure voor het opgeven van het poortnummer van een service aan de hand van parameters
 
-In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met behulp van een para meter.
+In dit voorbeeld stelt u het poortnummer in voor uw asp.net kernweb-API met behulp van een parameter.
 
 1. Open Visual Studio en maak een nieuwe Service Fabric-toepassing.
-1. Kies de sjabloon staatloze ASP.NET Core.
-1. Kies Web API.
-1. Open het bestand ServiceManifest. XML.
-1. Noteer de naam van het eind punt dat is opgegeven voor uw service. De standaardwaarde is `ServiceEndpoint`.
-1. Open het bestand ApplicationManifest. XML
-1. Voeg in het element `ServiceManifestImport` een nieuw `RessourceOverrides` element toe met een verwijzing naar het eind punt in het bestand ServiceManifest. XML.
+1. Kies de sjabloon Stateless ASP.NET Core.
+1. Kies Web-API.
+1. Open het bestand ServiceManifest.xml.
+1. Let op de naam van het eindpunt dat voor uw service is opgegeven. De standaardwaarde is `ServiceEndpoint`.
+1. Het bestand ApplicationManifest.xml openen
+1. Voeg `ServiceManifestImport` in het element `RessourceOverrides` een nieuw element toe met een verwijzing naar het eindpunt in het bestand ServiceManifest.xml.
 
     ```xml
       <ServiceManifestImport>
@@ -40,7 +40,7 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
       </ServiceManifestImport>
     ```
 
-1. U kunt in het element `Endpoint` nu een wille keurig kenmerk overschrijven met een para meter. In dit voor beeld geeft u `Port` op en stelt u deze in op een parameter naam met behulp van vier Kante haken, bijvoorbeeld `[MyWebAPI_PortNumber]`
+1. In `Endpoint` het element u nu elk kenmerk overschrijven met behulp van een parameter. In dit voorbeeld `Port` geeft u deze op en stelt u deze in op een parameternaam met behulp van vierkante haakjes-`[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -54,7 +54,7 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
       </ServiceManifestImport>
     ```
 
-1. In het bestand ApplicationManifest. XML geeft u vervolgens de para meter op in het element `Parameters`
+1. Nog steeds in het bestand ApplicationManifest.xml geeft `Parameters` u vervolgens de parameter in het element op
 
     ```xml
       <Parameters>
@@ -62,7 +62,7 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
       </Parameters>
     ```
 
-1. En definieer een `DefaultValue`
+1. En definieer een`DefaultValue`
 
     ```xml
       <Parameters>
@@ -70,8 +70,8 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
       </Parameters>
     ```
 
-1. Open de map Application parameters en het bestand `Cloud.xml`
-1. Als u een andere poort wilt gebruiken bij het publiceren naar een extern cluster, voegt u de para meter met het poort nummer toe aan dit bestand.
+1. De map ApplicationParameters `Cloud.xml` en het bestand openen
+1. Als u een andere poort wilt opgeven die moet worden gebruikt bij het publiceren naar een extern cluster, voegt u de parameter met het poortnummer toe aan dit bestand.
 
     ```xml
       <Parameters>
@@ -79,9 +79,9 @@ In dit voor beeld stelt u het poort nummer in voor uw asp.net core web-API met b
       </Parameters>
     ```
 
-Wanneer u uw toepassing publiceert vanuit Visual Studio met behulp van het publicatie profiel Cloud. XML, is uw service geconfigureerd voor het gebruik van poort 80. Als u de toepassing implementeert zonder de para meter MyWebAPI_PortNumber op te geven, gebruikt de service poort 8080.
+Wanneer u uw toepassing publiceert vanuit Visual Studio met het publicatieprofiel van Cloud.xml, is uw service geconfigureerd om poort 80 te gebruiken. Als u de toepassing implementeert zonder de parameter MyWebAPI_PortNumber op te geven, gebruikt de service poort 8080.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de [artikelen toepassingen beheren voor meerdere omgevingen](service-fabric-manage-multiple-environment-app-configuration.md)voor meer informatie over een aantal van de belangrijkste concepten die in dit artikel worden besproken.
+Zie de [toepassingen beheren voor meerdere omgevingen voor](service-fabric-manage-multiple-environment-app-configuration.md)meer informatie over enkele van de kernconcepten die in dit artikel worden besproken.
 
-Zie [uw service Fabric-toepassingen beheren in Visual Studio](service-fabric-manage-application-in-visual-studio.md)voor informatie over andere mogelijkheden voor het beheren van apps die beschikbaar zijn in Visual Studio.
+Zie [Uw Service Fabric-toepassingen beheren in Visual Studio](service-fabric-manage-application-in-visual-studio.md)voor informatie over andere mogelijkheden voor app-beheer die beschikbaar zijn in Visual Studio.

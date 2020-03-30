@@ -1,6 +1,6 @@
 ---
-title: KEUR Beveiliging van de container in Azure Container Service
-description: Overwegingen voor het beveiligen van docker-containers die zijn geïmplementeerd in Azure Container Service en gerelateerde Azure-Services.
+title: (AFGESCHAFT) Containerbeveiliging in Azure Container Service
+description: Overwegingen voor het beveiligen van Docker-containers die zijn geïmplementeerd in Azure Container Service en gerelateerde Azure-services.
 author: sauryadas
 ms.service: container-service
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/28/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: d90d872175febf775e7d0892e133883f1a8ff8a2
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552378"
 ---
-# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>KEUR Docker-containers beveiligen in Azure Container Service
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(AFGESCHAFT) Docker-containers beveiligen in Azure Container Service
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -53,7 +53,7 @@ Zodra een toepassing naar productie is geïmplementeerd, is het essentieel om en
 ## <a name="host-level-container-isolation"></a>Isolatie van containers op hostniveau
 Wanneer een klant containertoepassingen op Azure-resources implementeert, worden ze op een abonnementsniveau in resourcegroepen geïmplementeerd en hebben ze niet meerdere tenants. Dit betekent dat als een klant een abonnement met anderen deelt, er geen grenzen kunnen worden opgesteld tussen twee implementaties in hetzelfde abonnement. Beveiliging op containerniveau kan daarom niet worden gegarandeerd. 
 
-Het is ook essentieel om te begrijpen dat containers de kernel en de resources van de host delen (in Azure Container Service is de host een Azure-VM in een cluster). Containers die worden uitgevoerd in de productieomgeving moeten daarom worden uitgevoerd in de modus voor niet-gemachtigde gebruikers. Wanneer een container met bevoegdheden op hoofdniveau wordt uitgevoerd, loopt de gehele omgeving risico. Een hacker kan met toegang op hoofdniveau in een container toegang krijgen tot de volledige bevoegdheden op hoofdniveau van de host. Daarnaast is het belangrijk om containers met alleen-lezenbestandssystemen uit te voeren. Dit voorkomt dat iemand die toegang heeft tot de aangetaste container, schadelijke scripts kan schrijven naar het bestandssysteem en toegang tot andere bestanden kan krijgen. Daarnaast is het belangrijk om het aantal resources (zoals geheugen, CPU en netwerkbandbreedte) dat aan een container is toegewezen, te beperken. Dit helpt voor komen dat hackers van vasthouden bronnen werken en illegale activiteiten kunnen afleiden, zoals een creditcard fraude of een bit munten analyse, waardoor kan worden voor komen dat andere containers op de host of het cluster worden uitgevoerd.
+Het is ook essentieel om te begrijpen dat containers de kernel en de resources van de host delen (in Azure Container Service is de host een Azure-VM in een cluster). Containers die worden uitgevoerd in de productieomgeving moeten daarom worden uitgevoerd in de modus voor niet-gemachtigde gebruikers. Wanneer een container met bevoegdheden op hoofdniveau wordt uitgevoerd, loopt de gehele omgeving risico. Een hacker kan met toegang op hoofdniveau in een container toegang krijgen tot de volledige bevoegdheden op hoofdniveau van de host. Daarnaast is het belangrijk om containers met alleen-lezenbestandssystemen uit te voeren. Dit voorkomt dat iemand die toegang heeft tot de aangetaste container, schadelijke scripts kan schrijven naar het bestandssysteem en toegang tot andere bestanden kan krijgen. Daarnaast is het belangrijk om het aantal resources (zoals geheugen, CPU en netwerkbandbreedte) dat aan een container is toegewezen, te beperken. Dit helpt voorkomen dat hackers van hogging middelen en het nastreven van illegale activiteiten, zoals creditcardfraude of bit coin mijnbouw, die kunnen voorkomen dat andere containers draaien op de host of cluster.
 
 ## <a name="orchestrator-considerations"></a>Orchestratoroverwegingen
 

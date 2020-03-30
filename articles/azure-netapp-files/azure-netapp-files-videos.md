@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files Video's | Microsoft Docs
-description: Bevat verwijzingen naar Video's die discussies bevatten over het gebruik van Azure NetApp Files.
+title: Video's van Azure NetApp-bestanden | Microsoft Documenten
+description: Bevat verwijzingen naar video's die discussies bevatten over het gebruik van Azure NetApp-bestanden.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: b-juche
 ms.openlocfilehash: aca6899da3c92cca0fd8564da5ec3d1679eb2579
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75890979"
 ---
-# <a name="azure-netapp-files-videos"></a>Video's Azure NetApp Files
-In dit artikel vindt u verwijzingen naar Video's die diep gaande discussies over het gebruik van Azure NetApp Files bevatten. 
+# <a name="azure-netapp-files-videos"></a>Video's voor Azure NetApp-bestanden
+In dit artikel vindt u verwijzingen naar video's die diepgaande discussies bevatten over het gebruik van Azure NetApp-bestanden. 
 
-Er zijn verschillende Video's beschikbaar om meer te weten te komen over Azure NetApp Files:  
+Er zijn verschillende video's beschikbaar om u te helpen meer te weten te komen over Azure NetApp-bestanden:  
 
-* [Micro soft Ignite 2019: Voer uw meest veeleisende bedrijfs bestanden uit met Azure NetApp files](https://myignite.techcommunity.microsoft.com/sessions/82938?source=sessions) biedt een korte inleiding tot Azure NetApp files, waaronder use cases en demonstratie, en ga vervolgens verder met de mogelijkheden en het schema.
-* [Azure NetApp files lezingen door Kirk Joop](https://www.youtube.com/channel/UCq1jZkyVXqMsMSIvScBE2qg/playlists) zijn een reeks Video's, zelf studies en demonstraties die zijn toegewezen aan Azure NetApp files. 
+* [Microsoft Ignite 2019: Voer uw meest veeleisende zakelijke bestandsworkloads uit met Azure NetApp Files](https://myignite.techcommunity.microsoft.com/sessions/82938?source=sessions) biedt een korte introductie tot Azure NetApp-bestanden, inclusief use cases en demo, en gaat vervolgens dieper in op de mogelijkheden en roadmap.
+* [Azure NetApp Files talks van Kirk Ryan](https://www.youtube.com/channel/UCq1jZkyVXqMsMSIvScBE2qg/playlists) zijn een reeks video's, tutorials en demonstraties gewijd aan Azure NetApp Files. 

@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 5fe9fe8ced675f68161f0df9f2665b47f9d47ac5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176546"
 ---
-### <a name="server-auth"></a>Procedures: Verifiëren bij een provider (Server Flow)
+### <a name="how-to-authenticate-with-a-provider-server-flow"></a><a name="server-auth"></a>Procedure: Verifiëren bij een provider (Server Flow)
 Als u het verificatieproces in uw app door Mobile Apps wilt laten beheren, moet u uw app registreren bij uw id-provider. Daarna moet u in uw Azure App Service de door uw provider verstrekte toepassings-id en geheim configureren.
 Zie de zelfstudie [Verificatie toevoegen aan uw app](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md) voor meer informatie.
 
-Wanneer u de id-provider hebt geregistreerd, roept u de methode `.login()` aan met de naam van uw provider. Als u bijvoorbeeld wilt aanmelden met Facebook-gebruik de volgende code:
+Wanneer u de id-provider hebt geregistreerd, roept u de methode `.login()` aan met de naam van uw provider. Als u zich bijvoorbeeld aanmeldt met Facebook, gebruikt u de volgende code:
 
 ```javascript
 client.login("facebook").done(function (results) {
@@ -30,9 +30,9 @@ De geldige waarden voor de provider zijn 'aad', 'facebook', 'google', 'microsoft
 > [!NOTE]
 > Verificatie via Google werkt momenteel niet via Server Flow.  Voor verificatie via Google moet u een [client-flowmethode](#client-auth) gebruiken.
 
-In dit geval beheert Azure App Service de OAuth 2.0-verificatiestroom.  Het geeft de aanmeldingspagina van de geselecteerde provider weer en genereert een App Service-verificatietoken na geslaagde aanmelding met de id-provider. De aanmeldingsfunctie retourneert na voltooiing een JSON-object dat zowel de gebruikers-id als het App Service-verificatietoken respectievelijk in de velden userId en authenticationToken weergeeft. Dit token kan worden opgeslagen in de cache en opnieuw worden gebruikt totdat het verloopt.
+In dit geval beheert Azure App Service de OAuth 2.0-verificatiestroom.  Het toont de aanmeldingspagina van de geselecteerde provider en genereert een App Service-verificatietoken na een succesvolle aanmelding bij de identiteitsprovider. De aanmeldingsfunctie retourneert na voltooiing een JSON-object dat zowel de gebruikers-id als het App Service-verificatietoken respectievelijk in de velden userId en authenticationToken weergeeft. Dit token kan worden opgeslagen in de cache en opnieuw worden gebruikt totdat het verloopt.
 
-### <a name="client-auth"></a>Procedures: Verifiëren bij een provider (Client Flow)
+### <a name="how-to-authenticate-with-a-provider-client-flow"></a><a name="client-auth"></a>Procedure: Verifiëren bij een provider (Client Flow)
 
 Uw app kan ook afzonderlijk contact opnemen met de id-provider en het geretourneerde token vervolgens aan uw App Service verstrekken voor verificatie. Met deze clientstroom kunt u een eenmalige aanmelding bieden voor gebruikers of aanvullende gebruikersgegevens ophalen van de id-provider.
 
@@ -53,7 +53,7 @@ client.login(
 ```
 In dit voorbeeld wordt ervan uitgegaan dat het token dat is opgegeven door de betreffende SDK-provider, is opgeslagen in de tokenvariabele.
 
-### <a name="auth-getinfo"></a>Procedures: Informatie over de geverifieerde gebruiker ophalen
+### <a name="how-to-obtain-information-about-the-authenticated-user"></a><a name="auth-getinfo"></a>Procedure: Informatie verzamelen over de geverifieerde gebruiker
 
 De verificatiegegevens kunnen worden opgehaald uit het `/.auth/me`-eindpunt met een HTTP aanroep aan een willekeurige AJAX-bibliotheek.  Zorg ervoor dat u de `X-ZUMO-AUTH`-header in uw verificatietoken instelt.  Het verificatietoken wordt opgeslagen in `client.currentUser.mobileServiceAuthenticationToken`.  Als u bijvoorbeeld de API 'Ophalen' gebruikt:
 

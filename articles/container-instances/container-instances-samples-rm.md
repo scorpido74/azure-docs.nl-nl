@@ -1,50 +1,50 @@
 ---
 title: Azure Resource Manager-voorbeeldsjablonen
-description: Azure Resource Manager sjabloon voorbeelden zoeken om Azure Container Instances te implementeren in verschillende configuraties
+description: Sjabloonvoorbeelden van Azure Resource Manager zoeken om Azure Container Instances in verschillende configuraties te implementeren
 ms.topic: article
 ms.date: 03/07/2019
 ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981654"
 ---
-# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Resource Manager sjablonen voor Azure Container Instances
+# <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Resource Manager-sjablonen voor Azure Container Instances
 
-De volgende voorbeeld sjablonen implementeren container instanties in verschillende configuraties.
+De volgende voorbeeldsjablonen implementeren containerexemplaren in verschillende configuraties.
 
-Zie de sectie [implementatie](#deployment) voor implementatie opties. Als u uw eigen sjablonen wilt maken, gaat u naar de sjabloon indeling van de Azure Container Instances [Resource Manager-sjabloon][ref] en de beschik bare eigenschappen.
+Zie de sectie [Implementatie](#deployment) voor implementatieopties. Als u uw eigen sjablonen wilt maken, bevat de [sjabloonindeling azure][ref] Container Instances Resource Manager de sjabloonindeling en beschikbare eigenschappen.
 
 ## <a name="sample-templates"></a>Voorbeeldsjablonen
 
 | | |
 |-|-|
 | **Toepassingen** ||
-| [WordPress][app-wp] | Hiermee maakt u een WordPress-website en de MySQL-data base in een container groep. De WordPress site-inhoud en MySQL-data base worden opgeslagen in een Azure Files share. Maakt ook een toepassings gateway om open bare netwerk toegang tot WordPress beschikbaar te maken. |
-| [MS NAV met SQL Server en IIS][app-nav] | Hiermee implementeert u één Windows-container met een volledig functionele, op zichzelf staande Dynamics NAV/Dynamics 365 Business Central-omgeving. |
-| **Omvang** ||
-| [emptyDir][vol-emptydir] | Hiermee worden twee Linux-containers geïmplementeerd die een emptyDir-volume delen. |
-| [gitRepo][vol-gitrepo] | Hiermee wordt een Linux-container geïmplementeerd waarmee een GitHub-opslag plaats wordt gekloond en gekoppeld als een volume. |
-| [secret][vol-secret] | Hiermee implementeert u een Linux-container met een PFX-certificaat dat is gekoppeld als een geheim volume. |
-| **Netwerken** ||
-| [UDP-weer gegeven container][net-udp] | Hiermee wordt een Windows-of Linux-container geïmplementeerd die een UDP-poort beschikbaar maakt. |
-| [Linux-container met openbaar IP-adres][net-publicip] | Implementeert één Linux-container die toegankelijk is via een openbaar IP-adres. |
-| [Een container groep met een virtueel netwerk (preview-versie) implementeren][net-vnet] | Hiermee implementeert u een nieuw virtueel netwerk, subnet, netwerk profiel en container groep. |
+| [WordPress][app-wp] | Hiermee maakt u een WordPress-website en de MySQL-database in een containergroep. De WordPress-site-inhoud en MySQL-database blijven bestaan in een Azure-bestandenshare. Maakt ook een toepassingsgateway om openbare netwerktoegang tot WordPress bloot te leggen. |
+| [MS NAV met SQL Server en IIS][app-nav] | Implementeert één Windows-container met een volledig uitgeruste zelfstandige Dynamics NAV / Dynamics 365 Business Central-omgeving. |
+| **Volumes** ||
+| [emptyDir][vol-emptydir] | Implementeert twee Linux-containers die een leegDir-volume delen. |
+| [gitRepo][vol-gitrepo] | Implementeert een Linux-container die een GitHub repo kloont en deze als volume monteert. |
+| [geheim][vol-secret] | Implementeert een Linux container met een PFX cert gemonteerd als een geheim volume. |
+| **Networking** ||
+| [Aan UDP blootgestelde container][net-udp] | Hiermee implementeert u een Windows- of Linux-container die een UDP-poort blootlegt. |
+| [Linux container met openbare IP][net-publicip] | Implementeert een enkele Linux-container die toegankelijk is via een openbare IP. |
+| [Een containergroep implementeren met een virtueel netwerk (voorbeeld)][net-vnet] | Implementeert een nieuw virtueel netwerk, subnet, netwerkprofiel en containergroep. |
 | **Azure-resources** ||
-| [Azure Storage account en bestanden share maken][az-files] | Maakt gebruik van de Azure CLI in een container exemplaar voor het maken van een opslag account en een Azure Files share.
+| [Azure Storage-account en delen bestanden maken][az-files] | Gebruikt de Azure CLI in een containerinstantie om een opslagaccount en een Azure-bestandenaandeel te maken.
 
 ## <a name="deployment"></a>Implementatie
 
-U hebt verschillende mogelijkheden voor het implementeren van resources met Resource Manager-sjablonen:
+U hebt verschillende opties voor het implementeren van resources met Resource Manager-sjablonen:
 
 [Azure-CLI][deploy-cli]
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure Portal][deploy-portal]
+[Azure-portal][deploy-portal]
 
-[REST API][deploy-rest]
+[REST-API][deploy-rest]
 
 <!-- LINKS - External -->
 [app-nav]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-dynamicsnav

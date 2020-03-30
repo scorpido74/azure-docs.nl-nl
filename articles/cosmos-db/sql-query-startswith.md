@@ -1,6 +1,6 @@
 ---
-title: STARTSWITH in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie STARTSWITH in Azure Cosmos DB.
+title: STARTSWITH in Azure Cosmos DB-querytaal
+description: Meer informatie over SQL-systeemfunctie STARTSWITH in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9ed49c067946186f8b79f67bad0a460113eacb73
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78295705"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
- Retourneert een Booleaanse waarde die aangeeft of de eerste expressie tekenreeks begint met de tweede.  
+ Retourneert een Booleaan die aangeeft of de eerste tekenreeksexpressie begint met de tweede.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -26,24 +26,24 @@ STARTSWITH(<str_expr1>, <str_expr2>)
 ## <a name="arguments"></a>Argumenten
   
 *str_expr1*  
-   Is een teken reeks expressie.
+   Is een tekenreeksexpressie.
   
 *str_expr2*  
-   Is een teken reeks expressie die moet worden vergeleken met het begin van *str_expr1*.
+   Is een tekenreeksexpressie te vergelijken met het begin van *str_expr1*.
 
-## <a name="return-types"></a>Retour typen
+## <a name="return-types"></a>Retourtypen
   
-  Retourneert een Booleaanse expressie.  
+  Geeft als resultaat een Booleaanse expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  Het volgende voorbeeld wordt als de tekenreeks "abc" met "b begint" en "a".  
+  In het volgende voorbeeld wordt gecontroleerd of de tekenreeks "abc" begint met "b" en "a".  
   
 ```sql
 SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2  
 ```  
   
- Hier volgt de resultatenset.  
+ Hier is het resultaat ingesteld.  
   
 ```json
 [{"s1": false, "s2": true}]  
@@ -51,10 +51,10 @@ SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeem functie maakt deel uit van een [bereik index](index-policy.md#includeexclude-strategy).
+Deze systeemfunctie zal profiteren van een [bereikindex](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Teken reeks functies Azure Cosmos DB](sql-query-string-functions.md)
-- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
+- [Tekenreeksfuncties Azure Cosmos DB](sql-query-string-functions.md)
+- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

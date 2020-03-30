@@ -5,17 +5,17 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: b6ab3e80c7a27263039de3d371adea3d49ddfcc9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75436998"
 ---
-|  | **Persoonlijke Peering** | **Microsoft-Peering** |  **Openbare Peering** (afgeschaft voor nieuwe circuits) |
+|  | **Persoonlijke peering** | **Microsoft-peering** |  **Openbare Peering** (afgeschaft voor nieuwe circuits) |
 | --- | --- | --- | --- |
-| **Max. # voorvoegsels per peering ondersteund** |4000 standaard 10.000 met ExpressRoute Premium |200 |200 |
-| **IP-adresbereiken ondersteund** |Een geldig IP-adres binnen uw WAN. |Openbare IP-adressen die eigendom zijn door u of uw connectiviteitsprovider. |Openbare IP-adressen die eigendom zijn door u of uw connectiviteitsprovider. |
-| **Aantal vereisten** |Persoonlijke en openbare AS-nummers. U moet de eigenaar bent van de openbare AS-nummer als u ervoor kiest een te gebruiken. |Persoonlijke en openbare AS-nummers. U moet echter bewijzen eigendom van openbare IP-adressen. |Persoonlijke en openbare AS-nummers. U moet echter bewijzen eigendom van openbare IP-adressen. |
-| **IP-protocollen die worden ondersteund**| IPv4 |  IPv4, IPv6 | IPv4 |
-| **Routering Interface IP-adressen** |RFC1918 en openbare IP-adressen |Openbare IP-adressen in routeringsregisters voor u geregistreerd. |Openbare IP-adressen in routeringsregisters voor u geregistreerd. |
-| **MD5-Hash-ondersteuning** |Ja |Ja |Ja |
+| **Max. # voorvoegsels ondersteund per peering** |Standaard 4000, 10.000 met ExpressRoute Premium |200 |200 |
+| **Ondersteunde IP-adresbereiken** |Elk geldig IP-adres binnen uw WAN. |Openbare IP-adressen die eigendom zijn van u of uw connectiviteitsprovider. |Openbare IP-adressen die eigendom zijn van u of uw connectiviteitsprovider. |
+| **AS-nummervereisten** |Private en publieke AS-nummers. U moet eigenaar zijn van het openbare AS-nummer als u ervoor kiest om er een te gebruiken. |Private en publieke AS-nummers. U moet echter bewijzen dat u eigenaar is van openbare IP-adressen. |Private en publieke AS-nummers. U moet echter bewijzen dat u eigenaar is van openbare IP-adressen. |
+| **ONDERSTEUNDE IP-protocollen**| IPv4 |  IPv4, IPv6 | IPv4 |
+| **IP-adressen routeringinterface** |RFC1918 en openbare IP-adressen |Openbare IP-adressen die bij u zijn geregistreerd in routeringsregisters. |Openbare IP-adressen die bij u zijn geregistreerd in routeringsregisters. |
+| **Ondersteuning voor MD5 Hash** |Ja |Ja |Ja |

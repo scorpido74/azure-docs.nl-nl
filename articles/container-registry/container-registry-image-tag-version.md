@@ -1,71 +1,71 @@
 ---
-title: Aanbevolen procedures voor afbeeldings codes
-description: Aanbevolen procedures voor het labelen en versie beheer van docker-container installatie kopieën bij het pushen van installatie kopieën naar en het ophalen van installatie kopieën uit een Azure container Registry
+title: Aanbevolen procedures voor afbeeldingstag
+description: Aanbevolen procedures voor het taggen en versien van Docker-containerafbeeldingen bij het pushen van afbeeldingen naar en het trekken van afbeeldingen uit een Azure-containerregister
 author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445735"
 ---
-# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Aanbevelingen voor het labelen en versie beheer van container installatie kopieën
+# <a name="recommendations-for-tagging-and-versioning-container-images"></a>Aanbevelingen voor het taggen en versien van containerafbeeldingen
 
-Wanneer u container installatie kopieën naar een container register pusht en vervolgens implementeert, hebt u een strategie nodig voor het labelen van afbeeldingen en versie beheer. In dit artikel worden twee benaderingen beschreven, waarbij elk in de levens cyclus van de container past:
+Wanneer u containerafbeeldingen naar een containerregister pusht en deze vervolgens implementeert, hebt u een strategie nodig voor het taggen en versien van afbeeldingen. In dit artikel worden twee benaderingen besproken en waar elk past tijdens de levenscyclus van de container:
 
-* **Stabiele Tags** : Tags die u opnieuw gebruikt, bijvoorbeeld om een primaire of secundaire versie aan te geven, zoals *mycontainerimage: 1.0*.
-* **Unieke labels** : een andere tag voor elke installatie kopie die u naar een REGI ster pusht, zoals *mycontainerimage: abc123*.
+* **Stabiele tags** - Tags die u opnieuw gebruikt, bijvoorbeeld om een grote of secundaire versie aan te geven, zoals *mycontainerimage:1.0*.
+* **Unieke tags** - Een andere tag voor elke afbeelding die u naar een register pusht, zoals *mycontainerimage:abc123*.
 
-## <a name="stable-tags"></a>Stabiele Tags
+## <a name="stable-tags"></a>Stabiele tags
 
-**Aanbeveling**: gebruik stabiele Tags voor het onderhouden van **basis installatie kopieën** voor uw container builds. Vermijd implementaties met stabiele Tags, omdat deze Tags updates blijven ontvangen en inconsistenties kunnen introduceren in productie omgevingen.
+**Aanbeveling:** Gebruik stabiele tags om **basisafbeeldingen** voor uw containerbuilds te behouden. Vermijd implementaties met stabiele tags, omdat deze tags updates blijven ontvangen en inconsistenties in productieomgevingen kunnen introduceren.
 
-*Stabiele Tags* betekenen een ontwikkelaar of een build-systeem en kunnen een specifieke tag blijven ophalen, waardoor updates worden voortgezet. Stabiel betekent niet dat de inhoud is bevroren. In plaats daarvan houdt dat in dat de afbeelding stabiel moet zijn voor de bedoeling van die versie. Om "stabiel" te blijven staan, kan het zijn dat er beveiligings patches of Framework-updates worden toegepast.
+*Stabiele tags* betekenen dat een ontwikkelaar, of een buildsysteem, een specifieke tag kan blijven trekken, die nog steeds updates krijgt. Stabiel betekent niet dat de inhoud bevroren is. Integendeel, stabiel impliceert dat het beeld stabiel moet zijn voor de bedoeling van die versie. Om "stabiel" te blijven, kan het worden onderhouden om beveiligingspatches of framework-updates toe te passen.
 
 ### <a name="example"></a>Voorbeeld
 
-Een framework-team verzendt versie 1,0. Ze weten dat ze updates kunnen verzenden, met inbegrip van kleine updates. Om stabiele Tags te ondersteunen voor een primaire en secundaire versie, hebben ze twee sets stabiele Tags.
+Een framework team verzendt versie 1.0. Ze weten dat ze updates verzenden, inclusief kleine updates. Om stabiele tags voor een bepaalde grote en kleine versie te ondersteunen, hebben ze twee sets stabiele tags.
 
-* `:1`: een stabiele tag voor de primaire versie. `1` vertegenwoordigt de versie ' nieuw ' of ' nieuwste ' 1. *.
-* `:1.0`-een stabiele tag voor versie 1,0, waardoor een ontwikkelaar verbinding kan maken met de updates van 1,0, en niet wordt doorgevoerd naar 1,1 wanneer deze wordt uitgebracht.
+* `:1`– een stabiele tag voor de belangrijkste versie. `1`vertegenwoordigt de "nieuwste" of "nieuwste" 1.* versie.
+* `:1.0`- een stabiele tag voor versie 1.0, waardoor een ontwikkelaar zich kan binden aan updates van 1.0 en niet naar 1.1 kan worden gerold wanneer deze wordt uitgebracht.
 
-Het team gebruikt ook de code `:latest`, die verwijst naar de laatste stabiele tag, ongeacht de huidige primaire versie.
+Het team maakt `:latest` ook gebruik van de tag, die wijst op de nieuwste stabiele tag, ongeacht wat de huidige grote versie is.
 
-Als er updates voor de basis installatie kopie beschikbaar zijn of een type onderhouds release van het Framework, worden installatie kopieën met de stabiele Tags bijgewerkt naar de nieuwste Digest die de meest actuele stabiele versie van de desbetreffende release vertegenwoordigt.
+Wanneer basisafbeeldingsupdates beschikbaar zijn, of een type onderhoudsversie van het framework, worden afbeeldingen met de stabiele tags bijgewerkt naar de nieuwste samenvatting die de meest recente stabiele versie van die versie vertegenwoordigt.
 
-In dit geval worden de primaire en secundaire Tags voortdurend onderhouden. Met een basis installatie kopie scenario kan de eigenaar van de afbeelding geservicede installatie kopieën aanbieden.
+In dit geval worden zowel de belangrijkste als de kleine tags voortdurend onderhouden. Vanuit een basisafbeeldingsscenario kan de eigenaar van de afbeelding serviced images leveren.
 
 ### <a name="delete-untagged-manifests"></a>Niet-gecodeerde manifesten verwijderen
 
-Als een afbeelding met een stabiele tag wordt bijgewerkt, is de eerder gelabelde afbeelding niet-gelabeld, wat resulteert in een zwevende afbeelding. Het manifest van de vorige afbeelding en de unieke laag gegevens blijven in het REGI ster. Als u de register grootte wilt behouden, kunt u regel matig niet-gecodeerde manifesten verwijderen die het resultaat zijn van het bijwerken van stabiele beelden. U kunt bijvoorbeeld niet-gecodeerde manifesten die ouder zijn dan een opgegeven duur [automatisch opschonen](container-registry-auto-purge.md) of een [Bewaar beleid](container-registry-retention-policy.md) voor niet-gecodeerde manifesten instellen.
+Als een afbeelding met een stabiele tag wordt bijgewerkt, wordt de eerder gelabelde afbeelding niet getagd, wat resulteert in een zwevende afbeelding. De manifest- en unieke laaggegevens van de vorige afbeelding blijven in het register. Als u uw registergrootte wilt behouden, u ongelabelde manifesten die afkomstig zijn van stabiele afbeeldingsupdates periodiek verwijderen. U bijvoorbeeld niet-gelabelde manifesten die ouder zijn dan een bepaalde duur automatisch verwijderen of een [bewaarbeleid](container-registry-retention-policy.md) instellen voor [niet-gelabelde](container-registry-auto-purge.md) manifesten.
 
-## <a name="unique-tags"></a>Unieke labels
+## <a name="unique-tags"></a>Unieke tags
 
-**Aanbeveling**: Gebruik unieke labels voor **implementaties**, met name in een omgeving die kan worden geschaald op meerdere knoop punten. Waarschijnlijk wilt u opzettelijk implementaties van een consistente versie van onderdelen. Als uw container opnieuw wordt opgestart of als een Orchestrator meer exemplaren uitbreidt, halen uw hosts niet per ongeluk een nieuwere versie op, inconsistent met de andere knoop punten.
+**Aanbeveling:** Gebruik unieke tags voor **implementaties,** vooral in een omgeving die kan worden geschaald op meerdere knooppunten. U wilt waarschijnlijk opzettelijke implementaties van een consistente versie van componenten. Als uw container opnieuw wordt opgestart of als een orchestrator meer exemplaren schaalt, zullen uw hosts niet per ongeluk een nieuwere versie trekken, in strijd met de andere knooppunten.
 
-Unieke labels betekenen gewoon dat elke afbeelding die naar een REGI ster is gepusht, een unieke tag heeft. Tags worden niet opnieuw gebruikt. Er zijn verschillende patronen die u kunt volgen om unieke labels te genereren, waaronder:
+Unieke tagging betekent gewoon dat elke afbeelding geduwd naar een register heeft een unieke tag. Tags worden niet opnieuw gebruikt. Er zijn verschillende patronen die u volgen om unieke tags te genereren, waaronder:
 
-* **Datum/tijds tempel** : deze benadering is tamelijk gebruikelijk, omdat u duidelijk kunt zien wanneer de installatie kopie is gemaakt. Maar hoe kan ik deze weer correleren aan uw build-systeem? Moet u de build vinden die op hetzelfde moment is voltooid? In welke tijd zone bevindt u zich? Zijn al uw bouw systemen gekalibreerd tot UTC?
-* **Git door voeren** : deze aanpak werkt tot u begint met de ondersteuning van basis installatie kopie-updates. Als er een update voor de basis installatie kopie plaatsvindt, wordt uw build-systeem met dezelfde Git-doorvoer als de vorige build gestart. De basis installatie kopie heeft echter nieuwe inhoud. In het algemeen biedt een Git-doorvoer een *semi*-stabiele tag.
-* **Manifest Digest** : elke container installatie kopie die naar een container register is gepusht, is gekoppeld aan een manifest, geïdentificeerd door een unieke SHA-256-Hash, of Digest. Hoewel uniek, is de samen vatting lang, moeilijk te lezen en niet-gecorreleerd met uw build-omgeving.
-* **Build-id** : deze optie is mogelijk het beste omdat deze waarschijnlijk incrementeel is, en Hiermee kunt u weer correleren met de specifieke build om alle artefacten en logboeken te vinden. Net als bij een samen vatting van een manifest is het echter mogelijk moeilijk te lezen.
+* **Datum-tijdstempel** - Deze aanpak komt vrij vaak voor, omdat u duidelijk zien wanneer de afbeelding is gebouwd. Maar, hoe het te correleren terug naar uw build-systeem? Moet je de build vinden die tegelijkertijd werd voltooid? In welke tijdzone zit je? Zijn al uw bouwsystemen gekalibreerd op UTC?
+* **Git commit** – Deze aanpak werkt totdat je beginnen met het ondersteunen van basisafbeeldingsupdates. Als er een basisafbeeldingsupdate plaatsvindt, start je buildsysteem met dezelfde Git commit als de vorige build. De basisafbeelding heeft echter nieuwe inhoud. Over het algemeen biedt een Git commit een *semi-stabiele*tag.
+* **Manifest digest** - Elke containerafbeelding die naar een containerregister wordt gepusht, wordt geassocieerd met een manifest, geïdentificeerd door een unieke SHA-256-hash of digest. Hoewel uniek, de samenvatting is lang, moeilijk te lezen, en niet gecorreleerd met uw gebouwde omgeving.
+* **Build ID** - Deze optie kan het beste zijn omdat het waarschijnlijk incrementeel is, en het stelt u in staat om terug te correleren naar de specifieke build om alle artefacten en logboeken te vinden. Echter, als een duidelijke verteren, kan het moeilijk zijn voor een mens om te lezen.
 
-  Als uw organisatie verschillende build-systemen heeft, wordt het voor voegsel van de tag met de naam van het build-systeem een variant voor deze optie: `<build-system>-<build-id>`. U kunt bijvoorbeeld samen stellingen onderscheiden van het Jenkins build-systeem van het API-team en het build-systeem van Azure pipelines van het webteam.
+  Als uw organisatie meerdere buildsystemen heeft, is het vooraf bevestigen van `<build-system>-<build-id>`de tag met de naam van het buildsysteem een variatie op deze optie: . U bijvoorbeeld builds onderscheiden van het Jenkins-buildsysteem van het API-team en het Azure Pipelines-buildsysteem van het webteam.
 
-### <a name="lock-deployed-image-tags"></a>Geïmplementeerde afbeeldings Tags vergren delen
+### <a name="lock-deployed-image-tags"></a>Geïmplementeerde afbeeldingstags vergrendelen
 
-Als best practice wordt u aangeraden elke geïmplementeerde installatie kopie code te [vergren delen](container-registry-image-lock.md) door het kenmerk `write-enabled` in te stellen op `false`. In deze oefening wordt voor komen dat u per ongeluk een installatie kopie uit het REGI ster verwijdert en mogelijk uw implementaties verstoort. U kunt de vergrendelings stap in uw release pijplijn toevoegen.
+Als aanbevolen toepassing raden we u aan een geïmplementeerde afbeeldingstag [te vergrendelen](container-registry-image-lock.md) door het `write-enabled` kenmerk in te stellen op `false`. Deze praktijk voorkomt dat u per ongeluk een afbeelding uit het register verwijdert en mogelijk uw implementaties verstoort. U de vergrendelingsstap opnemen in uw releasepijplijn.
 
-Als u een geïmplementeerde installatie kopie vergrendelt, kunt u andere, niet-geïmplementeerde installatie kopieën uit het REGI ster verwijderen met Azure Container Registry-functies om uw REGI ster te onderhouden. U kunt bijvoorbeeld niet-gelabelde manifesten of niet-vergrendelde installatie kopieën die ouder zijn dan een opgegeven duur [automatisch opschonen](container-registry-auto-purge.md) of een [Bewaar beleid](container-registry-retention-policy.md) voor niet-gecodeerde manifesten instellen.
+Als u een geïmplementeerde afbeelding vergrendelt, u nog steeds andere, niet-geïmplementeerde afbeeldingen uit uw register verwijderen met behulp van Azure Container Registry-functies om uw register bij te houden. Verwijder bijvoorbeeld niet-gelabelde manifesten of ontgrendelde afbeeldingen die ouder zijn dan een bepaalde duur, of stel een [bewaarbeleid](container-registry-retention-policy.md) in voor [niet-gecodeerde](container-registry-auto-purge.md) manifesten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor een gedetailleerde beschrijving van de concepten in dit artikel, raadpleegt u de blog post [docker tagging: Aanbevolen procedures voor het labelen en versie beheer van docker-installatie kopieën](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
+Voor een meer gedetailleerde bespreking van de concepten in dit artikel, zie de blogpost [Docker Tagging: Best practices voor tagging en versioning docker afbeeldingen](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
 
-Zie [Aanbevolen procedures voor Azure container Registry voor](container-registry-best-practices.md)het optimaliseren van de prestaties en het rendabele gebruik van uw Azure container Registry.
+Zie Aanbevolen procedures voor Azure Container Registry om de prestaties en het kosteneffectieve gebruik van uw Azure-containerregister te [maximaliseren.](container-registry-best-practices.md)
 
 <!-- IMAGES -->
 

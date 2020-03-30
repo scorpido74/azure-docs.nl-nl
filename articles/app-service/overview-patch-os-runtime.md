@@ -1,61 +1,61 @@
 ---
-title: Uitgebracht voor besturings systeem en runtime patches
-description: Meer informatie over hoe Azure App Service het besturings systeem en runtime bijwerkt, welke Runtimes en patch niveau uw apps hebben en hoe u update aankondigingen kunt ophalen.
+title: OS en runtime patchen cadans
+description: Lees hoe Azure App Service het besturingssysteem en de runtimes, welke runtimes en patchniveau uw apps hebben, en hoe u update-aankondigingen ontvangen.
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
 ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273624"
 ---
-# <a name="os-and-runtime-patching-in-azure-app-service"></a>Patches voor besturings systeem en uitvoering in Azure App Service
+# <a name="os-and-runtime-patching-in-azure-app-service"></a>Patchen van besturingssysteem en runtime in Azure App Service
 
-In dit artikel leest u hoe u bepaalde versie gegevens kunt verkrijgen over het besturings systeem of de software in [app service](overview.md). 
+In dit artikel ziet u hoe u bepaalde versie-informatie over het besturingssysteem of de software in [App Service kunt](overview.md)krijgen. 
 
-App Service is een platform-as-a-service. Dit betekent dat het besturings systeem en de toepassings stack voor u door Azure worden beheerd. u kunt uw toepassing en de bijbehorende gegevens alleen beheren. Meer controle over het besturings systeem en toepassings stack is beschikbaar in [Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/). In het geval is het toch handig voor u als App Service gebruiker om meer informatie te weten, zoals:
+App Service is een Platform-as-a-Service, wat betekent dat de OS en de toepassingsstack voor u worden beheerd door Azure; u alleen uw toepassing en de bijbehorende gegevens beheert. Meer controle over de os- en toepassingsstack is beschikbaar in [Azure Virtual Machines.](https://docs.microsoft.com/azure/virtual-machines/) Met dat in gedachten is het toch nuttig voor u als app-servicegebruiker om meer informatie te weten, zoals:
 
--   Hoe en wanneer worden besturingssysteem updates toegepast?
--   Hoe worden App Service patches uitgevoerd op basis van belang rijke beveiligings problemen (zoals Zero-Day)?
--   Welke versies van het besturings systeem en runtime worden uw apps uitgevoerd?
+-   Hoe en wanneer worden OS-updates toegepast?
+-   Hoe wordt App Service gepatcht tegen aanzienlijke kwetsbaarheden (zoals zero-day)?
+-   Welke os- en runtime-versies worden uw apps uitgevoerd?
 
-Uit veiligheids overwegingen worden bepaalde specifieke beveiligings gegevens niet gepubliceerd. Het artikel is echter van belang om problemen op te lossen door de transparantie van het proces te maximaliseren en te bepalen hoe u op het gebied van beveiligings meldingen of runtime-updates up-to-date kunt blijven.
+Om veiligheidsredenen worden bepaalde specifieke kenmerken van beveiligingsinformatie niet gepubliceerd. Het artikel is echter bedoeld om de zorgen te verlichten door de transparantie over het proces te maximaliseren en hoe u op de hoogte blijven van beveiligingsgerelateerde aankondigingen of runtime-updates.
 
-## <a name="how-and-when-are-os-updates-applied"></a>Hoe en wanneer worden besturingssysteem updates toegepast?
+## <a name="how-and-when-are-os-updates-applied"></a>Hoe en wanneer worden OS-updates toegepast?
 
-Azure beheert patching van het besturings systeem op twee niveaus, de fysieke servers en de virtuele gast machines (Vm's) die de App Service resources uitvoeren. Beide worden maandelijks bijgewerkt, wat wordt uitgelijnd op de planning van de maandelijkse [patch-dinsdag](https://technet.microsoft.com/security/bulletins.aspx) . Deze updates worden automatisch toegepast, op een manier waarmee de SLA met hoge Beschik baarheid van Azure-Services wordt gegarandeerd. 
+Azure beheert het patchen van besturingssysteem op twee niveaus, de fysieke servers en de virtuele machines (VM's) van de gast waarop de App Service-resources worden uitgevoerd. Beide worden maandelijks bijgewerkt, wat overeenkomt met het maandelijkse [Patch Tuesday-schema.](https://technet.microsoft.com/security/bulletins.aspx) Deze updates worden automatisch toegepast, op een manier die de sla van Azure-services met hoge beschikbaarheid garandeert. 
 
-Voor gedetailleerde informatie over hoe updates worden toegepast, Zie [ontrafelen The Magic achter app service updates van het besturings systeem](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
+Zie [Demystifying de magie achter App Service OS-updates](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html)voor gedetailleerde informatie over hoe updates worden toegepast.
 
-## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Hoe behandelt Azure aanzienlijke beveiligings problemen?
+## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Hoe gaat Azure om met belangrijke kwetsbaarheden?
 
-Wanneer ernstige beveiligings problemen onmiddellijke patches vereisen, zoals [problemen met een nul dag](https://wikipedia.org/wiki/Zero-day_(computing)), worden de updates met hoge prioriteit per geval afgehandeld.
+Wanneer ernstige kwetsbaarheden onmiddellijke patching vereisen, zoals [zero-day kwetsbaarheden,](https://wikipedia.org/wiki/Zero-day_(computing))worden de updates met hoge prioriteit per geval afgehandeld.
 
-Blijf op de hoogte met essentiële beveiligings aankondigingen in azure door naar [Azure Security Blog](https://azure.microsoft.com/blog/topics/security/)te gaan. 
+Blijf op de hoogte van kritieke beveiligingsaankondigingen in Azure door azure [security blog](https://azure.microsoft.com/blog/topics/security/)te bezoeken. 
 
-## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>Wanneer worden ondersteunde taal Runtimes bijgewerkt, toegevoegd of afgeschaft?
+## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>Wanneer worden ondersteunde taalgebruikstijden bijgewerkt, toegevoegd of afgeschaft?
 
-Nieuwe stabiele versies van ondersteunde taal Runtimes (primair, secundair of patch) worden regel matig toegevoegd aan App Service exemplaren. Sommige updates overschrijven de bestaande installatie, terwijl anderen naast bestaande versies worden geïnstalleerd. Een overschrijvings installatie betekent dat uw app automatisch wordt uitgevoerd op de bijgewerkte runtime. Een gelijktijdige installatie betekent dat u uw app hand matig moet migreren om te profiteren van een nieuwe runtime versie. Zie een van de subsecties voor meer informatie.
+Nieuwe stabiele versies van ondersteunde taalgebruikstijden (groot, klein of patch) worden periodiek toegevoegd aan App Service-exemplaren. Sommige updates overschrijven de bestaande installatie, terwijl andere naast bestaande versies worden geïnstalleerd. Een overschrijfinstallatie betekent dat uw app automatisch wordt uitgevoerd op de bijgewerkte runtime. Een side-by-side installatie betekent dat u uw app handmatig moet migreren om te profiteren van een nieuwe runtime-versie. Zie voor meer informatie een van de onderafdelingen.
 
-Runtime-updates en afschaffing worden hier aangekondigd:
+Runtime updates en afschrijvingen worden hier aangekondigd:
 
 - https://azure.microsoft.com/updates/?product=app-service 
 - https://github.com/Azure/app-service-announcements/issues
 
 > [!NOTE] 
-> Hier vindt u informatie over taal runtime die in een App Service-app is ingebouwd. Een aangepaste runtime die u uploadt naar App Service, blijft bijvoorbeeld ongewijzigd, tenzij u deze hand matig bijwerkt.
+> Informatie is hier van toepassing op taalgebruikstijden die zijn ingebouwd in een App Service-app. Een aangepaste runtime die u uploadt naar bijvoorbeeld App Service, blijft ongewijzigd, tenzij u deze handmatig upgradet.
 >
 >
 
-### <a name="new-patch-updates"></a>Nieuwe patch updates
+### <a name="new-patch-updates"></a>Nieuwe patchupdates
 
-Patch-updates voor .NET, PHP, Java SDK of Tomcat/jetty-versie worden automatisch toegepast door de bestaande installatie te overschrijven met de nieuwe versie. Updates voor node. js-patches worden naast de bestaande versies geïnstalleerd (vergelijkbaar met de primaire en secundaire versies in de volgende sectie). Nieuwe python-patch versies kunnen hand matig worden geïnstalleerd via [site-extensies](https://azure.microsoft.com/blog/azure-web-sites-extensions/), naast de ingebouwde python-installaties.
+Patchupdates voor .NET, PHP, Java SDK of Tomcat/Jetty-versie worden automatisch toegepast door de bestaande installatie met de nieuwe versie te overschrijven. Node.js patch updates worden naast de bestaande versies geïnstalleerd (vergelijkbaar met grote en kleine versies in de volgende sectie). Nieuwe Python-patchversies kunnen handmatig worden geïnstalleerd via [site-extensies,](https://azure.microsoft.com/blog/azure-web-sites-extensions/)naast de ingebouwde Python-installaties.
 
-### <a name="new-major-and-minor-versions"></a>Nieuwe primaire en secundaire versies
+### <a name="new-major-and-minor-versions"></a>Nieuwe grote en kleine versies
 
-Wanneer een nieuwe primaire of secundaire versie wordt toegevoegd, wordt deze naast de bestaande versies geïnstalleerd. U kunt uw app hand matig bijwerken naar de nieuwe versie. Als u de runtime versie in een configuratie bestand (zoals `web.config` en `package.json`) hebt geconfigureerd, moet u een upgrade uitvoeren met dezelfde methode. Als u een App Service instelling hebt gebruikt om uw runtime versie te configureren, kunt u deze wijzigen in de [Azure Portal](https://portal.azure.com) of door een [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -opdracht uit te voeren in de [Cloud shell](../cloud-shell/overview.md), zoals wordt weer gegeven in de volgende voor beelden:
+Wanneer een nieuwe grote of secundaire versie wordt toegevoegd, wordt deze naast de bestaande versies geïnstalleerd. U uw app handmatig upgraden naar de nieuwe versie. Als u de runtime-versie hebt geconfigureerd `web.config` in `package.json`een configuratiebestand (zoals en ), moet u met dezelfde methode upgraden. Als u een app-service-instelling hebt gebruikt om uw runtime-versie te configureren, u deze wijzigen in de [Azure-portal](https://portal.azure.com) of door een opdracht [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) uit te voeren in de [Cloud Shell](../cloud-shell/overview.md), zoals weergegeven in de volgende voorbeelden:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -67,30 +67,30 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 
 ### <a name="deprecated-versions"></a>Afgeschafte versies  
 
-Wanneer een oudere versie wordt afgeschaft, wordt de verwijderings datum aangekondigd zodat u de upgrade van runtime versie dienovereenkomstig kunt plannen. 
+Wanneer een oudere versie wordt afgeschaft, wordt de verwijderingsdatum aangekondigd, zodat u uw upgrade van de runtime-versie dienovereenkomstig plannen. 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Hoe kan ik een query uitvoeren op de status van het besturings systeem en de runtime-update voor mijn instanties?  
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Hoe kan ik de status van besturingssysteem en runtime-update op mijn exemplaren opvragen?  
 
-Hoewel essentiële besturingssysteem gegevens worden vergrendeld vanuit Access (Zie [functionaliteit van het besturings systeem op Azure app service](operating-system-functionality.md)), kunt u met de [kudu-console](https://github.com/projectkudu/kudu/wiki/Kudu-console) uw app service exemplaar opvragen met betrekking tot de versie van het besturings systeem en de runtime versie. 
+Terwijl kritieke besturingssysteemgegevens zijn vergrendeld op basis van toegang (zie [Functie van het besturingssysteem op Azure App Service),](operating-system-functionality.md)u met de [Kudu-console](https://github.com/projectkudu/kudu/wiki/Kudu-console) uw App Service-instantie opvragen met betrekking tot de versie van het besturingssysteem en de runtime-versies. 
 
-In de volgende tabel ziet u hoe de versies van Windows en de taal runtime worden uitgevoerd op uw apps:
+In de volgende tabel ziet u hoe u de versies van Windows en de taalruntime waarop uw apps worden uitgevoerd, wordt weergegeven:
 
-| Informatie | Waar u het kunt vinden | 
+| Informatie | Waar te vinden | 
 |-|-|
-| Windows-versie | Zie `https://<appname>.scm.azurewebsites.net/Env.cshtml` (onder systeem info) |
-| .NET-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| .NET core-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br> `dotnet --version` |
-| PHP-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br> `php --version` |
-| Standaard versie van node. js | Voer in het [Cloud shell](../cloud-shell/overview.md)de volgende opdracht uit: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br> `python --version` |  
-| Java-versie | Voer op `https://<appname>.scm.azurewebsites.net/DebugConsole`de volgende opdracht uit in de opdracht prompt: <br> `java -version` |  
+| Windows-versie | Zie `https://<appname>.scm.azurewebsites.net/Env.cshtml` (onder Systeeminfo) |
+| .NET-versie | Voer `https://<appname>.scm.azurewebsites.net/DebugConsole`bij de volgende opdracht de volgende opdracht uit in de opdrachtprompt: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET Core-versie | Voer `https://<appname>.scm.azurewebsites.net/DebugConsole`bij de volgende opdracht de volgende opdracht uit in de opdrachtprompt: <br> `dotnet --version` |
+| PHP-versie | Voer `https://<appname>.scm.azurewebsites.net/DebugConsole`bij de volgende opdracht de volgende opdracht uit in de opdrachtprompt: <br> `php --version` |
+| Standaardversie Node.js | Voer in de [Cloud Shell](../cloud-shell/overview.md)de volgende opdracht uit: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| Python-versie | Voer `https://<appname>.scm.azurewebsites.net/DebugConsole`bij de volgende opdracht de volgende opdracht uit in de opdrachtprompt: <br> `python --version` |  
+| Java-versie | Voer `https://<appname>.scm.azurewebsites.net/DebugConsole`bij de volgende opdracht de volgende opdracht uit in de opdrachtprompt: <br> `java -version` |  
 
 > [!NOTE]  
-> Toegang tot de register locatie `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, waarbij informatie over [KB-patches](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) wordt opgeslagen, is vergrendeld.
+> Toegang tot `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`registerlocatie , waar informatie over ["KB" patches](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) wordt opgeslagen, is vergrendeld.
 >
 >
 
 ## <a name="more-resources"></a>Meer bronnen
 
-[Vertrouwens centrum: beveiliging](https://www.microsoft.com/en-us/trustcenter/security)  
-[64-bits ASP.NET Core op Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)
+[Vertrouwenscentrum: beveiliging](https://www.microsoft.com/en-us/trustcenter/security)  
+[64-ASP.NET Core op Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

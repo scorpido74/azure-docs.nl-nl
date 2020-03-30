@@ -1,6 +1,6 @@
 ---
-title: NVv3-serie-Azure Virtual Machines
-description: Specificaties voor de virtuele machines uit de NVv3-serie.
+title: NVv3-serie - Azure Virtual Machines
+description: Specificaties voor de NVv3-serie VM's.
 services: virtual-machines
 author: vikancha
 ms.service: virtual-machines
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: d74b00a4bade956d3a511a47b0a6b0011b9fb212
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78267418"
 ---
 # <a name="nvv3-series"></a>NVv3-serie
 
-De virtuele machines uit de NVv3-serie worden aangedreven door [Nvidia Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) gpu's en de NVIDIA-raster technologie met Intel E5-2690 v4 (Broadwell) Cpu's en Intel Hyper-Threading-technologie. Deze virtuele machines zijn gericht op GPU-versnelde grafische toepassingen en virtuele Bureau bladen waar klanten hun gegevens willen visualiseren, de resultaten kunnen simuleren om te bekijken, te werken met CAD of inhoud te genereren en te streamen. Daarnaast kunnen deze virtuele machines single Precision-werk belastingen uitvoeren, zoals code ring en rendering. Virtuele machines van NVv3 ondersteunen Premium Storage en komen twee maal zoveel systeem geheugen (RAM) te staan in vergelijking met de bijbehorende voorafgaande NV-serie.  
+De Virtuele Machines uit de NVv3-serie worden aangedreven door [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU's en NVIDIA GRID-technologie met Intel E5-2690 v4 (Broadwell) CPU's en Intel Hyper Threading-technologie. Deze virtuele machines zijn gericht op GPU-versnelde grafische toepassingen en virtuele desktops waar klanten hun gegevens willen visualiseren, resultaten willen simuleren om te bekijken, aan CAD willen werken of inhoud willen renderen en streamen. Bovendien kunnen deze virtuele machines enkele precisieworkloads uitvoeren, zoals codering en rendering. NVv3 virtuele machines ondersteunen Premium Storage en worden geleverd met twee keer het systeemgeheugen (RAM) in vergelijking met zijn voorganger NV-serie.  
 
-Elke GPU in NVv3-exemplaren wordt geleverd met een GRID-licentie. Deze licentie geeft u de flexibiliteit om een NV-exemplaar te gebruiken als een virtueel werk station voor één gebruiker, of 25 gelijktijdige gebruikers kunnen verbinding maken met de virtuele machine voor een virtuele-toepassings scenario.
+Elke GPU in NVv3-exemplaren wordt geleverd met een GRID-licentie. Deze licentie geeft u de flexibiliteit om een NV-exemplaar te gebruiken als een virtueel werkstation voor één gebruiker, of 25 gelijktijdige gebruikers kunnen verbinding maken met de VM voor een virtueel toepassingsscenario.
 
-Premium Storage caching: ondersteund
+Premium Storage-cache: ondersteund
 
-Livemigratie: niet ondersteund
+Live migratie: niet ondersteund
 
-Updates voor het behouden van geheugen: niet ondersteund
+Updates voor geheugenbehoud: niet ondersteund
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Max. aantal NIC's | Virtuele werk stations | Virtuele toepassingen |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Maximale schijfdoorvoer zonder cache: IOPS/MBps | Max. aantal NIC's | Virtuele werkstations | Virtuele toepassingen |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Standard_NV12s_v3 |12 | 112 | 320  | 1 | 8  | 12 | 20000/200 | 4 | 1 | 25  |
 | Standard_NV24s_v3 |24 | 224 | 640  | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50  |
@@ -38,13 +38,13 @@ Updates voor het behouden van geheugen: niet ondersteund
 
 ## <a name="supported-operating-systems-and-drivers"></a>Ondersteunde besturingssystemen en stuurprogramma’s
 
-Om te profiteren van de GPU-mogelijkheden van Vm's uit de Azure N-serie, moeten de NVIDIA GPU-Stuur Programma's zijn geïnstalleerd.
+Om te profiteren van de GPU-mogelijkheden van Azure N-serie VM's, moeten NVIDIA GPU-stuurprogramma's worden geïnstalleerd.
 
-Met de [uitbrei ding NVIDIA GPU-stuur programma](./extensions/hpccompute-gpu-windows.md) worden de juiste NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd op een virtuele machine uit de N-serie. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](./extensions/hpccompute-gpu-windows.md) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](./extensions/overview.md)voor algemene informatie over VM-extensies.
+De [NVIDIA GPU Driver Extension](./extensions/hpccompute-gpu-windows.md) installeert de juiste NVIDIA CUDA- of GRID-stuurprogramma's op een VM uit de N-serie. Installeer of beheer de extensie met behulp van de Azure-portal of hulpprogramma's zoals Azure PowerShell- of Azure Resource Manager-sjablonen. Bekijk de [NVIDIA GPU Driver Extension-documentatie](./extensions/hpccompute-gpu-windows.md) voor ondersteunde besturingssystemen en implementatiestappen. Zie Azure virtual machine [extensions and features](./extensions/overview.md)voor algemene informatie over VM-extensies.
 
-Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren, raadpleegt u [het stuur programma voor](./windows/n-series-driver-setup.md) de installatie van de Windows-of [n-Series GPU-](./linux/n-series-driver-setup.md) stuur programma voor Linux voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
+Als u ervoor kiest nvidia GPU-stuurprogramma's handmatig te installeren, raadpleegt u de opstelling van [GPU-stuurprogramma's uit de N-serie voor Windows](./windows/n-series-driver-setup.md) of [N-serie GPU-stuurprogramma's voor Linux](./linux/n-series-driver-setup.md) voor ondersteunde besturingssystemen, stuurprogramma's, installatie en verificatiestappen.
 
-## <a name="other-sizes"></a>Andere grootten
+## <a name="other-sizes"></a>Andere maten
 
 - [Algemeen doel](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
@@ -55,4 +55,4 @@ Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe [Azure Compute units (ACU)](acu.md) u kan helpen bij het vergelijken van de reken prestaties in azure-sku's.
+Meer informatie over hoe [Azure compute units (ACU)](acu.md) u kunnen helpen bij het vergelijken van rekenprestaties in Azure SKU's.

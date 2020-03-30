@@ -9,34 +9,34 @@ ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: be71b269e618d13a126e4005754b307e9c6517d7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176029"
 ---
 ## <a name="azure-backup"></a>Azure Backup
 
-Voor back-ups van virtuele Azure-machines waarop werkbelastingen voor productie wordt uitgevoerd, gebruikt u Azure Backup. Azure Backup biedt ondersteuning voor toepassingsconsistente back-ups voor zowel Windows als Linux-VM's. Azure Backup maakt herstelpunten die worden opgeslagen in geografisch redundante Recovery Services-kluizen. Wanneer u vanaf een herstelpunt herstelt, kunt u de hele VM of alleen specifieke bestanden herstellen. 
+Gebruik Azure Backup voor het maken van back-ups van Azure VM's met productieworkloads. Azure Backup ondersteunt toepassingsconsistente back-ups voor zowel Windows- als Linux-vm's. Azure Backup maakt herstelpunten die worden opgeslagen in geografisch redundante Recovery Services-kluizen. Wanneer u vanaf een herstelpunt herstelt, kunt u de hele VM of alleen specifieke bestanden herstellen. 
 
-Voor een eenvoudige introductie tot Azure back-up voor Azure-VM's, Zie de zelfstudie 'Back-up van virtuele machines van Azure' voor [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) of [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
+Zie de zelfstudie 'Back-up van Azure virtual machines' [voor](../articles/virtual-machines/linux/tutorial-backup-vms.md) Een eenvoudige, praktische inleiding tot Azure Backup voor Azure VM's. [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md)
 
-Zie voor meer informatie over hoe Azure Backup werkt [plannen van uw VM-back-upinfrastructuur in Azure](../articles/backup/backup-azure-vms-introduction.md)
+Zie [Uw VM-back-upinfrastructuur plannen in Azure](../articles/backup/backup-azure-vms-introduction.md) voor meer informatie over hoe Azure Backup werkt
 
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
-Azure Site Recovery beveiligt uw VM's uit een grote ramp-scenario, wanneer een hele regio optreedt in een uitval vanwege de grote natuurramp of wijdverbreid service wordt onderbroken. U kunt Azure Site Recovery voor uw VM's configureren, zodat u uw toepassing met één klik in een paar minuten kunt herstellen. U kunt repliceren naar een Azure-regio van uw keuze, het is niet beperkt tot twee gekoppelde regio's. 
+Azure Site Recovery beschermt uw VM's tegen een groot rampscenario, wanneer een hele regio te maken krijgt met een storing als gevolg van grote natuurrampen of wijdverspreide serviceonderbrekingen. U Azure Site Recovery configureren voor uw VM's, zodat u uw toepassing binnen enkele minuten met één klik herstellen. U repliceren naar een Azure-gebied van uw keuze, het is niet beperkt tot gekoppelde regio's. 
 
-U kunt herstel na noodgevallen oefeningen uitvoeren met testfailovers op aanvraag, zonder gevolgen voor uw productieworkloads of de voortdurende replicatie. Plannen voor herstel voor het indelen van failover en failback van de gehele toepassing die wordt uitgevoerd op meerdere virtuele machines maken. De functie voor herstel plan is geïntegreerd met Azure automation-runbooks.
+U noodhersteloefeningen uitvoeren met on-demand testfailovers, zonder dat dit gevolgen heeft voor uw productieworkloads of doorlopende replicatie. Herstelplannen maken om failover en failback te orkestreren van de hele toepassing die op meerdere VM's wordt uitgevoerd. De functie herstelplan is geïntegreerd met Azure-automatiseringsrunbooks.
 
-U kunt aan de slag door [repliceren van uw virtuele machines](https://aka.ms/a2a-getting-started). 
+U aan de slag door [uw virtuele machines te repliceren.](https://aka.ms/a2a-getting-started) 
 
 ## <a name="managed-snapshots"></a>Beheerde momentopnamen 
 
-Een optie snel en eenvoudig back-ups van virtuele machines die gebruikmaken van beheerde schijven in de ontwikkel- en testomgevingen bieden aan momentopnamen. Een beheerde momentopname is een alleen-lezen kopie van een beheerde schijf. Momentopnamen onafhankelijk van de bronschijf bestaan en kunnen worden gebruikt voor het maken van nieuwe beheerde schijven voor het opnieuw opbouwen van een virtuele machine. Ze worden in rekening gebracht op basis van het gebruikte deel van de schijf. Als u bijvoorbeeld een momentopname maakt van een beheerde schijf met een ingerichte capaciteit van 64 GB terwijl de werkelijke gebruikte gegevensgrootte 10 GB is, wordt de momentopname alleen gefactureerd voor de gebruikte gegevensgrootte van 10 GB.  
+In ontwikkel- en testomgevingen bieden momentopnamen een snelle en eenvoudige optie voor het maken van back-ups van VM's die beheerde schijven gebruiken. Een beheerde momentopname is een alleen-lezen volledige kopie van een beheerde schijf. Momentopnamen bestaan onafhankelijk van de bronschijf en kunnen worden gebruikt om nieuwe beheerde schijven te maken voor het opnieuw opbouwen van een VM. Ze worden gefactureerd op basis van het gebruikte gedeelte van de schijf. Als u bijvoorbeeld een momentopname maakt van een beheerde schijf met een ingerichte capaciteit van 64 GB en de werkelijke gebruikte gegevensgrootte van 10 GB, wordt momentopname alleen gefactureerd voor de gebruikte gegevensgrootte van 10 GB.  
 
-Zie voor meer informatie over het maken van momentopnamen.:
+Zie voor meer informatie over het maken van momentopnamen:
 
 * [Een kopie maken van een VHD die is opgeslagen als beheerde schijf met behulp van momentopnamen in Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Een kopie maken van een VHD die is opgeslagen als beheerde schijf met behulp van momentopnamen in Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
@@ -44,4 +44,4 @@ Zie voor meer informatie over het maken van momentopnamen.:
 
 
 ## <a name="next-steps"></a>Volgende stappen
-U kunt Azure Backup aan de hand van de 'Back-up Windows virtuele machines zelfstudie' uitproberen voor [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) of [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md).
+U Azure Backup uitproberen door de zelfstudie 'Back-up van windows virtuele machines' voor [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) of Windows te [volgen.](../articles/virtual-machines/windows/tutorial-backup-vms.md)

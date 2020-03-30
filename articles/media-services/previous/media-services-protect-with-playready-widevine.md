@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78199492"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>Dynamische algemene versleuteling met PlayReady en/of Widevine gebruiken
 
 > [!NOTE]
-> U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.   > Er geen nieuwe functies of functionaliteit aan Media Services v2 worden toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.   > Er worden geen nieuwe functies of functionaliteit toegevoegd aan Media Services v2. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 >   
 
 ## <a name="overview"></a>Overzicht
@@ -98,17 +98,17 @@ Bij dynamische versleuteling maakt u een asset die een set multi-bitrate MP4-bes
 
 Zie [Encode an asset by using Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) (Een asset coderen met Media Encoder Standard) voor instructies voor het coderen.
 
-## <a id="create_contentkey"></a>Een inhoudssleutel maken en deze koppelen aan de gecodeerde asset
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>Een inhoudssleutel maken en koppelen aan het gecodeerde item
 In Media Services bevat de inhoudssleutel de sleutel waarmee u een asset wilt coderen.
 
 Zie [Create content key](media-services-dotnet-create-contentkey.md) (Inhoudssleutels maken) voor meer informatie.
 
-## <a id="configure_key_auth_policy"></a>Het autorisatiebeleid voor de inhoudssleutel configureren
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>Het autorisatiebeleid van de inhoudssleutel configureren
 Media Services ondersteunt meerdere manieren om gebruikers te verifiëren die sleutels aanvragen. U moet het autorisatiebeleid voor de inhoudssleutel configureren. De client (speler) moet voldoen aan het beleid voordat de sleutel aan de client wordt geleverd. Het autorisatiebeleid voor inhoudssleutels kan een of meer autorisatiebeperkingen hebben: beperking voor openen of tokenbeperkingen.
 
 Zie [Een autorisatiebeleid voor inhoudssleutels configureren](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption) voor meer informatie.
 
-## <a id="configure_asset_delivery_policy"></a>Een leveringsbeleid voor assets configureren
+## <a name="configure-an-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>Een leveringsbeleid voor assets configureren
 Configureer het leveringsbeleid voor uw asset. De configuratie van het leveringsbeleid voor assets omvat onder andere het volgende:
 
 * De URL voor het ophalen van DRM-licenties.
@@ -117,7 +117,7 @@ Configureer het leveringsbeleid voor uw asset. De configuratie van het leverings
 
 Zie [Een leveringsbeleid voor assets configureren](media-services-dotnet-configure-asset-delivery-policy.md) voor meer informatie.
 
-## <a id="create_locator"></a>Een OnDemand-streaminglocator maken om een streaming-URL te verkrijgen
+## <a name="create-an-ondemand-streaming-locator-to-get-a-streaming-url"></a><a id="create_locator"></a>Een OnDemand-streaminglocator maken om een streaming-URL te verkrijgen
 U moet de gebruiker voorzien van de streaming-URL voor Smooth Streaming, DASH of HLS.
 
 > [!NOTE]
@@ -607,7 +607,7 @@ namespace DynamicEncryptionWithDRM
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="next-steps"></a>Volgende stappen
 

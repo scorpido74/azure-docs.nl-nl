@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: een toepassing registreren'
+title: 'Zelfstudie: Een toepassing registreren'
 titleSuffix: Azure AD B2C
-description: Meer informatie over het registreren van een webtoepassing in Azure Active Directory B2C met behulp van de Azure Portal.
+description: Meer informatie over het registreren van een webtoepassing in Azure Active Directory B2C met behulp van de Azure-portal.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,98 +12,98 @@ ms.date: 10/16/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a688f5e75f7513d0ea4308b751f87f75a2c9510a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183088"
 ---
-# <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Zelf studie: een toepassing registreren in Azure Active Directory B2C
+# <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Zelfstudie: Een toepassing registreren in Azure Active Directory B2C
 
-Voordat uw [toepassingen](application-types.md) kunnen communiceren met Azure Active Directory B2C (Azure AD B2C), moeten ze zijn geregistreerd in een Tenant die u beheert. Deze zelf studie laat zien hoe u een webtoepassing registreert met behulp van de Azure Portal.
+Voordat uw [toepassingen](application-types.md) kunnen communiceren met Azure Active Directory B2C (Azure AD B2C), moeten ze zijn geregistreerd in een tenant die u beheert. In deze zelfstudie ziet u hoe u een webtoepassing registreert met behulp van de Azure-portal.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Een web-app registreren
-> * Een client geheim maken
+> * Een klantgeheim maken
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen eigen [Azure AD B2C Tenant](tutorial-create-tenant.md)hebt gemaakt, maakt u er nu een. U kunt een bestaande Azure AD B2C-Tenant gebruiken.
+Als u nog geen eigen [Azure AD B2C-tenant](tutorial-create-tenant.md)hebt gemaakt, maakt u er nu een. U een bestaande Azure AD B2C-tenant gebruiken.
 
 ## <a name="register-a-web-application"></a>Een web-app registreren
 
-Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidige **toepassingen** gebruiken of onze nieuwe **Preview-ervaring (Unified app-registraties)** . [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
+Als u een toepassing wilt registreren in uw Azure AD B2C-tenant, u de huidige **ervaring met toepassingen** of onze nieuwe uniforme **app-registratie (Preview)-ervaring** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
 
 #### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
-1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
-1. Selecteer **Toepassingen** en vervolgens **Toevoegen**.
-1. Voer een naam in voor de toepassing. Bijvoorbeeld *webapp1*.
-1. Selecteer voor **Inclusief webtoepassing/ web-API** en **Impliciete stroom toestaan** **Ja**.
-1. Voer voor de **Antwoord-URL** een eindpunt in waarop Azure AD B2C tokens retourneert die door uw toepassing worden aangevraagd. U kunt deze bijvoorbeeld zodanig instellen dat de lokale luistert op `https://localhost:44316`. Als u het poort nummer nog niet kent, kunt u een waarde voor de tijdelijke aanduiding opgeven en deze later wijzigen.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer het pictogram **Directory + Abonnement** op de werkbalk van de portal en selecteer vervolgens de map met uw Azure AD B2C-tenant.
+1. Zoek en selecteer **Azure AD B2C**in de Azure-portal .
+1. Selecteer **Toepassingen**en selecteer **Toevoegen**.
+1. Voer een naam in voor de toepassing. *Webapp1*bijvoorbeeld .
+1. Selecteer voor **Inclusief webtoepassing/ web-API** en **Impliciete stroom toestaan****Ja**.
+1. Voer voor de **Antwoord-URL** een eindpunt in waarop Azure AD B2C tokens retourneert die door uw toepassing worden aangevraagd. U het bijvoorbeeld instellen om `https://localhost:44316`lokaal te luisteren op. Als u het poortnummer nog niet kent, u een tijdelijke aanduidingswaarde invoeren en deze later wijzigen.
 
-    Als u deze zelf studie wilt testen, kunt u deze instellen op `https://jwt.ms` waarin de inhoud van een token voor inspectie wordt weer gegeven. Voor deze zelf studie stelt u de **antwoord-URL** in op `https://jwt.ms`.
+    Voor testdoeleinden zoals deze zelfstudie `https://jwt.ms` u instellen op welke de inhoud van een token wordt weergegeven voor inspectie. Stel voor deze zelfstudie `https://jwt.ms`de URL van het **antwoord** in op .
 
-    De volgende beperkingen zijn van toepassing op antwoord-Url's:
+    De volgende beperkingen zijn van toepassing op het beantwoorden van URL's:
 
-    * De antwoord-URL moet beginnen met het schema `https`.
-    * De antwoord-URL is hoofdletter gevoelig. Het hoofdletter gebruik moet overeenkomen met het URL-pad van de actieve toepassing. Als uw toepassing bijvoorbeeld een deel van het pad bevat `.../abc/response-oidc`, geeft u geen `.../ABC/response-oidc` op in de antwoord-URL. Omdat de webbrowser paden als hoofdletter gevoelig behandelt, kunnen cookies die zijn gekoppeld aan `.../abc/response-oidc`, worden uitgesloten als ze worden omgeleid naar de niet-overeenkomende `.../ABC/response-oidc` URL.
+    * De url van het `https`antwoord moet beginnen met de regeling .
+    * De antwoord-URL is hoofdlettergevoelig. De case moet overeenkomen met het geval van het URL-pad van uw lopende toepassing. Als uw toepassing bijvoorbeeld als onderdeel `.../abc/response-oidc`van het `.../ABC/response-oidc` pad wordt weergegeven, geeft u dit niet op in de antwoord-URL. Omdat de webbrowser paden als hoofdlettergevoelig behandelt, `.../abc/response-oidc` kunnen cookies die zijn gekoppeld aan `.../ABC/response-oidc` cookies worden uitgesloten als ze worden doorgestuurd naar de URL die niet op de plaats van de aanvraag is gekoppeld.
 
-1. Selecteer **maken** om de registratie van de toepassing te volt ooien.
+1. Selecteer **Maken** om de toepassingsregistratie te voltooien.
 
-#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (voorbeeld)](#tab/app-reg-preview/)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
-1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
-1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
-1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *webapp1*.
-1. Selecteer **accounts in een organisatorische Directory of een id-provider**.
-1. Onder **omleidings-URI**selecteert u **Web**en voert u `https://jwt.ms` in het tekstvak URL in.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer het pictogram **Directory + Abonnement** op de werkbalk van de portal en selecteer vervolgens de map met uw Azure AD B2C-tenant.
+1. Zoek en selecteer **Azure AD B2C**in de Azure-portal .
+1. Selecteer **App-registraties (Voorbeeld)** en selecteer **Vervolgens Nieuwe registratie**.
+1. Voer een **naam** voor de toepassing in. *Webapp1*bijvoorbeeld .
+1. Selecteer **Accounts in een organisatiemap of een identiteitsprovider.**
+1. Selecteer **onder URI omleiden** **en**voer het `https://jwt.ms` tekstvak URL in.
 
-    De omleidings-URI is het eind punt waarnaar de gebruiker wordt verzonden door de autorisatie server (Azure AD B2C in dit geval) nadat de interactie met de gebruiker is voltooid en aan welke toegangs token of autorisatie code wordt verzonden wanneer de autorisatie is geslaagd. In een productie toepassing is dit doorgaans een openbaar toegankelijk eind punt waarop uw app wordt uitgevoerd, zoals `https://contoso.com/auth-response`. Voor test doeleinden, zoals deze zelf studie, kunt u deze instellen op `https://jwt.ms`, een webtoepassing van micro soft die de gedecodeerde inhoud van een token weergeeft (de inhoud van het token verlaat nooit uw browser). Tijdens het ontwikkelen van apps kunt u het eind punt toevoegen waar uw toepassing lokaal luistert, zoals `https://localhost:5000`. U kunt op elk gewenst moment omleidings-Uri's toevoegen en wijzigen in uw geregistreerde toepassingen.
+    De omleiding uri is het eindpunt waarnaar de gebruiker wordt verzonden door de autorisatieserver (Azure AD B2C, in dit geval) na het voltooien van de interactie met de gebruiker, en waarnaar een toegangstoken of autorisatiecode wordt verzonden na een succesvolle autorisatie. In een productietoepassing is dit meestal een openbaar toegankelijk eindpunt waarbij `https://contoso.com/auth-response`uw app wordt uitgevoerd, zoals . Voor testdoeleinden zoals deze zelfstudie `https://jwt.ms`kunt u deze instellen op een in Microsoft eigendom van een webtoepassing die de gedecodeerde inhoud van een token weergeeft (de inhoud van het token verlaat nooit uw browser). Tijdens app-ontwikkeling u het eindpunt toevoegen waar uw `https://localhost:5000`toepassing lokaal luistert, zoals. U op elk gewenst moment omleidings-URI's toevoegen en wijzigen in uw geregistreerde toepassingen.
 
-    De volgende beperkingen zijn van toepassing op omleidings-Uri's:
+    De volgende beperkingen zijn van toepassing op omleiding van URI's:
 
-    * De antwoord-URL moet beginnen met het schema `https`.
-    * De antwoord-URL is hoofdletter gevoelig. Het hoofdletter gebruik moet overeenkomen met het URL-pad van de actieve toepassing. Als uw toepassing bijvoorbeeld een deel van het pad bevat `.../abc/response-oidc`, geeft u geen `.../ABC/response-oidc` op in de antwoord-URL. Omdat de webbrowser paden als hoofdletter gevoelig behandelt, kunnen cookies die zijn gekoppeld aan `.../abc/response-oidc`, worden uitgesloten als ze worden omgeleid naar de niet-overeenkomende `.../ABC/response-oidc` URL.
+    * De url van het `https`antwoord moet beginnen met de regeling .
+    * De antwoord-URL is hoofdlettergevoelig. De case moet overeenkomen met het geval van het URL-pad van uw lopende toepassing. Als uw toepassing bijvoorbeeld als onderdeel `.../abc/response-oidc`van het `.../ABC/response-oidc` pad wordt weergegeven, geeft u dit niet op in de antwoord-URL. Omdat de webbrowser paden als hoofdlettergevoelig behandelt, `.../abc/response-oidc` kunnen cookies die zijn gekoppeld aan `.../ABC/response-oidc` cookies worden uitgesloten als ze worden doorgestuurd naar de URL die niet op de plaats van de aanvraag is gekoppeld.
 
-1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming geven aan openid connect-en offline_access machtigingen* in.
+1. Schakel **onder Machtigingen**het selectievakje *Beheerderstoestemming verlenen voor openid en offline_access machtigingen* in.
 1. Selecteer **Registreren**.
 
-Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toekennings stroom in:
+Zodra de registratie van de aanvraag is voltooid, schakelt u de impliciete subsidiestroom in:
 
-1. Selecteer onder **beheren**de optie **verificatie**.
-1. Selecteer **de nieuwe ervaring uitproberen** (indien weer gegeven).
-1. Schakel onder **impliciete toekenning**de selectie vakjes **toegangs tokens** en **id-tokens** in.
+1. Selecteer onder **Beheren**de optie **Verificatie**.
+1. Selecteer **Probeer de nieuwe ervaring** uit (indien weergegeven).
+1. Schakel **onder Impliciete subsidie**de selectievakjes **Access-tokens** en **ID-tokens** in.
 1. Selecteer **Opslaan**.
 
 * * *
 
-## <a name="create-a-client-secret"></a>Een client geheim maken
+## <a name="create-a-client-secret"></a>Een klantgeheim maken
 
-Als uw toepassing een autorisatie code voor een toegangs token uitwisselt, moet u een toepassings geheim maken.
+Als uw aanvraag een autorisatiecode voor een toegangstoken omwisselt, moet u een toepassingsgeheim maken.
 
 #### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
-1. Selecteer op de pagina **Azure AD B2C-toepassingen** de toepassing die u hebt gemaakt, bijvoorbeeld *webapp1*.
-1. Selecteer **sleutels** en selecteer vervolgens **sleutel genereren**.
-1. Selecteer **Opslaan** om de sleutel weer te geven. Noteer de waarde van **App-sleutel**. U gebruikt deze waarde als het toepassings geheim in de code van uw toepassing.
+1. Selecteer op de pagina **Azure AD B2C - Toepassingen** de toepassing die u hebt gemaakt, bijvoorbeeld *webapp1*.
+1. Selecteer **Toetsen** en selecteer **Vervolgens Toets genereren**.
+1. Selecteer **Opslaan** om de sleutel weer te geven. Noteer de waarde van **App-sleutel**. U gebruikt deze waarde als het toepassingsgeheim in de code van uw toepassing.
 
-#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-registraties (voorbeeld)](#tab/app-reg-preview/)
 
-1. Selecteer op de pagina **Azure AD B2C-app-registraties (preview)** de toepassing die u hebt gemaakt, bijvoorbeeld *webapp1*.
-1. Selecteer onder **beheren**de optie **Certificaten & geheimen**.
+1. Selecteer in de pagina **Azure AD B2C - App-registraties (Preview)** de toepassing die u hebt gemaakt, bijvoorbeeld *webapp1*.
+1. Selecteer **onder Beheren**de optie Certificaten & **geheimen**.
 1. Selecteer **Nieuw clientgeheim**.
-1. Voer in het vak **Beschrijving** een beschrijving voor het client geheim in. Bijvoorbeeld *clientsecret1*.
-1. Onder **verlopen**selecteert u een duur waarvoor het geheim geldig is en selecteert u vervolgens **toevoegen**.
-1. Noteer de **waarde**van het geheim. U gebruikt deze waarde als het toepassings geheim in de code van uw toepassing.
+1. Voer een beschrijving in voor het clientgeheim in het vak **Beschrijving.** Bijvoorbeeld *clientsecret1*.
+1. Selecteer **onder Verloopt**een duur waarvoor het geheim geldig is en selecteer Vervolgens **Toevoegen**.
+1. Leg de **waarde**van het geheim vast. U gebruikt deze waarde als het toepassingsgeheim in de code van uw toepassing.
 
 * * *
 
@@ -113,9 +113,9 @@ In dit artikel hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een web-app registreren
-> * Een client geheim maken
+> * Een klantgeheim maken
 
-Vervolgens leert u hoe u gebruikers stromen kunt maken om gebruikers in staat te stellen zich aan te melden, zich aan te melden en hun profielen te beheren.
+Leer vervolgens hoe u gebruikersstromen maakt om uw gebruikers in staat te stellen zich aan te melden, zich aan te melden en hun profielen te beheren.
 
 > [!div class="nextstepaction"]
-> [Gebruikers stromen maken in Azure Active Directory B2C >](tutorial-create-user-flows.md)
+> [Gebruikersstromen maken in Azure Active Directory B2C->](tutorial-create-user-flows.md)

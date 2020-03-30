@@ -1,5 +1,5 @@
 ---
-title: Implementatie van Oracle Azure Virtual Machines DBMS voor SAP-workload | Microsoft Docs
+title: Oracle Azure Virtual Machines DBMS-implementatie voor SAP-workload | Microsoft Documenten
 description: DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor Oracle
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645841"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines DBMS-implementatie voor SAP-workload
@@ -29,7 +29,7 @@ ms.locfileid: "75645841"
 [826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
-[1114181]: https://launchpad.support.sap.com/#/notes/1114181
+[1114181]:https://launchpad.support.sap.com/#/notes/1114181
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
@@ -38,7 +38,7 @@ ms.locfileid: "75645841"
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]: https://launchpad.support.sap.com/#/notes/1597355
+[1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
@@ -54,23 +54,23 @@ ms.locfileid: "75645841"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
 [1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2039619]: https://launchpad.support.sap.com/#/notes/2039619
-[2069760]: https://launchpad.support.sap.com/#/notes/2069760
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2039619]:https://launchpad.support.sap.com/#/notes/2039619
+[2069760]:https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2171857]: https://launchpad.support.sap.com/#/notes/2171857
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2171857]:https://launchpad.support.sap.com/#/notes/2171857
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
@@ -307,221 +307,221 @@ ms.locfileid: "75645841"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-Dit document bevat verschillende gebieden waarmee u rekening moet houden wanneer u Oracle Database voor SAP-werk belasting in azure IaaS implementeert. Voordat u dit document leest, raden we u aan Lees [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md)te lezen. We raden u ook aan andere hand leidingen in de [SAP-workload op de Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)te lezen. 
+Dit document bestrijkt verschillende gebieden waar u rekening mee moet houden wanneer u Oracle Database implementeert voor SAP-workload in Azure IaaS. Voordat u dit document leest, raden we u aan [overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-werkbelasting te](dbms_guide_general.md)lezen. We raden u ook aan andere handleidingen te lezen in de [SAP-werkbelasting op Azure-documentatie.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) 
 
-U vindt informatie over Oracle-versies en de bijbehorende versies van besturings systemen die worden ondersteund voor het uitvoeren van SAP op Oracle op Azure in SAP Note [2039619].
+Informatie over Oracle-versies en bijbehorende OS-versies die worden ondersteund voor het uitvoeren van SAP op Oracle op Azure in SAP Note [2039619.]
 
-Algemene informatie over het uitvoeren van SAP Business Suite op Oracle vindt u op [SAP op Oracle](https://www.sap.com/community/topic/oracle.html).
-Oracle-software wordt door Oracle ondersteund om te worden uitgevoerd op Microsoft Azure. Raadpleeg de [Veelgestelde vragen over Oracle en Microsoft Azure](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)voor meer informatie over algemene ondersteuning voor Windows Hyper-V en Azure. 
+Algemene informatie over het uitvoeren van SAP Business Suite op Oracle is te vinden bij [SAP op Oracle.](https://www.sap.com/community/topic/oracle.html)
+Oracle-software wordt ondersteund door Oracle om te draaien op Microsoft Azure. Raadpleeg de [veelgestelde vragen](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)van Oracle en Microsoft Azure voor meer informatie over algemene ondersteuning voor Windows Hyper-V en Azure. 
 
-## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>SAP-opmerkingen die relevant zijn voor Oracle, SAP en Azure 
+## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>SAP Notes relevant voor Oracle, SAP en Azure 
 
-De volgende SAP-opmerkingen zijn gerelateerd aan SAP on Azure.
+De volgende SAP Notes zijn gerelateerd aan SAP op Azure.
 
-| Nummer van notitie | Titel |
+| Notitienummer | Titel |
 | --- | --- |
 | [1928533] |SAP-toepassingen op Azure: ondersteunde producten en Azure VM-typen |
 | [2015553] |SAP op Microsoft Azure: vereisten voor ondersteuning |
-| [1999351] |Problemen met verbeterde Azure-bewaking voor SAP oplossen |
-| [2178632] |Belangrijkste meet waarden voor SAP op Microsoft Azure |
-| [2191498] |SAP op Linux met Azure: uitgebreide bewaking |
-| [2039619] |SAP-toepassingen op Microsoft Azure met behulp van de Oracle-Data Base: ondersteunde producten en versies |
-| [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP-licentie problemen |
-| [2069760] |Oracle Linux 7. x SAP-installatie en-upgrade |
-| [1597355] |Aanbeveling voor wissel geheugen voor Linux |
-| [2171857] |Ondersteuning voor Oracle Database 12c-bestands systeem op Linux |
-| [1114181] |Ondersteuning voor Oracle Database 11g-bestands systeem op Linux |
+| [1999351] |Probleemoplossing voor verbeterde Azure-bewaking voor SAP |
+| [2178632] |Belangrijkste monitoringstatistieken voor SAP op Microsoft Azure |
+| [2191498] |SAP op Linux met Azure: verbeterde monitoring |
+| [2039619] |SAP-toepassingen op Microsoft Azure met behulp van de Oracle-database: ondersteunde producten en versies |
+| [2243692] |Linux op Microsoft Azure (IaaS) VM: SAP-licentieproblemen |
+| [2069760] |Oracle Linux 7.x SAP installatie en upgrade |
+| [1597355] |Swap-space aanbeveling voor Linux |
+| [2171857] |Oracle Database 12c - ondersteuning voor bestandssystemen op Linux |
+| [1114181] |Oracle Database 11g - ondersteuning voor bestandssystemen op Linux |
 
-De exacte configuraties en functionaliteit die worden ondersteund door Oracle en SAP on Azure worden beschreven in SAP Note [#2039619](https://launchpad.support.sap.com/#/notes/2039619).
+De exacte configuraties en functionaliteit die worden ondersteund door Oracle en SAP op Azure zijn gedocumenteerd in SAP Note [#2039619.](https://launchpad.support.sap.com/#/notes/2039619)
 
-Windows en Oracle Linux zijn de enige besturings systemen die worden ondersteund door Oracle en SAP on Azure. De veelgebruikte SLES-en RHEL Linux-distributies worden niet ondersteund voor het implementeren van Oracle-onderdelen in Azure. Oracle-onderdelen bevatten de Oracle Database-client, die door SAP-toepassingen wordt gebruikt om verbinding te maken met de Oracle DBMS. 
+Windows en Oracle Linux zijn de enige besturingssystemen die worden ondersteund door Oracle en SAP op Azure. De veelgebruikte SLES- en RHEL Linux-distributies worden niet ondersteund voor het implementeren van Oracle-componenten in Azure. Oracle-componenten omvatten de Oracle Database-client, die door SAP-toepassingen wordt gebruikt om verbinding te maken met het Oracle DBMS. 
 
-Uitzonde ringen, volgens SAP-notitie [#2039619](https://launchpad.support.sap.com/#/notes/2039619), zijn SAP-onderdelen die de Oracle database-client niet gebruiken. Dergelijke SAP-onderdelen zijn zelfstandige in de wachtrij van SAP, berichten server, replicatie Services in de wachtrij, webdispatcher en SAP-gateway.  
+Uitzonderingen zijn volgens SAP Note [#2039619](https://launchpad.support.sap.com/#/notes/2039619)SAP-componenten die geen gebruik maken van de Oracle Database-client. Dergelijke SAP-componenten zijn de zelfstandige wachtrij van SAP, de berichtenserver, de replicatieservices van Enqueue, WebDispatcher en SAP Gateway.  
 
-Zelfs als u uw Oracle DBMS-en SAP-toepassings exemplaren uitvoert op Oracle Linux, kunt u uw SAP Central-Services uitvoeren op SLES of RHEL en deze beveiligen met een pacemaker-cluster. Pacemaker als een Framework met hoge Beschik baarheid wordt niet ondersteund op Oracle Linux.
+Zelfs als u uw Oracle DBMS- en SAP-toepassingsexemplaren op Oracle Linux uitvoert, u uw SAP Central Services op SLES of RHEL uitvoeren en beveiligen met een cluster op basis van pacemakers. Pacemaker als een framework met hoge beschikbaarheid wordt niet ondersteund op Oracle Linux.
 
-## <a name="specifics-for-oracle-database-on-windows"></a>Details voor Oracle Database in Windows
+## <a name="specifics-for-oracle-database-on-windows"></a>Bijzonderheden voor Oracle Database op Windows
 
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Oracle-configuratie richtlijnen voor SAP-installaties in azure-Vm's in Windows
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Oracle-configuratierichtlijnen voor SAP-installaties in Azure VM's op Windows
 
-In overeenstemming met de SAP-installatie handleiding kunnen Oracle-gerelateerde bestanden niet worden geïnstalleerd of bevinden zich in het systeem stuur programma voor de besturingssysteem schijf van een VM (station c:). Virtuele machines met verschillende grootten kunnen een wisselend aantal gekoppelde schijven ondersteunen. Kleinere typen virtuele machines kunnen een kleiner aantal gekoppelde schijven ondersteunen. 
+In overeenstemming met de SAP-installatiehandleiding mogen Oracle-gerelateerde bestanden niet worden geïnstalleerd of in het systeemstuurprogramma voor de OS-schijf van een vm (station c:). Virtuele machines van verschillende grootte kunnen een wisselend aantal aangesloten schijven ondersteunen. Kleinere virtuele machinetypen kunnen een kleiner aantal aangesloten schijven ondersteunen. 
 
-Als u kleinere Vm's hebt, raden we u aan om Oracle Home, stage, "saptrace", "saparch", "sapbackup", "sapcheck" of "sapreorg" te installeren op de besturingssysteem schijf. Deze onderdelen van Oracle DBMS-onderdelen zijn niet intens over I/O en I/O-door voer. Dit betekent dat de besturingssysteem schijf de I/O-vereisten kan verwerken. De standaard grootte van de besturingssysteem schijf is 127 GB. 
+Als u kleinere VM's hebt, raden we u aan Oracle thuis, in het stadium, "saptrace", "saparch", "sapbackup", "sapcheck" of "sapreorg" in de OS-schijf te installeren/lokaliseren. Deze onderdelen van Oracle DBMS-componenten zijn niet intens op de I/O- en I/O-doorvoer. Dit betekent dat de OS-schijf de I/O-vereisten aankan. De standaardgrootte van de OS-schijf is 127 GB. 
 
-Als er onvoldoende vrije ruimte beschikbaar is, kan de grootte van de schijf worden [gewijzigd](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) in 2048 GB. Logboek bestanden Oracle Database en opnieuw moeten worden opgeslagen op afzonderlijke gegevens schijven. Er is een uitzonde ring voor de tijdelijke tabel ruimte van Oracle. Temp files kan op D:/worden gemaakt (niet-permanente schijf). De niet-permanente D:\ Station biedt ook betere I/O-latentie en door Voer (met uitzonde ring van Vm's van de A-serie). 
+Als er niet genoeg vrije ruimte beschikbaar is, kan de schijf worden [aangepast](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) tot 2048 GB. Oracle Database- en redo-logboekbestanden moeten worden opgeslagen op afzonderlijke gegevensschijven. Er is een uitzondering voor de tijdelijke tabelruimte van Oracle. Tempfiles kunnen worden gemaakt op D:/ (niet-persistente schijf). De niet-permanente D:\ drive biedt ook een betere I/O latentie en doorvoer (met uitzondering van A-serie VM's). 
 
-Als u de juiste hoeveelheid ruimte wilt bepalen voor de Temp files, kunt u de grootte van de Temp files op bestaande systemen controleren.
+Als u de juiste hoeveelheid ruimte voor de tijdelijke bestanden wilt bepalen, u de grootte van de tijdelijke bestanden op bestaande systemen controleren.
 
 ### <a name="storage-configuration"></a>Opslagconfiguratie
-Alleen Oracle met één instantie die NTFS-geformatteerde schijven gebruikt, wordt ondersteund. Alle database bestanden moeten worden opgeslagen in het NTFS-bestands systeem op Managed Disks (aanbevolen) of op Vhd's. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) of [Azure Managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Alleen Oracle met één exemplaar met NTFS-geformatteerde schijven wordt ondersteund. Alle databasebestanden moeten worden opgeslagen in het NTFS-bestandssysteem op Beheerde schijven (aanbevolen) of op VHD's. Deze schijven zijn gemonteerd op de Azure VM en zijn gebaseerd op [Azure-paginablobopslag](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) of [Azure Managed Disks.](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview) 
 
-Het is raadzaam [Azure Managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)te gebruiken. We raden u ook ten zeerste aan om [Premium ssd's](../../windows/disks-types.md) te gebruiken voor uw Oracle database-implementaties.
+We raden ten zeerste aan [azure managed disks te](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)gebruiken. We raden ook ten zeerste aan [om premium SSD's te](../../windows/disks-types.md) gebruiken voor uw Oracle Database-implementaties.
 
-Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Zie voor meer informatie:
+Netwerkstations of externe shares zoals Azure-bestandsservices worden niet ondersteund voor Oracle Database-bestanden. Zie voor meer informatie:
 
 - [Introducing Microsoft Azure File Service (Introductie van Microsoft Azure File-service)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
 - [Persisting connections to Microsoft Azure Files (Permanente verbindingen met Microsoft Azure-bestanden)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
 
-Als u schijven gebruikt die zijn gebaseerd op Azure page Blob Storage of Managed Disks, zijn de instructies [voor de implementatie van azure virtual machines DBMS voor SAP-werk belasting](dbms_guide_general.md) ook van toepassing op implementaties met Oracle database.
+Als u schijven gebruikt die zijn gebaseerd op Azure-paginablobopslag of Beheerde schijven, zijn de instructies in [Overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-werkbelasting](dbms_guide_general.md) ook van toepassing op implementaties met Oracle Database.
 
-Quota voor IOPS-door Voer voor Azure-schijven bestaan. Dit concept wordt uitgelegd in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md). De exacte quota's zijn afhankelijk van het VM-type dat u gebruikt. Een lijst met VM-typen met hun quota vindt u [in groottes voor virtuele Windows-machines in azure][virtual-machines-sizes-windows].
+Er bestaan quota voor IOPS-doorvoer voor Azure-schijven. Dit concept wordt uitgelegd in [Overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-workload.](dbms_guide_general.md) De exacte quota zijn afhankelijk van het VM-type dat u gebruikt. Een lijst met VM-typen met hun quota is te vinden bij [Grootte voor virtuele Windows-machines in Azure.][virtual-machines-sizes-windows]
 
-Zie SAP Note [1928533]om de ondersteunde typen Azure VM te identificeren.
+Zie SAP Note [1928533]om de ondersteunde Azure VM-typen te identificeren.
 
 De minimale configuratie is als volgt: 
 
-| Component | Schijf | Caching | Opslaggroep |
+| Onderdeel | Schijf | Caching | Opslaggroep |
 | --- | ---| --- | --- |
-| \oracle\<SID > \origlogaA & mirrlogB | Premium | Geen | Niet vereist |
-| \oracle\<SID > \origlogaB & mirrlogA | Premium | Geen | Niet vereist |
-| \oracle\<SID>\sapdata1...n | Premium | Alleen-lezen | Kan worden gebruikt |
-| \oracle\<SID>\oraarch | Standard | Geen | Niet vereist |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet vereist |
+| \oracle\<SID>\origlogaA & mirrlogB | Premium | Geen | Niet vereist |
+| \oracle\<SID>\origlogaB & mirrlogA | Premium | Geen | Niet vereist |
+| \oracle\<SID>\sapdata1... N | Premium | Alleen-lezen | Kan worden gebruikt |
+| \orakel\<SID>\oraarch | Standard | Geen | Niet vereist |
+| Oracle Home, saptrace, ... | Besturingssysteemschijf | | Niet vereist |
 
 
-Schijven selecteren voor het hosten van online logboeken voor opnieuw uitvoeren moet worden aangestuurd door IOPs-vereisten. Het is mogelijk om alle sapdata1 op te slaan... n (tablespaces) op één gekoppelde schijf zolang de grootte, IOPS en door Voer voldoen aan de vereisten. 
+Schijven selectie voor het hosten van online redo logs moet worden aangestuurd door IMP-vereisten. Het is mogelijk om alle sapdata1 op te slaan... n (tabelruimten) op één gemonteerde schijf, zolang de grootte, IOPS en doorvoer aan de vereisten voldoen. 
 
-De configuratie van de prestaties is als volgt:
+De prestatieconfiguratie is als volgt:
 
-| Component | Schijf | Caching | Opslaggroep |
+| Onderdeel | Schijf | Caching | Opslaggroep |
 | --- | ---| --- | --- |
 | \oracle\<SID>\origlogaA | Premium | Geen | Kan worden gebruikt  |
 | \oracle\<SID>\origlogaB | Premium | Geen | Kan worden gebruikt |
 | \oracle\<SID>\mirrlogAB | Premium | Geen | Kan worden gebruikt |
 | \oracle\<SID>\mirrlogBA | Premium | Geen | Kan worden gebruikt |
-| \oracle\<SID>\sapdata1...n | Premium | Alleen-lezen | Aanbevolen  |
+| \oracle\<SID>\sapdata1... N | Premium | Alleen-lezen | Aanbevolen  |
 | \oracle\SID\sapdata(n+1)* | Premium | Geen | Kan worden gebruikt |
-| \oracle\<SID > \oraarch * | Premium | Geen | Niet vereist |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | Niet vereist |
+| \oracle\<SID>\oraarch* | Premium | Geen | Niet vereist |
+| Oracle Home, saptrace, ... | Besturingssysteemschijf | Niet vereist |
 
-\* (n + 1): host systeem, TEMP en ongedaan maken van tablespaces. Het I/O-patroon van systeem-en ongedaan maken tablespaces verschillen van andere tablespaces-hosting toepassings gegevens. Caching is niet de beste optie voor het uitvoeren van de prestaties van het systeem en het ongedaan maken van tablespaces.
+*(n+1): het hosten van SYSTEEM-, TEMP- en UNDO-tafelruimten. Het I/O-patroon van tabelruimten systeem en ongedaan maken zijn anders dan andere tabelruimten die toepassingsgegevens hosten. Geen caching is de beste optie voor de prestaties van het systeem en ongedaan maken tafelruimten.
 
-\* oraarch: opslag groep is niet nodig van het prestatie punt van de weer gave. Het kan worden gebruikt om meer ruimte te krijgen.
+*oraarch: opslagpool is niet nodig vanuit het oogpunt van prestaties. Het kan worden gebruikt om meer ruimte te krijgen.
 
-Als meer IOPS vereist zijn, kunt u het beste Windows-opslag groepen (alleen beschikbaar in Windows Server 2012 en hoger) gebruiken om één groot logisch apparaat te maken voor meerdere gekoppelde schijven. Deze aanpak vereenvoudigt de beheer overhead voor het beheren van de schijf ruimte en helpt u bij het hand matig distribueren van bestanden op meerdere gekoppelde schijven te voor komen.
+Als er meer IOPS nodig is, raden we u aan Windows Storage Pools (alleen beschikbaar in Windows Server 2012 en hoger) te gebruiken om één groot logisch apparaat te maken via meerdere gemonteerde schijven. Deze aanpak vereenvoudigt de beheeroverhead voor het beheren van de schijfruimte en helpt u de moeite te vermijden om bestanden handmatig over meerdere gemonteerde schijven te distribueren.
 
 
 #### <a name="write-accelerator"></a>Write Accelerator
-Voor virtuele machines uit de M-serie van Azure kan de latentie die in de online logboeken voor opnieuw uitvoeren wordt geschreven, worden verminderd met factoren in vergelijking met Azure Premium Storage. Schakel Azure Write Accelerator in voor de schijven (Vhd's) op basis van Azure Premium Storage die worden gebruikt voor online logboek bestanden voor opnieuw uitvoeren. Zie [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)voor meer informatie.
+Voor VM's uit de Azure M-serie kan de latentie die in de online redo-logboeken wordt geschreven, worden verminderd door factoren in vergelijking met Azure Premium Storage. Azure Write Accelerator inschakelen voor de schijven (VHD's) op basis van Azure Premium Storage die worden gebruikt voor online redo-logboekbestanden. Zie [Accelerator schrijven voor](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)meer informatie.
 
 
-### <a name="backuprestore"></a>Back-up maken/herstellen
-Voor de functionaliteit voor back-up/herstel worden de SAP BR *-Hulpprogram Ma's voor Oracle ondersteund op dezelfde manier als bij de standaard Windows Server-besturings systemen. Oracle Recovery Manager (RMAN) wordt ook ondersteund voor back-ups naar schijf en terugzetten van schijf.
+### <a name="backuprestore"></a>Back-up/herstel
+Voor back-up-/herstelfunctionaliteit worden de SAP BR*-hulpprogramma's voor Oracle op dezelfde manier ondersteund als op standaard Windows Server-besturingssystemen. Oracle Recovery Manager (RMAN) wordt ook ondersteund voor back-ups op schijf en herstelt vanaf schijf.
 
-U kunt Azure Backup ook gebruiken om een toepassings consistente back-up van de virtuele machine uit te voeren. In het artikel wordt [uw VM-back-upinfrastructuur gepland in azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) wordt uitgelegd hoe Azure backup de Windows VSS-functionaliteit gebruikt voor het uitvoeren van toepassings consistente back-ups. De Oracle-DBMS-releases die worden ondersteund in azure door SAP, kunnen gebruikmaken van de VSS-functionaliteit voor back-ups. Zie de [basis concepten van de Oracle-documentatie van database back-ups en-herstel met VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701)voor meer informatie.
+U Azure Backup ook gebruiken om een vm-back-up met consistente toepassing uit te voeren. In het artikel [Plan uw VM-back-upinfrastructuur in Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) hoe Azure Backup de Windows VSS-functionaliteit gebruikt voor het uitvoeren van toepassingsconsistente back-ups. De Oracle DBMS-releases die door SAP op Azure worden ondersteund, kunnen gebruikmaken van de VSS-functionaliteit voor back-ups. Zie voor meer informatie de [Basisconcepten van de Oracle-documentatie voor databaseback-up en herstel met VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701).
 
 
 ### <a name="high-availability"></a>Hoge beschikbaarheid
-Oracle Data Guard wordt ondersteund voor hoge Beschik baarheid en herstel na nood gevallen. Als u automatische failover in Data Guard wilt uitvoeren, moet u een snelle start failover (FSFA) gebruiken. De waarnemer (FSFA) activeert de failover. Als u FSFA niet gebruikt, kunt u alleen een hand matige failover-configuratie gebruiken.
+Oracle Data Guard wordt ondersteund voor doeleinden met hoge beschikbaarheid en noodherstel. Om een automatische failover in Data Guard te bereiken, moet u Fast-Start Failover (FSFA) gebruiken. De Observer (FSFA) activeert de failover. Als u geen FSFA gebruikt, u alleen een handmatige failoverconfiguratie gebruiken.
 
-Zie [herstel na nood gevallen voor een Oracle database 12c-data base in een Azure-omgeving](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)voor meer informatie over herstel na nood gevallen voor Oracle-data bases in Azure.
+Zie [Disaster recovery voor een Oracle Database 12c-database in een Azure-omgeving voor](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)meer informatie over disaster recovery voor Oracle-databases in Azure.
 
 ### <a name="accelerated-networking"></a>Versneld netwerken
-Voor Oracle-implementaties in Windows wordt het beste versneld netwerken aanbevolen, zoals beschreven in [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Houd ook rekening met de aanbevelingen die worden gedaan in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md). 
+Voor Oracle-implementaties op Windows raden we u ten zeerste aan om versneld te netwerken zoals beschreven in [Azure-versnelde netwerken.](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) Houd ook rekening met de aanbevelingen die worden gedaan in [Overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-workload.](dbms_guide_general.md) 
 ### <a name="other"></a>Overige
-[Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.
+[Overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belangrijke concepten met betrekking tot implementaties van VM's met Oracle Database, waaronder Azure-beschikbaarheidssets en SAP-monitoring.
 
-## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Details voor Oracle Database op Oracle Linux
-Oracle-software wordt door Oracle ondersteund om te worden uitgevoerd op Microsoft Azure met Oracle Linux als gast besturingssysteem. Zie de [Veelgestelde vragen over Azure en Oracle](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)voor meer informatie over algemene ondersteuning voor Windows Hyper-V en Azure. 
+## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Bijzonderheden voor Oracle Database op Oracle Linux
+Oracle-software wordt ondersteund door Oracle om te draaien op Microsoft Azure met Oracle Linux als gastbesturingssysteem. Zie de [veelgestelde vragen](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)over Azure en Oracle voor meer informatie over algemene ondersteuning voor Windows Hyper-V en Azure. 
 
-Het specifieke scenario van SAP-toepassingen met Oracle-data bases wordt ook ondersteund. Meer informatie vindt u in het volgende gedeelte van het document.
+Het specifieke scenario van SAP-toepassingen die gebruikmaken van Oracle Databases wordt ook ondersteund. Details worden besproken in het volgende deel van het document.
 
-### <a name="oracle-version-support"></a>Ondersteuning voor Oracle-versie
-Zie SAP Note [2039619]voor informatie over welke Oracle-versies en de bijbehorende versies van het besturings systeem worden ondersteund voor het uitvoeren van SAP op Oracle op Azure virtual machines.
+### <a name="oracle-version-support"></a>Ondersteuning voor Oracle-versies
+Zie SAP Note [2039619]voor informatie over welke Oracle-versies en bijbehorende OS-versies worden ondersteund voor het uitvoeren van SAP op Oracle op Oracle op Azure Virtual Machines.
 
-Algemene informatie over het uitvoeren van SAP Business Suite op Oracle vindt u op de [pagina SAP op Oracle Community](https://www.sap.com/community/topic/oracle.html).
+Algemene informatie over het uitvoeren van SAP Business Suite op Oracle is te vinden in de [SAP-communitypagina](https://www.sap.com/community/topic/oracle.html)van Oracle.
 
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux"></a>Oracle-configuratie richtlijnen voor SAP-installaties in azure Vm's op Linux
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux"></a>Oracle-configuratierichtlijnen voor SAP-installaties in Azure VM's op Linux
 
-In overeenstemming met SAP-installatie handleidingen kunnen Oracle-gerelateerde bestanden niet worden geïnstalleerd of bevinden zich in systeem Stuur Programma's voor de opstart schijf van een virtuele machine. Verschillende grootten van virtuele machines ondersteunen een wisselend aantal gekoppelde schijven. Kleinere typen virtuele machines kunnen een kleiner aantal gekoppelde schijven ondersteunen. 
+In overeenstemming met SAP-installatiehandleidingen mogen Oracle-gerelateerde bestanden niet worden geïnstalleerd of in systeemstuurprogramma's voor de opstartschijf van een VM worden geïnstalleerd. Verschillende groottes van virtuele machines ondersteunen een wisselend aantal aangesloten schijven. Kleinere virtuele machinetypen kunnen een kleiner aantal aangesloten schijven ondersteunen. 
 
-In dit geval kunt u het beste de installatie/locatie van Oracle Home, stage, saptrace, saparch, sapbackup, sapcheck of sapreorg naar de opstart schijf installeren. Deze onderdelen van Oracle DBMS-onderdelen zijn niet intens over I/O en I/O-door voer. Dit betekent dat de besturingssysteem schijf de I/O-vereisten kan verwerken. De standaard grootte van de besturingssysteem schijf is 30 GB. U kunt de opstart schijf uitbreiden met behulp van de Azure Portal, Power shell of CLI. Nadat de opstart schijf is uitgevouwen, kunt u een extra partitie voor Oracle binaire bestanden toevoegen.
+In dit geval raden we aan Oracle thuis, stage, saptrace, saparch, sapbackup, sapcheck of sapreorg te installeren/lokaliseren naar de schijf. Deze onderdelen van Oracle DBMS-componenten zijn niet intens op de I/O- en I/O-doorvoer. Dit betekent dat de OS-schijf de I/O-vereisten aankan. De standaardgrootte van de OS-schijf is 30 GB. U de opstartschijf uitbreiden met de Azure-portal, PowerShell of CLI. Nadat de opstartschijf is uitgebreid, u een extra partitie toevoegen voor Oracle-binaire bestanden.
 
 
 ### <a name="storage-configuration"></a>Opslagconfiguratie
 
-De bestands systemen van ext4, xfs of Oracle ASM worden ondersteund voor Oracle Database-bestanden in Azure. Alle database bestanden moeten worden opgeslagen op deze bestands systemen op basis van Vhd's of Managed Disks. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op [Azure page Blob Storage](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) of [Azure Managed disks](../../windows/managed-disks-overview.md).
+De bestandssystemen van ext4, xfs of Oracle ASM worden ondersteund voor Oracle Database-bestanden op Azure. Alle databasebestanden moeten op deze bestandssystemen worden opgeslagen op basis van VHD's of Beheerde schijven. Deze schijven zijn gemonteerd op de Azure VM en zijn gebaseerd op [Azure-paginablobopslag](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) of [Azure Managed Disks.](../../windows/managed-disks-overview.md)
 
-Voor Oracle Linux UEK-kernels is mini maal UEK versie 4 vereist voor de ondersteuning van [Azure Premium ssd's](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching).
+Voor Oracle Linux UEK-kernels is een minimum aan UEK-versie 4 vereist om [Azure premium SSD's](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching)te ondersteunen.
 
-Het wordt sterk aanbevolen om [Azure Managed disks](../../windows/managed-disks-overview.md)te gebruiken. Het wordt ook nadrukkelijk aanbevolen [Azure Premium ssd's](../../windows/disks-types.md) te gebruiken voor uw Oracle database-implementaties.
+Het wordt ten zeerste aanbevolen om [door Azure beheerde schijven](../../windows/managed-disks-overview.md)te gebruiken. Het wordt ook ten zeerste aanbevolen om [Azure premium-SSD's](../../windows/disks-types.md) te gebruiken voor uw Oracle Database-implementaties.
 
-Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Raadpleeg de volgende onderwerpen voor meer informatie: 
+Netwerkstations of externe shares zoals Azure-bestandsservices worden niet ondersteund voor Oracle Database-bestanden. Raadpleeg de volgende artikelen voor meer informatie: 
 
 - [Introducing Microsoft Azure File Service (Introductie van Microsoft Azure File-service)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
 - [Persisting connections to Microsoft Azure Files (Permanente verbindingen met Microsoft Azure-bestanden)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-Als u schijven gebruikt op basis van Azure-pagina-Blob-opslag of Managed Disks, zijn de instructies [voor de implementatie van azure virtual machines DBMS voor SAP-werk belasting](dbms_guide_general.md) ook van toepassing op implementaties met Oracle database.
+Als u schijven gebruikt op basis van Azure-paginablobopslag of Beheerde schijven, zijn de instructies in [overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-werkbelasting](dbms_guide_general.md) ook van toepassing op implementaties met Oracle Database.
 
- Quota voor IOPS-door Voer voor Azure-schijven bestaan. Dit concept wordt uitgelegd in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md). De exacte quota's zijn afhankelijk van het type virtuele machine dat wordt gebruikt. Zie [grootten voor virtuele Linux-machines in azure][virtual-machines-sizes-linux]voor een lijst met VM-typen met hun quota.
+ Er bestaan quota voor IOPS-doorvoer voor Azure-schijven. Dit concept wordt uitgelegd in [Overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-workload.](dbms_guide_general.md) De exacte quota zijn afhankelijk van het vm-type dat wordt gebruikt. Zie [Grootte voor virtuele Linux-machines in Azure voor][virtual-machines-sizes-linux]een lijst met VM-typen met hun quota.
 
-Zie SAP Note [1928533]om de ondersteunde typen Azure VM te identificeren.
+Zie SAP Note [1928533]om de ondersteunde Azure VM-typen te identificeren.
 
 Minimale configuratie:
 
-| Component | Schijf | Caching | Moeten ontdaan |
+| Onderdeel | Schijf | Caching | Strippen* |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | Geen | Niet vereist |
-| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | Geen | Niet vereist |
-| /Oracle/\<SID >/sapdata1... nvt | Premium | Alleen-lezen | Kan worden gebruikt |
-| /Oracle/\<SID >/oraarch | Standard | Geen | Niet vereist |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet vereist |
+| /oracle/\<SID>/origlogaA & mirrlogB | Premium | Geen | Niet vereist |
+| /oracle/\<SID>/origlogaB & mirrlogA | Premium | Geen | Niet vereist |
+| /oracle/\<SID>/sapdata1... N | Premium | Alleen-lezen | Kan worden gebruikt |
+| /orakel/\<SID>/oraarch | Standard | Geen | Niet vereist |
+| Oracle Home, saptrace, ... | Besturingssysteemschijf | | Niet vereist |
 
-\* Verwijderen: LVM Stripe of MDADM met RAID0
+*Strippen: LVM streep of MDADM met RAID0
 
-De schijf selectie voor het hosten van het online opnieuw uitvoeren van Oracle-logboeken moet worden aangestuurd door IOPS-vereisten. Het is mogelijk om alle sapdata1 op te slaan... n (tablespaces) op één gekoppelde schijf zolang het volume, IOPS en door Voer voldoen aan de vereisten. 
+De schijfselectie voor het hosten van oracle's online redo-logboeken moet worden aangestuurd door IOPS-vereisten. Het is mogelijk om alle sapdata1 op te slaan... n (tabelruimten) op één gemonteerde schijf zolang het volume, de IOPS en de doorvoer aan de vereisten voldoen. 
 
-Configuratie van prestaties:
+Prestatieconfiguratie:
 
-| Component | Schijf | Caching | Moeten ontdaan |
+| Onderdeel | Schijf | Caching | Strippen* |
 | --- | ---| --- | --- |
-| /Oracle/\<SID >/origlogaA | Premium | Geen | Kan worden gebruikt  |
-| /Oracle/\<SID >/origlogaB | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<SID >/mirrlogAB | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<SID >/mirrlogBA | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<SID >/sapdata1... nvt | Premium | Alleen-lezen | Aanbevolen  |
-| /Oracle/\<SID >/sapdata (n + 1) * | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<SID >/oraarch * | Premium | Geen | Niet vereist |
-| Oracle Home, saptrace,... | Besturingssysteemschijf | Niet vereist |
+| /oracle/\<SID>/origlogaA | Premium | Geen | Kan worden gebruikt  |
+| /oracle/\<SID>/origlogaB | Premium | Geen | Kan worden gebruikt |
+| /oracle/\<SID>/mirrlogAB | Premium | Geen | Kan worden gebruikt |
+| /oracle/\<SID>/mirrlogBA | Premium | Geen | Kan worden gebruikt |
+| /oracle/\<SID>/sapdata1... N | Premium | Alleen-lezen | Aanbevolen  |
+| /oracle/\<SID>/sapdata(n+1)* | Premium | Geen | Kan worden gebruikt |
+| /orakel/\<SID>/oraarch* | Premium | Geen | Niet vereist |
+| Oracle Home, saptrace, ... | Besturingssysteemschijf | Niet vereist |
 
-\* Verwijderen: LVM Stripe of MDADM met RAID0
+*Strippen: LVM streep of MDADM met RAID0
 
-\* (n + 1): hostsysteem, TEMP en ongedaan maken van tablespaces: het I/O-patroon van systeem en tablespaces ongedaan maken verschilt van andere tablespaces-hosting toepassings gegevens. Caching is niet de beste optie voor het uitvoeren van de prestaties van het systeem en het ongedaan maken van tablespaces.
+*(n+1):hosting SYSTEM, TEMP en UNDO-tabelruimten: het I/O-patroon van systeem- en ongedaan makende tabelruimten verschilt van andere tabelruimten die toepassingsgegevens hosten. Geen caching is de beste optie voor de prestaties van het systeem en ongedaan maken tafelruimten.
 
-\* oraarch: opslag groep is niet nodig van het prestatie punt van de weer gave.
+*oraarch: opslagpool is niet nodig vanuit het oogpunt van prestaties.
 
 
-Als meer IOPS vereist zijn, kunt u het beste LVM (Logical Volume Manager) of MDADM gebruiken om één groot logisch volume te maken op meerdere gekoppelde schijven. Zie [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) met betrekking tot richt lijnen en aanwijzers voor het gebruik van LVM of MDADM voor meer informatie. Deze aanpak vereenvoudigt de beheer overhead van het beheren van de schijf ruimte en helpt u om te voor komen dat bestanden hand matig worden gedistribueerd over meerdere gekoppelde schijven.
+Als er meer IOPS nodig is, raden we aan om LVM (Logical Volume Manager) of MDADM te gebruiken om één groot logisch volume te maken over meerdere gemonteerde schijven. Zie [Overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) met betrekking tot richtlijnen en aanwijzingen over het gebruik van LVM of MDADM voor meer informatie. Deze aanpak vereenvoudigt de beheeroverhead van het beheer van de schijfruimte en helpt u de moeite te vermijden om bestanden handmatig over meerdere gemonteerde schijven te distribueren.
 
 
 #### <a name="write-accelerator"></a>Write Accelerator
-Voor virtuele machines uit de M-serie van Azure, wanneer u Azure Write Accelerator gebruikt, kan de latentie die in de online logboeken voor opnieuw uitvoeren wordt geschreven, worden verminderd met de factoren in vergelijking met de prestaties van Azure Premium Storage. Schakel Azure Write Accelerator in voor de schijven (Vhd's) op basis van Azure Premium Storage die worden gebruikt voor online logboek bestanden voor opnieuw uitvoeren. Zie [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)voor meer informatie.
+Voor Azure M-series VM's kan bij het gebruik van Azure Write Accelerator de latentie die in de online redo-logboeken wordt geschreven, worden verminderd door factoren in vergelijking met de prestaties van Azure Premium Storage. Azure Write Accelerator inschakelen voor de schijven (VHD's) op basis van Azure Premium Storage die worden gebruikt voor online redo-logboekbestanden. Zie [Accelerator schrijven voor](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)meer informatie.
 
 
-### <a name="backuprestore"></a>Back-up maken/herstellen
-Voor de functionaliteit voor back-up/herstel worden de SAP BR *-Hulpprogram Ma's voor Oracle ondersteund op dezelfde manier als op bare metal-en Hyper-V. Oracle Recovery Manager (RMAN) wordt ook ondersteund voor back-ups naar schijf en terugzetten van schijf.
+### <a name="backuprestore"></a>Back-up/herstel
+Voor back-up-/herstelfunctionaliteit worden de SAP BR*Tools voor Oracle op dezelfde manier ondersteund als op bare metal en Hyper-V. Oracle Recovery Manager (RMAN) wordt ook ondersteund voor back-ups op schijf en herstelt vanaf schijf.
 
-Zie een [back-up maken van een Oracle database 12c-Data Base op een virtuele machine van Azure Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery)voor meer informatie over hoe u Azure backup en herstel Services kunt gebruiken voor het maken van back-ups van Oracle-data bases en het herstellen ervan.
+Zie Back-ups maken en herstellen van [een Oracle Database 12c-database op een virtuele Azure Linux-machine](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery)voor meer informatie over hoe u Azure Backup- en Recovery-services gebruiken voor het maken van back-ups en het herstellen van Oracle-databases.
 
 ### <a name="high-availability"></a>Hoge beschikbaarheid
-Oracle Data Guard wordt ondersteund voor hoge Beschik baarheid en herstel na nood gevallen. Als u automatische failover in Data Guard wilt uitvoeren, moet u snelle start failover (FSFA) gebruiken. De functionaliteit van de waarnemer (FSFA) activeert de failover. Als u FSFA niet gebruikt, kunt u alleen een hand matige failover-configuratie gebruiken. Zie [Oracle Data Guard implementeren op een virtuele machine van Azure Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)voor meer informatie.
+Oracle Data Guard wordt ondersteund voor doeleinden met hoge beschikbaarheid en noodherstel. Om een automatische failover in Data Guard te bereiken, moet u Fast-Start Failover (FSFA) gebruiken. De Observer-functionaliteit (FSFA) activeert de failover. Als u geen FSFA gebruikt, u alleen een handmatige failoverconfiguratie gebruiken. Zie [Oracle Data Guard implementeren op een virtuele Azure Linux-machine](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)voor meer informatie.
 
 
-Nood herstel aspecten voor Oracle-data bases in Azure worden weer gegeven in het artikel [herstel na nood gevallen voor een Oracle database 12c-data base in een Azure-omgeving](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
+Disaster Recovery-aspecten voor Oracle-databases in Azure worden weergegeven in het artikel [Disaster recovery for an Oracle Database 12c-database in een Azure-omgeving.](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)
 
 ### <a name="accelerated-networking"></a>Versneld netwerken
-Ondersteuning voor versneld Azure-netwerken in Oracle Linux wordt geboden met Oracle Linux 7 Update 5 (Oracle Linux 7,5). Als u niet kunt upgraden naar de nieuwste versie van Oracle Linux 7,5, is er mogelijk een tijdelijke oplossing met behulp van de RedHat-compatibele kernel (RHCK) in plaats van de Oracle UEK-kernel. 
+Ondersteuning voor Azure Accelerated Networking in Oracle Linux wordt geleverd met Oracle Linux 7 Update 5 (Oracle Linux 7.5). Als u niet upgraden naar de nieuwste Oracle Linux 7.5-versie, is er mogelijk een tijdelijke oplossing door de RedHat Compatible Kernel (RHCK) te gebruiken in plaats van de Oracle UEK-kernel. 
 
-Het gebruik van de RHEL-kernel binnen Oracle Linux wordt ondersteund volgens SAP Note [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Voor versneld Azure-netwerken moet de minimale versie van de RHCKL-kernel 3.10.0-862.13.1. EL7 zijn. Als u de UEK-kernel in Oracle Linux gebruikt in combi natie met [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), moet u Oracle UEK kernel versie 5 gebruiken.
+Het gebruik van de RHEL kernel binnen Oracle Linux wordt ondersteund volgens SAP Note [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Voor Azure Accelerated Networking moet de minimale RHCKL-kernelrelease 3.10.0-862.13.1.el7 zijn. Als u de UEK-kernel in Oracle Linux gebruikt in combinatie met [Azure Accelerated Networking,](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)moet u Oracle UEK-kernelversie 5 gebruiken.
 
-Als u Vm's implementeert vanuit een installatie kopie die niet is gebaseerd op Azure Marketplace, moet u aanvullende configuratie bestanden naar de virtuele machine kopiëren door de volgende code uit te voeren: 
+Als u VM's implementeert vanuit een afbeelding die niet is gebaseerd op Azure Marketplace, moet u extra configuratiebestanden naar de VM kopiëren door de volgende code uit te voeren: 
 <pre><code># Copy settings from GitHub to the correct place in the VM
 sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.githubusercontent.com/LIS/lis-next/master/hv-rhel7.x/hv/tools/68-azure-sriov-nm-unmanaged.rules 
 </code></pre>
 
 
 ### <a name="other"></a>Overige
-[Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.
+[Overwegingen voor Azure Virtual Machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belangrijke concepten met betrekking tot implementaties van VM's met Oracle Database, waaronder Azure-beschikbaarheidssets en SAP-monitoring.

@@ -1,6 +1,6 @@
 ---
-title: Phoenix-prestaties in azure HDInsight
-description: Aanbevolen procedures voor het optimaliseren van Apache Phoenix prestaties voor Azure HDInsight-clusters
+title: Phoenix-prestaties in Azure HDInsight
+description: Aanbevolen procedures om de prestaties van Apache Phoenix voor Azure HDInsight-clusters te optimaliseren
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -9,166 +9,166 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
 ms.openlocfilehash: 7f8f20be81e815414c283f7ec48aa6503e3b60ed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552641"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Best practices voor Apache Phoenix-prestaties
 
-Het belangrijkste aspect van [Apache Phoenix](https://phoenix.apache.org/) prestaties is het optimaliseren van de onderliggende [Apache HBase](https://hbase.apache.org/). Phoenix maakt een relationeel gegevens model hierop HBase waarmee SQL-query's worden geconverteerd naar HBase-bewerkingen, zoals scans. Het ontwerp van het tabel schema, de selectie en volg orde van de velden in uw primaire sleutel en uw gebruik van indices zijn allemaal van invloed op de prestaties van Breda.
+Het belangrijkste aspect van [apache Phoenix](https://phoenix.apache.org/) prestaties is het optimaliseren van de onderliggende [Apache HBase](https://hbase.apache.org/). Phoenix maakt een relationeel gegevensmodel bovenop HBase dat SQL-query's omzet in HBase-bewerkingen, zoals scans. Het ontwerp van uw tabelschema, de selectie en volgorde van de velden in uw primaire sleutel en het gebruik van indexen hebben allemaal invloed op de prestaties van Phoenix.
 
-## <a name="table-schema-design"></a>Ontwerp van tabel schema
+## <a name="table-schema-design"></a>Ontwerp van tabelschema
 
-Wanneer u een tabel in Phoenix maakt, wordt die tabel opgeslagen in een HBase-tabel. De tabel HBase bevat groepen kolommen (kolom families) die samen worden geopend. Een rij in de Phoenix-tabel is een rij in de tabel HBase, waarbij elke rij bestaat uit versie cellen die zijn gekoppeld aan een of meer kolommen. Logisch gezien is een enkele HBase-rij een verzameling sleutel-waardeparen, elk met dezelfde rowkey-waarde. Dat wil zeggen dat elk sleutel-waardepaar een rowkey-kenmerk heeft en dat de waarde van het kenmerk rowkey hetzelfde is voor een bepaalde rij.
+Wanneer u een tabel maakt in Phoenix, wordt die tabel opgeslagen in een HBase-tabel. De Tabel HBase bevat groepen kolommen (kolomfamilies) die samen worden geopend. Een rij in de tabel Phoenix is een rij in de tabel HBase, waar elke rij bestaat uit versies van cellen die zijn gekoppeld aan een of meer kolommen. Logischerwijs is een enkele HBase-rij een verzameling sleutelwaardeparen, die elk dezelfde rijsleutelwaarde hebben. Dat wil zeggen dat elk sleutelpaar een rijsleutelkenmerk heeft en de waarde van dat kenmerk van de rijsleutel hetzelfde is voor een bepaalde rij.
 
-Het schema ontwerp van een Bredase tabel omvat het ontwerp van de primaire sleutel, het ontwerpen van de kolom familie, het ontwerpen van afzonderlijke kolommen en de manier waarop de gegevens worden gepartitioneerd.
+Het schemaontwerp van een Phoenix-tabel bevat het primaire sleutelontwerp, het ontwerp van de kolomfamilie, het afzonderlijke kolomontwerp en de manier waarop de gegevens worden verdeeld.
 
-### <a name="primary-key-design"></a>Primair sleutel ontwerp
+### <a name="primary-key-design"></a>Primair sleutelontwerp
 
-De primaire sleutel die is gedefinieerd voor een tabel in Phoenix bepaalt hoe gegevens worden opgeslagen in de rowkey van de onderliggende HBase-tabel. In HBase is de enige manier om toegang te krijgen tot een bepaalde rij met de rowkey. Daarnaast worden gegevens die zijn opgeslagen in een HBase-tabel gesorteerd op de rowkey. Phoenix bouwt de rowkey-waarde door de waarden van elk van de kolommen in de rij samen te voegen in de volg orde waarin ze in de primaire sleutel zijn gedefinieerd.
+De primaire sleutel die is gedefinieerd op een tabel in Phoenix bepaalt hoe gegevens worden opgeslagen in de rijsleutel van de onderliggende HBase-tabel. In HBase is de enige manier om toegang te krijgen tot een bepaalde rij met de rijsleutel. Bovendien worden gegevens die zijn opgeslagen in een HBase-tabel gesorteerd op de rijsleutel. Phoenix bouwt de waarde van de rijsleutel door de waarden van elk van de kolommen in de rij samen te stellen in de volgorde waarin ze zijn gedefinieerd in de primaire sleutel.
 
-Een tabel voor contact personen heeft bijvoorbeeld de voor naam, achternaam, telefoon nummer en het adres, allemaal in dezelfde kolom familie. U kunt een primaire sleutel definiëren op basis van een oplopend Volg nummer:
+Een tabel voor contactpersonen heeft bijvoorbeeld de voornaam, achternaam, telefoonnummer en adres, allemaal in dezelfde kolomfamilie. U een primaire sleutel definiëren op basis van een toenemend volgnummer:
 
-|rowkey|       address|   telefoon| voornaam| achternaam|
+|rijsleutel|       adres|   telefoon| voornaam| achternaam|
 |------|--------------------|--------------|-------------|--------------|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids|
-|  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole|
+|  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji Raji|
 
-Als u echter vaak een query uitvoert op lastName, wordt deze primaire sleutel mogelijk niet goed uitgevoerd, omdat voor elke query een volledige tabel scan is vereist om de waarde van elke lastName te lezen. In plaats daarvan kunt u een primaire sleutel definiëren voor de kolommen lastName, firstName en Social Security Number. Deze laatste kolom is om twee inwoners op hetzelfde adres te dubbel zinnigheid met dezelfde naam, zoals een vader en zoon.
+Als u echter vaak op lastName vraagt, presteert deze primaire sleutel mogelijk niet goed, omdat voor elke query een volledige tabelscan nodig is om de waarde van elke lastName te lezen. In plaats daarvan u een primaire sleutel definiëren op de kolommen achternaam, firstName en sofinummer. Deze laatste kolom is om twee bewoners te disambiguate op hetzelfde adres met dezelfde naam, zoals een vader en zoon.
 
-|rowkey|       address|   telefoon| voornaam| achternaam| socialSecurityNum |
+|rijsleutel|       adres|   telefoon| voornaam| achternaam| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids| 111 |
-|  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
+|  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji Raji| 222 |
 
-Met deze nieuwe primaire sleutel worden de door Breda gegenereerde rij sleutels:
+Met deze nieuwe primaire sleutel zouden de rijsleutels die door Phoenix worden gegenereerd:
 
-|rowkey|       address|   telefoon| voornaam| achternaam| socialSecurityNum |
+|rijsleutel|       adres|   telefoon| voornaam| achternaam| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Davids-Jan-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids| 111 |
-|  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
+|  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
+|  Raji-Calvijn-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji Raji| 222 |
 
-In de eerste rij hierboven worden de gegevens voor de rowkey weer gegeven:
+In de eerste rij hierboven worden de gegevens voor de rijsleutel weergegeven zoals weergegeven:
 
-|rowkey|       sleutel|   waarde|
+|rijsleutel|       sleutel|   waarde|
 |------|--------------------|---|
-|  Davids-Jan-111|address |1111 San Gabriel Dr.|  
-|  Davids-Jan-111|telefoon |1-425-000-0002|  
-|  Davids-Jan-111|voornaam |Jan|  
-|  Davids-Jan-111|achternaam |Davids|  
-|  Davids-Jan-111|socialSecurityNum |111|
+|  Dole-John-111|adres |1111 San Gabriel Dr.|  
+|  Dole-John-111|telefoon |1-425-000-0002|  
+|  Dole-John-111|voornaam |John|  
+|  Dole-John-111|achternaam |Dole|  
+|  Dole-John-111|socialSecurityNum |111|
 
-In deze rowkey wordt nu een dubbele kopie van de gegevens opgeslagen. Houd rekening met de grootte en het aantal kolommen dat u in uw primaire sleutel hebt opgenomen, omdat deze waarde is opgenomen in elke cel in de onderliggende HBase-tabel.
+Deze rijsleutel slaat nu een dubbele kopie van de gegevens op. Houd rekening met de grootte en het aantal kolommen dat u in uw primaire sleutel opneemt, omdat deze waarde bij elke cel in de onderliggende HBase-tabel is opgenomen.
 
-Als de primaire sleutel waarden heeft die gestaag verhogen, moet u ook de tabel met *zout buckets* maken om te voor komen dat u schrijf HOTS pots maakt. Zie [partitie gegevens](#partition-data).
+Als de primaire sleutel waarden heeft die monotonisch toenemen, moet u de tabel met *zoutemmers* maken om te voorkomen dat schrijfhotspots worden gemaakt - zie [Partitiegegevens](#partition-data).
 
-### <a name="column-family-design"></a>Ontwerp van kolom familie
+### <a name="column-family-design"></a>Het familieontwerp van de kolom
 
-Als sommige kolommen vaker worden geopend dan andere, moet u meerdere kolom families maken om de veelgebruikte kolommen te scheiden van kolommen die zelden worden gebruikt.
+Als sommige kolommen vaker worden geopend dan andere, moet u meerdere kolomfamilies maken om de vaak geopende kolommen te scheiden van zelden geopende kolommen.
 
-Als bepaalde kolommen meestal samen worden geopend, plaatst u deze kolommen in dezelfde kolom familie.
+Als bepaalde kolommen meestal samen worden geopend, plaatst u deze kolommen ook in dezelfde kolomfamilie.
 
-### <a name="column-design"></a>Kolom ontwerp
+### <a name="column-design"></a>Kolomontwerp
 
-* Blijf VARCHAR kolommen onder ongeveer 1 MB vanwege de I/O-kosten van grote kolommen. Wanneer query's worden verwerkt, worden de resultatenset-cellen volledig geHBased voordat ze worden verzonden naar de client. de client ontvangt deze volledig voordat deze aan de toepassings code wordt door gegeven.
-* Sla kolom waarden op met een compacte indeling, zoals protobuf, AVRO, msgpack of BSON. JSON wordt niet aanbevolen, omdat het groter is.
-* Overweeg het comprimeren van gegevens voordat de opslag ruimte en I/O-kosten kan worden geknipt.
+* Bewaar VARCHAR-kolommen onder ongeveer 1 MB vanwege de I/O-kosten van grote kolommen. Bij het verwerken van query's materialiseert HBase cellen volledig voordat ze naar de client worden verzonden, en de client ontvangt ze volledig voordat deze worden overgedragen aan de toepassingscode.
+* Sla kolomwaarden op met een compact formaat zoals protobuf, Avro, msgpack of BSON. JSON wordt niet aanbevolen, omdat het groter is.
+* Overweeg gegevens te comprimeren voordat ze worden opgeslagen om de latentie- en I/O-kosten te verlagen.
 
 ### <a name="partition-data"></a>Partitiegegevens
 
-Met Phoenix kunt u het aantal regio's bepalen waar uw gegevens worden gedistribueerd, waardoor de lees-en schrijf prestaties aanzienlijk toenemen. Wanneer u een Phoenix-tabel maakt, kunt u een zout of vooraf uw gegevens splitsen.
+Met Phoenix u het aantal regio's bepalen waar uw gegevens worden gedistribueerd, wat de lees-/schrijfprestaties aanzienlijk kan verhogen. Wanneer u een Phoenix-tabel maakt, u uw gegevens zouten of vooraf splitsen.
 
-Als u een tabel wilt zouten tijdens het maken, geeft u het aantal zout buckets op:
+Als u een tabel tijdens het maken wilt zoutmaken, geeft u het aantal zoutemmers op:
 
     CREATE TABLE CONTACTS (...) SALT_BUCKETS = 16
 
-Met dit zouten wordt de tabel op basis van de waarden van primaire sleutels gesplitst, waarbij de waarden automatisch worden gekozen. 
+Deze zouten splitst de tabel langs de waarden van primaire toetsen en kiest de waarden automatisch. 
 
-Als u wilt bepalen waar de tabel zich bevindt, kunt u de tabel vooraf splitsen door de waarden voor het bereik op te geven waarmee de splitsing plaatsvindt. Als u bijvoorbeeld een tabel splitsing langs drie regio's wilt maken:
+Als u wilt bepalen waar de tabelsplitsingen plaatsvinden, u de tabel vooraf splitsen door de bereikwaarden op te geven waarlangs de splitsing plaatsvindt. Als u bijvoorbeeld een tabel wilt maken die wordt gesplitst langs drie regio's:
 
     CREATE TABLE CONTACTS (...) SPLIT ON ('CS','EU','NA')
 
 ## <a name="index-design"></a>Indexontwerp
 
-Een Phoenix-index is een HBase-tabel waarin een kopie van sommige of alle gegevens uit de geïndexeerde tabel wordt opgeslagen. Een index verbetert de prestaties voor specifieke typen query's.
+Een Phoenix-index is een HBase-tabel die een kopie van sommige of alle gegevens uit de geïndexeerde tabel opslaat. Een index verbetert de prestaties voor specifieke typen query's.
 
-Wanneer u meerdere indexen hebt gedefinieerd en vervolgens een query uitvoert op een tabel, selecteert Breda automatisch de beste index voor de query. De primaire index wordt automatisch gemaakt op basis van de primaire sleutels die u selecteert.
+Wanneer u meerdere indexen hebt gedefinieerd en vervolgens een tabel opvraagt, selecteert Phoenix automatisch de beste index voor de query. De primaire index wordt automatisch gemaakt op basis van de primaire toetsen die u selecteert.
 
-Voor verwachte query's kunt u ook secundaire indexen maken door hun kolommen op te geven.
+Voor verwachte query's u ook secundaire indexen maken door hun kolommen op te geven.
 
 Bij het ontwerpen van uw indexen:
 
 * Maak alleen de indexen die u nodig hebt.
-* Beperk het aantal indexen op regel matig bijgewerkte tabellen. Updates van een tabel worden omgezet in schrijf bewerkingen naar zowel de hoofd tabel als de index tabellen.
+* Beperk het aantal indexen op veelgebruikte tabellen. Updates van een tabel vertalen zich in schrijft naar zowel de hoofdtabel als de indextabellen.
 
 ## <a name="create-secondary-indexes"></a>Secundaire indexen maken
 
-Secundaire indexen kunnen de Lees prestaties verbeteren door te scha kelen wat een volledige tabel scan is in een zoek opdracht naar een punt, tegen de kosten van opslag ruimte en schrijf snelheid. Secundaire indexen kunnen worden toegevoegd of verwijderd nadat het maken van de tabel is gemaakt en wijzigingen aan bestaande query's hoeven niet te worden doorgevoerd: query's worden alleen sneller uitgevoerd. Afhankelijk van uw behoeften kunt u overwegen om gedekte indexen, functionele indexen of beide te maken.
+Secundaire indexen kunnen de leesprestaties verbeteren door wat een volledige tabelscan zou zijn om te zetten in een puntlookup, ten koste van opslagruimte en schrijfsnelheid. Secundaire indexen kunnen worden toegevoegd of verwijderd na het maken van de tabel en vereisen geen wijzigingen in bestaande query's - query's worden gewoon sneller uitgevoerd. Afhankelijk van uw behoeften u overwegen gedekte indexen, functionele indexen of beide te maken.
 
 ### <a name="use-covered-indexes"></a>Gedekte indexen gebruiken
 
-Gedekte indexen zijn indexen die gegevens uit de rij bevatten naast de waarden die worden geïndexeerd. Nadat u de gewenste index vermelding hebt gevonden, hebt u geen toegang nodig tot de primaire tabel.
+Gedekte indexen zijn indexen die gegevens uit de rij bevatten naast de waarden die worden geïndexeerd. Na het vinden van de gewenste indexvermelding, is er geen noodzaak om toegang te krijgen tot de primaire tabel.
 
-In de tabel met contact personen kunt u bijvoorbeeld een secundaire index maken op alleen de kolom socialSecurityNum. Met deze secundaire index worden query's sneller uitgevoerd die filteren op socialSecurityNum waarden, maar het ophalen van andere veld waarden vereist een andere Lees bewerking voor de hoofd tabel.
+In de tabel Met voorbeeld contact u bijvoorbeeld een secundaire index maken op alleen de kolom socialSecurityNum. Deze secundaire index zou query's versnellen die filteren op socialSecurityNum-waarden, maar voor het ophalen van andere veldwaarden moet een andere worden gelezen ten opzichte van de hoofdtabel.
 
-|rowkey|       address|   telefoon| voornaam| achternaam| socialSecurityNum |
+|rijsleutel|       adres|   telefoon| voornaam| achternaam| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  Davids-Jan-111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Davids| 111 |
-|  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
+|  Dole-John-111|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
+|  Raji-Calvijn-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji Raji| 222 |
 
-Als u echter doorgaans de voor naam en achternaam wilt opzoeken op basis van de socialSecurityNum, kunt u een gedekte index maken die de voor naam en achternaam als werkelijke gegevens in de index tabel bevat:
+Als u echter meestal de firstName en lastName wilt opzoeken, gezien het socialSecurityNum, u een gedekte index maken die de firstName en lastName als werkelijke gegevens in de indextabel bevat:
 
     CREATE INDEX ssn_idx ON CONTACTS (socialSecurityNum) INCLUDE(firstName, lastName);
 
-Met deze gedekte index kan de volgende query alle gegevens ophalen, alleen door te lezen uit de tabel met de secundaire index:
+Met deze gedekte index kan de volgende query alle gegevens verkrijgen door uit de tabel met de secundaire index te lezen:
 
     SELECT socialSecurityNum, firstName, lastName FROM CONTACTS WHERE socialSecurityNum > 100;
 
 ### <a name="use-functional-indexes"></a>Functionele indexen gebruiken
 
-Met functionele indexen kunt u een index maken voor een wille keurige expressie die u verwacht in query's te gebruiken. Als er een functionele index aanwezig is en een query die expressie gebruikt, kan de index worden gebruikt om de resultaten op te halen in plaats van de gegevens tabel.
+Met functionele indexen u een index maken op basis van een willekeurige expressie waarvan u verwacht dat deze in query's wordt gebruikt. Zodra u een functionele index hebt en een query die expressie gebruikt, kan de index worden gebruikt om de resultaten op te halen in plaats van de gegevenstabel.
 
-U kunt bijvoorbeeld een index maken waarmee u niet-hoofdletter gevoelige zoek acties kunt uitvoeren op de gecombineerde voor naam en achternaam van een persoon:
+U bijvoorbeeld een index maken waarmee u hoofdlettergevoelige zoekopdrachten uitvoeren op de gecombineerde voor- en achternaam van een persoon:
 
      CREATE INDEX FULLNAME_UPPER_IDX ON "Contacts" (UPPER("firstName"||' '||"lastName"));
 
-## <a name="query-design"></a>Query ontwerp
+## <a name="query-design"></a>Queryontwerp
 
-De belangrijkste overwegingen in query ontwerp zijn:
+De belangrijkste overwegingen in queryontwerp zijn:
 
-* Inzicht in het query plan en controleer het verwachte gedrag.
-* Efficiënt verbinding maken.
+* Begrijp het queryplan en verifieer het verwachte gedrag.
+* Sluit je efficiënt aan.
 
-### <a name="understand-the-query-plan"></a>Meer informatie over het query plan
+### <a name="understand-the-query-plan"></a>Het queryplan begrijpen
 
-Gebruik in [sqlline gebruiken](http://sqlline.sourceforge.net/)de uitleg gevolgd door uw SQL-query om het plan van de bewerkingen te bekijken dat door Breda wordt uitgevoerd. Controleer of het plan:
+Gebruik [IN SQLLine](http://sqlline.sourceforge.net/)EXPLAIN, gevolgd door uw SQL-query, om het plan van bewerkingen weer te geven dat Phoenix zal uitvoeren. Controleer of het plan:
 
-* Maakt gebruik van uw primaire sleutel als dat nodig is.
-* Gebruikt de juiste secundaire indexen in plaats van de gegevens tabel.
-* Maakt gebruik van bereik SCAN of slaat de SCAN zo mogelijk over, in plaats van de tabel SCAN.
+* Gebruikt indien nodig uw primaire sleutel.
+* Gebruikt geschikte secundaire indexen in plaats van de gegevenstabel.
+* Gebruikt waar mogelijk RANGE SCAN of SKIP SCAN, in plaats van TABLE SCAN.
 
-#### <a name="plan-examples"></a>Voor beelden plannen
+#### <a name="plan-examples"></a>Voorbeelden plannen
 
-Stel, u hebt een tabel met de naam vluchten waarin informatie over de vertraging wordt opgeslagen.
+Stel bijvoorbeeld dat u een tabel hebt met de naam VLUCHTEN die vluchtvertragingsinformatie opslaat.
 
-Om alle vluchten te selecteren met een airlineid van `19805`, waarbij airlineid een veld is dat zich niet in de primaire sleutel of in een index bevindt:
+Als u alle vluchten wilt `19805`selecteren met een airlineid van , waarbij airlineid een veld is dat niet in de primaire sleutel of in een index staat:
 
     select * from "FLIGHTS" where airlineid = '19805';
 
-Voer de uitleg opdracht als volgt uit:
+Voer de opdracht uitleggen als volgt uit:
 
     explain select * from "FLIGHTS" where airlineid = '19805';
 
-Het query plan ziet er als volgt uit:
+Het queryplan ziet er als volgt uit:
 
     CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN FULL SCAN OVER FLIGHTS
         SERVER FILTER BY AIRLINEID = '19805'
 
-In dit plan noteert u de woord groep FULL SCAN OVER vluchten. Deze zin duidt op de uitvoering van een tabel SCAN over alle rijen in de tabel, in plaats van het gebruik van de optie SCAN of OVERs laan voor het scannen van een efficiënt bereik.
+Let in dit plan op de zinsnede FULL SCAN OVER FLIGHTS. Deze zin geeft aan dat de uitvoering een tabelscan doet over alle rijen in de tabel, in plaats van de efficiëntere optie SCAN OF SKIP te gebruiken.
 
-Stel nu dat u wilt zoeken naar vluchten op 2 januari 2014 voor de transporteur `AA` waarbij de flightnum groter is dan 1. We gaan ervan uit dat de kolommen Year, month, DayOfMonth, carrier en flightnum bestaan in de voorbeeld tabel en alle deel uitmaken van de samengestelde primaire sleutel. De query ziet er als volgt uit:
+Stel dat u op 2 januari 2014 vluchten wilt `AA` aanvragen voor de luchtvaartmaatschappij waar het vluchtcijfer groter was dan 1. Laten we aannemen dat de kolommen jaar, maand, dagvanmaand, luchtvaartmaatschappij en vluchtnum bestaan in de voorbeeldtabel en allemaal deel uitmaken van de samengestelde primaire sleutel. De query ziet er als volgt uit:
 
     select * from "FLIGHTS" where year = 2014 and month = 1 and dayofmonth = 2 and carrier = 'AA' and flightnum > 1;
 
@@ -180,53 +180,53 @@ Het resulterende plan is:
 
     CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER FLIGHTS [2014,1,2,'AA',2] - [2014,1,2,'AA',*]
 
-De waarden tussen vier Kante haken zijn het waarden bereik voor de primaire sleutels. In dit geval worden de waarden van het bereik verholpen met jaar 2014, maand 1 en dayofmonth 2, maar waarden toestaan voor flightnum vanaf 2 en up (`*`). Met dit query plan wordt bevestigd dat de primaire sleutel wordt gebruikt zoals verwacht.
+De waarden in vierkante haakjes zijn het waardenbereik voor de primaire toetsen. In dit geval zijn de bereikwaarden vastgesteld met jaar 2014, maand 1 en dag van maand 2, maar staan waarden toe voor flightnum vanaf 2 en omhoog (`*`). Dit queryplan bevestigt dat de primaire sleutel wordt gebruikt zoals verwacht.
 
-Maak vervolgens een index op de vluchten-tabel met de naam `carrier2_idx` die zich alleen op het veld transporteur bevindt. Deze index omvat ook flightdate, tailnum, Origin en flightnum als gedekte kolommen waarvan de gegevens ook worden opgeslagen in de index.
+Maak vervolgens een index op `carrier2_idx` de tabel VLUCHTEN met de naam die alleen in het veld van de luchtvaartmaatschappij staat. Deze index bevat ook flightdate, tailnum, origin, en flightnum als gedekte kolommen waarvan de gegevens ook in de index zijn opgeslagen.
 
     CREATE INDEX carrier2_idx ON FLIGHTS (carrier) INCLUDE(FLIGHTDATE,TAILNUM,ORIGIN,FLIGHTNUM);
 
-Stel dat u de provider wilt ophalen samen met de flightdate en tailnum, zoals in de volgende query:
+Stel dat u de luchtvaartmaatschappij mee wilt nemen met de vluchtdatum en de staart, zoals in de volgende query:
 
     explain select carrier,flightdate,tailnum from "FLIGHTS" where carrier = 'AA';
 
-U ziet dat deze index wordt gebruikt:
+U zou moeten zien dat deze index wordt gebruikt:
 
     CLIENT 1-CHUNK PARALLEL 1-WAY ROUND ROBIN RANGE SCAN OVER CARRIER2_IDX ['AA']
 
-Voor een volledige lijst van de items die kunnen worden weer gegeven in de resultaten van de uitleg van het plan, raadpleegt u de sectie uitleg plannen in de [Apache Phoenix Tuning Guide (Engelstalig](https://phoenix.apache.org/tuning_guide.html)).
+Zie de sectie Plannen uitleggen in de [Apache Phoenix Tuning Guide](https://phoenix.apache.org/tuning_guide.html)voor een volledige lijst met items die kunnen worden weergegeven in de resultaten van het plan uitleggen.
 
-### <a name="join-efficiently"></a>Efficiënt verbinding maken
+### <a name="join-efficiently"></a>Sluit efficiënt aan
 
-Over het algemeen wilt u voor komen dat u deelneemt, tenzij een zijde klein is, met name bij query's die vaak worden uitgevoerd.
+Over het algemeen wilt u joins vermijden, tenzij één kant klein is, vooral bij frequente query's.
 
-Indien nodig kunt u grote samen voegingen doen met de `/*+ USE_SORT_MERGE_JOIN */` Hint, maar een grote samen voeging is een dure bewerking in grote aantallen rijen. Als de totale grootte van alle tabellen aan de rechter kant het beschik bare geheugen zou overschrijden, gebruikt u de `/*+ NO_STAR_JOIN */` hint.
+Indien nodig u grote `/*+ USE_SORT_MERGE_JOIN */` joins doen met de hint, maar een grote join is een dure bewerking over enorme aantallen rijen. Als de totale grootte van alle rechtszijdetabellen het beschikbare `/*+ NO_STAR_JOIN */` geheugen zou overschrijden, gebruikt u de hint.
 
 ## <a name="scenarios"></a>Scenario's
 
-In de volgende richt lijnen worden enkele algemene patronen beschreven.
+De volgende richtlijnen beschrijven enkele veelvoorkomende patronen.
 
-### <a name="read-heavy-workloads"></a>Lees zware werk belastingen
+### <a name="read-heavy-workloads"></a>Lees-zware workloads
 
-Voor lees-zware use-cases, moet u ervoor zorgen dat u indexen gebruikt. U kunt ook gedekte indexen maken om Lees tijd te besparen.
+Voor leeszware use cases moet u controleren of u indexen gebruikt. Als u overhead voor leestijd wilt besparen, u bovendien overwegen gedekte indexen te maken.
 
-### <a name="write-heavy-workloads"></a>Schrijf zware workloads
+### <a name="write-heavy-workloads"></a>Schrijfzware workloads
 
-Voor schrijf zware werk belastingen waarbij de primaire sleutel gestaag neemt, maakt u zout buckets om te voor komen dat HOTS pots worden geschreven, tegen de kosten van een algemene Lees doorvoer vanwege de extra scans die nodig zijn. Wanneer u UPSERT gebruikt om een groot aantal records te schrijven, moet u de records automatisch door voeren en vervolgens batch-up uitvoeren.
+Voor schrijfzware workloads waarbij de primaire sleutel monotonisch toeneemt, maakt u zoutemmers om schrijfhotspots te voorkomen, ten koste van de algehele leesdoorvoer vanwege de extra scans die nodig zijn. Als u UPSERT gebruikt om een groot aantal records te schrijven, schakelt u autoCommit uit en batcht u de records.
 
-### <a name="bulk-deletes"></a>Bulksgewijs verwijderen
+### <a name="bulk-deletes"></a>Bulk verwijdert
 
-Wanneer u een grote gegevensset verwijdert, schakelt u automatisch door voeren in voordat u de Verwijder query uitgeeft, zodat de client de rij-sleutels niet hoeft te onthouden voor alle verwijderde rijen. Met autocommit wordt voor komen dat de client de rijen buffert die worden beïnvloed door de verwijdering, zodat Phoenix ze rechtstreeks op de regio servers kan verwijderen zonder de kosten van het retour neren ervan naar de client.
+Schakel bij het verwijderen van een grote gegevensset autoCommit in voordat u de delete-query uitgeeft, zodat de client de rijsleutels voor alle verwijderde rijen niet hoeft te onthouden. AutoCommit voorkomt dat de client de rijen buffert die door delete zijn beïnvloed, zodat Phoenix ze rechtstreeks op de regioservers kan verwijderen zonder de kosten om ze terug te sturen naar de client.
 
-### <a name="immutable-and-append-only"></a>Onveranderbaar en alleen toevoegen
+### <a name="immutable-and-append-only"></a>Onveranderlijk en alleen toevoegen
 
-Als uw scenario de schrijf snelheid voor gegevens integriteit nagaat, kunt u overwegen om het Write-Ahead logboek uit te scha kelen bij het maken van uw tabellen:
+Als uw scenario de voorkeur geeft aan schrijfsnelheid boven gegevensintegriteit, u overwegen het logboek vooraf te uitschakelen bij het maken van uw tabellen:
 
     CREATE TABLE CONTACTS (...) DISABLE_WAL=true;
 
-Zie [Apache Phoenix-grammatica](https://phoenix.apache.org/language/index.html#options)voor meer informatie over deze en andere opties.
+Zie [Apache Phoenix Grammar](https://phoenix.apache.org/language/index.html#options)voor meer informatie over deze en andere opties.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Apache Phoenix-afstemmings gids](https://phoenix.apache.org/tuning_guide.html)
+* [Apache Phoenix Tuning Gids](https://phoenix.apache.org/tuning_guide.html)
 * [Secundaire indexen](https://phoenix.apache.org/secondary_indexing.html)

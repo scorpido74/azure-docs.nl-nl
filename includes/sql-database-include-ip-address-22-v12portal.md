@@ -1,7 +1,7 @@
 ---
 title: Firewallregels op serverniveau
 description: Firewallregels op serverniveau
-keywords: SQL-verbinding, verbindingsreeks
+keywords: sql-verbinding, verbindingstekenreeks
 services: sql-database
 author: dalechen
 manager: craigg
@@ -11,33 +11,33 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176114"
 ---
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-2. Selecteer in de lijst aan de linkerkant, **alle services**.
+2. Selecteer Alle **services**in de lijst aan de linkerkant .
 
-3. Schuif omlaag en selecteer **SQL-servers**.
+3. Scroll en selecteer **SQL-servers**.
 
-    ![Uw Azure SQL Database-server niet vinden in de portal][b21-FindServerInPortal]
-5. Begin met het typen van de naam van uw server in het filtertekstvak. De rij wordt weergegeven.
+    ![Uw Azure SQL Database-server zoeken in de portal][b21-FindServerInPortal]
+5. Typ in het tekstvak filter de naam van uw server. Uw rij wordt weergegeven.
 
-6. Selecteer de rij voor uw server. Een blade voor uw server wordt weergegeven.
+6. Selecteer de rij voor uw server. Er wordt een blade voor uw server weergegeven.
 
-7. Selecteer op de serverblade **instellingen**.
+7. Selecteer **Instellingen**op uw serverblad .
 
 8. Selecteer **Firewall**.
 
-    ![Selecteer instellingen > Firewall][b31-SettingsFirewallNavig]
-9. Selecteer **-Client toevoegen IP**. Typ een naam voor de nieuwe regel in het eerste tekstvak in.
+    ![Selecteer Instellingen > Firewall][b31-SettingsFirewallNavig]
+9. Selecteer **Client-IP toevoegen**. Typ een naam voor uw nieuwe regel in het eerste tekstvak.
 
-10. Typ in de hoge en lage IP-adreswaarden voor het bereik dat u wilt inschakelen.
+10. Typ de lage en hoge IP-adreswaarden voor het bereik dat u wilt inschakelen.
 
-    * Kan het zijn handig om te hebben van het end lage waarde met **.0** en de hoge waarde eindigen met **.255**.
+    * Het kan handig zijn om de lage waarde einde met **0,0** en de hoge waarde einde met **.255**.
 
 11. Selecteer **Opslaan**.
 

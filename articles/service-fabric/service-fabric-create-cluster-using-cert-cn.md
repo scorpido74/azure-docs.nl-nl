@@ -1,31 +1,31 @@
 ---
-title: Een cluster maken met een algemene certificaat naam
-description: Meer informatie over het maken van een Service Fabric cluster met behulp van een algemene certificaat naam uit een sjabloon.
+title: Een cluster maken met gemeenschappelijke certificaatnaam
+description: Meer informatie over het maken van een cluster servicestructuur met behulp van de algemene naam van het certificaat van een sjabloon.
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614550"
 ---
-# <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Een Service Fabric cluster implementeren dat de algemene certificaat naam gebruikt in plaats van een vinger afdruk
-Er kunnen niet twee certificaten dezelfde vinger afdruk hebben, waardoor de rollover van het cluster certificaat of het beheer lastig wordt. Meerdere certificaten kunnen echter dezelfde algemene naam of hetzelfde onderwerp hebben.  Een cluster met behulp van algemene namen van certificaten maakt certificaat beheer veel eenvoudiger. In dit artikel wordt beschreven hoe u een Service Fabric cluster implementeert voor het gebruik van de algemene naam van het certificaat in plaats van de vinger afdruk van het certificaat.
+# <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Een cluster servicestructuur implementeren dat de algemene naam van het certificaat gebruikt in plaats van duimafdruk
+Geen twee certificaten kunnen dezelfde duimafdruk hebben, wat clustercertificaatrollover of beheer moeilijk maakt. Meerdere certificaten kunnen echter dezelfde algemene naam of onderwerp hebben.  Een cluster met gebrese certificaatnamen maakt certificaatbeheer veel eenvoudiger. In dit artikel wordt beschreven hoe u een cluster servicestructuur implementeert om de algemene naam van het certificaat te gebruiken in plaats van de duimafdruk van het certificaat.
  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-a-certificate"></a>Een certificaat ophalen
-Haal eerst een certificaat op bij een certificerings [instantie (CA)](https://wikipedia.org/wiki/Certificate_authority).  De algemene naam van het certificaat moet gelden voor het aangepaste domein dat u bezit en dat u hebt gekocht van een domein registratie service. Bijvoorbeeld ' azureservicefabricbestpractices.com '; personen die geen mede werkers van micro soft zijn, kunnen geen certificaten voor MS-domeinen inrichten, dus u kunt de DNS-namen van uw LB of Traffic Manager niet gebruiken als algemene namen voor uw certificaat, en u moet een [Azure DNS zone](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) inrichten als uw aangepaste domein kan worden omgezet in Azure. U moet ook uw aangepaste domein met de naam ' managementEndpoint ' declareren als u wilt dat de Portal de aangepaste domein alias voor uw cluster weergeeft.
+## <a name="get-a-certificate"></a>Een certificaat aanvragen
+Ontvang eerst een certificaat van een [certificeringsinstantie (CA).](https://wikipedia.org/wiki/Certificate_authority)  De algemene naam van het certificaat moet zijn voor het aangepaste domein dat u bezit en gekocht bij een domeinregistrar. Bijvoorbeeld "azureservicefabricbestpractices.com"; degenen die geen Microsoft-werknemers zijn, kunnen geen certs voor MS-domeinen inrichten, dus u de DNS-namen van uw LB of Traffic Manager niet gebruiken als algemene namen voor uw certificaat, en u moet een [Azure DNS-zone inrichten](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) als uw aangepaste domein in Azure oplosbaar moet zijn. U wilt ook uw aangepaste domein dat u bezit als het 'managementEndpoint' van uw cluster declareren als u wilt dat portal de aangepaste domeinalias voor uw cluster weergeeft.
 
-Voor test doeleinden kunt u een door een CA ondertekend certificaat ontvangen van een gratis of open certificerings instantie.
+Voor testdoeleinden u een CA-ondertekend certificaat krijgen van een gratis of open certificaatautoriteit.
 
 > [!NOTE]
-> Zelfondertekende certificaten, inclusief verbindingen die zijn gegenereerd bij het implementeren van een Service Fabric cluster in de Azure Portal, worden niet ondersteund. 
+> Zelfondertekende certificaten, inclusief certificaten die worden gegenereerd bij het implementeren van een Service Fabric-cluster in de Azure-portal, worden niet ondersteund. 
 
-## <a name="upload-the-certificate-to-a-key-vault"></a>Upload het certificaat naar een sleutel kluis
-In azure wordt een Service Fabric cluster geïmplementeerd op een schaalset met virtuele machines.  Upload het certificaat naar een sleutel kluis.  Wanneer het cluster wordt geïmplementeerd, wordt het certificaat geïnstalleerd op de schaalset voor virtuele machines waarop het cluster wordt uitgevoerd.
+## <a name="upload-the-certificate-to-a-key-vault"></a>Het certificaat uploaden naar een sleutelkluis
+In Azure wordt een cluster van Servicefabric geïmplementeerd op een virtuele machineschaalset.  Upload het certificaat naar een sleutelkluis.  Wanneer het cluster wordt geïmplementeerd, wordt het certificaat geïnstalleerd op de virtuele machineschaalset waarop het cluster wordt uitgevoerd.
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -64,11 +64,11 @@ Write-Host "SourceVault              :"  $SourceVault
 Write-Host "Common Name              :"  $CommName    
 ```
 
-## <a name="download-and-update-a-sample-template"></a>Een voorbeeld sjabloon downloaden en bijwerken
-In dit artikel worden de voorbeeld sjabloon en sjabloon parameters [voor het beveiligde cluster met 5 knoop punten](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) gebruikt. Down load de bestanden *azuredeploy. json* en *azuredeploy. para meters. json* naar uw computer.
+## <a name="download-and-update-a-sample-template"></a>Een voorbeeldsjabloon downloaden en bijwerken
+In dit artikel wordt gebruik gemaakt van de sjabloon [voor beveiligde clustervoorbeelden](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure) en sjabloonparameters met vijf node-groepen. Download de *azuredeploy.json-* en *azuredeploy.parameters.json-bestanden* naar uw computer.
 
-### <a name="update-parameters-file"></a>Parameter bestand bijwerken
-Open eerst het bestand *azuredeploy. para meters. json* in een tekst editor en voeg de volgende parameter waarde toe:
+### <a name="update-parameters-file"></a>Bestand parameters bijwerken
+Open eerst het bestand *azuredeploy.parameters.json* in een teksteditor en voeg de volgende parameterwaarde toe:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -78,7 +78,7 @@ Open eerst het bestand *azuredeploy. para meters. json* in een tekst editor en v
 },
 ```
 
-Stel vervolgens de para meters *certificateCommonName*, *sourceVaultValue*en *certificateUrlValue* in op de parameter waarden die worden geretourneerd door het voor gaande script:
+Stel vervolgens de *parameterwaarden certificateCommonName*, *sourceVaultValue*en *certificateUrlValue* in op de parameterwaarden die door het vorige script worden geretourneerd:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -94,10 +94,10 @@ Stel vervolgens de para meters *certificateCommonName*, *sourceVaultValue*en *ce
 },
 ```
 
-### <a name="update-the-template-file"></a>Het sjabloon bestand bijwerken
-Open vervolgens het bestand *azuredeploy. json* in een tekst editor en maak drie updates ter ondersteuning van de algemene naam van het certificaat.
+### <a name="update-the-template-file"></a>Het sjabloonbestand bijwerken
+Open vervolgens het *azuredeploy.json-bestand* in een teksteditor en breng drie updates uit om de algemene naam van het certificaat te ondersteunen.
 
-1. Voeg in de sectie **para meters** een *certificateCommonName* -para meter toe:
+1. Voeg in de sectie **parameters** een parameter *certificateCommonName* toe:
     ```json
     "certificateCommonName": {
       "type": "string",
@@ -113,21 +113,21 @@ Open vervolgens het bestand *azuredeploy. json* in een tekst editor en maak drie
     },
     ```
 
-    U kunt ook de *certificateThumbprint*verwijderen. Dit is mogelijk niet meer nodig.
+    Ook overwegen het verwijderen van de *certificaatThumbprint*, kan het niet langer nodig zijn.
 
-2. Stel de waarde van de variabele *sfrpApiVersion* in op ' 2018-02-01 ':
+2. Stel de waarde van de *variabele sfrpApiVersion* in op "2018-02-01":
     ```json
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. In de resource **micro soft. Compute/virtualMachineScaleSets** werkt u de extensie van de virtuele machine bij voor het gebruik van de algemene naam in certificaat instellingen in plaats van de vinger afdruk.  In **virtualMachineProfile**->**extensionProfile**->**uitbrei dingen**->**Eigenschappen**->**instellingen**->**certificaat**toevoegen 
+3. Werk in de bron **Microsoft.Compute/virtualMachineScaleSets** de extensie voor virtuele machines bij om de algemene naam in certificaatinstellingen te gebruiken in plaats van de duimafdruk.  In **virtualMachineProfile**->**extensieProfiel**->**extensies**->**eigenschappen**->**instellingen**->**certificaat**, toevoegen 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
        ],
     ```
 
-    en verwijder `"thumbprint": "[parameters('certificateThumbprint')]",`.
+    en `"thumbprint": "[parameters('certificateThumbprint')]",`verwijderen .
 
     ```json
     "virtualMachineProfile": {
@@ -162,7 +162,7 @@ Open vervolgens het bestand *azuredeploy. json* in een tekst editor en maak drie
           },
     ```
 
-4. Werk in de resource **micro soft. ServiceFabric/clusters** de API-versie bij naar ' 2018-02-01 '.  Voeg ook een **certificateCommonNames** -instelling toe met een **commonNames** -eigenschap en verwijder de **certificaat** instelling (met de eigenschap vinger afdruk), zoals in het volgende voor beeld:
+4. Werk in de **bron Microsoft.ServiceFabric/clusters** de API-versie bij naar '2018-02-01'.  Voeg ook een **instelling voor certificateCommonNames** toe met een eigenschap **commonNames** en verwijder de **certificaatinstelling** (met de eigenschap thumbprint) zoals in het volgende voorbeeld:
    ```json
    {
        "apiVersion": "2018-02-01",
@@ -189,9 +189,9 @@ Open vervolgens het bestand *azuredeploy. json* in een tekst editor en maak drie
        ...
    ```
    > [!NOTE]
-   > In het veld ' certificateIssuerThumbprint ' kunnen de verwachte verleners van certificaten worden opgegeven met een algemene naam voor het onderwerp. Dit veld accepteert een door komma's gescheiden opsomming van SHA1-vinger afdrukken. Houd er rekening mee dat dit een versterking vormt van de validatie van het certificaat. in het geval dat de verlener niet is opgegeven of leeg is, wordt het certificaat geaccepteerd voor verificatie als de keten kan worden samengesteld en wordt deze in een hoofd niveau die wordt vertrouwd door de validator, beëindigd. Als de verlener is opgegeven, wordt het certificaat geaccepteerd als de vinger afdruk van de directe verlener overeenkomt met een van de waarden die zijn opgegeven in dit veld, ongeacht of de basis wordt vertrouwd of niet. Houd er rekening mee dat een PKI mogelijk verschillende certificerings instanties gebruikt voor het uitgeven van certificaten voor hetzelfde onderwerp. Daarom is het belang rijk om alle verwachte uitgevers vingerafdrukken op te geven voor een bepaald onderwerp.
+   > Met het veld 'certificateIssuerThumbprint' u de verwachte emittenten van certificaten met een bepaalde gemeenschappelijke naam opgeven. Dit veld accepteert een komma-gescheiden opsomming van SHA1 duimafdrukken. Let op: dit is een versterking van de certificaatvalidatie - in het geval dat de uitgever niet is opgegeven of leeg is, wordt het certificaat geaccepteerd voor verificatie als de keten kan worden gebouwd en belandt het in een root die wordt vertrouwd door de validator. Als de uitgever is opgegeven, wordt het certificaat geaccepteerd als de duimafdruk van de directe uitgevende instelling overeenkomt met een van de waarden die in dit veld zijn opgegeven - ongeacht of de wortel wordt vertrouwd of niet. Houd er rekening mee dat een PKI verschillende certificeringsinstanties kan gebruiken om certificaten voor hetzelfde onderwerp uit te geven, en daarom is het belangrijk om alle verwachte duimafdrukken van uitgevende instellingen voor een bepaald onderwerp op te geven.
    >
-   > Het opgeven van de uitgever wordt beschouwd als een best practice; Als u weglaat, blijft het werken voor certificaten die zijn gekoppeld aan een vertrouwde basis. dit gedrag heeft beperkingen en kan in de nabije toekomst worden gespreid. Clusters die zijn geïmplementeerd in Azure en die zijn beveiligd met x509-certificaten die zijn uitgegeven door een persoonlijke PKI en die zijn gedeclareerd door het onderwerp, kunnen mogelijk niet worden gevalideerd door de Azure Service Fabric-service (voor communicatie tussen services), als het certificaat beleid van de PKI kan niet detecteerbaar, beschikbaar en toegankelijk zijn. 
+   > Het opgeven van de emittent wordt beschouwd als een best practice; terwijl het weglaten van het zal blijven werken - voor certificaten chaining tot een vertrouwde root - dit gedrag heeft beperkingen en kan worden uitgefaseerd in de nabije toekomst. Houd er ook rekening mee dat clusters die zijn geïmplementeerd in Azure en zijn beveiligd met X509-certificaten die zijn uitgegeven door een privé-PKI en per persoon zijn gedeclareerd, mogelijk niet kunnen worden gevalideerd door de Azure Service Fabric-service (voor cluster-to-service-communicatie), als het certificaatbeleid van de PKI is niet vindbaar, beschikbaar en toegankelijk. 
 
 ## <a name="deploy-the-updated-template"></a>De bijgewerkte sjabloon implementeren
 Implementeer de bijgewerkte sjabloon opnieuw nadat u de wijzigingen hebt aangebracht.
@@ -212,9 +212,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFi
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [cluster beveiliging](service-fabric-cluster-security.md).
-* Meer informatie over het [overkantelen van een cluster certificaat](service-fabric-cluster-rollover-cert-cn.md)
-* [Cluster certificaten bijwerken en beheren](service-fabric-cluster-security-update-certs-azure.md)
-* Vereenvoudig het beheer van certificaten door [het cluster te wijzigen van de vinger afdruk van het certificaat in de algemene naam](service-fabric-cluster-change-cert-thumbprint-to-cn.md)
+* Meer informatie over [clusterbeveiliging](service-fabric-cluster-security.md).
+* Meer informatie over het [overrollen van een clustercertificaat](service-fabric-cluster-rollover-cert-cn.md)
+* [Clustercertificaten bijwerken en beheren](service-fabric-cluster-security-update-certs-azure.md)
+* Certificaatbeheer vereenvoudigen door [cluster te wijzigen van duimafdruk van certificaat naar algemene naam](service-fabric-cluster-change-cert-thumbprint-to-cn.md)
 
 [image1]: .\media\service-fabric-cluster-change-cert-thumbprint-to-cn\PortalViewTemplates.png

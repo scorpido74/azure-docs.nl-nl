@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 05/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 036e99a193d539bdcb204b5b062de261c30dffc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "66244672"
 ---
-In deze sectie beschrijft de limieten voor Azure Storage-service en de vereiste naamgevingsregels voor Azure Files, Azure blok-blobs en Azure-pagina-blobs, zoals van toepassing op de Data Box-service. De opslaglimieten zorgvuldig te controleren en volgt u alle aanbevelingen.
+In deze sectie worden de limieten voor Azure Storage-service en de vereiste naamgevingsconventies voor Azure-bestanden, Azure-blokblobs en Azure-paginablobs beschreven, zoals van toepassing op de Data Box-service. Bekijk de opslaglimieten zorgvuldig en volg alle aanbevelingen.
 
-Voor de meest recente informatie over limieten voor Azure storage-service en aanbevolen procedures voor de naamgeving van shares, containers en -bestanden, gaat u naar:
+Ga voor de meest recente informatie over azure-opslagservicelimieten en aanbevolen procedures voor het benoemen van shares, containers en bestanden naar:
 
-- [Naamgeving van en verwijzen naar containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Het benoemen en verwijzen van containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
 - [Naamgeving van en verwijzing naar shares](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Blok-blobs en pagina-blob-conventies](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Blobs en paginablobconventies blokkeren](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
-> Als er bestanden of mappen die groter zijn dan de grenzen van de service Azure Storage, of die niet voldoen aan de naamgevingsconventies voor Azure-bestanden/Blob, worden niet klikt u vervolgens deze bestanden of mappen opgenomen in de Azure Storage via de Data Box-service.
+> Als er bestanden of mappen zijn die de azure storageservicelimieten overschrijden of niet voldoen aan azure-bestanden/blob-naamgevingsconventies, worden deze bestanden of mappen niet opgenomen in de Azure Storage via de Data Box-service.

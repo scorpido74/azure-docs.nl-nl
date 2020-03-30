@@ -1,101 +1,101 @@
 ---
-title: Operator aanbevolen procedures - opslag in Azure Kubernetes Services (AKS)
-description: Meer over de best practices uit de cluster-operator voor opslag, versleuteling van gegevens en back-ups in Azure Kubernetes Service (AKS)
+title: Aanbevolen procedures voor operatoren - Opslag in Azure Kubernetes Services (AKS)
+description: Lees de aanbevolen procedures voor de clusteroperator voor opslag, gegevensversleuteling en back-ups in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399478"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor opslag en back-ups in Azure Kubernetes Service (AKS)
 
-Bij het maken en beheren van clusters in Azure Kubernetes Service (AKS), moeten uw toepassingen vaak opslag. Het is belangrijk om te begrijpen van de prestatiebehoeften en toegang tot methoden voor het gehele product zodat u de juiste opslag voor toepassingen kunt opgeven. De grootte van het AKS-knooppunt kan van invloed zijn op deze opslagopties. U moet ook plannen voor manieren om te testen, het herstelproces voor de gekoppelde opslag en back-up.
+Terwijl u clusters maakt en beheert in Azure Kubernetes Service (AKS), hebben uw toepassingen vaak opslag nodig. Het is belangrijk om inzicht te krijgen in de prestatiebehoeften en toegangsmethoden voor pods, zodat u de juiste opslag voor toepassingen bieden. De grootte van het AKS-knooppunt kan van invloed zijn op deze opslagkeuzes. U moet ook plannen voor manieren om een back-up en test het herstelproces voor aangesloten opslag.
 
-Deze aanbevolen procedures voor richt zich op de opslagoverwegingen voor het clusteroperators. In dit artikel leert u het volgende:
+Dit artikel over aanbevolen procedures richt zich op opslagoverwegingen voor clusteroperators. In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Welke soorten opslag zijn beschikbaar
-> * Hoe goed grootte van een AKS-knooppunten voor opslagprestaties
-> * Verschillen tussen de dynamische en statische toewijzing van volumes
-> * Manieren om een back-up en Beveilig uw gegevensvolumes
+> * Aks-knooppunten correct verkleinen voor opslagprestaties
+> * Verschillen tussen dynamische en statische inrichting van volumes
+> * Manieren om een back-up te maken en uw gegevensvolumes te beveiligen
 
-## <a name="choose-the-appropriate-storage-type"></a>Het juiste opslagtype
+## <a name="choose-the-appropriate-storage-type"></a>Het juiste opslagtype kiezen
 
-**Best Practice-richt lijnen** : inzicht in de behoeften van uw toepassing voor het kiezen van de juiste opslag. Hoge prestaties, SSD-opslag voor workloads voor productie gebruiken. Plan voor opslag op het netwerk wanneer er meerdere gelijktijdige verbindingen nodig.
+**Richtlijnen voor aanbevolen procedures** - Inzicht in de behoeften van uw toepassing om de juiste opslag te kiezen. Gebruik krachtige opslag met SSD-backs voor productieworkloads. Plan voor netwerkopslag wanneer er behoefte is aan meerdere gelijktijdige verbindingen.
 
-Toepassingen vereisen vaak verschillende typen en snelheid van opslag. Moeten uw toepassingen opslag die verbinding maakt met afzonderlijke schillen of verdeeld over meerdere schillen zijn? Is de opslag voor alleen-lezen toegang tot gegevens en het schrijven van grote hoeveelheden gestructureerde gegevens? Deze opslag moet bepalen het meest geschikte type opslag te gebruiken.
+Toepassingen vereisen vaak verschillende soorten en snelheden van opslag. Hebben uw toepassingen opslag nodig die verbinding maakt met afzonderlijke pods of die worden gedeeld via meerdere pods? Is de opslag voor alleen-lezen toegang tot gegevens, of om grote hoeveelheden gestructureerde gegevens te schrijven? Deze opslagbehoeften bepalen het meest geschikte type opslag om te gebruiken.
 
-De volgende tabel geeft een overzicht van de typen beschikbare opslag en de bijbehorende mogelijkheden:
+In de volgende tabel worden de beschikbare opslagtypen en hun mogelijkheden beschreven:
 
-| Use-case | Volume-invoegtoepassing | Eenmaal lezen/schrijven | Alleen-lezen veel | Lezen/schrijven veel | Ondersteuning voor Windows Server-container |
+| Gebruiksvoorbeeld | Volumeplug-in | Eén keer lezen/schrijven | Alleen-lezen veel | Lees/schrijf veel | Ondersteuning voor Windows Server-container |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Gedeelde configuratie       | Azure Files   | Ja | Ja | Ja | Ja |
 | Gestructureerde app-gegevens        | Azure-schijven   | Ja | Nee  | Nee  | Ja |
-| Niet-gestructureerde gegevens, bewerkingen in het bestandssysteem | [BlobFuse][blobfuse] | Ja | Ja | Ja | Nee |
+| Ongestructureerde gegevens, bestandssysteembewerkingen | [BlobFuse BlobFuse][blobfuse] | Ja | Ja | Ja | Nee |
 
-De twee belangrijkste typen opslag die is geleverd voor volumes in AKS worden ondersteund door Azure-schijven of Azure Files. Voor een betere beveiliging beide soorten opslag Azure Storage Service Encryption (SSE) gebruiken standaard die gegevens in rust worden versleuteld. Schijven kunnen niet op dit moment worden versleuteld met Azure Disk Encryption op het niveau van het AKS-knooppunten.
+De twee primaire typen opslag voor volumes in AKS worden ondersteund door Azure Disks of Azure Files. Om de beveiliging te verbeteren, gebruiken beide typen opslag standaard Azure Storage Service Encryption (SSE) die gegevens in rust versleutelt. Schijven kunnen momenteel niet worden versleuteld met Azure Disk Encryption op het AKS-knooppuntniveau.
 
-Azure Files zijn momenteel beschikbaar in de Standard-prestatielaag. Azure-schijven zijn beschikbaar in Standard en Premium prestatielagen:
+Azure-bestanden zijn momenteel beschikbaar in de standaardprestatielaag. Azure-schijven zijn beschikbaar in standaard- en Premium-prestatielagen:
 
-- *Premium* -schijven worden ondersteund door ssd's (Solid-State Disks) met hoge prestaties. Premium-schijven worden aanbevolen voor alle werkbelastingen voor productie.
-- *Standaard* schijven worden ondersteund door normale spining-schijven (hdd's) en zijn geschikt voor archiverings-of zelden gebruikte gegevens.
+- *Premium* schijven worden ondersteund door krachtige solid-state schijven (SSD's). Premium schijven worden aanbevolen voor alle productieworkloads.
+- *Standaard* schijven worden ondersteund door gewone draaiende schijven (HDD's), en zijn goed voor archivering of zelden geopende gegevens.
 
-Inzicht in de prestatiebehoeften van de toepassing en toegang tot patronen om te kiezen van de juiste opslaglaag. Zie [overzicht van Azure Managed disks][managed-disks] voor meer informatie over Managed disks grootten en prestatie lagen.
+Inzicht in de toepassingsprestaties en toegangspatronen om de juiste opslaglaag te kiezen. Zie overzicht van [Azure Managed Disks][managed-disks] voor meer informatie over groottes en prestatielagen van beheerde schijven
 
-### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Maken en storage-klassen gebruiken voor het definiëren van de vereisten voor toepassing
+### <a name="create-and-use-storage-classes-to-define-application-needs"></a>Opslagklassen maken en gebruiken om toepassingsbehoeften te definiëren
 
-Het type opslag dat u gebruikt, wordt gedefinieerd met behulp van Kubernetes- *opslag klassen*. De opslagklasse wordt vervolgens waarnaar wordt verwezen in de implementatie of pod-specificatie. Deze definities werken samen om de juiste opslag maken en verbinden met schillen. Zie [opslag klassen in AKS][aks-concepts-storage-classes]voor meer informatie.
+Het type opslag dat u gebruikt, wordt gedefinieerd met *Kubernetes-opslagklassen.* Er wordt vervolgens naar de opslagklasse verwezen in de pod of implementatiespecificatie. Deze definities werken samen om de juiste opslag te maken en deze aan te sluiten op pods. Zie [Opslagklassen in AKS][aks-concepts-storage-classes]voor meer informatie.
 
-## <a name="size-the-nodes-for-storage-needs"></a>Het formaat van de knooppunten voor opslagbehoeften
+## <a name="size-the-nodes-for-storage-needs"></a>Grootte van de knooppunten voor opslagbehoeften
 
-**Richt lijnen voor best practices** : elke knooppunt grootte ondersteunt een maximum aantal schijven. Grootte van verschillende bieden ook verschillende hoeveelheden lokale opslag en netwerkbandbreedte. Plan voor uw toepassing te voldoen aan de juiste hoeveelheid knooppunten implementeren.
+**Richtlijnen voor beste praktijken** - Elke knooppuntgrootte ondersteunt een maximum aantal schijven. Verschillende knooppuntgroottes bieden ook verschillende hoeveelheden lokale opslag en netwerkbandbreedte. Plan de vereisten van uw toepassing om de juiste grootte van knooppunten te implementeren.
 
-AKS-knooppunten worden uitgevoerd als virtuele Azure-machines. Verschillende typen en -grootten van virtuele machine zijn beschikbaar. Elke VM-grootte biedt een andere hoeveelheid kernbronnen, zoals CPU en geheugen. Deze VM-grootten hebben een maximumaantal schijven dat kan worden gekoppeld. Prestaties van de opslag wordt ook varieert tussen VM-grootten voor de maximale lokale en bijgevoegde schijf IOPS (invoer/uitvoer-bewerkingen per seconde).
+AKS-knooppunten worden uitgevoerd als Azure VM's. Er zijn verschillende soorten en maten vm beschikbaar. Elke VM-grootte biedt een andere hoeveelheid kernbronnen, zoals CPU en geheugen. Deze VM-formaten hebben een maximum aantal schijven dat kan worden bevestigd. De opslagprestaties variëren ook tussen VM-formaten voor de maximale lokale en gekoppelde schijf-IOPS (invoer-/uitvoerbewerkingen per seconde).
 
-Als uw toepassingen Azure-schijven naar hun opslagoplossing vereisen, plannen en kies een passende knooppunt VM-grootte. De hoeveelheid CPU en geheugen is de enige factor niet wanneer u een VM-grootte kiest. De opslagmogelijkheden zijn ook belangrijk. Zowel de *Standard_B2ms* als *Standard_DS2_v2* VM-grootten bevatten bijvoorbeeld een vergelijk bare hoeveelheid CPU-en geheugen bronnen. De mogelijke opslagprestaties is verschillend zijn, zoals wordt weergegeven in de volgende tabel:
+Als uw toepassingen Azure Disks als opslagoplossing vereisen, plant en kiest u een geschikte virtuele VM-grootte. De hoeveelheid CPU en geheugen is niet de enige factor wanneer u een VM-grootte kiest. De opslagmogelijkheden zijn ook belangrijk. Zowel de *Standard_B2ms* als *Standard_DS2_v2* VM-formaten bevatten bijvoorbeeld een vergelijkbare hoeveelheid CPU- en geheugenbronnen. De potentiële opslagprestaties zijn verschillend, zoals in de volgende tabel wordt weergegeven:
 
-| Knooppunttype en de grootte | vCPU | Geheugen (GiB) | Max. aantal gegevensschijven | Max zonder caching schijf-IOPS | Max. zonder caching doorvoer (MBps) |
+| Knooppunttype en grootte | vCPU | Geheugen (GiB) | Max. aantal gegevensschijven | IOPS zonder cache | Maximale doorvoer zonder cache (MBps) |
 |--------------------|------|--------------|----------------|------------------------|--------------------------------|
 | Standard_B2ms      | 2    | 8            | 4              | 1,920                  | 22.5                           |
 | Standard_DS2_v2    | 2    | 7            | 8              | 6,400                  | 96                             |
 
-Hier kan de *Standard_DS2_v2* dubbel het aantal gekoppelde schijven toestaan en drie tot vier keer de hoeveelheid IOPS en schijf doorvoer. Als u alleen de kern Compute-resources en de vergeleken kosten hebt bekeken, kunt u de *Standard_B2ms* VM-grootte kiezen en de prestaties en beperkingen van de opslag verslechteren. Werken met uw ontwikkelingsteam toepassing om te begrijpen van de opslagvereisten voor capaciteit en prestaties. Kies de juiste VM-grootte voor de AKS-knooppunten te bereiken of overschrijden de prestatiebehoeften. Regelmatig basislijn toepassingen om aan te passen van VM-grootte indien nodig.
+Hier, de *Standard_DS2_v2* maakt het dubbele van het aantal aangesloten schijven, en biedt drie tot vier keer de hoeveelheid IOPS en schijfdoorvoer. Als u alleen naar de belangrijkste rekenbronnen hebt *Standard_B2ms* gekeken en de kosten hebt vergeleken, u de Standard_B2ms-vm-grootte kiezen en slechte opslagprestaties en -beperkingen hebben. Werk samen met uw team voor applicatieontwikkeling om inzicht te krijgen in hun opslagcapaciteit en prestatiebehoeften. Kies de juiste VM-grootte voor de AKS-knooppunten om aan hun prestatiebehoeften te voldoen of deze te overtreffen. Regelmatig basislijntoepassingen om de VM-grootte zo nodig aan te passen.
 
-Zie [grootten voor virtuele Linux-machines in azure][vm-sizes]voor meer informatie over de beschik bare VM-grootten.
+Zie [Grootte voor virtuele Linux-machines in Azure voor][vm-sizes]meer informatie over beschikbare VM-formaten.
 
-## <a name="dynamically-provision-volumes"></a>Dynamisch inrichten van volumes
+## <a name="dynamically-provision-volumes"></a>Dynamisch voorzieningsvolumes
 
-**Richt lijnen voor best practices** : als u de beheer overhead wilt beperken en u wilt schalen, kunt u geen permanente volumes statisch maken en toewijzen. Gebruik van dynamisch inrichten. In uw storage-klassen, definieert u het juiste reclaim beleid overbodige om opslagkosten te minimaliseren zodra schillen zijn verwijderd.
+**Richtlijnen voor aanbevolen procedures** - Om de beheeroverhead te verminderen en u te laten schalen, u geen permanente volumes maken en toewijzen. Gebruik dynamische inrichting. Definieer in uw opslagklassen het juiste terugvorderingsbeleid om onnodige opslagkosten te minimaliseren zodra pods zijn verwijderd.
 
-Wanneer u nodig hebt om te koppelen van opslag aan schillen, gebruikt u permanente volumes. Deze permanente volumes kunnen handmatig of dynamisch worden gemaakt. Handmatig maken van permanente volumes beheeroverhead wordt toegevoegd en beperkt u de mogelijkheid om te schalen. Gebruik dynamische permanent volume inrichten voor opslagbeheer vereenvoudigen en kunnen uw toepassingen groeien en schalen naar behoefte.
+Wanneer u opslag aan pods moet koppelen, gebruikt u aanhoudende volumes. Deze permanente volumes kunnen handmatig of dynamisch worden gemaakt. Handmatige creatie van permanente volumes voegt beheeroverhead toe en beperkt uw vermogen om te schalen. Gebruik dynamische permanente volumebepaling om het opslagbeheer te vereenvoudigen en uw toepassingen zo nodig te laten groeien en schalen.
 
-![Permanent volume claims in een cluster Azure Kubernetes-Services (AKS)](media/concepts-storage/persistent-volume-claims.png)
+![Permanente volumeclaims in een AKS-cluster (Azure Kubernetes Services)](media/concepts-storage/persistent-volume-claims.png)
 
-Een claim permanent volume (PVC) kunt u opslag naar behoefte dynamisch te maken. De onderliggende Azure-schijven worden gemaakt als schillen deze aanvragen. In de pod-definitie vraagt u een volume te maken en aan een aangewezen koppelingspad toe te voegen.
+Met een permanente volumeclaim (PVC) u dynamisch opslag maken als dat nodig is. De onderliggende Azure-schijven worden gemaakt terwijl pods daarom vragen. In de poddefinitie vraagt u om een volume te maken en aan een aangewezen bergpad te koppelen.
 
-Zie voor de concepten over het dynamisch maken en gebruiken van volumes de [claim permanente volumes][aks-concepts-storage-pvcs].
+Zie [Persistent Volumes Claims][aks-concepts-storage-pvcs]voor de concepten voor het dynamisch maken en gebruiken van volumes.
 
-Zie voor het weer geven van deze volumes in actie dynamisch een permanent volume maken en gebruiken met [Azure-schijven][dynamic-disks] of [Azure files][dynamic-files].
+Als u deze volumes in actie wilt zien, ziet u hoe u dynamisch een permanent volume maakt en gebruikt met [Azure Disks][dynamic-disks] of [Azure Files.][dynamic-files]
 
-Stel, als onderdeel van de definities van uw opslag klassen, de juiste *reclaimPolicy*in. Deze reclaimPolicy bepaalt het gedrag van de onderliggende Azure storage-resource als de schil wordt verwijderd en het permanent volume is mogelijk niet meer vereist. De onderliggende resource voor opslag kan worden verwijderd of worden bewaard voor gebruik met een toekomstige schil. De reclaimPolicy kan worden ingesteld om te worden *behouden* of *verwijderd*. Inzicht in de behoeften van uw toepassing en implementeren van reguliere controles voor de opslag die worden bewaard om te minimaliseren, de hoeveelheid niet-gebruikte opslag die wordt gebruikt en kosten in rekening gebracht.
+Stel als onderdeel van de definities van uw opslagklasse het juiste *terugvorderen beleid*in . Met deze terugvorderingregelt Beleid het gedrag van de onderliggende Azure-opslagbron wanneer de pod wordt verwijderd en het aanhoudende volume mogelijk niet meer vereist is. De onderliggende opslagbron kan worden verwijderd of behouden voor gebruik met een toekomstige pod. Het terugvorderingsbeleid kan worden ingesteld om *te behouden* of *te verwijderen*. Begrijp uw toepassingsbehoeften en implementeer regelmatig controles voor opslag die worden bewaard om de hoeveelheid niet-gebruikte opslag die wordt gebruikt en gefactureerd te minimaliseren.
 
-Zie [opslag beleid][reclaim-policy]voor meer informatie over opties voor opslag klassen.
+Zie beleid voor [opslagclaim][reclaim-policy]voor meer informatie over opties voor opslagklasse .
 
-## <a name="secure-and-back-up-your-data"></a>Beveilig en back-up van uw gegevens
+## <a name="secure-and-back-up-your-data"></a>Uw gegevens beveiligen en een back-up maken
 
-**Richt lijnen voor best practices** : Maak een back-up van uw gegevens met behulp van een geschikt hulp programma voor uw opslag type, zoals Velero of Azure site Recovery. Controleer of de integriteit en beveiliging van deze back-ups.
+**Richtlijnen voor aanbevolen procedures** : back-ups maken van uw gegevens met behulp van een geschikt hulpmiddel voor uw opslagtype, zoals Velero of Azure Site Recovery. Controleer de integriteit en beveiliging van die back-ups.
 
-Als uw toepassingen opslaan en gebruiken gegevens persistent gemaakt op schijven of in bestanden, moet u regelmatig back-ups of momentopnamen van die gegevens. Azure-schijven kunnen momentopname van de ingebouwde technologieën gebruiken. Mogelijk moet u uw toepassingen controleren om schrijf bewerkingen naar de schijf leeg te maken voordat u de momentopname bewerking uitvoert. [Velero][velero] kan back-ups maken van permanente volumes, samen met aanvullende cluster bronnen en-configuraties. Als u de [status van uw toepassingen][remove-state]niet kunt verwijderen, maakt u een back-up van de gegevens van permanente volumes en test u de herstel bewerkingen regel matig om de integriteit van gegevens en de vereiste processen te controleren.
+Wanneer uw toepassingen gegevens opslaan en verbruiken, moet u regelmatig back-ups of momentopnamen van die gegevens maken. Azure Disks kan gebruik maken van ingebouwde momentopnametechnologieën. Mogelijk moet u zoeken naar uw toepassingen om schrijfbewerkingen naar de schijf door te spoelen voordat u de momentopnamebewerking uitvoert. [Velero][velero] kan een back-up maken van permanente volumes, samen met extra clusterbronnen en configuraties. Als u de status niet uit uw toepassingen [verwijderen,][remove-state]maakt u een back-up van de gegevens van permanente volumes en test u regelmatig de herstelbewerkingen om de gegevensintegriteit en de vereiste processen te verifiëren.
 
-Informatie over de beperkingen van de verschillende methoden voor gegevensback-ups en als u stilleggen uw gegevens voorafgaand aan de momentopname wilt. Gegevensback-ups kunnen niet per se u uw toepassingsomgeving van de implementatie van het cluster te herstellen. Zie [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in AKS][best-practices-multi-region]voor meer informatie over deze scenario's.
+Begrijp de beperkingen van de verschillende benaderingen van back-ups van gegevens en als u uw gegevens moet quiesce voorafgaand aan snapshot. Met back-ups van gegevens u niet per se uw toepassingsomgeving van clusterimplementatie herstellen. Zie Aanbevolen procedures voor [bedrijfscontinuïteit en herstel na noodgevallen in AKS voor][best-practices-multi-region]meer informatie over deze scenario's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel is gericht op de opslag aanbevolen procedures in AKS. Zie [opslag concepten voor toepassingen in AKS][aks-concepts-storage]voor meer informatie over de basis principes van opslag in Kubernetes.
+Dit artikel richtte zich op best practices voor opslag in AKS. Zie [Opslagconcepten voor toepassingen in AKS voor][aks-concepts-storage]meer informatie over de basisprincipes van opslag in Kubernetes.
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero

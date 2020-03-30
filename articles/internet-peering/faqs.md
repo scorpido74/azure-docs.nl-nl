@@ -1,7 +1,7 @@
 ---
-title: Internet peering-Veelgestelde vragen
+title: Internetpeering - veelgestelde vragen
 titleSuffix: Azure
-description: Internet peering-Veelgestelde vragen
+description: Internetpeering - veelgestelde vragen
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,28 +9,28 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9b0b2b08e01c99fc918c4bc5649197c9caa4978a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75775496"
 ---
-# <a name="internet-peering---faqs"></a>Internet peering-Veelgestelde vragen
+# <a name="internet-peering---faqs"></a>Internetpeering - veelgestelde vragen
 
-Hieronder vindt u een overzicht van de informatie over algemene vragen.
+U onderstaande informatie bekijken voor algemene vragen.
 
-**Wat is het verschil tussen Internet peering en peering service?**
+**Wat is het verschil tussen internetpeering en Peering Service?**
 
-Peering-service is een service die de open bare IP-connectiviteit van een onderneming aan micro soft biedt voor haar zakelijke klanten. Het Internet van een onderneming bevat connectiviteit via Isp's met hoge doorvoer connectiviteit voor micro soft en redundantie voor een HA-verbinding. Daarnaast wordt gebruikers verkeer geoptimaliseerd voor latentie bij de dichtstbijzijnde micro soft Edge. Peering-service bouwt voort op peering-connectiviteit met partner carrier. De peering-verbinding met de partner moet direct peering zijn, in tegens telling tot Exchange-peering. Directe peering moet lokale en geo-redundantie hebben.
+Peering Service is een service die microsoft zakelijke IP-connectiviteit wil bieden voor haar zakelijke klanten. Enterprise grade Internet omvat connectiviteit via ISP's met een hoge doorvoerverbinding met Microsoft en redundantie voor een HA-connectiviteit. Bovendien is gebruikersverkeer geoptimaliseerd voor latentie naar de dichtstbijzijnde Microsoft Edge. Peering Service bouwt voort op peering-connectiviteit met partnerprovider. De peering-connectiviteit met de partner moet Direct peering zijn in tegenstelling tot Exchange-peering. Direct peering moet lokale en geo-redundantie hebben.
 
-**Wat is verouderde peering?**
+**Wat is legacy peering?**
 
-Peering-verbinding die is ingesteld met behulp van Azure PowerShell, wordt beheerd als een Azure-resource. Peering-verbindingen die in het verleden zijn ingesteld, worden in ons systeem opgeslagen als verouderde peering, die u eventueel kunt converteren om te beheren als een Azure-resource.
+Peering-verbinding die is ingesteld met Azure PowerShell, wordt beheerd als een Azure-bron. Peering-verbindingen die in het verleden zijn ingesteld, worden in ons systeem opgeslagen als legacy-peering die u kiezen om te converteren naar beheer als Azure-bron.
 
-**Wanneer New-AzPeeringDirectConnectionObject wordt aangeroepen, welke IP-adressen worden er aan micro soft-en peer-apparaten gegeven?**
+**Wanneer New-AzPeeringDirectConnectionObject wordt aangeroepen, welke IP-adressen worden gegeven aan Microsoft- en Peer-apparaten?**
 
-Bij het aanroepen van de cmdlet New-AzPeeringDirectConnectionObject wordt een/31-adres (a. b. c. d/31) of een/30-adres (a. b. c. d/30) ingevoerd. Het eerste IP-adres (a. b. c. d + 0) wordt gegeven aan het apparaat van de peer en het tweede IP-adres (a. b. c. d + 1) wordt gegeven aan micro soft-apparaat.
+Bij het aanroepen van de cmdlet Nieuw-AzPeeringDirectConnectionObject wordt een /31-adres (a.b.c.d/31) of een /30-adres (a.b.c.d/30) ingevoerd. Het eerste IP-adres (a.b.c.d+0) wordt gegeven aan het apparaat van Peer en het tweede IP-adres (a.b.c.d+1) wordt aan microsoft-apparaat gegeven.
 
-**Wat zijn MaxPrefixesAdvertisedIPv4-en MaxPrefixesAdvertisedIPv6-para meters in de cmdlet New-AzPeeringDirectConnectionObject?**
+**Wat is MaxPrefixesAdvertisedIPv4 en MaxPrefixesAdvertisedIPv6 parameters in New-AzPeeringDirectConnectionObject cmdlet?**
 
-De para meters MaxPrefixesAdvertisedIPv4 en MaxPrefixesAdvertisedIPv6 vertegenwoordigen het maximum aantal IPv4-en IPv6-voor voegsels dat door micro soft wordt geaccepteerd. Deze para meters kunnen op elk gewenst moment worden gewijzigd.
+MaxPrefixesAdvertisedIPv4 en MaxPrefixesAdvertisedIPv6 parameters vertegenwoordigen het maximum aantal IPv4 en IPv6 voorvoegsels een Peer wil Dat Microsoft accepteert. Deze parameters kunnen op elk gewenst moment worden gewijzigd.

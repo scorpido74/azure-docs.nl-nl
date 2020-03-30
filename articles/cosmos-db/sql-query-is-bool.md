@@ -1,6 +1,6 @@
 ---
-title: IS_BOOL in Azure Cosmos DB query taal
-description: Meer informatie over de functie IS_BOOL van SQL-systeem in Azure Cosmos DB.
+title: IS_BOOL in Azure Cosmos DB-querytaal
+description: Meer informatie over sql-systeemfunctie IS_BOOL in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: b7f1cfb09121309e246b314d57a5e4e475bd0983
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303865"
 ---
 # <a name="is_bool-azure-cosmos-db"></a>IS_BOOL (Azure Cosmos DB)
- Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een Booleaanse waarde is.  
+ Geeft als resultaat een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een Booleaan is.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -25,16 +25,16 @@ IS_BOOL(<expr>)
   
 ## <a name="arguments"></a>Argumenten
   
-*expressie*  
-   Is een expressie.  
+*Expr*  
+   Is elke uitdrukking.  
   
-## <a name="return-types"></a>Retour typen
+## <a name="return-types"></a>Retourtypen
   
-  Retourneert een Booleaanse expressie.  
+  Geeft als resultaat een Booleaanse expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld worden objecten van JSON-Boole, getal, teken reeks, null, object, matrix en niet-gedefinieerde typen gecontroleerd met behulp van de functie `IS_BOOL`.  
+  In het volgende voorbeeld worden objecten van JSON Booleaan, getal, tekenreeks, `IS_BOOL` null, object, array en niet-gedefinieerde typen gecontroleerd met behulp van de functie.  
   
 ```sql
 SELECT   
@@ -47,7 +47,7 @@ SELECT
     IS_BOOL({prop: "value"}.prop2) AS isBool7  
 ```  
   
- Hier volgt de resultatenset.  
+ Hier is het resultaat ingesteld.  
   
 ```json
 [{"isBool1":true,"isBool2":false,"isBool3":false,"isBool4":false,"isBool5":false,"isBool6":false,"isBool7":false}]
@@ -55,10 +55,10 @@ SELECT
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeem functie maakt deel uit van een [bereik index](index-policy.md#includeexclude-strategy).
+Deze systeemfunctie zal profiteren van een [bereikindex](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Type controleren van functies Azure Cosmos DB](sql-query-type-checking-functions.md)
-- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
+- [Typecontrolefuncties Azure Cosmos DB](sql-query-type-checking-functions.md)
+- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

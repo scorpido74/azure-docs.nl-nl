@@ -1,13 +1,13 @@
 ---
-title: Uw eerste Azure Service Fabric-app maken in Linux met behulp vanC#
-description: Meer informatie over het maken en implementeren van een Service Fabric C# -toepassing met behulp van en .net Core 2,0.
+title: 'Uw eerste Azure Service Fabric-app op Linux maken met C #'
+description: Meer informatie over het maken en implementeren van een Service Fabric-toepassing met C# en .NET Core 2.0.
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 202dde933b41a98c1c119f422d47cbdbb0be84ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458137"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Uw eerste Azure Service Fabric-toepassing maken
@@ -22,7 +22,7 @@ Service Fabric biedt SDK's voor het bouwen van services in Linux in zowel .NET C
 ## <a name="prerequisites"></a>Vereisten
 Zorg voordat u begint ervoor dat u [uw Linux-ontwikkelingsomgeving hebt ingesteld](service-fabric-get-started-linux.md). Als u Mac OS X gebruikt, kunt u [een Linux one-box omgeving instellen op een virtuele machine met behulp van Vagrant](service-fabric-get-started-mac.md).
 
-Het is dan ook een goed idee om de [Service Fabric-CLI](service-fabric-cli.md) te installeren.
+U wilt ook de [Service Fabric CLI](service-fabric-cli.md) installeren
 
 ### <a name="install-and-set-up-the-generators-for-c"></a>Generatoren voor C# installeren en instellen
 Service Fabric biedt hulpprogramma's waarmee u vanuit een terminal Service Fabric-toepassingen kunt maken met behulp van Yeoman-sjabloongeneratoren. Volg deze stappen om de Service Fabric Yeoman-sjabloongeneratoren in te stellen voor C#:
@@ -33,7 +33,7 @@ Service Fabric biedt hulpprogramma's waarmee u vanuit een terminal Service Fabri
    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
    nvm install node 
    ```
-2. [Yeoman](https://yeoman.io/)-sjabloongenerator installeren op uw computer vanuit NPM
+2. [Yeoman-sjabloongenerator](https://yeoman.io/) op uw machine installeren vanaf NPM
 
    ```bash
    npm install -g yo
@@ -89,7 +89,7 @@ Parameters voor deze opdrachten vindt u in de gegenereerde manifesten binnen het
 Nadat de toepassing is geïmplementeerd, opent u een browser en gaat u naar [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) op [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Vouw vervolgens het knooppunt **Toepassingen** uit. U ziet dat er nu een vermelding is voor uw toepassingstype en nog een voor het eerste exemplaar van dat type.
 
 > [!IMPORTANT]
-> Als u de toepassing wilt implementeren in een beveiligd Linux-cluster in azure, moet u een certificaat configureren om uw toepassing te valideren met de Service Fabric runtime. Hierdoor kunnen uw Reliable Services-services communiceren met de onderliggende Service Fabric runtime-Api's. Zie [een reliable Services-app configureren voor het uitvoeren van Linux-clusters](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)voor meer informatie.  
+> Als u de toepassing wilt implementeren op een beveiligd Linux-cluster in Azure, moet u een certificaat configureren om uw toepassing te valideren met de runtime van Service Fabric. Hierdoor kunnen uw Reliable Services-services communiceren met de onderliggende Service Fabric runtime API's. Zie Een [app Voor betrouwbare services configureren om te draaien op Linux-clusters](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)voor meer informatie.  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>De testclient starten en een failover uitvoeren
@@ -97,7 +97,7 @@ Actorprojecten doen niets uit zichzelf. Ze hebben een andere service of client n
 
 1. Voer het script uit met behulp van het controleprogramma om de uitvoer van de actorservice te bekijken.
 
-   In het geval van MAC OS X moet u de myactorsvcTestClient-map naar dezelfde locatie in de container kopiëren door de volgende extra opdrachten uit te voeren.
+   In het geval van MAC OS X moet u de map myactorsvcTestClient naar dezelfde locatie in de container kopiëren door de volgende extra opdrachten uit te voeren.
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home

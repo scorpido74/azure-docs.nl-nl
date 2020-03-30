@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 46cfb27b8bde95990d13ec4bca4e96f25cfe9dc5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176550"
 ---
-Vanwege de lopende ontwikkeling mogelijk de Android SDK-versie is geïnstalleerd in Android Studio niet overeen met de versie in de code. De Android SDK waarnaar wordt verwezen in deze zelfstudie is versie 26, het laatste nieuws op het moment van schrijven. Het versienummer verhogen als nieuwe versies van de SDK worden weergegeven en wordt geadviseerd om de meest recente beschikbare versie.
+Vanwege de voortdurende ontwikkeling komt de Android SDK-versie die in Android Studio is geïnstalleerd mogelijk niet overeen met de versie in de code. De Android SDK waarnaar in deze tutorial wordt verwezen is versie 26, de laatste op het moment van schrijven. Het versienummer kan toenemen naarmate er nieuwe releases van de SDK verschijnen en we raden u aan de nieuwste versie te gebruiken.
 
-Er zijn twee symptomen van niet-overeenkomende versie:
+Twee symptomen van versie mismatch zijn:
 
-- Wanneer u samenstellen of opnieuw samenstellen van het project, krijgt u mogelijk de foutberichten Gradle, zoals `Gradle sync failed: Failed to find target with hash string 'android-XX'`.
-- Standaard-Android objecten in de code die moet worden omgezet op basis van `import` instructies kunnen foutberichten worden gegenereerd.
+- Wanneer u het project bouwt of opnieuw bouwt, `Gradle sync failed: Failed to find target with hash string 'android-XX'`kunt u foutberichten van Gradle krijgen, zoals .
+- Standaard Android-objecten in code `import` die moeten worden opgelost op basis van instructies, genereren mogelijk foutmeldingen.
 
-Als een van deze wordt weergegeven, de versie van de Android SDK geïnstalleerd in Android Studio mogelijk niet overeen met de SDK-doel van het gedownloade project. Als u wilt controleren welke versie is, moet u de volgende wijzigingen aanbrengen:
+Als een van deze verschijnt, komt de versie van de Android SDK die in Android Studio is geïnstalleerd mogelijk niet overeen met het SDK-doel van het gedownloade project. Als u de versie wilt verifiëren, voert u de volgende wijzigingen aan:
 
-1. In Android Studio, klikt u op **extra** > **Android** > **SDK Manager**. Als u niet de nieuwste versie van het Platform SDK hebt geïnstalleerd, klikt u op om het te installeren. Noteer het versienummer.
+1. Klik in Android Studio op **Extra** > **Android** > SDK**Manager**. Als u de nieuwste versie van het SDK-platform niet hebt geïnstalleerd, klikt u om deze te installeren. Noteer het versienummer.
 
-2. Op de **Projectverkenner** tabblad onder **Gradle-Scripts**, open het bestand **build.gradle (Module: app)** . Zorg ervoor dat de **compileSdkVersion** en **targetSdkVersion** zijn ingesteld op de meest recente SDK-versie geïnstalleerd. De `build.gradle` als volgt uitzien:
+2. Open op het tabblad **Project Explorer** onder **Gradle Scripts**de **bestandsbuild.gradle (Module: app).** Zorg ervoor dat de **compileSdkVersion** en **targetSdkVersion** zijn ingesteld op de nieuwste SDK-versie geïnstalleerd. Het `build.gradle` kan er zo uitzien:
 
     ```gradle
     android {

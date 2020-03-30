@@ -1,6 +1,6 @@
 ---
-title: IoT Plug en Play preview model-detectie implementeren | Microsoft Docs
-description: Als oplossings ontwikkelaar leert u hoe u IoT Plug en Play model detectie kunt implementeren in uw oplossing.
+title: IoT Plug and Play Preview-voorbeelddetectie implementeren | Microsoft Documenten
+description: Lees als ontwikkelaar van oplossingen hoe u IoT Plug and Play-modeldetectie in uw oplossing implementeren.
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/26/2019
@@ -10,71 +10,71 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 66da0321930ac38217a336380c9889963a433e67
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75531357"
 ---
-# <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT Plug en Play preview-model detectie implementeren in een IoT-oplossing
+# <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT Plug and Play Preview-modeldetectie implementeren in een IoT-oplossing
 
-In dit artikel wordt beschreven hoe u als oplossings ontwikkelaar IoT Plug en Play preview-model detectie kunt implementeren in een IoT-oplossing.  IoT Plug en Play model detectie is de manier waarop IoT Plug en Play apparaten hun ondersteunde bekwaamheids modellen en-interfaces identificeren en hoe een IoT-oplossing deze modellen en interfaces ophaalt.
+In dit artikel wordt beschreven hoe u als ontwikkelaar van oplossingen IoT Plug and Play Preview-modeldetectie implementeren in een IoT-oplossing.  IoT Plug and Play-modeldetectie is hoe IoT Plug and Play-apparaten hun ondersteunde mogelijkheden en interfaces identificeren en hoe een IoT-oplossing deze capaciteitsmodellen en -interfaces ophaalt.
 
-Er zijn twee algemene categorieën van IoT-oplossingen: speciaal ontwikkelde oplossingen die werken met een bekende set van IoT Plug en Play-apparaten, en modellen gestuurde oplossingen die werken met een IoT Plug en Play-apparaat.
+Er zijn twee brede categorieën IoT-oplossingen: speciaal gebouwde oplossingen die werken met een bekende set IoT Plug and Play-apparaten en modelgestuurde oplossingen die werken met elk IoT Plug and Play-apparaat.
 
-In dit concept artikel wordt beschreven hoe u model detectie in beide typen oplossingen implementeert.
+In dit conceptartikel wordt beschreven hoe modeldetectie in beide soorten oplossingen kan worden geïmplementeerd.
 
 ## <a name="model-discovery"></a>Modeldetectie
 
-Wanneer een IoT-Plug en Play apparaat voor het eerst verbinding maakt met uw IoT-hub, verzendt het een telemetrie-bericht over model gegevens. Dit bericht bevat de Id's van de interfaces die het apparaat implementeert. Uw oplossing werkt alleen met het apparaat als deze Id's worden omgezet en de definities voor elke interface worden opgehaald.
+Wanneer een IoT Plug and Play-apparaat voor het eerst verbinding maakt met uw IoT-hub, stuurt het een telemetriebericht voor modelinformatie. Dit bericht bevat de id's van de interfaces die het apparaat implementeert. Als uw oplossing met het apparaat kan werken, moet deze id's worden opgelost en de definities voor elke interface worden opgehaald.
 
-Hier volgen de stappen die worden uitgevoerd door een IoT-Plug en Play apparaat wanneer het gebruikmaakt van de Device Provisioning Service (DPS) om verbinding te maken met een hub:
+Dit zijn de stappen die een IoT Plug and Play-apparaat neemt wanneer het de Device Provisioning Service (DPS) gebruikt om verbinding te maken met een hub:
 
-1. Wanneer het apparaat is ingeschakeld, wordt er verbinding gemaakt met het globale eind punt voor DPS en wordt er een verificatie op basis van een van de toegestane methoden gebruikt.
-1. DPS verifieert vervolgens het apparaat en zoekt de regel op waarmee wordt aangegeven aan welke IoT-hub het apparaat moet worden toegewezen. DPS registreert vervolgens het apparaat met die hub.
-1. DPS retourneert een IoT Hub connection string op het apparaat.
-1. Het apparaat verzendt vervolgens een bericht met de detectie van een telemetrie naar uw IoT Hub. Het bericht van de detectie-telemetrie bevat de Id's van de interfaces die het apparaat implementeert.
-1. Het IoT Plug en Play-apparaat is nu klaar voor gebruik met een oplossing die gebruikmaakt van uw IoT-hub.
+1. Wanneer het apparaat is ingeschakeld, maakt het verbinding met het globale eindpunt voor DPS en verifieert het met behulp van een van de toegestane methoden.
+1. DPS verifieert vervolgens het apparaat en zoekt de regel op die aangeeft aan welke IoT-hub het apparaat moet toewijzen. DPS registreert het apparaat vervolgens met die hub.
+1. DPS retourneert een IoT Hub-verbindingstekenreeks naar het apparaat.
+1. Het apparaat stuurt vervolgens een detectietelemetriebericht naar uw IoT-hub. Het detectietelemetriebericht bevat de id's van de interfaces die het apparaat implementeert.
+1. Het IoT Plug and Play-apparaat is nu klaar om te werken met een oplossing die uw IoT-hub gebruikt.
 
-Als het apparaat rechtstreeks verbinding maakt met uw IoT-hub, wordt er verbinding gemaakt met behulp van een connection string dat is inge sloten in de apparaatcode. Het apparaat verzendt vervolgens een bericht met de detectie van een telemetrie naar uw IoT Hub.
+Als het apparaat rechtstreeks verbinding maakt met uw IoT-hub, wordt het verbonden via een verbindingstekenreeks die is ingesloten in de apparaatcode. Het apparaat stuurt vervolgens een detectietelemetriebericht naar uw IoT-hub.
 
-Raadpleeg de [ModelInformation](concepts-common-interfaces.md) -interface voor meer informatie over het bericht over het telemetrie-model informatie.
+Zie de [Interface ModelInformatie](concepts-common-interfaces.md) voor meer informatie over het telemetriebericht voor modelinformatie.
 
-### <a name="purpose-built-iot-solutions"></a>Doel bewuste IoT-oplossingen
+### <a name="purpose-built-iot-solutions"></a>Speciaal gebouwde IoT-oplossingen
 
-Een met doel opgebouwde IoT-oplossing werkt met een bekende set IoT Plug en Play-mogelijkheden en-interfaces voor apparaten.
+Een speciaal gebouwde IoT-oplossing werkt met een bekende set iot-plug-en-play-apparaatmogelijkheden en -interfaces.
 
-U hebt het mogelijkheden model en de interfaces voor de apparaten die van tevoren verbinding maken met uw oplossing. Gebruik de volgende stappen om uw oplossing voor te bereiden:
+U beschikt over het capaciteitsmodel en de interfaces voor de apparaten die van tevoren verbinding maken met uw oplossing. Gebruik de volgende stappen om uw oplossing voor te bereiden:
 
-1. Sla de JSON-bestanden van de interface op in azure op een locatie waar uw oplossing ze kan lezen.
-1. Schrijf logica in uw IoT-oplossing op basis van de verwachte IoT Plug en Play-mogelijkheden en-interface.
-1. Abonneer u op meldingen van de IoT-hub die door uw oplossing wordt gebruikt.
+1. Sla de INTERFACE JSON-bestanden op in Azure op een locatie waar uw oplossing ze kan lezen.
+1. Schrijf logica in uw IoT-oplossing op basis van de verwachte IoT Plug and Play-mogelijkheden en interface.
+1. Abonneer u op meldingen van de IoT-hub die uw oplossing gebruikt.
 
-Wanneer u een melding ontvangt voor een nieuwe apparaat, voert u de volgende stappen uit:
+Wanneer u een melding ontvangt voor een nieuwe apparaatverbinding, voert u de volgende stappen uit:
 
-1. Lees het bericht van de Discovery-telemetrie om de Id's op te halen van het functionaliteits model en de interfaces die door het apparaat worden geïmplementeerd.
-1. Vergelijk de ID van het bekwaamheids model met de Id's van de mogelijkheden modellen die u van tevoren hebt opgeslagen.
-1. Nu weet u welk type apparaat is verbonden. Gebruik de logica die u eerder hebt geschreven om gebruikers in staat te stellen op de juiste manier te communiceren met het apparaat.
+1. Lees het bericht detectietelemetrie om de id's van het capaciteitsmodel en de interfaces die door het apparaat zijn geïmplementeerd, op te halen.
+1. Vergelijk de ID van het capaciteitsmodel met de id's van de capaciteitsmodellen die u van tevoren hebt opgeslagen.
+1. Nu weet u welk type apparaat is aangesloten. Gebruik de logica die u eerder hebt geschreven om gebruikers in staat te stellen op de juiste manier met het apparaat te communiceren.
 
-### <a name="model-driven-solutions"></a>Model gerichte oplossingen
+### <a name="model-driven-solutions"></a>Modelgestuurde oplossingen
 
-Een op modellen gebaseerde IoT-oplossing kan worden gebruikt met een IoT Plug en Play-apparaat. Het bouwen van een model met IoT-oplossing is complexer, maar het voor deel is dat uw oplossing werkt met apparaten die in de toekomst worden toegevoegd.
+Een modelgestuurde IoT-oplossing kan werken met elk IoT Plug and Play-apparaat. Het bouwen van een modelgestuurde IoT-oplossing is complexer, maar het voordeel is dat uw oplossing werkt met alle apparaten die in de toekomst worden toegevoegd.
 
-Als u een model-gebaseerde IoT-oplossing wilt bouwen, moet u logica bouwen op basis van de IoT-Plug en Play interface primitieven: telemetrie, eigenschappen en opdrachten. De logica van uw IoT-oplossing duidt op een apparaat door meerdere telemetrie, eigenschappen en opdracht mogelijkheden te combi neren.
+Als u een modelgestuurde IoT-oplossing wilt bouwen, moet u logica bouwen tegen de primitieve nit-interface van IoT Plug and Play: telemetrie, eigenschappen en opdrachten. De logica van uw IoT-oplossing vertegenwoordigt een apparaat door meerdere telemetrie-, eigenschap- en opdrachtmogelijkheden te combineren.
 
-Uw oplossing moet ook worden geabonneerd op meldingen van de IoT-hub die wordt gebruikt.
+Uw oplossing moet zich ook abonneren op meldingen van de IoT-hub die wordt gebruikt.
 
-Als uw oplossing een melding voor een nieuwe apparaat krijgt, voert u de volgende stappen uit:
+Wanneer uw oplossing een melding ontvangt voor een nieuwe apparaatverbinding, voert u de volgende stappen uit:
 
-1. Lees het bericht van de Discovery-telemetrie om de Id's op te halen van het functionaliteits model en de interfaces die door het apparaat worden geïmplementeerd.
+1. Lees het bericht detectietelemetrie om de id's van het capaciteitsmodel en de interfaces die door het apparaat zijn geïmplementeerd, op te halen.
 1. Lees voor elke ID het volledige JSON-bestand om de mogelijkheden van het apparaat te vinden.
-1. Controleer of elke interface aanwezig is in de caches die u hebt gemaakt voor het opslaan van de JSON-bestanden die eerder zijn opgehaald door uw oplossing.
-1. Controleer vervolgens of er een interface met die ID aanwezig is in de open bare model opslagplaats. Zie [Public model-opslag plaats](howto-manage-models.md)voor meer informatie.
-1. Als de interface niet aanwezig is in de open bare model opslagplaats, zoekt u deze in de bedrijfs model opslagplaatsen die bekend zijn bij uw oplossing. U hebt een connection string nodig om toegang te krijgen tot een bedrijfs model opslagplaats. Zie [bedrijfs model opslagplaats](howto-manage-models.md)voor meer informatie.
-1. Als u niet alle interfaces in de open bare model opslagplaats of in een bedrijfs model opslagplaats kunt vinden, controleert u of het apparaat de interface definitie kan bieden. Een apparaat kan de standaard [ModelDefinition](concepts-common-interfaces.md) -interface implementeren voor het publiceren van informatie over het ophalen van interface bestanden met een opdracht.
-1. Als u JSON-bestanden hebt gevonden voor elke interface die door het apparaat is geïmplementeerd, kunt u de mogelijkheden van het apparaat opsommen. Gebruik de logica die u eerder hebt geschreven om gebruikers in staat te stellen te communiceren met het apparaat.
-1. U kunt op elk gewenst moment de Digital apparaatdubbels-API aanroepen om de ID en interface-Id's van het bekwaamheids model voor het apparaat op te halen.
+1. Controleer of elke interface aanwezig is in caches die u hebt gebouwd voor het opslaan van de JSON-bestanden die eerder door uw oplossing zijn opgehaald.
+1. Controleer vervolgens of er een interface met die ID aanwezig is in de openbare modelopslagplaats. Zie [Openbare modelopslagplaats](howto-manage-models.md)voor meer informatie .
+1. Als de interface niet aanwezig is in de openbare modelrepository, probeer het dan te zoeken in bedrijfsmodelrepositories die bekend zijn bij uw oplossing. U hebt een verbindingstekenreeks nodig om toegang te krijgen tot een bedrijfsmodelopslagplaats. Zie [Bedrijfsmodelrepository](howto-manage-models.md)voor meer informatie.
+1. Als u niet alle interfaces vinden in de openbare modelopslagplaats of in een bedrijfsmodelopslagplaats, u controleren of het apparaat de interfacedefinitie kan bieden. Een apparaat kan de standaard [ModelDefinition-interface](concepts-common-interfaces.md) implementeren om informatie te publiceren over het ophalen van interfacebestanden met een opdracht.
+1. Als u JSON-bestanden hebt gevonden voor elke interface die door het apparaat wordt geïmplementeerd, u de mogelijkheden van het apparaat opsommen. Gebruik de logica die u eerder hebt geschreven om gebruikers in staat te stellen met het apparaat te communiceren.
+1. Op elk gewenst moment u de API voor digitale tweelingen bellen om de inhoudsmodel-ID en interface-id's voor het apparaat op te halen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd over model detectie een IoT-oplossing, kunt u meer te weten komen over het [Azure IOT-platform](overview-iot-plug-and-play.md) om gebruik te maken van andere mogelijkheden voor uw oplossing.
+Nu u meer te weten bent gekomen over modeldetectie van een IoT-oplossing, leest u meer over het [Azure IoT-platform](overview-iot-plug-and-play.md) om andere mogelijkheden voor uw oplossing te benutten.

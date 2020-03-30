@@ -5,39 +5,39 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4cffbb1aaa438bac08ec77f576b32a901abacabd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176081"
 ---
 > [!NOTE] 
-> U kunt de versleutelingsinstellingen en referenties van het opslagaccount dat is gekoppeld aan een volumecontainer nadat deze is gemaakt, niet wijzigen.
+> U de versleutelingsinstellingen en de opslagaccountreferenties die zijn gekoppeld aan een volumecontainer niet wijzigen nadat deze is gemaakt.
 
 #### <a name="to-modify-a-volume-container"></a>Een volumecontainer wijzigen
 
-1. Ga naar uw StorSimple Device Manager-service en navigeer vervolgens naar **Management > volumecontainers**.
+1. Ga naar uw StorSimple Device Manager-service en navigeer vervolgens naar **containers beheer > volume.**
 
-2. Selecteer de volumecontainer die u wilt wijzigen in de lijst in tabelvorm van volumecontainers. Op de **apparaten** pagina, selecteert u het apparaat, dubbelklik hierop en klik vervolgens op de **volumecontainers** tabblad.
+2. Selecteer in de tabellijst met volumecontainers de volumecontainer die u wilt wijzigen. Selecteer **op** de pagina Apparaten het apparaat, dubbelklik erop en klik vervolgens op het tabblad **Volumecontainers.**
 
-2. Selecteer in de lijst in tabelvorm van de volumecontainers, de volumecontainer die u wilt wijzigen. In de blade die wordt geopend, klikt u op **wijzigen** vanuit de opdrachtbalk.
+2. Selecteer in de tabeltabellijst van de volumecontainers de volumecontainer die u wilt wijzigen. Klik in het blad dat wordt geopend op **Wijzigen** vanaf de opdrachtbalk.
 
-    ![Volumecontainer aanpassen](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
+    ![Volumecontainer wijzigen](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
 
-3. In de **wijzigen volumecontainer** blade de volgende stappen uit:
+3. Ga in het **containerblad Volume wijzigen** de volgende stappen uit:
    
-   1. De naam, de versleutelingssleutel en de storage-account dat is gekoppeld aan de volumecontainer kunnen niet worden gewijzigd nadat deze zijn opgegeven. Wijzig de bijbehorende bandbreedte-instelling.
+   1. De naam, de versleutelingssleutel en het opslagaccount dat aan de volumecontainer is gekoppeld, kunnen niet worden gewijzigd nadat deze zijn opgegeven. Wijzig de bijbehorende bandbreedteinstelling.
       
        ![Bandbreedte-instelling wijzigen](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
 
    2.  Klik op **OK**.
-4. In de volgende pagina van de **Volumecontainer wijzigen** in het dialoogvenster:
+4. Ga als volgt te werk op de volgende pagina van het dialoogvenster **Volumecontainer wijzigen:**
    
-   1. Kies in de vervolgkeuzelijst een bestaande bandbreedtesjabloon voor.
-   2. Controleer de schema-instellingen voor de opgegeven bandbreedtesjabloon.
-   3. Klik op **opslaan** en bevestigt u de wijzigingen.
+   1. Kies in de vervolgkeuzelijst een bestaande bandbreedtesjabloon.
+   2. Controleer de planningsinstellingen voor de opgegeven bandbreedtesjabloon.
+   3. Klik **op Opslaan** en bevestig de wijzigingen.
       
        ![Wijzigingen bevestigen](./media/storsimple-8000-modify-volume-container/modify-vol-container3.png)
 
-   3. De **volumecontainers** blade wordt bijgewerkt om de wijzigingen weer te geven.
+   3. Het **overboord van de containers Volume** wordt bijgewerkt om de wijzigingen weer te geven.
 

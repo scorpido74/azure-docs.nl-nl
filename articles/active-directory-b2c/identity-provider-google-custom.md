@@ -1,7 +1,7 @@
 ---
-title: Aanmelden met een Google-account instellen met aangepaste beleids regels
+title: Aanmelden met een Google-account instellen met aangepaste beleidsregels
 titleSuffix: Azure AD B2C
-description: Stel aanmelden met een Google-account in Azure Active Directory B2C met aangepaste beleids regels.
+description: Aanmelden met een Google-account instellen in Azure Active Directory B2C met behulp van aangepast beleid.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,62 +12,62 @@ ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8d02c86a1ff330aa4003299e1494a164089d8470
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188219"
 ---
-# <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Google-account instellen met behulp van aangepast beleid in Azure Active Directory B2C
+# <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden met een Google-account instellen met aangepaste beleidsregels in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In dit artikel wordt beschreven hoe u aanmelden voor gebruikers met een Google-account inschakelt met behulp van [aangepast beleid](custom-policy-overview.md) in Azure Active Directory B2C (Azure AD B2C).
+In dit artikel ziet u hoe u aanmelding inschakelt voor gebruikers met een Google-account met behulp van [aangepast beleid](custom-policy-overview.md) in Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voer de stappen uit in het [Active Directory B2C aan de slag met aangepaste beleids regels](custom-policy-get-started.md).
-- Als u nog geen Google-account hebt, kunt u er een maken in [uw Google-account maken](https://accounts.google.com/SignUp).
+- Voer de stappen uit in het aangepaste [beleid in Active Directory B2C](custom-policy-get-started.md).
+- Als u nog geen Google-account hebt, maakt u er een bij [Uw Google-account maken](https://accounts.google.com/SignUp).
 
-## <a name="register-the-application"></a>De toepassing registreren
+## <a name="register-the-application"></a>De aanvraag registreren
 
-Als u aanmelden voor gebruikers wilt inschakelen vanuit een Google-account, moet u een Google-toepassings project maken.
+Als u aanmelding wilt inschakelen voor gebruikers van een Google-account, moet u een Google-toepassingsproject maken.
 
-1. Meld u aan bij de [Google developers-console](https://console.developers.google.com/) met uw account referenties.
-2. Voer een **project naam**in, klik op **maken**en zorg ervoor dat u het nieuwe project gebruikt.
-3. Selecteer **referenties** in het linkermenu en selecteer vervolgens **referenties maken > OAuth-client-id**.
-4. Selecteer **scherm voor toestemming instellen**.
-5. Selecteer of geef een geldig **e-mail adres**op, geef een **product naam** op die wordt weer gegeven voor gebruikers, voer `b2clogin.com` in **geautoriseerde domeinen**in en klik vervolgens op **Opslaan**.
-6. Onder **toepassings type**selecteert u **Web Application**.
+1. Meld u aan bij de [Google Developers Console](https://console.developers.google.com/) met uw accountreferenties.
+2. Voer een **projectnaam**in, klik op **Maken**en controleer of u het nieuwe project gebruikt.
+3. Selecteer **Referenties** in het linkermenu en selecteer **Referenties maken > Oauth-client-id**.
+4. Selecteer **Toestemmingsscherm configureren**.
+5. Selecteer of geef een geldig **e-mailadres op,** `b2clogin.com` geef een **productnaam** op die aan gebruikers wordt weergegeven, voer geautoriseerde **domeinen**in en klik op **Opslaan**.
+6. Selecteer **Webtoepassing** **onder Toepassingstype**.
 7. Voer een **naam** in voor uw toepassing.
-8. Voer in **geautoriseerde java script-oorsprong**`https://your-tenant-name.b2clogin.com` in en voer in **geautoriseerde omleidings-uri's**`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`in. Vervang uw-Tenant naam door de naam van uw Tenant. U moet alle kleine letters gebruiken bij het invoeren van de naam van uw Tenant, zelfs als de Tenant is gedefinieerd met hoofd letters in Azure AD B2C.
-8. Klik op **Create**.
-9. Kopieer de waarden van de **client-id** en het **client geheim**. U hebt beide nodig om Google te configureren als een id-provider in uw Tenant. Client geheim is een belang rijke beveiligings referentie.
+8. Voer in **Geautoriseerde JavaScript-oorsprong**url's in `https://your-tenant-name.b2clogin.com` en in Geautoriseerde **omleidings-URI's**in `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Vervang uw-tenant-naam door de naam van uw huurder. U moet alle kleine letters gebruiken bij het invoeren van uw tenantnaam, zelfs als de tenant is gedefinieerd met hoofdletters in Azure AD B2C.
+8. Klik **op Maken**.
+9. Kopieer de waarden van **client-id** en **clientgeheim**. U hebt beide nodig om Google te configureren als identiteitsprovider in uw tenant. Clientgeheim is een belangrijke beveiligingsreferentie.
 
-## <a name="create-a-policy-key"></a>Een beleids sleutel maken
+## <a name="create-a-policy-key"></a>Een beleidssleutel maken
 
-U moet het client geheim opslaan dat u eerder in uw Azure AD B2C-Tenant hebt vastgelegd.
+U moet het clientgeheim opslaan dat u eerder hebt opgenomen in uw Azure AD B2C-tenant.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+2. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-tenant bevat. Selecteer het **filter Directory + abonnement** in het bovenste menu en kies de map met uw tenant.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
-5. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-6. Kies `Manual`voor **Opties**.
-7. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `GoogleSecret`. De prefix `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
-8. Voer in het **geheim**uw client geheim in dat u eerder hebt vastgelegd.
-9. Selecteer `Signature`voor **sleutel gebruik**.
-10. Klik op **Create**.
+4. Selecteer op de pagina Overzicht de optie **Identity Experience Framework**.
+5. Selecteer **Beleidssleutels** en selecteer **Vervolgens Toevoegen**.
+6. Kies **Options**voor `Manual`Opties .
+7. Voer een **naam** in voor de beleidssleutel. Bijvoorbeeld `GoogleSecret`. Het voorvoegsel `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
+8. Voer in **Secret**het geheim van uw klant in dat u eerder hebt opgenomen.
+9. Selecteer **voor sleutelgebruik**. `Signature`
+10. Klik **op Maken**.
 
-## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
+## <a name="add-a-claims-provider"></a>Een claimprovider toevoegen
 
-Als u wilt dat gebruikers zich aanmelden met een Google-account, moet u het account definiëren als een claim provider waarmee Azure AD B2C met behulp van een eind punt kunnen communiceren. Het eind punt biedt een set claims die wordt gebruikt door Azure AD B2C om te controleren of een specifieke gebruiker is geverifieerd.
+Als u wilt dat gebruikers zich aanmelden met een Google-account, moet u het account definiëren als een claimprovider waarmee Azure AD B2C via een eindpunt kan communiceren. Het eindpunt biedt een reeks claims die worden gebruikt door Azure AD B2C om te controleren of een specifieke gebruiker is geverifieerd.
 
-U kunt een Google-account definiëren als een claim provider door deze toe te voegen aan het **ClaimsProviders** -element in het extensie bestand van uw beleid.
+U een Google-account definiëren als een claimprovider door het toe te voegen aan het element **ClaimsProviders** in het uitbreidingsbestand van uw beleid.
 
-1. Open *TrustFrameworkExtensions. XML*.
-2. Zoek het element **ClaimsProviders** . Als deze niet bestaat, voegt u deze toe onder het hoofd element.
-3. Voeg als volgt een nieuwe **ClaimsProvider** toe:
+1. Open de *TrustFrameworkExtensions.xml*.
+2. Zoek het element **Claimproviders.** Als het niet bestaat, voeg het onder het hoofdelement.
+3. Voeg als volgt een nieuwe **ClaimProvider** toe:
 
     ```xml
     <ClaimsProvider>
@@ -111,66 +111,66 @@ U kunt een Google-account definiëren als een claim provider door deze toe te vo
     </ClaimsProvider>
     ```
 
-4. Stel **client_id** van de toepassings-id in voor de registratie van de toepassing.
+4. Stel **client_id** in op de toepassings-ID van de registratie van de toepassing.
 5. Sla het bestand op.
 
-### <a name="upload-the-extension-file-for-verification"></a>Upload het extensie bestand voor verificatie
+### <a name="upload-the-extension-file-for-verification"></a>Het extensiebestand uploaden ter verificatie
 
-Nu hebt u uw beleid zodanig geconfigureerd dat Azure AD B2C weet hoe u kunt communiceren met uw Azure AD-adres lijst. Upload het extensie bestand van uw beleid alleen om te bevestigen dat er tot nu toe geen problemen zijn.
+U hebt uw beleid inmiddels zo geconfigureerd dat Azure AD B2C weet hoe u met uw Azure AD-map moet communiceren. Probeer het extensiebestand van uw beleid te uploaden om te bevestigen dat het tot nu toe geen problemen heeft.
 
-1. Selecteer op de pagina **aangepaste beleids regels** in uw Azure AD B2C-Tenant de optie **beleid uploaden**.
-2. Schakel **het beleid overschrijven als dit bestaat**in en selecteer vervolgens het *TrustFrameworkExtensions. XML-* bestand.
+1. Selecteer Op de pagina **Aangepast beleid** in uw Azure AD B2C-tenant de optie **Beleid uploaden**.
+2. Het **beleid overschrijven inschakelen als het bestaat,** en blader naar en selecteer het bestand *TrustFrameworkExtensions.xml.*
 3. Klik op **Uploaden**.
 
-## <a name="register-the-claims-provider"></a>De claim provider registreren
+## <a name="register-the-claims-provider"></a>Registreer de schadeprovider
 
-Op dit moment is de ID-provider ingesteld, maar is deze niet beschikbaar in de schermen voor aanmelden/aanmelden. Om het beschikbaar te maken, maakt u een kopie van een bestaande sjabloon gebruiker en wijzigt u deze zodat deze ook de Azure AD-ID-provider heeft.
+Op dit moment is de identiteitsprovider ingesteld, maar deze is niet beschikbaar in een van de aanmeldings-/aanmeldingsschermen. Als u deze beschikbaar wilt maken, maakt u een duplicaat van een bestaande sjabloongebruikersreis en wijzigt u deze vervolgens zodat deze ook de Azure AD-identiteitsprovider heeft.
 
-1. Open het bestand *TrustFrameworkBase. XML* van het Starter Pack.
-2. Zoek en kopieer de volledige inhoud van het **UserJourney** -element dat `Id="SignUpOrSignIn"`bevat.
-3. Open *TrustFrameworkExtensions. XML* en zoek het element **UserJourneys** . Als het element niet bestaat, voegt u er een toe.
-4. Plak de volledige inhoud van het **UserJourney** -element dat u hebt gekopieerd als onderliggend element van het onderdeel **UserJourneys** .
-5. Wijzig de naam van de gebruikers traject. Bijvoorbeeld `SignUpSignInGoogle`.
+1. Open het bestand *TrustFrameworkBase.xml* vanuit het startpakket.
+2. De volledige inhoud van het **UserJourney-element,** dat het element UserJourney bevat, zoeken en kopiëren. `Id="SignUpOrSignIn"`
+3. Open het *element TrustFrameworkExtensions.xml* en zoek het element **UserJourneys.** Als het element niet bestaat, voegt u er een toe.
+4. Plak de volledige inhoud van het **Element UserJourney** die u als onderliggend element van het element **UserJourneys** hebt gekopieerd.
+5. Wijzig de naam van de id van de gebruikersreis. Bijvoorbeeld `SignUpSignInGoogle`.
 
-### <a name="display-the-button"></a>De knop weer geven
+### <a name="display-the-button"></a>De knop weergeven
 
-Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider knop op het scherm aanmelden/aanmelden. Als u een **ClaimsProviderSelection** -element toevoegt voor een Google-account, wordt een nieuwe knop weer gegeven wanneer een gebruiker op de pagina terechtkomt.
+Het **element ClaimsProviderSelection** is analoog aan een knop van identiteitsprovider op een aanmeldings-/aanmeldingsscherm. Als u een **ClaimProviderSelection-element** toevoegt voor een Google-account, wordt er een nieuwe knop weergegeven wanneer een gebruiker op de pagina landt.
 
-1. Zoek het **OrchestrationStep** -element dat `Order="1"` bevat in de gebruikers traject die u hebt gemaakt.
-2. Voeg onder **ClaimsProviderSelects**het volgende element toe. Stel de waarde van **TargetClaimsExchangeId** in op een geschikte waarde, bijvoorbeeld `GoogleExchange`:
+1. Zoek het element **OrchestrationStep** dat is onderdeel van `Order="1"` het gebruikerstraject dat u hebt gemaakt.
+2. Voeg onder **ClaimsProviderSelects**het volgende element toe. Stel de waarde van **TargetClaimsExchangeId** in `GoogleExchange`op een geschikte waarde, bijvoorbeeld:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
     ```
 
-### <a name="link-the-button-to-an-action"></a>De knop aan een actie koppelen
+### <a name="link-the-button-to-an-action"></a>De knop koppelen aan een actie
 
-Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit geval is voor Azure AD B2C om te communiceren met een Google-account om een token te ontvangen.
+Nu je een knop hebt, moet je deze koppelen aan een actie. De actie is in dit geval dat Azure AD B2C communiceert met een Google-account om een token te ontvangen.
 
-1. Zoek de **OrchestrationStep** die `Order="2"` bevat in de gebruikers reis.
-2. Voeg het volgende **ClaimsExchange** -element toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor de id die u hebt gebruikt voor **TargetClaimsExchangeId**:
+1. Zoek de **OrchestrationStep** die in het gebruikerstraject is meegemaakt. `Order="2"`
+2. Voeg het volgende **ClaimExchange-element** toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor id die u voor **TargetClaimsExchangeId hebt**gebruikt:
 
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
     ```
 
-    Werk de waarde van **TechnicalProfileReferenceId** bij naar de id van het technische profiel dat u eerder hebt gemaakt. Bijvoorbeeld `Google-OAuth`.
+    Werk de waarde van **TechnicalProfileReferenceId bij** naar de ID van het technische profiel dat u eerder hebt gemaakt. Bijvoorbeeld `Google-OAuth`.
 
-3. Sla het bestand *TrustFrameworkExtensions. XML* op en upload het opnieuw voor verificatie.
+3. Sla het *bestand TrustFrameworkExtensions.xml op* en upload het opnieuw voor verificatie.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Een Azure AD B2C-toepassing maken
 
-Communicatie met Azure AD B2C vindt plaats via een toepassing die u registreert in uw B2C-Tenant. In deze sectie vindt u optionele stappen die u kunt uitvoeren om een test toepassing te maken als u dit nog niet hebt gedaan.
+Communicatie met Azure AD B2C vindt plaats via een toepassing die u registreert in uw B2C-tenant. In deze sectie worden optionele stappen weergegeven die u voltooien om een testtoepassing te maken als u dit nog niet hebt gedaan.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
-## <a name="update-and-test-the-relying-party-file"></a>Het Relying Party bestand bijwerken en testen
+## <a name="update-and-test-the-relying-party-file"></a>Het bestand van de relying party bijwerken en testen
 
-Werk het Relying Party (RP)-bestand bij waarmee de door u gemaakte gebruikers traject wordt gestart.
+Werk het RP-bestand (relying party) bij waarmee u de gebruikersreis initieert die u hebt gemaakt.
 
-1. Maak een kopie van *SignUpOrSignIn. XML* in uw werkmap en wijzig de naam ervan. Wijzig de naam bijvoorbeeld in *SignUpSignInGoogle. XML*.
-2. Open het nieuwe bestand en werk de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** met een unieke waarde bij. Bijvoorbeeld `SignUpSignInGoogle`.
-3. Werk de waarde van **PublicPolicyUri** bij met de URI voor het beleid. Bijvoorbeeld`http://contoso.com/B2C_1A_signup_signin_google`
-4. Werk de waarde van het kenmerk **ReferenceId** in **DefaultUserJourney** bij zodat dit overeenkomt met de id van de nieuwe gebruikers traject die u hebt gemaakt (SignUpSignGoogle).
-5. Sla de wijzigingen op, upload het bestand en selecteer vervolgens het nieuwe beleid in de lijst.
-6. Zorg ervoor dat Azure AD B2C toepassing die u hebt gemaakt, is geselecteerd in het veld **toepassing selecteren** en test deze door op **nu uitvoeren**te klikken.
+1. Maak een kopie van *SignUpOrSignIn.xml* in uw werkmap en wijzig de naam ervan. Wijzig de naam bijvoorbeeld in *SignUpSignInGoogle.xml*.
+2. Open het nieuwe bestand en werk de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** bij met een unieke waarde. Bijvoorbeeld `SignUpSignInGoogle`.
+3. Werk de waarde van **PublicPolicyUri bij** met de URI voor het beleid. Bijvoorbeeld,`http://contoso.com/B2C_1A_signup_signin_google`
+4. Werk de waarde van het kenmerk **ReferenceId** bij in **DefaultUserJourney** zodat deze overeenkomt met de id van het nieuwe gebruikerstraject dat u hebt gemaakt (SignUpSignGoogle).
+5. Sla uw wijzigingen op, upload het bestand en selecteer vervolgens het nieuwe beleid in de lijst.
+6. Controleer of de Azure AD B2C-toepassing die u hebt gemaakt, is geselecteerd in het veld **Toepassing selecteren** en test deze door nu op **Uitvoeren**te klikken .

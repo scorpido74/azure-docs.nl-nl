@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Media Services | Microsoft Docs
-description: Microsoft Azure Media Services is een uitbreidbaar cloudplatform waarmee ontwikkelaars schaalbare toepassingen voor mediabeheer en -levering kunnen ontwikkelen. Dit artikel geeft een overzicht van Azure Media Services.
+description: Microsoft Azure Media Services is een uitbreidbaar cloudplatform waarmee ontwikkelaars schaalbare toepassingen voor mediabeheer en -levering kunnen ontwikkelen. In dit artikel vindt u een overzicht van Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
 ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197501"
 ---
 # <a name="azure-media-services-overview"></a>Overzicht van Azure Media Services 
@@ -27,7 +27,7 @@ ms.locfileid: "78197501"
 > * [Versie 2](media-services-overview.md)
 
 > [!NOTE]
-> Er worden geen nieuwe functies meer aan Media Services v2 toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies meer aan Media Services v2 toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS) is een uitbreidbaar cloudplatform waarmee ontwikkelaars schaalbare toepassingen voor mediabeheer en -levering kunnen ontwikkelen. Media Services is gebaseerd op de REST API's waarmee u veilig video- of audio-inhoud kunt uploaden, opslaan, coderen en verpakken, zowel voor levering on demand als levering via livestreaming aan verschillende clients (bijvoorbeeld tv, pc en mobiele apparaten).
 
@@ -36,17 +36,17 @@ U kunt end-to-end-werkstromen volledig met Media Services bouwen. U kunt er ook 
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, privacy en beveiliging
 
-Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetgeving bij het gebruik van Azure Media Services en mag u Media Services of een Azure-service niet gebruiken op een manier die de rechten van anderen schendt of die schadelijk voor anderen kunnen zijn.
+Als een belangrijke herinnering moet u voldoen aan alle toepasselijke wetten bij uw gebruik van Azure Media Services en mag u Media Services of een Azure-service niet gebruiken op een manier die de rechten van anderen schendt of die schadelijk kan zijn voor anderen.
 
-Voordat u een video/afbeelding naar Media Services uploadt, moet u over alle juiste rechten beschikken voor het gebruik van de video/afbeelding, inclusief, indien vereist door de wet, alle vereiste mede werkers (indien van toepassing) in de video/afbeelding, voor gebruik, verwerking en opslag van hun gegevens in Media Services en Azure. Sommige jurisdicties kunnen speciale wettelijke vereisten opleggen voor het verzamelen, online verwerken en opslaan van bepaalde gegevens categorieën, zoals biometrische gegevens. Voordat u Media Services en Azure gebruikt voor het verwerken en opslaan van gegevens die onder bijzondere wettelijke vereisten vallen, moet u ervoor zorgen dat u voldoet aan de wettelijke vereisten die voor u van toepassing kunnen zijn.
+Voordat u een video/afbeelding uploadt naar Media Services, moet u over alle juiste rechten beschikken om de video/afbeelding te gebruiken, inclusief, indien vereist door de wet, alle benodigde toestemmingen van personen (indien aanwezig) in de video/afbeelding, voor het gebruik, de verwerking en de opslag van hun gegevens in Media Services en Azure. Sommige rechtsgebieden kunnen speciale wettelijke vereisten opleggen voor het verzamelen, online verwerken en opslaan van bepaalde categorieën gegevens, zoals biometrische gegevens. Voordat u Media Services en Azure gebruikt voor de verwerking en opslag van gegevens die aan speciale wettelijke vereisten voldoen, moet u ervoor zorgen dat dergelijke wettelijke vereisten op u worden nageleefd.
 
-Ga naar het [vertrouwens centrum](https://www.microsoft.com/trust-center/?rtc=1)van micro soft voor meer informatie over naleving, privacy en beveiliging in Media Services. Raadpleeg de privacyverklaring van micro soft voor de privacy van micro soft, het verwerken en bewaren van gegevens, inclusief de manier waarop u uw gegevens kunt verwijderen, de [Privacy verklaring](https://privacy.microsoft.com/PrivacyStatement), de [voor waarden voor Online Services](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ("Ost") en de [gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Door Media Services te gebruiken, gaat u ermee akkoord dat u bent gebonden aan de OST, DPA en de privacyverklaring.
+Ga naar het Microsoft [Trust Center](https://www.microsoft.com/trust-center/?rtc=1)voor meer informatie over compliance, privacy en beveiliging in Media Services. Voor de privacyverplichtingen van Microsoft, gegevensverwerking en bewaarpraktijken, waaronder het verwijderen van uw gegevens, raadpleegt u de [privacyverklaring](https://privacy.microsoft.com/PrivacyStatement)van Microsoft, de [voorwaarden voor onlineservices](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) (OST) en [het addendum voor gegevensverwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (DPA"). Door mediaservices te gebruiken, stemt u ermee in gebonden te zijn door de OST, DPA en de Privacyverklaring.
  
 ## <a name="prerequisites"></a>Vereisten
 
 Als u Azure Media Services wilt gaan gebruiken, moet u over het volgende beschikken:
 
-* Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een account voor de gratis proefversie maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
+* Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
 * Een Azure Media Services-account. Zie [Een account maken](media-services-portal-create-account.md) voor meer informatie.
 * (Optioneel) Instellen van de ontwikkelomgeving. Kies .NET of REST API voor uw ontwikkelomgeving. Zie [De omgeving instellen](media-services-dotnet-how-to-use.md) voor meer informatie.
 
@@ -62,12 +62,12 @@ Als u Media Services-oplossingen wilt maken, kunt u het volgende gebruiken:
     * Azure Media Services SDK voor .NET
     
         * [NuGet-pakket](https://www.nuget.org/packages/windowsazure.mediaservices/)
-        * [GitHub-bron code](https://github.com/Azure/azure-sdk-for-media-services)
+        * [GitHub-broncode](https://github.com/Azure/azure-sdk-for-media-services)
     * [Azure SDK voor Java](https://github.com/Azure/azure-sdk-for-java)
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
     * [Azure Media Services voor Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (Dit is een niet-Microsoft-versie van een Node.js SDK. Deze wordt onderhouden door een community en biedt nog geen 100% dekking voor AMS API's).
 * Bestaande hulpprogramma's:
-    * [Azure Portal](https://portal.azure.com/)
+    * [Azure-portal](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) is een Winforms-/C#-toepassing voor Windows)
 
 > [!NOTE]

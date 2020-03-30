@@ -5,37 +5,37 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176449"
 ---
-De taak levert een JSON-uitvoer-bestand met metagegevens over gezichten gedetecteerd en bijgehouden. De metagegevens bevatten die wijzen op de locatie van gezichten, evenals een face id-nummer die wijzen op het volgen van deze persoon coördinaten. Face id-nummers zijn gevoelig zijn voor het opnieuw instellen onder omstandigheden wanneer de voorzijde gezicht is zoekgeraakt of overlappende in het kader, wat resulteert in bepaalde personen meerdere id's ophalen van toegewezen.
+De taak produceert een JSON-uitvoerbestand met metagegevens over gedetecteerde en bijgehouden gezichten. De metagegevens bevatten coördinaten die de locatie van gezichten aangeven, evenals een face ID-nummer dat de tracking van die persoon aangeeft. Face ID-nummers zijn gevoelig voor reset onder omstandigheden wanneer het frontale gezicht verloren gaat of overlapt in het frame, wat resulteert in een aantal personen krijgen toegewezen meerdere ID's.
 
-De JSON-uitvoer bevat de volgende elementen:
+De uitvoer JSON bevat de volgende elementen:
 
-### <a name="root-json-elements"></a>Hoofdmap JSON-elementen
+### <a name="root-json-elements"></a>Json-elementen voor root
 
-| Element | Description |
+| Element | Beschrijving |
 | --- | --- |
-| version |Dit verwijst naar de versie van de Video-API. |
-| tijdschaal |'Tikken"per seconde van de video. |
-| offset |Dit is de time-offset voor tijdstempels. Versie 1.0 van Video-API's, wordt dit altijd 0 zijn. In de toekomst scenario's die wordt ondersteund, deze waarde kan worden gewijzigd. |
-| breedte, met veel |De breedte en met veel van de video frame van uitvoer in pixels.|
-| framerate |Aantal frames per seconde video. |
-| [fragments](#fragments-json-elements) |De metagegevens wordt gesegmenteerde overdrachtscodering omhoog in verschillende segmenten fragmenten genoemd. Elk fragment bevat een start, een duur, een intervalnummer en een of meer gebeurtenissen. |
+| versie |Dit verwijst naar de versie van de Video API. |
+| Tijdschaal |"Teken" per seconde van de video. |
+| offset |Dit is de tijdscompensatie voor tijdstempels. In versie 1.0 van Video API's is dit altijd 0. In toekomstige scenario's die we ondersteunen, kan deze waarde veranderen. |
+| breedte, hight |De breedte en hoogte van het uitvoervideoframe, in pixels.|
+| Framerate |Aantal frames per seconde video. |
+| [Fragmenten](#fragments-json-elements) |De metagegevens worden samengevoegd in verschillende segmenten, fragmenten genaamd. Elk fragment bevat een start, een duur, een intervalnummer en een of meer gebeurtenissen. |
 
 ### <a name="fragments-json-elements"></a>Fragmenten JSON-elementen
 
-|Element|Description|
+|Element|Beschrijving|
 |---|---|
-| start |De begintijd van de eerste gebeurtenis in "tikken." |
-| Duur |De lengte van het fragment, in "tikken." |
-| index | (Alleen van toepassing op Azure Media Redactor) definieert de index van het kader van de huidige gebeurtenis. |
-| interval |Het interval van elke vermelding in het fragment, in "tikken." |
-| events |Elke gebeurtenis bevat de gezichten gedetecteerd en bijgehouden binnen deze tijdsduur. Er is een matrix van gebeurtenissen. De buitenste matrix vertegenwoordigt een tijdsinterval. De binnenste matrix bestaat uit 0 of meer gebeurtenissen die hebben plaatsgevonden gedurende de interval. Een lege haakje [] betekent dat er geen gezichten gedetecteerd. |
-| id |De ID van het oppervlak dat wordt bijgehouden. Dit nummer kan per ongeluk worden gewijzigd als een gezicht niet gevonden wordt. Een bepaalde persoon moet dezelfde ID in de algehele video hebben, maar dit kan niet worden gegarandeerd vanwege beperkingen in de detectie-algoritme (bedekking, enzovoort). |
-| x, y |De linkerbovenhoek X en Y-coördinaten van de face-vak in een genormaliseerde schaal van 0,0 en 1,0. <br/>-X- en Y coördinaten zijn ten opzichte van Liggend altijd, dus als u een staande video (of omlaag, in het geval van iOS) hebt, hebt u om te zetten de coördinaten dienovereenkomstig. |
-| breedte, hoogte |De breedte en hoogte van het selectiekader in een genormaliseerde schaal van 0,0 en 1,0 gezicht. |
-| facesDetected |Dit is gevonden aan het einde van de JSON-resultaten en bevat een overzicht van het aantal gezichten die het algoritme gedetecteerd tijdens de video. Omdat de id's kunnen opnieuw worden ingesteld per ongeluk als een gezicht niet gevonden wordt (bijvoorbeeld het gezicht scherm ziet er direct), gaat dit aantal kan niet altijd gelijk zijn aan het echte nummer van gezichten wordt uitgevoerd in de video. |
+| start |De begintijd van de eerste gebeurtenis in 'teken'. |
+| duur |De lengte van het fragment, in 'teken'. |
+| Index | (Alleen op Azure Media Redactor) definieert de frameindex van de huidige gebeurtenis. |
+| interval |Het interval van elke gebeurtenisvermelding in het fragment, in 'teken'. |
+| events |Elke gebeurtenis bevat de gezichten die binnen die tijdsduur zijn gedetecteerd en bijgehouden. Het is een scala aan gebeurtenissen. De buitenste matrix vertegenwoordigt een tijdsinterval. De binnenste matrix bestaat uit 0 of meer gebeurtenissen die hebben plaatsgevonden gedurende de interval. Een lege beugel [] betekent dat er geen gezichten zijn gedetecteerd. |
+| id |De ID van het gezicht dat wordt gevolgd. Dit getal kan per ongeluk veranderen als een gezicht onopgemerkt wordt. Een bepaald individu moet dezelfde ID hebben in de totale video, maar dit kan niet worden gegarandeerd als gevolg van beperkingen in het detectiealgoritme (occlusie, enz.). |
+| x, y |De r-outs X en Y linksboven van het gezichtsselectiekader in een genormaliseerde schaal van 0,0 tot 1,0. <br/>-X- en Y-coördinaten zijn altijd relatief ten opzichte van het landschap, dus als je een portretvideo hebt (of ondersteboven, in het geval van iOS), moet je de coördinaten dienovereenkomstig omzetten. |
+| breedte, hoogte |De breedte en hoogte van het gezichtsomsluitende vak in een genormaliseerde schaal van 0,0 tot 1,0. |
+| gezichtengedetecteerd |Dit wordt gevonden aan het einde van de JSON resultaten en vat het aantal gezichten dat het algoritme gedetecteerd tijdens de video. Omdat de id's per ongeluk kunnen worden gereset als een gezicht onopgemerkt wordt (bijvoorbeeld het gezicht gaat van het scherm, kijkt weg), kan dit aantal niet altijd gelijk zijn aan het werkelijke aantal gezichten in de video. |

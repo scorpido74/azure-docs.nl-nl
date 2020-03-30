@@ -9,22 +9,22 @@ ms.date: 05/21/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: bae66078a1bcb1d80f0798b1d501598fa785fb80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66241205"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 
-## <a name="get-the-managed-image"></a>De installatiekopie van het beheerde ophalen
+## <a name="get-the-managed-image"></a>De beheerde afbeelding oppakken
 
-U ziet een lijst met installatiekopieën die beschikbaar in een resource-groep met zijn [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Zodra u weet dat de installatiekopie met de naam en de resourcegroep waarvan het zich bevindt, kunt u `Get-AzImage` opnieuw naar de installatiekopie-object ophalen en opslaan in een variabele voor later gebruik. In dit voorbeeld wordt een installatiekopie met de naam *myImage* uit de resourcegroep 'myResourceGroup' en wijst deze toe aan de variabele *$managedImage*. 
+U een lijst met afbeeldingen zien die beschikbaar zijn in een resourcegroep met [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Zodra u de naam van de afbeelding en de `Get-AzImage` brongroep weet waarin deze zich bevindt, u het afbeeldingsobject opnieuw gebruiken en opslaan in een variabele om later te gebruiken. In dit voorbeeld wordt een afbeelding met de naam *myImage* uit de resourcegroep 'myResourceGroup' opgehaald en aan de variabele *$managedImage*. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -32,11 +32,11 @@ $managedImage = Get-AzImage `
    -ResourceGroupName myResourceGroup
 ```
 
-## <a name="create-an-image-gallery"></a>Een galerie met installatiekopieën maken 
+## <a name="create-an-image-gallery"></a>Een afbeeldingsgalerie maken 
 
-Een galerie met installatiekopieën is de primaire bron die wordt gebruikt voor het inschakelen van de installatiekopie van het delen. Toegestane tekens voor de naam van de galerie worden hoofdletters of kleine letters, cijfers, punten en perioden. Naam van de galerie mag geen streepjes bevatten. Galerie-namen moeten uniek zijn binnen uw abonnement. 
+Een afbeeldingsgalerie is de primaire bron die wordt gebruikt voor het inschakelen van het delen van afbeeldingen. Toegestane tekens voor galerienaam zijn hoofdletters, cijfers, stippen en perioden. De naam van de galerie mag geen streepjes bevatten. Galerijnamen moeten uniek zijn binnen uw abonnement. 
 
-Maak een installatiekopie galerie met [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). Het volgende voorbeeld wordt een galerie met de naam *myGallery* in de *myGalleryRG* resourcegroep.
+Maak een afbeeldingsgalerie met [Nieuw-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). In het volgende voorbeeld wordt een galerie met de naam *myGallery* gemaakt in de *brongroep myGalleryRG.*
 
 ```azurepowershell-interactive
 $resourceGroup = New-AzResourceGroup `
@@ -49,11 +49,11 @@ $gallery = New-AzGallery `
    -Description 'Shared Image Gallery for my organization'  
 ```
    
-## <a name="create-an-image-definition"></a>De definitie van een installatiekopie maken 
+## <a name="create-an-image-definition"></a>Een afbeeldingsdefinitie maken 
 
-Definities van de installatiekopie van maken een logische groepering van installatiekopieën. Ze worden gebruikt voor het beheren van informatie over de versies van een installatiekopie die in deze worden gemaakt. Namen van de definitie van afbeeldingen kunnen bestaan uit hoofdletters of kleine letters, cijfers, punten, streepjes en punten. Zie voor meer informatie over de waarden die u voor de definitie van een installatiekopie opgeven kunt [Image definities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+Afbeeldingsdefinities maken een logische groepering voor afbeeldingen. Ze worden gebruikt om informatie over de afbeeldingsversies die erin zijn gemaakt, te beheren. Afbeeldingsdefinitienamen kunnen bestaan uit hoofdletters of kleine letters, cijfers, stippen, streepjes en perioden. Zie [Afbeeldingsdefinities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)voor meer informatie over de waarden die u voor een afbeeldingsdefinitie opgeven.
 
-Maken van de installatiekopie definitie met [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). In dit voorbeeld wordt de afbeelding met de naam *myGalleryImage*.
+Maak de afbeeldingsdefinitie met [Nieuwe-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). In dit voorbeeld wordt de galerijafbeelding *myGalleryImage*genoemd.
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -69,13 +69,13 @@ $galleryImage = New-AzGalleryImageDefinition `
 ```
 
 
-## <a name="create-an-image-version"></a>De versie van een installatiekopie maken
+## <a name="create-an-image-version"></a>Een afbeeldingsversie maken
 
-De versie van een installatiekopie van het gebruik van een beheerde installatiekopie maken [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+Maak een afbeeldingsversie op basis van een beheerde afbeelding met [Nieuwe-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
 
-Toegestane tekens in voor de versie van installatiekopie zijn cijfers en punten. Cijfers moet binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
+Toegestane tekens voor de afbeeldingsversie zijn getallen en perioden. Getallen moeten zich binnen het bereik van een 32-bits geheel getal bevinden. Formaat: *MajorVersion*. *MinorVersion*. *Patch*.
 
-In dit voorbeeld de versie van de installatiekopie is *1.0.0* en deze worden gerepliceerd naar beide *West-Centraal VS* en *Zuid-centraal VS* datacenters. Bij het kiezen van doelregio's voor replicatie, houd er rekening mee dat u ook hebt om op te nemen de *bron* regio bevinden als een doel voor replicatie.
+In dit voorbeeld is de afbeeldingsversie *1.0.0* en wordt deze gerepliceerd naar zowel *datacenters in West Central US* als South Central *US.* Houd er bij het kiezen van doelgebieden voor replicatie rekening mee dat u ook het *brongebied* als doel voor replicatie moet opnemen.
 
 
 ```azurepowershell-interactive
@@ -94,22 +94,22 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -asJob 
 ```
 
-Duurt het even voor het repliceren van de afbeelding op alle van de doelregio's, zodat we een taak hebt gemaakt, zodat we de voortgang kunt bijhouden. Ziet u de voortgang van de taak `$job.State`.
+Het kan even duren voordat de afbeelding wordt gerepliceerd naar alle doelregio's, dus we hebben een taak gemaakt zodat we de voortgang kunnen volgen. Als u de voortgang van `$job.State`de taak wilt zien, typt u .
 
 ```azurepowershell-interactive
 $job.State
 ```
 
 > [!NOTE]
-> U moet wachten tot de versie van de installatiekopie wordt gemaakt en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt maken van een andere versie van de installatiekopie volledig te voltooien. 
+> U moet wachten tot de afbeeldingsversie volledig is voltooid en wordt gerepliceerd voordat u dezelfde beheerde afbeelding gebruiken om een andere afbeeldingsversie te maken. 
 >
-> U kunt ook de versie van uw installatiekopie in opslaan [Zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe te voegen `-StorageAccountType Standard_ZRS` bij het maken van de versie van de installatiekopie.
+> U uw afbeeldingsversie ook opslaan `-StorageAccountType Standard_ZRS` in Zone Redundant [Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe te voegen wanneer u de afbeeldingsversie maakt.
 >
 
 
-## <a name="share-the-gallery"></a>Delen van de galerie
+## <a name="share-the-gallery"></a>De galerie delen
 
-Het is raadzaam dat u toegang tot op het niveau van de galerie installatiekopie delen. Gebruik een e-mailadres en de [Get-AzADUser](/powershell/module/az.resources/get-azaduser) cmdlet voor het ophalen van de object-ID voor de gebruiker op en gebruik [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) zodat ze toegang tot de galerie. Vervang het voorbeeld e-mailbericht, alinne_montes@contoso.com in dit voorbeeld wordt door uw eigen waarden.
+We raden u aan de toegang op het niveau van de afbeeldingsgalerie te delen. Gebruik een e-mailadres en de [cmdlet Get-AzADUser](/powershell/module/az.resources/get-azaduser) om de object-ID voor de gebruiker te krijgen en gebruik vervolgens [Nieuw-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) om ze toegang te geven tot de galerij. Vervang het voorbeeld alinne_montes@contoso.com e-mail, in dit voorbeeld, door uw eigen gegevens.
 
 ```azurepowershell-interactive
 # Get the object ID for the user

@@ -1,51 +1,51 @@
 ---
-title: Verplaats een virtueel Azure-netwerk naar een andere Azure-regio met behulp van de Azure Portal.
-description: Verplaats een virtueel Azure-netwerk van de ene Azure-regio naar een andere met behulp van een resource manager-sjabloon en de Azure Portal.
+title: Een virtueel Azure-netwerk verplaatsen naar een andere Azure-regio met behulp van de Azure-portal.
+description: Verplaats een Virtueel Azure-netwerk van de ene Azure-regio naar het andere met behulp van een Resource Manager-sjabloon en de Azure-portal.
 author: asudbring
 ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75640785"
 ---
-# <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Een virtueel Azure-netwerk verplaatsen naar een andere regio met behulp van de Azure Portal
+# <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Een virtueel Azure-netwerk verplaatsen naar een andere regio met behulp van de Azure-portal
 
-Er zijn verschillende scenario's voor het verplaatsen van een bestaand virtueel Azure-netwerk van de ene regio naar een andere. Stel dat u een virtueel netwerk met dezelfde configuratie wilt maken voor testen en beschik baarheid als uw bestaande virtuele netwerk. Het is ook mogelijk dat u een virtueel netwerk voor productie naar een andere regio wilt verplaatsen als onderdeel van de planning voor herstel na nood gevallen.
+Er zijn verschillende scenario's voor het verplaatsen van een bestaand Virtueel Azure-netwerk van de ene regio naar de andere. U bijvoorbeeld een virtueel netwerk maken met dezelfde configuratie voor testen en beschikbaarheid als uw bestaande virtuele netwerk. Of u wilt een virtueel productienetwerk verplaatsen naar een andere regio als onderdeel van uw planning voor noodherstel.
 
-U kunt een Azure Resource Manager sjabloon gebruiken om de verplaatsing van het virtuele netwerk naar een andere regio te volt ooien. Hiervoor exporteert u het virtuele netwerk naar een sjabloon, wijzigt u de para meters zodat deze overeenkomen met de doel regio en implementeert u de sjabloon vervolgens in de nieuwe regio. Voor meer informatie over Resource Manager-sjablonen raadpleegt [u Quick Start: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+U een Azure Resource Manager-sjabloon gebruiken om de verplaatsing van het virtuele netwerk naar een andere regio te voltooien. Dit doe je door het virtuele netwerk naar een sjabloon te exporteren, de parameters te wijzigen die overeenkomen met het doelgebied en vervolgens de sjabloon naar het nieuwe gebied te implementeren. Zie [Snelaande: Azure Resource Manager-sjablonen maken en implementeren met behulp van de Azure-portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)voor meer informatie over Resource Manager-sjablonen.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Zorg ervoor dat het virtuele netwerk zich in de Azure-regio bevindt waaruit u wilt verplaatsen.
+- Zorg ervoor dat uw virtuele netwerk zich in de Azure-regio bevindt waarvan u wilt overstappen.
 
-- Als u een virtueel netwerk wilt exporteren en een sjabloon wilt implementeren om een virtueel netwerk te maken in een andere regio, moet u de rol netwerk bijdrager of hoger hebben.
+- Als u een virtueel netwerk wilt exporteren en een sjabloon wilt implementeren om een virtueel netwerk in een andere regio te maken, moet u de rol Netwerkbijdrager of hoger hebben.
 
-- Peerings voor virtuele netwerken worden niet opnieuw gemaakt en mislukken als ze nog steeds in de sjabloon aanwezig zijn. Voordat u de sjabloon exporteert, moet u alle virtuele netwerk peers verwijderen. U kunt ze vervolgens opnieuw instellen nadat het virtuele netwerk is verplaatst.
+- Virtuele netwerkpeeringen worden niet opnieuw gemaakt en ze mislukken als ze nog steeds aanwezig zijn in de sjabloon. Voordat u de sjabloon exporteert, moet u virtuele netwerkpeers verwijderen. U ze vervolgens herstellen na de virtuele netwerkverplaatsing.
 
-- Identificeer de bron netwerk indeling en alle resources die u momenteel gebruikt. Deze indeling bevat, maar is niet beperkt tot load balancers, netwerk beveiligings groepen (Nsg's) en open bare Ip's.
+- Identificeer de indeling van de bronnetwerkindeling en alle bronnen die u momenteel gebruikt. Deze lay-out omvat, maar is niet beperkt tot load balancers, network security groups (NSGs) en openbare IP's.
 
-- Controleer of u met uw Azure-abonnement virtuele netwerken in de doel regio kunt maken. Neem contact op met de ondersteuning om het vereiste quotum in te scha kelen.
+- Controleer of u met uw Azure-abonnement virtuele netwerken maken in het doelgebied. Neem contact op met ondersteuning om het vereiste quotum in te schakelen.
 
-- Zorg ervoor dat uw abonnement voldoende bronnen heeft ter ondersteuning van het toevoegen van virtuele netwerken voor dit proces. Zie [Azure-abonnement en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits) voor meer informatie.
+- Zorg ervoor dat uw abonnement voldoende middelen heeft om de toevoeging van virtuele netwerken voor dit proces te ondersteunen. Zie [Azure-abonnement- en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits) voor meer informatie.
 
 
-## <a name="prepare-for-the-move"></a>Voorbereiden voor de verhuizing
-In deze sectie gaat u het virtuele netwerk voorbereiden voor de verplaatsing met behulp van een resource manager-sjabloon. U verplaatst het virtuele netwerk vervolgens naar de doel regio met behulp van de Azure Portal.
+## <a name="prepare-for-the-move"></a>Bereid je voor op de verhuizing
+In deze sectie bereidt u het virtuele netwerk voor op de verhuizing met behulp van een resourcemanagersjabloon. Vervolgens verplaatst u het virtuele netwerk naar het doelgebied met behulp van de Azure-portal.
 
-Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel netwerk te implementeren met behulp van de Azure Portal:
+Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doelnetwerk te implementeren met behulp van de Azure-portal:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer vervolgens **resource groepen**.
-1. Zoek de resource groep die het virtuele bron netwerk bevat en selecteer deze.
-1. Selecteer **instellingen** > **sjabloon exporteren**.
-1. Selecteer in het deel venster **sjabloon exporteren** de optie **implementeren**.
-1. Als u het bestand *para meters. json* in uw online editor wilt openen, selecteert u **sjabloon** > **para meters bewerken**.
-1. Als u de para meter van de naam van het virtuele netwerk wilt bewerken, wijzigt u de eigenschap **Value** onder **para meters**:
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com)en selecteer **resourcegroepen**.
+1. Zoek de brongroep die het virtuele bronnetwerk bevat en selecteer deze vervolgens.
+1. Selecteer **De** > **sjabloon Instellingen exporteren**.
+1. Selecteer **In** het deelvenster Sjabloon exporteren de optie **Implementeren**.
+1. Als u het bestand *parameters.json* wilt openen in uw online editor, selecteert u **Parameters voor sjabloonbewerken** > **Edit parameters**.
+1. Als u de parameter van de naam van het virtuele netwerk wilt bewerken, wijzigt u de **eigenschap waarde** onder **parameters:**
 
     ```json
     {
@@ -59,13 +59,13 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
     }
     ```
 
-1. Wijzig in de editor de waarde van de virtuele bron netwerk naam in de editor in een naam die u wilt instellen voor het virtuele netwerk. Zorg ervoor dat u de naam tussen aanhalings tekens plaatst.
+1. Wijzig in de editor de waarde van de bronvirtuele netwerknaam in de editor in een gewenste naam voor het virtuele doelnetwerk. Zorg ervoor dat u de naam tussen aanhalingstekens insluit.
 
 1. Selecteer **Opslaan** in de editor.
 
-1. Als u het bestand *Template. json* in de online editor wilt openen, selecteert u **sjabloon** > **sjabloon bewerken**.
+1. Als u het *bestand template.json* wilt openen in de onlineeditor, selecteert u **Sjabloon** > **bewerken .**
 
-1. Als u in de online editor de doel regio wilt bewerken waar het virtuele netwerk wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources**:
+1. In de online editor, om de doelregio te bewerken waar het virtuele netwerk wordt verplaatst, wijzigt u de **locatieeigenschap** onder **resources:**
 
     ```json
     "resources": [
@@ -85,11 +85,11 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
     ```
 
-1. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes. De code voor een regio is de naam van de regio, zonder spaties (bijvoorbeeld **Central vs** = **centralus**).
+1. Zie Azure-locaties voor het verkrijgen van [locatiecodes voor regio's.](https://azure.microsoft.com/global-infrastructure/locations/) De code voor een regio is de regionaam, zonder spaties (bijvoorbeeld **Central US** = **centralus**).
 
-1. Beschrijving U kunt ook andere para meters in de sjabloon wijzigen, afhankelijk van uw vereisten:
+1. (Optioneel) U ook andere parameters in de sjabloon wijzigen, afhankelijk van uw vereisten:
 
-    * **Adres ruimte**: voordat u het bestand opslaat, kunt u de adres ruimte van het virtuele netwerk wijzigen door de **resources** > sectie **addressSpace** te wijzigen en de eigenschap **addressPrefixes** te wijzigen:
+    * **Adresruimte:** Voordat u het bestand opslaat, u de adresruimte van het virtuele netwerk wijzigen door de sectie **resources** > **addressSpace** te wijzigen en de eigenschap **adresvoorvoegsels te** wijzigen:
 
         ```json
                 "resources": [
@@ -109,7 +109,7 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
 
         ```
 
-    * **Subnet**: u kunt wijzigen of toevoegen aan de naam van het subnet en de adres ruimte van het subnet door de sectie **subnetten** van de sjabloon te wijzigen. U kunt de naam van het subnet wijzigen door de eigenschap **name** te wijzigen. En u kunt de adres ruimte van het subnet wijzigen door de eigenschap **addressPrefix** te wijzigen:
+    * **Subnet**: U de subnetnaam en de subnetadresruimte wijzigen of toevoegen door de **subnettensectie** van de sjabloon te wijzigen. U de naam van het subnet wijzigen door de **eigenschap naam** te wijzigen. En u de subnetadresruimte wijzigen door de eigenschap **adresvoorvoegsel te** wijzigen:
 
         ```json
                 "subnets": [
@@ -140,7 +140,7 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
                 ]
         ```
 
-        Als u het adres voorvoegsel in het bestand *Template. json* wilt wijzigen, bewerkt u het op twee plaatsen: in de code in de voor gaande sectie en in het gedeelte **type** van de volgende code. Wijzig de eigenschap **addressPrefix** in de volgende code zodat deze overeenkomt met de eigenschap **addressPrefix** in de code in de voor gaande sectie.
+        Als u het adresvoorvoegsel in het *bestand template.json* wilt wijzigen, bewerkt u het op twee plaatsen: in de code in de vorige sectie en in het **tekstgedeelte** van de volgende code. Wijzig de eigenschap **adresVoorvoegsel** in de volgende code om overeen te komen met de eigenschap **adresVoorvoegsel** in de code in de vorige sectie.
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -176,38 +176,38 @@ Ga als volgt te werk om het virtuele netwerk te exporteren en het virtuele doel 
          ]
         ```
 
-1. Selecteer in de online editor **Opslaan**.
+1. Selecteer **opslaan**in de online editor .
 
-1. Als u het abonnement wilt kiezen waarin het virtuele netwerk van het doel wordt geïmplementeerd, selecteert u **basis** > **abonnement**.
+1. Als u het abonnement wilt kiezen waarbij het doelvirtuele netwerk wordt geïmplementeerd, selecteert u **Basics** > **Subscription**.
 
-1. Als u de resource groep wilt kiezen waarin het virtuele netwerk van het doel wordt geïmplementeerd, selecteert u **basis principes** > **resource groep**. 
+1. Als u de resourcegroep wilt kiezen waarin het virtuele doelnetwerk wordt geïmplementeerd, selecteert u de > **groep** **Basisresources**. 
 
-    Als u een nieuwe resource groep voor het virtuele doel netwerk wilt maken, selecteert u **nieuwe maken**. Zorg ervoor dat de naam niet hetzelfde is als de naam van de bron resource groep in het bestaande virtuele netwerk.
+    Als u een nieuwe brongroep voor het virtuele doelnetwerk wilt maken, selecteert u **Nieuw maken**. Zorg ervoor dat de naam niet hetzelfde is als de naam van de bronbrongroep in het bestaande virtuele netwerk.
 
-1. Controleer of de **basis principes** > **locatie** is ingesteld op de doel locatie waar u het virtuele netwerk wilt implementeren.
+1. Controleer of > **basislocatie** is ingesteld op de doellocatie waar u het virtuele netwerk wilt implementeren. **Basics**
 
-1. Controleer onder **instellingen**of de naam overeenkomt met de naam die u eerder hebt ingevoerd in de para meters-editor.
+1. Controleer **onder Instellingen**of de naam overeenkomt met de naam die u eerder hebt ingevoerd in de parameterseditor.
 
-1. Schakel het selectie vakje voor **waarden** in.
+1. Schakel het selectievakje **Algemene voorwaarden** in.
 
-1. Als u het virtuele doel netwerk wilt implementeren, selecteert u **kopen**.
+1. Als u het virtuele doelnetwerk wilt implementeren, selecteert u **Aankoop**.
 
-## <a name="delete-the-target-virtual-network"></a>Het virtuele netwerk van het doel verwijderen
+## <a name="delete-the-target-virtual-network"></a>Het virtuele doelnetwerk verwijderen
 
-Als u het virtuele doel netwerk wilt verwijderen, verwijdert u de resource groep die het virtuele netwerk van het doel bevat. Dit doet u als volgt:
-1. Selecteer de resource groep in het dash board Azure Portal.
-1. Selecteer boven in het deel venster **overzicht** de optie **verwijderen**.
+Als u het virtuele doelnetwerk wilt verwijderen, verwijdert u de brongroep die het virtuele doelnetwerk bevat. Dit doet u als volgt:
+1. Selecteer in het Azure-portaldashboard de brongroep.
+1. Selecteer Boven aan het deelvenster **Overzicht** de optie **Verwijderen**.
 
 ## <a name="clean-up"></a>Opruimen
 
-Als u de wijzigingen wilt door voeren en de virtuele netwerk verplaatsing wilt volt ooien, verwijdert u het virtuele bron netwerk of de resource groep. Dit doet u als volgt:
-1. Selecteer op het dash board Azure Portal het virtuele netwerk of de resource groep.
-1. Selecteer boven aan elk deel venster de optie **verwijderen**.
+Als u de wijzigingen wilt vastleggen en de virtuele netwerkverplaatsing wilt voltooien, verwijdert u het virtuele netwerk of de brongroep. Dit doet u als volgt:
+1. Selecteer in het Azure-portaldashboard de virtuele netwerk- of resourcegroep.
+1. Selecteer Boven aan elk deelvenster **Delete**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een virtueel Azure-netwerk verplaatst van de ene regio naar een andere met behulp van de Azure Portal en vervolgens de overbodige bron bronnen verwijderd. Zie voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
+In deze zelfstudie hebt u een virtueel Azure-netwerk van de ene regio naar de andere verplaatst met behulp van de Azure-portal en vervolgens de onnodige bronbronnen opgeschoond. Zie voor meer informatie over het verplaatsen van resources tussen regio's en disaster recovery in Azure:
 
 
 - [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Virtuele Azure-machines naar een andere regio verplaatsen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Azure-virtuele machines verplaatsen naar een andere regio](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

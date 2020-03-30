@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-een Azure Active Directory B2C-Tenant maken
-description: Meer informatie over het voorbereiden van het registreren van uw toepassingen door een Azure Active Directory B2C-Tenant te maken met behulp van de Azure Portal.
+title: Zelfstudie - Een Azure Active Directory B2C-tenant maken
+description: Meer informatie over het voorbereiden van uw toepassingen door een Azure Active Directory B2C-tenant te maken met behulp van de Azure-portal.
 services: B2C
 author: msmimart
 manager: celestedg
@@ -11,90 +11,90 @@ ms.date: 09/28/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c31f3c4c6688af7d2142180e8d9b7100965bad96
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186400"
 ---
-# <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Zelf studie: een Azure Active Directory B2C-Tenant maken
+# <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Zelfstudie: Een Azure Active Directory B2C-tenant maken
 
-Voordat uw toepassingen kunnen communiceren met Azure Active Directory B2C (Azure AD B2C), moeten ze zijn geregistreerd in een Tenant die u beheert.
+Voordat uw toepassingen kunnen communiceren met Azure Active Directory B2C (Azure AD B2C), moeten ze zijn geregistreerd in een tenant die u beheert.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Een Azure AD B2C-tenant maken
-> * Uw Tenant aan uw abonnement koppelen
-> * Ga naar de map met uw Azure AD B2C-Tenant
-> * Voeg de Azure AD B2C resource als **favoriet** toe aan de Azure Portal
+> * Uw huurder koppelen aan uw abonnement
+> * Overschakelen naar de map met uw Azure AD B2C-tenant
+> * De Azure AD B2C-bron toevoegen als **favoriet** in de Azure-portal
 
-In de volgende zelf studie leert u hoe u een toepassing registreert.
+Je leert hoe je een toepassing registreert in de volgende zelfstudie.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Een Azure AD B2C-tenant maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Meld u aan met een Azure-account waaraan ten minste de rol [Inzender](../role-based-access-control/built-in-roles.md) is toegewezen binnen het abonnement of een resource groep binnen het abonnement.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Meld u aan met een Azure-account dat ten minste de [rol bijdragers](../role-based-access-control/built-in-roles.md) binnen het abonnement of een brongroep binnen het abonnement heeft toegewezen.
 
-1. Selecteer de map die uw abonnement bevat.
+1. Selecteer de map met uw abonnement.
 
-    Selecteer op de werk balk Azure Portal het pictogram voor het adres van de map en het **abonnement** en selecteer vervolgens de map die uw abonnement bevat. Deze map wijkt af van de directory die uw Azure AD B2C-Tenant bevat.
+    Selecteer op de werkbalk Azure-portal het pictogram **Directory + Abonnement** en selecteer vervolgens de map met uw abonnement. Deze map is anders dan de map die uw Azure AD B2C-tenant bevat.
 
-    ![Abonnement-Tenant, adres lijst-en abonnements filter waarvoor de Tenant van het abonnement is geselecteerd](media/tutorial-create-tenant/portal-01-pick-directory.png)
+    ![Abonnementstenant, Directory + Filter van abonnement met abonnementstenant geselecteerd](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
-1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**.
-1. Zoek naar **Azure Active Directory B2C**en selecteer vervolgens **maken**.
+1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**.
+1. Zoek naar **Azure Active Directory B2C**en selecteer **Vervolgens Maken**.
 1. Selecteer **Een nieuwe Azure AD B2C-tenant maken**.
 
-    ![Maak een nieuwe Azure AD B2C-Tenant geselecteerd in Azure Portal](media/tutorial-create-tenant/portal-02-create-tenant.png)
+    ![Een nieuwe Azure AD B2C-tenant maken die is geselecteerd in Azure-portal](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
-1. Voer de **naam** van de organisatie en de **initiële domein naam**in. Selecteer het **land of de regio** (deze kan later niet worden gewijzigd) en selecteer vervolgens **maken**.
+1. Voer een **organisatienaam** en **initiële domeinnaam in**. Selecteer het **land of de regio** (het kan later niet worden gewijzigd) en selecteer Vervolgens **Maken**.
 
-    De domein naam wordt gebruikt als onderdeel van de domein naam van uw volledige Tenant. In dit voor beeld is de naam van de Tenant *contosob2c.onmicrosoft.com*:
+    De domeinnaam wordt gebruikt als onderdeel van uw volledige tenant domeinnaam. In dit voorbeeld wordt de naam van de huurder *contosob2c.onmicrosoft.com:*
 
-    ![Een Tenant formulier maken in met voorbeeld waarden in Azure Portal](media/tutorial-create-tenant/portal-03-tenant-naming.png)
+    ![Tenantformulier maken in met voorbeeldwaarden in Azure-portal](media/tutorial-create-tenant/portal-03-tenant-naming.png)
 
-1. Nadat het maken van de Tenant is voltooid, selecteert u de **nieuwe B2C-Tenant maken of een koppeling naar een bestaande Tenant koppeling aan** de bovenkant van de pagina voor het maken van de Tenant.
+1. Zodra de tenant is gemaakt, selecteert u de **koppeling Nieuwe B2C-tenant maken of Koppeling naar bestaande tenant** boven aan de tenantcreatiepagina.
 
-    ![Koppeling naar de breadcrumbnavigatie van de Tenant is gemarkeerd in Azure Portal](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
+    ![Koppelingskoppeling broodkruimelkoppeling gemarkeerd in Azure-portal](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
 
-1. Selecteer **een bestaande Azure AD B2C-Tenant koppelen aan mijn Azure-abonnement**.
+1. Selecteer **Een bestaande Azure AD B2C-tenant koppelen aan mijn Azure-abonnement**.
 
-   ![Een bestaande abonnements selectie in Azure Portal koppelen](media/tutorial-create-tenant/portal-05-link-subscription.png)
+   ![Een bestaande abonnementsselectie koppelen in Azure-portal](media/tutorial-create-tenant/portal-05-link-subscription.png)
 
-1. Selecteer de **Azure AD B2C Tenant** die u hebt gemaakt en selecteer vervolgens uw **abonnement**.
+1. Selecteer de **Azure AD B2C-tenant** die u hebt gemaakt en selecteer vervolgens uw **abonnement**.
 
-    Selecteer voor **Resourcegroep** de optie **Nieuwe maken**. Voer een **naam** in voor de resource groep die de Tenant bevat, selecteer de **locatie van de resource groep**en selecteer vervolgens **maken**.
+    Selecteer voor **Resourcegroep** de optie **Nieuwe maken**. Voer een **naam** in voor de resourcegroep die de tenant bevat, selecteer de locatie van de **resourcegroep**en selecteer **Vervolgens Maken**.
 
-    ![Formulier abonnements instellingen koppelen in Azure Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
+    ![Formulier voor abonnementsinstellingen koppelen in Azure-portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
 
-    U kunt meerdere Azure AD B2C-tenants koppelen aan één Azure-abonnement voor facturerings doeleinden.
+    U meerdere Azure AD B2C-tenants koppelen aan één Azure-abonnement voor factureringsdoeleinden.
 
-## <a name="select-your-b2c-tenant-directory"></a>Selecteer uw B2C-Tenant Directory
+## <a name="select-your-b2c-tenant-directory"></a>Selecteer uw B2C-tenantmap
 
-Als u uw nieuwe Azure AD B2C Tenant wilt gaan gebruiken, moet u overschakelen naar de map die de Tenant bevat.
+Als u uw nieuwe Azure AD B2C-tenant wilt gebruiken, moet u overschakelen naar de map die de tenant bevat.
 
-Selecteer het filter **Directory + abonnement** in het bovenste menu van de Azure Portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+Selecteer het **filter Directory + abonnement** in het bovenste menu van de Azure-portal en selecteer vervolgens de map met uw Azure AD B2C-tenant.
 
-Als u uw nieuwe Azure B2C-Tenant in de lijst niet ziet, vernieuwt u het browser venster en selecteert u vervolgens het filter voor het adres van de map en het **abonnement** in het bovenste menu.
+Als u uw nieuwe Azure B2C-tenant in de lijst eerst niet ziet, vernieuwt u uw browservenster en selecteert u het **filter directory + abonnement** opnieuw in het bovenste menu.
 
-![B2C-Tenant die de map bevat die is geselecteerd in Azure Portal](media/tutorial-create-tenant/portal-07-select-tenant-directory.png)
+![Lijst met B2C-tenant die is geselecteerd in Azure-portal](media/tutorial-create-tenant/portal-07-select-tenant-directory.png)
 
-## <a name="add-azure-ad-b2c-as-a-favorite-optional"></a>Azure AD B2C als favoriet toevoegen (optioneel)
+## <a name="add-azure-ad-b2c-as-a-favorite-optional"></a>Azure AD B2C toevoegen als favoriet (optioneel)
 
-Met deze optionele stap kunt u uw Azure AD B2C-Tenant gemakkelijker selecteren in de volgende en alle volgende zelf studies.
+Met deze optionele stap u uw Azure AD B2C-tenant gemakkelijker selecteren in de volgende en alle volgende zelfstudies.
 
-In plaats van elke keer dat u met uw Tenant wilt werken, kunt u in plaats daarvan *Azure AD B2C* in **alle services** zoeken. Vervolgens kunt u deze selecteren in de sectie **Favorieten** van het menu van de portal om snel naar uw Azure AD B2C-Tenant te bladeren.
+In plaats van te zoeken naar *Azure AD B2C* in **Alle services** elke keer dat u met uw tenant wilt werken, u in plaats daarvan de favoriet zijn voor de bron. Vervolgens u deze selecteren in de sectie **Favorieten** van het portalmenu om snel naar uw Azure AD B2C-tenant te bladeren.
 
-U hoeft deze bewerking slechts één keer uit te voeren. Voordat u deze stappen uitvoert, moet u ervoor zorgen dat u bent overgeschakeld naar de map met uw Azure AD B2C Tenant, zoals wordt beschreven in de vorige sectie, [Selecteer uw B2C-Tenant Directory](#select-your-b2c-tenant-directory).
+U hoeft deze bewerking slechts één keer uit te voeren. Voordat u deze stappen uitvoert, controleert u of u bent overgestapt naar de map met uw Azure AD B2C-tenant zoals beschreven in de vorige sectie, [Selecteer uw B2C-tenantmap](#select-your-b2c-tenant-directory).
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer in het menu Azure Portal **alle services**.
-1. In het zoekvak **alle services** zoekt u naar **Azure AD B2C**, houdt u de muis aanwijzer boven het Zoek resultaat en selecteert u vervolgens het ster pictogram in de knop info. **Azure AD B2C** nu wordt weer gegeven in de Azure portal onder **Favorieten**.
-1. Als u de positie van uw nieuwe favoriet wilt wijzigen, gaat u naar het menu Azure Portal, selecteert u **Azure AD B2C**en sleept u het omhoog of omlaag naar de gewenste positie.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer alle services in het menu **Azure-portal**.
+1. Zoek in het zoekvak **Alle services** naar Azure **AD B2C,** plaats de plaats boven het zoekresultaat en selecteer vervolgens het sterpictogram in de knopinfo. **Azure AD B2C** wordt nu weergegeven in de Azure-portal onder **Favorieten**.
+1. Als u de positie van uw nieuwe favoriet wilt wijzigen, gaat u naar het azure-portalmenu, selecteert u **Azure AD B2C**en sleept u deze omhoog of omlaag naar de gewenste positie.
 
-    ![Azure AD B2C, menu Favorieten Microsoft Azure-portal](media/tutorial-create-tenant/portal-08-b2c-favorite.png)
+    ![Azure AD B2C, menu Favorieten, Microsoft Azure-portal](media/tutorial-create-tenant/portal-08-b2c-favorite.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -102,11 +102,11 @@ In dit artikel hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Azure AD B2C-tenant maken
-> * Uw Tenant aan uw abonnement koppelen
-> * Ga naar de map met uw Azure AD B2C-Tenant
-> * Voeg de Azure AD B2C resource als **favoriet** toe aan de Azure Portal
+> * Uw huurder koppelen aan uw abonnement
+> * Overschakelen naar de map met uw Azure AD B2C-tenant
+> * De Azure AD B2C-bron toevoegen als **favoriet** in de Azure-portal
 
-Vervolgens leert u hoe u een webtoepassing in uw nieuwe Tenant kunt registreren.
+Leer vervolgens hoe u een webtoepassing registreert in uw nieuwe tenant.
 
 > [!div class="nextstepaction"]
-> [Uw toepassingen registreren >](tutorial-register-applications.md)
+> [Registreer uw sollicitaties >](tutorial-register-applications.md)

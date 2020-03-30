@@ -1,6 +1,6 @@
 ---
-title: Gegevens laden uit Office 365 met behulp van Azure Data Factory
-description: Azure Data Factory gebruiken om gegevens te kopiëren van Office 365
+title: Gegevens uit Office 365 laden met Azure Data Factory
+description: Azure Data Factory gebruiken om gegevens uit Office 365 te kopiëren
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
 ms.openlocfilehash: cd2b530375beb3e8fa1f79e004f4f1ac7fd4d0bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443912"
 ---
-# <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Gegevens laden uit Office 365 met behulp van Azure Data Factory
+# <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Gegevens uit Office 365 laden met Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Data Factory _gegevens uit Office 365 laadt in Azure Blob-opslag_. U kunt vergelijk bare stappen volgen om gegevens te kopiëren naar Azure Data Lake gen1 of Gen2. Raadpleeg het [artikel office 365-connector](connector-office-365.md) over het kopiëren van gegevens uit Office 365 in het algemeen.
+In dit artikel ziet u hoe u de _gegevensverzamelingsgegevens van Office 365 gebruiken in Azure Blob-opslag._ U vergelijkbare stappen uitvoeren om gegevens naar Azure Data Lake Gen1 of Gen2 te kopiëren. Raadpleeg het artikel over [de Office 365-connector](connector-office-365.md) over het kopiëren van gegevens uit Office 365 in het algemeen.
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer in het menu aan de linkerkant **een resource maken** > **Analytics** > **Data Factory**: 
+1. Selecteer links in het menu Een resource > **Analytics** > **Data Factory maken:** **Create a resource** 
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. Geef op de pagina **nieuw Data Factory** waarden op voor de velden die worden weer gegeven in de volgende afbeelding:
+2. Geef op de pagina **Nieuwe gegevensfabriek** waarden op voor de velden die in de volgende afbeelding worden weergegeven:
       
-   ![De pagina Nieuwe data factory](./media/load-office-365-data/new-azure-data-factory.png)
+   ![Pagina Nieuwe gegevensfactory](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als u de fout melding ' Data Factory-naam *LoadFromOffice365Demo* is niet beschikbaar ' ontvangt, voert u een andere naam in voor de Data Factory. U kunt bijvoorbeeld _**de naam**_ **LoadFromOffice365Demo**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
-    * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
-    * **Resource groep**: Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer de optie **nieuwe maken** en voer de naam van een resource groep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
-    * **Versie**: Selecteer **v2**.
-    * **Locatie**: Selecteer de locatie voor de Data Factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevens archieven die door data factory worden gebruikt, kunnen zich op andere locaties en regio's bevinden. Deze gegevens archieven bevatten Azure Data Lake Store, Azure Storage, Azure SQL Database, enzovoort.
+    * **Naam:** Voer een wereldwijd unieke naam in voor uw Azure-gegevensfabriek. Als u de fout 'Gegevensfabrieksnaam *LoadFromOffice365Demo'* ontvangt, voert u een andere naam in voor de gegevensfabriek. U bijvoorbeeld de naam _**yourname**_**LoadFromOffice365Demo**gebruiken. Probeer de gegevensfabriek opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+    * **Abonnement**: Selecteer uw Azure-abonnement waarin u de gegevensfabriek wilt maken. 
+    * **Resourcegroep:** selecteer een bestaande resourcegroep in de vervolgkeuzelijst of selecteer de optie **Nieuwe maken** en voer de naam van een resourcegroep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
+    * **Versie**: Selecteer **V2**.
+    * **Locatie**: Selecteer de locatie voor de gegevensfabriek. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslag die door gegevensfabriek worden gebruikt, kunnen zich in andere locaties en regio's bevinden. Deze gegevensopslag omvat Azure Data Lake Store, Azure Storage, Azure SQL Database, enzovoort.
 
 3. Selecteer **Maken**.
-4. Nadat het maken is voltooid, gaat u naar uw data factory. U ziet de **Data Factory** start pagina zoals wordt weer gegeven in de volgende afbeelding:
+4. Nadat de creatie is voltooid, gaat u naar uw gegevensfabriek. U ziet de startpagina **van Data Factory** zoals weergegeven in de volgende afbeelding:
    
    ![Startpagina van de gegevensfactory](./media/load-office-365-data/data-factory-home-page.png)
 
@@ -47,76 +47,76 @@ In dit artikel wordt beschreven hoe u de Data Factory _gegevens uit Office 365 l
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-1. Selecteer op de pagina aan de slag de optie **pijp lijn maken**.
+1. Selecteer op de pagina 'Laten we aan de slag' de optie **Pijplijn maken**.
  
     ![Pijplijn maken](./media/load-office-365-data/create-pipeline-entry.png)
 
-2. Voer op het **tabblad Algemeen** voor de pijp lijn ' CopyPipeline ' in voor de **naam** van de pijp lijn.
+2. Typ **op het tabblad Algemeen** voor de pijplijn 'CopyPipeline' voor **Naam** van de pijplijn.
 
-3. In het dialoog venster activiteiten > u & categorie trans formatie verplaatsen > sleept u de **Kopieer activiteit** uit de werkset naar het ontwerp oppervlak voor pijp lijnen. Geef ' CopyFromOffice365ToBlob ' op als de naam van de activiteit.
+3. In het gereedschap Activiteitenvak > categorie & transformeren > de **activiteit Kopiëren** van het gereedschapsvak naar het oppervlak van het pijplijnontwerp slepen en neerzetten. Geef 'CopyFromOffice365ToBlob' op als activiteitsnaam.
 
 ### <a name="configure-source"></a>Bron configureren
 
-1. Ga naar het tabblad pijp lijn > **bron**en klik op **+ Nieuw** om een bron-gegevensset te maken. 
+1. Ga naar het tabblad pijplijn > **Bron**, klik op **+ Nieuw** om een brongegevensset te maken. 
 
-2. Selecteer in het venster nieuwe gegevensset de optie **Office 365**en selecteer vervolgens **door gaan**.
+2. Selecteer **Office 365**in het venster Nieuwe gegevensset en selecteer **Doorgaan**.
  
-3. U bevindt zich nu op het tabblad Configuratie van de Kopieer activiteit. Klik op de knop **bewerken** naast de Office 365-gegevensset om door te gaan met de gegevens configuratie.
+3. U bevindt zich nu op het tabblad configuratie van kopieeractiviteiten. Klik op de knop **Bewerken** naast de Office 365-gegevensset om de gegevensconfiguratie voort te zetten.
 
-    ![Algemene configuratie van Office 365 gegevensset](./media/load-office-365-data/transition-to-edit-dataset.png)
+    ![Config Office 365-gegevensset algemeen](./media/load-office-365-data/transition-to-edit-dataset.png)
  
-4. Er wordt een nieuw tabblad geopend voor de gegevensset Office 365. Voer op het **tabblad Algemeen** onder aan het venster Eigenschappen ' SourceOffice365Dataset ' in bij naam.
+4. U ziet een nieuw tabblad geopend voor Office 365-gegevensset. Typ op **het tabblad Algemeen** onder aan het venster Eigenschappen 'SourceOffice365Dataset' voor Naam.
  
-5. Ga naar het **tabblad verbinding** van de venster Eigenschappen. Klik naast het tekstvak gekoppelde service op **+ Nieuw**.
+5. Ga naar het **tabblad Verbinding** van het venster Eigenschappen. Klik naast het tekstvak Gekoppelde service op **+ Nieuw**.
 
-6. Voer in het venster nieuwe gekoppelde service ' Office365LinkedService ' in als naam, voer de Service-Principal-ID en de sleutel Service-Principal in, test de verbinding en selecteer **maken** om de gekoppelde service te implementeren.
+6. Typ in het venster Nieuwe gekoppelde service 'Office365LinkedService' als naam, voer de hoofd-id en servicehoofdsleutel van de service in, test de verbinding en selecteer **Maken** om de gekoppelde service te implementeren.
 
-    ![Nieuwe gekoppelde Office 365-service](./media/load-office-365-data/new-office-365-linked-service.png)
+    ![Nieuwe office 365-gekoppelde service](./media/load-office-365-data/new-office-365-linked-service.png)
  
-7. Nadat de gekoppelde service is gemaakt, gaat u terug naar de gegevenssetinstellingen. Kies naast **tabel**de pijl-omlaag om de lijst met beschik bare Office 365-gegevens sets uit te vouwen en kies BasicDataSet_v0. Message_v0 ' in de vervolg keuzelijst:
+7. Nadat de gekoppelde service is gemaakt, gaat u terug naar de gegevenssetinstellingen. Kies naast **Tabel**de pijl-omlaag om de lijst met beschikbare Office 365-gegevenssets uit te vouwen en kies 'BasicDataSet_v0. Message_v0" uit de vervolgkeuzelijst:
 
-    ![Tabel met configuratie van Office 365-gegevensset](./media/load-office-365-data/edit-dataset.png)
+    ![Gegevensset config Office 365](./media/load-office-365-data/edit-dataset.png)
 
-8. Ga nu terug naar het tabblad **pijp lijn** > **bron** om verder te gaan met het configureren van aanvullende eigenschappen voor Office 365-gegevens extractie.  Het filter gebruikers bereik en gebruikers bereik zijn optionele predikaten die u kunt definiëren om de gegevens te beperken die u wilt uitpakken van Office 365. Zie de sectie [Eigenschappen van Office 365-gegevensset](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) voor informatie over het configureren van deze instellingen.
+8. Ga nu terug **pipeline** > naar het**tabblad Bron van** pijplijn om extra eigenschappen voor Office 365-gegevensextractie te blijven configureren.  Gebruikersbereik en gebruikersbereikfilter zijn optionele predicaten die u definiëren om de gegevens die u uit Office 365 wilt extraheren, te beperken. Zie sectie [Office 365-gegevensseteigenschappen](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) voor het configureren van deze instellingen.
 
-9. U moet een van de datum filters kiezen en de waarden voor de begin-en eind tijd opgeven.
+9. U moet een van de datumfilters kiezen en de begin- en eindtijdwaarden opgeven.
 
-10. Klik op het tabblad **schema importeren** om het schema voor bericht gegevensset te importeren.
+10. Klik op het tabblad **Schema importeren** om het schema voor de gegevensset Bericht te importeren.
 
-    ![Schema voor configuratie van Office 365-gegevensset](./media/load-office-365-data/edit-source-properties.png)
+    ![Config Office 365-gegevenssetschema](./media/load-office-365-data/edit-source-properties.png)
 
 ### <a name="configure-sink"></a>Sink configureren
 
-1. Ga naar het tabblad pijp lijn > **wastafel**en selecteer **+ Nieuw** om een Sink-gegevensset te maken.
+1. Ga naar de pijplijn > **het tabblad Sink**en selecteer + **Nieuw** om een sink-gegevensset te maken.
  
-2. In het venster nieuwe gegevensset ziet u dat alleen de ondersteunde bestemmingen worden geselecteerd bij het kopiëren van Office 365. Selecteer **Azure Blob Storage**, selecteer binaire indeling en selecteer vervolgens **door gaan**.  In deze zelf studie kopieert u Office 365-gegevens naar een Azure Blob Storage.
+2. Houd er in het venster Nieuwe gegevensset op dat alleen de ondersteunde bestemmingen worden geselecteerd bij het kopiëren vanuit Office 365. Selecteer **Azure Blob Storage,** selecteer Binaire indeling en selecteer **Doorgaan**.  In deze zelfstudie kopieert u Office 365-gegevens naar een Azure Blob-opslag.
 
-3. Klik op de knop **bewerken** naast de gegevensset van Azure Blob Storage om door te gaan met de gegevens configuratie.
+3. Klik op de knop **Bewerken** naast de azure blob-opslaggegevensset om de gegevensconfiguratie voort te zetten.
 
-4. Voer op het **tabblad Algemeen** van het venster Eigenschappen, in naam, ' OutputBlobDataset ' in.
+4. Voer **op** het tabblad Algemeen van het venster Eigenschappen in Naam de enter "OutputBlobDataset".
 
-5. Ga naar het **tabblad verbinding** van de venster Eigenschappen. Selecteer **+ Nieuw**naast het tekstvak gekoppelde service.
+5. Ga naar het **tabblad Verbinding** van het venster Eigenschappen. Klik naast het tekstvak Gekoppelde service op **+Nieuw**.
 
-6. Voer in het venster nieuwe gekoppelde service ' AzureStorageLinkedService ' in als naam, selecteer ' Service Principal ' in de vervolg keuzelijst met verificatie methoden, vul het service-eind punt, Tenant, Service-Principal-ID en Service-Principal-sleutel in en selecteer vervolgens opslaan in Implementeer de gekoppelde service.  [Hier](connector-azure-blob-storage.md#service-principal-authentication) vindt u informatie over het instellen van Service-Principal-verificatie voor Azure Blob Storage.
+6. Typ in het venster Nieuwe gekoppelde service 'AzureStorageLinkedService' als naam, selecteer 'Serviceprincipal' in de vervolgkeuzelijst met verificatiemethoden, vul het serviceeindpunt, tenant, servicehoofd-id en servicehoofdsleutel in en selecteer Opslaan in de gekoppelde service implementeren.  Raadpleeg [hier](connector-azure-blob-storage.md#service-principal-authentication) voor het instellen van serviceprincipal-verificatie voor Azure Blob Storage.
 
-    ![Nieuwe gekoppelde BLOB-service](./media/load-office-365-data/configure-blob-linked-service.png)
+    ![Nieuwe Blob-gekoppelde service](./media/load-office-365-data/configure-blob-linked-service.png)
 
 
 ## <a name="validate-the-pipeline"></a>De pijplijn valideren
 
 Selecteer in de werkbalk **Valideren** om de pijplijn te valideren.
 
-U kunt ook de JSON-code die is gekoppeld aan de pijp lijn weer geven door in de rechter bovenhoek op code te klikken.
+U ook de JSON-code zien die aan de pijplijn is gekoppeld door rechtsboven op Code te klikken.
 
 ## <a name="publish-the-pipeline"></a>De pijplijn publiceren
 
-Selecteer in de bovenste werk balk de optie **Alles publiceren**. Met deze actie publiceert u entiteiten (gegevenssets en pijplijnen) die u hebt gemaakt met Data Factory.
+Selecteer **alles publiceren**op de bovenste werkbalk . Met deze actie publiceert u entiteiten (gegevenssets en pijplijnen) die u hebt gemaakt met Data Factory.
 
 ![Wijzigingen publiceren](./media/load-office-365-data/publish-changes.png) 
 
 ## <a name="trigger-the-pipeline-manually"></a>De pijplijn handmatig activeren
 
-Selecteer **trigger toevoegen** op de werk balk en selecteer **nu activeren**. Selecteer op de pagina pijplijn uitvoering de optie **volt ooien**. 
+Selecteer **Trigger toevoegen** op de werkbalk en selecteer Nu **activeren**. Klik op de pagina Pijplijnuitvoering op **Voltooien**. 
 
 ## <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 
@@ -124,28 +124,28 @@ Ga naar het tabblad **Controleren** aan de linkerkant. U ziet een pijplijn die w
 
 ![De pijplijn bewaken](./media/load-office-365-data/pipeline-status.png) 
 
-Selecteer de koppeling **uitvoeringen van activiteit weer geven** in de kolom acties om de uitvoering van activiteiten te zien die zijn gekoppeld aan de pijplijn uitvoering. Omdat er in dit voorbeeld slechts één activiteit in de pijplijn is, ziet u slechts één vermelding in de lijst. Selecteer de koppeling **Details** (bril pictogram) in de kolom acties voor meer informatie over de Kopieer bewerking.
+Selecteer de link **Uitvoeringen van activiteit weergeven** in de kolom Acties om de activiteituitvoeringen te zien die zijn gekoppeld aan de pijplijnuitvoering. Omdat er in dit voorbeeld slechts één activiteit in de pijplijn is, ziet u slechts één vermelding in de lijst. Selecteer de link **Details** (pictogram van een bril) in de kolom Acties om details over de kopieerbewerking te zien.
 
-![Activiteit bewaken](./media/load-office-365-data/activity-status.png) 
+![Activiteit controleren](./media/load-office-365-data/activity-status.png) 
 
-Als dit de eerste keer is dat u gegevens aanvraagt voor deze context (een combi natie van welke gegevens tabel wordt geopend, met welk doel account de gegevens worden geladen en welke gebruikers-id de aanvraag voor gegevens toegang maakt), ziet u dat de status van de Kopieer activiteit wordt **uitgevoerd**, en alleen wanneer u op de koppeling Details onder acties ziet, wordt de status weer gegeven als **RequesetingConsent**.  Een lid van de groep voor het goed keuren van gegevens toegang moet de aanvraag goed keuren in de Privileged Access Management voordat de gegevens extractie kan worden voortgezet.
+Als dit de eerste keer is dat u gegevens opvraagt voor deze context (een combinatie van welke gegevenstabel wordt geopend, in welk doelaccount de gegevens worden geladen en in welke gebruikersidentiteit de aanvraag voor gegevenstoegang wordt ingediend), ziet u de status van kopieeractiviteit als **In uitvoering**en alleen wanneer u klikt op de link Details onder Acties ziet u de status als **RequesetingConsent**.  Een lid van de groep voor gegevenstoegangsmoet de aanvraag in het Privileged Access Management goedkeuren voordat de gegevensextractie kan worden voortgezet.
 
-_Status als aanvraag om toestemming:_ 
-![activiteit uitvoerings Details-aanvraag toestemming](./media/load-office-365-data/activity-details-request-consent.png) 
+_Status als het aanvragen van toestemming:_
+![Activiteit uitvoeringsgegevens - toestemming vragen](./media/load-office-365-data/activity-details-request-consent.png) 
 
-_Status als geëxtraheerde gegevens:_
+_Status als het extraheren van gegevens:_
 
-![Details van uitvoering van activiteit-gegevens ophalen](./media/load-office-365-data/activity-details-extract-data.png) 
+![Details activiteitsuitvoering - gegevens extraheren](./media/load-office-365-data/activity-details-extract-data.png) 
 
-Zodra de toestemming is gegeven, wordt de gegevens extractie voortgezet en wordt de pipeline-uitvoering na enige tijd weer gegeven als geslaagd.
+Zodra de toestemming is verstrekt, zal de gegevensextractie worden voortgezet en na enige tijd wordt de pijplijnrun weergegeven als geslaagd.
 
-![Pijp lijn bewaken-geslaagd](./media/load-office-365-data/pipeline-monitoring-succeeded.png) 
+![Pijplijn controleren - geslaagd](./media/load-office-365-data/pipeline-monitoring-succeeded.png) 
 
-Ga nu naar de doel-Azure-Blob Storage en controleer of Office 365-gegevens zijn geëxtraheerd in binaire indeling.
+Ga nu naar de bestemming Azure Blob Storage en controleer of Office 365-gegevens zijn geëxtraheerd in binaire indeling.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het volgende artikel voor meer informatie over de ondersteuning van Azure SQL Data Warehouse: 
+Ga naar het volgende artikel voor meer informatie over Azure SQL Data Warehouse-ondersteuning: 
 
 > [!div class="nextstepaction"]
 >[Office 365-connector](connector-office-365.md)

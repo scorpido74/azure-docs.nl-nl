@@ -9,114 +9,114 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673303"
 ---
-*Opwarmen van de Cache*  
-De schijf met alleen-lezentoegang opslaan in cache zijn kunnen bieden hogere IOP's dan de limiet van de schijf. Als u dit maximum leesprestaties uit de cache van de host, moet eerst u opgewarmd de cache van deze schijf. Dit zorgt ervoor dat de lezen IOs dat het hulpprogramma voor benchmarking wordt station op CacheReads volume, daadwerkelijk treffers in de cache en niet op de schijf rechtstreeks. Het resultaat van de cache treffers in extra IOP's uit de cache van één schijf ingeschakeld.
+*De cache opwarmen*  
+De schijf met ReadOnly host caching zijn in staat om hogere IOPS dan de schijf limiet te geven. Om deze maximale leesprestaties uit de hostcache te krijgen, moet u eerst de cache van deze schijf opwarmen. Dit zorgt ervoor dat de Read IOs dat de benchmarking tool zal rijden op CacheReads volume, daadwerkelijk raakt de cache, en niet de schijf direct. De cache hits resulteren in extra IOPS van de single cache enabled disk.
 
 > [!IMPORTANT]
-> U moet de cache opgewarmd voordat benchmarking, wordt uitgevoerd telkens wanneer de virtuele machine opnieuw is opgestart.
+> U moet de cache opwarmen voordat u benchmarking uitvoert, elke keer dat VM opnieuw wordt opgestart.
 
 ## <a name="tools"></a>Hulpprogramma's
 
 ### <a name="iometer"></a>Iometer
 
-[Download het hulpprogramma Iometer](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) op de virtuele machine.
+[Download het iometer-gereedschap](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) op de VM.
 
 #### <a name="test-file"></a>Testbestand
 
-Iometer maakt gebruik van een testbestand dat is opgeslagen op het volume waarop u de benchmarking test uitvoert. Deze stations leest en schrijft voor dit testbestand voor het meten van de schijf IOPS en doorvoer. Iometer wordt deze testbestand gemaakt als u deze niet hebt opgegeven. Maak een bestand voor het testen van 200 GB iobw.tst aangeroepen op de volumes CacheReads en NoCacheWrites.
+Iometer maakt gebruik van een testbestand dat is opgeslagen op het volume waarop u de benchmarkingtest uitvoert. Het station leest en schrijft op dit testbestand om de schijf IOPS en doorvoer te meten. Iometer maakt dit testbestand als u er geen hebt opgegeven. Maak een testbestand van 200 GB genaamd iobw.tst op de volumes CacheReads en NoCacheWrites.
 
-#### <a name="access-specifications"></a>Access-specificaties
+#### <a name="access-specifications"></a>Toegangsspecificaties
 
-De specificaties aanvragen i/o-grootte % lezen/schrijven, willekeurige/opeenvolgende % zijn geconfigureerd op het tabblad 'Specificaties Access' in Iometer. Maak een specificatie van de toegang voor elk van de scenario's die hieronder worden beschreven. De toegangsspecificaties maken en 'Opslaan' met een geschikte naam zoals – RandomWrites\_8 kB, RandomReads\_8 kB. Selecteer de bijbehorende specificatie bij het uitvoeren van de Testscenario.
+De specificaties, aanvraag IO-grootte, % lezen/schrijven, % random/sequential worden geconfigureerd met behulp van het tabblad "Toegangsspecificaties" in Iometer. Maak een toegangsspecificatie voor elk van de onderstaande scenario's. Maak de toegangsspecificaties en "Opslaan" met een\_toepasselijke naam\_zoals - RandomWrites 8K, RandomReads 8K. Selecteer de bijbehorende specificatie bij het uitvoeren van het testscenario.
 
-Hieronder, ziet u een voorbeeld van toegang tot de specificaties voor maximale schrijven IOP's-scenario  
-    ![Voorbeeld van toegang tot de specificaties voor de maximale IOPS voor schrijven](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
+Een voorbeeld van toegangsspecificaties voor een maximaal Write IOPS-scenario wordt hieronder weergegeven,  
+    ![Voorbeeld van toegangsspecificaties voor maximale schrijf-IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
 
-#### <a name="maximum-iops-test-specifications"></a>Maximale IOPS testen specificaties
+#### <a name="maximum-iops-test-specifications"></a>Maximale IOPS-testspecificaties
 
-Gebruiken om te demonstreren maximale IOPs, kleinere aanvraaggrootte. Aanvraaggrootte van 8 kB gebruiken en maken van de specificaties voor willekeurige schrijfbewerkingen en leesbewerkingen.
+Als u maximale IPP's wilt aantonen, gebruikt u een kleinere aanvraaggrootte. Gebruik de grootte van 8K-aanvragen en maak specificaties voor random schrijf- en leesbewerkingen.
 
-| Access-specificatie | Aanvraaggrootte | Willekeurige % | De % lezen |
+| Toegangsspecificatie | Aanvraaggrootte | Willekeurig % | Lees % |
 | --- | --- | --- | --- |
-| RandomWrites\_8 kB |8 KB |100 |0 |
-| RandomReads\_8 kB |8 KB |100 |100 |
+| RandomWrites\_8K RandomWrites 8K RandomWrites 8K RandomWrites |8 K |100 |0 |
+| RandomReads\_8K |8 K |100 |100 |
 
-#### <a name="maximum-throughput-test-specifications"></a>Maximale doorvoer test specificaties
+#### <a name="maximum-throughput-test-specifications"></a>Specificaties maximale doorvoertest
 
-Gebruiken om te demonstreren maximale doorvoer, grotere grootte van de aanvraag. Aanvraag voor de grootte van 64 kB gebruiken en maken van de specificaties voor willekeurige schrijfbewerkingen en leesbewerkingen.
+Als u maximale doorvoer wilt aantonen, gebruikt u een grotere aanvraaggrootte. Gebruik de grootte van 64 K-aanvragen en maak specificaties voor random schrijf- en leesbewerkingen.
 
-| Access-specificatie | Aanvraaggrootte | Willekeurige % | De % lezen |
+| Toegangsspecificatie | Aanvraaggrootte | Willekeurig % | Lees % |
 | --- | --- | --- | --- |
-| RandomWrites\_64 kB |64 KB |100 |0 |
-| RandomReads\_64 kB |64 KB |100 |100 |
+| RandomWrites\_64K RandomWrites 64K RandomWrites 64K RandomWrites |64 K |100 |0 |
+| RandomReads\_64K RandomReads 64K |64 K |100 |100 |
 
-#### <a name="run-the-iometer-test"></a>Voer de test Iometer
+#### <a name="run-the-iometer-test"></a>De Iometer-test uitvoeren
 
-Voer de stappen hieronder om te oefenen cache uit
+De onderstaande stappen uitvoeren om de cache op te warmen
 
-1. Twee toegangsspecificaties maken met waarden die hieronder worden weergegeven
+1. Maak twee toegangsspecificaties met onderstaande waarden,
 
-   | Name | Aanvraaggrootte | Willekeurige % | De % lezen |
+   | Name | Aanvraaggrootte | Willekeurig % | Lees % |
    | --- | --- | --- | --- |
-   | RandomWrites\_1 MB |1 MB |100 |0 |
-   | RandomReads\_1 MB |1 MB |100 |100 |
-1. Voer de test Iometer voor het initialiseren van cacheschijf met de volgende parameters. Drie werkthreads gebruiken voor het doelvolume en een wachtrijdiepte van 128. De duur 'Uitvoeringstijd' van de test ingesteld op 2 uur op het tabblad 'Testen instellen'.
+   | RandomWrites\_1MB RandomWrites |1 MB |100 |0 |
+   | RandomReads\_1MB |1 MB |100 |100 |
+1. Voer de Iometer-test uit voor het initialiseren van cacheschijf met volgende parameters. Gebruik drie werknemersthreads voor het doelvolume en een wachtrijdiepte van 128. Stel de duur van de test 'Run time' in op 2 uur op het tabblad 'Testsetup'.
 
-   | Scenario | Doelvolume | Name | Duration |
+   | Scenario | Doelvolume | Name | Duur |
    | --- | --- | --- | --- |
-   | Cacheschijf initialiseren |CacheReads |RandomWrites\_1 MB |2 uur |
-1. Voer de test Iometer voor het opwarmen van cacheschijf met de volgende parameters. Drie werkthreads gebruiken voor het doelvolume en een wachtrijdiepte van 128. De duur 'Uitvoeringstijd' van de test ingesteld op 2 uur op het tabblad 'Testen instellen'.
+   | Cacheschijf initialiseren |CacheReads |RandomWrites\_1MB RandomWrites |2 uur |
+1. Voer de Iometer-test uit voor het opwarmen van cacheschijf met de volgende parameters. Gebruik drie werknemersthreads voor het doelvolume en een wachtrijdiepte van 128. Stel de duur van de test 'Run time' in op 2 uur op het tabblad 'Testsetup'.
 
-   | Scenario | Doelvolume | Name | Duration |
+   | Scenario | Doelvolume | Name | Duur |
    | --- | --- | --- | --- |
-   | Warme van Cache-schijf |CacheReads |RandomReads\_1 MB |2 uur |
+   | Cacheschijf opwarmen |CacheReads |RandomReads\_1MB |2 uur |
 
-Nadat de cacheschijf is opgewarmd, gaat u verder met de test-scenario's die hieronder worden vermeld. Als u wilt de Iometer test uitvoert, gebruikt u ten minste drie werkthreads voor **elke** volume als doel. Voor elke werkthread, selecteert u het doelvolume, wachtrijdiepte ingesteld en selecteert u een van de specificaties opgeslagen test, zoals wordt weergegeven in de onderstaande tabel, om uit te voeren van het bijbehorende Testscenario. De tabel toont ook verwachte resultaten voor IOPS en doorvoer bij het uitvoeren van deze tests. Voor alle scenario's, wordt een kleine i/o-grootte van 8 KB en een hoge wachtrijdiepte van 128 gebruikt.
+Nadat de cacheschijf is opgewarmd, gaat u verder met de onderstaande testscenario's. Als u de Iometer-test wilt uitvoeren, gebruikt u ten minste drie werknemersthreads voor **elk** doelvolume. Selecteer voor elke werkdraad het doelvolume, stel wachtrijdiepte in en selecteer een van de opgeslagen testspecificaties, zoals in de onderstaande tabel, om het bijbehorende testscenario uit te voeren. De tabel toont ook verwachte resultaten voor IOPS en Doorvoer bij het uitvoeren van deze tests. Voor alle scenario's wordt een kleine IO-grootte van 8 KB en een hoge wachtrijdiepte van 128 gebruikt.
 
 | Testscenario | Doelvolume | Name | Resultaat |
 | --- | --- | --- | --- |
-| Met maximaal Gelezen IOP 's |CacheReads |RandomWrites\_8 kB |MAAR LIEFST 50.000 IOPS |
-| Met maximaal IOPS-schrijfbewerkingen |NoCacheWrites |RandomReads\_8 kB |MAAR LIEFST 64.000 IOPS |
-| Met maximaal Gecombineerde IOPS |CacheReads |RandomWrites\_8 kB |100.000 IOPS |
-| NoCacheWrites |RandomReads\_8 kB | &nbsp; | &nbsp; |
-| Met maximaal Read MB/sec |CacheReads |RandomWrites\_64 kB |524 MB/sec |
-| Met maximaal MB per seconde schrijven |NoCacheWrites |RandomReads\_64 kB |524 MB/sec |
-| Gecombineerde MB per seconde |CacheReads |RandomWrites\_64 kB |1000 MB per seconde |
-| NoCacheWrites |RandomReads\_64 kB | &nbsp; | &nbsp; |
+| Met maximaal IOPS lezen |CacheReads |RandomWrites\_8K RandomWrites 8K RandomWrites 8K RandomWrites |50.000 IOPS |
+| Met maximaal IOPS schrijven |NoCacheWrites NoCacheWrites NoCacheWrites NoCache |RandomReads\_8K |64.000 IOPS |
+| Met maximaal Gecombineerde IOPS |CacheReads |RandomWrites\_8K RandomWrites 8K RandomWrites 8K RandomWrites |100.000 IOPS |
+| NoCacheWrites NoCacheWrites NoCacheWrites NoCache |RandomReads\_8K | &nbsp; | &nbsp; |
+| Met maximaal MB/sec lezen |CacheReads |RandomWrites\_64K RandomWrites 64K RandomWrites 64K RandomWrites |524 MB/s |
+| Met maximaal MB/sec schrijven |NoCacheWrites NoCacheWrites NoCacheWrites NoCache |RandomReads\_64K RandomReads 64K |524 MB/s |
+| Gecombineerde MB/sec |CacheReads |RandomWrites\_64K RandomWrites 64K RandomWrites 64K RandomWrites |1000 MB/s |
+| NoCacheWrites NoCacheWrites NoCacheWrites NoCache |RandomReads\_64K RandomReads 64K | &nbsp; | &nbsp; |
 
-Hieronder ziet u schermafbeeldingen van de Iometer testresultaten voor gecombineerde scenario's voor IOPS en doorvoer.
+Hieronder vindt u screenshots van de Iometer-testresultaten voor gecombineerde IOPS- en Doorvoerscenario's.
 
-#### <a name="combined-reads-and-writes-maximum-iops"></a>Gecombineerd leest en schrijft de maximale IOPS
+#### <a name="combined-reads-and-writes-maximum-iops"></a>Gecombineerd leest en schrijft maximale IOPS
 
-![Gecombineerde lees- en schrijfbewerkingen maximale IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
+![Gecombineerd leest en schrijft maximale IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
 
-#### <a name="combined-reads-and-writes-maximum-throughput"></a>Gecombineerd leest en schrijft de maximale doorvoer
+#### <a name="combined-reads-and-writes-maximum-throughput"></a>Gecombineerde leest en schrijft maximale doorvoer
 
-![Gecombineerde lees- en schrijfbewerkingen maximale doorvoer](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
+![Gecombineerde lees- en schrijfsnelheid Maximale doorvoer](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
 
 ### <a name="fio"></a>FIO
 
-FIO is een populair hulpprogramma naar een benchmark-opslag op de virtuele Linux-machines. Deze heeft de flexibiliteit om te selecteren van verschillende i/o-grootte, sequentiële of willekeurige leest en schrijft. Deze gestart werkthreads of processen de opgegeven i/o-bewerkingen uit te voeren. U kunt het type van de i/o-bewerkingen die elke werkthread moet uitvoeren met behulp van de taakbestanden opgeven. We één taakbestand per scenario is geïllustreerd in de onderstaande voorbeelden hebt gemaakt. U kunt de specificaties van deze taakbestanden benchmark-test uitvoeren verschillende werkbelastingen die worden uitgevoerd op Premium Storage kunt wijzigen. In de voorbeelden gebruiken we een Standard DS-14 VM die wordt uitgevoerd **Ubuntu**. Gebruik dezelfde instellingen wordt beschreven in het begin van de sectie Benchmarking en warme van de cache voordat u de benchmarking tests uitvoert.
+FIO is een populaire tool om opslag op de Linux VM's te benchmarken. Het heeft de flexibiliteit om verschillende IO-formaten te selecteren, sequentiële of willekeurige leest en schrijft. Het spawnt worker threads of processen om de opgegeven I/O-bewerkingen uit te voeren. U het type I/O-bewerkingen opgeven dat elke werknemersthread moet uitvoeren met behulp van taakbestanden. We hebben één taakbestand per scenario gemaakt dat wordt geïllustreerd in de onderstaande voorbeelden. U de specificaties in deze taakbestanden wijzigen om verschillende workloads te benchmarken die worden uitgevoerd op Premium Storage. In de voorbeelden gebruiken we een Standaard DS 14 VM met **Ubuntu**. Gebruik dezelfde setup beschreven in het begin van de benchmarking sectie en warm de cache op voordat u de benchmarkingtests uitvoert.
 
-Voordat u begint, [FIO downloaden](https://github.com/axboe/fio) en installeer deze op uw virtuele machine.
+Voordat u begint, [download t/m FIO](https://github.com/axboe/fio) en installeer deze op uw virtuele machine.
 
-Voer de volgende opdracht uit voor Ubuntu,
+Voer de volgende opdracht voor Ubuntu uit,
 
 ```
 apt-get install fio
 ```
 
-We gebruiken de vier werkthreads voor het aansturen van schrijfbewerkingen en vier werkthreads voor sparen leesbewerkingen op de schijven. De werknemers schrijven verantwoordelijk zijn voor verkeer op het volume "nocache", die 10-schijven met cache ingesteld op 'None'. De werknemers lezen verantwoordelijk zijn voor verkeer op het volume "readcache", die beschikt over een schijf met de cache is ingesteld op 'Alleen-lezen'.
+We gebruiken vier werknemersthreads voor het aansturen van Schrijfbewerkingen en vier werknemersthreads voor het aansturen van Leesbewerkingen op de schijven. De Write-werknemers genereren het verkeer op het "nocache"-volume, dat 10 schijven heeft met cache ingesteld op 'Geen'. De Read-werknemers genereren het verkeer op het leescache-volume, dat één schijf heeft met cache ingesteld op "ReadOnly".
 
-#### <a name="maximum-write-iops"></a>Maximale IOPS voor schrijven
+#### <a name="maximum-write-iops"></a>Maximaal schrijven IOPS
 
-De taakbestand maken met de volgende specificaties om op te halen van de maximale IOPS voor schrijven. Geef het de naam 'fiowrite.ini'.
+Maak het taakbestand met de volgende specificaties om maximale Schrijf IOPS te krijgen. Noem het "fiowrite.ini".
 
 ```ini
 [global]
@@ -140,24 +140,24 @@ rw=randwrite
 directory=/mnt/nocache
 ```
 
-Houd er rekening mee de volgen belangrijke dingen die in overeenstemming met de richtlijnen voor het ontwerpen in de vorige secties besproken. Deze specificaties zijn essentieel om het maximum aantal IOP's, te stimuleren  
+Let op de follow key things die in overeenstemming zijn met de ontwerprichtlijnen die in eerdere secties zijn besproken. Deze specificaties zijn essentieel om maximaal IOPS te rijden,  
 
-* Een hoge wachtrijdiepte van 256.  
+* Een hoge rijdiepte van 256.  
 * Een kleine blokgrootte van 8 KB.  
-* Meerdere threads uitvoeren van willekeurige schrijfbewerkingen.
+* Meerdere threads die willekeurige schrijft.
 
-De volgende opdracht om te worden gehouden, trappen af de FIO test gedurende 30 seconden  
+Voer de volgende opdracht uit om de FIO-test gedurende 30 seconden af te trappen,  
 
 ```
 sudo fio --runtime 30 fiowrite.ini
 ```
 
-Tijdens de test wordt uitgevoerd, bent u kan het aantal schrijven IOP's van de virtuele machine en het leveren van Premium-schijven. Zoals u in het onderstaande voorbeeld, levert de DS14-virtuele machine de maximale IOPS-limiet van maar liefst 50.000 IOPS-schrijven.  
-    ![Aantal IOPS VM- en Premium-schijven leveren](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+Terwijl de test wordt uitgevoerd, u het aantal schrijf-IOPS zien dat de VM- en Premium-schijven leveren. Zoals in het onderstaande voorbeeld wordt weergegeven, levert de DS14 VM zijn maximale schrijf-IOPS-limiet van 50.000 IOPS.  
+    ![Aantal schrijf-IOPS VM- en Premium-schijven levert](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
-#### <a name="maximum-read-iops"></a>Maximum aantal IOP's lezen
+#### <a name="maximum-read-iops"></a>Maximaal gelezen IOPS
 
-De taakbestand maken met de volgende specificaties om op te halen van de maximale IOPS voor lezen. Geef het de naam 'fioread.ini'.
+Maak het taakbestand met de volgende specificaties om maximaal Lees-IOPS te krijgen. Noem het "fioread.ini".
 
 ```ini
 [global]
@@ -181,24 +181,24 @@ rw=randread
 directory=/mnt/readcache
 ```
 
-Houd er rekening mee de volgen belangrijke dingen die in overeenstemming met de richtlijnen voor het ontwerpen in de vorige secties besproken. Deze specificaties zijn essentieel om het maximum aantal IOP's, te stimuleren
+Let op de follow key things die in overeenstemming zijn met de ontwerprichtlijnen die in eerdere secties zijn besproken. Deze specificaties zijn essentieel om maximaal IOPS te rijden,
 
-* Een hoge wachtrijdiepte van 256.  
+* Een hoge rijdiepte van 256.  
 * Een kleine blokgrootte van 8 KB.  
-* Meerdere threads uitvoeren van willekeurige schrijfbewerkingen.
+* Meerdere threads die willekeurige schrijft.
 
-De volgende opdracht om te worden gehouden, trappen af de FIO test gedurende 30 seconden
+Voer de volgende opdracht uit om de FIO-test gedurende 30 seconden af te trappen,
 
 ```
 sudo fio --runtime 30 fioread.ini
 ```
 
-Tijdens de test wordt uitgevoerd, bent u kan het aantal gelezen IOP's van de virtuele machine en het leveren van Premium-schijven. Zoals weergegeven in het voorbeeld hieronder ziet, is de DS14-virtuele machine het leveren van meer dan 64.000 IOPS voor lezen. Dit is een combinatie van de schijf en de prestaties van de cache.  
+Terwijl de test wordt uitgevoerd, u het aantal gelezen IOPS zien dat de VM- en Premium-schijven leveren. Zoals in het onderstaande voorbeeld wordt weergegeven, levert de DS14 VM meer dan 64.000 Read IOPS. Dit is een combinatie van de schijf en de cacheprestaties.  
     ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
-#### <a name="maximum-read-and-write-iops"></a>Maximale lezen en schrijven IOP 's
+#### <a name="maximum-read-and-write-iops"></a>Maximaal lezen en schrijven IOPS
 
-De taakbestand maken met de volgende specificaties om op te halen maximale gecombineerde lezen en schrijven IOP's. Geef het de naam 'fioreadwrite.ini'.
+Maak het taakbestand met de volgende specificaties om maximaal gecombineerde IOPS lezen en schrijven te krijgen. Noem het "fioreadwrite.ini".
 
 ```ini
 [global]
@@ -239,21 +239,21 @@ directory=/mnt/nocache
 rate_iops=12500
 ```
 
-Houd er rekening mee de volgen belangrijke dingen die in overeenstemming met de richtlijnen voor het ontwerpen in de vorige secties besproken. Deze specificaties zijn essentieel om het maximum aantal IOP's, te stimuleren
+Let op de follow key things die in overeenstemming zijn met de ontwerprichtlijnen die in eerdere secties zijn besproken. Deze specificaties zijn essentieel om maximaal IOPS te rijden,
 
-* Een hoge wachtrijdiepte van 128.  
+* Een hoge rijdiepte van 128.  
 * Een kleine blokgrootte van 4 KB.  
-* Meerdere threads uitvoeren van willekeurige leest en schrijft.
+* Meerdere threads die willekeurige leest en schrijft.
 
-De volgende opdracht om te worden gehouden, trappen af de FIO test gedurende 30 seconden
+Voer de volgende opdracht uit om de FIO-test gedurende 30 seconden af te trappen,
 
 ```
 sudo fio --runtime 30 fioreadwrite.ini
 ```
 
-Tijdens de test wordt uitgevoerd, u kunt zien hoeveel gecombineerde lezen en schrijven IOP's van de virtuele machine en leveren van Premium-schijven. Zoals wordt weergegeven in het onderstaande voorbeeld, de DS14-virtuele machine is het leveren van meer dan 100.000 gecombineerde lezen en schrijven IOP's. Dit is een combinatie van de schijf en de prestaties van de cache.  
-    ![Gecombineerde lezen en schrijven IOP 's](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
+Terwijl de test wordt uitgevoerd, u het aantal gecombineerde lees- en schrijf-IOPS zien dat de VM- en Premium-schijven leveren. Zoals in het onderstaande voorbeeld wordt weergegeven, levert de DS14 VM meer dan 100.000 gecombineerde Lees- en Schrijf-IOPS. Dit is een combinatie van de schijf en de cacheprestaties.  
+    ![Gecombineerde lezen en schrijven IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
 
 #### <a name="maximum-combined-throughput"></a>Maximale gecombineerde doorvoer
 
-Als u de maximale gecombineerde lezen en schrijven doorvoer, gebruikt u een groter blok en grote wachtrijdiepte met meerdere threads uitvoeren van lees- en schrijfbewerkingen. U kunt een blokgrootte van 64 KB en wachtrijdiepte van 128.
+Gebruik een grotere blokgrootte en grote wachtrijdiepte met meerdere threads die lees- en schrijfbewerkingen uitvoeren om de maximale gecombineerde lees- en schrijfdoorvoer te krijgen. U een blokgrootte van 64 KB en wachtrijdiepte van 128 gebruiken.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 17b015b2e65875f08fb9607e6d7f03c528e6b20c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176464"
 ---
-In Azure DevTest Labs kunnen aangepaste installatiekopieën u snel virtuele machines maken zonder te wachten op de vereiste software worden geïnstalleerd op de doelcomputer. Aangepaste installatiekopieën kunnen u de software die u nodig hebt in een VHD-bestand voorafgaand aan installatie en vervolgens het VHD-bestand gebruiken om een virtuele machine. Omdat de software al is geïnstalleerd, wordt de aanmaaktijd van de virtuele machine is veel sneller. Bovendien aangepaste installatiekopieën kunnen worden gebruikt om virtuele machines door een aangepaste installatiekopie maken van een virtuele machine klonen en vervolgens het maken van virtuele machines op basis van die aangepaste installatiekopie.
+In Azure DevTest Labs u met aangepaste afbeeldingen snel VM's maken zonder te wachten tot alle benodigde software op de doelmachine is geïnstalleerd. Met aangepaste afbeeldingen u alle software die u nodig hebt in een VHD-bestand vooraf installeren en vervolgens het VHD-bestand gebruiken om een VM te maken. Omdat de software al is geïnstalleerd, is de VM-creatietijd veel sneller. Bovendien kunnen aangepaste afbeeldingen worden gebruikt om VM's te klonen door een aangepaste afbeelding van een VM te maken en vervolgens VM's te maken op basis van die aangepaste afbeelding.

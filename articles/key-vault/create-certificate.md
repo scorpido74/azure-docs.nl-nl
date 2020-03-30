@@ -11,55 +11,55 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: c27cde85952ca6d982accddad59eceae76e3f1e8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194454"
 ---
 # <a name="certificate-creation-methods"></a>Methoden voor het maken van certificaten
 
- Een Key Vault-certificaat (KV) kan worden gemaakt of geïmporteerd in een sleutel kluis. Wanneer een KV-certificaat wordt gemaakt, wordt de persoonlijke sleutel gemaakt in de sleutel kluis en nooit weer gegeven aan de eigenaar van het certificaat. U kunt op de volgende manieren een certificaat maken in Key Vault:  
+ Een KV-certificaat (Key Vault) kan worden gemaakt of geïmporteerd in een sleutelkluis. Wanneer een KV-certificaat wordt gemaakt, wordt de privésleutel gemaakt in de sleutelkluis en nooit blootgesteld aan de eigenaar van het certificaat. Hieronder volgen manieren om een certificaat te maken in Key Vault:  
 
--   **Een zelfondertekend certificaat maken:** Hiermee maakt u een openbaar-persoonlijk sleutel paar en koppelt u het aan een certificaat. Het certificaat wordt door een eigen sleutel ondertekend.  
+-   **Een zelfondertekend certificaat maken:** Hierdoor wordt een publiek-private sleutelpaar gemaakt en wordt het gekoppeld aan een certificaat. Het certificaat wordt ondertekend door zijn eigen sleutel.  
 
--    **Hand matig een nieuw certificaat maken:** Hiermee maakt u een openbaar-persoonlijk sleutel paar en genereert u een X. 509-aanvraag voor certificaat ondertekening. De handtekening aanvraag kan worden ondertekend door uw registratie-instantie of certificerings instantie. Het ondertekende x509-certificaat kan worden samengevoegd met het sleutel paar in behandeling om het KV-certificaat in Key Vault te volt ooien. Hoewel deze methode meer stappen vereist, biedt dit u een betere beveiliging omdat de persoonlijke sleutel wordt gemaakt in en beperkt tot Key Vault. Dit wordt uitgelegd in het onderstaande diagram.  
+-    **Handmatig een nieuw certificaat maken:** Hierdoor wordt een publiek-private sleutelpaar gemaakt en wordt een x.509-certificaatondertekeningsaanvraag gegenereerd. De ondertekeningsaanvraag kan worden ondertekend door uw registratieautoriteit of certificeringsinstantie. Het ondertekende x509-certificaat kan worden samengevoegd met het in behandeling zijnde sleutelpaar om het KV-certificaat in Key Vault te voltooien. Hoewel deze methode meer stappen vereist, biedt het u meer beveiliging omdat de privésleutel is gemaakt en beperkt tot Key Vault. Dit wordt uitgelegd in het onderstaande diagram.  
 
-![Een certificaat maken met uw eigen certificerings instantie](media/certificate-authority-1.png)  
+![Een certificaat maken met uw eigen certificaatautoriteit](media/certificate-authority-1.png)  
 
-De volgende beschrijvingen komen overeen met de groene letterlijke stappen in het voor gaande diagram.
+De volgende beschrijvingen komen overeen met de groene letters in het voorgaande diagram.
 
-1. In het bovenstaande diagram maakt uw toepassing een certificaat dat intern begint met het maken van een sleutel in uw sleutel kluis.
-2. Key Vault keert terug naar uw toepassing een aanvraag voor certificaat ondertekening (CSR)
-3. Uw toepassing stuurt de CSR door naar de gekozen certificerings instantie.
-4. De gekozen certificerings instantie reageert met een x509-certificaat.
-5. Uw toepassing heeft het maken van het nieuwe certificaat voltooid met een fusie van het x509-certificaat van uw certificerings instantie.
+1. In het bovenstaande diagram maakt uw toepassing een certificaat dat intern begint met het maken van een sleutel in uw sleutelkluis.
+2. Key Vault retourneert een Certificaatondertekeningsaanvraag (CSR) naar uw aanvraag
+3. Uw toepassing stuurt de CSR door naar de gekozen certificeringsinstantie.
+4. De door u gekozen CA reageert met een X509-certificaat.
+5. Uw aanvraag voltooit de nieuwe certificaatcreatie met een fusie van het X509-certificaat van uw CA.
 
--   **Een certificaat maken met een bekende verlener:** Voor deze methode moet u een eenmalige taak uitvoeren om een object van de verlener te maken. Zodra een object met de naam van de certificaat verlener in de sleutel kluis is gemaakt, kan in het beleid van het KV-certificaat worden verwezen naar de namen. Een aanvraag om een dergelijk KV-certificaat te maken, maakt een sleutel paar in de kluis en communiceert met de provider service van de verlener met behulp van de informatie in het verleners object waarnaar wordt verwezen om een x509-certificaat op te halen. Het x509-certificaat wordt opgehaald van de verlener-service en wordt samengevoegd met het sleutel paar om het KV-certificaat te kunnen maken.  
+-   **Maak een certificaat met een bekende uitgeverprovider:** Voor deze methode moet u een eenmalige taak uitvoeren bij het maken van een object voor een uitgever. Zodra een emittentobject in de sleutelkluis in u is gemaakt, kan de naam ervan worden vermeld in het beleid van het KV-certificaat. Een verzoek om een dergelijk KV-certificaat te maken, maakt een sleutelpaar in de kluis en communiceert met de service van de uitgever met behulp van de informatie in het object waarnaar wordt verwezen om een x509-certificaat te krijgen. Het x509-certificaat wordt opgehaald uit de emittentservice en wordt samengevoegd met het sleutelpaar om het maken van het KV-certificaat te voltooien.  
 
-![Een certificaat maken met een certificerings instantie voor een Key Vault partner](media/certificate-authority-2.png)  
+![Een certificaat maken met een key vault-partnercertificaatautoriteit](media/certificate-authority-2.png)  
 
-De volgende beschrijvingen komen overeen met de groene letterlijke stappen in het voor gaande diagram.
+De volgende beschrijvingen komen overeen met de groene letters in het voorgaande diagram.
 
-1. In het bovenstaande diagram maakt uw toepassing een certificaat dat intern begint met het maken van een sleutel in uw sleutel kluis.
-2. Key Vault verzendt een TLS/SSL-certificaat aanvraag naar de certificerings instantie.
-3. Uw toepassings polls, in een lus en wacht proces, voor uw Key Vault voor het volt ooien van het certificaat. Het maken van het certificaat is voltooid wanneer Key Vault de reactie van de certificerings instantie met x509-certificaat ontvangt.
-4. De CA reageert op de TLS/SSL-certificaat aanvraag van Key Vault met een TLS/SSL X. 509-certificaat.
-5. Het nieuwe certificaat is gemaakt met de fusie van het TLS/SSL X. 509-certificaat voor de CA.
+1. In het bovenstaande diagram maakt uw toepassing een certificaat dat intern begint met het maken van een sleutel in uw sleutelkluis.
+2. Key Vault stuurt een TLS/SSL-certificaataanvraag naar de CA.
+3. Uw toepassing bevraagt, in een proces van lussen en wachten, uw Key Vault voor het voltooien van het certificaat. Het maken van het certificaat is voltooid wanneer Key Vault de reactie van de certificeringsinstantie met x509-certificaat ontvangt.
+4. De CA reageert op de TLS/SSL-certificaataanvraag van Key Vault met een TLS/SSL X.509-certificaat.
+5. Het maken van uw nieuwe certificaat wordt voltooid met de fusie van het TLS/SSL X.509-certificaat voor de CA.
 
-## <a name="asynchronous-process"></a>Asynchroon proces
-Het maken van een KV-certificaat is een asynchroon proces. Met deze bewerking wordt een KV-certificaat aanvraag gemaakt en wordt een HTTP-status code van 202 (geaccepteerd) geretourneerd. De status van de aanvraag kan worden gevolgd door te pollen van het object dat in behandeling is gemaakt door deze bewerking. De volledige URI van het in behandeling zijnde object wordt geretourneerd in de locatie-header.  
+## <a name="asynchronous-process"></a>Asynchrone proces
+Het maken van KV-certificaten is een asynchrone procedure. Met deze bewerking wordt een KV-certificaataanvraag gemaakt en wordt een http-statuscode van 202 (Geaccepteerd) teruggekeerd. De status van de aanvraag kan worden bijgehouden door het object in behandeling te peilen dat door deze bewerking is gemaakt. De volledige URI van het in behandeling zijnde object wordt geretourneerd in de koptekst LOCATIE.  
 
-Wanneer een aanvraag voor het maken van een KV-certificaat is voltooid, wordt de status van het object in behandeling gewijzigd in ' voltooid ' van ' InProgress ' en wordt er een nieuwe versie van het KV-certificaat gemaakt. Dit wordt de huidige versie.  
+Wanneer een aanvraag voor het maken van een KV-certificaat is voltooid, wordt de status van het in behandeling zijnde object gewijzigd in 'voltooid' van 'inprogress' en wordt een nieuwe versie van het KV-certificaat gemaakt. Dit wordt de huidige versie.  
 
-## <a name="first-creation"></a>Eerst maken
- Wanneer er voor de eerste keer een KV-certificaat wordt gemaakt, wordt er ook een adresseer bare sleutel en een geheim gemaakt met dezelfde naam als die van het certificaat. Als de naam al in gebruik is, mislukt de bewerking met de HTTP-status code 409 (conflict).
-De adresseer bare sleutel en het geheim ontvangen hun kenmerken van de kenmerken van het KV-certificaat. De adresseer bare sleutel en het geheim die op deze manier zijn gemaakt, zijn gemarkeerd als beheerde sleutels en geheimen, waarvan de levens duur wordt beheerd door Key Vault. Beheerde sleutels en geheimen hebben het kenmerk alleen-lezen. Opmerking: als een KV-certificaat verloopt of is uitgeschakeld, worden de bijbehorende sleutel en het betreffende geheim niet meer bruikbaar.  
+## <a name="first-creation"></a>Eerste creatie
+ Wanneer voor het eerst een KV-certificaat wordt gemaakt, wordt ook een adresseerbare sleutel en geheim gemaakt met dezelfde naam als die van het certificaat. Als de naam al in gebruik is, mislukt de bewerking met een http-statuscode van 409 (conflict).
+De adresseerbare sleutel en het geheim halen hun kenmerken uit de KV-certificaatkenmerken. De adresseerbare sleutel en het geheim die op deze manier zijn gemaakt, worden gemarkeerd als beheerde sleutels en geheimen, waarvan de levensduur wordt beheerd door Key Vault. Beheerde sleutels en geheimen zijn alleen-lezen. Opmerking: Als een KV-certificaat verloopt of is uitgeschakeld, worden de bijbehorende sleutel en het bijbehorende geheim onbruikbaar.  
 
- Als dit de eerste bewerking is voor het maken van een KV-certificaat, is een beleid vereist.  U kunt ook een beleid opgeven bij opeenvolgende Create-bewerkingen om de beleids bron te vervangen. Als er geen beleid is opgegeven, wordt de beleids bron voor de service gebruikt om een volgende versie van het KV-certificaat te maken. Houd er rekening mee dat wanneer een aanvraag voor het maken van een volgende versie wordt uitgevoerd, het huidige KV-certificaat en de bijbehorende adresseer bare sleutel en geheim, ongewijzigd blijven.  
+ Als dit de eerste bewerking is die een KV-certificaat maakt, is een beleid vereist.  Een beleid kan ook worden geleverd met opeenvolgende bewerkingen maken ter vervanging van de beleidsbron. Als een beleid niet wordt geleverd, wordt de beleidsbron voor de service gebruikt om een volgende versie van het KV-certificaat te maken. Houd er rekening mee dat terwijl een aanvraag om een volgende versie te maken wordt uitgevoerd, het huidige KV-certificaat en de bijbehorende adresseerbare sleutel en geheim ongewijzigd blijven.  
 
-## <a name="self-issued-certificate"></a>Zelf-verleend certificaat
- Als u een zelf-verleend certificaat wilt maken, stelt u de naam van de verlener in het certificaat beleid in, zoals wordt weer gegeven in het volgende code fragment van het certificaat beleid.  
+## <a name="self-issued-certificate"></a>Zelf uitgegeven certificaat
+ Als u een zelfuitgegeven certificaat wilt maken, stelt u de naam van de uitgever in als 'Zelf' in het certificaatbeleid zoals weergegeven in het volgende fragment van het certificaatbeleid.  
 
 ```  
 "issuer": {  
@@ -68,7 +68,7 @@ De adresseer bare sleutel en het geheim ontvangen hun kenmerken van de kenmerken
 
 ```  
 
- Als de naam van de certificaat verlener niet is opgegeven, wordt de naam van de verlener ingesteld op ' onbekend '. Wanneer de verlener ' onbekend ' is, moet de eigenaar van het certificaat hand matig een x509-certificaat van de verlener van zijn/haar keuze ophalen en vervolgens het open bare x509-certificaat samen voegen met het sleutel kluis certificaat dat in behandeling is om het maken van het certificaat te volt ooien.
+ Als de naam van de uitgever niet is opgegeven, wordt de naam van de uitgever ingesteld op 'Onbekend'. Wanneer de uitgever "Onbekend" is, moet de certificaateigenaar handmatig een x509-certificaat van de uitgever van zijn/haar keuze krijgen en vervolgens het openbare x509-certificaat samenvoegen met het sleutelkluiscertificaat in behandeling om het certificaat te maken.
 
 ```  
 "issuer": {  
@@ -77,19 +77,19 @@ De adresseer bare sleutel en het geheim ontvangen hun kenmerken van de kenmerken
 
 ```  
 
-## <a name="partnered-ca-providers"></a>Certificerings instanties van de partner
-Het maken van een certificaat kan hand matig worden voltooid of met een ' zelf-' verlener. Key Vault ook partners met bepaalde aanbieders van uitgevers om het maken van certificaten te vereenvoudigen. De volgende typen certificaten kunnen worden besteld voor sleutel kluis met deze partner Issuer-providers.  
+## <a name="partnered-ca-providers"></a>Samenwerkende CA-providers
+Het maken van certificaten kan handmatig worden voltooid of met behulp van een "Self"-uitgever. Key Vault werkt ook samen met bepaalde emittentproviders om het maken van certificaten te vereenvoudigen. De volgende soorten certificaten kunnen worden besteld voor sleutelkluis bij deze aanbieders van partneruitgevers.  
 
-|Provider|Certificaat type|  
+|Provider|Certificaattype|  
 |--------------|----------------------|  
-|DigiCert|Key Vault biedt OV-of EV SSL-certificaten met DigiCert|
-|GlobalSign|Key Vault biedt OV-of EV SSL-certificaten met GlobalSign|
+|DigiCert|Key Vault biedt OV- of EV SSL-certificaten met DigiCert|
+|GlobalSign|Key Vault biedt OV- of EV SSL-certificaten met GlobalSign|
 
- Een certificaat Uitgever is een entiteit die wordt weer gegeven in Azure Key Vault (KV) als een CertificateIssuer-resource. Het wordt gebruikt om informatie op te geven over de bron van een KV-certificaat; naam van de verlener, provider, referenties en andere administratieve gegevens.
+ Een certificaatuitgever is een entiteit die in Azure Key Vault (KV) wordt vertegenwoordigd als een Bron van CertificateIssuer. Het wordt gebruikt om informatie te verstrekken over de bron van een KV-certificaat; naam van de uitgever, provider, referenties en andere administratieve details.
 
-Houd er rekening mee dat wanneer een bestelling wordt geplaatst met de provider van de verlener, het mogelijk is om de x509-certificaat uitbreidingen en de geldigheids periode van het certificaat te vervangen op basis van het type certificaat.  
+Houd er rekening mee dat wanneer een bestelling wordt geplaatst bij de leverancier van de uitgever, de x509-certificaatextensies en de geldigheidsperiode van het certificaat kan eerof overschrijven op basis van het type certificaat.  
 
- Autorisatie: vereist de machtiging voor certificaten/maken.
+ Autorisatie: Vereist de certificaten/maak toestemming.
 
 ## <a name="see-also"></a>Zie ook
  - [Over sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)

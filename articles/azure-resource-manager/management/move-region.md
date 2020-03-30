@@ -1,48 +1,48 @@
 ---
-title: Azure-resources verplaatsen naar een andere regio
-description: Hierin wordt een overzicht gegeven van het verplaatsen van Azure-resources tussen Azure-regio's.
+title: Azure-bronnen verplaatsen naar een andere regio
+description: Biedt een overzicht van het verplaatsen van Azure-resources in Azure-regio's.
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: raynew
 ms.openlocfilehash: 22d8bcee96b4ac52641d4f0841267195f44fe15a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75485206"
 ---
 # <a name="moving-azure-resources-across-regions"></a>Azure-resources verplaatsen tussen regio's
 
-Dit artikel bevat informatie over het verplaatsen van Azure-resources tussen Azure-regio's.
+In dit artikel vindt u informatie over het verplaatsen van Azure-resources in Azure-regio's.
 
-Azure-geografi,-regio's en-Beschikbaarheidszones vormen de basis van de wereld wijde Azure-infra structuur. Azure- [geografi](https://azure.microsoft.com/global-infrastructure/geographies/) bevatten doorgaans twee of meer [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/). Een regio is een gebied binnen een geografie met Beschikbaarheidszones en meerdere data centers. 
+Azure-regio's, regio's en beschikbaarheidszones vormen de basis van de wereldwijde Azure-infrastructuur. [Azure-regio's](https://azure.microsoft.com/global-infrastructure/geographies/) bevatten doorgaans twee of meer [Azure-regio's.](https://azure.microsoft.com/global-infrastructure/regions/) Een regio is een gebied binnen een geografie, met beschikbaarheidszones en meerdere datacenters. 
 
-Na het implementeren van resources in een specifieke Azure-regio, zijn er een aantal redenen waarom u resources naar een andere regio wilt verplaatsen.
+Nadat u resources hebt geïmplementeerd in een specifiek Azure-gebied, zijn er een aantal redenen waarom u resources naar een andere regio wilt verplaatsen.
 
-- **Uitlijnen met een regio start**: Verplaats uw resources naar een nieuw geïntroduceerde Azure-regio die voorheen niet beschikbaar was.
-- **Uitlijnen voor Services/onderdelen**: resources verplaatsen om te kunnen profiteren van services of functies die beschikbaar zijn in een bepaalde regio.
-- **Reageer op bedrijfs ontwikkelingen**: Verplaats resources naar een regio in antwoord op bedrijfs wijzigingen, zoals fusies of acquisities.
-- **Uitlijnen voor nabijheid**: resources verplaatsen naar een regio die lokaal is voor uw bedrijf.
-- **Voldoen aan de vereisten voor gegevens**: Verplaats resources om uit te lijnen met vereisten voor gegevens locatie of gegevens classificatie behoeften. [Meer informatie](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
-- **Reageren op implementatie vereisten**: Verplaats resources die zijn geïmplementeerd, of verplaats als reactie op capaciteits behoeften. 
-- **Reageren op buiten gebruik stellen**: resources verplaatsen vanwege het buiten gebruik stellen van regio's.
+- **Uitlijnen op een regiostart:** Verplaats uw resources naar een nieuw geïntroduceerdAzure-gebied dat nog niet eerder beschikbaar was.
+- **Uitlijnen voor services/functies:** verplaats resources om te profiteren van services of functies die beschikbaar zijn in een specifieke regio.
+- **Reageren op bedrijfsontwikkelingen**: Verplaats resources naar een regio als reactie op bedrijfsveranderingen, zoals fusies of overnames.
+- **Uitlijnen voor nabijheid:** Resources verplaatsen naar een regio die lokaal is voor uw bedrijf.
+- **Voldoen aan gegevensvereisten**: Resources verplaatsen om af te stemmen op de vereisten voor gegevensresidentie of vereisten voor gegevensclassificatie. [Meer informatie](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
+- **Reageren op implementatievereisten:** Resources verplaatsen die ten onrechte zijn geïmplementeerd of verplaatsen in reactie op capaciteitsbehoeften. 
+- **Reageren op ontmanteling**: Resources verplaatsen als gevolg van ontmanteling van regio's.
 
 ## <a name="move-process"></a>Proces verplaatsen
 
-Het daad werkelijke verplaatsings proces is afhankelijk van de resources die u wilt verplaatsen. Er zijn echter enkele veelvoorkomende belang rijke stappen:
+Het werkelijke verplaatsingsproces is afhankelijk van de resources die u verplaatst. Er zijn echter enkele gemeenschappelijke belangrijke stappen:
 
-- **Vereisten controleren**: vereisten zijn onder andere het maken van de resources die u nodig hebt in de doel regio, het controleren of u voldoende quota hebt en te controleren of uw abonnement toegang heeft tot de doel regio.
-- **Afhankelijkheden analyseren**: uw resources hebben mogelijk afhankelijkheden van andere resources. Voordat u gaat verplaatsen, moet u afhankelijkheden bepalen, zodat de verplaatste resources na de verplaatsing blijven functioneren zoals verwacht.
-- **Voor bereiding voor verplaatsen**: Dit zijn de stappen die u in uw primaire regio hebt uitgevoerd vóór de verplaatsing. U moet bijvoorbeeld een Azure Resource Manager sjabloon exporteren of resources van de bron naar het doel repliceren.
-- **De resources verplaatsen**: hoe u resources verplaatst, is afhankelijk van wat ze zijn. Mogelijk moet u een sjabloon in de doel regio implementeren of de resources mislukken voor het doel.
-- **Doel resources negeren**: nadat u resources hebt verplaatst, kunt u de resources nu in de doel regio bekijken en besluiten of er iets wat u niet nodig hebt.
-- **De verplaatsing door voeren**: nadat u resources in de doel regio hebt gecontroleerd, is het mogelijk dat er voor sommige resources een laatste doorvoer actie is vereist. In een doel regio die nu de primaire regio is, moet u mogelijk herstel na nood geval instellen voor een nieuwe secundaire regio. 
-- **De bron opschonen**: tot slot kunt u de resources die u hebt gemaakt voor het verplaatsen en resources in uw primaire regio, opschonen en uit bedrijf nemen in de nieuwe regio.
+- **Vereisten verifiëren:** vereisten omvatten ervoor zorgen dat de resources die u nodig hebt beschikbaar zijn in het doelgebied, controleren of u voldoende quota hebt en controleren of uw abonnement toegang heeft tot het doelgebied.
+- **Afhankelijkheden analyseren:** uw resources kunnen afhankelijk zijn van andere bronnen. Voordat u gaat, u afhankelijkheden berekenen, zodat verplaatste resources blijven functioneren zoals verwacht na de verhuizing.
+- **Voorbereiden op verhuizing:** dit zijn de stappen die u in uw primaire regio neemt voordat de verhuizing wordt verplaatst. Het kan bijvoorbeeld nodig zijn om een Azure Resource Manager-sjabloon te exporteren of resources van bron naar doel te repliceren.
+- **De resources verplaatsen:** Hoe u resources verplaatst, is afhankelijk van wat ze zijn. Mogelijk moet u een sjabloon implementeren in het doelgebied of resources naar het doel halen.
+- **Doelresources weggooien:** Na het verplaatsen van resources wilt u misschien een kijkje nemen naar de resources die nu in het doelgebied zijn en beslissen of er iets is dat u niet nodig hebt.
+- **De stap vastleggen**: Na verificatie van resources in het doelgebied, vereisen sommige resources mogelijk een definitieve commit-actie. In een doelregio die nu de primaire regio is, moet u bijvoorbeeld herstel bij rampen instellen in een nieuwe secundaire regio. 
+- **De bron opruimen:** Ten slotte u, nadat alles in de nieuwe regio is uitgevoerd, resources die u hebt gemaakt voor de verhuizing en resources in uw primaire regio opschonen en ontmantelen.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [ondersteuning voor het verplaatsen van resources voor bronnen](region-move-support.md)voor een lijst met resources die kunnen worden verplaatst tussen regio's.
+Zie Ondersteuning voor de exploitatie van [resources](region-move-support.md)verplaatsen voor een lijst met resources voor een lijst met resources .

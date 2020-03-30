@@ -1,5 +1,5 @@
 ---
-title: Een Windows-VM in de zone maken-Azure PowerShell
+title: Een gezonde Windows VM maken - Azure PowerShell
 description: Een virtuele Windows-machine maken in een beschikbaarheidszone met Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: 5cecc6e43dfeda3838ae52fdd0c028a7739ff227
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75497941"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Een virtuele Windows-machine maken in een beschikbaarheidszone met PowerShell
@@ -177,4 +177,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een VM maakt in een beschikbaarheidszone. Meer informatie over [Beschik baarheid](availability.md) voor virtuele Azure-machines.
+In dit artikel hebt u geleerd hoe u een VM maakt in een beschikbaarheidszone. Meer informatie over [de beschikbaarheid](availability.md) voor Azure VM's.

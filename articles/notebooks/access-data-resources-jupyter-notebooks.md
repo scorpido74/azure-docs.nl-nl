@@ -1,30 +1,30 @@
 ---
-title: Toegang tot gegevens in Jupyter-notebooks-Azure Notebooks preview
-description: Meer informatie over toegang tot bestanden, REST-Api's, data bases en andere Azure Storage resources van een Jupyter-notebook.
+title: Toegang tot gegevens in Jupyter-notitieblokken - Proefversie van Azure Notebooks
+description: Meer informatie over het openen van bestanden, REST-API's, databases en verschillende Azure Storage-bronnen uit een Jupyter-notitieblok.
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646344"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Toegang tot cloudgegevens in een notebook
 
-Interessante werk in een Jupyter-notebook vereist dat gegevens. Gegevens, is namelijk de levensader van notitieblokken.
+Het doen van interessant werk in een Jupyter notebook vereist gegevens. Data, inderdaad, is de levensader van notebooks.
 
-Natuurlijk kunt u [gegevensbestanden importeren in een project](work-with-project-data-files.md), zelfs met behulp van opdrachten zoals `curl` uit in een notitieblok voor het downloaden van een bestand rechtstreeks. Het is echter waarschijnlijk dat u wilt werken met veel meer uitgebreide gegevens die beschikbaar is op geen bestand-bronnen, zoals REST API's en relationele databases en opslag, zoals Azure-tabellen in de cloud.
+U zeker [gegevensbestanden importeren in een project,](work-with-project-data-files.md)zelfs met opdrachten zoals `curl` vanuit een notitieblok om een bestand rechtstreeks te downloaden. Het is echter waarschijnlijk dat u moet werken met veel uitgebreidere gegevens die beschikbaar zijn uit niet-bestandsbronnen zoals REST API's, relationele databases en cloudopslag zoals Azure-tabellen.
 
-In dit artikel bevat kort een overzicht van deze verschillende opties. Omdat de toegang tot gegevens is best in actie zien, vindt u uitvoerbaar code in de [voorbeelden van Azure-notitieblokken - toegang tot uw gegevens](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
+In dit artikel worden deze verschillende opties kort beschreven. Omdat gegevenstoegang het best in actie kan worden gezien, u runnable code vinden in de [Voorbeelden van Azure Notebooks - Toegang tot uw gegevens](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-## <a name="rest-apis"></a>REST API's
+## <a name="rest-apis"></a>REST-API’s
 
-In het algemeen is de enorme hoeveelheid gegevens die beschikbaar zijn via Internet toegankelijk niet via bestanden, maar via REST-API's. Gelukkig, omdat een cel notebook mag de code die u wilt, kunt u code voor het verzenden van aanvragen en ontvangen van JSON-gegevens. Vervolgens kunt u JSON converteren naar welke indeling u gebruiken wilt, zoals een pandas dataframe.
+Over het algemeen is de enorme hoeveelheid gegevens die beschikbaar zijn via het internet niet toegankelijk via bestanden, maar via REST API's. Gelukkig, omdat een notebook cel kan bevatten welke code je wilt, u code gebruiken om verzoeken te verzenden en JSON-gegevens te ontvangen. U dat JSON vervolgens converteren naar het formaat dat u wilt gebruiken, zoals een panda's-gegevensframe.
 
-Voor toegang tot gegevens met behulp van een REST-API, gebruikt u dezelfde code in van een laptop code cellen die u in een andere toepassing gebruikt. De algemene structuur met behulp van de bibliotheek aanvragen is als volgt:
+Als u toegang wilt krijgen tot gegevens met een REST-API, gebruikt u dezelfde code in de codecellen van een notitieblok die u in een andere toepassing gebruikt. De algemene structuur met behulp van de aanvragen bibliotheek is als volgt:
 
 ```python
 import pandas
@@ -43,41 +43,41 @@ if response.status_code == 200:
 
 ## <a name="azure-sql-databases"></a>Azure SQL-databases
 
-U kunt toegang tot SQL Server-databases met de hulp van de pyodbc of pymssql-bibliotheken.
+U hebt toegang tot SQL Server-databases met behulp van de pyodbc- of pymssql-bibliotheken.
 
-[Python gebruiken om aan te vragen uit een Azure SQL-database](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) vindt u instructies voor het maken van een database met gegevens van AdventureWorks en laat zien hoe die gegevens op te vragen. Dezelfde code wordt weergegeven in de voorbeeld-notebook voor dit artikel.
+[Gebruik Python om een Azure SQL-database op te](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python) vragen geeft u instructies voor het maken van een database met AdventureWorks-gegevens en laat zien hoe u die gegevens opvragen. Dezelfde code wordt weergegeven in het voorbeeldnotitieblok voor dit artikel.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Azure Storage voorziet in verschillende typen niet-relationele opslag, afhankelijk van het type gegevens die u hebt en hoe u nodig hebt om deze te openen:
+Azure Storage biedt verschillende soorten niet-relationele opslag, afhankelijk van het type gegevens dat u hebt en hoe u er toegang toe moet krijgen:
 
-- Table Storage: biedt lage kosten, hoge volumes opslag voor gegevens in tabelvorm, zoals verzamelde sensor logs en diagnostische logboeken.
-- BLOB-opslag: biedt bestand-achtige opslag voor elk type gegevens.
+- Tabelopslag: biedt goedkope opslag met een hoog volume voor tabelgegevens, zoals verzamelde sensorlogboeken, diagnostische logboeken, enzovoort.
+- Blob-opslag: biedt bestandsachtige opslag voor elk type gegevens.
 
-De notebook voorbeeld ziet u werken met tabellen en -blobs, met inbegrip van het gebruik van een shared access signature voor alleen-lezen toegang tot blobs.
+Het voorbeeldnotitieblok toont het werken met zowel tabellen als blobs, inclusief het gebruik van een handtekening voor gedeelde toegang om alleen-lezen toegang tot blobs toe te staan.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Azure Cosmos DB biedt een volledig geïndexeerde NoSQL-archief voor JSON-documenten). De volgende artikelen bieden een aantal verschillende manieren om te werken met Cosmos DB met Python:
+Azure Cosmos DB biedt een volledig geïndexeerd NoSQL-archief voor JSON-documenten). De volgende artikelen bieden een aantal verschillende manieren om te werken met Cosmos DB van Python:
 
-- [Bouw een SQL-API-app met Python](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Bouw een kolf-app met de API van het Azure Cosmos DB voor MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
-- [Een grafiekdatabase met behulp van Python en de Gremlin-API maken](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [Een Cassandra-app ontwikkelen met Python en Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [Een tabel met Python en Azure Cosmos DB API-app bouwen](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [Een SQL API-app bouwen met Python](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
+- [Een Flask-app bouwen met de API van Azure Cosmos DB voor MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [Een grafiekdatabase maken met Python en de Gremlin-API](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
+- [Een Cassandra-app bouwen met Python en Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [Een Tabel-API-app bouwen met Python en Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
-Als u werkt met Cosmos DB, kunt u de [azure-cosmos DB-tabel](https://pypi.org/project/azure-cosmosdb-table/) bibliotheek.
+Wanneer u met Cosmos DB werkt, u de [azure-cosmosdb-tafelbibliotheek](https://pypi.org/project/azure-cosmosdb-table/) gebruiken.
 
 ## <a name="other-azure-databases"></a>Andere Azure-databases
 
-Azure biedt een aantal andere gegevenstypen van de database die u kunt gebruiken. De onderstaande artikelen bieden hulp voor toegang tot deze databases met Python:
+Azure biedt een aantal andere databasetypen die u gebruiken. De onderstaande artikelen bieden richtlijnen voor de toegang tot deze databases van Python:
 
-- [Azure Database voor PostgreSQL: Python gebruiken om te verbinden en gegevens op te vragen](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [Snelstartgids: Azure Redis-Cache gebruiken met Python](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database voor MySQL: Python gebruiken om te verbinden en gegevens op te vragen](https://docs.microsoft.com/azure/mysql/connect-python)
-- [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
-  - [De Wizard voor Azure Data Factory kopiëren](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
+- [Azure Database voor PostgreSQL: Python gebruiken om verbinding te maken en gegevens op te vragen](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Snelstart: Azure Redis Cache gebruiken met Python](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [Azure Database voor MySQL: Python gebruiken om verbinding te maken en gegevens op te vragen](https://docs.microsoft.com/azure/mysql/connect-python)
+- [Azure-gegevensfabriek](https://azure.microsoft.com/services/data-factory/)
+  - [Wizard Kopiëren voor Azure-gegevensfabriek](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Hoe: werken met gegevens projectbestanden](work-with-project-data-files.md)
+- [Hoe: Werken met projectgegevensbestanden](work-with-project-data-files.md)

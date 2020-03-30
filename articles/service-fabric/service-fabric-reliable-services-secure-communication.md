@@ -1,29 +1,29 @@
 ---
-title: Communicatie tussen beveiligde services metC#
-description: Meer informatie over het beveiligen van communicatie op basis van C# service op afstand voor betrouw bare services die worden uitgevoerd in een Azure service Fabric-cluster.
+title: 'Beveiligde serviceremoting communicatie met C #'
+description: Meer informatie over het beveiligen van serviceremoting-gebaseerde communicatie voor c#-betrouwbare services die worden uitgevoerd in een Azure Service Fabric-cluster.
 author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609618"
 ---
-# <a name="secure-service-remoting-communications-in-a-c-service"></a>Externe communicatie in een C# service met beveiligde service
+# <a name="secure-service-remoting-communications-in-a-c-service"></a>Beveiligde service die communicatie in een C#-service remoting
 > [!div class="op_single_selector"]
 > * [C# op Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java op Linux](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Beveiliging is een van de belangrijkste aspecten van de communicatie. Het Reliable Services-toepassings raamwerk bevat enkele vooraf ontwikkelde communicatie stacks en hulpprogram ma's die u kunt gebruiken om de beveiliging te verbeteren. In dit artikel wordt beschreven hoe u de beveiliging verbetert wanneer u service Remoting in een C# service gebruikt. Het is gebaseerd op een bestaand [voor beeld](service-fabric-reliable-services-communication-remoting.md) waarin wordt uitgelegd hoe u externe toegang instelt voor betrouw C#bare services die zijn geschreven in. 
+Veiligheid is een van de belangrijkste aspecten van communicatie. Het application framework Reliable Services biedt een aantal vooraf gebouwde communicatiestacks en -tools die u gebruiken om de beveiliging te verbeteren. In dit artikel wordt besproken hoe u de beveiliging verbeteren wanneer u serviceremoting gebruikt in een C#-service. Het bouwt voort op een bestaand [voorbeeld](service-fabric-reliable-services-communication-remoting.md) dat uitlegt hoe remoting in te stellen voor betrouwbare services geschreven in C#. 
 
-Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# service voor externe toegang met Services gebruikt:
+Voer de volgende stappen uit om een service te beveiligen wanneer u serviceremoting met C#-services gebruikt:
 
-1. Maak een interface, `IHelloWorldStateful`, waarmee de methoden worden gedefinieerd die beschikbaar zijn voor een externe procedure aanroep voor uw service. Uw service maakt gebruik van `FabricTransportServiceRemotingListener`, dat is gedeclareerd in de `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` naam ruimte. Dit is een `ICommunicationListener` implementatie die mogelijkheden biedt voor externe communicatie.
+1. Maak een `IHelloWorldStateful`interface, die de methoden definieert die beschikbaar zijn voor een externe procedureaanroep op uw service. Uw service `FabricTransportServiceRemotingListener`wordt gebruikt , `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` die is aangegeven in de naamruimte. Dit is `ICommunicationListener` een implementatie die remoting mogelijkheden biedt.
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -46,16 +46,16 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
         }
     }
     ```
-2. Luister instellingen en beveiligings referenties toevoegen.
+2. Voeg listenerinstellingen en beveiligingsreferenties toe.
 
-    Zorg ervoor dat het certificaat dat u wilt gebruiken om uw service communicatie te beveiligen, is geïnstalleerd op alle knoop punten in het cluster. 
+    Zorg ervoor dat het certificaat dat u wilt gebruiken om uw servicecommunicatie te beveiligen, is geïnstalleerd op alle knooppunten in het cluster. 
     
     > [!NOTE]
-    > Op Linux-knoop punten moet het certificaat aanwezig zijn als PEM-bestanden in de */var/lib/sfcerts* -map. Zie [locatie en indeling van X. 509-certificaten op Linux-knoop punten](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)voor meer informatie. 
+    > Op Linux-knooppunten moet het certificaat aanwezig zijn als PEM-geformatteerde bestanden in de */var/lib/sfcerts* directory. Zie [Locatie en formaat van X.509-certificaten op Linux-knooppunten](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)voor meer informatie. 
 
-    Er zijn twee manieren waarop u listener-instellingen en beveiligings referenties kunt opgeven:
+    Er zijn twee manieren waarop u listenerinstellingen en beveiligingsreferenties opgeven:
 
-   1. Geef ze rechtstreeks in de service code op:
+   1. Geef ze rechtstreeks in de servicecode:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -88,9 +88,9 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
            return x509Credentials;
        }
        ```
-   2. Geef ze op met behulp van een [configuratie pakket](service-fabric-application-and-service-manifests.md):
+   2. Geef ze met behulp van een [config pakket:](service-fabric-application-and-service-manifests.md)
 
-       Voeg een benoemde `TransportSettings` sectie toe aan het bestand settings. XML.
+       Voeg een `TransportSettings` benoemde sectie toe in het bestand settings.xml.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -106,7 +106,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
        </Section>
        ```
 
-       In dit geval ziet de `CreateServiceReplicaListeners` methode er als volgt uit:
+       In dit geval `CreateServiceReplicaListeners` ziet de methode er als volgt uit:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -120,7 +120,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
        }
        ```
 
-        Als u een `TransportSettings` sectie toevoegt in het bestand settings. XML, worden in `FabricTransportRemotingListenerSettings` standaard alle instellingen van deze sectie geladen.
+        Als u `TransportSettings` een sectie toevoegt in `FabricTransportRemotingListenerSettings` het bestand settings.xml, worden standaard alle instellingen uit deze sectie geladen.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -128,7 +128,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
             ...
         </Section>
         ```
-        In dit geval ziet de `CreateServiceReplicaListeners` methode er als volgt uit:
+        In dit geval `CreateServiceReplicaListeners` ziet de methode er als volgt uit:
 
         ```csharp
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -141,7 +141,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
             };
         }
         ```
-3. Wanneer u methoden aanroept voor een beveiligde service met behulp van de externe stack, gebruikt u in plaats van de `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy`-klasse om een Service proxy te maken, `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`. Pass `FabricTransportRemotingSettings`, dat `SecurityCredentials`bevat.
+3. Wanneer u methoden aanroept op een beveiligde service met behulp `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` van de remoting-stack, gebruikt u in plaats van de klasse om een serviceproxy te maken `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`. Pass `FabricTransportRemotingSettings`in , `SecurityCredentials`die bevat .
 
     ```csharp
 
@@ -171,7 +171,7 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
 
     ```
 
-    Als de client code wordt uitgevoerd als onderdeel van een service, kunt u `FabricTransportRemotingSettings` laden vanuit het bestand settings. XML. Maak een HelloWorldClientTransportSettings-sectie die vergelijkbaar is met de service code, zoals eerder wordt weer gegeven. Breng de volgende wijzigingen aan in de client code:
+    Als de clientcode wordt uitgevoerd als onderdeel `FabricTransportRemotingSettings` van een service, u laden vanuit het bestand settings.xml. Maak een helloworldclienttransportinstellingen sectie die vergelijkbaar is met de servicecode, zoals eerder weergegeven. Breng de volgende wijzigingen aan in de clientcode:
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -184,11 +184,11 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
 
     ```
 
-    Als de client niet wordt uitgevoerd als onderdeel van een service, kunt u een bestand client_name. settings. XML maken op dezelfde locatie als de client_name. exe. Maak vervolgens een TransportSettings-sectie in dat bestand.
+    Als de client niet wordt uitgevoerd als onderdeel van een service, u een bestand client_name.settings.xml maken op dezelfde locatie waar de client_name.exe zich bevindt. Maak vervolgens een sectie TransportInstellingen in dat bestand.
 
-    Net als bij de service kunt u, als u een `TransportSettings` sectie toevoegt in client instellingen. XML/client_name. settings. XML, `FabricTransportRemotingSettings` alle instellingen van deze sectie standaard laden.
+    Als u een `TransportSettings` sectie toevoegt in clientinstellingen.xml/client_name.settings.xml.xml, `FabricTransportRemotingSettings` laadt u net als de service standaard alle instellingen uit deze sectie.
 
-    In dat geval is de eerdere code nog verder vereenvoudigd:  
+    In dat geval wordt de eerdere code nog verder vereenvoudigd:  
 
     ```csharp
 
@@ -200,4 +200,4 @@ Voer de volgende stappen uit om een service te helpen beveiligen wanneer u C# se
     ```
 
 
-Als volgende stap leest u [Web API with OWIN in reliable Services](service-fabric-reliable-services-communication-webapi.md).
+Lees als volgende stap [Web API met OWIN in Reliable Services.](service-fabric-reliable-services-communication-webapi.md)

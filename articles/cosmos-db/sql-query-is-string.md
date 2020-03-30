@@ -1,6 +1,6 @@
 ---
-title: IS_STRING in Azure Cosmos DB query taal
-description: Meer informatie over de functie IS_STRING van SQL-systeem in Azure Cosmos DB.
+title: IS_STRING in Azure Cosmos DB-querytaal
+description: Meer informatie over de SQL-systeemfunctie IS_STRING in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303763"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING (Azure Cosmos DB)
- Retourneert een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een tekenreeks is.  
+ Geeft als resultaat een Booleaanse waarde die aangeeft of het type van de opgegeven expressie een tekenreeks is.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -25,16 +25,16 @@ IS_STRING(<expr>)
   
 ## <a name="arguments"></a>Argumenten
   
-*expressie*  
-   Is een expressie.  
+*Expr*  
+   Is elke uitdrukking.  
   
-## <a name="return-types"></a>Retour typen
+## <a name="return-types"></a>Retourtypen
   
-  Retourneert een Booleaanse expressie.  
+  Geeft als resultaat een Booleaanse expressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld worden objecten van JSON-Boole, getal, teken reeks, null, object, matrix en niet-gedefinieerde typen gecontroleerd met behulp van de functie `IS_STRING`.  
+  In het volgende voorbeeld worden objecten van JSON Booleaan, getal, tekenreeks, `IS_STRING` null, object, array en niet-gedefinieerde typen gecontroleerd met behulp van de functie.  
   
 ```sql
 SELECT   
@@ -47,7 +47,7 @@ SELECT
        IS_STRING({prop: "value"}.prop2) AS isStr7  
 ```  
   
- Hier volgt de resultatenset.  
+ Hier is het resultaat ingesteld.  
   
 ```json
 [{"isStr1":false,"isStr2":false,"isStr3":true,"isStr4":false,"isStr5":false,"isStr6":false,"isStr7":false}] 
@@ -55,10 +55,10 @@ SELECT
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeem functie maakt deel uit van een [bereik index](index-policy.md#includeexclude-strategy).
+Deze systeemfunctie zal profiteren van een [bereikindex](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Type controleren van functies Azure Cosmos DB](sql-query-type-checking-functions.md)
-- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
+- [Typecontrolefuncties Azure Cosmos DB](sql-query-type-checking-functions.md)
+- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

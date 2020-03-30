@@ -1,6 +1,6 @@
 ---
-title: Een verwijderd opslag account herstellen
-description: Meer informatie over het herstellen van een verwijderd opslag account
+title: Een verwijderd opslagaccount herstellen
+description: Meer informatie over het herstellen van een verwijderd opslagaccount
 author: todmccoy
 manager: dcscontentpm
 ms.service: storage
@@ -11,35 +11,35 @@ ms.subservice: files
 services: storage
 tags: ''
 ms.openlocfilehash: 05465d4a03335ac607ba8981116c66fd6dac9416
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252638"
 ---
-# <a name="how-to-recover-a-deleted-storage-account"></a>Een verwijderd opslag account herstellen
+# <a name="how-to-recover-a-deleted-storage-account"></a>Een verwijderd opslagaccount herstellen
 
-Azure Storage biedt gegevens tolerantie via geautomatiseerde replica's, maar niet voor komen dat gebruikers of toepassings code gegevens beschadigen, ongeacht of ze per ongeluk of opzettelijk zijn beschadigd. Voor het bijhouden van gegevens kwaliteit tijdens exemplaren van de toepassing of de gebruikers fout zijn meer geavanceerde technieken vereist, zoals het kopiëren van de gegevens naar een secundaire opslag locatie met een audit logboek.
+Azure Storage biedt gegevenstolerantie via geautomatiseerde replica's, maar voorkomt niet dat gebruikers of toepassingscode gegevens beschadigen, zowel per ongeluk als kwaadwillig. Voor het behouden van gegevensgetrouwheid tijdens gevallen van toepassings- of gebruikersfouten zijn meer geavanceerde technieken nodig, zoals het kopiëren van de gegevens naar een secundaire opslaglocatie met een controlelogboek.
 
-De volgende tabel bevat een overzicht van het bereik van herstel van opslag accounts, afhankelijk van de replicatie strategie.
+In de volgende tabel vindt u een overzicht van het bereik van herstel van het opslagaccount, afhankelijk van de replicatiestrategie.
 
-| |LRS|ZRS|GRS|RA-GRS|
+| |LRS|ZRS|GRS|RA - GRS|
 |---|---|---|---|---|
-|Azure Resource Manager van opslag account|Ja|Ja|Ja|Ja|
-|Klassiek opslag account|Ja|Ja|Ja|Ja|
+|Azure Resource Manager voor opslagaccount|Ja|Ja|Ja|Ja|
+|Klassiek opslagaccount|Ja|Ja|Ja|Ja|
 
-Verzamel de volgende informatie en verwerk een ondersteunings aanvraag met Microsoft Ondersteuning:
+Verzamel de volgende informatie en dien een ondersteuningsverzoek in bij Microsoft Support:
 
 * Naam van opslagaccount
-* Datum van verwijdering
-* Regio van opslag account
-* Hoe is het opslag account verwijderd?
-* Welke methode heeft het opslag account verwijderd? (Portal, Power shell, enz.)
+* Schrapdatum
+* Opslagaccountgebied
+* Hoe is het opslagaccount verwijderd?
+* Welke methode heeft het opslagaccount verwijderd? (Portal, PowerShell, enz.)
 
-Belang rijke punten
+Belangrijke punten
 
-* Het kan over het algemeen tot wel vijf tien dagen duren vanaf het moment van verwijderen van de opslag service om garbagecollection uit te voeren, zodat herstel van opslag accounts niet kan worden hersteld met een SLA.
-* Microsoft Ondersteuning probeert de container/het account te herstellen op basis van de beste inspanningen en kan het herstel niet garanderen.
+* Het kan over het algemeen tot 15 dagen duren vanaf het moment van verwijdering voordat de opslagservice garbage collection uitvoert, dus het herstel van opslagaccounts kan niet worden hersteld met een SLA.
+* Microsoft Support probeert de container/account op basis van de beste inspanning te herstellen en kan het herstel niet garanderen.
 
 > [!NOTE]
-> Het herstel kan niet worden uitgevoerd als het account opnieuw is gemaakt. Als u het account al opnieuw hebt gemaakt, moet u het eerst verwijderen voordat u het herstel kunt uitvoeren.
+> Het herstel kan niet succesvol zijn als het account opnieuw is gemaakt. Als u het account al opnieuw hebt gemaakt, moet u het account eerst verwijderen voordat herstel kan worden geprobeerd.

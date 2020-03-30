@@ -1,6 +1,6 @@
 ---
-title: Verwijzing naar Azure Active Directory breuk wijzigen | Microsoft Docs
-description: Meer informatie over de wijzigingen die zijn aangebracht in de Azure AD-protocollen die van invloed kunnen zijn op uw toepassing.
+title: Verwijzing naar wijzigingen in Azure Active Directory | Microsoft Documenten
+description: Meer informatie over wijzigingen die zijn aangebracht in de Azure AD-protocollen die van invloed kunnen zijn op uw toepassing.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -13,150 +13,172 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 3/13/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c6ed72e5c94191411572c6ab67533141e2fe47d6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1248063c1b4c1b1e124ff671797450dd5c1b8727
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185806"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050177"
 ---
-# <a name="whats-new-for-authentication"></a>Wat is er nieuw voor verificatie? 
+# <a name="whats-new-for-authentication"></a>Wat is er nieuw voor authenticatie? 
 
->Ontvang een melding over updates op deze pagina. U kunt [deze URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us) alleen toevoegen aan uw RSS-feed-lezer.
+>Ontvang een melding over updates op deze pagina. Voeg [deze URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us) gewoon toe aan uw RSS-feedlezer.
 
-Het verificatie systeem wijzigt en voegt voortdurend functies toe om de naleving van de beveiliging en standaarden te verbeteren. Om up-to-date te blijven met de meest recente ontwikkelingen, vindt u in dit artikel informatie over de volgende details:
+Het verificatiesysteem wijzigt en voegt voortdurend functies toe om de naleving van beveiliging en standaarden te verbeteren. Om op de hoogte te blijven van de meest recente ontwikkelingen, biedt dit artikel u informatie over de volgende details:
 
 - Recentste functies
 - Bekende problemen
-- Protocol wijzigingen
-- Afgeschafte functies
+- Protocolwijzigingen
+- Afgeschafte functionaliteit
 
 > [!TIP] 
-> Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak naar. Tenzij anders vermeld, worden deze wijzigingen alleen toegepast op nieuwe geregistreerde toepassingen.  
+> Deze pagina wordt regelmatig bijgewerkt, dus bezoek vaak. Tenzij anders vermeld, worden deze wijzigingen alleen doorgevoerd voor nieuw geregistreerde aanvragen.  
 
-## <a name="upcoming-changes"></a>Aanstaande wijzigingen
+## <a name="upcoming-changes"></a>Aankomende wijzigingen
 
-Geen gepland op dit moment.  Hieronder vindt u een overzicht van de wijzigingen die in of beschikbaar zijn voor productie. 
+Geen gepland op dit moment.  Zie hieronder voor de wijzigingen die in of komen naar productie. 
+
+## <a name="march-2020"></a>Maart 2020 
+
+### <a name="user-passwords-will-be-restricted-to-256-characters"></a>Gebruikerswachtwoorden worden beperkt tot 256 tekens.
+
+**Ingangsdatum**: 13 maart 2020
+
+**Getroffen eindpunten**: Zowel v1.0 als v2.0
+
+**Getroffen protocol**: Alle gebruikersstromen. 
+
+Gebruikers met wachtwoorden langer dan 256 tekens die zich rechtstreeks aanmelden bij Azure AD (in tegenstelling tot een gefedereerde IDP zoals ADFS) kunnen zich vanaf 13 maart 2020 niet aanmelden en worden gevraagd om hun wachtwoord opnieuw in te stellen.  Beheerders kunnen verzoeken ontvangen om het gebruikerswachtwoord opnieuw in te stellen. 
+
+De fout in de aanmeldingslogboeken is AADSTS 50052: InvalidPasswordExceedsMaxLength
+
+Bericht:`The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+
+Sanering:
+
+De gebruiker kan niet inloggen omdat zijn wachtwoord de toegestane maximale lengte overschrijdt. Ze moeten contact opnemen met hun beheerder om het wachtwoord opnieuw in te stellen. Als SSPR is ingeschakeld voor hun tenant, kunnen ze hun wachtwoord opnieuw instellen door de link 'Uw wachtwoord vergeten' te volgen.
+
+
 
 ## <a name="february-2020"></a>Februari 2020 
 
-### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>Lege fragmenten worden toegevoegd aan elke HTTP-omleiding vanuit het aanmeldings-eind punt. 
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>Lege fragmenten worden toegevoegd aan elke HTTP-omleiding vanaf het aanmeldingseindpunt. 
 
-**Ingangs datum**: 8 februari 2020
+**Ingangsdatum**: 8 februari 2020
 
-**Beïnvloede eind punten**: zowel v 1.0 als v 2.0
+**Getroffen eindpunten**: Zowel v1.0 als v2.0
 
-**Beïnvloede protocollen**: OAuth-en OIDC-stromen die gebruikmaken van response_type = query-dit bevat de [autorisatie code stroom](v2-oauth2-auth-code-flow.md) in sommige gevallen en de [impliciete stroom](v2-oauth2-implicit-grant-flow.md). 
+**Getroffen protocol**: OAuth- en OIDC-stromen die response_type=query gebruiken - dit dekt in sommige gevallen de [autorisatiecodestroom](v2-oauth2-auth-code-flow.md) en de [impliciete stroom](v2-oauth2-implicit-grant-flow.md). 
 
-Wanneer een verificatie reactie vanuit login.microsoftonline.com naar een toepassing wordt verzonden via een HTTP-omleiding, wordt door de service een leeg fragment aan de antwoord-URL toegevoegd.  Dit voor komt een klasse van omleidings aanvallen door ervoor te zorgen dat de browser alle bestaande fragmenten in de verificatie aanvraag wist.  Geen enkele app moet afhankelijk zijn van dit gedrag. 
+Wanneer een verificatieantwoord wordt verzonden van login.microsoftonline.com naar een toepassing via HTTP-omleiding, zal de service een leeg fragment toevoegen aan de antwoord-URL.  Dit voorkomt een klasse van omleidingsaanvallen door ervoor te zorgen dat de browser elk bestaand fragment in het verificatieverzoek wegveegt.  Geen apps mogen afhankelijk zijn van dit gedrag. 
 
 
 ## <a name="august-2019"></a>Augustus 2019
 
-### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>De semantiek van POST formulieren wordt strikt meer afgedwongen en aanhalings tekens worden genegeerd
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>POST vorm semantiek zal strikter worden afgedwongen - spaties en citaten zullen worden genegeerd
 
-**Ingangs datum**: 2 september 2019
+**Ingangsdatum**: 2 september 2019
 
-**Beïnvloede eind punten**: zowel v 1.0 als v 2.0
+**Getroffen eindpunten**: Zowel v1.0 als v2.0
 
-**Getroffen protocol**: Anywhere post wordt gebruikt ([client referenties](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), inzending van [autorisatie code](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)en [vernieuwing](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)van het token)
+**Getroffen protocol**: Anywhere POST wordt gebruikt[(clientreferenties,](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow) [autorisatiecode inwisseling,](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) [ROPC,](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc) [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)en [vernieuwen token inwisseling)](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)
 
-Met ingang van de week van 9/2 worden verificatie aanvragen die gebruikmaken van de POST-methode gevalideerd met striktere HTTP-standaarden.  In het bijzonder worden spaties en dubbele aanhalings tekens (") niet meer verwijderd uit de waarden van het aanvraag formulier. Deze wijzigingen worden niet verwacht om bestaande clients te verstoren, en zorgen ervoor dat aanvragen die naar Azure AD worden verzonden, elke keer betrouwbaar worden afgehandeld. In de toekomst (zie hierboven) gaan we ook dubbele para meters afwijzen en de stuk lijst in aanvragen negeren. 
+Vanaf de week van 9/2 worden verificatieverzoeken die gebruikmaken van de POST-methode gevalideerd met strengere HTTP-normen.  Met name spaties en dubbele aanhalingstekens (") worden niet langer verwijderd uit de waarden van het aanvraagformulier. Deze wijzigingen zullen naar verwachting geen bestaande clients verbreken en zorgen ervoor dat aanvragen die naar Azure AD worden verzonden, elke keer betrouwbaar worden verwerkt. In de toekomst (zie hierboven) zijn we van plan om bovendien dubbele parameters af te wijzen en de bom binnen aanvragen te negeren. 
 
 Voorbeeld:
 
-Momenteel wordt `?e=    "f"&g=h` hetzelfde geparseerd als `?e=f&g=h`-zo `e` == `f`.  Met deze wijziging wordt deze nu geparseerd, zodat `e` == `    "f"`-dit is waarschijnlijk geen geldig argument. de aanvraag zou nu niet kunnen worden uitgevoerd. 
+Vandaag, `?e=    "f"&g=h` is identiek `?e=f&g=h` ontleed `e`  ==  `f`als - dus .  Met deze wijziging, zou het nu `e`  ==  `    "f"` worden ontleed, zodat - dit is waarschijnlijk geen geldig argument, en het verzoek zou nu mislukken. 
 
 
 ## <a name="july-2019"></a>Juli 2019
 
-### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>Alleen app-tokens voor toepassingen met één Tenant worden alleen uitgegeven als de client-app bestaat in de resource Tenant
+### <a name="app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant"></a>App-only tokens voor toepassingen met één tenant worden alleen uitgegeven als de client-app bestaat in de resourcetenant
 
-**Ingangs datum**: 26 juli 2019
+**Ingangsdatum**: 26 juli 2019
 
-**Beïnvloede eind punten**: zowel [v 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) als [v 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**Getroffen eindpunten**: Zowel [v1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) als [v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
 
-**Beïnvloede protocol**: [client referenties (tokens van app-only)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**Protocol beïnvloed:** [Clientreferenties (alleen app-tokens)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 
-Een beveiligings wijziging heeft Live juli 26 die de manier waarop alleen app-tokens (via de client referenties verlenen) wordt uitgegeven, gewijzigd. Voorheen konden toepassingen tokens ophalen voor het aanroepen van andere apps, ongeacht de aanwezigheid van de Tenant of rollen die zijn gemachtigd voor die toepassing.  Dit gedrag is bijgewerkt, zodat voor resources (ook wel web-Api's genoemd) zijn ingesteld op één Tenant (de standaard instelling), de client toepassing moet bestaan in de resource Tenant.  Houd er rekening mee dat bestaande toestemming tussen de client en de API nog steeds niet is vereist en dat apps nog steeds hun eigen autorisatie controles moeten uitvoeren om ervoor te zorgen dat een `roles` claim aanwezig is en de verwachte waarde voor de API bevat.
+Een beveiligingswijziging is live gegaan op 26 juli, dat de manier verandert waarop app-only tokens (via de clientreferenties grant) worden uitgegeven. Voorheen mochten toepassingen tokens krijgen om een andere app te bellen, ongeacht de aanwezigheid in de tenant of de rollen waarmee voor die toepassing is ingestemd.  Dit gedrag is zo bijgewerkt dat voor resources (ook wel Web API's genoemd) zijn ingesteld op single-tenant (de standaardinstelling), de clienttoepassing moet bestaan binnen de resourcetenant.  Houd er rekening mee dat bestaande toestemming tussen de client en de API nog steeds `roles` niet vereist is en dat apps nog steeds hun eigen autorisatiecontroles moeten uitvoeren om ervoor te zorgen dat een claim aanwezig is en de verwachte waarde voor de API bevat.
 
-In het fout bericht voor dit scenario staat momenteel het volgende: 
+In het foutbericht voor dit scenario staat momenteel: 
 
 `The service principal named <appName> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.`
 
-U kunt dit probleem oplossen door de beheerder toestemming te geven om de service-principal van de client toepassing te maken in uw Tenant, of deze hand matig te maken.  Deze vereiste zorgt ervoor dat de Tenant toestemming heeft gegeven voor het uitvoeren van de toepassing in de Tenant.  
+Als u dit probleem wilt verhelpen, gebruikt u de ervaring Beheerderstoestemming om de clienttoepassingsserviceprincipal in uw tenant te maken of handmatig te maken.  Deze vereiste zorgt ervoor dat de tenant de aanvraag toestemming heeft gegeven om binnen de tenant te werken.  
 
 #### <a name="example-request"></a>Voorbeeldaanvraag
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` in dit voor beeld is de resource Tenant (instantie) contoso.com, de resource-app is een app met één Tenant met de naam `gateway.contoso.com/api` voor de contoso-Tenant, en de client-app is `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`.  Als de client-app een Service-Principal in Contoso.com heeft, kan deze aanvraag door gaan.  Als dit echter niet het geval is, mislukt de aanvraag met de bovenstaande fout.  
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`In dit voorbeeld wordt de resourcetenant (autoriteit) contoso.com, is de `gateway.contoso.com/api` resource-app een app met één `14c88eee-b3e2-4bb0-9233-f5e3053b3a28`tenant die wordt aangeroepen voor de Contoso-tenant en is de client-app .  Als de client-app een serviceprincipal binnen Contoso.com heeft, kan deze aanvraag worden voortgezet.  Als dit echter niet het niet gebeurt, mislukt het verzoek met de bovenstaande fout.  
 
-Als de contoso gateway-app echter een multi tenant toepassing is, wordt de aanvraag wel door gaan, ongeacht de client-app met een Service-Principal in Contoso.com.  
+Als de Contoso-gateway-app echter een multi-tenanttoepassing was, wordt het verzoek voortgezet, ongeacht de client-app met een serviceprincipal binnen Contoso.com.  
 
-### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>Omleidings-Uri's kunnen nu query reeks parameters bevatten
+### <a name="redirect-uris-can-now-contain-query-string-parameters"></a>Omleidings-URI's kunnen nu querytekenreeksparameters bevatten
 
-**Ingangs datum**: 22 juli 2019
+**Ingangsdatum**: 22 juli 2019
 
-**Beïnvloede eind punten**: zowel v 1.0 als v 2.0
+**Getroffen eindpunten**: Zowel v1.0 als v2.0
 
-**Beïnvloede protocollen**: alle stromen
+**Getroffen protocol**: Alle stromen
 
-Per [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)kunnen Azure AD-toepassingen nu uri's voor omleiden (beantwoorden) registreren en gebruiken met statische query parameters (zoals https://contoso.com/oauth2?idp=microsoft) voor OAuth 2,0-aanvragen.  Dynamische omleidings-Uri's zijn nog niet toegestaan omdat ze een beveiligings risico vormen. Dit kan niet worden gebruikt om status informatie over een verificatie aanvraag te bewaren. Gebruik hiervoor de para meter `state`.
+Per [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)kunnen Azure AD-toepassingen nu omleidings-(antwoord)URI's `https://contoso.com/oauth2?idp=microsoft`met statische queryparameters (zoals ) registreren en gebruiken voor OAuth 2.0-aanvragen.  Dynamische omleidings-URI's zijn nog steeds verboden omdat ze een beveiligingsrisico vormen en dit kan `state` niet worden gebruikt om staatsinformatie te bewaren voor een verificatieverzoek - gebruik daarvoor de parameter.
 
-De para meter static query is onderhevig aan teken reeksen die overeenkomen met omleidings-Uri's zoals andere delen van de omleidings-URI. als er geen teken reeks is geregistreerd die overeenkomt met de door de URI gedecodeerde redirect_uri, wordt de aanvraag geweigerd.  Als de URI wordt gevonden in de app-registratie, wordt de hele teken reeks gebruikt om de gebruiker om te leiden, met inbegrip van de statische query parameter. 
+De statische queryparameter is onderhevig aan tekenreeksmatching voor omleidings-URI's zoals elk ander deel van de omleidings-URI - als er geen tekenreeks is geregistreerd die overeenkomt met de URI-gedecodeerde redirect_uri, wordt de aanvraag afgewezen.  Als de URI wordt gevonden in de app-registratie, wordt de hele tekenreeks gebruikt om de gebruiker om te leiden, inclusief de statische queryparameter. 
 
-Houd er rekening mee dat op dit moment (einde van 2019 juli) de app registratie UX in Azure Portal nog steeds blok keren query parameters.  U kunt het toepassings manifest echter hand matig bewerken om query parameters toe te voegen en dit in uw app te testen.  
+Houd er rekening mee dat op dit moment (eind juli 2019) de UX voor app-registratie in Azure-portal queryparameters nog steeds blokkeert.  U het toepassingsmanifest echter handmatig bewerken om queryparameters toe te voegen en dit in uw app te testen.  
 
 
 ## <a name="march-2019"></a>Maart 2019
 
-### <a name="looping-clients-will-be-interrupted"></a>Lussen van clients worden onderbroken
+### <a name="looping-clients-will-be-interrupted"></a>Looping clients worden onderbroken
 
-**Ingangs datum**: 25 maart 2019
+**Ingangsdatum**: 25 maart 2019
 
-**Beïnvloede eind punten**: zowel v 1.0 als v 2.0
+**Getroffen eindpunten**: Zowel v1.0 als v2.0
 
-**Beïnvloede protocollen**: alle stromen
+**Getroffen protocol**: Alle stromen
 
-Client toepassingen kunnen zich soms niet gedraagt, maar het uitgeven van honderden dezelfde aanmeldings aanvraag duurt een korte periode.  Deze aanvragen kunnen al dan niet slagen, maar ze dragen bij aan een slechte gebruikers ervaring en verhoogde werk belastingen voor de IDP, verg root de latentie voor alle gebruikers en de beschik baarheid van de IDP te verminderen.  Deze toepassingen bevinden zich buiten de grenzen van het normale gebruik en moeten worden bijgewerkt om correct te werken.  
+Clienttoepassingen kunnen zich soms misdragen en gedurende korte tijd honderden dezelfde inlogverzoeken indienen.  Deze verzoeken kunnen wel of niet succesvol zijn, maar ze dragen allemaal bij aan een slechte gebruikerservaring en verhoogde workloads voor het IDP, waardoor de latentie voor alle gebruikers toeneemt en de beschikbaarheid van het IDP wordt verminderd.  Deze toepassingen werken buiten de grenzen van normaal gebruik en moeten worden bijgewerkt om zich correct te gedragen.  
 
-Clients die dubbele aanvragen verzenden, krijgen meerdere keren een `invalid_grant` fout: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`. 
+Clients die meerdere keren dubbele aanvragen `invalid_grant` uitgeven, krijgen een foutmelding: `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`. 
 
-De meeste clients hoeven het gedrag niet te wijzigen om deze fout te voor komen.  Deze fout heeft alleen invloed op onjuist geconfigureerde clients (die geen token caching hebben of de prompt lussen al).  Clients worden op basis van de volgende factoren getraceerd per exemplaar (via cookie):
+De meeste clients hoeven het gedrag niet te wijzigen om deze fout te voorkomen.  Alleen verkeerd geconfigureerde clients (clients zonder tokencaching of die al snelle lussen vertonen) worden beïnvloed door deze fout.  Klanten worden per instantie lokaal (via cookie) gevolgd op de volgende factoren:
 
-* Gebruikers Hint, indien van toepassing
+* Gebruiker hint, indien aanwezig
 
-* Bereiken of bronnen die worden aangevraagd
+* Scopes of resource die worden aangevraagd
 
 * Client-id
 
 * Omleidings-URI
 
-* Antwoord type en modus
+* Reactietype en -modus
 
-Apps die in een korte periode (5 minuten) meerdere aanvragen maken, ontvangen een `invalid_grant` fout, waarin wordt uitgelegd dat ze worden herhaald.  De tokens die worden aangevraagd, hebben voldoende levens duur (10 minuten mini maal, 60 minuten standaard), zodat herhaalde aanvragen gedurende deze periode onnodig zijn.  
+Apps die meerdere aanvragen (15+) indienen in een korte `invalid_grant` periode (5 minuten) ontvangen een foutmelding waarin wordt uitgelegd dat ze aan het lussen zijn.  De tokens die worden aangevraagd hebben voldoende lange levensduur (minimaal 10 minuten, standaard 60 minuten), dus herhaalde verzoeken in deze periode zijn onnodig.  
 
-Alle apps moeten `invalid_grant` afhandelen door een interactieve prompt weer te geven in plaats van een token op de achtergrond te aanvragen.  Om deze fout te voor komen, moeten clients ervoor zorgen dat de tokens die ze ontvangen op de juiste wijze in de cache worden geplaatst.
+Alle apps `invalid_grant` moeten worden verwerkt door een interactieve prompt weer te geven, in plaats van in stilte een token aan te vragen.  Om deze fout te voorkomen, moeten klanten ervoor zorgen dat ze de tokens die ze ontvangen correct in cache plaatsen.
 
 
 ## <a name="october-2018"></a>Oktober 2018
 
-### <a name="authorization-codes-can-no-longer-be-reused"></a>Autorisatie codes kunnen niet langer opnieuw worden gebruikt
+### <a name="authorization-codes-can-no-longer-be-reused"></a>Autorisatiecodes kunnen niet meer worden hergebruikt
 
-**Ingangs datum**: 15 november 2018
+**Ingangsdatum**: 15 november 2018
 
-**Beïnvloede eind punten**: zowel v 1.0 als v 2.0
+**Getroffen eindpunten**: Zowel v1.0 als v2.0
 
-**Beïnvloede protocol**: [code stroom](v2-oauth2-auth-code-flow.md)
+**Getroffen protocol**: [Codestroom](v2-oauth2-auth-code-flow.md)
 
-Vanaf 15 November 2018, Azure AD wordt niet meer accepteren van eerder gebruikte verificatie codes voor apps. Deze wijziging in de beveiliging zorgt ervoor dat Azure AD in overeenstemming met de OAuth-specificatie brengen en worden afgedwongen op de v1- en v2-eindpunten.
+Vanaf 15 november 2018 stopt Azure AD met het accepteren van eerder gebruikte verificatiecodes voor apps. Deze beveiligingswijziging helpt azure AD in overeenstemming te brengen met de OAuth-specificatie en wordt afgedwongen op zowel de v1- als de V2-eindpunten.
 
-Als uw app wordt gebruikgemaakt van autorisatiecodes om op te halen van tokens voor meerdere bronnen, raden wij u gebruik van de code om op te halen van een vernieuwingstoken en gebruikt vervolgens die vernieuwingstoken om te verkrijgen van aanvullende tokens voor andere resources. Autorisatiecodes kunnen slechts eenmaal worden gebruikt, maar vernieuwen van tokens kunnen meerdere keren worden gebruikt in meerdere resources. Elke nieuwe app die probeert een verificatie code opnieuw te gebruiken tijdens de OAuth-code stroom krijgt een invalid_grant fout.
+Als uw app autorisatiecodes opnieuw gebruikt om tokens voor meerdere bronnen te krijgen, raden we u aan de code te gebruiken om een vernieuwingstoken te ontvangen en vervolgens dat vernieuwingstoken te gebruiken om extra tokens voor andere bronnen te verkrijgen. Autorisatiecodes kunnen slechts één keer worden gebruikt, maar vernieuwingstokens kunnen meerdere keren worden gebruikt in meerdere bronnen. Elke nieuwe app die probeert een verificatiecode opnieuw te gebruiken tijdens de OAuth-codestroom, krijgt een invalid_grant fout.
 
-Zie [de toegangs tokens vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token)voor meer informatie over het vernieuwen van tokens.  Als u ADAL of MSAL gebruikt, wordt dit door de bibliotheek verwerkt: Vervang het tweede exemplaar van ' AcquireTokenByAuthorizationCodeAsync ' door ' AcquireTokenSilentAsync '. 
+Zie [De toegangstokens vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token)voor meer informatie over vernieuwingstokens.  Als u ADAL of MSAL gebruikt, wordt dit voor u afgehandeld door de bibliotheek - vervang de tweede instantie van 'AcquireTokenByAuthorizationCodeAsync' door 'AcquireTokenSilentAsync'. 
 
 ## <a name="may-2018"></a>Mei 2018
 
@@ -164,15 +186,15 @@ Zie [de toegangs tokens vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-acce
 
 **Datum**: 1 mei 2018
 
-**Beïnvloede eind punten**: zowel v 1.0 als v 2.0
+**Getroffen eindpunten**: Zowel v1.0 als v2.0
 
-**Beïnvloede protocollen**: impliciete stroom en [namens-stroom](v2-oauth2-on-behalf-of-flow.md)
+**Getroffen protocollen**: Impliciete stroom en [rekening houden met stroom](v2-oauth2-on-behalf-of-flow.md)
 
-Na 1 mei 2018 kan id_tokens niet worden gebruikt als de bewering in een OBO-stroom voor nieuwe toepassingen. In plaats daarvan moeten toegangs tokens worden gebruikt om Api's te beveiligen, zelfs tussen een client en een middelste laag van dezelfde toepassing. Apps die zijn geregistreerd vóór 1 mei 2018 blijven werken en kunnen id_tokens voor een toegangs token uitwisselen. Dit patroon wordt echter niet beschouwd als een best practice.
+Na 1 mei 2018 kan id_tokens niet meer worden gebruikt als bewering in een OBO-stroom voor nieuwe toepassingen. Toegangstokens moeten in plaats daarvan worden gebruikt om API's te beveiligen, zelfs tussen een client en de middelste laag van dezelfde toepassing. Apps die vóór 1 mei 2018 zijn geregistreerd, blijven werken en kunnen id_tokens inwisselen voor een toegangstoken; Dit patroon wordt echter niet beschouwd als een beste praktijk.
 
-Als u deze wijziging wilt omzeilen, kunt u het volgende doen:
+Als u deze wijziging wilt omzeilen, u het volgende doen:
 
-1. Een web-API maken voor uw toepassing, met een of meer scopes. Dit expliciete ingangs punt staat nauw keurig gekorrelig beheer en beveiliging toe.
-1. Controleer in het manifest van uw app, in de [Azure Portal](https://portal.azure.com) of de [app registratie Portal](https://apps.dev.microsoft.com), of de app toegangs tokens mag uitgeven via de impliciete stroom. Dit wordt bepaald door de `oauth2AllowImplicitFlow` sleutel.
-1. Als uw client toepassing een id_token aanvraagt via `response_type=id_token`, moet u ook een toegangs token (`response_type=token`) aanvragen voor de Web-API die hierboven is gemaakt. Wanneer u het v 2.0-eind punt gebruikt, moet de para meter `scope` er als volgt uitzien: `api://GUID/SCOPE`. Op het eind punt v 1.0 moet de para meter `resource` de app-URI zijn van de Web-API.
-1. Geef dit toegangs token door aan de middelste laag in plaats van de id_token.  
+1. Maak een web-API voor uw toepassing, met een of meer scopes. Dit expliciete toegangspunt zal fijnere korrelige controle en veiligheid toestaan.
+1. Zorg er in het manifest van uw app, in de [Azure-portal](https://portal.azure.com) of de [app-registratieportal,](https://apps.dev.microsoft.com)voor dat de app toegangstokens mag uitgeven via de impliciete stroom. Dit wordt gecontroleerd `oauth2AllowImplicitFlow` door de sleutel.
+1. Wanneer uw clienttoepassing een `response_type=id_token`id_token aanvraagt via, vraagt u ook een access token aan (`response_type=token`) voor de web-API die hierboven is gemaakt. Bij het gebruik van het v2.0-eindpunt moet de `scope` parameter er dus hetzelfde uitzien als `api://GUID/SCOPE`. Op het v1.0-eindpunt `resource` moet de parameter de app URI van de web-API zijn.
+1. Geef dit toegangstoken door aan de middelste laag in plaats van de id_token.  

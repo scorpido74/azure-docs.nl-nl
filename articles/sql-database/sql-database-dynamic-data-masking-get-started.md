@@ -1,6 +1,6 @@
 ---
 title: Dynamische gegevensmaskering
-description: Dynamische gegevens maskering beperkt de bloot stelling van gevoelige gegevens door deze te maskeren voor niet-gemachtigde gebruikers voor SQL Database en Azure Synapse
+description: Dynamische gegevensmaskering beperkt de blootstelling aan gevoelige gegevens door deze te maskeren aan niet-bevoorrechte gebruikers voor SQL Database en Azure Synapse
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -14,52 +14,52 @@ ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
 ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78192911"
 ---
-# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Dynamische gegevens maskering voor Azure SQL Database en Azure Synapse Analytics
+# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Dynamische gegevensmaskering voor Azure SQL Database en Azure Synapse Analytics
 
-SQL Database dynamische gegevens maskering beperkt de bloot stelling van gevoelige gegevens door deze te maskeren voor niet-bevoegde gebruikers. 
+Met dynamische gegevensmaskering in SQL Database wordt de blootstelling van gevoelige gegevens beperkt door deze gegevens te maskeren voor niet-gemachtigde gebruikers. 
 
 Dynamische gegevensmaskering helpt onbevoegde toegang tot gevoelige gegevens te voorkomen, doordat klanten kunnen aangeven hoeveel van de gevoelige gegevens mag worden vrijgegeven, met minimale gevolgen voor de toepassingslaag. Dit is een beveiligingsfunctie op basis van beleid. De gevoelige gegevens in de resultatenset van een query die is uitgevoerd op toegewezen databasevelden worden verborgen, terwijl de gegevens in de database niet worden gewijzigd.
 
-Een service medewerker in Call Center kan bijvoorbeeld bellers identificeren met verschillende cijfers van hun creditcard nummer, maar deze gegevens items mogen niet volledig worden blootgesteld aan de mede werker van de service. Er kan een maskerings regel worden gedefinieerd waarmee alle, behalve de laatste vier cijfers van een creditcard nummer in de resultatenset van een wille keurige query worden gemaskeerd. Een ander voor beeld is dat er een geschikt gegevens masker kan worden gedefinieerd om PII-gegevens (persoonlijk identificeer bare informatie) te beveiligen, zodat een ontwikkelaar productie omgevingen kan opvragen voor het oplossen van problemen zonder dat nalevings voorschriften worden geschonden.
+Een servicemedewerker van een callcenter kan bellers bijvoorbeeld identificeren met meerdere cijfers van hun creditcardnummer, maar deze gegevensitems mogen niet volledig worden blootgesteld aan de servicevertegenwoordiger. Er kan een maskerregel worden gedefinieerd die alle, behalve de laatste vier cijfers van een creditcardnummer in de resultatenset van een query maskeert. Als ander voorbeeld kan een geschikt gegevensmasker worden gedefinieerd om persoonlijk identificeerbare informatie (PII)-gegevens te beschermen, zodat een ontwikkelaar productieomgevingen kan opvragen voor probleemoplossingsdoeleinden zonder de nalevingsvoorschriften te schenden.
 
-## <a name="dynamic-data-masking-basics"></a>Basis beginselen van dynamische gegevens maskering
+## <a name="dynamic-data-masking-basics"></a>Basisprincipes voor het maskeren van dynamische gegevens
 
-U stelt een beleid voor dynamische gegevens maskering in de Azure Portal in door de bewerking voor dynamische gegevens maskering te selecteren op de Blade SQL Database configuratie of de Blade instellingen. Deze functie kan niet worden ingesteld met behulp van de portal voor Azure Synapse (gebruik Power shell of REST API)
+U stelt een dynamisch gegevensmaskerbeleid in de Azure-portal in door de dynamische gegevensmaskerbewerking te selecteren in uw SQL Database-configuratieblad of -instellingenblad. Deze functie kan niet worden ingesteld met portal voor Azure Synapse (Gebruik Powershell of REST API)
 
-### <a name="dynamic-data-masking-permissions"></a>Machtigingen voor dynamische gegevens maskering
+### <a name="dynamic-data-masking-permissions"></a>Machtigingen voor het maskeren van dynamische gegevens
 
-Dynamische gegevens maskering kan worden geconfigureerd door de rollen Azure SQL Database beheerder, Server beheerder of [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) .
+Dynamische gegevensmaskering kan worden geconfigureerd door de rollen Azure SQL Database-beheerder, serverbeheerder of [SQL Security Manager.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager)
 
-### <a name="dynamic-data-masking-policy"></a>Beleid voor dynamische gegevens maskering
+### <a name="dynamic-data-masking-policy"></a>Dynamisch gegevensmaskerbeleid
 
-* **SQL-gebruikers die zijn uitgesloten van maskering** : een set SQL-gebruikers of Aad-identiteiten die niet-gemaskeerde gegevens in de SQL-query resultaten ophalen. Gebruikers met beheerders bevoegdheden zijn altijd uitgesloten van maskering en zien de oorspronkelijke gegevens zonder masker.
-* **Maskerings regels** : een set regels waarmee de aangewezen velden worden gedefinieerd die moeten worden gemaskeerd en de maskerings functie die wordt gebruikt. De aangewezen velden kunnen worden gedefinieerd met behulp van de naam van het database schema, de tabel naam en de kolom naam.
-* **Masker functies** : een set methoden waarmee de bloot stelling van gegevens voor verschillende scenario's wordt bepaald.
+* **SQL-gebruikers uitgesloten van maskeren** - Een set SQL-gebruikers of AAD-identiteiten die ongemaskerde gegevens in de SQL-queryresultaten krijgen. Gebruikers met beheerdersbevoegdheden zijn altijd uitgesloten van maskeren en zien de oorspronkelijke gegevens zonder masker.
+* **Maskeren regels** - Een set regels die de aangewezen velden definiëren die moeten worden gemaskeerd en de maskerfunctie die wordt gebruikt. De aangewezen velden kunnen worden gedefinieerd met de naam van het databaseschema, de tabelnaam en de kolomnaam.
+* **Maskerenfuncties** - Een reeks methoden die de blootstelling van gegevens voor verschillende scenario's regelen.
 
-| Maskerings functie | Logica maskeren |
+| Maskeren, functie | Maskeren logica |
 | --- | --- |
-| **Standaard** |**Volledige maskering volgens de gegevens typen van de aangewezen velden**<br/><br/>• Gebruik XXXX of minder XS als de grootte van het veld kleiner is dan 4 tekens voor teken reeks gegevens typen (NCHAR, ntext, nvarchar).<br/>• Gebruik de waarde nul voor numerieke gegevens typen (bigint, bit, Decimal, int, Money, numeric, smallint, smallmoney, tinyint, float, Real).<br/>• Gebruik 01-01-1900 voor datum-en tijd gegevens typen (datum, DATETIME2, datetime, date time offset, smalldatetime, time).<br/>• Voor SQL-variant wordt de standaard waarde van het huidige type gebruikt.<br/>• Voor XML wordt het document \<gemaskeerd/> gebruikt.<br/>• Gebruik een lege waarde voor speciale gegevens typen (Time Stamp-tabel, hierarchyid, GUID, binary, afbeelding, type Spatial). |
-| **Credit Card** |**Maskerings methode, waarmee de laatste vier cijfers van de aangewezen velden worden** weer gegeven en een constante teken reeks als voor voegsel wordt toegevoegd in de vorm van een credit card.<br/><br/>XXXX-XXXX-XXXX-1234 |
-| **E-mail** |**Maskerings methode, waarmee de eerste letter wordt weer gegeven en het domein wordt vervangen door xxx.com** met behulp van een constante voor voegsel van een teken reeks in de vorm van een e-mail adres.<br/><br/>aXX@XXXX.com |
-| **Wille keurig getal** |**Maskerings methode, waarmee een wille keurig getal wordt gegenereerd** op basis van de geselecteerde grenzen en de werkelijke gegevens typen. Als de aangewezen grenzen gelijk zijn, is de maskerings functie een constant getal.<br/><br/>![navigatie deel venster](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
-| **Aangepaste tekst** |**Maskerings methode, waarmee de eerste en laatste tekens worden** weer gegeven en een aangepaste opvullings teken reeks wordt toegevoegd aan het midden. Als de oorspronkelijke teken reeks korter is dan het weer gegeven voor voegsel en achtervoegsel, wordt alleen de opvullings teken reeks gebruikt. <br/>prefix[padding]suffix<br/><br/>![navigatie deel venster](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
+| **Standaard** |**Volledige maskering op basis van de gegevenstypen van de aangewezen velden**<br/><br/>• Gebruik XXXX of minder Xs als de grootte van het veld kleiner is dan 4 tekens voor tekenreeksgegevenstypen (nchar, ntext, nvarchar).<br/>• Gebruik een nulwaarde voor numerieke gegevenstypen (bigint, bit, decimal, int, geld, numeriek, smallint, smallmoney, tinyint, float, real).<br/>• Gebruik 01-01-1900 voor datum/tijd gegevenstypen (datum, datum2, datumtijd, datumverschuiving, smalldate, tijd).<br/>• Voor sql-variant wordt de standaardwaarde van het huidige type gebruikt.<br/>• Voor XML \<wordt het document masked/> gebruikt.<br/>• Gebruik een lege waarde voor speciale gegevenstypen (tijdstempeltabel, hierarchyid, GUID, binair, afbeelding, varbinary ruimtelijke types). |
+| **Creditcard** |**Maskermethode, die de laatste vier cijfers van de aangewezen velden blootlegt** en een constante tekenreeks toevoegt als voorvoegsel in de vorm van een creditcard.<br/><br/>XXXX-XXXX-XXXX-1234 |
+| **Email** |**Maskermethode, die de eerste letter blootstelt en het domein vervangt door XXX.com** met behulp van een constant voorvoegsel in de vorm van een e-mailadres.<br/><br/>aXX@XXXX.com |
+| **Willekeurig getal** |**Maskermethode, die een willekeurig getal genereert** op basis van de geselecteerde grenzen en werkelijke gegevenstypen. Als de aangewezen grenzen gelijk zijn, is de maskerfunctie een constant getal.<br/><br/>![Navigatiedeelvenster](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
+| **Aangepaste tekst** |**Maskermethode, die de eerste en laatste tekens blootlegt** en een aangepaste opvullingstekenreeks in het midden toevoegt. Als de oorspronkelijke tekenreeks korter is dan het blootgestelde voorvoegsel en achtervoegsel, wordt alleen de opvullingstekenreeks gebruikt. <br/>voorvoegsel[padding]achtervoegsel<br/><br/>![Navigatiedeelvenster](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 
 <a name="Anchor1"></a>
 
 ### <a name="recommended-fields-to-mask"></a>Aanbevolen velden om te maskeren
 
-De DDM-engine voor aanbevelingen, markeert bepaalde velden uit uw data base als mogelijk gevoelige velden. Dit kan goede kandidaten zijn voor maskering. In de Blade dynamische gegevens maskering in de portal worden de aanbevolen kolommen voor uw Data Base weer gegeven. U hoeft alleen maar op **masker toevoegen** te klikken voor een of meer kolommen en vervolgens op te **slaan** om een masker voor deze velden toe te passen.
+De DDM aanbevelingen engine, vlaggen bepaalde velden uit uw database als potentieel gevoelige velden, die goede kandidaten voor maskeren kan zijn. In het dynamic data masking blade in de portal ziet u de aanbevolen kolommen voor uw database. Het enige wat u hoeft te doen is op **Masker toevoegen** voor een of meer kolommen en vervolgens **opslaan** om een masker voor deze velden toe te passen.
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Dynamische gegevens maskering instellen voor uw data base met behulp van Power shell-cmdlets
+## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Dynamische gegevensmaskering instellen voor uw database met PowerShell-cmdlets
 
-Zie [Azure SQL database-cmdlets](https://docs.microsoft.com/powershell/module/az.sql).
+Zie [Azure SQL Database Cmdlets](https://docs.microsoft.com/powershell/module/az.sql).
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Dynamische gegevens maskering instellen voor uw data base met behulp van REST API
+## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Dynamische gegevensmaskering voor uw database instellen met restapi
 
-Zie [bewerkingen voor Azure SQL database](https://docs.microsoft.com/rest/api/sql/).
+Zie [Operations for Azure SQL Database](https://docs.microsoft.com/rest/api/sql/).

@@ -1,37 +1,37 @@
 ---
-title: Bevoegde containers uitvoeren in een Azure Red Hat open Shift-cluster | Microsoft Docs
+title: Geprivilegieerde containers uitvoeren in een Azure Red Hat OpenShift-cluster | Microsoft Documenten
 description: Voer geprivilegieerde containers uit om de beveiliging en naleving te controleren.
 author: makdaam
 ms.author: b-lejaku
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
-keywords: Aro, open Shift, aquasec, twistlock, Red Hat
+keywords: aro, openshift, aquasec, twistlock, rode hoed
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78271365"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Bevoorrechte containers uitvoeren in een Azure Red Hat OpenShift-cluster
 
-U kunt geen wille keurige, geprivilegieerde containers uitvoeren op Azure Red Hat open Shift-clusters.
-Twee beveiligings-en compatibiliteits oplossingen mogen worden uitgevoerd op ARO-clusters.
-In dit document worden de verschillen beschreven van de algemene open Shift-implementatie documentatie van de leveranciers van het beveiligings product.
+U willekeurige bevoorrechte containers niet uitvoeren op Azure Red Hat OpenShift-clusters.
+Twee beveiligingsmonitoring- en complianceoplossingen mogen worden uitgevoerd op ARO-clusters.
+In dit document worden de verschillen beschreven met de algemene OpenShift-implementatiedocumentatie van de leveranciers van beveiligingsproducten.
 
 
-Lees deze instructies door voordat u de instructies van de leverancier volgt.
-Sectie titels in productspecifieke stappen hieronder verwijzen rechtstreeks naar sectie titels in de documentatie van de leveranciers.
+Lees deze instructies door voordat u de instructies van de leverancier opvolgt.
+Sectietitels in productspecifieke stappen hieronder verwijzen rechtstreeks naar sectietitels in de documentatie van de leveranciers.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-De documentatie van de meeste beveiligings producten veronderstelt dat u cluster beheerders bevoegdheden hebt.
-Klant beheerders hebben niet alle bevoegdheden in azure Red Hat open SHIFT. De vereiste machtigingen voor het wijzigen van de cluster bronnen zijn beperkt.
+De documentatie van de meeste beveiligingsproducten gaat ervan uit dat u clusterbeheerdersrechten hebt.
+Klantbeheerders hebben niet alle bevoegdheden in Azure Red Hat OpenShift. Machtigingen die nodig zijn om clusterbrede bronnen te wijzigen, zijn beperkt.
 
-Controleer eerst of de gebruiker is aangemeld bij het cluster als klant beheerder door `oc get scc`uit te voeren. Alle gebruikers die lid zijn van de groep klant beheerders, hebben machtigingen voor het weer geven van de beveiligings context beperkingen (SCCs) op het cluster.
+Zorg er eerst voor dat de gebruiker is aangemeld `oc get scc`bij het cluster als klantbeheerder door . Alle gebruikers die lid zijn van de klantenbeheergroep hebben machtigingen om de Beveiligingscontextbeperkingen (SCS) op het cluster weer te geven.
 
-Controleer vervolgens of de `oc` binaire versie `3.11.154`is.
+Zorg er vervolgens `oc` voor `3.11.154`dat de binaire versie .
 ```
 oc version
 oc v3.11.154
@@ -43,40 +43,40 @@ openshift v3.11.154
 kubernetes v1.11.0+d4cacc0
 ```
 
-## <a name="product-specific-steps-for-aqua-security"></a>Productspecifieke stappen voor de veiligheid van het licht blauw
-De basis instructies die u kunt wijzigen, vindt u in de [documentatie over de beveiligings implementatie](https://docs.aquasec.com/docs/openshift-red-hat)van het licht blauw. De stappen die hier worden uitgevoerd, worden in combi natie met de onderhanden implementatie documentatie voor het licht.
+## <a name="product-specific-steps-for-aqua-security"></a>Productspecifieke stappen voor Aqua Security
+De basisinstructies die zullen worden gewijzigd, zijn te vinden in de [aqua security-implementatiedocumentatie.](https://docs.aquasec.com/docs/openshift-red-hat) De stappen hier worden uitgevoerd in combinatie met de Aqua-implementatiedocumentatie.
 
-De eerste stap is om aantekeningen te maken op de vereiste SCCs die wordt bijgewerkt. Met deze annotaties wordt voor komen dat de synchronisatie van het cluster pod de wijzigingen in deze SSCs herstelt.
+De eerste stap is het annoteren van de vereiste SCC's die worden bijgewerkt. Deze annotaties voorkomen dat de Sync Pod van het cluster wijzigingen in deze SSCs terugdraait.
 
 ```
 oc annotate scc hostaccess openshift.io/reconcile-protect=true
 oc annotate scc privileged openshift.io/reconcile-protect=true
 ```
 
-### <a name="step-1-prepare-prerequisites"></a>Stap 1: vereisten voorbereiden
-Vergeet niet om u aan te melden bij het cluster als een ARO-klant beheerder in plaats van de rol cluster beheerder.
+### <a name="step-1-prepare-prerequisites"></a>Stap 1: Voorwaarden voorbereiden
+Vergeet niet om in te loggen op het cluster als een ARO-klantbeheerder in plaats van de cluster-admin rol.
 
-Maak het project en het service account.
+Maak het project en het serviceaccount.
 ```
 oc new-project aqua-security
 oc create serviceaccount aqua-account -n aqua-security
 ```
 
-Wijs, in plaats van de rol cluster lezer toe te wijzen, de rol klant-beheerder-cluster toe aan de zeeblauw-account met de volgende opdracht.
+In plaats van de clusterlezerrol toe te wijzen, wijst u de rol klant-admin-cluster toe aan het aqua-account met de volgende opdracht.
 ```
 oc adm policy add-cluster-role-to-user customer-admin-cluster system:serviceaccount:aqua-security:aqua-account
 oc adm policy add-scc-to-user privileged system:serviceaccount:aqua-security:aqua-account
 oc adm policy add-scc-to-user hostaccess system:serviceaccount:aqua-security:aqua-account
 ```
 
-Volg de resterende instructies in stap 1.  In deze instructies wordt beschreven hoe u het geheim instelt voor het onderhanden register.
+Ga verder met het volgen van de resterende instructies in stap 1.  Deze instructies beschrijven het opzetten van het geheim voor het Aqua-register.
 
-### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>Stap 2: de blauwe server, data base en gateway implementeren
-Volg de stappen in de onderhouds documentatie voor het installeren van de YAML.
+### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>Stap 2: De Aqua Server, Database en Gateway implementeren
+Volg de stappen in de Aqua-documentatie voor het installeren van de aqua-console.yaml.
 
-Wijzig de gegeven `aqua-console.yaml`.  Verwijder de bovenste twee objecten met het label `kind: ClusterRole` en `kind: ClusterRoleBinding`.  Deze resources worden niet gemaakt, omdat de beheerder van de klant op dit moment geen toestemming heeft om `ClusterRole` en `ClusterRoleBinding` objecten te wijzigen.
+Wijzig de `aqua-console.yaml`opgegeven .  Verwijder de bovenste twee `kind: ClusterRole` objecten `kind: ClusterRoleBinding`met het label en .  Deze bronnen worden niet gemaakt omdat de klantbeheerder op dit `ClusterRole` moment `ClusterRoleBinding` geen toestemming heeft om te wijzigen en objecten.
 
-De tweede wijziging is het `kind: Route` gedeelte van de `aqua-console.yaml`. Vervang de volgende YAML voor het object `kind: Route` in het `aqua-console.yaml` bestand.
+De tweede wijziging zal `kind: Route` worden `aqua-console.yaml`aan het gedeelte van de . Vervang de volgende yaml voor het `kind: Route` object in het `aqua-console.yaml` bestand.
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -98,52 +98,52 @@ spec:
   wildcardPolicy: None
 ```
 
-Volg de resterende instructies.
+Volg de overige instructies.
 
-### <a name="step-3-login-to-the-aqua-server"></a>Stap 3: aanmelden bij de zeeblauwe-server
-Deze sectie is op geen enkele manier gewijzigd.  Volg de documentatie bij het licht blauw.
+### <a name="step-3-login-to-the-aqua-server"></a>Stap 3: Inloggen op de Aqua Server
+Deze sectie wordt op geen enkele manier gewijzigd.  Volg de Aqua documentatie.
 
-Gebruik de volgende opdracht om het adres van de zeeblauw-console op te halen.
+Gebruik de volgende opdracht om het Aqua Console-adres op te halen.
 ```
 oc get route aqua-web -n aqua-security
 ```
 
-### <a name="step-4-deploy-aqua-enforcers"></a>Stap 4: blauwe afdwingers implementeren
-Stel de volgende velden in wanneer u afdwingers implementeert:
+### <a name="step-4-deploy-aqua-enforcers"></a>Stap 4: Zet Aqua Enforcers in
+Stel de volgende velden in bij het inzetten van handhavers:
 
 | Veld          | Waarde         |
 | -------------- | ------------- |
 | Orchestrator   | OpenShift     |
-| ServiceAccount | licht blauw  |
-| Project        | licht blauw: beveiliging |
+| ServiceAccount | aqua-account  |
+| Project        | aqua-beveiliging |
 
-## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Productspecifieke stappen voor prisma Cloud/Twistlock
+## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Productspecifieke stappen voor Prisma Cloud / Twistlock
 
-De basis instructies die u kunt wijzigen, zijn te vinden in de [prisma-documentatie over Cloud implementatie](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)
+De basisinstructies die we gaan wijzigen, zijn te vinden in de [implementatiedocumentatie van Prisma Cloud](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)
 
-Begin door het `twistcli`-hulp programma te installeren, zoals beschreven in de secties ' install prisma Cloud ' en ' down load the prisma cloud software '.
+Begin met het `twistcli` installeren van de tool zoals beschreven in de secties 'Prisma Cloud installeren' en 'Download de Prisma Cloud-software'.
 
-Een nieuw open Shift-project maken
+Een nieuw OpenShift-project maken
 ```
 oc new-project twistlock
 ```
 
-Sla de optionele sectie ' push de prisma-Cloud installatie kopieën naar een persoonlijk REGI ster over '. Het werkt niet op Azure Red Hat open SHIFT. Gebruik in plaats daarvan het online REGI ster.
+Sla de optionele sectie 'Push the Prisma Cloud images to a private registry' over. Het zal niet werken op Azure Red Hat Openshift. Gebruik in plaats daarvan het online register.
 
-U kunt de officiële documentatie volgen bij het Toep assen van de correcties die hieronder worden beschreven.
-Begin met de sectie console installeren.
+U de officiële documentatie volgen tijdens het toepassen van de onderstaande correcties.
+Begin met de sectie Console installeren.
 
 ### <a name="install-console"></a>Console installeren
 
-Tijdens `oc create -f twistlock_console.yaml` in stap 2 krijgt u een fout melding bij het maken van de naam ruimte.
-U kunt deze gewoon negeren, de naam ruimte is eerder gemaakt met de opdracht `oc new-project`.
+Tijdens `oc create -f twistlock_console.yaml` stap 2 krijg je een foutmelding bij het maken van de naamruimte.
+U het veilig negeren, de naamruimte `oc new-project` is eerder gemaakt met de opdracht.
 
-Gebruik `azure-disk` voor het opslag type.
+Gebruik `azure-disk` voor opslagtype.
 
-### <a name="create-an-external-route-to-console"></a>Een externe route naar de console maken
+### <a name="create-an-external-route-to-console"></a>Een externe route naar Console maken
 
-U kunt de documentatie volgen of de onderstaande instructies als u de voor keur geeft aan de opdracht OC.
-Kopieer de volgende route definitie naar een bestand met de naam twistlock_route. yaml op uw computer
+U de documentatie volgen, of de instructies hieronder als u de oc-opdracht verkiest.
+De volgende routedefinitie kopiëren naar een bestand met de naam twistlock_route.yaml op uw computer
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -164,20 +164,20 @@ spec:
     weight: 100
   wildcardPolicy: None
 ```
-Voer vervolgens de volgende handelingen uit:
+vervolgens uitvoeren:
 ```
 oc create -f twistlock_route.yaml
 ```
 
-U kunt de URL die is toegewezen aan de Twistlock-console ophalen met de volgende opdracht: `oc get route twistlock-console -n twistlock`
+Met deze opdracht u de URL toegewezen krijgen aan de Twistlock-console:`oc get route twistlock-console -n twistlock`
 
 ### <a name="configure-console"></a>Console configureren
 
-Volg de Twistlock-documentatie.
+Volg de Twistlock documentatie.
 
 ### <a name="install-defender"></a>Defender installeren
 
-Tijdens `oc create -f defender.yaml` in stap 2 krijgt u fouten bij het maken van de cluster functie en de binding van de cluster functie.
-U kunt deze negeren.
+Tijdens `oc create -f defender.yaml` stap 2 krijg je fouten bij het maken van de clusterrol- en clusterrolbinding.
+Je ze negeren.
 
-Verdedigen worden alleen geïmplementeerd op reken knooppunten. U hoeft deze niet te beperken met een knooppunt kiezer.
+Verdedigers worden alleen geïmplementeerd op compute nodes. U hoeft ze niet te beperken met een knooppuntkiezer.

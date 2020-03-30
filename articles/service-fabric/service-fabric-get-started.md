@@ -1,15 +1,15 @@
 ---
-title: Een Windows-ontwikkel omgeving instellen
+title: Een Windows-ontwikkelomgeving instellen
 description: Installeer de runtime, SDK en hulpprogramma's en maak een lokaal ontwikkelcluster. Zodra u dit hebt gedaan, kunt u toepassingen bouwen in Windows.
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.custom: sfrev
 ms.openlocfilehash: f08c6b0675475b4e15ce6db3a9dbe0e2863b9ddb
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252773"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Uw ontwikkelomgeving voorbereiden in Windows
@@ -21,7 +21,7 @@ ms.locfileid: "78252773"
 >
 >
 
-Als u [Azure service Fabric-toepassingen][1] wilt bouwen en uitvoeren op uw Windows-ontwikkel computer, installeert u de service Fabric runtime, SDK en hulpprogram ma's. U moet ook [de uitvoering van de Windows PowerShell-scripts inschakelen](#enable-powershell-script-execution) die in de SDK zijn opgenomen.
+Als u [Azure Service Fabric-toepassingen][1] wilt bouwen en uitvoeren op een Windows-ontwikkelmachine, moet u de Service Fabric-runtime, SDK en hulpprogramma's installeren. U moet ook [de uitvoering van de Windows PowerShell-scripts in](#enable-powershell-script-execution) de SDK inschakelen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,19 +37,19 @@ De volgende versies van besturingssystemen worden ondersteund voor de ontwikkeli
 
 > [!NOTE]
 > Ondersteuning voor Windows 7:
-> - Windows 7 bevat standaard alleen Windows PowerShell 2.0. Voor Service Fabric PowerShell-cmdlets is PowerShell 3.0 of hoger vereist. U kunt [Windows Power shell 5,1 downloaden][powershell5-download] van het micro soft Download centrum.
+> - Windows 7 bevat standaard alleen Windows PowerShell 2.0. Voor Service Fabric PowerShell-cmdlets is PowerShell 3.0 of hoger vereist. U [Windows PowerShell 5.1 downloaden][powershell5-download] vanuit het Microsoft Downloadcentrum.
 > - Er is geen omgekeerde proxy voor Service Fabric beschikbaar in Windows 7.
 
 ## <a name="install-the-sdk-and-tools"></a>De SDK en hulpprogramma's installeren
 
-Web platform Installer (WebPI) is de aanbevolen manier om de SDK en hulpprogram ma's te installeren. Als er runtime-fouten worden ontvangen met behulp van WebPI, kunt u ook directe koppelingen naar de installatie Programma's in de release opmerkingen vinden voor een specifieke Service Fabric versie. De release opmerkingen vindt u in de verschillende release mededelingen op het [service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric/).
+Web Platform Installer (WebPI) is de aanbevolen manier om de SDK en tools te installeren. Als u runtime-fouten ontvangt met WebPI, u in de releasenotes ook directe koppelingen naar de installateurs vinden voor een specifieke Service Fabric-release. De release notes zijn te vinden in de verschillende release aankondigingen op de [Service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric/).
 
 > [!NOTE]
-> Lokale Service Fabric ontwikkeling van cluster upgrades worden niet ondersteund.
+> Upgrades van lokale servicefabric-ontwikkelingsclusterworden niet ondersteund.
 
 ### <a name="to-use-visual-studio-2017-or-2019"></a>Visual Studio 2017 of 2019 gebruiken
 
-De Service Fabric-Hulpprogram Ma's maken deel uit van de Azure Development-werk belasting in Visual Studio 2017 en 2019. Schakel deze workload in als onderdeel van de Visual Studio-installatie.
+De Hulpprogramma's voor servicefabriczijn onderdeel van de Azure Development-workload in Visual Studio 2017 en 2019. Schakel deze workload in als onderdeel van de Visual Studio-installatie.
 Bovendien moet u de Microsoft Azure Service Fabric SDK en runtime installeren met behulp van het webplatforminstallatieprogramma.
 
 * [Microsoft Azure Service Fabric SDK installeren][core-sdk]
@@ -58,7 +58,7 @@ Bovendien moet u de Microsoft Azure Service Fabric SDK en runtime installeren me
 
 In Visual Studio 2015 worden de hulpprogramma's voor Service Fabric samen met de SDK en runtime geïnstalleerd met behulp van het webplatforminstallatieprogramma:
 
-* [De Microsoft Azure Service Fabric SDK en Hulpprogram Ma's installeren][full-bundle-vs2015]
+* [De Microsoft Azure Service Fabric SDK en -hulpprogramma's installeren][full-bundle-vs2015]
 
 ### <a name="sdk-installation-only"></a>Alleen SDK-installatie
 
@@ -68,13 +68,13 @@ Als u alleen de SDK nodig hebt, kunt u dit pakket installeren:
 
 De huidige versies zijn:
 
-* Service Fabric SDK en Hulpprogram Ma's 4.0.470
-* Service Fabric runtime-7.0.470
+* Service Fabric SDK en Tools 4.0.470
+* Runtime van servicestof 7.0.470
 
-Zie [service Fabric versies](service-fabric-versions.md) voor een lijst met ondersteunde versies
+Zie [Service Fabric-versies](service-fabric-versions.md) voor een lijst met ondersteunde versies
 
 > [!NOTE]
-> Clusters met één computer (OneBox) worden niet ondersteund voor upgrades van toepassingen of clusters; Verwijder het OneBox-cluster en maak het opnieuw als u een cluster upgrade moet uitvoeren of als u problemen hebt met het uitvoeren van een toepassings upgrade. 
+> Single machine clusters (OneBox) worden niet ondersteund voor application of cluster upgrades; Verwijder het OneBox-cluster en maak het opnieuw als u een clusterupgrade moet uitvoeren of problemen hebt met het uitvoeren van een toepassingsupgrade. 
 
 ## <a name="enable-powershell-script-execution"></a>Uitvoering van PowerShell-script inschakelen
 
@@ -86,7 +86,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 ## <a name="install-docker-optional"></a>Docker installeren (optioneel)
 
-[Service Fabric is een container Orchestrator](service-fabric-containers-overview.md) voor het implementeren van micro Services op een cluster van machines. Als u Windows-container toepassingen wilt uitvoeren op uw lokale ontwikkel cluster, moet u eerst docker voor Windows installeren. Haal [docker CE voor Windows (stabiel) op](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Nadat u Docker hebt geïnstalleerd en gestart, klikt u met de rechtermuisknop op het systeemvakpictogram en selecteert u **Overschakelen naar Windows-containers**. Deze stap is vereist voor het uitvoeren van Docker-installatiekopieën onder Windows.
+[Service Fabric is een containerorchestrator](service-fabric-containers-overview.md) voor het implementeren van microservices in een cluster van machines. Als u Windows-containertoepassingen wilt uitvoeren op uw lokale ontwikkelingscluster, moet u docker voor Windows eerst installeren. Haal [Docker CE voor Windows (stabiel)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Nadat u Docker hebt geïnstalleerd en gestart, klikt u met de rechtermuisknop op het systeemvakpictogram en selecteert u **Overschakelen naar Windows-containers**. Deze stap is vereist voor het uitvoeren van Docker-installatiekopieën onder Windows.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -100,7 +100,7 @@ Nu u uw ontwikkelingsomgeving hebt ingesteld, kunt u apps ontwikkelen en uitvoer
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric-campagnepagina"
 [2]: https://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI-koppeling"
-[full-bundle-dev15]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI-koppeling"
-[core-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI-koppeling"
+[full-bundle-vs2015]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI-koppeling"
+[full-bundle-dev15]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI-koppeling"
+[core-sdk]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "Core SDK WebPI-koppeling"
 [powershell5-download]:https://www.microsoft.com/download/details.aspx?id=54616
