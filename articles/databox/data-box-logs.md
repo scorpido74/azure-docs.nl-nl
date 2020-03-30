@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box bijhouden en registreren Azure Data Box Heavy gebeurtenissen | Microsoft Docs
-description: Hierin wordt beschreven hoe u gebeurtenissen in de verschillende fasen van uw Azure Data Box en Azure Data Box Heavy order kunt bijhouden en registreren.
+title: Azure Data Box, Azure Data Box Zware gebeurtenissen bijhouden en registreren| Microsoft Documenten
+description: Beschrijft hoe u gebeurtenissen bijhouden en registreren in de verschillende fasen van uw Azure Data Box en Azure Data Box Heavy-order.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,79 +9,79 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260018"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Tracering en logboek registratie voor uw Azure Data Box en Azure Data Box Heavy
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Tracking- en gebeurtenislogboekregistratie voor uw Azure Data Box en Azure Data Box Heavy
 
-Met een Data Box-of Data Box Heavy bestelling worden de volgende stappen door lopen: order, instellen, gegevens kopiëren, retour neren, uploaden naar Azure en gegevens verwijdering. Die overeenkomt met elke stap in de order, kunt u meerdere acties ondernemen om de toegang tot de order te beheren, de gebeurtenissen te controleren, de volg orde bij te houden en de verschillende logboeken te interpreteren die worden gegenereerd.
+Een gegevensvak of gegevensvak zware order gaat door de volgende stappen: order, set-up, data copy, return, upload naar Azure en verifiëren, en gegevens wissen. Als u overeenkomt met elke stap in de volgorde, u meerdere acties uitvoeren om de toegang tot de order te beheren, de gebeurtenissen te controleren, de volgorde bij te houden en de verschillende logboeken die worden gegenereerd te interpreteren.
 
-De volgende tabel bevat een samen vatting van de Data Box-of Data Box Heavy volgorde stappen en de hulpprogram ma's die beschikbaar zijn om de volg orde tijdens elke stap bij te houden en te controleren.
+In de volgende tabel vindt u een overzicht van de bestelstappen Gegevensvak of Gegevensvak Zwaar en de tools die beschikbaar zijn om de order tijdens elke stap bij te houden en te controleren.
 
-| Fase van Data Box order       | Hulp programma voor het volgen en controleren                                                                        |
+| Volgorde van de gegevensbox       | Tool om bij te houden en te controleren                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Order maken               | [Toegangs beheer voor de order instellen via RBAC](#set-up-access-control-on-the-order)                                                    |
-| Order verwerkt            | [De volg orde volgen](#track-the-order) <ul><li> Azure-portal </li><li> Vervoerders website </li><li>E-mailmeldingen</ul> |
-| Apparaat instellen              | De toegang tot de referenties van het apparaat is geregistreerd in [activiteiten logboeken](#query-activity-logs-during-setup)                                              |
-| Gegevens kopiëren naar apparaat        | [ *Fout. XML-* bestanden](#view-error-log-during-data-copy) voor het kopiëren van gegevens weer geven                                                             |
-| Voorbereiding voor verzending            | [De stuk lijst bestanden](#inspect-bom-during-prepare-to-ship) of de manifest bestanden op het apparaat controleren                                      |
-| Gegevens uploaden naar Azure       | [Kopieer logboeken](#review-copy-log-during-upload-to-azure) voor fouten tijdens het uploaden van gegevens in azure Data Center                         |
-| Gegevens verwijdering van apparaat   | [Keten van Bewaar logboeken weer geven](#get-chain-of-custody-logs-after-data-erasure) , inclusief audit logboeken en order geschiedenis                |
+| Order maken               | [Toegangscontrole instellen voor de bestelling via RBAC](#set-up-access-control-on-the-order)                                                    |
+| Bestelling verwerkt            | [Volg de bestelling](#track-the-order) via <ul><li> Azure Portal </li><li> Website van de rederij </li><li>E-mailmeldingen</ul> |
+| Apparaat instellen              | Toegang tot apparaatreferenties in [logboeken van activiteit](#query-activity-logs-during-setup)                                              |
+| Gegevens kopiëren naar apparaat        | [ *Error.xml-bestanden* weergeven](#view-error-log-during-data-copy) voor gegevenskopiëren                                                             |
+| Voorbereiding voor verzending            | [De BOM-bestanden](#inspect-bom-during-prepare-to-ship) of de manifestbestanden op het apparaat inspecteren                                      |
+| Gegevens uploaden naar Azure       | [Kopieerlogboeken](#review-copy-log-during-upload-to-azure) controleren op fouten tijdens het uploaden van gegevens in Azure-datacenter                         |
+| Gegevenswissen van apparaat   | [Logboeken van bewaringsverzamelingen weergeven,](#get-chain-of-custody-logs-after-data-erasure) inclusief controlelogboeken en ordergeschiedenis                |
 
-In dit artikel worden de verschillende mechanismen of hulpprogram ma's beschreven die beschikbaar zijn om Data Box of Data Box Heavy bestelling bij te houden en te controleren. De informatie in dit artikel is van toepassing op zowel Data Box als Data Box Heavy. In de volgende secties zijn verwijzingen naar Data Box ook van toepassing op Data Box Heavy.
+In dit artikel worden de verschillende mechanismen of tools beschreven die beschikbaar zijn om databox of databox zware bestellingbij te houden en te controleren. De informatie in dit artikel is van toepassing op zowel Data Box en Data Box Heavy. In de volgende secties zijn verwijzingen naar Data Box ook van toepassing op Data Box Heavy.
 
-## <a name="set-up-access-control-on-the-order"></a>Toegangs beheer voor de order instellen
+## <a name="set-up-access-control-on-the-order"></a>Toegangsbeheer instellen voor de bestelling
 
-U kunt bepalen wie toegang heeft tot uw bestelling wanneer de order voor het eerst wordt gemaakt. U kunt RBAC-rollen (Role-based Access Control) op verschillende bereiken instellen om de toegang tot de Data Box order te beheren. Een RBAC-rol bepaalt het type toegang – lezen-schrijven, alleen-lezen, lezen-schrijven naar een subset van bewerkingen.
+U bepalen wie toegang heeft tot uw bestelling wanneer de bestelling voor het eerst wordt gemaakt. RBAC-rollen (Role-based Access Control) instellen op verschillende scopes om de toegang tot de gegevensboxvolgorde te beheren. Een RBAC-rol bepaalt het type toegang – lezen-schrijven, alleen-lezen, lezen schrijven naar een subset van bewerkingen.
 
-De twee rollen die kunnen worden gedefinieerd voor de Azure Data Box-Service zijn:
+De twee rollen die kunnen worden gedefinieerd voor de Azure Data Box-service zijn:
 
-- **Data Box lezer** : heeft alleen-lezen toegang tot een of meer orders zoals gedefinieerd door de scope. Ze kunnen alleen details van een order weer geven. Ze hebben geen toegang tot andere gegevens met betrekking tot opslag accounts of bewerken de details van de bestelling, zoals het adres, enzovoort.
-- **Data Box Inzender** : kan alleen een order maken om gegevens over te dragen naar een opgegeven opslag account *als ze al schrijf toegang hebben tot een opslag account*. Als ze geen toegang hebben tot een opslag account, kunnen ze zelfs geen Data Box order maken om gegevens naar het account te kopiëren. Met deze rol worden geen machtigingen voor opslag accounts gedefinieerd, en wordt geen toegang verleend aan de opslag account.  
+- **Data Box Reader** - hebben alleen-lezen toegang tot een bestelling (s) zoals gedefinieerd door het bereik. Ze kunnen alleen details van een bestelling bekijken. Ze hebben geen toegang tot andere gegevens met betrekking tot opslagaccounts of bewerken de ordergegevens, zoals adres enzovoort.
+- **Data Box Contributor** - kan alleen een order maken om gegevens over te dragen naar een bepaald opslagaccount *als ze al schrijftoegang hebben tot een opslagaccount*. Als ze geen toegang hebben tot een opslagaccount, kunnen ze niet eens een databox-order maken om gegevens naar het account te kopiëren. Deze rol definieert geen machtigingen voor opslagaccounts en verleent geen toegang tot opslagaccounts.  
 
-Als u de toegang tot een order wilt beperken, kunt u het volgende doen:
+Als u de toegang tot een bestelling wilt beperken, u het nieuwe dialoogvenster scan
 
-- Wijs een rol op een order niveau toe. De gebruiker heeft alleen die machtigingen zoals gedefinieerd door de rollen om te communiceren met die specifieke Data Box order alleen en niets anders.
-- Wijs een rol toe op het niveau van de resource groep, de gebruiker heeft toegang tot alle Data Box orders binnen een resource groep.
+- Een rol toewijzen op orderniveau. De gebruiker heeft alleen die machtigingen zoals gedefinieerd door de rollen om alleen te communiceren met die specifieke databoxvolgorde en niets anders.
+- Wijs een rol toe op het niveau van de resourcegroep, de gebruiker heeft toegang tot alle databoxorders binnen een resourcegroep.
 
-Zie [Aanbevolen procedures voor RBAC](../role-based-access-control/overview.md#best-practice-for-using-rbac)voor meer informatie over aanbevolen RBAC-gebruik.
+Zie [Aanbevolen procedures voor RBAC voor](../role-based-access-control/overview.md#best-practice-for-using-rbac)meer informatie over voorgesteld RBAC-gebruik.
 
 ## <a name="track-the-order"></a>De bestelling volgen
 
-U kunt uw bestelling volgen via de Azure Portal en via de website van de vervoerder. De volgende mechanismen zijn aanwezig om de Data Box order op elk gewenst moment te volgen:
+U uw bestelling volgen via de Azure-portal en via de website van de vervoerder. De volgende mechanismen zijn aanwezig om de databoxorder te volgen op elk gewenst moment:
 
-- Als u de volg orde wilt bijhouden wanneer het apparaat zich in azure Data Center of uw locatie bevindt, gaat u naar het **overzicht van data Box order >** in azure Portal.
+- Als u de volgorde wilt bijhouden wanneer het apparaat zich in azure-datacenter of uw locatie bevindt, gaat u naar uw **gegevensboxorder > Overzicht** in Azure-portal.
 
-    ![Order status weer geven en nummer bijhouden](media/data-box-logs/overview-view-status-1.png)
+    ![Bestelstatus weergeven en nee bijhouden](media/data-box-logs/overview-view-status-1.png)
 
-- Als u de volg orde wilt bijhouden terwijl het apparaat onderweg is, gaat u naar de website van de regionale drager, bijvoorbeeld UPS-website in ons. Geef het tracerings nummer op dat is gekoppeld aan uw order.
-- Data Box verzendt ook e-mail meldingen wanneer de status van de bestelling wordt gewijzigd op basis van de e-mail adressen die zijn ingevoerd toen de order werd gemaakt. Zie [order status weer geven](data-box-portal-admin.md#view-order-status)voor een lijst met alle data Box order status. Zie [meldings Details bewerken](data-box-portal-admin.md#edit-notification-details)als u de instellingen voor meldingen wilt wijzigen die zijn gekoppeld aan de order.
+- Als u de bestelling wilt bijhouden terwijl het apparaat onderweg is, gaat u naar de website van de regionale provider, bijvoorbeeld de UPS-website in de VS. Geef het volgnummer op dat aan uw bestelling is gekoppeld.
+- Data Box stuurt ook e-mailmeldingen wanneer de orderstatus verandert op basis van de e-mails die zijn verstrekt toen de bestelling werd gemaakt. Zie De status van de [volgorde weergeven voor](data-box-portal-admin.md#view-order-status)een lijst met alle statussen van de gegevensboxvolgorde. Zie [Meldingsgegevens](data-box-portal-admin.md#edit-notification-details)bewerken als u de aan de order gekoppelde meldingsinstellingen wilt wijzigen.
 
-## <a name="query-activity-logs-during-setup"></a>Logboeken voor query activiteiten tijdens de installatie
+## <a name="query-activity-logs-during-setup"></a>Queryactiviteitslogboeken tijdens de installatie
 
-- Uw Data Box arriveert in uw bedrijf met een vergrendelde status. U kunt de referenties van het apparaat gebruiken die beschikbaar zijn in de Azure Portal voor uw order.  
+- Uw gegevensbox arriveert in een vergrendelde staat op uw locatie. U de apparaatreferenties gebruiken die beschikbaar zijn in de Azure-portal voor uw bestelling.  
 
-    Wanneer een Data Box is ingesteld, moet u mogelijk weten wie de referenties van het apparaat hebben geopend. Als u wilt weten wie de Blade referenties voor het **apparaat** heeft geopend, kunt u een query uitvoeren op de activiteiten Logboeken.  Alle acties die betrekking hebben op toegang tot **apparaatgegevens >** Blade referenties, worden in de activiteiten logboeken geregistreerd als `ListCredentials` actie.
+    Wanneer een gegevensvak is ingesteld, moet u mogelijk weten wie alle referenties van het apparaat heeft geopend. Als u wilt weten wie toegang heeft tot het blade van de referenties van het **apparaat,** u de activiteitslogboeken opvragen.  Elke actie waarbij toegang wordt gegeven tot **apparaatgegevens >** `ListCredentials` het blad Credentials wordt aangemeld bij de activiteitslogboeken als actie.
 
     ![Logboeken met queryactiviteit](media/data-box-logs/query-activity-log-1.png)
 
-- Elke aanmelding bij de Data Box wordt in real-time vastgelegd. Deze informatie is echter alleen beschikbaar in de [audit logboeken](#audit-logs) nadat de volg orde is voltooid.
+- Elk teken in de gegevensbox wordt realtime geregistreerd. Deze informatie is echter alleen beschikbaar in de [controlelogboeken](#audit-logs) nadat de order is voltooid.
 
-## <a name="view-error-log-during-data-copy"></a>Fouten logboek weer geven tijdens kopiëren van gegevens
+## <a name="view-error-log-during-data-copy"></a>Foutlogboek weergeven tijdens gegevenskopie
 
-Tijdens het kopiëren van gegevens naar Data Box of Data Box Heavy, wordt een fout bestand gegenereerd als er problemen zijn met de gekopieerde gegevens.
+Tijdens de gegevenskopie naar Data Box of Data Box Heavy wordt een foutbestand gegenereerd als er problemen zijn met de gegevens die worden gekopieerd.
 
-### <a name="errorxml-file"></a>Fout. XML-bestand
+### <a name="errorxml-file"></a>Bestand Error.xml
 
-Zorg ervoor dat de Kopieer taken zonder fouten zijn voltooid. Als er fouten optreden tijdens het kopieer proces, downloadt u de logboeken van de pagina **verbinding maken en kopiëren** .
+Zorg ervoor dat de kopie taken zijn voltooid met geen fouten. Als er fouten zijn tijdens het kopieerproces, downloadt u de logboeken van de pagina **Verbinding maken en kopiëren.**
 
-- Als u een bestand hebt gekopieerd dat niet 512 bytes is uitgelijnd op een map met beheerde schijven op uw Data Box, wordt het bestand niet geüpload als pagina-BLOB naar uw staging Storage-account. Er wordt een fout in de logboeken weer geven. Verwijder het bestand en kopieer een bestand dat 512 bytes is uitgelijnd.
-- Als u een VHDX of een dynamische VHD of een differentiërende VHD hebt gekopieerd (deze bestanden worden niet ondersteund), wordt er een fout in de logboeken weer geven.
+- Als u een bestand hebt gekopieerd dat niet 512 bytes is uitgelijnd op een beheerde schijfmap in uw gegevensvak, wordt het bestand niet geüpload als paginablob naar uw opslagaccount voor tijdelijke bestanden. U ziet een fout in de logboeken. Verwijder het bestand en kopieer een bestand dat 512 bytes is uitgelijnd.
+- Als u een VHDX hebt gekopieerd, of een dynamische VHD, of een differentiërende VHD (deze bestanden worden niet ondersteund), ziet u een fout in de logboeken.
 
-Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het kopiëren naar Managed disks.
+Hier is een voorbeeld van de *error.xml* voor verschillende fouten bij het kopiëren naar beheerde schijven.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\differencing-vhd-022019.vhd</file>
@@ -90,7 +90,7 @@ Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het k
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\insidediffvhd-022019.vhd</file>
 ```
 
-Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het kopiëren naar pagina-blobs.
+Hier is een voorbeeld van de *error.xml* voor verschillende fouten bij het kopiëren naar paginablobs.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT">\PageBlob512NotAligned\File100Bytes</file>
@@ -101,7 +101,7 @@ Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het k
 ```
 
 
-Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het kopiëren naar blok-blobs.
+Hier is een voorbeeld van de *error.xml* voor verschillende fouten bij het kopiëren naar blobs te blokkeren.
 
 ```xml
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_LENGTH">\ab</file>
@@ -129,7 +129,7 @@ Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het k
 <file error="ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL" name_encoding="Base64">XEludmFsaWRVbmljb2RlRmlsZXNcU3BjQ2hhci01NTI5Ny3vv70=</file>
 ```
 
-Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het kopiëren naar Azure files.
+Hier vindt u een voorbeeld van de *error.xml* voor verschillende fouten bij het kopiëren naar Azure-bestanden.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_LIMIT">\AzFileMorethan1TB\AzFile1.2TB</file>
@@ -147,31 +147,31 @@ Hier volgt een voor beeld van de *fout. XML* voor verschillende fouten bij het k
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH">\Starting with Capital</file>
 ```
 
-Los de fouten in elk van de bovenstaande gevallen op voordat u verdergaat met de volgende stap. Ga voor meer informatie over de fouten die zijn ontvangen tijdens het kopiëren van gegevens naar Data Box via SMB-of NFS-protocollen, naar [problemen met data box en data Box Heavy oplossen](data-box-troubleshoot.md). Voor informatie over fouten die zijn ontvangen tijdens het kopiëren van gegevens naar Data Box via REST, gaat u naar problemen [met het data box van Blob-opslag oplossen](data-box-troubleshoot-rest.md).
+Los in elk van de bovenstaande gevallen de fouten op voordat u doorgaat naar de volgende stap. Ga voor meer informatie over de fouten die tijdens het kopiëren van gegevens naar Gegevensbox via SMB- of NFS-protocollen worden ontvangen, naar [Problemen met gegevensbox en gegevensbox zwaar](data-box-troubleshoot.md)oplossen. Ga voor informatie over fouten die tijdens het kopiëren van gegevens naar Gegevensvak via REST zijn ontvangen, naar [Problemen met de opslagproblemen van Data Box Blob](data-box-troubleshoot-rest.md)oplossen.
 
-## <a name="inspect-bom-during-prepare-to-ship"></a>De stuk lijst controleren tijdens de voor bereiding voor verzen ding
+## <a name="inspect-bom-during-prepare-to-ship"></a>Inspecteer BOM tijdens de voorbereiding op het schip
 
-Tijdens de voor bereiding voor verzen ding wordt er een lijst met bestanden gemaakt die de stuk lijst of het manifest bestand worden genoemd.
+Tijdens de voorbereiding om te verzenden, wordt een lijst gemaakt met bestanden die bekend staan als de Bill of Materials (BOM) of manifestbestand.
 
-- Gebruik dit bestand om te controleren op basis van de werkelijke namen en het aantal bestanden dat naar de Data Box is gekopieerd.
-- Gebruik dit bestand om te controleren op basis van de daad werkelijke grootte van de bestanden.
-- Controleer of de *crc64* overeenkomt met een teken reeks die niet gelijk is aan nul. <!--A null value for crc64 indicates that there was a reparse point error)-->
+- Gebruik dit bestand om te controleren op basis van de werkelijke namen en het aantal bestanden dat naar het gegevensvak is gekopieerd.
+- Gebruik dit bestand om te controleren op basis van de werkelijke grootte van de bestanden.
+- Controleer of de *crc64* overeenkomt met een tekenreeks zonder nul. <!--A null value for crc64 indicates that there was a reparse point error)-->
 
-Ga voor meer informatie over de fouten die zijn ontvangen tijdens het voorbereiden op verzen ding naar [problemen oplossen data box en data Box Heavy problemen](data-box-troubleshoot.md).
+Ga voor meer informatie over de fouten die tijdens de voorbereiding op het schip zijn ontvangen, naar [Problemen met de gegevensbox en gegevensbox zwaar oplossen.](data-box-troubleshoot.md)
 
-### <a name="bom-or-manifest-file"></a>Stuk lijst-of manifest bestand
+### <a name="bom-or-manifest-file"></a>BOM of manifestbestand
 
-De stuk lijst of het manifest bestand bevat de lijst met alle bestanden die zijn gekopieerd naar het Data Box apparaat. Het stuk lijst bestand heeft bestands namen en de bijbehorende grootte, evenals de controlesom. Er wordt een afzonderlijk stuk lijst bestand gemaakt voor de blok-blobs, pagina-blobs, Azure Files, voor kopiëren via de REST Api's en voor het kopiëren naar beheerde schijven op de Data Box. U kunt de stuk lijst bestanden downloaden van de lokale web-UI van het apparaat tijdens de voor bereiding voor verzen ding.
+Het bom- of manifestbestand bevat de lijst met alle bestanden die naar het gegevensvakapparaat zijn gekopieerd. Het BOM-bestand heeft bestandsnamen en de bijbehorende afmetingen en de checksum. Er wordt een apart BOM-bestand gemaakt voor de blokblobs, paginablobs, Azure-bestanden, voor kopiëren via de REST-API's en voor de kopie naar beheerde schijven in het gegevensvak. U de BOM-bestanden downloaden van de lokale webgebruikersinterface van het apparaat tijdens de voorbereiding op het verzenden.
 
-Deze bestanden bevinden zich ook op het Data Box apparaat en worden geüpload naar het gekoppelde opslag account in het Azure-Data Center.
+Deze bestanden bevinden zich ook op het Data Box-apparaat en worden geüpload naar het bijbehorende opslagaccount in het Azure-datacenter.
 
-### <a name="bom-file-format"></a>Bestands indeling van stuk lijst
+### <a name="bom-file-format"></a>BOM-bestandsindeling
 
-Stuk lijst of manifest bestand heeft de volgende algemene indeling:
+BOM of manifestbestand heeft de volgende algemene indeling:
 
 `<file size = "file-size-in-bytes" crc64="cyclic-redundancy-check-string">\folder-path-on-data-box\name-of-file-copied.md</file>`
 
-Hier volgt een voor beeld van een manifest dat wordt gegenereerd wanneer de gegevens zijn gekopieerd naar de blok-BLOB share op de Data Box.
+Hier is een voorbeeld van een manifest dat is gegenereerd wanneer de gegevens zijn gekopieerd naar het blokblobaandeel in het gegevensvak.
 
 ```
 <file size="10923" crc64="0x51c78833c90e4e3f">\databox\media\data-box-deploy-copy-data\connect-shares-file-explorer1.png</file>
@@ -191,29 +191,29 @@ Hier volgt een voor beeld van een manifest dat wordt gegenereerd wanneer de gege
 <file size="3220" crc64="0x7257a263c434839a">\databox\data-box-system-requirements.md</file>
 ```
 
-De stuk lijst-of manifest bestanden worden ook gekopieerd naar het Azure-opslag account. U kunt de stuk lijst-of manifest bestanden gebruiken om te controleren of de bestanden die zijn geüpload naar Azure overeenkomen met de gegevens die zijn gekopieerd naar het Data Box.
+De BOM- of manifestbestanden worden ook gekopieerd naar het Azure-opslagaccount. U de bom- of manifestbestanden gebruiken om te controleren of bestanden die naar Azure zijn geüpload, overeenkomen met de gegevens die naar het gegevensvak zijn gekopieerd.
 
-## <a name="review-copy-log-during-upload-to-azure"></a>Kopie logboek controleren tijdens het uploaden naar Azure
+## <a name="review-copy-log-during-upload-to-azure"></a>Kopieerlogboek bekijken tijdens het uploaden naar Azure
 
-Tijdens het uploaden van gegevens naar Azure wordt een Kopieer logboek gemaakt.
+Tijdens het uploaden van gegevens naar Azure wordt een kopieerlogboek gemaakt.
 
 ### <a name="copy-log"></a>Logboek kopiëren
 
-Voor elke order die wordt verwerkt, maakt de Data Box-Service een kopie logboek in het gekoppelde opslag account. Het Kopieer logboek bevat het totale aantal bestanden dat is geüpload en het aantal bestanden dat tijdens het kopiëren van de gegevens is mislukt van Data Box naar uw Azure Storage-account.
+Voor elke order die wordt verwerkt, maakt de Data Box-service een copy-logboek in het bijbehorende opslagaccount. Het kopieerlogboek bevat het totale aantal bestanden dat is geüpload en het aantal bestanden dat is uitgeschakeld tijdens de gegevenskopie van Gegevensvak naar uw Azure-opslagaccount.
 
-Er wordt een CRC-berekening (cyclische redundantie controle) uitgevoerd tijdens het uploaden naar Azure. De CRCs van de gegevens kopie en nadat de gegevens zijn geüpload, worden vergeleken. Een CRC komt niet overeen, geeft aan dat de bijbehorende bestanden niet kunnen worden geüpload.
+Een Cyclic Redundancy Check (CRC) berekening wordt gedaan tijdens het uploaden naar Azure. De CRC's van de gegevenskopie en na het uploaden van de gegevens worden vergeleken. Een CRC-mismatch geeft aan dat de bijbehorende bestanden niet zijn geüpload.
 
-Standaard worden logboeken geschreven naar een container met de naam `copylog`. De logboeken worden opgeslagen met de volgende naam Conventie:
+Logopen worden standaard naar `copylog`een container met de naam geschreven. De logboeken worden opgeslagen met de volgende naamgevingsconventie:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
-Het pad naar het kopie logboek wordt ook weer gegeven op de Blade **overzicht** voor de portal.
+Het logboekpad voor kopiëren wordt ook weergegeven op het **overzichtsblad** voor de portal.
 
-![Pad naar de Blade overzicht van het kopiëren van het logboek wanneer dit is voltooid](media/data-box-logs/copy-log-path-1.png)
+![Pad om het inlogblad overzichtsblad te kopiëren wanneer voltooid](media/data-box-logs/copy-log-path-1.png)
 
-### <a name="upload-completed-successfully"></a>Het uploaden is voltooid 
+### <a name="upload-completed-successfully"></a>Upload voltooid 
 
-In het volgende voor beeld wordt de algemene indeling van een Kopieer logboek beschreven voor een Data Box upload dat is voltooid:
+In het volgende voorbeeld wordt de algemene indeling van een kopielogboek voor een upload van een gegevensvak beschreven dat is voltooid:
 
 ```
 <?xml version="1.0"?>
@@ -224,13 +224,13 @@ In het volgende voor beeld wordt de algemene indeling van een Kopieer logboek be
 </CopyLog>
 ```
 
-### <a name="upload-completed-with-errors"></a>Uploaden is voltooid met fouten 
+### <a name="upload-completed-with-errors"></a>Upload voltooid met fouten 
 
-Uploaden naar Azure kan ook worden voltooid met fouten.
+Uploaden naar Azure kan ook compleet zijn met fouten.
 
-![Pad naar de Blade overzicht van het kopiëren van het logboek wanneer dit is voltooid met fouten](media/data-box-logs/copy-log-path-2.png)
+![Pad om het inlogblad overzichtsblad te kopiëren wanneer voltooid met fouten](media/data-box-logs/copy-log-path-2.png)
 
-Hier volgt een voor beeld van een Kopieer logboek waarin de upload is voltooid met fouten:
+Hier is een voorbeeld van een kopie log waar de upload voltooid met fouten:
 
 ```xml
 <ErroredEntity Path="iso\samsungssd.iso">
@@ -249,15 +249,15 @@ Hier volgt een voor beeld van een Kopieer logboek waarin de upload is voltooid m
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
-### <a name="upload-completed-with-warnings"></a>Het uploaden is voltooid met waarschuwingen
+### <a name="upload-completed-with-warnings"></a>Upload voltooid met waarschuwingen
 
-Upload naar Azure is voltooid met waarschuwingen als uw gegevens container/BLOB/bestands namen bevatten die niet voldoen aan Azure-naamgevings conventies en de namen zijn gewijzigd om de gegevens naar Azure te uploaden.
+Upload naar Azure wordt compleet met waarschuwingen als uw gegevens container-/blob-/bestandsnamen bevatten die niet voldeden aan Azure-naamgevingsconventies en de namen zijn gewijzigd om de gegevens naar Azure te uploaden.
 
-![Pad naar de Blade overzicht van het kopiëren van het logboek wanneer deze is voltooid met waarschuwingen](media/data-box-logs/copy-log-path-3.png)
+![Pad om het inlogblad overzichtsblad te kopiëren wanneer voltooid met waarschuwingen](media/data-box-logs/copy-log-path-3.png)
 
-Hier volgt een voor beeld van een Kopieer logboek waarbij de naam van de containers die niet voldoen aan de Azure-naamgevings conventies werd gewijzigd tijdens het uploaden van gegevens naar Azure.
+Hier is een voorbeeld van een kopielogboek waarbij de containers die niet voldeden aan Azure-naamgevingsconventies tijdens het uploaden van gegevens naar Azure zijn hernoemd.
 
-De nieuwe unieke namen voor containers hebben de indeling `DataBox-GUID` en de gegevens voor de container worden in de nieuwe container met de naam gewijzigd. In het Kopieer logboek worden de oude en de nieuwe container naam voor de container opgegeven.
+De nieuwe unieke namen voor `DataBox-GUID` containers zijn in de indeling en de gegevens voor de container worden in de nieuwe omgedoopte container geplaatst. Het kopieerlogboek geeft de oude en de nieuwe containernaam voor container op.
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -268,9 +268,9 @@ De nieuwe unieke namen voor containers hebben de indeling `DataBox-GUID` en de g
 </ErroredEntity>
 ```
 
-Hier volgt een voor beeld van een Kopieer logboek waarbij de naam van de blobs of bestanden die niet voldoen aan de Azure-naamgevings conventies, is gewijzigd tijdens het uploaden van gegevens naar Azure. De nieuwe BLOB-of bestands namen worden geconverteerd naar de SHA256-Digest van het relatieve pad naar de container en worden geüpload naar het pad op basis van het doel type. Het doel kan blok-blobs, pagina-blobs of Azure Files zijn.
+Hier is een voorbeeld van een kopielogboek waarbij de blobs of bestanden die niet voldeden aan Azure-naamgevingsconventies, werden hernoemd tijdens het uploaden van gegevens naar Azure. De nieuwe blob- of bestandsnamen worden geconverteerd naar SHA256 digest van relatieve pad naar container en worden geüpload naar pad op basis van doeltype. De bestemming kan blokblobs, paginablobs of Azure-bestanden zijn.
 
-Met de `copylog` geeft u de oude en de nieuwe BLOB-of bestands naam en het pad in azure op.
+Hiermee `copylog` wordt de oude en de nieuwe blob- of bestandsnaam en het pad in Azure opgegeven.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
@@ -291,15 +291,15 @@ Met de `copylog` geeft u de oude en de nieuwe BLOB-of bestands naam en het pad i
 </ErroredEntity>
 ```
 
-## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Keten van Bewaar logboeken ophalen na gegevens verwijdering
+## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Krijg chain of custody logs na het wissen van gegevens
 
-Nadat de gegevens zijn gewist van de Data Box schijven volgens de richt lijnen van het NIST SP 800-88 Revision 1, zijn de keten logboeken beschikbaar. Deze logboeken bevatten de audit logboeken en de order geschiedenis. De stuk lijst-of manifest bestanden worden ook gekopieerd met de audit Logboeken.
+Nadat de gegevens zijn gewist uit de Data Box-schijven volgens de NIST SP 800-88 Revision 1-richtlijnen, zijn de chain of custody-logboeken beschikbaar. Deze logboeken bevatten de controlelogboeken en de ordergeschiedenis. De BOM- of manifestbestanden worden ook gekopieerd met de controlelogboeken.
 
 ### <a name="audit-logs"></a>Auditlogboeken
 
-Audit logboeken bevatten informatie over het inschakelen en openen van shares op de Data Box of Data Box Heavy wanneer deze zich buiten het Azure-Data Center bevindt. Deze logboeken bevinden zich op: `storage-account/azuredatabox-chainofcustodylogs`
+Controlelogboeken bevatten informatie over het inschakelen en openen van shares in de Data Box of Data Box Heavy wanneer deze zich buiten azure datacenter bevinden. Deze logboeken bevinden zich op:`storage-account/azuredatabox-chainofcustodylogs`
 
-Hier volgt een voor beeld van het audit logboek van een Data Box:
+Hier is een voorbeeld van het controlelogboek uit een gegevensvak:
 
 ```
 9/10/2018 8:23:01 PM : The operating system started at system time ‎2018‎-‎09‎-‎10T20:23:01.497758400Z.
@@ -354,15 +354,15 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Ordergeschiedenis downloaden
 
-Order geschiedenis is beschikbaar in Azure Portal. Als de order is voltooid en het opschonen van het apparaat (gegevens verwijdering van de schijven) is voltooid, gaat u naar **de volg orde**van uw apparaten en navigeert u naar Bestellingsgegevens. De optie **Ordergeschiedenis downloaden** is beschikbaar. Zie [order geschiedenis downloaden](data-box-portal-admin.md#download-order-history)voor meer informatie.
+De bestelgeschiedenis is beschikbaar in de Azure-portal. Als de bestelling is voltooid en het apparaat wordt opgeschoond (gegevenswissen van de schijven) is voltooid, gaat u naar uw apparaatvolgorde en navigeert u naar **Details van bestellen.** De optie **Ordergeschiedenis downloaden** is beschikbaar. Zie [Bestelgeschiedenis downloaden](data-box-portal-admin.md#download-order-history)voor meer informatie.
 
-Als u door de order geschiedenis schuift, ziet u het volgende:
+Als u door de bestelgeschiedenis bladert, ziet u het:
 
-- Informatie over het bijhouden van vervoerders voor uw apparaat.
-- Gebeurtenissen met *SecureErase* -activiteit. Deze gebeurtenissen komen overeen met het verwijderen van de gegevens op de schijf.
-- Data Box logboek koppelingen. De paden voor de *audit logboeken*, *Kopieer logboeken*en *stuk lijst* bestanden worden weer gegeven.
+- Gegevens over het bijhouden van vervoerders voor uw apparaat.
+- Gebeurtenissen met *SecureErase-activiteit.* Deze gebeurtenissen komen overeen met het wissen van de gegevens op de schijf.
+- Gegevensboxlogboekkoppelingen. De paden voor de *controlelogboeken,* *kopieerlogboeken*en *BOM-bestanden* worden weergegeven.
 
-Hier volgt een voor beeld van het logboek voor order geschiedenis van Azure Portal:
+Hier vindt u een voorbeeld van het ordergeschiedenislogboek van azure-portal:
 
 ```
 -------------------------------
@@ -413,4 +413,4 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [oplossen van problemen met uw data box en data Box Heavy](data-box-troubleshoot.md).
+- Meer informatie over het [oplossen van problemen in uw gegevensvak en gegevensvak zwaar.](data-box-troubleshoot.md)

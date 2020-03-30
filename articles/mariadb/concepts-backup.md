@@ -1,88 +1,86 @@
 ---
-title: Back-up en herstellen-Azure Database for MariaDB
-description: Meer informatie over automatische back-ups en het herstellen van uw Azure Database for MariaDB-server.
+title: Back-up maken en herstellen - Azure-database voor MariaDB
+description: Meer informatie over automatische back-ups en het herstellen van uw Azure Database voor MariaDB-server.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 3e10c23aaaef6315e072348d879d5f077e16382a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 3/27/2020
+ms.openlocfilehash: c4d5a9ca85237bde1277904a478a0b8828fc2b08
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623663"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369240"
 ---
-# <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Back-ups maken en herstellen in Azure Database for MariaDB
+# <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Back-upmaken en herstellen in Azure Database voor MariaDB
 
-Azure Database for MariaDB maakt automatisch server back-ups en slaat ze op in een door de gebruiker geconfigureerde lokaal redundante of geografisch redundante opslag. Back-ups kunnen worden gebruikt om de status van de server naar een bepaald tijdstip te herstellen. Backup en Restore zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit omdat ze uw gegevens beschermen tegen onbedoelde beschadiging of verwijdering.
+Azure Database voor MariaDB maakt automatisch serverback-ups en slaat deze op in lokaal redundante of georedundante opslag van de gebruiker. Back-ups kunnen worden gebruikt om de status van de server naar een bepaald tijdstip te herstellen. Back-ups en herstel zijn een essentieel onderdeel van elke bedrijfscontinuïteitsstrategie omdat ze uw gegevens beschermen tegen onbedoelde beschadiging of verwijdering.
 
 ## <a name="backups"></a>Back-ups
 
-Azure Database for MariaDB volledige, differentiële en back-ups van transactie Logboeken. Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
+Azure Database voor MariaDB maakt volledige, differentiële en transactielogboekbacks. Met deze back-ups u een server herstellen naar elk point-in-time binnen uw geconfigureerde back-upbewaarperiode. De standaardbewaarperiode voor back-ups is zeven dagen. U het optioneel tot 35 dagen configureren. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
 
-Deze back-upbestanden kunnen niet worden geëxporteerd. De back-ups kunnen alleen worden gebruikt voor herstel bewerkingen in Azure Database for MariaDB. U kunt [mysqldump](howto-migrate-dump-restore.md) gebruiken om een Data Base te kopiëren.
+Deze back-upbestanden worden niet door de gebruiker belicht en kunnen niet worden geëxporteerd. Deze back-ups kunnen alleen worden gebruikt voor herstelbewerkingen in Azure Database voor MariaDB. U [mysqldump](howto-migrate-dump-restore.md) gebruiken om een database te kopiëren.
 
 ### <a name="backup-frequency"></a>Back-upfrequentie
 
-Over het algemeen worden volledige back-ups wekelijks uitgevoerd, worden differentiële back-ups twee keer per dag uitgevoerd en worden back-ups van transactielogboeken om de vijf minuten uitgevoerd. De eerste volledige back-up wordt onmiddellijk gepland nadat een server is gemaakt. De eerste back-up kan langer duren op een grote herstelde server. Het vroegste tijdstip waarop een nieuwe server kan worden hersteld, is het tijdstip waarop de eerste volledige back-up is voltooid.
+Over het algemeen worden volledige back-ups wekelijks uitgevoerd, worden differentiële back-ups twee keer per dag uitgevoerd en worden back-ups van transactielogboeken om de vijf minuten uitgevoerd. De eerste volledige back-up wordt direct na het maken van een server gepland. De eerste back-up kan langer duren op een grote herstelde server. Het vroegste punt in de tijd dat een nieuwe server kan worden hersteld is het moment waarop de eerste volledige back-up is voltooid.
 
-### <a name="backup-redundancy-options"></a>Opties voor back-upredundantie
+### <a name="backup-redundancy-options"></a>Redundantieopties voor back-ups
 
-Azure Database for MariaDB biedt de flexibiliteit om te kiezen tussen lokaal redundante of geografisch redundante back-upopslag in de lagen Algemeen en geoptimaliseerd voor geheugen. Wanneer de back-ups worden opgeslagen in geografisch redundante back-upopslag, worden ze niet alleen opgeslagen in de regio waarin uw server wordt gehost, maar worden ook gerepliceerd naar een [gekoppeld Data Center](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Dit biedt betere beveiliging en de mogelijkheid om uw server in een andere regio te herstellen in het geval van een ramp. De laag basis biedt alleen lokaal redundante back-upopslag.
+Azure Database voor MariaDB biedt de flexibiliteit om te kiezen tussen lokaal redundante of georedundante back-upopslag in de lagen Algemeen Doel en Geheugengeoptimaliseerd. Wanneer de back-ups worden opgeslagen in georedundante back-upopslag, worden ze niet alleen opgeslagen in het gebied waar uw server wordt gehost, maar worden ze ook gerepliceerd naar een [gekoppeld datacenter.](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) Dit biedt een betere bescherming en de mogelijkheid om uw server te herstellen in een andere regio in het geval van een ramp. De klasse Basic biedt alleen lokaal redundante back-upopslag.
 
 > [!IMPORTANT]
-> Het configureren van lokaal redundante of geografisch redundante opslag voor back-up is alleen toegestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
+> Het configureren van lokaal redundante of georedundante opslag voor back-up is alleen toegestaan tijdens het maken van de server. Zodra de server is ingericht, u de redundantieoptie voor back-upopslag niet meer wijzigen.
 
 ### <a name="backup-storage-cost"></a>Kosten voor back-upopslag
 
-Azure Database for MariaDB biedt Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Dit is normaal gesp roken geschikt voor het bewaren van een back-up van zeven dagen. Alle extra back-upopslag wordt in GB per maand in rekening gebracht.
+Azure Database voor MariaDB biedt tot 100% van uw ingerichte serveropslag als back-upopslag zonder extra kosten. Meestal is dit geschikt voor een back-up retentie van zeven dagen. Er wordt extra back-upopslag in rekening gebracht in GB-maanden.
 
-Als u bijvoorbeeld een server hebt ingericht met 250 GB, hebt u 250 GB aan back-upopslag zonder extra kosten. Voor opslag van meer dan 250 GB worden kosten in rekening gebracht.
+Als u bijvoorbeeld een server met 250 GB hebt ingericht, beschikt u zonder extra kosten over 250 GB back-upopslag. Opslag van meer dan 250 GB wordt in rekening gebracht.
 
-Ga naar de [pagina met prijzen voor MariaDB](https://azure.microsoft.com/pricing/details/mariadb/)voor meer informatie over de kosten voor back-upopslag.
+Ga voor meer informatie over de kosten van back-upopslag naar de [prijspagina van MariaDB.](https://azure.microsoft.com/pricing/details/mariadb/)
 
 ## <a name="restore"></a>Herstellen
 
-In Azure Database for MariaDB wordt met het uitvoeren van een herstel bewerking een nieuwe server gemaakt van de back-ups van de oorspronkelijke server.
+In Azure Database voor MariaDB maakt het uitvoeren van een herstel een nieuwe server uit de back-ups van de oorspronkelijke server en worden alle databases in de server hersteld.
 
 Er zijn twee soorten herstel beschikbaar:
 
-- **Herstel naar** een bepaald tijdstip is beschikbaar met de optie redundantie van back-ups en maakt een nieuwe server in dezelfde regio als de oorspronkelijke server.
-- **Geo-Restore** is alleen beschikbaar als u uw server hebt geconfigureerd voor geo-redundante opslag en u de server kunt herstellen naar een andere regio.
+- **Point-in-time restore** is beschikbaar met een back-up redundantieoptie en maakt een nieuwe server in dezelfde regio als uw oorspronkelijke server met behulp van de combinatie van volledige en transactielogboekback-ups.
+- **Geo-restore** is alleen beschikbaar als u uw server hebt geconfigureerd voor georedundante opslag en u uw server herstellen naar een andere regio met behulp van de meest recente back-up.
 
-De geschatte duur van de herstel bewerking is afhankelijk van verschillende factoren, zoals de grootte van de data base, het transactie logboek, de netwerk bandbreedte en het totale aantal data bases dat op hetzelfde moment in dezelfde regio wordt hersteld. De herstel tijd is doorgaans minder dan 12 uur.
+De geschatte hersteltijd is afhankelijk van verschillende factoren, waaronder de databasegrootte, de grootte van het transactielogboek, de netwerkbandbreedte en het totale aantal databases dat tegelijkertijd in dezelfde regio herstelt. De hersteltijd is meestal minder dan 12 uur.
 
 > [!IMPORTANT]
-> Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
+> Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden alle databases die tot de server behoren ook verwijderd en kunnen ze niet worden hersteld. Om serverbronnen, na implementatie, te beschermen tegen onbedoelde verwijdering of onverwachte wijzigingen, kunnen beheerders [beheervergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)gebruiken.
 
 ### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
 
-Onafhankelijk van de optie voor de redundantie van de back-up kunt u een herstel bewerking uitvoeren op elk gewenst moment binnen de retentie periode van de back-up. Er wordt een nieuwe server gemaakt in dezelfde Azure-regio als de oorspronkelijke server. Het wordt gemaakt met de oorspronkelijke server configuratie voor de prijs categorie, het berekenen van de berekening, het aantal vCores, de opslag grootte, de Bewaar periode voor back-ups en de optie voor de redundantie van back-ups.
+Onafhankelijk van uw back-upredundantieoptie, u een herstel uitvoeren naar elk moment binnen uw back-upbewaarperiode. Er wordt een nieuwe server gemaakt in dezelfde Azure-regio als de oorspronkelijke server. Het is gemaakt met de configuratie van de oorspronkelijke server voor de prijscategorie, compute generatie, aantal vCores, opslaggrootte, back-up bewaarperiode en back-up redundantie optie.
 
-Herstel naar een bepaald tijdstip is handig in meerdere scenario's. Wanneer een gebruiker bijvoorbeeld per ongeluk gegevens verwijdert, een belang rijke tabel of data base weglaat of als een toepassing per ongeluk goede gegevens overschrijft door een toepassings defect.
+Point-in-time restore is handig in meerdere scenario's. Wanneer een gebruiker bijvoorbeeld per ongeluk gegevens verwijdert, een belangrijke tabel of database laat vallen of als een toepassing per ongeluk goede gegevens overschrijft met slechte gegevens als gevolg van een toepassingsfout.
 
-Mogelijk moet u wachten totdat de back-up van het volgende transactie logboek wordt gemaakt voordat u de laatste vijf minuten kunt herstellen naar een bepaald tijdstip.
+Mogelijk moet u wachten tot de volgende back-up van het transactielogboek moet worden gemaakt voordat u in de laatste vijf minuten herstellen naar een punt in de tijd.
 
 ### <a name="geo-restore"></a>Geo-herstel
 
-U kunt een server herstellen naar een andere Azure-regio waar de service beschikbaar is als u uw server hebt geconfigureerd voor geografisch redundante back-ups. Geo-Restore is de standaard herstel optie als uw server niet beschikbaar is vanwege een incident in de regio waarin de server wordt gehost. Als een grootschalig incident in een regio resulteert in niet-beschik baarheid van uw database toepassing, kunt u een server herstellen van de geo-redundante back-ups naar een server in een andere regio. Er is een vertraging tussen het moment waarop een back-up wordt gemaakt en wanneer deze wordt gerepliceerd naar een andere regio. Deze vertraging kan tot een uur duren, dus als er sprake is van een nood geval, kan er Maxi maal één uur gegevens verlies zijn.
+U een server herstellen naar een andere Azure-regio waar de service beschikbaar is als u uw server hebt geconfigureerd voor georedundante back-ups. Geo-restore is de standaardhersteloptie wanneer uw server niet beschikbaar is vanwege een incident in het gebied waar de server wordt gehost. Als een grootschalig incident in een regio leidt tot onbeschikbaarheid van uw databasetoepassing, u een server herstellen van de georedundante back-ups naar een server in een andere regio. Geo-restore maakt gebruik van de meest recente back-up van de server. Er is een vertraging tussen het moment waarop een back-up wordt genomen en wanneer deze wordt gerepliceerd naar een andere regio. Deze vertraging kan oplopen tot een uur, dus als zich een ramp voordoet, kan er tot een uur gegevensverlies zijn.
 
-Tijdens de geo-herstel bewerking kunnen de volgende server configuraties worden gewijzigd: Compute Generation, vCore, Bewaar periode voor back-up en opties voor back-redundantie. Het wijzigen van de prijs categorie (Basic, Algemeen of Optimized memory) of opslag grootte tijdens geo-Restore wordt niet ondersteund.
+Tijdens geo-restore zijn de serverconfiguraties die kunnen worden gewijzigd compute generation, vCore, back-upbewaarperiode en redundantieopties voor back-ups. Het wijzigen van de prijslaag (Basic, General Purpose of Memory Optimized) of de opslaggrootte tijdens geo-restore wordt niet ondersteund.
 
-### <a name="perform-post-restore-tasks"></a>Taken na herstel uitvoeren
+### <a name="perform-post-restore-tasks"></a>Taken na het herstellen uitvoeren
 
-Na een herstel na een van beide herstel mechanismen moet u de volgende taken uitvoeren om uw gebruikers en toepassingen back-ups te maken en uit te voeren:
+Na een herstel van een herstelmechanisme moet u de volgende taken uitvoeren om uw gebruikers en toepassingen weer aan de praat te krijgen:
 
-- Als de nieuwe server de oorspronkelijke server moet vervangen, kunt u clients en client toepassingen omleiden naar de nieuwe server
-- Zorg ervoor dat de juiste firewall regels op server niveau zijn ingesteld, zodat gebruikers verbinding kunnen maken
-- Zorg ervoor dat de juiste aanmeldingen en machtigingen op database niveau aanwezig zijn
+- Als de nieuwe server bedoeld is om de oorspronkelijke server te vervangen, leidt u clients en clienttoepassingen om naar de nieuwe server
+- Zorg ervoor dat er geschikte VNet-regels zijn voor gebruikers om verbinding te maken. Deze regels worden niet overgekopieerd van de oorspronkelijke server.
+- Zorg ervoor dat de juiste aanmeldingen en machtigingen op databaseniveau zijn ingevoerd
 - Waarschuwingen configureren, indien van toepassing
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over bedrijfs continuïteit vindt u in het [overzicht van bedrijfs continuïteit](concepts-business-continuity.md).
-- Als u wilt herstellen naar een bepaald tijdstip met behulp van de Azure Portal, raadpleegt u [Data Base herstellen naar een bepaald tijdstip met behulp van de Azure Portal](howto-restore-server-portal.md).
- 
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md).-->
+- Zie het [overzicht bedrijfscontinuïteit](concepts-business-continuity.md)voor meer informatie over bedrijfscontinuïteit.
+- Zie [Server herstellen naar een point-in-time met de Azure-portal met de Azure-portal.](howto-restore-server-portal.md)
+- Zie Server herstellen naar een point-in-time met CLI als u wilt herstellen naar een [point-in-time met behulp van CLI.](howto-restore-server-cli.md)

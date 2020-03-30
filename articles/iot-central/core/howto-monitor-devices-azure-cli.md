@@ -1,82 +1,82 @@
 ---
-title: Connectiviteit van apparaten bewaken met behulp van Azure IoT Central Explorer
-description: Controleer de apparaatgegevens en Bekijk de dubbele wijzigingen van het apparaat via de IoT Central Explorer-CLI.
+title: Apparaatconnectiviteit bewaken met de Azure IoT Central Explorer
+description: Monitor apparaatberichten en observeer apparaatwijzigingen via de IoT Central Explorer CLI.
 author: viv-liu
 ms.author: viviali
-ms.date: 12/18/2019
-ms.topic: conceptual
+ms.date: 03/27/2020
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 6af6f01449f2f43e6799ef6d7821b9d71b24e603
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 09209c21fe1b2b115c1ba6d6e00fcd0ee59a9393
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252339"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365418"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Apparaatconnectiviteit bewaken met Azure CLI
 
 *Dit onderwerp is van toepassing op bouwers en beheerders.*
 
-Gebruik de Azure CLI IoT-extensie om berichten te bekijken die uw apparaten naar IoT Central verzenden en wijzigingen in het apparaat te observeren. U kunt dit hulp programma gebruiken om de connectiviteit van apparaten op te sporen en te controleren op problemen met de toegang tot de Cloud of apparaten die niet reageren op twee wijzigingen.
+Gebruik de Azure CLI IoT-extensie om berichten te zien die uw apparaten naar IoT Central verzenden en wijzigingen in de apparaattweeling te observeren. U deze tool gebruiken om de apparaatconnectiviteit te debuggen en te observeren en problemen te diagnosticeren van apparaatberichten die de cloud niet bereiken of apparaten die niet reageren op dubbele wijzigingen.
 
-[Bezoek de naslag informatie voor Azure CLI-extensies voor meer informatie](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/central)
+[Ga naar de referentie voor Azure CLI-extensies voor meer informatie](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/central)
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Azure CLI is geïnstalleerd en versie 2.0.7 of hoger. Controleer de versie van uw Azure CLI door `az --version`uit te voeren. Meer informatie over het installeren en bijwerken van de [Azure cli-documenten](https://docs.microsoft.com/cli/azure/install-azure-cli)
-+ Een werk-of school account in azure, toegevoegd als een gebruiker in een IoT Central-toepassing.
++ Azure CLI geïnstalleerd en is versie 2.0.7 of hoger. Controleer de versie van uw `az --version`Azure CLI door het uitvoeren van . Meer informatie over het installeren en bijwerken van de [Azure CLI-documenten](https://docs.microsoft.com/cli/azure/install-azure-cli)
++ Een werk- of schoolaccount in Azure, toegevoegd als gebruiker in een IoT Central-toepassing.
 
 ## <a name="install-the-iot-central-extension"></a>De IoT Central-extensie installeren
 
-Voer de volgende opdracht uit vanaf de opdracht regel die u wilt installeren:
+Voer de volgende opdracht uit vanaf de opdrachtregel om te installeren:
 
-```cmd/sh
+```azurecli
 az extension add --name azure-iot
 ```
 
-Controleer de versie van de uitbrei ding door het volgende uit te voeren:
+Controleer de versie van de extensie door het uitvoeren van:
 
-```cmd/sh
+```azurecli
 az --version
 ```
 
-U ziet dat de Azure IOT-uitbrei ding 0.8.1 of hoger is. Als dat niet het geval is, voert u de volgende handelingen uit:
+U moet zien dat de azure-iot-extensie 0,8.1 of hoger is. Als dit niet het is, voert u het als:
 
-```cmd/sh
+```azurecli
 az extension update --name azure-iot
 ```
 
-## <a name="using-the-extension"></a>De uitbrei ding gebruiken
+## <a name="using-the-extension"></a>De extensie gebruiken
 
-In de volgende secties worden veelvoorkomende opdrachten en opties beschreven die u kunt gebruiken wanneer u `az iot central`uitvoert. Als u de volledige set met opdrachten en opties wilt weer geven, geeft u `--help` door aan `az iot central` of een van de bijbehorende subopdrachten.
+In de volgende secties worden veelvoorkomende opdrachten en `az iot central`opties beschreven die u gebruiken wanneer u. Als u de volledige set opdrachten `--help` en `az iot central` opties wilt bekijken, geeft u de opdracht of een van de subopdrachten door.
 
 ### <a name="login"></a>Aanmelden
 
-Meld u aan bij de Azure CLI. 
+Begin met aanmelden bij de Azure CLI. 
 
-```cmd/sh
+```azurecli
 az login
 ```
 
-### <a name="get-the-application-id-of-your-iot-central-app"></a>De toepassings-ID van uw IoT Central-app ophalen
-Kopieer de **toepassings-id**in **beheer/toepassings instellingen**. U gaat dit in latere stappen gebruiken.
+### <a name="get-the-application-id-of-your-iot-central-app"></a>De applicatie-id van uw IoT Central-app downloaden
+Kopieer **in administratie-/toepassingsinstellingen**de **toepassings-id**. U gebruikt deze waarde in latere stappen.
 
-### <a name="monitor-messages"></a>Berichten bewaken
-Controleer de berichten die naar uw IoT Central-app worden verzonden vanaf uw apparaten. Hiermee worden alle kopteksten en aantekeningen ingevoegd.
+### <a name="monitor-messages"></a>Berichten controleren
+Controleer de berichten die vanaf uw apparaten naar uw IoT Central-app worden verzonden. De uitvoer omvat alle kop- en annotaties.
 
-```cmd/sh
+```azurecli
 az iot central app monitor-events --app-id <app-id> --properties all
 ```
 
-### <a name="view-device-properties"></a>Apparaateigenschappen weer geven
-De huidige eigenschappen voor lezen en lezen/schrijven weer geven voor een bepaald apparaat.
+### <a name="view-device-properties"></a>Apparaateigenschappen weergeven
+Bekijk de huidige eigenschappen van het lees- en lees-/schrijfapparaat voor een bepaald apparaat.
 
-```cmd/sh
+```azurecli
 az iot central device-twin show --app-id <app-id> --device-id <device-id>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u de IoT Central Explorer kunt gebruiken, is de voorgestelde volgende stap om het [beheren van apparaten IOT Central](howto-manage-devices.md)te verkennen.
+Nu u hebt geleerd hoe u de IoT Central Explorer gebruiken, is de voorgestelde volgende stap het [verkennen van het beheer van apparaten IoT Central.](howto-manage-devices.md)

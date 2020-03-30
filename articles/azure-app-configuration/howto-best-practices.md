@@ -1,6 +1,6 @@
 ---
-title: Aanbevolen procedures voor Azure-app-configuratie | Microsoft Docs
-description: Meer informatie over het beste gebruik van Azure-app configuratie
+title: Aanbevolen procedures azure-app-configuratie | Microsoft Documenten
+description: Meer informatie over het optimaal gebruik van Azure App-configuratie
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -12,39 +12,39 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 37f93099027f810e8089119536e089e07080d0bc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898631"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348663"
 ---
-# <a name="azure-app-configuration-best-practices"></a>Aanbevolen procedures voor Azure-app configuratie
+# <a name="azure-app-configuration-best-practices"></a>Aanbevolen procedures voor azure-app-configuratie
 
-In dit artikel worden algemene patronen en aanbevolen procedures besproken wanneer u Azure-app-configuratie gebruikt.
+In dit artikel worden veelvoorkomende patronen en aanbevolen procedures besproken wanneer u Azure App-configuratie gebruikt.
 
-## <a name="key-groupings"></a>Sleutel groeperingen
+## <a name="key-groupings"></a>Belangrijkste groeperingen
 
 App-configuratie biedt twee opties voor het ordenen van sleutels:
 
-* Sleutel voorvoegsels
+* Belangrijkste voorvoegsels
 * Labels
 
-U kunt een of beide opties gebruiken om uw sleutels te groeperen.
+U één of beide opties gebruiken om uw sleutels te groeperen.
 
-*Sleutel voorvoegsels* zijn de begin onderdelen van sleutels. U kunt een set sleutels logisch groeperen met behulp van hetzelfde voor voegsel in hun namen. Voor voegsels kunnen meerdere onderdelen bevatten die zijn verbonden met een scheidings teken, zoals `/`, vergelijkbaar met een URL-pad, om een naam ruimte te vormen. Dergelijke hiërarchieën zijn handig wanneer u sleutels opslaat voor veel toepassingen, Component Services en omgevingen in één app-configuratie opslag.
+*Belangrijke voorvoegsels* zijn de begindelen van sleutels. U logischerwijs een set sleutels groeperen met hetzelfde voorvoegsel in hun naam. Voorvoegsels kunnen meerdere componenten bevatten die zijn `/`verbonden door een scheidingsteken, zoals , vergelijkbaar met een URL-pad, om een naamruimte te vormen. Dergelijke hiërarchieën zijn handig wanneer u sleutels opslaat voor veel toepassingen, componentservices en omgevingen in één App-configuratiearchief.
 
-Het is belang rijk om ervoor te zorgen dat sleutels uw toepassings code bevat om de waarden van de overeenkomstige instellingen op te halen. Sleutels mogen niet worden gewijzigd, anders moet u de code altijd wijzigen.
+Een belangrijk ding om in gedachten te houden is dat sleutels zijn wat uw toepassing code verwijzingen naar de waarden van de bijbehorende instellingen op te halen. Sleutels mogen niet veranderen, anders moet u uw code elke keer dat dat gebeurt wijzigen.
 
-*Labels* zijn een kenmerk op sleutels. Ze worden gebruikt om varianten van een sleutel te maken. U kunt bijvoorbeeld labels toewijzen aan meerdere versies van een sleutel. Een versie kan een iteratie, een omgeving of andere contextuele informatie zijn. Uw toepassing kan een volledig andere set sleutel waarden aanvragen door een ander label op te geven. Als gevolg hiervan blijven alle sleutel verwijzingen ongewijzigd in uw code.
+*Labels* zijn een kenmerk op toetsen. Ze worden gebruikt om varianten van een sleutel te maken. U bijvoorbeeld labels toewijzen aan meerdere versies van een sleutel. Een versie kan een iteratie, een omgeving of een andere contextuele informatie zijn. Uw toepassing kan een geheel andere set sleutelwaarden aanvragen door een ander label op te geven. Als gevolg hiervan blijven alle belangrijke referenties ongewijzigd in uw code.
 
-## <a name="key-value-compositions"></a>Sleutel-waarde-samen stellingen
+## <a name="key-value-compositions"></a>Sleutelsamenstellingen
 
-App-configuratie behandelt alle sleutels die ermee zijn opgeslagen als onafhankelijke entiteiten. App-configuratie probeert geen relatie tussen sleutels af te leiden of sleutel waarden over te nemen op basis van de hiërarchie. U kunt meerdere sets sleutels samen voegen, met behulp van labels die zijn gekoppeld aan de juiste configuratie stacks in uw toepassings code.
+App-configuratie behandelt alle sleutels die ermee zijn opgeslagen als onafhankelijke entiteiten. App-configuratie probeert geen relatie tussen sleutels af te leiden of belangrijke waarden te erven op basis van hun hiërarchie. U echter meerdere sets sleutels samenvoegen door labels te gebruiken in combinatie met de juiste configuratiestapeling in uw toepassingscode.
 
-We bekijken een voorbeeld. Stel dat u een instelling hebt met de naam **Asset1**, waarvan de waarde kan variëren op basis van de ontwikkelings omgeving. U maakt een sleutel met de naam ' Asset1 ' met een leeg label en een label met de naam ' ontwikkeling '. In het eerste label plaatst u de standaard waarde voor **Asset1**en plaatst u een specifieke waarde voor ' ontwikkeling ' in de laatste.
+Laten we eens naar een voorbeeld kijken. Stel dat u een instelling met de naam **Asset1**hebt , waarvan de waarde kan variëren op basis van de ontwikkelomgeving. U maakt een sleutel met de naam "Asset1" met een leeg label en een label met de naam "Ontwikkeling". In het eerste label plaatst u de standaardwaarde voor **Asset1**en plaatst u een specifieke waarde voor 'Ontwikkeling' in de laatste.
 
-In uw code haalt u eerst de sleutel waarden zonder labels op en vervolgens haalt u dezelfde set sleutel waarden een tweede keer op met het label ' ontwikkeling '. Wanneer u de waarden de tweede keer ophaalt, worden de vorige waarden van de sleutels overschreven. Met het configuratie systeem van .NET Core kunt u meerdere sets configuratie gegevens boven op elkaar stapelen. Als een sleutel in meer dan één set bestaat, wordt de laatste set die deze bevat, gebruikt. Met een modern programmeer raamwerk, zoals .NET core, krijgt u deze gestapelde mogelijkheid gratis als u een systeem eigen configuratie provider gebruikt om toegang te krijgen tot de app-configuratie. Het volgende code fragment laat zien hoe u stacking in een .NET core-toepassing kunt implementeren:
+In uw code haalt u eerst de belangrijkste waarden op zonder labels en haalt u vervolgens een tweede keer dezelfde set belangrijke waarden op met het label 'Ontwikkeling'. Wanneer u de waarden de tweede keer ophaalt, worden de vorige waarden van de sleutels overschreven. Met het .NET Core-configuratiesysteem u meerdere sets configuratiegegevens op elkaar stapelen. Als een sleutel in meer dan één set bestaat, wordt de laatste set met deze sleutel gebruikt. Met een modern programmeerframework, zoals .NET Core, krijgt u deze stapelmogelijkheid gratis als u een native configuratieprovider gebruikt om toegang te krijgen tot app-configuratie. In het volgende codefragment ziet u hoe u stapelen in een .NET Core-toepassing implementeren:
 
 ```csharp
 // Augment the ConfigurationBuilder with Azure App Configuration
@@ -56,21 +56,37 @@ configBuilder.AddAzureAppConfiguration(options => {
 });
 ```
 
-## <a name="app-configuration-bootstrap"></a>Boots trap configuratie app
+[Gebruik labels om verschillende configuraties voor verschillende omgevingen in te schakelen,](./howto-labels-aspnet-core.md) biedt een compleet voorbeeld.
 
-Als u toegang wilt krijgen tot een app-configuratie archief, kunt u de bijbehorende connection string gebruiken, die beschikbaar is in de Azure Portal. Omdat verbindings reeksen referentie gegevens bevatten, worden ze beschouwd als geheimen. Deze geheimen moeten worden opgeslagen in Azure Key Vault en uw code moet worden geverifieerd bij Key Vault om ze op te halen.
+## <a name="app-configuration-bootstrap"></a>Starttrap van app-configuratie
 
-Een betere optie is het gebruik van de functie Managed Identities in Azure Active Directory. Met beheerde identiteiten hebt u alleen de app configuratie-eind punt-URL nodig om de Boots trap toegang te geven tot uw app-configuratie archief. U kunt de URL insluiten in uw toepassings code (bijvoorbeeld in het bestand *appSettings. json* ). Zie [integreren met door Azure beheerde identiteiten](howto-integrate-azure-managed-service-identity.md) voor meer informatie.
+Als u toegang wilt krijgen tot een App Configuration Store, u de verbindingstekenreeks gebruiken, die beschikbaar is in de Azure-portal. Omdat verbindingstekenreeksen referentie-informatie bevatten, worden ze beschouwd als geheimen. Deze geheimen moeten worden opgeslagen in Azure Key Vault en uw code moet worden geverifieerd naar Key Vault om ze op te halen.
 
-## <a name="app-or-function-access-to-app-configuration"></a>App of functie toegang tot de app-configuratie
+Een betere optie is het gebruik van de functie beheerde identiteiten in Azure Active Directory. Met beheerde identiteiten hebt u alleen de URL van het eindpunt app-configuratie nodig om de toegang tot uw app-configuratiearchief op te start zetten. U de URL insluiten in uw toepassingscode (bijvoorbeeld in het *bestand appsettings.json).* Zie [Integreren met door Azure beheerde identiteiten](howto-integrate-azure-managed-service-identity.md) voor meer informatie.
 
-U kunt een van de volgende methoden gebruiken om toegang te krijgen tot de app-configuratie voor web-apps of functies:
+## <a name="app-or-function-access-to-app-configuration"></a>Toegang tot app of functie tot app-configuratie
 
-* Voer in de Azure Portal de connection string in voor uw app-configuratie archief in de toepassings instellingen van App Service.
-* Sla de connection string op in de Key Vault van uw app-configuratie en [refereer deze vanuit app service](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references).
-* Gebruik Azure Managed Identities om toegang te krijgen tot de app-configuratie opslag. Zie [integratie met door Azure beheerde identiteiten](howto-integrate-azure-managed-service-identity.md)voor meer informatie.
-* Push configuratie van app-configuratie naar App Service. App-configuratie biedt een export functie (in Azure Portal en de Azure CLI) waarmee gegevens rechtstreeks naar App Service worden verzonden. Met deze methode hoeft u de toepassings code helemaal niet te wijzigen.
+U toegang bieden tot app-configuratie voor web-apps of -functies met behulp van een van de volgende methoden:
+
+* Voer via de Azure-portal de verbindingstekenreeks in voor uw App-configuratiearchief in de toepassingsinstellingen van App-service.
+* Sla de verbindingstekenreeks op in uw App Configuration Store in Key Vault en [verwijs ernaar vanuit App Service.](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)
+* Gebruik door Azure beheerde identiteiten om toegang te krijgen tot het App Configuration Store. Zie [Integreren met door Azure beheerde identiteiten voor](howto-integrate-azure-managed-service-identity.md)meer informatie.
+* Pushconfiguratie van app-configuratie naar appservice. App-configuratie biedt een exportfunctie (in Azure-portal en de Azure CLI) die gegevens rechtstreeks naar App Service verzendt. Met deze methode hoeft u de toepassingscode helemaal niet te wijzigen.
+
+## <a name="reduce-requests-made-to-app-configuration"></a>Aanvragen voor app-configuratie verminderen
+
+Overmatige verzoeken aan app-configuratie kunnen leiden tot beperking of overschrijding van kosten. Ga als reactie op het aantal aanvragen:
+
+* Verhoog de time-out voor vernieuwen, vooral als uw configuratiewaarden niet vaak worden gewijzigd. Geef een nieuwe vernieuwingstime-out op met behulp van de [ `SetCacheExpiration` methode](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration).
+
+* Bekijk een enkele *sentinel-sleutel*in plaats van naar afzonderlijke sleutels te kijken. Vernieuw alle configuratie alleen als de sentinel-sleutel verandert. Zie [Dynamische configuratie gebruiken in een ASP.NET Core-app](enable-dynamic-configuration-aspnet-core.md) voor een voorbeeld.
+
+* Gebruik Azure Event Grid om meldingen te ontvangen wanneer de configuratie verandert, in plaats van voortdurend te peilen voor wijzigingen. Zie [Configuratiegebeurtenissen voor Azure-app-configuratie routeren naar een webeindpunt](./howto-app-configuration-event.md) voor meer informatie
+
+## <a name="importing-configuration-data-into-app-configuration"></a>Configuratiegegevens importeren in app-configuratie
+
+App-configuratie biedt de optie om uw configuratie-instellingen bulk te [importeren](https://aka.ms/azconfig-importexport1) uit uw huidige configuratiebestanden met behulp van de Azure-portal of CLI. U ook dezelfde opties gebruiken om waarden uit app-configuratie te exporteren, bijvoorbeeld tussen gerelateerde winkels. Als u een doorlopende synchronisatie met uw GitHub-repo wilt instellen, u onze [GitHub-actie](https://aka.ms/azconfig-gha2) gebruiken, zodat u uw bestaande bronbeheerpraktijken blijven gebruiken terwijl u de voordelen van app-configuratie krijgt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Sleutels en waarden](./concept-key-value.md)
+* [Toetsen en waarden](./concept-key-value.md)
