@@ -1,5 +1,5 @@
 ---
-title: Door de gebruiker gedefinieerde functies (Udf's) in Azure Cosmos DB
+title: Door de gebruiker gedefinieerde functies (UDF's) in Azure Cosmos DB
 description: Meer informatie over door de gebruiker gedefinieerde functies in Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614333"
 ---
-# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Door de gebruiker gedefinieerde functies (Udf's) in Azure Cosmos DB
+# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Door de gebruiker gedefinieerde functies (UDF's) in Azure Cosmos DB
 
-De SQL-API biedt ondersteuning voor door de gebruiker gedefinieerde functies (Udf's). Met scalaire Udf's kunt u nul of veel argumenten door geven en een enkel argument resultaat retour neren. Met de API wordt elk argument gecontroleerd op geldige JSON-waarden.  
+De SQL API biedt ondersteuning voor door gebruikers gedefinieerde functies (UDF's). Met scalaire UDF's u nul of veel argumenten doorgeven en een enkel argumentresultaat retourneren. De API controleert elk argument op het zijn wettelijke JSON-waarden.  
 
-De API breidt de SQL-syntaxis uit ter ondersteuning van aangepaste toepassings logica met behulp van Udf's. U kunt Udf's met de SQL-API registreren en ernaar verwijzen in SQL-query's. De UDFs zijn speciaal ontworpen voor aanroepen vanuit query's. As-corolling heeft Udf's geen toegang tot het context object, zoals andere Java script-typen, zoals opgeslagen procedures en triggers. Query's zijn alleen-lezen en kunnen worden uitgevoerd op de primaire of secundaire replica's. Udf's, in tegens telling tot andere Java script-typen, zijn ontworpen om te worden uitgevoerd op secundaire replica's.
+De API breidt de SQL-syntaxis uit om aangepaste toepassingslogica te ondersteunen met behulp van UDF's. U UDF's registreren met de SQL-API en ernaar verwijzen in SQL-query's. De UDFs zijn speciaal ontworpen voor aanroepen vanuit query's. Als gevolg hiervan hebben UDF's geen toegang tot het contextobject zoals andere JavaScript-typen, zoals opgeslagen procedures en triggers. Query's zijn alleen-lezen en kunnen worden uitgevoerd op primaire of secundaire replica's. UDF's zijn, in tegenstelling tot andere JavaScript-typen, ontworpen om op secundaire replica's te worden uitgevoerd.
 
-In het volgende voor beeld wordt een UDF onder een item container in de Cosmos-data base geregistreerd. In het voor beeld wordt een UDF gemaakt `REGEX_MATCH`waarvan de naam is. Er worden twee JSON- `input` teken reeks waarden geaccepteerd en `pattern`gecontroleerd of de eerste overeenkomt met het patroon dat is opgegeven in de `string.match()` tweede met behulp van Java script-functie.
+In het volgende voorbeeld wordt een UDF geregistreerd onder een artikelcontainer in de Cosmos-database. In het voorbeeld wordt een `REGEX_MATCH`UDF met de naam . Het accepteert twee JSON-tekenreekswaarden `input` en `pattern`controleert of het eerste overeenkomt met het `string.match()` patroon dat in de tweede is opgegeven met de functie javascript.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -37,14 +37,14 @@ In het volgende voor beeld wordt een UDF onder een item container in de Cosmos-d
            regexMatchUdf).Result;  
 ```
 
-Gebruik deze UDF nu in een query-projectie. U moet udf's kwalificeren met het hoofdletter gevoelige voor voegsel `udf.` wanneer u ze aanroept vanuit query's.
+Gebruik deze UDF in een queryprojectie. U moet UDF's kwalificeren met `udf.` het hoofdlettergevoelige voorvoegsel wanneer u ze vanuit query's aanroept.
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
     FROM Families
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [
@@ -57,7 +57,7 @@ De resultaten zijn:
     ]
 ```
 
-U kunt de UDF gekwalificeerd met het `udf.` voor voegsel binnen een filter gebruiken, zoals in het volgende voor beeld:
+U het UDF `udf.` gebruiken dat is gekwalificeerd met het voorvoegsel in een filter, zoals in het volgende voorbeeld:
 
 ```sql
     SELECT Families.id, Families.address.city
@@ -65,7 +65,7 @@ U kunt de UDF gekwalificeerd met het `udf.` voor voegsel binnen een filter gebru
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [{
@@ -74,9 +74,9 @@ De resultaten zijn:
     }]
 ```
 
-In essentie zijn Udf's geldige scalaire expressies die u in zowel projecties als filters kunt gebruiken.
+In wezen zijn UDF's geldige scalaire expressies die u gebruiken in zowel projecties als filters.
 
-Als u de kracht van Udf's wilt uitbreiden, bekijkt u een ander voor beeld met voorwaardelijke logica:
+Als u de kracht van UDF's wilt uitbreiden, bekijkt u een ander voorbeeld met voorwaardelijke logica:
 
 ```javascript
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
@@ -100,14 +100,14 @@ Als u de kracht van Udf's wilt uitbreiden, bekijkt u een ander voor beeld met vo
                 seaLevelUdf);
 ```
 
-In het volgende voor beeld wordt de UDF:
+In het volgende voorbeeld wordt de UDF uitgevoerd:
 
 ```sql
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
     FROM Families f
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
      [
@@ -122,12 +122,12 @@ De resultaten zijn:
     ]
 ```
 
-Als de eigenschappen waarnaar wordt verwezen door de UDF-para meters niet beschikbaar zijn in de JSON-waarde, wordt de para meter beschouwd als niet-gedefinieerd en wordt de UDF-aanroep overgeslagen. Als het resultaat van de UDF niet is gedefinieerd, wordt het niet opgenomen in het resultaat.
+Als de eigenschappen waarnaar wordt verwezen door de UDF-parameters niet beschikbaar zijn in de JSON-waarde, wordt de parameter als niet gedefinieerd beschouwd en wordt de aanroep van de UDF overgeslagen. Als het resultaat van de UDF niet is gedefinieerd, wordt het niet in het resultaat opgenomen.
 
-Zoals in de voor gaande voor beelden wordt weer gegeven, integreert UDFs de kracht van Java script-taal met de SQL-API. Udf's bieden een uitgebreide programmeer bare interface voor het uitvoeren van complexe procedures, voorwaardelijke logica, met behulp van ingebouwde Java Script runtime-functies. De SQL-API biedt de argumenten voor de Udf's voor elk bron item bij de huidige WHERE-of SELECT-component fase van de verwerking. Het resultaat is naadloos opgenomen in de algehele uitvoerings pijplijn. In samen vatting zijn Udf's fantastische hulp middelen voor het uitvoeren van complexe bedrijfs logica als onderdeel van query's.
+Zoals de voorgaande voorbeelden laten zien, integreren UDF's de kracht van JavaScript-taal met de SQL API. UDF's bieden een uitgebreide programmeerbare interface om complexe procedurele, voorwaardelijke logica te doen met behulp van ingebouwde JavaScript-runtime-mogelijkheden. De SQL API biedt de argumenten aan de UDF's voor elk bronitem in de huidige where- of SELECT-bedingfase van verwerking. Het resultaat is naadloos opgenomen in de totale uitvoeringspijplijn. Samengevat zijn UDF's geweldige tools om complexe bedrijfslogica te doen als onderdeel van query's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Inleiding tot Azure Cosmos DB](introduction.md)
-- [Systeem functies](sql-query-system-functions.md)
-- [Aggregates](sql-query-aggregates.md)
+- [Systeemfuncties](sql-query-system-functions.md)
+- [Aggregaties](sql-query-aggregates.md)

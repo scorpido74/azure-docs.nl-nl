@@ -1,6 +1,6 @@
 ---
-title: OKD implementeren in azure
-description: Implementeer OKD in Azure.
+title: OKD implementeren in Azure
+description: OkD implementeren in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -15,34 +15,34 @@ ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
 ms.openlocfilehash: 6ecae09b0efbc0e35e591b31dbb54fb49ce101b3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035406"
 ---
-# <a name="deploy-okd-in-azure"></a>OKD implementeren in azure
+# <a name="deploy-okd-in-azure"></a>OKD implementeren in Azure
 
-U kunt een van de twee manieren gebruiken om OKD (voorheen openstaande oorsprong) in azure te implementeren:
+U op twee manieren OKD (voorheen OpenShift Origin) implementeren in Azure:
 
-- U kunt alle benodigde onderdelen van Azure Infrastructure hand matig implementeren en vervolgens de [OKD-documentatie](https://docs.okd.io)volgen.
-- U kunt ook een bestaande [Resource Manager-sjabloon](https://github.com/Microsoft/openshift-origin) gebruiken die de implementatie van het OKD-cluster vereenvoudigt.
+- U alle benodigde Azure-infrastructuurcomponenten handmatig implementeren en vervolgens de [OKD-documentatie](https://docs.okd.io)volgen.
+- U ook een bestaande [resourcemanagersjabloon](https://github.com/Microsoft/openshift-origin) gebruiken die de implementatie van het OKD-cluster vereenvoudigt.
 
-## <a name="deploy-using-the-okd-template"></a>Implementeren met behulp van de OKD-sjabloon
+## <a name="deploy-using-the-okd-template"></a>Implementeren met de OKD-sjabloon
 
-Als u wilt implementeren met behulp van de Resource Manager-sjabloon, gebruikt u een parameter bestand voor het opgeven van de invoer parameters. Als u de implementatie verder wilt aanpassen, splitst u de GitHub-opslag plaats en wijzigt u de juiste items.
+Als u wilt implementeren met de sjabloon Resourcebeheer, gebruikt u een parametersbestand om de invoerparameters te leveren. Als u de implementatie verder wilt aanpassen, vorkt u de GitHub-repo en wijzigt u de juiste items.
 
-Enkele algemene aanpassings opties zijn, maar zijn niet beperkt tot:
+Enkele veelvoorkomende aanpassingsopties zijn, maar zijn niet beperkt tot:
 
-- Bastion VM-grootte (variabele in azuredeploy. json)
-- Naamgevings regels (variabelen in azuredeploy. json)
-- Details van open Shift-cluster, gewijzigd via een hosts-bestand (deployOpenShift.sh)
+- Bastion VM-grootte (variabele in azuredeploy.json)
+- Naamgevingsconventies (variabelen in azuredeploy.json)
+- OpenShift-clusterspecificaties, gewijzigd via hosts-bestand (deployOpenShift.sh)
 
-Voor de [OKD-sjabloon](https://github.com/Microsoft/openshift-origin) zijn meerdere vertakkingen beschikbaar voor verschillende versies van OKD.  Op basis van uw behoeften kunt u rechtstreeks vanuit de opslag plaats implementeren of u kunt het opslag plaats opsplitsen en aangepaste wijzigingen aanbrengen voordat u implementeert.
+De [OKD-sjabloon](https://github.com/Microsoft/openshift-origin) heeft meerdere branches beschikbaar voor verschillende versies van OKD.  Op basis van uw behoeften u rechtstreeks vanuit de repo implementeren of u de repo forken en aangepaste wijzigingen aanbrengen voordat u deze implementeert.
 
-Gebruik de `appId` waarde van de service-principal die u eerder hebt gemaakt voor de para meter `aadClientId`.
+Gebruik `appId` de waarde van de serviceprincipal die `aadClientId` u eerder hebt gemaakt voor de parameter.
 
-Hier volgt een voor beeld van een bestand met para meters met de naam azuredeploy. para meters. json met alle vereiste invoer.
+Het volgende is een voorbeeld van een parametersbestand met de naam azuredeploy.parameters.json met alle vereiste ingangen.
 
 ```json
 {
@@ -116,17 +116,17 @@ Hier volgt een voor beeld van een bestand met para meters met de naam azuredeplo
 }
 ```
 
-Vervang de para meters door uw specifieke informatie.
+Vervang de parameters door uw specifieke informatie.
 
-Verschillende releases hebben mogelijk verschillende para meters. Controleer de benodigde para meters voor de vertakking die u gebruikt.
+Verschillende releases kunnen verschillende parameters hebben, dus controleer de benodigde parameters voor de branch die u gebruikt.
 
 ### <a name="deploy-using-azure-cli"></a>Implementeren met behulp van Azure CLI
 
 
 > [!NOTE] 
-> Voor de volgende opdracht is Azure CLI 2.0.8 of hoger vereist. U kunt de CLI-versie controleren met de opdracht `az --version`. Zie [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)voor informatie over het bijwerken van de CLI-versie.
+> Voor de volgende opdracht is Azure CLI 2.0.8 of hoger vereist. U de CLI-versie verifiëren met de `az --version` opdracht. Zie Azure CLI installeren als u de CLI-versie [wilt bijwerken.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-In het volgende voor beeld worden het OKD-cluster en alle gerelateerde resources geïmplementeerd in een resource groep met de naam openshiftrg, met een implementatie naam van myOpenShiftCluster. Er wordt rechtstreeks vanuit de GitHub-opslag plaats naar de sjabloon verwezen tijdens het gebruik van een lokaal bestand met para meters met de naam azuredeploy. para meters. json.
+In het volgende voorbeeld wordt het OKD-cluster en alle gerelateerde resources geïmplementeerd in een resourcegroep met de naam openshiftrg, met een implementatienaam van myOpenShiftCluster. De sjabloon wordt rechtstreeks vanuit de GitHub-repo verwezen terwijl u een bestand met lokale parameters met de naam azuredeploy.parameters.json gebruikt.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \
@@ -134,7 +134,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Het volt ooien van de implementatie duurt ten minste 30 minuten, op basis van het totale aantal geïmplementeerde knoop punten. Wanneer de implementatie is voltooid, wordt de URL van de open Shift-console en de DNS-naam van de open Shift-Master afgedrukt op de Terminal. U kunt ook de sectie outputs van de implementatie bekijken vanuit het Azure Portal.
+De implementatie duurt ten minste 30 minuten om te voltooien, op basis van het totale aantal geïmplementeerde knooppunten. De URL van de OpenShift-console en de DNS-naam van het OpenShift-model worden afgedrukt op de terminal wanneer de implementatie is voltooid. U ook het uitvoergedeelte van de implementatie bekijken vanuit de Azure-portal.
 
 ```json
 {
@@ -143,11 +143,11 @@ Het volt ooien van de implementatie duurt ten minste 30 minuten, op basis van he
 }
 ```
 
-Als u de opdracht regel niet wilt laten wachten tot de implementatie is voltooid, voegt u `--no-wait` toe als een van de opties voor de groeps implementatie. De uitvoer van de implementatie kan worden opgehaald uit de Azure Portal in de implementatie sectie voor de resource groep.
+Als u de opdrachtregel niet wilt vastbinden in afwachting `--no-wait` van de voltooiing van de implementatie, voegt u als een van de opties voor de groepsimplementatie toe. De uitvoer van de implementatie kan worden opgehaald uit de Azure-portal in de implementatiesectie voor de brongroep.
 
 ## <a name="connect-to-the-okd-cluster"></a>Verbinding maken met het OKD-cluster
 
-Wanneer de implementatie is voltooid, kunt u met behulp van de `OpenShift Console Url`verbinding maken met de open Shift-console met uw browser. U kunt ook SSHen naar de OKD-Master. Hieronder volgt een voor beeld waarin de uitvoer van de implementatie wordt gebruikt:
+Wanneer de implementatie is voltooid, maakt u verbinding `OpenShift Console Url`met de OpenShift-console met uw browser via de . U ook SSH naar de OKD-master. Hieronder volgt een voorbeeld dat de uitvoer van de implementatie gebruikt:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -155,7 +155,7 @@ $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Gebruik de opdracht [AZ Group delete](/cli/azure/group) om de resource groep, open Shift-cluster en alle gerelateerde resources te verwijderen wanneer u deze niet meer nodig hebt.
+Gebruik de opdracht Verwijderen van de [AZ-groep](/cli/azure/group) om de brongroep, het OpenShift-cluster en alle gerelateerde bronnen te verwijderen wanneer deze niet meer nodig zijn.
 
 ```azurecli 
 az group delete --name openshiftrg
@@ -163,6 +163,6 @@ az group delete --name openshiftrg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Taken na de implementatie](./openshift-container-platform-3x-post-deployment.md)
-- [Problemen met de openshift-implementatie oplossen](./openshift-container-platform-3x-troubleshooting.md)
+- [Taken na implementatie](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift-implementatie oplossen](./openshift-container-platform-3x-troubleshooting.md)
 - [Aan de slag met OKD](https://docs.okd.io)

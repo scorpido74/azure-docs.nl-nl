@@ -1,6 +1,6 @@
 ---
-title: Virtuele netwerk-of VPN-verbindingen configureren en valideren
-description: Stapsgewijze instructies voor het configureren en valideren van verschillende Azure VPN-en virtuele-netwerk implementaties
+title: Virtuele netwerk- of VPN-verbindingen configureren en valideren
+description: Stapsgewijze richtlijnen voor het configureren en valideren van verschillende Azure VPN- en virtuele netwerkimplementaties
 services: virtual-network
 documentationcenter: na
 author: v-miegge
@@ -15,56 +15,56 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71099064"
 ---
-# <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Virtuele netwerk-of VPN-verbindingen configureren en valideren
+# <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Virtuele netwerk- of VPN-verbindingen configureren en valideren
 
-Dit overzicht bevat stapsgewijze instructies voor het configureren en valideren van verschillende Azure VPN-en virtuele-netwerk implementaties. Scenario's zijn onder andere transit routering, netwerk-naar-netwerk verbindingen, Border Gateway Protocol (BGP), multi site-verbindingen en Point-to-site-verbindingen.
+Deze walkthrough biedt stapsgewijze richtlijnen voor het configureren en valideren van verschillende Azure VPN- en virtuele netwerkimplementaties. Scenario's zijn transitrouting, network-to-network-verbindingen, Border Gateway Protocol (BGP), multisiteverbindingen en point-to-site verbindingen.
 
-Met Azure VPN-gateways kunt u bijna elk soort verbonden virtuele netwerk topologie in azure ordenen. U kunt bijvoorbeeld verbinding maken met virtuele netwerken:
+Azure VPN-gateways maken flexibiliteit mogelijk bij het regelen van bijna elke vorm van verbonden virtuele netwerktopologie in Azure. U bijvoorbeeld virtuele netwerken verbinden:
 
 - In verschillende regio's.
-- Tussen typen virtuele netwerken (Azure Resource Manager versus klassiek).
+- Tussen virtuele netwerktypen (Azure Resource Manager versus classic).
 - Binnen Azure of binnen een on-premises hybride omgeving.
 - In verschillende abonnementen. 
 
 ## <a name="network-to-network-vpn-connection"></a>VPN-verbinding tussen netwerk en netwerk
 
-Het verbinden van een virtueel netwerk met een ander virtueel netwerk (netwerk-naar-netwerk) via VPN is vergelijkbaar met het verbinden van een virtueel netwerk met een on-premises site locatie. Beide connectiviteits typen gebruiken een VPN-gateway om een beveiligde tunnel via IPsec en IKE te bieden. De virtuele netwerken kunnen zich in dezelfde of verschillende regio's bevinden en tot dezelfde of verschillende abonnementen behoren.
+Het verbinden van een virtueel netwerk met een ander virtueel netwerk (network-to-network) via VPN is vergelijkbaar met het verbinden van een virtueel netwerk met een on-premises locatie. Beide connectiviteitstypen maken gebruik van een VPN-gateway om een veilige tunnel te bieden via IPsec en IKE. De virtuele netwerken kunnen zich in dezelfde of verschillende regio's bevinden en tot dezelfde of verschillende abonnementen behoren.
 
-![Netwerk-naar-netwerk-verbinding met IPsec](./media/virtual-network-configure-vnet-connections/4034386_en_2.png)
+![Netwerk-naar-netwerkverbinding met IPsec](./media/virtual-network-configure-vnet-connections/4034386_en_2.png)
  
-Als uw virtuele netwerken zich in dezelfde regio bevinden, kunt u overwegen verbinding te maken met behulp van de peering van het virtuele netwerk. Peering op virtueel netwerk maakt geen gebruik van een VPN-gateway. Dit verhoogt de door Voer en vermindert de latentie. Als u een peer verbinding met een virtueel netwerk wilt configureren, selecteert u **VNet-peering configureren en valideren**.
+Als uw virtuele netwerken zich in dezelfde regio bevinden, u overwegen ze met elkaar te verbinden met behulp van virtuele netwerkpeering. Virtuele netwerkpeering maakt geen gebruik van een VPN-gateway. Het verhoogt de doorvoer en vermindert de latentie. Als u een verbinding voor virtuele netwerkpeering wilt configureren, selecteert u **VNet-peering configureren en valideren.**
 
-Als uw virtuele netwerken zijn gemaakt via het Azure Resource Manager-implementatie model, selecteert u **een resource manager-Vnet configureren en valideren voor een resource manager vnet-verbinding** om een VPN-verbinding te configureren.
+Als uw virtuele netwerken zijn gemaakt via het Azure Resource Manger-implementatiemodel, selecteert u **Een VNet resourcebeheer configureren en valideren naar een VNet-verbinding voor ResourceBeheer** om een VPN-verbinding te configureren.
 
-Als een van de virtuele netwerken is gemaakt via het klassieke Azure-implementatie model en de andere is gemaakt via Resource Manager, selecteert u **een klassiek Vnet configureren en valideren voor een resource manager VNet-verbinding** om een VPN-verbinding te configureren.
+Als een van de virtuele netwerken is gemaakt via het klassieke Azure-implementatiemodel en de andere is gemaakt via Resource Beheer, selecteert u **Een klassieke VNet configureren en valideren naar een VNet-verbinding** voor Resource Beheer om een VPN-verbinding te configureren.
 
-### <a name="configure-virtual-network-peering-for-two-virtual-networks-in-the-same-region"></a>Peering voor het virtuele netwerk configureren voor twee virtuele netwerken in dezelfde regio
+### <a name="configure-virtual-network-peering-for-two-virtual-networks-in-the-same-region"></a>Virtueel netwerkpeeren configureren voor twee virtuele netwerken in dezelfde regio
 
-Zorg ervoor dat u voldoet aan de volgende vereisten voordat u begint met het implementeren en configureren van peering op het virtuele netwerk van Azure:
+Voordat u begint met het implementeren en configureren van Azure virtual network peering, moet u ervoor zorgen dat u aan de volgende vereisten voldoet:
 
 * De virtuele netwerken die worden gekoppeld, moeten zich in dezelfde Azure-regio bevinden.
-* De gekoppelde virtuele netwerken moeten IP-adres ruimten hebben die elkaar niet overlappen.
-* Peering in virtuele netwerken vindt plaats tussen twee virtuele netwerken. Er is geen afgeleide transitieve relatie tussen peerings. Als VNetA bijvoorbeeld is gekoppeld aan VNetB en VNetB is gekoppeld aan VNetC, wordt VNetA *niet* gekoppeld aan VNetC.
+* De peered virtuele netwerken moeten IP-adresruimten hebben die elkaar niet overlappen.
+* Peering in virtuele netwerken vindt plaats tussen twee virtuele netwerken. Er is geen afgeleide transitieve relatie tussen peerings. Als VNetA bijvoorbeeld is gekoppeld aan VNetB en VNetB is gekoppeld aan VNetC, wordt VNetA *niet* met VNetC gekeken.
 
-Wanneer u aan de vereisten voldoet, kunt [u zelf studie volgen: Verbind virtuele netwerken met peering op virtueel netwerk met behulp van de Azure Portal](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) voor het maken en configureren van de peering.
+Wanneer u aan de vereisten voldoet, u [Zelfstudie: Virtuele netwerken verbinden met virtueel netwerkpeeren volgen met behulp van de Azure-portal](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) om peering te maken en te configureren.
 
-Gebruik de volgende methode om de peering-configuratie te controleren:
+Als u de peeringconfiguratie wilt controleren, gebruikt u de volgende methode:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van een account met de benodigde [rollen en machtigingen](virtual-network-manage-peering.md#permissions).
-2. In het vak met de tekst **zoeken naar resources** bovenaan de portal typt u **virtuele netwerken**. Wanneer **virtuele netwerken** worden weer gegeven in de zoek resultaten, selecteert u deze.
-3. Selecteer in de Blade **virtuele netwerken** die wordt weer gegeven het virtuele netwerk waarvoor u een peering wilt maken.
-4. Selecteer **peerings** in het gedeelte **instellingen** van het deel venster dat wordt weer gegeven voor het virtuele netwerk.
-5. Selecteer een peering en Bekijk de configuratie resultaten.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met behulp van een account met de benodigde [rollen en machtigingen.](virtual-network-manage-peering.md#permissions)
+2. Typ **virtuele netwerken**in het vak met de tekst **Zoekbronnen** boven aan de portal. Wanneer **virtuele netwerken** worden weergegeven in de zoekresultaten, selecteert u deze.
+3. Selecteer in het blad **Virtuele netwerken** dat wordt weergegeven het virtuele netwerk waarvoor u een peering wilt maken.
+4. Selecteer **Peerings** in het deelvenster dat voor het virtuele netwerk wordt weergegeven in de sectie **Instellingen.**
+5. Selecteer een peering en bekijk de configuratieresultaten.
 
-![Selecties voor het controleren van de configuratie van de peering voor het virtuele netwerk](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
+![Selecties voor het controleren van de virtuele netwerkpeeringconfiguratie](./media/virtual-network-configure-vnet-connections/4034496_en_1.png)
  
-Voor Azure PowerShell voert u de opdracht [Get-AzureRmVirtualNetworkPeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) uit om de peering van het virtuele netwerk op te halen. Hier volgt een voorbeeld:
+Voer voor Azure PowerShell de opdracht [Get-AzureRmVirtualNetworkPeering](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering?view=azurermps-4.1.0) uit om het virtuele netwerkpeering te krijgen. Hier volgt een voorbeeld:
 
 ```
 PS C:\Users\User1> Get-AzureRmVirtualNetworkPeering -VirtualNetworkName Vnet10-01 -ResourceGroupName dev-vnets
@@ -87,178 +87,178 @@ RemoteGateways                   : null
 RemoteVirtualNetworkAddressSpace : null
 ```
 
-### <a name="connect-a-resource-manager-virtual-network-to-another-resource-manager-virtual-network"></a>Een virtueel netwerk van Resource Manager verbinden met een virtueel netwerk van Resource Manager
+### <a name="connect-a-resource-manager-virtual-network-to-another-resource-manager-virtual-network"></a>Een virtueel netwerk van Resource Manager verbinden met een ander virtueel netwerk van Resource Manager
 
-U kunt rechtstreeks een verbinding configureren tussen een virtueel netwerk van Resource Manager en een ander virtueel netwerk van Resource Manager. U kunt de verbinding ook configureren met behulp van IPsec.
+U een verbinding rechtstreeks configureren van het ene virtuele netwerk van Resource Manager naar een ander virtueel netwerk van Resource Manager. U de verbinding ook configureren met Behulp van IPsec.
 
 ### <a name="configure-a-vpn-connection-between-resource-manager-virtual-networks"></a>Een VPN-verbinding configureren tussen virtuele netwerken van Resource Manager
 
-Zie [een netwerk-naar-netwerk-VPN-gateway verbinding configureren met behulp van de Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)om een verbinding te configureren tussen virtuele netwerken van Resource Manager zonder IPSec.
+Zie [Een VPN-gatewayverbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)tussen Netwerk naar netwerk configureren met behulp van de Azure-portal als u een verbinding wilt configureren tussen virtuele netwerken van Resource Manager zonder IPsec.
 
-Als u een verbinding met IPsec tussen twee virtuele Resource Manager-netwerken wilt configureren, volgt u stap 1 tot en met 5 in [een site-naar-site-verbinding maken in de Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) voor elk virtueel netwerk.
+Als u een verbinding met IPsec wilt configureren tussen twee virtuele netwerken van Resource Manager, voert u de stappen 1 tot en met 5 uit in [Een site-to-site-verbinding maken in de Azure-portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) voor elk virtueel netwerk.
 
 > [!Note]
-> Deze stappen werken alleen voor virtuele netwerken in hetzelfde abonnement. Als uw virtuele netwerken zich in verschillende abonnementen bevinden, moet u Power shell gebruiken om de verbinding te maken. Zie het artikel voor [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps).
+> Deze stappen werken alleen voor virtuele netwerken in hetzelfde abonnement. Als uw virtuele netwerken zich in verschillende abonnementen bevinden, moet u PowerShell gebruiken om de verbinding te maken. Zie het artikel voor [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps).
 
 ### <a name="validate-the-vpn-connection-between-resource-manager-virtual-networks"></a>De VPN-verbinding tussen virtuele netwerken van Resource Manager valideren
 
-![Klassieke virtuele netwerk verbinding met een Azure Resource Manager virtueel netwerk](./media/virtual-network-configure-vnet-connections/4034493_en_2.png)
+![Klassieke virtuele netwerkverbinding met een virtueel Azure Resource Manager-netwerk](./media/virtual-network-configure-vnet-connections/4034493_en_2.png)
 
-Volg deze instructies om te controleren of uw VPN-verbinding juist is geconfigureerd.
+Volg deze instructies om te controleren of uw VPN-verbinding correct is geconfigureerd.
 
 > [!Note] 
-> De getallen na de onderdelen van het virtuele netwerk in deze stappen komen overeen met de getallen in het voor gaande diagram.
+> De getallen na virtuele netwerkcomponenten in deze stappen komen overeen met de getallen in het voorgaande diagram.
 
-1. Zorg ervoor dat er geen overlappende adres ruimten aanwezig zijn in de verbonden virtuele netwerken.
-2. Controleer of het adres bereik voor het Azure Resource Manager virtuele netwerk (1) nauw keurig is gedefinieerd in het **Connection-object** exemplaar (4).
-3. Controleer of het adres bereik voor de Azure Resource Manager virtuele netwerk (6) nauw keurig is gedefinieerd in het **Connection-object** exemplaar (3).
-4. Controleer of de vooraf gedeelde sleutels overeenkomen met de verbindings objecten.
-5. Controleer of de Azure Resource Manager virtuele netwerk gateway-VIP (2) nauw keurig is gedefinieerd in het **Connection-object** exemplaar (4).
-6. Controleer of de Azure Resource Manager virtuele netwerk gateway-VIP (5) nauw keurig is gedefinieerd in het **Connection-object** exemplaar (3).
+1. Zorg ervoor dat er geen overlappende adresruimten zijn in de verbonden virtuele netwerken.
+2. Controleer of het adresbereik voor het virtuele Azure Resource Manager-netwerk (1) nauwkeurig is gedefinieerd in de instantie **Verbindingsobject** (4).
+3. Controleer of het adresbereik voor het virtuele Azure Resource Manager-netwerk (6) nauwkeurig is gedefinieerd in de instantie **Verbindingsobject** (3).
+4. Controleer of de vooraf gedeelde sleutels overeenkomen met de verbindingsobjecten.
+5. Controleer of de VIP (2) van Azure Resource Manager virtual network gateway nauwkeurig is gedefinieerd in de instantie **Van het doel Verbinding** (4).
+6. Controleer of de VIP (5) van Azure Resource Manager virtual network gateway nauwkeurig is gedefinieerd in de instantie **Verbindingobject** (3).
 
 ### <a name="connect-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Een klassiek virtueel netwerk verbinden met een virtueel netwerk van Resource Manager
 
-U kunt een verbinding maken tussen virtuele netwerken die zich in verschillende abonnementen en in verschillende regio's bevinden. U kunt ook virtuele netwerken koppelen die al verbindingen met on-premises netwerken hebben, zolang u het gateway type hebt geconfigureerd als op route gebaseerd.
+U een verbinding maken tussen virtuele netwerken die zich in verschillende abonnementen en in verschillende regio's bevinden. U ook virtuele netwerken met verbindingen met on-premises netwerken verbinden, zolang u het gatewaytype hebt geconfigureerd als routegebaseerd.
 
-Als u een verbinding wilt configureren tussen een klassiek virtueel netwerk en een virtueel netwerk van Resource Manager, raadpleegt u [virtuele netwerken van verschillende implementatie modellen verbinden met behulp van de Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal).
+Zie Virtuele netwerken van verschillende implementatiemodellen verbinden met [behulp van de Azure-portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal)als u een verbinding wilt configureren tussen een klassiek virtueel netwerk en een virtueel netwerk van Resource Manager.
 
-![Klassieke virtuele netwerk verbinding met een Azure Resource Manager virtueel netwerk](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
+![Klassieke virtuele netwerkverbinding met een virtueel Azure Resource Manager-netwerk](./media/virtual-network-configure-vnet-connections/4034389_en_2.png)
 
-Volg deze instructies om de configuratie te controleren wanneer u een klassiek virtueel netwerk verbindt met een Azure Resource Manager virtueel netwerk.
+Volg deze instructies om de configuratie te controleren wanneer u een klassiek virtueel netwerk aansluit op een virtueel Azure Resource Manager-netwerk.
 
 > [!Note] 
-> De getallen na de onderdelen van het virtuele netwerk in deze stappen komen overeen met de getallen in het voor gaande diagram. 
+> De getallen na virtuele netwerkcomponenten in deze stappen komen overeen met de getallen in het voorgaande diagram. 
 
-1. Zorg ervoor dat er geen overlappende adres ruimten aanwezig zijn in de verbonden virtuele netwerken.
-2. Controleer of het adres bereik voor de Azure Resource Manager virtuele netwerk (6) nauw keurig is gedefinieerd in de klassieke lokale netwerk definitie (3).
-3. Controleer of het adres bereik voor het klassieke virtuele netwerk (1) nauw keurig is gedefinieerd in de Azure Resource Manager- **verbindings object** instantie (4).
-4. Controleer of het klassieke virtuele netwerk gateway-VIP (2) nauw keurig is gedefinieerd in de Azure Resource Manager- **verbindings object** instantie (4).
-5. Controleer of de Azure Resource Manager virtuele netwerk gateway (5) nauw keurig is gedefinieerd in het klassieke **lokale netwerk definitie** -exemplaar (3).
-6. Controleer of de vooraf gedeelde sleutels overeenkomen met beide verbonden virtuele netwerken:
-   - Klassiek virtueel netwerk: **Definitie van het lokale netwerk** 3D
-   - Azure Resource Manager virtueel netwerk: **Verbindings object** 3
+1. Zorg ervoor dat er geen overlappende adresruimten zijn in de verbonden virtuele netwerken.
+2. Controleer of het adresbereik voor het virtuele Azure Resource Manager-netwerk (6) nauwkeurig is gedefinieerd in de klassieke lokale netwerkdefinitie (3).
+3. Controleer of het adresbereik voor het klassieke virtuele netwerk (1) nauwkeurig is gedefinieerd in de instantie Azure Resource Manager **Connection** (4).
+4. Controleer of de klassieke virtuele netwerkgateway VIP (2) nauwkeurig is gedefinieerd in de instantie Azure Resource Manager **Connection** (4).
+5. Controleer of de virtuele netwerkgateway azure resource manager (5) nauwkeurig is gedefinieerd in de klassieke instantie **Local Network Definition** (3).
+6. Controleer of de vooraf gedeelde sleutels overeenkomen op beide verbonden virtuele netwerken:
+   - Klassiek virtueel netwerk: **Local Network Definition** (3)
+   - Azure Resource Manager virtueel netwerk: **verbindingsobject** (4)
 
-## <a name="create-a-point-to-site-vpn-connection"></a>Een punt-naar-site-VPN-verbinding maken
+## <a name="create-a-point-to-site-vpn-connection"></a>Een point-to-site VPN-verbinding maken
 
-Met een punt-naar-site (*P2S* in de volgende diagram)-configuratie kunt u een beveiligde verbinding maken tussen een afzonderlijke client computer en een virtueel netwerk. Punt-naar-site-verbindingen zijn handig wanneer u verbinding wilt maken met uw virtuele netwerk vanaf een externe locatie, zoals vanaf thuis of een conferentie. Ze zijn ook handig wanneer u slechts enkele clients hebt die verbinding moeten maken met een virtueel netwerk. 
+Met een point-to-site *(P2S* in het volgende diagram) u een beveiligde verbinding maken van een individuele clientcomputer naar een virtueel netwerk. Point-to-site-verbindingen zijn handig wanneer u verbinding wilt maken met uw virtuele netwerk vanaf een externe locatie, zoals thuis of een conferentie. Ze zijn ook handig als u slechts een paar clients hebt die verbinding moeten maken met een virtueel netwerk. 
 
-De punt-naar-site-VPN-verbinding wordt vanaf de client computer geïnitieerd via de systeem eigen Windows VPN-client. Clienten verbinden met certificaten om te verifiëren.
+De point-to-site VPN-verbinding wordt gestart vanaf de clientcomputer via de native Windows VPN-client. Clienten verbinden met certificaten om te verifiëren.
 
 ![Punt-naar-site-verbinding](./media/virtual-network-configure-vnet-connections/4034387_en_3.png)
 
-Voor Point-to-site-verbindingen is geen VPN-apparaat vereist. Ze maken de VPN-verbinding via SSTP (Secure Socket Tunneling Protocol). U kunt verbinding maken met een punt-naar-site-verbinding met een virtueel netwerk met behulp van verschillende implementatie hulpprogramma's en implementatie modellen:
+Point-to-site-verbindingen vereisen geen VPN-apparaat. Ze maken de VPN-verbinding via Secure Socket Tunneling Protocol (SSTP). U een point-to-site verbinding met een virtueel netwerk verbinden met behulp van verschillende implementatiehulpprogramma's en implementatiemodellen:
 
-* [Een punt-naar-site-verbinding met een virtueel netwerk configureren met behulp van de Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
-* [Een punt-naar-site-verbinding met een virtueel netwerk configureren met behulp van de Azure Portal (klassiek)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal)
-* [Een punt-naar-site-verbinding met een virtueel netwerk configureren met behulp van Power shell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+* [Een point-to-site-verbinding met een virtueel netwerk configureren met behulp van de Azure-portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
+* [Een point-to-site-verbinding met een virtueel netwerk configureren met behulp van de Azure-portal (klassiek)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal)
+* [Een point-to-site verbinding met een virtueel netwerk configureren met PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
-### <a name="validate-your-point-to-site-connection"></a>Uw punt-naar-site-verbinding valideren
+### <a name="validate-your-point-to-site-connection"></a>Uw point-to-site-verbinding valideren
 
-Het artikel [problemen oplossen: Problemen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems) met een punt-naar-site-verbinding worden door gang met veelvoorkomende problemen met Point-to-site-verbindingen.
+Het artikel [Probleemoplossing: azure point-to-site-verbindingsproblemen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems) lopen door veelvoorkomende problemen met point-to-site-verbindingen.
 
-## <a name="create-a-multisite-vpn-connection"></a>Een VPN-verbinding met meerdere sites maken
+## <a name="create-a-multisite-vpn-connection"></a>Een VPN-verbinding met meerdere plaatsen maken
 
-U kunt een site-naar-site (*S2S* in het volgende diagram) toevoegen aan een virtueel netwerk dat al een site-naar-site-verbinding, punt-naar-site-verbinding of netwerk-naar-netwerk-verbinding heeft. Dit type verbinding wordt vaak een configuratie met *meerdere locaties* genoemd. 
+U een site-to-site *(S2S* in het volgende diagram) toevoegen aan een virtueel netwerk dat al een site-to-site-verbinding, point-to-site-verbinding of netwerk-naar-netwerkverbinding heeft. Dit soort verbinding wordt vaak een *multisite-configuratie* genoemd. 
 
-![Multi site-verbinding](./media/virtual-network-configure-vnet-connections/4034497_en_2.png)
+![Verbinding met meerdere plaatsen](./media/virtual-network-configure-vnet-connections/4034497_en_2.png)
 
-Azure werkt momenteel met twee implementatie modellen: Resource Manager en klassiek. De twee modellen zijn niet volledig compatibel met elkaar. Als u een multi site-verbinding met verschillende modellen wilt configureren, raadpleegt u de volgende artikelen:
+Azure werkt momenteel in combinatie met twee implementatiemodellen: Resource Manager en klassiek. De twee modellen zijn niet volledig compatibel met elkaar. Zie de volgende artikelen om een verbinding met meerdere locaties met verschillende modellen te configureren:
 
-* [Een site-naar-site-verbinding met een virtueel netwerk met een bestaande VPN-gateway verbinding toevoegen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal)
-* [Een site-naar-site-verbinding met een virtueel netwerk toevoegen met een bestaande VPN-gateway verbinding (klassiek)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site)
-
-> [!Note]
-> De stappen in deze artikelen zijn niet van toepassing op Azure ExpressRoute-en site-to-site naast elkaar bestaande verbindings configuraties. Zie [ExpressRoute-en site-to-site-verbindingen naast](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager)elkaar voor meer informatie.
-
-## <a name="configure-transit-routing"></a>Transit routering configureren
-
-Transit routering is een specifiek routerings scenario waarin u meerdere netwerken verbindt in een keten met een ringnet werk. Met deze route ring kunnen resources in virtuele netwerken aan beide uiteinden van de keten communiceren met elkaar via virtuele netwerken tussen. Zonder transit routering kunnen netwerken of apparaten die via een hub worden gekoppeld, elkaar niet bereiken.
-
-### <a name="configure-transit-routing-in-a-point-to-site-connection"></a>Transit routering configureren in een punt-naar-site-verbinding
-
-Stel dat u een scenario wilt configureren van een site-naar-site-VPN-verbinding tussen VNetA en VNetB. U wilt ook een punt-naar-site-VPN configureren voor de client om verbinding te maken met de gateway van VNetA. Vervolgens wilt u Transit routering inschakelen voor de punt-naar-site-clients om verbinding te maken met VNetB, die door VNetA wordt door gegeven. 
-
-Dit scenario wordt ondersteund wanneer BGP is ingeschakeld op de site-naar-site-VPN tussen VNetA en VNetB. Zie [about Point-to-site VPN-route ring](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)voor meer informatie.
-
-### <a name="configure-transit-routing-in-an-expressroute-connection"></a>Transit routering configureren in een ExpressRoute-verbinding
-
-Met Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft-cloud uitbreiden via een speciale persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en Dynamics 365. Zie [ExpressRoute Overview](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)(Engelstalig) voor meer informatie.
-
-![ExpressRoute persoonlijke peering-verbinding met virtuele Azure-netwerken](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
+* [Een site-to-site-verbinding toevoegen aan een virtueel netwerk met een bestaande VPN-gatewayverbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal)
+* [Een site-to-site-verbinding toevoegen aan een virtueel netwerk met een bestaande VPN-gatewayverbinding (klassiek)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site)
 
 > [!Note]
-> Als VNetA en VNetB zich in dezelfde geopolitieke regio bevinden, wordt u aangeraden [beide virtuele netwerken aan het ExpressRoute-circuit te koppelen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm) in plaats van transit routering te configureren. Als uw virtuele netwerken zich in verschillende geopolitieke regio's bevinden, kunt u ze ook rechtstreeks aan uw circuit koppelen als u [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium)hebt. 
+> De stappen in die artikelen zijn niet van toepassing op Azure ExpressRoute en site-to-site coëxistentieconfiguraties. Zie [ExpressRoute en site-to-site naast elkaar bestaande verbindingen](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager)voor meer informatie.
 
-Als u ExpressRoute en site-naar-site-samen werking hebt, wordt Transit routering niet ondersteund. Zie [ExpressRoute en site-to-site configureren met behulp van Power shell](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager)voor meer informatie.
+## <a name="configure-transit-routing"></a>Transitroutering configureren
 
-Als u ExpressRoute hebt ingeschakeld om uw lokale netwerken te verbinden met een virtueel Azure-netwerk, kunt u peering inschakelen tussen de virtuele netwerken waarvoor u Transit routering wilt gebruiken. Als u uw lokale netwerken wilt toestaan verbinding te maken met het externe virtuele netwerk, moet u [peering voor het virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#gateways-and-on-premises-connectivity)configureren. 
+Transitrouting is een specifiek routeringsscenario waarbij u meerdere netwerken in een daisy-chain topologie met elkaar verbindt. Deze routing stelt resources in virtuele netwerken aan weerszijden van de keten in staat om met elkaar te communiceren via virtuele netwerken tussendoor. Zonder transitroutering kunnen netwerken of apparaten die door een hub worden gekeken elkaar niet bereiken.
 
-> [!Note]
-> Peering op virtueel netwerk is alleen beschikbaar voor virtuele netwerken in dezelfde regio.
+### <a name="configure-transit-routing-in-a-point-to-site-connection"></a>Transitroutering configureren in een point-to-site-verbinding
 
-Volg de volgende instructies om te controleren of u Transit routering hebt geconfigureerd voor peering van virtuele netwerken:
+Stelt u zich een scenario voor waarin u een site-to-site VPN-verbinding tussen VNetA en VNetB wilt configureren. U wilt ook een point-to-site VPN configureren voor de client om verbinding te maken met de gateway van VNetA. Vervolgens wilt u transitroutering inschakelen voor de point-to-site clients om verbinding te maken met VNetB, dat via VNetA loopt. 
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van een account met de benodigde [rollen en machtigingen](virtual-network-manage-peering.md#permissions).
-2. [Maak een peering tussen VNetA en VNetB](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) , zoals weer gegeven in het vorige diagram. 
-3. Selecteer **peerings** in het gedeelte **instellingen** van het deel venster dat wordt weer gegeven voor het virtuele netwerk.
-4. Selecteer de peering die u wilt weer geven. Selecteer vervolgens **configuratie** om te controleren of u **Allow gateway-door Voer** hebt ingeschakeld in het VNetA-netwerk dat is verbonden met het ExpressRoute-circuit en **Gebruik externe gateway** op het externe VNetB-netwerk dat niet verbonden is met de ExpressRoute schakelaar.
+Dit scenario wordt ondersteund wanneer BGP is ingeschakeld op de site-to-site VPN tussen VNetA en VNetB. Zie [Informatie over point-to-site VPN-routering](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)voor meer informatie.
 
-### <a name="configure-transit-routing-in-a-virtual-network-peering-connection"></a>Transit routering configureren in een peering-verbinding met een virtueel netwerk
+### <a name="configure-transit-routing-in-an-expressroute-connection"></a>Transitroutering configureren in een ExpressRoute-verbinding
 
-Wanneer virtuele netwerken gelijkwaardig zijn gemaakt, kunt u ook de gateway in het gelijkwaardige virtuele netwerk configureren als een doorvoerpunt naar een on-premises netwerk. Zie [netwerk-naar-netwerk-verbindingen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps?toc=/azure/virtual-network/toc.json)als u een doorvoer route wilt configureren in peering op virtueel netwerk.
+Met Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft-cloud uitbreiden via een speciale persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en Dynamics 365. Raadpleeg [Overzicht van ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) voor meer informatie.
+
+![ExpressRoute private peering-verbinding met virtuele Azure-netwerken](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
 
 > [!Note]
-> Gateway-door Voer wordt niet ondersteund in de peering-relatie tussen virtuele netwerken die via verschillende implementatie modellen zijn gemaakt. Beide virtuele netwerken in de peering-relatie moeten zijn gemaakt via Resource Manager voor het werken met gateway-door voer.
+> We raden u aan om als VNetA en VNetB zich in dezelfde geopolitieke regio bevinden, [beide virtuele netwerken te koppelen aan het ExpressRoute-circuit](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-arm) in plaats van transitroutering te configureren. Als uw virtuele netwerken zich in verschillende geopolitieke regio's bevinden, u ze ook rechtstreeks aan uw circuit koppelen als u [ExpressRoute Premium hebt.](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) 
 
-Volg deze instructies om te controleren of u een doorvoer route hebt geconfigureerd voor peering in virtuele netwerken:
+Als u ExpressRoute en site-to-site coëxistentie hebt, wordt transitroutering niet ondersteund. Zie [ExpressRoute en site-to-site configureren voor](https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager)meer informatie met PowerShell.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van een account met de benodigde [rollen en machtigingen](virtual-network-manage-peering.md#permissions).
-2. In het vak met de tekst **zoeken naar resources** bovenaan de portal typt u **virtuele netwerken**. Wanneer **virtuele netwerken** worden weer gegeven in de zoek resultaten, selecteert u deze.
-3. Selecteer in de Blade **virtuele netwerken** die wordt weer gegeven het virtuele netwerk waarvoor u de instelling voor peering wilt controleren.
-4. Selecteer in het deel venster dat wordt weer gegeven voor het virtuele netwerk dat u hebt geselecteerd **peerings** in het gedeelte **instellingen** .
-5. Selecteer de peering die u wilt weer geven. Controleer of u **Gateway overdracht toestaan** hebt ingeschakeld en **externe gateways gebruiken** onder **configuratie**.
-
-![Selecties voor het controleren of u een doorvoer route hebt geconfigureerd voor peering op virtueel netwerk](./media/virtual-network-configure-vnet-connections/4035414_en_1.png)
-
-### <a name="configure-transit-routing-in-a-network-to-network-connection"></a>Transit routering configureren in een netwerk-naar-netwerk-verbinding
-
-Als u Transit routering tussen virtuele netwerken wilt configureren, moet u BGP inschakelen op alle tussenliggende netwerk-naar-netwerk-verbindingen met behulp van het Resource Manager-implementatie model en Power shell. Zie [BGP op Azure VPN-gateways configureren met behulp van Power shell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps)voor instructies.
-
-Transit verkeer via Azure VPN-gateways is mogelijk via het klassieke implementatie model, maar dit is afhankelijk van statisch gedefinieerde adres ruimten in het netwerk configuratie bestand. BGP wordt nog niet ondersteund met Azure Virtual Networks en VPN-gateways via het klassieke implementatie model. Zonder BGP, het hand matig definiëren van transit adres ruimten is fout gevoelig en wij raden dit niet aan.
+Als u ExpressRoute hebt ingeschakeld om uw lokale netwerken te verbinden met een virtueel Azure-netwerk, u peering inschakelen tussen de virtuele netwerken waar u transitroutering wilt hebben. Als u wilt dat uw lokale netwerken verbinding maken met het externe virtuele netwerk, moet u [virtuele netwerkpeering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#gateways-and-on-premises-connectivity)configureren. 
 
 > [!Note]
-> U kunt klassieke netwerk-naar-netwerk verbindingen configureren met behulp van de klassieke Azure-portal of met behulp van een netwerk configuratie bestand in de klassieke Portal. U kunt een klassiek virtueel netwerk niet maken of wijzigen via het Azure Resource Manager-implementatie model of de Azure Portal. Zie de [micro soft Developer-Blog](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/)voor meer informatie over transit routering voor klassieke virtuele netwerken.
+> Virtuele netwerkpeering is alleen beschikbaar voor virtuele netwerken in dezelfde regio.
 
-### <a name="configure-transit-routing-in-a-site-to-site-connection"></a>Transit routering configureren in een site-naar-site-verbinding
+Volg de volgende instructies om te controleren of u transitroutering hebt geconfigureerd voor virtueel netwerkpeeren:
 
-Als u Transit routering wilt configureren tussen uw on-premises netwerk en een virtueel netwerk met een site-naar-site-verbinding, moet u BGP inschakelen op alle tussenliggende site-naar-site-verbindingen met behulp van het Resource Manager-implementatie model en Power shell. Zie [BGP op Azure VPN-gateways configureren met behulp van Power shell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps) voor instructies.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met behulp van een account met de benodigde [rollen en machtigingen.](virtual-network-manage-peering.md#permissions)
+2. [Maak een peering tussen VNetA en VNetB](https://docs.microsoft.com/azure/virtual-network/virtual-network-create-peering) zoals weergegeven in het eerdere diagram. 
+3. Selecteer **Peerings** in het deelvenster dat voor het virtuele netwerk wordt weergegeven in de sectie **Instellingen.**
+4. Selecteer het peering dat u wilt weergeven. Selecteer vervolgens **Configuratie** om te valideren dat u **Gateway Transit toestaan** hebt ingeschakeld op het VNetA-netwerk dat is aangesloten op het ExpressRoute-circuit en Remote Gateway **gebruiken** op het externe VNetB-netwerk dat niet is aangesloten op het ExpressRoute-circuit.
 
-Transit verkeer via Azure VPN-gateways is mogelijk via het klassieke implementatie model, maar dit is afhankelijk van statisch gedefinieerde adres ruimten in het netwerk configuratie bestand. BGP wordt nog niet ondersteund met Azure Virtual Networks en VPN-gateways via het klassieke implementatie model. Zonder BGP, het hand matig definiëren van transit adres ruimten is fout gevoelig en wij raden dit niet aan.
+### <a name="configure-transit-routing-in-a-virtual-network-peering-connection"></a>Transitroutering configureren in een verbinding met virtuele netwerkpeering
+
+Wanneer virtuele netwerken gelijkwaardig zijn gemaakt, kunt u ook de gateway in het gelijkwaardige virtuele netwerk configureren als een doorvoerpunt naar een on-premises netwerk. Zie [Netwerk-naar-netwerkverbindingen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps?toc=/azure/virtual-network/toc.json)voor het configureren van een doorvoerroute in virtueel netwerkpeeren.
 
 > [!Note]
-> U kunt klassieke site-naar-site-verbindingen configureren met behulp van de klassieke Azure-portal of met behulp van een netwerk configuratie bestand in de klassieke Portal. U kunt een klassiek virtueel netwerk niet maken of wijzigen via het Azure Resource Manager-implementatie model of de Azure Portal. Zie de [micro soft Developer-Blog](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/)voor meer informatie over transit routering voor klassieke virtuele netwerken.
+> Gateway transit wordt niet ondersteund in de peering relatie tussen virtuele netwerken gemaakt via verschillende implementatiemodellen. Beide virtuele netwerken in de peeringrelatie moeten zijn gemaakt via Resource Manager voor gateway transit naar werk.
+
+Volg de volgende instructies om te controleren of u een transitroute hebt geconfigureerd voor virtueel netwerkpeeren:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met behulp van een account met de benodigde [rollen en machtigingen.](virtual-network-manage-peering.md#permissions)
+2. Typ **virtuele netwerken**in het vak met de tekst **Zoekbronnen** boven aan de portal. Wanneer **virtuele netwerken** worden weergegeven in de zoekresultaten, selecteert u deze.
+3. Selecteer in het blad **Virtuele netwerken** dat wordt weergegeven het virtuele netwerk waarvoor u de peering-instelling wilt controleren.
+4. Selecteer **Peerings** in het deelvenster dat wordt weergegeven voor het virtuele netwerk dat u hebt geselecteerd in de sectie **Instellingen.**
+5. Selecteer de peering die u wilt weergeven. Controleer of u **Gateway transit toestaan** hebt ingeschakeld en **externe gateways gebruiken** onder **Configuratie**.
+
+![Selecties om te controleren of u een transitroute hebt geconfigureerd voor virtueel netwerkpeeren](./media/virtual-network-configure-vnet-connections/4035414_en_1.png)
+
+### <a name="configure-transit-routing-in-a-network-to-network-connection"></a>Transitroutering configureren in een netwerk-naar-netwerkverbinding
+
+Als u de transitroutering tussen virtuele netwerken wilt configureren, moet u BGP inschakelen op alle tussentijdse netwerk-naar-netwerkverbindingen met behulp van het implementatiemodel ResourceBeheer en PowerShell. Zie [BGP configureren op Azure VPN-gateways met PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps)voor instructies.
+
+Transitverkeer via Azure VPN-gateways is mogelijk via het klassieke implementatiemodel, maar dat is afhankelijk van statisch gedefinieerde adresruimten in het netwerkconfiguratiebestand. BGP wordt nog niet ondersteund met virtuele Azure-netwerken en VPN-gateways via het klassieke implementatiemodel. Zonder BGP is het handmatig definiëren van transitadresruimten foutgevoelig en we raden het niet aan.
+
+> [!Note]
+> U configureert klassieke netwerk-naar-netwerkverbindingen met behulp van de klassieke Azure-portal of met behulp van een netwerkconfiguratiebestand in de klassieke portal. U geen klassiek virtueel netwerk maken of wijzigen via het Azure Resource Manager-implementatiemodel of de Azure-portal. Zie de [Microsoft Developer-blog](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/)voor meer informatie over transitroutering voor klassieke virtuele netwerken.
+
+### <a name="configure-transit-routing-in-a-site-to-site-connection"></a>Transitroutering configureren in een site-to-site-verbinding
+
+Als u de transitroutering wilt configureren tussen uw on-premises netwerk en een virtueel netwerk met een site-to-site-verbinding, moet u BGP inschakelen op alle tussenliggende site-to-site-verbindingen met behulp van het implementatiemodel Resource Manager en PowerShell. Zie [Hoe u BGP op Azure VPN-gateways configureert met PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps) voor instructies.
+
+Transitverkeer via Azure VPN-gateways is mogelijk via het klassieke implementatiemodel, maar dat is afhankelijk van statisch gedefinieerde adresruimten in het netwerkconfiguratiebestand. BGP wordt nog niet ondersteund met virtuele Azure-netwerken en VPN-gateways via het klassieke implementatiemodel. Zonder BGP is het handmatig definiëren van transitadresruimten foutgevoelig en we raden het niet aan.
+
+> [!Note]
+> U configureert klassieke site-to-site-verbindingen met behulp van de klassieke Azure-portal of met behulp van een netwerkconfiguratiebestand in de klassieke portal. U geen klassiek virtueel netwerk maken of wijzigen via het Azure Resource Manager-implementatiemodel of de Azure-portal. Zie de [Microsoft Developer-blog](https://blogs.msdn.microsoft.com/igorpag/2015/10/01/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-using-vpn-v1/)voor meer informatie over transitroutering voor klassieke virtuele netwerken.
 
 ## <a name="configure-bgp-for-a-vpn-gateway"></a>Een BGP configureren voor een VPN-gateway
 
-BGP is het standaard routerings protocol dat op Internet wordt gebruikt om routerings-en bereik baarheids gegevens tussen twee of meer netwerken te uitwisselen. Wanneer BGP wordt gebruikt in de context van Azure Virtual Networks, worden de Azure VPN-gateways en uw on-premises VPN-apparaten, ook wel BGP-peers of neighbors, ingeschakeld. Ze wisselen ' routes ' in, waarbij beide gateways worden geïnformeerd over de beschik baarheid en het bereiken van deze voor voegsels om door de betrokken gateways of routers te gaan. 
+BGP is het standaard routeringsprotocol dat op het internet wordt gebruikt om routerings- en bereikbaarheidsinformatie uit te wisselen tussen twee of meer netwerken. Wanneer BGP wordt gebruikt in de context van virtuele Azure-netwerken, worden de Azure VPN-gateways en uw on-premises VPN-apparaten, bekend als BGP-peers of buren, ingeschakeld. Ze wisselen "routes" uit die beide gateways informeren over de beschikbaarheid en bereikbaarheid voor die voorvoegsels om door de betrokken gateways of routers te gaan. 
 
-BGP kan ook transit routering tussen meerdere netwerken inschakelen door routes door te geven die een BGP-gateway van een BGP-peer naar alle andere BGP-peers doorstuurt. Zie [overzicht van BGP met Azure VPN gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-overview)voor meer informatie.
+BGP kan ook transitroutering tussen meerdere netwerken mogelijk maken door routes te verspreiden die een BGP-gateway leert van één BGP-peer ten opzichte van alle andere BGP-peers. Zie [Overzicht van BGP met Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-overview)voor meer informatie.
 
 ### <a name="configure-bgp-for-a-vpn-connection"></a>BGP configureren voor een VPN-verbinding
 
-Zie [BGP op Azure VPN-gateways configureren met behulp van Power shell voor meer informatie over](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps)het configureren van een VPN-verbinding die gebruikmaakt van BGP.
+Zie [BGP configureren op Azure VPN-gateways met PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-bgp-resource-manager-ps)als u een VPN-verbinding wilt configureren die BGP gebruikt.
 
-Schakel BGP in op de virtuele netwerk gateway door een autonoom systeem (als)-nummer te maken. Basis gateways bieden geen ondersteuning voor BGP. Als u de SKU van de gateway wilt controleren, gaat u naar de sectie **overzicht** van de blade **VPN Gateway** in het Azure Portal. Als uw SKU **Basic**is, wijzigt u de SKU (zie formaat van [de gateway](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)wijzigen) in **VpnGw1**. 
+Schakel BGP in op de virtuele netwerkgateway door er een as-nummer voor autonoom systeem (AS) voor te maken. Basisgateways ondersteunen geen BGP. Als u de SKU van de gateway wilt controleren, gaat u naar het gedeelte **Overzicht** van het **VPN-gatewayblad** in de Azure-portal. Als uw SKU **Basic**is, moet u de SKU (zie [Het formaat van de gateway wijzigen)](https://docs.microsoft.com/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)naar **VpnGw1**. 
 
-Het controleren van de SKU leidt tot 20 tot 30 minuten uitval tijd. Zodra de gateway de juiste SKU heeft, kunt u het AS-nummer toevoegen met behulp van de cmdlet [set-azurermvirtualnetworkgateway bijgewerkt](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) Power shell. Nadat u het AS-nummer hebt geconfigureerd, wordt er automatisch een BGP-peer-IP voor de gateway gegeven.
+Het controleren van de SKU zal leiden tot 20 tot 30 minuten downtime. Zodra de gateway de juiste SKU heeft, u het AS-nummer toevoegen met behulp van de [set-AzureRmVirtualNetworkNetworkPowerShell-opdracht.](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway?view=azurermps-3.8.0) Nadat u het AS-nummer hebt geconfigureerd, wordt automatisch een IP-peer van Een BGP-peer voor de gateway verstrekt.
 
-U moet hand matig `LocalNetworkGateway` een as-nummer en een BGP-peer adres opgeven. U kunt de `ASN` waarden en `-BgpPeeringAddress` instellen met behulp van de cmdlet [New-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) of de Power shell [-commandlet set-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) . Sommige AS-nummers zijn gereserveerd voor Azure en u kunt ze niet gebruiken zoals wordt beschreven in [over BGP met Azure VPN gateway](../vpn-gateway/vpn-gateway-bgp-overview.md#faq).
+U moet handmatig `LocalNetworkGateway` een AS-nummer en een BGP-peeradres opgeven. U `ASN` de `-BgpPeeringAddress` waarden en waarden instellen met de opdracht [Nieuw-AzureRmLocalNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermlocalnetworkgateway?view=azurermps-4.1.0) of de PowerShell-commandlet [Set-AzureRmLocalNetworkNetwork.](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermlocalnetworkgateway?view=azurermps-4.1.0) Sommige AS-nummers zijn gereserveerd voor Azure en u ze niet gebruiken zoals beschreven in [Over BGP met Azure VPN Gateway.](../vpn-gateway/vpn-gateway-bgp-overview.md#faq)
 
-Voor het verbindings object moet BGP zijn ingeschakeld. U kunt de `-EnableBGP` waarde instellen op `$True` via [New-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) of [set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0).
+Het verbindingsobject moet BGP hebben ingeschakeld. U `-EnableBGP` de `$True` waarde instellen via [New-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0) of [Set-AzureRmVirtualNetworkGatewayConnection](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermvirtualnetworkgatewayconnection?view=azurermps-4.1.0).
 
 ### <a name="validate-the-bgp-configuration"></a>De BGP-configuratie valideren
 
-Als u wilt controleren of BGP juist is geconfigureerd, kunt u `get-AzureRmVirtualNetworkGateway` de `get-AzureRmLocalNetworkGateway` en Commandlets uitvoeren. Vervolgens ziet u BGP-gerelateerde uitvoer in het `BgpSettingsText` onderdeel. Bijvoorbeeld:
+Als u wilt controleren of BGP correct `get-AzureRmVirtualNetworkGateway` is `get-AzureRmLocalNetworkGateway` geconfigureerd, u de opdrachten en opdrachten uitvoeren. Dan zult u merken BGP-gerelateerde `BgpSettingsText` output in het onderdeel. Bijvoorbeeld:
 
 ```
 {
@@ -272,34 +272,34 @@ Als u wilt controleren of BGP juist is geconfigureerd, kunt u `get-AzureRmVirtua
 }
 ```
 
-## <a name="create-a-highly-available-activeactive-vpn-connection"></a>Een Maxi maal beschik bare actieve/actieve VPN-verbinding maken
+## <a name="create-a-highly-available-activeactive-vpn-connection"></a>Een zeer beschikbare actieve/actieve VPN-verbinding maken
 
 De belangrijkste verschillen tussen de actieve/actieve en actieve/stand-by gateways zijn:
 
-* U moet twee IP-configuraties met gateways maken met twee open bare IP-adressen.
-* U moet de vlag **EnableActiveActiveFeature** instellen.
-* De gateway-SKU moet **VpnGw1**, **VpnGw2**of **VpnGw3**zijn.
+* U moet twee IP-gatewayconfiguraties maken met twee openbare IP-adressen.
+* U moet de vlag **Van EnableActiveActiveFeature** instellen.
+* De gateway SKU moet **VpnGw1,** **VpnGw2**of **VpnGw3**zijn.
 
-Voor een hoge Beschik baarheid van cross-premises en netwerk-naar-netwerk-connectiviteit moet u meerdere VPN-gateways implementeren en meerdere parallelle verbindingen tot stand brengen tussen uw netwerken en Azure. Zie [Maxi maal beschik bare cross-premises en netwerk-naar-netwerk connectiviteit](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)voor een overzicht van connectiviteits opties en topologie.
+Om een hoge beschikbaarheid voor cross-premises en network-to-network-connectiviteit te bereiken, moet u meerdere VPN-gateways implementeren en meerdere parallelle verbindingen tot stand brengen tussen uw netwerken en Azure. Zie [Zeer beschikbare cross-premises en network-to-network-connectiviteit](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)voor een overzicht van connectiviteitsopties en topologie.
 
-Als u actieve/actieve cross-premises en netwerk-naar-netwerk verbindingen wilt maken, volgt u de instructies in [Configureer actieve/actieve S2S VPN-verbindingen met Azure VPN-gateways](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell) voor het configureren van een Azure VPN-gateway in de modus actief/actief.
+Als u actieve/actieve cross-premises en netwerk-naar-netwerkverbindingen wilt maken, volgt u de instructies in [Actieve/actieve S2S VPN-verbindingen configureren met Azure VPN-gateways](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell) om een Azure VPN-gateway in actieve/actieve modus te configureren.
 
 > [!Note]  
-> * Wanneer u adressen aan de lokale netwerk gateway toevoegt voor de Active/Active-modus met BGP ingeschakeld, *voegt u alleen de/32-adressen van de BGP-peers toe*. Als u meer adressen toevoegt, worden deze beschouwd als statische routes en hebben ze voor rang op BGP-routes.
-> * U moet verschillende BGP-nummers gebruiken voor uw on-premises netwerken die verbinding maken met Azure. (Als deze hetzelfde zijn, moet u het virtuele netwerk als nummer wijzigen als uw on-premises VPN-apparaat de ASN al gebruikt voor de peer met andere BGP-neighbors.)
+> * Wanneer u adressen toevoegt aan de lokale netwerkgateway voor de actieve/actieve modus die bgp is ingeschakeld, *voegt u alleen de /32-adressen van de BGP-peers toe.* Als u meer adressen toevoegt, worden deze beschouwd als statische routes en hebben ze voorrang op BGP-routes.
+> * U moet verschillende BGP AS-nummers gebruiken voor uw on-premises netwerken die verbinding maken met Azure. (Als ze hetzelfde zijn, moet u uw virtuele netwerk AS-nummer wijzigen als uw on-premises VPN-apparaat het ASN al gebruikt om te peeren met andere BGP-buren.)
 
-## <a name="change-an-azure-vpn-gateway-type-after-deployment"></a>Een Azure VPN-gateway type wijzigen na de implementatie
+## <a name="change-an-azure-vpn-gateway-type-after-deployment"></a>Een Azure VPN-gatewaytype wijzigen na implementatie
 
-U kunt een gateway type van een virtueel netwerk van Azure niet wijzigen van beleid op basis van route ring of op een andere manier rechtstreeks. U moet eerst de gateway verwijderen. Daarna blijven het IP-adres en de vooraf gedeelde sleutel bewaard. Vervolgens kunt u een nieuwe gateway maken van het gewenste type. 
+U een type Azure-virtuele netwerkgateway niet rechtstreeks wijzigen van beleid gebaseerd naar routegebaseerd of op de andere manier. U moet eerst de gateway verwijderen. Daarna worden het IP-adres en de vooraf gedeelde sleutel niet meer bewaard. Vervolgens u een nieuwe gateway van het gewenste type maken. 
 
-Als u een gateway wilt verwijderen en maken, volgt u deze stappen:
+Voer de volgende stappen uit om een gateway te verwijderen en te maken:
 
 1. Verwijder alle verbindingen die zijn gekoppeld aan de oorspronkelijke gateway.
-2. Verwijder de gateway met behulp van de Azure Portal, Power shell of klassieke Power shell: 
-   * [Een virtuele netwerk gateway verwijderen met behulp van de Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-portal)
-   * [Een virtuele netwerk gateway verwijderen met behulp van Power shell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-powershell)
-   * [Een virtuele netwerk gateway verwijderen met behulp van Power shell (klassiek)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-classic-powershell)
-3. Volg de stappen in [de VPN-gateway maken](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway) om de nieuwe gateway van het gewenste type te maken en de VPN-installatie te volt ooien.
+2. Verwijder de gateway met de Azure-portal, PowerShell of klassieke PowerShell: 
+   * [Een virtuele netwerkgateway verwijderen met behulp van de Azure-portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-portal)
+   * [Een virtuele netwerkgateway verwijderen met PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-powershell)
+   * [Een virtuele netwerkgateway verwijderen met PowerShell (klassiek)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-delete-vnet-gateway-classic-powershell)
+3. Volg de stappen in [De VPN-gateway maken](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway) om de nieuwe gateway van het gewenste type te maken en de VPN-installatie te voltooien.
 
 > [!Note]
 > Dit proces duurt ongeveer 60 minuten.

@@ -1,7 +1,7 @@
 ---
-title: Incrementele verrijking (preview-versie)
+title: Incrementele verrijking (voorbeeld)
 titleSuffix: Azure Cognitive Search
-description: Sla tussenliggende inhoud op in de cache en incrementele wijzigingen van de AI-verrijkings pijplijn in Azure Storage om de investeringen in bestaande verwerkte documenten te behouden. Deze functie is momenteel beschikbaar als openbare preview-versie.
+description: Cache tussenliggende inhoud en incrementele wijzigingen van AI verrijking pijplijn in Azure Storage om investeringen in bestaande verwerkte documenten te behouden. Deze functie is momenteel beschikbaar als openbare preview-versie.
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
@@ -9,28 +9,28 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024140"
 ---
-# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inleiding tot incrementele verrijking en caching in azure Cognitive Search
+# <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inleiding tot incrementele verrijking en caching in Azure Cognitive Search
 
 > [!IMPORTANT] 
-> Incrementele verrijking is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen portal-of .NET SDK-ondersteuning.
+> Incrementele verrijking is momenteel in openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie. De [REST API versie 2019-05-06-Preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen portal of .NET SDK-ondersteuning.
 
-Incrementele verrijking voegt caching en statefulness toe aan een verrijkings pijplijn, waardoor uw investering in bestaande uitvoer behouden blijft, terwijl alleen de documenten worden gewijzigd die worden beïnvloed door een bepaalde wijziging. Dit betekent niet alleen uw monetaire investering in verwerking (met name OCR en verwerking van afbeeldingen), maar is ook een efficiëntere systeem. Wanneer structuren en inhoud in de cache zijn opgeslagen, kan een Indexeer functie bepalen welke vaardig heden zijn gewijzigd en alleen de aangepaste vaardig heden uitvoeren. 
+Incrementele verrijking voegt caching en statefulness toe aan een verrijkingspijplijn, waarbij uw investering in bestaande uitvoer behouden blijft, terwijl alleen die documenten worden gewijzigd die van invloed zijn op bepaalde wijzigingen. Dit behoudt niet alleen uw monetaire investering in verwerking (in het bijzonder OCR en beeldverwerking), maar zorgt ook voor een efficiënter systeem. Wanneer structuren en inhoud in de cache worden opgeslagen, kan een indexer bepalen welke vaardigheden zijn gewijzigd en alleen de vaardigheden uitvoeren die zijn gewijzigd, evenals eventuele downstream-afhankelijke vaardigheden. 
 
-## <a name="indexer-cache"></a>Indexeer functie cache
+## <a name="indexer-cache"></a>Indexercache
 
-Incrementele verrijking voegt een cache toe aan de verrijkings pijplijn. De Indexeer functie slaat de resultaten van het kraken van documenten op en de uitvoer van elke vaardigheid voor elk document. Wanneer een vakkennisset wordt bijgewerkt, worden alleen de gewijzigde of downstream-vaardig heden opnieuw uitgevoerd. De bijgewerkte resultaten worden naar de cache geschreven en het document wordt bijgewerkt in de zoek index of in het kennis archief.
+Incrementele verrijking voegt een cache toe aan de verrijkingspijplijn. De indexer slaat de resultaten van het kraken van documenten in de cache, plus de uitvoer van elke vaardigheid voor elk document. Wanneer een skillset wordt bijgewerkt, worden alleen de gewijzigde of downstream-vaardigheden opnieuw uitgevoerd. De bijgewerkte resultaten worden naar de cache geschreven en het document wordt bijgewerkt in de zoekindex of het kennisarchief.
 
-Fysiek wordt de cache opgeslagen in een BLOB-container in uw Azure Storage-account. De cache gebruikt ook Table Storage voor een interne record van verwerkings updates. Alle indexen in een zoek service delen mogelijk hetzelfde opslag account voor de indexer-cache. Aan elke Indexeer functie is een unieke en onveranderbare cache-id toegewezen voor de container die wordt gebruikt.
+Fysiek wordt de cache opgeslagen in een blobcontainer in uw Azure Storage-account. De cache maakt ook gebruik van tabelopslag voor een interne registratie van verwerkingsupdates. Alle indexen binnen een zoekservice kunnen dezelfde opslagaccount voor de indexercache delen. Elke indexer krijgt een unieke en onveranderlijke cache-id toegewezen aan de container die deze gebruikt.
 
-## <a name="cache-configuration"></a>Cache configuratie
+## <a name="cache-configuration"></a>Cacheconfiguratie
 
-U moet de eigenschap `cache` van de Indexeer functie instellen om profiteert te starten vanuit incrementele verrijking. In het volgende voor beeld ziet u een Indexeer functie waarin caching is ingeschakeld. Specifieke delen van deze configuratie worden in de volgende secties beschreven. Zie [incrementele verrijking instellen](search-howto-incremental-index.md)voor meer informatie.
+U moet de `cache` eigenschap op de indexer instellen om te profiteren van incrementele verrijking. In het volgende voorbeeld wordt een indexeerder met caching ingeschakeld. Specifieke onderdelen van deze configuratie worden beschreven in volgende secties. Zie [Incrementele verrijking instellen](search-howto-incremental-index.md)voor meer informatie .
 
 ```json
 {
@@ -48,115 +48,115 @@ U moet de eigenschap `cache` van de Indexeer functie instellen om profiteert te 
 }
 ```
 
-Als u deze eigenschap instelt voor een bestaande Indexeer functie, moet u de Indexeer functie opnieuw instellen en opnieuw uitvoeren. Dit leidt ertoe dat alle documenten in de gegevens bron opnieuw worden verwerkt. Deze stap is nodig voor het elimineren van documenten die worden verrijkt door eerdere versies van de vaardig heden. 
+Als u deze eigenschap instelt op een bestaande indexeerder, moet u de indexer opnieuw instellen en opnieuw uitvoeren, waardoor alle documenten in uw gegevensbron opnieuw worden verwerkt. Deze stap is nodig om alle documenten die zijn verrijkt met eerdere versies van de skillset te elimineren. 
 
-## <a name="cache-management"></a>Cache beheer
+## <a name="cache-management"></a>Cachebeheer
 
-De levens cyclus van de cache wordt beheerd door de Indexeer functie. Als de eigenschap `cache` op de Indexeer functie is ingesteld op null of als de connection string wordt gewijzigd, wordt de bestaande cache verwijderd bij de volgende uitvoering van de Indexeer functie. De levens cyclus van de cache is ook gekoppeld aan de levens cyclus van de Indexeer functie. Als een Indexeer functie wordt verwijderd, wordt ook de bijbehorende cache verwijderd.
+De levenscyclus van de cache wordt beheerd door de indexeerder. Als `cache` de eigenschap op de indexer is ingesteld op null of als de verbindingstekenreeks wordt gewijzigd, wordt de bestaande cache verwijderd op de volgende indexerrun. De levenscyclus van de cache is ook gekoppeld aan de levenscyclus van de indexer. Als een indexer wordt verwijderd, wordt ook de bijbehorende cache verwijderd.
 
-Hoewel incrementele verrijking is ontworpen om wijzigingen zonder tussen komst van uw onderdeel te detecteren en erop te reageren, zijn er para meters die u kunt gebruiken om standaard gedrag te negeren:
+Hoewel incrementele verrijking is ontworpen om wijzigingen te detecteren en erop te reageren zonder tussenkomst van uw kant, zijn er parameters die u gebruiken om standaardgedrag te overschrijven:
 
 + Prioriteit geven aan nieuwe documenten
-+ Vaardigheidset-controles overs Laan
-+ Controles van gegevens bronnen overs Laan
-+ Evaluatie van vaardig heden forceren
++ Vaardigheidscontroles omzeilen
++ Gegevensbroncontroles omzeilen
++ Force skillset evaluatie
 
 ### <a name="prioritize-new-documents"></a>Prioriteit geven aan nieuwe documenten
 
-Stel de eigenschap `enableReprocessing` in voor het beheren van de verwerking van inkomende documenten die al in de cache worden weer gegeven. Als `true` (standaard), worden documenten die al in de cache staan, opnieuw verwerkt wanneer u de Indexeer functie opnieuw uitvoeren, ervan uitgaande dat uw vaardigheids update van invloed is op dat document. 
+Stel `enableReprocessing` de eigenschap in om de verwerking te beheren van binnenkomende documenten die al in de cache zijn weergegeven. Wanneer `true` (standaard) worden documenten die al in de cache staan, opnieuw verwerkt wanneer u de indexer opnieuw uitvoert, ervan uitgaande dat uw vaardigheidsupdate van invloed is op dat document. 
 
-Als `false`, worden bestaande documenten niet opnieuw verwerkt en krijgen ze in feite geen nieuwe, binnenkomende inhoud over bestaande inhoud. U moet `enableReprocessing` op tijdelijke wijze alleen instellen op `false`. Om consistentie tussen de verzameling te garanderen, moet `enableReprocessing` `true` de meeste tijd zijn, zodat alle documenten, zowel nieuwe als bestaande, geldig zijn volgens de huidige definitie van de vaardig heden.
+Wanneer `false`bestaande documenten niet opnieuw worden verwerkt, geeft het effectief prioriteit aan nieuwe, binnenkomende inhoud ten opzichte van bestaande inhoud. U moet `enableReprocessing` alleen `false` instellen op een tijdelijke basis. Om de consistentie over `enableReprocessing` het `true` corpus te waarborgen, moet het grootste deel van de tijd, ervoor te zorgen dat alle documenten, zowel nieuw als bestaand, geldig zijn volgens de huidige skillset definitie.
 
-### <a name="bypass-skillset-evaluation"></a>Beoordeling van vaardig heden overs Laan
+### <a name="bypass-skillset-evaluation"></a>Evaluatie van vaardigheden omzeilen
 
-Het aanpassen van een vaardig heden en het opnieuw verwerken van die vaardig heden gaat doorgaans hand matig. Sommige wijzigingen in een vaardig heden moeten echter niet worden verwerkt (bijvoorbeeld het implementeren van een aangepaste vaardigheid naar een nieuwe locatie of met een nieuwe toegangs sleutel). Dit zijn waarschijnlijk een rand wijziging die geen legitieme invloed heeft op de stof van de vaardig heden zelf. 
+Het wijzigen van een skillset en opwerking van die skillset gaan meestal hand in hand. Sommige wijzigingen in een skillset mogen echter niet leiden tot opwerking (bijvoorbeeld het implementeren van een aangepaste vaardigheid naar een nieuwe locatie of met een nieuwe toegangssleutel). Hoogstwaarschijnlijk zijn dit perifere wijzigingen die geen echte invloed hebben op de inhoud van de skillset zelf. 
 
-Als u weet dat een wijziging in de vaardig heden inderdaad Opper vlakking is, moet u de vaardig heden-evaluatie overschrijven door de para meter `disableCacheReprocessingChangeDetection` in te stellen op `true`:
+Als u weet dat een wijziging in de skillset inderdaad oppervlakkig `disableCacheReprocessingChangeDetection` is, `true`moet u de vaardigheidssetevaluatie overschrijven door de parameter in te stellen op:
 
-1. Update vaardig heden bijwerken en de definitie van de vaardig heden wijzigen.
-1. Voeg de para meter `disableCacheReprocessingChangeDetection=true` toe aan de aanvraag.
-1. Verzend de wijziging.
+1. Bel Skillset bijwerken en wijzig de definitie van vaardigheden.
+1. De `disableCacheReprocessingChangeDetection=true` parameter toevoegen aan de aanvraag.
+1. Dien de wijziging in.
 
-Het instellen van deze para meter zorgt ervoor dat alleen updates van de definitie van de vaardig heden worden vastgelegd en dat de wijziging niet wordt geëvalueerd voor effecten op de bestaande verzameling.
+Als u deze parameter instelt, zorgt u ervoor dat alleen updates voor de skillset-definitie worden vastgelegd en dat de wijziging niet wordt geëvalueerd op effecten op het bestaande corpus.
 
-In het volgende voor beeld ziet u een aanvraag voor het bijwerken van de vaardig heden met de para meter:
+In het volgende voorbeeld wordt een aanvraag voor de updateskillset met de parameter weergegeven:
 
 ```http
 PUT https://customerdemos.search.windows.net/skillsets/callcenter-text-skillset?api-version=2019-05-06-Preview&disableCacheReprocessingChangeDetection=true
 ```
 
-### <a name="bypass-data-source-validation-checks"></a>Validatie controles van gegevens bronnen overs Laan
+### <a name="bypass-data-source-validation-checks"></a>Controle van gegevensbronvalidatie omzeilen
 
-Bij de meeste wijzigingen in een gegevens bron definitie wordt de cache ongeldig. Voor scenario's waarin u echter weet dat een wijziging de cache niet ongeldig moet maken, zoals het wijzigen van een connection string of het draaien van de sleutel op het opslag account, voegt u de para meter`ignoreResetRequirement` toe voor de update van de gegevens bron. Als u deze para meter instelt op `true`, kan de door voer worden door lopen zonder dat er een reset-voor waarde wordt geactiveerd, waardoor alle objecten opnieuw worden opgebouwd en volledig worden gevuld.
+De meeste wijzigingen in een gegevensbrondefinitie maken de cache ongeldig. Voor scenario's waarvan u weet dat een wijziging de cache niet ongeldig mag maken - zoals het`ignoreResetRequirement` wijzigen van een verbindingstekenreeks of het roteren van de sleutel op het opslagaccount - wordt de parameter in de gegevensbronupdate toegevoegd. Als u `true` deze parameter instelt om de commit door te laten gaan, zonder een resetvoorwaarde te activeren die ertoe zou leiden dat alle objecten opnieuw worden opgebouwd en bevolken.
 
 ```http
 PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-version=2019-05-06-Preview&ignoreResetRequirement=true
 ```
 
-### <a name="force-skillset-evaluation"></a>Evaluatie van vaardig heden forceren
+### <a name="force-skillset-evaluation"></a>Force skillset evaluatie
 
-Het doel van de cache is om onnodige verwerking te voor komen, maar stel dat u een wijziging aanbrengt in een vaardigheid die de Indexeer functie niet detecteert (bijvoorbeeld het wijzigen van iets in externe code, zoals een aangepaste vaardigheid).
+Het doel van de cache is om onnodige verwerking te voorkomen, maar stel dat u een wijziging aanbrengt in een vaardigheid die de indexer niet detecteert (bijvoorbeeld iets wijzigen in externe code, zoals een aangepaste vaardigheid).
 
-In dit geval kunt u de [vaardig heden opnieuw instellen](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) gebruiken om het opnieuw verwerken van een bepaalde vaardigheid af te dwingen, inclusief eventuele downstream-vaardig heden die een afhankelijkheid hebben van de uitvoer van die vaardigheid. Deze API accepteert een POST-aanvraag met een lijst met vaardig heden die ongeldig moeten worden gemaakt en moeten worden gemarkeerd voor opnieuw verwerken. Nadat u vaardig heden hebt ingesteld, voert u de Indexeer functie uit om de pijp lijn aan te roepen.
+In dit geval u de [resetvaardigheden](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) gebruiken om opwerking van een bepaalde vaardigheid af te dwingen, inclusief downstreamvaardigheden die afhankelijk zijn van de uitvoer van die vaardigheid. Deze API accepteert een POST-aanvraag met een lijst met vaardigheden die ongeldig en gemarkeerd moeten worden voor opwerking. Nadat u de vaardigheden opnieuw instellen hebt ingesteld, voert u de indexer op om de pijplijn aan te roepen.
 
-## <a name="change-detection"></a>Wijzigings detectie
+## <a name="change-detection"></a>Detectie wijzigen
 
-Zodra u een cache inschakelt, evalueert de Indexeer functie de wijzigingen in uw pijplijn samenstelling om te bepalen welke inhoud opnieuw kan worden gebruikt en wat opnieuw moet worden verwerkt. In deze sectie worden wijzigingen die de cache-uitgaan ongeldig gemaakt, gevolgd door wijzigingen die incrementele verwerking activeren. 
+Zodra u een cache inschakelt, evalueert de indexer wijzigingen in de samenstelling van de pijplijn om te bepalen welke inhoud opnieuw kan worden gebruikt en welke moet worden opgesteld. In deze sectie worden wijzigingen opgesomd die de cache volledig ongeldig maken, gevolgd door wijzigingen die incrementele verwerking activeren. 
 
 ### <a name="changes-that-invalidate-the-cache"></a>Wijzigingen die de cache ongeldig maken
 
-Een ongeldige wijziging is een van de wijzigingen die niet meer geldig zijn in de volledige cache. Een voor beeld van een invalidatie wijziging is één waar uw gegevens bron wordt bijgewerkt. Hier volgt de volledige lijst met wijzigingen die uw cache ongeldig maken:
+Een ongeldig makende wijziging is een wijziging waarbij de volledige cache niet langer geldig is. Een voorbeeld van een ongeldig makende wijziging is een wijziging waarbij uw gegevensbron wordt bijgewerkt. Hier is de volledige lijst met wijzigingen die uw cache ongeldig zouden maken:
 
-* Overschakelen naar het type gegevens bron
-* Wijzigen in gegevens bron container
-* Gegevens bron referenties
-* Beleid voor wijzigings detectie van gegevens bronnen
-* Gegevens bronnen detectie beleid verwijderen
-* Indexeer functie veld toewijzingen
-* Indexer-para meters
-    * Parserings modus
-    * Uitgesloten bestandsnaam extensies
-    * Geïndexeerde bestandsnaam extensies
-    * Meta gegevens van de opslag index alleen voor grote documenten
-    * Tekst koppen met scheidings tekens
-    * Scheidings teken voor tekst
-    * Hoofdmap van document
-    * Afbeeldings actie (wijzigingen in de uitgepakte installatie kopieën)
+* Wijzigen in uw gegevensbrontype
+* Wijzigen in gegevensbroncontainer
+* Gegevensbronreferenties
+* Detectiebeleid voor gegevensbronwijziging
+* Detectiebeleid voor gegevensbronnen verwijderen
+* Indexerveldtoewijzingen
+* Indexerparameters
+    * Parsing-modus
+    * Uitgesloten bestandsnaamextensies
+    * Geïndexeerde bestandsnaamextensies
+    * Opslagmetagegevens alleen indexeren voor overmaatse documenten
+    * Afgebakende tekstkoppen
+    * Afgebakende tekstscheidingsteken
+    * Documenthoofd
+    * Afbeeldingsactie (Wijzigingen in de manier waarop afbeeldingen worden geëxtraheerd)
 
 ### <a name="changes-that-trigger-incremental-processing"></a>Wijzigingen die incrementele verwerking activeren
 
-Met incrementele verwerking wordt de definitie van uw vaardig heden geëvalueerd en wordt bepaald welke vaardig heden opnieuw moeten worden uitgevoerd, waarbij de betrokken delen van de document structuur selectief worden bijgewerkt. Dit is de volledige lijst met wijzigingen die het gevolg zijn van incrementele verrijking:
+Incrementele verwerking evalueert uw skillset-definitie en bepaalt welke vaardigheden u opnieuw moet uitvoeren, waarbij de betreffende delen van de documentstructuur selectief worden bijgewerkt. Hier is de volledige lijst van wijzigingen die resulteren in incrementele verrijking:
 
-* De kwalificatie in de vakkennisset heeft een ander type. Het odata-type van de vaardigheid is bijgewerkt
-* Vakkennis-specifieke para meters zijn bijgewerkt, bijvoorbeeld de URL, standaard waarden of andere para meters
-* Wijzigingen in de vaardigheids uitvoer, de vaardigheid retourneert extra of andere uitvoer
-* Vaardigheids updates die resulteren in verschillende stamboom, de vaardig heden van vakkennis is gewijzigd, d.w.z. Vaardigheids invoer
-* Eventuele invalidatie van de upstream-vaardigheid, als een vaardigheid die een invoer voor deze vaardigheid levert, wordt bijgewerkt
-* Updates voor de projectie locatie van de kennis opslag, resultaten voor het opnieuw projecteren van documenten
-* Wijzigingen in de projecties van de kennis opslag, resultaten voor het opnieuw projecteren van documenten
-* Uitvoer veld toewijzingen die zijn gewijzigd op een Indexeer functie, leiden ertoe dat documenten opnieuw worden geprojecteerd naar de index
+* Vaardigheid in de skillset heeft een ander type. Het odata-type van de vaardigheid wordt bijgewerkt
+* Vaardigheidsspecifieke parameters bijgewerkt, bijvoorbeeld de url, standaardwaarden of andere parameters
+* Vaardigheidsuitvoer verandert, de vaardigheid retourneert extra of verschillende uitgangen
+* Vaardigheidsupdates die resulteren is verschillende voorouders, skill chaining is veranderd d.w.z. vaardigheidsingangen
+* Elke upstream vaardigheid ongeldigverklaring, als een vaardigheid die een input voor deze vaardigheid biedt wordt bijgewerkt
+* Updates van de projectielocatie van de kenniswinkel, resulteert in het opnieuw projecteren van documenten
+* Wijzigingen in de projecties van de kenniswinkel, resulteert in het herprojecteren van documenten
+* Uitvoerveldtoewijzingen die zijn gewijzigd op een indexer resulteert in het opnieuw projecteren van documenten naar de index
 
-## <a name="api-reference"></a>API-referentie
+## <a name="api-reference"></a>API-verwijzing
 
-REST API versie `2019-05-06-Preview` voorziet in incrementele verrijking via extra eigenschappen voor Indexeer functies, vaardig heden en gegevens bronnen. Zie [caching configureren voor incrementele verrijking](search-howto-incremental-index.md) in aanvulling op de referentie documentatie voor meer informatie over het aanroepen van de api's.
+REST API-versie `2019-05-06-Preview` biedt incrementele verrijking door extra eigenschappen op indexers, skillsets en gegevensbronnen. Zie [Caching configureren voor incrementele verrijking](search-howto-incremental-index.md) voor meer informatie over het aanroepen van de API's naast de referentiedocumentatie.
 
-+ [Indexeer functie maken (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [Indexeren maken (api-versie=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-+ [Indexeer functie bijwerken (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [Indexeren bijwerken (api-versie=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-+ [Update vaardig heden (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (nieuwe Uri-para meter voor de aanvraag)
++ [Skillset bijwerken (api-versie=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (Nieuwe PARAMETER URI op de aanvraag)
 
-+ [Vaardig heden opnieuw instellen (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
++ [Vaardigheden opnieuw instellen (api-versie=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ Database Indexeer functies (Azure SQL, Cosmos DB). Met sommige Indexeer functies worden gegevens opgehaald via query's. Voor query's waarmee gegevens worden opgehaald, ondersteunt de [gegevens bron update](https://docs.microsoft.com/rest/api/searchservice/update-data-source) een nieuwe para meter voor een aanvraag **ignoreResetRequirement**, die moet worden ingesteld op `true` wanneer uw update-actie de cache niet ongeldig moet maken. 
++ Database-indexers (Azure SQL, Cosmos DB). Sommige indexers halen gegevens op via query's. Voor query's die gegevens ophalen, ondersteunt [Gegevensbron bijwerken](https://docs.microsoft.com/rest/api/searchservice/update-data-source) een nieuwe parameter `true` op een verzoek **negerenResetRequirement**, die moet worden ingesteld op wanneer uw updateactie de cache niet ongeldig mag maken. 
 
-  Gebruik **ignoreResetRequirement** spaarzaam, omdat dit kan leiden tot onbedoelde inconsistentie in uw gegevens die niet eenvoudig kunnen worden gedetecteerd.
+  Gebruik **ignoreResetRequirement** spaarzaam als het kan leiden tot onbedoelde inconsistentie in uw gegevens die niet gemakkelijk zal worden gedetecteerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Incrementele verrijking is een krachtige functie waarmee wijzigingen in vaardig heden en AI-verrijking worden uitgebreid. AIncremental-verrijking maakt het hergebruik van bestaande verwerkte inhoud mogelijk tijdens het herhalen van het ontwerp van de vaardig heden.
+Incrementele verrijking is een krachtige functie die het bijhouden van wijzigingen uitbreidt naar skillsets en AI-verrijking. AIncremental verrijking maakt hergebruik van bestaande verwerkte inhoud mogelijk terwijl u over skillset-ontwerp heen gaat.
 
-Als volgende stap moet u caching inschakelen voor een bestaande Indexeer functie of een cache toevoegen bij het definiëren van een nieuwe Indexeer functie.
+Schakel als volgende stap caching op een bestaande indexer in of voeg een cache toe bij het definiëren van een nieuwe indexer.
 
 > [!div class="nextstepaction"]
 > [Caching configureren voor incrementele verrijking](search-howto-incremental-index.md)

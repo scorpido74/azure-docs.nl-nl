@@ -1,7 +1,7 @@
 ---
-title: Mobiele app voor het aanroepen van web-Api's voor productie voorbereiden | Azure
+title: Web API's voor mobiele apps voorbereiden voor productie | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept. (Apps voorbereiden voor productie.)
+description: Meer informatie over het bouwen van een mobiele app die web-API's aanroept. (Apps voorbereiden op productie.)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,38 +17,38 @@ ms.author: jmprieur
 ms.reviwer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 1ea19b8b76f4eb4a2c984f0e39eb0fd373c8b83c
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132393"
 ---
-# <a name="prepare-mobile-apps-for-production"></a>Mobiele apps voorbereiden voor productie
+# <a name="prepare-mobile-apps-for-production"></a>Mobiele apps voorbereiden op productie
 
-Dit artikel bevat informatie over het verbeteren van de kwaliteit en betrouw baarheid van uw mobiele app voordat u deze naar productie gaat verplaatsen.
+In dit artikel vindt u informatie over hoe u de kwaliteit en betrouwbaarheid van uw mobiele app verbeteren voordat u deze in productie neemt.
 
 ## <a name="handle-errors"></a>Fouten verwerken
 
-Wanneer u een mobiele app voorbereidt voor productie, kunnen verschillende fout situaties optreden. De belangrijkste gevallen die u kunt afhandelen, zijn stille storingen en terugvals voor interactie. Andere voor waarden die u moet overwegen, zijn geen netwerk situaties, service storingen, vereisten voor beheerders toestemming en andere scenario's.
+Als u een mobiele app voorbereidt op productie, kunnen er verschillende foutvoorwaarden optreden. De belangrijkste gevallen die u behandelt zijn stille fouten en terugval naar interactie. Andere voorwaarden die u moet overwegen zijn no-network situaties, service onderbrekingen, vereisten voor toestemming van beheerders, en andere scenario-specifieke gevallen.
 
-Voor elk type micro soft Authentication Library (MSAL) vindt u voorbeeld code en wiki-inhoud waarin wordt beschreven hoe u fout voorwaarden afhandelt:
+Voor elk MSAL-type (Microsoft Authentication Library) u voorbeeldcode en wiki-inhoud vinden waarin wordt beschreven hoe u foutvoorwaarden verwerken:
 
-- [Android-wiki MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-android)
-- [MSAL iOS-wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
-- [MSAL.NET-wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
+- [MSAL Android wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android)
+- [MSAL iOS wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
+- [MSAL.NET wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki)
 
-## <a name="mitigate-and-investigate-issues"></a>Problemen oplossen en onderzoeken
+## <a name="mitigate-and-investigate-issues"></a>Problemen beperken en onderzoeken
 
-Gegevens verzamelen voor betere diagnose van problemen in uw app. Zie [logboek registratie in MSAL-toepassingen](https://docs.microsoft.com/azure/active-directory/develop/msal-logging)voor informatie over de soorten gegevens die u kunt verzamelen.
+Om problemen in uw app beter te diagnosticeren, verzamelt u gegevens. Zie [Inlog in MSAL-toepassingen](https://docs.microsoft.com/azure/active-directory/develop/msal-logging)voor informatie over de soorten gegevens die u verzamelen.
 
 Hier volgen enkele suggesties voor het verzamelen van gegevens:
 
-- Gebruikers kunnen om hulp vragen wanneer ze problemen ondervinden. Een best practice is Logboeken vastleggen en tijdelijk opslaan. Geef een locatie op waar gebruikers de logboeken kunnen uploaden. MSAL biedt logboek registratie-extensies voor het vastleggen van gedetailleerde informatie over verificatie.
+- Gebruikers kunnen om hulp vragen wanneer ze problemen hebben. Een aanbevolen praktijk is het vastleggen en tijdelijk opslaan van logboeken. Geef een locatie op waar gebruikers de logboeken kunnen uploaden. MSAL biedt logboekextensies om gedetailleerde informatie over verificatie vast te leggen.
 
-- Als telemetrie beschikbaar is, kunt u dit inschakelen via MSAL om gegevens te verzamelen over de manier waarop gebruikers zich aanmelden bij uw app.
+- Als telemetrie beschikbaar is, schakelt u dit via MSAL in om gegevens te verzamelen over hoe gebruikers zich bij uw app aanmelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-Zie [Desktop en mobiele open bare client-apps](sample-v2-code.md#desktop-and-mobile-public-client-apps)voor meer voor beelden.
+Zie Apps voor [openbare bureaublad- en mobiele clientapps](sample-v2-code.md#desktop-and-mobile-public-client-apps)voor meer voorbeelden uitproberen.

@@ -1,6 +1,6 @@
 ---
-title: Elastic Database taken (preview-versie)
-description: Elastic Database taken (preview) configureren om Transact-SQL (T-SQL)-scripts uit te voeren in een set van een of meer Azure SQL-data bases
+title: Elastische databasetaken (voorbeeld)
+description: Elastic Database Jobs (preview) configureren om Transact-SQL -scripts (T-SQL) uit te voeren in een set van een of meer Azure SQL-databases
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,34 +12,34 @@ ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: e5b07ac0e9421cbca034b17c573cab16641f49f7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214479"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Elastische taken maken, configureren en beheren
 
-In dit artikel vindt u informatie over het maken, configureren en beheren van elastische taken.
+In dit artikel leert u hoe u elastische taken maken, configureren en beheren.
 
-Als u geen elastische taken hebt gebruikt, [leest u meer over de concepten van de taak automatisering in Azure SQL database](sql-database-job-automation-overview.md).
+Als u elastische taken niet hebt gebruikt, [leest u meer over de concepten voor taakautomatisering in Azure SQL Database](sql-database-job-automation-overview.md).
 
 ## <a name="create-and-configure-the-agent"></a>De agent maken en configureren
 
-1. Maak of identificeer een lege SQL-database op servicelaag S0 of hoger. Deze data base wordt gebruikt als de *taak database* tijdens het maken van een elastische taak agent.
-2. Een elastische taak agent maken in de [Portal](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) of met [Power shell](elastic-jobs-powershell.md#create-the-elastic-job-agent).
+1. Maak of identificeer een lege SQL-database op servicelaag S0 of hoger. Deze database wordt gebruikt als de *Job-database* tijdens het maken van elastische jobagents.
+2. Maak een elastic job-agent in de [portal](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) of met [PowerShell.](elastic-jobs-powershell.md#create-the-elastic-job-agent)
 
-   ![Een elastische taak agent maken](media/elastic-jobs-overview/create-elastic-job-agent.png)
+   ![Elastische functiemaken](media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>Taken maken, uitvoeren en beheren
 
-1. Een referentie maken voor taak uitvoering in de *taak database* met behulp van [Power shell](elastic-jobs-powershell.md) of [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
-2. Definieer de doel groep (de data bases waarvoor u de taak wilt uitvoeren) met behulp van [Power shell](elastic-jobs-powershell.md) of [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers).
+1. Maak een referentie voor taakuitvoering in de *Taakdatabase* met [PowerShell](elastic-jobs-powershell.md) of [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution).
+2. Definieer de doelgroep (de databases waartegen u de taak wilt uitvoeren) met [PowerShell](elastic-jobs-powershell.md) of [T-SQL.](elastic-jobs-tsql.md#create-a-target-group-servers)
 3. Maak een taakagentreferentie in elke database waarin de taak wordt uitgevoerd [(voeg de gebruiker (of rol) toe aan elke database in de groep)](sql-database-manage-logins.md). Zie de [PowerShell-zelfstudie](elastic-jobs-powershell.md) voor een voorbeeld.
-4. Maak een taak met behulp van [Power shell](elastic-jobs-powershell.md) of [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
+4. Maak een taak met [PowerShell](elastic-jobs-powershell.md) of [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
 5. Voeg taakstappen toe met [PowerShell](elastic-jobs-powershell.md) of [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases).
-6. Voer een taak uit met [Power shell](elastic-jobs-powershell.md#run-the-job) of [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job).
-7. Bewaak de uitvoerings status van de taak met behulp van de portal, [Power shell](elastic-jobs-powershell.md#monitor-status-of-job-executions) of [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status).
+6. Een taak uitvoeren met [PowerShell](elastic-jobs-powershell.md#run-the-job) of [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job).
+7. Status van taakuitvoering bewaken met behulp van de portal, [PowerShell](elastic-jobs-powershell.md#monitor-status-of-job-executions) of [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status).
 
    ![Portal](media/elastic-jobs-overview/elastic-job-executions-overview.png)
 
@@ -49,21 +49,21 @@ Taken gebruiken [databasereferenties](/sql/t-sql/statements/create-database-scop
 
 Het instellen van de juiste referenties voor het uitvoeren van een taak kan enigszins verwarrend zijn. Houd daarom de volgende punten in gedachten:
 
-- De databasereferenties moeten worden gemaakt in de *taakdatabase*.
-- **Alle doel databases moeten een aanmelding met [voldoende machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) hebben om de taak te volt ooien** (`jobuser` in het onderstaande diagram).
-- Referenties kunnen opnieuw worden gebruikt voor verschillende taken en de referentie wachtwoorden worden versleuteld en beveiligd door gebruikers met alleen-lezen toegang tot taak objecten.
+- De referenties met databasebereik moeten worden gemaakt in de *jobdatabase*.
+- **Alle doeldatabases moeten een login hebben met [voldoende machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) om de taak succesvol te voltooien** (in`jobuser` het onderstaande diagram).
+- Referenties kunnen worden hergebruikt voor taken en de referenties worden versleuteld en beveiligd voor gebruikers die alleen-lezen toegang hebben tot taakobjecten.
 
 De volgende afbeelding is gemaakt als hulp bij het begrijpen en instellen van de juiste taakreferenties. **Denk eraan dat de gebruiker moet worden gemaakt in elke database (alle *doelgebruikersdatabases*) waarin de taak moet worden uitgevoerd**.
 
-![Referenties voor Elastic Jobs](media/elastic-jobs-overview/job-credentials.png)
+![Referenties voor elastische taken](media/elastic-jobs-overview/job-credentials.png)
 
 ## <a name="security-best-practices"></a>Aanbevolen procedures voor beveiliging
 
 Een paar aandachtspunten voor best practices voor het werken met elastische taken:
 
 - Beperk het gebruik van de API's tot vertrouwde personen.
-- Referenties moeten slechts de minimale bevoegdheden hebben die nodig zijn om de taakstap uit te voeren. Zie [autorisatie en machtigingen SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)voor meer informatie.
-- Wanneer u een lid van een server en/of groeps doel groep gebruikt, is het zeer raadzaam een afzonderlijke referentie te maken met rechten op de hoofd database om data bases weer te geven/te vermelden die worden gebruikt om de database lijsten van de server (s) en/of pool (s) uit te breiden voordat de taak wordt uitgevoerd.
+- Referenties moeten slechts de minimale bevoegdheden hebben die nodig zijn om de taakstap uit te voeren. Zie [Autorisatie en machtigingen SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)voor meer informatie.
+- Bij het gebruik van een server- en/of groeplid wordt ten zeerste aangeraden om een aparte referentie te maken met rechten op de hoofddatabase om databases weer te geven/te vermelden die worden gebruikt om de databaselijsten van de server(s) en/of groep(en) uit te breiden voordat de taakuitvoering wordt uitgevoerd.
 
 ## <a name="agent-performance-capacity-and-limitations"></a>Agentprestaties, - capaciteit en -beperkingen
 
@@ -77,7 +77,7 @@ Op dit moment is de preview beperkt tot 100 gelijktijdige taken.
 
 Om ervoor te zorgen dat resources niet worden overbelast tijdens het uitvoeren van taken voor databases in een elastische SQL-pool, kunnen taken zo worden geconfigureerd dat het aantal databases waarvoor een taak tegelijkertijd wordt uitgevoerd, wordt beperkt.
 
-Stel het aantal gelijktijdige data bases in waarop een taak wordt uitgevoerd door de para meter `@max_parallelism` van de `sp_add_jobstep` opgeslagen procedure in T-SQL of `Add-AzSqlElasticJobStep -MaxParallelism` in Power shell in te stellen.
+Stel het aantal gelijktijdige databases in waarop `sp_add_jobstep` een taak `@max_parallelism` wordt uitgevoerd door `Add-AzSqlElasticJobStep -MaxParallelism` de parameter van de opgeslagen procedure in Te stellen in T-SQL of in PowerShell.
 
 ## <a name="best-practices-for-creating-jobs"></a>Best practices voor het maken van taken
 

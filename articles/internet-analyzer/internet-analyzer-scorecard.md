@@ -1,6 +1,6 @@
 ---
-title: Uw Score Card interpreteren | Microsoft Docs
-description: De veelgestelde vragen over Azure Internet Analyzer.
+title: Uw scorekaart interpreteren | Microsoft Documenten
+description: De veelgestelde vragen voor Azure Internet Analyzer.
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
@@ -8,53 +8,53 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a05c704f62d93bdc110d8a5943dd266ca22eb5f4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73512884"
 ---
-# <a name="interpreting-your-scorecard"></a>Uw Score Card interpreteren
+# <a name="interpreting-your-scorecard"></a>Uw scorecard interpreteren
 
-Het tabblad Score Card bevat de geaggregeerde en geanalyseerde resultaten van uw tests. Elke test heeft zijn eigen score cards. Score cards bieden snelle en zinvolle samen vattingen van meet resultaten om gegevensgestuurde resultaten te bieden voor uw netwerk vereisten. Internet Analyzer zorgt voor de analyse, zodat u zich kunt concentreren op de beslissing.
+Het scorecardtabblad bevat de geaggregeerde en geanalyseerde resultaten van uw tests. Elke test heeft zijn eigen scorecards. Scorecards bieden snelle en zinvolle samenvattingen van meetresultaten om gegevensgestuurde resultaten te leveren voor uw netwerkvereisten. Internet Analyzer zorgt voor de analyse, zodat u zich concentreren op de beslissing.
 
-Het tabblad Score Card kan worden gevonden in het menu Internet Analyzer resource. 
+Het tabblad scorecard is te vinden in het menu van de internetanalyzerbron. 
 
 
 ## <a name="filters"></a>Filters
 
-* ***Testen:*** Selecteer de test waarvoor u de resultaten wilt bekijken: elke test heeft een eigen score card. Test gegevens worden weer gegeven wanneer er voldoende gegevens zijn om de analyse te volt ooien – in de meeste gevallen moet dit binnen 24 uur liggen. 
-* ***Eind datum van de tijds periode &:*** Er worden dagelijks drie Score cards gegenereerd: elke Score Card weerspiegelt een andere aggregatie periode – de 24 uur vóór (dag), de zeven dagen vóór (week) en de 30 dagen vóór (maand). Gebruik het filter eind datum om de laatste dag van de periode te selecteren die u wilt weer geven. 
-* ***Land:*** Voor elk land dat u eind gebruikers hebt, wordt een score card gegenereerd. Het globale filter bevat alle eind gebruikers.
+* ***Test:*** Selecteer de test waarvoor u de resultaten wilt bekijken - elke test heeft zijn eigen scorecard. Testgegevens verschijnen zodra er voldoende gegevens zijn om de analyse te voltooien – in de meeste gevallen moet dit binnen 24 uur zijn. 
+* ***Periode & einddatum:*** Drie scorecards worden dagelijks gegenereerd - elke scorecard weerspiegelt een andere aggregatieperiode - de 24 uur voorafgaand (dag), de zeven dagen voorafgaand (week), en de 30 dagen voorafgaand (maand). Gebruik het filter Einddatum om de laatste dag van de gewenste periode te selecteren. 
+* ***Land:*** Voor elk land dat u eindgebruikers hebt, wordt een scorecard gegenereerd. Het globale filter bevat alle eindgebruikers.
 
-## <a name="measurement-count"></a>Aantal metingen
+## <a name="measurement-count"></a>Meetaantal
 
-Het aantal metingen is van invloed op het vertrouwen van de analyse. Hoe hoger het aantal, des te nauw keuriger het resultaat. Tests moeten mini maal zijn gericht op mini maal 100 metingen per eind punt per dag. Als de meet aantallen te laag zijn, moet u de Java script-client zo configureren dat deze vaker wordt uitgevoerd in uw toepassing. De meet aantallen voor eind punten A en B moeten erg vergelijkbaar zijn, hoewel kleine verschillen worden verwacht en juist zijn. In het geval van grote verschillen moeten de resultaten niet worden vertrouwd.
+Het aantal metingen beïnvloedt het vertrouwen van de analyse. Hoe hoger het aantal, hoe nauwkeuriger het resultaat. De tests moeten ten minste 100 metingen per eindpunt per dag nastreven. Als het aantal metingen te laag is, configureert u de JavaScript-client om vaker in uw toepassing uit te voeren. De meetaantallen voor eindpunten A en B moeten zeer vergelijkbaar zijn, hoewel kleine verschillen worden verwacht en goed. In het geval van grote verschillen, moeten de resultaten niet worden vertrouwd.
 
-## <a name="percentiles"></a>Percentielen
+## <a name="percentiles"></a>Percentiles
 
-Latentie, gemeten in milliseconden, is een populaire meet waarde voor het meten van snelheid tussen een bron en bestemming op internet. Latentie gegevens worden normaal gesp roken niet gedistribueerd (dat wil zeggen: geen "klok curve") omdat er een "lange staart" van grote latentie waarden is die de resultaten scheef trekken wanneer statistieken zoals het reken kundige gemiddelde worden gebruikt. Als alternatief bieden percentielen een ' distributie vrije ' manier om gegevens te analyseren. Als voor beeld is het mediaan-of 50e percentiel een samen vatting van het midden van de verdeling-helft van de waarden. Een waarde voor een 75e percentiel betekent dat deze groter is dan 75% van alle waarden in de distributie. Internet Analyzer verwijst naar percentielen in steno als P50, P75 en P95.
+Latentie, gemeten in milliseconden, is een populaire statistiek voor het meten van snelheid tussen een bron en bestemming op het internet. Latentiegegevens worden normaal gesproken niet gedistribueerd (d.w.z. volgt geen "Belcurve") omdat er een "long-tail" is van grote latentiewaarden die resultaten scheeftrekken bij het gebruik van statistieken zoals het rekenkundig gemiddelde. Als alternatief bieden percentiels een "distributievrije" manier om gegevens te analyseren. Als voorbeeld, de mediaan, of 50e percentiel, vat het midden van de verdeling - de helft van de waarden zijn erboven en de helft zijn eronder. Een 75e percentielwaarde betekent dat het groter is dan 75% van alle waarden in de distributie. Internet Analyzer verwijst naar percentielen in steno als P50, P75 en P95.
 
-Internet Analyzer-percentielen zijn _voorbeeld metrieken_. Dit is in tegens telling tot de werkelijke _metrische gegevens_van de populatie. Zo is de dagelijkse gemiddelde latentie van de populatie tussen studenten in de University of Zuid Californië en micro soft de mediaan latentie waarde van alle aanvragen gedurende die dag. In de praktijk is het meten van de waarde van alle aanvragen niet praktisch, dus we gaan ervan uit dat een redelijkerwijs grote steek proef representatief is voor de echte populatie.
+Internet Analyzer percentiels zijn _voorbeeldstatistieken._ Dit in tegenstelling tot de werkelijke _populatiemetrische_. Bijvoorbeeld, de dagelijkse werkelijke bevolking mediane latentie tussen studenten aan de Universiteit van Zuid-Californië en Microsoft is de mediane latentie waarde van alle verzoeken gedurende die dag. In de praktijk is het meten van de waarde van alle verzoeken onpraktisch, dus we gaan ervan uit dat een redelijk grote steekproef representatief is voor de werkelijke populatie.
 
-Voor analyse doeleinden is P50 (mediaan) nuttig als een verwachte waarde voor een latentie distributie. Hogere percentielen, zoals P95, zijn handig om te bepalen hoe hoge latentie in de slechtste gevallen is. Als u geïnteresseerd bent in informatie over de latentie van klanten in het algemeen, is P50 de juiste meet waarde om zich te richten op. Als u zich zorgen maakt over de prestaties van de slechtste klanten, moet P95 de focus zijn. P75 is een evenwicht tussen deze twee.
+Voor analysedoeleinden is P50 (mediaan) nuttig als verwachte waarde voor een latentieverdeling. Hogere percentielen, zoals P95, zijn handig om te bepalen hoe hoog de latentie in het ergste geval is. Als u geïnteresseerd bent in het begrijpen van klantlatentie in het algemeen, p50 is de juiste metrische focus op. Als u zich bezighoudt met het begrijpen van prestaties voor de slechtst presterende klanten, dan p95 moet de focus. P75 is een evenwicht tussen deze twee.
 
 
 ## <a name="deltas"></a>Delta's
 
-Een Delta is het verschil in metrische waarden voor eind punten A en B. er worden Deltas berekend om het voor deel van B over A te laten zien. positieve waarden geven aan dat B beter is uitgevoerd dan A. negatieve waarden geven aan dat de prestaties van B verergerd zijn. Deltas kunnen absoluut zijn (bijvoorbeeld 10 milliseconden) of relatief (5%).
+Een delta is het verschil in metrische waarden voor eindpunten A en B. Delta's worden berekend om het voordeel van B ten opzichte van A weer te geven. Positieve waarden geven aan dat B beter presteerde dan A, terwijl negatieve waarden aangeven dat de prestaties van B slechter zijn. Delta's kunnen absoluut zijn (bijvoorbeeld 10 milliseconden) of relatief (5%).
 
-## <a name="confidence-interval"></a>Betrouwbaarheids interval 
+## <a name="confidence-interval"></a>Betrouwbaarheidsinterval 
 
-Betrouwbaarheids intervallen (CI) zijn een reeks waarden die een kans hebben dat de populatie-metriek, zoals mediaan, P75 of gemiddeld, wordt geretourneerd. We volgen de algemene statistische Conventie van het gebruik van de 95% CI.
+Betrouwbaarheidsintervallen (CI) zijn een bereik van waarden die een waarschijnlijkheid hebben om de populatiestatistiek zoals mediaan, P75 of gemiddelde te bevatten. We volgen de gemeenschappelijke statistische conventie van het gebruik van de 95% CI.
 
-Voor Internet Analyzer is een beperkt betrouwbaarheids interval goed, omdat het laat zien dat de metrische gegevens van de steek proef waarschijnlijk zeer dicht bij de werkelijke metrische gegevens van de populatie vallen. Een breed betrouwbaarheids interval betekent minder zekerheid dat de metrische metrische gegevens van de steek proef overeenkomen met de werkelijke waarde van de populatie. De beste manier om de CI te verbeteren is door het verhogen van de meet aantallen.
+Voor Internet Analyzer is een smal betrouwbaarheidsinterval goed omdat het laat zien dat de statistiek van de steekproef waarschijnlijk zeer dicht bij de werkelijke populatiestatistiek ligt. Een breed betrouwbaarheidsinterval betekent minder zekerheid dat onze steekproefstatistiek de werkelijke populatiestatistiek weerspiegelt. De beste manier om de CI te verbeteren is het verhogen van het aantal metingen.
 
-## <a name="time-series"></a>Tijd reeks 
+## <a name="time-series"></a>Tijdreeks 
 
-Een tijd reeks laat zien hoe een metriek in de loop van de tijd verandert. Op het Internet zijn er veel tijdelijke factoren die van invloed zijn op de prestaties, zoals piek perioden, weken in weekends en feest dagen.
+Een tijdreeks laat zien hoe een statistiek in de loop van de tijd verandert. Op het internet zijn er veel tijdelijke factoren die van invloed zijn op de prestaties, zoals piekverkeersperioden, weekdag-weekend bevolkingsverschillen en feestdagen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [overzicht van Internet Analyzer](internet-analyzer-overview.md)voor meer informatie.
+Zie ons Internet [Analyzer Overview](internet-analyzer-overview.md)voor meer informatie.

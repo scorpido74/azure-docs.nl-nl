@@ -1,7 +1,7 @@
 ---
-title: 'Voor beeld: de AdventureWorks-inventarisatie database model leren'
+title: 'Voorbeeld: De AdventureWorks Inventory-database modelleren'
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het model leren van relationele gegevens, het transformeren ervan naar een platte gegevensset, voor het indexeren en zoeken in volledige tekst in azure Cognitive Search.
+description: Meer informatie over het modelleren van relationele gegevens en het omzetten ervan in een afgevlakte gegevensset, voor indexering en zoeken in volledige tekst in Azure Cognitive Search.
 author: HeidiSteen
 manager: nitinme
 ms.service: cognitive-search
@@ -9,65 +9,65 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: heidist
 ms.openlocfilehash: edb6162724938962df8a7340afea6e930a0b1049
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792995"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>Voor beeld: de AdventureWorks-inventarisatie database voor Azure Cognitive Search model leren
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>Voorbeeld: de AdventureWorks Inventory-database modelleren voor Azure Cognitive Search
 
-Azure Cognitive Search accepteert een samengevoegde rijenset als invoer voor de [pijp lijn voor het indexeren (gegevens opname)](search-what-is-an-index.md). Als uw bron gegevens afkomstig zijn uit een relationele data base van SQL Server, ziet u in dit artikel één benadering voor het maken van een samengevoegde rijenset vóór het indexeren, met behulp van de AdventureWorks-voorbeeld database als voor beeld.
+Azure Cognitive Search accepteert een afgevlakte rijset als ingangen voor de [indexeringspijplijn (data-opname).](search-what-is-an-index.md) Als uw brongegevens afkomstig zijn van een SQL Server relationele database, toont dit artikel één benadering voor het maken van een afgevlakte rijset voorafgaand aan het indexeren, waarbij de AdventureWorks-voorbeelddatabase als voorbeeld wordt gebruikt.
 
 ## <a name="about-adventureworks"></a>Over AdventureWorks
 
-Als u een SQL Server-exemplaar hebt, is het mogelijk dat u bekend bent met de [AdventureWorks-voorbeeld database](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017). De tabellen die in deze data base zijn opgenomen, zijn vijf tabellen die product informatie beschikbaar maken.
+Als u een SQL Server-exemplaar hebt, bent u mogelijk bekend met de [AdventureWorks-voorbeelddatabase.](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017) Onder de tabellen in deze database zijn vijf tabellen die productinformatie blootleggen.
 
-+ **Product model**: naam
-+ **Product**: naam, kleur, kosten, grootte, gewicht, afbeelding, categorie (elke rij wordt toegevoegd aan een specifiek product model)
-+ **ProductDescription**: beschrijving
-+ **ProductModelProductDescription**: de land instelling (elke rij wordt toegevoegd aan een product model aan een specifieke ProductDescription voor een specifieke taal)
-+ **ProductCategory**: naam, bovenliggende categorie
++ **ProductModel**: naam
++ **Product**: naam, kleur, kosten, grootte, gewicht, afbeelding, categorie (elke rij wordt lid van een specifiek productmodel)
++ **ProductBeschrijving**: beschrijving
++ **ProductModelProductDescription**: landine (elke rij voegt een ProductModel toe aan een specifieke productbeschrijving voor een specifieke taal)
++ **Productcategorie**: naam, bovenliggende categorie
 
-Als al deze gegevens worden gecombineerd in een samengevoegde rijenset die in een zoek index kan worden opgenomen, is het doel van dit voor beeld. 
+Het combineren van al deze gegevens in een afgevlakte rijset die kan worden ingenomen in een zoekindex is het doel van dit voorbeeld. 
 
-## <a name="considering-our-options"></a>Overweeg onze opties
+## <a name="considering-our-options"></a>Gezien onze opties
 
-De Naïve benadering is het indexeren van alle rijen uit de tabel product (indien van toepassing), omdat de tabel product de meest specifieke informatie bevat. Deze benadering zou de zoek index echter beschikbaar maken voor dubbele waarden in een resultatenset. Het model weg-650 is bijvoorbeeld beschikbaar in twee kleuren en zes grootten. Er wordt dan een query voor ' Road Bikes ' in plaats van twaalf instanties van hetzelfde model, die alleen worden onderscheiden door de grootte en de kleur. De andere zes weg-specifieke modellen worden allemaal relegated naar de Nether wereld van Search: pagina twee.
+De naïeve benadering zou zijn om alle rijen uit de producttabel te indexeren (waar nodig samengevoegd), omdat de producttabel de meest specifieke informatie heeft. Deze benadering zou de zoekindex echter blootstellen aan waargenomen duplicaten in een resultset. Het Road-650-model is bijvoorbeeld verkrijgbaar in twee kleuren en zes maten. Een query voor "racefietsen" zou dan worden gedomineerd door twaalf exemplaren van hetzelfde model, alleen gedifferentieerd naar grootte en kleur. De andere zes wegspecifieke modellen zouden allemaal worden gedegradeerd tot de onderwereld van de zoekwereld: pagina twee.
 
-  ![Lijst met producten](./media/search-example-adventureworks/products-list.png "Lijst met producten")
+  ![Productenlijst](./media/search-example-adventureworks/products-list.png "Productenlijst")
  
-U ziet dat het model Road-650 twaalf opties heeft. Een-op-veel-entiteits rijen worden het beste weer gegeven als velden met meerdere waarden of velden met vooraf samengestelde waarden in de zoek index.
+Merk op dat de Road-650 model heeft twaalf opties. Een-op-veel entiteitsrijen worden het best weergegeven als velden met meerdere waarden of vooraf samengevoegde waardevelden in de zoekindex.
 
-Het oplossen van dit probleem is niet zo eenvoudig als het verplaatsen van de doel index naar de tabel product model. Als u dit doet, worden de belang rijke gegevens in de product tabel genegeerd die nog steeds in de zoek resultaten moeten worden weer gegeven.
+Het oplossen van dit probleem is niet zo eenvoudig als het verplaatsen van de doelindex naar de tabel ProductModel. Als u dit doet, worden de belangrijke gegevens in de producttabel genegeerd die nog steeds in zoekresultaten moeten worden weergegeven.
 
-## <a name="use-a-collection-data-type"></a>Een verzamelings gegevens type gebruiken
+## <a name="use-a-collection-data-type"></a>Een gegevenstype Verzameling gebruiken
 
-De "juiste aanpak" is het gebruik van een zoek schema-functie die geen directe parallelle in het database model: **verzameling (EDM. String)** heeft. Deze construct wordt gedefinieerd in het Azure Cognitive Search-index schema. Een verzamelings gegevens type wordt gebruikt wanneer u een lijst met afzonderlijke teken reeksen moet vertegenwoordigen in plaats van een zeer lange teken reeks (één). Als u Tags of tref woorden hebt, gebruikt u een verzamelings gegevens type voor dit veld.
+De "juiste benadering" is het gebruik van een zoekschemafunctie die geen directe parallel heeft in het databasemodel: **Collection(Edm.String)**. Deze constructie wordt gedefinieerd in het Azure Cognitive Search-indexschema. Een gegevenstype Verzameling wordt gebruikt wanneer u een lijst met afzonderlijke tekenreeksen moet weergeven in plaats van een zeer lange (enkele) tekenreeks. Als u tags of trefwoorden hebt, gebruikt u een gegevenstype Verzameling voor dit veld.
 
-Door index velden met meerdere waarden te definiëren voor de **verzameling (EDM. String)** voor "kleur", "grootte" en "afbeelding", wordt de aanvullende informatie bewaard voor facetten en filters zonder de index te vervuilen met dubbele vermeldingen. Op dezelfde manier kunt u statistische functies Toep assen op de numerieke product velden, waarbij u **minListPrice** in plaats van elke product- **listPrice**indexeert.
+Door indexvelden met meerdere waarden van **Verzameling(Edm.String)** te definiëren voor 'kleur', 'grootte' en 'afbeelding' wordt de aanvullende informatie bewaard voor faceting en filtering zonder de index te vervuilen met dubbele vermeldingen. Pas ook geaggregeerde functies toe op de numerieke productvelden en indexeert **minListPrice** in plaats van elke **productcatalogusPrijs**.
 
-Op basis van een index met deze structuren worden met een zoek opdracht naar ' Mountain Bikes ' afzonderlijke Bicycle-modellen weer gegeven, waarbij belang rijke meta gegevens, zoals kleur, grootte en laagste prijs behouden blijven. De volgende scherm afbeelding bevat een illustratie.
+Gezien een index met deze structuren, zou een zoektocht naar "mountainbikes" tonen discrete fiets modellen, met behoud van belangrijke metadata zoals kleur, grootte, en laagste prijs. De volgende screenshot geeft een illustratie.
 
-  ![Zoek voorbeeld van Mountain Bike](./media/search-example-adventureworks/mountain-bikes-visual.png "Zoek voorbeeld van Mountain Bike")
+  ![Voorbeeld van het zoeken van de mountainbike](./media/search-example-adventureworks/mountain-bikes-visual.png "Voorbeeld van het zoeken van de mountainbike")
 
-## <a name="use-script-for-data-manipulation"></a>Script gebruiken voor het bewerken van gegevens
+## <a name="use-script-for-data-manipulation"></a>Script gebruiken voor gegevensmanipulatie
 
-Helaas kan dit type model niet eenvoudig worden bereikt via SQL-instructies. Gebruik in plaats daarvan een eenvoudig NodeJS-script om de gegevens te laden en vervolgens toe te wijzen aan Zoek vriendelijke JSON-entiteiten.
+Helaas kan dit type modellering niet gemakkelijk worden bereikt door sql-instructies alleen. Gebruik in plaats daarvan een eenvoudig NodeJS-script om de gegevens te laden en vervolgens in kaart te brengen in zoekvriendelijke JSON-entiteiten.
 
-De uiteindelijke data base-Zoek toewijzing ziet er als volgt uit:
+De uiteindelijke database-search mapping ziet er als volgt uit:
 
-+ model (EDM. String: doorzoekbaar, filterbaar, opgehaald) van ' ProductModel.Name '
-+ description_en (EDM. String: Doorzoek bare) van ' ProductDescription ' voor het model waarbij Culture = ' en '
-+ Color (verzameling (EDM. String): Doorzoek bare, filterbaar, facetbaar, ophalend): unieke waarden van ' product. Color ' voor het model
-+ grootte (verzameling (EDM. String): Doorzoek bare, filterbaar, facetbaar, ophalend): unieke waarden van ' product. size ' voor het model
-+ afbeelding (verzameling (EDM. String): kan worden opgehaald): unieke waarden van ' product. ThumbnailPhoto ' voor het model
-+ minStandardCost (EDM. Double: filterbaar, facetable, sorteerbaar, ophaalbaar): het minimum aantal van ' product. StandardCost ' voor het model verzamelen
-+ minListPrice (EDM. Double: filterbaar, facetable, sorteerbaar, ophaalbaar): het minimum aantal van ' product. ListPrice ' voor het model verzamelen
-+ minWeight (EDM. Double: filterbaar, facetable, sorteerbaar, ophaalbaar): cumulatief minimum van alle "product. Weight" voor het model
-+ Products (verzameling (EDM. String): Doorzoek bare, filterbaar, ophalend): unieke waarden van ' Product.Name ' voor het model
++ model (Edm.String: doorzoekbaar, filterbaar, opvraagbaar) van "ProductModel.Name"
++ description_en (Edm.String: doorzoekbaar) van "ProductDescription" voor het model waar culture='en'
++ kleur (Collectie(Edm.String): doorzoekbaar, filterbaar, facetable, opvraagbaar): unieke waarden uit 'Product.Color' voor het model
++ grootte (Collectie(Edm.String): doorzoekbaar, filterbaar, facetable, opvraagbaar): unieke waarden uit 'Product.Size' voor het model
++ afbeelding (Collection(Edm.String): opvraagbaar): unieke waarden uit 'Product.ThumbnailPhoto' voor het model
++ minStandardCost (Edm.Double: filterbaar, facetable, sorteerbaar, opvraagbaar): totaalminimum van alle "Product.StandardCost" voor het model
++ minListPrice (Edm.Double: filterbaar, facetable, sorteerbaar, opvraagbaar): totaalminimum van alle "Product.ListPrice" voor het model
++ minWeight (Edm.Double: filterbaar, facetable, sorteerbaar, opvraagbaar): totaalminimum van alle "Product.Weight" voor het model
++ producten (Collection(Edm.String): doorzoekbaar, filterbaar, opvraagbaar): unieke waarden uit 'Product.Name' voor het model
 
-Nadat u de tabel Modeler hebt toegevoegd aan het product en [](https://lodash.com/) ProductDescription, gebruikt u lodash C#(of LINQ in) om snel de resultatenset te transformeren:
+Nadat u lid bent gegaan van de productmodeltabel met product en productbeschrijving, gebruikt u [lodash](https://lodash.com/) (of Linq in C#) om de resultaatset snel te transformeren:
 
 ```javascript
 var records = queryYourDatabase();
@@ -137,7 +137,7 @@ De resulterende JSON ziet er als volgt uit:
 ]
 ```
 
-Ten slotte ziet u hier de SQL-query om de initiële recordset te retour neren. Ik heb de [MSSQL](https://www.npmjs.com/package/mssql) NPM-module gebruikt om de gegevens in mijn NodeJS-app te laden.
+Tot slot is hier de SQL-query om de eerste recordset terug te sturen. Ik gebruikte de [mssql](https://www.npmjs.com/package/mssql) npm-module om de gegevens in mijn NodeJS-app te laden.
 
 ```T-SQL
 SELECT
@@ -163,4 +163,4 @@ WHERE
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Voor beeld: facet-taxonomieën op meerdere niveaus in azure Cognitive Search](search-example-adventureworks-multilevel-faceting.md)
+> [Voorbeeld: Facettaxonomies op meerdere niveaus in Azure Cognitive Search](search-example-adventureworks-multilevel-faceting.md)

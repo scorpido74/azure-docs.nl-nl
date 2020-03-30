@@ -1,6 +1,6 @@
 ---
-title: Een afbeelding slaag toevoegen aan een kaart | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u een afbeelding kunt bedekken op een kaart met behulp van de Microsoft Azure Maps Web SDK.
+title: Een afbeeldingslaag toevoegen aan een kaart | Microsoft Azure Maps
+description: In dit artikel vindt u meer informatie over het overlay van een afbeelding op een kaart met behulp van de Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,35 +10,35 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77209712"
 ---
-# <a name="add-an-image-layer-to-a-map"></a>Een afbeelding slaag toevoegen aan een kaart
+# <a name="add-an-image-layer-to-a-map"></a>Een afbeeldingslaag toevoegen aan een kaart
 
-Dit artikel laat u zien hoe u een afbeelding kunt bedekken naar een vaste set coördinaten. Hier volgen enkele voor beelden van verschillende afbeeldings typen die kunnen worden overlapt met kaarten:
+In dit artikel ziet u hoe u een afbeelding bedekken met een vaste set coördinaten. Hier zijn een paar voorbeelden van verschillende soorten afbeeldingen die kunnen worden bedekt op kaarten:
 
-* Afbeeldingen die zijn vastgelegd vanuit Drones
-* Floorplans bouwen
-* Historische of andere gespecialiseerde kaart afbeeldingen
-* Blauw drukken van taak sites
-* Weer radar afbeeldingen
+* Beelden die van hommels worden gevangen
+* Plattegronden van gebouwen
+* Historische of andere gespecialiseerde kaartafbeeldingen
+* Blauwdrukken van vacaturesites
+* Weer radarbeelden
 
 > [!TIP]
-> Een [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) is een eenvoudige manier om een afbeelding op een kaart te bedekken. Houd er rekening mee dat browsers problemen kunnen hebben met het laden van een grote afbeelding. In dit geval kunt u overwegen om uw afbeelding in tegels te verdelen en ze te laden in de kaart als een [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest).
+> Een [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) is een eenvoudige manier om een afbeelding op een kaart te bedekken. Houd er rekening mee dat browsers problemen kunnen hebben met het laden van een grote afbeelding. In dit geval u overwegen uw afbeelding op te splitsen in tegels en deze als [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)in de kaart te laden.
 
-De afbeelding slaag ondersteunt de volgende afbeeldings indelingen:
+De afbeeldingslaag ondersteunt de volgende afbeeldingsindelingen:
 
-- INDELING
+- Jpeg
 - PNG
-- BITMAP
+- BMP
 - GIF (geen animaties)
 
 ## <a name="add-an-image-layer"></a>Een afbeeldingslaag toevoegen
 
-De volgende code bedekken een afbeelding van een [kaart van Newark, New Jersey, van 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) op de kaart. Er wordt een [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) gemaakt door een URL door te geven aan een afbeelding en coördinaten voor de vier hoeken in de notatie `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`.
+De volgende code bedekt een afbeelding van een [kaart van Newark, New Jersey, uit 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) op de kaart. Een [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) wordt gemaakt door een URL door te geven aan `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`een afbeelding en coördineert voor de vier hoeken in de indeling.
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -53,44 +53,44 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-Hier volgt het volledige code voorbeeld van de voor gaande code.
+Hier is het volledige voorbeeld van de code van de voorgaande code.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Laag met eenvoudige afbeeldingen' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de <a href='https://codepen.io/azuremaps/pen/eQodRo/'>eenvoudige afbeelding slaag</a> van de Pen per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Eenvoudige afbeeldingslaag' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/eQodRo/'>peneenvoudige afbeeldingslaag van</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="import-a-kml-file-as-ground-overlay"></a>Een KML-bestand importeren als een wegdek bedekking
+## <a name="import-a-kml-file-as-ground-overlay"></a>Een KML-bestand importeren als grondoverlay
 
-In dit voor beeld wordt gedemonstreerd hoe u KML-oppervlak bedekkings gegevens kunt toevoegen als een afbeelding slaag op de kaart. KML-bedekkingen bieden Noord-, Zuid-, Oost-en West-coördinaten en een rotatie linksom. Maar de afbeelding slaag verwacht coördinaten voor elke hoek van de afbeelding. De KML-bedekking in dit voor beeld is voor de Chartres-Cathedral en is bron van [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+In dit voorbeeld wordt uitgelegd hoe u KML-grondoverlay-informatie toevoegt als een afbeeldingslaag op de kaart. KML grond overlays bieden noord-, zuid-, oost- en west coördinaten, en een tegen de klok in rotatie. De afbeeldingslaag verwacht echter coördinaten voor elke hoek van de afbeelding. De KML grondoverlay in dit monster is voor de Kathedraal van Chartres, en het is afkomstig van [Wikimedia.](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)
 
-De code maakt gebruik van de functie static `getCoordinatesFromEdges` van de [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) -klasse. De vier hoeken van de afbeelding worden berekend met behulp van de Noord-, Zuid-, Oost-, West-en rotatie gegevens van de KML-vlak bedekking.
+De code gebruikt `getCoordinatesFromEdges` de statische functie van de klasse [ImageLayer.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) Het berekent de vier hoeken van het beeld met behulp van de noord-, zuid-, oost-, west- en rotatie-informatie van de KML-grondoverlay.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='KML-oppervlak overlay als afbeelding slaag' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML-bedekking van pen als afbeelding slaag</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='KML-grondoverlay als afbeeldingslaag' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de Pen <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML-grondoverlay als afbeeldingslaag</a> van Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="customize-an-image-layer"></a>Een afbeelding slaag aanpassen
+## <a name="customize-an-image-layer"></a>Een afbeeldingslaag aanpassen
 
-De afbeelding slaag heeft veel stijl opties. Hier volgt een hulp programma om het uit te proberen.
+De afbeeldingslaag heeft veel stylingopties. Hier is een hulpmiddel om ze uit te proberen.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Opties voor afbeelding slaags' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>laag opties</a> van de pen-afbeelding per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Opties voor afbeeldingslaag' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>penafbeeldingslaagopties</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>van Azure Maps ( ) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
+Meer informatie over de lessen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
+> [ImageLayer (ImageLayer)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest)
+> [ImageLayerOpties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest)
 
-Raadpleeg de volgende artikelen voor meer code voorbeelden om toe te voegen aan uw kaarten:
+Zie de volgende artikelen voor meer codevoorbeelden die u aan uw kaarten toevoegen:
 
 > [!div class="nextstepaction"]
-> [Een laag voor een tegel toevoegen](./map-add-tile-layer.md)
+> [Een titellaag toevoegen](./map-add-tile-layer.md)

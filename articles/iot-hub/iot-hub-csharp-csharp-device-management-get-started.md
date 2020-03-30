@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met Azure IoT Hub Device Management (.NET/.NET) | Microsoft Docs
-description: Azure IoT Hub Apparaatbeheer gebruiken om het opnieuw opstarten van een extern apparaat te initiëren. U gebruikt de Azure IoT Device SDK voor .NET voor het implementeren van een gesimuleerde apparaat-app die een directe methode bevat en de Azure IoT Service SDK voor .NET voor het implementeren van een service-app die de directe methode aanroept.
+title: Aan de slag met Azure IoT Hub-apparaatbeheer (.NET/.NET) | Microsoft Documenten
+description: Azure IoT Hub-apparaatbeheer gebruiken om een herstart van een extern apparaat te starten. U gebruikt de Azure IoT-apparaat SDK voor .NET om een gesimuleerde apparaat-app te implementeren die een directe methode en de Azure IoT-service SDK voor .NET bevat om een service-app te implementeren die de directe methode aanroept.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -10,37 +10,37 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 3b37d7e049e7daabbbb4fe1a7b49feb654e8accc
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110254"
 ---
-# <a name="get-started-with-device-management-net"></a>Aan de slag met Apparaatbeheer (.NET)
+# <a name="get-started-with-device-management-net"></a>Aan de slag met apparaatbeheer (.NET)
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
-In deze zelfstudie ontdekt u hoe u:
+In deze handleiding ontdekt u hoe u:
 
-* Gebruik de Azure Portal om een IoT-hub te maken en een apparaat-id te maken in uw IoT-hub.
+* Gebruik de Azure-portal om een IoT-hub te maken en een apparaatidentiteit te maken in uw IoT-hub.
 
-* Maak een gesimuleerde apparaat-app die een directe methode bevat waarmee dat apparaat opnieuw wordt opgestart. Directe methoden worden vanuit de Cloud aangeroepen.
+* Maak een gesimuleerde apparaat-app die een directe methode bevat die dat apparaat opnieuw opstart. Directe methoden worden aangeroepen vanuit de cloud.
 
-* Maak een .NET-console-app die de directe methode voor opnieuw opstarten aanroept in de gesimuleerde apparaat-app via uw IoT-hub.
+* Maak een .NET-console-app die de directe herstartmethode aanroept in de gesimuleerde apparaat-app via uw IoT-hub.
 
 Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
-* **SimulateManagedDevice**. Met deze app maakt u verbinding met uw IoT-hub met de apparaat-id die u eerder hebt gemaakt, ontvangt u een directe methode voor opnieuw opstarten, simuleert u fysiek opnieuw opstarten en rapporteert de tijd voor de laatste keer opnieuw opstarten.
+* **SimulateManagedDevice**. Deze app maakt verbinding met uw IoT-hub met de apparaatidentiteit die eerder is gemaakt, ontvangt een directe herstartmethode, simuleert een fysieke herstart en rapporteert de tijd voor de laatste herstart.
 
-* **TriggerReboot**. Met deze app wordt een directe methode aangeroepen in de gesimuleerde apparaat-app, wordt het antwoord weer gegeven en worden de bijgewerkte gerapporteerde eigenschappen weer gegeven.
+* **TriggerReboot**. Deze app roept een directe methode aan in de gesimuleerde apparaat-app, geeft het antwoord weer en geeft de bijgewerkte gerapporteerde eigenschappen weer.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Visual Studio.
 
-* Een actief Azure-account. Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.
+* Een actief Azure-account. Als je nog geen account hebt, kun je binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aanmaken.
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het apparaatvoorbeeld in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs- en educatieve netwerkomgevingen. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -50,40 +50,40 @@ Aan het eind van deze zelfstudie beschikt u over twee .NET-consoletoepassingen:
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
+## <a name="get-the-iot-hub-connection-string"></a>De verbindingstekenreeks voor IoT-hub
 
 [!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Een externe keer opnieuw opstarten op het apparaat activeren met behulp van een directe methode
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Een externe herstart op het apparaat activeren met een directe methode
 
-In deze sectie maakt u een .NET-console-app die C#wordt gebruikt, waarmee een apparaat op afstand opnieuw wordt opgestart met behulp van een directe methode. De app maakt gebruik van Device-dubbele query's om de tijd van de laatste keer opnieuw opstarten voor dat apparaat te detecteren.
+In deze sectie maakt u een .NET-console-app met C#, waarmee u een externe herstart op een apparaat initieert met behulp van een directe methode. De app gebruikt apparaatdubbele query's om de laatste herstarttijd voor dat apparaat te ontdekken.
 
-1. Selecteer in Visual Studio **een nieuw project maken**.
+1. Selecteer in Visual Studio De optie **Een nieuw project maken**.
 
-1. Zoek in **een nieuw project maken**en selecteer de project sjabloon **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
+1. Zoek en selecteer in **Een nieuw project maken**de projectsjabloon Console App **(.NET Framework)** en selecteer **Volgende**.
 
-1. Geef in **uw nieuwe project**de naam project *TriggerReboot*en selecteer versie 4.5.1 of hoger .NET Framework. Selecteer **Maken**.
+1. Geef **in Uw nieuwe project configureren**een naam aan het project *TriggerReboot*en selecteer .NET Framework-versie 4.5.1 of hoger. Selecteer **Maken**.
 
     ![Nieuw Windows Classic Desktop-project in Visual C#](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
-1. Klik in **Solution Explorer**met de rechter muisknop op het project **TriggerReboot** en selecteer vervolgens **NuGet-pakketten beheren**.
+1. Klik in **Solution Explorer**met de rechtermuisknop op het **triggerreboot-project** en selecteer **NuGet-pakketten beheren**.
 
-1. Selecteer **Bladeren**, zoek naar en selecteer **micro soft. Azure. devices**. Selecteer **installeren** om het **micro soft. Azure. devices** -pakket te installeren.
+1. Selecteer **Bladeren**en zoek naar en selecteer **Microsoft.Azure.Devices**. Selecteer **Installeren** om het pakket **Microsoft.Azure.Devices** te installeren.
 
     ![Sluit het venster Nuget Package Manager.](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-nuget-devices.png)
 
-   Met deze stap wordt een verwijzing naar het [Azure IOT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
+   Met deze stap wordt een verwijzing naar het SDK NuGet-pakket voor [Azure IoT-services](https://www.nuget.org/packages/Microsoft.Azure.Devices/) en de afhankelijkheden ervan gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
+1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
 
    ```csharp
    using Microsoft.Azure.Devices;
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijke aanduiding `{iot hub connection string}` door de IoT Hub connection string u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang `{iot hub connection string}` de tijdelijke aanduidingswaarde door de Verbindingstekenreeks iot-hub die u eerder hebt gekopieerd in [De verbindingstekenreeks van de IoT-hub .](#get-the-iot-hub-connection-string)
 
    ```csharp
    static RegistryManager registryManager;
@@ -92,7 +92,7 @@ In deze sectie maakt u een .NET-console-app die C#wordt gebruikt, waarmee een ap
    static string targetDevice = "myDeviceId";
    ```
 
-1. Voeg de volgende methode toe aan de klasse **Program**.  Met deze code wordt het apparaat voor het opnieuw opstarten van het apparaat opgehaald en worden de gerapporteerde eigenschappen uitgevoerd.
+1. Voeg de volgende methode toe aan de klasse **Programma.**  Deze code krijgt de apparaattweeling voor het herstartapparaat en geeft de gerapporteerde eigenschappen een uitvoer.
 
    ```csharp
    public static async Task QueryTwinRebootReported()
@@ -102,7 +102,7 @@ In deze sectie maakt u een .NET-console-app die C#wordt gebruikt, waarmee een ap
    }
    ```
 
-1. Voeg de volgende methode toe aan de klasse **Program**.  Met deze code wordt de computer opnieuw opgestart op het apparaat met behulp van een directe methode.
+1. Voeg de volgende methode toe aan de klasse **Programma.**  Deze code initieert de herstart op het apparaat met behulp van een directe methode.
 
    ```csharp
    public static async Task StartReboot()
@@ -128,45 +128,45 @@ In deze sectie maakt u een .NET-console-app die C#wordt gebruikt, waarmee een ap
    Console.ReadLine();
    ```
 
-1. Selecteer **build** > **Build-oplossing**.
+1. Selecteer **Build** > **Build-oplossing**.
 
 > [!NOTE]
-> In deze zelf studie wordt slechts één query uitgevoerd voor de gerapporteerde eigenschappen van het apparaat. In productie code kunt u het beste navragen om wijzigingen in de gerapporteerde eigenschappen te detecteren.
+> In deze zelfstudie wordt slechts één query uitgevoerd voor de gerapporteerde eigenschappen van het apparaat. In productiecode raden we u aan om te peilen om wijzigingen in de gerapporteerde eigenschappen te detecteren.
 
 ## <a name="create-a-simulated-device-app"></a>Een gesimuleerde apparaattoepassing maken
 
 In deze sectie doet u het volgende:
 
-* Maak een .NET-console-app die reageert op een directe methode die wordt aangeroepen door de Cloud.
+* Maak een .NET-console-app die reageert op een directe methode die door de cloud wordt aangeroepen.
 
-* Activeer een gesimuleerd apparaat opnieuw opstarten.
+* Activeer een gesimuleerde apparaatherstart.
 
-* Gebruik de gerapporteerde eigenschappen om Device-dubbele query's in te scha kelen om apparaten te identificeren en wanneer ze voor het laatst opnieuw zijn opgestart.
+* Gebruik de gerapporteerde eigenschappen om apparaatdubbele query's in te schakelen om apparaten te identificeren en wanneer ze voor het laatst zijn opgestart.
 
-Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
+Voer de volgende stappen uit om de gesimuleerde apparaat-app te maken:
 
-1. Selecteer in Visual Studio in de TriggerReboot-oplossing die u al hebt gemaakt **File** > **New** > **project**. Zoek in **een nieuw project maken**en selecteer de project sjabloon **console-app (.NET Framework)** en selecteer vervolgens **volgende**.
+1. Selecteer in Visual Studio in de TriggerReboot-oplossing die u al hebt gemaakt de optie **Nieuw project** > **New** > **bestand**. Zoek en selecteer in **Een nieuw project maken**de projectsjabloon Console App **(.NET Framework)** en selecteer **Volgende**.
 
-1. In **uw nieuwe project configureren**, de naam van het project *SimulateManagedDevice*en voor de **oplossing**, selecteert **u toevoegen aan oplossing**. Selecteer **Maken**.
+1. Selecteer **In Uw nieuwe project configureren**het project *SimulateManagedDevice*en voor **Oplossing**de optie Toevoegen **aan oplossing**. Selecteer **Maken**.
 
-    ![Geef uw project een naam en voeg het toe aan de oplossing](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
+    ![Uw project een naam geven en toevoegen aan de oplossing](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
-1. Klik in Solution Explorer met de rechter muisknop op het nieuwe **SimulateManagedDevice** -project en selecteer vervolgens **NuGet-pakketten beheren**.
+1. Klik in Solution Explorer met de rechtermuisknop op het nieuwe **project SimulateManagedDevice** en selecteer **NuGet-pakketten beheren**.
 
-1. Selecteer **Bladeren**en zoek naar **micro soft. Azure. devices. client**en selecteer deze. Selecteer **Installeren**.
+1. Selecteer **Bladeren**en zoek naar en selecteer **Microsoft.Azure.Devices.Client**. Selecteer **Installeren**.
 
-    ![NuGet Package Manager-venster Client-App](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
+    ![NuGet Package Manager-vensterclient-app](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
 
-   Met deze stap wordt een verwijzing naar het [Azure IOT Device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet-pakket en de bijbehorende afhankelijkheden gedownload, geïnstalleerd en toegevoegd.
+   Met deze stap wordt een verwijzing naar het SDK NuGet-pakket voor [Azure IoT-apparaten](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) en de afhankelijkheden ervan gedownload, geïnstalleerd en toegevoegd.
 
-1. Voeg aan het begin van het bestand `using`Program.cs**de volgende**-instructies toe:
+1. Voeg aan het begin van het bestand **Program.cs** de volgende `using` instructies toe:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Voeg de volgende velden toe aan de klasse **Program**: Vervang de waarde van de tijdelijke aanduiding `{device connection string}` door de apparaat connection string die u eerder hebt genoteerd in [een nieuw apparaat registreren bij de IOT hub](#register-a-new-device-in-the-iot-hub).
+1. Voeg de volgende velden toe aan de klasse **Program**: Vervang `{device connection string}` de tijdelijke aanduidingswaarde door de tekenreeks voor apparaatverbinding die u eerder hebt opgemerkt in [Een nieuw apparaat registreren in de IoT-hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp
     static string DeviceConnectionString = "{device connection string}";
@@ -207,7 +207,7 @@ Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
    }
    ```
 
-1. Voeg tot slot de volgende code toe aan de methode **Main** om de verbinding met uw IOT-hub te openen en de methode-listener te initialiseren:
+1. Voeg ten slotte de volgende code toe aan de **hoofdmethode** om de verbinding met uw IoT-hub te openen en de methodelistener te initialiseren:
 
    ```csharp
    try
@@ -234,25 +234,25 @@ Als u de gesimuleerde apparaat-app wilt maken, volgt u deze stappen:
    }
    ```
 
-1. Klik in Solution Explorer met de rechter muisknop op uw oplossing en selecteer vervolgens **opstart projecten instellen**.
+1. Klik in Solution Explorer met de rechtermuisknop op uw oplossing en selecteer **Startup-projecten instellen**.
 
-1. Voor **algemene eigenschappen** > **project opstarten**selecteert u **één opstart project**en selecteert u vervolgens het project **SimulateManagedDevice** . Selecteer **OK** om uw wijzigingen op te slaan.
+1. Selecteer project Voor **Common Properties** > **Opstarten**, Selecteer Project Voor één **opstart**project en selecteer vervolgens het project **SimulateManagedDevice.** Selecteer **OK** om uw wijzigingen op te slaan.
 
-1. Selecteer **build** > **Build-oplossing**.
+1. Selecteer **Build** > **Build-oplossing**.
 
 > [!NOTE]
-> Om de zaken niet nodeloos ingewikkeld te maken, is in deze handleiding geen beleid voor opnieuw proberen geïmplementeerd. In productie code moet u beleid voor opnieuw proberen implementeren (zoals een exponentiële uitstel), zoals wordt voorgesteld in [tijdelijke fout afhandeling](/azure/architecture/best-practices/transient-faults).
+> Om de zaken niet nodeloos ingewikkeld te maken, is in deze handleiding geen beleid voor opnieuw proberen geïmplementeerd. In productiecode moet u opnieuw proberenbeleid implementeren (zoals een exponentiële back-off), zoals voorgesteld in [Tijdelijke foutafhandeling](/azure/architecture/best-practices/transient-faults).
 
 ## <a name="run-the-apps"></a>De apps uitvoeren
 
-U bent nu klaar om de apps uit te voeren.
+Je bent nu klaar om de apps uit te voeren.
 
-1. Als u de .NET- **SimulateManagedDevice**wilt uitvoeren, klikt u in Solution Explorer met de rechter muisknop op het project **SimulateManagedDevice** , selecteert u **fout opsporing**en selecteert u vervolgens **nieuw exemplaar starten**. De app moet beginnen met Luis teren naar methode aanroepen vanuit uw IoT-hub.
+1. Als u de **SimulateManagedDevice .NET-apparaat-app SimulateManagedDevice**wilt uitvoeren, klikt u met de rechtermuisknop op het project **SimulateManagedDevice,** selecteert u **Foutopsporing**en selecteert u Vervolgens **Nieuwe instantie starten**. De app moet beginnen met luisteren naar methodeoproepen vanaf uw IoT-hub.
 
-1. Klik met de rechter muisknop op het **TriggerReboot** -project nadat het apparaat is verbonden en er wordt gewacht op de aanroep van de methode, selecteer **fout opsporing**en selecteer vervolgens **nieuw exemplaar starten**.
+1. Nadat het apparaat is verbonden en wacht op aanroepen van methoden, klikt u met de rechtermuisknop op het **triggerreboot-project,** selecteert u **Foutopsporing**en selecteert u **Vervolgens Nieuwe instantie starten**.
 
-   Als het goed is, wordt ' opnieuw opstarten ' weer geven. geschreven in de **SimulatedManagedDevice** -console en de gerapporteerde eigenschappen van het apparaat, waaronder de laatste keer opnieuw opstarten, geschreven in de **TriggerReboot** -console.
+   Je zou "Rebooten!" moeten zien. geschreven in de **SimulatedManagedDevice-console** en de gerapporteerde eigenschappen van het apparaat, waaronder de laatste herstarttijd, geschreven in de **TriggerReboot-console.**
 
-    ![App voor service en apparaat uitvoeren](./media/iot-hub-csharp-csharp-device-management-get-started/combinedrun.png)
+    ![Service- en apparaat-app uitgevoerd](./media/iot-hub-csharp-csharp-device-management-get-started/combinedrun.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

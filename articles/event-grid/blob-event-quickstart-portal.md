@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Blob Storage-gebeurtenissen verzenden naar web-eind punt-Portal'
-description: 'Snelstartgids: gebruik Azure Event Grid en Azure Portal voor het maken van een Blob Storage-account en Abonneer u op de gebeurtenissen. De gebeurtenissen naar een webhook verzenden.'
+title: 'Snelstart: Blob-opslaggebeurtenissen naar webeindpunt - portal verzenden'
+description: 'Snelstart: gebruik Azure Event Grid en Azure portal om Blob-opslagaccount te maken en de gebeurtenissen ervan te abonneren. De gebeurtenissen naar een webhook verzenden.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844770"
 ---
-# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Snelstartgids: Blob Storage-gebeurtenissen naar een webeindpunt door sturen met de Azure Portal
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Snelstart: Blob-opslaggebeurtenissen routeren naar webeindpunt met de Azure-portal
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. In dit artikel gebruikt u Azure Portal om een Blob-opslagaccount te maken, u aan te melden bij gebeurtenissen voor die blob-opslag en een gebeurtenis te activeren om het resultaat weer te geven. Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
 
@@ -26,7 +26,7 @@ Wanneer u klaar bent, ziet u dat de gebeurtenisgegevens naar de web-app zijn ver
 
 ![Resultaten weergeven](./media/blob-event-quickstart-portal/view-results.png)
 
-## <a name="create-a-storage-account"></a>Maak een opslagaccount
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
@@ -43,7 +43,7 @@ Wanneer u klaar bent, ziet u dat de gebeurtenisgegevens naar de web-app zijn ver
    ![Eerste stappen](./media/blob-event-quickstart-portal/provide-blob-values.png)
 
 >[!NOTE]
-> Alleen opslag accounts van het type **StorageV2 (algemeen gebruik v2)** en **BlobStorage** ondersteunings gebeurtenis integratie. **Storage (Genral doel v1)** biedt *geen* ondersteuning voor integratie met Event grid.
+> Alleen opslagaccounts van soort **StorageV2 (v2 voor algemeen gebruik)** en **BlobStorage** ondersteunen gebeurtenis-integratie. **Opslag (genral ei v1)** biedt *geen* ondersteuning voor integratie met Event Grid.
 
 ## <a name="create-a-message-endpoint"></a>Het eindpunt van een bericht maken
 
@@ -105,7 +105,7 @@ U activeert een gebeurtenis voor de Blob-opslag door een bestand te uploaden. He
 
 1. Blader naar het testbestand en upload het.
 
-1. U hebt de gebeurtenis geactiveerd en Event Grid heeft het bericht verzonden naar het eindpunt dat u hebt geconfigureerd toen u zich abonneerde. Het bericht bevindt zich in de JSON-indeling en bevat een matrix met een of meer gebeurtenissen. In het volgende voor beeld bevat het JSON-bericht een matrix met één gebeurtenis. Bekijk uw web-app en u ziet dat er een gebeurtenis Blob gemaakt is ontvangen. 
+1. U hebt de gebeurtenis geactiveerd en Event Grid heeft het bericht verzonden naar het eindpunt dat u hebt geconfigureerd toen u zich abonneerde. Het bericht is in de JSON-indeling en bevat een array met een of meer gebeurtenissen. In het volgende voorbeeld bevat het JSON-bericht een array met één gebeurtenis. Bekijk uw web-app en u ziet dat er een gebeurtenis Blob gemaakt is ontvangen. 
 
    ```json
    [{

@@ -1,6 +1,6 @@
 ---
-title: De naam of het logo van een bedrijfs toepassing in azure AD wijzigen
-description: De naam of het logo wijzigen voor een aangepaste bedrijfs toepassing in Azure Active Directory
+title: De naam of het logo van een bedrijfstoepassing wijzigen in Azure AD
+description: De naam of het logo voor een aangepaste bedrijfstoepassing wijzigen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,37 +17,37 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d23849df75d1ab239eb269b462abb21df196e7e5
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79138498"
 ---
-# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>De naam of het logo van een bedrijfs toepassing in Azure Active Directory wijzigen
+# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>De naam of het logo van een bedrijfstoepassing wijzigen in Azure Active Directory
 
-Het is eenvoudig om de naam of het logo te wijzigen voor een aangepaste bedrijfs toepassing in Azure Active Directory (Azure AD). U moet de juiste machtigingen hebben om deze wijzigingen door te voeren. u moet de maker van de aangepaste toepassing zijn.
+Het is eenvoudig om de naam of het logo voor een aangepaste bedrijfstoepassing te wijzigen in Azure Active Directory (Azure AD). U moet over de juiste machtigingen beschikken om deze wijzigingen aan te brengen en u moet de maker van de aangepaste toepassing zijn.
 
-## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>Hoe kan ik de naam of het logo van een bedrijfs toepassing wijzigen?
+## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>Hoe wijzig ik de naam of het logo van een bedrijfstoepassing?
 
-1. Meld u aan bij de [Azure Active Directory-Portal](https://aad.portal.azure.com/) met een account dat een globale beheerder voor de Directory is. De pagina **Azure Active Directory beheer centrum** wordt weer gegeven.
-2. Selecteer in het linkerdeelvenster **Enterprise-toepassingen**. De lijst met uw zakelijke toepassingen wordt weer gegeven.
-3. Selecteer een toepassing. De overzichts pagina van de toepassing wordt weer gegeven.
-4. Selecteer in het deel venster Overzicht van toepassing, onder de kop **beheren** , de optie **Eigenschappen**. De pagina **Eigenschappen** wordt weer gegeven.
-5. Als u de naam wilt wijzigen, selecteert u het vak **naam** , typt u de nieuwe naam en drukt u op **Enter**.
-6. Als u het logo wilt wijzigen, gaat u naar het veld **logo** en selecteert u het mappictogram naast het vak **Selecteer een bestand** , dat zich onder de huidige logo afbeelding van de toepassing bevindt.
+1. Meld u aan bij de [Azure Active Directory-portal](https://aad.portal.azure.com/) met een account dat een globale beheerder is voor de directory. De pagina **Azure Active Directory-beheercentrum** wordt weergegeven.
+2. Selecteer in het linkerdeelvenster **Enterprise-toepassingen**. De lijst met uw bedrijfstoepassingen wordt weergegeven.
+3. Selecteer een toepassing. De pagina met toepassingsoverzicht wordt weergegeven.
+4. Selecteer **Eigenschappen**in het deelvenster toepassingsoverzicht onder de kop **Beheren** . De pagina **Eigenschappen** wordt weergegeven.
+5. Als u de naam wilt wijzigen, selecteert u het vak **Naam,** typt u de nieuwe naam en drukt u op **Enter**.
+6. Als u het logo wilt wijzigen, zoekt u het veld **Logo** en selecteert u het mappictogram naast het vak **Een bestand selecteren,** dat onder de huidige logoafbeelding van de toepassing staat.
 
-   ![De opdracht Eigenschappen selecteren](./media/change-name-or-logo-portal/change-logo.png)
+   ![De eigenschappen selecteren, opdracht](./media/change-name-or-logo-portal/change-logo.png)
 
    Als u het logo niet wijzigt, gaat u naar stap 8.
-7. Selecteer in de bestands kiezer het bestand dat u als het nieuwe logo wilt. De naam van het bestand wordt weer gegeven in het vak onder de huidige logo afbeelding.
+7. Selecteer in de bestandenkiezer het gewenste bestand als het nieuwe logo. De naam van het bestand wordt weergegeven in het vak onder de huidige logoafbeelding.
 
    > [!NOTE]
-   > Voor Azure moet de logo afbeelding een PNG-bestand zijn en worden er beperkingen toegepast op breedte, hoogte en bestands grootte. Aangepaste logo's moeten exact 215 &times; 215 pixels groot zijn en de indeling PNG hebben. U wordt aangeraden een effen kleur achtergrond te gebruiken zonder transparantie in uw toepassings logo om het beste weer te geven voor gebruikers.
-8. Selecteer **Opslaan**. Als u een nieuw logo hebt gekozen, wordt de afbeelding van het veld **logo** gewijzigd in overeenstemming met het nieuwe logo bestand.
+   > Azure vereist dat de logoafbeelding een PNG-bestand is en het hanteert beperkingen op breedte, hoogte en bestandsgrootte. Aangepaste logo's moeten &times; precies 215 215 pixels groot zijn en in PNG-formaat zijn. We raden u aan een effen kleurachtergrond te gebruiken zonder transparantie in uw toepassingslogo om het beste voor gebruikers te lijken.
+8. Selecteer **Opslaan**. Als u een nieuw logo hebt gekozen, wordt **de** afbeelding van het logoveld gewijzigd om het nieuwe logobestand weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstartgids: de groepen en leden van uw organisatie in Azure Active Directory weer geven](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](assign-user-or-group-access-portal.md)
-* [Een gebruiker of groeps toewijzing verwijderen uit een bedrijfs-app](remove-user-or-group-access-portal.md)
-* [Aanmeldingen van gebruikers voor een bedrijfs-app uitschakelen](disable-user-sign-in-portal.md)
+* [Snelstartgids: Groepen en groepsleden van uw organisatie weergeven in Azure Active Directory](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Een gebruiker of groep toewijzen aan een bedrijfsapp](assign-user-or-group-access-portal.md)
+* [Een gebruiker of groepstoewijzing verwijderen uit een bedrijfsapp](remove-user-or-group-access-portal.md)
+* [Aanmeldingen van gebruikers voor een bedrijfsapp uitschakelen](disable-user-sign-in-portal.md)

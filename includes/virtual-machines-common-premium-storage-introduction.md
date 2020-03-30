@@ -9,22 +9,22 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 86d03e980a233a60e4f3a6541462264dae0862af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74005561"
 ---
-Dit artikel bevat richt lijnen voor het bouwen van toepassingen met hoge prestaties met behulp van Azure Premium Storage. U kunt de instructies in dit document gebruiken in combi natie met best practices voor prestaties die van toepassing zijn op technologieën die door uw toepassing worden gebruikt. Ter illustratie van de richt lijnen hebben we SQL Server uitgevoerd op Premium Storage als voor beeld in dit document gebruikt.
+In dit artikel worden richtlijnen voor het bouwen van krachtige toepassingen met Azure Premium Storage. U de instructies in dit document gebruiken in combinatie met aanbevolen procedures voor prestaties die van toepassing zijn op technologieën die door uw toepassing worden gebruikt. Om de richtlijnen te illustreren, hebben we SQL Server gebruikt die op Premium Storage wordt uitgevoerd als voorbeeld in dit document.
 
-Hoewel we prestatie scenario's voor de opslaglaag in dit artikel adresseren, moet u de toepassingslaag optimaliseren. Als u bijvoorbeeld als host fungeert voor een share point-Farm in azure Premium Storage, kunt u de SQL Server-voor beelden in dit artikel gebruiken om de database server te optimaliseren. Daarnaast optimaliseert u de webserver en toepassings server van de share point-farm om de meeste prestaties te verkrijgen.
+Hoewel we prestatiescenario's voor de opslaglaag in dit artikel aanpakken, moet u de toepassingslaag optimaliseren. Als u bijvoorbeeld een SharePoint Farm host op Azure Premium Storage, u de SQL Server-voorbeelden uit dit artikel gebruiken om de databaseserver te optimaliseren. Optimaliseer bovendien de webserver en toepassingsserver van de SharePoint Farm om de meeste prestaties te krijgen.
 
-Dit artikel helpt u bij het beantwoorden van de volgende veelgestelde vragen over het optimaliseren van de prestaties van toepassingen op Azure Premium Storage.
+In dit artikel u de volgende veelgestelde vragen beantwoorden over het optimaliseren van de toepassingsprestaties op Azure Premium Storage,
 
-* Hoe kunt u de prestaties van uw toepassingen meten?  
-* Waarom worden de verwachte hoge prestaties niet weer gegeven?  
-* Welke factoren zijn van invloed op de prestaties van uw toepassing op Premium Storage?  
+* Hoe meet je de prestaties van je toepassing?  
+* Waarom zie je geen verwachte hoge prestaties?  
+* Welke factoren beïnvloeden uw toepassingsprestaties op Premium Storage?  
 * Hoe beïnvloeden deze factoren de prestaties van uw toepassing op Premium Storage?  
-* Hoe optimaliseert u het aantal IOPS, de band breedte en de latentie?  
+* Hoe u optimaliseren voor IOPS, Bandbreedte en Latency?  
 
-We hebben deze richt lijnen specifiek voor Premium Storage gegeven, omdat werk belastingen die worden uitgevoerd op Premium Storage uiterst prestaties gevoelig zijn. Er zijn voor beelden, waar van toepassing. U kunt ook enkele van deze richt lijnen Toep assen op toepassingen die worden uitgevoerd op IaaS-Vm's met standaard opslag schijven.
+We hebben deze richtlijnen speciaal voor Premium Storage verstrekt, omdat workloads die op Premium Storage worden uitgevoerd, zeer prestatiegevoelig zijn. Waar nodig hebben we voorbeelden gegeven. U een aantal van deze richtlijnen ook toepassen op toepassingen die worden uitgevoerd op IaaS VM's met standaardopslagschijven.

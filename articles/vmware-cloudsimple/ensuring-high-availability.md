@@ -1,6 +1,6 @@
 ---
-title: Hoge Beschik baarheid van toepassingen garanderen bij uitvoering in VMware op Azure
-description: Beschrijft functies van AVS voor hoge Beschik baarheid om veelvoorkomende scenario's voor toepassings fouten te verhelpen voor toepassingen die worden uitgevoerd in een AVS-privécloud
+title: Zorgen voor hoge beschikbaarheid van toepassingen wanneer deze wordt uitgevoerd in VMware op Azure
+description: Beschrijft CloudSimple functies met hoge beschikbaarheid om veelvoorkomende scenario's voor toepassingsfouten voor toepassingen die worden uitgevoerd in een CloudSimple Private Cloud aan te pakken
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,59 +8,59 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b32f7f3f38098f935382cce46d8251340784b940
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025347"
 ---
-# <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Hoge Beschik baarheid van toepassingen garanderen bij uitvoering in VMware op Azure
+# <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Zorgen voor hoge beschikbaarheid van toepassingen wanneer deze wordt uitgevoerd in VMware op Azure
 
-De AVS-oplossing biedt hoge Beschik baarheid voor uw toepassingen die in VMware worden uitgevoerd in de Azure-omgeving. De volgende tabel geeft een overzicht van fout scenario's en de bijbehorende functies voor hoge Beschik baarheid.
+De CloudSimple-oplossing biedt een hoge beschikbaarheid voor uw toepassingen die worden uitgevoerd op VMware in de Azure-omgeving. In de volgende tabel worden foutscenario's en de bijbehorende functies met hoge beschikbaarheid weergegeven.
 
-| Fout scenario | Toepassing beveiligd? | Functie platform HA | VMware HA-functie | Functie Azure HA |
+| Faalscenario | Toepassing beschermd? | Platform HA-functie | VMware HA-functie | Azure HA-functie |
 ------------ | ------------- | ------------ | ------------ | ------------- |
-| Schijf fout | KLIKT | Snelle vervanging van een uitgevallen knoop punt | [Over het vSAN-standaard beleid voor opslag](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| Fout met ventilator | KLIKT | Redundante ventilatoren, snelle vervanging van een mislukt knoop punt |  |  |
-| NIC-fout | KLIKT | Redundante NIC, snelle vervanging van een mislukt knoop punt
-| Stroom storing host | KLIKT | Redundante voeding |  |  |
-| ESXi-host-fout | KLIKT | snelle vervanging van een uitgevallen knoop punt | [VMware vSphere hoge Beschik baarheid](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM-fout | KLIKT | [Load balancers](load-balancers.md)  | [VMware vSphere hoge Beschik baarheid](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer voor stateless VMware-Vm's |
-| Fout in knooppunt switch poort | KLIKT | Redundante NIC |  |  |
-| Knooppunt switch is mislukt | KLIKT | Redundante Blade Switches |  |  |
-| Rack fout | KLIKT | Plaatsingsgroepen |  |  |
-| Netwerk verbinding met on-premises DC | KLIKT  | Redundante netwerk services |  | Redundante-circuits |
-| Netwerk verbinding met Azure | KLIKT | |  | Redundante-circuits |
-| Fout in Data Center | KLIKT |  |  | Beschikbaarheidszones |
-| Regionale fout | KLIKT  |  |  | Azure-regio's |
+| Schijffout | JA | Snelle vervanging van mislukt knooppunt | [Informatie over het standaardopslagbeleid van vSAN](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
+| Fanfalen | JA | Redundante ventilatoren, snelle vervanging van mislukte knooppunt |  |  |
+| NIC-storing | JA | Redundantnic, snelle vervanging van mislukte knooppunt
+| Stroomstoring host | JA | Redundante voeding |  |  |
+| ESXi-hostmislukt | JA | snelle vervanging van het mislukte knooppunt | [VMware vSphere hoge beschikbaarheid](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| VM-fout | JA | [Load balancers](load-balancers.md)  | [VMware vSphere hoge beschikbaarheid](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer voor stateloze VMware VM's |
+| Bladschakelaarpoort mislukt | JA | Redundante NIC |  |  |
+| Bladschakelaar mislukt | JA | Redundante bladschakelaars |  |  |
+| Rackstoring | JA | Plaatsingsgroepen |  |  |
+| Netwerkconnectiviteit met on-premises DC | JA  | Redundante netwerkdiensten |  | Redundante ER-circuits |
+| Netwerkconnectiviteit met Azure | JA | |  | Redundante ER-circuits |
+| Datacenterstoring | JA |  |  | Beschikbaarheidszones |
+| Regionale mislukking | JA  |  |  | Azure-regio's |
 
-De Azure VMware-oplossing per AVS biedt de volgende functies voor hoge Beschik baarheid.
+Azure VMware Solution by CloudSimple biedt de volgende functies met hoge beschikbaarheid.
 
-## <a name="fast-replacement-of-failed-node"></a>Snelle vervanging van een uitgevallen knoop punt
+## <a name="fast-replacement-of-failed-node"></a>Snelle vervanging van mislukt knooppunt
 
-De AVS-besturings vlak software bewaakt voortdurend de status van VMware-clusters en detecteert wanneer een ESXi-knoop punt mislukt. Vervolgens wordt er automatisch een nieuwe ESXi-host aan het betrokken VMware-cluster toegevoegd vanuit de groep van de gemakkelijk beschik bare knoop punten en neemt het knoop punt uit het cluster niet uit. Deze functionaliteit zorgt ervoor dat de reserve capaciteit in het VMware-cluster snel wordt hersteld, zodat de tolerantie van het cluster die wordt verschaft door vSAN en VMware HA, wordt hersteld.
+De CloudSimple control plane software bewaakt continu de status van VMware clusters en detecteert wanneer een ESXi-knooppunt uitvalt. Vervolgens voegt het automatisch een nieuwe ESXi-host toe aan het getroffen VMware-cluster uit de pool van direct beschikbare knooppunten en haalt het mislukte knooppunt uit het cluster. Deze functionaliteit zorgt ervoor dat de reservecapaciteit in het VMware-cluster snel wordt hersteld, zodat de veerkracht van het cluster van vSAN en VMware HA wordt hersteld.
 
 ## <a name="placement-groups"></a>Plaatsingsgroepen
 
-Een gebruiker die een automatische AVS-Cloud maakt, kan een Azure-regio en een plaatsings groep in de geselecteerde regio selecteren. Een plaatsings groep is een verzameling knoop punten verdeeld over meerdere racks, maar binnen hetzelfde spin-netwerk segment. Knoop punten binnen dezelfde plaatsings groep kunnen elkaar bereiken met Maxi maal twee extra switch-hops. Een plaatsings groep is altijd binnen één Azure-beschikbaarheids zone en omvat meerdere racks. Het AVS-besturings vlak distribueert knoop punten van een automatische AVS-Cloud in meerdere racks op basis van de beste inspanningen. Knoop punten in verschillende plaatsings groepen worden gegarandeerd in verschillende racks geplaatst.
+Een gebruiker die een Private Cloud maakt, kan een Azure-regio en een plaatsingsgroep binnen het geselecteerde gebied selecteren. Een plaatsingsgroep is een set knooppunten verspreid over meerdere racks, maar binnen hetzelfde netwerksegment van de wervelkolom. Knooppunten binnen dezelfde plaatsingsgroep kunnen elkaar bereiken met maximaal twee extra schakelhops. Een plaatsingsgroep bevindt zich altijd binnen één Azure-beschikbaarheidszone en omvat meerdere racks. Het CloudSimple-besturingsvlak verdeelt knooppunten van een Private Cloud over meerdere racks op basis van de beste inspanning. Knooppunten in verschillende plaatsingsgroepen worden gegarandeerd in verschillende racks geplaatst.
 
 ## <a name="availability-zones"></a>Beschikbaarheidszones
 
-Beschikbaarheids zones zijn een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Beschikbaarheids zones zijn speciale fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Elke regio heeft één beschikbaarheids zone. Zie [Wat zijn Beschikbaarheidszones in azure?](../availability-zones/az-overview.md)voor meer informatie.
+Beschikbaarheidszones zijn een aanbod met hoge beschikbaarheid dat uw toepassingen en gegevens beschermt tegen datacenterfouten. Beschikbaarheidszones zijn speciale fysieke locaties binnen een Azure-gebied. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Elke regio heeft één beschikbaarheidszone. Zie [Wat zijn beschikbaarheidszones in Azure voor](../availability-zones/az-overview.md)meer informatie.
 
 ## <a name="redundant-azure-expressroute-circuits"></a>Redundante Azure ExpressRoute-circuits
 
-Data Center-connectiviteit met Azure vNet met behulp van ExpressRoute heeft redundante circuits om een netwerk connectiviteit met hoge Beschik baarheid te bieden.
+Datacenterconnectiviteit met Azure vNet met ExpressRoute heeft redundante circuits om een zeer beschikbare netwerkverbinding te bieden.
 
-## <a name="redundant-networking-services"></a>Redundante netwerk services
+## <a name="redundant-networking-services"></a>Redundante netwerkdiensten
 
-Alle AVS-netwerk services voor de cloud van de AVS (inclusief VLAN, firewall, open bare IP-adressen, Internet en VPN) zijn ontworpen om Maxi maal beschikbaar te zijn en ondersteuning te bieden voor de service-SLA.
+Alle CloudSimple-netwerkservices voor de Private Cloud (waaronder VLAN, firewall, openbare IP-adressen, internet en VPN) zijn ontworpen om zeer beschikbaar te zijn en in staat om de service SLA te ondersteunen.
 
-## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Azure Layer 7 Load Balancer voor stateless VMware-Vm's
+## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Azure Layer 7 Load Balancer voor stateloze VMware VM's
 
-Gebruikers kunnen een Azure Layer 7-Load Balancer voor de staatloze Vm's die worden uitgevoerd in de VMware-omgeving, plaatsen om hoge Beschik baarheid voor de weblaag te krijgen.
+Gebruikers kunnen een Azure Layer 7 Load Balancer voor de stateless web tier VM's plaatsen die in de VMware-omgeving worden uitgevoerd om een hoge beschikbaarheid voor de weblaag te bereiken.
 
 ## <a name="azure-regions"></a>Azure-regio's
 
-Een Azure-regio is een set data centers die zijn geïmplementeerd binnen een latentie definitie en verbonden zijn via een toegewezen regionaal netwerk met lage latentie. Zie [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions)voor meer informatie.
+Een Azure-regio is een set datacenters die zijn geïmplementeerd binnen een latentiegedefinieerde perimeter en zijn verbonden via een specifiek regionaal netwerk met lage latentie. Zie [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions)voor meer informatie.

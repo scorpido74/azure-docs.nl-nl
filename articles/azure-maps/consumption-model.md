@@ -1,6 +1,6 @@
 ---
-title: Voertuig modellen voor route ring | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over verbruiks modellen voor Voer tuigen voor route ring in Microsoft Azure Maps.
+title: Voertuigverbruiksmodellen voor de routering | Microsoft Azure Maps
+description: In dit artikel vindt u meer informatie over voertuigverbruiksmodellen voor routering in Microsoft Azure Maps.
 author: subbarayudukamma
 ms.author: skamma
 ms.date: 05/08/2018
@@ -9,63 +9,63 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: c1572eddf78ca2d5f8f4e3ee9f1fe47b0d43f5aa
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190256"
 ---
 # <a name="consumption-model"></a>Verbruiksmodel
 
-De Routing-service voorziet in een set para meters voor een gedetailleerde beschrijving van het model voor het specifieke verbruik van het Voer tuig.
-Afhankelijk van de waarde van **vehicleEngineType**worden twee hoofd verbruiks modellen ondersteund: _verbranding_ en _elektrisch_. Het is niet juist om para meters op te geven die bij verschillende modellen horen in dezelfde aanvraag. De para meters voor verbruiks model kunnen niet worden gebruikt met de volgende **travelMode** -waarden: _fiets_ en _voetgangers_.
+De routeringsservice biedt een reeks parameters voor een gedetailleerde beschrijving van het voertuigspecifieke verbruiksmodel.
+Afhankelijk van de waarde van **vehicleEngineType**worden twee belangrijkste verbruiksmodellen ondersteund: _Verbranding_ en _Elektrisch_. Het is onjuist om parameters op te geven die tot verschillende modellen in dezelfde aanvraag behoren. Ook kunnen de parameters van het verbruiksmodel niet worden gebruikt met de volgende **travelMode-waarden:** _fiets_ en _voetganger._
 
-## <a name="parameter-constraints-for-consumption-model"></a>Parameter beperkingen voor verbruiks model
+## <a name="parameter-constraints-for-consumption-model"></a>Parameterbeperkingen voor het verbruiksmodel
 
-In beide verbruiks modellen zijn er een aantal afhankelijkheden bij het opgeven van para meters. Dit betekent dat het expliciet opgeven van sommige para meters vereist dat sommige andere para meters worden opgegeven. Hier volgen enkele van de volgende afhankelijkheden:
+In beide verbruiksmodellen zijn er enkele afhankelijkheden bij het opgeven van parameters. Dit betekent dat het expliciet opgeven van bepaalde parameters het opgeven van een aantal andere parameters vereist. Hier zijn deze afhankelijkheden om bewust te zijn van:
 
-* Voor alle para meters moet **constantSpeedConsumption** worden opgegeven door de gebruiker. Er is een fout opgetreden bij het opgeven van een andere para meter voor een verbruiks model als **constantSpeedConsumption** niet is opgegeven. De **vehicleWeight** -para meter is een uitzonde ring voor deze vereiste.
-* **accelerationEfficiency** en **decelerationEfficiency** moeten altijd worden opgegeven als een combi natie (dat wil zeggen, beide of geen).
-* Als **accelerationEfficiency** en **decelerationEfficiency** zijn opgegeven, mag het product van hun waarden niet groter zijn dan 1 (om permanente beweging te voor komen).
-* **uphillEfficiency** en **downhillEfficiency** moeten altijd worden opgegeven als een combi natie (dat wil zeggen, beide of geen).
-* Als **uphillEfficiency** en **downhillEfficiency** zijn opgegeven, mag het product van hun waarden niet groter zijn dan 1 (om permanente beweging te voor komen).
-* Als de \*__efficiëntie__ parameters worden opgegeven door de gebruiker, moet **vehicleWeight** ook worden opgegeven. Wanneer **vehicleEngineType** is _verbrand_, moet ook **fuelEnergyDensityInMJoulesPerLiter** worden opgegeven.
-* **maxChargeInkWh** en **currentChargeInkWh** moeten altijd worden opgegeven als een combi natie (dat wil zeggen, beide of geen).
+* Alle parameters vereisen **constantSpeedConsumption** worden opgegeven door de gebruiker. Het is een fout om een andere parameter voor het verbruiksmodel op te geven, als **constantSpeedConsumption** niet is opgegeven. De parameter **vehicleWeight** is een uitzondering voor deze vereiste.
+* **versnellingEfficiëntie** en **vertragingEfficiëntie** moeten altijd worden opgegeven als een paar (dat wil zeggen, beide of geen).
+* Als **versnellingEfficiëntie** en vertragingefficiëntie zijn **gespecificeerd,** mag het product van hun waarden niet groter zijn dan 1 (om eeuwigdurende beweging te voorkomen).
+* **uphillEfficiency** en **downhillEfficiëntie** moet altijd worden opgegeven als een paar (dat wil zeggen, beide of geen).
+* Als **uphillEfficiency** en **downhillEfficiency** worden gespecificeerd, mag het product van hun waarden niet groter zijn dan 1 (om eeuwigdurende beweging te voorkomen).
+* Als \*de __efficiëntieparameters__ door de gebruiker worden opgegeven, moet **ook het gewicht van het voertuig** worden opgegeven. Wanneer **het voertuigEngineType** wordt _verbrand,_ moet **ook brandstofEnergyDesityInMJoulesPerLiter** worden gespecificeerd.
+* **maxChargeInkWh** en **currentChargeInkWh** moeten altijd worden opgegeven als een paar (dat wil zeggen, beide of geen).
 
 > [!NOTE]
-> Als er alleen **constantSpeedConsumption** is opgegeven, worden er geen andere verbruiks aspecten, zoals hellingen en voertuig versnelling, in rekening gebracht voor verbruiks berekeningen.
+> Als alleen **constantSpeedConsumption** wordt gespecificeerd, worden geen andere verbruiksaspecten zoals hellingen en voertuigversnelling in aanmerking genomen voor verbruiksberekeningen.
 
-## <a name="combustion-consumption-model"></a>Model voor verbrandings consumptie
+## <a name="combustion-consumption-model"></a>Model voor verbrandingsverbruik
 
-Het model voor stook verbruik wordt gebruikt wanneer **vehicleEngineType** is ingesteld op _verbranding_.
-De lijst met para meters die deel uitmaken van dit model vindt u hieronder. Raadpleeg de sectie para meters voor een gedetailleerde beschrijving.
+Het Combustion Consumption Model wordt gebruikt wanneer **vehicleEngineType** is ingesteld op _verbranding._
+De lijst met parameters die bij dit model horen, vindt u hieronder. Raadpleeg de sectie Parameters voor een gedetailleerde beschrijving.
 
 * constantSpeedConsumptionInLitersPerHundredkm
-* vehicleWeight
-* currentFuelInLiters
-* auxiliaryPowerInLitersPerHour
+* voertuigGewicht
+* huidige FuelInLiters
+* hulpvermogenInLitersPerHour
 * fuelEnergyDensityInMJoulesPerLiter
-* accelerationEfficiency
-* decelerationEfficiency
+* versnellingEfficiëntie
+* vertragingEfficiëntie
 * uphillEfficiency
 * downhillEfficiency
 
-## <a name="electric-consumption-model"></a>Model voor elektriciteits verbruik
+## <a name="electric-consumption-model"></a>Elektrisch verbruiksmodel
 
-Het elektriciteits verbruiks model wordt gebruikt wanneer **vehicleEngineType** is ingesteld op _Electric_.
-De lijst met para meters die deel uitmaken van dit model vindt u hieronder. Raadpleeg de sectie para meters voor een gedetailleerde beschrijving.
+Het elektrische verbruik model wordt gebruikt wanneer **vehicleEngineType** is ingesteld op _elektrische_.
+De lijst met parameters die bij dit model horen, vindt u hieronder. Raadpleeg de sectie Parameters voor een gedetailleerde beschrijving.
 
 * constantSpeedConsumptionInkWhPerHundredkm
-* vehicleWeight
-* currentChargeInkWh
+* voertuigGewicht
+* huidigeChargeInkWh
 * maxChargeInkWh
-* auxiliaryPowerInkW
-* accelerationEfficiency
-* decelerationEfficiency
+* hulpkrachtPowerInkW
+* versnellingEfficiëntie
+* vertragingEfficiëntie
 * uphillEfficiency
 * downhillEfficiency
 
-## <a name="sensible-values-of-consumption-parameters"></a>Praktische waarden van verbruiks parameters
+## <a name="sensible-values-of-consumption-parameters"></a>Verstandige waarden van verbruiksparameters
 
-Een bepaalde set para meters kan worden afgewezen, zelfs als de set kan voldoen aan alle expliciete vereisten. Wanneer de waarde van een specifieke para meter, of een combi natie van waarden van verschillende para meters, wordt beschouwd als een onredelijke omvang van verbruiks waarden. Als dat gebeurt, duidt dit meestal op een invoer fout, omdat er voldoende aandacht wordt besteed aan alle goed werkende waarden van verbruiks parameters. Als een bepaalde set verbruiks parameters wordt afgewezen, bevat het bijbehorende fout bericht een beschrijving van de reden (en).
-De gedetailleerde beschrijvingen van de para meters hebben voor beelden van de voor waarden voor beide modellen.
+Een bepaalde set verbruiksparameters kan worden afgewezen, ook al voldoet de set mogelijk aan alle expliciete vereisten. Het gebeurt wanneer de waarde van een specifieke parameter, of een combinatie van waarden van verschillende parameters, wordt beschouwd als leiden tot onredelijke grootheden van de consumptiewaarden. Als dat gebeurt, duidt het waarschijnlijk op een invoerfout, omdat de juiste zorg wordt genomen om aan alle zinnige waarden van verbruiksparameters te voldoen. In het geval dat een bepaalde set verbruiksparameters wordt afgewezen, bevat het begeleidende foutbericht een tekstuele uitleg van de reden(en).
+De gedetailleerde beschrijvingen van de parameters hebben voorbeelden van verstandige waarden voor beide modellen.

@@ -1,6 +1,6 @@
 ---
-title: Limieten voor StorSimple virtuele array | Microsoft Docs
-description: Hierin worden systeem limieten en aanbevolen grootten voor de Microsoft Azure StorSimple virtuele matrix onderdelen en verbindingen beschreven.
+title: StorSimple Virtual Array-limieten | Microsoft Documenten
+description: Beschrijft systeemlimieten en aanbevolen formaten voor de Microsoft Azure StorSimple Virtual Array-componenten en -verbindingen.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,20 +16,20 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1fe6b614aa05ab3e774aa2f946b78cabbc9f1a3b
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68516734"
 ---
-# <a name="what-are-storsimple-virtual-array-limits"></a>Wat zijn StorSimple virtuele-matrix limieten?
+# <a name="what-are-storsimple-virtual-array-limits"></a>Wat zijn StorSimple Virtual Array-limieten?
 
 ## <a name="overview"></a>Overzicht
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
-Houd rekening met deze limieten bij het plannen, implementeren en beheren van uw Microsoft Azure StorSimple virtuele matrix. In de volgende tabel worden deze limieten voor het virtuele apparaat beschreven.
+Houd rekening met deze limieten wanneer u uw Microsoft Azure StorSimple Virtual Array plant, implementeert en exploiteert. In de volgende tabel worden deze limieten voor het virtuele apparaat beschreven.
 
-## <a name="storsimple-virtual-array-limits"></a>Limieten voor StorSimple virtuele matrix
+## <a name="storsimple-virtual-array-limits"></a>StorSimple Virtual Array-limieten
 [!INCLUDE [storsimple-virtual-array-limits](../../includes/storsimple-virtual-array-limits.md)]
 

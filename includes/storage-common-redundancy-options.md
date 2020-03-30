@@ -9,17 +9,17 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 73c2b742ede21a4e86d717d994f8ebc4f16389c9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77157212"
 ---
-De redundantie opties voor een opslag account zijn onder andere:
+Redundantieopties voor een opslagaccount zijn:
 
-* Lokaal redundante opslag (LRS): een eenvoudige, voordelige redundantie strategie. Gegevens worden synchroon drie keer binnen de primaire regio gekopieerd.
-* Zone-redundante opslag (ZRS): redundantie voor scenario's die hoge Beschik baarheid vereisen. Gegevens worden synchroon gekopieerd over drie Azure-beschikbaarheids zones in de primaire regio.
-* Geografisch redundante opslag (GRS): Kruis regionale redundantie om te beschermen tegen regionale storingen. Gegevens worden synchroon drie keer in de primaire regio gekopieerd en vervolgens asynchroon gekopieerd naar de secundaire regio. Voor lees toegang tot gegevens in de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) in.
-* Geo-zone-redundante opslag (GZRS) (preview): redundantie voor scenario's waarbij hoge Beschik baarheid en maximale duurzaamheid zijn vereist. Gegevens worden synchroon gekopieerd over drie Azure-beschikbaarheids zones in de primaire regio en vervolgens asynchroon gekopieerd naar de secundaire regio. Voor lees toegang tot gegevens in de secundaire regio schakelt u geo-zone-redundante opslag met lees toegang (RA-GZRS) in.
+* Lokaal redundante opslag (LRS): een eenvoudige, goedkope redundantiestrategie. Gegevens worden drie keer synchroon gekopieerd binnen het primaire gebied.
+* Zoneredundante opslag (ZRS): redundantie voor scenario's die een hoge beschikbaarheid vereisen. Gegevens worden synchroon gekopieerd in drie Azure-beschikbaarheidszones in het primaire gebied.
+* Geo-redundante opslag (GRS): Cross-regional redundantie om te beschermen tegen regionale storingen. Gegevens worden drie keer synchroon gekopieerd in het primaire gebied en vervolgens asynchroon gekopieerd naar het secundaire gebied. Voor leestoegang tot gegevens in de secundaire regio u georedundante opslag (RA-GRS) gebruiken voor leestoegang tot gegevens in de secundaire regio.
+* Geo-zone-redundante opslag (GZRS) (voorbeeld): Redundantie voor scenario's die zowel hoge beschikbaarheid als maximale duurzaamheid vereisen. Gegevens worden synchroon gekopieerd over drie Azure-beschikbaarheidszones in het primaire gebied en vervolgens asynchroon gekopieerd naar het secundaire gebied. Voor leestoegang tot gegevens in de secundaire regio u geozoneredundante opslag (RA-GZRS) inschakelen voor leestoegang tot gegevens in de secundaire regio.
 
-Zie [Azure Storage redundantie](../articles/storage/common/storage-redundancy.md)voor meer informatie over redundantie opties in azure Storage.
+Zie [Redundantie](../articles/storage/common/storage-redundancy.md)azure Storage voor meer informatie over redundantieopties in Azure Storage.

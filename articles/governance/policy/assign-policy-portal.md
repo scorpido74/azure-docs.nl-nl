@@ -1,16 +1,16 @@
 ---
-title: 'Snelstartgids: nieuwe beleids toewijzing met portal'
-description: In deze Quick Start gebruikt u Azure Portal om een Azure Policy toewijzing te maken om niet-compatibele resources te identificeren.
-ms.date: 11/25/2019
+title: 'Snelstart: Nieuwe beleidstoewijzing met portal'
+description: In deze snelstart gebruikt u Azure-portal om een Azure-beleidstoewijzing te maken om niet-compatibele resources te identificeren.
+ms.date: 03/24/2020
 ms.topic: quickstart
-ms.openlocfilehash: ac876b546ea3bda7541db61e0ab68842a3845541
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 3a514478f3cefa49c37c3431a80b578dff480584
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482287"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240014"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Snelstart: een beleidstoewijzing maken om niet-compatibele resources te identificeren
 
 De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
 In deze quickstart gaat u een beleidstoewijzing maken voor het identificeren van virtuele machines die geen beheerde schijven gebruiken.
@@ -19,7 +19,7 @@ Als u dit proces helemaal hebt doorlopen, kunt u virtuele machines identificeren
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 ## <a name="create-a-policy-assignment"></a>Een beleidstoewijzing maken
 
@@ -27,15 +27,15 @@ In deze snelstart maakt u een beleidstoewijzing en wijst u de beleidsdefinitie _
 
 1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
 
-   ![Beleid zoeken in alle services](./media/assign-policy-portal/search-policy.png)
+   :::image type="content" source="./media/assign-policy-portal/search-policy.png" alt-text="Zoeken naar beleid in alle services" border="false":::
 
 1. Selecteer **Toewijzingen** in het linkerdeelvenster van de Azure Policy-pagina. Een toewijzing is een beleid dat is toegewezen om te worden toegepast binnen een bepaald bereik.
 
-   ![Pagina toewijzingen selecteren op de pagina overzicht van beleid](./media/assign-policy-portal/select-assignments.png)
+   :::image type="content" source="./media/assign-policy-portal/select-assignments.png" alt-text="Pagina Toewijzingen selecteren op de pagina Beleidsoverzicht" border="false":::
 
 1. Selecteer **Beleid toewijzen** boven in de pagina **Beleidstoewijzingen**.
 
-   ![Een beleids definitie toewijzen van de pagina toewijzingen](./media/assign-policy-portal/select-assign-policy.png)
+   :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="Een beleidsdefinitie toewijzen op de pagina Toewijzingen" border="false":::
 
 1. Selecteer op de pagina **Beleid toewijzen** het **bereik** door te klikken op het beletselteken en een beheergroep of abonnement te selecteren. U kunt ook een resourcegroep selecteren. Het bereik bepaalt op welke resources of groep resources de beleidstoewijzing wordt afgedwongen. Klik vervolgens op **Selecteren** aan de onderkant van de pagina **Bereik**.
 
@@ -47,32 +47,32 @@ In deze snelstart maakt u een beleidstoewijzing en wijst u de beleidsdefinitie _
 
    - Tag en waarde afdwingen
    - Tag en waarde toepassen
-   - SQL Server-versie 12.0 vereisen
+   - Een tag overnemen van de resourcegroep als deze ontbreekt
 
-   Zie Azure Policy-voor [beelden](./samples/index.md)voor een gedeeltelijke lijst met beschik bare ingebouwde beleids regels.
+   Zie [Azure Policy-voorbeelden](./samples/index.md)voor een gedeeltelijke lijst met beschikbare ingebouwde beleidsregels .
 
 1. Doorzoek uw beleidsdefinities en zoek de definitie _Controleren van virtuele machines die geen beheerde schijven gebruiken_. Klik op dit beleid en vervolgens op **Selecteren**.
 
-   ![De juiste beleidsdefinitie vinden](./media/assign-policy-portal/select-available-definition.png)
+   :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="De juiste beleidsdefinitie vinden" border="false":::
 
 1. De **Toewijzingsnaam** wordt automatisch ingevuld met de naam van het beleid dat u hebt geselecteerd, maar u kunt dit wijzigen. In dit geval gebruiken we _Controleren van virtuele machines die geen beheerde schijven gebruiken_. U kunt ook een optionele **Beschrijving** opgeven. De beschrijving bevat details over deze beleidstoewijzing.
    **Toegewezen door** wordt automatisch gevuld op basis van de persoon die is aangemeld. Dit veld is optioneel, dus u kunt aangepaste waarden invoeren.
 
-1. Laat **Beheerde identiteit maken** uitgeschakeld. Deze optie _moet_ worden ingeschakeld wanneer het beleid of initiatief een beleidsregel bevat met het effect [deployIfNotExists](./concepts/effects.md#deployifnotexists). Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie [Beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) en [Hoe herstelbeveiliging werkt](./how-to/remediate-resources.md#how-remediation-security-works) voor meer informatie.
+1. Laat **Beheerde identiteit maken** uitgeschakeld. Deze optie _moet_ worden ingeschakeld wanneer het beleid of initiatief een beleidsregel bevat met het effect [deployIfNotExists](./concepts/effects.md#deployifnotexists). Omdat het beleid dat voor deze zelfstudie wordt gebruikt deze regel niet bevat, laat u deze optie uitgeschakeld. Zie voor meer informatie [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) en [hoe herstelbeveiliging werkt](./how-to/remediate-resources.md#how-remediation-security-works).
 
 1. Klik op **Toewijzen**.
 
-U bent nu klaar om niet-compatibele resources te identificeren om inzicht te krijgen in de nalevings status van uw omgeving.
+U bent nu klaar om niet-conforme resources te identificeren om inzicht te krijgen in de nalevingsstatus van uw omgeving.
 
 ## <a name="identify-non-compliant-resources"></a>Niet-compatibele resources identificeren
 
 Selecteer **Naleving** links op de pagina. Zoek dan de beleidstoewijzing **Virtuele machines zonder beheerde schijven controleren** die u hebt gemaakt.
 
-![Compatibiliteits Details op de pagina naleving van beleid](./media/assign-policy-portal/policy-compliance.png)
+:::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="Nalevingsgegevens op de pagina Naleving van beleid" border="false":::
 
 Als er bestaande resources zijn die niet conform deze nieuwe toewijzing zijn, worden deze weergegeven bij **Niet-conforme resources**.
 
-Als een voorwaarde wordt geëvalueerd ten opzichte van uw bestaande resources en deze waar blijkt te zijn, worden deze resources gemarkeerd als niet-compatibel met het beleid. In de volgende tabel ziet u hoe verschillende beleidsacties werken met de evaluatie van voorwaarden voor de resulterende nalevingsstatus. Hoewel u de evaluatie logica in het Azure Portal niet ziet, worden de resultaten van de nalevings status weer gegeven. Het resultaat voor de nalevingsstatus is compatibel of niet-compatibel.
+Als een voorwaarde wordt geëvalueerd ten opzichte van uw bestaande resources en deze waar blijkt te zijn, worden deze resources gemarkeerd als niet-compatibel met het beleid. In de volgende tabel ziet u hoe verschillende beleidsacties werken met de evaluatie van voorwaarden voor de resulterende nalevingsstatus. Hoewel u de evaluatielogica niet ziet in de Azure-portal, worden de resultaten van de nalevingsstatus weergegeven. Het resultaat voor de nalevingsstatus is compatibel of niet-compatibel.
 
 | **Resourcestatus** | **Effect** | **Beleidsevaluatie** | **Nalevingsstatus** |
 | --- | --- | --- | --- |
@@ -90,9 +90,9 @@ Als u de gemaakte toewijzing wilt verwijderen, volgt u deze stappen:
 
 1. Selecteer **Naleving** (of **Toewijzingen**) aan de linkerkant van de pagina Azure Policy en zoek de beleidstoewijzing **Controleren van virtuele machines die geen beheerde schijven gebruiken** die u hebt gemaakt.
 
-1. Klik met de rechter muisknop op de **virtuele machines controleren die geen gebruikmaken** van beleids toewijzing voor beheerde schijven en selecteer **toewijzing verwijderen**.
+1. Klik met de rechtermuisknop op **de beleidstoewijzing voor beheerde schijven en** selecteer Toewijzing **verwijderen**.
 
-   ![Een toewijzing verwijderen van de pagina naleving](./media/assign-policy-portal/delete-assignment.png)
+   :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="Een toewijzing verwijderen van de pagina Naleving" border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

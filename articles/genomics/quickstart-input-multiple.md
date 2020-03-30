@@ -1,7 +1,7 @@
 ---
-title: Een werk stroom verzenden met meerdere invoer
+title: Een werkstroom verzenden met meerdere ingangen
 titleSuffix: Microsoft Genomics
-description: In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service als uw invoer bestand uit hetzelfde voor beeld uit meerdere FASTQ-of BAM-bestanden bestaat.
+description: In dit artikel wordt uitgelegd hoe u een werkstroom indienen bij de Microsoft Genomics-service als uw invoerbestand meerdere FASTQ- of BAM-bestanden uit hetzelfde voorbeeld bevat.
 services: genomics
 ms.service: genomics
 author: grhuynh
@@ -10,19 +10,19 @@ ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72248572"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Een werkstroom verzenden met behulp van meerdere invoergegevens uit hetzelfde voorbeeld
 
-In dit artikel wordt beschreven hoe u een werk stroom verzendt naar de Microsoft Genomics-service als uw invoer bestand meerdere FASTQ-of BAM-bestanden **uit hetzelfde voor beeld**bevat. Als u bijvoorbeeld **hetzelfde voorbeeld** in meerdere stroken op de sequencer uitvoert, produceert de sequencer mogelijk een FASTQ-bestandenpaar voor elke strook. In plaats van dat deze FASTQ-bestanden voorafgaand aan alignment en variant calling worden samengevoegd, kunt u al deze invoer rechtstreeks verzenden naar de `msgen`-client. De uitvoer van de `msgen`-client zou een **één enkele set** met bestanden moeten zijn, waaronder een .bam-, .bai- en .vcf-bestand. 
+In dit artikel wordt uitgelegd hoe u een werkstroom indienen bij de Microsoft Genomics-service als uw invoerbestand meerdere FASTQ- of BAM-bestanden **bevat die uit hetzelfde voorbeeld afkomstig zijn.** Als u bijvoorbeeld **hetzelfde voorbeeld** in meerdere stroken op de sequencer uitvoert, produceert de sequencer mogelijk een FASTQ-bestandenpaar voor elke strook. In plaats van dat deze FASTQ-bestanden voorafgaand aan alignment en variant calling worden samengevoegd, kunt u al deze invoer rechtstreeks verzenden naar de `msgen`-client. De uitvoer van de `msgen`-client zou een **één enkele set** met bestanden moeten zijn, waaronder een .bam-, .bai- en .vcf-bestand. 
 
 Houd er echter rekening mee dat u FASTQ- en BAM-bestanden **niet** kunt combineren in dezelfde verzending. Bovendien is het **niet** mogelijk om meerdere FASTQ- of BAM-bestanden van meerdere personen te verzenden. 
 
-In dit artikel wordt ervan uitgegaan dat u de `msgen`-client al hebt geïnstalleerd en uitgevoerd, en dat u bekend bent met het gebruik van Azure Storage. Als u een werk stroom met de opgegeven voorbeeld gegevens hebt verzonden, kunt u door gaan met dit artikel. 
+In dit artikel wordt ervan uitgegaan dat u de `msgen`-client al hebt geïnstalleerd en uitgevoerd, en dat u bekend bent met het gebruik van Azure Storage. Als u een werkstroom met de meegeleverde voorbeeldgegevens hebt ingediend, u klaar zijn om verder te gaan met dit artikel. 
 
 
 ## <a name="multiple-bam-files"></a>Meerdere BAM-bestanden

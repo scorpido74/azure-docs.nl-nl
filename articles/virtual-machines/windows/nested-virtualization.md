@@ -1,6 +1,6 @@
 ---
-title: Geneste virtualisatie inschakelen in azure Virtual Machines
-description: Geneste virtualisatie inschakelen in azure Virtual Machines
+title: Geneste virtualisatie inschakelen in Azure Virtual Machines
+description: Geneste virtualisatie inschakelen in Azure Virtual Machines
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -12,29 +12,29 @@ ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.openlocfilehash: 16f5bed5a2342bb1d120d0d3dc853e0bc44376dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033127"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Geneste virtualisatie inschakelen in een Azure VM
 
-Geneste virtualisatie wordt ondersteund in verschillende Azure virtual machine-families. Deze mogelijkheid biedt grote flexibiliteit bij het ondersteunen van scenario's zoals ontwikkeling, testen, training en demonstratie omgevingen.   
+Geneste virtualisatie wordt ondersteund in verschillende Azure-families voor virtuele machines. Deze mogelijkheid biedt een grote flexibiliteit bij het ondersteunen van scenario's zoals ontwikkelings-, test-, trainings- en demonstratieomgevingen.   
 
-In dit artikel wordt beschreven hoe u Hyper-V op een virtuele Azure-machine inschakelt en hoe u de Internet verbinding met die gast-VM configureert.
+In dit artikel wordt hyper-v op een Azure VM ingeschakeld en wordt de internetverbinding met die gastvirtuele machine geconfigureerd.
 
-## <a name="create-a-nesting-capable-azure-vm"></a>Een voor nesting geschikte Azure-VM maken
+## <a name="create-a-nesting-capable-azure-vm"></a>Een Azure VM met nestingmaken
 
-Maak een nieuwe Windows Server 2016 Azure-VM.  Voor een snelle verwijzing ondersteunen alle virtuele v3-machines geneste virtualisatie. Bekijk het [artikel Azure Compute unit](acu.md)voor een volledige lijst met grootten voor virtuele machines die ondersteuning bieden voor nesten.
+Maak een nieuwe Windows Server 2016 Azure VM.  Voor snel naslagwerk ondersteunen alle virtuele v3-machines geneste virtualisatie. Voor een volledige lijst met virtuele machineformaten die nesten ondersteunen, raadpleegt u het [artikel Azure Compute Unit](acu.md).
 
-Vergeet niet om een VM-grootte te kiezen die groot genoeg is om de vereisten van een virtuele gast machine te ondersteunen. In dit voor beeld gebruiken we een Azure-VM met een grootte van D3_v3. 
+Vergeet niet om een VM-grootte te kiezen die groot genoeg is om de eisen van een gastvirtuele machine te ondersteunen. In dit voorbeeld gebruiken we een Azure VM van D3_v3 grootte. 
 
-U kunt [hier](https://azure.microsoft.com/regions/services/)de regionale Beschik baarheid van virtuele machines van de Dv3-of Ev3-serie bekijken.
+U de regionale beschikbaarheid van Dv3 of Ev3-serie virtuele machines [hier](https://azure.microsoft.com/regions/services/)bekijken.
 
 >[!NOTE]
 >
->Zie [Windows-Vm's maken en beheren met de module Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm) voor gedetailleerde instructies voor het maken van een nieuwe virtuele machine
+>Zie [Windows VM's maken en beheren met de Azure PowerShell-module](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm) voor gedetailleerde instructies voor het maken van een nieuwe virtuele machine.
     
 ## <a name="connect-to-your-azure-vm"></a>Verbinding maken met uw Azure VM
 
@@ -48,17 +48,17 @@ Maak via een extern bureaublad verbinding met de virtuele machine.
 
 4. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Klik op **Ja** of **Doorgaan** om door te gaan met de verbinding.
 
-## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>De Hyper-V-functie inschakelen op de Azure VM
-U kunt deze instellingen hand matig configureren of er is een Power shell-script voor het automatiseren van de configuratie.
+## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>De functie Hyper-V inschakelen op de Azure VM
+U deze instellingen handmatig configureren of we hebben een PowerShell-script geleverd om de configuratie te automatiseren.
 
-### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Optie 1: een Power shell-script gebruiken voor het configureren van geneste virtualisatie
-Een Power shell-script om geneste virtualisatie in te scha kelen op een Windows Server 2016-host is beschikbaar op [github](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested). Met het script worden de vereisten gecontroleerd en wordt geneste virtualisatie geconfigureerd op de virtuele Azure-machine. De Azure-VM moet opnieuw worden opgestart om de configuratie te volt ooien. Dit script werkt mogelijk in andere omgevingen, maar is niet gegarandeerd. Bekijk het Azure-blog bericht met een live video demonstratie over geneste virtualisatie die wordt uitgevoerd op Azure. https://aka.ms/AzureNVblog.
+### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Optie 1: Een PowerShell-script gebruiken om geneste virtualisatie te configureren
+Een PowerShell-script om geneste virtualisatie op een Windows Server 2016-host in te schakelen, is beschikbaar op [GitHub.](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) Het script controleert de vereisten en configureert vervolgens geneste virtualisatie op de Azure VM. Een herstart van de Azure VM is noodzakelijk om de configuratie te voltooien. Dit script kan werken in andere omgevingen, maar is niet gegarandeerd. Bekijk het Azure-blogbericht met een live videodemonstratie over geneste virtualisatie die op Azure wordt uitgevoerd! https://aka.ms/AzureNVblog.
 
-### <a name="option-2-configure-nested-virtualization-manually"></a>Optie 2: geneste virtualisatie hand matig configureren
+### <a name="option-2-configure-nested-virtualization-manually"></a>Optie 2: Geneste virtualisatie handmatig configureren
 
-1. Open Power shell als beheerder op de Azure-VM. 
+1. Open PowerShell op de Azure VM als beheerder. 
 
-2. Schakel de functies en beheer Programma's van Hyper-V in.
+2. Schakel de Hyper-V-functie en beheertools in.
 
     ```powershell
     Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart
@@ -66,18 +66,18 @@ Een Power shell-script om geneste virtualisatie in te scha kelen op een Windows 
 
     >[!WARNING] 
     >
-    >Met deze opdracht wordt de Azure-VM opnieuw gestart. Tijdens het opnieuw opstarten wordt uw RDP-verbinding verbroken.
+    >Met deze opdracht wordt de Azure VM opnieuw gestart. U verliest uw RDP-verbinding tijdens het herstartproces.
     
-3. Nadat de Azure VM opnieuw is opgestart, maakt u opnieuw verbinding met uw virtuele machine met behulp van RDP.
+3. Nadat de Azure VM opnieuw is opgestart, maakt u opnieuw verbinding met uw VM via RDP.
 
-## <a name="set-up-internet-connectivity-for-the-guest-virtual-machine"></a>Internet connectiviteit voor de virtuele gast machine instellen
-Maak een nieuwe virtuele netwerk adapter voor de virtuele gast machine en configureer een NAT-gateway om Internet connectiviteit in te scha kelen.
+## <a name="set-up-internet-connectivity-for-the-guest-virtual-machine"></a>Internetconnectiviteit instellen voor de virtuele gastmachine
+Maak een nieuwe virtuele netwerkadapter voor de virtuele gastmachine en configureer een NAT-gateway om internetverbinding mogelijk te maken.
 
-### <a name="create-a-nat-virtual-network-switch"></a>Een virtuele NAT-netwerk switch maken
+### <a name="create-a-nat-virtual-network-switch"></a>Een virtuele NAT-netwerkswitch maken
 
-1. Open Power shell als beheerder op de Azure-VM.
+1. Open PowerShell op de Azure VM als beheerder.
    
-2. Maak een interne switch.
+2. Maak een interne schakelaar.
 
     ```powershell
     New-VMSwitch -Name "InternalNAT" -SwitchType Internal
@@ -89,18 +89,18 @@ Maak een nieuwe virtuele netwerk adapter voor de virtuele gast machine en config
     Get-NetAdapter
     ```
 
-    ![NetAdapter](./media/virtual-machines-nested-virtualization/get-netadapter.png)
+    ![NetAdapter (NetAdapter)](./media/virtual-machines-nested-virtualization/get-netadapter.png)
 
     >[!NOTE] 
     >
-    >Noteer de ' ifIndex ' voor de virtuele switch die u zojuist hebt gemaakt.
+    >Let op de "ifIndex" voor de virtuele schakelaar die u zojuist hebt gemaakt.
     
 4. Maak een IP-adres voor de NAT-gateway.
     
-Als u de gateway wilt configureren, hebt u enige informatie over uw netwerk nodig:    
-  * IP-adres-de NAT-gateway-IP geeft het IPv4-of IPv6-adres op dat moet worden gebruikt als het standaard gateway adres voor het subnet van het virtuele netwerk. Het algemene formulier is a. b. c. 1 (bijvoorbeeld ' 192.168.0.1 '). Hoewel de uiteindelijke positie niet van toepassing is, is dit meestal (op basis van de lengte van het voor voegsel). Normaal gesp roken moet u een RFC 1918 particulier-netwerk adres ruimte gebruiken. 
-  * PrefixLength: de lengte van het subnetvoorvoegsel definieert de grootte van het lokale subnet (subnetmasker). De lengte van het subnetvoorvoegsel is een geheel getal tussen 0 en 32. 0 wijst het hele Internet toe, 32 zou slechts één toegewezen IP toestaan. De algemene waarden variëren van 24 tot 12, afhankelijk van het aantal Ip's dat aan de NAT moet worden gekoppeld. Een veelvoorkomende PrefixLength is 24--Dit is een subnetmasker van 255.255.255.0.
-  * Interface index- **ifIndex** is de interface-index van de virtuele switch die in de vorige stap is gemaakt. 
+Om de gateway te configureren, hebt u informatie over uw netwerk nodig:    
+  * IPAddress - Het IP-adres van nat gateway geeft het IPv4- of IPv6-adres op dat moet worden gebruikt als het standaardgatewayadres voor het virtuele netwerksubnet. De generieke vorm is a.b.c.1 (bijvoorbeeld "192.168.0.1"). Hoewel de uiteindelijke positie niet hoeft te worden .1, is het meestal (op basis van voorvoegsel lengte). Meestal moet u gebruik maken van een RFC 1918 prive-netwerk adres ruimte. 
+  * VoorvoegselLengte - De subnetvoorvoegingslengte definieert de lokale subnetgrootte (subnetmasker). De subnetvoorvoegsellengte is een gehele waarde tussen 0 en 32. 0 zou de kaart van het hele internet, 32 zou alleen toestaan dat een toegewezen IP. Gemeenschappelijke waarden variëren van 24 tot 12, afhankelijk van het aantal IP's dat aan de NAT moet worden gekoppeld. Een gemeenschappelijke voorfixlengte is 24 - dit is een subnetmasker van 255.255.255.0.
+  * InterfaceIndex - **ifIndex** is de interface-index van de virtuele switch die in de vorige stap is gemaakt. 
 
     ```powershell
     New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 13
@@ -108,83 +108,83 @@ Als u de gateway wilt configureren, hebt u enige informatie over uw netwerk nodi
 
 ### <a name="create-the-nat-network"></a>Het NAT-netwerk maken
 
-Als u de gateway wilt configureren, moet u informatie opgeven over het netwerk en de NAT-gateway:
-  * Naam: dit is de naam van het NAT-netwerk. 
-  * InternalIPInterfaceAddressPrefix: in het voor voegsel NAT-subnet worden zowel het IP-voor voegsel van de NAT-gateway van boven als de lengte van het NAT-subnetvoorvoegsel van boven beschreven. Het algemene formulier is a. b. c. 0/NAT-subnet lengte. 
+Om de gateway te configureren, moet u informatie verstrekken over het netwerk en nat gateway:
+  * Naam - Dit is de naam van het NAT-netwerk. 
+  * InternalIPInterfaceAddressPrefix - Het NAT-subnetvoorvoegsel beschrijft zowel het IP-voorvoegsel van de NAT-gateway als het NAT-subnetvoorvoegsellengte van bovenaf. De generieke vorm is a.b.c.0/NAT Subnet Prefix Length. 
 
-Maak in Power shell een nieuw NAT-netwerk.
+Maak in PowerShell een nieuw NAT-netwerk.
 ```powershell
 New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 ```
 
 
-## <a name="create-the-guest-virtual-machine"></a>De virtuele gast machine maken
+## <a name="create-the-guest-virtual-machine"></a>De virtuele gastmachine maken
 
 >[!IMPORTANT] 
 >
->De Azure-gast agent wordt niet ondersteund op geneste Vm's en kan problemen veroorzaken op zowel de host als de geneste virtuele machines. Installeer de Azure-agent niet op geneste Vm's en gebruik geen installatie kopieën voor het maken van de geneste virtuele machines waarop al de Azure-gast agent is geïnstalleerd.
+>De Azure-gastagent wordt niet ondersteund op geneste VM's en kan problemen veroorzaken op zowel de host als de geneste VM's. Installeer de Azure-agent niet op geneste VM's en gebruik geen afbeelding voor het maken van de geneste VM's waarop de Azure-gastagent al is geïnstalleerd.
 
-1. Open Hyper-V-beheer en maak een nieuwe virtuele machine. Configureer de virtuele machine voor het gebruik van het nieuwe interne netwerk dat u hebt gemaakt.
+1. Open Hyper-V Manager en maak een nieuwe virtuele machine. Configureer de virtuele machine om het nieuwe interne netwerk te gebruiken dat u hebt gemaakt.
     
-    ![NetworkConfig](./media/virtual-machines-nested-virtualization/configure-networking.png)
+    ![NetwerkConfig](./media/virtual-machines-nested-virtualization/configure-networking.png)
     
-2. Installeer een besturings systeem op de virtuele gast machine.
+2. Installeer een besturingssysteem op de virtuele gastmachine.
     
     >[!NOTE] 
     >
-    >U hebt installatie media nodig om een besturings systeem te installeren op de VM. In dit geval gebruiken we Windows 10 Enter prise.
+    >U hebt installatiemedia nodig om een besturingssysteem op de VM te installeren. In dit geval gebruiken we Windows 10 Enterprise.
 
-## <a name="assign-an-ip-address-to-the-guest-virtual-machine"></a>Een IP-adres toewijzen aan de virtuele gast machine
+## <a name="assign-an-ip-address-to-the-guest-virtual-machine"></a>Een IP-adres toewijzen aan de virtuele gastmachine
 
-U kunt een IP-adres toewijzen aan de virtuele gast machine door hand matig een statisch IP-adres op de virtuele gast machine in te stellen of door DHCP op de Azure-VM te configureren om het IP-adres dynamisch toe te wijzen.
+U een IP-adres toewijzen aan de virtuele computer van de gast door handmatig een statisch IP-adres in te stellen op de virtuele gastmachine of DHCP op de Azure VM te configureren om het IP-adres dynamisch toe te wijzen.
 
-###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>Optie 1: DHCP configureren om dynamisch een IP-adres toe te wijzen aan de virtuele gast machine
-Volg de onderstaande stappen om DHCP op de virtuele machine van de host te configureren voor dynamische adres toewijzing.
+###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>Optie 1: DHCP configureren om dynamisch een IP-adres toe te wijzen aan de virtuele gastmachine
+Volg de onderstaande stappen om DHCP op de virtuele hostmachine te configureren voor dynamische adrestoewijzing.
 
-#### <a name="install-dchp-server-on-the-azure-vm"></a>DHCP-server installeren op de virtuele Azure-machine
+#### <a name="install-dchp-server-on-the-azure-vm"></a>DCHP-server installeren op de Azure VM
 
-1. Open Serverbeheer. Klik op het dash board op **functies en onderdelen toevoegen**. De wizard functies en onderdelen toevoegen wordt weer gegeven.
+1. Serverbeheer openen. Klik op het dashboard op **Rollen en onderdelen toevoegen**. De wizard Functies en onderdelen toevoegen wordt weergegeven.
   
-2. Klik in de wizard op **volgende** totdat de pagina Server functies.
+2. Klik in de wizard op **Volgende** tot de pagina Serverrollen.
   
-3. Schakel het selectie vakje **DHCP-server** in, klik op **onderdelen toevoegen**en klik vervolgens op **volgende** totdat u de wizard hebt voltooid.
+3. Klik hierop om het **selectievakje DHCP-server** in te schakelen, klik op **Onderdelen toevoegen**en klik vervolgens op **Volgende** totdat u de wizard hebt voltooid.
   
-4. Klik op **Installeren**.
+4. Klik **op Installeren**.
 
-#### <a name="configure-a-new-dhcp-scope"></a>Een nieuwe DHCP-scope configureren
+#### <a name="configure-a-new-dhcp-scope"></a>Een nieuw DHCP-bereik configureren
 
-1. Open DHCP Manager.
+1. Dhcp-beheer openen.
   
-2. Vouw in het navigatie deel venster de server naam uit, klik met de rechter muisknop op **IPv4**en klik op **nieuwe scope**. De wizard Nieuwe scope wordt weer gegeven, klikt u op **volgende**.
+2. Vouw in het navigatiedeelvenster de servernaam uit, klik met de rechtermuisknop op **IPv4**en klik op **Nieuwe scope**. De wizard Nieuw bereik wordt weergegeven en klikt op **Volgende**.
   
-3. Voer een naam en beschrijving voor het bereik in en klik op **volgende**.
+3. Voer een naam en beschrijving in voor het bereik en klik op **Volgende**.
   
-4. Definieer een IP-bereik voor uw DHCP-server (bijvoorbeeld 192.168.0.100 naar 192.168.0.200).
+4. Definieer een IP-bereik voor uw DCHP-server (bijvoorbeeld 192.168.0.100 tot 192.168.0.200).
   
-5. Klik op **volgende** totdat de pagina standaard-gateway. Geef het IP-adres op dat u eerder hebt gemaakt (bijvoorbeeld 192.168.0.1) als de standaard gateway en klik vervolgens op **toevoegen**.
+5. Klik **op Volgende** tot de standaardgatewaypagina. Voer het IP-adres in dat u eerder hebt gemaakt (bijvoorbeeld 192.168.0.1) als standaardgateway en klik op **Toevoegen**.
   
-6. Klik op **volgende** totdat de wizard is voltooid, laat alle standaard waarden staan en klik vervolgens op **volt ooien**.
+6. Klik **op Volgende** totdat de wizard is voltooid en alle standaardwaarden achterlaat en vervolgens op **Voltooien**klikt.
     
-### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>Optie 2: een statisch IP-adres hand matig instellen op de virtuele gast machine
-Als u DHCP niet hebt geconfigureerd om dynamisch een IP-adres toe te wijzen aan de virtuele gast machine, voert u deze stappen uit om een statisch IP-adres in te stellen.
+### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>Optie 2: Handmatig een statisch IP-adres instellen op de virtuele gastmachine
+Als u DHCP niet hebt geconfigureerd om dynamisch een IP-adres toe te wijzen aan de virtuele gastmachine, voert u deze stappen uit om een statisch IP-adres in te stellen.
 
-1. Open Power shell als beheerder op de Azure-VM.
+1. Open PowerShell op de Azure VM als beheerder.
 
-2. Klik met de rechter muisknop op de virtuele gast machine en klik op verbinden.
+2. Klik met de rechtermuisknop op de virtuele computer van de gast en klik op Verbinden.
 
-3. Meld u aan bij de virtuele gast machine.
+3. Meld u aan bij de virtuele computer van de gast.
 
-4. Open het netwerk centrum op de virtuele gast machine.
+4. Open het netwerk- en deelcentrum op de virtuele gastmachine.
 
-5. Configureer de netwerk adapter voor een adres binnen het bereik van het NAT-netwerk dat u in de vorige sectie hebt gemaakt.
+5. Configureer de netwerkadapter voor een adres binnen het bereik van het NAT-netwerk dat u in de vorige sectie hebt gemaakt.
 
-In dit voor beeld gebruikt u een adres in het bereik 192.168.0.0/24.
+In dit voorbeeld gebruikt u een adres in het bereik van 192.168.0.0/24.
 
-## <a name="test-connectivity-in-guest-virtual-machine"></a>De connectiviteit in de virtuele gast machine testen
+## <a name="test-connectivity-in-guest-virtual-machine"></a>Test connectiviteit in gast virtuele machine
 
-Open in de virtuele gast machine uw browser en navigeer naar een webpagina.
-    ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
+Open uw browser in de virtuele gastmachine en navigeer naar een webpagina.
+    ![GuestVM (GuestVM)](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
-## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>Intranet connectiviteit voor de virtuele gast machine instellen
+## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>Intranetconnectiviteit instellen voor de virtuele gastmachine
 
-Raadpleeg [dit document](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network)voor instructies over het inschakelen van transparante connectiviteit tussen virtuele gast-Vm's en Azure-vm's.
+Raadpleeg [dit document](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network)voor instructies over het inschakelen van transparante connectiviteit tussen vm's voor gasten en Azure-vm's.

@@ -1,6 +1,6 @@
 ---
-title: Aangepaste Azure AD-rol-Privileged Identity Management (PIM) toewijzen
-description: Een aangepaste Azure AD-rol toewijzen voor toewijzings Privileged Identity Management (PIM)
+title: Aangepaste Azure AD-rol toewijzen - Privileged Identity Management (PIM)
+description: Een aangepaste Azure-rol toewijzen aan Azure AD voor toewijzing Privileged Identity Management (PIM)
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -17,70 +17,70 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0303d37ef5bbbf266feb5456b0bc224ce272ee13
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77499250"
 ---
-# <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure AD-rol toewijzen in Privileged Identity Management
+# <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure-rol toewijzen aan Azure AD in Privileged Identity Management
 
-In dit artikel leest u hoe u Privileged Identity Management (PIM) kunt gebruiken voor het maken van just-in-time-en tijdgebonden toewijzing aan aangepaste rollen die zijn gemaakt voor het beheren van toepassingen in de beheer ervaring van Azure Active Directory (Azure AD).
+In dit artikel vindt u hoe u Privileged Identity Management (PIM) gebruiken om just-in-time en tijdgebonden toewijzing te maken voor aangepaste rollen die zijn gemaakt voor het beheren van toepassingen in de beheerervaring azure active directory (Azure AD).
 
-- Zie [aangepaste beheerders rollen in azure Active Directory (preview)](../users-groups-roles/roles-custom-overview.md)voor meer informatie over het maken van aangepaste rollen voor het delegeren van toepassings beheer in azure AD.
-- Als u nog geen Privileged Identity Management hebt gebruikt, kunt u aan de slag [met privileged Identity Management](pim-getting-started.md)meer informatie.
-- Voor informatie over het verlenen van een andere beheerder toegang tot het beheren van Privileged Identity Management raadpleegt u [toegang verlenen aan andere beheerders om privileged Identity Management te beheren](pim-how-to-give-access-to-pim.md).
+- Zie [Aangepaste beheerdersrollen in Azure Active Directory (preview)](../users-groups-roles/roles-custom-overview.md)voor meer informatie over het maken van aangepaste rollen om toepassingsbeheer in Azure AD te delegeren.
+- Als u Privileged Identity Management nog niet hebt gebruikt, krijgt u meer informatie bij [Start met Privileged Identity Management](pim-getting-started.md).
+- Zie Toegang verlenen aan andere beheerders om privileged [identity management te beheren](pim-how-to-give-access-to-pim.md)voor informatie over het verlenen van toegang aan een andere beheerder.
 
 > [!NOTE]
-> Aangepaste Azure AD-rollen worden tijdens de preview-fase niet geïntegreerd met de ingebouwde Directory rollen. Zodra de mogelijkheid algemeen beschikbaar is, wordt het beheer van rollen uitgevoerd in de ingebouwde functie-ervaring. Als u de volgende banner ziet, moeten deze rollen worden beheerd [in de ingebouwde functie-ervaring](pim-how-to-activate-role.md) en dit artikel is niet van toepassing:
+> Aangepaste Azure AD-rollen zijn niet geïntegreerd met de ingebouwde maprollen tijdens de preview. Zodra de capaciteit algemeen beschikbaar is, zal het rolbeheer plaatsvinden in de ingebouwde rollenervaring. Als u de volgende banner ziet, moeten deze rollen worden beheerd [in de ervaring met ingebouwde rollen](pim-how-to-activate-role.md) en is dit artikel niet van toepassing:
 >
 > [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="assign-a-role"></a>Een rol toewijzen
 
-Privileged Identity Management kunt aangepaste rollen beheren die u kunt maken in Azure Active Directory (Azure AD)-toepassings beheer.  Met de volgende stappen maakt u een in aanmerking komende toewijzing aan een aangepaste Directory-rol.
+Privileged Identity Management kan aangepaste rollen beheren die u maken in Azure Active Directory (Azure AD) toepassingsbeheer.  Met de volgende stappen wordt een in aanmerking komende toewijzing gemaakt voor een aangepaste maprol.
 
-1. Meld u aan bij [privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) in het Azure Portal met een gebruikers account dat is toegewezen aan de rol van beheerdersrol voor bevoegde rol.
-1. Selecteer **aangepaste Azure AD-rollen (preview-versie)** .
+1. Meld u aan bij [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart) in de Azure-portal met een gebruikersaccount dat is toegewezen aan de rol van privileged role administrator.
+1. Selecteer **aangepaste azure-rollen voor AD (voorbeeld)**.
 
-    ![Selecteer voor beeld van aangepaste rollen van Azure AD om de in aanmerking komende roltoewijzingen te bekijken](./media/azure-ad-custom-roles-assign/view-custom.png)
+    ![De aangepaste rollenvoorA Voorrol van Azure AD selecteren om in aanmerking komende roltoewijzingen te bekijken](./media/azure-ad-custom-roles-assign/view-custom.png)
 
-1. Selecteer **rollen** om een lijst met aangepaste rollen voor Azure AD-toepassingen weer te geven.
+1. Selecteer **Rollen** om een lijst met aangepaste rollen voor Azure AD-toepassingen te bekijken.
 
-    ![Rollen selecteren Zie de lijst met in aanmerking komende roltoewijzingen](./media/azure-ad-custom-roles-assign/view-roles.png)
+    ![In rollen selecteren ziet u de lijst met in aanmerking komende roltoewijzingen](./media/azure-ad-custom-roles-assign/view-roles.png)
 
-1. Selecteer **lid toevoegen** om de toewijzings pagina te openen.
-1. Als u het bereik van de roltoewijzing wilt beperken tot één toepassing, selecteert u **bereik** om een toepassings bereik op te geven.
+1. Selecteer **Lid toevoegen** om de toewijzingspagina te openen.
+1. Als u het bereik van de roltoewijzing wilt beperken tot één toepassing, selecteert u **Bereik** om een toepassingsbereik op te geven.
 
-    ![het bereik van in aanmerking komende roltoewijzingen in azure AD beperken](./media/azure-ad-custom-roles-assign/set-scope.png)
+    ![het bereik van in aanmerking komende roltoewijzingen in Azure AD beperken](./media/azure-ad-custom-roles-assign/set-scope.png)
 
-1. Selecteer **een rol selecteren** om de lijst **een rol selecteren** te openen.
+1. Selecteer **Selecteer een rol** selecteren om de lijst Een rol **selecteren** te openen.
 
-    ![Selecteer de in aanmerking komende rol die aan een gebruiker moet worden toegewezen](./media/azure-ad-custom-roles-assign/select-role.png)
+    ![de in aanmerking komende rol selecteren die aan een gebruiker moet worden toegewezen](./media/azure-ad-custom-roles-assign/select-role.png)
 
-1. Selecteer een rol die u wilt toewijzen en klik vervolgens op **selecteren**. De lijst **een leden selecteren** wordt geopend.
+1. Selecteer een rol die u wilt toewijzen en klik op **Selecteren**. De lijst **Met een lid selecteren** wordt geopend.
 
-    ![Selecteer de gebruiker aan wie u de rol wilt toewijzen](./media/azure-ad-custom-roles-assign/select-member.png)
+    ![de gebruiker selecteren aan wie u de rol toevertrouwt](./media/azure-ad-custom-roles-assign/select-member.png)
 
-1. Selecteer een gebruiker die u aan de rol wilt toewijzen en klik vervolgens op **selecteren**. De lijst **lidmaatschaps instellingen** wordt geopend.
+1. Selecteer een gebruiker die u aan de rol wilt toewijzen en klik op **Selecteren**. De lijst **met lidmaatschapsinstellingen** wordt geopend.
 
-    ![Het roltoewijzing-type instellen op in aanmerking komend of actief](./media/azure-ad-custom-roles-assign/membership-settings.png)
+    ![Het type roltoewijzing instellen op in aanmerking komende of actieve](./media/azure-ad-custom-roles-assign/membership-settings.png)
 
-1. Selecteer in **aanmerking komend** of **actief**op de pagina **lidmaatschaps instellingen** :
+1. Selecteer op de pagina **Lidmaatschapsinstellingen** de optie **In aanmerking komen** of **Actief:**
 
-    - Voor **in aanmerking komende** toewijzingen moet de gebruiker aan de rol zijn toegewezen om een actie uit te voeren voordat de rol kan worden gebruikt. Acties kunnen omvatten het door geven van een multi-factor Authentication-controle, het leveren van een zakelijke reden of het aanvragen van goed keuring van aangewezen goed keurders.
-    - Voor **actieve** toewijzingen hoeft de toegewezen gebruiker geen actie te ondernemen om de rol te gebruiken. Actieve gebruikers hebben te allen tijde de bevoegdheden toegewezen aan de rol.
+    - **In aanmerking komende** toewijzingen vereisen dat de gebruiker die aan de rol is toegewezen, een actie uitvoert voordat hij de rol kan gebruiken. Acties kunnen bestaan uit het passeren van een multi-factor authenticatie controle, het verstrekken van een zakelijke rechtvaardiging, of het aanvragen van goedkeuring van aangewezen fiatteurs.
+    - **Actieve** toewijzingen vereisen niet dat de toegewezen gebruiker actie uitvoert om de rol te gebruiken. Actieve gebruikers hebben te allen tijde de bevoegdheden toegewezen aan de rol.
 
-1. Als het selectie vakje **permanent** is ingeschakeld en beschikbaar is (afhankelijk van rolinstellingen), kunt u opgeven of de toewijzing permanent is. Schakel het selectie vakje in om de toewijzing permanent in aanmerking te laten komen of permanent toe te wijzen. Schakel het selectie vakje uit om de duur van een toewijzing op te geven.
-1. Als u de nieuwe roltoewijzing wilt maken, klikt u op **Opslaan** en vervolgens op **toevoegen**. Er wordt een melding weer gegeven van de status van het toewijzings proces.
+1. Als het selectievakje **Permanent** aanwezig en beschikbaar is (afhankelijk van de rolinstellingen), u opgeven of de toewijzing permanent is. Schakel het selectievakje in om de toewijzing permanent in aanmerking te laten komen of permanent toegewezen te maken. Schakel het selectievakje uit om een toewijzingsduur op te geven.
+1. Als u de nieuwe roltoewijzing wilt maken, klikt u op **Opslaan** en vervolgens **toevoegen**. Er wordt een melding van de status van het toewijzingsproces weergegeven.
 
-Als u de roltoewijzing wilt controleren, selecteert u in een open rol **toewijzingen** > **toewijzen** en controleert u of uw roltoewijzing correct is geïdentificeerd als in aanmerking komend of actief.
+Als u de roltoewijzing wilt verifiëren, selecteert u in een open rol **Toewijzingen** > **toewijzen** en controleert u of uw roltoewijzing naar behoren is geïdentificeerd als in aanmerking komend of actief.
 
- ![Controleren of de roltoewijzing wordt weer gegeven als in aanmerking komend of actief](./media/azure-ad-custom-roles-assign/verify-assignments.png)
+ ![Controleren of de roltoewijzing zichtbaar is als in aanmerking komend of actief](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een aangepaste Azure AD-rol activeren](azure-ad-custom-roles-assign.md)
-- [Een aangepaste gebruikersrol toewijzing van Azure AD verwijderen of bijwerken](azure-ad-custom-roles-update-remove.md)
-- [Een aangepaste functie toewijzing voor Azure AD configureren](azure-ad-custom-roles-configure.md)
-- [Roldefinities in azure AD](../users-groups-roles/directory-assign-admin-roles.md)
+- [Een aangepaste azure-roltoewijzing verwijderen of bijwerken](azure-ad-custom-roles-update-remove.md)
+- [Een aangepaste azure-functietoewijzing configureren](azure-ad-custom-roles-configure.md)
+- [Roldefinities in Azure AD](../users-groups-roles/directory-assign-admin-roles.md)

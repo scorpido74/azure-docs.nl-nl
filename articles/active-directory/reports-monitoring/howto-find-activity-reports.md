@@ -1,6 +1,6 @@
 ---
-title: Rapporten van gebruikers activiteiten zoeken in Azure Portal | Microsoft Docs
-description: Meer informatie over de Azure Active Directory activiteiten rapporten voor gebruikers in de Azure Portal.
+title: Rapporten over gebruikersactiviteit zoeken in Azure-portal | Microsoft Documenten
+description: Meer informatie over de rapporten over azure Active Directory-gebruikersactiviteiten in de Azure-portal.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,42 +15,42 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74008217"
 ---
-# <a name="find-activity-reports-in-the-azure-portal"></a>Activiteiten rapporten zoeken in de Azure Portal
+# <a name="find-activity-reports-in-the-azure-portal"></a>Activiteitenrapporten zoeken in de Azure-portal
 
-In dit artikel leert u hoe u rapporten van gebruikers activiteiten van Azure Active Directory (Azure AD) kunt vinden in de Azure Portal.
+In dit artikel vindt u informatie over het zoeken naar azure active directory-rapporten (Azure AD) van gebruikersactiviteiten in de Azure-portal.
 
 ## <a name="audit-logs-report"></a>Rapport voor audittrails
 
-In het rapport controle logboeken worden verschillende rapporten over toepassings activiteiten gecombineerd tot één weer gave voor rapportage op basis van context. Het rapport controle Logboeken openen:
+Het rapport met controlelogboeken combineert verschillende rapporten rond toepassingsactiviteiten in één weergave voor contextgebaseerde rapportage. Ga als het gaat om toegang tot het rapport controlelogboeken:
 
-1. Navigeer naar [Azure Portal](https://portal.azure.com).
-2. Selecteer de map in de rechter bovenhoek en selecteer vervolgens de Blade **Azure Active Directory** in het navigatie deel venster aan de linkerkant.
-3. Selecteer **controle logboeken** in het gedeelte **activiteit** van de Blade Azure Active Directory. 
+1. Navigeer naar de [Azure-portal](https://portal.azure.com).
+2. Selecteer uw map in de rechterbovenhoek en selecteer vervolgens het **Azure Active Directory-blad** in het linkernavigatiedeelvenster.
+3. Selecteer **Controlelogboeken** in de sectie **Activiteit** van het Azure Active Directory-blad. 
 
     ![Auditlogboeken](./media/howto-find-activity-reports/482.png "Auditlogboeken")
 
-Het rapport controle logboeken consolideert de volgende rapporten:
+In het rapport controlelogboeken worden de volgende rapporten geconsolideerd:
 
 * Auditrapport
 * Activiteit voor wachtwoord opnieuw instellen
-* Registratie activiteit voor wacht woord opnieuw instellen
-* Activiteit van self-service groepen
-* Wijzigingen in Office365-groeps naam
-* Activiteit voor het inrichten van accounts
-* Status van wacht woord rollover
+* Registratieactiviteit voor het opnieuw instellen van wachtwoorden
+* Activiteit selfservicegroepen
+* Naamswijzigingen van Office365-groepsnamen
+* Rekeningbepalingsactiviteit
+* Status voor wachtwoordrollover
 * Fouten bij het inrichten van een account
 
-### <a name="filtering-on-audit-logs"></a>Filteren op audit logboeken
+### <a name="filtering-on-audit-logs"></a>Filteren op controlelogboeken
 
-U kunt Geavanceerd filteren in het controle rapport gebruiken om toegang te krijgen tot een specifieke categorie controle gegevens door deze op te geven in het **categorie** filter. Als u bijvoorbeeld alle activiteiten wilt weer geven die betrekking hebben op gebruikers, selecteert u de categorie **UserManagement** . 
+U geavanceerde filtering in het controlerapport gebruiken om toegang te krijgen tot een specifieke categorie controlegegevens door deze op te geven in het **filter Categorie.** Als u bijvoorbeeld alle activiteiten met betrekking tot gebruikers wilt weergeven, selecteert u de categorie **UserManagement.** 
 
-Categorieën zijn onder andere:
+Categorieën zijn:
 
 - Alle
 - AdministrativeUnit
@@ -59,65 +59,65 @@ Categorieën zijn onder andere:
 - Autorisatie
 - Contactpersoon
 - Apparaat
-- Apparaatconfiguratie
-- DirectoryManagement
+- DeviceConfiguration
+- DirectoryBeheer
 - EntitlementManagement
 - GroupManagement
 - Overige
 - Beleid
-- ResourceManagement
+- ResourceBeheer
 - RoleManagement
 - UserManagement
 
-U kunt ook filteren op een specifieke service met behulp van het vervolg filter voor de **service** . Als u bijvoorbeeld alle controle gebeurtenissen wilt ophalen die betrekking hebben op selfservice wachtwoord beheer, selecteert u het filter **selfservice wachtwoord beheer** .
+U ook filteren op een specifieke service met het vervolgkeuzefilter **Service.** Als u bijvoorbeeld alle controlegebeurtenissen met betrekking tot selfservicewachtwoordbeheer wilt bekijken, selecteert u het filter **Wachtwoordbeheer selfservice.**
 
-Services omvatten:
+Diensten omvatten:
 
 - Alle
 - Toegangsbeoordelingen
 - Account inrichten 
-- SSO van de toepassing
+- Toepassing SSO
 - Verificatiemethoden
 - B2C
 - Voorwaardelijke toegang
 - Hoofddirectory
-- Rechtenbeheer
+- Beheer van rechten
 - Identiteitsbeveiliging
 - Uitgenodigde gebruikers
 - PIM
 - Self-service voor groepsbeheer
-- Selfservice voor wachtwoordbeheer
-- Gebruiksvoorwaarden
+- Self-service voor wachtwoordbeheer
+- Gebruiksrechtovereenkomst
 
 ## <a name="sign-ins-report"></a>Aanmeldingenrapport 
 
-De weer gave **aanmeldingen** bevat alle gebruikers aanmeldingen en het gebruiks rapport van de **toepassing** . U kunt ook informatie over het gebruik van toepassingen weer geven in het gedeelte **beheren** van het overzicht **bedrijfs toepassingen** .
+De weergave **Aanmeldingen** bevat alle aanmeldingen van gebruikers en het rapport **Toepassingsgebruik.** U ook informatie over toepassingsgebruik bekijken in het gedeelte **Beheren** van het overzicht **van Enterprise-toepassingen.**
 
-Het rapport aanmeldingen openen:
+Ga als bedoeld als toegang tot het aanmeldingsrapport:
 
-1. Navigeer naar [Azure Portal](https://portal.azure.com).
-2. Selecteer de map in de rechter bovenhoek en selecteer vervolgens de Blade **Azure Active Directory** in het navigatie deel venster aan de linkerkant.
-3. Selecteer **aanmeldingen** in het gedeelte **activiteit** van de Blade Azure Active Directory. 
+1. Navigeer naar de [Azure-portal](https://portal.azure.com).
+2. Selecteer uw map in de rechterbovenhoek en selecteer vervolgens het **Azure Active Directory-blad** in het linkernavigatiedeelvenster.
+3. Selecteer **Aanmeldingen** in de sectie **Activiteit** van het Azure Active Directory-blad. 
 
-    ![Weer gave voor aanmeldingen](./media/howto-find-activity-reports/483.png "Weer gave voor aanmeldingen")
+    ![Weergave Aanmeldingen](./media/howto-find-activity-reports/483.png "Weergave Aanmeldingen")
 
 
-### <a name="filtering-on-application-name"></a>Filteren op toepassings naam
+### <a name="filtering-on-application-name"></a>Filteren op toepassingsnaam
 
-U kunt het rapport aanmeldingen gebruiken om details over toepassings gebruik te bekijken door te filteren op gebruikers naam of toepassings naam.
+U het aanmeldingsrapport gebruiken om details over het gebruik van toepassingen weer te geven door te filteren op gebruikersnaam of toepassingsnaam.
 
-![Pagina aanmeldings gebeurtenissen filteren](./media/howto-find-activity-reports/07.png "Pagina aanmeldings gebeurtenissen filteren")
+![Pagina Aanmeldingsgebeurtenissen filteren](./media/howto-find-activity-reports/07.png "Pagina Aanmeldingsgebeurtenissen filteren")
 
 ## <a name="security-reports"></a>Beveiligingsrapporten
 
-### <a name="anomalous-activity-reports"></a>Rapporten over afwijkende activiteiten
+### <a name="anomalous-activity-reports"></a>Afwijkende activiteitsrapporten
 
-Afwijkende activiteiten rapporten bieden informatie over beveiligings risico detecties die Azure AD kan detecteren en rapporteren.
+Afwijkende activiteitsrapporten bieden informatie over beveiligingsgerelateerde risicodetecties die Azure AD kan detecteren en rapporteren.
 
-De volgende tabel bevat de beveiligings rapporten van de afwijkende Azure AD-activiteiten en de bijbehorende typen risico detectie in de Azure Portal. Zie [Azure Active Directory-risico detectie](concept-risk-events.md)voor meer informatie.  
+In de volgende tabel worden de afwijkende activiteitsbeveiligingsrapporten van Azure AD en de bijbehorende typen risicodetecties in de Azure-portal weergegeven. Zie [Azure Active Directory-risicodetecties](concept-risk-events.md)voor meer informatie .  
 
 
-| Rapport over afwijkend Azure AD-activiteiten |  Type risico detectie identiteits bescherming|
+| Azure AD-afwijkend activiteitenrapport |  Type risicodetectie van identiteitsbescherming|
 | :--- | :--- |
 | Gebruikers van wie de referenties zijn gelekt | Gelekte referenties |
 | Onregelmatige aanmeldingsactiviteiten | Onmogelijke reis naar ongewone locaties |
@@ -126,24 +126,24 @@ De volgende tabel bevat de beveiligings rapporten van de afwijkende Azure AD-act
 | Aanmeldingen van IP-adressen met verdachte activiteit | Aanmeldingen van IP-adressen met verdachte activiteit |
 | - | Aanmeldingen vanaf onbekende locaties |
 
-De volgende afwijkende beveiligings rapporten van Azure AD worden niet opgenomen als risico detecties in de Azure Portal:
+De volgende azure AD-afwijkende activiteitsbeveiligingsrapporten worden niet opgenomen als risicodetecties in de Azure-portal:
 
 * Aanmeldingen na meerdere mislukte pogingen
 * Aanmeldingen vanuit meerdere locaties
 
 
-### <a name="detected-risk-detections"></a>Gedetecteerde risico detecties
+### <a name="detected-risk-detections"></a>Gedetecteerde risicodetecties
 
-U kunt rapporten over gedetecteerde risico detecties openen in het gedeelte **beveiliging** van de blade **Azure Active Directory** in de [Azure Portal](https://portal.azure.com). Gedetecteerde risico detecties worden bijgehouden in de volgende rapporten:   
+U hebt toegang tot rapporten over gedetecteerde risicodetecties in de sectie **Beveiliging** van het **Azure Active Directory-blad** in de [Azure-portal.](https://portal.azure.com) Gedetecteerde risicodetecties worden bijgehouden in de volgende rapporten:   
 
 - [Gebruikers die risico lopen](concept-user-at-risk.md)
 - [Riskante aanmeldingen](concept-risky-sign-ins.md)
 
     ![Beveiligingsrapporten](./media/howto-find-activity-reports/04.png "Beveiligingsrapporten")
 
-## <a name="troubleshoot-issues-with-activity-reports"></a>Problemen oplossen met activiteiten rapporten
+## <a name="troubleshoot-issues-with-activity-reports"></a>Problemen met activiteitenrapporten oplossen
 
-### <a name="missing-data-in-the-downloaded-activity-logs"></a>Ontbrekende gegevens in de gedownloade activiteiten logboeken
+### <a name="missing-data-in-the-downloaded-activity-logs"></a>Ontbrekende gegevens in de gedownloade activiteitslogboeken
 
 #### <a name="symptoms"></a>Symptomen 
 
@@ -153,13 +153,13 @@ Ik heb de activiteitenlogboeken (audit of aanmeldingen) gedownload en ik zie nie
  
 #### <a name="cause"></a>Oorzaak
 
-Wanneer u activiteiten Logboeken in de Azure Portal downloadt, beperken we de schaal tot 250000 records, gesorteerd op meest recente eerst. 
+Wanneer u activiteitslogboeken downloadt in de Azure-portal, beperken we de schaal tot 250000 records, gesorteerd op de meest recente eerst. 
 
 #### <a name="resolution"></a>Oplossing
 
 U kunt gebruikmaken van [API's van Azure AD Reporting](concept-reporting-api.md) om maximaal een miljoen records op te halen.
 
-### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Ontbrekende controle gegevens voor recente acties in de Azure Portal
+### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Ontbrekende controlegegevens voor recente acties in de Azure-portal
 
 #### <a name="symptoms"></a>Symptomen
 
@@ -180,7 +180,7 @@ Acties worden niet direct weergegeven in de activiteitenlogboeken. In de onderst
 
 Wacht 15 minuten tot twee uur en kijk of de acties nu wel worden vermeld in het logboek. Als u de vermeldingen na twee uur nog steeds niet ziet, [maakt u een ondersteuningsticket aan](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) en dan gaan we aan de slag met het probleem.
 
-### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Ontbrekende logboeken voor recente gebruikers aanmeldingen in het activiteiten logboek van Azure AD-aanmeldingen
+### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Ontbrekende logboeken voor recente aanmeldingen van gebruikers in het azure AD-aanmeldingsactiviteitslogboek
 
 #### <a name="symptoms"></a>Symptomen
 
@@ -226,6 +226,6 @@ U hebt twee opties om de gegevens langer dan 30 dagen te bewaren. U kunt de [API
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van audit logboeken](concept-audit-logs.md)
+* [Overzicht van controlelogboeken](concept-audit-logs.md)
 * [Overzicht van aanmeldingen](concept-sign-ins.md)
-* [Overzicht van Risk ante gebeurtenissen](concept-risk-events.md)
+* [Overzicht van risicovolle gebeurtenissen](concept-risk-events.md)

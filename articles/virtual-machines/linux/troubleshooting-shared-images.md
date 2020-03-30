@@ -1,6 +1,6 @@
 ---
-title: Problemen met gedeelde installatie kopieën in azure oplossen
-description: Meer informatie over het oplossen van problemen met gedeelde afbeeldings galerieën.
+title: Problemen met gedeelde afbeeldingen in Azure oplossen
+description: Meer informatie over het oplossen van problemen met gedeelde afbeeldingsgalerieën.
 services: virtual-machine-windows
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
@@ -17,17 +17,17 @@ ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 8ca47912a73a9d6e0502bd7847720154775c631f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034680"
 ---
-# <a name="troubleshooting-shared-image-galleries"></a>Problemen met de galerie met gedeelde afbeeldingen oplossen
+# <a name="troubleshooting-shared-image-galleries"></a>Problemen met galerieën met gedeelde installatiekopieën oplossen
 
 
 [!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../../includes/virtual-machines-common-shared-image-troubleshooting.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [Galerie met gedeelde installatie kopieën](shared-image-galleries.md).
+Meer informatie over [gedeelde afbeeldingsgalerieën](shared-image-galleries.md).

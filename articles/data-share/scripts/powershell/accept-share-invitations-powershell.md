@@ -1,6 +1,6 @@
 ---
-title: 'Power shell-script: Uitnodiging accepteren van een Azure-gegevens share | Microsoft Docs'
-description: Dit Power shell-script accepteert uitnodigingen van een bestaande gegevens share.
+title: 'PowerShell-script: uitnodiging accepteren van een Azure-gegevensaandeel | Microsoft Documenten'
+description: Dit PowerShell-script accepteert uitnodigingen van een bestaand gegevensaandeel.
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 246e3550650dfd458b4aeecda3b5b7733e49f017
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70307331"
 ---
-# <a name="use-powershell-to-accept-a-data-share-invitation"></a>Power shell gebruiken voor het accepteren van een uitnodiging voor een gegevens share
+# <a name="use-powershell-to-accept-a-data-share-invitation"></a>PowerShell gebruiken om een uitnodiging voor gegevensshare te accepteren
 
-Dit Power shell-script accepteert de uitnodigingen die worden verzonden naar een consumer.
+Dit PowerShell-script accepteert uitnodigingen die naar een consument worden verzonden.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 ```powershell
@@ -42,13 +42,13 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | Verzonden uitnodigingen voor gegevens delen ophalen en weer geven. |
-| [New-AzDataShareSubscription](/powershell/module/az.datashare/get-azdatasharesubscription?view=azps-2.6.0) | Een gegevens share-abonnement maken. |
+| [Get-AzDataShareUitnodiging](/powershell/module/az.datashare/get-azdatashareinvitation?view=azps-2.6.0) | Uitnodigingen voor het delen van gegevens in kaart en vermelden deze. |
+| [Nieuw-AzDataShareAbonnement](/powershell/module/az.datashare/get-azdatasharesubscription?view=azps-2.6.0) | Maak een abonnement voor gegevensshare. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
 
-Aanvullende voor beelden van Power shell-scripts voor Azure data share vindt u in de [Azure data share Power shell](../../samples-powershell.md)-voor beelden.
+Aanvullende Azure Data Share PowerShell-scriptvoorbeelden zijn te vinden in de [PowerShell-voorbeelden voor Azure Data Share.](../../samples-powershell.md)
 

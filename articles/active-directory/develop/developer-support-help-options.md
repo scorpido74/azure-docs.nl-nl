@@ -1,6 +1,6 @@
 ---
-title: Ondersteunings-en Help-opties voor Azure AD-App-ontwikkel aars | Microsoft Docs
-description: Informatie over het verkrijgen van hulp en ondersteuning voor ontwikkel vragen en problemen bij het maken van een toepassing die is geïntegreerd met micro soft-identiteiten (Azure Active Directory en Microsoft-account)
+title: Ondersteunings- en helpopties voor Azure AD-app-ontwikkelaars | Microsoft Documenten
+description: Weet hoe u hulp en ondersteuning krijgen voor ontwikkelingsgerelateerde vragen en problemen bij het maken van toepassingen die integreren met Microsoft-identiteiten (Azure Active Directory en Microsoft-account)
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,80 +14,80 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160964"
 ---
 # <a name="support-and-help-options-for-developers"></a>Ondersteunings- en Help-opties voor ontwikkelaars
 
-Als u net begint met de integratie met Azure Active Directory (Azure AD), micro soft-identiteiten of de Microsoft Graph-API, of wanneer u een nieuwe functie implementeert voor uw toepassing, weet u zeker dat u hulp nodig hebt bij de Community of dat u bekend bent met de ondersteunings opties die u als ontwikkelaar hebt. Dit artikel helpt u bij het begrijpen van deze opties, waaronder:
+Als u net begint te integreren met Azure Active Directory (Azure AD), Microsoft-identiteiten of Microsoft Graph API, of wanneer u een nieuwe functie in uw toepassing implementeert, zijn er momenten waarop u hulp van de community moet krijgen of de ondersteuningsopties die u als ontwikkelaar hebt. In dit artikel u inzicht krijgen in deze opties, waaronder:
 
 > [!div class="checklist"]
-> * Zoeken of uw vraag niet is beantwoord door de Community of dat er al een bestaande documentatie is voor de functie die u wilt implementeren.
-> * In sommige gevallen wilt u de ondersteunings Programma's gebruiken om u te helpen bij het opsporen van een specifiek probleem.
-> * Als u het antwoord dat u nodig hebt niet kunt vinden, kunt u een vraag stellen op *stack overflow*
-> * Als u een probleem met een van onze verificatie bibliotheken tegen komt, kunt u een *github* -probleem veroorzaken
-> * Ten slotte, als u met iemand moet praten, wilt u mogelijk een ondersteunings aanvraag openen
+> * Hoe u zoeken of uw vraag niet is beantwoord door de community of dat er al een bestaande documentatie bestaat voor de functie die u probeert te implementeren
+> * In sommige gevallen wilt u alleen onze ondersteuningstools gebruiken om u te helpen een specifiek probleem te debuggen
+> * Als u het antwoord niet vinden dat u nodig hebt, u een vraag stellen op *Stack Overflow*
+> * Als u een probleem vindt met een van onze verificatiebibliotheken, u een *GitHub-probleem aandeorde* doen
+> * Tot slot, als u met iemand wilt praten, wilt u misschien een ondersteuningsverzoek openen
 
-## <a name="search"></a>Zoeken
+## <a name="search"></a>Search
 
-Als u een vraag hebt over de ontwikkeling, kunt u het antwoord mogelijk vinden in de documentatie, voor [beelden van github](https://github.com/azure-samples)of antwoorden op [stack overflow](https://www.stackoverflow.com) vragen.
+Als u een ontwikkelingsgerelateerde vraag hebt, u het antwoord mogelijk vinden in de documentatie, [GitHub-voorbeelden](https://github.com/azure-samples)of antwoorden op [stackoverflow-vragen.](https://www.stackoverflow.com)
 
-### <a name="scoped-search"></a>Zoek opdracht in bereik
+### <a name="scoped-search"></a>Scoped zoeken
 
-Bereik uw zoek opdracht naar Stack Overflow, de documentatie en de code voorbeelden met behulp van de volgende query in uw favoriete zoek machine om sneller resultaten te bereiken:
+Voor snellere resultaten u uw zoekopdracht uitvoeren naar Stack Overflow, de documentatie en de codevoorbeelden met behulp van de volgende query in uw favoriete zoekmachine:
 
 ```
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
-Waar *{uw zoek termen}* overeenkomen met uw zoek woorden.
+Waar *{Uw zoektermen}* overeenkomen met uw zoekwoorden.
 
-## <a name="use-the-development-support-tools"></a>De hulpprogram ma's voor ontwikkelings ondersteuning gebruiken
+## <a name="use-the-development-support-tools"></a>De hulpprogramma's voor ontwikkelingsondersteuning gebruiken
 
 | Hulpprogramma  | Beschrijving  |
 |---------|---------|
-| [jwt.ms](https://jwt.ms) | Plak een ID of toegangs token om de claim namen en-waarden te decoderen. |
-| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Hulp programma waarmee u aanvragen kunt doen en reacties op de Microsoft Graph-API ziet. |
+| [jwt.ms](https://jwt.ms) | Plak een id of toegangstoken om de namen en waarden van de claims te decoderen. |
+| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Hulpprogramma waarmee u verzoeken indienen en antwoorden zien tegen de Microsoft Graph API. |
 
-## <a name="post-a-question-to-stack-overflow"></a>Een vraag stellen aan Stack Overflow
+## <a name="post-a-question-to-stack-overflow"></a>Plaats een vraag naar Stack Overflow
 
-Stack Overflow is het voorkeurs kanaal voor vragen met betrekking tot ontwikkeling. Hier zijn leden van de ontwikkelaars community en micro soft-team leden rechtstreeks betrokken bij het helpen om uw problemen op te lossen.
+Stack Overflow is het voorkeurskanaal voor ontwikkelingsgerelateerde vragen. Hier zijn leden van de ontwikkelaarscommunity en Microsoft-teamleden direct betrokken bij het oplossen van uw problemen.
 
-Als u via zoeken geen antwoord op uw vraag kunt vinden, dient u een nieuwe vraag naar Stack Overflow te verzenden. Gebruik een van de volgende tags bij het stellen van vragen om de community te helpen uw vraag sneller te identificeren en te beantwoorden:
+Als u via zoeken geen antwoord op uw vraag vinden, dient u een nieuwe vraag in bij Stack Overflow. Gebruik een van de volgende tags wanneer u vragen stelt om de community te helpen uw vraag sneller te identificeren en te beantwoorden:
 
-|Onderdeel/gebied  | Tags |
+|Component/gebied  | Tags |
 |---------|---------|
-| ADAL-bibliotheek | [adal](https://stackoverflow.com/questions/tagged/adal) |
-| MSAL-bibliotheek     | [msal](https://stackoverflow.com/questions/tagged/msal) |
-| OWIN-middleware  | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
-| [Azure-B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[micro soft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| Elk ander gebied dat betrekking heeft op verificatie-of autorisatie-onderwerpen | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| ADAL-bibliotheek | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
+| MSAL-bibliotheek     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
+| OWIN middleware  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
+| Elk ander gebied met betrekking tot verificatie- of autorisatieonderwerpen | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
-De volgende berichten van Stack Overflow bevatten tips voor het stellen van vragen en het toevoegen van de bron code. Volg deze richt lijnen om de kans te verg Roten dat leden van de Community uw vraag snel kunnen beoordelen en beantwoorden:
+De volgende berichten van Stack Overflow bevatten tips over het stellen van vragen en het toevoegen van broncode. Volg deze richtlijnen om de kans voor communityleden om uw vraag snel te beoordelen en erop te reageren te vergroten:
 
-* [Hoe kan ik een goede vraag stellen](https://stackoverflow.com/help/how-to-ask)
-* [Een mini maal, volledig en verifieerbaar voor beeld maken](https://stackoverflow.com/help/mcve)
+* [Hoe stel ik een goede vraag](https://stackoverflow.com/help/how-to-ask)
+* [Een minimaal, volledig en verifieerbaar voorbeeld maken](https://stackoverflow.com/help/mcve)
 
 ## <a name="create-a-github-issue"></a>Een GitHub-probleem maken
 
-Als u een fout of probleem met betrekking tot onze bibliotheken vindt, kunt u een probleem veroorzaken in onze GitHub-opslag plaatsen. Omdat onze bibliotheken open source zijn, kunt u ook een pull-aanvraag indienen.
+Als u een bug of probleem vindt met betrekking tot onze bibliotheken, u een probleem aandeorde stellen in onze GitHub-repositories. Omdat onze bibliotheken open source zijn, u ook een pull-aanvraag indienen.
 
-Voor een lijst met bibliotheken en hun GitHub-opslag plaatsen raadpleegt u het volgende:
+Zie het volgende voor een lijst met bibliotheken en hun GitHub-repositories:
 
-* [Azure Active Directory-bibliotheken (Authentication Library) en github-opslag plaatsen (ADAL)](../azuread-dev/active-directory-authentication-libraries.md)
-* [Micro soft Authentication Library (MSAL)-](reference-v2-libraries.md) bibliotheken en github-opslag plaatsen
+* [ADAL-bibliotheken (Azure Active Directory Authentication Library)](../azuread-dev/active-directory-authentication-libraries.md) en GitHub-repositories
+* [MSAL-bibliotheken (Microsoft Authentication Library)](reference-v2-libraries.md) en GitHub-repositories
 
-## <a name="open-a-support-request"></a>Een ondersteunings aanvraag openen
+## <a name="open-a-support-request"></a>Een ondersteuningsverzoek openen
 
-Als u contact moet opnemen met iemand, kunt u een ondersteunings aanvraag openen. Als u een Azure-klant bent, zijn er verschillende ondersteunings opties beschikbaar. Zie [Deze pagina voor het](https://azure.microsoft.com/support/plans/)vergelijken van plannen. Ondersteuning voor ontwikkel aars is ook beschikbaar voor Azure-klanten. Zie [Deze pagina](https://azure.microsoft.com/support/plans/developer/)voor meer informatie over het kopen van ondersteunings abonnementen voor ontwikkel aars.
+Als je met iemand wilt praten, kun je een ondersteuningsverzoek openen. Als u een Azure-klant bent, zijn er verschillende ondersteuningsopties beschikbaar. Zie [deze pagina](https://azure.microsoft.com/support/plans/)om plannen te vergelijken. Ondersteuning voor ontwikkelaars is ook beschikbaar voor Azure-klanten. Zie [deze pagina](https://azure.microsoft.com/support/plans/developer/)voor informatie over het kopen van ondersteuningsplannen voor ontwikkelaars.
 
-* Als u al een ondersteunings abonnement voor Azure hebt, kunt u [hier een ondersteunings aanvraag openen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+* Als u al een Azure Support Plan hebt, [opent u hier een ondersteuningsverzoek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-* Als u geen Azure-klant bent, kunt u ook een ondersteunings aanvraag openen met micro soft via [onze commerciële ondersteuning](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial).
+* Als u geen Azure-klant bent, u ook een ondersteuningsaanvraag openen bij Microsoft via [onze commerciële ondersteuning.](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)
 
-U kunt ook een [virtuele agent](https://support.microsoft.com/contactus/?ws=support) proberen om ondersteuning te verkrijgen of vragen te stellen.
+U ook proberen een [virtuele agent](https://support.microsoft.com/contactus/?ws=support) om ondersteuning te verkrijgen of vragen te stellen.

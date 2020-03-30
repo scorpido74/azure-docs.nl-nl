@@ -1,6 +1,6 @@
 ---
-title: Toegang verlenen met een hand tekening voor gedeelde toegang in azure Event Hubs
-description: In dit artikel vindt u informatie over het verlenen van toegang tot Azure Event Hubs-resources met behulp van Shared Access signatures (SAS).
+title: Toegang autoriseren met een gedeelde toegangshandtekening in Azure Event Hubs
+description: In dit artikel vindt u informatie over het toestaan van toegang tot Azure Event Hubs-bronnen met behulp van SAS (Shared Access Signatures).
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,69 +9,69 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: bdb1896f8a40c6de21ae76b536bfccec316341cd
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69992794"
 ---
-# <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Toegang tot Event Hubs resources met hand tekeningen voor gedeelde toegang autoriseren
-Een Shared Access Signature (SAS) biedt een manier om beperkte toegang tot resources in uw Event Hubs-naam ruimte toe te kennen. SAS-beveiligingen hebben toegang tot Event Hubs-resources op basis van autorisatie regels. Deze regels worden geconfigureerd op een naam ruimte of een entiteit (Event Hub of onderwerp). Dit artikel bevat een overzicht van het SAS-model en beoordeelt de aanbevolen procedures voor SAS.
+# <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Toegang tot bronnen van gebeurtenishubs toestaan met behulp van gedeelde toegangshandtekeningen
+Een gedeelde toegangshandtekening (SAS) biedt u een manier om beperkte toegang te verlenen tot bronnen in de naamruimte van uw Gebeurtenishubs. SAS bewaakt de toegang tot event hubs-bronnen op basis van autorisatieregels. Deze regels zijn geconfigureerd op een naamruimte of een entiteit (gebeurtenishub of onderwerp). Dit artikel geeft een overzicht van het SAS-model en beoordeelt de best practices van SAS.
 
-## <a name="what-are-shared-access-signatures"></a>Wat zijn Shared Access signatures?
-Een Shared Access Signature (SAS) biedt gedelegeerde toegang tot Event Hubs-resources op basis van autorisatie regels. Een autorisatie regel heeft een naam, is gekoppeld aan specifieke rechten en bevat een paar cryptografische sleutels. U gebruikt de naam en sleutel van de regel via de Event Hubs-clients of in uw eigen code voor het genereren van SAS-tokens. Een client kan vervolgens het token door geven aan Event Hubs om autorisatie voor de aangevraagde bewerking te bewijzen.
+## <a name="what-are-shared-access-signatures"></a>Wat zijn handtekeningen voor gedeelde toegang?
+Een gedeelde toegangshandtekening (SAS) biedt gedelegeerde toegang tot bronnen van gebeurtenishubs op basis van autorisatieregels. Een autorisatieregel heeft een naam, is gekoppeld aan specifieke rechten en bevat een paar cryptografische sleutels. U gebruikt de naam en sleutel van de regel via de Clients Event Hubs of in uw eigen code om SAS-tokens te genereren. Een client kan het token vervolgens doorgeven aan Gebeurtenishubs om de autorisatie voor de gevraagde bewerking te bewijzen.
 
-SAS is een op claims gebaseerd autorisatie mechanisme met behulp van eenvoudige tokens. Met SAS worden sleutels nooit door gegeven op de kabel. Sleutels worden gebruikt voor het cryptografisch ondertekenen van informatie die later door de service kan worden geverifieerd. SAS kan worden gebruikt in combi natie met een gebruikers naam-en wachtwoord schema waarbij de client onmiddellijk in bezit is van een naam van een autorisatie regel en een overeenkomende sleutel. SAS kan worden gebruikt als een federatief beveiligings model, waarbij de client een time-Limited en ondertekend toegangs token ontvangt van een beveiligings token service, zonder dat deze ooit in bezit is van de handtekening sleutel.
+SAS is een claimgebaseerd autorisatiemechanisme met behulp van eenvoudige tokens. Met behulp van SAS worden sleutels nooit doorgegeven aan de draad. Sleutels worden gebruikt om cryptografisch tekeninformatie die later kan worden geverifieerd door de service. SAS kan worden gebruikt vergelijkbaar met een gebruikersnaam en wachtwoord schema waar de klant in het bezit is van een autorisatie regel naam en een overeenkomende sleutel. SAS kan worden gebruikt vergelijkbaar met een federatief beveiligingsmodel, waarbij de client een tijdelijk en ondertekend toegangstoken ontvangt van een beveiligingstokenservice zonder ooit in het bezit te komen van de ondertekeningssleutel.
 
 > [!NOTE]
-> Azure Event Hubs ondersteunt het autoriseren van Event Hubs resources met behulp van Azure Active Directory (Azure AD). Het autoriseren van gebruikers of toepassingen die gebruikmaken van het OAuth 2,0-token dat wordt geretourneerd door Azure AD, biedt een superieure beveiliging en gebruiks vriendelijk gebruik van Shared Access signatures (SAS). Met Azure AD hoeft u geen tokens op te slaan in uw code en mogelijke beveiligings problemen met Risico's.
+> Azure Event Hubs ondersteunt het autoriseren naar Gebeurtenishubs resources met Azure Active Directory (Azure AD). Het toestaan van gebruikers of toepassingen met OAuth 2.0-token die door Azure AD is geretourneerd, biedt superieure beveiliging en gebruiksgemak ten opzichte van sas (Shared Access Signatures). Met Azure AD is het niet nodig om de tokens in uw code op te slaan en potentiële beveiligingsproblemen te riskeren.
 >
-> Micro soft raadt u aan Azure AD te gebruiken met uw Azure Event Hubs-toepassingen wanneer dat mogelijk is. Zie [toegang tot Azure Event hubs-resource machtigen met behulp van Azure Active Directory](authorize-access-azure-active-directory.md)voor meer informatie.
+> Microsoft raadt aan om Azure AD waar mogelijk te gebruiken met uw Azure Event Hubs-toepassingen. Zie [Toegang tot Azure Event Hubs-bron autoriseren met Azure Active Directory](authorize-access-azure-active-directory.md)voor meer informatie.
 
 > [!IMPORTANT]
-> SAS (Shared Access signatures)-tokens zijn essentieel om uw resources te beschermen. Dankzij de granulariteit verleent SAS clients toegang tot uw Event Hubs-resources. Ze mogen niet openbaar worden gedeeld. Bij het delen, als dit is vereist voor het oplossen van problemen, kunt u overwegen een gereduceerde versie van alle logboek bestanden te gebruiken of de SAS-tokens (indien aanwezig) te verwijderen uit de logboek bestanden en te controleren of de scherm opnamen geen SAS-informatie bevatten.
+> SAS-tokens (Shared Access Signatures) zijn essentieel om uw resources te beschermen. Terwijl SAS granulariteit biedt, geeft het klanten toegang tot uw Event Hubs-bronnen. Ze mogen niet openbaar worden gedeeld. Wanneer u het delen, indien nodig om redenen van probleemoplossing, overweegt u een beperkte versie van logboekbestanden te gebruiken of de SAS-tokens (indien aanwezig) uit de logboekbestanden te verwijderen en ervoor te zorgen dat de schermafbeeldingen ook de SAS-informatie niet bevatten.
 
-## <a name="shared-access-authorization-policies"></a>Beleid voor gedeelde toegang
-Elke Event Hubs naam ruimte en elke Event Hubs entiteit (een Event Hub exemplaar of een Kafka-onderwerp) heeft een beleid voor gedeelde toegang dat bestaat uit regels. Het beleid op het niveau van de naam ruimte is van toepassing op alle entiteiten in de naam ruimte, ongeacht hun afzonderlijke beleids configuratie.
-Voor elke autorisatie beleids regel besluit u over drie stukjes informatie: naam, bereik en rechten. De naam is een unieke naam in dat bereik. Het bereik is de URI van de betreffende resource. Voor een Event Hubs naam ruimte is de scope de Fully Qualified Domain Name (FQDN), zoals `https://<yournamespace>.servicebus.windows.net/`.
+## <a name="shared-access-authorization-policies"></a>Beleid voor toegangsautorisatie
+Elke naamruimte voor gebeurtenishubs en elke gebeurtenishubsentiteit (een gebeurtenishub-instantie of een Kafka-onderwerp) heeft een beleid voor gedeelde toegangsautorisatie dat bestaat uit regels. Het beleid op naamruimteniveau is van toepassing op alle entiteiten in de naamruimte, ongeacht hun individuele beleidsconfiguratie.
+Voor elke autorisatiebeleidsregel bepaalt u drie gegevens: naam, bereik en rechten. De naam is een unieke naam in dat bereik. Het toepassingsgebied is de URI van de resource in kwestie. Voor een naamruimte van gebeurtenishubs is het bereik de volledig gekwalificeerde `https://<yournamespace>.servicebus.windows.net/`domeinnaam (FQDN), zoals .
 
-De rechten van de beleids regel kunnen bestaan uit een combi natie van:
-- **Verzenden** : geeft het recht berichten te verzenden naar de entiteit
-- **Luis teren** : geeft het recht om te Luis teren naar of te ontvangen van de entiteit
-- **Beheren** : geeft het recht om de topologie van de naam ruimte te beheren, met inbegrip van het maken en verwijderen van entiteiten
+De rechten die door de beleidsregel worden geboden, kunnen een combinatie zijn van:
+- **Verzenden** : geeft het recht om berichten naar de entiteit te sturen
+- **Luisteren** – Geeft het recht om te luisteren of te ontvangen aan de entiteit
+- **Beheren** : geeft het recht om de topologie van de naamruimte te beheren, inclusief het maken en verwijderen van entiteiten
 
 > [!NOTE]
-> Het recht **beheren** bevat de rechten **verzenden** en **Luis teren** .
+> Het recht **beheren** omvat de rechten **verzenden** **en luisteren.**
 
-Een naam ruimte-of entiteits beleid kan Maxi maal 12 Shared Access Authorization Rules bevatten, zodat er ruimte is voor de drie sets regels, elk met de basis rechten en de combi natie van verzenden en Luis teren. Deze limiet onderstreept dat het SAS-beleids archief niet bedoeld is als een gebruikers-of service account-archief. Als uw toepassing toegang moet verlenen tot Event Hubs resources op basis van gebruikers-of service-identiteiten, moet deze een beveiligings token service implementeren die SAS-tokens uitgeeft na een verificatie en toegangs controle.
+Een naamruimte- of entiteitsbeleid kan maximaal 12 regels voor gedeelde toegangsautorisatie bevatten, die ruimte bieden voor de drie sets regels, die elk betrekking hebben op de basisrechten en de combinatie van Verzenden en luisteren. Deze limiet onderstreept dat het SAS-beleidsarchief niet bedoeld is als gebruikers- of serviceaccountarchief. Als uw toepassing toegang moet verlenen tot Event Hubs-bronnen op basis van gebruikers- of serviceidentiteiten, moet deze een beveiligingstokenservice implementeren die SAS-tokens uitgeeft na een verificatie- en toegangscontrole.
 
-Aan een autorisatie regel is een **primaire sleutel** en een **secundaire sleutel**toegewezen. Deze sleutels zijn cryptografische sterke sleutels. Zorg dat ze niet verloren gaan of lekken. Ze zijn altijd beschikbaar in de Azure Portal. U kunt een van de gegenereerde sleutels gebruiken en u kunt deze op elk gewenst moment opnieuw genereren. Als u een sleutel in het beleid opnieuw genereert of wijzigt, worden alle eerder uitgegeven tokens op basis van die sleutel onmiddellijk ongeldig. Actieve verbindingen die zijn gemaakt op basis van deze tokens blijven echter werken totdat het token verloopt.
+Aan een autorisatieregel wordt een **primaire sleutel** en een **secundaire sleutel**toegewezen. Deze sleutels zijn cryptografisch sterke sleutels. Verlies ze niet of lek ze niet. Ze zijn altijd beschikbaar in de Azure-portal. U een van de gegenereerde sleutels gebruiken en u ze op elk gewenst moment regenereren. Als u een sleutel in het beleid regenereert of wijzigt, worden alle eerder uitgegeven tokens op basis van die sleutel direct ongeldig. Doorgaande verbindingen die op basis van dergelijke tokens zijn gemaakt, blijven echter werken totdat het token verloopt.
 
-Wanneer u een Event Hubs naam ruimte maakt, wordt automatisch een beleids regel gemaakt met de naam **RootManageSharedAccessKey** voor de naam ruimte. Dit beleid heeft **beheer** machtigingen voor de volledige naam ruimte. Het is raadzaam deze regel te behandelen als een account met beheerders rechten en niet in uw toepassing te gebruiken. U kunt aanvullende beleids regels maken op het tabblad **configureren** van de naam ruimte in de portal via Power shell of Azure cli.
+Wanneer u een naamruimte voor gebeurtenishubs maakt, wordt automatisch een beleidsregel met de naamruimte **rootbeheerGedeeldtoegangssleutel** gemaakt. Dit beleid heeft **beheermachtigingen** voor de volledige naamruimte. Het wordt aanbevolen dat u deze regel behandelt als een beheerd rootaccount en deze niet gebruikt in uw toepassing. U aanvullende beleidsregels maken op het tabblad **Configureren** voor de naamruimte in de portal, via PowerShell of Azure CLI.
 
-## <a name="best-practices-when-using-sas"></a>Aanbevolen procedures voor het gebruik van SAS
-Wanneer u gebruikmaakt van hand tekeningen voor gedeelde toegang in uw toepassingen, moet u rekening houden met twee mogelijke Risico's:
+## <a name="best-practices-when-using-sas"></a>Best practices bij gebruik van SAS
+Wanneer u gedeelde toegangshandtekeningen in uw toepassingen gebruikt, moet u zich bewust zijn van twee potentiële risico's:
 
-- Als een SAS wordt gelekt, kan deze worden gebruikt door iedereen die deze verkrijgt, waardoor uw Event Hubs-resources mogelijk kunnen worden aangetast.
-- Als een SAS die aan een client toepassing is gegeven, verloopt en de toepassing geen nieuwe SA'S kan ophalen van uw service, wordt de functionaliteit van de toepassing mogelijk belemmerd.
+- Als een SAS is gelekt, kan deze worden gebruikt door iedereen die deze verkrijgt, wat mogelijk uw Event Hubs-bronnen in gevaar kan brengen.
+- Als een SAS die aan een clienttoepassing wordt geleverd verloopt en de toepassing geen nieuwe SAS uit uw service kan ophalen, kan de functionaliteit van de toepassing worden belemmerd.
 
-De volgende aanbevelingen voor het gebruik van hand tekeningen voor gedeelde toegang kunnen helpen bij het oplossen van deze Risico's:
+De volgende aanbevelingen voor het gebruik van handtekeningen voor gedeelde toegang kunnen helpen deze risico's te beperken:
 
-- **Laat clients automatisch de SAS vernieuwen, indien nodig**: Clients moeten de SA'S goed vernieuwen voordat ze verlopen, zodat er tijd is om nieuwe pogingen te doen als de service die de SAS aanbiedt, niet beschikbaar is. Als uw SAS is bedoeld om te worden gebruikt voor een klein aantal directe, korte, langdurige bewerkingen die naar verwachting binnen de verloop periode zullen worden voltooid, is het mogelijk onnodig dat de SA'S niet naar verwachting worden verlengd. Als u echter een client hebt die regel matig aanvragen maakt via SAS, is het mogelijk dat de verval datum wordt afgespeeld. De belangrijkste overweging is om de nood zaak van de SA'S te verkorten (zoals eerder vermeld), met de nood zaak om ervoor te zorgen dat de client vernieuwingen vroeg genoeg aanvraagt (om onderbrekingen te voor komen als gevolg van het verlopen van SAS vóór een geslaagde vernieuwing).
-- **Wees voorzichtig met de SAS-start tijd**: Als u de begin tijd voor SA'S instelt op **nu**, dan kan het voor de eerste paar minuten voor komen dat fouten in de loop van de tijd afnemen. In het algemeen stelt u de start tijd in op ten minste 15 minuten in het verleden. U kunt de service ook niet instellen, waardoor deze onmiddellijk in alle gevallen geldig is. Hetzelfde geldt ook voor de verloop tijd. Houd er rekening mee dat u gedurende een wille keurige aanvraag Maxi maal 15 minuten aan de klok kunt laten hellen. 
-- **Wees specifiek met de resource die u wilt openen**: Een beveiligings best practice is om een gebruiker de minimale vereiste bevoegdheden te geven. Als een gebruiker alleen lees toegang nodig heeft tot één entiteit, dan verlenen zij Lees-en schrijf toegang tot de ene entiteit en niet lezen/schrijven/verwijderen voor alle entiteiten. Het helpt ook de schade te beperken als een SAS is aangetast omdat de SAS minder kracht in de handen van een aanvaller heeft.
-- **Gebruik niet altijd SAS**: Soms zijn de Risico's voor een bepaalde bewerking ten opzichte van uw Event Hubs zwaarder dan de voor delen van SAS. Voor dergelijke bewerkingen maakt u een middelste laag service die naar uw Event Hubs schrijft na de validatie van de bedrijfs regel, verificatie en controle.
-- **Altijd https gebruiken**: Gebruik altijd HTTPS om een SAS te maken of te distribueren. Als een SAS wordt door gegeven via HTTP en onderschept, kan een aanvaller die een man-in-the-Middle-koppeling uitvoert, de SA'S lezen en deze vervolgens gebruiken, net zoals de beoogde gebruiker kan hebben, mogelijk gevoelige gegevens in gevaar brengen of beschadiging van gegevens door de kwaadwillende gebruiker kan veroorzaken.
+- **Laat clients de SAS automatisch verlengen indien nodig:** Clients moeten de SAS ruim voor het verstrijken vernieuwen, zodat ze tijd hebben voor nieuwe pogingen als de service die de SAS levert niet beschikbaar is. Als uw SAS is bedoeld om te worden gebruikt voor een klein aantal onmiddellijke, kortstondige operaties die naar verwachting worden voltooid binnen de vervaldatum, dan kan het onnodig zijn als de SAS zal naar verwachting niet worden vernieuwd. Echter, als u een klant hebt die routinematig verzoeken via SAS doet, dan komt de mogelijkheid van expiratie in het spel. De belangrijkste overweging is om de noodzaak voor de SAS van korte duur te brengen (zoals eerder vermeld) met de noodzaak om ervoor te zorgen dat de klant vroeg om verlenging vroeg genoeg (om verstoring te voorkomen als gevolg van de SAS afloopt voorafgaand aan een succesvolle verlenging).
+- **Wees voorzichtig met de SAS begintijd:** Als u de begintijd voor SAS instelt op **nu,** dan als gevolg van klok scheeftrekken (verschillen in huidige tijd volgens verschillende machines), storingen kunnen worden waargenomen met tussenpozen voor de eerste paar minuten. Stel in het verleden de starttijd in op ten minste 15 minuten. Of stel het helemaal niet in, waardoor het in alle gevallen onmiddellijk geldig is. Hetzelfde geldt over het algemeen ook voor de vervaldatum. Vergeet niet dat u waarnemer tot 15 minuten van de klok scheef in beide richtingen op elk verzoek. 
+- **Wees specifiek met de te openen bron:** een best practice voor beveiliging is om de gebruiker de minimaal vereiste bevoegdheden te bieden. Als een gebruiker alleen leestoegang tot één entiteit nodig heeft, geeft u hem of haar leestoegang tot die ene entiteit en hebt hij geen toegang tot alle entiteiten. Het helpt ook de schade te verminderen als een SAS wordt aangetast omdat de SAS minder stroom in de handen van een aanvaller heeft.
+- **Gebruik sas niet altijd:** soms wegen de risico's die verbonden zijn aan een bepaalde bewerking ten opzichte van uw Event Hubs op tegen de voordelen van SAS. Maak voor dergelijke bewerkingen een middle-tier service die naar uw Gebeurtenishubs wordt geschreven na validatie, verificatie en controle van de bedrijfsregel.
+- **Gebruik altijd HTTP's:** Gebruik altijd Https om een SAS te maken of te distribueren. Als een SAS wordt doorgegeven via HTTP en onderschept, een aanvaller het uitvoeren van een man-in-the-middle attach is in staat om de SAS te lezen en vervolgens gebruiken net zoals de beoogde gebruiker zou kunnen hebben, potentieel compromitterende gevoelige gegevens of waardoor voor gegevens corruptie door de kwaadwillende gebruiker.
 
 ## <a name="conclusion"></a>Conclusie
-Toegangs handtekeningen voor delen zijn handig voor het leveren van beperkte machtigingen voor het Event Hubs van resources aan uw clients. Ze zijn een belang rijk onderdeel van het beveiligings model voor elke toepassing die gebruikmaakt van Azure Event Hubs. Als u de best practices in dit artikel volgt, kunt u SAS gebruiken om meer flexibiliteit van toegang tot uw resources te bieden, zonder de beveiliging van uw toepassing in gevaar te brengen.
+Handtekeningen voor het delen van toegang zijn handig voor het verstrekken van beperkte machtigingen voor eventhubsbronnen aan uw klanten. Ze zijn essentieel onderdeel van het beveiligingsmodel voor elke toepassing die Azure Event Hubs gebruikt. Als u de aanbevolen procedures in dit artikel volgt, u SAS gebruiken om meer flexibiliteit te bieden voor toegang tot uw resources, zonder dat dit ten koste gaat van de beveiliging van uw toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende verwante artikelen: 
+Zie de volgende gerelateerde artikelen: 
 
-- [Aanvragen voor Azure Event Hubs verifiëren vanuit een toepassing met behulp van Azure Active Directory](authenticate-application.md)
-- [Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs bronnen](authenticate-managed-identity.md)
-- [Aanvragen voor Azure Event Hubs verifiëren met behulp van hand tekeningen voor gedeelde toegang](authenticate-shared-access-signature.md)
-- [Toegang tot Event Hubs resources autoriseren met behulp van Azure Active Directory](authorize-access-azure-active-directory.md)
+- [Aanvragen voor Azure Event Hubs verifiëren vanuit een toepassing met Azure Active Directory](authenticate-application.md)
+- [Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot gebeurtenishubsbronnen](authenticate-managed-identity.md)
+- [Aanvragen voor Azure Event Hubs verifiëren met behulp van gedeelde toegangshandtekeningen](authenticate-shared-access-signature.md)
+- [Toegang tot gebeurtenishubsresources autoriseren met Azure Active Directory](authorize-access-azure-active-directory.md)
 
 

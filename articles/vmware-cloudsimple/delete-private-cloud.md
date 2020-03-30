@@ -1,6 +1,6 @@
 ---
-title: Een persoonlijke cloud van Azure VMware Solutions (AVS) verwijderen
-description: Hierin wordt beschreven hoe u een Privécloud kunt verwijderen.
+title: Een Azure VMware-oplossing verwijderen door CloudSimple Private Cloud
+description: Beschrijft hoe u een CloudSimple Private Cloud verwijdert.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -8,54 +8,54 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 77cbfb19c3861bac517142f7491e6b1a5fb4ca27
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024752"
 ---
-# <a name="delete-an-avs-private-cloud"></a>Een Privécloud verwijderen
+# <a name="delete-a-cloudsimple-private-cloud"></a>Een CloudSimple Private Cloud verwijderen
 
-AVS biedt de flexibiliteit voor het verwijderen van een automatische AVS-Cloud. Een automatische AVS-Cloud bestaat uit een of meer vSphere-clusters. Elk cluster kan 3 tot 16 knoop punten bevatten. Wanneer u een Privécloud van een AVS verwijdert, worden alle clusters verwijderd.
+CloudSimple biedt de flexibiliteit om een Private Cloud te verwijderen.  Een Private Cloud bestaat uit een of meer vSphere-clusters. Elk cluster kan 3 tot 16 knooppunten hebben. Wanneer u een Private Cloud verwijdert, worden alle clusters verwijderd.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Als een automatische AVS-Cloud wordt verwijderd, wordt de volledige AVS-privécloud verwijderd. Alle onderdelen van de AVS-Privécloud worden verwijderd. Als u gegevens wilt bewaren, moet u ervoor zorgen dat u een back-up hebt gemaakt van de gegevens naar on-premises opslag of Azure Storage.
+Als u een Private Cloud verwijdert, wordt de hele Private Cloud verwijderd.  Alle onderdelen van de Private Cloud worden verwijderd.  Als u een van de gegevens wilt bewaren, moet u ervoor zorgen dat u een back-up van de gegevens hebt gemaakt naar on-premises opslag of Azure-opslag.
 
-De onderdelen van een AVS-Privécloud zijn:
+De onderdelen van een Private Cloud zijn:
 
-* AVS-knoop punten
+* CloudSimple-knooppunten
 * Virtuele machines
-* VLAN'S/subnetten
-* Alle gebruikers gegevens die zijn opgeslagen op de AVS-Privécloud
-* Alle bijlagen van firewall regels naar een VLAN/subnet
+* VLAN's/subnetten
+* Alle gebruikersgegevens die zijn opgeslagen in de Private Cloud
+* Alle firewallregelbijlagen bij een VLAN/Subnet
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 
-## <a name="delete-an-avs-private-cloud"></a>Een Privécloud verwijderen
+## <a name="delete-a-private-cloud"></a>Een privécloud verwijderen
 
-1. [Toegang tot de AVS-Portal](access-cloudsimple-portal.md).
+1. [Toegang tot de CloudSimple-portal](access-cloudsimple-portal.md).
 
-2. Open de pagina **resources** .
+2. Open de pagina **Resources.**
 
-3. Klik op de AVS-Privécloud die u wilt verwijderen
+3. Klik op de Private Cloud die u wilt verwijderen
 
-4. Klik op de pagina samen vatting op **verwijderen**.
+4. Klik op de overzichtspagina op **Verwijderen**.
 
-    ![Privécloud verwijderen](media/delete-private-cloud.png)
+    ![Private cloud verwijderen](media/delete-private-cloud.png)
 
-5. Voer op de pagina Bevestiging de naam in van de Privécloud en klik op **verwijderen**. 
+5. Voer op de bevestigingspagina de naam van de private cloud in en klik op **Verwijderen**. 
 
-    ![Automatische AVS-Cloud verwijderen-bevestigen](media/delete-private-cloud-confirm.png)
+    ![Private cloud verwijderen - bevestigen](media/delete-private-cloud-confirm.png)
 
-De AVS-privécloud is gemarkeerd voor verwijdering. Het verwijderings proces wordt na drie uur gestart en de Privécloud is verwijderd.
+De Private Cloud is gemarkeerd voor verwijdering.  Het verwijderingsproces begint na drie uur en verwijdert de Private Cloud.
 
 > [!CAUTION]
-> Knoop punten moeten worden verwijderd na het verwijderen van de Privécloud van de AVS. Het meten van knoop punten gaat door totdat knoop punten uit uw abonnement worden verwijderd.
+> Knooppunten moeten worden verwijderd na verwijdering van de Private Cloud.  Het meten van knooppunten wordt voortgezet totdat knooppunten uit uw abonnement worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Knoop punten verwijderen](delete-nodes.md)
+* [Knooppunten verwijderen](delete-nodes.md)

@@ -1,6 +1,6 @@
 ---
-title: Voor beeld van Azure API management-beleid-antwoord inhoud filteren | Microsoft Docs
-description: 'Voor beeld van Azure API management-beleid: demonstreert hoe u gegevens elementen van de reactie lading kunt filteren op basis van het product dat is gekoppeld aan de aanvraag.'
+title: Voorbeeld van azure API-beheerbeleid - Inhoud voor filterrespons | Microsoft Documenten
+description: Voorbeeld van azure API-beheerbeleid - toont aan hoe u gegevenselementen uit de responspayload filtert op basis van het product dat aan de aanvraag is gekoppeld.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
 ms.openlocfilehash: 462db76b06e5071571ae475d420a627e57dad92e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70067761"
 ---
-# <a name="filter-response-content"></a>Antwoord inhoud filteren
+# <a name="filter-response-content"></a>Antwoordinhoud filteren
 
-In dit artikel wordt een voor beeld van een Azure API management-beleid weer gegeven waarin wordt getoond hoe u gegevens elementen van de reactie lading kunt filteren op basis van het product dat aan de aanvraag is gekoppeld. Volg de stappen die worden beschreven in [een beleid instellen of bewerken](../set-edit-policies.md)om een beleids code in te stellen of te bewerken. Zie voor andere voor beelden [beleids voorbeelden](../policy-samples.md).
+In dit artikel wordt een voorbeeld van een Azure API-beheerbeleidsvoorbeeld weergegeven waarin wordt uitgelegd hoe gegevenselementen uit de responspayload kunnen worden gefilterd op basis van het product dat aan de aanvraag is gekoppeld. Als u een beleidscode wilt instellen of bewerken, volgt u de stappen die zijn beschreven in [Een beleid instellen of bewerken](../set-edit-policies.md). Zie [Beleidsvoorbeelden](../policy-samples.md)voor andere voorbeelden .
 
 ## <a name="policy"></a>Beleid
 
@@ -34,5 +34,5 @@ Plak de code in het **uitgaande** blok.
 Meer informatie over APIM-beleid:
 
 + [Transformatiebeleid](../api-management-transformation-policies.md)
-+ [Voor beelden van beleid](../policy-samples.md)
++ [Beleidsvoorbeelden](../policy-samples.md)
 

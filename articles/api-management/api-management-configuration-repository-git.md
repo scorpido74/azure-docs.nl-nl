@@ -1,6 +1,6 @@
 ---
-title: Uw API Management-service configureren met git-Azure | Microsoft Docs
-description: Meer informatie over het opslaan en configureren van uw API Management service configuratie met behulp van Git.
+title: Uw API-beheerservice configureren met Git - Azure | Microsoft Documenten
+description: Meer informatie over het opslaan en configureren van uw API Management-serviceconfiguratie met Git.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,173 +13,173 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71104967"
 ---
-# <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>De configuratie van uw API Management-service opslaan en configureren met git
+# <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Configuratie van API Management-service opslaan en configureren met behulp van Git
 
-Elk API Management service-exemplaar houdt een configuratie database bij die informatie bevat over de configuratie en meta gegevens voor het service-exemplaar. Wijzigingen kunnen worden aangebracht in het service-exemplaar door een instelling in het Azure Portal te wijzigen, met een Power shell-cmdlet of door een REST API-aanroep te maken. Naast deze methoden kunt u ook de configuratie van uw service-exemplaar beheren met git, waarbij scenario's voor Service beheer worden ingeschakeld, zoals:
+Elk API Management-serviceexemplaar onderhoudt een configuratiedatabase met informatie over de configuratie en metagegevens voor de serviceinstantie. Wijzigingen kunnen worden aangebracht in de service-instantie door een instelling in de Azure-portal te wijzigen, een PowerShell-cmdlet te gebruiken of een REST API-aanroep te maken. Naast deze methoden u ook de configuratie van uw service-instantie beheren met Git, waardoor servicebeheerscenario's mogelijk worden, zoals:
 
-* Configuratie versie: down load en sla verschillende versies van uw service configuratie op
-* Wijzigingen in de bulk configuratie: Breng wijzigingen aan in meerdere delen van uw service configuratie in uw lokale opslag plaats en integreer de wijzigingen vervolgens met één bewerking op de server.
-* Vertrouwde Git-hulpprogramma keten en-werk stroom: gebruik het git-hulp programma en de werk stromen die u al kent
+* Configuratieversiering - verschillende versies van uw serviceconfiguratie downloaden en opslaan
+* Wijzigingen in de bulkconfiguratie : breng wijzigingen aan in meerdere onderdelen van uw serviceconfiguratie in uw lokale opslagplaats en integreer de wijzigingen terug naar de server met één bewerking
+* Vertrouwde Git toolchain en workflow - gebruik de Git tooling en workflows die u al kent
 
-In het volgende diagram ziet u een overzicht van de verschillende manieren om uw API Management service-exemplaar te configureren.
+In het volgende diagram ziet u een overzicht van de verschillende manieren om uw API Management-serviceinstantie te configureren.
 
 ![Git configureren][api-management-git-configure]
 
-Wanneer u wijzigingen aanbrengt aan uw service met behulp van de Azure Portal, Power shell-cmdlets of de rest API, beheert u de data `https://{name}.management.azure-api.net` base van de service configuratie met behulp van het eind punt, zoals wordt weer gegeven aan de rechter kant van het diagram. Aan de linkerkant van het diagram ziet u hoe u uw service configuratie kunt beheren met Git en git-opslag plaats voor uw service `https://{name}.scm.azure-api.net`op.
+Wanneer u wijzigingen aanbrengt in uw service met behulp van de Azure-portal, PowerShell-cmdlets of de REST API, beheert u uw serviceconfiguratiedatabase met behulp van het `https://{name}.management.azure-api.net` eindpunt, zoals aan de rechterkant van het diagram wordt weergegeven. De linkerkant van het diagram laat zien hoe u uw serviceconfiguratie beheren `https://{name}.scm.azure-api.net`met Git- en Git-repository voor uw service op.
 
-De volgende stappen bieden een overzicht van het beheren van uw API Management service-exemplaar met behulp van Git.
+De volgende stappen geven een overzicht van het beheer van uw API Management-serviceinstantie met Git.
 
 1. Toegang tot Git-configuratie in uw service
-2. Sla uw service configuratie database op in uw Git-opslag plaats
-3. De Git-opslag plaats naar uw lokale computer klonen
-4. Haal de meest recente opslag plaats omlaag naar uw lokale machine en ga door met het door voeren en pushen van wijzigingen naar uw opslag plaats
-5. De wijzigingen van uw opslag plaats naar uw service configuratie database implementeren
+2. Uw serviceconfiguratiedatabase opslaan in uw Git-repository
+3. Kloon de Git repo naar uw lokale machine
+4. Trek de nieuwste repo naar beneden naar uw lokale machine, en plegen en duwen veranderingen terug naar uw repo
+5. De wijzigingen van uw repo implementeren in uw serviceconfiguratiedatabase
 
-In dit artikel wordt beschreven hoe u Git inschakelt en gebruikt voor het beheren van uw service configuratie en een verwijzing geeft naar de bestanden en mappen in de Git-opslag plaats.
+In dit artikel wordt beschreven hoe u Git inschakelt en gebruikt om uw serviceconfiguratie te beheren en wordt een referentie weergegeven voor de bestanden en mappen in de Git-opslagplaats.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="access-git-configuration-in-your-service"></a>Toegang tot Git-configuratie in uw service
 
-Als u uw Git-configuratie-instellingen wilt weer geven en configureren, klikt u op het menu **beveiliging** en gaat u naar het tabblad **configuratie opslagplaats** .
+Als u uw Git-configuratie-instellingen wilt weergeven en configureren, u op het menu **Beveiliging** klikken en naar het tabblad **Configuratieopslagplaats** navigeren.
 
 ![GIT inschakelen][api-management-enable-git]
 
 > [!IMPORTANT]
-> Geheimen die niet als benoemde waarden zijn gedefinieerd, worden opgeslagen in de-opslag plaats en blijven in de geschiedenis totdat u Git-toegang uitschakelt en weer inschakelt. Benoemde waarden bieden een veilige plaats voor het beheren van constante teken reeks waarden, inclusief geheimen, in alle API-configuraties en-beleids regels, zodat u ze niet rechtstreeks in uw beleids overzichten hoeft op te slaan. Zie [Benoemde waarden gebruiken in azure API Management-beleid](api-management-howto-properties.md)(Engelstalig) voor meer informatie.
+> Alle geheimen die niet zijn gedefinieerd als Benoemde waarden, worden opgeslagen in de repository en blijven in de geschiedenis totdat u de toegang van Git uitschakelt en opnieuw inschakelt. Benoemde waarden bieden een veilige plek om constante tekenreekswaarden, inclusief geheimen, te beheren voor alle API-configuratie en -beleid, zodat u ze niet rechtstreeks in uw beleidsoverzichten hoeft op te slaan. Zie [Benoemde waarden gebruiken in azure API-beheerbeleid](api-management-howto-properties.md)voor meer informatie.
 >
 >
 
-Zie voor meer informatie over het in-of uitschakelen van Git-toegang met behulp van de REST API [toegang tot git in-of uitschakelen met behulp van de rest API](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit).
+Zie [Git-toegang](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit)inschakelen of uitschakelen met behulp van de REST API voor informatie over het in- of uitschakelen van Git-toegang met de REST API.
 
-## <a name="to-save-the-service-configuration-to-the-git-repository"></a>De service configuratie opslaan in de Git-opslag plaats
+## <a name="to-save-the-service-configuration-to-the-git-repository"></a>De serviceconfiguratie opslaan in de Git-repository
 
-De eerste stap voordat u de opslag plaats kloont, is door de huidige status van de service configuratie op te slaan in de opslag plaats. Klik op **opslaan in opslag plaats**.
+De eerste stap voor het klonen van de repository is het opslaan van de huidige status van de serviceconfiguratie in de repository. Klik **op Opslaan in opslagplaats**.
 
-Breng de gewenste wijzigingen aan in het bevestigings scherm en klik op **OK** om op te slaan.
+Breng de gewenste wijzigingen aan op het bevestigingsscherm en klik op **Ok** om op te slaan.
 
-Na enkele ogen blikken wordt de configuratie opgeslagen en wordt de configuratie status van de opslag plaats weer gegeven, met inbegrip van de datum en tijd van de laatste configuratie wijziging en de laatste synchronisatie tussen de service configuratie en de opslag plaats.
+Na enkele ogenblikken wordt de configuratie opgeslagen en wordt de configuratiestatus van de repository weergegeven, inclusief de datum en tijd van de laatste configuratiewijziging en de laatste synchronisatie tussen de serviceconfiguratie en de repository.
 
-Zodra de configuratie is opgeslagen in de opslag plaats, kan deze worden gekloond.
+Zodra de configuratie is opgeslagen in de repository, kan deze worden gekloond.
 
-Zie [configuratie momentopname vastleggen met behulp](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot)van de rest API voor meer informatie over het uitvoeren van deze bewerking met behulp van de rest API.
+Zie [Configuratiemomentopname vastleggen met de REST API](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot)voor informatie over het uitvoeren van deze bewerking met de REST API.
 
-## <a name="to-clone-the-repository-to-your-local-machine"></a>De opslag plaats naar uw lokale computer klonen
+## <a name="to-clone-the-repository-to-your-local-machine"></a>De opslagplaats klonen naar uw lokale machine
 
-Als u een opslag plaats wilt klonen, moet u de URL naar uw opslag plaats, een gebruikers naam en een wacht woord hebben. Als u gebruikers naam en andere referenties wilt ophalen, klikt u op **toegangs referenties** aan de bovenkant van de pagina.
+Als u een opslagplaats wilt klonen, hebt u de URL naar uw opslagplaats, een gebruikersnaam en een wachtwoord nodig. Als u gebruikersnaam en andere referenties wilt krijgen, klikt u boven aan de pagina op **Toegangsreferenties** boven aan de pagina.
 
-Als u een wacht woord wilt genereren, controleert u eerst of het **verloop** is ingesteld op de gewenste verval datum en-tijd en klikt u vervolgens op **genereren**.
+Als u een wachtwoord wilt genereren, moet u er eerst op toezien dat de **vervaldatum** is ingesteld op de gewenste vervaldatum en -tijd en klikt u vervolgens op **Genereren**.
 
 > [!IMPORTANT]
-> Noteer dit wacht woord. Wanneer u deze pagina verlaat, wordt het wacht woord niet meer weer gegeven.
+> Noteer dit wachtwoord. Zodra u deze pagina verlaat, wordt het wachtwoord niet meer weergegeven.
 >
 
-In de volgende voor beelden wordt het git bash-hulp programma van [git voor Windows](https://www.git-scm.com/downloads) gebruikt, maar u kunt elk Git-hulp programma gebruiken waarmee u bekend bent.
+In de volgende voorbeelden wordt gebruik gemaakt van de Git Bash-tool van [Git voor Windows,](https://www.git-scm.com/downloads) maar u elke Git-tool gebruiken die u kent.
 
-Open uw Git-hulp programma in de gewenste map en voer de volgende opdracht uit om de Git-opslag plaats te klonen op uw lokale computer met behulp van de opdracht van de Azure Portal.
+Open uw Git-gereedschap in de gewenste map en voer de volgende opdracht uit om de git-opslagplaats naar uw lokale machine te klonen met behulp van de opdracht van de Azure-portal.
 
 ```
 git clone https://{name}.scm.azure-api.net/
 ```
 
-Geef de gebruikers naam en het wacht woord op wanneer u hierom wordt gevraagd.
+Geef de gebruikersnaam en het wachtwoord op wanneer daarom wordt gevraagd.
 
-Als er fouten optreden, kunt u de `git clone` opdracht wijzigen zodat de gebruikers naam en het wacht woord worden opgenomen, zoals in het volgende voor beeld wordt weer gegeven.
+Als u fouten ontvangt, probeert `git clone` u uw opdracht te wijzigen om de gebruikersnaam en het wachtwoord op te nemen, zoals in het volgende voorbeeld wordt weergegeven.
 
 ```
 git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
-Als er een fout optreedt, kunt u URL-code ring van het wachtwoord gedeelte van de opdracht proberen. Een snelle manier om dit te doen is door Visual Studio te openen en de volgende opdracht uit te voeren in het **venster Direct**. Als u het **venster Direct**wilt openen, opent u een oplossing of project in Visual Studio (of maakt u een nieuwe lege console toepassing) en kiest u **Windows**, **direct** in het menu **fout opsporing** .
+Als dit een fout oplevert, probeert u URL-codering van het wachtwoordgedeelte van de opdracht. Een snelle manier om dit te doen is door Visual Studio te openen en de volgende opdracht uit te geven in **het venster Direct .** Als u het **venster Direct wilt openen,** opent u een oplossing of project in Visual Studio (of maakt u een nieuwe lege consoletoepassing) en kiest u **Windows**, **Onmiddellijk** in het menu **Foutopsporing.**
 
 ```
 ?System.Net.WebUtility.UrlEncode("password from the Azure portal")
 ```
 
-Gebruik het versleutelde wacht woord samen met uw gebruikers naam en locatie van de opslag plaats om de Git-opdracht te maken.
+Gebruik het gecodeerde wachtwoord samen met uw gebruikersnaam en opslagplaatslocatie om de git-opdracht te construeren.
 
 ```
 git clone https://username:url encoded password@{name}.scm.azure-api.net/
 ```
 
-Zodra de opslag plaats is gekloond, kunt u deze in uw lokale bestands systeem weer geven en ermee werken. Zie [verwijzing naar bestands-en mapstructuur van lokale Git-opslag plaats](#file-and-folder-structure-reference-of-local-git-repository)voor meer informatie.
+Zodra de repository is gekloond, u bekijken en ermee werken in uw lokale bestandssysteem. Zie [Naslaginformatie over bestands- en mapstructuur van de lokale Git-opslagplaats](#file-and-folder-structure-reference-of-local-git-repository)voor meer informatie.
 
-## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>Uw lokale opslag plaats bijwerken met de meest recente service-exemplaar configuratie
+## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>Uw lokale opslagplaats bijwerken met de meest recente configuratie van service-instantie
 
-Als u wijzigingen aanbrengt in uw API Management service-exemplaar in de Azure Portal of de REST API gebruikt, moet u deze wijzigingen opslaan in de opslag plaats voordat u uw lokale opslag plaats kunt bijwerken met de meest recente wijzigingen. Hiertoe klikt u op **configuratie opslaan in opslag plaats** op het tabblad **configuratie opslagplaats** in het Azure Portal en geeft u de volgende opdracht op in uw lokale opslag plaats.
+Als u wijzigingen aanbrengt in uw API Management-serviceinstantie in de Azure-portal of de REST API gebruikt, moet u deze wijzigingen opslaan in de opslagplaats voordat u uw lokale opslagplaats bijwerken met de laatste wijzigingen. Klik hiervoor op **Configuratie opslaan om te repository** op het tabblad **Configuratieopslagplaats** in de Azure-portal en geef vervolgens de volgende opdracht uit in uw lokale opslagplaats.
 
 ```
 git pull
 ```
 
-Zorg ervoor `git pull` dat u zich in de map voor uw lokale opslag plaats bevindt voordat u deze uitvoert. Als u de `git clone` opdracht zojuist hebt voltooid, moet u de map in uw opslag plaats wijzigen door een opdracht als volgt uit te voeren.
+Voordat `git pull` u deze uitvoert, moet u ervoor zorgen dat u zich in de map voor uw lokale opslagplaats bevindt. Als u de `git clone` opdracht net hebt voltooid, moet u de map in uw repo wijzigen door een opdracht als volgt uit te voeren.
 
 ```
 cd {name}.scm.azure-api.net/
 ```
 
-## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>Wijzigingen van uw lokale opslag plaats naar de server opslag plaats
-Als u wijzigingen van uw lokale opslag plaats naar de server opslagplaats wilt pushen, moet u uw wijzigingen door voeren en vervolgens naar de server opslagplaats pushen. Als u uw wijzigingen wilt door voeren, opent u het git-opdracht programma, gaat u naar de map van uw lokale opslag plaats en geeft u de volgende opdrachten op.
+## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>Wijzigingen van uw lokale repo naar de serverrepo pushen
+Als u wijzigingen van uw lokale repository naar de serverrepository wilt pushen, moet u uw wijzigingen vastleggen en deze vervolgens naar de serverrepository pushen. Als u uw wijzigingen wilt vastleggen, opent u uw Git-opdrachtgereedschap, schakelt u over naar de map van uw lokale opslagplaats en geeft u de volgende opdrachten uit.
 
 ```
 git add --all
 git commit -m "Description of your changes"
 ```
 
-Voer de volgende opdracht uit om alle door voer te pushen naar de-server.
+Voer de volgende opdracht uit om alle commits naar de server te pushen.
 
 ```
 git push
 ```
 
-## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>Wijzigingen in de service configuratie voor het API Management service-exemplaar implementeren
+## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>Wijzigingen in de serviceconfiguratie implementeren in het api-beheerserviceexemplaar
 
-Zodra uw lokale wijzigingen zijn doorgevoerd en naar de server opslagplaats zijn gepusht, kunt u deze implementeren in uw API Management service-exemplaar.
+Zodra uw lokale wijzigingen zijn vastgelegd en naar de serverrepository zijn gepusht, u deze implementeren in uw API Management-serviceinstantie.
 
-Zie [Git-wijzigingen in de configuratie database implementeren met behulp](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration)van de rest API voor meer informatie over het uitvoeren van deze bewerking met behulp van de rest API.
+Zie [Git-wijzigingen implementeren in de configuratiedatabase met behulp van de REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration)voor informatie over het uitvoeren van deze bewerking met de REST API.
 
-## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Verwijzing naar bestands-en mapstructuur van lokale Git-opslag plaats
+## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Verwijzing naar bestands- en mapstructuur van de lokale Git-opslagplaats
 
-De bestanden en mappen in de lokale Git-opslag plaats bevatten de configuratie-informatie over het service-exemplaar.
+De bestanden en mappen in de lokale git-opslagplaats bevatten de configuratie-informatie over de service-instantie.
 
-| Item | Description |
+| Item | Beschrijving |
 | --- | --- |
-| hoofdmap-API-beheer map |Bevat configuratie op het hoogste niveau voor het service-exemplaar |
-| de map api's |Bevat de configuratie voor de api's in het service-exemplaar |
-| map groepen |Bevat de configuratie voor de groepen in het service-exemplaar |
-| map beleid |Bevat de beleids regels in het service-exemplaar |
-| map portalStyles |Bevat de configuratie voor de aanpassingen van de ontwikkelaars Portal in het service-exemplaar |
-| de map Products |Bevat de configuratie voor de producten in het service-exemplaar |
-| map met sjablonen |Bevat de configuratie voor de e-mail sjablonen in het service-exemplaar |
+| map root-api-beheer |Bevat configuratie op het hoogste niveau voor de service-instantie |
+| apismap |Bevat de configuratie voor de api's in de service-instantie |
+| groepenmap |Bevat de configuratie voor de groepen in de service-instantie |
+| beleidsmap |Bevat het beleid in de service-instantie |
+| portalStyles- map |Bevat de configuratie voor de aanpassingen van de ontwikkelaarsportal in de service-instantie |
+| productmap |Bevat de configuratie voor de producten in de service-instantie |
+| map sjablonen |Bevat de configuratie voor de e-mailsjablonen in de service-instantie |
 
-Elke map kan een of meer bestanden bevatten, en in sommige gevallen een of meer mappen, bijvoorbeeld een map voor elke API, product of groep. De bestanden in elke map zijn specifiek voor het entiteits type dat wordt beschreven door de naam van de map.
+Elke map kan een of meer bestanden bevatten, en in sommige gevallen een of meer mappen, bijvoorbeeld een map voor elke API, product of groep. De bestanden in elke map zijn specifiek voor het entiteitstype dat wordt beschreven door de mapnaam.
 
 | Bestandstype | Doel |
 | --- | --- |
-| json |Configuratie-informatie over de respectieve entiteit |
-| html |Beschrijvingen van de entiteit, vaak weer gegeven in de ontwikkelaars Portal |
+| json |Configuratie-informatie over de desbetreffende entiteit |
+| html |Beschrijvingen over de entiteit, vaak weergegeven in de ontwikkelaarsportal |
 | xml |Beleidsinstructies |
-| SS |Opmaak modellen voor het aanpassen van de ontwikkelaars Portal |
+| css |Stijlbladen voor het aanpassen van ontwikkelaarsportalen |
 
-U kunt deze bestanden maken, verwijderen, bewerken en beheren op uw lokale bestands systeem, en de wijzigingen worden weer geïmplementeerd in uw API Management service-exemplaar.
+Deze bestanden kunnen worden gemaakt, verwijderd, bewerkt en beheerd op uw lokale bestandssysteem en de wijzigingen die zijn geïmplementeerd in uw API Management-serviceinstantie.
 
 > [!NOTE]
-> De volgende entiteiten bevinden zich niet in de Git-opslag plaats en kunnen niet worden geconfigureerd met behulp van Git.
+> De volgende entiteiten zijn niet opgenomen in de Git-repository en kunnen niet worden geconfigureerd met Git.
 >
 > * [Gebruikers](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
 > * [Abonnementen](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
 > * [Benoemde waarden](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
-> * Portal-entiteiten voor ontwikkel aars behalve stijlen
+> * Andere entiteiten voor ontwikkelaarsportalen dan stijlen
 >
 
-### <a name="root-api-management-folder"></a>Hoofdmap-API-beheer map
-De hoofdmap `api-management` bevat een `configuration.json` bestand dat informatie bevat over het hoogste niveau van het service-exemplaar in de volgende indeling.
+### <a name="root-api-management-folder"></a>Map voor api-beheer van root's
+De `api-management` hoofdmap `configuration.json` bevat een bestand dat informatie op het hoogste niveau bevat over de service-instantie in de volgende indeling.
 
 ```json
 {
@@ -198,74 +198,74 @@ De hoofdmap `api-management` bevat een `configuration.json` bestand dat informat
 }
 ```
 
-De eerste vier instellingen (`RegistrationEnabled`, `UserRegistrationTerms`, `UserRegistrationTermsEnabled`en `UserRegistrationTermsConsentRequired`) worden toegewezen aan de volgende instellingen op het tabblad **identiteiten** in het gedeelte **beveiliging** .
+De eerste vier`RegistrationEnabled` `UserRegistrationTerms`instellingen `UserRegistrationTermsEnabled`( `UserRegistrationTermsConsentRequired`, , en ) worden toegewezen aan de volgende instellingen op het tabblad **Identiteiten** in de sectie **Beveiliging.**
 
-| Identiteits instelling | Wordt toegewezen aan |
+| Identiteitsinstelling | Kaarten aan |
 | --- | --- |
-| RegistrationEnabled |Aanwezigheid van ID-provider van **gebruikers naam en wacht woord** |
-| UserRegistrationTerms |**Gebruiksvoorwaarden op het tekstvak voor de aanmelding van de gebruiker** |
-| UserRegistrationTermsEnabled |Selectie vakje **gebruiks voorwaarden weer geven op de aanmeldings pagina** |
-| UserRegistrationTermsConsentRequired |Selectie vakje **toestemming vereisen** |
-| RequireUserSigninEnabled |Selectie vakje **anonieme gebruikers omleiden naar aanmeldings pagina** |
+| RegistrationEnabled |Aanwezigheid van **gebruikersnaam en wachtwoord** identiteitsprovider |
+| Gebruikersregistratievoorwaarden |**Gebruiksvoorwaarden op** het tekstvak voor gebruikersaanmelding |
+| Gebruikersregistratievoorwaarden ingeschakeld |**Gebruiksvoorwaarden weergeven op aanmeldingspagina** |
+| Toestemming voor gebruikersregistratievereist |**Het selectievakje Toestemming vereisen** |
+| VereisenUserSigninEnabled |**Anonieme gebruikers omleiden naar aanmeldingspagina** |
 
-De volgende vier instellingen (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`en `DelegationValidationKey`) worden toegewezen aan de volgende instellingen op het tabblad **delegering** in het gedeelte **beveiliging** .
+De volgende vier`DelegationEnabled` `DelegationUrl`instellingen `DelegatedSubscriptionEnabled`( `DelegationValidationKey`, , en ) worden toegewezen aan de volgende instellingen op het tabblad **Delegatie** in de sectie **Beveiliging.**
 
-| Overdrachts instelling | Wordt toegewezen aan |
+| Delegatieinstelling | Kaarten aan |
 | --- | --- |
-| DelegationEnabled |Selectie vakje **aanmelden & aanmelding voor gemachtigde** |
-| DelegationUrl |Tekstvak voor **eind punt-URL van overdracht** |
-| DelegatedSubscriptionEnabled |Selectie vakje voor **delegeren van product abonnement** |
-| DelegationValidationKey |Tekstvak voor **validatie sleutel voor gemachtigde** |
+| DelegatieIngeschakeld |**Aanmelden voor de leger & aanmeldingsselectievakje** |
+| Deurl van de delegatie |**Tekstvak voor het eindpunt van de leger** |
+| GedelegeerdAbonnementingeschakeld |**Selectievakje Productabonnement delegeren** |
+| Devalidatiesleutel voor delegatie |**Tekstvak validatiesleutel delegeren** |
 
-De laatste instelling, `$ref-policy`, verwijst naar het bestand met globale beleids overzichten voor het service-exemplaar.
+De uiteindelijke `$ref-policy`instelling wordt toegewezen aan het bestand met globale beleidsoverzichten voor de serviceinstantie.
 
-### <a name="apis-folder"></a>de map api's
-De `apis` map bevat een map voor elke API in het service-exemplaar, die de volgende items bevat.
+### <a name="apis-folder"></a>apismap
+De `apis` map bevat een map voor elke API in de service-instantie, die de volgende items bevat.
 
-* `apis\<api name>\configuration.json`-Dit is de configuratie voor de API en bevat informatie over de URL van de back-end-service en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u [een specifieke API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) met `export=true` in `application/json` -indeling moet aanroepen.
-* `apis\<api name>\api.description.html`-Dit is de beschrijving van de API en komt overeen met `description` de eigenschap van de [API-entiteit](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
-* `apis\<api name>\operations\`-deze map bevat `<operation name>.description.html` bestanden die zijn toegewezen aan de bewerkingen in de API. Elk bestand bevat de beschrijving van één bewerking in de API, die wordt toegewezen aan de `description` eigenschap van de [entiteit](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) van de bewerking in de rest API.
+* `apis\<api name>\configuration.json`- dit is de configuratie voor de API en bevat informatie over de URL van de backendservice en de bewerkingen. Dit is dezelfde informatie die zou worden geretourneerd als u `export=true` `application/json` een [specifieke API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) met in formaat zou aanroepen.
+* `apis\<api name>\api.description.html`- dit is de beschrijving van de `description` API en komt overeen met de eigenschap van de [API-entiteit](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\operations\`- deze `<operation name>.description.html` map bevat bestanden die worden toegewezen aan de bewerkingen in de API. Elk bestand bevat de beschrijving van één bewerking in `description` de API, die wordt toegewezen aan de eigenschap van de [bewerkingsentiteit](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) in de REST-API.
 
-### <a name="groups-folder"></a>map groepen
-De `groups` map bevat een map voor elke groep die is gedefinieerd in het service-exemplaar.
+### <a name="groups-folder"></a>groepenmap
+De `groups` map bevat een map voor elke groep die is gedefinieerd in de serviceinstantie.
 
-* `groups\<group name>\configuration.json`: dit is de configuratie voor de groep. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke groep ophalen](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get) aanroept.
-* `groups\<group name>\description.html`-Dit is de beschrijving van de groep en komt overeen met `description` de eigenschap van de [entiteit groep](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
+* `groups\<group name>\configuration.json`- dit is de configuratie voor de groep. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [Een specifieke groepsbewerking bellen.](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get)
+* `groups\<group name>\description.html`- dit is de beschrijving van de `description` groep en komt overeen met het eigendom van de [groepsentiteit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
-### <a name="policies-folder"></a>map beleid
-De `policies` map bevat de beleids instructies voor uw service-exemplaar.
+### <a name="policies-folder"></a>beleidsmap
+De `policies` map bevat de beleidsinstructies voor uw service-exemplaar.
 
-* `policies\global.xml`-bevat beleids regels die zijn gedefinieerd in het globale bereik voor uw service-exemplaar.
-* `policies\apis\<api name>\`-Als u beleids regels hebt gedefinieerd in het API-bereik, zijn deze opgenomen in deze map.
-* `policies\apis\<api name>\<operation name>\`map: als er beleids regels zijn gedefinieerd in het bewerkings bereik, worden deze opgenomen in `<operation name>.xml` deze map in bestanden die worden toegewezen aan de beleids instructies voor elke bewerking.
-* `policies\products\`-Als u beleids regels hebt gedefinieerd op product bereik, zijn deze opgenomen in deze map, die bestanden `<product name>.xml` bevat die zijn gekoppeld aan de beleids instructies voor elk product.
+* `policies\global.xml`- bevat beleid dat is gedefinieerd op basis van globale scope voor uw service-instantie.
+* `policies\apis\<api name>\`- als u beleid hebt dat is gedefinieerd op API-bereik, worden deze in deze map opgenomen.
+* `policies\apis\<api name>\<operation name>\`map - als u beleid hebt gedefinieerd op het werkingsgebied, worden deze in deze map opgenomen in `<operation name>.xml` bestanden die worden toegewezen aan de beleidsinstructies voor elke bewerking.
+* `policies\products\`- als u beleid hebt dat is gedefinieerd op basis van `<product name>.xml` de productscope, worden deze in deze map opgenomen, die bestanden bevat die worden toegewezen aan de beleidsoverzichten voor elk product.
 
-### <a name="portalstyles-folder"></a>map portalStyles
-De `portalStyles` map bevat configuratie-en stijl bladen voor aanpassingen van de ontwikkelaars portal voor het service-exemplaar.
+### <a name="portalstyles-folder"></a>portalStyles- map
+De `portalStyles` map bevat configuratie- en stijlbladen voor aanpassing van ontwikkelaarsportalen voor de serviceinstantie.
 
-* `portalStyles\configuration.json`-bevat de namen van de opmaak modellen die worden gebruikt door de ontwikkelaars Portal
-* `portalStyles\<style name>.css`-elk `<style name>.css` bestand bevat stijlen voor de ontwikkelaars Portal (`Preview.css` en `Production.css` is standaard).
+* `portalStyles\configuration.json`- de namen bevat van de stijlbladen die door de ontwikkelaarsportal worden gebruikt
+* `portalStyles\<style name>.css`- `<style name>.css` elk bestand bevat stijlen`Preview.css` voor `Production.css` de ontwikkelaarsportal (en standaard).
 
-### <a name="products-folder"></a>de map Products
-De `products` map bevat een map voor elk product dat is gedefinieerd in het service-exemplaar.
+### <a name="products-folder"></a>productmap
+De `products` map bevat een map voor elk product dat is gedefinieerd in de serviceinstantie.
 
-* `products\<product name>\configuration.json`: dit is de configuratie voor het product. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking [een specifieke product ophalen](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get) aanroept.
-* `products\<product name>\product.description.html`: dit is de beschrijving van het product en komt overeen met `description` de eigenschap van de [product entiteit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in de rest API.
+* `products\<product name>\configuration.json`- dit is de configuratie voor het product. Dit is dezelfde informatie die zou worden geretourneerd als u de bewerking Een specifiek product gebruiken voor [het uitvoeren van een specifiek product](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get) zou bellen.
+* `products\<product name>\product.description.html`- dit is de beschrijving van het `description` product en komt overeen met de eigenschap van de [productentiteit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) in de REST API.
 
 ### <a name="templates"></a>sjablonen
-De `templates` map bevat configuratie voor de [e-mail sjablonen](api-management-howto-configure-notifications.md) van het service-exemplaar.
+De `templates` map bevat configuratie voor de [e-mailsjablonen](api-management-howto-configure-notifications.md) van de service-instantie.
 
-* `<template name>\configuration.json`-Dit is de configuratie voor de e-mail sjabloon.
-* `<template name>\body.html`: dit is de hoofd tekst van de e-mail sjabloon.
+* `<template name>\configuration.json`- dit is de configuratie voor de e-mailsjabloon.
+* `<template name>\body.html`- dit is de hoofdtekst van de e-mailsjabloon.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over andere manieren om uw service-exemplaar te beheren:
+Zie voor informatie over andere manieren om uw service-instantie te beheren:
 
-* Uw service-exemplaar beheren met de volgende Power shell-cmdlets
-  * [Naslag informatie voor de Power shell-cmdlet service-implementatie](https://docs.microsoft.com/powershell/module/wds)
-  * [Naslag informatie voor Service Management Power shell-cmdlets](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
-* Beheer uw service-exemplaar met behulp van de REST API
-  * [Naslag informatie over API Management REST API](/rest/api/apimanagement/)
+* Uw serviceinstantie beheren met de volgende PowerShell-cmdlets
+  * [Referentiemateriaal voor PowerShell-cmdlets voor service-implementatie](https://docs.microsoft.com/powershell/module/wds)
+  * [Referentiemateriaal voor PowerShell-cmdlets voor servicebeheer](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
+* Uw serviceinstantie beheren met de REST API
+  * [API-api-verwijzing API-api voor API-beheer](/rest/api/apimanagement/)
 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png

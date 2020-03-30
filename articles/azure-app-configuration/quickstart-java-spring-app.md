@@ -1,5 +1,5 @@
 ---
-title: Quick start voor informatie over het gebruik van Azure-app configuratie
+title: Snelstart voor meer informatie over het gebruik van Azure App Configuration
 description: Een quickstart voor het gebruik van Azure App Configuration met Java Spring-apps.
 services: azure-app-configuration
 documentationcenter: ''
@@ -10,57 +10,59 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7b89696e60189a8ab2585f8511be32ddaa89e826
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c156d5f1242674adc53a2a813e9b2c140221ecfb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79216779"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245307"
 ---
-# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Snelstartgids: een Java-lente-app maken met Azure-app configuratie
+# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Snelstart: een Java Spring-app maken met Azure-app-configuratie
 
-In deze Snelstartgids neemt u Azure-app configuratie op in een Java lente-app om opslag en beheer van toepassings instellingen gescheiden van uw code te centraliseren.
+In deze quickstart neemt u Azure App Configuration op in een Java Spring-app om de opslag en het beheer van toepassingsinstellingen te centraliseren, gescheiden van uw code.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-- Een ondersteund [jdk (Java Development Kit)](https://docs.microsoft.com/java/azure/jdk) met versie 8.
-- [Apache Maven](https://maven.apache.org/download.cgi) -versie 3,0 of hoger.
+- Azure-abonnement - [maak er gratis een](https://azure.microsoft.com/free/)
+- Een ondersteunde [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) met versie 8.
+- [Apache Maven](https://maven.apache.org/download.cgi) versie 3.0 of hoger.
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
+## <a name="create-an-app-configuration-store"></a>Een app-configuratiearchief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-1. Selecteer **configuratie verkenner** >  **+ maken** om de volgende sleutel-waardeparen toe te voegen:
+6. Selecteer **Configuratieverkenner** > **+ Sleutelwaarde maken** > **Key-value** om de volgende sleutelwaardeparen toe te voegen:
 
     | Sleutel | Waarde |
     |---|---|
     | /application/config.message | Hello |
 
-    Laat het **Label** en het **inhouds type** nu leeg.
+    Laat **label en** **inhoudstype** voorlopig leeg.
+
+7. Selecteer **Toepassen**.
 
 ## <a name="create-a-spring-boot-app"></a>Een Spring Boot-app maken
 
-Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw Spring boot-project te maken.
+Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boot-project te maken.
 
 1. Blader naar <https://start.spring.io/>.
 
 1. Geef de volgende opties op:
 
    - Genereer een **Maven**-project met **Java**.
-   - Geef een **Spring boot** -versie op die gelijk is aan of groter is dan 2,0.
+   - Geef een **springbootversie** op die gelijk is aan of groter is dan 2.0.
    - Geef de namen voor **Groep** en **Artefact** voor uw toepassing op.
-   - Voeg de **lente** webafhankelijkheid toe.
+   - Voeg de afhankelijkheid **van het lenteweb** toe.
 
-1. Nadat u de vorige opties hebt opgegeven, selecteert u **project genereren**. Wanneer u hierom wordt gevraagd, downloadt u het project naar een pad op uw lokale computer.
+1. Nadat u de vorige opties hebt opgegeven, selecteert u **Project genereren**. Wanneer u hierom wordt gevraagd, downloadt u het project naar een pad op uw lokale computer.
 
-## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
+## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratiearchief
 
-1. Nadat u de bestanden op het lokale systeem hebt uitgepakt, kunt u de toepassing voor het uitvoeren van een eenvoudige Spring boot bewerken. Zoek het bestand *pom.xml* in de hoofdmap van uw app.
+1. Nadat u de bestanden op uw lokale systeem hebt uitgepakt, is uw eenvoudige toepassing voor springboot klaar om te worden bewerkt. Zoek het bestand *pom.xml* in de hoofdmap van uw app.
 
 1. Open het bestand *pom.xml* in een teksteditor en voeg de starter Spring Cloud Azure Config toe aan de lijst van `<dependencies>`:
 
-    **Lente Cloud 1.1. x**
+    **Voorjaarswolk 1.1.x**
 
     ```xml
     <dependency>
@@ -70,7 +72,7 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
     </dependency>
     ```
 
-    **Lente Cloud 1.2. x**
+    **Voorjaarswolk 1.2.x**
 
     ```xml
     <dependency>
@@ -138,19 +140,19 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
     }
     ```
 
-1. Maak een nieuw bestand met de naam `bootstrap.properties` in de map resources van uw app en voeg de volgende regels toe aan het bestand. Vervang de voorbeeld waarden door de juiste eigenschappen voor de app-configuratie opslag.
+1. Maak een nieuw `bootstrap.properties` bestand met de naam onder de bronnenmap van uw app en voeg de volgende regels toe aan het bestand. Vervang de voorbeeldwaarden door de juiste eigenschappen voor uw app-configuratiearchief.
 
     ```CLI
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Stel een omgevings variabele met de naam **APP_CONFIGURATION_CONNECTION_STRING**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Voer op de opdracht regel de volgende opdracht uit en start de opdracht prompt om de wijziging toe te passen:
+1. Stel een omgevingsvariabele met de naam **APP_CONFIGURATION_CONNECTION_STRING**in en stel deze in op de toegangssleutel voor uw App Configuration Store. Voer bij de opdrachtregel de volgende opdracht uit en start de opdrachtprompt opnieuw om de wijziging van kracht te laten worden:
 
-    ```CLI
+    ```cmd
         setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
     ```
 
-    Als u Windows Power shell gebruikt, voert u de volgende opdracht uit:
+    Als u Windows PowerShell gebruikt, voert u de volgende opdracht uit:
 
     ```azurepowershell
         $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
@@ -158,26 +160,26 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
     Als u macOS of Linux gebruikt, voert u de volgende opdracht uit:
 
-    ```console
+    ```cmd
         export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
-1. Maak een Spring boot-toepassing met maven en voer deze uit, bijvoorbeeld:
+1. Bouw je Spring Boot applicatie met Maven en voer deze uit, bijvoorbeeld:
 
-    ```CLI
+    ```cmd
     mvn clean package
     mvn spring-boot:run
     ```
 
 2. Nadat uw toepassing is uitgevoerd, gebruikt u *krul* om uw toepassing te testen, bijvoorbeeld:
 
-      ```CLI
+      ```cmd
       curl -X GET http://localhost:8080/
       ```
 
-    U ziet het bericht dat u hebt ingevoerd in de app-configuratie opslag.
+    U ziet het bericht dat u hebt ingevoerd in de App Configuration Store.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -185,7 +187,7 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt in een Java lente-app. Zie [lente op Azure](https://docs.microsoft.com/java/azure/spring-framework/)voor meer informatie. Ga door naar de volgende zelf studie voor meer informatie over het inschakelen van de Java lente-app om configuratie-instellingen dynamisch te vernieuwen.
+In deze quickstart hebt u een nieuwe App Configuration Store gemaakt en gebruikt met een Java Spring-app. Zie [Lente op Azure](https://docs.microsoft.com/java/azure/spring-framework/)voor meer informatie. Ga verder naar de volgende zelfstudie voor meer informatie over het inschakelen van uw Java Spring-app om de configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
 > [Dynamische configuratie inschakelen](./enable-dynamic-configuration-java-spring-app.md)

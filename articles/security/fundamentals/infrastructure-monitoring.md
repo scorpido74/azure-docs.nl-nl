@@ -1,6 +1,6 @@
 ---
-title: Bewaking van Azure-infra structuur
-description: In dit artikel wordt de bewaking van het productie netwerk van Azure beschreven.
+title: Azure-infrastructuurbewaking
+description: In dit artikel wordt de bewaking van het Azure-productienetwerk besproken.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,48 +16,48 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: af9c157b4644156edc6dcdb1b53c141263576500
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727154"
 ---
-# <a name="azure-infrastructure-monitoring"></a>Bewaking van Azure-infra structuur   
+# <a name="azure-infrastructure-monitoring"></a>Azure-infrastructuurbewaking   
 
-## <a name="configuration-and-change-management"></a>Configuratie-en wijzigings beheer
-Azure controleert en werkt de configuratie-instellingen en basislijn configuraties van hardware, software en netwerk apparaten jaarlijks af. Wijzigingen worden ontwikkeld, getest en goedgekeurd vóór het invoeren van de productie omgeving vanuit een ontwikkelings-en/of test omgeving.
+## <a name="configuration-and-change-management"></a>Configuratie- en wijzigingsbeheer
+Azure controleert en werkt jaarlijks configuratie-instellingen en basislijnconfiguraties van hardware, software en netwerkapparaten. Wijzigingen worden ontwikkeld, getest en goedgekeurd voordat ze vanuit een ontwikkel- en/of testomgeving in de productieomgeving terechtkomen.
 
-De basislijn configuraties die vereist zijn voor services op basis van Azure worden gecontroleerd door het Azure Security-en nalevings team en door service teams. Een beoordeling van een service team maakt deel uit van de tests die zich voordoen voordat de implementatie van de productie service wordt uitgevoerd.
+De basislijnconfiguraties die vereist zijn voor Azure-gebaseerde services worden beoordeeld door het Azure-beveiligings- en nalevingsteam en door serviceteams. Een serviceteambeoordeling maakt deel uit van de tests die plaatsvinden vóór de implementatie van hun productieservice.
 
-## <a name="vulnerability-management"></a>Beveiligings beheer
-Met beveiligings update beheer kunt u systemen beveiligen tegen bekende beveiligings problemen. Azure gebruikt geïntegreerde implementatie systemen voor het beheren van de distributie en installatie van beveiligings updates voor micro soft-software. Azure kan ook op de resources van het micro soft Security Response Center (MSRC) tekenen. Het MSRC identificeert, bewaakt, reageert op en verhelpt beveiligings incidenten en Cloud lekken rondom de klok, elke dag van het jaar.
+## <a name="vulnerability-management"></a>Kwetsbaarheidsbeheer
+Beveiligingsupdatebeheer helpt systemen te beschermen tegen bekende kwetsbaarheden. Azure maakt gebruik van geïntegreerde implementatiesystemen om de distributie en installatie van beveiligingsupdates voor Microsoft-software te beheren. Azure kan ook gebruik maken van de bronnen van het Microsoft Security Response Center (MSRC). De MSRC identificeert, controleert, reageert op en lost 24 uur per dag beveiligingsincidenten en cloudkwetsbaarheden op.
 
-## <a name="vulnerability-scanning"></a>Scannen van beveiligings problemen
-Het scannen van beveiligings problemen wordt uitgevoerd op Server besturingssystemen, data bases en netwerk apparaten. Het beveiligings probleem wordt gescand op elk kwar taal op basis van het minimum. Azure-contracten met onafhankelijke beoordelaars voor het uitvoeren van indringings tests van de Azure-grens. Er worden ook dagelijkse team oefeningen uitgevoerd en de resultaten worden gebruikt om beveiligings verbeteringen aan te brengen.
+## <a name="vulnerability-scanning"></a>Kwetsbaarheid scannen
+Het scannen van kwetsbaarheden wordt uitgevoerd op besturingssystemen, databases en netwerkapparaten van servers. De kwetsbaarheid scans worden uitgevoerd op een kwartaal basis op zijn minst. Azure-contracten met onafhankelijke beoordelaars om penetratietests van de Azure-grens uit te voeren. Red-team oefeningen worden ook routinematig uitgevoerd en de resultaten worden gebruikt om verbeteringen in de beveiliging te maken.
 
-## <a name="protective-monitoring"></a>Beschermende bewaking
-Azure-beveiliging heeft vereisten voor actieve bewaking gedefinieerd. Service teams configureren actieve bewakings hulpprogramma's volgens deze vereisten. Actieve bewakings hulpprogramma's omvatten micro soft Monitoring Agent (MMA) en System Center Operations Manager. Deze hulpprogram ma's worden geconfigureerd om tijd waarschuwingen te bieden aan Azure-beveiligings personeel in situaties waarvoor onmiddellijke actie is vereist.
+## <a name="protective-monitoring"></a>Beschermende controle
+Azure-beveiliging heeft vereisten gedefinieerd voor actieve bewaking. Serviceteams configureren actieve monitoringtools in overeenstemming met deze vereisten. Actieve monitoringtools omvatten de Microsoft Monitoring Agent (MMA) en System Center Operations Manager. Deze hulpprogramma's zijn geconfigureerd om tijdwaarschuwingen te geven aan Azure-beveiligingspersoneel in situaties die onmiddellijke actie vereisen.
 
-## <a name="incident-management"></a>incidentbeheer
-Micro soft implementeert een proces voor het beheren van beveiligings incidenten om een gecoördineerde reactie op incidenten te vergemakkelijken. dit moet zich voordoen.
+## <a name="incident-management"></a>Incidentbeheer
+Microsoft implementeert een beveiligingsincidentbeheerproces om een gecoördineerde reactie op incidenten te vergemakkelijken, mocht er een optreden.
 
-Als micro soft op de hoogte wordt gebracht van ongeoorloofde toegang tot klant gegevens die zijn opgeslagen op het apparaat of in zijn faciliteiten, of als het gaat om onbevoegde toegang tot dergelijke apparatuur of faciliteiten, wat leidt tot verlies, openbaar making of wijziging van klant gegevens, Micro soft voert de volgende acties uit:
+Als Microsoft zich bewust wordt van ongeoorloofde toegang tot klantgegevens die zijn opgeslagen op haar apparatuur of in haar faciliteiten, of als microsoft zich bewust wordt van ongeoorloofde toegang tot dergelijke apparatuur of faciliteiten die leiden tot verlies, openbaarmaking of wijziging van klantgegevens, Microsoft voert de volgende acties uit:
 
-- Hiermee wordt de klant van het beveiligings incident onmiddellijk op de hoogte gebracht.
-- Onderzoekt het beveiligings incident en biedt klanten gedetailleerde informatie over het beveiligings incident.
-- Neemt redelijke en prompt stappen voor het oplossen van de gevolgen en minimaliseert de schade die het gevolg is van het beveiligings incident.
+- Stelt de klant onmiddellijk op de hoogte van het beveiligingsincident.
+- Onderzoekt snel het beveiligingsincident en geeft klanten gedetailleerde informatie over het beveiligingsincident.
+- Neemt redelijke en snelle stappen om de gevolgen te beperken en eventuele schade als gevolg van het beveiligingsincident te minimaliseren.
 
-Er is een framework voor incident beheer gemaakt waarmee rollen worden gedefinieerd en de verantwoordelijkheden worden toegewezen. Het Azure security incident management-team is verantwoordelijk voor het beheer van beveiligings incidenten, met inbegrip van escalatie en het garanderen van de betrokkenheid van gespecialiseerde teams, indien nodig. Azure Operations Manager is verantwoordelijk voor het toezicht op en de oplossing van beveiligings-en privacy-incidenten.
+Er is een incidentmanagementframework opgesteld dat rollen definieert en verantwoordelijkheden toewijst. Het Azure Security Incident Management Team is verantwoordelijk voor het beheren van beveiligingsincidenten, waaronder escalatie, en het waarborgen van de betrokkenheid van gespecialiseerde teams wanneer dat nodig is. Azure operations managers zijn verantwoordelijk voor het toezicht op het onderzoek en de oplossing van beveiligings- en privacyincidenten.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over de mogelijkheden van micro soft voor het beveiligen van de Azure-infra structuur:
+Zie voor meer informatie over wat Microsoft doet om de Azure-infrastructuur te beveiligen:
 
-- [Azure-faciliteiten,-locaties en fysieke beveiliging](physical-security.md)
-- [Beschik baarheid van Azure-infra structuur](infrastructure-availability.md)
-- [Azure Information System-onderdelen en-grenzen](infrastructure-components.md)
-- [Azure-netwerk architectuur](infrastructure-network.md)
-- [Productie netwerk van Azure](production-network.md)
-- [Azure SQL Database beveiligings functies](infrastructure-sql.md)
-- [Azure-productie bewerkingen en-beheer](infrastructure-operations.md)
-- [Integriteit van Azure-infra structuur](infrastructure-integrity.md)
-- [Azure-klant gegevens beveiliging](protection-customer-data.md)
+- [Azure-faciliteiten, lokalen en fysieke beveiliging](physical-security.md)
+- [Beschikbaarheid azure-infrastructuur](infrastructure-availability.md)
+- [Onderdelen en grenzen van azure-informatiesysteem](infrastructure-components.md)
+- [Azure-netwerkarchitectuur](infrastructure-network.md)
+- [Azure-productienetwerk](production-network.md)
+- [Beveiligingsfuncties van Azure SQL Database](infrastructure-sql.md)
+- [Azure-productiebewerkingen en -beheer](infrastructure-operations.md)
+- [Integriteit van Azure-infrastructuur](infrastructure-integrity.md)
+- [Azure-klantgegevensbeveiliging](protection-customer-data.md)

@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over Internet analyse | Microsoft Docs
-description: De veelgestelde vragen over Azure Internet Analyzer.
+title: Veelgestelde vragen over internetanalyse | Microsoft Documenten
+description: De veelgestelde vragen voor Azure Internet Analyzer.
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
@@ -8,62 +8,62 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74184257"
 ---
-# <a name="azure-internet-analyzer-faq-preview"></a>Veelgestelde vragen over Azure Internet Analyzer (preview-versie)
+# <a name="azure-internet-analyzer-faq-preview"></a>Veelgestelde vragen over Azure Internet Analyzer (voorbeeld)
 
-Dit is de veelgestelde vragen voor Azure Internet Analyzer: als u meer vragen hebt, gaat u naar het [Feedback forum](https://aka.ms/internetAnalyzerFeedbackForum) en plaatst u uw vraag. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
+Dit is de veelgestelde vragen voor Azure Internet Analyzer: als u aanvullende vragen hebt, gaat u naar het [feedbackforum](https://aka.ms/internetAnalyzerFeedbackForum) en plaatst u uw vraag. Wanneer een vraag vaak wordt gesteld, voegen we deze toe aan dit artikel, zodat deze snel en gemakkelijk kan worden gevonden.
 
-## <a name="how-do-i-participate-in-the-preview"></a>Hoe kan ik meedoen aan de preview?
+## <a name="how-do-i-participate-in-the-preview"></a>Hoe neem ik deel aan de preview?
 
-De preview-versie is beschikbaar voor bepaalde klanten. Ga als volgt te werk als u wilt deel nemen aan de preview-versie:
+De preview is beschikbaar voor bepaalde klanten. Als je geïnteresseerd bent om deel te nemen aan de preview, ga je als volgt te werk:
 
 1. Meld u aan bij [Azure Portal](https://ms.portal.azure.com).
-2. Navigeer naar de pagina **abonnementen** .
-3. Klik op het Azure-abonnement dat u wilt gebruiken Internet Analyzer met.
-4. Ga naar de instellingen van de **resource providers** voor het abonnement.
-5. Zoek naar **micro soft. Network** en klik op de knop **registreren** (of **opnieuw registreren**).
-![toegangs aanvraag](./media/ia-faq/request-preview-access.png)
+2. Navigeer naar de pagina **Abonnementen.**
+3. Klik op het Azure-abonnement waarmee u Internet Analyzer wilt gebruiken.
+4. Ga naar de instellingen **resourceproviders** voor het abonnement.
+5. Zoek naar **Microsoft.Network** en klik op de knop **Registreren** (of **opnieuw registreren).**
+![toegangsverzoek](./media/ia-faq/request-preview-access.png)
 
-6. [Goed keuring aanvragen](https://aka.ms/internetAnalyzerContact) door ons uw e-mail adres en de id van het Azure-abonnement op te geven dat is gebruikt om de toegangs aanvraag te maken.
-7. Zodra uw aanvraag is goedgekeurd, ontvangt u een e-mail bevestiging en kunt u Internet Analyzer-resources maken/bijwerken of wijzigen op basis van het zojuist toegestane Azure-abonnement.
+6. [Vraag goedkeuring aan](https://aka.ms/internetAnalyzerContact) door ons uw e-mailadres en de Azure-abonnements-ID te verstrekken die is gebruikt om het toegangsverzoek in te dienen.
+7. Zodra uw aanvraag is goedgekeurd, ontvangt u een bevestiging per e-mail en u internetanalysebronnen maken/bijwerken/wijzigen vanuit het nieuw toegestane Azure-abonnement.
 
 ## <a name="do-i-need-to-embed-the-client-to-run-a-test"></a>Moet ik de client insluiten om een test uit te voeren?
 
-Ja, de Internet Analyzer-client moet zijn geïnstalleerd in uw toepassing voor het verzamelen van metrische gegevens die specifiek zijn voor uw gebruikers. [Meer informatie over het installeren van de client.](internet-analyzer-embed-client.md) 
+Ja, de Internet Analyzer-client moet in uw toepassing worden geïnstalleerd om statistieken te verzamelen die specifiek zijn voor uw gebruikers. [Meer informatie over het installeren van de client.](internet-analyzer-embed-client.md) 
 
-## <a name="do-i-get-billed-for-participating-in-the-preview"></a>Word ik gefactureerd voor mijn deelname aan de preview?
-Nee, Azure Internet Analyzer is gratis voor gebruik in de preview-versie. Er is geen service overeenkomst beschikbaar tijdens de preview-versie.
+## <a name="do-i-get-billed-for-participating-in-the-preview"></a>Krijg ik een factuur voor deelname aan de preview?
+Nee, Azure Internet Analyzer is gratis te gebruiken in preview. Er is geen service-level overeenkomst tijdens preview.
 
-## <a name="what-scenarios-is-internet-analyzer-designed-to-address"></a>Welke scenario's is Internet Analyzer ontworpen om te verhelpen?
+## <a name="what-scenarios-is-internet-analyzer-designed-to-address"></a>Welke scenario's is internet analyzer ontworpen om aan te pakken?
 
-Internet Analyzer is ontworpen om u netwerk prestatie inzichten te geven op basis van uw gebruikers populatie. Internet Analyzer vergelijkt de prestaties van twee Internet-eind punten met behulp van uw afzonderlijke gebruikers populatie om de beste prestatie beslissingen te nemen voor uw gebruikers. Hoewel Internet Analyzer een breed scala aan vragen kan beantwoorden, zijn de meest voorkomende problemen:
+Internet Analyzer is ontworpen om u inzichten in netwerkprestaties te bieden op basis van uw gebruikerspopulatie. Om uw gebruikers de beste prestatiebeslissingen te kunnen nemen, vergelijkt Internet Analyzer de prestaties van twee interneteindpunten met behulp van uw afzonderlijke gebruikerspopulatie. Hoewel Internet Analyzer een veelheid aan vragen kan beantwoorden, zijn enkele van de meest voorkomende:
 
-* Wat is de invloed van de prestaties van de migratie naar de Cloud? 
-    * *Aanbevolen test: aangepast (uw huidige on-premises infra structuur) versus Azure (elk vooraf geconfigureerd eind punt)*
-* Wat is de waarde van het plaatsen van mijn gegevens aan de rand versus in een Data Center? 
-    *  *Aanbevolen test: Azure versus Azure front-deur, Azure versus Azure CDN van micro soft*
-* Wat is het voor deel van de prestaties van Azure front-deur?
-    *  *Voorgestelde test: aangepast/Azure/CDN versus Azure front-deur*
-* Wat is het voor deel van de prestaties van Azure CDN van micro soft? 
-    *  *Aanbevolen test: Custom/Azure/AFD versus Azure CDN van micro soft*
-* Hoe werkt Azure CDN van micro soft? 
-    *  *Voorgestelde test: aangepast (ander CDN-eind punt) versus Azure CDN van micro soft*
-* Wat is de beste Cloud voor uw eindgebruikers populatie in elke regio? 
-    *  *Aanbevolen test: aangepast (andere Cloud service) versus Azure (elk vooraf geconfigureerd eind punt)*
+* Wat is de impact van de prestaties van migratie naar de cloud? 
+    * *Aanbevolen test: aangepast (uw huidige on-premises infrastructuur) versus Azure (elk vooraf geconfigureerd eindpunt)*
+* Wat is de waarde van mijn gegevens op de rand ten opzichte van een datacenter? 
+    *  *Aanbevolen test: Azure vs. Azure Front Door, Azure vs. Azure CDN van Microsoft*
+* Wat is het prestatievoordeel van Azure Front Door?
+    *  *Aanbevolen test: Aangepaste/ Azure/ CDN vs. Azure Front Door*
+* Wat is het prestatievoordeel van Azure CDN van Microsoft? 
+    *  *Aanbevolen test: Aangepaste/ Azure/ AFD vs. Azure CDN van Microsoft*
+* Hoe stapelt Azure CDN van Microsoft zich op? 
+    *  *Aanbevolen test: aangepast (ander CDN-eindpunt) versus Azure CDN van Microsoft*
+* Wat is de beste cloud voor uw eindgebruikerspopulatie in elke regio? 
+    *  *Aanbevolen test: aangepaste (andere cloudservice) versus Azure (elk vooraf geconfigureerd eindpunt)*
 
-## <a name="which-tests-can-i-run-in-preview"></a>Welke tests kan ik uitvoeren in Preview?
+## <a name="which-tests-can-i-run-in-preview"></a>Welke tests kan ik uitvoeren in preview?
 
-Elke test die u in Internet Analyzer maakt, bestaat uit twee eind punten: eind punt A en eind punt B. Een van de volgende combi Naties kan worden uitgevoerd als tests:  
-* Twee vooraf geconfigureerde eind punten,
-* Een aangepast en één vooraf geconfigureerd eind punt of
-* Twee [aangepaste eind punten](internet-analyzer-custom-endpoint.md) (een aangepast eind punt moet zich in azure bevinden).
+Elke test die u maakt in Internet Analyzer bestaat uit twee eindpunten: Eindpunt A en Eindpunt B. Een van de volgende combinaties kan als test worden uitgevoerd:  
+* Twee vooraf geconfigureerde eindpunten,
+* Eén aangepast en één vooraf geconfigureerd eindpunt, of
+* Twee [aangepaste eindpunten](internet-analyzer-custom-endpoint.md) (één aangepast eindpunt moet zich in Azure bevinden).
 
-De volgende vooraf geconfigureerde eind punten zijn beschikbaar tijdens de preview-versie:
+De volgende vooraf geconfigureerde eindpunten zijn beschikbaar tijdens de preview:
 * **Azure-regio's**
     * Brazilië - zuid
     * India - centraal
@@ -72,37 +72,37 @@ De volgende vooraf geconfigureerde eind punten zijn beschikbaar tijdens de previ
     * VS - oost
     * Japan - west
     * Europa - noord
-    * Zuid-Afrika - noord
+    * Zuid-Afrika Noord
     * Azië - zuidoost
-    * VAE - noord
+    * VAE Noord
     * Verenigd Koninkrijk West  
     * Europa -west
     * VS - west
     * VS - west 2
-* **Meerdere Azure-regio combinaties**
-    * VS-Oost, Brazilië-zuid
-    * VS-Oost, Azië-oost
-    * Europa-west, Brazilië-zuid
-    * Europa-west, Zuidoost-Azië
-    * Europa-west, UAE-noord
-    * VS-West, VS-Oost
-    * VS-West, Europa-west
-    * VS-West, UAE-noord
-    * Europa-west, UAE-noord, Zuidoost-Azië
-    * VS-West, Europa-west, Azië-oost
-    * VS-West, Europa-noord, Zuidoost-Azië, UAE-noord, Zuid-Afrika-noord 
-* **Azure + Azure front-deur** -geïmplementeerd op een combi natie van één of meer Azure-regio's die hierboven wordt vermeld
-* **Azure + Azure CDN van micro soft** geïmplementeerd op een enkele combi natie van Azure-regio's die hierboven wordt vermeld
-* **Azure + azure Traffic Manager** -geïmplementeerd op een combi natie van meerdere Azure-regio's die hierboven wordt vermeld
+* **Meerdere Azure-regiocombinaties**
+    * Oost-VS, Brazilië Zuid
+    * Oost-VS, Oost-Azië
+    * West-Europa, Brazilië Zuid
+    * West-Europa, Zuidoost-Azië
+    * West-Europa, VAE Noord
+    * West US, Oost-VS
+    * West-VS, West-Europa
+    * West US, VAE Noord
+    * West-Europa, VAE Noord, Zuidoost-Azië
+    * West-VS, West-Europa, Oost-Azië
+    * West-VS, Noord-Europa, Zuidoost-Azië, VAE Noord, Zuid-Afrika Noord 
+* **Azure + Azure Front Door** - geïmplementeerd op een enkele of meerdere Azure-regiocombinaties hierboven
+* **Azure + Azure CDN van Microsoft** - geïmplementeerd op een enkele Azure-regiocombinatie die hierboven wordt vermeld
+* **Azure + Azure Traffic Manager** - geïmplementeerd op een combinatie met meerdere Azure-regio's hierboven vermeld
 
-## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Hoe wijkt Internet Analyzer af van andere bewakings services die door Azure worden ondersteund?
+## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Waarin verschilt Internet Analyzer van andere bewakingsservices die door Azure worden geleverd?
 
-Internet Analyzer helpt u inzicht te krijgen in de prestaties van uw eind gebruikers en helpt bij het nemen van beslissingen om de prestaties te verbeteren. Terwijl andere Azure-bewakings Programma's inzicht bieden in uw Azure-Services, is Internet Analyzer gericht op het meten van end-to-end Internet prestaties voor uw gebruikers.
+Internet Analyzer helpt u de prestaties van uw eindgebruikers te begrijpen en helpt bij het nemen van beslissingen om hun prestaties te verbeteren. Terwijl andere Azure-bewakingstools inzicht bieden in uw Azure-services, richt Internet Analyzer zich op het meten van end-to-end internetprestaties voor uw gebruikers.
 
-## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Hoe worden meet gegevens verwerkt door Internet Analyzer?
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Hoe worden meetgegevens verwerkt door Internet Analyzer?
 
-Azure heeft [sterke beveiligings processen en voldoet aan een breed scala aan nalevings standaarden](https://azure.microsoft.com/support/trust-center/). Alleen u en uw specifieke team hebben toegang tot uw gegevens. Micro soft-mede werkers kunnen beperkte toegang hebben tot alleen onder specifieke beperkte omstandigheden met uw kennis. Het is versleuteld onderweg en in rust.
+Azure heeft [sterke beveiligingsprocessen en voldoet aan een breed scala aan nalevingsnormen.](https://azure.microsoft.com/support/trust-center/) Alleen u en uw aangewezen team hebben toegang tot uw gegevens. Microsoft-medewerkers kunnen er alleen onder specifieke beperkte omstandigheden toegang toe hebben onder specifieke beperkte omstandigheden met uw medeweten. Het is versleuteld tijdens het transport en in rust.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het [overzicht van Internet Analyzer](internet-analyzer-overview.md)voor meer informatie.
+Zie ons Internet [Analyzer Overview](internet-analyzer-overview.md)voor meer informatie.

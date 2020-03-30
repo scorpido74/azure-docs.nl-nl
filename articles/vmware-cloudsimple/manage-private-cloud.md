@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) Privécloud beheren
-description: Beschrijft de mogelijkheden die beschikbaar zijn voor het beheren van uw persoonlijke cloud resources en-activiteiten van uw AVS
+title: Azure VMware-oplossing beheren door CloudSimple Private Cloud
+description: Beschrijft de mogelijkheden die beschikbaar zijn voor het beheren van uw CloudSimple Private Cloud-bronnen en -activiteiten
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
@@ -8,87 +8,87 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 47bf2251f71204b99245c1a9d55ef87157c41dd8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 620c0226d3aca907352658ebbe1b94c7673d91cd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77014824"
 ---
-# <a name="manage-avs-private-cloud-resources-and-activities"></a>Automatische AVS-cloud resources en-activiteiten beheren
+# <a name="manage-private-cloud-resources-and-activity"></a>Private Cloud-bronnen en -activiteiten beheren
 
-Persoonlijke Clouds van AVS worden beheerd vanuit de AVS-Portal. Controleer de status, beschik bare resources, activiteit op de privécloud van de AVS en andere instellingen van de AVS-Portal.
+Private clouds worden beheerd vanuit cloudsimple portal.  Controleer de status, beschikbare resources, activiteit in de privécloud en andere instellingen via de CloudSimple-portal.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 
-## <a name="access-the-avs-portal"></a>Toegang tot de AVS-Portal
+## <a name="access-the-cloudsimple-portal"></a>Toegang tot de CloudSimple-portal
 
-Toegang tot de [AVS-Portal](access-cloudsimple-portal.md).
+Toegang tot de [CloudSimple-portal](access-cloudsimple-portal.md).
 
-## <a name="view-the-list-of-avs-private-clouds"></a>De lijst met persoonlijke Clouds van AVS weer geven
+## <a name="view-the-list-of-private-clouds"></a>Bekijk de lijst met privéwolken
 
-Op het tabblad **persoonlijke Clouds** van de AVS op de pagina **resources** vindt u een overzicht van alle persoonlijke Clouds van de AVS in uw abonnement. De informatie bevat de naam, het aantal vSphere-clusters, de locatie, de huidige status van de Privécloud en de resource gegevens.
+Op het tabblad **Privéwolken** op de pagina **Resources** worden alle privéwolken in uw abonnement weergegeven. Informatie omvat de naam, het aantal vSphere-clusters, locatie, de huidige status van de private cloud en brongegevens.
 
-![Pagina met persoonlijke AVS-Cloud](media/manage-private-cloud.png)
+![Privécloudpagina](media/manage-private-cloud.png)
 
-Selecteer een persoonlijke AVS-Cloud voor meer informatie en acties.
+Selecteer een Private Cloud voor meer informatie en acties.
 
-## <a name="avs-private-cloud-summary"></a>Samen vatting van persoonlijke cloud van AVS
+## <a name="private-cloud-summary"></a>Samenvatting van de private cloud
 
-Bekijk een uitgebreide samen vatting van de geselecteerde Privécloud voor de Cloud. Overzichts pagina bevat de DNS-servers die zijn geïmplementeerd op de AVS-Privécloud. U kunt DNS-door sturen van lokale DNS-servers naar uw AVS-DNS-servers in de Privécloud-Cloud instellen. Zie voor meer informatie over DNS door sturen [DNS configureren voor naam omzetting voor automatische AVS-Cloud-vCenter vanuit on-premises](https://docs.azure.cloudsimple.com/on-premises-dns-setup/).
+Bekijk een uitgebreid overzicht van de geselecteerde Private Cloud.  Overzichtspagina bevat de DNS-servers die zijn geïmplementeerd in de Private Cloud.  U DNS-forwarding instellen van on-premises DNS-servers naar uw Private Cloud DNS-servers.  Zie DNS configureren voor naamomzetting voor Private Cloud vCenter configureren voor meer informatie over [DNS-forwarding van on-premises](https://docs.azure.cloudsimple.com/on-premises-dns-setup/).
 
-![Samen vatting van persoonlijke cloud van AVS](media/private-cloud-summary.png)
+![Samenvatting van de privécloud](media/private-cloud-summary.png)
 
-### <a name="available-actions"></a>Beschik bare acties
+### <a name="available-actions"></a>Beschikbare acties
 
-* [Start de vSphere-client](https://docs.azure.cloudsimple.com/vsphere-access/). Toegang tot de vCenter voor deze AVS-Privécloud.
-* [Inkoop knooppunten](create-nodes.md). Voeg knoop punten toe aan deze AVS-Privécloud.
-* [Uitvouwen](expand-private-cloud.md). Voeg knoop punten toe aan deze AVS-Privécloud.
-* **Vernieuwen**. De gegevens op deze pagina bijwerken.
-* **Verwijderen**. U kunt de AVS-Privécloud op elk gewenst moment verwijderen. **Voordat u verwijdert, moet u ervoor zorgen dat u een back-up hebt gemaakt van alle systemen en gegevens.** Als u een automatische AVS-Cloud verwijdert, worden alle Vm's, de configuratie van de vCenter en de gegevens verwijderd. Klik in de sectie samen vatting op **verwijderen** voor de geselecteerde AVS-privécloud. Na het verwijderen worden alle gegevens van de Privécloud van de Cloud gewist in een beveiligd, uiterst compatibel verwijderings proces.
-* [Wijzig de vSphere-bevoegdheden](escalate-private-cloud-privileges.md). Escaleren uw bevoegdheden op deze AVS-Privécloud.
+* [VSphere-client starten](https://docs.azure.cloudsimple.com/vsphere-access/). Toegang tot het vCenter voor deze Private Cloud.
+* [Inkoopknooppunten](create-nodes.md). Voeg knooppunten toe aan deze Private Cloud.
+* [Uitvouwen](expand-private-cloud.md). Voeg knooppunten toe aan deze Private Cloud.
+* **Vernieuwen**. Werk de informatie op deze pagina bij.
+* **Verwijderen**. U de Private Cloud op elk gewenst moment verwijderen. **Voordat u het verwijderen uitbrengt, moet u ervoor zorgen dat u een back-up hebt gemaakt van alle systemen en gegevens.** Als u een privécloud verwijdert, worden alle VM's, vCenter-configuratie en gegevens verwijderd. Klik **op Verwijderen** in de sectie overzicht voor de geselecteerde private cloud. Na verwijdering worden alle Private Cloud-gegevens gewist in een beveiligd, zeer compatibel verwijderingsproces.
+* [VSphere-bevoegdheden wijzigen](escalate-private-cloud-privileges.md).  Escaleer uw privileges op deze Private Cloud.
 
-## <a name="avs-private-cloud-vlanssubnets"></a>Cloud-VLAN'S voor Privécloud/subnetten van AVS
+## <a name="private-cloud-vlanssubnets"></a>Private Cloud VLANS/subnetten
 
-De lijst met gedefinieerde VLAN'S of subnetten weer geven voor de geselecteerde AVS-privécloud. De lijst bevat de Management-VLAN'S/subnetten die zijn gemaakt tijdens het maken van de AVS-privécloud.
+Bekijk de lijst met gedefinieerde VLAN's/subnetten voor de geselecteerde Private Cloud.  De lijst bevat het beheer VAN VLAN's/subnetten die zijn gemaakt toen de private cloud werd gemaakt.
 
-![Privécloud/subnetten van de automatische AVS-Cloud](media/private-cloud-vlans-subnets.png) 
+![Private Cloud - VLAN's/Subnetten](media/private-cloud-vlans-subnets.png) 
 
-### <a name="available-actions"></a>Beschik bare acties
+### <a name="available-actions"></a>Beschikbare acties
 
-* [Vlan's/subnetten toevoegen](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Voeg een VLAN/subset toe aan deze Privécloud.
+* [VLANS/Subnetten toevoegen](https://docs.azure.cloudsimple.com/create-vlan-subnet/). Voeg een VLAN/subset toe aan deze Private Cloud.
 
-Een VLAN/subnet selecteren voor de volgende acties
-* Een [firewall tabel toevoegen](https://docs.azure.cloudsimple.com/firewall/). Een firewall tabel koppelen aan deze Privécloud.
-* **Wijzigt**
-* **Verwijderen** (alleen door de gebruiker gedefinieerde Vlan's/subnetten)
+Een VLAN/Subnet selecteren voor volgende acties
+* [Firewalltabel bijvoegen](https://docs.azure.cloudsimple.com/firewall/). Voeg een firewalltabel toe aan deze Private Cloud.
+* **Bewerken**
+* **Verwijderen** (alleen door de gebruiker gedefinieerde VLAN's/Subnetten)
 
-## <a name="avs-private-cloud-activity"></a>Activiteit voor persoonlijke cloud van AVS
+## <a name="private-cloud-activity"></a>Private Cloud-activiteit
 
-Bekijk de volgende informatie voor de geselecteerde Privécloud in de Cloud. De gegevens van de activiteit zijn een gefilterde lijst met alle activiteiten voor de geselecteerde Privécloud van de Cloud. Op deze pagina worden Maxi maal 25 recente activiteiten weer gegeven.
+Bekijk de volgende informatie voor de geselecteerde Private Cloud.  De activiteitsgegevens zijn een gefilterde lijst met alle activiteiten voor de geselecteerde Private Cloud.  Deze pagina toont maximaal 25 recente activiteiten.
 
 * Recente waarschuwingen
 * Recente gebeurtenissen
 * Recente taken
 * Recente controle
 
-![Privécloud-activiteit van de automatische AVS](media/private-cloud-activity.png)
+![Private Cloud - Activiteit](media/private-cloud-activity.png)
 
-## <a name="cloud-racks"></a>Cloud racks
+## <a name="cloud-racks"></a>Cloudracks
 
-Cloud racks zijn de bouw stenen van de Privécloud van uw AVS. Elk rek biedt een capaciteits eenheid. Met AVS worden Cloud racks automatisch geconfigureerd op basis van uw selecties bij het maken of uitbreiden van een nieuwe AVS-Cloud. Bekijk de volledige lijst met Cloud racks, met inbegrip van de Privécloud die elke is toegewezen.
+Cloudracks zijn de bouwstenen van uw Private Cloud. Elk rek biedt een eenheid van capaciteit. CloudSimple configureert automatisch cloudracks op basis van uw selecties bij het maken of uitbreiden van een Private Cloud.  Bekijk de volledige lijst met cloudracks, inclusief de Private Cloud waaraan elk is toegewezen.
 
-![Privécloud-Cloud racks-AVS](media/private-cloud-cloudracks.png)
+![Private Cloud - Cloud Racks](media/private-cloud-cloudracks.png)
 
-## <a name="vsphere-management-network"></a>vSphere-beheer netwerk
+## <a name="vsphere-management-network"></a>vSphere-beheernetwerk
 
-Lijst met VMware-beheer resources en virtuele machines die momenteel zijn geconfigureerd op de AVS-Privécloud. De informatie omvat de software versie, de Fully Qualified Domain Name (FQDN) en het IP-adres van de bronnen.
+Lijst met VMware-beheerbronnen en virtuele machines die momenteel zijn geconfigureerd in de Private Cloud. Informatie omvat de softwareversie, volledig gekwalificeerde domeinnaam (FQDN) en IP-adres van de bronnen.
 
-![VSphere-beheer netwerk voor de automatische AVS-Cloud](media/private-cloud-vsphere-management-network.png)
+![Private Cloud - vSphere Management Network](media/private-cloud-vsphere-management-network.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [VMware-Vm's in azure gebruiken](quickstart-create-vmware-virtual-machine.md)
-* Meer informatie over [persoonlijke Clouds van AVS](cloudsimple-private-cloud.md)
+* [VMware-VM's in Azure gebruiken](quickstart-create-vmware-virtual-machine.md)
+* Meer informatie over [Private Clouds](cloudsimple-private-cloud.md)

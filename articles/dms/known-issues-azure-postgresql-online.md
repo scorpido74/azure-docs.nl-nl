@@ -1,10 +1,10 @@
 ---
-title: 'Bekende problemen: online migraties van PostgreSQL naar Azure Database for PostgreSQL'
+title: 'Bekende problemen: Online migraties van PostgreSQL naar Azure Database voor PostgreSQL'
 titleSuffix: Azure Database Migration Service
-description: Meer informatie over bekende problemen en migratie beperkingen met online migraties van PostgreSQL naar Azure Database for PostgreSQL met behulp van de Azure Database Migration Service.
+description: Meer informatie over bekende problemen en migratiebeperkingen met onlinemigraties van PostgreSQL naar Azure Database voor PostgreSQL met behulp van de Azure Database Migration Service.
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,37 +14,37 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: f149d8de6b736379388c4a93045b6a0178067892
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: 3d1bc627ccb8814ab2dfb61fb0653ef0ac644038
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79138294"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235270"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Bekende problemen/migratie beperkingen met online migraties van PostgreSQL naar Azure DB voor PostgreSQL
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Bekende problemen/migratiebeperkingen met online migraties van PostgreSQL naar Azure DB voor PostgreSQL
 
-Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van PostgreSQL naar Azure Database for PostgreSQL worden beschreven in de volgende secties.
+Bekende problemen en beperkingen in verband met online migraties van PostgreSQL naar Azure Database voor PostgreSQL worden beschreven in de volgende secties.
 
-## <a name="online-migration-configuration"></a>Configuratie van online migratie
+## <a name="online-migration-configuration"></a>Online migratieconfiguratie
 
-- Op de bron PostgreSQL-server moet versie 9,4, 9,5, 9,6, 10 of 11 worden uitgevoerd. Zie voor meer informatie het artikel [Supported PostgreSQL Database Versions](../postgresql/concepts-supported-versions.md) (Ondersteunde versies van de PostgreSQL-database).
-- Alleen migraties naar dezelfde of een hogere versie worden ondersteund. U kunt bijvoorbeeld PostgreSQL 9,5 migreren naar Azure Database for PostgreSQL 9,6 of 10 wordt ondersteund, maar de migratie van PostgreSQL 11 naar PostgreSQL 9,6 wordt niet ondersteund.
-- Stel de volgende para meters in om logische replicatie in te scha kelen in het bestand **postgresql. conf van de bron postgresql** :
-  - **wal_level** = logische
-  - **max_replication_slots** = [Maxi maal maximum aantal data bases voor migratie]; Als u vier data bases wilt migreren, stelt u de waarde in op ten minste 4.
-  - **max_wal_senders** = [aantal data bases dat gelijktijdig wordt uitgevoerd]; de aanbevolen waarde is 10
-- Het IP-adres van de DMS-agent toevoegen aan de bron PostgreSQL pg_hba. conf
-  1. Noteer het DMS IP-adres nadat u klaar bent met het inrichten van een exemplaar van Azure Database Migration Service.
-  2. Voeg het IP-adres toe aan het bestand pg_hba. conf zoals wordt weer gegeven:
+- De bron PostgreSQL-server moet versie 9.4, 9.5, 9.6, 10 of 11 uitvoeren. Zie voor meer informatie het artikel [Supported PostgreSQL Database Versions](../postgresql/concepts-supported-versions.md) (Ondersteunde versies van de PostgreSQL-database).
+- Alleen migraties naar dezelfde of een hogere versie worden ondersteund. Het migreren van PostgreSQL 9.5 naar Azure Database voor PostgreSQL 9.6 of 10 wordt bijvoorbeeld ondersteund, maar migratie van PostgreSQL 11 naar PostgreSQL 9.6 wordt niet ondersteund.
+- Als u logische replicatie wilt inschakelen in het **bestand PostgreSQL-postgresql.conf van de bron PostgreSQL.conf,** stelt u de volgende parameters in:
+  - **wal_level** = logisch
+  - **max_replication_slots** = [ten minste het maximum aantal databases voor migratie]; Als u vier databases wilt migreren, stelt u de waarde in op ten minste 4.
+  - **max_wal_senders** = [aantal gelijktijdig draaiende databases]; de aanbevolen waarde is 10
+- DMS-agent IP toevoegen aan de bron PostgreSQL pg_hba.conf
+  1. Noteer het IP-adres van DMS nadat u een exemplaar van Azure Database Migration Service hebt ingericht.
+  2. Voeg het IP-adres toe aan het pg_hba.conf-bestand zoals weergegeven:
 
       ```
           host  all     172.16.136.18/10    md5
           host  replication postgres    172.16.136.18/10    md5
       ```
 
-- De gebruiker moet de replicatie functie hebben op de server die als host fungeert voor de bron database.
-- De bron-en doel database schema's moeten overeenkomen.
-- Het schema in de doel Azure Database for PostgreSQL-één server mag geen refererende sleutels hebben. Gebruik de volgende query om refererende sleutels te verwijderen:
+- De gebruiker moet de replicatierol op de server die de brondatabase host, hebben.
+- De bron- en doeldatabaseschema's moeten overeenkomen.
+- Het schema in de doelazure-database voor PostgreSQL-Single-server mag geen externe sleutels hebben. Gebruik de volgende query om buitenlandse sleutels te laten vallen:
 
     ```
                                 SELECT Queries.tablename
@@ -75,49 +75,49 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Pos
 
     Voer het 'drop foreign key'-script (de tweede kolom) uit in het queryresultaat.
 
-- Het schema in het doel Azure Database for PostgreSQL-één server mag geen triggers hebben. Gebruik het volgende om triggers in doel database uit te scha kelen:
+- Het schema in de doelazure-database voor PostgreSQL-Single-server mag geen triggers bevatten. Gebruik het volgende om triggers in de doeldatabase uit te schakelen:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
      ```
 
-## <a name="datatype-limitations"></a>Beperkingen van gegevens typen
+## <a name="datatype-limitations"></a>Beperkingen voor gegevenstype
 
-  **Beperking**: als er geen primaire sleutel is voor tabellen, worden wijzigingen mogelijk niet gesynchroniseerd met de doel database.
+  **Beperking:** als er geen primaire sleutel op tabellen staat, worden wijzigingen mogelijk niet gesynchroniseerd met de doeldatabase.
 
-  **Tijdelijke oplossing**: Stel tijdelijk een primaire sleutel in voor de tabel voor migratie om door te gaan. U kunt de primaire sleutel verwijderen nadat de gegevens migratie is voltooid.
+  **Tijdelijke oplossing**: stel tijdelijk een primaire sleutel in om de tabel voor migratie voort te zetten. U de primaire sleutel verwijderen nadat de gegevensmigratie is voltooid.
 
-## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>Beperkingen bij het online migreren van AWS RDS PostgreSQL
+## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>Beperkingen bij online migreren van AWS RDS PostgreSQL
 
-Wanneer u probeert een online migratie uit te voeren vanaf AWS RDS PostgreSQL naar Azure Database for PostgreSQL, kunnen de volgende fouten optreden.
+Wanneer u een online migratie van AWS RDS PostgreSQL naar Azure Database voor PostgreSQL probeert uit te voeren, u de volgende fouten tegenkomen.
 
-- **Fout**: de standaard waarde van de kolom {column} in de tabel {table} in de data base {data base} wijkt af van de bron-en doel server. De waarde {waarde op bron} in de bron en {waarde op doel} op het doel.
+- **Fout**: De standaardwaarde van kolom {kolom}' in tabel {tabel}' in database {database} is verschillend op bron- en doelservers. De waarde {waarde op bron} in de bron en {waarde op doel} op het doel.
 
-  **Beperking**: deze fout treedt op wanneer de standaard waarde op een kolom schema afwijkt van de bron-en doel database.
-  **Tijdelijke oplossing**: Zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron. Raadpleeg de [documentatie over Azure postgresql Online Migration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)voor meer informatie over het migreren van het schema.
+  **Beperking:** deze fout treedt op wanneer de standaardwaarde op een kolomschema verschilt tussen de bron- en doeldatabases.
+  **Tijdelijke oplossing:** zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron. Raadpleeg voor meer informatie over het migratieschema de [online migratiedocumentatie van Azure PostgreSQL.](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)
 
-- **Fout**: de doel database {Data Base} heeft {aantal Tables}-tabellen, waarbij de bron database {Data Base} de tabellen {aantal tabellen} heeft. Het aantal tabellen op de bron- en doeldatabase moet overeenkomen.
+- **Fout**: Doeldatabase {database}' heeft tabellen '{number of tables}' waarbij als brondatabase '{database}' tabellen '{number of tables}' tabellen hebben. Het aantal tabellen op de bron- en doeldatabase moet overeenkomen.
 
-  **Beperking**: deze fout treedt op wanneer het aantal tabellen verschilt van de bron-en doel database.
+  **Beperking:** deze fout treedt op wanneer het aantal tabellen verschilt tussen de bron- en doeldatabases.
 
-  **Tijdelijke oplossing**: Zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron. Raadpleeg de [documentatie over Azure postgresql Online Migration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)voor meer informatie over het migreren van het schema.
+  **Tijdelijke oplossing:** zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron. Raadpleeg voor meer informatie over het migratieschema de [online migratiedocumentatie van Azure PostgreSQL.](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)
 
-- **Fout:** De bron database {Data Base} is leeg.
+- **Fout:** De brondatabase {database} is leeg.
 
-  **Beperking**: deze fout treedt op wanneer de bron database leeg is. Waarschijnlijk omdat u de verkeerde data base hebt geselecteerd als bron.
+  **Beperking:** deze fout treedt op wanneer de brondatabase leeg is. Dit is waarschijnlijk omdat u de verkeerde database als bron hebt geselecteerd.
 
-  **Tijdelijke oplossing**: dubbel Controleer de bron database die u hebt geselecteerd voor migratie en probeer het opnieuw.
+  **Tijdelijke oplossing**: Controleer de brondatabase die u hebt geselecteerd voor migratie en probeer het opnieuw.
 
-- **Fout:** De doel database {Data Base} is leeg. Migreer het schema.
+- **Fout:** De doeldatabase {database} is leeg. Migreer het schema.
 
-  **Beperking**: deze fout treedt op wanneer er geen schema is in de doel database. Zorg ervoor dat schema op het doel overeenkomt met het schema op de bron.
-  **Tijdelijke oplossing**: Zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron. Raadpleeg de [documentatie over Azure postgresql Online Migration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)voor meer informatie over het migreren van het schema.
+  **Beperking:** deze fout treedt op wanneer er geen schema in de doeldatabase staat. Zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron.
+  **Tijdelijke oplossing:** zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron. Raadpleeg voor meer informatie over het migratieschema de [online migratiedocumentatie van Azure PostgreSQL.](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)
 
 ## <a name="other-limitations"></a>Andere beperkingen
 
-- De database naam mag geen punt komma (;)) bevatten.
-- Een vastgelegde tabel moet een primaire sleutel hebben. Als een tabel geen primaire sleutel heeft, is het resultaat van de bewerkingen DELETE en UPDATE record onvoorspelbaar.
-- Het bijwerken van een primaire-sleutel segment wordt genegeerd. In dergelijke gevallen wordt het Toep assen van een dergelijke update geïdentificeerd door het doel als een update waarbij geen rijen zijn bijgewerkt en resulteert dit in een record die naar de uitzonderingen tabel wordt geschreven.
-- Migratie van meerdere tabellen met dezelfde naam, maar een andere case (bijvoorbeeld Tabel1, TABEL1 en Tabel1) kan onvoorspelbaar gedrag veroorzaken en wordt daarom niet ondersteund.
-- De verwerking van [maken | ALTER | NEERZETTEN | TRUNCATe] tabel DDLs wordt niet ondersteund.
-- In Azure Database Migration Service kan één migratie activiteit Maxi maal vier data bases bevatten.
+- De databasenaam kan geen puntkomma (;) bevatten.
+- Een vastgelegde tabel moet een primaire sleutel hebben. Als een tabel geen primaire sleutel heeft, is het resultaat van recordbewerkingen verwijderen en bijwerken onvoorspelbaar.
+- Het bijwerken van een segment primaire sleutel wordt genegeerd. In dergelijke gevallen wordt het toepassen van een dergelijke update door het doel geïdentificeerd als een update die geen rijen heeft bijgewerkt en zal resulteren in een record dat naar de tabel met uitzonderingen is geschreven.
+- Migratie van meerdere tabellen met dezelfde naam, maar een andere aanvraag (bijvoorbeeld tabel1, TABEL1 en Tabel1) kan onvoorspelbaar gedrag veroorzaken en wordt daarom niet ondersteund.
+- Wijzigingsverwerking van [CREËREN | WIJZIGING | DALING | TRUNCATE] tabel DDLs wordt niet ondersteund.
+- In Azure Database Migration Service kan één migratieactiviteit slechts maximaal vier databases bieden.

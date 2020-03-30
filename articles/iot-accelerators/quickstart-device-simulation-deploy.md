@@ -10,19 +10,19 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "65467836"
 ---
-# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Quickstart: een IoT-apparaatsimulatie in Azure implementeren en uitvoeren
+# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Snelstart: Een IoT-apparaatsimulatie in Azure implementeren en uitvoeren
 
 Deze snelstart laat zien hoe u Azure IoT Apparaatsimulatie implementeert om uw IoT-oplossing te testen. Nadat u de oplossingsversneller hebt geïmplementeerd, voert u een voorbeeldsimulatie uit om aan de slag te gaan.
 
 U hebt een actief Azure-abonnement nodig om deze snelstart te voltooien.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="deploy-device-simulation"></a>Apparaatsimulatie implementeren
 
@@ -64,7 +64,7 @@ Bij eerste opening ziet u het Apparaatsimulatie-dashboard met een **Aan de slag*
 
 Omdat het een voorbeeldsimulatie is, kan deze niet worden bewerkt. De simulatie wordt geconfigureerd met de volgende instellingen:
 
-| Instelling             | Value                       |
+| Instelling             | Waarde                       |
 | ------------------- | --------------------------- |
 | Doel-IoT-hub      | Vooraf ingerichte IoT-hub gebruiken |
 | Apparaatmodel        | Truck                       |
@@ -86,7 +86,7 @@ U kunt slechts één simulatie tegelijk uitvoeren vanuit een Apparaatsimulatie-i
 
 Laat Apparaatsimulatie geïmplementeerd als u nog meer wilt verkennen.
 
-Als u Apparaatsimulatie niet langer nodig hebt, verwijdert u deze van de pagina [Ingerichte oplossingen](https://www.azureiotsolutions.com/Accelerators#dashboard) door op de tegel te klikken en vervolgens op **Oplossing verwijderen** te klikken:
+Als u Apparaatsimulatie niet langer nodig hebt, verwijdert u deze van de pagina [Ingerichte oplossingen](https://www.azureiotsolutions.com/Accelerators#dashboard) door op de tegel te klikken en vervolgens op ** Oplossing verwijderen ** te klikken:
 
 ![Oplossing verwijderen](media/quickstart-device-simulation-deploy/deletesolution.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Beveiliging afdwingen met beleid op Windows-Vm's in azure
-description: Een beleid Toep assen op een virtuele Azure Resource Manager Windows-machine
+title: Beveiliging afdwingen met beleid voor Windows VM's in Azure
+description: Een beleid toepassen op een Virtuele Machine van Azure Resource Manager Windows
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
 ms.openlocfilehash: a2ee5f36b7dba03bea3cc219651804c5039115d5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74032980"
 ---
-# <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Beleid Toep assen op Windows-Vm's met Azure Resource Manager
-Door gebruik te maken van beleids regels kan een organisatie verschillende conventies en regels voor de hele onderneming afdwingen. Afdwinging van het gewenste gedrag kan het risico verkleinen en bijdragen aan het succes van de organisatie. In dit artikel wordt beschreven hoe u Azure Resource Manager-beleid kunt gebruiken om het gewenste gedrag voor de Virtual Machines van uw organisatie te definiëren.
+# <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Beleidsregels toepassen op Windows VM's met Azure Resource Manager
+Door beleid te gebruiken, kan een organisatie verschillende conventies en regels in de hele onderneming afdwingen. Handhaving van het gewenste gedrag kan helpen risico's te beperken en tegelijkertijd bij te dragen aan het succes van de organisatie. In dit artikel beschrijven we hoe u azure resource manager-beleid gebruiken om het gewenste gedrag voor de virtuele machines van uw organisatie te definiëren.
 
-Zie [Wat is Azure Policy?](../../governance/policy/overview.md)voor een inleiding tot het beleid.
+Zie [Wat is Azure-beleid voor](../../governance/policy/overview.md)een inleiding tot beleidsregels?
 
-## <a name="permitted-virtual-machines"></a>Toegestaan Virtual Machines
-Om ervoor te zorgen dat virtuele machines voor uw organisatie compatibel zijn met een toepassing, kunt u de toegestane besturings systemen beperken. In het volgende voor beeld kunt u alleen Windows Server 2012 R2 Data Center Virtual Machines maken:
+## <a name="permitted-virtual-machines"></a>Toegestane virtuele machines
+Om ervoor te zorgen dat virtuele machines voor uw organisatie compatibel zijn met een toepassing, u de toegestane besturingssystemen beperken. In het volgende beleidsvoorbeeld staat u toe dat alleen virtuele windows server 2012 R2-datacentermachines worden gemaakt:
 
 ```json
 {
@@ -79,7 +79,7 @@ Om ervoor te zorgen dat virtuele machines voor uw organisatie compatibel zijn me
 }
 ```
 
-Een Joker teken gebruiken om het voor gaande beleid te wijzigen zodat alle Windows Server Data Center-installatie kopieën worden toegestaan:
+Gebruik een wildcard om het vorige beleid te wijzigen om een Windows Server Datacenter-afbeelding toe te staan:
 
 ```json
 {
@@ -88,7 +88,7 @@ Een Joker teken gebruiken om het voor gaande beleid te wijzigen zodat alle Windo
 }
 ```
 
-Gebruik anyOf om het voor gaande beleid te wijzigen zodat een installatie kopie van Windows Server 2012 R2 of hoger kan worden gebruikt:
+Gebruik anyOf om het voorgaande beleid te wijzigen om een Windows Server 2012 R2-datacenter of hogere afbeelding toe te staan:
 
 ```json
 {
@@ -105,11 +105,11 @@ Gebruik anyOf om het voor gaande beleid te wijzigen zodat een installatie kopie 
 }
 ```
 
-Zie [beleids aliassen](../../governance/policy/concepts/definition-structure.md#aliases)voor informatie over beleids velden.
+Zie [Beleidsaliassen voor](../../governance/policy/concepts/definition-structure.md#aliases)informatie over beleidsvelden .
 
 ## <a name="managed-disks"></a>Managed Disks
 
-Gebruik het volgende beleid om het gebruik van beheerde schijven te vereisen:
+Als u het gebruik van beheerde schijven wilt vereisen, gebruikt u het volgende beleid:
 
 ```json
 {
@@ -155,11 +155,11 @@ Gebruik het volgende beleid om het gebruik van beheerde schijven te vereisen:
 }
 ```
 
-## <a name="images-for-virtual-machines"></a>Installatie kopieën voor Virtual Machines
+## <a name="images-for-virtual-machines"></a>Afbeeldingen voor virtuele machines
 
-Uit veiligheids overwegingen kunt u vereisen dat alleen goedgekeurde aangepaste installatie kopieën in uw omgeving worden geïmplementeerd. U kunt de resource groep opgeven die de goedgekeurde installatie kopieën bevat of de specifieke goedgekeurde installatie kopieën.
+Om veiligheidsredenen u vereisen dat alleen goedgekeurde aangepaste afbeeldingen in uw omgeving worden geïmplementeerd. U de resourcegroep opgeven die de goedgekeurde afbeeldingen bevat, of de specifieke goedgekeurde afbeeldingen.
 
-In het volgende voor beeld zijn installatie kopieën van een goedgekeurde resource groep vereist:
+In het volgende voorbeeld worden afbeeldingen van een goedgekeurde resourcegroep vereist:
 
 ```json
 {
@@ -186,7 +186,7 @@ In het volgende voor beeld zijn installatie kopieën van een goedgekeurde resour
 } 
 ```
 
-In het volgende voor beeld worden de goedgekeurde afbeeldings-Id's opgegeven:
+In het volgende voorbeeld worden de goedgekeurde afbeeldings-geïdentificeerde afbeeldingen opgegeven:
 
 ```json
 {
@@ -195,9 +195,9 @@ In het volgende voor beeld worden de goedgekeurde afbeeldings-Id's opgegeven:
 }
 ```
 
-## <a name="virtual-machine-extensions"></a>Extensies voor virtuele machines
+## <a name="virtual-machine-extensions"></a>Virtuele machine-extensies
 
-Mogelijk wilt u het gebruik van bepaalde typen uitbrei dingen verbieden. Een extensie is bijvoorbeeld mogelijk niet compatibel met bepaalde installatie kopieën van virtuele machines. In het volgende voor beeld ziet u hoe u een specifieke uitbrei ding blokkeert. Hierbij wordt gebruikgemaakt van uitgever en type om te bepalen welke extensie moet worden geblokkeerd.
+U het gebruik van bepaalde typen extensies verbieden. Een extensie is bijvoorbeeld mogelijk niet compatibel met bepaalde aangepaste afbeeldingen van virtuele machines. In het volgende voorbeeld ziet u hoe u een specifieke extensie blokkeren. Het maakt gebruik van uitgever en type om te bepalen welke extensie te blokkeren.
 
 ```json
 {
@@ -227,7 +227,7 @@ Mogelijk wilt u het gebruik van bepaalde typen uitbrei dingen verbieden. Een ext
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 
-Wanneer u een on-premises licentie hebt, kunt u de licentie kosten op uw virtuele machines opslaan. Als u de licentie niet hebt, moet u de optie verbieden. Het volgende beleid is het gebruik van Azure Hybrid Use Benefit (AHUB) verbieden:
+Wanneer u een on-premises licentie hebt, u de licentiekosten opslaan op uw virtuele machines. Als je de licentie niet hebt, moet je de optie verbieden. Het volgende beleid verbiedt het gebruik van Azure Hybrid Use Benefit (AHUB):
 
 ```json
 {
@@ -250,6 +250,6 @@ Wanneer u een on-premises licentie hebt, kunt u de licentie kosten op uw virtuel
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Nadat u een beleids regel hebt gedefinieerd (zoals weer gegeven in de voor gaande voor beelden), moet u de beleids definitie maken en deze toewijzen aan een bereik. Het bereik kan een abonnement, een resource groep of een resource zijn. Zie [Azure Portal gebruiken om](../../governance/policy/assign-policy-portal.md)beleids regels toe te wijzen en te beheren, [Power shell gebruiken om beleid toe te](../../governance/policy/assign-policy-powershell.md)wijzen of [Azure CLI gebruiken om beleid](../../governance/policy/assign-policy-azurecli.md)toe te wijzen.
-* Zie [Wat is Azure Policy?](../../governance/policy/overview.md)voor een inleiding tot bron beleid.
+* Nadat u een beleidsregel hebt gedefinieerd (zoals in de voorgaande voorbeelden), moet u de beleidsdefinitie maken en aan een bereik toewijzen. Het bereik kan een abonnement, resourcegroep of resource zijn. Zie [Azure portal gebruiken om resourcebeleid toe te wijzen en te beheren,](../../governance/policy/assign-policy-portal.md) [PowerShell gebruiken om beleid toe te wijzen](../../governance/policy/assign-policy-powershell.md)of Azure CLI gebruiken om beleid toe te [wijzen.](../../governance/policy/assign-policy-azurecli.md)
+* Zie [Wat is Azure-beleid voor](../../governance/policy/overview.md)een inleiding tot resourcebeleid?
 * Voor begeleiding bij de manier waarop ondernemingen Resource Manager effectief kunnen gebruiken voor het beheer van abonnementen, gaat u naar [Azure enterprise-platform - Prescriptieve abonnementsgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).

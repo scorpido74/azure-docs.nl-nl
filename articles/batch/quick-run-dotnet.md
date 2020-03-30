@@ -1,6 +1,6 @@
 ---
 title: Azure-snelstartgids - Batch-taak uitvoeren - .NET
-description: U kunt snel een Azure Batch voorbeeld taak en-taken C# uitvoeren vanuit een toepassing met de batch .net-client bibliotheek.
+description: Voer snel een voorbeeldtaak en taken van Azure Batch uit vanuit een C#-toepassing met de Batch .NET-clientbibliotheek.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -11,10 +11,10 @@ ms.date: 11/29/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 809ca9d9aafa813e05dea81eb05616eefcc65472
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77017204"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Snelstartgids: Uw eerste Azure Batch-taak uitvoeren met .NET API
@@ -27,13 +27,13 @@ In deze snelstartgids wordt een Azure Batch-taak uitgevoerd vanuit een C#-toepas
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Visual Studio 2017 of hoger](https://www.visualstudio.com/vs), of [.net Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) voor Linux, macOS of Windows. 
+* [Visual Studio 2017 of hoger](https://www.visualstudio.com/vs)of [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) voor Linux, macOS of Windows. 
 
-* Een Batch-account en een gekoppeld Azure Storage-account. Raadpleeg de Batch-snelstartgidsen via de [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies over het maken van deze accounts. 
+* Een Batch-account en een gekoppeld Azure Storage-account. Zie de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies over het maken van deze accounts. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
@@ -70,7 +70,7 @@ Als u de Batch-werkstroom in actie wilt zien, bouwt u de toepassing in Visual St
 
 * Bevestig het herstel van alle NuGet-pakketten als dit wordt gevraagd. Als u ontbrekende pakketten moet downloaden, zorgt u ervoor dat [NuGet Package Manager](https://docs.nuget.org/consume/installing-nuget) is geïnstalleerd.
 
-Voer dit pakketbeheer vervolgens uit. Wanneer u de voorbeeldtoepassing uitvoert, ziet de uitvoer van de console er ongeveer als volgt uit. Tijdens de uitvoering wordt bij `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` gewacht terwijl de rekenknooppunten van de pool worden gestart. Taken worden in de wachtrij geplaatst om te worden uitgevoerd zodra het eerste rekenknooppunt actief is. Ga naar uw Batch-account in [Azure Portal](https://portal.azure.com) om de pool, rekenknooppunten en taken te controleren.
+Voer dit pakketbeheer vervolgens uit. Wanneer u de voorbeeldtoepassing uitvoert, ziet de uitvoer van de console er ongeveer als volgt uit. De actieve uitvoering wordt bij `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` onderbroken terwijl de rekenknooppunten van de pool worden gestart. Taken worden in de wachtrij geplaatst om te worden uitgevoerd zodra het eerste rekenknooppunt actief is. Ga naar uw Batch-account in de [Azure-portal](https://portal.azure.com) om de groep, rekenknooppunten, taak en taken te controleren.
 
 ```
 Sample start: 11/16/2018 4:02:54 PM

@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met het integreren van Azure AD met apps | Microsoft Docs
-description: Dit artikel is een aan de slag-hand leiding voor het integreren van Azure Active Directory (AD) met on-premises toepassingen en Cloud toepassingen.
+title: Aan de slag met het integreren van Azure AD met apps | Microsoft Documenten
+description: Dit artikel is een handleiding voor het integreren van Azure Active Directory (AD) met on-premises toepassingen en cloudtoepassingen.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,73 +16,73 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77063377"
 ---
-# <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Hand leiding voor het integreren van Azure Active Directory met toepassingen
+# <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory integreren met handleiding voor toepassingen
 
-Dit onderwerp bevat een overzicht van het proces voor het integreren van toepassingen met Azure Active Directory (AD). Elk van de onderstaande secties bevat een korte samen vatting van een gedetailleerd onderwerp, zodat u kunt zien welke onderdelen van deze aan de slag-hand leiding relevant zijn voor u.
+In dit onderwerp wordt een overzicht van het proces voor het integreren van toepassingen met Azure Active Directory (AD). Elk van de onderstaande secties bevat een korte samenvatting van een meer gedetailleerd onderwerp, zodat u bepalen welke delen van deze handleiding voor de start voor u relevant zijn.
 
-Zie [volgende stappen](#next-steps)voor het downloaden van gedetailleerde implementatie plannen.
+Zie [Volgende stappen](#next-steps)om diepgaande implementatieplannen te downloaden.
 
-## <a name="take-inventory"></a>Inventaris maken
-Voordat u toepassingen met Azure AD integreert, is het belang rijk om te weten waar u zich bevindt en waar u wilt gaan.  De volgende vragen zijn bedoeld om u te helpen bij het integratie project van Azure AD-toepassingen.
+## <a name="take-inventory"></a>Inventariseren
+Voordat u toepassingen integreert met Azure AD, is het belangrijk om te weten waar u bent en waar u naartoe wilt.  De volgende vragen zijn bedoeld om u te helpen nadenken over uw Azure AD-toepassingsintegratieproject.
 
-### <a name="application-inventory"></a>Toepassings inventaris
-* Waar zijn al uw toepassingen? Wie is eigenaar van de gebruikers?
-* Wat voor soort verificatie vereisen uw toepassingen?
-* Wie moet toegang hebben tot de toepassingen?
+### <a name="application-inventory"></a>Toepassingsinventaris
+* Waar zijn al uw toepassingen? Van wie zijn ze?
+* Wat voor soort authenticatie hebben uw toepassingen nodig?
+* Wie heeft toegang nodig tot welke applicaties?
 * Wilt u een nieuwe toepassing implementeren?
-  * Maakt u deze intern en implementeert u deze in een Azure Compute-instantie?
-  * Gebruikt u een die beschikbaar is in de Azure-toepassing galerie?
+  * Gaat u het in eigen beheer bouwen en implementeren op een Azure-compute-exemplaar?
+  * Gebruikt u er een die beschikbaar is in de Azure Application Gallery?
 
-### <a name="user-and-group-inventory"></a>Gebruikers-en groeps inventaris
-* Waar bevinden uw gebruikers accounts zich?
+### <a name="user-and-group-inventory"></a>Gebruikers- en groepsvoorraad
+* Waar bevinden uw gebruikersaccounts zich?
   * On-premises Active Directory
   * Azure AD
-  * Binnen een afzonderlijke toepassings database waarvan u de eigenaar bent
-  * In niet-goedgekeurde toepassingen
+  * Binnen een aparte applicatiedatabase die u bezit
+  * In niet-goedgekeurde aanvragen
   * Alle bovenstaande
-* Welke machtigingen en roltoewijzingen hebben momenteel afzonderlijke gebruikers? Moet u de toegang controleren of weet u zeker dat uw gebruikers toegang en roltoewijzingen nu geschikt zijn?
-* Worden er al groepen in uw on-premises Active Directory gemaakt?
-  * Hoe worden uw groepen ingedeeld?
-  * Wie zijn de groeps leden?
+* Welke machtigingen en roltoewijzingen hebben individuele gebruikers momenteel? Moet u hun toegang controleren of bent u er zeker van dat uw gebruikerstoegang en roltoewijzingen nu geschikt zijn?
+* Zijn groepen al gevestigd in uw on-premises Active Directory?
+  * Hoe zijn uw groepen georganiseerd?
+  * Wie zijn de groepsleden?
   * Welke machtigingen/roltoewijzingen hebben de groepen momenteel?
-* Moet u de gebruikers-of groeps databases opschonen voordat u de integratie kunt door gaan?  (Dit is een belang rijke vraag. Opschonen, opschonen.)
+* Moet u bestanden van gebruikers/groepen opschonen voordat u ze integreert?  (Dit is een vrij belangrijke vraag. Vuilnis in, vuilnis uit.)
 
-### <a name="access-management-inventory"></a>Inventaris van toegangs beheer
-* Hoe beheert u momenteel de gebruikers toegang tot toepassingen? Moet dat veranderen?  Hebt u andere manieren om toegang te beheren, zoals met [RBAC](../../role-based-access-control/role-assignments-portal.md) bijvoorbeeld?
-* Wie moet er toegang tot hebben?
+### <a name="access-management-inventory"></a>Voorraad toegangsbeheer
+* Hoe beheert u momenteel de toegang van gebruikers tot toepassingen? Moet dat veranderen?  Heeft u andere manieren overwogen om toegang te beheren, zoals bijvoorbeeld met [RBAC?](../../role-based-access-control/role-assignments-portal.md)
+* Wie heeft toegang nodig tot wat?
 
-Misschien hebt u niet de antwoorden op al deze vragen, maar dat is wel goed.  Deze hand leiding kan u helpen bij het beantwoorden van enkele van deze vragen en een aantal weloverwogen beslissingen te nemen.
+Misschien heb je niet de antwoorden op al deze vragen op voorhand, maar dat is oke.  Deze gids kan u helpen bij het beantwoorden van een aantal van deze vragen en het nemen van een aantal weloverwogen beslissingen.
 
-### <a name="find-unsanctioned-cloud-applications-with-cloud-discovery"></a>Niet-goedgekeurde Cloud toepassingen met Cloud Discovery zoeken
+### <a name="find-unsanctioned-cloud-applications-with-cloud-discovery"></a>Vind niet-goedgekeurde cloudtoepassingen met Cloud Discovery
 
-Zoals hierboven vermeld, zijn er mogelijk toepassingen die niet zijn beheerd door uw organisatie tot nu toe.  Als onderdeel van het inventaris proces is het mogelijk om niet-goedgekeurde Cloud toepassingen te vinden. Zie [Cloud Discovery instellen](/cloud-app-security/set-up-cloud-discovery).
+Zoals hierboven vermeld, kunnen er toepassingen zijn die tot nu toe niet door uw organisatie zijn beheerd.  Als onderdeel van het voorraadproces is het mogelijk om niet-goedgekeurde cloudtoepassingen te vinden. Zie [Clouddetectie instellen](/cloud-app-security/set-up-cloud-discovery).
 
 ## <a name="integrating-applications-with-azure-ad"></a>Toepassingen integreren met Azure AD
-In de volgende artikelen vindt u informatie over de verschillende manieren waarop toepassingen kunnen worden geïntegreerd met Azure AD en bieden u enkele richt lijnen.
+In de volgende artikelen worden de verschillende manieren besproken waarop toepassingen worden geïntegreerd met Azure AD en worden enkele richtlijnen gegeven.
 
-* [Bepalen welke Active Directory moeten worden gebruikt](../fundamentals/active-directory-administer.md)
-* [Toepassingen gebruiken in de Azure-toepassings galerie](what-is-single-sign-on.md)
-* [Lijst met zelf studies voor SaaS-toepassingen integreren](../active-directory-saas-tutorial-list.md)
+* [Bepalen welke Active Directory moet worden gebruikt](../fundamentals/active-directory-administer.md)
+* [Toepassingen gebruiken in de Azure-toepassingsgalerie](what-is-single-sign-on.md)
+* [Lijst met zelfstudies voor SaaS-toepassingen integreren](../active-directory-saas-tutorial-list.md)
 
-### <a name="authentication-types"></a>Verificatie typen
-Elk van uw toepassingen heeft mogelijk andere verificatie vereisten. Met Azure AD kunnen handtekening certificaten worden gebruikt met toepassingen die gebruikmaken van SAML 2,0-, WS-Federation-of OpenID Connect Connect-protocollen en een eenmalige aanmelding met een wacht woord. Zie [certificaten beheren voor federatieve eenmalige aanmelding in azure Active Directory](manage-certificates-for-federated-single-sign-on.md) en [op wacht woord gebaseerde eenmalige aanmelding](what-is-single-sign-on.md)voor meer informatie over toepassings verificatie typen voor gebruik met Azure AD.
+### <a name="authentication-types"></a>Verificatietypen
+Elk van uw toepassingen heeft mogelijk andere verificatievereisten. Met Azure AD kunnen ondertekeningscertificaten worden gebruikt met toepassingen die SAML 2.0- of WS-Federation-protocollen of OpenID Connect-protocollen gebruiken, evenals Wachtwoordmelding. Zie [Certificaten beheren voor federatie voor federatie van federaties voor federaties in Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) en op basis van een enkel [aanmelding op basis van een wachtwoord voor](what-is-single-sign-on.md)gebruik met Azure AD .
 
-### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Eenmalige aanmelding met Azure AD-app proxy inschakelen
-Met Microsoft Azure AD toepassings proxy kunt u vanaf elke locatie en op elk apparaat toegang bieden tot toepassingen die zich in uw particuliere netwerk bevinden. Nadat u een toepassings proxy connector hebt geïnstalleerd in uw omgeving, kunt u deze eenvoudig configureren met Azure AD.
+### <a name="enabling-sso-with-azure-ad-app-proxy"></a>SSO inschakelen met Azure AD-appproxy
+Met Microsoft Azure AD Application Proxy u veilig, overal en op elk apparaat toegang bieden tot toepassingen in uw privénetwerk. Nadat u een proxyconnector voor toepassingen in uw omgeving hebt geïnstalleerd, kan deze eenvoudig worden geconfigureerd met Azure AD.
 
 ### <a name="integrating-custom-applications"></a>Aangepaste toepassingen integreren
-Als u een nieuwe toepassing schrijft en ontwikkel aars wilt helpen om gebruik te maken van de kracht van Azure AD, raadpleegt u [ontwikkel aars](../active-directory-applications-guiding-developers-for-lob-applications.md)voor het maken van guid's.
+Zie [Ontwikkelaars](../active-directory-applications-guiding-developers-for-lob-applications.md)begeleiden als u een nieuwe toepassing schrijft en ontwikkelaars wilt helpen bij het benutten van de kracht van Azure AD.
 
-Als u uw aangepaste toepassing wilt toevoegen aan de Azure-toepassing galerie, raadpleegt u [' uw eigen app meenemen ' met Azure AD self-service SAML-configuratie](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/).
+Zie ['Uw eigen app toevoegen' met Azure AD Selfservice SAML-configuratie](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)als u uw aangepaste toepassing wilt toevoegen aan de Azure Application Gallery.
 
 ## <a name="managing-access-to-applications"></a>Toegang tot toepassingen beheren
-In de volgende artikelen worden de manieren beschreven waarop u de toegang tot toepassingen kunt beheren wanneer ze zijn geïntegreerd met Azure AD met behulp van Azure AD-connectors en Azure AD.
+In de volgende artikelen worden beschreven hoe u de toegang tot toepassingen beheren nadat ze zijn geïntegreerd met Azure AD met Azure AD Connectors en Azure AD.
 
 * [Toegang tot apps beheren met Azure AD](what-is-access-management.md)
 * [Automatiseren met Azure AD-connectors](../app-provisioning/user-provisioning.md)
@@ -91,11 +91,11 @@ In de volgende artikelen worden de manieren beschreven waarop u de toegang tot t
 * [Accounts delen](../active-directory-sharing-accounts.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-Voor gedetailleerde informatie kunt u Azure Active Directory implementatie plannen downloaden van [github](https://aka.ms/deploymentplans). Voor galerie toepassingen kunt u implementatie plannen voor eenmalige aanmelding, voorwaardelijke toegang en gebruikers inrichten via de [Azure Portal](https://portal.azure.com)downloaden. 
+Voor uitgebreide informatie u Azure Active Directory-implementatieplannen downloaden van [GitHub.](https://aka.ms/deploymentplans) Voor galerietoepassingen u implementatieplannen downloaden voor één aanmelding, voorwaardelijke toegang en gebruikersvoorziening via de [Azure-portal.](https://portal.azure.com) 
 
-Een implementatie plan downloaden van de Azure Portal:
+Ga als volgende over een implementatieplan uit de Azure-portal:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer **bedrijfs toepassingen** | **kies een app** | **implementatie plan**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Selecteer **Enterprise-toepassingen** | Kies een**app-implementatieplan****Pick an App** | .
 
-Geef feedback over implementatie plannen door gebruik te maken van de enquête van het [implementatie plan](https://aka.ms/DeploymentPlanFeedback).
+Geef feedback over implementatieplannen door de [enquête implementatieplan](https://aka.ms/DeploymentPlanFeedback)in te vullen.

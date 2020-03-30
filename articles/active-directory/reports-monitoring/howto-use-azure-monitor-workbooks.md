@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor werkmappen voor rapporten | Microsoft Docs
-description: Meer informatie over het gebruik van Azure Monitor werkmappen voor Azure Active Directory rapporten.
+title: Azure Monitor-werkmappen voor rapporten | Microsoft Documenten
+description: Meer informatie over het gebruik van Azure Monitor-werkmappen voor Azure Active Directory-rapporten.
 services: active-directory
 author: MarkusVi
 manager: daveba
@@ -15,95 +15,95 @@ ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014363"
 ---
-# <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor werkmappen gebruiken voor Azure Active Directory rapporten
+# <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor-werkmappen gebruiken voor Azure Active Directory-rapporten
 
 > [!IMPORTANT]
-> Als u de onderliggende query's in deze werkmap wilt optimaliseren, klikt u op bewerken, klikt u op het pictogram instellingen en selecteert u de werk ruimte waarin u deze query's wilt uitvoeren. Met werkmappen worden standaard alle werk ruimten geselecteerd waar u uw Azure AD-logboeken wilt routeren. 
+> Als u de onderliggende query's in deze werkmap wilt optimaliseren, klikt u op 'Bewerken', klikt u op het pictogram Instellingen en selecteert u de werkruimte waar u deze query's wilt uitvoeren. In werkmappen worden standaard alle werkruimten geselecteerd waar u uw Azure AD-logboeken routeert. 
 
 Wilt u:
 
-- Meer informatie over het effect van uw [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) voor de aanmeldings ervaring van uw gebruikers?
+- Begrijpt u het effect van uw [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) op de aanmeldingservaring van uw gebruikers?
 
-- Problemen met aanmelden oplossen om een beter beeld te krijgen van de status van aanmelding van uw organisatie en om problemen snel op te lossen?
+- Problemen met aanmeldingsproblemen oplossen om een beter beeld te krijgen van de aanmeldingsstatus van uw organisatie en om problemen snel op te lossen?
 
-- Weet wie een verouderde verificatie gebruikt om u aan te melden bij uw omgeving? (Door [verouderde verificatie te blok keren](../conditional-access/block-legacy-authentication.md), kunt u de beveiliging van uw Tenant verbeteren.)
+- Weet u wie legacy-verificaties gebruikt om u aan te melden bij uw omgeving? (Door [verouderde verificatie te blokkeren,](../conditional-access/block-legacy-authentication.md)u de beveiliging van uw tenant verbeteren.)
 
-- Moet u weten wat het effect van het beleid voor voorwaardelijke toegang in uw Tenant is?
+- Moet u de impact van beleid voor voorwaardelijke toegang in uw tenant begrijpen?
 
-- Wilt u de mogelijkheid hebben om te controleren: aanmeldings logboek query's, de werkmap rapporteert aan hoeveel gebruikers toegang is verleend of geweigerd, en hoeveel gebruikers het beleid voor voorwaardelijke toegang hebben overgeslagen bij het openen van bronnen?
+- Wilt u de mogelijkheid om te controleren: aanmeldingslogboekquery's, de werkmap rapporteert hoeveel gebruikers toegang hebben gekregen of geweigerd, en hoeveel gebruikers het beleid voor voorwaardelijke toegang hebben omzeild bij het openen van bronnen?
 
-- U bent geïnteresseerd in het ontwikkelen van een dieper inzicht in: de gegevens van de werkmap per situatie, zodat de impact van een beleid kan worden becontextd per toestand, inclusief het platform, de apparaatstatus, de client-app, aanmeldings risico, locatie en toepassing?
+- Geïnteresseerd in het ontwikkelen van een dieper begrip van: de werkmap details per voorwaarde, zodat de impact van een beleid kan worden gecontextualiseerd per voorwaarde, met inbegrip van apparaat platform, apparaat staat, client app, aanmeldingsrisico, locatie en toepassing?
 
-- Krijg meer inzicht in aanmeldings logboek query's, de werkmap rapporteert aan hoeveel gebruikers toegang is verleend of geweigerd, en hoeveel gebruikers het beleid voor voorwaardelijke toegang hebben overgeslagen bij het openen van bronnen.
+- Krijg meer inzicht in aanmeldingslogboekquery's, de werkmap rapporteert hoeveel gebruikers toegang hebben gekregen of geweigerd, en hoeveel gebruikers het beleid voor voorwaardelijke toegang hebben omzeild bij het openen van bronnen.
 
-- Active Directory biedt werkmappen voor het bewaken van deze vragen. [Azure monitor-werkmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) combi neer tekst, analyse query's, metrische gegevens en para meters in uitgebreide interactieve rapporten.
+- Om u te helpen deze vragen aan te pakken, biedt Active Directory werkmappen voor bewaking. [Azure Monitor-werkmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) combineren tekst, analysequery's, statistieken en parameters in uitgebreide interactieve rapporten.
 
 
 
 Dit artikel:
 
-- Er wordt van uitgegaan dat u bekend bent met het [maken van interactieve rapporten met behulp van werk bladen controleren](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+- Hiermee wordt ervan uitgegaan dat u bekend bent met het [maken van interactieve rapporten met behulp van Monitor-werkmappen.](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)
 
-- In dit artikel wordt uitgelegd hoe u Bewaak werkmappen gebruikt om inzicht te krijgen in het effect van uw beleid voor voorwaardelijke toegang, problemen met aanmelding op te lossen en verouderde authenticaties te identificeren.
+- Hier wordt uitgelegd hoe u Werkmappen controleren gebruikt om inzicht te krijgen in het effect van uw beleid voor voorwaardelijke toegang, om aanmeldingsfouten op te lossen en om verouderde verificaties te identificeren.
  
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u werkmappen wilt gebruiken, hebt u het volgende nodig:
+Als u Werkmappen controleren wilt gebruiken, moet u het sein
 
-- Een Active Directory-Tenant met een Premium-licentie (P1 of P2). Meer informatie over het [verkrijgen van een Premium-licentie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium).
+- Een Active Directory-tenant met een premiumlicentie (P1 of P2). Meer informatie over het [krijgen van een premium licentie.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)
 
-- Een [log Analytics-werk ruimte](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+- Een [werkruimte log analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
-- [Toegang](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) tot de log Analytics-werk ruimte
-- De volgende rollen in Azure Active Directory (als u Log Analytics via Azure Active Directory Portal opent)
+- [Toegang tot](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) de werkruimte voor logboekanalyse
+- Rollen volgen in Azure Active Directory (als u Log Analytics opent via Azure Active Directory-portal)
     - Beveiligingsbeheerder
     - Beveiligingslezer
-    - Rapport lezer
+    - Rapportlezer
     - Globale beheerder
 
 ## <a name="roles"></a>Rollen
-U moet een van de volgende rollen hebben en toegang hebben tot de [onderliggende log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) werk ruimte om de werkmappen te beheren:
+U moet zich in een van de volgende rollen bevinden en toegang hebben [tot de onderliggende Werkruimte Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) om de werkmappen te beheren:
 -   Globale beheerder
 -   Beveiligingsbeheerder
 -   Beveiligingslezer
--   Rapport lezer
--   Toepassings beheerder
+-   Rapportlezer
+-   Toepassingsbeheerder
 
-## <a name="workbook-access"></a>Werkmap toegang 
+## <a name="workbook-access"></a>Toegang tot werkmap 
 
-Voor toegang tot werkmappen:
+Ga als u naar werkmappen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-1. Navigeer naar **Azure Active Directory** > **bewaking** > **werkmappen**. 
+1. Navigeer naar **Azure Active Directory** > **Monitoring** > **Workbooks**. 
 
-1. Selecteer een rapport of sjabloon of selecteer **openen**op de werk balk. 
+1. Selecteer een rapport of sjabloon of selecteer Op de werkbalk **Openen**. 
 
-![De Azure Monitor werkmappen in azure AD zoeken](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
+![De Azure Monitor-werkmappen zoeken in Azure AD](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
-## <a name="sign-in-analysis"></a>Aanmeldings analyse
+## <a name="sign-in-analysis"></a>Aanmeldingsanalyse
 
-Als u toegang wilt krijgen tot de werkmap voor het aanmelden, selecteert u **aanmeldingen**in de sectie **gebruik** . 
+Als u de aanmeldingsanalysewerkmap wilt openen, selecteert u In de sectie **Gebruik** de optie **Aanmelding .** 
 
-In deze werkmap worden de volgende trends voor aanmelden weer gegeven:
+Deze werkmap toont de volgende aanmeldingstrends:
 
 - Alle aanmeldingen
 
 - Geslaagd
 
-- Gebruikers actie in behandeling
+- Actie in behandeling in behandeling
 
 - Fout
 
-U kunt elke trend filteren op de volgende categorieën:
+U elke trend filteren op de volgende categorieën:
 
 - Tijdsbereik
 
@@ -111,10 +111,10 @@ U kunt elke trend filteren op de volgende categorieën:
 
 - Gebruikers
 
-![Aanmeldings analyse](./media/howto-use-azure-monitor-workbooks/43.png)
+![Aanmeldingsanalyse](./media/howto-use-azure-monitor-workbooks/43.png)
 
 
-Voor elke trend krijgt u een uitsplitsing van de volgende categorieën:
+Voor elke trend krijgt u een uitsplitsing naar de volgende categorieën:
 
 - Locatie
 
@@ -125,19 +125,19 @@ Voor elke trend krijgt u een uitsplitsing van de volgende categorieën:
     ![Aanmeldingen per apparaat](./media/howto-use-azure-monitor-workbooks/46.png)
 
 
-## <a name="sign-ins-using-legacy-authentication"></a>Aanmeldingen met behulp van verouderde verificatie 
+## <a name="sign-ins-using-legacy-authentication"></a>Aanmeldingen met verouderde verificatie 
 
 
-Voor toegang tot de werkmap voor aanmeldingen die gebruikmaken van [verouderde verificatie](../conditional-access/block-legacy-authentication.md), selecteert u in de sectie **gebruik** **aanmeldingen met behulp van verouderde verificatie**. 
+Als u de werkmap wilt openen voor aanmeldingen die [oudere verificatie](../conditional-access/block-legacy-authentication.md)gebruiken, selecteert u In de sectie **Gebruik** de optie **Aanmelding met verouderde verificatie**. 
 
-In deze werkmap worden de volgende trends voor aanmelden weer gegeven:
+Deze werkmap toont de volgende aanmeldingstrends:
 
 - Alle aanmeldingen
 
 - Geslaagd
 
 
-U kunt elke trend filteren op de volgende categorieën:
+U elke trend filteren op de volgende categorieën:
 
 - Tijdsbereik
 
@@ -147,21 +147,21 @@ U kunt elke trend filteren op de volgende categorieën:
 
 - Protocollen
 
-![Aanmeldingen op verouderde verificatie](./media/howto-use-azure-monitor-workbooks/47.png)
+![Aanmeldingen via verouderde verificatie](./media/howto-use-azure-monitor-workbooks/47.png)
 
 
-Voor elke trend krijgt u een uitsplitsing per app en protocol.
+Voor elke trend krijg je een uitsplitsing per app en protocol.
 
-![Aanmeldingen voor verouderde authenticatie per app en protocol](./media/howto-use-azure-monitor-workbooks/48.png)
-
-
-
-## <a name="sign-ins-by-conditional-access"></a>Aanmeldingen op voorwaardelijke toegang 
+![Aanmeldingen voor verouderde verificatie per app en protocol](./media/howto-use-azure-monitor-workbooks/48.png)
 
 
-Als u toegang wilt krijgen tot de werkmap voor aanmeldingen via [beleids regels voor voorwaardelijke toegang](../conditional-access/overview.md), selecteert u in de sectie **voorwaardelijke toegang** de optie **aanmeldingen via voorwaardelijke toegang**. 
 
-In deze werkmap ziet u de trends voor uitgeschakelde aanmeldingen. U kunt elke trend filteren op de volgende categorieën:
+## <a name="sign-ins-by-conditional-access"></a>Aanmeldingen op voorwaarde 
+
+
+Als u de werkmap voor aanmeldingen wilt openen via [beleid voor voorwaardelijke toegang,](../conditional-access/overview.md)selecteert u in de sectie **Voorwaardelijke toegang** **aanmeldingen op voorwaardelijke toegang**. 
+
+Deze werkmap toont de trends voor aanmeldingen met een handicap. U elke trend filteren op de volgende categorieën:
 
 - Tijdsbereik
 
@@ -172,69 +172,69 @@ In deze werkmap ziet u de trends voor uitgeschakelde aanmeldingen. U kunt elke t
 ![Aanmeldingen via voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/49.png)
 
 
-Bij uitgeschakelde aanmeldingen krijgt u een uitsplitsing van de status van de voorwaardelijke toegang.
+Voor aanmeldingen voor uitgeschakelde aanvragen krijgt u een uitsplitsing naar de status Voorwaardelijke toegang.
 
-![Status van voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
+![Status voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
 ## <a name="conditional-access-insights"></a>Voorwaardelijke toegang in Insights
 
 ### <a name="overview"></a>Overzicht
 
-Werkmappen bevatten aanmeld logboek query's waarmee IT-beheerders de impact van het beleid voor voorwaardelijke toegang in hun Tenant kunnen controleren. U hebt de mogelijkheid om te rapporteren over hoeveel gebruikers toegang hebben gekregen of geweigerd. De werkmap bevat inzichten over hoeveel gebruikers beleid voor voorwaardelijke toegang hebben overs laan op basis van de kenmerken van de gebruikers op het moment van aanmelding. Het bevat details per situatie, zodat de impact van een beleid kan worden becontextd per toestand, inclusief het platform, de apparaatstatus, de client-app, aanmeldings risico, locatie en toepassing.
+Werkmappen bevatten aanmeldingslogboekquery's waarmee IT-beheerders de impact van beleid voor voorwaardelijke toegang in hun tenant kunnen controleren. U rapporteren hoeveel gebruikers zouden zijn toegestaan of de toegang zou hebben geweigerd. De werkmap bevat inzichten over hoeveel gebruikers het beleid voor voorwaardelijke toegang zouden hebben omzeild op basis van de kenmerken van die gebruikers op het moment van aanmelding. Het bevat details per voorwaarde, zodat de impact van een beleid per voorwaarde kan worden gecontextualiseerd, inclusief apparaatplatform, apparaatstatus, client-app, aanmeldingsrisico, locatie en toepassing.
 
 ### <a name="instructions"></a>Instructies 
-Als u toegang wilt krijgen tot de werkmap voor inzichten voor voorwaardelijke toegang, selecteert u de Insights-werkmap voor **voorwaardelijke toegang** in de sectie voorwaardelijke toegang. Deze werkmap toont de verwachte impact van elk beleid voor voorwaardelijke toegang in uw Tenant. Selecteer een of meer beleids regels voor voorwaardelijke toegang in de vervolg keuzelijst en Verfijn het bereik van de werkmap door de volgende filters toe te passen: 
+Als u de werkmap voor voorwaardelijke toegangsinzichten wilt openen, selecteert u de werkmap **Voorwaardelijke toegangtot statistieken** in de sectie Voorwaardelijke toegang. Deze werkmap toont de verwachte impact van elk beleid voor voorwaardelijke toegang in uw tenant. Selecteer een of meer beleid voor voorwaardelijke toegang in de vervolgkeuzelijst en verklein het bereik van de werkmap door de volgende filters toe te passen: 
 
-- **Tijds bereik**
+- **Tijdbereik**
 
 - **Gebruiker**
 
 - **Apps**
 
-- **Gegevens weergave**
+- **Gegevensweergave**
 
-![Status van voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+![Status voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/access-insights.png)
 
 
-De overzicht van de impact toont het aantal gebruikers of aanmeldingen waarvoor de geselecteerde beleids regels een bepaald resultaat hebben. Totaal is het aantal gebruikers of aanmeldingen waarvoor de geselecteerde beleids regels zijn geëvalueerd in het geselecteerde tijds bereik. Klik op een tegel om de gegevens in de werkmap te filteren op basis van het resultaat type. 
+In het overzicht van de impact wordt het aantal gebruikers of aanmeldingen weergegeven waarvoor het geselecteerde beleid een bepaald resultaat heeft opgeleverd. Totaal is het aantal gebruikers of aanmeldingen waarvoor het geselecteerde beleid is geëvalueerd in het geselecteerde tijdbereik. Klik op een tegel om de gegevens in de werkmap te filteren op dat resultaattype. 
 
-![Status van voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+![Status voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
 
-In deze werkmap ziet u ook de impact van de geselecteerde beleids regels, onderverdeeld op basis van zes voor waarden: 
+Deze werkmap toont ook de impact van het geselecteerde beleid, onderverdeeld naar elk van de zes voorwaarden: 
 - **Apparaatstatus**
-- **Platform apparaat**
+- **Apparaatplatform**
 - **Client-apps**
-- **Aanmeldings risico**
+- **Aanmeldingsrisico**
 - **Locatie**
 - **Toepassingen**
 
-![Status van voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+![Status voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/device-platform.png)
 
-U kunt ook afzonderlijke aanmeldingen onderzoeken, gefilterd op de geselecteerde para meters in de werkmap. Zoeken naar afzonderlijke gebruikers, gesorteerd op aanmeldings frequentie en de bijbehorende aanmeldings gebeurtenissen weer geven. 
+U ook afzonderlijke aanmeldingen onderzoeken, gefilterd op de parameters die in de werkmap zijn geselecteerd. Zoek naar individuele gebruikers, gesorteerd op aanmeldingsfrequentie, en bekijk de bijbehorende aanmeldingsgebeurtenissen. 
 
-![Status van voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/filtered.png)
-
-
+![Status voorwaardelijke toegang](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 
 
-## <a name="sign-ins-by-grant-controls"></a>Aanmeldingen door besturings elementen te verlenen
 
-Als u de werkmap voor aanmeldingen wilt openen door [besturings elementen te verlenen](../conditional-access/controls.md), selecteert u in de sectie **voorwaardelijke toegang** de optie **aanmeldingen door besturings elementen verlenen**. 
 
-In deze werkmap worden de volgende uitgeschakelde aanmeldings trends weer gegeven:
+## <a name="sign-ins-by-grant-controls"></a>Aanmeldingen door subsidiebesturingselementen
+
+Als u de werkmap voor aanmeldingen wilt openen door [subsidiebesturingselementen](../conditional-access/controls.md)toe te kennen, selecteert u In de sectie **Voorwaardelijke toegang** **aanmeldingen door Subsidiebesturingselementen**. 
+
+Deze werkmap toont de volgende aanmeldingstrends voor uitgeschakelden:
 
 - MFA vereisen
  
 - Gebruiksvoorwaarden vereisen
 
-- Privacyverklaring vereist
+- Privacyverklaring vereisen
 
 - Overige
 
 
-U kunt elke trend filteren op de volgende categorieën:
+U elke trend filteren op de volgende categorieën:
 
 - Tijdsbereik
 
@@ -242,10 +242,10 @@ U kunt elke trend filteren op de volgende categorieën:
 
 - Gebruikers
 
-![Aanmeldingen door besturings elementen te verlenen](./media/howto-use-azure-monitor-workbooks/50.png)
+![Aanmeldingen door subsidiebesturingselementen](./media/howto-use-azure-monitor-workbooks/50.png)
 
 
-Voor elke trend krijgt u een uitsplitsing per app en protocol.
+Voor elke trend krijg je een uitsplitsing per app en protocol.
 
 ![Uitsplitsing van recente aanmeldingen](./media/howto-use-azure-monitor-workbooks/51.png)
 
@@ -254,27 +254,27 @@ Voor elke trend krijgt u een uitsplitsing per app en protocol.
 
 ## <a name="sign-ins-failure-analysis"></a>Analyse van mislukte aanmeldingen
 
-Gebruik de werkmap voor **Fout analyse van aanmeldingen** om fouten op te lossen:
+Gebruik de **werkmap Voor het analyseren van aanmeldingen** voor aanmeldingen om fouten op te lossen met:
 
 - Aanmeldingen
 - Beleid voor voorwaardelijke toegang
 - Verouderde verificatie 
 
 
-Als u toegang wilt krijgen tot de aanmeldingen via gegevens voor voorwaardelijke toegang, selecteert u in de sectie **probleem oplossing** **aanmeldingen met behulp van verouderde verificatie**. 
+Als u de aanmeldingen wilt openen via voorwaardelijke toegangsgegevens, selecteert u in de sectie **Problemen oplossen** de optie **Aanmelding met verouderde verificatie**. 
 
-In deze werkmap worden de volgende trends voor aanmelden weer gegeven:
+Deze werkmap toont de volgende aanmeldingstrends:
 
 - Alle aanmeldingen
 
 - Geslaagd
 
-- Actie in behandeling
+- In behandeling zijnde actie
 
 - Fout
 
 
-U kunt elke trend filteren op de volgende categorieën:
+U elke trend filteren op de volgende categorieën:
 
 - Tijdsbereik
 
@@ -282,18 +282,18 @@ U kunt elke trend filteren op de volgende categorieën:
 
 - Gebruikers
 
-![Problemen met aanmeldingen oplossen](./media/howto-use-azure-monitor-workbooks/52.png)
+![Aanmeldingen oplossen](./media/howto-use-azure-monitor-workbooks/52.png)
 
 
-Azure Monitor biedt u een uitsplitsing van de volgende categorieën om u te helpen bij het oplossen van aanmeldingen:
+Azure Monitor geeft u een overzicht van de volgende categorieën om u te helpen bij het oplossen van aanmeldingen:
 
-- Belangrijkste fouten
+- Topfouten
 
-    ![Samen vatting van de belangrijkste fouten](./media/howto-use-azure-monitor-workbooks/53.png)
+    ![Overzicht van topfouten](./media/howto-use-azure-monitor-workbooks/53.png)
 
-- Aanmeldingen die wachten op gebruikers actie
+- Aanmeldingen die wachten op gebruikersactie
 
-    ![Samen vatting van de aanmeldingen die wachten op gebruikers actie](./media/howto-use-azure-monitor-workbooks/54.png)
+    ![Overzicht van aanmeldingen die wachten op gebruikersactie](./media/howto-use-azure-monitor-workbooks/54.png)
 
 
 
@@ -302,4 +302,4 @@ Azure Monitor biedt u een uitsplitsing van de volgende categorieën om u te help
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Interactieve rapporten maken met behulp van werk bladen bewaken](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).
+[Maak interactieve rapporten met behulp van Werkmappen controleren](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).

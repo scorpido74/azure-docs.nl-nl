@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een Event Hub maken met behulp van Power shell-Azure Event Hubs'
+title: 'Snelstart: een gebeurtenishub maken met PowerShell - Azure Event Hubs'
 description: In deze snelstart wordt beschreven hoe u een event hub maakt met behulp van Azure PowerShell en vervolgens gebeurtenissen verzendt en ontvangt met behulp van .NET Standard SDK.
 services: event-hubs
 author: spelluru
@@ -11,10 +11,10 @@ ms.custom: seodec18
 ms.date: 11/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 89ec1957e75fa45eef6c7939a77e5cc1b3cf7806
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77162120"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Snelstart: Een event hub maken met behulp van Azure PowerShell
@@ -29,19 +29,19 @@ In deze snelstart maakt u een Event Hub met behulp van Azure PowerShell.
 
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
-- Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account][] voordat u begint.
+- Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account][] voordat u begint.
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
-- [.NET Standard SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
+- [.NET Standard SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of hoger.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u PowerShell lokaal gebruikt, moet u de nieuwste versie van PowerShell uitvoeren om deze snelstart te kunnen voltooien. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Als u PowerShell lokaal gebruikt, moet u de nieuwste versie van PowerShell uitvoeren om deze snelstart te kunnen voltooien. Als u Azure PowerShell wilt installeren of upgraden, raadpleegt u [Azure PowerShell installeren en configureren](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
 Een resourcegroep is een logische verzameling van Azure-resources. U hebt een resourcegroep nodig om een Event Hub te maken. 
 
-In het volgende voorbeeld wordt een resourcegroep gemaakt in de regio US - oost. Vervang `myResourceGroup` door de naam van de resourcegroep die u wilt gebruiken:
+In het volgende voorbeeld wordt een resourcegroep gemaakt in de regio VS - oost. Vervang `myResourceGroup` door de naam van de resourcegroep die u wilt gebruiken:
 
 ```azurepowershell-interactive
 New-AzResourceGroup –Name myResourceGroup –Location eastus
@@ -64,22 +64,22 @@ Toegestane periode voor `MessageRetentionInDays` ligt tussen één en zeven dage
 New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name -MessageRetentionInDays 3
 ```
 
-Gefeliciteerd. U hebt Azure PowerShell gebruikt om een ​​Event Hubs-naamruimte en een Event Hub binnen die naamruimte te maken. 
+Gefeliciteerd! U hebt Azure PowerShell gebruikt om een ​​Event Hubs-naamruimte en een Event Hub binnen die naamruimte te maken. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u de Event Hubs-naamruimte gemaakt en voorbeeldtoepassingen gebruikt om gebeurtenissen te verzenden en ontvangen vanuit uw Event Hub. Voor stapsgewijze instructies voor het verzenden van gebeurtenissen naar (of) het ontvangen van gebeurtenissen van een Event Hub, raadpleegt u de zelf studies voor het **verzenden en ontvangen van gebeurtenissen** : 
+In dit artikel hebt u de Event Hubs-naamruimte gemaakt en voorbeeldtoepassingen gebruikt om gebeurtenissen te verzenden en ontvangen vanuit uw Event Hub. Zie de zelfstudies voor het verzenden en ontvangen van evenementen voor stapsgewijze instructies om gebeurtenissen naar (of) ontvangen van gebeurtenissen van een gebeurtenishub **te verzenden en te ontvangen:** 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
-- [Go](event-hubs-go-get-started-send.md)
+- [Javascript](get-started-java-send-v2.md)
+- [OK](event-hubs-go-get-started-send.md)
 - [C (alleen verzenden)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (alleen ontvangen)](event-hubs-storm-getstarted-receive.md)
 
 
-[gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[maakt u een gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-az-ps
 [New-AzResourceGroup]: https://docs.microsoft.com/powershell/module/az.resources/new-Azresourcegroup
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

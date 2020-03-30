@@ -1,6 +1,6 @@
 ---
-title: Gids voor het oplossen van problemen Azure Disk Encryption
-description: In dit artikel vindt u tips voor het oplossen van problemen met Microsoft Azure schijf versleuteling voor Windows-Vm's.
+title: Handleiding voor het oplossen van problemen met Azure Disk Encryption
+description: In dit artikel vindt u tips voor probleemoplossing voor Microsoft Azure Disk Encryption voor Windows VM's.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
@@ -8,43 +8,43 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 0d4e76f4d02b0287770243bfddf995a19f90d232
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73749445"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Disk Encryption
+# <a name="azure-disk-encryption-troubleshooting-guide"></a>Handleiding voor het oplossen van problemen met Azure Disk Encryption
 
-Deze hand leiding is voor IT-professionals, gegevens beveiligings analisten en Cloud beheerders waarvan de organisaties Azure Disk Encryption gebruiken. In dit artikel vindt u informatie over het oplossen van problemen met schijf versleuteling.
+Deze handleiding is voor IT-professionals, informatiebeveiligingsanalisten en cloudbeheerders waarvan de organisaties Azure Disk Encryption gebruiken. Dit artikel is om te helpen bij het oplossen van problemen met schijfversleuteling.
 
-Voordat u een van de volgende stappen uitvoert, moet u eerst controleren of de virtuele machines die u probeert te versleutelen, worden ondersteund door de [ondersteunde VM-grootten en-besturings systemen](disk-encryption-overview.md#supported-vms-and-operating-systems)en dat u aan alle vereisten hebt voldaan:
+Voordat u een van de onderstaande stappen uitvoert, moet u er eerst voor zorgen dat de VM's die u probeert te versleutelen tot de [ondersteunde VM-formaten en besturingssystemen](disk-encryption-overview.md#supported-vms-and-operating-systems)behoren en dat u aan alle vereisten hebt voldaan:
 
-- [Netwerk vereisten](disk-encryption-overview.md#networking-requirements)
-- [Groeps beleids vereisten](disk-encryption-overview.md#group-policy-requirements)
-- [Opslag vereisten voor de versleutelings sleutel](disk-encryption-overview.md#encryption-key-storage-requirements)
+- [Netwerkvereisten](disk-encryption-overview.md#networking-requirements)
+- [Vereisten voor groepsbeleid](disk-encryption-overview.md#group-policy-requirements)
+- [Vereisten voor opslag van versleutelingssleutels](disk-encryption-overview.md#encryption-key-storage-requirements)
 
  
 
-## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Problemen met Azure Disk Encryption achter een firewall oplossen
+## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>Azure-schijfversleuteling achter een firewall oplossen
 
-Wanneer de connectiviteit wordt beperkt door een firewall, een proxy vereiste of NSG-instellingen (netwerk beveiligings groep), kan de mogelijkheid van de uitbrei ding voor het uitvoeren van de benodigde taken worden onderbroken. Deze onderbreking kan resulteren in status berichten, zoals ' extensie status is niet beschikbaar op de virtuele machine '. In de verwachte scenario's kan de versleuteling niet worden voltooid. De volgende secties bevatten enkele veelvoorkomende Firewall problemen die u kunt onderzoeken.
+Wanneer de connectiviteit wordt beperkt door een firewall- of proxy-vereisten of NSG-instellingen (Network Security Group), kan de mogelijkheid van de extensie om benodigde taken uit te voeren worden verstoord. Deze onderbreking kan resulteren in statusberichten zoals 'Extensiestatus niet beschikbaar op de vm'. In verwachte scenario's kan de versleuteling niet worden voltooid. De secties die volgen hebben een aantal veelvoorkomende firewallproblemen die u mogelijk onderzoekt.
 
 ### <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen
-Alle instellingen voor de netwerk beveiligings groep die worden toegepast, moeten het eind punt nog steeds toestaan om te voldoen aan de gedocumenteerde [vereisten](disk-encryption-overview.md#networking-requirements) voor de netwerk configuratie voor schijf versleuteling.
+Instellingen voor netwerkbeveiligingsgroepen die worden toegepast, moeten het eindpunt nog steeds toestaan om te voldoen aan de [vereiste vereisten](disk-encryption-overview.md#networking-requirements) voor netwerkconfiguratie voor schijfversleuteling.
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault achter een firewall
 
-Wanneer versleuteling wordt ingeschakeld met [Azure AD-referenties](disk-encryption-windows-aad.md#), moet de doel-VM verbinding kunnen maken met zowel Azure Active Directory-eind punten als Key Vault-eind punten. De huidige Azure Active Directory-verificatie-eind punten worden onderhouden in de secties 56 en 59 van de documentatie voor [Office 365-url's en IP-](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) adresbereiken. Key Vault instructies vindt u in de documentatie over het [verkrijgen van toegang tot Azure Key Vault achter een firewall](../../key-vault/key-vault-access-behind-firewall.md).
+Wanneer versleuteling wordt ingeschakeld met [Azure AD-referenties,](disk-encryption-windows-aad.md#)moet de doel-vm connectiviteit toestaan voor zowel Azure Active Directory-eindpunten als Key Vault-eindpunten. Huidige Azure Active Directory-verificatieeindpunten worden onderhouden in secties 56 en 59 van de documentatie over [Office 365-URL's en IP-adresbereiken.](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) Key Vault-instructies worden gegeven in de documentatie over het [openen van Azure Key Vault achter een firewall.](../../key-vault/key-vault-access-behind-firewall.md)
 
-### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
-De virtuele machine moet toegang hebben tot het [meta gegevens service](../windows/instance-metadata-service.md) -eind punt van Azure, dat gebruikmaakt van een goed bekend, niet-routeerbaar IP-adres (`169.254.169.254`) dat alleen vanuit de VM kan worden geopend.  Proxy configuraties waarmee lokaal HTTP-verkeer naar dit adres wordt gewijzigd (bijvoorbeeld het toevoegen van een X-doorgestuurd-for-header) worden niet ondersteund.
+### <a name="azure-instance-metadata-service"></a>Azure-instantiemetagegevensservice 
+De VM moet toegang hebben tot het eindpunt van de [Azure Instance Metadata-service](../windows/instance-metadata-service.md) dat gebruikmaakt van een bekend niet-routable IP-adres (`169.254.169.254`) dat alleen toegankelijk is vanuit de VM.  Proxyconfiguraties die lokaal HTTP-verkeer naar dit adres wijzigen (bijvoorbeeld het toevoegen van een X-Forwarded-For-header) worden niet ondersteund.
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Problemen met Windows Server 2016 Server Core oplossen
 
-In Windows Server 2016 Server Core is het onderdeel bdehdcfg niet standaard beschikbaar. Dit onderdeel is vereist door Azure Disk Encryption. Deze wordt gebruikt voor het splitsen van het systeemvolume van OS-volume, die slechts één keer voor de levensduur van de virtuele machine wordt uitgevoerd. Deze binaire bestanden zijn niet vereist tijdens latere versleutelings bewerkingen.
+Op Windows Server 2016 Server Core is de bdehdcfg-component standaard niet beschikbaar. Dit onderdeel is vereist door Azure Disk Encryption. Het wordt gebruikt om het systeemvolume te splitsen van het OS-volume, wat slechts één keer wordt gedaan voor de levensduur van de VM. Deze binaire bestanden zijn niet vereist tijdens latere versleutelingsbewerkingen.
 
-U kunt dit probleem omzeilen door de volgende vier bestanden te kopiëren van een Windows Server 2016 Data Center-VM naar dezelfde locatie op Server Core:
+Als u dit probleem wilt oplossen, kopieert u de volgende vier bestanden van een VM voor het Windows Server 2016-datacenter naar dezelfde locatie in Server Core:
 
    ```
    \windows\system32\bdehdcfg.exe
@@ -59,9 +59,9 @@ U kunt dit probleem omzeilen door de volgende vier bestanden te kopiëren van ee
    bdehdcfg.exe -target default
    ```
 
-1. Met deze opdracht maakt u een systeem partitie van 550 MB. Start het systeem opnieuw op.
+1. Met deze opdracht wordt een systeempartitie van 550 MB aanmaken. Start het systeem opnieuw op.
 
-1. Gebruik Disk Part om de volumes te controleren en ga vervolgens verder.  
+1. Gebruik DiskPart om de volumes te controleren en ga vervolgens verder.  
 
 Bijvoorbeeld:
 
@@ -75,17 +75,17 @@ DISKPART> list vol
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
 
-## <a name="troubleshooting-encryption-status"></a>Problemen met de versleutelings status oplossen 
+## <a name="troubleshooting-encryption-status"></a>Versleutelingsstatus oplossen 
 
-De portal kan een schijf weer geven als versleuteld, zelfs nadat deze is ontsleuteld in de virtuele machine.  Dit kan gebeuren wanneer opdrachten op laag niveau worden gebruikt om de schijf rechtstreeks van de virtuele machine te ontsleutelen, in plaats van de Azure Disk Encryption beheer opdrachten op een hoger niveau te gebruiken.  Met de opdrachten op een hoger niveau wordt de schijf niet alleen ontsleuteld vanuit de virtuele machine, maar buiten de virtuele machine worden ook belang rijke versleutelings instellingen en extensie-instellingen van het platform bijgewerkt die zijn gekoppeld aan de virtuele machine.  Als deze niet in de uitlijning worden bewaard, kan het platform geen versleutelings status rapporteren of de virtuele machine op de juiste wijze inrichten.   
+De portal kan een schijf als versleuteld weergeven, zelfs nadat deze is onversleuteld binnen de VM.  Dit kan gebeuren wanneer opdrachten op laag niveau worden gebruikt om de schijf rechtstreeks te ontsleutelen vanuit de VM, in plaats van de opdrachten voor azure-schijfversleuteling op een hoger niveau te gebruiken.  De hogere niveau opdrachten niet alleen ontsleutelen van de schijf vanuit de VM, maar buiten de VM ze ook updaten belangrijke platform niveau encryptie-instellingen en extensie-instellingen in verband met de VM.  Als deze niet op één lijn worden gehouden, kan het platform de versleutelingsstatus niet correct rapporteren of de VM inrichten.   
 
-Als u Azure Disk Encryption wilt uitschakelen met Power shell, gebruikt u [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) gevolgd door [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Het uitvoeren van Remove-AzVMDiskEncryptionExtension voordat de versleuteling is uitgeschakeld, mislukt.
+Als u Azure Disk Encryption wilt uitschakelen met PowerShell, gebruikt u [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) gevolgd door [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension). Als u Remove-AzVMDiskEncryptionExtension uitvoert voordat de versleuteling is uitgeschakeld, mislukt deze.
 
-Gebruik [AZ VM Encryption Disable](/cli/azure/vm/encryption)om Azure Disk Encryption uit te scha KELEN met cli. 
+Als u Azure Disk Encryption met CLI wilt uitschakelen, schakelt [u az vm-versleuteling uit.](/cli/azure/vm/encryption) 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit document hebt u geleerd informatie over enkele veelvoorkomende problemen in Azure Disk Encryption en hoe deze problemen op te lossen. Raadpleeg de volgende artikelen voor meer informatie over deze service en de mogelijkheden ervan:
+In dit document hebt u meer te weten komen over enkele veelvoorkomende problemen in Azure Disk Encryption en hoe u deze problemen oplossen. Zie de volgende artikelen voor meer informatie over deze service en de bijbehorende mogelijkheden:
 
-- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
-- [Azure-gegevens versleuteling in rust](../../security/fundamentals/encryption-atrest.md)
+- [Schijfversleuteling toepassen in Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
+- [Azure-gegevensversleuteling in rust](../../security/fundamentals/encryption-atrest.md)

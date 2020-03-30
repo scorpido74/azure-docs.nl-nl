@@ -1,7 +1,7 @@
 ---
-title: Mobiele apps registreren die web-Api's aanroepen | Azure
+title: Mobiele apps registreren die web-API's oproepen | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het bouwen van een mobiele app die web-Api's aanroept (de code configuratie van de app)
+description: Meer informatie over het bouwen van een mobiele app die web-API's aanroept (de codeconfiguratie van de app)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -18,82 +18,82 @@ ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75cfd304869bfb63131dfd2afed9f925c86d32fb
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132440"
 ---
-# <a name="register-mobile-apps-that-call-web-apis"></a>Mobiele apps registreren die web-Api's aanroepen
+# <a name="register-mobile-apps-that-call-web-apis"></a>Mobiele apps registreren die web-API's oproepen
 
-Dit artikel bevat instructies om u te helpen bij het registreren van een mobiele toepassing die u maakt.
+Dit artikel bevat instructies om u te helpen een mobiele toepassing te registreren die u maakt.
 
 ## <a name="supported-account-types"></a>Ondersteunde accounttypen
 
-De account typen die door uw mobiele toepassingen worden ondersteund, zijn afhankelijk van de ervaring die u wilt inschakelen en de stromen die u wilt gebruiken.
+De accounttypen die uw mobiele toepassingen ondersteunen, zijn afhankelijk van de ervaring die u wilt inschakelen en de stromen die u wilt gebruiken.
 
-### <a name="audience-for-interactive-token-acquisition"></a>Doel groep voor het verkrijgen van interactief tokens
+### <a name="audience-for-interactive-token-acquisition"></a>Publiek voor interactieve tokenacquisitie
 
-De meeste mobiele toepassingen gebruiken interactieve verificatie. Als uw app gebruikmaakt van deze vorm van verificatie, kunt u zich aanmelden bij gebruikers vanuit elk [account type](quickstart-register-app.md#register-a-new-application-using-the-azure-portal).
+De meeste mobiele toepassingen maken gebruik van interactieve authenticatie. Als uw app deze vorm van verificatie gebruikt, u gebruikers van elk [accounttype](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)aanmelden.
 
-### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Doel groep voor geïntegreerde Windows-verificatie, gebruikers naam-wacht woord en B2C
+### <a name="audience-for-integrated-windows-authentication-username-password-and-b2c"></a>Doelgroep voor geïntegreerde Windows-verificatie, gebruikersnaam-wachtwoord en B2C
 
-Als u een Universeel Windows-platform-app (UWP) hebt, kunt u gebruikmaken van geïntegreerde Windows-verificatie om gebruikers aan te melden. Als u geïntegreerde Windows-verificatie of gebruikers naam-wachtwoord verificatie wilt gebruiken, moet uw toepassing zich aanmelden bij uw eigen line-of-Business (LOB)-ontwikkelaars Tenant. In een scenario met een onafhankelijke software leverancier (ISV) kan uw toepassing gebruikers in Azure Active Directory organisaties aanmelden. Deze verificatie stromen worden niet ondersteund voor persoonlijke micro soft-accounts.
+Als u een UWP-app (Universal Windows Platform) hebt, u geïntegreerde Windows-verificatie gebruiken om gebruikers aan te melden. Als u geïntegreerde Windows-verificatie of verificatie van gebruikerswachtwoord wilt gebruiken, moet uw toepassing zich aanmelden voor gebruikers in uw eigen lob-ontwikkelaartenant (Line-of-Business). In een isv-scenario (independent software vendor) kan uw toepassing gebruikers aanmelden in Azure Active Directory-organisaties. Deze verificatiestromen worden niet ondersteund voor persoonlijke Microsoft-accounts.
 
-U kunt gebruikers ook aanmelden met sociale identiteiten die een B2C-instantie en-beleid door geven. U kunt deze methode gebruiken door alleen interactieve verificatie en gebruikers naam-wachtwoord verificatie te gebruiken. Gebruikers naam-wachtwoord verificatie wordt momenteel alleen ondersteund op Xamarin. iOS, Xamarin. Android en UWP.
+U zich ook aanmelden voor gebruikers door gebruik te maken van sociale identiteiten die een B2C-autoriteit en -beleid doorstaan. Als u deze methode wilt gebruiken, u alleen interactieve verificatie en verificatie van het gebruikersnaam-wachtwoord gebruiken. Verificatie met gebruikersnaam-wachtwoord wordt momenteel alleen ondersteund op Xamarin.iOS, Xamarin.Android en UWP.
 
-Zie [scenario's en ondersteunde verificatie stromen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) en- [scenario's en ondersteunde platforms en talen](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)voor meer informatie.
+Zie [Scenario's en ondersteunde verificatiestromen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows) en [scenario's en ondersteunde platforms en talen voor](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)meer informatie.
 
-## <a name="platform-configuration-and-redirect-uris"></a>Platform configuratie en omleidings-Uri's  
+## <a name="platform-configuration-and-redirect-uris"></a>Platformconfiguratie en omleiding van URI's  
 
 ### <a name="interactive-authentication"></a>Interactieve verificatie
 
-Wanneer u een mobiele app bouwt die gebruikmaakt van interactieve verificatie, is de meest kritieke registratie stap de omleidings-URI. U kunt interactieve verificatie instellen met behulp [van de platform configuratie op de Blade **authenticatie** ](https://aka.ms/MobileAppReg).
+Wanneer u een mobiele app bouwt die interactieve verificatie gebruikt, is de meest kritieke registratiestap de omleidinguri. U interactieve verificatie instellen via de [platformconfiguratie op het **verificatieblad.** ](https://aka.ms/MobileAppReg)
 
-Met deze ervaring wordt uw app in staat stellen om eenmalige aanmelding (SSO) te ontvangen via Microsoft Authenticator (en Intune-bedrijfsportal op Android). Het biedt ook ondersteuning voor het beheer beleid voor apparaten.
+Met deze ervaring kan uw app één aanmelding (SSO) krijgen via Microsoft Authenticator (en Intune Company Portal op Android). Het ondersteunt ook het beleid voor apparaatbeheer.
 
-De portal voor app-registratie biedt een preview-ervaring waarmee u de brokered antwoord-URI voor iOS-en Android-toepassingen kunt berekenen:
+De app-registratieportal biedt een voorbeeldervaring om u te helpen het bemiddelde antwoord URI voor iOS- en Android-toepassingen te berekenen:
 
-1. Selecteer in de app-registratie Portal de optie **verificatie** > **de nieuwe ervaring uit te proberen**.
+1. Selecteer **verificatie** > in de app-registratieportal**En probeer de nieuwe ervaring uit.**
 
-   ![De Blade verificatie, waar u een nieuwe ervaring kiest](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
+   ![Het verificatieblad, waar u een nieuwe ervaring kiest](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-2. Selecteer **een platform toevoegen**.
+2. Selecteer **Een platform toevoegen**.
 
    ![Een platform toevoegen](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-3. Wanneer de lijst met platformen wordt ondersteund, selecteert u **IOS**.
+3. Wanneer de lijst met platforms wordt ondersteund, selecteert u **iOS**.
 
-   ![Een mobiele toepassing kiezen](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
+   ![Kies een mobiele applicatie](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. Voer uw bundel-ID in en selecteer vervolgens **registreren**.
+4. Voer uw bundel-id in en selecteer **Register**.
 
-   ![Voer uw bundel-ID in](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+   ![Voer uw bundel-id in](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
-Wanneer u de stappen hebt voltooid, wordt de omleidings-URI voor u berekend, zoals in de volgende afbeelding.
+Wanneer u de stappen voltooit, wordt de omleidings-URI voor u berekend, zoals in de volgende afbeelding.
 
-![De resulterende omleidings-URI](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+![De resulterende omleiding URI](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
-Als u de omleidings-URI liever hand matig wilt configureren, kunt u dit doen via het manifest van de toepassing. Dit is de aanbevolen indeling voor het manifest:
+Als u de omleidinguri liever handmatig configureert, u dit doen via het toepassingsmanifest. Hier is het aanbevolen formaat voor het manifest:
 
-- **IOS**: `msauth.<BUNDLE_ID>://auth` 
-  - Voer bijvoorbeeld `msauth.com.yourcompany.appName://auth`
-- **Android**: `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
-  - U kunt de Android-handtekening-hash genereren met behulp van de release sleutel of de debug-toets via de opdracht van het hulp programma.
+- **iOS**:`msauth.<BUNDLE_ID>://auth` 
+  - Voer bijvoorbeeld`msauth.com.yourcompany.appName://auth`
+- **Android**:`msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+  - U de Android-handtekeninghash genereren met behulp van de releasesleutel of debugtoets via de opdracht KeyTool.
 
-### <a name="username-password-authentication"></a>Gebruikers naam-wachtwoord verificatie
+### <a name="username-password-authentication"></a>Verificatie voor gebruikersnaam-wachtwoord
 
-Als uw app alleen een gebruikers naam-wachtwoord verificatie gebruikt, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stroom voert een retour ronding uit naar het micro soft Identity platform versie 2,0-eind punt. Uw toepassing wordt niet terugaangeroepen op een specifieke URI. 
+Als uw app alleen verificatie van gebruikersnaam-wachtwoord gebruikt, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stroom doet een rondreis naar het Microsoft-identiteitsplatform versie 2.0 eindpunt. Uw aanvraag wordt niet teruggebeld op een specifieke URI. 
 
-U moet uw toepassing echter identificeren als een open bare client toepassing. Hiertoe gaat u naar het gedeelte **verificatie** van uw toepassing. Selecteer in de Subsectie **Geavanceerde instellingen** in het **standaard-client type** voor de vraag **behandel toepassing als een open bare client**de optie **Ja**.
+U moet uw toepassing echter identificeren als een openbare clienttoepassing. Ga hiervoor aan de slag in het gedeelte **Verificatie** van uw toepassing. Selecteer in de onderafdeling **Geavanceerde instellingen** in de alinea **Standaardclienttype** voor de toepassing **Vraag Behandelen als openbare client**de optie **Ja**.
 
 ## <a name="api-permissions"></a>API-machtigingen
 
-Mobiele toepassingen bellen Api's namens de aangemelde gebruiker. Uw app moet gedelegeerde machtigingen aanvragen. Deze machtigingen worden ook bereiken genoemd. Afhankelijk van de gewenste ervaring kunt u gedelegeerde machtigingen statisch aanvragen via de Azure Portal. Of u kunt ze dynamisch aanvragen tijdens runtime. 
+Mobiele toepassingen bellen API's namens de aangemelde gebruiker. Uw app moet gedelegeerde machtigingen aanvragen. Deze machtigingen worden ook scopes genoemd. Afhankelijk van de gewenste ervaring u gedegedelegeerde machtigingen statisch aanvragen via de Azure-portal. Of u ze dynamisch aanvragen tijdens runtime. 
 
-Door machtigingen statisch te registreren, kunnen beheerders uw app eenvoudig goed keuren. Statische registratie wordt aanbevolen.
+Door machtigingen statisch te registreren, u beheerders toestaan uw app eenvoudig goed te keuren. Statische registratie wordt aanbevolen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Code configuratie](scenario-mobile-app-configuration.md)
+> [Codeconfiguratie](scenario-mobile-app-configuration.md)

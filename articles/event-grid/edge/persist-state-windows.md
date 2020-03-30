@@ -1,6 +1,6 @@
 ---
-title: Status persistent in Windows-Azure Event Grid IoT Edge | Microsoft Docs
-description: Status voor persistent in Windows
+title: Status blijven in Windows - Azure Event Grid IoT Edge | Microsoft Documenten
+description: Status blijven bestaan in Windows
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,26 +10,26 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086621"
 ---
-# <a name="persist-state-in-windows"></a>Status voor persistent in Windows
+# <a name="persist-state-in-windows"></a>Status blijven bestaan in Windows
 
-Onderwerpen en abonnementen die in de Event Grid module zijn gemaakt, worden standaard opgeslagen in het container bestandssysteem. Zonder persistentie, als de module opnieuw wordt geïmplementeerd, worden alle meta gegevens die zijn gemaakt, verloren gegaan. Als u de gegevens in de implementaties wilt behouden en opnieuw wilt opstarten, moet u de gegevens buiten het bestands systeem van de container bewaren. 
+Onderwerpen en abonnementen die zijn gemaakt in de module Gebeurtenisraster worden standaard opgeslagen in het containerbestandssysteem. Zonder volharding, als de module opnieuw wordt geïmplementeerd, zouden alle gemaakte metagegevens verloren gaan. Als u de gegevens voor implementaties en opnieuw opstarten wilt behouden, moet u de gegevens buiten het containerbestandssysteem blijven gebruiken. 
 
-Standaard worden alleen meta gegevens persistent gemaakt en gebeurtenissen worden nog steeds in het geheugen opgeslagen voor betere prestaties. Volg de sectie gebeurtenissen persistent maken om ook gebeurtenis persistentie in te scha kelen.
+Standaard blijven alleen metagegevens bestaan en worden gebeurtenissen nog steeds opgeslagen in het geheugen voor betere prestaties. Volg de sectie persist events om ook de persistentie van gebeurtenissen mogelijk te maken.
 
-In dit artikel worden de stappen beschreven die nodig zijn om Event Grid module te implementeren met persistentie in Windows-implementaties.
+In dit artikel vindt u de stappen die nodig zijn om de module Gebeurtenisraster te implementeren met volharding in Windows-implementaties.
 
 > [!NOTE]
->De Event Grid-module wordt uitgevoerd als een gebruiker met beperkte rechten **ContainerUser** in Windows.
+>De module Gebeurtenisraster wordt uitgevoerd als **containeruser met** een lage bevoorrechte gebruiker in Windows.
 
-## <a name="persistence-via-volume-mount"></a>Persistentie via volume koppeling
+## <a name="persistence-via-volume-mount"></a>Persistentie via volumemount
 
-[Docker-volumes](https://docs.docker.com/storage/volumes/) worden gebruikt voor het bewaren van gegevens over implementaties. Als u een volume wilt koppelen, moet u dit maken met behulp van docker-opdrachten, machtigingen verlenen zodat de container er naar kan lezen, ernaar schrijven en de module vervolgens implementeren.
+[Dockervolumes](https://docs.docker.com/storage/volumes/) worden gebruikt om gegevens voor alle implementaties te bewaren. Als u een volume wilt monteren, moet u het maken met behulp van dockeropdrachten, machtigingen geven zodat de container kan lezen, schrijven en vervolgens de module kunnen implementeren.
 
 1. Maak een volume door de volgende opdracht uit te voeren:
 
@@ -42,7 +42,7 @@ In dit artikel worden de stappen beschreven die nodig zijn om Event Grid module 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
    ```
-1. Haal de host-map op waaraan het volume is toegewezen door de onderstaande opdracht uit te voeren
+1. De hostmap weergeven waarnaar het volume wordt toegewezen door de onderstaande opdracht uit te voeren
 
     ```sh
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
@@ -54,7 +54,7 @@ In dit artikel worden de stappen beschreven die nodig zijn om Event Grid module 
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
    ```
 
-   Voorbeeld uitvoer:-
+   Voorbeelduitvoer:-
 
    ```json
    [
@@ -69,15 +69,15 @@ In dit artikel worden de stappen beschreven die nodig zijn om Event Grid module 
           }
    ]
    ```
-1. Voeg als volgt de groep **gebruikers** toe aan waarde punt **koppel punt** :
-    1. Start bestanden Verkenner.
-    1. Ga naar de map die is gepointt door **koppel punt**.
-    1. Klik met de rechter muisknop en selecteer **Eigenschappen**.
-    1. Selecteer **beveiliging**.
-    1. Selecteer onder * groeps-of gebruikers namen de optie **bewerken**.
-    1. Selecteer **toevoegen**, voer `Users`, selecteer **Namen controleren**en selecteer **OK**.
-    1. Selecteer onder *machtigingen voor gebruikers* **wijzigen**en selecteer **OK**.
-1. Gebruik **bindingen** om dit volume te koppelen en Event grid module opnieuw te implementeren vanuit Azure Portal
+1. Voeg de groep **Gebruikers** toe aan de waarde die door **Mountpoint** als volgt wordt aangeduid:
+    1. Start Verkenner.
+    1. Navigeer naar de map die door **Mountpoint**is gericht .
+    1. Klik met de rechtermuisknop en selecteer **Eigenschappen**.
+    1. Selecteer **Beveiliging**.
+    1. Selecteer Onder *Groeps- of gebruikersnamen de optie **Bewerken**.
+    1. Selecteer **Toevoegen,** `Users`invoeren, selecteer Namen **controleren**en selecteer **Ok**.
+    1. Selecteer Onder *Machtigingen voor gebruikers*de optie **Wijzigen**en selecteer **Ok**.
+1. **Binds** gebruiken om dit volume te monteren en gebeurtenisrastermodule opnieuw te implementeren vanuit Azure-portal
 
    Bijvoorbeeld:
 
@@ -112,7 +112,7 @@ In dit artikel worden de stappen beschreven die nodig zijn om Event Grid module 
     ```
 
    >[!IMPORTANT]
-   >Wijzig het tweede deel van de bindings waarde niet. Deze verwijst naar een specifieke locatie in de module. Voor de module Event Grid in Windows moet **C:\\app\\metadataDb**zijn.
+   >Wijzig het tweede deel van de bindingswaarde niet. Het wijst naar een specifieke locatie in de module. Voor Event Grid module op windows, moet het **C:\\\\app metadataDb**.
 
 
     Bijvoorbeeld:
@@ -148,11 +148,11 @@ In dit artikel worden de stappen beschreven die nodig zijn om Event Grid module 
     }
     ```
 
-## <a name="persistence-via-host-directory-mount"></a>Persistentie via Host Directory-koppeling
+## <a name="persistence-via-host-directory-mount"></a>Persistentie via host directory mount
 
-In plaats van een volume te koppelen, kunt u een map op het hostsysteem maken en die directory koppelen.
+In plaats van een volume te monteren, u een map op het hostsysteem maken en die map monteren.
 
-1. Maak een map op het host-bestands systeem door de volgende opdracht uit te voeren.
+1. Maak een map op het hostbestandssysteem door de volgende opdracht uit te voeren.
 
    ```sh
    mkdir <your-directory-name-here>
@@ -163,7 +163,7 @@ In plaats van een volume te koppelen, kunt u een map op het hostsysteem maken en
    ```sh
    mkdir C:\myhostdir
    ```
-1. Gebruik **bindingen** om uw map te koppelen en de module Event Grid van Azure Portal opnieuw te implementeren.
+1. Gebruik **Bindingen** om uw directory te monteren en de module Gebeurtenisraster opnieuw te implementeren vanuit Azure-portal.
 
     ```json
     {
@@ -176,7 +176,7 @@ In plaats van een volume te koppelen, kunt u een map op het hostsysteem maken en
     ```
 
     >[!IMPORTANT]
-    >Wijzig het tweede deel van de bindings waarde niet. Deze verwijst naar een specifieke locatie in de module. Voor de module Event Grid in Windows moet **C:\\app\\metadataDb**zijn.
+    >Wijzig het tweede deel van de bindingswaarde niet. Het wijst naar een specifieke locatie in de module. Voor de Event Grid module op windows, moet het **C:\\\\app metadataDb**.
 
     Bijvoorbeeld:
 
@@ -210,17 +210,17 @@ In plaats van een volume te koppelen, kunt u een map op het hostsysteem maken en
          }
     }
     ```
-## <a name="persist-events"></a>Gebeurtenissen persistent maken
+## <a name="persist-events"></a>Blijvende gebeurtenissen
 
-Als u gebeurtenis persistentie wilt inschakelen, moet u eerst gebeurtenissen persistentie via volume koppeling of host Directory koppelen inschakelen met behulp van de bovenstaande secties.
+Om gebeurtenispersistentie mogelijk te maken, moet u eerst het persistentie van gebeurtenissen inschakelen via volumemount of host directory mount met behulp van de bovenstaande secties.
 
-Belang rijke aandachtspunten voor het aanhouden van persistente gebeurtenissen:
+Belangrijke dingen om op te merken over aanhoudende gebeurtenissen:
 
-* Het persistent maken van gebeurtenissen wordt ingeschakeld per gebeurtenis abonnement en is een opt-in nadat een volume of map is gekoppeld.
-* Gebeurtenis persistentie wordt tijdens het maken geconfigureerd op een gebeurtenis abonnement en kan niet worden gewijzigd nadat het gebeurtenis abonnement is gemaakt. Als u wilt overschakelen op gebeurtenis persistentie, moet u het gebeurtenis abonnement verwijderen en opnieuw maken.
-* Het persistent maken van gebeurtenissen is bijna altijd langzamer dan in geheugen bewerkingen, maar het snelheids verschil is echter zeer afhankelijk van de kenmerken van het station. De verhouding tussen snelheid en betrouw baarheid is inherent aan alle Messa ging-systemen, maar wordt alleen merkbaar op grote schaal.
+* Doorgaande gebeurtenissen zijn per gebeurtenisabonnement ingeschakeld en zijn opt-in zodra een volume of directory is gemonteerd.
+* Gebeurtenispersistentie is geconfigureerd voor een gebeurtenisabonnement bij het maken van de tijd en kan niet worden gewijzigd zodra het gebeurtenisabonnement is gemaakt. Als u gebeurtenispersistentie wilt inschakelen, moet u het gebeurtenisabonnement verwijderen en opnieuw maken.
+* Aanhoudende gebeurtenissen zijn bijna altijd trager dan bij geheugenbewerkingen, maar het snelheidsverschil is sterk afhankelijk van de kenmerken van de schijf. De afweging tussen snelheid en betrouwbaarheid is inherent aan alle berichtensystemen, maar wordt pas op grote schaal merkbaar.
 
-Als u gebeurtenis persistentie wilt inschakelen voor een gebeurtenis abonnement, stelt u `persistencePolicy` in op `true`:
+Als u het voorzetten van `persistencePolicy` `true`een gebeurtenisabonnement wilt inschakelen, moet u instellen op:
 
  ```json
         {
