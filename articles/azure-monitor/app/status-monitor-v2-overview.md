@@ -1,73 +1,73 @@
 ---
-title: Overzicht van Azure-toepassing Insights-agents | Microsoft Docs
-description: Een overzicht van Application Insights agent. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
+title: Overzicht van Azure Application Insights Agent | Microsoft Documenten
+description: Een overzicht van Application Insights Agent. Monitor de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET web-apps die on-premises, in VM's of op Azure worden gehost.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
 ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275709"
 ---
-# <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Azure Monitor Application Insights-agent implementeren voor on-premises servers
+# <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Azure Monitor Application Insights Agent implementeren voor on-premises servers
 
 > [!IMPORTANT]
-> Deze richt lijnen worden aanbevolen voor on-premises en niet-Azure Cloud implementaties van Application Insights agent. Hier volgt de aanbevolen benadering voor [Azure virtual machine en implementaties van virtuele-machine schaal sets](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
+> Deze richtlijnen worden aanbevolen voor on-premises en niet-Azure-cloudimplementaties van Application Insights Agent. Hier is de aanbevolen aanpak voor [Azure virtuele machine en virtuele machine schaal set implementaties](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
 
-Application Insights-agent (voorheen met de naam Status Monitor v2) is een Power shell-module gepubliceerd op de [PowerShell Gallery](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
-Het vervangt [status monitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
-Telemetrie wordt verzonden naar de Azure Portal, waar u uw app kunt [bewaken](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) .
+Application Insights Agent (voorheen Status Monitor V2 genoemd) is een PowerShell-module die is gepubliceerd in de [PowerShell Gallery.](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)
+Het vervangt [statusmonitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
+Telemetrie wordt verzonden naar de Azure-portal, waar u uw app [controleren.](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
 
 > [!NOTE]
-> De module ondersteunt momenteel alleen codeloze instrumentatie van .NET-Web-apps die worden gehost met IIS. Gebruik een SDK om ASP.NET Core-, Java-en node. js-toepassingen te instrumenteren.
+> De module ondersteunt momenteel alleen codeloze instrumentatie van .NET-webapps die worden gehost met IIS. Gebruik een SDK om ASP.NET Core-, Java- en Node.js-toepassingen te gebruiken.
 
 ## <a name="powershell-gallery"></a>PowerShell Gallery
 
-Application Insights-agent bevindt zich hier: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Application Insights Agent bevindt zich hier: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 
 ![PowerShell Gallery](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
 ## <a name="instructions"></a>Instructies
-- Zie de [aan](status-monitor-v2-get-started.md) de slag-instructies om een begin te krijgen met beknopte code voorbeelden.
-- Raadpleeg de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md) voor een grondige uitleg over hoe u aan de slag kunt gaan.
+- Zie de [instructies voor het starten](status-monitor-v2-get-started.md) om te beginnen met beknopte codevoorbeelden.
+- Zie de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md) voor een diepe duik over hoe aan de slag te gaan.
 
-## <a name="powershell-api-reference"></a>Power shell API-naslag informatie
-- [Disable-ApplicationInsightsMonitoring](status-monitor-v2-api-disable-monitoring.md)
-- [Disable-InstrumentationEngine](status-monitor-v2-api-disable-instrumentation-engine.md)
+## <a name="powershell-api-reference"></a>PowerShell API-verwijzing
+- [Disable-ApplicationInsightsMonitoring disable-ApplicationInsights](status-monitor-v2-api-disable-monitoring.md)
+- [Engine uitschakelen-instrumentatie](status-monitor-v2-api-disable-instrumentation-engine.md)
 - [Enable-ApplicationInsightsMonitoring](status-monitor-v2-api-enable-monitoring.md)
 - [Enable-InstrumentationEngine](status-monitor-v2-api-enable-instrumentation-engine.md)
 - [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
-- [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md)
+- [Status van get-applicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md)
 - [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
 - [Start-ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-- [Problemen oplossen](status-monitor-v2-troubleshoot.md)
+- [Probleemoplossing](status-monitor-v2-troubleshoot.md)
 - [Bekende problemen](status-monitor-v2-troubleshoot.md#known-issues)
 
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-- Ondersteunt Application Insights agent proxy installaties?
+- Ondersteunt Application Insights Agent proxy-installaties?
 
-  *Ja*. Er zijn meerdere manieren om Application Insights-agent te downloaden. Als uw computer toegang heeft tot internet, kunt u de PowerShell Gallery onboarden met behulp van `-Proxy`-para meters.
-U kunt de module ook hand matig downloaden en installeren op uw computer of rechtstreeks gebruiken.
+  *Ja.* Er zijn meerdere manieren om Application Insights Agent te downloaden. Als uw computer toegang tot internet heeft, `-Proxy` u aan boord gaan van de PowerShell Gallery met behulp van parameters.
+U de module ook handmatig downloaden en op uw computer installeren of direct gebruiken.
 Elk van deze opties wordt beschreven in de [gedetailleerde instructies](status-monitor-v2-detailed-instructions.md).
 
-- Ondersteunt Status Monitor v2 ASP.NET Core toepassingen?
+- Ondersteunt Status Monitor v2 ASP.NET Core-toepassingen?
 
-  *Nee*. Zie [Application Insights voor ASP.net core toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)voor instructies om de bewaking van ASP.net core-toepassingen in te scha kelen. Het is niet nodig om StatusMonitor te installeren voor een ASP.NET Core-toepassing. Dit geldt ook als ASP.NET Core toepassing wordt gehost in IIS.
+  *Nee.* Zie [Application Insights for ASP.NET Core-toepassingen voor](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)instructies om het monitoren van ASP.NET Core-toepassingen mogelijk te maken. Het is niet nodig om StatusMonitor te installeren voor een ASP.NET Core-toepassing. Dit geldt zelfs als ASP.NET Core-toepassing wordt gehost in IIS.
 
-- Hoe kan ik controleren of de activering is geslaagd?
+- Hoe kan ik controleren of de enablement is geslaagd?
 
-  - De cmdlet [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) kan worden gebruikt om te controleren of de activering is geslaagd.
-  - We raden u aan [Live metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) te gebruiken om snel te bepalen of uw app telemetrie verzendt.
+  - De cmdlet [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) kan worden gebruikt om te controleren of de enablement is geslaagd.
+  - We raden je aan [live statistieken](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) te gebruiken om snel te bepalen of je app telemetrie verzendt.
 
-  - U kunt [log Analytics](../log-query/get-started-portal.md) ook gebruiken om alle Cloud rollen weer te geven die momenteel telemetrie verzenden:
+  - U [Log Analytics](../log-query/get-started-portal.md) ook gebruiken om alle cloudrollen weer te geven die momenteel telemetrie verzenden:
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -76,14 +76,14 @@ Elk van deze opties wordt beschreven in de [gedetailleerde instructies](status-m
 
 Uw telemetrie weergeven:
 
-* [Bekijk metrische gegevens](../../azure-monitor/app/metrics-explorer.md) om de prestaties en het gebruik te bewaken.
-* [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen op te sporen.
-* [Gebruik analyses](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's.
-* [Dash boards maken](../../azure-monitor/app/overview-dashboard.md).
+* [Bekijk statistieken](../../azure-monitor/app/metrics-explorer.md) om de prestaties en het gebruik te controleren.
+* [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen te diagnosticeren.
+* [Gebruik Analytics](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's.
+* [Dashboards maken](../../azure-monitor/app/overview-dashboard.md).
 
 Meer telemetrie toevoegen:
 
 * [Maak webtests](monitor-web-app-availability.md) om ervoor te zorgen dat uw site actief blijft.
-* [Voeg de telemetrie van de webclient](../../azure-monitor/app/javascript.md) toe om uitzonde ringen van webpagina code te bekijken en tracerings aanroepen in te scha kelen.
-* [Voeg de Application INSIGHTS SDK toe aan uw code](../../azure-monitor/app/asp-net.md) zodat u tracerings-en logboek aanroepen kunt invoegen.
+* [Voeg telemetrie van webclient toe](../../azure-monitor/app/javascript.md) om uitzonderingen van webpaginacode te bekijken en tracecalls in te schakelen.
+* [Voeg de Application Insights SDK toe aan uw code,](../../azure-monitor/app/asp-net.md) zodat u trace- en logoproepen invoegen.
 

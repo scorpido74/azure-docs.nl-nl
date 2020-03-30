@@ -1,6 +1,6 @@
 ---
-title: Maken van aangepaste artefacten voor uw virtuele machine van DevTest Labs | Microsoft Docs
-description: Informatie over het ontwerpen van uw eigen artefacten voor gebruik met Azure DevTest Labs.
+title: Aangepaste artefacten maken voor uw virtuele machine van DevTest Labs | Microsoft Documenten
+description: Meer informatie over het maken van uw eigen artefacten die u gebruiken met Azure DevTest Labs.
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66399202"
 ---
-# <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Maken van aangepaste artefacten voor uw virtuele machine van DevTest Labs
+# <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Maak aangepaste artefacten voor uw Virtuele Machine van DevTest Labs
 
-Bekijk de volgende video voor een overzicht van de stappen in dit artikel beschreven:
+Bekijk de volgende video voor een overzicht van de stappen die in dit artikel worden beschreven:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/how-to-author-custom-artifacts/player]
 >
 >
 
 ## <a name="overview"></a>Overzicht
-U kunt *artefacten* om te implementeren en uw toepassing instellen nadat u een virtuele machine inricht. Een artefact bestaat uit een definitiebestand artefact en andere bestanden die zijn opgeslagen in een map in een Git-opslagplaats. Artefact definitiebestanden bestaan uit JSON en expressies die u gebruiken kunt om op te geven wat u wilt installeren op een virtuele machine. Bijvoorbeeld, kunt u de naam van een artefact, een opdracht uit te voeren en parameters die beschikbaar zijn wanneer de opdracht wordt uitgevoerd. U kunt verwijzen naar andere scriptbestanden in de definitie van het artefact bestand met de naam.
+U *artefacten* gebruiken om uw toepassing te implementeren en in te stellen nadat u een VM hebt ingemaakt. Een artefact bestaat uit een artefact-definitiebestand en andere scriptbestanden die zijn opgeslagen in een map in een Git-opslagplaats. Artefact-definitiebestanden bestaan uit JSON en expressies die u gebruiken om op te geven wat u op een vm wilt installeren. U bijvoorbeeld de naam van een artefact, een opdracht definiëren die moet worden uitgevoerd en parameters die beschikbaar zijn wanneer de opdracht wordt uitgevoerd. U verwijzen naar andere scriptbestanden in het artefact-definitiebestand op naam.
 
-## <a name="artifact-definition-file-format"></a>Bestandsindeling van pakketdefinities artefact
-Het volgende voorbeeld ziet u de secties die gezamenlijk de basisstructuur van een definitiebestand:
+## <a name="artifact-definition-file-format"></a>Bestandsindeling artefact-definitie
+In het volgende voorbeeld worden de secties weergegeven die deel uitmaken van de basisstructuur van een definitiebestand:
 
     {
       "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
@@ -53,20 +53,20 @@ Het volgende voorbeeld ziet u de secties die gezamenlijk de basisstructuur van e
       }
     }
 
-| De naam van element | Vereist? | Description |
+| Elementnaam | Vereist? | Beschrijving |
 | --- | --- | --- |
-| $schema |Nee |Locatie van het bestand met JSON-schema. Het JSON-schema-bestand kunt u de geldigheid van de definitie van het bestand te testen. |
-| title |Ja |De naam van het artefact weergegeven in het lab. |
-| description |Ja |Beschrijving van het artefact weergegeven in het lab. |
-| iconUri |Nee |De URI van het pictogram weergegeven in het lab. |
-| targetOsType |Ja |Besturingssysteem van de virtuele machine waarop het artefact is geïnstalleerd. Ondersteunde opties zijn Windows en Linux. |
-| parameters |Nee |De waarden die zijn opgegeven wanneer de installatieopdracht artefact op een virtuele machine wordt uitgevoerd. Zo kunt u uw artefact aanpassen. |
-| runCommand |Ja |Artefacten installeren de opdracht die wordt uitgevoerd op een virtuele machine. |
+| $schema |Nee |Locatie van het JSON-schemabestand. Het JSON-schemabestand kan u helpen de geldigheid van het definitiebestand te testen. |
+| titel |Ja |Naam van het artefact dat in het lab wordt weergegeven. |
+| description |Ja |Beschrijving van het artefact in het lab. |
+| iconUri |Nee |URI van het pictogram weergegeven in het lab. |
+| targetOsType |Ja |Besturingssysteem van de VM waar het artefact is geïnstalleerd. Ondersteunde opties zijn Windows en Linux. |
+| parameters |Nee |Waarden die worden opgegeven wanneer de opdracht artefactinstallatie op een machine wordt uitgevoerd. Dit helpt u uw artefact aan te passen. |
+| Runcommand |Ja |Artefact-installatieopdracht die wordt uitgevoerd op een vm. |
 
-### <a name="artifact-parameters"></a>Artefact parameters
-In de parametersectie van de definitie van het bestand opgeven welke waarden van een gebruiker kan invoeren wanneer ze een artefact installeert. U kunt verwijzen naar deze waarden in de installatieopdracht artefact.
+### <a name="artifact-parameters"></a>Artefact-parameters
+Geef in het gedeelte parameters van het definitiebestand op welke waarden een gebruiker kan invoeren wanneer hij een artefact installeert. U deze waarden in de opdracht Artefact-installatie verwijzen.
 
-Gebruik de volgende structuur voor het definiëren van parameters:
+Gebruik de volgende structuur om parameters te definiëren:
 
     "parameters": {
       "<parameterName>": {
@@ -76,21 +76,21 @@ Gebruik de volgende structuur voor het definiëren van parameters:
       }
     }
 
-| De naam van element | Vereist? | Description |
+| Elementnaam | Vereist? | Beschrijving |
 | --- | --- | --- |
-| type |Ja |Het type van de waarde van parameter. Zie de volgende lijst voor de toegestane typen. |
-| displayName |Ja |De naam van de parameter die wordt weergegeven aan een gebruiker in het lab. |
-| description |Ja |Beschrijving van de parameter die wordt weergegeven in het lab. |
+| type |Ja |Type parameterwaarde. Zie de volgende lijst voor de toegestane typen. |
+| displayName |Ja |Naam van de parameter die wordt weergegeven aan een gebruiker in het lab. |
+| description |Ja |Beschrijving van de parameter die in het lab wordt weergegeven. |
 
 Toegestane typen zijn:
 
-* tekenreeks (een willekeurige geldige JSON-tekenreeks)
-* Int (een geldige JSON geheel getal)
-* BOOL (geldige JSON Boolean)
-* matrix (geldige JSON-matrix)
+* tekenreeks (een geldige JSON-tekenreeks)
+* int (een geldig JSON-gehele getal)
+* bool (een geldige JSON Booleaan)
+* array (een geldige JSON-array)
 
-## <a name="secrets-as-secure-strings"></a>Geheimen als beveiligde tekenreeksen
-Declareer geheimen als beveiligde tekenreeksen. Hier volgt de syntaxis voor het declareren van een beveiligde tekenreeks-parameter in de `parameters` sectie van de **artifactfile.json** bestand:
+## <a name="secrets-as-secure-strings"></a>Geheimen als veilige snaren
+Verklaar geheimen als veilige snaren. Hier vindt u de syntaxis voor `parameters` het declareren van een parameter voor een beveiligde tekenreeks in de sectie van het bestand **artifactfile.json:**
 
 ```json
 
@@ -102,7 +102,7 @@ Declareer geheimen als beveiligde tekenreeksen. Hier volgt de syntaxis voor het 
     },
 ```
 
-Voor het artefact installatieopdracht, voert u de PowerShell-script waarmee de beveiligde tekenreeks die is gemaakt met behulp van de opdracht ConvertTo-SecureString. 
+Voer voor de opdracht Artefact-installatie het PowerShell-script uit dat de beveiligde tekenreeks neemt die is gemaakt met de opdracht ConvertTo-SecureString. 
 
 ```json
   "runCommand": {
@@ -110,21 +110,21 @@ Voor het artefact installatieopdracht, voert u de PowerShell-script waarmee de b
   }
 ```
 
-Zie voor het volledige voorbeeld artifactfile.json en de artifact.ps1 (PowerShell-script) [in dit voorbeeld op GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes).
+Zie [dit voorbeeld op GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)voor het volledige voorbeeld artifactfile.json en het artefact.ps1 (PowerShell-script).
 
-Een ander belangrijk punt om te onthouden is niet om aan te melden geheimen in de console als uitvoer wordt vastgelegd voor foutopsporing van de gebruiker. 
+Een ander belangrijk punt om op te merken is niet om geheimen te registreren op de console als output wordt vastgelegd voor het debuggen van de gebruiker. 
 
-## <a name="artifact-expressions-and-functions"></a>Artefact expressies en functies
-Kunt u expressies en functies te maken van het artefact installatieopdracht.
-Expressies zijn tussen vierkante haken ([en]), en worden geëvalueerd wanneer het artefact is geïnstalleerd. Expressies kunnen overal worden weergegeven in een JSON-tekenreeks-waarde. Expressies retourneert altijd een ander JSON-waarde. Als u een letterlijke tekenreeks begint met een haakje sluiten ([]) gebruiken moet, moet u twee vierkante haken ([[) gebruiken.
-Meestal gebruikt u expressies met functions te maken van een waarde. Net als in JavaScript-functieaanroepen die zijn opgemaakt als **functionName (arg1, arg2, arg3)** .
+## <a name="artifact-expressions-and-functions"></a>Artefact-expressies en -functies
+U expressies en functies gebruiken om de opdracht Artefact-installatie te construeren.
+Expressies zijn ingesloten met haakjes ([ en ]), en worden geëvalueerd wanneer het artefact is geïnstalleerd. Expressies kunnen overal in een JSON-tekenreekswaarde worden weergegeven. Expressies geven altijd een andere JSON-waarde terug. Als u een letterlijke tekenreeks moet gebruiken die begint met een beugel ([), moet u twee haakjes gebruiken ([[).
+Doorgaans gebruikt u expressies met functies om een waarde te construeren. Net als in JavaScript worden functieaanroepen opgemaakt als **functieNaam(arg1, arg2, arg3)**.
 
-De volgende lijst bevat algemene functies:
+In de volgende lijst worden veelvoorkomende functies weergegeven:
 
-* **parameters(parameterName)** : Retourneert een parameterwaarde die is opgegeven tijdens het artefact-opdracht wordt uitgevoerd.
-* **concat (arg1, arg2, arg3,...)** : Combineert meerdere tekenreekswaarden. Deze functie kan duren voordat een aantal argumenten.
+* **parameters(parameterName):** geeft als resultaat een parameterwaarde die wordt opgegeven wanneer de artefactopdracht wordt uitgevoerd.
+* **concat(arg1, arg2, arg3,.....)**: Combineert meerdere tekenreekswaarden. Deze functie kan verschillende argumenten aannemen.
 
-Het volgende voorbeeld laat zien hoe u expressies en functies te maken van een waarde:
+In het volgende voorbeeld ziet u hoe u expressies en functies gebruikt om een waarde te construeren:
 
     runCommand": {
         "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
@@ -135,23 +135,23 @@ Het volgende voorbeeld laat zien hoe u expressies en functies te maken van een w
 
 ## <a name="create-a-custom-artifact"></a>Een aangepast artefact maken
 
-1. Installeer een JSON-editor. U moet een JSON-editor om te werken met artefact definitiebestanden. Wordt u aangeraden [Visual Studio Code](https://code.visualstudio.com/), die beschikbaar is voor Windows, Linux en OS X.
-2. Een voorbeeldbestand artifactfile.json in het definitie ophalen. Bekijk de artefacten die zijn gemaakt door de DevTest Labs-team in onze [GitHub-opslagplaats](https://github.com/Azure/azure-devtestlab). Er is een uitgebreide bibliotheek met artefacten die kan helpen u bij het maken van uw eigen artefacten gemaakt. Download een definitiebestand artefact en wijzigingen aanbrengen in het maken van uw eigen artefacten.
-3. Maakt gebruik van IntelliSense. IntelliSense gebruiken om te zien van geldige elementen die u gebruiken kunt om een definitiebestand artefact samen te stellen. U kunt ook de verschillende opties voor waarden van een element zien. Bijvoorbeeld, wanneer u bewerkt de **targetOsType** -element, IntelliSense ziet u twee opties voor Windows of Linux.
-4. Het artefact in Store de [openbare Git-opslagplaats voor DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) of [uw eigen Git-opslagplaats](devtest-lab-add-artifact-repo.md). In de openbare opslagplaats, kunt u de artefacten die gedeeld met anderen kunt u rechtstreeks gebruiken of pas ze aan uw eigen wensen aan weergeven.
+1. Installeer een JSON-editor. U hebt een JSON-editor nodig om te werken met artefact-definitiebestanden. We raden u aan [Visual Studio Code](https://code.visualstudio.com/)te gebruiken, die beschikbaar is voor Windows, Linux en OS X.
+2. Download een voorbeeld van artefactfile.json-definitiebestand. Bekijk de artefacten die zijn gemaakt door het DevTest Labs-team in onze [GitHub-repository.](https://github.com/Azure/azure-devtestlab) We hebben een rijke bibliotheek met artefacten gemaakt die je kunnen helpen je eigen artefacten te maken. Download een artefact-definitiebestand en breng er wijzigingen aan aan om uw eigen artefacten te maken.
+3. Maak gebruik van IntelliSense. Gebruik IntelliSense om geldige elementen te zien die u gebruiken om een artefact-definitiebestand te construeren. U ook de verschillende opties voor waarden van een element zien. Wanneer u bijvoorbeeld het **doelostype-element** bewerkt, toont IntelliSense u twee keuzes voor Windows of Linux.
+4. Bewaar het artefact in de [openbare Git-repository voor DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) of [uw eigen Git-repository.](devtest-lab-add-artifact-repo.md) In de openbare opslagplaats u artefacten bekijken die door anderen worden gedeeld en die u rechtstreeks gebruiken of aanpassen aan uw behoeften.
    
-   1. Maak een afzonderlijke map voor elke artefact. Naam van de map moet hetzelfde zijn als de naam van het assemblyartefact.
-   2. Het artefact-definitiebestand (artifactfile.json) Store in de map die u hebt gemaakt.
-   3. De scripts die zijn waarnaar wordt verwezen in de installatieopdracht artefact Store.
+   1. Maak een aparte map voor elk artefact. De naam van de map moet hetzelfde zijn als de artefactnaam.
+   2. Sla het artefact-definitiebestand (artifactfile.json) op in de map die u hebt gemaakt.
+   3. Sla de scripts op waarnaar wordt verwezen vanuit de opdracht Artefact-installatie.
       
-      Hier volgt een voorbeeld van een map artefact kan als volgt uitzien:
+      Hier is een voorbeeld van hoe een artefactmap eruit zou kunnen zien:
       
-      ![Voorbeeld van de map artefact](./media/devtest-lab-artifact-author/git-repo.png)
-5. Als u uw eigen opslagplaats voor het opslaan van artefacten, voegt u de opslagplaats naar het lab met de instructies in het artikel: [Een Git-opslagplaats voor artefacten en sjablonen toevoegen](devtest-lab-add-artifact-repo.md).
+      ![Voorbeeld van artefactmap](./media/devtest-lab-artifact-author/git-repo.png)
+5. Als u uw eigen opslagplaats gebruikt om artefacten op te slaan, voegt u de opslagplaats toe aan het lab door instructies in het artikel te volgen: [Voeg een Git-opslagplaats toe voor artefacten en sjablonen.](devtest-lab-add-artifact-repo.md)
 
 ## <a name="related-articles"></a>Verwante artikelen:
-* [Hoe u met artefacten vaststellen in DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)
-* [Een VM toevoegen aan een bestaand Active Directory-domein met behulp van Resource Manager-sjabloon in DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Artefact-fouten diagnosticeren in DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)
+* [Een VM deelnemen aan een bestaand Active Directory-domein met behulp van een resourcemanagersjabloon in DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het [een Git-opslagplaats voor artefacten toevoegen aan een lab](devtest-lab-add-artifact-repo.md).
+* Meer informatie over het [toevoegen van een Git-artefactrepository aan een lab.](devtest-lab-add-artifact-repo.md)

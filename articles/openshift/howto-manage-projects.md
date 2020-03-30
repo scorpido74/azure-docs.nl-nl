@@ -1,51 +1,51 @@
 ---
-title: Resources beheren in azure Red Hat open Shift | Microsoft Docs
-description: Projecten, sjablonen, afbeeldings stromen beheren in een Azure Red Hat open Shift-cluster
+title: Resources beheren in Azure Red Hat OpenShift | Microsoft Documenten
+description: Projecten, sjablonen, afbeeldingsstromen beheren in een Azure Red Hat OpenShift-cluster
 services: openshift
-keywords: Red Hat open Shift-projecten aanvragen Self-provisioner
+keywords: red hat openshift projecten verzoeken self-provisioner
 author: mjudeikis
 ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79139110"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projecten, sjablonen, afbeeldings stromen beheren in een Azure Red Hat open Shift-cluster 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Projecten, sjablonen, afbeeldingsstromen beheren in een Azure Red Hat OpenShift-cluster 
 
-In een open Shift container platform worden projecten gebruikt om verwante objecten te groeperen en te isoleren. Als beheerder kunt u ontwikkel aars toegang geven tot specifieke projecten, toestaan dat ze hun eigen projecten maken en ze beheerders rechten verlenen aan afzonderlijke projecten.
+In een OpenShift Container Platform worden projecten gebruikt om gerelateerde objecten te groeperen en te isoleren. Als beheerder u ontwikkelaars toegang geven tot specifieke projecten, hen in staat stellen hun eigen projecten te maken en hen administratieve rechten verlenen voor afzonderlijke projecten.
 
-## <a name="self-provisioning-projects"></a>Projecten zelf inrichten
+## <a name="self-provisioning-projects"></a>Zelfvoorzieningsprojecten
 
-U kunt ontwikkel aars in staat stellen hun eigen projecten te maken. Een API-eind punt is verantwoordelijk voor het inrichten van een project volgens een sjabloon met de naam project-Request. De webconsole en de `oc new-project` opdracht gebruiken dit eind punt wanneer een ontwikkelaar een nieuw project maakt.
+U ontwikkelaars in staat stellen hun eigen projecten te maken. Een API-eindpunt is verantwoordelijk voor het inrichten van een project volgens een sjabloon met de naam projectaanvraag. De webconsole `oc new-project` en de opdracht gebruiken dit eindpunt wanneer een ontwikkelaar een nieuw project maakt.
 
-Wanneer een project aanvraag wordt ingediend, vervangt de API de volgende para meters in de sjabloon:
+Wanneer een projectaanvraag wordt ingediend, vervangt de API de volgende parameters in de sjabloon:
 
 | Parameter               | Beschrijving                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | De naam van het project. Vereist.             |
-| PROJECT_DISPLAYNAME     | De weergave naam van het project. Kan leeg zijn. |
+| PROJECT_DISPLAYNAME     | De weergavenaam van het project. Kan leeg zijn. |
 | PROJECT_DESCRIPTION     | De beschrijving van het project. Kan leeg zijn.  |
-| PROJECT_ADMIN_USER      | De gebruikers naam van de gebruiker met beheerders rechten.       |
-| PROJECT_REQUESTING_USER | De gebruikers naam van de gebruiker die de aanvraag heeft ingediend.           |
+| PROJECT_ADMIN_USER      | De gebruikersnaam van de administrerende gebruiker.       |
+| PROJECT_REQUESTING_USER | De gebruikersnaam van de verzoekende gebruiker.           |
 
-De toegang tot de API wordt verleend aan ontwikkel aars met de cluster functie van Self-provisioners. Deze functie is standaard beschikbaar voor alle geverifieerde ontwikkel aars.
+Toegang tot de API wordt verleend aan ontwikkelaars met de zelfprovisioners clusterrol binding. Deze functie is standaard beschikbaar voor alle geverifieerde ontwikkelaars.
 
 ## <a name="modify-the-template-for-a-new-project"></a>De sjabloon voor een nieuw project wijzigen 
 
-1. Meld u aan als een gebruiker met `customer-admin` bevoegdheden.
+1. Log in als `customer-admin` gebruiker met privileges.
 
-2. Bewerk de standaard sjabloon project-aanvraag.
+2. Bewerk de standaardsjabloon projectaanvraag.
 
    ```
    oc edit template project-request -n openshift
    ```
 
-3. Verwijder de standaard project sjabloon uit het update proces van Azure Red Hat open Shift (ARO) door de volgende aantekening toe te voegen: `openshift.io/reconcile-protect: "true"`
+3. Verwijder de standaardprojectsjabloon uit het AZURE Red Hat OpenShift-updateproces (Azure Red Hat OpenShift) door de volgende annotatie toe te voegen:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -55,21 +55,21 @@ De toegang tot de API wordt verleend aan ontwikkel aars met de cluster functie v
    ...
    ```
 
-   De sjabloon project-aanvraag wordt niet bijgewerkt door het ARO-update proces. Hierdoor kunnen klanten de sjabloon aanpassen en deze aanpassingen behouden wanneer het cluster wordt bijgewerkt.
+   De sjabloon voor projectaanvragen wordt niet bijgewerkt door het ARO-updateproces. Hierdoor kunnen klanten de sjabloon aanpassen en deze aanpassingen behouden wanneer het cluster wordt bijgewerkt.
 
-## <a name="disable-the-self-provisioning-role"></a>De rol voor zelf inrichting uitschakelen
+## <a name="disable-the-self-provisioning-role"></a>De rol van zelfvoorziening uitschakelen
 
-U kunt voor komen dat een geverifieerde gebruikers groep nieuwe projecten zelf inricht.
+U voorkomen dat een geverifieerde gebruikersgroep nieuwe projecten zelf inrichten.
 
-1. Meld u aan als een gebruiker met `customer-admin` bevoegdheden.
+1. Log in als `customer-admin` gebruiker met privileges.
 
-2. Bewerk de cluster functie binding Self-inrichting.
+2. Bewerk de clusterrolbinding van zelfprovisioners.
 
    ```
    oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
-3. Verwijder de rol uit het ARO-update proces door de volgende aantekening toe te voegen: `openshift.io/reconcile-protect: "true"`.
+3. Verwijder de rol uit het ARO-updateproces door `openshift.io/reconcile-protect: "true"`de volgende annotatie toe te voegen: .
 
    ```
    ...
@@ -79,7 +79,7 @@ U kunt voor komen dat een geverifieerde gebruikers groep nieuwe projecten zelf i
    ...
    ```
 
-4. Wijzig de binding van de cluster functie om te voor komen dat `system:authenticated:oauth` projecten maken:
+4. Wijzig de clusterrol `system:authenticated:oauth` binding om te voorkomen dat projecten worden gemaakt:
 
    ```
    apiVersion: rbac.authorization.k8s.io/v1
@@ -99,20 +99,20 @@ U kunt voor komen dat een geverifieerde gebruikers groep nieuwe projecten zelf i
      name: osa-customer-admins
    ```
 
-## <a name="manage-default-templates-and-imagestreams"></a>Standaard sjablonen en imageStreams beheren
+## <a name="manage-default-templates-and-imagestreams"></a>Standaardsjablonen en imageStreams beheren
 
-In azure Red Hat open Shift kunt u updates uitschakelen voor alle standaard sjablonen en afbeeldings stromen binnen `openshift` naam ruimte.
-Als u updates wilt uitschakelen voor alle `Templates` en `ImageStreams` in `openshift` naam ruimte:
+In Azure Red Hat OpenShift u updates uitschakelen `openshift` voor standaardsjablonen en afbeeldingsstromen in de naamruimte.
+Update voor ALL `Templates` `ImageStreams` en `openshift` in de naamruimte uitschakelen:
 
-1. Meld u aan als een gebruiker met `customer-admin` bevoegdheden.
+1. Log in als `customer-admin` gebruiker met privileges.
 
-2. `openshift` naam ruimte bewerken:
+2. Naamruimte `openshift` bewerken:
 
    ```
    oc edit namespace openshift
    ```
 
-3. Verwijder `openshift` naam ruimte uit het update proces van ARO door de volgende aantekening toe te voegen: `openshift.io/reconcile-protect: "true"`
+3. Verwijder `openshift` naamruimte uit het ARO-updateproces door de volgende annotatie toe te voegen:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -122,10 +122,10 @@ Als u updates wilt uitschakelen voor alle `Templates` en `ImageStreams` in `open
    ...
    ```
 
-   Elk afzonderlijk object in de `openshift` naam ruimte kan worden verwijderd uit het update proces door aantekeningen `openshift.io/reconcile-protect: "true"` toe te voegen.
+   Elk afzonderlijk object `openshift` in de naamruimte kan uit het `openshift.io/reconcile-protect: "true"` updateproces worden verwijderd door er een annotatie aan toe te voegen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer de zelf studie:
+Probeer de zelfstudie:
 > [!div class="nextstepaction"]
 > [Een Azure Red Hat OpenShift-cluster maken](tutorial-create-cluster.md)

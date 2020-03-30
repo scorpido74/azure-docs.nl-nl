@@ -1,6 +1,6 @@
 ---
 title: Scripts uitvoeren in een Azure Linux VM
-description: In dit onderwerp wordt beschreven hoe u scripts binnen een virtuele machine uit te voeren
+description: In dit onderwerp wordt beschreven hoe u scripts in een virtuele machine uitvoert
 services: automation
 ms.service: automation
 author: bobbytreed
@@ -9,66 +9,66 @@ ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 6175ae4263aee0ecdca5b1d768438ad20352375c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67477021"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Scripts uitvoeren in uw Linux-VM
 
-Voor het automatiseren van taken of oplossen van problemen, wellicht u opdrachten kunt uitvoeren in een virtuele machine. Het volgende artikel geeft een kort overzicht van de functies die beschikbaar zijn voor het uitvoeren van scripts en -opdrachten binnen uw virtuele machines.
+Als u taken wilt automatiseren of problemen wilt oplossen, moet u mogelijk opdrachten uitvoeren in een vm. Het volgende artikel geeft een kort overzicht van de functies die beschikbaar zijn voor het uitvoeren van scripts en opdrachten binnen uw VM's.
 
 ## <a name="custom-script-extension"></a>Aangepaste scriptextensie
 
-De [Custom Script Extension](../extensions/custom-script-linux.md) wordt voornamelijk gebruikt voor post-implementatie-configuratie en software-installatie.
+De [Custom Script-extensie](../extensions/custom-script-linux.md) wordt voornamelijk gebruikt voor de configuratie na implementatie en software-installatie.
 
-* Downloaden en uitvoeren van scripts in virtuele machines van Azure.
-* Kan worden uitgevoerd met behulp van Azure Resource Manager-sjablonen, Azure CLI, REST-API, PowerShell of Azure-portal.
-* Script-bestanden worden gedownload uit Azure storage of GitHub of opgegeven van de PC bij uitvoering vanuit de Azure-portal.
-* PowerShell-script uitgevoerd op Windows-machines en Bash-scripts in Linux-machines.
-* Dit is handig voor post-implementatieconfiguratie, software-installatie, en andere configuratie of beheertaken.
+* Scripts downloaden en uitvoeren in virtuele Azure-machines.
+* Kan worden uitgevoerd met Azure Resource Manager-sjablonen, Azure CLI, REST API, PowerShell of Azure-portal.
+* Scriptbestanden kunnen worden gedownload van Azure-opslag of GitHub of vanaf uw pc worden geleverd wanneer ze worden uitgevoerd vanaf de Azure-portal.
+* Voer PowerShell-script uit in Windows-machines en Bash-script in Linux-machines.
+* Handig voor configuratie na implementatie, software-installatie en andere configuratie- of beheertaken.
 
-## <a name="run-command"></a>Voer de opdracht
+## <a name="run-command"></a>Voer de opdracht  uit
 
-De [opdracht uitvoeren](run-command.md) functie kunt u virtuele machine en Toepassingsbeheer en problemen oplossen met behulp van scripts, en is beschikbaar, zelfs wanneer de computer is niet bereikbaar is, bijvoorbeeld als de Gast-firewall beschikt niet over de RDP of SSH-poort Open.
+De functie [Opdracht uitvoeren](run-command.md) maakt virtueel machine- en toepassingsbeheer en probleemoplossing met behulp van scripts mogelijk en is beschikbaar, zelfs wanneer de machine niet bereikbaar is, bijvoorbeeld als de gastfirewall de RDP- of SSH-poort niet heeft geopend.
 
-* Scripts uitvoeren in virtuele machines van Azure.
-* Kan worden uitgevoerd met [Azure-portal](run-command.md), [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), of [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand)
-* Snel uitvoeren van een script en weergave van de uitvoer en Herhaal zo nodig in Azure portal.
-* Script rechtstreeks kan worden getypt of u een van de ingebouwde scripts kunt uitvoeren.
-* PowerShell-script uitgevoerd op Windows-machines en Bash-scripts in Linux-machines.
-* Dit is handig voor de virtuele machine en Toepassingsbeheer en voor het uitvoeren van scripts in virtuele machines die niet bereikbaar zijn.
+* Scripts uitvoeren in virtuele Azure-machines.
+* Kan worden uitgevoerd met [Azure-portal,](run-command.md) [REST API,](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)of [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand)
+* Voer snel een script uit en bekijk de uitvoer en herhaal indien nodig in de Azure-portal.
+* Script kan direct worden getypt of u een van de ingebouwde scripts uitvoeren.
+* Voer PowerShell-script uit in Windows-machines en Bash-script in Linux-machines.
+* Handig voor virtueel machine- en toepassingsbeheer en voor het uitvoeren van scripts in virtuele machines die onbereikbaar zijn.
 
 ## <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-De [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) biedt algemeen beheer voor machine, de toepassing en de omgeving van de gebruiker aangepaste scripts die zijn opgeslagen in een Automation-account.
+De [Hybride Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) biedt algemeen machine-, toepassings- en omgevingsbeheer met aangepaste scripts van de gebruiker die zijn opgeslagen in een Automatiseringsaccount.
 
-* Scripts uitvoeren in Azure en niet-Azure-machines.
-* Kan worden uitgevoerd met behulp van Azure portal, Azure CLI, REST-API, PowerShell, webhook.
-* Scripts die zijn opgeslagen en beheerd in een Automation-Account.
-* PowerShell, PowerShell-werkstroom, Python of grafisch runbooks uitvoeren
-* Geen beperking op script keer uitvoeren.
+* Scripts uitvoeren in Azure- en niet-Azure-machines.
+* Kan worden uitgevoerd met Azure portal, Azure CLI, REST API, PowerShell, webhook.
+* Scripts die zijn opgeslagen en beheerd in een automatiseringsaccount.
+* PowerShell-, PowerShell-werkstroom-, Python- of grafische runbooks uitvoeren
+* Geen tijdslimiet voor de looptijd van het script.
 * Meerdere scripts kunnen gelijktijdig worden uitgevoerd.
-* Uitvoer van het volledige script wordt geretourneerd en opgeslagen.
-* Taakgeschiedenis 90 dagen beschikbaar.
-* Scripts kunnen worden uitgevoerd als lokaal systeem of met de gebruiker opgegeven referenties.
+* Volledige scriptuitvoer wordt geretourneerd en opgeslagen.
+* Werkgeschiedenis beschikbaar voor 90 dagen.
+* Scripts kunnen worden uitgevoerd als Lokaal systeem of met door de gebruiker verstrekte referenties.
 * Vereist [handmatige installatie](../../automation/automation-windows-hrw-install.md)
 
 ## <a name="serial-console"></a>Seriële console
 
-De [seriële console](serial-console.md) voorziet in directe toegang tot een VM, vergelijkbaar met een toetsenbord dat is verbonden met de virtuele machine.
+De [serial console](serial-console.md) biedt directe toegang tot een VM, vergelijkbaar met het hebben van een toetsenbord aangesloten op de VM.
 
-* Opdrachten uitvoeren in virtuele machines van Azure.
-* Kan worden uitgevoerd met behulp van een op tekst gebaseerde console op de machine in Azure portal.
-* Meld u aan bij de computer met een lokale gebruikersaccount toegekend.
-* Dit is handig wanneer u toegang tot de virtuele machine is vereist, ongeacht het netwerk of besturingssysteem status van de machine.
+* Opdrachten uitvoeren in virtuele Azure-machines.
+* Kan worden uitgevoerd met behulp van een op tekst gebaseerde console naar de machine in de Azure-portal.
+* Log in bij de machine met een lokaal gebruikersaccount.
+* Handig wanneer toegang tot de virtuele machine nodig is, ongeacht de status van het netwerk of het besturingssysteem van de machine.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de verschillende functies die beschikbaar zijn voor het uitvoeren van scripts en -opdrachten binnen uw virtuele machines.
+Meer informatie over de verschillende functies die beschikbaar zijn voor het uitvoeren van scripts en opdrachten binnen uw VM's.
 
 * [Aangepaste scriptextensie](../extensions/custom-script-linux.md)
-* [Opdracht uitvoeren](run-command.md)
+* [Uitvoeren, opdracht](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
 * [Seriële console](serial-console.md)

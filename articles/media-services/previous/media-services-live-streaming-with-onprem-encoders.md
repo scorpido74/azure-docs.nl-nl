@@ -1,6 +1,6 @@
 ---
-title: Live streamen met on-premises coderings Programma's die multi-bitrate streams maken-Azure | Microsoft Docs
-description: In dit onderwerp wordt beschreven hoe u een kanaal instelt dat een multi-bitrate Live Stream ontvangt van een on-premises encoder.
+title: Live streamen met on-premises encoders die multibitrate streams maken - Azure | Microsoft Documenten
+description: In dit onderwerp wordt beschreven hoe u een kanaal instelt dat een multibitrate live stream ontvangt van een on-premises encoder.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,212 +15,212 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251035"
 ---
-# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Werken met kanalen die een multi-bitrate live stream van on-premises encoders ontvangen
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Werken met kanalen die multi-bitrate live stream ontvangen van on-premises encoders
 
 > [!NOTE]
-> Vanaf 12 mei 2018 krijgen Live kanalen niet langer ondersteuning voor het RTP/MPEG-2 Trans Port stream opname protocol. Migreer van RTP/MPEG-2 naar RTMP-of gefragmenteerde MP4 (Smooth Streaming)-opname protocollen.
+> Vanaf 12 mei 2018 ondersteunen live kanalen niet langer het RTP/MPEG-2 transportstream ingest protocol. Migreer van RTP/MPEG-2 naar RTMP of gefragmenteerde MP4 -protocollen (Smooth Streaming).
 
 ## <a name="overview"></a>Overzicht
-In Azure Media Services vertegenwoordigt een *kanaal* een pijp lijn voor het verwerken van live-streaming-inhoud. Een kanaal ontvangt Live-invoer stromen op een van de volgende twee manieren:
+In Azure Media Services vertegenwoordigt een *kanaal* een pijplijn voor het verwerken van livestreaming-inhoud. Een kanaal ontvangt op twee manieren live-invoerstreams:
 
-* Een on-premises Live coderings programma verzendt een multi-bitrate RTMP-of Smooth Streaming (gefragmenteerde MP4)-stream naar het kanaal dat niet is ingeschakeld voor het uitvoeren van Live code ring met Media Services. De opgenomen streams passeren kanalen zonder verdere verwerking. Deze methode wordt *Pass-Through*genoemd. Een Live Encoder kan ook een stream met één bitsnelheid verzenden naar een kanaal dat niet is ingeschakeld voor Live encoding, maar dit wordt niet aangeraden. Media Services de stroom levert aan klanten die deze aanvragen.
+* Een on-premises live-encoder stuurt een multi-bitrate RTMP- of Smooth Streaming -stream (gefragmenteerde MP4) naar het kanaal dat niet is ingeschakeld om live codering met Media Services uit te voeren. De ingenomen streams passeren kanalen zonder verdere verwerking. Deze methode wordt *pass-through*genoemd. Een live encoder kan ook een single-bitrate stream sturen naar een kanaal dat niet is ingeschakeld voor live codering, maar dat raden we niet aan. Media Services levert de stream aan klanten die daarom vragen.
 
   > [!NOTE]
-  > Het gebruik van een Pass-Through-methode is de voordeligste manier om live streamen uit te voeren.
+  > Het gebruik van een pass-through methode is de meest economische manier om live streaming te doen.
 
 
-* Een on-premises Live Encoder verzendt een stream met één bitsnelheid naar het kanaal dat is ingeschakeld voor het uitvoeren van Live code ring met Media Services in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). Het kanaal voert vervolgens Live encoding uit van de inkomende single-bitrate stream naar een multi-bitrate-video stroom (adaptief). Media Services de stroom levert aan klanten die deze aanvragen.
+* Een on-premises live-encoder stuurt een stream met één bitrate naar het kanaal dat is ingeschakeld om live codering met Media Services uit te voeren in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4). Het kanaal voert vervolgens live codering van de inkomende single-bitrate stream naar een multi-bitrate (adaptieve) videostream. Media Services levert de stream aan klanten die daarom vragen.
 
-Als u begint met de release van Media Services 2,10, kunt u, wanneer u een kanaal maakt, opgeven hoe u wilt dat uw kanaal de invoer stroom ontvangt. U kunt ook opgeven of u wilt dat het kanaal Live code ring van uw stream uitvoert. U hebt hiervoor twee opties:
+Vanaf de release mediaservices 2.10 u bij het maken van een kanaal opgeven hoe u wilt dat uw kanaal de invoerstream ontvangt. Je ook opgeven of je wilt dat het kanaal live wordt gecodeerd voor je stream. U hebt hiervoor twee opties:
 
-* **Pass**through: geef deze waarde op als u van plan bent een on-premises Live coderings programma te gebruiken dat een multi-bitrate stroom (een Pass-Through-stroom) als uitvoer heeft. In dit geval wordt de inkomende stroom door gegeven aan de uitvoer zonder code ring. Dit is het gedrag van een kanaal vóór de 2,10-release. In dit artikel vindt u informatie over het werken met kanalen van dit type.
-* **Live encoding**: Kies deze waarde als u Media Services wilt gebruiken om uw live stream met één bitsnelheid te coderen naar een multi-bitrate stream. Als u een live coderings kanaal in een **actieve** status laat staan, worden facturerings kosten in rekening gebracht. We raden u aan uw actieve kanalen direct te stoppen nadat uw live-streaming-gebeurtenis is voltooid om extra kosten per uur te voor komen. Media Services de stroom levert aan klanten die deze aanvragen.
+* **Doorgeef:** Geef deze waarde op als u van plan bent een on-premises live-encoder te gebruiken die een stream met meerdere bitrate 's maakt (een pass-through stream) als uitvoer. In dit geval gaat de binnenkomende stroom door naar de uitvoer zonder codering. Dit is het gedrag van een kanaal voor de 2.10 release. Dit artikel geeft details over het werken met kanalen van dit type.
+* **Live encoding**: Kies deze waarde als u van plan bent Media Services te gebruiken om uw single-bitrate live stream te coderen naar een stream met meerdere bitrates. Als u een live coderingskanaal in **een status actief laat,** worden factureringskosten in rekening gebracht. We raden je aan om je hardloopkanalen onmiddellijk te stoppen nadat je live-streaming evenement is voltooid om extra uurkosten te voorkomen. Media Services levert de stream aan klanten die daarom vragen.
 
 > [!NOTE]
-> In dit artikel worden kenmerken van kanalen beschreven die niet zijn ingeschakeld voor het uitvoeren van Live code ring. Zie voor meer informatie over het werken met kanalen die geschikt zijn voor het uitvoeren van Live code ring, [live streamen met Azure Media Services om multi-bitrate streams te maken](media-services-manage-live-encoder-enabled-channels.md).
+> In dit artikel worden kenmerken van kanalen besproken die niet zijn ingeschakeld om live codering uit te voeren. Zie [Live streaming met Azure Media Services om multibitrate streams te maken voor](media-services-manage-live-encoder-enabled-channels.md)informatie over het werken met kanalen die zijn ingeschakeld om live codering uit te voeren.
 >
->Zie [Aanbevolen voor on-premises coderings](media-services-recommended-encoders.md)Programma's voor meer informatie over het aanbevolen on-premises coderings Programma's.
+>Zie Aanbevolen op [lokalenencoders voor](media-services-recommended-encoders.md)informatie over aanbevolen on-premises encoders.
 
-Het volgende diagram vertegenwoordigt een live-streaming werk stroom die gebruikmaakt van een on-premises Live coderings programma voor multi-bitrate RTMP-of gefragmenteerde MP4-stromen (Smooth Streaming) als uitvoer.
+Het volgende diagram vertegenwoordigt een live-streaming workflow die een on-premises live encoder gebruikt om multi-bitrate RTMP of gefragmenteerde MP4 (Smooth Streaming) streams als uitvoer te hebben.
 
 ![Live-werkstroom][live-overview]
 
-## <a id="scenario"></a>Algemeen scenario voor live streamen
-In de volgende stappen worden de taken beschreven die worden uitgevoerd bij het maken van veelvoorkomende toepassingen voor live streamen.
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>Gemeenschappelijk scenario voor live streaming
+In de volgende stappen worden taken beschreven die betrokken zijn bij het maken van veelvoorkomende toepassingen voor live streaming.
 
-1. Sluit een videocamera aan op een computer. Start en configureer een on-premises Live coderings programma met een multi-bitrate RTMP-of gefragmenteerde MP4-stroom (Smooth Streaming) als uitvoer. Zie [Azure Media Services RTMP-ondersteuning en live coderingsprogramma's](https://go.microsoft.com/fwlink/?LinkId=532824) voor meer informatie.
+1. Sluit een videocamera aan op een computer. Start en configureer een on-premises live encoder met een multibitrate RTMP of gefragmenteerde MP4 -stream (Smooth Streaming) als uitvoer. Zie [Azure Media Services RTMP-ondersteuning en live coderingsprogramma's](https://go.microsoft.com/fwlink/?LinkId=532824) voor meer informatie.
 
-    U kunt deze stap ook uitvoeren nadat u uw kanaal hebt gemaakt.
+    Je deze stap ook uitvoeren nadat je je kanaal hebt gemaakt.
 2. Een kanaal maken en starten.
 
-3. Haal de kanaal opname-URL op.
+3. Haal de URL van het kanaal op.
 
-    Het Live coderings programma gebruikt de opname-URL om de stream naar het kanaal te verzenden.
-4. De voor beeld-URL van de kanaal ophalen.
+    De live encoder gebruikt de inname-URL om de stream naar het kanaal te sturen.
+4. De URL van de kanaalpreview ophalen.
 
     Gebruik deze URL om te controleren of de livestream goed door het kanaal wordt ontvangen.
-5. Een programma maken.
+5. Maak een programma.
 
-    Wanneer u de Azure Portal gebruikt, wordt er ook een Asset gemaakt door een programma te maken.
+    Wanneer u de Azure-portal gebruikt, maakt het maken van een programma ook een asset.
 
-    Wanneer u de .NET SDK of de REST gebruikt, moet u een Asset maken en opgeven dat deze asset moet worden gebruikt bij het maken van een programma.
-6. Publiceer het activum dat is gekoppeld aan het programma.   
+    Wanneer u de .NET SDK of REST gebruikt, moet u een asset maken en opgeven om dit item te gebruiken bij het maken van een programma.
+6. Publiceer het item dat aan het programma is gekoppeld.   
 
     >[!NOTE]
-    >Wanneer uw Azure Media Services-account wordt gemaakt, wordt er een **standaard** streaming-eind punt aan uw account toegevoegd met de status **gestopt** . Het streaming-eindpunt van waar u inhoud wilt streamen, moet de status **Wordt uitgevoerd** hebben.
+    >Wanneer uw Azure Media Services-account wordt gemaakt, wordt een **standaard** eindpunt voor streaming toegevoegd aan uw account in de **status Gestopt.** Het streaming-eindpunt van waar u inhoud wilt streamen, moet de status **Wordt uitgevoerd** hebben.
 
-7. Start het programma wanneer u klaar bent om te streamen en te archiveren.
+7. Start het programma wanneer u klaar bent om te beginnen met streamen en archiveren.
 
 8. Het live coderingsprogramma kan desgewenst een signaal ontvangen dat een advertentie moet worden gestart. De advertentie wordt ingevoegd in de uitvoerstream.
 
 9. Stop het programma als u het streamen wilt stoppen en de gebeurtenis wilt archiveren.
 
-10. Verwijder het programma (en verwijder desgewenst de Asset).     
+10. Verwijder het programma (en verwijder het item optioneel).     
 
-## <a id="channel"></a>Beschrijving van een kanaal en de bijbehorende onderdelen
-### <a id="channel_input"></a>Kanaal-invoer (opname) configuraties
-#### <a id="ingest_protocols"></a>Opname stroomsgewijze Protocol
-Media Services ondersteunt het opnemen van live feeds door multi-bitrate gefragmenteerde MP4 en multi-bitrate RTMP als streaming protocollen te gebruiken. Wanneer het protocol RTMP opname streaming is geselecteerd, worden er twee opname-(invoer) eind punten gemaakt voor het kanaal:
+## <a name="description-of-a-channel-and-its-related-components"></a><a id="channel"></a>Beschrijving van een kanaal en de bijbehorende componenten
+### <a name="channel-input-ingest-configurations"></a><a id="channel_input"></a>Kanaalinvoer (inname) configuraties
+#### <a name="ingest-streaming-protocol"></a><a id="ingest_protocols"></a>Inname streaming protocol
+Media Services ondersteunt het opnemen van live feeds door multi-bitrate gefragmenteerde MP4 en multi-bitrate RTMP te gebruiken als streaming protocollen. Wanneer het RTMP-streamingprotocol is geselecteerd, worden twee inname (invoer)eindpunten voor het kanaal gemaakt:
 
-* **Primaire URL**: Hiermee geeft u de volledig gekwalificeerde URL op van het primaire RTMP opname-eind punt van het kanaal.
-* **Secundaire URL** (optioneel): Hiermee geeft u de volledig gekwalificeerde URL op van het secundaire RTMP opname-eind punt van het kanaal.
+* **Primaire URL**: Hiermee geeft u de volledig gekwalificeerde URL op van het primaire RTMP-innamepunt van het kanaal.
+* **Secundaire URL** (optioneel): hiermee geeft u de volledig gekwalificeerde URL op van het secundaire RTMP-innamepunt van het kanaal.
 
-Gebruik de secundaire URL als u de duurzaamheid en fout tolerantie van uw opname stroom wilt verbeteren (evenals de failover van het coderings programma en fout tolerantie), met name voor de volgende scenario's:
+Gebruik de secundaire URL als u de duurzaamheid en fouttolerantie van uw innamestream wilt verbeteren (evenals encoderfailover en fouttolerantie), vooral voor de volgende scenario's:
 
-- Eén coderings programma voor het dubbel pushen naar zowel de primaire als de secundaire Url's:
+- Eén encoder dubbelpushen naar zowel primaire als secundaire URL's:
 
-    Het belangrijkste doel van dit scenario is om meer flexibiliteit te geven aan netwerk schommelingen en-Jitters. Sommige RTMP-coderings Programma's verwerken de verbinding met het netwerk niet goed. Wanneer een netwerk wordt losgekoppeld, wordt de versleuteling mogelijk gestopt en worden de gebufferde gegevens niet verzonden wanneer er opnieuw verbinding wordt gemaakt. Dit leidt tot onderbrekingen en gegevens verlies. Netwerk verbindingen kunnen zich voordoen als gevolg van een beschadigd netwerk of onderhoud aan de Azure-zijde. Primaire/secundaire Url's verminderen de netwerk problemen en bieden een bewaakt upgrade proces. Telkens wanneer een geplande netwerk verbinding wordt verbroken, beheert Media Services de primaire en secundaire verbroken verbindingen en vertraagde verbreking van de twee. Encoders hebben dan tijd om gegevens te blijven verzenden en opnieuw verbinding te maken. De volg orde van de verbreken van de verbinding kan wille keurig zijn, maar er is altijd een vertraging tussen de primaire/secundaire of secundaire/primaire Url's. In dit scenario is het coderings programma nog steeds de Single Point of Failure.
+    Het belangrijkste doel van dit scenario is om meer veerkracht te bieden aan netwerkschommelingen en kriebels. Sommige RTMP-encoders kunnen de verbinding tussen het netwerk en niet goed verbreken. Wanneer er een netwerkverbinding plaatsvindt, kan een encoder stoppen met coderen en vervolgens de gebufferde gegevens niet verzenden wanneer er opnieuw verbinding wordt gemaakt. Dit veroorzaakt discontinuïteiten en gegevensverlies. Netwerkverversingen kunnen plaatsvinden als gevolg van een slecht netwerk of onderhoud aan de Azure-kant. Primaire/secundaire URL's verminderen de netwerkproblemen en bieden een gecontroleerd upgradeproces. Elke keer dat een geplande netwerkverbinding plaatsvindt, beheert Media Services de primaire en secundaire verbinding en zorgt voor een vertraagde verbinding tussen de twee. Encoders hebben dan de tijd om gegevens te blijven verzenden en opnieuw verbinding te maken. De volgorde van de loskoppelingen kan willekeurig zijn, maar er zal altijd een vertraging zijn tussen primaire/secundaire of secundaire/primaire URL's. In dit scenario is de encoder nog steeds het enige punt van falen.
 
-- Meerdere coderings Programma's, waarbij elk coderings programma naar een toegewezen punt pusht:
+- Meerdere encoders, waarbij elke encoder naar een speciaal punt duwt:
 
-    Dit scenario biedt zowel coderings programma als reredundantie van opname. In dit scenario encoder1 pushes naar de primaire URL en encoder2 pushes naar de secundaire URL. Wanneer een coderings programma mislukt, kan het andere coderings programma gegevens blijven verzenden. Gegevens redundantie kan worden gehandhaafd omdat Media Services de primaire en secundaire Url's niet tegelijk verbreekt. In dit scenario wordt ervan uitgegaan dat coderings Programma's zijn gesynchroniseerd en exact dezelfde gegevens opgeven.  
+    Dit scenario biedt zowel encoder als inname redundantie. In dit scenario wordt encoder1 naar de primaire URL gepusht en wordt encoder2 naar de secundaire URL gepusht. Wanneer een encoder uitvalt, kan de andere encoder gegevens blijven verzenden. Gegevensredundantie kan worden gehandhaafd omdat Media Services de primaire en secundaire URL's niet tegelijkertijd loskoppelt. In dit scenario wordt ervan uitgegaan dat encoders tijdgesynchroniseerd zijn en exact dezelfde gegevens bevatten.  
 
-- Meerdere coderings Programma's die dubbel pushen naar zowel de primaire als de secundaire Url's:
+- Meerdere encoders dubbelpushen naar zowel primaire als secundaire URL's:
 
-    In dit scenario pushen beide Codeer gegevens naar zowel de primaire als de secundaire URL. Dit biedt de beste betrouw baarheid en fout tolerantie, evenals gegevens redundantie. Dit scenario kan beide coderings fouten verdragen en de verbinding verbreken, zelfs als één encoder niet meer werkt. Hierbij wordt ervan uitgegaan dat coderings Programma's zijn gesynchroniseerd en exact dezelfde gegevens opgeven.  
+    In dit scenario pushen beide encoders gegevens naar zowel primaire als secundaire URL's. Dit biedt de beste betrouwbaarheid en fouttolerantie, evenals gegevensredundantie. Dit scenario kan zowel encoderfouten als ontkoppeling verdragen, zelfs als één encoder niet meer werkt. Het gaat ervan uit dat encoders zijn tijd gesynchroniseerd en bieden precies dezelfde gegevens.  
 
-Zie [Azure Media Services RTMP-ondersteuning en live coderings](https://go.microsoft.com/fwlink/?LinkId=532824)Programma's voor meer informatie over RTMP Live coderings Programma's.
+Zie [Azure Media Services RTMP Support en Live Encoders](https://go.microsoft.com/fwlink/?LinkId=532824)voor informatie over RTMP live encoders.
 
-#### <a name="ingest-urls-endpoints"></a>Opname-Url's (eind punten)
-Een kanaal biedt een invoer eindpunt (opname-URL) dat u opgeeft in het Live coderings programma, zodat het coderings programma streams naar uw kanalen kan pushen.   
+#### <a name="ingest-urls-endpoints"></a>Inname van URL's (eindpunten)
+Een kanaal biedt een invoereindpunt (inname VAN URL) dat u opgeeft in de live encoder, zodat de encoder streams naar uw kanalen kan pushen.   
 
-U kunt de reopname-Url's ophalen wanneer u het kanaal maakt. U kunt deze Url's alleen ophalen als het kanaal niet de status **actief** heeft. Wanneer u klaar bent om te beginnen met het pushen van gegevens naar het kanaal, moet het kanaal de status **actief** hebben. Nadat het kanaal is begonnen met het opnemen van gegevens, kunt u een voor beeld van de stream bekijken via de URL van de preview-versie.
+U de inname URL's krijgen wanneer u het kanaal maakt. Om deze URL's te krijgen, hoeft het kanaal niet in de **status Actief** te zijn. Wanneer u klaar bent om gegevens naar het kanaal te duwen, moet het kanaal in de **status Actief** zijn. Nadat het kanaal gegevens begint in te nemen, u een voorbeeld van uw stream bekijken via de url van het voorbeeld.
 
-U kunt een gefragmenteerde MP4 (Smooth Streaming) live stream opnemen via een SSL-verbinding. Zorg ervoor dat u de opname-URL naar HTTPS bijwerkt voor opname via SSL. Op dit moment kunt u geen RTMP opnemen via SSL.
+Je hebt een optie om een gefragmenteerde MP4 -livestream (Smooth Streaming) in te nemen via een SSL-verbinding. Als u SSL wilt innemen, moet u de inname van DE URL bijwerken naar HTTPS. Op dit moment u RTMP niet via SSL innemen.
 
-#### <a id="keyframe_interval"></a>Interval voor keyframe
-Wanneer u een on-premises Live coderings programma gebruikt voor het genereren van een multi-bitrate stream, geeft het keyframe de duur van de groep afbeeldingen (GOP terug) aan, zoals wordt gebruikt door dat externe coderings programma. Nadat het kanaal deze inkomende stroom heeft ontvangen, kunt u uw Live Stream leveren aan client Play-toepassingen in een van de volgende indelingen: Smooth Streaming, dynamisch adaptief streamen via HTTP (DASH) en HTTP Live Streaming (HLS). Wanneer u live streamen uitvoert, wordt HLS altijd dynamisch verpakt. Standaard berekent Media Services de HLS segment-verhouding (fragmenten per segment) automatisch op basis van het interval van het keyframe dat is ontvangen van het Live coderings programma.
+#### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>Hoofdframeinterval
+Wanneer u een on-premises live-encoder gebruikt om multibitratestream te genereren, geeft het hoofdframeinterval de duur aan van de groep afbeeldingen (GOP) zoals die door die externe encoder wordt gebruikt. Nadat het kanaal deze binnenkomende stream heeft ontvangen, u uw live stream leveren aan toepassingen voor het afspelen van klanten in een van de volgende indelingen: Smooth Streaming, Dynamic Adaptive Streaming over HTTP (DASH) en HTTP Live Streaming (HLS). Wanneer u live streaming doet, wordt HLS altijd dynamisch verpakt. Media Services berekent standaard automatisch de hls-segmentverpakkingsverhouding (fragmenten per segment) op basis van het hoofdframeinterval dat wordt ontvangen van de live-encoder.
 
 In de volgende tabel ziet u hoe de duur van het segment wordt berekend:
 
-| Interval voor keyframe | HLS segment-verpakkings verhouding (FragmentsPerSegment) | Voorbeeld |
+| Hoofdframeinterval | HLS-segmentverpakkingsverhouding (FragmentsPerSegment) | Voorbeeld |
 | --- | --- | --- |
-| Minder dan of gelijk aan 3 seconden |3:1 |Als KeyFrameInterval (of GOP terug) 2 seconden is, is de standaard verhouding van het segment van het HLS 3 op 1. Hiermee maakt u een HLS-segment van 6 seconden. |
-| 3 tot 5 seconden |2:1 |Als KeyFrameInterval (of GOP terug) 4 seconden is, is de standaard verhouding van het segment van het HLS-pakket 2 tot 1. Hiermee maakt u een HLS-segment van 8 seconden. |
-| Langer dan 5 seconden |1:1 |Als KeyFrameInterval (of GOP terug) 6 seconden is, is de standaard verhouding van het segment van het HLS 1 en 1. Hiermee maakt u een HLS-segment van 6 seconden. |
+| Minder dan of gelijk aan 3 seconden |3:1 |Als KeyFrameInterval (of GOP) 2 seconden is, is de standaard hls-segmentverpakkingsverhouding 3 op 1. Hierdoor ontstaat een HLS-segment van 6 seconden. |
+| 3 tot 5 seconden |2:1 |Als KeyFrameInterval (of GOP) 4 seconden is, is de standaard hls-segmentverpakkingsverhouding 2 op 1. Hierdoor ontstaat een HLS-segment van 8 seconden. |
+| Meer dan 5 seconden |1:1 |Als KeyFrameInterval (of GOP) 6 seconden is, is de standaard hls-segmentverpakkingsverhouding 1 op 1. Hierdoor ontstaat een HLS-segment van 6 seconden. |
 
-U kunt de verhouding van fragmenten per segment wijzigen door de uitvoer van het kanaal te configureren en FragmentsPerSegment in ChannelOutputHls in te stellen.
+U de verhouding fragmenten per segment wijzigen door de uitvoer van het kanaal te configureren en FragmentsPerSegment in te stellen op ChannelOutputHls.
 
-U kunt ook de waarde voor het interval van het keyframe wijzigen door de eigenschap KeyFrameInterval in te stellen op ChannelInput. Als u KeyFrameInterval expliciet instelt, wordt de HLS-segment verpakkings ratio FragmentsPerSegment berekend volgens de eerder beschreven regels.  
+U ook de intervalwaarde van het hoofdframe wijzigen door de eigenschap KeyFrameInterval in te stellen op ChannelInput. Als u KeyFrameInterval expliciet instelt, wordt de HLS-segmentverpakkingsverhouding FragmentsPerSegment berekend via de eerder beschreven regels.  
 
-Als u zowel KeyFrameInterval als FragmentsPerSegment expliciet hebt ingesteld, gebruikt Media Services de waarden die u hebt ingesteld.
-
-#### <a name="allowed-ip-addresses"></a>Toegestane IP-adressen
-U kunt de IP-adressen definiëren die video naar dit kanaal mogen publiceren. Een toegestaan IP-adres kan worden opgegeven als een van de volgende:
-
-* Eén IP-adres (bijvoorbeeld 10.0.0.1)
-* Een IP-bereik dat gebruikmaakt van een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22)
-* Een IP-bereik dat gebruikmaakt van een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld 10.0.0.1 (255.255.252.0))
-
-Als er geen IP-adressen zijn opgegeven en er geen regel definitie is, is geen IP-adres toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.
-
-### <a name="channel-preview"></a>Channel Preview
-#### <a name="preview-urls"></a>Preview-Url's
-Kanalen bieden een preview-eind punt (Preview-URL) die u gebruikt om uw stroom te bekijken en te valideren vóór verdere verwerking en levering.
-
-U kunt de voor beeld-URL ophalen wanneer u het kanaal maakt. U kunt de URL alleen ophalen als het kanaal niet de status **actief** heeft. Wanneer het kanaal begint met het opnemen van gegevens, kunt u een voor beeld van de stroom bekijken.
-
-Op dit moment kan de voorbeeld stroom alleen worden geleverd in gefragmenteerde MP4-indeling (Smooth Streaming), ongeacht het opgegeven invoer type. U kunt de [Smooth streaming Health Monitor](https://playready.directtaps.net/smoothstreaming/) Player gebruiken om de vloeiende stroom te testen. U kunt ook een speler gebruiken die wordt gehost in de Azure Portal om uw stroom weer te geven.
+Als u zowel KeyFrameInterval als FragmentsPerSegment expliciet instelt, gebruikt Media Services de waarden die u instelt.
 
 #### <a name="allowed-ip-addresses"></a>Toegestane IP-adressen
-U kunt de IP-adressen definiëren die verbinding mogen maken met het eind punt van de preview. Als er geen IP-adressen zijn opgegeven, is elk IP-adres toegestaan. Een toegestaan IP-adres kan worden opgegeven als een van de volgende:
+U de IP-adressen definiëren die video op dit kanaal mogen publiceren. Een toegestaan IP-adres kan als een van de volgende voorwaarden worden opgegeven:
 
 * Eén IP-adres (bijvoorbeeld 10.0.0.1)
-* Een IP-bereik dat gebruikmaakt van een IP-adres en een CIDR-subnetmasker (bijvoorbeeld 10.0.0.1/22)
-* Een IP-bereik dat gebruikmaakt van een IP-adres en een decimaal subnetmasker met punten (bijvoorbeeld 10.0.0.1 (255.255.252.0))
+* Een IP-bereik dat een IP-adres en een CIDR-subnetmasker gebruikt (bijvoorbeeld 10.0.0.1/22)
+* Een IP-bereik dat een IP-adres en een gestippeld subnetmasker achter de komma gebruikt (bijvoorbeeld 10,0,0,1(255.255.252.0))
 
-### <a name="channel-output"></a>Kanaal-uitvoer
-Zie de sectie [interval voor keyframe](#keyframe_interval) voor meer informatie over kanaal uitvoer.
+Als er geen IP-adressen zijn opgegeven en er geen regeldefinitie is, is er geen IP-adres toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.
 
-### <a name="channel-managed-programs"></a>Door kanalen beheerde Program ma's
-Een kanaal is gekoppeld aan Program ma's die u kunt gebruiken voor het beheren van het publiceren en opslaan van segmenten in een live stream. Kanalen beheren Program ma's. De kanaal-en programma relatie is vergelijkbaar met traditionele media, waarbij een kanaal een constante stroom inhoud heeft en een programma wordt afgestemd op een bepaalde time-outgebeurtenis op dat kanaal.
+### <a name="channel-preview"></a>Kanaalvoorbeeld
+#### <a name="preview-urls"></a>Url's bekijken
+Kanalen bieden een voorbeeldeindpunt (preview-URL) dat u gebruikt om uw stream te bekijken en te valideren voordat u verder wordt verwerkt en geleverd.
 
-U kunt het aantal uren opgeven dat u de opgenomen inhoud voor het programma wilt behouden door de lengte voor **Archiefvenster** in te stellen. Deze waarde kan worden ingesteld van minimaal 5 minuten tot maximaal 25 uur. De lengte van het archief venster bepaalt ook het maximum aantal keren dat clients vanaf de huidige Live positie terug op tijd kunnen zoeken. Programma's kunnen in de opgegeven tijdsduur worden uitgevoerd, maar de inhoud die achter de lengte van het venster valt, wordt altijd verwijderd. De waarde van deze eigenschap bepaalt ook hoe lang de clientmanifesten kunnen groeien.
+U de url van de preview ophalen wanneer u het kanaal maakt. Om de URL te krijgen, hoeft het kanaal niet in de **status Actief** te zijn. Nadat het kanaal gegevens begint in te nemen, kun je een voorbeeld van je stream bekijken.
 
-Elk programma is gekoppeld aan een Asset waarin de gestreamde inhoud wordt opgeslagen. Een Asset wordt toegewezen aan een blok-BLOB-container in het Azure-opslag account en de bestanden in de Asset worden opgeslagen als blobs in die container. Als u het programma wilt publiceren zodat uw klanten de stroom kunnen bekijken, moet u een OnDemand-Locator voor de gekoppelde Asset maken. Met deze Locator kunt u een streaming-URL maken die u aan uw clients kunt leveren.
+Momenteel kan de previewstream alleen worden geleverd in een gefragmenteerde MP4-indeling (Smooth Streaming), ongeacht het opgegeven invoertype. U de [smooth streaming health monitor-speler](https://playready.directtaps.net/smoothstreaming/) gebruiken om de vloeiende stream te testen. U ook een speler die wordt gehost in de Azure-portal gebruiken om uw stream te bekijken.
 
-Een kanaal ondersteunt Maxi maal drie gelijktijdig actieve Program ma's, zodat u meerdere archieven van dezelfde binnenkomende stream kunt maken. U kunt zo nodig andere onderdelen van een gebeurtenis publiceren en archiveren. Stel bijvoorbeeld dat uw zakelijke vereiste is om 6 uur van een programma te archiveren, maar alleen de laatste tien minuten uit te zenden. Hiervoor moet u twee gelijktijdig actieve programma's maken. Eén programma is ingesteld om zes uur van de gebeurtenis te archiveren, maar het programma wordt niet gepubliceerd. Het andere programma is ingesteld op archiveren gedurende tien minuten en dit programma wordt gepubliceerd.
+#### <a name="allowed-ip-addresses"></a>Toegestane IP-adressen
+U de IP-adressen definiëren die verbinding mogen maken met het voorbeeldeindpunt. Als er geen IP-adressen zijn opgegeven, is een IP-adres toegestaan. Een toegestaan IP-adres kan als een van de volgende voorwaarden worden opgegeven:
 
-Gebruik bestaande programma's niet voor nieuwe gebeurtenissen. Maak in plaats daarvan een nieuw programma voor elke gebeurtenis. Start het programma wanneer u klaar bent om te streamen en te archiveren. Stop het programma als u het streamen wilt stoppen en de gebeurtenis wilt archiveren.
+* Eén IP-adres (bijvoorbeeld 10.0.0.1)
+* Een IP-bereik dat een IP-adres en een CIDR-subnetmasker gebruikt (bijvoorbeeld 10.0.0.1/22)
+* Een IP-bereik dat een IP-adres en een gestippeld subnetmasker achter de komma gebruikt (bijvoorbeeld 10,0,0,1(255.255.252.0))
 
-Als u de gearchiveerde inhoud wilt verwijderen, stopt en verwijdert u het programma en verwijdert u vervolgens de gekoppelde Asset. Een Asset kan niet worden verwijderd als een programma dit gebruikt. Het programma moet eerst worden verwijderd.
+### <a name="channel-output"></a>Kanaaluitvoer
+Zie de intervalsectie [Hoofdframe](#keyframe_interval) voor informatie over kanaaluitvoer.
 
-Zelfs nadat u het programma hebt gestopt en verwijderd, kunnen gebruikers de gearchiveerde inhoud als een video op aanvraag streamen, totdat u het activum verwijdert. Als u de gearchiveerde inhoud wilt behouden, maar deze niet beschikbaar wilt maken voor streaming, verwijdert u de streaming-Locator.
+### <a name="channel-managed-programs"></a>Door kanalen beheerde programma's
+Een kanaal is gekoppeld aan programma's die u gebruiken om het publiceren en opslaan van segmenten in een live stream te beheren. Kanalen beheren programma's. De kanaal- en programmarelatie is vergelijkbaar met traditionele media, waar een kanaal een constante stroom van inhoud heeft en een programma is ondergebracht bij een bepaalde getimede gebeurtenis op dat kanaal.
 
-## <a id="states"></a>Kanaal status en facturering
+U kunt het aantal uren opgeven dat u de opgenomen inhoud voor het programma wilt behouden door de lengte voor **Archiefvenster** in te stellen. Deze waarde kan worden ingesteld van minimaal 5 minuten tot maximaal 25 uur. Archiefvenster lengte bepaalt ook het maximale aantal tijd dat klanten terug kunnen zoeken in de tijd van de huidige live positie. Programma's kunnen in de opgegeven tijdsduur worden uitgevoerd, maar de inhoud die achter de lengte van het venster valt, wordt altijd verwijderd. De waarde van deze eigenschap bepaalt ook hoe lang de clientmanifesten kunnen groeien.
+
+Elk programma is gekoppeld aan een asset die de gestreamde inhoud opslaat. Een asset wordt toegewezen aan een blokblobcontainer in het Azure-opslagaccount en de bestanden in het asset worden opgeslagen als blobs in die container. Als u het programma wilt publiceren zodat uw klanten de stream kunnen bekijken, moet u een OnDemand-locator voor het bijbehorende actief maken. U deze locator gebruiken om een streaming URL op te bouwen die u aan uw klanten verstrekken.
+
+Een kanaal ondersteunt maximaal drie gelijktijdig lopende programma's, zodat u meerdere archieven van dezelfde binnenkomende stream maken. U verschillende onderdelen van een evenement naar behoefte publiceren en archiveren. Stel je bijvoorbeeld voor dat je zakelijke vereiste is om 6 uur van een programma te archiveren, maar alleen de laatste 10 minuten uit te zenden. Hiervoor moet u twee gelijktijdig actieve programma's maken. Eén programma is ingesteld op het archiveren van zes uur van het evenement, maar het programma wordt niet gepubliceerd. Het andere programma is ingesteld op archiveren voor 10 minuten, en dit programma wordt gepubliceerd.
+
+Gebruik bestaande programma's niet voor nieuwe gebeurtenissen. Maak in plaats daarvan een nieuw programma voor elke gebeurtenis. Start het programma wanneer u klaar bent om te beginnen met streamen en archiveren. Stop het programma als u het streamen wilt stoppen en de gebeurtenis wilt archiveren.
+
+Als u gearchiveerde inhoud wilt verwijderen, stopt en verwijdert u het programma en verwijdert u het bijbehorende item. Een item kan niet worden verwijderd als een programma het gebruikt. Het programma moet eerst worden verwijderd.
+
+Zelfs nadat u het programma hebt gestopt en verwijderd, kunnen gebruikers uw gearchiveerde inhoud op aanvraag streamen als video, totdat u het item verwijdert. Als u de gearchiveerde inhoud wilt behouden, maar deze niet beschikbaar hebt voor streaming, verwijdert u de streaminglocator.
+
+## <a name="channel-states-and-billing"></a><a id="states"></a>Kanaalstaten en facturering
 Mogelijke waarden voor de huidige status van een kanaal zijn:
 
-* **Gestopt**: dit is de begin status van het kanaal nadat het is gemaakt. In deze status kunnen de kanaal eigenschappen worden bijgewerkt, maar streaming is niet toegestaan.
-* **Starten**: het kanaal wordt gestart. Er zijn geen updates of streaming toegestaan tijdens deze status. Als er een fout optreedt, keert het kanaal terug naar de status **gestopt** .
-* **Uitvoeren**: het kanaal kan live streams verwerken.
-* **Stoppen**: het kanaal wordt gestopt. Er zijn geen updates of streaming toegestaan tijdens deze status.
-* **Verwijderen**: het kanaal wordt verwijderd. Er zijn geen updates of streaming toegestaan tijdens deze status.
+* **Gestopt**: Dit is de beginstatus van het kanaal na de creatie ervan. In deze status kunnen de kanaaleigenschappen worden bijgewerkt, maar is streaming niet toegestaan.
+* **Vanaf**: Het kanaal wordt gestart. Tijdens deze status is geen updates of streaming toegestaan. Als er een fout optreedt, keert het kanaal terug naar de **status Gestopt.**
+* **Running**: Het kanaal kan live streams verwerken.
+* **Stoppen**: Het kanaal wordt gestopt. Tijdens deze status is geen updates of streaming toegestaan.
+* **Verwijderen**: Het kanaal wordt verwijderd. Tijdens deze status is geen updates of streaming toegestaan.
 
-In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de facturerings modus.
+In de volgende tabel ziet u hoe kanaalstatussen worden toegewezen aan de factureringsmodus.
 
-| Kanaal status | UI-indica toren van portal | Gefactureerd? |
+| Kanaalstaat | Portal UI-indicatoren | Gefactureerd? |
 | --- | --- | --- |
-| **Ingang** |**Ingang** |Nee (tijdelijke status) |
-| **Wordt uitgevoerd** |**Gereed** (geen actieve Program ma's)<p><p>of<p>**Streaming** (ten minste één programma dat wordt uitgevoerd) |Ja |
-| **Stoppen** |**Stoppen** |Nee (tijdelijke status) |
+| **Beginnen** |**Beginnen** |Geen (tijdelijke status) |
+| **Wordt uitgevoerd** |**Klaar** (geen lopende programma's)<p><p>of<p>**Streaming** (ten minste één lopend programma) |Ja |
+| **Stoppen** |**Stoppen** |Geen (tijdelijke status) |
 | **Gestopt** |**Gestopt** |Nee |
 
-## <a id="cc_and_ads"></a>Ondertiteling en AD-invoeging
-De volgende tabel bevat de ondersteunde standaarden voor ondertiteling en het invoegen van advertenties.
+## <a name="closed-captioning-and-ad-insertion"></a><a id="cc_and_ads"></a>Ondertiteling en invoeging van advertenties
+In de volgende tabel worden ondersteunde standaarden voor ondertiteling en het invoegen van advertenties weergegeven.
 
 | Standard | Opmerkingen |
 | --- | --- |
-| CEA-708 en EIA-608 (708/608) |CEA-708 en EIA-608 zijn closed captioning-standaarden voor de Verenigde Staten en Canada.<p><p>Bijschriften worden momenteel alleen ondersteund als deze in de gecodeerde invoer stroom worden uitgevoerd. U moet een Live Media Encoder gebruiken waarmee u 608-of 708-bijschriften in de gecodeerde stroom kunt invoegen die naar Media Services worden verzonden. Media Services levert de inhoud met Inge sloten bijschriften aan uw viewers. |
-| TTML binnen. ismt (Smooth Streaming tekst sporen) |Met Media Services dynamische pakketten kunnen uw clients inhoud streamen in een van de volgende indelingen: DASH, HLS of Smooth Streaming. Als u echter gefragmenteerde MP4 (Smooth Streaming) opneemt met bijschriften in. ismt (Smooth Streaming tekst sporen), kunt u de stroom alleen aan Smooth Streaming-clients leveren. |
-| SCTE-35 |SCTE-35 is een digitaal signalerings systeem dat wordt gebruikt voor het aanroepen van invoeging van advertenties. Downstream-ontvangers gebruiken het signaal om reclame uit te splitsen in de stroom voor de toegewezen tijd. SCTE-35 moet worden verzonden als een sparse track in de invoer stroom.<p><p>Op dit moment is de enige ondersteunde invoer stroom indeling die AD-signalen heeft, gefragmenteerde MP4 (Smooth Streaming). De enige ondersteunde uitvoer indeling is ook Smooth Streaming. |
+| CEA-708 en M.E.m.) |CEA-708 en EIA-608 zijn ondertitelingsstandaarden voor de Verenigde Staten en Canada.<p><p>Momenteel wordt ondertiteling alleen ondersteund als deze wordt uitgevoerd in de gecodeerde invoerstream. U moet een live media-encoder gebruiken die 608 of 708 bijschriften kan invoegen in de gecodeerde stream die naar Media Services wordt verzonden. Media Services levert de inhoud met ingevoegde bijschriften aan uw kijkers. |
+| TTML binnen .ismt (Smooth Streaming teksttracks) |Met een dynamische verpakking van Media Services kunnen uw klanten inhoud streamen in een van de volgende indelingen: DASH, HLS of Smooth Streaming. Als u echter gefragmenteerde MP4 (Smooth Streaming) inneemt met bijschriften in .ismt (Smooth Streaming text tracks), u de stream alleen leveren aan Smooth Streaming-clients. |
+| SCTE-35 |SCTE-35 is een digitaal signaleringssysteem dat wordt gebruikt om reclame in te brengen. Downstream ontvangers gebruiken het signaal om reclame splice in de stroom voor de toegewezen tijd. SCTE-35 moet worden verzonden als een spaarzame track in de invoerstroom.<p><p>Momenteel is de enige ondersteunde invoerstream-indeling die advertentiesignalen draagt gefragmenteerd MP4 (Smooth Streaming). De enige ondersteunde uitvoerindeling is ook Smooth Streaming. |
 
-## <a id="considerations"></a>Tot
-Wanneer u een on-premises Live coderings programma gebruikt om een multi-bitrate stroom naar een kanaal te verzenden, gelden de volgende beperkingen:
+## <a name="considerations"></a><a id="considerations"></a>Overwegingen
+Wanneer u een on-premises live-encoder gebruikt om een stream met meerdere bitrates naar een kanaal te verzenden, zijn de volgende beperkingen van toepassing:
 
-* Zorg ervoor dat u voldoende vrije Internet connectiviteit hebt om gegevens te verzenden naar de opname punten.
-* Voor het gebruik van een secundaire opname-URL is extra band breedte vereist.
-* De binnenkomende multi-bitrate stroom kan Maxi maal 10 niveaus voor video kwaliteit (lagen) en Maxi maal 5 audio tracks hebben.
-* De hoogste gemiddelde bitsnelheid voor elk van de video kwaliteits niveaus moet lager zijn dan 10 Mbps.
-* De som van de gemiddelde bitrates voor alle video-en audio-streams moet lager zijn dan 25 Mbps.
-* U kunt het invoer protocol niet wijzigen terwijl het kanaal of de gekoppelde Program ma's worden uitgevoerd. Als u verschillende protocollen nodig hebt, maakt u afzonderlijke kanalen voor elk invoerprotocol.
-* U kunt één bitrate opnemen in uw kanaal. Maar omdat de stroom niet door het kanaal wordt verwerkt, ontvangen de client toepassingen ook een enkele bitrate stroom. (Deze optie wordt niet aanbevolen.)
+* Zorg ervoor dat u voldoende gratis internetverbinding hebt om gegevens naar de innamepunten te verzenden.
+* Het gebruik van een secundaire inname-URL vereist extra bandbreedte.
+* De inkomende multi-bitrate stream kan maximaal 10 videokwaliteitsniveaus (lagen) en maximaal 5 audiotracks hebben.
+* De hoogste gemiddelde bitrate voor een van de videokwaliteitsniveaus moet lager zijn dan 10 Mbps.
+* Het totaal van de gemiddelde bitrates voor alle video- en audiostreams moet lager zijn dan 25 Mbps.
+* U het invoerprotocol niet wijzigen terwijl het kanaal of de bijbehorende programma's worden uitgevoerd. Als u verschillende protocollen nodig hebt, maakt u afzonderlijke kanalen voor elk invoerprotocol.
+* Je één bitrate inje kanaal opnemen. Maar omdat het kanaal de stream niet verwerkt, ontvangen de clienttoepassingen ook een enkele bitrate stream. (We raden deze optie niet aan.)
 
-Hier volgen andere overwegingen met betrekking tot het werken met kanalen en verwante onderdelen:
+Hier volgen andere overwegingen met betrekking tot het werken met kanalen en gerelateerde componenten:
 
-* Telkens wanneer u het Live coderings programma opnieuw configureert, roept u de methode **Reset** op het kanaal aan. Voordat u het kanaal opnieuw instelt, moet u het programma stoppen. Nadat u het kanaal opnieuw hebt ingesteld, start u het programma opnieuw.
+* Elke keer dat u de live encoder opnieuw configureert, roept u de **methode Opnieuw instellen** op het kanaal aan. Voordat u het kanaal reset, moet u het programma stoppen. Nadat u het kanaal hebt gereset, start u het programma opnieuw op.
 
   > [!NOTE]
-  > Wanneer u het programma opnieuw start, moet u dit koppelen aan een nieuwe Asset en een nieuwe Locator maken. 
+  > Wanneer u het programma opnieuw start, moet u het koppelen aan een nieuw item en een nieuwe locator maken. 
   
-* Een kanaal kan alleen worden gestopt wanneer het zich in de **uitvoerings** status bevindt en alle Program ma's op het kanaal zijn gestopt.
-* Standaard kunt u slechts vijf kanalen toevoegen aan uw Media Services-account. Zie [quota's en beperkingen](media-services-quotas-and-limitations.md)voor meer informatie.
-* U wordt alleen gefactureerd wanneer uw kanaal de status **actief** heeft. Zie de sectie [kanaal Staten en facturering](media-services-live-streaming-with-onprem-encoders.md#states) voor meer informatie.
+* Een kanaal kan alleen worden gestopt **Running** als het actief is en alle programma's op het kanaal zijn gestopt.
+* Standaard u slechts vijf kanalen toevoegen aan uw Media Services-account. Zie [Quota en beperkingen](media-services-quotas-and-limitations.md)voor meer informatie .
+* Je wordt alleen gefactureerd als je kanaal de **status Actief** is. Zie de sectie [Kanaalstaten en facturering](media-services-live-streaming-with-onprem-encoders.md#states) voor meer informatie.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -229,12 +229,12 @@ Hier volgen andere overwegingen met betrekking tot het werken met kanalen en ver
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Verwante onderwerpen
-[Aanbevolen voor on-premises encoders](media-services-recommended-encoders.md)
+[Aanbevolen op lokalen encoders](media-services-recommended-encoders.md)
 
-[Specificatie van opname van Azure Media Services gefragmenteerde MP4-levens duur](../media-services-fmp4-live-ingest-overview.md)
+[Azure Media Services gefragmenteerde MP4-levens inname specificatie](../media-services-fmp4-live-ingest-overview.md)
 
-[Overzicht van Azure Media Services en algemene scenario's](media-services-overview.md)
+[Overzicht van Azure Media Services en veelvoorkomende scenario's](media-services-overview.md)
 
-[Media Services concepten](media-services-concepts.md)
+[Concepten van Media Services](media-services-concepts.md)
 
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png

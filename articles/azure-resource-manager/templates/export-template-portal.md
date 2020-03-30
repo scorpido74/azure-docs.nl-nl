@@ -1,125 +1,125 @@
 ---
-title: Sjabloon exporteren in Azure Portal
-description: Gebruik Azure Portal om een Azure Resource Manager sjabloon te exporteren vanuit resources in uw abonnement.
+title: Sjabloon exporteren in Azure-portal
+description: Gebruik Azure portal om een Azure Resource Manager-sjabloon te exporteren vanuit bronnen in uw abonnement.
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273733"
 ---
-# <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Eén en meerdere resources exporteren naar een sjabloon in Azure Portal
+# <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Export met één en meerdere resources naar een sjabloon in Azure-portal
 
-Als u hulp nodig hebt bij het maken van Azure Resource Manager sjablonen, kunt u een sjabloon uit bestaande resources exporteren. De geëxporteerde sjabloon helpt u bij het begrijpen van de JSON-syntaxis en eigenschappen waarmee uw resources worden geïmplementeerd. Als u toekomstige implementaties wilt automatiseren, begint u met de geëxporteerde sjabloon en wijzigt u deze voor uw scenario.
+Als u wilt helpen bij het maken van Azure Resource Manager-sjablonen, u een sjabloon exporteren uit bestaande bronnen. Met de geëxporteerde sjabloon u inzicht krijgen in de syntaxis en eigenschappen van JSON die uw resources implementeren. Als u toekomstige implementaties wilt automatiseren, begint u met de geëxporteerde sjabloon en wijzigt u deze voor uw scenario.
 
-Met Resource Manager kunt u een of meer resources kiezen voor het exporteren naar een sjabloon. U kunt zich richten op de resources die u nodig hebt in de sjabloon.
+Met Resource Manager u een of meer bronnen kiezen om naar een sjabloon te exporteren. U zich richten op precies de resources die u nodig hebt in de sjabloon.
 
-In dit artikel wordt beschreven hoe u sjablonen exporteert via de portal. U kunt ook [Azure cli](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)of [rest API](/rest/api/resources/resourcegroups/exporttemplate)gebruiken.
+In dit artikel ziet u hoe u sjablonen exporteren via de portal. U ook [Azure CLI,](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates) [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)of [REST API](/rest/api/resources/resourcegroups/exporttemplate)gebruiken.
 
-## <a name="choose-the-right-export-option"></a>Kies de optie voor de juiste export
+## <a name="choose-the-right-export-option"></a>Kies de juiste exportoptie
 
 Er zijn twee manieren om een sjabloon te exporteren:
 
-* **Exporteren uit resource groep of resource**. Met deze optie wordt een nieuwe sjabloon gegenereerd op basis van bestaande resources. De geëxporteerde sjabloon is een moment opname van de huidige status van de resource groep. U kunt een volledige resource groep exporteren of specifieke resources binnen die resource groep.
+* **Exporteren uit resourcegroep of resource**. Met deze optie genereert u een nieuwe sjabloon uit bestaande bronnen. De geëxporteerde sjabloon is een momentopname van de huidige status van de resourcegroep. U een volledige resourcegroep of specifieke resources binnen die resourcegroep exporteren.
 
-* **Exporteren vóór implementatie of van geschiedenis**. Met deze optie wordt een exacte kopie van een sjabloon opgehaald die wordt gebruikt voor de implementatie.
+* **Exporteren vóór implementatie of uit de geschiedenis**. Met deze optie wordt een exacte kopie opgehaald van een sjabloon die wordt gebruikt voor implementatie.
 
 Afhankelijk van de optie die u kiest, hebben de geëxporteerde sjablonen verschillende kwaliteiten.
 
-| Van resource groep of resource | Vóór implementatie of vanuit geschiedenis |
+| Van resourcegroep of resource | Vóór implementatie of uit de geschiedenis |
 | --------------------- | ----------------- |
-| De sjabloon is een moment opname van de huidige status van de resource. Het bevat alle hand matige wijzigingen die u na de implementatie hebt aangebracht. | Met de sjabloon wordt alleen de status van resources op het moment van de implementatie weer gegeven. Hand matige wijzigingen die u na de implementatie hebt aangebracht, zijn niet opgenomen. |
-| U kunt selecteren welke resources uit een resource groep u wilt exporteren. | Alle resources voor een specifieke implementatie zijn opgenomen. U kunt geen subset van deze resources kiezen of resources toevoegen die op een ander tijdstip zijn toegevoegd. |
-| De sjabloon bevat alle eigenschappen voor de resources, waaronder enkele eigenschappen die u niet normaal hebt ingesteld tijdens de implementatie. Mogelijk wilt u deze eigenschappen verwijderen of opschonen voordat u de sjabloon opnieuw gebruikt. | De sjabloon bevat alleen de eigenschappen die nodig zijn voor de implementatie. De sjabloon is klaar voor gebruik. |
-| De sjabloon bevat waarschijnlijk niet alle para meters die u nodig hebt voor hergebruik. De meeste eigenschaps waarden worden vastgelegd in de sjabloon. Als u de sjabloon opnieuw wilt implementeren in andere omgevingen, moet u para meters toevoegen die de mogelijkheid verhogen om de resources te configureren.  U kunt de selectie **para meters intrekken** ongedaan maken zodat u uw eigen para meters kunt ontwerpen. | De sjabloon bevat para meters waarmee u eenvoudig opnieuw kunt implementeren in verschillende omgevingen. |
+| Sjabloon is een momentopname van de huidige status van de resources. Het bevat alle handmatige wijzigingen die u na de implementatie hebt aangebracht. | Sjabloon toont alleen de status van resources op het moment van implementatie. Alle handmatige wijzigingen die u na de implementatie hebt aangebracht, zijn niet inbegrepen. |
+| U selecteren welke resources uit een resourcegroep u wilt exporteren. | Alle resources voor een specifieke implementatie zijn inbegrepen. U geen subset van deze resources kiezen of resources toevoegen die op een ander tijdstip zijn toegevoegd. |
+| Sjabloon bevat alle eigenschappen voor de resources, inclusief enkele eigenschappen die u normaal gesproken niet zou instellen tijdens de implementatie. U deze eigenschappen verwijderen of opschonen voordat u de sjabloon opnieuw gebruikt. | Sjabloon bevat alleen de eigenschappen die nodig zijn voor de implementatie. De sjabloon is gebruiksklaar. |
+| Sjabloon bevat waarschijnlijk niet alle parameters die u nodig hebt voor hergebruik. De meeste eigenschapswaarden zijn hardgecodeerd in de sjabloon. Als u de sjabloon opnieuw wilt implementeren in andere omgevingen, moet u parameters toevoegen die de mogelijkheid vergroten om de resources te configureren.  U **De** optie Opnemen van parameters opheffen opheffen opheffen opheffen, zodat u uw eigen parameters maken. | Sjabloon bevat parameters die het eenvoudig maken om opnieuw te implementeren in verschillende omgevingen. |
 
-Exporteer de sjabloon van een resource groep of resource als:
+Exporteer de sjabloon uit een resourcegroep of resource wanneer:
 
-* U moet wijzigingen vastleggen in de resources die zijn gemaakt na de oorspronkelijke implementatie.
+* U moet wijzigingen vastleggen in de resources die zijn aangebracht na de oorspronkelijke implementatie.
 * U wilt selecteren welke resources worden geëxporteerd.
 
-Exporteer de sjabloon vóór de implementatie of vanuit de geschiedenis, wanneer:
+Exporteer de sjabloon vóór implementatie of uit de geschiedenis, wanneer:
 
-* U wilt een sjabloon die u gemakkelijk wilt gebruiken.
-* U hoeft geen wijzigingen op te nemen die u hebt aangebracht na de oorspronkelijke implementatie.
+* U wilt een eenvoudig te hergebruiken sjabloon.
+* U hoeft geen wijzigingen op te nemen die u na de oorspronkelijke implementatie hebt aangebracht.
 
 ## <a name="limitations"></a>Beperkingen
 
-Bij het exporteren vanuit een resource groep of resource wordt de geëxporteerde sjabloon gegenereerd op basis van de [gepubliceerde schema's](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) voor elk resource type. Af en toe heeft het schema niet de meest recente versie voor een resource type. Controleer de geëxporteerde sjabloon om er zeker van te zijn dat de gewenste eigenschappen zijn opgenomen. Bewerk zo nodig de geëxporteerde sjabloon om de API-versie te gebruiken die u nodig hebt.
+Bij het exporteren vanuit een resourcegroep of resource wordt de geëxporteerde sjabloon gegenereerd uit de [gepubliceerde schema's](https://github.com/Azure/azure-resource-manager-schemas/tree/master/schemas) voor elk resourcetype. Af en toe heeft het schema niet de nieuwste versie voor een resourcetype. Controleer uw geëxporteerde sjabloon om te controleren of deze de eigenschappen bevat die u nodig hebt. Bewerk indien nodig de geëxporteerde sjabloon om de API-versie te gebruiken die u nodig hebt.
 
-De functie sjabloon exporteren biedt geen ondersteuning voor het exporteren van Azure Data Factory-resources. Zie [een Data Factory in azure Data Factory kopiëren of klonen](https://aka.ms/exportTemplateViaAdf)voor meer informatie over het exporteren van Data Factory-resources.
+De functie exportsjabloon biedt geen ondersteuning voor het exporteren van Azure Data Factory-resources. Zie [Een gegevensfabriek kopiëren of klonen in Azure Data Factory](https://aka.ms/exportTemplateViaAdf)voor meer informatie over hoe u gegevensfabriekresources exporteren.
 
-Als u resources wilt exporteren die zijn gemaakt via het klassieke implementatie model, moet u [deze migreren naar het Resource Manager-implementatie model](https://aka.ms/migrateclassicresourcetoarm).
+Als u resources wilt exporteren die zijn gemaakt via een klassiek implementatiemodel, moet u [deze migreren naar het implementatiemodel resourcebeheer](https://aka.ms/migrateclassicresourcetoarm).
 
-## <a name="export-template-from-a-resource-group"></a>Sjabloon exporteren van een resource groep
+## <a name="export-template-from-a-resource-group"></a>Sjabloon exporteren uit een resourcegroep
 
-Een of meer resources uit een resource groep exporteren:
+Ga als lid van de export van een of meer resources uit een resourcegroep:
 
-1. Selecteer de resource groep die de resources bevat die u wilt exporteren.
+1. Selecteer de resourcegroep die de resources bevat die u wilt exporteren.
 
-1. Selecteer een of meer resources door de selectie vakjes in te scha kelen.  Als u alles wilt selecteren, schakelt u het selectie vakje links van **naam**in. De menu opdracht **sjabloon exporteren** wordt alleen ingeschakeld wanneer u ten minste één resource hebt geselecteerd.
+1. Selecteer een of meer bronnen door de selectievakjes in te schakelen.  Als u alles wilt selecteren, schakelt u het selectievakje links van **Naam**in. Het **menu-item Sjabloon exporteren** wordt pas ingeschakeld nadat u ten minste één resource hebt geselecteerd.
 
    ![Alle resources exporteren](./media/export-template-portal/select-all-resources.png)
 
-    Alleen het opslag account is geselecteerd op de scherm opname.
-1. Selecteer **sjabloon exporteren**.
+    Op de schermafbeelding is alleen het opslagaccount geselecteerd.
+1. Selecteer **Sjabloon Exporteren**.
 
-1. De geëxporteerde sjabloon wordt weer gegeven en kan worden gedownload en geïmplementeerd.
+1. De geëxporteerde sjabloon wordt weergegeven en is beschikbaar om te downloaden en te implementeren.
 
-   ![Sjabloon weer geven](./media/export-template-portal/show-template.png)
+   ![Sjabloon weergeven](./media/export-template-portal/show-template.png)
 
-   **Para meters zijn** standaard geselecteerd.  Als deze para meter is geselecteerd, worden alle sjabloon parameters opgenomen wanneer de sjabloon wordt gegenereerd. Als u uw eigen para meters wilt maken, schakelt u dit selectie vakje in om ze niet op te geven.
+   **Parameters opnemen** is standaard geselecteerd.  Wanneer deze optie is geselecteerd, worden alle sjabloonparameters opgenomen wanneer de sjabloon wordt gegenereerd. Als u uw eigen parameters wilt maken, schakelt u dit selectievakje in om deze niet op te nemen.
 
-## <a name="export-template-from-a-resource"></a>Sjabloon uit een resource exporteren
+## <a name="export-template-from-a-resource"></a>Sjabloon exporteren vanuit een resource
 
-Een resource exporteren:
+Eén resource exporteren:
 
-1. Selecteer de resource groep met de resource die u wilt exporteren.
+1. Selecteer de resourcegroep met de resource die u wilt exporteren.
 
 1. Selecteer de resource die u wilt exporteren om de resource te openen.
 
-1. Selecteer voor die resource **sjabloon exporteren** in het linkerdeel venster.
+1. Selecteer voor die resource **de optie Sjabloon Exporteren** in het linkerdeelvenster.
 
-   ![Resource exporteren](./media/export-template-portal/export-single-resource.png)
+   ![Bron exporteren](./media/export-template-portal/export-single-resource.png)
 
-1. De geëxporteerde sjabloon wordt weer gegeven en kan worden gedownload en geïmplementeerd. De sjabloon bevat alleen de afzonderlijke resource. **Para meters zijn** standaard geselecteerd.  Als deze para meter is geselecteerd, worden alle sjabloon parameters opgenomen wanneer de sjabloon wordt gegenereerd. Als u uw eigen para meters wilt maken, schakelt u dit selectie vakje in om ze niet op te geven.
+1. De geëxporteerde sjabloon wordt weergegeven en is beschikbaar om te downloaden en te implementeren. De sjabloon bevat slechts één resource. **Parameters opnemen** is standaard geselecteerd.  Wanneer deze optie is geselecteerd, worden alle sjabloonparameters opgenomen wanneer de sjabloon wordt gegenereerd. Als u uw eigen parameters wilt maken, schakelt u dit selectievakje in om deze niet op te nemen.
 
 ## <a name="export-template-before-deployment"></a>Sjabloon exporteren vóór implementatie
 
 1. Selecteer de Azure-service die u wilt implementeren.
 
-1. Vul de waarden in voor de nieuwe service.
+1. Vul de waarden voor de nieuwe service in.
 
-1. Nadat u de validatie hebt door gegeven, selecteert u **een sjabloon voor Automation downloaden**voordat u de implementatie start.
+1. Nadat u de validatie hebt doorlopen, maar voordat u de implementatie start, selecteert u **Een sjabloon downloaden voor automatisering**.
 
    ![Een sjabloon downloaden](./media/export-template-portal/download-before-deployment.png)
 
-1. De sjabloon wordt weer gegeven en kan worden gedownload en geïmplementeerd.
+1. De sjabloon wordt weergegeven en is beschikbaar voor download en implementatie.
 
 
 ## <a name="export-template-after-deployment"></a>Sjabloon exporteren na implementatie
 
-U kunt de sjabloon die is gebruikt voor het implementeren van bestaande resources exporteren. De sjabloon die u krijgt, is precies die waarmee de implementatie is uitgevoerd.
+U de sjabloon exporteren die is gebruikt om bestaande resources te implementeren. De sjabloon die u krijgt is precies degene die werd gebruikt voor implementatie.
 
-1. Selecteer de resource groep die u wilt exporteren.
+1. Selecteer de resourcegroep die u wilt exporteren.
 
-1. Selecteer de koppeling onder **implementaties**.
+1. Selecteer de koppeling onder **Implementaties**.
 
-   ![Implementatie geschiedenis selecteren](./media/export-template-portal/select-deployment-history.png)
+   ![Implementatiegeschiedenis selecteren](./media/export-template-portal/select-deployment-history.png)
 
-1. Selecteer een van de implementaties in de implementatie geschiedenis.
+1. Selecteer een van de implementaties uit de implementatiegeschiedenis.
 
    ![Implementatie selecteren](./media/export-template-portal/select-details.png)
 
-1. Selecteer een **sjabloon**. De sjabloon die wordt gebruikt voor deze implementatie wordt weer gegeven en kan worden gedownload.
+1. Selecteer **Sjabloon**. De sjabloon die voor deze implementatie wordt gebruikt, wordt weergegeven en is beschikbaar om te downloaden.
 
    ![Sjabloon selecteren](./media/export-template-portal/show-template-from-history.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het exporteren van sjablonen met [Azure cli](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)of [rest API](/rest/api/resources/resourcegroups/exporttemplate).
-- Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager sjablonen](template-syntax.md)voor meer informatie over de syntaxis van de Resource Manager-sjabloon.
-- Zie [Stapsgewijze zelf studies](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van sjablonen.
-- Zie [sjabloon verwijzing](/azure/templates/)voor het weer geven van de Azure Resource Manager sjabloon schema's.
+- Meer informatie over het exporteren van sjablonen met [Azure CLI,](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates) [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)of [REST API](/rest/api/resources/resourcegroups/exporttemplate).
+- Zie [De structuur en syntaxis van Azure Resource Manager-sjablonen begrijpen](template-syntax.md)voor de syntaxis van de resourcemanagersjabloon .
+- Zie de [stapsgewijze zelfstudies](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van sjablonen.
+- Zie [sjabloonverwijzing](/azure/templates/)voor het weergeven van de sjabloonschema's van Azure Resource Manager .

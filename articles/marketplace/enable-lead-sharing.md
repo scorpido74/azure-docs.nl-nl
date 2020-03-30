@@ -1,58 +1,56 @@
 ---
-title: Delen van leads in azure Marketplace inschakelen | Azure
-description: Meer informatie over het inschakelen van het delen van leads voor Azure Marketplace en AppSource voor app-en service-Publishers.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Leadsharing inschakelen in de Azure Marketplace | Azure
+description: Meer informatie over het inschakelen van leadsharing voor azure marketplace en appsource voor app- en service-uitgevers.
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: 4475f6aecb0fe80cd20138eb885b79b6e7e82208
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 09282f3a54eeded52c63fab6bfe13528eaace48a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818673"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286299"
 ---
 # <a name="enable-lead-sharing"></a>Delen van leads inschakelen
-Zorg ervoor dat Lead beheer is ingeschakeld voor uw vermelding in de [Azure Marketplace](https://azuremarketplace.microsoft.com) of [Microsoft AppSource](https://appsource.microsoft.com) u kunt helpen bij het ontvangen van contact gegevens voor de volgende doel groepen:
+Als u ervoor zorgen dat leadbeheer is ingeschakeld voor uw vermelding in Azure [Marketplace](https://azuremarketplace.microsoft.com) of [Microsoft AppSource,](https://appsource.microsoft.com) u contactgegevens ontvangen voor de volgende doelgroepen:
 
 | Storefront | Doelgroep |
 |:--- |:--- |
 | AppSource | Zakelijke klanten |
 | Azure Marketplace | Alle klanten |
 
-Uw leads bieden de basis van de werking van de sponsoring voor de campagnes die in de volgende tabel worden weer gegeven, voor gerelateerde verkoop bewegingen door uw veld Verkoop medewerkers en voor informatie over hoe uw app of aanbieding wordt uitgevoerd:
+Uw leads vormen de basis van outreach voor de campagnes in de volgende tabel, voor gerelateerde verkoopbewegingen door uw verkoopmedewerkers in het veld en voor informatie over hoe uw app of aanbieding presteert:
 
-| Storefront | Marketing |
+| Storefront | Campagne |
 |:--- |:--- |
-| AppSource | Nurture |
-| Azure Marketplace | Genereren in aanvraag |
+| AppSource | Contact onderhouden |
+| Azure Marketplace | In-demand generatie |
 
 Gebruik de volgende procedures voor uw leads:
-*   Kom in aanmerking voor uw leads en score de leads als verkoop kansen.
-*   Nurture uw leads om een verkoop pijplijn in te voeren.
-*   Stem uw inspanningen af met uw algemene strategie voor marketing campagnes.
+*   Kwalificeer uw leads en scoor de leads als verkoopkansen.
+*   Koester uw leads om een verkooppijplijn in te voeren.
+*   Stem uw inspanningen af op uw algemene marketingcampagnestrategie.
 
-Uw leads tonen de interesse van klanten in de volgende aanbiedingen:
+Uw leads tonen interesse van klanten in de volgende aanbiedingen:
 
-| Storefront | Lijsten |
+| Storefront | Aanbieding |
 |:--- |:--- |
-| AppSource | <table> <tr><td>App</td></tr> <tr><td>Advies Services</td></tr> </table> |
+| AppSource | <table> <tr><td>App</td></tr> <tr><td>Adviesservices</td></tr> </table> |
 | Azure Marketplace | <table> <tr><td>Aanbieding</td></tr> <tr><td>Technologie</td></tr> </table> |
 
-U moet beschikken over een proces voor het opvolgen van uw leads, zoals wordt beschreven in de volgende tabel:
+U moet een proces hebben om uw leads op te volgen, zoals beschreven in de volgende tabel:
 
-| Storefront | Leiders |
+| Storefront | Potentiële klanten |
 |:--- |:--- |
-| AppSource | <table> <tr><td>Uw CRM</td></tr> <tr><td>Micro soft Field verkoop CRM</td></tr> </table> |
-| Azure Marketplace | <table> <tr><td>Azure Marketplace</td></tr> <tr><td>Micro soft Field verkoop CRM</td></tr> </table> |
+| AppSource | <table> <tr><td>Uw CRM</td></tr> <tr><td>Microsoft-veldverkoper CRM</td></tr> </table> |
+| Azure Marketplace | <table> <tr><td>Azure Marketplace</td></tr> <tr><td>Microsoft-veldverkoper CRM</td></tr> </table> |
 
-Uw leads op de Marketplace van de markt wijken af van de micro soft-verkopers die een functie van het programma voor samen verkopen zijn.
+Uw leads in winkelpuien op marketplace verschillen van door Microsoft door de verkoper gekwalificeerde leads die een functie zijn van het Co-Sell-programma.
 
-Zie [uw bedrijf promoten met micro soft](./promote-your-business-with-microsoft.md)voor meer informatie over hoe u toegang kunt krijgen tot het programma voor gezamenlijk verkopen.
+Zie [Uw bedrijf promoten bij Microsoft](./promote-your-business-with-microsoft.md)voor meer informatie over hoe u toegang krijgen tot het Co-Sell-programma.
 
 ## <a name="next-steps"></a>Volgende stappen
-Bekijk de [Azure Marketplace-en AppSource-publicatie handleiding](./marketplace-publishers-guide.md).
+Bekijk de [publicatiehandleiding azure marketplace en appsource](./marketplace-publishers-guide.md).

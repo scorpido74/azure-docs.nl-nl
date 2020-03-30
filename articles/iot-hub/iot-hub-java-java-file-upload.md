@@ -1,6 +1,6 @@
 ---
-title: Bestanden van apparaten uploaden naar Azure IoT Hub met Java | Microsoft Docs
-description: Het uploaden van bestanden van een apparaat naar de Cloud met Azure IoT Device SDK voor Java. Geüploade bestanden worden opgeslagen in een Azure Storage-BLOB-container.
+title: Bestanden uploaden van apparaten naar Azure IoT Hub met Java | Microsoft Documenten
+description: Bestanden uploaden van een apparaat naar de cloud met Azure IoT-apparaat SDK voor Java. Geüploade bestanden worden opgeslagen in een Azure-opslagblobcontainer.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,67 +10,67 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284523"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (Java)
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Bestanden uploaden van uw apparaat naar de cloud met IoT Hub (Java)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-In deze zelf studie wordt gebruikgemaakt van de code in de IoT Hub zelf studie [Cloud-naar-apparaat-berichten verzenden](iot-hub-java-java-c2d.md) om u te laten zien hoe u de functies voor het [uploaden van bestanden van IOT hub](iot-hub-devguide-file-upload.md) kunt gebruiken om een bestand te uploaden naar [Azure Blob Storage](../storage/index.yml). In deze zelfstudie leert u het volgende:
+Deze zelfstudie bouwt voort op de code in de [zelfstudie Cloud-to-device](iot-hub-java-java-c2d.md) verzenden met IoT Hub om u te laten zien hoe u de [mogelijkheden voor het uploaden van bestanden van IoT Hub](iot-hub-devguide-file-upload.md) gebruiken om een bestand te uploaden naar Azure [blob-opslag.](../storage/index.yml) In deze zelfstudie leert u het volgende:
 
-* Een apparaat veilig voorzien van een Azure Blob-URI voor het uploaden van een bestand.
+* Zorg veilig voor een apparaat met een Azure blob URI voor het uploaden van een bestand.
 
-* Gebruik de IoT Hub bestands upload meldingen om de verwerking van het bestand in de back-end van de app te activeren.
+* Gebruik de meldingen voor het uploaden van IoT Hub-bestanden om de verwerking van het bestand in de back-end van uw app te activeren.
 
-Het [verzenden van telemetrie van een apparaat naar een IOT hub](quickstart-send-telemetry-java.md) Quick Start en het [verzenden van Cloud-naar-apparaat-berichten met IOT hub](iot-hub-java-java-c2d.md) zelf studie geven de basis functionaliteit van het apparaat-naar-Cloud-en Cloud-naar-apparaat-bericht van IOT hub weer. In de zelf studie [bericht routering configureren met IOT hub](tutorial-routing.md) wordt beschreven hoe u apparaat-naar-Cloud-berichten betrouwbaar kunt opslaan in Azure Blob-opslag. In sommige gevallen kunt u de gegevens die uw apparaten verzenden echter niet eenvoudig toewijzen aan de relatief kleine apparaat-naar-Cloud-berichten die IoT Hub accepteren. Bijvoorbeeld:
+De [snelstart-berichten van cloud](quickstart-send-telemetry-java.md) naar apparaat verzenden met [iot-hub](iot-hub-java-java-c2d.md) toont de functionaliteit van iot-naar-cloud en cloud-naar-apparaat-berichten van IoT Hub. De [zelfstudie Berichtroutering configureren met IoT Hub](tutorial-routing.md) beschrijft een manier om device-to-cloud-berichten op betrouwbare wijze op te slaan in Azure blob-opslag. In sommige scenario's u de gegevens die uw apparaten verzenden echter niet eenvoudig in kaart brengen in de relatief kleine device-to-cloudberichten die IoT Hub accepteert. Bijvoorbeeld:
 
-* Grote bestanden die installatie kopieën bevatten
+* Grote bestanden die afbeeldingen bevatten
 * Video's
-* Bemonsterde trillings gegevens met hoge frequentie
-* Een vorm van voorverwerkte gegevens.
+* Trillingsgegevens bemonsterd op hoge frequentie
+* Een vorm van voorbewerkte gegevens.
 
-Deze bestanden worden meestal batch verwerkt in de Cloud met behulp van hulpprogram ma's als [Azure Data Factory](../data-factory/introduction.md) of de [Hadoop](../hdinsight/index.yml) -stack. Wanneer u bestanden van een apparaat nodig hebt, kunt u nog steeds gebruikmaken van de beveiliging en betrouw baarheid van IoT Hub.
+Deze bestanden worden meestal batch verwerkt in de cloud met behulp van hulpprogramma's zoals [Azure Data Factory](../data-factory/introduction.md) of de [Hadoop](../hdinsight/index.yml) stack. Wanneer u bestanden vanaf een apparaat moet up-landen, u nog steeds de beveiliging en betrouwbaarheid van IoT Hub gebruiken.
 
-Aan het einde van deze zelf studie voert u twee Java Console-apps uit:
+Aan het einde van deze zelfstudie voer je twee Java-console-apps uit:
 
-* **gesimuleerd:** er is een aangepaste versie van de app gemaakt in [Cloud-naar-apparaat-berichten verzenden met IOT hub] zelf studie. Met deze app wordt een bestand geüpload naar Storage met behulp van een SAS-URI van uw IoT-hub.
+* **gesimuleerd apparaat**, een aangepaste versie van de app gemaakt in de [Cloud-to-device berichten verzenden met IoT Hub] tutorial. Deze app uploadt een bestand naar opslag met behulp van een SAS URI van uw IoT-hub.
 
-* **read-file-upload-melding**, waarmee berichten over het uploaden van bestanden van uw IOT-hub worden ontvangen.
+* **lees-bestand-upload-melding**, die meldingen voor het uploaden van bestanden ontvangt van uw IoT-hub.
 
 > [!NOTE]
-> IoT Hub ondersteunt veel platformen en talen (waaronder C, .NET en Java script) via Azure IoT-apparaat-Sdk's. Raadpleeg het [Azure IOT-ontwikkelaars centrum](https://azure.microsoft.com/develop/iot) voor stapsgewijze instructies voor het verbinden van uw apparaat met Azure IOT hub.
+> IoT Hub ondersteunt veel apparaatplatforms en -talen (waaronder C, .NET en Javascript) via Azure IoT-apparaat-SDK's. Raadpleeg het [Azure IoT Developer Center](https://azure.microsoft.com/develop/iot) voor stapsgewijze instructies over het verbinden van uw apparaat met Azure IoT Hub.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder **lange termijn ondersteuning** om down loads voor JDK 8 te downloaden.
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). Zorg ervoor dat u **Java 8** selecteert onder ondersteuning op **lange termijn** om naar downloads voor JDK 8 te gaan.
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
-* Een actief Azure-account. (Als u geen account hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
+* Een actief Azure-account. (Als u geen account hebt, kunt u binnen een paar minuten een [gratis account](https://azure.microsoft.com/pricing/free-trial/) maken.)
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het apparaatvoorbeeld in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs- en educatieve netwerkomgevingen. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>Een bestand uploaden vanuit een apparaat-app
 
-In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-apparaat-berichten verzenden met IOT hub](iot-hub-java-java-c2d.md) om een bestand te uploaden naar IOT hub.
+In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Berichten van cloud naar apparaat verzenden met IoT Hub](iot-hub-java-java-c2d.md) om een bestand te uploaden naar de IoT-hub.
 
-1. Kopieer een afbeeldings bestand naar de map `simulated-device` en wijzig de naam ervan `myimage.png`.
+1. Kopieer een afbeeldingsbestand naar `simulated-device` de `myimage.png`map en wijzig de naam .
 
-2. Open het `simulated-device\src\main\java\com\mycompany\app\App.java`-bestand met behulp van een tekst editor.
+2. Open het `simulated-device\src\main\java\com\mycompany\app\App.java` bestand met een teksteditor.
 
-3. Voeg de variabele-declaratie toe aan de **app** -klasse:
+3. Voeg de variabele declaratie toe aan de klasse **App:**
 
     ```java
     private static String fileName = "myimage.png";
     ```
 
-4. Voeg de volgende geneste klasse toe aan de **app** -klasse om de upload status berichten voor het uploaden van bestanden te verwerken:
+4. Als u terugbelberichten met bestandsuploadstatus wilt verwerken, voegt u de volgende geneste klasse toe aan de klasse **App:**
 
     ```java
     // Define a callback method to print status codes from IoT Hub.
@@ -82,7 +82,7 @@ In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-appar
     }
     ```
 
-5. Als u afbeeldingen naar IoT Hub wilt uploaden, voegt u de volgende methode toe aan de **app** -klasse om installatie kopieën naar IOT hub te uploaden:
+5. Als u afbeeldingen wilt uploaden naar IoT Hub, voegt u de volgende methode toe aan de klasse **App** om afbeeldingen naar IoT Hub te uploaden:
 
     ```java
     // Use IoT Hub to upload a file asynchronously to Azure blob storage.
@@ -96,7 +96,7 @@ In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-appar
     }
     ```
 
-6. Wijzig de methode **Main** zo dat de **Upload File** wordt aangeroepen, zoals wordt weer gegeven in het volgende code fragment:
+6. Wijzig de **hoofdmethode** om de **methode uploadFile** aan te roepen zoals in het volgende fragment wordt weergegeven:
 
     ```java
     client.open();
@@ -116,31 +116,31 @@ In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [Cloud-naar-appar
     MessageSender sender = new MessageSender();
     ```
 
-7. Gebruik de volgende opdracht om de **gesimuleerde apparaat-** app te bouwen en te controleren op fouten:
+7. Gebruik de volgende opdracht om de **app voor gesimuleerd apparaat** te bouwen en te controleren op fouten:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
-## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
+## <a name="get-the-iot-hub-connection-string"></a>De verbindingstekenreeks voor IoT-hub
 
-In dit artikel maakt u een back-end-service om meldings berichten over het uploaden van bestanden te ontvangen van de IoT-hub die u hebt gemaakt in [telemetrie van een apparaat naar een IOT-hub verzenden](quickstart-send-telemetry-java.md). Als u meldings berichten over het uploaden van bestanden wilt ontvangen, moet u de service **Connect** -machtiging hebben. Standaard wordt elke IoT Hub gemaakt met een gedeeld toegangs beleid met de naam **service** dat deze machtiging verleent.
+In dit artikel maakt u een backendservice om meldingen van bestandsuploadmeldingen te ontvangen van de IoT-hub die u hebt gemaakt in [Telemetrie verzenden van een apparaat naar een IoT-hub.](quickstart-send-telemetry-java.md) Als u meldingen voor het uploaden van bestanden wilt ontvangen, heeft uw service de machtiging **voor verbinding met** de service nodig. Standaard wordt elke IoT-hub gemaakt met een service met gedeelde toegangsbeleid met de naam **service** die deze toestemming verleent.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="receive-a-file-upload-notification"></a>Een melding over het uploaden van een bestand ontvangen
+## <a name="receive-a-file-upload-notification"></a>Een melding voor het uploaden van bestanden ontvangen
 
-In deze sectie maakt u een Java-Console-app die meldings berichten voor het uploaden van bestanden ontvangt van IoT Hub.
+In deze sectie maakt u een Java-console-app die meldingen van bestandsuploadmeldingen van IoT Hub ontvangt.
 
-1. Maak een Maven-project met de naam **read-file-upload-melding** met de volgende opdracht bij de opdracht prompt. Opmerking deze opdracht is een enkele, lange opdracht:
+1. Maak een Maven-project genaamd **read-file-upload-notification** met de volgende opdracht op uw opdrachtprompt. Let op: deze opdracht is een enkele, lange opdracht:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-file-upload-notification -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Ga bij de opdracht prompt naar de map nieuw `read-file-upload-notification`.
+2. Navigeer op uw opdrachtprompt `read-file-upload-notification` naar de nieuwe map.
 
-3. Open met een tekst editor het `pom.xml`-bestand in de map `read-file-upload-notification` en voeg de volgende afhankelijkheid toe aan het knoop punt **afhankelijkheden** . Door de afhankelijkheid toe te voegen, kunt u het **iothub-Java-service-client-** pakket in uw toepassing gebruiken om te communiceren met uw IOT hub-service:
+3. Open het bestand in `pom.xml` de `read-file-upload-notification` map met een teksteditor en voeg de volgende afhankelijkheid toe aan het knooppunt **van afhankelijkheden.** Door de afhankelijkheid toe te voegen, u het **iothub-java-service-clientpakket** in uw toepassing gebruiken om te communiceren met uw IoT-hubservice:
 
     ```xml
     <dependency>
@@ -151,11 +151,11 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     ```
 
     > [!NOTE]
-    > U kunt de meest recente versie van **IOT-service-client** controleren met behulp van [maven Search](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
+    > U vindt de meest recente versie van **iot-service-client** met [Maven zoeken](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Sla het `pom.xml` bestand op en sluit het.
+4. Sla het `pom.xml` bestand op en sluit deze.
 
-5. Open het `read-file-upload-notification\src\main\java\com\mycompany\app\App.java`-bestand met behulp van een tekst editor.
+5. Open het `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` bestand met een teksteditor.
 
 6. Voeg de volgende **import**instructies toe aan het bestand:
 
@@ -167,7 +167,7 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     import java.util.concurrent.Executors;
     ```
 
-7. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang de waarde van de tijdelijke aanduiding `{Your IoT Hub connection string}` door de IoT hub-connection string die u eerder hebt gekopieerd in [de IOT hub ophalen Connection String](#get-the-iot-hub-connection-string):
+7. Voeg de volgende variabelen op klasseniveau toe aan de **App**-klasse. Vervang `{Your IoT Hub connection string}` de tijdelijke aanduidingswaarde door de IoT-hubverbindingstekenreeks die u eerder hebt gekopieerd in [De verbindingstekenreeks van de IoT-hub:](#get-the-iot-hub-connection-string)
 
     ```java
     private static final String connectionString = "{Your IoT Hub connection string}";
@@ -175,7 +175,7 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     private static FileUploadNotificationReceiver fileUploadNotificationReceiver = null;
     ```
 
-8. Als u informatie over het uploaden van bestanden naar de-console wilt afdrukken, voegt u de volgende geneste klasse toe aan de **app** -klasse:
+8. Als u informatie over het uploaden van bestanden wilt afdrukken naar de console, voegt u de volgende geneste klasse toe aan de klasse **App:**
 
     ```java
     // Create a thread to receive file upload notifications.
@@ -202,7 +202,7 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     }
     ```
 
-9. Als u de thread wilt starten die luistert naar meldingen over het uploaden van bestanden, voegt u de volgende code toe aan de methode **Main** :
+9. Als u de thread wilt starten die naar meldingen voor het uploaden van bestanden luistert, voegt u de volgende code toe aan de **hoofdmethode:**
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException, Exception {
@@ -230,9 +230,9 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
     }
     ```
 
-10. Sla het `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` bestand op en sluit het.
+10. Sla het `read-file-upload-notification\src\main\java\com\mycompany\app\App.java` bestand op en sluit deze.
 
-11. Gebruik de volgende opdracht om de app **read-file-upload-melding** te maken en te controleren op fouten:
+11. Gebruik de volgende opdracht om de app **voor het lezen-bestand-upload-melding** te maken en te controleren op fouten:
 
     ```cmd/sh
     mvn clean package -DskipTests
@@ -242,40 +242,40 @@ In deze sectie maakt u een Java-Console-app die meldings berichten voor het uplo
 
 U kunt nu de toepassingen gaan uitvoeren.
 
-Voer de volgende opdracht uit vanaf een opdracht prompt in de map `read-file-upload-notification`:
+Voer bij een `read-file-upload-notification` opdrachtprompt in de map de volgende opdracht uit:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-Voer de volgende opdracht uit vanaf een opdracht prompt in de map `simulated-device`:
+Voer bij een `simulated-device` opdrachtprompt in de map de volgende opdracht uit:
 
 ```cmd/sh
 mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 ```
 
-In de volgende scherm afbeelding ziet u de uitvoer van de **gesimuleerde apparaat-** app:
+De volgende schermafbeelding toont de uitvoer van de **gesimuleerde app:**
 
 ![Uitvoer van gesimuleerde apparaat-app](media/iot-hub-java-java-upload/simulated-device.png)
 
-In de volgende scherm afbeelding ziet u de uitvoer van de app **read-file-upload-notification** :
+In de volgende schermafbeelding wordt de uitvoer van de app **voor het lezen-bestand-upload-melding** weergegeven:
 
-![Uitvoer van een read-file-upload-meldings-app](media/iot-hub-java-java-upload/read-file-upload-notification.png)
+![Uitvoer van de app lezen-bestand-upload-melding](media/iot-hub-java-java-upload/read-file-upload-notification.png)
 
-U kunt de portal gebruiken om het geüploade bestand weer te geven in de opslag container die u hebt geconfigureerd:
+U de portal gebruiken om het geüploade bestand weer te geven in de opslagcontainer die u hebt geconfigureerd:
 
-![Bestand geüpload](media/iot-hub-java-java-upload/uploaded-file.png)
+![Geüpload bestand](media/iot-hub-java-java-upload/uploaded-file.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u de functies voor het uploaden van bestanden van IoT Hub kunt gebruiken om Bestands uploads van apparaten te vereenvoudigen. U kunt IoT hub-functies en-scenario's blijven verkennen met de volgende artikelen:
+In deze zelfstudie hebt u geleerd hoe u de mogelijkheden voor het uploaden van bestanden van IoT Hub gebruiken om het uploaden van bestanden vanaf apparaten te vereenvoudigen. Met de volgende artikelen u de functies en scenario's van de IoT-hub blijven verkennen:
 
-* [Een IoT-hub maken via een programma](iot-hub-rm-template-powershell.md)
+* [Een IoT-hub programmatisch maken](iot-hub-rm-template-powershell.md)
 
 * [Inleiding tot C SDK](iot-hub-device-sdk-c-intro.md)
 
-* [SDK's voor Azure IoT](iot-hub-devguide-sdks.md)
+* [SDK’s voor Azure IoT](iot-hub-devguide-sdks.md)
 
-Zie voor meer informatie over de mogelijkheden van IoT Hub:
+Zie:
 
 * [Een apparaat simuleren met IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

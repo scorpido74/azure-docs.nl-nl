@@ -1,127 +1,127 @@
 ---
-title: Azure-Services en-toepassingen bewaken met Grafana
-description: Azure Monitor-en Application Insights gegevens routeren zodat u ze kunt weer geven in Grafana.
+title: Azure-services en -toepassingen bewaken met Grafana
+description: Route Azure Monitor en Application Insights gegevens, zodat u ze bekijken in Grafana.
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
 ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672205"
 ---
-# <a name="monitor-your-azure-services-in-grafana"></a>Uw Azure-Services controleren in Grafana
-U kunt nu Azure-Services en-toepassingen bewaken vanuit [Grafana](https://grafana.com/) met behulp van de [invoeg toepassing voor Azure monitor gegevens bron](https://grafana.com/plugins/grafana-azure-monitor-datasource). De invoeg toepassing verzamelt de prestatie gegevens voor toepassingen die worden verzameld door Azure Monitor, met inbegrip van verschillende logboeken en metrieken. U kunt deze gegevens vervolgens weer geven op uw Grafana-dash board.
+# <a name="monitor-your-azure-services-in-grafana"></a>Uw Azure-services controleren in Grafana
+U azure-services en -toepassingen nu vanuit [Grafana](https://grafana.com/) controleren met behulp van de [plug-in azure monitor-gegevensbron.](https://grafana.com/plugins/grafana-azure-monitor-datasource) De plug-in verzamelt prestatiegegevens van toepassingen die zijn verzameld door Azure Monitor, inclusief verschillende logboeken en statistieken. U deze gegevens vervolgens weergeven op uw Grafana-dashboard.
 
-Gebruik de volgende stappen om een Grafana-server in te stellen en dash boards te maken voor metrische gegevens en logboeken van Azure Monitor.
+Gebruik de volgende stappen om een Grafana-server in te stellen en dashboards te bouwen voor statistieken en logboeken van Azure Monitor.
 
 ## <a name="set-up-a-grafana-server"></a>Een Grafana-server instellen
 
 ### <a name="set-up-grafana-locally"></a>Grafana lokaal instellen
-Als u een lokale Grafana-server wilt instellen, [downloadt en installeert u Grafana in uw lokale omgeving](https://grafana.com/grafana/download). Installeer Grafana versie 5,3 of hoger om de Azure Monitor integratie van de invoeg toepassing te gebruiken.
+Als u een lokale Grafana-server wilt instellen, [downloadt en installeert u Grafana in uw lokale omgeving.](https://grafana.com/grafana/download) Als u de Azure Monitor-integratie van de plug-in wilt gebruiken, installeert u Grafana-versie 5.3 of hoger.
 
-### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Grafana op Azure instellen via de Azure Marketplace
-1. Ga naar Azure Marketplace en kies Grafana door Grafana Labs.
+### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Grafana instellen op Azure via de Azure Marketplace
+1. Ga naar Azure Marketplace en kies Grafana by Grafana Labs.
 
-2. Vul de namen en gegevens in. Maak een nieuwe resourcegroep. Houd de waarden bij die u kiest voor de VM-gebruikers naam, het VM-wacht woord en het wacht woord voor de Grafana-Server beheerder.  
+2. Vul de namen en details in. Maak een nieuwe resourcegroep. Houd bij welke waarden u kiest voor het wachtwoord voor de VM-gebruikersnaam, het VM-wachtwoord en het wachtwoord van de Grafana-serverbeheerder.  
 
-3. Kies de grootte van de virtuele machine en een opslag account.
+3. Kies VM-grootte en een opslagaccount.
 
-4. Configureer de netwerk configuratie-instellingen.
+4. Configureer de netwerkconfiguratie-instellingen.
 
-5. Bekijk de samen vatting en selecteer **maken** nadat u de gebruiks voorwaarden hebt geaccepteerd.
+5. Bekijk het overzicht en selecteer **Maken** nadat u de gebruiksvoorwaarden hebt geaccepteerd.
 
-6. Nadat de implementatie is voltooid, selecteert **u Ga naar resource groep**. U ziet een lijst met nieuw gemaakte resources.
+6. Nadat de implementatie is voltooid, selecteert **u Ga naar Resourcegroep**. U ziet een lijst met nieuw gemaakte bronnen.
 
-    ![Grafana-resource groeps objecten](media/grafana-plugin/grafana1.png)
+    ![Objecten van grafana-resourcegroep](media/grafana-plugin/grafana1.png)
 
-    Als u de netwerk beveiligings groep (*grafana-NSG* in dit geval) selecteert, kunt u zien dat poort 3000 wordt gebruikt voor toegang tot grafana-server.
+    Als u de netwerkbeveiligingsgroep *(grafana-nsg* in dit geval) selecteert, u zien dat poort 3000 wordt gebruikt om toegang te krijgen tot de Grafana-server.
 
-7. Het open bare IP-adres van uw Grafana-server ophalen: Ga terug naar de lijst met resources en selecteer **openbaar IP-adres**.
+7. Download het openbare IP-adres van uw Grafana-server - ga terug naar de lijst met bronnen en selecteer **Openbaar IP-adres**.
 
-## <a name="sign-in-to-grafana"></a>Aanmelden bij Grafana
+## <a name="sign-in-to-grafana"></a>Log hier in
 
-1. Gebruik het IP-adres van uw server om de aanmeldings pagina te openen op *http://\<IP-adres\>: 3000* of de *\<DNSName >\:3000* in uw browser. Hoewel 3000 de standaard poort is, is het mogelijk dat u tijdens de installatie een andere poort hebt geselecteerd. Er wordt een aanmeldings pagina weer geven voor de Grafana-server die u hebt gemaakt.
+1. Open de pagina Login op *http://\<IP-adres\>:3000* of * \<dnsname \:>3000* in uw browser met het IP-adres van uw server. Hoewel 3000 de standaardpoort is, moet u er rekening mee houden dat u tijdens de installatie een andere poort hebt geselecteerd. U ziet een aanmeldingspagina voor de Grafana-server die u hebt gebouwd.
 
-    ![Aanmeldings scherm Grafana](./media/grafana-plugin/grafana-login-screen.png)
+    ![Grafana-inlogscherm](./media/grafana-plugin/grafana-login-screen.png)
 
-2. Meld u aan met de gebruikers naam *beheerder* en het Grafana-Server beheerders wachtwoord dat u eerder hebt gemaakt. Als u een lokale installatie gebruikt, is het standaard wachtwoord *beheerder*en wordt u gevraagd dit in te stellen op uw eerste aanmelding.
+2. Meld u aan bij de beheerder *van* de gebruikersnaam en het wachtwoord van de Grafana-serverbeheerder die u eerder hebt gemaakt. Als u een lokale instelling gebruikt, is het standaardwachtwoord *beheerder*en wordt u gevraagd om het te wijzigen bij uw eerste aanmelding.
 
-## <a name="configure-data-source-plugin"></a>Gegevens bron-invoeg toepassing configureren
+## <a name="configure-data-source-plugin"></a>Plug-in gegevensbron configureren
 
-Nadat u bent aangemeld, ziet u dat de Azure Monitor-invoeg toepassing voor gegevens bronnen al is opgenomen.
+Nadat u met succes bent ingelogd, moet u zien dat de plug-in Azure Monitor-gegevensbron al is opgenomen.
 
-![Grafana bevat Azure Monitor-invoeg toepassing](./media/grafana-plugin/grafana-includes-azure-monitor-plugin-dark.png)
+![Grafana bevat Azure Monitor-plug-in](./media/grafana-plugin/grafana-includes-azure-monitor-plugin-dark.png)
 
-1. Selecteer **gegevens bron toevoegen** om de Azure monitor gegevens bron toe te voegen en te configureren.
+1. Selecteer **Gegevensbron toevoegen** om de Azure Monitor-gegevensbron toe te voegen en te configureren.
 
-2. Kies een naam voor de gegevens bron en selecteer **Azure monitor** als het type in de vervolg keuzelijst.
+2. Kies een naam voor de gegevensbron en selecteer **Azure Monitor** als type in de vervolgkeuzelijst.
 
-3. Een service-principal maken-Grafana maakt gebruik van een Azure Active Directory Service-Principal om verbinding te maken met Azure Monitor Api's en gegevens te verzamelen. U moet een bestaande service-principal maken of gebruiken om de toegang tot uw Azure-resources te beheren.
-    * Zie [deze instructies](../../azure-resource-manager/resource-group-create-service-principal-portal.md) voor het maken van een service-principal. Kopieer en sla uw Tenant-ID (Directory-id), client-ID (toepassings-ID) en client geheim op (waarde van toepassing Key).
-    * Zie [toepassing toewijzen aan rol](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) om de rol van lezer toe te wijzen aan de Azure Active Directory toepassing op het abonnement, de resource groep of de resource die u wilt bewaken. 
-    De Log Analytics-API vereist de [rol van log Analytics lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), die de machtigingen van de rol lezer bevat en er een toevoegt.
+3. Een serviceprincipal maken - Grafana gebruikt een Azure Active Directory-serviceprincipal om verbinding te maken met Azure Monitor API's en gegevens te verzamelen. U moet een bestaande serviceprincipal maken of gebruiken om toegang tot uw Azure-bronnen te beheren.
+    * Bekijk [deze instructies](../../azure-resource-manager/resource-group-create-service-principal-portal.md) om een serviceprincipal te maken. Kopieer en sla uw tenant-id (Directory-id), client-id (toepassings-id) en clientgeheim (waarde van de toepassingssleutel) op.
+    * Zie [Toepassing toewijzen aan rol](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) om de leesrol toe te wijzen aan de Azure Active Directory-toepassing op het abonnement, de resourcegroep of de resource die u wilt controleren. 
+    De Log Analytics API vereist de [rol Log Analytics Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), inclusief de machtigingen van de Reader-rol en wordt eraan toegevoegd.
 
-4. Geef de verbindings gegevens op voor de Api's die u wilt gebruiken. U kunt verbinding maken met alle of een aantal ervan. 
-    * Als u verbinding maakt met zowel de metrische gegevens als de logboeken in Azure Monitor, kunt u dezelfde referenties opnieuw gebruiken door **dezelfde gegevens te selecteren als Azure monitor-API**.
-    * Wanneer u de invoeg toepassing configureert, kunt u aangeven welke Azure-Cloud u wilt bewaken met de invoeg toepassing (openbaar, Azure US Government, Azure Duitsland of Azure China).
-    * Als u Application Insights gebruikt, kunt u ook uw Application Insights-API en toepassings-ID opnemen voor het verzamelen van Application Insights op basis van metrische gegevens. Zie [uw API-sleutel en toepassings-id ophalen](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)voor meer informatie.
+4. Geef de verbindingsgegevens op aan de API's die u wilt gebruiken. U verbinding maken met alle of met een aantal van hen. 
+    * Als u verbinding maakt met zowel metrische gegevens als logboeken in Azure Monitor, u dezelfde referenties opnieuw gebruiken door **dezelfde details als Azure Monitor API te**selecteren.
+    * Wanneer u de plug-in configureert, u aangeven welke Azure Cloud u wilt dat de plug-in controleert (Openbare, Azure US Government, Azure Germany of Azure China).
+    * Als u Application Insights gebruikt, u ook uw Application Insights API en application ID opnemen om op Application Insights gebaseerde statistieken te verzamelen. Zie [Uw API-sleutel en toepassings-id opvragen](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)voor meer informatie.
 
         > [!NOTE]
-        > Sommige gegevens bron velden hebben een andere naam dan de gecorreleerde Azure-instellingen:
-        > * Tenant-ID is de Azure-Directory-ID
-        > * Client-ID is de Azure Active Directory toepassings-ID
-        > * Client geheim is de Azure Active Directory sleutel waarde van de toepassing
+        > Sommige gegevensbronvelden krijgen een andere naam dan de gecorreleerde Azure-instellingen:
+        > * Tenant-id is de Azure Directory-id
+        > * Client-id is de Azure Active Directory Application ID
+        > * Clientgeheim is de waarde van de Azure Active Directory Application-sleutel
 
-5. Als u Application Insights gebruikt, kunt u ook uw Application Insights-API en toepassings-ID opnemen voor het verzamelen van Application Insights op basis van metrische gegevens. Zie [uw API-sleutel en toepassings-id ophalen](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)voor meer informatie.
+5. Als u Application Insights gebruikt, u ook uw Application Insights API en application ID opnemen om op Application Insights gebaseerde statistieken te verzamelen. Zie [Uw API-sleutel en toepassings-id opvragen](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)voor meer informatie.
 
-6. Selecteer **Opslaan**en Grafana worden de referenties voor elke API getest. Er wordt een bericht weer gegeven dat vergelijkbaar is met het volgende.  
-    ![configuratie van Grafana-gegevens bron is goedgekeurd](./media/grafana-plugin/grafana-data-source-config-approved-dark.png)
+6. Selecteer **Opslaan**en Grafana test de referenties voor elke API. U ziet een bericht dat vergelijkbaar is met het volgende bericht.  
+    ![Grafana-gegevensbronconfig goedgekeurd](./media/grafana-plugin/grafana-data-source-config-approved-dark.png)
 
-## <a name="build-a-grafana-dashboard"></a>Een Grafana-dash board bouwen
+## <a name="build-a-grafana-dashboard"></a>Een Grafana-dashboard bouwen
 
-1. Ga naar de start pagina van Grafana en selecteer **Nieuw dash board**.
+1. Ga naar de startpagina van Grafana en selecteer **Nieuw dashboard**.
 
-2. Selecteer in het nieuwe dash board de **grafiek**. U kunt andere grafiek opties proberen, maar in dit artikel wordt *Graph* als voor beeld gebruikt.
+2. Selecteer in het nieuwe dashboard de **grafiek**. U andere grafiekopties proberen, maar in dit artikel wordt *Grafiek* als voorbeeld gebruikt.
 
-3. Een lege grafiek wordt weer gegeven op het dash board. Klik op de paneel titel en selecteer **bewerken** om de details van de gegevens die u in dit grafiek diagram wilt uitzetten in te voeren.
+3. Er verschijnt een lege grafiek op uw dashboard. Klik op de deelvenstertitel en selecteer **Bewerken** om de details in te voeren van de gegevens die u wilt plotten in deze grafiek.
     ![Grafana nieuwe grafiek](./media/grafana-plugin/grafana-new-graph-dark.png)
 
-4. Selecteer de Azure Monitor gegevens bron die u hebt geconfigureerd.
-   * Azure Monitor metrieken verzamelen: Selecteer **Azure monitor** in de vervolg keuzelijst service. Een lijst met selecters wordt weer gegeven, waar u de resources en metriek kunt selecteren die u in deze grafiek wilt bewaken. Als u metrische gegevens wilt verzamelen van een virtuele machine, gebruikt u de naam ruimte **micro soft. Compute/informatie**. Zodra u Vm's en metrische gegevens hebt geselecteerd, kunt u beginnen met het weer geven van zijn of haar data in het dash board.
-     ![Grafana Graph-configuratie voor Azure Monitor](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-   * Verzamelen van Azure Monitor-logboek gegevens: Selecteer **Azure log Analytics** in de vervolg keuzelijst voor services. Selecteer de werk ruimte die u wilt opvragen en stel de query tekst in. U kunt hier alle logboek query's kopiëren die u al hebt of een nieuwe maken. Terwijl u typt in uw query, worden de opties voor automatisch aanvullen weer gegeven en voorgesteld door IntelliSense. Selecteer het type visualisatie, de **tabel** **Time Series** en voer de query uit.
+4. Selecteer de Azure Monitor-gegevensbron die u hebt geconfigureerd.
+   * Azure Monitor-statistieken verzamelen : selecteer **Azure Monitor** in de vervolgkeuzelijst van de service. Er verschijnt een lijst met selectors, waarin u de resources en metrische gegevens selecteren die u in deze grafiek wilt controleren. Als u statistieken van een virtuele machine wilt verzamelen, gebruikt u de naamruimte **Microsoft.Compute/VirtualMachines**. Zodra u VM's en statistieken hebt geselecteerd, u beginnen met het weergeven van hun gegevens in het dashboard.
+     ![Grafana-grafiekconfig voor Azure-monitor](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
+   * Azure Monitor-logboekgegevens verzamelen - selecteer **Azure Log Analytics** in de vervolgkeuzelijst van de service. Selecteer de werkruimte die u wilt opvragen en stel de querytekst in. U hier elke logquery kopiëren die u al hebt of een nieuwe maken. Terwijl u uw query intypt, wordt IntelliSense weergegeven en worden opties voor automatisch aanvullen voorgesteld. Selecteer het visualisatietype, **De tabel met de reeksen tijd** **Table**en voer de query uit.
     
      > [!NOTE]
      >
-     > De standaard query die wordt meegeleverd met de invoeg toepassing, gebruikt twee macro's: "$ __timeFilter () en $ __interval. 
-     > Met deze macro's kan Grafana dynamisch het tijds bereik en de tijd berekenen, wanneer u inzoomt op een deel van een grafiek. U kunt deze macro's verwijderen en een standaard tijd filter gebruiken, zoals *TimeGenerated > geleden (1U)* , maar dat betekent dat de grafiek de functie inzoomen niet ondersteunt.
+     > De standaardquery bij de plug-in maakt gebruik van twee macro's: "$__timeFilter() en $__interval. 
+     > Met deze macro's kan Grafana dynamisch het tijdsbereik en de tijdskorrel berekenen wanneer u inzoomt op een deel van een grafiek. U deze macro's verwijderen en een standaardtijdfilter gebruiken, zoals *TimeGenerated > geleden(1h),* maar dat betekent dat de grafiek de zoomfunctie niet ondersteunt.
     
-     ![Grafana Graph-configuratie voor Azure Log Analytics](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
+     ![Grafana-grafiekconfig voor Azure Log Analytics](./media/grafana-plugin/grafana-graph-config-for-azure-log-analytics-dark.png)
 
-5. Hieronder vindt u een eenvoudig dash board met twee grafieken. Het één aan de linkerkant toont het CPU-percentage van twee Vm's. In de grafiek aan de rechter kant worden de trans acties in een Azure Storage account weer gegeven, onderverdeeld op basis van het API-type van de trans actie.
-    ![Grafana twee grafieken voor beeld](media/grafana-plugin/grafana6.png)
+5. Hieronder volgt een eenvoudig dashboard met twee grafieken. De ene aan de linkerkant toont het CPU-percentage van twee VM's. De grafiek aan de rechterkant toont de transacties in een Azure Storage-account, onderverdeeld naar het type Transaction API.
+    ![Voorbeeld van grafana twee grafieken](media/grafana-plugin/grafana6.png)
 
 
-## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Optioneel: uw aangepaste metrische gegevens in dezelfde Grafana-server bewaken
+## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>Optioneel: uw aangepaste statistieken controleren op dezelfde Grafana-server
 
-U kunt ook telegrafie en InfluxDB installeren om zowel aangepaste als op agents gebaseerde metrieken te verzamelen en af te zetten. Er zijn veel invoeg toepassingen voor gegevens bronnen die u kunt gebruiken om deze metrieken samen te brengen in een dash board.
+U Telegraf en InfluxDB ook installeren om zowel aangepaste als op agenten gebaseerde statistieken te verzamelen en uit te zetten, dezelfde Grafana-instantie. Er zijn veel plug-ins voor gegevensbronnen die u gebruiken om deze statistieken samen te brengen in een dashboard.
 
-U kunt deze instelling ook opnieuw gebruiken om metrische gegevens van uw Prometheus-server op te zetten. Gebruik de Prometheus-invoeg toepassing voor gegevens bronnen in de galerie met invoeg toepassingen van Grafana.
+U deze set ook opnieuw gebruiken om statistieken van uw Prometheus-server op te nemen. Gebruik de Prometheus data source plugin in Grafana's plugin galerij.
 
-Hier vindt u een goede verwijzing naar artikelen over het gebruik van telegrafie, InfluxDB, Prometheus en docker
- - [Systeem metrieken bewaken met de TICK-stack op Ubuntu 16,04](https://www.digitalocean.com/community/tutorials/how-to-monitor-system-metrics-with-the-tick-stack-on-ubuntu-16-04)
+Hier zijn goede referentie artikelen over hoe telegraf, InfluxDB, Prometheus en Docker te gebruiken
+ - [System Metrics monitoren met de TICK Stack op Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-monitor-system-metrics-with-the-tick-stack-on-ubuntu-16-04)
 
- - [Een bewakings oplossing voor docker-hosts, containers en container Services](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
+ - [Een bewakingsoplossing voor Docker-hosts, containers en containerservices](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
-Hier volgt een afbeelding van een volledig Grafana-dash board met metrische gegevens van Azure Monitor en Application Insights.
-![voor beeld-metrische gegevens voor Grafana](media/grafana-plugin/grafana8.png)
+Hier volgt een afbeelding van een volledig Grafana-dashboard met statistieken van Azure Monitor en Application Insights.
+![Grafana-voorbeeldstatistieken](media/grafana-plugin/grafana8.png)
 
 ## <a name="advanced-grafana-features"></a>Geavanceerde Grafana-functies
 
 ### <a name="variables"></a>Variabelen
-Sommige query waarden kunnen worden geselecteerd via de vervolg keuzelijst van de gebruikers interface en worden bijgewerkt in de query. Bekijk de volgende query als voor beeld:
+Sommige querywaarden kunnen worden geselecteerd via ui-vervolgkeuzewaarden en worden bijgewerkt in de query. Beschouw de volgende query als een voorbeeld:
 ```
 Usage 
 | where $__timeFilter(TimeGenerated) 
@@ -129,12 +129,12 @@ Usage
 | sort by TimeGenerated
 ```
 
-U kunt een variabele configureren waarin alle beschik bare **oplossings** waarden worden weer geven en vervolgens uw query bijwerken om deze te gebruiken.
-Als u een nieuwe variabele wilt maken, klikt u in het bovenste gedeelte rechtsboven op de knop instellingen van het dash board, selecteert u **variabelen**en vervolgens **Nieuw**.
-Definieer op de pagina variabele de gegevens bron en query die moet worden uitgevoerd om de lijst met waarden te verkrijgen.
+U een variabele configureren die alle beschikbare **oplossingswaarden** weergeeft en vervolgens uw query bijwerken om deze te gebruiken.
+Als u een nieuwe variabele wilt maken, klikt u op de knop Instellingen van het dashboard in het rechterbovengebied, selecteert u **Variabelen**en vervolgens **Nieuw**.
+Definieer op de variabele pagina de gegevensbron en query die moet worden uitgevoerd om de lijst met waarden te krijgen.
 ![Grafana configureren variabele](./media/grafana-plugin/grafana-configure-variable-dark.png)
 
-Nadat u de query hebt gemaakt, kunt u de geselecteerde waarde (n) gebruiken en uw grafieken op de juiste manier reageren:
+Pas na het maken de query aan om de geselecteerde waarde(en) te gebruiken en in uw grafieken wordt dienovereenkomstig gereageerd:
 ```
 Usage 
 | where $__timeFilter(TimeGenerated) and Solution in ($Solutions)
@@ -142,21 +142,21 @@ Usage
 | sort by TimeGenerated
 ```
     
-![Variabelen voor Grafana gebruiken](./media/grafana-plugin/grafana-use-variables-dark.png)
+![Grafana gebruik variabelen](./media/grafana-plugin/grafana-use-variables-dark.png)
 
-### <a name="create-dashboard-playlists"></a>Afspeel lijsten met Dash boards maken
+### <a name="create-dashboard-playlists"></a>Dashboardafspeellijsten maken
 
-Een van de vele handige functies van Grafana is de afspeel lijst met Dash boards. U kunt meerdere Dash boards maken en toevoegen aan een afspeel lijst een interval configureren voor elk dash board dat moet worden weer gegeven. Selecteer **afspelen** om de Dash boards-cyclus te bekijken. Mogelijk wilt u ze weer geven op een grote wand monitor om een status bord voor uw groep te bieden.
+Een van de vele handige functies van Grafana is de dashboard afspeellijst. U meerdere dashboards maken en deze toevoegen aan een afspeellijst die een interval configureert voor elk dashboard dat kan worden weergegeven. Selecteer **Afspelen** om de dashboards te bekijken. U ze weergeven op een grote muurmonitor om een statusbord voor uw groep te bieden.
 
-![Voor beeld van Grafana-afspeel lijst](./media/grafana-plugin/grafana7.png)
+![Voorbeeld van Grafana-afspeellijst](./media/grafana-plugin/grafana7.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Grafana-omgeving hebt ingesteld op Azure, worden er kosten in rekening gebracht wanneer Vm's worden uitgevoerd, ongeacht of u deze gebruikt. Opschonen van de resource groep die in dit artikel is gemaakt om te voor komen dat er extra kosten in rekening worden gebracht.
+Als u een Grafana-omgeving op Azure hebt ingesteld, worden er kosten in rekening gebracht wanneer VM's worden uitgevoerd, ongeacht of u ze gebruikt of niet. Als u wilt voorkomen dat er extra kosten in rekening worden gebracht, ruimt u de resourcegroep op die in dit artikel is gemaakt.
 
-1. Klik in het menu aan de linkerkant in het Azure Portal op **resource groepen** en klik vervolgens op **Grafana**.
-2. Klik op de pagina van uw resource groep op **verwijderen**, typ **Grafana** in het tekstvak en klik vervolgens op **verwijderen**.
+1. Klik in het linkermenu in de Azure-portal op **Resourcegroepen** en klik vervolgens op **Grafana**.
+2. Klik op de pagina Resourcegroep op **Verwijderen,** typ **Grafana** in het tekstvak en klik vervolgens op **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Overzicht van Azure Monitor metrische gegevens](data-platform.md)
+* [Overzicht van Azure Monitor Metrics](data-platform.md)
 

@@ -1,60 +1,60 @@
 ---
-title: Ondersteuning krijgen voor avere vFXT voor Azure
-description: Uitleg over het openen van ondersteunings tickets over avere vFXT voor Azure
+title: Ondersteuning voor Avere vFXT voor Azure
+description: Uitleg over het openen van ondersteuningstickets over Avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252556"
 ---
-# <a name="get-help-with-your-system"></a>Hulp vragen bij uw systeem
+# <a name="get-help-with-your-system"></a>Hulp krijgen met uw systeem
 
-Voor hulp bij uw avere vFXT voor Azure-systeem zijn de volgende manieren om ondersteuning te krijgen:
+Voor hulp bij uw Avere vFXT voor Azure-systeem u dit onder andere onder andere ondersteunen:
 
-* **Avere vFXT-probleem** : gebruik de Azure Portal om een ondersteunings ticket voor uw avere-vFXT te openen, zoals [hieronder](#open-a-support-ticket-for-your-avere-vfxt)wordt beschreven.
-* **Quotum** : als u een quotum wilt hebben, moet u [een quotum toename aanvragen](#request-a-quota-increase)
-* **Documentatie en voor beelden** : als u problemen ondervindt met deze documentatie of voor beelden, schuift u naar de onderkant van de pagina met het probleem en gebruikt u de sectie **feedback** om naar bestaande problemen te zoeken en een nieuwe te bestand, indien nodig.
+* **Avere vFXT-probleem** - Gebruik de Azure-portal om een ondersteuningsticket te openen voor uw Avere vFXT zoals [hieronder](#open-a-support-ticket-for-your-avere-vfxt)beschreven.
+* **Quotum** - Als u een probleem met quota hebt, [vraagt u een quotumverhoging aan](#request-a-quota-increase)
+* **Documentatie en voorbeelden** - Als u problemen vindt met deze documentatie of voorbeelden, bladert u naar de onderkant van de pagina met het probleem en gebruikt u de sectie **Feedback** om te zoeken naar bestaande problemen en indien nodig een nieuwe op te nemen.
 
-## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Open een ondersteunings ticket voor uw avere-vFXT
+## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Open een supportticket voor uw Avere vFXT
 
-Als u problemen ondervindt tijdens het implementeren of gebruiken van AVERE vFXT, vraagt u hulp via de Azure Portal.
+Als u problemen ondervindt tijdens het implementeren of gebruiken van Avere vFXT, vraagt u hulp via de Azure-portal.
 
-Volg deze stappen om ervoor te zorgen dat uw ondersteunings ticket is gelabeld met een resource uit uw cluster. Als u het ticket labelt, kunnen we dit routeren naar de juiste ondersteunings resource.
+Volg deze stappen om ervoor te zorgen dat uw ondersteuningsticket is getagd met een bron uit uw cluster. Door het ticket te taggen, kunnen we het doorsturen naar de juiste ondersteuningsbron.
 
-1. Selecteer in [https://portal.azure.com](https://portal.azure.com) **resource groepen**. Blader naar de resource groep die het vFXT-cluster bevat waarop het probleem zich heeft voorgedaan en klik op een van de virtuele avere-cluster machines.
+1. Selecteer [https://portal.azure.com](https://portal.azure.com) **Resourcegroepen**. Blader naar de brongroep die het vFXT-cluster bevat waar het probleem zich heeft voorgedaan en klik op een van de virtuele machines van het Avere-cluster.
 
-    ![scherm afbeelding van het deel venster Overzicht van Azure Portal-resource groep met een bepaalde VM omcirkeld](media/avere-vfxt-ticket-vm.png)
+    ![schermafbeelding van het deelvenster 'overzicht' van Azure-portalbrongroep met een bepaalde virtuele machine omcirkeld](media/avere-vfxt-ticket-vm.png)
 
-1. Schuif op de pagina VM omlaag naar de onderkant van het linkerdeel venster en klik op **nieuwe ondersteunings aanvraag**.
+1. Schuif op de VM-pagina omlaag naar de onderkant van het linkerdeelvenster en klik op **Nieuw ondersteuningsverzoek**.
 
-    ![Scherm afbeelding van de Azure Portal VM-pagina voor de virtuele machine van de vorige scherm afbeelding. Het menu links wordt naar beneden geschoven en ' nieuwe ondersteunings aanvraag ' wordt omcirkeld.](media/avere-vfxt-ticket-request.png)
+    ![Schermafbeelding van de VM-pagina voor Azure-portal voor de VM uit de vorige schermafbeelding. Het linkermenu wordt naar beneden gebladerd en 'Nieuw ondersteuningsverzoek' is omcirkeld.](media/avere-vfxt-ticket-request.png)
 
-1. Kies op de eerste pagina van de ondersteunings aanvraag het probleem type en controleer of het juiste abonnement is geselecteerd.
+1. Kies op de eerste pagina van het ondersteuningsverzoek het probleemtype en controleer of het juiste abonnement is geselecteerd.
 
-   Klik onder **service**op **alle services** en zoek onder **opslag** om **avere vFXT**te kiezen.
+   Klik **onder Service**op Alle **services** en kijk onder **Opslag** om **Avere vFXT**te kiezen.
 
-   Voeg een korte samen vatting toe en selecteer het probleem type.
+   Voeg een korte samenvatting toe en selecteer het probleemtype.
 
-    ![scherm opname van een nieuw venster voor ondersteunings aanvraag in de Azure Portal. Het tabblad basis beginselen is geselecteerd. Scherm items zijn onder meer probleem type, abonnement, service, samen vatting en probleem type.](media/ticket-basics.png)
+    ![schermafbeelding van een nieuw ondersteuningsaanvraagscherm in de Azure-portal. Het tabblad Basisiser is geselecteerd. Schermitems zijn probleemtype, abonnement, service, overzicht en probleemtype.](media/ticket-basics.png)
 
-   Klik op **Volgende** om door te gaan.
+   Klik op **Volgende** om verder te gaan.
 
-1. De tweede pagina van het formulier ondersteuning bevat suggesties voor het oplossen van het probleem op basis van de beschrijving van uw samen vatting. Klik op de knop **volgende** onderaan als u nog steeds een ondersteunings ticket moet maken.
+1. De tweede pagina van het ondersteuningsformulier bevat suggesties voor het oplossen van het probleem op basis van uw overzichtsbeschrijving. Klik op de knop **Volgende** onderaan als je nog steeds een ondersteuningsticket moet maken.
 
-   ![scherm afbeelding van het venster nieuwe ondersteunings aanvraag met het tabblad oplossingen geselecteerd. Een tekst veld in het midden bevat de titel aanbevolen oplossing en legt mogelijke oplossingen voor.](media/ticket-solutions.png)
+   ![schermafbeelding van het nieuwe ondersteuningsaanvraagscherm met het tabblad Oplossingen geselecteerd. Een tekstveld in het midden heeft de titel 'Aanbevolen oplossing' en legt mogelijke remedies uit.](media/ticket-solutions.png)
 
-1. Geef op de derde pagina Details op. Dit omvat informatie over uw cluster, het tijdstip waarop het probleem zich voordeed, de ernst en hoe u contact met u opneemt. Vul de informatie in en klik onderaan op de knop **volgende** .
+1. Geef op de derde pagina details op: dit bevat informatie over uw cluster, de tijd dat het probleem zich heeft voorgedaan, de ernst en hoe u contact met u opnemen. Vul de informatie in en klik op de knop **Volgende** onderaan.
 
-   ![scherm afbeelding van het venster nieuwe ondersteunings aanvraag met het tabblad Details geselecteerd. Informatie velden zijn ingedeeld in de categorieën ' probleem Details ', ' ondersteunings methode ' en ' contact gegevens '.](media/ticket-details.png)
+   ![schermafbeelding van het nieuwe ondersteuningsaanvraagscherm met het tabblad Details geselecteerd. Informatievelden zijn ingedeeld in de categorieën 'Probleemgegevens', 'Ondersteuningsmethode' en 'Contactgegevens'.](media/ticket-details.png)
 
-1. Controleer de informatie op de laatste pagina en klik op **maken**. Er wordt een bevestigings-en ticket nummer verzonden naar uw e-mail adres en een ondersteunings medewerker neemt contact met u op.
+1. Bekijk de informatie op de laatste pagina en klik op **Maken**. Er wordt een bevestiging en ticketnummer naar uw e-mailadres gestuurd en een medewerker van de ondersteuning neemt contact met u op.
 
-## <a name="request-a-quota-increase"></a>Een quotum verhoging aanvragen
+## <a name="request-a-quota-increase"></a>Een quotumverhoging aanvragen
 
-Lees [quotum voor het vFXT-cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) voor meer informatie over de onderdelen die nodig zijn voor het implementeren van de avere VFXT voor Azure. U kunt [een quotum verhoging aanvragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) van de Azure Portal.
+Lees [Quota voor het vFXT-cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster) om te zien welke componenten nodig zijn om de Avere vFXT voor Azure te implementeren. U [een quotumverhoging aanvragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) bij de Azure-portal.

@@ -1,70 +1,70 @@
 ---
-title: Resource groep en-resources verwijderen
-description: Hierin wordt beschreven hoe u resource groepen en-resources verwijdert. Hierin wordt beschreven hoe Azure Resource Manager het verwijderen van resources ordent bij het verwijderen van een resource groep. Beschrijft de responscodes en hoe Resource Manager worden verwerkt om te bepalen of de verwijdering is geslaagd.
+title: Brongroep en resources verwijderen
+description: Beschrijft hoe u resourcegroepen en resources verwijderen. Hierin wordt beschreven hoe Azure Resource Manager het verwijderen van resources beveelt wanneer een brongroep wordt verwijderd. Het beschrijft de antwoordcodes en hoe Resource Manager hiermee omgaat om te bepalen of de verwijdering is geslaagd.
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: db56cf0897cd90f1e6e51199032d0d9712530f1c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274019"
 ---
-# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager resource groep en verwijderen van resources
+# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager-brongroep en resourceverwijderen
 
-In dit artikel wordt uitgelegd hoe u resource groepen en-resources kunt verwijderen. Hierin wordt beschreven hoe Azure Resource Manager het verwijderen van resources ordent bij het verwijderen van een resource groep.
+In dit artikel ziet u hoe u brongroepen en resources verwijdert. Hierin wordt beschreven hoe Azure Resource Manager het verwijderen van resources beveelt wanneer u een brongroep verwijdert.
 
-## <a name="how-order-of-deletion-is-determined"></a>Hoe volg orde van verwijderen wordt bepaald
+## <a name="how-order-of-deletion-is-determined"></a>Hoe de volgorde van verwijdering wordt bepaald
 
-Wanneer u een resourcegroep verwijdert, Resource Manager de bepaalt de volgorde om resources te verwijderen. Hierbij de volgende volgorde:
+Wanneer u een resourcegroep verwijdert, bepaalt Resource Manager de volgorde om resources te verwijderen. Het gebruikt de volgende volgorde:
 
-1. Alle resources in de onderliggende (geneste) worden verwijderd.
+1. Alle onderliggende (geneste) bronnen worden verwijderd.
 
-2. Resources die andere resources beheren, worden vervolgens verwijderd. Voor een resource kan de eigenschap `managedBy` worden ingesteld om aan te geven dat een andere resource deze beheert. Als deze eigenschap is ingesteld, worden de resource die wordt beheerd van de andere resource wordt verwijderd voordat de andere resources.
+2. Bronnen die andere bronnen beheren, worden vervolgens verwijderd. Een resource kan `managedBy` de eigenschap hebben ingesteld om aan te geven dat een andere resource deze beheert. Wanneer deze eigenschap is ingesteld, wordt de resource die de andere resource beheert, verwijderd vóór de andere resources.
 
-3. De resterende resources zijn verwijderd na de vorige twee categorieën.
+3. De resterende bronnen worden verwijderd na de vorige twee categorieën.
 
-Nadat de volgorde is bepaald, problemen met Resource Manager een verwijderbewerking voor elke resource. Wacht voor eventuele afhankelijkheden om te voltooien voordat u doorgaat.
+Nadat de volgorde is bepaald, geeft Resource Manager een delete-bewerking uit voor elke resource. Het wacht tot eventuele afhankelijkheden te voltooien voordat u verder gaat.
 
-Voor synchrone bewerkingen kan zijn de verwachte reactie van geslaagde-codes:
+Voor synchrone bewerkingen zijn de verwachte succesvolle antwoordcodes:
 
 * 200
 * 204
 * 404
 
-Voor asynchrone bewerkingen is de verwachte reactie van geslaagde 202. Resource Manager houdt de location-header of de header van de azure-asynchrone bewerking om te bepalen van de status van de asynchrone bewerking.
+Voor asynchrone bewerkingen is de verwachte succesvolle respons 202. Resourcemanager houdt de locatiekop of de azure-async-bewerkingskop bij om de status van de asynchrone verwijderingsbewerking te bepalen.
   
 ### <a name="deletion-errors"></a>Verwijderingsfouten
 
-Wanneer een delete-bewerking wordt een fout geretourneerd, probeert de aanroep voor het verwijderen door Resource Manager opnieuw. Nieuwe pogingen worden uitgevoerd voor de 5xx, 429 en statuscodes 408. Standaard is de periode voor opnieuw proberen 15 minuten.
+Wanneer een verwijderbewerking een fout retourneert, probeert Resource Manager de aanroep Verwijderen opnieuw in. Er worden opnieuw pogingen ingeroepen voor de statuscodes 5xx, 429 en 408. Standaard is de periode voor opnieuw proberen 15 minuten.
 
 ## <a name="after-deletion"></a>Na verwijdering
 
-Resource Manager geeft een GET-aanroep op elke bron die deze probeert te verwijderen. 404 wordt het antwoord van deze aanroep GET verwacht. Bij het Resource Manager haalt een 404-fout, partitielezer de verwijdering is voltooid. Resource Manager wordt de resource uit de cache verwijderd.
+Resource manager geeft een GET-aanroep uit op elke resource die het heeft geprobeerd te verwijderen. De reactie van deze GET-oproep zal naar verwachting 404 zijn. Wanneer Resource Manager een 404 krijgt, wordt de verwijdering als voltooid. Resource Manager verwijdert de bron uit de cache.
 
-Als de GET-aanroep voor de resource een 200 of 201 retourneert, stelt Resource Manager de resource.
+Als de GET-aanroep op de resource echter een 200 of 201 retourneert, maakt Resource Manager de resource opnieuw.
 
-Als de GET-bewerking een fout retourneert, pogingen Resource Manager de GET voor de volgende foutcode:
+Als de bewerking GET een fout retourneert, probeert Resource Manager de GET opnieuw in voor de volgende foutcode:
 
 * Minder dan 100
 * 408
 * 429
-* Groter is dan 500
+* Meer dan 500
 
-Resource Manager een failover voor andere foutcodes, het verwijderen van de resource.
+Voor andere foutcodes kan de resource niet worden verwijderd door Resource Manager.
 
 ## <a name="delete-resource-group"></a>Resourcegroep verwijderen
 
-Gebruik een van de volgende methoden om de resource groep te verwijderen.
+Gebruik een van de volgende methoden om de brongroep te verwijderen.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ExampleResourceGroup
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group delete --name ExampleResourceGroup
@@ -72,21 +72,21 @@ az group delete --name ExampleResourceGroup
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Selecteer in de [Portal](https://portal.azure.com)de resource groep die u wilt verwijderen.
+1. Selecteer in de [portal](https://portal.azure.com)de brongroep die u wilt verwijderen.
 
 1. Selecteer **Resourcegroep verwijderen**.
 
    ![Resourcegroep verwijderen](./media/delete-resource-group/delete-group.png)
 
-1. Om het verwijderen te bevestigen, typt u de naam van de resource groep
+1. Als u de verwijdering wilt bevestigen, typt u de naam van de resourcegroep
 
 ---
 
-## <a name="delete-resource"></a>Resource verwijderen
+## <a name="delete-resource"></a>Bron verwijderen
 
-Gebruik een van de volgende methoden om een resource te verwijderen.
+Gebruik een van de volgende methoden om een bron te verwijderen.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResource `
@@ -95,7 +95,7 @@ Remove-AzResource `
   -ResourceType Microsoft.Compute/virtualMachines
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az resource delete \
@@ -106,11 +106,11 @@ az resource delete \
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Selecteer in de [Portal](https://portal.azure.com)de resource die u wilt verwijderen.
+1. Selecteer in de [portal](https://portal.azure.com)de bron die u wilt verwijderen.
 
-1. Selecteer **Verwijderen**. Op de volgende scherm afbeelding ziet u de beheer opties voor een virtuele machine.
+1. Selecteer **Verwijderen**. De volgende schermafbeelding toont de beheeropties voor een virtuele machine.
 
-   ![Resource verwijderen](./media/delete-resource-group/delete-resource.png)
+   ![Bron verwijderen](./media/delete-resource-group/delete-resource.png)
 
 1. Bevestig de verwijdering als u daarom wordt gevraagd.
 
@@ -119,5 +119,5 @@ az resource delete \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Azure Resource Manager-overzicht](overview.md)voor meer informatie over de concepten van Resource Manager.
-* Zie [Power shell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure cli](/cli/azure/group?view=azure-cli-latest#az-group-delete)en [rest API](/rest/api/resources/resourcegroups/delete)voor verwijderings opdrachten.
+* Zie Overzicht van [Azure Resource Manager](overview.md)voor het begrijpen van Resource Manager-concepten.
+* Zie [PowerShell,](/powershell/module/az.resources/Remove-AzResourceGroup) [Azure CLI](/cli/azure/group?view=azure-cli-latest#az-group-delete)en [REST API](/rest/api/resources/resourcegroups/delete)voor verwijderingsopdrachten.

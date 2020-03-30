@@ -1,6 +1,6 @@
 ---
-title: Problemen met on-premises Azure AD-wachtwoord beveiliging oplossen
-description: Meer informatie over het oplossen van problemen met Azure AD-wachtwoord beveiliging voor een on-premises Active Directory Domain Services omgeving
+title: On-premises Azure AD-wachtwoordbeveiliging oplossen
+description: Meer informatie over het oplossen van problemen met Azure AD Password Protection voor een on-premises Active Directory Domain Services-omgeving
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,91 +12,91 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263645"
 ---
-# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Problemen oplossen: on-premises Azure AD-wachtwoord beveiliging
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Problemen oplossen: on-premises Azure AD-wachtwoordbeveiliging
 
-Na de implementatie van Azure AD-wachtwoord beveiliging kan het nodig zijn om het probleem op te lossen. In dit artikel vindt u meer informatie over enkele veelvoorkomende probleemoplossings stappen.
+Na de implementatie van Azure AD Password Protection is mogelijk een oplossing nodig. Dit artikel gaat in detail om u te helpen een aantal veelvoorkomende stappen voor het oplossen van problemen te begrijpen.
 
-## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>De DC-agent kan geen proxy vinden in de map
+## <a name="the-dc-agent-cannot-locate-a-proxy-in-the-directory"></a>De DC-agent kan geen proxy in de map vinden
 
-Het belangrijkste symptoom van dit probleem is 30017 gebeurtenissen in het gebeurtenis logboek van de DC-agent beheerder.
+Het belangrijkste symptoom van dit probleem is 30017 gebeurtenissen in de DC agent Admin gebeurtenis logboek.
 
-De gebruikelijke oorzaak van dit probleem is dat een proxy nog niet is geregistreerd. Als er een proxy is geregistreerd, kan er enige vertraging optreden vanwege een AD-replicatie latentie totdat een bepaalde DC-agent deze proxy kan zien.
+De gebruikelijke oorzaak van dit probleem is dat een proxy nog niet is geregistreerd. Als een proxy is geregistreerd, kan er enige vertraging optreden als gevolg van ad-replicatielatentie totdat een bepaalde DC-agent die proxy kan zien.
 
 ## <a name="the-dc-agent-is-not-able-to-communicate-with-a-proxy"></a>De DC-agent kan niet communiceren met een proxy
 
-Het belangrijkste symptoom van dit probleem is 30018 gebeurtenissen in het gebeurtenis logboek van de DC-agent beheerder. Dit probleem kan verschillende mogelijke oorzaken hebben:
+Het belangrijkste symptoom van dit probleem is 30018 gebeurtenissen in de DC agent Admin gebeurtenis logboek. Dit probleem kan verschillende mogelijke oorzaken hebben:
 
-1. De DC-agent bevindt zich in een geïsoleerd gedeelte van het netwerk dat geen netwerk verbinding met de geregistreerde proxy (s) toestaat. Dit probleem kan onschadelijk zijn zolang andere DC-agents kunnen communiceren met de proxy (s) om wachtwoord beleid te downloaden van Azure. Zodra het beleid is gedownload, wordt het door de geïsoleerde domein controller opgehaald via de replicatie van de beleids bestanden in de SYSVOL-share.
+1. De DC-agent bevindt zich in een geïsoleerd gedeelte van het netwerk dat geen netwerkverbinding met de geregistreerde proxy(s) toestaat. Dit probleem kan goedaardig zijn zolang andere DC-agents kunnen communiceren met de proxy(s) om wachtwoordbeleidsregels van Azure te downloaden. Eenmaal gedownload, zal dit beleid vervolgens worden verkregen door de geïsoleerde DC via replicatie van de beleidsbestanden in de sysvol aandeel.
 
-1. De proxyclient blokkeert de toegang tot het eind punt van de RPC-eindpunttoewijzer (poort 135)
+1. De proxyhostmachine blokkeert de toegang tot het RPC-eindpunt mapper-eindpunt (poort 135)
 
-   Het installatie programma voor de Azure AD-proxy voor wachtwoord beveiliging maakt automatisch een Windows Firewall regel voor binnenkomend verkeer waarmee toegang tot poort 135 wordt toegestaan. Als deze regel later wordt verwijderd of uitgeschakeld, kunnen DC-agents niet communiceren met de proxy service. Als de ingebouwde Windows Firewall is uitgeschakeld in plaats van een ander firewall product, moet u die Firewall zodanig configureren dat toegang tot poort 135 wordt toegestaan.
+   Het installatieprogramma Azure AD Password Protection Proxy maakt automatisch een windows firewall-inkomende regel die toegang tot poort 135 mogelijk maakt. Als deze regel later wordt verwijderd of uitgeschakeld, kunnen DC-agents niet communiceren met de proxyservice. Als de ingebouwde Windows Firewall is uitgeschakeld in plaats van een ander firewallproduct, moet u die firewall configureren om toegang tot poort 135 toe te staan.
 
-1. De hostmachine blokkeert de toegang tot het RPC-eind punt (dynamisch of statisch) dat is geluisterd door de proxy service
+1. De proxyhostmachine blokkeert de toegang tot het RPC-eindpunt (dynamisch of statisch) dat wordt beluisterd door de proxyservice
 
-   Het installatie programma voor de Azure AD-proxy voor wachtwoord beveiliging maakt automatisch een Windows Firewall regel voor binnenkomend verkeer waarmee toegang tot alle binnenkomende poorten die door de Azure AD-service voor wachtwoord beveiliging worden geluisterd, wordt toegestaan. Als deze regel later wordt verwijderd of uitgeschakeld, kunnen DC-agents niet communiceren met de proxy service. Als de ingebouwde Windows Firewall is uitgeschakeld in plaats van een ander firewall product, moet u die Firewall zodanig configureren dat toegang wordt toegestaan tot alle binnenkomende poorten die worden geluisterd door de Azure AD-service voor wachtwoord beveiliging. Deze configuratie kan specifieker worden gemaakt als de proxy service is geconfigureerd om te Luis teren op een specifieke statische RPC-poort (met behulp van de `Set-AzureADPasswordProtectionProxyConfiguration`-cmdlet).
+   Het installatieprogramma Azure AD Password Protection Proxy maakt automatisch een windows firewall-inkomende regel waarmee toegang wordt verkrijg tot binnenkomende poorten die worden beluisterd door de Azure AD Password Protection Proxy-service. Als deze regel later wordt verwijderd of uitgeschakeld, kunnen DC-agents niet communiceren met de proxyservice. Als de ingebouwde Windows Firewall is uitgeschakeld in plaats van een ander firewallproduct, moet u die firewall zo configureren dat deze firewall toegang geeft tot binnenkomende poorten die worden beluisterd door de Azure AD Password Protection Proxy-service. Deze configuratie kan specifieker worden gemaakt als de proxyservice is geconfigureerd om te `Set-AzureADPasswordProtectionProxyConfiguration` luisteren op een specifieke statische RPC-poort (met behulp van de cmdlet).
 
-1. De proxy-host is niet geconfigureerd om domein controllers in staat te stellen zich aan te melden bij de computer. Dit gedrag wordt bepaald via de toewijzing van de gebruikers bevoegdheid toegang tot deze computer vanaf het netwerk. Alle domein controllers in alle domeinen in het forest moeten aan deze bevoegdheid worden verleend. Deze instelling is vaak beperkt als onderdeel van een grotere inspanning voor netwerk beveiliging.
+1. De proxyhostmachine is niet geconfigureerd om domeincontrollers de mogelijkheid te bieden zich aan te melden bij de machine. Dit gedrag wordt beheerd via de toewijzing van gebruikersbevoegdheden 'Toegang tot deze computer vanaf het netwerk'. Alle domeincontrollers in alle domeinen in het forest moeten deze bevoegdheid krijgen. Deze instelling wordt vaak beperkt als onderdeel van een grotere netwerkverhardingsinspanning.
 
-## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Proxy service kan niet communiceren met Azure
+## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Proxyservice kan niet communiceren met Azure
 
-1. Zorg ervoor dat de proxy computer verbinding heeft met de eind punten die worden vermeld in de [implementatie vereisten](howto-password-ban-bad-on-premises-deploy.md).
+1. Zorg ervoor dat de proxymachine verbinding heeft met de eindpunten die worden vermeld in de [implementatievereisten.](howto-password-ban-bad-on-premises-deploy.md)
 
-1. Zorg ervoor dat het forest en alle proxy servers zijn geregistreerd bij dezelfde Azure-Tenant.
+1. Controleer of het forest en alle proxyservers zijn geregistreerd tegen dezelfde Azure-tenant.
 
-   U kunt deze vereiste controleren door de `Get-AzureADPasswordProtectionProxy`-en `Get-AzureADPasswordProtectionDCAgent` Power shell-cmdlets uit te voeren en vervolgens de `AzureTenant` eigenschap van elk geretourneerd item te vergelijken. Voor een juiste werking moet de gerapporteerde Tenant naam hetzelfde zijn voor alle DC-agents en proxy servers.
+   U deze vereiste `Get-AzureADPasswordProtectionProxy` controleren `Get-AzureADPasswordProtectionDCAgent` door de cmdlets `AzureTenant` en PowerShell uit te voeren en vervolgens de eigenschap van elk geretourneerd item te vergelijken. Voor de juiste werking moet de gerapporteerde tenantnaam hetzelfde zijn voor alle DC-agents en proxyservers.
 
-   Als er een voor waarde is die niet overeenkomt met de Azure-Tenant, kan dit probleem worden opgelost door de `Register-AzureADPasswordProtectionProxy` en/of `Register-AzureADPasswordProtectionForest` Power shell-cmdlets als nodig uit te voeren, zodat u referenties van dezelfde Azure-Tenant gebruikt voor alle registraties.
+   Als er een mismatch voorwaarde voor Azure-tenantregistratie bestaat, kan dit probleem worden opgelost door de `Register-AzureADPasswordProtectionProxy` cmdlets en/of `Register-AzureADPasswordProtectionForest` PowerShell naar behoefte uit te voeren, zodat u referenties van dezelfde Azure-tenant voor alle registraties gebruikt.
 
-## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>DC-agent kan wachtwoord beleids bestanden niet versleutelen of ontsleutelen
+## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>DC-agent kan wachtwoordbeleidsbestanden niet versleutelen of decoderen
 
-Azure AD-wachtwoord beveiliging heeft een kritieke afhankelijkheid van de functionaliteit voor versleuteling en ontsleuteling die is opgegeven door de micro soft Key Distribution-service. Het versleutelen of ontsleutelen van fouten kan zich manifesteren met verschillende symptomen en heeft verschillende mogelijke oorzaken.
+Azure AD Password Protection is van cruciaal belang voor de versleutelings- en decryptiefunctionaliteit die wordt geleverd door de Microsoft Key Distribution Service. Encryptie of decryptie fouten kunnen manifesteren met een verscheidenheid van symptomen en hebben verschillende mogelijke oorzaken.
 
-1. Zorg ervoor dat de KDS-service is ingeschakeld en werkt op alle domein controllers met Windows Server 2012 en hoger in een domein.
+1. Controleer of de KDS-service is ingeschakeld en functioneel is op alle domeincontrollers van Windows Server 2012 en hoger in een domein.
 
-   De service start modus van de KDS-service is standaard geconfigureerd als hand matig (start trigger starten). Deze configuratie betekent dat de eerste keer dat een client de service probeert te gebruiken, deze op aanvraag wordt gestart. De opstart modus van deze standaard service is acceptabel voor het werken met wachtwoord beveiliging van Azure AD.
+   Standaard is de servicestartmodus van de KDS-service geconfigureerd als Handmatig (Trigger Start). Deze configuratie betekent dat de eerste keer dat een client de service probeert te gebruiken, deze on-demand wordt gestart. Deze standaardmodus voor het starten van de service is acceptabel als Azure AD Password Protection werkt.
 
-   Als de start modus van de KDS-service is geconfigureerd voor uitgeschakeld, moet deze configuratie worden hersteld voordat Azure AD-wachtwoord beveiliging goed werkt.
+   Als de startmodus van de KDS-service is geconfigureerd voor Uitgeschakeld, moet deze configuratie worden opgelost voordat Azure AD-wachtwoordbeveiliging naar behoren werkt.
 
-   Een eenvoudige test voor dit probleem is om de KDS-service hand matig te starten via de service management MMC-console of door andere beheer hulpprogramma's te gebruiken (Voer bijvoorbeeld ' net start kdssvc ' uit vanaf een opdracht prompt console). De KDS-service wordt naar verwachting gestart en blijft actief.
+   Een eenvoudige test voor dit probleem is om de KDS-service handmatig te starten, hetzij via de MMC-console servicebeheer, hetzij met behulp van andere beheertools (voer bijvoorbeeld "net start kdssvc" uit vanaf een opdrachtpromptconsole). De KDS-service zal naar verwachting succesvol starten en blijven draaien.
 
-   De meest voorkomende hoofd oorzaak voor de KDS-service is niet gestart, omdat het object van de Active Directory domein controller zich buiten de standaard organisatie-eenheid voor domein controllers bevindt. Deze configuratie wordt niet ondersteund door de KDS-service en wordt niet beperkt door Azure AD-wachtwoord beveiliging. De oplossing voor dit probleem is het verplaatsen van het domein controller object naar een locatie onder de standaard organisatie-eenheid voor domein controllers.
+   De meest voorkomende oorzaak dat de KDS-service niet kan worden gestart, is dat het object Active Directory-domeincontroller zich buiten de standaard-domeincontrollers-organisatiebevindt. Deze configuratie wordt niet ondersteund door de KDS-service en is geen beperking opgelegd door Azure AD Password Protection. De oplossing voor deze voorwaarde is om het domeincontrollerobject te verplaatsen naar een locatie onder de standaard-domeincontrollers-organisatie.
 
-1. Incompatibele KDS-wijziging van de versleutelde buffer indeling van Windows Server 2012 R2 naar Windows Server 2016
+1. Incompatibele kDS-versleutelde bufferindelingwijziging van Windows Server 2012 R2 naar Windows Server 2016
 
-   Er is een KDS-beveiligings oplossing geïntroduceerd in Windows Server 2016 waarmee de indeling van versleutelde KDS-buffers wordt gewijzigd. deze buffers kunnen soms niet worden ontsleuteld in Windows Server 2012 en Windows Server 2012 R2. De omgekeerde richting is het versleutelen van onKDSe buffers die zijn versleuteld in Windows Server 2012 en Windows Server 2012 R2 worden altijd gedecodeerd op Windows Server 2016 of hoger. Als op de domein controllers in uw Active Directory-domeinen een combi natie van deze besturings systemen wordt uitgevoerd, kunnen er soms problemen met de ontsleuteling van Azure AD-wachtwoord beveiliging worden gerapporteerd. Het is niet mogelijk om de timing of symptomen van deze fouten nauw keurig te voors pellen op basis van de aard van de beveiligings oplossing, en gezien dat het niet-deterministisch is welke Azure AD-wachtwoord beveiliging DC-agent op welke domein controller gegevens op een bepaald moment versleutelt.
+   Er is een KDS-beveiligingsfix geïntroduceerd in Windows Server 2016 die het formaat van kds-versleutelde buffers wijzigt; deze buffers worden soms niet gedecodeerd op Windows Server 2012 en Windows Server 2012 R2. De omgekeerde richting is in orde - buffers die kds-versleuteld zijn op Windows Server 2012 en Windows Server 2012 R2 zullen altijd met succes decoderen op Windows Server 2016 en hoger. Als de domeincontrollers in uw Active Directory-domeinen een mix van deze besturingssystemen uitvoeren, kunnen incidentele decryptiefouten voor Azure AD Password Protection worden gerapporteerd. Het is niet mogelijk om de timing of symptomen van deze fouten nauwkeurig te voorspellen, gezien de aard van de beveiligingsoplossing, en gezien het feit dat het niet-deterministisch is welke Azure AD Password Protection DC-agent waarop de domeincontroller gegevens op een bepaald moment zal versleutelen.
 
-   Micro soft onderzoekt een oplossing voor dit probleem, maar er is nog geen ETA beschikbaar. In de tussen tijd is er geen oplossing voor dit probleem, anders dan voor het uitvoeren van een combi natie van deze incompatibele besturings systemen in uw Active Directory domein (en). Met andere woorden, u moet alleen Windows Server 2012-en Windows Server 2012 R2-domein controllers uitvoeren, of alleen Windows Server 2016 en hoger domein controllers uitvoeren.
+   Microsoft onderzoekt een oplossing voor dit probleem, maar er is nog geen ETA beschikbaar. In de tussentijd is er geen tijdelijke oplossing voor dit probleem, behalve om geen mix van deze onverenigbare besturingssystemen uit te voeren in uw Active Directory-domein(en). Met andere woorden, u moet alleen Windows Server 2012- en Windows Server 2012 R2-domeincontrollers uitvoeren, OF u moet alleen Windows Server 2016 en hoger-domeincontrollers uitvoeren.
 
-## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Er worden zwakke wacht woorden geaccepteerd, maar dit mag niet
+## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Zwakke wachtwoorden worden geaccepteerd, maar mogen niet
 
 Dit probleem kan verschillende oorzaken hebben.
 
-1. Uw DC-agent (s) wordt uitgevoerd op een open bare Preview-software versie die is verlopen. Zie de [Software voor de open bare preview-agent van DC is verlopen](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
+1. Uw DC-agent(s) draaien een openbare preview-softwareversie die is verlopen. Zie [Public preview DC-agentsoftware is verlopen](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired).
 
-1. Uw DC-agent (s) kan geen beleid downloaden of bestaande beleids regels kunnen niet worden ontsleuteld. Controleer op mogelijke oorzaken in de bovenstaande onderwerpen.
+1. Uw DC-agent(s) kan geen beleid downloaden of kan het bestaande beleid niet decoderen. Controleer op mogelijke oorzaken in de bovenstaande onderwerpen.
 
-1. De modus voor het afdwingen van het wachtwoord beleid is nog steeds ingesteld op controle. Als deze configuratie van kracht is, moet u deze opnieuw configureren om te worden afgedwongen met behulp van de Azure AD-portal voor wachtwoord beveiliging. Zie de [bewerkings modus](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)voor meer informatie.
+1. De modus Afdwingen van het wachtwoordbeleid is nog steeds ingesteld op Controleren. Als deze configuratie van kracht is, configureert u deze opnieuw naar Afdwingen met de Azure AD Password Protection-portal. Zie [Werkwijzen voor](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)meer informatie .
 
-1. Het wachtwoord beleid is uitgeschakeld. Als deze configuratie van kracht is, configureert u deze opnieuw in ingeschakeld met behulp van de Azure AD-portal voor wachtwoord beveiliging. Zie de [bewerkings modus](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)voor meer informatie.
+1. Het wachtwoordbeleid is uitgeschakeld. Als deze configuratie van kracht is, configureert u deze opnieuw om deze in te schakelen met de Azure AD Password Protection-portal. Zie [Werkwijzen voor](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)meer informatie .
 
-1. U hebt de DC-agent software niet geïnstalleerd op alle domein controllers in het domein. In dit geval is het moeilijk om ervoor te zorgen dat externe Windows-clients een bepaalde domein controller doel hebben tijdens een wijziging van het wacht woord. Als u denkt dat u een bepaalde domein controller hebt waarop de DC-agent software is geïnstalleerd, kunt u controleren door het gebeurtenis logboek van de DC-agent beheerder te controleren: ongeacht het resultaat is er ten minste één gebeurtenis om het resultaat van het wacht woord te documenteren /categorievalidatie. Als er geen gebeurtenis aanwezig is voor de gebruiker waarvan het wacht woord is gewijzigd, wordt de wijziging van het wacht woord waarschijnlijk verwerkt door een andere domein controller.
+1. U hebt de DC-agentsoftware niet op alle domeincontrollers in het domein geïnstalleerd. In deze situatie is het moeilijk om ervoor te zorgen dat externe Windows-clients zich richten op een bepaalde domeincontroller tijdens een wachtwoordwijzigingsbewerking. Als u denkt dat u een bepaalde DC hebt getarget waar de DC-agentsoftware is geïnstalleerd, u dit verifiëren door het gebeurtenislogboek van de DC-agent-beheerder te controleren: ongeacht de uitkomst is er ten minste één gebeurtenis om de uitkomst van het wachtwoord te documenteren Validatie. Als er geen gebeurtenis aanwezig is voor de gebruiker wiens wachtwoord is gewijzigd, is de wachtwoordwijziging waarschijnlijk verwerkt door een andere domeincontroller.
 
-   Als alternatieve test kunt u setting\changing-wacht woorden proberen terwijl u zich rechtstreeks aanmeldt bij een DC waar de DC-agent software is geïnstalleerd. Deze techniek wordt niet aanbevolen voor productie Active Directory domeinen.
+   Als alternatieve test probeert u wachtwoorden in te stellen terwijl u rechtstreeks bent ingelogd bij een DC waar de DC-agentsoftware is geïnstalleerd. Deze techniek wordt niet aanbevolen voor het produceren van Active Directory-domeinen.
 
-   Hoewel een incrementele implementatie van de DC-agent software onder deze beperkingen wordt ondersteund, raadt micro soft ten zeerste aan de DC-agent software op alle domein controllers in een domein zo snel mogelijk te installeren.
+   Hoewel incrementele implementatie van de DC-agentsoftware wordt ondersteund onder voorbehoud van deze beperkingen, raadt Microsoft ten zeerste aan dat de DC-agentsoftware zo snel mogelijk op alle domeincontrollers in een domein wordt geïnstalleerd.
 
-1. De wachtwoord validatie algoritme werkt mogelijk in werkelijkheid zoals verwacht. Bekijk [hoe wacht woorden worden geëvalueerd](concept-password-ban-bad.md#how-are-passwords-evaluated).
+1. Het wachtwoordvalidatiealgoritme werkt mogelijk zoals verwacht. Zie [Hoe worden wachtwoorden geëvalueerd](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
-## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil. exe kan geen zwak wacht woord voor DSRM instellen
+## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil.exe slaagt er niet in om een zwak DSRM-wachtwoord in te stellen
 
-Active Directory valideert altijd een nieuw wacht woord voor de herstel modus van Directory Services om te controleren of het voldoet aan de vereisten voor wachtwoord complexiteit van het domein. deze validatie roept ook wachtwoord filter-dll's aan zoals Azure AD-wachtwoord beveiliging. Als het nieuwe DSRM-wacht woord wordt afgewezen, wordt het volgende fout bericht weer gegeven:
+Active Directory valideert altijd een nieuw wachtwoord voor de reparatiemodus van Directory Services om ervoor te zorgen dat het voldoet aan de vereisten voor de complexiteit van het domein; deze validatie wordt ook aangesproken op wachtwoordfilters, zoals Azure AD Password Protection. Als het nieuwe DSRM-wachtwoord wordt geweigerd, wordt het volgende foutbericht weergegeven:
 
 ```text
 C:\>ntdsutil.exe
@@ -109,39 +109,39 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-Als met Azure AD-wachtwoord beveiliging de gebeurtenis logboek gebeurtenissen voor wachtwoord validatie worden geregistreerd voor een Active Directory DSRM-wacht woord, wordt verwacht dat in de gebeurtenis logboek berichten geen gebruikers naam wordt vermeld. Dit probleem treedt op omdat het DSRM-account een lokaal account is dat geen deel uitmaakt van het werkelijke Active Directory domein.  
+Wanneer Azure AD Password Protection de gebeurtenisgebeurtenis(s) voor wachtwoordvalidatie registreert voor een Active Directory DSRM-wachtwoord, wordt verwacht dat de gebeurtenislogboekberichten geen gebruikersnaam bevatten. Dit gedrag treedt op omdat het DSRM-account een lokaal account is dat geen deel uitmaakt van het werkelijke Active Directory-domein.  
 
-## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>De promotie van de domein controller replica is mislukt vanwege een zwak wacht woord voor DSRM
+## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>Replicapromotie voor domeincontroller mislukt vanwege een zwak DSRM-wachtwoord
 
-Tijdens het DC-promotie proces wordt het nieuwe wacht woord voor de herstel modus van Directory Services verzonden naar een bestaande domein controller in het domein voor validatie. Als het nieuwe DSRM-wacht woord wordt afgewezen, wordt het volgende fout bericht weer gegeven:
+Tijdens het DC-promotieproces wordt het nieuwe wachtwoord voor de reparatiemodus van Directory Services voor validatie naar een bestaand DC in het domein verzonden. Als het nieuwe DSRM-wachtwoord wordt geweigerd, wordt het volgende foutbericht weergegeven:
 
 ```powershell
 Install-ADDSDomainController : Verification of prerequisites for Domain Controller promotion failed. The Directory Services Restore Mode password does not meet a requirement of the password filter(s). Supply a suitable password.
 ```
 
-Net zoals in het bovenstaande probleem, hebben alle Azure AD-wacht woorden voor wachtwoord validatie resultaten voor dit scenario lege gebruikers namen.
+Net als in het bovenstaande probleem heeft elke gebeurtenis voor wachtwoordvalidatie van Azure AD Password Protection lege gebruikersnamen voor dit scenario.
 
-## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>De degradatie van de domein controller is mislukt vanwege een zwak lokaal beheerders wachtwoord
+## <a name="domain-controller-demotion-fails-due-to-a-weak-local-administrator-password"></a>Dedegradatie van de domeincontroller mislukt vanwege een zwak lokaal beheerderswachtwoord
 
-Het wordt ondersteund voor het degraderen van een domein controller waarop nog steeds de DC-agent software wordt uitgevoerd. Beheerders moeten er wel rekening mee houden dat de DC-agent software het huidige wachtwoord beleid tijdens de degradatie procedure blijft afdwingen. Het nieuwe wacht woord voor het lokale Administrator-account (opgegeven als onderdeel van de degradatie bewerking) wordt gevalideerd, net als elk ander wacht woord. Micro soft raadt aan dat beveiligde wacht woorden worden gekozen voor lokale beheerders accounts als onderdeel van een DC-degradatie procedure.
+Het wordt ondersteund om een domeincontroller te degraderen die nog steeds de DC-agentsoftware uitvoert. Beheerders moeten zich er echter van bewust zijn dat de DC-agentsoftware het huidige wachtwoordbeleid blijft afdwingen tijdens de degradatieprocedure. Het nieuwe wachtwoord voor lokale administratoraccount (opgegeven als onderdeel van de degradatiebewerking) wordt gevalideerd als elk ander wachtwoord. Microsoft raadt aan om veilige wachtwoorden te kiezen voor lokale Administrator-accounts als onderdeel van een DC-degradatieprocedure.
 
-Zodra de degradatie is geslaagd en de domein controller opnieuw is opgestart en opnieuw wordt uitgevoerd als een normale lidserver, wordt de DC-agent software weer actief in een passieve modus. Deze kan op elk gewenst moment worden verwijderd.
+Zodra de degradatie is geslaagd en de domeincontroller opnieuw is opgestart en opnieuw wordt uitgevoerd als een normale lidserver, keert de DC-agentsoftware terug naar het draaien in een passieve modus. Het kan dan worden verwijderd op elk gewenst moment.
 
-## <a name="booting-into-directory-services-repair-mode"></a>Opstarten in de modus Active Directory-Services herstellen
+## <a name="booting-into-directory-services-repair-mode"></a>Opstarten in de reparatiemodus directoryservices
 
-Als de domein controller wordt opgestart in de modus voor het herstellen van Directory Services, detecteert de wachtwoord filter-dll van de DC-agent deze voor waarde en zorgt u ervoor dat alle wachtwoord validatie-of afdwingings activiteiten worden uitgeschakeld, ongeacht het huidige actieve beleid configuratie. De wachtwoord filter-dll van de DC-agent registreert een 10023-waarschuwings gebeurtenis in het gebeurtenis logboek van de beheerder, bijvoorbeeld:
+Als de domeincontroller is opgestart in de reparatiemodus van Directory Services, detecteert het wachtwoordfilter dll van de DC-agent deze voorwaarde en zorgt ervoor dat alle wachtwoordvalidatie- of handhavingsactiviteiten worden uitgeschakeld, ongeacht het momenteel actieve beleid Configuratie. Het wachtwoordfilter dll van de DC-agent registreert een 10023-waarschuwingsgebeurtenis bij het gebeurtenislogboek Admin, bijvoorbeeld:
 
 ```text
 The password filter dll is loaded but the machine appears to be a domain controller that has been booted into Directory Services Repair Mode. All password change and set requests will be automatically approved. No further messages will be logged until after the next reboot.
 ```
-## <a name="public-preview-dc-agent-software-has-expired"></a>De software voor de open bare preview-agent is verlopen
+## <a name="public-preview-dc-agent-software-has-expired"></a>Public preview DC agent software is verlopen
 
-Tijdens de open bare preview-periode van Azure AD-wachtwoord beveiliging werd de DC-agent software in code vastgelegd om de verwerking van wachtwoord validatie aanvragen voor de volgende datums te stoppen:
+Tijdens de openbare previewperiode voor Azure AD Password Protection was de DC-agentsoftware hardgecodeerd om te stoppen met het verwerken van wachtwoordvalidatieaanvragen op de volgende datums:
 
-* Versie 1.2.65.0 stopt met het verwerken van aanvragen voor wachtwoord validatie op september 1 2019.
-* Versie 1.2.25.0 en eerder gestopt de verwerking van wachtwoord validatie aanvragen op 1 2019 juli.
+* Versie 1.2.65.0 stopt per 1 september 2019 met het verwerken van wachtwoordvalidatieaanvragen.
+* Versie 1.2.25.0 en eerdere wijzigingen zijn op 1 juli 2019 gestopt met het verwerken van wachtwoordvalidatieaanvragen.
 
-Naarmate de deadline nadert, worden met alle time-outversies van gelijkstroom agents in het gebeurtenis logboek van de DC-agent beheerder een 10021-gebeurtenis weer gegeven, die er als volgt uitziet:
+Naarmate de deadline nadert, zullen alle dc-agentversies met beperkte tijd een 10021-gebeurtenis uitzenden in het gebeurtenislogboek van de DC-agent Admin op de opstarttijd die er als volgt uitziet:
 
 ```text
 The password filter dll has successfully loaded and initialized.
@@ -153,7 +153,7 @@ Expiration date:  9/01/2019 0:00:00 AM
 This message will not be repeated until the next reboot.
 ```
 
-Zodra de deadline is verstreken, worden met alle time-outversies van DC-agents in het gebeurtenis logboek van de DC-agent beheerder een 10022-gebeurtenis verzonden die er als volgt uitziet:
+Zodra de deadline is verstreken, zullen alle dc-agentversies met beperkte tijd een 10022-gebeurtenis uitzenden in het gebeurtenislogboek van de DC-agent Admin op de opstarttijd die er als volgt uitziet:
 
 ```text
 The password filter dll is loaded but the allowable trial period has expired. All password change and set requests will be automatically approved. Please contact Microsoft for a newer supported version of the software.
@@ -161,12 +161,12 @@ The password filter dll is loaded but the allowable trial period has expired. Al
 No further messages will be logged until after the next reboot.
 ```
 
-Aangezien de deadline alleen wordt gecontroleerd bij de eerste keer opstarten, worden deze gebeurtenissen mogelijk pas na de deadline van de kalender weer gegeven. Zodra de deadline is herkend, zullen geen negatieve effecten op de domein controller of de grotere omgeving worden uitgevoerd, anders dan alle wacht woorden, worden automatisch goedgekeurd.
+Aangezien de deadline alleen is gecontroleerd bij het opstarten, ziet u deze gebeurtenissen mogelijk pas lang nadat de deadline van de agenda is verstreken. Zodra de deadline is herkend, zullen er geen negatieve effecten optreden op de domeincontroller of de grotere omgeving, anders dan alle wachtwoorden, worden automatisch goedgekeurd.
 
 > [!IMPORTANT]
-> Micro soft raadt aan dat verlopen open bare preview-agents direct worden bijgewerkt naar de nieuwste versie.
+> Microsoft raadt aan om verlopen openbare preview DC-agents onmiddellijk te upgraden naar de nieuwste versie.
 
-Een eenvoudige manier om DC-agents in uw omgeving te detecteren die moeten worden bijgewerkt, is door de `Get-AzureADPasswordProtectionDCAgent` cmdlet uit te voeren, bijvoorbeeld:
+Een eenvoudige manier om DC-agents in uw omgeving te `Get-AzureADPasswordProtectionDCAgent` ontdekken die moeten worden geürist, is door de cmdlet uit te voeren, bijvoorbeeld:
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -180,33 +180,33 @@ HeartbeatUTC          : 8/1/2019 10:00:00 PM
 AzureTenant           : bpltest.onmicrosoft.com
 ```
 
-Voor dit onderwerp is het veld SoftwareVersion duidelijk de sleutel eigenschap die u wilt bekijken. U kunt ook Power shell-filtering gebruiken om DC-agents te filteren die al of niet hoger zijn dan de vereiste basislijn versie, bijvoorbeeld:
+Voor dit onderwerp is het veld SoftwareVersion natuurlijk de belangrijkste eigenschap om naar te kijken. U powershell-filtering ook gebruiken om DC-agents die zich al op of boven de vereiste basislijnversie bevinden, uit te filteren, bijvoorbeeld:
 
 ```powershell
 PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-De Azure AD-proxy software voor wachtwoord beveiliging is niet in een wille keurige versie beperkt. Micro soft raadt u aan om de domein controller en de proxy agent te upgraden naar de meest recente versies zodra ze worden uitgebracht. De cmdlet `Get-AzureADPasswordProtectionProxy` kan worden gebruikt om proxy agenten te vinden waarvoor upgrades zijn vereist, vergelijkbaar met het bovenstaande voor beeld voor DC-agents.
+De Azure AD Password Protection Proxy-software is in geen enkele versie beperkt in de tijd. Microsoft raadt nog steeds aan om zowel DC- als proxyagents te upgraden naar de nieuwste versies wanneer ze worden uitgebracht. De `Get-AzureADPasswordProtectionProxy` cmdlet kan worden gebruikt om proxy-agents te vinden die upgrades vereisen, vergelijkbaar met het bovenstaande voorbeeld voor DC-agents.
 
-Raadpleeg [de DC-agent bijwerken](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) en [de proxy service upgraden](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) voor meer informatie over specifieke upgrade procedures.
+Raadpleeg [het upgraden van de DC-agent](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) en [het upgraden van de proxyservice](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) voor meer informatie over specifieke upgradeprocedures.
 
-## <a name="emergency-remediation"></a>Herstel na nood geval
+## <a name="emergency-remediation"></a>Noodsanering
 
-Als er sprake is van een situatie waarbij de DC-Agent service problemen veroorzaakt, wordt de DC-Agent service mogelijk onmiddellijk afgesloten. De dll voor wachtwoord filter van de domein controller probeert de niet-actieve service nog steeds aan te roepen en registreert waarschuwings gebeurtenissen (10012, 10013), maar alle binnenkomende wacht woorden worden tijdens die tijd geaccepteerd. De DC-Agent service kan vervolgens ook worden geconfigureerd via Windows Service Control Manager met het opstart type ' uitgeschakeld ', indien nodig.
+Als zich een situatie voordoet waarin de DC-agentservice problemen veroorzaakt, kan de DC-agentservice onmiddellijk worden afgesloten. Het wachtwoordfilter van de DC-agent probeert nog steeds de niet-lopende service te bellen en logt waarschuwingsgebeurtenissen (10012, 10013), maar alle binnenkomende wachtwoorden worden in die tijd geaccepteerd. De DC-agentservice kan dan ook worden geconfigureerd via Windows Service Control Manager met een opstarttype 'Uitgeschakeld' indien nodig.
 
-Een andere maat regel voor herstel is het instellen van de modus inschakelen op Nee in de Azure AD-portal voor wachtwoord beveiliging. Zodra het bijgewerkte beleid is gedownload, gaat elke DC-Agent service in een quiescent-modus waarbij alle wacht woorden worden geaccepteerd als-is. Zie de [bewerkings modus](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)voor meer informatie.
+Een andere herstelmaatregel zou zijn om de modus Inschakelen in te stellen op Nee in de Azure AD Password Protection-portal. Zodra het bijgewerkte beleid is gedownload, zal elke DC-agent service gaan in een rustige modus waar alle wachtwoorden worden geaccepteerd as-is. Zie [Werkwijzen voor](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)meer informatie .
 
-## <a name="removal"></a>Procedure
+## <a name="removal"></a>Verwijdering
 
-Als wordt besloten de Azure AD-software voor wachtwoord beveiliging te verwijderen en alle gerelateerde status op te schonen van de domein (en) en het forest, kan deze taak worden uitgevoerd met de volgende stappen:
+Als wordt besloten de Azure AD-wachtwoordbeveiligingssoftware te verwijderen en alle gerelateerde statussen uit het domein(en) en forest op te ruimen, kan deze taak worden uitgevoerd met de volgende stappen:
 
 > [!IMPORTANT]
-> Het is belang rijk dat u deze stappen in de aangegeven volg orde uitvoert. Als er een exemplaar van de proxy service wordt uitgevoerd, wordt het serviceConnectionPoint-object periodiek opnieuw gemaakt. Als er een instantie van de DC-Agent service wordt uitgevoerd, wordt het object serviceConnectionPoint en de SYSVOL-status periodiek opnieuw gemaakt.
+> Het is belangrijk om deze stappen in orde uit te voeren. Als een instantie van de proxyservice wordt uitgevoerd, wordt het object serviceConnectionPoint periodiek opnieuw gemaakt. Als een instantie van de DC-agentservice wordt uitgevoerd, wordt het object serviceConnectionPoint en de sysvol-status periodiek opnieuw gemaakt.
 
-1. Verwijder de proxy software van alle machines. Voor deze stap is het **niet** nodig om opnieuw op te starten.
-2. Verwijder de software van de DC-agent van alle domein controllers. Voor deze stap **moet** de computer opnieuw worden opgestart.
-3. Verwijder hand matig alle proxy service verbindings punten in elke domein naamgevings context. De locatie van deze objecten kan worden gedetecteerd met de volgende Active Directory Power shell-opdracht:
+1. Verwijder de Proxy-software van alle machines. Deze stap vereist **geen** herstart.
+2. Verwijder de DC Agent-software van alle domeincontrollers. Deze stap **vereist** een herstart.
+3. Verwijder alle verbindingspunten van de proxyservice handmatig in elke domeinnaamgevingscontext. De locatie van deze objecten kan worden gedetecteerd met de volgende opdracht Active Directory PowerShell:
 
    ```powershell
    $scp = "serviceConnectionPoint"
@@ -214,11 +214,11 @@ Als wordt besloten de Azure AD-software voor wachtwoord beveiliging te verwijder
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Laat het sterretje (*) aan het einde van de waarde van de $keywords variabele niet weg.
+   Laat het sterretje ("*") niet weg aan het einde van de $keywords variabele waarde.
 
-   De resulterende object (en) die zijn gevonden via de `Get-ADObject` opdracht, kunnen vervolgens worden gesleept naar `Remove-ADObject`of hand matig worden verwijderd.
+   Het resulterende object(s) `Get-ADObject` dat via de opdracht `Remove-ADObject`wordt gevonden, kan vervolgens handmatig worden doorgeleid of verwijderd.
 
-4. Verwijder hand matig alle verbindings punten van de DC-agent in elke domein naamgevings context. Er kan één van deze objecten per domein controller in het forest zijn, afhankelijk van hoe ver de software is geïmplementeerd. De locatie van het object kan worden gedetecteerd met de volgende Active Directory Power shell-opdracht:
+4. Verwijder alle dc-agentverbindingspunten in elke domeinnaamgevingscontext handmatig. Er kan een van deze objecten per domein controller in het bos, afhankelijk van hoe ver de software werd ingezet. De locatie van dat object kan worden gedetecteerd met de volgende opdracht Active Directory PowerShell:
 
    ```powershell
    $scp = "serviceConnectionPoint"
@@ -226,29 +226,29 @@ Als wordt besloten de Azure AD-software voor wachtwoord beveiliging te verwijder
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   De resulterende object (en) die zijn gevonden via de `Get-ADObject` opdracht, kunnen vervolgens worden gesleept naar `Remove-ADObject`of hand matig worden verwijderd.
+   Het resulterende object(s) `Get-ADObject` dat via de opdracht `Remove-ADObject`wordt gevonden, kan vervolgens handmatig worden doorgeleid of verwijderd.
 
-   Laat het sterretje (*) aan het einde van de waarde van de $keywords variabele niet weg.
+   Laat het sterretje ("*") niet weg aan het einde van de $keywords variabele waarde.
 
-5. De configuratie status op forestniveau hand matig verwijderen. De configuratie status van de forest wordt onderhouden in een container in de configuratie naamgevings context van Active Directory. Dit kan als volgt worden gedetecteerd en verwijderd:
+5. Verwijder handmatig de configuratiestatus op forestniveau. De forestconfiguratiestatus wordt gehandhaafd in een container in de context van active directory-configuratienaamgeving. Het kan als volgt worden ontdekt en verwijderd:
 
    ```powershell
    $passwordProtectionConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject -Recursive $passwordProtectionConfigContainer
    ```
 
-6. Verwijder hand matig alle aan SYSVOL gerelateerde status door de volgende map en de inhoud ervan hand matig te verwijderen:
+6. Verwijder alle sysvolgerelateerde status handmatig door de volgende map en alle inhoud ervan handmatig te verwijderen:
 
    `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
 
-   Zo nodig kan dit pad ook lokaal worden geopend op een bepaalde domein controller. de standaard locatie zou er ongeveer als volgt uitzien:
+   Indien nodig kan dit pad ook lokaal worden geopend op een bepaalde domeincontroller; de standaardlocatie zou zoiets zijn als het volgende pad:
 
    `%windir%\sysvol\domain\Policies\AzureADPasswordProtection`
 
-   Dit pad is anders als de SYSVOL-share is geconfigureerd op een niet-standaard locatie.
+   Dit pad is anders als het sysvol-aandeel is geconfigureerd op een niet-standaardlocatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Veelgestelde vragen over Azure AD-wachtwoord beveiliging](howto-password-ban-bad-on-premises-faq.md)
+[Veelgestelde vragen voor Azure AD Password Protection](howto-password-ban-bad-on-premises-faq.md)
 
-Voor meer informatie over de algemene en aangepaste lijst met verboden wacht woorden raadpleegt u het artikel [been](concept-password-ban-bad.md)
+Voor meer informatie over de wereldwijde en aangepaste verboden wachtwoord lijsten, zie het artikel [Ban slechte wachtwoorden](concept-password-ban-bad.md)

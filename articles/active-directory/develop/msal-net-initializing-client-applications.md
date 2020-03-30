@@ -1,7 +1,7 @@
 ---
-title: MSAL.NET-client toepassingen initialiseren | Azure
+title: Initialiseren MSAL.NET clientaanvragen | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het initialiseren van open bare client-en vertrouwelijke client toepassingen met behulp van de micro soft Authentication Library voor .NET (MSAL.NET).
+description: Meer informatie over het initialiseren van openbare client- en vertrouwelijke clienttoepassingen met behulp van de Microsoft-verificatiebibliotheek voor .NET (MSAL.NET).
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,41 +14,41 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 57ce6ab31421cd4016f7e204eeabce82f2f7e6a7
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083986"
 ---
-# <a name="initialize-client-applications-using-msalnet"></a>Client toepassingen initialiseren met MSAL.NET
-In dit artikel wordt beschreven hoe u open bare client-en vertrouwelijke client toepassingen initialiseert met behulp van micro soft Authentication Library voor .NET (MSAL.NET).  Lees het [overzicht](msal-client-applications.md)voor meer informatie over de client toepassings typen en configuratie opties voor toepassingen.
+# <a name="initialize-client-applications-using-msalnet"></a>Clienttoepassingen initialiseren met MSAL.NET
+In dit artikel wordt beschreven dat openbare client- en vertrouwelijke clienttoepassingen worden geïnitialiseren met behulp van Microsoft Authentication Library voor .NET (MSAL.NET).  Lees het [overzicht](msal-client-applications.md)voor meer informatie over de typen clienttoepassingen en toepassingsconfiguratie.
 
-Met MSAL.NET 3. x is de aanbevolen manier om een toepassing te instantiëren met behulp van de toepassings bouwers: `PublicClientApplicationBuilder` en `ConfidentialClientApplicationBuilder`. Ze bieden een krachtig mechanisme om de toepassing te configureren, hetzij vanuit de code, hetzij vanuit een configuratie bestand, of zelfs door beide benaderingen te combi neren.
+Met MSAL.NET 3.x, de aanbevolen manier om een toepassing te instantiëren is met behulp van de applicatie bouwers: `PublicClientApplicationBuilder` en `ConfidentialClientApplicationBuilder`. Ze bieden een krachtig mechanisme om de toepassing te configureren, hetzij vanuit de code, of vanuit een configuratiebestand, of zelfs door beide benaderingen te mengen.
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u een toepassing initialiseert, moet u [deze eerst registreren](quickstart-register-app.md) , zodat uw app kan worden geïntegreerd met het micro soft Identity-platform.  Na de registratie hebt u mogelijk de volgende informatie nodig (die kan worden gevonden in de Azure Portal):
+Voordat u een toepassing initialiseert, moet u deze eerst [registreren,](quickstart-register-app.md) zodat uw app kan worden geïntegreerd met het Microsoft-identiteitsplatform.  Na registratie hebt u mogelijk de volgende informatie nodig (die te vinden is in de Azure-portal):
 
-- De client-ID (een teken reeks die een GUID vertegenwoordigt)
-- De URL van de identiteits provider (de naam van het exemplaar) en de aanmeldings doel groep voor uw toepassing. Deze twee para meters worden gezamenlijk bekend als de-instantie.
-- De Tenant-ID als u alleen een line-of-Business-toepassing schrijft voor uw organisatie (ook wel een toepassing met één Tenant genoemd).
-- Het toepassings geheim (client Secret String) of certificaat (van het type X509Certificate2) als het een vertrouwelijke client-app is.
-- Voor web-apps en soms voor open bare client-apps (met name wanneer uw app een Broker moet gebruiken), moet u ook de redirectUri instellen waar de ID-provider verbinding maakt met uw toepassing met de beveiligings tokens.
+- De client-id (een tekenreeks die een GUID vertegenwoordigt)
+- De URL van de identiteitsprovider (de naam van de instantie) en de aanmeldingsdoelgroep voor uw toepassing. Deze twee parameters staan gezamenlijk bekend als de autoriteit.
+- De tenant-id als u een regel van zakelijke toepassing uitsluitend voor uw organisatie (ook wel single-tenant applicatie) schrijft.
+- Het toepassingsgeheim (clientsecret string) of certificaat (van type X509Certificate2) als het een vertrouwelijke client-app is.
+- Voor web-apps, en soms voor openbare client-apps (met name wanneer uw app een broker moet gebruiken), hebt u ook de redirectUri ingesteld waar de identiteitsprovider contact opneemt met uw toepassing met de beveiligingstokens.
 
 ## <a name="ways-to-initialize-applications"></a>Manieren om toepassingen te initialiseren
-Er zijn veel verschillende manieren om client toepassingen te instantiëren.
+Er zijn veel verschillende manieren om clienttoepassingen te instantiëren.
 
-### <a name="initializing-a-public-client-application-from-code"></a>Een open bare client toepassing vanuit code initialiseren
+### <a name="initializing-a-public-client-application-from-code"></a>Een openbare clienttoepassing initialiseren van code
 
-Met de volgende code wordt een open bare client toepassing geïnstantieerd, waarbij gebruikers zich aanmelden in Microsoft Azure de open bare Cloud, met hun werk-en school accounts of hun persoonlijke micro soft-accounts.
+Met de volgende code worden een openbare clienttoepassing, aanmeldende gebruikers in de openbare microsoft azure-cloud, met hun werk- en schoolaccounts of hun persoonlijke Microsoft-accounts geanimeerd.
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-### <a name="initializing-a-confidential-client-application-from-code"></a>Een vertrouwelijke client toepassing initialiseren vanuit code
+### <a name="initializing-a-confidential-client-application-from-code"></a>Een vertrouwelijke clienttoepassing initialiseren van code
 
-Op dezelfde manier wordt met de volgende code een vertrouwelijke toepassing (een web-app op `https://myapp.azurewebsites.net`) afhandelings tokens van gebruikers in de Microsoft Azure open bare Cloud, met hun werk-en school accounts of hun persoonlijke micro soft-accounts. De toepassing wordt geïdentificeerd met de ID-provider door een client geheim te delen:
+Op dezelfde manier wordt met de volgende code een vertrouwelijke toepassing `https://myapp.azurewebsites.net`(een web-app op) gekoppeld aan tokens van gebruikers in de openbare Microsoft Azure-cloud, met hun werk- en schoolaccounts of hun persoonlijke Microsoft-accounts geinstantieerd. De toepassing wordt geïdentificeerd met de identiteitsprovider door het delen van een klantgeheim:
 
 ```csharp
 string redirectUri = "https://myapp.azurewebsites.net";
@@ -58,7 +58,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
     .Build();
 ```
 
-Zoals u mogelijk weet, wilt u in productie in plaats van een client geheim te gebruiken, dan kunt u delen met Azure AD een certificaat. De code ziet er dan als volgt uit:
+Zoals u wellicht weet, wilt u in de productie, in plaats van een clientgeheim te gebruiken, een certificaat delen met Azure AD. De code zou dan de volgende zijn:
 
 ```csharp
 IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(clientId)
@@ -67,9 +67,9 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
     .Build();
 ```
 
-### <a name="initializing-a-public-client-application-from-configuration-options"></a>Een open bare client toepassing vanuit configuratie opties initialiseren
+### <a name="initializing-a-public-client-application-from-configuration-options"></a>Een openbare clienttoepassing initialiseren op basis van configuratieopties
 
-Met de volgende code wordt een open bare client toepassing geïnstantieerd vanuit een configuratie object, die via een programma kan worden ingevuld of gelezen vanuit een configuratie bestand:
+Met de volgende code wordt een openbare clienttoepassing geinstantt vanaf een configuratieobject, dat programmatisch kan worden ingevuld of kan worden gelezen uit een configuratiebestand:
 
 ```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -77,9 +77,9 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
     .Build();
 ```
 
-### <a name="initializing-a-confidential-client-application-from-configuration-options"></a>Een vertrouwelijke client toepassing vanuit configuratie opties initialiseren
+### <a name="initializing-a-confidential-client-application-from-configuration-options"></a>Een vertrouwelijke clienttoepassing initialiseren vanuit configuratieopties
 
-Hetzelfde soort patroon is van toepassing op vertrouwelijke client toepassingen. U kunt ook andere para meters toevoegen met behulp van `.WithXXX`-wijzigingen (hier een certificaat).
+Hetzelfde soort patroon geldt voor vertrouwelijke clienttoepassingen. U ook andere `.WithXXX` parameters toevoegen met modifiers (hier een certificaat).
 
 ```csharp
 ConfidentialClientApplicationOptions options = GetOptions(); // your own method
@@ -88,51 +88,51 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
     .Build();
 ```
 
-## <a name="builder-modifiers"></a>Builder-aanpassingen
+## <a name="builder-modifiers"></a>Builder modifiers
 
-In de code fragmenten die gebruikmaken van toepassings bouwers, kan een aantal `.With`-methoden worden toegepast als para meters (bijvoorbeeld `.WithCertificate` en `.WithRedirectUri`). 
+In de codefragmenten met toepassingsbouwers `.With` kunnen een aantal methoden worden toegepast als `.WithCertificate` `.WithRedirectUri`modifiers (bijvoorbeeld en ). 
 
-### <a name="modifiers-common-to-public-and-confidential-client-applications"></a>Gewijzigde opties voor open bare en vertrouwelijke client toepassingen
+### <a name="modifiers-common-to-public-and-confidential-client-applications"></a>Modifiers gemeenschappelijk voor openbare en vertrouwelijke clienttoepassingen
 
-De opties die u kunt instellen op een open bare client of de opbouw functie voor vertrouwelijke client toepassingen zijn:
-
-|Modifier | Beschrijving|
-|--------- | --------- |
-|`.WithAuthority()` 7 onderdrukkingen | Hiermee stelt u de standaard instantie van de toepassing in op een Azure AD-instantie, met de mogelijkheid om de Azure-Cloud, de doel groep, de Tenant (Tenant-ID of domein naam) te kiezen of rechtstreeks de CA-URI op te geven.|
-|`.WithAdfsAuthority(string)` | Hiermee stelt u de standaard instantie van de toepassing als ADFS-instantie.|
-|`.WithB2CAuthority(string)` | Hiermee stelt u de standaard instantie van de toepassing als Azure AD B2C-instantie.|
-|`.WithClientId(string)` | Hiermee wordt de client-ID overschreven.|
-|`.WithComponent(string)` | Hiermee stelt u de naam van de bibliotheek met behulp van MSAL.NET (voor de redenen van telemetrie). |
-|`.WithDebugLoggingCallback()` | Als de toepassing wordt aangeroepen, wordt `Debug.Write` aangeroepen om fout opsporings traceringen in te scha kelen. Zie [logboek registratie](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) voor meer informatie.|
-|`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | Stel de extra query parameters op toepassings niveau in die in alle verificatie aanvragen worden verzonden. Dit is Overschrijf bare op elk niveau van de methode voor het verkrijgen van tokens (met dezelfde `.WithExtraQueryParameters pattern`).|
-|`.WithHttpClientFactory(IMsalHttpClientFactory httpClientFactory)` | Hiermee schakelt u geavanceerde scenario's in, zoals het configureren van een HTTP-proxy of het afdwingen van MSAL om een bepaalde httpclient maakt te gebruiken (bijvoorbeeld in ASP.NET Core web apps/Api's).|
-|`.WithLogging()` | Als u de toepassing aanroept, wordt een call back aangeroepen met traceringen voor fout opsporing. Zie [logboek registratie](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) voor meer informatie.|
-|`.WithRedirectUri(string redirectUri)` | Onderdrukt de standaard omleidings-URI. In het geval van open bare client toepassingen is dit handig voor scenario's met betrekking tot de Broker.|
-|`.WithTelemetry(TelemetryCallback telemetryCallback)` | Hiermee stelt u de gemachtigde in die wordt gebruikt voor het verzenden van telemetrie.|
-|`.WithTenantId(string tenantId)` | Onderdrukt de Tenant-ID of de beschrijving van de Tenant.|
-
-### <a name="modifiers-specific-to-xamarinios-applications"></a>Aanpassingen specifiek voor Xamarin. iOS-toepassingen
-
-De opties die u kunt instellen voor een open bare-client toepassings Builder op Xamarin. iOS zijn:
+De modifiers die u instellen op een openbare client of vertrouwelijke clienttoepassingsbouwer zijn:
 
 |Modifier | Beschrijving|
 |--------- | --------- |
-|`.WithIosKeychainSecurityGroup()` | **Alleen Xamarin. IOS**: Hiermee stelt u de beveiligings groep IOS-sleutel keten in (voor de cache persistentie).|
+|`.WithAuthority()`7 overschrijvingen | Hiermee stelt u de standaardautoriteit van de toepassing in op een Azure AD-autoriteit, met de mogelijkheid om de Azure Cloud, het publiek, de tenant (tenant-id of domeinnaam) te kiezen of rechtstreeks de instantie URI te verstrekken.|
+|`.WithAdfsAuthority(string)` | Hiermee stelt u de standaardautoriteit voor toepassingen in als een ADFS-autoriteit.|
+|`.WithB2CAuthority(string)` | Hiermee stelt u de standaardautoriteit voor toepassing in als een Azure AD B2C-autoriteit.|
+|`.WithClientId(string)` | Overschrijft de client-id.|
+|`.WithComponent(string)` | Hiermee stelt u de naam van de bibliotheek in met MSAL.NET (om telemetrieredenen). |
+|`.WithDebugLoggingCallback()` | Als de toepassing wordt `Debug.Write` aangeroepen, wordt de foutopsporing sbugging-sporen ingeschakeld. Zie [Logboekregistratie](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) voor meer informatie.|
+|`.WithExtraQueryParameters(IDictionary<string,string> eqp)` | Stel de extra queryparameters op toepassingsniveau in die in alle verificatieaanvragen worden verzonden. Dit is overridable op elk niveau van `.WithExtraQueryParameters pattern`de tokenacquisitiemethode (met hetzelfde).|
+|`.WithHttpClientFactory(IMsalHttpClientFactory httpClientFactory)` | Hiermee kunnen geavanceerde scenario's zoals configureren voor een HTTP-proxy of OM MSAL dwingen om een bepaalde HttpClient te gebruiken (bijvoorbeeld in ASP.NET Core-webapps/API's).|
+|`.WithLogging()` | Als de toepassing wordt aangeroepen, wordt een callback met foutopsporingssporen aangeroepen. Zie [Logboekregistratie](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/logging) voor meer informatie.|
+|`.WithRedirectUri(string redirectUri)` | Hiermee wordt de standaard omleiding uri overschreven. In het geval van openbare clienttoepassingen is dit handig voor scenario's waarbij de makelaar betrokken is.|
+|`.WithTelemetry(TelemetryCallback telemetryCallback)` | Hiermee stelt u de gemachtigde in die wordt gebruikt om telemetrie te verzenden.|
+|`.WithTenantId(string tenantId)` | Overschrijft de tenant-id of de tenantbeschrijving.|
 
-### <a name="modifiers-specific-to-confidential-client-applications"></a>Opties die specifiek zijn voor vertrouwelijke client toepassingen
+### <a name="modifiers-specific-to-xamarinios-applications"></a>Modifiers specifiek voor Xamarin.iOS-toepassingen
 
-De opties die u kunt instellen voor een vertrouwelijk client toepassings Builder zijn:
+De modifiers die u instellen op een openbare clienttoepassingsbouwer op Xamarin.iOS zijn:
 
 |Modifier | Beschrijving|
 |--------- | --------- |
-|`.WithCertificate(X509Certificate2 certificate)` | Hiermee stelt u het certificaat dat de toepassing identificeert met Azure AD.|
-|`.WithClientSecret(string clientSecret)` | Hiermee stelt u het client geheim (app-wacht woord) voor het identificeren van de toepassing met Azure AD.|
+|`.WithIosKeychainSecurityGroup()` | **Alleen Xamarin.iOS**: Hiermee stelt u de beveiligingsgroep voor iOS-sleutelhangers in (voor de cachepersistentie).|
 
-Deze wijzigings functies sluiten elkaar wederzijds uit. Als u beide opgeeft, genereert MSAL een zinvolle uitzonde ring.
+### <a name="modifiers-specific-to-confidential-client-applications"></a>Modifiers specifiek voor vertrouwelijke clienttoepassingen
 
-### <a name="example-of-usage-of-modifiers"></a>Voor beeld van het gebruik van para meters
+De modifiers die u instellen op een vertrouwensrelatie met clienttoepassingen zijn:
 
-We gaan ervan uit dat uw toepassing een line-of-Business-toepassing is, die alleen voor uw organisatie is.  Vervolgens kunt u het volgende schrijven:
+|Modifier | Beschrijving|
+|--------- | --------- |
+|`.WithCertificate(X509Certificate2 certificate)` | Hiermee stelt u het certificaat in dat de toepassing identificeert met Azure AD.|
+|`.WithClientSecret(string clientSecret)` | Hiermee stelt u het clientgeheim (app-wachtwoord) in om de toepassing te identificeren met Azure AD.|
+
+Deze modifiers sluiten elkaar uit. Als u beide verstrekt, zal MSAL een zinvolle uitzondering werpen.
+
+### <a name="example-of-usage-of-modifiers"></a>Voorbeeld van het gebruik van modifiers
+
+Laten we aannemen dat uw toepassing een bedrijfsregel is, die alleen voor uw organisatie is.  Dan u schrijven:
 
 ```csharp
 IPublicClientApplication app;
@@ -141,7 +141,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Het is belang rijk dat de programmering van nationale Clouds nu wordt vereenvoudigd. Als u wilt dat uw toepassing een multi tenant toepassing in een nationale Cloud is, kunt u bijvoorbeeld het volgende schrijven:
+Waar het interessant wordt, is dat de programmering voor nationale clouds nu is vereenvoudigd. Als u wilt dat uw toepassing een multi-tenant toepassing in een nationale cloud is, u bijvoorbeeld schrijven:
 
 ```csharp
 IPublicClientApplication app;
@@ -150,7 +150,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Er is ook een onderdrukking voor ADFS (ADFS 2019 wordt momenteel niet ondersteund):
+Er is ook een overschrijving voor ADFS (ADFS 2019 wordt momenteel niet ondersteund):
 ```csharp
 IPublicClientApplication app;
 app = PublicClientApplicationBuilder.Create(clientId)
@@ -158,7 +158,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Ten slotte, als u een Azure AD B2C-ontwikkelaar bent, kunt u uw Tenant als volgt opgeven:
+Tot slot u, als u een Azure AD B2C-ontwikkelaar bent, uw tenant als volgt opgeven:
 
 ```csharp
 IPublicClientApplication app;

@@ -1,6 +1,6 @@
 ---
-title: Linux-Hybrid Runbook Worker diagnosticeren-Azure Updatebeheer
-description: Meer informatie over het oplossen van problemen met het Azure Automation Hybrid Runbook Worker op Linux dat Updatebeheer ondersteunt.
+title: Diagnose Linux Hybrid Runbook Worker - Azure Update Management
+description: Meer informatie over het oplossen en oplossen van problemen met de Azure Automation Hybrid Runbook Worker op Linux die Updatebeheer ondersteunt.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -10,81 +10,81 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278296"
 ---
-# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>De status van Linux Hybrid Runbook Worker voor Updatebeheer begrijpen en oplossen
+# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>De status van Linux Hybrid Runbook Worker voor UpdateManagement begrijpen en oplossen
 
-Er kunnen veel redenen zijn waarom uw computer niet **gereed** is in updatebeheer. In Updatebeheer kunt u de status van een Hybrid Runbook Worker agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt beschreven hoe u de probleem oplosser voor Azure-machines uitvoert vanaf de Azure Portal-en niet-Azure-machines in het [offline scenario](#troubleshoot-offline).
+Er kunnen vele redenen zijn waarom uw machine niet **Ready** weergeeft in Updatebeheer. In Updatebeheer u de status van een hybride runbookworker-agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt besproken hoe u de probleemoplosser voor Azure-machines uitvoeren vanuit de Azure-portal en niet-Azure-machines in het [offlinescenario.](#troubleshoot-offline)
 
-De volgende lijst geeft een overzicht van de drie gereedheids statussen die een machine kan hebben:
+De volgende lijst zijn de drie gereedheidstoestanden waarin een machine zich kan bevinden:
 
-* **Gereed** : de Hybrid Runbook Worker is geïmplementeerd en is minder dan 1 uur geleden voor het laatst gezien.
-* De **verbinding is verbroken** : de Hybrid Runbook Worker is geïmplementeerd en is meer dan 1 uur geleden voor het laatst gezien.
-* **Niet geconfigureerd** : de Hybrid Runbook Worker is niet gevonden of is niet gereed voor onboarding.
-
-> [!NOTE]
-> Er kan een lichte vertraging optreden tussen de Azure Portal weer geven en de huidige status van de machine.
-
-## <a name="start-the-troubleshooter"></a>De probleemoplosser voor starten
-
-Voor Azure-machines klikt u op de koppeling **problemen oplossen** onder de gereedheids kolom van de **Update Agent** in de portal, wordt de pagina **problemen met Update agent oplossen** gestart. Voor niet-Azure-computers brengt de koppeling u naar dit artikel. Zie de offline-instructies voor het oplossen van problemen met een niet-Azure-machine.
-
-![de pagina van de VM-lijst](../media/update-agent-issues-linux/vm-list.png)
+* **Klaar** - De hybride runbook worker is geïmplementeerd en is minder dan 1 uur geleden voor het laatst gezien.
+* **Losgekoppeld** - De hybride runbookworker wordt geïmplementeerd en is meer dan 1 uur geleden voor het laatst gezien.
+* **Niet geconfigureerd** - De hybride runbookworker is niet gevonden of is nog niet klaar met instappen.
 
 > [!NOTE]
-> De controles moeten de virtuele machine worden uitgevoerd. Als de VM niet wordt uitgevoerd, wordt er een knop weer gegeven voor **het starten van de virtuele machine**.
+> Er kan een kleine vertraging optreden tussen wat de Azure-portal weergeeft en de huidige status van de machine.
 
-Klik op de pagina **Update agent oplossen** op **controles uitvoeren**om de probleem oplosser te starten. De probleem Oplosser gebruikt de [opdracht uitvoeren](../../virtual-machines/linux/run-command.md) om een script uit te voeren op de machine om de afhankelijkheden te controleren. Wanneer de probleemoplosser voor voltooid is, wordt het resultaat van de controles.
+## <a name="start-the-troubleshooter"></a>De probleemoplosser starten
 
-![Pagina oplossen](../media/update-agent-issues-linux/troubleshoot-page.png)
+Klik voor Azure-machines op de koppeling **Problemen oplossen** onder de kolom **Gereedheid bijwerken** in de portal en start de pagina Problemen met **updateagent.** Voor niet-Azure-machines brengt de koppeling u naar dit artikel. Zie de offline instructies om problemen op te lossen voor een niet-Azure-machine.
 
-Als u klaar bent, worden de resultaten worden geretourneerd in het venster. De controle secties bevatten informatie over wat elke controle zoekt.
+![vm-lijstpagina](../media/update-agent-issues-linux/vm-list.png)
 
-![Update-agent controleert op pagina](../media/update-agent-issues-linux/update-agent-checks.png)
+> [!NOTE]
+> De controles vereisen dat de VM wordt uitgevoerd. Als de vm niet wordt uitgevoerd, krijgt u een knop te zien om **de VM te starten.**
+
+Klik op de pagina **Problemen met bijwerken agent** op Controles **uitvoeren**om de probleemoplosser te starten. De probleemoplosser gebruikt [de opdracht Uitvoeren](../../virtual-machines/linux/run-command.md) om een script op de machine uit te voeren om de afhankelijkheden te verifiëren. Wanneer de probleemoplosser is voltooid, wordt het resultaat van de controles geretourneerd.
+
+![Problemen met de pagina oplossen](../media/update-agent-issues-linux/troubleshoot-page.png)
+
+Als deze zijn voltooid, worden de resultaten geretourneerd in het venster. De controlesecties geven informatie over wat elke controle zoekt.
+
+![Pagina controlevan agent bijwerken](../media/update-agent-issues-linux/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Controles van vereisten
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De controle van het besturings systeem controleert of op de Hybrid Runbook Worker een van de volgende besturings systemen wordt uitgevoerd:
+De controle van het besturingssysteem controleert of de hybride runbookworker een van de volgende besturingssystemen uitvoert:
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een opslagplaats voor updates. Voor op classificatie gebaseerde patches moet ' yum ' worden geretourneerd om beveiligings gegevens te retour neren die geen deel uitmaakt van het CentOS.         |
+|CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een opslagplaats voor updates. Classificatiegebaseerdpatchen vereist 'yum' om beveiligingsgegevens terug te sturen die CentOS niet uit de doos heeft.         |
 |Red Hat Enterprise 6 (x86/x64) en 7 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) en 12 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
 |Ubuntu 14.04 LTS, 16.04 LTS en 18.04 LTS (x86/x64)      |Linux-agents moeten toegang hebben tot een opslagplaats voor updates.         |
 
-## <a name="monitoring-agent-service-health-checks"></a>Monitoring agent-service-statuscontroles
+## <a name="monitoring-agent-service-health-checks"></a>Monitoring agent service gezondheidscontroles
 
 ### <a name="log-analytics-agent"></a>Log Analytics-agent
 
-Met deze controle wordt ervoor gezorgd dat de Log Analytics-agent voor Linux is geïnstalleerd. Zie voor instructies over het installeren van [de agent voor Linux installeren](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
-).
+Deze controle zorgt ervoor dat de Log Analytics-agent voor Linux is geïnstalleerd. Zie [De agent voor Linux installeren voor](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
+)instructies over het installeren ervan.
 
-### <a name="log-analytics-agent-status"></a>Status van Log Analytics agent
+### <a name="log-analytics-agent-status"></a>Status van log-analyse-agent
 
-Met deze controle wordt ervoor gezorgd dat de Log Analytics-agent voor Linux wordt uitgevoerd. Als de agent niet wordt uitgevoerd, kunt u de volgende opdracht uitvoeren om het opnieuw te proberen. Zie voor meer informatie over het oplossen van problemen met de agent [Linux Hybrid Runbook worker Troubleshooting](hybrid-runbook-worker.md#linux)
+Deze controle zorgt ervoor dat de Log Analytics-agent voor Linux wordt uitgevoerd. Als de agent niet wordt uitgevoerd, u de volgende opdracht uitvoeren om te proberen deze opnieuw op te starten. Zie Problemen met de probleemoplossing voor [linux hybride runbook-werknemers voor](hybrid-runbook-worker.md#linux) meer informatie over het oplossen van problemen met de agent
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
 ```
 
-### <a name="multihoming"></a>Multihoming
+### <a name="multihoming"></a>Multihoming (multihoming)
 
-Deze controle wordt bepaald of de agent is rapporteert aan meerdere werkruimten. Multihoming wordt niet ondersteund door beheer van updates.
+Deze controle bepaalt of de agent rapporteert aan meerdere werkruimten. Multi-homing wordt niet ondersteund door Update Management.
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-Met deze controle wordt gecontroleerd of de Log Analytics-agent voor Linux het Hybrid Runbook Worker-pakket heeft. Dit pakket is vereist voor het beheer van updates om te werken.
+Deze controle controleert of de log-analyse-agent voor Linux het hybride runbookworker-pakket heeft. Dit pakket is vereist om Update Management te laten werken.
 
-### <a name="hybrid-runbook-worker-status"></a>Hybrid Runbook Worker-status
+### <a name="hybrid-runbook-worker-status"></a>Status hybride runbookworker
 
-Deze controle zorgt ervoor dat de Hybrid Runbook Worker wordt uitgevoerd op de machine. De volgende processen moet aanwezig zijn als de Hybrid Runbook Worker correct wordt uitgevoerd. Zie [problemen met de log Analytics-agent voor Linux oplossen](hybrid-runbook-worker.md#oms-agent-not-running)voor meer informatie.
+Deze controle zorgt ervoor dat de hybride runbook worker op de machine wordt uitgevoerd. De volgende processen moeten aanwezig zijn als de hybride runbookworker correct wordt uitgevoerd. Zie het oplossen van problemen met [de Log Analytics Agent voor Linux voor](hybrid-runbook-worker.md#oms-agent-not-running)meer informatie.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -92,39 +92,39 @@ nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
 ```
 
-## <a name="connectivity-checks"></a>Controles voor connectiviteit
+## <a name="connectivity-checks"></a>Connectiviteitscontroles
 
-### <a name="general-internet-connectivity"></a>Algemene verbinding met internet
+### <a name="general-internet-connectivity"></a>Algemene internetverbinding
 
-Deze controle zorgt ervoor dat de computer toegang tot internet heeft.
+Deze controle zorgt ervoor dat de machine toegang heeft tot het internet.
 
-### <a name="registration-endpoint"></a>Eindpunt voor clientregistratie
+### <a name="registration-endpoint"></a>Eindpunt voor registratie
 
-Met deze controle wordt bepaald of de Hybrid Runbook Worker goed kan communiceren met Azure Automation de Log Analytics-werk ruimte.
+Met deze controle wordt bepaald of de hybride runbookworker de werkruimte Log Analytics naar behoren kan communiceren met Azure Automation.
 
-Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met het eindpunt voor clientregistratie toestaan. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning) voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy- en firewallconfiguraties moeten de medewerker Hybride Runbook Worker in staat stellen te communiceren met het registratieeindpunt. Zie [Netwerkplanning voor hybride werknemers voor](../automation-hybrid-runbook-worker.md#network-planning) een lijst met adressen en poorten die u wilt openen
 
-### <a name="operations-endpoint"></a>Operations-eindpunt
+### <a name="operations-endpoint"></a>Eindpunt voor bewerkingen
 
-Deze controle bepaalt als de agent correct met de taak-Runtime-gegevens-Service communiceren kan.
+Deze controle bepaalt of de agent goed kan communiceren met de Job Runtime Data Service.
 
-Proxy- en firewallinstellingen configuraties moeten de Hybrid Runbook Worker-agent kan communiceren met de taak Runtime Data-Service toestaan. Zie [netwerk planning voor Hybrid Workers](../automation-hybrid-runbook-worker.md#network-planning) voor een lijst met adressen en poorten die moeten worden geopend.
+Proxy- en firewallconfiguraties moeten de medewerker Hybride Runbook Worker in staat stellen te communiceren met de Job Runtime Data Service. Zie [Netwerkplanning voor hybride werknemers voor](../automation-hybrid-runbook-worker.md#network-planning) een lijst met adressen en poorten die u wilt openen
 
-### <a name="log-analytics-endpoint-1"></a>Log Analytics-eindpunt 1
+### <a name="log-analytics-endpoint-1"></a>Eindpunt 1 logboekanalyse
 
-Deze controle alleen gecontroleerd dat de computer toegang tot de eindpunten die nodig zijn voor de Log Analytics-agent heeft.
+Deze controle controleert of uw machine toegang heeft tot de eindpunten die de log analytics-agent nodig heeft.
 
-### <a name="log-analytics-endpoint-2"></a>Log Analytics-eindpunt 2
+### <a name="log-analytics-endpoint-2"></a>Eindpunt 2 van Log Analytics
 
-Deze controle alleen gecontroleerd dat de computer toegang tot de eindpunten die nodig zijn voor de Log Analytics-agent heeft.
+Deze controle controleert of uw machine toegang heeft tot de eindpunten die de log analytics-agent nodig heeft.
 
-### <a name="log-analytics-endpoint-3"></a>Log Analytics-eindpunt 3
+### <a name="log-analytics-endpoint-3"></a>Eindpunt van Log Analytics 3
 
-Deze controle alleen gecontroleerd dat de computer toegang tot de eindpunten die nodig zijn voor de Log Analytics-agent heeft.
+Deze controle controleert of uw machine toegang heeft tot de eindpunten die de log analytics-agent nodig heeft.
 
-## <a name="troubleshoot-offline"></a>Problemen met offline oplossen
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Problemen met offline oplossen
 
-U kunt de probleemoplosser voor offline gebruiken op een Hybrid Runbook Worker door het script lokaal worden uitgevoerd. Het python-script, [update_mgmt_health_check. py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) , vindt u in Script Center. Een voorbeeld van de uitvoer van dit script wordt weergegeven in het volgende voorbeeld:
+U de probleemoplosser offline gebruiken voor een hybride runbookworker door het script lokaal uit te voeren. Het python script, [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) is te vinden in het Script Center. Een voorbeeld van de uitvoer van dit script wordt weergegeven in het volgende voorbeeld:
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2
@@ -179,4 +179,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [problemen oplossen-Hybrid Runbook Workers](hybrid-runbook-worker.md)voor meer informatie over het oplossen van extra problemen met uw Hybrid runbook Workers.
+Zie Problemen oplossen [met hybride runbookworkers](hybrid-runbook-worker.md)als u aanvullende problemen met uw hybride runbook-werknemers wilt oplossen.

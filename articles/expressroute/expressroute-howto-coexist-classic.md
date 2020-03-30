@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute-en S2S-VPN-verbindingen configureren: klassiek'
+title: 'ExpressRoute en S2S VPN-verbindingen configureren: klassiek'
 description: Dit artikel begeleidt u bij het configureren van ExpressRoute- en site-naar-site-VPN-verbindingen die naast elkaar kunnen worden gebruikt in het klassieke implementatiemodel.
 documentationcenter: na
 services: expressroute
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: charwen
 ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272927"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Gelijktijdige ExpressRoute- en site-to-site-verbindingen configureren (klassiek)
@@ -81,7 +81,7 @@ Er zijn twee sets met procedures waaruit u kunt kiezen om verbindingen te config
 
 [!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
-## <a name="new"></a>Een nieuw virtueel netwerk en naast elkaar bestaande verbindingen maken
+## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>Een nieuw virtueel netwerk en naast elkaar bestaande verbindingen maken
 Deze procedure helpt u bij het maken van een VNet en site-naar-site- en ExpressRoute-verbindingen die naast elkaar kunnen worden gebruikt.
 
 1. U moet de meest recente versie van de Azure PowerShell-cmdlets installeren. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets. Houd er rekening mee dat de cmdlets die u voor deze configuratie gebruikt, mogelijk enigszins afwijken van de cmdlets waarmee u bekend bent. Zorg ervoor dat u de cmdlets gebruikt die in deze instructies worden vermeld. 
@@ -180,14 +180,14 @@ Deze procedure helpt u bij het maken van een VNet en site-naar-site- en ExpressR
         OperationStatus      : Succeeded
 
 
-1. Configureer het lokale VPN-apparaat om verbinding te maken met de nieuwe gateway. Gebruik de informatie die u in stap 6 bij de configuratie van uw VPN-apparaat hebt opgehaald. Zie [VPN-apparaatconfiguratie](../vpn-gateway/vpn-gateway-about-vpn-devices.md) voor meer informatie over het configureren van een VPN-apparaat.
+1. Configureer het lokale VPN-apparaat om verbinding te maken met de nieuwe gateway. Gebruik de informatie die u in stap 6 bij de configuratie van uw VPN-apparaat hebt opgehaald. Zie [VPN-apparaatconfiguratie](../vpn-gateway/vpn-gateway-about-vpn-devices.md) voor meer informatie over het configureren van een VPN-apparaat. 
 2. Koppel de site-naar-site-VPN-gateway in Azure aan de lokale gateway.
    
     In dit voorbeeld is connectedEntityId de lokale gateway-ID. Deze kunt u vinden door `Get-AzureLocalNetworkGateway` uit te voeren. U kunt virtualNetworkGatewayId vinden met behulp van de cmdlet `Get-AzureVirtualNetworkGateway`. Na deze stap wordt de verbinding tussen uw lokale netwerk en Azure tot stand gebracht via de site-naar-site-VPN-verbinding.
 
         New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
 
-## <a name="add"></a>Naast elkaar bestaande verbindingen configureren voor een bestaand VNet
+## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>Naast elkaar bestaande verbindingen configureren voor een bestaand VNet
 Als u een bestaand virtueel netwerk hebt, controleert u de grootte van het gatewaysubnet. Als het gatewaysubnet /28 of /29 is, moet u eerst de gateway van het virtuele netwerk verwijderen en het gatewaysubnet vergroten. In de stappen in dit gedeelte wordt beschreven hoe u dat doet.
 
 Als het gatewaysubnet /27 of groter is en het virtuele netwerk is verbonden via ExpressRoute, kunt u onderstaande stappen overslaan en doorgaan met [Stap 6 - Een site-naar-site-VPN-gateway maken](#vpngw) in het vorige gedeelte.

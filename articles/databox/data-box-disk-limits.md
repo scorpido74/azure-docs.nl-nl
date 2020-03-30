@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Disk limieten | Microsoft Docs
-description: Hierin worden systeem limieten en aanbevolen grootten voor de Microsoft Azure Data Box Disk beschreven.
+title: Azure Data Box-schijflimieten | Microsoft Documenten
+description: Beschrijft systeemlimieten en aanbevolen formaten voor de Microsoft Azure Data Box Disk.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,89 +9,89 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260161"
 ---
-# <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk limieten
+# <a name="azure-data-box-disk-limits"></a>Azure Data Box-schijflimieten
 
 
-Houd rekening met deze beperkingen wanneer u uw Microsoft Azure Data Box Disk oplossing implementeert en gebruikt.
+Houd rekening met deze limieten wanneer u uw Microsoft Azure Data Box Disk-oplossing implementeert en exploiteert.
 
-## <a name="data-box-service-limits"></a>Data Box-Service limieten
+## <a name="data-box-service-limits"></a>Data Box-servicelimieten
 
- - Data Box-Service is beschikbaar in de Azure-regio's die worden vermeld in de [Beschik baarheid van regio's](data-box-disk-overview.md#region-availability).
- - Er wordt één opslag account ondersteund met Data Box Disk.
+ - Data Box-service is beschikbaar in de Azure-regio's die worden vermeld in [regiobeschikbaarheid](data-box-disk-overview.md#region-availability).
+ - Eén opslagaccount wordt ondersteund met Data Box Disk.
 
-## <a name="data-box-disk-performance"></a>Prestaties Data Box Disk
+## <a name="data-box-disk-performance"></a>Prestaties gegevensvakschijf
 
 Bij een test met schijven die verbonden waren via USB 3.0 was de prestatie van de schijven maximaal 430 MB/s. De werkelijke waarden variëren, afhankelijk van de gebruikte bestandsgrootte. Voor kleinere bestanden zijn de prestaties lager.
 
-## <a name="azure-storage-limits"></a>Limieten voor Azure Storage
+## <a name="azure-storage-limits"></a>Azure-opslaglimieten
 
-In deze sectie worden de limieten voor de Azure Storage-service en de vereiste naam conventies voor Azure Files, Azure Block blobs en Azure-pagina-blobs beschreven, zoals van toepassing op de Data Box Service. Controleer de opslag limieten zorgvuldig en volg alle aanbevelingen.
+In deze sectie worden de limieten voor Azure Storage-service en de vereiste naamgevingsconventies voor Azure-bestanden, Azure-blokblobs en Azure-paginablobs beschreven, zoals van toepassing op de Data Box-service. Bekijk de opslaglimieten zorgvuldig en volg alle aanbevelingen.
 
-Voor de meest recente informatie over Azure Storage-service limieten en aanbevolen procedures voor het benoemen van shares, containers en bestanden, gaat u naar:
+Ga voor de meest recente informatie over azure-opslagservicelimieten en aanbevolen procedures voor het benoemen van shares, containers en bestanden naar:
 
-- [Naamgeving en verwijzen naar containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Het benoemen en verwijzen van containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
 - [Naamgeving van en verwijzing naar shares](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Conventies voor blok-blobs en pagina-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Blobs en paginablobconventies blokkeren](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
-> Als er bestanden of mappen zijn die de Azure Storage service limieten overschrijden of niet voldoen aan de naamgevings conventies van Azure Files/blob, worden deze bestanden of mappen niet opgenomen in de Azure Storage via de Data Box-Service.
+> Als er bestanden of mappen zijn die de azure storageservicelimieten overschrijden of niet voldoen aan azure files/blob-naamgevingsconventies, worden deze bestanden of mappen niet via de Data Box-service in de Azure Storage opgenomen.
 
-## <a name="data-upload-caveats"></a>Voor behoud van gegevens uploaden
+## <a name="data-upload-caveats"></a>Voorbehouden voor het uploaden van gegevens
 
-- Kopieer gegevens niet rechtstreeks naar de schijven. Gegevens kopiëren naar vooraf gemaakte *BlockBlob*-,*PageBlob*-en *AzureFile* -mappen.
-- Een map onder de *BlockBlob* en *PageBlob* is een container. Zo worden bijvoorbeeld containers gemaakt als *BlockBlob/container* en *PageBlob/container*.
-- Als u een bestaand Azure-object (zoals een blob) in de Cloud hebt met dezelfde naam als het object dat wordt gekopieerd, wordt de naam van het bestand in de cloud in Data Box Disk gewijzigd in het bestand (1).
-- Elk bestand dat in *BlockBlob* -en *PageBlob* -shares wordt geschreven, wordt respectievelijk geüpload als een blok-Blob en een pagina-blob.
-- Een lege Directory-hiërarchie (zonder bestanden) die is gemaakt onder de mappen *BlockBlob* en *PageBlob* is niet geüpload.
-- Als er fouten zijn bij het uploaden van gegevens naar Azure, wordt er een fouten logboek gemaakt in het doel-opslag account. Het pad naar dit fouten logboek is beschikbaar in de Portal wanneer het uploaden is voltooid en u kunt het logboek controleren om de corrigerende actie te ondernemen. Verwijder geen gegevens uit de bron zonder de geüploade gegevens te verifiëren.
-- Meta gegevens en NTFS-machtigingen voor bestanden blijven niet behouden wanneer de gegevens naar Azure Files worden geüpload. Het kenmerk *Laatst gewijzigd* van de bestanden wordt bijvoorbeeld niet bewaard wanneer de gegevens worden gekopieerd.
-- Als u beheerde schijven in de volg orde hebt opgegeven, raadpleegt u de volgende aanvullende overwegingen:
+- Kopieer gegevens niet rechtstreeks naar de schijven. Kopieer gegevens naar vooraf gemaakte *BlockBlob-,**PageBlob-* en *AzureFile-mappen.*
+- Een map onder de *BlockBlob* en *PageBlob* is een container. Containers worden bijvoorbeeld gemaakt als *BlockBlob/container* en *PageBlob/container.*
+- Als u een bestaand Azure-object (zoals een blob) in de cloud hebt met dezelfde naam als het object dat wordt gekopieerd, wijzigt Data Box Disk de naam van het bestand als bestand(1) in de cloud.
+- Elk bestand dat is geschreven in *BlockBlob-* en *PageBlob-shares* wordt geüpload als respectievelijk een blokblob en paginablob.
+- Lege maphiërarchie (zonder bestanden) die is gemaakt onder *BlockBlob-* en *PageBlob-mappen* wordt niet geüpload.
+- Als er fouten zijn bij het uploaden van gegevens naar Azure, wordt er een foutlogboek gemaakt in het doelopslagaccount. Het pad naar dit foutlogboek is beschikbaar in de portal wanneer de upload is voltooid en u het logboek bekijken om corrigerende maatregelen te nemen. Verwijder geen gegevens uit de bron zonder de geüploade gegevens te verifiëren.
+- Bestandsmetagegevens en NTFS-machtigingen worden niet bewaard wanneer de gegevens worden geüpload naar Azure-bestanden. Het kenmerk *Laatst gewijzigd* van de bestanden wordt bijvoorbeeld niet bewaard wanneer de gegevens worden gekopieerd.
+- Als u beheerde schijven in de volgorde hebt opgegeven, controleert u de volgende aanvullende overwegingen:
 
     - Er kan slechts één beheerde schijf met een bepaalde naam in een resourcegroep aanwezig zijn voor alle vooraf gemaakte mappen en voor de hele Data Box Disk. Dit betekent dat de VHD's die naar de vooraf gemaakte mappen zijn geüpload, unieke namen moeten hebben. Zorg ervoor dat de opgegeven naam niet overeenkomt met een bestaande beheerde schijf in een resourcegroep. Als VHD's dezelfde naam hebben, wordt er slechts één VHD geconverteerd naar een beheerde schijf met die naam. De overige VHD's worden als pagina-blobs geüpload in het faseringsopslagaccount.
     - Kopieer de VHD's altijd naar een van de vooraf gemaakte mappen. Als u de VHD's buiten deze mappen kopieert of kopieert naar een map die u zelf hebt gemaakt, worden de VHD's, en niet de beheerde schijven, naar een Azure Storage-account als pagina-blobs geüpload.
     - Alleen de vaste VHD's kunnen worden geüpload om beheerde schijven te maken. Dynamische VHD's, differentiërende VHD's of VHDX-bestanden worden niet ondersteund.
 
-## <a name="azure-storage-account-size-limits"></a>Maximale grootte van Azure Storage-account
+## <a name="azure-storage-account-size-limits"></a>Limieten voor Azure-opslagaccount
 
-Dit zijn de limieten voor de grootte van de gegevens die worden gekopieerd naar het opslag account. Zorg ervoor dat de gegevens die u uploadt, voldoen aan deze limieten. Voor de meest actuele informatie over deze limieten gaat u naar [Azure Blob-opslag schaal doelen](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) en [Azure files schaal doelen](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts).
+Hier volgen de limieten voor de grootte van de gegevens die worden gekopieerd naar een opslagaccount. Zorg ervoor dat de gegevens die u uploadt aan deze limieten voldoen. Ga voor de meest actuele informatie over deze limieten naar [Azure blob-opslagschaaldoelen](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) en [Azure Files-schaaldoelen.](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)
 
-| Grootte van gegevens die zijn gekopieerd naar een Azure-opslag account                      | Standaardlimiet          |
+| Grootte van gegevens die zijn gekopieerd naar Azure-opslagaccount                      | Standaardlimiet          |
 |---------------------------------------------------------------------|------------------------|
-| BLOB en pagina-BLOB blok keren                                            | 500 TB per opslag account. <br> Dit omvat gegevens uit alle bronnen met inbegrip van Data Box Disk.|
+| Blob en paginablob blokkeren                                            | 500 TB per opslagaccount. <br> Dit omvat gegevens uit alle bronnen, waaronder Data Box Disk.|
 
 
-## <a name="azure-object-size-limits"></a>Limieten voor Azure-object grootte
+## <a name="azure-object-size-limits"></a>Limieten voor azure-objectgrootte
 
-Dit zijn de groottes van de Azure-objecten die kunnen worden geschreven. Zorg ervoor dat alle bestanden die worden geüpload voldoen aan deze limieten.
+Dit zijn de afmetingen van de Azure-objecten die kunnen worden geschreven. Zorg ervoor dat alle bestanden die zijn geüpload aan deze limieten voldoen.
 
-| Azure-object type | Standaardlimiet                                             |
+| Azure-objecttype | Standaardlimiet                                             |
 |-------------------|-----------------------------------------------------------|
-| Blok-BLOB        | ~ 4.75 TiB                                                 |
-| Pagina-BLOB         | 8 TiB <br> (Elk bestand dat is geüpload in de pagina-BLOB-indeling moet 512 bytes zijn uitgelijnd, anders mislukt het uploaden. <br> Zowel de VHD als de VHDX zijn 512 bytes uitgelijnd.) |
-|Azure Files        | 1 TiB <br> Met maximaal grootte van share is 5 TiB     |
-| Managed Disks     |4 TiB <br> Zie voor meer informatie over grootte en limieten: <li>[Schaalbaarheids doelen voor beheerde schijven](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| Blob blokkeren        | ~ 4,75 TiB                                                 |
+| Paginablob         | 8 TiB <br> (Elk bestand dat in de paginablob-indeling wordt geüpload, moet 512 bytes zijn uitgelijnd, anders mislukt de upload. <br> Zowel de VHD en VHDX zijn 512 bytes uitgelijnd.) |
+|Azure Files        | 1 TiB <br> Met maximaal grootte van het aandeel is 5 TiB     |
+| Managed Disks     |4 TiB <br> Zie voor meer informatie over grootte en limieten: <li>[Schaalbaarheidsdoelen voor beheerde schijven](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
-## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure Block blob-, page Blob-en file naamgevings conventies
+## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure-blokblob-, paginablob- en bestandsnaamgevingsconventies
 
 | Entiteit                                       | Conventies                                                                                                                                                                                                                                                                                                               |
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Container namen voor blok-Blob en pagina-BLOB <br> Bestands share namen voor Azure Files | Moet een geldige DNS-naam zijn van 3 tot 63 tekens lang zijn. <br>  Moet beginnen met een letter of cijfer. <br> Mag alleen kleine letters, cijfers en het koppel teken (-) bevatten. <br> Elk koppelteken (-) moet direct worden voorafgegaan en gevolgd door een letter of cijfer. <br> In namen worden geen opeenvolgende koppeltekens toegestaan. |
-| Map-en bestands namen voor Azure files     |<li> Case: behouden, hoofdletter gevoelig en mag niet langer zijn dan 255 tekens. </li><li> Kan niet eindigen met een slash (/). </li><li>Als dit wordt gegeven, wordt deze automatisch verwijderd. </li><li> De volgende tekens zijn niet toegestaan: <code>" \\ / : \| < > * ?</code></li><li> Gereserveerde tekens voor URL's moeten op de juiste wijze van een escape-teken zijn voorzien. </li><li> Ongeldige tekens voor URL-paden zijn niet toegestaan. Code punten als \\uE000 zijn geen geldige Unicode-tekens. Sommige ASCII-of Unicode-tekens, zoals Stuur codes (0x00 tot 0x1F, \\u0081, enzovoort), zijn ook niet toegestaan. Zie RFC 2616, Section 2,2: Basic rules and RFC 3987 (Engelstalig) voor regels voor het Unicode-teken reeksen in HTTP/1.1. </li><li> De volgende bestands namen zijn niet toegestaan: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK $, punt teken (.) en twee punten (..).</li>|
+| Containernamen voor blokblob en paginablob <br> Fileshare-namen voor Azure-bestanden | Moet een geldige DNS-naam zijn die 3 tot 63 tekens lang is. <br>  Moet beginnen met een letter of cijfer. <br> Kan alleen kleine letters, cijfers en het koppelteken (-) bevatten. <br> Elk koppelteken (-) moet direct worden voorafgegaan en gevolgd door een letter of cijfer. <br> In namen worden geen opeenvolgende koppeltekens toegestaan. |
+| Directory- en bestandsnamen voor Azure-bestanden     |<li> Case-preserving, case-ongevoelig en mag niet meer dan 255 tekens in lengte. </li><li> Kan niet eindigen met de voorwaartse slash (/). </li><li>Indien aanwezig, wordt het automatisch verwijderd. </li><li> Volgende tekens zijn niet toegestaan:<code>" \\ / : \| < > * ?</code></li><li> Gereserveerde tekens voor URL's moeten op de juiste wijze van een escape-teken zijn voorzien. </li><li> Illegale URL-padtekens zijn niet toegestaan. Codepunten \\zoals uE000 zijn geen geldige Unicode-tekens. Sommige ASCII- of Unicode-tekens, zoals controletekens (0x00 tot 0x1F, \\u0081, enz.), zijn ook niet toegestaan. Zie RFC 2616, sectie 2.2: Basisregels en RFC 3987 voor regels voor Unicode-tekenreeksen in HTTP/1.1. </li><li> De volgende bestandsnamen zijn niet toegestaan: LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9, COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, PRN, AUX, NUL, CON, CLOCK$, dot character (.), en twee dot tekens (..).</li>|
 | Blobnamen voor blok-blob en pagina-blob      | Blobnamen zijn hoofdlettergevoelig en kunnen elke combinatie van tekens bevatten. <br> Een blobnaam moet 1 tot 1024 tekens bevatten. <br> Gereserveerde tekens voor URL's moeten op de juiste wijze van een escape-teken zijn voorzien. <br>Het aantal padsegmenten dat de blobnaam omvat, mag niet meer dan 254 zijn. Een padsegment is de tekenreeks tussen opeenvolgende scheidingstekens (bijvoorbeeld de slash '/') die overeenkomt met de naam van een virtuele map. |
 
-## <a name="managed-disk-naming-conventions"></a>Naamgevings regels voor beheerde schijven
+## <a name="managed-disk-naming-conventions"></a>Beheerde schijfnaamgevingsconventies
 
 | Entiteit | Conventies                                             |
 |-------------------|-----------------------------------------------------------|
-| Namen van beheerde schijven       | <li> De naam moet 1 tot 80 tekens lang zijn. </li><li> De naam moet beginnen met een letter of cijfer, eindigen met een letter, cijfer of onderstrepings teken. </li><li> De naam mag alleen letters, cijfers, onderstrepings tekens, punten of afbreek streepjes bevatten. </li><li>   De naam mag geen spaties of `/`hebben.                                              |
+| Beheerde schijfnamen       | <li> De naam moet 1 tot 80 tekens lang zijn. </li><li> De naam moet beginnen met een letter of nummer, eindigen met een letter, nummer of underscore. </li><li> De naam mag alleen letters, cijfers, onderdoelpunten, perioden of koppeltekens bevatten. </li><li>   De naam mag geen `/`spaties hebben of .                                              |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Data Box disk systeem vereisten](data-box-disk-system-requirements.md) controleren
+- Systeemvereisten [voor gegevensboxschijf controleren](data-box-disk-system-requirements.md)

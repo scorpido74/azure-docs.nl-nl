@@ -1,47 +1,47 @@
 ---
-title: Implementatie van status integratie-Azure Deployment Manager
-description: Beschrijft hoe u een service implementeren via een groot aantal regio's met Azure Deployment Manager. Hier ziet u veilige implementatiemethoden om te controleren of de stabiliteit van uw implementatie te bevestigen voordat het uitrollen van naar alle regio's.
+title: Implementatie van statusintegratie - Azure Deployment Manager
+description: Beschrijft hoe u een service voor veel regio's implementeert met Azure Deployment Manager. Het toont veilige implementatiepraktijken om de stabiliteit van uw implementatie te controleren voordat u naar alle regio's wordt uitgerold.
 author: mumian
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
 ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273798"
 ---
-# <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Implementatie van de status integratie met Azure Deployment Manager introduceren (open bare preview)
+# <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Implementatie van statusintegratie introduceren in Azure Deployment Manager (openbare voorbeeld)
 
-Met [Azure Deployment Manager](./deployment-manager-overview.md) kunt u gefaseerde implementaties van Azure Resource Manager resources uitvoeren. De resources worden op een geordende manier door de regio geïmplementeerd. Met de geïntegreerde status controle van Azure Deployment Manager kunt u implementaties controleren en probleemloze implementaties automatisch stoppen, zodat u problemen kunt oplossen en de schaal van de impact vermindert. Deze functie kan de beschik baarheid van de service beperken, veroorzaakt door regressies in updates.
+[Met Azure Deployment Manager](./deployment-manager-overview.md) u gefaseerde implementaties van Azure Resource Manager-resources uitvoeren. De middelen worden per regio op geordende wijze ingezet. De geïntegreerde statuscontrole van Azure Deployment Manager kan implementaties controleren en problematische implementaties automatisch stoppen, zodat u problemen oplossen en de schaal van de impact verkleinen. Deze functie kan de beschikbaarheid van service-problemen verminderen als gevolg van regressies in updates.
 
-## <a name="health-monitoring-providers"></a>Providers voor status controle
+## <a name="health-monitoring-providers"></a>Aanbieders van gezondheidsmonitoring
 
-Micro soft werkt samen met een aantal van de belangrijkste service status bewakings bedrijven om u een eenvoudige Kopieer-en plak oplossing te bieden voor de integratie van status controles met uw implementaties, om de status integratie zo eenvoudig mogelijk te maken. Als u nog geen Health Monitor gebruikt, zijn dit fantastische oplossingen om te beginnen met:
+Om de integratie van de gezondheid zo eenvoudig mogelijk te maken, heeft Microsoft samengewerkt met enkele van de beste servicehealthmonitoringbedrijven om u een eenvoudige kopieer-/plakoplossing te bieden om statuscontroles te integreren met uw implementaties. Als u nog geen gezondheidsmonitor gebruikt, zijn dit geweldige oplossingen om mee te beginnen:
 
-| ![Azure Deployment Manager Health Monitor-provider datadog](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![Azure Deployment Manager Health Monitor-provider site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![Azure Deployment Manager Health Monitor-provider Wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
+| ![gegevenshond azure deployment manager health monitor provider](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![azure deployment manager health monitor provider site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![azure deployment manager health monitor provider wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
 |-----|------|------|
-|Datadog, het toonaangevende bewakings-en analyse platform voor moderne Cloud omgevingen. Bekijk [hoe Datadog integreert met Azure Deployment Manager](https://www.datadoghq.com/azure-deployment-manager/).|Site24x7, de alles-in-een privé-en open bare Cloud Services-bewakings oplossing. Bekijk [hoe Site24x7 integreert met Azure Deployment Manager](https://www.site24x7.com/azure/adm.html).| Wavefront, het bewakings-en analyse platform voor toepassings omgevingen met meerdere clouds. Bekijk [hoe Wavefront integreert met Azure Deployment Manager](https://go.wavefront.com/wavefront-adm/).|
+|Datadog, het toonaangevende monitoring- en analyseplatform voor moderne cloudomgevingen. Bekijk [hoe Datadog integreert met Azure Deployment Manager](https://www.datadoghq.com/azure-deployment-manager/).|Site24x7, de alles-in-één private en public cloud services monitoring oplossing. Bekijk [hoe Site24x7 integreert met Azure Deployment Manager.](https://www.site24x7.com/azure/adm.html)| Wavefront, het monitoring- en analyseplatform voor multi-cloud applicatieomgevingen. Bekijk [hoe Wavefront integreert met Azure Deployment Manager](https://go.wavefront.com/wavefront-adm/).|
 
-## <a name="how-service-health-is-determined"></a>Hoe service status wordt bepaald
+## <a name="how-service-health-is-determined"></a>Hoe de gezondheid van de dienstverlening wordt bepaald
 
-[Providers voor status controle](#health-monitoring-providers) bieden verschillende mechanismen voor het controleren van services en het melden van problemen met de service status. [Azure monitor](../../azure-monitor/overview.md) is een voor beeld van een dergelijke aanbieding. Azure Monitor kunnen worden gebruikt om waarschuwingen te maken wanneer bepaalde drempel waarden worden overschreden. Als u bijvoorbeeld een nieuwe update voor uw service implementeert, worden uw geheugen-en CPU-gebruik pieken boven de verwachte niveaus. Wanneer u een melding ontvangt, kunt u corrigerende maat regelen nemen.
+[Health monitoring providers](#health-monitoring-providers) bieden verschillende mechanismen voor het toezicht op diensten en u te waarschuwen voor eventuele service gezondheidsproblemen. [Azure Monitor](../../azure-monitor/overview.md) is een voorbeeld van een dergelijk aanbod. Azure Monitor kan worden gebruikt om waarschuwingen te maken wanneer bepaalde drempelwaarden worden overschreden. Uw geheugen- en CPU-gebruik stijgen bijvoorbeeld boven de verwachte niveaus wanneer u een nieuwe update voor uw service implementeert. Wanneer u een melding krijgt, u corrigerende maatregelen nemen.
 
-Deze Health-providers bieden doorgaans REST-Api's zodat de status van de monitors van uw service programmatisch kan worden onderzocht. De REST-Api's kunnen worden weer gegeven met een eenvoudig gezond/beschadigd signaal (bepaald door de HTTP-antwoord code) en/of met gedetailleerde informatie over de signalen die het ontvangt.
+Deze zorgverleners bieden doorgaans REST API's, zodat de status van de monitoren van uw service programmatisch kan worden onderzocht. De REST API's kunnen terugkomen met een eenvoudig gezond/ongezond signaal (bepaald door de HTTP-responscode) en/of met gedetailleerde informatie over de signalen die het ontvangt.
 
-Met de nieuwe *status controle* stap in azure Deployment Manager kunt u HTTP-codes declareren die duiden op een goede service, of voor complexere rest resultaten kunt u zelfs reguliere expressies opgeven die, indien ze overeenkomen, een gezonde reactie aangeven.
+Met de nieuwe *healthCheck-stap* in Azure Deployment Manager u HTTP-codes declareren die duiden op een gezonde service, of, voor complexere REST-resultaten, u zelfs reguliere expressies opgeven die, als ze overeenkomen, een gezonde respons aangeven.
 
-De stroom voor het verkrijgen van Setup met Azure Deployment Manager status controles:
+De stroom naar het instellen van de statuscontrole van Azure Deployment Manager:
 
-1. Maak uw status monitors via een Health-Service provider van uw keuze.
-1. Maak een of meer status controle-stappen als onderdeel van uw Azure Deployment Manager-implementatie. Vul de status controle-stappen uit met de volgende informatie:
+1. Maak uw gezondheidsmonitoren via een zorgverlener van uw keuze.
+1. Maak een of meer healthCheck-stappen als onderdeel van de implementatie van Azure Deployment Manager. Vul de stappen healthCheck in met de volgende informatie:
 
-    1. De URI voor de REST API voor uw Health monitors (zoals gedefinieerd door uw Health Service-Provider).
-    1. Verificatie-informatie. Momenteel wordt alleen de API-sleutel stijl verificatie ondersteund.
-    1. [HTTP-status codes](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) of reguliere expressies waarmee een gezonde reactie wordt gedefinieerd. Houd er rekening mee dat u reguliere expressies kunt opgeven, die allemaal moeten overeenkomen voor het antwoord dat als gezond moet worden beschouwd, of u kunt expressies opgeven waarvan de reactie moet overeenkomen om te worden beschouwd als in orde. Beide methoden worden ondersteund.
+    1. De URI voor de REST API voor uw statusmonitors (zoals gedefinieerd door uw zorgverlener).
+    1. Verificatiegegevens. Momenteel wordt alleen API-key-stijlverificatie ondersteund.
+    1. [HTTP-statuscodes](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) of reguliere expressies die een gezonde respons definiëren. Houd er rekening mee dat u reguliere expressies verstrekken, die ALL moet overeenkomen om het antwoord als gezond te beschouwen, of u uitdrukkingen geven waarvan ELKE moet overeenkomen om het antwoord als gezond te beschouwen. Beide methoden worden ondersteund.
 
-    De volgende JSON is een voor beeld:
+    De volgende Json is een voorbeeld:
 
     ```json
     {
@@ -90,7 +90,7 @@ De stroom voor het verkrijgen van Setup met Azure Deployment Manager status cont
     },
     ```
 
-1. Roep de status controle-stappen op het juiste moment aan in uw Azure Deployment Manager-implementatie. In het volgende voor beeld wordt een status controle-stap aangeroepen in **postDeploymentSteps** van **stepGroup2**.
+1. Roep de healthCheck-stappen op het juiste moment in uw Azure Deployment Manager-implementatie. In het volgende voorbeeld wordt een statuscontrolestap ingeroepen in **postDeploymentSteps** van **stepGroup2**.
 
     ```json
     "stepGroups": [
@@ -128,33 +128,33 @@ De stroom voor het verkrijgen van Setup met Azure Deployment Manager status cont
     ]
     ```
 
-Zie [zelf studie: status controle gebruiken in Azure Deployment Manager](./deployment-manager-health-check.md)voor een voor beeld.
+Zie [Zelfstudie: Statuscontrole gebruiken in Azure Deployment Manager](./deployment-manager-health-check.md)als u een voorbeeld wilt doorlopen.
 
-## <a name="phases-of-a-health-check"></a>Fasen van een status controle
+## <a name="phases-of-a-health-check"></a>Fasen van een gezondheidscontrole
 
-Op dit moment weet Azure Deployment Manager hoe u een query kunt uitvoeren op de status van uw service en in welke fasen in uw implementatie dit moet doen. Azure Deployment Manager biedt echter ook een diepe configuratie van de timing van deze controles. Er wordt een status controle-stap uitgevoerd in drie opeenvolgende fasen, die allemaal Configureer bare duur hebben: 
+Op dit moment weet Azure Deployment Manager hoe u de status van uw service moet opvragen en in welke fasen uw implementatie dit moet doen. Azure Deployment Manager maakt echter ook een diepe configuratie van de timing van deze controles mogelijk. Een healthCheck-stap wordt uitgevoerd in 3 opeenvolgende fasen, die allemaal configureerbare duur hebben: 
 
 1. Wait
 
-    1. Nadat een implementatie bewerking is voltooid, kunnen Vm's opnieuw worden opgestart, opnieuw worden geconfigureerd op basis van nieuwe gegevens of zelfs worden gestart voor de eerste keer. Het kan ook enige tijd duren voordat de status van de Services wordt gestart, zodat deze door de provider voor status controle kan worden geaggregeerd. Tijdens dit tumultuous-proces is het wellicht niet verstandig om te controleren of de service status is verstreken omdat de update nog niet een constante status heeft bereikt. Het is mogelijk dat de service in orde is en dat de status van de resources onbeschadigd is. 
-    1. Tijdens de wacht fase wordt de service status niet bewaakt. Dit wordt gebruikt om de geïmplementeerde resources de tijd maken te geven voordat het status controle proces wordt gestart. 
-1. Elastisch
+    1. Nadat een implementatiebewerking is voltooid, kunnen VM's opnieuw worden opgestart, opnieuw configureren op basis van nieuwe gegevens of zelfs voor de eerste keer worden gestart. Het kost ook tijd voor diensten om te beginnen met het uitzenden van gezondheidssignalen worden samengevoegd door de leverancier van gezondheidsmonitoring in iets nuttigs. Tijdens dit tumultueuze proces, kan het niet zinvol om te controleren op de gezondheid van de dienst, omdat de update nog niet heeft bereikt een steady state. Inderdaad, de dienst kan oscilleren tussen gezonde en ongezonde staten als de middelen te vestigen. 
+    1. Tijdens de wachtfase wordt de servicestatus niet gecontroleerd. Dit wordt gebruikt om de geïmplementeerde resources de tijd om te bakken voordat u begint met de health check proces. 
+1. Elastische
 
-    1. Omdat het niet mogelijk is om in alle gevallen te weten hoe lang bronnen makenen voordat ze stabiel worden, biedt de elastische fase een flexibele periode tussen het moment waarop de bronnen mogelijk Insta Biel zijn en wanneer ze zijn vereist voor het onderhouden van een gezonde stabiele overheids.
-    1. Wanneer de elastische fase begint, begint Azure Deployment Manager het aansturen van het meegeleverde REST-eind punt voor de service status regel matig. Het polling-interval kan worden geconfigureerd. 
-    1. Als de Health Monitor terugkomt met signalen die aangeven dat de service een slechte status heeft, worden deze signalen genegeerd, wordt de elastische fase voortgezet en wordt polling voortgezet. 
-    1. Zodra de status monitor weer signalen bevat waarmee wordt aangegeven dat de service in orde is, wordt de elastische fase beëindigd en begint de goede status-fase. 
-    1. De duur die is opgegeven voor de elastische fase is de maximale hoeveelheid tijd die kan worden gebruikt voor het controleren van de status van de service voordat een gezonde respons als verplicht wordt beschouwd. 
-1. Goede status
+    1. Aangezien het onmogelijk is om in alle gevallen te weten hoe lang de middelen zullen duren om te bakken voordat ze stabiel worden, de Elastische fase zorgt voor een flexibele periode tussen wanneer de middelen zijn potentieel instabiel en wanneer ze nodig zijn om een gezonde gestage te handhaven Staat.
+    1. Wanneer de elasticfase begint, begint Azure Deployment Manager met het periodiek peilen van het meegeleverde REST-eindpunt voor de servicestatus. Het polling-interval is configureerbaar. 
+    1. Als de statusmonitor terugkomt met signalen die aangeven dat de service ongezond is, worden deze signalen genegeerd, wordt de elastische fase voortgezet en wordt de polling voortgezet. 
+    1. Zodra de gezondheidsmonitor terugkomt met signalen die aangeven dat de service gezond is, eindigt de elasticfase en begint de HealthyState-fase. 
+    1. De duur die is opgegeven voor de elastische fase is dus de maximale hoeveelheid tijd die kan worden besteed aan polling voor de gezondheid van de dienst voordat een gezonde reactie als verplicht wordt beschouwd. 
+1. HealthyState HealthyState
 
-    1. Tijdens de goede status-fase wordt de status van de service voortdurend gecontroleerd op hetzelfde interval als de elastische fase. 
-    1. De service is naar verwachting van de status bewakings provider goed te onderhouden voor de gehele opgegeven duur. 
-    1. Als er op een wille keurig moment een niet-gezond antwoord wordt gedetecteerd, wordt de volledige implementatie door Azure Deployment Manager gestopt en wordt het REST-antwoord geretourneerd, waarbij de beschadigde service signalen worden weer gegeven.
-    1. Zodra de goede status-duur is beëindigd, is de status controle voltooid en gaat de implementatie verder met de volgende stap.
+    1. Tijdens de HealthyState-fase wordt de servicestatus voortdurend gepeild met hetzelfde interval als de elasticfase. 
+    1. De service zal naar verwachting gezonde signalen van de leverancier van statusbewaking gedurende de gehele opgegeven duur behouden. 
+    1. Als op enig moment een ongezonde reactie wordt gedetecteerd, stopt Azure Deployment Manager de hele implementatie en retourneert het REST-antwoord met de ongezonde servicesignalen.
+    1. Zodra de duur van de HealthyState is beëindigd, is de healthCheck voltooid en gaat de implementatie door naar de volgende stap.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u de status controle integreert in azure Deployment Manager. Doorgaan met het volgende artikel voor meer informatie over het implementeren van met Deployment Manager.
+In dit artikel leert u hoe u statuscontrole integreren in Azure Deployment Manager. Ga naar het volgende artikel om te leren hoe u implementeren met Deployment Manager.
 
 > [!div class="nextstepaction"]
-> [Zelf studie: status controle integreren in azure Deployment Manager](./deployment-manager-tutorial-health-check.md)
+> [Zelfstudie: statuscontrole integreren in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md)

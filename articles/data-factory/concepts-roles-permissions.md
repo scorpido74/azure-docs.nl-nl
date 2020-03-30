@@ -1,6 +1,6 @@
 ---
 title: Rollen en machtigingen voor Azure Data Factory
-description: Hierin worden de rollen en machtigingen beschreven die nodig zijn om gegevens fabrieken te maken en om met onderliggende resources te werken.
+description: Beschrijft de rollen en machtigingen die nodig zijn om gegevensfabrieken te maken en om te werken met onderliggende bronnen.
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
@@ -11,15 +11,15 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: d143992317c77c6fc3137527bea485a98c046daa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75969225"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen en machtigingen voor Azure Data Factory
 
-In dit artikel worden de functies beschreven die nodig zijn voor het maken en beheren van Azure Data Factory resources, en de machtigingen die door die rollen worden verleend.
+In dit artikel worden de rollen beschreven die nodig zijn voor het maken en beheren van Azure Data Factory-resources en de machtigingen die door die rollen worden verleend.
 
 ## <a name="roles-and-requirements"></a>Functies en vereisten
 
@@ -33,62 +33,62 @@ Zie het artikel [Rollen toevoegen](../cost-management-billing/manage/add-change-
 
 ## <a name="set-up-permissions"></a>Machtigingen instellen
 
-Nadat u een Data Factory hebt gemaakt, wilt u mogelijk andere gebruikers laten werken met de data factory. Als u deze toegang wilt verlenen aan andere gebruikers, moet u deze toevoegen aan de ingebouwde rol **Data Factory Inzender** voor de resource groep die de Data Factory bevat.
+Nadat u een gegevensfabriek hebt gemaakt, u andere gebruikers laten werken met de gegevensfabriek. Om deze toegang te geven aan andere gebruikers, moet u deze toevoegen aan de ingebouwde rol **in datafabriekinzender** in de brongroep die de gegevensfabriek bevat.
 
-### <a name="scope-of-the-data-factory-contributor-role"></a>Bereik van de rol Data Factory Inzender
+### <a name="scope-of-the-data-factory-contributor-role"></a>Bereik van de rol datafabriekbijdrager
 
-Als u lid bent van de rol **Data Factory Inzender** , kunnen gebruikers het volgende doen:
-- Gegevens fabrieken en onderliggende resources maken, bewerken en verwijderen, waaronder gegevens sets, gekoppelde services, pijp lijnen, triggers en Integration Runtimes.
-- Resource Manager-sjablonen implementeren. Implementatie van Resource Manager is de implementatie methode die wordt gebruikt door Data Factory in het Azure Portal.
-- App Insights-waarschuwingen voor een data factory beheren.
-- Ondersteunings tickets maken.
+Met het lidmaatschap van de rol **Data Factory-bijdrager** kunnen gebruikers de volgende dingen doen:
+- Maak, bewerk en verwijder gegevensfabrieken en onderliggende bronnen, waaronder gegevenssets, gekoppelde services, pijplijnen, triggers en gebruikstijden voor integratie.
+- Resourcebeheersjablonen implementeren. Resource manager-implementatie is de implementatiemethode die wordt gebruikt door Gegevensfabriek in de Azure-portal.
+- App Insights-waarschuwingen beheren voor een gegevensfabriek.
+- Maak ondersteuningstickets.
 
-Zie [Data Factory rol Inzender](../role-based-access-control/built-in-roles.md#data-factory-contributor)voor meer informatie over deze rol.
+Zie De rol Van [datafabriekbijdrager](../role-based-access-control/built-in-roles.md#data-factory-contributor)voor meer informatie over deze rol .
 
-### <a name="resource-manager-template-deployment"></a>Sjabloonimplementatie van Resource Manager
+### <a name="resource-manager-template-deployment"></a>Implementatie van resourcebeheer-sjabloon
 
-Met de rol **Data Factory Inzender** , op het niveau van de resource groep of hoger, kunnen gebruikers Resource Manager-sjablonen implementeren. Als gevolg hiervan kunnen leden van de rol Resource Manager-sjablonen gebruiken voor het implementeren van zowel gegevens fabrieken als hun onderliggende resources, inclusief gegevens sets, gekoppelde services, pijp lijnen, triggers en Integration Runtimes. Als u lidmaatschap van deze rol gebruikt, kan de gebruiker echter geen andere resources maken.
+Met de rol **Data Factory Inzender,** op het niveau van de resourcegroep of hoger, kunnen gebruikers Resource Manager-sjablonen implementeren. Als gevolg hiervan kunnen leden van de rol Resource Manager-sjablonen gebruiken om zowel gegevensfabrieken als hun onderliggende resources te implementeren, waaronder gegevenssets, gekoppelde services, pijplijnen, triggers en implementatieruntimes. Lidmaatschap in deze rol laat de gebruiker echter geen andere bronnen maken.
 
-Machtigingen voor Azure opslag plaatsen en GitHub zijn onafhankelijk van Data Factory machtigingen. Als gevolg hiervan kan een gebruiker met opslag plaats-machtigingen die alleen lid is van de rol lezer, Data Factory onderliggende resources bewerken en wijzigingen door voeren in de opslag plaats, maar kan deze wijzigingen niet publiceren.
+Machtigingen voor Azure Repos en GitHub zijn onafhankelijk van machtigingen voor Gegevensfabriek. Als gevolg hiervan kan een gebruiker met repo-machtigingen die alleen lid is van de reader-rol onderliggende bronnen van Data Factory bewerken en wijzigingen in de repo vastleggen, maar deze wijzigingen niet publiceren.
 
 > [!IMPORTANT]
-> Met de implementatie van de Resource Manager-sjabloon met de rol **Data Factory Inzender** worden uw machtigingen niet verhoogd. Als u bijvoorbeeld een sjabloon implementeert waarmee een virtuele machine van Azure wordt gemaakt en u geen machtiging hebt om virtuele machines te maken, mislukt de implementatie met een autorisatie fout.
+> De implementatie van resourcebeheersjablonen met de rol **Data Factory-inzender** verhoogt uw machtigingen niet. Als u bijvoorbeeld een sjabloon implementeert waarmee een virtuele Azure-machine wordt gemaakt en u geen toestemming hebt om virtuele machines te maken, mislukt de implementatie met een autorisatiefout.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Aangepaste scenario's en aangepaste rollen
 
-Soms moet u mogelijk verschillende toegangs niveaus toekennen voor verschillende gebruikers van data factory. Bijvoorbeeld:
-- U hebt mogelijk een groep nodig waar gebruikers alleen machtigingen hebben voor een specifieke data factory.
-- Het is ook mogelijk dat u een groep hebt waar gebruikers alleen een data factory (of fabrieken) kunnen bewaken, maar niet kan wijzigen.
+Soms moet u verschillende toegangsniveaus toekennen aan verschillende gebruikers in de gegevensfabriek. Bijvoorbeeld:
+- Mogelijk hebt u een groep nodig waar gebruikers alleen machtigingen hebben voor een specifieke gegevensfabriek.
+- Of u hebt een groep nodig waar gebruikers alleen een gegevensfabriek (of fabrieken) kunnen controleren, maar deze niet kunnen wijzigen.
 
-U kunt deze aangepaste scenario's verzorgen door aangepaste rollen te maken en gebruikers toe te wijzen aan deze rollen. Zie [aangepaste rollen in azure](..//role-based-access-control/custom-roles.md)voor meer informatie over aangepaste rollen.
+U deze aangepaste scenario's bereiken door aangepaste rollen te maken en gebruikers aan die rollen toe te wijzen. Zie Aangepaste rollen in [Azure voor](..//role-based-access-control/custom-roles.md)meer informatie over aangepaste rollen.
 
-Hier volgen enkele voor beelden van hoe u met aangepaste rollen kunt profiteren:
+Hier volgen een paar voorbeelden die aantonen wat u bereiken met aangepaste rollen:
 
-- Hiermee kan een gebruiker een data factory in een resource groep maken, bewerken of verwijderen vanuit de Azure Portal.
+- Laat een gebruiker een gegevensfabriek in een resourcegroep maken, bewerken of verwijderen vanuit de Azure-portal.
 
-  Wijs de ingebouwde rol **Data Factory Inzender** toe op het niveau van de resource groep voor de gebruiker. Als u toegang wilt verlenen tot een data factory in een abonnement, wijst u de rol toe op abonnements niveau.
+  Wijs de ingebouwde **bijdragerin datafabriek toe** op het niveau van de resourcegroep voor de gebruiker. Als u toegang wilt verlenen tot een gegevensfabriek in een abonnement, wijst u de rol toe op abonnementsniveau.
 
-- Een gebruiker kan een data factory weer geven (lezen) en bewaken, maar niet bewerken of wijzigen.
+- Laat een gebruiker een gegevensfabriek bekijken (lezen) en controleren, maar deze niet bewerken of wijzigen.
 
-  Wijs de ingebouwde rol **lezer** toe aan de Data Factory resource voor de gebruiker.
+  Wijs de ingebouwde **leesrol** toe aan de bron van de gegevensfabriek voor de gebruiker.
 
-- Laat een gebruiker één data factory in de Azure Portal bewerken.
+- Laat een gebruiker één gegevensfabriek bewerken in de Azure-portal.
 
-  Voor dit scenario zijn twee roltoewijzingen vereist.
+  Dit scenario vereist twee roltoewijzingen.
 
-  1. Wijs de ingebouwde rol **Inzender** op het Data Factory niveau toe.
-  2. Maak een aangepaste rol met de machtiging **micro soft. resources/Deployments/** . Wijs deze aangepaste rol toe aan de gebruiker op het niveau van de resource groep.
+  1. Wijs de ingebouwde **bijdragerfunctie** toe op het niveau van de gegevensfabriek.
+  2. Maak een aangepaste rol met de machtiging **Microsoft.Resources/deployments/**. Wijs deze aangepaste rol toe aan de gebruiker op resourcegroepniveau.
 
-- Hiermee kan een gebruiker alleen de verbinding in een gekoppelde service testen
+- Laat een gebruiker alleen verbinding in een gekoppelde service testen
 
-    Maak een aangepaste rol met machtigingen voor de volgende acties: **micro soft. DataFactory/factorions/getFeatureValue/Read** en **micro soft. DataFactory/factoryes/getDataPlaneAccess/lezen**. Wijs deze aangepaste rol toe aan de data factory resource voor de gebruiker.
+    Maak een aangepaste rolrol met machtigingen voor de volgende acties: **Microsoft.DataFactory/factories/getFeatureValue/read** en **Microsoft.DataFactory/factories/getDataPlaneAccess/read**. Wijs deze aangepaste rol toe aan de bron van de gegevensfabriek voor de gebruiker.
 
-- Laat een gebruiker een data factory bijwerken vanuit Power shell of de SDK, maar niet in de Azure Portal.
+- Laat een gebruiker een gegevensfabriek bijwerken vanuit PowerShell of de SDK, maar niet in de Azure-portal.
 
-  Wijs de ingebouwde rol **Inzender** toe aan de Data Factory resource voor de gebruiker. Met deze rol kan de gebruiker de resources in de Azure Portal zien, maar de gebruiker heeft geen toegang tot de knoppen **publiceren** en **publiceren** .
+  Wijs de ingebouwde **bijdragerrol** toe aan de bron van de gegevensfabriek voor de gebruiker. Met deze rol kan de gebruiker de bronnen in de Azure-portal zien, maar heeft de gebruiker geen toegang tot de knoppen **Alle publiceren** en **publiceren.**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over rollen in azure- [definities van functie-begrippen](../role-based-access-control/role-definitions.md)
+- Meer informatie over rollen in Azure - [Functiedefinities begrijpen](../role-based-access-control/role-definitions.md)
 
-- Meer informatie over de rol **Inzender voor Data Factory** - [Data Factory rol](../role-based-access-control/built-in-roles.md#data-factory-contributor).
+- Meer informatie over de rol **van datafactory-bijdrager** - [rol van datafabriekbijdrager](../role-based-access-control/built-in-roles.md#data-factory-contributor).

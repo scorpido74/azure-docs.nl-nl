@@ -1,26 +1,26 @@
 ---
-title: Algemene schema definities voor waarschuwingen voor Azure Monitor
-description: Informatie over de algemene schema definities voor waarschuwingen voor Azure Monitor
+title: Algemene waarschuwingsschemadefinities voor Azure Monitor
+description: De algemene definities van waarschuwingsschema's voor Azure Monitor begrijpen
 author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
 ms.openlocfilehash: b0b398be919364b5a146e86ca1a1790674bb7d01
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275020"
 ---
 # <a name="common-alert-schema-definitions"></a>Definities van algemeen waarschuwingsschema
 
-In dit artikel worden de [algemene schema definities voor waarschuwingen](https://aka.ms/commonAlertSchemaDocs) voor Azure monitor beschreven, met inbegrip van de schema's voor webhooks, Azure Logic Apps, Azure Functions en Azure Automation runbooks. 
+In dit artikel worden de [algemene waarschuwingsschemadefinities](https://aka.ms/commonAlertSchemaDocs) voor Azure Monitor beschreven, waaronder die voor webhooks, Azure Logic Apps, Azure Functions en Azure Automation-runbooks. 
 
-Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak van de waarschuwing. Deze exemplaren worden beschreven in het gemeen schappelijke schema in de volgende secties:
-* **Essentials**: een set gestandaardiseerde velden, gemeen schappelijk voor alle waarschuwings typen, waarmee wordt beschreven op welke resource de waarschuwing zich bevindt, samen met aanvullende veelvoorkomende meta gegevens van waarschuwingen (bijvoorbeeld Ernst of beschrijving). 
-* **Waarschuwings context**: een set velden die de oorzaak van de waarschuwing beschrijft, met velden die variëren op basis van het waarschuwings type. Een metrische waarschuwing bevat bijvoorbeeld velden zoals de metrische naam en metrische waarde in de context van de waarschuwing, terwijl een waarschuwing voor een activiteiten logboek informatie bevat over de gebeurtenis die de waarschuwing heeft gegenereerd. 
+Elke waarschuwingsinstantie beschrijft de bron die is getroffen en de oorzaak van de waarschuwing. Deze exemplaren worden beschreven in het algemene schema in de volgende secties:
+* **Essentials**: Een set gestandaardiseerde velden, algemeen voor alle waarschuwingstypen, die beschrijven op welke resource de waarschuwing is ingeschakeld, samen met extra algemene waarschuwingsmetagegevens (bijvoorbeeld ernst of beschrijving). 
+* **Waarschuwingscontext:** een reeks velden die de oorzaak van de waarschuwing beschrijft, met velden die variëren op basis van het waarschuwingstype. Een metrische waarschuwing bevat bijvoorbeeld velden zoals de metrische naam en metrische waarde in de waarschuwingscontext, terwijl een waarschuwing voor een activiteitenlogboek informatie bevat over de gebeurtenis die de waarschuwing heeft gegenereerd. 
 
-**Voorbeeld waarschuwing Payload**
+**Payload van voorbeeldwaarschuwingen**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -73,21 +73,21 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 
 | Veld | Beschrijving|
 |:---|:---|
-| alertId | De GUID die het waarschuwings exemplaar uniek identificeert. |
-| alertRule | De naam van de waarschuwings regel die het waarschuwings exemplaar heeft gegenereerd. |
+| alertId | De GUID identificeert op unieke wijze de waarschuwingsinstantie. |
+| waarschuwingRegel | De naam van de waarschuwingsregel die de waarschuwingsinstantie heeft gegenereerd. |
 | Severity | De ernst van de waarschuwing. Mogelijke waarden: Sev0, Sev1, Sev2, Sev3 of Sev4. |
-| signalType | Hiermee wordt het signaal geïdentificeerd waarop de waarschuwings regel is gedefinieerd. Mogelijke waarden: metrisch, logboek of activiteiten logboek. |
-| monitorCondition | Wanneer een waarschuwing wordt geactiveerd, wordt de bewakings voorwaarde van de waarschuwing ingesteld op **geactiveerd**. Wanneer de onderliggende voor waarde die de waarschuwing heeft veroorzaakt, is gewist, wordt de status van de monitor ingesteld op **opgelost**.   |
-| monitoringService | De bewakings service of-oplossing die de waarschuwing heeft gegenereerd. De velden voor de waarschuwings context worden bepaald door de bewakings service. |
-| alertTargetIds | De lijst met de Azure Resource Manager-Id's die worden beïnvloed door de doelen van een waarschuwing. Voor een logboek waarschuwing die is gedefinieerd voor een Log Analytics werk ruimte of Application Insights exemplaar, is het de desbetreffende werk ruimte of toepassing. |
-| originAlertId | De ID van het waarschuwings exemplaar, zoals gegenereerd door de bewakings service die het genereert. |
-| firedDateTime | De datum en tijd waarop het waarschuwings exemplaar is geactiveerd in Coordinated Universal Time (UTC). |
-| resolvedDateTime | De datum en tijd waarop de monitor voorwaarde voor het waarschuwings exemplaar is ingesteld op **opgelost** in UTC. Momenteel alleen van toepassing op metrische waarschuwingen.|
-| description | De beschrijving, zoals gedefinieerd in de waarschuwings regel. |
-|essentialsVersion| Het versie nummer van de sectie Essentials.|
-|alertContextVersion | Het versie nummer voor de sectie `alertContext`. |
+| signalType | Hiermee wordt het signaal aangegeven waarop de waarschuwingsregel is gedefinieerd. Mogelijke waarden: metric, log of activity log. |
+| monitorConditie | Wanneer een waarschuwing wordt geactiveerd, wordt de status van de monitor ingesteld op **Vuur .** Wanneer de onderliggende voorwaarde die ervoor zorgde dat de waarschuwing is geactiveerd, wordt de status van de monitor ingesteld op **Opgelost**.   |
+| monitoringService | De bewakingsservice of -oplossing die de waarschuwing heeft gegenereerd. De velden voor de waarschuwingscontext worden gedicteerd door de bewakingsservice. |
+| alertTargetIds | De lijst met de Azure Resource Manager-id's die zijn beïnvloed als doel van een waarschuwing. Voor een logboekwaarschuwing die is gedefinieerd op een log analytics-werkruimte of instantie Application Insights, is dit de respectievelijke werkruimte of toepassing. |
+| originAlertId | De ID van de waarschuwingsinstantie, gegenereerd door de bewakingsservice die deze genereert. |
+| firedDateTime | De datum en tijd waarop de waarschuwingsinstantie is geactiveerd in Coordinated Universal Time (UTC). |
+| resolvedDateTime | De datum en tijd waarop de status van de monitor voor de waarschuwingsinstantie is ingesteld **op Opgelost** in UTC. Momenteel alleen van toepassing op metrische waarschuwingen.|
+| description | De beschrijving, zoals gedefinieerd in de waarschuwingsregel. |
+|essentialsVersie| Het versienummer voor de sectie Essentials.|
+|alertContextVersion | Het versienummer `alertContext` voor de sectie. |
 
-**Voorbeeld waarden**
+**Voorbeeldwaarden**
 ```json
 {
   "essentials": {
@@ -109,13 +109,13 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 }
 ```
 
-## <a name="alert-context"></a>Waarschuwings context
+## <a name="alert-context"></a>Waarschuwingscontext
 
 ### <a name="metric-alerts"></a>Metrische waarschuwingen
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-**Voorbeeld waarden**
+**Voorbeeldwaarden**
 ```json
 {
   "alertContext": {
@@ -149,11 +149,11 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 ### <a name="log-alerts"></a>Waarschuwingen voor logboeken
 
 > [!NOTE]
-> Voor logboek waarschuwingen waarvoor een aangepast e-mail onderwerp en/of JSON-nettolading is gedefinieerd, wordt het onderwerp van de e-mail en/of het payload-schema door het algemene schema opnieuw ingesteld op de volgende manier. Waarschuwingen waarvoor het algemene schema is ingeschakeld, hebben een maximale grootte van 256 KB per waarschuwing. Zoek resultaten worden niet Inge sloten in de payload voor logboek waarschuwingen als de grootte van de waarschuwing deze drempel overschrijdt. U kunt dit vaststellen door de vlag `IncludeSearchResults`te controleren. Wanneer de zoek resultaten niet zijn opgenomen, moet u de zoek query gebruiken in combi natie met de [log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get). 
+> Voor logboekwaarschuwingen met een aangepaste e-mailonderwerp en/of JSON-payload gedefinieerd, waardoor het algemene schema e-mailonderwerp en/of payload-schema terugzet naar het schema dat als volgt wordt beschreven. Waarschuwingen met het algemene schema ingeschakeld hebben een bovengroottelimiet van 256 KB per waarschuwing. Zoekresultaten zijn niet ingebed in de payload van logboekwaarschuwingen als ze ervoor zorgen dat de waarschuwingsgrootte deze drempel overschrijdt. U dit bepalen `IncludeSearchResults`door de vlag te controleren. Wanneer de zoekresultaten niet zijn opgenomen, moet u de zoekopdracht gebruiken in combinatie met de [Api Log Analytics.](https://docs.microsoft.com/rest/api/loganalytics/query/get) 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-**Voorbeeld waarden**
+**Voorbeeldwaarden**
 ```json
 {
   "alertContext": {
@@ -220,7 +220,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 
 #### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-**Voorbeeld waarden**
+**Voorbeeldwaarden**
 ```json
 {
   "alertContext": {
@@ -285,7 +285,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 
 #### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-**Voorbeeld waarden**
+**Voorbeeldwaarden**
 ```json
 {
   "alertContext": {
@@ -312,7 +312,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 
 #### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-**Voorbeeld waarden**
+**Voorbeeldwaarden**
 ```json
 {
   "alertContext": {
@@ -345,7 +345,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 
 #### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
 
-**Voorbeeld waarden**
+**Voorbeeldwaarden**
 ```json
 {
   "alertContext": {
@@ -375,7 +375,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 
 #### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
 
-**Voorbeeld waarden**
+**Voorbeeldwaarden**
 ```json
 {
   "alertContext": {
@@ -408,7 +408,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 
 #### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
 
-**Voorbeeld waarden**
+**Voorbeeldwaarden**
 ```json
 {
   "alertContext": {
@@ -452,7 +452,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 ```
 #### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
 
-**Voorbeeld waarden**
+**Voorbeeldwaarden**
 ```json
 {
   "alertContext": {
@@ -481,6 +481,6 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs).
-- Meer informatie [over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
+- Meer informatie over het [algemene waarschuwingsschema](https://aka.ms/commonAlertSchemaDocs).
+- Meer informatie over [het maken van een logische app die het algemene waarschuwingsschema gebruikt om al uw waarschuwingen te verwerken.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
 

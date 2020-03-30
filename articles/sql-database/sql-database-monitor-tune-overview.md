@@ -1,6 +1,6 @@
 ---
 title: Prestaties bewaken en afstemmen
-description: Een overzicht van de mogelijkheden en methodologie voor het afstemmen van bewaking en prestaties in Azure SQL Database.
+description: Een overzicht van de mogelijkheden voor monitoring en prestatieafstemming en methodologie in Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,97 +12,97 @@ ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: 837d88665c1fdffe902c9c478e5d6dc65a2e402a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268728"
 ---
-# <a name="monitoring-and-performance-tuning-in-azure-sql-database"></a>Bewaking en prestaties afstemmen in Azure SQL Database
+# <a name="monitoring-and-performance-tuning-in-azure-sql-database"></a>Monitoring en prestatieafstemming in Azure SQL Database
 
-Als u de prestaties van een data base in Azure SQL Database wilt bewaken, moet u eerst de CPU-en i/o-resources bewaken die worden gebruikt door uw workload ten opzichte van het prestatie niveau van de data base dat u hebt gekozen bij het selecteren van een bepaalde service tier en Hiertoe Azure SQL Database de metrische gegevens van resources meebrengen die kunnen worden weer gegeven in de Azure Portal of met behulp van een van deze hulpprogram ma's voor SQL-beheer: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) of [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
+Als u de prestaties van een database in Azure SQL Database wilt controleren, moet u eerst de CPU- en IO-resources bewaken die door uw werkbelasting worden gebruikt ten opzichte van het niveau van de databaseprestaties dat u hebt gekozen bij het selecteren van een bepaalde servicelaag en prestatieniveau. Om dit te bereiken, zendt Azure SQL Database resourcemetrics uit die kunnen worden weergegeven in de Azure-portal of met behulp van een van deze SQL-beheertools: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) of SQL Server Management [Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).
 
-Voor afzonderlijke en gegroepeerde Data bases biedt Azure SQL Database een aantal data base-adviseurs om aanbevelingen voor intelligente prestaties te bieden en opties voor automatisch afstemmen om de prestaties te verbeteren. Daarnaast bevat Query Performance Insight informatie over de query's die verantwoordelijk zijn voor het meeste CPU-en IO-gebruik voor één en gepoolde data bases.
+Voor afzonderlijke en gepoolde databases biedt Azure SQL Database een aantal databaseadviseurs om intelligente aanbevelingen voor het afstemmen van prestaties en automatische tuningopties te bieden om de prestaties te verbeteren. Daarnaast toont Query Performance Insight u details over de query's die verantwoordelijk zijn voor het meeste CPU- en IO-gebruik voor afzonderlijke en gepoolde databases.
 
-Azure SQL Database biedt extra bewakings-en afstemmings mogelijkheden die door kunst matige intelligentie worden ondersteund om u te helpen bij het oplossen van problemen en het optimaliseren van de prestaties van uw data bases en oplossingen. U kunt ervoor kiezen om de [streaming-export](sql-database-metrics-diag-logging.md) van deze [Intelligent Insights](sql-database-intelligent-insights.md) en andere SQL database Resource logboeken en-metrische gegevens te configureren naar een van de verschillende bestemmingen voor verbruik en analyse, met name met behulp van [SQL Analytics](../azure-monitor/insights/azure-sql.md). Azure SQL-analyse is een geavanceerde Cloud bewakings oplossing voor het bewaken van de prestaties van alle Azure SQL-data bases op schaal en op meerdere abonnementen in één weer gave. Voor een lijst met de logboeken en metrische gegevens die u kunt exporteren, raadpleegt u [Diagnostische telemetrie voor exporteren](sql-database-metrics-diag-logging.md#diagnostic-telemetry-for-export-for-azure-sql-database)
+Azure SQL Database biedt extra monitoring- en tuningmogelijkheden, ondersteund door kunstmatige intelligentie, om u te helpen bij het oplossen van problemen en het maximaliseren van de prestaties van uw databases en oplossingen. U ervoor kiezen om de [streaming-export](sql-database-metrics-diag-logging.md) van deze [Intelligent Insights](sql-database-intelligent-insights.md) en andere SQL Database-bronlogboeken en -statistieken te configureren naar een van de verschillende bestemmingen voor consumptie en analyse, met name met SQL [Analytics).](../azure-monitor/insights/azure-sql.md) Azure SQL Analytics is een geavanceerde cloudmonitoringoplossing voor het bewaken van de prestaties van al uw Azure SQL-databases op schaal en voor meerdere abonnementen in één weergave. Zie [diagnostische telemetrie voor export voor](sql-database-metrics-diag-logging.md#diagnostic-telemetry-for-export-for-azure-sql-database) een lijst met logboeken en statistieken die u exporteren
 
-Ten slotte heeft SQL zijn eigen bewakings-en diagnostische mogelijkheden met [SQL Server query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) en [dynamische beheer weergaven (dmv's)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views). Zie [bewaking met behulp van dmv's](sql-database-monitoring-with-dmvs.md) voor scripts om te controleren op diverse prestatie problemen.
+Tot slot heeft SQL zijn eigen monitoring- en diagnostische mogelijkheden met [SQL Server Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) en dynamic management views [(DMVs).](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) Zie [Controleren met DMVs](sql-database-monitoring-with-dmvs.md) voor scripts die kunnen worden gecontroleerd op verschillende prestatieproblemen.
 
-## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Mogelijkheden voor bewaking en afstemming in de Azure Portal
+## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Bewakings- en tuningmogelijkheden in de Azure-portal
 
-In de Azure Portal, Azure SQL Database het bewaken van metrische gegevens over resources voor alle implementatie typen. Voor afzonderlijke en gepoolde data bases kunnen data base Advisor en Query Performance Insight aanbevelingen voor het afstemmen van query's en analyse van query prestaties bieden. Ten slotte kunt u in het Azure Portal automatische inschakelen voor logische servers en de afzonderlijke data bases.
+In de Azure-portal biedt Azure SQL Database bewaking van resourcemetrics voor alle implementatietypen. Bovendien bieden databaseadviseurs en Query Performance Insight voor afzonderlijke en samengevoegde databases aanbevelingen voor queryafstemming en queryprestatieanalyse. Ten slotte u in de Azure-portal automatische voor logische servers en hun enkele en gepoolde databases inschakelen.
 
-### <a name="sql-database-resource-monitoring"></a>SQL Database Bron bewaking
+### <a name="sql-database-resource-monitoring"></a>SQL Database-bronbewaking
 
-U kunt snel de volgende metrische gegevens voor resources bewaken in de Azure Portal in de weer gave **metrische gegevens** :
+U snel de volgende resourcestatistieken in de Azure-portal controleren in de weergave **Statistieken:**
 
 - **DTU-gebruik**
 
-  Controleer of een Data Base of elastische pool 100 procent van het DTU-gebruik bereikt gedurende een lange periode. Het gebruik van een hoog DTU geeft aan dat uw workload mogelijk meer CPU-of IO-resources nodig heeft. Dit kan ook duiden op query's die moeten worden geoptimaliseerd.
+  Controleer of een database of elastische pool gedurende een langere periode 100 procent van het DTU-gebruik bereikt. Een hoog DTU-gebruik geeft aan dat uw werkbelasting mogelijk meer CPU- of IO-bronnen nodig heeft. Het kan ook aangeven query's die moeten worden geoptimaliseerd.
 - **CPU-gebruik**
 
-  Controleer of een Data Base, een elastische pool of een beheerd exemplaar gedurende een lange periode 100 procent van het CPU-gebruik bereikt. Hoge CPU geeft aan dat uw workload mogelijk meer CPU-of IO-resources nodig heeft. Dit kan ook duiden op query's die moeten worden geoptimaliseerd.
+  Controleer of een database, elastische pool of beheerde instantie gedurende een langere periode 100 procent van het CPU-gebruik bereikt. Hoge CPU geeft aan dat uw werkbelasting mogelijk meer CPU- of IO-bronnen nodig heeft. Het kan ook aangeven query's die moeten worden geoptimaliseerd.
 - **IO-gebruik**
 
-  Controleer of een Data Base, een elastische pool of een beheer exemplaar de i/o-limieten bereikt van de onderliggende opslag. Hoge IO-gebruik geeft aan dat uw workload mogelijk meer CPU-of IO-resources nodig heeft. Dit kan ook duiden op query's die moeten worden geoptimaliseerd.
+  Controleer of een database, elastische pool of beheerinstantie de IO-limieten van de onderliggende opslag bereikt. Een hoog IO-gebruik geeft aan dat uw werkbelasting mogelijk meer CPU- of IO-bronnen nodig heeft. Het kan ook aangeven query's die moeten worden geoptimaliseerd.
 
-  ![Metrische gegevens van resources](./media/sql-database-monitor-tune-overview/resource-metrics.png)
+  ![Resourcestatistieken](./media/sql-database-monitor-tune-overview/resource-metrics.png)
 
-### <a name="database-advisors"></a>Data base Advisor
-' Azure SQL Database [database adviezen](sql-database-advisor.md) bevat die aanbevelingen voor het afstemmen van prestaties bieden voor afzonderlijke data bases. Deze aanbevelingen zijn beschikbaar in het Azure Portal en met behulp van [Power shell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseadvisor). U kunt ook [automatisch afstemmen](sql-database-automatic-tuning.md) inschakelen, zodat SQL database deze afstemmings aanbevelingen automatisch kunt implementeren.
+### <a name="database-advisors"></a>Database adviseurs
+' Azure SQL Database bevat [databaseadviseurs](sql-database-advisor.md) die aanbevelingen voor prestatieafstemming bieden voor afzonderlijke en gepoolde databases. Deze aanbevelingen zijn beschikbaar in de Azure-portal en met [PowerShell.](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseadvisor) U ook [automatische afstemming](sql-database-automatic-tuning.md) inschakelen, zodat SQL Database deze tuningaanbevelingen automatisch kan implementeren.
 
 ### <a name="query-performance-insight"></a>Inzicht in queryprestaties
 
-[Query Performance Insight](sql-database-query-performance.md) toont de prestaties in het Azure portal van de meest gebruikte en langste query's die worden uitgevoerd voor één en gepoolde data bases.
+[Queryperformance Insight](sql-database-query-performance.md) toont de prestaties in de Azure-portal van de meest tijdrovende en langstlopende query's voor afzonderlijke en samengevoegde databases.
 
-## <a name="generate-intelligent-assessments-of-performance-issues"></a>Intelligente beoordelingen van prestatie problemen genereren
+## <a name="generate-intelligent-assessments-of-performance-issues"></a>Intelligente beoordelingen van prestatieproblemen genereren
 
-Azure SQL Database [intelligent Insights](sql-database-intelligent-insights.md) maakt gebruik van ingebouwde intelligentie om continu database gebruik te bewaken door middel van kunst matige intelligentie en detecteert storende gebeurtenissen die de prestaties nadelig beïnvloeden. Intelligent Insights detecteert automatisch prestatie problemen met data bases in Azure SQL Database op basis van de wacht tijden voor de query uitvoering, fouten of time-outs. Eenmaal gedetecteerd, wordt er een gedetailleerde analyse uitgevoerd waarmee een resource logboek (SQLInsights) wordt gegenereerd met een [intelligente evaluatie van de problemen](sql-database-intelligent-insights-troubleshoot-performance.md). Deze evaluatie bestaat uit een analyse van de hoofd oorzaak van het prestatie probleem van de data base en, waar mogelijk, aanbevelingen voor betere prestaties.
+Azure SQL Database [Intelligent Insights](sql-database-intelligent-insights.md) maakt gebruik van ingebouwde intelligentie om het gebruik van gegevens continu te monitoren door middel van kunstmatige intelligentie en storende gebeurtenissen te detecteren die slechte prestaties veroorzaken. Intelligent Insights detecteert automatisch prestatieproblemen met databases in Azure SQL Database op basis van wachttijden, fouten of time-outs voor query-uitvoering. Eenmaal gedetecteerd, wordt een gedetailleerde analyse uitgevoerd die een resourcelog genereert (SQLInsights genoemd) met een [intelligente beoordeling van de problemen.](sql-database-intelligent-insights-troubleshoot-performance.md) Deze beoordeling bestaat uit een hoofdoorzaakanalyse van het probleem van de databaseprestaties en, waar mogelijk, aanbevelingen voor prestatieverbeteringen.
 
-Intelligent Insights is een unieke mogelijkheid van ingebouwde intelligentie van Azure die de volgende waarde biedt:
+Intelligent Insights is een unieke mogelijkheid van azure ingebouwde intelligentie die de volgende waarde biedt:
 
 - Proactieve controle
-- Aangepaste prestatie inzichten
-- Vroegtijdige detectie van de prestaties van de data base verlagen
-- Hoofd oorzaak analyse van gedetecteerde problemen
-- Aanbevelingen voor prestatie verbetering
-- Mogelijkheden voor uitschalen op honderd duizenden data bases
-- Positieve impact op DevOps resources en de total cost of ownership
+- Inzichten op maat
+- Vroegtijdige detectie van verslechtering van de databaseprestaties
+- Hoofdoorzaakanalyse van gedetecteerde problemen
+- Aanbevelingen voor prestatieverbetering
+- Capaciteit uitschalen op honderdduizenden databases
+- Positieve impact op de resources van DevOps en de totale eigendomskosten
 
-## <a name="enable-the-streaming-export-of-metrics-and-resource-logs"></a>Streaming-export van metrische gegevens en bron logboeken inschakelen
+## <a name="enable-the-streaming-export-of-metrics-and-resource-logs"></a>Het streamen van statistieken en bronlogboeken inschakelen
 
-U kunt de [streaming-export van diagnostische telemetrie](sql-database-metrics-diag-logging.md) inschakelen en configureren op een van de volgende bestemmingen, met inbegrip van het intelligent Insights-bron logboek. Gebruik [SQL Analytics](../azure-monitor/insights/azure-sql.md) en andere mogelijkheden om deze extra diagnostische telemetrie te gebruiken om prestatie problemen te identificeren en op te lossen.
+U het [streamen van diagnostische telemetrie](sql-database-metrics-diag-logging.md) naar een van de verschillende bestemmingen inschakelen en configureren, waaronder het intelligent insights-bronlogboek. Gebruik [SQL Analytics](../azure-monitor/insights/azure-sql.md) en andere mogelijkheden om deze aanvullende diagnostische telemetrie te gebruiken om prestatieproblemen te identificeren en op te lossen.
 
-U kunt Diagnostische instellingen configureren voor het streamen van categorieën metrische gegevens en bron logboeken voor afzonderlijke data bases, gepoolde data bases, elastische groepen, beheerde exemplaren en data bases van instanties naar een van de volgende Azure-resources.
+U configureert diagnostische instellingen om categorieën metrische gegevens en bronlogboeken voor afzonderlijke databases, samengevoegde databases, elastische pools, beheerde instanties en instantiedatabases te streamen naar een van de volgende Azure-bronnen.
 
-### <a name="log-analytics-workspace-in-azure-monitor"></a>Log Analytics-werk ruimte in azure monitor
+### <a name="log-analytics-workspace-in-azure-monitor"></a>Log Analytics-werkruimte in Azure-monitor
 
-U kunt metrische gegevens en bron logboeken streamen naar een [log Analytics werk ruimte in azure monitor](../azure-monitor/platform/resource-logs-collect-workspace.md). Gegevens die hier worden gestreamd, kunnen worden gebruikt door [SQL Analytics](../azure-monitor/insights/azure-sql.md). Dit is een alleen-Cloud bewakings oplossing die intelligente bewaking van uw data bases bevat, waaronder prestatie rapporten, waarschuwingen en aanbevelingen voor risico beperking. Gegevens die naar een Log Analytics-werk ruimte worden gestreamd, kunnen worden geanalyseerd met andere bewakings gegevens die worden verzameld en biedt u ook de mogelijkheid om andere Azure Monitor functies, zoals waarschuwingen en visualisaties, te gebruiken.
+U statistieken en bronlogboeken streamen naar een [werkruimte log Analytics in Azure Monitor](../azure-monitor/platform/resource-logs-collect-workspace.md). Gegevens die hier worden gestreamd, kunnen worden verbruikt door [SQL Analytics,](../azure-monitor/insights/azure-sql.md)een cloudoplossing voor het monitoren van alleen gegevens die intelligente monitoring van uw databases biedt met prestatierapporten, waarschuwingen en aanbevelingen voor mitigatie. Gegevens die naar een Log Analytics-werkruimte worden gestreamd, kunnen worden geanalyseerd met andere monitoringgegevens die worden verzameld en stelt u ook in staat andere Azure Monitor-functies te gebruiken, zoals waarschuwingen en visualisaties.
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
-U kunt metrische gegevens en bron logboeken streamen naar [Azure Event hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md). Diagnostische telemetrie streamen naar Event hubs om de volgende functionaliteit te bieden:
+U statistieken en bronlogboeken streamen naar [Azure Event Hubs.](../azure-monitor/platform/resource-logs-stream-event-hubs.md) Diagnostische telemetrie streamen naar gebeurtenishubs om de volgende functionaliteit te bieden:
 
-- **Stroom logboeken naar logboek registratie van derden en telemetrie-systemen**
+- **Logboeken streamen naar logboekregistratie- en telemetriesystemen van derden**
 
-  U kunt al uw metrische gegevens en bron logboeken streamen naar één Event Hub voor het pipeen van een logboek met een SIEM of een logboek analyse programma van derden.
-- **Een aangepast telemetrie-en logboek registratie platform bouwen**
+  Stream al uw statistieken en bronlogboeken naar één gebeurtenishub om logboekgegevens te pipeteren naar een SIEM- of loganalysetool van derden.
+- **Een aangepast telemetrie- en logboekplatform bouwen**
 
-  Met de uiterst schaal bare functie voor publiceren en abonneren van Event hubs kunt u flexibele opname gegevens en resource logboeken maken in een aangepast telemetrie-platform. Zie [het ontwerp en de grootte van een telemetrie-platform op wereld wijd schalen op Azure Event hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) voor meer informatie.
-- **Bekijk de service status door gegevens te streamen naar Power BI**
+  De zeer schaalbare publicatie-abonneren aard van event hubs u flexibel inslikken metrics en resource logs in een aangepaste telemetrie platform. Zie [Het ontwerpen en dimensioneren van een telemetrieplatform op globale schaal op Azure-gebeurtenishubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) voor meer informatie.
+- **De status van de service weergeven door gegevens naar Power BI te streamen**
 
-  Gebruik Event Hubs, Stream Analytics en Power BI om uw diagnostische gegevens te transformeren naar bijna realtime inzichten op uw Azure-Services. Zie [Stream Analytics en Power BI: een real-time analyse dashboard voor het streamen van gegevens](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-power-bi-dashboard) voor meer informatie over deze oplossing.
+  Gebruik Gebeurtenishubs, Stream Analytics en Power BI om uw diagnostische gegevens om te zetten in bijna realtime inzichten over uw Azure-services. Zie [Stream Analytics en Power BI: een realtime analysedashboard voor het streamen van gegevens](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-power-bi-dashboard) voor meer informatie over deze oplossing.
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Metrische gegevens van Stream en bron logboeken naar [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md). Gebruik Azure Storage om grote hoeveel heden diagnostische telemetrie te archiveren voor een fractie van de kosten van de vorige twee opties voor gegevens stromen.
+Stream statistieken en bronlogboeken naar [Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md). Gebruik Azure-opslag om grote hoeveelheden diagnostische telemetrie te archiveren voor een fractie van de kosten van de vorige twee streamingopties.
 
-## <a name="use-extended-events-in-the-sql-database-engine"></a>Uitgebreide gebeurtenissen gebruiken in de SQL database-engine
+## <a name="use-extended-events-in-the-sql-database-engine"></a>Uitgebreide gebeurtenissen gebruiken in de SQL-databaseengine
 
-Daarnaast kunt u [uitgebreide gebeurtenissen](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) in SQL gebruiken voor meer geavanceerde bewaking en probleem oplossing. Met de architectuur Extended Events kunnen gebruikers zoveel of zo weinig gegevens verzamelen als nodig is om problemen op te lossen of te identificeren. Zie [Extended Events in SQL database](sql-database-xevent-db-diff-from-svr.md)voor meer informatie over het gebruik van uitgebreide gebeurtenissen in SQL database.
+Daarnaast u [uitgebreide gebeurtenissen](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) in SQL gebruiken voor aanvullende geavanceerde monitoring en probleemoplossing. De uitgebreide gebeurtenissenarchitectuur stelt gebruikers in staat om zoveel of zo weinig gegevens te verzamelen als nodig is om een prestatieprobleem op te lossen of te identificeren. Zie [Uitgebreide gebeurtenissen in SQL Database](sql-database-xevent-db-diff-from-svr.md)voor informatie over het gebruik van uitgebreide gebeurtenissen in SQL Database.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over intelligente prestatie aanbevelingen voor één en gepoolde data bases aanbevelingen voor de [prestaties van data base Advisor](sql-database-advisor.md).
-- Zie [Azure SQL intelligent Insights](sql-database-intelligent-insights.md)voor meer informatie over het automatisch bewaken van database prestaties met automatische diagnose en de oorzaak van prestatie problemen.
+- Zie [Prestatieaanbevelingen](sql-database-advisor.md)voor databaseadviseur voor meer informatie over intelligente prestatieaanbevelingen voor afzonderlijke en samengevoegde databases.
+- Zie [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md)voor meer informatie over het automatisch monitoren van databaseprestaties met geautomatiseerde diagnostiek en analyse van de hoofdoorzaak van prestatieproblemen.
 '''''''''

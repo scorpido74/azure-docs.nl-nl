@@ -1,55 +1,55 @@
 ---
-title: Inkomende/uitgaande IP-adressen
-description: Meer informatie over hoe binnenkomende en uitgaande IP-adressen worden gebruikt in Azure App Service, wanneer ze worden gewijzigd en hoe u de adressen voor uw app kunt vinden.
+title: Binnenkomende/uitgaande IP-adressen
+description: Lees hoe inkomende en uitgaande IP-adressen worden gebruikt in Azure App Service, wanneer ze worden gewijzigd en hoe u de adressen voor uw app vinden.
 ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: aebce04fe2f1b055a4d498021dcd25144cd122a9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279206"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Binnenkomende en uitgaande IP-adressen in Azure App Service
 
-[Azure app service](overview.md) is een service met meerdere tenants, met uitzonde ring van [app service omgevingen](environment/intro.md). Apps die zich niet in een App Service omgeving bevinden (niet in de [geïsoleerde laag](https://azure.microsoft.com/pricing/details/app-service/)) delen netwerk infrastructuur met andere apps. Als gevolg hiervan kunnen de inkomende en uitgaande IP-adressen van een app afwijken en kunnen zelfs in bepaalde situaties worden gewijzigd. 
+[Azure App Service](overview.md) is een multi-tenantservice, met uitzondering van [App-serviceomgevingen.](environment/intro.md) Apps die zich niet in een App-serviceomgeving bevinden (niet in de [geïsoleerde laag)](https://azure.microsoft.com/pricing/details/app-service/)delen netwerkinfrastructuur met andere apps. Als gevolg hiervan kunnen de inkomende en uitgaande IP-adressen van een app verschillend zijn en zelfs in bepaalde situaties veranderen. 
 
-[App service omgevingen](environment/intro.md) gebruiken specifieke netwerk infrastructuren, zodat apps die in een app service omgeving worden uitgevoerd, statische, specifieke IP-adressen voor binnenkomende en uitgaande verbindingen krijgen.
+[App-serviceomgevingen](environment/intro.md) maken gebruik van speciale netwerkinfrastructuren, zodat apps die in een App Service-omgeving worden uitgevoerd, statische, specifieke IP-adressen krijgen voor zowel inkomende als uitgaande verbindingen.
 
-## <a name="when-inbound-ip-changes"></a>Wanneer inkomende IP-wijzigingen
+## <a name="when-inbound-ip-changes"></a>Bij binnenkomende IP-wijzigingen
 
-Ongeacht het aantal uitgeschaalde instanties heeft elke app één inkomend IP-adres. Het binnenkomende IP-adres kan veranderen wanneer u een van de volgende acties uitvoert:
+Ongeacht het aantal uitgeschaalde exemplaren heeft elke app één binnenkomend IP-adres. Het binnenkomende IP-adres kan veranderen wanneer u een van de volgende acties uitvoert:
 
-- Verwijder een app en maak deze opnieuw in een andere resource groep.
-- Verwijder de laatste app in een combi natie van resource groep _en_ regio en maak deze opnieuw.
-- Een bestaande SSL-binding verwijderen, bijvoorbeeld tijdens het vernieuwen van het certificaat (Zie [certificaat vernieuwen](configure-ssl-certificate.md#renew-certificate)).
+- Verwijder een app en maak deze opnieuw in een andere brongroep.
+- Verwijder de laatste app in een resourcegroep _en_ regiocombinatie en maak deze opnieuw.
+- Een bestaande SSL-binding verwijderen, bijvoorbeeld tijdens certificaatverlenging (zie [Certificaat verlengen).](configure-ssl-certificate.md#renew-certificate)
 
-## <a name="find-the-inbound-ip"></a>Het inkomende IP-adres zoeken
+## <a name="find-the-inbound-ip"></a>Het binnenkomende IP zoeken
 
-Voer de volgende opdracht uit in een lokale terminal:
+Voer gewoon de volgende opdracht uit in een lokale terminal:
 
 ```bash
 nslookup <app-name>.azurewebsites.net
 ```
 
-## <a name="get-a-static-inbound-ip"></a>Een statisch inkomend IP-adres ophalen
+## <a name="get-a-static-inbound-ip"></a>Een statisch binnenkomend IP-adres
 
-Soms wilt u mogelijk een toegewezen, statisch IP-adres voor uw app. Als u een statisch inkomend IP-adres wilt ophalen, moet u een [SSL-binding op basis van IP](configure-ssl-bindings.md#secure-a-custom-domain)configureren. Als u niet echt SSL-functionaliteit nodig hebt om uw app te beveiligen, kunt u zelfs een zelfondertekend certificaat voor deze binding uploaden. In een SSL-binding op basis van IP is het certificaat gebonden aan het IP-adres zelf, dus App Service een statisch IP-adres in te stellen om het uit te voeren. 
+Soms wilt u misschien een specifiek, statisch IP-adres voor uw app. Als u een statisch binnenkomend IP-adres wilt krijgen, moet u een [IP-gebaseerde SSL-binding](configure-ssl-bindings.md#secure-a-custom-domain)configureren. Als u eigenlijk geen SSL-functionaliteit nodig hebt om uw app te beveiligen, u zelfs een zelfondertekend certificaat uploaden voor deze binding. In een IP-gebaseerde SSL-binding is het certificaat gebonden aan het IP-adres zelf, dus App Service voorziet in een statisch IP-adres om dit mogelijk te maken. 
 
-## <a name="when-outbound-ips-change"></a>Wanneer uitgaande Ip's worden gewijzigd
+## <a name="when-outbound-ips-change"></a>Wanneer uitgaande IP's veranderen
 
-Ongeacht het aantal uitgeschaalde instanties heeft elke app op elk gewenst moment een bepaald aantal uitgaande IP-adressen. Elke uitgaande verbinding van de App Service-app, zoals een back-enddatabase, gebruikt een van de uitgaande IP-adressen als het IP-bron adres. U kunt niet vooraf weten welk IP-adres een gegeven app-exemplaar gebruikt voor het maken van de uitgaande verbinding. Daarom moet uw back-end-service zijn firewall openen voor alle uitgaande IP-adressen van uw app.
+Ongeacht het aantal uitgeschaalde exemplaren heeft elke app op een bepaald moment een vast aantal uitgaande IP-adressen. Elke uitgaande verbinding van de App Service-app, zoals een back-enddatabase, gebruikt een van de uitgaande IP-adressen als het IP-adres van de oorsprong. U niet van tevoren weten welk IP-adres een bepaalde app-instantie zal gebruiken om de uitgaande verbinding te maken, dus uw back-endservice moet de firewall openen voor alle uitgaande IP-adressen van uw app.
 
-De set met uitgaande IP-adressen voor uw app verandert wanneer u uw app schaalt tussen de lagere lagen (**Basic**, **Standard**en **Premium**) en de **Premium v2** -laag.
+De set uitgaande IP-adressen voor uw app verandert wanneer u uw app schaalt tussen de lagere lagen **(Basic**, **Standard**en **Premium)** en de **Premium V2-laag.**
 
-U kunt de set met alle mogelijke uitgaande IP-adressen die uw app kan gebruiken, ongeacht de prijs categorieën, door te zoeken naar de eigenschap `possibleOutboundIpAddresses` of in het veld **extra uitgaande IP-adressen** op de Blade **eigenschappen** in de Azure Portal. Zie [uitgaande Ip's zoeken](#find-outbound-ips).
+U de set van alle mogelijke uitgaande IP-adressen die uw app kan gebruiken, ongeacht de prijsniveaus, vinden door te zoeken naar de `possibleOutboundIpAddresses` eigenschap of in het veld Extra uitgaande **IP-adressen** in het eigenschappenblad in de Azure-portal. **Properties** Zie [Uitgaande IP's zoeken](#find-outbound-ips).
 
-## <a name="find-outbound-ips"></a>Uitgaande Ip's zoeken
+## <a name="find-outbound-ips"></a>Outbound IP's zoeken
 
-Als u de uitgaande IP-adressen wilt vinden die momenteel worden gebruikt door uw app in de Azure Portal, klikt u op **Eigenschappen** in de linkernavigatiebalk van de app. Deze worden weer gegeven in het veld **uitgaande IP-adressen** .
+Als u de uitgaande IP-adressen wilt vinden die momenteel door uw app in de Azure-portal worden gebruikt, klikt u op **Eigenschappen** in de linkernavigatie van uw app. Ze worden weergegeven in het veld **Uitgaande IP-adressen.**
 
-U kunt dezelfde informatie vinden door de volgende opdracht uit te voeren in de [Cloud shell](../cloud-shell/quickstart.md).
+U dezelfde informatie vinden door de volgende opdracht uit te voeren in de [Cloud Shell.](../cloud-shell/quickstart.md)
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
@@ -59,9 +59,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-Klik op **Eigenschappen** in de linkernavigatiebalk van uw app om _alle_ mogelijke uitgaande IP-adressen voor uw app te vinden, ongeacht de prijs categorie. Deze worden weer gegeven in het veld **extra uitgaande IP-adressen** .
+Als u _alle_ mogelijke uitgaande IP-adressen voor uw app wilt vinden, ongeacht de prijsniveaus, klikt u op **Eigenschappen** in de linkernavigatie van uw app. Ze worden weergegeven in het veld **Extra uitgaande IP-adressen.**
 
-U kunt dezelfde informatie vinden door de volgende opdracht uit te voeren in de [Cloud shell](../cloud-shell/quickstart.md).
+U dezelfde informatie vinden door de volgende opdracht uit te voeren in de [Cloud Shell.](../cloud-shell/quickstart.md)
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
@@ -73,7 +73,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het beperken van inkomend verkeer op bron-IP-adressen.
+Meer informatie over het beperken van binnenkomend verkeer op bron-IP-adressen.
 
 > [!div class="nextstepaction"]
 > [Statische IP-beperkingen](app-service-ip-restrictions.md)

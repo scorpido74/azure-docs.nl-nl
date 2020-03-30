@@ -1,38 +1,38 @@
 ---
-title: Naslag C# informatie voor ontwikkel aars van Azure functions script
-description: Meer informatie over het ontwikkelen van C# Azure functions met behulp van script.
+title: Naslaginformatie over scriptontwikkelaars van Azure Functions C#
+description: Meer informatie over het ontwikkelen van Azure-functies met behulp van C#-script.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: 76af1f51c83e9554a51e6c17266fac739e6bd6b1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276814"
 ---
-# <a name="azure-functions-c-script-csx-developer-reference"></a>Naslag C# informatie voor de ontwikkelaar van Azure functions script (. CSX)
+# <a name="azure-functions-c-script-csx-developer-reference"></a>Verwijzing naar Azure Functions C# script (.csx)
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-dotnet-class-library.md -->
 
-Dit artikel is een inleiding tot het ontwikkelen van Azure Functions C# met behulp van script ( *. CSX*).
+Dit artikel is een inleiding tot het ontwikkelen van Azure-functies met behulp van C# script (*.csx*).
 
-Azure Functions ondersteunt C# en C# script programmeer talen. [Zie C# Naslag informatie voor ontwikkel aars](functions-dotnet-class-library.md)voor meer informatie over [het gebruik C# van een Visual Studio Class Library-project](functions-develop-vs.md).
+Azure Functions ondersteunt programmeertalen C# en C# script. Zie [C# developer reference](functions-dotnet-class-library.md)als u op zoek bent naar richtlijnen voor [het gebruik van C# in een visual studio-bibliotheekproject.](functions-develop-vs.md)
 
-In dit artikel wordt ervan uitgegaan dat u de [hand leiding voor de Azure functions-ontwikkel aars](functions-reference.md)al hebt gelezen.
+In dit artikel wordt ervan uitgegaan dat u de [handleiding azure functions-ontwikkelaars](functions-reference.md)al hebt gelezen.
 
-## <a name="how-csx-works"></a>Hoe. CSX werkt
+## <a name="how-csx-works"></a>Hoe .csx werkt
 
-De C# script ervaring voor Azure functions is gebaseerd op de [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction). Gegevens stromen naar uw C# functie via methode argumenten. Argument namen worden opgegeven in een `function.json`-bestand en er zijn vooraf gedefinieerde namen voor het openen van items zoals de functie logger en annulerings tokens.
+De C#-scriptervaring voor Azure-functies is gebaseerd op de [Azure WebJobs SDK.](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction) Gegevens stromen via methodeargumenten naar uw C#-functie. Argumentnamen worden opgegeven `function.json` in een bestand en er zijn vooraf gedefinieerde namen voor toegang tot zaken als de functielogger en annuleringstokens.
 
-Met de *CSX* -indeling kunt u minder ' standaard ' schrijven en zich richten op het schrijven C# van een functie. In plaats van alles in een naam ruimte en klasse te laten teruglopen, definieert u een `Run` methode. Neem de volgende assembly-verwijzingen en naam ruimten aan het begin van het bestand op.
+Met het *.csx-formaat* u minder boilerplate schrijven en u concentreren op het schrijven van slechts een C#-functie. In plaats van alles in een naamruimte `Run` en klasse te verpakken, definieerje je gewoon een methode. Voeg zoals gewoonlijk alle verwijzingen naar de assemblage en naamruimten aan het begin van het bestand toe.
 
-De *CSX* -bestanden van een functie-app worden gecompileerd wanneer een exemplaar wordt geïnitialiseerd. Deze compilatie stap betekent dat taken zoals koude start mogelijk langer duren C# voor script functies vergeleken C# met klassen bibliotheken. Deze compilatie stap is ook de C# reden waarom script functies kunnen worden bewerkt in de C# Azure Portal, terwijl klassen bibliotheken niet zijn.
+De *CSX-bestanden van een* functie-app worden gecompileerd wanneer een instantie wordt geïnitialiseerd. Deze compilatiestap betekent dat zaken als koude start langer kunnen duren voor C# scriptfuncties in vergelijking met C# klassebibliotheken. Deze compilatiestap is ook de reden waarom C#-scriptfuncties kunnen worden bewerkt in de Azure-portal, terwijl C#-klassebibliotheken dat niet zijn.
 
 ## <a name="folder-structure"></a>Mapstructuur
 
-De mapstructuur voor een C# script project ziet er als volgt uit:
+De mapstructuur voor een C#-scriptproject ziet er als volgt uit:
 
 ```
 FunctionsProject
@@ -49,13 +49,13 @@ FunctionsProject
  | - bin
 ```
 
-Er is een gedeeld [host. json](functions-host-json.md) -bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een eigen code bestand (. CSX) en een bindings configuratie bestand (function. json).
+Er is een gedeeld [host.json-bestand](functions-host-json.md) dat kan worden gebruikt om de functie-app te configureren. Elke functie heeft zijn eigen codebestand (.csx) en bindend configuratiebestand (function.json).
 
-De bindings uitbreidingen die zijn vereist in [versie 2. x en latere versies](functions-versions.md) van de functions runtime worden gedefinieerd in het `extensions.csproj` bestand, met de daad werkelijke bibliotheek bestanden in de map `bin`. Wanneer u lokaal ontwikkelt, moet u [bindings uitbreidingen registreren](./functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in de Azure Portal, wordt deze registratie voor u uitgevoerd.
+De bindende extensies die nodig zijn in [versie 2.x en latere versies](functions-versions.md) van de runtime functies worden gedefinieerd in het `extensions.csproj` bestand, met de werkelijke bibliotheekbestanden in de `bin` map. Wanneer u lokaal ontwikkelt, moet u [bindende extensies registreren.](./functions-bindings-register.md#extension-bundles) Bij het ontwikkelen van functies in de Azure-portal wordt deze registratie voor u uitgevoerd.
 
-## <a name="binding-to-arguments"></a>Binding met argumenten
+## <a name="binding-to-arguments"></a>Binding aan argumenten
 
-Invoer-of uitvoer gegevens zijn gekoppeld aan C# een script functie parameter via de eigenschap `name` in het configuratie bestand *Function. json* . In het volgende voor beeld ziet u een *Function. json* -bestand en het *Run. CSX* -bestand voor een functie die door een wachtrij wordt geactiveerd. De para meter voor het ontvangen van gegevens uit het wachtrij bericht heeft de naam `myQueueItem`, omdat dat de waarde van de eigenschap `name` is.
+Invoer- of uitvoergegevens zijn gebonden aan een `name` C#-scriptfunctieparameter via de eigenschap in het configuratiebestand *function.json.* In het volgende voorbeeld wordt een *function.json-bestand* en *run.csx-bestand* weergegeven voor een functie die in de wachtrij wordt geactiveerd. De parameter die gegevens uit het `myQueueItem` wachtrijbericht ontvangt, wordt `name` benoemd omdat dat de waarde van de eigenschap is.
 
 ```json
 {
@@ -85,19 +85,19 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 }
 ```
 
-De `#r`-instructie wordt [verderop in dit artikel](#referencing-external-assemblies)uitgelegd.
+De `#r` verklaring wordt [later in dit artikel](#referencing-external-assemblies)uitgelegd.
 
 ## <a name="supported-types-for-bindings"></a>Ondersteunde typen voor bindingen
 
-Elke binding heeft zijn eigen ondersteunde typen. bijvoorbeeld, een BLOB-trigger kan worden gebruikt met een teken reeks parameter, een POCO-para meter, een `CloudBlockBlob` para meter of een van verschillende andere ondersteunde typen. Het [referentie-artikel voor bindingen voor BLOB-bindingen](functions-bindings-storage-blob-trigger.md#usage) bevat een lijst met alle ondersteunde parameter typen voor BLOB-triggers. Zie voor meer informatie [Triggers en bindingen](functions-triggers-bindings.md) en de [verwijzings documenten voor bindingen voor elk bindings type](functions-triggers-bindings.md#next-steps).
+Elke binding heeft zijn eigen ondersteunde types; Een blobtrigger kan bijvoorbeeld worden gebruikt met een tekenreeksparameter, `CloudBlockBlob` een POCO-parameter, een parameter of een van de andere ondersteunde typen. In [het bindend referentieartikel voor blobbindingen](functions-bindings-storage-blob-trigger.md#usage) worden alle ondersteunde parametertypen voor blobtriggers weergegeven. Zie [Triggers en bindingen en](functions-triggers-bindings.md) de bindende [referentiedocumenten voor elk bindend type voor](functions-triggers-bindings.md#next-steps)meer informatie.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-## <a name="referencing-custom-classes"></a>Verwijzen naar aangepaste klassen
+## <a name="referencing-custom-classes"></a>Aangepaste klassen verwijzen
 
-Als u een aangepaste, verouderde POCO-klasse (CLR object) moet gebruiken, kunt u de klassedefinitie in hetzelfde bestand opnemen of in een afzonderlijk bestand plaatsen.
+Als u een aangepaste POCO-klasse (Plain Old CLR Object) moet gebruiken, u de klassendefinitie in hetzelfde bestand opnemen of in een apart bestand plaatsen.
 
-In het volgende voor beeld ziet u een voor beeld van *Run. CSX* dat een poco-klassedefinitie bevat.
+In het volgende voorbeeld wordt een voorbeeld *van run.csx* weergegeven met een POCO-klassendefinitie.
 
 ```csharp
 public static void Run(string myBlob, out MyClass myQueueItem)
@@ -112,13 +112,13 @@ public class MyClass
 }
 ```
 
-Voor een POCO-klasse moet voor elke eigenschap een getter en setter worden gedefinieerd.
+Een POCO-klasse moet een getter en setter hebben die voor elke eigenschap zijn gedefinieerd.
 
-## <a name="reusing-csx-code"></a>CSX code opnieuw gebruiken
+## <a name="reusing-csx-code"></a>Csx-code opnieuw gebruiken
 
-U kunt klassen en methoden gebruiken die zijn gedefinieerd in andere *. CSX* -bestanden in het bestand *Run. CSX* . Gebruik hiervoor `#load`-instructies in het bestand *Run. CSX* . In het volgende voor beeld wordt een logboek registratie routine met de naam `MyLogger` gedeeld in *myLogger. CSX* en in *Run. CSX* geladen met behulp van de `#load`-instructie:
+U klassen en methoden gebruiken die zijn gedefinieerd in andere *.csx-bestanden* in uw *run.csx-bestand.* Gebruik daarvoor `#load` richtlijnen in uw *run.csx-bestand.* In het volgende voorbeeld wordt `MyLogger` een naam registratieroutine gedeeld in *myLogger.csx* `#load` en in *run.csx* geladen met behulp van de richtlijn:
 
-Voor beeld van *Run. CSX*:
+Voorbeeld *run.csx:*
 
 ```csharp
 #load "mylogger.csx"
@@ -132,7 +132,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-Voor beeld van *mylogger. CSX*:
+Voorbeeld *mylogger.csx:*
 
 ```csharp
 public static void MyLogger(ILogger log, string logtext)
@@ -141,9 +141,9 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-Het gebruik van een gedeeld *CSX* -bestand is een gemeen schappelijk patroon wanneer u de gegevens die tussen functies worden door gegeven, sterk wilt typen met behulp van een poco-object. In het volgende vereenvoudigde voor beeld wordt met een trigger voor HTTP-triggers en-wacht rijen een POCO-object met de naam `Order` om de order gegevens sterk te typen:
+Het gebruik van een gedeeld *.csx-bestand* is een veelvoorkomend patroon wanneer u de gegevens die tussen functies worden doorgegeven met behulp van een POCO-object sterk wilt typen. In het volgende vereenvoudigde voorbeeld delen een HTTP-trigger en `Order` wachtrijtrigger een POCO-object dat is genoemd om de ordergegevens sterk te typen:
 
-Voor beeld van *Run. CSX* voor http-trigger:
+Voorbeeld *run.csx* voor HTTP-trigger:
 
 ```cs
 #load "..\shared\order.csx"
@@ -169,7 +169,7 @@ public static async Task<HttpResponseMessage> Run(Order req, IAsyncCollector<Ord
 }
 ```
 
-Voor beeld van *Run. CSX* voor de wachtrij trigger:
+Voorbeeld *run.csx* voor wachtrijtrigger:
 
 ```cs
 #load "..\shared\order.csx"
@@ -186,7 +186,7 @@ public static void Run(Order myQueueItem, out Order outputQueueItem, ILogger log
 }
 ```
 
-Voor beeld van *order. CSX*:
+Voorbeeld *order.csx:*
 
 ```cs
 public class Order
@@ -208,25 +208,25 @@ public class Order
 }
 ```
 
-U kunt een relatief pad gebruiken met de `#load`-instructie:
+U een relatief `#load` pad gebruiken met de richtlijn:
 
-* `#load "mylogger.csx"` een bestand dat zich in de map functie bevindt, wordt geladen.
-* `#load "loadedfiles\mylogger.csx"` een bestand dat zich in een map in de map function bevindt, wordt geladen.
-* `#load "..\shared\mylogger.csx"` een bestand laden dat zich in een map op hetzelfde niveau bevindt als de map functie, dat wil zeggen, direct onder *wwwroot*.
+* `#load "mylogger.csx"`laadt een bestand in de functiemap.
+* `#load "loadedfiles\mylogger.csx"`hiermee wordt een bestand in een map in de functiemap geladen.
+* `#load "..\shared\mylogger.csx"`laadt een bestand in een map op hetzelfde niveau als de functiemap, dat wil zeggen direct onder *wwwroot.*
 
-De `#load`-instructie werkt alleen met *. CSX* -bestanden, niet met *. cs* -bestanden.
+De `#load` richtlijn werkt alleen met *.csx-bestanden,* niet met *.cs-bestanden.*
 
-## <a name="binding-to-method-return-value"></a>Binding met retour waarde van methode
+## <a name="binding-to-method-return-value"></a>Binding met de retourwaarde van de methode
 
-U kunt een methode retour waarde voor een uitvoer binding gebruiken met behulp van de naam `$return` in *Function. json*. Zie [Triggers en bindingen](./functions-bindings-return-value.md)voor voor beelden.
+U een methoderetourwaarde gebruiken voor een `$return` uitvoerbinding met de naam in *function.json*. Zie Triggers [en bindingen](./functions-bindings-return-value.md)voor voorbeelden.
 
-Gebruik de retour waarde alleen als de uitvoering van een geslaagde functie altijd resulteert in een retour waarde die aan de uitvoer binding moet worden door gegeven. Gebruik anders `ICollector` of `IAsyncCollector`, zoals wordt weer gegeven in de volgende sectie.
+Gebruik de retourwaarde alleen als een succesvolle functieuitvoering altijd resulteert in een retourwaarde die moet worden doorgegeven aan de uitvoerbinding. Gebruik `ICollector` of, `IAsyncCollector`zoals in de volgende sectie wordt weergegeven.
 
-## <a name="writing-multiple-output-values"></a>Meerdere uitvoer waarden schrijven
+## <a name="writing-multiple-output-values"></a>Meerdere uitvoerwaarden schrijven
 
-Als u meerdere waarden naar een uitvoer binding wilt schrijven, of als het aanroepen van een geslaagde functie ertoe kan leiden dat er niets kan worden door gegeven aan de uitvoer binding, gebruikt u de [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) typen. Deze typen zijn alleen-schrijven verzamelingen die naar de uitvoer binding worden geschreven wanneer de methode is voltooid.
+Als u meerdere waarden wilt schrijven naar een uitvoerbinding of als een succesvolle functieaanroep [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) er mogelijk niet toe leidt dat er iets wordt doorgegeven aan de uitvoerbinding, gebruikt u de typen of typen. Deze typen zijn alleen-schrijfverzamelingen die naar de uitvoerbinding worden geschreven wanneer de methode is voltooid.
 
-In dit voor beeld worden meerdere wachtrij berichten naar dezelfde wachtrij geschreven met behulp van `ICollector`:
+In dit voorbeeld worden meerdere wachtrijberichten `ICollector`in dezelfde wachtrij geschreven met :
 
 ```csharp
 public static void Run(ICollector<string> myQueue, ILogger log)
@@ -238,7 +238,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>Logboekregistratie
 
-Als u de uitvoer wilt registreren in C#uw streaming-logboeken, neemt u een argument van het type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)op. U kunt het beste een naam `log`. Vermijd het gebruik van `Console.Write` in Azure Functions.
+Als u de uitvoer wilt registreren bij uw streaminglogboeken in C#, neemt u een argument van het type [ILogger op.](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) We raden u `log`aan deze naam te noemen. Vermijd `Console.Write` het gebruik in Azure-functies.
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -248,11 +248,11 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> Voor informatie over een recentere logboek registratie raamwerk dat u kunt gebruiken in plaats van `TraceWriter`, raadpleegt u [Logboeken schrijven in C# functies](functions-monitoring.md#write-logs-in-c-functions) in het artikel **controle Azure functions** .
+> Zie Logboeken schrijven in C#-functies `TraceWriter`in het artikel **Azure-functies controleren** voor informatie over een nieuwer logboekenframework dat u gebruiken in plaats [van: Logboeken in C#-functies.](functions-monitoring.md#write-logs-in-c-functions)
 
-## <a name="async"></a>Asynchroon
+## <a name="async"></a>Async
 
-Als u een functie [asynchroon](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)wilt maken, gebruikt u het sleutel woord `async` en retourneert u een `Task`-object.
+Als u een functie [asynchroon wilt](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)maken, gebruikt u het `async` trefwoord en retourneert u een `Task` object.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -264,13 +264,13 @@ public async static Task ProcessQueueMessageAsync(
 }
 ```
 
-U kunt `out` para meters niet gebruiken in async-functies. Voor uitvoer bindingen gebruikt u in plaats daarvan de [functie retour waarde](#binding-to-method-return-value) of een [Collector-object](#writing-multiple-output-values) .
+U geen `out` parameters gebruiken in async-functies. Gebruik in plaats daarvan de [functieretourwaarde](#binding-to-method-return-value) of een [verzamelobject](#writing-multiple-output-values) voor uitvoerbindingen.
 
-## <a name="cancellation-tokens"></a>Annulerings tokens
+## <a name="cancellation-tokens"></a>Annuleringstokens
 
-Een functie kan een [CancellationToken](/dotnet/api/system.threading.cancellationtoken) -para meter accepteren, waardoor het besturings systeem uw code op de hoogte stelt wanneer de functie wordt beëindigd. U kunt deze melding gebruiken om ervoor te zorgen dat de functie niet onverwacht wordt beëindigd op een manier die gegevens in een inconsistente status laat.
+Een functie kan een [parameter CancellationToken](/dotnet/api/system.threading.cancellationtoken) accepteren, waarmee het besturingssysteem uw code kan melden wanneer de functie op het punt staat te worden beëindigd. U deze melding gebruiken om ervoor te zorgen dat de functie niet onverwacht wordt beëindigd op een manier die gegevens in een inconsistente status achterlaat.
 
-In het volgende voor beeld ziet u hoe u kunt controleren op verdere beëindiging van de functie.
+In het volgende voorbeeld ziet u hoe u controleren op dreigende functiebeëindiging.
 
 ```csharp
 using System;
@@ -295,9 +295,9 @@ public static void Run(
 }
 ```
 
-## <a name="importing-namespaces"></a>Naam ruimten importeren
+## <a name="importing-namespaces"></a>Naamruimten importeren
 
-Als u naam ruimten wilt importeren, kunt u dit zo gebruikelijk doen met de component `using`.
+Als u naamruimten moet importeren, u dit `using` zoals gewoonlijk doen, met de clausule.
 
 ```csharp
 using System.Net;
@@ -307,7 +307,7 @@ using Microsoft.Extensions.Logging;
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 ```
 
-De volgende naam ruimten worden automatisch geïmporteerd en zijn daarom optioneel:
+De volgende naamruimten worden automatisch geïmporteerd en zijn daarom optioneel:
 
 * `System`
 * `System.Collections.Generic`
@@ -318,9 +318,9 @@ De volgende naam ruimten worden automatisch geïmporteerd en zijn daarom optione
 * `Microsoft.Azure.WebJobs`
 * `Microsoft.Azure.WebJobs.Host`
 
-## <a name="referencing-external-assemblies"></a>Verwijzen naar externe assembly's
+## <a name="referencing-external-assemblies"></a>Verwijzen naar externe samenstellingen
 
-Voeg voor Framework-assembly's verwijzingen toe met behulp van de `#r "AssemblyName"`-instructie.
+Voeg voor kadersamenstellingen referenties toe `#r "AssemblyName"` met behulp van de richtlijn.
 
 ```csharp
 #r "System.Web.Http"
@@ -333,7 +333,7 @@ using Microsoft.Extensions.Logging;
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 ```
 
-De volgende assembly's worden automatisch toegevoegd door de Azure Functions hosting omgeving:
+De volgende samenstellingen worden automatisch toegevoegd door de hostingomgeving azure functions:
 
 * `mscorlib`
 * `System`
@@ -346,7 +346,7 @@ De volgende assembly's worden automatisch toegevoegd door de Azure Functions hos
 * `System.Web.Http`
 * `System.Net.Http.Formatting`
 
-Naar de volgende assembly's kan worden verwezen met een eenvoudige naam (bijvoorbeeld `#r "AssemblyName"`):
+Naar de volgende samenstellingen kan worden verwezen onder `#r "AssemblyName"`de naam "Simple-name":
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -355,22 +355,22 @@ Naar de volgende assembly's kan worden verwezen met een eenvoudige naam (bijvoor
 * `Microsoft.AspNet.WebHooks.Common`
 * `Microsoft.Azure.NotificationHubs`
 
-## <a name="referencing-custom-assemblies"></a>Verwijzen naar aangepaste assembly's
+## <a name="referencing-custom-assemblies"></a>Aangepaste samenstellingen verwijzen
 
-Als u wilt verwijzen naar een aangepaste assembly, kunt u een *gedeelde* assembly of een *persoonlijke* assembly gebruiken:
+Als u wilt verwijzen naar een aangepaste assemblage, u een *gedeelde* assemblage of een *privéassemblage* gebruiken:
 
-* Gedeelde assembly's worden gedeeld met alle functies in een functie-app. Als u wilt verwijzen naar een aangepaste assembly, uploadt u de assembly naar een map met de naam `bin` in de hoofdmap van de [functie-app](functions-reference.md#folder-structure) (wwwroot).
+* Gedeelde samenstellingen worden gedeeld over alle functies binnen een functie-app. Als u naar een aangepaste verzameling wilt `bin` verwijzen, uploadt u de verzameling naar een map met de naam in de hoofdmap van de [functie-app](functions-reference.md#folder-structure) (wwwroot).
 
-* Persoonlijke assembly's maken deel uit van de context van een bepaalde functie en ondersteunen het laden van verschillende versies. Persoonlijke assembly's moeten worden geüpload in een `bin` map in de functie Directory. Verwijs naar de assembly's met de bestands naam, bijvoorbeeld `#r "MyAssembly.dll"`.
+* Privéassemblages maken deel uit van de context van een bepaalde functie en ondersteunen sideloading van verschillende versies. Privévergaderingen moeten worden geüpload in een `bin` map in de functiemap. Verwijs naar de verzamelingen met `#r "MyAssembly.dll"`de bestandsnaam, zoals .
 
-Zie de sectie over [pakket beheer](#using-nuget-packages)voor informatie over het uploaden van bestanden naar uw functie map.
+Zie de sectie over [pakketbeheer](#using-nuget-packages)voor informatie over het uploaden van bestanden naar uw functiemap.
 
-### <a name="watched-directories"></a>Gevolgde directory's
+### <a name="watched-directories"></a>Bekeken mappen
 
-De map met het functie script bestand wordt automatisch bekeken voor wijzigingen in assembly's. Als u wilt controleren op assembly wijzigingen in andere directory's, voegt u deze toe aan de `watchDirectories` lijst in [host. json](functions-host-json.md).
+De map met het functiescriptbestand wordt automatisch in de gaten gehouden voor wijzigingen in verzamelingen. Als u wilt kijken naar wijzigingen in `watchDirectories` andere mappen, voegt u deze toe aan de lijst in [host.json](functions-host-json.md).
 
 ## <a name="using-nuget-packages"></a>NuGet-pakketten gebruiken
-Als u NuGet-pakketten wilt gebruiken in een functie van C# 2. x en hoger, uploadt u een *functie. project* bestand naar de map van de functie in het bestands systeem van de functie-app. Hier volgt een voor beeld van een *functie. project* -bestand waarmee een verwijzing wordt toegevoegd aan *micro soft. ProjectOxford. Face* versie *1.1.0*:
+Als u NuGet-pakketten wilt gebruiken in een functie van 2.x en later C#, uploadt u een *function.proj-bestand* naar de map van de functie in het bestandssysteem van de functie-app. Hier is een voorbeeld *function.proj* bestand dat een verwijzing naar *Microsoft.ProjectOxford.Face* versie *1.1.0*toevoegt:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -384,12 +384,12 @@ Als u NuGet-pakketten wilt gebruiken in een functie van C# 2. x en hoger, upload
 </Project>
 ```
 
-Als u een aangepaste NuGet-feed wilt gebruiken, geeft u de feed op in een *NuGet. config* -bestand in de hoofdmap van het functie-app. Zie [Configuring NuGet Behavior](/nuget/consume-packages/configuring-nuget-behavior)(Engelstalig) voor meer informatie.
+Als u een aangepaste NuGet-feed wilt gebruiken, geeft u de feed op in een *Nuget.Config-bestand* in de hoofdmap van de functie-app. Zie [NuGet-gedrag configureren](/nuget/consume-packages/configuring-nuget-behavior)voor meer informatie .
 
 > [!NOTE]
-> In 1. x C# -functies wordt naar NuGet-pakketten verwezen met een *project. json* -bestand in plaats van een *functie. proj* -bestand.
+> In 1.x C#-functies wordt naar NuGet-pakketten verwezen met een *project.json-bestand* in plaats van een *function.proj-bestand.*
 
-Voor 1. x-functies gebruikt u in plaats daarvan een *project. json* -bestand. Hier volgt een voor beeld van een *project. json* -bestand:
+Gebruik in plaats daarvan een *project.json-bestand* voor 1.x-functies. Hier is een voorbeeld *project.json* bestand:
 
 ```json
 {
@@ -403,11 +403,11 @@ Voor 1. x-functies gebruikt u in plaats daarvan een *project. json* -bestand. Hi
 }
 ```
 
-### <a name="using-a-functionproj-file"></a>Een bestand function. proj gebruiken
+### <a name="using-a-functionproj-file"></a>Een function.proj-bestand gebruiken
 
-1. Open de functie in de Azure Portal. Op het tabblad Logboeken wordt de uitvoer van de pakket installatie weer gegeven.
-2. Gebruik een van de methoden die worden beschreven in de [functie-app-bestanden bijwerken](functions-reference.md#fileupdate) in het onderwerp Azure functions Naslag informatie voor ontwikkel aars voor het uploaden van een *functie. proj* bestand.
-3. Nadat het bestand *Function. proj* is geüpload, ziet u uitvoer zoals het volgende voor beeld in het streaming-logboek van uw functie:
+1. Open de functie in de Azure-portal. Op het tabblad Logboeken wordt de uitvoer van de pakketinstallatie weergegeven.
+2. Als u een *function.proj-bestand* wilt uploaden, gebruikt u een van de methoden die zijn beschreven in het [referentieonderwerp Voor functie-apps](functions-reference.md#fileupdate) in het referentieonderwerp azure functions-ontwikkelaars.
+3. Nadat het *functie.proj-bestand* is geüpload, ziet u uitvoer zoals het volgende voorbeeld in het streaminglogboek van uw functie:
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
@@ -423,7 +423,7 @@ Voor 1. x-functies gebruikt u in plaats daarvan een *project. json* -bestand. Hi
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 
-Als u een omgevings variabele of een instellings waarde voor een app wilt ophalen, gebruikt u `System.Environment.GetEnvironmentVariable`, zoals wordt weer gegeven in het volgende code voorbeeld:
+Als u een omgevingsvariabele of een `System.Environment.GetEnvironmentVariable`waarde voor app-instelling wilt krijgen, gebruikt u , zoals weergegeven in het volgende codevoorbeeld:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -442,15 +442,15 @@ public static string GetEnvironmentVariable(string name)
 
 <a name="imperative-bindings"></a>
 
-## <a name="binding-at-runtime"></a>Binding tijdens runtime
+## <a name="binding-at-runtime"></a>Binding bij runtime
 
-In C# en andere .net-talen kunt u een [dwingend](https://en.wikipedia.org/wiki/Imperative_programming) bindings patroon gebruiken, in plaats van de [*declaratieve*](https://en.wikipedia.org/wiki/Declarative_programming) bindingen in *Function. json*. Dwingende binding is handig wanneer bindings parameters tijdens runtime moeten worden berekend in plaats van ontwerp tijd. Met dit patroon kunt u verbinding maken met ondersteunde invoer-en uitvoer bindingen die onderweg zijn in uw functie code.
+In C# en andere .NET-talen u een [dwingend](https://en.wikipedia.org/wiki/Imperative_programming) bindend patroon gebruiken, in tegenstelling tot de [*declaratieve*](https://en.wikipedia.org/wiki/Declarative_programming) bindingen in *function.json*. Verplichte binding is handig wanneer bindende parameters moeten worden berekend tijdens runtime in plaats van ontwerptijd. Met dit patroon u zich binden aan ondersteunde invoer- en uitvoerbindingen on-the-fly in uw functiecode.
 
 Definieer als volgt een dwingende binding:
 
-- Neem **geen** vermelding in *Function. json* op voor uw gewenste dwingende bindingen.
-- Geef een invoer parameter op [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) of [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
-- Gebruik het volgende C# patroon om de gegevens binding uit te voeren.
+- **Neem geen** vermelding in *function.json* op voor uw gewenste imperatieve bindingen.
+- Geef een [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) invoerparameter [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)door of .
+- Gebruik het volgende C#-patroon om de gegevensbinding uit te voeren.
 
 ```cs
 using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
@@ -459,11 +459,11 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` is het .NET-kenmerk dat uw binding definieert en `T` een invoer-of uitvoer type is dat wordt ondersteund door dat bindings type. `T` kan geen `out` parameter type zijn (zoals `out JObject`). De Mobile Apps tabel uitvoer binding ondersteunt bijvoorbeeld [zes uitvoer typen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), maar u kunt alleen [ICollector\<t >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) voor `T`gebruiken.
+`BindingTypeAttribute`is het kenmerk .NET dat `T` uw binding definieert en een invoer- of uitvoertype is dat wordt ondersteund door dat bindingstype. `T`kan geen `out` parametertype zijn `out JObject`(zoals). De tabel uitvoerbinding van mobiele apps ondersteunt bijvoorbeeld [zes uitvoertypen,](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)maar [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) `T`u alleen [\<ICollector T->](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of voor.
 
-### <a name="single-attribute-example"></a>Voor beeld van één kenmerk
+### <a name="single-attribute-example"></a>Voorbeeld van één kenmerk
 
-Met de volgende voorbeeld code wordt een [opslag-BLOB-uitvoer binding](functions-bindings-storage-blob-output.md) gemaakt met een BLOB-pad dat tijdens runtime is gedefinieerd, waarna een teken reeks naar de BLOB wordt geschreven.
+Met de volgende voorbeeldcode wordt een [binding voor de uitvoer van opslagblobs](functions-bindings-storage-blob-output.md) met blobpad dat bij de looptijd is gedefinieerd, en wordt vervolgens een tekenreeks naar de blob geschreven.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -478,11 +478,11 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definieert de invoer-of uitvoer binding van de [opslag-BLOB](functions-bindings-storage-blob.md) en [TextWriter](/dotnet/api/system.io.textwriter) is een ondersteund type uitvoer binding.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs) definieert de invoer- of uitvoerbinding van de [opslagblob](functions-bindings-storage-blob.md) en [TextWriter](/dotnet/api/system.io.textwriter) is een ondersteund uitvoerbindingstype.
 
-### <a name="multiple-attribute-example"></a>Voor beeld van meerdere kenmerken
+### <a name="multiple-attribute-example"></a>Voorbeeld van meerdere kenmerken
 
-In het vorige voor beeld wordt de app-instelling voor het hoofd-opslag account van de functie-app opgehaald connection string (`AzureWebJobsStorage`). U kunt een aangepaste app-instelling opgeven die moet worden gebruikt voor het opslag account door de [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) toe te voegen en de kenmerk matrix door te geven aan `BindAsync<T>()`. Gebruik een `Binder` para meter, niet `IBinder`.  Bijvoorbeeld:
+In het voorgaande voorbeeld wordt de app-instelling voor de hoofdtekenreeks voor de accountverbinding opslagvan de functie-app (wat wil is `AzureWebJobsStorage`) opdeplaats. U een aangepaste app-instelling opgeven die u voor het opslagaccount `BindAsync<T>()`wilt gebruiken door het [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) toe te voegen en de kenmerkarray door te geven aan. Gebruik `Binder` een parameter, niet `IBinder`.  Bijvoorbeeld:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -503,7 +503,7 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-De volgende tabel bevat de .NET-kenmerken voor elk bindings type en de pakketten waarin deze zijn gedefinieerd.
+In de volgende tabel worden de .NET-kenmerken weergegeven voor elk bindingstype en de pakketten waarin ze zijn gedefinieerd.
 
 > [!div class="mx-codeBreakAll"]
 > | Binding | Kenmerk | Verwijzing toevoegen |
@@ -511,11 +511,11 @@ De volgende tabel bevat de .NET-kenmerken voor elk bindings type en de pakketten
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
 > | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
 > | Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
-> | Meldingshubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
+> | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 > | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
 > | Opslagwachtrij | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Opslag-blob | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | Opslag tabel | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | Opslagtabel | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -524,4 +524,4 @@ De volgende tabel bevat de .NET-kenmerken voor elk bindings type en de pakketten
 > [Meer informatie over triggers en bindingen](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Best Practices for Azure Functions](functions-best-practices.md)
+> [Meer informatie over aanbevolen procedures voor Azure-functies](functions-best-practices.md)

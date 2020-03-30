@@ -1,42 +1,41 @@
 ---
-title: Cloud Partner-portal API-verwijzing | Azure Marketplace
-description: Beschrijving van, vereiste te gebruiken en lijst met Marketplace API-bewerkingen.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Referentie voor API-api's voor cloudpartners | Azure Marketplace
+description: Beschrijving van, voorwaarden om te gebruiken en lijst van marketplace API-bewerkingen.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b6591e1780d03cbfaff70fbd19ec3dfd274fae79
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 296c667876807bdd05a6281de461df76207b5490
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819633"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288543"
 ---
-<a name="cloud-partner-portal-api-reference"></a>Naslag informatie over Cloud Partner-portal-API
+<a name="cloud-partner-portal-api-reference"></a>Api-verwijzing naar cloudpartnersportal
 ==================================
 
-Met de Cloud Partner-portal REST Api's kan werk belastingen, aanbiedingen en Publisher-profielen programmatisch worden opgehaald en gemanipuleerd. De Api's gebruiken op rollen gebaseerd toegangs beheer (RBAC) om de juiste machtigingen af te dwingen tijdens de verwerkings tijd.
+De API's van Cloud Partner Portal REST maken het programmatisch ophalen en manipuleren van workloads, aanbiedingen en uitgeversprofielen mogelijk. De API's gebruiken op rollen gebaseerd toegangscontrole (RBAC) om de juiste machtigingen af te dwingen tijdens het verwerken.
 
-Deze Naslag informatie bevat technische Details voor de Cloud Partner-portal REST-Api's. De payload-voor beelden in dit document zijn alleen ter referentie en zijn onderhevig aan wijzigingen wanneer er nieuwe functionaliteit wordt toegevoegd.
+Deze referentie bevat de technische details voor de API's van cloudpartnerportal REST. De payload monsters in dit document zijn alleen ter referentie en zijn onderhevig aan verandering als nieuwe functionaliteit wordt toegevoegd.
 
 
-<a name="prerequisites-and-considerations"></a>Vereisten en overwegingen
+<a name="prerequisites-and-considerations"></a>Voorwaarden en overwegingen
 -------------------------------
 
-Voordat u de Api's kunt gebruiken, moet u het volgende controleren:
+Voordat u de API's gebruikt, moet u het:
 
-- Het artikel [vereisten](./cloud-partner-portal-api-prerequisites.md) vindt u informatie over het toevoegen van een service-principal aan uw account en het verkrijgen van een toegangs token voor Azure Active Directory (Azure AD) voor verificatie. 
-- Het twee [gelijktijdigheids beheer](./cloud-partner-portal-api-concurrency-control.md).
-strategieën die beschikbaar zijn voor het aanroepen van deze Api's.
-- Aanvullende API- [overwegingen](./cloud-partner-portal-api-considerations.md), zoals versie beheer en fout afhandeling.
+- Het artikel [Voorwaarden](./cloud-partner-portal-api-prerequisites.md) voor meer informatie over het toevoegen van een serviceprincipal aan uw account en het krijgen van een Azure Active Directory-toegangstoken (Azure AD) voor verificatie. 
+- De twee [gelijktijdigheidscontrole](./cloud-partner-portal-api-concurrency-control.md).
+strategieën die beschikbaar zijn om deze API's te bellen.
+- Aanvullende [API-overwegingen,](./cloud-partner-portal-api-considerations.md)zoals versiebeheer en foutafhandeling.
 
 
 <a name="common-tasks"></a>Algemene taken
 ------------
-Deze referentie Details Api's om de volgende algemene taken uit te voeren.
+Deze verwijzing bevat API's om de volgende algemene taken uit te voeren.
 
 
 ### <a name="offers"></a>Aanbiedingen
@@ -56,9 +55,9 @@ Deze referentie Details Api's om de volgende algemene taken uit te voeren.
 
 -   [Live gaan](./cloud-partner-portal-api-go-live.md)
 
-### <a name="other-tasks"></a>Andere taken
+### <a name="other-tasks"></a>Overige taken
 
--   [Prijzen voor aanbiedingen van virtuele machines instellen](./cloud-partner-portal-api-setting-price.md)
+-   [Prijsinstellen voor aanbiedingen voor virtuele machines](./cloud-partner-portal-api-setting-price.md)
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 

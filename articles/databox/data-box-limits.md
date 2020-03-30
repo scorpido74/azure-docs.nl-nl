@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box limieten | Microsoft Docs
-description: Hierin worden systeem limieten en aanbevolen grootten voor de Microsoft Azure Data Box onderdelen en verbindingen beschreven.
+title: Azure Data Box-limieten | Microsoft Documenten
+description: Beschrijft systeemlimieten en aanbevolen formaten voor de Microsoft Azure Data Box-componenten en -verbindingen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,41 +9,41 @@ ms.topic: article
 ms.date: 08/27/2019
 ms.author: alkohli
 ms.openlocfilehash: 13d5bce46883ea4ddca91d7222f68a19ba65c21c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260044"
 ---
-# <a name="azure-data-box-limits"></a>Azure Data Box limieten
+# <a name="azure-data-box-limits"></a>Azure Data Box-limieten
 
-Houd rekening met deze beperkingen tijdens het implementeren en uitvoeren van uw Microsoft Azure Data Box. In de volgende tabel worden deze limieten voor de Data Box beschreven.
+Houd rekening met deze limieten wanneer u uw Microsoft Azure Data Box implementeert en exploiteert. In de volgende tabel worden deze limieten voor het gegevensvak beschreven.
 
-## <a name="data-box-service-limits"></a>Data Box-Service limieten
+## <a name="data-box-service-limits"></a>Data Box-servicelimieten
 
 [!INCLUDE [data-box-service-limits](../../includes/data-box-service-limits.md)]
 
-## <a name="data-box-limits"></a>Data Box limieten
+## <a name="data-box-limits"></a>Limieten voor gegevensboxen
 
-- Data Box kunt Maxi maal 500.000.000 bestanden opslaan.
-- Data Box ondersteunt Maxi maal 512 containers of shares in de Cloud. De mappen op het hoogste niveau binnen de gebruikers share worden containers of Azure-bestands shares in de Cloud. 
+- Data Box kan maximaal 500 miljoen bestanden opslaan.
+- Data Box ondersteunt maximaal 512 containers of shares in de cloud. De topmappen binnen het gebruikersaandeel worden containers of Azure-bestandsshares in de cloud. 
 
-## <a name="azure-storage-limits"></a>Limieten voor Azure Storage
+## <a name="azure-storage-limits"></a>Azure-opslaglimieten
 
 [!INCLUDE [data-box-storage-limits](../../includes/data-box-storage-limits.md)]
 
-## <a name="data-upload-caveats"></a>Voor behoud van gegevens uploaden
+## <a name="data-upload-caveats"></a>Voorbehouden voor het uploaden van gegevens
 
 [!INCLUDE [data-box-data-upload-caveats](../../includes/data-box-data-upload-caveats.md)]
 
-## <a name="azure-storage-account-size-limits"></a>Maximale grootte van Azure Storage-account
+## <a name="azure-storage-account-size-limits"></a>Limieten voor Azure-opslagaccount
 
 [!INCLUDE [data-box-storage-account-size-limits](../../includes/data-box-storage-account-size-limits.md)]
 
-## <a name="azure-object-size-limits"></a>Limieten voor Azure-object grootte
+## <a name="azure-object-size-limits"></a>Limieten voor azure-objectgrootte
 
 [!INCLUDE [data-box-object-size-limits](../../includes/data-box-object-size-limits.md)]
 
-## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure Block blob-, page Blob-en file naamgevings conventies
+## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure-blokblob-, paginablob- en bestandsnaamgevingsconventies
 
 [!INCLUDE [data-box-naming-conventions](../../includes/data-box-naming-conventions.md)]

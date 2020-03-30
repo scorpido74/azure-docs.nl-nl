@@ -1,7 +1,7 @@
 ---
-title: Open bare Lees toegang voor containers en blobs beheren
+title: Openbare leestoegang voor containers en blobs beheren
 titleSuffix: Azure Storage
-description: Meer informatie over het maken van containers en blobs beschikbaar voor anonieme toegang en hoe u deze via een programma kunt openen.
+description: Meer informatie over het beschikbaar maken van containers en blobs voor anonieme toegang en hoe u deze programmatisch openen.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,60 +10,60 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255481"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Anonieme leestoegang tot containers en blobs beheren
 
-U kunt anonieme, open bare Lees toegang inschakelen voor een container en de bijbehorende blobs in Azure Blob-opslag. Door dit te doen, kunt u alleen-lezen toegang verlenen aan deze resources zonder uw account sleutel te delen en zonder een Shared Access Signature (SAS).
+U kunt anonieme, openbare leestoegang inschakelen voor een container en de bijbehorende blobs in Azure Blob-opslag. Door dit te doen, kunt u alleen-lezentoegang verlenen aan deze resources zonder dat u uw accountsleutel hoeft te delen en zonder dat een handtekening voor gedeelde toegang (SAS) nodig is.
 
-Open bare Lees toegang is het beste voor scenario's waarin u wilt dat bepaalde blobs altijd beschikbaar zijn voor anonieme lees toegang. Voor meer nauw keurige controle kunt u een gedeelde toegangs handtekening maken. Met hand tekeningen voor gedeelde toegang kunt u beperkte toegang bieden met behulp van verschillende machtigingen, voor een specifieke periode. Zie [using Shared Access signatures (SAS) (Engelstalig) in azure Storage](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie over het maken van hand tekeningen voor gedeelde toegang.
+Openbare leestoegang is het beste voor scenario's waarin u wilt dat bepaalde blobs altijd beschikbaar zijn voor anonieme leestoegang. Voor meer fijnmazige besturingselementen u een handtekening voor gedeelde toegang maken. Met handtekeningen voor gedeelde toegang u beperkte toegang bieden met behulp van verschillende machtigingen voor een bepaalde periode. Zie [SAS (Shared Access Signatures) gebruiken in Azure Storage](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie over het maken van handtekeningen voor gedeelde toegang.
 
-## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Anonieme gebruikers machtigingen verlenen aan containers en blobs
+## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Anonieme gebruikersmachtigingen verlenen aan containers en blobs
 
-Standaard kan een container en alle blobs in deze alleen worden geopend door een gebruiker die de juiste machtigingen heeft gekregen. Als u anonieme gebruikers lees toegang wilt verlenen voor een container en de bijbehorende blobs, kunt u het open bare toegangs niveau van de container instellen. Wanneer u open bare toegang verleent aan een container, kunnen anonieme gebruikers blobs lezen binnen een openbaar toegankelijke container zonder de aanvraag te autoriseren.
+De standaardinstelling is dat een container en alle bijbehorende blobs alleen toegankelijk zijn voor een gebruiker die over de juiste machtigingen beschikt. Als u anonieme gebruikers leestoegang wilt geven voor een container en de bijbehorende blobs, kunt u het niveau voor openbare toegang van de container instellen. Wanneer u openbare toegang instelt voor een container, kunnen anonieme gebruikers blobs lezen binnen een openbaar toegankelijke container zonder dat ze hun aanvraag hoeven te autoriseren.
 
-U kunt een container met de volgende machtigingen configureren:
+U een container configureren met de volgende machtigingen:
 
-- **Geen open bare Lees toegang:** De container en de blobs kunnen alleen worden geopend door de eigenaar van het opslag account. Dit is de standaard waarde voor alle nieuwe containers.
-- **Open bare Lees toegang alleen voor blobs:** Blobs in de container kunnen worden gelezen door anonieme aanvragen, maar er zijn geen container gegevens beschikbaar. Anonieme clients kunnen de blobs in de container niet inventariseren.
-- **Open bare Lees toegang voor container en de bijbehorende blobs:** Alle container-en BLOB-gegevens kunnen door anonieme aanvragen worden gelezen. Clients kunnen blobs in de container inventariseren door anonieme aanvragen, maar kunnen containers niet inventariseren binnen het opslag account.
+- **Geen openbare leestoegang:** De container en de blobs zijn alleen toegankelijk voor de eigenaar van het opslagaccount. Dit is de standaardinstelling voor alle nieuwe containers.
+- **Alleen openbare leestoegang voor blobs:** Blobs in de container kunnen op anoniem verzoek worden gelezen, maar containergegevens zijn niet beschikbaar. Anonieme clients kunnen de blobs in de container niet opsommen.
+- **Openbare leestoegang voor container en blobs:** Alle container- en blobgegevens kunnen op anoniem verzoek worden gelezen. Clients kunnen blobs in de container op vragen op anoniem verzoek opsommen, maar kunnen geen containers opsommen binnen het opslagaccount.
 
-### <a name="set-container-public-access-level-in-the-azure-portal"></a>Stel een openbaar toegangs niveau in voor de container in de Azure Portal
+### <a name="set-container-public-access-level-in-the-azure-portal"></a>Toegangsniveau voor containers instellen in de Azure-portal
 
-Vanuit het [Azure Portal](https://portal.azure.com)kunt u het niveau van open bare toegang voor een of meer containers bijwerken:
+Vanuit de [Azure-portal](https://portal.azure.com)u het openbare toegangsniveau voor een of meer containers bijwerken:
 
-1. Navigeer naar het overzicht van het opslag account in de Azure Portal.
-1. Selecteer onder **BLOB service** op de menu Blade de optie **blobs**.
-1. Selecteer de containers waarvoor u het niveau van open bare toegang wilt instellen.
-1. Gebruik de knop **toegangs niveau wijzigen** om de instellingen voor open bare toegang weer te geven.
-1. Selecteer het gewenste open bare toegangs niveau van de vervolg keuzelijst **openbaar toegangs niveau** en klik op de knop OK om de wijziging toe te passen op de geselecteerde containers.
+1. Navigeer naar het overzicht van uw opslagaccount in de Azure-portal.
+1. Selecteer **Blobs**onder **Blob-service** op het menublad .
+1. Selecteer de containers waarvoor u het openbare toegangsniveau wilt instellen.
+1. Gebruik de knop **Toegangsniveau wijzigen** om de instellingen voor openbare toegang weer te geven.
+1. Selecteer het gewenste openbare toegangsniveau in de vervolgkeuzelijst **Openbaar toegangsniveau** en klik op de knop OK om de wijziging toe te passen op de geselecteerde containers.
 
-De volgende scherm afbeelding laat zien hoe u het niveau van open bare toegang voor de geselecteerde containers kunt wijzigen.
+In de volgende schermafbeelding ziet u hoe u het openbare toegangsniveau voor de geselecteerde containers wijzigen.
 
-![Scherm afbeelding die laat zien hoe u het niveau van open bare toegang instelt in de portal](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![Schermafbeelding van het instellen van openbaar toegangsniveau in de portal](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
 > [!NOTE]
-> U kunt het niveau van de open bare toegang voor een afzonderlijke BLOB niet wijzigen. Niveau van open bare toegang wordt alleen op container niveau ingesteld.
+> U het openbare toegangsniveau voor een afzonderlijke blob niet wijzigen. Het niveau van de openbare toegang wordt alleen ingesteld op containerniveau.
 
-### <a name="set-container-public-access-level-with-net"></a>Het niveau van open bare toegang tot de container instellen met .NET
+### <a name="set-container-public-access-level-with-net"></a>Toegangsniveau voor containers instellen met .NET
 
-Als u machtigingen wilt instellen voor een container met behulp van de Azure Storage-client bibliotheek voor .NET, moet u eerst de bestaande machtigingen van de container ophalen door een van de volgende methoden te bellen:
+Als u machtigingen voor een container wilt instellen met de Azure Storage-clientbibliotheek voor .NET, haalt u eerst de bestaande machtigingen van de container op door een van de volgende methoden aan te roepen:
 
-- [GetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissions)
+- [Getpermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissions)
 - [GetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissionsasync)
 
-Stel vervolgens de eigenschap **PublicAccess** in op het [BlobContainerPermissions](/dotnet/api/microsoft.azure.storage.blob.blobcontainerpermissions) -object dat wordt geretourneerd door de methode **GetPermissions** .
+Stel vervolgens de eigenschap **PublicAccess** in op het object [BlobContainerPermissions](/dotnet/api/microsoft.azure.storage.blob.blobcontainerpermissions) dat wordt geretourneerd met de methode **Machtigingen getpermissions.**
 
-Als laatste moet u een van de volgende methoden aanroepen om de machtigingen van de container bij te werken:
+Tot slot u een van de volgende methoden aanroepen om de machtigingen van de container bij te werken:
 
-- [Recht](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
+- [Setpermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
 - [SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
 
-In het volgende voor beeld worden de machtigingen van de container ingesteld op volledige open bare Lees toegang. Als u machtigingen wilt instellen op open bare Lees toegang voor blobs, stelt u de eigenschap **PublicAccess** in op **BlobContainerPublicAccessType. blob**. Als u alle machtigingen voor anonieme gebruikers wilt verwijderen, stelt u de eigenschap in op **BlobContainerPublicAccessType. off**.
+In het volgende voorbeeld worden de machtigingen van de container ingesteld op volledige openbare leestoegang. Als u machtigingen wilt instellen voor alleen openbare leestoegang voor blobs, stelt u de eigenschap **PublicAccess** in op **BlobContainerPublicAccessType.Blob**. Als u alle machtigingen voor anonieme gebruikers wilt verwijderen, stelt u de eigenschap in op **BlobContainerPublicAccessType.Off**.
 
 ```csharp
 private static async Task SetPublicContainerPermissions(CloudBlobContainer container)
@@ -76,13 +76,13 @@ private static async Task SetPublicContainerPermissions(CloudBlobContainer conta
 }
 ```
 
-## <a name="access-containers-and-blobs-anonymously"></a>Anoniem toegang krijgen tot containers en blobs
+## <a name="access-containers-and-blobs-anonymously"></a>Anoniem toegang tot containers en blobs
 
-Een client die toegang heeft tot containers en blobs anoniem kan gebruikmaken van constructors waarvoor geen referenties zijn vereist. In de volgende voor beelden ziet u een aantal verschillende manieren om te verwijzen naar containers en blobs anoniem.
+Een client die anoniem toegang heeft tot containers en blobs, kan constructors gebruiken waarvoor geen referenties nodig zijn. In de volgende voorbeelden worden een aantal verschillende manieren weergegeven om anoniem naar containers en blobs te verwijzen.
 
-### <a name="create-an-anonymous-client-object"></a>Een anoniem client object maken
+### <a name="create-an-anonymous-client-object"></a>Een anoniem clientobject maken
 
-U kunt een nieuw service-client object voor anonieme toegang maken door het eind punt van de Blob-opslag voor het account op te geven. U moet echter ook de naam weten van een container in dat account die beschikbaar is voor anonieme toegang.
+U een nieuw serviceclientobject maken voor anonieme toegang door het blob-opslageindpunt voor het account op te geven. U moet echter ook de naam weten van een container in dat account die beschikbaar is voor anonieme toegang.
 
 ```csharp
 public static void CreateAnonymousBlobClient()
@@ -102,9 +102,9 @@ public static void CreateAnonymousBlobClient()
 }
 ```
 
-### <a name="reference-a-container-anonymously"></a>Anoniem verwijzen naar een container
+### <a name="reference-a-container-anonymously"></a>Anoniem naar een container verwijzen
 
-Als u de URL naar een container hebt die anoniem beschikbaar is, kunt u deze gebruiken om rechtstreeks naar de container te verwijzen.
+Als u de URL naar een container hebt die anoniem beschikbaar is, u deze gebruiken om rechtstreeks naar de container te verwijzen.
 
 ```csharp
 public static void ListBlobsAnonymously()
@@ -122,9 +122,9 @@ public static void ListBlobsAnonymously()
 }
 ```
 
-### <a name="reference-a-blob-anonymously"></a>Anoniem verwijzen naar een BLOB
+### <a name="reference-a-blob-anonymously"></a>Anoniem een blob verwijzen
 
-Als u de URL naar een BLOB hebt die beschikbaar is voor anonieme toegang, kunt u rechtstreeks naar de BLOB verwijzen met behulp van die URL:
+Als u de URL naar een blob hebt die beschikbaar is voor anonieme toegang, u rechtstreeks naar de blob verwijzen met die URL:
 
 ```csharp
 public static void DownloadBlobAnonymously()
@@ -137,6 +137,6 @@ public static void DownloadBlobAnonymously()
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toegang tot Azure Storage autoriseren](../common/storage-auth.md)
-- [Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md)
-- [REST API BLOB-service](/rest/api/storageservices/blob-service-rest-api)
+- [Toegang tot Azure Storage toestaan](../common/storage-auth.md)
+- [Beperkte toegang verlenen tot Azure Storage-bronnen met behulp van gedeelde toegangshandtekeningen (SAS)](../common/storage-sas-overview.md)
+- [Blob Service REST API](/rest/api/storageservices/blob-service-rest-api)

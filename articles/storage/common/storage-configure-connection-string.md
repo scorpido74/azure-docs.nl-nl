@@ -1,7 +1,7 @@
 ---
-title: Een connection string configureren
+title: Een verbindingstekenreeks configureren
 titleSuffix: Azure Storage
-description: Een connection string configureren voor een Azure-opslag account. Een connection string bevat de informatie die nodig is om tijdens runtime toegang te verlenen tot een opslag account vanuit uw toepassing met behulp van gedeelde sleutel verificatie.
+description: Een verbindingstekenreeks configureren voor een Azure-opslagaccount. Een verbindingstekenreeks bevat de informatie die nodig is om de toegang tot een opslagaccount van uw toepassing tijdens runtime te autoriseren met behulp van de machtiging Gedeelde sleutel.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,67 +11,67 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: f617beec8a53570ede7755040cfbb92a7d1712b7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268351"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage-verbindingsreeksen configureren
 
-Een connection string bevat de autorisatie-informatie die is vereist voor uw toepassing om toegang te krijgen tot gegevens in een Azure Storage account tijdens runtime met behulp van gedeelde sleutel verificatie. U kunt verbindings reeksen configureren voor het volgende:
+Een verbindingstekenreeks bevat de autorisatiegegevens die nodig zijn voor uw toepassing om toegang te krijgen tot gegevens in een Azure Storage-account tijdens runtime met behulp van de autorisatie van gedeelde sleutels. U verbindingstekenreeksen configureren op:
 
-* Maak verbinding met de Azure-opslag emulator.
-* Toegang tot een opslag account in Azure.
-* Toegang krijgen tot opgegeven resources in azure via een Shared Access Signature (SAS).
+* Maak verbinding met de Azure-opslagemulator.
+* Toegang tot een opslagaccount in Azure.
+* Toegang tot bepaalde bronnen in Azure via een gedeelde toegangshandtekening (SAS).
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-## <a name="view-and-copy-a-connection-string"></a>Een connection string weer geven en kopiëren
+## <a name="view-and-copy-a-connection-string"></a>Een verbindingstekenreeks weergeven en kopiëren
 
 [!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
-## <a name="store-a-connection-string"></a>Een connection string opslaan
+## <a name="store-a-connection-string"></a>Een verbindingstekenreeks opslaan
 
-Uw toepassing moet tijdens runtime toegang hebben tot de connection string om aanvragen voor Azure Storage te autoriseren. U hebt verschillende mogelijkheden om uw connection string op te slaan:
+Uw toepassing moet toegang krijgen tot de verbindingstekenreeks tijdens runtime om aanvragen voor Azure Storage te autoriseren. U hebt verschillende opties voor het opslaan van uw verbindingstekenreeks:
 
-* U kunt uw connection string opslaan in een omgevings variabele.
-* Een toepassing die wordt uitgevoerd op het bureau blad of op een apparaat kan de connection string opslaan in een **app. config** -of **Web. config** -bestand. Voeg de connection string toe aan de sectie **AppSettings** in deze bestanden.
-* Een toepassing die wordt uitgevoerd in een Azure-Cloud service kan de connection string opslaan in het [Azure service configuration schema-bestand (. cscfg)](https://msdn.microsoft.com/library/ee758710.aspx). Voeg de connection string toe aan de sectie **ConfigurationSettings** van het service configuratie bestand.
+* U uw verbindingstekenreeks opslaan in een omgevingsvariabele.
+* Een toepassing die wordt uitgevoerd op het bureaublad of op een apparaat, kan de verbindingstekenreeks opslaan in een **app.config-** of **web.config-bestand.** Voeg de verbindingstekenreeks toe aan de sectie **AppSettings** in deze bestanden.
+* Een toepassing die wordt uitgevoerd in een Azure-cloudservice, kan de verbindingstekenreeks opslaan in het [Azure-serviceconfiguratieschema (cscfg)-bestand](https://msdn.microsoft.com/library/ee758710.aspx). Voeg de verbindingstekenreeks toe aan de sectie **ConfigurationSettings** van het serviceconfiguratiebestand.
 
-Het opslaan van uw connection string in een configuratie bestand maakt het eenvoudig om de connection string bij te werken om te scha kelen tussen de opslag emulator en een Azure Storage-account in de Cloud. U hoeft alleen de connection string te bewerken om naar uw doel omgeving te verwijzen.
+Als u uw verbindingstekenreeks opslaat in een configuratiebestand, u de verbindingstekenreeks eenvoudig bijwerken om te schakelen tussen de opslagemulator en een Azure-opslagaccount in de cloud. U hoeft alleen de verbindingstekenreeks te bewerken om naar uw doelomgeving te wijzen.
 
-U kunt de [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) gebruiken om toegang te krijgen tot uw Connection String in runtime, ongeacht waar de toepassing wordt uitgevoerd.
+U Microsoft [Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) gebruiken om toegang te krijgen tot uw verbindingstekenreeks tijdens uitvoering, ongeacht waar uw toepassing wordt uitgevoerd.
 
-## <a name="configure-a-connection-string-for-the-storage-emulator"></a>Een connection string configureren voor de opslag emulator
+## <a name="configure-a-connection-string-for-the-storage-emulator"></a>Een verbindingstekenreeks configureren voor de opslagemulator
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-Zie [de Azure-opslag emulator gebruiken voor ontwikkeling en testen](storage-use-emulator.md)voor meer informatie over de opslag emulator.
+Zie [De Azure-opslagemulator gebruiken voor ontwikkeling en testen voor](storage-use-emulator.md)meer informatie over de opslagemulator.
 
-## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Een connection string configureren voor een Azure-opslag account
+## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Een verbindingstekenreeks configureren voor een Azure-opslagaccount
 
-Als u een connection string voor uw Azure-opslag account wilt maken, gebruikt u de volgende indeling. Geef aan of u verbinding wilt maken met het opslag account met behulp van HTTPS (aanbevolen) of HTTP, vervang `myAccountName` door de naam van uw opslag account en vervang `myAccountKey` door de toegangs sleutel van uw account:
+Als u een verbindingstekenreeks voor uw Azure-opslagaccount wilt maken, gebruikt u de volgende indeling. Geef aan of u verbinding wilt maken met het opslagaccount `myAccountName` via HTTPS (aanbevolen) of `myAccountKey` HTTP, vervang de naam van uw opslagaccount en vervang deze door uw accounttoegangssleutel:
 
 `DefaultEndpointsProtocol=[http|https];AccountName=myAccountName;AccountKey=myAccountKey`
 
-Uw connection string kan er bijvoorbeeld ongeveer als volgt uitzien:
+De verbindingstekenreeks lijkt bijvoorbeeld op:
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-Hoewel Azure Storage zowel HTTP als HTTPS in een connection string ondersteunt, *wordt https ten zeerste aanbevolen*.
+Hoewel Azure Storage zowel HTTP als HTTPS in een verbindingstekenreeks ondersteunt, *wordt HTTPS ten zeerste aanbevolen.*
 
 > [!TIP]
-> U kunt de verbindings reeksen van uw opslag account vinden in de [Azure Portal](https://portal.azure.com). Navigeer naar **instellingen** > **toegangs sleutels** in de menu Blade van uw opslag account om verbindings reeksen voor de primaire en secundaire toegangs sleutel weer te geven.
+> U de verbindingstekenreeksen van uw opslagaccount vinden in de [Azure-portal.](https://portal.azure.com) Navigeer naar **INSTELLINGEN** > **Toegangssleutels** in het menublad van uw opslagaccount om verbindingstekenreeksen voor zowel primaire als secundaire toegangssleutels te bekijken.
 >
 
-## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Een connection string maken met behulp van een hand tekening voor gedeelde toegang
+## <a name="create-a-connection-string-using-a-shared-access-signature"></a>Een verbindingstekenreeks maken met een handtekening voor gedeelde toegang
 
 [!INCLUDE [storage-use-sas-in-connection-string-include](../../../includes/storage-use-sas-in-connection-string-include.md)]
 
-## <a name="create-a-connection-string-for-an-explicit-storage-endpoint"></a>Een connection string maken voor een expliciet opslag eindpunt
+## <a name="create-a-connection-string-for-an-explicit-storage-endpoint"></a>Een verbindingstekenreeks maken voor een expliciet opslageindpunt
 
-U kunt in uw connection string expliciete service-eind punten opgeven in plaats van de standaard eindpunten te gebruiken. Als u een connection string wilt maken waarmee een expliciet eind punt wordt opgegeven, geeft u het volledige service-eind punt voor elke service op, met inbegrip van de protocol specificatie (HTTPS (aanbevolen) of HTTP), in de volgende indeling:
+U expliciete serviceeindpunten opgeven in uw verbindingstekenreeks in plaats van de standaardeindpunten te gebruiken. Als u een verbindingstekenreeks wilt maken die een expliciet eindpunt opgeeft, geeft u het volledige serviceeindpunt voor elke service op, inclusief de protocolspecificatie (HTTPS (aanbevolen) of HTTP), in de volgende indeling:
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -83,9 +83,9 @@ AccountName=myAccountName;
 AccountKey=myAccountKey
 ```
 
-Een scenario waarin u mogelijk een expliciet eind punt wilt opgeven, is wanneer u uw Blob Storage-eind punt hebt toegewezen aan een [aangepast domein](../blobs/storage-custom-domain-name.md). In dat geval kunt u uw aangepaste eind punt voor Blob Storage in uw connection string opgeven. U kunt desgewenst de standaard eindpunten voor de andere services opgeven als uw toepassing deze gebruikt.
+Een scenario waarin u een expliciet eindpunt wilt opgeven, is wanneer u het eindpunt van de Blob-opslag hebt toegewezen aan een [aangepast domein.](../blobs/storage-custom-domain-name.md) In dat geval u het aangepaste eindpunt voor Blob-opslag opgeven in uw verbindingstekenreeks. U optioneel de standaardeindpunten voor de andere services opgeven als uw toepassing deze gebruikt.
 
-Hier volgt een voor beeld van een connection string waarmee een expliciet eind punt voor de Blob service wordt opgegeven:
+Hier is een voorbeeld van een verbindingstekenreeks die een expliciet eindpunt voor de Blob-service opgeeft:
 
 ```
 # Blob endpoint only
@@ -95,7 +95,7 @@ AccountName=storagesample;
 AccountKey=<account-key>
 ```
 
-In dit voor beeld worden expliciete eind punten voor alle services opgegeven, met inbegrip van een aangepast domein voor de Blob service:
+In dit voorbeeld worden expliciete eindpunten voor alle services opgegeven, waaronder een aangepast domein voor de Blob-service:
 
 ```
 # All service endpoints
@@ -108,17 +108,17 @@ AccountName=storagesample;
 AccountKey=<account-key>
 ```
 
-De eind punt waarden in een connection string worden gebruikt voor het maken van de aanvraag-Uri's voor de opslag Services en het bepalen van de vorm van Uri's die naar uw code worden geretourneerd.
+De eindpuntwaarden in een verbindingstekenreeks worden gebruikt om de aanvraag-URI's voor de opslagservices te construeren en de vorm te dicteren van uri's die naar uw code worden geretourneerd.
 
-Als u een opslag eindpunt hebt toegewezen aan een aangepast domein en dat eind punt weglaat van een connection string, kunt u die connection string niet gebruiken voor toegang tot gegevens in die service vanuit uw code.
+Als u een opslageindpunt aan een aangepast domein hebt toegewezen en dat eindpunt uit een verbindingstekenreeks hebt weglaten, u die verbindingstekenreeks niet gebruiken om toegang te krijgen tot gegevens in die service vanuit uw code.
 
 > [!IMPORTANT]
-> De waarden van de service-eind punten in de verbindings reeksen moeten een juist opgemaakte Uri's zijn, waaronder `https://` (aanbevolen) of `http://`. Omdat Azure Storage geen HTTPS ondersteunt voor aangepaste domeinen, *moet* u `http://` opgeven voor elke eind punt-URI die verwijst naar een aangepast domein.
+> Serviceeindpuntwaarden in uw verbindingstekenreeksen moeten goed gevormde `https://` URI's `http://`zijn, inclusief (aanbevolen) of . Omdat Azure Storage nog geen HTTPS voor *must* aangepaste `http://` domeinen ondersteunt, moet u opgeven voor eindpuntURI die naar een aangepast domein verwijst.
 >
 
-### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Een connection string met een eind punt achtervoegsel maken
+### <a name="create-a-connection-string-with-an-endpoint-suffix"></a>Een verbindingstekenreeks maken met een eindpuntachtervoegsel
 
-Als u een connection string wilt maken voor een opslag service in regio's of exemplaren met verschillende eindpunt achtervoegsels, zoals voor Azure-China 21Vianet of Azure Government, gebruikt u de volgende connection string-indeling. Geef aan of u verbinding wilt maken met het opslag account met behulp van HTTPS (aanbevolen) of HTTP, vervang `myAccountName` door de naam van uw opslag account, vervang `myAccountKey` door de toegangs sleutel van uw account en vervang `mySuffix` door het URI-achtervoegsel:
+Als u een verbindingstekenreeks wilt maken voor een opslagservice in regio's of instanties met verschillende eindpuntachtervoegsels, zoals voor Azure China 21Vianet of Azure Government, gebruikt u de volgende verbindingstekenreeksindeling. Geef aan of u verbinding wilt maken met het opslagaccount `myAccountName` via HTTPS (aanbevolen) `myAccountKey` of HTTP, vervang de `mySuffix` naam van uw opslagaccount, vervang uw accounttoegangssleutel en vervang het URI-achtervoegsel:
 
 ```
 DefaultEndpointsProtocol=[http|https];
@@ -127,7 +127,7 @@ AccountKey=myAccountKey;
 EndpointSuffix=mySuffix;
 ```
 
-Hier volgt een voor beeld connection string voor Storage services in azure China 21Vianet:
+Hier vindt u een voorbeeldverbindingstekenreeks voor opslagservices in Azure China 21Vianet:
 
 ```
 DefaultEndpointsProtocol=https;
@@ -136,12 +136,12 @@ AccountKey=<account-key>;
 EndpointSuffix=core.chinacloudapi.cn;
 ```
 
-## <a name="parsing-a-connection-string"></a>Een connection string parseren
+## <a name="parsing-a-connection-string"></a>Een verbindingstekenreeks ontwering
 
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [De Azure-opslag emulator gebruiken voor ontwikkelen en testen](storage-use-emulator.md)
-* [Azure Storage Explorers](storage-explorers.md)
-* [Shared Access signatures (SAS) gebruiken](storage-sas-overview.md)
+* [De Azure-opslagemulator gebruiken voor ontwikkeling en testen](storage-use-emulator.md)
+* [Azure Storage-verkenners](storage-explorers.md)
+* [Gedeelde toegangshandtekeningen (SAS) gebruiken](storage-sas-overview.md)

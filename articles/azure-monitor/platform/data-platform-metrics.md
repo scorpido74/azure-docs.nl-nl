@@ -1,6 +1,6 @@
 ---
-title: Metrische gegevens in Azure Monitor | Microsoft Docs
-description: Hierin worden metrische gegevens in Azure Monitor beschreven die lichter worden bewaakt en die vrijwel in realtime scenario's kunnen ondersteunen.
+title: Statistieken in Azure Monitor | Microsoft Documenten
+description: Beschrijft statistieken in Azure Monitor die lichtgewicht bewakingsgegevens zijn die bijna realtime scenario's kunnen ondersteunen.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -11,105 +11,105 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 80bbf83da17d833c4f8bb1abac9610d70e9a23cb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274825"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrische gegevens in Azure Monitor
 
 > [!NOTE]
-> Het Azure Monitor-gegevens platform is gebaseerd op twee belang rijke gegevens typen: metrieken en Logboeken. In dit artikel worden metrische gegevens beschreven. Raadpleeg de [Logboeken in azure monitor](data-platform-logs.md) voor een gedetailleerde beschrijving van de logboeken en [Azure monitor gegevens platform](data-platform.md) voor een vergelijking van de twee.
+> Het Azure Monitor-gegevensplatform is gebaseerd op twee fundamentele gegevenstypen: metrische gegevens en logboeken. In dit artikel worden statistieken beschreven. Raadpleeg [Logboeken in Azure Monitor](data-platform-logs.md) voor een gedetailleerde beschrijving van logboeken en naar [azure monitor-gegevensplatform](data-platform.md) voor een vergelijking van de twee.
 
-Metrische gegevens in Azure Monitor zijn licht gewicht en kunnen bijna realtime-scenario's ondersteunen, waardoor ze vooral nuttig zijn voor waarschuwingen en snelle detectie van problemen. In dit artikel wordt beschreven hoe metrieken worden gestructureerd, wat u ermee kunt doen en identificeert u verschillende gegevens bronnen die gegevens in metrieken opslaan.
+Statistieken in Azure Monitor zijn licht van gewicht en kunnen bijna realtime scenario's ondersteunen, waardoor ze bijzonder handig zijn voor het waarschuwen en snel detecteren van problemen. In dit artikel wordt beschreven hoe statistieken zijn gestructureerd, wat u ermee doen en worden verschillende gegevensbronnen geïdentificeerd die gegevens opslaan in statistieken.
 
-## <a name="what-are-metrics"></a>Wat zijn metrische gegevens?
-Metrische gegevens zijn numerieke waarden die worden beschreven van een bepaald aspect van een systeem op een bepaald tijdstip. Metrische gegevens worden met regel matige tussen pozen verzameld en zijn nuttig voor waarschuwingen omdat ze regel matig kunnen worden gesampled en een waarschuwing snel kan worden geactiveerd met relatief eenvoudige logica.
+## <a name="what-are-metrics"></a>Wat zijn statistieken?
+Metrische gegevens zijn numerieke waarden die verschillende aspecten van een systeem beschrijven op een bepaald tijdstip. Statistieken worden op regelmatige tijdstippen verzameld en zijn handig om te waarschuwen omdat ze vaak kunnen worden bemonsterd en een waarschuwing snel kan worden geactiveerd met relatief eenvoudige logica.
 
-## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Wat kunt u doen met Azure Monitor metrische gegevens?
-De volgende tabel geeft een lijst van de verschillende manieren waarop u metrische gegevens in Azure Monitor kunt gebruiken.
+## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Wat u doen met Azure Monitor Metrics?
+In de volgende tabel worden de verschillende manieren weergegeven waarop u metrische gegevens gebruiken in Azure Monitor.
 
 |  |  |
 |:---|:---|
-| Analyseren | Met [metrische gegevens Verkenner](metrics-charts.md) kunt u de verzamelde metrische gegevens in een grafiek analyseren en de metrische gegevens van verschillende resources vergelijken. |
-| Visualiseren | Een grafiek vastmaken aan een [Azure-dash board](../learn/tutorial-app-dashboards.md)vanuit de metrics Explorer.<br>Een [werkmap](../app/usage-workbooks.md) maken om te combi neren met meerdere gegevens sets in een interactief rapport. De resultaten van een query exporteren naar [Grafana](grafana-plugin.md) om gebruik te maken van Dash boards en combi neren met andere gegevens bronnen. |
-| Waarschuwing | Configureer een [waarschuwings regel voor metrische gegevens](alerts-metric.md) die een melding verzendt of [geautomatiseerd actie](action-groups.md) onderneemt wanneer de metrische waarde een drempel overschrijdt. |
-| Automatiseren |  Gebruik [automatisch schalen](autoscale-overview.md) om resources te verg Roten of te verkleinen op basis van een metrische waarde die een drempel overschrijdt. |
-| Exporteren | U [kunt metrische gegevens naar Logboeken routeren](resource-logs-collect-storage.md) voor het analyseren van informatie in azure monitor metrieken samen met gegevens in azure monitor-logboeken en om meet waarden langer dan 93 dagen op te slaan.<br>Meet gegevens streamen naar een [Event hub](stream-monitoring-data-event-hubs.md) om ze naar externe systemen te routeren. |
-| Ophalen | Toegang krijgen tot metrische waarden van een opdracht regel met behulp van [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Toegang krijgen tot meet waarden van aangepaste toepassing met behulp van [rest API](rest-api-walkthrough.md).<br>Toegang krijgen tot meet waarden van een opdracht regel met behulp van [cli](/cli/azure/monitor/metrics). |
-| Archiveren | [Archiveer](..//learn/tutorial-archive-data.md) de prestaties of de status geschiedenis van uw resource voor naleving, controle of offline rapportage. |
+| Analyseren | Gebruik [metrics explorer](metrics-charts.md) om verzamelde statistieken in een grafiek te analyseren en statistieken uit verschillende bronnen te vergelijken. |
+| Visualiseren | Maak een grafiek van metrics explorer vast aan een [Azure-dashboard](../learn/tutorial-app-dashboards.md).<br>Maak een [werkmap](../app/usage-workbooks.md) om te combineren met meerdere sets gegevens in een interactief rapport. Exporteer de resultaten van een query naar [Grafana](grafana-plugin.md) om gebruik te maken van de dashboarding en te combineren met andere gegevensbronnen. |
+| Waarschuwing | Configureer een [metrische waarschuwingsregel](alerts-metric.md) die een melding verzendt of [automatische actie](action-groups.md) onderneemt wanneer de metrische waarde een drempelwaarde overschrijdt. |
+| Automatiseren |  Gebruik [Autoscale](autoscale-overview.md) om resources te verhogen of te verlagen op basis van een metrische waarde die een drempelwaarde overschrijdt. |
+| Exporteren | [Routeer metrische gegevens naar logboeken](resource-logs-collect-storage.md) om gegevens in Azure Monitor Metrics samen met gegevens in Azure Monitor Logs te analyseren en metrische waarden langer dan 93 dagen op te slaan.<br>Metstatistieken streamen naar een [gebeurtenishub](stream-monitoring-data-event-hubs.md) om ze door te sturen naar externe systemen. |
+| Ophalen | Metrische waarden openen vanaf een opdrachtregel met [PowerShell-cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Metrische waarden openen vanuit aangepaste toepassing met [rest-API](rest-api-walkthrough.md).<br>Metrische waarden openen vanaf een opdrachtregel met [CLI](/cli/azure/monitor/metrics). |
+| Archiveren | [Archiveer](..//learn/tutorial-archive-data.md) de prestatie- of statusgeschiedenis van uw resource voor nalevings-, controle- of offlinerapportagedoeleinden. |
 
-## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Hoe worden gegevens in Azure Monitor meet waarden gestructureerd?
-Gegevens die worden verzameld door Azure Monitor metrieken worden opgeslagen in een Data Base met een tijd reeks die is geoptimaliseerd voor het analyseren van gegevens met tijds tempel. Elke set metrische waarden is een tijd reeks met de volgende eigenschappen:
+## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Hoe worden gegevens in Azure Monitor Metrics gestructureerd?
+Gegevens die worden verzameld door Azure Monitor Metrics worden opgeslagen in een database uit de tijdreeksdie is geoptimaliseerd voor het analyseren van tijdstempelgegevens. Elke set metrische waarden is een tijdreeks met de volgende eigenschappen:
 
-* Het tijdstip waarop de waarde is verzameld
-* De resource waaraan de waarde is gekoppeld
-* Een naam ruimte die fungeert als een categorie voor de metriek
-* De naam van een metrische waarde
+* De tijd dat de waarde werd verzameld
+* De resource waar de waarde aan is gekoppeld
+* Een naamruimte die fungeert als een categorie voor de statistiek
+* Een metrische naam
 * De waarde zelf
-* Sommige metrische gegevens kunnen meerdere dimensies hebben, zoals wordt beschreven in [multi-dimensionale metrische gegevens](#multi-dimensional-metrics). Aangepaste metrische gegevens kan maximaal 10 dimensies hebben.
+* Sommige statistieken kunnen meerdere dimensies hebben, zoals beschreven in [multidimensionale statistieken](#multi-dimensional-metrics). Aangepaste statistieken kunnen maximaal 10 dimensies hebben.
 
-## <a name="multi-dimensional-metrics"></a>Multi-dimensionale metrische gegevens
-Een van de uitdagingen van metrische gegevens is dat deze regel matig beperkte informatie bevat om context te bieden voor verzamelde waarden. Azure Monitor verhelpt deze uitdaging met multidimensionale metrische gegevens. De grootte van een metrische waarde zijn naam / waarde-paren die aanvullende gegevens om te beschrijven van de metrische waarde bevatten. Een metrische _beschik bare schijf ruimte_ kan bijvoorbeeld een dimensie hebben met de naam _station_ met de waarden _C:_ , _D:_ , waardoor het weer geven van de beschik bare schijf ruimte op alle stations of elk afzonderlijk station kan worden toegestaan.
+## <a name="multi-dimensional-metrics"></a>Multidimensionale statistieken
+Een van de uitdagingen voor metrische gegevens is dat het vaak beperkte informatie heeft om context te bieden voor verzamelde waarden. Azure Monitor pakt deze uitdaging aan met multidimensionale statistieken. Afmetingen van een statistiek zijn naam-waardeparen die extra gegevens bevatten om de metrische waarde te beschrijven. Een metrische _beschikbare schijfruimte_ kan bijvoorbeeld een dimensie hebben met de naam _Drive_ met waarden _C:_, _D:_, waarmee de beschikbare schijfruimte op alle stations of voor elk station afzonderlijk kan worden bekeken.
 
-In het onderstaande voor beeld ziet u twee gegevens sets voor een hypothetische metriek met de naam _netwerk doorvoer_. De eerste gegevensset heeft geen dimensies. De tweede gegevensset toont de waarden met twee dimensies, het _IP-adres_ en de _richting_:
+In het onderstaande voorbeeld worden twee gegevenssets weergegeven voor een hypothetische statistiek genaamd _Netwerkdoorvoer_. De eerste gegevensset heeft geen afmetingen. De tweede gegevensset toont de waarden met twee dimensies, _IP-adres_ en _richting:_
 
 ### <a name="network-throughput"></a>Netwerkdoorvoer
 
 | Tijdstempel     | Metrische waarde |
 | ------------- |:-------------|
-| 8/9/2017 8:14 | 1,331.8 kbps |
-| 8/9/2017 8:15 | 1,141.4 kbps |
-| 8/9/2017 8:16 | 1,110.2 kbps |
+| 8/9/2017 8:14 | 1.331,8 Kbps |
+| 8/9/2017 8:15 | 1,141,4 Kbps |
+| 8/9/2017 8:16 | 1.110,2 Kbps |
 
-Deze niet-dimensionale metrische gegevens kan alleen een eenvoudige vraag beantwoorden, zoals "Wat is mijn netwerkdoorvoer op een bepaald moment?"
+Deze niet-dimensionale statistiek kan alleen antwoord geven op een fundamentele vraag als "wat was mijn netwerkdoorvoer op een bepaald moment?"
 
-### <a name="network-throughput--two-dimensions-ip-and-direction"></a>De netwerkdoorvoer + twee dimensies (IP '-' en "Richting")
+### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Netwerkdoorvoer + twee dimensies ("IP" en "Richting")
 
-| Tijdstempel     | Dimensie '-IP   | Dimensie "Richting" | Metrische waarde|
+| Tijdstempel     | Dimensie "IP"   | Dimensie "Richting" | Metrische waarde|
 | ------------- |:-----------------|:------------------- |:-----------|
-| 8/9/2017 8:14 | IP = "192.168.5.2" | Richting = "Verzenden"    | 646.5 kbps |
-| 8/9/2017 8:14 | IP = "192.168.5.2" | Richting = 'Ontvangen' | 420.1 kbps |
-| 8/9/2017 8:14 | IP = "10.24.2.15"  | Richting = "Verzenden"    | 150,0 kbps |
-| 8/9/2017 8:14 | IP = "10.24.2.15"  | Richting = 'Ontvangen' | 115,2 kbps |
-| 8/9/2017 8:15 | IP = "192.168.5.2" | Richting = "Verzenden"    | 515.2 kbps |
-| 8/9/2017 8:15 | IP = "192.168.5.2" | Richting = 'Ontvangen' | 371.1 kbps |
-| 8/9/2017 8:15 | IP = "10.24.2.15"  | Richting = "Verzenden"    | 155.0 kbps |
-| 8/9/2017 8:15 | IP = "10.24.2.15"  | Richting = 'Ontvangen' | 100.1 kbps |
+| 8/9/2017 8:14 | IP="192.168,5,2" | Richting="Verzenden"    | 646,5 Kbps |
+| 8/9/2017 8:14 | IP="192.168,5,2" | Richting="Ontvangen" | 420,1 Kbps |
+| 8/9/2017 8:14 | IP="10.24.2.15"  | Richting="Verzenden"    | 150,0 Kbps |
+| 8/9/2017 8:14 | IP="10.24.2.15"  | Richting="Ontvangen" | 115,2 Kbps |
+| 8/9/2017 8:15 | IP="192.168,5,2" | Richting="Verzenden"    | 515,2 Kbps |
+| 8/9/2017 8:15 | IP="192.168,5,2" | Richting="Ontvangen" | 371,1 Kbps |
+| 8/9/2017 8:15 | IP="10.24.2.15"  | Richting="Verzenden"    | 155,0 Kbps |
+| 8/9/2017 8:15 | IP="10.24.2.15"  | Richting="Ontvangen" | 100,1 Kbps |
 
-Deze metrische gegevens kunt beantwoorden vragen zoals "Wat was de doorvoer van het netwerk voor elk IP-adres?" en "hoeveel gegevens is verzonden en ontvangen?" Multi-dimensionale metrische gegevens over uitvoeren als u meer analytische en diagnostische waarde ten opzichte van niet-dimensionale metrische gegevens.
+Deze statistiek kan vragen beantwoorden zoals "wat was de netwerkdoorvoer voor elk IP-adres?", en "hoeveel gegevens zijn verzonden versus ontvangen?" Multidimensionale statistieken dragen extra analytische en diagnostische waarde in vergelijking met niet-dimensionale statistieken.
 
-## <a name="interacting-with-azure-monitor-metrics"></a>Interactie met Azure Monitor meet waarden
-Gebruik [Metrics Explorer](metrics-charts.md) om de gegevens in uw metrische data base interactief te analyseren en de waarden van meerdere metrieken in de loop van de tijd te bepalen. U kunt de grafieken vastmaken aan een dash board om ze te bekijken met andere visualisaties. U kunt ook metrische gegevens ophalen met behulp van de [Azure monitoring rest API](rest-api-walkthrough.md).
+## <a name="interacting-with-azure-monitor-metrics"></a>Interactie met Azure Monitor Metrics
+Gebruik [Metrics Explorer](metrics-charts.md) om de gegevens in uw metrische database interactief te analyseren en de waarden van meerdere statistieken in de loop van de tijd in kaart te brengen. U de grafieken vastmaken aan een dashboard om ze te bekijken met andere visualisaties. U ook statistieken ophalen met behulp van de [REST API voor Azure-bewaking.](rest-api-walkthrough.md)
 
 ![Metrics Explorer](media/data-platform/metrics-explorer.png)
 
-## <a name="sources-of-azure-monitor-metrics"></a>Bronnen van Azure Monitor metrische gegevens
-Er zijn drie fundamentele bronnen van metrische gegevens die door Azure Monitor worden verzameld. Zodra deze metrische gegevens worden verzameld in de data base van de Azure Monitor metriek, kunnen ze samen worden geëvalueerd, ongeacht de bron.
+## <a name="sources-of-azure-monitor-metrics"></a>Bronnen van Azure Monitor-statistieken
+Er zijn drie fundamentele bronnen van statistieken verzameld door Azure Monitor. Zodra deze statistieken zijn verzameld in de Azure Monitor-metrische database, kunnen ze samen worden geëvalueerd, ongeacht hun bron.
 
-**Platform metrieken** worden gemaakt door Azure-resources en geven u inzicht in hun status en prestaties. Elk type resource maakt een [afzonderlijke set metrische gegevens](metrics-supported.md) zonder dat er configuratie is vereist. Metrische platform gegevens worden verzameld van Azure-resources met een frequentie van één minuut, tenzij anders aangegeven in de definitie van de metrische gegevens. 
+**Platformstatistieken** worden gemaakt door Azure-bronnen en geven u inzicht in hun status en prestaties. Elk type resource maakt een [afzonderlijke set metrische gegevens](metrics-supported.md) zonder dat er een configuratie nodig is. Platformstatistieken worden verzameld uit Azure-resources op frequentie van één minuut, tenzij anders is aangegeven in de definitie van de statistiek. 
 
-De **metrische gegevens** van het gast besturingssysteem worden verzameld uit het gast besturingssysteem van een virtuele machine. Schakel de metrische gegevens voor het gast besturingssysteem in voor virtuele Windows-machines met [Windows diagnostische extensie (WAD)](../platform/diagnostics-extension-overview.md) en voor virtuele Linux-machines met [InfluxData-telegrafe-agent](https://www.influxdata.com/time-series-platform/telegraf/).
+**GastOS-statistieken** worden verzameld van het gastbesturingssysteem van een virtuele machine. Gast-OS-statistieken inschakelen voor virtuele Windows-machines met [Windows Diagnostic Extension (WAD)](../platform/diagnostics-extension-overview.md) en voor virtuele Linux-machines met [InfluxData Telegraf Agent](https://www.influxdata.com/time-series-platform/telegraf/).
 
-**Toepassings gegevens** worden gemaakt door Application Insights voor uw bewaakte toepassingen en helpen u bij het detecteren van prestatie problemen en het bijhouden van trends in de manier waarop uw toepassing wordt gebruikt. Dit geldt ook voor de _reactie tijd_ van de server en _browser uitzonderingen_.
+**Toepassingsstatistieken** worden gemaakt door Application Insights voor uw bewaakte toepassingen en helpen u prestatieproblemen op te sporen en trends bij te houden in de manier waarop uw toepassing wordt gebruikt. Dit omvat waarden als _serverresponstijd_ en _browseruitzonderingen._
 
-**Aangepaste metrische gegevens** zijn metrische gegevens die u definieert naast de standaard metrieken die automatisch beschikbaar zijn. U kunt [aangepaste metrische gegevens definiëren in uw toepassing](../app/api-custom-events-metrics.md) die worden bewaakt door Application Insights of aangepaste metrische gegevens voor een Azure-service maken met behulp van de [API voor aangepaste metrische gegevens](metrics-store-custom-rest-api.md).
+**Aangepaste statistieken** zijn statistieken die u definieert naast de standaardstatistieken die automatisch beschikbaar zijn. U [aangepaste statistieken definiëren in uw toepassing](../app/api-custom-events-metrics.md) die wordt gecontroleerd door Application Insights of aangepaste statistieken voor een Azure-service maken met behulp van de aangepaste metrische [api.](metrics-store-custom-rest-api.md)
 
-## <a name="retention-of-metrics"></a>Metrische gegevens bewaren
-Voor de meeste resources in Azure worden metrische gegevens 93 dagen bewaard. Er zijn enkele uitzonde ringen:
+## <a name="retention-of-metrics"></a>Behoud van statistieken
+Voor de meeste bronnen in Azure worden statistieken 93 dagen bewaard. Er zijn enkele uitzonderingen:
 
-**Metrische gegevens van het gast besturingssysteem**
--   **Klassieke waarden voor het besturings systeem**van de gast. Dit zijn prestatie meter items die worden verzameld door de [Windows diagnostische extensie (WAD)](../platform/diagnostics-extension-overview.md) of de [Linux Diagnostic extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) en worden doorgestuurd naar een Azure-opslag account. Bewaar termijn voor deze metrische gegevens is 14 dagen.
--   De **metrische gegevens van het gast besturingssysteem worden verzonden naar Azure monitor metrische gegevens**. Dit zijn prestatie meter items die worden verzameld door de [Windows diagnostische extensie (WAD)](diagnostics-extension-overview.md) en worden verzonden naar de [gegevens Sink van Azure monitor](diagnostics-extension-overview.md#data-destinations), of via de [InfluxData-telegrafie-agent](https://www.influxdata.com/time-series-platform/telegraf/) op Linux-machines. De Bewaar periode voor deze metrische gegevens is 93 dagen.
--   De **metrische gegevens van het gast besturingssysteem die door log Analytics agent zijn verzameld**. Dit zijn prestatie meter items die worden verzameld door de Log Analytics-agent en worden verzonden naar een Log Analytics-werk ruimte. Het bewaren van deze metrische gegevens is 31 dagen en kan Maxi maal twee jaar worden verlengd.
+**Statistieken gastbesturingssysteem**
+-   **Klassieke gast OS metrics**. Dit zijn prestatiemeteritems die zijn verzameld door de [Windows Diagnostic Extension (WAD)](../platform/diagnostics-extension-overview.md) of de [Linux Diagnostic Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) en worden doorgestuurd naar een Azure-opslagaccount. Bewaar voor deze statistieken is 14 dagen.
+-   **Gaststatistieken van besturingssysteem die naar Azure Monitor Metrics worden verzonden**. Dit zijn prestatiemeteritems die zijn verzameld door de [Windows Diagnostic Extension (WAD)](diagnostics-extension-overview.md) en naar de [Azure Monitor-gegevenssink](diagnostics-extension-overview.md#data-destinations)of via de [InfluxData Telegraf Agent](https://www.influxdata.com/time-series-platform/telegraf/) op Linux-machines worden verzonden. Bewaar voor deze statistieken is 93 dagen.
+-   **GastOS-statistieken verzameld door log Analytics-agent**. Dit zijn prestatiemeteritems die door de log analytics-agent zijn verzameld en naar een werkruimte van Log Analytics zijn verzonden. Bewaar voor deze statistieken is 31 dagen en kan tot 2 jaar worden verlengd.
 
-**Metrische gegevens op basis van het logboek Application Insights**. 
-- Achter de scène worden [metrische gegevens op basis van een logboek](../app/pre-aggregated-metrics-log-metrics.md) omgezet in logboek query's. De Bewaar periode komt overeen met het bewaren van gebeurtenissen in onderliggende Logboeken. Voor Application Insights bronnen worden logboeken gedurende 90 dagen bewaard.
+**Op application Insights log gebaseerde statistieken**. 
+- Achter de scène vertalen [op logboeken gebaseerde statistieken](../app/pre-aggregated-metrics-log-metrics.md) zich in logquery's. Hun retentie komt overeen met het behoud van gebeurtenissen in onderliggende logboeken. Voor resources voor Application Insights worden logboeken 90 dagen bewaard.
 
 
 > [!NOTE]
-> U kunt [de metrische gegevens van het platform voor Azure monitor resources naar een log Analytics-werk ruimte verzenden voor een](resource-logs-collect-storage.md) lange termijn trending.
+> U [platformstatistieken voor Azure Monitor-resources naar een Log Analytics-werkruimte verzenden](resource-logs-collect-storage.md) voor trending op lange termijn.
 
 
 
@@ -117,6 +117,6 @@ Voor de meeste resources in Azure worden metrische gegevens 93 dagen bewaard. Er
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [Azure monitor-gegevens platform](data-platform.md).
-- Meer informatie over [logboek gegevens in azure monitor](data-platform-logs.md).
-- Meer informatie over de [beschik bare bewakings gegevens](data-sources.md) voor verschillende bronnen in Azure.
+- Meer informatie over het [Azure Monitor-gegevensplatform](data-platform.md).
+- Meer informatie over [logboekgegevens in Azure Monitor](data-platform-logs.md).
+- Meer informatie over de [bewakingsgegevens die beschikbaar zijn](data-sources.md) voor verschillende bronnen in Azure.

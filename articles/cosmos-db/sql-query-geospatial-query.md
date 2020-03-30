@@ -1,5 +1,5 @@
 ---
-title: Een query uitvoeren op georuimtelijke gegevens met Azure Cosmos DB
+title: Georuimtelijke gegevens opvragen met Azure Cosmos DB
 description: Ruimtelijke gegevens opvragen met Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 08b12bd9d35aaa61c79d35a55068983cdc0f1b83
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77566320"
 ---
-# <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Een query uitvoeren op georuimtelijke gegevens met Azure Cosmos DB
+# <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Georuimtelijke gegevens opvragen met Azure Cosmos DB
 
-Dit artikel bevat informatie over het opvragen van georuimtelijke gegevens in Azure Cosmos DB met behulp van SQL en LINQ. Het opslaan en openen van georuimtelijke gegevens wordt momenteel alleen ondersteund door Azure Cosmos DB SQL-API-accounts. Azure Cosmos DB ondersteunt de volgende Open georuimtelijke Consortium (OGC) ingebouwde functies voor georuimtelijke query's. Zie voor meer informatie over de volledige set ingebouwde functies in de SQL-taal [query systeem functies in azure Cosmos DB](sql-query-system-functions.md).
+In dit artikel wordt geverslagd over het opvragen van georuimtelijke gegevens in Azure Cosmos DB met SQL en LINQ. Momenteel wordt het opslaan en openen van georuimtelijke gegevens alleen ondersteund door Azure Cosmos DB SQL API-accounts. Azure Cosmos DB ondersteunt de volgende Open Geospatial Consortium (OGC) ingebouwde functies voor georuimtelijke query's. Zie [Querysysteemfuncties in Azure Cosmos DB](sql-query-system-functions.md)voor meer informatie over de volledige set ingebouwde functies in de SQL-taal.
 
-## <a name="spatial-sql-built-in-functions"></a>Ruimtelijke SQL ingebouwde functies
+## <a name="spatial-sql-built-in-functions"></a>Ruimtelijke SQL-ingebouwde functies
 
-Hier volgt een lijst met georuimtelijke systeem functies die nuttig zijn voor het uitvoeren van query's in Azure Cosmos DB:
+Hier is een lijst met georuimtelijke systeemfuncties die nuttig zijn voor het opvragen in Azure Cosmos DB:
 
 |**Gebruik**|**Beschrijving**|
 |---|---|
@@ -27,9 +27,9 @@ Hier volgt een lijst met georuimtelijke systeem functies die nuttig zijn voor he
 |ST_WITHIN (spatial_expr, spatial_expr) | Retourneert een Booleaanse expressie die aangeeft of het eerste GeoJSON-object (Point, Polygon of LineString) zich bevindt in het tweede GeoJSON-object (punt, Polygon of LineString).|
 |ST_INTERSECTS (spatial_expr, spatial_expr)| Retourneert een Booleaanse expressie die aangeeft of de twee opgegeven GeoJSON-objecten (Point, Polygon of LineString) elkaar snijden.|
 |ST_ISVALID| Retourneert een Booleaanse waarde die aangeeft of de opgegeven GeoJSON Point-, Polygon- of LineString-expressie geldig is.|
-| ST_ISVALIDDETAILED| Retourneert een JSON-waarde met een Booleaanse waarde als de opgegeven geojson Point-, veelhoek-of lines Tring-expressie geldig is. Als dit ongeldig is, wordt de reden geretourneerd als een teken reeks waarde.|
+| ST_ISVALIDDETAILED| Retourneert een JSON-waarde met een Booleaanse waarde als de opgegeven expressie GeoJSON Point, Polygon of LineString geldig is. Als dit ongeldig is, wordt de reden als tekenreekswaarde geretourneerd.|
 
-Ruimtelijke functies kunnen worden gebruikt om nabijheidsquery's uit te voeren op ruimtelijke gegevens. Dit is bijvoorbeeld een query die alle familie documenten retourneert die binnen 30 km van de opgegeven locatie vallen met behulp van de ingebouwde functie `ST_DISTANCE`.
+Ruimtelijke functies kunnen worden gebruikt om nabijheidsquery's uit te voeren op ruimtelijke gegevens. Hier vindt u bijvoorbeeld een query die alle gezinsdocumenten retourneert die `ST_DISTANCE` zich binnen 30 km van de opgegeven locatie bevinden met behulp van de ingebouwde functie.
 
 **Query**
 
@@ -39,7 +39,7 @@ Ruimtelijke functies kunnen worden gebruikt om nabijheidsquery's uit te voeren o
     WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
 ```
 
-**Results**
+**Resultaten**
 
 ```json
     [{
@@ -47,11 +47,11 @@ Ruimtelijke functies kunnen worden gebruikt om nabijheidsquery's uit te voeren o
     }]
 ```
 
-Als u ruimtelijke indexering in uw indexeringsbeleid, wordt klikt u vervolgens 'afstand query's ' efficiënt worden uitgevoerd via de index. Zie [georuimtelijke indexering](sql-query-geospatial-index.md)voor meer informatie over Spatial indexeren. Als u geen ruimtelijke index voor de opgegeven paden hebt, voert de query een scan uit van de container.
+Als u ruimtelijke indexering opneemt in uw indexeringsbeleid, worden 'afstandsquery's' efficiënt via de index weergegeven. Zie [georuimtelijke indexering voor](sql-query-geospatial-index.md)meer informatie over ruimtelijke indexering . Als u geen ruimtelijke index hebt voor de opgegeven paden, wordt de container door de query gescant.
 
-`ST_WITHIN` kan worden gebruikt om te controleren of een punt binnen een veelhoek ligt. Veelhoeken worden vaak gebruikt om grenzen als postcodes, status grenzen of natuurlijke ontstaan wachtrijen vertegenwoordigen. Het opnieuw als u ruimtelijke indexering in uw indexeringsbeleid, klikt u vervolgens 'in'-query's wordt efficiënt worden uitgevoerd via de index.
+`ST_WITHIN`kan worden gebruikt om te controleren of een punt ligt in een Veelhoek. Vaak worden Veelhoeken gebruikt om grenzen te vertegenwoordigen, zoals postcodes, staatsgrenzen of natuurlijke formaties. Nogmaals als u ruimtelijke indexering opneemt in uw indexeringsbeleid, worden query's 'binnen' efficiënt via de index weergegeven.
 
-Veelhoek argumenten in `ST_WITHIN` kunnen slechts één ring bevatten, dat wil zeggen dat de veelhoeken geen gaten mogen bevatten.
+Polygoon `ST_WITHIN` argumenten in kan bevatten slechts een enkele ring, dat wil zeggen, de Polygonen mogen geen gaten bevatten in hen.
 
 **Query**
 
@@ -64,7 +64,7 @@ Veelhoek argumenten in `ST_WITHIN` kunnen slechts één ring bevatten, dat wil z
     })
 ```
 
-**Results**
+**Resultaten**
 
 ```json
     [{
@@ -73,11 +73,11 @@ Veelhoek argumenten in `ST_WITHIN` kunnen slechts één ring bevatten, dat wil z
 ```
 
 > [!NOTE]
-> Net als bij het werken met niet-overeenkomende typen in Azure Cosmos DB query, als de locatie waarde die is opgegeven in een van beide argumenten onjuist of ongeldig is, wordt geëvalueerd naar niet- **gedefinieerd** en wordt het geëvalueerde document overgeslagen uit de query resultaten. Als uw query geen resultaten retourneert, voert u `ST_ISVALIDDETAILED` uit om fouten op te lossen waarom het ruimtelijke type ongeldig is.
+> Net als bij de manier waarop niet-overeenkomende typen werken in Azure Cosmos DB-query, als de locatiewaarde die in een van beide argumenten is opgegeven, onjuist of ongeldig is, wordt deze geëvalueerd op **niet-gedefinieerde** en het geëvalueerde document dat moet worden overgeslagen uit de queryresultaten. Als uw query geen `ST_ISVALIDDETAILED` resultaten retourneert, voert u uit om te debuggen waarom het ruimtelijke type ongeldig is.
 >
 >
 
-Azure Cosmos DB ondersteunt ook omgekeerde query's uitvoert, dat wil zeggen, kunt u veelhoeken of regels in een Azure Cosmos DB indexeren, en vervolgens op te vragen voor de gebieden die een opgegeven punt bevatten. Dit patroon wordt vaak gebruikt in logistiek te identificeren, bijvoorbeeld wanneer een vrachtwagen binnengaat of een aangewezen gebied verlaat.
+Azure Cosmos DB ondersteunt ook het uitvoeren van omgekeerde query's, dat wil zeggen dat u veelhoeken of lijnen indexeren in Azure Cosmos DB en vervolgens query's maken voor de gebieden die een opgegeven punt bevatten. Dit patroon wordt vaak gebruikt in de logistiek om te identificeren, bijvoorbeeld wanneer een vrachtwagen een aangewezen gebied binnenkomt of verlaat.
 
 **Query**
 
@@ -87,7 +87,7 @@ Azure Cosmos DB ondersteunt ook omgekeerde query's uitvoert, dat wil zeggen, kun
     WHERE ST_WITHIN({'type': 'Point', 'coordinates':[31.9, -4.8]}, a.location)
 ```
 
-**Results**
+**Resultaten**
 
 ```json
     [{
@@ -99,7 +99,7 @@ Azure Cosmos DB ondersteunt ook omgekeerde query's uitvoert, dat wil zeggen, kun
     }]
 ```
 
-`ST_ISVALID` en `ST_ISVALIDDETAILED` kunnen worden gebruikt om te controleren of een ruimtelijk object geldig is. Bijvoorbeeld, controleert de volgende query de geldigheid van een punt met een out-of breedtegraad bereikwaarde (-132.8). `ST_ISVALID` retourneert alleen een Booleaanse waarde, en `ST_ISVALIDDETAILED` retourneert de Boolean en een teken reeks met de reden waarom deze als ongeldig wordt beschouwd.
+`ST_ISVALID`en `ST_ISVALIDDETAILED` kan worden gebruikt om te controleren of een ruimtelijk object geldig is. In de volgende query wordt bijvoorbeeld de geldigheid van een punt met een breedtegraadwaarde buiten bereik (-132.8) gecontroleerd. `ST_ISVALID`retourneert alleen een `ST_ISVALIDDETAILED` Booleaanse waarde en retourneert de Booleaanse en een tekenreeks met de reden waarom deze als ongeldig wordt beschouwd.
 
 **Query**
 
@@ -107,7 +107,7 @@ Azure Cosmos DB ondersteunt ook omgekeerde query's uitvoert, dat wil zeggen, kun
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 ```
 
-**Results**
+**Resultaten**
 
 ```json
     [{
@@ -115,7 +115,7 @@ Azure Cosmos DB ondersteunt ook omgekeerde query's uitvoert, dat wil zeggen, kun
     }]
 ```
 
-Deze functies kunnen ook worden gebruikt voor het valideren van veelhoeken. Hier gebruiken we bijvoorbeeld `ST_ISVALIDDETAILED` om een veelhoek te valideren die niet is gesloten.
+Deze functies kunnen ook worden gebruikt om Polygonen te valideren. Hier gebruiken `ST_ISVALIDDETAILED` we bijvoorbeeld om een Veelhoek te valideren die niet is gesloten.
 
 **Query**
 
@@ -125,7 +125,7 @@ Deze functies kunnen ook worden gebruikt voor het valideren van veelhoeken. Hier
         ]]})
 ```
 
-**Results**
+**Resultaten**
 
 ```json
     [{
@@ -138,9 +138,9 @@ Deze functies kunnen ook worden gebruikt voor het valideren van veelhoeken. Hier
 
 ## <a name="linq-querying-in-the-net-sdk"></a>LINQ-query's in de .NET SDK
 
-De SQL .NET SDK heeft ook betrekking op stub-methoden `Distance()` en `Within()` voor gebruik binnen LINQ-expressies. De SQL LINQ-provider vertaalt deze methode aanroepen naar de equivalente SQL ingebouwde functieaanroepen (ST_DISTANCE en ST_WITHIN respectievelijk).
+De SQL .NET SDK levert `Distance()` `Within()` ook stub-methoden en voor gebruik binnen LINQ-expressies. De SQL LINQ-provider vertaalt deze methodeaanroepen naar de equivalente SQL-ingebouwde functieaanroepen (respectievelijk ST_DISTANCE en ST_WITHIN).
 
-Hier volgt een voor beeld van een LINQ-query waarmee alle documenten in de Azure Cosmos-container worden gevonden waarvan de `location` waarde binnen een straal van 30 km van het opgegeven punt met behulp van LINQ.
+Hier is een voorbeeld van een LINQ-query waarin alle `location` documenten in de Azure Cosmos-container worden gevonden waarvan de waarde zich binnen een straal van 30 km van het opgegeven punt bevindt met LINQ.
 
 **LINQ-query voor afstand**
 
@@ -152,9 +152,9 @@ Hier volgt een voor beeld van een LINQ-query waarmee alle documenten in de Azure
     }
 ```
 
-Hier volgt een query voor het zoeken naar alle documenten waarvan de `location` zich binnen het opgegeven vak/veelhoek bevindt.
+Op dezelfde manier is hier een query `location` voor het vinden van alle documenten waarvan deze zich binnen het opgegeven vak/Veelhoek bevindt.
 
-**LINQ-query voor in**
+**LINQ-query voor Binnen**
 
 ```csharp
     Polygon rectangularArea = new Polygon(
@@ -178,8 +178,8 @@ Hier volgt een query voor het zoeken naar alle documenten waarvan de `location` 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u aan de slag met georuimtelijke ondersteuning in Azure Cosmos DB, naast kunt u:
+Nu u hebt geleerd hoe u aan de slag met georuimtelijke ondersteuning in Azure Cosmos DB, u vervolgens:
 
-* Meer informatie over [Azure Cosmos DB query](sql-query-getting-started.md)
-* Meer informatie over [georuimtelijke en GEOjson-locatie gegevens in azure Cosmos DB](sql-query-geospatial-intro.md)
-* Meer informatie over [ruimtelijke gegevens in index met Azure Cosmos DB](sql-query-geospatial-index.md)
+* Meer informatie over [Azure Cosmos DB Query](sql-query-getting-started.md)
+* Meer informatie over [geospatiale en GeoJSON-locatiegegevens in Azure Cosmos DB](sql-query-geospatial-intro.md)
+* Meer informatie over [ruimtelijke gegevens indexen met Azure Cosmos DB](sql-query-geospatial-index.md)

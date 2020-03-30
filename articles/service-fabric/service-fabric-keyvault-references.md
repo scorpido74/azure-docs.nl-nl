@@ -1,30 +1,30 @@
 ---
-title: Azure-Service Fabric-Service Fabric toepassing sleutel kluis verwijzingen gebruiken
-description: In dit artikel wordt uitgelegd hoe u de KeyVaultReference-ondersteuning van service Fabric gebruikt voor toepassings geheimen.
+title: Azure Service Fabric - KeyVault-verwijzingen voor servicefabric-toepassingen gebruiken
+description: In dit artikel wordt uitgelegd hoe u KeyVaultReference-ondersteuning voor toepassingsgeheimen gebruiken.
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76545480"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-ondersteuning voor Service Fabric toepassingen (preview)
+#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-ondersteuning voor Service Fabric-toepassingen (voorbeeld)
 
-Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veilig opslaan van geheimen dat vereist is voor uw toepassing. U kunt bijvoorbeeld de referenties van de container opslagplaats opslaan in de sleutel kluis en hiernaar verwijzen in het toepassings manifest. Service Fabric KeyVaultReference gebruikt Service Fabric beheerde identiteit en maakt het eenvoudig om te verwijzen naar sleutel kluis geheimen. In de rest van dit artikel vindt u informatie over het gebruik van Service Fabric KeyVaultReference en bevat een typisch gebruik.
+Een veelvoorkomende uitdaging bij het bouwen van cloudtoepassingen is hoe u veilig geheimen opslaan die door uw toepassing vereist zijn. U bijvoorbeeld de referenties van de containeropslagplaats opslaan in keyvault en ernaar verwijzen in het toepassingsmanifest. Service Fabric KeyVaultReference maakt gebruik van Service Fabric Managed Identity en maakt het eenvoudig om keyvault-geheimen te verwijzen. In de rest van dit artikel wordt beschreven hoe u Service Fabric KeyVaultReference gebruikt en bevat u een typisch gebruik.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Beheerde identiteit voor toepassing (MIT)
     
-    Service Fabric KeyVaultReference-ondersteuning maakt gebruik van de beheerde identiteit van de toepassing en daarom moeten toepassingen die KeyVaultReferences gebruiken, gebruikmaken van beheerde identiteit. Volg dit [document](concepts-managed-identity.md) om beheerde identiteit in te scha kelen voor uw toepassing.
+    Service Fabric KeyVaultReference-ondersteuning maakt gebruik van de beheerde identiteit van de toepassing en daarom moeten toepassingen die KeyVaultReferences willen gebruiken, Managed Identity gebruiken. Volg dit [document](concepts-managed-identity.md) om beheerde identiteit voor uw toepassing in te schakelen.
 
-- Archief met centrale geheimen (CSS).
+- Central Secrets Store (CSS).
 
-    Central geheimen Store (CSS) is de versleutelde lokale geheimen cache van Service Fabric. CSS is een lokale archief cache voor het opslaan van gevoelige gegevens, zoals een wacht woord, tokens en sleutels, versleuteld in het geheugen. KeyVaultReference, zodra het is opgehaald, worden in de cache opgeslagen in CSS.
+    Central Secrets Store (CSS) is de versleutelde cache van Service Fabric voor lokale geheimen. CSS is een lokale geheime winkelcache die gevoelige gegevens, zoals een wachtwoord, tokens en sleutels, versleuteld in het geheugen bewaart. KeyVaultReference, eenmaal opgehaald, worden in de cache opgeslagen in CSS.
 
-    Voeg het onderstaande toe aan uw cluster configuratie onder `fabricSettings` om alle vereiste functies voor KeyVaultReference-ondersteuning in te scha kelen.
+    Voeg hieronder de onderstaande `fabricSettings` toevoegen aan uw clusterconfiguratie om alle vereiste functies voor KeyVaultReference-ondersteuning in te schakelen.
 
     ```json
     "fabricSettings": 
@@ -60,7 +60,7 @@ Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veili
     ```
 
     > [!NOTE] 
-    > Het is raadzaam om een afzonderlijk versleutelings certificaat voor CSS te gebruiken. U kunt deze toevoegen onder de sectie ' CentralSecretService '.
+    > Het wordt aanbevolen om een apart versleutelingscertificaat voor CSS te gebruiken. U het toevoegen onder de sectie CentralSecretService.
     
 
     ```json
@@ -69,7 +69,7 @@ Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veili
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-Om de wijzigingen van kracht te laten worden, moet u ook het upgrade beleid wijzigen om een geforceerde opnieuw op te geven van de Service Fabric runtime op elk knoop punt wanneer de upgrade wordt uitgevoerd via het cluster. Opnieuw opstarten zorgt ervoor dat de nieuw ingeschakelde systeem service wordt gestart en wordt uitgevoerd op elk knoop punt. In het onderstaande code fragment is forceRestart de essentiële instelling. Gebruik uw bestaande waarden voor de overige instellingen.
+Als u wilt dat de wijzigingen van kracht worden, moet u ook het upgradebeleid wijzigen om een krachtige herstart van de runtime van de ServiceFabric op elk knooppunt op te geven naarmate de upgrade door het cluster vordert. Deze herstart zorgt ervoor dat de nieuw ingeschakelde systeemservice wordt gestart en op elk knooppunt wordt uitgevoerd. In het onderstaande fragment is forceRestart de essentiële instelling; gebruik uw bestaande waarden voor de rest van de instellingen.
 ```json
 "upgradeDescription": {
     "forceRestart": true,
@@ -81,23 +81,23 @@ Om de wijzigingen van kracht te laten worden, moet u ook het upgrade beleid wijz
     "upgradeTimeout": "12:00:00"
 }
 ```
-- Machtigingen voor beheerde identiteits toegang verlenen aan de sleutel kluis
+- De beheerde identiteitstoegangstoestemming van de toepassing verlenen aan de keyvault
 
-    Raadpleeg dit [document](how-to-grant-access-other-resources.md) voor meer informatie over het verlenen van beheerde identiteits toegang tot de sleutel kluis. Opmerking Als u een door het systeem toegewezen beheerde identiteit gebruikt, wordt de beheerde identiteit alleen gemaakt na de implementatie van de toepassing.
+    Raadpleeg dit [document](how-to-grant-access-other-resources.md) om te zien hoe u beheerde identiteitstoegang verleent tot keyvault. Let ook op als u system assigned managed identity gebruikt, wordt de beheerde identiteit pas gemaakt na implementatie van de toepassing.
 
-## <a name="keyvault-secret-as-application-parameter"></a>Sleutel kluis geheim als toepassings parameter
-Stel dat de toepassing het wacht woord voor de back-enddatabase moet lezen dat is opgeslagen in de sleutel kluis. Service Fabric KeyVaultReference-ondersteuning maakt het eenvoudig. In het onderstaande voor beeld wordt `DBPassword` geheim gelezen uit de sleutel kluis met behulp van Service Fabric KeyVaultReference-ondersteuning.
+## <a name="keyvault-secret-as-application-parameter"></a>Keyvault geheim als toepassingsparameter
+Stel dat de toepassing het wachtwoord van de backenddatabase moet lezen dat is opgeslagen in keyvault, servicefabric KeyVaultReference-ondersteuning maakt het eenvoudig. Onderstaand voorbeeld `DBPassword` leest geheim van keyvault met behulp van Service Fabric KeyVaultReference ondersteuning.
 
-- Een sectie toevoegen aan Settings. XML
+- Een sectie toevoegen aan settings.xml
 
-    Definieer `DBPassword` para meter met het type `KeyVaultReference` en waarde `<KeyVaultURL>`
+    Parameter `DBPassword` definiëren `KeyVaultReference` met Tekst en waarde`<KeyVaultURL>`
 
     ```xml
     <Section Name="dbsecrets">
         <Parameter Name="DBPassword" Type="KeyVaultReference" Value="https://vault200.vault.azure.net/secrets/dbpassword/8ec042bbe0ea4356b9b171588a8a1f32"/>
     </Section>
     ```
-- Verwijzen naar de nieuwe sectie in ApplicationManifest. XML in `<ConfigPackagePolicies>`
+- Verwijzen naar de nieuwe sectie in ApplicationManifest.xml in`<ConfigPackagePolicies>`
 
     ```xml
     <ServiceManifestImport>
@@ -113,9 +113,9 @@ Stel dat de toepassing het wacht woord voor de back-enddatabase moet lezen dat i
     </ServiceManifestImport>
     ```
 
-- KeyVaultReference in uw toepassing gebruiken
+- KeyVaultReference gebruiken in uw toepassing
 
-    Service Fabric op service-instantiëring wordt de KeyVaultReference-para meter omgezet met de beheerde identiteit van de toepassing. Elke para meter die wordt weer gegeven onder `<Section  Name=dbsecrets>`, is een bestand in de map waarnaar wordt aangegeven door EnvironmentVariable SecretPath. Onder C# code fragment ziet u hoe u DBPassword in uw toepassing kunt lezen.
+    Service Fabric op serviceinstantiatie lost de KeyVaultReference-parameter op met behulp van de beheerde identiteit van de toepassing. Elke parameter die `<Section  Name=dbsecrets>` hieronder wordt vermeld, is een bestand onder de map waarnaar wordt aangegaan door EnvironmentVariable SecretPath. Hieronder C# code fragment laten zien hoe DBPassword te lezen in uw aanvraag.
 
     ```C#
     string secretPath = Environment.GetEnvironmentVariable("SecretPath");
@@ -126,11 +126,11 @@ Stel dat de toepassing het wacht woord voor de back-enddatabase moet lezen dat i
     }
     ```
     > [!NOTE] 
-    > Voor het container scenario kunt u de koppel punt gebruiken om te bepalen waar de `secrets` worden gekoppeld.
+    > Voor het containerscenario u de MountPoint `secrets` gebruiken om te bepalen waar de houder wordt gemonteerd.
 
-## <a name="keyvault-secret-as-environment-variable"></a>Sleutel kluis geheim als omgevings variabele
+## <a name="keyvault-secret-as-environment-variable"></a>Keyvault geheim als omgevingsvariabele
 
-Service Fabric omgevings variabelen bieden nu ondersteuning voor het type KeyVaultReference, zoals in het onderstaande voor beeld ziet u hoe u een omgevings variabele verbindt met een geheim dat is opgeslagen in de sleutel kluis.
+Service Fabric-omgevingsvariabelen ondersteunen nu het Type KeyVaultReference, hieronder ziet u hoe u een omgevingsvariabele binden aan een geheim dat is opgeslagen in KeyVault.
 
 ```xml
 <EnvironmentVariables>
@@ -141,8 +141,8 @@ Service Fabric omgevings variabelen bieden nu ondersteuning voor het type KeyVau
 ```C#
 string eventStorePassword =  Environment.GetEnvironmentVariable("EventStorePassword");
 ```
-## <a name="keyvault-secret-as-container-repository-password"></a>Sleutel kluis geheim als container opslagplaats wachtwoord
-KeyVaultReference is een ondersteund type voor container RepositoryCredentials. in het onderstaande voor beeld ziet u hoe u een sleutel kluis referentie gebruikt als container opslagplaats wachtwoord.
+## <a name="keyvault-secret-as-container-repository-password"></a>Keyvault geheim als container repository wachtwoord
+KeyVaultReference is een ondersteund type voor containerRepositoryCredentials, hieronder ziet u hoe u een keyvault-verwijzing gebruikt als wachtwoord voor containeropslagplaatsen.
 ```xml
  <Policies>
       <ContainerHostPolicies CodePackageRef="Code">
@@ -150,12 +150,12 @@ KeyVaultReference is een ondersteund type voor container RepositoryCredentials. 
       </ContainerHostPolicies>
 ```
 ## <a name="faq"></a>Veelgestelde vragen
-- De beheerde identiteit moet worden ingeschakeld voor KeyVaultReference-ondersteuning. de activering van de toepassing mislukt als KeyVaultReference wordt gebruikt zonder beheerde identiteit in te scha kelen.
+- Beheerde identiteit moet zijn ingeschakeld voor KeyVaultReference-ondersteuning, uw activering van uw toepassing mislukt als KeyVaultReference wordt gebruikt zonder Managed Identity in te schakelen.
 
-- Als u een systeem toegewezen identiteit gebruikt, wordt deze alleen gemaakt nadat de toepassing is geïmplementeerd en wordt er een circulaire afhankelijkheid gemaakt. Zodra uw toepassing is geïmplementeerd, kunt u het systeem toegewezen identiteits toegangs machtiging verlenen aan de sleutel kluis. U kunt de door het systeem toegewezen identiteit vinden op naam {cluster}/{Application name}/{ServiceName}
+- Als u een door het systeem toegewezen identiteit gebruikt, wordt deze pas gemaakt nadat de toepassing is geïmplementeerd en wordt een cirkelvormige afhankelijkheid gecreëerd. Zodra uw toepassing is geïmplementeerd, u het systeem met toestemming voor identiteitstoegang verlenen aan keyvault. U de toegewezen identiteit van het systeem vinden op naam {cluster}/{toepassingsnaam}/{servicename}
 
-- De sleutel kluis moet zich in hetzelfde abonnement benemen als uw service Fabric-cluster. 
+- De keyvault moet in hetzelfde abonnement zitten als uw servicefabriccluster. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Documentatie voor Azure-sleutel kluis](https://docs.microsoft.com/azure/key-vault/)
+* [Azure KeyVault-documentatie](https://docs.microsoft.com/azure/key-vault/)

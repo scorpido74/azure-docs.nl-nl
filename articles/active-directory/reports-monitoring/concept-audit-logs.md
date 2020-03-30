@@ -18,45 +18,45 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79253232"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
 
-Met Azure Active Directory-rapporten (Azure AD) kunt u de gegevens ophalen die u nodig hebt om te bepalen hoe uw omgeving wordt uitgevoerd.
+Met Azure AD-rapporten (Azure Directory) u de informatie krijgen die u nodig hebt om te bepalen hoe het met uw omgeving gaat.
 
-De rapportage architectuur bestaat uit de volgende onderdelen:
+De rapportagearchitectuur bestaat uit de volgende componenten:
 
 - **Activiteit** 
-    - **Aanmeldingen** : het [rapport met aanmeldingen](concept-sign-ins.md) bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
-    - **Auditlogboeken**: traceerbaarheid via logboeken voor alle door diverse functies binnen Azure AD uitgevoerde wijzigingen. Voor beelden van audit logboeken zijn wijzigingen die zijn aangebracht in resources binnen Azure AD, zoals het toevoegen of verwijderen van gebruikers, apps, groepen, rollen en beleid.
+    - **Aanmeldingsrapport** : het [aanmeldingsrapport](concept-sign-ins.md) bevat informatie over het gebruik van beheerde toepassingen en aanmeldingsactiviteiten voor gebruikers.
+    - **Auditlogboeken**: traceerbaarheid via logboeken voor alle door diverse functies binnen Azure AD uitgevoerde wijzigingen. Voorbeelden van controlelogboeken zijn wijzigingen die zijn aangebracht in resources binnen Azure AD, zoals het toevoegen of verwijderen van gebruikers, apps, groepen, rollen en beleidsregels.
 - **Beveiliging** 
-    - **Risk ante aanmeldingen** : een [Risk ante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldings poging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikers account is. 
-    - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
+    - **Riskante aanmeldingen** - Een [riskante aanmelding](concept-risky-sign-ins.md) is een indicator voor een aanmeldingspoging die mogelijk is uitgevoerd door iemand die niet de rechtmatige eigenaar van een gebruikersaccount is. 
+    - **Gebruikers gemarkeerd voor risico** - Een [riskante gebruiker](concept-user-at-risk.md) is een indicator voor een gebruikersaccount die mogelijk is gecompromitteerd.
 
-In dit artikel vindt u een overzicht van het controle rapport.
+Dit artikel geeft u een overzicht van het auditrapport.
  
 ## <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
 
-* Gebruikers in de **beveiligings beheerder**, **beveiligings lezer**, **rapport lezer** , **globale lezer** of **globale beheerders** rollen
+* Gebruikers in de rollen **Beveiligingsbeheerder**, **Beveiligingslezer,** **Rapportlezer,** **Global Reader** of **Global Administrator**
 
 ## <a name="audit-logs"></a>Auditlogboeken
 
-De Azure AD-controle logboeken bieden records van systeem activiteiten voor naleving. Om het controle rapport te openen, selecteert u **controle logboeken** in het gedeelte **bewaking** van **Azure Active Directory**. Houd er rekening mee dat audit Logboeken een latentie van Maxi maal een uur kunnen hebben, zodat het lang kan duren voordat de gegevens van de controle activiteit worden weer gegeven in de portal nadat u de taak hebt voltooid.
+De Azure AD-controlelogboeken bieden records van systeemactiviteiten voor naleving. Als u het controlerapport wilt openen, selecteert u **Controlelogboeken** in de sectie **Controle** van **Azure Active Directory**. Houd er rekening mee dat controlelogboeken een latentie van maximaal een uur kunnen hebben, dus het kan zo lang duren voordat controleactiviteitsgegevens in de portal worden weergegeven nadat u de taak hebt voltooid.
 
 
 
 Een controlelogboek heeft een standaardlijstweergave die het volgende laat zien:
 
 - de datum en tijd van de gebeurtenis
-- de service die het exemplaar heeft geregistreerd
-- de categorie en de naam van de activiteit (*wat*) 
-- de status van de activiteit (geslaagd of mislukt)
+- de service die de gebeurtenis heeft geregistreerd
+- de categorie en de naam van de activiteit *(wat)* 
+- de status van de activiteit (succes of mislukking)
 - het doel
-- de initiator/Actor (wie) van een activiteit
+- de initiator/actor (wie) van een activiteit
 
 ![Auditlogboeken](./media/concept-audit-logs/listview.png "Auditlogboeken")
 
@@ -68,17 +68,17 @@ Hiermee kunt u extra velden weergeven of velden verwijderen die al worden weerge
 
 ![Auditlogboeken](./media/concept-audit-logs/columnselect.png "Auditlogboeken")
 
-Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
+Selecteer een item in de lijstweergave voor meer gedetailleerde informatie.
 
 ![Auditlogboeken](./media/concept-audit-logs/details.png "Auditlogboeken")
 
 
 ## <a name="filtering-audit-logs"></a>Auditlogboeken filteren
 
-U kunt de controle gegevens filteren op de volgende velden:
+U de controlegegevens filteren op de volgende velden:
 
 - Service
-- Category
+- Categorie
 - Activiteit
 - Status
 - Doel
@@ -87,10 +87,10 @@ U kunt de controle gegevens filteren op de volgende velden:
 
 ![Auditlogboeken](./media/concept-audit-logs/filter.png "Auditlogboeken")
 
-Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
+Met het filter **Service** u kiezen uit een vervolgkeuzelijst van de volgende services:
 
 - Alle
-- AAD-beheer UX
+- AAD Management UX
 - Toegangsbeoordelingen
 - Account inrichten
 - Toepassingsproxy
@@ -98,55 +98,55 @@ Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de vo
 - B2C
 - Voorwaardelijke toegang
 - Hoofddirectory
-- Beheer rechten
+- Beheer van rechten
 - Hybride verificatie
 - Identiteitsbeveiliging
 - Uitgenodigde gebruikers
 - MIM-service
-- MyApps
+- MijnApps
 - PIM
 - Self-service voor groepsbeheer
-- Selfservice voor wachtwoordbeheer
-- Gebruiksvoorwaarden
+- Self-service voor wachtwoordbeheer
+- Gebruiksrechtovereenkomst
 
-Met het filter **categorie** kunt u een van de volgende filters selecteren:
+Met het filter **Categorie** u een van de volgende filters selecteren:
 
 - Alle
 - AdministrativeUnit
 - ApplicationManagement
-- Verificatie
+- Authentication
 - Autorisatie
 - Contactpersoon
 - Apparaat
-- Apparaatconfiguratie
-- DirectoryManagement
+- DeviceConfiguration
+- DirectoryBeheer
 - EntitlementManagement
 - GroupManagement
-- KerberosDomain
-- Beheer van handelingen
+- KerberosDomein KerberosDomein
+- KeyManagement
 - Label
 - Overige
-- PermissionGrantPolicy
+- Beleid voor verlening van machtigingen
 - Beleid
-- ResourceManagement
+- ResourceBeheer
 - RoleManagement
 - UserManagement
 
-Het **activiteiten** filter is gebaseerd op de selectie van de categorie en het resource type voor de activiteit die u maakt. U kunt een specifieke activiteit of alle activiteiten selecteren. 
+Het filter **Activiteit** is gebaseerd op de selectie van de categorie en het type activiteit die u maakt. U kunt een specifieke activiteit of alle activiteiten selecteren. 
 
-U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph API: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+U de lijst met alle controleactiviteiten krijgen met behulp van de Graph API:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
-Met het filter **status** kunt u filteren op basis van de status van een audit bewerking. De status kan een van de volgende zijn:
+Met het filter **Status** u filteren op basis van de status van een auditbewerking. De status kan een van de volgende:
 
 - Alle
 - Geslaagd
 - Fout
 
-Met het **doel** filter kunt u zoeken naar een bepaald doel door de naam of het User Principal Name (UPN) te starten. De doel naam en UPN zijn hoofdletter gevoelig. 
+Met het filter **Doel** u naar een bepaald doel zoeken aan de begin van de naam of gebruikersnaam (UPN). De doelnaam en UPN zijn hoofdlettergevoelig. 
 
-Met het filter **gestart door** kunt u definiëren hoe de naam van een actor of een Universal Principal Name (UPN) begint met. De naam en UPN zijn hoofdletter gevoelig.
+Met **het filter Geïnitieerd** u bepalen wat de naam van een actor of een universele hoofdnaam (UPN) begint. De naam en UPN zijn casegevoelig.
 
-Met het filter **datum bereik** kunt u een tijds bestek voor de geretourneerde gegevens definiëren.  
+Met het filter **Datumbereik** u een tijdsbestek voor de geretourneerde gegevens definiëren.  
 Mogelijke waarden zijn:
 
 - 7 dagen
@@ -155,7 +155,7 @@ Mogelijke waarden zijn:
 
 Wanneer u een aangepast tijdsbestek selecteert, kunt u een begintijd en eindtijd configureren.
 
-U kunt er ook voor kiezen om de gefilterde gegevens te downloaden, tot 250.000 records door de knop **downloaden** te selecteren. U kunt de logboeken downloaden in de CSV-of JSON-indeling. Het aantal records dat u kunt downloaden, is beperkt door het [Bewaar beleid](reference-reports-data-retention.md)voor de Azure Active Directory-rapport.
+U er ook voor kiezen om de gefilterde gegevens, tot 250.000 records, te downloaden door de knop **Downloaden te** selecteren. U de logboeken downloaden in de CSV- of JSON-indeling. Het aantal records dat u downloaden, wordt beperkt door het [azure Active Directory-rapportbehoudbeleid](reference-reports-data-retention.md).
 
 ![Auditlogboeken](./media/concept-audit-logs/download.png "Auditlogboeken")
 
@@ -186,11 +186,11 @@ Met de controlerapporten op basis van gebruikers en groepen krijgt u antwoord op
 
 - Welke licenties zijn toegewezen aan een groep of een gebruiker?
 
-Als u alleen controle gegevens wilt bekijken die gerelateerd zijn aan gebruikers, kunt u een gefilterde weer gave vinden onder **controle logboeken** in het gedeelte **bewaking** van het tabblad **gebruikers** . Dit ingangs punt heeft **UserManagement** als voorgeselecteerde categorie.
+Als u alleen controlegegevens wilt controleren die gerelateerd zijn aan gebruikers, u een gefilterde weergave vinden onder **Controlelogboeken** in de sectie **Controle** van het tabblad **Gebruikers.** Dit toegangspunt heeft **UserManagement** als vooraf geselecteerde categorie.
 
 ![Auditlogboeken](./media/concept-audit-logs/users.png "Auditlogboeken")
 
-Als u alleen controle gegevens wilt bekijken die aan groepen zijn gerelateerd, kunt u een gefilterde weer gave vinden onder **controle logboeken** in het gedeelte **bewaking** van het tabblad **groepen** . Dit ingangs punt heeft **GroupManagement** als voorgeselecteerde categorie.
+Als u alleen controlegegevens wilt controleren die gerelateerd zijn aan groepen, u een gefilterde weergave vinden onder **Controlelogboeken** in de sectie **Controle** van het tabblad **Groepen.** Dit toegangspunt heeft **GroupManagement** als vooraf geselecteerde categorie.
 
 ![Auditlogboeken](./media/concept-audit-logs/groups.png "Auditlogboeken")
 
@@ -200,22 +200,22 @@ Met de controlerapporten op basis van toepassingen krijgt u antwoord op vragen z
 
 * Welke toepassingen zijn toegevoegd of bijgewerkt?
 * Welke toepassingen zijn verwijderd?
-* Is een service-principal voor een toepassing gewijzigd?
+* Is een serviceprincipal voor een toepassing gewijzigd?
 * Zijn de namen van toepassingen gewijzigd?
 * Wie heeft toestemming gegeven voor een toepassing?
 
-Als u controle gegevens wilt bekijken die betrekking hebben op uw toepassingen, kunt u een gefilterde weer gave vinden onder **controle logboeken** in het gedeelte **activiteit** van de Blade **bedrijfs toepassingen** . Voor dit ingangs punt zijn **bedrijfs toepassingen** voorgeselecteerd als het **toepassings type**.
+Als u controlegegevens met betrekking tot uw toepassingen wilt controleren, u een gefilterde weergave vinden onder **Controlelogboeken** in de sectie **Activiteit** van het **bedrijfsmes.** Met dit invoerpunt zijn **Enterprise-toepassingen** vooraf geselecteerd als **toepassingstype**.
 
 ![Auditlogboeken](./media/concept-audit-logs/enterpriseapplications.png "Auditlogboeken")
 
-## <a name="office-365-activity-logs"></a>Office 365-activiteiten logboeken
+## <a name="office-365-activity-logs"></a>Office 365-activiteitslogboeken
 
-U kunt activiteiten logboeken van Office 365 bekijken vanuit het [Microsoft 365-beheer centrum](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Hoewel Office 365-activiteiten en activiteiten logboeken van Azure AD een groot aantal Directory bronnen delen, is alleen het Microsoft 365-beheer centrum een volledig overzicht van de activiteiten logboeken van Office 365. 
+U Office 365-activiteitslogboeken bekijken vanuit het [Microsoft 365-beheercentrum](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center). Hoewel office 365-activiteits- en Azure-ad-activiteitslogboeken veel directorybronnen delen, biedt alleen het Microsoft 365-beheercentrum een volledige weergave van de activiteitslogboeken van Office 365. 
 
-U kunt de activiteiten logboeken van Office 365 ook programmatisch openen met behulp van de [office 365-beheer-api's](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview).
+U de Office 365-activiteitslogboeken ook programmatisch openen met behulp van de [OFFICE 365 Management API's.](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Naslag informatie over Azure AD-controle activiteiten](reference-audit-activities.md)
-- [Referentie voor retentie van Azure AD-rapporten](reference-reports-data-retention.md)
-- [Naslag informatie over latentie van Azure AD-logboeken](reference-reports-latencies.md)
+- [Referentie voor auditactiviteiten van Azure AD](reference-audit-activities.md)
+- [Naslaginformatie over het bewaren van Azure AD-rapporten](reference-reports-data-retention.md)
+- [Verwijzing naar latenlaten van Azure AD-logboeken](reference-reports-latencies.md)

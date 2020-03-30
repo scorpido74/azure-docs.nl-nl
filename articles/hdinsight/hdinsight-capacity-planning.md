@@ -1,6 +1,6 @@
 ---
-title: Cluster capaciteit plannen in azure HDInsight
-description: Bepaal de belangrijkste vragen voor capaciteit en prestaties plannen van een Azure HDInsight-cluster.
+title: Clustercapaciteitsplanning in Azure HDInsight
+description: Identificeer belangrijke vragen voor capaciteits- en prestatieplanning van een Azure HDInsight-cluster.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,125 +9,125 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272641"
 ---
-# <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteits planning voor HDInsight-clusters
+# <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteitsplanning voor HDInsight-clusters
 
-Voordat u een HDInsight-cluster implementeert, plant u de gewenste cluster capaciteit door de benodigde prestaties en schaal te bepalen. Deze planning helpt zowel de bruikbaarheid als de kosten te optimaliseren. Sommige beslissingen over cluster capaciteit kunnen niet worden gewijzigd na de implementatie. Als de prestatie parameters veranderen, kan een cluster worden gedemonteerd en opnieuw worden gemaakt zonder dat de opgeslagen gegevens verloren gaan.
+Plan voor de gewenste cluster door de gewenste clustercapaciteit te implementeren door de benodigde prestaties en schaal te bepalen. Deze planning helpt bij het optimaliseren van zowel bruikbaarheid als kosten. Sommige beslissingen over clustercapaciteit kunnen niet worden gewijzigd na implementatie. Als de prestatieparameters veranderen, kan een cluster worden ontmanteld en opnieuw worden gemaakt zonder opgeslagen gegevens te verliezen.
 
-De belangrijkste vragen om de capaciteits planning te vragen zijn:
+De belangrijkste vragen voor capaciteitsplanning zijn:
 
 * In welke geografische regio moet u uw cluster implementeren?
-* Hoeveel opslag ruimte hebt u nodig?
-* Welk cluster type moet u implementeren?
-* Welke grootte en welk type virtuele machine (VM) moet uw cluster knooppunten gebruiken?
-* Hoeveel worker-knoop punten moet uw cluster hebben?
+* Hoeveel opslagruimte heb je nodig?
+* Welk clustertype moet u implementeren?
+* Welke grootte en type virtuele machine (VM) moeten uw clusterknooppunten gebruiken?
+* Hoeveel werkknooppunten moet uw cluster hebben?
 
-## <a name="choose-an-azure-region"></a>Een Azure-regio kiezen
+## <a name="choose-an-azure-region"></a>Een Azure-gebied kiezen
 
-De Azure-regio bepaalt waar uw cluster fysiek is ingericht. Voor een minimale latentie van lees-en schrijf bewerkingen moet het cluster zich in de buurt van uw gegevens bevinden.
+Het Azure-gebied bepaalt waar uw cluster fysiek is ingericht. Om de latentie van lees- en schrijfbewerkingen te minimaliseren, moet het cluster zich in de buurt van uw gegevens bevinden.
 
-HDInsight is beschikbaar in veel Azure-regio's. Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight)om de dichtstbijzijnde regio te vinden.
+HDInsight is beschikbaar in veel Azure-regio's. Zie [Producten die beschikbaar zijn per regio](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight)als u de dichtstbijzijnde regio wilt vinden.
 
-## <a name="choose-storage-location-and-size"></a>Opslag locatie en-grootte kiezen
+## <a name="choose-storage-location-and-size"></a>Opslaglocatie en -grootte kiezen
 
-### <a name="location-of-default-storage"></a>Locatie van standaard opslag
+### <a name="location-of-default-storage"></a>Locatie van de standaardopslag
 
-De standaard opslag, een Azure Storage account of Azure Data Lake Storage, moet zich op dezelfde locatie bestaan als uw cluster. Azure Storage is beschikbaar op alle locaties. Data Lake Storage Gen1 is beschikbaar in sommige regio's: Bekijk de huidige [Data Lake Storage Beschik baarheid](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
+De standaardopslag, een Azure Storage-account of Azure Data Lake Storage, moet zich op dezelfde locatie bevinden als uw cluster. Azure Storage is beschikbaar op alle locaties. Data Lake Storage Gen1 is beschikbaar in sommige regio's - zie de huidige [beschikbaarheid van Data Lake Storage](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
 ### <a name="location-of-existing-data"></a>Locatie van bestaande gegevens
 
-Als u al een opslag account of Data Lake Storage hebt met uw gegevens en deze opslag wilt gebruiken als de standaard opslag van uw cluster, moet u uw cluster op diezelfde locatie implementeren.
+Als u al een opslagaccount of Data Lake Storage hebt met uw gegevens en deze opslag wilt gebruiken als de standaardopslag van uw cluster, moet u uw cluster op dezelfde locatie implementeren.
 
-### <a name="storage-size"></a>Opslag grootte
+### <a name="storage-size"></a>Opslaggrootte
 
-Nadat u een HDInsight-cluster hebt geïmplementeerd, kunt u aanvullende Azure Storage accounts koppelen of andere Data Lake Storage gebruiken. Al uw opslag accounts moeten zich op dezelfde locatie bevinden als uw cluster. Een Data Lake Storage kan zich op een andere locatie bevinden, hoewel dit een latentie voor lezen/schrijven van gegevens kan veroorzaken.
+Nadat u een HDInsight-cluster hebt geïmplementeerd, u aanvullende Azure Storage-accounts toevoegen of toegang krijgen tot andere Gegevensmeeropslag. Al uw opslagaccounts moeten zich op dezelfde locatie bevinden als uw cluster. Een Data Lake Storage kan zich op een andere locatie bevinden, hoewel dit een aantal lees-/schrijflatentie voor gegevens kan introduceren.
 
-Azure Storage heeft een aantal [capaciteits limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits), terwijl data Lake Storage gen1 vrijwel onbeperkt is.
+Azure Storage heeft een aantal [capaciteitslimieten,](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)terwijl Data Lake Storage Gen1 vrijwel onbeperkt is.
 
-Een cluster kan toegang krijgen tot een combi natie van verschillende opslag accounts. Typische voor beelden zijn:
+Een cluster heeft toegang tot een combinatie van verschillende opslagaccounts. Typische voorbeelden zijn:
 
-* Wanneer de hoeveelheid gegevens waarschijnlijk de opslag capaciteit van één Blob Storage-container overschrijdt.
-* Wanneer de snelheid van toegang tot de BLOB-container de drempel waarde kan overschrijden wanneer er sprake is van beperking.
-* Wanneer u gegevens wilt maken, bent u al geüpload naar een BLOB-container die beschikbaar is voor het cluster.
-* Als u verschillende onderdelen van de opslag ruimte wilt isoleren om redenen van beveiliging, of om het beheer te vereenvoudigen.
+* Wanneer de hoeveelheid gegevens waarschijnlijk de opslagcapaciteit van één blobopslagcontainer zal overschrijden.
+* Wanneer de toegangssnelheid tot de blobcontainer de drempelwaarde kan overschrijden waar beperking optreedt.
+* Wanneer u gegevens wilt maken, hebt u al geüpload naar een blobcontainer die beschikbaar is voor het cluster.
+* Wanneer u verschillende delen van de opslag wilt isoleren om veiligheidsredenen of het beheer wilt vereenvoudigen.
 
-Gebruik slechts één container per opslag account voor betere prestaties.
+Gebruik voor betere prestaties slechts één container per opslagaccount.
 
-## <a name="choose-a-cluster-type"></a>Een cluster type kiezen
+## <a name="choose-a-cluster-type"></a>Een clustertype kiezen
 
-Het cluster type bepaalt de werk belasting die uw HDInsight-cluster is geconfigureerd om te worden uitgevoerd, zoals [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)of [Apache Spark](https://spark.apache.org/). Zie [Inleiding tot Azure HDInsight](hdinsight-overview.md#cluster-types-in-hdinsight)voor een gedetailleerde beschrijving van de beschik bare cluster typen. Elk cluster type heeft een specifieke implementatie topologie met vereisten voor de grootte en het aantal knoop punten.
+Het clustertype bepaalt de werkbelasting die uw HDInsight-cluster moet uitvoeren, zoals [Apache Hadoop,](https://hadoop.apache.org/) [Apache Storm](https://storm.apache.org/), Apache [Kafka](https://kafka.apache.org/)of [Apache Spark.](https://spark.apache.org/) Zie [Inleiding tot Azure HDInsight](hdinsight-overview.md#cluster-types-in-hdinsight)voor een gedetailleerde beschrijving van de beschikbare clustertypen. Elk clustertype heeft een specifieke implementatietopologie die vereisten bevat voor de grootte en het aantal knooppunten.
 
-## <a name="choose-the-vm-size-and-type"></a>De grootte en het type van de virtuele machine kiezen
+## <a name="choose-the-vm-size-and-type"></a>De vm-grootte en -type kiezen
 
-Elk cluster type heeft een reeks knooppunt typen en elk knooppunt type heeft specifieke opties voor de VM-grootte en het bijbehorende type.
+Elk clustertype heeft een set knooppunttypen en elk knooppunttype heeft specifieke opties voor de grootte en het type VM.
 
-Als u de optimale cluster grootte voor uw toepassing wilt bepalen, kunt u een bench Mark-cluster capaciteit opgeven en de opgegeven grootte verg Roten. U kunt bijvoorbeeld een gesimuleerde werk belasting of een *Canarische query*gebruiken. Met een gesimuleerde werk belasting voert u uw verwachte workloads uit op verschillende clusters, waardoor de grootte geleidelijk wordt verhoogd tot de gewenste prestaties zijn bereikt. Een Canarische query kan regel matig worden ingevoegd tussen de andere productie query's om weer te geven of het cluster voldoende bronnen heeft.
+Om de optimale clustergrootte voor uw toepassing te bepalen, u de clustercapaciteit benchmarken en de grootte vergroten zoals aangegeven. U bijvoorbeeld een gesimuleerde werkbelasting of een *kanariequery*gebruiken. Met een gesimuleerde werkbelasting voert u uw verwachte workloads uit op clusters van verschillende grootte, waardoor de grootte geleidelijk toeneemt totdat de gewenste prestaties zijn bereikt. Een kanariequery kan periodiek worden ingevoegd tussen de andere productiequery's om aan te geven of het cluster voldoende resources heeft.
 
-Zie [de juiste VM-grootte voor uw cluster selecteren](hdinsight-selecting-vm-size.md)voor meer informatie over het kiezen van de juiste VM-serie voor uw werk belasting.
+Zie [De juiste VM-grootte voor uw cluster selecteren voor](hdinsight-selecting-vm-size.md)meer informatie over het kiezen van de juiste VM-familie voor uw werkbelasting.
 
-## <a name="choose-the-cluster-scale"></a>De cluster schaal kiezen
+## <a name="choose-the-cluster-scale"></a>De clusterschaal kiezen
 
-De schaal van een cluster wordt bepaald door het aantal VM-knoop punten. Voor alle cluster typen zijn er knooppunt typen met een specifieke schaal en knooppunt typen die ondersteuning bieden voor uitschalen. Een cluster kan bijvoorbeeld precies drie [Apache ZooKeeper](https://zookeeper.apache.org/) knoop punten of twee hoofd knooppunten hebben. Werk knooppunten die gegevens verwerking uitvoeren op een gedistribueerde manier kunnen profiteren van uitbrei ding door extra worker-knoop punten toe te voegen.
+De schaal van een cluster wordt bepaald door de hoeveelheid VM-knooppunten. Voor alle clustertypen zijn er knooppunttypen met een specifieke schaal en knooppunttypen die scale-out ondersteunen. Een cluster kan bijvoorbeeld precies drie [Apache ZooKeeper-knooppunten](https://zookeeper.apache.org/) of twee hoofdknooppunten vereisen. Worker-knooppunten die gegevensverwerking op een gedistribueerde manier uitvoeren, kunnen profiteren van uitschaling door extra werknemersknooppunten toe te voegen.
 
-Afhankelijk van het type cluster, voegt het aantal worker-knoop punten extra reken capaciteit toe (zoals meer kernen), maar kan ook worden toegevoegd aan de totale hoeveelheid geheugen die nodig is voor het hele cluster om in-Memory opslag te ondersteunen van de gegevens die worden verwerkt. Net als bij de keuze van de grootte en het type van de virtuele machine, wordt het selecteren van de juiste cluster schaal meestal empirisch bereikt, met behulp van gesimuleerde werk belastingen of Canarische query's.
+Afhankelijk van uw clustertype voegt het verhogen van het aantal werkknooppunten extra rekencapaciteit toe (zoals meer kernen), maar kan het ook de totale hoeveelheid geheugen toevoegen die nodig is voor het hele cluster om in-memory opslag van gegevens die worden verwerkt, te ondersteunen. Net als bij de keuze van vm-grootte en -type wordt het selecteren van de juiste clusterschaal meestal empirisch bereikt, met behulp van gesimuleerde workloads of kanariequery's.
 
-U kunt uw cluster uitschalen om te voldoen aan de maximale belasting vereisten en vervolgens weer opschalen wanneer deze extra knoop punten niet meer nodig zijn. Met de functie voor automatisch [schalen](hdinsight-autoscale-clusters.md) kunt u uw cluster op basis van vooraf ingestelde metrische gegevens en tijdstippen aanpassen. Zie [HDInsight-clusters schalen](hdinsight-scaling-best-practices.md)voor meer informatie over het hand matig schalen van clusters.
+U uw cluster schalen om te voldoen aan de piekbelastingseisen en het vervolgens weer naar beneden schalen wanneer die extra knooppunten niet meer nodig zijn. Met de [functie Autoscale](hdinsight-autoscale-clusters.md) u uw cluster automatisch schalen op basis van vooraf bepaalde statistieken en timings. Zie Clusters schalen [HDInsight](hdinsight-scaling-best-practices.md)voor meer informatie over het handmatig schalen van uw clusters.
 
-### <a name="cluster-lifecycle"></a>Cluster levenscyclus
+### <a name="cluster-lifecycle"></a>Clusterlevenscyclus
 
-Er worden kosten in rekening gebracht voor de levens duur van een cluster. Als er alleen specifieke tijden zijn dat u uw cluster actief moet hebben, kunt u [op aanvraag clusters maken met behulp van Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). U kunt ook Power shell-scripts maken die uw cluster inrichten en verwijderen, en deze scripts vervolgens plannen met behulp van [Azure Automation](https://azure.microsoft.com/services/automation/).
+Er worden kosten in rekening gebracht voor de levensduur van een cluster. Als er alleen specifieke tijden zijn waarop uw cluster actief moet worden, u [on-demandclusters maken met Azure Data Factory.](hdinsight-hadoop-create-linux-clusters-adf.md) U ook PowerShell-scripts maken die uw cluster in- en verwijderen en deze scripts vervolgens plannen met [Azure Automation](https://azure.microsoft.com/services/automation/).
 
 > [!NOTE]  
-> Wanneer een cluster wordt verwijderd, wordt de standaard Hive-metastore ook verwijderd. Als u de meta Store voor het opnieuw maken van het volgende cluster wilt behouden, gebruikt u een externe metagegevensarchiefmethode, zoals Azure data base of [Apache Oozie](https://oozie.apache.org/).
+> Wanneer een cluster wordt verwijderd, wordt de standaard Hive-metastore ook verwijderd. Als u de metastore voor het volgende cluster opnieuw wilt maken, gebruikt u een extern metagegevensarchief zoals Azure Database of [Apache Oozie](https://oozie.apache.org/).
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
-### <a name="isolate-cluster-job-errors"></a>Cluster taak fouten isoleren
+### <a name="isolate-cluster-job-errors"></a>Clustertaakfouten isoleren
 
-Soms kunnen er fouten optreden vanwege de parallelle uitvoering van meerdere toewijzingen en het verminderen van de onderdelen op een cluster met meerdere knoop punten. Om het probleem op te lossen, kunt u gedistribueerde tests uitvoeren door gelijktijdige meerdere taken uit te voeren op een knoop punt cluster met één worker en vervolgens deze benadering uit te vouwen om meerdere taken gelijktijdig uit te voeren op clusters met meer dan één knoop punt. Als u een HDInsight-cluster met één knoop punt in azure wilt maken, gebruikt u de optie *aangepast (grootte, instellingen, apps)* en gebruikt u een waarde van 1 voor het *aantal worker-knoop punten* in de sectie **cluster grootte** bij het inrichten van een nieuw cluster in de portal.
+Soms kunnen fouten optreden als gevolg van de parallelle uitvoering van meerdere kaarten en het verminderen van componenten op een cluster met meerdere nodes. Als u het probleem wilt isoleren, probeert u gedistribueerde tests uit te voeren door gelijktijdige meerdere taken uit te voeren op een cluster met een knooppunt van één werknemer en deze aanpak vervolgens uit te vouwen om meerdere taken tegelijk uit te voeren op clusters die meer dan één knooppunt bevatten. Als u een HDInsight-cluster met één knooppunt in Azure wilt maken, gebruikt u de optie *Aangepast(grootte, instellingen, apps)* en gebruikt u een waarde van 1 voor *aantal werknemersknooppunten* in de sectie **Clustergrootte** bij het inrichten van een nieuw cluster in de portal.
 
 ## <a name="quotas"></a>Quota
 
-Nadat u de VM-grootte,-schaal en-type van het doel cluster hebt bepaald, controleert u de huidige limieten voor quotum capaciteit van uw abonnement. Wanneer u een quotum limiet bereikt, kunt u mogelijk geen nieuwe clusters implementeren of bestaande clusters uitschalen door meer werk knooppunten toe te voegen. De enige quotum limiet is het quotum voor CPU-kernen dat voor elk abonnement bestaat op het niveau van de regio. Het is bijvoorbeeld mogelijk dat uw abonnement 30 kern limieten heeft in de regio VS-Oost. 
+Controleer na het bepalen van de vm-grootte, schaal en type van uw doelcluster de huidige limietvoor quotumcapaciteit van uw abonnement. Wanneer u een quotumlimiet bereikt, u mogelijk geen nieuwe clusters implementeren of bestaande clusters schalen door meer werknemersknooppunten toe te voegen. De enige quotumlimiet is het CPU-coresquotum dat op regioniveau voor elk abonnement bestaat. Uw abonnement kan bijvoorbeeld een limiet van 30 cores hebben in de regio Oost-VS. 
 
-Voer de volgende stappen uit om de beschik bare kernen te controleren:
+Ga als volgt te werk om uw beschikbare cores te controleren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Ga naar de **overzichts** pagina voor het HDInsight-cluster. 
-3. Klik in het menu links op **quotum limieten**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+2. Navigeer naar de **overzichtspagina** voor het HDInsight-cluster. 
+3. Klik in het linkermenu op **Quotalimieten**.
 
-   Op de pagina worden het aantal gebruikte kernen, het aantal beschikbare kernen en het totale aantal kernen weergegeven.
+   De pagina geeft het aantal gebruikte cores weer, het aantal beschikbare kernen en de totale kernen.
 
-Als u een quota verhoging wilt aanvragen, voert u de volgende stappen uit:
+Als u een quotumverhoging moet aanvragen, gaat u als volgt te werk:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-1. Selecteer **Help en ondersteuning** aan de linkerkant van de pagina.
-1. Selecteer **Nieuwe ondersteuningsaanvraag**.
-1. Selecteer op de pagina **nieuwe ondersteunings aanvraag** , onder tabblad **basis beginselen** , de volgende opties:
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Selecteer **Help + ondersteuning** linksonder op de pagina.
+1. Selecteer **Nieuw ondersteuningsverzoek**.
+1. Selecteer op de pagina **Nieuw ondersteuningsverzoek** onder tabblad **Basisbeginselen** de volgende opties:
 
-   - **Probleem type**: **service-en abonnements limieten (quota's)**
+   - **Probleemtype**: **Service- en abonnementslimieten (quota)**
    - **Abonnement**: het abonnement dat u wilt wijzigen
-   - **Quotum type**: **HDInsight**
+   - **Quotumtype**: **HDInsight**
 
-     ![Een ondersteunings aanvraag maken om het HDInsight-kern quotum te verhogen](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
+     ![Een ondersteuningsaanvraag maken om het kernquotum van HDInsight te verhogen](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
-1. Selecteer **volgende: oplossingen > >** .
-1. Voer op de pagina **Details** een beschrijving van het probleem in, selecteer de ernst van het probleem, uw favoriete contact wijze en andere vereiste velden.
-1. Selecteer **volgende: controleren + > > maken**.
-1. Selecteer op het tabblad **controleren en maken** de optie **maken**.
+1. Selecteer **Volgende: oplossingen >>**.
+1. Selecteer op de pagina **Details** een beschrijving van het probleem, selecteer de ernst van het probleem, de gewenste contactmethode en andere vereiste velden.
+1. Selecteer **Volgende: Controleren + >>maken. **
+1. Selecteer op het tabblad **Controleren + maken** de optie **Maken**.
 
 > [!NOTE]  
-> Als u het HDInsight core-quotum moet verhogen in een privé gebied, [dient u een white list-aanvraag](https://aka.ms/canaryintwhitelist)in.
+> Als u het HDInsight-kernquotum in een privéregio wilt verhogen, [dient u een whitelist-aanvraag in.](https://aka.ms/canaryintwhitelist)
 
-U kunt [contact opnemen met de ondersteuning om een quotum verhoging aan te vragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+U [contact opnemen met ondersteuning om een quotumverhoging aan te vragen.](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)
 
-Er zijn echter enkele vaste quota limieten, bijvoorbeeld één Azure-abonnement kan Maxi maal 10.000 kernen hebben. Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)voor meer informatie over deze limieten.
+Er zijn echter enkele vaste quotumlimieten, bijvoorbeeld een enkel Azure-abonnement kan maximaal 10.000 cores hebben. Zie [Azure-abonnements- en servicelimieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)voor meer informatie over deze limieten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Stel clusters in hdinsight in met Apache Hadoop, Spark, Kafka en meer](hdinsight-hadoop-provision-linux-clusters.md): informatie over het instellen en configureren van clusters in HDInsight met Apache Hadoop, Spark, Kafka, Interactive Hive, HBASE, ml Services of storm.
-* [Prestaties van het cluster bewaken](hdinsight-key-scenarios-to-monitor.md): meer informatie over de belangrijkste scenario's voor het bewaken van uw HDInsight-cluster die van invloed kunnen zijn op de capaciteit van uw cluster.
+* [Clusters instellen in HDInsight met Apache Hadoop, Spark, Kafka en meer:](hdinsight-hadoop-provision-linux-clusters.md)Meer informatie over het instellen en configureren van clusters in HDInsight met Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, ML Services of Storm.
+* [Monitor clusterprestaties:](hdinsight-key-scenarios-to-monitor.md)meer informatie over de belangrijkste scenario's die u moet bewaken voor uw HDInsight-cluster die van invloed kunnen zijn op de capaciteit van uw cluster.

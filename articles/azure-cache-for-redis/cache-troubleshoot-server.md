@@ -1,82 +1,82 @@
 ---
-title: Problemen met Azure-cache oplossen voor redis aan de server zijde
-description: Informatie over het oplossen van veelvoorkomende problemen aan de server zijde met Azure cache voor redis, zoals geheugen belasting, hoge CPU, langdurende opdrachten of bandbreedte beperkingen.
+title: Problemen met Azure Cache voor Redis aan serverzijde oplossen
+description: Meer informatie over het oplossen van veelvoorkomende serverproblemen met Azure Cache voor Redis, zoals geheugendruk, hoge CPU, langlopende opdrachten of bandbreedtebeperkingen.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277932"
 ---
-# <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Problemen met Azure-cache oplossen voor redis aan de server zijde
+# <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Problemen met Azure Cache voor Redis aan serverzijde oplossen
 
-In deze sectie vindt u informatie over het oplossen van problemen die zich voordoen als gevolg van een voor waarde in een Azure-cache voor redis of de virtuele machine (s) die de host heeft.
+In deze sectie worden probleemproblemen besproken die optreden vanwege een aandoening op een Azure-cache voor Redis of de virtuele machine(s) die deze host.
 
 - [Geheugendruk op Redis-server](#memory-pressure-on-redis-server)
-- [Hoog CPU-gebruik of server belasting](#high-cpu-usage-or-server-load)
+- [Hoog CPU-gebruik of serverbelasting](#high-cpu-usage-or-server-load)
 - [Langlopende opdrachten](#long-running-commands)
 - [Bandbreedtebeperking aan serverzijde](#server-side-bandwidth-limitation)
 
 > [!NOTE]
-> Enkele van de stappen voor probleem oplossing in deze hand leiding bevatten instructies voor het uitvoeren van redis-opdrachten en het controleren van verschillende prestatie gegevens. Zie de artikelen in de sectie met [aanvullende informatie](#additional-information) voor meer informatie en instructies.
+> Verschillende van de stappen voor het oplossen van problemen in deze handleiding bevatten instructies voor het uitvoeren van Redis-opdrachten en het bewaken van verschillende prestatiestatistieken. Zie de artikelen in de sectie [Aanvullende informatie voor](#additional-information) meer informatie en instructies.
 >
 
-## <a name="memory-pressure-on-redis-server"></a>Geheugen druk op redis-server
+## <a name="memory-pressure-on-redis-server"></a>Geheugendruk op Redis-server
 
-Geheugen druk aan de server zijde leidt tot allerlei prestatie problemen die het verwerken van aanvragen kunnen vertragen. Wanneer geheugen druk treffers zijn, kunnen er gegevens naar de schijf worden gewisseld. Als gevolg van deze _pagina fout_ wordt het systeem aanzienlijk trager. Er zijn verschillende mogelijke oorzaken van deze geheugen belasting:
+Geheugendruk aan de serverzijde leidt tot allerlei prestatieproblemen die de verwerking van aanvragen kunnen vertragen. Wanneer de geheugendruk toeslaat, kan het systeem gegevens naar de schijf pagina's. Deze _pagina fout zorgt_ ervoor dat het systeem aanzienlijk vertragen. Er zijn verschillende mogelijke oorzaken van deze geheugendruk:
 
-- De cache wordt gevuld met gegevens in de buurt van de maximale capaciteit.
-- Redis ziet u hoog geheugen fragmentatie. Deze fragmentatie wordt meestal veroorzaakt door het opslaan van grote objecten omdat redis is geoptimaliseerd voor kleine objecten.
+- De cache is gevuld met gegevens in de buurt van de maximale capaciteit.
+- Redis ziet een hoge geheugenfragmentatie. Deze fragmentatie wordt meestal veroorzaakt door het opslaan van grote objecten, omdat Redis is geoptimaliseerd voor kleine objecten.
 
-Redis maakt twee statistieken beschikbaar via de opdracht [info](https://redis.io/commands/info) , waarmee u dit probleem kunt identificeren: ' used_memory ' en ' used_memory_rss '. U kunt [Deze metrische gegevens weer geven](cache-how-to-monitor.md#view-metrics-with-azure-monitor) met behulp van de portal.
+Redis onthult twee statistieken via de [info-opdracht](https://redis.io/commands/info) die u kunnen helpen dit probleem te identificeren: "used_memory" en "used_memory_rss". U [deze statistieken bekijken](cache-how-to-monitor.md#view-metrics-with-azure-monitor) via de portal.
 
-Er zijn verschillende mogelijke wijzigingen die u kunt aanbrengen om het geheugen gebruik in orde te houden:
+Er zijn verschillende mogelijke wijzigingen die u aanbrengen om het geheugengebruik gezond te houden:
 
-- [Configureer een geheugen beleid](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) en stel verval tijden in voor uw sleutels. Dit beleid is mogelijk niet voldoende als u fragmentatie hebt.
-- [Configureer een maxmemory-gereserveerde waarde](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) die groot genoeg is voor het compenseren van geheugen fragmentatie.
-- Opsplitsen van uw grote objecten in de cache in kleinere gerelateerde objecten.
-- [Maak waarschuwingen](cache-how-to-monitor.md#alerts) voor metrische gegevens zoals gebruikt geheugen om te worden geïnformeerd over mogelijke gevolgen.
-- [Schaal](cache-how-to-scale.md) naar een grotere cache grootte met meer geheugen capaciteit.
+- [Configureer een geheugenbeleid](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) en stel verlooptijden in op uw sleutels. Dit beleid is mogelijk niet voldoende als u fragmentatie hebt.
+- [Configureer een maximaal gereserveerde waarde](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) die groot genoeg is om geheugenfragmentatie te compenseren.
+- Breek uw grote objecten in de cache op in kleinere gerelateerde objecten.
+- [Maak waarschuwingen](cache-how-to-monitor.md#alerts) over statistieken zoals gebruikt geheugen om vroegtijdig op de hoogte te worden gesteld van mogelijke effecten.
+- [Schaal](cache-how-to-scale.md) naar een grotere cachegrootte met meer geheugencapaciteit.
 
-## <a name="high-cpu-usage-or-server-load"></a>Hoog CPU-gebruik of server belasting
+## <a name="high-cpu-usage-or-server-load"></a>Hoog CPU-gebruik of serverbelasting
 
-Een hoge belasting van de server of het CPU-gebruik betekent dat de server niet tijdig aanvragen kan verwerken. Het kan lang duren voordat de server reageert en de aanvraag frequentie niet kan worden bijgehouden.
+Een hoge serverbelasting of CPU-gebruik betekent dat de server aanvragen niet tijdig kan verwerken. De server kan traag reageren en kan de aanvraagtarieven niet bijhouden.
 
-[Meet waarden bewaken](cache-how-to-monitor.md#view-metrics-with-azure-monitor) , zoals CPU of server belasting. Bekijk pieken in het CPU-gebruik die overeenkomen met time-outs.
+[Monitor statistieken](cache-how-to-monitor.md#view-metrics-with-azure-monitor) zoals CPU of serverbelasting. Kijk uit voor pieken in CPU-gebruik die overeenkomen met time-outs.
 
-Er zijn verschillende wijzigingen die u kunt aanbrengen om de belasting van hoge servers te beperken:
+Er zijn verschillende wijzigingen die u aanbrengen om de hoge serverbelasting te beperken:
 
-- Onderzoek wat er kan leiden tot CPU-pieken, zoals [langlopende opdrachten](#long-running-commands) die hieronder worden vermeld of waarvoor de pagina fouten zijn veroorzaakt door een hoge geheugen belasting.
-- [Maak waarschuwingen](cache-how-to-monitor.md#alerts) voor metrische gegevens, zoals CPU of server belasting, om te worden geïnformeerd over mogelijke gevolgen.
-- [Schaal](cache-how-to-scale.md) naar een grotere cache grootte met meer CPU-capaciteit.
+- Onderzoek wat [cpu-pieken](#long-running-commands) veroorzaakt, zoals langlopende opdrachten die hieronder worden vermeld of paginafouten vanwege de hoge geheugendruk.
+- [Maak waarschuwingen](cache-how-to-monitor.md#alerts) over statistieken zoals CPU of serverbelasting om vroegtijdig op de hoogte te worden gesteld van mogelijke effecten.
+- [Schaal](cache-how-to-scale.md) naar een grotere cachegrootte met meer CPU-capaciteit.
 
 ## <a name="long-running-commands"></a>Langlopende opdrachten
 
-Sommige redis-opdrachten zijn duurder om uit te voeren dan andere. In de [documentatie voor redis-opdrachten](https://redis.io/commands) wordt de tijd complexiteit van elke opdracht weer gegeven. Omdat de verwerking van redis-opdrachten uit één thread bestaat, worden alle andere opdrachten die na het uitvoeren van de opdracht worden uitgevoerd, geblokkeerd. Bekijk de opdrachten die u aan uw redis-server uitgeeft om inzicht te krijgen in de gevolgen van de prestaties. De opdracht [sleutels](https://redis.io/commands/keys) wordt bijvoorbeeld vaak gebruikt zonder te weten dat het een O (N)-bewerking is. U kunt sleutels voor komen door [scans](https://redis.io/commands/scan) te gebruiken om CPU-pieken te verminderen.
+Sommige Redis-opdrachten zijn duurder om uit te voeren dan andere. De [documentatie van de Opdrachten Redis](https://redis.io/commands) toont de tijdscomplexiteit van elke opdracht. Omdat de opdrachtverwerking van Redis single-threaded is, blokkeert een opdracht die tijd kost om uit te voeren alle anderen die erachter komen. U moet de opdrachten controleren die u aan uw Redis-server uitgeeft om inzicht te krijgen in de effecten van de prestaties. De opdracht [TOETSEN](https://redis.io/commands/keys) wordt bijvoorbeeld vaak gebruikt zonder te weten dat het een O(N)-bewerking is. U toetsen vermijden door [SCAN](https://redis.io/commands/scan) te gebruiken om CPU-pieken te verminderen.
 
-Met de [SLOWLOG](https://redis.io/commands/slowlog) -opdracht kunt u dure opdrachten meten die worden uitgevoerd op de server.
+Met de opdracht [SLOWLOG](https://redis.io/commands/slowlog) u dure opdrachten meten die tegen de server worden uitgevoerd.
 
-## <a name="server-side-bandwidth-limitation"></a>Bandbreedte beperking aan server zijde
+## <a name="server-side-bandwidth-limitation"></a>Bandbreedtebeperking aan serverzijde
 
-Verschillende cache grootten hebben verschillende capaciteit voor netwerk bandbreedte. Als de server de beschik bare band breedte overschrijdt, worden de gegevens niet snel naar de client verzonden. Clients kunnen een time-out hebben omdat de server geen gegevens snel genoeg kan pushen naar de client.
+Verschillende cacheformaten hebben verschillende netwerkbandbreedtecapaciteiten. Als de server de beschikbare bandbreedte overschrijdt, worden gegevens niet zo snel naar de client verzonden. Clientaanvragen kunnen een time-out krijgen omdat de server gegevens niet snel genoeg naar de client kan pushen.
 
-De metrische gegevens ' cache read ' en ' cache write ' kunnen worden gebruikt om te zien hoeveel band breedte aan de server zijde wordt gebruikt. U kunt [Deze metrische gegevens weer geven](cache-how-to-monitor.md#view-metrics-with-azure-monitor) in de portal.
+De statistieken 'Cache read' en 'Cache Write' kunnen worden gebruikt om te zien hoeveel bandbreedte aan de serverzijde wordt gebruikt. U [deze statistieken bekijken](cache-how-to-monitor.md#view-metrics-with-azure-monitor) in de portal.
 
-Voor het beperken van situaties waarbij het netwerk bandbreedte gebruik bijna de maximale capaciteit heeft:
+Ga als u op zoek naar situaties waarin het gebruik van netwerkbandbreedte dicht bij de maximale capaciteit ligt:
 
-- Wijzig het gedrag van de client aanroep om de netwerk vraag te verminderen.
-- [Maak waarschuwingen](cache-how-to-monitor.md#alerts) voor metrische gegevens zoals een cache-Lees-of cache-schrijf om te worden geïnformeerd over mogelijke gevolgen.
-- [Schaal](cache-how-to-scale.md) naar een grotere cache grootte met meer capaciteit voor netwerk bandbreedte.
+- Het gespreksgedrag van de client wijzigen om de netwerkvraag te verminderen.
+- [Maak waarschuwingen](cache-how-to-monitor.md#alerts) over statistieken zoals cachelezen of cacheschrijven om vroeg op de hoogte te worden gesteld van mogelijke effecten.
+- [Schaal](cache-how-to-scale.md) naar een grotere cachegrootte met meer netwerkbandbreedtecapaciteit.
 
 ## <a name="additional-information"></a>Aanvullende informatie
 
 - [Problemen met Azure Cache voor Redis aan clientzijde oplossen](cache-troubleshoot-client.md)
-- [Wat is Azure cache voor redis aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-- [Hoe kan ik Bench Mark en test de prestaties van mijn cache?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Azure-cache bewaken voor redis](cache-how-to-monitor.md)
-- [Hoe kan ik redis-opdrachten uitvoeren?](cache-faq.md#how-can-i-run-redis-commands)
+- [Welke Azure-cache voor Redis-aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+- [Hoe kan ik de prestaties van mijn cache benchmarken en testen?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Azure-cache controleren op Redis](cache-how-to-monitor.md)
+- [Hoe kan ik Redis-opdrachten uitvoeren?](cache-faq.md#how-can-i-run-redis-commands)

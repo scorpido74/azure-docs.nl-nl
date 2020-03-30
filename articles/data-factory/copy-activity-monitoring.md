@@ -1,6 +1,6 @@
 ---
-title: Kopieer activiteit controleren
-description: Meer informatie over het controleren van de uitvoering van de Kopieer activiteit in Azure Data Factory.
+title: Kopieeractiviteit controleren
+description: Meer informatie over het controleren van de uitvoering van kopieeractiviteiten in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: jingwang
 ms.openlocfilehash: 6494352bf957af83b45488493bf12a094c730c09
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79125756"
 ---
-# <a name="monitor-copy-activity"></a>Kopieer activiteit controleren
+# <a name="monitor-copy-activity"></a>Kopieeractiviteit controleren
 
-In dit artikel wordt beschreven hoe u de uitvoering van de Kopieer activiteit kunt controleren in Azure Data Factory. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
+In dit artikel wordt beschreven hoe u de uitvoering van kopieeractiviteiten in Azure Data Factory controleren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
 
 ## <a name="monitor-visually"></a>Visueel bewaken
 
-Zodra u een pijp lijn in Azure Data Factory hebt gemaakt en gepubliceerd, kunt u deze koppelen aan een trigger of hand matig een ad-hoc-uitvoering starten. U kunt al uw pijplijn uitvoeringen in de Azure Data Factory gebruikers ervaring zelf bewaken. Meer informatie over Azure Data Factory bewaking in het algemeen van het [visueel bewaken van Azure Data Factory](monitor-visually.md).
+Zodra u een pijplijn hebt gemaakt en gepubliceerd in Azure Data Factory, u deze koppelen aan een trigger of handmatig een ad-hocrun starten. U al uw pijplijnuitvoeringen native controleren in de gebruikerservaring van Azure Data Factory. Meer informatie over Azure Data Factory-bewaking in het algemeen vanuit [Azure Data Factory .](monitor-visually.md)
 
-Als u de uitvoering van de Kopieer activiteit wilt controleren, gaat u naar uw data factory **Author & monitor** -gebruikers interface. Op het tabblad **monitor** ziet u een lijst met pijplijn uitvoeringen, klikt u op de koppeling van de **pijplijn naam** voor toegang tot de lijst met uitvoeringen van activiteiten in de pijplijn uitvoering.
+Als u de activiteit kopiëren wilt controleren, gaat u naar de gebruikersinterface van de gegevensfabriek **Auteur & Monitor.** Klik op het tabblad **Monitor** een lijst met pijplijnuitvoeringen, klik op de koppeling **met pijplijnnaam** om toegang te krijgen tot de lijst met activiteitsruns in de pijplijnuitvoering.
 
-![Uitvoering van Kopieer activiteit controleren](./media/copy-activity-overview/monitor-pipeline-run.png)
+![Uitvoeren van kopieeractiviteiten controleren](./media/copy-activity-overview/monitor-pipeline-run.png)
 
-Op dit niveau ziet u koppelingen om de invoer van de activiteit, uitvoer en fouten te kopiëren (als de Kopieer activiteit is mislukt), evenals statistieken zoals duur/status. Als u op de knop **Details** (bril) naast de naam van de Kopieer activiteit klikt, krijgt u gedetailleerde informatie over de uitvoering van de Kopieer activiteit. 
+Op dit niveau u koppelingen zien om activiteitsinvoer, uitvoer en fouten te kopiëren (als de uitvoeren van de activiteit kopiëren mislukt), evenals statistieken zoals duur/status. Als u op de knop **Details** (bril) klikt naast de naam van de kopieeractiviteit, krijgt u diepgaande details over de uitvoering van uw kopieeractiviteit. 
 
-![Uitvoering van Kopieer activiteit controleren](./media/copy-activity-overview/monitor-copy-activity-run.png)
+![Uitvoeren van kopieeractiviteiten controleren](./media/copy-activity-overview/monitor-copy-activity-run.png)
 
-In deze weer gave van de grafische bewaking geeft Azure Data Factory u de informatie over de uitvoering van de Kopieer activiteit, inclusief gegevens lezen/schrijven volume, het aantal bestanden/rijen gegevens dat is gekopieerd van bron naar sink, door Voer, de configuraties die worden toegepast voor uw Kopieer scenario, stappen die door de Kopieer activiteit worden uitgevoerd met de bijbehorende duur en Details. Raadpleeg [deze tabel](#monitor-programmatically) voor elke mogelijke metriek en de gedetailleerde beschrijving ervan. 
+In deze grafische bewakingsweergave presenteert Azure Data Factory u de uitvoeringsgegevens voor kopieeractiviteiten, inclusief gegevenslees-/geschreven volume, aantal bestanden/rijen gegevens die van bron naar gootsteen worden gekopieerd, doorvoer, de configuraties die zijn toegepast voor uw kopieerscenario, stappen die de kopieeractiviteit doormaakt met bijbehorende duur en details, en meer. Raadpleeg [deze tabel](#monitor-programmatically) op elke mogelijke statistiek en de gedetailleerde beschrijving ervan. 
 
-In sommige gevallen ziet u, wanneer u een Kopieer activiteit uitvoert in Data Factory, de weer gave voor het **afstemmen van prestaties** aan de bovenkant van de bewakings weergave voor het kopiëren van activiteiten, zoals wordt weer gegeven in het voor beeld. De tips geven u de knel punt aan die door ADF is geïdentificeerd voor de specifieke Kopieer uitvoering, samen met suggesties voor wat u moet wijzigen om de door Voer van de Kopieer capaciteit te verhogen. Meer informatie over [Tips voor automatisch afstemmen van prestaties](copy-activity-performance-troubleshooting.md#performance-tuning-tips).
+In sommige scenario's ziet u bij het uitvoeren van een kopieeractiviteit in Gegevensfabriek **bovenaan** de weergave voor het controleren van kopieeractiviteiten, zoals in het voorbeeld wordt weergegeven. De tips vertellen u het knelpunt geïdentificeerd door ADF voor de specifieke kopie uit te voeren, samen met suggestie over wat te wijzigen om kopieerdoorvoer te stimuleren. Meer informatie over [tips voor het afstemmen van automatische prestaties](copy-activity-performance-troubleshooting.md#performance-tuning-tips).
 
-In de **Details van de onderste uitvoering en de duur** worden de belangrijkste stappen beschreven waarmee uw Kopieer activiteit wordt uitgevoerd. Dit is met name handig bij het oplossen van problemen met de Kopieer prestaties. Het knel punt van de Kopieer uitvoering is de versie met de langste duur. Raadpleeg de [prestaties van de Kopieer activiteit oplossen](copy-activity-performance-troubleshooting.md) voor wat elke fase vertegenwoordigt en de gedetailleerde richt lijnen voor probleem oplossing.
+De onderste **uitvoeringsgegevens en -duur** beschrijven de belangrijkste stappen die uw kopieeractiviteit doormaakt, wat vooral handig is voor het oplossen van problemen met de kopieerprestaties. Het knelpunt van uw copy run is degene met de langste duur. Raadpleeg [problemen met de prestaties van kopieeractiviteiten](copy-activity-performance-troubleshooting.md) voor wat elke fase vertegenwoordigt en de gedetailleerde richtlijnen voor het oplossen van problemen.
 
-**Voor beeld: kopiëren van Amazon S3 naar Azure Data Lake Storage Gen2**
+**Voorbeeld: Kopiëren van Amazon S3 naar Azure Data Lake Storage Gen2**
 
-![Details van de uitvoering van de Kopieer activiteit controleren](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
+![Details van het uitvoeren van kopieeractiviteiten controleren](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
 
-## <a name="monitor-programmatically"></a>Controleren via een programma
+## <a name="monitor-programmatically"></a>Programmatisch controleren
 
-De uitvoerings Details van de Kopieer activiteit en de prestatie kenmerken worden ook geretourneerd in de sectie **uitvoer** resultaat van de **Kopieer activiteit** > , die wordt gebruikt om de weer gave van de UI-bewaking te genereren. Hieronder vindt u een volledige lijst met eigenschappen die kunnen worden geretourneerd. U ziet alleen de eigenschappen die van toepassing zijn op uw Kopieer scenario. Zie [programmatisch een Azure-Data Factory bewaken](monitor-programmatically.md)voor meer informatie over het uitvoeren van een programma voor het bewaken van activiteiten in het algemeen.
+Details voor de uitvoering van kopieeractiviteiten en prestatiekenmerken worden ook geretourneerd in de sectie > **Resultaatuitvoer van** **kopieeractiviteit,** die wordt gebruikt om de weergave UI-controle weer te geven. Hieronder volgt een volledige lijst met eigenschappen die mogelijk worden geretourneerd. U ziet alleen de eigenschappen die van toepassing zijn op uw kopieerscenario. Zie Programmatisch controleren van [een Azure-gegevensfabriek](monitor-programmatically.md)voor informatie over het programmatisch controleren van activiteitsuitvoeringen.
 
-| Naam van eigenschap  | Beschrijving | Eenheid in uitvoer |
+| Naam van eigenschap  | Beschrijving | Eenheid in output |
 |:--- |:--- |:--- |
-| dataRead | De werkelijke hoeveelheid gegevens die uit de bron is gelezen. | Int64-waarde, in bytes |
-| datawritten door | De werkelijke koppeling van gegevens die zijn geschreven/doorgevoerd in de sink. De grootte kan afwijken van `dataRead` grootte, omdat in elk gegevens archief de gegevens worden opgeslagen. | Int64-waarde, in bytes |
-| filesRead | Het aantal bestanden dat is gelezen van de bron op basis van een bestand. | Waarde voor Int64 (geen unit) |
-| filesWritten | Het aantal bestanden dat is geschreven/doorgevoerd naar de op bestanden gebaseerde sink. | Waarde voor Int64 (geen unit) |
-| sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Waarde voor Int64 (geen unit) |
-| sinkPeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot stand is gebracht met het sink-gegevens archief tijdens het uitvoeren van de Kopieer activiteit. | Waarde voor Int64 (geen unit) |
-| rowsRead | Het aantal rijen dat is gelezen van de bron (niet van toepassing op een binaire kopie). | Waarde voor Int64 (geen unit) |
-| rowsCopied | Het aantal rijen dat is gekopieerd naar de Sink (niet van toepassing op een binaire kopie). | Waarde voor Int64 (geen unit) |
-| rowsSkipped | Aantal niet-compatibele rijen dat is overgeslagen. U kunt incompatibele rijen inschakelen door `enableSkipIncompatibleRow` in te stellen op waar. | Waarde voor Int64 (geen unit) |
-| copyDuration | De duur van de Kopieer uitvoering. | Int32-waarde, in seconden |
-| throughput | Frequentie van gegevens overdracht. | Drijvende-komma getal, in KBps |
-| sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Int32-waarde (geen eenheid) |
-| sinkPeakConnections| Het maximum aantal gelijktijdige verbindingen dat tot stand is gebracht met het sink-gegevens archief tijdens het uitvoeren van de Kopieer activiteit.| Int32-waarde (geen eenheid) |
-| sqlDwPolyBase | Hiermee wordt aangegeven of poly Base wordt gebruikt wanneer gegevens naar SQL Data Warehouse worden gekopieerd. | Booleaans |
-| redshiftUnload | Hiermee wordt aangegeven of verwijderen wordt gebruikt wanneer gegevens uit Redshift worden gekopieerd. | Booleaans |
-| hdfsDistcp | Hiermee wordt aangegeven of DistCp wordt gebruikt wanneer gegevens worden gekopieerd uit HDFS. | Booleaans |
-| effectiveIntegrationRuntime | De uitvoering van de activiteit (IR) of runtime die wordt gebruikt voor het uitzetten van de activiteiten, in de notatie `<IR name> (<region if it's Azure IR>)`. | Tekst (tekenreeks) |
-| usedDataIntegrationUnits | De effectieve gegevens integratie eenheden tijdens het kopiëren. | Int32-waarde |
-| usedParallelCopies | De effectieve parallelCopies tijdens het kopiëren. | Int32-waarde |
-| redirectRowPath | Pad naar het logboek van overgeslagen incompatibele rijen in de Blob-opslag die u configureert in de eigenschap `redirectIncompatibleRowSettings`. Zie [fout tolerantie](copy-activity-overview.md#fault-tolerance). | Tekst (tekenreeks) |
-| executionDetails | Meer details over de stadia waarin de Kopieer activiteit wordt uitgevoerd, en de bijbehorende stappen, duur, configuraties, enzovoort. We raden u aan deze sectie niet te parseren omdat deze kan worden gewijzigd. Raadpleeg de sectie [visueel bewaken](#monitor-visually) voor meer informatie over de manier waarop u de prestaties van kopiëren kunt begrijpen en oplossen. | Matrix |
-| perfRecommendation | Tips voor het afstemmen van de prestaties kopiëren. Zie [Tips voor het afstemmen van prestaties](copy-activity-performance-troubleshooting.md#performance-tuning-tips) voor meer informatie. | Matrix |
+| gegevensLezen | De werkelijke hoeveelheid gegevens die uit de bron wordt gelezen. | Int64-waarde, in bytes |
+| dataGeschreven | De werkelijke mount van de gegevens geschreven / toegewijd aan de gootsteen. De grootte kan `dataRead` afwijken van de grootte, omdat het betrekking heeft op hoe elke gegevensopslag de gegevens opslaat. | Int64-waarde, in bytes |
+| bestandenLezen | Het aantal bestanden dat wordt gelezen uit de bron op basis van bestanden. | Int64-waarde (geen eenheid) |
+| bestandenGeschreven | Het aantal bestanden dat is geschreven/vastgelegd op de op bestanden gebaseerde sink. | Int64-waarde (geen eenheid) |
+| bronPiekverbindingen | Piek aantal gelijktijdige verbindingen die tijdens de uitvoeren van de activiteit Kopiëren met het brongegevensarchief zijn ingesteld. | Int64-waarde (geen eenheid) |
+| sinkPeakConnections | Piek aantal gelijktijdige verbindingen die tijdens de activiteitsrun kopiëren is ingesteld op het sink-gegevensarchief. | Int64-waarde (geen eenheid) |
+| rijenLezen | Aantal rijen dat van de bron wordt gelezen (niet van toepassing op binaire kopie). | Int64-waarde (geen eenheid) |
+| rijenGekopieerd | Aantal rijen gekopieerd om te zinken (niet van toepassing voor binaire kopie). | Int64-waarde (geen eenheid) |
+| rijenOvergeslagen | Aantal incompatibele rijen die zijn overgeslagen. U incompatibele rijen inschakelen om `enableSkipIncompatibleRow` te worden overgeslagen door true in te stellen. | Int64-waarde (geen eenheid) |
+| copyDuration | Duur van de kopie run. | Int32-waarde, in enkele seconden |
+| doorvoer | Snelheid van gegevensoverdracht. | Zwevend puntnummer in KBps |
+| bronPiekverbindingen | Piek aantal gelijktijdige verbindingen die tijdens de uitvoeren van de activiteit Kopiëren met het brongegevensarchief zijn ingesteld. | Int32-waarde (geen eenheid) |
+| sinkPeakConnections| Piek aantal gelijktijdige verbindingen die tijdens de activiteitsrun kopiëren is ingesteld op het sink-gegevensarchief.| Int32-waarde (geen eenheid) |
+| sqlDwPolyBase | Of PolyBase wordt gebruikt wanneer gegevens worden gekopieerd naar SQL Data Warehouse. | Booleaans |
+| roodverschuivingUitladen | Of UNLOAD wordt gebruikt wanneer gegevens worden gekopieerd van Redshift. | Booleaans |
+| hdfsDistcp | Of DistCp wordt gebruikt wanneer gegevens worden gekopieerd van HDFS. | Booleaans |
+| effectiefIntegrationRuntime | De inburgeringsruntime (IR) of de runtimes `<IR name> (<region if it's Azure IR>)`die worden gebruikt om de activiteit smachten in de indeling . | Tekst (tekenreeks) |
+| usedDataIntegrationUnits | De effectieve Data Integration Units tijdens het kopiëren. | Int32-waarde |
+| gebruikte ParallelCopies | De effectieve parallelKopieën tijdens de kopie. | Int32-waarde |
+| redirectRowPath | Pad naar het logboek van overgeslagen incompatibele rijen `redirectIncompatibleRowSettings` in de blobopslag die u in de eigenschap configureert. Zie [Fouttolerantie](copy-activity-overview.md#fault-tolerance). | Tekst (tekenreeks) |
+| uitvoeringDetails | Meer informatie over de fasen waarop de kopieeractiviteit wordt uitgevoerd en de bijbehorende stappen, duur, configuraties, enzovoort. We raden u niet aan deze sectie te ontzien, omdat deze mogelijk verandert. Als u beter wilt begrijpen hoe het u helpt de kopieerprestaties te begrijpen en op te lossen, raadpleegt u de sectie [Visueel controleren.](#monitor-visually) | Matrix |
+| perfAanbeveling | Kopieer prestatietuningtips. Zie Tips voor [het afstemmen van prestaties](copy-activity-performance-troubleshooting.md#performance-tuning-tips) voor meer informatie. | Matrix |
 
 **Voorbeeld:**
 
@@ -149,8 +149,8 @@ De uitvoerings Details van de Kopieer activiteit en de prestatie kenmerken worde
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de andere artikelen van de Kopieeractiviteit:
+Zie de andere artikelen Copy Activity:
 
-overzicht van het kopiëren van \-- [activiteit](copy-activity-overview.md)
+\-[Overzicht van activiteit kopiëren](copy-activity-overview.md)
 
-prestaties van de [Kopieer activiteit](copy-activity-performance.md) \-
+\-[Activiteitsprestaties kopiëren](copy-activity-performance.md)

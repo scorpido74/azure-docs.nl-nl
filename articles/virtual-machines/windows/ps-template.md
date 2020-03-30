@@ -1,6 +1,6 @@
 ---
-title: Een Windows-VM maken op basis van een sjabloon in azure
-description: Gebruik een resource manager-sjabloon en Power shell om eenvoudig een nieuwe Windows-VM te maken.
+title: Een Windows-vm maken op basis van een sjabloon in Azure
+description: Gebruik een Resource Manager-sjabloon en PowerShell om eenvoudig een nieuwe Windows-vm te maken.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,28 +16,28 @@ ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 99e292930414ae027c9cbbf3a901d550041899d2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74065555"
 ---
-# <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Een virtuele Windows-machine maken op basis van een resource manager-sjabloon
+# <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Een virtuele Windows-machine maken op basis van een resourcemanagersjabloon
 
-Meer informatie over het maken van een virtuele Windows-machine met behulp van een Azure Resource Manager sjabloon en Azure PowerShell van de Azure Cloud shell. De sjabloon die in dit artikel wordt gebruikt, implementeert één virtuele machine met Windows Server in een nieuw virtueel netwerk met één subnet. Zie [een virtuele Linux-machine maken met Azure Resource Manager sjablonen](../linux/create-ssh-secured-vm-from-template.md)voor het maken van een virtuele Linux-machine.
+Meer informatie over het maken van een virtuele Windows-machine met behulp van een Azure Resource Manager-sjabloon en Azure PowerShell vanuit de Azure Cloud-shell. De sjabloon die in dit artikel wordt gebruikt, implementeert één virtuele machine met Windows Server in een nieuw virtueel netwerk met één subnet. Zie [Een virtuele Linux-machine maken met Azure Resource Manager-sjablonen](../linux/create-ssh-secured-vm-from-template.md)voor het maken van een virtuele Linux-machine.
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-Het maken van een virtuele machine in azure omvat meestal twee stappen:
+Het maken van een virtuele Azure-machine bevat meestal twee stappen:
 
 - Maak een resourcegroep. Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Voordat een virtuele machine wordt gemaakt, moet een resourcegroep worden gemaakt.
 - Hiermee maakt u een virtuele machine.
 
-In het volgende voor beeld wordt een VM gemaakt op basis van een [Azure Quick](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json)start-sjabloon. Hier volgt een kopie van de sjabloon:
+In het volgende voorbeeld wordt een VM gemaakt op basis van een [Azure Quickstart-sjabloon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json). Hier is een kopie van de sjabloon:
 
 [!code-json[create-windows-vm](~/quickstart-templates/101-vm-simple-windows/azuredeploy.json)]
 
-Als u het Power shell-script wilt uitvoeren, selecteert u **proberen** om de Azure Cloud shell te openen. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**:
+Als u het PowerShell-script wilt uitvoeren, selecteert **u Proberen** om de Azure Cloud-shell te openen. Als u het script wilt plakken, klikt u met de rechtermuisknop op de shell en selecteert u **Plakken:**
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -58,26 +58,26 @@ New-AzResourceGroupDeployment `
 
 ```
 
-Als u ervoor kiest om de Power shell lokaal te installeren en te gebruiken in plaats van vanuit de Azure Cloud shell, is voor deze zelf studie de module Azure PowerShell vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u ervoor kiest om de PowerShell lokaal te installeren en te gebruiken in plaats van vanuit de Azure Cloud-shell, vereist deze zelfstudie de Azure PowerShell-module. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
-In het vorige voor beeld hebt u een sjabloon opgegeven die is opgeslagen in GitHub. U kunt ook een sjabloon downloaden of maken en het lokale pad opgeven met de para meter `--template-file`.
+In het vorige voorbeeld hebt u een sjabloon opgegeven die is opgeslagen in GitHub. U ook een sjabloon downloaden of maken `--template-file` en het lokale pad met de parameter opgeven.
 
 Hier volgen enkele aanvullende bronnen:
 
 - Zie [Azure Resource Manager-documentatie](/azure/azure-resource-manager/)voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
-- Zie [Naslag informatie over Azure-sjablonen](/azure/templates/microsoft.compute/allversions)voor een overzicht van de Azure virtual machine-schema's.
-- Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)start-sjablonen voor meer voor beelden van virtuele-machine sjablonen.
+- Zie [Azure-sjabloonverwijzing](/azure/templates/microsoft.compute/allversions)voor de programma's voor virtuele machines van Azure.
+- Zie [Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)voor meer voorbeelden van virtuele machines.
 
 ## <a name="connect-to-the-virtual-machine"></a>Verbinding maken met de virtuele machine
 
-In de laatste Power shell-opdracht uit het vorige script ziet u de naam van de virtuele machine. Zie [verbinding maken en aanmelden bij een virtuele Azure-machine met Windows](./connect-logon.md)om verbinding te maken met de virtuele machine.
+De laatste PowerShell-opdracht uit het vorige script toont de naam van de virtuele machine. Zie Verbinding maken en [aanmelden bij een virtuele Azure-machine met Windows](./connect-logon.md)als u verbinding wilt maken met de virtuele machine.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als er problemen zijn met de implementatie, kunt u een kijkje nemen bij het [oplossen van veelvoorkomende problemen met Azure-implementaties met Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
-- Meer informatie over het maken en beheren van een virtuele machine in [Windows-Vm's maken en beheren met de module Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Als er problemen zijn met de implementatie, u de [algemene Azure-implementatiefouten oplossen met Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+- Meer informatie over het maken en beheren van een virtuele machine in [Windows VM's maken en beheren met de Azure PowerShell-module.](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-Voor meer informatie over het maken van sjablonen bekijkt u de JSON-syntaxis en de eigenschappen voor de typen resources die u hebt geïmplementeerd:
+Voor meer informatie over het maken van sjablonen u de syntaxis en eigenschappen van JSON weergeven voor de resourcestypen die u hebt geïmplementeerd:
 
 - [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
 - [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)

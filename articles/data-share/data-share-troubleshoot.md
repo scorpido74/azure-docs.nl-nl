@@ -1,6 +1,6 @@
 ---
 title: Problemen met Azure Data Share oplossen
-description: Meer informatie over het oplossen van problemen met uitnodigingen en fouten bij het maken of ontvangen van gegevens shares met Azure data share.
+description: Meer informatie over het oplossen van problemen met uitnodigingen en fouten bij het maken of ontvangen van gegevensshares met Azure Data Share.
 services: data-share
 author: joannapea
 ms.author: joanpo
@@ -8,69 +8,69 @@ ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.openlocfilehash: 901f2b56bc045dc9a9837dd18b2e6ce7169aa3b9
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964223"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Veelvoorkomende problemen in azure data share oplossen 
+# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Veelvoorkomende problemen in Azure-gegevensshare oplossen 
 
-In dit artikel wordt beschreven hoe u veelvoorkomende problemen met Azure data share oplost. 
+In dit artikel ziet u hoe u veelvoorkomende problemen voor Azure Data Share oplossen. 
 
-## <a name="azure-data-share-invitations"></a>Uitnodigingen voor Azure-gegevens delen 
+## <a name="azure-data-share-invitations"></a>Azure-uitnodigingen voor gegevensdelen 
 
-In sommige gevallen wordt er een lege lijst met uitnodigingen weer gegeven wanneer een nieuwe gebruiker op **uitnodiging accepteren** klikt vanuit de uitnodiging voor het verzenden van e-mail. 
+In sommige gevallen, wanneer een nieuwe gebruiker op **Uitnodiging accepteren** klikt vanaf de verzonden e-mailuitnodiging, kan deze worden gepresenteerd met een lege lijst met uitnodigingen. 
 
 ![Geen uitnodigingen](media/no-invites.png)
 
-Dit kan de volgende oorzaken hebben:
+Dit kan te wijten zijn aan de volgende redenen:
 
-* **De Azure data share-service is niet geregistreerd als resource provider van een Azure-abonnement in de Azure-Tenant.** Dit probleem treedt op als er geen gegevens delen resource aanwezig is in uw Azure-Tenant. Wanneer u een Azure-gegevens share-resource maakt, wordt de resource provider automatisch geregistreerd in uw Azure-abonnement. U kunt de gegevens share service ook hand matig registreren door de volgende stappen uit te voeren. U moet de rol Azure contributor hebben om deze stappen te volt ooien.
+* **Azure Data Share-service is niet geregistreerd als resourceprovider van een Azure-abonnement in de Azure-tenant.** U ondervindt dit probleem als er geen gegevensshare-bron in uw Azure-tenant zit. Wanneer u een Azure Data Share-bron maakt, wordt de resourceprovider automatisch geregistreerd in uw Azure-abonnement. U de service Gegevensdelen ook handmatig registreren na deze stappen. U moet de azure-bijdrager hebben om deze stappen uit te voeren.
 
-    1. Ga in het Azure Portal naar **abonnementen**
-    1. Selecteer het abonnement dat u wilt gebruiken voor het maken van een Azure data share-resource
-    1. Klik op **resource providers**
-    1. Zoeken naar **micro soft. DataShare**
-    1. Klik op **registreren** 
+    1. Navigeer in de Azure-portal naar **Abonnementen**
+    1. Selecteer het abonnement dat u wilt gebruiken om Azure Data Share-bron te maken
+    1. Klik op **Resource Providers**
+    1. Zoeken naar **Microsoft.DataShare**
+    1. Klik **op Registreren** 
 
-    U moet de [rol van Azure INZENDER RBAC](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) hebben om deze stappen te kunnen volt ooien. 
+    U moet de [RBAC-rol azure-inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) hebben om deze stappen uit te voeren. 
 
-* **Er wordt een uitnodiging verzonden naar uw e-mail alias in plaats van uw Azure-aanmeldings-e-mail.** Als u de Azure data share-service hebt geregistreerd of al een gegevens share bron hebt gemaakt in de Azure-Tenant, maar de uitnodiging nog steeds niet ziet, kan het zijn dat de provider uw e-mail alias heeft ingevoerd als ontvanger in plaats van uw e-mail adres voor aanmelding bij Azure. Neem contact op met uw gegevens provider en zorg ervoor dat ze de uitnodiging hebben verzonden naar uw e-mail adres voor Azure-aanmelding en niet uw e-mail alias.
+* **Uitnodiging wordt verzonden naar uw e-mailalias in plaats van uw Azure-aanmeldingsmail.** Als u de Azure Data Share-service hebt geregistreerd of al een gegevensshare-bron in de Azure-tenant hebt gemaakt, maar de uitnodiging nog steeds niet zien, is dit misschien omdat de provider uw e-mailalias als ontvanger heeft ingevoerd in plaats van uw Azure-aanmeldingsadres. Neem contact op met uw gegevensprovider en zorg ervoor dat deze de uitnodiging naar uw Azure-inloge-e-mailadres heeft verzonden en niet uw e-mailalias.
 
-* **De uitnodiging is al geaccepteerd.** Via de koppeling in het e-mail bericht gaat u naar de pagina uitnodiging voor gegevens delen in Azure Portal. deze lijst bevat alleen openstaande uitnodigingen. Als u de uitnodiging al hebt geaccepteerd, wordt deze niet meer weer gegeven op de pagina uitnodiging voor gegevens delen. Ga door naar uw gegevens share resource die u hebt gebruikt om de uitnodiging te accepteren voor het weer geven van ontvangen shares en het configureren van uw doel-Azure-Data Explorer cluster instelling.
+* **De uitnodiging is al geaccepteerd.** De koppeling in de e-mail brengt u naar de pagina Uitnodiging voor gegevensdelen in azure-portal, waarin alleen in behandeling zijnde uitnodigingen worden vermeld. Als u de uitnodiging al hebt geaccepteerd, wordt deze niet meer weergegeven op de pagina Uitnodiging voor gegevensdelen. Ga naar uw Data Share-bron waarmee u de uitnodiging hebt geaccepteerd om ontvangen aandelen te bekijken en uw doelconfiguratie van Azure Data Explorer-cluster te configureren.
 
-## <a name="error-when-creating-or-receiving-a-new-share"></a>Fout bij het maken of ontvangen van een nieuwe share
+## <a name="error-when-creating-or-receiving-a-new-share"></a>Fout bij het maken of ontvangen van een nieuw aandeel
 
-Kan geen gegevens sets toevoegen
+'Kan geen gegevenssets toevoegen'
 
-Fout bij het toewijzen van gegevens sets
+'Kan gegevenssets niet in kaart brengen'
 
-' Kan geen gegevens share bron x toegang verlenen tot y '
+'Kan Data Share resource x geen toegang tot y verlenen'
 
-U hebt niet de juiste machtigingen voor x
+"Je hebt niet de juiste machtigingen om x"
 
-"Er kunnen geen schrijf machtigingen voor het Azure data share-account worden toegevoegd aan een of meer van de geselecteerde resources"
+'We kunnen geen schrijfmachtigingen voor Azure Data Share-account toevoegen aan een of meer van uw geselecteerde bronnen'
 
-Als u een van de bovenstaande fouten ontvangt bij het maken van een nieuwe share of het toewijzen van gegevens sets, kan dit worden veroorzaakt door onvoldoende machtigingen voor de Azure-gegevens opslag. Zie de [rollen en vereisten](concepts-roles-permissions.md) voor de vereiste machtigingen. 
+Als u een van de bovenstaande fouten ontvangt bij het maken van een nieuwe share- of toewijzingsgegevenssetgegevens, kan dit te wijten zijn aan onvoldoende machtigingen voor het Azure-gegevensarchief. Zie [Rollen en vereisten](concepts-roles-permissions.md) voor vereiste machtigingen. 
 
-U hebt schrijf machtigingen nodig om gegevens te delen of te ontvangen van een Azure-gegevens archief, dat meestal voor komt in de rol Inzender. 
+U hebt schrijftoestemming nodig om gegevens uit een Azure-gegevensarchief te delen of te ontvangen, die doorgaans in de rol Inzender bestaan. 
 
-Als dit de eerste keer is dat u gegevens uit het Azure-gegevens archief deelt of ontvangt, hebt u ook *micro soft. Authorization/Role Assignments/write* Permission, die meestal voor komt in de rol van eigenaar. Zelfs als u de Azure-gegevens opslag resource hebt gemaakt, wordt de eigenaar van de resource niet automatisch door de bron. Met de juiste machtigingen verleent de Azure data share-service automatisch de beheerde identiteits toegang van de gegevens share bron aan het gegevens archief. Het kan enkele minuten duren voordat dit proces is doorgevoerd. Probeer het over enkele minuten opnieuw als u fouten ondervindt als gevolg van deze vertraging.
+Als dit de eerste keer is dat u gegevens uit het Azure-gegevensarchief deelt of ontvangt, hebt u ook *Microsoft.Autorisatie/roltoewijzingen/schrijfmachtigingen* nodig, die doorgaans bestaat in de rol Eigenaar. Zelfs als u de Azure-gegevensarchiefbron hebt gemaakt, wordt u niet automatisch de eigenaar van de bron. Met de juiste toestemming verleent de Azure Data Share-service automatisch de beheerde identiteitstoegang van de gegevenssharebron tot het gegevensarchief. Dit proces kan enkele minuten duren om van kracht te worden. Als u door deze vertraging een storing ondervindt, probeert u het binnen enkele minuten opnieuw.
 
-Voor delen op basis van SQL zijn aanvullende machtigingen vereist. Zie problemen met het delen van SQL oplossen voor meer informatie.
+Sql-gebaseerd delen vereist extra machtigingen. Zie Het oplossen van SQL-gebaseerde delen voor meer informatie.
 
 ## <a name="troubleshooting-sql-based-sharing"></a>Problemen met delen op basis van SQL oplossen
 
-"Gebruiker x bestaat niet in SQL database"
+"Gebruiker x bestaat niet in SQL-database"
 
-Als deze fout optreedt bij het toevoegen van een gegevensset van een bron op basis van SQL, kan dat zijn omdat u geen gebruiker hebt gemaakt voor de door Azure data share beheerde identiteit op uw SQL Server.  Voer het volgende script uit om dit probleem op te lossen:
+Als u deze fout ontvangt bij het toevoegen van een gegevensset van een SQL-bron, kan dit zijn omdat u geen gebruiker hebt gemaakt voor de beheerde identiteit van Azure Data Share op uw SQL Server.  Voer het volgende script uit om dit probleem op te lossen:
 
 ```sql
     create user "<share_acct_name>" from external provider; 
     exec sp_addrolemember db_datareader, "<share_acct_name>";
 ```      
-Als deze fout optreedt bij het toewijzen van dataset aan een op SQL gebaseerd doel, kan dat zijn omdat u geen gebruiker hebt gemaakt voor de door Azure data share beheerde identiteit op uw SQL Server.  Voer het volgende script uit om dit probleem op te lossen:
+Als u deze fout ontvangt wanneer u de gegevensset in kaart brengt naar een SQL-doel, kan dit zijn omdat u geen gebruiker hebt gemaakt voor de beheerde identiteit van Azure Data Share op uw SQL Server.  Voer het volgende script uit om dit probleem op te lossen:
 
 ```sql
     create user "<share_acc_name>" from external provider; 
@@ -78,18 +78,18 @@ Als deze fout optreedt bij het toewijzen van dataset aan een op SQL gebaseerd do
     exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
     exec sp_addrolemember db_ddladmin, "<share_acc_name>";
 ```
-Houd er rekening mee dat de *< share_acc_name >* de naam van uw gegevens share bron is.      
+Houd er rekening mee dat de *<share_acc_name>* de naam is van uw bron voor gegevensshare.      
 
-Zorg ervoor dat u alle vereisten hebt gevolgd die worden vermeld in [uw gegevens delen](share-your-data.md) en zelf studie voor [gegevens accepteren en ontvangen](subscribe-to-data-share.md) .
+Zorg ervoor dat u alle vereisten hebt gevolgd die in [Deel uw gegevens](share-your-data.md) worden vermeld en accepteer en ontvang de [zelfstudie met gegevens.](subscribe-to-data-share.md)
 
-## <a name="snapshot-failed"></a>De moment opname is mislukt
-De moment opname kan om verschillende redenen mislukken. U kunt een gedetailleerd fout bericht vinden door te klikken op de begin tijd van de moment opname en vervolgens op de status van elke gegevensset. 
+## <a name="snapshot-failed"></a>Momentopname is mislukt
+Momentopname kan mislukken als gevolg van verschillende redenen. U een gedetailleerd foutbericht vinden door op de begintijd van de momentopname te klikken en vervolgens op de status van elke gegevensset. 
 
-Als het fout bericht betrekking heeft op machtiging, controleert u of de gegevens share service de vereiste machtiging heeft. Zie de [rollen en vereisten](concepts-roles-permissions.md) voor meer informatie. Als dit de eerste keer is dat u een moment opname maakt, kan het enkele minuten duren voordat de gegevens share bron toegang krijgt tot de Azure-gegevens opslag. Wacht een paar minuten en probeer het opnieuw.
+Als het foutbericht gerelateerd is aan toestemming, controleert u dat de service Gegevensdelen de vereiste toestemming heeft. Zie [Rollen en vereisten](concepts-roles-permissions.md) voor meer informatie. Als dit de eerste keer is dat u een momentopname maakt, kan het enkele minuten duren voordat de gegevenssharebron toegang krijgt tot het Azure-gegevensarchief. Wacht een paar minuten en probeer het opnieuw.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door naar de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie over het delen van gegevens. 
+Ga door met het [delen van uw gegevenszelfstudie](share-your-data.md) om te leren hoe u gegevens delen. 
 
-Ga door naar de zelf studie [gegevens accepteren en ontvangen](subscribe-to-data-share.md) voor meer informatie over het ontvangen van gegevens.
+Ga voor meer informatie over het ontvangen van gegevens verder naar de zelfstudie [voor het accepteren en ontvangen van gegevens.](subscribe-to-data-share.md)
 

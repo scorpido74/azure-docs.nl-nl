@@ -1,6 +1,6 @@
 ---
-title: Azure Data Explorer opname bewerkingen bewaken met Diagnostische logboeken
-description: Meer informatie over het instellen van Diagnostische logboeken voor Azure Data Explorer om opname bewerkingen te bewaken.
+title: Innamebewerkingen van Azure Data Explorer controleren met diagnostische logboeken
+description: Meer informatie over het instellen van diagnostische logboeken voor Azure Data Explorer om de opnamebewerkingen te controleren.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,74 +8,74 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277429"
 ---
-# <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Azure Data Explorer opname bewerkingen bewaken met Diagnostische logboeken (preview)
+# <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Innamebewerkingen van Azure Data Explorer controleren met diagnostische logboeken (voorbeeld)
 
-Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalyses waarmee grote hoeveelheden gegevens van toepassingen, websites, IoT-apparaten en dergelijke in real-time kunnen worden geanalyseerd. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. Vervolgens neemt u gegevens op in een tabel in een Data Base, zodat u er query's op kunt uitvoeren. [Azure monitor Diagnostische logboeken](/azure/azure-monitor/platform/diagnostic-logs-overview) bevatten gegevens over de werking van Azure-resources. Azure Data Explorer gebruikt Diagnostische logboeken voor inzichten in geslaagde opname en storingen. U kunt bewerkings logboeken exporteren naar Azure Storage, Event hub of Log Analytics om opname status te bewaken. Logboeken van Azure Storage en Azure Event hub kunnen worden doorgestuurd naar een tabel in uw Azure Data Explorer-cluster voor verdere analyse.
+Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalyses waarmee grote hoeveelheden gegevens van toepassingen, websites, IoT-apparaten en dergelijke in real-time kunnen worden geanalyseerd. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. Vervolgens neemt u gegevens in een tabel in een database in een tabel in, zodat u er query's tegen uitvoeren. [Diagnostische logboeken van Azure Monitor](/azure/azure-monitor/platform/diagnostic-logs-overview) bevatten gegevens over de werking van Azure-resources. Azure Data Explorer gebruikt diagnostische logboeken voor inzichten over innamesuccessen en -fouten. U bedrijfslogboeken exporteren naar Azure Storage, Event Hub of Log Analytics om de opnamestatus te controleren. Logboeken van Azure Storage en Azure Event Hub kunnen worden doorgestuurd naar een tabel in uw Azure Data Explorer-cluster voor verdere analyse.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/).
-* Een [cluster en data base](create-cluster-database-portal.md)maken.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/)aan.
+* Maak een [cluster en database](create-cluster-database-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Diagnostische logboeken instellen voor een Azure Data Explorer-cluster
 
-Diagnostische logboeken kunnen worden gebruikt om de verzameling van de volgende logboek gegevens te configureren:
-* Geslaagde opname bewerkingen: deze logboeken bevatten informatie over het volt ooien van opname bewerkingen.
-* Mislukte opname bewerkingen: deze logboeken bevatten gedetailleerde informatie over mislukte opname bewerkingen, waaronder fout Details. 
+Diagnostische logboeken kunnen worden gebruikt om de verzameling van de volgende logboekgegevens te configureren:
+* Succesvolle opnamebewerkingen: deze logboeken bevatten informatie over succesvol voltooide opnamebewerkingen.
+* Mislukte opnamebewerkingen: deze logboeken bevatten gedetailleerde informatie over mislukte opnamebewerkingen, inclusief foutgegevens. 
 
-De gegevens worden vervolgens gearchiveerd in een opslag account, gestreamd naar een event hub of verzonden naar Log Analytics, conform uw specificaties.
+De gegevens worden vervolgens gearchiveerd naar een opslagaccount, gestreamd naar een gebeurtenishub of verzonden naar Log Analytics, volgens uw specificaties.
 
 ### <a name="enable-diagnostic-logs"></a>Diagnostische logboeken inschakelen
 
-Diagnostische logboeken zijn standaard uitgeschakeld. Voer de volgende stappen uit om Diagnostische logboeken in te scha kelen:
+Diagnostische logboeken zijn standaard uitgeschakeld. Ga als volgt te werk om diagnostische logboeken in te schakelen:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com)de Azure Data Explorer-cluster resource die u wilt bewaken.
-1. Onder **bewaking**, selecteer **diagnostische instellingen**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com)de Azure Data Explorer-clusterbron die u wilt controleren.
+1. Selecteer **Diagnostische instellingen** onder **Controle**.
   
     ![Diagnostische logboeken toevoegen](media/using-diagnostic-logs/add-diagnostic-logs.png)
 
 1. Selecteer **Diagnostische instelling toevoegen**.
-1. In het venster **Diagnostische instellingen** :
+1. Ga als een venster naar **de instellingen voor diagnostische gegevens:**
  
     ![Configuratie van diagnostische instellingen](media/using-diagnostic-logs/configure-diagnostics-settings.png) 
 
-    1. Selecteer een **naam** voor de diagnostische instelling.
-    1. Selecteer een of meer doelen: een opslag account, Event hub of Log Analytics.
-    1. Selecteer de logboeken die moeten worden verzameld: `SucceededIngestion` of `FailedIngestion`.
-    1. Selecteer de [metrische gegevens](using-metrics.md#supported-azure-data-explorer-metrics) die moeten worden verzameld (optioneel).  
-    1. Selecteer **Opslaan** om de nieuwe instellingen en metrische gegevens van de diagnostische logboeken op te slaan.
-    1. Maak een **nieuwe ondersteunings aanvraag** in de Azure Portal om de activering van Diagnostische logboeken aan te vragen.
+    1. Selecteer **Naam** voor uw diagnostische instelling.
+    1. Selecteer een of meer doelen: een opslagaccount, gebeurtenishub of logboekanalyse.
+    1. Selecteer logboeken die `SucceededIngestion` `FailedIngestion`moeten worden verzameld: of .
+    1. Selecteer [statistieken](using-metrics.md#supported-azure-data-explorer-metrics) die moeten worden verzameld (optioneel).  
+    1. Selecteer **Opslaan** om de nieuwe instellingen en statistieken voor diagnostische logboeken op te slaan.
+    1. Maak een **nieuw ondersteuningsverzoek** in de Azure-portal om activering van diagnostische logboeken aan te vragen.
 
-Nieuwe instellingen worden in een paar minuten ingesteld. De logboeken worden vervolgens weer gegeven in het geconfigureerde archief doel (opslag account, Event hub of Log Analytics). 
+Nieuwe instellingen worden in een paar minuten ingesteld. Logboeken worden vervolgens weergegeven in het geconfigureerde archiefdoel (Opslagaccount, gebeurtenishub of logboekanalyse). 
 
-## <a name="diagnostic-logs-schema"></a>Diagnostische logboeken schema
+## <a name="diagnostic-logs-schema"></a>Schema diagnostische logboeken
 
-Alle [Azure monitor Diagnostische logboeken delen een gemeen schappelijk schema op het hoogste niveau](/azure/azure-monitor/platform/diagnostic-logs-schema). Azure Data Explorer heeft unieke eigenschappen voor hun eigen gebeurtenissen. Alle logboeken worden opgeslagen in een JSON-indeling.
+Alle [diagnostische logboeken van Azure Monitor delen een algemeen schema op het hoogste niveau](/azure/azure-monitor/platform/diagnostic-logs-schema). Azure Data Explorer heeft unieke eigenschappen voor hun eigen gebeurtenissen. Alle logboeken worden opgeslagen in een JSON-indeling.
 
-### <a name="ingestion-logs-schema"></a>Schema opname logboeken
+### <a name="ingestion-logs-schema"></a>Schema voor innamelogboeken
 
-JSON-teken reeksen in het logboek bevatten elementen die in de volgende tabel worden weer gegeven:
+Log JSON-tekenreeksen bevatten elementen in de volgende tabel:
 
 |Name               |Beschrijving
 |---                |---
 |tijd               |Tijd van het rapport
-|resourceId         |Resource-ID Azure Resource Manager
-|operationName      |De naam van de bewerking: ' micro soft. KUSTO/CLUSTERS/OPNAME/ACTIE
-|operationVersion   |Schema versie: ' 1,0 ' 
-|category           |De categorie van de bewerking. `SucceededIngestion` of `FailedIngestion`. Eigenschappen wijken af van een [geslaagde bewerking](#successful-ingestion-operation-log) of [mislukte bewerking](#failed-ingestion-operation-log).
-|properties         |Gedetailleerde informatie over de bewerking.
+|resourceId         |Azure Resource Manager-bron-id
+|operationName      |Naam van de bewerking: 'MICROSOFT. KUSTO/CLUSTERS/INNAME/ACTIE"
+|operationVersion   |Schemaversie: '1.0' 
+|category           |Categorie van de bewerking. `SucceededIngestion` of `FailedIngestion`. Eigenschappen verschillen voor [een geslaagde bewerking](#successful-ingestion-operation-log) of [mislukte bewerking](#failed-ingestion-operation-log).
+|properties         |Gedetailleerde informatie over de operatie.
 
-#### <a name="successful-ingestion-operation-log"></a>Geslaagd opname bewerkings logboek
+#### <a name="successful-ingestion-operation-log"></a>Logboek van de innamebewerking
 
 **Voorbeeld:**
 
@@ -98,19 +98,19 @@ JSON-teken reeksen in het logboek bevatten elementen die in de volgende tabel wo
     }
 }
 ```
-**Eigenschappen van een geslaagde bewerking diagnostisch logboek**
+**Eigenschappen van een diagnostisch logboek voor een geslaagde bewerking**
 
 |Name               |Beschrijving
 |---                |---
-|succeededOn        |Voltooiings tijd van opname
-|operationId        |Bewerkings-ID van Azure Data Explorer opname
-|database           |De naam van de doel database
-|table              |De naam van de doel tabel
-|ingestionSourceId  |ID van de opname gegevens bron
-|ingestionSourcePath|Pad van de opname gegevens bron of BLOB-URI
-|rootActivityId     |Activiteit-id
+|succeededOn        |Tijd van inname voltooiing
+|operationId        |Inname-id van Azure Data Explorer
+|database           |Naam van de doeldatabase
+|tabel              |Naam van de doeltabel
+|ingestionSourceId  |ID van de innamegegevensbron
+|ingestionSourcePath|Pad van de opnamegegevensbron of blob URI
+|rootActivityId     |Activiteits-id
 
-#### <a name="failed-ingestion-operation-log"></a>Mislukt opname logboek
+#### <a name="failed-ingestion-operation-log"></a>Logboek van mislukte opnamebewerking
 
 **Voorbeeld:**
 
@@ -139,25 +139,25 @@ JSON-teken reeksen in het logboek bevatten elementen die in de volgende tabel wo
 }
 ```
 
-**Eigenschappen van een mislukte bewerking diagnose logboek**
+**Eigenschappen van een diagnostisch logboek voor mislukte bewerking**
 
 |Name               |Beschrijving
 |---                |---
-|failedOn           |Voltooiings tijd van opname
-|operationId        |Bewerkings-ID van Azure Data Explorer opname
-|database           |De naam van de doel database
-|table              |De naam van de doel tabel
-|ingestionSourceId  |ID van de opname gegevens bron
-|ingestionSourcePath|Pad van de opname gegevens bron of BLOB-URI
-|rootActivityId     |Activiteit-id
-|details informatie            |Gedetailleerde beschrijving van de fout en het fout bericht
-|Code          |Foutcode 
-|failureStatus      |`Permanent` of `Transient`. Het opnieuw proberen van een tijdelijke fout is mislukt.
-|originatesFromUpdatePolicy|Waar als de fout is opgetreden vanuit een update beleid
-|shouldRetry        |Waar als de nieuwe poging slaagt
+|mislukt Op           |Tijd van inname voltooiing
+|operationId        |Inname-id van Azure Data Explorer
+|database           |Naam van de doeldatabase
+|tabel              |Naam van de doeltabel
+|ingestionSourceId  |ID van de innamegegevensbron
+|ingestionSourcePath|Pad van de opnamegegevensbron of blob URI
+|rootActivityId     |Activiteits-id
+|Details            |Gedetailleerde beschrijving van de fout en foutbericht
+|errorCode (errorCode)          |Foutcode 
+|foutStatus      |`Permanent` of `Transient`. Het opnieuw proberen van een tijdelijke fout kan slagen.
+|afkomstig vanFromUpdatePolicy|True als een fout afkomstig is van een updatebeleid
+|shouldRetry        |True als opnieuw proberen kan slagen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelf studie: gegevens opnemen en controleren in azure Data Explorer](ingest-data-no-code.md)
-* [Metrische gegevens gebruiken voor het bewaken van de cluster status](using-metrics.md)
+* [Zelfstudie: Gegevens over het innemen en querybewaking in Azure Data Explorer](ingest-data-no-code.md)
+* [Metrische gegevens gebruiken om clusterstatus te bewaken](using-metrics.md)
 
