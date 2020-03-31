@@ -11,59 +11,61 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2020
+ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 183b81134b2fe72a539cc6460a05d828342aafbb
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 152168bbadd5815659bc5f70c91bd2a28f5e049d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086480"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481956"
 ---
 # <a name="monitor-identity-and-access"></a>Identiteit en toegang bewaken
 
 > [!TIP]
-> Vanaf 2020 maart zijn de aanbevelingen voor identiteits-en toegangs toegang van Azure Security Center opgenomen in alle abonnementen op de prijs categorie gratis. Als u abonnementen op de gratis laag hebt, wordt de beveiligde score beïnvloed omdat deze nog niet eerder is beoordeeld op hun identiteits-en toegangs beveiliging. 
+> Vanaf maart 2020 worden de identiteits- en toegangsaanbevelingen van Azure Security Center opgenomen in alle abonnementen op de gratis prijscategorie. Als u abonnementen op de gratis laag hebt, wordt de Secure Score beïnvloed omdat deze niet eerder zijn beoordeeld op hun identiteit en toegangsbeveiliging. 
 
-Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.
+Wanneer Security Center potentiële beveiligingsproblemen identificeert, worden er aanbevelingen gemaakt die u begeleiden bij het configureren van de benodigde besturingselementen om uw resources te verharden en te beschermen.
 
-De beveiligings verbinding is vanuit een netwerk verbinding met een identiteits verbinding ontwikkeld. De beveiliging wordt verminderd met het beschermen van uw netwerk en het beschermen van uw gegevens, en het beheren van de beveiliging van uw apps en gebruikers. Tegenwoordig bevinden zich steeds meer gegevens en apps in de cloud en is identiteit het nieuwe perimeternetwerk.
+De beveiligingsperimeter is geëvolueerd van een netwerkperimeter naar een identiteitsperimeter. Beveiliging wordt minder over het verdedigen van uw netwerk en meer over het verdedigen van uw gegevens, evenals het beheren van de veiligheid van uw apps en gebruikers. Tegenwoordig bevinden zich steeds meer gegevens en apps in de cloud en is identiteit het nieuwe perimeternetwerk.
 
-Door identiteitsactiviteiten te bewaken, kunt u proactieve maatregelen treffen voordat een incident plaatsvindt of reactieve maatregelen nemen om een aanvalspoging te stoppen. Voor beelden van aanbevelingen die u kunt zien in het gedeelte over het beveiligen van de **identiteits-en toegangs** resource van Azure Security Center zijn:
+Door identiteitsactiviteiten te controleren, u proactieve acties uitvoeren voordat een incident plaatsvindt, of reactieve acties om een aanvalspoging te stoppen. Beveiligingscentrum kan bijvoorbeeld afgeschafte accounts (accounts die niet langer nodig zijn en geblokkeerd zijn voor het aanmelden door Azure Active Directory) markeren voor verwijdering. 
 
-- MFA moet zijn ingeschakeld voor accounts met eigenaars machtigingen voor uw abonnement
-- Er moeten Maxi maal drie eigen aren worden opgegeven voor uw abonnement
-- Afgeschafte accounts moeten worden verwijderd uit uw abonnement
-- Externe accounts met lees machtigingen moeten worden verwijderd uit uw abonnement
+Voorbeelden van aanbevelingen die u zien in de sectie Beveiliging van **identiteits- en toegangsbronnen** van Azure Security Center zijn:
 
-Zie [aanbevelingen voor identiteits-en toegangs rechten](recommendations-reference.md#recs-identity)voor een volledige lijst met aanbevelingen die hier kunnen worden weer gegeven.
+- MFA moet zijn ingeschakeld voor accounts met eigenaarmachtigingen voor uw abonnement
+- Er moeten maximaal 3 eigenaren worden aangewezen voor uw abonnement
+- Externe accounts met leesmachtigingen moeten uit uw abonnement worden verwijderd
+- Afgeschafte accounts moeten uit uw abonnement worden verwijderd
+
+Zie [Aanbevelingen](recommendations-reference.md#recs-identity)voor identiteit en toegang voor meer informatie over deze aanbevelingen en een volledige lijst met aanbevelingen die u hier zien.
 
 > [!NOTE]
-> Als uw abonnement meer dan 600 accounts bevat, kunnen Security Center de identiteits aanbevelingen niet uitvoeren op uw abonnement. De aanbevelingen die niet worden uitgevoerd, worden vermeld onder "niet-beschik bare evaluaties" hieronder.
-Security Center kan de identiteits aanbevelingen niet uitvoeren op de beheer agenten van een Cloud Solution Provider (CSP)-partner.
+> Als uw abonnement meer dan 600 accounts heeft, kan Security Center de identiteitsaanbevelingen niet uitvoeren tegen uw abonnement. Aanbevelingen die niet worden uitgevoerd, worden hieronder vermeld onder 'niet-beschikbare beoordelingen'.
+Security Center kan de identiteitsaanbevelingen niet uitvoeren tegen de beheerdersagents van een Cloud Solution Provider (CSP).
 >
 
 
-Alle aanbevelingen voor identiteits-en toegangs beveiliging zijn beschikbaar in twee beveiligings controles op de pagina **aanbevelingen** :
+Alle aanbevelingen voor identiteit en toegang zijn beschikbaar binnen twee beveiligingsbesturingselementen op de pagina **Aanbevelingen:**
 
 - Toegang en machtigingen beheren 
 - MFA inschakelen
 
-![De twee beveiligings controles met de aanbevelingen met betrekking tot identiteit en toegang](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
+![De twee beveiligingscontroles met de aanbevelingen met betrekking tot identiteit en toegang](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
 
 
-## <a name="enable-multi-factor-authentication-mfa"></a>Multi-factor Authentication (MFA) inschakelen
+## <a name="enable-multi-factor-authentication-mfa"></a>Multi-factor authenticatie inschakelen (MFA)
 
-Voor het inschakelen van MFA zijn [Tenant machtigingen voor Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)vereist. 
+Voor het inschakelen van MFA zijn [ad-tenantmachtigingen (Azure Active Directory) vereist.](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 
 
-- Als u een Premium-editie van AD hebt, schakelt u MFA in met behulp van [voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+- Als u een premium-editie van AD hebt, schakelt u MFA in met [voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
 
-- Gebruikers van de AD Free Edition kunnen **standaard instellingen voor beveiliging** inschakelen in azure Active Directory, zoals beschreven in de [ad-documentatie](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) , maar de Security Center aanbeveling om MFA in te scha kelen, wordt nog steeds weer gegeven.
+- Gebruikers van AD Free Edition kunnen **beveiligingsstandaards** inschakelen in Azure Active Directory zoals beschreven in de [AD-documentatie,](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults) maar de aanbeveling van het Beveiligingscentrum om MFA in te schakelen, wordt nog steeds weergegeven.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende artikelen voor meer informatie over de aanbevelingen die van toepassing zijn op andere Azure-resource typen:
+Zie de volgende artikelen voor meer informatie over aanbevelingen die van toepassing zijn op andere Azure-brontypen:
 
 - [Uw machines en toepassingen beveiligen in Azure Security Center](security-center-virtual-machine-protection.md)
 - [Protecting your network in Azure Security Center](security-center-network-recommendations.md) (Uw netwerk beveiligen in Azure Security Center)
-- [Uw Azure SQL-service en-gegevens beveiligen in Azure Security Center](security-center-sql-service-recommendations.md)
+- [Uw Azure SQL-service en -gegevens beveiligen in Azure Security Center](security-center-sql-service-recommendations.md)

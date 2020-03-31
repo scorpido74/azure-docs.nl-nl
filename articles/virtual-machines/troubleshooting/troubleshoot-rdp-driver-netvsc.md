@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met een probleem met netvsc. sys wanneer u extern verbinding maakt met een virtuele machine met Windows 10 of Windows Server 2016 in azure | Microsoft Docs
-description: Informatie over het oplossen van problemen met een Netsvc. sys-gerelateerd RDP-probleem wanneer u verbinding maakt met een virtuele machine met Windows 10 of Windows Server 2016 in Azure.
+title: Een probleem met netvsc.sys oplossen wanneer u op afstand verbinding maakt met een Windows 10- of Windows Server 2016-vm in Azure | Microsoft Documenten
+description: Meer informatie over het oplossen van een netsvc.sys-gerelateerd RDP-probleem wanneer u verbinding maakt met een Windows 10- of Windows Server 2016-vm in Azure.
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,53 +13,53 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71057992"
 ---
-# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Kan niet extern verbinding maken met een virtuele machine met Windows 10 of Windows Server 2016 in azure vanwege netvsc. sys
+# <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Kan niet op afstand verbinding maken met een Windows 10- of Windows Server 2016-vm in Azure vanwege netvsc.sys
 
-In dit artikel wordt uitgelegd hoe u een probleem oplost waarbij geen netwerk verbinding wordt weer gegeven wanneer u verbinding maakt met een virtuele machine (VM) van Windows 10 of Windows 2016 Server Data Center op een Hyper-V Server 2016-host.
+In dit artikel wordt uitgelegd hoe u een probleem oplossen waarbij er geen netwerkverbinding is wanneer u verbinding maakt met een virtuele machine (VM) van Windows 10 of Windows Server 2016 Datacenter op een Hyper-V Server 2016-host.
 
 ## <a name="symptoms"></a>Symptomen
 
-U kunt geen verbinding maken met een virtuele machine van Azure Windows 10 of Windows Server 2016 met behulp van Remote Desktop Protocol (RDP). In [Diagnostische gegevens over opstarten](boot-diagnostics.md)toont het scherm een rood kruis over de netwerk interface kaart (NIC). Dit geeft aan dat de virtuele machine geen verbinding heeft nadat het besturings systeem volledig is geladen.
+U geen verbinding maken met een Windows 10- of Windows Server 2016-vm met Behulp van Extern bureaublad-protocol (RDP). In [Boot diagnostics](boot-diagnostics.md)toont het scherm een rood kruis over de netwerkinterfacekaart (NIC). Dit geeft aan dat de VM geen connectiviteit heeft nadat het besturingssysteem volledig is geladen.
 
-Dit probleem treedt doorgaans op in Windows [build 14393](https://support.microsoft.com/help/4093120/) en [Build 15063](https://support.microsoft.com/help/4015583/). Als de versie van uw besturings systeem later is dan deze versies, is dit artikel niet van toepassing op uw scenario. Als u de versie van het systeem wilt controleren, opent u een CMD-sessie in [de console van seriële toegang](serial-console-windows.md)en voert u **ver**uit.
+Dit probleem treedt meestal op in Windows [build 14393](https://support.microsoft.com/help/4093120/) en [build 15063](https://support.microsoft.com/help/4015583/). Als de versie van uw besturingssysteem later is dan deze versies, is dit artikel niet van toepassing op uw scenario. Als u de versie van het systeem wilt controleren, opent u een CMD-sessie in [de functie Serial Access Console](serial-console-windows.md)en voert u **Ver**uit.
 
 ## <a name="cause"></a>Oorzaak
 
-Dit probleem kan optreden als de versie van het geïnstalleerde netvsc. sys-systeem bestand **10.0.14393.594** of **10.0.15063.0**is. Deze versies van netvsc. sys kunnen verhinderen dat het systeem communiceert met het Azure-platform.
+Dit probleem kan optreden als de versie van het geïnstalleerde netvsc.sys-systeembestand **10.0.14393.594** of **10.0.15063.0**is. Deze versies van netvsc.sys kunnen voorkomen dat het systeem interactie heeft met het Azure-platform.
 
 
 ## <a name="solution"></a>Oplossing
 
-Voordat u deze stappen volgt, moet u [een moment opname maken van de systeem schijf](../windows/snapshot-copy-managed-disk.md) van de betrokken VM als back-up. Om dit probleem wilt oplossen, gebruikt u de seriële Console of [herstel de virtuele machine offline](#repair-the-vm-offline) door het koppelen van de schijf van de virtuele machine aan een virtuele machine voor herstel.
+Voordat u deze stappen volgt, [maakt u een momentopname van de systeemschijf](../windows/snapshot-copy-managed-disk.md) van de betreffende VM als back-up. Als u dit probleem wilt oplossen, gebruikt u de seriële console of [herstelt u de VM offline](#repair-the-vm-offline) door de systeemschijf van de VM aan een herstelvm te koppelen.
 
 
 ### <a name="use-the-serial-console"></a>De seriële console gebruiken
 
-Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial-console-windows.md)en voer vervolgens de volgende stappen uit.
+Maak verbinding met [de seriële console, open een PowerShell-exemplaar](serial-console-windows.md)en volg deze stappen.
 
 > [!NOTE]
-> Als de seriële Console niet is ingeschakeld op de virtuele machine, gaat u naar de [herstel de virtuele machine offline](#repair-the-vm-offline) sectie.
+> Als de seriële console niet is ingeschakeld op uw vm, gaat u naar [de sectie offline vm repareren.](#repair-the-vm-offline)
 
-1. Voer de volgende opdracht uit in een Power shell-exemplaar om de versie van het bestand op te halen (**c:\windows\system32\drivers\netvsc.sys**):
+1. Voer de volgende opdracht uit in een PowerShell-instantie om de versie van het bestand te krijgen **(c:\windows\system32\drivers\netvsc.sys):**
 
    ```
    (get-childitem "$env:systemroot\system32\drivers\netvsc.sys").VersionInfo.FileVersion
    ```
 
-2. Down load de juiste update naar een nieuwe of bestaande gegevens schijf die is gekoppeld aan een werkende VM uit dezelfde regio:
+2. Download de juiste update naar een nieuwe of bestaande gegevensschijf die is gekoppeld aan een werkende vm uit dezelfde regio:
 
    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) of een latere update
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) of een latere update
 
-3. Ontkoppel de schijf van het hulp programma van de werkende VM en koppel deze vervolgens aan de beschadigde virtuele machine.
+3. Maak de utility disk los van de werkende VM en bevestig deze vervolgens aan de kapotte VM.
 
-4. Voer de volgende opdracht uit om de update te installeren op de VM:
+4. Voer de volgende opdracht uit om de update op de VM te installeren:
 
    ```
    dism /ONLINE /add-package /packagepath:<Utility Disk Letter>:\<KB .msu or .cab>
@@ -67,23 +67,23 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
 
 5. Start de VM opnieuw.
 
-### <a name="repair-the-vm-offline"></a>Herstel de virtuele machine Offline
+### <a name="repair-the-vm-offline"></a>De VM offline herstellen
 
-1. [De schijf koppelen aan een virtuele machine voor herstel](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Koppel de systeemschijf aan een herstelvm](../windows/troubleshoot-recovery-disks-portal.md).
 
-2. Start een externe bureaubladverbinding met de virtuele machine voor herstel.
+2. Start een verbinding met Extern bureaublad met de herstel-vm.
 
-3. Zorg ervoor dat de schijf is gemarkeerd als **Online** in de Schijfbeheer-console. Houd er rekening mee de stationsletter die is toegewezen aan de gekoppelde schijf.
+3. Controleer of de schijf is gemarkeerd als **Online** in de schijfbeheerconsole. Let op de stationsletter die is toegewezen aan de gekoppelde systeemschijf.
 
-4. Maak een kopie van de map **\Windows\System32\Config** als u de wijzigingen ongedaan wilt maken.
+4. Maak een kopie van de map **\Windows\System32\config** voor het geval een terugdraaiing op de wijzigingen noodzakelijk is.
 
-5. Start de REGI ster-editor (Regedit. exe) op de virtuele machine voor herstel.
+5. Start registereditor (regedit.exe) op de reddings-VM.
 
-6. Selecteer de sleutel **HKEY_LOCAL_MACHINE** en selecteer vervolgens **bestand** > **Component laden** in het menu.
+6. Selecteer de **HKEY_LOCAL_MACHINE** toets en selecteer **Vervolgens Bijenkorf** > **bestand** in het menu.
 
-7. Zoek het systeem bestand in de map **\Windows\System32\Config** .
+7. Zoek het systeembestand in de map **\Windows\System32\config.**
 
-8. Selecteer **openen**, typ **BROKENSYSTEM** voor de naam, vouw de **HKEY_LOCAL_MACHINE** sleutel uit en zoek vervolgens de extra sleutel met de naam **BROKENSYSTEM**.
+8. Selecteer **Open,** typ **BROKENSYSTEM** voor de naam, vouw de **HKEY_LOCAL_MACHINE** sleutel uit en zoek vervolgens de extra sleutel met de naam **BROKENSYSTEM**.
 
 9. Ga naar de volgende locatie:
 
@@ -91,31 +91,31 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
    HKLM\BROKENSYSTEM\ControlSet001\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}
    ```
 
-10. Controleer in elke subsleutel (zoals 0000) de **DriverDesc** -waarde die wordt weer gegeven als **micro soft Hyper-V-netwerk adapter**.
+10. Controleer in elke subsleutel (zoals 0000) de **DriverDesc-waarde** die wordt weergegeven als **Microsoft HYPER-V-netwerkadapter.**
 
-11. Controleer in de subsleutel de **DriverVersion** -waarde die de stuurprogrammaversie van de netwerk adapter van de virtuele machine is.
+11. Controleer in de subsleutel de **driverversiewaarde** die de stuurprogrammaversie van de netwerkadapter van de vm is.
 
-12. Down load de juiste update:
+12. Download de juiste update:
 
     - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) of een latere update
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) of een latere update
 
-13. Koppel de systeem schijf als een gegevens schijf op een herstel-VM waarop u de update kunt downloaden.
+13. Bevestig de systeemschijf als gegevensschijf op een reddings-vm waarop u de update downloaden.
 
-14. Voer de volgende opdracht uit om de update te installeren op de VM:
+14. Voer de volgende opdracht uit om de update op de VM te installeren:
 
     ```
     dism /image:<OS Disk letter>:\ /add-package /packagepath:c:\temp\<KB .msu or .cab>
     ```
 
-15. Voer de volgende opdracht uit om de componenten te ontkoppelen:
+15. Voer de volgende opdracht uit om de bijenkasten los te maken:
 
     ```
     reg unload HKLM\BROKENSYSTEM
     ```
 
-16. [Ontkoppel de systeem schijf en maak de VM opnieuw](../windows/troubleshoot-recovery-disks-portal.md).
+16. [Maak de systeemschijf los en maak de VM opnieuw.](../windows/troubleshoot-recovery-disks-portal.md)
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 
-Als u nog steeds hulp nodig hebt, [neemt u contact op met de ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
+Als u nog steeds hulp nodig hebt, [neemt u contact op met Azure Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om het probleem snel op te lossen.

@@ -9,20 +9,20 @@ ms.date: 03/29/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 060bc1039982cc0a77214d5dbe2a08de7a839c84
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176514"
 ---
-Als u wilt openen een directe SSH-sessie met de container, moet uw app worden uitgevoerd.
+Als u een directe SSH-sessie met uw container wilt openen, moet uw app worden uitgevoerd.
 
-Plak de volgende URL in uw browser en vervang \<app-naam > door de naam van uw app:
+Plak de volgende URL in \<uw browser en vervang app-naam> met uw app-naam:
 
 ```
 https://<app-name>.scm.azurewebsites.net/webssh/host
 ```
 
-Als u bent nog niet is geverifieerd, bent u verplicht om te verifiëren met uw Azure-abonnement om verbinding te maken. Eenmaal is geverifieerd, ziet u een shell in de browser, waar u opdrachten kunt uitvoeren in de container.
+Als u nog niet bent geverifieerd, moet u verifiëren met uw Azure-abonnement om verbinding te maken. Eenmaal geverifieerd, ziet u een in-browser shell, waar u opdrachten in uw container uitvoeren.
 
 ![SSH-verbinding](./media/app-service-web-ssh-connect-no-h/app-service-linux-ssh-connection.png)

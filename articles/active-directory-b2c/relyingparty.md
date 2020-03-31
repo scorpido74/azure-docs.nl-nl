@@ -1,6 +1,6 @@
 ---
-title: RelyingParty-Azure Active Directory B2C | Microsoft Docs
-description: Geef het RelyingParty-element van een aangepast beleid in Azure Active Directory B2C op.
+title: RelyingParty - Azure Active Directory B2C | Microsoft Documenten
+description: Geef het element RelyingParty van een aangepast beleid op in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,19 +11,19 @@ ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 90ac6f35cafbe63e8c6cdb77450089d00c0e3099
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79264347"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Het element **RelyingParty** geeft aan dat de gebruikers traject moet worden afgedwongen voor de huidige aanvraag om Azure Active Directory B2C (Azure AD B2C). Ook wordt de lijst met claims opgegeven die de toepassing Relying Party (RP) nodig heeft als onderdeel van het gepubliceerde token. Een RP-toepassing, zoals een web-, mobiele of bureaublad toepassing, roept het RP-beleids bestand aan. Het RP-beleids bestand voert een specifieke taak uit, zoals het aanmelden, het opnieuw instellen van een wacht woord of het bewerken van een profiel. Meerdere toepassingen kunnen hetzelfde RP-beleid gebruiken en één toepassing kan meerdere beleids regels gebruiken. Alle RP-toepassingen ontvangen hetzelfde token met claims en de gebruiker verloopt over hetzelfde traject van de gebruiker.
+Het element **RelyingParty** geeft het gebruikerstraject op dat moet worden afgedwongen voor de huidige aanvraag voor Azure Active Directory B2C (Azure AD B2C). Het specificeert ook de lijst van claims die de relying party (RP) applicatie nodig heeft als onderdeel van het uitgegeven token. Een RP-toepassing, zoals een web-, mobiele of desktoptoepassing, roept het RP-beleidsbestand aan. In het RP-beleidsbestand wordt een specifieke taak uitgevoerd, zoals aanmelden, het opnieuw instellen van een wachtwoord of het bewerken van een profiel. Meerdere toepassingen kunnen hetzelfde RP-beleid gebruiken en één toepassing kan meerdere beleidsregels gebruiken. Alle RP-toepassingen ontvangen hetzelfde token met claims en de gebruiker gaat door dezelfde gebruikersreis.
 
-In het volgende voor beeld ziet u een **RelyingParty** -element in het *B2C_1A_signup_signin* -beleids bestand:
+In het volgende voorbeeld wordt een **element RelyingParty** weergegeven in het *B2C_1A_signup_signin* beleidsbestand:
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -72,17 +72,17 @@ In het volgende voor beeld ziet u een **RelyingParty** -element in het *B2C_1A_s
   ...
 ```
 
-Het optionele **RelyingParty** -element bevat de volgende elementen:
+Het optionele **ElementingParty-element** bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Voorvallen | Beschrijving |
 | ------- | ----------- | ----------- |
-| DefaultUserJourney | 1:1 | De standaard gebruikers traject voor de RP-toepassing. |
-| UserJourneyBehaviors | 0:1 | Het bereik van het gedrag van de reis van de gebruiker. |
-| TechnicalProfile | 1:1 | Een technisch profiel dat wordt ondersteund door de RP-toepassing. Het technische profiel biedt een contract voor de RP-toepassing om contact op te nemen met Azure AD B2C. |
+| StandaardUserJourney | 1:1 | Het standaardgebruikerstraject voor de RP-toepassing. |
+| UserJourneyBehaviors | 0:1 | Het bereik van het gebruikerstrajectgedrag. |
+| Technisch Profiel | 1:1 | Een technisch profiel dat wordt ondersteund door de RP-applicatie. Het technische profiel biedt een contract voor de RP-toepassing om contact op te nemen met Azure AD B2C. |
 
-## <a name="defaultuserjourney"></a>DefaultUserJourney
+## <a name="defaultuserjourney"></a>StandaardUserJourney
 
-Het `DefaultUserJourney`-element bevat een verwijzing naar de id van de gebruikers traject die meestal wordt gedefinieerd in het basis-of uitbrei ding beleid. In de volgende voor beelden ziet u de reis registratie of aanmeldings gebruiker opgegeven in het **RelyingParty** -element:
+Het `DefaultUserJourney` element geeft een verwijzing op naar de id van het gebruikerstraject dat gewoonlijk wordt gedefinieerd in het beleid Basis of Extensies. In de volgende voorbeelden wordt de aanmeldings- of aanmeldingsreis weergegeven die is opgegeven in het element **RelyingParty:**
 
 *B2C_1A_signup_signin* beleid:
 
@@ -104,123 +104,123 @@ Het element **DefaultUserJourney** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| ReferenceId | Ja | Een id van de gebruikers traject in het beleid. Zie voor meer informatie [gebruikers ritten](userjourneys.md) |
+| ReferenceId | Ja | Een id van de gebruikersreis in het beleid. Zie [gebruikersreizen voor](userjourneys.md) meer informatie |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
-Het **UserJourneyBehaviors** -element bevat de volgende elementen:
+Het element **UserJourneyBehaviors** bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Voorvallen | Beschrijving |
 | ------- | ----------- | ----------- |
-| SingleSignOn | 0:1 | Het bereik van het gedrag van de sessie voor eenmalige aanmelding (SSO) van een gebruikers traject. |
-| SessionExpiryType |0:1 | Het verificatie gedrag van de sessie. Mogelijke waarden: `Rolling` of `Absolute`. De `Rolling`-waarde (standaard) geeft aan dat de gebruiker aangemeld blijft, zolang de gebruiker voortdurend actief is in de toepassing. De waarde `Absolute` geeft aan dat de gebruiker opnieuw moet worden geverifieerd na de tijds periode die is opgegeven voor de levens duur van de toepassings sessie. |
-| SessionExpiryInSeconds | 0:1 | De levens duur van de Azure AD B2C's-sessie cookie die is opgegeven als een geheel getal dat is opgeslagen in de browser van de gebruiker bij geslaagde verificatie. |
-| JourneyInsights | 0:1 | De Azure-toepassing Insights-instrumentatie sleutel die moet worden gebruikt. |
-| ContentDefinitionParameters | 0:1 | De lijst met sleutel waardeparen die moeten worden toegevoegd aan de laad-URI van de inhouds definitie. |
-|ScriptExecution| 0:1| De ondersteunde modi voor [Java script](javascript-samples.md) -uitvoering. Mogelijke waarden: `Allow` of `Disallow` (standaard).
+| Singlesignon Singlesignon | 0:1 | Het bereik van het sso-sessiegedrag (single sign-on) van een gebruikersreis. |
+| SessionExpiryType |0:1 | Het verificatiegedrag van de sessie. Mogelijke `Rolling` waarden: `Absolute`of . De `Rolling` waarde (standaard) geeft aan dat de gebruiker blijft aangemeld zolang de gebruiker voortdurend actief is in de toepassing. De `Absolute` waarde geeft aan dat de gebruiker gedwongen wordt om opnieuw te verifiëren na de periode die is opgegeven door de levensduur van de toepassingssessie. |
+| SessionExpiryInSeconds | 0:1 | De levensduur van de sessiecookie van Azure AD B2C is opgegeven als een geheel getal dat is opgeslagen in de browser van de gebruiker bij succesvolle verificatie. |
+| ReisInzichten | 0:1 | De instrumentatiesleutel Azure Application Insights die moet worden gebruikt. |
+| ContentDefinitionParameters | 0:1 | De lijst met sleutelwaardeparen die moeten worden toegevoegd aan de inhoudsdefinitie belasting URI. |
+|ScriptExecution| 0:1| De ondersteunde [JavaScript-uitvoeringsmodi.](javascript-samples.md) Mogelijke `Allow` waarden: `Disallow` of (standaard).
 
-### <a name="singlesignon"></a>SingleSignOn
+### <a name="singlesignon"></a>Singlesignon Singlesignon
 
 Het element **SingleSignOn** bevat in het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Bereik | Ja | Het bereik van het gedrag bij eenmalige aanmelding. Mogelijke waarden: `Suppressed`, `Tenant`, `Application`of `Policy`. De waarde `Suppressed` geeft aan dat het gedrag wordt onderdrukt. In het geval van een eenmalige aanmeldings sessie wordt er bijvoorbeeld geen sessie voor de gebruiker onderhouden en wordt de gebruiker altijd gevraagd om een id-provider te selecteren. De waarde `TrustFramework` geeft aan dat het gedrag wordt toegepast voor alle beleids regels in het vertrouwens raamwerk. Bijvoorbeeld: een gebruiker die door twee beleids trajecten voor een vertrouwens raamwerk navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Tenant` geeft aan dat het gedrag wordt toegepast op alle beleids regels in de Tenant. Bijvoorbeeld: een gebruiker die door twee beleids ritten voor een Tenant navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Application` geeft aan dat het gedrag wordt toegepast op alle beleids regels voor de toepassing die de aanvraag maakt. Bijvoorbeeld: een gebruiker die door twee beleids ritten voor een toepassing navigeert, wordt niet gevraagd om een id-provider te selecteren. De waarde `Policy` geeft aan dat het gedrag alleen van toepassing is op een beleid. Bijvoorbeeld: een gebruiker die door twee beleids trajecten voor een vertrouwens raamwerk navigeert, wordt gevraagd een id-provider selectie in te scha kelen bij het overschakelen tussen de beleids regels. |
-| KeepAliveInDays | Ja | Hiermee wordt bepaald hoe lang de gebruiker aangemeld blijft. Als u de waarde instelt op 0, wordt de KMSI-functionaliteit uitgeschakeld. Zie [me aangemeld blijven](custom-policy-keep-me-signed-in.md)voor meer informatie. |
-|EnforceIdTokenHintOnLogout| Nee|  Forceren dat een eerder uitgegeven ID-token wordt door gegeven aan het afmeldings eindpunt als hint voor de huidige geverifieerde sessie van de eind gebruiker met de client. Mogelijke waarden: `false` (standaard) of `true`. Zie voor meer informatie [Web Sign-in with OpenID Connect Connect](openid-connect.md).  |
+| Bereik | Ja | De reikwijdte van het enkele aanmeldingsgedrag. Mogelijke `Suppressed`waarden: `Tenant` `Application`, `Policy`, of . De `Suppressed` waarde geeft aan dat het gedrag wordt onderdrukt. In het geval van een enkele aanmeldingssessie wordt bijvoorbeeld geen sessie voor de gebruiker bijgehouden en wordt de gebruiker altijd gevraagd om een selectie van een identiteitsprovider. De `TrustFramework` waarde geeft aan dat het gedrag wordt toegepast voor alle beleidsregels in het vertrouwenskader. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een vertrouwenskader navigeert, wordt niet gevraagd om een selectie van identiteitsprovideren. De `Tenant` waarde geeft aan dat het gedrag wordt toegepast op alle beleidsregels in de tenant. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een tenant navigeert, wordt niet gevraagd om een selectie van een identiteitsprovider. De `Application` waarde geeft aan dat het gedrag wordt toegepast op alle beleidsregels voor de toepassing die de aanvraag maakt. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een toepassing navigeert, wordt niet gevraagd om een selectie van een identiteitsprovider. De `Policy` waarde geeft aan dat het gedrag alleen van toepassing is op een beleid. Een gebruiker die bijvoorbeeld door twee beleidsreizen voor een vertrouwenskader navigeert, wordt gevraagd om een selectie van identiteitsprovideren bij het schakelen tussen beleid. |
+| KeepAliveinDays | Ja | Hiermee bepaalt u hoe lang de gebruiker is aangemeld. Als u de waarde instelt op 0, schakelt u de KMSI-functionaliteit uit. Zie [Mij ingetekend houden](custom-policy-keep-me-signed-in.md)voor meer informatie. |
+|EnforceIdTokenHintOnLogout| Nee|  Forceer een eerder uitgegeven ID-token naar het afmeldpunt als een hint over de huidige geverifieerde sessie van de eindgebruiker met de client. Mogelijke waarden: `false` (standaard) of `true`. Zie [Webaanmelding met OpenID Connect](openid-connect.md)voor meer informatie.  |
 
 
-## <a name="journeyinsights"></a>JourneyInsights
+## <a name="journeyinsights"></a>ReisInzichten
 
-Het **JourneyInsights** -element bevat de volgende kenmerken:
+Het element **JourneyInsights** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Ja | De waarde moet `ApplicationInsights`zijn. |
-| InstrumentationKey | Ja | De teken reeks die de instrumentatie sleutel voor het Application Insights-element bevat. |
-| DeveloperMode | Ja | Mogelijke waarden: `true` of `false`. Als `true`, Application Insights de telemetrie versnellen door de verwerkings pijplijn. Deze instelling is goed voor ontwikkeling, maar beperkt op hoge volumes de gedetailleerde activiteiten logboeken zijn alleen ontworpen voor de ontwikkeling van aangepast beleid. Gebruik de ontwikkelings modus niet in productie. In Logboeken worden alle claims verzameld die worden verzonden naar en van de id-providers tijdens de ontwikkeling. Bij gebruik in productie neemt de ontwikkelaar de verantwoordelijkheid voor PII (privé Identificeer bare informatie) die is verzameld in het logboek van de app Insights waarvan ze eigenaar zijn. Deze gedetailleerde logboeken worden alleen verzameld wanneer deze waarde is ingesteld op `true`.|
-| ClientEnabled | Ja | Mogelijke waarden: `true` of `false`. Als `true`, verzendt het Application Insights script aan de client zijde voor het bijhouden van de pagina weergave en fouten aan de client zijde. |
-| ServerEnabled | Ja | Mogelijke waarden: `true` of `false`. Als `true`, verzendt de bestaande UserJourneyRecorder-JSON als een aangepaste gebeurtenis naar Application Insights. |
-| TelemetryVersion | Ja | De waarde moet `1.0.0`zijn. |
+| TelemetrieMotor | Ja | De waarde `ApplicationInsights`moet . |
+| Instrumentatiesleutel | Ja | De tekenreeks die de instrumentatietoets bevat voor het element toepassingsinzichten. |
+| DeveloperMode | Ja | Mogelijke `true` waarden: `false`of . Als `true`, versnelt Application Insights de telemetrie via de verwerkingspijplijn. Deze instelling is goed voor de ontwikkeling, maar beperkt bij hoge volumes De gedetailleerde activiteitslogboeken zijn alleen ontworpen om te helpen bij de ontwikkeling van aangepaste beleidsregels. Gebruik de ontwikkelingsmodus niet in de productie. Logs verzamelen alle claims die tijdens de ontwikkeling van en naar de identiteitsproviders worden verzonden. Als deze in de productie wordt gebruikt, neemt de ontwikkelaar de verantwoordelijkheid op zich voor PII (Privéidentificeerbare informatie) die wordt verzameld in het app-inzichtenlogboek waarvan hij eigenaar is. Deze gedetailleerde logboeken worden alleen verzameld `true`wanneer deze waarde is ingesteld op .|
+| ClientIngeschakeld | Ja | Mogelijke `true` waarden: `false`of . Als `true`, stuurt de Application Insights client-side script voor het bijhouden van pagina weergave en client-side fouten. |
+| ServerIngeschakeld | Ja | Mogelijke `true` waarden: `false`of . Als `true`, stuurt de bestaande UserJourneyRecorder JSON als een aangepaste gebeurtenis naar Application Insights. |
+| TelemetrieVersie | Ja | De waarde `1.0.0`moet . |
 
-Zie [Logboeken verzamelen](troubleshoot-with-application-insights.md) voor meer informatie
+Zie [Logboeken verzamelen voor](troubleshoot-with-application-insights.md) meer informatie
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
-Door aangepaste beleids regels te gebruiken in Azure AD B2C, kunt u een para meter verzenden in een query reeks. Door de parameter door te geven aan uw HTML-eindpunt, kunt u de pagina-inhoud dynamisch wijzigen. U kunt bijvoorbeeld de achtergrondafbeelding op de registratie- of aanmeldingspagina van Azure AD B2C wijzigen, op basis van een parameter die u doorgeeft vanuit uw web- of mobiele toepassing. Azure AD B2C geeft de query reeks parameters door aan uw Dynamic HTML-bestand, zoals een aspx-bestand.
+Met behulp van aangepast beleid in Azure AD B2C u een parameter verzenden in een querytekenreeks. Door de parameter door te geven aan uw HTML-eindpunt, kunt u de pagina-inhoud dynamisch wijzigen. U kunt bijvoorbeeld de achtergrondafbeelding op de registratie- of aanmeldingspagina van Azure AD B2C wijzigen, op basis van een parameter die u doorgeeft vanuit uw web- of mobiele toepassing. Azure AD B2C geeft de querytekenreeksparameters door aan uw dynamische HTML-bestand, zoals het aspx-bestand.
 
-In het volgende voor beeld wordt een para meter met de naam `campaignId` door gegeven met de waarde `hawaii` in de query reeks:
+In het volgende voorbeeld `campaignId` wordt een `hawaii` parameter met de naam waarde van in de querytekenreeks doorgegeven:
 
 `https://login.microsoft.com/contoso.onmicrosoft.com/oauth2/v2.0/authorize?pB2C_1A_signup_signin&client_id=a415078a-0402-4ce3-a9c6-ec1947fcfb3f&nonce=defaultNonce&redirect_uri=http%3A%2F%2Fjwt.io%2F&scope=openid&response_type=id_token&prompt=login&campaignId=hawaii`
 
 Het element **ContentDefinitionParameters** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Voorvallen | Beschrijving |
 | ------- | ----------- | ----------- |
-| ContentDefinitionParameter | 0: n | Een teken reeks die het sleutel waarde-paar bevat dat is toegevoegd aan de query reeks van een load-URI voor de inhouds definitie. |
+| ContentDefinitionParameter | 0:n | Een tekenreeks die het sleutelwaardepaar bevat dat is toegevoegd aan de queryreeks van een inhoudsdefinitie, belast URI. |
 
 Het element **ContentDefinitionParameter** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Naam | Ja | De naam van het sleutel waarde-paar. |
+| Name | Ja | De naam van het sleutelwaardepaar. |
 
-Zie [de gebruikers interface configureren met dynamische inhoud met behulp van aangepast beleid](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) voor meer informatie.
+Zie [De gebruikersinterface configureren met dynamische inhoud met aangepaste beleidsregels voor](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) meer informatie.
 
-## <a name="technicalprofile"></a>TechnicalProfile
+## <a name="technicalprofile"></a>Technisch Profiel
 
 Het element **TechnicalProfile** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Ja | De waarde moet `PolicyProfile`zijn. |
+| Id | Ja | De waarde `PolicyProfile`moet . |
 
-De **TechnicalProfile** bevat de volgende elementen:
+Het **TechnicalProfile** bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Voorvallen | Beschrijving |
 | ------- | ----------- | ----------- |
-| DisplayName | 1:1 | De teken reeks die de naam van het technische profiel bevat. |
-| Beschrijving | 0:1 | De teken reeks die de beschrijving van het technische profiel bevat. |
-| Protocol | 1:1 | Het protocol dat wordt gebruikt voor de Federatie. |
-| Metagegevens | 0:1 | De verzameling sleutel /waarde-paren die wordt gebruikt door het protocol voor communicatie met het eind punt in de loop van een trans actie om de interactie tussen de Relying Party en andere deel nemers van de community te configureren. |
-| OutputClaims | 1:1 | Een lijst met claim typen die worden beschouwd als uitvoer in het technische profiel. Elk van deze elementen bevat een verwijzing naar een **claim** type dat al is gedefinieerd in de sectie **ClaimsSchema** of in een beleid van waaruit dit beleids bestand wordt overgenomen. |
-| SubjectNamingInfo | 1:1 | De onderwerpnaam die wordt gebruikt in tokens. |
+| DisplayName | 1:1 | De tekenreeks die de naam van het technische profiel bevat. |
+| Beschrijving | 0:1 | De tekenreeks die de beschrijving van het technische profiel bevat. |
+| Protocol | 1:1 | Het protocol dat voor de federatie wordt gebruikt. |
+| Metagegevens | 0:1 | Het verzamelen van *item* van sleutel-/waardeparen die door het protocol worden gebruikt voor het communiceren met het eindpunt in de loop van een transactie om de interactie tussen de relying party en andere deelnemers aan de community te configureren. |
+| Uitvoerclaims | 1:1 | Een lijst met claimtypen die worden gebruikt als uitvoer in het technische profiel. Elk van deze elementen bevat een verwijzing naar een **ClaimType** dat al is gedefinieerd in de sectie **Claimschema** of in een beleid waaruit dit beleidsbestand overneemt. |
+| OnderwerpNaamgevingInfo | 1:1 | De onderwerpnaam die in tokens wordt gebruikt. |
 
-Het **protocol** element bevat het volgende kenmerk:
+Het **element Protocol** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Naam | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke waarden: `OpenIdConnect` of `SAML2`. De waarde van `OpenIdConnect` vertegenwoordigt de OpenID Connect Connect 1,0-protocol norm volgens de OpenID Connect Foundation-specificatie. De `SAML2` vertegenwoordigt de SAML 2,0-protocol norm als per OASIS-specificatie. Gebruik geen SAML-token in productie. |
+| Name | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C dat wordt gebruikt als onderdeel van het technische profiel. Mogelijke `OpenIdConnect` waarden: `SAML2`of . De `OpenIdConnect` waarde vertegenwoordigt de OpenID Connect 1.0-protocolstandaard volgens de OpenID-funderingsspecificatie. De `SAML2` vertegenwoordigt de SAML 2.0 protocol standaard volgens OASIS specificatie. Gebruik geen SAML-token in productie. |
 
-## <a name="outputclaims"></a>OutputClaims
+## <a name="outputclaims"></a>Uitvoerclaims
 
 Het element **OutputClaims** bevat het volgende element:
 
-| Element | Instanties | Beschrijving |
+| Element | Voorvallen | Beschrijving |
 | ------- | ----------- | ----------- |
-| OutputClaim | 0: n | De naam van een verwacht claim type in de lijst met ondersteunde typen voor het beleid waarop de Relying Party zich abonneert. Deze claim dient als uitvoer voor het technische profiel. |
+| Uitvoerclaim | 0:n | De naam van een verwacht claimtype in de ondersteunde lijst voor het beleid waarop de relying party zich abonneert. Deze claim dient als output voor het technische profiel. |
 
-Het **output claim** -element bevat de volgende kenmerken:
+Het element **OutputClaim** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Ja | Een verwijzing naar een **claim** type dat al is gedefinieerd in de sectie **ClaimsSchema** in het beleids bestand. |
-| Standaard | Nee | Een standaard waarde die kan worden gebruikt als de claim waarde leeg is. |
-| PartnerClaimType | Nee | Verzendt de claim in een andere naam zoals deze is geconfigureerd in de definitie claim type. |
+| Referentienummer van claimtype | Ja | Een verwijzing naar een **ClaimType** die al is gedefinieerd in de sectie **ClaimsSchema** in het beleidsbestand. |
+| Standaardwaarde | Nee | Een standaardwaarde die kan worden gebruikt als de claimwaarde leeg is. |
+| PartnerClaimType | Nee | Hiermee verzendt u de claim in een andere naam zoals geconfigureerd in de ClaimType-definitie. |
 
-### <a name="subjectnaminginfo"></a>SubjectNamingInfo
+### <a name="subjectnaminginfo"></a>OnderwerpNaamgevingInfo
 
-Met het **SubjectNameingInfo** -element bepaalt u de waarde van het onderwerp van de token:
-- **JWT-token** -de `sub` claim. Dit is een principal waarvan het token informatie bedient, zoals de gebruiker van een toepassing. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om veilige autorisatie controles uit te voeren, zoals wanneer het token wordt gebruikt om toegang te krijgen tot een bron. Standaard wordt de subject claim gevuld met de object-ID van de gebruiker in de Directory. Zie [token, sessie en configuratie van eenmalige aanmelding](session-behavior.md)voor meer informatie.
-- **SAML-token** -het `<Subject><NameID>`-element waarmee het subject-element wordt geïdentificeerd.
+Met het element **SubjectNameingInfo** bepaalt u de waarde van het tokenonderwerp:
+- **JWT token** `sub` - de claim. Dit is een principal waarover het token informatie claimt, zoals de gebruiker van een toepassing. Deze waarde is onveranderlijk en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om veilige autorisatiecontroles uit te voeren, bijvoorbeeld wanneer het token wordt gebruikt om toegang te krijgen tot een bron. Standaard wordt de onderwerpclaim gevuld met de object-id van de gebruiker in de map. Zie [Token, sessie en eenmalige aanmeldingsconfiguratie](session-behavior.md)voor meer informatie.
+- **SAML-token** `<Subject><NameID>` - het element dat het onderwerpelement identificeert.
 
 Het element **SubjectNamingInfo** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| ClaimType | Ja | Een verwijzing naar de **PartnerClaimType**van een uitvoer claim. De uitvoer claims moeten worden gedefinieerd in de **OutputClaims** -verzameling van het Relying Party-beleid. |
+| ClaimType | Ja | Een verwijzing naar de **PartnerClaimType**van een uitvoerclaim . De uitvoerclaims moeten worden gedefinieerd in de **verzameling OutputClaims van relying** party. |
 
-In het volgende voor beeld ziet u hoe u een OpenID Connect Connect-Relying Party definieert. De onderwerpnaam gegevens worden geconfigureerd als de `objectId`:
+In het volgende voorbeeld ziet u hoe u een afhankelijke partij van OpenID Connect definieert. De informatie over de onderwerpnaam is geconfigureerd als : `objectId`
 
 ```XML
 <RelyingParty>
@@ -240,7 +240,7 @@ In het volgende voor beeld ziet u hoe u een OpenID Connect Connect-Relying Party
   </TechnicalProfile>
 </RelyingParty>
 ```
-De JWT-token bevat de `sub` claim met het objectId van de gebruiker:
+Het JWT-token `sub` bevat de claim met de objectid van de gebruiker:
 
 ```JSON
 {

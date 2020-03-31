@@ -1,27 +1,27 @@
 ---
-title: Gegevens fouten in het diagnostische logboek Azure Stream Analytics
-description: In dit artikel worden de verschillende invoer-en uitvoer gegevens fouten beschreven die kunnen optreden bij het gebruik van Azure Stream Analytics.
+title: Gegevensfouten diagnostische logboekgegevens van Azure Stream Analytics
+description: In dit artikel worden de verschillende fouten in invoer- en uitvoergegevens uitgelegd die kunnen optreden bij het gebruik van Azure Stream Analytics.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: 0546464b4d1bcc9eaa4fbffe265486985d9c58f3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465024"
 ---
-# <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics gegevens fouten
+# <a name="azure-stream-analytics-data-errors"></a>Gegevensfouten in Azure Stream Analytics
 
-Gegevens fouten zijn fouten die optreden tijdens het verwerken van de gegevens.  Deze fouten worden meestal veroorzaakt tijdens het deserialiseren van gegevens, de serialisatie en schrijf bewerkingen.  Wanneer er gegevens fouten optreden, schrijft Stream Analytics gedetailleerde informatie en voorbeeld gebeurtenissen naar de diagnostische Logboeken.  In sommige gevallen wordt een samen vatting van deze informatie ook verstrekt via Portal meldingen.
+Gegevensfouten zijn fouten die optreden tijdens het verwerken van de gegevens.  Deze fouten komen meestal voor tijdens gegevensdeserialisatie, serialisatie en schrijfbewerkingen.  Wanneer er gegevensfouten optreden, schrijft Stream Analytics gedetailleerde informatie en voorbeeldgebeurtenissen naar de diagnostische logboeken.  In sommige gevallen wordt deze informatie ook samengevat via portalmeldingen.
 
-In dit artikel vindt u een overzicht van de verschillende fout typen, oorzaken en diagnostische logboek gegevens voor invoer-en uitvoer gegevens fouten.
+In dit artikel worden de verschillende fouttypen, oorzaken en diagnostische logboekgegevens beschreven voor invoer- en uitvoergegevensfouten.
 
-## <a name="diagnostic-log-schema"></a>Schema voor Diagnostische logboeken
+## <a name="diagnostic-log-schema"></a>Schema voor diagnostische logboeken
 
-Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische logboeken](stream-analytics-job-diagnostic-logs.md#diagnostics-logs-schema) om het schema voor Diagnostische logboeken te bekijken. De volgende JSON is een voorbeeld waarde voor het veld **Eigenschappen** van een diagnostisch logboek voor een gegevens fout.
+Zie [Azure Stream Analytics oplossen door diagnostische logboeken](stream-analytics-job-diagnostic-logs.md#diagnostics-logs-schema) te gebruiken om het schema voor diagnostische logboeken weer te geven. De volgende JSON is een voorbeeldwaarde voor het veld **Eigenschappen** van een diagnostisch logboek voor een gegevensfout.
 
 ```json
 {
@@ -37,49 +37,49 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 }
 ```
 
-## <a name="input-data-errors"></a>Invoer gegevens fouten
+## <a name="input-data-errors"></a>Fouten in invoergegevens
 
 ### <a name="inputdeserializererrorinvalidcompressiontype"></a>InputDeserializerError.InvalidCompressionType
 
-* Oorzaak: het geselecteerde invoer compressie type komt niet overeen met de gegevens.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: berichten met eventuele fouten in de deserialisatie, inclusief het ongeldige compressie type, worden verwijderd uit de invoer.
-* Logboek Details
-   * Invoer bericht-id. Voor Event hub is de id het PartitionId-, offset-en sequence-nummer.
+* Oorzaak: het geselecteerde type invoercompressie komt niet overeen met de gegevens.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: Berichten met eventuele deserialisatiefouten, waaronder ongeldig compressietype, worden uit de invoer verwijderd.
+* Logboekgegevens
+   * Invoerbericht-id. Voor gebeurtenishub is de id het partitionid-, verschuivings- en volgnummer.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Unable to decompress events from resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt'. Please ensure compression setting fits the data being processed."
 ```
 
-### <a name="inputdeserializererrorinvalidheader"></a>InputDeserializerError.InvalidHeader
+### <a name="inputdeserializererrorinvalidheader"></a>InvoerDeserializerError.InvalidHeader
 
-* Oorzaak: de header van de invoer gegevens is ongeldig. Een CSV bevat bijvoorbeeld kolommen met dubbele namen.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: berichten met een eventuele deserialisatie fout, inclusief een ongeldige header, worden verwijderd uit de invoer.
-* Logboek Details
-   * Invoer bericht-id. 
-   * De werkelijke Payload tot slechts enkele kilo bytes.
+* Oorzaak: de kop van invoergegevens is ongeldig. Een CSV heeft bijvoorbeeld kolommen met dubbele namen.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: Berichten met eventuele deserialisatiefouten, waaronder ongeldige koptekst, worden uit de invoer verwijderd.
+* Logboekgegevens
+   * Invoerbericht-id. 
+   * Werkelijke payload tot enkele kilobytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Invalid CSV Header for resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt'. Please make sure there are no duplicate field names."
 ```
 
-### <a name="inputdeserializererrormissingcolumns"></a>InputDeserializerError.MissingColumns
+### <a name="inputdeserializererrormissingcolumns"></a>InvoerDeserializerError.MissingColumns
 
-* Oorzaak: de invoer kolommen die zijn gedefinieerd met CREATE TABLE of via Time Stamp, bestaan niet.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: gebeurtenissen met ontbrekende kolommen worden verwijderd uit de invoer.
-* Logboek Details
-   * Invoer bericht-id. 
-   * De namen van de ontbrekende kolommen. 
-   * De werkelijke Payload tot een aantal kilo bytes.
+* Oorzaak: de invoerkolommen die zijn gedefinieerd met TABEL MAKEN of via TIMESTAMP BY, bestaan niet.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: gebeurtenissen met ontbrekende kolommen worden uit de invoer verwijderd.
+* Logboekgegevens
+   * Invoerbericht-id. 
+   * Namen van de kolommen die ontbreken. 
+   * Werkelijke payload tot een paar kilobytes.
 
 **Foutberichten**
 
@@ -93,13 +93,13 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 
 ### <a name="inputdeserializererrortypeconversionerror"></a>InputDeserializerError.TypeConversionError
 
-* Oorzaak: kan de invoer niet converteren naar het type dat is opgegeven in de CREATE TABLE-instructie.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: gebeurtenissen met de type conversie fout worden verwijderd uit de invoer.
-* Logboek Details
-   * Invoer bericht-id. 
-   * De naam van de kolom en het verwachte type.
+* Oorzaak: kan de invoer niet converteren naar het type dat is opgegeven in de instructie TABEL MAKEN.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: gebeurtenissen met typeconversiefout worden uit de invoer verwijderd.
+* Logboekgegevens
+   * Invoerbericht-id. 
+   * Naam van de kolom en verwacht type.
 
 **Foutberichten**
 
@@ -111,15 +111,15 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 "Message": "Unable to convert column: dateColumn to expected type."
 ```
 
-### <a name="inputdeserializererrorinvaliddata"></a>InputDeserializerError.InvalidData
+### <a name="inputdeserializererrorinvaliddata"></a>InvoerDeserializerError.InvalidData
 
-* Oorzaak: de invoer gegevens hebben niet de juiste indeling. De invoer is bijvoorbeeld geen geldige JSON.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: alle gebeurtenissen in het bericht nadat een ongeldige gegevens fout is opgetreden, worden verwijderd uit de invoer.
-* Logboek Details
-   * Invoer bericht-id. 
-   * De werkelijke Payload tot slechts enkele kilo bytes.
+* Oorzaak: invoergegevens zijn niet in de juiste indeling. De invoer is bijvoorbeeld niet geldig JSON.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: Alle gebeurtenissen in het bericht nadat er een ongeldige gegevensfout is opgetreden, worden uit de invoer verwijderd.
+* Logboekgegevens
+   * Invoerbericht-id. 
+   * Werkelijke payload tot enkele kilobytes.
 
 **Foutberichten**
 
@@ -131,33 +131,33 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 "Message": "Json input stream should either be an array of objects or line separated objects. Found token type: String"
 ```
 
-### <a name="invalidinputtimestamp"></a>InvalidInputTimeStamp
+### <a name="invalidinputtimestamp"></a>Ongeldig invoertijdstempel
 
-* Oorzaak: de waarde van de time stamp BY-expressie kan niet worden geconverteerd naar DateTime.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: gebeurtenissen met een ongeldige invoer-tijds tempel worden verwijderd uit de invoer.
-* Logboek Details
-   * Invoer bericht-id. 
+* Oorzaak: de waarde van de expressie TIMESTAMP BY kan niet worden geconverteerd naar datumtijd.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: gebeurtenissen met ongeldige invoertijdstempel worden uit de invoer verwijderd.
+* Logboekgegevens
+   * Invoerbericht-id. 
    * Foutbericht. 
-   * De werkelijke Payload tot slechts enkele kilo bytes.
+   * Werkelijke payload tot enkele kilobytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Unable to get timestamp for resource 'https:\\/\\/exampleBlob.blob.core.windows.net\\/inputfolder\\/csv.txt ' due to error 'Cannot convert string to datetime'"
 ```
 
-### <a name="invalidinputtimestampkey"></a>InvalidInputTimeStampKey
+### <a name="invalidinputtimestampkey"></a>Ongeldig invoertijdstempelsleutel
 
-* Oorzaak: de waarde van Time Stamp met meer dan timestampColumn is NULL.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: gebeurtenissen met een ongeldige invoer tijds tempel sleutel worden verwijderd uit de invoer.
-* Logboek Details
-   * De werkelijke Payload tot slechts enkele kilo bytes.
+* Oorzaak: De waarde van TIMESTAMP BY OVER timestampColumn is NULL.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: gebeurtenissen met ongeldige invoertijdstempeltoets worden uit de invoer verwijderd.
+* Logboekgegevens
+   * De werkelijke payload tot enkele kilobytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Unable to get value of TIMESTAMP BY OVER COLUMN"
@@ -165,15 +165,15 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 
 ### <a name="lateinputevent"></a>LateInputEvent
 
-* Oorzaak: het verschil tussen de toepassings tijd en aankomst tijd is groter dan het tolerantie venster late aankomst.
-* Portal-melding meegeleverd: Nee
-* Niveau diagnostisch logboek: informatie
-* Impact: latere invoer gebeurtenissen worden verwerkt op basis van de instelling andere gebeurtenissen afhandelen in de sectie gebeurtenis volgorde van de taak configuratie. Zie [time handling policies](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)(Engelstalig) voor meer informatie.
-* Logboek Details
-   * Tijd van de toepassing en aankomst tijd. 
-   * De werkelijke Payload tot slechts enkele kilo bytes.
+* Oorzaak: Het verschil tussen de toepassingstijd en de aankomsttijd is groter dan het venster voor late aankomsttolerantie.
+* Portal kennisgeving verstrekt: Nee
+* Diagnostisch logboekniveau: informatie
+* Impact: Late invoergebeurtenissen worden verwerkt volgens de instelling 'Andere gebeurtenissen afhandelen' in het gedeelte Gebeurtenisvolgorde van de taakconfiguratie. Zie Beleid [voor tijdafhandeling](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)voor meer informatie .
+* Logboekgegevens
+   * Aanvraagtijd en aankomsttijd. 
+   * Werkelijke payload tot enkele kilobytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Input event with application timestamp '2019-01-01' and arrival time '2019-01-02' was sent later than configured tolerance."
@@ -181,107 +181,107 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 
 ### <a name="earlyinputevent"></a>EarlyInputEvent
 
-* Oorzaak: het verschil tussen de tijd van de toepassing en de aankomst tijd is langer dan vijf minuten.
-* Portal-melding meegeleverd: Nee
-* Niveau diagnostisch logboek: informatie
-* Impact: vroege invoer gebeurtenissen worden verwerkt op basis van de instelling andere gebeurtenissen afhandelen in de sectie gebeurtenis volgorde van de taak configuratie. Zie [time handling policies](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)(Engelstalig) voor meer informatie.
-* Logboek Details
-   * Tijd van de toepassing en aankomst tijd. 
-   * De werkelijke Payload tot slechts enkele kilo bytes.
+* Oorzaak: Het verschil tussen de toepassingstijd en de aankomsttijd is groter dan 5 minuten.
+* Portal kennisgeving verstrekt: Nee
+* Diagnostisch logboekniveau: informatie
+* Impact: Vroege invoergebeurtenissen worden afgehandeld volgens de instelling 'Andere gebeurtenissen afhandelen' in het gedeelte Gebeurtenisvolgorde van de taakconfiguratie. Zie Beleid [voor tijdafhandeling](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)voor meer informatie .
+* Logboekgegevens
+   * Aanvraagtijd en aankomsttijd. 
+   * Werkelijke payload tot enkele kilobytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Input event arrival time '2019-01-01' is earlier than input event application timestamp '2019-01-02' by more than 5 minutes."
 ```
 
-### <a name="outoforderevent"></a>OutOfOrderEvent
+### <a name="outoforderevent"></a>OutoforderEvent
 
-* Oorzaak: de gebeurtenis wordt in de juiste volg orde beschouwd volgens het venster voor de buiten-volg orde van tolerantie gedefinieerd.
-* Portal-melding meegeleverd: Nee
-* Niveau diagnostisch logboek: informatie
-* Impact: aflopende gebeurtenissen worden verwerkt op basis van de instelling andere gebeurtenissen afhandelen in de sectie gebeurtenis volgorde van de taak configuratie. Zie [time handling policies](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)(Engelstalig) voor meer informatie.
-* Logboek Details
-   * De werkelijke Payload tot slechts enkele kilo bytes.
+* Oorzaak: Gebeurtenis wordt als niet in orde beschouwd volgens het gedefinieerde venster out of ordertolerantie.
+* Portal kennisgeving verstrekt: Nee
+* Diagnostisch logboekniveau: informatie
+* Impact: Gebeurtenissen buiten de volgorde worden afgehandeld volgens de instelling 'Andere gebeurtenissen afhandelen' in het gedeelte Gebeurtenisvolgorde van de taakconfiguratie. Zie Beleid [voor tijdafhandeling](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)voor meer informatie .
+* Logboekgegevens
+   * Werkelijke payload tot enkele kilobytes.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "Message": "Out of order event(s) received."
 ```
 
-## <a name="output-data-errors"></a>Resultaten van uitvoer gegevens
+## <a name="output-data-errors"></a>Fouten in uitvoergegevens
 
-### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
+### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataconversieError.requiredColumnMissing
 
-* Oorzaak: de vereiste kolom voor de uitvoer bestaat niet. Een kolom die is gedefinieerd als Azure Table PartitionKey does't bestaat bijvoorbeeld.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: alle conversie fouten van uitvoer gegevens, inclusief ontbrekende vereiste kolom worden verwerkt volgens de instelling voor het [uitvoer gegevens beleid](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
-* Logboek Details
-   * De naam van de kolom en de record-id of een deel van de record.
+* Oorzaak: de kolom die nodig is voor de uitvoer bestaat niet. Een kolom die is gedefinieerd als Azure Table PartitionKey bestaat bijvoorbeeld niet.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: alle conversiefouten voor uitvoergegevens, inclusief ontbrekende vereiste kolom, worden verwerkt volgens de instelling [Uitvoergegevensbeleid.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)
+* Logboekgegevens
+   * Naam van de kolom en de record-id of een deel van de record.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "Message": "The output record does not contain primary key property: [deviceId] Ensure the query output contains the column [deviceId] with a unique non-empty string less than '255' characters."
 ```
 
-### <a name="outputdataconversionerrorcolumnnameinvalid"></a>OutputDataConversionError.ColumnNameInvalid
+### <a name="outputdataconversionerrorcolumnnameinvalid"></a>OutputDataconversieD.ColumnNameOngeldig
 
-* Oorzaak: de kolom waarde komt niet overeen met de uitvoer. De kolom naam is bijvoorbeeld geen geldige kolom van Azure Table.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: alle conversie fouten van uitvoer gegevens, inclusief de ongeldige kolom naam, worden verwerkt volgens de instelling voor het [uitvoer gegevens beleid](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
-* Logboek Details
-   * De naam van de kolom en ofwel de record-id of het deel van de record.
+* Oorzaak: de kolomwaarde komt niet overeen met de uitvoer. De kolomnaam is bijvoorbeeld geen geldige Azure-tabelkolom.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: alle conversiefouten voor uitvoergegevens, inclusief ongeldige kolomnaam, worden verwerkt volgens de instelling [Uitvoergegevensbeleid.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)
+* Logboekgegevens
+   * Naam van de kolom en record-id of een deel van de record.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "Message": "Invalid property name #deviceIdValue. Please refer MSDN for Azure table property naming convention."
 ```
 
-### <a name="outputdataconversionerrortypeconversionerror"></a>OutputDataConversionError.TypeConversionError
+### <a name="outputdataconversionerrortypeconversionerror"></a>OutputDataconversionError.typeconversionError
 
-* Oorzaak: een kolom kan niet worden geconverteerd naar een geldig type in de uitvoer. De waarde van column is bijvoorbeeld incompatibel met beperkingen of het type dat in de SQL-tabel is gedefinieerd.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: alle conversie fouten van uitvoer gegevens, waaronder type conversie fout, worden verwerkt op basis van de [beleids instelling uitvoer gegevens](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
-* Logboek Details
-   * De naam van de kolom.
-   * De record-id of een deel van de record.
+* Oorzaak: een kolom kan niet worden geconverteerd naar een geldig type in de uitvoer. De waarde van de kolom is bijvoorbeeld onverenigbaar met beperkingen of tekst die is gedefinieerd in de SQL-tabel.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: alle conversiefouten voor uitvoergegevens, inclusief typeconversiefouten, worden verwerkt volgens de instelling [Uitvoergegevensbeleid.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)
+* Logboekgegevens
+   * Naam van de kolom.
+   * Record-id of een deel van de record.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "Message": "The column [id] value null or its type is invalid. Ensure to provide a unique non-empty string less than '255' characters."
 ```
 
-### <a name="outputdataconversionerrorrecordexceededsizelimit"></a>OutputDataConversionError.RecordExceededSizeLimit
+### <a name="outputdataconversionerrorrecordexceededsizelimit"></a>OutputDataConversieError.RecordExceededSizeLimit
 
-* Oorzaak: de waarde van het bericht is groter dan de ondersteunde uitvoer grootte. Een record is bijvoorbeeld groter dan 1 MB voor een event hub-uitvoer.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: alle conversie fouten van uitvoer gegevens, waaronder record overschrijding van de grootte, worden verwerkt volgens de [beleids instelling uitvoer gegevens](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
-* Logboek Details
-   * De record-id of een deel van de record.
+* Oorzaak: de waarde van het bericht is groter dan de ondersteunde uitvoergrootte. Een record is bijvoorbeeld groter dan 1 MB voor een Gebeurtenishub-uitvoer.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: alle conversiefouten voor uitvoergegevens, inclusief recordoverschrijdingen, worden verwerkt volgens de instelling [Uitvoergegevensbeleid.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)
+* Logboekgegevens
+   * Record-id of een deel van de record.
 
-**Fout bericht**
+**Foutbericht**
 
 ```json
 "BriefMessage": "Single output event exceeds the maximum message size limit allowed (262144 bytes) by Event Hub."
 ```
 
-### <a name="outputdataconversionerrorduplicatekey"></a>OutputDataConversionError.DuplicateKey
+### <a name="outputdataconversionerrorduplicatekey"></a>OutputDataconversieD.DuplicateKey
 
-* Oorzaak: een record bevat al een kolom met dezelfde naam als een systeem kolom. Bijvoorbeeld CosmosDB uitvoer met een kolom met de naam ID wanneer de kolom ID een andere kolom is.
-* Portal melding meegeleverd: Ja
-* Niveau van het diagnose logboek: waarschuwing
-* Impact: alle conversie fouten van uitvoer gegevens, inclusief dubbele sleutels, worden verwerkt volgens de [beleids instelling uitvoer gegevens](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) .
-* Logboek Details
-   * De naam van de kolom.
-   * De record-id of een deel van de record.
+* Oorzaak: een record bevat al een kolom met dezelfde naam als een kolom systeem. CosmosDB-uitvoer met een kolom met de naam ID wanneer de id-kolom naar een andere kolom gaat.
+* Portal melding verstrekt: Ja
+* Diagnostisch logboekniveau: waarschuwing
+* Impact: alle conversiefouten voor uitvoergegevens, inclusief dubbele sleutel, worden verwerkt volgens de instelling [Uitvoergegevensbeleid.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy)
+* Logboekgegevens
+   * Naam van de kolom.
+   * Record-id of een deel van de record.
 
 ```json
 "BriefMessage": "Column 'devicePartitionKey' is being mapped to multiple columns."
@@ -289,6 +289,6 @@ Zie [problemen met Azure stream Analytics oplossen met behulp van Diagnostische 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Problemen met Azure Stream Analytics oplossen met Diagnostische logboeken](stream-analytics-job-diagnostic-logs.md)
+* [Azure Stream Analytics oplossen met diagnostische logboeken](stream-analytics-job-diagnostic-logs.md)
 
-* [Meer informatie over Stream Analytics taak bewaking en het bewaken van query's](stream-analytics-monitoring.md)
+* [Inzicht in de taakbewaking van Stream Analytics en hoe u query's controleren](stream-analytics-monitoring.md)

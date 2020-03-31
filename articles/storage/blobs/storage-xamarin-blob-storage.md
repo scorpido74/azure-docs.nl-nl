@@ -1,6 +1,6 @@
 ---
-title: Het gebruik van object (BLOB)-opslag van Xamarin | Microsoft Docs
-description: Met de Azure Storage-client bibliotheek voor Xamarin kunnen ontwikkel aars iOS-, Android-en Windows Store-apps maken met hun eigen gebruikers interface. Deze zelf studie laat zien hoe u Xamarin kunt gebruiken om een toepassing te maken die gebruikmaakt van Azure Blob-opslag.
+title: Objectopslag (Blob) gebruiken vanuit Xamarin | Microsoft Documenten
+description: Met de Azure Storage-clientbibliotheek voor Xamarin kunnen ontwikkelaars iOS-, Android- en Windows Store-apps maken met hun eigen gebruikersinterfaces. In deze zelfstudie ziet u hoe u Xamarin gebruikt om een toepassing te maken die Azure Blob-opslag gebruikt.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 05/11/2017
@@ -8,15 +8,15 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 8a1c91c8a8a59af26386e70e68e7c4fd93f5eaa9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68726342"
 ---
-# <a name="how-to-use-blob-storage-from-xamarin"></a>Blob Storage gebruiken in Xamarin
+# <a name="how-to-use-blob-storage-from-xamarin"></a>Blob-opslag van Xamarin gebruiken
 
-Xamarin stelt ontwikkel aars in staat om C# een gedeelde code base te gebruiken voor het maken van Ios-, Android-en Windows Store-apps met hun eigen gebruikers interface. In deze zelf studie wordt uitgelegd hoe u Azure Blob Storage gebruikt met een Xamarin-toepassing. Als u meer wilt weten over Azure Storage, raadpleeg dan eerst [Inleiding tot Microsoft Azure Storage](../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Xamarin stelt ontwikkelaars in staat om een gedeelde C#-codebase te gebruiken om iOS-, Android- en Windows Store-apps te maken met hun eigen gebruikersinterfaces. In deze zelfstudie ziet u hoe u Azure Blob-opslag gebruiken met een Xamarin-toepassing. Zie [Inleiding tot Microsoft Azure Storage](../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)als u meer wilt weten over Azure Storage voordat u in de code duikt.
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
@@ -24,20 +24,20 @@ Xamarin stelt ontwikkel aars in staat om C# een gedeelde code base te gebruiken 
 
 ## <a name="create-a-new-xamarin-application"></a>Een nieuwe Xamarin-toepassing maken
 
-Voor deze zelf studie maken we een app die is gericht op Android, iOS en Windows. Met deze app maakt u gewoon een container en uploadt u een BLOB in deze container. We gebruiken Visual Studio in Windows, maar dezelfde informatie kan worden toegepast bij het maken van een app met behulp van Xamarin Studio op macOS.
+Voor deze zelfstudie maken we een app die zich richt op Android, iOS en Windows. Deze app maakt gewoon een container en uploadt een blob in deze container. We gebruiken Visual Studio op Windows, maar dezelfde lessen kunnen worden toegepast bij het maken van een app met Xamarin Studio op macOS.
 
-Voer de volgende stappen uit om uw toepassing te maken:
+Volg de volgende stappen om uw toepassing te maken:
 
-1. Als u dat nog niet hebt gedaan, downloadt en installeert u [Xamarin voor Visual Studio](https://www.xamarin.com/download).
-2. Open Visual Studio en maak een lege app (native Portable): **Bestand > nieuw > Project > platformoverschrijdende > lege app (native Portable)** .
-3. Klik met de rechter muisknop op uw oplossing in het deel venster Solution Explorer en selecteer **NuGet-pakketten beheren voor oplossing**. Zoek naar **WindowsAzure. Storage** en installeer de nieuwste stabiele versie voor alle projecten in uw oplossing.
-4. Uw project bouwen en uitvoeren.
+1. Als u [xamarin](https://www.xamarin.com/download)nog niet hebt gedownload en geïnstalleerd voor Visual Studio.
+2. Open Visual Studio en maak een Lege App (Native Portable): **Bestand > Nieuwe > Project > Cross-Platform > Blank App (Native Portable)**.
+3. Klik met de rechtermuisknop op uw oplossing in het deelvenster Solution Explorer en selecteer **NuGet-pakketten voor oplossing beheren.** Zoek naar **WindowsAzure.Storage** en installeer de nieuwste stabiele versie voor alle projecten in uw oplossing.
+4. Bouw en voer uw project uit.
 
-U hebt nu een toepassing waarmee u kunt klikken op een knop waarmee een item wordt verhoogd.
+U moet nu een toepassing die u toelaat om een knop die een teller stappen klikken.
 
-## <a name="create-container-and-upload-blob"></a>Container maken en BLOB uploaden
+## <a name="create-container-and-upload-blob"></a>Container maken en blob uploaden
 
-Vervolgens voegt u onder `(Portable)` uw project code toe aan. `MyClass.cs` Met deze code wordt een container gemaakt en wordt een BLOB geüpload naar deze container. `MyClass.cs`moet er als volgt uitzien:
+Vervolgens voegt `(Portable)` u onder uw project wat `MyClass.cs`code toe aan . Met deze code wordt een container geüpload en wordt een blob in deze container geüpload. `MyClass.cs`er als volgt uitzien:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -76,11 +76,11 @@ namespace XamarinApp
 }
 ```
 
-Zorg ervoor dat u "your_account_name_here" en "your_account_key_here" vervangt door de werkelijke account naam en de account sleutel.
+Zorg ervoor dat u 'your_account_name_here' en 'your_account_key_here' vervangt door uw werkelijke accountnaam en accountsleutel.
 
-Uw iOS-, Android-en Windows Phone-projecten hebben allemaal verwijzingen naar uw draag bare project. Dit betekent dat u al uw gedeelde code op één plek kunt schrijven en gebruiken in al uw projecten. U kunt nu de volgende regel code aan elk project toevoegen om te beginnen met het gebruik van:`MyClass.performBlobOperation()`
+Uw iOS-, Android- en Windows Phone-projecten hebben allemaal verwijzingen naar uw Portable-project- wat betekent dat u al uw gedeelde code op één plaats schrijven en deze gebruiken voor al uw projecten. U nu de volgende coderegel aan elk project toevoegen om te beginnen met profiteren:`MyClass.performBlobOperation()`
 
-### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp. Droid > MainActivity.cs
+### <a name="xamarinappdroid--mainactivitycs"></a>XamarinApp.Droid > MainActivity.cs
 
 ```csharp
 using Android.App;
@@ -116,7 +116,7 @@ namespace XamarinApp.Droid
 }
 ```
 
-### <a name="xamarinappios--viewcontrollercs"></a>XamarinApp. iOS > ViewController.cs
+### <a name="xamarinappios--viewcontrollercs"></a>XamarinApp.iOS > ViewController.cs
 
 ```csharp
 using System;
@@ -163,7 +163,7 @@ namespace XamarinApp.iOS
 }
 ```
 
-### <a name="xamarinappwinphone--mainpagexaml--mainpagexamlcs"></a>XamarinApp. WinPhone > MainPage. xaml > MainPage.xaml.cs
+### <a name="xamarinappwinphone--mainpagexaml--mainpagexamlcs"></a>XamarinApp.WinPhone > MainPage.xaml > MainPage.xaml.cs
 
 ```csharp
 using Windows.UI.Xaml.Controls;
@@ -231,18 +231,18 @@ namespace XamarinApp.WinPhone
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-U kunt deze toepassing nu uitvoeren in een Android-of Windows Phone-Emulator. U kunt deze toepassing ook uitvoeren in een iOS-emulator, maar hiervoor is wel een Mac vereist. Raadpleeg de documentatie voor het [verbinden van Visual Studio met een Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/) voor specifieke instructies over hoe u dit doet.
+U deze toepassing nu uitvoeren in een Android- of Windows Phone-emulator. Je deze toepassing ook uitvoeren in een iOS-emulator, maar hiervoor is een Mac nodig. Lees de documentatie voor het verbinden van [Visual Studio met een Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/) voor specifieke instructies over hoe u dit doen.
 
-Wanneer u uw app hebt uitgevoerd, wordt de container `mycontainer` in uw opslag account gemaakt. Het moet de BLOB `myblob`bevatten,, die de `Hello, world!`tekst bevat. U kunt dit controleren met behulp van de [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
+Zodra u uw app uitvoert, `mycontainer` wordt de container in uw opslagaccount gemaakt. Het moet de `myblob`blob bevatten, die `Hello, world!`de tekst heeft, . U dit verifiëren met de [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u een platformoverschrijdende toepassing maakt in Xamarin die gebruikmaakt van Azure Storage, die specifiek gericht is op één scenario in Blob Storage. U kunt echter veel meer doen met niet alleen Blob Storage, maar ook met tabel, bestand en Queue Storage. Raadpleeg de volgende artikelen voor meer informatie:
+In deze zelfstudie hebt u geleerd hoe u een cross-platform toepassing in Xamarin maakt die Azure Storage gebruikt, waarbij u zich specifiek richt op één scenario in Blob Storage. U echter veel meer doen met niet alleen Blob Storage, maar ook met tabel-, bestands- en wachtrijopslag. Bekijk de volgende artikelen voor meer informatie:
 
 * [Aan de slag met Azure Blob Storage met .NET](storage-dotnet-how-to-use-blobs.md)
-* [Inleiding tot Azure Files](../files/storage-files-introduction.md)
+* [Kennismaking met Azure Files](../files/storage-files-introduction.md)
 * [Ontwikkelen voor Azure Files met .NET](../files/storage-dotnet-how-to-use-files.md)
 * [Aan de slag met Azure Table Storage met .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [Aan de slag met Azure Queue Storage met .NET](../queues/storage-dotnet-how-to-use-queues.md)
+* [Aan de slag met Azure Queue-opslag met .NET](../queues/storage-dotnet-how-to-use-queues.md)
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

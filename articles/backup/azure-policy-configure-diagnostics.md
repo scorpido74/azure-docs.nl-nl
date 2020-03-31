@@ -1,89 +1,89 @@
 ---
-title: Diagnostische instellingen voor de kluis op schaal configureren
-description: Log Analytics Diagnostische instellingen configureren voor alle kluizen in een bepaald bereik met behulp van Azure Policy
+title: Instellingen voor Vault Diagnostics op schaal configureren
+description: Instellingen voor diagnostische instellingen voor Logboekanalyse configureren voor alle kluizen in een bepaald bereik met Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: c92957cab3e1ed745e7031e3c6f32e7ecda550a5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77584503"
 ---
-# <a name="configure-vault-diagnostics-settings-at-scale"></a>Diagnostische instellingen voor de kluis op schaal configureren
+# <a name="configure-vault-diagnostics-settings-at-scale"></a>Instellingen voor Vault Diagnostics op schaal configureren
 
-De rapportage oplossing die wordt verschaft door Azure Backup maakt gebruik van Log Analytics (LA). Voor de gegevens van een bepaalde kluis die naar LA moeten worden verzonden, moet een [Diagnostische instelling](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) worden gemaakt voor die kluis.
+De rapportageoplossing van Azure Backup maakt gebruik van Log Analytics (LA). Om de gegevens van een bepaalde kluis naar LA te sturen, moet er een [diagnostische instelling](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) voor die kluis worden gemaakt.
 
-Vaak is het toevoegen van een diagnostische instelling hand matig per kluis een lastigere taak. Daarnaast moet voor elke nieuwe kluis die wordt gemaakt, diagnostische instellingen zijn ingeschakeld om rapporten voor deze kluis te kunnen weer geven. 
+Vaak kan het handmatig toevoegen van een diagnostische instelling per kluis een omslachtige taak zijn. Bovendien moet elke nieuwe kluis die is gemaakt ook diagnostische instellingen hebben ingeschakeld om rapporten voor deze kluis te kunnen bekijken. 
 
-Azure Backup biedt een ingebouwde [Azure Policy](https://docs.microsoft.com/azure/governance/policy/)om het maken van diagnostische instellingen op schaal te vereenvoudigen (met La als doel). Dit beleid voegt een instelling voor diagnostische gegevens van LA toe aan alle kluizen in een bepaald abonnement of resource groep. De volgende secties bevatten instructies over het gebruik van dit beleid.
+Azure Backup biedt een ingebouwd [Azure-beleid](https://docs.microsoft.com/azure/governance/policy/)om het maken van diagnostische instellingen op schaal te vereenvoudigen (met LA als bestemming). Met dit beleid wordt een LA-diagnose-instelling toegevoegd aan alle kluizen in een bepaald abonnement of resourcegroep. In de volgende secties vindt u instructies over het gebruik van dit beleid.
 
-## <a name="supported-scenarios"></a>Ondersteunde scenario's
+## <a name="supported-scenarios"></a>Ondersteunde scenario 's
 
-* Het beleid kan in één keer worden toegepast op alle Recovery Services kluizen in een bepaald abonnement (of op een resource groep in het abonnement). De gebruiker die het beleid toewijst, moet de toegang ' eigenaar ' hebben voor het abonnement waaraan het beleid is toegewezen.
+* Het beleid kan in één keer worden toegepast op alle vaults van Recovery Services in een bepaald abonnement (of op een resourcegroep binnen het abonnement). De gebruiker die het beleid toegeeft, moet 'Eigenaar' toegang hebben tot het abonnement waaraan het beleid is toegewezen.
 
-* De werk ruimte LA zoals opgegeven door de gebruiker (waarnaar diagnostische gegevens worden verzonden) kan zich in een ander abonnement bevinden dan de kluizen waaraan het beleid is toegewezen. De gebruiker moet ' lezer ', ' Inzender ' of ' eigenaar ' toegang hebben tot het abonnement waarin de opgegeven LA-werk ruimte zich bevindt.
+* De LA Workspace zoals opgegeven door de gebruiker (naar welke diagnostische gegevens worden verzonden) kan zich in een ander abonnement bevinden dan de kluizen waaraan het beleid is toegewezen. De gebruiker moet 'Reader', 'Contributor' of 'Owner' toegang hebben tot het abonnement waarin de opgegeven LA Workspace bestaat.
 
-* Het bereik van de beheer groep wordt momenteel niet ondersteund.
+* Het bereik van de beheergroep wordt momenteel niet ondersteund.
 
-* Het ingebouwde beleid is momenteel niet beschikbaar in nationale Clouds.
+* Het ingebouwde beleid is momenteel niet beschikbaar in nationale clouds.
 
-## <a name="assigning-the-built-in-policy-to-a-scope"></a>Het ingebouwde beleid toewijzen aan een bereik
+## <a name="assigning-the-built-in-policy-to-a-scope"></a>Het ingebouwde beleid toewijzen aan een scope
 
-Volg de onderstaande stappen om het beleid voor kluizen toe te wijzen in het vereiste bereik:
+Als u het beleid voor kluizen in het vereiste bereik wilt toewijzen, voert u de onderstaande stappen uit:
 
-1. Meld u aan bij de Azure Portal en navigeer naar het **beleids** dashboard.
-2. Selecteer **definities** in het linkermenu om een lijst op te halen met alle ingebouwde beleids regels voor Azure-resources.
-3. De lijst filteren op **categorie = bewaking**. Zoek het beleid met de naam **[Preview]: Diagnostische instellingen voor Recovery Services kluis implementeren in log Analytics werk ruimte voor resource-specifieke categorieën**.
+1. Meld u aan bij de Azure-portal en navigeer naar het **beleidsdashboard.**
+2. Selecteer **Definities** in het linkermenu om een lijst met alle ingebouwde beleidsregels in Azure Resources te krijgen.
+3. Filter de lijst voor **Categorie=Monitoring**. Zoek het beleid met de naam **[Preview]: Diagnostische instellingen voor Vault voor Herstelservices implementeren in de werkruimte Log Analytics voor resourcespecifieke categorieën**.
 
-![Blade beleids definitie](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
+![Blad beleidsdefinitie](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 
-4. Klik op de naam van het beleid. U wordt omgeleid naar de gedetailleerde definitie van dit beleid.
+4. Klik op de naam van het beleid. U wordt doorgestuurd naar de gedetailleerde definitie voor dit beleid.
 
-![Gedetailleerde beleids definitie](./media/backup-azure-policy-configure-diagnostics/detailed-policy-definition.png)
+![Gedetailleerde beleidsdefinitie](./media/backup-azure-policy-configure-diagnostics/detailed-policy-definition.png)
 
-5. Klik boven aan de Blade op de knop **toewijzen** . Hiermee wordt u omgeleid naar de Blade **beleid toewijzen** .
+5. Klik op de knop **Toewijzen** boven aan het blad. Hiermee wordt u omgeleid naar het **blad Beleid toewijzen.**
 
-6. Klik onder **basis principes**op de drie puntjes naast het veld **bereik** . Hiermee opent u een rechter context-Blade waar u het abonnement kunt selecteren waarop het beleid moet worden toegepast. U kunt desgewenst ook een resource groep selecteren, zodat het beleid alleen wordt toegepast op kluizen in een bepaalde resource groep.
+6. Klik **onder Basisbeginselen**op de drie puntjes naast het veld **Bereik.** Dit opent een rechter contextblad waar u het abonnement selecteren voor het beleid waarop u moet worden toegepast. U ook optioneel een resourcegroep selecteren, zodat het beleid alleen wordt toegepast voor kluizen in een bepaalde resourcegroep.
 
-![Basis principes van beleids toewijzing](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
+![Basisbeginselen van beleidstoewijzing](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
-7. Onder **para meters**voert u de volgende gegevens in:
+7. Voer **onder Parameters**de volgende gegevens in:
 
-* **Profiel naam** : de naam die wordt toegewezen aan de diagnostische instellingen die door het beleid zijn gemaakt.
-* **Log Analytics-werk ruimte** : de log Analytics werk ruimte waaraan de diagnostische instelling moet worden gekoppeld. Diagnostische gegevens van alle kluizen in het bereik van de beleids toewijzing worden gepusht naar de opgegeven LA-werk ruimte.
+* **Profielnaam** - De naam die wordt toegewezen aan de diagnostische instellingen die door het beleid zijn gemaakt.
+* **Log Analytics Workspace** - De Log Analytics Workspace waaraan de diagnostische instelling moet worden gekoppeld. Diagnostische gegevens van alle kluizen in het bereik van de beleidstoewijzing worden naar de opgegeven LA Workspace gepusht.
 
-* **Naam van het uitsluitings label (optioneel) en de uitzonderings label waarde (optioneel)** : u kunt ervoor kiezen om de kluizen uit te sluiten van een bepaalde label naam en-waarde uit de beleids toewijzing. Als u bijvoorbeeld **niet** wilt dat een diagnostische instelling wordt toegevoegd aan de kluizen die een tag ' isTest ' hebben ingesteld op ' ja ', moet u ' isTest ' invoeren in het veld met de naam van het **uitsluitings label** en ' ja ' in het veld met de uitzonderings **label waarde** . Als een (of beide) van deze twee velden leeg blijven, wordt het beleid toegepast op alle relevante kluizen, onafhankelijk van de tags die ze bevatten.
+* **Naam van uitsluitingstag (optioneel) en uitsluitingstagwaarde (optioneel)** - U ervoor kiezen om kluizen met een bepaalde tagnaam en -waarde uit te sluiten van de beleidstoewijzing. Als u bijvoorbeeld **niet** wilt dat er een diagnostische instelling wordt toegevoegd aan de kluizen met een tag 'isTest' ingesteld op de waarde 'ja', moet u 'isTest' invoeren in het veld **Uitsluitingstagnaam** en 'ja' in het veld Waarde van de **uitsluitingstag.** Als een (of beide) van deze twee velden leeg blijft, wordt het beleid toegepast op alle relevante kluizen, ongeacht de tags die ze bevatten.
 
-![Beleids toewijzings parameters](./media/backup-azure-policy-configure-diagnostics/policy-assignment-parameters.png)
+![Parameters beleidstoewijzing](./media/backup-azure-policy-configure-diagnostics/policy-assignment-parameters.png)
 
-8. **Een herstel taak maken** : zodra het beleid is toegewezen aan een bereik, krijgen nieuwe kluizen die in dat bereik zijn gemaakt automatisch de instellingen voor de diagnostische gegevens van de la die zijn geconfigureerd (binnen 30 minuten vanaf het moment waarop de kluis is gemaakt). Als u een diagnostische instelling wilt toevoegen aan bestaande kluizen in het bereik, kunt u een herstel taak activeren op het moment van de beleids toewijzing. Schakel het selectie vakje **een herstel taak maken**in om een herstel taak te activeren. 
+8. **Een hersteltaak maken** - Zodra het beleid is toegewezen aan een scope, worden alle nieuwe kluizen die in dat bereik zijn gemaakt, automatisch la-diagnostische instellingen geconfigureerd (binnen 30 minuten vanaf het moment van creatie van de kluis). Als u een diagnostische instelling wilt toevoegen aan bestaande kluizen in het bereik, u een hersteltaak activeren tijdens beleidstoewijzingstijd. Als u een hersteltaak wilt activeren, schakelt u het selectievakje **Een hersteltaak maken in.** 
 
-![Herstel van beleids toewijzing](./media/backup-azure-policy-configure-diagnostics/policy-assignment-remediation.png)
+![Beleidstoewijzingsherstel](./media/backup-azure-policy-configure-diagnostics/policy-assignment-remediation.png)
 
-9. Ga naar het tabblad **controleren + maken** en klik op **maken**.
+9. Navigeer naar het tabblad **Controleren+Maken** en klik op **Maken**.
 
-## <a name="under-what-conditions-will-the-remediation-task-apply-to-a-vault"></a>Onder welke voor waarden is de herstel taak van toepassing op een kluis?
+## <a name="under-what-conditions-will-the-remediation-task-apply-to-a-vault"></a>Onder welke voorwaarden is de saneringstaak van toepassing op een kluis?
 
-De herstel taak wordt toegepast op kluizen die niet-compatibel zijn volgens de definitie van het beleid. Een kluis is niet-compatibel als deze voldoet aan een van de volgende voor waarden:
+De hersteltaak wordt toegepast op kluizen die niet voldoen aan de definitie van het beleid. Een kluis voldoet niet als deze aan een van de volgende voorwaarden voldoet:
 
-* Voor de kluis is geen diagnostische instelling aanwezig.
-* Diagnostische instellingen zijn aanwezig voor de kluis, maar voor geen van de instellingen zijn **alle** resource-specifieke gebeurtenissen ingeschakeld met La as Destination en de **resource** die is geselecteerd in de wissel knop. 
+* Er is geen diagnose-instelling aanwezig voor de kluis.
+* Diagnostische instellingen zijn aanwezig voor de kluis, maar geen van de instellingen heeft **alle** resourcespecifieke gebeurtenissen ingeschakeld met LA als bestemming en **Resourcespecifiek** geselecteerd in de schakelknop. 
 
-Zelfs als een gebruiker een kluis heeft waarvoor de gebeurtenis AzureBackupReport is ingeschakeld in de AzureDiagnostics-modus (die wordt ondersteund door de back-uprapporten), is de herstel taak nog steeds van toepassing op deze [kluis, omdat](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)de resource-specifieke modus de aanbevolen manier is om Diagnostische instellingen te maken.
+Dus zelfs als een gebruiker een kluis heeft met de gebeurtenis AzureBackupReport ingeschakeld in de AzureDiagnostics-modus (die wordt ondersteund door back-uprapporten), is de hersteltaak nog steeds van toepassing op deze kluis, omdat de resourcespecifieke modus de aanbevolen manier is om diagnostische instellingen te maken, [in de toekomst.](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event)
 
-Als een gebruiker een kluis heeft met slechts een subset van de zes resource-specifieke gebeurtenissen ingeschakeld, is de herstel taak voor deze kluis van toepassing, omdat back-uprapporten alleen zoals verwacht worden uitgevoerd als alle zes specifieke resource gebeurtenissen zijn ingeschakeld.
+Als een gebruiker een kluis heeft met slechts een subset van de zes resourcespecifieke gebeurtenissen ingeschakeld, is de hersteltaak van toepassing op deze kluis, omdat back-uprapporten alleen werken zoals verwacht als alle zes resourcespecifieke gebeurtenissen zijn ingeschakeld.
 
 > [!NOTE]
 >
-> Als een kluis een bestaande diagnostische instelling heeft met een **subset van resource-specifieke** categorieën die zijn ingeschakeld, is geconfigureerd om gegevens te verzenden naar een bepaalde La-werk ruimte, zeg ' werk ruimte X ', dan kan de herstel taak niet worden uitgevoerd (alleen voor deze kluis) als de doel-La-werk ruimte die is opgegeven in de beleids toewijzing **dezelfde** ' werk ruimte X ' is. 
+> Als een kluis een bestaande diagnostische instelling heeft met een **subset van resourcespecifieke** categorieën ingeschakeld, geconfigureerd om gegevens naar een bepaalde LA Workspace te verzenden, bijvoorbeeld 'Workspace X', mislukt de hersteltaak (alleen voor die kluis) als de bestemming LA Workspace die in de beleidstoewijzing wordt **aangeboden, dezelfde** 'Workspace X' is. 
 >
->Dit komt doordat als de gebeurtenissen die door twee verschillende diagnostische instellingen op dezelfde bron zijn ingeschakeld, in sommige vorm **elkaar overlappen** , de instellingen niet dezelfde La-werk ruimte als de bestemming kunnen hebben. U moet deze fout hand matig oplossen door te navigeren naar de relevante kluis en een diagnostische instelling te configureren met een andere LA-werk ruimte als bestemming.
+>Als de gebeurtenissen die zijn ingeschakeld door twee verschillende diagnostische instellingen op dezelfde resource elkaar in een bepaalde vorm **overlappen,** kunnen de instellingen niet dezelfde LA Workspace hebben als de bestemming. U moet deze fout handmatig oplossen door naar de desbetreffende kluis te navigeren en een diagnostische instelling te configureren met een andere LA Workspace als bestemming.
 >
-> Houd er rekening mee dat de herstel taak **niet** kan mislukken als de bestaande diagnostische instelling als alleen AzureBackupReport is ingeschakeld met de werk ruimte X als de bestemming, omdat in dit geval er geen overlap is tussen de gebeurtenissen die worden ingeschakeld door de bestaande instelling en de gebeurtenissen die zijn ingeschakeld door de instelling die is gemaakt door de herstel taak.
+> Houd er rekening mee dat de hersteltaak **niet** mislukt als de bestaande diagnostische instelling als alleen AzureBackupReport is ingeschakeld met Workspace X als bestemming, omdat er in dit geval geen overlapping is tussen de gebeurtenissen die zijn ingeschakeld door de bestaande instelling en de gebeurtenissen die zijn ingeschakeld door de instelling die is gemaakt door de hersteltaak.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over het gebruik van back-uprapporten](https://docs.microsoft.com/azure/backup/configure-reports)
 * [Meer informatie over Azure Policy](https://docs.microsoft.com/azure/governance/policy/)
-* [Azure Policy gebruiken om back-ups automatisch in te scha kelen voor alle Vm's in een bereik opgeven](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+* [Azure Policy gebruiken om back-ups automatisch in te schakelen voor alle VM's in een bereik](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)

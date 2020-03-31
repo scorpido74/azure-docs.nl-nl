@@ -1,7 +1,7 @@
 ---
-title: Load Balancer TCP opnieuw instellen bij inactief in azure
+title: Load Balancer TCP Reset op Idle in Azure
 titleSuffix: Azure Load Balancer
-description: In dit artikel vindt u informatie over Azure Load Balancer met bidirectionele TCP eerste pakketten bij time-out voor inactiviteit.
+description: Lees in dit artikel meer over Azure Load Balancer met bidirectionele TCP RST-pakketten op een idle time-out.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
-ms.openlocfilehash: eac7dc3b7188131685ef630c0dc01d248e1d6a6a
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: d3d836ddea8d07a25ad09e6f19d9f17a680decd6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134784"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294405"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle"></a>Load Balancer met TCP Reset bij niet-actief
+# <a name="load-balancer-with-tcp-reset-on-idle"></a>Load Balancer met TCP Reset in Idle
 
-U kunt [Standard Load Balancer](load-balancer-standard-overview.md) gebruiken om een meer voorspel bare toepassings gedrag te maken voor uw SCENARIO'S door TCP reset in te scha kelen bij niet-actief voor een bepaalde regel. Het standaard gedrag van Load Balancer is het op de achtergrond neerzetten van stromen wanneer de time-out van een stroom niet actief is.  Als u deze functie inschakelt, worden Load Balancer bidirectionele TCP resets (TCP eerste pakket) verzonden naar time-out voor inactiviteit.  Hiermee wordt de eind punten van uw toepassing geïnformeerd dat er een time-out voor de verbinding is opgetreden. deze kan niet meer worden gebruikt.  Eind punten kunnen onmiddellijk een nieuwe verbinding tot stand brengen, indien nodig.
+U [Standard Load Balancer](load-balancer-standard-overview.md) gebruiken om een voorspelbaarder toepassingsgedrag voor uw scenario's te maken door TCP Reset in Idle in te schakelen voor een bepaalde regel. Het standaardgedrag van Load Balancer is om stromen in stilte te laten vallen wanneer de niet-actieve time-out van een stroom is bereikt.  Als u deze functie inschakelt, wordt Load Balancer veroorzaakt om bidirectionele TCP Resets (TCP RST-pakket) te verzenden bij een niet-actieve time-out.  Dit zal uw toepassingseindpunten informeren dat de verbinding een time-out heeft en niet langer bruikbaar is.  Eindpunten kunnen indien nodig direct een nieuwe verbinding tot stand brengen.
 
 ![Load Balancer TCP opnieuw instellen](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
  
-U wijzigt dit standaard gedrag en schakelt het verzenden van TCP-opnieuw instellen in op inactieve time-outwaarde voor binnenkomende NAT-regels, taakverdelings regels en [Uitgaande regels](https://aka.ms/lboutboundrules).  Wanneer dit is ingeschakeld per regel, verzendt Load Balancer bidirectionele TCP-opnieuw instellen (eerste TCP-pakketten) naar zowel client-als server eindpunten op het moment van time-out voor inactiviteit voor alle overeenkomende stromen.
+U wijzigt dit standaardgedrag en schakelt het verzenden van TCP-resets in op inactieve time-out op binnenkomende NAT-regels, regels voor taakverdeling en [uitgaande regels](https://aka.ms/lboutboundrules).  Wanneer per regel ingeschakeld, stuurt Load Balancer bidirectionele TCP Reset (TCP RST-pakketten) naar zowel client- als servereindpunten op het moment van idle time-out voor alle overeenkomende stromen.
 
-Eind punten die TCP eerste pakketten ontvangen, sluiten de overeenkomstige socket direct. Dit biedt een onmiddellijke melding aan de eind punten die de release van de verbinding heeft en toekomstige communicatie op dezelfde TCP-verbinding zal mislukken.  Toepassingen kunnen verbindingen opschonen wanneer de socket wordt gesloten en de verbindingen zo nodig opnieuw tot stand worden gebracht, zonder te wachten tot de TCP-verbinding uiteindelijk een time-out heeft.
+Eindpunten die TCP RST-pakketten ontvangen, sluiten de bijbehorende socket onmiddellijk. Dit geeft een onmiddellijke melding aan de eindpunten dat de release van de verbinding heeft plaatsgevonden en dat toekomstige communicatie op dezelfde TCP-verbinding mislukt.  Toepassingen kunnen verbindingen verwijderen wanneer de socket sluit en verbindingen indien nodig herstellen zonder te wachten tot de TCP-verbinding uiteindelijk een time-out heeft.
 
-Voor veel scenario's kan dit ertoe leiden dat de TCP-(of Application Layer) keepalives niet hoeven te worden verzonden om de time-out voor inactiviteit van een stroom te vernieuwen. 
+Voor veel scenario's kan dit de noodzaak verminderen om KEEPALives (TCP -of toepassingslaag) te verzenden om de niet-actieve time-out van een stroom te vernieuwen. 
 
-Als uw niet-actieve duur groter is dan de limieten die zijn toegestaan door de configuratie of uw toepassing een ongewenste gedrag laat zien waarbij TCP opnieuw instellen is ingeschakeld, moet u mogelijk nog steeds TCP-keepalives gebruiken (of keepalives van de toepassingslaag) om de Live van de TCP-verbindingen te bewaken.  Verder kan keepalives ook handig blijven als de verbinding op een andere locatie in het pad wordt verzonden, met name voor keepalives van de toepassingslaag.  
+Als uw inactieve duur hoger is dan die van toegestaan door de configuratie of als uw toepassing een ongewenst gedrag vertoont waarbij TCP Resets zijn ingeschakeld, moet u mogelijk nog steeds TCP-keepalives (of keepalives van toepassingslagen) gebruiken om de levendigheid van de TCP-verbindingen te controleren.  Verder kan keepalives ook nuttig blijven voor wanneer de verbinding ergens in het pad wordt geproxieerd, met name applicatielaag keepalives.  
 
-Bekijk zorgvuldig het volledige end-to-end-scenario om te bepalen of u voor delen hebt voor het inschakelen van TCP-opnieuw instellen, het aanpassen van de time-out voor inactiviteit, en als er extra stappen nodig zijn om ervoor te zorgen dat het gewenste toepassings gedrag
+Onderzoek zorgvuldig het hele end-to-end scenario om te beslissen of u baat hebt bij het inschakelen van TCP Resets, het aanpassen van de niet-actieve time-out en of extra stappen nodig zijn om het gewenste toepassingsgedrag te garanderen.
 
-## <a name="enabling-tcp-reset-on-idle-timeout"></a>TCP Reset inschakelen bij time-out inactiviteit
+## <a name="enabling-tcp-reset-on-idle-timeout"></a>TCP-reset inschakelen bij inactieve time-out
 
-Met API-versie 2018-07-01 kunt u verzen ding van bidirectionele TCP-bewerkingen voor time-out voor inactiviteit per regel inschakelen:
+Met API-versie 2018-07-01 u het verzenden van bidirectionele TCP-resets per regel inschakelen:
 
 ```json
       "loadBalancingRules": [
@@ -64,15 +64,16 @@ Met API-versie 2018-07-01 kunt u verzen ding van bidirectionele TCP-bewerkingen 
       ]
 ```
 
-## <a name="regions"></a>Beschik baarheid van regio
+## <a name="region-availability"></a><a name="regions"></a>Beschikbaarheid van regio's
 
 Beschikbaar in alle regio's.
 
 ## <a name="limitations"></a>Beperkingen
 
-- EERSTE TCP wordt alleen verzonden tijdens de TCP-verbinding in de INGESTELDe status.
+- TCP RST alleen verzonden tijdens TCP-verbinding in gevestigde status.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [Standard Load Balancer](load-balancer-standard-overview.md).
-- Meer informatie over [Uitgaande regels](load-balancer-outbound-rules-overview.md).
+- Meer informatie over [uitgaande regels](load-balancer-outbound-rules-overview.md).
+- [TCP RST configureren op niet-actieve time-out](load-balancer-tcp-idle-timeout.md)

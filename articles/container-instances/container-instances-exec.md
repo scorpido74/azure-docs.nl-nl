@@ -1,34 +1,34 @@
 ---
-title: Opdrachten uitvoeren in container exemplaar uitvoeren
+title: Opdrachten uitvoeren in lopende containerinstantie
 description: Meer informatie over het uitvoeren van een opdracht in een container die momenteel wordt uitgevoerd in Azure Container Instances
 ms.topic: article
 ms.date: 03/30/2018
 ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247200"
 ---
-# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Een opdracht uitvoeren in een actief Azure-container exemplaar
+# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Een opdracht uitvoeren in een met Azure-containerinstantie uitvoeren
 
-Azure Container Instances ondersteunt het uitvoeren van een opdracht in een actieve container. Het uitvoeren van een opdracht in een container die u al hebt gestart, is met name handig tijdens het ontwikkelen van toepassingen en het oplossen van problemen. Het meest voorkomende gebruik van deze functie is het starten van een interactieve shell, zodat u problemen kunt opsporen in een actieve container.
+Azure Container Instances biedt ondersteuning voor het uitvoeren van een opdracht in een reeds gestarte container. Het uitvoeren van een opdracht in een container die u al hebt gestart, is met name handig tijdens de ontwikkeling en probleemoplossing van een toepassing. Het meest voorkomende gebruik van deze functie is het starten van een interactieve shell zodat u fouten kunt opsporen in een container die wordt uitgevoerd.
 
 ## <a name="run-a-command-with-azure-cli"></a>Een opdracht uitvoeren met Azure CLI
 
-Een opdracht uitvoeren in een container die wordt uitgevoerd met [AZ container exec][az-container-exec] in de [Azure cli][azure-cli]:
+Voer een opdracht uit in een lopende container met [az-container exec][az-container-exec] in de [Azure CLI:][azure-cli]
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"
 ```
 
-Als u bijvoorbeeld een bash-shell in een nginx-container wilt starten, gaat u als volgt te werk:
+Bijvoorbeeld om een Bash-shell te starten in een Nginx-container:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
 ```
 
-In het onderstaande voor beeld wordt de bash-shell gestart in een actieve Linux-container en wordt een Terminal geboden waarin `ls` wordt uitgevoerd:
+In het onderstaande voorbeeld wordt de Bash-shell gelanceerd in een `ls` draaiende Linux-container, die een terminal biedt waarin wordt uitgevoerd:
 
 ```output
 root@caas-83e6c883014b427f9b277a2bba3b7b5f-708716530-2qv47:/# ls
@@ -39,7 +39,7 @@ exit
 Bye.
 ```
 
-In dit voor beeld wordt de opdracht prompt gestart in een actieve nano server-container:
+In dit voorbeeld wordt opdrachtprompt gestart in een draaiende Nanoserver-container:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
@@ -72,9 +72,9 @@ Bye.
 
 ## <a name="multi-container-groups"></a>Groepen met meerdere containers
 
-Als uw [container groep](container-instances-container-groups.md) meerdere containers heeft, zoals een toepassings container en een logboek registratie, geeft u de naam op van de container waarin de opdracht moet worden uitgevoerd met `--container-name`.
+Als uw [containergroep](container-instances-container-groups.md) meerdere containers heeft, zoals een toepassingscontainer en een logboekenzijspan, geeft `--container-name`u de naam op van de container waarin de opdracht moet worden uitgevoerd met .
 
-In de container groep *mynginx* zijn bijvoorbeeld twee containers, *nginx-app* en *logboek registratie*. Een shell op de *nginx-app-* container starten:
+Bijvoorbeeld, in de container groep *mynginx* zijn twee containers, *nginx-app* en *logger*. Een shell starten op de *nginx-app* container:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --container-name nginx-app --exec-command "/bin/bash"
@@ -82,11 +82,11 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>Beperkingen
 
-Azure Container Instances ondersteunt momenteel het starten van één proces met [AZ container exec][az-container-exec]en u kunt geen opdracht argumenten door geven. U kunt bijvoorbeeld geen opdrachten in `sh -c "echo FOO && echo BAR"`koppelen of `echo FOO`uitvoeren.
+Azure Container Instances ondersteunt momenteel het starten van één proces met [az-containerexec][az-container-exec]en u geen opdrachtargumenten doorgeven. U bijvoorbeeld geen opdrachten `sh -c "echo FOO && echo BAR"`zoals in `echo FOO`, of uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over andere hulpprogram ma's voor probleem oplossing en veelvoorkomende implementatie problemen in het oplossen van problemen [met containers en implementaties in azure container instances](container-instances-troubleshooting.md).
+Meer informatie over andere hulpprogramma's voor het oplossen van problemen met problemen met problemen met problemen met problemen met problemen met problemen [met containers en implementatie in Azure Container Instances](container-instances-troubleshooting.md).
 
 <!-- LINKS - internal -->
 [az-container-create]: /cli/azure/container#az-container-create

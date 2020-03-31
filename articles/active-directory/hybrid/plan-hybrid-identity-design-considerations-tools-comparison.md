@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456914"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Vergelijking van hulpprogramma’s voor directory-integratie voor hybride identiteit
@@ -28,7 +28,7 @@ In de afgelopen jaren hebben de hulpprogramma's voor directory-integratie zich e
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
 > [!NOTE]
-> Azure AD Connect bevat de onderdelen en functionaliteit die eerder zijn uitgebracht als Dirsync en AAD Sync. Deze hulpprogramma's worden niet meer afzonderlijk uitgebracht en alle toekomstige verbeteringen worden opgenomen in updates voor Azure AD Connect, zodat u altijd weet waar u de meest recente functionaliteit kunt ophalen.
+> Azure AD Connect bevat de componenten en functionaliteit die eerder zijn uitgebracht als Dirsync en AAD Sync. Deze hulpprogramma's worden niet langer afzonderlijk vrijgegeven en alle toekomstige verbeteringen worden opgenomen in updates voor Azure AD Connect, zodat u altijd weet waar u de meest recente functionaliteit krijgen.
 > 
 > DirSync en Azure AD Sync zijn afgeschaft. Meer informatie vindt u [hier](reference-connect-dirsync-deprecated.md).
 > 

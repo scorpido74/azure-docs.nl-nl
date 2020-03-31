@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 929bc0695bda2e64f77f7e9286e06cee787822ba
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72789392"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388964"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>AWS-VM’s (Amazon Web Services) migreren naar Azure
 
-In deze zelfstudie leert u hoe u AWS-VM’s (Amazon Web Services) naar Azure migreert met behulp van Azure Site Recovery. Wanneer u AWS EC2-instanties migreert naar Azure, worden de VM’s behandeld als fysieke on-premises computers. In deze zelfstudie leert u het volgende:
+In deze zelfstudie ziet u hoe u virtuele vm's (Amazon Web Services) migreert naar Azure VM's met Azure Site Recovery. Wanneer u AWS EC2-instanties migreert naar Azure, worden de VM’s behandeld als fysieke on-premises computers. In deze zelfstudie leert u het volgende:
+
+
+> [!TIP]
+> U moet nu de Azure Migrate-service gebruiken om AWS VM's te migreren naar Azure, in plaats van de Azure Site Recovery-service. [Meer informatie](../migrate/tutorial-migrate-physical-virtual-machines.md).
+
 
 > [!div class="checklist"]
 > * Vereisten verifiëren
@@ -31,9 +36,6 @@ In deze zelfstudie leert u hoe u AWS-VM’s (Amazon Web Services) naar Azure mig
 
 Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/pricing/free-trial/) voordat u begint.
 
-
-> [!NOTE]
-> U nu de Azure Migrate-service gebruiken om AWS-exemplaren te migreren naar Azure. [Meer informatie](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="prerequisites"></a>Vereisten
 - Zorg ervoor dat de VM’s die u wilt migreren, worden uitgevoerd met een ondersteunde versie van het besturingssysteem. Ondersteunde versies zijn onder andere: 

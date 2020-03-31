@@ -1,44 +1,43 @@
 ---
-title: Aanbieding voor Azure containers-installatie kopie publiceren | Azure Marketplace
-description: Een Azure-container aanbieding publiceren.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Azure Containers-afbeeldingsaanbieding publiceren | Azure Marketplace
+description: Een Azure-containeraanbieding publiceren.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pabutler
-ms.openlocfilehash: cf422e3d77fa0722fe10a52073cf89ab2a76dcc0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c612d2234e6c3c4e93c3c984242bb283ed85c27f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823161"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279977"
 ---
 # <a name="publish-container-offer"></a>Aanbieding voor containers publiceren
 
- Nadat u een nieuwe aanbieding hebt gemaakt met behulp van de **nieuwe aanbiedings** pagina, kunt u de aanbieding publiceren. Selecteer **publiceren** om het publicatie proces te starten.
+ Nadat u een nieuwe aanbieding hebt gemaakt via de pagina **Nieuwe aanbieding,** u de aanbieding publiceren. Selecteer **Publiceren** om het publicatieproces te starten.
 
-In het volgende diagram ziet u de belangrijkste stappen in het publicatie proces voor een aanbieding naar ' go live '.
+In het volgende diagram ziet u de belangrijkste stappen in het publicatieproces voor een aanbieding om "live te gaan".
 
-![Publicatie stappen voor de container aanbieding](./media/offer-publishing-steps.png)
+![Publicatiestappen voor containeraanbieding](./media/offer-publishing-steps.png)
 
-## <a name="detailed-description-of-publishing-steps"></a>Gedetailleerde beschrijving van de publicatie stappen
+## <a name="detailed-description-of-publishing-steps"></a>Gedetailleerde beschrijving van publicatiestappen
 
-In de volgende tabel wordt elke stap van de publicatie beschreven. Er wordt ook een geschatte tijd voor het volt ooien van elke stap gegeven.
+In de volgende tabel wordt elke publicatiestap beschreven. Een geschatte tijd om elke stap te voltooien wordt ook gegeven.
 
 
-|  **Publicatie stap**           | **Tegelijk**    | **Beschrijving**                                                            |
+|  **Publicatiestap**           | **Tijd**    | **Beschrijving**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Vereisten valideren         | 15 minuten   | De aanbiedings gegevens en aanbiedings instellingen worden gevalideerd.                        |
-| Certificering                  | 1 week | De aanbieding wordt geanalyseerd door het Azure-certificerings team. De aanbieding wordt gescand op virussen, malware, veiligheids naleving en beveiligings problemen. De aanbieding wordt gecontroleerd om te zien of deze voldoet aan alle criteria van geschiktheid. Zie [vereisten](./cpp-prerequisites.md) en [uw technische assets voorbereiden](./cpp-create-technical-assets.md)voor meer informatie. De feedback wordt gegeven als er een probleem is gevonden. |
-| Verpakking | 1 uur  | De technische activa van de aanbieding zijn verpakt voor het gebruik van klanten en de lead systemen worden geconfigureerd en ingesteld. |
-|  Uitgever afmelden             |  -        | De uiteindelijke controle en bevestiging van de uitgever voordat de aanbieding live gaat. U kunt uw aanbieding in de geselecteerde abonnementen implementeren (in de stappen voor de aanbiedings informatie) om te controleren of deze voldoet aan uw vereisten.  Selecteer **Live gaan** zodat uw aanbieding kan worden verplaatst naar de volgende stap. |
-| Verpakking                 | 1 uur | Het voltooide aanbod wordt gerepliceerd in de Marketplace-productie systemen en-regio's. | 
-| Live                           | vier dagen |De aanbieding wordt vrijgegeven, gerepliceerd naar de vereiste regio's en beschikbaar gesteld voor het publiek. |
+| Vereisten valideren         | 15 min   | Aanbiedingsinformatie en aanbiedingsinstellingen worden gevalideerd.                        |
+| Certificering                  | Eén week | De aanbieding wordt geanalyseerd door het Azure Certification Team. De aanbieding wordt gescand op virussen, malware, naleving van de veiligheid en beveiligingsproblemen. De aanbieding wordt gecontroleerd om te zien of deze voldoet aan alle geschiktheidscriteria. Zie voor meer informatie [voorwaarden](./cpp-prerequisites.md) en [het voorbereiden van uw technische activa.](./cpp-create-technical-assets.md) Er wordt feedback gegeven als er een probleem wordt gevonden. |
+| Verpakking | 1 uur  | De technische assets van de aanbieding zijn verpakt voor gebruik door de klant en de leadsystemen zijn geconfigureerd en ingesteld. |
+|  Afmelden voor uitgevers             |  -        | Definitieve beoordeling en bevestiging van uitgevers voordat de aanbieding live gaat. U uw aanbieding implementeren in de geselecteerde abonnementen (in de stappen voor aanbiedingsinformatie) om te controleren of deze aan al uw vereisten voldoet.  Selecteer **Live gaan** zodat uw aanbieding naar de volgende stap kan gaan. |
+| Verpakking                 | 1 uur | Het voltooide aanbod wordt gerepliceerd in marktproductiesystemen en -regio's. | 
+| Live                           | 4 dagen |Aanbieding wordt vrijgegeven, gerepliceerd naar de vereiste regio's en beschikbaar gesteld aan het publiek. |
 
-Sta Maxi maal 10 werk dagen toe om het publicatie proces te volt ooien en de aanbieding wordt vrijgegeven. Nadat u klaar bent met het publicatie proces, wordt uw container aanbod weer gegeven in de [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
+Geef maximaal 10 werkdagen de tijd om het publicatieproces te voltooien en de aanbieding wordt vrijgegeven. Nadat u het publicatieproces hebt voltooid, wordt uw containeraanbieding weergegeven in de [Microsoft Azure Marketplace.](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een bestaande container aanbieding op Azure Marketplace bijwerken](./cpp-update-existing-offer.md)
+[Een bestaande containeraanbieding bijwerken op Azure Marketplace](./cpp-update-existing-offer.md)

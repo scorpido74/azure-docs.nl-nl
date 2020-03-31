@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c24be648e4ca1433c7c2af3d659bf4520a7a188c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53036a43cbb0fe3c3a1e61f7124fe7dcbef228f3
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457284"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388930"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault integreren met Azure Private Link
 
@@ -57,7 +57,7 @@ Nadat u de basisbeginselen van de toetskluis hebt geconfigureerd, selecteert u h
 1. Laat de optie "integreren met de private zone DNS" ongewijzigd.  
 1. Selecteer 'Ok'.
 
-    ![Installatiekopie](./media/private-link-service-2.png)
+    ![Installatiekopie](./media/private-link-service-8.png)
  
 U nu het geconfigureerde privéeindpunt zien. U hebt nu de optie om dit privéeindpunt te verwijderen en te bewerken. Selecteer de knop 'Controleren + maken' en maak de sleutelkluis. Het duurt 5-10 minuten voordat de implementatie is voltooid. 
 

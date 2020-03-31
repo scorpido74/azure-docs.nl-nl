@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Workteam configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Workteam.
+title: 'Zelfstudie: Workteam configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor Workteam.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,147 +16,147 @@ ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
 ms.openlocfilehash: e9b1e93cf543836b282525c53756752630d5e4f6
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062781"
 ---
-# <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Zelf studie: Workteam configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-workteam--for-automatic-user-provisioning"></a>Zelfstudie: Workteam configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Workteam en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Workteam.
+Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Workteam en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en de-provisionen van gebruikers en/of groepen naar Workteam.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
 * Een Azure AD-tenant.
-* [Een Workteam-Tenant](https://workte.am/pricing.html)
-* Een gebruikers account in Workteam met beheerders machtigingen.
+* [Een Workteam-huurder](https://workte.am/pricing.html)
+* Een gebruikersaccount in Workteam met beheerdersmachtigingen.
 
 ## <a name="assigning-users-to-workteam"></a>Gebruikers toewijzen aan Workteam 
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot Workteam. Eenmaal besloten, kunt u deze gebruikers en/of groepen toewijzen aan Workteam door de volgende instructies te volgen:
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
+Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang tot Workteam nodig hebben. Zodra u hebt besloten, u deze gebruikers en/of groepen toewijzen aan Workteam door de instructies hier te volgen:
+* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-workteam"></a>Belang rijke tips voor het toewijzen van gebruikers aan Workteam 
+## <a name="important-tips-for-assigning-users-to-workteam"></a>Belangrijke tips voor het toewijzen van gebruikers aan Workteam 
 
-* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Workteam om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het wordt aanbevolen dat één Azure AD-gebruiker aan Workteam wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Workteam, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker aan Workteam toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
 
-## <a name="setup-workteam--for-provisioning"></a>Workteam instellen voor inrichting
+## <a name="setup-workteam--for-provisioning"></a>Installatie-werkteam voor inrichten
 
-Voordat u Workteam configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op Workteam.
+Voordat u Workteam configureert voor automatische gebruikersvoorziening met Azure AD, moet u SCIM-inrichting op Workteam inschakelen.
 
-1. Meld u aan bij [Workteam](https://app.workte.am/account/signin). Klik op **organisatie-instellingen** > **instellingen**.
+1. Log in bij [Workteam](https://app.workte.am/account/signin). Klik **op Instellingen voor organisatie** > **- INSTELLINGEN**.
 
     ![Workteam](media/workteam-provisioning-tutorial/settings.png)
 
-2. Schuif naar beneden en schakel de inrichtings mogelijkheden van Workteam in.
+2. Schuif naar beneden en schakel de inrichtingsmogelijkheden van Workteam in.
 
     ![Workteam](media/workteam-provisioning-tutorial/icon.png)
 
-3. Kopieer de **basis-URL** en **Bearer-token**. Deze waarden worden ingevoerd in het veld **Tenant-URL**en **geheim token** op het tabblad inrichten van uw Workteam-toepassing in de Azure Portal.
+3. Kopieer de **basisurl** en **het token aan toonder.** Deze waarden worden ingevoerd in het **veld URL van tenant**en geheim **token** op het tabblad Inrichten van uw Workteam-toepassing in de Azure-portal.
 
     ![Workteam](media/workteam-provisioning-tutorial/scim.png)
 
 
 ## <a name="add-workteam--from-the-gallery"></a>Workteam toevoegen vanuit de galerie
 
-Als u Workteam wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u Workteam van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Als u Workteam wilt configureren voor automatische gebruikersvoorziening met Azure AD, moet u Workteam uit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om Workteam toe te voegen vanuit de Azure AD-toepassings galerie:**
+**Voer de volgende stappen uit om Workteam toe te voegen vanuit de Azure AD-toepassingsgalerie:**
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Workteam**in het zoekvak, selecteer **Workteam** in het deel venster resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Voer in het zoekvak **Workteam**in, selecteer **Workteam** in het deelvenster Resultaten en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
-    ![Workteam in de lijst met resultaten](common/search-new-app.png)
+    ![Workteam in de resultatenlijst](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-workteam"></a>Automatische gebruikers inrichting configureren voor Workteam  
+## <a name="configuring-automatic-user-provisioning-to-workteam"></a>Automatische gebruikersvoorziening configureren voor Workteam  
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Workteam te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie u de Azure AD-inrichtingsservice configureren om gebruikers en/of groepen in Workteam te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Workteam, gevolgd door de instructies in de [Workteam-zelf studie voor eenmalige aanmelding](workteam-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
+> U er ook voor kiezen om SAML-gebaseerde eenmalige aanmelding voor Workteam in te schakelen, volgens de instructies in de [zelfstudie workteam Single sign-on](workteam-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren
 
-### <a name="to-configure-automatic-user-provisioning-for-workteam--in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Workteam in azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-workteam--in-azure-ad"></a>Ga als lid van het werkteam voor automatische gebruikersvoorziening voor Workteam:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Workteam**.
+2. Selecteer **Workteam**in de lijst met toepassingen .
 
-    ![De koppeling Workteam in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Workteam in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5. In het gedeelte beheerders referenties voert u de waarden van de **basis-URL** en **Bearer-tokens** in die respectievelijk eerder zijn opgehaald in de **Tenant-URL** en het **geheime token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Workteam. Als de verbinding mislukt, zorg er dan voor dat uw Workteam-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Voer onder de sectie Beheerdersreferenties de URL van de **basis** en **de waarden van het token aan toonder** die eerder zijn opgehaald in respectievelijk **tenant-URL** en **Secret Token.** Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Workteam. Als de verbinding mislukt, moet u ervoor zorgen dat uw Workteam-account beheerdersmachtigingen heeft en het opnieuw proberen.
 
-    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Workteam**.
+8. Selecteer Azure **Active Directory-gebruikers synchroniseren met workteam**onder de sectie **Toewijzingen** .
 
-    ![Workteam-gebruikers toewijzingen](media/workteam-provisioning-tutorial/usermapping.png)
+    ![Gebruikerstoewijzingen van workteam](media/workteam-provisioning-tutorial/usermapping.png)
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Workteam in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Workteam voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Workteam in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Workteam te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Workteam-gebruikers kenmerken](media/workteam-provisioning-tutorial/userattribute.png)
+    ![Gebruikerskenmerken van workteam](media/workteam-provisioning-tutorial/userattribute.png)
 
-11. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+11. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
-12. Als u de Azure AD-inrichtings service voor **Workteam wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+12. Als u de Azure AD-inrichtingsservice voor Workteam wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-13. Definieer de gebruikers en/of groepen die u wilt inrichten voor Workteam door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+13. Definieer de gebruikers en/of groepen die u aan Workteam wilt inrichten door de gewenste waarden in **Bereik** te kiezen in de sectie **Instellingen.**
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingskader](common/provisioning-scope.png)
 
-14. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+14. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan bij de volgende synchronisaties. Voor meer informatie over hoe lang het duurt voor het inrichten van gebruikers en/of groepen, raadpleegt u [hoe lang het duurt om gebruikers](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)in te richten.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan latere synchronisaties. Zie [Hoe lang het duurt voordat](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)gebruikers en/of groepen worden ingericht voor meer informatie over hoe lang het duurt voordat gebruikers zijn voorzien.
 
-U kunt de **huidige status** sectie gebruiken om de voortgang te controleren en koppelingen naar uw inrichtings activiteiten rapport te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Workteam. Zie [de status van gebruikers inrichten controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie. Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor informatie over het vastleggen van Azure AD-inrichtings Logboeken.
+U de sectie **Huidige status** gebruiken om de voortgang te controleren en koppelingen naar uw installatieactiviteitsrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op Workteam. Zie [De status van gebruikersinrichting controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)voor meer informatie . Zie [Rapportage over automatische gebruikersaccountinrichting](../app-provisioning/check-status-user-account-provisioning.md)voor het lezen van de azure AD-inrichtingslogboeken.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)

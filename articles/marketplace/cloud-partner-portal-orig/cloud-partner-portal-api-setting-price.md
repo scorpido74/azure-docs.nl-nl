@@ -1,30 +1,29 @@
 ---
-title: Prijzen voor aanbiedingen van virtuele machines | Azure Marketplace
-description: Hierin worden de drie methoden beschreven voor het opgeven van de prijs van aanbiedingen van virtuele machines.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Prijzen voor aanbiedingen voor virtuele machines | Azure Marketplace
+description: Legt de drie methoden voor het specificeren van de prijsstelling van virtuele machine aanbiedingen.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827324"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280436"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Prijzen voor virtuele machine-aanbiedingen
 ==================================
 
-Er zijn drie manieren om prijzen voor aanbiedingen van virtuele machines op te geven: aangepaste prijzen voor kernen, tarieven per kern en prijs informatie voor spread sheets.
+Er zijn drie manieren om prijzen voor aanbiedingen van virtuele machines op te geven: aangepaste basisprijzen, prijzen per core en spreadsheetprijzen.
 
 
-<a name="customized-core-pricing"></a>Aangepaste prijzen voor kernen
+<a name="customized-core-pricing"></a>Aangepaste kernprijzen
 -----------------------
 
-Prijzen zijn specifiek voor elke regio en kern combinatie. Elke regio in de lijst verkopen moet worden opgegeven in de **virtualMachinePricing**/**regionPrices** sectie van de definitie.  Gebruik de juiste valuta codes voor elke [regio](#regions) in uw aanvraag.  In het volgende voor beeld ziet u deze vereisten:
+Prijzen zijn specifiek voor elke regio en kerncombinatie. Elke regio in de verkooplijst moet worden opgegeven in het gedeelte **virtualMachinePricingPrices**/**regionPrices** van de definitie.  Gebruik de juiste valutacodes voor elke [regio](#regions) in uw aanvraag.  In het volgende voorbeeld worden de volgende vereisten aangetoond:
 
 ``` json
     "virtualMachinePricing": 
@@ -67,10 +66,10 @@ Prijzen zijn specifiek voor elke regio en kern combinatie. Elke regio in de lijs
 ```
 
 
-<a name="per-core-pricing"></a>Prijzen per kern
+<a name="per-core-pricing"></a>Prijzen per core
 ----------------
 
-In dit geval geven de uitgevers één prijs op in USD voor de SKU en worden alle overige prijzen automatisch gegenereerd. De prijs per kern is opgegeven in de **para meter van de aanvraag** .
+In dit geval geven de uitgevers één prijs in USD op voor hun SKU en worden alle andere prijzen automatisch gegenereerd. De prijs per kern wordt opgegeven in de **enkele** parameter in de aanvraag.
 
 ``` json
      "virtualMachinePricing": 
@@ -85,10 +84,10 @@ In dit geval geven de uitgevers één prijs op in USD voor de SKU en worden alle
 ```
 
 
-<a name="spreadsheet-pricing"></a>Prijzen van spread sheet
+<a name="spreadsheet-pricing"></a>Spreadsheetprijzen
 -------------------
 
-De uitgever kan ook hun prijs werk blad uploaden naar een tijdelijke opslag locatie en vervolgens de URI in de aanvraag, zoals andere bestands artefacten, toevoegen. Het werk blad wordt vervolgens geüpload, vertaald om het opgegeven prijs schema te evalueren en de aanbieding wordt met de prijs informatie bijgewerkt. Bij volgende GET-aanvragen voor de aanbieding worden de spread sheet-URI en de geëvalueerde prijzen voor de regio geretourneerd.
+De uitgever kan ook hun prijsspreadsheet uploaden naar een tijdelijke opslaglocatie en vervolgens de URI opnemen in het verzoek zoals andere bestandsartefacten. De spreadsheet wordt vervolgens geüpload, vertaald om het opgegeven prijsschema te evalueren en werkt de aanbieding ten slotte bij met de prijsinformatie. Volgende GET-aanvragen voor de aanbieding retourneren de spreadsheet URI en de geëvalueerde prijzen voor de regio.
 
 ``` json
      "virtualMachinePricing": 
@@ -101,89 +100,89 @@ De uitgever kan ook hun prijs werk blad uploaden naar een tijdelijke opslag loca
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>Nieuwe kern grootten toegevoegd op 7/2/2019
+<a name="new-core-sizes-added-on-722019"></a>Nieuwe kernmaten toegevoegd op 7/2/2019
 ---------------------------
 
-VM-uitgevers zijn op 2 juli 2019 op de hoogte gebracht van de toevoeging van nieuwe prijzen voor nieuwe Azure virtual machine-grootten (op basis van het aantal kern geheugens).  De nieuwe prijzen gelden voor de belangrijkste grootten 10, 44, 48, 60, 120, 208 en 416.  Voor bestaande virtuele machines zijn de nieuwe prijzen voor deze kern geheugens automatisch berekend op basis van de huidige prijzen.  Uitgevers moeten tot 1 augustus 2019 de extra prijzen bekijken en de gewenste wijzigingen aanbrengen.  Na deze datum worden de automatisch berekende prijzen voor deze nieuwe kern groottes van kracht als u de uitgever nog niet opnieuw hebt gepubliceerd.
+VM-uitgevers werden op 2 juli 2019 op de hoogte gebracht van de toevoeging van nieuwe prijzen voor nieuwe Azure-virtuele machineformaten (op basis van het aantal cores).  De nieuwe prijzen zijn voor de kernmaten 10, 44, 48, 60, 120, 208 en 416.  Voor bestaande VM-aanbiedingen werden nieuwe prijzen voor deze kernen-maten automatisch berekend op basis van de huidige prijzen.  Uitgevers hebben tot 1 augustus 2019 de tijd om de extra prijzen te bekijken en eventuele gewenste wijzigingen door te voeren.  Na deze datum, indien deze nog niet opnieuw is gepubliceerd door de uitgever, worden de automatisch berekende prijzen voor deze nieuwe kerngroottes van kracht.
 
 
 <a name="regions"></a>Regio's
 -------
 
-In de volgende tabel ziet u de verschillende regio's die u kunt opgeven voor aangepaste kern prijzen en de bijbehorende valuta codes.
+In de volgende tabel worden de verschillende regio's weergegeven die u opgeven voor aangepaste basisprijzen en de bijbehorende valutacodes.
 
-| **Regio** | **Naam**             | **Valuta code** |
+| **Regio** | **Naam**             | **Valutacode** |
 |------------|----------------------|-------------------|
-| DZ         | Algerije              | DZD               |
+| DZ         | Algerije              | DZD (DZD)               |
 | AR         | Argentinië            | ARS               |
 | AU         | Australië            | AUD               |
 | AT         | Oostenrijk              | EUR               |
-| BH         | Bahrein              | BHD               |
+| BH         | Bahrein              | Bhd               |
 | BY         | Belarus              | RUB               |
 | BE         | België              | EUR               |
 | BR         | Brazilië               | USD               |
-| BG         | Bulgarije             | BGN               |
+| BG         | Bulgarije             | Bgn               |
 | CA         | Canada               | CAD               |
-| CL         | Chili                | CLP               |
-| CO         | Colombia             | BLEK               |
-| CR         | Costa Rica           | CRC               |
-| HR         | Kroatië              | HRK               |
+| CL         | Chili                | Clp               |
+| CO         | Colombia             | Cop               |
+| CR         | Costa Rica           | Crc               |
+| HR         | Kroatië              | Hrk               |
 | CY         | Cyprus               | EUR               |
-| CZ         | Tsjechië       | CZK               |
+| CZ         | Tsjechië       | Czk               |
 | DK         | Denemarken              | DKK               |
 | DO         | Dominicaanse Republiek   | USD               |
 | EC         | Ecuador              | USD               |
-| EG         | Egypte                | EGP               |
+| EG         | Egypte                | Egp               |
 | SV         | El Salvador          | USD               |
 | EE         | Estland              | EUR               |
 | FI         | Finland              | EUR               |
 | FR         | Frankrijk               | EUR               |
 | DE         | Duitsland              | EUR               |
 | GR         | Griekenland               | EUR               |
-| GT         | Guatemala            | GTQ               |
-| HK         | Hong Kong SAR        | HKD               |
-| HU         | Hongarije              | HUF               |
-| IS         | IJsland              | SCHIJFTOEWIJZING               |
+| GT         | Guatemala            | GTQ (GTQ)               |
+| HK         | Hongkong SAR        | HKD               |
+| HU         | Hongarije              | Huf               |
+| IS         | IJsland              | Isk               |
 | IN         | India                | INR               |
 | Id         | Indonesië            | IDR               |
 | IE         | Ierland              | EUR               |
-| IL         | Israël               | ILS               |
+| IL         | Israël               | Ils               |
 | IT         | Italië                | EUR               |
 | JP         | Japan                | JPY               |
-| JO         | Jordanië               | JOD               |
-| KZ         | Kazachstan           | KZT               |
-| KE         | Kenia                | KES               |
+| JO         | Jordanië               | Jod               |
+| KZ         | Kazachstan           | KZT (KZT)               |
+| KE         | Kenia                | Kes               |
 | KR         | Korea                | KRW               |
-| KW         | Koeweit               | KWD               |
+| KW         | Koeweit               | Kwd               |
 | LV         | Letland               | EUR               |
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litouwen            | EUR               |
 | LU         | Luxemburg           | EUR               |
-| MK         | Noord-Macedonië      | MKD               |
+| MK         | Noord-Macedonië      | MKD (MKD)               |
 | MY         | Maleisië             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Mexico               | MXN               |
-| VERVOLG         | Montenegro           | EUR               |
-| MA         | Marokko              | MAD               |
+| ME         | Montenegro           | EUR               |
+| MA         | Marokko              | Mad               |
 | NL         | Nederland          | EUR               |
 | NZ         | Nieuw-Zeeland          | NZD               |
-| NG         | Nigeria              | NGN               |
+| NG         | Nigeria              | Ngn               |
 | NO         | Noorwegen               | NOK               |
-| OM         | Oman                 | OMR               |
-| PK         | Pakistan             | PKR               |
+| OM         | Oman                 | Omr               |
+| PK         | Pakistan             | Pkr               |
 | PA         | Panama               | USD               |
-| PY         | Paraguay             | PYG               |
-| PE         | Peru                 | Tik               |
+| PY         | Paraguay             | Pyg               |
+| PE         | Peru                 | Pen               |
 | PH         | Filipijnen          | PHP               |
-| PL         | Polen               | PLN               |
+| PL         | Polen               | Pln               |
 | PT         | Portugal             | EUR               |
 | PR         | Puerto Rico          | USD               |
-| QA         | Qatar                | QAR               |
-| RO         | Roemenië              | LOEK               |
+| QA         | Qatar                | Qar               |
+| RO         | Roemenië              | Ron               |
 | RU         | Rusland               | RUB               |
 | SA         | Saoedi-Arabië         | SAR               |
-| RS         | Servië               | RSD               |
-| SG         | Singapore            | SGD               |
+| RS         | Servië               | Rsd               |
+| SG         | Singapore            | SGA               |
 | SK         | Slowakije             | EUR               |
 | SI         | Slovenië             | EUR               |
 | ZA         | Zuid-Afrika         | ZAR               |
@@ -192,14 +191,14 @@ In de volgende tabel ziet u de verschillende regio's die u kunt opgeven voor aan
 | SE         | Zweden               | SEK               |
 | CH         | Zwitserland          | CHF               |
 | TW         | Taiwan               | TWD               |
-| TH         | Thailand             | THB               |
-| TT         | Trinidad en Tobago  | TTD               |
-| TN         | Tunesië              | TND               |
+| TH         | Thailand             | Thb               |
+| TT         | Trinidad en Tobago  | Ttd               |
+| TN         | Tunesië              | Tnd               |
 | TR         | Turkije               | TRY               |
-| UA         | Oekraïne              | UAH               |
+| UA         | Oekraïne              | Uah               |
 | AE         | Verenigde Arabische Emiraten | EUR               |
 | GB         | Verenigd Koninkrijk       | GBP               |
 | VS         | Verenigde Staten        | USD               |
-| UY         | Uruguay              | UYU               |
+| UY         | Uruguay              | UYU UYU               |
 | VE         | Venezuela            | USD               |
 |  |  |  |

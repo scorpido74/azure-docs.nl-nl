@@ -1,28 +1,28 @@
 ---
-title: Beperkingen-Azure Database for MariaDB
-description: In dit artikel worden beperkingen beschreven in Azure Database for MariaDB, zoals het aantal opties voor de verbinding en de opslag engine.
+title: Beperkingen - Azure-database voor MariaDB
+description: In dit artikel worden beperkingen beschreven in Azure Database voor MariaDB, zoals het aantal verbindings- en opslagengineopties.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/9/2020
-ms.openlocfilehash: c982181dee34a7eb0715d5e1271ef5ed794f3809
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.date: 3/18/2020
+ms.openlocfilehash: bb907ee59891e5a9a1ffc9c8c6eee34d3e71ad2f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79296741"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531937"
 ---
-# <a name="limitations-in-azure-database-for-mariadb"></a>Beperkingen in Azure Database for MariaDB
-De volgende secties beschrijven capaciteit, ondersteuning voor de opslag-engine, bevoegdheden ondersteuning, gegevens manipuleren instructie ondersteuning en functionele limieten in de database-service.
+# <a name="limitations-in-azure-database-for-mariadb"></a>Beperkingen in Azure-database voor MariaDB
+In de volgende secties worden capaciteit, ondersteuning van de opslagengine, ondersteuning voor bevoegdheden, ondersteuning voor gegevensmanipulatie-instructieen en functionele limieten in de databaseservice beschreven.
 
-## <a name="server-parameters"></a>Server parameters
+## <a name="server-parameters"></a>Serverparameters
 
-De minimum-en maximum waarden van verschillende populaire server parameters worden bepaald door de prijs categorie en vCores. Raadpleeg de onderstaande tabellen voor limieten.
+De minimum- en maximumwaarden van verschillende populaire serverparameters worden bepaald door de prijscategorie en vCores. Raadpleeg de onderstaande tabellen voor limieten.
 
 ### <a name="max_connections"></a>max_connections
 
-|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijsniveau**|**vCore(s)**|**Standaardwaarde**|**Min waarde**|**Maximale waarde**|
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|
@@ -38,24 +38,24 @@ De minimum-en maximum waarden van verschillende populaire server parameters word
 |Geoptimaliseerd geheugen|16|5000|10|10.000|
 |Geoptimaliseerd geheugen|32|10.000|10|20.000|
 
-Wanneer verbindingen de limiet overschrijdt, wordt de volgende fout:
-> Fout 1040 (08004): Te veel verbindingen
+Wanneer verbindingen de limiet overschrijden, ontvangt u mogelijk de volgende fout:
+> FOUT 1040 (08004): Te veel verbindingen
 
 > [!IMPORTANT]
-> Voor de beste ervaring raden we u aan een Pooler voor verbindingen te gebruiken zoals ProxySQL om verbindingen efficiënt te beheren.
+> Voor de beste ervaring raden we u aan een verbindingspooler zoals ProxySQL te gebruiken om verbindingen efficiënt te beheren.
 
-Het maken van nieuwe client verbindingen met MariaDB kost tijd en wanneer de verbinding tot stand is gebracht, nemen deze verbindingen database bronnen in beslag, zelfs wanneer ze niet actief zijn De meeste toepassingen aanvragen een groot aantal korte, langdurige verbindingen, waardoor deze situatie wordt beperkt. Het resultaat is minder beschik bare resources voor uw werkelijke workload, waardoor de prestaties afnemen. Een verbindings groep waarmee niet-actieve verbindingen worden verminderd en bestaande verbindingen opnieuw worden gebruikt, kunt u dit voor komen. Ga naar onze [blog post](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)voor meer informatie over het instellen van ProxySQL.
+Het maken van nieuwe clientverbindingen met MariaDB kost tijd en eenmaal tot stand gebracht, deze verbindingen bezetten database bronnen, zelfs wanneer idle. De meeste toepassingen vragen om veel kortstondige verbindingen, die deze situatie verbindingen. Het resultaat is minder resources beschikbaar voor uw werkelijke werklast, wat leidt tot verminderde prestaties. Een verbindingspooler die niet-actieve verbindingen vermindert en bestaande verbindingen opnieuw gebruikt, helpt dit te voorkomen. Ga voor meer informatie over het instellen van ProxySQL naar onze [blogpost.](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)
 
-## <a name="query_cache_size"></a>query_cache_size
+### <a name="query_cache_size"></a>query_cache_size
 
-De query cache is standaard uitgeschakeld. Configureer de para meter `query_cache_type` om de query-cache in te scha kelen. 
+De querycache is standaard uitgeschakeld. Als u de querycache `query_cache_type` wilt inschakelen, configureert u de parameter. 
 
-Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) voor meer informatie over deze para meter.
+Bekijk de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) voor meer informatie over deze parameter.
 
-|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijsniveau**|**vCore(s)**|**Standaardwaarde**|**Min waarde**|**Maximale waarde**|
 |---|---|---|---|---|
-|Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
-|Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Basic|1|Niet configureerbaar in basislaag|N.v.t.|N.v.t.|
+|Basic|2|Niet configureerbaar in basislaag|N.v.t.|N.v.t.|
 |Algemeen gebruik|2|0|0|16777216|
 |Algemeen gebruik|4|0|0|33554432|
 |Algemeen gebruik|8|0|0|67108864|
@@ -68,14 +68,14 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 |Geoptimaliseerd geheugen|16|0|0|134217728|
 |Geoptimaliseerd geheugen|32|0|0|134217728|
 
-## <a name="sort_buffer_size"></a>sort_buffer_size
+### <a name="sort_buffer_size"></a>sort_buffer_size
 
-Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) voor meer informatie over deze para meter.
+Bekijk de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) voor meer informatie over deze parameter.
 
-|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijsniveau**|**vCore(s)**|**Standaardwaarde**|**Min waarde**|**Maximale waarde**|
 |---|---|---|---|---|
-|Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
-|Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Basic|1|Niet configureerbaar in basislaag|N.v.t.|N.v.t.|
+|Basic|2|Niet configureerbaar in basislaag|N.v.t.|N.v.t.|
 |Algemeen gebruik|2|524288|32768|4194304|
 |Algemeen gebruik|4|524288|32768|8388608|
 |Algemeen gebruik|8|524288|32768|16777216|
@@ -88,14 +88,14 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 |Geoptimaliseerd geheugen|16|524288|32768|33554432|
 |Geoptimaliseerd geheugen|32|524288|32768|33554432|
 
-## <a name="join_buffer_size"></a>join_buffer_size
+### <a name="join_buffer_size"></a>join_buffer_size
 
-Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) voor meer informatie over deze para meter.
+Bekijk de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) voor meer informatie over deze parameter.
 
-|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijsniveau**|**vCore(s)**|**Standaardwaarde**|**Min waarde**|**Maximale waarde**|
 |---|---|---|---|---|
-|Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
-|Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Basic|1|Niet configureerbaar in basislaag|N.v.t.|N.v.t.|
+|Basic|2|Niet configureerbaar in basislaag|N.v.t.|N.v.t.|
 |Algemeen gebruik|2|262144|128|268435455|
 |Algemeen gebruik|4|262144|128|536870912|
 |Algemeen gebruik|8|262144|128|1073741824|
@@ -108,14 +108,14 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 |Geoptimaliseerd geheugen|16|262144|128|4294967295|
 |Geoptimaliseerd geheugen|32|262144|128|4294967295|
 
-## <a name="max_heap_table_size"></a>max_heap_table_size
+### <a name="max_heap_table_size"></a>max_heap_table_size
 
-Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) voor meer informatie over deze para meter.
+Bekijk de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) voor meer informatie over deze parameter.
 
-|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijsniveau**|**vCore(s)**|**Standaardwaarde**|**Min waarde**|**Maximale waarde**|
 |---|---|---|---|---|
-|Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
-|Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Basic|1|Niet configureerbaar in basislaag|N.v.t.|N.v.t.|
+|Basic|2|Niet configureerbaar in basislaag|N.v.t.|N.v.t.|
 |Algemeen gebruik|2|16777216|16384|268435455|
 |Algemeen gebruik|4|16777216|16384|536870912|
 |Algemeen gebruik|8|16777216|16384|1073741824|
@@ -128,14 +128,14 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 |Geoptimaliseerd geheugen|16|16777216|16384|4294967295|
 |Geoptimaliseerd geheugen|32|16777216|16384|4294967295|
 
-## <a name="tmp_table_size"></a>tmp_table_size
+### <a name="tmp_table_size"></a>tmp_table_size
 
-Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) voor meer informatie over deze para meter.
+Bekijk de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) voor meer informatie over deze parameter.
 
-|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijsniveau**|**vCore(s)**|**Standaardwaarde**|**Min waarde**|**Maximale waarde**|
 |---|---|---|---|---|
-|Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
-|Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
+|Basic|1|Niet configureerbaar in basislaag|N.v.t.|N.v.t.|
+|Basic|2|Niet configureerbaar in basislaag|N.v.t.|N.v.t.|
 |Algemeen gebruik|2|16777216|1024|67108864|
 |Algemeen gebruik|4|16777216|1024|134217728|
 |Algemeen gebruik|8|16777216|1024|268435456|
@@ -148,28 +148,28 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 |Geoptimaliseerd geheugen|16|16777216|1024|1073741824|
 |Geoptimaliseerd geheugen|32|16777216|1024|1073741824|
 
-## <a name="storage-engine-support"></a>Ondersteuning voor de opslag-engine
+## <a name="storage-engine-support"></a>Ondersteuning voor opslagmotoren
 
 ### <a name="supported"></a>Ondersteund
-- [InnoDB](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
-- [GEHEUGENMETABASE](https://mariadb.com/kb/en/library/memory-storage-engine/)
+- [Innodb](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
+- [Geheugen](https://mariadb.com/kb/en/library/memory-storage-engine/)
 
 ### <a name="unsupported"></a>Niet ondersteund
-- [MyISAM](https://mariadb.com/kb/en/library/myisam-storage-engine/)
-- [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
-- [FAXBERICHTEN](https://mariadb.com/kb/en/library/archive/)
+- [Myisam](https://mariadb.com/kb/en/library/myisam-storage-engine/)
+- [ZWARTGAT](https://mariadb.com/kb/en/library/blackhole/)
+- [Archief](https://mariadb.com/kb/en/library/archive/)
 
-## <a name="privilege-support"></a>Ondersteuning van bevoegdheden
+## <a name="privilege-support"></a>Ondersteuning voor bevoegdheden
 
 ### <a name="unsupported"></a>Niet ondersteund
-- DBA rol: veel parameters van de server en instellingen kunnen per ongeluk serverprestaties slechter of ACID-eigenschappen van de DBMS negatief moet worden gemaakt. Als zodanig wilt behouden de integriteit van de service en SLA op het productniveau van een, wordt deze service niet weergegeven de DBA-rol. De standaard-gebruikersaccount, die is gemaakt wanneer een nieuwe database-exemplaar wordt gemaakt, kan die gebruiker voor het uitvoeren van de meeste DDL en DML-instructies in de beheerde database-instantie.
-- SUPER bevoegdheid: een soort gelijke [Super bevoegdheid](https://mariadb.com/kb/en/library/grant/#global-privileges) is ook beperkt.
-- DEFINE: vereist Super privileges om te maken en beperkt. Als u gegevens importeert met behulp van een back-up, verwijdert u de `CREATE DEFINER` opdrachten hand matig of met behulp van de `--skip-definer` opdracht bij het uitvoeren van een mysqldump.
+- DBA-rol: Veel serverparameters en -instellingen kunnen per ongeluk de serverprestaties degraderen of zuureigenschappen van de DBMS tenietdoen. Als zodanig, om de service-integriteit en SLA op productniveau te behouden, legt deze service de Rol van DBA niet bloot. Het standaardgebruikersaccount, dat wordt opgebouwd wanneer een nieuwe database-instantie wordt gemaakt, stelt die gebruiker in staat om de meeste DDL- en DML-instructies uit te voeren in de beheerde database-instantie.
+- SUPER privilege: Ook [SUPER privilege](https://mariadb.com/kb/en/library/grant/#global-privileges) is ook beperkt.
+- DEFINER: Vereist superprivileges om te maken en is beperkt. Als u gegevens importeert met `CREATE DEFINER` een back-up, `--skip-definer` verwijdert u de opdrachten handmatig of gebruikt u de opdracht bij het uitvoeren van een mysqldump.
 
-## <a name="data-manipulation-statement-support"></a>Beheerondersteuning-instructie bewerken
+## <a name="data-manipulation-statement-support"></a>Ondersteuning voor gegevensmanipulatie-instructie
 
 ### <a name="supported"></a>Ondersteund
-- `LOAD DATA INFILE` wordt ondersteund, maar de para meter `[LOCAL]` moet worden opgegeven en worden omgeleid naar een UNC-pad (Azure-opslag gekoppeld aan SMB).
+- `LOAD DATA INFILE`wordt ondersteund, maar `[LOCAL]` de parameter moet worden opgegeven en naar een UNC-pad worden gericht (Azure-opslag die is gemonteerd via SMB).
 
 ### <a name="unsupported"></a>Niet ondersteund
 - `SELECT ... INTO OUTFILE`
@@ -177,28 +177,28 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 ## <a name="functional-limitations"></a>Functionele beperkingen
 
 ### <a name="scale-operations"></a>Schaalbewerkingen
-- Dynamische schaling naar en van de Basic Prijscategorieën wordt momenteel niet ondersteund.
-- Waardoor de opslaggrootte van de server wordt niet ondersteund.
+- Dynamische schaling van en naar de basisprijsniveaus wordt momenteel niet ondersteund.
+- De kleinerwordende serveropslaggrootte wordt niet ondersteund.
 
-### <a name="server-version-upgrades"></a>Server-versie-upgrades
-- Automatische migratie tussen versies van de primaire database-engine wordt momenteel niet ondersteund.
+### <a name="server-version-upgrades"></a>Serverversie-upgrades
+- Geautomatiseerde migratie tussen belangrijke database-engineversies wordt momenteel niet ondersteund.
 
 ### <a name="point-in-time-restore"></a>Een punt in de tijd herstellen
-- Wanneer u de functie PITR, wordt de nieuwe server gemaakt met dezelfde configuratie als de server die is gebaseerd op.
-- Een verwijderde server herstelt, wordt niet ondersteund.
+- Bij het gebruik van de PITR-functie wordt de nieuwe server gemaakt met dezelfde configuraties als de server waarop deze is gebaseerd.
+- Het herstellen van een verwijderde server wordt niet ondersteund.
 
 ### <a name="subscription-management"></a>Abonnementsbeheer
-- Het dynamisch verplaatsen van vooraf gemaakte servers over het abonnement en de resource groep wordt momenteel niet ondersteund.
+- Het dynamisch verplaatsen van vooraf gemaakte servers in een abonnements- en resourcegroep wordt momenteel niet ondersteund.
 
 ### <a name="vnet-service-endpoints"></a>VNet-service-eindpunten
-- Ondersteuning voor VNet-service-eindpunten is alleen voor algemeen gebruik en geoptimaliseerd voor geheugen-servers.
+- Ondersteuning voor VNet-serviceeindpunten is alleen voor servers met algemeen gebruik en geheugengeoptimaliseerd.
 
-### <a name="storage-size"></a>Opslag grootte
-- Raadpleeg de [prijs categorie](concepts-pricing-tiers.md) voor de limieten voor opslag grootte per prijs categorie.
+### <a name="storage-size"></a>Opslaggrootte
+- Raadpleeg [prijsniveaus](concepts-pricing-tiers.md) voor de opslaggroottelimieten per prijscategorie.
 
 ## <a name="current-known-issues"></a>Huidige bekende problemen
-- MariaDB-Server exemplaar geeft de onjuiste server versie weer nadat de verbinding tot stand is gebracht. Gebruik de opdracht `select version();` om de juiste engine versie van het Server exemplaar op te halen.
+- MariaDB-serverinstantie geeft de onjuiste serverversie weer nadat de verbinding is gemaakt. Als u de juiste engineversie `select version();` van de serverinstantie wilt krijgen, gebruikt u de opdracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Wat is er beschikbaar in elke servicelaag](concepts-pricing-tiers.md)
-- [Ondersteunde versies van MariaDB-data base](concepts-supported-versions.md)
+- [Ondersteunde MariaDB-databaseversies](concepts-supported-versions.md)

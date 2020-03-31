@@ -1,67 +1,67 @@
 ---
-title: Cluster grootten schalen-Azure HDInsight
-description: Een Apache Hadoop cluster elastisch schalen zodat dit overeenkomt met uw werk belasting in azure HDInsight
+title: Clustergroottes schalen - Azure HDInsight
+description: Een Apache Hadoop-cluster elastisch schalen naar uw werkbelasting in Azure HDInsight
 author: ashishthaps
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/26/2020
-ms.openlocfilehash: a88682cd2217850e336afc2f9ef5af84c0d8cb82
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 96a72541255ad0059abe5ad280f1728518dbf68c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79272225"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234739"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters schalen
 
-HDInsight biedt elasticiteit door u de mogelijkheid te geven het aantal worker-knoop punten in uw clusters omhoog en omlaag te schalen. Met deze elasticiteit kunt u een cluster na uren of in het weekend verkleinen en uitpakken tijdens de piek behoeften van uw bedrijf.
+HDInsight biedt elasticiteit door u de mogelijkheid te bieden om het aantal werknemersknooppunten in uw clusters op te schalen en af te schalen. Met deze elasticiteit u een cluster na uren of in het weekend verkleinen en uitbreiden tijdens piekzakelijke eisen.
 
-Als u periodieke batch verwerking hebt, kan het HDInsight-cluster enkele minuten vóór die bewerking worden geschaald, zodat uw cluster voldoende geheugen en CPU-capaciteit heeft.  Later, nadat de verwerking is voltooid en het gebruik opnieuw uitvalt, kunt u het HDInsight-cluster naar minder werk knooppunten schalen.
+Als u periodieke batchverwerking hebt, kan het HDInsight-cluster enkele minuten voor die bewerking worden opgeschaald, zodat uw cluster voldoende geheugen en CPU-kracht heeft. Later, nadat de verwerking is uitgevoerd en het gebruik opnieuw naar beneden gaat, u het HDInsight-cluster naar minder werknemersknooppunten schalen.
 
-U kunt een cluster hand matig schalen met behulp van een van de hieronder beschreven methoden of door de opties voor automatisch [schalen](hdinsight-autoscale-clusters.md) te gebruiken om ervoor te kiezen dat het systeem in reactie op de CPU, het geheugen en andere metrische gegevens wordt geschaald.
+U een cluster handmatig schalen met een van de onderstaande methoden of [automatische schaalopties](hdinsight-autoscale-clusters.md) gebruiken om het systeem automatisch op en neer te laten schalen als reactie op CPU, geheugen en andere statistieken.
 
 > [!NOTE]  
-> Alleen clusters met HDInsight-versie 3.1.3 of hoger worden ondersteund. Als u niet zeker bent van de versie van uw cluster, kunt u de pagina eigenschappen controleren.
+> Alleen clusters met HDInsight-versie 3.1.3 of hoger worden ondersteund. Als u niet zeker bent van de versie van uw cluster, u de pagina Eigenschappen controleren.
 
-## <a name="utilities-to-scale-clusters"></a>Hulpprogram ma's voor het schalen van clusters
+## <a name="utilities-to-scale-clusters"></a>Hulpprogramma's om clusters te schalen
 
-Micro soft biedt de volgende hulpprogram ma's om clusters te schalen:
+Microsoft biedt de volgende hulpprogramma's om clusters te schalen:
 
-|NUTS | Beschrijving|
+|Utility | Beschrijving|
 |---|---|
-|[Power shell AZ](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -clustername \<cluster naam >-TargetInstanceCount \<NewSize >|
-|[Power shell-AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -clustername \<cluster naam >-TargetInstanceCount \<NewSize >|
-|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [AZ hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource groep \<resource groep >--name \<Cluster name >--workernode-Count \<NewSize >|
-|[Klassieke Azure-CLI](hdinsight-administer-use-command-line.md)|Azure hdinsight-cluster verg Roten/verkleinen \<clustername > \<aantal doel instanties > |
-|[Azure-portal](https://portal.azure.com)|Open het deel venster HDInsight-cluster, selecteer **cluster grootte** in het menu aan de linkerkant en typ in het deel venster cluster grootte het aantal worker-knoop punten en selecteer Opslaan.|  
+|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-azHDInsightClustersize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -Clustername \<clusternaam> \<-TargetInstanceCount NewSize>|
+|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzurermHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -Clustername \<clusternaam> \<-TargetInstanceCount NewSize>|
+|[Azure-CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)| [az hdinsight wijzigt formaat](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) \<--resourcegroep Resourcegroep> --naam \<Clusternaam \<> --workernode-count NewSize>|
+|[Azure Classic CLI](hdinsight-administer-use-command-line.md)|azure hdinsight-cluster \<wijzigt \<clusterNaam> Aantal doelinstantie> |
+|[Azure-portal](https://portal.azure.com)|Open het clustervenster HDInsight, selecteer **Clustergrootte** in het linkermenu, typ vervolgens in het deelvenster Clustergrootte, typ het aantal werknemersknooppunten en selecteer Opslaan.|  
 
-![Optie voor Azure Portal schaal cluster](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
+![Clusteroptie azure-portalschaal](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
-Met een van deze methoden kunt u uw HDInsight-cluster binnen enkele minuten omhoog of omlaag schalen.
+Met een van deze methoden u uw HDInsight-cluster binnen enkele minuten omhoog of omlaag schalen.
 
 > [!IMPORTANT]  
-> * De klassieke Azure-CLI is afgeschaft en mag alleen worden gebruikt met het klassieke implementatie model. Voor alle andere implementaties gebruikt u de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).  
-> * De Power shell AzureRM-module is afgeschaft.  Gebruik zo mogelijk de [AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) .
+> * De Azure-klassieke CLI is afgeschaft en mag alleen worden gebruikt met het klassieke implementatiemodel. Voor alle andere implementaties gebruikt u de [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).  
+> * De PowerShell AzureRM-module is afgeschaft.  Gebruik de [Az module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) waar mogelijk.
 
-## <a name="impact-of-scaling-operations"></a>Gevolgen van schaal bewerkingen
+## <a name="impact-of-scaling-operations"></a>Impact van schaalbewerkingen
 
-Wanneer u knoop punten **toevoegt** aan uw actieve HDInsight-cluster (omhoog schalen), worden in behandeling zijnde of actieve taken niet beïnvloed. Nieuwe taken kunnen veilig worden verzonden terwijl het schaal proces wordt uitgevoerd. Als de schaal bewerking om een of andere reden mislukt, wordt de fout verwerkt om uw cluster in een functionele status te laten staan.
+Wanneer u knooppunten **toevoegt** aan het hdinsight-cluster (opschalen), worden in behandeling komende of lopende taken niet beïnvloed. Nieuwe taken kunnen veilig worden ingediend terwijl het schaalproces wordt uitgevoerd. Als de schalingbewerking om welke reden dan ook mislukt, wordt de fout verwerkt om uw cluster in een functionele status te laten.
 
-Als u knoop punten **verwijdert** (omlaag schalen), zullen alle wachtende of actieve taken mislukken wanneer de schaal bewerking is voltooid. Deze fout wordt veroorzaakt door een aantal services die tijdens het schaal proces opnieuw worden opgestart. Er is ook een risico dat uw cluster tijdens een hand matige schaal bewerking in de veilige modus kan raken.
+Als u knooppunten **verwijdert** (omlaag schalen), mislukken in behandeling en uitvoeren van taken wanneer de schaalbewerking is voltooid. Deze fout is te wijten aan het opnieuw opstarten van sommige services tijdens het schaalproces. Er bestaat ook een risico dat uw cluster tijdens een handmatige schalingvast raakt in de veilige modus.
 
-De impact van het wijzigen van het aantal gegevens knooppunten varieert voor elk type cluster dat door HDInsight wordt ondersteund:
+De impact van het wijzigen van het aantal gegevensknooppunten varieert voor elk type cluster dat wordt ondersteund door HDInsight:
 
 * Apache Hadoop
 
-    U kunt het aantal worker-knoop punten in een Hadoop-cluster dat wordt uitgevoerd, probleemloos verhogen zonder dat dit van invloed is op wachtende of actieve taken. Nieuwe taken kunnen ook worden verzonden terwijl de bewerking wordt uitgevoerd. Fouten in een schaal bewerking worden op de juiste wijze afgehandeld, zodat het cluster altijd in een functionele status blijft.
+    U het aantal werknemersknooppunten in een Hadoop-cluster dat wordt uitgevoerd naadloos verhogen zonder dat dit gevolgen heeft voor lopende of lopende taken. Nieuwe taken kunnen ook worden ingediend terwijl de bewerking in volle gang is. Fouten in een schaalbewerking worden op een elegante manier verwerkt, zodat het cluster altijd in een functionele status wordt achtergelaten.
 
-    Wanneer een Hadoop-cluster omlaag wordt geschaald door het aantal gegevens knooppunten te verminderen, worden enkele van de services in het cluster opnieuw gestart. Dit gedrag zorgt ervoor dat alle actieve en in behandeling zijnde taken mislukken bij het volt ooien van de schaal bewerking. U kunt de taken echter opnieuw verzenden nadat de bewerking is voltooid.
+    Wanneer een Hadoop-cluster wordt verkleind door het aantal gegevensknooppunten te verminderen, worden sommige services in het cluster opnieuw gestart. Dit gedrag zorgt ervoor dat alle lopende en lopende taken mislukken bij het voltooien van de schaalbewerking. U de taken echter opnieuw indienen zodra de bewerking is voltooid.
 
 * Apache HBase
 
-    U kunt tijdens het uitvoeren naadloos knoop punten toevoegen aan of verwijderen uit uw HBase-cluster. Regionale servers worden automatisch gebalanceerd binnen enkele minuten van het volt ooien van de schaal bewerking. U kunt de regionale servers echter ook hand matig balanceren door u aan te melden bij de hoofd knooppunt van het cluster en door de volgende opdrachten uit te voeren vanuit een opdracht prompt venster:
+    U knooppunten naadloos toevoegen of verwijderen aan uw HBase-cluster terwijl deze wordt uitgevoerd. Regionale servers worden automatisch in evenwicht gebracht binnen een paar minuten na het voltooien van de schalingsbewerking. U de regionale servers echter ook handmatig in evenwicht brengen door u aan te melden bij de headnode van het cluster en de volgende opdrachten uit te voeren vanuit een opdrachtpromptvenster:
 
     ```bash
     pushd %HBASE_HOME%\bin
@@ -69,58 +69,58 @@ De impact van het wijzigen van het aantal gegevens knooppunten varieert voor elk
     balancer
     ```
 
-    Zie [aan de slag met een Apache HBase-voor beeld in HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)voor meer informatie over het gebruik van de HBase-shell.
+    Zie [Aan de slag met een Apache HBase-voorbeeld in HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)voor meer informatie over het gebruik van de HBase-shell.
 
 * Apache Storm
 
-    U kunt eenvoudig gegevens knooppunten toevoegen aan of verwijderen uit uw Storm-cluster tijdens de uitvoering. Nadat de schaal bewerking is voltooid, moet u de topologie echter opnieuw verdelen.
+    U gegevensknooppunten naadloos toevoegen of verwijderen aan uw Storm-cluster terwijl deze wordt uitgevoerd. Na een succesvolle voltooiing van de schaalbewerking moet u de topologie echter opnieuw in evenwicht brengen.
 
-    Herverdeling kan op twee manieren worden uitgevoerd:
+    Het opnieuw in evenwicht brengen kan op twee manieren worden bereikt:
 
-  * Storm-webinterface
-  * Opdracht regel interface (CLI)-hulp programma
+  * Gebruikersinterface van stormweb
+  * Cli (Command Line Interface)
 
-    Raadpleeg de [documentatie van Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) voor meer informatie.
+    Raadpleeg de [Apache Storm documentatie](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) voor meer details.
 
-    De gebruikers interface van Storm is beschikbaar op het HDInsight-cluster:
+    De gebruikersinterface van het Storm-web is beschikbaar op het HDInsight-cluster:
 
-    ![Herverdeling van HDInsight Storm-schaal](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    ![HDInsight Storm schaal herbalans](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
-    Hier volgt een voor beeld van een CLI-opdracht voor het herverdelen van de Storm-topologie:
+    Hier is een voorbeeld van CLI-opdracht om de stormtopologie opnieuw in evenwicht te brengen:
 
-    ```cli
+    ```console
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
 
-## <a name="how-to-safely-scale-down-a-cluster"></a>Een cluster veilig omlaag schalen
+## <a name="how-to-safely-scale-down-a-cluster"></a>Een cluster veilig schalen
 
-### <a name="scale-down-a-cluster-with-running-jobs"></a>Een cluster omlaag schalen met actieve taken
+### <a name="scale-down-a-cluster-with-running-jobs"></a>Een cluster schalen met lopende taken
 
-Om te voor komen dat uw actieve taken mislukken tijdens een schaal bare bewerking, kunt u drie dingen proberen:
+Om te voorkomen dat uw lopende taken mislukken tijdens een scale down-bewerking, u drie dingen proberen:
 
-1. Wacht totdat de taken zijn voltooid voordat u het cluster uitschaalt.
-1. Beëindig de taken hand matig.
-1. Verzend de taken opnieuw nadat de schaal bewerking is voltooid.
+1. Wacht tot de taken zijn voltooid voordat u uw cluster hebt geschaald.
+1. Maak handmatig een einde aan de taken.
+1. De taken opnieuw indienen nadat de schaalbewerking is beëindigd.
 
-Als u een lijst met in behandeling zijnde en actieve taken wilt weer geven, kunt u de **gebruikers interface**van het garen gebruiken door de volgende stappen uit te voeren:
+Als u een lijst met lopende en lopende taken wilt bekijken, u de **gebruikersinterface**van YARN Resource Manager gebruiken, nadat u de volgende stappen wilt volgen:
 
-1. Selecteer uw cluster in de [Azure Portal](https://portal.azure.com/).  Zie de [lijst en clusters weer geven](./hdinsight-administer-use-portal-linux.md#showClusters) voor de instructies. Het cluster wordt geopend op een nieuwe portal-pagina.
-2. Ga in de hoofd weergave naar **cluster dashboards** > **Ambari Home**. Voer de referenties voor uw cluster in.
-3. Selecteer in de Ambari-gebruikers interface de optie **garens** in de lijst met Services in het menu aan de linkerkant.  
-4. Selecteer op de pagina GARENs de optie **snelle koppelingen** en beweeg de muis aanwijzer over het actieve hoofd knooppunt en selecteer vervolgens de **gebruikers interface van de Resource Manager**.
+1. Selecteer uw cluster in de [Azure-portal.](https://portal.azure.com/)  Zie [Clusters weergeven en weergeven](./hdinsight-administer-use-portal-linux.md#showClusters) voor de instructies. Het cluster wordt geopend in een nieuwe portalpagina.
+2. Navigeer vanuit de hoofdweergave naar **Clusterdashboards** > **Ambari home**. Voer uw clusterreferenties in.
+3. Selecteer **GAREN** in de lijst met services in het linkermenu in de Gebruikersinterface van Ambari.  
+4. Selecteer op de pagina GAREN **snelle koppelingen** en plaats de plaats boven het actieve hoofdknooppunt en selecteer **vervolgens ResourceManager-gebruikersinterface**.
 
-    ![Gebruikers interface voor Apache Ambari Quick links Resource Manager](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    ![Apache Ambari koppelt resourcemanager-gebruikersinterface snel](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
-U hebt rechtstreeks toegang tot de Resource Manager-gebruikers interface met `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`.
+U rechtstreeks toegang krijgen `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster`tot de Gebruikersinterface van ResourceManager met.
 
-U ziet een lijst met taken, samen met de huidige status. In de scherm afbeelding wordt momenteel één taak uitgevoerd:
+U ziet een lijst met vacatures, samen met hun huidige status. In de schermafbeelding wordt één taak uitgevoerd:
 
-![UI-toepassingen in Resource Manager](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
+![Gebruikersinterfacetoepassingen voor ResourceManager](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
 
-Als u de toepassing hand matig wilt afbreken, voert u de volgende opdracht uit vanaf de SSH-Shell:
+Als u die lopende toepassing handmatig wilt doden, voert u de volgende opdracht uit vanuit de SSH-shell:
 
 ```bash
 yarn application -kill <application_id>
@@ -132,50 +132,50 @@ Bijvoorbeeld:
 yarn application -kill "application_1499348398273_0003"
 ```
 
-### <a name="getting-stuck-in-safe-mode"></a>Blijven hangen in de veilige modus
+### <a name="getting-stuck-in-safe-mode"></a>Vast komen te zitten in de veilige modus
 
-Wanneer u omlaag schaalt in een cluster, gebruikt HDInsight Apache Ambari-beheer interfaces om de extra worker-knoop punten uit bedrijf te nemen, waardoor de HDFS-blokken worden gerepliceerd naar andere knoop punten online Worker. Daarna wordt het cluster veilig door HDInsight geschaald. HDFS gaat in de veilige modus tijdens de schaal bewerking en moet worden opgehaald zodra het schalen is voltooid. In sommige gevallen wordt HDFS tijdens een schaal bewerking echter vastzitten in de veilige modus vanwege een bestands blokkering onder replicatie.
+Wanneer u een cluster schaalt, gebruikt HDInsight Apache Ambari-beheerinterfaces om eerst de extra werknemersknooppunten te ontmantelen, die hun HDFS-blokken repliceren naar andere online werknemersknooppunten. Daarna schaalt HDInsight het cluster veilig op. HDFS gaat in de veilige modus tijdens de schaling operatie, en wordt verondersteld om uit te komen zodra de schaling is voltooid. In sommige gevallen komt HDFS echter vast te zitten in de veilige modus tijdens een schalingbewerking vanwege bestandsblok onderreplicatie.
 
-HDFS wordt standaard geconfigureerd met een `dfs.replication`-instelling van 1, die bepaalt hoeveel exemplaren van elk bestands blok er beschikbaar zijn. Elk exemplaar van een bestands blok wordt opgeslagen op een ander knoop punt van het cluster.
+HDFS is standaard geconfigureerd met `dfs.replication` een instelling van 1, waarmee wordt aangenomen hoeveel kopieën van elk bestandsblok beschikbaar zijn. Elke kopie van een bestandsblok wordt opgeslagen op een ander knooppunt van het cluster.
 
-Wanneer HDFS detecteert dat het verwachte aantal geblokkeerde blok exemplaren niet beschikbaar is, wordt de veilige modus geactiveerd en Ambari waarschuwingen gegenereerd. Als HDFS de veilige modus voor een schaal bewerking invoert, maar de veilige modus niet kan afsluiten omdat het vereiste aantal knoop punten niet is gedetecteerd voor replicatie, kan het cluster vastlopen in de veilige modus.
+Wanneer HDFS detecteert dat het verwachte aantal blokkopieën niet beschikbaar is, treedt HDFS in de veilige modus en genereert Ambari waarschuwingen. Als HDFS de veilige modus invoert voor een schalingbewerking, maar vervolgens de veilige modus niet kan afsluiten omdat het vereiste aantal knooppunten niet wordt gedetecteerd voor replicatie, kan het cluster vast komen te zitten in de veilige modus.
 
-### <a name="example-errors-when-safe-mode-is-turned-on"></a>Voorbeeld fouten wanneer de veilige modus is ingeschakeld
+### <a name="example-errors-when-safe-mode-is-turned-on"></a>Voorbeeldfouten wanneer de veilige modus is ingeschakeld
 
-```
+```output
 org.apache.hadoop.hdfs.server.namenode.SafeModeException: Cannot create directory /tmp/hive/hive/819c215c-6d87-4311-97c8-4f0b9d2adcf0. Name node is in safe mode.
 ```
 
-```
+```output
 org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.servername.internal.cloudapp.net:10001 [active-headnode-name.servername. internal.cloudapp.net/1.1.1.1] failed: Connection refused
 ```
 
-U kunt de naam knooppunt Logboeken in de map `/var/log/hadoop/hdfs/` bekijken, in de buurt van het tijdstip waarop het cluster is geschaald, om te zien wanneer de veilige modus is geactiveerd. De logboek bestanden hebben de naam `Hadoop-hdfs-namenode-<active-headnode-name>.*`.
+U de naamknooppuntlogboeken `/var/log/hadoop/hdfs/` uit de map bekijken, in de buurt van het tijdstip waarop het cluster werd geschaald, om te zien wanneer het de veilige modus ingaat. De logbestanden `Hadoop-hdfs-namenode-<active-headnode-name>.*`hebben de naam .
 
-De hoofd oorzaak van de eerdere fouten is dat de Hive afhankelijk is van tijdelijke bestanden in HDFS tijdens het uitvoeren van query's. Als HDFS de veilige modus wordt geactiveerd, kan Hive geen query's uitvoeren omdat er niet naar HDFS kan worden geschreven. De tijdelijke bestanden in HDFS bevinden zich op het lokale station dat is gekoppeld aan de virtuele machines van het knoop punt van de werk nemer en wordt gerepliceerd tussen andere werk knooppunten van drie replica's, mini maal.
+De hoofdoorzaak van de vorige fouten is dat Hive afhankelijk is van tijdelijke bestanden in HDFS tijdens het uitvoeren van query's. Wanneer HDFS de veilige modus invoert, kan Hive geen query's uitvoeren omdat deze niet naar HDFS kan schrijven. De tijdelijke bestanden in HDFS bevinden zich in het lokale station dat is gemonteerd op de VM's van het afzonderlijke werknemersknooppunt en worden gerepliceerd tussen andere werknemersknooppunten op minimaal drie replica's.
 
-### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode"></a>Voor komen dat HDInsight vastloopt in veilige modus
+### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode"></a>Zo voorkom je dat HDInsight vast komt te zitten in de veilige modus
 
-Er zijn verschillende manieren om te voor komen dat HDInsight in de veilige modus wordt verlaten:
+Er zijn verschillende manieren om te voorkomen dat HDInsight in de veilige modus wordt achtergelaten:
 
-* Stop alle Hive-taken voordat u HDInsight uitschaalt. U kunt ook het proces voor omlaag schalen plannen om te voor komen dat er conflicten ontstaan met het uitvoeren van Hive-taken.
-* Reinig `tmp` Directory bestanden van de Hive hand matig in HDFS voordat u omlaag schaalt.
-* Schaal HDInsight alleen naar drie worker-knoop punten, mini maal. Vermijd het gebruik van één worker-knoop punt.
+* Stop alle Hive-taken voordat hdinsight wordt afgebroken. Plan afwisselend het afschaalproces om te voorkomen dat er conflicteert met lopende Hive-taken.
+* De krasmapbestanden `tmp` van Hive handmatig opschonen in HDFS voordat u wordt opgeschaald.
+* Schaal HDInsight alleen naar drie werkknooppunten, minimaal. Vermijd zo laag als een werknemer knooppunt.
 * Voer de opdracht uit om de veilige modus te verlaten, indien nodig.
 
-Deze opties worden beschreven in de volgende secties.
+In de volgende secties worden deze opties beschreven.
 
-#### <a name="stop-all-hive-jobs"></a>Alle Hive-taken stoppen
+#### <a name="stop-all-hive-jobs"></a>Stop alle Hive-taken
 
-Stop alle Hive-taken voordat u omlaag schaalt naar één worker-knoop punt. Als uw werk belasting is gepland, voert u de schaal uit nadat het Hive-werk is uitgevoerd.
+Stop alle Hive-taken voordat u wordt geschaald naar één werkknooppunt. Als uw werkbelasting is gepland, voert u uw scale-down uit nadat Hive-werk is uitgevoerd.
 
-Als u de Hive-taken voor het schalen stopt, beperkt u het aantal Scratch-bestanden in de map tmp (indien van toepassing).
+Als u de Hive-taken stopt voordat u ze schaalt, wordt het aantal krasbestanden in de tmp-map (indien aanwezig) geminimaliseerd.
 
-#### <a name="manually-clean-up-hives-scratch-files"></a>De Scratch bestanden van de Hive hand matig opschonen
+#### <a name="manually-clean-up-hives-scratch-files"></a>De krasbestanden van Hive handmatig opruimen
 
-Als Hive zich achter tijdelijke bestanden bevindt, kunt u deze bestanden hand matig opschonen voordat u uitschaalt om de veilige modus te voor komen.
+Als Hive tijdelijke bestanden heeft achtergelaten, u deze bestanden handmatig opschonen voordat u deze opschaalt om de veilige modus te voorkomen.
 
-1. Controleer welke locatie wordt gebruikt voor tijdelijke bestanden van Hive door te kijken naar de `hive.exec.scratchdir` configuratie-eigenschap. Deze para meter wordt ingesteld in `/etc/hive/conf/hive-site.xml`:
+1. Controleer welke locatie wordt gebruikt voor tijdelijke `hive.exec.scratchdir` bestanden van Hive door naar de configuratieeigenschap te kijken. Deze parameter is `/etc/hive/conf/hive-site.xml`ingesteld in :
 
     ```xml
     <property>
@@ -184,14 +184,14 @@ Als Hive zich achter tijdelijke bestanden bevindt, kunt u deze bestanden hand ma
     </property>
     ```
 
-1. Stop Hive-Services en zorg ervoor dat alle query's en taken zijn voltooid.
-2. Geef een lijst weer van de inhoud van de map Scratch die hierboven is gevonden, `hdfs://mycluster/tmp/hive/` om te zien of deze bestanden bevat:
+1. Stop Hive-services en zorg ervoor dat alle query's en taken zijn voltooid.
+2. Vermeld de inhoud van de `hdfs://mycluster/tmp/hive/` krasmap hierboven, om te zien of deze bestanden bevat:
 
     ```bash
     hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
     ```
 
-    Hier volgt een voor beeld van uitvoer wanneer bestanden bestaan:
+    Hier is een voorbeelduitvoer wanneer er bestanden bestaan:
 
     ```output
     sshuser@scalin:~$ hadoop fs -ls -R hdfs://mycluster/tmp/hive/hive
@@ -203,37 +203,37 @@ Als Hive zich achter tijdelijke bestanden bevindt, kunt u deze bestanden hand ma
     -rw-r--r--   3 hive hdfs         26 2017-07-06 20:30 hdfs://mycluster/tmp/hive/hive/c108f1c2-453e-400f-ac3e-e3a9b0d22699/inuse.info
     ```
 
-3. Als u weet dat de component is uitgevoerd met deze bestanden, kunt u deze verwijderen. Zorg ervoor dat het onderdeel geen query's uitvoert door te kijken op de pagina voor de gebruikers interface van de garens.
+3. Als u weet dat Hive klaar is met deze bestanden, u ze verwijderen. Zorg ervoor dat Hive geen query's heeft die worden uitgevoerd door te kijken op de pagina Yarn ResourceManager UI.
 
-    Voor beeld van opdracht regel voor het verwijderen van bestanden van HDFS:
+    Voorbeeldopdrachtregel om bestanden van HDFS te verwijderen:
 
     ```bash
     hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
     ```
 
-#### <a name="scale-hdinsight-to-three-or-more-worker-nodes"></a>HDInsight schalen naar drie of meer worker-knoop punten
+#### <a name="scale-hdinsight-to-three-or-more-worker-nodes"></a>HdInsight schalen naar drie of meer werkknooppunten
 
-Als uw clusters regel matig worden vastgehouden in de veilige modus wanneer ze naar minder dan drie werk knooppunten worden geschaald, en de vorige stappen niet werken, kunt u voor komen dat uw cluster in de veilige modus wordt gebruikt door ten minste drie werk knooppunten te gebruiken.
+Als uw clusters vaak vast komen te zitten in de veilige modus wanneer ze worden opgeschaald naar minder dan drie werknemersknooppunten en de vorige stappen niet werken, u voorkomen dat uw cluster helemaal in de veilige modus gaat door ten minste drie werknemersknooppunten te behouden.
 
-Het behouden van drie worker-knoop punten is kostbaarer dan naar slechts één worker-knoop punt, maar hierdoor wordt voor komen dat uw cluster vastloopt in de veilige modus.
+Het behouden van drie werknemersknooppunten is duurder dan verkleinen tot slechts één werkknooppunt, maar het voorkomt dat uw cluster vast komt te zitten in de veilige modus.
 
-### <a name="scale-hdinsight-down-to-one-worker-node"></a>HDInsight omlaag schalen naar één worker-knoop punt
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>Schaal HDInsight tot één werkknooppunt
 
-Zelfs als het cluster omlaag wordt geschaald naar 1 knoop punt, blijft werk knooppunt 0 overstaan. Worker-knoop punt 0 kan nooit buiten gebruik worden gesteld.
+Zelfs wanneer het cluster is teruggebracht tot 1 knooppunt, zal worker node 0 nog steeds overleven. Worker node 0 kan nooit worden ontmanteld.
 
-#### <a name="run-the-command-to-leave-safe-mode"></a>Voer de opdracht uit om de veilige modus te verlaten
+#### <a name="run-the-command-to-leave-safe-mode"></a>De opdracht uitvoeren om de veilige modus te verlaten
 
-De laatste optie is om de opdracht veilige modus verlaten uit te voeren. Als u weet dat de reden voor HDFS in veilige modus is vanwege het Hive-bestand onder-Replication, kunt u de volgende opdracht uitvoeren om de veilige modus te verlaten:
+De laatste optie is het uitvoeren van de opdracht Veilige modus verlaten. Als u weet dat de reden voor het invoeren van de veilige modus van HDFS is vanwege Hive-bestand onder replicatie, u de volgende opdracht uitvoeren om de veilige modus te verlaten:
 
 ```bash
 hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 ```
 
-### <a name="scale-down-an-apache-hbase-cluster"></a>Een Apache HBase-cluster omlaag schalen
+### <a name="scale-down-an-apache-hbase-cluster"></a>Een Apache HBase-cluster schalen
 
-Regio servers worden automatisch binnen enkele minuten na het volt ooien van een schaal bewerking gebalanceerd. Voer de volgende stappen uit om regio servers hand matig te verdelen:
+Regioservers worden binnen enkele minuten na het voltooien van een schalingbewerking automatisch in evenwicht gebracht. Voer de volgende stappen uit om regioservers handmatig in evenwicht te brengen:
 
-1. Maak verbinding met het HDInsight-cluster via SSH. Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.
+1. Maak verbinding met het HDInsight-cluster via SSH. Zie [SSH gebruiken met HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie.
 
 2. Start de HBase-shell:
 
@@ -241,7 +241,7 @@ Regio servers worden automatisch binnen enkele minuten na het volt ooien van een
     hbase shell
     ```
 
-3. Gebruik de volgende opdracht om hand matig de regio servers te salderen:
+3. Gebruik de volgende opdracht om de regioservers handmatig in evenwicht te brengen:
 
     ```bash
     balancer
@@ -249,5 +249,5 @@ Regio servers worden automatisch binnen enkele minuten na het volt ooien van een
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Automatisch schalen van Azure HDInsight-clusters](hdinsight-autoscale-clusters.md)
+* [Azure HDInsight-clusters automatisch schalen](hdinsight-autoscale-clusters.md)
 * [Inleiding tot Azure HDInsight](hadoop/apache-hadoop-introduction.md)

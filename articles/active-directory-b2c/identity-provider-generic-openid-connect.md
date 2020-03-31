@@ -1,7 +1,7 @@
 ---
-title: Registratie instellen en aanmelden met OpenID Connect Connect
+title: Aanmelden en aanmelden met OpenID Connect instellen
 titleSuffix: Azure AD B2C
-description: Stel registratie in en meld u aan met een OpenID Connect Connect-ID-provider (IdP) in Azure Active Directory B2C.
+description: Aanmelden en aanmelden bij elke OpenID Connect-identiteitsprovider (IdP) instellen in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,62 +12,62 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c72abf79f0a420309ebe229673be9439fd99b74c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188253"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Registratie instellen en aanmelden met OpenID Connect Connect met behulp van Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Aanmelden en aanmelden met OpenID Connect instellen met Azure Active Directory B2C
 
-[OpenID Connect Connect](openid-connect.md) is een verificatie protocol dat is gebaseerd op OAuth 2,0 en dat kan worden gebruikt voor het aanmelden van beveiligde gebruikers. De meeste id-providers die gebruikmaken van dit protocol worden ondersteund in Azure AD B2C. In dit artikel wordt uitgelegd hoe u aangepaste OpenID Connect Connect-id-providers kunt toevoegen aan uw gebruikers stromen.
+[OpenID Connect](openid-connect.md) is een verificatieprotocol dat is gebouwd bovenop OAuth 2.0 en dat kan worden gebruikt voor veilige gebruikersaanmelding. De meeste identiteitsproviders die dit protocol gebruiken, worden ondersteund in Azure AD B2C. In dit artikel wordt uitgelegd hoe u aangepaste OpenID Connect-identiteitsproviders toevoegen aan uw gebruikersstromen.
 
-## <a name="add-the-identity-provider"></a>De ID-provider toevoegen
+## <a name="add-the-identity-provider"></a>De identiteitsprovider toevoegen
 
 1. Meld u als globale beheerder van de Azure AD B2C-tenant aan bij [Azure Portal](https://portal.azure.com/).
-1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C Tenant bevat door te klikken op het filter **Directory + abonnement** in het bovenste menu en de map te kiezen die uw Tenant bevat.
+1. Zorg ervoor dat u de map met uw Azure AD B2C-tenant gebruikt door in het bovenste menu op het **filter Directory + abonnement** te klikken en de map te kiezen die uw tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-1. Selecteer **id-providers**en selecteer vervolgens **nieuwe OpenID Connect Connect-provider**.
+1. Selecteer **Identiteitsproviders**en selecteer **vervolgens Nieuwe OpenID Connect-provider**.
 
-## <a name="configure-the-identity-provider"></a>De ID-provider configureren
+## <a name="configure-the-identity-provider"></a>De identiteitsprovider configureren
 
-Elke OpenID Connect Connect-ID-provider beschrijft een meta gegevens document met de meeste informatie die nodig is om de aanmelding uit te voeren. Dit omvat informatie zoals de Url's die moeten worden gebruikt en de locatie van de open bare handtekeningen sleutels van de service. Het OpenID Connect Connect meta data-document bevindt zich altijd op een eind punt dat eindigt op `.well-known\openid-configuration`. Voer de meta gegevens-URL in voor de OpenID Connect Connect-ID-provider die u wilt toevoegen.
+Elke OpenID Connect-identiteitsprovider beschrijft een metagegevensdocument dat de meeste informatie bevat die nodig is om aanmelding uit te voeren. Dit omvat informatie zoals de URL's die moeten worden gebruikt en de locatie van de openbare ondertekeningssleutels van de service. Het metagegevensdocument van OpenID Connect bevindt `.well-known\openid-configuration`zich altijd op een eindpunt dat eindigt op . Voer de URL van de metagegevens in voor de OpenID Connect-identiteitsprovider die u wilt toevoegen.
 
 ## <a name="client-id-and-secret"></a>Client-ID en geheim
 
-Om gebruikers toe te staan zich aan te melden, vereist de ID-provider ontwikkel aars om een toepassing in hun service te registreren. Deze toepassing heeft een ID die de **client-id** en een **client geheim**wordt genoemd. Kopieer deze waarden van de ID-provider en geef ze op in de bijbehorende velden.
+Om gebruikers in staat te stellen zich aan te melden, vereist de identiteitsprovider dat ontwikkelaars een toepassing registreren in hun service. Deze toepassing heeft een ID die wordt aangeduid als de **client-ID** en een **client geheim**. Kopieer deze waarden van de identiteitsprovider en voer ze in de bijbehorende velden in.
 
 > [!NOTE]
-> Het client geheim is optioneel. U moet echter een client geheim invoeren als u de [autorisatie code stroom](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)wilt gebruiken, die het geheim gebruikt voor het uitwisselen van de code voor het token.
+> Het klantgeheim is optioneel. U moet echter een clientgeheim invoeren als u de [autorisatiecodestroom](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)wilt gebruiken, die het geheim gebruikt om de code voor het token te ruilen.
 
 ## <a name="scope"></a>Bereik
 
-Met het bereik worden de informatie en machtigingen gedefinieerd die u wilt verzamelen uit uw aangepaste ID-provider. OpenID Connect Connect-aanvragen moeten de `openid` bereik waarde bevatten om het ID-token van de ID-provider te ontvangen. Zonder het ID-token kunnen gebruikers zich niet aanmelden bij Azure AD B2C met behulp van de aangepaste ID-provider. Andere bereiken kunnen worden toegevoegd, gescheiden door een spatie. Raadpleeg de documentatie van de aangepaste ID-provider om te zien welke andere bereiken mogelijk beschikbaar zijn.
+Scope definieert de informatie en machtigingen die u wilt verzamelen van uw aangepaste identiteitsprovider. OpenID Connect-aanvragen `openid` moeten de bereikwaarde bevatten om het ID-token van de identiteitsprovider te ontvangen. Zonder het ID-token kunnen gebruikers zich niet aanmelden bij Azure AD B2C met behulp van de aangepaste identiteitsprovider. Andere scopes kunnen worden toegevoegd gescheiden door ruimte. Raadpleeg de documentatie van de aangepaste identiteitsprovider om te zien welke andere scopes mogelijk beschikbaar zijn.
 
-## <a name="response-type"></a>Antwoord type
+## <a name="response-type"></a>Reactietype
 
-Het antwoord type beschrijft wat voor soort informatie wordt weer gegeven in de eerste aanroep van de `authorization_endpoint` van de aangepaste ID-provider. De volgende antwoord typen kunnen worden gebruikt:
+Het antwoordtype beschrijft wat voor soort informatie wordt `authorization_endpoint` teruggestuurd in de eerste oproep naar de leverancier van de aangepaste identiteit. De volgende antwoordtypen kunnen worden gebruikt:
 
-* `code`: als gevolg van de [autorisatie code stroom](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)wordt een code geretourneerd naar Azure AD B2C. Azure AD B2C opbrengsten om de `token_endpoint` aan te roepen om de code voor het token uit te wisselen.
-* `id_token`: er wordt een ID-token geretourneerd naar Azure AD B2C van de aangepaste ID-provider.
+* `code`: Volgens de [machtigingscodestroom](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)wordt een code teruggestuurd naar Azure AD B2C. Azure AD B2C gaat `token_endpoint` over tot het aanroepen van de code om de code voor het token te ruilen.
+* `id_token`: Een ID-token wordt teruggestuurd naar Azure AD B2C van de aangepaste identiteitsprovider.
 
-## <a name="response-mode"></a>Antwoord modus
+## <a name="response-mode"></a>Reactiemodus
 
-De antwoord modus definieert de methode die moet worden gebruikt om de gegevens terug van de aangepaste ID-provider naar Azure AD B2C te verzenden. De volgende antwoord modi kunnen worden gebruikt:
+De antwoordmodus definieert de methode die moet worden gebruikt om de gegevens terug te sturen van de aangepaste identiteitsprovider naar Azure AD B2C. De volgende antwoordmodi kunnen worden gebruikt:
 
-* `form_post`: deze antwoord modus wordt aanbevolen voor de beste beveiliging. Het antwoord wordt verzonden via de HTTP-`POST` methode, waarbij de code of het token wordt gecodeerd in de hoofd tekst met de `application/x-www-form-urlencoded`-indeling.
-* `query`: de code of het token wordt geretourneerd als een query parameter.
+* `form_post`: Deze reactiemodus wordt aanbevolen voor de beste beveiliging. Het antwoord wordt verzonden `POST` via de HTTP-methode, waarbij de code `application/x-www-form-urlencoded` of token wordt gecodeerd in de body met behulp van de indeling.
+* `query`: De code of token wordt geretourneerd als queryparameter.
 
-## <a name="domain-hint"></a>Domein Hint
+## <a name="domain-hint"></a>Domeinhint
 
-De domein hint kan worden gebruikt om rechtstreeks over te slaan op de aanmeldings pagina van de opgegeven id-provider, in plaats van dat de gebruiker een selectie maakt tussen de lijst met beschik bare id-providers. Als u dit gedrag wilt toestaan, voert u een waarde in voor de domein hint. Als u naar de aangepaste ID-provider wilt gaan, voegt u de para meter `domain_hint=<domain hint value>` toe aan het einde van uw aanvraag wanneer u Azure AD B2C aanroept om u aan te melden.
+De domeinhint kan worden gebruikt om rechtstreeks naar de aanmeldingspagina van de opgegeven identiteitsprovider over te slaan, in plaats van dat de gebruiker een selectie maakt uit de lijst met beschikbare identiteitsproviders. Als u dit soort gedrag wilt toestaan, voert u een waarde in voor de domeinhint. Als u naar de aangepaste identiteitsprovider `domain_hint=<domain hint value>` wilt gaan, sluit u de parameter toe aan het einde van uw aanvraag wanneer u Azure AD B2C aanroept voor aanmelding.
 
-## <a name="claims-mapping"></a>Claim toewijzing
+## <a name="claims-mapping"></a>Claimstoewijzing
 
-Wanneer de aangepaste ID-provider een ID-token terugstuurt naar Azure AD B2C, moet Azure AD B2C de claims van het ontvangen token kunnen toewijzen aan de claims die Azure AD B2C herkent en gebruikt. Raadpleeg de documentatie van de Custom ID-provider voor elk van de volgende toewijzingen om inzicht te krijgen in de claims die terug worden geretourneerd in de tokens van de identiteits provider:
+Nadat de aangepaste identiteitsprovider een ID-token naar Azure AD B2C heeft teruggestuurd, moet Azure AD B2C de claims van het ontvangen token kunnen toewijzen aan de claims die Azure AD B2C herkent en gebruikt. Raadpleeg voor elk van de volgende toewijzingen de documentatie van de aangepaste identiteitsprovider om inzicht te krijgen in de claims die worden geretourneerd in de tokens van de identiteitsprovider:
 
-* **Gebruikers-id**: Geef de claim op die de *unieke id* voor de aangemelde gebruiker levert.
-* **Weergave naam**: Geef de claim op die de *weergave naam* of de *volledige naam* voor de gebruiker levert.
-* Voor **naam**: Voer de claim in die de *voor naam* van de gebruiker levert.
-* **Naam**: Voer de claim in die de *Achternaam* van de gebruiker levert.
-* **E-mail**: Voer de claim in die het *e-mail adres* van de gebruiker levert.
+* **Gebruikersnaam:** voer de claim in die de *unieke id* voor de aangemelde gebruiker biedt.
+* **Weergavenaam:** voer de claim in die de *weergavenaam* of *volledige naam* voor de gebruiker opgeeft.
+* **Voornaam:** Voer de claim in die de *voornaam* van de gebruiker bevat.
+* **Achternaam**: Voer de claim in die de *achternaam* van de gebruiker bevat.
+* **E-mail:** Voer de claim in die het *e-mailadres* van de gebruiker bevat.

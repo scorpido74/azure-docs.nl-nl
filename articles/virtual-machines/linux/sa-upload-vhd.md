@@ -1,6 +1,6 @@
 ---
 title: Een aangepaste Linux-schijf uploaden met Azure CLI
-description: Een virtuele harde schijf (VHD) maken en uploaden naar Azure met behulp van het Resource Manager-implementatie model en de Azure CLI
+description: Een virtuele harde schijf (VHD) maken en uploaden naar Azure met behulp van het implementatiemodel Resource Manager en het Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,25 +15,25 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 378b802602576c4cf50862149f5d31d16d721be0
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: bc90a409dd2695ce16f8c7d5909f8e2d7867673c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115832"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060247"
 ---
-# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Een virtuele Linux-machine uploaden en maken op basis van een aangepaste schijf met de Azure CLI
+# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Een Linux-vm uploaden en maken vanaf aangepaste schijf met de Azure CLI
 
-In dit artikel wordt beschreven hoe u een virtuele harde schijf (VHD) uploadt naar een Azure-opslag account met de Azure CLI en Linux-Vm's maakt op basis van deze aangepaste schijf. Met deze functie kunt u een Linux-distributie installeren en configureren op uw vereisten en vervolgens die VHD gebruiken om snel virtuele machines (Vm's) voor Azure te maken.
+In dit artikel ziet u hoe u een virtuele harde schijf (VHD) uploadt naar een Azure-opslagaccount met de Azure CLI en Linux VM's maakt vanaf deze aangepaste schijf. Met deze functionaliteit u een Linux-distro installeren en configureren volgens uw vereisten en die VHD vervolgens gebruiken om snel Virtuele Azure-machines (VM's) te maken.
 
-In dit onderwerp worden opslag accounts gebruikt voor de uiteindelijke Vhd's, maar u kunt deze stappen ook uitvoeren met behulp van [Managed disks](upload-vhd.md). 
+In dit onderwerp worden opslagaccounts voor de uiteindelijke VHD's gebruikt, maar u deze stappen ook uitvoeren met [beheerde schijven.](upload-vhd.md) 
 
 ## <a name="quick-commands"></a>Snelle opdrachten
-Als u de taak snel moet uitvoeren, wordt in de volgende sectie de basis opdrachten voor het uploaden van een VHD naar Azure beschreven. Meer gedetailleerde informatie en context voor elke stap vindt u in de rest van het document, [beginnend hier](#requirements).
+Als u de taak snel moet uitvoeren, worden in de volgende sectie de basisopdrachten beschreven om een VHD naar Azure te uploaden. Meer gedetailleerde informatie en context voor elke stap kan worden gevonden de rest van het document, [te beginnen hier](#requirements).
 
-Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-az-cli2) hebt geïnstalleerd en bent aangemeld bij een Azure-account met de opdracht [AZ login](/cli/azure/reference-index).
+Zorg ervoor dat u de nieuwste [Azure CLI hebt](/cli/azure/install-az-cli2) geïnstalleerd en ingelogd op een Azure-account met behulp van [az-aanmelding.](/cli/azure/reference-index)
 
-Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn opgenomen `myResourceGroup`, `mystorageaccount`en `mydisks`.
+Vervang in de volgende voorbeelden voorbeeldparameternamen door uw eigen waarden. Voorbeeldparameternamen `myResourceGroup`opgenomen `mystorageaccount`, `mydisks`en .
 
 Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt op de locatie `WestUs`:
 
@@ -41,27 +41,27 @@ Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het vol
 az group create --name myResourceGroup --location westus
 ```
 
-Maak een opslag account voor het opslaan van uw virtuele schijven met [AZ Storage account create](/cli/azure/storage/account). In het volgende voor beeld wordt een opslag account gemaakt met de naam `mystorageaccount`:
+Maak een opslagaccount aan om uw virtuele schijven vast te houden met [het AZ-opslagaccount.](/cli/azure/storage/account) In het volgende voorbeeld `mystorageaccount`wordt een opslagaccount gemaakt met de naam:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
   --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
-Vermeld de toegangs sleutels voor uw opslag account met [AZ Storage account Keys List](/cli/azure/storage/account/keys). Maak een notitie van `key1`:
+Vermeld de toegangssleutels voor uw opslagaccount met [de lijst met az-opslagaccountsleutels](/cli/azure/storage/account/keys). `key1`Noteer:
 
 ```azurecli
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
 ```
 
-Maak een container in uw opslag account met behulp van de opslag sleutel die u hebt verkregen met [AZ storage container Create](/cli/azure/storage/container). In het volgende voor beeld wordt een container gemaakt met de naam `mydisks` met behulp van de waarde voor de opslag sleutel van `key1`:
+Maak een container aan in uw opslagaccount met behulp van de opslagsleutel die u hebt verkregen met [az-opslagcontainer maken.](/cli/azure/storage/container) In het volgende voorbeeld `mydisks` wordt een container `key1`gemaakt met de naam van de opslagsleutelwaarde van :
 
 ```azurecli
 az storage container create --account-name mystorageaccount \
     --account-key key1 --name mydisks
 ```
 
-Upload ten slotte uw VHD naar de container die u hebt gemaakt met [AZ Storage BLOB upload](/cli/azure/storage/blob). Geef het lokale pad naar uw VHD op onder `/path/to/disk/mydisk.vhd`:
+Upload ten slotte je VHD naar de container die je hebt gemaakt met [het uploaden van AZ-opslagblobs.](/cli/azure/storage/blob) Geef het lokale pad naar `/path/to/disk/mydisk.vhd`uw VHD op onder :
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -69,7 +69,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-Geef de URI op uw schijf (`--image`) op met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een virtuele machine met de naam `myVM` gemaakt met behulp van de eerder geüploade virtuele schijf:
+Geef de URI op`--image`uw schijf ( ) met [az vm maken](/cli/azure/vm). In het volgende voorbeeld `myVM` wordt een vm gemaakt met de naam met behulp van de virtuele schijf die eerder is geüpload:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -79,50 +79,50 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-Het doel-opslag account moet hetzelfde zijn als de locatie waar u de virtuele schijf hebt geüpload. U moet ook vragen opgeven, of antwoord geven op alle aanvullende para meters die vereist zijn voor de opdracht **AZ VM Create** , zoals virtueel netwerk, openbaar IP-adres, gebruikers naam en SSH-sleutels. Meer informatie over de [beschik bare klassieke cli-Resource Manager-para meters](../azure-cli-arm-commands.md#virtual-machines)kunt u lezen.
+Het doelopslagaccount moet hetzelfde zijn als waar u uw virtuele schijf hebt geüpload. U moet ook alle extra parameters opgeven of beantwoorden die vereist zijn door de opdracht **az vm create,** zoals virtueel netwerk, openbaar IP-adres, gebruikersnaam en SSH-toetsen. U meer lezen over de [beschikbare klassieke CLI Resource Manager-parameters.](../azure-cli-arm-commands.md#virtual-machines)
 
 ## <a name="requirements"></a>Vereisten
-Als u de volgende stappen wilt uitvoeren, moet u:
+Als u de volgende stappen wilt uitvoeren, moet u het volgende doen:
 
-* **Linux-besturings systeem geïnstalleerd in een VHD-bestand** : Installeer een door [Azure goedgekeurde Linux-distributie](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (of Zie [informatie over niet-goedgekeurde distributies](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) naar een virtuele schijf in de VHD-indeling. Er zijn meerdere hulpprogram ma's voor het maken van een virtuele machine en VHD:
-  * Installeer en configureer [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) of [KVM](https://www.linux-kvm.org/page/RunningKVM), waarbij u gebruik maakt van VHD als uw installatie kopie-indeling. Als dat nodig is, kunt u [een installatie kopie converteren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) met behulp van `qemu-img convert`.
-  * U kunt ook Hyper-V gebruiken [in Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) of [op Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
+* **Linux-besturingssysteem geïnstalleerd in een .vhd-bestand** - Installeer een [door Azure goedgekeurde Linux-distributie](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (of zie [informatie voor niet-goedgekeurde distributies)](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)naar een virtuele schijf in de VHD-indeling. Er bestaan meerdere hulpprogramma's om een VM en VHD te maken:
+  * Installeer en configureer [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) of [KVM](https://www.linux-kvm.org/page/RunningKVM), zorg ervoor dat VHD wordt gebruikt als uw afbeeldingsindeling. Indien nodig u een `qemu-img convert`afbeelding [converteren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) met behulp van.
+  * U Hyper-V ook gebruiken [op Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) of [op Windows Server 2012/2012 R2.](https://technet.microsoft.com/library/hh846766.aspx)
 
 > [!NOTE]
-> De nieuwere VHDX-indeling wordt niet ondersteund in Azure. Wanneer u een virtuele machine maakt, geeft u VHD op als de indeling. Indien nodig kunt u VHDX-schijven converteren naar VHD met [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) of de [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) Power shell-cmdlet. Verder biedt Azure geen ondersteuning voor het uploaden van dynamische Vhd's. Daarom moet u dergelijke schijven converteren naar statische Vhd's voordat u deze uploadt. U kunt hulpprogram ma's zoals [Azure VHD Utilities voor Go](https://github.com/Microsoft/azure-vhd-utils-for-go) gebruiken om dynamische schijven te converteren tijdens het uploaden naar Azure.
+> De nieuwere VHDX-indeling wordt niet ondersteund in Azure. Wanneer u een vm maakt, geeft u VHD op als indeling. Indien nodig u VHDX-schijven [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) converteren [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) naar VHD met behulp van of de PowerShell-cmdlet. Verder ondersteunt Azure geen uploaden van dynamische VHD's, dus u moet dergelijke schijven converteren naar statische VHD's voordat u uploadt. U hulpprogramma's zoals [Azure VHD-hulpprogramma's voor GO](https://github.com/Microsoft/azure-vhd-utils-for-go) gebruiken om dynamische schijven om te zetten tijdens het uploaden naar Azure.
 > 
 > 
 
-* Vm's die zijn gemaakt op basis van uw aangepaste schijf, moeten zich in hetzelfde opslag account als de schijf zelf bevinden
-  * Maak een opslag account en een container voor het opslaan van de aangepaste schijf en de gemaakte Vm's
-  * Nadat u alle Vm's hebt gemaakt, kunt u uw schijf veilig verwijderen
+* VM's die zijn gemaakt met uw aangepaste schijf moeten zich in hetzelfde opslagaccount bevinden als de schijf zelf
+  * Een opslagaccount en container maken om zowel uw aangepaste schijf als gemaakte VM's vast te houden
+  * Nadat u al uw VM's hebt gemaakt, u uw schijf veilig verwijderen
 
-Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-az-cli2) hebt geïnstalleerd en bent aangemeld bij een Azure-account met de opdracht [AZ login](/cli/azure/reference-index).
+Zorg ervoor dat u de nieuwste [Azure CLI hebt](/cli/azure/install-az-cli2) geïnstalleerd en ingelogd op een Azure-account met behulp van [az-aanmelding.](/cli/azure/reference-index)
 
-Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn opgenomen `myResourceGroup`, `mystorageaccount`en `mydisks`.
+Vervang in de volgende voorbeelden voorbeeldparameternamen door uw eigen waarden. Voorbeeldparameternamen `myResourceGroup`opgenomen `mystorageaccount`, `mydisks`en .
 
 <a id="prepimage"> </a>
 
 ## <a name="prepare-the-disk-to-be-uploaded"></a>De schijf voorbereiden om te worden geüpload
-Azure ondersteunt diverse Linux-distributies (Zie [goedgekeurde distributies](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). De volgende artikelen begeleiden u bij het voorbereiden van de verschillende Linux-distributies die worden ondersteund in Azure:
+Azure ondersteunt verschillende Linux-distributies (zie [Onderschreven distributies).](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) In de volgende artikelen u de verschillende Linux-distributies voorbereiden die op Azure worden ondersteund:
 
-* **[Distributies op basis van CentOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[CentOS-gebaseerde distributies](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Andere-niet-goedgekeurde distributies](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Andere - Niet-goedgekeurde distributies](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
-Zie ook de **[installatie notities van Linux](create-upload-generic.md#general-linux-installation-notes)** voor meer algemene tips over het voorbereiden van Linux-installatie kopieën voor Azure.
+Zie ook de **[Linux Installatienotities](create-upload-generic.md#general-linux-installation-notes)** voor meer algemene tips over het voorbereiden van Linux-afbeeldingen voor Azure.
 
 > [!NOTE]
-> De [Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/) van het Azure-platform is alleen van toepassing op Vm's waarop Linux wordt uitgevoerd wanneer een van de goedgekeurde distributies wordt gebruikt met de configuratie gegevens zoals opgegeven onder ondersteunde versies in [Linux op door Azure goedgekeurde distributies](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Het [Azure-platform SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) is alleen van toepassing op VM's waarop Linux wordt uitgevoerd wanneer een van de goedgekeurde distributies wordt gebruikt met de configuratiegegevens zoals opgegeven onder 'Ondersteunde versies' in [Linux op Azure-goedgekeurde distributies.](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 > 
 > 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
-Met resource groepen worden alle Azure-resources logisch samengebracht ter ondersteuning van uw virtuele machines, zoals de virtuele netwerken en opslag. Zie [overzicht van resource groepen](../../azure-resource-manager/management/overview.md)voor meer informatie over resource groepen. Voordat u uw aangepaste schijf uploadt en Vm's maakt, moet u eerst een resource groep maken met [AZ Group Create](/cli/azure/group).
+Resourcegroepen brengen logischerwijs alle Azure-bronnen samen om uw virtuele machines te ondersteunen, zoals het virtuele netwerk en de opslag. Zie overzicht [van resourcegroepen](../../azure-resource-manager/management/overview.md)voor meer informatiebrongroepen. Voordat u uw aangepaste schijf uploadt en VM's maakt, moet u eerst een resourcegroep maken met [de AZ-groep.](/cli/azure/group)
 
 In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt op de locatie `westus`:
 
@@ -130,21 +130,21 @@ In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` 
 az group create --name myResourceGroup --location westus
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
-Maak een opslag account voor uw aangepaste schijf en virtuele machines met [AZ Storage account create](/cli/azure/storage/account). Alle Vm's met niet-beheerde schijven die u maakt op basis van uw aangepaste schijf, moeten zich in hetzelfde opslag account bevindt als die schijf. 
+Maak een opslagaccount aan voor uw aangepaste schijf en VM's met [een AZ-opslagaccount.](/cli/azure/storage/account) Vm's met onbeheerde schijven die u vanaf uw aangepaste schijf maakt, moeten zich in hetzelfde opslagaccount als die schijf bevindt. 
 
-In het volgende voor beeld wordt een opslag account gemaakt met de naam `mystorageaccount` in de eerder gemaakte resource groep:
+In het volgende voorbeeld `mystorageaccount` wordt een opslagaccount gemaakt met de naam in de eerder gemaakte brongroep:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
   --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
-## <a name="list-storage-account-keys"></a>Sleutels van opslag account weer geven
-Azure genereert 2 512-bits toegangs sleutels voor elk opslag account. Deze toegangs sleutels worden gebruikt bij het verifiëren van het opslag account, zoals om schrijf bewerkingen uit te voeren. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over toegangs sleutels voor opslag accounts. U kunt de toegangs sleutels weer geven met [AZ Storage account Keys List](/cli/azure/storage/account/keys).
+## <a name="list-storage-account-keys"></a>Opslagaccountsleutels van de lijst
+Azure genereert twee 512-bits toegangssleutels voor elk opslagaccount. Deze toegangssleutels worden gebruikt bij het verifiëren van het opslagaccount, zoals het uitvoeren van schrijfbewerkingen. Zie [Toegangssleutels voor opslagaccount beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over toegangssleutels voor opslagaccount. U bekijkt de toegangssleutels met [de lijst met az-opslagaccountsleutels.](/cli/azure/storage/account/keys)
 
-Bekijk de toegangs sleutels voor het opslag account dat u hebt gemaakt:
+Bekijk de toegangssleutels voor het opslagaccount dat u hebt gemaakt:
 
 ```azurecli
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
@@ -152,7 +152,7 @@ az storage account keys list --resource-group myResourceGroup --account-name mys
 
 De uitvoer is vergelijkbaar met:
 
-```azurecli
+```output
 info:    Executing command storage account keys list
 + Getting storage account keys
 data:    Name  Key                                                                                       Permissions
@@ -161,12 +161,13 @@ data:    key1  d4XAvZzlGAgWdvhlWfkZ9q4k9bYZkXkuPCJ15NTsQOeDeowCDAdB80r9zA/tUINAp
 data:    key2  Ww0T7g4UyYLaBnLYcxIOTVziGAAHvU+wpwuPvK4ZG0CDFwu/mAxS/YYvAQGHocq1w7/3HcalbnfxtFdqoXOw8g==  Full
 info:    storage account keys list command OK
 ```
-Noteer `key1` als u deze gebruikt om te communiceren met uw opslag account in de volgende stappen.
 
-## <a name="create-a-storage-container"></a>Maak een opslagcontainer
-Op dezelfde manier als u verschillende directory's maakt om uw lokale bestands systeem logisch te organiseren, maakt u containers in een opslag account om uw schijven te organiseren. Een opslag account kan een wille keurig aantal containers bevatten. Maak een container met [AZ storage container Create](/cli/azure/storage/container).
+Noteer `key1` als u het gebruikt om te communiceren met uw opslagaccount in de volgende stappen.
 
-In het volgende voor beeld wordt een container gemaakt met de naam `mydisks`:
+## <a name="create-a-storage-container"></a>Een opslagcontainer maken
+Op dezelfde manier dat u verschillende mappen maakt om uw lokale bestandssysteem logisch te organiseren, maakt u containers binnen een opslagaccount om uw schijven te ordenen. Een opslagaccount kan een willekeurig aantal containers bevatten. Maak een container met [az-opslagcontainer maken](/cli/azure/storage/container).
+
+In het volgende voorbeeld `mydisks`wordt een container met de naam :
 
 ```azurecli
 az storage container create \
@@ -175,9 +176,9 @@ az storage container create \
 ```
 
 ## <a name="upload-vhd"></a>VHD uploaden
-Upload nu uw aangepaste schijf met [AZ Storage BLOB upload](/cli/azure/storage/blob). U uploadt en slaat uw aangepaste schijf op als een pagina-blob.
+Upload nu je aangepaste schijf met [het uploaden van az-opslagblobs.](/cli/azure/storage/blob) U uploadt en slaat uw aangepaste schijf op als een paginablob.
 
-Geef uw toegangs sleutel op, de container die u in de vorige stap hebt gemaakt en vervolgens het pad naar de aangepaste schijf op uw lokale computer:
+Geef uw toegangssleutel op, de container die u in de vorige stap hebt gemaakt en vervolgens het pad naar de aangepaste schijf op uw lokale computer:
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -186,11 +187,11 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
-Als u een virtuele machine met onbeheerde schijven wilt maken, geeft u de URI op uw schijf (`--image`) op met [AZ VM Create](/cli/azure/vm). In het volgende voor beeld wordt een virtuele machine met de naam `myVM` gemaakt met behulp van de eerder geüploade virtuele schijf:
+Als u een vm met niet-beheerde schijven`--image`wilt maken, geeft u de URI op uw schijf ( ) met [az vm maken](/cli/azure/vm). In het volgende voorbeeld `myVM` wordt een vm gemaakt met de naam met behulp van de virtuele schijf die eerder is geüpload:
 
-U geeft de para meter `--image` op met [AZ VM Create](/cli/azure/vm) om naar uw aangepaste schijf te verwijzen. Zorg ervoor dat `--storage-account` overeenkomt met het opslag account waarin uw aangepaste schijf is opgeslagen. U hoeft niet dezelfde container te gebruiken als de aangepaste schijf om uw Vm's op te slaan. Zorg ervoor dat u aanvullende containers op dezelfde manier maakt als de eerdere stappen voordat u de aangepaste schijf uploadt.
+U geeft `--image` de parameter op met [az vm maken](/cli/azure/vm) om naar uw aangepaste schijf te wijzen. Zorg `--storage-account` ervoor dat dit overeenkomt met het opslagaccount waar uw aangepaste schijf is opgeslagen. U hoeft niet dezelfde container als de aangepaste schijf te gebruiken om uw VM's op te slaan. Zorg ervoor dat u extra containers maakt op dezelfde manier als de eerdere stappen voordat u uw aangepaste schijf uploadt.
 
-In het volgende voor beeld wordt een virtuele machine met de naam `myVM` van uw aangepaste schijf gemaakt:
+In het volgende voorbeeld `myVM` wordt een VM gemaakt met de naam van uw aangepaste schijf:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -200,13 +201,13 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-U moet nog steeds vragen opgeven, of antwoord geven op alle aanvullende para meters die vereist zijn voor de opdracht **AZ VM Create** , zoals gebruikers naam en SSH-sleutel.
+U moet nog steeds alle extra parameters opgeven of beantwoorden die vereist zijn door de opdracht **AZ VM create,** zoals gebruikersnaam en SSH-toetsen.
 
 
 ## <a name="resource-manager-template"></a>Resource Manager-sjabloon
-Azure Resource Manager sjablonen zijn JavaScript Object Notation (JSON)-bestanden die de omgeving definiëren die u wilt bouwen. De sjablonen worden uitgesplitst naar verschillende resource providers, zoals Compute en netwerk. U kunt bestaande sjablonen gebruiken of uw eigen sjabloon schrijven. Lees meer over het [gebruik van Resource Manager en sjablonen](../../azure-resource-manager/management/overview.md).
+Azure Resource Manager-sjablonen zijn JSON-bestanden (JavaScript Object Notation) die de omgeving definiëren die u wilt bouwen. De sjablonen zijn onderverdeeld in verschillende resourceproviders, zoals compute of netwerk. U bestaande sjablonen gebruiken of uw eigen sjablonen schrijven. Lees meer over [het gebruik van Resource Manager en sjablonen](../../azure-resource-manager/management/overview.md).
 
-Binnen de `Microsoft.Compute/virtualMachines` provider van uw sjabloon hebt u een `storageProfile` knoop punt met de configuratie gegevens voor uw VM. De twee belangrijkste para meters die u kunt bewerken, zijn de `image` en `vhd` Uri's die naar uw aangepaste schijf verwijzen en de virtuele schijf van uw nieuwe VM. Hieronder ziet u een voor beeld van de JSON voor het gebruik van een aangepaste schijf:
+Binnen `Microsoft.Compute/virtualMachines` de aanbieder van uw `storageProfile` sjabloon hebt u een knooppunt dat de configuratiegegevens voor uw vm bevat. De twee belangrijkste parameters die `image` `vhd` u moet bewerken zijn de URL's en URI's die wijzen op uw aangepaste schijf en de virtuele schijf van uw nieuwe vm. Het volgende toont een voorbeeld van de JSON voor het gebruik van een aangepaste schijf:
 
 ```json
 "storageProfile": {
@@ -224,16 +225,16 @@ Binnen de `Microsoft.Compute/virtualMachines` provider van uw sjabloon hebt u ee
           }
 ```
 
-U kunt [deze bestaande sjabloon gebruiken om een VM te maken op basis van een aangepaste installatie kopie of om](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) te lezen over [het maken van uw eigen Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md). 
+U deze bestaande sjabloon gebruiken [om een VM te maken op basis van een aangepaste afbeelding](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) of om uw eigen Azure Resource [Manager-sjablonen te maken.](../../azure-resource-manager/templates/template-syntax.md) 
 
-Wanneer u een sjabloon hebt geconfigureerd, gebruikt u [AZ Group Deployment Create](/cli/azure/group/deployment) om uw vm's te maken. Geef de URI van de JSON-sjabloon op met de para meter `--template-uri`:
+Zodra u een sjabloon hebt geconfigureerd, gebruikt u [de implementatie van AZ-groepen](/cli/azure/group/deployment) om uw VM's te maken. Geef de URI van uw `--template-uri` JSON-sjabloon op met de parameter:
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \
   --template-uri https://uri.to.template/mytemplate.json
 ```
 
-Als een JSON-bestand lokaal op uw computer is opgeslagen, kunt u in plaats daarvan de para meter `--template-file` gebruiken:
+Als u een JSON-bestand lokaal op uw computer `--template-file` hebt opgeslagen, u in plaats daarvan de parameter gebruiken:
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \
@@ -242,5 +243,5 @@ az group deployment create --resource-group myNewResourceGroup \
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u uw aangepaste virtuele schijf hebt voor bereid en geüpload, kunt u meer lezen over het [gebruik van Resource Manager en sjablonen](../../azure-resource-manager/management/overview.md). Het is ook mogelijk dat u [een gegevens schijf wilt toevoegen](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) aan de nieuwe virtuele machines. Als u toepassingen hebt die worden uitgevoerd op uw Vm's die u wilt openen, moet u [poorten en eind punten openen](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Nadat u uw aangepaste virtuele schijf hebt voorbereid en geüpload, u meer lezen over [het gebruik van Resource Manager en sjablonen.](../../azure-resource-manager/management/overview.md) U ook [een gegevensschijf toevoegen](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) aan uw nieuwe VM's. Als u toepassingen hebt die worden uitgevoerd op uw VM's die u moet openen, moet u [poorten en eindpunten openen.](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

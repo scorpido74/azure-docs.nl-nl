@@ -1,6 +1,6 @@
 ---
-title: Een volume klonen op de StorSimple 8000-serie | Microsoft Docs
-description: Hierin worden de verschillende typen klonen en het gebruik beschreven en wordt uitgelegd hoe u een back-upset kunt gebruiken om een afzonderlijk volume te klonen op een StorSimple 8000 Series-apparaat.
+title: Kloon een volume op StorSimple 8000 serie | Microsoft Documenten
+description: Beschrijft de verschillende kloontypen en het gebruik en legt uit hoe u een back-upset gebruiken om een individueel volume te klonen op een apparaat uit de StorSimple 8000-serie.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,109 +15,109 @@ ms.workload: TBD
 ms.date: 12/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 84734aefb72a3330d99c5707b461de2cd5e30484
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255000"
 ---
-# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>De StorSimple Apparaatbeheer-service in Azure Portal gebruiken om een volume te klonen
+# <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>StorSimple Device Manager-service in Azure-portal gebruiken om een volume te klonen
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelf studie wordt beschreven hoe u een back-upset kunt gebruiken om een afzonderlijk volume te klonen via de Blade **back-upcatalogus** . Er wordt ook uitgelegd wat het verschil is tussen *tijdelijke* en *permanente* klonen. De richt lijnen in deze zelf studie zijn van toepassing op alle StorSimple 8000 Series-apparaten met update 3 of hoger.
+In deze zelfstudie wordt beschreven hoe u een back-upset gebruiken om een individueel volume te klonen via het blade van de **back-upcatalogus.** Het verklaart ook het verschil tussen *voorbijgaande* en *permanente* klonen. De richtlijnen in deze zelfstudie zijn van toepassing op alle storSimple 8000-serie apparaten met Update 3 of hoger.
 
-Op de Blade StorSimple Apparaatbeheer service **back-upcatalogus** worden alle back-upsets weer gegeven die worden gemaakt wanneer hand matig of automatisch maken van back-ups worden uitgevoerd. U kunt vervolgens een volume in een back-upset selecteren dat u wilt klonen.
+Het storSimple Device **Manager-service Back-upcatalogusblad** toont alle back-upsets die worden gemaakt wanneer handmatige of geautomatiseerde back-ups worden gemaakt. U vervolgens een volume selecteren in een back-upset die u wilt klonen.
 
- ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+ ![Lijst met back-upset](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
 
 ## <a name="considerations-for-cloning-a-volume"></a>Overwegingen voor het klonen van een volume
 
 Houd rekening met de volgende informatie bij het klonen van een volume.
 
-- Een kloon gedraagt zich op dezelfde manier als een gewoon volume. Elke bewerking die mogelijk is op een volume, is beschikbaar voor de kloon.
+- Een kloon gedraagt zich op dezelfde manier als een normaal volume. Elke bewerking die mogelijk is op een volume is beschikbaar voor de kloon.
 
-- Bewaking en standaard back-ups worden automatisch uitgeschakeld op een gekloond volume. U moet een gekloond volume configureren voor back-ups.
+- Controle en standaardback-up worden automatisch uitgeschakeld op een gekloond volume. U moet een gekloond volume configureren voor eventuele back-ups.
 
-- Een lokaal vastgemaakt volume wordt gekloond als een gelaagd volume. Als u wilt dat het gekloonde volume lokaal is vastgemaakt, kunt u de kloon converteren naar een lokaal vastgemaakt volume nadat de kloon bewerking is voltooid. Voor informatie over het converteren van een gelaagd volume naar een lokaal vastgemaakt volume, gaat u naar [het volume type wijzigen](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
+- Een lokaal vastgemaakt volume wordt gekloond als een gelaagd volume. Als u het gekloonde volume lokaal moet vastmaken, u de kloon converteren naar een lokaal vastgemaakt volume nadat de kloonbewerking is voltooid. Ga naar [Het volumetype wijzigen](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)voor informatie over het converteren van een gelaagd volume naar een lokaal vastgemaakt volume.
 
-- Als u probeert een gekloond volume te converteren van gelaagd naar lokaal vastgemaakt, direct na het klonen (wanneer het nog steeds een tijdelijke kloon is), mislukt de conversie met het volgende fout bericht:
+- Als u een gekloond volume probeert om te zetten van gelaagd naar lokaal vastgemaakt onmiddellijk na het klonen (wanneer het nog steeds een tijdelijke kloon is), mislukt de conversie met het volgende foutbericht:
 
     `Unable to modify the usage type for volume {0}. This can happen if the volume being modified is a transient clone and hasn’t been made permanent. Take a cloud snapshot of this volume and then retry the modify operation.`
 
-    Deze fout wordt alleen ontvangen als u op een ander apparaat kloont. U kunt het volume converteren naar lokaal vastgemaakt als u de tijdelijke kloon eerst converteert naar een permanente kloon. Maak een Cloud momentopname van de tijdelijke kloon om deze om te zetten in een permanente kloon.
+    Deze fout wordt alleen ontvangen als u op een ander apparaat kloont. U het volume converteren naar lokaal vastgemaakt als u de tijdelijke kloon eerst converteert naar een permanente kloon. Maak een cloudmomentopname van de tijdelijke kloon om deze om te zetten in een permanente kloon.
 
 ## <a name="create-a-clone-of-a-volume"></a>Een kloon van een volume maken
 
-U kunt een kloon maken op hetzelfde apparaat, op een ander apparaat of zelfs op een Cloud apparaat door een lokale of een Cloud momentopname te gebruiken.
+U een kloon maken op hetzelfde apparaat, een ander apparaat of zelfs een cloudtoestel met behulp van een lokale of cloudmomentopname.
 
-In de volgende procedure wordt beschreven hoe u een kloon maakt vanuit de back-catalogus.  Een alternatieve methode om kloon te initiëren is door naar **volumes**te gaan, een volume te selecteren en vervolgens met de rechter muisknop te klikken om het context menu te openen en **klonen**te selecteren.
+In de onderstaande procedure wordt beschreven hoe u een kloon maakt uit de back-upcatalogus.  Een alternatieve methode om kloon te starten is om naar **Volumes**te gaan, een volume te selecteren, vervolgens met de rechtermuisknop te klikken om het contextmenu aan te roepen en **Kloon**te selecteren.
 
-Voer de volgende stappen uit om een kloon van uw volume te maken uit de back-upcatalogus.
+Voer de volgende stappen uit om een kloon van uw volume te maken vanuit de back-upcatalogus.
 
 #### <a name="to-clone-a-volume"></a>Een volume klonen
 
-1. Ga naar de StorSimple-Apparaatbeheer service en klik vervolgens op **back-upcatalogus**.
+1. Ga naar uw StorSimple Device Manager-service en klik op **Back-upcatalogus**.
 
-2. Selecteer een back-upset als volgt:
+2. Selecteer als volgt een back-upset:
    
-   1. Selecteer het betreffende apparaat.
-   2. Kies in de vervolg keuzelijst het volume of back-upbeleid voor de back-up die u wilt selecteren.
-   3. Geef het tijds bereik op.
-   4. Klik op **Toep assen** om deze query uit te voeren.
+   1. Selecteer het juiste apparaat.
+   2. Kies in de vervolgkeuzelijst het volume- of back-upbeleid voor de back-up die u wilt selecteren.
+   3. Geef het tijdsbereik op.
+   4. Klik **op Toepassen** om deze query uit te voeren.
 
-      De back-ups die zijn gekoppeld aan het geselecteerde volume of back-upbeleid, moeten worden weer gegeven in de lijst met back-upsets.
+      De back-ups die zijn gekoppeld aan het geselecteerde volume- of back-upbeleid moeten worden weergegeven in de lijst met back-upsets.
    
-      ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![Lijst met back-upset](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. Vouw de back-upset uit om het bijbehorende volume weer te geven en selecteer een volume in een back-upset. Klik met de rechter muisknop en selecteer vervolgens **klonen**in het context menu.
+3. Vouw de back-upset uit om het gekoppelde volume weer te geven en selecteer een volume in een back-upset. Klik met de rechtermuisknop en selecteer vervolgens in het contextmenu **Kloon**.
 
-   ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![Lijst met back-upset](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
-3. Voer de volgende stappen uit op de Blade **klonen** :
+3. Ga in het **kloonblad** de volgende stappen uit:
    
-   1. Identificeer een doel apparaat. Dit is de locatie waar de kloon wordt gemaakt. U kunt hetzelfde apparaat kiezen of een ander apparaat opgeven.
+   1. Een doelapparaat identificeren. Dit is de locatie waar de kloon wordt gemaakt. U hetzelfde apparaat kiezen of een ander apparaat opgeven.
 
       > [!NOTE]
-      > Zorg ervoor dat de capaciteit die is vereist voor de kloon lager is dan de capaciteit die beschikbaar is op het doel apparaat.
+      > Zorg ervoor dat de benodigde capaciteit voor de kloon lager is dan de beschikbare capaciteit op het doelapparaat.
        
-   2. Geef een unieke volume naam op voor de kloon. De naam moet tussen de 3 en 127 tekens bevatten.
+   2. Geef een unieke volumenaam op voor uw kloon. De naam moet tussen 3 en 127 tekens bevatten.
       
        > [!NOTE]
-       > Het veld **kloon volume als** wordt **getierd** , zelfs als u een lokaal vastgemaakt volume kloont. U kunt deze instelling niet wijzigen. Als u echter wilt dat het gekloonde volume ook lokaal is vastgemaakt, kunt u de kloon converteren naar een lokaal vastgemaakt volume nadat u de kloon hebt gemaakt. Voor informatie over het converteren van een gelaagd volume naar een lokaal vastgemaakt volume, gaat u naar [het volume type wijzigen](storsimple-8000-manage-volumes-u2.md#change-the-volume-type).
+       > Het veld **Kloonvolume als** wordt **getierd,** zelfs als u een lokaal vastgemaakt volume kloont. U deze instelling niet wijzigen. Als u echter het gekloonde volume ook lokaal moet vastmaken, u de kloon converteren naar een lokaal vastgemaakt volume nadat u de kloon hebt gemaakt. Ga naar [Het volumetype wijzigen](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)voor informatie over het converteren van een gelaagd volume naar een lokaal vastgemaakt volume.
           
-   3. Geef onder **verbonden hosts**een Access Control record op (ACR) voor de kloon. U kunt een nieuwe ACR toevoegen of uit de bestaande lijst kiezen. De ACR bepaalt welke hosts toegang tot deze kloon hebben.
+   3. Geef **onder Verbonden hosts**een toegangscontrolerecord (ACR) op voor de kloon. U een nieuwe ACR toevoegen of kiezen uit de bestaande lijst. De ACR bepaalt welke hosts toegang hebben tot deze kloon.
       
-       ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![Lijst met back-upset](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
-   4. Klik op **klon** om de bewerking te volt ooien.
+   4. Klik **op Kloon** om de bewerking te voltooien.
 
-4. Er wordt een kloon taak gestart en u wordt gewaarschuwd wanneer de kloon is gemaakt. Klik op de taak melding of ga naar de Blade **taken** om de kloon taak te controleren.
+4. Er wordt een kloontaak gestart en u krijgt een melding wanneer de kloon is gemaakt. Klik op de taakmelding of ga naar het blad **Jobs** om de kloontaak te controleren.
 
-    ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![Lijst met back-upset](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
-7. Nadat de kloon taak is voltooid, gaat u naar het apparaat en klikt u vervolgens op **volumes**. In de lijst met volumes ziet u de kloon die zojuist is gemaakt in dezelfde volume container die het bron volume heeft.
+7. Nadat de kloontaak is voltooid, gaat u naar uw apparaat en klikt u op **Volumes**. In de lijst met volumes ziet u de kloon die zojuist is gemaakt in dezelfde volumecontainer met het bronvolume.
 
-    ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![Lijst met back-upset](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
-Een kloon die op deze manier wordt gemaakt, is een tijdelijke kloon. Zie [tijdelijke en permanente klonen](#transient-vs-permanent-clones)voor meer informatie over typen klonen.
+Een kloon die op deze manier wordt gemaakt, is een tijdelijke kloon. Zie Tijdelijke versus permanente [klonen](#transient-vs-permanent-clones)voor meer informatie over kloontypen.
 
 
-## <a name="transient-vs-permanent-clones"></a>Tijdelijke versus permanente klonen
-Tijdelijke klonen worden alleen gemaakt wanneer u naar een ander apparaat kloont. U kunt een specifiek volume vanuit een back-upset klonen op een ander apparaat dat wordt beheerd door de StorSimple-Apparaatbeheer. De tijdelijke kloon bevat verwijzingen naar de gegevens in het oorspronkelijke volume en gebruikt die gegevens om lokaal op het doel apparaat te lezen en te schrijven.
+## <a name="transient-vs-permanent-clones"></a>Voorbijgaande versus permanente klonen
+Tijdelijke klonen worden alleen gemaakt wanneer u naar een ander apparaat kloont. U een specifiek volume klonen van een back-upset naar een ander apparaat dat wordt beheerd door StorSimple Device Manager. De tijdelijke kloon heeft verwijzingen naar de gegevens in het oorspronkelijke volume en gebruikt die gegevens om lokaal op het doelapparaat te lezen en te schrijven.
 
-Nadat u een Cloud momentopname van een tijdelijke kloon hebt gemaakt, is de resulterende kloon een *permanente* kloon. Tijdens dit proces wordt een kopie van de gegevens in de Cloud gemaakt en wordt de tijd voor het kopiëren van deze gegevens bepaald door de grootte van de gegevens en de Azure-latentie (dit is een Azure-naar-Azure-kopie). Dit proces kan dagen tot weken duren. De tijdelijke kloon wordt een permanente kloon en heeft geen verwijzingen naar de oorspronkelijke volume gegevens waarvan deze is gekloond.
+Nadat u een cloudmomentopname van een tijdelijke kloon hebt gemaakt, is de resulterende kloon een *permanente* kloon. Tijdens dit proces wordt een kopie van de gegevens gemaakt in de cloud en wordt de tijd om deze gegevens te kopiëren bepaald door de grootte van de gegevens en de Azure-latencies (dit is een Azure-naar-Azure-kopie). Dit proces kan dagen tot weken duren. De tijdelijke kloon wordt een permanente kloon en heeft geen verwijzingen naar de oorspronkelijke volumegegevens waaruit deze is gekloond.
 
 ## <a name="scenarios-for-transient-and-permanent-clones"></a>Scenario's voor tijdelijke en permanente klonen
-In de volgende secties worden voorbeeld situaties beschreven waarin tijdelijke en permanente klonen kunnen worden gebruikt.
+In de volgende secties worden voorbeeldsituaties beschreven waarin tijdelijke en permanente klonen kunnen worden gebruikt.
 
-### <a name="item-level-recovery-with-a-transient-clone"></a>Herstel op item niveau met een tijdelijke kloon
-U moet een oud micro soft power point-presentatie bestand van één jaar herstellen. De IT-beheerder identificeert de specifieke back-up vanaf die tijd en filtert vervolgens het volume. De beheerder kloont vervolgens het volume, zoekt naar het bestand dat u zoekt en biedt dit aan u. In dit scenario wordt een tijdelijke kloon gebruikt.
+### <a name="item-level-recovery-with-a-transient-clone"></a>Herstel op objectniveau met een tijdelijke kloon
+U moet een eenjarig Microsoft PowerPoint-presentatiebestand herstellen. Uw IT-beheerder identificeert de specifieke back-up van die tijd en filtert vervolgens het volume. De beheerder kloont vervolgens het volume, lokaliseert het bestand dat u zoekt en verstrekt het aan u. In dit scenario wordt een tijdelijke kloon gebruikt.
 
-### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>Testen in de productie omgeving met een permanente kloon
-U moet een test fout controleren in de productie omgeving. U maakt een kloon van het volume in de productie omgeving en maakt vervolgens een Cloud momentopname van deze kloon om een onafhankelijk gekloond volume te maken. In dit scenario wordt een permanente kloon gebruikt.
+### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>Testen in de productieomgeving met een permanente kloon
+U moet een testfout in de productieomgeving verifiëren. U maakt een kloon van het volume in de productieomgeving en maakt vervolgens een cloudmomentopname van deze kloon om een onafhankelijk gekloond volume te maken. In dit scenario wordt een permanente kloon gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het [herstellen van een StorSimple-volume vanuit een back-upset](storsimple-8000-restore-from-backup-set-u2.md).
-* Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
+* Meer informatie over het [herstellen van een StorSimple-volume vanuit een back-upset.](storsimple-8000-restore-from-backup-set-u2.md)
+* Meer informatie over het [gebruik van de StorSimple Device Manager-service om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
 

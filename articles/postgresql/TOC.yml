@@ -102,6 +102,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: Gegevensversleuteling
               href: concepts-data-encryption-postgresql.md
+            - name: Beveiligingsbasislijn
+              href: security-baseline.md
         - name: Bedrijfscontinuïteit
           items:
             - name: Inleiding tot bedrijfscontinuïteit
@@ -273,6 +275,10 @@
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
+        - name: Openbare netwerktoegang weigeren
+          items:
+            - name: Azure Portal
+              href: howto-deny-public-network-access.md
         - name: Replicatie
           items:
             - name: Leesreplica's beheren in de Azure-portal

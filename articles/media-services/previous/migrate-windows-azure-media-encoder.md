@@ -1,6 +1,6 @@
 ---
-title: Migreren van Windows Azure Media Encoder naar Media Encoder Standard | Microsoft Docs
-description: In dit onderwerp wordt beschreven hoe u migreert van Azure Media Encoder naar de Media Encoder Standard-media processor.
+title: Migreren van Windows Azure Media Encoder naar Media Encoder Standard | Microsoft Documenten
+description: In dit onderwerp wordt besproken hoe u migreren van Azure Media Encoder naar de mediaprocessor Media Encoder Standard.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
 ms.openlocfilehash: e75e3f3eecf6c34050aeaa7fe387fffb0de58a74
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513198"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migreren van Windows Azure Media Encoder naar Media Encoder Standard
 
-In dit artikel worden de stappen beschreven voor het migreren van de verouderde Windows Azure Media Encoder (WAME)-media processor (die buiten gebruik wordt gesteld) naar de Media Encoder Standard-media processor. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) .
+In dit artikel worden de stappen besproken voor het migreren van de verouderde Media Encoder (WAME)-mediaprocessor (die wordt verwijderd) naar de media-encoderstandaard-mediaprocessor van Media Encoder. Zie voor de pensioendata dit [onderwerp met oudere onderdelen.](legacy-components.md)
 
-Bij het coderen van bestanden met WAME gebruikt klanten doorgaans een vooraf ingestelde teken reeks, zoals `H264 Adaptive Bitrate MP4 Set 1080p`. Als u wilt migreren, moet uw code worden bijgewerkt om gebruik te kunnen maken van de **Media Encoder Standard** media processor in plaats van WAME, en een van de equivalente [systeem instellingen](media-services-mes-presets-overview.md) zoals `H264 Multiple Bitrate 1080p`. 
+Bij het coderen van bestanden met WAME gebruikten `H264 Adaptive Bitrate MP4 Set 1080p`klanten meestal een benoemde voorinstellingstekenreeks zoals . Om te migreren, moet uw code worden bijgewerkt om de **Media Encoder Standard** mediaprocessor te gebruiken `H264 Multiple Bitrate 1080p`in plaats van WAME, en een van de gelijkwaardige [systeemvoorinstellingen](media-services-mes-presets-overview.md) zoals . 
 
-## <a name="migrating-to-media-encoder-standard"></a>Migreren naar Media Encoder Standard
+## <a name="migrating-to-media-encoder-standard"></a>Migreren naar Media Encoder-standaard
 
-Hier volgt een typisch C# voor beeld van code dat gebruikmaakt van het verouderde onderdeel. 
+Hier is een typisch C#-codevoorbeeld dat de verouderde component gebruikt. 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-Dit is de bijgewerkte versie die gebruikmaakt van Media Encoder Standard.
+Hier is de bijgewerkte versie die Media Encoder Standard gebruikt.
 
 ```csharp
 // Declare a new job. 
@@ -64,19 +64,19 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Geavanceerde scenario's 
 
-Als u uw eigen coderings voorinstelling voor WAME hebt gemaakt met behulp van het bijbehorende schema, is er een [gelijkwaardig schema voor Media Encoder Standard](media-services-mes-schema.md).
+Als u uw eigen coderingsvoorinstelling voor WAME had gemaakt met behulp van het schema, is er een [gelijkwaardig schema voor Media Encoder Standard.](media-services-mes-schema.md)
 
 ## <a name="known-differences"></a>Bekende verschillen 
 
-Media Encoder Standard is robuuster, betrouwbaarder, heeft betere prestaties en produceert een betere kwaliteit van de uitvoer dan het oudere WAME-coderings programma. Bovendien: 
+Media Encoder Standard is robuuster, betrouwbaarder, heeft betere prestaties en produceert een betere kwaliteit output dan de oude WAME encoder. Bovendien: 
 
-* Media Encoder Standard produceert uitvoer bestanden met een andere naamgevings Conventie dan WAME.
-* Media Encoder Standard produceert artefacten, zoals bestanden met de meta gegevens van het [invoer bestand](media-services-input-metadata-schema.md) en de [meta gegevens van het uitvoer bestand](media-services-output-metadata-schema.md).
-* Zoals is beschreven op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/#encoding) (met name in het gedeelte Veelgestelde vragen), wordt u gefactureerd op basis van de duur van de bestanden die worden geproduceerd als uitvoer wanneer u Video's codeert met behulp van Media Encoder Standard. Met WAME wordt u gefactureerd op basis van de grootte van de invoer video bestanden en video bestand (en).
+* Media Encoder Standard produceert uitvoerbestanden met een andere naamgevingsconventie dan WAME.
+* Media Encoder Standard produceert artefacten zoals bestanden met de [metagegevens van](media-services-input-metadata-schema.md) het invoerbestand en de [metagegevens van het uitvoerbestand(en).](media-services-output-metadata-schema.md)
+* Zoals gedocumenteerd op de [prijspagina](https://azure.microsoft.com/pricing/details/media-services/#encoding) (vooral in de faq-sectie), wanneer u video's codeert met Media Encoder Standard, wordt u gefactureerd op basis van de duur van de bestanden die als uitvoer worden geproduceerd. Met WAME wordt u gefactureerd op basis van de grootte van het invoervideobestand(en) en het uitvoervideobestand(en).
 
 ## <a name="need-help"></a>Hebt u hulp nodig?
 
-U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+U een ondersteuningsticket openen door te navigeren naar [nieuw ondersteuningsverzoek](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Volgende stappen
 

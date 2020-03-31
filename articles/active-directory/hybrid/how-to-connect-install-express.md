@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Aan de slag met expresinstellingen | Microsoft Docs'
+title: 'Azure AD Connect: aan de slag met expresinstellingen | Microsoft Docs'
 description: In dit artikel kunt u lezen hoe u de installatiewizard downloadt, installeert en uitvoert voor Azure AD Connect.
 services: active-directory
 author: billmath
@@ -16,16 +16,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24143f8c94a294da90be84bacfe633db0cd24f85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60244523"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Aan de slag met Azure AD Connect met expresinstellingen
 **Expresinstellingen** van Azure AD Connect worden gebruikt wanneer u een singleforesttopologie hebt en [synchronisatie van wachtwoord-hash](how-to-connect-password-hash-synchronization.md) voor verificatie. **Expresinstellingen** is de standaardoptie en wordt gebruikt voor het meest geïmplementeerde scenario. U bent slechts enkele snelle klikken verwijderd van uitbreiding van uw on-premises directory naar de cloud.
 
-Zorg ervoor dat u, voordat u begint met de installatie van Azure AD Connect, [Azure AD Connect downloadt](https://go.microsoft.com/fwlink/?LinkId=615771) en de vereiste stappen uitvoert in [Azure AD Connect: Hardware en vereisten](how-to-connect-install-prerequisites.md).
+Zorg ervoor dat u, voordat u begint met de installatie van Azure AD Connect, [Azure AD Connect downloadt](https://go.microsoft.com/fwlink/?LinkId=615771) en de vereiste stappen in [Azure AD Connect: Hardware and prerequisites](how-to-connect-install-prerequisites.md) voltooit.
 
 Zie [verwante documentatie](#related-documentation) voor andere scenario's als de expresinstellingen niet met uw topologie overeenkomen.
 
@@ -37,10 +37,10 @@ In de sectie met [video's](#videos) kunt u zien hoe deze stappen in de praktijk 
 3. Selecteer in het welkomstscherm het vakje waarmee u aangeeft akkoord te gaan met de licentievoorwaarden en klik op **Doorgaan**.  
 4. Klik in het scherm Expresinstellingen op **Expresinstellingen gebruiken**.  
    ![Welkom bij Azure AD Connect](./media/how-to-connect-install-express/express.png)
-5. Voer in het scherm Verbinding maken met Azure AD de gebruikersnaam en het wachtwoord in van een hoofdbeheerder voor Azure AD. Klik op **volgende**.  
+5. Voer in het scherm Verbinding maken met Azure AD de gebruikersnaam en het wachtwoord in van een hoofdbeheerder voor Azure AD. Klik op **Volgende**.  
    ![Verbinding maken met Azure AD](./media/how-to-connect-install-express/connectaad.png)  
    Zie [Connectiviteitsproblemen oplossen](tshoot-connect-connectivity.md) als u een foutbericht krijgt en u problemen hebt met de connectiviteit.
-6. Voer in het scherm Verbinding maken met Azure AD de gebruikersnaam en het wachtwoord in voor een enterprisebeheerdersaccount. U kunt het domeingedeelte in NetBios- of FQDN-indeling invoeren, dat wil zeggen FABRIKAM\administrator of fabrikam.com\administrator. Klik op **volgende**.  
+6. Voer in het scherm Verbinding maken met Azure AD de gebruikersnaam en het wachtwoord in voor een enterprisebeheerdersaccount. U kunt het domeingedeelte in NetBios- of FQDN-indeling invoeren, dat wil zeggen FABRIKAM\administrator of fabrikam.com\administrator. Klik op **Volgende**.  
    ![Verbinding maken met AD DS](./media/how-to-connect-install-express/connectad.png)
 7. De pagina [**Configuratie van aanmelding bij Azure AD**](plan-connect-user-signin.md#azure-ad-sign-in-configuration) wordt alleen weergegeven als u de [domeinen niet hebt geverifieerd](../active-directory-domains-add-azure-portal.md) bij de [vereisten](how-to-connect-install-prerequisites.md).
    ![Niet-geverifieerde domeinen](./media/how-to-connect-install-express/unverifieddomain.png)  
@@ -61,13 +61,13 @@ Voor een video over het gebruik van expresinstallatie gaat u naar:
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u Azure AD Connect geïnstalleerd hebt kunt u [de installatie verifiëren en licenties toewijzen](how-to-connect-post-installation.md).
+Nu u Azure AD Connect geïnstalleerd hebt, kunt u [de installatie verifiëren en licenties toewijzen](how-to-connect-post-installation.md).
 
-Meer informatie over deze functies, die de installatie zijn ingeschakeld: [Automatische upgrade](how-to-connect-install-automatic-upgrade.md), [Onopzettelijke verwijderingen voorkomen](how-to-connect-sync-feature-prevent-accidental-deletes.md) en [Azure AD Connect Health](how-to-connect-health-sync.md).
+Lees meer over deze functies, die tijdens de installatie zijn ingeschakeld: [Automatische upgrade](how-to-connect-install-automatic-upgrade.md), [Onopzettelijk verwijderen voorkomen](how-to-connect-sync-feature-prevent-accidental-deletes.md) en [Azure AD Connect Health](how-to-connect-health-sync.md).
 
-Meer informatie over deze algemene onderwerpen: [scheduler and how to trigger sync](how-to-connect-sync-feature-scheduler.md).
+Lees meer over deze veelvoorkomende onderwerpen: [Scheduler en het activeren van de synchronisatie](how-to-connect-sync-feature-scheduler.md).
 
-Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory ](whatis-hybrid-identity.md).
+Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).
 
 ## <a name="related-documentation"></a>Verwante documentatie
 
@@ -75,5 +75,5 @@ Lees meer over het [integreren van uw on-premises identiteiten met Azure Active 
 | --- | --- |
 | Overzicht Azure AD Connect | [Uw on-premises directory's integreren met Azure Active Directory](whatis-hybrid-identity.md)
 | Installeren met behulp van aangepaste instellingen | [Aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md) |
-| Upgraden van DirSync | [Upgraden van Azure AD-synchronisatiehulpprogramma (DirSync)](how-to-dirsync-upgrade-get-started.md)|
+| Upgrade van DirSync | [Upgrade van Azure AD-synchronisatiehulpprogramma (DirSync) (Engelstalig artikel)](how-to-dirsync-upgrade-get-started.md)|
 | Accounts die worden gebruikt voor installatie | [Meer informatie over referenties en machtigingen van Azure AD Connect](reference-connect-accounts-permissions.md) |

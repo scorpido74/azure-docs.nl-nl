@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid concepten
-description: Beschrijving van Azure Event Grid en de concepten ervan. Definieert verschillende belang rijke onderdelen van Event Grid.
+title: Azure Event Grid-concepten
+description: Beschrijving van Azure Event Grid en de concepten ervan. Hiermee definieert u verschillende belangrijke onderdelen van gebeurtenisraster.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,84 +8,84 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
 ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265062"
 ---
-# <a name="concepts-in-azure-event-grid"></a>Concepten in Azure Event Grid
+# <a name="concepts-in-azure-event-grid"></a>Concepten in Azure-gebeurtenisraster
 
 In dit artikel worden de belangrijkste concepten in Azure Event Grid beschreven.
 
 ## <a name="events"></a>Gebeurtenissen
 
-Een gebeurtenis is de kleinste hoeveelheid informatie die in het systeem volledig beschrijft wat er is gebeurd. Elke gebeurtenis heeft algemene informatie, zoals: bron van de gebeurtenis, het tijdstip waarop het evenement plaatsvond en de unieke id. Elke gebeurtenis bevat ook specifieke informatie die alleen relevant is voor het specifieke gebeurtenis type. Bijvoorbeeld: een gebeurtenis over een nieuw bestand dat wordt gemaakt in Azure Storage bevat details over het bestand, zoals de `lastTimeModified` waarde. Of een Event Hubs gebeurtenis heeft de URL van het opname bestand. 
+Een gebeurtenis is de kleinste hoeveelheid informatie die volledig beschrijft iets dat is gebeurd in het systeem. Elke gebeurtenis heeft algemene informatie zoals: bron van de gebeurtenis, tijd dat de gebeurtenis plaatsvond en unieke id. Elk evenement heeft ook specifieke informatie die alleen relevant is voor het specifieke type evenement. Een gebeurtenis over het maken van een nieuw bestand in Azure Storage bevat bijvoorbeeld informatie over het bestand, zoals de waarde `lastTimeModified`. Een Event Hubs-gebeurtenis bevat de URL van het Capture-bestand. 
 
-Een gebeurtenis met een grootte van Maxi maal 64 KB wordt gedekt door de algemene Beschik baarheid (GA) Service Level Agreement (SLA). De ondersteuning voor een gebeurtenis met een grootte van Maxi maal 1 MB is momenteel als preview-versie beschikbaar. Gebeurtenissen van meer dan 64 KB worden in rekening gebracht in stappen van 64-KB. 
+Een gebeurtenis van grootte tot 64 KB wordt gedekt door de ALGEMENE Beschikbaarheid (GA) Service Level Agreement (SLA). De ondersteuning voor een gebeurtenis van maximaal 1 MB is momenteel in preview. Gebeurtenissen van meer dan 64 KB worden in stappen van 64 KB in rekening gebracht. 
 
 
-Zie [Azure Event grid-gebeurtenis schema](event-schema.md)voor de eigenschappen die in een gebeurtenis worden verzonden.
+Zie [Azure Event Grid-gebeurtenisschema](event-schema.md)voor de eigenschappen die in een gebeurtenis worden verzonden.
 
 ## <a name="publishers"></a>Uitgevers
 
-Een uitgever is de gebruiker of organisatie die besluit gebeurtenissen te verzenden naar Event Grid. Micro soft publiceert gebeurtenissen voor verschillende Azure-Services. U kunt gebeurtenissen vanuit uw eigen toepassing publiceren. Organisaties die services buiten Azure hosten, kunnen gebeurtenissen publiceren via Event Grid.
+Een uitgever is de gebruiker of organisatie die besluit gebeurtenissen naar gebeurtenisraster te sturen. Microsoft publiceert gebeurtenissen voor verschillende Azure-services. U kunt gebeurtenissen publiceren via uw eigen toepassing. Organisaties die services buiten Azure hosten, kunnen via Event Grid gebeurtenissen publiceren.
 
 ## <a name="event-sources"></a>Gebeurtenisbronnen
 
-Een gebeurtenis bron is de plaats waar de gebeurtenis plaatsvindt. Elke gebeurtenis bron heeft betrekking op een of meer gebeurtenis typen. Azure Storage is bijvoorbeeld de gebeurtenis bron voor het maken van BLOB-gebeurtenissen. IoT Hub is de gebeurtenis bron voor het maken van apparaat-gebeurtenissen. Uw toepassing is de gebeurtenis bron voor aangepaste gebeurtenissen die u definieert. Gebeurtenis bronnen zijn verantwoordelijk voor het verzenden van gebeurtenissen naar Event Grid.
+Een gebeurtenisbron is waar de gebeurtenis plaatsvindt. Elke gebeurtenisbron is gerelateerd aan één of meer gebeurtenistypen. Azure Storage is bijvoorbeeld de gebeurtenisbron bij door een blob gemaakte gebeurtenissen. IoT Hub is de gebeurtenisbron bij door een apparaat gemaakte gebeurtenissen. Uw toepassing is de gebeurtenisbron bij aangepaste gebeurtenissen die u definieert. Gebeurtenisbronnen zijn verantwoordelijk voor het verzenden van gebeurtenissen naar Event Grid.
 
-Zie [gebeurtenis bronnen in azure Event grid](event-sources.md)voor informatie over het implementeren van een van de ondersteunde Event grid bronnen.
+Zie [Gebeurtenisbronnen in Azure Event Grid](event-sources.md)voor informatie over het implementeren van een van de ondersteunde gebeurtenisrasterbronnen.
 
 ## <a name="topics"></a>Onderwerpen
 
-Het event grid-onderwerp bevat een eind punt waar gebeurtenissen door de bron worden verzonden. De uitgever maakt het onderwerp Event grid en bepaalt of een gebeurtenis bron één onderwerp of meer dan één onderwerp nodig heeft. Er wordt een onderwerp gebruikt voor een verzameling van gerelateerde gebeurtenissen. Voor het reageren op bepaalde typen gebeurtenissen bepalen abonnees welke onderwerpen moeten worden geabonneerd.
+Het gebeurtenisrasteronderwerp biedt een eindpunt waarin de bron gebeurtenissen verzendt. De uitgever maakt het onderwerp van het gebeurtenisraster en bepaalt of een gebeurtenisbron één onderwerp of meer dan één onderwerp nodig heeft. Een onderwerp wordt gebruikt voor een verzameling gerelateerde evenementen. Om te reageren op bepaalde soorten gebeurtenissen, bepalen abonnees op welke onderwerpen ze zich moeten abonneren.
 
-Systeem onderwerpen zijn ingebouwde onderwerpen van Azure-Services. U ziet geen systeem onderwerpen in uw Azure-abonnement omdat de uitgever eigenaar is van de onderwerpen, maar u er wel op kunt abonneren. Als u zich wilt abonneren, geeft u informatie op over de resource waarvan u gebeurtenissen wilt ontvangen. Als u toegang tot de resource hebt, kunt u zich abonneren op de gebeurtenissen.
+Systeemonderwerpen zijn ingebouwde onderwerpen die worden aangeboden door Azure-services. Er staan geen systeemonderwerpen in uw Azure-abonnement omdat de uitgever er eigenaar van is, maar u kunt zich wel op de onderwerpen abonneren. Als u zich wilt abonneren, moet u informatie opgeven over de resource waar u gebeurtenissen van wilt ontvangen. Als u toegang hebt tot een bepaalde resource, kunt u zich abonneren op diens gebeurtenissen.
 
-Aangepaste onderwerpen zijn toepassingen en onderwerpen van derden. Wanneer u toegang tot een aangepast onderwerp maakt of toewijst, ziet u dat aangepaste onderwerp in uw abonnement.
+Aangepaste onderwerpen zijn onderwerpen van toepassingen en derden. Wanneer u een aangepast onderwerp maakt of u er toegang toe krijgt, ziet u dat aangepaste onderwerp in uw abonnement.
 
-Bij het ontwerpen van uw toepassing hebt u de flexibiliteit bij het bepalen van het aantal te maken onderwerpen. Voor grote oplossingen maakt u een aangepast onderwerp voor elke categorie gerelateerde gebeurtenissen. Denk bijvoorbeeld aan een toepassing die gebeurtenissen met betrekking tot het wijzigen van gebruikers accounts en het verwerken van orders verzendt. Het is niet onwaarschijnlijk dat elke gebeurtenis-handler beide categorieën gebeurtenissen wil. Maak twee aangepaste onderwerpen en laat gebeurtenis-handlers zich abonneren op het abonnement. Voor kleine oplossingen kunt u de voor keur geven aan het verzenden van alle gebeurtenissen naar één onderwerp. Gebeurtenis abonnees kunnen filteren op de gewenste gebeurtenis typen.
+Bij het ontwerpen van uw toepassing hebt u flexibiliteit bij het bepalen van het aantal onderwerpen dat u wilt maken. Maak voor grote oplossingen een aangepast onderwerp voor elke categorie gerelateerde gebeurtenissen. Neem bijvoorbeeld een toepassing die gebeurtenissen over het bewerken van gebruikersaccounts en het verwerken van orders verzendt. De kans is klein dat er gebeurtenis-handlers zijn die beide gebeurteniscategorieën kunnen verwerken. Maak daarom twee aangepaste onderwerpen en laat gebeurtenis-handlers zich abonneren op het onderwerp dat hen interesseert. Voor kleine oplossingen u er de voorkeur aan geven om alle gebeurtenissen naar één onderwerp te sturen. Gebeurtenisabonnees kunnen filteren op de gewenste gebeurtenistypen.
 
 ## <a name="event-subscriptions"></a>Gebeurtenisabonnementen
 
-Met een abonnement wordt Event Grid welke gebeurtenissen in een onderwerp u wilt ontvangen. Wanneer u het abonnement maakt, geeft u een eind punt op voor het afhandelen van de gebeurtenis. U kunt de gebeurtenissen filteren die naar het eind punt worden verzonden. U kunt filteren op gebeurtenis type of onderwerps patroon. Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie.
+Een abonnement vertelt Event Grid welke gebeurtenissen op een onderwerp dat u wilt ontvangen. Bij het maken van het abonnement geeft u een eindpunt voor het afhandelen van de gebeurtenis. U de gebeurtenissen filteren die naar het eindpunt worden verzonden. U filteren op gebeurtenistype of onderwerppatroon. Zie [Abonnementsschema gebeurtenisraster](subscription-creation-schema.md)voor meer informatie .
 
-Zie voor voor beelden van het maken van abonnementen:
+Zie voor voorbeelden van het maken van abonnementen:
 
-* [Voor beelden van Azure CLI voor Event Grid](cli-samples.md)
-* [Voor beelden Azure PowerShell voor Event Grid](powershell-samples.md)
-* [Azure Resource Manager sjablonen voor Event Grid](template-samples.md)
+* [Azure CLI-voorbeelden voor Event Grid](cli-samples.md)
+* [Voorbeelden van Azure PowerShell voor Event Grid](powershell-samples.md)
+* [Azure Resource Manager-sjablonen voor Event Grid](template-samples.md)
 
-Zie [Query Event grid-abonnementen](query-event-subscriptions.md)voor meer informatie over het ophalen van uw huidige Event grid-abonnementen.
+Zie [Queryeventgrid-abonnementen voor](query-event-subscriptions.md)informatie over het verkrijgen van uw huidige gebeurtenisrasterabonnementen .
 
-## <a name="event-subscription-expiration"></a>Verloop datum van gebeurtenis abonnement
-Het gebeurtenisabonnement is na die datum automatisch verlopen. Stel een verval datum in voor gebeurtenis abonnementen die alleen gedurende een beperkte periode nodig zijn. u hoeft zich geen zorgen te maken over het opschonen van die abonnementen. Wanneer u bijvoorbeeld een gebeurtenis abonnement maakt om een scenario te testen, wilt u mogelijk een verval datum instellen. 
+## <a name="event-subscription-expiration"></a>Verlopen gebeurtenisabonnement
+Het gebeurtenisabonnement is na die datum automatisch verlopen. Stel een vervaldatum in voor gebeurtenisabonnementen die slechts voor een beperkte tijd nodig zijn en u wilt zich geen zorgen maken over het opschonen van die abonnementen. Wanneer u bijvoorbeeld een gebeurtenisabonnement maakt om een scenario te testen, u een vervaldatum instellen. 
 
-Zie [abonneren met geavanceerde filters](how-to-filter-events.md#subscribe-with-advanced-filters)voor een voor beeld van het instellen van een verval datum.
+Zie [Abonneren met geavanceerde filters](how-to-filter-events.md#subscribe-with-advanced-filters)voor een voorbeeld van het instellen van een vervaldatum.
 
 ## <a name="event-handlers"></a>Event Handlers
 
-Vanuit een Event Grid perspectief is een gebeurtenis-handler het punt waar de gebeurtenis wordt verzonden. De handler heeft een aantal verdere acties nodig om de gebeurtenis te verwerken. Event Grid ondersteunt verschillende typen handlers. U kunt een ondersteunde Azure-service of uw eigen webhook gebruiken als handler. Afhankelijk van het type handler, worden Event Grid verschillende mechanismen gevolgd om de levering van de gebeurtenis te garanderen. Voor gebeurtenis-handlers voor HTTP-webhooks wordt de gebeurtenis opnieuw geprobeerd totdat de handler de status code van `200 – OK`retourneert. Voor Azure Storage wachtrij worden de gebeurtenissen opnieuw geprobeerd totdat de Queue-service de bericht push naar de wachtrij heeft verwerkt.
+Vanuit het perspectief van eventgrid is een gebeurtenishandler de plaats waar de gebeurtenis wordt verzonden. De handler onderneemt verdere actie om de gebeurtenis te verwerken. Event Grid ondersteunt verschillende handlertypen. U een ondersteunde Azure-service of uw eigen webhook als handler gebruiken. Afhankelijk van het type handler volgt Event Grid verschillende mechanismen om de levering van de gebeurtenis te garanderen. Voor HTTP-webhook-gebeurtenishandlers wordt de gebeurtenis opnieuw geprobeerd `200 – OK`totdat de handler een statuscode van . Voor Azure Storage Queue worden de gebeurtenissen opnieuw geprobeerd totdat de wachtrijservice het bericht in de wachtrij verwerkt.
 
-Zie [gebeurtenis-handlers in azure Event grid](event-handlers.md)voor informatie over het implementeren van een van de ondersteunde Event grid handlers.
+Zie [Gebeurtenishandlers in Azure Event Grid](event-handlers.md)voor informatie over het implementeren van een van de ondersteunde gebeurtenisrasterhandlers.
 
 ## <a name="security"></a>Beveiliging
 
-Event Grid biedt beveiliging voor het abonneren op onderwerpen en het publiceren van onderwerpen. Wanneer u zich abonneert, moet u over de juiste machtigingen beschikken voor het onderwerp resource of event grid. Bij het publiceren moet u een SAS-token of sleutel verificatie hebben voor het onderwerp. Zie [Event grid beveiliging en verificatie](security-authentication.md)voor meer informatie.
+Event Grid biedt beveiliging voor het abonneren op onderwerpen en het publiceren van onderwerpen. Wanneer u zich abonneert, moet u over voldoende machtigingen beschikken voor het onderwerp resource of gebeurtenisraster. Bij publicatie moet u een SAS-token of sleutelverificatie voor het onderwerp hebben. Zie [Beveiliging en verificatie van gebeurtenisraster](security-authentication.md)voor meer informatie.
 
-## <a name="event-delivery"></a>Gebeurtenis levering
+## <a name="event-delivery"></a>Levering van evenementen
 
-Als Event Grid niet kan bevestigen dat er een gebeurtenis is ontvangen door het eind punt van de abonnee, wordt de gebeurtenis opnieuw geleverd. Zie [Event grid aflevering van berichten en probeer het opnieuw](delivery-and-retry.md).
+Als Gebeurtenisgrid niet kan bevestigen dat een gebeurtenis is ontvangen door het eindpunt van de abonnee, wordt de gebeurtenis opnieuw geleverd. Zie [Berichtbezorging en opnieuw proberen](delivery-and-retry.md)voor meer informatie .
 
 ## <a name="batching"></a>Batchverwerking
 
-Wanneer u een aangepast onderwerp gebruikt, moeten gebeurtenissen altijd in een matrix worden gepubliceerd. Dit kan een batch zijn van één voor scenario's met een lage door Voer, maar voor het gebruik van grote volumes is het raadzaam om meerdere gebeurtenissen per publicatie op te nemen voor een hogere efficiëntie. Batches kunnen Maxi maal 1 MB groot zijn. Elke gebeurtenis mag nog steeds niet groter zijn dan 64 KB (algemene Beschik baarheid) of 1 MB (preview-versie).
+Wanneer u een aangepast onderwerp gebruikt, moeten gebeurtenissen altijd in een array worden gepubliceerd. Dit kan een batch van een voor low-throughput scenario's, echter, voor een hoog volume use cases, het is raadzaam dat u batch verschillende gebeurtenissen samen per publiceren om een hogere efficiëntie te bereiken. Batches kunnen maximaal 1 MB zijn. Elke gebeurtenis mag nog steeds niet groter zijn dan 64 KB (algemene beschikbaarheid) of 1 MB (voorbeeld).
 
 > [!NOTE]
-> Een gebeurtenis met een grootte van Maxi maal 64 KB wordt gedekt door de algemene Beschik baarheid (GA) Service Level Agreement (SLA). De ondersteuning voor een gebeurtenis met een grootte van Maxi maal 1 MB is momenteel als preview-versie beschikbaar. Gebeurtenissen van meer dan 64 KB worden gefactureerd in stappen van 64 KB. 
+> Een gebeurtenis van grootte tot 64 KB wordt gedekt door de ALGEMENE Beschikbaarheid (GA) Service Level Agreement (SLA). De ondersteuning voor een gebeurtenis van maximaal 1 MB is momenteel in preview. Gebeurtenissen van meer dan 64 KB worden in stappen van 64 KB in rekening gebracht. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.
-* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.
+* Zie [Aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md)om snel aan de slag te gaan met gebeurtenisraster.

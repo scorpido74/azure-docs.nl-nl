@@ -1,6 +1,6 @@
 ---
-title: Client verificatie van binnenkomende oproepen configureren-Azure Event Grid IoT Edge | Microsoft Docs
-description: API-protocollen configureren die worden weer gegeven door Event Grid op IoT Edge.
+title: Clientverificatie configureren voor binnenkomende oproepen - Azure Event Grid IoT Edge | Microsoft Documenten
+description: API-protocollen configureren die worden weergegeven door gebeurtenisraster op IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3363db4557dd19e8d72747ccd62bb535abb7b1e2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841788"
 ---
-# <a name="configure-client-authentication-of-incoming-calls"></a>Client verificatie van binnenkomende oproepen configureren
+# <a name="configure-client-authentication-of-incoming-calls"></a>Clientverificatie van binnenkomende oproepen configureren
 
-Deze hand leiding bevat voor beelden van de mogelijke configuraties voor client verificatie voor de module Event Grid. De module Event Grid ondersteunt twee typen client verificatie:
+Deze handleiding geeft voorbeelden van de mogelijke clientverificatieconfiguraties voor de Event Grid-module. De module Event Grid ondersteunt twee typen clientverificatie:
 
-* Shared Access Signature (SAS) op basis van sleutels
+* SAS-sleutelgebaseerde handtekening (Shared Access Signature)
 * Op basis van certificaten
 
-Zie de hand leiding voor [beveiliging en verificatie](security-authentication.md) voor alle mogelijke configuraties.
+Zie [beveiligings- en verificatiehandleiding](security-authentication.md) voor alle mogelijke configuraties.
 
-## <a name="enable-certificate-based-client-authentication-no-self-signed-certificates"></a>Client authenticatie op basis van certificaten inschakelen, geen zelfondertekende certificaten
+## <a name="enable-certificate-based-client-authentication-no-self-signed-certificates"></a>Clientverificatie op basis van certificaten inschakelen, geen zelfondertekende certificaten
 
 ```json
  {
@@ -38,7 +38,7 @@ Zie de hand leiding voor [beveiliging en verificatie](security-authentication.md
 }
  ```
 
-## <a name="enable-certificate-based-client-authentication-allow-self-signed-certificates"></a>Client authenticatie op basis van certificaten inschakelen, zelfondertekende certificaten toestaan
+## <a name="enable-certificate-based-client-authentication-allow-self-signed-certificates"></a>Clientverificatie op basis van certificaten inschakelen, zelfondertekende certificaten toestaan
 
 ```json
  {
@@ -52,9 +52,9 @@ Zie de hand leiding voor [beveiliging en verificatie](security-authentication.md
 ```
 
 >[!NOTE]
->Stel de eigenschap **inbound__clientAuth__clientCert__allowUnknownCA** in op **waar** alleen in test omgevingen, omdat u meestal zelfondertekende certificaten kunt gebruiken. Voor werk belastingen wordt u aangeraden deze eigenschap in te stellen op **False** en certificaten van een certificerings instantie (CA).
+>Stel de eigenschap **inbound__clientAuth__clientCert__allowUnknownCA** alleen in testomgevingen **waar** in, omdat u doorgaans zelfondertekende certificaten gebruiken. Voor productieworkloads raden we u aan deze eigenschap in te stellen op **false** en certificaten van een certificeringsinstantie (CA).
 
-## <a name="enable-certificate-based-and-sas-key-based-client-authentication"></a>Op certificaten gebaseerde en SAS-sleutel gebaseerde client verificatie inschakelen
+## <a name="enable-certificate-based-and-sas-key-based-client-authentication"></a>Clientverificatie op basis van certificaten en sas-sleutels inschakelen
 
 ```json
  {
@@ -70,4 +70,4 @@ Zie de hand leiding voor [beveiliging en verificatie](security-authentication.md
  ```
 
 >[!NOTE]
->Met SAS-client authenticatie op basis van sleutels kan een niet-IoT Edge-module beheer-en runtime-bewerkingen uitvoeren, uitgaande van de API-poorten die buiten het IoT Edge netwerk toegankelijk zijn.
+>Met sas-key-gebaseerde clientverificatie kan een niet-IoT-edge-module beheer- en runtime-bewerkingen uitvoeren, ervan uitgaande dat de API-poorten natuurlijk toegankelijk zijn buiten het IoT Edge-netwerk.

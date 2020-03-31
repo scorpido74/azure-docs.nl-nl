@@ -1,56 +1,56 @@
 ---
 title: Azure Cosmos DB maken en beheren met Resource Manager-sjablonen
-description: Azure Resource Manager sjablonen gebruiken om Azure Cosmos DB te maken en te configureren voor de SQL-API (core)
+description: Azure Resource Manager-sjablonen gebruiken om Azure Cosmos DB voor SQL (Core) API te maken en te configureren
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251841"
 ---
-# <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Azure Cosmos DB SQL-API-resources (core) beheren met Azure Resource Manager sjablonen
+# <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Api-bronnen van Azure Cosmos DB SQL (Core) beheren met Azure Resource Manager-sjablonen
 
 In dit artikel leert u hoe u Azure Resource Manager-sjablonen kunt gebruiken om het beheer van uw Azure Cosmos DB-accounts, -databases en -containers te automatiseren.
 
-In dit artikel worden alleen Azure Resource Manager sjabloon voorbeelden voor SQL-API-accounts weer gegeven. U kunt ook voor beelden van sjablonen vinden voor [Cassandra](manage-cassandra-with-resource-manager.md)-, [Gremlin](manage-gremlin-with-resource-manager.md)-, [MongoDb](manage-mongodb-with-resource-manager.md)-en [Table](manage-table-with-resource-manager.md) -api's.
+In dit artikel worden alleen voorbeelden van Azure Resource Manager-sjabloonvoorbeelden voor SQL API-accounts weergegeven. U ook sjabloonvoorbeelden vinden voor [Cassandra,](manage-cassandra-with-resource-manager.md) [Gremlin,](manage-gremlin-with-resource-manager.md) [MongoDB](manage-mongodb-with-resource-manager.md)en Tabel-API's. [Table](manage-table-with-resource-manager.md)
 
 <a id="create-resource"></a>
 
-## <a name="create-an-azure-cosmos-account-database-and-container"></a>Een Azure Cosmos-account,-data base en-container maken
+## <a name="create-an-azure-cosmos-account-database-and-container"></a>Een Azure Cosmos-account, -database en -container maken
 
-Met de volgende Azure Resource Manager sjabloon maakt u een Azure Cosmos-account met:
+Met de volgende Azure Resource Manager-sjabloon wordt een Azure Cosmos-account gemaakt met:
 
-* Twee containers die de door Voer van 400 aangevraagde eenheden per seconde (RU/s) delen op database niveau.
-* Eén container met toegewezen 400 RU/s-door voer.
+* Twee containers die de doorvoer van 400 gevraagde eenheden per seconde (RU/s) delen op databaseniveau.
+* Eén container met speciale 400 RU/s doorvoer.
 
-Als u de Azure Cosmos DB resources wilt maken, kopieert u de volgende voorbeeld sjabloon en implementeert u deze zoals beschreven, via [Power shell](#deploy-via-powershell) of [Azure cli](#deploy-via-azure-cli).
+Als u de Azure Cosmos DB-resources wilt maken, kopieert u de volgende voorbeeldsjabloon en implementeert u deze zoals beschreven, via [PowerShell](#deploy-via-powershell) of [Azure CLI](#deploy-via-azure-cli).
 
-* U kunt ook de [Galerie van Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) start bezoeken en de sjabloon implementeren vanuit de Azure Portal.
-* U kunt de sjabloon ook downloaden naar uw lokale computer of een nieuwe sjabloon maken en het lokale pad opgeven met de para meter `--template-file`.
+* Optioneel u de [Azure Quickstart Gallery](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) bezoeken en de sjabloon implementeren vanuit de Azure-portal.
+* U de sjabloon ook downloaden naar uw lokale computer of `--template-file` een nieuwe sjabloon maken en het lokale pad met de parameter opgeven.
 
 > [!IMPORTANT]
 >
-> * Wanneer u locaties toevoegt aan of verwijdert uit een Azure Cosmos-account, kunt u niet tegelijkertijd andere eigenschappen wijzigen. Deze bewerkingen moeten afzonderlijk worden uitgevoerd.
-> * Account namen zijn beperkt tot 44 tekens, alle kleine letters.
-> * Als u de doorvoer waarden wilt wijzigen, dient u de sjabloon opnieuw in met de bijgewerkte RU/s.
+> * Wanneer u locaties toevoegt of verwijdert aan een Azure Cosmos-account, u andere eigenschappen niet tegelijkertijd wijzigen. Deze bewerkingen moeten afzonderlijk worden uitgevoerd.
+> * Accountnamen zijn beperkt tot 44 tekens, alle kleine letters.
+> * Als u de doorvoerwaarden wilt wijzigen, dient u de sjabloon opnieuw in met bijgewerkte RU/s.
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 > [!NOTE]
-> Als u een container met een grote partitie sleutel wilt maken, wijzigt u de vorige sjabloon om de eigenschap `"version":2` op te nemen in het `partitionKey`-object.
+> Als u een container met grote partitiesleutel wilt `"version":2` maken, `partitionKey` wijzigt u de vorige sjabloon om de eigenschap in het object op te nemen.
 
-### <a name="deploy-via-powershell"></a>Implementeren via Power shell
+### <a name="deploy-via-powershell"></a>Implementeren via PowerShell
 
-Als u Power shell wilt gebruiken om de Azure Resource Manager sjabloon te implementeren:
+Ga als u PowerShell wilt gebruiken om de sjabloon Azure Resource Manager te implementeren:
 
 1. **Kopieer** het script.
-2. Selecteer **proberen** om Azure Cloud shell te openen.
-3. Klik met de rechter muisknop in het Azure Cloud Shell venster en selecteer vervolgens **Plakken**.
+2. Selecteer **Probeer deze** om Azure Cloud Shell te openen.
+3. Klik met de rechtermuisknop in het Azure Cloud Shell-venster en selecteer **Plakken**.
 
 ```azurepowershell-interactive
 
@@ -84,15 +84,15 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-U kunt ervoor kiezen om de sjabloon te implementeren met een lokaal geïnstalleerde versie van Power shell in plaats van Azure Cloud Shell. U moet [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Voer `Get-Module -ListAvailable Az` uit om de vereiste versie te vinden.
+U ervoor kiezen om de sjabloon te implementeren met een lokaal geïnstalleerde versie van PowerShell in plaats van Azure Cloud Shell. U moet [de Azure PowerShell-module installeren.](/powershell/azure/install-az-ps) Voer `Get-Module -ListAvailable Az` uit om de vereiste versie te vinden.
 
 ### <a name="deploy-via-azure-cli"></a>Implementeren via Azure CLI
 
-Als u Azure CLI wilt gebruiken om de Azure Resource Manager-sjabloon te implementeren:
+Ga als u Azure CLI wilt gebruiken om de sjabloon Azure Resource Manager te implementeren:
 
 1. **Kopieer** het script.
-2. Selecteer **proberen** om Azure Cloud shell te openen.
-3. Klik met de rechter muisknop in het Azure Cloud Shell venster en selecteer vervolgens **Plakken**.
+2. Selecteer **Probeer deze** om Azure Cloud Shell te openen.
+3. Klik met de rechtermuisknop in het Azure Cloud Shell-venster en selecteer **Plakken**.
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -123,28 +123,28 @@ az group deployment create --resource-group $resourceGroupName \
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-De `az cosmosdb show` opdracht toont het zojuist gemaakte Azure Cosmos-account nadat het is ingericht. U kunt ervoor kiezen om de sjabloon te implementeren met een lokaal geïnstalleerde versie van Azure CLI in plaats Azure Cloud Shell. Zie het artikel over de [Azure-opdracht regel interface (CLI)](/cli/azure/) voor meer informatie.
+De `az cosmosdb show` opdracht toont het nieuw gemaakte Azure Cosmos-account nadat het is ingericht. U ervoor kiezen om de sjabloon te implementeren met een lokaal geïnstalleerde versie van Azure CLI in plaats van Azure Cloud Shell. Zie het [CLI-artikel (Azure Command-Line Interface) voor](/cli/azure/) meer informatie.
 
 <a id="create-sproc"></a>
 
-## <a name="create-an-azure-cosmos-db-container-with-server-side-functionality"></a>Een Azure Cosmos DB-container maken met functionaliteit aan server zijde
+## <a name="create-an-azure-cosmos-db-container-with-server-side-functionality"></a>Een Azure Cosmos DB-container maken met functionaliteit aan de serverzijde
 
-U kunt een Azure Resource Manager sjabloon gebruiken om een Azure Cosmos DB container te maken met een opgeslagen procedure, trigger en door de gebruiker gedefinieerde functie.
+U een Azure Resource Manager-sjabloon gebruiken om een Azure Cosmos DB-container te maken met een opgeslagen procedure, trigger en door de gebruiker gedefinieerde functie.
 
-Kopieer de volgende voorbeeld sjabloon en implementeer deze zoals beschreven, met [Power shell](#deploy-with-powershell) of [Azure cli](#deploy-with-azure-cli).
+Kopieer de volgende voorbeeldsjabloon en implementeer deze zoals beschreven, met [PowerShell](#deploy-with-powershell) of [Azure CLI](#deploy-with-azure-cli).
 
-* U kunt ook de galerie van [Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) start bezoeken en de sjabloon implementeren vanuit de Azure Portal.
-* U kunt de sjabloon ook downloaden naar uw lokale computer of een nieuwe sjabloon maken en het lokale pad opgeven met de para meter `--template-file`.
+* Optioneel u [Azure Quickstart Gallery](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) bezoeken en de sjabloon implementeren vanuit de Azure-portal.
+* U de sjabloon ook downloaden naar uw lokale computer of `--template-file` een nieuwe sjabloon maken en het lokale pad met de parameter opgeven.
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
 ### <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 
-Als u Power shell wilt gebruiken om de Azure Resource Manager sjabloon te implementeren:
+Ga als u PowerShell wilt gebruiken om de sjabloon Azure Resource Manager te implementeren:
 
 1. **Kopieer** het script.
-1. Selecteer **proberen** om Azure Cloud shell te openen.
-1. Klik met de rechter muisknop op het Azure Cloud Shell venster en selecteer vervolgens **Plakken**.
+1. Selecteer **Probeer deze** om Azure Cloud Shell te openen.
+1. Klik met de rechtermuisknop op het Azure Cloud Shell-venster en selecteer **Plakken**.
 
 ```azurepowershell-interactive
 
@@ -170,15 +170,15 @@ New-AzResourceGroupDeployment `
  (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
-U kunt ervoor kiezen om de sjabloon te implementeren met een lokaal geïnstalleerde versie van Power shell in plaats van Azure Cloud Shell. U moet [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Voer `Get-Module -ListAvailable Az` uit om de vereiste versie te vinden.
+U ervoor kiezen om de sjabloon te implementeren met een lokaal geïnstalleerde versie van PowerShell in plaats van Azure Cloud Shell. U moet [de Azure PowerShell-module installeren.](/powershell/azure/install-az-ps) Voer `Get-Module -ListAvailable Az` uit om de vereiste versie te vinden.
 
 ### <a name="deploy-with-azure-cli"></a>Implementeren met Azure CLI
 
-Als u Azure CLI wilt gebruiken om de Azure Resource Manager-sjabloon te implementeren:
+Ga als u Azure CLI wilt gebruiken om de sjabloon Azure Resource Manager te implementeren:
 
 1. **Kopieer** het script.
-2. Selecteer **proberen** om Azure Cloud shell te openen.
-3. Klik met de rechter muisknop in het Azure Cloud Shell venster en selecteer vervolgens **Plakken**.
+2. Selecteer **Probeer deze** om Azure Cloud Shell te openen.
+3. Klik met de rechtermuisknop in het Azure Cloud Shell-venster en selecteer **Plakken**.
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -202,7 +202,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 Hier volgen enkele aanvullende bronnen:
 
-* [Documentatie over Azure Resource Manager](/azure/azure-resource-manager/)
-* [Resource provider-schema Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
-* [Quick Start-sjablonen Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
-* [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/templates/common-deployment-errors.md)
+* [Azure Resource Manager-documentatie](/azure/azure-resource-manager/)
+* [Azure Cosmos DB-resourceproviderschema](/azure/templates/microsoft.documentdb/allversions)
+* [Azure Cosmos DB Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
+* [Veelvoorkomende azure resourcemanager-implementatiefouten oplossen](../azure-resource-manager/templates/common-deployment-errors.md)

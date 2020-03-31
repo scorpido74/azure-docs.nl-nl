@@ -1,6 +1,6 @@
 ---
-title: Gebruikers inrichten voor Azure AD Gallery-app neemt uren of meer in beslag
-description: Nagaan waarom het inrichten van uw toepassing langer duurt dan verwacht
+title: De inrichten van gebruikers in de Azure AD Gallery-app duurt uren of langer
+description: Hoe u erachter komen waarom het inrichten van uw aanvraag langer kan duren dan u had verwacht
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,23 +17,23 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb22d19733fbeb162fba55dd732c10e552879c78
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77522642"
 ---
-# <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>Gebruikers die een Azure AD-galerie toepassing inrichten, nemen uren of meer in beslag
+# <a name="user-provisioning-to-an-azure-ad-gallery-application-is-taking-hours-or-more"></a>Het inrichten van gebruikers op een Azure AD Gallery-toepassing duurt uren of langer
 
-Wanneer u voor het eerst automatische inrichting voor een toepassing inschakelt, kan de eerste cyclus van 20 minuten tot enkele uren duren, afhankelijk van de grootte van de Azure AD-adres lijst en het aantal gebruikers in het bereik dat moet worden ingericht. 
+Wanneer de eerste cyclus automatische inrichting voor een toepassing inschakelt, kan de eerste cyclus 20 minuten tot enkele uren duren, afhankelijk van de grootte van de Azure AD-map en het aantal gebruikers dat in het bereik is voor inrichten. 
 
-Volgende synchronisaties na de eerste cyclus worden sneller uitgevoerd, omdat de inrichtings service de water merken opslaat die de status van beide systemen na de eerste cyclus vertegenwoordigen, waardoor de prestaties van volgende synchronisaties worden verbeterd.
+Latere synchronisaties na de eerste cyclus zijn sneller, omdat de inrichtingsservice watermerken opslaat die de status van beide systemen na de eerste cyclus vertegenwoordigen, waardoor de prestaties van de volgende synchronisaties worden verbeterd.
 
-## <a name="how-to-improve-provisioning-performance"></a>De inrichtings prestaties verbeteren
+## <a name="how-to-improve-provisioning-performance"></a>Hoe de provisioning prestaties te verbeteren
 
-Als de eerste cyclus meer dan een paar uur duurt, kunt u een van de volgende dingen doen om de prestaties te verbeteren:
+Als de eerste cyclus meer dan een paar uur duurt, is er één ding dat u doen om de prestaties te verbeteren:
 
--   **Filters voor gebruikers bereik.** Met behulp van bereik filters kunt u de gegevens die door de inrichtings service worden geëxtraheerd, afstemmen op de gebruikers op basis van specifieke kenmerk waarden. Zie voor meer informatie over het bereik van filters [kenmerk toepassing inrichten met bereik filters](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+-   **Gebruikersscopingfilters.** Met scopingfilters u de gegevens die de inrichtingsservice uit Azure AD haalt, verfijnen door gebruikers uit te filteren op basis van specifieke kenmerkwaarden. Zie [Op kenmerken gebaseerde toepassingsinrichting met scopingfilters](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor meer informatie over scopingfilters.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](user-provisioning.md) (Automatisch gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory)

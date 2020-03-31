@@ -1,43 +1,42 @@
 ---
 title: Ondersteuning voor Azure-toepassingen configureren | Azure Marketplace
-description: Azure-toepassings ondersteuning configureren voor een aanbieding op de Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+description: Configureer Azure-toepassingsondersteuning voor een aanbieding op de Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: b6616f4caed3483af9e23c7d5d1326478213f6f0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 93dd8636f60ceca0f43d806d4f5b1a037ed21ee4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818183"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289019"
 ---
-# <a name="azure-application-support-tab"></a>Tabblad ondersteuning voor Azure-toepassing
+# <a name="azure-application-support-tab"></a>Tabblad Ondersteuning voor Azure-toepassingen
 
-Gebruik het tabblad ondersteuning om informatie over technische en klant ondersteuning te bieden.
+Gebruik het tabblad Ondersteuning om technische en klantondersteuningsinformatie te verstrekken.
  
-## <a name="identify-contacts-and-websites"></a>Contact personen en websites identificeren
+## <a name="identify-contacts-and-websites"></a>Contactpersonen en websites identificeren
 
-Gebruik de volgende scherm opname als richt lijn om de vereiste gegevens op te geven. Alle veld namen die zijn toegevoegd met een rood sterretje (*) moeten worden ingevuld.
+Gebruik de volgende schermopname als een gids om de vereiste informatie te verstrekken. Alle veldnamen die zijn toegevoegd met een rood sterretje (*) moeten worden voltooid.
 
-  ![Formulier voor ondersteuning voor aanbieding](./media/azureapp-support-tab.png)
+  ![Ondersteuningsformulier voor aanbieding](./media/azureapp-support-tab.png)
 
-1. Onder **technische contact persoon**geeft u informatie op over de volgende velden:
+1. Geef onder **Engineering Contact**informatie voor de volgende velden:
 
-   - **Naam\*** : Voer de naam in van de technische contact persoon voor uw app. Deze contact persoon ontvangt technische communicatie van micro soft.
-   - **E-mail\*** : Voer het e-mail adres in van de technische contact persoon.
-   - **Telefoon\*** : Voer het telefoon nummer in van de technische contact persoon.
+   - **Naam\* ** - Voer de naam in van de technische contactpersoon voor uw app. Deze contactpersoon ontvangt technische communicatie van Microsoft.
+   - **E-mail\* ** - Voer het e-mailadres van de technische contactpersoon in.
+   - **Telefoon\* ** - Voer het telefoonnummer van de technische contactpersoon in.
   
-2. Geef onder **contact opnemen met ondersteuning**informatie op voor de volgende velden:
+2. Geef onder **Contactpersoon voor ondersteuning**informatie voor de volgende velden:
 
-   - **Naam\*** : Voer de naam in van de contact persoon voor ondersteuning voor uw app. Deze contact persoon ontvangt berichten over ondersteuning van micro soft.
-   - **E-mail\*** : Voer het e-mail adres in van de contact persoon voor ondersteuning voor uw app.
-   - **Telefoon\*** : Voer het telefoon nummer van de contact persoon voor ondersteuning in.
+   - **Naam\* ** - Voer de naam in van de ondersteuningscontactpersoon voor uw app. Deze contactpersoon ontvangt ondersteuningsgerelateerde communicatie van Microsoft.
+   - **E-mail\* ** - Voer het e-mailadres van de ondersteuningscontactpersoon voor uw app in.
+   - **Telefoon\* ** - Voer het telefoonnummer van het ondersteuningscontact in.
  
-3. Onder **ondersteunings-url's**geeft u de geschikte ondersteunings-url's op die door micro soft worden gebruikt wanneer uw klanten ondersteunings tickets openen. Deze Url's zijn voor zowel open bare Azure als voor de Azure Government Cloud.
+3. Geef **onder Url's voor ondersteuning**de juiste ondersteunings-URL's die Microsoft zal gebruiken wanneer uw klanten ondersteuningstickets openen. Deze url's zijn bedoeld voor Public Azure of de Azure Government Cloud.
 4. Selecteer **Opslaan** wanneer u klaar bent.
 
 ## <a name="next-steps"></a>Volgende stappen

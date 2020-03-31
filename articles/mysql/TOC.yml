@@ -97,6 +97,8 @@
           href: concepts-data-encryption-mysql.md
         - name: Azure Active Directory-verificatie
           href: concepts-azure-ad-authentication.md
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Bedrijfscontinuïteit
       items:
         - name: Inleiding tot bedrijfscontinuïteit
@@ -176,6 +178,8 @@
           href: howto-configure-ssl.md
         - name: Web-apps
           href: howto-connect-webapp.md
+        - name: Verbinding maken met omleiding
+          href: howto-redirection.md
     - name: Parameters van de server configureren
       items:
         - name: Azure Portal
@@ -246,6 +250,10 @@
       items:
         - name: Azure AD-integratie configureren
           href: howto-configure-sign-in-azure-ad-authentication.md
+    - name: Openbare netwerktoegang weigeren
+      items:
+        - name: Azure Portal
+          href: howto-deny-public-network-access.md
     - name: Server opnieuw opstarten
       items:
         - name: Azure Portal

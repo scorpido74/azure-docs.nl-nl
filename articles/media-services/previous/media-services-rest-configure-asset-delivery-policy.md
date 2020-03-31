@@ -1,6 +1,6 @@
 ---
-title: Leverings beleid voor assets configureren met behulp van Media Services REST API | Microsoft Docs
-description: In dit onderwerp wordt beschreven hoe u verschillende beleids regels voor levering van assets configureert met behulp van Media Services REST API.
+title: Beleid voor het leveren van activa configureren met behulp van de Media Services REST API | Microsoft Documenten
+description: In dit onderwerp ziet u hoe u verschillende beleidsregels voor het leveren van activa configureert met de MEDIA Services REST API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,66 +15,66 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 09f0371bc189fcf7b25ec3261e2e1f5eaf1892ae
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194473"
 ---
-# <a name="configuring-asset-delivery-policies"></a>Leverings beleid voor assets configureren
+# <a name="configuring-asset-delivery-policies"></a>Beleid voor het leveren van activa configureren
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
 
-Als u van plan bent om dynamisch versleutelde assets te leveren, is een van de stappen in de Media Services werk stroom voor inhouds levering de configuratie van het leverings beleid voor assets. Het beleid voor levering van assets vertelt Media Services hoe u wilt dat uw activa worden geleverd: in het streaming-protocol moet uw asset dynamisch worden verpakt (bijvoorbeeld MPEG DASH, HLS, Smooth Streaming of alle), ongeacht of u deze dynamisch wilt versleutelen uw activum en hoe (envelop of algemene versleuteling).
+Als u van plan bent dynamisch versleutelde assets te leveren, is een van de stappen in de mediaservices-werkstroom voor het leveren van inhoud het leveringsbeleid voor assets configureren. Het beleid voor het leveren van activa vertelt Media Services hoe u wilt dat uw asset wordt geleverd: in welk streamingprotocol moet uw asset dynamisch worden verpakt (bijvoorbeeld MPEG DASH, HLS, Smooth Streaming of alles), ongeacht of u dynamisch wilt versleutelen uw asset en hoe (envelop of gemeenschappelijke encryptie).
 
-In dit onderwerp wordt beschreven waarom en hoe u beleid voor levering van assets maakt en configureert.
+In dit onderwerp wordt besproken waarom en hoe beleid voor het leveren van activa worden gemaakt en geconfigureerd.
 
 > [!NOTE]
 > Wanneer uw AMS-account is gemaakt, wordt er een **standaardstreaming-eindpunt** met de status **Gestopt** toegevoegd aan uw account. Als u inhoud wilt streamen en gebruik wilt maken van dynamische pakketten en dynamische versleuteling, moet het streaming-eindpunt van waar u inhoud wilt streamen, de status **Wordt uitgevoerd** hebben. 
 >
-> Als u dynamische pakketten en dynamische versleuteling wilt gebruiken, moet uw asset bovendien een set adaptieve bitsnelheid Mp4's of een adaptieve bitrate Smooth Streaming-bestanden bevatten.
+> Ook, om dynamische verpakking en dynamische encryptie te kunnen gebruiken, moet uw asset een set adaptieve bitrate MP4's of adaptieve bitrate Smooth Streaming-bestanden bevatten.
 
-U kunt verschillende beleids regels Toep assen op hetzelfde activum. U kunt bijvoorbeeld PlayReady-versleuteling Toep assen op Smooth Streaming en AES-envelop versleuteling naar MPEG DASH en HLS. Alle protocollen die niet zijn gedefinieerd in een leveringsbeleid (u voegt bijvoorbeeld één beleid toe waarmee alleen HLS als protocol wordt opgegeven), worden voor streaming geblokkeerd. De uitzondering hierop is als u helemaal geen leveringsbeleid voor assets hebt gedefinieerd. In dat geval is streaming voor alle protocollen toegestaan.
+U verschillende beleidsregels toepassen op hetzelfde actief. U bijvoorbeeld PlayReady-versleuteling toepassen op versleuteling voor smooth streaming en AES Envelope op MPEG DASH en HLS. Alle protocollen die niet zijn gedefinieerd in een leveringsbeleid (u voegt bijvoorbeeld één beleid toe waarmee alleen HLS als protocol wordt opgegeven), worden voor streaming geblokkeerd. De uitzondering hierop is als u helemaal geen leveringsbeleid voor assets hebt gedefinieerd. In dat geval is streaming voor alle protocollen toegestaan.
 
-Als u een door opslag versleutelde Asset wilt leveren, moet u het leverings beleid van het activum configureren. Voordat uw asset kan worden gestreamd, verwijdert de streaming-server de opslag versleuteling en streamt uw inhoud met behulp van het opgegeven leverings beleid. Als u bijvoorbeeld uw asset versleuteld wilt leveren met de versleutelings sleutel voor de Advanced Encryption Standard (AES), stelt u het beleids type in op **DynamicEnvelopeEncryption**. Als u de opslag versleuteling wilt verwijderen en het activum in de heldere stroom wilt streamen, stelt u het beleids type in op **NoDynamicEncryption**. Voor beelden die laten zien hoe deze beleids typen moeten worden geconfigureerd, volgt.
+Als u een versleuteld opslagmiddel wilt leveren, moet u het leveringsbeleid van het actief configureren. Voordat uw asset kan worden gestreamd, verwijdert de streamingserver de opslagversleuteling en streamt u uw inhoud met behulp van het opgegeven leveringsbeleid. Als u bijvoorbeeld uw asset versleuteld wilt leveren met een aes-envelopsleutel (Advanced Encryption Standard), stelt u het beleidstype in op **DynamicEnvelopeEncryption.** Als u opslagversleuteling wilt verwijderen en het item wilt streamen in de foutvorm, stelt u het beleidstype in op **NoDynamicEncryption**. Voorbeelden die laten zien hoe u deze beleidstypen configureert, volgen.
 
-Afhankelijk van hoe u het beleid voor de levering van assets configureert, kunt u de volgende streaming-protocollen dynamisch verpakken, dynamisch versleutelen en streamen: Smooth Streaming, HLS, MPEG DASH streams.
+Afhankelijk van hoe u het beleid voor het leveren van activa configureert, u de volgende streamingprotocollen dynamisch verpakken, dynamisch versleutelen en streamen: Smooth Streaming, HLS, MPEG DASH-streams.
 
-De volgende lijst bevat de indelingen die u gebruikt voor het streamen van vloeiende, HLS, streepje.
+In de volgende lijst worden de indelingen weergegeven die u gebruikt om Vloeiend, HLS, DASH te streamen.
 
-Smooth Streaming:
+Vloeiende streaming:
 
 {streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest
 
 HLS:
 
-{streaming-eindpunt naam-Media Services-account naam}. streaming. Media Services. Windows. net/{Locator-ID} bestands (Format = M3U8-AAPL)
+{streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest(format=m3u8-aapl)
 
 MPEG DASH
 
-{streaming-eindpunt naam-Media Services-account naam}. streaming. Media Services. Windows. net/{Locator-ID} bestands (Format = mpd-time-KVP)
+{streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest(format=mpd-time-csf)
 
 
 Zie [Build a streaming URL](media-services-deliver-streaming-content.md) (Een streaming-URL bouwen) voor instructies over het publiceren van een asset en bouwen van een streaming-URL.
 
 ## <a name="considerations"></a>Overwegingen
-* U kunt een AssetDeliveryPolicy die is gekoppeld aan een Asset niet verwijderen terwijl er een OnDemand-Locator (streaming) bestaat voor die Asset. De aanbeveling is het beleid uit de Asset te verwijderen voordat u het beleid verwijdert.
-* Er kan geen streaming-Locator worden gemaakt op een door opslag versleutelde Asset wanneer er geen beleid voor levering van assets is ingesteld.  Als de Asset niet is versleuteld, kunt u met het systeem een Locator maken en de Asset streamen zonder activa leverings beleid.
-* U kunt meerdere Asset Delivery policies koppelen aan één enkel activum, maar u kunt slechts één manier opgeven om een bepaalde AssetDeliveryProtocol te verwerken.  Dit betekent dat als u probeert twee leverings beleidsregels te koppelen die het AssetDeliveryProtocol. SmoothStreaming-protocol opgeven dat een fout veroorzaakt, omdat het systeem niet weet welke toepassing u wilt Toep assen wanneer een client een Smooth Streaming aanvraag doet.
-* Als u een Asset met een bestaande streaming-Locator hebt, kunt u geen nieuw beleid koppelen aan de Asset, een bestaand beleid ontkoppelen van de Asset of een leverings beleid bijwerken dat is gekoppeld aan de Asset.  Eerst moet u de streaming-Locator verwijderen, het beleid aanpassen en de streaming-Locator vervolgens opnieuw maken.  U kunt dezelfde locatorId gebruiken wanneer u de streaming-Locator opnieuw maakt, maar u moet er wel voor zorgen dat er geen problemen voor clients optreden omdat inhoud door de oorsprong of een downstream CDN kan worden opgeslagen in de cache.
+* U een AssetDeliveryPolicy die aan een asset is gekoppeld, niet verwijderen terwijl er een OnDemand-locator (streaming) bestaat voor dat actief. De aanbeveling is om het beleid uit het actief te verwijderen voordat u het beleid verwijdert.
+* Een streaminglocator kan niet worden gemaakt op een opslagversleuteld item wanneer er geen beleid voor het leveren van activa is ingesteld.  Als het item niet versleuteld is opgeslagen, u met het systeem een locator maken en het item in de fout gaan zonder een beleid voor het leveren van activa.
+* U meerdere beleid voor het leveren van activa aan één actief hebben, maar u slechts één manier opgeven om een bepaald AssetDeliveryProtocol te verwerken.  Dit betekent dat als u twee leveringsbeleidsregels probeert te koppelen die het AssetDeliveryProtocol.SmoothStreaming-protocol opgeven dat resulteert in een fout omdat het systeem niet weet welke u wilt dat het toepast wanneer een client een Smooth Streaming-verzoek indient.
+* Als u een asset hebt met een bestaande streaminglocator, u een nieuw beleid niet koppelen aan het item, een bestaand beleid loskoppelen van het item of een leveringsbeleid bijwerken dat aan het item is gekoppeld.  Je moet eerst de streaminglocator verwijderen, het beleid aanpassen en vervolgens de streaminglocator opnieuw maken.  U dezelfde locatorId gebruiken wanneer u de streaming locator opnieuw maakt, maar u moet ervoor zorgen dat dit geen problemen veroorzaakt voor clients, omdat inhoud kan worden opgeslagen door de oorsprong of een downstream-CDN.
 
 > [!NOTE]
 > 
-> Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en-waarden in uw HTTP-aanvragen instellen. Zie [Setup for Media Services rest API Development](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
+> Wanneer u toegang krijgt tot entiteiten in Media Services, moet u specifieke koptekstvelden en -waarden instellen in uw HTTP-aanvragen. Zie [Setup for Media Services REST API Development voor](media-services-rest-how-to-use.md)meer informatie.
 
 ## <a name="connect-to-media-services"></a>Verbinding met Media Services maken
 
-Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor meer informatie over het maken van een verbinding met de AMS-API. 
+Zie [Toegang tot de Azure Media Services API met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md)voor informatie over hoe u verbinding maken met de AMS-API. 
 
-## <a name="clear-asset-delivery-policy"></a>Leverings beleid voor assets wissen
-### <a id="create_asset_delivery_policy"></a>Leverings beleid voor assets maken
-Met de volgende HTTP-aanvraag wordt een leverings beleid voor assets gemaakt waarmee wordt aangegeven dat er geen dynamische versleuteling moet worden toegepast en om de stroom te leveren in een van de volgende protocollen: MPEG DASH, HLS en Smooth Streaming protocollen. 
+## <a name="clear-asset-delivery-policy"></a>Duidelijk beleid voor het leveren van activa
+### <a name="create-asset-delivery-policy"></a><a id="create_asset_delivery_policy"></a>Beleid voor het leveren van activa maken
+Met de volgende HTTP-aanvraag wordt een beleid voor het leveren van activa aangeschreven dat aangeeft geen dynamische versleuteling toe te passen en de stream te leveren in een van de volgende protocollen: MPEG DASH-, HLS- en Smooth Streaming-protocollen. 
 
-Voor informatie over welke waarden u kunt opgeven bij het maken van een AssetDeliveryPolicy, raadpleegt u de [typen die worden gebruikt bij het definiëren](#types) van de sectie AssetDeliveryPolicy.   
+Zie de sectie Typen die worden gebruikt bij het definiëren van de sectie [AssetDeliveryPolicy](#types) voor informatie over welke waarden u opgeven bij het maken van een AssetDeliveryPolicy.   
 
 Aanvraag:
 
@@ -120,8 +120,8 @@ Reactie:
     "Created":"2015-02-08T06:21:27.6908329Z",
     "LastModified":"2015-02-08T06:21:27.6908329Z"}
 
-### <a id="link_asset_with_asset_delivery_policy"></a>Asset koppelen met het leverings beleid voor assets
-Met de volgende HTTP-aanvraag wordt het opgegeven activum gekoppeld aan het leverings beleid voor assets.
+### <a name="link-asset-with-asset-delivery-policy"></a><a id="link_asset_with_asset_delivery_policy"></a>Asset koppelen aan beleid voor het leveren van activa
+Met de volgende HTTP-aanvraag wordt het opgegeven actief gekoppeld aan het beleid voor de levering van activa aan.
 
 Aanvraag:
 
@@ -143,14 +143,14 @@ Reactie:
     HTTP/1.1 204 No Content
 
 
-## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>Leverings beleid voor DynamicEnvelopeEncryption-activa
-### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>Maak een inhouds sleutel van het type EnvelopeEncryption en koppel deze aan de Asset
-Wanneer u DynamicEnvelopeEncryption-leverings beleid opgeeft, moet u ervoor zorgen dat u uw asset koppelt aan een inhouds sleutel van het type EnvelopeEncryption. Zie voor meer informatie: [een inhouds sleutel maken](media-services-rest-create-contentkey.md).
+## <a name="dynamicenvelopeencryption-asset-delivery-policy"></a>DynamicEnvelopeEncryption asset delivery policy DynamicEnvelopeEncryption asset delivery policy DynamicEnvelopeEncryption asset delivery policy DynamicEnvelope
+### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>Inhoudssleutel van het type EnvelopeEncryption maken en deze koppelen aan het item
+Wanneer u het leveringsbeleid van DynamicEnvelopeEncryption opgeeft, moet u ervoor zorgen dat uw asset wordt gekoppeld aan een inhoudssleutel van het type EnvelopeEncryption. Zie voor meer informatie: [Een inhoudstoets maken](media-services-rest-create-contentkey.md)).
 
-### <a id="get_delivery_url"></a>Bezorgings-URL ophalen
-Haal de bezorgings-URL op voor de opgegeven leverings methode van de inhouds sleutel die u in de vorige stap hebt gemaakt. Een client gebruikt de geretourneerde URL om een AES-sleutel of een PlayReady-licentie aan te vragen om de beveiligde inhoud af te spelen.
+### <a name="get-delivery-url"></a><a id="get_delivery_url"></a>Url van levering ophalen
+Download de weergave-URL voor de opgegeven weergavemethode van de inhoudssleutel die in de vorige stap is gemaakt. Een client gebruikt de geretourneerde URL om een AES-toets of een PlayReady-licentie aan te vragen om de beveiligde inhoud af te spelen.
 
-Geef het type URL op dat moet worden opgehaald in de hoofd tekst van de HTTP-aanvraag. Als u uw inhoud beveiligt met PlayReady, vraagt u een Media Services PlayReady-URL voor het verkrijgen van een licentie met behulp van 1 voor de keyDeliveryType: {"keyDeliveryType": 1}. Als u uw inhoud beveiligt met de envelop versleuteling, vraagt u een URL voor sleutel aanschaf op door 2 op te geven voor keyDeliveryType: {"keyDeliveryType": 2}.
+Geef het type URL op dat in de hoofdtekst van de HTTP-aanvraag moet komen. Als u uw inhoud beschermt met PlayReady, vraagt u een URL voor het aanschaffen van een Media Services PlayReady-licentie aan, waarbij u 1 gebruikt voor de keyDeliveryType: {"keyDeliveryType":1}. Als u uw inhoud beschermt met de envelopversleuteling, vraagt u een URL voor sleutelverwerving aan door 2 op te geven voor keyDeliveryType: {"keyDeliveryType":2}.
 
 Aanvraag:
 
@@ -185,10 +185,10 @@ Reactie:
     {"odata.metadata":"media.windows.net/api/$metadata#Edm.String","value":"https://amsaccount1.keydelivery.mediaservices.windows.net/?KID=dc88f996-2859-4cf7-a279-c52a9d6b2f04"}
 
 
-### <a name="create-asset-delivery-policy"></a>Leverings beleid voor assets maken
-Met de volgende HTTP-aanvraag wordt de **AssetDeliveryPolicy** gemaakt die is geconfigureerd voor het Toep assen van dynamische envelop versleuteling (**DynamicEnvelopeEncryption**) op het **HLS** -Protocol (in dit voor beeld worden andere protocollen geblokkeerd voor streaming). 
+### <a name="create-asset-delivery-policy"></a>Beleid voor het leveren van activa maken
+Met de volgende **HTTP-aanvraag** wordt het AssetDeliveryPolicy geconfigureerd dat is geconfigureerd om dynamische envelope encryption **(DynamicEnvelopeEncryption)** toe te passen op het **HLS-protocol** (in dit voorbeeld worden andere protocollen geblokkeerd voor streaming). 
 
-Voor informatie over welke waarden u kunt opgeven bij het maken van een AssetDeliveryPolicy, raadpleegt u de [typen die worden gebruikt bij het definiëren](#types) van de sectie AssetDeliveryPolicy.   
+Zie de sectie Typen die worden gebruikt bij het definiëren van de sectie [AssetDeliveryPolicy](#types) voor informatie over welke waarden u opgeven bij het maken van een AssetDeliveryPolicy.   
 
 Aanvraag:
 
@@ -226,20 +226,20 @@ Reactie:
     {"odata.metadata":"media.windows.net/api/$metadata#AssetDeliveryPolicies/@Element","Id":"nb:adpid:UUID:ec9b994e-672c-4a5b-8490-a464eeb7964b","Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\\/\"}]","Created":"2015-02-09T05:24:38.9167436Z","LastModified":"2015-02-09T05:24:38.9167436Z"}
 
 
-### <a name="link-asset-with-asset-delivery-policy"></a>Asset koppelen met het leverings beleid voor assets
-Zie [activa koppelen met leverings beleid voor assets](#link_asset_with_asset_delivery_policy)
+### <a name="link-asset-with-asset-delivery-policy"></a>Asset koppelen aan beleid voor het leveren van activa
+Zie [Asset koppelen aan beleid voor het leveren van activa](#link_asset_with_asset_delivery_policy)
 
-## <a name="dynamiccommonencryption-asset-delivery-policy"></a>Leverings beleid voor DynamicCommonEncryption-activa
-### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>Maak een inhouds sleutel van het type CommonEncryption en koppel deze aan de Asset
-Wanneer u DynamicCommonEncryption-leverings beleid opgeeft, moet u ervoor zorgen dat u uw asset koppelt aan een inhouds sleutel van het type CommonEncryption. Zie voor meer informatie: [een inhouds sleutel maken](media-services-rest-create-contentkey.md).
+## <a name="dynamiccommonencryption-asset-delivery-policy"></a>DynamicCommonEncryption asset delivery policy
+### <a name="create-content-key-of-the-commonencryption-type-and-link-it-to-the-asset"></a>Inhoudssleutel van het type CommonEncryption maken en deze koppelen aan het item
+Wanneer u het leveringsbeleid van DynamicCommonEncryption opgeeft, moet u ervoor zorgen dat uw asset wordt gekoppeld aan een inhoudssleutel van het commonencryption-type. Zie voor meer informatie: [Een inhoudstoets maken](media-services-rest-create-contentkey.md)).
 
-### <a name="get-delivery-url"></a>Bezorgings-URL ophalen
-Haal de bezorgings-URL op voor de bezorgings methode PlayReady van de inhouds sleutel die u in de vorige stap hebt gemaakt. Een client gebruikt de geretourneerde URL om een PlayReady-licentie aan te vragen om de beveiligde inhoud af te spelen. Zie [Get Delivery URL](#get_delivery_url)voor meer informatie.
+### <a name="get-delivery-url"></a>Url van levering ophalen
+Download de weergave-URL voor de PlayReady-weergavemethode van de inhoudssleutel die in de vorige stap is gemaakt. Een client gebruikt de geretourneerde URL om een PlayReady-licentie aan te vragen om de beveiligde inhoud af te spelen. Zie [URL van bezorging ophalen](#get_delivery_url)voor meer informatie .
 
-### <a name="create-asset-delivery-policy"></a>Leverings beleid voor assets maken
-Met de volgende HTTP-aanvraag wordt de **AssetDeliveryPolicy** gemaakt die is geconfigureerd voor het Toep assen van dynamische common Encryption (**DynamicCommonEncryption**) op het **Smooth streaming** -Protocol (in dit voor beeld worden andere protocollen geblokkeerd voor streaming). 
+### <a name="create-asset-delivery-policy"></a>Beleid voor het leveren van activa maken
+Met de volgende **HTTP-aanvraag** wordt het AssetDeliveryPolicy geconfigureerd dat is geconfigureerd om dynamische algemene versleuteling **(DynamicCommonEncryption)** toe te passen op het **Smooth Streaming-protocol** (in dit voorbeeld worden andere protocollen geblokkeerd voor streaming). 
 
-Voor informatie over welke waarden u kunt opgeven bij het maken van een AssetDeliveryPolicy, raadpleegt u de [typen die worden gebruikt bij het definiëren](#types) van de sectie AssetDeliveryPolicy.   
+Zie de sectie Typen die worden gebruikt bij het definiëren van de sectie [AssetDeliveryPolicy](#types) voor informatie over welke waarden u opgeven bij het maken van een AssetDeliveryPolicy.   
 
 Aanvraag:
 
@@ -258,25 +258,25 @@ Aanvraag:
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":2,\"Value\":\"https:\\/\\/amsaccount1.keydelivery.mediaservices.windows.net\/PlayReady\/"}]"}
 
 
-Als u uw inhoud wilt beveiligen met behulp van Widevine DRM, werkt u de AssetDeliveryConfiguration-waarden bij om WidevineLicenseAcquisitionUrl (met de waarde 7) te gebruiken en geeft u de URL op van een licentie leverings service. U kunt de volgende AMS-partners gebruiken om Widevine-licenties te leveren: [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/), [cast Labs](https://castlabs.com/company/partners/azure/).
+Als u uw inhoud wilt beschermen met Widevine DRM, werkt u de assetdeliveryconfiguratiewaarden bij om WidevineLicenseAcquisitionUrl (met de waarde van 7) te gebruiken en geeft u de URL van een licentieleveringsservice op. U de volgende AMS-partners gebruiken om u te helpen widevine-licenties te leveren: [Axinom,](https://www.axinom.com) [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
 Bijvoorbeeld: 
 
     {"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":2,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{\"Key\":7,\"Value\":\"https:\\/\\/example.net\/WidevineLicenseAcquisition\/"}]"}
 
 > [!NOTE]
-> Bij het versleutelen met Widevine zou u alleen kunnen leveren met een streepje. Zorg ervoor dat u het streepje (2) opgeeft in het protocol voor het leveren van assets.
+> Bij het versleutelen met Widevine u alleen leveren met DASH. Zorg ervoor dat dash (2) wordt opgegeven in het protocol voor het leveren van activa.
 > 
 > 
 
-### <a name="link-asset-with-asset-delivery-policy"></a>Asset koppelen met het leverings beleid voor assets
-Zie [activa koppelen met leverings beleid voor assets](#link_asset_with_asset_delivery_policy)
+### <a name="link-asset-with-asset-delivery-policy"></a>Asset koppelen aan beleid voor het leveren van activa
+Zie [Asset koppelen aan beleid voor het leveren van activa](#link_asset_with_asset_delivery_policy)
 
-## <a id="types"></a>Typen die worden gebruikt bij het definiëren van AssetDeliveryPolicy
+## <a name="types-used-when-defining-assetdeliverypolicy"></a><a id="types"></a>Typen die worden gebruikt bij het definiëren van AssetDeliveryPolicy
 
 ### <a name="assetdeliveryprotocol"></a>AssetDeliveryProtocol
 
-In de volgende opsomming worden waarden beschreven die u kunt instellen voor het protocol voor het leveren van activa.
+In het volgende enum worden waarden beschreven die u instellen voor het asset delivery protocol.
 
     [Flags]
     public enum AssetDeliveryProtocol
@@ -311,7 +311,7 @@ In de volgende opsomming worden waarden beschreven die u kunt instellen voor het
 
 ### <a name="assetdeliverypolicytype"></a>AssetDeliveryPolicyType
 
-In de volgende opsomming worden waarden beschreven die u kunt instellen voor het type Asset Delivery Policy.  
+In het volgende enum worden waarden beschreven die u instellen voor het type beleid voor het leveren van activa.  
 
     public enum AssetDeliveryPolicyType
     {
@@ -344,7 +344,7 @@ In de volgende opsomming worden waarden beschreven die u kunt instellen voor het
 
 ### <a name="contentkeydeliverytype"></a>ContentKeyDeliveryType
 
-In de volgende opsomming worden waarden beschreven die u kunt gebruiken om de leverings methode van de inhouds sleutel te configureren voor de client.
+In het volgende enum worden waarden beschreven die u gebruiken om de leveringsmethode van de inhoudssleutel voor de client te configureren.
     
     public enum ContentKeyDeliveryType
     {
@@ -377,7 +377,7 @@ In de volgende opsomming worden waarden beschreven die u kunt gebruiken om de le
 
 ### <a name="assetdeliverypolicyconfigurationkey"></a>AssetDeliveryPolicyConfigurationKey
 
-In de volgende opsomming worden waarden beschreven die u kunt instellen voor het configureren van sleutels die worden gebruikt voor het ophalen van specifieke configuratie voor een leverings beleid voor activa.
+In het volgende enum worden waarden beschreven die u instellen om sleutels te configureren die worden gebruikt om een specifieke configuratie voor een beleid voor het leveren van activa te krijgen.
 
     public enum AssetDeliveryPolicyConfigurationKey
     {
@@ -424,7 +424,7 @@ In de volgende opsomming worden waarden beschreven die u kunt instellen voor het
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

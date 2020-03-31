@@ -1,6 +1,6 @@
 ---
-title: Self-service voor wachtwoord herstel voor Windows-Azure Active Directory
-description: Self-service voor wachtwoord herstel inschakelen met het wacht woord verg eten in het Windows-aanmeldings scherm
+title: Selfservice wachtwoord opnieuw instellen voor Windows - Azure Active Directory
+description: Self-service wachtwoord opnieuw instellen inschakelen met vergeten wachtwoord op het Windows-inlogscherm
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,61 +12,61 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77370066"
 ---
-# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Procedure: wacht woord opnieuw instellen inschakelen vanuit het Windows-aanmeldings scherm
+# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>How to: Wachtwoordopnieuw instellen inschakelen vanaf het Windows-aanmeldingsscherm
 
-Voor computers met Windows 7, 8, 8,1 en 10 kunt u gebruikers in staat stellen hun wacht woord opnieuw in te stellen in het Windows-aanmeldings scherm. Gebruikers hoeven niet langer een apparaat met een webbrowser te vinden om toegang te krijgen tot de [SSPR-Portal](https://aka.ms/sspr).
+Voor machines met Windows 7, 8, 8.1 en 10 u gebruikers in staat stellen hun wachtwoord opnieuw in te stellen op het Windows-inlogscherm. Gebruikers hoeven niet langer een apparaat met een webbrowser te vinden om toegang te krijgen tot de [SSPR-portal.](https://aka.ms/sspr)
 
-![Voor beeld van een Windows 7-en 10-Aanmeldings scherm met een SSPR-koppeling](./media/howto-sspr-windows/windows-reset-password.png)
+![Voorbeeld Windows 7 en 10 inlogschermen met SSPR-koppeling weergegeven](./media/howto-sspr-windows/windows-reset-password.png)
 
 ## <a name="general-limitations"></a>Algemene beperkingen
 
-- Het opnieuw instellen van het wacht woord wordt momenteel niet ondersteund vanuit een Extern bureaublad of via Hyper-V-uitgebreide sessies.
-- Sommige externe referentie providers zijn bekend om problemen met deze functie te veroorzaken.
-- Het uitschakelen van UAC via wijziging van de [register sleutel EnableLUA](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) is bekend bij het veroorzaken van problemen.
-- Deze functie werkt niet voor netwerken met 802.1 x-netwerk verificatie geïmplementeerd en de optie ' direct voor gebruikers aanmelding uitvoeren '. Voor netwerken waarvoor 802.1x-netwerkverificatie is geïmplementeerd, wordt het aanbevolen computerverificatie te gebruiken om deze functie in te schakelen.
-- Hybride Azure AD-computers moeten over een netwerk verbinding beschikken om het nieuwe wacht woord te kunnen gebruiken en referenties in de cache op te slaan.
-- Als u een installatie kopie gebruikt voordat u Sysprep uitvoert, moet u ervoor zorgen dat de webcache voor de ingebouwde beheerder is gewist voordat u de stap CopyProfile uitvoert. Meer informatie over deze stap vindt u in de ondersteunings artikelen [verslechte prestaties bij gebruik van aangepast standaard gebruikers profiel](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
-- De volgende instellingen zijn bekend om te voor komen dat wacht woorden op Windows 10-apparaten kunnen worden gebruikt en opnieuw worden ingesteld
-    - Als Ctrl + Alt + del vereist is voor het beleid in versies van Windows 10 vóór v1809, werkt **wacht woord opnieuw instellen** niet.
+- Het opnieuw instellen van wachtwoorden wordt momenteel niet ondersteund vanaf een extern bureaublad of van uitgebreide hyper-v-sessies.
+- Van sommige leveranciers van referenties van derden is bekend dat ze problemen veroorzaken met deze functie.
+- Het uitschakelen van UAC via wijziging van [de Registersleutel van EnableLUA](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) is bekend dat het problemen veroorzaakt.
+- Deze functie werkt niet voor netwerken met 802.1x netwerkverificatie geïmplementeerd en de optie "Uitvoeren vlak voor de gebruiker aanmelding". Voor netwerken waarvoor 802.1x-netwerkverificatie is geïmplementeerd, wordt het aanbevolen computerverificatie te gebruiken om deze functie in te schakelen.
+- Hybride Azure AD-aangesloten machines moeten een netwerkverbindingslijn hebben voor een domeincontroller om het nieuwe wachtwoord te gebruiken en referenties in de cache bij te werken.
+- Als u een afbeelding gebruikt, moet u ervoor zorgen dat de webcache wordt gewist voor de ingebouwde administrator voordat u de stap CopyProfile uitvoert. Meer informatie over deze stap vindt u in het ondersteuningsartikel [Prestaties slecht bij het gebruik van aangepast standaardgebruikersprofiel.](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)
+- Van de volgende instellingen is bekend dat ze de mogelijkheid om wachtwoorden op Windows 10-apparaten te gebruiken en opnieuw in te stellen, verstoren
+    - Als Ctrl+Alt+Del vereist is door het beleid in versies van Windows 10 v1809, werkt **het wachtwoord opnieuw instellen** niet.
     - Als meldingen voor het vergrendelen van het scherm zijn uitgeschakeld, werkt **Wachtwoord opnieuw instellen** niet.
     - HideFastUserSwitching, indien ingesteld op ingeschakeld of 1
     - DontDisplayLastUserName, indien ingesteld op ingeschakeld of 1
     - NoLockScreen, indien ingesteld op ingeschakeld of 1
     - EnableLostMode, indien ingesteld op het apparaat
     - Explorer.exe is vervangen door een aangepaste shell
-- De combi natie van de volgende drie instellingen kan ervoor zorgen dat deze functie niet werkt.
-    - Interactieve aanmelding: CTRL + ALT + DEL = disabled is uitgeschakeld
-    - DisableLockScreenAppNotifications = 1 of ingeschakeld
-    - IsContentDeliveryPolicyEnforced = 1 of waar
+- De combinatie van de volgende specifieke drie instellingen kan ervoor zorgen dat deze functie niet werkt.
+    - Interactieve aanmelding: Ctrl+ALT+DEL = Uitgeschakeld
+    - LockScreenAppMeldingen uitschakelen = 1 of ingeschakeld
+    - IsContentDeliveryPolicyEnforced = 1 of True
 
-## <a name="windows-10-password-reset"></a>Windows 10-wacht woord opnieuw instellen
+## <a name="windows-10-password-reset"></a>Windows 10 wachtwoord opnieuw instellen
 
-### <a name="windows-10-prerequisites"></a>Windows 10-vereisten
+### <a name="windows-10-prerequisites"></a>Vereisten voor Windows 10
 
-- Een beheerder moet Azure AD selfservice voor wachtwoord herstel inschakelen vanuit het Azure Portal.
+- Een beheerder moet azure AD self-service password reset inschakelen vanuit de Azure-portal.
 - **Gebruikers moeten zich registreren voor SSPR voordat ze deze functie gebruiken**
-- Vereisten voor netwerk proxy
+- Vereisten voor netwerkproxy
    - Windows 10-apparaten 
-       - Poort 443 tot `passwordreset.microsoftonline.com` en `ajax.aspnetcdn.com`
-       - Windows 10-apparaten ondersteunen alleen proxy configuratie op computer niveau
-- Voer ten minste Windows 10, versie april 2018 update (v1803) uit en de apparaten moeten zijn:
-    - Toegevoegd aan Azure AD
-    - Hybride Azure AD-join
+       - Poort 443 `passwordreset.microsoftonline.com` aan en`ajax.aspnetcdn.com`
+       - Windows 10-apparaten ondersteunen alleen proxyconfiguratie op machineniveau
+- Voer ten minste Windows 10, versie april 2018 Update (v1803) uit en de apparaten moeten:
+    - Neemt deel aan Azure AD
+    - lid is van hybride Azure Active Directory
 
-### <a name="enable-for-windows-10-using-intune"></a>Inschakelen voor Windows 10 met intune
+### <a name="enable-for-windows-10-using-intune"></a>Inschakelen voor Windows 10 met Intune
 
 Intune gebruiken om de configuratie te wijzigen zodat gebruikers het wachtwoord opnieuw kunnen instellen vanuit het aanmeldingsscherm, is de meest flexibele methode. Met Intune kunt u een wijziging van de configuratie implementeren voor een specifieke groep machines die u hebt gedefinieerd. Voor deze methode is een Intune-registratie van het apparaat vereist.
 
 #### <a name="create-a-device-configuration-policy-in-intune"></a>Een beleid voor apparaatconfiguratie maken in Intune
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Intune**.
-1. Maak een nieuw apparaatconfiguratieprofiel door te gaan naar **Apparaatconfiguratie** > **Profielen** > **Profiel maken**
+1. Een nieuw apparaatconfiguratieprofiel maken door naar **Apparaatconfiguratieprofielen** > **Profiles** > **Profiel maken**
    - Geef een beschrijvende naam op voor het profiel
    - Geef eventueel een duidelijke beschrijving van het profiel op
    - Platform **Windows 10 en hoger**
@@ -78,12 +78,12 @@ Intune gebruiken om de configuratie te wijzigen zodat gebruikers het wachtwoord 
       - **OMA-URI** ingesteld op `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset`
       - **Gegevenstype** ingesteld op **Geheel getal**
       - **Waarde** ingesteld op **1**
-      - Klik op **OK**
-   - Klik op **OK**
-1. Klik op **Maken**.
-1. Dit beleid kan worden toegewezen aan specifieke gebruikers, apparaten of groepen. Meer informatie vindt u in het artikel [gebruikers-en apparaatprofielen toewijzen in Microsoft intune](https://docs.microsoft.com/intune/device-profile-assign).
+      - Klik **op OK**
+   - Klik **op OK**
+1. Klik **op Maken**
+1. Dit beleid kan worden toegewezen aan specifieke gebruikers, apparaten of groepen. Meer informatie is te vinden in het artikel [Gebruikers- en apparaatprofielen toewijzen in Microsoft Intune.](https://docs.microsoft.com/intune/device-profile-assign)
 
-### <a name="enable-for-windows-10-using-the-registry"></a>Inschakelen voor Windows 10 met behulp van het REGI ster
+### <a name="enable-for-windows-10-using-the-registry"></a>Inschakelen voor Windows 10 met behulp van het register
 
 1. Meld u met administratorreferenties aan op de Windows-pc
 1. Voer **regedit** uit als administrator
@@ -91,71 +91,71 @@ Intune gebruiken om de configuratie te wijzigen zodat gebruikers het wachtwoord 
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-#### <a name="troubleshooting-windows-10-password-reset"></a>Problemen oplossen met Windows 10 wacht woord opnieuw instellen
+#### <a name="troubleshooting-windows-10-password-reset"></a>Problemen met Windows 10-wachtwoordopnieuw instellen
 
 Het auditlogboek van Azure AD bevat informatie over het IP-adres en het ClientType waarvoor het wachtwoord opnieuw is ingesteld.
 
-![Voor beeld van een Windows 7-wacht woord opnieuw instellen in het Azure AD-controle logboek](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
+![Voorbeeld van windows 7-wachtwoordreset in het Azure AD-controlelogboek](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Wanneer gebruikers hun wacht woord opnieuw instellen vanuit het aanmeldings scherm van een Windows 10-apparaat, wordt er een tijdelijk account met beperkte bevoegdheden met de naam `defaultuser1` gemaakt. Dit account wordt gebruikt om het proces voor het opnieuw instellen van het wachtwoord te beveiligen. Het account zelf kent een willekeurig gegenereerd wachtwoord, wordt niet getoond bij het aanmelden op een apparaat en wordt automatisch verwijderd nadat de gebruiker het wachtwoord opnieuw heeft ingesteld. Er kunnen meerdere `defaultuser` profielen bestaan, maar deze kunnen wel veilig worden genegeerd.
+Wanneer gebruikers hun wachtwoord opnieuw instellen vanaf het inlogscherm van een Windows `defaultuser1` 10-apparaat, wordt een tijdelijk account met lage bevoegdheden aangemaakt. Dit account wordt gebruikt om het proces voor het opnieuw instellen van het wachtwoord te beveiligen. Het account zelf kent een willekeurig gegenereerd wachtwoord, wordt niet getoond bij het aanmelden op een apparaat en wordt automatisch verwijderd nadat de gebruiker het wachtwoord opnieuw heeft ingesteld. Er `defaultuser` kunnen meerdere profielen bestaan, maar kunnen veilig worden genegeerd.
 
-## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 en 8,1 wacht woord opnieuw instellen
+## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 en 8.1 wachtwoord opnieuw instellen
 
-### <a name="windows-7-8-and-81-prerequisites"></a>Vereisten voor Windows 7, 8 en 8,1
+### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7, 8 en 8.1 vereisten
 
-- Een beheerder moet Azure AD selfservice voor wachtwoord herstel inschakelen vanuit het Azure Portal.
+- Een beheerder moet azure AD self-service password reset inschakelen vanuit de Azure-portal.
 - **Gebruikers moeten zich registreren voor SSPR voordat ze deze functie gebruiken**
-- Vereisten voor netwerk proxy
-   - Windows 7-, 8-en 8,1-apparaten
-       - Poort 443 tot `passwordreset.microsoftonline.com`
-- Een patch uitgevoerd voor Windows 7-of Windows 8,1-besturings systeem.
-- TLS 1,2 ingeschakeld met behulp van de richt lijnen die zijn gevonden in de [register instellingen van Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12).
-- Als er meer dan één externe referentie provider op uw computer is ingeschakeld, zien gebruikers meer dan één gebruikers profiel in het aanmeldings scherm.
+- Vereisten voor netwerkproxy
+   - Windows 7,8 en 8.1-apparaten
+       - Poort 443 aan`passwordreset.microsoftonline.com`
+- Gepatchte Windows 7 of Windows 8.1 Besturingssysteem.
+- TLS 1.2 is ingeschakeld met behulp van de richtlijnen in [tls-registerinstellingen (Transport Layer Security).](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)
+- Als er meer dan één externe referentieprovider is ingeschakeld op uw machine, zien gebruikers meer dan één gebruikersprofiel op het inlogscherm.
 
 > [!WARNING]
-> TLS 1,2 moet zijn ingeschakeld, niet alleen ingesteld op automatisch onderhandelen
+> TLS 1.2 moet worden ingeschakeld, niet alleen ingesteld op automatisch onderhandelen
 
 ### <a name="install"></a>Installeren
 
-1. Down load het juiste installatie programma voor de versie van Windows die u wilt inschakelen.
-   - Software is beschikbaar in het micro soft Download centrum op [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
-1. Meld u aan bij de computer waarop u wilt installeren en voer het installatie programma uit.
-1. Na de installatie wordt u ten zeerste aangeraden opnieuw op te starten.
-1. Nadat het systeem opnieuw is opgestart, kiest u in het aanmeldings scherm een gebruiker en klikt u op wacht woord verg eten? om de werk stroom voor het opnieuw instellen van wacht woorden te initiëren.
-1. Voltooi de werk stroom volgens de stappen op het scherm om uw wacht woord opnieuw in te stellen.
+1. Download het juiste installatieprogramma voor de versie van Windows die u wilt inschakelen.
+   - Software is beschikbaar in het Microsoft-downloadcentrum op[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+1. Meld u aan bij de machine waar u de installatieinstallatie wilt installeren en voer de installatieprogramma uit.
+1. Na de installatie wordt een reboot ten zeerste aanbevolen.
+1. Kies na het opnieuw opstarten een gebruiker en klik op 'Wachtwoord vergeten?' om de workflow voor het opnieuw instellen van wachtwoorden te starten.
+1. Voltooi de werkstroom na de stappen op het scherm om uw wachtwoord opnieuw in te stellen.
 
-![Voor beeld van Windows 7 op ' wacht woord verg eten? ' SSPR-stroom](media/howto-sspr-windows/windows-7-sspr.png)
+![Voorbeeld Windows 7 klikte op 'Wachtwoord vergeten?' SSPR-stroom](media/howto-sspr-windows/windows-7-sspr.png)
 
 #### <a name="silent-installation"></a>Installatie op de achtergrond
 
-- Gebruik de opdracht ' msiexec/i SsprWindowsLogon. PROD. msi/qn ' voor een installatie op de achtergrond.
-- Voor onachtergrond verwijderen gebruikt u de opdracht "msiexec/x SsprWindowsLogon. PROD. msi/qn"
+- Voor stille installatie gebruikt u de opdracht "msiexec /i SsprWindowsLogon.PROD.msi /qn"
+- Voor stille verwijderen, gebruik de opdracht "msiexec /x SsprWindowsLogon.PROD.msi /qn"
 
-#### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Problemen met het opnieuw instellen van wacht woorden in Windows 7, 8 en 8,1 oplossen
+#### <a name="troubleshooting-windows-7-8-and-81-password-reset"></a>Problemen met Windows 7, 8 en 8.1 wachtwoordopnieuw instellen
 
-Gebeurtenissen worden geregistreerd op de computer en in azure AD. Azure AD-gebeurtenissen bevatten informatie over het IP-adres en de ClientType waar het wacht woord opnieuw wordt ingesteld.
+Gebeurtenissen worden zowel op de machine als in Azure AD geregistreerd. Azure AD-gebeurtenissen bevatten informatie over het IP-adres en ClientType waar het wachtwoord opnieuw is ingesteld.
 
-![Voor beeld van een Windows 7-wacht woord opnieuw instellen in het Azure AD-controle logboek](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
+![Voorbeeld van windows 7-wachtwoordreset in het Azure AD-controlelogboek](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Als aanvullende logboek registratie vereist is, kan een register sleutel op de computer worden gewijzigd om uitgebreide logboek registratie in te scha kelen. Schakel uitgebreide logboek registratie in voor het oplossen van problemen.
+Als extra logging vereist is, kan een registersleutel op de machine worden gewijzigd om verbose logging in te schakelen. Schakel alleen verboselogging in voor probleemoplossingsdoeleinden.
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Als u uitgebreide logboek registratie wilt inschakelen, maakt u een `REG_DWORD: “EnableLogging”`en stelt u deze in op 1.
-- Als u uitgebreide logboek registratie wilt uitschakelen, wijzigt u de `REG_DWORD: “EnableLogging”` in 0.
+- Als u verboselogging `REG_DWORD: “EnableLogging”`wilt inschakelen, maakt u een , en stelt u deze in op 1.
+- Als u de verbose-logboekregistratie wilt uitschakelen, wijzigt u de `REG_DWORD: “EnableLogging”` 0.
 
 ## <a name="what-do-users-see"></a>Wat gebruikers zien
 
-Nu u het opnieuw instellen van het wacht woord voor uw Windows-apparaten hebt geconfigureerd, wat verandert de gebruiker? Hoe weten ze dat ze hun wachtwoord opnieuw kunnen instellen via het aanmeldingsscherm?
+Wat verandert er voor de gebruiker nu u een wachtwoordreset voor uw Windows-apparaten hebt geconfigureerd? Hoe weten ze dat ze hun wachtwoord opnieuw kunnen instellen via het aanmeldingsscherm?
 
-![Voor beeld van een Windows 7-en 10-Aanmeldings scherm met een SSPR-koppeling](./media/howto-sspr-windows/windows-reset-password.png)
+![Voorbeeld Windows 7 en 10 inlogschermen met SSPR-koppeling weergegeven](./media/howto-sspr-windows/windows-reset-password.png)
 
-Wanneer gebruikers zich proberen aan te melden, zien ze nu de koppeling **wacht woord opnieuw instellen** of **verg eten wacht woord** waarmee de self-service voor het opnieuw instellen van wacht woorden wordt geopend in het aanmeldings scherm. Deze functionaliteit maakt het mogelijk dat gebruikers hun wachtwoord opnieuw instellen zonder dat ze een ander apparaat moeten gebruiken om toegang te krijgen tot een webbrowser.
+Wanneer gebruikers zich proberen aan te melden, zien ze nu een **wachtwoord opnieuw instellen** of **Wachtwoordkoppeling vergeten** waarmee de selfservice-wachtwoordreset-ervaring op het inlogscherm wordt geopend. Deze functionaliteit maakt het mogelijk dat gebruikers hun wachtwoord opnieuw instellen zonder dat ze een ander apparaat moeten gebruiken om toegang te krijgen tot een webbrowser.
 
 Uw gebruikers vinden hulp voor het gebruik van deze functie in [Uw wachtwoord voor werk of school opnieuw instellen](../user-help/active-directory-passwords-update-your-own-password.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Verificatie methoden plannen om toe te staan](concept-authentication-methods.md)
+[Verificatiemethoden plannen om toe te staan](concept-authentication-methods.md)
 
 [Windows 10 configureren](https://docs.microsoft.com/windows/configuration/)

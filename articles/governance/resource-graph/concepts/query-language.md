@@ -1,46 +1,46 @@
 ---
-title: Meer informatie over de query taal
-description: Hierin worden resource grafiek tabellen en de beschik bare Kusto-gegevens typen,-Opera tors en-functies die bruikbaar zijn met Azure resource Graph beschreven.
+title: Inzicht krijgen in de querytaal
+description: Beschrijft Resource Graph-tabellen en de beschikbare Kusto-gegevenstypen, -operators en -functies die kunnen worden gebruikt met Azure Resource Graph.
 ms.date: 03/07/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927484"
 ---
-# <a name="understanding-the-azure-resource-graph-query-language"></a>Informatie over de query taal van Azure resource Graph
+# <a name="understanding-the-azure-resource-graph-query-language"></a>De querytaal Azure Resource Graph begrijpen
 
-De query taal voor de Azure-resource grafiek ondersteunt een aantal opera tors en functies. Elk werk en werkt op basis van [Kusto query language (KQL)](/azure/kusto/query/index). Als u meer wilt weten over de query taal die wordt gebruikt door resource grafiek, begint u met de [zelf studie voor KQL](/azure/kusto/query/tutorial).
+De querytaal voor de Azure Resource Graph ondersteunt een aantal operators en functies. Elk werk en werk op basis [van Kusto Query Language (KQL)](/azure/kusto/query/index). Als u meer wilt weten over de querytaal die wordt gebruikt door Resource Graph, begint u met de [zelfstudie voor KQL](/azure/kusto/query/tutorial).
 
-In dit artikel worden de taal onderdelen beschreven die worden ondersteund door resource grafiek:
+In dit artikel worden de taalcomponenten die worden ondersteund door Resource Graph:
 
-- [Resource grafiek tabellen](#resource-graph-tables)
-- [Ondersteunde KQL-taal elementen](#supported-kql-language-elements)
-- [Escape tekens](#escape-characters)
+- [Resourcegrafiektabellen](#resource-graph-tables)
+- [Ondersteunde KQL-taalelementen](#supported-kql-language-elements)
+- [Escape-personages](#escape-characters)
 
-## <a name="resource-graph-tables"></a>Resource grafiek tabellen
+## <a name="resource-graph-tables"></a>Resourcegrafiektabellen
 
-Resource grafiek biedt verschillende tabellen voor de gegevens die worden opgeslagen over Resource Manager-resource typen en hun eigenschappen. Deze tabellen kunnen worden gebruikt met `join` of `union` Opera tors om eigenschappen van gerelateerde resource typen op te halen. Hier volgt de lijst met tabellen die beschikbaar zijn in resource grafiek:
+Resourcegraph bevat verschillende tabellen voor de gegevens die worden opgeslagen over resourcemanager-brontypen en hun eigenschappen. Deze tabellen kunnen `join` worden `union` gebruikt met of operators om eigenschappen te krijgen van gerelateerde resourcetypen. Hier is de lijst met tabellen die beschikbaar zijn in Resource Graph:
 
-|Resource grafiek tabellen |Beschrijving |
+|Resourcegrafiektabellen |Beschrijving |
 |---|---|
-|Bronnen |De standaard tabel als niets is gedefinieerd in de query. De resource typen en eigenschappen van Resource Manager zijn hier beschikbaar. |
-|ResourceContainers |Inclusief een abonnement (in Preview--`Microsoft.Resources/subscriptions`) en resource groep (`Microsoft.Resources/subscriptions/resourcegroups`) en gegevens. |
-|AdvisorResources |Bevat resources met _betrekking_ tot `Microsoft.Advisor`. |
-|AlertsManagementResources |Bevat resources met _betrekking_ tot `Microsoft.AlertsManagement`. |
-|MaintenanceResources |Bevat resources met _betrekking_ tot `Microsoft.Maintenance`. |
-|SecurityResources |Bevat resources met _betrekking_ tot `Microsoft.Security`. |
+|Resources |De standaardtabel als deze niet is gedefinieerd in de query. De meeste resourcetypen en eigenschappen van Resource Manager zijn hier. |
+|ResourceContainers |Inclusief abonnementstypen (in `Microsoft.Resources/subscriptions`preview --`Microsoft.Resources/subscriptions/resourcegroups`) en resourcegroep () resourcetypen en -gegevens. |
+|AdvisorResources |Inclusief resources `Microsoft.Advisor`met _betrekking_ tot . |
+|AlertsManagementResources |Inclusief resources `Microsoft.AlertsManagement`met _betrekking_ tot . |
+|Onderhoudsresources |Inclusief resources `Microsoft.Maintenance`met _betrekking_ tot . |
+|SecurityResources (SecurityResources) |Inclusief resources `Microsoft.Security`met _betrekking_ tot . |
 
-Zie [verwijzing: ondersteunde tabellen en resource typen](../reference/supported-tables-resources.md)voor een volledige lijst met resource typen.
+Zie [Referentie: Ondersteunde tabellen en resourcetypen](../reference/supported-tables-resources.md)voor een volledige lijst met resourcetypen.
 
 > [!NOTE]
-> _Resources_ is de standaard tabel. Tijdens het uitvoeren van een query op de tabel _resources_ is het niet nodig om de naam van de tabel op te geven, tenzij `join` of `union` worden gebruikt. De aanbevolen procedure is echter om altijd de eerste tabel in de query op te halen.
+> _Resources_ is de standaardtabel. Tijdens het opvragen van de tabel _Resources_ is het `join` `union` niet nodig om de tabelnaam op te geven, tenzij of worden gebruikt. De aanbevolen praktijk is echter om altijd de eerste tabel in de query op te nemen.
 
-Gebruik resource Graph Explorer in de portal om te ontdekken welke resource typen beschikbaar zijn in elke tabel. Als alternatief kunt u een query zoals `<tableName> | distinct type` gebruiken om een lijst met resource typen op te halen die in uw omgeving wordt ondersteund door de gegeven resource grafiek tabel.
+Gebruik Resource Graph Explorer in de portal om te ontdekken welke resourcetypen beschikbaar zijn in elke tabel. Als alternatief gebruikt u een `<tableName> | distinct type` query zoals om een lijst met resourcetypen te krijgen die de opgegeven resourcegrafiektabel ondersteunt die in uw omgeving bestaan.
 
-Met de volgende query wordt een eenvoudige `join`weer gegeven. In het query resultaat worden de kolommen samengebracht en dubbele kolom namen uit de gekoppelde tabel, _ResourceContainers_ in dit voor beeld, worden toegevoegd aan **1**. Als _ResourceContainers_ -tabel heeft typen voor beide abonnementen en resource groepen, kan een van beide typen worden gebruikt om lid te worden van de tabel Resource van _resources_ .
+De volgende query `join`toont een eenvoudige . Het queryresultaat combineert de kolommen samen en eventuele dubbele kolomnamen uit de samengevoegde tabel, _ResourceContainers_ in dit voorbeeld, worden toegevoegd met **1**. Aangezien de tabel _ResourceContainers_ typen heeft voor zowel abonnementen als resourcegroepen, kan een van beide typen worden gebruikt om lid te worden van de resource uit _de tabel Resources._
 
 ```kusto
 Resources
@@ -48,7 +48,7 @@ Resources
 | limit 1
 ```
 
-Met de volgende query wordt een complexere gebruik van `join`weer gegeven. Met de query wordt de gekoppelde tabel beperkt tot resources voor inschrijving en met `project` alleen het oorspronkelijke veld _subscriptionId_ en de _naam veld naam gewijzigd_ in _subnaam_. De naam van het veld wordt voor komen `join` als _NAME1_ toe te voegen, omdat het veld al in _resources_bestaat. De oorspronkelijke tabel wordt gefilterd met `where` en de volgende `project` bevat kolommen uit beide tabellen. Het query resultaat is een enkele sleutel kluis met het type, de naam van de sleutel kluis en de naam van het abonnement dat in wordt weer gegeven.
+De volgende query toont een `join`complexer gebruik van . De query beperkt de samengevoegde tabel `project` tot abonnementsbronnen en bevat alleen het oorspronkelijke _veldabonnementId_ en het _naamveld_ omgedoopt tot _Subnaam_. Het veld wijzigt `join` de naam van het veld en voegt deze niet toe als _naam1,_ omdat het veld al bestaat in _Resources_. De oorspronkelijke tabel `where` wordt gefilterd `project` met en de volgende bevat kolommen uit beide tabellen. Het queryresultaat is een enkel sleutelkluis met type, de naam van de sleutelkluis en de naam van het abonnement waarin het zich bevindt.
 
 ```kusto
 Resources
@@ -59,62 +59,62 @@ Resources
 ```
 
 > [!NOTE]
-> Bij het beperken van de `join` resultaten met `project`, moet de eigenschap die wordt gebruikt door `join` om de twee tabellen te koppelen, zoals _subscriptionId_ in het bovenstaande voor beeld, worden opgenomen in `project`.
+> Bij het `join` beperken `project`van de `join` resultaten met , de eigenschap die wordt gebruikt door `project`de twee tabellen te relateren, _moet subscriptionId_ in het bovenstaande voorbeeld worden opgenomen in .
 
-## <a name="supported-kql-language-elements"></a>Ondersteunde KQL-taal elementen
+## <a name="supported-kql-language-elements"></a>Ondersteunde KQL-taalelementen
 
-Resource grafiek ondersteunt alle KQL- [gegevens typen](/azure/kusto/query/scalar-data-types/), [scalaire functies](/azure/kusto/query/scalarfunctions), [scalaire Opera tors](/azure/kusto/query/binoperators)en [aggregatie functies](/azure/kusto/query/any-aggfunction). Specifieke [tabellaire Opera tors](/azure/kusto/query/queries) worden ondersteund door resource grafiek, waarvan sommige verschillende gedragingen hebben.
+Resource Graph ondersteunt alle [KQL-gegevenstypen](/azure/kusto/query/scalar-data-types/), [scalaire functies](/azure/kusto/query/scalarfunctions), [scalaire operatoren](/azure/kusto/query/binoperators)en [aggregatiefuncties](/azure/kusto/query/any-aggfunction). Specifieke [tabeloperatoren](/azure/kusto/query/queries) worden ondersteund door Resource Graph, waarvan sommige verschillende gedragingen hebben.
 
-### <a name="supported-tabulartop-level-operators"></a>Ondersteunde Opera tors voor tabellaire/hoogste niveau
+### <a name="supported-tabulartop-level-operators"></a>Ondersteunde operatoren in tabel-/topniveau
 
-Hier volgt een lijst met KQL-Opera tors die worden ondersteund door resource grafiek met specifieke voor beelden:
+Hier is de lijst van KQL tabeloperatoren ondersteund door Resource Graph met specifieke voorbeelden:
 
-|KQL |Voorbeeld query resource grafiek |Opmerkingen |
+|KQL KQL |Voorbeeldquery resourcegrafiek |Opmerkingen |
 |---|---|---|
-|[count](/azure/kusto/query/countoperator) |[Sleutel kluizen tellen](../samples/starter.md#count-keyvaults) | |
-|[onderscheiden](/azure/kusto/query/distinctoperator) |[DISTINCT-waarden voor een specifieke alias weer geven](../samples/starter.md#distinct-alias-values) | |
-|[uitbreidbaar](/azure/kusto/query/extendoperator) |[Virtuele machines tellen op type besturingssysteem](../samples/starter.md#count-os) | |
-|[join](/azure/kusto/query/joinoperator) |[Sleutel kluis met de naam van het abonnement](../samples/advanced.md#join) |Ondersteunde jointypen: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). De limiet van 3 `join` in één query. Aangepaste deelname strategieën, zoals broadcast toevoegen, zijn niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
-|[ondergrens](/azure/kusto/query/limitoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van `take` |
-|[mvexpand](/azure/kusto/query/mvexpandoperator) | | Verouderde operator, gebruik in plaats daarvan `mv-expand`. _RowLimit_ maximum van 400. De standaard waarde is 128. |
-|[MV-uitvouwen](/azure/kusto/query/mvexpandoperator) |[Cosmos DB met specifieke schrijf locaties weer geven](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ maximum van 400. De standaard waarde is 128. |
-|[ter](/azure/kusto/query/orderoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) |Synoniem van `sort` |
-|[project](/azure/kusto/query/projectoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) | |
-|[project-weg](/azure/kusto/query/projectawayoperator) |[Kolommen verwijderen uit resultaten](../samples/advanced.md#remove-column) | |
-|[acties](/azure/kusto/query/sortoperator) |[Een lijst van resources weergeven, gesorteerd op naam](../samples/starter.md#list-resources) |Synoniem van `order` |
-|[samenvatten](/azure/kusto/query/summarizeoperator) |[Azure-resources tellen](../samples/starter.md#count-resources) |Alleen de eerste vereenvoudigde pagina |
-|[Houd](/azure/kusto/query/takeoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van `limit` |
-|[Boven](/azure/kusto/query/topoperator) |[De eerste vijf virtuele machines weergeven op naam en met hun type besturingssysteem](../samples/starter.md#show-sorted) | |
-|[Réunion](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combi neren tot één resultaat](../samples/advanced.md#unionresults) |Eén tabel toegestaan: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[_kolom_ _naam `withsource=`tabel_.\] De limiet van 3 `union` poten in één query. Het oplossen van een benadering van `union` poot-tabellen is niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _resources_ en _ResourceContainers_ . |
-|[positie](/azure/kusto/query/whereoperator) |[Resources weergeven die opslag bevatten](../samples/starter.md#show-storage) | |
+|[Tellen](/azure/kusto/query/countoperator) |[Sleutelkluizen tellen](../samples/starter.md#count-keyvaults) | |
+|[distinct](/azure/kusto/query/distinctoperator) |[Afzonderlijke waarden voor een specifieke alias weergeven](../samples/starter.md#distinct-alias-values) | |
+|[Uitbreiden](/azure/kusto/query/extendoperator) |[Virtuele machines tellen op type besturingssysteem](../samples/starter.md#count-os) | |
+|[join](/azure/kusto/query/joinoperator) |[Sleutelkluis met abonnementsnaam](../samples/advanced.md#join) |Join smaken ondersteund: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Limiet van `join` 3 in één query. Aangepaste joinstrategieën, zoals broadcast join, zijn niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _Resources_ en _ResourceContainers._ |
+|[Beperken](/azure/kusto/query/limitoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van`take` |
+|[mvexpand](/azure/kusto/query/mvexpandoperator) | | Legacy operator, `mv-expand` gebruik in plaats daarvan. _RowLimit_ max van 400. De standaardinstelling is 128. |
+|[mv-uit te breiden](/azure/kusto/query/mvexpandoperator) |[Lijst Cosmos DB met specifieke schrijflocaties](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ max van 400. De standaardinstelling is 128. |
+|[Volgorde](/azure/kusto/query/orderoperator) |[Bronnen op naam gesorteerd](../samples/starter.md#list-resources) |Synoniem van`sort` |
+|[Project](/azure/kusto/query/projectoperator) |[Bronnen op naam gesorteerd](../samples/starter.md#list-resources) | |
+|[project-away](/azure/kusto/query/projectawayoperator) |[Kolommen uit resultaten verwijderen](../samples/advanced.md#remove-column) | |
+|[Sorteren](/azure/kusto/query/sortoperator) |[Bronnen op naam gesorteerd](../samples/starter.md#list-resources) |Synoniem van`order` |
+|[Samenvatten](/azure/kusto/query/summarizeoperator) |[Azure-resources tellen](../samples/starter.md#count-resources) |Alleen vereenvoudigde eerste pagina |
+|[Nemen](/azure/kusto/query/takeoperator) |[Een lijst van alle openbare IP-adressen weergeven](../samples/starter.md#list-publicip) |Synoniem van`limit` |
+|[top](/azure/kusto/query/topoperator) |[Eerste vijf virtuele machines weergeven op naam en het type besturingssysteem](../samples/starter.md#show-sorted) | |
+|[Unie](/azure/kusto/query/unionoperator) |[Resultaten van twee query's combineren tot één resultaat](../samples/advanced.md#unionresults) |`| union` \[ `kind=` `inner` \| `outer` \] \[Enkele tabel toegestaan: `withsource=` _T_ _ColumnName-tabel_ \] _Table_. Limiet van `union` 3 poten in een enkele query. Fuzzy resolutie `union` van been tafels is niet toegestaan. Kan worden gebruikt binnen één tabel of tussen de tabellen _Resources_ en _ResourceContainers._ |
+|[Waar](/azure/kusto/query/whereoperator) |[Resources weergeven die opslag bevatten](../samples/starter.md#show-storage) | |
 
-## <a name="escape-characters"></a>Escape tekens
+## <a name="escape-characters"></a>Escape-personages
 
-Sommige eigenschapnamen, zoals de namen die een `.` of `$`bevatten, moeten in de query worden verpakt of worden geescaped of de naam van de eigenschap wordt onjuist geïnterpreteerd en levert niet de verwachte resultaten op.
+Sommige eigenschapsnamen, zoals namen `.` `$`die een of , moeten worden verpakt of ontsnapt in de query of de eigenschapnaam wordt verkeerd geïnterpreteerd en biedt niet de verwachte resultaten.
 
-- de naam van de eigenschap `.`: `['propertyname.withaperiod']`
+- `.`- Wikkel de naam van de eigenschap als zodanig:`['propertyname.withaperiod']`
   
-  Voorbeeld query waarmee de eigenschap _odata. type_wordt geterugloopd:
+  Voorbeeldquery die de _eigenschap odata.type_omsluit:
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$`: Escape het teken in de naam van de eigenschap. Welk escape teken wordt gebruikt, is afhankelijk van de resource grafiek van de shell wordt uitgevoerd vanaf.
+- `$`- Ontsnap aan het personage in de eigendomsnaam. Het gebruikte escape-teken is afhankelijk van de shell Resource Graph wordt uitgevoerd.
 
-  - **bash** - `\`
+  - **Bash** - `\`
 
-    Voorbeeld query waarmee het eigenschaps _\$type_ in bash wordt geescapet:
+    Voorbeeldquery die ontsnapt aan het _ \$eigenschapstype_ in bash:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** : sluit het `$` teken niet.
+  - **cmd** - Ontsnap `$` niet aan het personage.
 
-  - **Power shell** - - ``` ` ```
+  - **Powershell** - ``` ` ```
 
-    Voorbeeld query waarmee het eigenschaps _\$type_ in Power shell wordt geescapet:
+    Voorbeeldquery die ontsnapt aan het _ \$eigenschapstype_ in PowerShell:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
@@ -122,6 +122,6 @@ Sommige eigenschapnamen, zoals de namen die een `.` of `$`bevatten, moeten in de
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
-- Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
-- Meer informatie over hoe u [resources kunt verkennen](explore-resources.md).
+- Zie de taal die wordt gebruikt in [Starter-query's](../samples/starter.md).
+- Zie geavanceerde toepassingen in [Geavanceerde query's](../samples/advanced.md).
+- Meer informatie over het [verkennen van bronnen.](explore-resources.md)

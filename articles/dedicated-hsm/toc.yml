@@ -26,7 +26,9 @@
   items:
     - name: Een implementatie-architectuur kiezen
       href: deployment-architecture.md
-- name: Bronnen
+    - name: Problemen oplossen
+      href: troubleshoot.md
+- name: Resources
   items:
     - name: Veelgestelde vragen
       href: faq.md

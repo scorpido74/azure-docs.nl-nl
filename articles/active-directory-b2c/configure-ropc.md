@@ -1,5 +1,5 @@
 ---
-title: De gegevens stroom van het wacht woord voor de resource-eigenaar configureren
+title: De stroom wachtwoordreferenties van de broneigenaar configureren
 titleSuffix: Azure AD B2C
 description: Meer informatie over het configureren van de ROPC-stroom in Azure AD B2C.
 services: active-directory-b2c
@@ -12,33 +12,33 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 70cd4f2ca3a4ac37bdf1d1e465d1f1a7d06ef9e1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189698"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>De gegevens stroom van het wacht woord voor de resource-eigenaar configureren in Azure AD B2C
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>De wachtwoordreferentiesstroom voor broneigenaren configureren in Azure AD B2C
 
-De ROPC-stroom (resource owner password credentials) is een OAuth-standaard verificatie stroom waarbij de toepassing, ook bekend als de Relying Party, geldige referenties, zoals gebruikers naam en wacht woord, uitwisselt voor een ID-token, toegangs token en een vernieuwings token.
+De rpc-stroom (Resource owner password credentials) is een OAuth-standaardverificatiestroom waarbij de toepassing, ook wel de relying party genoemd, geldige referenties uitwisselt, zoals userid en wachtwoord voor een ID-token, toegangstoken en een vernieuwingstoken.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 [!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-##  <a name="create-a-resource-owner-user-flow"></a>Een gebruikers stroom van een resource-eigenaar maken
+##  <a name="create-a-resource-owner-user-flow"></a>Een gebruikersstroom voor resource-eigenaar maken
 
-1. Meld u aan bij de Azure Portal als globale beheerder van uw Azure AD B2C Tenant.
-2. Als u wilt overschakelen naar uw Azure AD B2C Tenant, selecteert u de map B2C in de rechter bovenhoek van de portal.
-3. Klik op **gebruikers stromen**en selecteer **nieuwe gebruikers stroom**.
-4. Klik op het tabblad **alle** en selecteer **Aanmelden met behulp van ROPC**.
-5. Geef een naam op voor de gebruikers stroom, bijvoorbeeld *ROPC_Auth*.
-6. Klik onder **toepassings claims**op **weer geven**.
-7. Selecteer de toepassings claims die u nodig hebt voor uw toepassing, zoals weergave naam, e-mail adres en ID-provider.
+1. Meld u als globale beheerder van de Azure AD B2C-tenant aan bij Azure Portal.
+2. Als u wilt overschakelen naar uw Azure AD B2C-tenant, selecteert u de B2C-map in de rechterbovenhoek van de portal.
+3. Klik **op Gebruikersstromen**en selecteer **Nieuwe gebruikersstroom**.
+4. Klik op het tabblad **Alles** en selecteer **Aanmelden met ROPC**.
+5. Geef een naam op voor de gebruikersstroom, zoals *ROPC_Auth*.
+6. Klik **onder Toepassingsclaims**op **Meer weergeven**.
+7. Selecteer de toepassingsclaims die u nodig hebt voor uw toepassing, zoals Weergavenaam, E-mailadres en identiteitsprovider.
 8. Selecteer **OK**, en selecteer vervolgens **Maken**.
-9. Klik op **gebruikers stroom uitvoeren**.
+9. Klik **op Gebruikersstroom uitvoeren**.
 
-   Vervolgens ziet u een eind punt zoals dit voor beeld:
+   U ziet dan een eindpunt zoals dit voorbeeld:
 
    `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
 
@@ -47,12 +47,12 @@ De ROPC-stroom (resource owner password credentials) is een OAuth-standaard veri
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
-## <a name="test-the-user-flow"></a>De gebruikers stroom testen
+## <a name="test-the-user-flow"></a>De gebruikersstroom testen
 
-Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te genereren en Bekijk het antwoord op fout opsporing van uw gebruikers stroom. Maak een aanroep als dit met de informatie in de volgende tabel als hoofd tekst van de POST-aanvraag:
-- Vervang *\<yourtenant. onmicrosoft. com >* door de naam van uw B2C-Tenant.
-- Vervang *\<B2C_1A_ROPC_Auth >* door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
-- Vervang *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* door de toepassings-id van uw registratie.
+Gebruik uw favoriete API-ontwikkelingstoepassing om een API-aanroep te genereren en bekijk het antwoord op het opsporen van uw gebruikersstroom. Bouw een oproep als deze met de informatie in de volgende tabel als de hoofdtekst van de POST-aanvraag:
+- Vervang * \<yourtenant.onmicrosoft.com>* door de naam van uw B2C-tenant.
+- Vervang * \<B2C_1A_ROPC_Auth>* door de volledige naam van het beleid voor wachtwoordreferenties van uw broneigenaar.
+- Vervang * \<bef22222d56-552f-4a5b-b90a-1988a7d634c3>* door de applicatie-id van uw registratie.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
@@ -61,11 +61,11 @@ Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te generere
 | gebruikersnaam | leadiocl@outlook.com |
 | wachtwoord | Passxword1 |
 | grant_type | wachtwoord |
-| scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> offline_access |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
 
-*Client_id* is de waarde die u eerder hebt genoteerd als de toepassings-id. *Offline_access* is optioneel als u een vernieuwings token wilt ontvangen. De gebruikers naam en het wacht woord die u gebruikt, moeten referenties zijn van een bestaande gebruiker in uw Azure AD B2C-Tenant.
+*Client_id* is de waarde die u eerder als toepassings-id hebt opgemerkt. *Offline_access* is optioneel als u een vernieuwingstoken wilt ontvangen. De gebruikersnaam en het wachtwoord die u gebruikt, moeten referenties zijn van een bestaande gebruiker in uw Azure AD B2C-tenant.
 
 De werkelijke POST-aanvraag ziet er als volgt uit:
 
@@ -78,7 +78,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 ```
 
 
-Een geslaagde reactie met offline toegang lijkt op het volgende voor beeld:
+Een succesvol antwoord met offline toegang ziet eruit als het volgende voorbeeld:
 
 ```json
 {
@@ -90,9 +90,9 @@ Een geslaagde reactie met offline toegang lijkt op het volgende voor beeld:
 }
 ```
 
-## <a name="redeem-a-refresh-token"></a>Een vernieuwings token inwisselen
+## <a name="redeem-a-refresh-token"></a>Een vernieuwingstoken inwisselen
 
-Een POST-aanroep maken zoals deze wordt weer gegeven met de informatie in de volgende tabel als hoofd tekst van de aanvraag:
+Bouw een POST-oproep zoals hier weergegeven met de informatie in de volgende tabel als het hoofd van het verzoek:
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
@@ -100,13 +100,13 @@ Een POST-aanroep maken zoals deze wordt weer gegeven met de informatie in de vol
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
-| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
-| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
+| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
-*Client_id* en *resource* zijn de waarden die u eerder hebt genoteerd als de toepassings-id. *Refresh_token* is het token dat u in de eerder genoemde authenticatie oproep hebt ontvangen.
+*Client_id* en *resource* zijn de waarden die u eerder als toepassings-id hebt opgemerkt. *Refresh_token* is het token dat u hebt ontvangen in de eerder genoemde verificatieoproep.
 
-Een geslaagde reactie ziet eruit als in het volgende voor beeld:
+Een succesvol antwoord ziet eruit als het volgende voorbeeld:
 
 ```json
 {
@@ -124,13 +124,13 @@ Een geslaagde reactie ziet eruit als in het volgende voor beeld:
 }
 ```
 > [!NOTE]
-> Bij het maken van gebruikers via Graph API moet de toepassing de machtigingen ' OpenID Connect ', ' offline_access ' en ' profile ' van Microsoft Graph hebben.
+> Bij het maken van gebruikers via Graph API moet de toepassing 'openid', 'offline_access' en 'profielmachtigingen' van Microsoft Graph hebben.
 
-## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementeer met uw voorkeurs systeem eigen SDK of gebruik app-auth
+## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementeren met uw favoriete native SDK of gebruik App-Auth
 
-De implementatie van de Azure AD B2C voldoet aan de OAuth 2,0-standaarden voor de referenties van het eigenaars wachtwoord voor open bare client bronnen en moet compatibel zijn met de meeste client-Sdk's. We hebben deze stroom uitgebreid getest in productie, met AppAuth voor iOS en AppAuth voor Android. Zie voor de meest recente informatie [systeem eigen app SDK voor OAuth 2,0 en OpenID Connect Connect implementeren moderne Best practices](https://appauth.io/).
+De Azure AD B2C-implementatie voldoet aan de OAuth 2.0-normen voor wachtwoordreferenties voor openbare clientbronnen en moet compatibel zijn met de meeste client-SDK's. We hebben deze flow uitgebreid getest, in productie, met AppAuth voor iOS en AppAuth voor Android. Zie Native App [SDK voor OAuth 2.0 en OpenID Connect voor](https://appauth.io/)de laatste informatie over de implementatie van moderne best practices.
 
-Down load Working-voor beelden die zijn geconfigureerd voor gebruik met Azure AD B2C van GitHub, [voor Android](https://aka.ms/aadb2cappauthropc) en [IOS](https://aka.ms/aadb2ciosappauthropc).
+Werkvoorbeelden downloaden die zijn geconfigureerd voor gebruik met Azure AD B2C van GitHub, [voor Android](https://aka.ms/aadb2cappauthropc) en [voor iOS.](https://aka.ms/aadb2ciosappauthropc)
 
 
 

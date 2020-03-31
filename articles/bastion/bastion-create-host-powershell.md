@@ -1,6 +1,6 @@
 ---
-title: Een bastion-host maken met Azure Power shell | Microsoft Docs
-description: In dit artikel leest u hoe u een Azure bastion-host maakt
+title: Een Bastion-host maken met Azure Powershell | Microsoft Documenten
+description: In dit artikel vindt u meer informatie over het maken van een Azure Bastion-host
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: c3e4c2f2bac45f2e366764473a34b0536bb4cc44
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76990433"
 ---
-# <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Een Azure bastion-host maken met behulp van Azure PowerShell
+# <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Een Azure Bastion-host maken met Azure PowerShell
 
-In dit artikel wordt beschreven hoe u een Azure bastion-host maakt met behulp van Power shell. Zodra u de Azure Bastion-service in uw virtuele netwerk hebt ingericht, is de naadloze RDP/SSH-ervaring beschikbaar voor alle virtuele machines in hetzelfde virtuele netwerk. Azure Bastion-implementatie is per virtueel netwerk, niet per abonnement/account of virtuele machine.
+In dit artikel ziet u hoe u een Azure Bastion-host maakt met PowerShell. Zodra u de Azure Bastion-service in uw virtuele netwerk indient, is de naadloze RDP/SSH-ervaring beschikbaar voor alle VM's in hetzelfde virtuele netwerk. Azure Bastion-implementatie is per virtueel netwerk, niet per abonnement/account of virtuele machine.
 
-U kunt desgewenst een Azure bastion-host maken met behulp van de [Azure Portal](bastion-create-host-portal.md).
+Optioneel u een Azure Bastion-host maken met behulp van de [Azure-portal.](bastion-create-host-portal.md)
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -26,11 +26,11 @@ Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt,
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="createhost"></a>Een bastion-host maken
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Een Bastion-host maken
 
-Deze sectie helpt u bij het maken van een nieuwe Azure Bastion-resource met behulp van Azure PowerShell.
+Met deze sectie u een nieuwe Azure Bastion-bron maken met Azure PowerShell.
 
-1. Maak een virtueel netwerk en een Azure Bastion-subnet. U moet het Azure Bastion-subnet maken met de naam waarde **AzureBastionSubnet**. Met deze waarde kan Azure weten met welk subnet de Bastion-resources moeten worden geïmplementeerd. Dit wijkt af van een gateway-subnet. U moet een subnet van Mini maal/27 of groter subnet (/27,/26, enzovoort) gebruiken. Maak de **AzureBastionSubnet** zonder route tabellen of delegaties. Als u netwerk beveiligings groepen op de **AzureBastionSubnet**gebruikt, raadpleegt u het artikel [over het werken met nsg's](bastion-nsg.md) .
+1. Maak een virtueel netwerk en een Subnet Azure Bastion. U moet het subnet Azure Bastion maken met de naamwaarde **AzureBastionSubnet**. Met deze waarde weet Azure naar welk subnet de Bastion-resources moeten worden geïmplementeerd. Dit is anders dan een Gateway-subnet. U moet een subnet van ten minste /27 of groter subnet gebruiken (/27, /26, enzovoort). Maak het **AzureBastionSubnet** zonder routetabellen of delegaties. Als u netwerkbeveiligingsgroepen op het **AzureBastionSubnet**gebruikt, raadpleegt u het artikel [Werken met NSGs.](bastion-nsg.md)
 
    ```azurepowershell-interactive
    $subnetName = "AzureBastionSubnet"
@@ -38,13 +38,13 @@ Deze sectie helpt u bij het maken van een nieuwe Azure Bastion-resource met behu
    $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName " myBastionRG " -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
    ```
 
-2. Maak een openbaar IP-adres voor Azure Bastion. De open bare IP is het open bare IP-adres van de Bastion-bron waarop RDP/SSH wordt gebruikt (via poort 443). Het open bare IP-adres moet zich in dezelfde regio bevinden als de Bastion-resource die u maakt.
+2. Maak een openbaar IP-adres voor Azure Bastion. Het openbare IP-adres is het openbare IP-adres van de Bastion-bron waarop RDP/SSH zal worden geopend (via poort 443). Het openbare IP-adres moet zich in dezelfde regio bevinden als de Bastion-bron die u maakt.
 
    ```azurepowershell-interactive
    $publicip = New-AzPublicIpAddress -ResourceGroupName "myBastionRG" -name "myPublicIP" -location "westeurope" -AllocationMethod Static -Sku Standard
    ```
 
-3. Maak een nieuwe Azure Bastion-resource in de AzureBastionSubnet van uw virtuele netwerk. Het duurt ongeveer vijf minuten voordat de Bastion-resource wordt gemaakt en geïmplementeerd.
+3. Maak een nieuwe Azure Bastion-bron in het AzureBastionSubnet van uw virtuele netwerk. Het duurt ongeveer 5 minuten voordat de Bastion-bron is gemaakt en geïmplementeerd.
 
    ```azurepowershell-interactive
    $bastion = New-AzBastion -ResourceGroupName " myBastionRG " -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
@@ -52,6 +52,6 @@ Deze sectie helpt u bij het maken van een nieuwe Azure Bastion-resource met behu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees de [Veelgestelde vragen over Bastion](bastion-faq.md) voor meer informatie.
+* Lees de [Veelgestelde vragen over bastion](bastion-faq.md) voor meer informatie.
 
-* Als u netwerk beveiligings groepen wilt gebruiken met het Azure Bastion-subnet, raadpleegt u [werken met nsg's](bastion-nsg.md).
+* Zie [Werken met NSGs](bastion-nsg.md)als u netwerkbeveiligingsgroepen wilt gebruiken met het subnet Azure Bastion.

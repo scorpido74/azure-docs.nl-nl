@@ -1,6 +1,6 @@
 ---
-title: Bewegingen detecteren met Azure Media Analytics | Microsoft Docs
-description: Met de Azure Media Motion Detector media processor (MP) kunt u op efficiënte wijze gedeelten van interesses identificeren binnen een andere, lange en niet-gebeurtenisloze video.
+title: Bewegingen detecteren met Azure Media Analytics | Microsoft Documenten
+description: Met de Azure Media Motion Detector-mediaprocessor (MP) u delen van belang efficiënt identificeren binnen een anders lange en rustige video.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,45 +15,45 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77913001"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Bewegingen detecteren met Azure Media Analytics
 
 > [!NOTE]
-> De **Azure Media Motion detector** -media processor wordt buiten gebruik gesteld. Zie het onderwerp [oudere onderdelen](legacy-components.md) voor de datum van beëindiging.
+> De **mediaprocessor Azure Media Motion Detector** wordt buiten gebruik gesteld. Zie voor de pensioendatum het onderwerp [oudere onderdelen.](legacy-components.md)
  
 ## <a name="overview"></a>Overzicht
 
-Met de **Azure Media Motion detector** media processor (MP) kunt u op efficiënte wijze gedeelten van interesses identificeren binnen een andere, lange en niet-gebeurtenisloze video. Bewegings detectie kan worden gebruikt voor statische camera beelden om secties van de video te identificeren waar beweging optreedt. Er wordt een JSON-bestand gegenereerd met een meta gegevens met tijds tempels en het grens gebied waarin de gebeurtenis plaatsvond.
+Met **de Azure Media Motion Detector-mediaprocessor** (MP) u delen van belang efficiënt identificeren binnen een anders lange en rustige video. Bewegingsdetectie kan worden gebruikt op statische camerabeelden om delen van de video te identificeren waar beweging plaatsvindt. Het genereert een JSON-bestand met een metagegevens met tijdstempels en het grensgebied waar de gebeurtenis heeft plaatsgevonden.
 
-Deze technologie is gericht op beveiligings videofeeds en kan bewegingen in relevante gebeurtenissen categoriseren en fout-positieven, zoals scha duwen en belichtings veranderingen. Op deze manier kunt u beveiligings waarschuwingen genereren op basis van camera feeds zonder spam met eindeloze irrelevante gebeurtenissen, terwijl u de momenten van belang stelling van lange bewakings Video's kunt ophalen.
+Gericht op beveiligingsvideofeeds, is deze technologie in staat om beweging te categoriseren in relevante gebeurtenissen en false positives zoals schaduwen en lichtveranderingen. Hiermee u beveiligingswaarschuwingen genereren van camerafeeds zonder te worden gespamd met eindeloze irrelevante gebeurtenissen, terwijl u momenten van interesse extraheren uit lange bewakingsvideo's.
 
-De **Azure Media Motion detector** -MP is momenteel beschikbaar als preview-versie.
+De **Azure Media Motion Detector** MP bevindt zich momenteel in Preview.
 
-Dit artikel bevat informatie over **Azure Media Motion detector** en laat zien hoe u deze kunt gebruiken met Media Services SDK voor .net
+In dit artikel vindt u informatie over **Azure Media Motion Detector** en wordt uitgelegd hoe u deze gebruiken met Media Services SDK voor .NET
 
-## <a name="motion-detector-input-files"></a>Bewegings detector-invoer bestanden
-Video bestanden. Momenteel worden de volgende indelingen ondersteund: MP4, MOV en WMV.
+## <a name="motion-detector-input-files"></a>Invoerbestanden bewegingsdetector
+Videobestanden. Momenteel worden de volgende indelingen ondersteund: MP4, MOV en WMV.
 
-## <a name="task-configuration-preset"></a>Taak configuratie (voor instelling)
-Wanneer u een taak met **Azure Media Motion detector**maakt, moet u een voor instelling voor de configuratie opgeven. 
+## <a name="task-configuration-preset"></a>Taakconfiguratie (vooraf ingesteld)
+Wanneer u een taak maakt met **Azure Media Motion Detector,** moet u een configuratievoorinstelling opgeven. 
 
 ### <a name="parameters"></a>Parameters
-U kunt de volgende para meters gebruiken:
+U de volgende parameters gebruiken:
 
 | Name | Opties | Beschrijving | Standaard |
 | --- | --- | --- | --- |
-| sensitivityLevel |String:'low', 'medium', 'high' |Hiermee stelt u het gevoeligheids niveau in waarmee bewegingen worden gerapporteerd. Stel dit in op het aanpassen van het aantal fout-positieven. |drager |
-| frameSamplingValue |Positief geheel getal |Hiermee stelt u de frequentie in waarmee algoritmen worden uitgevoerd. 1 is gelijk aan elk frame, 2 betekent elk tweede frame, enzovoort. |1 |
-| detectLightChange |Boolean:'true', 'false' |Hiermee wordt ingesteld of lichte wijzigingen worden gerapporteerd in de resultaten |Terecht |
-| mergeTimeThreshold |XS-time: uu: mm: SS<br/>Voor beeld: 00:00:03 |Hiermee geeft u het tijd venster op tussen bewegings gebeurtenissen waarbij twee gebeurtenissen worden gecombineerd en gerapporteerd als 1. |00:00:00 |
-| detectionZones |Een matrix met detectie zones:<br/>-De detectie zone is een matrix van drie of meer punten<br/>-Punt is een x-en y-coördinaat van 0 tot 1. |Hiermee wordt de lijst met veelhoek detectie zones beschreven die moeten worden gebruikt.<br/>Resultaten worden gerapporteerd met de zones als een ID, waarbij de eerste een id is: 0 |Eén zone, die het hele frame bedekt. |
+| gevoeligheidNiveau |String:'laag', 'medium', 'hoog' |Hiermee stelt u het gevoeligheidsniveau in waarop bewegingen worden gerapporteerd. Pas dit aan om het aantal fout-positieven aan te passen. |'medium' |
+| frameSampling-waarde |Positief geheel getal |Hiermee stelt u de frequentie in waarop het algoritme wordt uitgevoerd. 1 is gelijk aan elk frame, 2 betekent elk tweede frame, enzovoort. |1 |
+| detectLightChange |Boolean:'waar', 'vals' |Hiermee bepaalt u of lichtwijzigingen worden gerapporteerd in de resultaten |'Vals' |
+| mergeTimeThreshold |Xs-tijd: Hh:mm:ss<br/>Voorbeeld: 00:00:03 |Hiermee geeft u het tijdvenster op tussen bewegingsgebeurtenissen waarbij twee gebeurtenissen worden gecombineerd en gerapporteerd als 1. |00:00:00 |
+| detectiezones |Een scala aan detectiezones:<br/>- Detectiezone is een array van 3 of meer punten<br/>- Punt is een x en y coördinaat van 0 tot 1. |Beschrijft de lijst met veelhoekige detectiezones die moeten worden gebruikt.<br/>Resultaten worden gerapporteerd met de zones als een ID, met de eerste is 'id':0 |Enkele zone, die het hele frame bedekt. |
 
-### <a name="json-example"></a>JSON-voor beeld
+### <a name="json-example"></a>Json voorbeeld
 
 ```json
     {
@@ -85,38 +85,38 @@ U kunt de volgende para meters gebruiken:
     }
 ```
 
-## <a name="motion-detector-output-files"></a>Uitvoer bestanden voor Motion detector
-Een bewegings detectie taak retourneert een JSON-bestand in het uitvoer element, waarin de animatie waarschuwingen en de bijbehorende categorieën binnen de video worden beschreven. Het bestand bevat informatie over de tijd en duur van de beweging die in de video is gedetecteerd.
+## <a name="motion-detector-output-files"></a>Bewegingsdetectoruitvoerbestanden
+Een functie voor bewegingsdetectie retourneert een JSON-bestand in het uitvoerelement, waarin de bewegingswaarschuwingen en de categorieën ervan in de video worden beschreven. Het bestand bevat informatie over de tijd en duur van de bewegingstijd die in de video wordt gedetecteerd.
 
-De bewegings detector-API biedt indica toren wanneer er objecten in beweging zijn in een video met een vaste achtergrond (bijvoorbeeld een bewakings video). De bewegings detector is getraind om te voor komen dat er valse waarschuwingen, zoals belichtings-en schaduw wijzigingen, worden verminderd. De huidige beperkingen van de algoritmen zijn onder andere nacht visie Video's, semi transparante objecten en kleine objecten.
+De Motion Detector API geeft indicatoren zodra er objecten in beweging zijn in een vaste achtergrondvideo (bijvoorbeeld een bewakingsvideo). De Bewegingsdetector is getraind om vals alarm te verminderen, zoals verlichting en schaduwwisselingen. De huidige beperkingen van de algoritmen omvatten nachtzichtvideo's, semi-transparante objecten en kleine objecten.
 
-### <a id="output_elements"></a>Elementen van het JSON-uitvoer bestand
+### <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>Elementen van het JSON-bestand uitvoer
 > [!NOTE]
-> In de meest recente versie is de uitvoer JSON-indeling gewijzigd en kan dit een belang rijke wijziging voor sommige klanten vormen.
+> In de nieuwste versie is de INDELING Uitvoer JSON gewijzigd en kan dit voor sommige klanten een baanbrekende wijziging betekenen.
 > 
 > 
 
-In de volgende tabel worden elementen van het JSON-uitvoer bestand beschreven.
+In de volgende tabel worden elementen van het JSON-bestand voor uitvoer beschreven.
 
 | Element | Beschrijving |
 | --- | --- |
-| version |Dit verwijst naar de versie van de video-API. De huidige versie is 2. |
-| timescale |' Ticks ' per seconde van de video. |
-| offset |De tijds verschuiving voor tijds tempels in Ticks. In versie 1,0 van video-Api's is dit altijd 0. Deze waarde kan worden gewijzigd in toekomstige scenario's die worden ondersteund. |
-| snelheid |Aantal frames per seconde video. |
+| versie |Dit verwijst naar de versie van de Video API. De huidige versie is 2. |
+| Tijdschaal |"Teken" per seconde van de video. |
+| offset |De tijdscompensatie voor tijdstempels in 'teken'. In versie 1.0 van Video API's is dit altijd 0. In toekomstige scenario's die we ondersteunen, kan deze waarde veranderen. |
+| Framerate |Aantal frames per seconde video. |
 | breedte, hoogte |Verwijst naar de breedte en hoogte van de video in pixels. |
-| start |Het tijds tempel van de begin datum in Ticks. |
-| duration |De lengte van de gebeurtenis, in Ticks. |
-| interval |Het interval van elke vermelding in de gebeurtenis, in Ticks. |
-| events |Elk gebeurtenis fragment bevat de beweging die binnen die tijds duur is gedetecteerd. |
-| type |In de huidige versie is dit altijd ' 2 ' voor algemene beweging. Dit label biedt video-Api's de flexibiliteit voor het categoriseren van bewegingen in toekomstige versies. |
-| regionId |Zoals hierboven is uitgelegd, is dit altijd 0 in deze versie. Dit label geeft video-API de flexibiliteit om beweging in verschillende regio's in toekomstige versies te vinden. |
-| secties |Verwijst naar het gebied in uw video waar u aandacht besteedt aan beweging. <br/><br/>-' id ' vertegenwoordigt het gebied regio – in deze versie is er slechts één, ID 0. <br/>-"type" vertegenwoordigt de vorm van de regio die u voor de beweging bevalt. Op dit moment worden "Rectangle" en "veelhoek" ondersteund.<br/> Als u ' Rectangle ' hebt opgegeven, heeft de regio dimensies in X, Y, width en height. De X-en Y-coördinaten vertegenwoordigen de linkerbovenhoek van de linker XY-coördinaten van de regio in een genormaliseerde schaal van 0,0 tot 1,0. De breedte en hoogte staan voor de grootte van de regio in een genormaliseerde schaal van 0,0 tot 1,0. In de huidige versie worden X, Y, width en height altijd vastgesteld op 0, 0 en 1, 1. <br/>Als u ' veelhoek ' hebt opgegeven, heeft de regio dimensies in punten. <br/> |
-| fragmenten |De meta gegevens worden gesegmenteerd in verschillende segmenten die fragmenten worden genoemd. Elk fragment bevat een start, een duur, een intervalnummer en een of meer gebeurtenissen. Een fragment zonder gebeurtenissen houdt in dat er geen bewegingen zijn gedetecteerd tijdens de start tijd en duur. |
-| vier Kante haken [] |Elk haakje vertegenwoordigt één interval in de gebeurtenis. Lege haken voor dat interval betekent dat er geen beweging is gedetecteerd. |
-| locaties |In deze nieuwe vermelding onder gebeurtenissen wordt de locatie vermeld waarop de beweging heeft plaatsgevonden. Dit is specifieker dan de detectie zones. |
+| start |De starttijdstempel in "teken". |
+| duur |De lengte van het evenement, in "teken". |
+| interval |Het interval van elk item in het evenement, in "teken". |
+| events |Elk gebeurtenisfragment bevat de beweging die binnen die tijdsduur wordt gedetecteerd. |
+| type |In de huidige versie is dit altijd '2' voor generieke beweging. Dit label geeft Video API's de flexibiliteit om beweging in toekomstige versies te categoriseren. |
+| regioId |Zoals hierboven uitgelegd, zal dit altijd 0 in deze versie. Dit label geeft Video API de flexibiliteit om beweging te vinden in verschillende regio's in toekomstige versies. |
+| Regio 's |Verwijst naar het gebied in uw video waar u de zorg over beweging. <br/><br/>-"id" vertegenwoordigt het regiogebied – in deze versie is er slechts één, ID 0. <br/>-"type" vertegenwoordigt de vorm van de regio waar u om geeft voor beweging. Momenteel worden 'rechthoek' en 'veelhoek' ondersteund.<br/> Als u 'rechthoek' hebt opgegeven, heeft het gebied afmetingen in X, Y, Breedte en Hoogte. De X- en Y-coördinaten vertegenwoordigen de xy-coördinaten van de regio in een genormaliseerde schaal van 0,0 tot 1,0. De breedte en hoogte vertegenwoordigen de grootte van het gebied in een genormaliseerde schaal van 0,0 tot 1,0. In de huidige versie worden X, Y, Width en Height altijd vastgesteld op 0, 0 en 1, 1. <br/>Als u 'veelhoek' hebt opgegeven, heeft het gebied afmetingen in punten. <br/> |
+| Fragmenten |De metagegevens worden samengevoegd in verschillende segmenten, fragmenten genaamd. Elk fragment bevat een start, een duur, een intervalnummer en een of meer gebeurtenissen. Een fragment zonder gebeurtenissen betekent dat er geen beweging is gedetecteerd tijdens die begintijd en duur. |
+| haakjes [] |Elke beugel vertegenwoordigt één interval in de gebeurtenis. Lege haakjes voor dat interval betekent dat er geen beweging is gedetecteerd. |
+| locaties |In deze nieuwe vermelding onder gebeurtenissen wordt de locatie weergegeven waar de beweging is uitgevoerd. Dit is specifieker dan de detectiezones. |
 
-In het volgende JSON-voor beeld ziet u de uitvoer:
+In het volgende JSON-voorbeeld wordt de uitvoer weergegeven:
 
 ```json
     {
@@ -163,16 +163,16 @@ In het volgende JSON-voor beeld ziet u de uitvoer:
 ```
 
 ## <a name="limitations"></a>Beperkingen
-* De ondersteunde indelingen voor video-invoer zijn MP4, MOV en WMV.
-* Bewegings detectie is geoptimaliseerd voor stationaire achtergrond Video's. Het algoritme is gericht op het beperken van valse waarschuwingen, zoals belichtings wijzigingen en scha duwen.
-* Sommige bewegingen worden mogelijk niet gedetecteerd als gevolg van technische problemen; bijvoorbeeld: een video met nacht visie, semi transparante objecten en kleine objecten.
+* De ondersteunde invoervideo-indelingen omvatten MP4, MOV en WMV.
+* Bewegingsdetectie is geoptimaliseerd voor stilstaande achtergrondvideo's. Het algoritme richt zich op het verminderen van vals alarm, zoals lichtveranderingen en schaduwen.
+* Sommige bewegingen kunnen niet worden gedetecteerd als gevolg van technische uitdagingen; bijvoorbeeld nachtzichtvideo's, semi-transparante objecten en kleine objecten.
 
-## <a name="net-sample-code"></a>.NET-voorbeeld code
+## <a name="net-sample-code"></a>.NET-voorbeeldcode
 
-Het volgende programma laat zien hoe u:
+In het volgende programma ziet u hoe u:
 
-1. Maak een Asset en upload een media bestand naar de Asset.
-2. Maak een taak met een video bewegings detectie taak op basis van een configuratie bestand dat de volgende JSON-voor instelling bevat: 
+1. Maak een asset en upload een mediabestand naar het item.
+2. Maak een taak met een videobewegingsdetectietaak op basis van een configuratiebestand met de volgende json-voorinstelling: 
    
     ```json
             {
@@ -204,11 +204,11 @@ Het volgende programma laat zien hoe u:
             }
     ```
 
-3. Down load de JSON-uitvoer bestanden. 
+3. Download de JSON-bestanden van uitvoer. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Maak en configureer een Visual Studio-project.
 
-Stel uw ontwikkelomgeving in en vul in het bestand app.config de verbindingsinformatie in, zoals beschreven in [Media Services ontwikkelen met .NET](media-services-dotnet-how-to-use.md). 
+Stel uw ontwikkelomgeving in en vul het app.config-bestand in met verbindingsgegevens, zoals beschreven in [de ontwikkeling van Media Services met .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Voorbeeld
 
@@ -388,9 +388,9 @@ namespace VideoMotionDetection
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Verwante koppelingen
-[Azure Media Services Motion detector-blog](https://azure.microsoft.com/blog/motion-detector-update/)
+[Azure Media Services-bewegingsdetectorblog](https://azure.microsoft.com/blog/motion-detector-update/)
 
 [Overzicht van Azure Media Services Analytics](media-services-analytics-overview.md)
 
-[Demo's Azure Media Analytics](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics-demo's](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

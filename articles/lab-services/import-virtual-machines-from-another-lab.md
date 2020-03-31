@@ -1,6 +1,6 @@
 ---
-title: Virtuele machines importeren vanuit een ander lab in Azure DevTest Labs
-description: In dit artikel wordt beschreven hoe u virtuele machines vanuit een ander lab importeert in het huidige lab in Azure DevTest Labs.
+title: Virtuele machines importeren uit een ander lab in Azure DevTest Labs
+description: In dit artikel wordt beschreven hoe u virtuele machines uit een ander lab importeert naar het huidige lab in Azure DevTest Labs.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,44 +13,44 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 299d5c8758a13edded63b99abb2f12ddf9fa14be
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759513"
 ---
-# <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Virtuele machines importeren vanuit een ander lab in Azure DevTest Labs
-Dit artikel bevat informatie over het importeren van virtuele machines van een ander lab in uw Lab.
+# <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Virtuele machines importeren uit een ander lab in Azure DevTest Labs
+In dit artikel vindt u informatie over het importeren van virtuele machines uit een ander lab in uw lab.
 
 ## <a name="scenarios"></a>Scenario's
-Hier volgen enkele scenario's waarin u Vm's van het ene lab naar een ander lab moet importeren:
+Hier volgen enkele scenario's waarin u VM's van het ene lab naar het andere lab moet importeren:
 
-- Een individu van het team gaat naar een andere groep binnen de onderneming en wil het ontwikkelaars bureau nemen naar de DevTest Labs van het nieuwe team.
-- De groep heeft een [quotum op abonnements niveau](../azure-resource-manager/management/azure-subscription-service-limits.md) bereikt en wil de teams opsplitsen in een aantal abonnementen
-- Het bedrijf gaat over naar een snelle route (of een andere nieuwe netwerk topologie) en het team wil de Virtual Machines verplaatsen om deze nieuwe infra structuur te gebruiken
+- Een persoon in het team verhuist naar een andere groep binnen de onderneming en wil de ontwikkelaar desktop te nemen om het nieuwe team DevTest Labs.
+- De groep heeft een [quotum op abonnementsniveau](../azure-resource-manager/management/azure-subscription-service-limits.md) bereikt en wil de teams opsplitsen in een paar abonnementen
+- Het bedrijf verhuist naar Express Route (of een andere nieuwe netwerktopologie) en het team wil de Virtuele Machines verplaatsen om deze nieuwe infrastructuur te gebruiken
 
 ## <a name="solution-and-constraints"></a>Oplossing en beperkingen
-Met deze functie kunt u virtuele machines in één Lab (bron) importeren in een ander lab (doel). U kunt eventueel een nieuwe naam voor de doel-VM in het proces opgeven. Het import proces bevat alle afhankelijkheden, zoals schijven, schema's, netwerk instellingen, enzovoort.
+Met deze functie u VM's importeren in het ene lab (bron) naar een ander lab (bestemming). U optioneel een nieuwe naam geven voor de doel-VM in het proces. Het importproces omvat alle afhankelijkheden zoals schijven, schema's, netwerkinstellingen, enzovoort.
 
-Het proces neemt enige tijd in beslag en wordt beïnvloed door de volgende factoren:
+Het proces duurt enige tijd en wordt beïnvloed door de volgende factoren:
 
-- Aantal of de grootte van de schijven die zijn gekoppeld aan de bron machine (omdat het een Kopieer bewerking is en geen Verplaats bewerking)
-- Afstand tot het doel (bijvoorbeeld de regio VS-Oost naar Zuidoost-Azië).
+- Aantal/grootte van de schijven die aan de bronmachine zijn gekoppeld (omdat het een kopieerbewerking is en geen verplaatsingsbewerking)
+- Afstand tot de bestemming (bijvoorbeeld de regio Oost-VS naar Zuidoost-Azië).
 
-Zodra het proces is voltooid, blijft de virtuele bron machine afgesloten en wordt het nieuwe uitgevoerd in het bestemmings Lab.
+Zodra het proces is voltooid, blijft de bron Virtual Machine afsluiten en wordt de nieuwe in het doellab uitgevoerd.
 
-Er zijn twee belang rijke beperkingen waarmee u rekening moet houden bij het importeren van Vm's van één Lab in naar een ander lab:
+Er zijn twee belangrijke beperkingen om rekening mee te houden bij het importeren van VM's van het ene lab naar een ander lab:
 
-- De virtuele machine wordt geïmporteerd in abonnementen en tussen regio's wordt ondersteund, maar de abonnementen moeten aan dezelfde Azure Active Directory-Tenant zijn gekoppeld.
-- Virtual Machines mag niet een claim bare status in het bron laboratorium hebben.
-- U bent de eigenaar van de virtuele machine in de bron-Lab en de eigenaar van het lab in het doel-Lab.
-- Deze functie wordt momenteel alleen ondersteund via Power shell en REST API.
+- De invoer van virtuele machines voor abonnementen en in verschillende regio's wordt ondersteund, maar de abonnementen moeten worden gekoppeld aan dezelfde Azure Active Directory-tenant.
+- Virtuele machines mogen zich niet in een claimbare status in het bronlab begeven.
+- U bent de eigenaar van de VM in het bronlab en eigenaar van het lab in het doellab.
+- Momenteel wordt deze functie alleen ondersteund via Powershell en REST API.
 
 ## <a name="use-powershell"></a>PowerShell gebruiken
-Down load het bestand ImportVirtualMachines. ps1 van de [github](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). U kunt het script gebruiken om één virtuele machine of alle virtuele machines in het bron laboratorium te importeren in het doel omgeving.
+Download ImportVirtualMachines.ps1-bestand van de [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines). U het script gebruiken om één VM of alle VM's in het bronlab in het doellab te importeren.
 
-### <a name="use-powershell-to-import-a-single-vm"></a>Power shell gebruiken voor het importeren van één VM
-Voor het uitvoeren van dit Power shell-script moet u de bron-VM en het doel-Lab identificeren en optioneel een nieuwe naam opgeven om te gebruiken voor de doel computer:
+### <a name="use-powershell-to-import-a-single-vm"></a>PowerShell gebruiken om één virtuele machine te importeren
+Voor het uitvoeren van dit powershell-script moet u de bron-VM en het doellab identificeren en optioneel een nieuwe naam leveren die voor de doelmachine moet worden gebruikt:
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
@@ -61,8 +61,8 @@ Voor het uitvoeren van dit Power shell-script moet u de bron-VM en het doel-Lab 
                             -DestinationVirtualMachineName "<Optional: specify a new name for the imported VM in the destination lab>"
 ```
 
-### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>Power shell gebruiken voor het importeren van alle virtuele machines in het bron laboratorium
-Als de virtuele bron machine niet is opgegeven, worden in het script automatisch alle virtuele machines in de DevTest Labs geïmporteerd.  Bijvoorbeeld:
+### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>PowerShell gebruiken om alle VM's in het bronlab te importeren
+Als de bronvirtuele machine niet is opgegeven, importeert het script automatisch alle VM's in de DevTest Labs.  Bijvoorbeeld:
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
@@ -71,8 +71,8 @@ Als de virtuele bron machine niet is opgegeven, worden in het script automatisch
                             -DestinationDevTestLabName "<Name of the destination lab>"
 ```
 
-## <a name="use-http-rest-to-import-a-vm"></a>HTTP REST gebruiken voor het importeren van een virtuele machine
-De REST-aanroep is eenvoudig. U geeft voldoende informatie om de bron-en doel resources te identificeren. Houd er rekening mee dat de bewerking plaatsvindt op de bestemmings Lab-resource.
+## <a name="use-http-rest-to-import-a-vm"></a>HTTP REST gebruiken om een VM te importeren
+De REST oproep is eenvoudig. U geeft voldoende informatie om de bron- en bestemmingsbronnen te identificeren. Vergeet niet dat de bewerking plaatsvindt op de resource van het doellab.
 
 ```REST
 POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/resourceGroups/<DestinationResourceGroup>/providers/Microsoft.DevTestLab/labs/<DestinationLab>/ImportVirtualMachine?api-version=2017-04-26-preview
@@ -85,5 +85,5 @@ POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/reso
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
-- [Beleids regels instellen voor een Lab](devtest-lab-get-started-with-lab-policies.md)
+- [Beleid instellen voor een lab](devtest-lab-get-started-with-lab-policies.md)
 - [Veelgestelde vragen](devtest-lab-faq.md)
