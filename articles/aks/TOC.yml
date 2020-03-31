@@ -14,7 +14,8 @@
           href: kubernetes-walkthrough.md
         - name: Azure Portal gebruiken
           href: kubernetes-walkthrough-portal.md
-        - name: Een Resource Manager-sjabloon gebruiken
+        - name: ARM-sjabloon gebruiken
+          displayName: Resource Manager
           href: kubernetes-walkthrough-rm-template.md
     - name: Toepassingen ontwikkelen
       expanded: true
@@ -73,6 +74,8 @@
       href: concepts-storage.md
     - name: Schalen
       href: concepts-scale.md
+    - name: Automatisch knooppuntherstel
+      href: node-auto-repair.md
     - name: Aanbevolen procedures
       items:
         - name: Overzicht
@@ -123,6 +126,8 @@
           href: upgrade-cluster.md
         - name: OS-updates van knooppunt verwerken
           href: node-updates-kured.md
+        - name: Een AKS-cluster configureren
+          href: cluster-configuration.md
         - name: ACR integreren met een AKS-cluster
           href: cluster-container-registry-integration.md
         - name: Virtuele knooppunten maken
@@ -198,7 +203,7 @@
       items:
         - name: Een service-principal maken
           href: kubernetes-service-principal.md
-        - name: Beheerde identiteiten gebruiken (preview)
+        - name: Beheerde identiteiten gebruiken
           href: use-managed-identity.md
         - name: Toegang tot clusterconfiguratiebestand beperken
           href: control-kubeconfig-access.md
@@ -216,6 +221,8 @@
           href: limit-egress-traffic.md
         - name: Integratie van Azure Active Directory inschakelen
           items:
+            - name: Azure AD integreren (preview)
+              href: azure-ad-v2.md
             - name: Azure CLI gebruiken
               href: azure-ad-integration-cli.md
             - name: Azure Portal gebruiken

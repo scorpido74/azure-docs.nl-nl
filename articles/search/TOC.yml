@@ -21,6 +21,8 @@
           href: cognitive-search-quickstart-blob.md
         - name: Een Knowledge Store maken
           href: knowledge-store-create-portal.md
+        - name: Query uitvoeren met Search Explorer
+          href: search-explorer.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -231,10 +233,10 @@
           href: search-query-simple-examples.md
         - name: Volledige Lucene-syntaxis gebruiken
           href: search-query-lucene-examples.md
-        - name: Search Explorer gebruiken (portal)
-          href: search-explorer.md
         - name: Speciale tekens en gedeeltelijke voorwaarden
           href: search-query-partial-matching.md
+        - name: Query uitvoeren vanuit Power Apps
+          href: search-howto-powerapps.md
         - name: Naslaginformatie over syntaxis
           items:
             - name: Vereenvoudigde querysyntaxis

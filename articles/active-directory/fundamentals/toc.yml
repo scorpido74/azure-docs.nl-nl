@@ -5,8 +5,12 @@
   items:
     - name: What is Azure Active Directory? (Engelstalig)
       href: active-directory-whatis.md
+    - name: Azure AD vergelijken met ADDS
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Wat is er nieuw in Azure Active Directory?
       href: whats-new.md
+    - name: Nieuw in Microsoft 365 Government
+      href: whats-new-microsoft-365-government.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -17,8 +21,6 @@
 - name: Concepten
   expanded: true
   items:
-    - name: Identity Secure Score
-      href: identity-secure-score.md
     - name: Beveiliging
       items:
         - name: MFA inschakelen
@@ -27,24 +29,30 @@
           href: concept-fundamentals-security-defaults.md
         - name: Verouderde verificatie blokkeren
           href: concept-fundamentals-block-legacy-authentication.md
-    - name: Groepen en toegangsbeheer
-      href: active-directory-manage-groups.md
-    - name: Groepslicenties
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Azure AD-architectuur
-      href: active-directory-architecture.md
-    - name: Standaardmachtigingen voor gebruikers
-      href: users-default-permissions.md
-    - name: 'Implementatie 30, 90 en hoger'
+        - name: Identity Secure Score
+          href: identity-secure-score.md
+    - name: Groepen en gebruikers
+      items:
+        - name: Groepen en toegangsbeheer
+          href: active-directory-manage-groups.md
+        - name: Groepslicenties
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: Standaardmachtigingen voor gebruikers
+          href: users-default-permissions.md
+    - name: Architectuur
+      items:
+        - name: Azure AD-architectuur
+          href: active-directory-architecture.md
+    - name: Implementatiehandleiding
+      items:
+        - name: 'Implementatie 30, 90 en hoger'
       href: active-directory-deployment-checklist-p2.md
-    - name: Opslag van identiteitsgegevens voor de EU
-      href: active-directory-data-storage-eu.md
-    - name: Opslag van identiteitsgegevens voor Australië en Nieuw-Zeeland
-      href: active-directory-data-storage-australia-newzealand.md
-    - name: Nieuw in Microsoft 365 Government
-      href: whats-new-microsoft-365-government.md
-    - name: Azure AD vergelijken met ADDS
-      href: active-directory-compare-azure-ad-to-ad.md
+    - name: Gegevensopslag
+      items:
+        - name: Opslag van identiteitsgegevens voor Europa
+          href: active-directory-data-storage-eu.md
+        - name: Opslag van identiteitsgegevens voor Australië en Nieuw-Zeeland
+          href: active-directory-data-storage-australia-newzealand.md
     - name: Naslaginformatie over Azure AD-bewerkingen
       items:
         - name: Inleiding

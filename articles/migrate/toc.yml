@@ -8,13 +8,13 @@
       href: whats-new.md
     - name: Veelgestelde vragen
       items:
-        - name: Vragen over Azure Migrate
+        - name: Algemeen
           href: resources-faq.md
-        - name: Vragen over Azure Migrate-apparaten
+        - name: Azure Migrate-apparaat
           href: common-questions-appliance.md
-        - name: 'Vragen over detectie, evaluatie-/afhankelijkheidsvisualisatie'
+        - name: Hulpprogramma voor evaluatie van servers/afhankelijkheidsanalyse
           href: common-questions-discovery-assessment.md
-        - name: Vragen over servermigratie
+        - name: Hulpprogramma voor de migratie van servers
           href: common-questions-server-migration.md
 - name: Zelfstudies
   items:
@@ -74,34 +74,40 @@
           href: migrate-appliance.md
         - name: Replicatie-apparaatvereisten
           href: migrate-replication-appliance.md
+    - name: Azure Migrate-apparaatarchitectuur
+      href: migrate-appliance-architecture.md
     - name: Hyper-V-migratiearchitectuur
       href: hyper-v-migration-architecture.md
-    - name: Migratiearchitectuur op basis van een agent
+    - name: Migratiearchitectuur op basis van een VMware-agent
       href: agent-based-migration-architecture.md
-    - name: Best practices voor evaluaties
-      href: best-practices-assessment.md
     - name: Overzicht van evaluaties
       href: concepts-assessment-calculation.md
-    - name: Visualisatie van afhankelijkheden
+    - name: Best practices voor evaluaties
+      href: best-practices-assessment.md
+    - name: Overzicht van afhankelijkheidsanalyse
       href: concepts-dependency-visualization.md
 - name: Instructiegidsen
   items:
-    - name: Met een eerdere versie werken
-      href: migrate-v1.md
     - name: Azure Migrate-projecten maken en beheren
       href: create-manage-projects.md
-    - name: Een VMware-apparaat implementeren
-      href: how-to-set-up-appliance-vmware.md
-    - name: Een Hyper-V-apparaat implementeren
-      href: how-to-set-up-appliance-hyper-v.md
-    - name: Een apparaat voor fysieke server implementeren
-      href: how-to-set-up-appliance-physical.md
-    - name: Toepassingen/rollen/functies detecteren
-      href: how-to-discover-applications.md
     - name: Een hulpprogramma voor de eerste keer toevoegen
       href: how-to-add-tool-first-time.md
     - name: Evaluatiehulpprogramma's toevoegen
       href: how-to-assess.md
+    - name: Azure Migrate-apparaat implementeren
+      items:
+        - name: Apparaat implementeren voor VMware (OVA)
+          href: how-to-set-up-appliance-vmware.md
+        - name: Apparaat implementeren voor Hyper-V (VHD)
+          href: how-to-set-up-appliance-hyper-v.md
+        - name: Apparaat implementeren voor VMware/Hyper-V (script)
+          href: deploy-appliance-script.md
+        - name: Apparaat implementeren voor fysieke servers
+          href: how-to-set-up-appliance-physical.md
+    - name: Detectiebereik beperken voor VMware-VM's
+      href: set-discovery-scope.md
+    - name: Toepassingen/rollen/functies detecteren
+      href: how-to-discover-applications.md
     - name: Machines groeperen voor evaluatie
       href: how-to-create-a-group.md
     - name: Machine-afhankelijkheden analyseren (op basis van agents)
@@ -122,6 +128,8 @@
       href: prepare-for-migration.md
     - name: Een Azure Migrate-project verwijderen
       href: how-to-delete-project.md
+    - name: Met een eerdere versie werken
+      href: migrate-v1.md
     - name: Evaluatie en migratie schalen
       items:
         - name: Een groot aantal VMware-VM's evalueren

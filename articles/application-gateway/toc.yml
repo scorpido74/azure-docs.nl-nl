@@ -15,6 +15,9 @@
       href: quick-create-powershell.md
     - name: Een toepassingsgateway maken - Azure CLI
       href: quick-create-cli.md
+    - name: Een toepassingsgateway maken - ARM-sjabloon
+      displayName: Resource Manager
+      href: quick-create-template.md
 - name: Zelfstudies
   items:
     - name: Beveiligen met SSL
@@ -47,6 +50,8 @@
           href: application-gateway-components.md
         - name: Configuratieoverzicht
           href: configuration-overview.md
+    - name: Ondersteuning voor intensief verkeer
+      href: high-traffic-support.md
     - name: SKU voor automatisch schalen v2
       href: application-gateway-autoscaling-zone-redundant.md
     - name: Routering

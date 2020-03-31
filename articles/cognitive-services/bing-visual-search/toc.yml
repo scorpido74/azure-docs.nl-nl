@@ -41,6 +41,10 @@
       href: tutorial-visual-search-image-upload.md
     - name: Een deel van een afbeelding bijsnijden en doorzoeken
       href: tutorial-visual-search-crop-area-results.md
+    - name: Soortgelijke afbeeldingen zoeken in eerdere zoekopdrachten
+      href: tutorial-visual-search-insights-token.md
+    - name: Een web-app met één pagina maken
+      href: tutorial-bing-visual-search-single-page-app.md
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden
@@ -63,10 +67,6 @@
     - name: Het formaat van miniaturen wijzigen en miniaturen bijsnijden
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
-    - name: Zoeken naar een afbeelding met afbeeldingsinzichttokens
-      href: tutorial-visual-search-insights-token.md
-    - name: Een web-app met één pagina maken
-      href: tutorial-bing-visual-search-single-page-app.md
 - name: Naslaginformatie
   items:
     - name: REST v7-API
@@ -84,7 +84,7 @@
     - name: Vereisten voor gebruik en weergave
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
-- name: Bronnen
+- name: Resources
   items:
     - name: Ondersteuning voor taal en regio
       href: language-support.md

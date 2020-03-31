@@ -17,7 +17,7 @@
           href: troubleshoot-deployment-new-vm-linux.md
         - name: Windows
           href: troubleshoot-deployment-new-vm-windows.md
-    - name: Een VM opnieuw implementeren
+    - name: Een virtuele machine opnieuw implementeren
       items:
         - name: Linux
           href: redeploy-to-new-node-linux.md
@@ -69,18 +69,24 @@
           href: boot-diagnostics.md
         - name: BitLocker-fouten
           href: troubleshoot-bitlocker-boot-error.md
-        - name: Fouten in het bestandssysteem controleren
-          href: troubleshoot-check-disk-boot-error.md
         - name: Blue screen-fouten
           href: troubleshoot-common-blue-screen-error.md
-        - name: Virtuele machine loopt vast bij opstarten
-          href: troubleshoot-vm-boot-configure-update.md
+        - name: Fouten in het bestandssysteem controleren
+          href: troubleshoot-check-disk-boot-error.md
+        - name: Kritiek proces uitgeschakeld
+          href: troubleshoot-guide-critical-process-died.md
         - name: Kritieke service is mislukt
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: Geen opstartbare schijf
+          href: troubleshoot-guide-not-bootable-disk.md
         - name: Lus opnieuw starten
           href: troubleshoot-reboot-loop.md
         - name: Vastgelopen bij Windows-update
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: Virtuele machine loopt vast bij opstarten
+          href: troubleshoot-vm-boot-configure-update.md
+        - name: VM kan niet worden opgestart vanwege Windows Opstartbeheer
+          href: troubleshoot-guide-windows-boot-manager-menu.md
 - name: Kan geen verbinding maken met mijn VM
   items:
     - name: RDP
@@ -156,13 +162,13 @@
           items:
             - name: PowerShell
               href: troubleshoot-recovery-disks-windows.md
-            - name: Azure-portal
+            - name: Azure Portal
               href: troubleshoot-recovery-disks-portal-windows.md
         - name: Linux
           items:
             - name: CLI
               href: troubleshoot-recovery-disks-linux.md
-            - name: Azure-portal
+            - name: Azure Portal
               href: troubleshoot-recovery-disks-portal-linux.md
         - name: Apparaatnamen zijn gewijzigd
           href: troubleshoot-device-names-problems.md

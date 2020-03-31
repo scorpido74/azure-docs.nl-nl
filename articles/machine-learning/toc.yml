@@ -95,6 +95,9 @@
     - name: Modeltraining
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
+    - name: Gedistribueerde training
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
     - name: Modelbeheer (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -111,6 +114,9 @@
     - name: Geautomatiseerde Machine Learning
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
+    - name: Valkuilen van ML beheren
+      displayName: 'automl, auto ml, risks'
+      href: concept-manage-ml-pitfalls.md
     - name: Rekenproces
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -184,39 +190,47 @@
           href: concept-train-model-git-integration.md
     - name: Werken met gegevens
       items:
-        - name: Verbinding maken met gegevens in Azure Storage
-          displayName: 'blob, get, fileshare, access storage, mount, download'
-          href: how-to-access-data.md
-        - name: Gegevens uit gegevensarchief ophalen
-          displayName: 'data, data set, register, access data'
-          href: how-to-create-register-datasets.md
-        - name: Trainen met gegevenssets
-          displayName: 'data, dataset, mount'
-          href: how-to-train-with-datasets.md
-        - name: Gegevens importeren in de designer
-          displayName: 'designer, data, import, dataset, datastore'
-          href: how-to-designer-import-data.md
-        - name: Drift op gegevenssets detecteren
-          displayName: 'data, dataset'
-          href: how-to-monitor-datasets.md
-        - name: Versiebeheer van gegevenssets en gegevenssets bijhouden
-          displayName: 'data, data set'
-          href: how-to-version-track-datasets.md
-        - name: Gegevens van labels voorzien
-          displayName: 'data, dataset, labeling'
-          href: how-to-create-labeling-projects.md
-        - name: Afbeeldingen van labels voorzien
-          displayName: 'data, dataset, labeling'
-          href: how-to-label-images.md
-        - name: Gegevensset maken met labels
-          displayName: 'data, labels, torchvision'
-          href: how-to-use-labeled-dataset.md
-        - name: Gegevensopname met Azure Data Factory
-          displayName: 'data, ingestion, adf'
-          href: how-to-data-ingest-adf.md
-        - name: DevOps voor gegevensopname
-          displayName: 'data, ingestion, devops'
-          href: how-to-cicd-data-ingestion.md
+        - name: Labelgegevens
+          items:
+            - name: Gegevens van labels voorzien
+              displayName: 'data, dataset, labeling'
+              href: how-to-create-labeling-projects.md
+            - name: Afbeeldingen van labels voorzien
+              displayName: 'data, dataset, labeling'
+              href: how-to-label-images.md
+            - name: Gegevensset maken met labels
+              displayName: 'data, labels, torchvision'
+              href: how-to-use-labeled-dataset.md
+        - name: Gegevens ophalen
+          items:
+            - name: Gegevensopname met Azure Data Factory
+              displayName: 'data, ingestion, adf'
+              href: how-to-data-ingest-adf.md
+            - name: DevOps voor gegevensopname
+              displayName: 'data, ingestion, devops'
+              href: how-to-cicd-data-ingestion.md
+            - name: Gegevens importeren in de designer
+              displayName: 'designer, data, import, dataset, datastore'
+              href: how-to-designer-import-data.md
+        - name: Toegang tot gegevens
+          items:
+            - name: Verbinding maken met Azure Storage
+              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              href: how-to-access-data.md
+            - name: Gegevens uit gegevensarchief ophalen
+              displayName: 'data, data set, register, access data'
+              href: how-to-create-register-datasets.md
+        - name: Gegevens beheren en verbruiken
+          items:
+            - name: Trainen met gegevenssets
+              displayName: 'data, dataset, mount'
+              href: how-to-train-with-datasets.md
+            - name: Drift op gegevenssets detecteren
+              displayName: 'data, dataset'
+              href: how-to-monitor-datasets.md
+            - name: Versiebeheer van gegevenssets en gegevenssets bijhouden
+              displayName: 'data, data set'
+              href: how-to-version-track-datasets.md
     - name: Modellen trainen
       items:
         - name: Schattingen gebruiken voor ML
@@ -337,6 +351,7 @@
         - name: Een pijplijn activeren
           href: how-to-trigger-published-pipeline.md
         - name: Problemen met pijplijnen opsporen en oplossen
+          displayName: designer
           href: how-to-debug-pipelines.md
         - name: Fouten met pijplijnen opsporen in Application Insights
           displayname: 'pipelines, log, monitor'

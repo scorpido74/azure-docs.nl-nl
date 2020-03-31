@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: 'Azure SQL Database: Individuele database'
+title: Azure SQL Database
 metadata:
-  title: Documentatie - individuele database
-  meta.description: Learn how to use Azure SQL databases.
+  title: 'Documentatie - enkele database, databaseserver, elastische pool'
+  description: 'Zoek quickstarts, zelfstudies en voorbeelden voor enkele databases in Azure SQL Database, elastische pools en databaseservers.'
   services: sql-database
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
   ms.topic: overview
   author: jovanpop-msft
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
   ms.reviewer: carlrab
   manager: craigg
   ms.date: 04/26/2019

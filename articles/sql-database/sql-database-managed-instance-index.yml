@@ -3,7 +3,7 @@ documentType: LandingData
 title: Beheerd SQL-exemplaar
 metadata:
   title: 'Documentatie voor Managed Instance - zelfstudies, API-naslag'
-  meta.description: Learn how to use a managed instance in Azure SQL Database.
+  description: 'Zoek quickstarts, zelfstudies en voorbeelden voor een beheerd Azure SQL Database-exemplaar, een volledig beheerd SQL Server Database Engine-exemplaar dat wordt gehost in de cloud.'
   services: sql-database
   author: jovanpop-msft
   ms.reviewer: carlrab

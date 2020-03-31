@@ -10,6 +10,8 @@
           href: migrate-from-hub-spoke-topology.md
         - name: Wereldwijde architectuur voor doorvoernetwerk
           href: virtual-wan-global-transit-network-architecture.md
+        - name: Verbonden met China
+          href: interconnect-china.md
 - name: Zelfstudies
   items:
     - name: Een site-naar-site-verbinding maken
@@ -20,6 +22,8 @@
       href: virtual-wan-expressroute-portal.md
 - name: Concepten
   items:
+    - name: Op afstand werken
+      href: work-remotely-support.md
     - name: Locaties en partners
       items:
         - name: Hublocaties en partners
@@ -28,8 +32,6 @@
           href: virtual-wan-configure-automation-providers.md
     - name: IPSec-beleid
       href: virtual-wan-ipsec.md
-    - name: VPN-overzicht voor punt-naar-site
-      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Instructiegidsen
   items:
     - name: Virtuele netwerkgateway verbinden met een virtual WAN
@@ -52,25 +54,31 @@
           href: virtual-wan-site-to-site-portal.md
     - name: Gebruikers-VPN (punt-naar-site)
       items:
-        - name: Gebruikers-VPN-verbindingen (punt-naar-site) maken
+        - name: Gebruikers-VPN-verbinding maken
           href: virtual-wan-point-to-site-portal.md
-        - name: Certificaten configureren voor gebruikers-VPN
+        - name: Certificaten genereren
           href: certificates-point-to-site.md
-        - name: Azure AD-tenant configureren voor een gebruikers-VPN
+        - name: Azure AD-tenant configureren
           href: openvpn-azure-ad-tenant.md
-        - name: AlwaysOn-VPN-gebruikerstunnel configureren
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: AlwaysOn-VPN-apparaattunnel configureren
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: Meervoudige verificatie (MFA) inschakelen voor een gebruikers-VPN
-          href: openvpn-azure-ad-mfa.md
-        - name: Azure AD-verificatie configureren voor gebruikers-VPN
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: Azure Active Directory-verificatie met meerde toepassingen instellen voor gebruikers-VPN
-          href: openvpn-azure-ad-tenant-multi-app.md
-        - name: Wereldwijde en op de hub gebaseerde gebruikers-VPN-profielen downloaden
+        - name: Clientprofiel
+          href: about-vpn-profile-download.md
+        - name: Wereldwijd en op hub gebaseerd profiel
           href: global-hub-profile.md
-    - name: Routering configureren
+        - name: OpenVPN-clients configureren
+          href: howto-openvpn-clients.md?
+        - name: AlwaysOn-VPN-gebruikerstunnel configureren
+          href: howto-always-on-user-tunnel.md
+        - name: AlwaysOn-VPN-apparaattunnel configureren
+          href: howto-always-on-device-tunnel.md
+        - name: MFA (Multi-Factor Authentication) inschakelen
+          href: openvpn-azure-ad-mfa.md
+        - name: Azure AD-verificatie configureren
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: Azure VPN Client voor Windows 10 configureren
+          href: openvpn-azure-ad-client.md
+        - name: Azure AD-verificatie met meerde toepassingen instellen
+          href: openvpn-azure-ad-tenant-multi-app.md
+    - name: Routering
       items:
         - name: Verkeer routeren van een virtuele hub naar een NVA
           items:

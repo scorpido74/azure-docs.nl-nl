@@ -3,7 +3,7 @@ title: Azure SQL Database bewaken en prestaties afstemmen
 summary: Azure SQL Database biedt de mogelijkheden om u te helpen metrische gegevens en diagnostische informatie te verzamelen om uw database te bewaken en de prestaties ervan te verbeteren.
 metadata:
   title: Documentatie over Azure SQL Database bewaken en prestaties afstemmen
-  description: Azure SQL Database biedt de mogelijkheden om u te helpen metrische gegevens en diagnostische informatie te verzamelen om uw database te bewaken en de prestaties ervan te verbeteren.
+  description: Meer informatie over de Azure SQL Database-hulpprogramma's voor bewaking en het afstemmen van prestaties, waarmee u metrische en diagnostische gegevens kunt verzamelen en databaseprestaties kunt verbeteren.
   ms.service: sql-database
   ms.subservice: performance
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: CarlRabeler
   ms.author: carlrab
   ms.date: 03/10/2020
-  ms.openlocfilehash: 43f74ea126ab7e028b39a86e2eb1edad4cae41a2
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bc2c2a64cfce8bde6f04835bf090b632b8839a6f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79208900"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80373118"
 landingContent:
 - title: Over bewaking en prestaties afstemmen
   linkLists:

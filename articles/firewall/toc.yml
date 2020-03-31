@@ -43,6 +43,8 @@
       href: compliance-certifications.md
     - name: Centraal beheer
       href: central-management.md
+    - name: Ondersteuning voor externe werk
+      href: remote-work-support.md
 - name: Instructiegidsen
   items:
     - name: Implementeren met Azure PowerShell
@@ -83,7 +85,7 @@
       href: /rest/api/firewall
     - name: Azure Resource Manager
       href: ../azure-resource-manager/management/overview.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Veelgestelde vragen
       href: firewall-faq.md

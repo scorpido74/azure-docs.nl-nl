@@ -265,6 +265,8 @@
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Problemen oplossen
       items:
+        - name: Problemen met onregelmatige uitgaande verbindingen oplossen
+          href: troubleshoot-intermittent-outbound-connection-errors.md
         - name: Problemen met Visual Studio oplossen
           href: troubleshoot-dotnet-visual-studio.md
         - name: Problemen met Node.js-app oplossen

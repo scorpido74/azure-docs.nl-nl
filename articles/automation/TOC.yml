@@ -31,6 +31,11 @@
     - name: Azure Automation-gegevens beheren
       href: automation-managing-data.md
       displayName: backup
+    - name: Problemen oplossen
+      items:
+        - name: Problemen met Automation-accounts oplossen
+          href: troubleshoot/automation-account.md
+          displayName: troubleshoot
 - name: Procesautomatisering
   items:
     - name: Overzicht van Hybrid Runbook Worker
@@ -345,7 +350,7 @@
       href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
     - name: Azure Automation-runbook maken en plannen waarmee Azure-SSIS IR wordt gestart/gestopt
       href: '../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir'
-- name: Bewaken
+- name: Controleren
   items:
     - name: Azure Automation-taakgegevens doorsturen naar Log Analytics
       href: automation-manage-send-joblogs-log-analytics.md
@@ -364,7 +369,7 @@
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
       href: /rest/api/automation
-- name: Bronnen
+- name: Resources
   items:
     - name: Introductievideo over Automation
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'

@@ -3,7 +3,7 @@ documentType: LandingData
 title: Functies
 metadata:
   title: Azure SQL Database - Functies
-  meta.description: Learn about the features in Azure SQL Database.
+  description: Ontdek databasefuncties in Azure SQL Database waarmee u krachtigere bewerkingen kunt uitvoeren en geavanceerde scenario's kunt implementeren.
   services: sql-database
   author: jovanpop-msft
   manager: craigg
@@ -12,7 +12,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 02/06/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph

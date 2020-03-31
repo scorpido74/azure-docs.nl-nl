@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/10/2019
-  ms.openlocfilehash: 7090c0814e91b2178dea44eed4d28e6f4e80bd77
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 2df970e3aa36f69dc6f2d990ee307db6536a8ac9
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77470613"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80282032"
 highlightedContent:
   items:
   - title: Governance-overzicht
@@ -41,7 +41,7 @@ productDirectory:
       text: Overzicht
     - url: ./management-groups/index.yml
       text: Meer informatie >
-  - title: Beleid van Azure
+  - title: Azure Policy
     imageSrc: ./media/azure-policy.svg
     links:
     - url: ./policy/overview.md
@@ -87,7 +87,7 @@ tools:
   title: Voorbeelden
   summary: Beleidsdefinities, nalevingsblauwdrukken, resource-query's en meer
   items:
-  - title: Beleid van Azure
+  - title: Azure Policy
     imageSrc: ./media/azure-policy.svg
     url: ./policy/samples/index.md
   - title: Azure Blueprints
@@ -113,7 +113,9 @@ additionalContent:
         url: /dotnet/api/overview/azure/managementgroups
       - text: Azure SDK voor Node
         url: /javascript/api/@azure/arm-managementgroups/managementgroups
-    - title: Beleid van Azure
+      - text: REST
+        url: /rest/api/resources/managementgroups
+    - title: Azure Policy
       links:
       - text: Azure CLI
         url: /cli/azure/policy
@@ -126,12 +128,6 @@ additionalContent:
       - text: Azure PowerShell
         url: https://www.powershellgallery.com/packages/Az.GuestConfiguration
         note: (Gastconfiguratie)
-      - text: Azure-SDK voor .NET
-        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
-        note: (Toewijzingen)
-      - text: Azure-SDK voor .NET
-        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
-        note: (Beleidsdefinities)
       - text: REST
         url: /rest/api/policy-insights/
         note: (Policy Insights)
@@ -149,6 +145,22 @@ additionalContent:
         note: (Gastconfiguratie)
       - text: Resource Manager-sjablonen
         url: /azure/templates/microsoft.authorization/allversions
+    - title: Azure Policy (meer)
+      links:
+      - text: Azure-SDK voor .NET
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+        note: (Toewijzingen)
+      - text: Azure-SDK voor .NET
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+        note: (Beleidsdefinities)
+      - text: Azure SDK voor Node
+        url: /javascript/api/@azure/arm-policy
+        note: (Beleid)
+      - text: Azure SDK voor Node
+        url: /javascript/api/@azure/arm-policyinsights
+        note: (Policy Insights)
+      - text: Azure-SDK voor Python
+        url: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - title: Azure Blueprints
       links:
       - text: Blueprint-functies

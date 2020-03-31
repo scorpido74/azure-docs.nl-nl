@@ -32,11 +32,23 @@
   items:
     - name: Overzicht van Azure-beveiligingsbasislijnen
       href: security-baselines-overview.md
+    - name: Azure Cache voor Redis-beveiligingsbasislijn
+      href: ../../azure-cache-for-redis/security-baseline.md
     - name: Basislijn voor batch-beveiliging
       href: ../../batch/security-baseline.md
-    - name: Basislijn voor Key Vault-beveiliging
-      href: ../../key-vault/security-baseline.md
+    - name: Container Registry-beveiligingsbasislijn
+      href: ../../container-registry/security-baseline.md
+    - name: Cosmos DB-beveiligingsbasislijn
+      href: ../../cosmos-db/security-baseline.md
     - name: Basislijn voor HDInsight-beveiliging
       href: ../../hdinsight/security-baseline.md
+    - name: Basislijn voor Key Vault-beveiliging
+      href: ../../key-vault/security-baseline.md
+    - name: Basislijn voor MariaDB-beveiliging
+      href: ../../mariadb/security-baseline.md
+    - name: Basislijn voor MySQL-beveiliging
+      href: ../../mysql/security-baseline.md
+    - name: Basislijn voor PostgreSQL-beveiliging
+      href: ../../postgresql/security-baseline.md
     - name: Basislijn voor SQL Database-beveiliging
       href: ../../sql-database/security-baseline.md

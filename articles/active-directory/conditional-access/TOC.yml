@@ -58,22 +58,24 @@
       href: best-practices.md
     - name: Algemeen beleid voor voorwaardelijke toegang
       items:
+        - name: Verouderde verificatie blokkeren
+          href: howto-conditional-access-policy-block-legacy.md
         - name: MFA vereisen voor beheerders
           href: howto-conditional-access-policy-admin-mfa.md
         - name: MFA vereisen voor Azure-beheer
           href: howto-conditional-access-policy-azure-management.md
         - name: MFA vereisen voor alle gebruikers
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Verouderde verificatie blokkeren
-          href: howto-conditional-access-policy-block-legacy.md
         - name: Voorwaardelijke toegang op basis van risico's
           href: howto-conditional-access-policy-risk.md
-        - name: Vertrouwde locatie vereisen voor MFA-registratie
+        - name: Veilige registratie van beveiligingsinformatie
           href: howto-conditional-access-policy-registration.md
         - name: Toegang per locatie blokkeren
           href: howto-conditional-access-policy-location.md
         - name: Compatibele apparaten vereisen
           href: howto-conditional-access-policy-compliant-device.md
+        - name: Toegang blokkeren
+          href: howto-conditional-access-policy-block-access.md
     - name: Verouderde verificatie blokkeren
       href: block-legacy-authentication.md
     - name: Goedgekeurde client-apps vereisen
@@ -94,9 +96,11 @@
       href: policy-migration-mfa.md
     - name: Problemen oplossen
       items:
+        - name: Problemen met aanmelden oplossen
+          href: troubleshoot-conditional-access.md
         - name: Problemen met het hulpprogramma What If oplossen
           href: troubleshoot-conditional-access-what-if.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'

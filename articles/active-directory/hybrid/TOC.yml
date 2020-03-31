@@ -24,6 +24,8 @@
           href: cloud-governed-management-for-on-premises.md
         - name: Vier stappen voor een sterke identiteitsbasis
           href: four-steps.md
+        - name: Verificatiemethode voor hybride identiteit kiezen
+          href: choose-ad-authn.md
     - name: Azure AD Connect en Connect Health
       items:
         - name: Wat zijn Azure AD Connect en Connect Health?
@@ -90,7 +92,7 @@
           href: concept-azure-ad-connect-sync-user-and-contacts.md
         - name: Inzicht in schaduwkenmerken
           href: how-to-connect-syncservice-shadow-attributes.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Installatie en upgrade
       items:
@@ -312,6 +314,8 @@
           href: tshoot-connect-attribute-not-syncing.md
         - name: Installatieproblemen
           href: tshoot-connect-install-issues.md
+        - name: UPN-wijzigingen
+          href: howto-troubleshoot-upn-changes.md
 - name: Naslaginformatie
   items:
     - name: Voor hybride identiteit benodigde poorten en protocollen

@@ -39,8 +39,11 @@
       href: storage-files-scale-targets.md
     - name: Op identiteit gebaseerde verificatie en autorisatie
       href: storage-files-active-directory-overview.md
-    - name: Versleuteling at-rest
+    - name: Versleuteling-at-rest in Azure Storage
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      items:
+        - name: Door de klant beheerde sleutels met Azure Key Vault
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Nalevingsaanbiedingen
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Ontwikkeling
@@ -93,6 +96,10 @@
           href: storage-how-to-use-files-mac.md
     - name: Netwerk
       items:
+        - name: Azure Files-netwerkeindpunten configureren
+          href: storage-files-networking-endpoints.md
+        - name: DNS doorsturen configureren voor Azure Files
+          href: storage-files-networking-dns.md
         - name: Site-naar-site-VPN configureren
           href: storage-files-configure-s2s-vpn.md
         - name: Punt-naar-site-VPN configureren in Windows
@@ -117,12 +124,22 @@
           href: storage-sync-files-monitoring.md
     - name: Migreren
       items:
-        - name: Migreren naar Azure File Sync
-          href: storage-sync-offline-data-transfer.md
-        - name: Migratiehandleiding voor StorSimple 8100 en 8600
-          href: storage-files-migration-storsimple-8000.md
-        - name: Migratiehandleiding voor StorSimple 1200
-          href: storage-files-migration-storsimple-1200.md
+        - name: Migreren naar Azure-bestandsshares
+          href: storage-files-migration-overview.md
+        - name: Hybride implementatie als doel
+          items:
+            - name: Bulkgegevens migreren in Azure File Sync met Azure DataBox
+              href: storage-sync-offline-data-transfer.md
+            - name: Migreren van Linux naar een hybride bestandsserver met Azure File Sync
+              href: storage-files-migration-linux-hybrid.md
+            - name: Migreren van on-premises NAS naar een hybride bestandsserver met Azure File Sync
+              href: storage-files-migration-nas-hybrid.md
+        - name: Uit StorSimple
+          items:
+            - name: Migratiehandleiding voor StorSimple 8100 en 8600
+              href: storage-files-migration-storsimple-8000.md
+            - name: Migratiehandleiding voor StorSimple 1200
+              href: storage-files-migration-storsimple-1200.md
     - name: Ontwikkelen
       items:
         - name: Verbindingsreeksen configureren

@@ -1,0 +1,342 @@
+### YamlMime:Hub
+title: Documentatie voor Azure-netwerken
+summary: Krijg meer informatie over de verschillende beschikbare Azure-netwerkservices die connectiviteit bieden met uw resources in Azure, toepassingen leveren en beveiligen, en helpen uw netwerk te beveiligen.
+brand: azure
+metadata:
+  title: Documentatie voor Azure-netwerken
+  description: Azure-netwerkservices bieden connectiviteit met uw resources in Azure, leveren en beveiligen toepassingen, en helpen uw netwerk te beveiligen.
+  ms.service: virtual-network
+  ms.topic: hub-page
+  ms.collection: 
+  author: KumudD
+  ms.author: kumud
+  manager: mtillman
+  ms.date: 03/17/2020
+  ms.openlocfilehash: 5745c6c9a7f380d7e9b1d8d59d56a81581c66e14
+  ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80294315"
+highlightedContent:
+  items:
+  - title: Wat is Azure-netwerken?
+    itemType: overview
+    url: networking-overview.md
+  - title: Wat is nieuw in Azure-netwerken?
+    itemType: whats-new
+    url: https://azure.microsoft.com/updates/?category=networking
+  - title: Opties voor taakverdeling in Azure
+    itemType: architecture
+    url: https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview
+  - title: Een sternetwerktopologie in Azure
+    itemType: architecture
+    url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+  - title: Persoonlijke toegang tot een SQL-databaseserver
+    itemType: tutorial
+    url: ../private-link/create-private-endpoint-portal.md
+  - title: Op afstand werken met behulp van Azure-services
+    itemType: concept
+    url: working-remotely-support.md
+conceptualContent:
+  items:
+  - title: Virtueel netwerk
+    links:
+    - url: ../virtual-network/virtual-networks-overview.md
+      itemType: concept
+      text: Wat is een virtueel Azure-netwerk?
+    - url: ../virtual-network/tutorial-restrict-network-access-to-resources.md
+      itemType: tutorial
+      text: Netwerktoegang tot resources beperken
+    - url: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+      itemType: tutorial
+      text: Verbinding maken met virtuele Azure-netwerken
+    - url: ../virtual-network/diagnose-network-traffic-filter-problem.md
+      itemType: how-to-guide
+      text: Problemen met een filter voor netwerkverkeer oplossen
+    footerLink:
+      url: ../virtual-network/index.yml
+      text: Meer informatie
+  - title: On-premises verbinden met Azure - VPN-versleuteling
+    links:
+    - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+      itemType: overview
+      text: Wat is een Azure VPN-gateway?
+    - url: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md
+      itemType: tutorial
+      text: Site-naar-site-verbindingen
+    - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
+      itemType: how-to-guide
+      text: Punt-naar-site-verbindingen
+    - url: ../vpn-gateway/vpn-gateway-troubleshoot.md
+      itemType: how-to-guide
+      text: Problemen met VPN-gateways oplossen
+    footerLink:
+      url: ../vpn-gateway/index.yml
+      text: Meer informatie
+  - title: On-premises uitbreiden naar Azure - privéverbinding
+    links:
+    - url: ../expressroute/expressroute-introduction.md
+      itemType: concept
+      text: Wat is Azure ExpressRoute?
+    - url: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md
+      itemType: tutorial
+      text: Een ExpressRoute-circuit maken en wijzigen
+    - url: ../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md
+      itemType: tutorial
+      text: Een virtueel netwerk koppelen aan een ExpressRoute-circuit
+    - url: ../expressroute/expressroute-troubleshooting-network-performance.md
+      itemType: how-to-guide
+      text: Problemen met de netwerkprestaties oplossen
+    footerLink:
+      url: ../expressroute/index.yml
+      text: Meer informatie
+  - title: DNS
+    links:
+    - url: ../dns/dns-overview.md
+      itemType: overview
+      text: Wat is Azure DNS?
+    - url: ../private-link/private-endpoint-overview.md
+      itemType: overview
+      text: Wat is privé-DNS in Azure?
+    - url: ../dns/dns-delegate-domain-azure-dns.md
+      itemType: tutorial
+      text: Uw domein en subdomein hosten
+    - url: ../dns/dns-getstarted-portal.md
+      itemType: tutorial
+      text: Problemen met Azure DNS oplossen
+    footerLink:
+      url: ../dns/index.yml
+      text: Meer informatie
+  - title: Netwerktaakverdeling
+    links:
+    - url: ../load-balancer/load-balancer-overview.md
+      itemType: overview
+      text: Wat is Azure Load Balancer?
+    - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
+      itemType: quickstart
+      text: Internetverkeer gelijkmatig verdelen over VM's
+    - url: ../load-balancer/tutorial-load-balancer-port-forwarding-portal.md
+      itemType: tutorial
+      text: Port forwarding configureren
+    - url: ../load-balancer/load-balancer-troubleshoot.md
+      itemType: how-to-guide
+      text: Problemen met Azure Load Balancer oplossen
+    footerLink:
+      url: ../load-balancer/index.yml
+      text: Meer informatie
+  - title: Load balancer op basis van DNS
+    links:
+    - url: ../traffic-manager/traffic-manager-overview.md
+      itemType: overview
+      text: Wat is Azure Traffic Manager?
+    - url: ../traffic-manager/tutorial-traffic-manager-improve-website-response.md
+      itemType: tutorial
+      text: Verkeer routeren voor lage latentie
+    - url: ../traffic-manager/traffic-manager-routing-methods.md
+      itemType: concept
+      text: Routeringsmethoden voor verkeer
+    - url: ../traffic-manager/traffic-manager-troubleshooting-degraded.md
+      itemType: how-to-guide
+      text: Problemen met de gedegradeerde status van Traffic Manager oplossen
+    footerLink:
+      url: ../traffic-manager/index.yml
+      text: Meer informatie
+  - title: Load balancer van webtoepassingen
+    links:
+    - url: ../application-gateway/overview.md
+      itemType: overview
+      text: Wat is Azure Application Gateway?
+    - url: ../application-gateway/quick-create-portal.md
+      itemType: quickstart
+      text: Webverkeer omleiden via de portal
+    - url: ../application-gateway/application-gateway-faq.md
+      itemType: concept
+      text: Veelgestelde vragen
+    - url: ../application-gateway/application-gateway-troubleshooting-502.md
+      itemType: how-to-guide
+      text: Fouten van het type Ongeldige Gateway oplossen
+    footerLink:
+      url: ../application-gateway/index.yml
+      text: Meer informatie
+  - title: Globale load balancer
+    links:
+    - url: ../frontdoor/front-door-overview.md
+      itemType: overview
+      text: Wat is Azure Front Door Service?
+    - url: ../frontdoor/front-door-custom-domain.md
+      itemType: how-to-guide
+      text: Een aangepast domein toevoegen aan de Azure Front Door Service
+    - url: ../frontdoor/front-door-how-to-redirect-https.md
+      itemType: how-to-guide
+      text: Omleiding van HTTP naar HTTPS
+    - url: ../frontdoor/front-door-troubleshoot-routing.md
+      itemType: how-to-guide
+      text: Problemen met routering oplossen
+    footerLink:
+      url: ../frontdoor/index.yml
+      text: Meer informatie
+  - title: Netwerkstatus bewaken
+    links:
+    - url: ../network-watcher/network-watcher-monitoring-overview.md
+      itemType: overview
+      text: Wat is Azure Network Watcher?
+    - url: ../network-watcher/traffic-analytics.md
+      itemType: concept
+      text: Verkeersanalyse in Azure
+    - url: ../network-watcher/network-watcher-nsg-flow-logging-portal.md
+      itemType: tutorial
+      text: Netwerkverkeersstroom van en naar een VM in een logboek vastleggen
+    footerLink:
+      url: ../network-watcher/index.yml
+      text: Meer informatie
+  - title: Netwerkfirewall
+    links:
+    - url: ../firewall/overview.md
+      itemType: overview
+      text: Wat is Azure Firewall?
+    - url: ../firewall/tutorial-firewall-deploy-portal.md
+      itemType: tutorial
+      text: Azure Firewall implementeren en configureren
+    - url: ../firewall/tutorial-firewall-dnat.md
+      itemType: tutorial
+      text: Inkomend internetverkeer filteren met behulp van Azure Firewall
+    footerLink:
+      url: ../firewall/index.yml
+      text: Meer informatie
+  - title: Beveiligde toegang tot Azure-VM’s
+    links:
+    - url: ../bastion/bastion-overview.md
+      itemType: overview
+      text: Wat is Azure Bastion?
+    - url: ../bastion/bastion-create-host-portal.md
+      itemType: how-to-guide
+      text: Een Azure Bastion-host maken
+    - url: ../bastion/troubleshoot.md
+      itemType: how-to-guide
+      text: Problemen met Azure Bastion oplossen
+    footerLink:
+      url: ../bastion/index.yml
+      text: Meer informatie
+  - title: Netwerkbeveiligingsbeheer
+    links:
+    - url: ../firewall-manager/overview.md
+      itemType: overview
+      text: Wat is Azure Firewall Manager?
+    - url: ../firewall-manager/secured-virtual-hub.md
+      itemType: concept
+      text: Wat is een beveiligde virtuele hub?
+    - url: ../firewall-manager/secure-cloud-network.md
+      itemType: tutorial
+      text: Uw virtuele WAN beveiligen met Azure Firewall Manager
+    footerLink:
+      url: ../firewall-manager/index.yml
+      text: Meer informatie
+  - title: Web Application Firewall
+    links:
+    - url: ../web-application-firewall/overview.md
+      itemType: overview
+      text: Wat is Azure Web Application Firewall?
+    - url: ../web-application-firewall/ag/ag-overview.md
+      itemType: concept
+      text: WAF in Application Gateway
+    - url: ../web-application-firewall/afds/afds-overview.md
+      itemType: concept
+      text: WAF in Azure Front Door Service
+    - url: ../web-application-firewall/cdn/cdn-overview.md
+      itemType: concept
+      text: WAF in Azure CDN
+    - url: ../web-application-firewall/ag/web-application-firewall-troubleshoot.md
+      itemType: how-to-guide
+      text: Problemen met WAF voor Application Gateway oplossen
+    footerLink:
+      url: ../web-application-firewall/index.yml
+      text: Meer informatie
+  - title: Privétoegang tot een service
+    links:
+    - url: ../private-link/private-link-overview.md
+      itemType: overview
+      text: Wat is Azure Private Link?
+    - url: ../private-link/private-endpoint-overview.md
+      itemType: concept
+      text: Wat is een Azure-privé-eindpunt?
+    - url: ../private-link/troubleshoot-private-link-connectivity.md
+      itemType: how-to-guide
+      text: Problemen met Azure Private Link oplossen
+    footerLink:
+      url: ../private-link/index.yml
+      text: Meer informatie
+  - title: DDoS Protection
+    links:
+    - url: ../virtual-network/ddos-protection-overview.md
+      itemType: overview
+      text: Wat is Azure DDoS Protection Standard?
+    - url: ../virtual-network/manage-ddos-protection.md
+      itemType: how-to-guide
+      text: DDoS Protection beheren
+    - url: ../virtual-network/ddos-protection-partner-onboarding.md
+      itemType: concept
+      text: Onboarding-partners
+    footerLink:
+      url: https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices
+      text: Meer informatie
+  - title: Content Delivery Network
+    links:
+    - url: ../cdn/cdn-overview.md
+      itemType: overview
+      text: Wat is Azure Content Delivery Network?
+    - url: ../cdn/cdn-create-new-endpoint.md
+      itemType: quickstart
+      text: Een CDN-profiel en -eindpunt maken
+    - url: ../cdn/cdn-standard-rules-engine-reference.md
+      itemType: concept
+      text: Naslaginformatie over standaardregelengine voor Azure CDN
+    - url: ../cdn/cdn-troubleshoot-endpoint.md
+      itemType: how-to-guide
+      text: Problemen met Azure CDN-eindpunten oplossen
+    footerLink:
+      url: ../cdn/index.yml
+      text: Meer informatie
+  - title: Automatische vertakkingsconnectiviteit
+    links:
+    - url: ../virtual-wan/virtual-wan-about.md
+      itemType: overview
+      text: Wat is Azure Virtual WAN?
+    - url: ../virtual-wan/virtual-wan-global-transit-network-architecture.md
+      itemType: concept
+      text: Wereldwijde architectuur voor doorvoernetwerk - Azure Virtual WAN
+    - url: ../virtual-wan/virtual-wan-locations-partners.md
+      itemType: concept
+      text: Azure Virtual WAN-partners en -locaties
+    - url: ../virtual-wan/migrate-from-hub-spoke-topology.md
+      itemType: how-to-guide
+      text: Migreren vanuit stertopologie
+    footerLink:
+      url: ../virtual-wan/index.yml
+      text: Meer informatie
+  - title: Peering Services
+    links:
+    - url: ../peering-service/about.md
+      itemType: overview
+      text: Wat is Azure Peering Service?
+    - url: ../internet-peering/overview.md
+      itemType: overview
+      text: Wat is internetpeering?
+    - url: ../internet-peering/overview-peering-service.md
+      itemType: concept
+      text: Internetpeering vs. Peering Service in Azure
+    footerLink:
+      url: ../peering-service/index.yml
+      text: Meer informatie
+additionalContent:
+  sections:
+  - items:
+    - title: Azure PowerShell-opdrachten voor Azure-netwerken
+      summary: Meer informatie over de Azure-netwerk-cmdlets.
+      url: https://docs.microsoft.com/en-us/powershell/module/az.network/?view=azps-3.5.0#networking
+    - title: Azure CLI-opdrachten voor Azure-netwerken
+      summary: Zoek d e Azure-netwerkopdrachten in de CLI-verwijzing.
+      url: https://docs.microsoft.com/en-us/cli/azure/network?view=azure-cli-latest
+    - title: Blogs in Azure-netwerken
+      summary: Bekijk de nieuwste blogs in Azure-netwerken.
+      url: https://azure.microsoft.com/blog/topics/networking/
