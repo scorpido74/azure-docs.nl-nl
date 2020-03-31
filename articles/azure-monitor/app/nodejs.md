@@ -4,15 +4,15 @@ description: Prestaties bewaken en problemen detecteren in Node.js-services met 
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670012"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Node.js-services en -apps bewaken met Application Insights
 
-[Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) bewaakt uw back-end-services en-onderdelen na de implementatie, om u te helpen de prestaties en andere problemen snel te detecteren en te onderzoeken. U kunt Application Insights voor Node.js-services die worden gehost in uw datacenter, gebruiken in virtuele Azure-machines en web-apps en zelfs in andere openbare clouds.
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) bewaakt uw backendservices en -componenten na implementatie, om u te helpen prestaties en andere problemen te ontdekken en snel te diagnosticeren. U kunt Application Insights voor Node.js-services die worden gehost in uw datacenter, gebruiken in virtuele Azure-machines en web-apps en zelfs in andere openbare clouds.
 
 Neem de SDK op in de code en stel vervolgens een bijbehorende Application Insights-resource in Azure in om uw bewakingsgegevens te ontvangen, op te slaan en te onderzoeken. Met de SDK worden gegevens naar deze resource verzonden voor verdere analyse en onderzoek.
 
@@ -26,21 +26,21 @@ Voltooi de volgende taken om de bewaking voor een app of service in te stellen.
 
 ### <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, moet u ervoor zorgen dat u een Azure-abonnement hebt of [een nieuwe gratis versie aanschaffen][azure-free-offer]. Als uw organisatie al een Azure-abonnement heeft, kan een beheerder [deze instructies][add-aad-user] volgen om u toe te voegen.
+Voordat u begint, moet u ervoor zorgen dat u een Azure-abonnement hebt of moet u [een gratis nieuw abonnement aanvragen][azure-free-offer]. Als uw organisatie al een Azure-abonnement heeft, kan een beheerder [deze instructies][add-aad-user] volgen om u eraan toe te voegen.
 
 [azure-free-offer]: https://azure.microsoft.com/free/
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
 
 
-### <a name="resource"></a> Een Application Insights-resource instellen
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Een Application Insights-bron instellen
 
 
-1. Meld u aan bij de [Azure-portal][portal].
-2. Selecteer **Een resource maken** > **Hulpprogramma's voor ontwikkelaars** > **Application Insights**. De resource bevat een eindpunt voor het ontvangen van telemetriegegevens, opslag voor deze gegevens, opgeslagen rapporten en dashboards, regel- en waarschuwingsconfiguratie en meer.
+1. Meld u aan bij [Azure Portal][portal].
+2. Selecteer De**toepassingsinzichten van hulpprogramma's** >  **voor resourceontwikkelaars** > **maken**. De resource bevat een eindpunt voor het ontvangen van telemetriegegevens, opslag voor deze gegevens, opgeslagen rapporten en dashboards, regel- en waarschuwingsconfiguratie en meer.
 
 3. Selecteer op de pagina voor het maken van de resource in het vak **Toepassingstype** de optie **Node.js-toepassing**. Het apptype bepaalt de standaardashboards en -rapporten die worden gemaakt. (elke Application Insights-resource kan gegevens verzamelen vanuit elke taal en elk platform.)
 
-### <a name="sdk"></a> De Node.ja SDK instellen
+### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> De Node.ja SDK instellen
 
 Neem de SKD op in de app zodat gegevens kunnen worden verzameld. 
 
@@ -70,11 +70,11 @@ Neem de SKD op in de app zodat gegevens kunnen worden verzameld.
 
    U kunt de SDK uitproberen zonder telemetrie te verzenden door `appInsights.defaultClient.config.disableAppInsights = true` in te stellen.
 
-### <a name="monitor"></a> Uw app bewaken
+### <a name="monitor-your-app"></a><a name="monitor"></a>Uw app controleren
 
 Met de SDK wordt automatisch telemetrische informatie verzameld over de Node.js-runtime en over een aantal algemene modules van derden. Gebruik de toepassing om een aantal van deze gegevens te genereren.
 
-Ga vervolgens naar de Application Insights resource die u eerder hebt gemaakt in de [Azure Portal][portal] . Zoek in de **Overzichtstijdlijn** naar de eerste gegevenspunten. Selecteer verschillende onderdelen in de grafieken om meer gedetailleerde gegevens te zien.
+Ga vervolgen in [Azure Portal][portal] naar de Application Insights-resource die u hebt gemaakt. Zoek in de **Overzichtstijdlijn** naar de eerste gegevenspunten. Selecteer verschillende onderdelen in de grafieken om meer gedetailleerde gegevens te zien.
 
 Selecteer de knop **Toepassingskaart** om de gedetecteerde topologie voor te app weer te geven. Selecteer onderdelen in de kaart voor meer informatie.
 

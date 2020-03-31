@@ -1,6 +1,6 @@
 ---
-title: Implementeren van modellen in productie - Team Data Science Process
-description: Klik hier voor meer informatie over het implementeren van modellen voor productie, zodat ze een actieve rol bij het maken van zakelijke beslissingen te nemen.
+title: Modellen implementeren in productie - Team Data Science Process
+description: Hoe modellen in productie te zetten, zodat ze een actieve rol kunnen spelen bij het nemen van zakelijke beslissingen.
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,36 +11,36 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722234"
 ---
-# <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Modellen implementeren naar productie om af te spelen een actieve rol bij het maken van zakelijke beslissingen te nemen
+# <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Modellen in productie zetten om een actieve rol te spelen bij het nemen van zakelijke beslissingen
 
-Productie-implementatie kunt een model voor het een actieve rol spelen in een bedrijf. Voorspellingen op basis van een geïmplementeerd model kunnen worden gebruikt voor zakelijke beslissingen te nemen.
+Met de productie-implementatie kan een model een actieve rol spelen in een bedrijf. Voorspellingen van een geïmplementeerd model kunnen worden gebruikt voor zakelijke beslissingen.
 
 ## <a name="production-platforms"></a>Productieplatforms
 
-Er zijn verschillende benaderingen en platforms modellen in productie te plaatsen. Hier zijn enkele opties:
+Er zijn verschillende benaderingen en platforms om modellen in productie te nemen. Hier zijn een paar opties:
 
-- [Het implementeren van modellen met Azure Machine Learning](../how-to-deploy-and-where.md)
-- [Implementatie van een model in SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Waar u modellen implementeren met Azure Machine Learning](../how-to-deploy-and-where.md)
+- [Implementatie van een model in SQL-server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
->Voorafgaand aan de implementatie heeft een zorgen dat de latentie van het model scoren laag genoeg is voor gebruik in productie is.
+>Voorafgaand aan de implementatie moet men ervoor zorgen dat de latentie van modelscores laag genoeg is om te gebruiken in de productie.
 >
 
 >[!NOTE]
->Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor implementatie met behulp van Azure machine learning Studio.
+>Zie [Een Webservice Azure Machine Learning implementeren](../studio/deploy-a-machine-learning-web-service.md)voor implementatie met Azure Machine Learning Studio.
 >
 
-## <a name="ab-testing"></a>A / B-tests
+## <a name="ab-testing"></a>A/B-testen
 
-Wanneer er meerdere modellen in productie zijn, kan [een/B-test](https://en.wikipedia.org/wiki/A/B_testing) worden gebruikt om de prestaties van het model te vergelijken. 
+Wanneer er meerdere modellen in productie zijn, kunnen [A/B-tests](https://en.wikipedia.org/wiki/A/B_testing) worden gebruikt om de prestaties van het model te vergelijken. 
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Er zijn ook instructies voor het leveren van alle stappen in het proces voor **specifieke scenario's** . Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 
+Walkthroughs die alle stappen in het proces voor **specifieke scenario's** demonstreren zijn ook voorzien. Ze worden vermeld en gekoppeld aan miniatuurbeschrijvingen in het artikel [Voorbeeld walkthroughs.](walkthroughs.md) Ze illustreren hoe cloud- en on-premises tools en services kunnen worden gecombineerd in een workflow of pijplijn om een intelligente toepassing te maken. 

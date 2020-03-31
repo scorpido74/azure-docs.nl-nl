@@ -7,27 +7,29 @@
     - name: De Bing Zoeken-API's vergelijken
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Snelstarts voor REST API
+- name: Snelstartgidsen
   expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
-- name: Clientbibliotheek
-  items:
-    - name: 'C#'
-      href: quickstarts/csharp-sdk.md
-    - name: Aan de slag
-      href: quickstarts/go-sdk.md
+    - name: REST-API
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+    - name: Clientbibliotheek
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp-sdk.md
+        - name: Aan de slag
+          href: quickstarts/go-sdk.md
 - name: Zelfstudies
   items:
     - name: Web-app van één pagina
@@ -61,7 +63,7 @@
     - name: Vereisten voor gebruik en weergave
       href: ../Bing-Web-Search/use-display-requirements.md
       maintainContext: true
-- name: Bronnen
+- name: Resources
   items:
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'

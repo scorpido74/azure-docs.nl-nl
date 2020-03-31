@@ -1,6 +1,6 @@
 ---
-title: Door de gebruiker gedefinieerde U-SQL-Opera tors ontwikkelen-Azure Data Lake Analytics
-description: Meer informatie over het ontwikkelen van door de gebruiker gedefinieerde Opera tors die moeten worden gebruikt en opnieuw gebruikt in Azure Data Lake Analytics taken.
+title: U-SQL-gebruikersdefined operators ontwikkelen - Azure Data Lake Analytics
+description: Meer informatie over het ontwikkelen van door gebruikers gedefinieerde operators die kunnen worden gebruikt en hergebruikt in Azure Data Lake Analytics-taken.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,21 +10,21 @@ ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: b2d1293b06b4d8791138ed666bc3cb4abe3adf40
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71316545"
 ---
-# <a name="develop-u-sql-user-defined-operators-udos"></a>Door de gebruiker gedefinieerde U-SQL-Opera tors ontwikkelen (Udo's)
-In dit artikel wordt beschreven hoe u door de gebruiker gedefinieerde Opera tors ontwikkelt om gegevens in een U-SQL-taak te verwerken.
+# <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL-gebruikersdefined operators ontwikkelen (UDO's)
+In dit artikel wordt beschreven hoe u door gebruikers gedefinieerde operatoren ontwikkelen om gegevens in een U-SQL-taak te verwerken.
 
 ## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>Een door de gebruiker gedefinieerde operator definiëren en gebruiken in U-SQL
 **Een U-SQL-taak maken en verzenden**
 
-1. Selecteer in Visual Studio **File > New > project > U-SQL project**.
-2. Klik op **OK**. Visual Studio maakt een oplossing met een script. usql-bestand.
-3. Vouw in **Solution Explorer**script. usql uit en dubbel klik vervolgens op **script.usql.cs**.
+1. Selecteer in de Visual Studio **Bestand > Nieuwe > Project > U-SQL-project**.
+2. Klik op **OK**. Visual Studio maakt een oplossing met een Script.usql-bestand.
+3. Vouw vanuit **Solution Explorer**Script.usql uit en dubbelklik op **Script.usql.cs**.
 4. Plak de volgende code in het bestand:
 
         using Microsoft.Analytics.Interfaces;
@@ -82,7 +82,7 @@ In dit artikel wordt beschreven hoe u door de gebruiker gedefinieerde Opera tors
                 }
             }
         }
-6. Open **script. usql**en plak het volgende U-SQL-script:
+6. Open **Script.usql**en plak het volgende U-SQL-script:
 
         @drivers =
             EXTRACT UserID      string,
@@ -114,15 +114,15 @@ In dit artikel wordt beschreven hoe u door de gebruiker gedefinieerde Opera tors
 7. Geef het Data Lake Analytics-account, de database en het schema op.
 8. Ga naar **Solution Explorer**, klik met de rechtermuisknop op **Script.usql** en klik vervolgens op **Build Script**.
 9. Ga naar **Solution Explorer**, klik met de rechtermuisknop op **Script.usql** en klik vervolgens op **Submit Script**.
-10. Als u nog geen verbinding hebt gemaakt met uw Azure-abonnement, wordt u gevraagd om uw Azure-account referenties in te voeren.
-11. Klik op **Indienen**. De inzendings resultaten en taak koppeling zijn beschikbaar in het resultaten venster wanneer de verzen ding is voltooid.
-12. Klik op de knop **vernieuwen** om de nieuwste taak status weer te geven en het scherm te vernieuwen.
+10. Als u geen verbinding hebt gemaakt met uw Azure-abonnement, wordt u gevraagd uw Azure-accountreferenties in te voeren.
+11. Klik **op Verzenden**. Indieningsresultaten en taakkoppeling zijn beschikbaar in het venster Resultaten wanneer de indiening is voltooid.
+12. Klik **op** de knop Vernieuwen om de nieuwste taakstatus te bekijken en het scherm te vernieuwen.
 
-**Als u de uitvoer wilt bekijken**
+**De uitvoer bekijken**
 
-1. Vouw in **Server Explorer** **Azure**uit, vouw **Data Lake Analytics**uit, vouw uw data Lake Analytics account uit, vouw **opslag accounts**uit, klik met de rechter muisknop op de standaard opslag en klik vervolgens op **Explorer**.
-2. Vouw voor beelden uit, vouw uitvoer uit en dubbel klik vervolgens op **Stuur Programma's. CSV**.
+1. Vanuit **Server Explorer,** **azure**uitbreiden, Data **Lake Analytics**uitbreiden, uw Data Lake Analytics-account uitbreiden, **Opslagaccounts**uitbreiden, met de rechtermuisknop op de standaardopslag klikken en vervolgens op **Explorer**klikken.
+2. Voorbeelden uitvouwen, Uitvoer uitvouwen en dubbelklik vervolgens op **Drivers.csv**.
 
 ## <a name="see-also"></a>Zie ook
-* [U-SQL-expressies uitbreiden met gebruikers code](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
-* [Data Lake-Hulpprogram Ma's voor Visual Studio gebruiken voor het ontwikkelen van U-SQL-toepassingen](data-lake-analytics-data-lake-tools-get-started.md)
+* [U-SQL-expressies uitbreiden met usercode](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
+* [Data Lake-hulpprogramma's gebruiken voor Visual Studio voor het ontwikkelen van U-SQL-toepassingen](data-lake-analytics-data-lake-tools-get-started.md)

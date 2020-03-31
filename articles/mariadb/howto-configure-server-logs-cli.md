@@ -1,35 +1,35 @@
 ---
-title: Toegang tot langzame query logboeken-Azure CLI-Azure Database for MariaDB
-description: In dit artikel wordt beschreven hoe u de trage Logboeken in Azure Database for MariaDB kunt openen met behulp van het opdracht regel hulpprogramma van Azure CLI.
+title: Toegang tot slow query logs - Azure CLI - Azure Database voor MariaDB
+description: In dit artikel wordt beschreven hoe u toegang krijgt tot de langzame logboeken in Azure Database voor MariaDB met behulp van het azure CLI-opdrachtregelhulpprogramma.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 32e73835732538813f90de5cb737429373c3762a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: f33a02ff0e287c135a7d63277cf3d8d3c0cd13d4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767378"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527653"
 ---
-# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Langzame query logboeken configureren en openen met behulp van Azure CLI
-U kunt de Azure Database for MariaDB langzame query logboeken downloaden met behulp van Azure CLI, het opdracht regel programma van Azure.
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Langzame querylogboeken configureren en openen met Azure CLI
+U de Azure Database voor MariaDB slow querylogs downloaden met Azure CLI, het Azure-opdrachtregelhulpprogramma.
 
 ## <a name="prerequisites"></a>Vereisten
-Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
-- [Azure Database for MariaDB server](quickstart-create-mariadb-server-database-using-azure-cli.md)
-- De [Azure cli](/cli/azure/install-azure-cli) of Azure Cloud shell in de browser
+Om deze handleiding door te nemen, hebt u het volgende nodig:
+- [Azure-database voor MariaDB-server](quickstart-create-mariadb-server-database-using-azure-cli.md)
+- De [Azure CLI](/cli/azure/install-azure-cli) of Azure Cloud Shell in de browser
 
-## <a name="configure-logging-for-azure-database-for-mariadb"></a>Logboek registratie voor Azure Database for MariaDB configureren
-U kunt de server configureren voor toegang tot het MariaDB langzame query logboek door de volgende stappen te nemen:
-1. Schakel logboek registratie in door de **langzame\_query\_logboek** parameter in te stellen op aan.
-2. Pas andere para meters aan, zoals **lange\_query\_tijd** en **logboek\_trage\_beheerder\_instructies**.
+## <a name="configure-logging-for-azure-database-for-mariadb"></a>Logboekregistratie configureren voor Azure Database voor MariaDB
+U de server configureren om toegang te krijgen tot het traag querylogboek van MariaDB door de volgende stappen uit te voeren:
+1. Schakel logboekregistratie in door de parameter **Slow\_Query\_Log** in te stellen op AAN.
+2. Pas andere parameters aan, zoals **lange\_querytijd\_** en langzame **\_\_beheerdersinstructies\_bijhouden.**
 
-Zie [server parameters configureren](howto-configure-server-parameters-cli.md)voor meer informatie over het instellen van de waarde van deze para meters via Azure cli.
+Zie [Serverparameters configureren](howto-configure-server-parameters-cli.md)voor meer informatie over het instellen van de waarde van deze parameters via Azure CLI.
 
-Met de volgende CLI-opdracht wordt bijvoorbeeld het langzame query logboek ingeschakeld, wordt de lange query tijd ingesteld op 10 seconden, waarna de logboek registratie van de langzame beheer instructie wordt uitgeschakeld. Ten slotte worden de configuratie opties voor uw beoordeling weer gegeven.
+De volgende opdracht CLI schakelt bijvoorbeeld het langzame querylogboek in, stelt de lange querytijd in op 10 seconden en schakelt vervolgens de logboekregistratie van de langzame beheerinstructie uit. Ten slotte worden de configuratieopties voor uw beoordeling weergegeven.
 ```azurecli-interactive
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 az mariadb server configuration set --name long_query_time --resource-group myresourcegroup --server mydemoserver --value 10
@@ -37,20 +37,20 @@ az mariadb server configuration set --name log_slow_admin_statements --resource-
 az mariadb server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Logboeken voor Azure Database for MariaDB server weer geven
-Als u de beschik bare langzame query logboek bestanden voor uw server wilt weer geven, voert u de opdracht [AZ mariadb server-logs List](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) uit.
+## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Lijstlogboeken voor Azure Database voor MariaDB-server
+Voer de [lijstmetopdracht az mariadb server-logs](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) uit om de beschikbare slow querylogbestanden voor uw server aan te geven.
 
-U kunt de logboek bestanden voor server **mydemoserver.mariadb.database.Azure.com** weer geven onder de resource groep **myresourcegroup**. Ga vervolgens naar de lijst met logboek bestanden naar een tekst bestand met de naam **logboek\_bestanden\_lijst. txt**.
+U de logboekbestanden voor **servermydemoserver.mariadb.database.azure.com** aanbieden onder de **groep myresourcegroep van**de brongroep. Stuur vervolgens de lijst met logboekbestanden naar een tekstbestand genaamd **logbestanden\_\_list.txt**.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
-## <a name="download-logs-from-the-server"></a>Logboeken van de server downloaden
-Met de opdracht [AZ mariadb server-logs down](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-download) load kunt u afzonderlijke logboek bestanden downloaden voor uw server.
+## <a name="download-logs-from-the-server"></a>Logboeken downloaden van de server
+Met de [az mariadb server-logs download](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-download) opdracht, u downloaden van individuele log bestanden voor uw server.
 
-Gebruik het volgende voor beeld om het specifieke logboek bestand voor de server **mydemoserver.mariadb.database.Azure.com** onder de resource groep **myresourcegroup** te downloaden naar uw lokale omgeving.
+Gebruik het volgende voorbeeld om het specifieke logboekbestand voor de server te downloaden **mydemoserver.mariadb.database.azure.com** onder de brongroep **myresourcegroup** naar uw lokale omgeving.
 ```azurecli-interactive
 az mariadb server-logs download --name mysql-slow-mydemoserver-2018110800.log --resource-group myresourcegroup --server mydemoserver
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [trage query Logboeken in azure database for MariaDB](concepts-server-logs.md).
+- Meer informatie over [logboeken met langzame query's in Azure Database voor MariaDB](concepts-server-logs.md).

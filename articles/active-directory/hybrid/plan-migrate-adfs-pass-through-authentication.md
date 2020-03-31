@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: migreren van Federatie naar PTA voor Azure AD'
-description: Dit artikel bevat informatie over het verplaatsen van uw hybride identiteits omgeving van Federatie naar Pass-Through-verificatie.
+title: 'Azure AD Connect: migreren van federatie naar PTA voor Azure AD'
+description: In dit artikel vindt u informatie over het verplaatsen van uw hybride identiteitsomgeving van federatie naar verificatie.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,78 +12,78 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21ceacf27f92781b40a856b0c0a4d627d41a0738
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028558"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528639"
 ---
-# <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migreren van Federatie naar Pass-Through-verificatie voor Azure Active Directory
+# <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migreren van federatie naar doorreisverificatie voor Azure Active Directory
 
-In dit artikel wordt beschreven hoe u uw organisatie domeinen kunt verplaatsen van Active Directory Federation Services (AD FS) naar Pass-Through-verificatie.
+In dit artikel wordt beschreven hoe u uw organisatiedomeinen verplaatst van Active Directory Federation Services (AD FS) naar verificatie.
 
 > [!NOTE]
-> Het wijzigen van de verificatie methode vereist planning, testen en mogelijk downtime. [Gefaseerde implementatie](how-to-connect-staged-rollout.md) biedt een alternatieve manier om te testen en geleidelijk te migreren van Federatie naar Cloud verificatie met behulp van Pass-Through-verificatie.
+> Het wijzigen van uw verificatiemethode vereist planning, testen en mogelijk downtime. [Gefaseerde implementatie](how-to-connect-staged-rollout.md) biedt een alternatieve manier om federatie- naar cloudverificatie te testen en geleidelijk te migreren met behulp van pass-through-verificatie.
 
-## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>Vereisten voor het migreren naar Pass-Through-verificatie
+## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>Vereisten voor migratie naar pass-through-verificatie
 
-De volgende vereisten zijn vereist voor de migratie van met behulp van AD FS om Pass-Through-verificatie te gebruiken.
+De volgende vereisten zijn vereist om te migreren van het gebruik van AD FS naar het gebruik van pass-through-verificatie.
 
 ### <a name="update-azure-ad-connect"></a>Azure AD Connect bijwerken
 
-Voor het volt ooien van de stappen die nodig zijn om te migreren naar met behulp van Pass-Through-verificatie, moet u [Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) (Azure AD Connect) 1.1.819.0 of een latere versie hebben. In Azure AD Connect 1.1.819.0 worden de manier waarop de aanmeldings conversie wordt uitgevoerd, aanzienlijk gewijzigd. De totale tijd voor het migreren van AD FS naar Cloud authenticatie in deze versie is beperkt van potentieel uur tot minuten.
+Als u de stappen wilt uitvoeren die nodig zijn om te migreren naar het gebruik van pass-through-verificatie, moet u beschikken over [Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) (Azure AD Connect) 1.1.819.0 of een latere versie. In Azure AD Connect 1.1.819.0 verandert de manier waarop aanmeldingsconversie wordt uitgevoerd aanzienlijk. De totale tijd om te migreren van AD FS naar cloudverificatie in deze versie wordt verminderd van mogelijk uren naar minuten.
 
 > [!IMPORTANT]
-> U kunt de verouderde documentatie, hulpprogram ma's en blogs lezen die gebruikers conversie vereist wanneer u domeinen van federatieve identiteit naar beheerde identiteit converteert. Het is niet meer nodig om *gebruikers te converteren* . Micro soft werkt met het bijwerken van documentatie en hulpprogram ma's om deze wijziging weer te geven.
+> U in verouderde documentatie, hulpprogramma's en blogs lezen dat gebruikersconversie vereist is wanneer u domeinen converteert van federatieve identiteit naar beheerde identiteit. *Het converteren van gebruikers* is niet langer nodig. Microsoft werkt aan het bijwerken van documentatie en hulpprogramma's om deze wijziging weer te geven.
 
-Volg de stappen in Azure AD Connect om Azure AD Connect bij te werken: Voer een [upgrade uit naar de nieuwste versie](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+Als u Azure AD Connect wilt bijwerken, voert u de stappen uit in [Azure AD Connect: Upgrade naar de nieuwste versie](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
 
-### <a name="plan-authentication-agent-number-and-placement"></a>Het nummer en de plaatsing van de verificatie agent plannen
+### <a name="plan-authentication-agent-number-and-placement"></a>Nummer en plaatsing van verificatieagent plannen
 
-Pass-Through-verificatie vereist het implementeren van Lightweight-agents op de Azure AD Connect-server en op uw on-premises computer waarop Windows Server wordt uitgevoerd. Als u de latentie wilt beperken, installeert u de agents zo dicht mogelijk bij uw Active Directory-domein controllers.
+Verificatie voor doorgeefgegevens vereist het implementeren van lichtgewicht agents op de Azure AD Connect-server en op uw on-premises computer waarop Windows Server wordt uitgevoerd. Als u de latentie wilt verminderen, installeert u de agents zo dicht mogelijk bij uw Active Directory-domeincontrollers.
 
-Voor de meeste klanten zijn twee of drie verificatie agenten voldoende om hoge Beschik baarheid en de vereiste capaciteit te bieden. Voor een Tenant kunnen Maxi maal 12 geregistreerde agents worden geregistreerd. De eerste agent wordt altijd geïnstalleerd op de Azure AD Connect-server zelf. Zie [Azure AD Pass-Through-verificatie: huidige beperkingen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-current-limitations)voor meer informatie over agent beperkingen en opties voor het implementeren van agents.
+Voor de meeste klanten zijn twee of drie verificatiemedewerkers voldoende om een hoge beschikbaarheid en de vereiste capaciteit te bieden. Een huurder kan maximaal 12 agenten laten registreren. De eerste agent is altijd geïnstalleerd op de Azure AD Connect-server zelf. Zie [Azure AD-pass-through-verificatie voor](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-current-limitations)meer informatie over agentbeperkingen en agentimplementatieopties: huidige beperkingen .
 
-### <a name="plan-the-migration-method"></a>De migratie methode plannen
+### <a name="plan-the-migration-method"></a>De migratiemethode plannen
 
-U kunt kiezen uit twee methoden voor het migreren van federatieve identiteits beheer naar Pass-Through-verificatie en naadloze eenmalige aanmelding (SSO). De methode die u gebruikt, is afhankelijk van de manier waarop uw AD FS-exemplaar oorspronkelijk is geconfigureerd.
+U kiezen uit twee methoden om te migreren van federatief identiteitsbeheer naar pass-through-verificatie en naadloze single sign-on (SSO). De methode die u gebruikt, is afhankelijk van hoe uw AD FS-exemplaar oorspronkelijk is geconfigureerd.
 
-* **Azure AD Connect**. Als u AD FS oorspronkelijk hebt geconfigureerd met behulp van Azure AD Connect, *moet* u de Azure AD Connect wizard gebruiken om door te gaan met Pass-Through-verificatie.
+* **Azure AD Connect**. Als u AD FS oorspronkelijk hebt geconfigureerd met Azure AD Connect, *moet* u de verificatie van doorstaan wijzigen met de wizard Azure AD Connect.
 
-   Azure AD Connect wordt automatisch de cmdlet **set-MsolDomainAuthentication** uitgevoerd wanneer u de aanmeldings methode voor gebruikers wijzigt. Azure AD Connect automatisch alle geverifieerde federatieve domeinen in uw Azure AD-Tenant unfederates.
+   Azure AD Connect voert de cmdlet **Set-MsolDomainAuthentication** automatisch uit wanneer u de aanmeldingsmethode van de gebruiker wijzigt. Azure AD Connect maakt automatisch alle geverifieerde federatieve domeinen in uw Azure AD-tenant ongedaan.
 
    > [!NOTE]
-   > Als u op dit moment Azure AD Connect hebt gebruikt om AD FS te configureren, kunt u niet voor komen dat alle domeinen in uw Tenant unfederating wanneer u de aanmelding van de gebruiker wijzigt in Pass-Through-verificatie.
+   > Als u Azure AD Connect oorspronkelijk hebt gebruikt om AD FS te configureren, u niet voorkomen dat u alle domeinen in uw tenant niet meer hoeft te ontlasten wanneer u de aanmelding van de gebruiker wijzigt in verificatie.
 ‎
-* **Azure AD Connect met Power shell**. U kunt deze methode alleen gebruiken als u AD FS niet oorspronkelijk hebt geconfigureerd met behulp van Azure AD Connect. Voor deze optie moet u de aanmeldings methode voor gebruikers nog steeds wijzigen via de wizard Azure AD Connect. Het belangrijkste verschil met deze optie is dat de wizard de cmdlet **set-MsolDomainAuthentication** niet automatisch uitvoert. Met deze optie hebt u volledige controle over welke domeinen worden geconverteerd en in welke volg orde.
+* **Azure AD Verbinding maken met PowerShell**. U deze methode alleen gebruiken als u AD FS oorspronkelijk niet hebt geconfigureerd met Azure AD Connect. Voor deze optie moet u de aanmeldingsmethode van de gebruiker nog steeds wijzigen via de wizard Azure AD Connect. Het kernverschil met deze optie is dat de wizard de cmdlet **Set-MsolDomainAuthentication** niet automatisch uitvoert. Met deze optie hebt u volledige controle over welke domeinen worden geconverteerd en in welke volgorde.
 
-Volg de stappen in de volgende secties om te begrijpen welke methode u moet gebruiken.
+Voer de stappen in de volgende secties uit om te begrijpen welke methode u moet gebruiken.
 
-#### <a name="verify-current-user-sign-in-settings"></a>Instellingen voor de aanmelding van de huidige gebruiker controleren
+#### <a name="verify-current-user-sign-in-settings"></a>Huidige aanmeldingsinstellingen voor gebruikers verifiëren
 
-1. Meld u aan bij de [Azure AD-Portal](https://aad.portal.azure.com/) met een account voor globale beheerders.
-2. Controleer de volgende instellingen in de sectie **gebruikers aanmelding** :
-   * **Federatie** is ingesteld op **ingeschakeld**.
-   * **Naadloze eenmalige aanmelding** is ingesteld op **uitgeschakeld**.
-   * **Pass Through-verificatie** is ingesteld op **uitgeschakeld**.
+1. Meld u aan bij de [Azure AD-portal](https://aad.portal.azure.com/) met behulp van een Global Administrator-account.
+2. Controleer in de **aanmeldingssectie Gebruiker** de volgende instellingen:
+   * **Federatie** is ingesteld op **Ingeschakeld**.
+   * **Naadloze enkele aanmelding** is ingesteld op **Uitgeschakeld**.
+   * **Pass-through-verificatie** is ingesteld op **Uitgeschakeld**.
 
-   ![Scherm opname van de instellingen in de sectie Azure AD Connect gebruiker aanmelden](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image1.png)
+   ![Schermafbeelding van de instellingen in de aanmeldingssectie Azure AD Connect-gebruiker](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image1.png)
 
-#### <a name="verify-how-federation-was-configured"></a>Controleren hoe Federatie is geconfigureerd
+#### <a name="verify-how-federation-was-configured"></a>Controleren hoe de federatie is geconfigureerd
 
 1. Open Azure AD Connect op uw Azure AD Connect-server. Selecteer **Configureren**.
-2. Selecteer op de pagina **extra taken** de optie **huidige configuratie weer geven**en selecteer vervolgens **volgende**.<br />
+2. Selecteer op de pagina **Extra taken** de optie Huidige **configuratie weergeven**en selecteer **Volgende**.<br />
  
-   ![Scherm afbeelding van de optie huidige configuratie weer geven op de pagina extra taken](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. Ga op de pagina **uw oplossing controleren** naar **Active Directory Federation Services (AD FS)** .<br />
+   ![Schermafbeelding van de optie Huidige configuratie weergeven op de pagina Extra taken](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
+3. Schuif onder **Extra taken > Federatie beheren**naar Active Directory Federation Services **(AD FS).**<br />
 
-   * Als de AD FS configuratie in deze sectie wordt weer gegeven, kunt u veilig aannemen dat AD FS oorspronkelijk is geconfigureerd met behulp van Azure AD Connect. U kunt uw domeinen van federatieve identiteiten naar een beheerde identiteit converteren met behulp van de aanmeldings optie Azure AD Connect **gebruiker wijzigen** . Zie de sectie **optie A: Pass-Through-verificatie configureren met behulp van Azure AD Connect**voor meer informatie over het proces.
-   * Als AD FS niet in de huidige instellingen wordt vermeld, moet u uw domeinen hand matig met behulp van Power shell converteren van federatieve identiteit naar beheerde identiteit. Zie de sectie **optie B: overschakelen van Federatie naar Pass-Through-verificatie met behulp van Azure AD Connect en Power shell**voor meer informatie over dit proces.
+   * Als de AD FS-configuratie in deze sectie wordt weergegeven, u er veilig van uitgaan dat AD FS oorspronkelijk is geconfigureerd met Azure AD Connect. U uw domeinen converteren van federatieve identiteit naar beheerde identiteit met behulp van de **aanmeldingsoptie** Azure AD Connect Change user.You can convert your domains from federated identity to managed identity using the Azure AD Connect Change user sign-in option. Zie de sectie **Optie A: Pass-through-verificatie configureren met Azure AD Connect**voor meer informatie over het proces.
+   * Als AD FS niet wordt vermeld in de huidige instellingen, moet u uw domeinen handmatig converteren van federatieve identiteit naar beheerde identiteit met PowerShell. Zie de sectie **Optie B: Overschakelen van federatie naar doorreisverificatie met Azure AD Connect en PowerShell**voor meer informatie over dit proces.
 
-### <a name="document-current-federation-settings"></a>Huidige Federatie-instellingen documenteren
+### <a name="document-current-federation-settings"></a>Huidige federatie-instellingen documenteren
 
-Als u de huidige Federatie-instellingen wilt vinden, voert u de cmdlet **Get-MsolDomainFederationSettings** uit:
+Voer de cmdlet **Get-MsolDomainFederationSettings** uit om uw huidige federatie-instellingen te vinden:
 
 ``` PowerShell
 Get-MsolDomainFederationSettings -DomainName YourDomain.extention | fl *
@@ -95,365 +95,365 @@ Voorbeeld:
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ```
 
-Controleer alle instellingen die mogelijk zijn aangepast voor uw Federatie-ontwerp en implementatie documentatie. Zoek in het bijzonder naar aanpassingen in **PreferredAuthenticationProtocol**, **SupportsMfa**en **PromptLoginBehavior**.
+Controleer alle instellingen die mogelijk zijn aangepast voor de ontwerp- en implementatiedocumentatie van uw federatie. Zoek specifiek naar aanpassingen in **PreferredAuthenticationProtocol,** **SupportsMfa**en **PromptLoginBehavior**.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
-* [AD FS prompt = ondersteuning voor aanmeld parameters](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
+* [Ondersteuning voor AD FS-prompt=login-parameter](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
 * [Set-MsolDomainAuthentication](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
 
 > [!NOTE]
-> Als **SupportsMfa** is ingesteld op **True**, gebruikt u een on-premises multi-factor Authentication-oplossing om een tweede factor Challenge in te voeren in de verificatie stroom van de gebruiker. Deze installatie werkt niet meer voor Azure AD-verificatie scenario's. 
+> Als **SupportsMfa** is ingesteld op **True,** gebruikt u een on-premises multi-factor authenticatieoplossing om een tweede-factor-uitdaging in de gebruikersverificatiestroom te injecteren. Deze instelling werkt niet meer voor Azure AD-verificatiescenario's. 
 >
-> Gebruik in plaats daarvan de Azure Multi-Factor Authentication cloud-gebaseerde service om dezelfde functie uit te voeren. Evalueer zorgvuldig uw multi-factor Authentication-vereisten voordat u doorgaat. Zorg ervoor dat u weet hoe u Azure Multi-Factor Authentication, de implicaties van licenties en het gebruikers registratie proces kunt gebruiken voordat u uw domeinen converteert.
+> Gebruik in plaats daarvan de azure multi-factor authentication cloud-gebaseerde service om dezelfde functie uit te voeren. Evalueer uw vereisten voor multifactorauthenticatie zorgvuldig voordat u verdergaat. Voordat u uw domeinen converteert, moet u weten hoe u Azure Multi-Factor Authentication, de licentieimplicaties en het gebruikersregistratieproces gebruiken.
 
-#### <a name="back-up-federation-settings"></a>Back-up van Federatie-instellingen
+#### <a name="back-up-federation-settings"></a>Back-ups van federaties
 
-Hoewel er geen wijzigingen worden aangebracht aan andere relying party's in uw AD FS-Farm tijdens de processen die in dit artikel worden beschreven, wordt u aangeraden een geldige back-up te maken van uw AD FS-Farm waarvan u kunt herstellen. U kunt een huidige geldige back-up maken met behulp van het gratis [hulp programma micro soft AD FS Rapid Restore](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool). U kunt het hulp programma gebruiken om een back-up te maken van AD FS en een bestaande farm te herstellen of een nieuwe farm te maken.
+Hoewel er tijdens de processen die in dit artikel in dit artikel worden beschreven, geen wijzigingen worden aangebracht in andere relying partijen in uw AD FS-farm, raden we u aan een geldige back-up van uw AD FS-farm te hebben waarvan u herstellen. U een geldige back-up maken met behulp van de gratis Microsoft [AD FS Rapid Restore Tool.](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-rapid-restore-tool) U het hulpprogramma gebruiken om een back-up te maken van AD FS en om een bestaande farm te herstellen of een nieuwe farm te maken.
 
-Als u ervoor kiest om de AD FS Rapid Restore-hulp programma niet te gebruiken, moet u ten minste het Microsoft Office 365-identiteits platform Relying Party vertrouwen exporteren en alle gekoppelde aangepaste claim regels die u hebt toegevoegd. U kunt de Relying Party vertrouwens-en gekoppelde claim regels exporteren met behulp van het volgende Power shell-voor beeld:
+Als u ervoor kiest om het AD FS Rapid Restore Tool niet te gebruiken, moet u minimaal het Microsoft Office 365 Identity Platform vertrouwend partijvertrouwen en de bijbehorende aangepaste claimregels exporteren die u hebt toegevoegd. U de vertrouwensrelatie van de relying party en de bijbehorende claimregels exporteren met behulp van het volgende PowerShell-voorbeeld:
 
 ``` PowerShell
 (Get-AdfsRelyingPartyTrust -Name "Microsoft Office 365 Identity Platform") | Export-CliXML "C:\temp\O365-RelyingPartyTrust.xml"
 ```
 
-## <a name="deployment-considerations-and-using-ad-fs"></a>Overwegingen bij de implementatie en het gebruik van AD FS
+## <a name="deployment-considerations-and-using-ad-fs"></a>Implementatieoverwegingen en het gebruik van AD FS
 
-In deze sectie worden de overwegingen voor implementatie en informatie over het gebruik van AD FS beschreven.
+In deze sectie worden overwegingen en details over het gebruik van AD FS beschreven.
 
-### <a name="current-ad-fs-use"></a>Huidig AD FS gebruik
+### <a name="current-ad-fs-use"></a>Huidig AD FS-gebruik
 
-Voordat u de federatieve identiteit omzet in een beheerde identiteit, kijkt u goed op hoe u momenteel AD FS voor Azure AD, Office 365 en andere toepassingen (Relying Party vertrouwens relaties) gebruikt. Bekijk in het bijzonder de scenario's die in de volgende tabel worden beschreven:
+Voordat u converteert van federatieve identiteit naar beheerde identiteit, moet u goed bekijken hoe u AD FS momenteel gebruikt voor Azure AD, Office 365 en andere toepassingen (vertrouwensrelaties van de relying party). Houd in het bijzonder rekening met de scenario's die in de volgende tabel worden beschreven:
 
-| Als | Kies vervolgens of je de webnotitie wilt |
+| Als | Dan |
 |-|-|
-| U wilt AD FS blijven gebruiken met andere toepassingen (met uitzonde ring van Azure AD en Office 365). | Nadat u uw domeinen hebt geconverteerd, gebruikt u zowel AD FS als Azure AD. Denk aan de gebruikers ervaring. In sommige gevallen moeten gebruikers mogelijk twee maal worden geverifieerd: eenmaal naar Azure AD (waarbij een gebruiker SSO-toegang krijgt tot andere toepassingen, zoals Office 365) en opnieuw voor alle toepassingen die nog AD FS als Relying Party vertrouwen. |
-| Uw AD FS-exemplaar is sterk aangepast en is afhankelijk van specifieke aanpassings instellingen in het bestand OnLoad. js (bijvoorbeeld als u de aanmeldings ervaring hebt gewijzigd, zodat gebruikers alleen een **sAMAccountName** -indeling voor hun gebruikers naam gebruiken in plaats van een UPN (User Principal Name), of uw organisatie de aanmeldings ervaring sterk merkt). Het bestand OnLoad. js kan niet worden gedupliceerd in azure AD. | Voordat u doorgaat, moet u controleren of Azure AD kan voldoen aan uw huidige aanpassings vereisten. Zie de secties over AD FS huis stijl en AD FS aanpassen voor meer informatie en voor hulp.|
-| U gebruikt AD FS om eerdere versies van Authentication-clients te blok keren.| Overweeg AD FS besturings elementen te vervangen die eerdere versies van authenticatie-clients blok keren door gebruik te maken van een combi natie van [besturings elementen voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) en [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR). |
-| U wilt dat gebruikers multi-factor Authentication uitvoeren op een on-premises multi-factor Authentication-Server oplossing wanneer gebruikers zich verifiëren bij AD FS.| U kunt in een beheerd identiteits domein geen multi-factor Authentication-Challenge injecteren via de on-premises multi-factor Authentication-oplossing in de verificatie stroom. U kunt echter de Azure Multi-Factor Authentication-Service voor multi-factor Authentication gebruiken nadat het domein is geconverteerd.<br /><br /> Als uw gebruikers momenteel geen Azure Multi-Factor Authentication gebruiken, is een eenmalige-gebruikers registratie-stap vereist. U moet de geplande registratie voorbereiden en aan uw gebruikers door geven. |
-| U gebruikt momenteel toegangs beheer beleid (AuthZ-regels) in AD FS om de toegang tot Office 365 te beheren.| Overweeg om het beleid te vervangen door het equivalente [beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) van Azure AD en de [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR).|
+| U bent van plan AD FS te blijven gebruiken met andere toepassingen (andere dan Azure AD en Office 365). | Nadat u uw domeinen hebt geconverteerd, gebruikt u zowel AD FS als Azure AD. Denk aan de gebruikerservaring. In sommige scenario's moeten gebruikers mogelijk twee keer verifiëren: één keer naar Azure AD (waarbij een gebruiker SSO-toegang krijgt tot andere toepassingen, zoals Office 365), en opnieuw voor toepassingen die nog steeds zijn gekoppeld aan AD FS als vertrouwensrelatie tussen een relying party. |
+| Uw AD FS-exemplaar is sterk aangepast en is afhankelijk van specifieke aanpassingsinstellingen in het bestand onload.js (bijvoorbeeld als u de aanmeldingservaring hebt gewijzigd zodat gebruikers alleen een **SamAccountName-indeling** gebruiken voor hun gebruikersnaam in plaats van een User Principal Name (UPN), of als uw organisatie de aanmeldingservaring sterk heeft gebrandmerkt). Het bestand onload.js kan niet worden gedupliceerd in Azure AD. | Voordat u verdergaat, moet u controleren of Azure AD kan voldoen aan uw huidige aanpassingsvereisten. Zie de secties over AD FS-branding en AD FS-aanpassing voor meer informatie en voor begeleiding.|
+| U gebruikt AD FS om eerdere versies van verificatieclients te blokkeren.| Overweeg AD FS-besturingselementen te vervangen die eerdere versies van verificatieclients blokkeren met behulp van een combinatie van [voorwaardelijke toegangsbesturingselementen](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) en [Exchange Online-clienttoegangsregels](https://aka.ms/EXOCAR). |
+| U vereist dat gebruikers multi-factor authenticatie uitvoeren tegen een on-premises multi-factor authenticatieserveroplossing wanneer gebruikers zich verifiëren bij AD FS.| In een beheerd identiteitsdomein u een multi-factor authenticatieuitdaging niet injecteren via de on-premises multi-factor authenticatieoplossing in de verificatiestroom. U de Azure Multi-Factor Authentication-service echter gebruiken voor multi-factor authenticatie nadat het domein is geconverteerd.<br /><br /> Als uw gebruikers momenteel geen Azure Multi-Factor Authentication gebruiken, is een eenmalige stap voor gebruikersregistratie vereist. U moet de geplande registratie voorbereiden en aan uw gebruikers meedelen. |
+| U gebruikt momenteel toegangscontrolebeleid (AuthZ-regels) in AD FS om de toegang tot Office 365 te beheren.| Overweeg het beleid te vervangen door het gelijkwaardige Azure AD [Conditional Access-beleid](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) en [Exchange Online Client Access-regels](https://aka.ms/EXOCAR).|
 
-### <a name="common-ad-fs-customizations"></a>Algemene AD FS aanpassingen
+### <a name="common-ad-fs-customizations"></a>Algemene AD FS-aanpassingen
 
-In deze sectie worden algemene AD FS aanpassingen beschreven.
+In deze sectie worden veelvoorkomende AD FS-aanpassingen beschreven.
 
 #### <a name="insidecorporatenetwork-claim"></a>InsideCorporateNetwork claim
 
-AD FS wordt de **InsideCorporateNetwork** -claim uitgegeven als de gebruiker die de verificatie uitvoert, zich in het bedrijfs netwerk bevindt. Deze claim kan vervolgens worden door gegeven aan Azure AD. De claim wordt gebruikt om multi-factor Authentication over te slaan op basis van de netwerk locatie van de gebruiker. Zie voor meer informatie over hoe u kunt bepalen of deze functionaliteit momenteel beschikbaar is in AD FS [vertrouwde IP-adressen voor federatieve gebruikers](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud).
+AD FS geeft de **Claim InsideCorporateNetwork** uit als de gebruiker die authenticeert zich binnen het bedrijfsnetwerk bevindt. Deze claim kan vervolgens worden doorgegeven aan Azure AD. De claim wordt gebruikt om multi-factor authenticatie te omzeilen op basis van de netwerklocatie van de gebruiker. Zie [Vertrouwde IP's voor federatieve gebruikers voor](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud)meer informatie over hoe u bepalen of deze functionaliteit momenteel beschikbaar is in AD FS.
 
-De **InsideCorporateNetwork** -claim is niet beschikbaar nadat uw domeinen zijn geconverteerd naar Pass-Through-verificatie. U kunt de [benoemde locaties in azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) gebruiken om deze functionaliteit te vervangen.
+De **Claim InsideCorporateNetwork** is niet beschikbaar nadat uw domeinen zijn geconverteerd naar pass-through-verificatie. U [benoemde locaties in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) gebruiken om deze functionaliteit te vervangen.
 
-Nadat u benoemde locaties hebt geconfigureerd, moet u alle beleids regels voor voorwaardelijke toegang bijwerken die zijn geconfigureerd voor het opnemen of uitsluiten van **alle vertrouwde locaties** of door **MFA vertrouwde IP-adressen** om de nieuwe benoemde locaties weer te geven.
+Nadat u benoemde locaties hebt geconfigureerd, moet u alle beleid voor voorwaardelijke toegang bijwerken die zijn geconfigureerd om het netwerk op te nemen of uit te sluiten **Alle vertrouwde locaties** of MFA Trusted **IP-waarden** worden bijgewerkt om de nieuwe benoemde locaties weer te geven.
 
-Zie [Active Directory locaties voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)voor meer informatie over de **locatie** voorwaarde in voorwaardelijke toegang.
+Zie [Active Directory Voorwaardelijke toegangslocaties](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)voor meer informatie over de voorwaarde **Locatie** in Voorwaardelijke toegang.
 
-#### <a name="hybrid-azure-ad-joined-devices"></a>Hybride apparaten die deel uitmaken van Azure AD
+#### <a name="hybrid-azure-ad-joined-devices"></a>Hybride Azure-apparaten die zijn aangesloten bij AD
 
-Wanneer u een apparaat toevoegt aan Azure AD, kunt u regels voor voorwaardelijke toegang maken waarmee wordt afgedwongen dat apparaten voldoen aan uw toegangs normen voor beveiliging en naleving. Gebruikers kunnen zich ook bij een apparaat aanmelden met een werk-of school account van een organisatie in plaats van een persoonlijk account. Wanneer u hybride apparaten die deel uitmaken van Azure AD gebruikt, kunt u uw Active Directory apparaten die lid zijn van het domein toevoegen aan Azure AD. Uw federatieve omgeving is mogelijk ingesteld om deze functie te gebruiken.
+Wanneer u lid wordt van een apparaat met Azure AD, u regels voor voorwaardelijke toegang maken die afdwingen dat apparaten voldoen aan uw toegangsnormen voor beveiliging en naleving. Gebruikers kunnen zich ook aanmelden bij een apparaat met behulp van een organisatiewerk- of schoolaccount in plaats van een persoonlijk account. Wanneer u hybride Azure-apparaten met AD gebruikt, u lid worden van uw active directory-apparaten die zijn verbonden met Azure AD. Uw federatieve omgeving is mogelijk ingesteld om deze functie te gebruiken.
 
-Om ervoor te zorgen dat hybride samen werking blijft werken voor apparaten die lid zijn van het domein nadat uw domeinen zijn geconverteerd naar Pass-Through-verificatie, voor Windows 10-clients, moet u Azure AD Connect gebruiken om Active Directory computer accounts te synchroniseren met Azure AD.
+Als u ervoor wilt zorgen dat hybride joinblijft werken voor alle apparaten die zijn verbonden met het domein nadat uw domeinen zijn geconverteerd naar pass-through-verificatie, moet u Azure AD Connect gebruiken om Active Directory-computeraccounts te synchroniseren met Azure AD.
 
-Voor Windows 8-en Windows 7-computer accounts gebruikt hybride deelname naadloze SSO om de computer te registreren in azure AD. U hoeft geen Windows 8-en Windows 7-computer accounts te synchroniseren zoals u dat voor Windows 10-apparaten kunt doen. U moet echter een bijgewerkt workplacejoin. exe-bestand (via een. msi-bestand) implementeren op Windows 8-en Windows 7-clients zodat ze zich kunnen registreren met naadloze SSO. [Down load het MSI-bestand](https://www.microsoft.com/download/details.aspx?id=53554).
+Voor Windows 8- en Windows 7-computeraccounts maakt hybride join gebruik van naadloze SSO om de computer in Azure AD te registreren. U hoeft windows 8- en Windows 7-computeraccounts niet te synchroniseren zoals u dat doet voor Windows 10-apparaten. U moet echter een bijgewerkt workplacejoin.exe-bestand (via een .msi-bestand) implementeren naar Windows 8- en Windows 7-clients, zodat ze zichzelf kunnen registreren met naadloze SSO. [Download het .msi-bestand](https://www.microsoft.com/download/details.aspx?id=53554).
 
-Zie [Configure Hybrid Azure AD-joined devices](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup)(Engelstalig) voor meer informatie.
+Zie [Hybride Azure-apparaten configureren](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup)voor meer informatie .
 
-#### <a name="branding"></a>Branding
+#### <a name="branding"></a>Huisstijl
 
-Als uw organisatie [uw AD FS aanmeld pagina's heeft aangepast](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) om informatie weer te geven die relevant is voor de organisatie, kunt u overwegen vergelijk bare [aanpassingen aan te brengen op de aanmeldings pagina van Azure AD](https://docs.microsoft.com/azure/active-directory/customize-branding).
+Als uw organisatie [uw AD FS-aanmeldingspagina's heeft aangepast](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) om informatie weer te geven die relevanter is voor de organisatie, u overwegen vergelijkbare aanpassingen te maken als de [aanmeldingspagina van Azure AD.](https://docs.microsoft.com/azure/active-directory/customize-branding)
 
-Hoewel soort gelijke aanpassingen beschikbaar zijn, moeten sommige visuele wijzigingen op aanmeldings pagina's na de conversie worden verwacht. Mogelijk wilt u informatie geven over verwachte wijzigingen in uw communicatie met gebruikers.
+Hoewel vergelijkbare aanpassingen beschikbaar zijn, moeten enkele visuele wijzigingen op aanmeldingspagina's worden verwacht na de conversie. U gebruikers informatie verstrekken over verwachte wijzigingen in uw communicatie.
 
 > [!NOTE]
-> De huis stijl van de organisatie is alleen beschikbaar als u de Premium-of basis licentie voor Azure Active Directory aanschaft of als u een Office 365-licentie hebt.
+> Organisatiebranding is alleen beschikbaar als u de Premium- of Basic-licentie voor Azure Active Directory aanschaft of als u een Office 365-licentie hebt.
 
-## <a name="plan-for-smart-lockout"></a>Slimme vergren deling plannen
+## <a name="plan-for-smart-lockout"></a>Plan voor slimme lock-out
 
-Azure AD slim vergren delen beschermt tegen aanvallen met een felle wacht woord. Slim vergren delen voor komt dat een on-premises Active Directory account wordt vergrendeld wanneer Pass-Through-verificatie wordt gebruikt en een account vergrendelings groeps beleid is ingesteld in Active Directory.
+Azure AD smart lockout beschermt tegen brute-force wachtwoordaanvallen. Slimme uitsluiting voorkomt dat een on-premises Active Directory-account wordt vergrendeld wanneer pass-through-verificatie wordt gebruikt en een groepsbeleid voor het vergrendelen van een account is ingesteld in Active Directory.
 
-Zie [Azure Active Directory slim vergren delen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)voor meer informatie.
+Zie [Azure Active Directory smart lockout](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)voor meer informatie.
 
 ## <a name="plan-deployment-and-support"></a>Implementatie en ondersteuning plannen
 
-Voer de taken uit die worden beschreven in deze sectie om u te helpen bij het plannen van de implementatie en ondersteuning.
+Voltooi de taken die in deze sectie worden beschreven om u te helpen bij het plannen van implementatie en ondersteuning.
 
-### <a name="plan-the-maintenance-window"></a>Het onderhouds venster plannen
+### <a name="plan-the-maintenance-window"></a>Het onderhoudsvenster plannen
 
-Hoewel het domein conversie relatief snel is, kan Azure AD gedurende Maxi maal vier uur na het volt ooien van de domein conversie enkele verificatie aanvragen naar uw AD FS-servers verzenden. In dit venster van vier uur en afhankelijk van verschillende service-caches kan Azure AD deze verificaties niet accepteren. Gebruikers kunnen een fout melding ontvangen. De gebruiker kan nog steeds met AD FS verifiëren, maar Azure AD accepteert het uitgegeven token van de gebruiker niet meer, omdat deze Federation-vertrouwens relatie nu is verwijderd.
+Hoewel het domeinconversieproces relatief snel is, kan Azure AD sommige verificatieaanvragen tot vier uur na het beëindigen van de domeinconversie naar uw AD FS-servers blijven verzenden. Tijdens dit venster van vier uur en afhankelijk van verschillende caches aan de servicezijde, accepteert Azure AD deze verificaties mogelijk niet. Gebruikers kunnen een foutmelding ontvangen. De gebruiker kan zich nog steeds verifiëren ten opzichte van AD FS, maar Azure AD accepteert het uitgegeven token van de gebruiker niet meer omdat die federatievertrouwensrelatie nu is verwijderd.
 
-Dit geldt alleen voor gebruikers die toegang hebben tot de services via een webbrowser tijdens dit post-conversie venster voordat de cache aan de service zijde wordt gewist. Oudere clients (Exchange ActiveSync, Outlook 2010/2013) worden niet verwacht, omdat Exchange Online een cache van hun referenties voor een bepaalde periode houdt. De cache wordt gebruikt om de gebruiker op de achtergrond opnieuw te verifiëren. De gebruiker hoeft niet terug te gaan naar AD FS. Referenties die zijn opgeslagen op het apparaat voor deze clients worden gebruikt om zichzelf opnieuw te verifiëren nadat deze cache is gewist. Als gevolg van het proces voor domein conversie worden gebruikers niet verwacht dat ze een wacht woord hoeven te ontvangen.
+Alleen gebruikers die toegang hebben tot de services via een webbrowser tijdens dit venster na de conversie voordat de cache aan de servicezijde wordt gewist, worden getroffen. Oudere clients (Exchange ActiveSync, Outlook 2010/2013) worden naar verwachting niet beïnvloed omdat Exchange Online gedurende een bepaalde periode een cache van hun referenties bewaart. De cache wordt gebruikt om de gebruiker in stilte opnieuw te verifiëren. De gebruiker hoeft niet terug te keren naar AD FS. Referenties die op het apparaat voor deze clients zijn opgeslagen, worden gebruikt om zichzelf in stilte opnieuw te verifiëren nadat deze cache is gewist. Van gebruikers wordt niet verwacht dat ze wachtwoordprompts ontvangen als gevolg van het domeinconversieproces.
 
-Moderne verificatie-clients (Office 2016-en Office 2013-, iOS-en Android-apps) gebruiken een geldig vernieuwings token om nieuwe toegangs tokens te verkrijgen voor verdere toegang tot resources, in plaats van terug te gaan naar AD FS. Deze clients zijn ongevoelig voor wachtwoord prompts die het resultaat zijn van het domein conversie proces. De clients blijven werken zonder dat er aanvullende configuratie is.
+Moderne verificatieclients (Office 2016 en Office 2013-, iOS- en Android-apps) gebruiken een geldig vernieuwingstoken om nieuwe toegangstokens te verkrijgen voor voortdurende toegang tot bronnen in plaats van terug te keren naar AD FS. Deze clients zijn immuun voor wachtwoordprompts die voortvloeien uit het domeinconversieproces. De clients blijven functioneren zonder extra configuratie.
 
 > [!IMPORTANT]
-> Sluit uw AD FS omgeving niet af of verwijder de vertrouwde Office 365-Relying Party totdat u hebt gecontroleerd of alle gebruikers kunnen verifiëren met behulp van Cloud verificatie.
+> Sluit uw AD FS-omgeving niet af of verwijder de vertrouwensrelatie van de vertrouwende Office 365-basistotdat u hebt geverifieerd dat alle gebruikers met cloudverificatie kunnen verifiëren.
 
-### <a name="plan-for-rollback"></a>Ongedaan maken plannen
+### <a name="plan-for-rollback"></a>Plannen voor terugdraaien
 
-Als u een belang rijk probleem ondervindt dat niet snel kan worden opgelost, kunt u besluiten om de oplossing terug te zetten naar de Federatie. Het is belang rijk om te plannen wat u moet doen als uw implementatie niet zo bedoeld is. Als de conversie van het domein of de gebruikers tijdens de implementatie mislukt, of als u de Federatie wilt terugdraaien, moet u weten hoe u de uitval kunt verhelpen en het effect van uw gebruikers kunt verminderen.
+Als u een belangrijk probleem tegenkomt dat u niet snel oplossen, u besluiten de oplossing terug te draaien naar federatie. Het is belangrijk om te plannen wat u moet doen als uw implementatie niet wordt uitgerold zoals bedoeld. Als de conversie van het domein of de gebruikers mislukt tijdens de implementatie of als u moet terugdraaien naar de federatie, moet u begrijpen hoe u eventuele uitval beperken en het effect op uw gebruikers verminderen.
 
-#### <a name="to-roll-back"></a>Terug te draaien
+#### <a name="to-roll-back"></a>Terugdraaien
 
-Als u wilt terugdraaien, raadpleegt u de federatieve ontwerp-en implementatie documentatie voor uw specifieke implementatie gegevens. Het proces moet deze taken bevatten:
+Als u het terugdraaien wilt plannen, raadpleegt u de documentatie voor het ontwerp en de implementatie van de federatie voor uw specifieke implementatiegegevens. Het proces moet de volgende taken omvatten:
 
-* Het converteren van beheerde domeinen naar federatieve domeinen met behulp van de cmdlet **Convert-MSOLDomainToFederated** .
-* Als dat nodig is, kunt u aanvullende claim regels configureren.
+* Beheerde domeinen converteren naar federatieve domeinen met behulp van de **cmdlet Convert-MSOLDomainToFederated.**
+* Indien nodig, het configureren van aanvullende claimregels.
 
 ### <a name="plan-communications"></a>De communicatie plannen
 
-Een belang rijk onderdeel van de implementatie en ondersteuning van de planning zorgt ervoor dat uw gebruikers proactief op de hoogte worden gebracht van aanstaande wijzigingen. Gebruikers moeten vooraf weten wat ze kunnen ervaren en wat er nodig is.
+Een belangrijk onderdeel van de implementatie en ondersteuning van de planning is ervoor te zorgen dat uw gebruikers proactief worden geïnformeerd over aankomende wijzigingen. Gebruikers moeten van tevoren weten wat ze kunnen ervaren en wat er van hen wordt verlangd.
 
-Nadat de Pass-Through-verificatie en naadloze SSO zijn geïmplementeerd, wordt de gebruikers aanmelding voor toegang tot Office 365 en andere bronnen die worden geverifieerd via Azure AD-wijzigingen. Gebruikers die zich buiten het netwerk bevinden, zien alleen de aanmeldings pagina van Azure AD. Deze gebruikers worden niet omgeleid naar de op formulieren gebaseerde pagina die wordt gepresenteerd door externe Web Application proxy-servers.
+Nadat zowel pass-through-verificatie als naadloze SSO zijn geïmplementeerd, is de gebruikersaanmeldingservaring voor toegang tot Office 365 en andere bronnen die zijn geverifieerd via Azure AD-wijzigingen. Gebruikers die zich buiten het netwerk bevinden, zien alleen de aanmeldingspagina van Azure AD. Deze gebruikers worden niet doorgestuurd naar de pagina op basis van formulieren die wordt gepresenteerd door proxyservers voor extern gerichte webtoepassingen.
 
-Neem de volgende elementen op in uw communicatie strategie:
+Neem de volgende elementen op in uw communicatiestrategie:
 
-* Gebruikers op de hoogte stellen van aanstaande en uitgebrachte functionaliteit met behulp van:
-   * E-mail en andere interne communicatie kanalen.
-   * Visuele elementen, zoals posters.
-   * Executive, Live of andere communicatie.
-* Bepaal wie de communicatie zal aanpassen en wie de communicatie gaat verzenden en wanneer.
+* Informeer gebruikers over aankomende en vrijgegeven functionaliteit met behulp van:
+   * E-mail en andere interne communicatiekanalen.
+   * Visuals, zoals posters.
+   * Uitvoerende, live of andere communicatie.
+* Bepaal wie de communicatie zal aanpassen en wie de communicatie zal verzenden, en wanneer.
 
-## <a name="implement-your-solution"></a>Uw oplossing implementeren
+## <a name="implement-your-solution"></a>Implementeer uw oplossing
 
-U hebt uw oplossing gepland. Nu kunt u het implementeren. Implementatie omvat de volgende onderdelen:
+Je hebt je oplossing gepland. Nu u het implementeren. De implementatie omvat de volgende onderdelen:
 
-* De voor bereiding op naadloze SSO.
-* Het wijzigen van de aanmeldings methode voor Pass-Through-verificatie en het inschakelen van naadloze SSO.
+* Voorbereiden op naadloze SSO.
+* De aanmeldingsmethode wijzigen in pass-through-verificatie en naadloze SSO inschakelen.
 
-### <a name="step-1-prepare-for-seamless-sso"></a>Stap 1: bereid u voor op naadloze SSO
+### <a name="step-1-prepare-for-seamless-sso"></a>Stap 1: Bereid je voor op naadloze SSO
 
-Als u wilt dat uw apparaten naadloze SSO gebruiken, moet u een Azure AD-URL toevoegen aan de intranet zone-instellingen van gebruikers met behulp van een groeps beleid in Active Directory.
+Als u naadloze SSO wilt gebruiken, moet u een Azure AD-URL toevoegen aan de instellingen van de intranetzone van gebruikers met behulp van een groepsbeleid in Active Directory.
 
-Webbrowsers berekenen standaard automatisch de juiste zone, Internet of intranet, van een URL. Bijvoorbeeld **http:\/\/contoso/** toegewezen aan de intranet zone en **http:\/\/intranet.contoso.com** wordt toegewezen aan de zone Internet (omdat de URL een punt bevat). Browsers verzenden van Kerberos-tickets naar een Cloud eindpunt, zoals de Azure AD-URL, alleen als u de URL expliciet toevoegt aan de intranet zone van de browser.
+Standaard berekenen webbrowsers automatisch de juiste zone, internet of intranet, vanuit een URL. Bijvoorbeeld **http:\/\/contoso/** kaarten naar de intranetzone en **http:\/\/intranet.contoso.com** kaarten naar de internetzone (omdat de URL een punt bevat). Browsers sturen Kerberos-tickets naar een cloudeindpunt, zoals de Azure AD-URL, alleen als u de URL expliciet toevoegt aan de intranetzone van de browser.
 
-Voer de stappen uit om de vereiste wijzigingen op uw apparaten [uit](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) te voeren.
-
-> [!IMPORTANT]
-> Als u deze wijziging aanbrengt, wordt de manier waarop uw gebruikers zich aanmelden bij Azure AD, niet gewijzigd. Het is echter belang rijk dat u deze configuratie toepast op al uw apparaten voordat u verdergaat. Gebruikers die zich aanmelden op apparaten die deze configuratie nog niet hebben ontvangen, moeten een gebruikers naam en wacht woord invoeren om zich aan te melden bij Azure AD.
-
-### <a name="step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso"></a>Stap 2: Wijzig de aanmeldings methode in Pass-Through-verificatie en schakel naadloze SSO in
-
-U hebt twee opties voor het wijzigen van de aanmeldings methode voor Pass-Through-verificatie en het inschakelen van naadloze SSO.
-
-#### <a name="option-a-configure-pass-through-authentication-by-using-azure-ad-connect"></a>Optie A: Pass-Through-verificatie configureren met behulp van Azure AD Connect
-
-Gebruik deze methode als u uw AD FS-omgeving voor het eerst hebt geconfigureerd met behulp van Azure AD Connect. U kunt deze methode niet gebruiken als u uw AD FS-omgeving *niet eerder hebt* geconfigureerd met behulp van Azure AD Connect.
+Voer de stappen uit om de vereiste wijzigingen in uw apparaten uit te [rollen.](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start)
 
 > [!IMPORTANT]
-> Nadat u de volgende stappen hebt uitgevoerd, worden alle domeinen van de federatieve identiteit geconverteerd naar een beheerde identiteit. Raadpleeg [de migratie methode plannen](#plan-the-migration-method)voor meer informatie.
+> Als u deze wijziging doorvoeren, wordt de manier waarop uw gebruikers zich aanmelden bij Azure AD niet gewijzigd. Het is echter belangrijk dat u deze configuratie toepast op al uw apparaten voordat u verdergaat. Gebruikers die zich aanmelden op apparaten die deze configuratie niet hebben ontvangen, moeten eenvoudig een gebruikersnaam en wachtwoord invoeren om zich aan te melden bij Azure AD.
 
-Wijzig eerst de aanmeldings methode:
+### <a name="step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso"></a>Stap 2: De aanmeldingsmethode wijzigen om verificatie door te geven en naadloze SSO in te schakelen
+
+U hebt twee opties om de aanmeldingsmethode te wijzigen om verificatie door te geven en naadloze SSO in te schakelen.
+
+#### <a name="option-a-configure-pass-through-authentication-by-using-azure-ad-connect"></a>Optie A: Pass-through-verificatie configureren met Azure AD Connect
+
+Gebruik deze methode als u uw AD FS-omgeving in eerste instantie hebt geconfigureerd met Azure AD Connect. U deze methode niet gebruiken als u uw AD *FS-omgeving* oorspronkelijk niet hebt geconfigureerd met Azure AD Connect.
+
+> [!IMPORTANT]
+> Nadat u de volgende stappen hebt voltooid, worden al uw domeinen geconverteerd van federatieve identiteit naar beheerde identiteit. Voor meer informatie, bekijk [Plan de migratiemethode](#plan-the-migration-method).
+
+Wijzig eerst de aanmeldingsmethode:
 
 1. Open de wizard Azure AD Connect op de Azure AD Connect-server.
-2. Selecteer **gebruiker aanmelden wijzigen**en selecteer **volgende**. 
-3. Voer op de pagina **verbinding maken met Azure AD** de gebruikers naam en het wacht woord in van een account voor globale beheerders.
-4. Selecteer op de **aanmeldings** pagina voor gebruikers de knop **Pass-Through-verificatie** , selecteer **eenmalige aanmelding inschakelen**en selecteer **volgende**.
-5. Op de pagina **eenmalige aanmelding inschakelen** voert u de referenties in van een domein beheerders account en selecteert u **volgende**.
+2. Selecteer **Aanmelding voor gebruikers wijzigen**en selecteer **Volgende**. 
+3. Voer op de pagina **Verbinding maken met Azure AD** de gebruikersnaam en het wachtwoord van een Algemeen Administrator-account in.
+4. Selecteer op de **aanmeldingspagina gebruiker** de knop **Doorgeefverificatie,** selecteer **Eén aanmelding inschakelen**en selecteer **Volgende**.
+5. Voer op de pagina **Eén aanmelding inschakelen** de referenties van een domeinbeheerdersaccount in en selecteer **Volgende**.
 
    > [!NOTE]
-   > Referenties voor het domein beheerders account zijn vereist om naadloze SSO in te scha kelen. Het proces is voltooid met de volgende acties, waarvoor deze verhoogde machtigingen zijn vereist. De referenties van het domein beheerders account worden niet opgeslagen in Azure AD Connect of in azure AD. De referenties van het domein beheerders account worden alleen gebruikt om de functie in te scha kelen. De referenties worden verwijderd wanneer het proces is voltooid.
+   > Domeinbeheerdersaccountreferenties zijn vereist om naadloze SSO in te schakelen. Het proces voltooit de volgende acties, waarvoor deze verhoogde machtigingen nodig zijn. De accountreferenties van de domeinbeheerder worden niet opgeslagen in Azure AD Connect of in Azure AD. De accountreferenties van de domeinbeheerder worden alleen gebruikt om de functie in te schakelen. De referenties worden verwijderd wanneer het proces is voltooid.
    >
-   > 1. Een computer account met de naam AZUREADSSOACC (waarmee Azure AD wordt aangeduid) wordt gemaakt in uw on-premises Active Directory-exemplaar.
-   > 2. De Kerberos-ontsleutelings sleutel van het computer account wordt veilig gedeeld met Azure AD.
-   > 3. Er zijn twee Kerberos Service Principal Names (Spn's) gemaakt om twee Url's voor te stellen die worden gebruikt tijdens de aanmelding van Azure AD.
+   > 1. Er wordt een computeraccount met de naam AZUREADSSOACC (dat Azure AD vertegenwoordigt) gemaakt in uw on-premises Active Directory-exemplaar.
+   > 2. De Kerberos-decryptiesleutel van het computeraccount wordt veilig gedeeld met Azure AD.
+   > 3. Er worden twee Kerberos-serviceprincipalnamen (SN's) gemaakt om twee URL's weer te geven die worden gebruikt tijdens het aanmelden van Azure AD.
 
-6. Controleer op de pagina **gereed voor configuratie** of het selectie vakje **synchronisatie proces starten wanneer de configuratie is voltooid** is ingeschakeld. Selecteer vervolgens **configureren**.<br />
+6. Controleer op de pagina **Gereed om te configureren** of het selectievakje **Synchronisatieproces starten wanneer de configuratie is voltooid,** is ingeschakeld. Selecteer vervolgens **Configureren**.<br />
 
-   ![Scherm afbeelding van de pagina gereed voor configuratie](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
-7. Selecteer in de Azure AD-Portal **Azure Active Directory**en selecteer vervolgens **Azure AD Connect**.
+   ![Schermafbeelding van de pagina Klaar om te configureren](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
+7. Selecteer Azure **Active Directory**in de Azure AD-portal en selecteer Vervolgens Azure **AD Connect**.
 8. Controleer de volgende instellingen:
-   * **Federatie** is ingesteld op **uitgeschakeld**.
-   * **Naadloze eenmalige aanmelding** is **ingeschakeld**.
-   * **Pass Through-verificatie** is ingesteld op **ingeschakeld**.<br />
+   * **Federatie** is ingesteld op **Uitgeschakeld**.
+   * **Naadloze enkele aanmelding** is ingesteld op **Ingeschakeld**.
+   * **Pass-through-verificatie** is ingesteld op **Ingeschakeld**.<br />
 
-   ![Scherm afbeelding met de instellingen in de sectie gebruikers aanmelding](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
+   ![Schermafbeelding van de instellingen in de aanmeldingssectie Gebruiker](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
 
-Volgende. aanvullende verificatie methoden implementeren:
+Volgende. extra verificatiemethoden implementeren:
 
-1. Ga in het Azure Portal naar **Azure Active Directory** > **Azure AD Connect**en selecteer vervolgens **Pass-Through-verificatie**.
-2. Selecteer op de pagina **Pass-Through-verificatie** de knop **downloaden** .
-3. Selecteer op de pagina **agent downloaden** de optie **voor waarden accepteren en downloaden**.
+1. Ga in de Azure Portal naar **Azure Active Directory** > **Azure AD Connect**en selecteer **vervolgens Doorgeefverificatie**.
+2. Selecteer op de pagina **Pass-through-verificatie** de knop **Downloaden.**
+3. Selecteer **op** de pagina Agent downloaden de optie **Voorwaarden accepteren en download**.
 
-   Extra verificatie agenten worden nu gedownload. Installeer de secundaire verificatie agent op een server die lid is van een domein. 
+   Extra verificatiemedewerkers beginnen te downloaden. Installeer de secundaire verificatieagent op een server die is verbonden met een domein. 
 
    > [!NOTE]
-   > De eerste agent wordt altijd geïnstalleerd op de Azure AD Connect server zelf als onderdeel van de configuratie wijzigingen die zijn aangebracht in de **gebruikers aanmelding** van het hulp programma Azure AD Connect. Installeer extra verificatie agenten op een afzonderlijke server. U wordt aangeraden twee of drie extra verificatie agenten beschikbaar te stellen. 
+   > De eerste agent is altijd geïnstalleerd op de Azure AD Connect-server zelf als onderdeel van de configuratiewijzigingen die zijn aangebracht in de **aanmeldingssectie Gebruiker** van het Azure AD Connect-hulpprogramma. Installeer eventuele extra verificatieagents op een aparte server. We raden u aan twee of drie extra verificatieagents beschikbaar te hebben. 
 
-4. De verificatie agent-installatie uitvoeren. Tijdens de installatie moet u de referenties van een algemeen Administrator-account invoeren.
+4. Voer de installatie van de verificatieagent uit. Tijdens de installatie moet u de referenties van een Global Administrator-account invoeren.
 
-   ![Scherm opname van de knop installeren op de pagina Microsoft Azure AD-verbindings agent-pakket](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![Schermafbeelding van de knop Installeren op de pagina Microsoft Azure AD Connect Authentication Agent Package](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-   ![Scherm opname van de aanmeldings pagina](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![Schermafbeelding van de aanmeldingspagina](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
-5. Wanneer de verificatie agent is geïnstalleerd, kunt u teruggaan naar de status pagina Pass-Through-verificatie agent om de status van de extra agents te controleren.
+5. Wanneer de verificatieagent is geïnstalleerd, u terugkeren naar de statuspagina van de verificatieagent voor doorgeefverificatie om de status van de extra agents te controleren.
 
-Ga verder met [testen en volgende stappen](#testing-and-next-steps).
+Ga naar [Testen en volgende stappen](#testing-and-next-steps).
 
 > [!IMPORTANT]
-> Overs Laan **van de sectie optie B: overschakelen van Federatie naar Pass-Through-verificatie met behulp van Azure AD Connect en Power shell**. De stappen in deze sectie zijn niet van toepassing als u optie A hebt gekozen om de aanmeldings methode te wijzigen in Pass-Through-verificatie en naadloze SSO in te scha kelen. 
+> De sectie **optie B overslaan: Overschakelen van federatie naar pass-through-verificatie met Azure AD Connect en PowerShell**. De stappen in die sectie zijn niet van toepassing als u optie A hebt gekozen om de aanmeldingsmethode te wijzigen om verificatie door te geven en naadloze SSO in te schakelen. 
 
-#### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>Optie B: overschakelen van Federatie naar Pass-Through-verificatie met behulp van Azure AD Connect en Power shell
+#### <a name="option-b-switch-from-federation-to-pass-through-authentication-by-using-azure-ad-connect-and-powershell"></a>Optie B: Overschakelen van federatie naar doorreisverificatie met Azure AD Connect en PowerShell
 
-Gebruik deze optie als u uw federatieve domeinen niet eerst hebt geconfigureerd met behulp van Azure AD Connect.
+Gebruik deze optie als u uw federatieve domeinen niet in eerste instantie hebt geconfigureerd met Azure AD Connect.
 
-Schakel eerst Pass-Through-verificatie in:
+Ten eerste pass-through-verificatie inschakelen:
 
 1. Open de wizard Azure AD Connect op de Azure AD Connect-server.
-2. Selecteer **gebruiker aanmelden wijzigen**en selecteer **volgende**.
-3. Voer op de pagina **verbinding maken met Azure AD** de gebruikers naam en het wacht woord in van een account voor globale beheerders.
-4. Selecteer op de aanmeldings pagina van de **gebruiker** de knop **Pass-Through-verificatie** . Selecteer **eenmalige aanmelding inschakelen**en selecteer **volgende**.
-5. Op de pagina **eenmalige aanmelding inschakelen** voert u de referenties in van een domein beheerders account en selecteert u **volgende**.
+2. Selecteer **Aanmelding voor gebruikers wijzigen**en selecteer **Volgende**.
+3. Voer op de pagina **Verbinding maken met Azure AD** de gebruikersnaam en het wachtwoord van een Algemeen Administrator-account in.
+4. Selecteer op de **aanmeldingspagina gebruiker** de knop **Doorgeefverificatie.** Selecteer **Eén aanmelding inschakelen**en selecteer **Volgende**.
+5. Voer op de pagina **Eén aanmelding inschakelen** de referenties van een domeinbeheerdersaccount in en selecteer **Volgende**.
 
    > [!NOTE]
-   > Referenties voor het domein beheerders account zijn vereist om naadloze SSO in te scha kelen. Het proces is voltooid met de volgende acties, waarvoor deze verhoogde machtigingen zijn vereist. De referenties van het domein beheerders account worden niet opgeslagen in Azure AD Connect of in azure AD. De referenties van het domein beheerders account worden alleen gebruikt om de functie in te scha kelen. De referenties worden verwijderd wanneer het proces is voltooid.
+   > Domeinbeheerdersaccountreferenties zijn vereist om naadloze SSO in te schakelen. Het proces voltooit de volgende acties, waarvoor deze verhoogde machtigingen nodig zijn. De accountreferenties van de domeinbeheerder worden niet opgeslagen in Azure AD Connect of in Azure AD. De accountreferenties van de domeinbeheerder worden alleen gebruikt om de functie in te schakelen. De referenties worden verwijderd wanneer het proces is voltooid.
    > 
-   > 1. Een computer account met de naam AZUREADSSOACC (waarmee Azure AD wordt aangeduid) wordt gemaakt in uw on-premises Active Directory-exemplaar.
-   > 2. De Kerberos-ontsleutelings sleutel van het computer account wordt veilig gedeeld met Azure AD.
-   > 3. Er zijn twee Kerberos Service Principal Names (Spn's) gemaakt om twee Url's voor te stellen die worden gebruikt tijdens de aanmelding van Azure AD.
+   > 1. Er wordt een computeraccount met de naam AZUREADSSOACC (dat Azure AD vertegenwoordigt) gemaakt in uw on-premises Active Directory-exemplaar.
+   > 2. De Kerberos-decryptiesleutel van het computeraccount wordt veilig gedeeld met Azure AD.
+   > 3. Er worden twee Kerberos-serviceprincipalnamen (SN's) gemaakt om twee URL's weer te geven die worden gebruikt tijdens het aanmelden van Azure AD.
 
-6. Controleer op de pagina **gereed voor configuratie** of het selectie vakje **synchronisatie proces starten wanneer de configuratie is voltooid** is ingeschakeld. Selecteer vervolgens **configureren**.<br />
+6. Controleer op de pagina **Gereed om te configureren** of het selectievakje **Synchronisatieproces starten wanneer de configuratie is voltooid,** is ingeschakeld. Selecteer vervolgens **Configureren**.<br />
 
-   ![scherm opname van de pagina gereed voor configuratie en de knop configureren](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
-   De volgende stappen worden uitgevoerd wanneer u **configureren**selecteert:
+   ![Schermafbeelding van de pagina Klaar om te configureren en de knop Configureren](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
+   De volgende stappen vinden plaats wanneer u **Configureren**selecteert:
 
-   1. De eerste pass-through-verificatie agent is geïnstalleerd.
-   2. De Pass-Through-functie is ingeschakeld.
-   3. Naadloze eenmalige aanmelding is ingeschakeld.
+   1. De eerste pass-through authenticatie agent is geïnstalleerd.
+   2. De pass-through functie is ingeschakeld.
+   3. Naadloze SSO is ingeschakeld.
 
 7. Controleer de volgende instellingen:
-   * **Federatie** is ingesteld op **ingeschakeld**.
-   * **Naadloze eenmalige aanmelding** is **ingeschakeld**.
-   * **Pass Through-verificatie** is ingesteld op **ingeschakeld**.
+   * **Federatie** is ingesteld op **Ingeschakeld**.
+   * **Naadloze enkele aanmelding** is ingesteld op **Ingeschakeld**.
+   * **Pass-through-verificatie** is ingesteld op **Ingeschakeld**.
    
-   ![Scherm afbeelding met de instellingen in de sectie gebruikers aanmelding](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
-8. Selecteer **Pass-Through-verificatie** en controleer of de status **actief**is.<br />
+   ![Schermafbeelding van de instellingen in de aanmeldingssectie Gebruiker](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
+8. Selecteer **Doorgeefverificatie** en controleer of de status **Actief**is.<br />
    
-   Als de verificatie agent niet actief is, voltooit u de [stappen voor probleem oplossing](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication) voordat u verdergaat met het domein conversie proces in de volgende stap. U kunt een verificatie storing veroorzaken als u uw domeinen converteert voordat u valideert dat uw Pass Through-verificatie agenten zijn geïnstalleerd en dat de status ervan **actief** is in de Azure Portal.
+   Als de verificatieagent niet actief is, voert u enkele [stappen voor het oplossen van problemen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication) uit voordat u in de volgende stap verdergaat met het domeinconversieproces. U loopt het risico dat u een verificatiestoring veroorzaakt als u uw domeinen converteert voordat u bevestigt dat uw verificatieagents met passthrough zijn geïnstalleerd en dat hun status **Actief** is in de Azure-portal.
 
-Implementeer vervolgens extra verificatie agenten:
+Implementeer vervolgens extra verificatieagents:
 
-1. Ga in het Azure Portal naar **Azure Active Directory** > **Azure AD Connect**en selecteer vervolgens **Pass-Through-verificatie**.
-2. Selecteer op de pagina **Pass-Through-verificatie** de knop **downloaden** . 
-3. Selecteer op de pagina **agent downloaden** de optie **voor waarden accepteren en downloaden**.
+1. Ga in de Azure Portal naar **Azure Active Directory** > **Azure AD Connect**en selecteer **vervolgens Doorgeefverificatie**.
+2. Selecteer op de pagina **Pass-through-verificatie** de knop **Downloaden.** 
+3. Selecteer **op** de pagina Agent downloaden de optie **Voorwaarden accepteren en download**.
  
-   De verificatie agent wordt gedownload. Installeer de secundaire verificatie agent op een server die lid is van een domein.
+   De verificatieagent begint te downloaden. Installeer de secundaire verificatieagent op een server die is verbonden met een domein.
 
    > [!NOTE]
-   > De eerste agent wordt altijd geïnstalleerd op de Azure AD Connect server zelf als onderdeel van de configuratie wijzigingen die zijn aangebracht in de **gebruikers aanmelding** van het hulp programma Azure AD Connect. Installeer extra verificatie agenten op een afzonderlijke server. U wordt aangeraden twee of drie extra verificatie agenten beschikbaar te stellen.
+   > De eerste agent is altijd geïnstalleerd op de Azure AD Connect-server zelf als onderdeel van de configuratiewijzigingen die zijn aangebracht in de **aanmeldingssectie Gebruiker** van het Azure AD Connect-hulpprogramma. Installeer eventuele extra verificatieagents op een aparte server. We raden u aan twee of drie extra verificatieagents beschikbaar te hebben.
  
-4. De verificatie agent-installatie uitvoeren. Tijdens de installatie moet u de referenties van een algemeen Administrator-account invoeren.<br />
+4. Voer de installatie van de verificatieagent uit. Tijdens de installatie moet u de referenties van een Global Administrator-account invoeren.<br />
 
-   ![scherm opname van de knop installeren op de pagina Microsoft Azure AD verbinding maken met de verificatie agent](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image23.png)<br />
-   ![scherm opname waarin de aanmeldings pagina wordt weer gegeven](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image24.png)<br />
-5. Nadat de verificatie agent is geïnstalleerd, kunt u teruggaan naar de status pagina Pass-Through-verificatie agent om de status van de extra agents te controleren.
+   ![Schermafbeelding van de knop Installeren op de pagina Microsoft Azure AD Connect Authentication Agent Package](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image23.png)<br />
+   ![Schermafbeelding van de aanmeldingspagina](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image24.png)<br />
+5. Nadat de verificatieagent is geïnstalleerd, u terugkeren naar de statuspagina van de doorgeefverificatieagent om de status van de extra agents te controleren.
 
-Op dit moment is Federated Authentication nog steeds actief en operationeel voor uw domeinen. Als u wilt door gaan met de implementatie, moet u elk domein van federatieve identiteit converteren naar een beheerde identiteit, zodat Pass-Through-verificatie begint met het uitvoeren van verificatie aanvragen voor het domein.
+Op dit moment is federatieve verificatie nog steeds actief en operationeel voor uw domeinen. Als u wilt doorgaan met de implementatie, moet u elk domein converteren van federatieve identiteit naar beheerde identiteit, zodat verificatie van de doorgeefverificatie verificatieaanvragen voor het domein begint te serveren.
 
-U hoeft niet alle domeinen tegelijk te converteren. U kunt ervoor kiezen om te beginnen met een test domein in uw productie Tenant of te beginnen met het domein met het laagste aantal gebruikers.
+U hoeft niet alle domeinen tegelijk te converteren. U ervoor kiezen om te beginnen met een testdomein op uw productietenant of te beginnen met uw domein met het laagste aantal gebruikers.
 
-De conversie volt ooien met behulp van de Azure AD Power shell-module:
+Voltooi de conversie met de Azure AD PowerShell-module:
 
-1. Meld u in Power shell aan bij Azure AD met behulp van een account voor globale beheerders.
+1. Meld u in PowerShell aan bij Azure AD met een Global Administrator-account.
 2. Voer de volgende opdracht uit om het eerste domein te converteren:
  
    ``` PowerShell
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
  
-3. Selecteer **Azure Active Directory** > **Azure AD Connect**in de Azure AD-Portal.
-4. Nadat u alle federatieve domeinen hebt geconverteerd, controleert u deze instellingen:
-   * **Federatie** is ingesteld op **uitgeschakeld**.
-   * **Naadloze eenmalige aanmelding** is **ingeschakeld**.
-   * **Pass Through-verificatie** is ingesteld op **ingeschakeld**.<br />
+3. Selecteer Azure **Active Directory** > Azure AD Connect in de Azure**AD-portal**.
+4. Nadat u al uw federatieve domeinen hebt geconverteerd, controleert u de volgende instellingen:
+   * **Federatie** is ingesteld op **Uitgeschakeld**.
+   * **Naadloze enkele aanmelding** is ingesteld op **Ingeschakeld**.
+   * **Pass-through-verificatie** is ingesteld op **Ingeschakeld**.<br />
 
-   ![Scherm afbeelding met de instellingen in de sectie gebruikers aanmelding](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
+   ![Schermafbeelding van de instellingen in de aanmeldingssectie Gebruiker](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image26.png)<br />
 
 ## <a name="testing-and-next-steps"></a>Testen en volgende stappen
 
-Voer de volgende taken uit om Pass-Through-verificatie te verifiëren en om het conversie proces te volt ooien.
+Voltooi de volgende taken om de verificatie van de doorwerking te verifiëren en het conversieproces te voltooien.
 
-### <a name="test-pass-through-authentication"></a>Pass-Through-verificatie testen 
+### <a name="test-pass-through-authentication"></a>Verificatie van de doorlaattest 
 
-Wanneer uw Tenant federatieve identiteiten heeft gebruikt, werden gebruikers omgeleid van de aanmeldings pagina van Azure AD naar uw AD FS-omgeving. Nu de Tenant is geconfigureerd voor het gebruik van Pass-Through-verificatie in plaats van Federated Authentication, worden gebruikers niet omgeleid naar AD FS. Gebruikers melden zich in plaats daarvan rechtstreeks aan op de aanmeldings pagina van Azure AD.
+Toen uw tenant federatieve identiteit gebruikte, werden gebruikers doorgestuurd van de azure AD-aanmeldingspagina naar uw AD FS-omgeving. Nu de tenant is geconfigureerd om pass-through-verificatie te gebruiken in plaats van gefedereerde verificatie, worden gebruikers niet doorgestuurd naar AD FS. In plaats daarvan melden gebruikers zich rechtstreeks aan op de aanmeldingspagina van Azure AD.
 
-Pass-Through-verificatie testen:
+Ga als het gaat om het testen van pass-through-verificatie:
 
-1. Open Internet Explorer in de InPrivate-modus, zodat naadloze SSO niet automatisch wordt aangemeld.
-2. Ga naar de aanmeldings pagina van Office 365 ([https://portal.office.com](https://portal.office.com/)).
-3. Voer een UPN van de gebruiker in en selecteer **volgende**. Zorg ervoor dat u de UPN van een hybride gebruiker invoert die is gesynchroniseerd vanaf uw on-premises Active Directory-exemplaar en die eerder Federated Authentication heeft gebruikt. Een pagina waarop u de gebruikers naam en het wacht woord opgeeft, wordt weer gegeven:
+1. Open Internet Explorer in de InPrivate-modus, zodat naadloze SSO u niet automatisch aanmeldt.
+2. Ga naar de aanmeldingspagina van[https://portal.office.com](https://portal.office.com/)Office 365 ( ).
+3. Voer een gebruiker UPN in en selecteer **Volgende**. Zorg ervoor dat u de UPN invoert van een hybride gebruiker die is gesynchroniseerd vanuit uw on-premises Active Directory-exemplaar en die eerder federatieve verificatie heeft gebruikt. Er wordt een pagina weergegeven waarop u de gebruikersnaam en het wachtwoord invoert:
 
-   ![Scherm opname van de aanmeldings pagina waarin u een gebruikers naam invoert](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
+   ![Schermafbeelding van de aanmeldingspagina waarin u een gebruikersnaam invoert](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
 
-   ![Scherm opname van de aanmeldings pagina waarin u een wacht woord invoert](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image28.png)
+   ![Schermafbeelding van de aanmeldingspagina waarin u een wachtwoord invoert](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image28.png)
 
-4. Nadat u het wacht woord hebt ingevoerd en **Aanmelden**hebt geselecteerd, wordt u omgeleid naar de Office 365-Portal.
+4. Nadat u het wachtwoord hebt ingevoerd en **Aanmelden**hebt geselecteerd, wordt u doorgestuurd naar de Office 365-portal.
 
-   ![Scherm afbeelding van de Office 365-Portal](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image29.png)
+   ![Schermafbeelding van de Office 365-portal](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image29.png)
 
-### <a name="test-seamless-sso"></a>Naadloze SSO testen
+### <a name="test-seamless-sso"></a>Test naadloze SSO
 
-Naadloze SSO testen:
+Om naadloze SSO te testen:
 
-1. Meld u aan bij een computer die lid is van een domein en die is verbonden met het bedrijfs netwerk.
-2. Ga in Internet Explorer of Chrome naar een van de volgende Url's (Vervang ' Contoso ' door uw domein):
+1. Meld u aan bij een met een domein verbonden machine die is verbonden met het bedrijfsnetwerk.
+2. Ga in Internet Explorer of Chrome naar een van de volgende URL's (vervang 'contoso' door uw domein):
 
    * https:\/\/myapps.microsoft.com/contoso.com
    * https:\/\/myapps.microsoft.com/contoso.onmicrosoft.com
 
-   De gebruiker wordt kort omgeleid naar de aanmeldings pagina van Azure AD, waarin het bericht wordt weer gegeven dat u zich probeert aan te melden. De gebruiker wordt niet gevraagd om een gebruikers naam of wacht woord.<br />
+   De gebruiker wordt kort doorgestuurd naar de aanmeldingspagina van Azure AD, waarop het bericht 'U probeert aan te melden' wordt weergegeven. De gebruiker wordt niet gevraagd om een gebruikersnaam of wachtwoord.<br />
 
-   ![Scherm afbeelding van de aanmeldings pagina en het bericht van Azure AD](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image30.png)<br />
-3. De gebruiker wordt omgeleid en is aangemeld bij het toegangs venster:
+   ![Schermafbeelding van de aanmeldingspagina en het bericht van Azure AD](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image30.png)<br />
+3. De gebruiker wordt omgeleid en is aangemeld bij het toegangspaneel:
 
    > [!NOTE]
-   > Naadloze SSO werkt op Office 365-services die ondersteuning bieden voor domein hints (bijvoorbeeld myapps.microsoft.com/contoso.com). De Office 365-Portal (portal.office.com) biedt momenteel geen ondersteuning voor domein hints. Gebruikers moeten een UPN opgeven. Nadat een UPN is ingevoerd, haalt naadloze SSO het Kerberos-ticket namens de gebruiker. De gebruiker is aangemeld zonder een wacht woord in te voeren.
+   > Naadloze SSO werkt op Office 365-services die domeinhint ondersteunen (bijvoorbeeld myapps.microsoft.com/contoso.com). Momenteel biedt de Office 365-portal (portal.office.com) geen ondersteuning voor domeinhints. Gebruikers zijn verplicht om een UPN in te voeren. Nadat een UPN is ingevoerd, haalt naadloze SSO het Kerberos-ticket op namens de gebruiker. De gebruiker is aangemeld zonder een wachtwoord in te voeren.
 
    > [!TIP]
-   > Overweeg [Azure AD Hybrid join's te implementeren op Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction) voor een verbeterde SSO-ervaring.
+   > Overweeg om Azure AD hybrid join te implementeren [op Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction) voor een verbeterde SSO-ervaring.
 
-### <a name="remove-the-relying-party-trust"></a>De vertrouwens relatie van Relying Party verwijderen
+### <a name="remove-the-relying-party-trust"></a>De vertrouwensrelatie van de relying party verwijderen
 
-Nadat u hebt gecontroleerd of alle gebruikers en clients zijn geverifieerd via Azure AD, is het veilig om de Office 365 Relying Party-vertrouwens relatie te verwijderen.
+Nadat u hebt gevalideerd dat alle gebruikers en clients met succes zijn geauthenticeren via Azure AD, is het veilig om de vertrouwensrelatie van de Vertrouwend Partij voor Office 365 te verwijderen.
 
-Als u AD FS niet gebruikt voor andere doel einden (dat wil zeggen, voor andere Relying Party-vertrouwens relaties), is het veilig om AD FS op dit punt uit te voeren.
+Als u AD FS niet voor andere doeleinden gebruikt (dat wil zeggen voor andere vertrouwensrelaties van relying party), is het op dit moment veilig om AD FS buiten bedrijf te stellen.
 
 ### <a name="rollback"></a>Terugdraaien
 
-Als u een belang rijk probleem ontdekt en dit niet snel kunt oplossen, kunt u ervoor kiezen om de oplossing terug te zetten naar Federatie.
+Als u een groot probleem ontdekt en het niet snel oplossen, u ervoor kiezen om de oplossing terug te draaien naar federatie.
 
-Raadpleeg de Federatie-ontwerp-en implementatie documentatie voor uw specifieke implementatie details. Het proces moet deze taken omvatten:
+Raadpleeg de documentatie over het ontwerp en de implementatie van de federatie voor uw specifieke implementatiegegevens. Het proces moet betrekking hebben op deze taken:
 
-* Converteer beheerde domeinen naar Federated Authentication met behulp van de cmdlet **Convert-MSOLDomainToFederated** .
-* Configureer indien nodig aanvullende claim regels.
+* Gemanaged domeinen converteren naar federated authenticatie met behulp van de **cmdlet Convert-MSOLDomainToFederated.**
+* Configureer indien nodig aanvullende claimregels.
 
-### <a name="sync-userprincipalname-updates"></a>Synchronisatie userPrincipalName-updates
+### <a name="sync-userprincipalname-updates"></a>UserPrincipalName-updates synchroniseren
 
-In het verleden worden updates van het kenmerk **userPrincipalName** , dat gebruikmaakt van de synchronisatie service van de on-premises omgeving, geblokkeerd, tenzij aan beide voor waarden wordt voldaan:
+In het verleden worden updates van het kenmerk **UserPrincipalName,** dat de synchronisatieservice van de on-premises omgeving gebruikt, geblokkeerd, tenzij beide voorwaarden waar zijn:
 
-* De gebruiker bevindt zich in een beheerd (niet-gefedereerde) identiteits domein.
-* Er is geen licentie toegewezen aan de gebruiker.
+* De gebruiker bevindt zich in een beheerd (niet-gefedereerd) identiteitsdomein.
+* De gebruiker heeft geen licentie toegewezen gekregen.
 
-Zie [Sync userPrincipalName updates](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsyncservice-features)(Engelstalig) voor meer informatie over het controleren of inschakelen van deze functie.
+Zie [UserPrincipalName-updates synchroniseren](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsyncservice-features)voor meer informatie over het verifiëren of inschakelen van deze functie.
 
-## <a name="roll-over-the-seamless-sso-kerberos-decryption-key"></a>Rolt over de naadloze SSO Kerberos-ontsleutelings sleutel
+## <a name="roll-over-the-seamless-sso-kerberos-decryption-key"></a>Rol over de naadloze SSO Kerberos decryptiesleutel
 
-Het is belang rijk om regel matig over te brengen van de Kerberos-ontsleutelings sleutel van het AZUREADSSOACC-computer account (dat staat voor Azure AD). Het AZUREADSSOACC-computer account wordt gemaakt in uw on-premises Active Directory-forest. We raden u ten zeerste aan de Kerberos-ontsleutelingssleutel ten minste elke 30 dagen uit te voeren om te uitlijnen met de manier waarop Active Directory domein leden wachtwoord wijzigingen indienen. Er is geen gekoppeld apparaat gekoppeld aan het AZUREADSSOACC-computer account object. Daarom moet u de rollover hand matig uitvoeren.
+Het is belangrijk om regelmatig de Kerberos-decryptiesleutel van het AZUREADSSOACC-computeraccount (dat Azure AD vertegenwoordigt) over te rollen. Het AZUREADSSOACC-computeraccount wordt gemaakt in uw on-premises Active Directory-forest. We raden u ten zeerste aan om de kerberos-decryptiesleutel ten minste elke 30 dagen om af te stemmen op de manier waarop Active Directory-domeinleden wachtwoordwijzigingen indienen. Er is geen gekoppeld apparaat gekoppeld aan het azureadssoacc-computeraccountobject, dus u moet de rollover handmatig uitvoeren.
 
-Start de overschakeling van de versleutelings sleutel voor naadloze SSO Kerberos op de on-premises server waarop Azure AD Connect wordt uitgevoerd.
+Start de rollover van de naadloze SSO Kerberos-decryptiesleutel op de on-premises server waarop Azure AD Connect wordt uitgevoerd.
 
-Zie [Hoe kan ik roll over de Kerberos-ontsleutelings sleutel van het computer account van de AZUREADSSOACC?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq)voor meer informatie.
+Zie Voor meer informatie [hoe kan ik de kerberos-decryptiesleutel van het AZUREADSSOACC-computeraccount omrollen?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq).
 
-## <a name="monitoring-and-logging"></a>Bewaking en logboekregistratie
+## <a name="monitoring-and-logging"></a>Bewaking en registratie
 
-Bewaak de servers waarop de verificatie agenten worden uitgevoerd om de beschik baarheid van de oplossing te behouden. Naast de algemene server prestatie meter items, bieden de verificatie agenten prestatie objecten die u kunnen helpen bij het begrijpen van verificatie statistieken en-fouten.
+Controleer de servers waarop de verificatieagents worden uitgevoerd om de beschikbaarheid van de oplossing te behouden. Naast algemene serverprestatiemeteritems stellen de verificatiemedewerkers prestatieobjecten bloot die u kunnen helpen bij het begrijpen van verificatiestatistieken en -fouten.
 
-Verificatie agenten logboek bewerkingen naar de Windows-gebeurtenis logboeken die zich bevinden onder Application and service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin.
+Verificatieagents loggen bewerkingen in bij de Windows-gebeurtenislogboeken die zich bevinden onder Toepassings- en servicelogboeken\Microsoft\AzureAdConnect\AuthenticationAgent\Admin.
 
-U kunt logboek registratie ook inschakelen voor het oplossen van problemen.
+U logboekregistratie ook inschakelen voor het oplossen van problemen.
 
-Zie [problemen oplossen Azure Active Directory Pass-Through-verificatie](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-Pass-through-authentication)voor meer informatie.
+Zie [Problemen met Azure Active Directory-pass-through-verificatie oplossen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-Pass-through-authentication)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure AD Connect ontwerp concepten](plan-connect-design-concepts.md).
+* Meer informatie over [Azure AD Connect-ontwerpconcepten](plan-connect-design-concepts.md).
 * Kies de [juiste verificatie](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 * Meer informatie over [ondersteunde topologieën](plan-connect-design-concepts.md).

@@ -1,72 +1,70 @@
 ---
-title: Meer informatie over de OAuth 2,0-autorisatie code stroom in azure AD
-description: In dit artikel wordt beschreven hoe u HTTP-berichten gebruikt om toegang te verlenen tot webtoepassingen en Web-Api's in uw Tenant met behulp van Azure Active Directory en OAuth 2,0.
+title: De oauth 2.0-autorisatiecodestroom in Azure AD begrijpen
+description: In dit artikel wordt beschreven hoe u HTTP-berichten gebruikt om toegang tot webtoepassingen en web-API's in uw tenant te autoriseren met Azure Active Directory en OAuth 2.0.
 services: active-directory
 documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc303dc62892f8fac67bb6869e72db0e40f19779
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ec7cf5a45ce31cde923dce521636589cfcda786
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79263541"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154454"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Azure Active Directory-webtoepassingen toegang verlenen met de stroom voor het verlenen van de OAuth 2.0-code
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
 > [!NOTE]
->  Als u de server niet vertelt welke resource u wilt aanroepen, wordt het beleid voor voorwaardelijke toegang voor die bron niet geactiveerd door de server. Als u een MFA-trigger wilt gebruiken, moet u een resource in uw URL toevoegen. 
+>  Als u de server niet vertelt welke resource u van plan bent te bellen, activeert de server niet het beleid voor voorwaardelijke toegang voor die bron. Dus om MFA trigger hebben, moet u een bron in uw URL. 
 >
 
-Azure Active Directory (Azure AD) gebruikt OAuth 2,0 om toegang te verlenen tot webtoepassingen en Web-Api's in uw Azure AD-Tenant. Deze hand leiding is taal onafhankelijk en beschrijft hoe u HTTP-berichten verzendt en ontvangt zonder gebruik te maken van de [open source-bibliotheken](active-directory-authentication-libraries.md).
+Azure Active Directory (Azure AD) maakt gebruik van OAuth 2.0 om het mogelijk te maken dat u toegang tot webtoepassingen en web-API's in uw Azure AD-tenant kunt autoriseren. Deze handleiding is taalonafhankelijk en beschrijft hoe u HTTP-berichten verzenden en ontvangen zonder gebruik te maken van een van onze [open-source bibliotheken.](active-directory-authentication-libraries.md)
 
-De OAuth 2,0-autorisatie code stroom wordt beschreven in [sectie 4,1 van de oauth 2,0-specificatie](https://tools.ietf.org/html/rfc6749#section-4.1). Dit wordt gebruikt om verificatie en autorisatie uit te voeren in de meeste toepassings typen, waaronder web-apps en systeem eigen geïnstalleerde apps.
+De OAuth 2.0 autorisatiecodestroom wordt beschreven in [punt 4.1 van de OAuth 2.0-specificatie](https://tools.ietf.org/html/rfc6749#section-4.1). Het wordt gebruikt om verificatie en autorisatie uit te voeren in de meeste toepassingstypen, waaronder web-apps en native geïnstalleerde apps.
 
 ## <a name="register-your-application-with-your-ad-tenant"></a>Uw toepassing registreren bij uw AD-tenant
-Registreer eerst uw toepassing met uw Azure Active Directory-Tenant (Azure AD). Na registratie beschikt u over een toepassings-id voor uw toepassing en kan uw toepassing tokens ontvangen.
+Registreer uw toepassing eerst bij uw Azure Active Directory-tenant (Azure AD). Na registratie beschikt u over een toepassings-id voor uw toepassing en kan uw toepassing tokens ontvangen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
    
-1. Kies uw Azure AD-Tenant door uw account te selecteren in de rechter bovenhoek van de pagina, gevolgd door het selecteren van de **map navigatie wisselen** en vervolgens de juiste Tenant te selecteren. 
-   - Sla deze stap over als u slechts één Azure AD-Tenant onder uw account hebt of als u de juiste Azure AD-Tenant al hebt geselecteerd.
+1. Kies uw Azure AD-tenant door uw account te selecteren in de rechterbovenhoek van de pagina, gevolgd door de navigatie van de **Switch Directory** te selecteren en vervolgens de juiste tenant te selecteren. 
+   - Sla deze stap over als u slechts één Azure AD-tenant onder uw account hebt of als u al de juiste Azure AD-tenant hebt geselecteerd.
    
-1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+1. Zoek en selecteer **Azure Active Directory**in de Azure-portal.
    
-1. Selecteer **app-registraties**In het **Azure Active Directory** menu links en selecteer vervolgens **nieuwe registratie**.
+1. Selecteer **app-registratie**in het menu **Azure Active Directory** links en selecteer Nieuwe **registratie**.
    
-1. Volg de aanwijzingen op het scherm en maak een nieuwe toepassing. Het maakt niet uit of het een webtoepassing of een toepassing voor een open bare client (Mobile & bureau blad) voor deze zelf studie is, maar als u specifieke voor beelden wilt voor webtoepassingen of open bare client toepassingen, raadpleegt u onze [Snelstartgids](v1-overview.md).
+1. Volg de aanwijzingen op het scherm en maak een nieuwe toepassing. Het maakt niet uit of het een webapplicatie of een openbare client (mobile & desktop) applicatie voor deze tutorial, maar als je wilt specifieke voorbeelden voor webapplicaties of openbare client toepassingen, check out onze [quickstarts](v1-overview.md).
    
    - **Naam** is de naam van de toepassing en beschrijft de toepassing voor eindgebruikers.
    - Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
-   - Geef de **omleidings-URI**op. Voor webtoepassingen is dit de basis-URL van uw app waarmee gebruikers zich kunnen aanmelden.  Bijvoorbeeld `http://localhost:12345`. Voor de open bare client (mobiel & bureau blad) gebruikt Azure AD deze om token antwoorden te retour neren. Voer een waarde in die specifiek is voor uw toepassing.  Bijvoorbeeld `http://MyFirstAADApp`.
+   - Geef de **Omleiding URI**. Voor webtoepassingen is dit de basis-URL van uw app waar gebruikers zich kunnen aanmelden.  Bijvoorbeeld `http://localhost:12345`. Voor openbare clients (mobile & desktop) gebruikt Azure AD deze om tokenreacties terug te sturen. Voer een specifieke waarde in voor uw toepassing.  Bijvoorbeeld `http://MyFirstAADApp`.
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
    
-1. Zodra u de registratie hebt voltooid, wordt uw toepassing door Azure AD toegewezen aan een unieke client-id (de **toepassings-id**). U hebt deze waarde nodig in de volgende secties, dus kopieer deze van de toepassings pagina.
+1. Zodra u de registratie hebt voltooid, wijst Azure AD uw toepassing een unieke client-id toe (de **toepassings-id**). U hebt deze waarde nodig in de volgende secties, dus kopieer deze van de toepassingspagina.
    
-1. Als u uw toepassing wilt vinden in de Azure Portal, selecteert u **app-registraties**en selecteert u **alle toepassingen weer geven**.
+1. Als u uw toepassing wilt vinden in de Azure-portal, selecteert u **App-registraties**en selecteert u **Alle toepassingen weergeven**.
 
-## <a name="oauth-20-authorization-flow"></a>OAuth 2,0-autorisatie stroom
+## <a name="oauth-20-authorization-flow"></a>OAuth 2.0-autorisatiestroom
 
-Op hoog niveau ziet de volledige autorisatie stroom voor een toepassing er ongeveer als volgt uit:
+Op een hoog niveau ziet de volledige autorisatiestroom voor een toepassing er een beetje als volgt uit:
 
-![OAuth-verificatie code stroom](./media/v1-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
+![OAuth Auth-codestroom](./media/v1-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
 
-## <a name="request-an-authorization-code"></a>Een autorisatie code aanvragen
+## <a name="request-an-authorization-code"></a>Een autorisatiecode aanvragen
 
-De autorisatie code stroom begint met de client die de gebruiker omleidt naar het `/authorize`-eind punt. In deze aanvraag geeft de client aan welke machtigingen moeten worden verkregen van de gebruiker. U kunt het OAuth 2,0-autorisatie-eind punt voor uw Tenant verkrijgen door **App-registraties > eind punten** te selecteren in de Azure Portal.
+De autorisatiecodestroom begint met de client `/authorize` die de gebruiker naar het eindpunt leidt. In dit verzoek geeft de client de machtigingen aan die hij van de gebruiker moet verkrijgen. U het eindpunt van de OAuth 2.0-autorisatie voor uw tenant krijgen door **App-registraties > Eindpunten** in de Azure-portal te selecteren.
 
 ```
 // Line breaks for legibility only
@@ -82,29 +80,29 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parameter |  | Beschrijving |
 | --- | --- | --- |
-| tenant |Vereist |De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich kan aanmelden bij de toepassing. De toegestane waarden zijn Tenant-id's, bijvoorbeeld `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` of `contoso.onmicrosoft.com` of `common` voor Tenant-onafhankelijke tokens |
-| client_id |Vereist |De toepassings-ID die is toegewezen aan uw app wanneer u deze hebt geregistreerd bij Azure AD. U kunt dit vinden in de Azure-Portal. Klik op **Azure Active Directory** in de zijbalk Services, klik op **app-registraties**en kies de toepassing. |
-| response_type |Vereist |Moet `code` voor de autorisatie code stroom bevatten. |
-| redirect_uri |aanbevelingen |De redirect_uri van uw app, waar verificatie reacties kunnen worden verzonden en ontvangen door uw app. Het moet exact overeenkomen met een van de redirect_uris die u in de portal hebt geregistreerd, behalve het moet een URL-code ring zijn. Voor systeem eigen & mobiele apps moet u de standaard waarde van `https://login.microsoftonline.com/common/oauth2/nativeclient`gebruiken. |
-| response_mode |Beschrijving |Hiermee geeft u de methode op die moet worden gebruikt om het resulterende token terug naar uw app te verzenden. Kan `query`, `fragment`of `form_post`zijn. `query` levert de code als een query reeks parameter op de omleidings-URI. Als u een ID-token met behulp van de impliciete stroom aanvraagt, kunt u `query` niet gebruiken zoals opgegeven in de [OpenID Connect-specificatie](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Als u alleen de code wilt aanvragen, kunt u `query`, `fragment`of `form_post`gebruiken. `form_post` voert een bericht met de code naar uw omleidings-URI uit. De standaard waarde is `query` voor een code stroom.  |
-| state |aanbevelingen |Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Een wille keurig gegenereerde unieke waarde wordt doorgaans gebruikt om [vervalsing van aanvragen op meerdere sites](https://tools.ietf.org/html/rfc6749#section-10.12)te voor komen. De status wordt ook gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden. |
-| resource | aanbevelingen |De App-ID-URI van de doel-Web-API (beveiligde bron). Als u de URI van de App-ID wilt zoeken, klikt u in azure Portal op **Azure Active Directory**, klikt u op **toepassings registraties**, opent u de pagina **instellingen** van de toepassing en klikt u vervolgens op **Eigenschappen**. Het kan ook een externe bron zijn, zoals `https://graph.microsoft.com`. Dit is vereist in een van de autorisatie-of Token aanvragen. Om ervoor te zorgen dat er minder verificatie prompts worden uitgevoerd in de autorisatie aanvraag, om ervoor te zorgen dat de gebruiker om toestemming wordt gevraagd. |
-| scope | **genegeerd** | Voor v1 Azure AD-apps moeten scopes statisch worden geconfigureerd in azure portal onder de **instellingen**voor toepassingen, **vereiste machtigingen**. |
-| verschijnt |Beschrijving |Geef het type gebruikers interactie op dat is vereist.<p> Geldige waarden zijn: <p> *aanmelding*: de gebruiker moet worden gevraagd om opnieuw te worden geverifieerd. <p> *select_account*: de gebruiker wordt gevraagd een account te selecteren en de eenmalige aanmelding te onderbreken. De gebruiker kan een bestaand aangemeld account selecteren, hun referenties voor een onthouden account invoeren of ervoor kiezen om een ander account samen te gebruiken. <p> *toestemming*: de gebruiker heeft toestemming gegeven, maar moet worden bijgewerkt. De gebruiker moet om toestemming wordt gevraagd. <p> *admin_consent*: een beheerder moet om toestemming namens alle gebruikers in hun organisatie worden gevraagd |
-| login_hint |Beschrijving |Kan worden gebruikt om het veld gebruikers naam/e-mail adres vooraf in te vullen op de aanmeldings pagina voor de gebruiker, als u de gebruikers naam van tevoren kent. Vaak gebruiken apps deze para meter tijdens de herauthenticatie, waarbij de gebruikers naam al is geëxtraheerd van een eerdere aanmelding met behulp van de `preferred_username` claim. |
-| domain_hint |Beschrijving |Biedt een hint over de Tenant of het domein waarmee de gebruiker zich aanmeldt. De waarde van de domain_hint is een geregistreerd domein voor de Tenant. Als de Tenant federatief is voor een on-premises Directory, wordt door AAD omgeleid naar de opgegeven Tenant-Federatie server. |
-| code_challenge_method | aanbevelingen    | De methode die wordt gebruikt voor het coderen van de `code_verifier` voor de `code_challenge`-para meter. Dit kan een van `plain` of `S256`zijn. Als deze uitsluiting is, wordt ervan uitgegaan dat `code_challenge` geen tekst als `code_challenge` is opgenomen. Azure AAD v 1.0 ondersteunt zowel `plain` als `S256`. Zie [PKCE RFC](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie. |
-| code_challenge        | aanbevelingen    | Wordt gebruikt voor het beveiligen van autorisatie code subsidies via de bewijs code voor code Exchange (PKCE) van een systeem eigen of open bare client. Vereist als `code_challenge_method` is opgenomen. Zie [PKCE RFC](https://tools.ietf.org/html/rfc7636)(Engelstalig) voor meer informatie. |
+| tenant |vereist |De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich bij de toepassing kan aanmelden. De toegestane waarden zijn tenant-id's, bijvoorbeeld, `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` of `contoso.onmicrosoft.com` `common` voor tenant-onafhankelijke tokens |
+| client_id |vereist |De toepassings-id die aan uw app is toegewezen toen u deze registreerde bij Azure AD. U vindt dit in de Azure Portal. Klik **op Azure Active Directory** in de zijbalk van services, klik op **App-registraties**en kies de toepassing. |
+| response_type |vereist |Moet `code` voor de stroom van de vergunningscode omvatten. |
+| redirect_uri |Aanbevolen |De redirect_uri van uw app, waar verificatiereacties door uw app kunnen worden verzonden en ontvangen. Het moet precies overeenkomen met een van de redirect_uris die u hebt geregistreerd in de portal, behalve dat het moet worden gecodeerd. Voor native & mobiele apps, moet `https://login.microsoftonline.com/common/oauth2/nativeclient`u de standaardwaarde van . |
+| response_mode |optioneel |Hiermee geeft u de methode op die moet worden gebruikt om het resulterende token terug te sturen naar uw app. Kan `query`worden `fragment`, `form_post`, of . `query`geeft de code als parameter voor querytekenreeksen op uw omleidings-URI. Als u een ID-token aanvraagt met behulp `query` van de impliciete stroom, u niet gebruiken zoals opgegeven in de [OpenID-spec](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Als u alleen de code aanvraagt, `query` `fragment`kunt `form_post`u , of . `form_post`hiermee wordt een post met de code naar uw omleiding uri uitgevoerd. De standaardinstelling is `query` voor een codestroom.  |
+| state |Aanbevolen |Een waarde die is opgenomen in het verzoek en die ook wordt geretourneerd in het tokenantwoord. Een willekeurig gegenereerde unieke waarde wordt meestal gebruikt voor [het voorkomen van cross-site request vervalsing aanvallen](https://tools.ietf.org/html/rfc6749#section-10.12). De status wordt ook gebruikt om informatie over de status van de gebruiker in de app te coderen voordat de verificatieaanvraag plaatsvond, zoals de pagina of weergave waarop ze zich bevonden. |
+| resource | Aanbevolen |De App ID URI van de doelweb-API (beveiligde bron). Als u de URI voor app-id's wilt zoeken, klikt u in de Azure Portal op **Azure Active Directory**, klikt u op **Toepassingsregistraties**, opent u de pagina **Instellingen van** de toepassing en klikt u vervolgens op **Eigenschappen**. Het kan ook een `https://graph.microsoft.com`externe bron zoals . Dit is vereist in een van de autorisatie- of tokenaanvragen. Om ervoor te zorgen minder authenticatie prompts plaats het in de autorisatie aanvraag om ervoor te zorgen toestemming wordt ontvangen van de gebruiker. |
+| scope | **Genegeerd** | Voor v1 Azure AD-apps moeten scopes statisch zijn geconfigureerd in de Azure Portal onder de **vereiste** **machtigingen**. |
+| Prompt |optioneel |Geef het type gebruikersinteractie aan dat vereist is.<p> Geldige waarden zijn: <p> *inloggen*: De gebruiker moet worden gevraagd om opnieuw te verifiëren. <p> *select_account:* De gebruiker wordt gevraagd om een account te selecteren, waarbij een enkel aanmelding wordt onderbroken. De gebruiker kan een bestaand aangemeld account selecteren, zijn referenties invoeren voor een onthouden account of ervoor kiezen om een ander account te gebruiken. <p> *toestemming*: Toestemming van de gebruiker is verleend, maar moet worden bijgewerkt. De gebruiker moet worden gevraagd om toestemming. <p> *admin_consent*: Een beheerder moet worden gevraagd om toestemming te geven namens alle gebruikers in hun organisatie |
+| login_hint |optioneel |Kan worden gebruikt om vooraf de gebruikersnaam/e-mailadres veld van de aanmeldingspagina voor de gebruiker in te vullen, als u hun gebruikersnaam van tevoren kent. Vaak gebruiken apps deze parameter tijdens de herverificatie, nadat ze de `preferred_username` gebruikersnaam al uit een eerdere aanmelding hebben gehaald met behulp van de claim. |
+| domain_hint |optioneel |Geeft een hint over de tenant of het domein die de gebruiker moet gebruiken om zich aan te melden. De waarde van de domain_hint is een geregistreerd domein voor de tenant. Als de tenant wordt gefedereerd naar een on-premises directory, wordt AAD omgeleid naar de opgegeven tenantfederatieserver. |
+| code_challenge_method | Aanbevolen    | De methode die wordt `code_verifier` gebruikt `code_challenge` om de parameter te coderen. Kan een `plain` van `S256`of . Indien uitgesloten, `code_challenge` wordt verondersteld plaintext `code_challenge` te zijn als wordt opgenomen. Azure AAD v1.0 `plain` `S256`ondersteunt beide en . Zie voor meer informatie de [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge        | Aanbevolen    | Wordt gebruikt om autorisatiecode-subsidies te beveiligen via Proof Key for Code Exchange (PKCE) van een native of openbare client. Vereist `code_challenge_method` als is inbegrepen. Zie voor meer informatie de [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 > [!NOTE]
-> Als de gebruiker deel uitmaakt van een organisatie, kan een beheerder van de organisatie toestemming geven of weigeren namens de gebruiker of de gebruiker toestemming geven. De gebruiker krijgt de mogelijkheid om alleen toestemming te geven als de beheerder dit toestaat.
+> Als de gebruiker deel uitmaakt van een organisatie, kan een beheerder van de organisatie namens de gebruiker toestemming geven of weigeren, of de gebruiker toestemming geven. De gebruiker krijgt de mogelijkheid om alleen toestemming te geven wanneer de beheerder dit toestaat.
 >
 >
 
-Op dit moment wordt de gebruiker gevraagd om hun referenties in te voeren en toestemming te geven voor de machtigingen die worden aangevraagd door de app in azure Portal. Zodra de gebruiker zich heeft geverifieerd en toestemming verleent, stuurt Azure AD een antwoord naar uw app op het `redirect_uri` adres in uw aanvraag met de code.
+Op dit moment wordt de gebruiker gevraagd om zijn referenties in te voeren en in te stemmen met de door de app gevraagde machtigingen in de Azure Portal. Zodra de gebruiker zijn toestemming heeft verkregen en verleent, `redirect_uri` stuurt Azure AD een antwoord naar uw app op het adres in uw aanvraag met de code.
 
-### <a name="successful-response"></a>Geslaagde reactie
-Een geslaagde reactie kan er als volgt uitzien:
+### <a name="successful-response"></a>Succesvolle reactie
+Een succesvolle reactie kan er als volgt uitzien:
 
 ```
 GET  HTTP/1.1 302 Found
@@ -113,13 +111,13 @@ Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 
 | Parameter | Beschrijving |
 | --- | --- |
-| admin_consent |De waarde is True als een beheerder een prompt voor een aanvraag voor toestemming heeft verzonden. |
-| code |De autorisatie code die door de toepassing is aangevraagd. De toepassing kan de autorisatie code gebruiken om een toegangs token aan te vragen voor de doel bron. |
-| session_state |Een unieke waarde die de huidige gebruikers sessie identificeert. Deze waarde is een GUID, maar moet worden behandeld als een ondoorzichtige waarde die zonder onderzoek wordt door gegeven. |
-| state |Als een para meter State is opgenomen in de aanvraag, moet dezelfde waarde in het antwoord worden weer gegeven. Het is een goede gewoonte voor de toepassing om te controleren of de status waarden in de aanvraag en het antwoord identiek zijn voordat u het antwoord gebruikt. Dit helpt bij het detecteren van [CSRF-aanvallen (cross-site request vervalsing)](https://tools.ietf.org/html/rfc6749#section-10.12) op de client. |
+| admin_consent |De waarde is True als een beheerder heeft ingestemd met een toestemmingsverzoek. |
+| code |De autorisatiecode die de aanvraag heeft aangevraagd. De toepassing kan de autorisatiecode gebruiken om een toegangstoken voor de doelbron aan te vragen. |
+| session_state |Een unieke waarde die de huidige gebruikerssessie identificeert. Deze waarde is een GUID, maar moet worden behandeld als een ondoorzichtige waarde die zonder onderzoek wordt doorgegeven. |
+| state |Als een parameter in de status in de aanvraag is opgenomen, moet dezelfde waarde in het antwoord worden weergegeven. Het is een goede gewoonte voor de toepassing om te controleren of de statuswaarden in de aanvraag en het antwoord identiek zijn voordat u het antwoord gebruikt. Dit helpt bij het detecteren [van Cross-Site Request Forgery (CSRF) aanvallen](https://tools.ietf.org/html/rfc6749#section-10.12) op de klant. |
 
-### <a name="error-response"></a>Fout bericht
-Fout reacties kunnen ook worden verzonden naar de `redirect_uri` zodat de toepassing deze op de juiste wijze kan afhandelen.
+### <a name="error-response"></a>Foutreactie
+Foutreacties kunnen ook naar `redirect_uri` de toepassing worden verzonden, zodat deze op de juiste manier kunnen worden verwerkt.
 
 ```
 GET http://localhost:12345/?
@@ -129,25 +127,25 @@ error=access_denied
 
 | Parameter | Beschrijving |
 | --- | --- |
-| error |Een fout code waarde die is gedefinieerd in sectie 5,2 van het [OAuth 2,0-autorisatie raamwerk](https://tools.ietf.org/html/rfc6749). In de volgende tabel worden de fout codes beschreven die door Azure AD worden geretourneerd. |
-| error_description |Een gedetailleerde beschrijving van de fout. Dit bericht is niet bedoeld voor eind gebruikers vriendelijk. |
-| state |De status waarde is een wille keurig gegenereerde niet-hergebruikte waarde die in de aanvraag wordt verzonden en geretourneerd in het antwoord om CSRF-aanvallen (cross-site request vervalsing) te voor komen. |
+| error |Een foutcodewaarde gedefinieerd in sectie 5.2 van het [OAuth 2.0-autorisatiekader](https://tools.ietf.org/html/rfc6749). In de volgende tabel worden de foutcodes beschreven die Azure AD retourneert. |
+| error_description |Een meer gedetailleerde beschrijving van de fout. Dit bericht is niet bedoeld om gebruiksvriendelijk te zijn. |
+| state |De statuswaarde is een willekeurig gegenereerde niet-hergebruikte waarde die in de aanvraag wordt verzonden en wordt geretourneerd in het antwoord om aanvallen op valsheid in geschrifte (CsrF) te voorkomen. |
 
-#### <a name="error-codes-for-authorization-endpoint-errors"></a>Fout codes voor verificatie eindpunt fouten
-In de volgende tabel worden de verschillende fout codes beschreven die kunnen worden geretourneerd in de para meter `error` van het fout bericht.
+#### <a name="error-codes-for-authorization-endpoint-errors"></a>Foutcodes voor eindpuntfouten voor autorisatie
+In de volgende tabel worden de verschillende foutcodes beschreven die kunnen worden geretourneerd in de `error` parameter van de foutreactie.
 
-| Foutcode | Beschrijving | Client actie |
+| Foutcode | Beschrijving | Clientactie |
 | --- | --- | --- |
-| invalid_request |Protocol fout, zoals een ontbrekende vereiste para meter. |Corrigeer en verzend de aanvraag opnieuw. Dit is een ontwikkelings fout en wordt doorgaans onderschept tijdens de eerste test. |
-| unauthorized_client |De client toepassing mag geen autorisatie code aanvragen. |Dit gebeurt meestal wanneer de client toepassing niet is geregistreerd bij Azure AD of niet is toegevoegd aan de Azure AD-Tenant van de gebruiker. De toepassing kan de gebruiker vragen met instructies voor het installeren van de toepassing en het toevoegen aan Azure AD. |
-| access_denied |De resource-eigenaar heeft toestemming geweigerd |De client toepassing kan de gebruiker hiervan op de hoogte stellen dat deze niet kan door gaan tenzij de gebruiker deze heeft toegestuurd. |
-| unsupported_response_type |De autorisatie server biedt geen ondersteuning voor het antwoord type in de aanvraag. |Corrigeer en verzend de aanvraag opnieuw. Dit is een ontwikkelings fout en wordt doorgaans onderschept tijdens de eerste test. |
-| server_error |Er is een onverwachte fout opgetreden op de server. |Voer de aanvraag opnieuw uit. Deze fouten kunnen worden veroorzaakt door tijdelijke voor waarden. De client toepassing kan bijvoorbeeld verklaren dat het antwoord van de gebruiker is vertraagd vanwege een tijdelijke fout. |
-| temporarily_unavailable |De server is tijdelijk niet actief om de aanvraag af te handelen. |Voer de aanvraag opnieuw uit. De client toepassing kan bijvoorbeeld verklaren dat het antwoord van de gebruiker is vertraagd vanwege een tijdelijke voor waarde. |
-| invalid_resource |De doel resource is ongeldig omdat deze niet bestaat, Azure AD niet kan worden gevonden of niet juist is geconfigureerd. |Dit geeft aan dat de resource, indien aanwezig, niet is geconfigureerd in de Tenant. De toepassing kan de gebruiker vragen met instructies voor het installeren van de toepassing en het toevoegen aan Azure AD. |
+| invalid_request |Protocolfout, zoals een ontbrekende vereiste parameter. |De aanvraag herstellen en opnieuw indienen. Dit is een ontwikkelingsfout, en wordt meestal gevangen tijdens de eerste tests. |
+| unauthorized_client |De clientaanvraag is niet toegestaan om een autorisatiecode aan te vragen. |Dit gebeurt meestal wanneer de clienttoepassing niet is geregistreerd in Azure AD of niet wordt toegevoegd aan de Azure AD-tenant van de gebruiker. De toepassing kan de gebruiker instructies geven voor het installeren van de toepassing en het toevoegen aan Azure AD. |
+| access_denied |Eigenaar van de resource heeft geen toestemming geweigerd |De clienttoepassing kan de gebruiker laten weten dat deze niet door kan gaan, tenzij de gebruiker hiermee instemt. |
+| unsupported_response_type |De autorisatieserver ondersteunt het antwoordtype in de aanvraag niet. |De aanvraag herstellen en opnieuw indienen. Dit is een ontwikkelingsfout, en wordt meestal gevangen tijdens de eerste tests. |
+| server_error |Er is een onverwachte fout opgetreden op de server. |Probeer het verzoek opnieuw. Deze fouten kunnen het gevolg zijn van tijdelijke omstandigheden. De clienttoepassing kan de gebruiker uitleggen dat de reactie is vertraagd als gevolg van een tijdelijke fout. |
+| temporarily_unavailable |De server is tijdelijk te druk om de aanvraag af te handelen. |Probeer het verzoek opnieuw. De clienttoepassing kan de gebruiker uitleggen dat de reactie is vertraagd als gevolg van een tijdelijke aandoening. |
+| invalid_resource |De doelbron is ongeldig omdat deze niet bestaat, Azure AD deze niet kan vinden of niet correct is geconfigureerd. |Dit geeft aan dat de resource, als deze bestaat, niet is geconfigureerd in de tenant. De toepassing kan de gebruiker instructies geven voor het installeren van de toepassing en het toevoegen aan Azure AD. |
 
-## <a name="use-the-authorization-code-to-request-an-access-token"></a>De autorisatie code gebruiken om een toegangs token aan te vragen
-Nu u een autorisatie code hebt aangeschaft en toestemming hebt gegeven door de gebruiker, kunt u de code voor een toegangs token inwisselen voor de gewenste resource door een POST-aanvraag te verzenden naar het `/token`-eind punt:
+## <a name="use-the-authorization-code-to-request-an-access-token"></a>De autorisatiecode gebruiken om een toegangstoken aan te vragen
+Nu u een autorisatiecode hebt verkregen en toestemming van de gebruiker hebt gekregen, u de code voor een `/token` toegangstoken voor de gewenste bron inwisselen door een POST-verzoek naar het eindpunt te sturen:
 
 ```
 // Line breaks for legibility only
@@ -167,23 +165,23 @@ grant_type=authorization_code
 
 | Parameter |  | Beschrijving |
 | --- | --- | --- |
-| tenant |Vereist |De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich kan aanmelden bij de toepassing. De toegestane waarden zijn Tenant-id's, bijvoorbeeld `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` of `contoso.onmicrosoft.com` of `common` voor Tenant-onafhankelijke tokens |
-| client_id |Vereist |De toepassings-id die is toegewezen aan uw app wanneer u deze hebt geregistreerd bij Azure AD. U kunt dit vinden in de Azure Portal. De toepassings-id wordt weer gegeven in de instellingen van de app-registratie. |
-| grant_type |Vereist |Moet worden `authorization_code` voor de autorisatie code stroom. |
-| code |Vereist |Het `authorization_code` dat u in de vorige sectie hebt verkregen |
-| redirect_uri |Vereist | Een `redirect_uri`geregistreerd op de client toepassing. |
-| client_secret |vereist voor web-apps, niet toegestaan voor open bare clients |Het toepassings geheim dat u hebt gemaakt in azure portal voor uw app onder **sleutels**. Het kan niet worden gebruikt in een systeem eigen app (open bare client), omdat client_secrets niet betrouwbaar kan worden opgeslagen op apparaten. Dit is vereist voor web-apps en Web-Api's (alle vertrouwelijke clients), die de mogelijkheid hebben om de `client_secret` veilig op te slaan aan de server zijde. De client_secret moet URL-gecodeerd zijn voordat ze worden verzonden. |
-| resource | aanbevelingen |De App-ID-URI van de doel-Web-API (beveiligde bron). Als u de URI van de App-ID wilt zoeken, klikt u in azure Portal op **Azure Active Directory**, klikt u op **toepassings registraties**, opent u de pagina **instellingen** van de toepassing en klikt u vervolgens op **Eigenschappen**. Het kan ook een externe bron zijn, zoals `https://graph.microsoft.com`. Dit is vereist in een van de autorisatie-of Token aanvragen. Om ervoor te zorgen dat er minder verificatie prompts worden uitgevoerd in de autorisatie aanvraag, om ervoor te zorgen dat de gebruiker om toestemming wordt gevraagd. In zowel de autorisatie aanvraag als de token aanvraag moeten de para meters van de resource overeenkomen. | 
-| code_verifier | Beschrijving | Hetzelfde code_verifier dat is gebruikt om de authorization_code op te halen. Vereist als PKCE is gebruikt in de aanvraag voor autorisatie code toekenning. Zie voor meer informatie de [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
+| tenant |vereist |De `{tenant}` waarde in het pad van de aanvraag kan worden gebruikt om te bepalen wie zich bij de toepassing kan aanmelden. De toegestane waarden zijn tenant-id's, bijvoorbeeld, `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` of `contoso.onmicrosoft.com` `common` voor tenant-onafhankelijke tokens |
+| client_id |vereist |De toepassings-id die aan uw app is toegewezen toen u deze registreerde bij Azure AD. U vindt dit in de Azure-portal. De toepassings-id wordt weergegeven in de instellingen van de app-registratie. |
+| grant_type |vereist |Moet `authorization_code` voor de autorisatiecodestroom zijn. |
+| code |vereist |De `authorization_code` informatie die u in de vorige sectie hebt verworven |
+| redirect_uri |vereist | Een `redirect_uri`geregistreerd op de client applicatie. |
+| client_secret |vereist voor web-apps, niet toegestaan voor openbare klanten |Het toepassingsgeheim dat u hebt gemaakt in de Azure Portal voor uw app onder **Sleutels**. Het kan niet worden gebruikt in een native app (openbare client), omdat client_secrets niet betrouwbaar kunnen worden opgeslagen op apparaten. Het is vereist voor web-apps en web API's (alle `client_secret` vertrouwelijke clients), die de mogelijkheid hebben om de veilig op te slaan op de server kant. De client_secret moet worden gecodeerd voordat u wordt verzonden. |
+| resource | Aanbevolen |De App ID URI van de doelweb-API (beveiligde bron). Als u de URI voor app-id's wilt zoeken, klikt u in de Azure Portal op **Azure Active Directory**, klikt u op **Toepassingsregistraties**, opent u de pagina **Instellingen van** de toepassing en klikt u vervolgens op **Eigenschappen**. Het kan ook een `https://graph.microsoft.com`externe bron zoals . Dit is vereist in een van de autorisatie- of tokenaanvragen. Om ervoor te zorgen minder authenticatie prompts plaats het in de autorisatie aanvraag om ervoor te zorgen toestemming wordt ontvangen van de gebruiker. Als in zowel de autorisatieaanvraag als de tokenaanvraag de parameters van de resource moeten overeenkomen. | 
+| code_verifier | optioneel | Dezelfde code_verifier die werd gebruikt om de authorization_code te verkrijgen. Vereist als PKCE werd gebruikt in de vergunningscode subsidieaanvraag. Zie voor meer informatie de [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
 
-Als u de URI van de App-ID wilt zoeken, klikt u in azure Portal op **Azure Active Directory**, klikt u op **toepassings registraties**, opent u de pagina **instellingen** van de toepassing en klikt u vervolgens op **Eigenschappen**.
+Als u de URI voor app-id's wilt zoeken, klikt u in de Azure Portal op **Azure Active Directory**, klikt u op **Toepassingsregistraties**, opent u de pagina **Instellingen van** de toepassing en klikt u vervolgens op **Eigenschappen**.
 
-### <a name="successful-response"></a>Geslaagde reactie
-Azure AD retourneert een [toegangs token](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) bij een geslaagde reactie. Om netwerk aanroepen van de client toepassing en de bijbehorende latentie te minimaliseren, moet de client toepassing toegangs tokens in de cache opslaan voor de levens duur van het token dat is opgegeven in het OAuth 2,0-antwoord. Als u de levens duur van het token wilt bepalen, gebruikt u de para meter waarden `expires_in` of `expires_on`.
+### <a name="successful-response"></a>Succesvolle reactie
+Azure AD retourneert een [toegangstoken](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) na een geslaagde reactie. Om netwerkoproepen van de clienttoepassing en de bijbehorende latentie te minimaliseren, moet de clienttoepassing toegangstokens in de cache opslaan voor de tokenlevensduur die is opgegeven in de OAuth 2.0-respons. Gebruik de parameterwaarden of `expires_in` `expires_on` parameterwaarden om de levensduur van het token te bepalen.
 
-Als een web-API-resource een `invalid_token` fout code retourneert, kan dit erop wijzen dat de bron heeft vastgesteld dat het token is verlopen. Als de klok tijden van de client en de resource verschillend zijn (ook wel ' tijd scheef trekken ' genoemd), kan de bron overwegen dat het token is verlopen voordat het token uit de client cache wordt gewist. Als dit het geval is, wist u het token uit de cache, zelfs als dit nog steeds binnen de berekende levens duur ligt.
+Als een web-API-bron een `invalid_token` foutcode retourneert, kan dit erop wijzen dat de bron heeft bepaald dat het token is verlopen. Als de kloktijden van de client en resource verschillend zijn (bekend als een 'tijdsverschil'), kan de resource het token beschouwen als verlopen voordat het token uit de clientcache wordt gewist. Als dit gebeurt, moet u het token uit de cache wissen, zelfs als het nog binnen de berekende levensduur valt.
 
-Een geslaagde reactie kan er als volgt uitzien:
+Een succesvolle reactie kan er als volgt uitzien:
 
 ```
 {
@@ -201,21 +199,21 @@ Een geslaagde reactie kan er als volgt uitzien:
 
 | Parameter | Beschrijving |
 | --- | --- |
-| access_token |Het aangevraagde toegangs token.  Dit is een ondoorzichtige teken reeks: deze is afhankelijk van wat de resource verwacht te ontvangen en is niet bedoeld voor de client om te kijken. De app kan dit token gebruiken om te verifiëren bij de beveiligde bron, zoals een web-API. |
-| token_type |Geeft de waarde van het token type aan. Het enige type dat door Azure AD wordt ondersteund, is Bearer. Zie [OAuth 2.0-autorisatie raamwerk: Bearer-token gebruik (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) voor meer informatie over Bearer-tokens. |
-| expires_in |Hoe lang het toegangs token geldig is (in seconden). |
-| expires_on |Het tijdstip waarop het toegangs token verloopt. De datum wordt weer gegeven als het aantal seconden van 1970-01-01T0:0: 0Z UTC tot de verloop tijd. Deze waarde wordt gebruikt om de levens duur van tokens in de cache te bepalen. |
-| resource |De App-ID-URI van de Web-API (beveiligde bron). |
-| scope |Imitatie machtigingen verleend aan de client toepassing. De standaard machtiging is `user_impersonation`. De eigenaar van de beveiligde resource kan aanvullende waarden registreren in azure AD. |
-| refresh_token |Een OAuth 2,0-vernieuwings token. De app kan dit token gebruiken om extra toegangs tokens te verkrijgen nadat het huidige toegangs token is verlopen. Vernieuwings tokens worden lang bewaard en kunnen worden gebruikt om de toegang tot resources te bewaren gedurende lange Peri Oden. |
-| id_token |Een niet-ondertekende JSON Web Token (JWT) die een [id-token](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)vertegenwoordigt. De app kan de segmenten van deze token base64Url decoderen om informatie aan te vragen over de gebruiker die zich heeft aangemeld. De app kan de waarden in de cache opslaan en weer geven, maar deze moet niet afhankelijk zijn van autorisatie of beveiligings grenzen. |
+| access_token |Het gevraagde toegangstoken.  Dit is een ondoorzichtige tekenreeks - het hangt af van wat de resource verwacht te ontvangen, en is niet bedoeld voor de client om naar te kijken. De app kan dit token gebruiken om te verifiëren voor de beveiligde bron, zoals een web-API. |
+| token_type |Geeft de waarde van het tokentype aan. Het enige type dat Azure AD ondersteunt, is Drager. Zie [OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) voor meer informatie over tokens voor dragers. |
+| expires_in |Hoe lang het toegangstoken geldig is (in seconden). |
+| expires_on |Het tijdstip waarop het toegangstoken verloopt. De datum wordt weergegeven als het aantal seconden van 1970-01-01T0:0:0Z UTC tot de vervaldatum. Deze waarde wordt gebruikt om de levensduur van tokens in de cache te bepalen. |
+| resource |De App ID URI van de web-API (beveiligde bron). |
+| scope |Imitatiemachtigingen die zijn verleend aan de clienttoepassing. De standaardmachtiging `user_impersonation`is . De eigenaar van de beveiligde bron kan extra waarden registreren in Azure AD. |
+| refresh_token |Een OAuth 2.0 refresh token. De app kan dit token gebruiken om extra toegangstokens te verkrijgen nadat het huidige toegangstoken is verlopen. Vernieuwingstokens zijn van lange duur en kunnen worden gebruikt om toegang tot bronnen voor langere tijd te behouden. |
+| id_token |Een niet-ondertekend JSON-webtoken (JWT) dat een [ID-token](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)vertegenwoordigt. De app kan de segmenten van dit token ontcodeeren om informatie op te vragen over de gebruiker die zich heeft aangemeld. De app kan de waarden in de cache bewaren en weergeven, maar mag er niet op vertrouwen voor autorisatie- of beveiligingsgrenzen. |
 
-Zie de [specificatie JWT IETF draft](https://go.microsoft.com/fwlink/?LinkId=392344)voor meer informatie over JSON-webtokens.   Zie [v 1.0 OpenID Connect Connect flow](v1-protocols-openid-connect-code.md)voor meer informatie over `id_tokens`.
+Zie de [JWT IETF-conceptspecificatie](https://go.microsoft.com/fwlink/?LinkId=392344)voor meer informatie over JSON-webtokens.   Zie de `id_tokens`v1.0 OpenID Connect-stroom voor meer informatie over de [v1.0 OpenID Connect-stroom](v1-protocols-openid-connect-code.md).
 
-### <a name="error-response"></a>Fout bericht
-De eindpunt fouten van de token uitgifte zijn HTTP-fout codes, omdat de client het eind punt voor token uitgifte direct aanroept. Naast de HTTP-status code retourneert het Azure AD token uitgifte-eind punt ook een JSON-document met objecten die de fout beschrijven.
+### <a name="error-response"></a>Foutreactie
+De eindpuntfouten voor tokenuitgifte zijn HTTP-foutcodes, omdat de client het eindpunt voor tokenuitgifte rechtstreeks aanroept. Naast de HTTP-statuscode retourneert het eindpunt voor azure-tokenuitgifte ook een JSON-document met objecten die de fout beschrijven.
 
-Een voor beeld van een fout bericht kan er als volgt uitzien:
+Een voorbeeldfoutreactie kan er als volgt uitzien:
 
 ```
 {
@@ -232,82 +230,82 @@ Een voor beeld van een fout bericht kan er als volgt uitzien:
 ```
 | Parameter | Beschrijving |
 | --- | --- |
-| error |Een teken reeks voor fout codes die kan worden gebruikt voor het classificeren van typen fouten die optreden en kunnen worden gebruikt om te reageren op fouten. |
-| error_description |Een specifiek fout bericht dat een ontwikkelaar kan helpen bij het identificeren van de hoofd oorzaak van een verificatie fout. |
-| error_codes |Een lijst met STS-specifieke fout codes die u kunnen helpen bij het diagnosticeren. |
+| error |Een foutcodetekenreeks die kan worden gebruikt om typen fouten die zich voordoen te classificeren en kan worden gebruikt om op fouten te reageren. |
+| error_description |Een specifiek foutbericht waarmee een ontwikkelaar de hoofdoorzaak van een verificatiefout kan identificeren. |
+| error_codes |Een lijst met STS-specifieke foutcodes die kunnen helpen bij diagnostiek. |
 | tijdstempel |Het tijdstip waarop de fout is opgetreden. |
 | trace_id |Een unieke id voor de aanvraag die kan helpen bij diagnostische gegevens. |
-| correlation_id |Een unieke id voor de aanvraag die kan helpen bij het diagnosticeren van verschillende onderdelen. |
+| correlation_id |Een unieke id voor de aanvraag die kan helpen bij diagnostische gegevens over onderdelen. |
 
-#### <a name="http-status-codes"></a>HTTP-statuscodes
-De volgende tabel bevat de HTTP-status codes die het eind punt voor token uitgifte retourneert. In sommige gevallen is de fout code voldoende om het antwoord te beschrijven, maar als er fouten zijn, moet u het bijbehorende JSON-document parseren en de fout code onderzoeken.
+#### <a name="http-status-codes"></a>HTTP-statuscode
+In de volgende tabel worden de HTTP-statuscodes weergegeven die het eindpunt van de tokenuitgifte retourneert. In sommige gevallen is de foutcode voldoende om het antwoord te beschrijven, maar als er fouten zijn, moet u het bijbehorende JSON-document ontleden en de foutcode onderzoeken.
 
 | HTTP-code | Beschrijving |
 | --- | --- |
-| 400 |Standaard-HTTP-code. Wordt in de meeste gevallen gebruikt en wordt meestal veroorzaakt door een ongeldige aanvraag. Corrigeer en verzend de aanvraag opnieuw. |
-| 401 |Verificatie is mislukt. De aanvraag ontbreekt bijvoorbeeld de client_secret para meter. |
-| 403 |Autorisatie is mislukt. De gebruiker heeft bijvoorbeeld geen machtiging voor toegang tot de resource. |
-| 500 |Er is een interne fout opgetreden bij de service. Voer de aanvraag opnieuw uit. |
+| 400 |Standaard HTTP-code. Gebruikt in de meeste gevallen en is meestal te wijten aan een misvormde aanvraag. De aanvraag herstellen en opnieuw indienen. |
+| 401 |Verificatie mislukt. De aanvraag mist bijvoorbeeld de parameter client_secret. |
+| 403 |De autorisatie is mislukt. De gebruiker heeft bijvoorbeeld geen toestemming om toegang te krijgen tot de bron. |
+| 500 |Er is een interne fout opgetreden bij de service. Probeer het verzoek opnieuw. |
 
-#### <a name="error-codes-for-token-endpoint-errors"></a>Fout codes voor token eindpunt fouten
-| Foutcode | Beschrijving | Client actie |
+#### <a name="error-codes-for-token-endpoint-errors"></a>Foutcodes voor tokeneindpuntfouten
+| Foutcode | Beschrijving | Clientactie |
 | --- | --- | --- |
-| invalid_request |Protocol fout, zoals een ontbrekende vereiste para meter. |De aanvraag herstellen en opnieuw verzenden |
-| invalid_grant |De autorisatie code is ongeldig of is verlopen. |Een nieuwe aanvraag naar het `/authorize`-eind punt proberen |
-| unauthorized_client |De geverifieerde client is niet gemachtigd om dit type autorisatie machtiging te gebruiken. |Dit gebeurt meestal wanneer de client toepassing niet is geregistreerd bij Azure AD of niet is toegevoegd aan de Azure AD-Tenant van de gebruiker. De toepassing kan de gebruiker vragen met instructies voor het installeren van de toepassing en het toevoegen aan Azure AD. |
-| invalid_client |Client verificatie is mislukt. |De client referenties zijn ongeldig. De toepassings beheerder werkt de referenties bij om deze te herstellen. |
-| unsupported_grant_type |De autorisatie server biedt geen ondersteuning voor het type autorisatie toekenning. |Wijzig het toekennings type in de aanvraag. Dit type fout moet alleen tijdens de ontwikkeling optreden en tijdens de eerste test worden gedetecteerd. |
-| invalid_resource |De doel resource is ongeldig omdat deze niet bestaat, Azure AD niet kan worden gevonden of niet juist is geconfigureerd. |Dit geeft aan dat de resource, indien aanwezig, niet is geconfigureerd in de Tenant. De toepassing kan de gebruiker vragen met instructies voor het installeren van de toepassing en het toevoegen aan Azure AD. |
-| interaction_required |De aanvraag vereist een gebruikers interactie. Zo is een extra verificatie stap vereist. | Probeer het opnieuw met een interactieve autorisatie aanvraag voor dezelfde bron in plaats van een niet-interactieve aanvraag. |
-| temporarily_unavailable |De server is tijdelijk niet actief om de aanvraag af te handelen. |Voer de aanvraag opnieuw uit. De client toepassing kan bijvoorbeeld verklaren dat het antwoord van de gebruiker is vertraagd vanwege een tijdelijke voor waarde. |
+| invalid_request |Protocolfout, zoals een ontbrekende vereiste parameter. |De aanvraag oplossen en opnieuw indienen |
+| invalid_grant |De autorisatiecode is ongeldig of is verlopen. |Een nieuw verzoek `/authorize` naar het eindpunt proberen |
+| unauthorized_client |De geverifieerde client is niet bevoegd om dit type autorisatieverlening te gebruiken. |Dit gebeurt meestal wanneer de clienttoepassing niet is geregistreerd in Azure AD of niet wordt toegevoegd aan de Azure AD-tenant van de gebruiker. De toepassing kan de gebruiker instructies geven voor het installeren van de toepassing en het toevoegen aan Azure AD. |
+| invalid_client |Clientverificatie is mislukt. |De clientreferenties zijn niet geldig. Om het probleem op te lossen, werkt de toepassingsbeheerder de referenties bij. |
+| unsupported_grant_type |De autorisatieserver ondersteunt het type autorisatieverlening niet. |Wijzig het subsidietype in de aanvraag. Dit type fout mag alleen optreden tijdens de ontwikkeling en worden gedetecteerd tijdens de eerste tests. |
+| invalid_resource |De doelbron is ongeldig omdat deze niet bestaat, Azure AD deze niet kan vinden of niet correct is geconfigureerd. |Dit geeft aan dat de resource, als deze bestaat, niet is geconfigureerd in de tenant. De toepassing kan de gebruiker instructies geven voor het installeren van de toepassing en het toevoegen aan Azure AD. |
+| interaction_required |De aanvraag vereist interactie van de gebruiker. Er is bijvoorbeeld een extra verificatiestap vereist. | In plaats van een niet-interactieve aanvraag, probeer opnieuw met een interactieve autorisatieaanvraag voor dezelfde bron. |
+| temporarily_unavailable |De server is tijdelijk te druk om de aanvraag af te handelen. |Probeer het verzoek opnieuw. De clienttoepassing kan de gebruiker uitleggen dat de reactie is vertraagd als gevolg van een tijdelijke aandoening. |
 
-## <a name="use-the-access-token-to-access-the-resource"></a>Het toegangs token gebruiken om toegang te krijgen tot de resource
-Nu u een `access_token`hebt aangeschaft, kunt u het token gebruiken in aanvragen voor web-Api's door dit op te nemen in de `Authorization`-header. In de [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) -specificatie wordt uitgelegd hoe u Bearer-tokens kunt gebruiken in HTTP-aanvragen om toegang te krijgen tot beveiligde bronnen.
+## <a name="use-the-access-token-to-access-the-resource"></a>Het toegangstoken gebruiken om toegang te krijgen tot de bron
+Nu u een `access_token`token hebt aangeschaft, u het token gebruiken in aanvragen `Authorization` voor web-API's, door het in de koptekst op te nemen. In [de RFC 6750-specificatie](https://www.rfc-editor.org/rfc/rfc6750.txt) wordt uitgelegd hoe u tokens aan toonder gebruiken in HTTP-verzoeken om toegang te krijgen tot beveiligde bronnen.
 
-### <a name="sample-request"></a>Voorbeeld van een aanvraag
+### <a name="sample-request"></a>Voorbeeldaanvraag
 ```
 GET /data HTTP/1.1
 Host: service.contoso.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1THdqcHdBSk9NOW4tQSJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2UuY29udG9zby5jb20vIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2ZlODE0NDctZGE1Ny00Mzg1LWJlY2ItNmRlNTdmMjE0NzdlLyIsImlhdCI6MTM4ODQ0MDg2MywibmJmIjoxMzg4NDQwODYzLCJleHAiOjEzODg0NDQ3NjMsInZlciI6IjEuMCIsInRpZCI6IjdmZTgxNDQ3LWRhNTctNDM4NS1iZWNiLTZkZTU3ZjIxNDc3ZSIsIm9pZCI6IjY4Mzg5YWUyLTYyZmEtNGIxOC05MWZlLTUzZGQxMDlkNzRmNSIsInVwbiI6ImZyYW5rbUBjb250b3NvLmNvbSIsInVuaXF1ZV9uYW1lIjoiZnJhbmttQGNvbnRvc28uY29tIiwic3ViIjoiZGVOcUlqOUlPRTlQV0pXYkhzZnRYdDJFYWJQVmwwQ2o4UUFtZWZSTFY5OCIsImZhbWlseV9uYW1lIjoiTWlsbGVyIiwiZ2l2ZW5fbmFtZSI6IkZyYW5rIiwiYXBwaWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0yNzRhNzJhNzMwOWUiLCJhcHBpZGFjciI6IjAiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJhY3IiOiIxIn0.JZw8jC0gptZxVC-7l5sFkdnJgP3_tRjeQEPgUn28XctVe3QqmheLZw7QVZDPCyGycDWBaqy7FLpSekET_BftDkewRhyHk9FW_KeEz0ch2c3i08NGNDbr6XYGVayNuSesYk5Aw_p3ICRlUV1bqEwk-Jkzs9EEkQg4hbefqJS6yS1HoV_2EsEhpd_wCQpxK89WPs3hLYZETRJtG5kvCCEOvSHXmDE6eTHGTnEgsIk--UlPe275Dvou4gEAwLofhLDQbMSjnlV5VLsjimNBVcSRFShoxmQwBJR_b2011Y5IuD6St5zPnzruBbZYkGNurQK63TJPWmRd3mbJsGM0mf3CUQ
 ```
 
-### <a name="error-response"></a>Fout bericht
-Beveiligde bronnen voor het implementeren van RFC 6750-probleem HTTP-status codes. Als de aanvraag geen verificatie referenties bevat of als het token ontbreekt, wordt het antwoord een `WWW-Authenticate`-header. Wanneer een aanvraag mislukt, reageert de resource server met de HTTP-status code en een fout code.
+### <a name="error-response"></a>Foutreactie
+Beveiligde bronnen die http-statuscodes van RFC 6750 implementeren. Als het verzoek geen verificatiereferenties bevat of het token `WWW-Authenticate` mist, bevat het antwoord een koptekst. Wanneer een aanvraag mislukt, reageert de resourceserver met de HTTP-statuscode en een foutcode.
 
-Hier volgt een voor beeld van een niet-geslaagde reactie wanneer de client aanvraag geen Bearer-token bevat:
+Het volgende is een voorbeeld van een mislukt antwoord wanneer het clientverzoek het token aan toonder niet bevat:
 
 ```
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/contoso.com/oauth2/authorize",  error="invalid_token",  error_description="The access token is missing.",
 ```
 
-#### <a name="error-parameters"></a>Fout parameters
+#### <a name="error-parameters"></a>Foutparameters
 | Parameter | Beschrijving |
 | --- | --- |
-| authorization_uri |De URI (fysiek eind punt) van de autorisatie server. Deze waarde wordt ook gebruikt als opzoek sleutel voor het verkrijgen van meer informatie over de server van een detectie-eind punt. <p><p> De client moet valideren of de autorisatie server vertrouwd is. Wanneer de resource wordt beveiligd door Azure AD, is het voldoende om te controleren of de URL begint met https://login.microsoftonline.com of een andere hostnaam die door Azure AD wordt ondersteund. Een Tenant-specifieke resource moet altijd een Tenant-specifieke autorisatie-URI retour neren. |
-| error |Een fout code waarde die is gedefinieerd in sectie 5,2 van het [OAuth 2,0-autorisatie raamwerk](https://tools.ietf.org/html/rfc6749). |
-| error_description |Een gedetailleerde beschrijving van de fout. Dit bericht is niet bedoeld voor eind gebruikers vriendelijk. |
-| resource_id |Retourneert de unieke id van de resource. De client toepassing kan deze id als de waarde van de para meter `resource` gebruiken wanneer er een token voor de resource wordt aangevraagd. <p><p> Het is belang rijk dat de client toepassing deze waarde verifieert. anders kan een schadelijke service een aanval **van bevoegdheden** tot gevolg hebben. <p><p> De aanbevolen strategie voor het voor komen van een aanval is te controleren of de `resource_id` overeenkomt met de basis van de Web API-URL die wordt geopend. Als https://service.contoso.com/data bijvoorbeeld wordt geopend, kan de `resource_id` worden https://service.contoso.com/. De client toepassing moet een `resource_id` afwijzen die niet begint met de basis-URL, tenzij er een betrouw bare alternatieve manier is om de id te verifiëren. |
+| authorization_uri |Het URI (fysiek eindpunt) van de autorisatieserver. Deze waarde wordt ook gebruikt als een opzoeksleutel om meer informatie over de server te krijgen vanaf een detectieeindpunt. <p><p> De client moet valideren dat de autorisatieserver wordt vertrouwd. Wanneer de bron wordt beschermd door Azure AD, volstaat `https://login.microsoftonline.com` het om te controleren of de URL begint met of een andere hostnaam die Azure AD ondersteunt. Een tenantspecifieke resource moet altijd een tenantspecifieke autorisatie URI retourneren. |
+| error |Een foutcodewaarde gedefinieerd in sectie 5.2 van het [OAuth 2.0-autorisatiekader](https://tools.ietf.org/html/rfc6749). |
+| error_description |Een meer gedetailleerde beschrijving van de fout. Dit bericht is niet bedoeld om gebruiksvriendelijk te zijn. |
+| resource_id |Geeft als resultaat de unieke id van de resource. De clienttoepassing kan deze id gebruiken `resource` als de waarde van de parameter wanneer deze een token voor de bron aanvraagt. <p><p> Het is belangrijk voor de clienttoepassing om deze waarde te verifiëren, anders kan een kwaadwillende service mogelijk een **hoogte-van-privileges-aanval** veroorzaken <p><p> De aanbevolen strategie voor het voorkomen van `resource_id` een aanval is om te controleren of de basis van de web-API URL die wordt geopend. Bijvoorbeeld, als `https://service.contoso.com/data` wordt geopend, `resource_id` kan `https://service.contoso.com/`het worden . De clienttoepassing moet `resource_id` een die niet begint met de basis-URL weigeren, tenzij er een betrouwbare alternatieve manier is om de id te verifiëren. |
 
-#### <a name="bearer-scheme-error-codes"></a>Fout codes van Bearer-schema's
-De RFC 6750-specificatie definieert de volgende fouten voor resources die gebruikmaken van de WWW-Authenticate-header en Bearer-schema in het antwoord.
+#### <a name="bearer-scheme-error-codes"></a>Foutcodes van het schema aan toonder
+De RFC 6750-specificatie definieert de volgende fouten voor resources die het SCHEMA WWW-Authenticate-header en Toon gebruiken in het antwoord.
 
-| HTTP-statuscode | Foutcode | Beschrijving | Client actie |
+| HTTP-statuscode | Foutcode | Beschrijving | Clientactie |
 | --- | --- | --- | --- |
-| 400 |invalid_request |De aanvraag is niet juist opgemaakt. Er kan bijvoorbeeld een para meter ontbreken of dezelfde para meter twee keer worden gebruikt. |Los de fout op en voer de aanvraag opnieuw uit. Dit type fout moet alleen tijdens de ontwikkeling optreden en tijdens de eerste test worden gedetecteerd. |
-| 401 |invalid_token |Het toegangs token ontbreekt, is ongeldig of is ingetrokken. De waarde van de para meter error_description biedt meer details. |Een nieuw token aanvragen bij de autorisatie server. Als het nieuwe token mislukt, is er een onverwachte fout opgetreden. Stuur een fout bericht naar de gebruiker en probeer het opnieuw na wille keurige vertragingen. |
-| 403 |insufficient_scope |Het toegangs token bevat niet de imitatie machtigingen die vereist zijn voor toegang tot de bron. |Verzend een nieuwe autorisatie aanvraag naar het autorisatie-eind punt. Als het antwoord de bereik parameter bevat, gebruikt u de bereik waarde in de aanvraag voor de resource. |
-| 403 |insufficient_access |Het onderwerp van het token heeft niet de machtigingen die nodig zijn voor toegang tot de resource. |De gebruiker vragen om een ander account te gebruiken of om machtigingen aan te vragen voor de opgegeven resource. |
+| 400 |invalid_request |Het verzoek is niet goed gevormd. Het kan bijvoorbeeld een parameter missen of dezelfde parameter twee keer gebruiken. |Los de fout op en probeer het verzoek opnieuw. Dit type fout mag alleen optreden tijdens de ontwikkeling en worden gedetecteerd in de eerste tests. |
+| 401 |invalid_token |Het toegangstoken ontbreekt, ongeldig of wordt ingetrokken. De waarde van de parameter error_description geeft extra details. |Vraag een nieuw token aan bij de autorisatieserver. Als het nieuwe token mislukt, is er een onverwachte fout opgetreden. Stuur een foutbericht naar de gebruiker en probeer het opnieuw na willekeurige vertragingen. |
+| 403 |insufficient_scope |Het toegangstoken bevat niet de imitatiemachtigingen die nodig zijn om toegang te krijgen tot de bron. |Stuur een nieuwe autorisatieaanvraag naar het eindpunt van de autorisatie. Als het antwoord de bereikparameter bevat, gebruikt u de bereikwaarde in de aanvraag voor de resource. |
+| 403 |insufficient_access |Het onderwerp van het token heeft niet de machtigingen die nodig zijn om toegang te krijgen tot de bron. |Vraag de gebruiker om een ander account te gebruiken of om machtigingen aan te vragen voor de opgegeven bron. |
 
-## <a name="refreshing-the-access-tokens"></a>De toegangs tokens vernieuwen
+## <a name="refreshing-the-access-tokens"></a>De toegangstokens vernieuwen
 
-Toegangs tokens zijn korte duur en moeten worden vernieuwd nadat ze hebben geduurd om toegang te blijven houden tot resources. U kunt de `access_token` vernieuwen door een andere `POST` aanvraag naar het `/token`-eind punt te verzenden, maar deze keer de `refresh_token` in plaats van de `code`op te geven.  Vernieuwings tokens zijn geldig voor alle resources die uw client al toestemming heeft gegeven voor toegang. Daarom kan een vernieuwings token dat is uitgegeven op een aanvraag voor `resource=https://graph.microsoft.com`, worden gebruikt om een nieuw toegangs token aan te vragen voor `resource=https://contoso.com/api`. 
+Toegangstokens zijn van korte duur en moeten worden vernieuwd nadat ze zijn verlopen om toegang te blijven krijgen tot bronnen. U `access_token` de door `POST` een ander `/token` verzoek indienen bij het `refresh_token` eindpunt `code`te vernieuwen, maar deze keer het verstrekken van de in plaats van de.  Vernieuwingstokens zijn geldig voor alle bronnen waarvoor uw client al toestemming heeft gekregen `resource=https://graph.microsoft.com` voor toegang - dus een `resource=https://contoso.com/api`vernieuwingstoken die is uitgegeven op een verzoek om een nieuw toegangstoken aan te vragen voor . 
 
-Voor vernieuwings tokens is geen levens duur opgegeven. De levens duur van vernieuwings tokens is doorgaans relatief lang. In sommige gevallen verloopt het vernieuwen van tokens, worden deze ingetrokken of beschikt over onvoldoende machtigingen voor de gewenste actie. Uw toepassing moet verwachten en fouten afhandelen die door het eind punt voor token uitgifte zijn geretourneerd.
+Vernieuwingstokens hebben geen opgegeven levensduur. Meestal zijn de levensduur van vernieuwingstokens relatief lang. In sommige gevallen verlopen vernieuwingstokens echter, worden ze ingetrokken of ontbreken ze niet over voldoende bevoegdheden voor de gewenste actie. Uw toepassing moet fouten die door het eindpunt voor tokenuitgifte worden geretourneerd, correct verwachten en verwerken.
 
-Wanneer u een reactie met een vernieuwings token fout ontvangt, moet u het huidige vernieuwings token verwijderen en een nieuwe autorisatie code of toegangs token aanvragen. Bij het gebruik van een vernieuwings token in de machtigings stroom van de autorisatie code wordt met name het vernieuwings token verwijderd en een nieuwe autorisatie code aangevraagd als u een antwoord ontvangt met de `interaction_required` of `invalid_grant` fout codes.
+Wanneer u een antwoord ontvangt met een vernieuwingstokenfout, verwijdert u het huidige vernieuwingstoken en vraagt u een nieuwe autorisatiecode of toegangstoken aan. Als u een antwoord ontvangt met de `interaction_required` foutcodes `invalid_grant` of foutcodes, gooi u het vernieuwingstoken en vraagt u een nieuwe autorisatiecode aan wanneer u een vernieuwingstoken gebruikt in de subsidiestroom autorisatiecode.
 
-Een voorbeeld aanvraag aan het **Tenant-specifieke** eind punt (u kunt ook het **gemeen schappelijke** eind punt gebruiken) om een nieuw toegangs token op te halen met behulp van een vernieuwings token ziet er als volgt uit:
+Een voorbeeldaanvraag voor het **tenantspecifieke** eindpunt (u ook het **algemene** eindpunt gebruiken) om een nieuw toegangstoken te krijgen met behulp van een vernieuwingstoken ziet er als volgt uit:
 
 ```
 // Line breaks for legibility only
@@ -323,8 +321,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps
 ```
 
-### <a name="successful-response"></a>Geslaagde reactie
-Een geslaagd token antwoord ziet er als volgt uit:
+### <a name="successful-response"></a>Succesvolle reactie
+Een succesvolle tokenreactie ziet eruit als volgt:
 
 ```
 {
@@ -338,16 +336,16 @@ Een geslaagd token antwoord ziet er als volgt uit:
 ```
 | Parameter | Beschrijving |
 | --- | --- |
-| token_type |Het token type. De enige ondersteunde waarde is **Bearer**. |
-| expires_in |De resterende levens duur van het token in seconden. Een typische waarde is 3600 (één uur). |
-| expires_on |De datum en tijd waarop het token verloopt. De datum wordt weer gegeven als het aantal seconden van 1970-01-01T0:0: 0Z UTC tot de verloop tijd. |
-| resource |Hiermee wordt de beveiligde bron geïdentificeerd waarmee het toegangs token kan worden gebruikt om toegang te krijgen. |
-| scope |Imitatie machtigingen die zijn verleend aan de systeem eigen client toepassing. De standaard machtiging is **user_impersonation**. De eigenaar van de doel resource kan alternatieve waarden registreren in azure AD. |
-| access_token |Het nieuwe toegangs token dat is aangevraagd. |
-| refresh_token |Een nieuwe OAuth 2,0-refresh_token die kan worden gebruikt om nieuwe toegangs tokens aan te vragen wanneer de reactie tijd verloopt. |
+| token_type |Het tokentype. De enige ondersteunde waarde is **drager**. |
+| expires_in |De resterende levensduur van het token in seconden. Een typische waarde is 3600 (een uur). |
+| expires_on |De datum en tijd waarop het token verloopt. De datum wordt weergegeven als het aantal seconden van 1970-01-01T0:0:0Z UTC tot de vervaldatum. |
+| resource |Hiermee identificeert u de beveiligde bron die het toegangstoken kan gebruiken om toegang te krijgen. |
+| scope |Imitatiemachtigingen die zijn verleend aan de native client-toepassing. De standaardmachtiging wordt **user_impersonation**. De eigenaar van de doelbron kan alternatieve waarden registreren in Azure AD. |
+| access_token |Het nieuwe toegangstoken dat is aangevraagd. |
+| refresh_token |Een nieuwe OAuth 2.0 refresh_token die kan worden gebruikt om nieuwe toegangstokens aan te vragen wanneer de ene in dit antwoord verloopt. |
 
-### <a name="error-response"></a>Fout bericht
-Een voor beeld van een fout bericht kan er als volgt uitzien:
+### <a name="error-response"></a>Foutreactie
+Een voorbeeldfoutreactie kan er als volgt uitzien:
 
 ```
 {
@@ -364,14 +362,14 @@ Een voor beeld van een fout bericht kan er als volgt uitzien:
 
 | Parameter | Beschrijving |
 | --- | --- |
-| error |Een teken reeks voor fout codes die kan worden gebruikt voor het classificeren van typen fouten die optreden en kunnen worden gebruikt om te reageren op fouten. |
-| error_description |Een specifiek fout bericht dat een ontwikkelaar kan helpen bij het identificeren van de hoofd oorzaak van een verificatie fout. |
-| error_codes |Een lijst met STS-specifieke fout codes die u kunnen helpen bij het diagnosticeren. |
+| error |Een foutcodetekenreeks die kan worden gebruikt om typen fouten die zich voordoen te classificeren en kan worden gebruikt om op fouten te reageren. |
+| error_description |Een specifiek foutbericht waarmee een ontwikkelaar de hoofdoorzaak van een verificatiefout kan identificeren. |
+| error_codes |Een lijst met STS-specifieke foutcodes die kunnen helpen bij diagnostiek. |
 | tijdstempel |Het tijdstip waarop de fout is opgetreden. |
 | trace_id |Een unieke id voor de aanvraag die kan helpen bij diagnostische gegevens. |
-| correlation_id |Een unieke id voor de aanvraag die kan helpen bij het diagnosticeren van verschillende onderdelen. |
+| correlation_id |Een unieke id voor de aanvraag die kan helpen bij diagnostische gegevens over onderdelen. |
 
-Zie voor een beschrijving van de fout codes en de aanbevolen client actie [fout codes voor token eindpunt fouten](#error-codes-for-token-endpoint-errors).
+Zie [Foutcodes voor tokeneindpuntfouten voor](#error-codes-for-token-endpoint-errors)een beschrijving van de foutcodes en de aanbevolen clientactie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [voorbeeld toepassingen](sample-v1-code.md)voor meer informatie over het Azure AD v 1.0-eind punt en het toevoegen van verificatie en autorisatie aan uw webtoepassingen en Web-api's.
+Zie [voorbeeldtoepassingen](sample-v1-code.md)voor meer informatie over het Azure AD v1.0-eindpunt en hoe u verificatie en autorisatie toevoegen aan uw webtoepassingen en web-API's.

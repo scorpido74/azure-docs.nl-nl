@@ -1,6 +1,6 @@
 ---
-title: Inrichten van Windows-apparaten voor externe controle in C - Azure | Microsoft Docs
-description: Beschrijft hoe u een apparaat verbinden met de oplossingsversnellers bewaking op afstand met behulp van een toepassing die is geschreven in C die worden uitgevoerd op Windows.
+title: Windows-apparaten inrichten voor bewaking op afstand in C - Azure | Microsoft Documenten
+description: Beschrijft hoe u een apparaat aansluit op de accelerator voor externe bewaking-oplossingen met behulp van een toepassing die is geschreven in C die op Windows wordt uitgevoerd.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,55 +9,55 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 2a8a0bf1e63f06bbe6b6a073af6b3da8904dcaeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61450212"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Uw apparaat aansluiten op de Remote Monitoring solution accelerator (Windows)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Sluit uw apparaat aan op de remote monitoring oplossingsversneller (Windows)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Deze zelfstudie leert u hoe u een echt apparaat verbinden met de oplossingsverbetering voor externe controle.
+In deze zelfstudie ziet u hoe u een echt apparaat aansluiten op de versneller van de oplossing op afstand.
 
-Net als bij de meeste embedded-toepassingen die worden uitgevoerd op apparaten met beperkte, is de clientcode voor de apparaattoepassing geschreven in C. In deze zelfstudie bouwt u de apparaat-clienttoepassing op een computer met Windows.
+Net als bij de meeste ingesloten toepassingen die op beperkte apparaten worden uitgevoerd, wordt de clientcode voor de apparaattoepassing in C geschreven. In deze zelfstudie bouwt u de apparaatclienttoepassing op een machine met Windows.
 
-Als u liever een apparaat simuleren, Zie [maken en test een nieuw gesimuleerd apparaat](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Zie Een nieuw gesimuleerd apparaat maken en testen als u een apparaat liever [simuleert.](iot-accelerators-remote-monitoring-create-simulated-device.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om uit te voeren de stappen in deze gebruiksaanwijzing Volg de stappen in [instellen van uw Windows-ontwikkelomgeving](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment) de vereiste ontwikkelprogramma's en bibliotheken toevoegen aan uw Windows-machine.
+Als u de stappen in deze handleiding wilt uitvoeren, voert u de stappen uit bij [het instellen van uw Windows-ontwikkelomgeving](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment) om de vereiste ontwikkeltools en -bibliotheken toe te voegen aan uw Windows-machine.
 
 ## <a name="view-the-code"></a>De code weergeven
 
-De [voorbeeldcode](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) gebruikt in deze handleiding is beschikbaar in de Azure IoT C SDK's GitHub-opslagplaats.
+De [voorbeeldcode](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) die in deze handleiding wordt gebruikt, is beschikbaar in de GitHub-repository van Azure IoT C SDKs.
 
-### <a name="download-the-source-code-and-prepare-the-project"></a>De broncode downloaden en voorbereiden van het project
+### <a name="download-the-source-code-and-prepare-the-project"></a>Download de broncode en bereid het project voor
 
-Voorbereiden van het project, [kloon de opslagplaats van de Azure IoT C SDKs](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment) vanuit GitHub.
+Als u het project wilt voorbereiden, [kloont u de Azure IoT C SDKs-repository](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment) van GitHub.
 
-Het voorbeeld bevindt zich de **samples/oplossingen/remote_monitoring_client** map.
+Het voorbeeld bevindt zich in de map **samples/solutions/remote_monitoring_client.**
 
-Open de **remote_monitoring.c** -bestand in de **samples/oplossingen/remote_monitoring_client** map in een teksteditor.
+Open het **remote_monitoring.c-bestand** in de map **samples/solutions/remote_monitoring_client** in een teksteditor.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-sample"></a>Het voorbeeldproject compileren en uitvoeren
 
-1. Bewerk de **remote_monitoring.c** vervangen door het bestand `<connectionstring>` met de apparaatverbindingsreeks die u hebt genoteerd aan het begin van deze gebruiksaanwijzing wanneer u een apparaat toegevoegd aan de solution accelerator.
+1. Bewerk het **remote_monitoring.c-bestand** dat u wilt vervangen `<connectionstring>` door de verbindingstekenreeks van het apparaat die u aan het begin van deze handleiding hebt opgemerkt wanneer u een apparaat aan de oplossingsversneller hebt toegevoegd.
 
-1. Volg de stappen in [bouw de SDK voor C in Windows](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#build-the-c-sdk-in-windows) om de SDK en de clienttoepassing voor externe controle te bouwen.
+1. Volg de stappen in [Build the C SDK in Windows](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#build-the-c-sdk-in-windows) om de SDK en de clienttoepassing voor externe bewaking te bouwen.
 
-1. Achter de opdrachtprompt-u hebt gebruikt om de oplossing te bouwen, voert u de volgende uit:
+1. Op de opdrachtprompt die u gebruikt om de oplossing te bouwen, voer je het als:
 
     ```cmd
     samples\solutions\remote_monitoring_client\Release\remote_monitoring_client.exe
     ```
 
-    De console worden berichten weergegeven:
+    Op de console worden berichten weergegeven als:
 
-    - De toepassing verzendt voorbeeld telemetrie naar de solution accelerator.
-    - Reageert op methoden aangeroepen vanuit het dashboard van de oplossing.
+    - De toepassing stuurt voorbeeldtelemetrie naar de oplossingsversneller.
+    - Reageert op methoden die worden aangeroepen vanuit het oplossingsdashboard.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

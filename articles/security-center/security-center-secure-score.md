@@ -1,6 +1,6 @@
 ---
-title: Beveiligde Score in Azure Security Center | Microsoft Docs
-description: " Volg prioriteiten voor uw beveiligings aanbevelingen met behulp van de beveiligde Score in Azure Security Center. "
+title: Beveiligde score in Azure Security Center | Microsoft Documenten
+description: " Geef prioriteit aan uw beveiligingsaanbevelingen met de Beveiligde score in Azure Security Center. "
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,76 +13,72 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: 15a94a9724fac29d36f6bb88ee4810b3bc7ca607
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 30405ce5cc875144fcd1cf83d4a3f883a0304989
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79245250"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415772"
 ---
-# <a name="improve-your-secure-score-in-azure-security-center"></a>Verbeter uw beveiligde Score in Azure Security Center
+# <a name="improve-your-secure-score-in-azure-security-center"></a>Uw veilige score verbeteren in Azure Security Center
 
 > [!NOTE]
-> Er is een verbeterde beveiligde Score beschikbaar in de preview-versie. Door de verbeterde beveiligde score wordt de bestaande beveiligde Score uiteindelijk vervangen, maar voor een tijdje worden ze naast elkaar uitgevoerd om de overgang te vereenvoudigen.
+> Dit artikel gaat over de vorige versie van de beveiligde score. Deze veilige score ervaring is nog steeds beschikbaar van de UI, maar zal worden uitgefaseerd na verloop van tijd. De twee veilige score-ervaringen worden naast elkaar uitgevoerd om een soepelere overgang mogelijk te maken.
 >
-> Zie [hier](secure-score-security-controls.md)voor meer informatie over de voor delen van de verbeterde beveiligde Score.
+> Voor meer informatie over de nieuwere veilige score, zie [hier](secure-score-security-controls.md).
 >
-> Open Azure Portal, start Azure Security Center en selecteer beveiligde Score om deel te nemen aan de preview-versie. Hier ziet u een banner aan de bovenkant van de pagina met de nieuwe beveiligde Score ervaring. U kunt ook [hier](https://aka.ms/ascnewscore)klikken.
 
-Met zoveel services die beveiligings voordelen bieden, is het vaak moeilijk om te weten welke stappen het eerst moet worden uitgevoerd om uw werk belasting te beveiligen en te beschermen. Met de beveiligde Score worden uw beveiligings aanbevelingen beoordeeld en worden prioriteiten voor u gegeven, zodat u weet welke aanbevelingen het eerst moeten worden uitgevoerd. Zo kunt u de meest ernstige beveiligings problemen vinden zodat u de prioriteit van het onderzoek kan bepalen. Secure Score is een hulp programma waarmee u de beveiligings postuur van uw werk belasting kunt beoordelen.
+Met zoveel services die beveiligingsvoordelen bieden, is het vaak moeilijk om te weten welke stappen u eerst moet nemen om uw werklast te beveiligen en te verharden. De Secure Score beoordeelt uw beveiligingsaanbevelingen en geeft prioriteit aan deze aanbevelingen, zodat u weet welke aanbevelingen u het eerst moet uitvoeren. Dit helpt u bij het vinden van de ernstigste beveiligingsproblemen, zodat u prioriteit geven aan onderzoek. Secure Score is een tool die u helpt bij het beoordelen van uw werkbelasting beveiligingshouding.
 
-## <a name="secure-score-calculation"></a>Berekening van beveiligde Score
+## <a name="secure-score-calculation"></a>Berekening van de beveiligde score
 
-Security Center imiteert het werk van een beveiligings analist, bekijkt uw beveiligings aanbevelingen en past geavanceerde algoritmen toe om te bepalen hoe belang rijk elke aanbeveling is.
-Azure Security Center bekijkt voortdurend uw actieve aanbevelingen en berekent uw beveiligde Score op basis hiervan, de Score van een aanbeveling is afgeleid van de ernst en de best practices die van invloed zijn op de beveiliging van uw werk belasting.
+Security Center bootst het werk van een beveiligingsanalist na, bekijkt uw beveiligingsaanbevelingen en past geavanceerde algoritmen toe om te bepalen hoe cruciaal elke aanbeveling is.
+Azure Security Center controleert voortdurend uw actieve aanbevelingen en berekent uw beveiligde score op basis daarvan, de score van een aanbeveling is afgeleid van de ernst en beveiligingsbestpractices die uw workloadbeveiliging het meest beïnvloeden.
 
-Security Center biedt u ook een **algemene beveiligde Score**. 
+Security Center biedt u ook een **algemene beveiligde score.** 
 
-De **algemene beveiligde Score** is een accumulatie van al uw aanbevelings scores. U kunt uw algemene beveiligde score voor uw abonnementen of beheer groepen bekijken, afhankelijk van wat u selecteert. De score is afhankelijk van het geselecteerde abonnement en de actieve aanbevelingen voor deze abonnementen.
+**Overall Secure Score** is een opeenstapeling van al uw aanbevelingsscores. U uw algemene beveiligde score bekijken voor uw abonnementen of beheergroepen, afhankelijk van wat u selecteert. De score is afhankelijk van het geselecteerde abonnement en de actieve aanbevelingen voor deze abonnementen.
 
-Als u wilt controleren welke aanbevelingen van invloed zijn op uw beveiligde Score, kunt u de bovenste drie meest voorkomende aanbevelingen in het dash board van Security Center bekijken of u kunt de aanbevelingen in de Blade met de lijst met aanbevelingen sorteren met behulp van de kolom **beveiligde Score effect** .
+Als u wilt controleren welke aanbevelingen het meest van invloed zijn op uw beveiligde score, u de drie meest impactvolle aanbevelingen in het dashboard van het beveiligingscentrum bekijken of u de aanbevelingen in het lijstblad van de aanbevelingen sorteren met de impactkolom **Secure Score.**
 
-Uw algemene beveiligde Score weer geven:
+Ga als resultaat naar uw algemene beveiligde score:
 
-1. Klik in het Azure-dash board op **Security Center** en klik vervolgens op **beveiligde Score**.
+1. Klik in het Azure-dashboard op **Beveiligingscentrum** en klik vervolgens op **Beveiligde score**.
 
-2. Bovenaan ziet u de belangrijkste aandachtspunten voor de Score:
-   - De **totale beveiligde Score** vertegenwoordigt de Score per beleid, per geselecteerd abonnement
-   - **Beveiligde Score per categorie** toont u welke resources de meeste aandacht nodig hebben
-   - De **belangrijkste aanbevelingen van een beveiligde score hebben** een lijst met de aanbevelingen die uw beveiligde Score optimaal verbeteren als u ze implementeert.
+2. Bovenaan zie je hoogtepunten van de beveiligde score:
+   - De **algemene beveiligde score** vertegenwoordigt de score per beleid, per geselecteerd abonnement
+   - **Secure Score per categorie** laat zien welke resources de meeste aandacht nodig hebben
+   - **De belangrijkste aanbevelingen van Secure Score impact** bieden u een lijst met aanbevelingen die uw Secure Score het meest verbeteren als u ze implementeert.
  
-   ![Beveiligde Score](./media/security-center-secure-score/secure-score-dashboard.png)
+   ![Veilige score](./media/security-center-secure-score/secure-score-dashboard.png)
 
-3. In de onderstaande tabel ziet u elk van uw abonnementen en de algehele beveiligde score voor elk abonnement.
+3. In de onderstaande tabel u elk van uw abonnementen en de algehele secure score voor elk.
 
    > [!NOTE]
-   > De som van de beveiligde Score van elk abonnement is niet gelijk aan de algehele beveiligde Score. De beveiligde Score is een berekening op basis van de verhouding tussen uw gezonde resources en het totale aantal resources per aanbeveling, en niet de som van de beveiligde scores in uw abonnementen. 
+   > De som van de Secure Score van elk abonnement is niet gelijk aan de totale Secure Score. De Secure Score is een berekening op basis van de verhouding tussen uw gezonde resources en uw totale resources per aanbeveling, niet een som van secure scores voor uw abonnementen. 
    >
-4. Klik op **aanbevelingen weer geven** om de aanbevelingen voor dat abonnement te bekijken die u kunt herstellen om uw beveiligde score te verbeteren.
-4. In de lijst met aanbevelingen ziet u dat er voor elke aanbeveling een kolom is die de impact van de **beveiligde Score**weergeeft. Dit aantal geeft aan hoeveel uw algemene beveiligde score zal verbeteren als u de aanbevelingen volgt. Als u bijvoorbeeld in het onderstaande scherm **beveiligings problemen in container beveiligings configuraties**herstelt, wordt uw beveiligde Score met 35 punten verhoogd.
+4. Klik **op Aanbevelingen weergeven** om de aanbevelingen voor dat abonnement te bekijken die u herstellen om uw beveiligde score te verbeteren.
+4. In de lijst met aanbevelingen u zien dat er voor elke aanbeveling een kolom is die de impact van de **beveiligde score**vertegenwoordigt. Dit getal geeft aan hoeveel uw algehele beveiligde score zal verbeteren als u de aanbevelingen opvolgt. Bijvoorbeeld, in het scherm hieronder, als u **kwetsbaarheden in container beveiligingsconfiguraties te verhelpen,** uw Secure Score zal toenemen met 35 punten.
 
-   ![Beveiligde Score](./media/security-center-secure-score/security-center-secure-score1.png)
-
-
-
-## <a name="individual-secure-score"></a>Afzonderlijke beveiligde Score
-
-Als u afzonderlijke beveiligde scores wilt bekijken, kunt u deze ook vinden op de Blade met de aanbevelingen.  
-
-De **aanbevolen beveiligings Score** is een berekening op basis van de verhouding tussen uw in orde zijnde resources en uw totale resources. Als het aantal in orde zijnde resources gelijk is aan het totale aantal resources, krijgt u de maximale beveiligde Score van de aanbeveling van 50. Als u wilt proberen om uw beveiligde Score dichter bij de maximale score te halen, kunt u de beschadigde bronnen corrigeren door de aanbevelingen te volgen.
-
-Met de impact op de **aanbeveling** kunt u zien hoeveel uw beveiligde Score verbetert als u de aanbevolen stappen toepast. Als uw beveiligde Score bijvoorbeeld 42 is en de impact van de **aanbeveling** + 3 is, voert u de stappen uit die worden beschreven in de aanbeveling uw score te verbeteren tot 45.
-
-De aanbeveling laat zien welke bedreigingen uw werk belasting beschikbaar maakt als de herstel stappen niet worden uitgevoerd.
-
-![afzonderlijke aanbevelings veilige Score](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
+   ![Veilige score](./media/security-center-secure-score/security-center-secure-score1.png)
 
 
+
+## <a name="individual-secure-score"></a>Individuele beveiligde score
+
+Om individuele beveiligde scores te bekijken, u deze bovendien vinden in het individuele aanbevelingsblad.  
+
+De **AanbevelingS beveiligde score** is een berekening op basis van de verhouding tussen uw gezonde resources en uw totale resources. Als het aantal gezonde resources gelijk is aan het totale aantal resources, krijgt u de maximale beveiligde score van de aanbeveling van 50. Als u wilt proberen uw beveiligde score dichter bij de maximale score te krijgen, lost u de ongezonde resources op door de aanbevelingen op te volgen.
+
+Met **de invloed op de aanbeveling** u weten hoeveel uw beveiligde score verbetert als u de aanbevelingsstappen toepast. Als uw beveiligde score bijvoorbeeld 42 is en de **impact op aanbeveling** +3 is, verbetert het uitvoeren van de stappen die in de aanbeveling worden beschreven uw score tot 45.
+
+De aanbeveling laat zien aan welke bedreigingen uw werkbelasting wordt blootgesteld als de herstelstappen niet worden uitgevoerd.
+
+![individuele aanbeveling veilige score](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel wordt uitgelegd hoe u uw beveiligings postuur kunt verbeteren met behulp van **beveiligde scores** in azure Security Center. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
+In dit artikel ziet u hoe u uw beveiligingshouding verbeteren met **Secure Score** in Azure Security Center. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
 
-* [Veelgestelde](faq-general.md)vragen over de Azure Security Center: vind een veelgestelde vraag over de service en de beveiligde Score.
-* [Security health monitoring in Azure Security Center](security-center-monitoring.md): ontdek hoe u de status van uw Azure-resources kunt monitoren.
-* [Beveiligde Score-verbeterd](secure-score-security-controls.md)--meer informatie over de voor delen van de verbeterde beveiligde Score die momenteel als preview-versie beschikbaar is.
+* [Azure Security Center FAQ](security-center-faq.md): raadpleeg veelgestelde vragen over het gebruik van de service.
+* [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md): meer informatie over het bewaken van de status van uw Azure-resources.

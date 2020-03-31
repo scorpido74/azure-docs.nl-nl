@@ -1,6 +1,6 @@
 ---
-title: De Mobility-agent voor VMware/fysieke servers beheren met Azure Site Recovery
-description: Beheer de Mobility Service-agent voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van de Azure Site Recovery-service.
+title: De mobiliteitsagent voor VMware/fysieke servers beheren met Azure Site Recovery
+description: De medewerker Mobility Service beheren voor noodherstel van Vm's en fysieke servers naar Azure met behulp van de Azure Site Recovery-service.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
@@ -8,88 +8,88 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256963"
 ---
 # <a name="manage-the-mobility-agent"></a>De Mobility-agent beheren 
 
-U kunt Mobility agent op uw server instellen wanneer u Azure Site Recovery gebruikt voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar Azure. Mobiliteits agent coördineert de communicatie tussen uw beveiligde computer, configuratie server/scale-out proces server en beheert gegevens replicatie. In dit artikel vindt u een overzicht van algemene taken voor het beheren van de Mobility-agent nadat deze is geïmplementeerd.
+U stelt een mobiliteitsagent in op uw server wanneer u Azure Site Recovery gebruikt voor noodherstel van VMware VM's en fysieke servers naar Azure. De mobiliteitsagent coördineert de communicatie tussen uw beveiligde machine, configuratieserver/scale-outprocesserver en beheert gegevensreplicatie. In dit artikel worden veelvoorkomende taken voor het beheren van een mobiliteitsagent samengevat nadat deze is geïmplementeerd.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="update-mobility-service-from-azure-portal"></a>De Mobility-service bijwerken vanuit Azure Portal
+## <a name="update-mobility-service-from-azure-portal"></a>Mobiliteitsservice bijwerken vanuit Azure-portal
 
-1. Voordat u begint, moet u ervoor zorgen dat de configuratie server, scale-out proces servers en alle Master doel servers die deel uitmaken van uw implementatie, worden bijgewerkt voordat u de Mobility-service op beveiligde computers bijwerkt.
-2. Open de kluis > **gerepliceerde items**in de portal.
-3. Als de configuratie server de meest recente versie is, wordt er een melding weer gegeven dat de nieuwe site Recovery-agent update beschikbaar is. Klik om te installeren. "
+1. Voordat u begint, moet u ervoor zorgen dat de configuratieserver, scale-outprocesservers en alle hoofddoelservers die deel uitmaken van uw implementatie, worden bijgewerkt voordat u de Mobiliteitsservice op beveiligde machines bijwerkt.
+2. Open in de portal de kluis > **gerepliceerde items**.
+3. Als de configuratieserver de nieuwste versie is, ziet u een melding met de tekst 'Update van de replicatiesagent van de nieuwe site-replicatie is beschikbaar. Klik om te installeren."
 
-     ![Venster gerepliceerde items](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
+     ![Venster Gerepliceerde items](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. Klik op de melding en selecteer bij **agent update**de computers waarop u de Mobility-service wilt bijwerken. Klik vervolgens op **OK**.
+4. Klik op de melding en selecteer in **agentupdate**de machines waarop u de Mobiliteitsservice wilt upgraden. Klik vervolgens op **OK**.
 
-     ![VM-lijst van gerepliceerde items](./media/vmware-azure-install-mobility-service/update-okpng.png)
+     ![VM-lijst met gerepliceerde items](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-5. De taak Mobility service bijwerken wordt gestart voor elk van de geselecteerde machines.
+5. De taak Update Mobility Service wordt gestart voor elk van de geselecteerde machines.
 
-## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Mobility service bijwerken met het Power shell-script op Windows Server
+## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Mobiliteitsservice bijwerken via powershell-script op Windows-server
 
-Voordat u begint, moet u ervoor zorgen dat de configuratie server, scale-out proces servers en alle Master doel servers die deel uitmaken van uw implementatie, worden bijgewerkt voordat u de Mobility-service op beveiligde computers bijwerkt.
+Voordat u begint, moet u ervoor zorgen dat de configuratieserver, scale-outprocesservers en alle hoofddoelservers die deel uitmaken van uw implementatie, worden bijgewerkt voordat u de Mobiliteitsservice op beveiligde machines bijwerkt.
 
-Het volgende script gebruiken voor het bijwerken van de Mobility-service op een server met de Power shell-cmdlet
+Het volgende script gebruiken om de mobiliteitsservice op een server te upgraden via de cmdlet van de powershell
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
 
-## <a name="update-mobility-service-manually-on-each-protected-server"></a>Mobility service hand matig bijwerken op elke beveiligde server
+## <a name="update-mobility-service-manually-on-each-protected-server"></a>Mobiliteitsservice handmatig bijwerken op elke beveiligde server
 
-1. Voordat u begint, moet u ervoor zorgen dat de configuratie server, scale-out proces servers en alle Master doel servers die deel uitmaken van uw implementatie, worden bijgewerkt voordat u de Mobility-service op beveiligde computers bijwerkt.
+1. Voordat u begint, moet u ervoor zorgen dat de configuratieserver, scale-outprocesservers en alle hoofddoelservers die deel uitmaken van uw implementatie, worden bijgewerkt voordat u de Mobiliteitsservice op beveiligde machines bijwerkt.
 
-2. [Zoek het installatie programma van de agent](vmware-physical-mobility-service-overview.md#locate-installer-files) op basis van het besturings systeem van de server.
+2. [Zoek het installatieprogramma](vmware-physical-mobility-service-overview.md#locate-installer-files) van de agent op basis van het besturingssysteem van de server.
 
 >[!IMPORTANT]
-> Als u Azure IaaS VM van de ene Azure-regio naar de andere repliceert, gebruikt u deze methode niet. Raadpleeg [onze richt lijnen](azure-to-azure-autoupdate.md) voor meer informatie over alle beschik bare opties.
+> Als u Azure IaaS VM van de ene Azure-regio naar de andere repliceert, gebruikt u deze methode niet. Raadpleeg [onze richtlijnen](azure-to-azure-autoupdate.md) voor informatie over alle beschikbare opties.
 
-3. Kopieer het installatie bestand op de beveiligde computer en voer het uit om de Mobility-agent bij te werken.
+3. Kopieer het installatiebestand naar de beveiligde machine en voer het uit om de mobiliteitsagent bij te werken.
 
-## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Update account dat wordt gebruikt voor de push-installatie van de Mobility-service
+## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Update-account dat wordt gebruikt voor push-installatie van Mobility-service
 
-Wanneer u Site Recovery hebt geïmplementeerd, kunt u een push-installatie van de Mobility-service inschakelen door een account op te geven dat door de Site Recovery proces server wordt gebruikt voor toegang tot de computers en de service te installeren wanneer replicatie is ingeschakeld voor de machine. Als u de referenties voor dit account wilt bijwerken, volgt u [deze instructies](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
+Wanneer u Site recovery hebt geïmplementeerd om de push-installatie van de Mobiliteitsservice in te schakelen, hebt u een account opgegeven dat de siteherstelprocesserver gebruikt om toegang te krijgen tot de machines en de service te installeren wanneer replicatie is ingeschakeld voor de machine. Als u de referenties voor dit account wilt bijwerken, volgt u [deze instructies](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
 ## <a name="uninstall-mobility-service"></a>Mobility-service verwijderen
 
-### <a name="on-a-windows-machine"></a>Op een Windows-computer
+### <a name="on-a-windows-machine"></a>Op een Windows-machine
 
-Verwijder de gebruikers interface of een opdracht prompt.
+Verwijder van de gebruikersinterface of van een opdrachtprompt.
 
-- In de **gebruikers interface**: Selecteer in het configuratie scherm van de computer **Program ma's**. Selecteer **Microsoft Azure site Recovery Mobility service/Master doel server** > **verwijderen**.
-- **Vanaf een opdracht prompt**: Open een opdracht prompt venster als beheerder op de computer. Voer de volgende opdracht uit: 
+- **In de gebruikersinterface**: Selecteer in het Configuratiescherm van de machine **Programma's**. Selecteer **Microsoft Azure Site Recovery Mobility Service/Master Target-server** > **Verwijderen**.
+- **Vanuit een opdrachtprompt**: Open een opdrachtpromptvenster als beheerder op de machine. Voer de volgende opdracht uit: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```
 
-### <a name="on-a-linux-machine"></a>Op een Linux-computer
-1. Meld u op de Linux-computer aan als een **hoofd** gebruiker.
-2. Ga in een terminal naar/usr/local/ASR
+### <a name="on-a-linux-machine"></a>Op een Linux machine
+1. Meld u op de Linux-machine aan als **rootgebruiker.**
+2. Ga in een terminal naar /usr/local/ASR.
 3. Voer de volgende opdracht uit:
     ```
     uninstall.sh -Y
    ```
    
-## <a name="install-site-recovery-vss-provider-on-source-machine"></a>Site Recovery VSS-provider installeren op de bron machine
+## <a name="install-site-recovery-vss-provider-on-source-machine"></a>Site Recovery VSS-provider installeren op de bronmachine
 
-Azure Site Recovery VSS-provider is vereist op de bron machine om toepassings consistentie punten te genereren. Als de installatie van de provider niet is geslaagd via de push-installatie, volgt u de onderstaande richt lijnen om deze hand matig te installeren.
+Azure Site Recovery VSS-provider is vereist op de bronmachine om consistentiepunten voor toepassingen te genereren. Als de installatie van de provider niet is geslaagd door middel van push-installatie, volg dan de onderstaande richtlijnen om het handmatig te installeren.
 
-1. Open de admin CMD-venster.
-2. Navigeer naar de installatie locatie van de Mobility-service. (Bijvoorbeeld: C:\Program Files (x86) \Microsoft Azure site Recovery\agent.)
-3. Voer het script InMageVSSProvider_Uninstall. cmd uit. Hiermee wordt de service verwijderd als deze al bestaat.
-4. Voer het script InMageVSSProvider_Install. cmd uit om de VSS-provider hand matig te installeren.
+1. Open het cmd-venster voor beheerders.
+2. Navigeer naar de installatielocatie van de mobiliteitsservice. (Bijvoorbeeld - C:\Program Files (x86)\Microsoft Azure Site Recovery\agent)
+3. Voer het script InMageVSSProvider_Uninstall.cmd uit. Hierdoor wordt de service verwijderen als deze al bestaat.
+4. Voer het script InMageVSSProvider_Install.cmd uit om de VSS-provider handmatig te installeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Herstel na nood geval instellen voor VMware-Vm's](vmware-azure-tutorial.md)
-- [Herstel na nood geval instellen voor fysieke servers](physical-azure-disaster-recovery.md)
+- [Noodherstel instellen voor VMware VM's](vmware-azure-tutorial.md)
+- [Noodherstel instellen voor fysieke servers](physical-azure-disaster-recovery.md)

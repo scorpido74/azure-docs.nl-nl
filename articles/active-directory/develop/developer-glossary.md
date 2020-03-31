@@ -1,6 +1,6 @@
 ---
-title: Woorden lijst voor ontwikkel aars van micro soft Identity platform | Azure
-description: Een lijst met voor waarden voor veelgebruikte concepten en functies voor ontwikkel aars van micro soft Identity platform.
+title: Woordenlijst voor ontwikkelaars van Microsoft-identiteitsplatform | Azure
+description: Een lijst met termen voor veelgebruikte concepten en functies van Microsoft-identiteitsplatformontwikkelaars.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,210 +13,210 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: ce98d2db86c87ac6aa8fa4872bc076714467d32f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263047"
 ---
-# <a name="microsoft-identity-platform-developer-glossary"></a>Woorden lijst voor ontwikkel aars van micro soft Identity platform
+# <a name="microsoft-identity-platform-developer-glossary"></a>Woordenlijst voor ontwikkelaars van Microsoft-identiteitsplatform
 
-Dit artikel bevat definities voor een aantal van de belangrijkste concepten en terminologie van ontwikkel aars, die handig zijn bij het ontwikkelen van toepassingen met behulp van micro soft Identity platform.
+Dit artikel bevat definities voor enkele van de belangrijkste ontwikkelaarsconcepten en terminologie, die handig zijn bij het leren over applicatieontwikkeling met behulp van het Microsoft-identiteitsplatform.
 
-## <a name="access-token"></a>toegangs token
+## <a name="access-token"></a>toegangstoken
 
-Een type [beveiligings token](#security-token) dat is uitgegeven door [een autorisatie server](#authorization-server)en wordt gebruikt door een [client toepassing](#client-application) om toegang te krijgen tot een [beveiligde bron server](#resource-server). Doorgaans in de vorm van een [JSON Web token (JWT)][JWT], wordt in het token de autorisatie van de [resource-eigenaar](#resource-owner)voor de client aangegeven voor een aangevraagd toegangs niveau. Het token bevat alle toepasselijke [claims](#claim) over het onderwerp, zodat de client toepassing het kan gebruiken als een vorm van referenties bij het openen van een bepaalde resource. Dit betekent ook dat de resource-eigenaar geen referenties voor de client beschikbaar moet maken.
+Een type [beveiligingstoken](#security-token) dat is uitgegeven door een [autorisatieserver](#authorization-server)en wordt gebruikt door een [clienttoepassing](#client-application) om toegang te krijgen tot een [beveiligde resourceserver](#resource-server). Typisch in de vorm van een [JSON Web Token (JWT)][JWT], het token belichaamt de autorisatie verleend aan de client door de eigenaar van de [bron](#resource-owner), voor een aangevraagd niveau van toegang. Het token bevat alle toepasselijke [claims](#claim) over het onderwerp, waardoor de clienttoepassing het kan gebruiken als een vorm van referenties bij het openen van een bepaalde bron. Dit elimineert ook de noodzaak voor de eigenaar van de bron om referenties bloot te stellen aan de client.
 
-Toegangs tokens worden ook wel ' gebruiker + app ' of ' alleen app ' genoemd, afhankelijk van de weer gegeven referenties. Wanneer een client toepassing bijvoorbeeld het volgende gebruikt:
+Toegangstokens worden soms aangeduid als 'User+App' of 'App-Only', afhankelijk van de referenties die worden weergegeven. Wanneer een clienttoepassing bijvoorbeeld de:
 
-* Autorisatie-autorisatie [code verleend](#authorization-grant), de eind gebruiker verifieert eerst als de resource-eigenaar, waarbij autorisatie wordt gedelegeerd aan de client om toegang te krijgen tot de resource. De client verifieert achteraf wanneer het toegangs token wordt verkregen. Het token kan soms specifiek worden aangeduid als een gebruikers-en app-token, aangezien het de gebruiker is die de client toepassing heeft geautoriseerd en de toepassing.
-* ["Client referenties"-autorisatie verlenen](#authorization-grant), de client biedt de enige verificatie, werkt zonder de verificatie/autorisatie van de resource-eigenaar, zodat het token soms ook wel een ' app-only '-token kan worden genoemd.
+* [Autorisatiecode verlening](#authorization-grant), de eindgebruiker verifieert eerst als de eigenaar van de bron, delegeren van autorisatie aan de client om toegang te krijgen tot de bron. De client verifieert daarna bij het verkrijgen van het toegangstoken. Het token kan soms specifieker worden aangeduid als een "User+App"-token, omdat het zowel de gebruiker vertegenwoordigt die de clienttoepassing heeft geautoriseerd als de toepassing.
+* ["Clientreferenties" autorisatieverlening](#authorization-grant), de client biedt de enige verificatie, functioneren zonder authenticatie/ autorisatie van de bron-eigenaar, zodat het token soms kan worden aangeduid als een "App-Only"-token.
 
-Zie de naslag informatie over [micro soft Identity platform-tokens][AAD-Tokens-Claims] voor meer details.
+Zie [Microsoft-identiteitsplatform Token Reference][AAD-Tokens-Claims] voor meer informatie.
 
-## <a name="application-id-client-id"></a>toepassings-ID (client-ID)
+## <a name="application-id-client-id"></a>toepassings-id (client-id)
 
-De unieke id van Azure AD-problemen met een toepassings registratie waarmee een specifieke toepassing en de bijbehorende configuraties worden geïdentificeerd. Deze toepassings-ID ([client-id](https://tools.ietf.org/html/rfc6749#page-15)) wordt gebruikt bij het uitvoeren van verificatie aanvragen en wordt tijdens de ontwikkelings tijd aan de verificatie bibliotheken gegeven. De toepassings-ID (client-ID) is geen geheim.
+De unieke id Azure AD geeft problemen met een toepassingsregistratie die een specifieke toepassing en de bijbehorende configuraties identificeert. Deze toepassings-ID[(client-ID)](https://tools.ietf.org/html/rfc6749#page-15)wordt gebruikt bij het uitvoeren van verificatieaanvragen en wordt in ontwikkeltijd aan de verificatiebibliotheken verstrekt. De toepassings-ID (client-ID) is geen geheim.
 
-## <a name="application-manifest"></a>toepassings manifest
+## <a name="application-manifest"></a>toepassingsmanifest
 
-Een functie van de [Azure Portal][AZURE-portal], die een JSON-weer gave van de identiteits configuratie van de toepassing produceert, die wordt gebruikt als een mechanisme voor het bijwerken van de bijbehorende [toepassing][Graph-App-Resource] en [ServicePrincipal][Graph-Sp-Resource] -entiteiten. Zie [het toepassings manifest van Azure Active Directory][AAD-App-Manifest] voor meer informatie.
+Een functie die wordt geleverd door de [Azure-portal][AZURE-portal], die een JSON-weergave van de identiteitsconfiguratie van de toepassing produceert, wordt gebruikt als een mechanisme voor het bijwerken van de bijbehorende [entiteiten voor toepassing][Graph-App-Resource] en [serviceprincipal.][Graph-Sp-Resource] Zie [Het Azure Active Directory-toepassingsmanifest voor][AAD-App-Manifest] meer informatie bekijken.
 
-## <a name="application-object"></a>Toepassings object
+## <a name="application-object"></a>toepassingsobject
 
-Wanneer u een toepassing registreert of bijwerkt in de [Azure Portal][AZURE-portal], maakt/werkt de portal zowel een toepassings object als een bijbehorend [Service-Principal-object](#service-principal-object) voor die Tenant. Het toepassings object *definieert* de identiteits configuratie globaal van de toepassing (in alle tenants waar deze toegang tot heeft), waarbij een sjabloon wordt opgegeven van waaruit de bijbehorende service-principal-object (en) zijn *afgeleid* voor gebruik lokaal tijdens runtime (in een specifieke Tenant).
+Wanneer u een toepassing registreert/updatet in de [Azure-portal,][AZURE-portal]maakt/werkt de portal zowel een toepassingsobject als een bijbehorend [servicehoofdobject](#service-principal-object) voor die tenant. Het toepassingsobject *definieert* de identiteitsconfiguratie van de toepassing wereldwijd (voor alle tenants waar deze toegang heeft), en biedt een sjabloon waaruit het bijbehorende servicehoofdobject(en) is *afgeleid* voor lokaal gebruik tijdens run-time (in een specifieke tenant).
 
-Zie [Application and Service Principal Objects][AAD-App-SP-Objects](Engelstalig) voor meer informatie.
+Zie [Hoofdobjecten voor toepassingen en servicetoepassingen][AAD-App-SP-Objects]voor meer informatie.
 
 ## <a name="application-registration"></a>toepassingsregistratie
 
-Als u wilt toestaan dat een toepassing kan worden geïntegreerd met de functies voor het beheren van identiteits-en toegangs beheer in azure AD, moet deze zijn geregistreerd bij een Azure AD- [Tenant](#tenant). Wanneer u uw toepassing registreert bij Azure AD, geeft u een identiteits configuratie voor uw toepassing op, zodat deze kan worden geïntegreerd met Azure AD en gebruikmaakt van functies zoals:
+Als u een toepassing wilt laten integreren met en delegeren van identiteits- en toegangsbeheerfuncties aan Azure AD, moet deze zijn geregistreerd bij een Azure [AD-tenant.](#tenant) Wanneer u uw toepassing registreert bij Azure AD, biedt u een identiteitsconfiguratie voor uw toepassing, zodat deze kan worden geïntegreerd met Azure AD en functies gebruiken zoals:
 
-* Robuust beheer van eenmalige aanmelding met Azure AD Identity Management en [OpenID Connect Connect][OpenIDConnect] protocol-implementatie
-* Brokered toegang tot [beveiligde bronnen](#resource-server) door [client toepassingen](#client-application)via OAuth 2,0- [autorisatie server](#authorization-server)
-* [Toestemming raamwerk](#consent) voor het beheren van client toegang tot beveiligde bronnen, op basis van autorisatie van de resource-eigenaar.
+* Robuust beheer van single sign-on met Azure AD Identity Management en [OpenID Connect-protocolimplementatie][OpenIDConnect]
+* Brokered access to [protected resources](#resource-server) by [client applications](#client-application), via OAuth 2.0 authorization [server](#authorization-server)
+* [Toestemmingskader](#consent) voor het beheren van clienttoegang tot beveiligde bronnen, op basis van autorisatie voor de eigenaar van resources.
 
-Zie [toepassingen integreren met Azure Active Directory][AAD-Integrating-Apps] voor meer informatie.
+Zie [Toepassingen integreren met Azure Active Directory][AAD-Integrating-Apps] voor meer informatie.
 
 ## <a name="authentication"></a>verificatie
 
-De handeling van een feestje om geldige referenties te verkrijgen, waarbij de basis vormt voor het maken van een beveiligingsprincipal die moet worden gebruikt voor identiteits-en toegangs beheer. Tijdens een [OAuth2-autorisatie verleent](#authorization-grant) de partij die de verificatie uitvoert, de rol van ofwel de [resource-eigenaar](#resource-owner) of [client toepassing](#client-application), afhankelijk van de gebruikte toekenning.
+De handeling van het uitdagen van een partij voor legitieme referenties, het verstrekken van de basis voor de oprichting van een security principal te worden gebruikt voor identiteit en toegangscontrole. Tijdens een [OAuth2-autorisatiesubsidie](#authorization-grant) vult de partij die bijvoorbeeld de rol van [resource-eigenaar](#resource-owner) of [clientaanvraag](#client-application)invult, afhankelijk van de gebruikte subsidie.
 
-## <a name="authorization"></a>authorization
+## <a name="authorization"></a>autorisatie
 
-Het verlenen van een geverifieerde beveiligingsprincipal machtiging om iets te doen. Er zijn twee primaire gebruiksscenario's in het Azure AD-programmeermodel:
+De handeling van het verlenen van een geverifieerde security principal toestemming om iets te doen. Er zijn twee primaire gebruiksscenario's in het Azure AD-programmeermodel:
 
-* Tijdens een OAuth2 voor autorisatie overdracht: wanneer de [resource-eigenaar](#resource-owner) autorisatie [toewijst](#authorization-grant) aan de [client toepassing](#client-application), waardoor de client toegang heeft tot de resources van de resource-eigenaar.
-* Tijdens de toegang tot bronnen door de client: zoals geïmplementeerd door de [bron server](#resource-server), met behulp van de [claim](#claim) waarden die aanwezig zijn in het [toegangs token](#access-token) om op basis van de toegangs beheer beslissingen te nemen.
+* Tijdens een [OAuth2-autorisatiesubsidiestroom:](#authorization-grant) wanneer de [eigenaar van](#resource-owner) de resource autorisatie verleent aan de [clienttoepassing,](#client-application)zodat de client toegang heeft tot de resources van de broneigenaar.
+* Tijdens de toegang tot resources door de client: zoals geïmplementeerd door de [resourceserver,](#resource-server)gebruikt u de [claimwaarden](#claim) die aanwezig zijn in het [toegangstoken](#access-token) om op basis daarvan beslissingen over toegangsbeheer te nemen.
 
-## <a name="authorization-code"></a>autorisatie code
+## <a name="authorization-code"></a>autorisatiecode
 
-Een korte levens ' token ' dat aan een [client toepassing](#client-application) door het [autorisatie-eind punt](#authorization-endpoint)wordt door gegeven als onderdeel van de stroom ' autorisatie code ', een van de vier OAuth2- [autorisatie subsidies](#authorization-grant). De code wordt geretourneerd naar de client toepassing als reactie op de verificatie van een [resource-eigenaar](#resource-owner), met de mede deling dat de resource-eigenaar toestemming heeft gegeven om toegang te krijgen tot de aangevraagde resources. Als onderdeel van de stroom wordt de code later ingewisseld voor een [toegangs token](#access-token).
+Een kortstondig "token" die door het [autorisatieeindpunt](#authorization-endpoint)aan een [clientaanvraag](#client-application) wordt verstrekt , als onderdeel van de "autorisatiecode"-stroom , een van de vier OAuth2-autorisatiesubsidies . [authorization grants](#authorization-grant) De code wordt teruggestuurd naar de clienttoepassing als reactie op verificatie van een [broneigenaar,](#resource-owner)wat aangeeft dat de eigenaar van de bron de autorisatie heeft gedelegeerd om toegang te krijgen tot de gevraagde bronnen. Als onderdeel van de stroom wordt de code later ingewisseld voor een [toegangstoken.](#access-token)
 
-## <a name="authorization-endpoint"></a>Autorisatie-eind punt
+## <a name="authorization-endpoint"></a>eindpunt van de vergunning
 
-Een van de eind punten die worden geïmplementeerd door de [autorisatie server](#authorization-server), die wordt gebruikt om te communiceren met de [resource-eigenaar](#resource-owner) om een [autorisatie](#authorization-grant) machtiging te bieden tijdens een OAuth2-autorisatie stroom. Afhankelijk van de gebruikte overdrachts stroom, kan de daad werkelijke verleende toekenning variëren, met inbegrip van een [autorisatie code](#authorization-code) of [beveiligings token](#security-token).
+Een van de eindpunten geïmplementeerd door de [autorisatieserver](#authorization-server), gebruikt om te communiceren met de [eigenaar van](#resource-owner) de resource om een [autorisatie subsidie](#authorization-grant) te verlenen tijdens een OAuth2 autorisatie subsidie stroom. Afhankelijk van de gebruikte autorisatiesubsidiestroom kan de werkelijke subsidie variëren, inclusief een [autorisatiecode](#authorization-code) of [beveiligingstoken.](#security-token)
 
-Zie de secties [autorisatie typen][OAuth2-AuthZ-Grant-Types] van de OAuth2-specificatie en het [autorisatie-eindpunt][OAuth2-AuthZ-Endpoint] en de [OpenIDConnect-specificatie][OpenIDConnect-AuthZ-Endpoint] voor meer informatie.
+Zie de [typetypen autorisatieverlening][OAuth2-AuthZ-Grant-Types] en [eindpuntsecties van][OAuth2-AuthZ-Endpoint] de OAuth2-specificatie en de [OpenIDConnect-specificatie][OpenIDConnect-AuthZ-Endpoint] voor meer details.
 
-## <a name="authorization-grant"></a>autorisatie verlenen
+## <a name="authorization-grant"></a>vergunningverlening
 
-Een referentie voor de [resource owner's](#resource-owner) [autorisatie](#authorization) van de resource-eigenaar om toegang te krijgen tot de beveiligde bronnen die aan een [client toepassing](#client-application)worden verleend. Een client toepassing kan een van de [vier toekennings typen die door het OAuth2-autorisatie raamwerk worden gedefinieerd][OAuth2-AuthZ-Grant-Types] , gebruiken om een subsidie te verkrijgen, afhankelijk van het type/de vereisten van de client: "autorisatie code verlenen", "client referenties verlenen", "impliciete toekenning" en "wachtwoord referenties van de resource-eigenaar". De referentie die wordt geretourneerd naar de client is een [toegangs token](#access-token)of een [autorisatie code](#authorization-code) (later voor een toegangs token), afhankelijk van het type autorisatie toekenning dat wordt gebruikt.
+Een referentie die de [autorisatie](#authorization) van de [broneigenaar](#resource-owner) vertegenwoordigt om toegang te krijgen tot de beveiligde resources, verleend aan een [clienttoepassing.](#client-application) Een clienttoepassing kan een van de vier subsidietypen gebruiken [die zijn gedefinieerd door het OAuth2 Authorization Framework][OAuth2-AuthZ-Grant-Types] om een subsidie te verkrijgen, afhankelijk van het type/de vereisten van de client: "autorisatiecodegrant", "clientcredentials grant", "implicit grant" en "resource owner password credentials grant". De referentie die aan de client wordt geretourneerd, is een [toegangstoken](#access-token)of een [autorisatiecode](#authorization-code) (later ingeruild voor een toegangstoken), afhankelijk van het type autorisatieverlening dat wordt gebruikt.
 
-## <a name="authorization-server"></a>autorisatie server
+## <a name="authorization-server"></a>autorisatieserver
 
-Zoals gedefinieerd in het [OAuth2-verificatie raamwerk][OAuth2-Role-Def], de server die verantwoordelijk is voor het verlenen van toegangs tokens aan de [client](#client-application) na verificatie van de [resource-eigenaar](#resource-owner) en het verkrijgen van de autorisatie. Een [client toepassing](#client-application) communiceert met de autorisatie server tijdens runtime via de [autorisatie](#authorization-endpoint) -en [token](#token-endpoint) -eind punten, in overeenstemming met de OAuth2-gedefinieerde [autorisatie toekenningen](#authorization-grant).
+Zoals gedefinieerd door het [OAuth2 Authorization Framework][OAuth2-Role-Def], de server die verantwoordelijk is voor de uitgifte van toegangstokens aan de [client](#client-application) na het succesvol verifiëren van de eigenaar van de [bron](#resource-owner) en het verkrijgen van de autorisatie. Een [clienttoepassing](#client-application) werkt op runtime met de autorisatieserver via de [autorisatie-](#authorization-endpoint) en [tokeneindpunten,](#token-endpoint) in overeenstemming met de door OAuth2 gedefinieerde [autorisatiesubsidies.](#authorization-grant)
 
-In het geval van micro soft Identity platform Application Integration, implementeert micro soft Identity platform de rol van de autorisatie server voor Azure AD-toepassingen en micro soft-service-Api's, bijvoorbeeld [Microsoft Graph-api's][Microsoft-Graph].
+In het geval van microsoft-identiteitsplatform-toepassingsintegratie implementeert microsoft-identiteitsplatform de autorisatieserverrol voor Azure AD-toepassingen en [Microsoft-service-API's, bijvoorbeeld Microsoft Graph API's][Microsoft-Graph].
 
-## <a name="claim"></a>optreedt
+## <a name="claim"></a>Vordering
 
-Een [beveiligings token](#security-token) bevat claims, waarmee beweringen over één entiteit (zoals een [client toepassing](#client-application) of [resource-eigenaar](#resource-owner)) aan een andere entiteit (zoals de [resource server](#resource-server)) worden verstrekt. Claims zijn naam/waarde-paren die feiten over het onderwerp van de token door geven (bijvoorbeeld de beveiligingsprincipal die is geverifieerd door de [autorisatie server](#authorization-server)). De claims die aanwezig zijn in een gegeven token zijn afhankelijk van verschillende variabelen, zoals het type token, het type referentie dat wordt gebruikt voor het verifiëren van het onderwerp, de toepassings configuratie, enzovoort.
+Een [beveiligingstoken](#security-token) bevat claims die beweringen geven over een entiteit (zoals een [clienttoepassing](#client-application) of [broneigenaar)](#resource-owner)aan een andere entiteit (zoals de [resourceserver).](#resource-server) Claims zijn naam/waardeparen die feiten over het tokenonderwerp doorgeven (bijvoorbeeld de beveiligingsprincipal die is geverifieerd door de [autorisatieserver](#authorization-server)). De claims in een bepaald token zijn afhankelijk van verschillende variabelen, waaronder het type token, het type referentie dat wordt gebruikt om het onderwerp te verifiëren, de toepassingsconfiguratie, enz.
 
-Zie de naslag informatie over [micro soft Identity platform-tokens][AAD-Tokens-Claims] voor meer details.
+Zie [Microsoft-tokenreferentie][AAD-Tokens-Claims] voor identiteitsplatforms voor meer informatie.
 
-## <a name="client-application"></a>client toepassing
+## <a name="client-application"></a>clienttoepassing
 
-Zoals gedefinieerd door het [OAuth2-autorisatie raamwerk][OAuth2-Role-Def], een toepassing die beveiligde bron aanvragen maakt namens de [eigenaar](#resource-owner)van de resource. De term ' client ' impliceert geen specifieke kenmerken voor de hardware-implementatie (bijvoorbeeld of de toepassing wordt uitgevoerd op een server, een bureau blad of andere apparaten).
+Zoals gedefinieerd door het [OAuth2 Authorization Framework][OAuth2-Role-Def], een toepassing die namens de eigenaar van de resource aanvragen voor beveiligde resources [.](#resource-owner) De term "client" impliceert geen specifieke hardware-implementatiekenmerken (bijvoorbeeld of de toepassing wordt uitgevoerd op een server, een desktop of andere apparaten).
 
-Een client toepassing vraagt [autorisatie](#authorization) van een resource-eigenaar om deel te nemen aan een [OAuth2-machtigings](#authorization-grant) stroom en heeft toegang tot api's/gegevens voor de naam van de bron eigenaar. Het OAuth2-autorisatie raamwerk [definieert twee typen clients][OAuth2-Client-Types]: ' vertrouwelijk ' en ' openbaar ', op basis van de mogelijkheid van de client om de vertrouwelijkheid van de referenties te hand haven. Toepassingen kunnen een [webclient (vertrouwelijk)](#web-client) implementeren die wordt uitgevoerd op een webserver, een [systeem eigen client (openbaar)](#native-client) die is geïnstalleerd op een apparaat of een [op een gebruiker gebaseerde client (openbaar)](#user-agent-based-client) die wordt uitgevoerd in de browser van een apparaat.
+Een clienttoepassing vraagt [toestemming](#authorization) aan van een broneigenaar om deel te nemen aan een [oauth2-autorisatieverleningsstroom](#authorization-grant) en heeft namens de eigenaar van de resource toegang tot API's/gegevens. Het OAuth2 Authorization Framework [definieert twee soorten clients][OAuth2-Client-Types], "vertrouwelijk" en "openbaar", op basis van het vermogen van de klant om de vertrouwelijkheid van zijn referenties te behouden. Toepassingen kunnen een [webclient (vertrouwelijk)](#web-client) implementeren die wordt uitgevoerd op een webserver, een [native client (openbaar)](#native-client) die op een apparaat is geïnstalleerd of een [client op basis van gebruikersagent (openbaar)](#user-agent-based-client) die in de browser van een apparaat wordt uitgevoerd.
 
-## <a name="consent"></a>Vergunning
+## <a name="consent"></a>Toestemming
 
-Het proces van een [resource-eigenaar](#resource-owner) die autorisatie verleent aan een [client toepassing](#client-application)om toegang te krijgen tot beveiligde bronnen onder specifieke [machtigingen](#permissions), namens de eigenaar van de resource. Afhankelijk van de machtigingen die door de client worden aangevraagd, wordt een beheerder of gebruiker gevraagd toestemming te geven om respectievelijk toegang tot hun organisatie/individuele gegevens toe te staan. In een scenario met [meerdere tenants](#multi-tenant-application) wordt de [Service-Principal](#service-principal-object) van de toepassing ook vastgelegd in de Tenant van de toestemmings gebruiker.
+Het proces van een [broneigenaar](#resource-owner) die namens de eigenaar van de resource een autorisatie verleent aan een [clienttoepassing,](#client-application)om toegang te krijgen tot beveiligde bronnen onder specifieke [machtigingen.](#permissions) Afhankelijk van de door de client gevraagde machtigingen wordt een beheerder of gebruiker om toestemming gevraagd om toegang te verlenen tot respectievelijk hun organisatie/individuele gegevens. Opmerking, in een [multi-tenant](#multi-tenant-application) scenario wordt de [serviceprincipal](#service-principal-object) van de toepassing ook geregistreerd in de tenant van de instemmende gebruiker.
 
-Zie het [instemming-Framework](consent-framework.md) voor meer informatie.
+Zie [toestemmingskader](consent-framework.md) voor meer informatie.
 
 ## <a name="id-token"></a>ID-token
 
-Een [OpenID Connect Connect-][OpenIDConnect-ID-Token] [beveiligings token](#security-token) dat wordt verschaft door het [autorisatie-eind punt](#authorization-endpoint)van een [autorisatie server](#authorization-server) , dat [claims](#claim) bevat die betrekking hebben op de verificatie van de [resource-eigenaar](#resource-owner)van een eind gebruiker. Net als een toegangs token worden ID-tokens ook weer gegeven als een digitaal ondertekende [JSON Web token (JWT)][JWT]. In tegens telling tot een toegangs token worden claims van een ID-token niet gebruikt voor doel einden met betrekking tot toegang tot resources en specifiek toegangs beheer.
+Een [OpenID][OpenIDConnect-ID-Token] [Connect-beveiligingstoken](#security-token) dat wordt geleverd door het [autorisatieeindpunt](#authorization-endpoint)van een [autorisatieserver](#authorization-server) , dat [claims](#claim) bevat met betrekking tot de verificatie van de [eigenaar](#resource-owner)van een bron van een eindgebruiker . Net als een toegangstoken worden ID-tokens ook weergegeven als een digitaal ondertekende [JSON-webtoken (JWT).][JWT] In tegenstelling tot een toegangstoken worden de claims van een ID-token echter niet gebruikt voor doeleinden die verband houden met toegang tot resources en specifiek toegangsbeheer.
 
-Zie de naslag informatie over [micro soft Identity platform-tokens][AAD-Tokens-Claims] voor meer details.
+Zie [Microsoft-tokenreferentie][AAD-Tokens-Claims] voor identiteitsplatforms voor meer informatie.
 
-## <a name="microsoft-identity-platform"></a>Micro soft Identity-platform
+## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
-Het Microsoft Identity Platform bouwt voort op de identiteitsservice en het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Met het Microsoft Identity Platform kunnen ontwikkelaars toepassingen maken waarbij gebruikers zich met alle Microsoft-identiteiten kunnen aanmelden en waarmee tokens worden opgehaald voor het aanroepen van Microsoft Graph, andere Microsoft-API's of API's die door ontwikkelaars zijn gemaakt. Het is een volledig uitgeruste platform dat bestaat uit een verificatie service, Bibliotheken, toepassings registratie en-configuratie, volledige documentatie voor ontwikkel aars, code voorbeelden en andere inhoud voor ontwikkel aars. Het Microsoft Identity Platform biedt ondersteuning voor standaardprotocollen als OAuth 2.0 en OpenID Connect. Zie [over micro soft Identity platform](about-microsoft-identity-platform.md) voor meer informatie.
+Het Microsoft Identity Platform bouwt voort op de identiteitsservice en het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Met het Microsoft Identity Platform kunnen ontwikkelaars toepassingen maken waarbij gebruikers zich met alle Microsoft-identiteiten kunnen aanmelden en waarmee tokens worden opgehaald voor het aanroepen van Microsoft Graph, andere Microsoft-API's of API's die door ontwikkelaars zijn gemaakt. Het is een volledig uitgerust platform dat bestaat uit een verificatieservice, bibliotheken, applicatieregistratie en -configuratie, volledige documentatie van ontwikkelaars, codevoorbeelden en andere ontwikkelaarsinhoud. Het Microsoft Identity Platform biedt ondersteuning voor standaardprotocollen als OAuth 2.0 en OpenID Connect. Zie [Over het identiteitsplatform van Microsoft](about-microsoft-identity-platform.md) voor meer informatie.
 
-## <a name="multi-tenant-application"></a>multi tenant-toepassing
+## <a name="multi-tenant-application"></a>multi-tenant toepassing
 
-Een klasse van de toepassing waarmee u zich kunt aanmelden en [toestemming](#consent) wilt geven door gebruikers die zijn ingericht in een Azure AD- [Tenant](#tenant), met inbegrip van andere tenants dan de locatie waar de client is geregistreerd. [Systeem eigen client](#native-client) toepassingen zijn standaard multi tenants, terwijl [web client](#web-client) en [web resource/API-](#resource-server) toepassingen de mogelijkheid hebben om één of meerdere tenants te selecteren. Als u daarentegen een webtoepassing die is geregistreerd als één Tenant, toestaat u alleen aanmeldingen van gebruikers accounts die zijn ingericht in dezelfde Tenant als de gebruiker waar de toepassing is geregistreerd.
+Een toepassingsklasse die aanmelding en [toestemming](#consent) biedt voor gebruikers die zijn ingericht in een Azure [AD-tenant,](#tenant)inclusief andere tenants dan die waar de client is geregistreerd. [Native clienttoepassingen](#native-client) zijn standaard multitenant, terwijl [webclient-](#web-client) en [webbron-/API-toepassingen](#resource-server) de mogelijkheid hebben om te kiezen tussen één of meerdere tenant. Een webtoepassing die als één tenant is geregistreerd, staat daarentegen alleen aanmeldingen toe van gebruikersaccounts die zijn ingericht in dezelfde tenant als die waarin de toepassing is geregistreerd.
 
-Zie [een Azure AD-gebruiker aanmelden met behulp van het patroon voor multi tenant-toepassingen][AAD-Multi-Tenant-Overview] voor meer informatie.
+Zie [Hoe u zich aanmeldt bij een Azure AD-gebruiker met behulp van het toepassingspatroon met meerdere tenants][AAD-Multi-Tenant-Overview] voor meer informatie.
 
-## <a name="native-client"></a>systeem eigen client
+## <a name="native-client"></a>native client
 
-Een type [client toepassing](#client-application) dat systeem eigen wordt geïnstalleerd op een apparaat. Omdat alle code op een apparaat wordt uitgevoerd, wordt dit beschouwd als een ' open bare ' client, omdat het niet mogelijk is om referenties persoonlijk of vertrouwelijk op te slaan. Zie [OAuth2-client typen en-profielen][OAuth2-Client-Types] voor meer informatie.
+Een type [clienttoepassing](#client-application) dat native op een apparaat is geïnstalleerd. Aangezien alle code wordt uitgevoerd op een apparaat, wordt het beschouwd als een "openbare" client vanwege het onvermogen om referenties privé / vertrouwelijk op te slaan. Zie [OAuth2-clienttypen en -profielen][OAuth2-Client-Types] voor meer informatie.
 
-## <a name="permissions"></a>machtigingen
+## <a name="permissions"></a>Machtigingen
 
-Een [client toepassing](#client-application) krijgt toegang tot een [bron server](#resource-server) door het declareren van machtigings aanvragen. Er zijn twee typen beschikbaar:
+Een [clienttoepassing](#client-application) krijgt toegang tot een [resourceserver](#resource-server) door toestemmingsaanvragen in te dienen. Er zijn twee typen beschikbaar:
 
-* ' Gedelegeerde ' machtigingen, waarmee toegang op basis van een [bereik](#scopes) wordt opgegeven met behulp van gedelegeerde autorisatie van de aangemelde [resource-eigenaar](#resource-owner), worden in runtime weer gegeven als [' scp ' claims](#claim) in het [toegangs token](#access-token)van de client.
-* ' Toepassings machtigingen ', waarmee [op rollen gebaseerde](#roles) toegang met de referenties/identiteit van de client toepassing wordt opgegeven, worden in runtime weer gegeven als [' rollen ' claims](#claim) in het toegangs token van de client.
+* Machtigingen voor gedelegeerde machtigingen, die [scope-gebaseerde](#scopes) toegang opgeven met behulp van gedelegeerde autorisatie van de eigenaar van de aangemelde [resource,](#resource-owner)worden tijdens verloop van tijd aan de resource gepresenteerd als ["scp"-claims](#claim) in het [toegangstoken](#access-token)van de client .
+* "Toepassingsmachtigingen", die [op rollen gebaseerde](#roles) toegang opgeven met behulp van de referenties/identiteit van de clienttoepassing, worden tijdens verloop van tijd aan de resource gepresenteerd als ["rollen" claims](#claim) in het toegangstoken van de client.
 
-Ze hebben ook het Opper vlak tijdens het [toestemming](#consent) proces, waardoor de beheerder of de resource-eigenaar de mogelijkheid biedt de client toegang tot resources in hun Tenant toe te kennen of te weigeren.
+Ze duiken ook op tijdens het [toestemmingsproces,](#consent) waardoor de beheerder of resource-eigenaar de mogelijkheid krijgt om de client toegang te verlenen/weigeren tot bronnen in hun tenant.
 
-Machtigings aanvragen worden geconfigureerd op de pagina **API-machtigingen** voor een toepassing in de [Azure Portal][AZURE-portal], door de gewenste ' gedelegeerde machtigingen ' en ' toepassings machtigingen ' te selecteren (hiervoor is het lidmaatschap van de rol van globale beheerder vereist). Omdat een [open bare client](#client-application) niet veilig referenties kan onderhouden, kan deze alleen gedelegeerde machtigingen aanvragen, terwijl een [vertrouwelijke client](#client-application) de mogelijkheid heeft om zowel gedelegeerde als toepassings machtigingen aan te vragen. Het [toepassings object](#application-object) van de client slaat de gedeclareerde machtigingen op in de [eigenschap requiredResourceAccess][Graph-App-Resource].
+Machtigingsaanvragen worden geconfigureerd op de pagina **API-machtigingen** voor een toepassing in de [Azure-portal][AZURE-portal]door de gewenste 'Gedelegeerde machtigingen' en 'Toepassingsmachtigingen' te selecteren (deze laatste vereist lidmaatschap in de rol Globale beheerder). Omdat een [openbare client](#client-application) niet veilig referenties kan onderhouden, kan deze alleen gedelegeerde machtigingen aanvragen, terwijl een [vertrouwelijke client](#client-application) de mogelijkheid heeft om zowel gedelegeerde als toepassingsmachtigingen aan te vragen. Het [toepassingsobject](#application-object) van de client slaat de gedeclareerde machtigingen op in de [vereiste Eigenschap ResourceAccess.][Graph-App-Resource]
 
 ## <a name="resource-owner"></a>resource-eigenaar
 
-Zoals gedefinieerd door het [OAuth2-autorisatie raamwerk][OAuth2-Role-Def], kan een entiteit toegang tot een beveiligde bron verlenen. Wanneer de resource-eigenaar een persoon is, wordt deze een eind gebruiker genoemd. Wanneer een [client toepassing](#client-application) bijvoorbeeld toegang wil krijgen tot het postvak van een gebruiker via de [Microsoft Graph-API][Microsoft-Graph], is hiervoor toestemming vereist van de resource-eigenaar van het postvak.
+Zoals gedefinieerd door het [OAuth2 Authorization Framework][OAuth2-Role-Def], een entiteit die toegang kan verlenen tot een beschermde bron. Wanneer de eigenaar van de resource een persoon is, wordt deze een eindgebruiker genoemd. Wanneer een [clienttoepassing](#client-application) bijvoorbeeld toegang wil krijgen tot het postvak van een gebruiker via de [Microsoft Graph-API,][Microsoft-Graph]is hiervoor toestemming vereist van de broneigenaar van het postvak.
 
-## <a name="resource-server"></a>resource server
+## <a name="resource-server"></a>resourceserver
 
-Zoals gedefinieerd door het [OAuth2-verificatie raamwerk][OAuth2-Role-Def], een server die beveiligde resources host, die beveiligde bron aanvragen kan accepteren en erop kan reageren door [client toepassingen](#client-application) die een [toegangs token](#access-token)aanbieden. Ook wel bekend als een beveiligde resource server of een resource toepassing.
+Zoals gedefinieerd door het [OAuth2 Authorization Framework][OAuth2-Role-Def], een server die beveiligde bronnen host, die in staat is om beveiligde resourceaanvragen te accepteren en te beantwoorden door [clienttoepassingen](#client-application) die een [toegangstoken](#access-token)presenteren. Ook wel bekend als een beveiligde resourceserver of brontoepassing.
 
-Een resource server stelt Api's beschikbaar en dwingt de toegang tot de beveiligde resources af via [scopes](#scopes) en [rollen](#roles), met behulp van het OAuth 2,0-autorisatie raamwerk. Voor beelden hiervan zijn de [Microsoft Graph-API][Microsoft-Graph] die toegang biedt tot gegevens van Azure AD-tenants, en de Office 365-api's die toegang bieden tot informatie zoals e-mail en agenda. 
+Een resourceserver legt API's bloot en dwingt toegang tot de beveiligde bronnen via [scopes](#scopes) en [rollen,](#roles)met behulp van het OAuth 2.0 Authorization Framework. Voorbeelden hiervan zijn de [Microsoft Graph API][Microsoft-Graph] die toegang biedt tot Azure AD-tenantgegevens en de Office 365-API's die toegang bieden tot gegevens zoals e-mail en agenda. 
 
-Net als bij een client toepassing wordt de identiteits configuratie van de bron toepassing tot stand gebracht via [registratie](#application-registration) in een Azure AD-Tenant, waardoor zowel het toepassings-als Service-Principal-object wordt geleverd. Sommige door micro soft geleverde Api's, zoals de Microsoft Graph-API, hebben vooraf geregistreerde service-principals die tijdens het inrichten beschikbaar zijn gemaakt in alle tenants.
+Net als bij een clienttoepassing wordt de identiteitsconfiguratie van de resourcetoepassing tot stand gebracht via [registratie](#application-registration) in een Azure AD-tenant, die zowel het hoofdobject van de toepassing als de service levert. Sommige door Microsoft geleverde API's, zoals de Microsoft Graph API, hebben vooraf geregistreerde serviceprincipals beschikbaar gesteld in alle tenants tijdens de inrichting.
 
 ## <a name="roles"></a>rolls
 
-Net als bij [bereiken](#scopes)bieden rollen een manier om de toegang tot de beveiligde bronnen van een [bron server](#resource-server) te regelen. Er zijn twee typen: de rol ' gebruiker ' implementeert toegangs beheer op basis van rollen voor gebruikers/groepen die toegang tot de resource nodig hebben, terwijl een toepassing wordt geïmplementeerd voor [client toepassingen](#client-application) die toegang nodig hebben.
+Net als [scopes](#scopes)bieden rollen een manier voor een [resourceserver](#resource-server) om de toegang tot de beveiligde bronnen te regelen. Er zijn twee typen: een 'gebruiker'-rol implementeert op rollen gebaseerd toegangscontrole voor gebruikers/groepen die toegang tot de bron vereisen, terwijl een 'toepassingsrol' hetzelfde implementeert voor [clienttoepassingen](#client-application) waarvoor toegang nodig is.
 
-Rollen zijn door de resource gedefinieerde teken reeksen (bijvoorbeeld ' fiatteur onkosten ', ' alleen-lezen ', ' Directory. ReadWrite. all '), beheerd in de [Azure Portal][AZURE-portal] via het [toepassings manifest](#application-manifest)van de resource en opgeslagen in de [eigenschap appRoles][Graph-Sp-Resource]van de resource. De Azure Portal wordt ook gebruikt om gebruikers toe te wijzen aan gebruikers rollen en client [toepassings machtigingen](#permissions) te configureren voor toegang tot een functie van de toepassing.
+Rollen zijn door resources gedefinieerde tekenreeksen (bijvoorbeeld 'Onkostengoedkeuringsbeleid', 'Alleen-lezen', 'Directory.ReadWrite.All'), beheerd in de [Azure-portal][AZURE-portal] via het [toepassingsmanifest](#application-manifest)van de bron en opgeslagen in de [eigenschap appRoles][Graph-Sp-Resource]van de bron. De Azure-portal wordt ook gebruikt om gebruikers toe te wijzen aan 'gebruikersrollen' en [clienttoepassingsmachtigingen](#permissions) te configureren om toegang te krijgen tot een rol met toepassing.
 
-Zie [Graph API-machtigings bereik][Graph-Perm-Scopes]voor een gedetailleerde bespreking van de toepassings rollen die worden weer gegeven door de Microsoft Graph-API. Zie [toegang beheren met RBAC en de Azure Portal][AAD-RBAC]voor een voor beeld van een stapsgewijze implementatie.
+Zie [Graph API Permission Scopes][Graph-Perm-Scopes]voor een gedetailleerde bespreking van de toepassingsrollen die door de Microsoft Graph API worden weergegeven. Zie [Toegang beheren met RBAC en de Azure-portal][AAD-RBAC]voor een stapsgewijs implementatievoorbeeld.
 
 ## <a name="scopes"></a>bereiken
 
-Net als [rollen](#roles)bieden bereiken een manier waarop een [bron server](#resource-server) toegang tot de beveiligde bronnen kan beheren. Bereiken worden gebruikt voor het implementeren van toegangs beheer op [basis van scopes][OAuth2-Access-Token-Scopes] voor een [client toepassing](#client-application) waarvan de eigenaar toegang heeft gekregen tot de resource.
+Net als [rollen](#roles)bieden scopes een manier voor een [resourceserver](#resource-server) om de toegang tot de beveiligde bronnen te regelen. Scopes worden gebruikt voor het implementeren van [scope-based][OAuth2-Access-Token-Scopes] access control, voor een [clienttoepassing](#client-application) die door de eigenaar gedelegeerde toegang tot de bron heeft gekregen.
 
-Bereiken zijn door resources gedefinieerde teken reeksen (bijvoorbeeld ' mail. read ', ' Directory. ReadWrite. all '), beheerd in de [Azure Portal][AZURE-portal] via het [toepassings manifest](#application-manifest)van de resource en opgeslagen in de [eigenschap oauth2Permissions][Graph-Sp-Resource]van de resource. De Azure Portal wordt ook gebruikt om de [gedelegeerde machtigingen](#permissions) van de client toepassing te configureren voor toegang tot een bereik.
+Scopes zijn door resources gedefinieerde tekenreeksen (bijvoorbeeld 'Mail.Read', 'Directory.ReadWrite.All'), beheerd in de [Azure-portal][AZURE-portal] via het [toepassingsmanifest](#application-manifest)van de bron en opgeslagen in de [eigenschap oauth2Permissions][Graph-Sp-Resource]van de bron. De Azure-portal wordt ook gebruikt om [gedelegeerde machtigingen](#permissions) voor clienttoepassingen te configureren om toegang te krijgen tot een bereik.
 
-Een best practice naam Conventie is het gebruik van een ' resource. Operation. CONSTRAINT '-indeling. Zie [Graph API-machtigings bereik][Graph-Perm-Scopes]voor een gedetailleerde bespreking van de bereiken die worden weer gegeven door Microsoft Graph-API. Zie [Naslag informatie voor office 365 API-machtigingen][O365-Perm-Ref]voor bereiken die worden weer gegeven door Office 365-Services.
+Een afspraak voor het benoemen van aanbevolen procedures is het gebruik van een indeling 'resource.operation.constraint'. Zie [Graph API Permission Scopes][Graph-Perm-Scopes]voor een gedetailleerde bespreking van de scopes die door de Microsoft Graph API worden weergegeven. Zie [Office 365 API-machtigingen verwijzing][O365-Perm-Ref]voor scopes die worden weergegeven door Office 365-services.
 
-## <a name="security-token"></a>beveiligings token
+## <a name="security-token"></a>Beveiligingstoken
 
-Een ondertekend document met claims, zoals een OAuth2-token of SAML 2,0-bevestiging. Voor een OAuth2- [machtigings toekenning](#authorization-grant)zijn een [toegangs token](#access-token) (OAuth2) en een [id-token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) typen van beveiligings tokens die beide zijn geïmplementeerd als een [JSON Web token (JWT)][JWT].
+Een ondertekend document met claims, zoals een OAuth2-token of EEN SAML 2.0-bewering. Voor een OAuth2-autorisatieverlening zijn een [access token](#access-token) (OAuth2) en een [ID-token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) typen beveiligingstokens, die beide worden geïmplementeerd als een [JSON-webtoken (JWT).][JWT] [authorization grant](#authorization-grant)
 
-## <a name="service-principal-object"></a>Service-Principal-object
+## <a name="service-principal-object"></a>hoofdobject van de service
 
-Wanneer u een toepassing registreert of bijwerkt in de [Azure Portal][AZURE-portal], maakt/werkt de portal zowel een [toepassings object](#application-object) als een bijbehorend Service-Principal-object voor die Tenant. Het toepassings object *definieert* de identiteits configuratie globaal van de toepassing (in alle tenants waar de bijbehorende toepassing toegang is verleend) en is de sjabloon waaruit de bijbehorende service-principal-object (en) zijn *afgeleid* voor gebruik in runtime (in een specifieke Tenant).
+Wanneer u een toepassing registreert/updatet in de [Azure-portal,][AZURE-portal]maakt/werkt de portal zowel een [toepassingsobject](#application-object) als een bijbehorend servicehoofdobject voor die tenant. Het toepassingsobject *definieert* de identiteitsconfiguratie van de toepassing wereldwijd (voor alle tenants waar de bijbehorende toepassing toegang heeft gekregen) en is de sjabloon waaruit het bijbehorende servicehoofdobject(en) is *afgeleid* voor lokaal gebruik tijdens run-time (in een specifieke tenant).
 
-Zie [Application and Service Principal Objects][AAD-App-SP-Objects](Engelstalig) voor meer informatie.
+Zie [Hoofdobjecten voor toepassingen en servicetoepassingen][AAD-App-SP-Objects]voor meer informatie.
 
 ## <a name="sign-in"></a>aanmelden
 
-Het proces van een [client toepassing](#client-application) die de verificatie van eind gebruikers initieert en gerelateerde status vastlegt, voor het verkrijgen van een [beveiligings token](#security-token) en het bereik van de toepassings sessie met die status. De status kan artefacten zoals gebruikers profiel gegevens en informatie die is afgeleid van token claims bevatten.
+Het proces van een [clienttoepassing](#client-application) die verificatie door eindgebruikers initieert en de gerelateerde status vastlegt, met het oog op het verkrijgen van een [beveiligingstoken](#security-token) en het aanskaderen van de toepassingssessie naar die status. Status kan artefacten bevatten, zoals gebruikersprofielinformatie en informatie die is afgeleid van tokenclaims.
 
-De aanmeldings functie van een toepassing wordt doorgaans gebruikt voor het implementeren van eenmalige aanmelding (SSO). Het kan ook worden voorafgegaan door een ' registratie functie ', zoals het toegangs punt voor een eind gebruiker om toegang te krijgen tot een toepassing (bij het eerste aanmelden). De registratie functie wordt gebruikt voor het verzamelen en persistent maken van aanvullende status die specifiek is voor de gebruiker en kan toestemming van de [gebruiker](#consent)vereisen.
+De aanmeldingsfunctie van een toepassing wordt meestal gebruikt voor het implementeren van single-sign-on (SSO). Het kan ook worden voorafgegaan door een "aanmeldingsfunctie", als toegangspunt voor een eindgebruiker om toegang te krijgen tot een toepassing (bij de eerste aanmelding). De aanmeldingsfunctie wordt gebruikt om extra status te verzamelen en voort te houden die specifiek is voor de gebruiker en vereist mogelijk [toestemming van de gebruiker.](#consent)
 
 ## <a name="sign-out"></a>afmelden
 
-Het proces waarbij een eind gebruiker wordt geverifieerd, de gebruikers status die is gekoppeld aan de sessie van de [client toepassing](#client-application) wordt ontkoppeld tijdens het [Aanmelden](#sign-in)
+Het proces van het niet-verifiëren van een eindgebruiker, waarbij de gebruikersstatus die is gekoppeld aan de [clienttoepassingssessie](#client-application) tijdens [het aanmelden](#sign-in) wordt losgekoppeld
 
 ## <a name="tenant"></a>tenant
 
-Een exemplaar van een Azure AD-Directory wordt een Azure AD-Tenant genoemd. Het biedt verschillende functies, waaronder:
+Een instantie van een Azure AD-map wordt een Azure AD-tenant genoemd. Het biedt verschillende functies, waaronder:
 
-* een register service voor geïntegreerde toepassingen
-* verificatie van gebruikers accounts en geregistreerde toepassingen
-* REST-eind punten die vereist zijn voor de ondersteuning van verschillende protocollen, waaronder OAuth2 en SAML, met inbegrip van het [autorisatie-eind](#authorization-endpoint)punt, [token eindpunt](#token-endpoint) en het ' algemene ' eind punt dat wordt gebruikt door [multi tenant-toepassingen](#multi-tenant-application).
+* een registerservice voor geïntegreerde toepassingen
+* verificatie van gebruikersaccounts en geregistreerde toepassingen
+* REST-eindpunten die nodig zijn om verschillende protocollen te ondersteunen, waaronder OAuth2 en SAML, waaronder het [autorisatieeindpunt,](#authorization-endpoint) [tokeneindpunt](#token-endpoint) en het 'gemeenschappelijke' eindpunt dat wordt gebruikt door [multi-tenanttoepassingen](#multi-tenant-application).
 
-Azure AD-tenants worden tijdens de registratie gemaakt/gekoppeld aan Azure-en Office 365-abonnementen, waardoor Identity & Access Management-functies voor het abonnement worden geboden. Beheerders van Azure-abonnementen kunnen ook extra Azure AD-tenants maken via de Azure Portal. Zie [een Azure Active Directory-Tenant verkrijgen][AAD-How-To-Tenant] voor meer informatie over de verschillende manieren waarop u toegang kunt krijgen tot een Tenant. Zie [hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory][AAD-How-Subscriptions-Assoc] voor meer informatie over de relatie tussen abonnementen en een Azure AD-Tenant.
+Azure AD-tenants worden tijdens het aanmelden gemaakt/gekoppeld aan Azure- en Office 365-abonnementen, waardoor & Access Management-functies voor het abonnement worden verstrekt. Azure-abonnementsbeheerders kunnen ook extra Azure AD-tenants maken via de Azure-portal. Zie [Hoe u een Azure Active Directory-tenant krijgen][AAD-How-To-Tenant] voor meer informatie over de verschillende manieren waarop u toegang krijgen tot een tenant. Zie [hoe Azure-abonnementen zijn gekoppeld aan Azure Active Directory][AAD-How-Subscriptions-Assoc] voor details over de relatie tussen abonnementen en een Azure AD-tenant.
 
-## <a name="token-endpoint"></a>Token eindpunt
+## <a name="token-endpoint"></a>tokeneindpunt
 
-Een van de eind punten die door de [autorisatie server](#authorization-server) worden geïmplementeerd ter ondersteuning van OAuth2- [autorisatie subsidies](#authorization-grant). Afhankelijk van de toekenning kan deze worden gebruikt voor het verkrijgen van een [toegangs token](#access-token) (en een gerelateerd ' vernieuwings token) aan een [client](#client-application)of [id-token](#id-token) bij gebruik met het [OpenID Connect Connect][OpenIDConnect] -protocol.
+Een van de eindpunten die door de [autorisatieserver](#authorization-server) zijn geïmplementeerd om OAuth2-autorisatieverleningen te ondersteunen. [authorization grants](#authorization-grant) Afhankelijk van de subsidie kan het worden gebruikt om een [toegangstoken](#access-token) (en bijbehorend 'refresh'-token) te verkrijgen voor een [client](#client-application)of [ID-token](#id-token) wanneer het wordt gebruikt met het [OpenID Connect-protocol.][OpenIDConnect]
 
-## <a name="user-agent-based-client"></a>Client op basis van een gebruikers agent
+## <a name="user-agent-based-client"></a>Op gebruikersagent gebaseerde client
 
-Een type [client toepassing](#client-application) dat code downloadt van een webserver en wordt uitgevoerd binnen een gebruikers agent (bijvoorbeeld een webbrowser), zoals een toepassing met één pagina (Spa). Omdat alle code op een apparaat wordt uitgevoerd, wordt dit beschouwd als een ' open bare ' client, omdat het niet mogelijk is om referenties persoonlijk of vertrouwelijk op te slaan. Zie [OAuth2-client typen en-profielen][OAuth2-Client-Types]voor meer informatie.
+Een type [clienttoepassing](#client-application) dat code van een webserver downloadt en wordt uitgevoerd binnen een gebruikersagent (bijvoorbeeld een webbrowser), zoals een toepassing met één pagina (SPA). Aangezien alle code wordt uitgevoerd op een apparaat, wordt het beschouwd als een "openbare" client vanwege het onvermogen om referenties privé / vertrouwelijk op te slaan. Zie [OAuth2-clienttypen en -profielen][OAuth2-Client-Types]voor meer informatie.
 
-## <a name="user-principal"></a>gebruikers-principal
+## <a name="user-principal"></a>aangever van de gebruiker
 
-Net als bij de manier waarop een Service Principal-object wordt gebruikt om een toepassings exemplaar aan te duiden, is een User Principal-object een ander type beveiligings-principal dat een gebruiker vertegenwoordigt. Het [resource type][Graph-User-Resource] Microsoft Graph-gebruiker definieert het schema voor een gebruikers object, met inbegrip van aan de gebruiker gerelateerde eigenschappen, zoals de voor-en achternaam, de User Principal Name, het lidmaatschap van de Directory-rol, enzovoort. Dit biedt de configuratie van de gebruikers-id voor Azure AD om een gebruikers-principal tijdens runtime in te richten. De User Principal wordt gebruikt voor een geverifieerde gebruiker voor eenmalige aanmelding, het vastleggen van [toestemmings](#consent) overdracht, het maken van beslissingen voor toegangs beheer, enzovoort.
+Net als bij de manier waarop een hoofdobject voor de service wordt gebruikt om een toepassingsinstantie weer te geven, is een hoofdobject van de gebruiker een ander type beveiligingsprincipal, dat een gebruiker vertegenwoordigt. Het resourcetype Microsoft [Graph-gebruiker][Graph-User-Resource] definieert het schema voor een gebruikersobject, inclusief gebruikersgerelateerde eigenschappen zoals voor- en achternaam, gebruikersnaam, directoryrollidmaatschap, enz. Dit biedt de configuratie van de gebruikersidentiteit voor Azure AD om een gebruikersprincipal op run-time vast te stellen. De user principal wordt gebruikt om een geverifieerde gebruiker [consent](#consent) te vertegenwoordigen voor Single Sign-On, het opnemen van toestemmingsdelegatie, het nemen van toegangscontrolebeslissingen, enz.
 
 ## <a name="web-client"></a>webclient
 
-Een type [client toepassing](#client-application) dat alle code op een webserver uitvoert en kan functioneren als een ' vertrouwelijke ' client door de referenties op de server veilig op te slaan. Zie [OAuth2-client typen en-profielen][OAuth2-Client-Types]voor meer informatie.
+Een type [clienttoepassing](#client-application) dat alle code uitvoert op een webserver en in staat is om te functioneren als een "vertrouwelijke" client door de referenties op de server veilig op te slaan. Zie [OAuth2-clienttypen en -profielen][OAuth2-Client-Types]voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De [micro soft Identity platform Developer's Guide][AAD-Dev-Guide] is de landings pagina die moet worden gebruikt voor alle ontwikkel-gerelateerde onderwerpen over micro soft Identity platform, met inbegrip van een overzicht van [toepassings integratie][AAD-How-To-Integrate] en de basis beginselen van [verificatie van micro soft-identiteits platform en ondersteunde verificatie scenario's][AAD-Auth-Scenarios]. U kunt ook code voorbeelden & zelf studies vinden om snel aan de slag te gaan met [github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+De [Microsoft-identiteitsplatform Developer's Guide][AAD-Dev-Guide] is de bestemmingspagina die u gebruiken voor alle onderwerpen die betrekking hebben op de ontwikkeling van microsoft-identiteitsplatforms, inclusief een overzicht van [toepassingsintegratie][AAD-How-To-Integrate] en de basisprincipes van verificatie van [het Microsoft-identiteitsplatform en ondersteunde verificatiescenario's.][AAD-Auth-Scenarios] U ook codevoorbeelden vinden & zelfstudies over hoe u snel aan de slag op [GitHub.](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)
 
-Gebruik de sectie volgende opmerkingen om feedback te geven en te helpen bij het verfijnen en vormen van deze inhoud, inclusief aanvragen voor nieuwe definities of het bijwerken van bestaande gegevens.
+Gebruik de volgende opmerkingensectie om feedback te geven en deze inhoud te verfijnen en vorm te geven, inclusief verzoeken om nieuwe definities of het bijwerken van bestaande inhoud!
 
 <!--Image references-->
 

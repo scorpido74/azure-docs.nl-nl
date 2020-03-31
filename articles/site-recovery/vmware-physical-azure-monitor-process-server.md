@@ -1,6 +1,6 @@
 ---
-title: De Azure Site Recovery process server bewaken
-description: In dit artikel wordt beschreven hoe u Azure Site Recovery proces server bewaken die wordt gebruikt voor nood herstel van de virtuele VMware-machines/fysieke servers
+title: Bewaken van de azure site recovery process server
+description: In dit artikel wordt beschreven hoe u de server voor azure-herstelproces van de site controleren die wordt gebruikt voor vm/fysieke serverherstel van vMware
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,95 +8,95 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257067"
 ---
-# <a name="monitor-the-process-server"></a>De proces server bewaken
+# <a name="monitor-the-process-server"></a>De processerver controleren
 
-In dit artikel wordt beschreven hoe u de [site Recovery](site-recovery-overview.md) process server bewaken.
+In dit artikel wordt beschreven hoe u de [server voor het siteherstelproces](site-recovery-overview.md) controleren.
 
-- De proces server wordt gebruikt bij het instellen van herstel na nood gevallen van on-premises VMware-Vm's en fysieke servers naar Azure.
-- Standaard wordt de proces server uitgevoerd op de configuratie server. Het wordt standaard geïnstalleerd wanneer u de configuratie server implementeert.
-- Desgewenst kunt u extra, scale-out proces servers implementeren en zo een groter aantal gerepliceerde machines en grotere volumes van replicatie verkeer schalen en verwerken.
+- De processerver wordt gebruikt wanneer u noodherstel van on-premises Vm's vmware en fysieke servers instelt op Azure.
+- Standaard wordt de processerver uitgevoerd op de configuratieserver. Het is standaard geïnstalleerd wanneer u de configuratieserver implementeert.
+- Optioneel u extra, scale-out processervers implementeren om grotere aantallen gerepliceerde machines en grotere volumes replicatieverkeer te schalen en te verwerken.
 
-Meer [informatie](vmware-physical-azure-config-process-server-overview.md) over de rol en implementatie van proces servers.
+[Meer informatie](vmware-physical-azure-config-process-server-overview.md) over de rol en implementatie van processervers.
 
 ## <a name="monitoring-overview"></a>Bewakingsoverzicht
 
-Omdat de proces server zoveel rollen heeft, met name bij het opslaan van gegevens in de cache, compressie en overdracht naar Azure, is het belang rijk om de status van de proces server voortdurend te controleren.
+Aangezien de processerver zoveel rollen heeft, met name in gerepliceerde gegevenscaches, compressie en overdracht naar Azure, is het belangrijk om de status van de processerver voortdurend te controleren.
 
-Er zijn een aantal situaties die de prestaties van de proces server meestal beïnvloeden. Problemen die invloed hebben op prestaties, hebben een trapsgewijs effect op de status van de virtuele machine, waarbij de proces server en de gerepliceerde machines uiteindelijk naar een kritieke status worden gepusht. Het gaat om de volgende situaties:
+Er zijn een aantal situaties die vaak van invloed zijn op de prestaties van de processerver. Problemen die van invloed zijn op de prestaties hebben een trapsgewijs effect op de VM-status, waardoor uiteindelijk zowel de processerver als de gerepliceerde machines in een kritieke status worden geduwd. Situaties zijn onder andere:
 
-- Een groot aantal Vm's maakt gebruik van een proces server, het nadert of overschrijdt de aanbevolen beperkingen.
-- Vm's die de proces server gebruiken, hebben een hoog verloop tempo.
-- De netwerk doorvoer tussen Vm's en de proces server is niet voldoende voor het uploaden van replicatie gegevens naar de proces server.
-- De netwerk doorvoer tussen de proces server en Azure is niet voldoende voor het uploaden van replicatie gegevens van de proces server naar Azure.
+- Grote aantallen VM's gebruiken een processerver, die de aanbevolen beperkingen nadert of overschrijdt.
+- VM's die de processerver gebruiken, hebben een hoge churn rate.
+- Netwerkdoorvoer tussen VM's en de processerver is niet voldoende om replicatiegegevens naar de processerver te uploaden.
+- Netwerkdoorvoer tussen de processerver en Azure is niet voldoende om replicatiegegevens van de processerver naar Azure te uploaden.
 
-Al deze problemen kunnen van invloed zijn op de Recovery Point Objective (RPO) van Vm's. 
+Al deze problemen kunnen van invloed zijn op de doelstelling van het herstelpunt (RPO) van VM's. 
 
-**Waarom?** Omdat voor het genereren van een herstel punt voor een VM, moeten alle schijven op de virtuele machine een gemeen schappelijk punt hebben. Als één schijf een hoog verloop snelheid heeft, de replicatie traag is of de proces server niet optimaal is, is dit van invloed op hoe efficiënt herstel punten worden gemaakt.
+**Hoe komt dat?** Omdat het genereren van een herstelpunt voor een VM vereist dat alle schijven op de VM een gemeenschappelijk punt hebben. Als één schijf een hoge churn rate heeft, replicatie traag is of de processerver niet optimaal is, heeft dit invloed op hoe efficiënt herstelpunten worden gemaakt.
 
 ## <a name="monitor-proactively"></a>Proactief bewaken
 
-Om problemen met de proces server te voor komen, is het belang rijk om het volgende te doen:
+Om problemen met de processerver te voorkomen, is het belangrijk om:
 
-- Inzicht in specifieke vereisten voor proces servers met behulp van [capaciteit en schaal richtlijnen](site-recovery-plan-capacity-vmware.md#capacity-considerations)en zorg ervoor dat de proces servers worden geïmplementeerd en uitgevoerd volgens de aanbevelingen.
-- Bewaak waarschuwingen en los problemen op wanneer ze optreden, zodat de proces servers efficiënt worden uitgevoerd.
+- Begrijp specifieke vereisten voor processervers met behulp van [capaciteits- en dimensioneringsrichtlijnen](site-recovery-plan-capacity-vmware.md#capacity-considerations)en zorg ervoor dat processervers worden geïmplementeerd en uitgevoerd volgens aanbevelingen.
+- Controleer waarschuwingen en los problemen op wanneer deze zich voordoen, om processervers efficiënt te laten werken.
 
 
-## <a name="process-server-alerts"></a>Waarschuwingen van proces server
+## <a name="process-server-alerts"></a>Serverwaarschuwingen verwerken
 
-De proces server genereert een aantal status waarschuwingen die in de volgende tabel worden samenvatten.
+De processerver genereert een aantal statuswaarschuwingen, samengevat in de volgende tabel.
 
-**Waarschuwings type** | **Details**
+**Waarschuwingstype** | **Details**
 --- | ---
-![In orde][green] | De proces server is verbonden en in orde.
-![Waarschuwing][yellow] | CPU-gebruik > 80% gedurende de afgelopen 15 minuten
-![Waarschuwing][yellow] | Geheugen gebruik > 80% gedurende de afgelopen 15 minuten
-![Waarschuwing][yellow] | Beschik bare ruimte in de cachemap < 30% gedurende de afgelopen 15 minuten
-![Waarschuwing][yellow] | Site Recovery bewaakt elke vijf minuten in behandeling/uitgaande gegevens en schat dat de gegevens in de cache van de proces server niet binnen 30 minuten naar Azure kunnen worden geüpload.
-![Waarschuwing][yellow] | Services van de proces server worden niet uitgevoerd in de afgelopen 15 minuten
-![Kritiek][red] | CPU-gebruik > 95% gedurende de afgelopen 15 minuten
-![Kritiek][red] | Geheugen gebruik > 95% gedurende de afgelopen 15 minuten
-![Kritiek][red] | Beschik bare ruimte in de cachemap < 25% gedurende de afgelopen 15 minuten
-![Kritiek][red] | Site Recovery bewaakt elke vijf minuten in behandeling/uitgaande gegevens en schat dat de gegevens in de cache van de proces server niet binnen 45 minuten naar Azure kunnen worden geüpload.
-![Kritiek][red] | Geen heartbeat van de proces server gedurende 15 minuten.
+![Goed][green] | Processerver is verbonden en gezond.
+![Waarschuwing][yellow] | CPU-gebruik > 80% voor de laatste 15 minuten
+![Waarschuwing][yellow] | Geheugengebruik > 80% voor de laatste 15 minuten
+![Waarschuwing][yellow] | Cache map vrije ruimte < 30% voor de laatste 15 minuten
+![Waarschuwing][yellow] | Site recovery controleert in- en uitgaande gegevens om de vijf minuten en schat dat gegevens in de processervercache niet binnen 30 minuten naar Azure kunnen worden geüpload.
+![Waarschuwing][yellow] | Processerverservices worden de laatste 15 minuten niet uitgevoerd
+![Kritiek][red] | CPU-gebruik > 95% voor de laatste 15 minuten
+![Kritiek][red] | Geheugengebruik > 95% voor de laatste 15 minuten
+![Kritiek][red] | Cache map vrije ruimte < 25% voor de laatste 15 minuten
+![Kritiek][red] | Site Recovery controleert in- en uitgaande gegevens om de vijf minuten en schat dat gegevens in de processervercache niet binnen 45 minuten naar Azure kunnen worden geüpload.
+![Kritiek][red] | Gedurende 15 minuten geen hartslag van de processerver.
 
-![Tabel sleutel](./media/vmware-physical-azure-monitor-process-server/table-key.png)
+![Tabeltoets](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 
 > [!NOTE]
-> De algemene status van de proces server is gebaseerd op de slechtste waarschuwing die wordt gegenereerd.
+> De algehele status van de processerver is gebaseerd op de slechtste gegenereerde waarschuwing.
 
 
 
-## <a name="monitor-process-server-health"></a>Status van proces server bewaken
+## <a name="monitor-process-server-health"></a>De status van processerver controleren
 
-U kunt de status van uw proces servers als volgt bewaken: 
+U de status van uw processervers als volgt controleren: 
 
-1. Als u de replicatie status en-status van een gerepliceerde machine en van de proces server wilt controleren, klikt u in de kluis > **gerepliceerde items**op de computer die u wilt bewaken.
-2. In **replicatie status**kunt u de status van de VM controleren. Klik op de status om in te zoomen op fout Details.
+1. Als u de replicatiestatus en -status van een gerepliceerde machine en van de processerver wilt controleren, klikt u in vault > **gerepliceerde items**op de machine die u wilt controleren.
+2. In **replicatiestatus**u de status vm-status controleren. Klik op de status om in te zoomen op foutgegevens.
 
-    ![Status van de proces server in het VM-dash board](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
+    ![Serverstatus verwerken in VM-dashboard](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. In de status van de **proces server**kunt u de status van de proces server bewaken. Inzoomen voor meer informatie.
+4. In **Process Server Health**u de status van de processerver controleren. Inzoomen op details.
 
-    ![Details van de proces server in het VM-dash board](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
+    ![Servergegevens verwerken in VM-dashboard](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
-5. De status kan ook worden bewaakt met behulp van de grafische weer gave op de VM-pagina.
-    - Een scale-out proces server wordt oranje gemarkeerd als er waarschuwingen zijn gekoppeld, en rood als er kritieke problemen zijn. 
-    - Als de proces server wordt uitgevoerd in de standaard implementatie op de configuratie server, wordt de configuratie server dienovereenkomstig gemarkeerd.
-    - Als u wilt inzoomen, klikt u op de configuratie server of de proces server. Noteer alle problemen en eventuele aanbevelingen voor herstel.
+5. De status kan ook worden gecontroleerd met behulp van de grafische weergave op de VM-pagina.
+    - Een scale-out processerver wordt in het oranje gemarkeerd als er waarschuwingen aan zijn gekoppeld en rood als er kritieke problemen zijn. 
+    - Als de processerver wordt uitgevoerd in de standaardimplementatie op de configuratieserver, wordt de configuratieserver dienovereenkomstig gemarkeerd.
+    - Als u wilt inzoomen, klikt u op de configuratieserver of processerver. Let op eventuele problemen en eventuele herstelaanbevelingen.
 
-U kunt ook proces servers in de kluis bewaken onder **site Recovery-infra structuur**. Klik in **uw site Recovery-infra structuur beheren**op **configuratie servers**. Selecteer de configuratie server die aan de proces server is gekoppeld en zoom in op de details van de proces server.
+U ook processervers in de kluis controleren onder **Site Recovery Infrastructure**. Klik **in De infrastructuur voor siteherstel beheren**op **Configuratieservers**. Selecteer de configuratieserver die aan de processerver is gekoppeld en zoom in op processervergegevens.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u problemen ondervindt met de proces servers, volgt u de [richt lijnen voor probleem oplossing](vmware-physical-azure-troubleshoot-process-server.md)
-- Als u meer hulp nodig hebt, kunt u uw vraag in het [Azure site Recovery forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)plaatsen. 
+- Als u problemen hebt met processervers, volgt u onze [richtlijnen voor het oplossen van problemen](vmware-physical-azure-troubleshoot-process-server.md)
+- Als u meer hulp nodig hebt, plaatst u uw vraag in het [Azure Site Recovery-forum.](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

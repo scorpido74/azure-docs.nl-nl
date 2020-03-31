@@ -1,6 +1,6 @@
 ---
-title: Bot-beveiliging voor Web Application firewall configureren met Azure front-deur (preview-versie)
-description: Meer informatie over Web Application firewall (WAF).
+title: Botbeveiliging configureren voor webtoepassingsfirewall met Azure Front Door (Voorbeeld)
+description: Lees webtoepassingsfirewall (WAF).
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
@@ -8,28 +8,28 @@ services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
 ms.openlocfilehash: f48b683044bc727cda461fb64a743c055188962a
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934657"
 ---
-# <a name="configure-bot-protection-for-web-application-firewall-preview"></a>Bot-beveiliging voor Web Application firewall configureren (preview-versie)
-In dit artikel wordt beschreven hoe u de bot-beveiligings regel configureert in azure Web Application firewall (WAF) voor de voor deur met behulp van Azure Portal. De bot-beveiligings regel kan ook worden geconfigureerd met een CLI-, Azure PowerShell-of Azure Resource Manager-sjabloon.
+# <a name="configure-bot-protection-for-web-application-firewall-preview"></a>Botbeveiliging configureren voor Web Application Firewall (Voorbeeld)
+In dit artikel ziet u hoe u botbeveiligingsregels configureert in Azure Web Application Firewall (WAF) voor voordeur met behulp van Azure-portal. Botbeveiligingsregel kan ook worden geconfigureerd met de sjabloon CLI, Azure PowerShell of Azure Resource Manager.
 
 > [!IMPORTANT]
-> De set bot Protection-regelset bevindt zich momenteel in een open bare preview en wordt weer gegeven met een preview-service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bot bescherming regel ingesteld is momenteel in openbare preview en is voorzien van een preview service level overeenkomst. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben.  Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Maak een basis WAF-beleid voor de voor deur door de instructies te volgen die worden beschreven in [een WAF-beleid maken voor Azure front deur met behulp van de Azure Portal](waf-front-door-create-portal.md).
+Maak een basisWAF-beleid voor voordeur door de instructies te volgen die zijn beschreven in [Een WAF-beleid maken voor Azure Front Door met behulp van de Azure-portal.](waf-front-door-create-portal.md)
 
-## <a name="enable-bot-protection-rule-set"></a>Regel set voor bot-beveiliging inschakelen
+## <a name="enable-bot-protection-rule-set"></a>Regelset voor botbeveiliging inschakelen
 
-Selecteer op de pagina **beheerde regels** bij het maken van een firewall beleid voor webtoepassingen eerst de sectie **beheerde regel sets** zoeken, schakel het selectie vakje in vóór de regel **Microsoft_BotManager_1 dpm\dpm\protectionagents\ra\3.0.** in de vervolg keuzelijst en selecteer vervolgens **controleren + maken**.
+Zoek op de pagina **Beheerde regels** bij het maken van een firewallbeleid voor webtoepassingen eerst de sectie **Beheerde regelset,** schakel het selectievakje in voor de regel **Microsoft_BotManager_1.0** in het vervolgkeuzemenu en selecteer **Vervolgens Controleren + Maken**.
 
-   ![Bot-beveiligings regel](.././media/waf-front-door-configure-bot-protection/botmanager112019.png)
+   ![Botbeveiligingsregel](.././media/waf-front-door-configure-bot-protection/botmanager112019.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [bewaken van WAF](waf-front-door-monitor.md).
+- Meer informatie over het [monitoren van WAF](waf-front-door-monitor.md).

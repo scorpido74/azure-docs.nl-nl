@@ -1,100 +1,100 @@
 ---
-title: Een Jupyter-notebook presen teren als een diapresentatie op Azure Notebooks preview
-description: Meer informatie over het configureren van cellen voor de diavoorstellings modus in een Jupyter-notebook en de diavoorstelling vervolgens presen teren met de toename extensie.
+title: Een Jupyter-notitieblok presenteren als een diavoorstelling in Azure Notebooks Preview
+description: Meer informatie over het configureren van cellen voor diavoorstellingsmodus in een Jupyter-notitieblok en vervolgens de diavoorstelling presenteren met behulp van de RISE-extensie.
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647115"
 ---
-# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Een diapresentatie van een notebook uitvoeren in Azure Notebooks preview
+# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Een notitieblokdiavoorstelling uitvoeren in de proefversie van Azure Notebooks
 
-Azure-laptops is vooraf geconfigureerd met de Jupyter/IPython diavoorstelling extensie (stijging) waarmee u een notitieblok rechtstreeks als een diavoorstelling presenteren. In een diavoorstelling zijn cellen doorgaans weergegeven één bewerking tegelijk met behulp van een grootte die geschikt is voor presenteren op grote schermen en u kunt de code nog steeds uitgevoerd in plaats van overschakelen naar een afzonderlijke demo-computer.
+Azure Notebooks is vooraf geconfigureerd met de Jupyter/IPython Slideshow Extension (RISE) waarmee u een notitieblok rechtstreeks als diavoorstelling presenteren. In een diavoorstelling worden cellen meestal één voor één weergegeven met behulp van een tekengrootte die geschikt is voor presentatie op grote schermen, en u de code nog steeds uitvoeren in plaats van over te schakelen naar een afzonderlijke democomputer.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-De volgende afbeelding ziet u de standaard-notebook-weergave, waarin u Markdown en de code cellen alles bij elkaar ziet:
+In de volgende afbeelding wordt de standaardnotitieblokweergave weergegeven, waarin u Markdown en codecellen samen zien:
 
 ![Een notitieblok in de standaardweergave](media/slideshow/slideshow-notebook-view.png)
 
-Wanneer u een diavoorstelling start, de eerste cel is vergroot om op te vullen van de browser, waarbij de **X** in de linkerbovenhoek verlaat de diavoorstelling **?** in het onderste links weergegeven navigeren sneltoetsen, en de pijlen in de rechterbenedenhoek tussen de dia's:
+Wanneer u een diavoorstelling start, wordt de eerste cel vergroot om de browser te vullen, waarbij de **X** linksboven de diavoorstelling **verlaat?** Linksonder worden sneltoetsen weergegeven en de pijlen rechtsonder navigeren tussen dia's:
 
-![Een notitieblok in de diavoorstellingsmodus](media/slideshow/slideshow-slide-view.png)
+![Een notitieblok in diavoorstellingsmodus](media/slideshow/slideshow-slide-view.png)
 
-Een notitieblok voorbereiden voor een diavoorstelling bestaat uit twee primaire activiteiten:
+Het voorbereiden van een notitieblok voor een diavoorstelling omvat twee primaire activiteiten:
 
-1. Omdat Markdown cellen zijn opgebouwd met grote lettertypen, worden bepaalde inhoud niet meer zichtbaar in de diavoorstelling. Dus meestal beperkt u de hoeveelheid tekst in een cel; een koptekst met twee tot vier regels meestal werkt het beste. Hebt u meer tekst, die informatie in meerdere cellen splitsen
+1. Omdat markeringscellen worden weergegeven met grote lettertypen, is sommige inhoud mogelijk niet zichtbaar in de diavoorstelling. U beperkt dus meestal de hoeveelheid tekst in een bepaalde cel; een header met vier tot zes lijnen werkt meestal het beste. Als u meer tekst hebt, splitst u die informatie op in meerdere cellen.
 
-2. Het gedrag van elke cel in de diavoorstelling configureren met behulp van de werkbalk van de cel diavoorstelling. Cel typen bepalen het gedrag van de navigatieknoppen.
+2. Configureer het gedrag van elke cel in de diavoorstelling met behulp van de werkbalk diavoorstellingcel. Celtypen bepalen het gedrag van de navigatieknoppen.
 
 ## <a name="the-anatomy-of-a-slideshow"></a>De anatomie van een diavoorstelling
 
-Als u een willekeurige notebook nemen en deze voor een diavoorstelling gebruiken, merken u meestal dat alle cellen zijn samen elkaar, en veel van de inhoud van de onderkant van het browservenster wordt verborgen. Als u wilt maken van een doeltreffende presentatie, vervolgens moet u een type diavoorstelling toewijzen aan elke cel met de werkbalk van de cel diavoorstelling:
+Als u een willekeurig notitieblok neemt en het gebruikt voor een diavoorstelling, vindt u meestal dat alle cellen door elkaar zijn gegooid en dat een groot deel van de inhoud is verborgen onder in het browservenster. Als u een effectieve presentatie wilt maken, moet u vervolgens een diavoorstellingstype aan elke cel toewijzen met behulp van de werkbalk Diavoorstellingscel:
 
-1. Op de **weergave** in het menu **cel werkbalk** > **diavoorstelling**:
+1. Selecteer in het menu **Weergave** de optie **Diavoorstelling van de celwerkbalk:** > **Slideshow**
 
-    ![De cel diavoorstelling werkbalk inschakelen](media/slideshow/slideshow-view-cell-toolbar.png)
+    ![De werkbalk van de celdiavoorstelling inschakelen](media/slideshow/slideshow-view-cell-toolbar.png)
 
-1. Een **Type dia** vervolgkeuzelijst wordt weergegeven in de rechterbovenhoek van elke cel in het notitieblok:
+1. Rechtsboven in elke cel in het notitieblok verschijnt een vervolgkeuzelijst **Diatype:**
 
-    ![Cel diavoorstelling werkbalk](media/slideshow/slideshow-cell-toolbar.png)
+    ![Werkbalk Celdiavoorstelling](media/slideshow/slideshow-cell-toolbar.png)
 
-1. Voor elke cel, selecteert u een van de vijf typen:
+1. Selecteer voor elke cel een van de vijf typen:
 
-    ![Cel diavoorstelling typen](media/slideshow/slideshow-cell-slide-types.png)
+    ![Celdiavoorstellingstypen](media/slideshow/slideshow-cell-slide-types.png)
 
-    | Type dia | Gedrag |
+    | Diatype | Gedrag |
     | --- | --- |
-    | -(niet ingesteld) | Cel wordt weergegeven met de vorige cel, wat vaak niet het gewenste effect in een diavoorstelling. |
-    | Dia | Cel is een primaire dia, met behulp van de pijlen links en rechts van het navigatiebesturingselement genavigeerd. |
-    | Onderliggende dia | Cel is een primaire dia genavigeerd met behulp van de pijl-omlaag van het navigatiebesturingselement ' onder'. De pijl-omhoog retourneert aan de primaire dia. Onderliggende dia's worden gebruikt voor secundaire materiaal dat u in de belangrijkste pad van een presentatie kan overslaan, maar direct beschikbaar zijn als nodig is. |
-    | Fragment | Inhoud van de cel wordt weergegeven in de context van de vorige dia of subquery dia bij het gebruik van de navigatiepijl-omlaag (een fragment wordt verwijderd wanneer u de pijl-omhoog). U kunt een fragment met een codecel gebruiken om te maken die worden weergegeven in een dia code of u kunt meerdere fragmenten gebruiken om tekst te opsommingstekens weergegeven één voor één (Zie het voorbeeld in de volgende sectie). Omdat de fragmenten maken op de huidige dia, zijn overtollige fragmenten alleen zichtbaar van de onderkant van het browservenster. |
+    | - (niet ingesteld) | Cel wordt weergegeven met de vorige cel, wat vaak geen gewenst effect is in een diavoorstelling. |
+    | Dia | Cel is een primaire dia, genavigeerd met de linker- en rechterpijlen van het navigatiebesturingselement. |
+    | Subdia | Cel is "onder" een primaire dia, genavigeerd naar het gebruik van de pijl-omlaag van het navigatiebesturingselement. De pijl-omhoog keert terug naar de primaire dia. Subdia's worden gebruikt voor secundair materiaal dat u in het hoofdpad van een presentatie overslaan, maar die indien nodig direct beschikbaar is. |
+    | Fragment | Celinhoud wordt weergegeven in de context van de vorige dia of subdia wanneer u de pijl-omlaag gebruikt (een fragment wordt verwijderd wanneer u de pijl-omhoog gebruikt). U een fragment met een codecel gebruiken om die code in een dia weer te geven, of u meerdere fragmenten gebruiken om tekstopsommingstekens één voor één te laten verschijnen (zie voorbeeld in de volgende sectie). Omdat fragmenten op de huidige dia worden gebouwd, zijn overtollige fragmenten niet zichtbaar aan de onderkant van het browservenster. |
     | Overslaan | Cel wordt niet weergegeven in de diavoorstelling. |
-    | Opmerkingen | Cel bevat als sprekersnotities, worden niet in de diavoorstelling weergegeven. |
+    | Opmerkingen | Cel bevat als sprekersnotities, die niet worden weergegeven in de diavoorstelling. |
 
-1. In eerste instantie is het handig om te kiezen **dia** voor elke cel. Vervolgens kunt u de diavoorstelling uitvoeren en juiste aanpassingen.
+1. In eerste instantie is het handig om **dia** voor elke cel te kiezen. U de diavoorstelling vervolgens uitvoeren en de juiste aanpassingen aanbrengen.
 
-### <a name="example-fragment-cells-for-bullet-items"></a>Voorbeeld: fragment cellen voor items met opsommingstekens
+### <a name="example-fragment-cells-for-bullet-items"></a>Voorbeeld: fragmentcellen voor opsommingstekens
 
-Om te maken van opsommingstekens in een dia die worden weergegeven door één, plaats de dia-header in een Markdown-cel met de **dia** en typ vervolgens elk opsommingsteken plaatsen in een afzonderlijke Markdown cel met de **Fragment** type:
+Als u opsommingstekens op een dia één voor één wilt laten verschijnen, plaatst u de diakopin een markdowncel met het **diatype** en plaatst u elke opsommingsteken in een afzonderlijke markeringscel met het **fragmenttype:**
 
-![Voorbeeld van het maken van meerdere Markdown cellen voor items met opsommingstekens](media/slideshow/slideshow-fragments.png)
+![Voorbeeld van het maken van meerdere markeringscellen voor opsommingstekens](media/slideshow/slideshow-fragments.png)
 
-Omdat de diavoorstelling fragmenten op basis van meer verticale afstand dan wanneer alle opsommingstekens zich in dezelfde cel wordt weergegeven, kunt u mogelijk niet zo veel items met opsommingstekens gebruiken.
+Omdat de diavoorstelling fragmenten met meer verticale afstand weergeeft dan wanneer alle opsommingstekens zich in dezelfde cel bevinden, u mogelijk niet zoveel opsommingstekens gebruiken.
 
-## <a name="run-the-slideshow"></a>Voer de diavoorstelling
+## <a name="run-the-slideshow"></a>De diavoorstelling uitvoeren
 
-1. Als u een Markdown-cellen hebt bewerkt, zorg ervoor dat u ze voor het renderen van de HTML-code, anders wordt deze weergegeven uit te voeren *als* Markdown in de diavoorstelling.
+1. Als u markdowncellen hebt bewerkt, moet u deze uitvoeren om hun HTML weer te geven, anders worden ze weergegeven *als* Markdown in de diavoorstelling.
 
-1. Wanneer u hebt geconfigureerd de **Type dia** voor elke cel, selecteert u de cel waarmee u de diavoorstelling te starten, en selecteer vervolgens de **Enter/afsluiten STIJGEN diavoorstelling** op de werkbalk van de belangrijkste:
+1. Nadat u het **diatype** voor elke cel hebt geconfigureerd, selecteert u de cel waarmee u de diavoorstelling wilt starten en selecteert u de knop **RISE-diavoorstelling invoeren/afsluiten** op de hoofdwerkbalk:
 
-    ![Knop op de werkbalk van de belangrijkste/uitschakelen voor de STIJGEN diavoorstelling](media/slideshow/slideshow-start.png)
+    ![Knop RISE-diavoorstelling invoeren/afsluiten op de hoofdwerkbalk](media/slideshow/slideshow-start.png)
 
-1. Als u wilt navigeren tussen de dia's, evenals fragmenten, gebruikt u de linker- en pijlen in de navigatiebesturingselement. De tekst in het besturingselement bevat een *slide.sub dia*.
+1. Als u tussen dia's en fragmenten wilt navigeren, gebruikt u de pijl-links en -rechts in het navigatiebesturingselement. De tekst in het besturingselement toont een getal dat *slide.sub-slide weergeeft*.
 
-    ![Diavoorstelling voor paginanavigatie](media/slideshow/slideshow-navigation-control.png)
+    ![Navigatiebesturingselement voor diavoorstellingen](media/slideshow/slideshow-navigation-control.png)
 
-1. Als u wilt navigeren tussen de dia's en onderliggende dia's, evenals fragmenten, gebruik de omhoog en omlaag pijlen, als ingeschakeld:
+1. Als u wilt navigeren tussen dia's en subdia's en fragmenten, gebruikt u de pijl-omhoog en pijl-omlaag, indien ingeschakeld:
 
-    ![Diavoorstelling besturingselementen voor paginanavigatie voor onderliggende dia 's](media/slideshow/slideshow-navigation-control-subslide.png)
+    ![Navigatiebesturingselementen voor subdia's](media/slideshow/slideshow-navigation-control-subslide.png)
 
-1. Op een codecel, gebruikt u de knop afspelen om uit te voeren van de code. uitvoer wordt weergegeven op de dia:
+1. Gebruik in een codecel de afspeelknop om de code uit te voeren. uitvoer wordt weergegeven op de dia:
 
-    ![De knop afspelen om uit te voeren een codecel](media/slideshow/slideshow-run-code-cell.png)
+    ![Knop Afspelen om een codecel uit te voeren](media/slideshow/slideshow-run-code-cell.png)
 
-    ![Code-cel-uitvoer wordt weergegeven in de diavoorstelling](media/slideshow/slideshow-run-code-cell-output.png)
+    ![Codeceluitvoer wordt weergegeven in de diavoorstelling](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > Uitvoer van de cel wordt beschouwd als onderdeel van de cel in een diavoorstelling. Als u een cel in het notitieblok of diavoorstelling uitvoert, wordt de uitvoer wordt weergegeven in de andere weergave ook. Schakelt u de uitvoer, gebruikt u de **cel** > **huidige uitvoer** > **wissen** opdracht (voor de huidige cel) of **cel**  >  **Alle uitvoer** > **wissen** (voor alle cellen).
+    > Celuitvoer wordt beschouwd als onderdeel van de cel in een diavoorstelling. Als u een cel uitvoert in de weergave Notitieblok of diavoorstelling, wordt de uitvoer ook in de andere weergave weergegeven. Als u de uitvoer wilt wissen, gebruikt u **de** > opdracht**Celstroomuitvoer** > **wissen** (voor de huidige cel) of **Celalle** > **uitvoerwissen** > **Clear** (voor alle cellen).
 
-1. Wanneer u klaar bent met de diavoorstelling, gebruikt u de **X** om terug te keren naar de weergave van de notebook.
+1. Wanneer u klaar bent met de diavoorstelling, gebruikt u de **X** om terug te keren naar de notitieblokweergave.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Hoe: configureren en beheren van projecten](configure-manage-azure-notebooks-projects.md)
-- [Hoe: installatie van pakketten van binnen een laptop](install-packages-jupyter-notebook.md)
-- [Hoe: werken met bestanden](work-with-project-data-files.md)
-- [Hoe: toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)
+- [Hoe: Projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
+- [Hoe: pakketten installeren vanuit een notitieblok](install-packages-jupyter-notebook.md)
+- [Hoe: Werken met gegevensbestanden](work-with-project-data-files.md)
+- [Hoe: Toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)

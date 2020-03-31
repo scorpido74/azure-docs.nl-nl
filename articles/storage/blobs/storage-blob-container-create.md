@@ -1,6 +1,6 @@
 ---
-title: Een BLOB-container maken of verwijderen met .NET-Azure Storage
-description: Meer informatie over het maken of verwijderen van een BLOB-container in uw Azure Storage-account met behulp van de .NET-client bibliotheek.
+title: Een blobcontainer maken of verwijderen met .NET - Azure Storage
+description: Meer informatie over het maken of verwijderen van een blobcontainer in uw Azure Storage-account met behulp van de .NET-clientbibliotheek.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,44 @@ ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: c95ed6dde3c00c0688ccfd58565fd112427c8899
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79135935"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Een container maken of verwijderen in Azure Storage met .NET
 
-Blobs in Azure Storage zijn ingedeeld in containers. Voordat u een BLOB kunt uploaden, moet u eerst een container maken. In dit artikel wordt beschreven hoe u containers maakt en verwijdert met de [Azure Storage-client bibliotheek voor .net](/dotnet/api/overview/azure/storage?view=azure-dotnet).
+Blobs in Azure Storage zijn ingedeeld in containers. Voordat u een blob uploaden, moet u eerst een container maken. In dit artikel ziet u hoe u containers maakt en verwijdert met de [Azure Storage-clientbibliotheek voor .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).
 
-## <a name="name-a-container"></a>Een container een naam
+## <a name="name-a-container"></a>Een container een naam geven
 
-Een container naam moet een geldige DNS-naam zijn, omdat deze deel uitmaakt van de unieke URI die wordt gebruikt om de container of de blobs te adresseren. Volg deze regels bij het benoemen van een container:
+Een containernaam moet een geldige DNS-naam zijn, omdat deze deel uitmaakt van de unieke URI die wordt gebruikt om de container of de blobs aan te pakken. Volg deze regels bij het benoemen van een container:
 
-- Container namen kunnen tussen de 3 en 63 tekens lang zijn.
-- Container namen moeten beginnen met een letter of cijfer en mogen alleen kleine letters, cijfers en het streepje (-) bevatten.
-- Twee of meer opeenvolgende streepjes tekens zijn niet toegestaan in container namen.
+- Containernamen kunnen tussen de 3 en 63 tekens lang zijn.
+- Containernamen moeten beginnen met een letter of getal en mogen alleen kleine letters, cijfers en het streepje (-) teken bevatten.
+- Twee of meer opeenvolgende streepjestekens zijn niet toegestaan in containernamen.
 
-De URI voor een container heeft de volgende indeling:
+De URI voor een container is in deze indeling:
 
 `https://myaccount.blob.core.windows.net/mycontainer`
 
 ## <a name="create-a-container"></a>Een container maken
 
-Als u een container wilt maken, roept u een van de volgende methoden op:
+Als u een container wilt maken, roept u een van de volgende methoden aan:
 
 - [Maken](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.create)
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
-- [CreateIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
+- [Makenals bestaat niet](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
 
-De methoden **Create** en **CreateAsync** genereren een uitzonde ring als er al een container met dezelfde naam bestaat.
+Met de methoden **Maken** en **Maken Async** wordt een uitzondering gemaakt als er al een container met dezelfde naam bestaat.
 
-De **CreateIfNotExists** -en **CreateIfNotExistsAsync** -methoden retour neren een Booleaanse waarde die aangeeft of de container is gemaakt. Als er al een container met dezelfde naam bestaat, retour neren deze methoden **False** om aan te geven dat er geen nieuwe container is gemaakt.
+De methoden **CreateIfNotExists** en **CreateIfNotExistsAsync** geven een Booleaanse waarde als aanduiding of de container is gemaakt. Als er al een container met dezelfde naam bestaat, worden deze methoden **False** geretourneerd om aan te geven dat er geen nieuwe container is gemaakt.
 
-Containers worden direct onder het opslag account gemaakt. Het is niet mogelijk om één container onder een andere te nesten.
+Containers worden direct onder het opslagaccount gemaakt. Het is niet mogelijk om de ene container onder de andere te nestelen.
 
-In het volgende voor beeld wordt een container asynchroon gemaakt:
+In het volgende voorbeeld wordt een container asynchroon gezoend gezoend:
 
 ```csharp
 private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBlobClient blobClient)
@@ -79,15 +79,15 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
 }
 ```
 
-## <a name="create-the-root-container"></a>De basis container maken
+## <a name="create-the-root-container"></a>De hoofdcontainer maken
 
-Een basis container fungeert als een standaard container voor uw opslag account. Elk opslag account kan één basis container hebben, die $root moet worden genoemd *.* U moet de basis container expliciet maken of verwijderen.
+Een rootcontainer dient als standaardcontainer voor uw opslagaccount. Elke opslagrekening kan één wortelcontainer hebben, die $root moet worden *genoemd.*. U moet de hoofdcontainer expliciet maken of verwijderen.
 
-U kunt verwijzen naar een blob die is opgeslagen in de hoofd container zonder de naam van de hoofd container op te nemen. Met de hoofd container kunt u verwijzen naar een BLOB op het hoogste niveau van de hiërarchie van het opslag account. U kunt bijvoorbeeld verwijzen naar een blob die zich in de hoofd container op de volgende manier bevindt:
+U verwijzen naar een blob die is opgeslagen in de hoofdcontainer zonder de naam van de hoofdcontainer op te nemen. Met de hoofdcontainer u verwijzen naar een blob op het hoogste niveau van de hiërarchie van opslagaccount. U bijvoorbeeld op de volgende manier verwijzen naar een blob die zich in de hoofdcontainer bevindt:
 
 `https://myaccount.blob.core.windows.net/default.html`
 
-In het volgende voor beeld wordt de hoofd container synchroon gemaakt:
+In het volgende voorbeeld wordt de hoofdcontainer synchroon gezoend:
 
 ```csharp
 private static void CreateRootContainer(CloudBlobClient blobClient)
@@ -124,13 +124,13 @@ Als u een container in .NET wilt verwijderen, gebruikt u een van de volgende met
 - [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
 
-De methoden **Delete** en **DeleteAsync** genereren een uitzonde ring als de container niet bestaat.
+Met de methoden **Delete en** **DeleteAsync** wordt een uitzondering gemaakt als de container niet bestaat.
 
-De **DeleteIfExists** -en **DeleteIfExistsAsync** -methoden retour neren een Booleaanse waarde die aangeeft of de container is verwijderd. Als de opgegeven container niet bestaat, retour neren deze methoden **False** om aan te geven dat de container niet is verwijderd.
+De methoden **DeleteIfExists** en **DeleteIfExistsAsync** geven een Booleaanse waarde als u aangeeft of de container is verwijderd. Als de opgegeven container niet bestaat, worden deze methoden **false** geretourneerd om aan te geven dat de container niet is verwijderd.
 
-Nadat u een container hebt verwijderd, kunt u niet meer dan 30 seconden een container maken met dezelfde naam en mogelijk langer. Terwijl de container wordt verwijderd, mislukt een poging om een container met dezelfde naam te maken, met de HTTP-fout code 409 (conflict). Eventuele andere bewerkingen in de container of de blobs die deze bevat, mislukken met de HTTP-fout code 404 (niet gevonden) terwijl de container wordt verwijderd.
+Nadat u een container hebt verwijderd, u niet ten minste 30 seconden en mogelijk langer een container met dezelfde naam maken. Terwijl de container wordt verwijderd, mislukt een poging om een container met dezelfde naam te maken met HTTP-foutcode 409 (Conflict). Andere bewerkingen op de container of de blobs die deze bevat, mislukken met HTTP-foutcode 404 (Niet gevonden) terwijl de container wordt verwijderd.
 
-In het volgende voor beeld wordt de opgegeven container verwijderd en wordt de uitzonde ring verwerkt als de container niet bestaat:
+In het volgende voorbeeld wordt de opgegeven container verwijderd en wordt de uitzondering verwerkt als de container niet bestaat:
 
 ```csharp
 private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient, string containerName)
@@ -153,7 +153,7 @@ private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient,
 }
 ```
 
-In het volgende voor beeld ziet u hoe u alle containers verwijdert die beginnen met een opgegeven voor voegsel. In het voor beeld wordt de lease onderbroken als er een bestaande lease in de container is.
+In het volgende voorbeeld ziet u hoe u alle containers verwijdert die beginnen met een opgegeven voorvoegsel. Het voorbeeld breekt de lease als er een bestaande lease op de container.
 
 ```csharp
 private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
@@ -187,5 +187,5 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
 
 ## <a name="see-also"></a>Zie ook
 
-- [Container bewerking maken](/rest/api/storageservices/create-container)
+- [Containerbewerking maken](/rest/api/storageservices/create-container)
 - [Bewerking voor het verwijderen van een container](/rest/api/storageservices/delete-container)

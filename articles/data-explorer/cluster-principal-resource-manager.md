@@ -1,6 +1,6 @@
 ---
-title: Cluster-principals voor Azure Data Explorer toevoegen met behulp van een Azure Resource Manager sjabloon
-description: In dit artikel leert u hoe u cluster-principals voor Azure Data Explorer kunt toevoegen met behulp van een Azure Resource Manager sjabloon.
+title: Clusterprincipals voor Azure Data Explorer toevoegen met behulp van een Azure Resource Manager-sjabloon
+description: In dit artikel leert u hoe u clusterprincipals voor Azure Data Explorer toevoegt met behulp van een Azure Resource Manager-sjabloon.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 22423568ab0b3b55d8d9566df4829eb6070b5f8c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965045"
 ---
-# <a name="add-cluster-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Cluster-principals voor Azure Data Explorer toevoegen met behulp van een Azure Resource Manager sjabloon
+# <a name="add-cluster-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Clusterprincipals voor Azure Data Explorer toevoegen met behulp van een Azure Resource Manager-sjabloon
 
 > [!div class="op_single_selector"]
-> * [C#](cluster-principal-csharp.md)
+> * [C #](cluster-principal-csharp.md)
 > * [Python](cluster-principal-python.md)
 > * [Azure Resource Manager-sjabloon](cluster-principal-resource-manager.md)
 
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. In dit artikel voegt u cluster-principals voor Azure Data Explorer toe met behulp van een Azure Resource Manager sjabloon.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. In dit artikel voegt u clusterprincipals toe voor Azure Data Explorer met behulp van een Azure Resource Manager-sjabloon.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* [Maak een cluster](create-cluster-database-portal.md).
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+* [Een cluster maken](create-cluster-database-portal.md).
 
-## <a name="azure-resource-manager-template-for-adding-a-cluster-principal"></a>Azure Resource Manager sjabloon voor het toevoegen van een cluster-Principal
+## <a name="azure-resource-manager-template-for-adding-a-cluster-principal"></a>Azure Resource Manager-sjabloon voor het toevoegen van een clusterprincipal
 
-In het volgende voor beeld ziet u een Azure Resource Manager sjabloon voor het toevoegen van een cluster-principal.  U kunt [de sjabloon in de Azure Portal bewerken en implementeren](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) met behulp van het formulier.
+In het volgende voorbeeld wordt een Azure Resource Manager-sjabloon weergegeven voor het toevoegen van een clusterprincipal.  U [de sjabloon in de Azure-portal bewerken en implementeren](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) met behulp van het formulier.
 
 ```json
 {
@@ -97,4 +97,4 @@ In het volgende voor beeld ziet u een Azure Resource Manager sjabloon voor het t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Databaseprincipal toevoegen](database-principal-resource-manager.md)
+* [Databaseprincipals toevoegen](database-principal-resource-manager.md)

@@ -6,15 +6,15 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77593157"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Zelfstudie: Toepassing voorbereiden voor AKS (Azure Kubernetes Service)
 
-In deze zelfstudie, deel een van zeven, wordt een toepassing met meerdere containers voorbereid voor gebruik in Kubernetes. Bestaande ontwikkelprogramma's, zoals Docker Compose, worden gebruikt voor het lokaal bouwen en testen van een toepassing. In deze zelfstudie leert u procedures om het volgende te doen:
+In deze zelfstudie, deel een van zeven, wordt een toepassing met meerdere containers voorbereid voor gebruik in Kubernetes. Bestaande ontwikkelprogramma's, zoals Docker Compose, worden gebruikt voor het lokaal bouwen en testen van een toepassing. Procedures voor:
 
 > [!div class="checklist"]
 > * Een voorbeeld van een toepassingsbron klonen vanuit GitHub
@@ -31,7 +31,7 @@ In aanvullende zelfstudies wordt de containerinstallatiekopie geüpload naar een
 
 In deze zelfstudie wordt ervan uitgegaan dat u een basiskennis hebt van Docker-kernconcepten zoals containers, containerinstallatiekopieën en `docker`-opdrachten. Zie [Aan de slag met Docker][docker-get-started] voor een uitleg van de basisprincipes van containers.
 
-Voor deze zelfstudie hebt u een lokale Docker-ontwikkelomgeving met Linux-containers nodig. Docker biedt pakketten die docker configureren op een [Mac][docker-for-mac]-, [Windows][docker-for-windows]-of [Linux][docker-for-linux] -systeem.
+Voor deze zelfstudie hebt u een lokale Docker-ontwikkelomgeving met Linux-containers nodig. Docker biedt pakketten voor de configuratie van Docker op een [Mac][docker-for-mac]-, [Windows][docker-for-windows]- of [Linux][docker-for-linux]-systeem.
 
 Azure Cloud Shell bevat niet de Docker-onderdelen die nodig zijn om elke stap in deze zelfstudies te voltooien. Daarom raden wij u aan een volledige Docker-ontwikkelomgeving te gebruiken.
 
@@ -55,7 +55,7 @@ In de map bevinden zich de broncode van de toepassing, een vooraf gemaakt Docker
 
 ## <a name="create-container-images"></a>Containerinstallatiekopieën maken
 
-[Docker opstellen][docker-compose] kan worden gebruikt om het bouwen van container installatie kopieën en de implementatie van toepassingen met meerdere containers te automatiseren.
+[Docker Compose][docker-compose] kan worden gebruikt om het bouwen van containerinstallatiekopieën en het implementeren van toepassingen met meerdere containers te automatiseren.
 
 Gebruik het voorbeeldbestand `docker-compose.yaml` om automatisch de containerinstallatiekopie te maken, de Redis-installatiekopie te downloaden en de toepassing te starten:
 
@@ -74,7 +74,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Voer de [docker PS][docker-ps] -opdracht uit om de actieve containers te zien:
+Voer de opdracht [docker ps][docker-ps] uit om de actieve containers te zien:
 
 ```
 $ docker ps
@@ -94,13 +94,13 @@ Als u wilt zien hoe de toepassing wordt uitgevoerd, typt u `http://localhost:808
 
 Nu de functionaliteit van de toepassing is gevalideerd, kunnen de actieve containers worden gestopt en verwijderd. De containerinstallatiekopieën moet u niet verwijderen. In de volgende zelfstudie wordt de installatiekopie *azure-vote-front* geüpload naar een Azure Container Registry-exemplaar.
 
-Stop en verwijder de container instanties en bronnen met de opdracht [docker-][docker-compose-down] reactief:
+Stop en verwijder de containerexemplaren en -resources met de opdracht [docker-compose down][docker-compose-down]:
 
 ```console
 docker-compose down
 ```
 
-Wanneer de lokale toepassing is verwijderd, hebt u een docker-installatie kopie die de Azure stem-toepassing, *Azure-stem*voor gebruik, bevat met de volgende zelf studie.
+Wanneer de lokale toepassing is verwijderd, hebt u een Docker-afbeelding die de Azure Vote-toepassing bevat, *azure-vote-front,* voor gebruik met de volgende zelfstudie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -114,7 +114,7 @@ In deze zelfstudie is een toepassing getest en zijn containerinstallatiekopieën
 Ga verder met de volgende zelfstudie voor informatie over het opslaan van containerinstallatiekopieën in Azure Container Registry.
 
 > [!div class="nextstepaction"]
-> [Installatiekopieën pushen naar Azure Container Registry][aks-tutorial-prepare-acr]
+> [Installatiekopieën naar Azure Container Registry pushen][aks-tutorial-prepare-acr]
 
 <!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/
@@ -125,7 +125,7 @@ Ga verder met de volgende zelfstudie voor informatie over het opslaan van contai
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
 [docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
 [docker-compose-down]: https://docs.docker.com/compose/reference/down
-[git]: https://git-scm.com/downloads
+[Git]: https://git-scm.com/downloads
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

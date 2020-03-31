@@ -1,77 +1,76 @@
 ---
-title: Feedback van Azure Application Review verwerken | Azure Marketplace
-description: In dit artikel wordt uitgelegd hoe u Azure DevOps gebruikt voor het afhandelen van feedback over de aanbiedingen van Azure-toepassingen voor Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Feedback voor het controleren van Azure-toepassingen verwerken | Azure Marketplace
+description: Hier wordt uitgelegd hoe u Azure DevOps gebruikt om controlefeedback voor Azure-toepassingsaanbiedingen voor de Azure Marketplace te verwerken.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.author: pabutler
-ms.openlocfilehash: ef4aff57948034fb369bd74564306b7b8674b377
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b5f290bae908ac753801eef2c9b8394ca1bb7a40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827588"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285296"
 ---
 # <a name="handling-review-feedback"></a>Beoordelingsfeedback verwerken
 
-In dit artikel wordt uitgelegd hoe u toegang krijgt tot de Azure DevOps-omgeving die wordt gebruikt door het Microsoft Azure Marketplace beoordelings team.  Als er in uw Azure-toepassings aanbieding kritieke problemen zijn gevonden tijdens de stap van **micro soft Review** , kunt u zich aanmelden bij dit systeem om gedetailleerde informatie over deze problemen te bekijken (feedback beoordelen).  Nadat u al deze problemen hebt opgelost, moet u uw aanbieding opnieuw verzenden om deze te kunnen publiceren op de Azure Marketplace.  In het volgende diagram ziet u hoe dit feedback proces is gekoppeld aan het publicatie proces.
+In dit artikel wordt uitgelegd hoe u toegang krijgt tot de Azure DevOps-omgeving die wordt gebruikt door het Microsoft Azure Marketplace-beoordelingsteam.  Als er tijdens de **microsoft-beoordelingsstap** kritieke problemen worden gevonden in uw Azure-toepassingsaanbieding, u zich bij dit systeem aanmelden om gedetailleerde informatie over deze problemen weer te geven (feedback bekijken).  Nadat u al deze problemen hebt opgelost, moet u uw aanbieding opnieuw indienen om deze te blijven publiceren op de Azure Marketplace.  In het volgende diagram ziet u hoe dit feedbackproces zich verhoudt tot het publicatieproces.
 
-![Stappen publiceren met Azure DevOps feedback](./media/pub-flow-vsts-access.png)
+![Publicatiestappen met Azure DevOps-feedback](./media/pub-flow-vsts-access.png)
 
-Normaal gesp roken raadpleegt u problemen als pull-aanvraag (PR).  Elke PR is gekoppeld aan een online [Azure DevOps](https://azure.microsoft.com/services/devops/) (voorheen Visual Studio Team Services (VSTS)) item met details over het probleem.  In de volgende afbeelding ziet u een voor beeld van een verwijzing naar een overzichts PR.  Voor complexe situaties kunnen de teams met beoordelings-en ondersteunings team u ook een e-mail sturen. 
+Doorgaans worden beoordelingskwesties aangeduid als pull request (PR).  Elke PR is gekoppeld aan een online [Azure DevOps](https://azure.microsoft.com/services/devops/) (voorheen Visual Studio Team Services (VSTS)) item, dat details over het probleem bevat.  In de volgende afbeelding wordt een voorbeeld van een pre-pr-verwijzing voor beoordeling weergegeven.  Voor complexe situaties kunnen de beoordelings- en ondersteuningsteams u ook een e-mail sturen. 
 
-![Tabblad status met feedback geven](./media/status-tab-ms-review.png)
+![Tabblad Status met controlefeedback](./media/status-tab-ms-review.png)
 
 
-## <a name="azure-devops-access"></a>Toegang tot Azure DevOps
+## <a name="azure-devops-access"></a>Azure DevOps-toegang
 
-Voor het weer geven van de PR-items waarnaar wordt verwezen in feedback over de beoordeling, moeten uitgevers eerst de juiste autorisatie krijgen.  Anders ontvangen nieuwe uitgevers een `401 - Not Authorized` antwoord pagina wanneer wordt geprobeerd pull weer te geven.  Voer de volgende stappen uit om toegang te vragen tot deze Azure DevOps-opslag plaats:
+Om de PR-items waarnaar wordt verwezen in de feedback van de beoordeling te bekijken, moeten uitgevers eerst de juiste toestemming krijgen.  Anders ontvangen nieuwe uitgevers `401 - Not Authorized` een antwoordpagina wanneer ze p's proberen te bekijken.  Voer de volgende stappen uit om toegang tot deze Azure DevOps-opslagplaats aan te vragen:
 
 1. Verzamel de volgende gegevens:
-    - Naam en ID van de uitgever
-    - Aanbiedings type (Azure-app), naam van aanbieding en SKU-ID
-    - De koppeling voor de pull-aanvraag, bijvoorbeeld: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>` deze URL kan worden opgehaald uit het meldings bericht of het adres van de 401-antwoord pagina.
-    - Het e-mail adres (sen) van de personen van de publicatie organisatie waartoe u toegang wilt verlenen.  Deze lijst moet de adres (sen) van de eigenaar bevatten die u hebt ingevoerd bij het registreren van een uitgever op het Cloud Partner-portal.
-2. Een ondersteunings incident maken.  Selecteer de knop **Help** in de titel balk van het Cloud Partner-Portal en kies vervolgens **ondersteuning** in het menu.  U moet de standaard webbrowser starten en navigeren naar de pagina met het nieuwe ondersteunings incident van micro soft.  (Mogelijk moet u zich eerst aanmelden.)
-3. Geef het **probleem type** op als **onboarding voor Marketplace** en **categorie** als **toegangs probleem**en selecteer vervolgens **aanvraag starten**.
+    - Uw naam en id van uw uitgever
+    - Aanbiedingstype (Azure-app), aanbiedingsnaam en SKU-id
+    - De koppeling pull request, `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>` bijvoorbeeld: Deze URL kan worden opgehaald uit het meldingsbericht of het adres van de 401-antwoordpagina.
+    - Het e-mailadres(en) van de personen van uw publicatieorganisatie waartoe u toegang wilt krijgen.  Deze lijst moet het adres(en) van de eigenaar bevatten dat u hebt opgegeven bij het registreren als uitgever op de Cloud Partner Portal.
+2. Maak een ondersteuningsincident.  Selecteer in de titelbalk van de Cloud Partner Portal de **Knop Help** en kies **Ondersteuning** in het menu.  U moet de standaardwebbrowser starten en naar de nieuwe ondersteuningsincidentpagina van Microsoft navigeren.  (Mogelijk moet u zich eerst aanmelden.)
+3. Geef het **probleemtype** op als onboarding en **categorie als** **Access-probleem** en selecteer Vervolgens **Startaanvraag .** **Access problem**
 
-    ![Categorie ondersteunings tickets](./media/support-incident1.png)
+    ![Categorie ondersteuningstickets](./media/support-incident1.png)
 
-4. Geef in **stap 1 van 2** pagina uw contact gegevens op en selecteer **door gaan**.
-5. Geef op de pagina **stap 2 van 2** de titel van een incident op (bijvoorbeeld `Request Azure DevOps access`) en geef de gegevens op die u in de eerste stap hebt verzameld (hierboven).  Lees en accepteer de overeenkomst en selecteer vervolgens **verzenden**.
+4. Lever in **stap 1 van 2** pagina uw contactgegevens op en selecteer **Doorgaan**.
+5. Geef in **stap 2 van 2** pagina `Request Azure DevOps access`een incidenttitel op (bijvoorbeeld) en geef de informatie die u in de eerste stap hebt verzameld (hierboven).  Lees en accepteer de overeenkomst en selecteer **Verzenden**.
 
-Als het maken van het incident is gelukt, wordt er een bevestigings pagina weer gegeven.  Sla de bevestigings gegevens op deze pagina op voor uw referentie.  Het Microsoft Ondersteuning team moet binnen een paar werk dagen uw toegangs aanvraag beantwoorden.
+Als het maken van incidenten is gelukt, wordt een bevestigingspagina weergegeven.  Sla de bevestigingsgegevens op deze pagina op voor uw referentie.  Het Microsoft Support Team moet binnen enkele werkdagen op uw toegangsverzoek reageren.
 
 
-## <a name="reviewing-the-pull-request"></a>De pull-aanvraag controleren 
+## <a name="reviewing-the-pull-request"></a>Het pull-verzoek bekijken 
 
-Gebruik de volgende procedure om de problemen te bekijken die worden beschreven in de pull-aanvraag.
+Gebruik de volgende procedure om problemen te bekijken die zijn gedocumenteerd in de pull-aanvraag.
 
-1. Klik in de sectie **micro soft Review** van het formulier **publicatie stappen** op een PR-koppeling om uw browser te openen en navigeer naar de pagina **overzicht** (Home) voor deze PR.  In de volgende afbeelding ziet u een voor beeld van een start pagina voor een kritiek probleem voor de aanbieding van de contoso-voor beeld-app.  Deze pagina bevat nuttige samenvattings informatie over de beoordelings problemen die in de Azure-app zijn gevonden.  
+1. Klik in het gedeelte **Microsoft-recensie** van het formulier **Publicatiestappen** op een PR-koppeling om uw browser te starten en navigeer naar **de** startpagina (startpagina) voor deze PR.  In de volgende afbeelding wordt een voorbeeld afbeelding weergegeven waarop een kritieke probleempagina voor de contoso-voorbeeld-app wordt aangeboden.  Deze pagina bevat nuttige overzichtsinformatie over de beoordelingsproblemen in de Azure-app.  
 
-    [![start pagina voor pull-aanvragen](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
-    <br/> *Klik op de afbeelding om uit te breiden.*
+    [![Startpagina van aanvraag trekken](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
+    <br/> *Klik op de afbeelding om uit te vouwen.*
     
-2. Beschrijving Klik aan de rechter kant van het venster in het gedeelte **beleid**op het probleem bericht (in dit voor beeld: **beleids validatie mislukt**) om de details op laag niveau van het probleem te onderzoeken, inclusief de bijbehorende logboek bestanden.  Fouten worden doorgaans weer gegeven aan de onderkant van de logboek bestanden.
+2. (Optioneel) Klik aan de rechterkant van het venster in de sectie **Beleid**op het probleembericht (in dit voorbeeld: **Beleidsvalidatie is mislukt)** om de details op laag niveau van het probleem te onderzoeken, inclusief de bijbehorende logboekbestanden.  Fouten worden meestal onder aan de logboekbestanden weergegeven.
 
-3. Selecteer in het menu aan de linkerkant van de start pagina de optie **bestanden** om de lijst bestanden weer te geven waaruit de technische activa voor deze aanbieding bestaan.  De micro soft-revisoren moeten opmerkingen hebben toegevoegd waarin de gedetecteerde kritieke problemen worden beschreven.  In het volgende voor beeld zijn er twee problemen ontdekt. 
+3. **Selecteer** bestanden om de lijstbestanden weer te geven die de technische elementen voor deze aanbieding bevatten in het menu aan de linkerkant van de startpagina.  De Microsoft-beoordelaars moeten opmerkingen hebben toegevoegd waarin de ontdekte kritieke problemen worden beschreven.  In het volgende voorbeeld zijn twee problemen ontdekt. 
 
-    [![start pagina voor pull-aanvragen](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
-    <br/> *Klik op de afbeelding om uit te breiden.*
+    [![Startpagina van aanvraag trekken](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    <br/> *Klik op de afbeelding om uit te vouwen.*
 
-4. Klik op elk opmerkings knooppunt in de linker boom structuur om naar de opmerking in de context van de omringende code te navigeren.  Corrigeer de bron code in het project van uw team om het probleem te verhelpen dat wordt beschreven in de opmerking.
+4. Klik op elk opmerkingsknooppunt in de linkerstructuur om naar de opmerking in de context van de omringende code te navigeren.  Repareer uw broncode in het project van uw team om het probleem te verhelpen dat door de opmerking wordt beschreven.
 
 > [!Note]
-> U kunt de technische activa van uw aanbieding niet bewerken in de Azure DevOps-omgeving van het beoordelings team.  Voor uitgevers is dit een alleen-lezen omgeving voor de Inge sloten bron code.  U kunt echter reacties op reacties geven op het voor deel van het micro soft Review-team.
+> U de technische elementen van uw aanbieding niet bewerken binnen de Azure DevOps-omgeving van het beoordelingsteam.  Voor uitgevers is dit een alleen-lezen omgeving voor de opgenomen broncode.  U echter antwoorden op de opmerkingen achterlaten ten behoeve van het Microsoft-beoordelingsteam.
 
-   In het volgende voor beeld heeft de uitgever gecontroleerd, gecorrigeerd en gereageerd op het eerste probleem.
+   In het volgende voorbeeld heeft de uitgever het eerste nummer beoordeeld, gecorrigeerd en geantwoord.
 
-   ![Eerste oplossing en antwoord op Opmerking](./media/first-comment-reply.png)
+   ![Eerste fix en commentaar antwoord](./media/first-comment-reply.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de kritieke problemen hebt gecorrigeerd die in de beoordelings PR (s) zijn beschreven, moet u [uw Azure-app-aanbieding opnieuw publiceren](./cpp-publish-offer.md).
+Nadat u de kritieke problemen hebt verholpen die zijn gedocumenteerd in de e-meter-NL beoordeling, moet u [uw Azure-app-aanbieding opnieuw publiceren.](./cpp-publish-offer.md)

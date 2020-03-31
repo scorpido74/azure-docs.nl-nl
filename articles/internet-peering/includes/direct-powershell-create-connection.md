@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e1cb1bec6273fa79315b9439bec1412622ebfe28
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774300"
 ---
-In het volgende voor beeld ziet u hoe u een 10 Gbps direct peering maakt op Seattle.
+In het volgende voorbeeld ziet u hoe u een 10Gbps Direct-peering maakt in Seattle.
 
-Gebruik de Power shell-cmdlet **New-AzPeeringDirectConnectionObject** om DirectConnections te maken die moeten worden gebruikt in de nieuwe aanvraag voor peering.
+Gebruik PowerShell-cmdlet **New-AzPeeringDirectConnectionObject** om DirectConnections te maken die in de nieuwe peering-aanvraag moeten worden gebruikt.
 
-Hieronder ziet u een voor beeld van het maken van een DirectConnection:
+Hieronder vindt u een voorbeeld om een DirectConnection te maken:
 
 ```powershell
 $connection1 = New-AzPeeringDirectConnectionObject `
@@ -32,9 +32,9 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> De <index> voor $peeringLocation [<index>] in bovenstaand voor beeld moet overeenkomen met de locatie van de peering van uw keuze
+> De <index> voor<index>$peeringLocation in het bovenstaande voorbeeld moet overeenkomen met de peering locatie van uw keuze
 
-Maak een andere verbinding voor het geval u redundantie nodig hebt op de opgegeven peering-locatie:
+Maak een andere verbinding voor het geval u redundantie nodig hebt op een bepaalde peeringlocatie:
 
 ```powershell
 $connection2 = New-AzPeeringDirectConnectionObject `
@@ -46,7 +46,7 @@ $connection2 = New-AzPeeringDirectConnectionObject `
     -BandwidthInMbps 10000
 ```
 
-Gebruik de Power shell-cmdlet **New-AzPeering** om een nieuwe directe peering te maken. Deze opdracht vereist een ASN-Resource-ID die kan worden opgehaald, zoals hieronder wordt weer gegeven.
+Gebruik PowerShell cmdlet **New-AzPeering** om een nieuwe Direct peering te maken. Deze opdracht vereist ASN resource ID die kan worden opgehaald zoals hieronder weergegeven.
 
 
 ```powershell
@@ -60,7 +60,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Hieronder ziet u een voor beeld van een antwoord wanneer de aanvraag is verwerkt:
+Hieronder vindt u een voorbeeldantwoord wanneer de aanvraag is verwerkt:
 
 ```powershell
 
@@ -78,4 +78,4 @@ Hieronder ziet u een voor beeld van een antwoord wanneer de aanvraag is verwerkt
     Tags                 : {}
 
 ```
-Houd er rekening mee dat in plaats van **{subscriptionId}** in de bovenstaande uitvoer de werkelijke abonnements-id wordt weer gegeven.
+Houd er rekening mee dat in plaats van **{subscriptionId}** in de bovenstaande uitvoer de werkelijke abonnements-ID wordt weergegeven.

@@ -1,179 +1,276 @@
 ---
-title: Label resources voor logische organisatie
-description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor facturering en beheer.
+title: Resources, resourcegroepen en abonnementen voor logische organisatie taggen
+description: Hier ziet u hoe u tags toepast om Azure-resources te ordenen voor facturering en beheer.
 ms.topic: conceptual
-ms.date: 01/03/2020
-ms.openlocfilehash: c7f8d8672e205fa677bff33c8ed173c1105b26c6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/20/2020
+ms.openlocfilehash: ffc97df0923e26c3abf0eed8e7810f3b1dc61ed2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274500"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132249"
 ---
-# <a name="use-tags-to-organize-your-azure-resources"></a>Tags gebruiken om uw Azure-resources te organiseren
+# <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Tags gebruiken om uw Azure-resources en beheerhiërarchie te ordenen
 
-U past tags toe op uw Azure-resources om ze logisch in een taxonomie te organiseren. Elke tag bestaat uit een naam en een waardepaar. U kunt de naam Omgeving en de waarde Productie bijvoorbeeld toepassen op alle resources in de productie.
+U past tags toe op uw Azure-bronnen, resourcegroepen en abonnementen om ze logisch te ordenen in een taxonomie. Elke tag bestaat uit een naam en een waardepaar. U kunt de naam Omgeving en de waarde Productie bijvoorbeeld toepassen op alle resources in de productie.
 
-Nadat u de tags hebt toegepast, kunt u alle resources in het abonnement ophalen met deze tagnaam en -waarde. Met tags kunt u verwante resources ophalen uit verschillende resource groepen. Deze aanpak is nuttig wanneer u resources moet ordenen voor facturering of beheer.
-
-Uw taxonomie moet rekening houden met een self-service voor het coderen van meta gegevens naast een strategie voor automatisch labelen om de belasting van gebruikers te verminderen en de nauw keurigheid te verg Roten.
+Zie Handleiding voor het benoemen en [taggen](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)van resources voor aanbevelingen over het implementeren van een strategie voor het implementeren van tags.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="limitations"></a>Beperkingen
-
-Voor tags gelden de volgende beperkingen:
-
-* Niet alle resource typen ondersteunen Tags. Zie [tag-ondersteuning voor Azure-resources](tag-support.md)om te bepalen of u een tag kunt Toep assen op een resource type.
-* Elke resource of resource groep mag Maxi maal 50 label naam/waarde-paren hebben. Als u meer tags wilt Toep assen dan het Maxi maal toegestane aantal, gebruikt u een JSON-teken reeks voor de waarde van de tag. De JSON-tekenreeks kan veel waarden bevatten die worden toegepast op een enkele tagnaam. Een resource groep kan veel resources bevatten die elk een 50-tag/waarde-paren hebben.
-* De tagnaam is beperkt tot 512 tekens en de tagwaarde is beperkt tot 256 tekens. Voor opslagaccounts is de tagnaam beperkt tot 128 tekens en de tagwaarde beperkt tot 256 tekens.
-* Gegeneraliseerde Vm's ondersteunen geen tags.
-* Tags die zijn toegepast op de resourcegroep, worden niet overgenomen door de resources in deze resourcegroep.
-* Labels kunnen niet worden toegepast op klassieke resources, zoals Cloud Services.
-* Label namen mogen niet deze tekens bevatten: `<`, `>`, `%`, `&`, `\`, `?``/`
-
-   > [!NOTE]
-   > Op het moment dat u Azure DNS zones en Traffic Manager-services, is het gebruik van spaties in het label ook niet toegestaan. 
-
 ## <a name="required-access"></a>Vereiste toegang
 
-Om labels toe te passen op resources, moet de gebruiker schrijf toegang hebben tot het bron type. Gebruik de rol [Inzender](../../role-based-access-control/built-in-roles.md#contributor) om labels toe te passen op alle resource typen. Als u labels wilt Toep assen op slechts één resource type, gebruikt u de rol Inzender voor die resource. Gebruik bijvoorbeeld de Inzender van de [virtuele machine](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)om labels toe te passen op virtuele machines.
+Als u tags wilt toepassen op een resource, moet u schrijftoegang hebben tot het brontype **Microsoft.Resources/tags.** Met de rol **Tag Contributor** u tags toepassen op een entiteit zonder toegang te hebben tot de entiteit zelf.
 
-## <a name="policies"></a>Beleidsregels
-
-U kunt [Azure Policy](../../governance/policy/overview.md) gebruiken om regels en conventies voor code ring af te dwingen. Door een beleid te maken, vermijdt u het scenario van resources die worden geïmplementeerd in uw abonnement en die niet voldoen aan de verwachte Tags voor uw organisatie. In plaats van labels hand matig toe te passen of te zoeken naar resources die niet compatibel zijn, kunt u een beleid maken waarmee automatisch de benodigde Tags tijdens de implementatie worden toegepast. Labels kunnen nu ook worden toegepast op bestaande resources met het nieuwe [wijzigings](../../governance/policy/concepts/effects.md#modify) effect en een [herstel taak](../../governance/policy/how-to/remediate-resources.md). In de volgende sectie ziet u voor beelden van beleids regels voor Tags.
-
-[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-policies-tags.md)]
+De [rol Inzender](../../role-based-access-control/built-in-roles.md#contributor) verleent ook de vereiste toegang om tags toe te passen op elke entiteit. Als u tags op slechts één resourcetype wilt toepassen, gebruikt u de rol inzender voor die resource. Als u bijvoorbeeld tags wilt toepassen op virtuele machines, gebruikt u de [virtuele machinebijdrager](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 ## <a name="powershell"></a>PowerShell
 
-Gebruik het volgende om de bestaande tags van een *resourcegroep* te bekijken:
+### <a name="apply-tags"></a>Tags toepassen
+
+Azure PowerShell biedt twee opdrachten voor het toepassen van tags - [Nieuw-AzTag](/powershell/module/az.resources/new-aztag) en [Update-AzTag](/powershell/module/az.resources/update-aztag). U moet over Azure PowerShell 3.6.1 of hoger beschikken om deze opdrachten te kunnen gebruiken.
+
+De **Nieuw-AzTag** vervangt alle tags op de resource, resourcegroep of abonnement. Wanneer u de opdracht aanroept, geeft u de resource-id in van de entiteit die u wilt taggen.
+
+In het volgende voorbeeld wordt een set tags op een opslagaccount gebruikt:
 
 ```azurepowershell-interactive
-(Get-AzResourceGroup -Name examplegroup).Tags
+$tags = @{"Dept"="Finance"; "Status"="Normal"}
+$resource = Get-AzResource -Name demoStorage -ResourceGroup demoGroup
+New-AzTag -ResourceId $resource.id -Tag $tags
 ```
 
-Dat script retourneert de volgende indeling:
+Wanneer de opdracht is voltooid, ziet u dat de resource twee tags heeft.
 
-```powershell
-Name                           Value
-----                           -----
-Dept                           IT
-Environment                    Test
+```output
+Properties :
+        Name    Value
+        ======  =======
+        Dept    Finance
+        Status  Normal
 ```
 
-Als u de bestaande tags voor een *resource met een opgegeven naam en resource groep*wilt weer geven, gebruikt u:
+Als u de opdracht opnieuw uitvoert, maar deze keer met verschillende tags, ziet u dat de eerdere tags worden verwijderd.
 
 ```azurepowershell-interactive
-(Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
+$tags = @{"Team"="Compliance"; "Environment"="Production"}
+New-AzTag -ResourceId $resource.id -Tag $tags
 ```
 
-Als u de resource-ID voor een resource hebt, kunt u deze resource-ID door geven om de tags op te halen.
+```output
+Properties :
+        Name         Value
+        ===========  ==========
+        Environment  Production
+        Team         Compliance
+```
+
+Als u tags wilt toevoegen aan een bron die al tags heeft, gebruikt u **Update-AzTag**. Stel de parameter **-Bewerking** in op **Samenvoegen**.
 
 ```azurepowershell-interactive
-(Get-AzResource -ResourceId /subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>).Tags
+$tags = @{"Dept"="Finance"; "Status"="Normal"}
+Update-AzTag -ResourceId $resource.id -Tag $tags -Operation Merge
 ```
 
-Als u *resource groepen wilt ophalen met een specifieke label naam en-waarde*, gebruikt u:
+Merk op dat de twee nieuwe tags zijn toegevoegd aan de twee bestaande tags.
+
+```output
+Properties :
+        Name         Value
+        ===========  ==========
+        Status       Normal
+        Dept         Finance
+        Team         Compliance
+        Environment  Production
+```
+
+Elke tagnaam kan slechts één waarde hebben. Als u een nieuwe waarde voor een tag opgeeft, wordt de oude waarde vervangen, zelfs als u de samenvoegbewerking gebruikt. In het volgende voorbeeld wordt de tag Status gewijzigd van Normaal naar Groen.
 
 ```azurepowershell-interactive
-(Get-AzResourceGroup -Tag @{ "Dept"="Finance" }).ResourceGroupName
+$tags = @{"Status"="Green"}
+Update-AzTag -ResourceId $resource.id -Tag $tags -Operation Merge
 ```
 
-Als u *resources wilt ophalen met een specifieke label naam en-waarde*, gebruikt u:
+```output
+Properties :
+        Name         Value
+        ===========  ==========
+        Status       Green
+        Dept         Finance
+        Team         Compliance
+        Environment  Production
+```
+
+Wanneer u de parameter **-Bewerking** instelt **op Vervangen,** worden de bestaande tags vervangen door de nieuwe set tags.
 
 ```azurepowershell-interactive
-(Get-AzResource -Tag @{ "Dept"="Finance"}).Name
+$tags = @{"Project"="ECommerce"; "CostCenter"="00123"; "Team"="Web"}
+Update-AzTag -ResourceId $resource.id -Tag $tags -Operation Replace
 ```
 
-Als u *resources met een specifieke label naam*wilt ophalen, gebruikt u:
+Alleen de nieuwe tags blijven op de bron.
+
+```output
+Properties :
+        Name        Value
+        ==========  =========
+        CostCenter  00123
+        Team        Web
+        Project     ECommerce
+```
+
+Dezelfde opdrachten werken ook met resourcegroepen of abonnementen. U geeft de id door voor de resourcegroep of het abonnement dat u wilt taggen.
+
+Als u een nieuwe set tags aan een resourcegroep wilt toevoegen, gebruikt u:
+
+```azurepowershell-interactive
+$tags = @{"Dept"="Finance"; "Status"="Normal"}
+$resourceGroup = Get-AzResourceGroup -Name demoGroup
+New-AzTag -ResourceId $resourceGroup.ResourceId -tag $tags
+```
+
+Als u de tags voor een resourcegroep wilt bijwerken, gebruikt u het:
+
+```azurepowershell-interactive
+$tags = @{"CostCenter"="00123"; "Environment"="Production"}
+$resourceGroup = Get-AzResourceGroup -Name demoGroup
+Update-AzTag -ResourceId $resourceGroup.ResourceId -Tag $tags -Operation Merge
+```
+
+Als u een nieuwe set tags aan een abonnement wilt toevoegen, gebruikt u het volgende:
+
+```azurepowershell-interactive
+$tags = @{"CostCenter"="00123"; "Environment"="Dev"}
+$subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
+New-AzTag -ResourceId "/subscriptions/$subscription" -Tag $tags
+```
+
+Gebruik het als u de tags voor een abonnement wilt bijwerken:
+
+```azurepowershell-interactive
+$tags = @{"Team"="Web Apps"}
+$subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
+Update-AzTag -ResourceId "/subscriptions/$subscription" -Tag $tags -Operation Merge
+```
+
+U hebt mogelijk meer dan één resource met dezelfde naam in een resourcegroep. In dat geval u elke resource instellen met de volgende opdrachten:
+
+```azurepowershell-interactive
+$resource = Get-AzResource -ResourceName sqlDatabase1 -ResourceGroupName examplegroup
+$resource | ForEach-Object { Update-AzTag -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $_.ResourceId -Operation Merge }
+```
+
+### <a name="list-tags"></a>Tags weergeven
+
+Als u de tags voor een resource, resourcegroep of abonnement wilt krijgen, gebruikt u de opdracht [Get-AzTag](/powershell/module/az.resources/get-aztag) en geeft u de bron-id voor de entiteit door.
+
+Gebruik het als u de tags voor een resource wilt weergeven:
+
+```azurepowershell-interactive
+$resource = Get-AzResource -Name demoStorage -ResourceGroup demoGroup
+Get-AzTag -ResourceId $resource.id
+```
+
+Gebruik het als u de tags voor een resourcegroep wilt weergeven:
+
+```azurepowershell-interactive
+$resourceGroup = Get-AzResourceGroup -Name demoGroup
+Get-AzTag -ResourceId $resourceGroup.ResourceId
+```
+
+Gebruik het als u de tags voor een abonnement wilt bekijken:
+
+```azurepowershell-interactive
+$subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
+Get-AzTag -ResourceId "/subscriptions/$subscription"
+```
+
+### <a name="list-by-tag"></a>Lijst op tag
+
+Gebruik het als u resources wilt krijgen met een specifieke tagnaam en -waarde:
+
+```azurepowershell-interactive
+(Get-AzResource -Tag @{ "CostCenter"="00123"}).Name
+```
+
+Gebruik het als u resources wilt krijgen met een specifieke tagnaam met een tagwaarde:
 
 ```azurepowershell-interactive
 (Get-AzResource -TagName "Dept").Name
 ```
 
-Wanneer u tags op een resource of resourcegroep toepast, overschrijft u de bestaande tags van die resource of resourcegroep. Als u een resource of resourcegroep hebt met bestaande tags, gaat u anders te werk dan wanneer dat niet het geval is.
-
-Gebruik het volgende om tags toe te voegen aan een *resourcegroep zonder bestaande tags*:
+Gebruik het als u resourcegroepen met een specifieke tagnaam en -waarde wilt gebruiken:
 
 ```azurepowershell-interactive
-Set-AzResourceGroup -Name examplegroup -Tag @{ "Dept"="IT"; "Environment"="Test" }
+(Get-AzResourceGroup -Tag @{ "CostCenter"="00123" }).ResourceGroupName
 ```
 
-Als u tags wilt toevoegen aan een *resourcegroep met bestaande tags*, haalt u de bestaande tags op, voegt u de nieuwe tag toe en past u de tags opnieuw toe:
+### <a name="remove-tags"></a>Tags verwijderen
+
+Als u specifieke tags wilt verwijderen, gebruikt u **Update-AzTag** en stelt **u De bewerking** in om te **verwijderen**. Geef de tags door die u wilt verwijderen.
 
 ```azurepowershell-interactive
-$tags = (Get-AzResourceGroup -Name examplegroup).Tags
-$tags.Add("Status", "Approved")
-Set-AzResourceGroup -Tag $tags -Name examplegroup
+$removeTags = @{"Project"="ECommerce"; "Team"="Web"}
+Update-AzTag -ResourceId $resource.id -Tag $removeTags -Operation Delete
 ```
 
-Gebruik het volgende om tags toe te voegen aan een *resource zonder bestaande tags*:
+De opgegeven tags worden verwijderd.
+
+```output
+Properties :
+        Name        Value
+        ==========  =====
+        CostCenter  00123
+```
+
+Als u alle tags wilt verwijderen, gebruikt u de opdracht [Verwijderen-AzTag.](/powershell/module/az.resources/remove-aztag)
 
 ```azurepowershell-interactive
-$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $resource.ResourceId -Force
+$subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
+Remove-AzTag -ResourceId "/subscriptions/$subscription"
 ```
 
-Een resource groep kan meer dan één resource met dezelfde naam bevatten. In dat geval kunt u elke resource instellen met de volgende opdrachten:
+## <a name="azure-cli"></a>Azure-CLI
 
-```azurepowershell-interactive
-$resource = Get-AzResource -ResourceName sqlDatabase1 -ResourceGroupName examplegroup
-$resource | ForEach-Object { Set-AzResource -Tag @{ "Dept"="IT"; "Environment"="Test" } -ResourceId $_.ResourceId -Force }
+### <a name="apply-tags"></a>Tags toepassen
+
+Wanneer u tags toevoegt aan een resourcegroep of resource, u de bestaande tags overschrijven of nieuwe tags toevoegen aan bestaande tags.
+
+Als u de tags op een resource wilt overschrijven, gebruikt u het als:
+
+```azurecli-interactive
+az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Gebruik het volgende om tags toe te voegen aan een *resource met bestaande tags*:
+Gebruik het als u een tag wilt toevoegen aan de bestaande tags op een resource:
 
-```azurepowershell-interactive
-$resource = Get-AzResource -ResourceName examplevnet -ResourceGroupName examplegroup
-$resource.Tags.Add("Status", "Approved")
-Set-AzResource -Tag $resource.Tags -ResourceId $resource.ResourceId -Force
+```azurecli-interactive
+az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Gebruik het volgende script om alle tags van een resource groep toe te passen op de bijbehorende resources en *geen bestaande tags op de resources te blijven*gebruiken:
+Als u de bestaande tags in een resourcegroep wilt overschrijven, gebruikt u het als:
 
-```azurepowershell-interactive
-$group = Get-AzResourceGroup -Name examplegroup
-Get-AzResource -ResourceGroupName $group.ResourceGroupName | ForEach-Object {Set-AzResource -ResourceId $_.ResourceId -Tag $group.Tags -Force }
+```azurecli-interactive
+az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
 ```
 
-Gebruik het volgende script als u alle tags van een resource groep wilt Toep assen op de bijbehorende resources en *bestaande tags wilt blijven gebruiken voor resources die geen duplicaten zijn*:
+Als u een tag wilt toevoegen aan de bestaande tags in een resourcegroep, gebruikt u:
 
-```azurepowershell-interactive
-$group = Get-AzResourceGroup -Name examplegroup
-if ($null -ne $group.Tags) {
-    $resources = Get-AzResource -ResourceGroupName $group.ResourceGroupName
-    foreach ($r in $resources)
-    {
-        $resourcetags = (Get-AzResource -ResourceId $r.ResourceId).Tags
-        if ($resourcetags)
-        {
-            foreach ($key in $group.Tags.Keys)
-            {
-                if (-not($resourcetags.ContainsKey($key)))
-                {
-                    $resourcetags.Add($key, $group.Tags[$key])
-                }
-            }
-            Set-AzResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
-        }
-        else
-        {
-            Set-AzResource -Tag $group.Tags -ResourceId $r.ResourceId -Force
-        }
-    }
-}
+```azurecli-interactive
+az group update -n examplegroup --set tags.'Status'='Approved'
 ```
 
-Geef een lege hash-tabel door om alle tags te verwijderen:
+Momenteel biedt Azure CLI geen ondersteuning voor het toepassen van tags op abonnementen.
 
-```azurepowershell-interactive
-Set-AzResourceGroup -Tag @{} -Name examplegroup
+### <a name="list-tags"></a>Tags weergeven
+
+Gebruik het als u de bestaande tags voor een resource wilt bekijken:
+
+```azurecli-interactive
+az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
 ```
 
-## <a name="azure-cli"></a>Azure CLI
-
-Gebruik het volgende om de bestaande tags van een *resourcegroep* te bekijken:
+Gebruik het volgende om de bestaande tags van een resourcegroep te bekijken:
 
 ```azurecli-interactive
 az group show -n examplegroup --query tags
@@ -188,84 +285,23 @@ Dat script retourneert de volgende indeling:
 }
 ```
 
-Als u de bestaande tags voor een *resource met een opgegeven naam, type en resource groep*wilt weer geven, gebruikt u:
+### <a name="list-by-tag"></a>Lijst op tag
 
-```azurecli-interactive
-az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
-```
-
-Wanneer u een verzameling resources wilt door lopen, kunt u de resource weer geven op Resource-ID. Verderop in dit artikel wordt een volledig voor beeld weer gegeven. Gebruik het volgende om de bestaande tags te bekijken van een *resource met een opgegeven bron-id*:
-
-```azurecli-interactive
-az resource show --id <resource-id> --query tags
-```
-
-Gebruik `az group list`om resource groepen met een specifieke tag op te halen:
-
-```azurecli-interactive
-az group list --tag Dept=IT
-```
-
-Als u alle resources met een bepaalde tag en waarde wilt ophalen, gebruikt u `az resource list`:
+`az resource list`Gebruik:
 
 ```azurecli-interactive
 az resource list --tag Dept=Finance
 ```
 
-Wanneer labels aan een resource groep of resource worden toegevoegd, kunt u de bestaande Tags overschrijven of nieuwe Tags toevoegen aan bestaande tags.
-
-Als u de bestaande tags voor een resource groep wilt overschrijven, gebruikt u:
+`az group list`Gebruik:
 
 ```azurecli-interactive
-az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
+az group list --tag Dept=IT
 ```
 
-Als u een tag wilt toevoegen aan de bestaande tags voor een resource groep, gebruikt u:
+### <a name="handling-spaces"></a>Ruimten verwerken
 
-```azurecli-interactive
-az group update -n examplegroup --set tags.'Status'='Approved'
-```
-
-Als u de tags voor een resource wilt overschrijven, gebruikt u:
-
-```azurecli-interactive
-az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-Gebruik de volgende opdracht om een tag toe te voegen aan de bestaande tags op een resource:
-
-```azurecli-interactive
-az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-Gebruik het volgende script om alle tags van een resource groep toe te passen op de bijbehorende resources en *geen bestaande tags op de resources te blijven*gebruiken:
-
-```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '"{},' | sed 's/: /=/g')
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  az resource tag --tags $tags --id $id
-done
-```
-
-Gebruik het volgende script als u alle tags van een resource groep wilt Toep assen op de bijbehorende resources en *bestaande tags op resources wilt blijven*gebruiken:
-
-```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '"{},' | sed 's/: /=/g')
-
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  resourcejsontags=$(az resource show --id $id --query tags -o json)
-  resourcetags=$(echo $resourcejsontags | tr -d '"{},' | sed 's/: /=/g')
-  az resource tag --tags $tags$resourcetags --id $id
-done
-```
-
-Als de namen van tags of waarden spaties bevatten, moet u een paar extra stappen uitvoeren. In het volgende voor beeld worden alle labels van een resource groep op de bijbehorende resources toegepast wanneer de Tags spaties kunnen bevatten.
+Als uw tagnamen of -waarden spaties bevatten, moet u een paar extra stappen nemen. In het volgende voorbeeld worden alle tags uit een resourcegroep op de resources gebruikt wanneer de tags spaties kunnen bevatten.
 
 ```azurecli-interactive
 jsontags=$(az group show --name examplegroup --query tags -o json)
@@ -283,17 +319,21 @@ IFS=$origIFS
 
 ## <a name="templates"></a>Sjablonen
 
-Als u een resource wilt labelen tijdens de implementatie, voegt u het `tags`-element toe aan de resource die u implementeert. Geef de naam en waarde van de tag op.
+U resources, resourcegroepen en abonnementen taggen tijdens de implementatie met een resourcemanagersjabloon.
 
-### <a name="apply-a-literal-value-to-the-tag-name"></a>Een letterlijke waarde toepassen op de tagnaam
+### <a name="apply-values"></a>Waarden toepassen
 
-In het volgende voorbeeld wordt een opslagaccount weergegeven met twee tags (`Dept` en `Environment`) die zijn ingesteld op letterlijke waarden:
+In het volgende voorbeeld wordt een opslagaccount met drie tags geïmplementeerd. Twee van de`Dept` `Environment`tags (en) zijn ingesteld op letterlijke waarden. Eén tag`LastDeployed`( ) is ingesteld op een parameter die standaard wordt ingesteld op de huidige datum.
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "utcShort": {
+            "type": "string",
+            "defaultValue": "[utcNow('d')]"
+        },
         "location": {
             "type": "string",
             "defaultValue": "[resourceGroup().location]"
@@ -307,7 +347,8 @@ In het volgende voorbeeld wordt een opslagaccount weergegeven met twee tags (`De
             "location": "[parameters('location')]",
             "tags": {
                 "Dept": "Finance",
-                "Environment": "Production"
+                "Environment": "Production",
+                "LastDeployed": "[parameters('utcShort')]"
             },
             "sku": {
                 "name": "Standard_LRS"
@@ -319,11 +360,9 @@ In het volgende voorbeeld wordt een opslagaccount weergegeven met twee tags (`De
 }
 ```
 
-Als u een tag wilt instellen op een datum/tijd-waarde, gebruikt u de [functie utcNow](../templates/template-functions-string.md#utcnow).
+### <a name="apply-an-object"></a>Een object toepassen
 
-### <a name="apply-an-object-to-the-tag-element"></a>Een object toepassen op het tagelement
-
-U kunt een objectparameter definiëren waarmee verschillende tags worden opgeslagen en dit object vervolgens toepassen op het tagelement. Elke eigenschap in het object wordt een afzonderlijke tag voor de resource. Het volgende voorbeeld heeft een parameter met de naam `tagValues` die wordt toegepast op het tagelement.
+U kunt een objectparameter definiëren waarmee verschillende tags worden opgeslagen en dit object vervolgens toepassen op het tagelement. Deze benadering biedt meer flexibiliteit dan het vorige voorbeeld omdat het object verschillende eigenschappen kan hebben. Elke eigenschap in het object wordt een afzonderlijke tag voor de resource. Het volgende voorbeeld heeft een parameter met de naam `tagValues` die wordt toegepast op het tagelement.
 
 ```json
 {
@@ -359,9 +398,9 @@ U kunt een objectparameter definiëren waarmee verschillende tags worden opgesla
 }
 ```
 
-### <a name="apply-a-json-string-to-the-tag-name"></a>Een JSON-tekenreeks toepassen op de tagnaam
+### <a name="apply-a-json-string"></a>Een JSON-tekenreeks toepassen
 
-Als u veel waarden wilt opslaan in een enkele tag, past u een JSON-tekenreeks toe die de waarden vertegenwoordigt. De volledige JSON-teken reeks wordt opgeslagen als één tag die niet langer is dan 256 tekens. Het volgende voorbeeld heeft een enkele tag met de naam `CostCenter` die verschillende waarden uit een JSON-tekenreeks bevat:  
+Als u veel waarden wilt opslaan in een enkele tag, past u een JSON-tekenreeks toe die de waarden vertegenwoordigt. De hele JSON-tekenreeks wordt opgeslagen als één tag die niet meer dan 256 tekens kan bevatten. Het volgende voorbeeld heeft een enkele tag met de naam `CostCenter` die verschillende waarden uit een JSON-tekenreeks bevat:  
 
 ```json
 {
@@ -392,9 +431,9 @@ Als u veel waarden wilt opslaan in een enkele tag, past u een JSON-tekenreeks to
 }
 ```
 
-### <a name="apply-tags-from-resource-group"></a>Tags Toep assen vanuit de resource groep
+### <a name="apply-tags-from-resource-group"></a>Tags toepassen uit resourcegroep
 
-Als u labels van een resource groep wilt Toep assen op een resource, gebruikt u de functie [resourceGroup](../templates/template-functions-resource.md#resourcegroup) . Wanneer u de tag-waarde ophaalt, gebruikt u de syntaxis `tags[tag-name]` in plaats van de `tags.tag-name` syntaxis, omdat sommige tekens niet goed worden geparseerd in de punt notatie.
+Als u tags uit een resourcegroep wilt toepassen op een resource, gebruikt u de functie [resourceGroep.](../templates/template-functions-resource.md#resourcegroup) Wanneer u de tagwaarde `tags[tag-name]` krijgt, `tags.tag-name` gebruikt u de syntaxis in plaats van de syntaxis, omdat sommige tekens niet correct worden geparseerd in de notatie van de stip.
 
 ```json
 {
@@ -426,23 +465,132 @@ Als u labels van een resource groep wilt Toep assen op een resource, gebruikt u 
 }
 ```
 
+### <a name="apply-tags-to-resource-groups-or-subscriptions"></a>Tags toepassen op resourcegroepen of -abonnementen
+
+U tags toevoegen aan een brongroep of -abonnement door het brontype **Microsoft.Resources/tags** te implementeren. De tags worden toegepast op de doelgroep of het abonnement voor de implementatie. Elke keer dat u de sjabloon implementeert, vervangt u alle tags die er eerder zijn toegepast.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tagName": {
+            "type": "string",
+            "defaultValue": "TeamName"
+        },
+        "tagValue": {
+            "type": "string",
+            "defaultValue": "AppTeam1"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/tags",
+            "name": "default",
+            "apiVersion": "2019-10-01",
+            "dependsOn": [],
+            "properties": {
+                "tags": {
+                    "[parameters('tagName')]": "[parameters('tagValue')]"
+                }
+            }
+        }
+    ]
+}
+```
+
+Als u de tags wilt toepassen op een resourcegroep, gebruikt u PowerShell of Azure CLI. Implementeren in de resourcegroep die u wilt taggen.
+
+```azurepowershell-interactive
+New-AzResourceGroupDeployment -ResourceGroupName exampleGroup -TemplateFile https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
+```
+
+```azurecli-interactive
+az deployment group create --resource-group exampleGroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
+```
+
+Als u de tags wilt toepassen op een abonnement, gebruikt u PowerShell of Azure CLI. Implementeren in het abonnement dat u wilt taggen.
+
+```azurepowershell-interactive
+New-AzSubscriptionDeployment -name tagresourcegroup -Location westus2 -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
+```
+
+```azurecli-interactive
+az deployment sub create --name tagresourcegroup --location westus2 --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/tags.json
+```
+
+In de volgende sjabloon worden de tags van een object toegevoegd aan een resourcegroep of -abonnement.
+
+```json
+"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tags": {
+            "type": "object",
+            "defaultValue": {
+                "TeamName": "AppTeam1",
+                "Dept": "Finance",
+                "Environment": "Production"
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Resources/tags",
+            "name": "default",
+            "apiVersion": "2019-10-01",
+            "dependsOn": [],
+            "properties": {
+                "tags": "[parameters('tags')]"
+            }
+        }
+    ]
+}
+```
+
 ## <a name="portal"></a>Portal
 
 [!INCLUDE [resource-manager-tag-resource](../../../includes/resource-manager-tag-resources.md)]
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
-De Azure Portal en Power shell gebruiken beide de [Resource Manager rest API](/rest/api/resources/) achter de schermen. Als u tags wilt integreren in een andere omgeving, kunt u Tags ophalen met behulp van de resource-ID **ophalen** en de set met Tags bijwerken met behulp van een **patch** -oproep.
+Gebruik het als u met tags wilt werken via de Azure REST API:
+
+* [Tags - Maken of bijwerken op scope](/rest/api/resources/tags/createorupdateatscope) (PUT-bewerking)
+* [Tags - Update at Scope](/rest/api/resources/tags/updateatscope) (PATCH-bewerking)
+* [Tags - Get At Scope](/rest/api/resources/tags/getatscope) (GET-bewerking)
+* [Tags - Verwijderen bij bereik](/rest/api/resources/tags/deleteatscope) (bewerking VERWIJDEREN)
+
+## <a name="inherit-tags"></a>Tags overnemen
+
+Tags die worden toegepast op de brongroep of het abonnement, worden niet overgenomen door de resources. Zie [Azure Policies - tags](tag-policies.md)als u tags uit een abonnement of resourcegroep wilt toepassen op de bronnen.
 
 ## <a name="tags-and-billing"></a>Tags en facturering
 
-U kunt tags gebruiken om uw facturerings gegevens te groeperen. Als u bijvoorbeeld meerdere Vm's voor verschillende organisaties uitvoert, gebruikt u de labels om gebruik te groeperen op kosten plaats. U kunt ook labels gebruiken om de kosten te categoriseren per runtime-omgeving, zoals het facturerings gebruik voor Vm's die in de productie omgeving worden uitgevoerd.
+U kunt tags gebruiken om uw factureringsgegevens te groeperen. Als u bijvoorbeeld meerdere VM's voor verschillende organisaties uitvoert, kunt u de tags gebruiken om het gebruiker te groeperen op basis van de kostenplaats. U kunt ook tags gebruiken om de kosten te categoriseren op basis van de runtimeomgeving, zoals de facturering van het gebruik voor VM's die worden uitgevoerd in de productieomgeving.
 
-U kunt informatie over Tags ophalen via het [Azure resource usage-en RateCard-api's](../../billing/billing-usage-rate-card-overview.md) of het gebruik van CSV-bestand (Comma Separated Values). U downloadt het gebruiks bestand van de [Azure-Accountcentrum](https://account.azure.com/Subscriptions) of Azure Portal. Zie uw Azure-factuur [en dagelijks gebruiks gegevens downloaden of weer geven](../../billing/billing-download-azure-invoice-daily-usage-date.md)voor meer informatie. Selecteer **versie 2**bij het downloaden van het gebruiks bestand van de Azure-Accountcentrum. Voor services die Tags ondersteunen met facturering, worden de tags weer gegeven in de kolom **Tags** .
+U informatie over tags ophalen via de [AZURE Resource Usage and RateCard API's](../../billing/billing-usage-rate-card-overview.md) of het CSV-bestand (Usage Comma-separated values). U downloadt het gebruiksbestand van het [Azure-accountcentrum](https://account.azure.com/Subscriptions) of de Azure-portal. Zie [Uw Azure-factuur en daggebruiksgegevens downloaden of weergeven](../../billing/billing-download-azure-invoice-daily-usage-date.md)voor meer informatie. Selecteer **versie 2**wanneer u het gebruiksbestand downloadt uit het Azure-accountcentrum . Voor services die tags ondersteunen bij facturering, worden de tags weergegeven in de kolom **Labels.**
 
-Zie voor REST API bewerkingen de [Naslag informatie voor Azure billing rest API](/rest/api/billing/).
+Zie Azure Billing [REST API Reference](/rest/api/billing/)voor REST API-bewerkingen .
+
+## <a name="limitations"></a>Beperkingen
+
+Voor tags gelden de volgende beperkingen:
+
+* Niet alle resourcetypen ondersteunen tags. Zie [Tagondersteuning voor Azure-bronnen](tag-support.md)als u wilt bepalen of u een tag op een resourcetype toepassen.
+* Beheergroepen ondersteunen momenteel geen tags.
+* Elke resource, resourcegroep en abonnement kan maximaal 50 tagnaam/waardeparen hebben. Als u meer tags moet toepassen dan het maximaal toegestane aantal, gebruikt u een JSON-tekenreeks voor de tagwaarde. De JSON-tekenreeks kan veel waarden bevatten die worden toegepast op een enkele tagnaam. Een resourcegroep of -abonnement kan veel bronnen bevatten die elk 50 tagnaam/waardeparen hebben.
+* De tagnaam is beperkt tot 512 tekens en de tagwaarde is beperkt tot 256 tekens. Voor opslagaccounts is de tagnaam beperkt tot 128 tekens en de tagwaarde beperkt tot 256 tekens.
+* Gegeneraliseerde VM's ondersteunen geen tags.
+* Tags kunnen niet worden toegepast op klassieke bronnen zoals Cloud Services.
+* Tagnamen mogen deze tekens `<`niet `>` `%`bevatten: , , `&`, `\` `?``/`
+
+   > [!NOTE]
+   > Op dit moment staan Azure DNS-zones en Traffic Manger-services ook het gebruik van spaties in de tag niet toe.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Niet alle resource typen ondersteunen Tags. Zie [tag-ondersteuning voor Azure-resources](tag-support.md)om te bepalen of u een tag kunt Toep assen op een resource type.
-* Zie [de Azure Portal gebruiken om uw Azure-resources te beheren](manage-resource-groups-portal.md)voor een inleiding tot het gebruik van de portal.  
+* Niet alle resourcetypen ondersteunen tags. Zie [Tagondersteuning voor Azure-bronnen](tag-support.md)als u wilt bepalen of u een tag op een resourcetype toepassen.
+* Zie Handleiding voor het benoemen en [taggen](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)van resources voor aanbevelingen over het implementeren van een strategie voor het implementeren van tags.

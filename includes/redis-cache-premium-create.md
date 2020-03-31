@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 2627554647c6c20cbdedfec53c1028b3edfa9c9c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67175847"
 ---
-Voor het maken van een premium-cache, moet u zich aanmelden bij de [Azure-portal](https://portal.azure.com) en klikt u op **een resource maken** > **Databases** > **Azure Cache voor Redis**.
+Als u een premium cache wilt maken, meldt u zich aan bij de [Azure-portal](https://portal.azure.com) en klikt u op Azure-cache voor**bronnenbestanden** >  **Create a resource** > **maken voor Redis.**
 
 ![Cache maken](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
 > [!NOTE]
-> U kunt caches niet alleen in Azure Portal maken. U kunt ze ook maken met Resource Manager-sjablonen, PowerShell of Azure CLI. Zie voor meer informatie over het maken van een Azure-Cache voor Redis [een cache maken](../articles/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+> U kunt caches niet alleen in Azure Portal maken. U kunt ze ook maken met Resource Manager-sjablonen, PowerShell of Azure CLI. Zie [Een cache maken](../articles/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)voor meer informatie over het maken van een Azure-cache voor Redis.
 > 
 > 
 
-Voor het configureren van premium-functies, selecteert u eerst een van de premium-Prijscategorieën op de **prijscategorie** vervolgkeuzelijst. Klik voor meer informatie over elke prijscategorie **volledige prijsgegevens weergeven** en selecteer een prijscategorie van de **uw prijscategorie kiezen** blade.
+Als u premiumfuncties wilt configureren, selecteert u eerst een van de premium prijsniveaus in de vervolgkeuzelijst **Prijslaag.** Klik op **Volledige prijsdetails weergeven** en selecteer een prijscategorie in het blade **Uw prijsniveau kiezen** voor meer informatie over elke prijscategorie.
 
 ![Uw prijscategorie kiezen](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 

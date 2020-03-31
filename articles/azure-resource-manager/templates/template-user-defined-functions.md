@@ -1,24 +1,24 @@
 ---
 title: Door de gebruiker gedefinieerde functies in sjablonen
-description: Hierin wordt beschreven hoe u door de gebruiker gedefinieerde functies definieert en gebruikt in een Azure Resource Manager sjabloon.
+description: Beschrijft hoe u door gebruikers gedefinieerde functies definieert en gebruikt in een Azure Resource Manager-sjabloon.
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 2c09572a460aa028b23987033d2b77e2aad8a0cd
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943224"
 ---
-# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Door de gebruiker gedefinieerde functies in Azure Resource Manager sjabloon
+# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Door de gebruiker gedefinieerde functies in de sjabloon Azure Resource Manager
 
-U kunt binnen uw sjabloon uw eigen functies maken. Deze functies zijn beschikbaar voor gebruik in uw sjabloon. Door de gebruiker gedefinieerde functies zijn gescheiden van de [standaard sjabloon functies](template-functions.md) die automatisch beschikbaar zijn in uw sjabloon. Maak uw eigen functies wanneer u gecompliceerde expressies hebt die herhaaldelijk worden gebruikt in uw sjabloon.
+Binnen uw sjabloon u uw eigen functies maken. Deze functies zijn beschikbaar voor gebruik in uw sjabloon. Door de gebruiker gedefinieerde functies staan los van de [standaardsjabloonfuncties](template-functions.md) die automatisch beschikbaar zijn in uw sjabloon. Maak uw eigen functies wanneer u ingewikkelde expressies hebt die herhaaldelijk in uw sjabloon worden gebruikt.
 
-In dit artikel wordt beschreven hoe u door de gebruiker gedefinieerde functies in uw Azure Resource Manager-sjabloon kunt toevoegen.
+In dit artikel wordt beschreven hoe u door de gebruiker gedefinieerde functies toevoegt aan uw Azure Resource Manager-sjabloon.
 
-## <a name="define-the-function"></a>Definieer de functie
+## <a name="define-the-function"></a>De functie definiëren
 
-Uw functies vereisen een naam ruimte waarde om naam conflicten met sjabloon functies te voor komen. In het volgende voor beeld ziet u een functie die een unieke naam retourneert:
+Voor uw functies is een naamruimtewaarde vereist om te voorkomen dat naamgeving in strijd is met sjabloonfuncties. In het volgende voorbeeld wordt een functie weergegeven die een unieke naam retourneert:
 
 ```json
 "functions": [
@@ -42,9 +42,9 @@ Uw functies vereisen een naam ruimte waarde om naam conflicten met sjabloon func
 ],
 ```
 
-## <a name="use-the-function"></a>Gebruik de functie
+## <a name="use-the-function"></a>De functie gebruiken
 
-In het volgende voor beeld ziet u een sjabloon die een door de gebruiker gedefinieerde functie bevat. Deze functie wordt gebruikt om een unieke naam voor een opslag account op te halen. De sjabloon heeft een para meter met de naam **storageNamePrefix** die wordt door gegeven als een para meter voor de functie.
+In het volgende voorbeeld wordt een sjabloon weergegeven die een door de gebruiker gedefinieerde functie bevat. Het gebruikt die functie om een unieke naam voor een opslagaccount te krijgen. De sjabloon heeft een parameter met de naam **storageNamePrefix** die als parameter naar de functie wordt doorgegeven.
 
 ```json
 {
@@ -95,16 +95,16 @@ In het volgende voor beeld ziet u een sjabloon die een door de gebruiker gedefin
 
 ## <a name="limitations"></a>Beperkingen
 
-Bij het definiëren van een gebruikers functie gelden enkele beperkingen:
+Bij het definiëren van een gebruikersfunctie zijn er enkele beperkingen:
 
 * De functie heeft geen toegang tot variabelen.
-* De functie kan alleen para meters gebruiken die in de functie zijn gedefinieerd. Wanneer u de functie [para meters](template-functions-deployment.md#parameters) in een door de gebruiker gedefinieerde functie gebruikt, bent u beperkt tot de para meters voor die functie.
+* De functie kan alleen parameters gebruiken die in de functie zijn gedefinieerd. Wanneer u de [functie parameters](template-functions-deployment.md#parameters) binnen een door de gebruiker gedefinieerde functie gebruikt, bent u beperkt tot de parameters voor die functie.
 * De functie kan geen andere door de gebruiker gedefinieerde functies aanroepen.
-* De functie kan de functie [Reference](template-functions-resource.md#reference) of een van de [lijst](template-functions-resource.md#list) functies niet gebruiken.
-* Para meters voor de functie kunnen geen standaard waarden hebben.
+* De functie kan de [referentiefunctie](template-functions-resource.md#reference) of een van de [lijstfuncties](template-functions-resource.md#list) niet gebruiken.
+* Parameters voor de functie kunnen geen standaardwaarden hebben.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [inzicht krijgen in de structuur en de syntaxis van Azure Resource Manager-sjablonen](template-syntax.md)voor meer informatie over de beschik bare eigenschappen voor door de gebruiker gedefinieerde functies.
-* Zie [Azure Resource Manager-sjabloon functies](template-functions.md)voor een lijst met de beschik bare sjabloon functies.
+* Zie [De structuur en de syntaxis van Azure Resource Manager-sjablonen begrijpen](template-syntax.md)voor meer informatie over de beschikbare eigenschappen voor door de gebruiker gedefinieerde functies.
+* Zie [Sjabloonfuncties](template-functions.md)azure resource manager voor een lijst met beschikbare sjabloonfuncties .

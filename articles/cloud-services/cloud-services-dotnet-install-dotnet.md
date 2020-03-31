@@ -1,6 +1,6 @@
 ---
-title: .NET installeren op Azure Cloud Services-rollen | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de .NET Framework hand matig installeert op de web-en werk rollen van uw Cloud service
+title: .NET installeren op Azure Cloud Services-rollen | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u het .NET Framework handmatig installeren op uw web- en werknemersrollen voor cloudservices
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -11,49 +11,49 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
 ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79214711"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>.NET installeren op Azure Cloud Services-rollen
-In dit artikel wordt beschreven hoe u versies van .NET Framework installeert die niet worden meegeleverd met het Azure-gast besturingssysteem. U kunt .NET gebruiken op het gast besturingssysteem om uw web-en werk rollen van de Cloud service te configureren.
+In dit artikel wordt beschreven hoe u versies van .NET Framework installeert die niet bij het Azure Guest OS worden geleverd. U .NET op het besturingssysteem van de gast gebruiken om uw web- en werknemersrollen voor cloudservices te configureren.
 
-U kunt bijvoorbeeld .NET Framework 4.6.2 installeren op de gast besturingssysteem familie 4, die niet wordt geleverd met een versie van .NET Framework 4,6. (De gast besturingssysteem familie 5 wordt geleverd met .NET Framework 4,6.) Zie het [Azure Guest OS release News](cloud-services-guestos-update-matrix.md)(Engelstalig) voor de meest recente informatie over de versies van het Azure-gast besturingssysteem. 
+U bijvoorbeeld .NET Framework 4.6.2 installeren op de Guest OS-familie 4, die niet wordt geleverd met een release van .NET Framework 4.6. (De Guest OS familie 5 komt met .NET Framework 4.6.) Zie het persbericht van [Azure Guest OS](cloud-services-guestos-update-matrix.md)voor de meest recente informatie over de azure guest os-releases. 
 
 >[!IMPORTANT]
->De Azure SDK 2,9 bevat een beperking voor het implementeren van .NET Framework 4,6 op de gast besturingssysteem familie 4 of eerder. Er is een oplossing voor de beperking beschikbaar op de [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) -site.
+>De Azure SDK 2.9 bevat een beperking voor het implementeren van .NET Framework 4.6 op de GastOS-familie 4 of eerder. Er is een oplossing voor de beperking beschikbaar op de [Microsoft Docs-site.](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9)
 
-Als u .NET wilt installeren op uw web-en werk rollen, moet u de .NET Web Installer opnemen als onderdeel van uw Cloud service-project. Start het installatie programma als onderdeel van de opstart taken van de rol. 
+Als u .NET wilt installeren op uw web- en werknemersrollen, neemt u de webinstaller .NET op als onderdeel van uw cloudserviceproject. Start de installatieinstallatie als onderdeel van de opstarttaken van de rol. 
 
-## <a name="add-the-net-installer-to-your-project"></a>Het .NET-installatie programma toevoegen aan uw project
-Als u het web-installatie programma voor de .NET Framework wilt downloaden, kiest u de versie die u wilt installeren:
+## <a name="add-the-net-installer-to-your-project"></a>De .NET-installer toevoegen aan uw project
+Als u het webprogramma voor het .NET Framework wilt downloaden, kiest u de versie die u wilt installeren:
 
-* [.NET Framework 4,8 web installer](https://dotnet.microsoft.com/download/thank-you/net48)
-* [.NET Framework 4.7.2 web installer](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET Framework 4.6.2 web installer](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET Framework 4.8 webinstaller](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework 4.7.2 webinstaller](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET Framework 4.6.2 webinstaller](https://www.microsoft.com/download/details.aspx?id=53345)
 
-Het installatie programma voor een *webrol toevoegen* :
-  1. Klik **in Solution Explorer**onder **rollen** *in uw Cloud* service project met de rechter muisknop op uw webfunctie en selecteer > **nieuwe map** **toevoegen** . Maak een map met de naam **bin**.
-  2. Klik met de rechter muisknop op de map bin en selecteer > **bestaand item** **toevoegen** . Selecteer .NET Installer en voeg deze toe aan de bin-map.
+Ga als lid van het installatieprogramma voor een *webrol:*
+  1. Klik in **Solution Explorer**onder **Rollen** in uw cloudserviceproject met de rechtermuisknop op uw *webrol* en selecteer Nieuwe map **toevoegen.** > **New Folder** Een map met de naam **bin .**
+  2. Klik met de rechtermuisknop op de map met de opslaglocatie en selecteer**Bestaand item** **toevoegen** > . Selecteer het .NET-installatieprogramma en voeg het toe aan de map met opslaglocatie.
   
-Het installatie programma voor een *werk* rollen toevoegen:
-* Klik *met de rechter* muisknop op uw werknemersrol en selecteer > **bestaand item** **toevoegen** . Selecteer .NET Installer en voeg deze toe aan de rol. 
+Ga als lid van de installatiefunctie voor een *werkrol* als gevolg van:
+* Klik met de rechtermuisknop op de *rol van uw werknemer* en selecteer Bestaand**item** **toevoegen** > . Selecteer het .NET-installatieprogramma en voeg deze toe aan de rol. 
 
-Wanneer bestanden op deze manier aan de map rol inhoud worden toegevoegd, worden ze automatisch toegevoegd aan uw Cloud service pakket. De bestanden worden vervolgens geïmplementeerd op een consistente locatie op de virtuele machine. Herhaal dit proces voor elke web-en werk functie in uw Cloud service, zodat alle rollen een kopie van het installatie programma hebben.
+Wanneer bestanden op deze manier worden toegevoegd aan de map met rolinhoud, worden ze automatisch toegevoegd aan uw cloudservicepakket. De bestanden worden vervolgens geïmplementeerd op een consistente locatie op de virtuele machine. Herhaal dit proces voor elke web- en werknemersrol in uw cloudservice, zodat alle rollen een kopie van het installatieprogramma hebben.
 
 > [!NOTE]
-> U moet .NET Framework 4.6.2 in de Cloud service functie installeren, zelfs als uw toepassings doelen .NET Framework 4,6. Het gast besturingssysteem bevat de Knowledge Base [update 3098779](https://support.microsoft.com/kb/3098779) en [Update 3097997](https://support.microsoft.com/kb/3097997). Er kunnen problemen optreden wanneer u uw .NET-toepassingen uitvoert als .NET Framework 4,6 boven op de Knowledge Base-updates wordt geïnstalleerd. Als u deze problemen wilt voor komen, installeert u .NET Framework 4.6.2 in plaats van versie 4,6. Zie het [Knowledge Base-artikel 3118750](https://support.microsoft.com/kb/3118750) en [4340191](https://support.microsoft.com/kb/4340191)voor meer informatie.
+> U moet .NET Framework 4.6.2 installeren op uw cloudservicerol, zelfs als uw toepassing zich richt op .NET Framework 4.6. Het gastbesturingssysteem bevat de Knowledge [Base-update 3098779](https://support.microsoft.com/kb/3098779) en [update 3097997](https://support.microsoft.com/kb/3097997). Problemen kunnen optreden wanneer u uw .NET-toepassingen uitvoert als .NET Framework 4.6 bovenop de Knowledge Base-updates is geïnstalleerd. Om deze problemen te voorkomen, installeert u .NET Framework 4.6.2 in plaats van versie 4.6. Zie voor meer informatie het [Knowledge Base-artikel 3118750](https://support.microsoft.com/kb/3118750) en [4340191](https://support.microsoft.com/kb/4340191).
 > 
 > 
 
-![Inhoud van rollen met Installer-bestanden][1]
+![Rolinhoud met installatiebestanden][1]
 
-## <a name="define-startup-tasks-for-your-roles"></a>Opstart taken voor uw rollen definiëren
-U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Als u de .NET Framework als onderdeel van de opstart taak installeert, zorgt u ervoor dat het Framework wordt geïnstalleerd voordat een toepassings code wordt uitgevoerd. Zie [opstart taken uitvoeren in azure](cloud-services-startup-tasks.md)voor meer informatie over opstart taken. 
+## <a name="define-startup-tasks-for-your-roles"></a>Opstarttaken voor uw rollen definiëren
+U opstarttaken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Het installeren van het .NET Framework als onderdeel van de opstarttaak zorgt ervoor dat het framework wordt geïnstalleerd voordat een toepassingscode wordt uitgevoerd. Zie [Opstarttaken uitvoeren in Azure](cloud-services-startup-tasks.md)voor meer informatie over opstarttaken. 
 
-1. Voeg de volgende inhoud toe aan het bestand ServiceDefinition. csdef onder het knoop punt **webrole** of **WorkerRole** voor alle rollen:
+1. Voeg de volgende inhoud toe aan het bestand ServiceDefinition.csdef onder het knooppunt **WebRole** of **WorkerRole** voor alle rollen:
    
     ```xml
     <LocalResources>
@@ -73,19 +73,19 @@ U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol word
     </Startup>
     ```
    
-    De voor gaande configuratie voert de console opdracht `install.cmd` met beheerders bevoegdheden uit om de .NET Framework te installeren. De configuratie maakt ook een **LocalStorage** -element met de naam **NETFXInstall**. Met het opstart script wordt de map Temp ingesteld voor het gebruik van deze lokale opslag resource. 
+    In de vorige configuratie `install.cmd` wordt de opdracht console uitgevoerd met beheerdersbevoegdheden om het .NET Framework te installeren. De configuratie maakt ook een **LocalStorage-element** met de naam **NETFXInstall**. In het opstartscript wordt de tijdelijke map ingesteld om deze lokale opslagbron te gebruiken. 
     
     > [!IMPORTANT]
-    > Om ervoor te zorgen dat het Framework correct wordt geïnstalleerd, stelt u de grootte van deze resource in op ten minste 1.024 MB.
+    > Als u wilt zorgen voor een correcte installatie van het framework, stelt u de grootte van deze resource in op ten minste 1.024 MB.
     
-    Zie [algemene Azure Cloud Services startup tasks](cloud-services-startup-tasks-common.md)(Engelstalig) voor meer informatie over opstart taken.
+    Zie [Algemene opstarttaken van Azure Cloud Services](cloud-services-startup-tasks-common.md)voor meer informatie over opstarttaken van Azure Cloud Services.
 
-2. Maak een bestand met de naam **install. cmd** en voeg het volgende installatie script toe aan het bestand.
+2. Maak een bestand met de naam **install.cmd** en voeg het volgende installatiescript toe aan het bestand.
 
-   Met het script wordt gecontroleerd of de opgegeven versie van de .NET Framework al is geïnstalleerd op de machine door het REGI ster te doorzoeken. Als de .NET Framework-versie niet is geïnstalleerd, wordt de .NET Framework web installer geopend. Om problemen op te lossen, worden alle activiteiten door het script geregistreerd in het bestand startuptasklog-(huidige datum en tijd). txt dat is opgeslagen in **InstallLogs** lokale opslag.
+   Het script controleert of de opgegeven versie van het .NET-framework al op de machine is geïnstalleerd door het register op te vragen. Als de .NET Framework-versie niet is geïnstalleerd, wordt de webinstaller .NET Framework geopend. Om eventuele problemen op te lossen, worden alle activiteiten in het bestand opgeslagentaaklog(huidige datum en tijd).txt die is opgeslagen in local storage **installLogs.**
    
    > [!IMPORTANT]
-   > Gebruik een eenvoudige tekst editor, zoals Windows Klad blok, om het bestand install. cmd te maken. Als u Visual Studio gebruikt om een tekst bestand te maken en de extensie te wijzigen in. cmd, bevat het bestand mogelijk nog een UTF-8-byte order mark. Dit merk kan een fout veroorzaken wanneer de eerste regel van het script wordt uitgevoerd. U kunt deze fout voor komen door de eerste regel van het script een REM-instructie te geven die kan worden overgeslagen door de verwerking van de byte-order. 
+   > Gebruik een basisteksteditor zoals Windows Notepad om het bestand install.cmd te maken. Als u Visual Studio gebruikt om een tekstbestand te maken en de extensie te wijzigen in .cmd, kan het bestand nog steeds een utf-8-doorte-ordermarkering bevatten. Dit merk kan een fout veroorzaken wanneer de eerste regel van het script wordt uitgevoerd. Als u deze fout wilt voorkomen, maakt u van de eerste regel van het script een REM-instructie die kan worden overgeslagen door de verwerking van de byteorder. 
    > 
    >
    
@@ -197,17 +197,17 @@ U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol word
    EXIT /B 0
    ```
 
-3. Voeg het bestand install. cmd toe aan elke rol met behulp van > **bestaand item** **toevoegen** in **Solution Explorer** zoals eerder in dit onderwerp is beschreven. 
+3. Voeg het bestand install.cmd toe aan elke rol met**Bestaand item** **toevoegen** > in **Solution Explorer** zoals eerder in dit onderwerp is beschreven. 
 
-    Nadat deze stap is voltooid, moeten alle rollen het .NET-installatie bestand en het bestand install. cmd hebben.
+    Nadat deze stap is voltooid, moeten alle rollen het .NET-installatiebestand en het bestand install.cmd hebben.
 
-   ![Inhoud van rollen met alle bestanden][2]
+   ![Rolinhoud met alle bestanden][2]
 
-## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Diagnostische gegevens configureren voor het overdragen van opstart logboeken naar Blob Storage
-Als u problemen met de installatie wilt vereenvoudigen, kunt u Azure Diagnostics configureren voor het overdragen van logboek bestanden die door het opstart script of .NET Installer worden gegenereerd naar Azure Blob-opslag. Als u deze methode gebruikt, kunt u de logboeken bekijken door de logboek bestanden te downloaden uit de Blob-opslag in plaats van extern bureau blad te gebruiken voor de rol.
+## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Diagnostische gegevens configureren om opstartlogboeken over te zetten naar Blob-opslag
+Om het oplossen van installatieproblemen te vereenvoudigen, u Azure Diagnostics configureren om logboekbestanden die zijn gegenereerd door het opstartscript of het .NET-installatieprogramma over te zetten naar Azure Blob-opslag. Met deze benadering u de logboeken bekijken door de logboekbestanden uit Blob-opslag te downloaden in plaats van extern bureaublad in de rol te hoeven gebruiken.
 
 
-Als u Diagnostische gegevens wilt configureren, opent u het bestand Diagnostics. wadcfgx en voegt u de volgende inhoud toe onder het knoop punt **directory's** : 
+Als u Diagnostics wilt configureren, opent u het bestand diagnostics.wadcfgx en voegt u de volgende inhoud toe onder het knooppunt **Mappen:** 
 
 ```xml 
 <DataSources>
@@ -217,15 +217,15 @@ Als u Diagnostische gegevens wilt configureren, opent u het bestand Diagnostics.
 </DataSources>
 ```
 
-Met deze XML worden diagnostische gegevens geconfigureerd voor het overdragen van de bestanden in de logboekmap in de **NETFXInstall** -bron naar het diagnostische-opslag account in de **netfx-installatie** van de BLOB-container.
+Deze XML configureert Diagnostics om de bestanden in de logboekmap in de **NETFXInstall-bron** over te zetten naar het Diagnostisch-opslagaccount in de **blobcontainer die netfx installeert.**
 
-## <a name="deploy-your-cloud-service"></a>Uw Cloud service implementeren
-Wanneer u uw Cloud service implementeert, installeren de opstart taken de .NET Framework als deze nog niet is geïnstalleerd. De Cloud service rollen zijn in de status *bezet* terwijl het Framework wordt geïnstalleerd. Als de Framework-installatie opnieuw moet worden gestart, kunnen de service rollen ook opnieuw worden gestart. 
+## <a name="deploy-your-cloud-service"></a>Uw cloudservice implementeren
+Wanneer u uw cloudservice implementeert, installeren de opstarttaken het .NET Framework als deze nog niet is geïnstalleerd. Uw cloudservicerollen bevinden zich in de *drukke* status terwijl het framework wordt geïnstalleerd. Als de framework-installatie een herstart vereist, kunnen de servicerollen ook opnieuw worden opgestart. 
 
-## <a name="additional-resources"></a>Aanvullende resources
-* [De .NET Framework installeren][Installing the .NET Framework]
-* [Bepalen welke .NET Framework versies worden geïnstalleerd][How to: Determine Which .NET Framework Versions Are Installed]
-* [Problemen met .NET Framework-installaties oplossen][Troubleshooting .NET Framework Installations]
+## <a name="additional-resources"></a>Aanvullende bronnen
+* [Het .NET-framework installeren][Installing the .NET Framework]
+* [Bepalen welke .NET Framework-versies zijn geïnstalleerd][How to: Determine Which .NET Framework Versions Are Installed]
+* [Probleemoplossing .NET Framework-installaties][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: /dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
 [Installing the .NET Framework]: /dotnet/framework/install/guide-for-developers

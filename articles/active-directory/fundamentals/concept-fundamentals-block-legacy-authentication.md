@@ -1,6 +1,6 @@
 ---
-title: Verouderde verificatie protocollen in azure AD blok keren
-description: Meer informatie over hoe en waarom organisaties verouderde verificatie protocollen moeten blok keren
+title: Verouderde verificatieprotocollen blokkeren in Azure AD
+description: Meer informatie over hoe en waarom organisaties verouderde verificatieprotocollen moeten blokkeren
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,91 +12,91 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63271567e70955f6dfb0b10a5c882b6dce9545ce
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74932487"
 ---
-# <a name="blocking-legacy-authentication"></a>Verouderde verificatie blok keren
+# <a name="blocking-legacy-authentication"></a>Verouderde verificatie blokkeren
  
-Om uw gebruikers eenvoudig toegang te geven tot uw Cloud-apps, ondersteunt Azure Active Directory (Azure AD) een breed scala aan verificatie protocollen, waaronder verouderde verificatie. Verouderde verificatie is een term die verwijst naar een verificatie aanvraag die wordt gedaan door:
+Azure Active Directory (Azure AD) ondersteunt een breed scala aan verificatieprotocollen, waaronder verouderde verificatie, om uw gebruikers eenvoudig toegang te geven tot uw cloud-apps. Legacy-verificatie is een term die verwijst naar een verificatieverzoek van:
 
-- Oudere Office-clients die geen gebruik maken van moderne verificatie (bijvoorbeeld Office 2010 client)
-- Elke client die gebruikmaakt van verouderde e-mail protocollen zoals IMAP/SMTP/POP3
+- Oudere Office-clients die geen moderne verificatie gebruiken (bijvoorbeeld Office 2010-client)
+- Elke client die oudere e-mailprotocollen gebruikt, zoals IMAP/SMTP/POP3
 
-De meeste pogingen om zich aan te melden, zijn tegenwoordig afkomstig van verouderde verificatie. Verouderde verificatie biedt geen ondersteuning voor multi-factor Authentication (MFA). Zelfs als er een MFA-beleid is ingeschakeld in uw directory, kan een ongeldige actor worden geverifieerd met behulp van een verouderd protocol en MFA overs Laan. De beste manier om uw account te beschermen tegen kwaad aardige verificatie aanvragen door verouderde protocollen, is om deze pogingen te blok keren.
+Vandaag de dag is het merendeel van alle compromitterende aanmeldingspogingen afkomstig van legacy-verificatie. Legacy-verificatie biedt geen ondersteuning voor multi-factor authenticatie (MFA). Zelfs als u een MFA-beleid in uw map hebt ingeschakeld, kan een slechte actor zich verifiëren met behulp van een verouderd protocol en MFA omzeilen. De beste manier om uw account te beschermen tegen kwaadaardige verificatieverzoeken die door oudere protocollen worden gedaan, is door deze pogingen helemaal te blokkeren.
 
-## <a name="identify-legacy-authentication-use"></a>Gebruik van verouderde authenticatie identificeren
+## <a name="identify-legacy-authentication-use"></a>Identificeer het gebruik van verouderde verificatie
 
-Voordat u verouderde verificatie in uw Directory kunt blok keren, moet u eerst begrijpen of uw gebruikers apps hebben die gebruikmaken van verouderde verificatie en hoe dit van invloed is op uw algemene Directory. Aanmeld logboeken van Azure AD kunnen worden gebruikt om te begrijpen of u gebruikmaakt van verouderde verificatie.
+Voordat u oudere verificatie in uw directory blokkeren, moet u eerst begrijpen of uw gebruikers apps hebben die verouderde verificatie gebruiken en hoe deze van invloed is op uw algemene directory. Azure AD-aanmeldingslogboeken kunnen worden gebruikt om te begrijpen of u verouderde verificatie gebruikt.
 
-1. Navigeer naar het Azure Portal > Azure Active Directory > aanmeldingen.
-1. Voeg de kolom client-app toe als deze niet wordt weer gegeven door te klikken op de kolommen > client-app.
-1. Filteren op client app > Controleer alle andere client opties die worden weer gegeven en klik op Toep assen.
-1. Filter op status > geslaagd en klik op Toep assen. 
-1. Breid het datum bereik uit, indien nodig, met behulp van het datum filter.
+1. Navigeer naar de Azure-portal > Azure Active Directory > aanmeldingen.
+1. Voeg de kolom Client-app toe als deze niet wordt weergegeven door op Kolommen > Client App te klikken.
+1. Filter op clientapp > controleert alle andere clientopties die worden weergegeven en klik op Toepassen.
+1. Filter op Status > Succes en klik op Toepassen. 
+1. Vouw uw datumbereik indien nodig uit met het filter Datum.
 
-Door te filteren worden alleen geslaagde aanmeldings pogingen weer gegeven die zijn gemaakt door de geselecteerde verouderde verificatie protocollen. Als u op elke afzonderlijke aanmeldings poging klikt, wordt er meer informatie weer gegeven. In de kolom client-app of het veld client-app onder het tabblad basis informatie nadat u een afzonderlijke rij gegevens selecteert, wordt aangegeven welk verouderde verificatie protocol is gebruikt. In deze logboeken wordt aangegeven welke gebruikers nog steeds afhankelijk zijn van verouderde verificatie en welke toepassingen verouderde protocollen gebruiken om verificatie aanvragen uit te voeren. Voor gebruikers die niet in deze logboeken worden weer gegeven en worden bevestigd dat ze geen verouderde verificatie gebruiken, implementeert u een beleid voor voorwaardelijke toegang of schakelt u het basislijn beleid in: verouderde verificatie blok keren voor deze gebruikers.
+Filteren toont alleen succesvolle aanmeldingspogingen die zijn uitgevoerd door de geselecteerde verouderde verificatieprotocollen. Als u op elke afzonderlijke aanmeldingspoging klikt, ziet u meer details. In de kolom Client-app of het veld Client-app onder het tabblad Basisgegevens na het selecteren van een afzonderlijke rij gegevens wordt aangegeven welk verouderd verificatieprotocol is gebruikt. Deze logboeken geven aan welke gebruikers nog afhankelijk zijn van verouderde verificatie en welke toepassingen verouderde protocollen gebruiken om verificatieverzoeken in te dienen. Voor gebruikers die niet in deze logboeken worden weergegeven en waarvan is bevestigd dat ze geen verouderde verificatie gebruiken, implementeert u een beleid voor voorwaardelijke toegang of schakelt u het beleid basislijn in: blokkeer alleen verouderde verificatie voor deze gebruikers.
 
-## <a name="moving-away-from-legacy-authentication"></a>Van verouderde authenticatie weggooien 
+## <a name="moving-away-from-legacy-authentication"></a>Afstappen van verouderde verificatie 
 
-Zodra u een beter idee hebt van wie verouderde verificatie in uw Directory gebruikt en welke toepassingen hiervan afhankelijk zijn, voert de volgende stap uw gebruikers bij om moderne verificatie te gebruiken. Moderne verificatie is een methode van identiteits beheer die veiliger gebruikers verificatie en-autorisatie biedt. Als er een MFA-beleid aanwezig is in uw directory, zorgt moderne verificatie ervoor dat de gebruiker wanneer dat nodig is, wordt gevraagd MFA op te vragen. Het is het veiligere alternatief voor verouderde verificatie protocollen.
+Zodra u een beter idee hebt van wie legacy-verificatie in uw directory gebruikt en welke toepassingen ervan afhankelijk zijn, is de volgende stap het upgraden van uw gebruikers om moderne verificatie te gebruiken. Moderne verificatie is een methode voor identiteitsbeheer die veiligere gebruikersverificatie en autorisatie biedt. Als u een MFA-beleid op uw directory hebt, zorgt moderne verificatie ervoor dat de gebruiker wordt gevraagd om MFA wanneer dat nodig is. Het is het veiligere alternatief voor verouderde verificatieprotocollen.
 
-Deze sectie bevat een stapsgewijze overzicht van het bijwerken van uw omgeving naar moderne verificatie. Lees de onderstaande stappen voordat u een verouderde verificatie blokkerings beleid inschakelt in uw organisatie.
+In deze sectie vindt u een stapsgewijs overzicht van het bijwerken van uw omgeving naar moderne verificatie. Lees de onderstaande stappen voordat u een beleid voor het blokkeren van verouderde verificatiein uw organisatie inschakelt.
 
-### <a name="step-1-enable-modern-authentication-in-your-directory"></a>Stap 1: moderne verificatie inschakelen in uw Directory
+### <a name="step-1-enable-modern-authentication-in-your-directory"></a>Stap 1: Moderne verificatie inschakelen in uw directory
 
-De eerste stap bij het inschakelen van moderne verificatie is dat uw Directory ondersteuning biedt voor moderne verificatie. Moderne authenticatie is standaard ingeschakeld voor mappen die zijn gemaakt op of na 1 augustus 2017. Als uw map vóór deze datum is gemaakt, moet u de volgende stappen gebruiken om moderne verificatie voor uw directory hand matig in te scha kelen:
+De eerste stap in het inschakelen van moderne verificatie is ervoor te zorgen dat uw directory moderne verificatie ondersteunt. Moderne verificatie is standaard ingeschakeld voor mappen die op of na 1 augustus 2017 zijn gemaakt. Als uw map vóór deze datum is gemaakt, moet u handmatig moderne verificatie voor uw map inschakelen met de volgende stappen:
 
-1. Controleer of uw directory al ondersteuning biedt voor moderne verificatie door `Get-CsOAuthConfiguration` uit te voeren vanuit de [Skype voor bedrijven online Power shell-module](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell).
-1. Als uw opdracht een lege `OAuthServers`- eigenschap retourneert, wordt moderne verificatie uitgeschakeld. Werk de instelling bij om moderne verificatie in te scha kelen met behulp van `Set-CsOAuthConfiguration`. Als uw `OAuthServers` eigenschap een item bevat, kunt u aan de slag.
+1. Controleer of uw directory al moderne `Get-CsOAuthConfiguration` verificatie ondersteunt door te worden uitgevoerd vanuit de [Skype voor Bedrijven Online PowerShell-module.](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)
+1. Als uw opdracht `OAuthServers` een lege eigenschap retourneert, wordt Moderne verificatie uitgeschakeld. Werk de instelling bij `Set-CsOAuthConfiguration`om moderne verificatie in te schakelen met behulp van . Als `OAuthServers` uw woning een vermelding bevat, bent u klaar om te gaan.
 
-Zorg ervoor dat u deze stap uitvoert voordat u verdergaat. Het is essentieel dat uw Directory configuraties eerst worden gewijzigd omdat ze bepalen welk protocol door alle Office-clients wordt gebruikt. Zelfs als u Office-clients gebruikt die moderne authenticatie ondersteunen, wordt standaard verouderde protocollen gebruikt als moderne verificatie is uitgeschakeld voor uw Directory.
+Zorg ervoor dat u deze stap voltooit voordat u verder gaat. Het is van cruciaal belang dat uw directoryconfiguraties eerst worden gewijzigd omdat ze bepalen welk protocol door alle Office-clients wordt gebruikt. Zelfs als u Office-clients gebruikt die moderne verificatie ondersteunen, worden deze standaard gebruikt voor het gebruik van oudere protocollen als moderne verificatie is uitgeschakeld in uw directory.
 
 ### <a name="step-2-office-applications"></a>Stap 2: Office-toepassingen
 
-Zodra u moderne verificatie hebt ingeschakeld in uw directory, kunt u beginnen met het bijwerken van toepassingen door moderne verificatie voor Office-clients in te scha kelen. Clients met Office 2016 of hoger ondersteunen standaard moderne verificatie. Er zijn geen extra stappen vereist.
+Zodra u moderne verificatie in uw map hebt ingeschakeld, u beginnen met het bijwerken van toepassingen door moderne verificatie voor Office-clients in te schakelen. Office 2016 of hoger clients ondersteunen standaard moderne verificatie. Er zijn geen extra stappen nodig.
 
-Als u Office 2013 Windows-clients of ouder gebruikt, raden we u aan om een upgrade uit te voeren naar Office 2016 of hoger. Zelfs na het volt ooien van de vorige stap voor het inschakelen van moderne verificatie in uw directory, blijven de oudere Office-toepassingen gebruikmaken van verouderde verificatie protocollen. Als u Office 2013-clients gebruikt en niet onmiddellijk een upgrade kunt uitvoeren naar Office 2016 of hoger, volgt u de stappen in het volgende artikel om [moderne authenticatie voor Office 2013 op Windows-apparaten in te scha kelen](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication). Als u uw account wilt beschermen terwijl u verouderde verificatie gebruikt, raden we u aan om sterke wacht woorden te gebruiken in uw Directory. Bekijk [Azure AD-wachtwoord beveiliging](../authentication/concept-password-ban-bad.md) om zwakke wacht woorden in uw directory te verzwakken.
+Als u Office 2013 Windows-clients of ouder gebruikt, raden we u aan te upgraden naar Office 2016 of hoger. Zelfs nadat de vorige stap van het inschakelen van moderne verificatie in uw directory is voltooid, blijven de oudere Office-toepassingen oudere verificatieprotocollen gebruiken. Als u Office 2013-clients gebruikt en niet onmiddellijk upgraden naar Office 2016 of hoger, voert u de stappen in het volgende artikel uit om [Moderne verificatie voor Office 2013 in te schakelen op Windows-apparaten.](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication) Om uw account te beschermen terwijl u oudere verificatie gebruikt, raden we u aan sterke wachtwoorden in uw directory te gebruiken. Bekijk [azure AD-wachtwoordbeveiliging](../authentication/concept-password-ban-bad.md) om zwakke wachtwoorden in uw directory te verbieden.
 
-Office 2010 biedt geen ondersteuning voor moderne verificatie. U moet alle gebruikers met Office 2010 upgraden naar een recentere versie van Office. U wordt aangeraden om een upgrade uit te voeren naar Office 2016 of hoger, omdat deze standaard verouderde verificatie blokkeert.
+Office 2010 biedt geen ondersteuning voor moderne verificatie. U moet alle gebruikers met Office 2010 upgraden naar een recentere versie van Office. We raden u aan een upgrade naar Office 2016 of hoger te maken, omdat deze standaard verouderde verificatie blokkeert.
 
-Als u MacOS gebruikt, raden we u aan om een upgrade uit te voeren naar Office voor Mac 2016 of hoger. Als u de systeem eigen e-mailclient gebruikt, moet MacOS versie 10,14 of hoger op alle apparaten zijn geïnstalleerd.
+Als u MacOS gebruikt, raden we u aan een upgrade naar Office voor Mac 2016 of hoger te maken. Als u de native mailclient gebruikt, moet u MacOS-versie 10.14 of hoger op alle apparaten hebben.
 
-### <a name="step-3-exchange-and-sharepoint"></a>Stap 3: Exchange en share point
+### <a name="step-3-exchange-and-sharepoint"></a>Stap 3: Exchange en SharePoint
 
-Voor Windows-clients die gebruikmaken van moderne authenticatie, moet Exchange Online ook moderne authenticatie zijn ingeschakeld. Als moderne verificatie is uitgeschakeld voor Exchange Online, worden op Windows gebaseerde Outlook-clients die ondersteuning bieden voor moderne verificatie (Outlook 2013 of hoger) basis verificatie gebruikt om verbinding te maken met Exchange Online-post vakken.
+Voor Outlook-clients in Windows om moderne verificatie te gebruiken, moet Exchange Online ook moderne verificatie zijn ingeschakeld. Als moderne verificatie is uitgeschakeld voor Exchange Online, gebruiken Windows-outlook-clients die moderne verificatie ondersteunen (Outlook 2013 of hoger) basisverificatie om verbinding te maken met Exchange Online-postvakken.
 
-Share point online is ingeschakeld voor de standaard instelling voor moderne verificatie. Voor directory's die na 1 augustus 2017 zijn gemaakt, is moderne verificatie standaard ingeschakeld in Exchange Online. Als u echter eerder moderne authenticatie had uitgeschakeld of als u een map gebruikt die vóór deze datum is gemaakt, volgt u de stappen in het volgende artikel om [moderne verificatie in te scha kelen in Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+SharePoint Online is standaard ingeschakeld voor moderne verificatie. Voor mappen die na 1 augustus 2017 zijn gemaakt, is moderne verificatie standaard ingeschakeld in Exchange Online. Als u moderne verificatie echter eerder hebt uitgeschakeld of gebruikt u een map die vóór deze datum is gemaakt, voert u de stappen in het volgende artikel uit om moderne verificatie in Exchange Online in te [schakelen.](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)
 
-### <a name="step-4-skype-for-business"></a>Stap 4: Skype voor bedrijven
+### <a name="step-4-skype-for-business"></a>Stap 4: Skype voor Bedrijven
 
-Als u verouderde verificatie aanvragen van Skype voor bedrijven wilt voor komen, moet u moderne verificatie inschakelen voor Skype voor bedrijven online. Voor mappen die zijn gemaakt na 1 augustus 2017 is moderne verificatie voor Skype voor bedrijven standaard ingeschakeld.
+Om verouderde verificatieverzoeken van Skype voor Bedrijven te voorkomen, is het noodzakelijk om moderne verificatie voor Skype voor Bedrijven Online in te schakelen. Voor mappen die na 1 augustus 2017 zijn gemaakt, is moderne verificatie voor Skype voor Bedrijven standaard ingeschakeld.
 
-We raden u aan om over te stappen op micro soft-teams. Dit biedt standaard ondersteuning voor moderne verificatie. Als u op dit moment echter niet kunt migreren, moet u moderne verificatie inschakelen voor Skype voor bedrijven online, zodat Skype voor bedrijven-clients moderne verificatie gaan gebruiken. Volg de stappen in dit artikel [Skype voor bedrijven-topologieën die worden ondersteund door moderne verificatie](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported), om moderne verificatie mogelijk te maken voor Skype voor bedrijven.
+We raden u aan over te stappen naar Microsoft Teams, dat standaard moderne verificatie ondersteunt. Als u op dit moment echter niet migreren, moet u moderne verificatie voor Skype voor Bedrijven Online inschakelen, zodat Skype voor Bedrijven-clients moderne verificatie gaan gebruiken. Volg de stappen in dit artikel [Skype voor Bedrijven-topologieën die worden ondersteund met moderne verificatie](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)om moderne verificatie voor Skype voor Bedrijven in te schakelen.
 
-Naast het inschakelen van moderne verificatie voor Skype voor bedrijven online, raden we u aan moderne verificatie voor Exchange Online in te scha kelen bij het inschakelen van moderne verificatie voor Skype voor bedrijven. Met dit proces kunt u de status van moderne verificatie in Exchange Online en Skype voor bedrijven online synchroniseren en voor komen dat er meerdere aanmeldings prompts voor Skype voor bedrijven-clients worden verzonden.
+Naast het inschakelen van moderne verificatie voor Skype voor Bedrijven Online, raden we u aan moderne verificatie voor Exchange Online in te schakelen wanneer u moderne verificatie voor Skype voor Bedrijven inschakelt. Met dit proces u de status van moderne verificatie in Exchange Online en Skype voor Bedrijven online synchroniseren en worden meerdere aanmeldingsprompts voor Skype voor Bedrijven-clients voorkomen.
 
-### <a name="step-5-using-mobile-devices"></a>Stap 5: mobiele apparaten gebruiken
+### <a name="step-5-using-mobile-devices"></a>Stap 5: Mobiele apparaten gebruiken
 
-Toepassingen op uw mobiele apparaat moeten ook verouderde verificatie blok keren. U kunt het beste Outlook voor Mobile gebruiken. Outlook voor mobiel biedt standaard ondersteuning voor moderne verificatie en voldoet aan andere MFA-beleids regels voor basis beveiliging.
+Toepassingen op uw mobiele apparaat moeten ook verouderde verificatie blokkeren. We raden u aan Outlook voor Mobiel te gebruiken. Outlook voor Mobiel ondersteunt standaard moderne verificatie en voldoet aan andere mfa-basislijnbeveiligingsbeleid.
 
-Als u de systeem eigen iOS-e-mailclient wilt gebruiken, moet u iOS versie 11,0 of hoger uitvoeren om ervoor te zorgen dat de e-mailclient is bijgewerkt om verouderde verificatie te blok keren.
+Als u de native iOS-e-mailclient wilt gebruiken, moet u iOS-versie 11.0 of hoger uitvoeren om ervoor te zorgen dat de e-mailclient is bijgewerkt om verouderde verificatie te blokkeren.
 
-### <a name="step-6-on-premises-clients"></a>Stap 6: on-premises clients
+### <a name="step-6-on-premises-clients"></a>Stap 6: On-premises klanten
 
-Als u een hybride klant bent die gebruikmaakt van Exchange Server on-premises en Skype voor bedrijven on-premises, moeten beide services worden bijgewerkt om moderne verificatie mogelijk te maken. Wanneer u moderne verificatie gebruikt in een hybride omgeving, verifieert u gebruikers on-premises. Het verhaal dat hun toegang tot resources (bestanden of e-mails) wijzigt.
+Als u een hybride klant bent die Exchange Server on-premises gebruikt en Skype voor Bedrijven on-premises, moeten beide services worden bijgewerkt om moderne verificatie in te schakelen. Wanneer u moderne verificatie in een hybride omgeving gebruikt, u gebruikers nog steeds on-premises verifiëren. Het verhaal van het autoriseren van hun toegang tot bronnen (bestanden of e-mails) verandert.
 
-Voordat u on-premises moderne verificatie kunt gaan inschakelen, moet u ervoor zorgen dat u aan de vereisten voldoet. U bent nu klaar om on-premises moderne authenticatie in te scha kelen.
+Voordat u beginnen met het inschakelen van moderne verificatie on-premises, moet u er zeker van zijn dat u aan de vereisten hebt voldaan. U bent nu klaar om moderne verificatie on-premises in te schakelen.
 
-De stappen voor het inschakelen van moderne verificatie vindt u in de volgende artikelen:
+Stappen voor het inschakelen van moderne verificatie zijn te vinden in de volgende artikelen:
 
-* [Exchange Server on-premises configureren voor het gebruik van hybride, moderne authenticatie](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
-* [Moderne verificatie (ADAL) gebruiken met Skype voor bedrijven](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
+* [Exchange Server on-premises configureren om hybride moderne verificatie te gebruiken](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
+* [Moderne verificatie (ADAL) gebruiken met Skype voor Bedrijven](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Exchange Server on-premises configureren voor het gebruik van hybride, moderne authenticatie](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
-- [Moderne verificatie (ADAL) gebruiken met Skype voor bedrijven](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
-- [Verouderde verificatie blok keren](../conditional-access/block-legacy-authentication.md)
+- [Exchange Server on-premises configureren om hybride moderne verificatie te gebruiken](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
+- [Moderne verificatie (ADAL) gebruiken met Skype voor Bedrijven](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
+- [Verouderde verificatie blokkeren](../conditional-access/block-legacy-authentication.md)

@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 5bde217601d27129e044b64d90184727ea717950
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175843"
 ---
-Met Azure Resource Manager kunt u parameters definiëren voor waarden die u wilt opgeven wanneer de sjabloon wordt geïmplementeerd. De sjabloon bevat een sectie Parameters die alle parameterwaarden bevat.
-U moet een parameter voor de waarden die variëren op basis van het project dat u wilt implementeren of op basis van de omgeving die u om te implementeren wilt definiëren. Definieer geen parameters voor waarden die worden altijd hetzelfde blijven. De waarde van elke parameter wordt gebruikt in de sjabloon voor het definiëren van de resources die worden geïmplementeerd. 
+Met Azure Resource Manager kunt u parameters definiëren voor waarden die u wilt opgeven wanneer de sjabloon wordt geïmplementeerd. De sjabloon bevat een sectie met de naam Parameters die alle parameterwaarden bevat.
+U moet een parameter definiëren voor de waarden die variëren op basis van het project dat u implementeert of op basis van de omgeving waarop u implementeert. Definieer geen parameters voor waarden die altijd hetzelfde blijven. De waarde van elke parameter wordt gebruikt in de sjabloon voor het definiëren van de resources die worden geïmplementeerd. 
 
-Bij het definiëren van parameters, gebruikt u de **allowedValues** aan te geven op welke waarden van een gebruiker kunt opgeven tijdens de implementatie. Gebruik de **defaultValue** veld een waarde toewijzen aan de parameter, als er geen waarde is opgegeven tijdens de implementatie.
+Wanneer u parameters definieert, gebruikt u het veld **toegestane waarden** om op te geven welke waarden een gebruiker tijdens de implementatie kan opgeven. Gebruik het veld **standaardWaarde** om een waarde toe te wijzen aan de parameter, als er geen waarde wordt opgegeven tijdens de implementatie.
 
-Wordt wordt elke parameter in de sjabloon beschreven.
+We beschrijven elke parameter in de sjabloon.
 
-### <a name="sitename"></a>siteName
+### <a name="sitename"></a>siteNaam
 De naam van de web-app die u wilt maken.
 
     "siteName":{
@@ -26,14 +26,14 @@ De naam van de web-app die u wilt maken.
     }
 
 ### <a name="hostingplanname"></a>hostingPlanName
-De naam van de App Service-plan te gebruiken voor het hosten van de web-app.
+De naam van het App Service-plan dat moet worden gebruikt voor het hosten van de web-app.
 
     "hostingPlanName":{
       "type":"string"
     }
 
 ### <a name="sku"></a>sku
-De prijscategorie voor het hostingabonnement.
+De prijscategorie voor het hostingplan.
 
     "sku": {
       "type": "string",
@@ -57,10 +57,10 @@ De prijscategorie voor het hostingabonnement.
       }
     }
 
-De sjabloon definieert u de waarden die zijn toegestaan voor deze parameter en een standaardwaarde (S1) toegewezen, als er geen waarde is opgegeven.
+De sjabloon definieert de waarden die zijn toegestaan voor deze parameter en wijst een standaardwaarde (S1) toe als er geen waarde is opgegeven.
 
-### <a name="workersize"></a>workerSize
-De exemplaargrootte van het hostingabonnement (klein, normaal of groot).
+### <a name="workersize"></a>workerSize workerSize
+De instantiegrootte van het hostingplan (klein, gemiddeld of groot).
 
     "workerSize":{
       "type":"string",
@@ -72,5 +72,5 @@ De exemplaargrootte van het hostingabonnement (klein, normaal of groot).
       "defaultValue":"0"
     }
 
-De sjabloon definieert u de waarden die zijn toegestaan voor deze parameter (0, 1 of 2), en wijst een standaardwaarde (0) als er geen waarde is opgegeven. De waarden overeenkomen met kleine, middelgrote en grote.
+De sjabloon definieert de waarden die zijn toegestaan voor deze parameter (0, 1 of 2) en kent een standaardwaarde (0) toe als er geen waarde is opgegeven. De waarden komen overeen met klein, gemiddeld en groot.
 

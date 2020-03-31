@@ -1,6 +1,6 @@
 ---
 title: Gegevens kopiëren van en naar Azure Data Lake Storage Gen1
-description: Meer informatie over het kopiëren van gegevens van en naar Data Lake Store met behulp van Azure Data Factory
+description: Meer informatie over het kopiëren van gegevens van en naar Data Lake Store met Azure Data Factory
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,90 +13,90 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281598"
 ---
-# <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Gegevens kopiëren van en naar Data Lake Storage Gen1 met behulp van Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+# <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Gegevens van en naar Data Lake Storage Gen1 kopiëren met Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](data-factory-azure-datalake-connector.md)
 > * [Versie 2 (huidige versie)](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Azure data Lake Storage gen1-connector in v2](../connector-azure-data-lake-store.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [Azure Data Lake Storage Gen1-connector in V2](../connector-azure-data-lake-store.md)als u de huidige versie van de Data Factory-service gebruikt.
 
-In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te verplaatsen van en naar Azure Data Lake Storage Gen1 (voorheen bekend als Azure Data Lake Store). Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , een overzicht van de verplaatsing van gegevens met de Kopieer activiteit.
+In dit artikel wordt uitgelegd hoe u Activiteit kopiëren in Azure Data Factory gebruiken om gegevens van en naar Azure Data Lake Storage Gen1 (voorheen bekend als Azure Data Lake Store) te verplaatsen. Het bouwt voort op het artikel [Gegevensverplaatsingsactiviteiten,](data-factory-data-movement-activities.md) een overzicht van gegevensverplaatsing met Kopieeractiviteit.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
-U kunt gegevens **van Azure data Lake Store** kopiëren naar de volgende gegevens archieven:
+U gegevens **uit azure data lake store** kopiëren naar de volgende gegevensarchieven:
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-U kunt gegevens uit de volgende gegevens archieven kopiëren **naar Azure data Lake Store**:
+U gegevens uit de volgende gegevensarchieven kopiëren **naar Azure Data Lake Store:**
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!NOTE]
-> Maak een Data Lake Store-account voordat u een pijp lijn met Kopieer activiteit maakt. Zie [aan de slag met Azure data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md)voor meer informatie.
+> Maak een Data Lake Store-account voordat u een pijplijn maakt met Kopieeractiviteit. Zie [Aan de slag met Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md)voor meer informatie.
 
-## <a name="supported-authentication-types"></a>Ondersteunde verificatie typen
-De Data Lake Store-connector ondersteunt de volgende verificatie typen:
+## <a name="supported-authentication-types"></a>Ondersteunde verificatietypen
+De Data Lake Store-connector ondersteunt deze verificatietypen:
 * Verificatie van service-principal
-* Verificatie van gebruikers referenties (OAuth)
+* Verificatie van gebruikersreferenties (OAuth)
 
-We raden u aan Service-Principal-verificatie te gebruiken, met name voor een geplande gegevens kopie. Het verloop gedrag van tokens kan optreden bij verificatie van de gebruikers referenties. Zie de sectie eigenschappen van de [gekoppelde service](#linked-service-properties) voor meer informatie over de configuratie.
+We raden u aan servicehoofdverificatie te gebruiken, vooral voor een geplande gegevenskopie. Tokenverloopgedrag kan optreden met verificatie van gebruikersreferenties. Zie de sectie [Gekoppelde serviceeigenschappen](#linked-service-properties) voor configuratiedetails.
 
 ## <a name="get-started"></a>Aan de slag
-U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van/naar een Azure Data Lake Store met behulp van verschillende hulpprogram ma's/Api's.
+U een pijplijn maken met een kopieeractiviteit die gegevens van/naar een Azure Data Lake Store verplaatst met behulp van verschillende hulpprogramma's/API's.
 
-De eenvoudigste manier om een pijp lijn te maken om gegevens te kopiëren, is door de **wizard kopiëren**te gebruiken. Zie [zelf studie: een pijp lijn maken met de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md)voor een zelf studie over het maken van een pijp lijn met behulp van de wizard kopiëren.
+De eenvoudigste manier om een pijplijn te maken om gegevens te kopiëren, is door de **wizard Kopiëren**te gebruiken. Zie [Zelfstudie: Een pijplijn maken met wizard Kopiëren voor](data-factory-copy-data-wizard-tutorial.md)een zelfstudie over het maken van een pijplijn.
 
-U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
+U ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio,** **Azure PowerShell,** **Azure Resource Manager-sjabloon,** **.NET API**en REST **API**. Zie [Zelfstudie voor activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken.
 
-Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
+Of u nu de hulpprogramma's of API's gebruikt, u voert de volgende stappen uit om een pijplijn te maken die gegevens van een brongegevensarchief naar een sink-gegevensarchief verplaatst:
 
-1. Maak een **Data Factory**. Een data factory kan een of meer pijp lijnen bevatten.
-2. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory. Als u bijvoorbeeld gegevens kopieert van een Azure Blob-opslag naar een Azure Data Lake Store, maakt u twee gekoppelde services om uw Azure Storage-account te koppelen en Azure Data Lake op te slaan op uw data factory. Zie de sectie [Eigenschappen van gekoppelde service](#linked-service-properties) voor gekoppelde service-eigenschappen die specifiek zijn voor Azure data Lake Store.
-2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven. In het voor beeld in de laatste stap maakt u een gegevensset om de BLOB-container en de map op te geven die de invoer gegevens bevat. En u maakt een andere gegevensset om de map en het bestandspad op te geven in het Data Lake archief dat de gegevens bevat die zijn gekopieerd uit de Blob-opslag. Zie de sectie [Eigenschappen](#dataset-properties) van gegevensset voor informatie over eigenschappen die specifiek zijn voor Azure data Lake Store.
-3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt. In het eerder genoemde voor beeld gebruikt u BlobSource als bron en AzureDataLakeStoreSink als Sink voor de Kopieer activiteit. En als u kopieert van Azure Data Lake Store naar Azure Blob Storage, gebruikt u AzureDataLakeStoreSource en BlobSink in de Kopieer activiteit. Zie de sectie [Eigenschappen van Kopieer](#copy-activity-properties) activiteit voor de eigenschappen van de Kopieer activiteit die specifiek zijn voor Azure data Lake Store. Voor meer informatie over het gebruik van een gegevens archief als een bron of sink klikt u op de koppeling in de vorige sectie voor uw gegevens archief.
+1. Maak een **gegevensfabriek**. Een gegevensfabriek kan een of meer pijplijnen bevatten.
+2. Maak **gekoppelde services** om invoer- en uitvoergegevensopslag te koppelen aan uw gegevensfabriek. Als u bijvoorbeeld gegevens kopieert van een Azure blob-opslag naar een Azure Data Lake Store, maakt u twee gekoppelde services om uw Azure-opslagaccount en Azure Data Lake-opslag te koppelen aan uw gegevensfabriek. Zie [sectie gekoppelde service-eigenschappen](#linked-service-properties) die specifiek zijn voor Azure Data Lake Store.
+2. Maak **gegevenssets** om invoer- en uitvoergegevens voor de kopieerbewerking weer te geven. In het voorbeeld dat in de laatste stap wordt genoemd, maakt u een gegevensset om de blobcontainer en -map op te geven die de invoergegevens bevat. En u maakt een andere gegevensset om de map en het bestandspad op te geven in het Data Lake-archief met de gegevens die zijn gekopieerd uit de blob-opslag. Zie sectie [gegevensseteigenschappen](#dataset-properties) voor gegevensseteigenschappen die specifiek zijn voor Azure Data Lake Store.
+3. Maak een **pijplijn** met een kopieeractiviteit die een gegevensset als invoer en een uitvoerset als uitvoer neemt. In het eerder genoemde voorbeeld gebruikt u BlobSource als bron en AzureDataLakeStoreSink als een sink voor de kopieeractiviteit. Als u van Azure Data Lake Store naar Azure Blob Storage kopieert, gebruikt u AzureDataLakeStoreSource en BlobSink in de kopieeractiviteit. Zie [sectie activiteitseigenschappen kopiëren](#copy-activity-properties) voor eigenschappen voor kopiëren die specifiek zijn voor Azure Data Lake Store. Klik op de koppeling in de vorige sectie voor uw gegevensarchief voor meer informatie over het gebruik van een gegevensarchief als bron of gootsteen.
 
-Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling. Zie de sectie [JSON-voor beelden](#json-examples-for-copying-data-to-and-from-data-lake-store) in dit artikel voor steek proeven met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens van/naar een Azure data Lake Store.
+Wanneer u de wizard gebruikt, worden JSON-definities voor deze gegevensfabrieksentiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u tools/API's (behalve .NET API) gebruikt, definieert u deze entiteiten in de Data Factory met behulp van de JSON-indeling. Zie [JSON-voorbeelden](#json-examples-for-copying-data-to-and-from-data-lake-store) sectie van dit artikel voor voorbeelden van JSON-instellingen voor entiteiten in gegevensfabrieken die worden gebruikt om gegevens naar/vanuit een Azure Data Lake Store te kopiëren.
 
-De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Data Lake Store.
+In de volgende secties vindt u informatie over JSON-eigenschappen die worden gebruikt om entiteiten in Gegevensfabriek te definiëren die specifiek zijn voor de Data Lake Store.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
-Een gekoppelde service koppelt een gegevens archief aan een data factory. U maakt een gekoppelde service van het type **AzureDataLakeStore** om uw data Lake Store gegevens aan uw Data Factory te koppelen. De volgende tabel beschrijft de JSON-elementen die specifiek zijn voor Data Lake Store gekoppelde services. U kunt kiezen tussen Service-Principal en verificatie van de gebruikers referenties.
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+Een gekoppelde service koppelt een gegevensarchief aan een gegevensfabriek. U maakt een gekoppelde service van het type **AzureDataLakeStore** om uw Data Lake Store-gegevens te koppelen aan uw gegevensfabriek. In de volgende tabel worden JSON-elementen beschreven die specifiek zijn voor gekoppelde services in data lake store. U kiezen tussen serviceprincipal en verificatie van gebruikersreferenties.
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **type** | De eigenschap type moet worden ingesteld op **AzureDataLakeStore**. | Ja |
-| **dataLakeStoreUri** | Informatie over de Azure Data Lake Store-account. Deze informatie heeft een van de volgende indelingen: `https://[accountname].azuredatalakestore.net/webhdfs/v1` of `adl://[accountname].azuredatalakestore.net/`. | Ja |
-| **Abonnements** | Azure-abonnement-ID die de Data Lake Store-account behoort. | Vereist voor sink |
-| **resourceGroupName** | Naam van Azure-resource die de Data Lake Store-account behoort. | Vereist voor sink |
+| **Type** | De eigenschap type moet zijn ingesteld op **AzureDataLakeStore**. | Ja |
+| **dataLakeStoreUri** | Informatie over het Azure Data Lake Store-account. Deze informatie neemt een van `https://[accountname].azuredatalakestore.net/webhdfs/v1` `adl://[accountname].azuredatalakestore.net/`de volgende formaten: of . | Ja |
+| **abonnementId** | Azure-abonnements-ID waartoe het Data Lake Store-account behoort. | Vereist voor gootsteen |
+| **resourceGroupName** | De naam van de Azure-brongroep waartoe het Data Lake Store-account behoort. | Vereist voor gootsteen |
 
-### <a name="service-principal-authentication-recommended"></a>Service-Principal-verificatie (aanbevolen)
-Als u Service-Principal-verificatie wilt gebruiken, registreert u een toepassings entiteit in Azure Active Directory (Azure AD) en verleent u deze toegang tot Data Lake Store. Zie [service-to-service-verificatie](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)voor gedetailleerde stappen. Noteer de volgende waarden, die u gebruikt voor het definiëren van de gekoppelde service:
+### <a name="service-principal-authentication-recommended"></a>Serviceprincipal-verificatie (aanbevolen)
+Als u servicehoofdverificatie wilt gebruiken, registreert u een toepassingsentiteit in Azure Active Directory (Azure AD) en verleent u deze toegang tot De Gegevenslake store. Zie [Service-to-service-verificatie voor](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)gedetailleerde stappen . Noteer de volgende waarden, die u gebruikt om de gekoppelde service te definiëren:
 * Toepassings-id
 * Toepassingssleutel
 * Tenant-id
 
 > [!IMPORTANT]
-> Zorg ervoor dat u verleent de service principal juiste machtiging in Azure Data Lake Store:
->- **Als u data Lake Store als bron wilt gebruiken**, moet u ten minste de machtiging voor het **lezen en uitvoeren** van gegevens verlenen om de inhoud van een map weer te geven en te kopiëren, of de machtiging **lezen** om één bestand te kopiëren. Geen vereisten voor toegangs beheer op account niveau.
->- **Als u data Lake Store als Sink wilt gebruiken**, verleent u ten minste de machtiging voor het uitvoeren van gegevens toegang voor **schrijven + uitvoer** om onderliggende items in de map te maken. En als u Azure IR gebruikt om een kopie te maken (zowel de bron-als de Sink bevinden zich in de Cloud), moet u ten minste een rol van **lezer** verlenen in account Access Control (IAM), zodat u de regio van data Lake Store Data Factory kunt detecteren. Als u deze IAM-rol wilt vermijden, [geeft u executionLocation](data-factory-data-movement-activities.md#global) op met de locatie van uw data Lake Store in de Kopieer activiteit.
->- Als u de **wizard kopiëren gebruikt om pijp lijnen te maken**, moet u ten minste een rol van **lezer** verlenen in account Access Control (IAM). Ken ook ten minste lees-en **uitvoer** machtiging toe aan uw data Lake Store root (/) en de bijbehorende onderliggende items. Als dat niet het geval is, ziet u mogelijk het bericht ' de gegeven referenties zijn ongeldig. '
+> Zorg ervoor dat u de serviceprincipal de juiste toestemming verleent in Azure Data Lake Store:
+>- **Als u Data Lake Store als bron wilt gebruiken,** verleent u ten minste toestemming voor **lees + uitvoergegevens** om de inhoud van een map te vermelden en te kopiëren, of **Geeft u** toestemming om één bestand te kopiëren. Geen vereiste voor toegangsbeheer op accountniveau.
+>- **Als u Data Lake Store als gootsteen wilt gebruiken,** geeft u ten minste toestemming voor **gegevenstoegang voor schrijven + uitvoeren** om onderliggende items in de map te maken. En als u Azure IR gebruikt om kopiëren (zowel bron als gootsteen in de cloud) te machtigen, om Data Factory de regio van Data Lake Store te laten detecteren, verleent u ten minste de rol **van Reader** in account access control (IAM). Als u deze IAM-rol wilt vermijden, [geeft u uitvoering opLocatie](data-factory-data-movement-activities.md#global) met de locatie van uw Data Lake Store in kopieeractiviteit.
+>- Als u **Wizard Kopiëren gebruikt om pijplijnen te maken,** verleent u ten minste een **Reader-rol** in accounttoegangsbeheer (IAM). Geef ook ten minste **Lees + Voer** toestemming toe aan uw Data Lake Store-root ("/") en zijn kinderen. Anders ziet u mogelijk het bericht 'De opgegeven referenties zijn ongeldig'.
 
-Gebruik Service-Principal-verificatie door de volgende eigenschappen op te geven:
+Gebruik serviceprincipal-verificatie door de volgende eigenschappen op te geven:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Opgeven van de toepassing client-ID. | Ja |
-| **servicePrincipalKey** | Geef de sleutel van de toepassing. | Ja |
-| **tenant** | De tenantgegevens (domain name of tenant-ID) opgeven in uw toepassing zich bevindt. U kunt het ophalen van de muis in de rechterbovenhoek van de Azure-portal. | Ja |
+| **servicePrincipalId** | Geef de client-id van de toepassing op. | Ja |
+| **servicePrincipalKey** | Geef de sleutel van de toepassing op. | Ja |
+| **Huurder** | Geef de tenantgegevens op (domeinnaam of tenant-id) waaronder uw toepassing zich bevindt. U deze ophalen door met de muis in de rechterbovenhoek van de Azure-portal te zweven. | Ja |
 
-**Voor beeld: Service-Principal-verificatie**
+**Voorbeeld: Serviceprincipal-verificatie**
 ```json
 {
     "name": "AzureDataLakeStoreLinkedService",
@@ -114,21 +114,21 @@ Gebruik Service-Principal-verificatie door de volgende eigenschappen op te geven
 }
 ```
 
-### <a name="user-credential-authentication"></a>Verificatie van gebruikers referenties
-U kunt ook verificatie van de gebruikers referenties gebruiken om van of naar Data Lake Store te kopiëren door de volgende eigenschappen op te geven:
+### <a name="user-credential-authentication"></a>Verificatie van gebruikersreferenties
+U ook verificatie van gebruikersreferenties gebruiken om van of naar Data Lake Store te kopiëren door de volgende eigenschappen op te geven:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **autorisatie** | Klik op de knop **machtigen** in de Data Factory editor en voer uw referenties in die de automatisch gegenereerde autorisatie-URL aan deze eigenschap toewijzen. | Ja |
-| **sessionId** | OAuth-sessie-ID van de OAuth-autorisatie sessie. Elke sessie-ID is uniek en kan slechts één keer worden gebruikt. Deze instelling wordt automatisch gegenereerd wanneer u de Data Factory editor gebruikt. | Ja |
+| **Vergunning** | Klik op de knop **Autoriseren** in de editor voor gegevensfabrieksonderdelen en voer uw referentie in die de automatisch gegenereerde autorisatie-URL aan deze eigenschap toewijst. | Ja |
+| **Sessionid** | OAuth-sessie-ID van de OAuth-autorisatiesessie. Elke sessie-ID is uniek en kan slechts één keer worden gebruikt. Deze instelling wordt automatisch gegenereerd wanneer u de Data Factory Editor gebruikt. | Ja |
 
 > [!IMPORTANT]
-> Zorg ervoor dat u de gebruiker de juiste machtigingen verleent in Azure Data Lake Store:
->- **Als u data Lake Store als bron wilt gebruiken**, moet u ten minste de machtiging voor het **lezen en uitvoeren** van gegevens verlenen om de inhoud van een map weer te geven en te kopiëren, of de machtiging **lezen** om één bestand te kopiëren. Geen vereisten voor toegangs beheer op account niveau.
->- **Als u data Lake Store als Sink wilt gebruiken**, verleent u ten minste de machtiging voor het uitvoeren van gegevens toegang voor **schrijven + uitvoer** om onderliggende items in de map te maken. En als u Azure IR gebruikt om een kopie te maken (zowel de bron-als de Sink bevinden zich in de Cloud), moet u ten minste een rol van **lezer** verlenen in account Access Control (IAM), zodat u de regio van data Lake Store Data Factory kunt detecteren. Als u deze IAM-rol wilt vermijden, [geeft u executionLocation](data-factory-data-movement-activities.md#global) op met de locatie van uw data Lake Store in de Kopieer activiteit.
->- Als u de **wizard kopiëren gebruikt om pijp lijnen te maken**, moet u ten minste een rol van **lezer** verlenen in account Access Control (IAM). Ken ook ten minste lees-en **uitvoer** machtiging toe aan uw data Lake Store root (/) en de bijbehorende onderliggende items. Als dat niet het geval is, ziet u mogelijk het bericht ' de gegeven referenties zijn ongeldig. '
+> Zorg ervoor dat u de gebruiker de juiste toestemming geeft in Azure Data Lake Store:
+>- **Als u Data Lake Store als bron wilt gebruiken,** verleent u ten minste toestemming voor **lees + uitvoergegevens** om de inhoud van een map te vermelden en te kopiëren, of **Geeft u** toestemming om één bestand te kopiëren. Geen vereiste voor toegangsbeheer op accountniveau.
+>- **Als u Data Lake Store als gootsteen wilt gebruiken,** geeft u ten minste toestemming voor **gegevenstoegang voor schrijven + uitvoeren** om onderliggende items in de map te maken. En als u Azure IR gebruikt om kopiëren (zowel bron als gootsteen in de cloud) te machtigen, om Data Factory de regio van Data Lake Store te laten detecteren, verleent u ten minste de rol **van Reader** in account access control (IAM). Als u deze IAM-rol wilt vermijden, [geeft u uitvoering opLocatie](data-factory-data-movement-activities.md#global) met de locatie van uw Data Lake Store in kopieeractiviteit.
+>- Als u **Wizard Kopiëren gebruikt om pijplijnen te maken,** verleent u ten minste een **Reader-rol** in accounttoegangsbeheer (IAM). Geef ook ten minste **Lees + Voer** toestemming toe aan uw Data Lake Store-root ("/") en zijn kinderen. Anders ziet u mogelijk het bericht 'De opgegeven referenties zijn ongeldig'.
 
-**Voor beeld: verificatie van de gebruikers referenties**
+**Voorbeeld: Verificatie van gebruikersreferenties**
 ```json
 {
     "name": "AzureDataLakeStoreLinkedService",
@@ -145,21 +145,21 @@ U kunt ook verificatie van de gebruikers referenties gebruiken om van of naar Da
 }
 ```
 
-#### <a name="token-expiration"></a>Token verloop tijd
-De autorisatie code die u genereert met behulp van de knop **autoriseren** , verloopt na een bepaalde periode. Het volgende bericht geeft aan dat het verificatie token is verlopen:
+#### <a name="token-expiration"></a>Token vervaldatum
+De autorisatiecode die u genereert met de knop **Autoriseren,** vervalt na een bepaalde tijd. Het volgende bericht betekent dat het verificatietoken is verlopen:
 
-Referentie bewerkings fout: invalid_grant-AADSTS70002: fout bij het valideren van referenties. AADSTS70008: de verleende toegangs toekenning is verlopen of ingetrokken. Tracerings-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 correlatie-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7-tijds tempel: 2015-12-15 21-09-31Z.
+Fout in de referentiebewerking: invalid_grant - AADSTS70002: Fout bij het valideren van referenties. AADSTS70008: De verstrekte toegangssubsidie is verlopen of ingetrokken. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlatie-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21-09-31Z.
 
-In de volgende tabel ziet u de verval tijden van verschillende soorten gebruikers accounts:
+In de volgende tabel worden de vervaldatums van verschillende typen gebruikersaccounts weergegeven:
 
-| Gebruikers type | Verloopt na |
+| Gebruikerstype | Verloopt na |
 |:--- |:--- |
-| Gebruikers accounts die *niet* worden beheerd door Azure Active Directory (bijvoorbeeld @hotmail.com of @live.com) |12 uur |
-| Gebruikers accounts die worden beheerd door Azure Active Directory |14 dagen na de laatste uitvoering van het segment <br/><br/>90 dagen, als een segment op basis van een op OAuth gebaseerde gekoppelde service ten minste één keer per 14 dagen wordt uitgevoerd |
+| Gebruikersaccounts *worden niet* beheerd door Azure @hotmail.com @live.comActive Directory (bijvoorbeeld of ) |12 uur |
+| Gebruikersaccounts beheerd door Azure Active Directory |14 dagen na de laatste slice run <br/><br/>90 dagen, als een segment op basis van een oauth-gebaseerde gekoppelde service ten minste eenmaal per 14 dagen wordt uitgevoerd |
 
-Als u uw wacht woord vóór de verloop tijd van het token wijzigt, verloopt het token direct. Het bericht dat eerder in deze sectie wordt vermeld, wordt weer gegeven.
+Als u uw wachtwoord wijzigt vóór de vervaldatum van het token, vervalt het token onmiddellijk. U ziet het bericht eerder vermeld in deze sectie.
 
-U kunt het account opnieuw autoriseren met behulp van de knop **autoriseren** wanneer het token verloopt om de gekoppelde service opnieuw te implementeren. U kunt ook met behulp van de volgende code waarden genereren voor de eigenschappen **SessionID** en **Authorization** via een programma:
+U het account opnieuw autoriseren met de knop **Autoriseren** wanneer het token verloopt om de gekoppelde service opnieuw te implementeren. U ook programmatisch waarden genereren voor de **sessieId-** en **autorisatie-eigenschappen** met behulp van de volgende code:
 
 
 ```csharp
@@ -186,33 +186,33 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     }
 }
 ```
-Zie de onderwerpen [AzureDataLakeStoreLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)en [AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) voor meer informatie over de Data Factory klassen die in de code worden gebruikt. Voeg een verwijzing toe naar versie `2.9.10826.1824` van `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` voor de klasse `WindowsFormsWebAuthenticationDialog` die in de code wordt gebruikt.
+Zie de onderwerpen [AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)en [AuthorizationSessionGetResponse Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) voor meer informatie over de klassen Gegevensfabriek die in de code worden gebruikt. Voeg een verwijzing `2.9.10826.1824` `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` toe `WindowsFormsWebAuthenticationDialog` naar de versie van voor de klasse die in de code wordt gebruikt.
 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
-**Symptoom:** Bij het kopiëren van gegevens **naar** Azure data Lake Store, als uw Kopieer activiteit mislukt met de volgende fout:
+**Symptoom:** Wanneer u gegevens kopieert **naar** Azure Data Lake Store, mislukt uw kopieeractiviteit met de volgende fout:
 
   ```
   Failed to detect the region for Azure Data Lake account {your account name}. Please make sure that the Resource Group name: {resource group name} and subscription ID: {subscription ID} of this Azure Data Lake Store resource are correct.
   ```
 
-**Hoofd oorzaak:** Er zijn twee mogelijke redenen:
+**Oorzaak:** Er zijn 2 mogelijke redenen:
 
-1. De `resourceGroupName` en/of `subscriptionId` die zijn opgegeven in Azure Data Lake Store gekoppelde service, zijn onjuist.
-2. De gebruiker of de Service-Principal beschikt niet over de benodigde machtiging.
+1. De `resourceGroupName` gekoppelde `subscriptionId` service voor en/of opgegeven in azure data lake store is onjuist.
+2. De gebruiker of de serviceprincipal heeft niet de benodigde toestemming.
 
-**Opgelost**
+**Resolutie:**
 
-1. Zorg ervoor dat de `subscriptionId` en `resourceGroupName` die u in de gekoppelde service `typeProperties` hebt opgegeven, inderdaad degene zijn van wie uw data Lake-account deel uitmaakt.
+1. Zorg ervoor `subscriptionId` `resourceGroupName` dat de en `typeProperties` u opgeven in de gekoppelde dienst zijn inderdaad degenen die uw data lake account behoort tot.
 
-2. Zorg ervoor dat u ten minste de rol van **lezer** toewijst aan de gebruiker of Service-Principal op het data Lake-account. Hier kunt u het volgende doen:
+2. Zorg ervoor dat u ten minste **Reader** rol toe te kennen aan de gebruiker of service principal op de data lake account. Hier is hoe het te maken:
 
-    1. Ga naar het Azure Portal-> uw Data Lake Store-account
-    2. Klik op **toegangs beheer (IAM)** op de Blade van de data Lake Store
-    3. Klik op **roltoewijzing toevoegen**
-    4. Stel **rol** in als **lezer**en selecteer de gebruiker of de service-principal die u voor kopiëren gebruikt om toegang te verlenen
+    1. Ga naar de Azure-portal > uw Data Lake Store-account
+    2. Klik op **Toegangsbesturingselement (IAM)** op het blad van de Data Lake Store
+    3. Klik **op Roltoewijzing toevoegen**
+    4. **Rol instellen** als **lezer**en selecteer de gebruiker of de serviceprincipal die u gebruikt voor kopiëren om toegang te verlenen
 
-3. Als u de rol van **lezer** niet aan de gebruiker of Service-Principal wilt verlenen, kunt u het beste [expliciet een uitvoerings locatie opgeven](data-factory-data-movement-activities.md#global) in de Kopieer activiteit met de locatie van uw data Lake Store. Voorbeeld:
+3. Als u reader-rol **Reader** niet wilt toekennen aan de gebruiker of serviceprincipal, is het alternatief om [expliciet een uitvoeringslocatie](data-factory-data-movement-activities.md#global) op te geven in kopieeractiviteit met de locatie van uw Data Lake Store. Voorbeeld:
 
     ```json
     {
@@ -232,23 +232,23 @@ Zie de onderwerpen [AzureDataLakeStoreLinkedService class](https://msdn.microsof
     ```
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Als u een gegevensset wilt opgeven die invoer gegevens in een Data Lake Store vertegenwoordigt, stelt u de eigenschap **type** van de gegevensset in op **AzureDataLakeStore**. Stel de eigenschap **linkedServiceName** van de gegevensset in op de naam van de gekoppelde data Lake Store-service. Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met JSON-secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties van een gegevensset in JSON, zoals **structuur**, **Beschik baarheid**en **beleid**, zijn vergelijkbaar voor alle typen gegevens sets (bijvoorbeeld Azure SQL database, Azure Blob en Azure Table). De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie zoals locatie en indeling van de gegevens in het gegevens archief.
+Als u een gegevensset wilt opgeven om invoergegevens in een Data Lake Store weer te geven, stelt u de **eigenschap type** van de gegevensset in op **AzureDataLakeStore**. Stel de eigenschap **linkedServiceName** van de gegevensset in op de naam van de gekoppelde service van de Data Lake Store. Zie het artikel [Gegevenssets maken](data-factory-create-datasets.md) voor een volledige lijst met JSON-secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Secties van een gegevensset in JSON, zoals **structuur,** **beschikbaarheid**en **beleid,** zijn vergelijkbaar voor alle gegevenssettypen (Azure SQL-database, Azure blob en Azure-tabel, bijvoorbeeld). De sectie **typeEigenschappen** is verschillend voor elk type gegevensset en biedt informatie zoals locatie en indeling van de gegevens in het gegevensarchief.
 
-De sectie **typeProperties** voor een gegevensset van het type **AzureDataLakeStore** bevat de volgende eigenschappen:
+De sectie **typeEigenschappen** voor een gegevensset van het type **AzureDataLakeStore** bevat de volgende eigenschappen:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| **folderPath** |Het pad naar de container en de map in Data Lake Store. |Ja |
-| **Bestands** |De naam van het bestand in Azure Data Lake Store. De eigenschap **filename** is optioneel en hoofdletter gevoelig. <br/><br/>Als u **filename**opgeeft, werkt de activiteit (inclusief kopie) voor het specifieke bestand.<br/><br/>Als er geen **Bestands naam** is opgegeven, kopiëren bevat alle bestanden in **FolderPath** in de invoer gegevensset.<br/><br/>Als er geen **Bestands naam** is opgegeven voor een uitvoer-gegevensset en **preserveHierarchy** niet is opgegeven in de activiteit sink, wordt de naam van het gegenereerde bestand in de indeling `Data._Guid_.txt`. Bijvoorbeeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt. |Nee |
-| **partitionedBy** |De eigenschap **partitionedBy** is optioneel. U kunt deze gebruiken om een dynamisch pad en een bestands naam op te geven voor gegevens van de tijd reeks. Zo kan **FolderPath** voor elk uur aan gegevens worden para meters. Zie de eigenschap partitionedBy voor meer informatie en voor beelden. |Nee |
-| **Formatteer** | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**en **ParquetFormat**. Stel de eigenschap **type** onder **indeling** in op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON](data-factory-supported-file-and-compression-formats.md#json-format)-indeling, [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) -indeling in de [Bestands-en compressie-indelingen die worden ondersteund door Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel voor meer informatie. <br><br> Als u bestanden "as-is" wilt kopiëren tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie `format` in de gegevensset-definities voor invoer en uitvoer. |Nee |
-| **compressie** | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen die worden ondersteund door Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| **folderPath** |Pad naar de container en map in Data Lake Store. |Ja |
+| **fileName** |Naam van het bestand in Azure Data Lake Store. De eigenschap **fileName** is optioneel en hoofdlettergevoelig. <br/><br/>Als u **bestandsnaam**opgeeft, werkt de activiteit (inclusief Kopiëren) in het specifieke bestand.<br/><br/>Wanneer **bestandsnaam** niet is opgegeven, bevat Kopiëren alle bestanden in **mapPath** in de invoergegevensset.<br/><br/>Wanneer **bestandsnaam** niet is opgegeven voor een uitvoergegevensset en **behoudenHiërarchie** niet is opgegeven in `Data._Guid_.txt`activiteitssink, is de naam van het gegenereerde bestand in de indeling . Bijvoorbeeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nee |
+| **partitionedBy** |De eigenschap **partitionedBy** is optioneel. U het gebruiken om een dynamisch pad en bestandsnaam op te geven voor tijdreeksgegevens. **MapPath** kan bijvoorbeeld worden geparameteriseerd voor elk uur aan gegevens. Zie De eigenschap partitionedBy voor meer informatie en voorbeelden. |Nee |
+| **Formaat** | De volgende formattypes worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**en **ParquetFormat**. Stel de **eigenschap type** onder **opmaak** in op een van deze waarden. Zie voor meer informatie de secties [Tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling,](data-factory-supported-file-and-compression-formats.md#avro-format) [ORC-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parketindeling](data-factory-supported-file-and-compression-formats.md#parquet-format) in de [bestands- en compressieindelingen die worden ondersteund door](data-factory-supported-file-and-compression-formats.md) het artikel Azure Data Factory. <br><br> Als u bestanden 'as-is' wilt kopiëren tussen bestandsopslag (binaire kopie), slaat u de `format` sectie over in definities van zowel invoer- als uitvoergegevenssets. |Nee |
+| **Compressie** | Geef het type en het compressieniveau voor de gegevens op. Ondersteunde typen zijn **GZip,** **Deflate,** **BZip2**en **ZipDeflate**. Ondersteunde niveaus zijn **optimaal** en **snelst.** Zie [Bestands- en compressieindelingen die worden ondersteund door Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
 
 ### <a name="the-partitionedby-property"></a>De eigenschap partitionedBy
-U kunt dynamische **FolderPath** -en **filename** -eigenschappen opgeven voor gegevens van de tijd reeks met de eigenschap **partitionedBy** , Data Factory functies en systeem variabelen. Zie het artikel [Azure Data Factory-functies en systeem variabelen](data-factory-functions-variables.md) voor meer informatie.
+U dynamische **mapPath-** en **fileName-eigenschappen** opgeven voor tijdreeksgegevens met de eigenschap **partitionedBy,** de functies Data Factory en systeemvariabelen. Zie het artikel [Azure Data Factory - functies en systeemvariabelen](data-factory-functions-variables.md) voor meer informatie.
 
 
-In het volgende voor beeld wordt `{Slice}` vervangen door de waarde van de Data Factory systeem variabele `SliceStart` in de opgegeven notatie (`yyyyMMddHH`). De naam `SliceStart` verwijst naar de begin tijd van het segment. De eigenschap `folderPath` verschilt voor elk segment, zoals in `wikidatagateway/wikisampledataout/2014100103` of `wikidatagateway/wikisampledataout/2014100104`.
+In het volgende `{Slice}` voorbeeld wordt vervangen door de `SliceStart` waarde van de`yyyyMMddHH`systeemvariabele Data Factory in de opgegeven indeling ( ). De `SliceStart` naam verwijst naar de begintijd van het segment. De `folderPath` eigenschap is verschillend voor `wikidatagateway/wikisampledataout/2014100103` elk `wikidatagateway/wikisampledataout/2014100104`segment, zoals in of .
 
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -258,7 +258,7 @@ In het volgende voor beeld wordt `{Slice}` vervangen door de waarde van de Data 
 ],
 ```
 
-In het volgende voor beeld worden het jaar, de maand, de dag en het tijdstip van `SliceStart` geëxtraheerd in afzonderlijke variabelen die worden gebruikt door de `folderPath` en `fileName` eigenschappen:
+In het volgende voorbeeld worden het jaar, `SliceStart` de maand, de dag en de `folderPath` `fileName` tijd ervan geëxtraheerd in afzonderlijke variabelen die worden gebruikt door de eigenschappen en eigenschappen:
 ```JSON
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
@@ -270,56 +270,56 @@ In het volgende voor beeld worden het jaar, de maand, de dag en het tijdstip van
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Zie de [gegevens sets in azure Data Factory](data-factory-create-datasets.md) en [Data Factory plannings-en uitvoerings](data-factory-scheduling-and-execution.md) artikelen voor meer informatie over gegevens sets, planning en segmenten voor de tijd reeksen.
+Zie de [gegevenssets in azure datafabriek](data-factory-create-datasets.md) en [gegevensfabriek planning](data-factory-scheduling-and-execution.md) en uitvoering voor meer informatie over gegevenssets, planningen en segmenten in de tijdreeksen.
 
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
+Zie het artikel [Pijplijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer- en uitvoertabellen en beleid zijn beschikbaar voor alle soorten activiteiten.
 
-De eigenschappen die beschikbaar zijn in de sectie **typeProperties** van een activiteit, verschillen per activiteitstype. Voor een Kopieer activiteit zijn ze afhankelijk van de typen bronnen en Sinks.
+De eigenschappen die beschikbaar zijn in de sectie **typeEigenschappen** van een activiteit, variëren per activiteitstype. Voor een kopieeractiviteit variëren ze afhankelijk van de soorten bronnen en putten.
 
-**AzureDataLakeStoreSource** ondersteunt de volgende eigenschap in de sectie **typeProperties** :
-
-| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
-| --- | --- | --- | --- |
-| **recursieve** |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen voor de opgegeven map. |True (standaard waarde), False |Nee |
-
-**AzureDataLakeStoreSink** ondersteunt de volgende eigenschappen in de sectie **typeProperties** :
+**AzureDataLakeStoreSource** ondersteunt de volgende eigenschap in de sectie **typeEigenschappen:**
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| **copyBehavior** |Hiermee geeft u het Kopieer gedrag op. |<b>PreserveHierarchy</b>: behoudt de bestands hiërarchie in de doelmap. Het relatieve pad van het bronbestand voor bronmap is identiek aan het relatieve pad van doelbestand naar doelmap.<br/><br/><b>FlattenHierarchy</b>: alle bestanden in de bronmap worden gemaakt op het eerste niveau van de doelmap. De doel bestanden worden gemaakt met automatisch gegenereerde namen.<br/><br/><b>MergeFiles</b>: alle bestanden van de bronmap worden samengevoegd met één bestand. Als de naam van het bestand of de blob is opgegeven, is de naam van het samengevoegde de opgegeven naam. Anders wordt de bestands naam automatisch gegenereerd. |Nee |
+| **Recursieve** |Hiermee geeft u aan of de gegevens recursief worden gelezen vanuit de submappen of alleen vanuit de opgegeven map. |True (standaardwaarde), Onwaar |Nee |
+
+**AzureDataLakeStoreSink** ondersteunt de volgende eigenschappen in de sectie **typeEigenschappen:**
+
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
+| --- | --- | --- | --- |
+| **copyBehavior** |Hiermee geeft u het kopieergedrag op. |<b>Hiërarchie behouden:</b>hiermee blijft de bestandshiërarchie in de doelmap behouden. Het relatieve pad van bronbestand naar bronmap is identiek aan het relatieve pad van doelbestand naar doelmap.<br/><br/><b>AfvlakkingHiërarchie:</b>Alle bestanden uit de bronmap worden gemaakt in het eerste niveau van de doelmap. De doelbestanden worden gemaakt met automatisch gegenereerde namen.<br/><br/><b>MergeFiles</b>: hiermee worden alle bestanden van de bronmap samengevoegd tot één bestand. Als de bestands- of blobnaam is opgegeven, is de samengevoegde bestandsnaam de opgegeven naam. Anders wordt de bestandsnaam automatisch gegenereerd. |Nee |
 
 ### <a name="recursive-and-copybehavior-examples"></a>recursieve en copyBehavior voorbeelden
-Deze sectie beschrijft het resulterende gedrag van de kopieerbewerking voor de verschillende combinaties van recursieve en copyBehavior waarden.
+In deze sectie wordt het resulterende gedrag van de bewerking Kopiëren beschreven voor verschillende combinaties van recursieve en copyBehavior-waarden.
 
-| recursive | copyBehavior | Resulterende gedrag |
+| Recursieve | copyBehavior | Resulterend gedrag |
 | --- | --- | --- |
-| true |preserveHierarchy |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 wordt gemaakt met dezelfde structuur als de bron<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| true |flattenHierarchy |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doel-Map1 is gemaakt met de volgende structuur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor File5 |
-| true |mergeFiles |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doel-Map1 is gemaakt met de volgende structuur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;bestand1 + Bestand2 + File3 + File4 + inhoud van bestand 5 worden samengevoegd in één bestand met automatisch gegenereerde bestands naam |
-| onwaar |preserveHierarchy |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 is gemaakt met de volgende structuur<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/><br/><br/>Subfolder1 bestand3 File4 en File5 worden niet doorgevoerd. |
-| onwaar |flattenHierarchy |Voor een bronmap Map1 met de volgende structuur:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 is gemaakt met de volgende structuur<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand2<br/><br/><br/>Subfolder1 bestand3 File4 en File5 worden niet doorgevoerd. |
-| onwaar |mergeFiles |Voor een bronmap Map1 met de volgende structuur:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>de doelmap Map1 is gemaakt met de volgende structuur<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;bestand1 + Bestand2-inhoud worden samengevoegd in één bestand met automatisch gegenereerde bestands naam. Automatisch gegenereerde naam voor File1<br/><br/>Subfolder1 bestand3 File4 en File5 worden niet doorgevoerd. |
+| waar |behoudenHiërarchie |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Submap1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand5<br/><br/>de doelmap Map1 wordt gemaakt met dezelfde structuur als de bron<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Submap1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand5. |
+| waar |afvlakkenHiërarchie |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Submap1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand5<br/><br/>de doelmap1 wordt gemaakt met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand5 |
+| waar |mergeFiles |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Submap1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand5<br/><br/>de doelmap1 wordt gemaakt met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + File 5-inhoud wordt samengevoegd tot één bestand met automatisch gegenereerde bestandsnaam |
+| false |behoudenHiërarchie |Voor een bronmap Map1 met de volgende structuur: <br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Submap1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand5<br/><br/>de doelmap Map1 wordt gemaakt met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/><br/><br/>Submap1 met Bestand3, File4 en File5 worden niet opgehaald. |
+| false |afvlakkenHiërarchie |Voor een bronmap Map1 met de volgende structuur:<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Submap1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand5<br/><br/>de doelmap Map1 wordt gemaakt met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automatisch gegenereerde naam voor Bestand2<br/><br/><br/>Submap1 met Bestand3, File4 en File5 worden niet opgehaald. |
+| false |mergeFiles |Voor een bronmap Map1 met de volgende structuur:<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Submap1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand5<br/><br/>de doelmap Map1 wordt gemaakt met de volgende structuur<br/><br/>Map1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2-inhoud wordt samengevoegd tot één bestand met automatisch gegenereerde bestandsnaam. automatisch gegenereerde naam voor Bestand1<br/><br/>Submap1 met Bestand3, File4 en File5 worden niet opgehaald. |
 
-## <a name="supported-file-and-compression-formats"></a>Ondersteunde bestands-en compressie-indelingen
-Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel voor meer informatie.
+## <a name="supported-file-and-compression-formats"></a>Ondersteunde indelingen voor bestanden en compressie
+Zie de [bestands- en compressieindelingen in](data-factory-supported-file-and-compression-formats.md) het artikel Azure Data Factory voor meer informatie.
 
-## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>JSON-voor beelden voor het kopiëren van gegevens van en naar Data Lake Store
-De volgende voor beelden bieden voor beeld-JSON-definities. U kunt deze voorbeeld definities gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De voor beelden laten zien hoe u gegevens kopieert van en naar Data Lake Store en Azure Blob-opslag. Gegevens kunnen echter _rechtstreeks_ vanuit een van de bronnen naar een van de ondersteunde sinks worden gekopieerd. Zie de sectie ' ondersteunde gegevens archieven en-indelingen ' in het artikel [gegevens verplaatsen met behulp van Kopieer activiteit](data-factory-data-movement-activities.md) voor meer informatie.
+## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>JSON-voorbeelden voor het kopiëren van gegevens van en naar Data Lake Store
+In de volgende voorbeelden worden voorbeeld-JSON-definities gegeven. U deze voorbeelddefinities gebruiken om een pijplijn te maken met [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell.](data-factory-copy-activity-tutorial-using-powershell.md) In de voorbeelden wordt uitgelegd hoe u gegevens kopieert van en naar Data Lake Store en Azure Blob-opslag. Gegevens kunnen echter _rechtstreeks_ worden gekopieerd van een van de bronnen naar een van de ondersteunde putten. Zie voor meer informatie de sectie 'Ondersteunde gegevensopslag en -indelingen' in de gegevens verplaatsen met het artikel [Activiteit kopiëren.](data-factory-data-movement-activities.md)
 
-### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Voor beeld: gegevens kopiëren van Azure-Blob Storage naar Azure Data Lake Store
-In de voorbeeld code in deze sectie ziet u het volgende:
+### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>Voorbeeld: Gegevens uit Azure Blob Storage kopiëren naar Azure Data Lake Store
+De voorbeeldcode in deze sectie geeft het volgende aan:
 
-* Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+* Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
 * Een gekoppelde service van het type [AzureDataLakeStore](#linked-service-properties).
-* Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureDataLakeStore](#dataset-properties).
-* Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) en [AzureDataLakeStoreSink](#copy-activity-properties).
+* Een [invoergegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* Een [uitvoergegevensset](data-factory-create-datasets.md) van het type [AzureDataLakeStore](#dataset-properties).
+* Een [pijplijn](data-factory-create-pipelines.md) met een kopieeractiviteit die [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) en [AzureDataLakeStoreSink](#copy-activity-properties)gebruikt.
 
-In de voor beelden ziet u hoe de gegevens van de tijd reeks van Azure Blob Storage worden gekopieerd naar Data Lake Store elk uur.
+De voorbeelden laten zien hoe tijdreeksgegevens uit Azure Blob Storage elk uur worden gekopieerd naar Data Lake Store.
 
-**Een gekoppelde Azure Storage-service**
+**Gekoppelde Azure Storage-service**
 
 ```JSON
 {
@@ -333,7 +333,7 @@ In de voor beelden ziet u hoe de gegevens van de tijd reeks van Azure Blob Stora
 }
 ```
 
-**Azure Data Lake Store gekoppelde service**
+**Gekoppelde Azure Data Lake Store-service**
 
 ```JSON
 {
@@ -353,12 +353,12 @@ In de voor beelden ziet u hoe de gegevens van de tijd reeks van Azure Blob Stora
 ```
 
 > [!NOTE]
-> Zie de sectie eigenschappen van de [gekoppelde service](#linked-service-properties) voor meer informatie over de configuratie.
+> Zie de sectie [Gekoppelde serviceeigenschappen](#linked-service-properties) voor configuratiedetails.
 >
 
-**De Azure Blob-invoergegevensset**
+**Azure Blob-invoergegevensset**
 
-In het volgende voor beeld worden gegevens elk uur uit een nieuwe BLOB opgehaald (`"frequency": "Hour", "interval": 1`). Het mappad en de bestands naam voor de BLOB worden dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt het deel van het jaar, de maand en de dag van de begin tijd. De bestands naam gebruikt het uur gedeelte van de begin tijd. De instelling `"external": true` informeert de Data Factory-service dat de tabel extern is voor de data factory en wordt niet geproduceerd door een activiteit in de data factory.
+In het volgende voorbeeld worden gegevens elk uur opgehaald`"frequency": "Hour", "interval": 1`uit een nieuwe blob (). Het mappad en de bestandsnaam voor de blob worden dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Het mappad gebruikt het jaar-, maand- en daggedeelte van de begintijd. De bestandsnaam gebruikt het uurgedeelte van de begintijd. De `"external": true` instelling informeert de service Gegevensfabriek dat de tabel zich buiten de gegevensfabriek bevindt en niet wordt geproduceerd door een activiteit in de gegevensfabriek.
 
 ```JSON
 {
@@ -419,9 +419,9 @@ In het volgende voor beeld worden gegevens elk uur uit een nieuwe BLOB opgehaald
 }
 ```
 
-**Uitvoer gegevensset Azure Data Lake Store**
+**Uitvoergegevensset Azure Data Lake Store**
 
-In het volgende voor beeld worden gegevens gekopieerd naar Data Lake Store. Nieuwe gegevens worden elk uur naar Data Lake Store gekopieerd.
+In het volgende voorbeeld worden gegevens naar Data Lake Store gekopieerd. Elk uur worden nieuwe gegevens gekopieerd naar Data Lake Store.
 
 ```JSON
 {
@@ -440,9 +440,9 @@ In het volgende voor beeld worden gegevens gekopieerd naar Data Lake Store. Nieu
 }
 ```
 
-**Kopieer activiteit in een pijp lijn met een BLOB-bron en een Data Lake Store-Sink**
+**Activiteit in een pijplijn kopiëren met een blobbron en een gegevensarchief**
 
-In het volgende voor beeld bevat de pijp lijn een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets. De Kopieer activiteit is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het `source` type ingesteld op `BlobSource`en het `sink` type is ingesteld op `AzureDataLakeStoreSink`.
+In het volgende voorbeeld bevat de pijplijn een kopieeractiviteit die is geconfigureerd om de invoer- en uitvoergegevenssets te gebruiken. De kopieeractiviteit wordt elk uur uitgevoerd. In de JSON-definitie `source` van de `BlobSource`pijplijn `sink` wordt het `AzureDataLakeStoreSink`type ingesteld op , en wordt het type ingesteld op .
 
 ```json
 {
@@ -492,18 +492,18 @@ In het volgende voor beeld bevat de pijp lijn een Kopieer activiteit die is geco
 }
 ```
 
-### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>Voor beeld: gegevens kopiëren van Azure Data Lake Store naar een Azure-Blob
-In de voorbeeld code in deze sectie ziet u het volgende:
+### <a name="example-copy-data-from-azure-data-lake-store-to-an-azure-blob"></a>Voorbeeld: Gegevens uit Azure Data Lake Store kopiëren naar een Azure-blob
+De voorbeeldcode in deze sectie geeft het volgende aan:
 
 * Een gekoppelde service van het type [AzureDataLakeStore](#linked-service-properties).
-* Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
-* Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [AzureDataLakeStore](#dataset-properties).
-* Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [AzureDataLakeStoreSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+* Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+* Een [invoergegevensset](data-factory-create-datasets.md) van het type [AzureDataLakeStore](#dataset-properties).
+* Een [uitvoergegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* Een [pijplijn](data-factory-create-pipelines.md) met een kopieeractiviteit die [AzureDataLakeStoreSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)gebruikt.
 
-De code kopieert elk uur gegevens van de tijd reeks van Data Lake Store naar een Azure-Blob.
+De code kopieert elk uur tijdreeksgegevens uit Data Lake Store naar een Azure-blob.
 
-**Azure Data Lake Store gekoppelde service**
+**Gekoppelde Azure Data Lake Store-service**
 
 ```json
 {
@@ -521,10 +521,10 @@ De code kopieert elk uur gegevens van de tijd reeks van Data Lake Store naar een
 ```
 
 > [!NOTE]
-> Zie de sectie eigenschappen van de [gekoppelde service](#linked-service-properties) voor meer informatie over de configuratie.
+> Zie de sectie [Gekoppelde serviceeigenschappen](#linked-service-properties) voor configuratiedetails.
 >
 
-**Een gekoppelde Azure Storage-service**
+**Gekoppelde Azure Storage-service**
 
 ```JSON
 {
@@ -537,9 +537,9 @@ De code kopieert elk uur gegevens van de tijd reeks van Data Lake Store naar een
   }
 }
 ```
-**Invoer gegevensset Azure Data Lake**
+**Invoergegevensset Azure Data Lake**
 
-In dit voor beeld wordt het instellen van `"external"` op `true` informeert aan de Data Factory-service dat de tabel extern is voor de data factory en niet wordt geproduceerd door een activiteit in de data factory.
+Stel in dit `"external"` `true` voorbeeld de gegevensfabriekservice in om te informeren dat de tabel zich buiten de gegevensfabriek bevindt en niet wordt geproduceerd door een activiteit in de gegevensfabriek.
 
 ```json
 {
@@ -572,9 +572,9 @@ In dit voor beeld wordt het instellen van `"external"` op `true` informeert aan 
     }
 }
 ```
-**De Azure Blob-uitvoergegevensset**
+**Gegevensset Azure blob-uitvoer**
 
-In het volgende voor beeld worden elk uur (`"frequency": "Hour", "interval": 1`) gegevens naar een nieuwe BLOB geschreven. Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad maakt gebruik van het gedeelte jaar, maand, dag en uur van de begin tijd.
+In het volgende voorbeeld worden gegevens elk uur`"frequency": "Hour", "interval": 1`naar een nieuwe blob geschreven ( ). Het mappad voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Het mappad gebruikt het gedeelte jaar, maand, dag en uren van de begintijd.
 
 ```JSON
 {
@@ -632,9 +632,9 @@ In het volgende voor beeld worden elk uur (`"frequency": "Hour", "interval": 1`)
 }
 ```
 
-**Een Kopieer activiteit in een pijp lijn met een Azure Data Lake Store bron en een BLOB-Sink**
+**Een kopieeractiviteit in een pijplijn met een Azure Data Lake Store-bron en een blobsink**
 
-In het volgende voor beeld bevat de pijp lijn een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets. De Kopieer activiteit is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het `source` type ingesteld op `AzureDataLakeStoreSource`en het `sink` type is ingesteld op `BlobSink`.
+In het volgende voorbeeld bevat de pijplijn een kopieeractiviteit die is geconfigureerd om de invoer- en uitvoergegevenssets te gebruiken. De kopieeractiviteit wordt elk uur uitgevoerd. In de JSON-definitie `source` van de `AzureDataLakeStoreSource`pijplijn `sink` wordt het `BlobSink`type ingesteld op , en wordt het type ingesteld op .
 
 ```json
 {
@@ -682,7 +682,7 @@ In het volgende voor beeld bevat de pijp lijn een Kopieer activiteit die is geco
 }
 ```
 
-In de definitie van de Kopieer activiteit kunt u ook kolommen van de bron-gegevensset toewijzen aan kolommen in de Sink-gegevensset. Zie [gegevensset-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie.
+In de definitie van kopieeractiviteit u kolommen van de brongegevensset ook toewijzen aan kolommen in de gegevensset sink. Zie Kolommen [met gegevenssetstoewijzen in Azure Data Factory](data-factory-map-columns.md)voor meer informatie.
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemmen
-Zie het artikel [Kopieer activiteit prestaties en afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de factoren die van invloed zijn op de prestaties van de Kopieer activiteit en hoe u deze kunt optimaliseren.
+Zie het artikel [Activiteits- en stemgids kopiëren](data-factory-copy-activity-performance.md) voor meer informatie over de factoren die van invloed zijn op de prestaties van kopieeractiviteit en hoe u deze optimaliseren.

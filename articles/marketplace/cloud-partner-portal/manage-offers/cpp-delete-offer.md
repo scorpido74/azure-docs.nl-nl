@@ -1,77 +1,76 @@
 ---
-title: Marketplace-aanbiedingen verwijderen | Azure Marketplace
-description: Aanbiedingen verwijderen op de Azure-en AppSource-markt plaatsen met behulp van de Cloud Partner-portal
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Marktplaatsaanbiedingen verwijderen | Azure Marketplace
+description: Aanbiedingen op de Azure- en AppSource-marketplaces verwijderen met behulp van de Cloud Partner Portal
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: pabutler
-ms.openlocfilehash: 6a75fbb0c4b9c364342a406a8076128346943101
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: fa8ee834bd6d9261c47c540e9517c200c894b6c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826766"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286452"
 ---
-# <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Azure Marketplace-en AppSource-aanbiedingen of Sku's verwijderen
+# <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>Azure Marketplace- en AppSource-aanbiedingen of SKU's verwijderen
 
-Om verschillende redenen kunt u besluiten om uw aanbieding uit te trekken van de Marketplace van micro soft, die twee formulieren kan aannemen:
+Om verschillende redenen u besluiten om uw aanbieding in te trekken van de Microsoft-marktplaats, die twee vormen kan aannemen:
 
-- Met het *verwijderen van aanbiedingen* kunt u ervoor zorgen dat nieuwe klanten uw aanbieding niet meer kunnen kopen of implementeren, maar geen invloed hebben op bestaande klanten, die u moet ondersteunen volgens uw gebruiksrecht overeenkomst en relevante wetgeving. 
-- *Beëindiging van aanbieding* is het proces waarbij de service en/of licentie overeenkomst tussen u en uw bestaande klanten wordt beëindigd. 
+- *Het verwijderen van aanbiedingen* zorgt ervoor dat nieuwe klanten uw aanbieding niet meer kunnen kopen of implementeren, maar heeft geen invloed op bestaande klanten, die u moet ondersteunen volgens uw licentieovereenkomst en relevante wetten. 
+- *Beëindiging* van de aanbieding is het proces van beëindiging van de service- en/of licentieovereenkomst tussen u en uw bestaande klanten. 
 
-Richt lijnen en beleids regels die betrekking hebben op het verwijderen en beëindigen van de aanbieding, zijn onderworpen aan [Microsoft Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/?LinkID=699560) en het [deelname beleid](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (sectie die [opschorting en verwijdering biedt](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)). 
+Richtlijnen en beleidsregels met betrekking tot het verwijderen en beëindigen van aanbiedingen vallen onder de [Microsoft Marketplace Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560) en het [participatiebeleid](https://azure.microsoft.com/support/legal/marketplace/participation-policies/) (sectie [Schorsing en verwijdering aanbieden).](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal) 
 
-In dit artikel vindt u informatie over de verschillende scenario's voor het verwijderen en de stappen die nodig zijn om elk uit te voeren.  
+In dit artikel wordt gesproken over de verschillende ondersteunde verwijderingsscenario's en de stappen die nodig zijn om elk van deze scenario's uit te voeren.  
 
 > [!NOTE]
-> U kunt een aanbieding die niet is gepubliceerd, verwijderen door simpelweg op de knop **verwijderen** te klikken in de werk balk van het tabblad **Editor** .
+> U een aanbieding verwijderen die niet is gepubliceerd door **simpelweg** de knop Verwijderen op de werkbalk van het tabblad **Editor** te selecteren.
 
 
-## <a name="delete-a-published-sku-from-the-azure-marketplace"></a>Een gepubliceerde SKU verwijderen uit Azure Marketplace
+## <a name="delete-a-published-sku-from-the-azure-marketplace"></a>Een gepubliceerde SKU verwijderen uit de Azure Marketplace
 
-Met de volgende stappen kunt u een gepubliceerde SKU uit Azure Marketplace verwijderen:
+U een gepubliceerde SKU verwijderen uit Azure Marketplace met de volgende stappen:
 
-1.  Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
-2.  Selecteer op de pagina **alle aanbiedingen** uw aanbieding.  Uw aanbieding moet worden weer gegeven op het tabblad **Editor** .
-3.  Selecteer op de werk balk links het tabblad **sku's** . 
-4.  Selecteer de SKU die u wilt verwijderen en klik op de knop **verwijderen** .
+1.  Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/).
+2.  Selecteer op de pagina **Alle aanbiedingen** uw aanbieding.  Uw aanbieding moet worden weergegeven op het tabblad **Editor.**
+3.  Selecteer op de linkerwerkbalk het tabblad **SKU's.** 
+4.  Selecteer de SKU die u wilt verwijderen en klik op **verwijderen.**
 5.  [Publiceer](./cpp-publish-offer.md) de aanbieding opnieuw naar Azure Marketplace.
 
-Nadat de gewijzigde aanbieding is gepubliceerd op de Azure Marketplace, wordt de geselecteerde SKU niet meer weer gegeven in de Azure Marketplace en Azure Portal.
+Nadat de gewijzigde aanbieding is gepubliceerd in de Azure Marketplace, wordt de geselecteerde SKU niet langer vermeld in de Azure Marketplace- en Azure-portal.
 
 
-## <a name="roll-back-to-a-previous-sku-version"></a>Terugkeren naar een eerdere SKU-versie
+## <a name="roll-back-to-a-previous-sku-version"></a>Terugdraaien naar een vorige SKU-versie
 
-U kunt de huidige versie van een gepubliceerde SKU verwijderen uit Azure Marketplace met behulp van de volgende stappen. Wanneer het proces is voltooid, wordt de SKU teruggezet naar de vorige versie.
+U de huidige versie van een gepubliceerde SKU verwijderen uit Azure Marketplace met behulp van de stappen hier. Wanneer het proces is voltooid, wordt de SKU teruggezet naar de vorige versie.
 
-1. Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
-2. Selecteer op de pagina **alle aanbiedingen** uw aanbieding.  Uw aanbieding moet worden weer gegeven op het tabblad **Editor** .
-3. Selecteer op de werk balk links het tabblad **sku's** . 
-4. Verwijder de meest recente versie van het gekoppelde Asset-oplossing uit de lijst met schijf versies.  Afhankelijk van het type aanbieding, kan dit veld **schijf versie**, **pakket versies**of vergelijk bare activa zijn. 
+1. Meld u aan bij de [Cloud Partner Portal](https://cloudpartner.azure.com/).
+2. Selecteer op de pagina **Alle aanbiedingen** uw aanbieding.  Uw aanbieding moet worden weergegeven op het tabblad **Editor.**
+3. Selecteer op de linkerwerkbalk het tabblad **SKU's.** 
+4. Verwijder de nieuwste versie van het bijbehorende oplossingsitem uit de lijst met schijfversies.  Afhankelijk van het aanbiedingstype kan dit veld **schijfversie,** **pakketversies**of vergelijkbare activa zijn. 
 5. [Publiceer](./cpp-publish-offer.md) de aanbieding opnieuw naar Azure Marketplace.
 
-Nadat de gewijzigde aanbieding is gepubliceerd op theAzure Marketplace, wordt de huidige versie van de vermelde SKU niet meer weer gegeven. in azure Marketplace en de Azure Portal.  De SKU wordt teruggedraaid naar de vorige versie.
+Nadat de gewijzigde aanbieding is gepubliceerd op de Azure Marketplace, wordt de huidige versie van de vermelde SKU niet meer vermeld. in de Azure Marketplace en de Azure-portal.  De SKU wordt teruggezet naar de vorige versie.
 
 
 ## <a name="delete-a-live-offer"></a>Een live-aanbieding verwijderen
 
-Er zijn verschillende procedure-, bedrijfs-en juridische aspecten voor het verwijderen van een live-aanbieding. Volg de volgende stappen om hulp te krijgen van het ondersteunings team om een live-aanbieding te verwijderen uit Azure Marketplace:
+Er zijn verschillende procedurele, zakelijke en juridische aspecten aan het verwijderen van een live-aanbod. Volg de volgende stappen om begeleiding te krijgen van het ondersteuningsteam om een live-aanbieding uit de Azure Marketplace te verwijderen:
 
-1.  Verhoog een ondersteunings ticket via de pagina [een incident maken](https://go.microsoft.com/fwlink/?linkid=844975) of door te klikken op **ondersteuning** in de rechter bovenhoek van de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
+1.  Een ondersteuningsticket verhogen via de pagina [Een incident maken](https://go.microsoft.com/fwlink/?linkid=844975) of door te klikken op **Ondersteuning** in de rechterbovenhoek van de Cloud [Partner Portal.](https://cloudpartner.azure.com/)
 
-2.  Selecteer uw specifieke aanbiedings type in de lijst **probleem type** en selecteer **een gepubliceerde aanbieding verwijderen** in de **categorie** lijst.
+2.  Selecteer uw specifieke aanbiedingstype in de lijst **Probleemtype** en selecteer **Een gepubliceerde aanbieding verwijderen** in de lijst **Categorie.**
 
-3.  Dien de aanvraag in.
+3.  Dien het verzoek in.
 
-Het ondersteunings team helpt u bij het verwijderings proces van de aanbieding.
+Het ondersteuningsteam begeleidt u door het verwijderingsproces van de aanbieding.
 
 > [!NOTE]
-> Het verwijderen van een aanbieding (of SKU) heeft geen invloed op de huidige aankopen van die aanbieding (of SKU). Deze aankopen blijven werken zoals voorheen. Verwijderde aanbiedingen of Sku's zijn echter niet beschikbaar voor toekomstige aankopen.
+> Het verwijderen van een aanbieding (of SKU) heeft geen invloed op de huidige aankopen van die aanbieding (of SKU). Deze aankopen blijven werken als voorheen. Verwijderde aanbiedingen of SKU's zijn echter niet beschikbaar voor toekomstige aankopen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Wanneer u bekend bent met de basis bewerkingen die worden gebruikt voor het beheren van aanbiedingen, bent u klaar om een exemplaar van een micro soft [Marketplace-aanbieding](../cpp-marketplace-offers.md)te maken.
+Nadat u bekend bent met de basisbewerkingen die worden gebruikt voor het beheren van aanbiedingen, bent u klaar om een exemplaar van een [Microsoft-marktplaatsaanbieding](../cpp-marketplace-offers.md)te maken.

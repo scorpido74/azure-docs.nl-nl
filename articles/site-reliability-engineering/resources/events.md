@@ -1,6 +1,6 @@
 ---
-title: SRE-gebeurtenissen lijst | Microsoft Docs
-description: Deel nemen aan de wereld wijde SRE-Community door de volgende gebeurtenissen te gebruiken.
+title: SRE-evenementenlijst | Microsoft Documenten
+description: Neem deel aan de wereldwijde SRE-gemeenschap door deze evenementen bij te wonen.
 author: dnblankedelman
 manager: efreeman
 ms.service: site-reliability-engineering
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
 ms.openlocfilehash: 5360ada6dab19564bfa88697d2adc6ef751f3935
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254805"
 ---
-# <a name="participate-in-the-global-site-reliability-engineering-community"></a>Deel nemen aan de wereld wijde technische community van site betrouwbaarheid
+# <a name="participate-in-the-global-site-reliability-engineering-community"></a>Deelnemen aan de wereldwijde site reliability engineering community
 
-Net als bij het lezen van SRE is het belang rijker om deze te praten met uw peers. Het bespreken van uw uitdagingen, geslaagde en mislukte problemen met SRE kan cruciaal zijn voor het verkrijgen van een genuanced inzicht in het onderwerp.
+Hoewel het belangrijk is om u in te lezen over SRE, is het vaak nog belangrijker om het onderwerp met collega's te bespreken. Het bespreken van uw uitdagingen, successen en mislukkingen op het gebied van SRE kan cruciaal zijn om een genuanceerd beeld van het onderwerp te krijgen.
 
-Er zijn een aantal bijeenkomsten en conferenties die SRE-inhoud gebruiken. Misschien is het meest rechtstreeks relevant, de wereld wijd gedistribueerde [SREcon-vergaderingen](https://www.usenix.org/conferences) die worden geplaatst door usenix.
+Er is een aantal bijeenkomsten en conferenties waar SRE-inhoud wordt besproken. Misschien wel de meest direct relevante is de wereldwijd gedistribueerde [SREcon conferenties](https://www.usenix.org/conferences) aangezet door USENIX.
 
-Meer SRE-inhoud is een manier om conferenties te maken, zoals [Lisa](https://www.usenix.org/conferences/byname/5), de [hele dag DevOps](https://www.alldaydevops.com), de [DevOps Enter prise Summit](https://events.itrevolution.com) en lokale DevOps-vergaderingen, zoals [DevOps dagen](https://www.devopsdays.org). Zoek deze inhoud en anderen die geïnteresseerd zijn in het onderwerp, waar u deze kunt vinden.
+Meer en meer SRE content maakt zijn weg naar conferenties zoals [LISA](https://www.usenix.org/conferences/byname/5), [All Day DevOps,](https://www.alldaydevops.com) [DevOps Enterprise Summit](https://events.itrevolution.com) en lokale DevOps conferenties zoals [DevOps Days](https://www.devopsdays.org). Zoek deze inhoud en anderen die geïnteresseerd zijn in het onderwerp waar je het vinden en hen.

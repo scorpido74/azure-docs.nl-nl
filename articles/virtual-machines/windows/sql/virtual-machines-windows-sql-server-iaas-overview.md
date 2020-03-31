@@ -15,10 +15,10 @@ ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75374291"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Wat is SQL Server op Azure Virtual Machines? (Windows)
@@ -27,7 +27,7 @@ ms.locfileid: "75374291"
 > * [Windows](virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
 
-Met [SQL Server op Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) kunt u volledige versies van SQL Server in de cloud gebruiken zonder dat u on-premises hardware hoeft te beheren. SQL Server-VM's vereenvoudigen ook de licentiekosten als u betaalt naar gebruik.
+[Met SQL Server op virtuele Azure-machines](https://azure.microsoft.com/services/virtual-machines/sql-server/) u volledige versies van SQL Server in de cloud gebruiken zonder dat u on-premises hardware hoeft te beheren. SQL Server-VM's vereenvoudigen ook de licentiekosten als u betaalt naar gebruik.
 
 Virtuele machines van Azure worden uitgevoerd in talloze verschillende [geografische regio's](https://azure.microsoft.com/regions/) ter wereld. Er zijn ook diverse [formaten](../sizes.md). In de galerie met installatiekopieën voor virtuele machines kunt u een SQL Server-VM met de juiste versie, de juiste editie en het juiste besturingssysteem maken. Daarom zijn virtuele machines een goede optie voor diverse verschillende SQL Server-werkbelastingen.
 
@@ -37,7 +37,7 @@ Azure VM's voor SQL Server kunnen [geautomatiseerde patching](virtual-machines-w
 
 ## <a name="automated-backups"></a>Automatische back-ups
 
-Azure VM's voor SQL Server kunnen gebruikmaken van [geautomatiseerde back-ups](virtual-machines-windows-sql-automated-backup-v2.md), waarbij er regelmatig back-ups in Blob Storage worden gemaakt van uw database. U kunt deze techniek ook handmatig gebruiken. Zie [Azure Storage gebruiken voor back-up en herstel van SQL Server](virtual-machines-windows-use-storage-sql-server-backup-restore.md) voor meer informatie.
+Azure VM's voor SQL Server kunnen gebruikmaken van [geautomatiseerde back-ups](virtual-machines-windows-sql-automated-backup-v2.md), waarbij er regelmatig back-ups in Blob Storage worden gemaakt van uw database. U kunt deze techniek ook handmatig gebruiken. Zie [Azure Storage gebruiken voor SQL Server-back-up en -herstel](virtual-machines-windows-use-storage-sql-server-backup-restore.md) voor meer informatie.
 
 ## <a name="high-availability"></a>Hoge beschikbaarheid
 
@@ -54,12 +54,12 @@ Als u aan de slag wilt, kiest u een installatiekopie voor een virtuele machine v
 > [!TIP]
 > Zie [Richtlijnen voor prijzen van virtuele Azure-machines met SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md) voor informatie over de prijzen voor SQL-installatiekopieën. 
 
-### <a id="payasyougo"></a> Betalen per gebruik
+### <a name="pay-as-you-go"></a><a id="payasyougo"></a>Betaal naar eigen zeggen
 De volgende tabel bevat een matrix met SQL Server-installatiekopieën voor betalen naar gebruik.
 
-| Versie | Besturingssysteem | Versie |
+| Versie | Besturingssysteem | Editie |
 | --- | --- | --- |
-| **SQL Server 2019** | Windows Server 2019 | [Enter prise](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019enterprise), [Standard](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019standard), [Web](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019web), [Developer](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019sqldev) | 
+| **SQL Server 2019** | Windows Server 2019 | [Enterprise](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019enterprise), [Standard](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019standard), [Web](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019web), [Developer](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019sqldev) | 
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2EnterpriseWindowsServer2016), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2StandardWindowsServer2016), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2WebWindowsServer2016), [Express](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2ExpressWindowsServer2016), [Developer](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2DeveloperWindowsServer2016) |
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2StandardWindowsServer2012R2), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2WebWindowsServer2012R2), [Express](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2ExpressWindowsServer2012R2) |
@@ -71,20 +71,20 @@ Zie [Overzicht van SQL Server op virtuele Azure-machines (Linux)](../../linux/sq
 > [!NOTE]
 > Het is nu mogelijk om de licentie voor een SQL Server-VM waarbij per gebruik wordt betaald, te wijzigen in uw eigen licentie. Zie [Het licentiemodel voor een SQL-VM wijzigen](virtual-machines-windows-sql-ahb.md) voor meer informatie. 
 
-### <a id="BYOL"></a> Neem uw eigen licentie mee
+### <a name="bring-your-own-license"></a><a id="BYOL"></a> Neem uw eigen licentie mee
 U kunt ook uw eigen licentie gebruiken (Bring Your Own Licence, BYOL). In dit scenario betaalt u alleen voor de virtuele machine, zonder eventuele extra kosten voor SQL Server-licentieverlening.  Als u uw eigen licentie hebt, kan dit u in de loop van de tijd geld besparen voor doorlopende productieworkloads. Zie [Prijsinformatie voor Azure VM's van SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md#byol) voor de vereisten om van deze optie gebruik te maken.
 
 Als u uw eigen licentie wilt meenemen, converteert u een SQL-VM waarbij per gebruik wordt betaald, of implementeert u een installatiekopie met **{BYOL}** vooraf ingesteld. Zie [Het licentiemodel voor een SQL-VM wijzigen](virtual-machines-windows-sql-ahb.md) voor meer informatie over het schakelen van uw licentiemodel tussen betalen per gebruik en BYOL. 
 
-| Versie | Besturingssysteem | Versie |
+| Versie | Besturingssysteem | Editie |
 | --- | --- | --- |
 | **SQL Server 2019** | Windows Server 2019 | [Enterprise BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolenterprise), [Standard BYOL](https://ms.portal.azure.com/#create/microsoftsqlserver.sql2019-ws2019-byolstandard)| 
-| **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
-| **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
-| **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
+| **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016), [Standaard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
+| **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016), [Standaard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
+| **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2), [Standaard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-Het is mogelijk om een oudere installatie kopie te implementeren van SQL Server die niet beschikbaar is in de Azure Portal met behulp van Power shell. Gebruik de volgende opdracht om alle beschikbare installatiekopieën te bekijken met behulp van Powershell:
+Het is mogelijk om een oudere afbeelding van SQL Server te implementeren die niet beschikbaar is in de Azure-portal met PowerShell. Gebruik de volgende opdracht om alle beschikbare installatiekopieën te bekijken met behulp van Powershell:
 
   ```powershell
   Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
@@ -99,33 +99,33 @@ Nadat u de SQL Server-VM hebt gemaakt, verbindt u deze met toepassingen of hulpp
 ### <a name="migrate-your-data"></a>Uw gegevens migreren
 Als u een bestaande database hebt, doet u er verstandig aan deze te verplaatsen naar uw nieuw ingerichte virtuele SQL-machine. Zie [Een database migreren naar SQL Server op een virtuele machine in Azure](virtual-machines-windows-migrate-sql.md) voor een lijst met migratieopties en begeleiding bij de migratie.
 
-## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure SQL-resources maken en beheren met de Azure Portal
+## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure SQL-resources maken en beheren met de Azure-portal
 
-De Azure Portal biedt één pagina waar u [al uw Azure SQL-resources](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) kunt beheren, met inbegrip van uw virtuele SQL-machines.
+De Azure-portal biedt één pagina waar u [al uw Azure SQL-resources](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) beheren, inclusief uw SQL-virtuele machines.
 
-Om toegang te krijgen tot de pagina **Azure SQL-resources** , selecteert u **Azure SQL** in het menu Azure portal of zoekt en selecteert u **Azure SQL** op een wille keurige pagina.
+Als u toegang wilt krijgen tot de pagina **Azure SQL-resources,** selecteert u **Azure SQL** in het azure-portalmenu of zoekt en selecteert u Azure **SQL** op een pagina.
 
 ![Zoeken naar Azure SQL](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
 
 > [!NOTE]
-> **Azure SQL** biedt een snelle en eenvoudige manier om toegang te krijgen tot al uw SQL-data bases, elastische Pools, database servers, SQL Managed instances en virtuele SQL-machines. Azure SQL is geen service of resource. 
+> **Azure SQL** biedt een snelle en eenvoudige manier om toegang te krijgen tot al uw SQL-databases, elastische pools, databaseservers, SQL-beheerde exemplaren en SQL-virtuele machines. Azure SQL is geen service of bron. 
 
-Als u bestaande resources wilt beheren, selecteert u het gewenste item in de lijst. Als u nieuwe Azure SQL-resources wilt maken, selecteert u **+ toevoegen**. 
+Als u bestaande resources wilt beheren, selecteert u het gewenste item in de lijst. Als u nieuwe Azure SQL-resources wilt maken, selecteert u **+ Toevoegen**. 
 
-![Azure SQL-resource maken](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
+![Azure SQL-bron maken](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
 
-Nadat u **+ toevoegen**hebt geselecteerd, kunt u aanvullende informatie over de verschillende opties bekijken door **Details weer geven** op een wille keurige tegel te selecteren.
+Bekijk **na**het selecteren + Toevoegen aanvullende informatie over de verschillende opties door **Details weergeven** op een tegel te selecteren.
 
-![Details van de tegel data bases](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
+![details van databasestegel](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
 
 Zie deze artikelen voor meer informatie:
 
-- [Een afzonderlijke data base maken](../../../sql-database/sql-database-single-database-get-started.md)
+- [Een individuele database maken](../../../sql-database/sql-database-single-database-get-started.md)
 - [Een pool voor Elastic Database maken](../../../sql-database/sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)
-- [Een beheerd exemplaar maken](../../../sql-database/sql-database-managed-instance-get-started.md)
+- [Een beheerde instantie maken](../../../sql-database/sql-database-managed-instance-get-started.md)
 - [Een virtuele SQL-machine maken](quickstart-sql-vm-create-portal.md)
 
-## <a id="lifecycle"></a> Vernieuwingsbeleid voor installatiekopieën van virtuele SQL-machines
+## <a name="sql-vm-image-refresh-policy"></a><a id="lifecycle"></a> Vernieuwingsbeleid voor installatiekopieën van virtuele SQL-machines
 Azure onderhoudt slechts één installatiekopie van een virtuele machine voor elk ondersteunde combinatie van besturingssysteem, versie en editie. Dit betekent dat installatiekopieën na verloop van tijd worden vernieuwd en dat oudere installatiekopieën worden verwijderd. Zie de sectie **Installatiekopieën** in de [veelgestelde vragen over virtuele machines met SQL Server](virtual-machines-windows-sql-server-iaas-faq.md#images) voor meer informatie.
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Programma voor kwaliteitsverbetering (CEIP)
@@ -138,8 +138,8 @@ Het programma voor kwaliteitsverbetering (CEIP) is standaard ingeschakeld. Met d
 ### <a name="storage"></a>Storage
 * [Inleiding tot Microsoft Azure Storage](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Networking
-* [Overzicht van Virtual Network](../../../virtual-network/virtual-networks-overview.md)
+### <a name="networking"></a>Netwerken
+* [Overzicht van virtueel netwerk](../../../virtual-network/virtual-networks-overview.md)
 * [IP-adressen in Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Een Fully Qualified Domain Name maken in Azure Portal](../portal-create-fqdn.md)
 
@@ -157,7 +157,7 @@ Antwoorden op veelgestelde vragen over SQL-VM's:
 
 * [Veelgestelde vragen over SQL Server op virtuele machines van Azure](virtual-machines-windows-sql-server-iaas-faq.md)
 
-Referentie architecturen weer geven voor het uitvoeren van toepassingen met N-tier op SQL Server in IaaS
+Referentiearchitecturen weergeven voor het uitvoeren van N-tier-toepassingen op SQL Server in IaaS
 
-* [Windows N-tier-toepassing op Azure met SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [Een N-tier-toepassing uitvoeren in meerdere Azure-regio's voor hoge Beschik baarheid](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [Windows N-tier toepassing op Azure met SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Een N-tier-toepassing uitvoeren in meerdere Azure-regio's voor hoge beschikbaarheid](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
