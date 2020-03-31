@@ -5,11 +5,11 @@ ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
 ms.openlocfilehash: 9ea81665de45dafed2ef062af4350f35de8fcb1d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176637"
 ---
 >[!NOTE]
->Eerdere versies van dit artikel wordt verwezen naar Log Analytics als een eigen service. De functionaliteit ervan nog niet is gewijzigd, maar deze wordt gewijzigd in de functie Logboeken van Azure Monitor. Met deze naam wijzigen beschrijft dit artikel de gegevens worden opgeslagen in een Log Analytics-werkruimte in Azure Monitor. Zie voor meer informatie, [Azure Monitor huisstijl wijzigingen](../articles/azure-monitor/azure-monitor-rebrand.md).
+>Eerdere versies van dit artikel verwezen naar Log Analytics als een eigen service. De functionaliteit is niet gewijzigd, maar is omgedoopt tot de logfunctie van Azure Monitor. Met deze naamswijziging beschrijft dit artikel dat de gegevens worden opgeslagen in een Log Analytics-werkruimte in Azure Monitor. Zie [Azure Monitor-merkwijzigingen](../articles/azure-monitor/azure-monitor-rebrand.md)voor meer informatie.

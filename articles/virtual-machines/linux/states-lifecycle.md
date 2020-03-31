@@ -1,6 +1,6 @@
 ---
-title: Levens cyclus en statussen van een virtuele Linux-machine in azure
-description: Overzicht van de levens cyclus van een virtuele Linux-machine in azure, met inbegrip van beschrijvingen van de verschillende statussen die een VM op elk gewenst moment kan hebben.
+title: Levenscyclus en statussen van een Linux-VM in Azure
+description: Overzicht van de levenscyclus van een Linux VM in Azure inclusief beschrijvingen van de verschillende toestanden waarin een VM zich op elk gewenst moment kan bevinden.
 services: virtual-machines-linux
 documentationcenter: ''
 author: shandilvarun
@@ -14,16 +14,16 @@ ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
 ms.openlocfilehash: 1ddd245b03d8886d686daba34a00c63ec64ffb07
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034770"
 ---
-# <a name="virtual-machines-lifecycle-and-states"></a>Levens cyclus en statussen van virtuele machines
+# <a name="virtual-machines-lifecycle-and-states"></a>Levenscyclus en statussen van virtuele machines
 
 [!INCLUDE [virtual-machines-common-states-lifecycle](../../../includes/virtual-machines-common-states-lifecycle.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [virtuele machines in azure controleren](monitor.md)voor meer informatie over het bewaken van uw VM.
+Zie [Virtuele machines in Azure controleren](monitor.md)voor meer informatie over het bewaken van uw vm.

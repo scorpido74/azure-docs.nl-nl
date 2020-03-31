@@ -1,73 +1,73 @@
 ---
 title: Facebook-verificatie configureren
-description: Meer informatie over het configureren van Facebook-verificatie als een id-provider voor uw App Service-app.
+description: Meer informatie over het configureren van Facebook-verificatie als identiteitsprovider voor uw App Service-app.
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: cd9c8a1bab3616b9b4eb1fe97ee3a9b2307ba77b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671943"
 ---
-# <a name="configure-your-app-service-app-to-use-facebook-login"></a>Uw App Service-app configureren voor het gebruik van Facebook-aanmelding
+# <a name="configure-your-app-service-app-to-use-facebook-login"></a>Uw App Service-app configureren om Facebook-aanmelding te gebruiken
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-In dit artikel wordt beschreven hoe u Azure App Service kunt configureren om Facebook als verificatie provider te gebruiken.
+In dit artikel ziet u hoe u Azure App Service configureert om Facebook als verificatieprovider te gebruiken.
 
-Voor het volt ooien van de procedure in dit artikel hebt u een Facebook-account nodig met een bevestigd e-mail adres en een mobiel telefoon nummer. Als u een nieuw Facebook-account wilt maken, gaat u naar [Facebook.com].
+Om de procedure in dit artikel te voltooien, heb je een Facebook-account nodig met een geverifieerd e-mailadres en een mobiel telefoonnummer. Als u een nieuw Facebook-account wilt maken, gaat u naar [facebook.com].
 
-## <a name="register"> </a>Uw toepassing registreren bij Facebook
+## <a name="register-your-application-with-facebook"></a><a name="register"> </a>Registreer je sollicitatie bij Facebook
 
-1. Ga naar de website van [Facebook-ontwikkel aars] en meld u aan met de referenties van uw Facebook-account.
+1. Ga naar de website [van Facebook Developers] en meld u aan met uw Facebook-accountreferenties.
 
-   Als u geen Facebook-account voor ontwikkel aars hebt, selecteert u **aan de slag** en volgt u de registratie stappen.
-1. Selecteer **mijn Apps** > **nieuwe app toe te voegen**.
-1. In het veld **weergave naam** :
+   Als je geen Facebook-account voor ontwikkelaars hebt, selecteer je **Aan de slag** en volg je de registratiestappen.
+1. Selecteer **Mijn apps** > **Nieuwe app toevoegen**.
+1. In het veld **Weergavenaam:**
    1. Typ een unieke naam voor uw app.
-   1. Geef uw **contact-e-mail**.
-   1. Selecteer **App-ID maken**.
-   1. Voltooi de beveiligings controle.
+   1. Geef uw **e-mail met contactpersonen op.**
+   1. Selecteer **App-id maken**.
+   1. Voltooi de veiligheidscontrole.
 
-   Het dash board voor ontwikkel aars voor uw nieuwe Facebook-app wordt geopend.
-1. Selecteer **dash board** > **Facebook-aanmelding** >  > **Web**in te **stellen** .
-1. Selecteer in het navigatie venster links onder **Facebook-aanmelding**de optie **instellingen**.
-1. Voer in het veld **geldige OAuth omleidings-uri's** `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback`in. Vergeet niet om `<app-name>` te vervangen door de naam van uw Azure App Service-app.
+   Het ontwikkelaarsdashboard voor je nieuwe Facebook-app wordt geopend.
+1. Selecteer **Dashboard** > **Facebook Aanmeldingsweb** > **instellen** > **Web**.
+1. Selecteer **Instellingen**in de linkernavigatie onder **Facebook Login**.
+1. Voer in het veld **Valid OAuth redirect URIs** invoeren. `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` Vergeet niet `<app-name>` om te vervangen door de naam van uw Azure App Service-app.
 1. Selecteer **Save changes**.
-1. Selecteer in het linkerdeel venster **instellingen** > **Basic**. 
-1. In het veld **app-geheim** selecteert u **weer geven**. Kopieer de waarden van de **App-ID** en het **app-geheim**. U kunt deze later gebruiken om uw App Service-app te configureren in Azure.
+1. Selecteer In het linkerdeelvenster de optie **Instellingen** > **Basis**. 
+1. Selecteer in het veld **App-geheim** de optie **Weergeven**. Kopieer de waarden van **App ID** en **App Secret**. U gebruikt ze later om uw App Service-app in Azure te configureren.
 
    > [!IMPORTANT]
-   > Het app-geheim is een belang rijke beveiligings referentie. Deel dit geheim niet met iemand of distribueer het in een client toepassing.
+   > Het app-geheim is een belangrijke beveiligingsreferentie. Deel dit geheim met niemand of distribueer het niet binnen een clienttoepassing.
    >
 
 1. Het Facebook-account dat u hebt gebruikt om de toepassing te registreren, is een beheerder van de app. Op dit moment kunnen alleen beheerders zich aanmelden bij deze toepassing.
 
-   Als u andere Facebook-accounts wilt verifiëren, selecteert u **app controleren** en schakelt **u \<uw app-naam > openbaar** in om het grote publiek toegang tot de app te geven met behulp van Facebook-verificatie.
+   Als u andere Facebook-accounts wilt verifiëren, selecteert u **App-revisie** en schakelt ** \<u uw-app-naam> openbaar** maken om het grote publiek toegang te geven tot de app met behulp van Facebook-verificatie.
 
-## <a name="secrets"> </a>Facebook-gegevens toevoegen aan uw toepassing
+## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Facebook-gegevens toevoegen aan je toepassing
 
-1. Meld u aan bij de [Azure-portal] en navigeer naar uw app service-app.
-1. Selecteer **instellingen** > **verificatie/autorisatie**en controleer of app service- **verificatie** is **ingeschakeld**.
-1. Selecteer **Facebook**en plak vervolgens de waarden voor app-id en app-geheim die u eerder hebt verkregen. Schakel de scopes in die nodig zijn voor uw toepassing.
+1. Meld u aan bij de [Azure-portal] en navigeer naar uw App Service-app.
+1. Selecteer **Instellingenverificatie** > **/ Autorisatie**en controleer of verificatie van de **appservice** **is ingeschakeld**.
+1. Selecteer **Facebook**en plak vervolgens de waarden App-id en App-geheim die u eerder hebt verkregen. Schakel alle scopes in die uw toepassing nodig heeft.
 1. Selecteer **OK**.
 
-   ![Scherm afbeelding van Facebook-instellingen voor mobiele apps][0]
+   ![Schermafbeelding van Facebook-instellingen voor mobiele apps][0]
 
-    App Service biedt standaard verificatie, maar de toegang tot de inhoud en Api's van uw site wordt niet beperkt. U moet gebruikers in uw app-code autoriseren.
-1. Beschrijving Als u de toegang wilt beperken tot gebruikers die zijn geverifieerd door Facebook, stelt **u actie in die moet worden uitgevoerd wanneer de aanvraag niet is geverifieerd** voor **Facebook**. Wanneer u deze functionaliteit instelt, vereist uw app dat alle aanvragen worden geverifieerd. Ook worden alle niet-geverifieerde aanvragen voor verificatie doorgestuurd naar Facebook.
+    App Service biedt standaard verificatie, maar beperkt de geautoriseerde toegang tot uw site-inhoud en API's niet. U moet gebruikers autoriseren in uw app-code.
+1. (Optioneel) Als u de toegang alleen wilt beperken tot gebruikers die door Facebook zijn geverifieerd, stelt u **Actie in die moet worden uitgevoerd wanneer het verzoek niet is geverifieerd** naar **Facebook.** Wanneer u deze functionaliteit instelt, moet uw app worden geverifieerd. Het verwijst ook alle niet-geverifieerde verzoeken naar Facebook voor authenticatie.
 
    > [!CAUTION]
-   > Het beperken van de toegang op deze manier is van toepassing op alle aanroepen naar uw app. Dit is mogelijk niet wenselijk voor apps met een openbaar beschik bare start pagina, zoals in veel toepassingen met één pagina. Voor dergelijke toepassingen kunt u **anonieme aanvragen (geen actie) toestaan** , zodat de verificatie zelf door de app hand matig wordt gestart. Zie voor meer informatie [verificatie stroom](overview-authentication-authorization.md#authentication-flow).
+   > Het beperken van de toegang op deze manier is van toepassing op alle oproepen naar uw app, wat mogelijk niet wenselijk is voor apps met een openbaar beschikbare startpagina, zoals in veel toepassingen met één pagina. Voor dergelijke toepassingen kan **het toestaan van anonieme verzoeken (geen actie)** de voorkeur krijgen, zodat de app de verificatie zelf handmatig start. Zie [Verificatiestroom](overview-authentication-authorization.md#authentication-flow)voor meer informatie .
 
 1. Selecteer **Opslaan**.
 
-U bent nu klaar om Facebook te gebruiken voor verificatie in uw app.
+Je bent nu klaar om Facebook te gebruiken voor verificatie in je app.
 
-## <a name="related-content"> </a>Volgende stappen
+## <a name="next-steps"></a><a name="related-content"> </a>Volgende stappen
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
@@ -75,7 +75,7 @@ U bent nu klaar om Facebook te gebruiken voor verificatie in uw app.
 [0]: ./media/app-service-mobile-how-to-configure-facebook-authentication/mobile-app-facebook-settings.png
 
 <!-- URLs. -->
-[Facebook-ontwikkel aars]: https://go.microsoft.com/fwlink/p/?LinkId=268286
+[Facebook-ontwikkelaars]: https://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
 [Azure-portal]: https://portal.azure.com/

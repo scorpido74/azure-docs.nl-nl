@@ -1,15 +1,15 @@
 ---
-title: Een functie in azure maken die wordt geactiveerd door Blob Storage
+title: Een functie maken in Azure die wordt geactiveerd door Blob-opslag
 description: Gebruik Azure Functions voor het maken van een functie zonder server die wordt aangeroepen door items die aan Azure Blob Storage zijn toegevoegd.
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 65717e4373f64ae38a324fd19624f049dba9dfb1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769299"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Een door Azure Blob Storage geactiveerde functie maken
@@ -21,7 +21,7 @@ Ontdek hoe u een functie maakt die wordt geactiveerd wanneer bestanden worden ge
 ## <a name="prerequisites"></a>Vereisten
 
 + De [Microsoft Azure Storage Explorer](https://storageexplorer.com/) downloaden en installeren.
-+ Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
++ Een Azure-abonnement. Als je nog geen account hebt, maak je een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat je begint.
 
 ## <a name="create-an-azure-function-app"></a>Een Azure-functie-app maken
 
@@ -35,7 +35,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Een door Blob Storage geactiveerde functie maken
 
-1. Vouw de functie-app uit en klik op de knop **+** naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders gaat u verder met stap drie.
+1. Vouw de functie-app **+** uit en klik op de knop naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders gaat u verder met stap drie.
 
    ![De Quick Start-pagina van Functions in Azure Portal](./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -45,7 +45,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 1. Typ `blob` in het zoekveld en kies vervolgens de sjabloon **Wachtrijtrigger**.
 
-1. Als hierom wordt gevraagd, selecteert u **installeren** om de Azure Storage extensie en eventuele afhankelijkheden in de functie-app te installeren. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
+1. Selecteer deoptie **Installeren** om de Azure Storage-extensie en eventuele afhankelijkheden in de functie-app te installeren als u daarom wordt gevraagd. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
 
     ![Binding-extensies installeren](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
 
@@ -77,7 +77,7 @@ Vervolgens maakt u verbinding met uw Azure Storage-account en maakt u de **voorb
 
     ![Voer de opslagreferenties in en maak verbinding.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
 
-1. Vouw het gekoppelde opslag account uit en klik met de rechter muisknop op **BLOB-containers**, klik op **BLOB-container maken**, typ `samples-workitems`en druk op ENTER.
+1. Vouw het bijgevoegde opslagaccount uit, klik met de `samples-workitems`rechtermuisknop op **Blob-containers,** klik op **Blob-container maken,** typ en druk op Enter.
 
     ![Maak een opslagwachtrij.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
 
@@ -87,7 +87,7 @@ U hebt nu een blob-container en u kunt de functie testen door een bestand naar d
 
 1. Blader in Azure Portal naar de functie, vouw de **Logboeken** onderaan de pagina uit en zorg ervoor dat logboekstreaming niet wordt onderbroken.
 
-1. Vouw in Storage Explorer uw opslag account, **BLOB-containers**en voor **beelden-werk items**uit. Klik op **Uploaden** en klik vervolgens op **Bestanden uploaden...** .
+1. Vouw in Storage Explorer uw opslagaccount, **Blob-containers**en **werkvoorwerpen uit.** Klik op **Uploaden** en klik vervolgens op **Bestanden uploaden...**.
 
     ![Upload een bestand naar de blob-container.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 

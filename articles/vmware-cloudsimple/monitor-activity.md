@@ -1,7 +1,7 @@
 ---
-title: Azure VMware-oplossingen (AVS)-activiteit van de persoonlijke cloud van AVS bewaken
-description: Hierin wordt de informatie beschreven die beschikbaar is voor activiteiten in de Azure VMware-oplossing per AVS-omgeving, inclusief waarschuwingen, gebeurtenissen, taken en controle.
-titleSuffix: Azure VMware Solutions (AVS)
+title: Private Cloud-activiteit controleren
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Beschrijft de informatie die beschikbaar is over activiteit in de Azure VMware-oplossing per CloudSimple-omgeving, inclusief waarschuwingen, gebeurtenissen, taken en audit.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/13/2019
@@ -9,108 +9,108 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5d6fd1b92db62ab7cc9edd47c601910b8148bb95
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019669"
 ---
-# <a name="monitor-vmware-solutions-avs-activity"></a>De AVS-activiteit (VMware Solutions) bewaken
+# <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware-oplossing controleren op cloudEenvoudige activiteit
 
-AVS-activiteiten logboeken bieden inzicht in bewerkingen die worden uitgevoerd op de AVS-Portal. De lijst bevat waarschuwingen, gebeurtenissen, taken en controle. Gebruik de activiteiten Logboeken om te bepalen wie, wanneer en welke bewerkingen zijn uitgevoerd. De activiteiten logboeken bevatten geen lees bewerkingen die door een gebruiker worden uitgevoerd.
+CloudSimple-activiteitenlogboeken bieden inzicht in bewerkingen op de CloudSimple-portal.  De lijst bevat waarschuwingen, gebeurtenissen, taken en controle.  Gebruik de activiteitslogboeken om te bepalen wie, wanneer en welke bewerkingen zijn uitgevoerd.  Activiteitslogboeken bevatten geen leesbewerkingen die door een gebruiker worden uitgevoerd.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 
-## <a name="access-the-avs-portal"></a>Toegang tot de AVS-Portal
+## <a name="access-the-cloudsimple-portal"></a>Toegang tot de CloudSimple-portal
 
-Toegang tot de [AVS-Portal](access-cloudsimple-portal.md).
+Toegang tot de [CloudSimple-portal](access-cloudsimple-portal.md).
 
-## <a name="activity-information"></a>Activiteit gegevens
+## <a name="activity-information"></a>Activiteitsinformatie
 
-Selecteer **Activity** in het menu aan de zijkant om toegang te krijgen tot de activiteiten pagina's.
+Als u de activiteitenpagina's wilt openen, selecteert u **Activiteit** in het zijmenu.
 
-![Overzicht van de activiteit pagina](media/activity-page-overview.png)
+![Overzicht van activiteitenpagina](media/activity-page-overview.png)
 
-Als u details over een van de activiteiten op de pagina activiteit wilt weer geven, selecteert u de activiteit. Aan de rechter kant wordt een detail venster geopend. De acties in het deel venster zijn afhankelijk van het type activiteit. Klik op **X** om het deel venster te sluiten.
+Als u details wilt weergeven over een van de activiteiten op de activiteitenpagina, selecteert u de activiteit. Aan de rechterkant wordt een detailpaneel geopend. Acties in het deelvenster zijn afhankelijk van het type activiteit. Klik op **X** om het deelvenster te sluiten.
 
-Klik op de kolomkop om de weer gave te sorteren. U kunt kolommen filteren op specifieke waarden om weer te geven. Down load het activiteiten rapport door te klikken op **downloaden als CSV** -pictogram.
+Klik op een kolomkop om de weergave te sorteren.  U kolommen filteren op specifieke waarden die u wilt weergeven.  Download het activiteitenrapport door op **Download als CSV-pictogram** te klikken.
 
 ## <a name="alerts"></a>Waarschuwingen
 
-Waarschuwingen zijn meldingen van belang rijke activiteiten in uw AVS-omgeving. Waarschuwingen bevatten gebeurtenissen die van invloed zijn op facturering of gebruikers toegang.
+Waarschuwingen zijn meldingen van significante activiteiten in uw CloudSimple-omgeving.  Waarschuwingen bevatten gebeurtenissen die van invloed zijn op facturering of gebruikerstoegang.
 
-Als u waarschuwingen wilt bevestigen en wilt verwijderen uit de lijst, selecteert u een of meer in de lijst en klikt u op **bevestigen**.
+Als u waarschuwingen wilt bevestigen en uit de lijst wilt verwijderen, selecteert u een of meer in de lijst en klikt u op **Erkennen**.
 
-De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
-
-| Kolom | Beschrijving |
------------- | ------------- |
-| Waarschuwings type | Categorie van de waarschuwing.|
-| Tijd | Tijdstip waarop de waarschuwing is opgetreden. |
-| Ernst | Significantie van de waarschuwing.|
-| Naam resource | De naam die is toegewezen aan de resource, zoals de naam van de Privécloud van de Cloud. |
-| Resourcetype | Categorie van resource: AVS Privécloud, Cloud rack. |
-| Resource-id | De id van de resource. |
-| Beschrijving | Beschrijving van de trigger van de waarschuwing. |
-| Bevestigd | Indicatie of de waarschuwing wordt bevestigd. |
-
-## <a name="events"></a>Evenements
-
-Gebeurtenissen tonen gebruikers-en systeem activiteiten in de AVS-Portal. Op de pagina gebeurtenissen wordt een lijst weer gegeven met de activiteit die is gekoppeld aan een specifieke resource en de ernst van de impact.
-
-De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
+De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **Kolommen bewerken** en selecteer kolommen die u wilt weergeven.
 
 | Kolom | Beschrijving |
 ------------ | ------------- |
-| Tijd | De datum en tijd waarop de gebeurtenis heeft plaatsgevonden. |
-| Gebeurtenis type | Numerieke code waarmee de gebeurtenis wordt aangeduid. |
-| Ernst | Ernst van gebeurtenis.|
-| Naam resource | De naam die is toegewezen aan de resource, zoals de naam van de Privécloud van de Cloud. |
-| Resourcetype | Categorie van resource: AVS Privécloud, Cloud rack. |
-| Beschrijving | Beschrijving van de trigger van de waarschuwing. |
+| Waarschuwingstype | Categorie van waarschuwing.|
+| Time | Het tijdstip van de waarschuwing is opgetreden. |
+| Severity | Betekenis van de waarschuwing.|
+| Resourcenaam | Naam die aan de bron is toegewezen, zoals de naam Private Cloud. |
+| Resourcetype | Categorie van de bron: Private Cloud, Cloud Rack. |
+| Resource-id | Identificatie van de resource. |
+| Beschrijving | Beschrijving van wat de waarschuwing heeft geactiveerd. |
+| Bevestigd | Vermelding of de waarschuwing wordt erkend. |
+
+## <a name="events"></a>Gebeurtenissen
+
+Gebeurtenissen tonen gebruikers- en systeemactiviteit op de CloudSimple-portal. De pagina Gebeurtenissen geeft een overzicht van de activiteit die is gekoppeld aan een specifieke resource en de ernst van de impact.
+
+De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **Kolommen bewerken** en selecteer kolommen die u wilt weergeven.
+
+| Kolom | Beschrijving |
+------------ | ------------- |
+| Time | Datum en tijd van de gebeurtenis. |
+| Gebeurtenistype | Numerieke code die de gebeurtenis identificeert. |
+| Severity | Ernst van de gebeurtenis.|
+| Resourcenaam | Naam die aan de bron is toegewezen, zoals de naam Private Cloud. |
+| Resourcetype | Categorie van de bron: Private Cloud, Cloud Rack. |
+| Beschrijving | Beschrijving van wat de waarschuwing heeft geactiveerd. |
 
 ## <a name="tasks"></a>Taken
 
-Taken zijn geavse persoonlijke Cloud activiteiten waarvan wordt verwacht dat deze 30 seconden of langer duren. (Activiteiten die naar verwachting minder dan 30 seconden duren, worden alleen gerapporteerd als gebeurtenissen.) Open de pagina taken om de voortgang van taken voor de Privécloud van uw AVS bij te houden.
+Taken zijn Private Cloud-activiteiten die naar verwachting 30 seconden of langer in beslag zullen nemen. (Activiteiten die naar verwachting minder dan 30 seconden in beslag nemen, worden alleen gerapporteerd als gebeurtenissen.) Open de pagina's Taken om de voortgang van taken voor uw private cloud bij te houden.
 
-De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
+De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **Kolommen bewerken** en selecteer kolommen die u wilt weergeven.
 
 | Kolom | Beschrijving |
 ------------ | ------------- |
-| Taak-ID | De unieke id voor de taak. |
-| Bewerking | De actie die door de taak wordt uitgevoerd. |
-| Gebruiker | De gebruiker is toegewezen om de taak te volt ooien. |
-| Naam resource | De naam die is toegewezen aan de resource. |
-| Resourcetype | Categorie van resource: AVS Privécloud, Cloud rack. |
-| Resource-id | De id van de resource. |
-| Beginnen | Begin tijd voor de taak. |
-| Beëindigen | De eind tijd voor de taak. |
-| Status | Huidige taak status. |
-| Verstreken tijd | De tijd die nodig is om de taak te volt ooien (indien voltooid) of op dit moment (als deze wordt uitgevoerd). |
-| Beschrijving | Taak beschrijving. |
+| Taak-id | Unieke id voor de taak. |
+| Bewerking | Actie die de taak uitvoert. |
+| Gebruiker | Gebruiker die is toegewezen om de taak te voltooien. |
+| Resourcenaam | Naam toegewezen aan de resource. |
+| Resourcetype | Categorie van de bron: Private Cloud, Cloud Rack. |
+| Resource-id | Identificatie van de resource. |
+| Starten | Begintijd voor de taak. |
+| Beëindigen | Eindtijd voor de taak. |
+| Status | Huidige taakstatus. |
+| Verstreken tijd | Tijd die de taak heeft voltooid (indien voltooid) of momenteel in beslag neemt (als de uitvoering is). |
+| Beschrijving | Taakbeschrijving. |
 
 ## <a name="audit"></a>Controleren
 
-Controle logboeken houden de activiteiten van gebruikers bij. U kunt controle Logboeken gebruiken om de gebruikers activiteit voor alle gebruikers te bewaken.
+Controlelogboeken houden de activiteit van gebruikers bij. U controlelogboeken gebruiken om de gebruikersactiviteit voor alle gebruikers te controleren.
 
-De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **kolommen bewerken** en selecteer de kolommen die u wilt weer geven.
+De volgende kolommen met informatie zijn beschikbaar voor waarschuwingen. Klik op **Kolommen bewerken** en selecteer kolommen die u wilt weergeven.
 
 | Kolom | Beschrijving |
 ------------ | ------------- |
-| Tijd | Tijd van de controle vermelding. |
-| Bewerking | De actie die door de taak wordt uitgevoerd. |
-| Gebruiker | De gebruiker is toegewezen aan de taak. |
-| Naam resource | De naam die is toegewezen aan de resource. |
-| Resourcetype | Categorie van resource: AVS Privécloud, Cloud rack. |
-| Resource-id | De id van de resource. |
-| Resultaat | Resultaat van de activiteit, zoals **geslaagd**. |
-| Gebruikte tijd | Tijd om de taak te volt ooien. |
+| Time | Tijdstip van de controle-invoer. |
+| Bewerking | Actie die de taak uitvoert. |
+| Gebruiker | Gebruiker toegewezen aan de taak. |
+| Resourcenaam | Naam toegewezen aan de resource. |
+| Resourcetype | Categorie van de bron: Private Cloud, Cloud Rack. |
+| Resource-id | Identificatie van de resource. |
+| Resultaat | Resultaat van de activiteit, zoals **Succes**. |
+| Gebruikte tijd | Tijd om de taak te voltooien. |
 | Beschrijving | Beschrijving van de actie. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [VMware-Vm's in azure gebruiken](quickstart-create-vmware-virtual-machine.md)
-* Meer informatie over [persoonlijke Clouds van AVS](cloudsimple-private-cloud.md)
+* [VMware-VM's in Azure gebruiken](quickstart-create-vmware-virtual-machine.md)
+* Meer informatie over [Private Clouds](cloudsimple-private-cloud.md)

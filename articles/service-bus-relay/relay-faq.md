@@ -1,6 +1,6 @@
 ---
-title: Azure Relay Veelgestelde vragen | Microsoft Docs
-description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over de Azure Relay-service.
+title: Veelgestelde vragen over Azure Relay | Microsoft Documenten
+description: In dit artikel vindt u antwoorden op enkele van de veelgestelde vragen over de Azure Relay-service.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,102 +15,102 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: d5032b427316a3c4e07013af4e8214e239a6efb3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513997"
 ---
 # <a name="azure-relay-faqs"></a>Veelgestelde vragen over Azure Relay
 
-In dit artikel vindt u antwoorden op enkele veelgestelde vragen (FAQ) over [Azure relay](https://azure.microsoft.com/services/service-bus/). Zie [Veelgestelde vragen over Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor algemene informatie over Azure-prijzen en-ondersteuning.
+In dit artikel worden enkele veelgestelde vragen (veelgestelde vragen) over [Azure Relay beantwoord.](https://azure.microsoft.com/services/service-bus/) Zie de [veelgestelde vragen over Azure Support](https://azure.microsoft.com/support/faq/)voor algemene Azure-prijs- en ondersteuningsinformatie.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Algemene vragen
 ### <a name="what-is-azure-relay"></a>Wat is Azure Relay?
-De [Azure Relay-service](relay-what-is-it.md) vereenvoudigt uw hybride toepassingen door u te helpen de services die zich in een bedrijfs netwerk bevinden, veilig beschikbaar te stellen aan de open bare Cloud. U kunt de services beschikbaar maken zonder dat u een firewall verbinding hoeft te openen en zonder dat er onopvallende wijzigingen in de infra structuur van een bedrijfs netwerk nodig zijn.
+De [Azure Relay-service](relay-what-is-it.md) faciliteert uw hybride toepassingen door u te helpen services die zich binnen een bedrijfsnetwerk bevinden, veiliger bloot te stellen aan de openbare cloud. U de services blootstellen zonder een firewallverbinding te openen en zonder ingrijpende wijzigingen in een bedrijfsnetwerkinfrastructuur.
 
-### <a name="what-is-a-relay-namespace"></a>Wat is een relay-naam ruimte?
-Een [naam ruimte](relay-create-namespace-portal.md) is een bereik container die u kunt gebruiken om resources in uw toepassing over te sturen. U moet een naam ruimte maken voor het gebruik van relay. Dit is een van de eerste stappen in aan de slag.
+### <a name="what-is-a-relay-namespace"></a>Wat is een relay-naamruimte?
+Een [naamruimte](relay-create-namespace-portal.md) is een scopingcontainer die u gebruiken om Relay-bronnen in uw toepassing aan te pakken. U moet een naamruimte maken om Relay te gebruiken. Dit is een van de eerste stappen om aan de slag te gaan.
 
-### <a name="what-happened-to-service-bus-relay-service"></a>Wat is er gebeurd met Service Bus Relay-service?
-De eerder genoemde Service Bus Relay-service heet nu [WCF relay](service-bus-relay-tutorial.md). U kunt deze service op de gebruikelijke manier blijven gebruiken. De functie Hybride verbindingen is een bijgewerkte versie van een service die is gepland vanuit Azure BizTalk Services. WCF Relay en Hybride verbindingen beide blijven worden ondersteund.
+### <a name="what-happened-to-service-bus-relay-service"></a>Wat is er gebeurd met de Service Bus Relay service?
+De eerder genoemde Service Bus Relay-service heet nu [WCF Relay.](service-bus-relay-tutorial.md) U deze service gewoon blijven gebruiken. De functie Hybride verbindingen is een bijgewerkte versie van een service die is getransplanteerd vanuit Azure BizTalk Services. WCF Relay en Hybrid Connections worden beide nog steeds ondersteund.
 
 ## <a name="pricing"></a>Prijzen
-In deze sectie vindt u antwoorden op enkele veelgestelde vragen over de prijs structuur voor relay. U kunt ook de [Veelgestelde vragen over Azure-ondersteuning](https://azure.microsoft.com/support/faq/) bekijken voor algemene informatie over Azure-prijzen. Zie [Service Bus prijs informatie][Pricing overview]voor volledige informatie over de prijzen voor relay.
+In deze sectie worden enkele veelgestelde vragen beantwoord over de prijsstructuur van Relay. U ook de [veelgestelde vragen](https://azure.microsoft.com/support/faq/) van Azure Support voor algemene Azure-prijsinformatie bekijken. Zie [Service Bus-prijsgegevens][Pricing overview]voor volledige informatie over de prijzen van relay.
 
-### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Hoe worden de kosten in rekening gebracht voor Hybride verbindingen en WCF Relay?
-Zie de tabel [met hybride verbindingen en WCF-Relais][Pricing overview] op de pagina met Service Bus prijs informatie voor volledige informatie over de prijzen voor relay. Naast de prijzen die op die pagina worden vermeld, worden er kosten in rekening gebracht voor de bijbehorende gegevens overdrachten voor uitgaand verkeer buiten het Data Center waarin uw toepassing is ingericht.
+### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Hoe rekent u voor hybride verbindingen en WCF Relay?
+Zie de tabel [Hybride verbindingen en WCF-relais][Pricing overview] op de pagina ServiceBus-prijzen voor volledige informatie over de prijzen voor relais. Naast de prijzen die op die pagina worden vermeld, worden er kosten in rekening gebracht voor de bijbehorende gegevensoverdracht en het overschrijden van het datacenter waarin uw toepassing is ingericht.
 
-### <a name="how-am-i-billed-for-hybrid-connections"></a>Hoe word ik gefactureerd voor Hybride verbindingen?
-Hier volgen drie voor beelden van facturerings scenario's voor Hybride verbindingen:
+### <a name="how-am-i-billed-for-hybrid-connections"></a>Hoe worden er kosten in rekening gebracht voor hybride verbindingen?
+Hier volgen drie voorbeeldfactureringsscenario's voor hybride verbindingen:
 
 *   Scenario 1:
-    *   U hebt één listener, zoals een instantie van de Hybride verbindingen manager die is geïnstalleerd en continu wordt uitgevoerd voor de hele maand.
-    *   U verzendt voor de maand 3 GB gegevens over de verbinding. 
-    *   Uw totale kosten zijn $5.
+    *   U hebt één listener, zoals een instantie van de Hybrid Connections Manager die de hele maand is geïnstalleerd en continu wordt uitgevoerd.
+    *   U verzendt gedurende de maand 3 GB aan gegevens over de verbinding. 
+    *   Uw totale kosten bedragen $5.
 *   Scenario 2:
-    *   U hebt één listener, zoals een instantie van de Hybride verbindingen manager die is geïnstalleerd en continu wordt uitgevoerd voor de hele maand.
+    *   U hebt één listener, zoals een instantie van de Hybrid Connections Manager die de hele maand is geïnstalleerd en continu wordt uitgevoerd.
     *   U verzendt gedurende de maand 10 GB aan gegevens over de verbinding.
-    *   Uw totale kosten zijn $7,50. Dat is $5 voor de verbinding en de eerste 5 GB + $2,50 voor de extra 5 GB aan gegevens.
+    *   Uw totale kosten bedragen $7.50. Dat is $ 5 voor de verbinding en de eerste 5 GB + $ 2,50 voor de extra 5 GB aan gegevens.
 *   Scenario 3:
-    *   Er zijn twee instanties, A en B, van de Hybride verbindingen Manager geïnstalleerd en continu worden uitgevoerd voor de hele maand.
-    *   U verzendt voor de maand 3 GB gegevens over verbinding A.
-    *   U verzendt gedurende de maand 6 GB aan gegevens in verbinding B.
-    *   Uw totale kosten zijn $10,50. Dat is $5 voor verbinding A + $5 voor verbinding B + $0,50 (voor de zesde Gigabyte op verbinding B).
+    *   U hebt twee exemplaren, A en B, van de Hybrid Connections Manager geïnstalleerd en continu uitgevoerd voor de hele maand.
+    *   U verzendt gedurende de maand 3 GB aan gegevens via verbinding A.
+    *   U verzendt gedurende de maand 6 GB aan gegevens via verbinding B.
+    *   Uw totale kosten bedragen $10.50. Dat is $ 5 voor verbinding A + $ 5 voor verbinding B + $ 0,50 (voor de zesde gigabyte op verbinding B).
 
-De prijzen die in de voor beelden worden gebruikt, zijn alleen van toepassing tijdens de preview-periode van Hybride verbindingen. Prijzen kunnen worden gewijzigd bij algemene Beschik baarheid van Hybride verbindingen.
+Houd er rekening mee dat de prijzen die in de voorbeelden worden gebruikt, alleen van toepassing zijn tijdens de previewperiode Hybride verbindingen. Prijzen kunnen worden gewijzigd bij de algemene beschikbaarheid van hybride verbindingen.
 
-### <a name="how-are-hours-calculated-for-relay"></a>Hoe worden uren berekend voor relay?
+### <a name="how-are-hours-calculated-for-relay"></a>Hoe worden uren berekend voor Relay?
 
-WCF Relay is alleen beschikbaar in de Standard-laag naam ruimten. Prijzen en [verbindings quota's](../service-bus-messaging/service-bus-quotas.md) voor relays, anders zijn niet gewijzigd. Dit betekent dat relays nog steeds worden gefactureerd op basis van het aantal berichten (niet bewerkingen) en relay-uren. Zie de tabel [' hybride verbindingen en WCF relays '](https://azure.microsoft.com/pricing/details/service-bus/) op de pagina prijs informatie voor meer informatie.
+WCF Relay is alleen beschikbaar in standaardnaamruimten. Prijzen en [verbindingsquota](../service-bus-messaging/service-bus-quotas.md) voor relais zijn anders niet gewijzigd. Dit betekent dat relays nog steeds in rekening worden gebracht op basis van het aantal berichten (niet bewerkingen) en relaisuren. Zie voor meer informatie de tabel ['Hybride verbindingen en WCF-relais'](https://azure.microsoft.com/pricing/details/service-bus/) op de pagina met prijsdetails.
 
-### <a name="what-if-i-have-more-than-one-listener-connected-to-a-specific-relay"></a>Wat moet ik doen als ik meer dan één listener heb verbonden met een specifieke relay?
-In sommige gevallen kan één relay meerdere verbonden listeners hebben. Een relay wordt als open beschouwd als er ten minste één relay-listener is verbonden. Het toevoegen van listeners aan een open relay resulteert in extra relay-uren. De berekening van de omleidings uren is niet van invloed op het aantal relay-afzenders (clients die berichten aan relays aanroepen of verzenden die zijn verbonden met een relay).
+### <a name="what-if-i-have-more-than-one-listener-connected-to-a-specific-relay"></a>Wat gebeurt er als ik meer dan één luisteraar heb aangesloten op een specifiek relais?
+In sommige gevallen kan een enkel relais meerdere verbonden listeners hebben. Een relais wordt als geopend beschouwd wanneer ten minste één relaislistener ermee verbonden is. Het toevoegen van listeners aan een open relais resulteert in extra relaisuren. Het aantal relayafzenders (clients die berichten aanroepen of verzenden naar relais) die zijn verbonden met een relais, heeft geen invloed op de berekening van relaisuren.
 
-### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>Hoe wordt de meter voor berichten berekend voor WCF-relays?
-(**Dit geldt alleen voor WCF-relays. Berichten zijn geen kosten voor Hybride verbindingen.** )
+### <a name="how-is-the-messages-meter-calculated-for-wcf-relays"></a>Hoe wordt de berichtenmeter berekend voor WCF Relays?
+(**Dit geldt alleen voor WCF relais. Berichten zijn geen kosten voor hybride verbindingen.**)
 
-Over het algemeen worden factureer bare berichten voor relays berekend met behulp van dezelfde methode die wordt gebruikt voor brokered-entiteiten (wacht rijen, onderwerpen en abonnementen), zoals eerder beschreven. Er zijn echter enkele belang rijke verschillen.
+Over het algemeen worden factureerbare berichten voor relays berekend met dezelfde methode die wordt gebruikt voor tussengesloten entiteiten (wachtrijen, onderwerpen en abonnementen), die eerder zijn beschreven. Er zijn echter enkele opmerkelijke verschillen.
 
-Een bericht verzenden naar een Service Bus relay wordt behandeld als een ' Full Through '-verzen ding naar de relay-listener die het bericht ontvangt. Het wordt niet behandeld als een verzend bewerking naar de Service Bus relay, gevolgd door een levering aan de relay-listener. Een aanvraag/antwoord stijl service aanroepen (van Maxi maal 64 KB) voor een relay-listener resulteert in twee factureer bare berichten: één Factureerbaar bericht voor de aanvraag en één Factureerbaar bericht voor het antwoord (uitgaande van het antwoord is ook 64 KB of kleiner). Dit wijkt af van het gebruik van een wachtrij om te worden gebruikt tussen een client en een service. Als u een wachtrij gebruikt voor het oplossen van een client en een service, moet voor hetzelfde antwoord patroon voor de aanvraag een aanvraag worden verzonden naar de wachtrij, gevolgd door een wachtrij/levering uit de wachtrij naar de service. Dit wordt gevolgd door een reactie die wordt verzonden naar een andere wachtrij en een wachtrij/levering van die wachtrij naar de client. Met dezelfde grootte hypo Thesen in (tot 64 KB) resulteert het doorgevoerde wachtrij patroon in vier factureer bare berichten. U wordt gefactureerd voor twee maal het aantal berichten dat moet worden gebruikt voor het implementeren van hetzelfde patroon als door sturen. Natuurlijk zijn er voor delen die wacht rijen gebruiken om dit patroon te halen, zoals duurzaamheid en taak verdeling. Deze voor delen kunnen de extra kosten rechtvaardigen.
+Het verzenden van een bericht naar een Service Bus relay wordt behandeld als een "full through" verzenden naar de relaisluisteraar die het bericht ontvangt. Het wordt niet behandeld als een verzendbewerking naar het servicebusrelais, gevolgd door een levering aan de relaisluisteraar. Een request-reply stijl service aanroep (van maximaal 64 KB) tegen een relais luisteraar resulteert in twee factureerbare berichten: een factureerbaar bericht voor de aanvraag en een factureerbaar bericht voor het antwoord (ervan uitgaande dat het antwoord is ook 64 KB of kleiner). Dit is anders dan het gebruik van een wachtrij om te bemiddelen tussen een client en een service. Als u een wachtrij gebruikt om te bemiddelen tussen een client en een service, vereist hetzelfde aanvraag-antwoordpatroon een verzoek om naar de wachtrij te worden verzonden, gevolgd door een wachtrij/levering van de wachtrij naar de service. Dit wordt gevolgd door een antwoord dat naar een andere wachtrij wordt verzonden en een wachtrij/levering van die wachtrij naar de client. Met behulp van dezelfde grootte veronderstellingen in de hele (tot 64 KB), de bemiddelde wachtrij patroon resulteert in 4 factureerbare berichten. Er wordt twee keer zoveel in rekening gebracht als het aantal berichten dat u uitvoert met behulp van relay. Natuurlijk zijn er voordelen aan het gebruik van wachtrijen om dit patroon te bereiken, zoals duurzaamheid en belastingnivellering. Deze voordelen kunnen de extra kosten rechtvaardigen.
 
-Relays die worden geopend met behulp van de WCF-binding van **netTCPRelay** behandelen berichten niet als afzonderlijke berichten, maar als een stroom gegevens stroom via het systeem. Wanneer u deze binding gebruikt, hebben alleen de afzender en de listener inzicht in het framing van de afzonderlijke berichten die zijn verzonden en ontvangen. Voor Relais die de **netTCPRelay** -binding gebruiken, worden alle gegevens behandeld als een stroom voor het berekenen van factureer bare berichten. In dit geval berekent Service Bus de totale hoeveelheid gegevens die via elke afzonderlijke relay wordt verzonden of ontvangen, op een basis van vijf minuten. Vervolgens wordt de totale hoeveelheid gegevens met 64 KB gedeeld om het aantal factureer bare berichten voor die relay tijdens die periode te bepalen.
+Relais die worden geopend met behulp van de **netTCPRelay** WCF-binding behandelen berichten niet als afzonderlijke berichten, maar als een stroom van gegevens die door het systeem stromen. Wanneer u deze binding gebruikt, hebben alleen de afzender en de luisteraar inzicht in de inlijsten van de afzonderlijke verzonden en ontvangen berichten. Voor relays die de **netTCPRelay-binding** gebruiken, worden alle gegevens behandeld als een stroom voor het berekenen van factureerbare berichten. In dit geval berekent Service Bus de totale hoeveelheid gegevens die via elk afzonderlijk relais worden verzonden of ontvangen op een basis van 5 minuten. Vervolgens wordt die totale hoeveelheid gegevens verdeeld door 64 KB om het aantal factureerbare berichten voor dat relais in die periode te bepalen.
 
 ## <a name="quotas"></a>Quota
-| Quotum naam | Scope |  Opmerkingen | Waarde |
+| Naam quotum | Bereik |  Opmerkingen | Waarde |
 | --- | --- | --- | --- |
-| Gelijktijdige listeners op een relay |Entiteit |Volgende aanvragen voor extra verbindingen worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |25 |
-| Gelijktijdige relay-verbindingen per alle relay-eind punten in een service naam ruimte |Naamruimte |- |5\.000 |
-| Relay-eind punten per service naam ruimte |Naamruimte |- |10.000 |
-| Bericht grootte voor [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) -en [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) -relays |Naamruimte |Inkomende berichten die groter zijn dan deze quota worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |64 kB |
-| Bericht grootte voor [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) -en [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) -relays |Naamruimte |Geen limiet voor de bericht grootte. |Onbeperkt |
+| Gelijktijdige luisteraars op een relais |Entiteit |Latere aanvragen voor aanvullende verbindingen worden afgewezen en een uitzondering wordt ontvangen door de belcode. |25 |
+| Gelijktijdige relayverbindingen per alle relayeindpunten in een servicenaamruimte |Naamruimte |- |5.000 |
+| Eindpunten relay en per servicenaamruimte |Naamruimte |- |10.000 |
+| Berichtgrootte voor [NetOnewayRelayBinding en](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) [NetEventRelayBinding relays](/dotnet/api/microsoft.servicebus.neteventrelaybinding) |Naamruimte |Binnenkomende berichten die deze quota overschrijden, worden afgewezen en er wordt een uitzondering ontvangen door de aanroepcode. |64 kB |
+| Berichtgrootte voor [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) en [NetTcpRelayBinding relays](/dotnet/api/microsoft.servicebus.nettcprelaybinding) |Naamruimte |Geen limiet op de grootte van het bericht. |Onbeperkt |
 
-### <a name="does-relay-have-any-usage-quotas"></a>Heeft relay gebruiks quota's?
-Standaard stelt micro soft voor elke Cloud service een cumulatief maandelijks gebruiks quotum in dat wordt berekend op alle abonnementen van een klant. We begrijpen dat het mogelijk is dat uw behoeften deze limieten overschrijden. U kunt op elk gewenst moment contact opnemen met de klanten service, zodat we uw behoeften begrijpen en deze limieten op de juiste wijze aanpassen. Voor Service Bus zijn de statistische gebruiks quota's als volgt:
+### <a name="does-relay-have-any-usage-quotas"></a>Heeft Relay gebruiksquota?
+Standaard stelt Microsoft voor elke cloudservice een geaggregeerd maandelijks gebruiksquotum in dat wordt berekend voor alle abonnementen van een klant. We begrijpen dat uw behoeften soms deze limieten kunnen overschrijden. U op elk gewenst moment contact opnemen met de klantenservice, zodat we uw behoeften kunnen begrijpen en deze limieten op de juiste manier kunnen aanpassen. Voor ServiceBus zijn de geaggregeerde gebruiksquota als volgt:
 
 * 5 miljard berichten
-* 2 miljoen relayuren
+* 2 miljoen estafette-uren
 
-Hoewel wij het recht behouden om een account uit te scha kelen dat de maandelijkse gebruiks quota's overschrijdt, bieden we een e-mail melding en maken we meerdere pogingen om contact op te nemen met de klant alvorens actie te ondernemen. Klanten die deze quota overschrijden, zijn nog steeds verantwoordelijk voor overtollige kosten.
+Hoewel we ons het recht voorbehouden om een account uit te schakelen dat de maandelijkse gebruiksquota overschrijdt, bieden we een e-mailmelding en doen we meerdere pogingen om contact op te nemen met de klant voordat we actie ondernemen. Klanten die deze quota overschrijden, zijn nog steeds verantwoordelijk voor extra kosten.
 
-### <a name="naming-restrictions"></a>Naamgevings beperkingen
-De naam van een relay-naam ruimte moet tussen 6 en 50 tekens lang zijn.
+### <a name="naming-restrictions"></a>Naamgevingsbeperkingen
+Een naamruimte van een relais moet tussen de 6 en 50 tekens lang zijn.
 
-## <a name="subscription-and-namespace-management"></a>Abonnement-en naam ruimte beheer
-### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Hoe kan ik een naam ruimte migreren naar een ander Azure-abonnement?
+## <a name="subscription-and-namespace-management"></a>Abonnements- en naamruimtebeheer
+### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Hoe migreer ik een naamruimte naar een ander Azure-abonnement?
 
-Als u een naam ruimte van een Azure-abonnement naar een ander abonnement wilt verplaatsen, kunt u de [Azure Portal](https://portal.azure.com) gebruiken of Power shell-opdrachten gebruiken. Als u een naam ruimte naar een ander abonnement wilt verplaatsen, moet de naam ruimte al actief zijn. De gebruiker die de opdrachten uitvoert, moet een beheerders gebruiker zijn op de bron-en doel abonnementen.
+Als u een naamruimte wilt verplaatsen van het ene Azure-abonnement naar een ander abonnement, u de [Azure-portal](https://portal.azure.com) gebruiken of PowerShell-opdrachten gebruiken. Als u een naamruimte naar een ander abonnement wilt verplaatsen, moet de naamruimte al actief zijn. De gebruiker die de opdrachten uitvoert, moet een administratorgebruiker zijn op zowel de bron- als doelabonnementen.
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)om de Azure portal te gebruiken om Azure relay naam ruimten van een abonnement te migreren naar een ander abonnement. 
+Zie Resources verplaatsen [naar een nieuwe brongroep of -abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)als u de Azure-portal wilt gebruiken om naamruimten voor Azure Relay van het ene abonnement naar een ander abonnement te migreren. 
 
 #### <a name="powershell"></a>PowerShell
 
-Als u Power shell wilt gebruiken om een naam ruimte van een Azure-abonnement naar een ander abonnement te verplaatsen, gebruikt u de volgende reeks opdrachten. Als u deze bewerking wilt uitvoeren, moet de naam ruimte al actief zijn en de gebruiker die de Power shell-opdrachten uitvoert, moet een Administrator gebruiker zijn op de bron-en doel abonnementen.
+Als u PowerShell wilt gebruiken om een naamruimte van het ene Azure-abonnement naar een ander abonnement te verplaatsen, gebruikt u de volgende reeks opdrachten. Als u deze bewerking wilt uitvoeren, moet de naamruimte al actief zijn en moet de gebruiker die de PowerShell-opdrachten uitvoert, een beheerdergebruiker zijn op zowel de bron- als doelabonnementen.
 
 ```azurepowershell-interactive
 # Create a new resource group in the target subscription.
@@ -124,14 +124,14 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ```
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Wat zijn de uitzonde ringen die worden gegenereerd door Azure Relay Api's en voorgestelde acties die u kunt uitvoeren?
-Zie [Relay-uitzonde ringen][Relay exceptions]voor een beschrijving van veelvoorkomende uitzonde ringen en voorgestelde acties die u kunt uitvoeren.
+### <a name="what-are-some-of-the-exceptions-generated-by-azure-relay-apis-and-suggested-actions-you-can-take"></a>Wat zijn enkele uitzonderingen die worden gegenereerd door Azure Relay API's en voorgestelde acties die u uitvoeren?
+Zie [Uitzonderingen op relais][Relay exceptions]voor een beschrijving van veelvoorkomende uitzonderingen en voorgestelde acties.
 
-### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Wat is een Shared Access Signature en welke talen kan ik gebruiken om een hand tekening te genereren?
-Shared Access signatures (SAS) zijn een verificatie methode op basis van SHA-256 Secure hashes of Uri's. Zie [Service Bus verificatie met hand tekeningen voor gedeelde toegang][Shared Access Signatures]voor meer informatie over het genereren van uw eigen hand tekeningen in node. C#js, PHP, Python, Java, C en.
+### <a name="what-is-a-shared-access-signature-and-which-languages-can-i-use-to-generate-a-signature"></a>Wat is een handtekening voor gedeelde toegang en welke talen kan ik gebruiken om een handtekening te genereren?
+Shared Access Signatures (SAS) zijn een verificatiemechanisme gebaseerd op SHA-256 beveiligde hashes of URI's. Zie [ServiceBus-verificatie met gedeelde toegangshandtekeningen][Shared Access Signatures]voor informatie over het genereren van uw eigen handtekeningen in Node.js, PHP, Python, Java, C en C#.
 
-### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Is het mogelijk om relay-eind punten te White listen?
-Ja. De relay-client maakt verbinding met de Azure Relay-service door gebruik te maken van volledig gekwalificeerde domein namen. Klanten kunnen een vermelding voor `*.servicebus.windows.net` toevoegen aan firewalls die ondersteuning bieden voor DNS-White list.
+### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Is het mogelijk om relay endpoints op de witte lijst te zetten?
+Ja. De relayclient maakt verbindingen met de Azure Relay-service met volledig gekwalificeerde domeinnamen. Klanten kunnen een `*.servicebus.windows.net` vermelding toevoegen voor op firewalls die DNS-whitelisting ondersteunen.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een naamruimte maken](relay-create-namespace-portal.md)

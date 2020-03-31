@@ -1,7 +1,7 @@
 ---
-title: Maxi maal beschik bare toepassingen ontwerpen met geografisch redundante opslag
+title: Ontwerpen van zeer beschikbare toepassingen met behulp van georedundante opslag
 titleSuffix: Azure Storage
-description: Meer informatie over het gebruik van geografisch redundante opslag met lees toegang om een Maxi maal beschik bare toepassing te ontwikkelen die flexibel genoeg is voor het verwerken van uitval.
+description: Meer informatie over het gebruik van georedundante opslag voor leestoegang om een zeer beschikbare toepassing te ontwerpen die flexibel genoeg is om storingen aan te pakken.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,145 +11,145 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 592be1710893791e80dfe4b20e1323e789b33e69
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77157089"
 ---
-# <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Maxi maal beschik bare toepassingen ontwerpen met geografisch redundante opslag met lees toegang
+# <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Ontwerpen van zeer beschikbare toepassingen met behulp van georedundante opslag met leestoegang
 
-Een gemeen schappelijke functie van Cloud infrastructuren als Azure Storage is dat ze een Maxi maal beschikbaar platform bieden voor het hosten van toepassingen. Ontwikkel aars van Cloud toepassingen moeten zorgvuldig overwegen hoe u dit platform kunt gebruiken om Maxi maal beschik bare toepassingen te leveren aan hun gebruikers. In dit artikel wordt uitgelegd hoe ontwikkel aars een van de geo-redundante replicatie opties van Azure kunnen gebruiken om ervoor te zorgen dat hun Azure Storage toepassingen Maxi maal beschikbaar zijn.
+Een gemeenschappelijk kenmerk van cloudgebaseerde infrastructuren zoals Azure Storage is dat ze een zeer beschikbaar platform bieden voor hostingtoepassingen. Ontwikkelaars van cloudgebaseerde applicaties moeten zorgvuldig overwegen hoe ze dit platform kunnen gebruiken om zeer beschikbare applicaties aan hun gebruikers te leveren. In dit artikel wordt gespitst op hoe ontwikkelaars een van azure's georedundante replicatieopties kunnen gebruiken om ervoor te zorgen dat hun Azure Storage-toepassingen in hoge mate beschikbaar zijn.
 
-Opslag accounts die zijn geconfigureerd voor geo-redundante replicatie, worden synchroon gerepliceerd in de primaire regio en vervolgens asynchroon gerepliceerd naar een secundaire regio die honderden kilo meters is. Azure Storage biedt twee typen geo-redundante replicatie:
+Opslagaccounts die zijn geconfigureerd voor georedundante replicatie, worden synchroon gerepliceerd in het primaire gebied en vervolgens asynchroon gerepliceerd naar een secundair gebied dat honderden kilometers verwijderd is. Azure Storage biedt twee typen georedundante replicatie:
 
-* [Geo-zone-redundante opslag (GZRS) (preview)](storage-redundancy.md) biedt replicatie voor scenario's waarvoor zowel een hoge Beschik baarheid als een maximale duurzaamheid zijn vereist. Gegevens worden synchroon gerepliceerd over drie Azure-beschikbaarheids zones in de primaire regio met zone-redundante opslag (ZRS) en worden vervolgens asynchroon gerepliceerd naar de secundaire regio. Voor lees toegang tot gegevens in de secundaire regio schakelt u geo-zone-redundante opslag met lees toegang (RA-GZRS) in.
-* [Geo-redundante opslag (GRS)](storage-redundancy.md) biedt cross-regionalisatie voor de bescherming tegen regionale storingen. Gegevens worden synchroon gerepliceerd in de primaire regio met lokaal redundante opslag (LRS) en vervolgens asynchroon gerepliceerd naar de secundaire regio. Voor lees toegang tot gegevens in de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) in.
+* [Geo-zone-redundante opslag (GZRS) (preview)](storage-redundancy.md) biedt replicatie voor scenario's die zowel hoge beschikbaarheid als maximale duurzaamheid vereisen. Gegevens worden synchroon gerepliceerd in drie Azure-beschikbaarheidszones in het primaire gebied met behulp van zoneredundante opslag (ZRS) en vervolgens asynchroon gerepliceerd naar het secundaire gebied. Voor leestoegang tot gegevens in de secundaire regio u geozoneredundante opslag (RA-GZRS) inschakelen voor leestoegang tot gegevens in de secundaire regio.
+* [Georedundante opslag (GRS)](storage-redundancy.md) biedt cross-regionale replicatie om te beschermen tegen regionale storingen. Gegevens worden drie keer synchroon gerepliceerd in het primaire gebied met behulp van lokaal redundante opslag (LRS) en vervolgens asynchroon gerepliceerd naar het secundaire gebied. Voor leestoegang tot gegevens in de secundaire regio u georedundante opslag (RA-GRS) gebruiken voor leestoegang tot gegevens in de secundaire regio.
 
-In dit artikel wordt uitgelegd hoe u uw toepassing kunt ontwerpen voor het afhandelen van een storing in de primaire regio. Als de primaire regio niet beschikbaar is, kan uw toepassing worden aangepast om Lees bewerkingen uit te voeren op de secundaire regio. Zorg ervoor dat uw opslag account is geconfigureerd voor RA-GRS of RA-GZRS voordat u aan de slag gaat.
+In dit artikel ziet u hoe u uw toepassing ontwerpt om een storing in de primaire regio af te handelen. Als het primaire gebied niet meer beschikbaar is, kan uw toepassing zich aanpassen om leesbewerkingen uit te voeren ten opzichte van het secundaire gebied. Zorg ervoor dat uw opslagaccount is geconfigureerd voor RA-GRS of RA-GZRS voordat u aan de slag gaat.
 
-Zie [bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor meer informatie over welke primaire regio's zijn gekoppeld aan de secundaire regio's.
+Zie [Bedrijfscontinuïteit en disaster recovery (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor informatie over welke primaire regio's zijn gekoppeld.
 
-Er zijn code fragmenten opgenomen in dit artikel en een koppeling naar een volledig voor beeld aan het einde dat u kunt downloaden en uitvoeren.
+Er zijn codefragmenten opgenomen in dit artikel, en een link naar een compleet voorbeeld aan het einde dat u downloaden en uitvoeren.
 
-## <a name="application-design-considerations-when-reading-from-the-secondary"></a>Overwegingen bij het ontwerpen van toepassingen bij het lezen van de secundaire
+## <a name="application-design-considerations-when-reading-from-the-secondary"></a>Overwegingen voor het ontwerp van toepassingen bij het lezen van de secundaire
 
-In dit artikel wordt beschreven hoe u een toepassing kunt ontwerpen die blijft functioneren (in tegens telling tot een beperkte capaciteit), zelfs in het geval van een grote nood situatie bij het primaire Data Center. U kunt uw toepassing ontwerpen voor het afhandelen van tijdelijke of langlopende problemen door te lezen uit de secundaire regio wanneer er een probleem is met het lezen van de primaire regio. Wanneer de primaire regio weer beschikbaar is, kan uw toepassing terugkeren naar het lezen van de primaire regio.
+Het doel van dit artikel is om u te laten zien hoe u een toepassing die zal blijven functioneren (zij het in een beperkte capaciteit) zelfs in het geval van een grote ramp in het primaire datacenter te ontwerpen. U uw toepassing zo ontwerpen dat tijdelijke of langlopende problemen worden opgelost door uit het secundaire gebied te lezen wanneer er een probleem is dat het lezen vanuit de primaire regio verstoort. Wanneer de primaire regio weer beschikbaar is, kan uw toepassing terugkeren naar het lezen vanuit de primaire regio.
 
-Houd bij het ontwerpen van uw toepassing voor RA-GRS of RA-GZRS de volgende belang rijke punten in acht:
+Houd rekening met deze belangrijke punten bij het ontwerpen van uw aanvraag voor RA-GRS of RA-GZRS:
 
-* Azure Storage onderhoudt een alleen-lezen kopie van de gegevens die u in de primaire regio opslaat in een secundaire regio. Zoals hierboven vermeld, bepaalt de opslag service de locatie van de secundaire regio.
+* Azure Storage onderhoudt een alleen-lezen kopie van de gegevens die u opslaat in uw primaire regio in een secundaire regio. Zoals hierboven vermeld, bepaalt de opslagservice de locatie van de secundaire regio.
 
-* De alleen-lezen kopie is [uiteindelijk consistent](https://en.wikipedia.org/wiki/Eventual_consistency) met de gegevens in de primaire regio.
+* De alleen-lezen kopie komt [uiteindelijk overeen](https://en.wikipedia.org/wiki/Eventual_consistency) met de gegevens in het primaire gebied.
 
-* Voor blobs, tabellen en wacht rijen kunt u een query uitvoeren op de secundaire regio voor de waarde van de *laatste synchronisatie tijd* die aangeeft wanneer de laatste replicatie van de primaire naar de secundaire regio is opgetreden. (Dit wordt niet ondersteund voor Azure Files, die op dit moment geen RA-GRS-redundantie heeft.)
+* Voor blobs, tabellen en wachtrijen u het secundaire gebied opvragen voor een waarde *voor laatste synchronisatietijd* die u vertelt wanneer de laatste replicatie van het primaire naar het secundaire gebied heeft plaatsgevonden. (Dit wordt momenteel niet ondersteund voor Azure Files, waarvoor op dit moment geen RA-GRS-redundantie is.)
 
-* U kunt de Storage-client bibliotheek gebruiken voor het lezen en schrijven van gegevens in de primaire of secundaire regio. U kunt ook automatisch Lees aanvragen omleiden naar de secundaire regio als er een time-out optreedt voor een lees aanvraag naar de primaire regio.
+* U de clientbibliotheek voor opslag gebruiken om gegevens te lezen en te schrijven in het primaire of secundaire gebied. U leesverzoeken ook automatisch omleiden naar het secundaire gebied als een leesverzoek uitgaat naar de primaire regio.
 
-* Als de primaire regio niet beschikbaar is, kunt u een failover voor het account initiëren. Wanneer u een failover naar de secundaire regio maakt, worden de DNS-vermeldingen die verwijzen naar de primaire regio, gewijzigd zodat ze naar de secundaire regio wijzen. Nadat de failover is voltooid, wordt de schrijf toegang voor GRS-en RA-GRS-accounts hersteld. Zie [nood herstel en failover van het opslag account (preview) in azure Storage](storage-disaster-recovery-guidance.md)voor meer informatie.
+* Als het primaire gebied niet meer beschikbaar is, u een failoveraccount starten. Wanneer u niet naar het secundaire gebied gaat, worden de DNS-vermeldingen die naar het primaire gebied verwijzen, gewijzigd om naar het secundaire gebied te verwijzen. Nadat de failover is voltooid, wordt de schrijftoegang hersteld voor GRS- en RA-GRS-accounts. Zie [Failovervoor rampherstel en opslagaccount (preview) in Azure Storage](storage-disaster-recovery-guidance.md)voor meer informatie.
 
 > [!NOTE]
-> De door de klant beheerde account-failover (preview) is nog niet beschikbaar in regio's die GZRS/RA-GZRS ondersteunen. Daarom kunnen klanten momenteel geen account-failover-gebeurtenissen beheren met GZRS-en RA-GZRS-accounts. Tijdens de preview beheert micro soft failover-gebeurtenissen die van invloed zijn op GZRS/RA-GZRS-accounts.
+> Door klanten beheerde accountfailover (preview) is nog niet beschikbaar in regio's die GZRS/RA-GZRS ondersteunen, dus klanten kunnen momenteel geen failovergebeurtenissen voor accounts beheren met GZRS- en RA-GZRS-accounts. Tijdens de preview beheert Microsoft eventuele failovergebeurtenissen die van invloed zijn op GZRS/RA-GZRS-accounts.
 
 ### <a name="using-eventually-consistent-data"></a>Uiteindelijk consistente gegevens gebruiken
 
-In de voorgestelde oplossing wordt ervan uitgegaan dat het acceptabel is om mogelijk verouderde gegevens te retour neren naar de aanroepende toepassing. Omdat de gegevens in de secundaire regio uiteindelijk consistent zijn, is het mogelijk dat de primaire regio niet meer toegankelijk is voordat een update naar de secundaire regio is gerepliceerd.
+De voorgestelde oplossing gaat ervan uit dat het aanvaardbaar is om mogelijk verouderde gegevens terug te sturen naar de oproeptoepassing. Omdat gegevens in het secundaire gebied uiteindelijk consistent zijn, is het mogelijk dat de primaire regio ontoegankelijk wordt voordat een update naar het secundaire gebied is voltooid.
 
-Stel bijvoorbeeld dat uw klant een update verzendt, maar de primaire regio is mislukt voordat de update wordt door gegeven aan de secundaire regio. Wanneer de klant vraagt om de gegevens terug te lezen, ontvangen ze de verouderde gegevens uit de secundaire regio in plaats van de bijgewerkte gegevens. Bij het ontwerpen van uw toepassing moet u bepalen of dit acceptabel is en, als dat het geval is, hoe u een bericht ontvangt van de klant. 
+Stel dat uw klant een update met succes indient, maar dat het primaire gebied mislukt voordat de update wordt doorgegeven aan de secundaire regio. Wanneer de klant vraagt om de gegevens terug te lezen, ontvangt hij de verouderde gegevens uit het secundaire gebied in plaats van de bijgewerkte gegevens. Bij het ontwerpen van uw toepassing moet u beslissen of dit acceptabel is en zo ja, hoe u de klant een bericht stuurt. 
 
-Verderop in dit artikel laten we zien hoe u de laatste synchronisatie tijd voor de secundaire gegevens controleert om te controleren of de secundaire is bijgewerkt.
+Later in dit artikel laten we zien hoe u de laatste synchronisatietijd voor de secundaire gegevens controleren om te controleren of de secundaire up-to-date is.
 
-### <a name="handling-services-separately-or-all-together"></a>Services afzonderlijk of allemaal samen verwerken
+### <a name="handling-services-separately-or-all-together"></a>Diensten afzonderlijk of alles bij elkaar afhandelen
 
-Hoewel het niet waarschijnlijk is, is het mogelijk dat één service niet meer beschikbaar is terwijl de andere services nog steeds volledig functioneel zijn. U kunt de nieuwe pogingen en de modus alleen-lezen voor elke service afzonderlijk (blobs, wacht rijen, tabellen) afhandelen of u kunt nieuwe pogingen voor alle opslag Services op een algemene manier afhandelen.
+Hoewel het onwaarschijnlijk is, is het mogelijk dat één service niet meer beschikbaar is, terwijl de andere services nog volledig functioneel zijn. U de herpogingen en alleen-lezenmodus voor elke service afzonderlijk verwerken (blobs, wachtrijen, tabellen), of u nieuwe pogingen algemeen verwerken voor alle opslagservices samen.
 
-Als u bijvoorbeeld wacht rijen en blobs gebruikt in uw toepassing, kunt u ervoor kiezen om afzonderlijke code te plaatsen voor het afhandelen van herstel bare fouten voor elk van deze. Als u vervolgens een nieuwe poging van de BLOB-service krijgt, maar de wachtrij service nog steeds werkt, wordt alleen het deel van uw toepassing dat blobs verwerkt, beïnvloed. Als u besluit alle pogingen van alle opslag Services algemeen uit te voeren en een aanroep naar de BLOB-service een herstel bare fout retourneert, worden de aanvragen voor zowel de BLOB-service als de wachtrij service beïnvloed.
+Als u bijvoorbeeld wachtrijen en blobs in uw toepassing gebruikt, u besluiten om afzonderlijke code in te zetten om opnieuw te proberen fouten voor elk van deze apparaten te verwerken. Als u vervolgens een nieuwe poging van de blob-service krijgt, maar de wachtrijservice nog steeds werkt, wordt alleen het deel van uw toepassing dat blobs verwerkt, beïnvloed. Als u besluit om alle opslagservice-pogingen generiek te verwerken en een aanroep naar de blobservice een opnieuw probeerbare fout retourneert, worden aanvragen voor zowel de blobservice als de wachtrijservice beïnvloed.
 
-Uiteindelijk is dit afhankelijk van de complexiteit van uw toepassing. U kunt ervoor kiezen om de fouten op de service niet af te handelen, maar in plaats daarvan de Lees aanvragen voor alle opslag Services om te leiden naar de secundaire regio en de toepassing uit te voeren in de modus alleen-lezen wanneer u een probleem met een opslag service in de primaire regio detecteert.
+Uiteindelijk hangt dit af van de complexiteit van uw toepassing. U besluiten de fouten niet per service af te handelen, maar in plaats daarvan leesaanvragen voor alle opslagservices om te leiden naar het secundaire gebied en de toepassing in de alleen-lezenmodus uit te voeren wanneer u een probleem met een opslagservice in het primaire gebied detecteert.
 
 ### <a name="other-considerations"></a>Andere overwegingen
 
-Dit zijn de andere overwegingen die in de rest van dit artikel worden besproken.
+Dit zijn de andere overwegingen die we zullen bespreken in de rest van dit artikel.
 
-* Verwerkings pogingen van Lees aanvragen met het patroon circuit onderbreker
+* Het verwerken van nieuwe pogingen van leesaanvragen met behulp van het patroon Van de Stroomonderbreker
 
-* Uiteindelijk consistente gegevens en de laatste synchronisatie tijd
+* Uiteindelijk consistente gegevens en de laatste synchronisatietijd
 
 * Testen
 
-## <a name="running-your-application-in-read-only-mode"></a>Uw toepassing uitvoeren in de modus alleen-lezen
+## <a name="running-your-application-in-read-only-mode"></a>Uw toepassing uitvoeren in de alleen-lezen modus
 
-Om effectief een storing in de primaire regio voor te bereiden, moet u zowel mislukte lees aanvragen als mislukte update aanvragen kunnen verwerken (met update in dit geval worden invoeg-, update-en verwijderingen uitgevoerd). Als er een fout optreedt in de primaire regio, kunnen Lees aanvragen worden omgeleid naar de secundaire regio. Update aanvragen kunnen echter niet worden omgeleid naar het secundaire omdat de secundaire alleen-lezen is. Daarom moet u uw toepassing ontwerpen om te worden uitgevoerd in de modus alleen-lezen.
+Als u zich wilt voorbereiden op een storing in het primaire gebied, moet u zowel mislukte leesaanvragen als mislukte updateverzoeken kunnen afhandelen (met update in dit geval inserts, updates en verwijderingen). Als het primaire gebied mislukt, kunnen leesaanvragen worden doorgestuurd naar het secundaire gebied. Updateverzoeken kunnen echter niet worden doorgestuurd naar het secundaire omdat het secundaire alleen-lezen is. Om deze reden moet u uw toepassing ontwerpen om in de alleen-lezen modus uit te voeren.
 
-U kunt bijvoorbeeld een vlag instellen die wordt gecontroleerd voordat update aanvragen worden ingediend bij Azure Storage. Wanneer een van de update aanvragen doorloopt, kunt u deze overs Laan en een juiste reactie op de klant retour neren. U kunt zelfs bepaalde functies helemaal uitschakelen totdat het probleem is opgelost en gebruikers ervan op de hoogte stellen dat deze functies tijdelijk niet beschikbaar zijn.
+U bijvoorbeeld een vlag instellen die is ingeschakeld voordat updateaanvragen worden ingediend bij Azure Storage. Wanneer een van de updateaanvragen binnenkomt, u deze overslaan en een passend antwoord aan de klant retourneren. U zelfs bepaalde functies helemaal uitschakelen totdat het probleem is opgelost en gebruikers op de hoogte stellen dat deze functies tijdelijk niet beschikbaar zijn.
 
-Als u besluit fouten voor elke service afzonderlijk af te handelen, moet u ook de mogelijkheid afhandelen om uw toepassing uit te voeren in de modus alleen-lezen door de service. U kunt bijvoorbeeld alleen-lezen vlaggen hebben voor elke service die kan worden ingeschakeld en uitgeschakeld. Vervolgens kunt u de markering op de juiste plaatsen in uw code afhandelen.
+Als u besluit om fouten voor elke service afzonderlijk te behandelen, moet u ook de mogelijkheid hanteren om uw toepassing in de alleen-lezen modus per service uit te voeren. U bijvoorbeeld alleen-lezen vlaggen hebben voor elke service die kan worden ingeschakeld en uitgeschakeld. Vervolgens u de vlag op de juiste plaatsen in uw code verwerken.
 
-Het uitvoeren van uw toepassing in de modus alleen-lezen heeft een ander voor deel: het biedt u de mogelijkheid om beperkte functionaliteit te garanderen tijdens een belang rijke toepassings upgrade. U kunt ervoor zorgen dat uw toepassing wordt uitgevoerd in de modus alleen-lezen en het tweede Data Center aanwijst, zodat niemand toegang heeft tot de gegevens in de primaire regio terwijl u upgrades gaat maken.
+In staat zijn om uw toepassing in read-only modus uit te voeren heeft een andere kant voordeel - het geeft u de mogelijkheid om beperkte functionaliteit te garanderen tijdens een grote applicatie-upgrade. U uw toepassing activeren om in de alleen-lezen modus uit te voeren en naar het secundaire datacenter te wijzen, zodat niemand toegang heeft tot de gegevens in de primaire regio terwijl u upgrades uitvoert.
 
-## <a name="handling-updates-when-running-in-read-only-mode"></a>Updates verwerken tijdens het uitvoeren in de modus alleen-lezen
+## <a name="handling-updates-when-running-in-read-only-mode"></a>Updates verwerken wanneer deze worden uitgevoerd in de alleen-lezenmodus
 
-Er zijn veel manieren om update-aanvragen af te handelen wanneer ze worden uitgevoerd in de modus alleen-lezen. Dit wordt niet uitgebreid besproken, maar over het algemeen zijn er een aantal patronen die u overweegt.
+Er zijn veel manieren om updateaanvragen te verwerken wanneer u alleen-lezen uitvoert. We zullen dit niet uitgebreid behandelen, maar over het algemeen zijn er een paar patronen die u overweegt.
 
-1. U kunt reageren op uw gebruiker en hen laten weten dat u momenteel geen updates accepteert. Een beheer systeem voor contact personen kan bijvoorbeeld klanten in staat stellen om toegang te krijgen tot contact gegevens, maar geen updates te maken.
+1. U op uw gebruiker reageren en hen vertellen dat u momenteel geen updates accepteert. Een contactbeheersysteem kan klanten bijvoorbeeld in staat stellen contactgegevens te openen, maar geen updates uit te voeren.
 
-2. U kunt uw updates in een andere regio in de wachtrij plaatsen. In dit geval schrijft u uw update aanvragen in behandeling naar een wachtrij in een andere regio en vervolgens een manier om deze aanvragen te verwerken nadat het primaire Data Center weer online is. In dit scenario moet de klant weten dat de aangevraagde update in de wachtrij staat voor latere verwerking.
+2. U uw updates in een andere regio in een wachtrij plaatsen. In dit geval schrijft u uw aanvragen voor in behandeling zijnde updateaanvragen naar een wachtrij in een andere regio en hebt u een manier om deze aanvragen te verwerken nadat het primaire datacenter weer online is gekomen. In dit scenario moet u de klant laten weten dat de gevraagde update in de wachtrij staat voor latere verwerking.
 
-3. U kunt uw updates schrijven naar een opslag account in een andere regio. Wanneer het primaire Data Center weer online komt, kunt u de updates ook samen voegen in de primaire gegevens, afhankelijk van de structuur van de gegevens. Als u bijvoorbeeld afzonderlijke bestanden met een datum/tijds tempel in de naam maakt, kunt u deze bestanden weer kopiëren naar de primaire regio. Dit werkt voor sommige werk belastingen, zoals logboek registratie en iOT-gegevens.
+3. U uw updates naar een opslagaccount in een andere regio schrijven. Wanneer het primaire datacenter vervolgens weer online komt, u een manier hebben om deze updates samen te voegen in de primaire gegevens, afhankelijk van de structuur van de gegevens. Als u bijvoorbeeld afzonderlijke bestanden maakt met een datum-/tijdstempel in de naam, u deze bestanden terugkopiëren naar het primaire gebied. Dit werkt voor sommige workloads zoals logging en iOT-gegevens.
 
-## <a name="handling-retries"></a>Verwerkings pogingen
+## <a name="handling-retries"></a>Retries verwerken
 
-De Azure Storage-client bibliotheek helpt u te bepalen welke fouten opnieuw kunnen worden uitgevoerd. Er wordt bijvoorbeeld een 404-fout (resource niet gevonden) opnieuw uitgevoerd, omdat het niet waarschijnlijk is dat het opnieuw wordt geprobeerd. Aan de andere kant kan een 500-fout opnieuw worden uitgevoerd omdat het een server fout is en het probleem mogelijk alleen een tijdelijk probleem is. Bekijk voor meer informatie de open- [bron code voor de klasse ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) in de client bibliotheek voor .net-opslag. (Zoek naar de methode ShouldRetry.)
+Met de Azure Storage-clientbibliotheek u bepalen welke fouten opnieuw kunnen worden geprobeerd. Een fout van 404 (resource niet gevonden) wordt bijvoorbeeld niet opnieuw geprobeerd, omdat het opnieuw proberen waarschijnlijk niet tot succes zal leiden. Aan de andere kant kan een 500-fout opnieuw worden geprobeerd omdat het een serverfout is en het probleem gewoon een tijdelijk probleem kan zijn. Bekijk voor meer informatie de [open source-code voor de klasse ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) in de .NET-opslagclientbibliotheek. (Zoek naar de Methode Voor Try-opnieuw.)
 
-### <a name="read-requests"></a>Aanvragen lezen
+### <a name="read-requests"></a>Leesverzoeken
 
-Lees aanvragen kunnen worden omgeleid naar secundaire opslag als er een probleem is met primaire opslag. Zoals hierboven vermeld in het [gebruik van uiteindelijk consistente gegevens](#using-eventually-consistent-data), moet het acceptabel zijn voor uw toepassing om mogelijk verouderde gegevens te lezen. Als u de Storage-client bibliotheek gebruikt voor toegang tot gegevens van de secundaire, kunt u het gedrag voor opnieuw proberen van een lees aanvraag opgeven door een waarde voor de eigenschap **LocationMode** in te stellen op een van de volgende:
+Leesaanvragen kunnen worden doorgestuurd naar secundaire opslag als er een probleem is met primaire opslag. Zoals hierboven vermeld in [Het gebruik van uiteindelijk consistente gegevens](#using-eventually-consistent-data), moet het aanvaardbaar zijn voor uw toepassing om mogelijk verouderde gegevens te lezen. Als u de opslagclientbibliotheek gebruikt om toegang te krijgen tot gegevens van het secundaire, u het gedrag van een leesaanvraag opnieuw proberen opgeven door een waarde voor de eigenschap **LocationMode** in te stellen op een van de volgende opties:
 
-* **PrimaryOnly** (de standaard instelling)
+* **PrimaryOnly** (de standaardinstelling)
 
 * **PrimaryThenSecondary**
 
-* **SecondaryOnly**
+* **Alleen secundair**
 
 * **SecondaryThenPrimary**
 
-Wanneer u de **LocationMode** instelt op **PrimaryThenSecondary**en de eerste Lees aanvraag naar het primaire eind punt mislukt met een fout die opnieuw kan worden geprobeerd, maakt de client automatisch een andere Lees aanvraag naar het secundaire eind punt. Als de fout een time-out voor de server is, moet de client wachten tot de time-out is verstreken voordat er een herstel bare fout van de service wordt ontvangen.
+Wanneer u de **Locatiemodus** instelt op **PrimaryThenSecondary**, als het oorspronkelijke leesverzoek mislukt op het primaire eindpunt met een fout die opnieuw kan worden geprobeerd, doet de client automatisch een ander leesverzoek naar het secundaire eindpunt. Als de fout een servertime-out is, moet de client wachten tot de time-out verloopt voordat deze een nieuwe apparaatfout van de service ontvangt.
 
-Er zijn in feite twee scenario's waarmee u rekening moet houden wanneer u beslist hoe u kunt reageren op een herstel bare fout:
+Er zijn in principe twee scenario's om rekening mee te houden wanneer u beslist hoe u op een opnieuw probeerbare fout moet reageren:
 
-* Dit is een geïsoleerd probleem en de volgende aanvragen voor het primaire eind punt retour neren geen herstel bare fout. Een voor beeld hiervan is dat dit kan gebeuren wanneer zich een tijdelijke netwerk fout voordoet.
+* Dit is een geïsoleerd probleem en volgende aanvragen voor het primaire eindpunt geven geen nieuwe fout. Een voorbeeld van waar dit kan gebeuren is wanneer er een tijdelijke netwerkfout optreedt.
 
-    In dit scenario is er geen aanzienlijke prestatie vermindering in de **LocationMode** ingesteld op **PrimaryThenSecondary** , omdat dit alleen zelden gebeurt.
+    In dit scenario is er geen significante prestatiesanctie in het hebben van **LocationMode** ingesteld op **PrimaryThenSecondary,** omdat dit slechts zelden gebeurt.
 
-* Dit is een probleem met ten minste één van de opslag Services in de primaire regio en alle daaropvolgende aanvragen voor die service in de primaire regio zullen waarschijnlijk voor een bepaalde tijd herstel bare fouten retour neren. Een voor beeld hiervan is als de primaire regio volledig niet toegankelijk is.
+* Dit is een probleem met ten minste één van de opslagservices in de primaire regio en alle volgende aanvragen voor die service in de primaire regio zullen waarschijnlijk opnieuw te proberen fouten voor een bepaalde periode retourneren. Een voorbeeld hiervan is als de primaire regio volledig ontoegankelijk is.
 
-    In dit scenario is er sprake van een prestatie vermindering, omdat al uw Lees aanvragen eerst het primaire eind punt proberen. wacht totdat de time-out is verlopen en schakel vervolgens over naar het secundaire eind punt.
+    In dit scenario is er een prestatiestraf omdat al uw leesverzoeken eerst het primaire eindpunt proberen, wachten tot de time-out verloopt en vervolgens overschakelen naar het secundaire eindpunt.
 
-Voor deze scenario's moet u nagaan of er een doorlopend probleem met het primaire eind punt is en alle Lees aanvragen rechtstreeks naar het secundaire eind punt verzenden door de eigenschap **LocationMode** in te stellen op **SecondaryOnly**. Op dit moment moet u ook de toepassing wijzigen zodat deze wordt uitgevoerd in de modus alleen-lezen. Deze benadering wordt het [patroon circuit onderbreker](/azure/architecture/patterns/circuit-breaker)genoemd.
+Voor deze scenario's moet u vaststellen dat er een doorlopend probleem is met het primaire eindpunt en alle leesaanvragen rechtstreeks naar het secundaire eindpunt verzenden door de eigenschap **LocationMode** in te stellen op **SecondaryOnly**. Op dit moment moet u ook de toepassing wijzigen om in de alleen-lezen modus uit te voeren. Deze aanpak staat bekend als de [Circuit Breaker Pattern](/azure/architecture/patterns/circuit-breaker).
 
-### <a name="update-requests"></a>Update aanvragen
+### <a name="update-requests"></a>Aanvragen bijwerken
 
-Het patroon circuit onderbreker kan ook worden toegepast op update aanvragen. Update aanvragen kunnen echter niet worden omgeleid naar secundaire opslag, die alleen-lezen is. Voor deze aanvragen moet u de eigenschap **LocationMode** instellen op **PrimaryOnly** (de standaard instelling). Als u deze fouten wilt afhandelen, kunt u een metriek Toep assen op deze aanvragen, zoals 10 fouten in een rij, en wanneer aan de drempel waarde wordt voldaan, de toepassing overschakelen naar de modus alleen-lezen. U kunt dezelfde methoden gebruiken om terug te gaan naar de update modus, zoals hieronder wordt beschreven in de volgende sectie over het patroon circuit onderbreker.
+Het Circuit Breaker-patroon kan ook worden toegepast om aanvragen bij te werken. Updateverzoeken kunnen echter niet worden doorgestuurd naar secundaire opslag, die alleen-lezen is. Voor deze aanvragen moet u de eigenschap **LocationMode** laten instellen op **PrimaryOnly** (de standaardinstelling). Als u deze fouten wilt verwerken, u een statistiek toepassen op deze aanvragen, zoals 10 fouten op een rij, en wanneer uw drempelwaarde is bereikt, schakelt u de toepassing om in de alleen-lezenmodus. U dezelfde methoden gebruiken om terug te keren naar de updatemodus als hieronder beschreven in het volgende gedeelte over het Circuit Breaker-patroon.
 
 ## <a name="circuit-breaker-pattern"></a>Patroon Circuitonderbreker
 
-Het gebruik van het patroon circuit onderbreker in uw toepassing kan voor komen dat het opnieuw proberen van een bewerking die zich waarschijnlijk herhaaldelijk kan voordoen. Hiermee kan de toepassing blijven worden uitgevoerd in plaats van dat er tijd wordt bespaard wanneer de bewerking exponentieel wordt herhaald. Er wordt ook gedetecteerd wanneer de fout is opgelost, op het moment dat de toepassing de bewerking opnieuw kan proberen.
+Als u het patroon Van de Stroomonderbreker in uw toepassing gebruikt, kan worden voorkomen dat een bewerking die waarschijnlijk herhaaldelijk mislukt, opnieuw wordt geprobeerd. Hiermee kan de toepassing blijven worden uitgevoerd in plaats van tijd in beslag te nemen terwijl de bewerking exponentieel opnieuw wordt geprobeerd. Het detecteert ook wanneer de fout is opgelost, op welk moment de toepassing de bewerking opnieuw kan proberen.
 
-### <a name="how-to-implement-the-circuit-breaker-pattern"></a>Het circuit onderbreker-patroon implementeren
+### <a name="how-to-implement-the-circuit-breaker-pattern"></a>Hoe het stroomonderbrekerpatroon te implementeren
 
-Als u wilt weten dat er een probleem is met een primair eind punt, kunt u bewaken hoe vaak de client herstel bare fouten tegen komt. Omdat elke case afwijkt, moet u beslissen over de drempel waarde die u wilt gebruiken voor de beslissing om over te scha kelen naar het secundaire eind punt en de toepassing uit te voeren in de modus alleen-lezen. U kunt er bijvoorbeeld voor kiezen om de switch uit te voeren als er 10 storingen zijn in een rij zonder succes. Een ander voor beeld is om te scha kelen als 90% van de aanvragen in een periode van twee minuten mislukt.
+Om vast te stellen dat er een bestaand probleem is met een primair eindpunt, u controleren hoe vaak de client opnieuw probeerbare fouten tegenkomt. Omdat elk geval anders is, moet u beslissen over de drempel die u wilt gebruiken voor de beslissing om over te schakelen naar het secundaire eindpunt en de toepassing in de alleen-lezenmodus uit te voeren. U bijvoorbeeld besluiten om de switch uit te voeren als er 10 fouten op een rij zijn zonder successen. Een ander voorbeeld is om over te schakelen als 90% van de aanvragen in een periode van 2 minuten mislukt.
 
-In het eerste scenario kunt u eenvoudig een telling van de fouten bedenken. als er een succes is voordat het maximum wordt bereikt, stelt u het aantal in op nul. Voor het tweede scenario is het een manier om deze te implementeren met behulp van het Memory Cache-object (in .NET). Voor elke aanvraag voegt u een CacheItem toe aan de cache, stelt u de waarde in op geslaagd (1) of mislukt (0) en stelt u de verloop tijd in op twee minuten vanaf nu (of op een wille keurige tijds beperking). Wanneer de verloop tijd van een vermelding is bereikt, wordt de vermelding automatisch verwijderd. Hiermee krijgt u een rolling periode van twee minuten. Telkens wanneer u een aanvraag voor de opslag service maakt, gebruikt u eerst een LINQ-query in het Memory Cache-object om het percentage succes te berekenen door de waarden op te tellen en te delen door het aantal. Als het voltooiings percentage onder een bepaalde drempel waarde (zoals 10%) daalt, stelt u de eigenschap **LocationMode** voor lees aanvragen in op **SecondaryOnly** en schakelt u de toepassing over naar alleen-lezen modus voordat u doorgaat.
+Voor het eerste scenario u eenvoudig een telling van de fouten bijhouden en als er een succes is voordat u het maximum bereikt, stelt u het aantal terug op nul. Voor het tweede scenario is een manier om het te implementeren het object MemoryCache (in .NET) te gebruiken. Voeg voor elk verzoek een CacheItem toe aan de cache, stel de waarde in op succes (1) of fail (0) en stel de verlooptijd in op 2 minuten vanaf nu (of wat uw tijdsdruk ook is). Wanneer de vervaldatum van een item is bereikt, wordt de vermelding automatisch verwijderd. Dit geeft je een rollend venster van 2 minuten. Elke keer dat u een aanvraag indient bij de opslagservice, gebruikt u eerst een Linq-query in het object MemoryCache om het percentagesucces te berekenen door de waarden op te tellen en te delen door het aantal. Wanneer het percentage succes daalt tot onder een drempelwaarde (zoals 10%), stel de eigenschap **LocationMode** voor leesaanvragen op **SecondaryOnly** en schakel de toepassing in alleen-lezen modus voordat u verdergaat.
 
-De drempel van fouten die worden gebruikt om te bepalen wanneer de switch kan variëren van service naar service in uw toepassing, moet u overwegen om deze Configureer bare para meters te maken. Dit is ook de plek waar u herstel bare fouten van elke service afzonderlijk of als één kunt afhandelen, zoals eerder is besproken.
+De drempel van fouten die worden gebruikt om te bepalen wanneer u de overstap moet maken, kan variëren van service tot service in uw toepassing, dus u moet overwegen ze configureerbare parameters te maken. Dit is ook waar u besluit om opnieuw te proberen fouten van elke service afzonderlijk of als een, zoals eerder besproken.
 
-Een andere overweging is hoe u meerdere exemplaren van een toepassing kunt verwerken en wat u moet doen wanneer u herstel bare fouten in elk exemplaar detecteert. U kunt bijvoorbeeld 20 Vm's uitvoeren met dezelfde toepassing geladen. Gaat u elk exemplaar afzonderlijk verwerken? Als er met één exemplaar wordt gestart, wilt u het antwoord op slechts één instantie beperken of wilt u proberen alle instanties op dezelfde manier te laten reageren als er een probleem is met één exemplaar? Het afhandelen van de instanties is veel eenvoudiger dan het maken van de reactie op de afzonderlijke items, maar hoe u dit doet, is afhankelijk van de architectuur van uw toepassing.
+Een andere overweging is hoe u meerdere exemplaren van een toepassing moet verwerken en wat u moet doen wanneer u opnieuw probeerbare fouten in elke instantie detecteert. U bijvoorbeeld 20 VM's hebben die worden uitgevoerd met dezelfde toepassing geladen. Behandelt u elk exemplaar afzonderlijk? Als één instantie problemen begint te krijgen, wilt u het antwoord beperken tot slechts die ene instantie, of wilt u proberen alle instanties op dezelfde manier te laten reageren wanneer één instantie een probleem heeft? Het afzonderlijk verwerken van de instanties is veel eenvoudiger dan proberen de respons over deze instanties te coördineren, maar hoe u dit doet, is afhankelijk van de architectuur van uw toepassing.
 
-### <a name="options-for-monitoring-the-error-frequency"></a>Opties voor het bewaken van de fout frequentie
+### <a name="options-for-monitoring-the-error-frequency"></a>Opties voor het bewaken van de foutfrequentie
 
-Er zijn drie belang rijke opties voor het bewaken van de frequentie van nieuwe pogingen in de primaire regio om te bepalen wanneer moet worden overgeschakeld naar de secundaire regio en de toepassing te wijzigen zodat deze wordt uitgevoerd in de modus alleen-lezen.
+U hebt drie belangrijke opties voor het bewaken van de frequentie van nieuwe pogingen in het primaire gebied om te bepalen wanneer u moet overschakelen naar het secundaire gebied en de toepassing te wijzigen om in de alleen-lezenmodus uit te voeren.
 
-* Een handler toevoegen [**voor het**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) -object dat u aan uw opslag aanvragen door gegeven. Dit is de methode die wordt weer gegeven in dit artikel en wordt gebruikt in het bijbehorende voor beeld. Deze gebeurtenissen worden geactiveerd wanneer de client een aanvraag opnieuw probeert, zodat u kunt bijhouden hoe vaak de client herstel bare fouten op een primair eind punt tegen komt.
+* Voeg een handler toe voor de gebeurtenis [**Opnieuw proberen**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) op het object [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) dat u doorgeeft aan uw opslagaanvragen: dit is de methode die in dit artikel wordt weergegeven en wordt gebruikt in het bijbehorende voorbeeld. Deze gebeurtenissen worden afvuurd wanneer de client een aanvraag opnieuw indient, zodat u bijhouden hoe vaak de client opnieuw probeerbare fouten tegenkomt op een primair eindpunt.
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -160,7 +160,7 @@ Er zijn drie belang rijke opties voor het bewaken van de frequentie van nieuwe p
     };
     ```
 
-* In de methode [**Evaluate**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) in een aangepast beleid voor opnieuw proberen kunt u aangepaste code uitvoeren wanneer een nieuwe poging plaatsvindt. Naast het vastleggen wanneer een nieuwe poging gebeurt, biedt dit ook de mogelijkheid om het gedrag voor opnieuw proberen aan te passen.
+* In de methode [**Evalueren**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) in een aangepast beleid voor opnieuw proberen u aangepaste code uitvoeren wanneer er een nieuwe poging plaatsvindt. Naast het opnemen wanneer een nieuwe poging plaatsvindt, geeft dit u ook de mogelijkheid om uw gedrag opnieuw proberen aan te passen.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -188,39 +188,39 @@ Er zijn drie belang rijke opties voor het bewaken van de frequentie van nieuwe p
     }
     ```
 
-* De derde benadering is het implementeren van een aangepast bewakings onderdeel in uw toepassing dat uw primaire opslag eindpunt continu pingt met Dummy Lees aanvragen (zoals het lezen van een kleine blob) om de status te bepalen. Dit kan enkele resources duren, maar dit is geen aanzienlijke hoeveelheid. Wanneer er een probleem wordt gedetecteerd dat de drempel waarde bereikt, voert u de switch uit naar **SecondaryOnly** en de modus alleen-lezen.
+* De derde benadering is het implementeren van een aangepaste monitoringcomponent in uw toepassing die voortdurend uw primaire opslageindpunt pingt met dummyleesaanvragen (zoals het lezen van een kleine blob) om de status ervan te bepalen. Dit zou een aantal middelen in nemen, maar niet een aanzienlijk bedrag. Wanneer een probleem wordt ontdekt dat uw drempel bereikt, voert u de overstap naar **SecondaryOnly** en alleen-lezen modus uit.
 
-Op een bepaald moment wilt u terugschakelen naar het primaire eind punt en kunnen updates worden toegestaan. Als u een van de eerste twee hierboven vermelde methoden gebruikt, kunt u gewoon teruggaan naar het primaire eind punt en de update modus inschakelen na een wille keurige geselecteerde hoeveelheid tijd of aantal bewerkingen is uitgevoerd. U kunt deze vervolgens opnieuw laten door lopen met de logica voor opnieuw proberen. Als het probleem is opgelost, blijft het het primaire eind punt gebruiken en kunnen updates worden toegestaan. Als er nog steeds een probleem is, keert het opnieuw naar het secundaire eind punt en de modus alleen-lezen nadat de criteria die u hebt ingesteld, zijn mislukt.
+Op een gegeven moment wilt u terugschakelen naar het primaire eindpunt en updates toestaan. Als u een van de eerste twee hierboven genoemde methoden gebruikt, u gewoon teruggaan naar het primaire eindpunt en de updatemodus inschakelen nadat een willekeurig geselecteerde hoeveelheid tijd of aantal bewerkingen is uitgevoerd. U het dan laten gaan door de retry logica weer. Als het probleem is opgelost, blijft het primaire eindpunt worden gebruikt en worden updates toegestaan. Als er nog steeds een probleem is, schakelt deze opnieuw terug naar het secundaire eindpunt en de alleen-lezenmodus nadat u niet voldoet aan de criteria die u hebt ingesteld.
 
-Bij het derde scenario wordt het pingen van het primaire opslag eindpunt weer geslaagd door de switch terug te zetten naar **PrimaryOnly** en door te gaan met het toestaan van updates.
+Voor het derde scenario u, wanneer het pingen van het primaire opslageindpunt opnieuw wordt, de switch terugnaar **PrimaryOnly** activeren en updates blijven toestaan.
 
-## <a name="handling-eventually-consistent-data"></a>Uiteindelijk consistente gegevens verwerken
+## <a name="handling-eventually-consistent-data"></a>Verwerking van uiteindelijk consistente gegevens
 
-Geografisch redundante opslag werkt door trans acties te repliceren van de primaire naar de secundaire regio. Dit replicatie proces garandeert dat de gegevens in de secundaire regio *uiteindelijk consistent*zijn. Dit betekent dat alle trans acties in de primaire regio uiteindelijk worden weer gegeven in de secundaire regio, maar dat er een vertraging kan optreden voordat ze worden weer gegeven en dat er geen garantie is dat de trans acties in de secundaire regio worden ontvangen in dezelfde volg orde als waarin ze oorspronkelijk zijn toegepast in de primaire regio. Als uw trans acties in de secundaire regio buiten de juiste volg orde arriveren, *kunt u de* gegevens in de secundaire regio inconsistent maken, totdat de service wordt opgevangen.
+Georedundante opslag werkt door transacties van het primaire naar het secundaire gebied te repliceren. Dit replicatieproces garandeert dat de gegevens in het secundaire gebied *uiteindelijk consistent zijn.* Dit betekent dat alle transacties in de primaire regio uiteindelijk in de secundaire regio zullen verschijnen, maar dat er een vertraging kan zijn voordat ze verschijnen, en dat er geen garantie is dat de transacties in de secundaire regio aankomen in dezelfde volgorde als die waarin ze werden oorspronkelijk toegepast in de primaire regio. Als uw transacties niet in de secundaire regio aankomen, *kunt* u uw gegevens in de secundaire regio in een inconsistente status beschouwen totdat de service inhaalt.
 
-In de volgende tabel ziet u een voor beeld van wat er kan gebeuren wanneer u de details van een werk nemer bijwerkt om ze lid te maken van de rol *Administrators* . Voor dit voor beeld moet u de entiteit **werk nemer** bijwerken en een entiteit **rol beheerder** bijwerken met een telling van het totale aantal beheerders. U ziet hoe de updates in de secundaire regio in de juiste volg orde worden toegepast.
+In de volgende tabel ziet u een voorbeeld van wat er kan gebeuren wanneer u de gegevens van een werknemer bijwerkt om deze lid te maken van de *beheerdersrol.* In het belang van dit voorbeeld vereist dit dat u de **entiteit van** de werknemer bijwerkt en een entiteit **voor beheerdersrollen** bijwerkt met een telling van het totale aantal beheerders. Merk op hoe de updates buiten de orde worden toegepast in de secundaire regio.
 
-| **Tegelijk** | **Trans actie**                                            | **Replicatie**                       | **Tijdstip van de laatste synchronisatie** | **Daardoor** |
+| **Tijd** | **Transactie**                                            | **Replicatie**                       | **Laatste synchronisatietijd** | **Resultaat** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
-| T0       | Trans actie A: <br> Werk nemer invoegen <br> entiteit in primaire |                                   |                    | Trans actie A ingevoegd op primaire,<br> nog niet gerepliceerd. |
-| T1       |                                                            | Trans actie A <br> gerepliceerd naar<br> primaire | T1 | Trans actie A gerepliceerd naar secundair. <br>Laatste synchronisatie tijd bijgewerkt.    |
-| T2       | Trans actie B:<br>Bijwerken<br> entiteit werk nemer<br> in primaire  |                                | T1                 | Trans actie B, geschreven naar primair,<br> nog niet gerepliceerd.  |
-| T3       | Trans actie C:<br> Bijwerken <br>beheerder<br>rol-entiteit in<br>basis |                    | T1                 | Trans actie C geschreven naar primair,<br> nog niet gerepliceerd.  |
-| *T4*     |                                                       | Trans actie C <br>gerepliceerd naar<br> primaire | T1         | Trans actie C gerepliceerd naar secundair.<br>LastSyncTime is niet bijgewerkt omdat <br>trans actie B is nog niet gerepliceerd.|
-| *T5*     | Entiteiten lezen <br>van secundaire                           |                                  | T1                 | U krijgt de verouderde waarde voor werk nemer <br> entiteit omdat trans actie B niet <br> gerepliceerd. U krijgt de nieuwe waarde voor<br> entiteit van beheerdersrol omdat C<br> bijgewerkt. Laatste synchronisatie tijd nog niet<br> bijgewerkt omdat trans actie B<br> is niet gerepliceerd. U kunt de<br>entiteit van beheerdersrol is inconsistent <br>omdat de datum/tijd van de entiteit na <br>de laatste synchronisatie tijd. |
-| *T6*     |                                                      | Trans actie B<br> gerepliceerd naar<br> primaire | T6                 | *T6* : alle trans acties via C hebben <br>gerepliceerd, laatste synchronisatie tijd<br> is bijgewerkt. |
+| T0       | Transactie A: <br> Werknemer invoegen <br> entiteit in primaire |                                   |                    | Transactie A ingevoegd in primaire,<br> nog niet gerepliceerd. |
+| T1       |                                                            | Transactie A <br> gerepliceerd naar<br> Secundaire | T1 | Transactie A gerepliceerd naar secundair. <br>Laatste synchronisatietijd bijgewerkt.    |
+| T2       | Transactie B:<br>Update<br> werknemerentiteit<br> in de primaire  |                                | T1                 | Transactie B geschreven naar primaire,<br> nog niet gerepliceerd.  |
+| T3       | Transactie C:<br> Update <br>beheerder<br>rolentiteit in<br>Primaire |                    | T1                 | Transactie C geschreven naar primaire,<br> nog niet gerepliceerd.  |
+| *T4*     |                                                       | Transactie C <br>gerepliceerd naar<br> Secundaire | T1         | Transactie C gerepliceerd naar secundair.<br>LastSyncTime niet bijgewerkt omdat <br>transactie B is nog niet gerepliceerd.|
+| *T5*     | Entiteiten lezen <br>van secundaire                           |                                  | T1                 | U krijgt de verouderde waarde voor werknemer <br> entiteit omdat transactie B niet <br> nog niet gerepliceerd. Je krijgt de nieuwe waarde voor<br> entiteit van de beheerdersrol omdat C<br> Gerepliceerd. Laatste synchronisatietijd nog steeds niet<br> is bijgewerkt omdat transactie B<br> heeft niet gerepliceerd. U de<br>entiteit van de beheerdersrol is inconsistent <br>omdat de entiteitsdatum/-tijd na <br>de laatste synchronisatietijd. |
+| *T6*     |                                                      | Transactie B<br> gerepliceerd naar<br> Secundaire | T6                 | *T6* – Alle transacties via C hebben <br>gerepliceerd, Laatste synchronisatietijd<br> wordt bijgewerkt. |
 
-In dit voor beeld wordt ervan uitgegaan dat de client overschakelt van de secundaire regio op t 5. De entiteit **rol van beheerder** kan op dit moment worden gelezen, maar de entiteit bevat een waarde voor het aantal beheerders dat niet consistent is met het aantal **werknemers** entiteiten dat op dit moment als Administrators is gemarkeerd. Uw client zou deze waarde gewoon kunnen weer geven, met het risico dat het inconsistente informatie is. De client kan ook proberen te bepalen dat de beheerdersrol een mogelijk inconsistente **status heeft omdat** de updates in de juiste volg orde zijn verlopen en vervolgens de gebruiker op de hoogte stellen van dit feit.
+Neem in dit voorbeeld aan dat de client overschakelt naar lezen vanuit het secundaire gebied op T5. De entiteit kan op dit moment de entiteit van de **beheerdersrol** met succes lezen, maar de entiteit bevat een waarde voor het aantal beheerders dat niet overeenkomt met het aantal **werknemersentiteiten** dat op dit moment is gemarkeerd als beheerders in het secundaire gebied. Uw klant kan deze waarde gewoon weergeven, met het risico dat het inconsistente informatie is. Als alternatief kan de client proberen te bepalen dat de **beheerdersrol** zich in een mogelijk inconsistente status bevindt omdat de updates buiten de orde zijn gebeurd en de gebruiker hiervan op de hoogte stellen.
 
-Om te herkennen dat het mogelijk inconsistente gegevens bevat, kan de client de waarde van de *laatste synchronisatie tijd* gebruiken die u op elk gewenst moment kunt bereiken door een opslag service te doorzoeken. Dit geeft u het tijdstip waarop de gegevens in de secundaire regio voor het laatst consistent zijn en toen de service alle trans acties vóór dat moment heeft toegepast. In het bovenstaande voor beeld, nadat de **werknemers** entiteit in de secundaire regio is ingevoegd, wordt de laatste synchronisatie tijd ingesteld op *T1*. Deze blijft op *T1* totdat de service de werknemers entiteit in de secundaire regio **bijwerkt** wanneer deze is ingesteld op *T6*. Als de client de laatste synchronisatie tijd ophaalt bij het lezen van de entiteit op *T5*, kan deze worden vergeleken met de tijds tempel van de entiteit. Als de tijds tempel van de entiteit later is dan de laatste synchronisatie tijd, heeft de entiteit een mogelijk inconsistente status en kunt u de juiste actie ondernemen voor uw toepassing. Als u dit veld wilt gebruiken, moet u weten wanneer de laatste update voor de primaire is voltooid.
+Om te herkennen dat er mogelijk inconsistente gegevens zijn, kan de client de waarde gebruiken van de *laatste synchronisatietijd* die u op elk gewenst moment krijgen door een opslagservice op te vragen. Dit geeft aan wanneer de gegevens in het secundaire gebied voor het laatst consistent waren en wanneer de service alle transacties vóór dat moment had toegepast. In het bovenstaande voorbeeld wordt, nadat de service de **werknemerentiteit** in het secundaire gebied heeft ingevoegd, de laatste synchronisatietijd ingesteld op *T1*. Het blijft op *T1* totdat de service de **werknemerentiteit** in de secundaire regio bijwerkt wanneer deze is ingesteld op *T6.* Als de client de laatste synchronisatietijd ophaalt wanneer de entiteit op *T5*wordt gelezen, kan deze worden vergeleken met de tijdstempel op de entiteit. Als de tijdstempel op de entiteit later is dan de laatste synchronisatietijd, bevindt de entiteit zich in een mogelijk inconsistente status en u uitvoeren wat de juiste actie voor uw toepassing is. Als u dit veld gebruikt, weet u wanneer de laatste update voor de primaire update is voltooid.
 
-Zie voor meer informatie over het controleren van de laatste synchronisatie tijd [de eigenschap laatste synchronisatie tijd voor een opslag account](last-sync-time-get.md).
+Zie [De eigenschap Laatste synchronisatietijd controleren voor meer](last-sync-time-get.md)informatie over het controleren van de laatste synchronisatietijd .
 
 ## <a name="testing"></a>Testen
 
-Het is belang rijk om te testen of uw toepassing werkt zoals verwacht wanneer er herstel bare fouten optreden. U moet bijvoorbeeld testen of de toepassing overschakelt naar de secundaire modus en alleen-lezen als er een probleem wordt gedetecteerd en overschakelen wanneer de primaire regio weer beschikbaar is. Hiervoor moet u een manier hebben om herstel bare fouten te simuleren en te bepalen hoe vaak deze optreden.
+Het is belangrijk om te testen of uw toepassing zich gedraagt zoals verwacht wanneer deze opnieuw te proberen fouten tegenkomt. U moet bijvoorbeeld testen of de toepassing overschakelt naar de secundaire en in de alleen-lezen modus wanneer het een probleem detecteert, en schakelt terug wanneer de primaire regio weer beschikbaar is. Om dit te doen, moet u een manier om opnieuw te proberen fouten simuleren en bepalen hoe vaak ze optreden.
 
-U kunt [Fiddler](https://www.telerik.com/fiddler) gebruiken om HTTP-antwoorden in een script te onderscheppen en te wijzigen. Met dit script kunnen reacties worden geïdentificeerd die afkomstig zijn van uw primaire eind punt en de HTTP-status code wijzigen in een die door de Storage-client bibliotheek wordt herkend als een herstel bare fout. Dit code fragment toont een eenvoudig voor beeld van een Fiddler-script waarmee antwoorden op Lees aanvragen worden onderschept in de **employeedata** -tabel om een status van 502 te retour neren:
+U [Fiddler](https://www.telerik.com/fiddler) gebruiken om HTTP-antwoorden in een script te onderscheppen en te wijzigen. Dit script kan antwoorden identificeren die afkomstig zijn van uw primaire eindpunt en de HTTP-statuscode wijzigen in een code die de opslagclientbibliotheek herkent als een opnieuw probeerbare fout. Dit codefragment toont een eenvoudig voorbeeld van een Fiddler-script dat reacties op leesverzoeken tegen de **tabel met werknemersgegevens** onderschept om een 502-status te retourneren:
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -232,12 +232,12 @@ static function OnBeforeResponse(oSession: Session) {
 }
 ```
 
-U kunt dit voor beeld uitbreiden om een breder aantal aanvragen te onderscheppen en alleen de **responseCode** van een aantal verzoeken te wijzigen om een echt praktijk scenario beter te simuleren. Zie [een aanvraag of antwoord](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) aanpassen in de Fiddler-documentatie voor meer informatie over het aanpassen van Fiddler-scripts.
+U dit voorbeeld uitbreiden om een breder scala aan aanvragen te onderscheppen en alleen de **reactiecode** op sommige aanvragen wijzigen om een scenario in de echte wereld beter te simuleren. Zie [Een aanvraag of antwoord wijzigen](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) in de fiddler-documentatie voor meer informatie over het aanpassen van Fiddler-scripts.
 
-Als u de drempel waarden hebt gemaakt voor het overschakelen van uw toepassing naar de alleen-lezen modus die kan worden geconfigureerd, is het eenvoudiger om het gedrag te testen met niet-productie transactie volumes.
+Als u de drempelwaarden voor het overschakelen van uw toepassing naar alleen-lezenmodus configureerbaar hebt gemaakt, is het eenvoudiger om het gedrag te testen met niet-productietransactievolumes.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Azure Storage redundantie opties en geografisch redundante opslag met lees toegang](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)voor meer informatie over het lezen van de secundaire regio, met inbegrip van een ander voor beeld van hoe de laatste synchronisatie tijd eigenschap is ingesteld.
+* Zie [Azure Storage Redundancy Options en Read Access Geo-Redundant Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)voor meer informatie over lezen vanuit het secundaire gebied, waaronder een ander voorbeeld van de manier waarop de eigenschap Laatste synchronisatietijd is ingesteld.
 
-* Voor een volledig voor beeld waarin wordt weer gegeven hoe u de switch tussen de primaire en secundaire eind punten kunt weer geven, raadpleegt u [Azure-voor beelden: met behulp van het circuit onderbreker-patroon met Ra-GRS-opslag](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs).
+* Zie [Azure Samples – Gebruik het circuitbreakerpatroon met RA-GRS-opslag](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs)voor een volledig voorbeeld dat laat zien hoe u heen en weer schakelt tussen de primaire en secundaire eindpunten.

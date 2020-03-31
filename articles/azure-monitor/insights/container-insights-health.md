@@ -1,105 +1,105 @@
 ---
-title: Kubernetes-cluster status controleren met Azure Monitor voor containers | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u de status van uw AKS-en niet-AKS-clusters kunt weer geven en analyseren met Azure Monitor voor containers.
+title: Monitor Kubernetes-clusterstatus met Azure Monitor voor containers | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u de status van uw AKS- en niet-AKS-clusters bekijken en analyseren met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 12/01/2019
 ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843987"
 ---
-# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Informatie over de status van een AKS-cluster met Azure Monitor voor containers
+# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Inzicht in Kubernetes-clusterstatus met Azure Monitor voor containers
 
-Met Azure Monitor voor containers wordt de status van de beheerde infrastructuur onderdelen gecontroleerd en gerapporteerd en worden alle knoop punten die worden uitgevoerd op een Kubernetes-cluster ondersteund door Azure Monitor voor containers. Deze ervaring overschrijdt de status van de cluster status die wordt berekend en gerapporteerd in de [weer gave met meerdere clusters](container-insights-analyze.md#multi-cluster-view-from-azure-monitor), waar u nu kunt begrijpen of een of meer knoop punten in het cluster resource beperking zijn, of dat een knoop punt of pod niet beschikbaar is die van invloed kan zijn op een actieve toepassing in het cluster op basis van metrische gegevens.
+Met Azure Monitor voor containers controleert en rapporteert het de status van de beheerde infrastructuurcomponenten en alle knooppunten die worden uitgevoerd op een Kubernetes-cluster dat wordt ondersteund door Azure Monitor voor containers. Deze ervaring gaat verder dan de clusterstatus die is berekend en gerapporteerd in de [weergave met meerdere clusteren,](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)waar u nu begrijpen of een of meer knooppunten in het cluster resourcebeperkt zijn of dat een knooppunt of pod niet beschikbaar is die van invloed kan zijn op een lopende toepassing in het cluster op basis van samengestelde statistieken.
 
 >[!NOTE]
->De status functie is momenteel beschikbaar als open bare preview.
+>De functie Gezondheid is op dit moment in openbare preview.
 >
 
-Voor informatie over het inschakelen van Azure Monitor voor containers raadpleegt u [Onboarding Azure monitor voor containers](container-insights-onboard.md).
+Zie Azure Monitor voor [containers ingebouwde Azure Monitor voor meer](container-insights-onboard.md)informatie over het inschakelen van Azure Monitor voor containers.
 
 >[!NOTE]
->Als u AKS-engine clusters wilt ondersteunen, controleert u of deze voldoet aan het volgende:
->- De meest recente versie van de helm- [client](https://helm.sh/docs/using_helm/)wordt gebruikt.
->- De versie van de container agent is *micro soft/OMS: ciprod11012019*. Zie de [agent bijwerken in Kubernetes-cluster](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster)om de agent bij te werken.
+>Als u AKS Engine-clusters wilt ondersteunen, controleert u of deze voldoet aan het volgende:
+>- Het maakt gebruik van de nieuwste versie van de [HELM client.](https://helm.sh/docs/using_helm/)
+>- De containerversie is *microsoft/oms:ciprod11012019*. Zie [upgradeagent op kubernetes-cluster](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster)om de agent te upgraden.
 >
 
 ## <a name="overview"></a>Overzicht
 
-In Azure Monitor voor containers biedt de status (preview-versie) proactieve status controles van uw Kubernetes-cluster om u te helpen bij het identificeren en diagnosticeren van problemen. Het biedt u de mogelijkheid om aanzienlijke problemen weer te geven die zijn gedetecteerd. Monitors die de status van uw cluster evalueren, worden uitgevoerd op de container agent in uw cluster en de status gegevens worden naar de tabel **KubeHealth** in uw werk ruimte log Analytics geschreven. 
+In Azure Monitor voor containers biedt de functie Gezondheid (voorbeeld) proactieve statusbewaking van uw Kubernetes-cluster om u te helpen problemen te identificeren en te diagnosticeren. Het geeft u de mogelijkheid om belangrijke gedetecteerde problemen te bekijken. Monitors voor de evaluatie van de status van uw cluster die worden uitgevoerd op de containeragent in uw cluster en de statusgegevens worden geschreven naar de **kubeHealth-tabel** in uw werkruimte Log Analytics. 
 
-Kubernetes cluster Health is gebaseerd op een aantal bewakings scenario's die zijn georganiseerd door de volgende Kubernetes-objecten en-samen vattingen:
+Kubernetes cluster status is gebaseerd op een aantal monitoring scenario's georganiseerd door de volgende Kubernetes objecten en abstracties:
 
-- Kubernetes-infra structuur: biedt een samen telling van de Kubernetes API-server, ReplicaSets en DaemonSets die worden uitgevoerd op knoop punten die in uw cluster worden geïmplementeerd, door het CPU-en geheugen gebruik te evalueren en een Peul Beschik baarheid
+- Kubernetes-infrastructuur - biedt een rollup van de Kubernetes API-server, ReplicaSets en DaemonSets die worden uitgevoerd op knooppunten die in uw cluster zijn geïmplementeerd door het cpu- en geheugengebruik te evalueren en de beschikbaarheid van pods te evalueren
 
-    ![Totaliserings weergave status Kubernetes-infra structuur](./media/container-insights-health/health-view-kube-infra-01.png)
+    ![Rollup-weergave van de statusvan Kubernetes-infrastructuur](./media/container-insights-health/health-view-kube-infra-01.png)
 
-- Knoop punten: voorziet in een samen telling van de knooppunt groepen en de status van afzonderlijke knoop punten in elke pool, door het CPU-en geheugen gebruik te evalueren en de status van een knoop punt, zoals gerapporteerd door Kubernetes.
+- Knooppunten - biedt een roll-up van de knooppuntenpools en status van afzonderlijke knooppunten in elke groep, door het cpu- en geheugengebruik te evalueren en de status van een knooppunt zoals gerapporteerd door Kubernetes.
 
-    ![Totaliserings weergave status van knoop punten](./media/container-insights-health/health-view-nodes-01.png)
+    ![Rollupweergave van de statusknooppunten](./media/container-insights-health/health-view-nodes-01.png)
 
-Op dit moment wordt alleen de status van een virtuele-kubelet ondersteund. De status voor het CPU-en geheugen gebruik van virtuele-kublet-knoop punten wordt gerapporteerd als **onbekend**, omdat er geen signaal wordt ontvangen.
+Momenteel wordt alleen de status van een virtuele kubelet ondersteund. De status voor CPU en geheugengebruik van virtuele kublet-knooppunten wordt gerapporteerd als **Onbekend,** omdat er geen signaal van hen wordt ontvangen.
 
-Alle monitors worden weer gegeven in een hiërarchische indeling in het deel venster status hiërarchie, waarbij een aggregaatmonitor voor het Kubernetes-object of de abstractie (dat wil zeggen, Kubernetes-infra structuur of knoop punten) de bovenste monitor is die de gecombineerde status van alle afhankelijke onderliggende monitors. De belangrijkste bewakings scenario's voor het afleiden van de status zijn:
+Alle monitors worden weergegeven in een hiërarchische indeling in het deelvenster Statushiërarchie, waarbij een geaggregeerde monitor die het Kubernetes-object of -abstractie (dat wil zeggen Kubernetes-infrastructuur of knooppunten) de bovenste monitor is die de gecombineerde status van alle afhankelijke onderliggende monitoren. De belangrijkste monitoringscenario's die worden gebruikt om de gezondheid af te leiden zijn:
 
-* Het CPU-gebruik van het knoop punt en de container evalueren.
-* Het geheugen gebruik van het knoop punt en de container evalueren.
-* De status van de peulen en knoop punten op basis van de berekening van de status gereed gerapporteerd door Kubernetes.
+* Evalueer het CPU-gebruik vanaf het knooppunt en de container.
+* Evalueer het geheugengebruik vanaf het knooppunt en de container.
+* Status van pods en knooppunten op basis van de berekening van hun kant-en-klare status gerapporteerd door Kubernetes.
 
-De pictogrammen die worden gebruikt om de status aan te geven, zijn als volgt:
+Met de volgende pictogrammen wordt de status aangegeven:
 
 |Pictogram|Betekenis|  
 |--------|-----------|  
-|![Pictogram groen vinkje geeft in orde aan](./media/container-insights-health/healthyicon.png)|Geslaagd, status is OK (groen)|  
-|![Gele drie hoek en uitroep teken is waarschuwing](./media/container-insights-health/warningicon.png)|Waarschuwing (geel)|  
+|![Pictogram groen vinkje geeft In orde aan](./media/container-insights-health/healthyicon.png)|Succes, status is in orde (groen)|  
+|![Gele driehoek en uitroepteken is waarschuwing](./media/container-insights-health/warningicon.png)|Waarschuwing (geel)|  
 |![Rode knop met witte X geeft kritieke status aan](./media/container-insights-health/criticalicon.png)|Kritiek (rood)|  
-|![Pictogram lichter gekleurd](./media/container-insights-health/grayicon.png)|Onbekend (grijs)|  
+|![Pictogram Grijs-out](./media/container-insights-health/grayicon.png)|Onbekend (grijs)|  
 
-## <a name="monitor-configuration"></a>Configuratie bewaken
+## <a name="monitor-configuration"></a>Monitorconfiguratie
 
-Zie [configuratie handleiding Health Monitor](container-insights-health-monitors-config.md)voor meer informatie over het gedrag en de configuratie van elke monitor die Azure monitor voor de status van containers ondersteunt.
+Zie [Statusmonitorconfiguratiehandleiding statusstatus](container-insights-health-monitors-config.md)voor ziet in een beter gedrag en de configuratie van elke monitor die Azure Monitor voor containers status ondersteunt.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+Meld u aan bij [Azure Portal](https://portal.azure.com). 
 
-## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Status van een AKS-of niet-AKS-cluster weer geven
+## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Status van een AKS- of niet-AKS-cluster weergeven
 
-Toegang tot de Azure Monitor voor de functie status van containers (preview) is rechtstreeks beschikbaar vanuit een AKS-cluster door **inzichten** te selecteren in het linkerdeel venster van de Azure Portal. Onder de **Insights** sectie, selecteer **Containers**. 
+Toegang tot de functie Azure Monitor for containers Health (preview) is rechtstreeks beschikbaar vanuit een AKS-cluster door **Inzichten** te selecteren in het linkerdeelvenster in de Azure-portal. Selecteer **containers** in **Containers**de sectie Inzichten . 
 
-Als u de status wilt weer geven van een niet-AKS-cluster, dat wil zeggen een AKS engine-cluster dat lokaal wordt gehost of op Azure Stack, selecteert u **Azure monitor** in het linkerdeel venster van de Azure Portal. Onder de **Insights** sectie, selecteer **Containers**.  Selecteer op de pagina met meerdere clusters het niet-AKS-cluster in de lijst.
+Als u de status wilt weergeven vanuit een niet-AKS-cluster, dat een AKS Engine-cluster is dat on-premises of op Azure Stack wordt gehost, selecteert u **Azure Monitor** in het linkerdeelvenster in de Azure-portal. Selecteer **containers** in **Containers**de sectie Inzichten .  Selecteer op de pagina met meerdere clusteren het niet-AKS-cluster in de lijst.
 
-Selecteer in Azure Monitor voor containers, op de pagina **cluster** , **status**.
+Selecteer in Azure Monitor voor containers op de **clusterpagina** De optie **Status**.
 
-![Dash board voor cluster status](./media/container-insights-health/container-insights-health-page.png)
+![Voorbeeld van het dashboard clusterstatus](./media/container-insights-health/container-insights-health-page.png)
 
-## <a name="review-cluster-health"></a>Cluster status controleren
+## <a name="review-cluster-health"></a>Clusterstatus controleren
 
-Wanneer de status pagina wordt geopend, wordt standaard de **Kubernetes-infra structuur** geselecteerd in het raster **status** .  Het raster geeft een overzicht van de huidige status rollup van de Kubernetes-infra structuur en cluster knooppunten. Als u een van beide status waarden selecteert, worden de resultaten in het deel venster status hiërarchie (het middelste deel venster) bijgewerkt en worden alle onderliggende monitors in een hiërarchische indeling weer gegeven met de huidige status. Als u meer informatie over een afhankelijke monitor wilt weer geven, kunt u er een selecteren en wordt er automatisch een eigenschappen venster weer gegeven aan de rechter kant van de pagina. 
+Wanneer de pagina Status wordt geopend, wordt **Kubernetes-infrastructuur** standaard geselecteerd in het raster **Gezondheidsaspect.**  Het raster vat de huidige status van Kubernetes-infrastructuur en clusterknooppunten samen. Als u een van beide statusaspecten selecteert, worden de resultaten bijgewerkt in het deelvenster Statushiërarchie (dat wil zeggen het middelste deelvenster) en worden alle onderliggende beeldschermen in een hiërarchische indeling weergegeven, waarbij de huidige status wordt weergegeven. Als u meer informatie wilt weergeven over een afhankelijke monitor, u er een selecteren en wordt er in een eigenschapvenster automatisch een venster op de pagina weergegeven. 
 
-![Eigenschappen venster cluster status](./media/container-insights-health/health-view-property-pane.png)
+![Eigenschappenvenster clusterstatus](./media/container-insights-health/health-view-property-pane.png)
 
-In het eigenschappen venster leert u het volgende:
+In het eigenschappenvenster leert u het volgende:
 
-- Op het tabblad **overzicht** ziet u de huidige status van de monitor die is geselecteerd, wanneer de monitor voor het laatst is berekend en wanneer de laatste status wijziging heeft plaatsgevonden. Aanvullende informatie wordt weer gegeven, afhankelijk van het type monitor dat is geselecteerd in de hiërarchie.
+- Op het tabblad **Overzicht** wordt de huidige status van de geselecteerde monitor weergegeven, wanneer de monitor voor het laatst is berekend en wanneer de laatste statuswijziging heeft plaatsgevonden. Aanvullende informatie wordt weergegeven, afhankelijk van het type monitor dat in de hiërarchie is geselecteerd.
 
-    Als u een aggregaatmonitor selecteert in het deel venster status hiërarchie, wordt op het tabblad **overzicht** in het deel venster eigenschap een Rollup van het totale aantal onderliggende monitors in de hiërarchie weer gegeven en wordt aangegeven hoeveel statistische monitors een kritieke, waarschuwing en een goede status hebben. 
+    Als u een geaggregeerde monitor selecteert in het deelvenster Statushiërarchie, wordt onder het tabblad **Overzicht** in het eigenschappenvenster een roll-up weergegeven van het totale aantal onderliggende beeldschermen in de hiërarchie en het aantal geaggregeerde monitors in een kritieke, waarschuwings- en gezonde status. 
 
-    ![Tabblad Overzicht van status van het eigenschappen venster voor aggregaatmonitor](./media/container-insights-health/health-overview-aggregate-monitor.png)
+    ![Tabblad Overzicht van het deelvenster Eigenschappen van de eigenschap voor aggregaatmonitor](./media/container-insights-health/health-overview-aggregate-monitor.png)
 
-    Als u een unit-monitor selecteert in het deel venster status hiërarchie, wordt de vorige voor beelden die zijn berekend en gerapporteerd door de container agent in de afgelopen vier uur, weer gegeven onder **laatste status wijziging** . Dit is gebaseerd op de berekening van de unit-monitor voor het vergelijken van verschillende opeenvolgende waarden om de status te bepalen. Als u bijvoorbeeld de monitor status eenheid *pod Ready* hebt geselecteerd, worden de laatste twee steek proeven weer gegeven die worden gecontroleerd door de para meter *ConsecutiveSamplesForStateTransition*. Zie de gedetailleerde beschrijving van [Unit monitors](container-insights-health-monitors-config.md#unit-monitors)voor meer informatie.
+    Als u een eenheidsmonitor selecteert in het deelvenster Statushiërarchie, wordt dit ook weergegeven onder **Laatste statuswijziging de** vorige monsters die in de afgelopen vier uur door de containeragent zijn berekend en gerapporteerd. Dit is gebaseerd op de berekening van de eenheidsmonitoren voor het vergelijken van verschillende opeenvolgende waarden om de status ervan te bepalen. Als u bijvoorbeeld de monitor van de *pod-ready state unit* hebt geselecteerd, worden de laatste twee voorbeelden weergegeven die worden beheerd door de parameter *ConsecutiveSamplesForStateTransition*. Zie voor meer informatie de gedetailleerde beschrijving van [eenheidsmonitoren](container-insights-health-monitors-config.md#unit-monitors).
     
-    ![Tabblad Overzicht van het eigenschappen venster status](./media/container-insights-health/health-overview-unit-monitor.png)
+    ![Tabblad Overzicht van het deelvenster Eigenschappen van de eigenschap](./media/container-insights-health/health-overview-unit-monitor.png)
 
-    Als de tijd die wordt gerapporteerd door de **laatste status wijziging** een dag of ouder is, is het resultaat van geen wijzigingen in de status van de monitor. Als het laatste voor beeld dat is ontvangen voor een unit-monitor echter meer dan vier uur oud is, duidt dit erop dat de container agent geen gegevens heeft verzonden. Als de agent weet dat er een bepaalde resource bestaat, bijvoorbeeld een knoop punt, maar er geen gegevens zijn ontvangen van de CPU of het geheugen gebruik van het knoop punt (als voor beeld), wordt de status van de monitor ingesteld op **onbekend**.  
+    Als de tijd die door **Laatste statuswijziging** wordt gerapporteerd een dag of ouder is, is deze het resultaat van geen statuswijzigingen voor de monitor. Als het laatste monster dat voor een eenheidsmonitor is ontvangen echter meer dan vier uur oud is, geeft dit waarschijnlijk aan dat de containeragent geen gegevens heeft verzonden. Als de agent weet dat er een bepaalde resource bestaat, bijvoorbeeld een knooppunt, maar deze geen gegevens heeft ontvangen van de CPU- of geheugengebruiksmonitors van het knooppunt (als voorbeeld), wordt de status van de monitor ingesteld op **Onbekend**.  
 
-- Op het tabblad**configuratie** worden de standaard instellingen voor configuratie parameters weer gegeven (alleen voor unit monitors, geen geaggregeerde monitors) en hun waarden.
-- Op het tabblad **kennis** bevat deze informatie over het gedrag van de monitor en hoe deze worden geëvalueerd voor een onjuiste situatie.
+- Op het tabblad**Config** worden de standaardconfiguratieparameterinstellingen weergegeven (alleen voor eenheidsmonitoren, niet voor geaggregeerde monitoren) en hun waarden.
+- Op het tabblad **Kennis** bevat het informatie over het gedrag van de monitor en hoe deze evalueert op de ongezonde toestand.
 
-Bewakings gegevens op deze pagina worden niet automatisch vernieuwd en u moet op **vernieuwen** klikken boven aan de pagina om de meest recente status van het cluster te bekijken.
+Het controleren van gegevens op deze pagina wordt niet automatisch vernieuwd en u moet **Vernieuwen** boven aan de pagina selecteren om de meest recente status van het cluster te zien.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [voor beelden van logboek query's](container-insights-log-search.md#search-logs-to-analyze-data) om vooraf gedefinieerde query's en voor beelden te bekijken om te evalueren of aan te passen om uw clusters te waarschuwen, te visualiseren of te analyseren.
+Voorbeelden [van logboekquery's](container-insights-log-search.md#search-logs-to-analyze-data) weergeven om vooraf gedefinieerde query's en voorbeelden te bekijken om uw clusters te waarschuwen, visualiseren of analyseren.

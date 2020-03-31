@@ -1,6 +1,6 @@
 ---
-title: Omgevingen integreren in azure-pijp lijnen in Azure DevTest Labs
-description: Meer informatie over het integreren van Azure DevTest Labs omgevingen in uw Azure DevOps Continuous Integration-(CI) en continue Delivery-pijp lijnen.
+title: Omgevingen integreren in Azure Pipelines in Azure DevTest Labs
+description: Meer informatie over het integreren van Azure DevTest Labs-omgevingen in uw Azure DevOps continuous integration (CI) en cd-pijplijnen (continuous delivery).
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,72 +13,72 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 3d7e481879326ac30093bd116222bddc28640398
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76169412"
 ---
-# <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Omgevingen integreren in uw Azure DevOps CI/CD-pijp lijnen
-U kunt de uitbrei ding Azure DevTest Labs taken die is geïnstalleerd in azure DevOps Services (voorheen bekend als Visual Studio Team Services) gebruiken om eenvoudig uw build-en release-pijp lijn voor continue integratie (CI)/continue levering (CD) te integreren met Azure DevTest Labs. Deze uitbrei dingen maken het eenvoudig om snel een [omgeving](devtest-lab-test-env.md) voor een specifieke test taak te implementeren en deze vervolgens te verwijderen wanneer de test is voltooid. 
+# <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Omgevingen integreren in uw Azure DevOps CI/CD-pijplijnen
+U de Azure DevTest Labs Tasks-extensie die is geïnstalleerd in Azure DevOps Services (voorheen Bekend als Visual Studio Team Services) gebruiken om uw back-continuous integration (CI)/ continuous delivery (CD) build-and-release-pijplijn eenvoudig te integreren met Azure DevTest Labs. Deze extensies maken het eenvoudiger om snel een [omgeving](devtest-lab-test-env.md) te implementeren voor een specifieke testtaak en deze vervolgens te verwijderen wanneer de test is voltooid. 
 
-In dit artikel wordt beschreven hoe u een omgeving maakt en implementeert en vervolgens de omgeving verwijdert, allemaal in één volledige pijp lijn. Normaal gesp roken voert u al deze taken afzonderlijk uit in uw eigen hand leiding voor het implementeren van tests en implementaties. De uitbrei dingen die in dit artikel worden gebruikt, zijn naast deze [DTL VM-taken maken/verwijderen](devtest-lab-integrate-ci-cd-vsts.md):
+In dit artikel ziet u hoe u een omgeving maakt en implementeert en vervolgens de omgeving verwijdert, allemaal in één volledige pijplijn. U zou normaal gesproken elk van deze taken afzonderlijk uitvoeren in uw eigen aangepaste build-test-deploy-pijplijn. De extensies die in dit artikel worden gebruikt, sluiten aan bij deze [DTL VM-taken maken/verwijderen:](devtest-lab-integrate-ci-cd-vsts.md)
 
 - Een omgeving maken
 - Een omgeving verwijderen
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Voordat u uw CI/CD-pijp lijn kunt integreren met Azure DevTest Labs, installeert u [Azure DevTest Labs taken](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) -extensie van Visual Studio Marketplace. 
+Voordat u uw CI/CD-pijplijn integreren met Azure DevTest Labs, installeert u [azure DevTest Labs-takenextensie](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) van Visual Studio Marketplace. 
 
-## <a name="create-and-configure-the-lab-for-environments"></a>Het lab voor omgevingen maken en configureren
-In deze sectie wordt beschreven hoe u een Lab maakt en configureert waarin de Azure-omgeving wordt geïmplementeerd.
+## <a name="create-and-configure-the-lab-for-environments"></a>Het lab maken en configureren voor omgevingen
+In deze sectie wordt beschreven hoe u een lab maken en configureren waar de Azure-omgeving wordt geïmplementeerd.
 
-1. [Maak een Lab](devtest-lab-create-lab.md) als u er nog geen hebt. 
-2. Configureer het lab en maak een omgevings sjabloon door de instructies in dit artikel te volgen: [multi-VM-omgevingen en Paas-resources maken met Azure Resource Manager sjablonen](devtest-lab-create-environment-from-arm.md).
-3. Voor dit voor beeld gebruikt u een bestaande Azure Quick Start-sjabloon [https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/](https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/).
-4. Kopieer de map **201-web-app-redis-cache-SQL-data base** naar de map **ArmTemplate** in de opslag plaats die u in stap 2 hebt geconfigureerd.
+1. [Maak een lab](devtest-lab-create-lab.md) als je er nog geen hebt. 
+2. Configureer het lab en maak een omgevingssjabloon door instructies uit dit artikel te volgen: [Meerdere VM-omgevingen en PaaS-resources maken met Azure Resource Manager-sjablonen.](devtest-lab-create-environment-from-arm.md)
+3. Gebruik in dit voorbeeld een bestaande [https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/](https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/)Azure Quickstart-sjabloon .
+4. Kopieer de map **201-web-app-redis-cache-sql-database** naar de **Map ArmTemplate** in de repository die in stap 2 is geconfigureerd.
 
 ## <a name="create-a-release-definition"></a>Release-definitie maken
-Ga als volgt te werk om de release definitie te maken:
+Ga als volgt te werk om de releasedefinitie te maken:
 
-1.  Op het tabblad **releases** van de **hub build & Release**selecteert u de knop met het **plus teken (+)** .
-2.  In de **release-definitie maken** venster de **leeg** sjabloon en selecteer vervolgens **volgende**.
-3.  Selecteer **later kiezen**en selecteer vervolgens **maken** om een nieuwe release definitie met één standaard omgeving en zonder gekoppelde artefacten te maken.
-4.  Als u het snelmenu wilt openen, selecteert u in de definitie nieuwe release het **beletsel teken (...)** naast de naam van de omgeving en selecteert **u vervolgens variabelen configureren**.
-5.  Voer in het venster **Configure-Environment** de volgende waarden in voor de variabelen die u in de release definitie taken gebruikt:
-1.  Voer bij **Administrator Login**de aanmeldings naam van de SQL-beheerder in.
-2.  Voer voor **administratorLoginPassword**het wacht woord in dat moet worden gebruikt door de aanmelding van de SQL-beheerder. Gebruik "hangslot" verbergen en het wachtwoord kunt beveiligen.
-3.  Voer voor **DATABASENAME**de SQL database naam in.
-4.  Deze variabelen zijn specifiek voor de voorbeeld omgevingen. verschillende omgevingen kunnen verschillende variabelen hebben.
+1.  Selecteer op het tabblad **Releases** van de **hub & maken**de knop **Plusteken (+).**
+2.  Selecteer in het venster **Releasedefinitie maken** de sjabloon **Leeg** maken en selecteer **Volgende**.
+3.  Selecteer **Later kiezen**en selecteer Vervolgens **Maken** om een nieuwe releasedefinitie te maken met één standaardomgeving en geen gekoppelde artefacten.
+4.  Als u het snelmenu wilt openen, selecteert u in de nieuwe releasedefinitie de **ellips (...)** naast de omgevingsnaam en selecteert u **Variabelen configureren**.
+5.  Voer in het **venster Configureren - omgeving** de volgende waarden in voor de variabelen die u gebruikt in de releasedefinitietaken:
+1.  Voer **voor administratorLogin**de inlognaam van SQL Administrator in.
+2.  Voer **voor administratorLoginPassword**het wachtwoord in dat door de SQL Administrator-login moet worden gebruikt. Gebruik het pictogram Hangslot om het wachtwoord te verbergen en te beveiligen.
+3.  Voer **voor databaseNaam**de sql-databasenaam in.
+4.  Deze variabelen zijn specifiek voor de voorbeeldomgevingen, verschillende omgevingen kunnen verschillende variabelen hebben.
 
 ## <a name="create-an-environment"></a>Een omgeving maken
-De volgende fase van de implementatie is het maken van de omgeving die moet worden gebruikt voor ontwikkelings-en test doeleinden.
+De volgende fase van de implementatie is het creëren van de omgeving die moet worden gebruikt voor ontwikkelings- of testdoeleinden.
 
-1. Selecteer in de release definitie **taken toevoegen**.
-2. Voeg op het tabblad **taken** een Azure DevTest Labs omgeving maken-taak toe. De taak als volgt configureren:
-    1. Voor **Azure RM-abonnement**, selecteert u een verbinding in de **beschikbare verbindingen van Azure Service** lijst of maak een meer beperkte machtigingen voor verbinding met uw Azure-abonnement. Zie voor meer informatie, [Azure Resource Manager-service-eindpunt](/azure/devops/pipelines/library/service-endpoints).
-2. Selecteer bij **Lab-naam**de naam van het exemplaar dat u eerder hebt gemaakt *.
-3. Voor de naam van de **opslag plaats**selecteert u de opslag plaats waar de Resource Manager-sjabloon (201) is gepusht naar *.
-4. Voor **sjabloon naam**selecteert u de naam van de omgeving die u hebt opgeslagen in de opslag plaats van de bron code *. 
-5. De naam van het **Lab**, de naam van de **opslag plaats**en de **sjabloon naam** zijn de beschrijvende representaties van de Azure-resource-id's. Als u de beschrijvende naam hand matig invoert, worden er fouten weer gegeven, gebruikt u de vervolg keuzelijsten om de gegevens te selecteren.
-6. Voer bij **omgevings naam**een naam in om het omgevings exemplaar in het lab uniek te identificeren.  Het moet uniek zijn binnen het lab.
-7. Het **parameter bestand** en de **para meters**, toestaan dat aangepaste para meters worden door gegeven aan de omgeving. Een van beide of beide kunnen worden gebruikt om de parameter waarden in te stellen. Voor dit voor beeld wordt de sectie para meters gebruikt. Gebruik de namen van de variabelen die u hebt gedefinieerd in de omgeving, bijvoorbeeld: `-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
-8. Gegevens in de omgevings sjabloon kunnen worden door gegeven in de sectie uitvoer van de sjabloon. Controleer **uitvoer variabelen maken op basis van de uitvoer van de omgevings sjabloon** , zodat andere taken de gegevens kunnen gebruiken. `$(Reference name.Output Name)` is het patroon dat moet worden gevolgd. Als de naam van de referentie bijvoorbeeld DTL is en de naam van de uitvoer in de sjabloon de locatie van de variabele zou zijn `$(DTL.location)`.
+1. Selecteer taken **toevoegen**in de releasedefinitie .
+2. Voeg op het tabblad **Taken** een taak Azure DevTest Labs Create Create toe. Configureer de taak als volgt:
+    1. Selecteer voor **Azure RM-abonnement**een verbinding in de lijst **Beschikbare Azure-serviceverbindingen** of maak een verbinding met beperktere machtigingen met uw Azure-abonnement. Zie [Eindpunt azure resource manager-service voor](/azure/devops/pipelines/library/service-endpoints)meer informatie .
+2. Selecteer **voor Labname**de naam van de instantie die u eerder hebt gemaakt*.
+3. Selecteer **voor Repository Name**de opslagplaats waar naar de sjabloon Resourcemanager (201) is gepusht*.
+4. Selecteer **bij Sjabloonnaam**de naam van de omgeving die u hebt opgeslagen in uw broncodeopslagplaats*. 
+5. De **labnaam**, **repositorynaam**en **sjabloonnaam** zijn de vriendelijke weergaven van de Azure-bron-id's. Als u handmatig de vriendelijke naam invoert, worden fouten veroorzaakt, gebruikt u de vervolgkeuzelijsten om de informatie te selecteren.
+6. Voer **voor Omgevingsnaam**een naam in om de omgevingsinstantie in het lab op unieke wijze te identificeren.  Het moet uniek zijn in het lab.
+7. Met **het parameterbestand** en de **parameters**kunnen aangepaste parameters worden doorgegeven aan de omgeving. Een of beide kan worden gebruikt om de parameterwaarden in te stellen. Voor dit voorbeeld wordt de sectie Parameters gebruikt. Gebruik bijvoorbeeld de namen van de variabelen die u in de omgeving hebt gedefinieerd:`-administratorLogin "$(administratorLogin)" -administratorLoginPassword "$(administratorLoginPassword)" -databaseName "$(databaseName)" -cacheSKUCapacity 1`
+8. Informatie binnen de omgevingssjabloon kan worden doorgegeven in het uitvoergedeelte van de sjabloon. Schakel **Uitvoervariabelen maken op basis van de uitvoer van de omgevingssjabloon** in, zodat andere taken de gegevens kunnen gebruiken. `$(Reference name.Output Name)`is het patroon te volgen. Als de referentienaam bijvoorbeeld DTL was en de uitvoernaam in `$(DTL.location)`de sjabloon locatie was, zou de variabele .
 
 ## <a name="delete-the-environment"></a>De omgeving verwijderen
-In de laatste fase verwijdert u de omgeving die u in uw Azure DevTest Labs-exemplaar hebt geïmplementeerd. Normaal gesp roken verwijdert u de omgeving nadat u de ontwikkel taken hebt uitgevoerd of voert u de tests uit die u nodig hebt op de geïmplementeerde resources.
+De laatste stap is het verwijderen van de omgeving die u hebt geïmplementeerd in uw Azure DevTest Labs-exemplaar. U verwijdert de omgeving normaal gesproken nadat u de dev-taken hebt uitgevoerd of de tests uitvoert die u nodig hebt op de geïmplementeerde resources.
 
-Selecteer in de release definitie **taken toevoegen**en voeg vervolgens op het tabblad **implementeren** een **Azure DevTest Labs omgeving verwijderen** -taak toe. Configureer deze als volgt:
+Selecteer in de releasedefinitie **Taken toevoegen**en voeg vervolgens op het tabblad **Implementeren** een taak Voor het verwijderen van **Azure DevTest Labs** toe. Configureer het als volgt:
 
-1. Als u de virtuele machine wilt verwijderen, raadpleegt u [Azure DevTest Labs taken](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks):
-    1. Voor **Azure RM-abonnement**, selecteert u een verbinding in de **beschikbare verbindingen van Azure Service** lijst of maak een meer beperkte machtigingen voor verbinding met uw Azure-abonnement. Zie voor meer informatie, [Azure Resource Manager-service-eindpunt](/azure/devops/pipelines/library/service-endpoints).
-    2. Selecteer bij **Lab-naam**het Lab waar de omgeving zich bevindt.
-    3. Voer bij **omgevings naam**de naam in van de omgeving die u wilt verwijderen.
-2. Voer een naam in voor de release definitie en sla deze op.
+1. Zie [Azure DevTest Labs-taken](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)als u de VM wilt verwijderen:
+    1. Selecteer voor **Azure RM-abonnement**een verbinding in de lijst **Beschikbare Azure-serviceverbindingen** of maak een verbinding met beperktere machtigingen met uw Azure-abonnement. Zie [Eindpunt azure resource manager-service voor](/azure/devops/pipelines/library/service-endpoints)meer informatie .
+    2. Selecteer **voor Labname**het lab waar de omgeving bestaat.
+    3. Voer **bij Omgevingsnaam**de naam in van de te verwijderen omgeving.
+2. Voer een naam in voor de releasedefinitie en sla deze op.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen: 
-- [Maak omgevingen met meerdere vm's met Resource Manager-sjablonen](devtest-lab-create-environment-from-arm.md).
-- Quick Start-sjablonen voor DevTest Labs Automation van de [DevTest Labs github-opslag plaats](https://github.com/Azure/azure-quickstart-templates).
-- [Pagina VSTS problemen oplossen](/azure/devops/pipelines/troubleshooting)
+- [Meerdere VM-omgevingen maken met Resource Manager-sjablonen](devtest-lab-create-environment-from-arm.md).
+- Quickstart Resource Manager-sjablonen voor DevTest Labs-automatisering vanuit de [GitHub-repository van DevTest Labs.](https://github.com/Azure/azure-quickstart-templates)
+- [PAGINA VSTS-probleemoplossing](/azure/devops/pipelines/troubleshooting)
 

@@ -1,6 +1,6 @@
 ---
-title: SSIS-pakketten uitvoeren vanuit SSDT
-description: Meer informatie over het uitvoeren van SSIS-pakketten in azure vanuit SSDT.
+title: SSIS-pakketten uitvoeren vanaf SSDT
+description: Meer informatie over het uitvoeren van SSIS-pakketten in Azure vanuit SSDT.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -13,96 +13,96 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
 ms.openlocfilehash: 5f21623af9b89bbb020063dfb72f7b60e65a6ebe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927712"
 ---
-# <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSIS-pakketten uitvoeren in azure vanuit SSDT
-In dit artikel wordt de functie van SSIS-projecten (Azure-enabled SQL Server Integration Services) beschreven op SQL Server Data Tools (SSDT), waarmee u pakketten kunt uitvoeren op Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF).  U kunt deze functie gebruiken om uw bestaande SSIS-pakketten te testen voordat u de & Shift/migreert naar Azure of om nieuwe SSIS-pakketten te ontwikkelen om uit te voeren in Azure.
+# <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSIS-pakketten uitvoeren in Azure vanuit SSDT
+In dit artikel wordt de functie beschreven van SQL Server Integration Services(SSIS)-projecten (Azure-enabled) op SQL Server Data Tools (SSDT), waarmee u pakketten uitvoeren op Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF).  U deze functie gebruiken om uw bestaande SSIS-pakketten te testen voordat u ze & shift/migreren naar Azure optilt of om nieuwe SSIS-pakketten te ontwikkelen die in Azure worden uitgevoerd.
 
-Met deze functie kunt u een nieuwe Azure-SSIS IR maken of een bestaande toevoegen aan SSIS-projecten en vervolgens uw pakketten hierop uitvoeren.  We ondersteunen het uitvoeren van pakketten die moeten worden geïmplementeerd in de SSIS-catalogus (SSISDB) in het implementatie model van het project en die moeten worden geïmplementeerd in bestands systemen/bestands shares/Azure Files in pakket implementatie model. 
+Met deze functie u een nieuwe Azure-SSIS IR maken of een bestaande koppelen aan SSIS-projecten en vervolgens uw pakketten erop uitvoeren.  We ondersteunen het uitvoeren van pakketten die moeten worden geïmplementeerd in de SSIS-catalogus (SSISDB) in projectimplementatiemodel en pakketten die moeten worden geïmplementeerd in bestandssystemen/bestandsshares/Azure-bestanden in het implementatiemodel voor pakketten. 
 
 ## <a name="prerequisites"></a>Vereisten
-Als u deze functie wilt gebruiken, moet u de meest recente SSDT met SSIS projects-extensie voor Visual Studio van [hier of als](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) zelfstandig installatie programma downloaden en [installeren.](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)
+Om deze functie te gebruiken, u downloaden en installeren van de nieuwste SSDT met SSIS Projects extensie voor Visual Studio van [hier](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) of als een standalone installer vanaf [hier](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer).
 
-## <a name="azure-enable-ssis-projects"></a>Azure-SSIS-projecten inschakelen
-Op SSDT kunt u nieuwe Azure-SSIS-projecten maken met behulp van de sjabloon voor het **Integration Services-project (Azure-enabled)** .
+## <a name="azure-enable-ssis-projects"></a>Azure-enable SSIS-projecten
+Op SSDT u nieuwe Azure-enabled SSIS-projecten maken met de sjabloon **Integration Services Project (Azure-Enabled).**
 
-![Nieuw Azure-SSIS-project](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-new-project.png)
+![Nieuw Azure-enabled SSIS-project](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-new-project.png)
 
-U kunt ook uw bestaande SSIS-projecten inschakelen door met de rechter muisknop op het project knooppunt in Solution Explorer scherm van SSDT te klikken om een menu te openen en vervolgens het menu **-item met Azure-functionaliteit** te selecteren.
+U ook uw bestaande SSIS-projecten inschakelen door met de rechtermuisknop op het projectknooppunt in het deelvenster Solution Explorer van SSDT te klikken om een menu te pop-upen en vervolgens het **menu-item met Azure-ingeschakeld** te selecteren.
 
-![Azure-bestaand SSIS-project inschakelen](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-existing-project.png)
+![Bestaand SSIS-project voor Azure inschakelen](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-existing-project.png)
 
-Als u uw bestaande SSIS-projecten wilt inschakelen, moet u de versie van de doel server zo instellen dat deze het meest recent is als wordt ondersteund door Azure-SSIS IR, die momenteel **SQL Server 2017**, dus als u dit nog niet hebt gedaan, wordt er een dialoog venster weer gegeven met de pop-up.
+Voor Azure-inschakelen van uw bestaande SSIS-projecten moet u instellen dat de doelserverversie de nieuwste is die wordt ondersteund door Azure-SSIS IR, dat momenteel **SQL Server 2017**is, dus als u dit nog niet hebt gedaan, verschijnt er een dialoogvenster om dit te doen.
 
-## <a name="connect-azure-enabled-projects-to-ssis-in-azure-data-factory"></a>Verbinding maken met Azure-projecten op SSIS in Azure Data Factory
-Door uw Azure-projecten te koppelen aan SSIS in ADF, kunt u uw pakketten uploaden naar Azure Files en deze uitvoeren op Azure-SSIS IR.  Voer hiervoor de volgende stappen uit:
+## <a name="connect-azure-enabled-projects-to-ssis-in-azure-data-factory"></a>Azure-projecten verbinden met SSIS in Azure Data Factory
+Door uw Azure-projecten te koppelen aan SSIS in ADF, u uw pakketten uploaden naar Azure-bestanden en deze uitvoeren op Azure-SSIS IR.  Volg hiervoor de volgende stappen:
 
-1. Klik met de rechter muisknop op het knoop punt project of **gekoppelde Azure-resources** in Solution Explorer scherm van SSDT om een menu te openen en selecteer het menu-item **verbinding maken met SSIS in azure Data Factory** om de **wizard SSIS in de ADF-verbinding**te starten.
+1. Klik met de rechtermuisknop op het menu-item Project of **Gekoppeld azure resources** in het deelvenster Solution Explorer van SSDT om een menu op te starten en selecteer het menu-item Verbinding maken met **SSIS in Azure Data Factory** om het SSIS te starten in de wizard **ADF-verbinding**.
 
    ![Verbinding maken met SSIS in ADF](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-existing-project2.png)
 
-2. Lees de inleiding op de pagina **SSIS in ADF** (Inleiding) en klik op de knop **volgende** om door te gaan.
+2. Bekijk op de pagina **SSIS in ADF-inleiding** de inleiding en klik op **Volgende** om door te gaan.
 
-   ![Introductie van SSIS in ADF](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard.png)
+   ![SSIS in ADF-inleiding](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard.png)
 
-3. Selecteer op de pagina **SSIS IR selecteren op ADF** de bestaande ADF en Azure-SSIS IR om pakketten uit te voeren of nieuwe te maken als u er nog geen hebt.
-   - Als u uw bestaande Azure-SSIS IR wilt selecteren, selecteert u eerst het relevante Azure-abonnement en de ADF.
-   - Als u uw bestaande ADF selecteert die geen Azure-SSIS IR heeft, klikt u op de knop **SSIS-IR maken** om een nieuwe te maken op de ADF-portal of-app.
-   - Als u uw bestaande Azure-abonnement selecteert dat geen ADF heeft, klikt u op de knop **SSIS-IR maken** om de **wizard Integration runtime maken**te starten. hier kunt u de locatie en het voor voegsel voor ons opgeven om automatisch een nieuwe Azure-resource groep, Data Factory en SSIS IR te maken voor uw naam, met de naam in het volgende patroon: **YourPrefix-RG/DF/IR-YourCreationTime**.
+3. Selecteer op de pagina **Selecteer SSIS IR op ADF** uw bestaande ADF en Azure-SSIS IR om pakketten uit te voeren of nieuwe pakketten te maken als u die niet hebt.
+   - Als u uw bestaande Azure-SSIS IR wilt selecteren, selecteert u eerst het relevante Azure-abonnement en ADF.
+   - Als u uw bestaande ADF selecteert zonder Azure-SSIS IR, klikt u op de knop **SSIS IR maken** om een nieuwe adf-portal/-app te maken.
+   - Als u uw bestaande Azure-abonnement selecteert zonder ADF, klikt u op de knop **SSIS IR maken** om de **wizard Integratieruntime-creatie**te starten, waar u de locatie en het voorvoegsel invoeren om automatisch een nieuwe Azure Resource Group, Data Factory en SSIS IR te maken, genoemd in het volgende patroon: **YourPrefix-RG/DF/IR-YourCreationTime**.
    
    ![SSIS IR selecteren in ADF](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
 
-4. Selecteer op de pagina **Azure Storage selecteren** uw bestaande Azure Storage account om pakketten naar Azure files te uploaden of maak een nieuwe als u er geen hebt.
-   - Als u uw bestaande Azure Storage account wilt selecteren, selecteert u eerst het relevante Azure-abonnement.
-   - Als u hetzelfde Azure-abonnement hebt als uw Azure-SSIS IR dat geen Azure Storage-account heeft, klikt u op de knop **Azure Storage maken** voor ons om automatisch een nieuwe te maken op dezelfde locatie als uw Azure-SSIS IR, met de naam door een voor voegsel van uw Azure-SSIS IR naam en de aanmaak datum te combi neren.
-   - Als u een ander Azure-abonnement selecteert dat geen Azure Storage account heeft, klikt u op de knop **Azure Storage maken** om een nieuwe te maken op Azure Portal.
+4. Selecteer **op** de pagina Azure Storage selecteren uw bestaande Azure Storage-account om pakketten te uploaden naar Azure-bestanden of een nieuwe te maken als u die niet hebt.
+   - Als u uw bestaande Azure Storage-account wilt selecteren, selecteert u eerst het relevante Azure-abonnement.
+   - Als u hetzelfde Azure-abonnement selecteert als uw Azure-SSIS IR zonder Azure Storage-account, klikt u op de knop **Azure-opslag maken** voor ons om automatisch een nieuw abonnement namens u te maken op dezelfde locatie als uw Azure-SSIS IR, genoemd door een voorvoegsel van uw Azure-SSIS IR-naam en de aanmaakdatum te combineren.
+   - Als u een ander Azure-abonnement selecteert zonder Een Azure Storage-account, klikt u op de knop **Azure-opslag maken** om een nieuw azure-abonnement te maken.
    
    ![Azure Storage selecteren](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
 
-5. Klik op de knop **verbinding maken** om de verbinding te volt ooien.  Uw geselecteerde Azure-SSIS IR en Azure Storage account worden weer gegeven onder het knoop punt **gekoppelde Azure-resources** in Solution Explorer paneel van SSDT.  We vernieuwen ook de status van uw Azure-SSIS IR, terwijl u deze kunt beheren door met de rechter muisknop op het knoop punt te klikken om een menu te openen en vervolgens het **Start\Stop\Manage** menu-item te selecteren dat u naar de ADF-Portal/-app gaat.
+5. Klik op de **knop Verbinding maken** om de verbinding te voltooien.  We geven uw geselecteerde Azure-SSIS IR- en Azure Storage-account weer onder het knooppunt **Linked Azure Resources** in het deelvenster Solution Explorer van SSDT.  We vernieuwen ook de status van uw Azure-SSIS IR, terwijl u deze beheren door met de rechtermuisknop op het knooppunt te klikken om een menu te verschijnen en vervolgens het **menu-item Start\Stop\Beheren** te selecteren dat u naar adf-portal/app brengt om dit te doen.
 
-## <a name="execute-ssis-packages-in-azure"></a>SSIS-pakketten uitvoeren in azure
-### <a name="starting-package-executions"></a>Pakket uitvoeringen starten
-Nadat u uw projecten hebt verbonden met SSIS in ADF, kunt u pakketten uitvoeren op Azure-SSIS IR.  U hebt twee opties om pakket uitvoeringen te starten:
--  Klik op de knop Start op de werk balk van de SSDT om een menu te **openen** en de menu opdracht **uitvoeren in azure** te selecteren 
+## <a name="execute-ssis-packages-in-azure"></a>SSIS-pakketten uitvoeren in Azure
+### <a name="starting-package-executions"></a>Uitvoeringen van het startpakket
+Nadat u uw projecten hebt aangesloten op SSIS in ADF, u pakketten uitvoeren op Azure-SSIS IR.  U hebt twee opties om pakketuitvoeringen te starten:
+-  Klik op de knop **Start** op de werkbalk SSDT om een menu af te zetten en het **menu-item Uitvoeren in Azure te** selecteren 
 
-   ![Uitvoeren in azure](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package.png)
+   ![Uitvoeren in Azure](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package.png)
 
--  Klik met de rechter muisknop op het knoop punt package in Solution Explorer scherm van SSDT om een menu te openen en het **pakket uitvoeren in azure** menu-item te selecteren.
+-  Klik met de rechtermuisknop op het pakketknooppunt in het deelvenster Solution Explorer van SSDT om een menu op te starten en het pakket uitvoeren in Azure-menu-item **te** selecteren.
 
-   ![Pakket uitvoeren in azure](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package2.png)
-
-> [!NOTE]
-> Voor het uitvoeren van uw pakketten in azure moet u een actief Azure-SSIS IR hebben, dus als uw Azure-SSIS IR is gestopt, wordt er een dialoog venster weer gegeven met de pop-up om het te starten.  Als u een aangepaste instel tijd wilt uitsluiten, moet dit proces binnen vijf minuten worden voltooid, maar kan het ongeveer 20-30 minuten duren voordat Azure-SSIS IR lid wordt van een virtueel netwerk.  Nadat u uw pakketten hebt uitgevoerd in azure, kunt u uw Azure-SSIS IR voor het beheren van de lopende kosten stoppen door met de rechter muisknop op het knoop punt in Solution Explorer scherm van SSDT te klikken om een menu te openen en vervolgens de **Start\Stop\Manage** menu opdracht te selecteren die u naar de ADF-Portal/-app gaat.
-
-### <a name="checking-package-execution-logs"></a>Uitvoer logboeken voor het pakket controleren
-Wanneer u de pakket uitvoering start, zullen we het logboek opmaken en weer geven in het voortgangs venster van SSDT.  Voor een langlopend pakket wordt het logboek periodiek bijgewerkt op basis van de minuten.  U kunt de uitvoering van het pakket stoppen door te klikken op de knop **stoppen** op de werk balk van de SSDT, die deze onmiddellijk annuleert.  U kunt ook de onbewerkte gegevens in het logboek tijdelijk vinden in het UNC-pad (Universal Naming Convention): `\\<YourConnectedAzureStorage>.file.core.windows.net\ssdtexecution\<YourProjectName-FirstConnectTime>\<YourPackageName-tmp-ExecutionTime>\logs`, maar we zullen het na één dag opschonen.
-
-### <a name="switching-package-protection-level"></a>Niveau van pakket beveiliging overschakelen
-Het uitvoeren van SSIS-pakketten in Azure biedt geen ondersteuning voor **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** -beveiligings niveaus.  Als uw pakketten echter worden geconfigureerd met deze, zullen we deze tijdelijk overschakelen naar **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**, met wille keurig gegenereerde wacht woorden wanneer we uw pakketten uploaden naar Azure files voor uitvoering op uw Azure-SSIS IR.
+   ![Pakket uitvoeren in Azure](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-execute-package2.png)
 
 > [!NOTE]
-> Als uw pakketten uitvoerings pakket taken bevatten die verwijzen naar andere pakketten die zijn geconfigureerd met **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey** -beveiligings niveaus, moet u die andere pakketten hand matig opnieuw configureren om **EncryptSensitiveWithPassword**/**EncryptAllWithPassword**te gebruiken voordat u de pakketten uitvoert.
+> Voor het uitvoeren van uw pakketten in Azure moet u een azure-SSIS IR hebben, dus als uw Azure-SSIS IR is gestopt, verschijnt er een dialoogvenster om het te starten.  Zonder aangepaste insteltijd moet dit proces binnen 5 minuten zijn voltooid, maar kan het ongeveer 20 - 30 minuten duren voordat Azure-SSIS IR een virtueel netwerk heeft.  Nadat u uw pakketten in Azure hebt uitgevoerd, u uw Azure-SSIS IR stoppen om de bedrijfskosten te beheren door met de rechtermuisknop op het knooppunt in het deelvenster Solution Explorer van SSDT te klikken om een menu te verschijnen en vervolgens het **menu-item Start\Stop\Manage** te selecteren dat u naar adf-portal/app brengt om dit te doen.
 
-Als uw pakketten al zijn geconfigureerd met **EncryptSensitiveWithPassword**/**EncryptAllWithPassword** -beveiligings niveaus, blijven ze ongewijzigd, maar worden er nog steeds gegenereerde wacht woorden gebruikt wanneer we uw pakketten uploaden naar Azure files voor uitvoering op uw Azure-SSIS IR.
+### <a name="checking-package-execution-logs"></a>Logboeken voor pakketuitvoering controleren
+Wanneer u de uitvoering van het pakket start, maken we het logboek op en weerin het voortgangsvenster van SSDT.  Voor een langlopend pakket zullen we het logboek periodiek bijwerken met de minuten.  U de uitvoering van uw pakket stoppen door op de knop **Stoppen** op de werkbalk SSDT te klikken die het onmiddellijk zal annuleren.  U ook tijdelijk vinden van de log ruwe gegevens `\\<YourConnectedAzureStorage>.file.core.windows.net\ssdtexecution\<YourProjectName-FirstConnectTime>\<YourPackageName-tmp-ExecutionTime>\logs`in haar Universal Naming Convention (UNC) pad:, maar we zullen het opruimen na een dag.
 
-### <a name="using-package-configuration-file"></a>Pakket configuratie bestand gebruiken
-Als u pakket configuratie bestanden in het pakket implementatie model gebruikt om variabele waarden tijdens runtime te wijzigen, worden deze bestanden automatisch met uw pakketten naar Azure Files geüpload voor uitvoering op uw Azure-SSIS IR.
+### <a name="switching-package-protection-level"></a>Schakelpakketbeveiligingsniveau
+Het uitvoeren van SSIS-pakketten in Azure biedt geen ondersteuning **voor EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey-beveiligingsniveaus.**  Als uw pakketten hiermee zijn geconfigureerd, schakelen we ze dus tijdelijk over naar **encryptsensitiveWithPassword**/**EncryptAllWithPassword**, respectievelijk met willekeurig gegenereerde wachtwoorden wanneer we uw pakketten uploaden naar Azure Files voor uitvoering op uw Azure-SSIS IR.
 
-### <a name="using-execute-package-task"></a>De taak pakket uitvoeren gebruiken
-Als uw pakketten uitvoerings pakket taken bevatten die verwijzen naar andere pakketten die zijn opgeslagen op lokale bestands systemen, moet u de volgende aanvullende instellingen uitvoeren:
+> [!NOTE]
+> Als uw pakketten Uitvoerpakkettaken bevatten die verwijzen naar andere pakketten die zijn geconfigureerd met **EncryptSensitiveWithUserKey**/**EncryptAllWithUserKey-beveiligingsniveaus,** moet u die andere pakketten handmatig opnieuw configureren om **respectievelijk EncryptSensitiveWithPassword**/**EncryptAllWithPassword**te gebruiken voordat u uw pakketten uitvoert.
 
-1. Upload de andere pakketten naar Azure Files onder hetzelfde Azure Storage account dat is verbonden met uw projecten en ontvang het nieuwe UNC-pad, bijvoorbeeld `\\test.file.core.windows.net\ssdtexecution\Package1.dtsx`
+Als uw pakketten al zijn geconfigureerd met **EncryptSensitiveWithPassword**/**EncryptAllWithPassword-beveiligingsniveaus,** blijven ze ongewijzigd, maar gebruiken we nog steeds willekeurig gegenereerde wachtwoorden wanneer we uw pakketten uploaden naar Azure-bestanden voor uitvoering op uw Azure-SSIS IR.
 
-2. Vervang het bestandspad van de andere pakketten in het bestands verbindings beheer van pakket taken uitvoeren met het nieuwe UNC-pad
-   - Als uw computer met SSDT geen toegang krijgt tot het nieuwe UNC-pad, kunt u het bestandspad wijzigen in het deel venster Eigenschappen van bestands verbindings beheer
-   - U kunt ook een variabele voor het bestandspad gebruiken om de juiste waarde toe te wijzen tijdens runtime
+### <a name="using-package-configuration-file"></a>Pakketconfiguratiebestand gebruiken
+Als u pakketconfiguratiebestanden in het pakketimplementatiemodel gebruikt om variabele waarden te wijzigen tijdens uitvoering, uploaden we deze bestanden met uw pakketten automatisch naar Azure-bestanden voor uitvoering op uw Azure-SSIS IR.
 
-Als uw pakketten taken voor het uitvoeren van pakketten bevatten die verwijzen naar andere pakketten in hetzelfde project, hoeft u geen aanvullende installatie in te stellen.
+### <a name="using-execute-package-task"></a>Pakkettaak uitvoeren gebruiken
+Als uw pakketten Pakkettaken uitvoeren bevatten die verwijzen naar andere pakketten die zijn opgeslagen op lokale bestandssystemen, moet u de volgende aanvullende instellingen uitvoeren:
+
+1. Upload de andere pakketten naar Azure Files onder hetzelfde Azure Storage-account dat is verbonden met uw projecten en ontvang hun nieuwe UNC-pad, bijvoorbeeld.`\\test.file.core.windows.net\ssdtexecution\Package1.dtsx`
+
+2. Het bestandspad van die andere pakketten vervangen in bestandsverbindingsbeheer van pakkettaken uitvoeren door hun nieuwe UNC-pad
+   - Als uw machine met SSDT geen toegang heeft tot het nieuwe UNC-pad, u het bestandspad wijzigen in het deelvenster Eigenschappen van Bestandsverbindingsbeheer
+   - U ook een variabele voor het bestandspad gebruiken om de juiste waarde toe te wijzen tijdens het uitvoeren van
+
+Als uw pakketten Pakkettaken uitvoeren bevatten die verwijzen naar andere pakketten in hetzelfde project, is er geen extra installatie nodig.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zodra u tevreden bent met het uitvoeren van uw pakketten in azure van SSDT, kunt u deze implementeren en uitvoeren als run SSIS-pakket activiteiten in ADF-pijp lijnen. Zie [SSIS-pakketten uitvoeren als uitvoeren SSIS-pakket activiteiten in ADF-pijp lijnen](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Zodra u tevreden bent met het uitvoeren van uw pakketten in Azure vanuit SSDT, u ze implementeren en uitvoeren als SSIS-pakketactiviteiten uitvoeren in ADF-pijplijnen, zie [SSIS-pakketten uitvoeren als SSIS-pakketactiviteiten uitvoeren in ADF-pijplijnen.](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)

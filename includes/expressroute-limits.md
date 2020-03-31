@@ -8,28 +8,28 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1fc63dc53d61a8b2e26f97cc09a359b3f2c7665c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d1402bcc0c46003429e1809e8d09e9662218cd82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901876"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335107"
 ---
-| Bron | Standaard/maximum limiet |
+| Resource | Limiet |
 | --- | --- |
 | ExpressRoute-circuits per abonnement |10 |
 | ExpressRoute-circuits per regio per abonnement, met Azure Resource Manager |10 |
-| Het maximum aantal routes dat is geadverteerd voor persoonlijke Azure-peering met ExpressRoute Standard |4,000 |
-| Het maximum aantal routes dat is geadverteerd voor persoonlijke Azure-peering met de ExpressRoute Premium-invoeg toepassing |10.000 |
-| Het maximum aantal routes dat is geadverteerd vanuit persoonlijke Azure-peering vanuit de VNet-adres ruimte voor een ExpressRoute-verbinding |200 |
-| Maximum aantal routes dat is geadverteerd naar micro soft-peering met ExpressRoute Standard |200 |
-| Maximum aantal routes dat is geadverteerd naar micro soft-peering met ExpressRoute Premium-invoeg toepassing |200 |
-| Het maximum aantal ExpressRoute-circuits dat is gekoppeld aan hetzelfde virtuele netwerk op dezelfde peering-locatie |4 |
-| Het maximum aantal ExpressRoute-circuits dat is gekoppeld aan hetzelfde virtuele netwerk op verschillende peering locaties |4 |
-| Aantal toegestane virtuele netwerk koppelingen per ExpressRoute-circuit |Bekijk de tabel [aantal virtuele netwerken per ExpressRoute-circuit](#vnetpercircuit) .  |
+| Maximaal aantal routes geadverteerd voor Azure private peering met ExpressRoute Standard |4000 |
+| Maximaal aantal routes geadverteerd voor Azure private peering met ExpressRoute Premium add-on |10.000 |
+| Maximaal aantal routes geadverteerd vanuit Azure private peering vanuit de VNet-adresruimte voor een ExpressRoute-verbinding |200 |
+| Maximaal aantal routes geadverteerd aan Microsoft peering met ExpressRoute Standard |200 |
+| Maximaal aantal routes geadverteerd aan Microsoft peering met ExpressRoute Premium add-on |200 |
+| Maximum aantal ExpressRoute-circuits gekoppeld aan hetzelfde virtuele netwerk op dezelfde peeringlocatie |4 |
+| Maximum aantal ExpressRoute-circuits gekoppeld aan hetzelfde virtuele netwerk op verschillende peeringlocaties |4 |
+| Aantal toegestane virtuele netwerkkoppelingen per ExpressRoute-circuit |Bekijk het [aantal virtuele netwerken per expressroute-circuittabel.](#vnetpercircuit)  |
 
-#### <a name="vnetpercircuit"></a>Aantal virtuele netwerken per ExpressRoute-circuit
-| **Grootte van circuit** | **Aantal koppelingen naar virtuele netwerken voor Standard** | **Aantal koppelingen naar het virtuele netwerk met Premium-invoeg toepassing** |
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a>Aantal virtuele netwerken per ExpressRoute-circuit
+| **Circuitgrootte** | **Aantal virtuele netwerkkoppelingen voor Standard** | **Aantal virtuele netwerkkoppelingen met Premium-add-on** |
 | --- | --- | --- |
 | 50 Mbps |10 |20 |
 | 100 Mbps |10 |25 |
@@ -42,7 +42,7 @@ ms.locfileid: "75901876"
 | 40 Gbps* |10 |100 |
 | 100 Gbps* |10 |100 |
 
-**100 Gbps alleen direct ExpressRoute*
+**100 Gbps ExpressRoute Direct Alleen*
 
 > [!NOTE]
-> Global Reach aantal verbindingen voor de limiet van virtuele netwerk verbindingen per ExpressRoute-circuit. Met een Premium-circuit van 10 Gbps kunt u bijvoorbeeld 5 Global Reach verbindingen en 95 verbindingen met de ExpressRoute-gateways of 95 Global Reach verbindingen en vijf verbindingen met de ExpressRoute-gateways of een andere combi natie tot Maxi maal 100 verbindingen toestaan voor het circuit.
+> Global Reach-verbindingen tellen mee voor de limiet van virtuele netwerkverbindingen per ExpressRoute Circuit. Een 10 Gbps Premium Circuit zou bijvoorbeeld 5 Global Reach-verbindingen en 95-verbindingen met de ExpressRoute-gateways of 95 Global Reach-verbindingen en 5 verbindingen met de ExpressRoute-gateways of een andere combinatie tot de limiet van 100 verbindingen mogelijk maken voor het circuit.

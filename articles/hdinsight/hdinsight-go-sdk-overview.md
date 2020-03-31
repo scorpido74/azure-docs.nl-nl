@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight SDK voor Go
-description: Referentie materiaal voor het gebruik van Azure HDInsight SDK voor Go-en Apache Hadoop-clusters
+title: Azure HDInsight SDK voor onderweg
+description: Referentiemateriaal voor het gebruik van Azure HDInsight SDK for Go- en Apache Hadoop-clusters
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,48 +8,48 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
-ms.openlocfilehash: 065165ddb629f0629e9b895dbad5ee33605f8bc1
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658879"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479583"
 ---
-# <a name="hdinsight-sdk-for-go-preview"></a>HDInsight-SDK voor Go (preview-versie)
+# <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for Go (Preview)
 
 ## <a name="overview"></a>Overzicht
-De HDInsight-SDK voor Go biedt klassen en functies waarmee u uw HDInsight-clusters kunt beheren. Het bevat bewerkingen voor het maken, verwijderen, bijwerken, weer geven, verg Roten/verkleinen, script acties uitvoeren, bewaken, eigenschappen van HDInsight-clusters ophalen, en meer.
+De HDInsight SDK for Go biedt klassen en functies waarmee u uw HDInsight-clusters beheren. Het bevat bewerkingen voor het maken, verwijderen, bijwerken, aanbieden, vergroten, scriptacties uitvoeren, monitoren, eigenschappen van HDInsight-clusters opdoen en meer.
 
 > [!NOTE]  
->GoDoc-referentie materiaal voor deze SDK is [hier ook beschikbaar](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
+>GoDoc referentiemateriaal voor deze SDK is ook [hier beschikbaar.](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een [`go get` hulp programma](https://github.com/golang/go/wiki/GoGetTools).
-* [Go](https://golang.org/dl/).
+* Een [ `go get` hulpmiddel.](https://github.com/golang/go/wiki/GoGetTools)
+* [Ga.](https://golang.org/dl/)
 
 ## <a name="sdk-installation"></a>SDK-installatie
 
-Voer `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight` uit op de locatie van uw GOPATH
+Uitvoeren vanaf uw GOPATH-locatie`go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
 ## <a name="authentication"></a>Authentication
 
-De SDK moet eerst worden geverifieerd met uw Azure-abonnement.  Volg het onderstaande voor beeld om een service-principal te maken en te verifiëren. Nadat u dit hebt gedaan, hebt u een exemplaar van een `ClustersClient`, dat veel functies bevat (beschreven in de onderstaande secties) die kunnen worden gebruikt om beheer bewerkingen uit te voeren.
+De SDK moet eerst worden geverifieerd met uw Azure-abonnement.  Volg het onderstaande voorbeeld om een serviceprincipal te maken en deze te gebruiken om te verifiëren. Nadat dit is gedaan, hebt u `ClustersClient`een instantie van een , die veel functies bevat (beschreven in onderstaande secties) die kunnen worden gebruikt om beheerbewerkingen uit te voeren.
 
 > [!NOTE]  
-> Er zijn andere manieren om te verifiëren naast het onderstaande voor beeld dat mogelijk beter geschikt is voor uw behoeften. Alle functies worden hier beschreven: [verificatie functies in de Azure SDK voor Go](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
+> Er zijn andere manieren om te verifiëren naast het onderstaande voorbeeld dat mogelijk beter geschikt is voor uw behoeften. Alle functies worden hier beschreven: [verificatiefuncties in de Azure SDK for Go](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
 
-### <a name="authentication-example-using-a-service-principal"></a>Voor beeld van verificatie met behulp van een Service-Principal
+### <a name="authentication-example-using-a-service-principal"></a>Voorbeeld van verificatie met behulp van een serviceprincipal
 
-Meld u eerst aan bij [Azure Cloud shell](https://shell.azure.com/bash). Controleer of u momenteel het abonnement gebruikt waarin u de Service-Principal wilt maken.
+Log eerst in bij [Azure Cloud Shell](https://shell.azure.com/bash). Controleer of u momenteel het abonnement gebruikt waarin u de serviceprincipal wilt maken.
 
 ```azurecli-interactive
 az account show
 ```
 
-Uw abonnements gegevens worden weer gegeven als JSON.
+Uw abonnementsgegevens worden weergegeven als JSON.
 
 ```json
 {
@@ -67,24 +67,24 @@ Uw abonnements gegevens worden weer gegeven als JSON.
 }
 ```
 
-Als u niet bent aangemeld bij het juiste abonnement, selecteert u de juiste versie door uit te voeren: 
+Als u niet bent aangemeld bij het juiste abonnement, selecteert u het juiste abonnement door het juiste abonnement uit te voeren: 
 ```azurecli-interactive
 az account set -s <name or ID of subscription>
 ```
 
 > [!IMPORTANT]  
-> Als u de HDInsight-resource provider nog niet hebt geregistreerd door een andere functie (bijvoorbeeld door het maken van een HDInsight-cluster via de Azure Portal), moet u dit eenmaal doen voordat u kunt verifiëren. U kunt dit doen via de [Azure Cloud shell](https://shell.azure.com/bash) door de volgende opdracht uit te voeren:
+> Als u de HDInsight Resource Provider nog niet hebt geregistreerd via een andere functie (bijvoorbeeld door een HDInsight-cluster te maken via de Azure-portal), moet u dit één keer doen voordat u verifiëren. Dit kan vanuit de [Azure Cloud Shell](https://shell.azure.com/bash) door de volgende opdracht uit te voeren:
 >```azurecli-interactive
 >az provider register --namespace Microsoft.HDInsight
 >```
 
-Vervolgens kiest u een naam voor de Service-Principal en maakt u deze met de volgende opdracht:
+Kies vervolgens een naam voor uw serviceprincipal en maak deze met de volgende opdracht:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name <Service Principal Name> --sdk-auth
 ```
 
-De gegevens van de service-principal worden weer gegeven als JSON.
+De hoofdinformatie van de service wordt weergegeven als JSON.
 
 ```json
 {
@@ -94,14 +94,13 @@ De gegevens van de service-principal worden weer gegeven als JSON.
   "tenantId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
   "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
   "galleryEndpointUrl": "https://gallery.azure.com/",
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
 
-Kopieer het onderstaande code fragment en vul `TENANT_ID`, `CLIENT_ID`, `CLIENT_SECRET`en `SUBSCRIPTION_ID` met de teken reeksen uit de JSON die zijn geretourneerd na het uitvoeren van de opdracht om de service-principal te maken.
+Kopieer het onderstaande `TENANT_ID`fragment `CLIENT_ID` `CLIENT_SECRET`en `SUBSCRIPTION_ID` vul in , en met de tekenreeksen van de JSON die is geretourneerd nadat de opdracht is uitgevoerd om de serviceprincipal te maken.
 
 ```golang
 package main
@@ -137,22 +136,22 @@ func main() {
 ## <a name="cluster-management"></a>Clusterbeheer
 
 > [!NOTE]  
-> In deze sectie wordt ervan uitgegaan dat u al een `ClusterClient` exemplaar hebt geauthenticeerd en geconstrueerd en opgeslagen in een variabele met de naam `client`. Instructies voor het verifiëren en verkrijgen van een `ClusterClient` vindt u in de sectie verificatie hierboven.
+> In deze sectie wordt ervan uitgegaan dat `ClusterClient` u een instantie al `client`hebt geverifieerd en gebouwd en deze hebt opgeslagen in een variabele die wordt genoemd . Instructies voor het verifiëren en `ClusterClient` verkrijgen van een u vinden in de sectie Verificatie hierboven.
 
 ### <a name="create-a-cluster"></a>Een cluster maken
 
-U kunt een nieuw cluster maken door `client.Create()`aan te roepen. 
+Een nieuw cluster kan `client.Create()`worden gemaakt door aan te roepen . 
 
 #### <a name="example"></a>Voorbeeld
 
-In dit voor beeld ziet u hoe u een [Apache Spark](https://spark.apache.org/) cluster maakt met twee hoofd knooppunten en één worker-knoop punt.
+In dit voorbeeld wordt uitgelegd hoe u een [Apache Spark-cluster](https://spark.apache.org/) maakt met twee hoofdknooppunten en één werkknooppunt.
 
 > [!NOTE]  
-> U moet eerst een resource groep en een opslag account maken, zoals hieronder wordt uitgelegd. Als u deze al hebt gemaakt, kunt u deze stappen overs Laan.
+> U moet eerst een resourcegroep en opslagaccount maken, zoals hieronder wordt uitgelegd. Als u deze al hebt gemaakt, u deze stappen overslaan.
 
 ##### <a name="creating-a-resource-group"></a>Een resourcegroep maken
 
-U kunt een resource groep maken met behulp van de [Azure Cloud shell](https://shell.azure.com/bash) door uit te voeren
+U een resourcegroep maken met de [Azure Cloud Shell](https://shell.azure.com/bash) door
 
 ```azurecli-interactive
 az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
@@ -160,20 +159,20 @@ az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
 
 ##### <a name="creating-a-storage-account"></a>Een opslagaccount maken
 
-U kunt een opslag account maken met behulp van de [Azure Cloud shell](https://shell.azure.com/bash) door uit te voeren:
+U een opslagaccount maken met de [Azure Cloud Shell](https://shell.azure.com/bash) door het uitvoeren van:
 
 ```azurecli-interactive
 az storage account create -n <Storage Account Name> -g <Existing Resource Group Name> -l <Region Name (i.e. eastus)> --sku <SKU i.e. Standard_LRS>
 ```
 
-Voer nu de volgende opdracht uit om de sleutel voor uw opslag account op te halen (u hebt deze nodig voor het maken van een cluster):
+Voer nu de volgende opdracht uit om de sleutel voor uw opslagaccount op te halen (u hebt dit nodig om een cluster te maken):
 
 ```azurecli-interactive
 az storage account keys list -n <Storage Account Name>
 ```
 
 ---
-Met het volgende code fragment wordt een Spark-cluster gemaakt met twee hoofd knooppunten en één worker-knoop punt. Vul de lege variabelen in, zoals wordt uitgelegd in de opmerkingen. u kunt andere para meters wijzigen op basis van uw specifieke behoeften.
+In het onderstaande Fragment Go wordt een Spark-cluster gemaakt met twee hoofdknooppunten en één werkknooppunt. Vul de lege variabelen in zoals uitgelegd in de opmerkingen en voel je vrij om andere parameters te wijzigen om aan uw specifieke behoeften te voldoen.
 
 ```golang
 // The name for the cluster you are creating
@@ -254,9 +253,9 @@ var parameters = hdi.ClusterCreateParametersExtended {
 client.Create(context.Background(), resourceGroupName, clusterName, parameters)
 ```
 
-### <a name="get-cluster-details"></a>Details van cluster ophalen
+### <a name="get-cluster-details"></a>Clustergegevens opvragen
 
-Eigenschappen voor een bepaald cluster ophalen:
+Ga als lid van het nieuwe cluster naar eigenschappen voor een bepaald cluster:
 
 ```golang
 client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
@@ -264,7 +263,7 @@ client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 
 #### <a name="example"></a>Voorbeeld
 
-U kunt `get` gebruiken om te bevestigen dat u uw cluster hebt gemaakt.
+U kunt `get` ervoor zorgen dat u uw cluster hebt gemaakt.
 
 ```golang
 cluster, err := client.Get(context.Background(), resourceGroupName, clusterName)
@@ -275,33 +274,33 @@ fmt.Println(*cluster.Name)
 fmt.Println(*cluster.ID
 ```
 
-De uitvoer moet er als volgt uitzien:
+De uitvoer moet eruit zien als:
 
 ```
 <Cluster Name>
 /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<Resource Group Name>/providers/Microsoft.HDInsight/clusters/<Cluster Name>
 ```
 
-### <a name="list-clusters"></a>Clusters weer geven
+### <a name="list-clusters"></a>Lijstclusters
 
-#### <a name="list-clusters-under-the-subscription"></a>Clusters weer geven onder het abonnement
+#### <a name="list-clusters-under-the-subscription"></a>Clusters onder het abonnement aanbieden
 
 ```golang
 client.List()
 ```
 
-#### <a name="list-clusters-by-resource-group"></a>Clusters op resource groep weer geven
+#### <a name="list-clusters-by-resource-group"></a>Clusters op resourcegroep weergeven
 
 ```golang
 client.ListByResourceGroup("<Resource Group Name>")
 ```
 
 > [!NOTE]  
-> Zowel `List()` als `ListByResourceGroup()` retour neren een `ClusterListResultPage` struct. Als u de volgende pagina wilt weer geven, kunt u `Next()`aanroepen. Dit kan worden herhaald totdat `ClusterListResultPage.NotDone()` `false`retourneert, zoals wordt weer gegeven in het onderstaande voor beeld.
+> Beide `List()` `ListByResourceGroup()` en `ClusterListResultPage` terug een struct. Om de volgende pagina te `Next()`krijgen, u bellen. Dit kan worden `ClusterListResultPage.NotDone()` `false`herhaald tot het rendement, zoals weergegeven in het onderstaande voorbeeld.
 
 #### <a name="example"></a>Voorbeeld
 
-In het volgende voor beeld worden de eigenschappen van alle clusters voor het huidige abonnement afgedrukt:
+In het volgende voorbeeld worden de eigenschappen van alle clusters voor het huidige abonnement afgedrukt:
 
 ```golang
 page, err := client.List(context.Background())
@@ -327,9 +326,9 @@ Een cluster verwijderen:
 client.Delete(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 ```
 
-### <a name="update-cluster-tags"></a>Cluster Tags bijwerken
+### <a name="update-cluster-tags"></a>Clustertags bijwerken
 
-U kunt de tags van een bepaald cluster als zodanig bijwerken:
+U de tags van een bepaald cluster zo bijwerken:
 
 ```golang
 client.Update(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ClusterPatchParameters{<map[string]*string} of Tags>)
@@ -341,9 +340,9 @@ client.Update(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 client.Update(context.Background(), "SDKTestRG", "SDKTest", hdi.ClusterPatchParameters{map[string]*string{"tag1Name" : to.StringPtr("tag1Value"), "tag2Name" : to.StringPtr("tag2Value")}})
 ```
 
-### <a name="resize-cluster"></a>Grootte van cluster wijzigen
+### <a name="resize-cluster"></a>Formaat van het formaat wijzigen
 
-U kunt het aantal worker-knoop punten van een opgegeven cluster verg Roten of verkleinen door een nieuwe grootte op te geven, bijvoorbeeld:
+U het formaat van het aantal werknemersknooppunten van een bepaald cluster wijzigen door een nieuwe grootte op te geven:
 
 ```golang
 client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ClusterResizeParameters{<Num of Worker Nodes (int)>})
@@ -351,9 +350,9 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 ## <a name="cluster-monitoring"></a>Clusterbewaking
 
-De HDInsight Management SDK kan ook worden gebruikt voor het beheren van bewaking op uw clusters met behulp van de operations management suite (OMS).
+De HDInsight Management SDK kan ook worden gebruikt om de monitoring op uw clusters te beheren via de Operations Management Suite (OMS).
 
-Net als bij de manier waarop u `ClusterClient` hebt gemaakt voor beheer bewerkingen, moet u een `ExtensionClient` maken dat u kunt gebruiken voor bewakings bewerkingen. Nadat u de sectie verificatie hierboven hebt voltooid, kunt u een `ExtensionClient` als volgt maken:
+Net als bij `ClusterClient` de manier waarop u hebt gemaakt `ExtensionClient` om te gebruiken voor beheerbewerkingen, moet u een te gebruiken voor bewakingsbewerkingen maken. Zodra u de bovenstaande sectie Verificatie hebt `ExtensionClient` voltooid, u een vind-ik-leukmaken:
 
 ```golang
 extClient := hdi.NewExtensionsClient(SUBSCRIPTION_ID)
@@ -361,22 +360,22 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> In de onderstaande controle voorbeelden wordt ervan uitgegaan dat u een `ExtensionClient` met de naam `extClient` al hebt geïnitialiseerd en dat u de `Authorizer` hebt ingesteld zoals hierboven wordt weer gegeven.
+> De onderstaande monitoring voorbeelden gaan ervan `ExtensionClient` `extClient` uit dat `Authorizer` u al een aangeroepen geparafeerd en zijn zoals hierboven weergegeven.
 
 ### <a name="enable-oms-monitoring"></a>OMS-bewaking inschakelen
 
 > [!NOTE]  
-> Als u OMS-bewaking wilt inschakelen, moet u een bestaande Log Analytics-werk ruimte hebben. Als u er nog geen hebt gemaakt, kunt u hier leren hoe u dit doet: [Maak een log Analytics-werk ruimte in de Azure Portal](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+> Als u OMS-controle wilt inschakelen, moet u over een bestaande Log Analytics-werkruimte beschikken. Als u er nog geen hebt gemaakt, u hier leren hoe u dat doen: [Een werkruimte logboekanalyse maken in de Azure-portal.](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)
 
-OMS-bewaking inschakelen op het cluster:
+Ga als volgt te werk om OMS-controle op uw cluster in te schakelen:
 
 ```golang
 extClient.EnableMonitoring(context.Background(), "<Resource Group Name", "Cluster Name", hdi.ClusterMonitoringRequest {WorkspaceID: to.StringPtr("<Workspace Id>")})
 ```
 
-### <a name="view-status-of-oms-monitoring"></a>Status van OMS-bewaking weer geven
+### <a name="view-status-of-oms-monitoring"></a>Status van OMS-monitoring weergeven
 
-De status van OMS op uw cluster ophalen:
+Ga als een te meer metde overdeslag voor DE S.A.S.
 
 ```golang
 extClient.GetMonitoringStatus(context.Background(), "<Resource Group Name", "Cluster Name")
@@ -384,29 +383,29 @@ extClient.GetMonitoringStatus(context.Background(), "<Resource Group Name", "Clu
 
 ### <a name="disable-oms-monitoring"></a>OMS-bewaking uitschakelen
 
-OMS op uw cluster uitschakelen:
+Ga als een schakelnaar met EEN OMS in uw cluster:
 
 ```golang
 extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Cluster Name")
 ```
 
-## <a name="script-actions"></a>Script acties
+## <a name="script-actions"></a>Scriptacties
 
-HDInsight biedt een configuratie functie met de naam script acties waarmee aangepaste scripts worden aangeroepen om het cluster aan te passen.
+HDInsight biedt een configuratiefunctie genaamd scriptacties die aangepaste scripts aanroepen om het cluster aan te passen.
 
 > [!NOTE]  
-> Meer informatie over het gebruik van script acties vindt u hier: [HDInsight-clusters op basis van Linux aanpassen met behulp van script acties](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)
+> Meer informatie over het gebruik van scriptacties vindt u hier: [Linux-gebaseerde HDInsight-clusters aanpassen met behulp van scriptacties](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)
 
-### <a name="execute-script-actions"></a>Script acties uitvoeren
+### <a name="execute-script-actions"></a>Scriptacties uitvoeren
 
-U kunt script acties uitvoeren op een bepaald cluster als zodanig:
+U scriptacties uitvoeren op een bepaald cluster, zoals:
 
 ```golang
 var scriptAction1 = hdi.RuntimeScriptAction{Name: to.StringPtr("<Script Name>"), URI: to.StringPtr("<URL To Script>"), Roles: <&[]string of roles>} //valid roles are "headnode", "workernode", "zookeepernode", and "edgenode"
 client.ExecuteScriptActions(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ExecuteScriptActionParameters{PersistOnSuccess: to.BoolPtr(true), ScriptActions: &[]hdi.RuntimeScriptAction{scriptAction1}}) //add more RuntimeScriptActions to the list to execute multiple scripts
 ```
 
-Voor de bewerkingen script actie verwijderen en lijst met persistente script acties moet u een `ScriptActionsClient`maken, op dezelfde manier als hoe u `ClusterClient` hebt gemaakt om te gebruiken voor beheer bewerkingen. Nadat u de sectie verificatie hierboven hebt voltooid, kunt u een `ScriptActionsClient` als volgt maken:
+Voor de bewerkingen 'Scriptactie verwijderen' en 'Lijst blijvende `ScriptActionsClient`scriptacties' moet u `ClusterClient` een , vergelijkbaar met de manier waarop u hebt gemaakt om te gebruiken voor beheerbewerkingen maken. Zodra u de bovenstaande sectie Verificatie hebt `ScriptActionsClient` voltooid, u een dergelijke maken:
 
 ```golang
 scriptActionsClient := hdi.NewScriptActionsClient(SUBSCRIPTION_ID)
@@ -414,22 +413,22 @@ scriptActionsClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> In de onderstaande script acties-voor beelden wordt ervan uitgegaan dat u een `ScriptActionsClient` met de naam `scriptActionsClient` al hebt geïnitialiseerd en dat u de `Authorizer` hebt ingesteld zoals hierboven wordt weer gegeven.
+> De onderstaande scriptacties voorbeelden aannemen dat `ScriptActionsClient` `scriptActionsClient` u al `Authorizer` een aangeroepen hebt geinitialiseerd en zijn hebt ingesteld zoals hierboven weergegeven.
 
-### <a name="delete-script-action"></a>Script actie verwijderen
+### <a name="delete-script-action"></a>Scriptactie verwijderen
 
-Een opgegeven persistente script actie verwijderen voor een bepaald cluster:
+Ga als lid van het nieuwe script als een uitgevoerd script actie op een bepaald cluster:
 
 ```golang
 scriptActionsClient.Delete(context.Background(), "<Resource Group Name>", "<Cluster Name>", "<Script Name>")
 ```
 
-### <a name="list-persisted-script-actions"></a>Permanente script acties weer geven
+### <a name="list-persisted-script-actions"></a>Doorgaande scriptacties weerhouden
 
 > [!NOTE]  
-> Beide `ListByCluster()` retourneert een `ScriptActionsListPage` struct. Als u de volgende pagina wilt weer geven, kunt u `Next()`aanroepen. Dit kan worden herhaald totdat `ClusterListResultPage.NotDone()` `false`retourneert, zoals wordt weer gegeven in het onderstaande voor beeld.
+> Beide `ListByCluster()` keren `ScriptActionsListPage` terug een struct. Om de volgende pagina te `Next()`krijgen, u bellen. Dit kan worden `ClusterListResultPage.NotDone()` `false`herhaald tot het rendement, zoals weergegeven in het onderstaande voorbeeld.
 
-Voor het weer geven van alle persistente script acties voor het opgegeven cluster:
+Ga als lid van het nieuwe cluster naar een lijst met alle aanhoudende scriptacties voor het opgegeven cluster:
 ```golang
 scriptActionsClient.ListByCluster(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 ```
@@ -452,9 +451,9 @@ for (page.NotDone()) {
 }
 ```
 
-### <a name="list-all-scripts-execution-history"></a>De uitvoerings geschiedenis van alle scripts weer geven
+### <a name="list-all-scripts-execution-history"></a>De uitvoeringsgeschiedenis van alle scripts weergeven
 
-Voor deze bewerking moet u een `ScriptExecutionHistoryClient`maken, op dezelfde manier als u `ClusterClient` hebt gemaakt om te gebruiken voor beheer bewerkingen. Nadat u de sectie verificatie hierboven hebt voltooid, kunt u een `ScriptActionsClient` als volgt maken:
+Voor deze bewerking moet u `ScriptExecutionHistoryClient`een , vergelijkbaar `ClusterClient` met hoe u hebt gemaakt om te gebruiken voor beheerbewerkingen maken. Zodra u de bovenstaande sectie Verificatie hebt `ScriptActionsClient` voltooid, u een dergelijke maken:
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)
@@ -462,9 +461,9 @@ scriptExecutionHistoryClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> In de onderstaande stappen wordt ervan uitgegaan dat u een `ScriptExecutionHistoryClient` met de naam `scriptExecutionHistoryClient` al hebt geïnitialiseerd en dat u de `Authorizer` hebt ingesteld zoals hierboven wordt weer gegeven.
+> De onderstaande gaat ervan uit `ScriptExecutionHistoryClient` `scriptExecutionHistoryClient` dat u `Authorizer` al een aangeroepen hebt geparafeerd en zijn zoals hierboven weergegeven hebt ingesteld.
 
-De uitvoerings geschiedenis van alle scripts voor het opgegeven cluster weer geven:
+Ga als bedoeld als u de uitvoeringsgeschiedenis van alle scripts voor het opgegeven cluster wilt weergeven:
 
 ```golang
 scriptExecutionHistoryClient.ListByCluster(context.Background(), "<Resource Group Name>", "<Cluster Name>")
@@ -472,7 +471,7 @@ scriptExecutionHistoryClient.ListByCluster(context.Background(), "<Resource Grou
 
 #### <a name="example"></a>Voorbeeld
 
-In dit voor beeld worden alle gegevens voor alle eerdere script uitvoeringen afgedrukt.
+In dit voorbeeld worden alle details voor alle eerdere scriptuitvoeringen afgedrukt.
 
 ```golang
 page, err := scriptExecutionHistoryClient.ListByCluster(context.Background(), resourceGroupName, clusterName)
@@ -492,4 +491,4 @@ for (page.NotDone()) {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken het [GoDoc-referentie materiaal](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). De GoDocs bieden referentie documentatie voor alle functies in de SDK.
+Ontdek het [GoDoc-referentiemateriaal](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). De GoDocs bieden referentiedocumentatie voor alle functies in de SDK.

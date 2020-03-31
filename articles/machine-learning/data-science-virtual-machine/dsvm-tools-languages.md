@@ -1,7 +1,7 @@
 ---
 title: Ondersteunde talen
 titleSuffix: Azure Data Science Virtual Machine
-description: De ondersteunde programma talen en gerelateerde hulpprogram ma's die vooraf zijn geïnstalleerd op de Data Science Virtual Machine.
+description: De ondersteunde programmatalen en gerelateerde tools die vooraf zijn geïnstalleerd op de Data Science Virtual Machine.
 keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechnologie, hulpprogramma voor datatechnologie, linux-datatechnologie
 services: machine-learning
 ms.service: machine-learning
@@ -11,34 +11,34 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283652"
 ---
-# <a name="languages-supported-on-the-data-science-virtual-machine"></a>Talen die worden ondersteund op de Data Science Virtual Machine 
+# <a name="languages-supported-on-the-data-science-virtual-machine"></a>Talen ondersteund op de Data Science Virtual Machine 
 
-De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf ontwikkelde talen en hulpprogram ma's voor het ontwikkelen van AI-toepassingen (kunst matige intelligentie). Hier volgen enkele van de belangrijkste items.
+De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf gebouwde talen en ontwikkeltools voor het bouwen van uw kunstmatige intelligentie (AI) toepassingen. Hier zijn enkele van de opmerkelijke.
 
-## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016 Edition)
+## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016-editie)
 
 |    |           |
 | ------------- | ------------- |
-| Ondersteunde taal versies | Python 2,7 en 3,7 |
+| Ondersteunde taalversies | Python 2.7 en 3.7 |
 | Ondersteunde DSVM-edities      | Windows Server 2016     |
-| Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Er worden twee globale `conda` omgevingen gemaakt: <br /> * De `root` omgeving die zich op `/anaconda/` bevindt, is python 3,7. <br/> * De `python2` omgeving die zich op `/anaconda/envs/python2` bevindt, is Python 2,7.       |
-| Koppelingen naar voorbeelden      | Er zijn voor beelden van Jupyter-notebooks voor python opgenomen.     |
-| Gerelateerde hulpprogram ma's op de DSVM      | PySpark, R, Julia.      |
+| Hoe is het geconfigureerd / geïnstalleerd op de DSVM?  | Er `conda` worden twee globale omgevingen gemaakt: <br /> * `root` De omgeving `/anaconda/` op python 3.7. <br/> * `python2` De omgeving `/anaconda/envs/python2` op python 2.7.       |
+| Koppelingen naar voorbeelden      | Voorbeeld van Jupyter-notitieblokken voor Python zijn inbegrepen.     |
+| Gerelateerde tools op de DSVM      | PySpark, R, Julia.      |
 
 > [!NOTE]
-> Builds van Windows Server 2016 die zijn gemaakt vóór 2018 maart bevatten python 3,5 en Python 2,7. Python 2,7 is de Conda- **hoofd** omgeving en **Py37** is de python 3,7-omgeving.
+> Builds van Windows Server 2016 die vóór maart 2018 zijn gemaakt, bevatten Python 3.5 en Python 2.7. Python 2.7 is de **conda-wortelomgeving** en **py37** is de Python 3.7-omgeving.
 
-### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren    
+### <a name="how-to-use-and-run-it"></a>Hoe het te gebruiken en uit te voeren    
 
-* Uitvoeren vanaf een opdracht prompt:
+* Uitvoeren met een opdrachtprompt:
 
-  Open een opdracht prompt en gebruik een van de volgende methoden, afhankelijk van de versie van python die u wilt uitvoeren:
+  Open een opdrachtprompt en gebruik een van de volgende methoden, afhankelijk van de versie van Python die u wilt uitvoeren:
 
     ```
     # To run Python 2.7
@@ -50,35 +50,35 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
     python --version 
     ```
     
-* Gebruiken in een IDE:
+* Gebruik in een IDE:
 
-  Gebruik Python Tools for Visual Studio (PTVS), dat is geïnstalleerd in de Visual Studio Community-editie. Standaard is de enige omgeving die automatisch in PTVS wordt ingesteld, python 3,6. 
+  Gebruik Python Tools for Visual Studio (PTVS), geïnstalleerd in de Visual Studio Community-editie. Standaard is python 3.6 de enige omgeving die automatisch is ingesteld in PTVS. 
 
     > [!NOTE]
-    > Om PTVS te laten verwijzen naar python 2,7, moet u een aangepaste omgeving maken in PTVS. Als u dit pad naar de omgeving in Visual Studio Community Edition wilt instellen, gaat u naar **Hulpprogram ma's** -> **python-Hulpprogram ma's** -> **python-omgevingen** en selecteert u **+ Custom**. Stel vervolgens de locatie in op **c:\anaconda\envs\python2** en selecteer **Automatische detectie**.
+    > Als u PTVS wilt aanwijzen op Python 2.7, moet u een aangepaste omgeving in PTVS maken. Als u dit omgevingspad wilt instellen in de Visual Studio **+ Custom**Community Edition, gaat u naar**Python-omgevingen** voor -> **hulpprogramma's** -> en selecteert u + Aangepast . **Tools** Stel vervolgens de locatie in op **c:\anaconda\envs\python2** en selecteer **Automatisch detecteren**.
 
-* Gebruiken in Jupyter:
+* Gebruik in Jupyter:
 
-  Open Jupyter en selecteer **Nieuw** om een nieuw notitie blok te maken. U kunt het kernel-type instellen als _python [Conda root]_ voor python 3,7 en _python [Conda env: Python2]_ voor python 2,7.
+  Open Jupyter en selecteer **Nieuw** om een nieuw notitieblok te maken. U het kerneltype instellen als _Python [Conda Root]_ voor Python 3.7 en _Python [Conda env:python2]_ voor Python 2.7.
 
 * Python-pakketten installeren:
 
-  De standaard python-omgevingen op de DSVM zijn wereld wijde omgevingen die door alle gebruikers kunnen worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, activeert u de hoofd-of python2-omgeving met behulp van de `activate` opdracht als beheerder. Vervolgens kunt u een pakket beheer als `conda` of `pip` gebruiken om pakketten te installeren of bij te werken.
+  De standaard Python-omgevingen op de DSVM zijn globale omgevingen die leesbaar zijn voor alle gebruikers. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, `activate` activeert u de root- of python2-omgeving met behulp van de opdracht als beheerder. Vervolgens u gebruik maken `conda` `pip` van een package manager like of om pakketten te installeren of bij te werken.
 
-## <a name="python-linux-edition"></a>Python (Linux Edition)
+## <a name="python-linux-edition"></a>Python (Linux editie)
 
 |    |           |
 | ------------- | ------------- |
-| Ondersteunde taal versies | Python 2,7 en 3,5 |
+| Ondersteunde taalversies | Python 2.7 en 3.5 |
 | Ondersteunde DSVM-edities      | Linux   |
-| Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Er worden twee globale `conda` omgevingen gemaakt: <br /> * `root` omgeving die zich op `/anaconda/` bevindt, is Python 2,7. <br/> * `py35` omgeving die zich op `/anaconda/envs/py35`bevindt, is python 3,5.       |
-| Koppelingen naar voorbeelden      | Er zijn voor beelden van Jupyter-notebooks voor python opgenomen.     |
-| Gerelateerde hulpprogram ma's op de DSVM      | PySpark, R, Julia      |
-### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren    
+| Hoe is het geconfigureerd / geïnstalleerd op de DSVM?  | Er `conda` worden twee globale omgevingen gemaakt: <br /> * `root`omgeving gelegen `/anaconda/` op python 2.7. <br/> * `py35`omgeving gelegen `/anaconda/envs/py35`op python 3.5.       |
+| Koppelingen naar voorbeelden      | Voorbeeld van Jupyter-notitieblokken voor Python zijn inbegrepen.     |
+| Gerelateerde tools op de DSVM      | PySpark, R, Julia      |
+### <a name="how-to-use-and-run-it"></a>Hoe het te gebruiken en uit te voeren    
 
-* Uitvoeren in een Terminal:
+* Run in een terminal:
 
-  Open de Terminal en voer een van de volgende handelingen uit, afhankelijk van de versie van python die u wilt uitvoeren:
+  Open de terminal en voer een van de volgende handelingen uit, afhankelijk van de versie van Python die u wilt uitvoeren:
 
     ```
     # To run Python 2.7
@@ -90,118 +90,118 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
     python --version
     
     ```
-* Gebruiken in een IDE:
+* Gebruik in een IDE:
 
   Gebruik PyCharm, geïnstalleerd in de Visual Studio Community-editie. 
 
-* Gebruiken in Jupyter:
+* Gebruik in Jupyter:
 
-  Open Jupyter en selecteer **Nieuw** om een nieuw notitie blok te maken. U kunt het kernel-type instellen als **python [Conda root]** voor python 2,7 en **python [Conda env: py35]** voor de python 3,5-omgeving. 
+  Open Jupyter en selecteer **Nieuw** om een nieuw notitieblok te maken. U het kerneltype instellen als **Python [Conda Root]** voor Python 2.7 en **Python [Conda env:py35]** voor de Python 3.5-omgeving. 
 
 * Python-pakketten installeren:
 
-  De standaard Python-omgevingen op de DSVM zijn algemene omgevingen kan worden gelezen door alle gebruikers. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, activeert u de hoofd-of py35-omgeving met behulp van de `source activate` opdracht als beheerder of als gebruiker met sudo-machtigingen. Vervolgens kunt u een pakket beheer als `conda` of `pip` gebruiken om pakketten te installeren of bij te werken.
+  De standaard Python-omgevingen op de DSVM zijn globale omgevingen die door alle gebruikers kunnen worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, activeert u de root- of py35-omgeving met behulp van de `source activate` opdracht als beheerder of als gebruiker met sudo-machtigingen. Vervolgens u gebruik maken `conda` `pip` van een package manager like of om pakketten te installeren of bij te werken.
 
 
 ## <a name="r"></a>R
 
 |    |           |
 | ------------- | ------------- |
-| Ondersteunde taal versies | Micro soft R open 3. x (100% compatibel met KRANen-R)<br /> Microsoft R Server 9. x Developer Edition (een schaalbaar platform dat geschikt is voor bedrijven)|
+| Ondersteunde taalversies | Microsoft R Open 3.x (100% compatibel met CRAN-R)<br /> Microsoft R Server 9.x Developer edition (een schaalbaar R-platform dat klaar is voor een onderneming)|
 | Ondersteunde DSVM-edities      | Linux, Windows     |
-| Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
-| Koppelingen naar voorbeelden      | Er zijn voor beelden van Jupyter-notebooks voor R opgenomen.     |
-| Gerelateerde hulpprogram ma's op de DSVM      | SparkR, Python, Julia      |
-### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren    
+| Hoe is het geconfigureerd / geïnstalleerd op de DSVM?  | Windows:`C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux:`/usr/lib64/microsoft-r/3.3/lib64/R`    |
+| Koppelingen naar voorbeelden      | Voorbeeld Jupyter-notitieblokken voor R zijn inbegrepen.     |
+| Gerelateerde tools op de DSVM      | SparkR, Python, Julia      |
+### <a name="how-to-use-and-run-it"></a>Hoe het te gebruiken en uit te voeren    
 
 **Windows**:
 
-* Uitvoeren vanaf een opdracht prompt:
+* Uitvoeren met een opdrachtprompt:
 
-  Open een opdracht prompt en typ `R`.
+  Open een opdrachtprompt en typ `R`.
 
-* Gebruiken in een IDE:
+* Gebruik in een IDE:
 
-  Gebruik RTools voor Visual Studio (RTVS) geïnstalleerd in de Visual Studio Community edition of RStudio. Deze zijn beschikbaar in het menu Start of als pictogram op het bureau blad. 
+  Gebruik RTools voor Visual Studio (RTVS) geïnstalleerd in de Visual Studio Community-editie of RStudio. Deze zijn beschikbaar in het menu Start of als bureaubladpictogram. 
 
-* Gebruiken in Jupyter
+* Gebruik in Jupyter
 
-  Open Jupyter en selecteer **Nieuw** om een nieuw notitie blok te maken. U kunt het kernel-type instellen op **r** om de Jupyter R kernel (IRKernel) te gebruiken.
+  Open Jupyter en selecteer **Nieuw** om een nieuw notitieblok te maken. U het kerneltype instellen als **R** om de Jupyter R-kernel (IRKernel) te gebruiken.
 
-* R-pakketten installeren:
+* Installeer R-pakketten:
 
-  R is geïnstalleerd op de DSVM in een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, voert u R uit met een van de voor gaande methoden. Vervolgens kunt u de R package manager-`install.packages()` uitvoeren om pakketten te installeren of bij te werken.
+  R is geïnstalleerd op de DSVM in een wereldwijde omgeving die leesbaar is voor alle gebruikers. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, voert u R uit met een van de voorgaande methoden. Vervolgens u de R-pakketbeheerder `install.packages()` uitvoeren om pakketten te installeren of bij te werken.
 
 **Linux**:
 
-* Uitvoeren in Terminal:
+* Run in terminal:
 
-  Open een Terminal en voer `R`uit.  
+  Open een terminal `R`en ren.  
 
-* Gebruiken in een IDE:
+* Gebruik in een IDE:
 
-  Gebruik RStudio, geïnstalleerd op de Linux-DSVM.  
+  Gebruik RStudio, geïnstalleerd op de Linux DSVM.  
 
-* Gebruiken in Jupyter:
+* Gebruik in Jupyter:
 
-  Open Jupyter en selecteer **Nieuw** om een nieuw notitie blok te maken. U kunt het kernel-type instellen op **r** om de Jupyter R kernel (IRKernel) te gebruiken. 
+  Open Jupyter en selecteer **Nieuw** om een nieuw notitieblok te maken. U het kerneltype instellen als **R** om de Jupyter R-kernel (IRKernel) te gebruiken. 
 
-* R-pakketten installeren:
+* Installeer R-pakketten:
 
-  R is geïnstalleerd op de DSVM in een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, voert u R uit met een van de voor gaande methoden. Vervolgens kunt u de R package manager-`install.packages()` uitvoeren om pakketten te installeren of bij te werken.
+  R is geïnstalleerd op de DSVM in een wereldwijde omgeving die leesbaar is voor alle gebruikers. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, voert u R uit met een van de voorgaande methoden. Vervolgens u de R-pakketbeheerder `install.packages()` uitvoeren om pakketten te installeren of bij te werken.
 
 
 ## <a name="julia"></a>Julia
 
 |    |           |
 | ------------- | ------------- |
-| Ondersteunde taal versies | 0,6 |
+| Ondersteunde taalversies | 0,6 |
 | Ondersteunde DSVM-edities      | Linux, Windows     |
-| Hoe wordt deze geconfigureerd / geïnstalleerd op de DSVM?  | Windows: geïnstalleerd op `C:\JuliaPro-VERSION`<br /> Linux: geïnstalleerd op `/opt/JuliaPro-VERSION`    |
-| Koppelingen naar voorbeelden      | Voor beelden van Jupyter-notebooks voor Julia zijn opgenomen.     |
-| Gerelateerde hulpprogram ma's op de DSVM      | Python, R      |
-### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren    
+| Hoe is het geconfigureerd / geïnstalleerd op de DSVM?  | Windows: geïnstalleerd op`C:\JuliaPro-VERSION`<br /> Linux: Geïnstalleerd op`/opt/JuliaPro-VERSION`    |
+| Koppelingen naar voorbeelden      | Voorbeeld Jupyter notebooks voor Julia zijn inbegrepen.     |
+| Gerelateerde tools op de DSVM      | Python, R      |
+### <a name="how-to-use-and-run-it"></a>Hoe het te gebruiken en uit te voeren    
 
 **Windows**:
 
-* Uitvoeren vanaf een opdracht prompt
+* Uitvoeren op een opdrachtprompt
 
-  Open een opdracht prompt en voer `julia`uit.
-* Gebruiken in een IDE:
+  Open een opdrachtprompt `julia`en voer uit.
+* Gebruik in een IDE:
 
-  Gebruik `Juno` met de Julia IDE geïnstalleerd op de DSVM en beschikbaar als snelkoppeling op het bureau blad.
+  Gebruik `Juno` met de Julia IDE geïnstalleerd op de DSVM en beschikbaar als een desktop snelkoppeling.
 
-* Gebruiken in Jupyter:
+* Gebruik in Jupyter:
 
-  Open Jupyter en selecteer **Nieuw** om een nieuw notitie blok te maken. U kunt het kernel-type instellen als **Julia-versie**.
+  Open Jupyter en selecteer **Nieuw** om een nieuw notitieblok te maken. U het kerneltype instellen als **Julia VERSION**.
 
-* Julia-pakketten installeren:
+* Installeer Julia-pakketten:
 
-  De standaard locatie voor Julia is een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Voer Julia uit met behulp van een van de voor gaande methoden om pakketten te installeren in de wereld wijde omgeving. Vervolgens kunt u Julia Package Manager-opdrachten uitvoeren, zoals `Pkg.add()`, om pakketten te installeren of bij te werken.
+  De standaard Locatie Julia is een globale omgeving die leesbaar is voor alle gebruikers. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de wereldwijde omgeving, voert u Julia uit met een van de voorgaande methoden. Vervolgens u Julia package manager-opdrachten uitvoeren, zoals `Pkg.add()` het installeren of bijwerken van pakketten.
 
 
 **Linux**:
-* Uitvoeren in een Terminal:
+* Run in een terminal:
 
-  Open een Terminal en voer `julia`uit.
-* Gebruiken in een IDE:
+  Open een terminal `julia`en ren.
+* Gebruik in een IDE:
 
-  Gebruik `Juno`, waarbij de Julia IDE is geïnstalleerd op de DSVM en beschikbaar is als snelkoppeling voor een **toepassings** menu.
+  Gebruik `Juno`, met de Julia IDE geïnstalleerd op de DSVM en beschikbaar als een **applicatie** menu snelkoppeling.
 
-* Gebruiken in Jupyter:
+* Gebruik in Jupyter:
 
-  Open Jupyter en selecteer **Nieuw** om een nieuw notitie blok te maken. U kunt het kernel-type instellen als **Julia-versie**.
+  Open Jupyter en selecteer **Nieuw** om een nieuw notitieblok te maken. U het kerneltype instellen als **Julia VERSION**.
 
-* Julia-pakketten installeren:
+* Installeer Julia-pakketten:
 
-  De standaard locatie voor Julia is een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Voer Julia uit met behulp van een van de voor gaande methoden om pakketten te installeren in de wereld wijde omgeving. Vervolgens kunt u Julia Package Manager-opdrachten uitvoeren, zoals `Pkg.add()`, om pakketten te installeren of bij te werken.
+  De standaard Locatie Julia is een globale omgeving die leesbaar is voor alle gebruikers. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de wereldwijde omgeving, voert u Julia uit met een van de voorgaande methoden. Vervolgens u Julia package manager-opdrachten uitvoeren, zoals `Pkg.add()` het installeren of bijwerken van pakketten.
 
 ## <a name="other-languages"></a>Andere talen
 
-**C#** : Beschikbaar in Windows en toegankelijk via de Visual Studio Community-editie of de `Developer Command Prompt for Visual Studio`, waar u de `csc`-opdracht kunt uitvoeren.
+**C#**: Beschikbaar op Windows en toegankelijk via `Developer Command Prompt for Visual Studio`de Visual Studio `csc` Community-editie of op de, waar u de opdracht uitvoeren.
 
-**Java**: openjdk is beschikbaar op zowel de Linux-als Windows-edities van de DSVM en is ingesteld op het pad. Als u Java wilt gebruiken, typt u de `javac` of `java` opdracht bij een opdracht prompt in Windows of op de bash-shell in Linux.
+**Java**: OpenJDK is beschikbaar op zowel de Linux- als Windows-edities van de DSVM en is ingesteld op het pad. Als u Java `javac` wilt `java` gebruiken, typt u de opdracht of opdracht bij een opdrachtprompt in Windows of op de bash-shell in Linux.
 
-**Node. js**: node. js is beschikbaar op zowel de Linux-als Windows-edities van de DSVM en is ingesteld op het pad. Om toegang te krijgen tot node. js, typt u de `node` of `npm` opdracht bij een opdracht prompt in Windows of op de bash-shell in Linux. In Windows is de Visual Studio-uitbrei ding voor de node. js-hulpprogram ma's geïnstalleerd om een grafische IDE te bieden om uw node. js-toepassing te ontwikkelen.
+**Node.js**: Node.js is beschikbaar op zowel de Linux- als Windows-edities van de DSVM en is ingesteld op het pad. Als u toegang wilt krijgen `node` `npm` tot Node.js, typt u de opdracht of opdracht bij een opdrachtprompt in Windows of op de bashshell in Linux. Op Windows is de Visual Studio-extensie voor de tools Node.js geïnstalleerd om een grafische IDE te bieden om uw Node.js-toepassing te ontwikkelen.
 
-**F#** : Beschikbaar in Windows en toegankelijk via de Visual Studio Community Edition of op een `Developer Command Prompt for Visual Studio`, waar u de `fsc`-opdracht kunt uitvoeren.
+**F#**: Beschikbaar op Windows en toegankelijk via `Developer Command Prompt for Visual Studio`de Visual Studio `fsc` Community-editie of op een, waar u de opdracht uitvoeren.

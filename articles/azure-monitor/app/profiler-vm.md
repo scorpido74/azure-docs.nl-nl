@@ -1,39 +1,39 @@
 ---
-title: Web-apps op een virtuele Azure-machine profiel-Application Insights Profiler
-description: Webtoepassingen op een virtuele Azure-machine profiel maken met behulp van Application Insights Profiler.
+title: Web-apps profileren op een Azure VM - Profiler voor toepassingsinzichten
+description: Beprofiel web-apps op een Azure VM met behulp van Application Insights Profiler.
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671576"
 ---
-# <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profiel Web-apps die worden uitgevoerd op een virtuele machine van Azure of een schaalset voor virtuele machines met behulp van Application Insights Profiler
+# <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profielwebapps die worden uitgevoerd op een virtuele Azure-machine of een virtuele machineschaal die is ingesteld met Behulp van Application Insights Profiler
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-U kunt ook Azure-toepassing Insights Profiler implementeren op deze services:
+U Azure Application Insights Profiler ook implementeren op deze services:
 * [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Profiler implementeren op een virtuele machine of een schaalset voor virtuele machines
-In dit artikel wordt beschreven hoe u Application Insights Profiler op uw virtuele machine met Azure virtual machine (VM) of virtuele-machinehost van Azure kunt ophalen. Profiler wordt geïnstalleerd met de Azure Diagnostics-extensie voor Vm's. Configureer de uitbrei ding voor het uitvoeren van Profiler en bouw de Application Insights SDK in uw toepassing.
+## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Profiler implementeren op een virtuele machine of een virtuele machineschaalset
+In dit artikel ziet u hoe u Application Insights Profiler uitvoeren op uw virtuele Azure-machine (VM) of Azure-schaalset voor virtuele machines. Profiler is geïnstalleerd met de Azure Diagnostics-extensie voor VM's. Configureer de extensie om Profiler uit te voeren en bouw de Application Insights SDK in uw toepassing.
 
-1. Voeg de Application Insights SDK toe aan uw [ASP.NET-toepassing](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net).
+1. Voeg de Application Insights SDK toe aan uw [ASP.NET toepassing.](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)
 
-   Als u profielen voor uw aanvragen wilt weer geven, moet u de aanvraag-telemetrie naar Application Insights verzenden.
+   Als u profielen voor uw aanvragen wilt weergeven, moet u aanvraagtelemetrie naar Application Insights verzenden.
 
-1. Installeer Azure Diagnostics-extensie op uw VM. Voor de volledige voor beelden van Resource Manager-sjablonen raadpleegt u:  
+1. Installeer azure diagnostics-extensie op uw vm. Zie voor volledige voorbeelden van resourcebeheersjablonen:  
    * [Virtuele machine](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
    * [Schaalset voor virtuele machines](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
     
-     Het sleutel gedeelte is het ApplicationInsightsProfilerSink in de WadCfg. Voeg een andere Sink toe aan deze sectie om Azure Diagnostics Profiler in te scha kelen om gegevens naar uw iKey te verzenden.
+     Het belangrijkste onderdeel is de ApplicationInsightsProfilerSink in het WadCfg. Als u Azure Diagnostics wilt inschakelen dat Profiler gegevens naar uw iKey kan verzenden, voegt u een andere sink toe aan deze sectie.
     
      ```json
      "SinksConfig": {
@@ -50,11 +50,11 @@ In dit artikel wordt beschreven hoe u Application Insights Profiler op uw virtue
      },
      ```
 
-1. Implementeer de gewijzigde definitie van de implementatie van de omgeving.  
+1. Implementeer de gewijzigde definitie van implementatie van de omgeving.  
 
-   Het Toep assen van de wijzigingen omvat doorgaans een volledige sjabloon implementatie of een op Cloud service gebaseerde publicatie via Power shell-cmdlets of Visual Studio.  
+   Het toepassen van de wijzigingen omvat meestal een volledige sjabloonimplementatie of een publicatie op basis van een cloudservice via PowerShell-cmdlets of Visual Studio.  
 
-   De volgende Power shell-opdrachten vormen een alternatieve methode voor bestaande virtuele machines die alleen de Azure Diagnostics-extensie aanraken. Voeg de eerder genoemde ProfilerSink toe aan de configuratie die wordt geretourneerd door de opdracht Get-AzVMDiagnosticsExtension. Geef vervolgens de bijgewerkte configuratie door aan de opdracht set-AzVMDiagnosticsExtension.
+   De volgende PowerShell-opdrachten zijn een alternatieve benadering voor bestaande virtuele machines die alleen de Azure Diagnostics-extensie raken. Voeg de eerder genoemde ProfilerSink toe aan de config die wordt geretourneerd door de opdracht Get-AzVMDiagnosticsExtension. Geef de bijgewerkte config vervolgens door aan de opdracht Set-AzVMDiagnosticsExtension.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()
@@ -65,14 +65,14 @@ In dit artikel wordt beschreven hoe u Application Insights Profiler op uw virtue
     Set-AzVMDiagnosticsExtension -ResourceGroupName "MyRG" -VMName "MyVM" -DiagnosticsConfigurationPath $ConfigFilePath
     ```
 
-1. Als de gewenste toepassing via [IIS](https://www.microsoft.com/web/downloads/platform.aspx)wordt uitgevoerd, schakelt u de functie `IIS Http Tracing` Windows in.
+1. Als de beoogde toepassing via [IIS](https://www.microsoft.com/web/downloads/platform.aspx) `IIS Http Tracing` wordt uitgevoerd, schakelt u de Windows-functie in.
 
-   a. Stel externe toegang tot de omgeving in en gebruik vervolgens het venster [Windows-onderdelen toevoegen]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) . Of voer de volgende opdracht uit in Power shell (als Administrator):  
+   a. Stel externe toegang tot de omgeving in en gebruik vervolgens het venster [Windows-functies toevoegen.]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) Of voer de volgende opdracht uit in PowerShell (als beheerder):  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-   b. Als externe toegang tot stand is gebracht, kunt u de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) gebruiken om de volgende opdracht uit te voeren:  
+   b. Als het instellen van externe toegang een probleem is, u de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) gebruiken om de volgende opdracht uit te voeren:  
 
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
@@ -80,38 +80,38 @@ In dit artikel wordt beschreven hoe u Application Insights Profiler op uw virtue
 
 1. Implementeer uw toepassing.
 
-## <a name="set-profiler-sink-using-azure-resource-explorer"></a>Profilerings Sink instellen met behulp van Azure Resource Explorer
-Er is nog geen manier om de Application Insights Profiler sink in te stellen vanuit de portal. In plaats van Power shell zoals hierboven beschreven te gebruiken, kunt u Azure Resource Explorer gebruiken om de sink in te stellen. Houd er rekening mee dat als u de virtuele machine opnieuw implementeert, de Sink verloren gaat. U moet de configuratie bijwerken die u gebruikt bij het implementeren van de virtuele machine om deze instelling te behouden.
+## <a name="set-profiler-sink-using-azure-resource-explorer"></a>Profiler Sink instellen met Azure Resource Explorer
+We hebben nog geen manier om de Application Insights Profiler-gootsteen van het portaal in te stellen. In plaats van powershell zoals hierboven beschreven te gebruiken, u Azure Resource Explorer gebruiken om de gootsteen in te stellen. Maar let op, als u de VM opnieuw implementeert, gaat de gootsteen verloren. U moet de config bijwerken die u gebruikt bij het implementeren van de VM om deze instelling te behouden.
 
-1. Controleer of de Windows Azure Diagnostics-extensie is geïnstalleerd door de uitbrei dingen die voor uw virtuele machine zijn geïnstalleerd weer te geven.  
+1. Controleer of de Windows Azure Diagnostics-extensie is geïnstalleerd door de extensies te bekijken die voor uw virtuele machine zijn geïnstalleerd.  
 
     ![Controleren of de WAD-extensie is geïnstalleerd][wadextension]
 
-2. Zoek de VM-extensie voor diagnostische gegevens voor uw VM. Ga naar [https://resources.azure.com](https://resources.azure.com). Vouw uw resource groep, micro soft. Compute informatie, de naam van de virtuele machine en de extensies uit.  
+2. Zoek de VM Diagnostics-extensie voor uw vm. Ga [https://resources.azure.com](https://resources.azure.com)naar. Vouw uw brongroep, Microsoft.Compute virtualMachines, de naam van virtuele machines en extensies uit.  
 
-    ![Ga naar WAD config in Azure Resource Explorer][azureresourceexplorer]
+    ![Navigeren naar WAD-config in Azure Resource Explorer][azureresourceexplorer]
 
-3. Voeg de Application Insights Profiler-Sink toe aan het knoop punt SinksConfig onder WadCfg. Als u nog geen SinksConfig-sectie hebt, moet u er mogelijk een toevoegen. Zorg ervoor dat u de juiste Application Insights iKey in uw instellingen opgeeft. U moet in de rechter bovenhoek overschakelen op lezen/schrijven in de modus Verkenner en op de knop ' bewerken ' drukken.
+3. Voeg de Application Insights Profiler-gootsteen toe aan het SinksConfig-knooppunt onder WadCfg. Als u nog geen SinksConfig-sectie hebt, moet u er mogelijk een toevoegen. Zorg ervoor dat u de juiste Application Insights iKey in uw instellingen opgeeft. Je moet de explorers-modus in de rechterbovenhoek lezen/schrijven en druk op de blauwe knop 'Bewerken'.
 
-    ![Application Insights Profiler Sink toevoegen][resourceexplorersinksconfig]
+    ![Add Application Insights Profiler Sink][resourceexplorersinksconfig]
 
-4. Wanneer u klaar bent met het bewerken van de configuratie, drukt u op put. Als de put is gelukt, wordt er een groen vinkje weer gegeven in het midden van het scherm.
+4. Als je klaar bent met het bewerken van de config, druk je op 'Put'. Als de put succesvol is, verschijnt er een groene controle in het midden van het scherm.
 
-    ![Put-aanvraag verzenden om wijzigingen toe te passen][resourceexplorerput]
-
-
+    ![Verzend putverzoek om wijzigingen toe te passen][resourceexplorerput]
 
 
 
 
-## <a name="can-profiler-run-on-on-premises-servers"></a>Kan Profiler worden uitgevoerd op on-premises servers?
-Er is geen abonnement om Application Insights Profiler te ondersteunen voor on-premises servers.
+
+
+## <a name="can-profiler-run-on-on-premises-servers"></a>Kan Profiler draaien op on-premises servers?
+We hebben geen plan om Application Insights Profiler te ondersteunen voor on-premises servers.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Verkeer genereren voor uw toepassing (bijvoorbeeld een [beschikbaarheids test](monitor-web-app-availability.md)starten). Wacht vervolgens tien tot vijf tien minuten voordat traceringen worden verzonden naar het Application Insights-exemplaar.
-- Zie [Profiler traceringen](profiler-overview.md?toc=/azure/azure-monitor/toc.json) in de Azure Portal.
-- Zie [problemen oplossen met Profiler](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)voor hulp bij het oplossen van problemen met profileringen.
+- Verkeer genereren naar uw toepassing (start bijvoorbeeld een [beschikbaarheidstest).](monitor-web-app-availability.md) Wacht vervolgens 10 tot 15 minuten voordat traces naar het exemplaar Application Insights worden verzonden.
+- Zie [Profielsporen](profiler-overview.md?toc=/azure/azure-monitor/toc.json) in de Azure-portal.
+- Zie [Profiler troubleshooting](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)voor hulp bij het oplossen van problemen met Profiler.
 
 [azureresourceexplorer]: ./media/profiler-vm/azure-resource-explorer.png
 [resourceexplorerput]: ./media/profiler-vm/resource-explorer-put.png

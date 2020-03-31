@@ -1,6 +1,6 @@
 ---
-title: HTTP-variabelen voor de engine van Azure CDN-regels | Microsoft Docs
-description: Met HTTP-variabelen kunt u HTTP-aanvraag-en reactie gegevens ophalen.
+title: HTTP-variabelen voor Azure CDN-regels engine | Microsoft Documenten
+description: Met HTTP-variabelen u metagegevens voor HTTP-aanvragen en antwoorden ophalen.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,236 +15,236 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
 ms.openlocfilehash: 53ad0c516547e17801bd57c2fd6b0d1704383797
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593821"
 ---
-# <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-variabelen voor Azure CDN-regel engine
-HTTP-variabelen bieden de manier waarop u HTTP-aanvraag-en respons meta gegevens kunt ophalen. Deze meta gegevens kunnen vervolgens worden gebruikt om een aanvraag of antwoord dynamisch te wijzigen. Het gebruik van HTTP-variabelen is beperkt tot de volgende functies van de regel Engine:
+# <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-variabelen voor Azure CDN-regelsengine
+HTTP-variabelen bieden de middelen waarmee u metagegevens voor HTTP-aanvragen en antwoorden ophalen. Deze metagegevens kunnen vervolgens worden gebruikt om een aanvraag of een antwoord dynamisch te wijzigen. Het gebruik van HTTP-variabelen is beperkt tot de volgende kenmerken van de rules engine:
 
-- [Cache sleutel opnieuw schrijven](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [Header van client aanvraag wijzigen](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [Reactie header van client wijzigen](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
+- [Cachesleutel herschrijven](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
+- [Koptekst clientaanvraag wijzigen](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
+- [Koptekst clientreactie wijzigen](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
 - [URL-omleiding](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [URL opnieuw schrijven](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [URL opnieuw genereren](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
 
 ## <a name="definitions"></a>Definities
-In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt een lege waarde geretourneerd als GEO-meta gegevens (bijvoorbeeld post code) niet beschikbaar zijn voor een bepaalde aanvraag.
+In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Een lege waarde wordt geretourneerd wanneer GEO-metagegevens (bijvoorbeeld postcode) niet beschikbaar zijn voor een bepaald verzoek.
 
 
-| Name | Variabele | Description | Voorbeeldwaarde |
+| Name | Variabele | Beschrijving | Voorbeeldwaarde |
 | ---- | -------- | ----------- | ------------ |
-| ASN (aanvrager) | %{geo_asnum} | Hiermee wordt het AS-nummer van de aanvrager aangegeven. <br /><br />**Afgeschaft:** % {virt_dst_asnum}. <br />Deze variabele is vervangen door% {geo_asnum}. Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | AS15133 |
-| Plaats (aanvrager) | %{geo_city} | Hiermee wordt de plaats van de aanvrager aangegeven. | Los Angeles |
-| Continent (aanvrager) | %{geo_continent} | Geeft het continent van de aanvrager aan met de afkorting. <br />Geldige waarden zijn: <br />AF: Afrika<br />AS: Azië<br />EU: Europa<br />NA Noord-Amerika<br />OC Oceania<br />KOPPELINGEN Zuid-Amerika<br /><br />**Afgeschaft:** % {virt_dst_continent}. <br />Deze variabele is vervangen door% {geo_continent}. <br />Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken.| N/A |
-| Cookie waarde | %{cookie_Cookie} | Retourneert de waarde die overeenkomt met de cookie sleutel die wordt geïdentificeerd door de cookie term. | Voorbeeld gebruik: <br />%{cookie__utma}<br /><br />Voorbeeld waarde:<br />111662281.2.10.1222100123 |
-| Land (aanvrager) | %{geo_country} | Geeft het land van oorsprong van de aanvrager aan via de land code. <br />**Afgeschaft:** % {virt_dst_country}. <br /><br />Deze variabele is vervangen door% {geo_country}. Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | VS |
-| Aangewezen markt gebied (aanvrager) | %{geo_dma_code} |Geeft de media markt van de aanvrager aan op basis van de regio code. <br /><br />Dit veld is alleen van toepassing op aanvragen die afkomstig zijn van de Verenigde Staten.| 745 |
-| HTTP-aanvraag methode | %{request_method} | Hiermee wordt de HTTP-aanvraag methode aangegeven. | GET |
-| HTTP-status code | % {status} | Hiermee wordt de HTTP-status code voor het antwoord aangegeven. | 200 |
-| IP-adres (aanvrager) | %{virt_dst_addr} | Hiermee wordt het IP-adres van de aanvrager aangegeven. | 192.168.1.1 |
-| Latitude (aanvrager) | %{geo_latitude} | Hiermee wordt de breedte van de aanvrager aangegeven. | 34,0995 |
-| Lengte graad (aanvrager) | %{geo_longitude} | Hiermee wordt de lengte graad van de aanvrager aangegeven. | -118,4143 |
-| Euro pees gebied voor statistische deel (aanvrager) | %{geo_metro_code} | Hiermee wordt het gebied in de buurt van de aanvrager aangegeven. <br /><br />Dit veld is alleen van toepassing op aanvragen die afkomstig zijn van de Verenigde Staten.<br />| 745 |
-| Poort (aanvrager) | %{virt_dst_port} | Hiermee wordt de tijdelijke poort van de aanvrager aangegeven. | 55885 |
-| Post code (aanvrager) | %{geo_postal_code} | Hiermee wordt de post code van de aanvrager aangegeven. | 90210 |
-| Query reeks gevonden | %{is_args} | De waarde voor deze variabele is afhankelijk van het feit of de aanvraag een query reeks bevat.<br /><br />-Query reeks gevonden:?<br />-Geen query reeks: NULL | ? |
-| Query teken reeks parameter gevonden | %{is_amp} | De waarde voor deze variabele is afhankelijk van het feit of de aanvraag ten minste één query teken reeks parameter bevat.<br /><br />-Para meter gevonden: &<br />-Geen para meters: NULL | & |
-| Parameter waarde van de query reeks | % {arg_&lt;para&gt;meter} | Retourneert de waarde die overeenkomt met de query teken reeks parameter &lt;geïdentificeerd&gt; door de parameter term. | Voorbeeld gebruik: <br />%{arg_language}<br /><br />Voorbeeld query teken reeks parameter: <br />?language=en<br /><br />Voorbeeld waarde: en |
-| Query teken reeks waarde | %{query_string} | Hiermee wordt de volledige query teken reeks waarde aangegeven die in de aanvraag-URL is gedefinieerd. |Key1 = val1 & Key2 = val2 & Key3 = val3 |
-| Verwijzend domein | %{referring_domain} | Hiermee wordt het domein aangegeven dat is gedefinieerd in de header van de verwijzings aanvraag. | <www.google.com> |
-| Regio (aanvrager) | %{geo_region} | Geeft de regio van de aanvrager (bijvoorbeeld staat of provincie) aan met de alfanumerieke afkorting. | CA |
-| Waarde van aanvraag header | %{http_RequestHeader} | Retourneert de waarde die overeenkomt met de aanvraag header die wordt geïdentificeerd door de RequestHeader-term. <br /><br />Als de naam van de aanvraag header een streepje bevat (bijvoorbeeld user-agent), vervangt u dit door een onderstrepings teken (bijvoorbeeld User_Agent).| Voorbeeld gebruik:% {http_Connection}<br /><br />Voorbeeld waarde: Keep-Alive | 
-| Host van aanvraag | % {host} | Hiermee wordt de host aangegeven die is gedefinieerd in de aanvraag-URL. | <www.mydomain.com> |
-| Aanvraag Protocol | %{request_protocol} | Geeft het aanvraag protocol aan. | HTTP/1.1 |
-| Aanvraag schema | % {schema} | Hiermee wordt het aanvraag schema aangegeven. |http |
-| Aanvraag-URI (relatief) | %{request_uri} | Hiermee wordt het relatieve pad aangegeven, inclusief de query reeks, gedefinieerd in de aanvraag-URI. | /marketing/foo.js?loggedin=true |
-| URI van aanvraag (relatief zonder query teken reeks) | % {URI} | Hiermee wordt het relatieve pad naar de aangevraagde inhoud aangegeven. <br /><br/>Belang rijke informatie:<br />-Dit relatieve pad sluit de query reeks uit.<br />-Dit relatieve pad duidt op het herschrijven van URL'S. Een URL wordt onder de volgende omstandigheden opnieuw geschreven:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Functie voor het herschrijven van URL'S: Deze functie herschrijft het relatieve pad dat is gedefinieerd in de aanvraag-URI.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Edge CNAME-URL: Dit type aanvraag wordt herschreven naar de bijbehorende CDN-URL. |/800001/corigin/rewrittendir/foo.js |
-| Aanvraag-URI | % {Request} | Hiermee wordt de aanvraag beschreven. <br />Syntaxis &lt;Http-protocol bij&gt; &lt;relatieve Path &lt;&gt;&gt; | /Marketing/foo.js ophalen? loggedin = True HTTP/1.1 |
-| Waarde van de antwoord header | % {resp_&lt;ResponseHeader&gt;} | Retourneert de waarde die overeenkomt met de antwoord header die &lt;wordt&gt; geïdentificeerd door de ResponseHeader-term. <br /><br />Als de naam van de antwoord header een streepje bevat (bijvoorbeeld user-agent), vervangt u dit door een onderstrepings teken (bijvoorbeeld User_Agent). | Voorbeeld gebruik:% {resp_Content_Length}<br /><br />Voorbeeld waarde: 100 |
+| ASN (aanvrager) | %{geo_asnum} | Geeft het AS-nummer van de aanvrager aan. <br /><br />**Afgeschaft:** %{virt_dst_asnum}. <br />Deze variabele is afgeschaft ten gunste van %{geo_asnum}. Hoewel een regel die deze afgeschafte variabele gebruikt, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | AS15133 |
+| Stad (Aanvrager) | %{geo_city} | Geeft de stad van de aanvrager aan. | Los Angeles |
+| Continent (Aanvrager) | %{geo_continent} | Geeft het continent van de aanvrager aan via de afkorting. <br />Geldige waarden zijn: <br />AF: Afrika<br />AS: Azië<br />EU: Europa<br />NA: Noord-Amerika<br />OC: Oceanië<br />SA: Zuid-Amerika<br /><br />**Afgeschaft:** %{virt_dst_continent}. <br />Deze variabele is afgeschaft ten gunste van %{geo_continent}. <br />Hoewel een regel die deze afgeschafte variabele gebruikt, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken.| N.v.t. |
+| Cookiewaarde | %{cookie_Cookie} | Geeft als resultaat de waarde die overeenkomt met de cookiesleutel die wordt geïdentificeerd door de cookieterm. | Voorbeeldgebruik: <br />%{cookie__utma}<br /><br />Voorbeeldwaarde:<br />111662281.2.10.1222100123 |
+| Land (aanvrager) | %{geo_country} | Geeft het land van herkomst van de aanvrager aan via zijn landcode. <br />**Afgeschaft:** %{virt_dst_country}. <br /><br />Deze variabele is afgeschaft ten gunste van %{geo_country}. Hoewel een regel die deze afgeschafte variabele gebruikt, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | VS |
+| Aangewezen marktgebied (aanvrager) | %{geo_dma_code} |Geeft de mediamarkt van de aanvrager aan op zijn regiocode. <br /><br />Dit veld is alleen van toepassing op aanvragen die afkomstig zijn uit de Verenigde Staten.| 745 |
+| HTTP-aanvraagmethode | %{request_method} | Geeft de HTTP-aanvraagmethode aan. | GET |
+| HTTP-statuscode | %{status} | Geeft de HTTP-statuscode voor het antwoord aan. | 200 |
+| IP-adres (aanvrager) | %{virt_dst_addr} | Geeft het IP-adres van de aanvrager aan. | 192.168.1.1 |
+| Latitude (aanvrager) | %{geo_latitude} | Geeft de breedtegraad van de aanvrager aan. | 34.0995 |
+| Longitude (Aanvrager) | %{geo_longitude} | Geeft de longitude van de aanvrager aan. | -118.4143 |
+| Metropolitan Statistical Area (Aanvrager) | %{geo_metro_code} | Geeft het grootstedelijk gebied van de aanvrager aan. <br /><br />Dit veld is alleen van toepassing op aanvragen die afkomstig zijn uit de Verenigde Staten.<br />| 745 |
+| Poort (aanvrager) | %{virt_dst_port} | Geeft de tijdelijke poort van de aanvrager aan. | 55885 |
+| Postcode (aanvrager) | %{geo_postal_code} | Geeft de postcode van de aanvrager aan. | 90210 |
+| Querytekenreeks gevonden | %{is_args} | De waarde voor deze variabele is afhankelijk van de vraag of de aanvraag een querytekenreeks bevat.<br /><br />- Query string gevonden: ?<br />- Geen querytekenreeks: NULL | ? |
+| Parameter querytekenreeks gevonden | %{is_amp} | De waarde voor deze variabele is afhankelijk van de vraag of de aanvraag ten minste één querytekenreeksparameter bevat.<br /><br />- Gevonden parameter: &<br />- Geen parameters: NULL | & |
+| Parameterwaarde querytekenreeks | %{arg_&lt;&gt;parameter } | Geeft als resultaat de waarde die overeenkomt &lt;&gt; met de parameter querytekenreeks die wordt geïdentificeerd door de parameterterm. | Voorbeeldgebruik: <br />%{arg_language}<br /><br />Parameter voorbeeldquerytekenreeks: <br />?taal=nl<br /><br />Voorbeeldwaarde: nl |
+| Waarde van querytekenreeks | %{query_string} | Geeft de volledige querytekenreekswaarde aan die is gedefinieerd in de aanvraag-URL. |key1=val1&toets2=val2&toets3=val3 |
+| Verwijzerdomein | %{referring_domain} | Geeft het domein aan dat is gedefinieerd in de koptekst van de verwijzingsaanvraag. | <www.google.com> |
+| Regio (aanvrager) | %{geo_region} | Hiermee geeft u het gebied van de aanvrager (bijvoorbeeld staat of provincie) aan via de alfanumerieke afkorting. | CA |
+| Waarde voor koptekst aanvragen | %{http_RequestHeader} | Geeft als resultaat de waarde die overeenkomt met de aangezochte koptekst die wordt geïdentificeerd door de term RequestHeader. <br /><br />Als de naam van de aanvraagkop een streepje bevat (bijvoorbeeld User-Agent), vervang deze dan door een underscore (bijvoorbeeld User_Agent).| Voorbeeldgebruik: %{http_Connection}<br /><br />Voorbeeldwaarde: Keep-Alive | 
+| Host aanvragen | %{host} | Geeft de host aan die is gedefinieerd in de aanvraag-URL. | <www.mydomain.com> |
+| Aanvraagprotocol | %{request_protocol} | Geeft het aanvraagprotocol aan. | HTTP/1.1 |
+| Aanvraagregeling | %{regeling} | Geeft het aanvraagschema aan. |http |
+| URI aanvragen (relatief) | %{request_uri} | Geeft het relatieve pad aan, inclusief de querytekenreeks, gedefinieerd in de aanvraag-URI. | /marketing/foo.js?loggedin=true |
+| URI aanvragen (Relatief zonder querytekenreeks) | %{uri} | Geeft het relatieve pad naar de gevraagde inhoud aan. <br /><br/>Belangrijkste informatie:<br />- Dit relatieve pad sluit de querytekenreeks uit.<br />- Dit relatieve pad weerspiegelt de herschrijft van de URL. Een URL wordt herschreven onder de volgende voorwaarden:<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- URL Herschrijven Functie: deze functie herschrijft het relatieve pad dat is gedefinieerd in de aanvraag URI.<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- URL van Edge CNAME: Dit type aanvraag wordt herschreven naar de bijbehorende CDN-URL. |/800001/corigin/rewrittendir/foo.js |
+| Aanvraag-URI | %{verzoek} | Beschrijft het verzoek. <br />Syntaxis: &lt;&gt; &lt;HTTP-methode relatief pad&gt; &lt;HTTP-protocol&gt; | GET /marketing/foo.js?loggedin=true HTTP/1.1 |
+| Waarde van antwoordkoptekst | %{resp_&lt;ResponseHeader&gt;} | Geeft als resultaat de waarde die &lt;overeenkomt&gt; met de antwoordkop die wordt aangeduid met de term ResponseHeader. <br /><br />Als de naam van de antwoordkop een streepje bevat (bijvoorbeeld User-Agent), vervang deze dan door een underscore (bijvoorbeeld User_Agent). | Voorbeeldgebruik: %{resp_Content_Length}<br /><br />Voorbeeldwaarde: 100 |
 
 ## <a name="usage"></a>Gebruik
-De volgende tabel beschrijft de juiste syntaxis voor het opgeven van een HTTP-variabele.
+In de volgende tabel wordt de juiste syntaxis beschreven voor het opgeven van een HTTP-variabele.
 
 
-| Syntaxis | Voorbeeld | Description |
+| Syntaxis | Voorbeeld | Beschrijving |
 | ------ | -------- | ---------- |
-| %{&lt;HTTPVariable&gt;} | % {host} | Gebruik deze syntaxis om de volledige waarde op te halen die overeenkomt&gt;met de opgegeven &lt;HTTPVariable. |
-| %{&lt;HTTPVariableDelimiter&gt;} | % {host,} | Gebruik deze syntaxis om de case in te stellen voor de gehele waarde die overeenkomt&gt;met de opgegeven &lt;HTTPVariableDelimiter. |
-| %{&lt;HTTPVariableDelimiterExpression&gt;} | %{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$2.$3:80} | Gebruik een reguliere expressie voor &lt;HTTPVariableDelimiterExpression&gt; om de waarde van een http-variabele te vervangen, te verwijderen of te bewerken. |
+| %{&lt;HTTPVariabele&gt;} | %{host} | Gebruik deze syntaxis om de volledige &lt;waarde&gt;te krijgen die overeenkomt met de opgegeven HTTPVariable . |
+| %{&lt;HTTPVariableDelimiter&gt;} | %{host,} | Gebruik deze syntaxis om de aanvraag in &lt;te stellen voor&gt;de volledige waarde die overeenkomt met de opgegeven HTTPVariableLimiter . |
+| %{&lt;HTTPVariableDelimiterExpression&gt;} | %{host/=^www\.([^\.]+)\.\.([^ :]+)/cdn.$2.$3:80} | Gebruik een reguliere &lt;expressie voor HTTPVariableDelimiterExpression&gt; om de waarde van een HTTP-variabele te vervangen, te verwijderen of te manipuleren. |
 
-Namen van HTTP-variabelen ondersteunen alleen alfabetische tekens en onderstrepingen. Converteer niet-ondersteunde tekens naar onderstrepingen.
+HTTP-variabele namen ondersteunen alleen alfabetische tekens en underscores. Niet-ondersteunde tekens converteren naar underscores.
 
-## <a name="delimiter-reference"></a>Verwijzing naar scheidings teken
-Een scheidings teken kan worden opgegeven na een HTTP-variabele om een van de volgende effecten te bereiken:
+## <a name="delimiter-reference"></a>Referentie van de scheidingsteken
+Een scheidingsteken kan na een HTTP-variabele worden opgegeven om een van de volgende effecten te bereiken:
 
-- Transformeer de waarde die is gekoppeld aan de variabele.
+- Transformeer de waarde die aan de variabele is gekoppeld.
 
-     Voorbeeld: Zet de gehele waarde om in kleine letters.
+     Voorbeeld: Converteer de volledige waarde naar kleine letters.
 
-- Verwijder de waarde die is gekoppeld aan de variabele.
+- Verwijder de waarde die aan de variabele is gekoppeld.
 
-- Bewerk de waarde die is gekoppeld aan de variabele.
+- De waarde van de variabele manipuleren.
 
-     Voorbeeld: Gebruik reguliere expressies om de waarde te wijzigen die aan de HTTP-variabele is gekoppeld.
+     Voorbeeld: Gebruik reguliere expressies om de waarde te wijzigen die is gekoppeld aan de HTTP-variabele.
 
-De scheidings tekens worden in de volgende tabel beschreven.
+De scheidingstekens worden beschreven in de volgende tabel.
 
-| Scheidingsteken | Description |
+| Scheidingsteken | Beschrijving |
 | --------- | ----------- |
-| := | Geeft aan dat er een standaard waarde wordt toegewezen aan de variabele wanneer het een van de volgende is: <br />-Ontbreekt <br />-Stel in op NULL. |
-| :+ | Geeft aan dat er een standaard waarde wordt toegewezen aan de variabele wanneer hieraan een waarde is toegewezen. |
-| : | Hiermee wordt aangegeven dat een subtekenreeks van de waarde die is toegewezen aan de variabele, wordt uitgevouwen. |
-| # | Geeft aan dat het patroon dat is opgegeven na dit scheidings teken moet worden verwijderd wanneer het wordt gevonden aan het begin van de waarde die aan de variabele is gekoppeld. |
-| % | Geeft aan dat het patroon dat is opgegeven na dit scheidings teken moet worden verwijderd wanneer het wordt gevonden aan het einde van de waarde die is gekoppeld aan de variabele. <br />Deze definitie is alleen van toepassing als het symbool% wordt gebruikt als scheidings teken. |
-| / | Een HTTP-variabele of een patroon wordt beperkt. |
+| := | Geeft aan dat een standaardwaarde wordt toegewezen aan de variabele wanneer deze: <br />- Vermist <br />- Ingesteld op NULL. |
+| :+ | Geeft aan dat een standaardwaarde wordt toegewezen aan de variabele wanneer er een waarde aan is toegewezen. |
+| : | Hiermee geeft u aan dat een subtekenreeks van de waarde die aan de variabele is toegewezen, wordt uitgebreid. |
+| # | Geeft aan dat het patroon dat na deze scheidingwordt opgegeven, moet worden verwijderd wanneer het wordt gevonden aan het begin van de waarde die aan de variabele is gekoppeld. |
+| % | Geeft aan dat het patroon dat na deze scheidingwordt opgegeven, moet worden verwijderd wanneer het wordt gevonden aan het einde van de waarde die aan de variabele is gekoppeld. <br />Deze definitie is alleen van toepassing wanneer het %-symbool als scheidingsteken wordt gebruikt. |
+| / | Hiermee wordt een HTTP-variabele of een patroon gedefinieerd. |
 | // | Alle exemplaren van het opgegeven patroon zoeken en vervangen. |
 | /= | Alle exemplaren van het opgegeven patroon zoeken, kopiëren en herschrijven. |
-| , | Converteer de waarde die is gekoppeld aan de HTTP-variabele naar kleine letters. |
-| ^ | Converteer de waarde die is gekoppeld aan de HTTP-variabele naar hoofd letters. |
-| ,, | Converteer alle exemplaren van het opgegeven teken in de waarde die is gekoppeld aan de HTTP-variabele naar kleine letters. |
-| ^^ | Converteer alle exemplaren van het opgegeven teken in de waarde die is gekoppeld aan de HTTP-variabele naar hoofd letters. |
+| , | Converteer de waarde die is gekoppeld aan de HTTP-variabele in kleine letters. |
+| ^ | Converteer de waarde die is gekoppeld aan de HTTP-variabele in hoofdletters. |
+| ,, | Converteer alle exemplaren van het opgegeven teken in de waarde die is gekoppeld aan de HTTP-variabele in kleine letters. |
+| ^^ | Converteer alle exemplaren van het opgegeven teken in de waarde die is gekoppeld aan de HTTP-variabele in hoofdletters. |
 
 ## <a name="exceptions"></a>Uitzonderingen
-In de volgende tabel worden de omstandigheden beschreven waaronder de opgegeven tekst niet wordt behandeld als een HTTP-variabele.
+In de volgende tabel worden omstandigheden beschreven waaronder de opgegeven tekst niet wordt behandeld als een HTTP-variabele.
 
-| Voorwaarde | Description | Voorbeeld |
+| Voorwaarde | Beschrijving | Voorbeeld |
 | --------- | ----------- | --------|
-| Escape-teken% | Het percentage symbool kan worden voorafgegaan door het gebruik van een back slash. <br />De voorbeeld waarde aan de rechter kant wordt beschouwd als een letterlijke waarde en niet als een HTTP-variabele.| \%hostsite |
-| Onbekende variabelen | Een lege teken reeks wordt altijd geretourneerd voor onbekende variabelen. | %{unknown_variable} |
-| Ongeldige tekens of syntaxis | Variabelen die ongeldige tekens of syntaxis bevatten, worden beschouwd als letterlijke waarden. <br /><br />Voor beeld #1: De opgegeven waarde bevat een ongeldig teken (bijvoorbeeld:). <br /><br />Voor beeld #2: De opgegeven waarde bevat een dubbele set accolades. <br /><br />Voor beeld #3: Er ontbreekt een accolade sluiten in de opgegeven waarde.<br /> | Voor beeld #1:% {resp_user-agent} <br /><br />Voor beeld #2:% {host}} <br /><br />Voor beeld #3:% {host |
-| Naam van variabele ontbreekt | Er wordt altijd een NULL-waarde geretourneerd als er geen variabele is opgegeven. | %{} |
-| Volgtekens | Tekens die als Trail van een variabele worden beschouwd als letterlijke waarden. <br />De voorbeeld waarde aan de rechter kant bevat een accolade die wordt behandeld als een letterlijke waarde. | % {host}} |
+| Ontsnappend % symbool | Het percentage symbool kan worden ontsnapt door het gebruik van een backslash. <br />De voorbeeldwaarde rechts wordt behandeld als een letterlijke waarde en niet als een HTTP-variabele.| \%{host} |
+| Onbekende variabelen | Een lege tekenreeks wordt altijd geretourneerd voor onbekende variabelen. | %{unknown_variable} |
+| Ongeldige tekens of syntaxis | Variabelen die ongeldige tekens of syntaxis bevatten, worden behandeld als letterlijke waarden. <br /><br />Voorbeeld #1: de opgegeven waarde bevat een ongeldig teken (bijvoorbeeld -). <br /><br />Voorbeeld #2: De opgegeven waarde bevat een dubbele set krullende accolades. <br /><br />Voorbeeld #3: de opgegeven waarde mist een sluitende krullende brace.<br /> | Voorbeeld #1: %{resp_user-agent} <br /><br />Voorbeeld #2: %{host}} <br /><br />Voorbeeld #3: %{host |
+| Ontbrekende variabelenaam | Een NULL-waarde wordt altijd geretourneerd wanneer een variabele niet is opgegeven. | %{} |
+| Achterliggende tekens | Tekens die een variabele volgen, worden behandeld als letterlijke waarden. <br />De monsterwaarde rechts bevat een achterliggende krullende brace die wordt behandeld als een letterlijke waarde. | %{host}} |
 
-## <a name="setting-default-header-values"></a>Standaard waarden voor headers instellen
-Een standaard waarde kan worden toegewezen aan een header wanneer deze aan een van de volgende voor waarden voldoet:
-- Ontbrekende/opheffen
+## <a name="setting-default-header-values"></a>Standaardkopwaarden instellen
+Een standaardwaarde kan aan een koptekst worden toegewezen wanneer deze aan een van de volgende voorwaarden voldoet:
+- Ontbrekende/ontsette
 - Ingesteld op NULL.
 
-In de volgende tabel wordt beschreven hoe u een standaard waarde definieert.
+In de volgende tabel wordt beschreven hoe u een standaardwaarde definieert.
 
-| Voorwaarde | Syntaxis | Voorbeeld | Description |
+| Voorwaarde | Syntaxis | Voorbeeld | Beschrijving |
 | --------- | ------ | --------| ----------- |
-| Stel een koptekst in op een standaard waarde wanneer deze aan een van de volgende voor waarden voldoet: <br /><br />-Ontbrekende header <br /><br />-Header-waarde is ingesteld op NULL.| %{Variable:=Value} | %{http_referrer:=unspecified} | De verwijzende header wordt alleen ingesteld op niet *opgegeven* als deze ontbreekt of als deze is ingesteld op null. Als deze is ingesteld, wordt er geen actie uitgevoerd. |
-| Stel een koptekst in op een standaard waarde wanneer deze ontbreekt. | %{Variable=Value} | %{http_referrer=unspecified} | De verwijzende header wordt alleen ingesteld op niet *opgegeven* wanneer deze ontbreekt. Als deze is ingesteld, wordt er geen actie uitgevoerd. |
-| Stel de koptekst in op een standaard waarde wanneer deze niet aan een van de volgende voor waarden voldoet: <br /><br />-Ontbreekt<br /><br /> -Stel in op NULL. | % {Variable: + value} | %{http_referrer:+unspecified} | De verwijzende koptekst wordt alleen ingesteld op niet *opgegeven* wanneer er een waarde aan is toegewezen. Er wordt geen actie uitgevoerd als deze ontbreekt of als deze is ingesteld op NULL. |
+| Stel een koptekst in op een standaardwaarde wanneer deze aan een van de volgende voorwaarden voldoet: <br /><br />- Ontbrekende header <br /><br />- Koptekstwaarde is ingesteld op NULL.| %{Variabele:=Waarde} | %{http_referrer:=niet gespecificeerd} | De referrer-header wordt alleen ingesteld op *niet-gespecificeerd* wanneer deze ontbreekt of is ingesteld op NULL. Er zal geen actie worden ondernomen als deze is ingesteld. |
+| Stel een koptekst in op een standaardwaarde wanneer deze ontbreekt. | %{Variable=Waarde} | %{http_referrer=niet gespecificeerd} | De referrer-header wordt alleen ingesteld op *niet-gespecificeerd* wanneer deze ontbreekt. Er zal geen actie worden ondernomen als deze is ingesteld. |
+| Stel de koptekst in op een standaardwaarde wanneer deze niet aan een van de volgende voorwaarden voldoet: <br /><br />- Vermist<br /><br /> - Ingesteld op NULL. | %{Variabele:+Waarde} | %{http_referrer:+niet-gespecificeerd} | De referrer-header wordt alleen ingesteld op *niet-gespecificeerd* wanneer er een waarde aan is toegewezen. Er vindt geen actie plaats als deze ontbreekt of is ingesteld op NULL. |
 
-## <a name="manipulating-variables"></a>Variabelen bewerken
+## <a name="manipulating-variables"></a>Variabelen manipuleren
 Variabelen kunnen op de volgende manieren worden gemanipuleerd:
 
 - Subtekenreeksen uitbreiden
 - Patronen verwijderen
 
-### <a name="substring-expansion"></a>Uitbrei ding subtekenreeks
-Standaard wordt een variabele uitgebreid naar de volledige waarde. Gebruik de volgende syntaxis om alleen een subtekenreeks van de waarde van de variabele uit te breiden.
+### <a name="substring-expansion"></a>Subtekenreeksuitbreiding
+Standaard wordt een variabele uitgebreid naar de volledige waarde. Gebruik de volgende syntaxis om alleen een subtekenreeks van de waarde van de variabele uit te vouwen.
 
 `%<Variable>:<Offset>:<Length>}`
 
-Belang rijke informatie:
+Belangrijkste informatie:
 
-- De waarde die is toegewezen aan de offset-term bepaalt het begin teken van de subtekenreeks:
+- De waarde die aan de periode Verschuiving is toegewezen, bepaalt het beginteken van de subtekenreeks:
 
-     - Positief Het begin teken van de subtekenreeks wordt berekend op basis van het eerste teken in de teken reeks.
-     - Lijsten Het begin teken van de subtekenreeks is het eerste teken in de teken reeks.
-     - Onderdruk Het begin teken van de subtekenreeks wordt berekend op basis van het laatste teken in de teken reeks.
+     - Positief: het beginteken van de subtekenreeks wordt berekend op basis van het eerste teken in de tekenreeks.
+     - Nul: Het beginteken van de subtekenreeks is het eerste teken in de tekenreeks.
+     - Negatief: het beginteken van de subtekenreeks wordt berekend op basis van het laatste teken in de tekenreeks.
 
-- De lengte van de subtekenreeks wordt bepaald door de *lengte* termijn:
+- De lengte van de subtekenreeks wordt bepaald door de *term Lengte:*
 
-     - Wegge laten Als u de lengte termijn weglaat, kan de subtekenreeks alle tekens bevatten tussen het begin teken en het einde van de teken reeks.
-     - Positief Bepaalt de lengte van de subtekenreeks van het begin teken aan de rechter kant.
-     - Onderdruk Bepaalt de lengte van de subtekenreeks van het begin teken tot de linkerkant.
+     - Weggelaten: Als u de term Lengte weglaat, kan de subtekenreeks alle tekens bevatten tussen het beginteken en het einde van de tekenreeks.
+     - Positief: hiermee bepaalt u de lengte van de subtekenreeks van het beginteken naar rechts.
+     - Negatief: hiermee bepaalt u de lengte van de subtekenreeks van het beginteken naar links.
 
 #### <a name="example"></a>Voorbeeld:
 
-In het volgende voor beeld wordt gebruikgemaakt van de volgende voorbeeld aanvraag-URL:
+In het volgende voorbeeld wordt de volgende URL van de voorbeeldaanvraag gebaseerd:
 
-https:\//CDN.mydomain.com/folder/marketing/myconsultant/proposal.html
+https:\//cdn.mydomain.com/folder/marketing/myconsultant/proposal.html
 
-De volgende teken reeks demonstreert verschillende methoden voor het bewerken van variabelen:
+De volgende tekenreeks toont verschillende methoden voor het manipuleren van variabelen:
 
-https:\//www%{HTTP_HOST: 3}/Mobile/%{REQUEST_URI: 7:10}/%{REQUEST_URI:-5:-8}. htm
+https:\//www%{http_host:3}/mobile/%{request_uri:7:10}/%{request_uri:-5:-8}.htm
 
-Op basis van de voor beeld-aanvraag-URL wordt met de bovenstaande variabele manipulatie de volgende waarde geproduceerd:
+Op basis van de URL van de voorbeeldaanvraag produceert de bovenstaande variabele manipulatie de volgende waarde:
 
-https:\//www.mydomain.com/Mobile/Marketing/proposal.htm
+https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 
-### <a name="pattern-removal"></a>Patroon verwijderen
+### <a name="pattern-removal"></a>Patroonverwijdering
 Tekst die overeenkomt met een specifiek patroon kan worden verwijderd uit het begin of het einde van de waarde van een variabele.
 
-| Syntaxis | Action |
+| Syntaxis | Actie |
 | ------ | ------ |
-| %{Variable#Pattern} | Tekst verwijderen wanneer het opgegeven patroon wordt gevonden aan het begin van de waarde van een variabele. |
-| % {Variabele% pattern} | Tekst verwijderen wanneer het opgegeven patroon wordt gevonden aan het einde van de waarde van een variabele. |
+| %{Variable#Pattern} | Verwijder tekst wanneer het opgegeven patroon wordt gevonden aan het begin van de waarde van een variabele. |
+| %{Variabel%Patroon} | Verwijder tekst wanneer het opgegeven patroon wordt gevonden aan het einde van de waarde van een variabele. |
 
 #### <a name="example"></a>Voorbeeld:
 
-In dit voorbeeld scenario wordt de variabele *REQUEST_URI* ingesteld op:
+In dit voorbeeldscenario wordt de *request_uri* variabele ingesteld op:
 
 `/800001/myorigin/marketing/product.html?language=en-US`
 
 In de volgende tabel ziet u hoe deze syntaxis werkt.
 
-| Voorbeeld syntaxis | Resultaten | |
+| Syntaxis van het voorbeeld | Resultaten | |
 | ------------- | ------- | --- |
-| %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | Omdat de variabele begint met het patroon, is deze vervangen. |
-| %{request_uri%html}htm | /800001/myorigin/Marketing/product.html? language = nl-nl | Omdat de variabele niet eindigt met het patroon, is er geen wijziging.|
+| %{request_uri#/800001}/klantoorsprong | /customerorigin/myorigin/marketing/product.html?language=en-US | Omdat de variabele begint met het patroon, is deze vervangen. |
+| %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | Omdat de variabele niet eindigt met het patroon, was er geen verandering.|
 
 ### <a name="find-and-replace"></a>Zoeken en vervangen
-De syntaxis voor zoeken en vervangen wordt beschreven in de volgende tabel.
+De syntaxis zoeken en vervangen wordt beschreven in de volgende tabel.
 
-| Syntaxis | Action |
+| Syntaxis | Actie |
 | ------ | ------ |
-| % {Variabele/zoeken/vervangen} | Het eerste exemplaar van het opgegeven patroon zoeken en vervangen. |
-| % {Variable//zoeken/vervangen} | Zoek en vervang alle instanties van het opgegeven patroon. |
-| % {Variable ^} |Zet de gehele waarde om in hoofd letters. |
-| %{Variable^Find} | Het eerste exemplaar van het opgegeven patroon converteren naar hoofd letters. |
-| % {Variable,} | Zet de gehele waarde om in kleine letters. |
-| % {Variable, zoeken} | Het eerste exemplaar van het opgegeven patroon converteren naar kleine letters. |
+| %{Variabele/Zoeken/Vervangen} | Het eerste optreden van het opgegeven patroon zoeken en vervangen. |
+| %{Variabele/Find/Replace} | Alle exemplaren van het opgegeven patroon zoeken en vervangen. |
+| %{Variabele^} |Converteer de volledige waarde naar hoofdletters. |
+| %{Variabele^Find} | Zet het eerste optreden van het opgegeven patroon om in hoofdletters. |
+| %{Variabele,} | Converteer de volledige waarde in kleine letters. |
+| %{Variabele, Zoeken} | Converteer de eerste instantie van het opgegeven patroon in kleine letters. |
 
 ### <a name="find-and-rewrite"></a>Zoeken en herschrijven
-Gebruik voor een variatie op zoeken en vervangen de tekst die overeenkomt met het opgegeven patroon wanneer u deze herschrijft. De syntaxis voor zoeken en herschrijven wordt beschreven in de volgende tabel.
+Gebruik de tekst die overeenkomt met het opgegeven patroon bij het herschrijven van een variant op zoeken en vervangen. De syntaxis zoeken en herschrijven wordt beschreven in de volgende tabel.
 
-| Syntaxis | Action |
+| Syntaxis | Actie |
 | ------ | ------ |
-| % {Variable/= zoeken/herschrijven} | Alle exemplaren van het opgegeven patroon zoeken, kopiëren en herschrijven. |
-| %{Variable/^Find/Rewrite} | Zoeken, kopiëren en herschrijven van het opgegeven patroon wanneer dit plaatsvindt aan het begin van de variabele. |
-| %{Variable/$Find/Rewrite} | Zoeken, kopiëren en herschrijven van het opgegeven patroon wanneer dit plaatsvindt aan het einde van de variabele. |
-| %{Variable/Find} | Zoek en verwijder alle exemplaren van het opgegeven patroon. |
+| %{Variabele/=Zoeken/Herschrijven} | Alle exemplaren van het opgegeven patroon zoeken, kopiëren en herschrijven. |
+| %{Variabele/^Zoeken/Herschrijven} | Zoek, kopieer en herschrijf het opgegeven patroon wanneer het gebeurt aan het begin van de variabele. |
+| %{Variabele/$Find/Herschrijven} | Zoek, kopieer en herschrijf het opgegeven patroon wanneer het zich aan het einde van de variabele voordoet. |
+| %{Variabele/Zoeken} | Alle exemplaren van het opgegeven patroon zoeken en verwijderen. |
 
-Belang rijke informatie:
+Belangrijkste informatie:
 
-- Vouw tekst uit die overeenkomt met het opgegeven patroon door een dollar teken op te geven gevolgd door een geheel getal (bijvoorbeeld $1).
+- Vouw tekst uit die overeenkomt met het opgegeven patroon door een dollarteken op te geven, gevolgd door een geheel geheel geheel getal (bijvoorbeeld $ 1).
 
-- Er kunnen meerdere patronen worden opgegeven. De volg orde waarin het patroon wordt opgegeven, bepaalt het geheel getal dat hieraan wordt toegewezen. In het volgende voor beeld komt het eerste patroon overeen met ' www. ', het tweede patroon komt overeen met het domein van het tweede niveau en het derde patroon overeenkomt met het domein op het hoogste niveau:
+- Er kunnen meerdere patronen worden opgegeven. De volgorde waarin het patroon is opgegeven, bepaalt het geheel getal dat eraan wordt toegewezen. In het volgende voorbeeld komt het eerste patroon overeen met 'www.', het tweede patroon komt overeen met het domein op het tweede niveau en het derde patroon komt overeen met het domein op het hoogste niveau:
 
     `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$2.$3:80}`
 
-- De herschrijfde waarde kan bestaan uit een wille keurige combi natie van tekst en deze tijdelijke aanduidingen.
+- De herschreven waarde kan bestaan uit elke combinatie van tekst en deze tijdelijke aanduidingen.
 
-    In het vorige voor beeld wordt de hostnaam opnieuw geschreven naar `cdn.$2.$3:80` (bijvoorbeeld CDN.mydomain.com:80).
+    In het vorige voorbeeld wordt de `cdn.$2.$3:80` hostnaam herschreven naar (bijvoorbeeld cdn.mydomain.com:80).
 
-- Het geval van een tijdelijke aanduiding voor een patroon (bijvoorbeeld $1) kan worden gewijzigd met behulp van de volgende vlaggen:
-     - H Hoofd letters de uitgevouwen waarde.
+- Het geval van een tijdelijke aanduiding voor een patroon (bijvoorbeeld $ 1) kan worden gewijzigd via de volgende vlaggen:
+     - U: Hoofdletters de uitgebreide waarde.
 
-         Voorbeeld syntaxis:
+         Voorbeeldsyntaxis:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$U2.$3:80}`
 
-     - WINST Kleine letters de uitgevouwen waarde.
+     - L: Kleine letters de uitgebreide waarde.
 
-         Voorbeeld syntaxis:
+         Voorbeeldsyntaxis:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$L2.$3:80}`
 
-- Er moet een operator worden opgegeven voor het patroon. De opgegeven operator bepaalt het gedrag van het vastleggen van patronen:
+- Een operator moet vóór het patroon worden opgegeven. De opgegeven operator bepaalt het gedrag voor het vastleggen van patronen:
 
-     - `=`: Geeft aan dat alle exemplaren van het opgegeven patroon moeten worden vastgelegd en opnieuw moeten worden geschreven.
+     - `=`: Geeft aan dat alle exemplaren van het opgegeven patroon moeten worden vastgelegd en herschreven.
      - `^`: Geeft aan dat alleen tekst die begint met het opgegeven patroon wordt vastgelegd.
-     - `$`: Geeft aan dat alleen tekst die eindigt op het opgegeven patroon wordt vastgelegd.
+     - `$`: Geeft aan dat alleen tekst die eindigt met het opgegeven patroon wordt vastgelegd.
  
-- Als u de waarde */rewrite* weglaat, wordt de tekst die overeenkomt met het patroon, verwijderd.
+- Als u de waarde */Herschrijven* weglaat, wordt de tekst die overeenkomt met het patroon verwijderd.
 
 

@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen-Azure Event Grid IoT Edge | Microsoft Docs
-description: Problemen oplossen in Event Grid op IoT Edge.
+title: Problemen oplossen - IoT-rand voor Azure-gebeurtenisraster | Microsoft Documenten
+description: Probleemoplossing in gebeurtenisraster op IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,21 +10,21 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73100159"
 ---
 # <a name="common-issues"></a>Algemene problemen
 
-Als u problemen ondervindt met het gebruik van Azure Event Grid op IoT Edge in uw omgeving, gebruikt u dit artikel als richt lijn voor het oplossen van problemen en oplossingen.
+Als u problemen ondervindt bij het gebruik van Azure Event Grid op IoT Edge in uw omgeving, gebruikt u dit artikel als een handleiding voor het oplossen van problemen en het oplossen van problemen.
 
-## <a name="view-event-grid-module-logs"></a>Event Grid-module Logboeken weer geven
+## <a name="view-event-grid-module-logs"></a>Modulelogboeken voor gebeurtenisrasterweergeven
 
-Als u problemen wilt oplossen, moet u mogelijk toegang krijgen tot Event Grid-module Logboeken. Voer hiervoor de volgende opdracht uit op de VM waarop de module is geïmplementeerd:
+Als u problemen wilt oplossen, moet u mogelijk toegang krijgen tot logboeken van de gebeurtenisrastermodule. Voer hiervoor op de VM waar de module is geïmplementeerd de volgende opdracht uit:
 
-In Windows,
+Op Windows,
 
 ```sh
 docker -H npipe:////./pipe/iotedge_moby_engine container logs eventgridmodule
@@ -36,15 +36,15 @@ Op Linux,
 sudo docker logs eventgridmodule
 ```
 
-## <a name="unable-to-make-https-requests"></a>Kan geen HTTPS-aanvragen doen
+## <a name="unable-to-make-https-requests"></a>Kan geen HTTPS-verzoeken indienen
 
-* Zorg er eerst voor dat Event Grid module **Inkomend: serverAuth: tlsPolicy** is ingesteld op **strikt** of **ingeschakeld**.
+* Controleer eerst of de module Event Grid **inbound:serverAuth:tlsPolicy** is ingesteld op **strikt** of **ingeschakeld.**
 
-* Als de communicatie van module naar module is, zorgt u ervoor dat u de aanroep op poort **4438** en de naam van de module overeenkomt met wat er wordt geïmplementeerd. 
+* Als de communicatie tussen module en module is, moet u ervoor zorgen dat u de aanroep op poort **4438** voert en dat de naam van de module overeenkomt met wat wordt geïmplementeerd. 
 
-  Voor beeld: als Event Grid module is geïmplementeerd met de naam **eventgridmodule** , moet uw URL **https://eventgridmodule:4438** . Controleer of het hoofdletter gebruik en het poort nummer juist zijn.
+  Bijvoorbeeld als de module Gebeurtenisraster is geïmplementeerd met de naam **eventgridmodule,** moet uw URL . **https://eventgridmodule:4438** Zorg ervoor dat de behuizing en het poortnummer correct zijn.
     
-* Als het vanuit de niet-IoT-module is, moet u ervoor zorgen dat Event Grid poort wordt toegewezen aan de host-machine tijdens de implementatie, bijvoorbeeld
+* Als deze niet afkomstig is van een niet-IoT-module, controleert u of de gebeurtenisrasterpoort tijdens de implementatie in kaart is gebracht op de hostmachine,
 
     ```json
     "HostConfig": {
@@ -58,15 +58,15 @@ sudo docker logs eventgridmodule
      }
     ```
 
-## <a name="unable-to-make-http-requests"></a>Kan geen HTTP-aanvragen maken
+## <a name="unable-to-make-http-requests"></a>Kan http-aanvragen niet indienen
 
-* Zorg er eerst voor dat Event Grid module **Inkomend: serverAuth: tlsPolicy** is ingesteld op **ingeschakeld** of **uitgeschakeld**.
+* Controleer eerst of de module Event Grid **inbound:serverAuth:tlsPolicy** is ingesteld **op ingeschakeld** of **uitgeschakeld.**
 
-* Als de communicatie van module naar module is, zorgt u ervoor dat u de aanroep op poort **5888** en de naam van de module overeenkomt met wat er wordt geïmplementeerd. 
+* Als de communicatie tussen module en module is, moet u ervoor zorgen dat u de aanroep op poort **5888** voert en dat de naam van de module overeenkomt met wat wordt geïmplementeerd. 
 
-  Voor beeld: als Event Grid module is geïmplementeerd met de naam **eventgridmodule** , moet uw URL **http://eventgridmodule:5888** . Controleer of het hoofdletter gebruik en het poort nummer juist zijn.
+  Bijvoorbeeld als de module Gebeurtenisraster is geïmplementeerd met de naam **eventgridmodule,** moet uw URL . **http://eventgridmodule:5888** Zorg ervoor dat de behuizing en het poortnummer correct zijn.
     
-* Als het vanuit de niet-IoT-module is, moet u ervoor zorgen dat Event Grid poort wordt toegewezen aan de host-machine tijdens de implementatie, bijvoorbeeld
+* Als deze niet afkomstig is van een niet-IoT-module, controleert u of de gebeurtenisrasterpoort tijdens de implementatie in kaart is gebracht op de hostmachine,
 
     ```json
     "HostConfig": {
@@ -80,32 +80,32 @@ sudo docker logs eventgridmodule
     }
     ```
 
-## <a name="certificate-chain-was-issued-by-an-authority-thats-not-trusted"></a>De certificaat keten is uitgegeven door een niet-vertrouwde instantie
+## <a name="certificate-chain-was-issued-by-an-authority-thats-not-trusted"></a>Certificaatketen is uitgegeven door een autoriteit die niet wordt vertrouwd
 
-Event Grid module is standaard geconfigureerd voor het verifiëren van clients met een certificaat dat is uitgegeven door de IoT Edge Security daemon. Zorg ervoor dat de client een certificaat presenteert dat is geroot naar deze keten.
+Standaard is de module Event Grid geconfigureerd om clients te verifiëren met een certificaat dat is uitgegeven door de IoT Edge-beveiligingsdaemon. Zorg ervoor dat de klant een certificaat presenteert dat is geworteld in deze keten.
 
-De klasse **IoTSecurity** in [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) laat zien hoe u certificaten kunt ophalen van IOT Edge Security daemon en hoe u uitgaande oproepen configureert.
+**IoTSecurity-klasse** laat [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) zien hoe u certificaten ophalen bij IoT Edge Security-daemon en deze gebruiken om uitgaande oproepen te configureren.
 
-Als het een niet-productie-omgeving is, hebt u de mogelijkheid om client verificatie uit te scha kelen. Raadpleeg [beveiliging en verificatie](security-authentication.md) voor meer informatie over hoe u dit doet.
+Als het een niet-productieomgeving is, hebt u de optie om clientverificatie uit te schakelen. Raadpleeg [Beveiliging en verificatie](security-authentication.md) voor meer informatie over hoe u dit doen.
 
-## <a name="debug-events-not-received-by-subscriber"></a>Fout opsporing gebeurtenissen die niet zijn ontvangen door de abonnee
+## <a name="debug-events-not-received-by-subscriber"></a>Foutopsporingsgebeurtenissen niet ontvangen door abonnee
 
-Veelvoorkomende oorzaken hiervoor zijn:
+Typische redenen hiervoor zijn:
 
-* De gebeurtenis is nooit gepubliceerd. Er moet een HTTP-status code van 200 (OK) zijn ontvangen bij het posten van een gebeurtenis in de module Event Grid.
+* Het evenement is nooit succesvol geboekt. Er moet een HTTP-statuscode van 200(OK) zijn ontvangen bij het plaatsen van een gebeurtenis in de module Event Grid.
 
-* Controleer het gebeurtenis abonnement om te verifiëren:
-    * Eind punt-URL is geldig
-    * Filters in het abonnement zorgen er niet toe dat de gebeurtenis wordt verwijderd.
+* Controleer het gebeurtenisabonnement om het te verifiëren:
+    * De URL van eindpunt is geldig
+    * Filters in het abonnement veroorzaken niet dat de gebeurtenis wordt "verwijderd".
 
-* Controleren of de abonnee module wordt uitgevoerd
+* Controleren of de abonneemodule wordt uitgevoerd
 
-* Meld u aan bij de VM waar Event Grid module is geïmplementeerd en Bekijk de logboeken ervan.
+* Meld u aan bij de VM waar de module Gebeurtenisraster wordt geïmplementeerd en bekijk de logboeken.
 
-* Schakel logboek registratie per levering in door **Broker: logDeliverySuccess = True** in te stellen en de module Event grid opnieuw te implementeren en de aanvraag opnieuw uit te voeren. Het inschakelen van logboek registratie per levering kan invloed hebben op de door Voer en latentie wanneer de fout opsporing is voltooid. Als u deze optie uitschakelt, wordt de aanbeveling ingesteld op **Broker: logDeliverySuccess = False** en wordt Event grid module opnieuw geïmplementeerd.
+* Schakel per delivery logging in door **broker in te stellen:logDeliverySuccess=true** en de module Event Grid opnieuw te implementeren en de aanvraag opnieuw uit te proberen. Het inschakelen van logboekregistratie per levering kan van invloed zijn op de doorvoer en latentie, dus zodra debugging is voltooid, is het onze aanbeveling om dit terug te draaien naar **broker:logDeliverySuccess=false** en het opnieuw implementeren van event grid-module.
 
-* Schakel metrische gegevens in door metrische gegevens in te stellen **: reportertype = console** en implementeer Event grid module opnieuw. Als er bewerkingen worden uitgevoerd, worden er metrische gegevens geregistreerd op de console van Event Grid module, die kan worden gebruikt om fouten op te sporen. We raden u aan om metrische gegevens alleen in te scha kelen voor fout opsporing en eenmaal op te zetten om deze functie uit te voeren door metrische gegevens in te stellen **: reportertype = none** en de module Event grid opnieuw te implementeren.
+* Schakel statistieken in door **statistieken in te stellen:reportertype=console** en de module Gebeurtenisraster opnieuw te implementeren. Alle bewerkingen daarna resulteren in statistieken die worden geregistreerd op de console van de Event Grid-module, die kan worden gebruikt om verder te debuggen. Onze aanbeveling is om statistieken alleen in te schakelen voor foutopsporing en eenmaal voltooid om deze uit te schakelen door statistieken in te **stellen:reportertype=none** en de module Event Grid opnieuw te implementeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meld alle problemen en suggesties bij het gebruik van Event Grid op IoT Edge op [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues).
+Eventuele problemen, suggesties rapporteren met het gebruik [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)van gebeurtenisraster op IoT Edge op .

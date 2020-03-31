@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware-oplossingen (AVS): Kies een taakverdelings oplossing voor persoonlijke Clouds van AVS'
-description: Hierin worden de opties voor taak verdeling beschreven voor het implementeren van een toepassing in een geavse Privécloud
+title: Azure VMware-oplossing van CloudSimple - Kies een oplossing voor het balanceren van de lastenafweging voor CloudSimple Private Clouds
+description: Beschrijft de opties voor het implementeren van een toepassing in een private cloud
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,39 +8,39 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 405bc9d95b8d82e2181e2fb828d6bcc00c8c4639
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77014875"
 ---
-# <a name="choose-a-load-balancing-solution-for-avs-private-clouds"></a>Een taakverdelings oplossing kiezen voor persoonlijke Clouds van AVS
+# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Kies een oplossing voor het balanceren van de lastenvoor CloudSimple Private Clouds
 
-Wanneer u een toepassing implementeert in een Privécloud in de Cloud, kunt u een van de verschillende opties voor taak verdeling kiezen.
+Wanneer u een toepassing implementeert in een CloudSimple Private Cloud, u een van de verschillende opties kiezen voor taakverdeling.
 
-U kunt een virtuele-of software-load balancer in de privécloud van uw AVS kiezen of Azure N7 gebruiken load balancer die worden uitgevoerd in uw Azure-abonnement om de front-end van uw weblaag in de Privécloud te starten. Hier worden enkele opties vermeld:
+U een virtuele of op software gebaseerde load balancer kiezen in uw CloudSimple-privécloud of zelfs Azure L7-load balancer gebruiken die in uw Azure-abonnement wordt uitgevoerd om uw webtier VM's te front-enden die worden uitgevoerd in de CloudSimple Private Cloud. Hier zetten we een aantal opties op een rij:
 
 ## <a name="virtual-load-balancers"></a>Virtuele load balancers
 
-U kunt virtuele load balancer-apparaten implementeren in uw VMware-omgeving via de vCenter-interface en ze configureren om het verkeer van de front-end van uw toepassing te beëindigen.
+U virtuele load balancer-apparaten implementeren in uw VMware-omgeving via de vCenter-interface en deze configureren om uw toepassingsverkeer vooraf te beheren.
 
-Enkele populaire leveranciers zijn: NginX: http://nginx.org/en/docs/http/load_balancing.html F5-BigIP-Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC: https://www.citrix.com/products/citrix-adc/
+Enkele populaire leveranciers zijn: NginX: http://nginx.org/en/docs/http/load_balancing.html F5- BigIP - Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC:https://www.citrix.com/products/citrix-adc/
 
-## <a name="azure-l7-load-balancer"></a>Azure N7-load balancer
+## <a name="azure-l7-load-balancer"></a>Azure L7-loadbalancer
 
-Wanneer u Azure-toepassing gateway als een N7-load balancer gebruikt voor uw toepassing die wordt uitgevoerd in een AVS-Privécloud, hoeft u de load balancer software niet te beheren. De load balancer-software wordt beheerd door Azure. Alle virtuele machines in de AVS-privécloud gebruiken privé-IP-adressen en vereisen geen aanvullende NAT-regels of open bare Ip's-adressen om namen om te zetten. Vm's met een weblaag communiceren met de Azure-toepassing-gateway via een particuliere verbinding met lage latentie en een hoge band breedte.
+Wanneer u Azure Application Gateway gebruikt als L7-loadbalancer voor uw toepassing die wordt uitgevoerd in een Private Cloud, hoeft u de load balancer-software niet te beheren. De load balancer-software wordt beheerd door Azure. Alle webtierVM's in de Private Cloud gebruiken privé-IP-adressen en vereisen geen extra NAT-regels of openbare IP-adressen om namen op te lossen. Vm's met weblagen communiceren met de Azure Application Gateway via een privéverbinding met lage latentie met hoge bandbreedte.
 
-Voor meer informatie over het configureren van deze oplossing raadpleegt u de hand leiding voor oplossingen over het gebruik van Azure-toepassing gateway als een N7-load balancer.
+Raadpleeg de oplossingshandleiding voor het gebruik van Azure Application Gateway als L7-loadbalancer voor meer informatie over het configureren van deze oplossing.
 
-## <a name="azure-internal-load-balancer"></a>Interne load balancer van Azure
+## <a name="azure-internal-load-balancer"></a>Azure interne load balancer
 
-Als u ervoor kiest om uw toepassing uit te voeren in een hybride implementatie waarbij de web-front-end-laag wordt uitgevoerd in een Azure-vNet in uw Azure-abonnement en de DB-laag van de toepassing wordt uitgevoerd in VMware-Vm's in de Privécloud-Cloud, kunt u Azure Internal load balancer gebruiken (L 4 load balancer) vóór de Vm's van de DB-laag voor verkeer beheer.
+Als u ervoor kiest om uw toepassing uit te voeren in een hybride implementatie waarbij de front-endlaag van het web binnen een Azure vNet wordt uitgevoerd in uw Azure-abonnement en de DB-laag van de toepassing wordt uitgevoerd in VMware VM's in CloudSimple Private Cloud, u interne belasting van Azure gebruiken balancer (L4 load balancer) voor uw DB-tier VM's voor verkeersbeheer.
 
-Zie de documentatie van Azure [Internal Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) voor meer informatie.
+Zie Azure Internal [Load Balancer-documentatie](../load-balancer/concepts-limitations.md#internalloadbalancer) voor meer informatie.
 
-## <a name="global-server-load-balancer"></a>load balancer globale server
+## <a name="global-server-load-balancer"></a>Global server load balancer
 
-Als u op zoek bent naar een op DNS gebaseerde load balancer, kunt u gebruikmaken van oplossingen van derden die beschikbaar zijn in azure Marketplace of met de systeem eigen Azure-oplossing.
+Als u op zoek bent naar een op DNS gebaseerde load balancer, u oplossingen van derden gebruiken die beschikbaar zijn in Azure Marketplace of voor de native Azure-oplossing gaan.
 
-Azure Traffic Manager is een op DNS gebaseerd verkeer load balancer waarmee u verkeer optimaal kunt distribueren naar Services in wereld wijde Azure-regio's en on-premises, met hoge Beschik baarheid en reactie tijd. Zie Azure [Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) -documentatie voor meer informatie.
+Azure Traffic Manager is een op DNS gebaseerde verkeerslastenbalancer waarmee u verkeer optimaal distribueren naar services over wereldwijde Azure-regio's en on-premises, terwijl u tegelijkertijd een hoge beschikbaarheid en responsiviteit biedt. Zie Azure Traffic [Manager-documentatie](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) voor meer informatie.

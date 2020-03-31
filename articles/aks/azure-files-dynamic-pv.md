@@ -1,45 +1,45 @@
 ---
-title: Dynamisch een bestanden volume maken voor meerdere peulen in azure Kubernetes service (AKS)
-description: Meer informatie over het dynamisch maken van een permanent volume met Azure Files voor gebruik met meerdere gelijktijdige peulingen in azure Kubernetes service (AKS)
+title: Dynamisch een bestandenvolume maken voor meerdere pods in Azure Kubernetes Service (AKS)
+description: Meer informatie over het dynamisch maken van een blijvend volume met Azure Files voor gebruik met meerdere gelijktijdige pods in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: ef9ef10a5523bd91b346e16e105c5ff5cd9cb669
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3628a9243d849cdb2f3143209dc239be5ac846b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78897715"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297783"
 ---
-# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisch een permanent volume maken en gebruiken met Azure Files in azure Kubernetes service (AKS)
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisch een blijvend volume maken en gebruiken met Azure Files in Azure Kubernetes Service (AKS)
 
-Een permanent volume vertegenwoordigt een opslag ruimte die is ingericht voor gebruik met Kubernetes peul. Een permanent volume kan worden gebruikt door een of meer peulen en kan dynamisch of statisch worden ingericht. Als meerdere peulen gelijktijdig gelijktijdige toegang tot hetzelfde opslag volume nodig hebben, kunt u Azure Files gebruiken om verbinding te maken met het [SMB-protocol (Server Message Block)][smb-overview]. In dit artikel wordt beschreven hoe u een Azure Files share dynamisch kunt maken voor gebruik door meerdere peulingen in een Azure Kubernetes service-cluster (AKS).
+Een blijvend volume vertegenwoordigt een stuk opslag dat is ingericht voor gebruik met Kubernetes-pods. Een persistent volume kan door een of meer pods worden gebruikt en kan dynamisch of statisch worden ingericht. Als meerdere pods gelijktijdige toegang tot hetzelfde opslagvolume nodig hebben, u Azure Files gebruiken om verbinding te maken met het [SMB-protocol (Server Message Block).][smb-overview] In dit artikel ziet u hoe u dynamisch een Azure Files-share maakt voor gebruik door meerdere pods in een AKS-cluster (Azure Kubernetes Service).
 
-Zie [opslag opties voor toepassingen in AKS][concepts-storage]voor meer informatie over Kubernetes-volumes.
+Zie [Opslagopties voor toepassingen in AKS voor][concepts-storage]meer informatie over Kubernetes-volumes.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
+In dit artikel wordt ervan uitgegaan dat u een bestaand AKS-cluster hebt. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS snelstart [met de Azure CLI][aks-quickstart-cli] of met behulp van de [Azure-portal][aks-quickstart-portal].
 
-Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
+U hebt ook de Azure CLI-versie 2.0.59 of hoger geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
 
-## <a name="create-a-storage-class"></a>Een opslag klasse maken
+## <a name="create-a-storage-class"></a>Een opslagklasse maken
 
-Een opslag klasse wordt gebruikt om te bepalen hoe een Azure-bestands share wordt gemaakt. Er wordt automatisch een opslag account gemaakt in de [knooppunt resource groep][node-resource-group] voor gebruik met de opslag klasse om de Azure-bestands shares op te slaan. Kies een van de volgende [Azure Storage-redundantie][storage-skus] voor *skuName*:
+Een opslagklasse wordt gebruikt om te bepalen hoe een Azure-bestandsshare wordt gemaakt. Er wordt automatisch een opslagaccount gemaakt in de [brongroep knooppunt][node-resource-group] voor gebruik met de opslagklasse om de Azure-bestandsshares vast te houden. Kies de volgende [Azure-opslagredundantie][storage-skus] voor *skuName:*
 
-* *Standard_LRS* -standaard lokaal redundante opslag (LRS)
-* *Standard_GRS* -standaard geo-redundante opslag (GRS)
-* *Standard_ZRS* -standaard zone redundante opslag (GRS)
-* *Standard_RAGRS* -standaard geografisch redundante opslag met lees toegang (RA-GRS)
-* *Premium_LRS* -Premium lokaal redundante opslag (LRS)
-* *Premium_ZRS* -Premium zone-redundante opslag (GRS)
+* *Standard_LRS* - standaard lokaal redundante opslag (LRS)
+* *Standard_GRS* - standaard georedundante opslag (GRS)
+* *Standard_ZRS* - standaardzone redundante opslag (ZRS)
+* *Standard_RAGRS* - standaard georedundante opslag met leestoegang (RA-GRS)
+* *Premium_LRS* - premium locally redundant storage (LRS)
+* *Premium_ZRS* - redundante opslag voor premiumzones (GRS)
 
 > [!NOTE]
-> Azure Files Premium Storage ondersteunen in AKS-clusters met Kubernetes 1,13 of hoger, is de minimale Premium-bestands share 100 GB
+> Azure Files ondersteunen premium opslag in AKS-clusters met Kubernetes 1.13 of hoger, minimaal premium bestandsaandeel is 100 GB
 
-Zie [Kubernetes-opslag klassen][kubernetes-storage-classes]voor meer informatie over Kubernetes-opslag klassen voor Azure files.
+Zie [Kubernetes Storage Classes][kubernetes-storage-classes]voor meer informatie over Kubernetes-opslagklassen voor Azure-bestanden.
 
-Maak een bestand met de naam `azure-file-sc.yaml` en kopieer het in het volgende voor beeld-manifest. Zie de sectie [koppelings opties][mount-options] voor meer informatie over *mountOptions*.
+Maak een `azure-file-sc.yaml` bestand met de naam en kopie in het volgende voorbeeldmanifest. Zie voor meer informatie over *mountOptions*het gedeelte [Opties van de berg.][mount-options]
 
 ```yaml
 kind: StorageClass
@@ -58,17 +58,17 @@ parameters:
   skuName: Standard_LRS
 ```
 
-Maak de opslag klasse met de opdracht [kubectl apply][kubectl-apply] :
+Maak de opslagklasse met de opdracht [kubectl apply:][kubectl-apply]
 
 ```console
 kubectl apply -f azure-file-sc.yaml
 ```
 
-## <a name="create-a-persistent-volume-claim"></a>Een permanente volume claim maken
+## <a name="create-a-persistent-volume-claim"></a>Een permanente volumeclaim maken
 
-Een permanente volume claim (PVC) maakt gebruik van het opslag klassen object om een Azure-bestands share dynamisch in te richten. De volgende YAML kunnen worden gebruikt voor het maken van een permanente volume claim *5 GB* in grootte met *ReadWriteMany* -toegang. Zie de documentatie over het [permanente volume van Kubernetes][access-modes] voor meer informatie over de toegangs modi.
+Een persistent volume claim (PVC) gebruikt het object van de opslagklasse om een Azure-bestandsshare dynamisch in te richten. De volgende YAML kan worden gebruikt om een permanente volumeclaim *van 5 GB* te maken met *ReadWriteMany-toegang.* Zie de [permanente volumedocumentatie van Kubernetes][access-modes] voor meer informatie over toegangsmodi.
 
-Maak nu een bestand met de naam `azure-file-pvc.yaml` en kopieer het in de volgende YAML. Zorg ervoor dat de *storageClassName* overeenkomt met de opslag klasse die in de laatste stap is gemaakt:
+Maak nu een `azure-file-pvc.yaml` bestand met de naam en kopie in de volgende YAML. Controleer of de *storageClassName* overeenkomt met de opslagklasse die in de laatste stap is gemaakt:
 
 ```yaml
 apiVersion: v1
@@ -85,15 +85,15 @@ spec:
 ```
 
 > [!NOTE]
-> Als u de *Premium_LRS* SKU voor uw opslag klasse gebruikt, moet de minimale waarde voor opslag *100Gi*zijn.
+> Als u de *Premium_LRS* sku voor uw opslagklasse gebruikt, moet de minimumwaarde voor *opslag* *100Gi*zijn.
 
-Maak de permanente volume claim met de opdracht [kubectl apply][kubectl-apply] :
+Maak de claim voor permanente volume met de opdracht [kubectl apply:][kubectl-apply]
 
 ```console
 kubectl apply -f azure-file-pvc.yaml
 ```
 
-Zodra het is voltooid, wordt de bestands share gemaakt. Er wordt ook een Kubernetes-geheim gemaakt dat verbindings gegevens en referenties bevat. U kunt de opdracht [kubectl Get][kubectl-get] gebruiken om de status van het PVC weer te geven:
+Na voltooiing wordt de bestandsshare gemaakt. Er wordt ook een Kubernetes-geheim gemaakt dat verbindingsgegevens en referenties bevat. U de [kubectl-opdracht gebruiken][kubectl-get] om de status van het PVC weer te geven:
 
 ```console
 $ kubectl get pvc azurefile
@@ -102,11 +102,11 @@ NAME        STATUS    VOLUME                                     CAPACITY   ACCE
 azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX            azurefile      5m
 ```
 
-## <a name="use-the-persistent-volume"></a>Het permanente volume gebruiken
+## <a name="use-the-persistent-volume"></a>Gebruik het aanhoudende volume
 
-De volgende YAML maakt een pod die gebruikmaakt van de permanente volume claim *azurefile* om de Azure-bestands share te koppelen aan het */mnt/Azure* -pad. Voor Windows Server-containers (momenteel in de preview-versie van AKS) geeft u een *mountPath* op met behulp van de Windows Path-Conventie, zoals *: '* .
+Met de volgende YAML wordt een pod gemaakt die de *azurefile* voor permanente volumeclaim gebruikt om de Azure-bestandsshare te monteren op het */mnt/azure-pad.* Voor Windows Server-containers (momenteel in preview in AKS) geeft u een *mountPath* op met behulp van de Windows-padconventie, zoals *'D:'.*
 
-Maak een bestand met de naam `azure-pvc-files.yaml`en kopieer de volgende YAML. Zorg ervoor dat de *claim* naam overeenkomt met het PVC dat in de laatste stap is gemaakt.
+Maak een `azure-pvc-files.yaml`bestand met de naam en kopieer in de volgende YAML. Zorg ervoor dat de *claimName* overeenkomt met het PVC dat in de laatste stap is gemaakt.
 
 ```yaml
 kind: Pod
@@ -133,13 +133,13 @@ spec:
         claimName: azurefile
 ```
 
-Maak de Pod met de opdracht [kubectl apply][kubectl-apply] .
+Maak de pod met de [opdracht kubectl apply.][kubectl-apply]
 
 ```console
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-U hebt nu een actieve pod met uw Azure Files-share die is gekoppeld in de */mnt/Azure* -map. Deze configuratie kan worden weer gegeven bij het controleren van uw Pod via `kubectl describe pod mypod`. De volgende gecomprimeerde voorbeeld uitvoer toont het volume dat in de container is gekoppeld:
+U hebt nu een lopende pod met uw Azure Files-share dat is gemonteerd in de *map /mnt/azure.* Deze configuratie kan worden gezien bij `kubectl describe pod mypod`het inspecteren van uw pod via . De volgende verkorte voorbeelduitvoer toont het volume dat in de container is gemonteerd:
 
 ```
 Containers:
@@ -162,9 +162,9 @@ Volumes:
 [...]
 ```
 
-## <a name="mount-options"></a>Koppelings opties
+## <a name="mount-options"></a>Koppelingsopties
 
-De standaard waarde voor *file mode* en *dirMode* is *0777* voor Kubernetes-versie 1.13.0 en hoger. Als het permanente volume dynamisch wordt gemaakt met een opslag klasse, kunnen er koppelings opties worden opgegeven voor het opslag klassen object. In het volgende voor beeld wordt *0777*ingesteld:
+De standaardwaarde voor *fileMode* en *dirMode* is *0777* voor Kubernetes versie 1.13.0 en hoger. Als het permanente volume dynamisch wordt gemaakt met een opslagklasse, kunnen de opties voor de montage worden opgegeven op het object opslagklasse. In het volgende voorbeeld wordt *0777 ingesteld:*
 
 ```yaml
 kind: StorageClass
@@ -185,12 +185,12 @@ parameters:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Aanbevolen procedures voor opslag en back-ups in AKS][operator-best-practices-storage]voor gekoppelde aanbevolen procedures.
+Zie [Aanbevolen procedures voor opslag en back-ups in AKS voor][operator-best-practices-storage]bijbehorende aanbevolen procedures.
 
-Meer informatie over Kubernetes permanente volumes met behulp van Azure Files.
+Meer informatie over kubernetes-permanente volumes met Azure Files.
 
 > [!div class="nextstepaction"]
-> [Kubernetes-invoeg toepassing voor Azure Files][kubernetes-files]
+> [Kubernetes-plug-in voor Azure-bestanden][kubernetes-files]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes

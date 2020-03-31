@@ -1,6 +1,6 @@
 ---
-title: OAuth 2,0 en OpenID Connect Connect protocols-micro soft Identity platform | Azure
-description: Een hand leiding voor OAuth 2,0 en OpenID Connect Connect-protocollen die worden ondersteund door het micro soft Identity platform-eind punt.
+title: OAuth 2.0- en OpenID Connect-protocollen - Microsoft-identiteitsplatform | Azure
+description: Een handleiding voor OAuth 2.0- en OpenID Connect-protocollen die worden ondersteund door het eindpunt van het Microsoft-identiteitsplatform.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,75 +14,75 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: d7ed4dbbc3fddb2e21ed3cf5292ebd80fe1e3e23
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263112"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2,0 en OpenID Connect Connect protocollen op het micro soft Identity-platform
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2.0- en OpenID Connect-protocollen op het Microsoft-identiteitsplatform
 
-Het micro soft Identity platform-eind punt voor Identity-as-a-service met industrie standaard protocollen, OpenID Connect Connect en OAuth 2,0. Hoewel de service compatibel is met standaarden, kunnen er subtiele verschillen zijn tussen twee implementaties van deze protocollen. Deze informatie is nuttig als u ervoor kiest om uw code te schrijven door rechtstreeks HTTP-aanvragen te verzenden en af te handelen of een open-source bibliotheek van derden te gebruiken, in plaats van een van de [open source-bibliotheken](reference-v2-libraries.md)te gebruiken.
+Het eindpunt van het Microsoft-identiteitsplatform voor identity-as-a-service met industriestandaardprotocollen, OpenID Connect en OAuth 2.0. Hoewel de service voldoet aan de normen, kunnen er subtiele verschillen zijn tussen de twee implementaties van deze protocollen. De informatie hier is handig als u ervoor kiest om uw code te schrijven door http-verzoeken rechtstreeks te verzenden en te verwerken of een open-sourcebibliotheek van derden te gebruiken, in plaats van een van onze [open-source bibliotheken](reference-v2-libraries.md)te gebruiken.
 
 > [!NOTE]
-> Niet alle Azure AD-scenario's en-functies worden ondersteund door het micro soft Identity platform-eind punt. Lees over [micro soft Identity platform-beperkingen](active-directory-v2-limitations.md)om te bepalen of u het micro soft Identity platform-eind punt moet gebruiken.
+> Niet alle Azure AD-scenario's en -functies worden ondersteund door het eindpunt van het Microsoft-identiteitsplatform. Als u wilt bepalen of u het eindpunt van het Microsoft-identiteitsplatform moet gebruiken, leest u over [de beperkingen van het Microsoft-identiteitsplatform.](active-directory-v2-limitations.md)
 
 ## <a name="the-basics"></a>De basisbeginselen
 
-In bijna alle OAuth 2,0-en OpenID Connect Connect-stromen zijn er vier partijen betrokken bij de uitwisseling:
+In bijna alle OAuth 2.0- en OpenID Connect-stromen zijn er vier partijen betrokken bij de uitwisseling:
 
-![Diagram van de OAuth 2,0-rollen](./media/active-directory-v2-flows/protocols-roles.svg)
+![Diagram met de rollen OAuth 2.0](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* De **autorisatie server** is het micro soft Identity platform-eind punt en is verantwoordelijk voor het garanderen van de identiteit van de gebruiker, het verlenen en intrekken van de toegang tot bronnen en het uitgeven van tokens. De autorisatie server, ook wel bekend als de identiteits provider, handelt veilig alles af met de informatie van de gebruiker, hun toegang en de vertrouwens relaties tussen partijen in een stroom.
-* De **resource-eigenaar** is doorgaans de eind gebruiker. Het is de partij die eigenaar is van de gegevens en de kracht heeft om externe partijen toegang te geven tot die gegevens of resource.
-* De **OAuth-client** is uw app, geïdentificeerd door de toepassings-id. De OAuth-client is doorgaans de partij waarmee de eind gebruiker communiceert en die tokens van de autorisatie server aanvraagt. Aan de client moet een machtiging worden verleend voor toegang tot de resource door de resource-eigenaar.
-* De **resource server** is de locatie waar de resource of gegevens zich bevinden. Het vertrouwt de autorisatie server voor het veilig verifiëren en autoriseren van de OAuth-client en maakt gebruik van toegangs tokens van Bearer om ervoor te zorgen dat toegang tot een bron kan worden verleend.
+* De **Autorisatieserver** is het eindpunt van het Microsoft-identiteitsplatform en is verantwoordelijk voor het waarborgen van de identiteit van de gebruiker, het verlenen en intrekken van toegang tot bronnen en het uitgeven van tokens. De autorisatieserver, ook wel bekend als de identiteitsprovider, verwerkt veilig alles wat te maken heeft met de informatie van de gebruiker, hun toegang en de vertrouwensrelaties tussen partijen in een stroom.
+* De **resource-eigenaar** is meestal de eindgebruiker. Het is de partij die eigenaar is van de gegevens en heeft de bevoegdheid om derden toegang te geven tot die gegevens of bron.
+* De **OAuth-client** is uw app, die wordt geïdentificeerd door de toepassings-ID. De OAuth-client is meestal de partij waarmee de eindgebruiker communiceert en vraagt tokens aan van de autorisatieserver. De client moet toestemming krijgen om toegang te krijgen tot de bron door de eigenaar van de resource.
+* De **resourceserver** is de plaats waar de bron of gegevens zich bevinden. Het vertrouwt de Autorisatieserver om de OAuth-client veilig te verifiëren en te autoriseren, en gebruikt toegangstokens voor dragers om ervoor te zorgen dat toegang tot een bron kan worden verleend.
 
 ## <a name="app-registration"></a>App-registratie
 
-Elke app die zowel privé-als werk-of school accounts wil accepteren, moet worden geregistreerd via de **app-registraties** ervaring in de [Azure Portal](https://aka.ms/appregistrations) voordat deze gebruikers kunnen worden ondertekend met OAuth 2,0 of OpenID Connect Connect. Tijdens het registratie proces van de app worden een aantal waarden verzameld en toegewezen aan uw app:
+Elke app die zowel persoonlijke als werk- of schoolaccounts wil accepteren, moet worden geregistreerd via de **ervaring met app-registraties** in de [Azure-portal](https://aka.ms/appregistrations) voordat deze gebruikers kunnen worden aangemeld met OAuth 2.0 of OpenID Connect. Het registratieproces van de app verzamelt en wijst een aantal waarden toe aan uw app:
 
-* Een **toepassings-id** waarmee uw app uniek wordt geïdentificeerd
-* Een **omleidings-URI** (optioneel) die kan worden gebruikt om antwoorden terug te sturen naar uw app
+* Een **toepassings-id** die uw app op een unieke basis identificeert
+* Een **OmleidingsURI** (optioneel) die kan worden gebruikt om reacties terug te sturen naar uw app
 * Een paar andere scenario-specifieke waarden.
 
 Zie [Een app registreren](quickstart-register-app.md) voor meer informatie.
 
 ## <a name="endpoints"></a>Eindpunten
 
-Zodra de app is geregistreerd, communiceert deze met het micro soft-identiteits platform door aanvragen te verzenden naar het eind punt:
+Eenmaal geregistreerd communiceert de app met het Microsoft-identiteitsplatform door verzoeken naar het eindpunt te verzenden:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-Waar de `{tenant}` een van de vier verschillende waarden kan hebben:
+Waar `{tenant}` het kan een van de vier verschillende waarden:
 
 | Waarde | Beschrijving |
 | --- | --- |
-| `common` | Hiermee kunnen gebruikers met persoonlijke micro soft-accounts en werk-of school accounts van Azure AD zich aanmelden bij de toepassing. |
-| `organizations` | Hiermee kunnen alleen gebruikers met werk-of school accounts van Azure AD zich aanmelden bij de toepassing. |
-| `consumers` | Hiermee kunnen alleen gebruikers met persoonlijke micro soft-accounts (MSA) zich aanmelden bij de toepassing. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` of `contoso.onmicrosoft.com` | Hiermee kunnen alleen gebruikers met werk-of school accounts van een bepaalde Azure AD-Tenant zich aanmelden bij de toepassing. De beschrijvende domein naam van de Azure AD-Tenant of de GUID-id van de Tenant kan worden gebruikt. |
+| `common` | Hiermee kunnen gebruikers met zowel persoonlijke Microsoft-accounts als werk-/schoolaccounts van Azure AD zich aanmelden bij de toepassing. |
+| `organizations` | Hiermee kunnen alleen gebruikers met werk-/schoolaccounts van Azure AD zich aanmelden bij de toepassing. |
+| `consumers` | Hiermee kunnen alleen gebruikers met persoonlijke Microsoft-accounts (MSA) zich aanmelden bij de toepassing. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` of `contoso.onmicrosoft.com` | Hiermee kunnen alleen gebruikers met werk-/schoolaccounts van een bepaalde Azure AD-tenant zich aanmelden bij de toepassing. De vriendelijke domeinnaam van de Azure AD-tenant of de GUID-id van de tenant kan worden gebruikt. |
 
-Als u wilt weten hoe u deze eind punten kunt gebruiken, kiest u een bepaald type app in de sectie [protocollen](#protocols) en volgt u de koppelingen voor meer informatie.
+Als u wilt weten hoe u met deze eindpunten communiceren, kiest u een bepaald app-type in de sectie [Protocollen](#protocols) en volgt u de koppelingen voor meer informatie.
 
 > [!TIP]
-> Elke app die is geregistreerd in azure AD kan gebruikmaken van het micro soft Identity platform-eind punt, zelfs als ze geen persoonlijke accounts ondertekenen.  Op deze manier kunt u bestaande toepassingen migreren naar micro soft Identity platform en [MSAL](reference-v2-libraries.md) zonder uw toepassing opnieuw te maken.  
+> Elke app die is geregistreerd in Azure AD kan het eindpunt van het Microsoft-identiteitsplatform gebruiken, zelfs als deze zich niet aanmeldt voor persoonlijke accounts.  Op deze manier u bestaande toepassingen migreren naar microsoft-identiteitsplatform en [MSAL](reference-v2-libraries.md) zonder uw toepassing opnieuw te maken.  
 
 ## <a name="tokens"></a>Tokens
 
-De micro soft Identity platform-implementatie van OAuth 2,0 en OpenID Connect Connect maken uitgebreid gebruik van Bearer-tokens, met inbegrip van Bearer-tokens die worden weer gegeven als JWTs. Een Bearer-token is een licht gewicht beveiligings token dat de ' Bearer ' toegang verleent tot een beveiligde bron. In deze zin is de ' Bearer ' een partij die het token kan presen teren. Een feestje moet eerst worden geverifieerd met het micro soft Identity-platform om het Bearer-token te ontvangen, als de vereiste stappen niet worden uitgevoerd om het token in trans missie en opslag te beveiligen, het kan worden onderschept en gebruikt door een onbedoelde partij. Hoewel sommige beveiligings tokens een ingebouwd mechanisme hebben om te voor komen dat niet-geautoriseerde partijen deze gebruiken, hebben Bearer-tokens dit mechanisme niet en moeten ze worden getransporteerd in een beveiligd kanaal, zoals trans port Layer Security (HTTPS). Als een Bearer-token in de heldere staat wordt verzonden, kan een kwaadwillende partij een man-in-the-middle-aanval gebruiken om het token te verkrijgen en dit te gebruiken voor onbevoegde toegang tot een beveiligde bron. Dezelfde beveiligings principes zijn van toepassing bij het opslaan of caching van Bearer-tokens voor later gebruik. Zorg er altijd voor dat uw app Bearer-tokens op een veilige manier verzendt en opslaat. Zie [RFC 6750 Section 5](https://tools.ietf.org/html/rfc6750)(Engelstalig) voor meer informatie over de beveiligings overwegingen voor Bearer-tokens.
+De implementatie van het Microsoft-identiteitsplatform van OAuth 2.0 en OpenID Connect maakt uitgebreid gebruik van tokens aan toonder, inclusief tokens aan toonder die worden weergegeven als JWT's. Een token aan toonder is een lichtgewicht beveiligingstoken dat de "drager" toegang geeft tot een beveiligde bron. In deze zin is de "drager" elke partij die het token kan presenteren. Hoewel een partij zich eerst moet verifiëren met het Microsoft-identiteitsplatform om het token aan toonder te ontvangen, kan het token worden onderschept en gebruikt door een onbedoelde partij als de vereiste stappen niet worden genomen om het token in transmissie en opslag te beveiligen. Hoewel sommige beveiligingstokens een ingebouwd mechanisme hebben om te voorkomen dat onbevoegde partijen ze gebruiken, hebben tokens aan toonder dit mechanisme niet en moeten ze worden vervoerd in een beveiligd kanaal, zoals transportlaagbeveiliging (HTTPS). Als een token aan toonder in de fout wordt verzonden, kan een kwaadwillende partij een man-in-the-middle-aanval gebruiken om het token te verwerven en te gebruiken voor ongeautoriseerde toegang tot een beveiligde bron. Dezelfde beveiligingsprincipes zijn van toepassing bij het opslaan of caching toonder tokens voor later gebruik. Zorg er altijd voor dat uw app tokens aan toonder op een veilige manier verzendt en opslaat. Zie [RFC 6750 Sectie 5](https://tools.ietf.org/html/rfc6750)voor meer beveiligingsoverwegingen op tokens aan toonder.
 
-Meer informatie over de verschillende typen tokens die worden gebruikt in het micro soft Identity platform-eind punt is beschikbaar in [de naslag informatie voor het micro soft Identity platform endpoint-token](v2-id-and-access-tokens.md).
+Verdere details van verschillende soorten tokens die worden gebruikt in het eindpunt van het Microsoft-identiteitsplatform zijn beschikbaar in [de referentie van het eindpunt van microsoft-identiteitsplatform.](v2-id-and-access-tokens.md)
 
 ## <a name="protocols"></a>Protocollen
 
-Als u een aantal voorbeeld aanvragen wilt zien, kunt u aan de slag met een van de onderstaande zelf studies. Elk abonnement komt overeen met een bepaald verificatie scenario. Als u hulp nodig hebt bij het bepalen van de juiste stroom, bekijkt u [de typen apps die u met micro soft Identity platform kunt bouwen](v2-app-types.md).
+Als u klaar bent om een aantal voorbeeldaanvragen te zien, gaat u aan de slag met een van de onderstaande zelfstudies. Elk scenario komt overeen met een bepaald verificatiescenario. Als u hulp nodig hebt bij het bepalen wat de juiste stroom voor u is, bekijk dan [de typen apps die u bouwen met het Microsoft-identiteitsplatform.](v2-app-types.md)
 
-* [Mobiele en systeem eigen toepassing bouwen met OAuth 2,0](v2-oauth2-auth-code-flow.md)
-* [Web-apps bouwen met OpenID Connect Connect](v2-protocols-oidc.md)
-* [Apps met één pagina bouwen met de impliciete OAuth 2,0-stroom](v2-oauth2-implicit-grant-flow.md)
-* [Bouw daemons of processen aan de server zijde met de OAuth 2,0-client referenties stroom](v2-oauth2-client-creds-grant-flow.md)
-* [Tokens ophalen in een web-API met de OAuth 2,0 namens-stroom](v2-oauth2-on-behalf-of-flow.md)
+* [Mobiele en native applicatie bouwen met OAuth 2.0](v2-oauth2-auth-code-flow.md)
+* [Web-apps bouwen met OpenID Connect](v2-protocols-oidc.md)
+* [Apps met één pagina bouwen met de Impliciete Stroom van OAuth 2.0](v2-oauth2-implicit-grant-flow.md)
+* [Bouw daemons of serverprocessen met de OAuth 2.0 clientreferenties flow](v2-oauth2-client-creds-grant-flow.md)
+* [Tokens in een web-API krijgen met de OAuth 2.0 namens Flow](v2-oauth2-on-behalf-of-flow.md)

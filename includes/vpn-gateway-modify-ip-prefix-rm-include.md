@@ -9,13 +9,13 @@ ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 13089a2514229c5c5bc7b40d9447719247b23405
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67175872"
 ---
-### <a name="noconnection"></a>IP-adresvoorvoegsels wijzigen voor de gateway van een lokaal netwerk - geen gatewayverbinding
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>IP-adresvoorvoegsels wijzigen voor de gateway van een lokaal netwerk - geen gatewayverbinding
 
 Ga als volgt te werk om aanvullende voorvoegsels toe te voegen:
 
@@ -33,21 +33,21 @@ Ga als volgt te werk om aanvullende voorvoegsels toe te voegen:
 
 Ga als volgt te werk om adresvoorvoegsels te verwijderen:
 
-  Laat de voorvoegsels weg die u niet langer nodig hebt. In dit voorbeeld hebben we niet meer nodig hebt voorvoegsel 10.101.2.0/24 (uit het vorige voorbeeld), zodat we bij het bijwerken van de lokale netwerkgateway bij zonder dit voorvoegsel.
+  Laat de voorvoegsels weg die u niet langer nodig hebt. In dit voorbeeld hebben we geen voorvoegsel 10.101.2.0/24 (uit het vorige voorbeeld) meer nodig, zodat we de lokale netwerkgateway bijwerken, met uitzondering van dat voorvoegsel.
 
 1. Stel de variabele in voor LocalNetworkGateway.
 
    ```azurepowershell-interactive
    $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
    ```
-2. De gateway met de bijgewerkte voorvoegsels instellen.
+2. Stel de gateway in met de bijgewerkte voorvoegsels.
 
    ```azurepowershell-interactive
    Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
    -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
    ```
 
-### <a name="withconnection"></a>IP-adresvoorvoegsels wijzigen voor de gateway van een lokaal netwerk - bestaande gatewayverbinding
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>IP-adresvoorvoegsels wijzigen voor de gateway van een lokaal netwerk - bestaande gatewayverbinding
 
 Als u een gatewayverbinding hebt en u IP-adresvoorvoegsels wilt toevoegen aan of verwijderen uit uw lokale netwerkgateway, moet u de volgende stappen uitvoeren in de volgorde waarin ze staan vermeld. Dit veroorzaakt enige downtime in uw VPN-verbinding. Als u IP-adresvoorvoegsels wijzigt, hoeft u de VPN-gateway niet te verwijderen. U hoeft alleen de verbinding te verwijderen.
 
@@ -56,7 +56,7 @@ Als u een gatewayverbinding hebt en u IP-adresvoorvoegsels wilt toevoegen aan of
    ```azurepowershell-interactive
    Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
    ```
-2. De lokale netwerkgateway met de gewijzigde adresvoorvoegsels instellen.
+2. Stel de lokale netwerkgateway in met de gewijzigde adresvoorvoegsels.
    
    Stel de variabele in voor LocalNetworkGateway.
 

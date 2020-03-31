@@ -1,103 +1,103 @@
 ---
 title: Overzicht van Service Fabric en containers
-description: Een overzicht van Service Fabric en het gebruik van containers voor het implementeren van micro service-toepassingen. Dit artikel bevat een overzicht van de manier waarop containers kunnen worden gebruikt en de beschik bare mogelijkheden in Service Fabric.
+description: Een overzicht van Service Fabric en het gebruik van containers om microservice applicaties te implementeren. In dit artikel vindt u een overzicht van hoe containers kunnen worden gebruikt en de beschikbare mogelijkheden in Service Fabric.
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458218"
 ---
-# <a name="service-fabric-and-containers"></a>Service Fabric en containers
+# <a name="service-fabric-and-containers"></a>Service Stof en containers
 
 ## <a name="introduction"></a>Inleiding
 
 Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk schaalbare en betrouwbare microservices en containers verpakt, implementeert en beheert.
 
-Service Fabric is de [container Orchestrator](service-fabric-cluster-resource-manager-introduction.md) van micro soft voor het implementeren van microservices in een cluster van machines. Service Fabric voor delen van de lessen die zijn geleerd tijdens de jaren waarin Services bij micro soft worden uitgevoerd op grote schaal.
+Service Fabric is microsoft's [container orchestrator](service-fabric-cluster-resource-manager-introduction.md) voor het implementeren van microservices in een cluster van machines. Service Fabric profiteert van de lessen die zijn geleerd tijdens de jaren dat ze op grote schaal diensten bij Microsoft uitvoeren.
 
-Microservices kunnen op tal van manieren worden ontwikkeld met behulp van de [Service Fabric-programmeermodellen](service-fabric-choose-framework.md), [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md), voor het implementeren van [code naar keuze](service-fabric-guest-executables-introduction.md). Als u alleen [containers wilt implementeren en beheren](service-fabric-containers-overview.md), is service Fabric ook een fantastische keuze.
+Microservices kunnen op tal van manieren worden ontwikkeld met behulp van de [Service Fabric-programmeermodellen](service-fabric-choose-framework.md), [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md), voor het implementeren van [code naar keuze](service-fabric-guest-executables-introduction.md). Of, als u gewoon containers wilt [implementeren en beheren,](service-fabric-containers-overview.md)is Service Fabric ook een goede keuze.
 
-Standaard worden deze services door Service Fabric geïmplementeerd en geactiveerd als processen. Processen bieden de snelste activering en het hoogste dichtheids gebruik van de resources in een cluster. Service Fabric kunt ook services implementeren in container installatie kopieën. U kunt ook services in processen en services in containers combi neren in dezelfde toepassing.
+Service Fabric implementeert en activeert deze services standaard als processen. Processen bieden de snelste activering en het hoogste dichtheidsgebruik van de resources in een cluster. Service Fabric kan ook services implementeren in containerafbeeldingen. U services ook mengen in processen en services in containers, in dezelfde toepassing.
 
-Als u wilt beginnen met het zoeken naar en uitchecken van containers op Service Fabric, kunt u een Snelstartgids, zelf studie of voor beeld proberen:  
+Als u er meteen in wilt springen en containers wilt uitproberen op Service Fabric, probeert u een snelle start, zelfstudie of voorbeeld:  
 
-[Snelstartgids: een Linux-container toepassing implementeren in Service Fabric](service-fabric-quickstart-containers-linux.md)  
-[Snelstartgids: een Windows-container toepassing implementeren op Service Fabric](service-fabric-quickstart-containers.md)  
-[Een bestaande .NET-app container plaatsen](service-fabric-host-app-in-a-container.md)  
+[Snelstart: Een Linux-containertoepassing implementeren in Service Fabric](service-fabric-quickstart-containers-linux.md)  
+[Snelstart: een Windows-containertoepassing implementeren in ServiceFabric](service-fabric-quickstart-containers.md)  
+[Een bestaande .NET-app in een container plaatsen](service-fabric-host-app-in-a-container.md)  
 [Voorbeelden van Service Fabric-containers](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
 ## <a name="what-are-containers"></a>Wat zijn containers
 
-Containers bieden een oplossing voor het probleem van het uitvoeren van toepassingen die op een betrouw bare manier in verschillende computer omgevingen worden uitgevoerd, door een onveranderlijke omgeving voor de toepassing in te stellen. Containers verpakken een toepassing en alle bijbehorende afhankelijkheden, zoals bibliotheken en configuratie bestanden, in een eigen geïsoleerde doos met alles wat u nodig hebt om de software uit te voeren in de container. Overal waar de container wordt uitgevoerd, heeft de toepassing hierin altijd alles wat nodig is om uit te voeren, zoals de juiste versies van de bijbehorende afhankelijke Bibliotheken, eventuele configuratie bestanden en andere items die nodig zijn om uit te voeren.
+Containers lossen het probleem van het draaien van toepassingen betrouwbaar op in verschillende computeromgevingen door een onveranderlijke omgeving te bieden waar de toepassing in kan worden uitgevoerd. Containers wikkelen een toepassing en al zijn afhankelijkheden, zoals bibliotheken en configuratiebestanden, in een eigen geïsoleerde 'box' die alles bevat wat nodig is om de software in de container uit te voeren. Waar de container ook draait, de toepassing erin heeft altijd alles wat het nodig heeft om te draaien, zoals de juiste versies van de afhankelijke bibliotheken, alle configuratiebestanden en alles wat het moet uitvoeren.
 
-Containers worden direct op de kernel uitgevoerd en hebben een geïsoleerde weer gave van het bestands systeem en andere bronnen. Een toepassing in een container heeft geen kennis van andere toepassingen of processen buiten de container. Elke toepassing en de runtime, afhankelijkheden en systeem bibliotheken worden uitgevoerd binnen een container met volledige, persoonlijke toegang tot de eigen geïsoleerde weer gave van het besturings systeem van de container. Daarnaast is het eenvoudig om alle afhankelijkheden van uw toepassing te bieden die nodig zijn om te worden uitgevoerd in verschillende omgevingen, beveiliging en bron isolatie zijn belang rijke voor delen van het gebruik van containers met Service Fabric, die op andere wijze services uitvoert in een host.
+Containers worden direct boven op de kernel uitgevoerd en hebben een geïsoleerd beeld van het bestandssysteem en andere bronnen. Een toepassing in een container heeft geen kennis van andere toepassingen of processen buiten de container. Elke toepassing en de looptijd, afhankelijkheden en systeembibliotheken worden uitgevoerd in een container met volledige, privétoegang tot de eigen geïsoleerde weergave van het besturingssysteem. Naast het eenvoudig maken van alle afhankelijkheden van uw toepassing die het nodig heeft om te draaien in verschillende computeromgevingen, zijn beveiliging en resourceisolatie belangrijke voordelen van het gebruik van containers met Service Fabric - die anders services in een Proces.
 
-In vergelijking met virtuele machines hebben containers de volgende voor delen:
+In vergelijking met virtuele machines hebben containers de volgende voordelen:
 
-* **Klein**: containers gebruiken één opslag ruimte en laag versies en updates om de efficiëntie te verbeteren.
-* **Snel**: containers hoeven niet een volledig besturings systeem op te starten, zodat ze veel sneller kunnen beginnen, meestal in seconden.
-* **Portabiliteit**: een gecontainerde toepassings installatie kopie kan worden geporteerd om te worden uitgevoerd in de Cloud, on-premises, in virtuele machines of rechtstreeks op fysieke machines.
-* **Resource governance**: een container kan de fysieke bronnen beperken die deze kan gebruiken op de host.
+* **Klein:** Containers gebruiken één opslagruimte en laagversies en -updates om de efficiëntie te verhogen.
+* **Snel**: Containers hoeven niet een volledig besturingssysteem op te starten, zodat ze veel sneller kunnen starten - meestal in enkele seconden.
+* **Draagbaarheid:** een containerized toepassingsafbeelding kan worden geport om te worden uitgevoerd in de cloud, op locatie, in virtuele machines of rechtstreeks op fysieke machines.
+* **Resourcebeheer:** een container kan de fysieke resources beperken die het op de host kan verbruiken.
 
-### <a name="container-types-and-supported-environments"></a>Container typen en ondersteunde omgevingen
+### <a name="container-types-and-supported-environments"></a>Containertypen en ondersteunde omgevingen
 
-Service Fabric ondersteunt containers in zowel Linux als Windows, en ondersteunt de isolatie modus voor Hyper-V in Windows.
+Service Fabric ondersteunt containers op zowel Linux als Windows en ondersteunt hyper-v-isolatiemodus op Windows.
 
-#### <a name="docker-containers-on-linux"></a>Docker-containers in Linux
+#### <a name="docker-containers-on-linux"></a>Docker containers op Linux
 
-Docker biedt Api's voor het maken en beheren van containers boven op Linux-kernel-containers. Docker hub biedt een centrale opslag plaats voor het opslaan en ophalen van container installatie kopieën.
-Zie [uw eerste service Fabric-container toepassing maken in Linux](service-fabric-get-started-containers-linux.md)voor een zelf studie op basis van Linux.
+Docker biedt API's voor het maken en beheren van containers bovenop Linux kernel containers. Docker Hub biedt een centrale opslagplaats voor het opslaan en ophalen van containerafbeeldingen.
+Zie Uw eerste Service [Fabric-containertoepassing maken op Linux voor](service-fabric-get-started-containers-linux.md)een op Linux gebaseerde zelfstudie.
 
 #### <a name="windows-server-containers"></a>Windows Server-containers
 
-Windows Server 2016 biedt twee verschillende typen containers die verschillen per isolatie niveau. Windows Server-containers en docker-containers zijn vergelijkbaar omdat beide een naam ruimte en een bestandssysteem isolatie hebben, terwijl de kernel wordt gedeeld met de host waarop ze worden uitgevoerd. In Linux is deze isolatie traditioneel gegeven door cgroups en naam ruimten, en Windows Server-containers gedragen zich op dezelfde manier.
+Windows Server 2016 biedt twee verschillende typen containers die verschillen per isolatieniveau. Windows Server-containers en Docker-containers zijn vergelijkbaar omdat beide naamruimte en bestandssysteemisolatie hebben, terwijl de kernel wordt gedeeld met de host waarop ze worden uitgevoerd. Op Linux wordt deze isolatie traditioneel geleverd door cgroups en namespaces, en Windows Server-containers gedragen zich op dezelfde manier.
 
-Windows-containers met Hyper-V-ondersteuning bieden meer isolatie en beveiliging omdat geen enkele container de kernel van het besturings systeem deelt met een andere container of met de host. Met dit hogere beveiligings isolatie niveau worden voor Hyper-V ingeschakelde containers mogelijk vijandige scenario's met meerdere tenants bedoeld.
-Zie [uw eerste service Fabric-container toepassing maken in Windows](service-fabric-get-started-containers.md)voor een zelf studie op basis van Windows.
+Windows-containers met Hyper-V-ondersteuning bieden meer isolatie en beveiliging omdat geen enkele container de kernel van het besturingssysteem deelt met een andere container of met de host. Met dit hogere niveau van beveiliging isolatie, Hyper-V enabled containers zijn gericht op potentieel vijandige, multi-tenant scenario's.
+Zie [Uw eerste servicefabric-containertoepassing maken op Windows](service-fabric-get-started-containers.md)voor een op Windows gebaseerde zelfstudie.
 
-In de volgende afbeelding ziet u de verschillende soorten virtualisatie-en isolatie niveaus die beschikbaar zijn.
-![Service Fabric platform][Image1]
+De volgende afbeelding toont de verschillende soorten virtualisatie- en isolatieniveaus die beschikbaar zijn.
+![Service Fabric-platform][Image1]
 
 ## <a name="scenarios-for-using-containers"></a>Scenario's voor het gebruik van containers
 
-Hier volgen enkele typische voor beelden waarin een container een goede keuze is:
+Hier volgen typische voorbeelden waarbij een container een goede keuze is:
 
-* **IIS lift en Shift**: u kunt een bestaande [ASP.NET MVC](https://www.asp.net/mvc) -app in een container plaatsen in plaats van deze te migreren naar ASP.net core. Deze ASP.NET MVC-apps zijn afhankelijk van Internet Information Services (IIS). U kunt deze toepassingen inpakken in container installatie kopieën van de voorgemaakte IIS-installatie kopie en implementeren met Service Fabric. Zie [container installatie kopieën op Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) voor meer informatie over Windows-containers.
+* **IIS-lift en -shift**: U een bestaande [ASP.NET MVC-app](https://www.asp.net/mvc) in een container plaatsen in plaats van deze te migreren naar ASP.NET Core. Deze ASP.NET MVC-apps zijn afhankelijk van Internet Information Services (IIS). U deze toepassingen verpakken in containerafbeeldingen van de vooraf gemaakte IIS-afbeelding en deze implementeren met Service Fabric. Zie [Containerafbeeldingen op Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) voor informatie over Windows-containers.
 
-* **Containers en service Fabric micro Services combi neren**: gebruik een bestaande container installatie kopie voor een deel van uw toepassing. U kunt bijvoorbeeld de [NGINX-container](https://hub.docker.com/_/nginx/) voor de web-front-end van uw toepassing en stateful Services gebruiken voor een meer intensieve berekening van de back-end.
+* **Mix containers en Service Fabric microservices**: Gebruik een bestaande containerafbeelding voor een deel van uw toepassing. U bijvoorbeeld de [NGINX-container](https://hub.docker.com/_/nginx/) gebruiken voor de webfront-end van uw toepassing en stateful services voor de intensievere back-endberekening.
 
-* De **impact van ' ruislijke neighbors ' verminderen**: u kunt de resource governance-capaciteit van containers gebruiken om de resources te beperken die door een service op een host worden gebruikt. Als Services veel bronnen kunnen verbruiken en invloed hebben op de prestaties van anderen (zoals een langlopende, query-achtige bewerking), overweeg dan om deze services te plaatsen in containers met resource beheer.
+* **De impact van 'luidruchtige buren'-services verminderen:** u de resourcegovernancecapaciteit van containers gebruiken om de resources die een service op een host gebruikt, te beperken. Als services veel resources verbruiken en de prestaties van anderen beïnvloeden (zoals een langlopende, queryachtige bewerking), u overwegen deze services in containers met resourcegovernance te plaatsen.
 
-## <a name="service-fabric-support-for-containers"></a>Ondersteuning voor containers Service Fabric
+## <a name="service-fabric-support-for-containers"></a>Service Fabric-ondersteuning voor containers
 
-Service Fabric ondersteunt de implementatie van docker-containers op Linux en Windows Server-containers in Windows Server 2016, samen met ondersteuning voor de isolatie modus van Hyper-V. 
+Service Fabric ondersteunt de implementatie van Docker-containers op Linux- en Windows Server-containers op Windows Server 2016, samen met ondersteuning voor de Hyper-V-isolatiemodus. 
 
-Service Fabric biedt een [toepassings model](service-fabric-application-model.md) waarin een container een toepassingshost vertegenwoordigt waarin meerdere service replica's worden geplaatst. Service Fabric biedt ook ondersteuning voor een [uitvoerbaar gast scenario](service-fabric-guest-executables-introduction.md) waarin u geen gebruik maakt van de ingebouwde service Fabric programmeer modellen, maar in plaats daarvan een bestaande toepassing verpakken, geschreven met behulp van een wille keurige taal of elk Framework, binnen een container. Dit scenario is gebruikelijk voor containers.
+Service Fabric biedt een [toepassingsmodel](service-fabric-application-model.md) waarin een container een toepassingshost vertegenwoordigt waarin meerdere servicereplica's worden geplaatst. Service Fabric ondersteunt ook een [uitvoerbaar scenario](service-fabric-guest-executables-introduction.md) voor gasten waarin u de ingebouwde Service Fabric-programmeermodellen niet gebruikt, maar in plaats daarvan een bestaande toepassing, geschreven met elke taal of framework, in een container verpakt. Dit scenario is de gangbare use-case voor containers.
 
-U kunt ook [service Fabric Services in een container](service-fabric-services-inside-containers.md)uitvoeren. Ondersteuning voor het uitvoeren van Service Fabric services binnen containers is momenteel beperkt.
+U ook [Service Fabric-services uitvoeren in een container.](service-fabric-services-inside-containers.md) Ondersteuning voor het uitvoeren van Service Fabric-services in containers is momenteel beperkt.
 
-Service Fabric biedt verschillende container mogelijkheden die u helpen bij het bouwen van toepassingen die zijn samengesteld uit container micro Services, zoals:
+Service Fabric biedt verschillende containermogelijkheden waarmee u toepassingen bouwen die zijn samengesteld uit gecontaineriseerde microservices, zoals:
 
-* Implementatie en activering van container installatie kopie.
-* Resource beheer, inclusief het instellen van resource waarden standaard op Azure-clusters.
-* Verificatie van opslag plaats.
-* Poort toewijzing van container poort naar host.
-* Detectie en communicatie van container-naar-container.
-* De mogelijkheid om omgevings variabelen te configureren en in te stellen.
-* De mogelijkheid om beveiligings referenties in te stellen op de container.
-* Een keuze uit verschillende netwerk modi voor containers.
+* Implementatie en activering van containerafbeeldingen.
+* Resourcebeheer, inclusief standaard instelling van resourcewaarden in Azure-clusters.
+* Verificatie van opslagplaatsen.
+* Containerpoort om poorttoewijzing te hosten.
+* Container-to-container detectie en communicatie.
+* Mogelijkheid om omgevingsvariabelen te configureren en in te stellen.
+* Mogelijkheid om beveiligingsreferenties in te stellen op de container.
+* Een keuze uit verschillende netwerkmodi voor containers.
 
-Voor een uitgebreid overzicht van container ondersteuning op Azure, zoals het maken van een Kubernetes-cluster met de Azure Kubernetes-service, het maken van een persoonlijk docker-REGI ster in Azure Container Registry en meer, Zie [Azure voor containers](https://docs.microsoft.com/azure/containers/).
+Zie [Azure voor](https://docs.microsoft.com/azure/containers/)containers voor een uitgebreid overzicht van containerondersteuning op Azure, zoals het maken van een Kubernetes-cluster met Azure Kubernetes Service, het maken van een privéDocker-register in Azure Container Registry en meer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over de ondersteunings Service Fabric voor het uitvoeren van containers. We gaan nu de voor beelden van de functies bekijken om u te laten zien hoe u deze kunt gebruiken.
+In dit artikel leert u over de ondersteuning die Service Fabric biedt voor het uitvoeren van containers. Vervolgens zullen we voorbeelden van elk van de functies doornemen om u te laten zien hoe u ze gebruiken.
 
-[Uw eerste Service Fabric-container toepassing maken in Linux](service-fabric-get-started-containers-linux.md)  
-[Uw eerste Service Fabric-container toepassing maken in Windows](service-fabric-get-started-containers.md)  
+[Uw eerste Service Fabric-containertoepassing maken in Linux](service-fabric-get-started-containers-linux.md)  
+[Uw eerste Service Fabric-containertoepassing maken in Windows](service-fabric-get-started-containers.md)  
 [Meer informatie over Windows-containers](https://docs.microsoft.com/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

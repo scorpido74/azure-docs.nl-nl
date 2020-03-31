@@ -1,93 +1,93 @@
 ---
-title: HPC-cache van Azure beheren en bijwerken
-description: De Azure HPC-cache beheren en bijwerken met behulp van de Azure Portal
+title: Azure HPC-cache beheren en bijwerken
+description: Azure HPC-cache beheren en bijwerken met de Azure-portal
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: rohogue
 ms.openlocfilehash: da260074fc69fac9e98d3698bb2d40fdf80d7118
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77252039"
 ---
-# <a name="manage-your-cache-from-the-azure-portal"></a>Uw cache beheren via de Azure Portal
+# <a name="manage-your-cache-from-the-azure-portal"></a>Uw cache beheren vanuit de Azure-portal
 
-Op de pagina cache-overzicht in de Azure Portal worden project details, de cache status en de basis statistieken voor uw cache weer gegeven. Het bevat ook besturings elementen voor het stoppen of starten van de cache, het verwijderen van de cache, het leegmaken van gegevens naar lange termijn opslag en het bijwerken van software.
+Op de pagina cacheoverzicht in de Azure-portal worden projectdetails, cachestatus en basisstatistieken voor uw cache weergegeven. Het heeft ook besturingselementen om de cache te stoppen of te starten, de cache te verwijderen, gegevens door te spoelen naar langdurige opslag en software bij te werken.
 
-Als u de overzichts pagina wilt openen, selecteert u uw cache resource in het Azure Portal. Laad bijvoorbeeld de pagina **alle resources** en klik op de naam van de cache.
+Als u de overzichtspagina wilt openen, selecteert u uw cachebron in de Azure-portal. Laad bijvoorbeeld de pagina **Alle bronnen** en klik op de cachenaam.
 
-![scherm afbeelding van de overzichts pagina van een Azure HPC-cache-exemplaar](media/hpc-cache-overview.png)
+![schermafbeelding van de overzichtspagina van een Azure HPC-cache-instantie](media/hpc-cache-overview.png)
 
-Met de knoppen boven aan de pagina kunt u de cache beheren:
+Met de knoppen boven aan de pagina u de cache beheren:
 
-* De cache bewerking **starten** en [**stoppen**](#stop-the-cache) onderbreken
-* [**Flush**](#flush-cached-data) -schrijft gewijzigde gegevens naar opslag doelen
-* [**Upgrade**](#upgrade-cache-software) -de cache software bijwerken
-* **Vernieuwen** : Hiermee wordt de pagina Overzicht opnieuw geladen
-* [**Verwijderen**](#delete-the-cache) : de cache wordt definitief vernietigd
+* **Start** en [**Stop**](#stop-the-cache) - Cachebewerking opschorten
+* [**Flush**](#flush-cached-data) - Schrijft gewijzigde gegevens in opslagdoelen
+* [**Upgrade**](#upgrade-cache-software) - Werkt de cachesoftware bij
+* **Vernieuwen** - Herlaadt de overzichtspagina
+* [**Delete**](#delete-the-cache) - Vernietigt de cache permanent
 
-Meer informatie over deze opties vindt u hieronder.
+Lees hieronder meer over deze opties.
 
 ## <a name="stop-the-cache"></a>De cache stoppen
 
-U kunt de cache stoppen om de kosten te verlagen tijdens een inactieve periode. Er worden geen kosten in rekening gebracht voor de actieve tijds duur tijdens het stoppen van de cache, maar er worden kosten in rekening gebracht voor de toegewezen schijf ruimte in de cache. (Zie de pagina met [prijzen](https://aka.ms/hpc-cache-pricing) voor meer informatie.)
+U de cache stoppen om de kosten tijdens een inactieve periode te verlagen. Er worden geen kosten in rekening gebracht voor uptime terwijl de cache is gestopt, maar er worden wel kosten in rekening gebracht voor de toegewezen schijfopslag in de cache. (Zie de [prijspagina](https://aka.ms/hpc-cache-pricing) voor meer informatie.)
 
-Een gestopte cache reageert niet op client aanvragen. U moet clients ontkoppelen voordat u de cache stopt.
+Een gestopte cache reageert niet op clientverzoeken. U moet clients loskoppelen voordat u de cache stopt.
 
-Met de knop **stoppen** wordt een actieve cache onderbroken. De knop **stoppen** is beschikbaar wanneer de status van een cache **in orde** is of **gedegradeerd**is.
+Met de knop **Stoppen** wordt een actieve cache opgeschort. De knop **Stoppen** is beschikbaar wanneer de status van een cache **gezond** of **gedegradeerd**is.
 
-![scherm afbeelding van de bovenste knoppen met een stop markering en een pop-upbericht waarin de actie stoppen wordt beschreven en u wordt gevraagd om door te gaan? met Ja (standaard) en geen knoppen](media/stop-cache.png)
+![schermafbeelding van de bovenste knoppen met Stop gemarkeerd en een pop-upbericht waarin de stopactie wordt beschreven en wordt gevraagd 'wilt u doorgaan?' met ja (standaard) en nee-knoppen](media/stop-cache.png)
 
-Nadat u op Ja hebt geklikt om het stoppen van de cache te bevestigen, wordt de inhoud van de cache automatisch leeg gemaakt naar de opslag doelen. Dit proces kan enige tijd duren, maar Hiermee wordt de consistentie van gegevens gegarandeerd. Ten slotte wordt de cache status gewijzigd in **gestopt**.
+Nadat u op Ja hebt geklikt om het stoppen van de cache te bevestigen, spoelt de cache automatisch de inhoud ervan door naar de opslagdoelen. Dit proces kan enige tijd duren, maar het zorgt voor consistentie van de gegevens. Ten slotte wordt de cachestatus gewijzigd **in Gestopt**.
 
-Als u een gestopt cache opnieuw wilt activeren, klikt u op de knop **starten** . Er is geen bevestiging nodig.
+Als u een gestopte cache opnieuw wilt activeren, klikt u op de knop **Start.** Er is geen bevestiging nodig.
 
-![scherm afbeelding van de bovenste knoppen met de markering begin gemarkeerd](media/start-cache.png)
+![schermafbeelding van de bovenste knoppen met Start gemarkeerd](media/start-cache.png)
 
-## <a name="flush-cached-data"></a>In cache opgeslagen gegevens wissen
+## <a name="flush-cached-data"></a>Gegevens in de cache spoelen
 
-Met de knop **leegmaken** op de overzichts pagina wordt aan de cache meegedeeld dat alle gewijzigde gegevens die in de cache zijn opgeslagen, direct naar de back-end-opslag doelen worden geschreven. De cache slaat gegevens op in de opslag doelen, dus is het niet nodig om dit hand matig te doen, tenzij u ervoor wilt zorgen dat het back-end-opslag systeem up-to-date is. U kunt bijvoorbeeld **Flush** gebruiken voordat u een moment opname van de opslag maakt of de grootte van de gegevensset controleert.
+De knop **Spoelen** op de overzichtspagina vertelt de cache om onmiddellijk alle gewijzigde gegevens die in de cache zijn opgeslagen, te schrijven naar de back-end opslagdoelen. De cache slaat routinematig gegevens op voor de opslagdoelen, dus het is niet nodig om dit handmatig te doen, tenzij u ervoor wilt zorgen dat het back-endopslagsysteem up-to-date is. U **Flush** bijvoorbeeld gebruiken voordat u een opslagmomentopname maakt of de grootte van de gegevensset controleert.
 
 > [!NOTE]
-> Tijdens het leegmaak proces kan de cache geen client aanvragen verwerken. De toegang tot de cache wordt onderbroken en hervat nadat de bewerking is voltooid.
+> Tijdens het spoelproces kan de cache clientaanvragen niet dienen. Toegang tot de cache wordt opgeschort en hervat nadat de bewerking is voltooid.
 
-![scherm afbeelding van de bovenste knoppen met flush gemarkeerd en een pop-upbericht waarin de actie Flush wordt beschreven en u wordt gevraagd om door te gaan? met Ja (standaard) en geen knoppen](media/hpc-cache-flush.png)
+![screenshot van de bovenste knoppen met Flush gemarkeerd en een pop-up bericht waarin de flush actie en de vraag 'wil je doorgaan?' met ja (standaard) en nee-knoppen](media/hpc-cache-flush.png)
 
-Wanneer u de cache-leegmaak bewerking start, wordt het accepteren van client aanvragen door de cache gestopt en wordt de cache status op de overzichts pagina gewijzigd in **leegmaken**.
+Wanneer u de cacheflushbewerking start, accepteert de cache geen clientaanvragen meer en wordt de cachestatus op de overzichtspagina gewijzigd in **Doorspoelen.**
 
-De gegevens in de cache worden opgeslagen in de juiste opslag doelen. Afhankelijk van de hoeveelheid gegevens die moet worden leeg gemaakt, kan het proces enkele minuten of meer tijd in beslag nemen.
+Gegevens in de cache worden opgeslagen in de juiste opslagdoelen. Afhankelijk van hoeveel gegevens moeten worden gespoeld, kan het proces enkele minuten of meer dan een uur duren.
 
-Nadat alle gegevens zijn opgeslagen in opslag doelen, begint de cache automatisch met het uitvoeren van client aanvragen. De cache status wordt teruggezet naar **in orde**.
+Nadat alle gegevens zijn opgeslagen in opslagdoelen, begint de cache automatisch opnieuw met het aannemen van clientaanvragen. De cachestatus keert terug naar **Gezond**.
 
-## <a name="upgrade-cache-software"></a>Cache software bijwerken
+## <a name="upgrade-cache-software"></a>Cachesoftware upgraden
 
-Als er een nieuwe software versie beschikbaar is, wordt de knop **bijwerken** actief. Boven aan de pagina wordt ook een bericht weer gegeven over het bijwerken van software.
+Als er een nieuwe softwareversie beschikbaar is, wordt de knop **Upgrade** actief. U ziet ook een bericht boven aan de pagina over het bijwerken van software.
 
-![scherm afbeelding van de bovenste rij met knoppen waarop de knop bijwerken is ingeschakeld](media/hpc-cache-upgrade-button.png)
+![schermafbeelding van de bovenste rij knoppen met de knop Bijwerken ingeschakeld](media/hpc-cache-upgrade-button.png)
 
-Client toegang wordt niet onderbroken tijdens een software-upgrade, maar de prestaties van de cache worden trager. Upgrade van software plannen tijdens niet-piek uren of in een geplande onderhouds periode.
+Clienttoegang wordt niet onderbroken tijdens een software-upgrade, maar de prestaties in de cache vertragen. Plan om software te upgraden tijdens niet-piekgebruiksuren of in een geplande onderhoudsperiode.
 
-Het kan enkele uren duren voordat de software-update is uitgevoerd. Caches die zijn geconfigureerd met een hogere door Voer, nemen meer tijd in beslag dan caches met kleinere waarden voor piek doorvoer.
+De software-update kan enkele uren duren. Caches die zijn geconfigureerd met een hogere doorvoer, nemen langer in beslag dan caches met kleinere piekdoorvoerwaarden.
 
-Wanneer een software-upgrade beschikbaar is, hebt u een week of zodat deze hand matig kan worden toegepast. De eind datum wordt vermeld in het upgrade bericht. Als u tijdens die tijd niet bijwerkt, past Azure automatisch de update toe op uw cache. De timing van de automatische upgrade kan niet worden geconfigureerd. Als u zich zorgen maakt over de invloed op de cache prestaties, moet u de software zelf upgraden voordat de periode verloopt.
+Wanneer een software-upgrade beschikbaar is, heb je een week of zo om het handmatig toe te passen. De einddatum wordt vermeld in het upgradebericht. Als u gedurende die tijd niet upgradet, past Azure de update automatisch toe op uw cache. De timing van de automatische upgrade is niet configureerbaar. Als u zich zorgen maakt over de impact op de cacheprestaties, moet u de software zelf upgraden voordat de periode verstrijkt.
 
-Als uw cache wordt gestopt wanneer de eind datum wordt door gegeven, wordt de software bij de volgende keer dat deze wordt gestart automatisch bijgewerkt met de cache. (De update wordt mogelijk niet onmiddellijk gestart, maar wordt in het eerste uur gestart.)
+Als uw cache wordt gestopt wanneer de einddatum verstrijkt, wordt de software automatisch geüupgradet wanneer deze de volgende keer wordt gestart. (De update start mogelijk niet onmiddellijk, maar het begint in het eerste uur.)
 
-Klik op de knop **bijwerken** om de software-update te starten. De cache status verandert in **een upgrade** totdat de bewerking is voltooid.
+Klik **op de** knop Bijwerken om de software-update te starten. De cachestatus verandert in **Upgraden** totdat de bewerking is voltooid.
 
 ## <a name="delete-the-cache"></a>De cache verwijderen
 
-De knop **verwijderen** vernietigt de cache. Wanneer u een cache verwijdert, worden alle bijbehorende bronnen vernietigd en worden er geen account kosten meer in rekening gebracht.
+Met de knop **Verwijderen** wordt de cache vernietigd. Wanneer u een cache verwijdert, worden alle bronnen vernietigd en worden er geen accountkosten meer in rekening gebracht.
 
-De back-end-opslag volumes die als opslag doelen worden gebruikt, worden niet beïnvloed wanneer u de cache verwijdert. U kunt ze later toevoegen aan een toekomstige cache of ze afzonderlijk uit bedrijf nemen.
+De back-endopslagvolumes die als opslagdoelen worden gebruikt, worden niet beïnvloed wanneer u de cache verwijdert. U ze later toevoegen aan een toekomstige cache of ze apart buiten gebruik stellen.
 
 > [!NOTE]
-> Azure HPC cache schrijft niet automatisch gewijzigde gegevens van de cache naar de back-end-opslag systemen voordat de cache wordt verwijderd.
+> Azure HPC Cache schrijft niet automatisch gewijzigde gegevens van de cache naar de back-endopslagsystemen voordat de cache wordt verwijderd.
 >
-> Om ervoor te zorgen dat alle gegevens in de cache naar lange termijn opslag zijn geschreven, moet u [de cache stoppen](#stop-the-cache) voordat u deze verwijdert. Zorg ervoor dat de status wordt weer **gegeven voordat u** op de knop verwijderen klikt.
+> Als u ervoor wilt zorgen dat alle gegevens in de cache naar langdurige opslag zijn geschreven, [stopt u de cache](#stop-the-cache) voordat u deze verwijdert. Zorg ervoor dat de status **Gestopt** wordt weergegeven voordat u op de knop Verwijderen klikt.
 <!--... written to long-term storage, follow this procedure:
 >
 > 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
@@ -96,16 +96,16 @@ De back-end-opslag volumes die als opslag doelen worden gebruikt, worden niet be
 >
 > Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
-## <a name="cache-metrics-and-monitoring"></a>Metrische gegevens over cache en bewaking
+## <a name="cache-metrics-and-monitoring"></a>Cachestatistieken en -bewaking
 
-Op de overzichts pagina worden grafieken weer gegeven voor een aantal basis cache-statistieken, bewerkingen per seconde en latentie.
+De overzichtspagina toont grafieken voor een aantal basiscachestatistieken - cachedoorvoer, bewerkingen per seconde en latentie.
 
-![scherm afbeelding van drie lijn grafieken met de statistieken die hierboven worden vermeld voor een voorbeeld cache](media/hpc-cache-overview-stats.png)
+![schermafbeelding van drie regelgrafieken met de hierboven genoemde statistieken voor een voorbeeldcache](media/hpc-cache-overview-stats.png)
 
-Deze grafieken maken deel uit van de ingebouwde hulpprogram ma's voor bewaking en analyse van Azure. Aanvullende hulp middelen en waarschuwingen zijn beschikbaar op de pagina's onder de kop **bewaking** in de zijbalk van de portal. Meer informatie vindt u in de sectie Portal van de [Azure monitoring-documentatie](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal).
+Deze grafieken maken deel uit van de ingebouwde monitoring- en analysetools van Azure. Extra hulpprogramma's en waarschuwingen zijn beschikbaar op de pagina's onder de kop **Controle** in de zijbalk van de portal. Meer informatie in het portalgedeelte van de [Azure Monitoring-documentatie](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 <!-- * Learn more about metrics and statistics for hpc cache -->
-* Meer informatie over de [hulpprogram ma's voor metrische gegevens en statistieken van Azure](../azure-monitor/index.yml)
+* Meer informatie over [Azure-hulpprogramma's voor statistieken en statistieken](../azure-monitor/index.yml)
 * [Hulp krijgen bij uw Azure HPC-cache](hpc-cache-support-ticket.md)

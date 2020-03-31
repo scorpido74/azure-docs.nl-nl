@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure Bastion oplossen | Microsoft Docs
-description: In dit artikel vindt u informatie over het oplossen van problemen met Azure Bastion.
+title: Azure Bastion oplossen | Microsoft Documenten
+description: In dit artikel leest u hoe u Azure Bastion oplost.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,38 +8,38 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: de112ff441bb53a0b3bc7f4ffa4456f1c241682c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73512949"
 ---
-# <a name="troubleshoot-azure-bastion"></a>Problemen met Azure Bastion oplossen
+# <a name="troubleshoot-azure-bastion"></a>Azure Bastion oplossen
 
-In dit artikel leest u hoe u problemen met Azure Bastion kunt oplossen.
+In dit artikel ziet u hoe u Azure Bastion oplossen.
 
-## <a name="nsg"></a>Kan geen NSG maken op AzureBastionSubnet
+## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>Kan geen NSG maken op AzureBastionSubnet
 
-**V:** Wanneer ik een NSG op het Azure Bastion-subnet probeer te maken, krijg ik de volgende fout melding: *' de netwerk beveiligings groep <NSG name> heeft niet de vereiste regels voor het Azure Bastion-subnet AzureBastionSubnet '* .
+**V:** Wanneer ik een NSG probeer te maken op het Subnet Azure Bastion, krijg ik de volgende fout: * <NSG name> 'Netwerkbeveiligingsgroep heeft geen noodzakelijke regels voor Azure Bastion Subnet AzureBastionSubnet'.*
 
-**A:** Als u een NSG maakt en toepast op *AzureBastionSubnet*, moet u ervoor zorgen dat u de volgende regels in uw NSG hebt toegevoegd. Als u deze regels niet toevoegt, mislukt het maken/bijwerken van de NSG.
+**A:** Als u een NSG maakt en toepast op *AzureBastionSubnet,* controleert u of u de volgende regels in uw NSG hebt toegevoegd. Als u deze regels niet toevoegt, mislukt de NSG-creatie/-update.
 
-1. Besturings vlak connectiviteit: inkomend op 443 van GatewayManager
-2. Logboek registratie van diagnostische gegevens en anderen: uitgaand op 443 tot Cloud (regionale Tags in deze servicetag worden nog niet ondersteund.)
-3. Doel-VM: uitgaand voor 3389 en 22 tot VirtualNetwork
+1. Vliegtuigconnectiviteit beheren – Binnenkomend op 443 vanuit GatewayManager
+2. Logboekregistratie voor diagnostische gegevens en anderen – Uitgaand op 443 naar AzureCloud (regionale tags binnen deze servicetag worden nog niet ondersteund.)
+3. Target VM – Uitgaand voor 3389 en 22 naar VirtualNetwork
 
-Een voor beeld van de NSG-regels is beschikbaar als referentie in de Quick Start- [sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion).
-Zie [NSG-richt lijnen voor Azure Bastion](bastion-nsg.md)voor meer informatie.
+Een voorbeeld van de NSG-regels is beschikbaar voor referentie in de [sjabloon snelstart](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion).
+Zie [NSG-richtlijnen voor Azure Bastion voor](bastion-nsg.md)meer informatie.
 
-## <a name="sshkey"></a>Mijn SSH-sleutel kan niet worden gebruikt met Azure Bastion
+## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Kan mijn SSH-sleutel niet gebruiken met Azure Bastion
 
-**V:** Wanneer ik mijn SSH-sleutel bestand probeer te bladeren, wordt het volgende fout bericht weer geven: *' de persoonlijke SSH-sleutel moet beginnen met-----begin RSA persoonlijke sleutel-----en eindigt met-----end RSA-sleutel-----'* .
+**V:** Wanneer ik mijn SSH-sleutelbestand probeer te bladeren, krijg ik de volgende foutmelding: *'SSH Private key must start with -----BEGIN RSA PRIVATE KEY----- and ends with -----END RSA PRIVATE KEY-----'*.
 
-**A:** Azure Bastion ondersteunt op dit moment alleen RSA SSH-sleutels. Zorg ervoor dat u een sleutel bestand met een persoonlijke RSA-sleutel voor SSH bladert met een open bare sleutel die is ingericht op de doel-VM. 
+**A:** Azure Bastion ondersteunt op dit moment alleen RSA SSH-sleutels. Zorg ervoor dat u door een sleutelbestand bladert dat een PRIVÉsleutel van RSA voor SSH is, met openbare sleutel die is ingericht op de doel-VM. 
 
-U kunt bijvoorbeeld de volgende opdracht gebruiken om een nieuwe RSA SSH-sleutel te maken:
+U bijvoorbeeld de volgende opdracht gebruiken om een nieuwe RSA SSH-toets te maken:
 
-**ssh-keygen-t rsa-b 4096-C "email@domain.com"**
+**ssh-keygen -t rsa -b 4096 -C "email@domain.com**
 
 Uitvoer:
 
@@ -67,24 +67,24 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-## <a name="domain"></a>Kan niet aanmelden bij een virtuele machine die lid is van een Windows-domein
+## <a name="unable-to-sign-in-to-my-windows-domain-joined-virtual-machine"></a><a name="domain"></a>Kan zich niet aanmelden bij mijn virtuele computer met Windows-domein
 
-**V:** Ik kan geen verbinding maken met mijn virtuele Windows-machine die lid is van een domein.
+**V:** Ik kan geen verbinding maken met mijn virtuele Windows-machine die is aangesloten op het domein.
 
-**A:** Azure Bastion ondersteunt alleen aanmelden bij een domein in een gebruikers naam-wacht woord op basis van een domein. Wanneer u de domein referenties opgeeft in de Azure Portal, gebruikt u de UPN-indeling (username@domain) in plaats van de notatie *domein\gebruikersnaam* om u aan te melden. Dit wordt ondersteund voor virtuele machines die lid zijn van een domein of een hybride lid (zowel een domein als een Azure AD-lid). Het wordt niet ondersteund voor virtuele machines die lid zijn van Azure AD.
+**A:** Azure Bastion ondersteunt alleen aanmelden voor vm-aanmeldingen met domeinvoor gebruikersnaam en wachtwoord. Wanneer u de domeinreferenties in de Azure-portalusername@domainopgeeft, gebruikt u de UPN -indeling ( ) in plaats van *domein\gebruikersnaamindeling* om u aan te melden. Dit wordt ondersteund voor virtuele machines met domeinverbonden of hybride verbonden (zowel met domeinen verbonden als voor Azure AD-verbonden) virtuele machines. Het wordt niet ondersteund voor virtuele machines die alleen voor Azure AD zijn aangesloten.
 
-## <a name="filetransfer"></a>Problemen met bestands overdracht
+## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Problemen met bestandsoverdracht
 
-**V:** Wordt bestands overdracht ondersteund met Azure Bastion?
+**V:** Wordt bestandsoverdracht ondersteund met Azure Bastion?
 
-**A:** Bestands overdracht wordt op dit moment niet ondersteund. We werken aan het toevoegen van ondersteuning.
+**A:** Bestandsoverdracht wordt op dit moment niet ondersteund. We werken aan het toevoegen van ondersteuning.
 
-## <a name="blackscreen"></a>Zwart scherm in de Azure Portal
+## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Zwart scherm in de Azure-portal
 
-**V:** Wanneer ik probeer verbinding te maken met behulp van Azure Bastion, wordt er een zwart scherm weer gegeven in de Azure Portal.
+**V:** Wanneer ik verbinding probeer te maken via Azure Bastion, krijg ik een zwart scherm in de Azure-portal.
 
-**A:** Dit gebeurt wanneer er een probleem is met de netwerk verbinding tussen uw webbrowser en Azure Bastion (uw firewall voor Internet-verbindingen van de client blokkeert mogelijk websockets of vergelijk bare) of tussen de Azure-Bastion en de doel-VM. De meeste gevallen zijn een NSG toegepast op AzureBastionSubnet of op uw doel-VM-subnet dat het RDP/SSH-verkeer in het virtuele netwerk blokkeert. Sta websockets toe op de firewall van Internet en controleer de Nsg's op uw doel-VM-subnet.
+**A:** Dit gebeurt wanneer er een probleem is met de netwerkverbinding tussen uw webbrowser en Azure Bastion (uw clientinternetfirewall blokkeert mogelijk WebSockets-verkeer of iets dergelijks) of tussen het Azure Bastion en uw doel-vm. De meeste gevallen omvatten een NSG toegepast op AzureBastionSubnet, of op uw doel VM subnet dat het RDP / SSH verkeer blokkeert in uw virtuele netwerk. Sta WebSockets-verkeer toe op de internetfirewall van uw client en controleer de NSG's op uw doel-VM-subnet.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [Veelgestelde vragen over Bastion](bastion-faq.md)voor meer informatie.
+Zie de [Veelgestelde vragen van het Bastion voor](bastion-faq.md)meer informatie.

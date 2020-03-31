@@ -1,6 +1,6 @@
 ---
-title: Azure Data Explorer-besturings opdrachten gebruiken in Azure Data Factory
-description: In dit onderwerp gebruikt u Azure Data Explorer Control commands in Azure Data Factory
+title: Besturingselementopdrachten van Azure Data Explorer gebruiken in Azure Data Factory
+description: Gebruik in dit onderwerp azure data explorer-besturingselementopdrachten in Azure Data Factory
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,89 +9,89 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72264489"
 ---
-# <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Azure Data Factory opdracht activiteit gebruiken om Azure Data Explorer-besturings opdrachten uit te voeren
+# <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Opdrachtactiviteit Azure Data Factory gebruiken om besturingselementopdrachten van Azure Data Explorer uit te voeren
 
-[Azure Data Factory](/azure/data-factory/) (ADF) is een service voor gegevens integratie in de Cloud waarmee u een combi natie van activiteiten kunt uitvoeren op de gegevens. Gebruik ADF om gegevensgestuurde werk stromen te maken voor het organiseren en automatiseren van gegevens verplaatsing en gegevens transformatie. Met de activiteit **azure Data Explorer-opdracht** in azure Data Factory kunt u [Azure Data Explorer-besturings opdrachten](/azure/kusto/concepts/#control-commands) uitvoeren binnen een ADF-werk stroom. In dit artikel leert u hoe u een pijp lijn maakt met een opzoek activiteit en een ForEach-activiteit met een Azure Data Explorer-opdracht activiteit.
+[Azure Data Factory](/azure/data-factory/) (ADF) is een cloudgebaseerde data-integratieservice waarmee u een combinatie van activiteiten op de gegevens uitvoeren. Gebruik ADF om datagestuurde workflows te maken voor het orkestreren en automatiseren van gegevensverplaatsing en gegevenstransformatie. Met de **opdrachtactiviteit Azure Data Explorer** in Azure Data Factory u [azure data explorer-besturingselementopdrachten](/azure/kusto/concepts/#control-commands) uitvoeren binnen een ADF-werkstroom. In dit artikel leert u hoe u een pijplijn maakt met een opzoekactiviteit en ForEach-activiteit die een opdrachtactiviteit van Azure Data Explorer bevat.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* [Een Azure Data Explorer-cluster en-data base](create-cluster-database-portal.md)
-* Een gegevens bron.
-* [Een data factory](data-factory-load-data.md#create-a-data-factory)
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
+* [Een Azure Data Explorer-cluster en -database](create-cluster-database-portal.md)
+* Een bron van gegevens.
+* [Een datafabriek](data-factory-load-data.md#create-a-data-factory)
 
-## <a name="create-a-new-pipeline"></a>Een nieuwe pijp lijn maken
+## <a name="create-a-new-pipeline"></a>Een nieuwe pijplijn maken
 
-1. Selecteer het potlood hulp programma voor **ontwerpen** . 
-1. Maak een nieuwe pijp lijn door **+** te selecteren en vervolgens **pijp lijn** te selecteren in de vervolg keuzelijst.
+1. Selecteer het gereedschap **Potlood ontwerpen.** 
+1. Maak een nieuwe **+** pijplijn door **Pijplijn** te selecteren en vervolgens te selecteren in de vervolgkeuzelijst.
 
-   ![nieuwe pijp lijn maken](media/data-factory-command-activity/create-pipeline.png)
+   ![nieuwe pijplijn maken](media/data-factory-command-activity/create-pipeline.png)
 
-## <a name="create-a-lookup-activity"></a>Een opzoek activiteit maken
+## <a name="create-a-lookup-activity"></a>Een opzoekactiviteit maken
 
-Met een [opzoek activiteit](/azure/data-factory/control-flow-lookup-activity) kan een gegevensset worden opgehaald uit elke Azure Data Factory gegevens bronnen die worden ondersteund. De uitvoer van de opzoek activiteit kan worden gebruikt in een ForEach-of andere activiteit.
+Een [opzoekactiviteit](/azure/data-factory/control-flow-lookup-activity) kan een gegevensset ophalen uit gegevensbronnen die door Azure Data Factory worden ondersteund. De uitvoer van opzoekactiviteit kan worden gebruikt in een ForEach of een andere activiteit.
 
-1. Selecteer in het deel venster **activiteiten** onder **Algemeen**de **opzoek** activiteit. Sleep en zet deze neer in het hoofd papier aan de rechter kant.
+1. Selecteer in het deelvenster **Activiteiten** onder **Algemeen**de **opzoekactiviteit.** Sleep en zet het in het hoofdcanvas aan de rechterkant.
  
-    ![opzoek activiteit selecteren](media/data-factory-command-activity/select-activity.png)
+    ![opzoekactiviteit selecteren](media/data-factory-command-activity/select-activity.png)
 
-1. Het canvas bevat nu de opzoek activiteit die u hebt gemaakt. Gebruik de tabbladen onder het canvas om de relevante para meters te wijzigen. In het **Algemeen**wijzigt u de naam van de activiteit. 
+1. Het canvas bevat nu de opzoekactiviteit die u hebt gemaakt. Gebruik de tabbladen onder het canvas om relevante parameters te wijzigen. In **het algemeen,** wijzig de naam van de activiteit. 
 
-    ![opzoek activiteit bewerken](media/data-factory-command-activity/edit-lookup-activity.PNG)
+    ![opzoekactiviteit bewerken](media/data-factory-command-activity/edit-lookup-activity.PNG)
 
     > [!TIP]
-    > Klik op het lege papier gebied om de pijplijn eigenschappen weer te geven. Gebruik het tabblad **Algemeen** om de naam van de pijp lijn te wijzigen. Onze pijp lijn heet *pijp lijn-4 docs*.
+    > Klik op het lege canvasgebied om de pijplijneigenschappen weer te geven. Gebruik het tabblad **Algemeen** om de naam van de pijplijn te wijzigen. Onze pijplijn heet *pipeline-4-docs.*
 
-### <a name="create-an-azure-data-explorer-dataset-in-lookup-activity"></a>Een Azure Data Explorer-gegevensset maken in de opzoek activiteit
+### <a name="create-an-azure-data-explorer-dataset-in-lookup-activity"></a>Een Azure Data Explorer-gegevensset maken in opzoekactiviteit
 
-1. Selecteer in **instellingen**uw vooraf gemaakte Azure Data Explorer- **bron gegevensset**of selecteer **+ Nieuw** om een nieuwe gegevensset te maken.
+1. Selecteer **in Instellingen**de gegevensset van uw vooraf gemaakte Azure Data **Explorer-bron**of selecteer **+ Nieuw** om een nieuwe gegevensset te maken.
  
-    ![gegevensset toevoegen in opzoek instellingen](media/data-factory-command-activity/lookup-settings.png)
+    ![gegevensset toevoegen in opzoekinstellingen](media/data-factory-command-activity/lookup-settings.png)
 
-1. Selecteer de **Azure Data Explorer-gegevensset (Kusto)** in het venster **nieuwe gegevensset** . Selecteer **door gaan** om de nieuwe gegevensset toe te voegen.
+1. Selecteer de **gegevensset Azure Data Explorer (Kusto)** in het venster **Nieuwe gegevensset.** Selecteer **Doorgaan** om de nieuwe gegevensset toe te voegen.
 
    ![nieuwe gegevensset selecteren](media/data-factory-command-activity/select-new-dataset.png) 
 
-1. De nieuwe para meters van de Azure Data Explorer-gegevensset zijn zichtbaar in **instellingen**. Selecteer **bewerken**om de para meters bij te werken.
+1. De nieuwe gegevenssetparameters van Azure Data Explorer zijn zichtbaar in **Instellingen**. Als u de parameters wilt bijwerken, selecteert u **Bewerken**.
 
-    ![Zoek instellingen met Azure Data Explorer-gegevensset](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
+    ![opzoekinstellingen met Azure Data Explorer-gegevensset](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
 
-1. Het nieuwe tabblad **AzureDataExplorerTable** wordt geopend in het hoofd papier. 
+1. Het nieuwe tabblad **AzureDataExplorerTable** wordt geopend in het hoofdcanvas. 
     * Selecteer **Algemeen** en bewerk de naam van de gegevensset. 
-    * Selecteer **verbinding** om de eigenschappen van de gegevensset te bewerken. 
-    * Selecteer de **gekoppelde service** in de vervolg keuzelijst of selecteer **+ Nieuw** om een nieuwe gekoppelde service te maken.
+    * Selecteer **Verbinding** om de gegevensseteigenschappen te bewerken. 
+    * Selecteer de **gekoppelde service** in de vervolgkeuzelijst of selecteer **+ Nieuw** om een nieuwe gekoppelde service te maken.
 
-    ![Eigenschappen van Azure Data Explorer-gegevensset bewerken](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
+    ![Eigenschappen van azure Data Explorer-gegevensset bewerken](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
 
-1. Wanneer u een nieuwe gekoppelde service maakt, wordt de pagina **nieuwe gekoppelde service (Azure Data Explorer)** geopend:
+1. Bij het maken van een nieuwe gekoppelde service wordt de pagina **New Linked Service (Azure Data Explorer)** geopend:
 
     ![ADX nieuwe gekoppelde service](media/data-factory-command-activity/adx-new-linked-service.png)
 
-   * Selecteer een **naam** voor de gekoppelde Azure Data Explorer-service. Voeg indien nodig een **Beschrijving** toe.
-   * Wijzig de huidige instellingen in **verbinden via Integration runtime**, indien nodig. 
-   * In de methode voor het selecteren van **accounts** selecteert u uw cluster op een van de volgende twee manieren: 
-        * Selecteer het keuze rondje **van Azure-abonnement** en selecteer uw **Azure-abonnements** account. Selecteer vervolgens uw **cluster**. Opmerking in de vervolg keuzelijst worden alleen clusters vermeld die bij de gebruiker horen.
-        * Selecteer in plaats daarvan **hand matig** keuze rondje opgeven en voer uw **eind punt** (cluster-URL) in.
-    * Geef de **Tenant**op.
-    * Voer de ID van de **Service-Principal**in. De principal-ID moet de juiste machtigingen hebben, afhankelijk van het machtigings niveau dat is vereist voor de opdracht die wordt gebruikt.
-    * Selecteer de knop **Service Principal Key** en voer de sleutel van de **Service-Principal**in.
-    * Selecteer uw **Data Base** in de vervolg keuzelijst. U kunt ook het selectie vakje **bewerken** selecteren en de naam van uw data base invoeren.
-    * Selecteer **verbinding testen** om de gekoppelde service verbinding te testen die u hebt gemaakt. Als u verbinding kunt maken met uw installatie **, wordt een** groen vinkje weer gegeven.
-    * Selecteer **volt ooien** om de gekoppelde service te maken.
+   * Selecteer **Naam** voor gekoppelde service van Azure Data Explorer. Indien nodig **beschrijving** toevoegen.
+   * Wijzig **in Connect via integratieruntime**indien nodig de huidige instellingen. 
+   * Selecteer **in accountselectiemethode** uw cluster met een van de twee methoden: 
+        * Selecteer de knop **Keuze uit Azure-abonnementsrondje** en selecteer uw **Azure-abonnementsaccount.** Selecteer vervolgens uw **cluster**. Let op: de vervolgkeuzelijst vermeldt alleen clusters die van de gebruiker zijn.
+        * Selecteer in plaats daarvan de knop **Handmatig** invoeren en voer uw **eindpunt** (cluster-URL) in.
+    * Geef de **tenant op**.
+    * Voer **de hoofd-id van de service in**. De hoofd-ID moet over de juiste machtigingen beschikken, afhankelijk van het machtigingsniveau dat vereist is door de opdracht die wordt gebruikt.
+    * Selecteer **de hoofdsleutelknop service** en voer de sleutel **serviceprincipal in**.
+    * Selecteer uw **database** in het vervolgkeuzemenu. U ook het selectievakje **Bewerken** inschakelen en de naam van uw database invoeren.
+    * Selecteer **Verbinding testen** om de gekoppelde serviceverbinding te testen die u hebt gemaakt. Als u verbinding maken met uw installatie, wordt een groene **vinkjeverbinding weergegeven.**
+    * Selecteer **Voltooien** om gekoppelde servicecreatie te voltooien.
 
-1. Wanneer u een gekoppelde service hebt ingesteld, voegt u in **AzureDataExplorerTable** > -**verbinding**de naam van de **tabel** toe. Selecteer **Preview-gegevens**om ervoor te zorgen dat de gegevens correct worden weer gegeven.
+1. Zodra u een gekoppelde service hebt ingesteld, voegt u in **AzureDataExplorerTable** > **Connection** **tabelnaam** toe. Selecteer **Voorbeeldgegevens**om ervoor te zorgen dat de gegevens correct worden weergegeven.
 
-   Uw gegevensset is nu gereed en u kunt door gaan met het bewerken van de pijp lijn.
+   Uw gegevensset is nu klaar en u uw pijplijn blijven bewerken.
 
-### <a name="add-a-query-to-your-lookup-activity"></a>Een query toevoegen aan de opzoek activiteit
+### <a name="add-a-query-to-your-lookup-activity"></a>Een query toevoegen aan uw opzoekactiviteit
 
-1. In **pijp lijn-4-docs** > **instellingen** een query toevoegen in een **query** tekstvak, bijvoorbeeld:
+1. Voeg in **pipeline-4-docs** > **Instellingen** een query toe in het tekstvak **Query,** bijvoorbeeld:
 
     ```kusto
     ClusterQueries
@@ -99,39 +99,39 @@ Met een [opzoek activiteit](/azure/data-factory/control-flow-lookup-activity) ka
     | summarize count() by Database
     ```
 
-1. Wijzig zo nodig de **time-out** van de query of **geen afbreking** en alleen de eigenschappen van de **eerste rij** . In deze stroom blijven we de standaard **time-out voor de querytime** en schakelt u de selectie vakjes uit. 
+1. Wijzig indien nodig de **time-out query** of **Geen afgekapte** en **eerste rij.** In deze stroom houden we de **standaardtime-out van query's** en schakelen we de selectievakjes uit. 
 
-    ![Laatste instellingen van de opzoek activiteit](media/data-factory-command-activity/lookup-activity-final-settings.png)
+    ![Definitieve instellingen voor opzoekactiviteit](media/data-factory-command-activity/lookup-activity-final-settings.png)
 
-## <a name="create-a-for-each-activity"></a>Een for-each-activiteit maken 
+## <a name="create-a-for-each-activity"></a>Een voor-elke activiteit maken 
 
-De [for-each-](/azure/data-factory/control-flow-for-each-activity) activiteit wordt gebruikt om een verzameling te herhalen en opgegeven activiteiten in een lus uit te voeren. 
+De [activiteit Voor-Elke](/azure/data-factory/control-flow-for-each-activity) wordt gebruikt om een verzameling te herhalen en bepaalde activiteiten in een lus uit te voeren. 
 
-1. Nu voegt u een for-each-activiteit toe aan de pijp lijn. Met deze activiteit worden de gegevens verwerkt die zijn geretourneerd door de opzoek activiteit. 
-    * Selecteer in het deel venster **activiteiten** onder **iteratie & Conditions**de **foreach** -activiteit en sleep deze naar het canvas.
-    * Teken een lijn tussen de uitvoer van de opzoek activiteit en de invoer van de ForEach-activiteit in het canvas om ze te verbinden.
+1. Nu voegt u een voor-elke activiteit toe aan de pijplijn. Met deze activiteit worden de gegevens verwerkt die zijn geretourneerd vanuit de opzoekactiviteit. 
+    * Selecteer in het deelvenster **Activiteiten** onder **Iteratie & Conditionals**de activiteit **ForEach** en sleep en zet deze neer in het canvas.
+    * Teken een lijn tussen de uitvoer van de opzoekactiviteit en de invoer van de ForEach-activiteit in het canvas om deze te verbinden.
 
-        ![ForEach-activiteit](media/data-factory-command-activity/for-each-activity.png)
+        ![Activiteit ForEach](media/data-factory-command-activity/for-each-activity.png)
 
-1.  Selecteer de ForEach-activiteit in het canvas. Op het tabblad **instellingen** onder:
-    * Schakel het selectie vakje **opeenvolgend** in voor een opeenvolgende verwerking van de zoek resultaten of schakel deze optie uit om parallelle verwerking te maken.
-    * Stel **batch-aantal**in.
-    * Geef in **items**de volgende verwijzing op naar de uitvoer waarde: *@activity (' Lookup1 '). output. Value*
+1.  Selecteer de activiteit ForEach in het canvas. Ga als overzicht **van de instellingen:**
+    * Schakel het selectievakje **Sequentiële** in voor een sequentiële verwerking van de opzoekresultaten of laat het onaangevinkt om parallelle verwerking te maken.
+    * **Batchaantal**instellen .
+    * Geef in **items**de volgende verwijzing naar de uitvoerwaarde: * @activity('Opzoeken1').output.value*
 
        ![Instellingen voor ForEach-activiteit](media/data-factory-command-activity/for-each-activity-settings.png)
 
-## <a name="create-an-azure-data-explorer-command-activity-within-the-foreach-activity"></a>Een Azure Data Explorer-opdracht activiteit maken binnen de ForEach-activiteit
+## <a name="create-an-azure-data-explorer-command-activity-within-the-foreach-activity"></a>Een opdrachtactiviteit van Azure Data Explorer maken binnen de ForEach-activiteit
 
-1. Dubbel klik op de ForEach-activiteit in het canvas om deze te openen in een nieuw canvas om de activiteiten in ForEach op te geven.
-1. Selecteer in het deel venster **activiteiten** onder **Azure Data Explorer**de activiteit **Azure Data Explorer opdracht** en sleep deze naar het canvas.
+1. Dubbelklik op de activiteit ForEach in het canvas om deze te openen in een nieuw canvas om de activiteiten binnen ForEach op te geven.
+1. Selecteer in het deelvenster **Activiteiten** onder **Azure Data Explorer**de **opdracht-activiteit Azure Data Explorer** en sleep en zet deze neer in het canvas.
 
-    ![Opdracht activiteit voor Azure Data Explorer](media/data-factory-command-activity/adx-command-activity.png)
+    ![Opdrachtactiviteit Azure Data Explorer](media/data-factory-command-activity/adx-command-activity.png)
 
-1.  Selecteer op het tabblad **verbinding** de zelfde gekoppelde service die eerder is gemaakt.
+1.  Selecteer op het tabblad **Verbinding** dezelfde gekoppelde service die eerder is gemaakt.
 
-    ![tabblad activiteit verbinding van Azure Data Explorer](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
+    ![tabblad voor opdrachtactiviteitsactiviteit azure-gegevensverkenner](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
 
-1. Geef op het tabblad **opdracht** de volgende opdracht op:
+1. Geef op het tabblad **Opdracht** de volgende opdracht op:
 
     ```kusto
     .export
@@ -143,34 +143,34 @@ De [for-each-](/azure/data-factory/control-flow-for-each-activity) activiteit wo
     <| ClusterQueries | where Database == "@{item().Database}"
     ```
 
-    De **opdracht** geeft Azure Data Explorer de resultaten van een bepaalde query naar een Blob-opslag te exporteren in een gecomprimeerde indeling. Het wordt asynchroon uitgevoerd (met de async-aanpassings functie).
-    De query adresseert de kolom data base van elke rij in het resultaat van de opzoek activiteit. De **time-out** van de opdracht kan ongewijzigd blijven.
+    Met **de opdracht** wordt Azure Data Explorer geïnstrueerd om de resultaten van een bepaalde query te exporteren naar een blobopslag in een gecomprimeerde indeling. Het loopt asynchroon (met behulp van de async modifier).
+    De query richt zich op de databasekolom van elke rij in het resultaat van de opzoekactiviteit. De **time-out van de opdracht** kan ongewijzigd blijven.
 
-    ![opdracht activiteit](media/data-factory-command-activity/command.png)   
+    ![opdrachtactiviteit](media/data-factory-command-activity/command.png)   
 
     > [!NOTE]
-    > De opdracht activiteit heeft de volgende limieten:
-    > * Maximale grootte: 1 MB antwoord grootte
-    > * Tijds limiet: 20 minuten (standaard), 1 uur (maximum).
-    > * Indien nodig kunt u een query toevoegen aan het resultaat met behulp van [AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands), om de resulterende grootte/tijd te verminderen.
+    > De opdrachtactiviteit heeft de volgende limieten:
+    > * Groottelimiet: 1 MB responsgrootte
+    > * Tijdslimiet: 20 minuten (standaard), 1 uur (maximum).
+    > * Indien nodig u een query toevoegen aan het resultaat met [Behulp van AdminThenQuery](/azure/kusto/management/index#combining-queries-and-control-commands), om de resulterende grootte/tijd te verminderen.
 
-1.  De pijp lijn is nu klaar. U kunt teruggaan naar de hoofd weergave van de pijp lijn door op de naam van de pijp lijn te klikken.
+1.  Nu is de pijpleiding klaar. U teruggaan naar de hoofdpijplijnweergave door op de naam van de pijplijn te klikken.
 
-    ![Opdracht pijplijn voor Azure Data Explorer](media/data-factory-command-activity/adx-command-pipeline.png)
+    ![Opdrachtpijplijn voor Azure Data Explorer](media/data-factory-command-activity/adx-command-pipeline.png)
 
-1. Selecteer **fout opsporing** voordat u de pijp lijn publiceert. De voortgang van de pijp lijn kan worden bewaakt op het tabblad **uitvoer** .
+1. Selecteer **Foutopsporing** voordat u de pijplijn publiceert. De voortgang van de pijplijn kan worden gecontroleerd op het tabblad **Uitvoer.**
 
-    ![uitvoer van opdracht activiteiten van Azure Data Explorer](media/data-factory-command-activity/command-activity-output.png)
+    ![uitvoer van opdrachtactiviteit Azure Data Explorer](media/data-factory-command-activity/command-activity-output.png)
 
-1. U kunt **Alles publiceren** en vervolgens een **trigger toevoegen** om de pijp lijn uit te voeren. 
+1. U **Alles publiceren** en vervolgens **trigger toevoegen** om de pijplijn uit te voeren. 
 
-## <a name="control-command-outputs"></a>Uitvoer van opdracht besturings elementen
+## <a name="control-command-outputs"></a>Opdrachtuitvoer regelen
 
-De structuur van de uitvoer van de opdracht activiteit wordt hieronder beschreven. Deze uitvoer kan worden gebruikt door de volgende activiteit in de pijp lijn.
+De structuur van de uitvoer van opdrachtactiviteit wordt hieronder beschreven. Deze uitvoer kan worden gebruikt door de volgende activiteit in de pijplijn.
 
-### <a name="returned-value-of-a-non-async-control-command"></a>Geretourneerde waarde van een niet-async-besturings opdracht
+### <a name="returned-value-of-a-non-async-control-command"></a>Geretourneerde waarde van een niet-async-besturingselementopdracht
 
-In een niet-async-opdracht is de structuur van de geretourneerde waarde vergelijkbaar met de structuur van het resultaat van de opzoek activiteit. In het veld `count` wordt het aantal geretourneerde records aangegeven. Een vast matrix veld `value` bevat een lijst met records. 
+In een niet-async-besturingselementopdracht is de structuur van de geretourneerde waarde vergelijkbaar met de structuur van het resultaat van de opzoekactiviteit. Het `count` veld geeft het aantal geretourneerde records aan. Een vast `value` arrayveld bevat een lijst met records. 
 
 ```json
 { 
@@ -190,9 +190,9 @@ In een niet-async-opdracht is de structuur van de geretourneerde waarde vergelij
 } 
 ```
  
-### <a name="returned-value-of-an-async-control-command"></a>Geretourneerde waarde van een async Control-opdracht
+### <a name="returned-value-of-an-async-control-command"></a>Geretourneerde waarde van een opdracht voor asyncbesturingselementen
 
-In een async-besturings opdracht pollt de activiteit de bewerkings tabel achter de schermen totdat de asynchrone bewerking is voltooid of een time-out. Daarom bevat de geretourneerde waarde het resultaat van `.show operations OperationId` voor die gegeven eigenschap **OperationId** . Controleer de waarden van **status** en **status** om te controleren of de bewerking is voltooid.
+In een opdracht voor async-besturingselementen wordt de bewerkingstabel achter de schermen door de activiteit gepeild totdat de async-bewerking is voltooid of een tijd is uitgeschakeld. Daarom bevat de geretourneerde waarde `.show operations OperationId` het resultaat van de eigenschap **OperationId.** Controleer de waarden van **status-** en **statuseigenschappen** om de succesvolle voltooiing van de bewerking te controleren.
 
 ```json
 { 
@@ -219,5 +219,5 @@ In een async-besturings opdracht pollt de activiteit de bewerkings tabel achter 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [kopiëren van gegevens naar Azure Data Explorer met behulp van Azure Data Factory](data-factory-load-data.md).
-* Meer informatie over [het gebruik van Azure Data Factory sjabloon voor bulksgewijs kopiëren van de Data Base naar Azure Data Explorer](data-factory-template.md).
+* Meer informatie over het [kopiëren van gegevens naar Azure Data Explorer met Azure Data Factory](data-factory-load-data.md).
+* Meer informatie over het gebruik van [Azure Data Factory-sjabloon voor bulkkopiëren van database naar Azure Data Explorer](data-factory-template.md).

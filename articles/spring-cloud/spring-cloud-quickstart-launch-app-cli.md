@@ -1,60 +1,60 @@
 ---
-title: 'Snelstartgids: een Java-lente toepassing starten met Azure CLI'
-description: In deze Quick Start implementeert u een voorbeeld toepassing in azure lente-Cloud op de Azure CLI.
+title: 'Snelstart: een Java Spring-toepassing starten met de Azure CLI'
+description: In deze quickstart implementeert u een voorbeeldtoepassing naar Azure Spring Cloud op azure CLI.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 48d05dad45a5ff4c561f492e424b53c918998c7c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c05e53bd8ad8ade8c1e42729f46c99a0059c4dce
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945462"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79470857"
 ---
-# <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Snelstartgids: een Java-lente toepassing starten met Azure CLI
+# <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Snelstart: een Java Spring-toepassing starten met de Azure CLI
 
-Met Azure veer Cloud kunt u eenvoudig een micro service toepassing op basis van een Spring boot uitvoeren op Azure.
+Met Azure Spring Cloud u eenvoudig een op Spring Boot gebaseerde microservices-toepassing op Azure uitvoeren.
 
-In deze Quick start ziet u hoe u een bestaande Java-toepassing in azure kunt implementeren. Wanneer u klaar bent, kunt u door gaan met het beheren van de toepassing via de Azure CLI of overschakelen naar het gebruik van de Azure Portal.
+Met deze quickstart u zien hoe u een bestaande Java Spring Cloud-toepassing implementeert in Azure. Wanneer u klaar bent, u de toepassing blijven beheren via de Azure CLI of overschakelen naar het gebruik van de Azure-portal.
 
-In deze Quick Start leert u het volgende:
+Na deze snelle start leert u hoe u:
 
 > [!div class="checklist"]
-> * Een service-exemplaar inrichten
-> * Een configuratie server instellen voor een exemplaar
-> * Een micro Services-toepassing lokaal bouwen
-> * Implementeer elke micro service
-> * Openbaar eind punt voor uw toepassing toewijzen
+> * Een service-instantie inrichten
+> * Een configuratieserver instellen voor een instantie
+> * Lokaal een microservices-toepassing bouwen
+> * Elke microservice implementeren
+> * Openbaar eindpunt toewijzen voor uw toepassing
 
 ## <a name="prerequisites"></a>Vereisten
 
 >[!Note]
-> Azure lente Cloud wordt momenteel aangeboden als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.  Raadpleeg voor meer informatie over ondersteuning tijdens previews onze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of bestand a [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) voor meer informatie.
+> Azure Spring Cloud wordt momenteel aangeboden als een openbare preview. Openbare preview-aanbiedingen stellen klanten in staat om te experimenteren met nieuwe functies voordat ze officieel worden uitgebracht.  Openbare preview-functies en services zijn niet bedoeld voor productiegebruik.  Bekijk onze veelgestelde vragen over onze [veelgestelde vragen](https://azure.microsoft.com/support/faq/) voor meer informatie over ondersteuning tijdens previews of dien een [ondersteuningsverzoek](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) in voor meer informatie.
 
 >[!TIP]
-> Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren.  Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, JDK, maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud shell](https://shell.azure.com) vanuit shell.Azure.com.  [Lees onze documentatie](../cloud-shell/overview.md) voor meer informatie over Azure Cloud shell.
+> Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren.  Er zijn veelvoorkomende Azure-hulpprogramma's vooraf geïnstalleerd, waaronder de nieuwste versies van Git, JDK, Maven en azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud Shell](https://shell.azure.com) vanaf shell.azure.com.  U meer informatie over Azure Cloud Shell lezen door [onze documentatie te lezen](../cloud-shell/overview.md)
 
-Dit zijn de vereisten voor het voltooien van deze snelstartgids:
+Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 1. [Git installeren](https://git-scm.com/)
 2. [JDK 8 installeren](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-3. [Maven 3,0 of hoger installeren](https://maven.apache.org/download.cgi)
+3. [Maven 3.0 of hoger installeren](https://maven.apache.org/download.cgi)
 4. [De Azure CLI-versie 2.0.67 of hoger installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-5. [Registreren voor een Azure-abonnement](https://azure.microsoft.com/free/)
+5. [Aanmelden voor een Azure-abonnement](https://azure.microsoft.com/free/)
 
 ## <a name="install-the-azure-cli-extension"></a>De Azure CLI-extensie installeren
 
-Installeer de Azure veer Cloud-extensie voor de Azure CLI met behulp van de volgende opdracht
+De Azure Spring Cloud-extensie voor de Azure CLI installeren met de volgende opdracht
 
 ```azurecli
 az extension add --name spring-cloud
 ```
 
-## <a name="provision-a-service-instance-on-the-azure-cli"></a>Een service-exemplaar inrichten in de Azure CLI
+## <a name="provision-a-service-instance-on-the-azure-cli"></a>Een service-instantie inrichten op de Azure CLI
 
-1. Meld u aan bij de Azure CLI en kies uw actieve abonnement. Zorg ervoor dat u het actieve abonnement kiest dat White List is voor Azure lente-Cloud
+1. Meld u aan bij de Azure CLI en kies uw actieve abonnement. Zorg ervoor dat u het actieve abonnement kiest dat op de witte lijst staat voor Azure Spring Cloud
 
     ```azurecli
         az login
@@ -62,24 +62,25 @@ az extension add --name spring-cloud
         az account set --subscription <Name or ID of subscription from the last step>
     ```
 
-2. Bereid een naam voor de Azure lente-Cloud service voor.  De naam moet tussen 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreek streepjes bevatten.  Het eerste teken van de service naam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
+2. Bereid een naam voor voor uw Azure Spring Cloud-service.  De naam moet tussen de 4 en 32 tekens lang zijn en kan alleen kleine letters, cijfers en koppeltekens bevatten.  Het eerste teken van de servicenaam moet een letter zijn en het laatste teken moet een letter of een getal zijn.
 
-3. Maak een resource groep die uw Azure lente-Cloud service bevat.
+3. Maak een resourcegroep met uw Azure Spring Cloud-service.
 
     ```azurecli
         az group create --location eastus --name <resource group name>
     ```
-    Meer informatie over [Azure-resourcegroepen](../azure-resource-manager/management/overview.md).
 
-4. Open een Azure CLI-venster en voer de volgende opdrachten uit om een exemplaar van de Azure lente-Cloud in te richten.
+    Meer informatie over [Azure Resource Groups](../azure-resource-manager/management/overview.md).
+
+4. Open een Azure CLI-venster en voer de volgende opdrachten uit om een exemplaar van Azure Spring Cloud in te richten.
 
     ```azurecli
         az spring-cloud create -n <service instance name> -g <resource group name>
     ```
 
-    De implementatie van het service-exemplaar duurt ongeveer vijf minuten.
+    Het implementeren van de service-instantie duurt ongeveer vijf minuten.
 
-5. Stel de standaard naam van de resource groep en de naam van het cluster in met behulp van de volgende opdrachten:
+5. Stel de naam en clusternaam van uw standaardbrongroep in met de volgende opdrachten:
 
     ```azurecli
         az configure --defaults group=<resource group name>
@@ -87,40 +88,40 @@ az extension add --name spring-cloud
     ```
 
 > [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=provision)
+> [Ik liep in een probleem](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=provision)
 
-## <a name="setup-your-configuration-server"></a>De configuratie server instellen
+## <a name="setup-your-configuration-server"></a>Uw configuratieserver instellen
 
-Werk uw config-server bij met de locatie van de Git-opslag plaats voor het project:
+Werk uw config-server bij met de locatie van de git repository voor ons project:
 
 ```azurecli
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
 
 > [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=config-server)
+> [Ik liep in een probleem](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=config-server)
 
-## <a name="build-the-microservices-applications-locally"></a>De micro Services-toepassingen lokaal bouwen
+## <a name="build-the-microservices-applications-locally"></a>Bouw de microservices-toepassingen lokaal
 
-1. Maak een nieuwe map en kloon de opslag plaats van de voor beeld-app naar uw Azure Cloud-account.  
+1. Maak een nieuwe map en kloon de voorbeeld-app-opslagplaats naar uw Azure Cloud-account.  
 
-    ```azurecli
+    ```console
         mkdir source-code
         git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-2. Wijzig de map en bouw het project.
+2. Wijzig de directory en bouw het project.
 
-    ```azurecli
+    ```console
         cd piggymetrics
         mvn clean package -D skipTests
     ```
 
-Het compileren van het project duurt ongeveer vijf minuten.  Als u klaar bent, moet u afzonderlijke JAR-bestanden voor elke service in hun respectieve mappen hebben.
+Het samenstellen van het project duurt ongeveer 5 minuten.  Eenmaal voltooid, moet u afzonderlijke JAR-bestanden voor elke service in hun respectievelijke mappen.
 
-## <a name="create-the-microservices"></a>De micro Services maken
+## <a name="create-the-microservices"></a>De microservices maken
 
-Maak lente-Cloud micro Services met behulp van de JAR-bestanden die zijn gemaakt in de vorige stap. U maakt drie micro Services: **Gateway**, **auth-service**en **account service**.
+Maak Spring Cloud-microservices met behulp van de JAR-bestanden die in de vorige stap zijn gebouwd. U maakt drie microservices: **gateway,** **auth-service**en **accountservice.**
 
 ```azurecli
 az spring-cloud app create --name gateway
@@ -128,9 +129,9 @@ az spring-cloud app create --name auth-service
 az spring-cloud app create --name account-service
 ```
 
-## <a name="deploy-applications-and-set-environment-variables"></a>Toepassingen implementeren en omgevings variabelen instellen
+## <a name="deploy-applications-and-set-environment-variables"></a>Toepassingen implementeren en omgevingsvariabelen instellen
 
-We moeten onze toepassingen echt implementeren in Azure. Gebruik de volgende opdrachten om alle drie de toepassingen te implementeren:
+We moeten onze toepassingen daadwerkelijk implementeren in Azure. Gebruik de volgende opdrachten om alle drie de toepassingen te implementeren:
 
 ```azurecli
 az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
@@ -139,47 +140,52 @@ az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth
 ```
 
 > [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=deploy)
+> [Ik liep in een probleem](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=deploy)
 
-## <a name="assign-public-endpoint-to-gateway"></a>Openbaar eind punt toewijzen aan gateway
+## <a name="assign-public-endpoint-to-gateway"></a>Openbaar eindpunt toewijzen aan gateway
 
-We hebben een manier nodig om toegang te krijgen tot de toepassing via een webbrowser. Voor onze gateway toepassing is een openbaar gericht eind punt vereist.
+We hebben een manier nodig om toegang te krijgen tot de applicatie via een webbrowser. Onze gateway-toepassing heeft een openbaar eindpunt nodig.
 
-1. Wijs het eind punt toe met de volgende opdracht:
+1. Wijs het eindpunt toe met de volgende opdracht:
 
 ```azurecli
 az spring-cloud app update -n gateway --is-public true
 ```
-2. Voer een query uit op de **Gateway** toepassing voor het open bare IP-adres, zodat u kunt controleren of de toepassing wordt uitgevoerd:
+
+2. Vraag de **gatewaytoepassing** op voor het openbare IP-adres, zodat u controleren of de toepassing wordt uitgevoerd:
 
 Linux:
+
 ```azurecli
 az spring-cloud app show --name gateway | grep url
 ```
+
 Windows:
+
 ```azurecli
 az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
 ```
-3. Ga naar de URL die door de vorige opdracht is gegeven om de PiggyMetrics-toepassing uit te voeren.
-    Scherm afbeelding van PiggyMetrics met](media/spring-cloud-quickstart-launch-app-cli/launch-app.png) ![
 
-U kunt ook door de Azure Portal bladeren om de URL te vinden. 
-1. Ga naar de service
-2. **Apps** selecteren
-3. **Gateway** selecteren
+3. Navigeer naar de URL die door de vorige opdracht wordt verstrekt om de toepassing PiggyMetrics uit te voeren.
+    ![Schermafbeelding van PiggyMetrics die wordt uitgevoerd](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
-    ![Scherm opname van PiggyMetrics die wordt uitgevoerd](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
+U ook door de Azure-portal navigeren om de URL te vinden. 
+1. Navigeren naar de service
+2. **Apps selecteren**
+3. Gateway **selecteren**
+
+    ![Schermafbeelding van PiggyMetrics die wordt uitgevoerd](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
     
-4. Zoek de URL op de pagina overzicht van de **gateway** ![scherm afbeelding van PiggyMetrics met](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+4. De URL zoeken **gateway Overview** op ![de pagina Overzicht van de gateway Schermafbeelding van PiggyMetrics](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
-> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)
+> [Ik liep in een probleem](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een lente-Cloud toepassing geïmplementeerd vanuit de Azure CLI.  Ga verder met de zelf studie over het voorbereiden van uw app voor implementatie voor meer informatie over Azure veer Cloud.
+In deze quickstart hebt u een Spring Cloud-toepassing van de Azure CLI geïmplementeerd.  Ga verder met de zelfstudie over het voorbereiden van uw app op implementatie voor meer informatie over Azure Spring Cloud.
 
 > [!div class="nextstepaction"]
-> [De Azure lente-Cloud toepassing voorbereiden voor implementatie](spring-cloud-tutorial-prepare-app-deployment.md)
+> [Uw Azure Spring Cloud-toepassing voorbereiden op implementatie](spring-cloud-tutorial-prepare-app-deployment.md)
 
-Meer voor beelden zijn beschikbaar op GitHub: [Azure lente-Cloud voorbeelden](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).
+Meer voorbeelden zijn beschikbaar op GitHub: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

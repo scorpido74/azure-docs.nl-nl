@@ -1,26 +1,26 @@
 ---
-title: Singleton voor Durable Functions-Azure
-description: Het gebruik van Singleton in de Durable Functions extensie voor Azure Functions.
+title: Singletons voor duurzame functies - Azure
+description: Singletons gebruiken in de extensie Duurzame functies voor Azure-functies.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76262806"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton-Orchestrator in Durable Functions (Azure Functions)
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton-orchestrators in duurzame functies (Azure-functies)
 
-Voor achtergrond taken moet u er vaak voor zorgen dat slechts één exemplaar van een bepaalde Orchestrator tegelijk wordt uitgevoerd. U kunt dit soort Singleton gedrag in [Durable functions](durable-functions-overview.md) controleren door een specifieke exemplaar-id toe te wijzen aan een Orchestrator tijdens het maken.
+Voor achtergrondtaken moet u er vaak voor zorgen dat slechts één exemplaar van een bepaalde orchestrator tegelijk wordt uitgevoerd. U dit soort singletongedrag in [duurzame functies](durable-functions-overview.md) garanderen door een specifieke instantie-ID toe te wijs aan een orchestrator toe te staan bij het maken ervan.
 
-## <a name="singleton-example"></a>Voor beeld van Singleton
+## <a name="singleton-example"></a>Voorbeeld van Singleton
 
-In het volgende voor beeld ziet u een HTTP-trigger-functie waarmee een singleton achtergrond taak indeling wordt gemaakt. De code zorgt ervoor dat er slechts één exemplaar bestaat voor een opgegeven exemplaar-ID.
+In het volgende voorbeeld wordt een HTTP-triggerfunctie weergegeven die een singleton-taakorkestratie op de achtergrond maakt. De code zorgt ervoor dat er slechts één instantie bestaat voor een opgegeven instantie-id.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -52,9 +52,9 @@ public static async Task<HttpResponseMessage> RunSingle(
 ```
 
 > [!NOTE]
-> De vorige C# code is voor Durable functions 2. x. Voor Durable Functions 1. x moet u `OrchestrationClient` kenmerk gebruiken in plaats van het kenmerk `DurableClient`, en moet u het `DurableOrchestrationClient` parameter type gebruiken in plaats van `IDurableOrchestrationClient`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> De vorige C#-code is voor duurzame functies 2.x. Voor duurzame functies 1.x `OrchestrationClient` moet u `DurableClient` attribuut gebruiken in plaats `DurableOrchestrationClient` van het `IDurableOrchestrationClient`kenmerk en moet u het parametertype gebruiken in plaats van . Zie het artikel [Duurzame functies voor](durable-functions-versions.md) meer informatie over de verschillen tussen versies.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 **function.json**
 
@@ -114,14 +114,14 @@ module.exports = async function(context, req) {
 
 ---
 
-Exemplaar-Id's zijn standaard wille keurig gegenereerde GUID'S. In het vorige voor beeld wordt de exemplaar-ID echter door gegeven in route gegevens van de URL. De code roept `GetStatusAsync`(C#) of `getStatus` (Java script) aan om te controleren of een exemplaar met de opgegeven id al wordt uitgevoerd. Als een dergelijk exemplaar niet wordt uitgevoerd, wordt er een nieuw exemplaar gemaakt met die ID.
+Standaard zijn instantie-id's willekeurig gegenereerde GUIDs. In het vorige voorbeeld wordt de instantie-id echter doorgegeven in routegegevens van de URL. De codeaanroepen `GetStatusAsync`(C#) of `getStatus` (JavaScript) om te controleren of een instantie met de opgegeven id al wordt uitgevoerd. Als een dergelijke instantie niet wordt uitgevoerd, wordt een nieuwe instantie gemaakt met die ID.
 
 > [!NOTE]
-> Dit voor beeld bevat een mogelijke race voorwaarde. Als twee instanties van **HttpStartSingle** gelijktijdig worden uitgevoerd, wordt door beide functie aanroepen geslaagd, maar er wordt slechts één Orchestration-exemplaar gestart. Afhankelijk van uw vereisten kan dit ongewenste neven effecten hebben. Daarom is het belang rijk om ervoor te zorgen dat twee aanvragen deze trigger gelijktijdig kunnen uitvoeren.
+> Er is een potentiële race conditie in dit monster. Als twee exemplaren van **HttpStartSingle** gelijktijdig worden uitgevoerd, worden beide functieoproepen gemeld, maar wordt er slechts één orchestration-instantie daadwerkelijk gestart. Afhankelijk van uw eisen, Dit kan ongewenste bijwerkingen hebben. Daarom is het belangrijk om ervoor te zorgen dat geen twee aanvragen deze triggerfunctie gelijktijdig kunnen uitvoeren.
 
-De implementatie details van de Orchestrator-functie zijn niet werkelijk van belang. Dit kan een normale Orchestrator-functie zijn die wordt gestart en voltooid, of kan een van de functies zijn die permanent worden uitgevoerd (dat wil zeggen, een [eeuwige](durable-functions-eternal-orchestrations.md)-indeling). Het belang rijk punt is dat er maar één instantie tegelijk wordt uitgevoerd.
+De implementatiedetails van de orchestrator functie doen er eigenlijk niet toe. Het kan een gewone orchestrator functie die begint en voltooit, of het kan een die voor altijd loopt (dat wil zeggen, een [Eeuwige Orchestration](durable-functions-eternal-orchestrations.md)). Het belangrijkste punt is dat er slechts één instantie tegelijk wordt uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de systeem eigen HTTP-functies van Orchestrations](durable-functions-http-features.md)
+> [Meer informatie over de native HTTP-functies van orkestraties](durable-functions-http-features.md)

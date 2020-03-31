@@ -1,23 +1,23 @@
 ---
-title: Aanbevelingen voor prestaties-Azure Database for PostgreSQL-één server
-description: In dit artikel wordt de functie aanbevolen prestatie aanbeveling in Azure Database for PostgreSQL-één server.
+title: Prestatieaanbevelingen - Azure Database voor PostgreSQL - Single Server
+description: In dit artikel wordt de functie Prestatieaanbeveling beschreven in Azure Database voor PostgreSQL - Single Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: a30af0c8bef47a37fe3439e885d3895a2c826225
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768466"
 ---
-# <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Aanbevelingen voor prestaties in Azure Database for PostgreSQL-één server
+# <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Prestatieaanbevelingen in Azure Database voor PostgreSQL - Single Server
 
-**Van toepassing op:** Azure Database for PostgreSQL-één server versie 9,6, 10, 11
+**Geldt voor:** Azure Database voor PostgreSQL - Single Server-versies 9.6, 10, 11
 
-Met de functie voor prestatie verbeteringen worden uw data bases geanalyseerd om aangepaste suggesties te maken voor betere prestaties. Voor het produceren van de aanbevelingen kijken de analyse naar verschillende database kenmerken, waaronder schema. Schakel het [query archief](concepts-query-store.md) op de server in om de functie aanbevelingen voor prestaties volledig te benutten. Nadat u een aanbevolen prestatie aanbeveling hebt geïmplementeerd, moet u de prestaties testen om de impact van deze wijzigingen te evalueren. 
+De functie Prestatieaanbevelingen analyseert uw databases om aangepaste suggesties te maken voor betere prestaties. Om de aanbevelingen te produceren, wordt in de analyse gekeken naar verschillende databasekenmerken, waaronder schema. Stel [Query Store](concepts-query-store.md) op uw server in om de functie Prestatieaanbevelingen volledig te gebruiken. Nadat u een prestatieaanbeveling hebt geïmplementeerd, moet u de prestaties testen om de impact van deze wijzigingen te evalueren. 
 
 ## <a name="permissions"></a>Machtigingen
 De machtigingen van **Eigenaar** of **Inzender** zijn vereist voor het uitvoeren van analyses met de functie Prestatieaanbevelingen.
@@ -25,30 +25,30 @@ De machtigingen van **Eigenaar** of **Inzender** zijn vereist voor het uitvoeren
 ## <a name="performance-recommendations"></a>Aanbevelingen voor prestaties
 De functie [Prestatieaanbevelingen](concepts-performance-recommendations.md) analyseert workloads op de server om indexen te analyseren met de mogelijkheid om prestaties te verbeteren.
 
-Open **prestatie aanbevelingen** van het gedeelte **intelligente prestaties** van de menu balk op de pagina Azure portal voor uw postgresql-server.
+Open **prestatieaanbevelingen** in de sectie **Intelligente prestaties** van de menubalk op de Azure-portalpagina voor uw PostgreSQL-server.
 
 ![Landingspagina van Prestatieaanbevelingen](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 
-Selecteer **analyseren** en kies een Data Base, waarmee de analyse wordt gestart. Afhankelijk van uw werk belasting kan het enkele minuten duren voordat de analyse is voltooid. Wanneer de analyse is voltooid, verschijnt er een melding in de portal. Analyse voert een grondige controle uit van uw data base. We raden u aan om analyses uit te voeren tijdens rustige Peri Oden. 
+Selecteer **Analyseren** en een database kiezen, waarmee de analyse wordt gestart. Afhankelijk van uw werkbelasting kan het enkele minuten duren voordat de analyse is voltooid. Wanneer de analyse is voltooid, verschijnt er een melding in de portal. Analyse voert een diepgaand onderzoek van uw database. Wij raden u aan analyses uit te voeren tijdens daluren. 
 
-In het venster **aanbevelingen** wordt een lijst met aanbevelingen weer gegeven als deze zijn gevonden.
+In het venster **Aanbevelingen** wordt een lijst met aanbevelingen weergegeven als deze zijn gevonden.
 
-![Nieuwe pagina prestatie aanbevelingen](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+![Nieuwe pagina Prestatieaanbevelingen](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-Aanbevelingen worden niet automatisch toegepast. Als u de aanbeveling wilt Toep assen, kopieert u de query tekst en voert u deze uit vanaf de client van uw keuze. Vergeet niet om te testen en te controleren om de aanbeveling te evalueren. 
+Aanbevelingen worden niet automatisch toegepast. Als u de aanbeveling wilt toepassen, kopieert u de querytekst en voert u deze uit van uw client naar keuze. Vergeet niet om te testen en te controleren om de aanbeveling te evalueren. 
 
-## <a name="recommendation-types"></a>Aanbevelings typen
+## <a name="recommendation-types"></a>Aanbevelingstypen
 
-Op dit moment worden twee typen aanbevelingen ondersteund: *Create* index en *Drop Index*.
+Momenteel worden twee soorten aanbevelingen ondersteund: *Index-* en *dropindex maken*.
 
-### <a name="create-index-recommendations"></a>Aanbevelingen voor index maken
-Bij het *maken van index* aanbevelingen worden nieuwe indexen voorgesteld om de meest frequente uitvoeringen of tijdrovende query's in de werk belasting te versnellen. Voor dit aanbevelings type moet het [query archief](concepts-query-store.md) worden ingeschakeld. In query Store worden query gegevens verzameld en worden de gedetailleerde query runtime en de frequentie statistieken beschreven die de analyse gebruikt om de aanbeveling te doen.
+### <a name="create-index-recommendations"></a>Indexaanbevelingen maken
+*Indexaanbevelingen maken,* stellen nieuwe indexen voor om de meest voorkomende of tijdrovende query's in de werkbelasting te versnellen. Voor dit aanbevelingstype moet [queryarchief](concepts-query-store.md) worden ingeschakeld. Query Store verzamelt querygegevens en biedt de gedetailleerde queryruntime- en frequentiestatistieken die de analyse gebruikt om de aanbeveling te doen.
 
-### <a name="drop-index-recommendations"></a>Aanbevelingen voor drop index
-Naast het detecteren van ontbrekende indexen, Azure Database for PostgreSQL analyseert de prestaties van bestaande indexen. Als een index zelden wordt gebruikt of overbodig is, raadt het analyse programma aan dit neer te zetten.
+### <a name="drop-index-recommendations"></a>Aanbevelingen voor drop-index
+Naast het detecteren van ontbrekende indexen, analyseert Azure Database for PostgreSQL de prestaties van bestaande indexen. Als een index zelden of overbodig wordt gebruikt, raadt de analyzer aan deze te laten vallen.
 
 ## <a name="considerations"></a>Overwegingen
-* Prestatie aanbevelingen zijn niet beschikbaar voor het [lezen van replica's](concepts-read-replicas.md).
+* Prestatieaanbevelingen zijn niet beschikbaar voor [gelezen replica's.](concepts-read-replicas.md)
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [bewaking en afstemming](concepts-monitoring.md) in Azure Database for PostgreSQL.
 

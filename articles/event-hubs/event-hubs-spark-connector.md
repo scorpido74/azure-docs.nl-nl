@@ -1,6 +1,6 @@
 ---
-title: Integreren met Apache Spark - Azure Eventhubs | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u kunt integreren met Apache Spark om Structured streamen met Event Hubs in te scha kelen.
+title: Integreren met Apache Spark - Azure Event Hubs | Microsoft Documenten
+description: In dit artikel ziet u hoe u integreren met Apache Spark om gestructureerde streaming met gebeurtenishubs mogelijk te maken.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,28 +15,28 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 4c4fd74e9123e1310be297a15090433d365d24cf
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76311679"
 ---
-# <a name="integrating-apache-spark-with-azure-event-hubs"></a>Apache Spark integreren met Azure Eventhubs
+# <a name="integrating-apache-spark-with-azure-event-hubs"></a>Apache Spark integreren met Azure Event Hubs
 
-Azure Event Hubs wordt naadloos geïntegreerd met [Apache Spark](https://spark.apache.org/) gedistribueerd streamingtoepassingen bouwen inschakelen. Deze integratie ondersteunt [Spark Core](https://spark.apache.org/docs/latest/rdd-programming-guide.html), [Spark Streaming](https://spark.apache.org/docs/latest/streaming-programming-guide.html), en [Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). De Event Hubs-connector voor Apache Spark is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-spark). Deze bibliotheek is ook beschikbaar voor gebruik in Maven-projecten uit de [Maven Central Repository](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C).
+Azure Event Hubs integreert naadloos met [Apache Spark](https://spark.apache.org/) om gedistribueerde streamingtoepassingen te kunnen bouwen. Deze integratie ondersteunt [Spark Core,](https://spark.apache.org/docs/latest/rdd-programming-guide.html) [Spark Streaming](https://spark.apache.org/docs/latest/streaming-programming-guide.html)en [Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). De Event Hubs-connector voor Apache Spark is beschikbaar op [GitHub.](https://github.com/Azure/azure-event-hubs-spark) Deze bibliotheek is ook beschikbaar voor gebruik in Maven projecten van de [Maven Central Repository.](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C)
 
-Dit artikel wordt beschreven hoe u een continue toepassing in maakt [Azure Databricks](https://azure.microsoft.com/services/databricks/). Hoewel dit artikel wordt gebruikgemaakt van Azure Databricks, Spark-clusters zijn ook beschikbaar met [HDInsight](../hdinsight/spark/apache-spark-overview.md).
+In dit artikel wordt beschreven hoe u een doorlopende toepassing maakt in [Azure Databricks.](https://azure.microsoft.com/services/databricks/) Hoewel dit artikel Azure Databricks gebruikt, zijn Spark-clusters ook beschikbaar met [HDInsight.](../hdinsight/spark/apache-spark-overview.md)
 
-Het voorbeeld in dit artikel maakt gebruik van twee Scala-notebooks: één voor het streaming-gebeurtenissen vanaf een event hub en andere voor het verzenden van gebeurtenissen naar deze.
+In het voorbeeld in dit artikel worden twee Scala-notitieblokken gebruikt: een voor het streamen van gebeurtenissen vanuit een gebeurtenishub en een andere voor het terugsturen van gebeurtenissen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u niet hebt, [Maak een gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Een Event Hubs-instantie. Als u niet hebt, [maakt u er een](event-hubs-create.md).
-* Een [Azure Databricks](https://azure.microsoft.com/services/databricks/) exemplaar. Als u niet hebt, [maakt u er een](../azure-databricks/quickstart-create-databricks-workspace-portal.md).
-* [Maken van een bibliotheek met behulp van maven-coördinaten](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`.
+* Een Azure-abonnement. Als je nog geen account hebt, [maak dan een gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)aan.
+* Een instantie Gebeurtenishubs. Als u er geen hebt, [maakt u er een.](event-hubs-create.md)
+* Een [azure databricks-exemplaar.](https://azure.microsoft.com/services/databricks/) Als u er geen hebt, [maakt u er een.](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
+* [Maak een bibliotheek met mavencoördinaten:](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package) `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`.
 
-Gebeurtenissen van de Stream van uw event hub met behulp van de volgende code:
+Gebeurtenissen streamen vanuit uw gebeurtenishub met de volgende code:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -62,7 +62,7 @@ eventhubs.writeStream
   .start()
   .awaitTermination()
 ```
-De volgende code verzendt gebeurtenissen naar uw event hub met de batch-API's van Spark. U kunt ook een streaming-query voor het verzenden van gebeurtenissen naar de event hub schrijven:
+De volgende code stuurt gebeurtenissen naar uw gebeurtenishub met de Spark-batch-API's. U ook een streamingquery schrijven om gebeurtenissen naar de gebeurtenishub te verzenden:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -88,7 +88,7 @@ df.write
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hoe u weet voor het instellen van een schaalbare en fouttolerante stream met behulp van de Event Hubs-Connector voor Apache Spark. Meer informatie over het gebruik van Event Hubs met Structured Streaming en Spark Streaming door deze koppelingen volgen:
+Nu weet u hoe u een schaalbare, fouttolerante stream instellen met behulp van de Event Hubs Connector voor Apache Spark. Meer informatie over het gebruik van gebeurtenishubs met gestructureerde streaming en Spark-streaming door deze links te volgen:
 
-* [Structured Streaming + Azure Event Hubs-Integratiehandleiding](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
-* [Spark-Streaming + Event Hubs-Integratiehandleiding](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)
+* [Handleiding voor gestructureerde streaming + Azure Event Hubs-integratie](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
+* [Spark Streaming + Integratiegids voor gebeurtenishubs](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)

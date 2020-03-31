@@ -10,10 +10,10 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: c850d2b01e098a10aacf383f0ed4340cb9e64e10
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "62129764"
 ---
 # <a name="introduction-to-table-storage-in-azure"></a>Inleiding tot Table-opslag in Azure
@@ -32,8 +32,8 @@ U kunt Table Storage gebruiken voor de opslag van flexibele gegevenssets, zoals 
 
 * [Aan de slag met Azure Table Storage in .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 
-* Bekijk de naslagdocumentatie over de Tabelservice voor meer informatie over beschikbare API's:
+* Bekijk de naslagdocumentatie over de Table Service voor meer informatie over beschikbare API's:
 
     * [Naslaginformatie over de Storage-clientbibliotheek voor .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [Naslaginformatie over REST API](https://msdn.microsoft.com/library/azure/dd179355)
+    * [VERWIJZING NAAR REST-API](https://msdn.microsoft.com/library/azure/dd179355)
