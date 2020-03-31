@@ -1,34 +1,34 @@
 ---
-title: Azure Database for MySQL-video 's
-description: Deze pagina geeft een lijst van de video-inhoud relevant zijn voor het leren werken met Azure Database voor MySQL, van Microsoft beheerde MySQL in Azure-aanbieding.
+title: Azure-database voor MySQL-video's
+description: Op deze pagina vindt u video-inhoud die relevant is voor het leren van Azure Database voor MySQL, het beheerde MySQL-aanbod van Microsoft in Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: c18604a9f4b95f4b586efaf3201dd0a679d8d316
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60342607"
 ---
-# <a name="azure-database-for-mysql-videos"></a>Azure Database voor MySQL-video 's
+# <a name="azure-database-for-mysql-videos"></a>Azure-database voor MySQL-video's
 
-[Overzicht: Azure Database for PostgreSQL en MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
+[Overzicht: Azure Database voor PostgreSQL en MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-Azure Database for PostgreSQL en Azure Database for MySQL samenbrengen community edition database-engines en mogelijkheden van een volledig beheerde service, zodat u zich op uw apps in plaats van dat richten kunt voor het beheren van een database. Stem af op een overzicht van de voordelen van het gebruik van de service, en sommige van de mogelijkheden in actie zien.
+Azure Database voor PostgreSQL en Azure Database for MySQL brengen community edition-databaseengines en -mogelijkheden van een volledig beheerde service samen, zodat u zich concentreren op uw apps in plaats van een database te moeten beheren. Stem af om een snel overzicht te krijgen van de voordelen van het gebruik van de service en bekijk enkele van de mogelijkheden in actie.
 
-[Gedetailleerde informatie over de mogelijkheden van beheerde services voor MySQL en PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T148)
+[Diepe duik op managed service mogelijkheden voor MySQL en PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T148)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T148/player]
 
-Azure Database for PostgreSQL en Azure Database for MySQL samenbrengen community edition database-engines en de mogelijkheden van een volledig beheerde service. Kijk mee aan een gedetailleerde informatie over de werking van deze services: hoe wij zorg voor hoge beschikbaarheid en snel schalen (in seconden), zodat u kunt voldoen aan de behoeften van uw klanten. Ook leert u over een aantal van de onderliggende investeringen in de beveiliging en beschikbaarheid van over de hele wereld.
+Azure Database voor PostgreSQL en Azure Database for MySQL brengen community edition-databaseengines en de mogelijkheden van een volledig beheerde service samen. Stem af om een diepe duik te nemen in hoe deze services werken: hoe we zorgen voor een hoge beschikbaarheid en snelle schaling (binnen enkele seconden), zodat u voldoen aan de behoeften van uw klanten. U leert ook over enkele van de onderliggende investeringen in beveiliging en wereldwijde beschikbaarheid.
 
-[Aan de slag met de nieuwe Azure-Database voor MySQL-service](https://channel9.msdn.com/events/Build/2017/B8045)
+[Aan de slag met de nieuwe Azure Database for MySQL-service](https://channel9.msdn.com/events/Build/2017/B8045)
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/B8045/player]
 
-In deze video van de mei 2017 Microsoft //Build conferentie, meer informatie over beheerde MySQL-aanbod van Microsoft in Azure. De video leidt u door de strategie van Microsoft voor de ondersteuning voor Open-Source databasesystemen in Azure. De video wordt beschreven wat het betekent voor u als ontwikkelaar om te ontwikkelen of toepassingen die gebruikmaken van MySQL in Azure implementeren. Deze video ziet u een overzicht van de architectuur van de service, en ziet u dat Azure Database for MySQL is geïntegreerd met andere Azure-Services, zoals Web-Apps.
+Lees in deze video van de Microsoft -build-conferentie van mei 2017 meer informatie over het beheerde MySQL-aanbod van Microsoft in Azure. De video loopt door de strategie van Microsoft voor het ondersteunen van Open-Source databasesystemen in Azure. De video bespreekt wat het voor u als ontwikkelaar betekent om toepassingen te ontwikkelen of te implementeren die MySQL in Azure gebruiken. Deze video toont een overzicht van de architectuur van de service en toont aan dat Azure Database for MySQL is geïntegreerd met andere Azure-services, zoals Web Apps.
