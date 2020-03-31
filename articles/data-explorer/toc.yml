@@ -15,6 +15,8 @@
       href: web-query-data.md
 - name: Zelfstudies
   items:
+    - name: Query's schrijven
+      href: write-queries.md
     - name: E2E programmatische blob-opname
       items:
         - name: 'C#'
@@ -32,14 +34,22 @@
         - name: Overzicht van gegevensopname
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+        - name: Eigenschappen van gegevensopname
+          href: ingestion-properties.md
+        - name: Indelingen voor gegevensopname
+          href: ingestion-supported-formats.md
     - name: Kusto-querytaal
       items:
         - name: Snelzoekgids
           href: kql-quick-reference.md
     - name: Overzicht van gegevensvisualisatie
       href: viz-overview.md
-    - name: Beveiligingsoverzicht
-      href: security.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsoverzicht
+          href: security.md
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
 - name: Instructiegidsen
   items:
     - name: Cluster en database maken
@@ -60,6 +70,8 @@
           href: ingest-data-one-click.md
         - name: Stroomopname
           href: ingest-data-streaming.md
+        - name: LightIngest gebruiken
+          href: lightingest.md
         - name: Event Hub
           items:
             - name: Azure Portal
@@ -106,8 +118,6 @@
           href: ingest-json-formats.md
     - name: Querygegevens
       items:
-        - name: Query's schrijven
-          href: write-queries.md
         - name: Query's uitvoeren op gegevens in Azure Data Lake
           href: data-lake-query-data.md
         - name: Query's uitvoeren op gegevens in Azure Monitor
@@ -158,12 +168,22 @@
           href: k2bridge.md
     - name: Beveiligen
       items:
+        - name: Netwerkisolatie (VNet)
+          items:
+            - name: Een cluster maken in het VNet - Portal
+              href: vnet-create-cluster-portal.md
+            - name: Uw cluster implementeren in het VNet
+              href: vnet-deployment.md
+            - name: 'Problemen met het maken van VNet-clusters, de connectiviteit en bewerkingen oplossen'
+              href: vnet-deploy-troubleshoot.md
         - name: Clusterbeveiliging beheren
           href: manage-cluster-security.md
         - name: Beheerde identiteiten configureren
           href: managed-identities.md
         - name: Door de klant beheerde sleutels configureren
           items:
+            - name: Portal
+              href: customer-managed-keys-portal.md
             - name: 'C#'
               href: customer-managed-keys-csharp.md
             - name: Azure Resource Manager-sjabloon
@@ -214,10 +234,6 @@
               href: delete-data.md
             - name: Dubbele gegevens aanpakken
               href: dealing-with-duplicates.md
-    - name: Implementeren
-      items:
-        - name: Uw cluster implementeren in uw virtuele netwerk
-          href: vnet-deployment.md
     - name: Controleren
       items:
         - name: Diagnostische logboeken gebruiken om opname te bewaken
@@ -236,6 +252,12 @@
               href: data-factory-template.md
             - name: Besturingsopdrachten uitvoeren met Azure Data Factory
               href: data-factory-command-activity.md
+        - name: Microsoft Flow-connector
+          items:
+            - name: Microsoft Flow-connector
+              href: flow.md
+            - name: Gebruiksvoorbeelden van Microsoft Flow-connector
+              href: flow-usage.md
         - name: Apache Spark-connector
           href: spark-connector.md
         - name: Verbinding vanaf Databricks maken met behulp van Python

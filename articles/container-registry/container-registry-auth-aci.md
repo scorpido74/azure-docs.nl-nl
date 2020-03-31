@@ -1,34 +1,34 @@
 ---
-title: Toegang vanaf Container Instances
-description: Meer informatie over het verlenen van toegang tot installatie kopieën in uw persoonlijke container register van Azure Container Instances met behulp van een Azure Active Directory Service-Principal.
+title: Toegang vanuit containerinstanties
+description: Meer informatie over het bieden van toegang tot afbeeldingen in uw privécontainerregister vanuit Azure Container Instances met behulp van een Azure Active Directory-serviceprincipal.
 ms.topic: article
 ms.date: 04/23/2018
 ms.openlocfilehash: b1bc8119c495dea99c6bdc4923db198d041a1e9e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456520"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Verifiëren met Azure Container Registry vanuit Azure Container Instances
 
-U kunt een service-principal voor Azure Active Directory (Azure AD) gebruiken om toegang te verlenen tot uw persoonlijke container registers in Azure Container Registry.
+U een Azure Active Directory-serviceprincipal (Azure Ad) gebruiken om toegang te bieden tot uw privécontainerregisters in Azure Container Registry.
 
-In dit artikel leert u hoe u een Azure AD-Service-Principal maakt en configureert met *pull* -machtigingen voor uw REGI ster. Vervolgens start u een container in Azure Container Instances (ACI) die de installatie kopie ophaalt uit uw persoonlijke REGI ster, met behulp van de service-principal voor authenticatie.
+In dit artikel leert u een Azure AD-serviceprincipal maken en configureren met *pull-machtigingen* voor uw register. Vervolgens start u een container in Azure Container Instances (ACI) die de afbeelding uit uw privéregister haalt, met behulp van de serviceprincipal voor verificatie.
 
-## <a name="when-to-use-a-service-principal"></a>Wanneer moet u een Service-Principal gebruiken?
+## <a name="when-to-use-a-service-principal"></a>Wanneer een serviceprincipal gebruiken
 
-U moet een Service-Principal gebruiken voor verificatie van ACI in **headless scenario's**, zoals in toepassingen of services die container instanties maken in een geautomatiseerde of op een andere manier zonder toezicht.
+U moet een serviceprincipal gebruiken voor verificatie van ACI in **headless-scenario's,** zoals in toepassingen of services die containerexemplaren op een geautomatiseerde of anderszins onbeheerde manier maken.
 
-Als u bijvoorbeeld een geautomatiseerd script hebt dat in de nacht wordt uitgevoerd en een [container exemplaar op basis van taken](../container-instances/container-instances-restart-policy.md) maakt om bepaalde gegevens te verwerken, kan de Service-Principal gebruikmaken van alleen pull-machtigingen voor verificatie bij het REGI ster. U kunt vervolgens de referenties van de Service-Principal draaien of de toegang intrekken zonder dat dit van invloed is op andere services en toepassingen.
+Als u bijvoorbeeld een geautomatiseerd script hebt dat 's nachts wordt uitgevoerd en een [op taak gebaseerde containerinstantie](../container-instances/container-instances-restart-policy.md) maakt om bepaalde gegevens te verwerken, kan het een serviceprincipal met alleen-in-trekmachtigingen gebruiken om te verifiëren aan het register. U vervolgens de referenties van de serviceprincipal roteren of de toegang volledig intrekken zonder dat dit gevolgen heeft voor andere services en toepassingen.
 
-Service-principals moeten ook worden gebruikt wanneer de [gebruiker](container-registry-authentication.md#admin-account) van het register beheer is uitgeschakeld.
+Serviceprincipals moeten ook worden gebruikt wanneer de [registerbeheerder gebruiker](container-registry-authentication.md#admin-account) is uitgeschakeld.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
-## <a name="authenticate-using-the-service-principal"></a>Verificatie met behulp van de Service-Principal
+## <a name="authenticate-using-the-service-principal"></a>Verifiëren met de serviceprincipal
 
-Als u een container in Azure Container Instances wilt starten met behulp van een Service-Principal, geeft u de ID op voor `--registry-username`en het bijbehorende wacht woord voor `--registry-password`.
+Als u een container wilt starten in Azure Container `--registry-username`Instances met `--registry-password`behulp van een serviceprincipal, geeft u de id voor en het wachtwoord voor .
 
 ```azurecli-interactive
 az container create \
@@ -42,17 +42,17 @@ az container create \
 
 ## <a name="sample-scripts"></a>Voorbeeldscripts
 
-U kunt de voor gaande voorbeeld scripts voor Azure CLI vinden op GitHub, evenals versies voor Azure PowerShell:
+U vindt de voorgaande voorbeeldscripts voor Azure CLI op GitHub, evenals versies voor Azure PowerShell:
 
-* [Azure CLI][acr-scripts-cli]
+* [Azure-CLI][acr-scripts-cli]
 * [Azure PowerShell][acr-scripts-psh]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De volgende artikelen bevatten aanvullende informatie over het werken met Service-principals en ACR:
+De volgende artikelen bevatten aanvullende gegevens over het werken met serviceprincipals en ACR:
 
-* [Verificatie Azure Container Registry met Service-principals](container-registry-auth-service-principal.md)
-* [Verifiëren met Azure Container Registry van de Azure Kubernetes-service (AKS)](../aks/cluster-container-registry-integration.md)
+* [Azure Container Registry-verificatie met serviceprincipals](container-registry-auth-service-principal.md)
+* [Verifiëren met Azure Container Registry van Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

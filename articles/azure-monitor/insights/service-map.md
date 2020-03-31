@@ -1,499 +1,499 @@
 ---
-title: Servicetoewijzing oplossing gebruiken in azure | Microsoft Docs
-description: Serviceoverzicht is een oplossing in Azure die automatisch toepassingsonderdelen op Windows- en Linux-systemen detecteert en de communicatie tussen services toewijst. Dit artikel bevat informatie voor het implementeren van Serviceoverzicht in uw omgeving en het gebruik hiervan in een verscheidenheid aan scenario's.
+title: Servicemap-oplossing gebruiken in Azure | Microsoft Documenten
+description: Serviceoverzicht is een oplossing in Azure die automatisch toepassingsonderdelen op Windows- en Linux-systemen detecteert en de communicatie tussen services toewijst. In dit artikel vindt u informatie over het implementeren van Service Map in uw omgeving en het gebruik ervan in verschillende scenario's.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275241"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480909"
 ---
-# <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing-oplossing gebruiken in azure
+# <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing gebruiken in Azure
 
 Serviceoverzicht ontdekt automatisch toepassingsonderdelen op Windows- en Linux-systemen en wijst de communicatie tussen services toe. Met Servicetoewijzing kunt u uw servers weergeven op de manier zoals u ze ziet: als onderling verbonden systemen die essentiële services leveren. Servicetoewijzing toont verbindingen tussen servers, processen, latentie van binnenkomende en uitgaande verbindingen en poorten voor elke via TCP verbonden architectuur. Na installatie van een agent is er geen verdere configuratie vereist.
 
-In dit artikel worden de details van het voorbereiden en gebruiken van Servicetoewijzing beschreven. Zie [het overzicht van Azure monitor voor VM's inschakelen](vminsights-enable-overview.md#prerequisites)voor meer informatie over het configureren van de vereisten voor deze oplossing. Als u wilt samenvatten, hebt u het volgende nodig:
+In dit artikel worden de details van onboarding en het gebruik van Service Map beschreven. Zie Overzicht van [azure monitor voor VM's inschakelen](vminsights-enable-overview.md#prerequisites)voor informatie over het configureren van de vereisten voor deze oplossing. Om samen te vatten, heb je het volgende nodig:
 
-* Een Log Analytics-werk ruimte om deze oplossing in te scha kelen.
+* Een Log Analytics-werkruimte om deze oplossing in te schakelen.
 
-* De Log Analytics-agent die is geïnstalleerd op de Windows-computer of Linux-server die is geconfigureerd voor rapportage van dezelfde werk ruimte als waarmee u de oplossing hebt ingeschakeld.
+* De loganalytics-agent die is geïnstalleerd op de Windows-computer of Linux-server die is geconfigureerd om dezelfde werkruimte te rapporteren waarmee u de oplossing hebt ingeschakeld.
 
-* De afhankelijkheids agent die is geïnstalleerd op de Windows-computer of de Linux-server.
+* De afhankelijkheidsagent die is geïnstalleerd op de Windows-computer of Linux-server.
 
 >[!NOTE]
->Als u Servicetoewijzing al hebt geïmplementeerd, kunt u nu ook uw Maps in Azure Monitor voor VM's weer geven, inclusief aanvullende functies voor het controleren van de status en prestaties van de virtuele machine. Zie [Azure monitor voor VM's-overzicht](../../azure-monitor/insights/vminsights-overview.md)voor meer informatie. Zie de volgende [Veelgestelde vragen](../faq.md#azure-monitor-for-vms-preview)voor meer informatie over de verschillen tussen de functie servicetoewijzing solution en Azure monitor voor VM's map.
+>Als u Service Map al hebt geïmplementeerd, u nu ook uw kaarten bekijken in Azure Monitor voor VM's, die extra functies bevatten om de VM-status en -prestaties te controleren. Zie overzicht [van Azure Monitor voor VM's voor](../../azure-monitor/insights/vminsights-overview.md)meer informatie. Zie de volgende [veelgestelde vragen voor](../faq.md#azure-monitor-for-vms)meer informatie over de verschillen tussen de functie Servicemap en Azure Monitor for VMs Map.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 
-## <a name="enable-service-map"></a>Servicetoewijzing inschakelen
+## <a name="enable-service-map"></a>Servicekaart inschakelen
 
-1. Schakel de Servicetoewijzing-oplossing in via de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) of via het proces dat wordt beschreven in [bewakings oplossingen toevoegen van de Oplossingengalerie](solutions.md).
-1. [Installeer de afhankelijkheids agent in Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) of [Installeer de afhankelijkheids agent op Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) op elke computer waar u gegevens wilt ophalen. De agent voor afhankelijkheden kan verbindingen met computers in de directe nabijheid controleren, zodat er wellicht geen agent op elke computer nodig is.
+1. Schakel de Service Map-oplossing in vanuit de [Azure-marktplaats](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) of met behulp van het proces dat is beschreven in [Bewakingsoplossingen toevoegen vanuit de Galerie Oplossingen](solutions.md).
+1. [Installeer de afhankelijkheidsagent op Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) of [Installeer de afhankelijkheidsagent op Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) op elke computer waar u gegevens wilt opvragen. De agent voor afhankelijkheden kan verbindingen met computers in de directe nabijheid controleren, zodat er wellicht geen agent op elke computer nodig is.
 
-U opent Servicetoewijzing in de Azure Portal vanuit uw Log Analytics-werk ruimte en selecteert de optie **oplossingen** in het linkerdeel venster.<br><br> ![optie oplossingen selecteren in de werk ruimte](./media/service-map/select-solution-from-workspace.png).<br> Selecteer in de lijst met oplossingen **ServiceMap (werkruimtenaam)** en klik op de overzichts pagina van de servicetoewijzing oplossing op de tegel servicetoewijzing samen vatting.<br><br> ![Servicetoewijzing samenvattings tegel](./media/service-map/service-map-summary-tile.png).
+U opent Servicemap in de Azure-portal vanuit uw Log Analytics-werkruimte en selecteert de **optieoplossingen** in het linkerdeelvenster.<br><br> ![Selecteer de optie](./media/service-map/select-solution-from-workspace.png)Oplossingen in werkruimte .<br> Selecteer **servicemap(workspaceName)** en klik in de overzichtspagina Servicemap oplossing in de overzichtstegel Servicemap.<br><br> ![Overzichtstegel](./media/service-map/service-map-summary-tile.png)servicekaart .
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Use cases: Zorg dat uw IT-processen afhankelijk zijn van afhankelijkheids detectie
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Use cases: Maak uw IT-processen afhankelijkheidbewust
 
 ### <a name="discovery"></a>Detectie
 
-Servicetoewijzing bouwt automatisch een algemene referentie kaart van afhankelijkheden op uw servers, processen en services van derden. Hiermee worden alle TCP-afhankelijkheden gedetecteerd en toegewezen, waarbij onverwachte verbindingen worden geïdentificeerd, externe systemen van derden waarvan u afhankelijk bent en afhankelijkheden van traditionele, donkere gebieden van uw netwerk, zoals Active Directory. Servicetoewijzing detecteert mislukte netwerk verbindingen die door uw beheerde systemen worden geprobeerd, en helpt u bij het identificeren van mogelijke server onjuiste configuratie, service storing en netwerk problemen.
+Servicemap bouwt automatisch een algemene referentiekaart van afhankelijkheden voor uw servers, processen en services van derden. Het detecteert en brengt alle TCP-afhankelijkheden in kaart, identificeert verrassingsverbindingen, externe systemen waarvan u afhankelijk bent en afhankelijkheden van traditionele donkere gebieden van uw netwerk, zoals Active Directory. Servicemap detecteert mislukte netwerkverbindingen die uw beheerde systemen proberen te maken, zodat u potentiële foutconfiguratie van de server, serviceuitval en netwerkproblemen identificeren.
 
-### <a name="incident-management"></a>incidentbeheer
+### <a name="incident-management"></a>Incidentbeheer
 
-Servicetoewijzing helpt de bevinding van probleem isolatie te elimineren door te zien hoe systemen zijn verbonden en elkaar beïnvloeden. Naast het identificeren van mislukte verbindingen, helpt IT bij het identificeren van onjuist geconfigureerde load balancers, verrassende of buitensporige belasting van essentiële services, en Rogue clients, zoals ontwikkel computers die praten met productie systemen. Door gebruik te maken van geïntegreerde werk stromen met Wijzigingen bijhouden kunt u ook zien of een wijzigings gebeurtenis op een back-end-computer of-service de hoofd oorzaak van een incident verklaart.
+Service Map helpt het giswerk van probleemisolatie te elimineren door u te laten zien hoe systemen zijn verbonden en elkaar beïnvloeden. Naast het identificeren van mislukte verbindingen, helpt het bij het identificeren van verkeerd geconfigureerde load balancers, verrassende of overmatige belasting van kritieke services en malafide clients, zoals ontwikkelaarsmachines die met productiesystemen praten. Door geïntegreerde workflows te gebruiken met Change Tracking, u ook zien of een wijzigingsgebeurtenis op een back-endmachine of -service de hoofdoorzaak van een incident verklaart.
 
-### <a name="migration-assurance"></a>Migratie Assurance
+### <a name="migration-assurance"></a>Migratiezekerheid
 
-Met behulp van Servicetoewijzing kunt u Azure-migraties effectief plannen, versnellen en valideren, waardoor u er zeker van kunt zijn dat er niets achterblijft en er onverwachte storingen optreden. U kunt alle afhankelijke systemen detecteren die samen moeten worden gemigreerd, de systeem configuratie en-capaciteit beoordelen en bepalen of een actief systeem nog steeds gebruikers is of een kandidaat is voor buiten gebruik stellen in plaats van migratie. Nadat de verplaatsing is voltooid, kunt u de client belasting en-identiteit controleren om te controleren of de test systemen en klanten verbinding maken. Als uw subnet-plannings-en firewall definities problemen ondervinden, kunnen mislukte verbindingen in Servicetoewijzing Maps u verwijzen naar de systemen waarvoor een verbinding nodig is.
+Door Servicemap te gebruiken, u Azure-migraties effectief plannen, versnellen en valideren, waardoor er niets achterblijft en verrassingsonderbrekingen zich niet voordoen. U alle onderling afhankelijke systemen ontdekken die samen moeten migreren, de systeemconfiguratie en -capaciteit moeten beoordelen en bepalen of een lopend systeem nog steeds gebruikers bedient of een kandidaat is voor ontmanteling in plaats van migratie. Nadat de verhuizing is voltooid, u controleren of de taak en identiteit van de client zijn om te controleren of testsystemen en klanten verbinding maken. Als uw subnetplanning en firewalldefinities problemen hebben, wijzen mislukte verbindingen in servicekaartkaarten u naar de systemen die connectiviteit nodig hebben.
 
 ### <a name="business-continuity"></a>Bedrijfscontinuïteit
 
-Als u Azure Site Recovery gebruikt en hulp nodig hebt bij het definiëren van de herstel volgorde voor uw toepassings omgeving, kunt Servicetoewijzing automatisch laten zien hoe systemen op elkaar zijn gebaseerd om ervoor te zorgen dat uw herstel plan betrouwbaar is. Als u een kritieke server of groep kiest en de bijbehorende clients bekijkt, kunt u bepalen welke front-end-systemen moeten worden hersteld nadat de server is hersteld en beschikbaar is. Daarentegen, door te kijken naar de back-end-afhankelijkheden van kritieke servers, kunt u bepalen welke systemen moeten worden hersteld voordat de focus systemen worden hersteld.
+Als u Azure Site Recovery gebruikt en hulp nodig hebt bij het definiëren van de herstelreeks voor uw toepassingsomgeving, kan Service Map u automatisch laten zien hoe systemen op elkaar vertrouwen om ervoor te zorgen dat uw herstelplan betrouwbaar is. Door een kritieke server of groep te kiezen en de clients te bekijken, u bepalen welke front-endsystemen u moet herstellen nadat de server is hersteld en beschikbaar is. Omgekeerd, door te kijken naar de back-end afhankelijkheden van kritieke servers, u bepalen welke systemen u moet herstellen voordat uw focussystemen worden hersteld.
 
 ### <a name="patch-management"></a>Patchbeheer
 
-Servicetoewijzing verbetert uw gebruik van de update-evaluatie van het systeem door te zien welke andere teams en servers afhankelijk zijn van uw service, zodat u deze vooraf kunt waarschuwen voordat u uw systemen bijwerkt voor patches. Servicetoewijzing verbetert ook het beheer van patches door u te laten zien of uw services beschikbaar zijn en op de juiste wijze zijn verbonden nadat ze zijn bijgewerkt en opnieuw zijn opgestart.
+Service Map verbetert uw gebruik van de System Update Assessment door u te laten zien welke andere teams en servers afhankelijk zijn van uw service, zodat u ze van tevoren op de hoogte stellen voordat u uw systemen voor patching neerhaalt. Service Map verbetert ook patchbeheer door u te laten zien of uw services beschikbaar en goed zijn verbonden nadat ze zijn gepatcht en opnieuw zijn opgestart.
 
-## <a name="mapping-overview"></a>Overzicht van toewijzingen
+## <a name="mapping-overview"></a>Overzicht van toewijzing
 
-Servicetoewijzing agents verzamelen informatie over alle met TCP verbonden processen op de server waarop ze zijn geïnstalleerd en informatie over de binnenkomende en uitgaande verbindingen voor elk proces.
+Servicemap-medewerkers verzamelen informatie over alle met TCP verbonden processen op de server waar ze zijn geïnstalleerd en details over de inkomende en uitgaande verbindingen voor elk proces.
 
-Vanuit de lijst in het linkerdeel venster kunt u computers of groepen selecteren die Servicetoewijzing agents hebben om hun afhankelijkheden te visualiseren gedurende een opgegeven tijds bereik. Met machine dependency wordt de focus op een specifieke computer geactiveerd en worden alle computers weer gegeven die directe TCP-clients of servers van die computer zijn.  Met machine groep Maps worden sets van servers en hun afhankelijkheden weer gegeven.
+In de lijst in het linkerdeelvenster u machines of groepen selecteren met servicemapagents om hun afhankelijkheden over een bepaald tijdsbereik te visualiseren. Machineafhankelijkheidskaarten richten zich op een specifieke machine en tonen alle machines die directe TCP-clients of servers van die machine zijn.  Machine Group-kaarten tonen sets van servers en hun afhankelijkheden.
 
-![Overzicht van Servicetoewijzing](media/service-map/service-map-overview.png)
+![Overzicht van servicekaart](media/service-map/service-map-overview.png)
 
-Computers kunnen worden uitgebreid in de kaart om de actieve proces groepen en-processen weer te geven met actieve netwerk verbindingen tijdens het geselecteerde tijds bereik. Wanneer een externe computer met een Servicetoewijzing-agent is uitgebreid om proces details weer te geven, worden alleen de processen weer gegeven die communiceren met de focus computer. Aan de linkerkant van de processen waarmee ze verbinding maken, wordt de telling aangegeven van de front-end-computers zonder agents die verbinding maken met de focus machine. Als de focus computer verbinding maakt met een back-end-computer die geen agent heeft, wordt de back-endserver opgenomen in een server poort groep, samen met andere verbindingen met hetzelfde poort nummer.
+Machines kunnen in de kaart worden uitgebreid om de lopende procesgroepen en -processen met actieve netwerkverbindingen tijdens het geselecteerde tijdsbereik weer te geven. Wanneer een externe machine met een Service Map-agent wordt uitgebreid om procesdetails weer te geven, worden alleen die processen weergegeven die met de focusmachine communiceren. De telling van agentless front-end machines die verbinding maken met de focus machine is aangegeven aan de linkerkant van de processen waarmee ze verbinding maken. Als de focusmachine een verbinding maakt met een back-endmachine die geen agent heeft, wordt de back-endserver opgenomen in een serverpoortgroep, samen met andere verbindingen met hetzelfde poortnummer.
 
-Servicetoewijzing kaarten geven standaard de laatste 30 minuten van afhankelijkheids informatie weer. Met de besturings elementen voor tijd in de linkerbovenhoek kunt u een query uitvoeren voor een historisch tijds bereik van Maxi maal één uur om te laten zien hoe afhankelijkheden in het verleden worden weer gegeven (bijvoorbeeld tijdens een incident of voordat er een wijziging is opgetreden). Servicetoewijzing gegevens worden gedurende 30 dagen in betaalde werk ruimten opgeslagen en gedurende 7 dagen in gratis werk ruimten.
+Standaard worden in servicekaartkaarten de laatste 30 minuten aan afhankelijkheidsgegevens weergegeven. Door de tijdbesturingselementen linksboven te gebruiken, u kaarten opvragen voor historische tijdsbereiken van maximaal een uur om te laten zien hoe afhankelijkheden er in het verleden uitzagen (bijvoorbeeld tijdens een incident of voordat er een wijziging plaatsvond). Servicemapgegevens worden gedurende 30 dagen opgeslagen in betaalde werkruimten en gedurende 7 dagen in gratis werkruimten.
 
-## <a name="status-badges-and-border-coloring"></a>Status badges en rand kleur
+## <a name="status-badges-and-border-coloring"></a>Statusbadges en randkleuren
 
-Onder aan elke server in de kaart kan een lijst zijn met status badges die status informatie over de server overbrengen. De badges geven aan dat er bij een van de oplossings integraties relevante informatie voor de server is. Als u op een badge klikt, gaat u rechtstreeks naar de details van de status in het rechterdeel venster. De momenteel beschik bare status badges zijn waarschuwingen, Service Desk, wijzigingen, beveiliging en updates.
+Aan de onderkant van elke server in de kaart kan een lijst van status badges overbrengen status informatie over de server. De badges geven aan dat er een aantal relevante informatie voor de server van een van de oplossing integraties. Als u op een badge klikt, brengt u direct de details van de status in het rechterdeelvenster. De momenteel beschikbare statusbadges zijn waarschuwingen, servicedesk, wijzigingen, beveiliging en updates.
 
-Afhankelijk van de ernst van de status badges, kunnen randen van computer knooppunten rood (kritiek), geel (waarschuwing) of blauw (informatief) zijn. De kleur vertegenwoordigt de meest ernstige status van de status badges. Een grijze rand geeft aan dat een knoop punt geen status indicatoren heeft.
+Afhankelijk van de ernst van de statusbadges kunnen de randen van het machineknooppunt rood (kritiek), geel (waarschuwing) of blauw (informatief) worden gekleurd. De kleur vertegenwoordigt de meest ernstige status van een van de statusbadges. Een grijze rand geeft een knooppunt aan dat geen statusindicatoren heeft.
 
-![Status badges](media/service-map/status-badges.png)
+![Statusbadges](media/service-map/status-badges.png)
 
-## <a name="process-groups"></a>Proces groepen
+## <a name="process-groups"></a>Procesgroepen
 
-Proces groepen combi neren processen die zijn gekoppeld aan een gemeen schappelijk product of service in een proces groep.  Wanneer een machine knooppunt is uitgevouwen, worden de afzonderlijke processen samen met de proces groepen weer gegeven.  Als binnenkomende en uitgaande verbindingen met een proces binnen een proces groep zijn mislukt, wordt de verbinding als mislukt weer gegeven voor de hele proces groep.
+Procesgroepen combineren processen die zijn gekoppeld aan een gemeenschappelijk product of service in een procesgroep.  Wanneer een machineknooppunt wordt uitgebreid, worden zelfstandige processen weergegeven, samen met procesgroepen.  Als inkomende en uitgaande verbindingen met een proces binnen een procesgroep zijn mislukt, wordt de verbinding weergegeven als mislukt voor de hele procesgroep.
 
 ## <a name="machine-groups"></a>Machinegroepen
 
-Met computer groepen kunt u kaarten gecentreerd rond een set met servers weer geven, niet alleen de leden van een toepassing met meerdere lagen of een server cluster op één kaart.
+Met machinegroepen u kaarten zien die gecentreerd zijn rond een set servers, niet slechts één, zodat u alle leden van een toepassing of servercluster met meerdere lagen in één kaart zien.
 
-Gebruikers selecteren welke servers deel uitmaken van een groep en kies een naam voor de groep.  U kunt de groep vervolgens weer geven met alle processen en verbindingen, of deze weer geven met alleen de processen en verbindingen die rechtstreeks verband houden met de andere leden van de groep.
+Gebruikers selecteren welke servers bij elkaar horen in een groep en kiezen een naam voor de groep.  U er vervolgens voor kiezen om de groep met al zijn processen en verbindingen te bekijken, of deze alleen te bekijken met de processen en verbindingen die rechtstreeks betrekking hebben op de andere leden van de groep.
 
-![Computer groep](media/service-map/machine-group.png)
+![Machinegroep](media/service-map/machine-group.png)
 
-### <a name="creating-a-machine-group"></a>Een computer groep maken
+### <a name="creating-a-machine-group"></a>Een machinegroep maken
 
-Als u een groep wilt maken, selecteert u de gewenste computer of computers in de lijst computers en klikt u op **toevoegen aan groep**.
+Als u een groep wilt maken, selecteert u de gewenste machine of machines in de lijst Machines en klikt u op **Toevoegen aan groep**.
 
 ![Groep maken](media/service-map/machine-groups-create.png)
 
-Daar kunt u **nieuwe maken** kiezen en de groep een naam geven.
+Daar u **Nieuw maken** kiezen en de groep een naam geven.
 
-![Naam groep](media/service-map/machine-groups-name.png)
+![Naamgroep](media/service-map/machine-groups-name.png)
 
 >[!NOTE]
->Computer groepen zijn beperkt tot 10 servers.
+>Machinegroepen zijn beperkt tot 10 servers.
 
-### <a name="viewing-a-group"></a>Een groep weer geven
+### <a name="viewing-a-group"></a>Een groep bekijken
 
-Wanneer u een aantal groepen hebt gemaakt, kunt u deze weer geven door het tabblad groepen te kiezen.
+Zodra u een aantal groepen hebt gemaakt, u deze bekijken door het tabblad Groepen te kiezen.
 
-![Tabblad groepen](media/service-map/machine-groups-tab.png)
+![Tabblad Groepen](media/service-map/machine-groups-tab.png)
 
-Selecteer vervolgens de naam van de groep om de kaart voor die computer groep weer te geven.
-![computer groep](media/service-map/machine-group.png) de computers die deel uitmaken van de groep, worden in de kaart wit beschreven.
+Selecteer vervolgens de groepsnaam om de kaart voor die machinegroep weer te geven.
+![Machine](media/service-map/machine-group.png) groep De machines die tot de groep behoren, worden in het wit op de kaart beschreven.
 
-Als u de groep uitvouwt, worden de computers weer geven die de computer groep vormen.
+Als u de groep uitbreidt, worden de machines vermeld die deel uitmaken van de Machine Group.
 
-![Machine groep machines](media/service-map/machine-groups-machines.png)
+![Machines van machinegroep](media/service-map/machine-groups-machines.png)
 
 ### <a name="filter-by-processes"></a>Filteren op processen
 
-U kunt in de kaart weergave scha kelen tussen het weer geven van alle processen en verbindingen in de groep en alleen de relaties die rechtstreeks zijn gekoppeld aan de computer groep.  De standaard weergave is het weer geven van alle processen.  U kunt de weer gave wijzigen door te klikken op het filter pictogram boven de kaart.
+U de kaartweergave schakelen tussen het weergeven van alle processen en verbindingen in de groep en alleen de processen die rechtstreeks betrekking hebben op de machinegroep.  De standaardweergave is om alle processen weer te geven.  U de weergave wijzigen door op het filterpictogram boven de kaart te klikken.
 
-![Groep filteren](media/service-map/machine-groups-filter.png)
+![Filtergroep](media/service-map/machine-groups-filter.png)
 
-Als **alle processen** zijn geselecteerd, bevat de kaart alle processen en verbindingen op elke computer in de groep.
+Wanneer **Alle processen** zijn geselecteerd, bevat de kaart alle processen en verbindingen op elk van de machines in de groep.
 
-![Alle processen van computer groep](media/service-map/machine-groups-all.png)
+![Machine Group alle processen](media/service-map/machine-groups-all.png)
 
-Als u de weer gave wijzigt zodat alleen door een **groep verbonden processen**worden weer gegeven, wordt de kaart beperkt tot alleen de processen en verbindingen die rechtstreeks zijn verbonden met andere computers in de groep, waardoor een vereenvoudigde weer gave wordt gemaakt.
+Als u de weergave wijzigt om alleen **met groepen verbonden processen**weer te geven, wordt de kaart beperkt tot alleen die processen en verbindingen die rechtstreeks zijn verbonden met andere machines in de groep, waardoor een vereenvoudigde weergave wordt gemaakt.
 
-![Gefilterde processen van computer groep](media/service-map/machine-groups-filtered.png)
+![Gefilterde processen voor Machine Group](media/service-map/machine-groups-filtered.png)
  
-### <a name="adding-machines-to-a-group"></a>Computers toevoegen aan een groep
+### <a name="adding-machines-to-a-group"></a>Machines toevoegen aan een groep
 
-Als u computers aan een bestaande groep wilt toevoegen, schakelt u de selectie vakjes naast de gewenste computers in en klikt u vervolgens op **toevoegen aan groep**.  Kies vervolgens de groep waaraan u de machines wilt toevoegen.
+Als u machines aan een bestaande groep wilt toevoegen, schakelt u de selectievakjes in naast de gewenste machines en klikt u op **Toevoegen aan groep**.  Kies vervolgens de groep waaraan u de machines wilt toevoegen.
  
-### <a name="removing-machines-from-a-group"></a>Computers verwijderen uit een groep
+### <a name="removing-machines-from-a-group"></a>Machines uit een groep verwijderen
 
-Vouw in de lijst groepen de groeps naam uit om de computers in de computer groep weer te geven.  Klik vervolgens op het weglatings teken naast de computer die u wilt verwijderen en kies **verwijderen**.
+Vouw in de lijst met groepen de groepsnaam uit om de machines in de machinegroep weer te geven.  Klik vervolgens op het menu ellipsen naast de machine die u wilt verwijderen en kies **Verwijderen**.
 
-![Machine verwijderen uit groep](media/service-map/machine-groups-remove.png)
+![Machine uit groep verwijderen](media/service-map/machine-groups-remove.png)
 
-### <a name="removing-or-renaming-a-group"></a>Een groep verwijderen of de naam ervan wijzigen
+### <a name="removing-or-renaming-a-group"></a>Een groep verwijderen of de naam van een groep wijzigen
 
-Klik op het menu met weglatings tekens naast de groeps naam in de lijst groep.
+Klik op het menu ellipsen naast de groepsnaam in de groepslijst.
 
-![Menu computer groep](media/service-map/machine-groups-menu.png)
+![Menu Machinegroep](media/service-map/machine-groups-menu.png)
 
 
-## <a name="role-icons"></a>Rollen pictogrammen
+## <a name="role-icons"></a>Rolpictogrammen
 
-Bepaalde processen dienen specifieke rollen op computers: webservers, toepassings servers, Data Base, enzovoort. Met Servicetoewijzing worden de vakken proces en computer met functie pictogrammen gemarkeerd om in één oogopslag de rol te zien die een proces of server speelt.
+Bepaalde processen vervullen bepaalde rollen op machines: webservers, toepassingsservers, database, enzovoort. Service Map annoteert proces- en machinevakken met rolpictogrammen om in één oogopslag de rol te identificeren die een proces of server speelt.
 
-| Functiepictogram | Beschrijving |
+| Pictogram Rol | Beschrijving |
 |:--|:--|
 | ![Webserver](media/service-map/role-web-server.png) | Webserver |
-| ![App-server](media/service-map/role-application-server.png) | Toepassings server |
-| ![Database server](media/service-map/role-database.png) | Database server |
+| ![App-server](media/service-map/role-application-server.png) | Toepassingsserver |
+| ![Databaseserver](media/service-map/role-database.png) | Databaseserver |
 | ![LDAP-server](media/service-map/role-ldap.png) | LDAP-server |
 | ![SMB-server](media/service-map/role-smb.png) | SMB-server |
 
-![Rollen pictogrammen](media/service-map/role-icons.png)
+![Rolpictogrammen](media/service-map/role-icons.png)
 
 
 ## <a name="failed-connections"></a>Mislukte verbindingen
 
-Mislukte verbindingen worden weer gegeven in Servicetoewijzing kaarten voor processen en computers, met een stippel rode lijn die aangeeft dat een client systeem een proces of poort niet kan bereiken. Mislukte verbindingen worden gerapporteerd van elk systeem met een geïmplementeerde Servicetoewijzing-agent als dat systeem de verbinding probeert te maken die is mislukt. Servicetoewijzing meet dit proces door TCP-sockets te bestuderen die geen verbinding tot stand brengen. Deze fout kan het gevolg zijn van een firewall, een onjuiste configuratie in de client of de server of een externe service is niet beschikbaar.
+Mislukte verbindingen worden weergegeven in servicekaartkaarten voor processen en computers, met een onderbroken rode lijn die aangeeft dat een clientsysteem een proces of poort niet bereikt. Mislukte verbindingen worden gerapporteerd vanuit elk systeem met een geïmplementeerde ServiceMap-agent als dat systeem de verbinding probeert te maken. Service Map meet dit proces door TCP-sockets te observeren die geen verbinding tot stand brengen. Deze fout kan het gevolg zijn van een firewall, een verkeerde configuratie in de client of server of dat een externe service niet beschikbaar is.
 
 ![Mislukte verbindingen](media/service-map/failed-connections.png)
 
-Informatie over mislukte verbindingen kan helpen bij het oplossen van problemen, migratie validatie, beveiligings analyse en algemene architectuur. Mislukte verbindingen zijn soms onschadelijk, maar ze verwijzen vaak rechtstreeks naar een probleem, zoals een failover-omgeving die plotseling onbereikbaar wordt of twee toepassings lagen die niet kunnen communiceren na een Cloud migratie.
+Het begrijpen van mislukte verbindingen kan helpen bij het oplossen van problemen, migratievalidatie, beveiligingsanalyse en algemeen architectuurbegrip. Mislukte verbindingen zijn soms onschadelijk, maar ze wijzen vaak direct op een probleem, zoals een failover-omgeving die plotseling onbereikbaar wordt, of twee toepassingslagen die niet kunnen praten na een cloudmigratie.
 
-## <a name="client-groups"></a>Client groepen
+## <a name="client-groups"></a>Clientgroepen
 
-Client groepen zijn vakken op de kaart die client computers vertegenwoordigen die geen afhankelijkheids agenten hebben. Eén client groep vertegenwoordigt de clients voor een afzonderlijk proces of een afzonderlijke computer.
+Clientgroepen zijn vakken op de kaart die clientmachines vertegenwoordigen die geen afhankelijkheidsagents hebben. Eén clientgroep vertegenwoordigt de clients voor een individueel proces of machine.
 
-![Client groepen](media/service-map/client-groups.png)
+![Clientgroepen](media/service-map/client-groups.png)
 
-Als u de IP-adressen van de servers in een client groep wilt weer geven, selecteert u de groep. De inhoud van de groep wordt weer gegeven in het deel venster **Eigenschappen van client groep** .
+Als u de IP-adressen van de servers in een clientgroep wilt bekijken, selecteert u de groep. De inhoud van de groep wordt weergegeven in het deelvenster **Eigenschappen van clientgroep.**
 
-![Eigenschappen van client groep](media/service-map/client-group-properties.png)
+![Eigenschappen van clientgroep](media/service-map/client-group-properties.png)
 
-## <a name="server-port-groups"></a>Server poort groepen
+## <a name="server-port-groups"></a>Serverpoortgroepen
 
-Server poort groepen zijn vakken die server poorten vertegenwoordigen op servers die geen afhankelijkheids agenten hebben. Het vak bevat de server poort en een telling van het aantal servers met verbindingen met die poort. Vouw het vak uit om de afzonderlijke servers en verbindingen weer te geven. Als er slechts één server in het vak is, wordt de naam of het IP-adres weer gegeven.
+Serverpoortgroepen zijn vakken die serverpoorten vertegenwoordigen op servers die geen afhankelijkheidsagents hebben. Het vak bevat de serverpoort en een telling van het aantal servers met verbindingen met die poort. Vouw het vak uit om de afzonderlijke servers en verbindingen te bekijken. Als er slechts één server in het vak is, wordt de naam of het IP-adres weergegeven.
 
-![Server poort groepen](media/service-map/server-port-groups.png)
+![Serverpoortgroepen](media/service-map/server-port-groups.png)
 
 ## <a name="context-menu"></a>Contextmenu
 
-Als u in de rechter bovenhoek van een server op het weglatings teken (...) klikt, wordt het context menu voor die server weer gegeven.
+Als u op de ellips klikt (...) rechtsboven in een server, wordt het contextmenu voor die server weergegeven.
 
 ![Mislukte verbindingen](media/service-map/context-menu.png)
 
-### <a name="load-server-map"></a>Server toewijzing laden
+### <a name="load-server-map"></a>Serverkaart laden
 
-Als u op **Load Server map** klikt, gaat u naar een nieuw overzicht met de geselecteerde server als de nieuwe focus machine.
+Als u op **Load Server Map** klikt, gaat u naar een nieuwe kaart met de geselecteerde server als de nieuwe focusmachine.
 
-### <a name="show-self-links"></a>Self links weer geven
+### <a name="show-self-links"></a>Zelfkoppelingen weergeven
 
-Als u op **zelf koppelingen weer geven** klikt, wordt het server knooppunt opnieuw getekend, met inbegrip van eventuele Self-links. Dit zijn TCP-verbindingen die worden gestart en eindigen op processen binnen de-server. Als er zelf koppelingen worden weer gegeven, wordt de menu opdracht gewijzigd in **zelf koppelingen verbergen**, zodat u ze kunt uitschakelen.
+Als u op **Zelfkoppelingen weergeven** klikt, wordt het serverknooppunt opnieuw gestart, inclusief alle zelfkoppelingen, namelijk TCP-verbindingen die beginnen en eindigen op processen binnen de server. Als zelfkoppelingen worden weergegeven, wordt de menuopdracht gewijzigd in **Zelfkoppelingen verbergen,** zodat u deze uitschakelen.
 
-## <a name="computer-summary"></a>Computer overzicht
+## <a name="computer-summary"></a>Computeroverzicht
 
-Het deel venster **machine overzicht** bevat een overzicht van het besturings systeem van een server, het aantal afhankelijkheden en de gegevens van andere oplossingen. Dergelijke gegevens omvatten prestatie gegevens, Service Desk tickets, wijzigingen bijhouden, beveiliging en updates.
+Het deelvenster **Machineoverzicht** bevat een overzicht van het besturingssysteem van een server, het aantal afhankelijkheidsgegevens en gegevens van andere oplossingen. Dergelijke gegevens omvatten prestatiestatistieken, servicedesktickets, wijzigingstracking, beveiliging en updates.
 
-![Deel venster machine overzicht](media/service-map/machine-summary.png)
+![Deelvenster Machineoverzicht](media/service-map/machine-summary.png)
 
-## <a name="computer-and-process-properties"></a>Computer-en proces eigenschappen
+## <a name="computer-and-process-properties"></a>Computer- en proceseigenschappen
 
-Wanneer u een Servicetoewijzing kaart navigeert, kunt u machines en processen selecteren om aanvullende context over hun eigenschappen te krijgen. Machines bieden informatie over de DNS-naam, IPv4-adressen, CPU-en geheugen capaciteit, het VM-type, het besturings systeem en de versie, de laatste keer opnieuw opstarten en de Id's van hun OMS-en Servicetoewijzing-agents.
+Wanneer u door een servicekaartnavigeert, u machines en processen selecteren om extra context te krijgen over hun eigenschappen. Machines bieden informatie over DNS-naam, IPv4-adressen, CPU- en geheugencapaciteit, VM-type, besturingssysteem en -versie, de laatste herstarttijd en de ID's van hun OMS- en ServiceMap-agents.
 
-![Deel venster computer eigenschappen](media/service-map/machine-properties.png)
+![Deelvenster Machineeigenschappen](media/service-map/machine-properties.png)
 
-U kunt proces details verzamelen van meta gegevens van het besturings systeem over het uitvoeren van processen, zoals proces naam, proces beschrijving, gebruikers naam en domein (op Windows), bedrijfs naam, product naam, product versie, werkmap, opdracht regel en proces begin tijd.
+U procesgegevens verzamelen uit metagegevens van het besturingssysteem over lopende processen, waaronder procesnaam, procesbeschrijving, gebruikersnaam en domein (op Windows), bedrijfsnaam, productnaam, productversie, werkmap, opdrachtregel en proces begintijd.
 
-![Deel venster proces eigenschappen](media/service-map/process-properties.png)
+![Deelvenster Eigenschappen verwerken](media/service-map/process-properties.png)
 
-Het deel venster **proces overzicht** bevat aanvullende informatie over de connectiviteit van het proces, met inbegrip van de gebonden poorten, binnenkomende en uitgaande verbindingen en mislukte verbindingen.
+Het deelvenster **Procesoverzicht** bevat aanvullende informatie over de connectiviteit van het proces, inclusief de gebonden poorten, inkomende en uitgaande verbindingen en mislukte verbindingen.
 
-![Deel venster proces overzicht](media/service-map/process-summary.png)
+![Deelvenster Procesoverzicht](media/service-map/process-summary.png)
 
-## <a name="alerts-integration"></a>Integratie van waarschuwingen
+## <a name="alerts-integration"></a>Integratie met waarschuwingen
 
-Servicetoewijzing integreert met Azure-waarschuwingen om geactiveerde waarschuwingen voor de geselecteerde server weer te geven in het geselecteerde tijds bereik. Op de server wordt een pictogram weer gegeven als er huidige waarschuwingen zijn en in het deel venster **computer waarschuwingen** worden de waarschuwingen weer gegeven.
+Servicemap integreert met Azure Alerts om ontslagen waarschuwingen voor de geselecteerde server in het geselecteerde tijdsbereik weer te geven. De server geeft een pictogram weer als er huidige waarschuwingen zijn en in het deelvenster **Machinewaarschuwingen** worden de waarschuwingen weergegeven.
 
-![Deel venster computer waarschuwingen](media/service-map/machine-alerts.png)
+![Deelvenster Machinewaarschuwingen](media/service-map/machine-alerts.png)
 
-Als Servicetoewijzing relevante waarschuwingen wilt weer geven, maakt u een waarschuwings regel die wordt geactiveerd voor een specifieke computer. De juiste waarschuwingen maken:
-- Neem een component op die wordt gegroepeerd op computer (bijvoorbeeld **per computer interval van 1 minuut**).
-- Kies voor waarschuwing op basis van metrische metingen.
+Als u Service Map wilt inschakelen om relevante waarschuwingen weer te geven, maakt u een waarschuwingsregel die wordt geactiveerd voor een specifieke computer. Ga als u op de juiste waarschuwingen:
+- Een clausule opnemen om te groeperen op computer (bijvoorbeeld **op Computerinterval 1 minuut).**
+- Kies ervoor om te waarschuwen op basis van metrische meting.
 
-## <a name="log-events-integration"></a>Integratie van logboek gebeurtenissen
+## <a name="log-events-integration"></a>Integratie van loggebeurtenissen
 
-Servicetoewijzing integreert met zoeken in Logboeken om het aantal beschik bare logboek gebeurtenissen voor de geselecteerde server weer te geven tijdens het geselecteerde tijds bereik. U kunt klikken op een rij in de lijst met gebeurtenis aantallen om naar zoeken in Logboeken te gaan en de afzonderlijke logboek gebeurtenissen te bekijken.
+Servicemap integreert met Log Search om een aantal beschikbare logboekgebeurtenissen voor de geselecteerde server tijdens het geselecteerde tijdsbereik weer te geven. U op een rij in de lijst met gebeurtenistellingen klikken om naar Logboekzoeken te springen en de afzonderlijke logboekgebeurtenissen te bekijken.
 
-![Het deel venster gebeurtenissen van computer logboek](media/service-map/log-events.png)
+![Deelvenster Gebeurtenissen voor machinelogboeken](media/service-map/log-events.png)
 
-## <a name="service-desk-integration"></a>Service Desk-integratie
+## <a name="service-desk-integration"></a>Service Desk integratie
 
-Servicetoewijzing integratie met de IT Service Management-connector automatisch wanneer beide oplossingen zijn ingeschakeld en geconfigureerd in uw Log Analytics-werk ruimte. De integratie in Servicetoewijzing heeft de naam ' Service Desk '. Zie [ITSM-werk items centraal beheren met IT Service Management-connector](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)voor meer informatie.
+Servicemap-integratie met de IT Service Management Connector is automatisch wanneer beide oplossingen zijn ingeschakeld en geconfigureerd in uw Log Analytics-werkruimte. De integratie in Service Map heeft het label 'Service Desk'. Zie [ITSM-werkitems centraal beheren met IT Service Management Connector](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)voor meer informatie.
 
-In het deel venster **Machine Service Bureau** worden alle IT Service Management-gebeurtenissen voor de geselecteerde server weer gegeven in het geselecteerde tijds bereik. Op de server wordt een pictogram weer gegeven als er huidige items zijn en in het deel venster machine Service Desk ze worden weer gegeven.
+In het deelvenster **Machine Service Desk** worden alle IT-servicebeheergebeurtenissen voor de geselecteerde server in het geselecteerde tijdsbereik weergegeven. De server geeft een pictogram weer als er huidige items zijn en in het deelvenster Machine Service Desk worden deze weergegeven.
 
-![Deel venster machine Service Desk](media/service-map/service-desk.png)
+![Deelvenster Machine Service Desk](media/service-map/service-desk.png)
 
-Klik op **werk item weer geven**om het item in de verbonden ITSM-oplossing te openen.
+Als u het item in uw verbonden ITSM-oplossing wilt openen, klikt u op **Werkitem weergeven**.
 
-Als u de details van het item in logboek zoekactie wilt weer geven, klikt u op **weer geven in zoeken in Logboeken**.
-Metrische verbindings gegevens worden geschreven naar twee nieuwe tabellen in Log Analytics 
+Als u de details van het item wilt weergeven in Zoeken bij logboek, klikt u op **Weergeven in Logboekzoeken**.
+Verbindingsstatistieken worden geschreven naar twee nieuwe tabellen in Log Analytics 
 
-## <a name="change-tracking-integration"></a>Integratie van Wijzigingen bijhouden
+## <a name="change-tracking-integration"></a>Integratie bij het bijhouden van wijzigingen
 
-Servicetoewijzing integratie met Wijzigingen bijhouden automatisch wanneer beide oplossingen zijn ingeschakeld en geconfigureerd in uw Log Analytics-werk ruimte.
+Servicemap-integratie met Change Tracking is automatisch wanneer beide oplossingen zijn ingeschakeld en geconfigureerd in uw Log Analytics-werkruimte.
 
-In het deel venster **computer wijzigingen bijhouden** worden alle wijzigingen weer gegeven, met de meest recente eerst, samen met een koppeling om in te zoomen op Logboeken zoeken naar aanvullende informatie.
+In het venster **Machinechange Tracking** worden alle wijzigingen weergegeven, met de meest recente eerste, samen met een koppeling om in te zoomen om te zoeken naar aanvullende details.
 
-![Deel venster computer Wijzigingen bijhouden](media/service-map/change-tracking.png)
+![Deelvenster Machinewijzigingbijhouden](media/service-map/change-tracking.png)
 
-De volgende afbeelding is een gedetailleerde weer gave van een ConfigurationChange-gebeurtenis die u kunt zien nadat u **weer geven in log Analytics**hebt geselecteerd.
+De volgende afbeelding is een gedetailleerde weergave van een gebeurtenis ConfigurationChange die u mogelijk ziet nadat u **Weergeven in Logboekanalyse hebt geselecteerd.**
 
-![ConfigurationChange-gebeurtenis](media/service-map/configuration-change-event-01.png)
+![Gebeurtenis ConfigurationChange](media/service-map/configuration-change-event-01.png)
 
-## <a name="performance-integration"></a>Prestatie integratie
+## <a name="performance-integration"></a>Prestatie-integratie
 
-Het deel venster **computer prestaties** bevat standaard metrische gegevens voor prestaties voor de geselecteerde server. De metrische gegevens zijn onder andere CPU-gebruik, geheugen gebruik, verzonden en ontvangen netwerk bytes en een lijst van de belangrijkste processen op verzonden en ontvangen bytes in het netwerk.
+In het deelvenster **Machineprestaties** worden standaardprestatiestatistieken voor de geselecteerde server weergegeven. De statistieken omvatten CPU-gebruik, geheugengebruik, verzonden en ontvangen netwerkbytes en een lijst met de belangrijkste processen per verzonden en ontvangen netwerkbytes.
 
-![Deel venster computer prestaties](media/service-map/machine-performance.png)
+![Deelvenster Machineprestaties](media/service-map/machine-performance.png)
 
-Als u prestatie gegevens wilt bekijken, moet u mogelijk [de juiste log Analytics prestatie meter items inschakelen](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  De prestatie meter items die u wilt inschakelen:
+Als u prestatiegegevens wilt zien, moet u mogelijk [de juiste prestatiemeteritems van Log Analytics inschakelen.](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)  De tellers die u wilt inschakelen:
 
 Windows:
-- Processor (*)\\percentage processor tijd
-- Geheugen\\% toegewezen bytes in gebruik
-- Netwerk adapter (*)\\verzonden bytes per seconde
-- Netwerk adapter (*)\\ontvangen bytes per seconde
+- Processor(*)\\% processortijd
+- Memory\\% Committed Bytes In Use
+- Verzonden netwerkadapter(*)\\Verzonden per seconde
+- Ontvangen bytes per\\seconde van netwerkadapter(*)
 
 Linux:
-- Processor (*)\\percentage processor tijd
-- Geheugen (*)\\percentage gebruikt geheugen
-- Netwerk adapter (*)\\verzonden bytes per seconde
-- Netwerk adapter (*)\\ontvangen bytes per seconde
+- Processor(*)\\% processortijd
+- Geheugen(*)\\% gebruikt geheugen
+- Verzonden netwerkadapter(*)\\Verzonden per seconde
+- Ontvangen bytes per\\seconde van netwerkadapter(*)
 
-Als u de netwerk prestatie gegevens wilt ophalen, moet u ook de Wire Data 2.0 oplossing in uw werk ruimte hebben ingeschakeld.
+Om de netwerkprestatiegegevens te krijgen, moet u ook de Wire Data 2.0-oplossing in uw werkruimte hebben ingeschakeld.
  
-## <a name="security-integration"></a>Beveiligings integratie
+## <a name="security-integration"></a>Beveiligingsintegratie
 
-Servicetoewijzing integratie met Beveiliging en audit automatisch wanneer beide oplossingen zijn ingeschakeld en geconfigureerd in uw Log Analytics-werk ruimte.
+Servicemap-integratie met Beveiliging en Audit is automatisch wanneer beide oplossingen zijn ingeschakeld en geconfigureerd in uw Log Analytics-werkruimte.
 
-In het deel venster **computer beveiliging** worden gegevens van de beveiliging en audit oplossing voor de geselecteerde server weer gegeven. Het deel venster geeft een samen vatting weer van alle openstaande beveiligings problemen voor de server tijdens het geselecteerde tijds bereik. Door te klikken op een van de beveiligings problemen zoomt u in op een zoek opdracht naar Logboeken voor meer informatie hierover.
+In het deelvenster **Machinebeveiliging** worden gegevens van de beveiligings- en auditoplossing voor de geselecteerde server weergegeven. In het deelvenster vindt u een overzicht van eventuele openstaande beveiligingsproblemen voor de server tijdens het geselecteerde tijdsbereik. Als u op een van de beveiligingsproblemen klikt, wordt in een logboekzoekopdracht naar informatie over deze opties inzoomen.
 
-![Deel venster computer beveiliging](media/service-map/machine-security.png)
+![Deelvenster Machinebeveiliging](media/service-map/machine-security.png)
 
-## <a name="updates-integration"></a>Integratie van updates
+## <a name="updates-integration"></a>Integratie bij werken
 
-Servicetoewijzing integratie met Updatebeheer automatisch wanneer beide oplossingen zijn ingeschakeld en geconfigureerd in uw Log Analytics-werk ruimte.
+Servicemap-integratie met UpdateManagement is automatisch wanneer beide oplossingen zijn ingeschakeld en geconfigureerd in uw Log Analytics-werkruimte.
 
-In het deel venster **computer updates** worden gegevens van de updatebeheer oplossing voor de geselecteerde server weer gegeven. In het deel venster wordt een samen vatting weer gegeven van eventuele ontbrekende updates voor de server tijdens het geselecteerde tijds bereik.
+In het deelvenster **Machine-updates** worden gegevens uit de oplossing Updatebeheer voor de geselecteerde server weergegeven. In het deelvenster vindt u een overzicht van eventuele ontbrekende updates voor de server tijdens het geselecteerde tijdsbereik.
 
-![Deel venster computer Wijzigingen bijhouden](media/service-map/machine-updates.png)
+![Deelvenster Machinewijzigingbijhouden](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics-records
 
-Servicetoewijzing computer-en proces inventaris gegevens kunnen worden [doorzocht](../../azure-monitor/log-query/log-query-overview.md) in log Analytics. U kunt deze gegevens Toep assen op scenario's met inbegrip van migratie planning, capaciteits analyse, detectie en prestatie problemen oplossen op aanvraag.
+ServiceMap-computer- en procesvoorraadgegevens zijn beschikbaar voor [zoeken](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics. U deze gegevens toepassen op scenario's zoals migratieplanning, capaciteitsanalyse, detectie en probleemoplossing voor prestaties op aanvraag.
 
-Er wordt één record per uur gegenereerd voor elke unieke computer en elk proces, naast de records die worden gegenereerd wanneer een proces of computer wordt gestart of aan Servicetoewijzing. Deze records hebben de eigenschappen in de volgende tabellen. De velden en waarden in de ServiceMapComputer_CL gebeurtenissen worden toegewezen aan velden van de machine resource in de ServiceMap Azure Resource Manager-API. De velden en waarden in de ServiceMapProcess_CL gebeurtenissen worden toegewezen aan de velden van de proces resource in de ServiceMap Azure Resource Manager-API. Het veld ResourceName_s komt overeen met het veld naam in de bijbehorende resource manager-resource. 
+Voor elke unieke computer en elk proces wordt één record per uur gegenereerd, naast de records die worden gegenereerd wanneer een proces of computer wordt gestart of aan de servicekaart is geënterd. Deze records hebben de eigenschappen in de volgende tabellen. De velden en waarden in de ServiceMapComputer_CL gebeurtenissen worden toegewezen aan velden van de machinebron in de API van ServiceMap Azure Resource Manager. De velden en waarden in de ServiceMapProcess_CL gebeurtenissen worden toegewezen aan de velden van de procesbron in de API van ServiceMap Azure Resource Manager. Het veld ResourceName_s komt overeen met het naamveld in de bijbehorende Resource Manager-bron. 
 
 >[!NOTE]
->Als Servicetoewijzing functies groeien, kunnen deze velden worden gewijzigd.
+>Naarmate de functies van servicekaart toenemen, kunnen deze velden worden gewijzigd.
 
-Er zijn intern gegenereerde eigenschappen die u kunt gebruiken om unieke processen en computers te identificeren:
+Er zijn intern gegenereerde eigenschappen die u gebruiken om unieke processen en computers te identificeren:
 
-- Computer: gebruik *ResourceID* of *ResourceName_s* om een computer binnen een log Analytics-werk ruimte uniek te identificeren.
-- Proces: gebruik *ResourceID* als unieke id voor een proces binnen een log Analytics-werk ruimte. *ResourceName_s* is uniek binnen de context van de computer waarop het proces wordt uitgevoerd (MachineResourceName_s) 
+- Computer: gebruik *ResourceId* of *ResourceName_s* om een computer in een Log Analytics-werkruimte op unieke wijze te identificeren.
+- Proces: Gebruik *ResourceId* om een proces binnen een Log Analytics-werkruimte op unieke wijze te identificeren. *ResourceName_s* is uniek in de context van de machine waarop het proces draait (MachineResourceName_s) 
 
-Omdat er meerdere records kunnen bestaan voor een opgegeven proces en computer in een opgegeven tijds bereik, kunnen query's meer dan één record retour neren voor dezelfde computer of hetzelfde proces. Als u alleen de meest recente record wilt opnemen, voegt u | ResourceId ophalen voor de query.
+Omdat er meerdere records kunnen bestaan voor een opgegeven proces en computer in een opgegeven tijdsbereik, kunnen query's meer dan één record retourneren voor dezelfde computer of proces. Als u alleen de meest recente record wilt opnemen, voegt u '| dedup ResourceId" aan de query.
 
 ### <a name="connections"></a>Verbindingen
 
-Metrische verbindings gegevens worden geschreven naar een nieuwe tabel in Log Analytics-VMConnection. Deze tabel bevat informatie over de verbindingen voor een machine (inkomend en uitgaand). Verbindings gegevens worden ook weer gegeven met Api's die de mogelijkheid bieden om een specifieke metriek te verkrijgen tijdens een tijd venster.  TCP-verbindingen die het resultaat zijn van het accepteren van een luisterende socket zijn inkomend, terwijl deze worden gemaakt door verbinding te maken met een bepaald IP-adres en een andere poort. De richting van een verbinding wordt vertegenwoordigd door de eigenschap direction, die kan worden ingesteld op **Inkomend** of **uitgaand**. 
+Verbindingsstatistieken worden geschreven naar een nieuwe tabel in Log Analytics - VMConnection. In deze tabel vindt u informatie over de verbindingen voor een machine (inkomende en uitgaande). Verbindingsstatistieken worden ook weergegeven met API's die de middelen bieden om een specifieke statistiek te verkrijgen tijdens een tijdvenster.  TCP-verbindingen die het gevolg zijn van het accepteren op een luistersocket zijn binnenkomend, terwijl verbindingen die worden gemaakt door verbinding te maken met een bepaald IP en een bepaalde poort uitgaand zijn. De richting van een verbinding wordt weergegeven door de eigenschap Richting, die kan worden ingesteld op **binnenkomend** of **uitgaand**. 
 
-Records in deze tabellen worden gegenereerd op basis van gegevens die zijn gerapporteerd door de afhankelijkheids agent. Elke record vertegenwoordigt een observatie over een tijds interval van één minuut. De eigenschap TimeGenerated geeft het begin van het tijds interval aan. Elke record bevat informatie voor het identificeren van de respectieve entiteit, dat wil zeggen, verbinding of poort, en de metrische gegevens die aan die entiteit zijn gekoppeld. Op dit moment worden alleen netwerk activiteiten gerapporteerd die worden uitgevoerd via TCP via IPv4.
+Records in deze tabellen worden gegenereerd op gegevens die zijn gerapporteerd door de afhankelijkheidsagent. Elke record vertegenwoordigt een observatie over een tijdsinterval van één minuut. De eigenschap TimeGenerated geeft het begin van het tijdsinterval aan. Elke record bevat informatie om de betreffende entiteit te identificeren, dat wil zeggen, verbinding of poort, evenals statistieken die aan die entiteit zijn gekoppeld. Momenteel wordt alleen netwerkactiviteit gerapporteerd die optreedt met TCP via IPv4.
 
-Voor het beheren van de kosten en complexiteit vertegenwoordigen verbindings records geen afzonderlijke fysieke netwerk verbindingen. Meerdere fysieke netwerk verbindingen worden gegroepeerd in een logische verbinding, die vervolgens wordt weer gegeven in de respectievelijke tabel.  Dit betekent dat records in de tabel *VMConnection* een logische groepering vertegenwoordigen en niet de afzonderlijke fysieke verbindingen die worden waargenomen. Fysieke netwerk verbinding deelt dezelfde waarde voor de volgende kenmerken gedurende een gegeven interval van één minuut, worden geaggregeerd naar één logische record in *VMConnection*. 
+Om kosten en complexiteit te beheren, vertegenwoordigen verbindingsrecords geen afzonderlijke fysieke netwerkverbindingen. Meerdere fysieke netwerkverbindingen worden gegroepeerd in een logische verbinding, die vervolgens wordt weerspiegeld in de desbetreffende tabel.  Records in *de tabel VMConnection* vertegenwoordigen dus een logische groepering en niet de afzonderlijke fysieke verbindingen die worden waargenomen. Fysieke netwerkverbinding die dezelfde waarde deelt voor de volgende kenmerken gedurende een bepaald interval van één minuut, wordt samengevoegd tot één logische record in *VMConnection*. 
 
 | Eigenschap | Beschrijving |
 |:--|:--|
-| `Direction` |Richting van de verbinding, waarde is *Inkomend* of *uitgaand* |
-| `Machine` |De FQDN van de computer |
+| `Direction` |Richting van de verbinding, waarde is *binnenkomend* of *uitgaand* |
+| `Machine` |De computer FQDN |
 | `Process` |Identiteit van proces of groepen processen, initiëren/accepteren van de verbinding |
 | `SourceIp` |IP-adres van de bron |
 | `DestinationIp` |IP-adres van de bestemming |
-| `DestinationPort` |Poort nummer van de doel |
-| `Protocol` |Het protocol dat wordt gebruikt voor de verbinding.  Waarden zijn *TCP*. |
+| `DestinationPort` |Havennummer van de bestemming |
+| `Protocol` |Protocol gebruikt voor de verbinding.  Waarden is *tcp*. |
 
-Om rekening te houden met de impact van groepering, wordt informatie over het aantal gegroepeerde fysieke verbindingen in de volgende eigenschappen van de record gegeven:
+Om rekening te houden met de impact van de groepering, wordt informatie over het aantal gegroepeerde fysieke verbindingen verstrekt in de volgende eigenschappen van de record:
 
 | Eigenschap | Beschrijving |
 |:--|:--|
-| `LinksEstablished` |Het aantal fysieke netwerk verbindingen dat tot stand is gebracht tijdens het rapportage tijd venster |
-| `LinksTerminated` |Het aantal fysieke netwerk verbindingen dat is beëindigd tijdens het rapportage tijd venster |
-| `LinksFailed` |Het aantal fysieke netwerk verbindingen dat is mislukt tijdens het rapportage tijd venster. Deze informatie is momenteel alleen beschikbaar voor uitgaande verbindingen. |
-| `LinksLive` |Het aantal fysieke netwerk verbindingen dat aan het einde van het rapportage tijd venster is geopend|
+| `LinksEstablished` |Het aantal fysieke netwerkverbindingen dat is gemaakt tijdens het rapportagetijdvenster |
+| `LinksTerminated` |Het aantal fysieke netwerkverbindingen dat is beëindigd tijdens het venster voor rapportagetijd |
+| `LinksFailed` |Het aantal fysieke netwerkverbindingen dat is mislukt tijdens het venster rapportagetijd. Deze informatie is momenteel alleen beschikbaar voor uitgaande verbindingen. |
+| `LinksLive` |Het aantal fysieke netwerkverbindingen dat aan het einde van het rapportagetijdvenster open was|
 
 #### <a name="metrics"></a>Metrische gegevens
 
-Naast de metrieken voor het aantal verbindingen, worden gegevens over het volume van de gegevens die zijn verzonden en ontvangen op een bepaalde logische verbinding of netwerk poort ook opgenomen in de volgende eigenschappen van de record:
+Naast de statistieken voor het aantal verbindingen wordt informatie over de hoeveelheid verzonden en ontvangen gegevens op een bepaalde logische verbinding of netwerkpoort ook opgenomen in de volgende eigenschappen van de record:
 
 | Eigenschap | Beschrijving |
 |:--|:--|
-| `BytesSent` |Totaal aantal bytes dat is verzonden tijdens het rapportage tijd venster |
-| `BytesReceived` |Totaal aantal bytes dat is ontvangen tijdens het rapportage tijd venster |
-| `Responses` |Het aantal antwoorden dat is waargenomen tijdens het rapportage tijd venster. 
-| `ResponseTimeMax` |De grootste reactie tijd (milliseconden) die is waargenomen tijdens het rapportage tijd venster.  Als er geen waarde is, is de eigenschap leeg.|
-| `ResponseTimeMin` |De kleinste reactie tijd (milliseconden) die is waargenomen tijdens het rapportage tijd venster.  Als er geen waarde is, is de eigenschap leeg.|
-| `ResponseTimeSum` |De som van alle reactie tijden (milliseconden) die zijn waargenomen tijdens het rapportage tijd venster.  Als er geen waarde is, is de eigenschap leeg|
+| `BytesSent` |Totaal aantal bytes dat is verzonden tijdens het venster voor rapportagetijd |
+| `BytesReceived` |Totaal aantal bytes dat is ontvangen tijdens het rapportagetijdvenster |
+| `Responses` |Het aantal reacties dat tijdens het rapportagetijdvenster is waargenomen. 
+| `ResponseTimeMax` |De grootste responstijd (milliseconden) die tijdens het rapportagetijdvenster wordt waargenomen.  Als er geen waarde is, is de eigenschap leeg.|
+| `ResponseTimeMin` |De kleinste responstijd (milliseconden) die tijdens het rapportagetijdvenster wordt waargenomen.  Als er geen waarde is, is de eigenschap leeg.|
+| `ResponseTimeSum` |De som van alle responstijden (milliseconden) waargenomen tijdens het rapportagetijdvenster.  Als er geen waarde is, is de eigenschap leeg|
 
-Het derde type gegevens dat wordt gerapporteerd, is de reactie tijd: hoe lang een beller wacht op een aanvraag die wordt verzonden via een verbinding om te worden verwerkt en beantwoord door het externe eind punt. De gemelde reactie tijd is een schatting van de werkelijke reactie tijd van het onderliggende toepassings protocol. Het wordt berekend aan de hand van heuristiek, gebaseerd op de gegevens stroom tussen het bron-en doel einde van een fysieke netwerk verbinding. In het algemeen is het het verschil tussen het tijdstip waarop de laatste byte van een aanvraag de afzender verlaat en het tijdstip waarop de laatste byte van het antwoord ernaar terugkomt. Deze twee tijds tempels worden gebruikt om aanvraag-en reactie gebeurtenissen op een bepaalde fysieke verbinding af te bakenen. Het verschil tussen deze geeft de reactie tijd van een enkele aanvraag aan. 
+Het derde type gegevens dat wordt gerapporteerd, is de reactietijd - hoe lang besteedt een beller wachten d.m.v. een verzoek dat via een verbinding wordt verzonden en waarop het externe eindpunt moet reageren. De gerapporteerde reactietijd is een schatting van de werkelijke responstijd van het onderliggende toepassingsprotocol. Het wordt berekend met behulp van heuristiek op basis van de observatie van de stroom van gegevens tussen de bron en het doel einde van een fysieke netwerkverbinding. Conceptueel is het het verschil tussen het moment dat de laatste byte van een aanvraag de afzender verlaat en het tijdstip waarop de laatste byte van het antwoord naar binnen komt. Deze twee tijdstempels worden gebruikt om aanvraag- en antwoordgebeurtenissen op een bepaalde fysieke verbinding af te definiëren. Het verschil tussen hen vertegenwoordigt de reactietijd van één aanvraag. 
 
-In deze eerste release van deze functie is ons algoritme een benadering die kan samen werken met een verschillende mate van succes, afhankelijk van het daad werkelijke toepassings protocol dat voor een bepaalde netwerk verbinding wordt gebruikt. De huidige aanpak werkt bijvoorbeeld goed voor op aanvragen gebaseerde protocollen zoals HTTP (S), maar werkt niet met protocollen die zijn gebaseerd op een wachtrij of berichten wachtrijen.
+In deze eerste versie van deze functie is ons algoritme een benadering die met wisselend succes kan werken, afhankelijk van het werkelijke toepassingsprotocol dat wordt gebruikt voor een bepaalde netwerkverbinding. De huidige aanpak werkt bijvoorbeeld goed voor op aanvragen gebaseerde protocollen zoals HTTP(S), maar werkt niet met protocollen op basis van een enkele reis of berichtenwachtrij.
 
-Hier volgen enkele belang rijke punten om rekening mee te houden:
+Hier zijn een aantal belangrijke punten te overwegen:
 
-1. Als een proces verbindingen accepteert op hetzelfde IP-adres maar via meerdere netwerk interfaces, wordt een afzonderlijke record voor elke interface gerapporteerd. 
-2. Records met het Joker teken IP bevatten geen activiteit. Ze zijn opgenomen om het feit te vertegenwoordigen dat een poort op de machine is geopend voor inkomend verkeer.
-3. Records met Joker teken-IP worden wegge laten als er een overeenkomende record is (voor hetzelfde proces, dezelfde poort en hetzelfde protocol) als voor een specifiek IP-adres. Wanneer een IP-Joker record wordt wegge laten, wordt de IsWildcardBind-record eigenschap met het specifieke IP-adres ingesteld op ' True ' om aan te geven dat de poort wordt weer gegeven via elke interface van de rapportage computer.
-4. Voor poorten die alleen zijn gebonden voor een specifieke interface, is IsWildcardBind ingesteld op ' false '.
+1. Als een proces verbindingen op hetzelfde IP-adres accepteert, maar via meerdere netwerkinterfaces, wordt een afzonderlijke record voor elke interface gerapporteerd. 
+2. Records met wildcard IP bevatten geen activiteit. Ze zijn opgenomen om het feit te vertegenwoordigen dat een poort op de machine open staat voor binnenkomend verkeer.
+3. Om de verbositeit en het gegevensvolume te verminderen, worden records met wildcard-IP weggelaten wanneer er een overeenkomende record (voor hetzelfde proces, poort en protocol) met een specifiek IP-adres is. Wanneer een IP-record met jokertekens wordt weggelaten, wordt de eigenschap IsWildcardBind-record met het specifieke IP-adres ingesteld op 'True' om aan te geven dat de poort wordt blootgesteld via elke interface van de rapportagemachine.
+4. Poorten die alleen op een specifieke interface zijn gebonden, hebben IsWildcardBind ingesteld op 'False'.
 
 #### <a name="naming-and-classification"></a>Naamgeving en classificatie
 
-Voor het gemak wordt het IP-adres van de externe kant van een verbinding opgenomen in de eigenschap RemoteIp. Voor binnenkomende verbindingen is RemoteIp hetzelfde als SourceIp, terwijl voor uitgaande verbindingen hetzelfde is als DestinationIp. De eigenschap RemoteDnsCanonicalNames vertegenwoordigt de canonieke DNS-namen die door de computer worden gerapporteerd voor RemoteIp. De eigenschappen RemoteDnsQuestions en RemoteClassification zijn gereserveerd voor toekomstig gebruik. 
+Voor het gemak is het IP-adres van het externe uiteinde van een verbinding opgenomen in de eigenschap RemoteIp. Voor binnenkomende verbindingen is RemoteIp hetzelfde als SourceIp, terwijl het voor uitgaande verbindingen hetzelfde is als DestinationIp. De eigenschap RemoteDnsCanonicalNames vertegenwoordigt de DNS-canonieke namen die door de machine voor RemoteIp zijn gerapporteerd. De eigenschappen RemoteDnsQuestions en RemoteClassification zijn gereserveerd voor toekomstig gebruik. 
 
 #### <a name="geolocation"></a>Geolocatie
 
-*VMConnection* bevat ook geolocatie gegevens voor het externe einde van elke verbindings record in de volgende eigenschappen van de record: 
+*VMConnection* bevat ook geolocatiegegevens voor het externe uiteinde van elke verbindingsrecord in de volgende eigenschappen van de record: 
 
 | Eigenschap | Beschrijving |
 |:--|:--|
-| `RemoteCountry` |De naam van het land of de regio die als host fungeert voor RemoteIp.  Bijvoorbeeld *Verenigde Staten* |
-| `RemoteLatitude` |De geolocatie breedte.  Bijvoorbeeld *47,68* |
-| `RemoteLongitude` |De geografische locatie lengte.  Bijvoorbeeld *-122,12* |
+| `RemoteCountry` |De naam van het land/regio dat RemoteIp host.  Verenigde *Staten* bijvoorbeeld |
+| `RemoteLatitude` |De geolocatie breedtegraad.  Bijvoorbeeld, *47.68* |
+| `RemoteLongitude` |De geolocatie longitude.  *Bijvoorbeeld -122,12* |
 
-#### <a name="malicious-ip"></a>Schadelijk IP-adres
+#### <a name="malicious-ip"></a>Kwaadaardig IP
 
-Elke eigenschap RemoteIp in de tabel *VMConnection* wordt gecontroleerd op basis van een reeks IP-adressen met bekende schadelijke activiteiten. Als de RemoteIp als schadelijk is geïdentificeerd, worden de volgende eigenschappen ingevuld (ze zijn leeg, wanneer het IP-adres niet als schadelijk wordt beschouwd) in de volgende eigenschappen van de record:
+Elke remoteip-eigenschap in *de VMConnection-tabel* wordt gecontroleerd op basis van een set IP's met bekende schadelijke activiteiten. Als de RemoteIp als kwaadaardig wordt geïdentificeerd, worden de volgende eigenschappen ingevuld (ze zijn leeg, wanneer het IP niet als kwaadaardig wordt beschouwd) in de volgende eigenschappen van de record:
 
 | Eigenschap | Beschrijving |
 |:--|:--|
 | `MaliciousIp` |Het RemoteIp-adres |
-| `IndicatorThreadType` |Gedetecteerde bedreigings indicator is een van de volgende waarden: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDoS*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *pua's geblokkeerd*, *Watch list*.   |
+| `IndicatorThreadType` |Bedreiging indicator gedetecteerd is een van de volgende waarden, *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos*, *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Watchlist*.   |
 | `Description` |Beschrijving van de waargenomen bedreiging. |
-| `TLPLevel` |TLP-niveau (Traffic Light Protocol) is een van de gedefinieerde waarden, *wit*, *groen*, *geel*, *rood*. |
-| `Confidence` |De waarden zijn *0 – 100*. |
-| `Severity` |De waarden zijn *0 – 5*, waarbij *5* het ernstigste en *0* is. De standaard waarde is *3*.  |
-| `FirstReportedDateTime` |De eerste keer dat de provider de indicator heeft gerapporteerd. |
-| `LastReportedDateTime` |De laatste keer dat de indicator door de stroom is gezien. |
-| `IsActive` |Hiermee wordt aangegeven dat indica toren worden gedeactiveerd met de waarde *True* of *False* . |
-| `ReportReferenceLink` |Koppelingen naar rapporten die zijn gerelateerd aan een gegeven waarneembaar. |
-| `AdditionalInformation` |Biedt aanvullende informatie, indien van toepassing, over de waargenomen bedreiging. |
+| `TLPLevel` |Traffic Light Protocol (TLP) Level is een van de gedefinieerde waarden, *Wit*, *Groen*, *Amber*, *Red*. |
+| `Confidence` |Waarden zijn *0 – 100*. |
+| `Severity` |Waarden zijn *0 – 5*, waar *5* is de meest ernstige en *0* is helemaal niet ernstig. Standaardwaarde is *3*.  |
+| `FirstReportedDateTime` |De eerste keer dat de provider de indicator rapporteerde. |
+| `LastReportedDateTime` |De laatste keer dat de indicator werd gezien door Interflow. |
+| `IsActive` |Geeft aan dat indicatoren worden gedeactiveerd met de waarde *Waar* of *False.* |
+| `ReportReferenceLink` |Links naar rapporten met betrekking tot een bepaalde waarneembare. |
+| `AdditionalInformation` |Biedt aanvullende informatie, indien van toepassing, over de waargenomen dreiging. |
 
 ### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL records
 
-Records met een type *ServiceMapComputer_CL* hebben inventaris gegevens voor servers met servicetoewijzing agents. Deze records hebben de eigenschappen in de volgende tabel:
+Records met een type *ServiceMapComputer_CL* voorraadgegevens voor servers met Service Map-agents bevatten. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
-| `ResourceId` | De unieke id voor een machine in de werk ruimte |
-| `ResourceName_s` | De unieke id voor een machine in de werk ruimte |
-| `ComputerName_s` | De FQDN van de computer |
-| `Ipv4Addresses_s` | Een lijst met IPv4-adressen van de server |
-| `Ipv6Addresses_s` | Een lijst met IPv6-adressen van de server |
-| `DnsNames_s` | Een matrix met DNS-namen |
+| `ResourceId` | De unieke id voor een machine in de werkruimte |
+| `ResourceName_s` | De unieke id voor een machine in de werkruimte |
+| `ComputerName_s` | De computer FQDN |
+| `Ipv4Addresses_s` | Een lijst met de IPv4-adressen van de server |
+| `Ipv6Addresses_s` | Een lijst met de IPv6-adressen van de server |
+| `DnsNames_s` | Een array met DNS-namen |
 | `OperatingSystemFamily_s` | Windows of Linux |
-| `OperatingSystemFullName_s` | De volledige naam van het besturings systeem  |
-| `Bitness_s` | De Bitness van de machine (32-bits of 64-bits)  |
+| `OperatingSystemFullName_s` | De volledige naam van het besturingssysteem  |
+| `Bitness_s` | De bitness van de machine (32-bits of 64-bits)  |
 | `PhysicalMemory_d` | Het fysieke geheugen in MB |
-| `Cpus_d` | Het aantal Cpu's |
+| `Cpus_d` | Het aantal CPU's |
 | `CpuSpeed_d` | De CPU-snelheid in MHz|
-| `VirtualizationState_s` | *onbekend*, *fysiek*, *virtueel*, *Hyper Visor* |
-| `VirtualMachineType_s` | *hyper-v*, *VMware*, enzovoort |
-| `VirtualMachineNativeMachineId_g` | De VM-ID die is toegewezen door de Hyper Visor |
-| `VirtualMachineName_s` | De naam van de virtuele machine |
-| `BootTime_t` | De opstart tijd |
+| `VirtualizationState_s` | *onbekend,* *fysiek,* *virtueel,* *hypervisor* |
+| `VirtualMachineType_s` | *hyperv*, *vmware*, enzovoort |
+| `VirtualMachineNativeMachineId_g` | De VM-id zoals toegewezen door de hypervisor |
+| `VirtualMachineName_s` | De naam van de VM |
+| `BootTime_t` | De opstarttijd |
 
-### <a name="servicemapprocess_cl-type-records"></a>Records van ServiceMapProcess_CL type
+### <a name="servicemapprocess_cl-type-records"></a>ServiceMapProcess_CL Type records
 
-Records met een type *ServiceMapProcess_CL* hebben inventaris gegevens voor met TCP verbonden processen op servers met servicetoewijzing agents. Deze records hebben de eigenschappen in de volgende tabel:
+Records met een type *ServiceMapProcess_CL* voorraadgegevens voor met TCP verbonden processen op servers met Service Map-agents bevatten. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
-| `ResourceId` | De unieke id voor een proces in de werk ruimte |
-| `ResourceName_s` | De unieke id voor een proces in de machine waarop het wordt uitgevoerd|
-| `MachineResourceName_s` | De resource naam van de machine |
-| `ExecutableName_s` | De naam van het uitvoer bare proces |
-| `StartTime_t` | De begin tijd van de proces groep |
-| `FirstPid_d` | De eerste pincode in de proces groep |
-| `Description_s` | De proces beschrijving |
+| `ResourceId` | De unieke id voor een proces binnen de werkruimte |
+| `ResourceName_s` | De unieke id voor een proces binnen de machine waarop deze wordt uitgevoerd|
+| `MachineResourceName_s` | De resourcenaam van de machine |
+| `ExecutableName_s` | De naam van het uitvoerbare proces |
+| `StartTime_t` | De begintijd van de procespool |
+| `FirstPid_d` | De eerste PID in de procespool |
+| `Description_s` | De procesbeschrijving |
 | `CompanyName_s` | De naam van het bedrijf |
 | `InternalName_s` | De interne naam |
 | `ProductName_s` | De naam van het product |
-| `ProductVersion_s` | De product versie |
-| `FileVersion_s` | De bestands versie |
-| `CommandLine_s` | De opdracht regel |
-| `ExecutablePath _s` | Het pad naar het uitvoer bare bestand |
+| `ProductVersion_s` | De productversie |
+| `FileVersion_s` | De bestandsversie |
+| `CommandLine_s` | De opdrachtregel |
+| `ExecutablePath _s` | Het pad naar het uitvoerbare bestand |
 | `WorkingDirectory_s` | De werkmap |
-| `UserName` | Het account waarmee het proces wordt uitgevoerd |
+| `UserName` | De rekening waaronder het proces wordt uitgevoerd |
 | `UserDomain` | Het domein waaronder het proces wordt uitgevoerd |
 
 ## <a name="sample-log-searches"></a>Voorbeeldzoekopdrachten in logboeken
 
-### <a name="list-all-known-machines"></a>Alle bekende computers weer geven
+### <a name="list-all-known-machines"></a>Alle bekende machines weergeven
 
-ServiceMapComputer_CL | arg_max samenvatten (TimeGenerated, *) door ResourceId
+ServiceMapComputer_CL | samenvatten arg_max(TimeGenerated, *) door ResourceId
 
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>De capaciteit van het fysieke geheugen van alle beheerde computers weer geven.
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Vermeld de fysieke geheugencapaciteit van alle beheerde computers.
 
-ServiceMapComputer_CL | arg_max samenvatten (TimeGenerated, *) door ResourceId | project PhysicalMemory_d, ComputerName_s
+ServiceMapComputer_CL | samenvatten arg_max(TimeGenerated, *) door ResourceId | project PhysicalMemory_d, ComputerName_s
 
-### <a name="list-computer-name-dns-ip-and-os"></a>Computer naam, DNS, IP en besturings systeem weer geven.
+### <a name="list-computer-name-dns-ip-and-os"></a>Geef de naam van de computer, DNS, IP en besturingssysteem weer.
 
-ServiceMapComputer_CL | arg_max samenvatten (TimeGenerated, *) door ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+ServiceMapComputer_CL | samenvatten arg_max(TimeGenerated, *) door ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
-### <a name="find-all-processes-with-sql-in-the-command-line"></a>Alle processen zoeken met ' SQL ' in de opdracht regel
+### <a name="find-all-processes-with-sql-in-the-command-line"></a>Alle processen zoeken met 'sql' in de opdrachtregel
 
-ServiceMapProcess_CL | waar CommandLine_s contains_cs "SQL" | arg_max samenvatten (TimeGenerated, *) door ResourceId
+ServiceMapProcess_CL | waar CommandLine_s contains_cs "sql" | samenvatten arg_max(TimeGenerated, *) door ResourceId
 
-### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Zoek een machine (de meest recente record) op resource naam
+### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Een machine zoeken (meest recente record) op resourcenaam
 
-zoeken in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | arg_max samenvatten (TimeGenerated, *) door ResourceId
+zoeken in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | samenvatten arg_max(TimeGenerated, *) door ResourceId
 
-### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Een machine (meest recente record) zoeken op IP-adres
+### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Een machine zoeken (meest recente record) op IP-adres
 
-zoeken in (ServiceMapComputer_CL) "10.229.243.232" | arg_max samenvatten (TimeGenerated, *) door ResourceId
+zoeken in (ServiceMapComputer_CL) "10.229.243.232" | samenvatten arg_max(TimeGenerated, *) door ResourceId
 
-### <a name="list-all-known-processes-on-a-specified-machine"></a>Alle bekende processen op een opgegeven computer weer geven
+### <a name="list-all-known-processes-on-a-specified-machine"></a>Alle bekende processen op een bepaalde machine weergeven
 
-ServiceMapProcess_CL | Where MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | arg_max samenvatten (TimeGenerated, *) door ResourceId
+ServiceMapProcess_CL | waar MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | samenvatten arg_max(TimeGenerated, *) door ResourceId
 
-### <a name="list-all-computers-running-sql"></a>Alle computers met SQL weer geven
+### <a name="list-all-computers-running-sql"></a>Alle computers met SQL weergeven
 
-ServiceMapComputer_CL | waar ResourceName_s in ((zoeken in (ServiceMapProcess_CL) "\*SQL\*" | DISTINCT MachineResourceName_s)) | DISTINCT ComputerName_s
+ServiceMapComputer_CL | waar ResourceName_s in ((zoeken in\*\*(ServiceMapProcess_CL) " sql " | onderscheiden MachineResourceName_s)) | duidelijke ComputerName_s
 
-### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Alle unieke product versies van krul in mijn Data Center weer geven
+### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Alle unieke productversies van curl in mijn datacenter weergeven
 
-ServiceMapProcess_CL | waar ExecutableName_s = = "krul" | DISTINCT ProductVersion_s
+ServiceMapProcess_CL | waar ExecutableName_s == "krul" | duidelijke ProductVersion_s
 
-### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Een computer groep maken van alle computers waarop CentOS wordt uitgevoerd
+### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Een computergroep maken van alle computers waarop CentOS wordt uitgevoerd
 
-ServiceMapComputer_CL | waar OperatingSystemFullName_s contains_cs "CentOS" | DISTINCT ComputerName_s
+ServiceMapComputer_CL | waar OperatingSystemFullName_s contains_cs "CentOS" | duidelijke ComputerName_s
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>De uitgaande verbindingen van een groep machines samenvatten
 
@@ -538,68 +538,68 @@ let remoteMachines = remote | summarize by RemoteMachine;
 | summarize Remote=makeset(iff(isempty(RemoteMachine), todynamic('{}'), pack('Machine', RemoteMachine, 'Process', Process1, 'ProcessName', ProcessName1))) by ConnectionId, Direction, Machine, Process, ProcessName, SourceIp, DestinationIp, DestinationPort, Protocol
 ```
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
-Alle gegevens van de server, het proces en de afhankelijkheid in Servicetoewijzing zijn beschikbaar via de [Servicetoewijzing rest API](https://docs.microsoft.com/rest/api/servicemap/).
+Alle server-, proces- en afhankelijkheidsgegevens in ServiceMap zijn beschikbaar via de [Service Map REST API.](https://docs.microsoft.com/rest/api/servicemap/)
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostische en gebruiksgegevens
 
-Microsoft verzamelt automatisch gebruiks- en prestatiegegevens gegevens via uw gebruik van de Service Map-service. Microsoft gebruikt deze gegevens te bieden en de kwaliteit, beveiliging en integriteit van de Service Map-service te verbeteren. Om nauw keurige en efficiënte probleemoplossings mogelijkheden te bieden, bevatten de gegevens informatie over de configuratie van uw software, zoals het besturings systeem en de versie, het IP-adres, de DNS-naam en de naam van het werk station. Micro soft verzamelt geen namen, adressen of andere contact gegevens.
+Microsoft verzamelt automatisch gebruiks- en prestatiegegevens via uw gebruik van de Service Map-service. Microsoft gebruikt deze gegevens om de kwaliteit, beveiliging en integriteit van de Service Map-service te bieden en te verbeteren. Om nauwkeurige en efficiënte probleemoplossingsmogelijkheden te bieden, bevatten de gegevens informatie over de configuratie van uw software, zoals besturingssysteem en versie, IP-adres, DNS-naam en werkstationnaam. Microsoft verzamelt geen namen, adressen of andere contactgegevens.
 
-Zie de [privacyverklaring voor micro soft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132)voor meer informatie over het verzamelen en gebruiken van gegevens.
+Zie de [privacyverklaring van Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132)voor meer informatie over het verzamelen en gebruiken van gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [Zoek opdrachten in Logboeken](../../azure-monitor/log-query/log-query-overview.md) in log Analytics om gegevens op te halen die worden verzameld door servicetoewijzing.
+Meer informatie over [logboekzoekopdrachten](../../azure-monitor/log-query/log-query-overview.md) in Log Analytics om gegevens op te halen die zijn verzameld door Service Map.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als er geen problemen installeren of uitvoeren van de Service Map, kunt in deze sectie u. Als u uw probleem nog steeds niet kunt oplossen, neem contact op met Microsoft Support.
+Als u problemen hebt met het installeren of uitvoeren van servicekaart, kan deze sectie u helpen. Als u uw probleem nog steeds niet oplossen, neemt u contact op met Microsoft Support.
 
-### <a name="dependency-agent-installation-problems"></a>Problemen met de installatie van de afhankelijkheid agents
+### <a name="dependency-agent-installation-problems"></a>Installatieproblemen met afhankelijkheidsagent
 
-#### <a name="installer-prompts-for-a-reboot"></a>Installatieprogramma wordt u gevraagd om een opnieuw opstarten
-Bij de installatie of het verwijderen van de afhankelijkheids agent is *over het algemeen* geen herstart vereist. In sommige zeldzame gevallen vereist Windows Server echter opnieuw worden opgestart om door te gaan met een installatie. Dit gebeurt wanneer een afhankelijkheid, doorgaans de herdistribueerbare micro soft Visual C++ Redistributable-bibliotheek, opnieuw moet worden opgestart vanwege een vergrendeld bestand.
+#### <a name="installer-prompts-for-a-reboot"></a>Installer vraagt om een reboot
+De afhankelijkheidsagent vereist *over het algemeen* geen herstart bij installatie of verwijdering. In bepaalde zeldzame gevallen vereist Windows Server echter een reboot om door te gaan met een installatie. Dit gebeurt wanneer een afhankelijkheid, meestal de Microsoft Visual C++ Redistributable-bibliotheek, opnieuw moet worden opgestart vanwege een vergrendeld bestand.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Bericht ' kan niet voor het installeren van de agent voor afhankelijkheden: Visual Studio-Runtime-bibliotheken kunnen niet installeren (code = [codenummer]) ' wordt weergegeven
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Bericht 'Kan afhankelijkheidsagent niet installeren: Visual Studio Runtime-bibliotheken kunnen niet worden geïnstalleerd (code = [code_number])" wordt weergegeven
 
-De agent voor Microsoft Dependency is gebouwd op de runtime-bibliotheken voor Microsoft Visual Studio. U krijgt een bericht als er een probleem tijdens de installatie van de bibliotheken. 
+De Microsoft Dependency-agent is gebouwd op de runtime-bibliotheken van Microsoft Visual Studio. U ontvangt een bericht als er een probleem is tijdens de installatie van de bibliotheken. 
 
-De runtime-bibliotheek installatieprogramma's maken Logboeken in de map %LOCALAPPDATA%\temp. Het bestand is `dd_vcredist_arch_yyyymmddhhmmss.log`, waarbij *arch* `x86` of `amd64` is en *jjjjmmdduummss* de datum en tijd (24-uurs klok) is wanneer het logboek is gemaakt. Het logboek bevat informatie over het probleem dat wordt geblokkeerd door de installatie.
+De installatieprogramma's voor runtime-bibliotheek maken logboeken in de map %LOCALAPPDATA%\temp. Het bestand `dd_vcredist_arch_yyyymmddhhmmss.log`is , `x86` `amd64` waar *boog* is of en *yyyymmddhhmmss* is de datum en tijd (24-uurs klok) wanneer het logboek werd gemaakt. Het logboek bevat details over het probleem dat de installatie blokkeert.
 
-Het kan handig zijn om eerst de [meest recente runtime-bibliotheken](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) te installeren.
+Het kan handig zijn om eerst de [nieuwste runtime-bibliotheken](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) te installeren.
 
-De volgende tabel bevat de codenummers en voorgestelde oplossingen.
+In de volgende tabel worden codenummers en voorgestelde resoluties weergegeven.
 
 | Code | Beschrijving | Oplossing |
 |:--|:--|:--|
-| 0x17 | Het installatieprogramma bibliotheek vereist een Windows-update die is niet geïnstalleerd. | Zoek in de meest recente bibliotheek installer-logboekbestand.<br><br>Als een verwijzing naar `Windows8.1-KB2999226-x64.msu` wordt gevolgd door een regel `Error 0x80240017: Failed to execute MSU package,` hebt u niet de vereiste onderdelen om KB2999226 te installeren. Volg de instructies in de sectie vereisten in [Universal C runtime in het Windows](https://support.microsoft.com/kb/2999226) -artikel. Mogelijk moet u Windows Update uitvoeren en meerdere keren opnieuw om de vereiste onderdelen installeren.<br><br>Voer het installatieprogramma van Microsoft Dependency agent opnieuw uit. |
+| 0x17 | Het bibliotheekinstallatieprogramma vereist een Windows-update die niet is geïnstalleerd. | Kijk in het meest recente bibliotheekinstallatielogboek.<br><br>Als een `Windows8.1-KB2999226-x64.msu` verwijzing naar wordt `Error 0x80240017: Failed to execute MSU package,` gevolgd door een regel, hebt u niet de vereisten om KB2999226 te installeren. Volg de instructies in de sectie Vereisten in [Universal C Runtime in](https://support.microsoft.com/kb/2999226) Windows-artikel. Mogelijk moet u Windows Update meerdere keren uitvoeren en opnieuw opstarten om de vereisten te installeren.<br><br>Voer het installatieprogramma van de Microsoft Dependency agent opnieuw uit. |
 
-### <a name="post-installation-issues"></a>Na de installatie problemen
+### <a name="post-installation-issues"></a>Problemen na de installatie
 
-#### <a name="server-doesnt-appear-in-service-map"></a>Server niet wordt weergegeven in het Serviceoverzicht
+#### <a name="server-doesnt-appear-in-service-map"></a>Server wordt niet weergegeven in servicekaart
 
-Als de installatie van de afhankelijkheids agent is voltooid, maar u de computer niet ziet in de Servicetoewijzing oplossing:
-* Is de agent voor afhankelijkheden zijn geïnstalleerd? U kunt dit controleren door te controleren of de service is geïnstalleerd en uitgevoerd.<br><br>
-**Windows**: zoek naar de service met de naam **micro soft dependency agent**.
-**Linux**: zoek naar het actieve proces **micro soft-dependency-agent**.
+Als de installatie van uw afhankelijkheidsagent is geslaagd, maar u uw machine niet ziet in de servicekaartoplossing:
+* Is de afhankelijkheidsagent geïnstalleerd? U dit valideren door te controleren of de service is geïnstalleerd en uitgevoerd.<br><br>
+**Windows:** Zoek naar de service met de naam **Microsoft Dependency agent**.
+**Linux**: Kijk voor het lopende proces **microsoft-afhankelijkheid-agent**.
 
-* Bevindt u zich op de [laag log Analytics gratis](https://azure.microsoft.com/pricing/details/monitor/)? Met het gratis abonnement kunnen Maxi maal vijf unieke Servicetoewijzing machines worden gemaakt. Alle volgende computers worden niet weer gegeven in Servicetoewijzing, zelfs niet als de voor gaande vijf geen gegevens meer verzenden.
+* Bent u op de [Log Analytics gratis laag?](https://azure.microsoft.com/pricing/details/monitor/) Het gratis abonnement biedt maximaal vijf unieke Service Map-machines. Latere machines worden niet weergegeven in servicekaart, zelfs niet als de voorgaande vijf geen gegevens meer verzenden.
 
-* Verzendt uw server logboek-en prestatie gegevens naar Azure Monitor logboeken? Ga naar Azure Monitor\Logs en voer de volgende query uit voor uw computer: 
+* Verzendt uw server logboek- en perf-gegevens naar Azure Monitor-logboeken? Ga naar Azure Monitor\Logs en voer de volgende query voor uw computer uit: 
 
     ```kusto
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-Krijgt u een aantal gebeurtenissen in de resultaten? Zijn de gegevens recente? Als dit het geval is, wordt uw Log Analytics-agent correct uitgevoerd en communiceert deze met de werk ruimte. Als dat niet het geval is, controleert u de agent op uw computer: [log Analytics-agent voor Windows-probleem oplossing](../platform/agent-windows-troubleshoot.md) of [log Analytics agent voor Linux-probleem oplossing](../platform/agent-linux-troubleshoot.md).
+Heb je een verscheidenheid aan gebeurtenissen in de resultaten? Zijn de gegevens recent? Als dat het zo is, werkt uw Log Analytics-agent correct en communiceert u met de werkruimte. Zo niet, controleer dan de agent op uw machine: [Log Analytics-agent voor Windows-probleemoplossing](../platform/agent-windows-troubleshoot.md) of [Log Analytics-agent voor het oplossen van problemen met Linux.](../platform/agent-linux-troubleshoot.md)
 
-#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server wordt weergegeven in het Serviceoverzicht, maar er zijn geen processen is
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server wordt weergegeven in servicekaart, maar heeft geen processen
 
-Als uw machine in Servicetoewijzing wordt weer gegeven, maar er geen proces-of verbindings gegevens zijn, geeft dat aan dat de afhankelijkheids agent is geïnstalleerd en wordt uitgevoerd, maar het kernel-stuur programma is niet geladen. 
+Als u uw machine in Servicemap ziet, maar geen proces- of verbindingsgegevens heeft, geeft dit aan dat de afhankelijkheidsagent is geïnstalleerd en uitgevoerd, maar dat het kernelstuurprogramma niet is geladen. 
 
-Controleer de `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) of `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). De laatste regels van het bestand aangeven waarom de kernel niet laden. De kernel kan bijvoorbeeld niet worden ondersteund op Linux als u de kernel wordt bijgewerkt.
+Controleer `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` de (Windows) of `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). De laatste regels van het bestand moeten aangeven waarom de kernel niet is geladen. De kernel wordt bijvoorbeeld mogelijk niet ondersteund op Linux als u uw kernel hebt bijgewerkt.
 
 ## <a name="feedback"></a>Feedback
 
-Hebt u feedback over Servicetoewijzing of deze documentatie?  Bezoek onze [pagina met gebruikers spraak](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), waar u de functies kunt Voorst Ellen of bestaande suggesties aan het stemt.
+Heeft u feedback voor ons over Service Map of deze documentatie?  Bezoek onze [user voice-pagina,](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)waar u functies voorstellen of bestaande suggesties stemmen.

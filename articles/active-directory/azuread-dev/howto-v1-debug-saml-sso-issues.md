@@ -1,6 +1,6 @@
 ---
-title: Fout opsporing op SAML gebaseerde eenmalige aanmelding op basis van Azure Active Directory | Microsoft Docs
-description: Fout opsporing op SAML gebaseerde eenmalige aanmelding bij toepassingen in Azure Active Directory.
+title: Foutopsporing saml-gebaseerde aanmelding - Azure Active Directory | Microsoft Documenten
+description: Foutopsporing op SAML-gebaseerde enkele aanmelding voor toepassingen in Azure Active Directory.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,95 +12,96 @@ ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: ad948521a376dc8bdb3d868de643ce103f56735d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d92b43b47a20a75d2c8b6becb69cfee5829e80f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164602"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154845"
 ---
-# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Fout opsporing op SAML gebaseerde eenmalige aanmelding bij toepassingen in Azure Active Directory
+# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Foutopsporing op SAML-gebaseerde enkele aanmelding voor toepassingen in Azure Active Directory
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Meer informatie over het zoeken en oplossen van problemen met [eenmalige aanmelding](../manage-apps/what-is-single-sign-on.md) voor toepassingen in azure Active Directory (Azure AD) die ondersteuning bieden voor [Security Assertion Markup Language (SAML) 2,0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language). 
+Meer informatie over het zoeken en oplossen [van afzonderlijke aanmeldingsproblemen](../manage-apps/what-is-single-sign-on.md) voor toepassingen in Azure Active Directory (Azure AD) die ondersteuning bieden voor [SAML (Security Assertion Markup Language) 2.0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language). 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U wordt aangeraden de [beveiligde aanmeldings extensie voor mijn apps](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)te installeren. Met deze browser extensie kunt u eenvoudig de SAML-aanvraag en informatie over SAML-antwoorden verzamelen die u nodig hebt om problemen met eenmalige aanmelding op te lossen. Als u de uitbrei ding niet kunt installeren, wordt in dit artikel beschreven hoe u problemen kunt oplossen met en zonder dat de extensie is geïnstalleerd.
+We raden u aan de [aanmeldingsextensie Mijn apps secure te](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)installeren. Deze browserextensie maakt het eenvoudig om de SAML-aanvraag en SAML-antwoordgegevens te verzamelen die u nodig hebt om problemen met eenmalige aanmelding op te lossen. In het geval u de extensie niet installeren, toont dit artikel u hoe u problemen oplossen, zowel met als zonder de geïnstalleerde extensie.
 
-Gebruik een van de volgende koppelingen om de beveiligde aanmeldings extensie voor mijn apps te downloaden en te installeren.
+Als u de aangemeldsextensie Mijn apps Secure wilt downloaden en installeren, gebruikt u een van de volgende koppelingen.
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Micro soft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
-## <a name="test-saml-based-single-sign-on"></a>Op SAML gebaseerde eenmalige aanmelding testen
+## <a name="test-saml-based-single-sign-on"></a>Saml-gebaseerde aanmelding testen
 
-Op SAML gebaseerde eenmalige aanmelding op basis van Azure AD en een doel toepassing testen:
+Ga als belangrijkste aanmelding voor SAML tussen Azure AD en een doeltoepassing:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder of een andere beheerder die gemachtigd is om toepassingen te beheren.
-1. Selecteer in de Blade links **Azure Active Directory**en selecteer vervolgens **bedrijfs toepassingen**. 
-1. Selecteer in de lijst met bedrijfs toepassingen de toepassing waarvoor u eenmalige aanmelding wilt testen en klik vervolgens in de opties aan de linkerkant op **eenmalige aanmelding**selecteren.
-1. Als u de test ervaring voor eenmalige aanmelding op basis van SAML wilt openen, gaat u naar **test eenmalige aanmelding** (stap 5). Als de knop **testen** grijs wordt weer gegeven, moet u de vereiste kenmerken eerst invullen en opslaan in het gedeelte **basis configuratie van SAML** .
-1. Gebruik op de Blade **eenmalige aanmelding testen** de bedrijfs referenties om u aan te melden bij de doel toepassing. U kunt zich aanmelden als de huidige gebruiker of als een andere gebruiker. Als u zich als een andere gebruiker aanmeldt, wordt u gevraagd om u te verifiëren.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als globale beheerder of andere beheerder die gemachtigd is om toepassingen te beheren.
+1. Selecteer in het linkerblad **Azure Active Directory**en selecteer vervolgens **Enterprise-toepassingen**. 
+1. Selecteer in de lijst met bedrijfstoepassingen de toepassing waarvoor u één aanmelding wilt testen en selecteer vervolgens **Eenmalig aanmelden**.
+1. Als u de saml-gebaseerde testervaring voor één aanmelding wilt openen, gaat u naar **Eenmalige aanmelding testen** (stap 5). Als de **knop Testen** grijs is, moet u eerst de vereiste kenmerken invullen en opslaan in de sectie **BasisSAML-configuratie.**
+1. Gebruik in het **enkelaanmeldingsblad testen** uw bedrijfsreferenties om u aan te melden bij de doeltoepassing. U zich aanmelden als de huidige gebruiker of als een andere gebruiker. Als u zich aanmeldt als een andere gebruiker, wordt u door een prompt gevraagd om te verifiëren.
 
-    ![Scherm opname van de pagina SAML SSO testen](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
+    ![Schermafbeelding van de SAML SSO-pagina voor testen](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
 
-Als u bent aangemeld, is de test voltooid. In dit geval heeft Azure AD een SAML-antwoord token uitgegeven aan de toepassing. De toepassing heeft het SAML-token gebruikt om u aan te melden.
+Als u bent aangemeld, is de test geslaagd. In dit geval heeft Azure AD een SAML-antwoordtoken aan de toepassing uitgegeven. De toepassing gebruikte het SAML-token om u met succes aan te melden.
 
-Als er een fout optreedt op de aanmeldings pagina van het bedrijf of de pagina van de toepassing, gebruikt u een van de volgende secties om de fout op te lossen.
+Als er een fout optreedt op de aanmeldingspagina van het bedrijf of de pagina van de toepassing, gebruikt u een van de volgende secties om de fout op te lossen.
 
-## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Een aanmeldings fout op de aanmeldings pagina van uw bedrijf oplossen
+## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Een aanmeldingsfout oplossen op de aanmeldingspagina van uw bedrijf
 
-Wanneer u zich probeert aan te melden, wordt mogelijk een fout weer gegeven op de aanmeldings pagina van uw bedrijf, zoals in het volgende voor beeld.
+Wanneer u zich probeert aan te melden, ziet u mogelijk een fout op uw aanmeldingspagina van uw bedrijf die vergelijkbaar is met het volgende voorbeeld.
 
-![Voor beeld van een fout op de aanmeldings pagina van het bedrijf](./media/howto-v1-debug-saml-sso-issues/error.png)
+![Voorbeeld van een fout op de aanmeldingspagina van het bedrijf](./media/howto-v1-debug-saml-sso-issues/error.png)
 
-Als u deze fout wilt opsporen, hebt u het fout bericht en de SAML-aanvraag nodig. Met de beveiligde aanmeldings extensie van mijn apps wordt deze informatie automatisch verzameld en worden richt lijnen voor oplossingen weer gegeven in azure AD.
+Als u deze fout wilt opsporen, hebt u het foutbericht en het SAML-verzoek nodig. Met de aanmeldingsextensie Mijn apps secure verzamelt deze informatie automatisch deze informatie en worden de oplossingsrichtlijnen weergegeven op Azure AD.
 
-### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>De aanmeldings fout oplossen met de beveiligde aanmeldings extensie van mijn apps geïnstalleerd
+### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>De aanmeldingsfout oplossen met de aangemeldsextensie Mijn apps secure
 
-1. Als er een fout optreedt, wordt u teruggeleid naar de Blade **eenmalige aanmelding van Azure AD-test** .
-1. Selecteer op de Blade **eenmalige aanmelding testen** **de optie de SAML-aanvraag downloaden**.
-1. Er moeten specifieke richt lijnen voor oplossingen worden weer gegeven op basis van de fout en de waarden in de SAML-aanvraag.
-1. Er wordt een **Fix it** -knop weer geven om de configuratie in azure AD automatisch bij te werken om het probleem op te lossen. Als u deze knop niet ziet, wordt het aanmeldings probleem niet veroorzaakt door een onjuiste configuratie in azure AD.
+1. Wanneer er een fout optreedt, wordt u door de extensie omgeleid naar het **azure AD-testblad voor één aanmelding.**
+1. Selecteer in het **enkeltekenblad testen** de optie Het **SAML-verzoek downloaden**.
+1. U ziet specifieke oplossingsrichtlijnen op basis van de fout en de waarden in de SAML-aanvraag.
+1. U ziet de knop **Fixit om** de configuratie in Azure AD automatisch bij te werken om het probleem op te lossen. Als u deze knop niet ziet, is het aanmeldingsprobleem niet te wijten aan een verkeerde configuratie op Azure AD.
 
-Als er geen oplossing wordt aangeboden voor de aanmeldings fout, wordt u aangeraden het tekstvak feedback te gebruiken om ons op de hoogte te stellen.
+Als er geen oplossing is voorzien voor de aanmeldingsfout, raden we u aan het tekstvak voor feedback te gebruiken om ons hiervan op de hoogte te stellen.
 
-### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>Om de fout op te lossen zonder de beveiligde aanmeldings extensie mijn apps te installeren
+### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>De fout oplossen zonder de aanmeldingsextensie Mijn apps secure te installeren
 
-1. Kopieer het fout bericht in de rechter benedenhoek van de pagina. Het fout bericht bevat:
-    - Een CorrelationID en tijds tempel. Deze waarden zijn belang rijk wanneer u een ondersteunings aanvraag maakt met micro soft omdat ze de technici helpen bij het identificeren van uw probleem en een nauw keurige oplossing bieden voor uw probleem.
-    - Een instructie voor het identificeren van de hoofd oorzaak van het probleem.
-1. Ga terug naar Azure AD en zoek de Blade **eenmalige aanmelding testen** .
-1. Plak in het bovenstaande tekstvak de **richt lijnen voor probleem oplossing**de fout melding.
-1. Klik op **oplossings richtlijnen ophalen** om de stappen voor het oplossen van het probleem weer te geven. Voor de richt lijnen is mogelijk informatie vereist van de SAML-aanvraag of het SAML-antwoord. Als u de beveiligde aanmeldings extensie voor mijn apps niet gebruikt, hebt u mogelijk een hulp programma zoals [Fiddler](https://www.telerik.com/fiddler) nodig om de SAML-aanvraag en het-antwoord op te halen.
-1. Controleer of de bestemming in de SAML-aanvraag overeenkomt met de URL voor de SSO-service voor eenmalige aanmelding die is verkregen van Azure AD.
-1. Controleer of de uitgever in de SAML-aanvraag dezelfde id is die u hebt geconfigureerd voor de toepassing in azure AD. Azure AD maakt gebruik van de verlener om een toepassing in uw directory te vinden.
-1. Controleer of AssertionConsumerServiceURL de toepassing verwacht het SAML-token van Azure AD te ontvangen. U kunt deze waarde configureren in azure AD, maar dit is niet verplicht als deze deel uitmaakt van de SAML-aanvraag.
+1. Kopieer het foutbericht rechtsonder op de pagina. Het foutbericht bevat:
+    - Een Correlatie-ID en tijdstempel. Deze waarden zijn belangrijk wanneer u een ondersteuningsaanvraag maakt bij Microsoft, omdat ze de technici helpen uw probleem te identificeren en een nauwkeurige oplossing voor uw probleem te bieden.
+    - Een verklaring waarin de oorzaak van het probleem wordt geïdentificeerd.
+1. Ga terug naar Azure AD en zoek het **mes voor één aanmelding testen.**
+1. Plak het foutbericht in het tekstvak boven **Richtlijnen voor resolutie**weergeven.
+1. Klik **op Richtlijnen voor resolutie opvragen** om stappen weer te geven voor het oplossen van het probleem. De richtlijnen vereisen mogelijk informatie van het SAML-verzoek of het SAML-antwoord. Als u de aanmeldingsextensie Mijn apps secure niet gebruikt, hebt u mogelijk een tool zoals [Fiddler](https://www.telerik.com/fiddler) nodig om het SAML-verzoek en -antwoord op te halen.
+1. Controleer of de bestemming in de SAML-aanvraag overeenkomt met de SAML Single Sign-On Service URL verkregen uit Azure AD.
+1. Controleer of de uitgever in het SAML-verzoek dezelfde id is die u hebt geconfigureerd voor de toepassing in Azure AD. Azure AD gebruikt de uitgever om een toepassing in uw map te vinden.
+1. Verificatie De URL van AssertionConsumerService is de plaats waar de toepassing het SAML-token van Azure AD verwacht te ontvangen. U deze waarde configureren in Azure AD, maar het is niet verplicht als deze deel uitmaakt van de SAML-aanvraag.
 
 
-## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Een aanmeldings fout op de toepassings pagina oplossen
+## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Een aanmeldingsfout op de toepassingspagina oplossen
 
-U kunt zich aanmelden en vervolgens een fout zien op de pagina van de toepassing. Dit doet zich voor wanneer Azure AD een token aan de toepassing heeft uitgegeven, maar de aanvraag niet wordt geaccepteerd.
+U zich met succes aanmelden en vervolgens een fout zien op de pagina van de toepassing. Dit gebeurt wanneer Azure AD een token aan de toepassing heeft uitgegeven, maar de toepassing het antwoord niet accepteert.
 
-U kunt de fout oplossen door de volgende stappen uit:
+Voer de volgende stappen uit om de fout op te lossen:
 
-1. Als de toepassing zich in de Azure AD-galerie bevindt, controleert u of u alle stappen hebt gevolgd voor het integreren van de toepassing met Azure AD. Zie de [lijst met zelf studies voor SaaS-toepassingen](../saas-apps/tutorial-list.md)voor informatie over de integratie-instructies voor uw toepassing.
-1. Het SAML-antwoord ophalen.
-    - Als de beveiligde aanmeldings extensie voor mijn apps is geïnstalleerd, klikt u op de Blade **eenmalige aanmelding testen** op **het SAML-antwoord downloaden**.
-    - Als de extensie niet is geïnstalleerd, gebruikt u een hulp programma zoals [Fiddler](https://www.telerik.com/fiddler) om het SAML-antwoord op te halen.
-1. U ziet deze elementen in het SAML-respons token:
-   - Unieke id van de gebruiker van de NameID-waarde en-indeling
-   - Claims die zijn uitgegeven in het token
+1. Als de toepassing zich in de Azure AD-galerie bevindt, controleert u of u alle stappen hebt gevolgd voor de integratie van de toepassing met Azure AD. Zie de [lijst met zelfinzetertutorials voor saas-toepassingen](../saas-apps/tutorial-list.md)om de integratie-instructies voor uw toepassing te vinden.
+1. Haal het SAML-antwoord op.
+    - Als de aangemeldsextensie Mijn apps secure is geïnstalleerd, klikt u in het **aanmeldingsblad Voor één aanmelding van mijn** apps op het **SAML-antwoord downloaden**.
+    - Als de extensie niet is geïnstalleerd, gebruikt u een gereedschap zoals [Fiddler](https://www.telerik.com/fiddler) om het SAML-antwoord op te halen.
+1. Let op deze elementen in het SAML-antwoordtoken:
+   - Unieke id van de gebruiker van de waarde en notatie van NameID
+   - Claims uitgegeven in het token
    - Certificaat dat wordt gebruikt om het token te ondertekenen.
 
-     Zie het [SAML-protocol voor eenmalige aanmelding](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor meer informatie over het SAML-antwoord.
+     Zie [Enkelteken-saml-protocol](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor meer informatie over het SAML-antwoord .
 
-1. Nu u het SAML-antwoord hebt gecontroleerd, raadpleegt u de [fout op de pagina van een toepassing nadat](../manage-apps/application-sign-in-problem-application-error.md) u zich hebt aangemeld voor hulp bij het oplossen van het probleem. 
-1. Als u zich nog steeds niet kunt aanmelden, kunt u de leverancier van de toepassing vragen wat er ontbreekt in het SAML-antwoord.
+1. Nu u het SAML-antwoord hebt beoordeeld, raadpleegt u [Fout op de pagina van een toepassing nadat u zich hebt aanmelden](../manage-apps/application-sign-in-problem-application-error.md) voor richtlijnen voor het oplossen van het probleem. 
+1. Als u zich nog steeds niet met succes aanmelden, u de leverancier van de toepassing vragen wat er ontbreekt in het SAML-antwoord.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu eenmalige aanmelding aan uw toepassing werkt, kunt u het inrichten van [gebruikers en](../manage-apps/user-provisioning.md) het ongedaan maken van de inrichting van SaaS-toepassingen automatiseren of aan de [slag met voorwaardelijke toegang](../conditional-access/app-based-conditional-access.md).
+Nu één aanmelding werkt voor uw toepassing, u [het inrichten en de-provisioning van gebruikers automatiseren naar SaaS-toepassingen](../manage-apps/user-provisioning.md) of [aan de slag gaan met voorwaardelijke toegang.](../conditional-access/app-based-conditional-access.md)

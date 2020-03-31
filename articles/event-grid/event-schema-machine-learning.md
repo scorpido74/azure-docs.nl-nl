@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid Machine Learning-gebeurtenis schema
-description: Hierin worden de eigenschappen beschreven die worden gegeven voor Machine Learning-werkruimte gebeurtenissen met Azure Event Grid
+title: Gebeurtenisraster Machine Learning-gebeurtenisschema azure-gebeurtenisraster
+description: Beschrijft de eigenschappen die worden geleverd voor Machine Learning Workspace-gebeurtenissen met Azure Event Grid
 services: event-grid
 author: jenns
 ms.service: event-grid
@@ -8,37 +8,37 @@ ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
 ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79202141"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Event Grid-gebeurtenis schema voor Azure Machine Learning
+# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Event Grid-gebeurtenisschema voor Azure Machine Learning
 
-In dit artikel vindt u de eigenschappen en het schema voor machine learning werkruimte gebeurtenissen. Zie [Azure Event grid-gebeurtenis schema](event-schema.md)voor een inleiding tot gebeurtenis schema's.
+In dit artikel vindt u de eigenschappen en het schema voor gebeurtenissen in de werkruimte voor machine learning. Zie Azure Event Grid-gebeurtenisschema voor een inleiding tot gebeurtenisschema ['Azure Event Grid'.](event-schema.md)
 
-Zie voor een lijst met voorbeeld scripts en zelf studies de bron van de [AzureML-gebeurtenis](event-sources.md#azure-machine-learning).
+Zie [AzureML-gebeurtenisbron](event-sources.md#azure-machine-learning)voor een lijst met voorbeeldscripts en -zelfstudies.
 
-## <a name="available-event-types"></a>Beschik bare gebeurtenis typen
+## <a name="available-event-types"></a>Beschikbare gebeurtenistypen
 
-Azure Machine Learning worden de volgende gebeurtenis typen meeverzonden:
+Azure Machine Learning zendt de volgende gebeurtenistypen uit:
 
-| Gebeurtenis type | Beschrijving |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Micro soft. MachineLearningServices. ModelRegistered | Deze gebeurtenis treedt op wanneer een nieuw model of model versie is geregistreerd. |
-| Micro soft. MachineLearningServices. ModelDeployed | Deze gebeurtenis treedt op wanneer model (sen) met succes is geïmplementeerd op een eind punt. |
-| Micro soft. MachineLearningServices. RunCompleted | Deze gebeurtenis treedt op wanneer een uitvoering is voltooid. |
-| Micro soft. MachineLearningServices. DatasetDriftDetected | Deze gebeurtenis treedt op wanneer drift door een DataSet-drijf monitor wordt gedetecteerd. |
-| Micro soft. MachineLearningServices. RunStatusChanged | Deze gebeurtenis treedt op wanneer de status van een uitvoering wordt gewijzigd in failed. |
+| Microsoft.MachineLearningServices.ModelRegistered | Verhoogd wanneer een nieuwe model- of modelversie met succes is geregistreerd. |
+| Microsoft.MachineLearningServices.ModelDeployed | Verhoogd wanneer model(s) zijn geïmplementeerd op een eindpunt. |
+| Microsoft.MachineLearningServices.RunCompleted | Verhoogd wanneer een run is voltooid. |
+| Microsoft.MachineLearningServices.DatasetDriftdetected | Verhoogd wanneer een driftmonitor van de gegevensset drift detecteert. |
+| Microsoft.MachineLearningServices.RunStatusChanged | Verhoogd wanneer een run status verandert in 'mislukt'. |
 
-## <a name="the-contents-of-an-event-response"></a>De inhoud van een gebeurtenis reactie
+## <a name="the-contents-of-an-event-response"></a>De inhoud van een gebeurtenisantwoord
 
-Wanneer een gebeurtenis wordt geactiveerd, verzendt de Event Grid-Service gegevens over die gebeurtenis om het eind punt te abonneren.
+Wanneer een gebeurtenis wordt geactiveerd, verzendt de gebeurtenisrasterservice gegevens over die gebeurtenis naar een endpoint van een abonnement.
 
-Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruitzien.
+Deze sectie bevat een voorbeeld van hoe die gegevens er voor elke gebeurtenis uit zouden zien.
 
-### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>Micro soft. MachineLearningServices. ModelRegistered-gebeurtenis
+### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>Gebeurtenis Microsoft.MachineLearningServices.ModelRegistered
 
 ```json
 [{
@@ -63,7 +63,7 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesmodeldeployed-event"></a>Micro soft. MachineLearningServices. ModelDeployed-gebeurtenis
+### <a name="microsoftmachinelearningservicesmodeldeployed-event"></a>Microsoft.MachineLearningServices.ModelDeployed-gebeurtenis
 
 ```json
 [{
@@ -89,7 +89,7 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesruncompleted-event"></a>Micro soft. MachineLearningServices. RunCompleted-gebeurtenis
+### <a name="microsoftmachinelearningservicesruncompleted-event"></a>Microsoft.MachineLearningServices.RunCompleted- gebeurtenis
 
 ```json
 [{
@@ -125,7 +125,7 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesdatasetdriftdetected-event"></a>Micro soft. MachineLearningServices. DatasetDriftDetected-gebeurtenis
+### <a name="microsoftmachinelearningservicesdatasetdriftdetected-event"></a>Gebeurtenis Microsoft.MachineLearningServices.DatasetDriftDegedetecteerd
 
 ```json
 [{
@@ -149,7 +149,7 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Micro soft. MachineLearningServices. RunStatusChanged-gebeurtenis
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Gebeurtenis Microsoft.MachineLearningServices.RunStatusChanged
 
 ```json
 [{
@@ -189,81 +189,81 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
 
 
 
-## <a name="event-properties"></a>Gebeurtenis eigenschappen
+## <a name="event-properties"></a>Gebeurtenis-eigenschappen
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid levert deze waarde. |
-| subject | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
-| eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| id | tekenreeks | De unieke id voor de gebeurtenis. |
-| data | object | Gebeurtenis gegevens van Blob-opslag. |
-| dataVersion | tekenreeks | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
-| metadataVersion | tekenreeks | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
+| onderwerp | tekenreeks | Volledig resourcepad naar de gebeurtenisbron. Dit veld is niet schrijfbaar. Event Grid biedt deze waarde. |
+| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| eventTime | tekenreeks | De tijd dat de gebeurtenis wordt gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | Unieke id voor de gebeurtenis. |
+| data | object | Gebeurtenisgegevens voor blobopslag. |
+| dataVersion | tekenreeks | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
+| metadataVersion | tekenreeks | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
-Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
+Het gegevensobject heeft de volgende eigenschappen voor elk gebeurtenistype:
 
-### <a name="microsoftmachinelearningservicesmodelregistered"></a>Micro soft. MachineLearningServices. ModelRegistered
+### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.MachineLearningServices.ModelRegistered
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | ModelName | tekenreeks | De naam van het model dat is geregistreerd. |
-| ModelVersion | tekenreeks | De versie van het model dat is geregistreerd. |
-| ModelTags | object | De tags van het model dat is geregistreerd. |
-| ModelProperties | object | De eigenschappen van het model dat is geregistreerd. |
+| ModelVersie | tekenreeks | De versie van het model dat is geregistreerd. |
+| Modeltags | object | De tags van het model dat is geregistreerd. |
+| ModelEigenschappen | object | De eigenschappen van het model dat is geregistreerd. |
 
-### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Micro soft. MachineLearningServices. ModelDeployed
+### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.MachineLearningServices.ModelDeployed
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | ServiceName | tekenreeks | De naam van de geïmplementeerde service. |
-| ServiceComputeType | tekenreeks | Het reken type (bijvoorbeeld ACI, AKS) van de geïmplementeerde service. |
-  | ModelIds | tekenreeks | Een door komma's gescheiden lijst met model-Id's. De Id's van de modellen die in de service zijn geïmplementeerd. |
+| ServiceComputeType | tekenreeks | Het rekentype (bijvoorbeeld ACI, AKS) van de geïmplementeerde service. |
+  | Modelids | tekenreeks | Een komma gescheiden lijst van model-id's. De id's van de modellen die in de service worden geïmplementeerd. |
 | ServiceTags | object | De tags van de geïmplementeerde service. |
-| ServiceProperties | object | De eigenschappen van de geïmplementeerde service. |
+| ServiceEigenschappen | object | De eigenschappen van de geïmplementeerde service. |
 
-### <a name="microsoftmachinelearningservicesruncompleted"></a>Micro soft. MachineLearningServices. RunCompleted
-
-| Eigenschap | Type | Beschrijving |
-| -------- | ---- | ----------- |
-| ExperimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
-| Experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
-| RunId | tekenreeks | De ID van de uitvoering die is voltooid. |
-| RunType | tekenreeks | Het type uitvoering van de voltooide uitvoering. |
-| RunTags | object | De labels van de voltooide uitvoering. |
-| RunProperties | object | De eigenschappen van de voltooide uitvoering. |
-
-### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Micro soft. MachineLearningServices. DatasetDriftDetected
+### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.MachineLearningServices.RunCompleted
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| DataDriftId | tekenreeks | De ID van de gegevensdrijf monitor die de gebeurtenis heeft geactiveerd. |
-| DataDriftName | tekenreeks | De naam van de gegevensdrijf monitor die de gebeurtenis heeft geactiveerd. |
-| RunId | tekenreeks | De ID van de uitvoering die gegevens drift heeft gedetecteerd. |
-| BaseDatasetId | tekenreeks | De ID van de basis gegevensset die wordt gebruikt voor het detecteren van drift. |
-| TargetDatasetId | tekenreeks | De ID van de doel gegevensset die wordt gebruikt voor het detecteren van drift. |
-| DriftCoefficient | double | Het coëfficiënt resultaat dat de gebeurtenis heeft geactiveerd. |
-| StartTime | datum/tijd | De begin tijd van de tijd reeks voor de doel gegevensset die heeft geleid tot de drift-detectie.  |
-| EndTime | datum/tijd | De eind tijd van de tijd reeks van de doel gegevensset die heeft geleid tot de drift-detectie. |
+| ExperimentId (ExperimentId) | tekenreeks | De ID van het experiment waartoe de run behoort. |
+| ExperimentName | tekenreeks | De naam van het experiment waartoe de run behoort. |
+| RunId (RunId) | tekenreeks | De ID van de Run die is voltooid. |
+| RunType (RunType) | tekenreeks | Het runtype van de voltooide run. |
+| RunTags | object | De tags van de voltooide run. |
+| RunEigenschappen | object | De eigenschappen van de voltooide run. |
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Micro soft. MachineLearningServices. RunStatusChanged
+### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.MachineLearningServices.DatasetDriftdetected
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| ExperimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
-| Experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
-| RunId | tekenreeks | De ID van de uitvoering die is voltooid. |
-| RunType | tekenreeks | Het type uitvoering van de voltooide uitvoering. |
-| RunTags | object | De labels van de voltooide uitvoering. |
-| RunProperties | object | De eigenschappen van de voltooide uitvoering. |
-| RunStatus | tekenreeks | De status van de uitvoering. |
+| DataDriftId | tekenreeks | De id van de gegevensdriftmonitor die de gebeurtenis heeft geactiveerd. |
+| DataDriftName | tekenreeks | De naam van de monitor gegevensdrift die de gebeurtenis heeft geactiveerd. |
+| RunId (RunId) | tekenreeks | De ID van de run die gegevensdrift detecteerde. |
+| BaseDatasetId (BaseDatasetId) | tekenreeks | De ID van de basisgegevensset die wordt gebruikt om drift te detecteren. |
+| Doeldatasetid | tekenreeks | De ID van de doelgegevensset die wordt gebruikt om drift te detecteren. |
+| Driftcoëfficiënt | double | Het coëfficiëntresultaat dat de gebeurtenis heeft geactiveerd. |
+| StartTime | datum/tijd | De begintijd van de doelsetuurreeks die resulteerde in driftdetectie.  |
+| EndTime | datum/tijd | De eindtijd van de doelsetuurreeks die resulteerde in driftdetectie. |
+
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.MachineLearningServices.RunStatusChanged
+
+| Eigenschap | Type | Beschrijving |
+| -------- | ---- | ----------- |
+| ExperimentId (ExperimentId) | tekenreeks | De ID van het experiment waartoe de run behoort. |
+| ExperimentName | tekenreeks | De naam van het experiment waartoe de run behoort. |
+| RunId (RunId) | tekenreeks | De ID van de Run die is voltooid. |
+| RunType (RunType) | tekenreeks | Het runtype van de voltooide run. |
+| RunTags | object | De tags van de voltooide run. |
+| RunEigenschappen | object | De eigenschappen van de voltooide run. |
+| RunStatus | tekenreeks | De status van de Run. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
-* Zie [Event grid-abonnements schema](subscription-creation-schema.md) voor meer informatie over het maken van een Azure Event grid-abonnement
-* Zie voor een inleiding tot het gebruik van Azure Event Grid met Azure Machine Learning [Azure machine learning gebeurtenissen gebruiken](/azure/machine-learning/service/concept-event-grid-integration)
-* Zie [gebeurtenis gerichte machine learning werk stromen maken](/azure/machine-learning/service/how-to-use-event-grid) voor een voor beeld van het gebruik van Azure Event Grid met Azure machine learning.
+* Zie [Wat is gebeurtenisraster voor](overview.md) een inleiding tot Azure Event Grid?
+* Zie Abonnement op gebeurtenisrasterabonnement voor meer informatie over het maken van een Azure Event [Grid-abonnement](subscription-creation-schema.md)
+* Zie [Azure Machine Learning-gebeurtenissen gebruiken](/azure/machine-learning/service/concept-event-grid-integration) voor een inleiding tot het gebruik van Azure Event Grid met Azure Machine Learning
+* Zie [Gebeurtenisgestuurde machine learning-werkstromen maken](/azure/machine-learning/service/how-to-use-event-grid) voor een voorbeeld van het gebruik van Azure Event Grid met Azure Machine Learning

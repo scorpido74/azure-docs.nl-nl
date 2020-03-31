@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center configureren voor IoT-agent | Microsoft Docs
-description: Meer informatie over het configureren van Azure Security Center voor IoT-beveiligings agenten voor gebruik met de Azure Security Center voor IoT-beveiligings service.
+title: Azure Security Center configureren voor IoT-agent| Microsoft Documenten
+description: Meer informatie over het configureren van Azure Security Center voor IoT-beveiligingsagents voor gebruik met de Azure Security Center for IoT-beveiligingsservice.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,38 +16,38 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461246"
 ---
-# <a name="tutorial-configure-security-agents"></a>Zelf studie: beveiligings agenten configureren
+# <a name="tutorial-configure-security-agents"></a>Zelfstudie: Beveiligingsagents configureren
 
-In dit artikel worden Azure Security Center voor IoT-beveiligings agenten beschreven en wordt uitgelegd hoe u deze kunt wijzigen en configureren. 
+In dit artikel wordt uitgelegd in Azure Security Center voor IoT-beveiligingsagents en wordt uitgelegd hoe u deze wijzigen en configureren. 
 
 > [!div class="checklist"]
 > * Beveiligingsagents configureren
-> * Gedrag van agent wijzigen door dubbele eigenschappen te bewerken
-> * Standaard configuratie detecteren
+> * Agentgedrag wijzigen door dubbele eigenschappen te bewerken
+> * Standaardconfiguratie ontdekken
 
 ## <a name="agents"></a>Agents
 
-Azure Security Center voor IoT-beveiligings agenten gegevens verzamelen uit IoT-apparaten en beveiligings acties uitvoeren om de gedetecteerde beveiligings problemen te verhelpen. De configuratie van de beveiligings agent kan worden ingesteld met behulp van een set van module-dubbele eigenschappen die u kunt aanpassen. In het algemeen zijn secundaire updates van deze eigenschappen niet vaak.  
+Azure Security Center voor IoT-beveiligingsagents verzamelen gegevens van IoT-apparaten en voeren beveiligingsacties uit om de gedetecteerde kwetsbaarheden te beperken. Configuratie van beveiligingsagentis controleerbaar met behulp van een set van module twin eigenschappen die u aanpassen. Over het algemeen komen secundaire updates voor deze eigenschappen zelden voor.  
 
-Azure Security Center voor een configuratie object van een IoT-beveiligings agent is een JSON-indelings object. Het configuratie object is een verzameling eigenschappen die u kunt definiëren om het gedrag van de agent te bepalen. 
+Azure Security Center for IoT's security agent twin configuration object is een JSON-indelingsobject. Het configuratieobject is een set controleerbare eigenschappen die u definiëren om het gedrag van de agent te bepalen. 
 
-Deze configuraties helpen u bij het aanpassen van de agent voor elk vereist scenario. Als u bijvoorbeeld een aantal gebeurtenissen uitsluit of het energie verbruik tot een minimum niveau wilt houden, kunt u deze eigenschappen configureren.  
+Met deze configuraties u de agent aanpassen voor elk scenario dat nodig is. Het is bijvoorbeeld mogelijk om bepaalde gebeurtenissen automatisch uit te sluiten of het stroomverbruik tot een minimum te beperken door deze eigenschappen te configureren.  
 
-Gebruik het Azure Security Center voor IoT-beveiligings agent configuratie [schema](https://aka.ms/iot-security-github-module-schema) om wijzigingen aan te brengen.  
+Gebruik het [configuratieschema](https://aka.ms/iot-security-github-module-schema) van azure security center voor IoT-beveiligingsagent om wijzigingen aan te brengen.  
 
-## <a name="configuration-objects"></a>Configuratie objecten 
+## <a name="configuration-objects"></a>Configuratieobjecten 
 
-Eigenschappen die betrekking hebben op elke Azure Security Center voor IoT-beveiligings agent bevinden zich in het configuratie object voor de agent, binnen de gewenste eigenschappen sectie van de module **azureiotsecurity** . 
+Eigenschappen die verband houden met elke Azure Security Center voor IoT-beveiligingsagent bevinden zich in het configuratieobject van de agent, binnen de gewenste eigenschappensectie, van de **azureiotsecurity-module.** 
 
-Als u de configuratie wilt wijzigen, maakt en wijzigt u dit object in de **azureiotsecurity** -module dubbele identiteit. 
+Als u de configuratie wilt wijzigen, maakt en wijzigt u dit object in de dubbele identiteit van de **azureiotsecurity-module.** 
 
-Als het configuratie object van de agent niet bestaat in de **azureiotsecurity** -module dubbele, worden alle waarden van de eigenschappen van de beveiligings agent ingesteld op standaard. 
+Als het agentconfiguratieobject niet bestaat in de **azureiotsecuritymoduletwin,** zijn alle eigenschapswaarden van beveiligingsagent ingesteld op standaard. 
 
 ```json
 "desired": {
@@ -56,44 +56,44 @@ Als het configuratie object van de agent niet bestaat in de **azureiotsecurity**
 }
 ```
 
-## <a name="configuration-schema-and-validation"></a>Configuratie schema en validatie 
+## <a name="configuration-schema-and-validation"></a>Configuratieschema en validatie 
 
-Zorg ervoor dat u de agent configuratie op basis van dit [schema](https://aka.ms/iot-security-github-module-schema)valideert. Een agent wordt niet gestart als het configuratie object niet overeenkomt met het schema.
+Zorg ervoor dat u de configuratie van uw agent valideert aan de hand van dit [schema.](https://aka.ms/iot-security-github-module-schema) Een agent wordt niet gestart als het configuratieobject niet overeenkomt met het schema.
 
  
-Als, terwijl de agent wordt uitgevoerd, het configuratie object wordt gewijzigd in een niet-geldige configuratie (de configuratie komt niet overeen met het schema), wordt de ongeldige configuratie door de agent genegeerd en blijft de huidige configuratie worden gebruikt. 
+Als het configuratieobject tijdens het uitvoeren van de agent wordt gewijzigd in een niet-geldige configuratie (de configuratie komt niet overeen met het schema), negeert de agent de ongeldige configuratie en blijft de huidige configuratie gebruiken. 
 
-### <a name="configuration-validation"></a>Configuratie validatie
+### <a name="configuration-validation"></a>Configuratievalidatie
 
-Azure Security Center voor IoT-beveiligings agent rapporteert de huidige configuratie in de sectie gerapporteerde eigenschappen van de **azureiotsecurity** -module dubbele identiteit.
-De agent rapporteert alle beschik bare eigenschappen, als er geen eigenschap is ingesteld door de gebruiker, de agent rapporteert de standaard configuratie.
+Azure Security Center for IoT security agent rapporteert de huidige configuratie binnen het gedeelte gerapporteerde eigenschappen van de dubbele identiteit van de **azureiotsecurity** module.
+De agent rapporteert alle beschikbare eigenschappen, als een eigenschap niet is ingesteld door de gebruiker, rapporteert de agent de standaardconfiguratie.
 
-Als u de configuratie wilt valideren, vergelijkt u de waarden die zijn ingesteld voor de gewenste sectie met de waarden die zijn gerapporteerd in de gerapporteerde sectie.
+Als u uw configuratie wilt valideren, vergelijkt u de waarden die op de gewenste sectie zijn ingesteld met de waarden die in de gerapporteerde sectie worden gerapporteerd.
 
-Als de gewenste en de gerapporteerde eigenschappen niet overeenkomen, kan de configuratie niet door de agent worden geparseerd.
+Als er een mismatch is tussen de gewenste en de gerapporteerde eigenschappen, kon de agent de configuratie niet ontleeden.
 
-Valideer de gewenste eigenschappen voor het [schema](https://aka.ms/iot-security-github-module-schema), Los de fouten op en stel de gewenste eigenschappen opnieuw in.
+Valideer uw gewenste eigenschappen aan de hand van het [schema,](https://aka.ms/iot-security-github-module-schema)repareer de fouten en stel uw gewenste eigenschappen opnieuw in!
 
 > [!NOTE]
-> Er wordt een configuratie fout waarschuwing van de agent geactiveerd wanneer de agent de gewenste configuratie niet kan parseren.
-> De gerapporteerde en gewenste sectie vergelijken om te begrijpen of de waarschuwing nog steeds van toepassing is
+> Er wordt een configuratiefoutwaarschuwing van de agent geactiveerd in het geval dat de agent de gewenste configuratie niet kon ontleeden.
+> Vergelijk de gerapporteerde en gewenste sectie om te begrijpen of de waarschuwing nog steeds van toepassing is
 
 ## <a name="editing-a-property"></a>Een eigenschap bewerken 
 
-Alle aangepaste eigenschappen moeten worden ingesteld binnen het configuratie object van de agent in de **azureiotsecurity** -module.
-Als u een standaard waarde voor een eigenschap wilt gebruiken, verwijdert u de eigenschap van het configuratie object.
+Alle aangepaste eigenschappen moeten worden ingesteld in het configuratieobject van de agent binnen de **azureiotsecurity-moduletwee.**
+Als u een standaardeigenschapswaarde wilt gebruiken, verwijdert u de eigenschap uit het configuratieobject.
 
 ### <a name="setting-a-property"></a>Een eigenschap instellen
 
-1. Zoek en selecteer het apparaat dat u wilt wijzigen in de IoT Hub.
+1. Zoek en selecteer in uw IoT-hub het apparaat dat u wilt wijzigen.
 
-1. Klik op uw apparaat en vervolgens op de module **azureiotsecurity** .
+1. Klik op uw apparaat en vervolgens op **de azureiotsecuritymodule.**
 
-1. Klik op **module-identiteit, twee**.
+1. Klik op **Module Identity Twin**.
 
-1. Bewerk de eigenschappen die u wilt wijzigen in de beveiligings module.
+1. Bewerk de eigenschappen die u wilt wijzigen in de beveiligingsmodule.
    
-   Gebruik bijvoorbeeld de volgende configuratie om verbindings gebeurtenissen te configureren als hoge prioriteit en elke 7 minuten gebeurtenissen met een hoge prioriteit te verzamelen.
+   Als u bijvoorbeeld verbindingsgebeurtenissen als hoge prioriteit wilt configureren en gebeurtenissen met hoge prioriteit elke 7 minuten wilt verzamelen, gebruikt u de volgende configuratie.
    
     ```json
     "desired": {
@@ -110,47 +110,47 @@ Als u een standaard waarde voor een eigenschap wilt gebruiken, verwijdert u de e
 
 1. Klik op **Opslaan**.
 
-### <a name="using-a-default-value"></a>Een standaard waarde gebruiken
+### <a name="using-a-default-value"></a>Een standaardwaarde gebruiken
 
-Als u een standaard waarde voor een eigenschap wilt gebruiken, verwijdert u de eigenschap van het configuratie object.
+Als u een standaardeigenschapswaarde wilt gebruiken, verwijdert u de eigenschap uit het configuratieobject.
 
-## <a name="default-properties"></a>Standaard eigenschappen 
+## <a name="default-properties"></a>Standaardeigenschappen 
 
-De volgende tabel bevat de eigenschappen van Azure Security Center voor IoT-beveiligings agenten.
+De volgende tabel bevat de controleerbare eigenschappen van Azure Security Center voor IoT-beveiligingsagents.
 
-Standaard waarden zijn beschikbaar in het juiste schema in [github](https\://aka.ms/iot-security-module-default).
+Standaardwaarden zijn beschikbaar in het juiste schema in [GitHub](https\://aka.ms/iot-security-module-default).
 
 | Name| Status | Geldige waarden| Standaardwaarden| Beschrijving |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|highPriorityMessageFrequency|Vereist: onwaar |Geldige waarden: duration in ISO 8601-indeling |Standaard waarde: PT7M |Het maximale tijds interval voor berichten met een hoge prioriteit worden verzonden.|
-|lowPriorityMessageFrequency |Vereist: onwaar|Geldige waarden: duration in ISO 8601-indeling |Standaard waarde: PT5H |Maximale tijd waarna berichten met een lage prioriteit worden verzonden.| 
-|snapshotFrequency |Vereist: False|Geldige waarden: duration in ISO 8601-indeling |Standaard waarde PT13H |Tijds interval voor het maken van moment opnamen van de Apparaatstatus.| 
-|maxLocalCacheSizeInBytes |Vereist: onwaar |Geldige waarden: |Standaard waarde: 2560000, groter dan 8192 | Maximale opslag (in bytes) die is toegestaan voor de berichten cache van een agent. Maximale hoeveelheid ruimte die is toegestaan voor het opslaan van berichten op het apparaat voordat berichten worden verzonden.| 
-|maxMessageSizeInBytes |Vereist: onwaar |Geldige waarden: een positief getal groter dan 8192, kleiner dan 262144 |Standaard waarde: 204800 |Maxi maal toegestane grootte van een agent naar een Cloud bericht. Met deze instelling bepaalt u de hoeveelheid gegevens die in elk bericht wordt verzonden. |
-|eventPriority${EventName} |Vereist: onwaar |Geldige waarden: hoog, laag, uit |Standaard waarden: |Prioriteit van elke door een agent gegenereerde gebeurtenis | 
+|highPriorityMessageFrequency|Vereist: false: false: |Geldige waarden: duur in ISO 8601-notatie |Standaardwaarde: PT7M |Maximaal tijdsinterval voordat berichten met hoge prioriteit worden verzonden.|
+|lowPriorityMessageFrequency lowPriorityMessageFrequency lowPriorityMessageFrequency lowPriority |Vereist: false: false:|Geldige waarden: duur in ISO 8601-notatie |Standaardwaarde: PT5H |Maximale tijd voordat berichten met lage prioriteit worden verzonden.| 
+|momentopnameFrequentie |Vereisen: false|Geldige waarden: duur in ISO 8601-notatie |Standaardwaarde PT13H |Tijdsinterval voor het maken van momentopnamen voor apparaatstatus.| 
+|maxLocalCacheSizeInBytes |Vereist: false: false: |Geldige waarden: |Standaardwaarde: 2560000, groter dan 8192 | Maximale opslag (in bytes) toegestaan voor de berichtencache van een agent. Maximale hoeveelheid ruimte toegestaan om berichten op het apparaat op te slaan, voordat berichten worden verzonden.| 
+|maxMessageSizeInbytes |Vereist: false: false: |Geldige waarden: Een positief getal, groter dan 8192, minder dan 262144 |Standaardwaarde: 204800 |Maximaal toegestane grootte van een agent om berichten te vertroebelen. Met deze instelling bepaalt u de hoeveelheid maximale gegevens die in elk bericht worden verzonden. |
+|gebeurtenisPrioriteit${EventName} |Vereist: false: false: |Geldige waarden: Hoog, Laag, Uit |Standaardwaarden: |Prioriteit van elke door agenten gegenereerde gebeurtenis | 
 
-### <a name="supported-security-events"></a>Ondersteunde beveiligings gebeurtenissen
+### <a name="supported-security-events"></a>Ondersteunde beveiligingsgebeurtenissen
 
-|Gebeurtenisnaam| propertyName | Standaardwaarde| Momentopname gebeurtenis| Status Details  |
+|Gebeurtenisnaam| PropertyName | Standaardwaarde| Momentopnamegebeurtenis| Details Status  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Diagnostische gebeurtenis|eventPriorityDiagnostic| Uit| False| Aan een agent gerelateerde diagnostische gebeurtenissen. Gebruik deze gebeurtenis voor uitgebreide logboek registratie.| 
-|Configuratie fout |eventPriorityConfigurationError |Laag |False |Agent kan de configuratie niet parseren. Controleer de configuratie op basis van het schema.| 
-|Statistieken voor verwijderde gebeurtenissen |eventPriorityDroppedEventsStatistics |Laag |True|Gerelateerde gebeurtenis statistieken voor de agent. |
-|Verbonden hardware|eventPriorityConnectedHardware |Laag |True |Moment opname van alle hardware die is aangesloten op het apparaat.|
-|Luisterende poorten|eventPriorityListeningPorts |Hoog |True |Moment opname van alle open luisterende poorten op het apparaat.|
-|Proces maken |eventPriorityProcessCreate |Laag |False |Het proces voor het maken van controles op het apparaat.|
-|Proces beëindigen|eventPriorityProcessTerminate |Laag |False |Controleert het proces op het apparaat.| 
-|Systeem gegevens |eventPrioritySystemInformation |Laag |True |Een moment opname van systeem informatie (bijvoorbeeld: besturings systeem of CPU).| 
-|Lokale gebruikers| eventPriorityLocalUsers |Hoog |True|Een moment opname van de geregistreerde lokale gebruikers in het systeem. |
-|Aanmelden|  eventPriorityLogin |Hoog|False|Controleer de aanmeldings gebeurtenissen op het apparaat (lokale en externe aanmeldingen).|
-|Verbinding maken |eventPriorityConnectionCreate|Laag|False|Controleert TCP-verbindingen die zijn gemaakt met en van het apparaat. |
-|Firewall configuratie| eventPriorityFirewallConfiguration|Laag|True|Moment opname van de firewall configuratie van het apparaat (firewall regels). |
-|Basis lijn van besturings systeem| eventPriorityOSBaseline| Laag|True|Moment opname van de basis controle van het besturings systeem van het apparaat.|
+|Diagnostische gebeurtenis|gebeurtenisPrioriteitDiagnos| Uit| False| Agent gerelateerde diagnostische gebeurtenissen. Gebruik deze gebeurtenis voor verbose logging.| 
+|Configuratiefout |gebeurtenisPriorityConfigurationError |Laag |False |Agent kan de configuratie niet ontzien. Controleer de configuratie op basis van het schema.| 
+|Gedaalde gebeurtenissenstatistieken |gebeurtenisPriorityDroppedEventsStatistieken |Laag |True|Agent gerelateerde gebeurtenisstatistieken. |
+|Verbonden hardware|gebeurtenisPriorityConnectedHardware |Laag |True |Momentopname van alle hardware die op het apparaat is aangesloten.|
+|Luisterpoorten|eventPriorityListeningPorts |Hoog |True |Momentopname van alle geopende luisterpoorten op het apparaat.|
+|Procesmaken |eventPriorityProcessCreate |Laag |False |Audits proces creatie op het apparaat.|
+|Proces beëindigd|eventPriorityProcessTerminate |Laag |False |Audits proces beëindiging op het apparaat.| 
+|Systeeminformatie |eventPrioritySystemInformatie |Laag |True |Een momentopname van systeeminformatie (bijvoorbeeld: OS of CPU).| 
+|Lokale gebruikers| eventPriorityLocalUsers |Hoog |True|Een momentopname van de geregistreerde lokale gebruikers binnen het systeem. |
+|Aanmelden|  eventPriorityLogin |Hoog|False|Controleer de inloggebeurtenissen op het apparaat (lokale en externe aanmeldingen).|
+|Verbinding maken |eventPriorityConnectionCreate|Laag|False|Controleert TCP-verbindingen die van en naar het apparaat zijn gemaakt. |
+|Firewallconfiguratie| gebeurtenisPriorityFirewallConfiguratie|Laag|True|Momentopname van de configuratie van de apparaatfirewall (firewallregels). |
+|OS-basislijn| gebeurtenisPriorityOSBaseline| Laag|True|Momentopname van de basislijncontrole van apparaatbesturingssysteem.|
 |
  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over Azure Security Center voor IoT-aanbevelingen](concept-recommendations.md)
-- [Azure Security Center verkennen voor IoT-waarschuwingen](concept-security-alerts.md)
-- [Toegang tot onbewerkte beveiligings gegevens](how-to-security-data-access.md)
+- [Inzicht in Azure Security Center voor IoT-aanbevelingen](concept-recommendations.md)
+- [Azure Security Center voor IoT-waarschuwingen verkennen](concept-security-alerts.md)
+- [Toegang tot onbewerkte beveiligingsgegevens](how-to-security-data-access.md)

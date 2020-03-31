@@ -1,6 +1,6 @@
 ---
 title: Migreren van Azure Media Services v2 naar v3
-description: In dit artikel worden wijzigingen beschreven die in Azure Media Services v3 zijn geïntroduceerd en verschillen tussen twee versies worden weer gegeven.
+description: In dit artikel worden wijzigingen beschreven die zijn geïntroduceerd in Azure Media Services v3 en worden verschillen tussen twee versies weergegeven.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -16,43 +16,43 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79087832"
 ---
-# <a name="media-services-v2-vs-v3"></a>Media Services v2 versus v3
+# <a name="media-services-v2-vs-v3"></a>Media Services v2 vs. v3
 
-In dit artikel worden wijzigingen beschreven die in Azure Media Services v3 zijn geïntroduceerd en verschillen tussen twee versies worden weer gegeven.
+In dit artikel worden wijzigingen beschreven die zijn geïntroduceerd in Azure Media Services v3 en worden verschillen tussen twee versies weergegeven.
 
 ## <a name="general-changes-from-v2"></a>Algemene wijzigingen van v2
 
-* Voor assets die zijn gemaakt met v3, Media Services alleen de [Azure storage opslag versleuteling aan de server zijde](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)ondersteunt.
-    * U kunt v3-Api's gebruiken met assets die zijn gemaakt met v2-Api's met de [opslag versleuteling](../previous/media-services-rest-storage-encryption.md) (AES 256) van Media Services.
-    * U kunt geen nieuwe assets maken met de verouderde AES 256- [opslag versleuteling](../previous/media-services-rest-storage-encryption.md) met behulp van v3-api's.
-* De eigenschappen van het [activum](assets-concept.md)in v3 verschillen van v2, Zie [hoe de eigenschappen worden toegewezen](#map-v3-asset-properties-to-v2).
-* De V3 Sdk's zijn nu losgekoppeld van de opslag-SDK, waarmee u meer controle hebt over de versie van de opslag-SDK die u wilt gebruiken en voor komt versie problemen. 
-* In de V3-Api's bevinden alle coderings bitsnelheden zich in bits per seconde. Dit wijkt af van de v2-Media Encoder Standard voor instellingen. De bitrate in v2 wordt bijvoorbeeld opgegeven als 128 (kbps), maar in v3 zou 128000 (bits/seconde) zijn. 
+* Voor assets die met v3 zijn gemaakt, ondersteunt Media Services alleen de opslagversleuteling aan de [Azure Storage-serverzijde.](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+    * U v3 API's gebruiken met assets die zijn gemaakt met v2-API's met [opslagversleuteling](../previous/media-services-rest-storage-encryption.md) (AES 256) van Media Services.
+    * U geen nieuwe assets maken met de verouderde AES [256-opslagversleuteling](../previous/media-services-rest-storage-encryption.md) met v3-API's.
+* De [eigenschappen van de asset](assets-concept.md)in v3 verschillen van v2, zie hoe de eigenschappen [kaart](#map-v3-asset-properties-to-v2).
+* De v3 SDK's zijn nu losgekoppeld van de Storage SDK, waardoor u meer controle hebt over de versie van Storage SDK die u wilt gebruiken en problemen met versiebeheer voorkomt. 
+* In de v3 API's zijn alle coderingsbitsnelheden in bits per seconde. Dit is anders dan de v2 Media Encoder Standard presets. Bijvoorbeeld, de bitrate in v2 zou worden opgegeven als 128 (kbps), maar in v3 zou het 128000 (bits/seconde). 
 * Entiteiten AssetFiles, AccessPolicies en IngestManifests bestaan niet in v3.
-* De eigenschap IAsset. ParentAssets bestaat niet in v3.
-* ContentKeys is geen entiteit meer, het is nu een eigenschap van de streaming-Locator.
-* Event Grid-ondersteuning vervangt NotificationEndpoints.
-* De naam van de volgende entiteiten is gewijzigd
-    * Taak uitvoer vervangt taak en maakt nu deel uit van een taak.
-    * De streaming-Locator vervangt Locator.
-    * Live gebeurtenis vervangt kanaal.<br/>Facturering van Live-gebeurtenissen is gebaseerd op Live Channel meters. Zie [facturering](live-event-states-billing.md) en [prijzen](https://azure.microsoft.com/pricing/details/media-services/)voor meer informatie.
-    * Live uitvoer vervangt programma.
-* Live-uitvoer starten zodra ze zijn gemaakt en stoppen wanneer ze worden verwijderd. Program ma's hebben in de v2-Api's anders gewerkt, maar ze moesten worden gestart na het maken.
-* Als u informatie over een taak wilt ontvangen, moet u de naam van de trans formatie weten waaronder de taak is gemaakt. 
-* In v2 worden XML- [invoer](../previous/media-services-input-metadata-schema.md) -en [uitvoer](../previous/media-services-output-metadata-schema.md) -meta gegevensbestanden gegenereerd als resultaat van een coderings taak. In v3 wordt de meta gegevens indeling gewijzigd van XML naar JSON. 
-* In Media Services v2 kunt u de initialisatie vector (IV) opgeven. In Media Services v3 kan de FairPlay IV niet worden opgegeven. Hoewel dit geen invloed heeft op klanten die Media Services gebruiken voor zowel verpakking als licentie levering, kan het een probleem zijn bij het gebruik van een DRM-systeem van derden voor het leveren van de FairPlay-licenties (hybride modus). In dat geval is het belang rijk te weten dat de FairPlay IV is afgeleid van de cbcs-sleutel-ID en kan worden opgehaald met behulp van de volgende formule:
+* De eigenschap IAsset.ParentAssets bestaat niet in v3.
+* ContentKeys is niet langer een entiteit, het is nu een eigenschap van de Streaming Locator.
+* Ondersteuning voor gebeurtenisraster vervangt NotificationEndpoints.
+* De volgende entiteiten zijn hernoemd
+    * Taakuitvoer vervangt Taak en maakt nu deel uit van een taak.
+    * Streaming Locator vervangt Locator.
+    * Live Event vervangt Channel.<br/>Facturering voor live gebeurtenissen is gebaseerd op livekanaalmeters. Zie [facturering](live-event-states-billing.md) en [prijzen](https://azure.microsoft.com/pricing/details/media-services/)voor meer informatie.
+    * Live Output vervangt het programma.
+* Live-uitvoer starten zodra ze zijn gemaakt en stoppen wanneer ze worden verwijderd. Programma's werkten anders in de v2 API's, ze moesten na de creatie worden gestart.
+* Als u informatie wilt krijgen over een taak, moet u de naam Transformeren kennen waaronder de taak is gemaakt. 
+* In v2 worden [XML-invoer-](../previous/media-services-input-metadata-schema.md) en uitvoermetagegevensbestanden gegenereerd als gevolg van een coderingstaak. [output](../previous/media-services-output-metadata-schema.md) In v3 is de metagegevensindeling gewijzigd van XML naar JSON. 
+* In Media Services v2 kan initialisatievector (IV) worden opgegeven. In Media Services v3 kan de FairPlay IV niet worden opgegeven. Hoewel het geen invloed heeft op klanten die Media Services gebruiken voor zowel verpakking als licentielevering, kan het een probleem zijn bij het gebruik van een DRM-systeem van derden om de FairPlay-licenties (hybride modus) te leveren. In dat geval is het belangrijk om te weten dat de FairPlay IV is afgeleid van de cbcs-sleutel-ID en kan worden opgehaald met behulp van deze formule:
 
     ```
     string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
     ```
 
-    door
+    wordt uitgevoerd met
 
     ``` 
     public static byte[] HexStringToByteArray(string hex)
@@ -64,77 +64,77 @@ In dit artikel worden wijzigingen beschreven die in Azure Media Services v3 zijn
     }
     ```
 
-    Zie voor meer informatie de [Azure functions C# code voor Media Services v3 in de hybride modus voor zowel live als VOD-bewerkingen](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3).
+    Zie de Azure [Functions C#-code voor Media Services v3 in hybride modus voor zowel Live- als VOD-bewerkingen](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3).
  
 > [!NOTE]
-> Bekijk de naamgevings regels die worden toegepast op [Media Services v3-resources](media-services-apis-overview.md#naming-conventions). Bekijk ook [naamgevings-blobs](assets-concept.md#naming).
+> Bekijk de naamgevingsconventies die worden toegepast op [V3-bronnen van Media Services](media-services-apis-overview.md#naming-conventions). Bekijk ook [het benoemen van blobs](assets-concept.md#naming).
 
-## <a name="feature-gaps-with-respect-to-v2-apis"></a>Hiaten in functies met betrekking tot v2-Api's
+## <a name="feature-gaps-with-respect-to-v2-apis"></a>Functieproblemen met v2-API's
 
-De V3 API heeft de volgende functie hiaten ten opzichte van de v2 API. Het sluiten van de hiaten is het onderhanden werk.
+De v3 API heeft de volgende functiehiaten met betrekking tot de v2 API. Het dichten van de hiaten is werk in uitvoering.
 
-* De [Premium encoder](../previous/media-services-premium-workflow-encoder-formats.md) en de verouderde [Media Analytics-processors](../previous/media-services-analytics-overview.md) (Azure Media Services indexer 2, Face Redactor, enzovoort) zijn niet toegankelijk via v3.<br/>Klanten die vanaf de preview-versie van Media Indexer 1 of 2 willen migreren, kunnen onmiddellijk de voor instelling AudioAnalyzer in de V3 API gebruiken.  Deze nieuwe definitie bevat meer functies dan de oudere Media Indexer 1 of 2. 
-* Veel van de [geavanceerde functies van de Media Encoder Standard in v2](../previous/media-services-advanced-encoding-with-mes.md) -api's zijn momenteel niet beschikbaar in v3, zoals:
+* De [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) en de oudere [mediaanalyseprocessors](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 Preview, Face Redactor, enz.) zijn niet toegankelijk via v3.<br/>Klanten die willen migreren van de Preview Media Indexer 1 of 2 kunnen de AudioAnalyzer-voorinstelling direct gebruiken in de v3-API.  Deze nieuwe voorinstelling bevat meer functies dan de oudere Media Indexer 1 of 2. 
+* Veel van de [geavanceerde functies van de Media Encoder Standard in v2](../previous/media-services-advanced-encoding-with-mes.md) API's zijn momenteel niet beschikbaar in v3, zoals:
   
-    * Activa bijvoegen
+    * Stiksels van activa
     * Overlays
-    * Bijsnijd
-    * Miniatuur sprites
-    * Een Silent audio-track invoegen wanneer de invoer geen audio heeft
-    * Een video track invoegen wanneer de invoer geen video bevat
-* Live-gebeurtenissen met transcode ring bieden momenteel geen ondersteuning voor de toevoeging van een mid-Stream en het invoegen van AD-markeringen via API-aanroepen. 
+    * Bijsnijden
+    * Miniatuursprites
+    * Een stille audiotrack invoegen wanneer invoer geen audio heeft
+    * Een videotrack invoegen wanneer invoer geen video heeft
+* Live-gebeurtenissen met transcodering bieden momenteel geen ondersteuning voor het invoegen van leisteen in het midden van de stream en het invoegen van advertentiemarkeringen via API-aanroep. 
  
-## <a name="asset-specific-changes"></a>Activa-specifieke wijzigingen
+## <a name="asset-specific-changes"></a>Asset specifieke wijzigingen
 
-### <a name="map-v3-asset-properties-to-v2"></a>V3-Asset-eigenschappen toewijzen aan v2
+### <a name="map-v3-asset-properties-to-v2"></a>V3-activa toewijzen aan v2
 
-In de volgende tabel ziet u hoe de eigenschappen van het [element](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)in v3 worden toegewezen aan de eigenschappen van het element in v2.
+In de volgende tabel ziet u hoe de eigenschappen van [de activa](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)in v3-kaart naar de eigenschappen van Asset in v2 worden weergegeven.
 
-|V3-eigenschappen|v2-eigenschappen|
+|v3-eigenschappen|v2-eigenschappen|
 |---|---|
-|`id`-(uniek) het volledige Azure Resource Manager pad, zie voor beelden in [Asset](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
-|`name`-(uniek) Zie [naamgevings conventies](media-services-apis-overview.md#naming-conventions) ||
+|`id`- (uniek) het volledige Azure Resource Manager-pad, zie voorbeelden in [Asset](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
+|`name`- (uniek) zie [Naamgevingsconventies](media-services-apis-overview.md#naming-conventions) ||
 |`alternateId`|`AlternateId`|
-|`assetId`|`Id`-(unieke) waarde begint met het voor voegsel `nb:cid:UUID:`.|
+|`assetId`|`Id`- (unieke) waarde `nb:cid:UUID:` begint bij het voorvoegsel.|
 |`created`|`Created`|
 |`description`|`Name`|
 |`lastModified`|`LastModified`|
 |`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options` (opties voor maken)|
+|`storageEncryptionFormat`| `Options`(aanmaakopties)|
 |`type`||
 
-### <a name="storage-side-encryption"></a>Versleuteling van opslag aan de serverzijde
+### <a name="storage-side-encryption"></a>Versleuteling aan de opslagzijde
 
-Ter bescherming van uw activa in rust, moeten de activa van de versleuteling van opslag aan de serverzijde worden versleuteld. De volgende tabel ziet u de werking van de versleuteling van opslag aan de serverzijde in Media Services:
+Om uw assets in rust te beschermen, moeten de assets worden versleuteld door de opslagzijdeversleuteling. In de volgende tabel ziet u hoe de versleuteling aan de opslagzijde werkt in Media Services:
 
-|Optie voor opslagversleuteling|Beschrijving|Media Services v2|Media Services v3|
+|Versleuteling, optie|Beschrijving|Media Services v2|Media Services v3|
 |---|---|---|---|
-|Media Services-Storage-versleuteling|AES-256-versleuteling, sleutel beheerd door Media Services.|Ondersteund<sup>(1)</sup>|Niet ondersteund<sup>(2)</sup>|
-|[Storage Service Encryption voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant.|Ondersteund|Ondersteund|
-|[Versleuteling van de opslag aan de client zijde](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault.|Niet ondersteund|Niet ondersteund|
+|Media Services-opslagversleuteling|AES-256 encryptie, sleutel beheerd door Media Services.|Ondersteund<sup>(1)</sup>|Niet ondersteund<sup>(2)</sup>|
+|[Opslagserviceversleuteling voor gegevens in rust](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Server-side encryptie aangeboden door Azure Storage, sleutel beheerd door Azure of door de klant.|Ondersteund|Ondersteund|
+|[Versleuteling aan de clientzijde van opslag](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Client-side encryptie aangeboden door Azure storage, sleutel beheerd door de klant in Key Vault.|Niet ondersteund|Niet ondersteund|
 
-<sup>1</sup> hoewel Media Services de verwerking van inhoud in de Clear/zonder vorm van versleuteling ondersteunt, wordt dit niet aanbevolen.
+<sup>1</sup> Hoewel Media Services de behandeling van inhoud in de duidelijke/zonder enige vorm van versleuteling ondersteunt, wordt dit niet aanbevolen.
 
-<sup>2</sup> in Media Services V3 wordt opslag VERSLEUTELING (AES-256-versleuteling) alleen ondersteund voor achterwaartse compatibiliteit wanneer uw assets zijn gemaakt met Media Services v2. Dit betekent dat v3 werkt met bestaande, versleutelde opslag assets, maar geen nieuwe apparaten mag maken.
+<sup>2</sup> In Media Services v3 wordt opslagversleuteling (AES-256-versleuteling) alleen ondersteund voor achterwaartse compatibiliteit wanneer uw assets zijn gemaakt met Media Services v2. Dit betekent dat V3 werkt met bestaande opslagversleutelde assets, maar geen nieuwe kan maken.
 
-## <a name="code-differences"></a>Code verschillen
+## <a name="code-differences"></a>Codeverschillen
 
-In de volgende tabel ziet u de code verschillen tussen v2 en v3 voor algemene scenario's.
+In de volgende tabel worden de codeverschillen tussen v2 en v3 voor veelvoorkomende scenario's weergegeven.
 
-|Scenario|V2 API|V3 API|
+|Scenario|V2-API|V3-API|
 |---|---|---|
-|Een Asset maken en een bestand uploaden |[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|Een taak indienen|[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Laat zien hoe u eerst een trans formatie maakt en vervolgens een taak verzendt.|
-|Een Asset met AES-versleuteling publiceren |1. ContentKeyAuthorizationPolicyOption maken<br/>2. ContentKeyAuthorizationPolicy maken<br/>3. AssetDeliveryPolicy maken<br/>4. activa maken en inhoud uploaden of taak verzenden en uitvoer activa gebruiken<br/>5. AssetDeliveryPolicy koppelen aan Asset<br/>6. ContentKey maken<br/>7. Koppel ContentKey aan Asset<br/>8. AccessPolicy maken<br/>9. Locator maken<br/><br/>[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. inhouds sleutel beleid maken<br/>2. Asset maken<br/>3. inhoud uploaden of activa gebruiken als JobOutput<br/>4. streaming-Locator maken<br/><br/>[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
-|Taak Details ophalen en taken beheren |[Taken beheren met v2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Taken beheren met v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
+|Een asset maken en een bestand uploaden |[v2 .NET voorbeeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET voorbeeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
+|Een taak indienen|[v2 .NET voorbeeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET voorbeeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Hier ziet u hoe u eerst een transformatie maakt en vervolgens een taak indient.|
+|Een asset publiceren met AES-versleuteling |1. ContentKeyAuthorizationPolicyOption maken<br/>2. ContentKeyAuthorizationPolicy maken<br/>3. AssetDeliveryPolicy maken<br/>4. Asset maken en inhoud uploaden OF taak verzenden en uitvoerasset gebruiken<br/>5. Associate AssetDeliveryPolicy with Asset<br/>6. ContentKey maken<br/>7. ContentKey koppelen aan Asset<br/>8. Toegangsbeleid maken<br/>9. Locator maken<br/><br/>[v2 .NET voorbeeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Beleid voor inhoudssleutel maken<br/>2. Asset maken<br/>3. Inhoud uploaden of Asset gebruiken als JobOutput<br/>4. Maak Streaming Locator<br/><br/>[v3 .NET voorbeeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Werkgegevens opvragen en taken beheren |[Taken beheren met v2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Taken beheren met v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 > [!NOTE]
-> Geef een blad wijzer op voor dit artikel en blijf controleren op updates.
+> Gelieve bookmark dit artikel en blijven controleren op updates.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
+## <a name="ask-questions-give-feedback-get-updates"></a>Stel vragen, geef feedback, ontvang updates
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Bekijk het communityartikel [van Azure Media Services](media-services-community.md) om verschillende manieren te zien waarop u vragen stellen, feedback geven en updates ontvangen over Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3](migrate-from-v2-to-v3.md)
+[Migratierichtlijnen voor de overgang van Media Services v2 naar v3](migrate-from-v2-to-v3.md)

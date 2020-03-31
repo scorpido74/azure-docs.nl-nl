@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d41b86b902d9a58b144e251e6922fbd95d459031
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67671204"
 ---
-1. Dapl, rdmacm ibverbs en mlx4 installeren
+1. Installeer dapl, rdmacm, ibverbs en mlx4
 
    ```bash
    sudo apt-get update
@@ -20,7 +20,7 @@ ms.locfileid: "67671204"
 
    ```
 
-2. In /etc/waagent.conf, schakelt u RDMA door de volgende configuratieregels uncommenting. U moet toegang tot de hoofdmap om dit bestand te bewerken.
+2. Schakel RDMA in /etc/waagent.conf in door de volgende configuratieregels niet te becommentariërd. U hebt roottoegang nodig om dit bestand te bewerken.
   
    ```
    OS.EnableRDMA=y
@@ -28,7 +28,7 @@ ms.locfileid: "67671204"
    OS.UpdateRdmaDriver=y
    ```
 
-3. Toevoegen of wijzigen van de volgende geheugeninstellingen in KB in het bestand /etc/security/limits.conf. U moet toegang tot de hoofdmap om dit bestand te bewerken. Voor testdoeleinden kunt u memlock instellen op onbeperkt. Bijvoorbeeld: `<User or group name>   hard    memlock   unlimited`.
+3. Voeg de volgende geheugeninstellingen in KB toe of wijzig deze in het bestand /etc/security/limits.conf. U hebt roottoegang nodig om dit bestand te bewerken. Voor testdoeleinden u memlock instellen op onbeperkt. Bijvoorbeeld: `<User or group name>   hard    memlock   unlimited`.
 
    ```
    <User or group name> hard    memlock <memory required for your application in KB>
@@ -36,7 +36,7 @@ ms.locfileid: "67671204"
    <User or group name> soft    memlock <memory required for your application in KB>
    ```
   
-4. Intel MPI bibliotheek installeren. Een van beide [kopen en downloaden](https://software.intel.com/intel-mpi-library/) de bibliotheek van Intel of download de [gratis evaluatieversie](https://registrationcenter.intel.com/en/forms/?productid=1740).
+4. Installeer De Intel MPI-bibliotheek. Ofwel [kopen en downloaden](https://software.intel.com/intel-mpi-library/) van de bibliotheek van Intel of download de gratis evaluatie [versie](https://registrationcenter.intel.com/en/forms/?productid=1740).
 
    ```bash
    wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
@@ -44,9 +44,9 @@ ms.locfileid: "67671204"
  
    Alleen Intel MPI 5.x runtimes worden ondersteund.
  
-   Zie voor stappen van de installatie, de [Intel MPI-bibliotheek installatiehandleiding](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html).
+   Zie de [installatiehandleiding voor de Intel MPI-bibliotheek voor](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)installatiestappen voor installatiestappen voor installatie.
 
-5. Ptrace voor niet-hoofdmap niet foutopsporingsprogramma processen (die nodig zijn voor de meest recente versies van Intel MPI) inschakelen.
+5. Ptrace inschakelen voor niet-root niet-foutopsporingsprocessen (nodig voor de meest recente versies van Intel MPI).
  
    ```bash
    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope

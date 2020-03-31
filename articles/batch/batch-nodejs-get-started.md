@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shg
 ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023647"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Aan de slag met de Batch-SDK voor Node.js
@@ -67,7 +67,7 @@ Met deze opdracht wordt de meest recente versie van de Azure Batch Node-SDK geï
 
 ### <a name="step-2-create-an-azure-batch-account"></a>Stap 2: een Azure Batch-account maken
 
-U kunt deze maken via de [Azure Portal](batch-account-create-portal.md) of vanaf de opdracht regel ([Power shell](batch-powershell-cmdlets-get-started.md) /[Azure cli](/cli/azure)).
+U deze maken vanuit de [Azure-portal](batch-account-create-portal.md) of van de opdrachtregel[(PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI).](/cli/azure)
 
 Nu volgende opdrachten om er een te maken via Azure CLI.
 

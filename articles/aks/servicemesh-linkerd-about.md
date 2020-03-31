@@ -1,97 +1,97 @@
 ---
 title: Overzicht van Linkerd
-description: Een overzicht van Linkerd verkrijgen
+description: Een overzicht van Linkerd
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593764"
 ---
-# <a name="linkerd"></a>Linkerd
+# <a name="linkerd"></a>Linkerd (Linkerd)
 
 ## <a name="overview"></a>Overzicht
 
-[Linkerd][linkerd] is een eenvoudig te gebruiken en Lightweight service-net.
+[Linkerd][linkerd] is een gebruiksvriendelijk en lichtgewicht servicemesh.
 
 ## <a name="architecture"></a>Architectuur
 
-Linkerd biedt een gegevensvlak dat bestaat uit Ultralight [Linkerd][linkerd-proxy] gespecialiseerde proxy-zijspaners. Deze intelligente proxy's bepalen al het netwerk verkeer in en uit uw gestuurde apps en workloads. De proxy's geven ook metrische gegevens weer via [Prometheus][prometheus] Metrics-eind punten.
+Linkerd biedt een dataplane dat bestaat uit ultralichte [Linkerd][linkerd-proxy] gespecialiseerde proxy sidecars. Deze intelligente proxy's regelen al het netwerkverkeer in en uit uw meshed apps en workloads. De proxy's leggen ook metrics bloot via [Prometheus][prometheus] metrics endpoints.
 
-Het besturings vlak beheert de configuratie en geaggregeerde telemetrie via de volgende [onderdelen][linkerd-architecture]:
+Het besturingsvlak beheert de configuratie en geaggregeerde telemetrie via de volgende [componenten:][linkerd-architecture]
 
-- **Controller** -biedt een API waarmee de Linkerd CLI en het dash board worden gedrivesd. Biedt configuratie voor proxy's.
+- **Controller** - Biedt api die de Linkerd CLI en Dashboard aanstuurt. Biedt configuratie voor proxy's.
 
-- **Tik** om realtime controles uit te voeren op aanvragen en antwoorden.
+- **Tik** - Stel realtime horloges vast op verzoeken en antwoorden.
 
-- **Identiteit** : biedt identiteits-en beveiligings mogelijkheden waarmee mTLS tussen services worden toegestaan.
+- **Identiteit** - Biedt identiteits- en beveiligingsmogelijkheden die mTLS tussen services mogelijk maken.
 
-- **Web** : biedt het Linkerd-dash board.
-
-
-In het volgende architectuur diagram ziet u hoe de verschillende onderdelen binnen het vlak van de gegevens en het besturings element werken.
+- **Web** - Biedt het Linkerd-dashboard.
 
 
-![Overzicht van Linkerd-onderdelen en-architectuur.](media/servicemesh/linkerd/about-architecture.png)
+Het volgende architectuurdiagram laat zien hoe de verschillende componenten in het gegevensvlak en het controlevlak met elkaar in wisselwerking staan.
 
 
-## <a name="selection-criteria"></a>Selectie criteria
+![Overzicht van Linkerd componenten en architectuur.](media/servicemesh/linkerd/about-architecture.png)
 
-Het is belang rijk dat u de volgende gebieden begrijpt en overweegt om Linkerd te evalueren voor uw workloads:
 
-- [Ontwerp principes](#design-principles)
-- [Bieden](#capabilities)
-- [Scenario's](#scenarios)
+## <a name="selection-criteria"></a>Selectiecriteria
+
+Het is belangrijk om de volgende gebieden te begrijpen en te overwegen bij het evalueren van Linkerd voor uw workloads:
+
+- [Ontwerpprincipes](#design-principles)
+- [Functionaliteit](#capabilities)
+- [Scenario 's](#scenarios)
 
 
 ### <a name="design-principles"></a>Ontwerpprincipes
 
-De volgende ontwerp principes [begeleiden][design-principles] het Linkerd-project:
+De volgende ontwerpprincipes [begeleiden][design-principles] het Linkerd-project:
 
-- **U kunt het eenvoudig blijven** gebruiken. dit moet eenvoudig zijn.
+- **Houd het eenvoudig** - Moet gemakkelijk te gebruiken en te begrijpen.
 
-- **Minimaliseer de resource vereisten** : minimale prestaties en resource kosten.
+- **Resourcevereisten minimaliseren** - Minimaliseer minimale prestaties en resourcekosten.
 
-- U hoeft **alleen maar** de bestaande toepassingen te onderbreken en geen ingewikkelde configuratie te hoeven uitvoeren.
+- **Just Work** - Breek bestaande toepassingen niet en vereist geen complexe configuratie.
 
 
 ### <a name="capabilities"></a>Functionaliteit
 
 Linkerd biedt de volgende mogelijkheden:
 
-- **Net** -ingebouwd in de optie fout opsporing
+- **Mesh** – ingebouwde foutopsporing, optie
 
-- **Verkeers beheer** – splitsen, time-outs, nieuwe pogingen, binnenkomend
+- **Traffic Management** – splitsen, time-outs, nieuwe pogingen, binnendringen
 
-- **Security** – Encryption (mTLS), certificaten automatisch geroteerd om de 24 uur
+- **Beveiliging** – versleuteling (mTLS), certificaten automatisch geroteerd om de 24 uur
 
-- Behulp van behulp van behulp van een gouden metrische waarde, tikken, traceren, service profielen en metrische gegevens van de route, webdashboard met topologie grafieken, Prometheus, grafana
+- **Waarneembaarheid** – gouden statistieken, tikken, traceren, serviceprofielen en per routestatistieken, webdashboard met topologiegrafieken, prometheus, grafana
 
 
-### <a name="scenarios"></a>Scenario 's
+### <a name="scenarios"></a>Scenario's
 
-Linkerd is goed geschikt voor de volgende scenario's:
+Linkerd is zeer geschikt voor en voorgesteld voor de volgende scenario's:
 
-- Eenvoudig te gebruiken met alleen de essentiële set mogelijkhedens vereisten
+- Eenvoudig te gebruiken met alleen de essentiële vereisten voor mogelijkheden
 
-- Lage latentie, lage overhead, met focus op de naleving en het eenvoudige verkeer beheer
+- Lage latentie, lage overhead, met focus op waarneembaarheid en eenvoudig verkeersbeheer
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende documentatie wordt beschreven hoe u Linkerd kunt installeren in azure Kubernetes service (AKS):
+In de volgende documentatie wordt beschreven hoe u Linkerd installeren op Azure Kubernetes Service (AKS):
 
 > [!div class="nextstepaction"]
-> [Linkerd installeren in azure Kubernetes service (AKS)][linkerd-install]
+> [Linkerd installeren in Azure Kubernetes Service (AKS)][linkerd-install]
 
-U kunt ook nog verder Linkerd-functies en-architectuur verkennen:
+U ook de linkerd-functies en architectuur verder verkennen:
 
 - [Linkerd-functies][linkerd-features]
-- [Linkerd-architectuur][linkerd-architecture]
+- [Linkerd Architectuur][linkerd-architecture]
 
 <!-- LINKS - external -->
 [linkerd]: https://linkerd.io/2/overview/

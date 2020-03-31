@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen over Azure Media Services v3 | Microsoft Docs
-description: In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Media Services v3.
+title: Azure Media Services v3 veelgestelde vragen| Microsoft Documenten
+description: In dit artikel vindt u antwoorden op veelgestelde vragen van Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,149 +9,164 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/09/2020
+ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 11123ee04dd02a60dff0b88e2e6e85fcd613a7d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086792"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067997"
 ---
-# <a name="media-services-v3-frequently-asked-questions"></a>Veelgestelde vragen over Media Services v3
+# <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 veelgestelde vragen
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Media Services (AMS).
+In dit artikel vindt u antwoorden op veelgestelde vragen van Azure Media Services (AMS).
 
 ## <a name="general"></a>Algemeen
 
-### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Wat Azure-rollen kunnen acties uitvoeren op Azure Media Services resources? 
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Welke Azure-rollen kunnen acties uitvoeren op Azure Media Services-bronnen? 
 
-Zie [op rollen gebaseerd toegangs beheer (RBAC) voor Media Services accounts](rbac-overview.md).
+Zie [RBAC (Role-based access control) voor Media Services-accounts](rbac-overview.md).
 
-### <a name="how-do-you-stream-to-apple-ios-devices"></a>Hoe streamt u naar Apple iOS-apparaten?
+### <a name="how-do-you-stream-to-apple-ios-devices"></a>Hoe stream je naar Apple iOS-apparaten?
 
-Zorg ervoor dat u ' (Format = M3U8-AAPL) ' aan het einde van het pad (na het gedeelte '/manifest ' van de URL) hebt om de bron van de streaming-oorsprong te laten terugkeren HLS-inhoud voor het gebruik van Apple iOS systeem eigen apparaten (Zie [inhoud leveren](dynamic-packaging-overview.md)) voor meer informatie.
+Zorg ervoor dat je aan het einde van je pad (na het "/manifest"-gedeelte van de URL) hebt "(format=m3u8-aapl)" om de streaming origin-server te vertellen hls-inhoud terug te sturen voor consumptie op apple iOS-native apparaten (zie inhoud leveren voor meer [informatie).](dynamic-packaging-overview.md)
 
-### <a name="how-do-i-configure-media-reserved-units"></a>Hoe kan ik gereserveerde media-eenheden configureren?
+### <a name="how-do-i-configure-media-reserved-units"></a>Hoe configureer ik mediagereserveerde eenheden?
 
-Voor de analysetaken van audio en video die worden geactiveerd door Media Services v3 of Video Indexer is het raadzaam om uw account in te richten met 10 S3 MRU’s. Als u meer dan 10 S3 MRUs nodig hebt, kunt u een ondersteunings ticket openen met behulp van de [Azure Portal](https://portal.azure.com/).
+Voor de analysetaken van audio en video die worden geactiveerd door Media Services v3 of Video Indexer is het raadzaam om uw account in te richten met 10 S3 MRU’s. Als u meer dan 10 S3-MRU's nodig hebt, opent u een ondersteuningsticket via de [Azure-portal.](https://portal.azure.com/)
 
-Zie [Media verwerking schalen met CLI](media-reserved-units-cli-how-to.md)voor meer informatie.
+Zie [Mediaverwerking schalen met CLI](media-reserved-units-cli-how-to.md)voor meer informatie.
 
-### <a name="what-is-the-recommended-method-to-process-videos"></a>Wat is de aanbevolen methode om Video's te verwerken?
+### <a name="what-is-the-recommended-method-to-process-videos"></a>Wat is de aanbevolen methode om video's te verwerken?
 
-[Trans formaties](https://docs.microsoft.com/rest/api/media/transforms) gebruiken om algemene taken te configureren voor het coderen of analyseren van Video's. Elke **trans formatie** beschrijft een recept of een werk stroom van taken voor het verwerken van uw video-of audio bestanden. Een [taak](https://docs.microsoft.com/rest/api/media/jobs) is de daad werkelijke aanvraag om Media Services om de **trans formatie** toe te passen op een gegeven video-of audio-inhoud. Zodra de trans formatie is gemaakt, kunt u taken verzenden met behulp van Media Services Api's of een van de gepubliceerde Sdk's. Zie [Transformaties en taken](transforms-jobs-concept.md) voor meer informatie.
+Gebruik [Transformaties](https://docs.microsoft.com/rest/api/media/transforms) om veelvoorkomende taken te configureren voor het coderen of analyseren van video's. Elke **transformatie** beschrijft een recept of een werkstroom met taken voor het verwerken van uw video- of audiobestanden. Een [taak](https://docs.microsoft.com/rest/api/media/jobs) is het feitelijke verzoek aan Media Services om de **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. Zodra de transformatie is gemaakt, u vacatures indienen met behulp van Media Services API's of een van de gepubliceerde SDK's. Zie [Transformeren en taken voor](transforms-jobs-concept.md)meer informatie.
 
-### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>Ik heb een video geüpload, gecodeerd en gepubliceerd. Wat is de reden waarom de video niet wordt afgespeeld wanneer ik deze probeer te streamen?
+### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>Ik heb een video geüpload, gecodeerd en gepubliceerd. Wat zou de reden zijn dat de video niet wordt afgespeeld wanneer ik het probeer te streamen?
 
-Een van de meest voorkomende redenen is dat u het streaming-eind punt niet hebt van waaruit u wilt afspelen in de actieve status.
+Een van de meest voorkomende redenen is dat u niet beschikt over de streaming eindpunt van waaruit u probeert terug te spelen in de status Running.
 
-### <a name="how-does-pagination-work"></a>Hoe werkt de paginering?
+### <a name="how-does-pagination-work"></a>Hoe werkt pagination?
 
-Wanneer u paginering gebruikt, moet u altijd de volgende koppeling gebruiken om de verzameling op te sommen en niet afhankelijk van een bepaalde pagina grootte. Zie [filteren, ordenen, paginering](entities-overview.md)voor meer informatie en voor beelden.
+Wanneer u paginatie gebruikt, moet u altijd de volgende koppeling gebruiken om de verzameling op te sommen en niet afhankelijk zijn van een bepaald paginaformaat. Zie [Filteren, bestellen, paging](entities-overview.md)voor meer informatie en voorbeelden.
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Welke functies zijn nog niet beschikbaar in Azure Media Services v3?
 
-Zie voor meer informatie [functie hiaten met betrekking tot v2-api's](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
+Zie voor meer informatie [functiehiaten met betrekking tot v2-API's](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
-### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Wat is het proces van het verplaatsen van een Media Services account tussen abonnementen?  
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Wat is het proces van het verplaatsen van een Media Services-account tussen abonnementen?  
 
-Zie [een Media Services account verplaatsen tussen abonnementen](media-services-account-concept.md)voor meer informatie.
+Zie Een [Media Services-account verplaatsen tussen abonnementen voor](media-services-account-concept.md)meer informatie .
 
 ## <a name="live-streaming"></a>Live streamen 
 
-###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>Hoe kan ik pauzes/Video's en afbeeldings pastels invoegen tijdens Live Stream?
+### <a name="how-to-stop-the-live-stream-after-the-broadcast-is-done"></a>Hoe de live stream te stoppen na de uitzending is gedaan?
 
-Media Services v3 Live encoding biedt nog geen ondersteuning voor het invoegen van video-of afbeeldings pastels tijdens live stream. 
+U het benaderen vanaf een clientkant of een serverkant.
 
-U kunt een [Live on-premises encoder](recommended-on-premises-live-encoders.md) gebruiken om de bron video te scha kelen. Veel apps bieden de mogelijkheid om bronnen te wisselen, waaronder Telestream Wirecast, Switch Studio (op iOS), IB Studio (gratis app) en nog veel meer.
+#### <a name="client-side"></a>Clientzijde
+
+Uw webtoepassing moet de gebruiker vragen of hij de uitzending wil beëindigen als deze de browser sluit. Dit is een browsergebeurtenis die uw webtoepassing aankan.
+
+#### <a name="server-side"></a>Serverzijde
+
+Je live-evenementen volgen door je te abonneren op Event Grid-evenementen. Zie het [eventgrid-gebeurtenisschema voor](media-services-event-schemas.md#live-event-types)meer informatie .
+
+* U [zich abonneren op](reacting-to-media-services-events.md) het streamniveau [Microsoft.Media.LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) en controleren of er een tijdje geen nieuwe verbindingen binnenkomen om uw live-evenement te stoppen en te verwijderen.
+* U [zich ook abonneren op](reacting-to-media-services-events.md) [heartbeatgebeurtenissen](media-services-event-schemas.md#liveeventingestheartbeat) op het niveau van het trackniveau. Als alle tracks hebben inkomende bitrate daalt tot 0; of de laatste tijdstempel neemt niet meer toe, dan u ook veilig afsluiten van de live-evenement. De hartslag gebeurtenissen komen in op elke 20 seconden voor elke track dus het kan een beetje verbose.
+
+###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>Hoe invoegen pauzes / video's en beeldleien tijdens live stream?
+
+Media Services v3 live-codering biedt nog geen ondersteuning voor het invoegen van video- of beeldleien tijdens de livestream. 
+
+U een [live on-premises encoder](recommended-on-premises-live-encoders.md) gebruiken om de bronvideo te schakelen. Veel apps bieden de mogelijkheid om van bron te wisselen, waaronder Telestream Wirecast, Switcher Studio (op iOS), OBS Studio (gratis app) en nog veel meer.
 
 ## <a name="content-protection"></a>Inhoudsbeveiliging
 
-### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>Moet ik een AES-128 Clear Key Encryption of een DRM-systeem gebruiken?
+### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>Moet ik een AES-128 clear key encryptie of een DRM-systeem gebruiken?
 
-Klanten zich vaak afvragen of ze AES-versleuteling of een DRM-systeem gebruiken moeten. Het belangrijkste verschil tussen de twee systemen is dat met AES-versleuteling de inhouds sleutel via TLS naar de client wordt verzonden, zodat de sleutel tijdens de overdracht wordt versleuteld, maar zonder extra versleuteling (' in de Clear '). Als gevolg hiervan is de sleutel die wordt gebruikt om de inhoud te ontsleutelen toegankelijk voor de client speler en kan deze worden weer gegeven in een netwerk tracering op de client als tekst zonder opmaak. Een AES-128 Clear sleutel versleuteling is geschikt voor gebruik waarbij de viewer een vertrouwde partij is (bijvoorbeeld het versleutelen van bedrijfs Video's die binnen een bedrijf worden gedistribueerd om door werk nemers te worden weer gegeven).
+Klanten vragen zich vaak af of ze AES-encryptie of een DRM-systeem moeten gebruiken. Het belangrijkste verschil tussen de twee systemen is dat met AES-encryptie de inhoudssleutel wordt verzonden naar de client via TLS, zodat de sleutel wordt versleuteld tijdens het transport, maar zonder extra encryptie ("in de duidelijke"). Als gevolg hiervan is de sleutel die wordt gebruikt om de inhoud te decoderen toegankelijk voor de clientspeler en kan deze in een netwerktracering op de client in platte tekst worden bekeken. Een AES-128 clear key encryptie is geschikt voor use cases waarbij de viewer een vertrouwde partij is (bijvoorbeeld het versleutelen van bedrijfsvideo's die binnen een bedrijf worden gedistribueerd om door werknemers te worden bekeken).
 
-DRM-systemen zoals PlayReady, Widevine en FairPlay bieden een extra versleutelings niveau voor de sleutel die wordt gebruikt om de inhoud te ontsleutelen vergeleken met een AES-128 Clear-sleutel. De inhouds sleutel wordt versleuteld met een sleutel die wordt beveiligd door de DRM-runtime, in aanvulling op transport niveau versleuteling van TLS. Bovendien wordt ontsleuteling verwerkt in een beveiligde omgeving op het niveau van het besturingssysteem, waar is het moeilijker voor een kwaadwillende gebruiker om aan te vallen. DRM wordt aanbevolen voor gebruik gevallen waarbij de viewer mogelijk niet een vertrouwde partij en u het hoogste niveau van beveiliging nodig hebt.
+DRM-systemen zoals PlayReady, Widevine en FairPlay bieden allemaal een extra niveau van versleuteling op de sleutel die wordt gebruikt om de inhoud te decoderen in vergelijking met een duidelijke aes-128-sleutel. De inhoudssleutel wordt versleuteld naar een sleutel die wordt beschermd door de DRM-runtime, naast eventuele versleuteling op transportniveau die door TLS wordt geleverd. Bovendien, decryptie wordt behandeld in een veilige omgeving op het niveau van het besturingssysteem, waar het moeilijker is voor een kwaadwillende gebruiker aan te vallen. DRM wordt aanbevolen voor use cases waarbij de viewer mogelijk geen vertrouwde partij is en u het hoogste beveiligingsniveau nodig hebt.
 
-### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Hoe kan ik een video alleen weer geven voor gebruikers die een specifieke machtiging hebben, zonder Azure AD te gebruiken?
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Hoe u een video alleen weergeven aan gebruikers die een specifieke toestemming hebben, zonder Azure AD te gebruiken?
 
-U hoeft geen specifieke token provider (zoals Azure AD) te gebruiken. U kunt uw eigen [JWT](https://jwt.io/) -provider (dat wil zeggen STS, Secure Token Service) maken met behulp van asymmetrische sleutel versleuteling. In uw aangepaste STS kunt u claims toevoegen op basis van uw bedrijfs logica.
+U hoeft geen specifieke tokenprovider (zoals Azure AD) te gebruiken. U uw eigen [JWT-provider](https://jwt.io/) (de zogenaamde STS, Secure Token Service) maken met behulp van asymmetrische sleutelversleuteling. In uw aangepaste STS u claims toevoegen op basis van uw bedrijfslogica.
 
-Zorg ervoor dat de uitgever, de doel groep en de claims exact overeenkomen met wat is in de JWT en de ContentKeyPolicyRestriction die wordt gebruikt in ContentKeyPolicy.
+Zorg ervoor dat de uitgever, het publiek en de claims allemaal exact overeenkomen tussen wat er in JWT staat en de ContentKeyPolicyRestriction die in ContentKeyPolicy wordt gebruikt.
 
-Zie [uw inhoud beveiligen met Media Services Dynamic Encryption](content-protection-overview.md)(Engelstalig) voor meer informatie.
+Zie [Uw inhoud beveiligen met dynamische versleuteling van Media Services](content-protection-overview.md)voor meer informatie.
 
-### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Hoe en waar u kunt JWT-token ophalen om de aanvraag-licentie of sleutel u?
+### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Hoe en waar jwt-token te krijgen voordat u het gebruikt om een licentie of sleutel aan te vragen?
 
-1. Voor productie moet u een STS (Secure token Services) (webservice) hebben die een JWT-token verleent op een HTTPS-aanvraag. Voor test kunt u de code gebruiken die wordt weer gegeven in de methode **GetTokenAsync** die is gedefinieerd in [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
-2. Player moet een aanvraag maken nadat een gebruiker is geverifieerd, naar de STS voor dergelijke een token en wijs deze toe aan de waarde van het token. U kunt de [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/)gebruiken.
+1. Voor de productie moet u een Secure Token Services (STS) (webservice) hebben die JWT-token uitgeeft op een HTTPS-verzoek. Voor de test u de code gebruiken die wordt weergegeven in de **GetTokenAsync-methode** die is gedefinieerd in [Program.cs.](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)
+2. Speler moet een verzoek indienen, nadat een gebruiker is geverifieerd, aan de STS voor een dergelijk token en het toewijzen als de waarde van het token. U de [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)gebruiken.
 
-* Zie [https://aka.ms/jwt](https://aka.ms/jwt)voor een voor beeld van het uitvoeren van een STS met behulp van symmetrische en asymmetrische sleutels. 
-* Voor een voor beeld van een speler op basis van Azure Media Player met behulp van deze JWT-token raadpleegt u [https://aka.ms/amtest](https://aka.ms/amtest) (vouw de koppeling ' player_settings ' uit om de invoer van het token te bekijken).
+* Voor een voorbeeld van het uitvoeren van STS, met [https://aka.ms/jwt](https://aka.ms/jwt)ofwel symmetrische en asymmetrische sleutel, zie . 
+* Zie [https://aka.ms/amtest](https://aka.ms/amtest) (player_settings" koppeling uitvouwen om de tokeninvoer te zien voor een voorbeeld van een speler op basis van Azure Media Player met behulp van een dergelijk JWT-token.
 
-### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>Hoe autoriseert u aanvragen voor stream-video's met AES-versleuteling
+### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>Hoe autoriseer je verzoeken om video's te streamen met AES-encryptie?
 
-De juiste aanpak is het gebruikmaken van de STS (Secure Token Service):
+De juiste aanpak is om sts (Secure Token Service) te gebruiken:
 
-In STS, afhankelijk van het gebruikers profiel, kunt u verschillende claims toevoegen (zoals ' Premium User ', ' Basic User ', ' gebruiker met gratis proef versie '). Met andere claims in een JWT ziet de gebruiker andere inhoud. Voor andere inhoud/asset, wordt de ContentKeyPolicyRestriction beschikken over de bijbehorende RequiredClaims.
+Voeg in STS, afhankelijk van het gebruikersprofiel, verschillende claims toe (zoals 'Premium-gebruiker', 'Basisgebruiker', 'Gratis proefgebruiker'). Met verschillende claims in een JWT kan de gebruiker verschillende inhoud zien. Natuurlijk, voor verschillende inhoud / asset, de ContentKeyPolicyRestriction zal de bijbehorende RequiredClaims.
 
-Gebruik Azure Media Services Api's voor het configureren van de levering van licenties en sleutels en het versleutelen van uw assets (zoals weer gegeven in [dit voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
+Azure Media Services API's gebruiken voor het configureren van licentie/sleutellevering en het versleutelen van uw assets (zoals in [dit voorbeeld wordt weergegeven).](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)
 
-Ga voor meer informatie naar:
+Zie voor meer informatie:
 
 - [Overzicht van inhoudsbeveiliging](content-protection-overview.md)
 - [Ontwerp van een inhoudsbeveiligingssysteem van een multi-DRM met toegangsbeheer](design-multi-drm-system-with-access-control.md)
 
 ### <a name="http-or-https"></a>HTTP of HTTPS?
-De speler ASP.NET MVC-toepassing moet ondersteunen het volgende:
+De ASP.NET MVC-spelertoepassing moet het volgende ondersteunen:
 
-* Verificatie van de gebruiker via Azure AD, deze bevindt zich onder HTTPS.
-* JWT-uitwisseling tussen de client en de Azure AD, deze bevindt zich onder HTTPS.
-* DRM-licentie overname door de client, die onder HTTPS worden moet als licentielevering is opgegeven door Media Services. De PlayReady-productpakket verplichten niet HTTPS voor de licentielevering van. Als uw PlayReady-licentie-server buiten het Media Services is, kunt u via HTTP of HTTPS.
+* Gebruikersverificatie via Azure AD, dat onder HTTPS staat.
+* JWT-uitwisseling tussen de client en Azure AD, die onder HTTPS staat.
+* DRM-licentieverwerving door de klant, die onder HTTPS moet vallen als de licentielevering wordt geleverd door Media Services. De PlayReady-productsuite verplicht geen HTTPS voor licentielevering. Als uw PlayReady-licentieserver zich buiten Media Services bevindt, u HTTP of HTTPS gebruiken.
 
-De ASP.NET-player-toepassing maakt gebruik van HTTPS als een best practice, zodat de Media Player is op een HTTPS-pagina. HTTP is echter verkozen voor streaming, zodat u moet rekening houden met de uitgifte van gemengde inhoud.
+De ASP.NET spelertoepassing gebruikt HTTPS als best practice, dus Media Player staat op een pagina onder HTTPS. Http heeft echter de voorkeur voor streaming, dus je moet rekening houden met het probleem van gemengde inhoud.
 
-* Gemengde inhoud toegestaan niet in de browser. Maar plug-ins zoals Silverlight en de invoegtoepassing voor OSMF soepel te verwerken en STREEPJES worden toegestaan. Gemengde inhoud is een beveiligingsprobleem vanwege de dreiging van de mogelijkheid om te ' injecteren ' schadelijke JavaScript, waardoor de gegevens van de klant moet lopen. Browsers deze mogelijkheid standaard geblokkeerd. De enige manier om dit oplossen door het is aan de serverzijde (oorsprong) doordat alle domeinen (ongeacht HTTPS of HTTP). Dit is waarschijnlijk niet een goed idee een.
-* Vermijd gemengde inhoud. De player-toepassing en de Media Player moet HTTP of HTTPS te gebruiken. Tijdens het afspelen van gemengde inhoud, is de tech silverlightSS vereist een waarschuwing gemengde inhoud uit te schakelen. De techniek flashSS verwerkt gemengde inhoud zonder een waarschuwing gemengde inhoud.
-* Als uw streaming-eindpunt is gemaakt vóór augustus 2014, niet HTTPS wordt ondersteund. In dit geval maken en gebruiken van een nieuwe streaming-eindpunt voor HTTPS.
+* De browser staat geen gemengde inhoud toe. Maar plug-ins zoals Silverlight en de OSMF plug-in voor smooth en DASH laten het toe. Gemengde inhoud is een beveiligingsprobleem vanwege de dreiging van de mogelijkheid om kwaadaardige JavaScript te injecteren, waardoor klantgegevens in gevaar kunnen komen. Browsers blokkeren deze mogelijkheid standaard. De enige manier om er omheen te werken is aan de server (oorsprong) kant door het toestaan van alle domeinen (ongeacht HTTPS of HTTP). Dit is waarschijnlijk ook geen goed idee.
+* Vermijd gemengde inhoud. Zowel de player-applicatie als Media Player moeten HTTP of HTTPS gebruiken. Bij het afspelen van gemengde inhoud, de silverlightSS tech vereist clearing een mixed-content waarschuwing. De flashSS-technologie verwerkt gemengde inhoud zonder waarschuwing voor gemengde inhoud.
+* Als je streaming-eindpunt vóór augustus 2014 is gemaakt, wordt er geen https ondersteund. Maak en gebruik in dit geval een nieuw streamingeindpunt voor HTTPS.
 
-### <a name="what-about-live-streaming"></a>Hoe zit live streamen?
+### <a name="what-about-live-streaming"></a>Hoe zit het met live streaming?
 
-Kunt u exact het dezelfde ontwerpen en implementeren om te beveiligen met live streaming in Media Services van de asset die zijn gekoppeld aan een programma als een activum VOD te behandelen. Als u een multi-DRM-beveiliging van de live-inhoud wilt bieden, moet u dezelfde instelling/verwerking Toep assen op de Asset alsof het een VOD-Asset was voordat u de Asset koppelt aan de live uitvoer.
+U precies hetzelfde ontwerp en dezelfde implementatie gebruiken om live streaming in Media Services te beschermen door het item dat aan een programma is gekoppeld, als een VOD-asset te behandelen. Als u een multi-DRM-bescherming van de live-inhoud wilt bieden, past u dezelfde instelling/verwerking toe op het actief alsof het een VOD-asset is voordat u het actief koppelt aan de live-uitvoer.
 
 ### <a name="what-about-license-servers-outside-media-services"></a>Hoe zit het met licentieservers buiten Media Services?
 
-Vaak klanten in een serverfarm licentie geïnvesteerd in hun eigen Datacenter of een gehost door serviceproviders DRM. Met Media Services content protection, kunt u gebruiken in de hybride-modus. De inhoud kunnen worden gehost en dynamisch in Media Services, beveiligd terwijl DRM-licenties worden geleverd door servers buiten Media Services. In dit geval kunt u overwegen de volgende wijzigingen:
+Vaak hebben klanten geïnvesteerd in een licentieserverfarm in hun eigen datacenter of een bedrijf dat wordt gehost door DRM-serviceproviders. Met mediaservices-inhoudsbescherming u in hybride modus werken. Inhoud kan worden gehost en dynamisch worden beveiligd in Media Services, terwijl DRM-licenties worden geleverd door servers buiten Media Services. Houd in dit geval rekening met de volgende wijzigingen:
 
-* STS moet uitgeven van tokens die worden geaccepteerd en kunnen worden gecontroleerd door de licentie voor server-farm. De Widevine-licentieservers geleverd door Axinom vereisen bijvoorbeeld een specifieke JWT die een bericht rechten bevat. Daarom moet u een STS om uit te geven die een JWT hebben. 
-* U moet niet meer licentieleveringsservice configureren in Media Services. U moet de licentie overname URL's opgeven (voor PlayReady, Widevine en FairPlay) wanneer u ContentKeyPolicies configureert.
+* STS moet tokens uitgeven die acceptabel zijn en kunnen worden geverifieerd door de licentieserverfarm. De Widevine-licentieservers van Axinom vereisen bijvoorbeeld een specifieke JWT die een rechtenbericht bevat. Daarom moet je een STS hebben om zo'n JWT uit te geven. 
+* U hoeft geen licentieleveringsservice meer te configureren in Media Services. U moet de URL's voor licentieverwerving (voor PlayReady, Widevine en FairPlay) verstrekken wanneer u ContentKeyPolicies configureert.
 
 > [!NOTE]
-> Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+> Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
 
-## <a name="media-services-v2-vs-v3"></a>Media Services v2 VS v3 
+## <a name="media-services-v2-vs-v3"></a>Media Services v2 vs v3 
 
-### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Kan ik de Azure Portal gebruiken om v3-resources te beheren?
+### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Kan ik de Azure-portal gebruiken om v3-resources te beheren?
 
-Op dit moment kunt u het [Azure Portal](https://portal.azure.com/) gebruiken voor het volgende:
+Momenteel u de [Azure-portal](https://portal.azure.com/) gebruiken om:
 
-* Media Services v3 [Live-gebeurtenissen](live-events-outputs-concept.md)beheren, 
-* V3- [assets](assets-concept.md)weer geven (niet beheren), 
-* [krijg informatie over het openen van api's](access-api-portal.md). 
+* Media Services v3 [Live Events](live-events-outputs-concept.md)beheren, 
+* bekijken (niet beheren) v3 [Activa](assets-concept.md), 
+* [informatie krijgen over toegang tot API's](access-api-portal.md). 
 
-Gebruik de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks)voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)).
+Voor alle andere beheertaken (bijvoorbeeld [Transformaties en Taken](transforms-jobs-concept.md) en [Contentbescherming),](content-protection-overview.md)gebruikt u de [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
-### <a name="is-there-an-assetfile-concept-in-v3"></a>Is er een AssetFile-concept in v3?
+### <a name="is-there-an-assetfile-concept-in-v3"></a>Is er een AssetFile concept in v3?
 
-De AssetFiles zijn verwijderd uit de AMS-API om Media Services te scheiden van de opslag-SDK-afhankelijkheid. Nu opslag, niet Media Services, houdt de informatie bij die bij de opslag hoort. 
+De AssetFiles zijn uit de AMS API verwijderd om Media Services te scheiden van storage SDK-afhankelijkheid. Opslag, niet Media Services, bewaart nu de informatie die thuishoort in Storage. 
 
-Zie [Migrate to Media Services v3](media-services-v2-vs-v3.md)(Engelstalig) voor meer informatie.
+Zie [Migreren naar Media Services v3](media-services-v2-vs-v3.md)voor meer informatie.
 
-### <a name="where-did-client-side-storage-encryption-go"></a>Waar is de opslag versleuteling aan de client zijde gebleven?
+### <a name="where-did-client-side-storage-encryption-go"></a>Waar is client-side storage encryptie gebleven?
 
-U wordt aangeraden de opslag versleuteling aan de server zijde te gebruiken (deze is standaard ingeschakeld). Zie [Azure Storage-service versleuteling voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)voor meer informatie.
+Het wordt nu aanbevolen om de server-side storage encryptie te gebruiken (die standaard is ingeschakeld). Zie [Azure Storage Service Encryption for Data at Rest voor](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Overzicht van Media Services v3](media-services-overview.md)
+[Media Services v3 overzicht](media-services-overview.md)

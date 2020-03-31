@@ -1,128 +1,128 @@
 ---
-title: Bemonsterde telemetrie in Azure-toepassing Insights | Microsoft Docs
-description: Hoe u het telemetrie-volume onder controle kunt houden.
+title: Telemetriebemonstering in Azure Application Insights | Microsoft Documenten
+description: Hoe het volume van telemetrie onder controle te houden.
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
 ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275826"
 ---
 # <a name="sampling-in-application-insights"></a>Steekproeven in Application Insights
 
-Steek proeven zijn een functie in [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md). Het is de aanbevolen manier om het telemetrische verkeer, de gegevens kosten en de opslag kosten te verlagen, terwijl u een statistische, juiste analyse van toepassings gegevens behoudt. Met steek proeven kunt u ook Application Insights beperking van uw telemetrie beperken. Het bemonsterings filter selecteert items die gerelateerd zijn, zodat u kunt navigeren tussen items wanneer u diagnostische tests uitvoert.
+Sampling is een functie in [Azure Application Insights.](../../azure-monitor/app/app-insights-overview.md) Het is de aanbevolen manier om telemetrieverkeer, gegevenskosten en opslagkosten te verlagen, met behoud van een statistisch correcte analyse van toepassingsgegevens. Met sampling u ook voorkomen dat Application Insights uw telemetrie throttling. Het bemonsteringsfilter selecteert items die gerelateerd zijn, zodat u tussen items navigeren wanneer u diagnostische onderzoeken doet.
 
-Wanneer metrische aantallen worden weer gegeven in de portal, worden ze opnieuw genormaliseerd om rekening te houden met de steek proeven. Zo minimaliseert u het effect op de statistieken.
+Wanneer metrische tellingen in het portaal worden weergegeven, worden ze opnieuw genormaliseerd om rekening te houden met bemonstering. Hierdoor minimaliseert elk effect op de statistieken.
 
-## <a name="brief-summary"></a>Korte samen vatting
+## <a name="brief-summary"></a>Korte samenvatting
 
-* Er zijn drie verschillende soorten steek proeven: adaptieve steek proeven, steek proeven met een vaste frequentie en steek proeven voor opname.
-* Adaptieve steek proeven zijn standaard ingeschakeld in alle nieuwste versies van de Application Insights ASP.NET en ASP.NET Core Sdk's (Software Development Kits). Het wordt ook gebruikt door [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
-* Beproefde vaste-rente Beschik baarheid is beschikbaar in recente versies van de Application Insights Sdk's voor ASP.NET, ASP.NET Core, Java en python.
-* Opname sampling werkt op het eind punt van de Application Insights service. Dit geldt alleen wanneer er geen andere steek proeven van kracht zijn. Als de SDK voor beelden van uw telemetrie is, wordt opname sampling uitgeschakeld.
-* Als u voor webtoepassingen aangepaste gebeurtenissen registreert en er zeker van wilt zijn dat een set gebeurtenissen wordt behouden of verwijderd, moeten de gebeurtenissen dezelfde `OperationId` waarde hebben.
-* Als u analyse query's schrijft, moet u [rekening houden met steek proeven](../../azure-monitor/log-query/aggregations.md). In plaats van records eenvoudigweg te tellen, moet u in het bijzonder `summarize sum(itemCount)`gebruiken.
-* Sommige typen telemetrie, met inbegrip van metrische gegevens over prestaties en aangepaste metrische gegevens, worden altijd bewaard, ongeacht of steek proeven zijn ingeschakeld of niet.
+* Er zijn drie verschillende soorten steekproeven: adaptieve bemonstering, bemonstering met vaste snelheid en innamebemonstering.
+* Adaptieve sampling is standaard ingeschakeld in alle nieuwste versies van de Application Insights ASP.NET en ASP.NET Core Software Development Kits (SDKs). Het wordt ook gebruikt door [Azure-functies.](https://docs.microsoft.com/azure/azure-functions/functions-overview)
+* Fixed-rate sampling is beschikbaar in recente versies van de Application Insights SDKs voor ASP.NET, ASP.NET Core, Java en Python.
+* Innamesampling werkt op het eindpunt van de Application Insights-service. Het is alleen van toepassing wanneer er geen andere bemonstering van kracht is. Als de SDK uw telemetrie bemonstert, wordt de innamebemonstering uitgeschakeld.
+* Als u aangepaste gebeurtenissen registreert en ervoor moet zorgen dat een reeks gebeurtenissen samen wordt bewaard `OperationId` of verwijderd, moeten de gebeurtenissen dezelfde waarde hebben.
+* Als u Analytics-query's schrijft, moet u [rekening houden met steekproeven.](../../azure-monitor/log-query/aggregations.md) In het bijzonder, in plaats van `summarize sum(itemCount)`gewoon tellen records, moet u gebruik maken van .
+* Sommige telemetrietypen, waaronder prestatiestatistieken en aangepaste statistieken, worden altijd bewaard, ongeacht of sampling is ingeschakeld of niet.
 
-De volgende tabel bevat een overzicht van de beschik bare bemonsterings typen voor elke SDK en type toepassing:
+In de volgende tabel worden de beschikbare bemonsteringstypen voor elke SDK en elk type toepassing samengevat:
 
-| Application Insights SDK | Adaptieve steek proeven worden ondersteund | Steek proeven met een vast aantal worden ondersteund | Bemonstering van opname wordt ondersteund |
+| Application Insights SDK | Adaptieve bemonstering ondersteund | Ondersteunde steekproeven met vaste snelheid | Innamebemonstering ondersteund |
 |-|-|-|-|
-| ASP.NET | [Ja (standaard ingeschakeld)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-applications) | Alleen als er geen andere steek proeven van kracht zijn |
-| ASP.NET Core | [Ja (standaard ingeschakeld)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Alleen als er geen andere steek proeven van kracht zijn |
-| Azure Functions | [Ja (standaard ingeschakeld)](#configuring-adaptive-sampling-for-azure-functions) | Nee | Alleen als er geen andere steek proeven van kracht zijn |
-| Java | Nee | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Alleen als er geen andere steek proeven van kracht zijn |
-| Python | Nee | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Alleen als er geen andere steek proeven van kracht zijn |
-| Alle andere | Nee | Nee | [Ja](#ingestion-sampling) |
+| ASP.NET | [Ja (standaard aan)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-applications) | Alleen als er geen andere bemonstering van kracht is |
+| ASP.NET Core | [Ja (standaard aan)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Alleen als er geen andere bemonstering van kracht is |
+| Azure Functions | [Ja (standaard aan)](#configuring-adaptive-sampling-for-azure-functions) | Nee | Alleen als er geen andere bemonstering van kracht is |
+| Java | Nee | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Alleen als er geen andere bemonstering van kracht is |
+| Python | Nee | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Alleen als er geen andere bemonstering van kracht is |
+| Alle anderen | Nee | Nee | [Ja](#ingestion-sampling) |
 
 > [!NOTE]
-> De informatie op de meeste van deze pagina is van toepassing op de huidige versies van de Application Insights Sdk's. [Zie de sectie hieronder](#older-sdk-versions)voor meer informatie over oudere versies van de sdk's.
+> De informatie op het grootste deel van deze pagina is van toepassing op de huidige versies van de Application Insights SDKs. Zie [de sectie hieronder voor](#older-sdk-versions)informatie over oudere versies van de SDK's.
 
-## <a name="types-of-sampling"></a>Typen steek proeven
+## <a name="types-of-sampling"></a>Soorten bemonstering
 
-Er zijn drie verschillende bemonsterings methoden:
+Er zijn drie verschillende bemonsteringsmethoden:
 
-* Met **adaptieve steek proeven** wordt het volume van de telemetrie van de SDK in uw ASP.NET/ASP.net core-app automatisch aangepast en van Azure functions. Dit is de standaard steekproef waarde wanneer u de ASP.NET-of ASP.NET Core SDK gebruikt. Adaptieve steek proeven zijn momenteel alleen beschikbaar voor telemetrie op de ASP.NET-Server en voor Azure Functions.
+* **Adaptieve bemonstering** past automatisch het volume van telemetrie dat vanuit de SDK wordt verzonden in uw ASP.NET/ASP.NET Core-app en vanuit Azure-functies. Dit is de standaardbemonstering wanneer u de ASP.NET of ASP.NET Core SDK gebruikt. Adaptieve sampling is momenteel alleen beschikbaar voor ASP.NET telemetrie aan de serverzijde en voor Azure-functies.
 
-* Bij **steek proeven met een vaste frequentie** wordt het volume van de telemetrie gereduceerd van uw ASP.net-of ASP.net core-of Java-Server en van de browsers van uw gebruikers. U stelt het aantal in. De steek proeven van de client en de server worden gesynchroniseerd, zodat u kunt navigeren tussen gerelateerde pagina weergaven en-aanvragen.
+* **Fixed-rate sampling** vermindert het volume van telemetrie dat wordt verzonden vanaf zowel uw ASP.NET of ASP.NET Core- of Java-server als vanuit de browsers van uw gebruikers. Jij stelt het tarief in. De client en server synchroniseren hun sampling zodat u in Search navigeren tussen gerelateerde paginaweergaven en aanvragen.
 
-* **Steek proeven voor opname** gebeurt op het Application Insights service-eind punt. Er wordt een deel van de telemetrie verwijderd uit uw app, met een sampling frequentie die u hebt ingesteld. Het vermindert niet het telemetrie verkeer dat vanuit uw app wordt verzonden, maar helpt u binnen uw maandelijkse quotum te houden. Het belangrijkste voor deel van opname sampling is dat u de sampling frequentie kunt instellen zonder uw app opnieuw te implementeren. De steek proef van opname werkt op uniforme wijze voor alle servers en clients, maar is niet van toepassing wanneer er andere soorten steek proeven worden uitgevoerd.
+* **Innamebemonstering** vindt plaats op het eindpunt van de Application Insights-service. Het verwijdert een deel van de telemetrie die afkomstig is van uw app, met een sampling rate die u instelt. Het vermindert het telemetrieverkeer dat vanuit uw app wordt verzonden niet, maar helpt u om binnen uw maandelijkse quotum te blijven. Het belangrijkste voordeel van innamebemonstering is dat u de samplingrate instellen zonder uw app opnieuw te implementeren. Innamebemonstering werkt gelijkmatig voor alle servers en clients, maar is niet van toepassing wanneer andere soorten steekproeven in werking zijn.
 
 > [!IMPORTANT]
-> Als er een adaptieve of vaste bemonsterings methode wordt uitgevoerd, worden de steek proeven voor opname uitgeschakeld.
+> Als adaptieve of vaste rate samplingmethoden in werking zijn, wordt de innamebemonstering uitgeschakeld.
 
-## <a name="adaptive-sampling"></a>Adaptieve steek proef
+## <a name="adaptive-sampling"></a>Adaptieve bemonstering
 
-Adaptieve steek proeven zijn van invloed op het volume van de telemetrie die vanuit uw webserver-app wordt verzonden naar het Application Insights service-eind punt.
+Adaptieve bemonstering is van invloed op het volume telemetrie dat vanuit uw webserver-app naar het eindpunt van de Application Insights-service wordt verzonden.
 
 > [!TIP]
-> Adaptieve steek proeven zijn standaard ingeschakeld wanneer u de ASP.NET SDK of de ASP.NET Core SDK gebruikt en is ook standaard ingeschakeld voor Azure Functions.
+> Adaptieve bemonstering is standaard ingeschakeld wanneer u de ASP.NET SDK of de ASP.NET Core SDK gebruikt, en is standaard ook ingeschakeld voor Azure Functions.
 
-Het volume wordt automatisch aangepast om binnen een opgegeven maximale hoeveelheid verkeer te blijven en wordt beheerd via de instelling `MaxTelemetryItemsPerSecond`. Als de toepassing een geringe hoeveelheid telemetrie produceert, zoals bij het opsporen van fouten of wegens een laag gebruik, worden items niet verwijderd door de sampling processor zolang het volume onder `MaxTelemetryItemsPerSecond`is. Naarmate het volume van de telemetrie toeneemt, wordt de sampling frequentie aangepast om het doel volume te bereiken. De correctie wordt met regel matige tussen pozen opnieuw berekend en is gebaseerd op een zwevend gemiddelde van de uitgaande verzend snelheid.
+Het volume wordt automatisch aangepast om binnen een bepaalde maximale verkeerssnelheid te blijven en wordt gecontroleerd via de instelling `MaxTelemetryItemsPerSecond`. Als de toepassing een lage hoeveelheid telemetrie produceert, zoals bij het foutopsporing of vanwege een laag gebruik, worden `MaxTelemetryItemsPerSecond`items niet door de bemonsteringsprocessor verwijderd zolang het volume lager is . Naarmate het volume van de telemetrie toeneemt, wordt de samplingrate aangepast om het doelvolume te bereiken. De aanpassing wordt op regelmatige tijdstippen opnieuw berekend en is gebaseerd op een voortschrijdend gemiddelde van de uitgaande transmissiesnelheid.
 
-Om het doel volume te bereiken, wordt een deel van de gegenereerde telemetrie genegeerd. Maar net als andere typen steek proeven behouden de algoritme gerelateerde telemetrie-items. Wanneer u bijvoorbeeld de telemetrie in de zoek actie inspecteert, kunt u de aanvraag voor een bepaalde uitzonde ring vinden.
+Om het doelvolume te bereiken, wordt een deel van de gegenereerde telemetrie verwijderd. Maar net als andere soorten steekproeven behoudt het algoritme gerelateerde telemetrie-items. Wanneer u bijvoorbeeld de telemetrie in Zoeken inspecteert, u de aanvraag met betrekking tot een bepaalde uitzondering vinden.
 
-Metrische aantallen, zoals de frequentie van aanvragen en uitzonderings snelheden, worden aangepast om de sampling frequentie te compenseren, zodat ze ongeveer de juiste waarden in metrische Explorer weer geven.
+Metrische tellingen zoals het verzoekpercentage en het uitzonderingspercentage worden aangepast om de bemonsteringsfrequentie te compenseren, zodat ze ongeveer de juiste waarden in Metric Explorer weergeven.
 
-### <a name="configuring-adaptive-sampling-for-aspnet-applications"></a>Adaptieve steek proeven configureren voor ASP.NET-toepassingen
+### <a name="configuring-adaptive-sampling-for-aspnet-applications"></a>Adaptieve sampling configureren voor ASP.NET toepassingen
 
 > [!NOTE]
-> Deze sectie is van toepassing op ASP.NET-toepassingen, niet op ASP.NET Core toepassingen. [Meer informatie over het configureren van adaptieve steek proeven voor ASP.NET Core toepassingen verderop in dit document.](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)
+> Deze sectie is van toepassing op ASP.NET toepassingen, niet op ASP.NET Core-toepassingen. [Meer informatie over het configureren van adaptieve sampling voor ASP.NET Core-toepassingen later in dit document.](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)
 
-In [`ApplicationInsights.config`](../../azure-monitor/app/configuration-with-applicationinsights-config.md)kunt u verschillende para meters in het knoop punt `AdaptiveSamplingTelemetryProcessor` aanpassen. De weer gegeven afbeeldingen zijn de standaard waarden:
+In [`ApplicationInsights.config`](../../azure-monitor/app/configuration-with-applicationinsights-config.md)u verschillende parameters `AdaptiveSamplingTelemetryProcessor` in het knooppunt aanpassen. De weergegeven cijfers zijn de standaardwaarden:
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
-    Het doel frequentie waarmee het adaptieve algoritme **op elke server host**gericht is. Als uw web-app op veel hosts wordt uitgevoerd, verlaagt u deze waarde zodat deze binnen de doel frequentie van het verkeer op de Application Insights Portal blijft.
+    De doelsnelheid die het adaptieve algoritme beoogt **op elke serverhost.** Als uw web-app op veel hosts wordt uitgevoerd, verlaagt u deze waarde om binnen uw doelsnelheid van het verkeer te blijven op de Application Insights-portal.
 
 * `<EvaluationInterval>00:00:15</EvaluationInterval>` 
   
-    Het interval waarmee de huidige frequentie van de telemetrie opnieuw wordt geëvalueerd. De evaluatie wordt uitgevoerd als een zwevend gemiddelde. Mogelijk wilt u dit interval verkorten als uw telemetrie op plotselinge bursts is.
+    Het interval waarmee de huidige telemetriesnelheid opnieuw wordt geëvalueerd. Evaluatie wordt uitgevoerd als een voortschrijdend gemiddelde. U dit interval verkorten als uw telemetrie onderhevig is aan plotselinge uitbarstingen.
 
 * `<SamplingPercentageDecreaseTimeout>00:02:00</SamplingPercentageDecreaseTimeout>`
   
-    Hoe snel na het berekenen van het percentage van de waarde wordt het steekproef percentage opnieuw ingesteld om minder gegevens vast te leggen?
+    Wanneer de waarde van het bemonsteringspercentage verandert, hoe snel mogen we het bemonsteringspercentage opnieuw verlagen om minder gegevens vast te leggen?
 
 * `<SamplingPercentageIncreaseTimeout>00:15:00</SamplingPercentageIncreaseTimeout>`
   
-    Hoe snel na het berekenen van het percentage van de waarde wordt het sampling percentage opnieuw toegestaan om meer gegevens vast te leggen?
+    Wanneer de waarde van het bemonsteringspercentage verandert, hoe snel mogen we het bemonsteringspercentage opnieuw verhogen om meer gegevens vast te leggen?
 
 * `<MinSamplingPercentage>0.1</MinSamplingPercentage>`
   
-    Wat is de minimale waarde die we mogen instellen als het steekproef percentage varieert?
+    Als het bemonsteringspercentage varieert, wat is de minimumwaarde die we mogen instellen?
 
 * `<MaxSamplingPercentage>100.0</MaxSamplingPercentage>`
   
-    Wat is de maximum waarde die we mogen instellen, omdat het steekproef percentage varieert?
+    Als het bemonsteringspercentage varieert, wat is de maximale waarde die we mogen instellen?
 
 * `<MovingAverageRatio>0.25</MovingAverageRatio>` 
   
-    Bij het berekenen van het zwevend gemiddelde geeft dit het gewicht aan dat moet worden toegewezen aan de meest recente waarde. Gebruik een waarde die gelijk is aan of kleiner is dan 1. Kleinere waarden zorgen ervoor dat het algoritme minder opnieuw wordt geactiveerd tot onverwachte wijzigingen.
+    Bij de berekening van het voortschrijdend gemiddelde wordt het gewicht aangegeven dat moet worden toegewezen aan de meest recente waarde. Gebruik een waarde die gelijk is aan of lager is dan 1. Kleinere waarden maken het algoritme minder reactief voor plotselinge veranderingen.
 
 * `<InitialSamplingPercentage>100</InitialSamplingPercentage>`
   
-    De hoeveelheid telemetrie die moet worden gesampled wanneer de app zojuist is gestart. Verlaag deze waarde niet tijdens het opsporen van fouten.
+    De hoeveelheid telemetrie die moet worden gesampled wanneer de app net is gestart. Verlaag deze waarde niet tijdens het foutspelen.
 
 * `<ExcludedTypes>Trace;Exception</ExcludedTypes>`
   
-    Een door punt komma's gescheiden lijst met typen waarvan u niet wilt dat ze worden gesampled. De herkende typen zijn: `Dependency`, `Event`, `Exception`, `PageView`, `Request`, `Trace`. Alle telemetrie van de opgegeven typen wordt verzonden. voor de typen die niet zijn opgegeven, wordt een steek proef genomen.
+    Een lijst met typen met een halve punt van dubbele punt die u niet wilt worden gesampled. Erkende typen `Dependency`zijn: `Event` `Exception`, `PageView` `Request`, `Trace`, , , . Alle telemetrie van de opgegeven typen wordt verzonden; de typen die niet zijn opgegeven, worden bemonsterd.
 
 * `<IncludedTypes>Request;Dependency</IncludedTypes>`
   
-    Een door punt komma's gescheiden lijst met typen die u wilt onderhevig aan steek proeven. De herkende typen zijn: `Dependency`, `Event`, `Exception`, `PageView`, `Request`, `Trace`. De opgegeven typen worden gesampled. alle telemetrie van de andere typen wordt altijd verzonden.
+    Een lijst met typen met een halve punt van dubbele punt die u wel wilt nemen. Erkende typen `Dependency`zijn: `Event` `Exception`, `PageView` `Request`, `Trace`, , , . De opgegeven typen worden bemonsterd; alle telemetrie van de andere typen worden altijd verzonden.
 
-**Als u** adaptieve steek proeven wilt uitschakelen, verwijdert u de `AdaptiveSamplingTelemetryProcessor` knoop punt (en) uit `ApplicationInsights.config`.
+**Als u** adaptieve bemonstering `AdaptiveSamplingTelemetryProcessor` wilt uitschakelen, verwijdert `ApplicationInsights.config`u het knooppunt(en) uit .
 
-#### <a name="alternative-configure-adaptive-sampling-in-code"></a>Alternatief: adaptieve steek proeven in code configureren
+#### <a name="alternative-configure-adaptive-sampling-in-code"></a>Alternatief: Adaptieve bemonstering in code configureren
 
-In plaats van de para meter sampling in het `.config` bestand in te stellen, kunt u deze waarden programmatisch instellen.
+In plaats van de `.config` parameter sampling in het bestand in te stellen, u deze waarden programmatisch instellen.
 
-1. Verwijder alle `AdaptiveSamplingTelemetryProcessor` knoop punt (en) uit het `.config` bestand.
-2. Gebruik het volgende code fragment om adaptieve steek proeven te configureren:
+1. Verwijder alle `AdaptiveSamplingTelemetryProcessor` knooppunt(s) uit `.config` het bestand.
+2. Gebruik het volgende fragment om adaptieve bemonstering te configureren:
 
     ```csharp
     using Microsoft.ApplicationInsights;
@@ -145,23 +145,23 @@ In plaats van de para meter sampling in het `.config` bestand in te stellen, kun
     builder.Build();
     ```
 
-    ([Meer informatie over telemetrie-processors](../../azure-monitor/app/api-filtering-sampling.md#filtering).)
+    ([Meer informatie over telemetrieprocessors](../../azure-monitor/app/api-filtering-sampling.md#filtering).)
 
-U kunt ook de sampling frequentie voor elk type telemetrie aanpassen, of u kunt zelfs bepaalde typen uitsluiten van steek proeven:
+U ook de bemonsteringsfrequentie voor elk telemetrietype afzonderlijk aanpassen of zelfs bepaalde typen uitsluiten dat deze worden bemonsterd:
 
 ```csharp
 // The following configures adaptive sampling with 5 items per second, and also excludes Dependency telemetry from being subjected to sampling.
 builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond:5, excludedTypes: "Dependency");
 ```
 
-### <a name="configuring-adaptive-sampling-for-aspnet-core-applications"></a>Adaptieve steek proeven configureren voor ASP.NET Core toepassingen
+### <a name="configuring-adaptive-sampling-for-aspnet-core-applications"></a>Adaptieve sampling configureren voor ASP.NET Core-toepassingen
 
-Er is geen `ApplicationInsights.config` voor ASP.NET Core toepassingen, zodat alle configuratie via code wordt uitgevoerd.
-Adaptieve steek proeven zijn standaard ingeschakeld voor alle ASP.NET Core-toepassingen. U kunt het steekproef gedrag uitschakelen of aanpassen.
+Er is `ApplicationInsights.config` geen voor ASP.NET Core-toepassingen, dus alle configuratie wordt gedaan via code.
+Adaptieve sampling is standaard ingeschakeld voor alle ASP.NET Core-toepassingen. U het bemonsteringsgedrag uitschakelen of aanpassen.
 
-#### <a name="turning-off-adaptive-sampling"></a>Adaptieve steek proeven uitschakelen
+#### <a name="turning-off-adaptive-sampling"></a>Adaptieve bemonstering uitschakelen
 
-De standaard steekproef functie kan worden uitgeschakeld tijdens het toevoegen van Application Insights-service in de methode `ConfigureServices`met behulp van `ApplicationInsightsServiceOptions` binnen het `Startup.cs`-bestand:
+De standaardsamplingfunctie kan worden uitgeschakeld terwijl de Application `ConfigureServices`Insights-service in de methode wordt toegevoegd met behulp van `ApplicationInsightsServiceOptions` in het `Startup.cs` bestand:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -176,14 +176,14 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Met de bovenstaande code worden adaptieve steek proeven uitgeschakeld. Volg de onderstaande stappen om steek proeven toe te voegen met meer aanpassings opties.
+De bovenstaande code schakelt adaptieve bemonstering uit. Volg de onderstaande stappen om steekproeven toe te voegen met meer aanpassingsopties.
 
-#### <a name="configure-sampling-settings"></a>Sampling-instellingen configureren
+#### <a name="configure-sampling-settings"></a>Bemonsteringsinstellingen configureren
 
-Gebruik de extensie methoden van `TelemetryProcessorChainBuilder`, zoals hieronder wordt weer gegeven om het steekproef gedrag aan te passen.
+Gebruik extensiemethoden `TelemetryProcessorChainBuilder` zoals hieronder weergegeven om het bemonsteringsgedrag aan te passen.
 
 > [!IMPORTANT]
-> Als u deze methode gebruikt om steek proeven te configureren, moet u de eigenschap `aiOptions.EnableAdaptiveSampling` instellen op `false` bij het aanroepen van `AddApplicationInsightsTelemetry()`.
+> Als u deze methode gebruikt om de bemonstering `aiOptions.EnableAdaptiveSampling` te `false` configureren, moet u ervoor zorgen dat de eigenschap wordt ingesteld bij het aanroepen `AddApplicationInsightsTelemetry()`.
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
@@ -207,21 +207,21 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 }
 ```
 
-### <a name="configuring-adaptive-sampling-for-azure-functions"></a>Adaptieve steek proeven configureren voor Azure Functions
+### <a name="configuring-adaptive-sampling-for-azure-functions"></a>Adaptieve bemonstering configureren voor Azure-functies
 
-Volg de instructies op [Deze pagina](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling) om adaptieve steek proeven te configureren voor apps die worden uitgevoerd in azure functions.
+Volg instructies vanaf [deze pagina](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling) om adaptieve bemonstering te configureren voor apps die worden uitgevoerd in Azure-functies.
 
-## <a name="fixed-rate-sampling"></a>Steek proeven met een vaste frequentie
+## <a name="fixed-rate-sampling"></a>Bemonstering met vaste snelheid
 
-Bij steek proeven met een vaste frequentie wordt het verkeer dat wordt verzonden vanaf uw webserver en webbrowsers verminderd. In tegens telling tot adaptieve steek proeven wordt de telemetrie verminderd met een vast bedrag dat door u wordt bepaald. Steek proeven met een vaste frequentie zijn beschikbaar voor ASP.NET-, ASP.NET Core-, Java-en python-toepassingen.
+Fixed-rate sampling vermindert het verkeer dat wordt verzonden vanaf uw webserver en webbrowsers. In tegenstelling tot adaptieve bemonstering, vermindert het telemetrie met een vaste snelheid die door u wordt bepaald. Fixed-rate sampling is beschikbaar voor ASP.NET, ASP.NET Core, Java en Python applicaties.
 
-Net als andere technieken voor steek proeven blijven ook verwante items behouden. Ook worden de client-en server sampling gesynchroniseerd, zodat verwante items worden bewaard. Als u bijvoorbeeld een pagina weergave in de zoek opdracht bekijkt, kunt u de bijbehorende server aanvragen vinden. 
+Net als andere bemonsteringstechnieken behoudt dit ook gerelateerde items. Het synchroniseert ook de client- en serversampling, zodat gerelateerde items worden bewaard - bijvoorbeeld wanneer u een paginaweergave in Zoeken bekijkt, u de bijbehorende serveraanvragen vinden. 
 
-In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringen vermenigvuldigd met een factor om de sampling frequentie te compenseren, zodat ze ongeveer correct zijn.
+In Metrics Explorer worden tarieven zoals aanvraag- en uitzonderingstellingen vermenigvuldigd met een factor om de bemonsteringssnelheid te compenseren, zodat ze ongeveer correct zijn.
 
-### <a name="configuring-fixed-rate-sampling-for-aspnet-applications"></a>Sampling van vaste frequentie voor ASP.NET-toepassingen configureren
+### <a name="configuring-fixed-rate-sampling-for-aspnet-applications"></a>Fixed-rate sampling configureren voor ASP.NET toepassingen
 
-1. **Adaptieve steek proeven uitschakelen**: in [`ApplicationInsights.config`](../../azure-monitor/app/configuration-with-applicationinsights-config.md)kunt u het `AdaptiveSamplingTelemetryProcessor` knooppunt verwijderen of opmerkingen toevoegen.
+1. **Adaptieve bemonstering**uitschakelen [`ApplicationInsights.config`](../../azure-monitor/app/configuration-with-applicationinsights-config.md): In, `AdaptiveSamplingTelemetryProcessor` verwijder of reageer op het knooppunt.
 
     ```xml
     <TelemetryProcessors>
@@ -232,7 +232,7 @@ In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringe
         -->
     ```
 
-2. **Schakel de bemonsterings module met vaste frequentie in.** Voeg dit fragment toe aan [`ApplicationInsights.config`](../../azure-monitor/app/configuration-with-applicationinsights-config.md):
+2. **Schakel de samplingmodule met vaste snelheid in.** Voeg dit [`ApplicationInsights.config`](../../azure-monitor/app/configuration-with-applicationinsights-config.md)fragment toe aan:
    
     ```XML
     <TelemetryProcessors>
@@ -244,7 +244,7 @@ In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringe
     </TelemetryProcessors>
     ```
 
-      U kunt deze waarden ook programmatisch instellen in plaats van de sampling para meter in het `ApplicationInsights.config` bestand in te stellen:
+      Als alternatief u in plaats `ApplicationInsights.config` van de parameter sampling in het bestand programmatisch de volgende waarden in te stellen:
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
@@ -264,11 +264,11 @@ In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringe
     builder.Build();
     ```
 
-    ([Meer informatie over telemetrie-processors](../../azure-monitor/app/api-filtering-sampling.md#filtering).)
+    ([Meer informatie over telemetrieprocessors](../../azure-monitor/app/api-filtering-sampling.md#filtering).)
 
-### <a name="configuring-fixed-rate-sampling-for-aspnet-core-applications"></a>Sampling van vaste frequentie voor ASP.NET Core toepassingen configureren
+### <a name="configuring-fixed-rate-sampling-for-aspnet-core-applications"></a>Fixed-rate sampling configureren voor ASP.NET Core-toepassingen
 
-1. **Adaptieve bemonstering uitschakelen**: wijzigingen kunnen worden aangebracht in de `ConfigureServices` methode met behulp van `ApplicationInsightsServiceOptions`:
+1. **Adaptieve bemonstering uitschakelen**: Wijzigingen `ConfigureServices` kunnen worden `ApplicationInsightsServiceOptions`aangebracht in de methode met behulp van :
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -283,7 +283,7 @@ In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringe
     }
     ```
 
-2. **Schakel de bemonsterings module met vaste frequentie in.** U kunt wijzigingen aanbrengen in de `Configure`-methode, zoals wordt weer gegeven in het onderstaande fragment:
+2. **Schakel de samplingmodule met vaste snelheid in.** Wijzigingen kunnen worden `Configure` aangebracht in de methode zoals weergegeven in het onderstaande fragment:
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -304,13 +304,13 @@ In Metrics Explorer worden tarieven zoals het aantal aanvragen en uitzonde ringe
     }
     ```
 
-### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>Bemonsterde vaste frequentie voor Java-toepassingen configureren
+### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>Fixed-rate sampling configureren voor Java-toepassingen
 
-Standaard is geen steek proef ingeschakeld in de Java-SDK. Momenteel wordt alleen de sampling van vaste kosten ondersteund. Adaptieve steek proeven worden niet ondersteund in de Java-SDK.
+Standaard is er geen bemonstering ingeschakeld in de Java SDK. Momenteel ondersteunt het alleen bemonstering met een vaste snelheid. Adaptieve sampling wordt niet ondersteund in de Java SDK.
 
-1. Down load en configureer uw webtoepassing met de nieuwste [Application Insights Java-SDK](../../azure-monitor/app/java-get-started.md).
+1. Download en configureer uw webapplicatie met de nieuwste [Application Insights Java SDK.](../../azure-monitor/app/java-get-started.md)
 
-2. **Schakel de bemonsterings module met vaste frequentie** in door het volgende fragment toe te voegen aan `ApplicationInsights.xml` bestand:
+2. **Schakel de samplingmodule met vaste snelheid** `ApplicationInsights.xml` in door het volgende fragment toe te voegen aan het bestand:
 
     ```XML
     <TelemetryProcessors>
@@ -324,7 +324,7 @@ Standaard is geen steek proef ingeschakeld in de Java-SDK. Momenteel wordt allee
     </TelemetryProcessors>
     ```
 
-3. U kunt specifieke soorten telemetrie opnemen of uitsluiten van steek proeven met behulp van de volgende tags in de `FixedRateSamplingTelemetryProcessor`van de `Processor` tag:
+3. U specifieke soorten telemetrie opnemen of uitsluiten `Processor` van steekproeven `FixedRateSamplingTelemetryProcessor`met behulp van de volgende tags in de tag's:
    
     ```XML
     <ExcludedTypes>
@@ -336,22 +336,22 @@ Standaard is geen steek proef ingeschakeld in de Java-SDK. Momenteel wordt allee
     </IncludedTypes>
     ```
 
-De typen telemetrie die kunnen worden opgenomen in of uitgesloten van steek proeven zijn: `Dependency`, `Event`, `Exception`, `PageView`, `Request`en `Trace`.
+De telemetrietypen die kunnen worden opgenomen `Dependency`of `Event` `Exception`uitgesloten `PageView` `Request`van `Trace`bemonstering zijn: , , , , en .
 
 > [!NOTE]
-> Kies voor het steekproef percentage een percentage dat dicht bij 100/N ligt waarbij N een geheel getal is.  De huidige steek proef biedt geen ondersteuning voor andere waarden.
+> Kies voor het bemonsteringspercentage een percentage dat dicht bij 100/N ligt, waarbij N een geheel getal is.  Momenteel biedt steekproeven geen ondersteuning voor andere waarden.
 
-### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>Bemonsterde vaste frequentie configureren voor opentellingen python-toepassingen
+### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>Fixed-rate sampling configureren voor OpenCensus Python-toepassingen
 
-Instrumenteer uw toepassing met de meest recente [Opentellings Azure monitor exporteurs](../../azure-monitor/app/opencensus-python.md).
+Instrumenter uw toepassing met de nieuwste [OpenCensus Azure Monitor-exporteurs.](../../azure-monitor/app/opencensus-python.md)
 
 > [!NOTE]
-> Er zijn geen steek proeven met een vaste rente beschikbaar voor de metrische gegevens Exporter. Dit betekent dat aangepaste metrische gegevens de enige typen telemetrie zijn waar steek proeven niet kunnen worden geconfigureerd. De export functie voor metrische gegevens stuurt alle telemetrie-tracerer.
+> Fixed-rate sampling is niet beschikbaar voor de metrische exporteur. Dit betekent dat aangepaste statistieken de enige soorten telemetrie zijn waarbij sampling NIET kan worden geconfigureerd. De metrische exporteur stuurt alle telemetrie die het bijhoudt.
 
-#### <a name="fixed-rate-sampling-for-tracing"></a>Steek proeven met een vast aantal voor tracering ####
-U kunt een `sampler` opgeven als onderdeel van uw `Tracer`-configuratie. Als er geen expliciete Voorbeeldset wordt gegeven, wordt de `ProbabilitySampler` standaard gebruikt. Voor de `ProbabilitySampler` wordt standaard een rente 1/10000 gebruikt, wat betekent dat één van elke 10000 aanvragen wordt verzonden naar Application Insights. Zie hieronder als u zelf een samplefrequentie wilt opgeven.
+#### <a name="fixed-rate-sampling-for-tracing"></a>Fixed-rate sampling voor tracering ####
+U kunt een `sampler` opgeven als onderdeel van uw `Tracer`-configuratie. Als er geen expliciete sampler wordt verstrekt, wordt deze `ProbabilitySampler` standaard gebruikt. Het `ProbabilitySampler` zou standaard een snelheid van 1/10000 gebruiken, wat betekent dat één op de 10000 aanvragen naar Application Insights wordt verzonden. Zie hieronder als u zelf een samplefrequentie wilt opgeven.
 
-Als u de sampling frequentie wilt opgeven, moet u ervoor zorgen dat uw `Tracer` een pipet met een sampling frequentie tussen 0,0 en 1,0. Een sampling frequentie van 1,0 vertegenwoordigt 100%, wat betekent dat al uw aanvragen worden verzonden als telemetrie naar Application Insights.
+Als u de bemonsteringsfrequentie `Tracer` wilt opgeven, controleert u of u een monsternemer opgeeft met een bemonsteringspercentage tussen 0,0 en 1,0. Een samplingrate van 1.0 vertegenwoordigt 100%, wat betekent dat al uw verzoeken als telemetrie naar Application Insights worden verzonden.
 
 ```python
 tracer = Tracer(
@@ -362,8 +362,8 @@ tracer = Tracer(
 )
 ```
 
-#### <a name="fixed-rate-sampling-for-logs"></a>Steek proeven met een vaste frequentie voor logboeken ####
-U kunt een vast aantal steek proeven voor `AzureLogHandler` configureren door het optionele argument `logging_sampling_rate` te wijzigen. Als er geen argument wordt opgegeven, wordt er een sampling frequentie van 1,0 gebruikt. Een sampling frequentie van 1,0 vertegenwoordigt 100%, wat betekent dat al uw aanvragen worden verzonden als telemetrie naar Application Insights.
+#### <a name="fixed-rate-sampling-for-logs"></a>Fixed-rate sampling voor logboeken ####
+U steekproeven met `AzureLogHandler` een vaste `logging_sampling_rate` snelheid configureren door het optionele argument te wijzigen. Als er geen argument wordt aangevoerd, wordt een bemonsteringspercentage van 1,0 gebruikt. Een samplingrate van 1.0 vertegenwoordigt 100%, wat betekent dat al uw verzoeken als telemetrie naar Application Insights worden verzonden.
 
 ```python
 exporter = metrics_exporter.new_metrics_exporter(
@@ -372,16 +372,16 @@ exporter = metrics_exporter.new_metrics_exporter(
 )
 ```
 
-### <a name="configuring-fixed-rate-sampling-for-web-pages-with-javascript"></a>Bemonsterde vaste frequentie voor webpagina's met Java script configureren
+### <a name="configuring-fixed-rate-sampling-for-web-pages-with-javascript"></a>Fixed-rate sampling configureren voor webpagina's met JavaScript
 
-Op Java script gebaseerde webpagina's kunnen worden geconfigureerd voor het gebruik van Application Insights. Telemetrie wordt verzonden vanuit de client toepassing die wordt uitgevoerd in de browser van de gebruiker, en de pagina's kunnen worden gehost vanaf elke server.
+JavaScript-gebaseerde webpagina's kunnen worden geconfigureerd om Application Insights te gebruiken. Telemetrie wordt verzonden vanuit de clienttoepassing die wordt uitgevoerd in de browser van de gebruiker en de pagina's kunnen vanaf elke server worden gehost.
 
-Wanneer u [uw op Java script gebaseerde webpagina's voor Application Insights configureert](javascript.md), wijzigt u het Java script-fragment dat u van de Application Insights Portal ontvangt.
+Wanneer u [uw JavaScript-gebaseerde webpagina's configureert voor Application Insights,](javascript.md)wijzigt u het JavaScript-fragment dat u krijgt van de Portal Application Insights.
 
 > [!TIP]
-> In ASP.NET-Apps met Java script bevat het fragment meestal in `_Layout.cshtml`.
+> In ASP.NET apps met JavaScript inbegrepen, `_Layout.cshtml`gaat het fragment meestal in .
 
-Voeg een regel toe, zoals `samplingPercentage: 10,` vóór de instrumentatie sleutel:
+Een regel `samplingPercentage: 10,` invoegen zoals vóór de instrumentatietoets:
 
 ```xml
 <script>
@@ -399,67 +399,67 @@ Voeg een regel toe, zoals `samplingPercentage: 10,` vóór de instrumentatie sle
 </script>
 ```
 
-Kies voor het steekproef percentage een percentage dat dicht bij 100/N ligt waarbij N een geheel getal is. De huidige steek proef biedt geen ondersteuning voor andere waarden.
+Kies voor het bemonsteringspercentage een percentage dat dicht bij 100/N ligt, waarbij N een geheel getal is. Momenteel biedt steekproeven geen ondersteuning voor andere waarden.
 
-#### <a name="coordinating-server-side-and-client-side-sampling"></a>De steek proef aan de server zijde en client zijde coördineren
+#### <a name="coordinating-server-side-and-client-side-sampling"></a>Sampling aan de server- en clientzijde coördineren
 
-De Java script SDK aan de client zijde maakt deel uit van een vast aantal steek proeven in combi natie met de SDK aan de server zijde. Op de pagina's met een instrumentatie worden alleen telemetrie aan de client zijde verzonden van de gebruiker voor wie de SDK voor de server zijde de beslissing heeft genomen voor het nemen van de steek proef. Deze logica is ontworpen voor het onderhouden van de integriteit van gebruikers sessies in toepassingen op de client en aan de server zijde. Als gevolg hiervan kunt u vanuit een bepaald telemetrie-item in Application Insights alle andere telemetrie-items voor deze gebruiker of sessie vinden en kunt u in de zoek opdracht navigeren tussen gerelateerde pagina weergaven en-aanvragen.
+De JavaScript SDK aan clientzijde neemt deel aan fixed-rate sampling in combinatie met de sdk aan de serverzijde. De instrumented pagina's sturen alleen telemetrie aan clientzijde van dezelfde gebruiker waarvoor de sdk aan de serverzijde zijn beslissing heeft genomen om in de steekproef op te nemen. Deze logica is ontworpen om de integriteit van gebruikerssessies te behouden voor toepassingen aan de client- en serverzijde. Als gevolg hiervan u vanuit een bepaald telemetrieitem in Application Insights alle andere telemetrie-items voor deze gebruiker of sessie vinden en in Zoeken u navigeren tussen gerelateerde paginaweergaven en -verzoeken.
 
-Als uw telemetrie-client en server zijde geen gecoördineerde voor beelden weer geven:
+Als uw client- en servertelemetrie geen gecoördineerde voorbeelden weergeven:
 
-* Controleer of u steek proeven hebt ingeschakeld op de server en de client.
-* Controleer of u hetzelfde steekproef percentage hebt ingesteld in zowel de client als de server.
-* Zorg ervoor dat de SDK-versie 2,0 of hoger is.
+* Controleer of u sampling hebt ingeschakeld, zowel op de server als op de client.
+* Controleer of u hetzelfde bemonsteringspercentage inschakelt in zowel de client als de server.
+* Zorg ervoor dat de SDK-versie 2.0 of hoger is.
 
-## <a name="ingestion-sampling"></a>Steek proeven voor opname
+## <a name="ingestion-sampling"></a>Innamebemonstering
 
-De steek proef van opname werkt op het punt waar de telemetrie van uw webserver, browsers en apparaten het Application Insights service-eind punt bereikt. Hoewel het telemetrie verkeer dat vanuit uw app wordt verzonden, niet wordt verminderd, wordt de hoeveelheid verwerkte en behouden (en in rekening gebracht voor) door Application Insights verminderd.
+Innamesampling werkt op het punt waar de telemetrie van uw webserver, browsers en apparaten het eindpunt van de Application Insights-service bereikt. Hoewel het telemetrieverkeer dat vanuit uw app wordt verzonden, wordt het bedrag dat door Application Insights is verwerkt en in rekening gebracht (en in rekening gebracht) niet verminderd.
 
-Gebruik dit type steek proef als uw app vaak het maandelijkse quotum overschrijdt en u niet de mogelijkheid hebt om een van de op SDK gebaseerde typen steek proeven te gebruiken. 
+Gebruik dit type sampling als uw app vaak het maandelijkse quotum overschrijdt en u niet de mogelijkheid hebt om een van de op SDK's gebaseerde typen steekproeven te gebruiken. 
 
-Stel de sampling frequentie in op de pagina gebruik en geschatte kosten:
+Stel de bemonsteringsfrequentie in op de pagina Gebruik en geschatte kosten:
 
-![Klik op de Blade overzicht van de toepassing op instellingen, quotum, voor beelden, selecteer een sampling frequentie en klik op bijwerken.](./media/sampling/data-sampling.png)
+![Klik in het blad Overzicht van de toepassing op Instellingen, Quota, Voorbeelden en selecteer vervolgens een bemonsteringsfrequentie en klik op Bijwerken.](./media/sampling/data-sampling.png)
 
-Net als bij andere soorten steek proeven blijven de verwante telemetrie-items behouden. Wanneer u bijvoorbeeld de telemetrie in de zoek actie inspecteert, kunt u de aanvraag voor een bepaalde uitzonde ring vinden. Metrische aantallen, zoals de frequentie van aanvragen en uitzonderings snelheden, worden correct bewaard.
+Net als andere typen steekproeven behoudt het algoritme gerelateerde telemetrie-items. Wanneer u bijvoorbeeld de telemetrie in Zoeken inspecteert, u de aanvraag met betrekking tot een bepaalde uitzondering vinden. Metrische tellingen zoals het aantal aanvragen en het uitzonderingspercentage worden correct behouden.
 
-Gegevens punten die worden verwijderd door middel van steek proeven zijn niet beschikbaar in een Application Insights functie, zoals [continue export](../../azure-monitor/app/export-telemetry.md).
+Gegevenspunten die door steekproeven worden verwijderd, zijn niet beschikbaar in een functie voor Toepassingsinzichten, zoals [Continue export.](../../azure-monitor/app/export-telemetry.md)
 
-De steek proeven voor opname worden niet uitgevoerd terwijl er een adaptieve of vaste sampling bewerking is. Adaptieve steek proeven zijn standaard ingeschakeld wanneer de ASP.NET SDK of de ASP.NET Core SDK wordt gebruikt, of wanneer Application Insights is ingeschakeld in [Azure app service](azure-web-apps.md) of door status monitor te gebruiken. Wanneer telemetrie wordt ontvangen door het Application Insights service-eind punt, wordt de telemetrie onderzocht en wordt aangegeven dat de sampling frequentie kleiner dan 100% is (wat aangeeft dat de telemetrie wordt gesampled), wordt de door u ingestelde opname frequentie genegeerd.
+Innamebemonstering werkt niet terwijl adaptieve of vaste steekproeven in werking zijn. Adaptieve bemonstering is standaard ingeschakeld wanneer de ASP.NET SDK of de ASP.NET Core SDK wordt gebruikt, of wanneer Application Insights is ingeschakeld in [Azure App Service](azure-web-apps.md) of met statusmonitor. Wanneer telemetrie wordt ontvangen door het eindpunt van de Application Insights-service, wordt de telemetrie onderzocht en als de samplingrate minder dan 100% is (wat aangeeft dat telemetrie wordt bemonsterd) wordt de innamesamplingsnelheid die u instelt genegeerd.
 
 > [!WARNING]
-> De waarde die wordt weer gegeven op de portal tegel geeft de waarde aan die u hebt ingesteld voor steek proeven van opname. Het bevat niet de werkelijke sampling frequentie als er een soort bewerking wordt uitgevoerd voor de controle van de SDK-steek proeven (adaptieve of vaste gemiddelde steek proeven).
+> De waarde op de portaltegel geeft de waarde aan die u instelt voor opnamebemonstering. Het geeft niet de werkelijke bemonsteringssnelheid weer als er een soort SDK-bemonstering (adaptieve of vaste steekproeven) in werking is.
 
-## <a name="when-to-use-sampling"></a>Wanneer gebruikt u steek proeven?
+## <a name="when-to-use-sampling"></a>Wanneer bemonstering te gebruiken
 
-Over het algemeen hebt u voor de meeste kleine en middel grote toepassingen geen steek proeven nodig. De meest nuttige diagnostische informatie en de meest nauw keurige statistieken worden verkregen door het verzamelen van gegevens voor al uw gebruikers activiteiten. 
+In het algemeen hebt u voor de meeste kleine en middelgrote toepassingen geen steekproeven nodig. De meest nuttige diagnostische informatie en meest nauwkeurige statistieken worden verkregen door het verzamelen van gegevens over al uw gebruikersactiviteiten. 
 
-De belangrijkste voor delen van steek proeven zijn:
+De belangrijkste voordelen van bemonstering zijn:
 
-* De gegevens punten van Application Insights-service worden beperkt (' gashendel ') wanneer uw app een zeer hoog aantal telemetrie verstuurt in een korte periode. Door de steek proef wordt de kans kleiner dat er sprake is van een vertraging van uw toepassing.
-* Om binnen het [quotum](pricing.md) van gegevens punten voor uw prijs categorie te blijven. 
-* Het netwerk verkeer van de verzameling telemetrie verminderen. 
+* Application Insights-service daalt gegevenspunten ('throttles') wanneer uw app in een kort tijdsinterval een zeer hoge snelheid telemetrie verzendt. Steekproeven verminderen de kans dat uw toepassing throttling ziet optreden.
+* Als u binnen het [quotum](pricing.md) van gegevenspunten voor uw prijscategorie wilt blijven. 
+* Om het netwerkverkeer uit het verzamelen van telemetrie te verminderen. 
 
-### <a name="which-type-of-sampling-should-i-use"></a>Welk type steek proef moet ik gebruiken?
+### <a name="which-type-of-sampling-should-i-use"></a>Welk type bemonstering moet ik gebruiken?
 
-**Opname sampling gebruiken als:**
+**Gebruik de innamebemonstering als:**
 
-* U gebruikt vaak uw maandelijkse quota van telemetrie.
+* U gebruikt vaak uw maandelijkse quotum van telemetrie.
 * U krijgt te veel telemetrie van de webbrowsers van uw gebruikers.
-* U gebruikt een versie van de SDK die geen steek proeven ondersteunt, bijvoorbeeld ASP.NET-versies die ouder zijn dan 2.
+* U gebruikt een versie van de SDK die geen sampling ondersteunt, bijvoorbeeld ASP.NET versies eerder dan 2.
 
-**Gebruik een bemonsterde vaste frequentie als:**
+**Gebruik steekproeven met een vaste snelheid als:**
 
-* U wilt gesynchroniseerde steek proeven tussen client en server zodat, wanneer u gebeurtenissen in de [Zoek opdracht](../../azure-monitor/app/diagnostic-search.md)onderzoekt, naar gerelateerde gebeurtenissen op de client en de server, zoals pagina weergaven en HTTP-aanvragen.
-* U bent zeker van het juiste sampling-percentage voor uw app. Het moet hoog genoeg zijn om nauw keurige metrische gegevens te krijgen, maar minder dan het tarief dat het quotum voor prijzen en de beperkings limieten overschrijdt.
+* U wilt gesynchroniseerde bemonstering tussen client en server, zodat u, wanneer u gebeurtenissen in [Search](../../azure-monitor/app/diagnostic-search.md)onderzoekt, navigeren tussen gerelateerde gebeurtenissen op de client en server, zoals paginaweergaven en HTTP-aanvragen.
+* U bent zeker van het juiste bemonsteringspercentage voor uw app. Het moet hoog genoeg zijn om nauwkeurige statistieken te krijgen, maar onder het tarief dat uw prijsquotum en de beperkingslimieten overschrijdt.
 
-**Adaptieve steek proeven gebruiken:**
+**Gebruik adaptieve bemonstering:**
 
-Als de voor waarden voor het gebruik van de andere vormen van steek proeven niet van toepassing zijn, raden we aan om adaptieve steek proeven te nemen. Deze instelling is standaard ingeschakeld in de ASP.NET/ASP.NET core-SDK. Het verkeer wordt pas verminderd als een bepaald minimum aantal is bereikt. Daarom worden de sites met weinig gebruik waarschijnlijk niet bemonsterd.
+Als de voorwaarden voor het gebruik van de andere vormen van bemonstering niet van toepassing zijn, raden we adaptieve bemonstering aan. Deze instelling is standaard ingeschakeld in de ASP.NET/ASP.NET Core SDK. Het zal het verkeer niet verminderen totdat een bepaald minimumtarief is bereikt, daarom zullen sites met een laag gebruik waarschijnlijk helemaal niet worden bemonsterd.
 
-## <a name="knowing-whether-sampling-is-in-operation"></a>Weten of steek proeven worden uitgevoerd
+## <a name="knowing-whether-sampling-is-in-operation"></a>Weten of de bemonstering in werking is
 
-Als u de werkelijke sampling frequentie wilt detecteren, ongeacht waar deze is toegepast, gebruikt u een [analyse query](../../azure-monitor/app/analytics.md) zoals deze:
+Als u de werkelijke bemonsteringsfrequentie wilt ontdekken, ongeacht waar deze is toegepast, gebruikt u een [Analytics-query](../../azure-monitor/app/analytics.md) zoals deze:
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces
@@ -467,29 +467,29 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 | summarize RetainedPercentage = 100/avg(itemCount) by bin(timestamp, 1h), itemType
 ```
 
-Als u ziet dat `RetainedPercentage` voor elk type kleiner is dan 100, wordt het type van de telemetrie voor beelden van de telemetriegegevens.
+Als u `RetainedPercentage` ziet dat voor elk type minder dan 100 is, wordt dat type telemetrie bemonsterd.
 
 > [!IMPORTANT]
-> Application Insights geen voorbeeld sessie, metrische gegevens (inclusief aangepaste metrische gegevens) of telemetrie-typen voor prestatie meter items in een van de bemonsterings technieken. Deze typen worden altijd uitgesloten van steek proeven, omdat een minder nauw keurigheid kan worden gereduceerd voor deze typen telemetrie.
+> Application Insights neemt geen voorbeeld van sessie, statistieken (inclusief aangepaste statistieken) of telemetrietypen van prestatiemeteritems in een van de samplingtechnieken. Deze typen zijn altijd uitgesloten van bemonstering als een vermindering van de precisie kan zeer ongewenst zijn voor deze telemetrie types.
 
-## <a name="how-sampling-works"></a>De werking van steek proeven
+## <a name="how-sampling-works"></a>Hoe bemonstering werkt
 
-Het steekproef algoritme bepaalt welke telemetriegegevens moeten worden verwijderd en welke items moeten worden bewaard. Dit is waar of steek proeven worden uitgevoerd door de SDK of in de Application Insights-service. De beoordelings beslissing is gebaseerd op verschillende regels die erop gericht zijn alle gerelateerde gegevens punten intact te houden, waarbij een diagnostische ervaring wordt bijgehouden in Application Insights die actiebaar en betrouwbaar is, zelfs met een gereduceerde gegevensset. Als uw app bijvoorbeeld een mislukte aanvraag bevat die in een voor beeld is opgenomen, blijven de extra telemetriegegevens (zoals uitzonde ringen en traceringen die voor deze aanvraag zijn vastgelegd) behouden. Door de steek proeven worden deze allemaal bijeenhouden of neergezet. Als u de details van de aanvraag in Application Insights bekijkt, kunt u de aanvraag altijd samen met de bijbehorende telemetrie-items weer geven.
+Het samplingalgoritme bepaalt welke telemetrie-items moeten worden neergedaald en welke moeten worden behouden. Dit geldt voor de vraag of de sdk of de Application Insights-service een steekproef doet. De bemonsteringsbeslissing is gebaseerd op verschillende regels die tot doel hebben alle onderling verbonden gegevenspunten intact te houden, met behoud van een diagnostische ervaring in Application Insights die uitvoerbaar en betrouwbaar is, zelfs met een beperkte gegevensset. Als uw app bijvoorbeeld een mislukte aanvraag in een voorbeeld heeft opgenomen, blijven de extra telemetrie-items (zoals uitzondering en traces die voor dit verzoek zijn geregistreerd) behouden. Bemonstering houdt of laat ze allemaal samen. Als u de aanvraaggegevens in Application Insights bekijkt, u de aanvraag altijd zien, samen met de bijbehorende telemetrie-items.
 
-De beoordelings beslissing is gebaseerd op de bewerkings-ID van de aanvraag, wat betekent dat alle telemetrie-items die deel uitmaken van een bepaalde bewerking, worden behouden of verwijderd. Voor de telemetrie-items waarvoor geen bewerkings-ID is ingesteld (zoals telemetriegegevens die zijn gerapporteerd vanuit asynchrone threads zonder HTTP-context), wordt een percentage van de telemetrie-items van elk type vastgelegd.
+De bemonsteringsbeslissing is gebaseerd op de bewerkings-ID van het verzoek, wat betekent dat alle telemetrie-items die tot een bepaalde bewerking behoren, worden bewaard of geschrapt. Voor de telemetrie-items die geen bewerkings-id-set hebben (zoals telemetrie-items die worden gerapporteerd vanaf asynchrone threads zonder HTTP-context), legt sampling gewoon een percentage telemetrie-items van elk type vast.
 
-Wanneer u telemetrie naar u presenteert, past de Application Insights-service de metrische gegevens aan op basis van het steekproef percentage dat op het moment van de verzameling is gebruikt, om de ontbrekende data punten te compenseren. Daarom zien de gebruikers bij het bekijken van de telemetrie in Application Insights statistische juiste benaderingen die zeer dicht bij de reële getallen vallen.
+Wanneer u telemetrie weer aan u presenteert, past de Service Application Insights de statistieken aan met hetzelfde bemonsteringspercentage dat op het moment van verzameling is gebruikt om de ontbrekende gegevenspunten te compenseren. Vandaar, wanneer het bekijken van de telemetrie in De Inzichten van de toepassing, zien de gebruikers statistisch correcte benaderingen die zeer dicht bij de echte aantallen zijn.
 
-De nauw keurigheid van de benadering is grotendeels afhankelijk van het geconfigureerde sampling percentage. De nauw keurigheid neemt ook toe voor toepassingen die een grote hoeveelheid algemeen vergelijk bare aanvragen van veel gebruikers verwerken. Daarentegen, voor toepassingen die niet met een aanzienlijke belasting werken, is er geen steek proef nodig omdat deze toepassingen doorgaans al hun telemetrie kunnen verzenden terwijl ze binnen het quotum blijven, zonder dat er gegevens verloren gaan. 
+De nauwkeurigheid van de benadering hangt grotendeels af van het geconfigureerde bemonsteringspercentage. Ook neemt de nauwkeurigheid toe voor toepassingen die een groot aantal over het algemeen vergelijkbare verzoeken van veel gebruikers verwerken. Aan de andere kant, voor toepassingen die niet werken met een aanzienlijke belasting, bemonstering is niet nodig, omdat deze toepassingen kunnen meestal al hun telemetrie te sturen tijdens een verblijf binnen het quotum, zonder dat gegevens verlies van beperking. 
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-*Wat is het standaard bemonsterings gedrag in de ASP.NET en ASP.NET Core Sdk's?*
+*Wat is het standaard samplinggedrag in de ASP.NET en ASP.NET Core SDK's?*
 
-* Als u een van de nieuwste versies van de bovenstaande SDK gebruikt, is adaptieve steek proeven standaard ingeschakeld met vijf telemetriegegevens per seconde.
-  Er zijn standaard twee `AdaptiveSamplingTelemetryProcessor` knoop punten toegevoegd en één omvat het `Event` type in steek proeven, terwijl de andere het `Event` type uitsluiten van steek proeven. Deze configuratie houdt in dat de SDK probeert om telemetriegegevens te beperken tot vijf telemetriegegevens van `Event` typen, en vijf telemetriegegevens van alle andere typen gecombineerd, zodat `Events` onafhankelijk van andere typen telemetrie worden bemonsterd. Gebeurtenissen worden meestal gebruikt voor zakelijke telemetrie, en worden waarschijnlijk niet beïnvloed door de diagnostische telemetrie-volumes.
+* Als u een van de nieuwste versies van de bovenstaande SDK gebruikt, is Adaptive Sampling standaard ingeschakeld met vijf telemetrie-items per seconde.
+  Er zijn `AdaptiveSamplingTelemetryProcessor` standaard twee knooppunten toegevoegd `Event` en één bevat het type `Event` in de bemonstering, terwijl het andere type uitsluit van bemonstering. Deze configuratie betekent dat de SDK zal proberen om telemetrie-items te beperken tot vijf telemetrie-items van `Event` typen en vijf telemetrie-items van alle andere typen samen, waardoor ervoor wordt gezorgd dat `Events` deze afzonderlijk van andere telemetrietypen worden bemonsterd. Gebeurtenissen worden meestal gebruikt voor zakelijke telemetrie en mogen waarschijnlijk niet worden beïnvloed door diagnostische telemetrievolumes.
   
-  Hieronder ziet u het standaard `ApplicationInsights.config` bestand dat wordt gegenereerd. In ASP.NET Core is hetzelfde standaard gedrag ingeschakeld in code. Gebruik de [voor beelden in de vorige sectie van deze pagina](#configuring-adaptive-sampling-for-aspnet-core-applications) om dit standaard gedrag te wijzigen.
+  Het volgende toont `ApplicationInsights.config` het gegenereerde standaardbestand. In ASP.NET Core is hetzelfde standaardgedrag ingeschakeld in code. Gebruik de [voorbeelden in het eerdere gedeelte van deze pagina](#configuring-adaptive-sampling-for-aspnet-core-applications) om dit standaardgedrag te wijzigen.
 
     ```xml
     <TelemetryProcessors>
@@ -504,41 +504,41 @@ De nauw keurigheid van de benadering is grotendeels afhankelijk van het geconfig
     </TelemetryProcessors>
     ```
 
-*Kan telemetrie meerdere malen worden bemonsterd?*
+*Kan telemetrie meer dan één keer worden bemonsterd?*
 
-* Nee. SamplingTelemetryProcessors negeren items van bemonsterings overwegingen als er al een voor beeld van het item is. Hetzelfde geldt ook voor steek proeven voor opname, waardoor geen steek proeven worden toegepast op die items die al worden bemonsterd in de SDK zelf.
+* Nee. SamplingTelemetryProcessors negeren items uit steekproefoverwegingen als het item al is bemonsterd. Hetzelfde geldt ook voor innamebemonstering, die geen bemonstering zal toepassen op de items die al in de SDK zelf zijn bemonsterd.
 
-*Waarom wordt niet gesampling van een eenvoudig "Collect X procent van elk type telemetrie"?*
+*Waarom is het niet een eenvoudige "verzamel X procent van elk telemetrietype"?*
 
-* Hoewel deze bemonsterings benadering een hoge mate van nauw keurigheid biedt in metrische benaderingen, zou deze de mogelijkheid om diagnostische gegevens te correleren per gebruiker, sessie en aanvraag, te verstoren, wat essentieel is voor diagnose. Daarom werkt de steek proef beter met beleids regels zoals ' alle telemetrie-items voor X% van app-gebruikers verzamelen ' of ' alle telemetrie voor X procent van de app-aanvragen verzamelen '. Voor de telemetrie-items die niet aan de aanvragen zijn gekoppeld (zoals asynchrone verwerking op de achtergrond), is de terugval het ' collect X procent van alle items voor elk type telemetrie '. 
+* Hoewel deze bemonsteringsbenadering een hoog niveau van precisie in metrische benaderingen zou bieden, zou het de mogelijkheid breken om diagnostische gegevens per gebruiker, sessie en verzoek te correleren, wat essentieel is voor diagnostiek. Daarom werkt sampling beter met beleid zoals "alle telemetrie-items verzamelen voor X procent van de app-gebruikers", of "alle telemetrie verzamelen voor X procent van de app-aanvragen". Voor de telemetrie-items die niet aan de aanvragen zijn gekoppeld (zoals asynchrone verwerking op de achtergrond), moet de terugval 'X-procent van alle items voor elk telemetrietype verzamelen'. 
 
-*Kan het steekproef percentage worden gewijzigd in de loop van de tijd?*
+*Kan het bemonsteringspercentage in de loop van de tijd veranderen?*
 
-* Ja, met adaptieve steek proef wordt het steekproef percentage geleidelijk gewijzigd, op basis van het momenteel waargenomen volume van de telemetrie.
+* Ja, adaptieve bemonstering verandert geleidelijk het bemonsteringspercentage, op basis van het momenteel waargenomen volume van de telemetrie.
 
-*Hoe weet ik welk steekproef percentage het beste werkt voor mijn app als ik steek proeven met een vaste frequentie gebruik?*
+*Als ik fixed-rate sampling gebruik, hoe weet ik dan welk bemonsteringspercentage het beste werkt voor mijn app?*
 
-* Een manier is om te beginnen met adaptieve steek proeven, erachter te komen wat de rente is (Zie de bovenstaande vraag) en vervolgens over te scha kelen naar een vast aantal steek proeven met dat aantal. 
+* Een manier is om te beginnen met adaptieve bemonstering, erachter te komen welke snelheid het vestigt op (zie de bovenstaande vraag), en vervolgens overschakelen naar fixed-rate sampling met behulp van die snelheid. 
   
-    Anders moet u raden. Analyseer het huidige gebruik van de telemetrie in Application Insights, Bekijk eventuele beperkingen die zich voordoen en schat het volume van de verzamelde telemetrie. Deze drie invoer waarden, samen met de geselecteerde prijs categorie, stellen aan hoeveel u het volume van de verzamelde telemetrie wellicht wilt reduceren. Een toename van het aantal gebruikers of een andere verschuiving in het volume van de telemetrie kan de schatting echter ongeldig maken.
+    Anders moet je raden. Analyseer uw huidige telemetriegebruik in Application Insights, observeer eventuele beperking en schat het volume van de verzamelde telemetrie. Deze drie ingangen, samen met de geselecteerde prijscategorie, geven aan hoeveel u het volume van de verzamelde telemetrie wilt verminderen. Een toename van het aantal gebruikers of een andere verschuiving in het volume van telemetrie kan uw schatting echter ongeldig maken.
 
-*Wat gebeurt er als het steekproef percentage te laag is?*
+*Wat gebeurt er als ik het bemonsteringspercentage te laag configureer?*
 
-* Uitzonderlijk weinig steekproef percentages veroorzaken meer dan agressieve steek proeven en verminderen de nauw keurigheid van de benaderingen wanneer Application Insights probeert de visualisatie van de gegevens te compenseren voor de reductie van het gegevens volume. Het is ook mogelijk dat uw diagnostische ervaring een negatieve invloed heeft op het aantal niet-regel matig mislukte of trage aanvragen.
+* Te lage bemonsteringspercentages veroorzaken overagressieve bemonstering en verminderen de nauwkeurigheid van de benaderingen wanneer Application Insights probeert de visualisatie van de gegevens te compenseren voor de vermindering van het gegevensvolume. Ook uw diagnostische ervaring kan negatief worden beïnvloed, omdat sommige van de zelden falende of langzame verzoeken kunnen worden bemonsterd.
 
-*Wat gebeurt er als ik het steekproef percentage te hoog Configureer?*
+*Wat gebeurt er als ik het bemonsteringspercentage te hoog configureer?*
 
-* Het configureren van een te hoge steekproef percentage (niet agressief genoeg) resulteert in een ontoereikende vermindering van het volume van de verzamelde telemetrie. U kunt nog steeds telemetrie-gegevens verlies ondervinden met betrekking tot beperking en de kosten voor het gebruik van Application Insights zijn mogelijk hoger dan gepland wegens overschrijding kosten.
+* Het configureren van een te hoog bemonsteringspercentage (niet agressief genoeg) resulteert in een onvoldoende vermindering van het volume van de verzamelde telemetrie. U nog steeds telemetriegegevensverlies ervaren in verband met beperking en de kosten voor het gebruik van Application Insights kunnen hoger zijn dan u van plan was vanwege overschrijdingskosten.
 
-*Op welke platformen kan ik steek proeven gebruiken?*
+*Op welke platforms kan ik sampling gebruiken?*
 
-* Steek proeven voor opname kunnen automatisch worden uitgevoerd voor telemetrie boven een bepaald volume, als de SDK geen steek proeven uitvoert. Deze configuratie werkt bijvoorbeeld als u een oudere versie van de ASP.NET SDK of Java SDK gebruikt.
-* Als u de huidige ASP.NET-of ASP.NET Core Sdk's gebruikt (die worden gehost in azure of op uw eigen server), krijgt u standaard adaptieve steek proeven, maar u kunt overschakelen naar een vaste frequentie zoals hierboven wordt beschreven. Met een steek proef van een vaste frequentie synchroniseert de SDK van de browser automatisch met voor beeld van gerelateerde gebeurtenissen. 
-* Als u de huidige Java-SDK gebruikt, kunt u `ApplicationInsights.xml` configureren om steek proeven met een vaste frequentie in te scha kelen. Steek proeven zijn standaard uitgeschakeld. Met een steek proef van een vaste frequentie worden de browser-SDK en de-server automatisch gesynchroniseerd met voor beeld van gerelateerde gebeurtenissen.
+* Innamebemonstering kan automatisch plaatsvinden voor telemetrie boven een bepaald volume, als de SDK geen bemonstering uitvoert. Deze configuratie zou bijvoorbeeld werken als u een oudere versie van de ASP.NET SDK of Java SDK gebruikt.
+* Als u de huidige ASP.NET of ASP.NET Core-SDK's gebruikt (gehost in Azure of op uw eigen server), krijgt u standaard adaptieve bemonstering, maar u overschakelen naar vaste snelheid zoals hierboven beschreven. Met fixed-rate sampling synchroniseert de browser SDK automatisch met voorbeeldgerelateerde gebeurtenissen. 
+* Als u de huidige Java SDK gebruikt, u configureren `ApplicationInsights.xml` om steekproeven met een vaste snelheid in te schakelen. De bemonstering is standaard uitgeschakeld. Met fixed-rate sampling synchroniseren de browser SDK en de server automatisch met voorbeeldgerelateerde gebeurtenissen.
 
-*Er zijn bepaalde zeldzame gebeurtenissen die ik altijd wil zien. Hoe kan ik de bemonsterings module naraken?*
+*Er zijn bepaalde zeldzame gebeurtenissen die ik altijd wil zien. Hoe kan ik ze voorbij de bemonsteringsmodule krijgen?*
 
-* De beste manier om dit te doen is door een aangepaste [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)te schrijven, waarmee de `SamplingPercentage` wordt ingesteld op 100 op het telemetrie-item dat u wilt behouden, zoals hieronder wordt weer gegeven. Als initialisatie functies worden gegarandeerd voordat telemetrie-processors (inclusief steek proeven) worden uitgevoerd, zorgt dit ervoor dat alle bemonsterings technieken dit item negeren van eventuele bemonsterings overwegingen. Aangepaste telemetrie-initialisatie functies zijn beschikbaar in de ASP.NET SDK, de ASP.NET Core SDK, de Java script-SDK en de Java-SDK. U kunt bijvoorbeeld een initialisatie functie voor telemetrie configureren met behulp van de ASP.NET-SDK:
+* De beste manier om dit te bereiken is het schrijven `SamplingPercentage` van een aangepaste [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer), die de ingesteld op 100 op de telemetrie item dat u wilt behouden, zoals hieronder weergegeven. Aangezien initialisators gegarandeerd worden uitgevoerd vóór telemetrieprocessors (inclusief bemonstering), zorgt dit ervoor dat alle bemonsteringstechnieken dit artikel negeren uit overwegingen van bemonstering. Aangepaste telemetrieinitialisatoren zijn beschikbaar in de ASP.NET SDK, de ASP.NET Core SDK, de JavaScript SDK en de Java SDK. U bijvoorbeeld een telemetrieinitialisator configureren met de ASP.NET SDK:
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer
@@ -555,13 +555,13 @@ De nauw keurigheid van de benadering is grotendeels afhankelijk van het geconfig
 
 ## <a name="older-sdk-versions"></a>Oudere SDK-versies
 
-Adaptieve steek proeven zijn beschikbaar voor de Application Insights SDK voor ASP.NET v 2.0.0-beta3 en hoger, micro soft. ApplicationInsights. AspNetCore SDK v 2.2.0-beta1 en hoger, en is standaard ingeschakeld.
+Adaptieve sampling is beschikbaar voor de Application Insights SDK voor ASP.NET v2.0.0-beta3 en hoger, Microsoft.ApplicationInsights.AspNetCore SDK v2.2.0-beta1 en hoger, en is standaard ingeschakeld.
 
-Steek proeven met een vaste frequentie zijn een functie van de SDK in ASP.NET-versies van 2.0.0 en Java SDK-versie 2.0.1 en hoger.
+Fixed-rate sampling is een functie van de SDK in ASP.NET versies vanaf 2.0.0 en Java SDK versie 2.0.1 en verder.
 
-Vóór v 2.5.0-beta2 van de ASP.NET SDK en v 2.2.0-beta3 van ASP.NET Core SDK werd de steekproef beslissing gebaseerd op de hash van de gebruikers-ID voor toepassingen die ' gebruiker ' definiëren (dat wil zeggen de meest voorkomende webtoepassingen). Voor de typen toepassingen die geen gebruikers hebben gedefinieerd (zoals webservices), is de bemonsterings beslissing gebaseerd op de bewerkings-ID van de aanvraag. Recente versies van de ASP.NET-en ASP.NET Core Sdk's gebruiken de bewerkings-ID voor de beslissing van de steek proef.
+Voorafgaand aan v2.5.0-beta2 van de ASP.NET SDK en v2.2.0-beta3 van ASP.NET Core SDK, was de bemonsteringsbeslissing gebaseerd op de hash van de gebruikers-id voor toepassingen die "gebruiker" definiëren (dat wil zeggen de meest typische webapplicaties). Voor de typen toepassingen die gebruikers (zoals webservices) niet definieerden, was de bemonsteringsbeslissing gebaseerd op de bewerkings-id van de aanvraag. Recente versies van de ASP.NET en ASP.NET Core SDK's gebruiken de bedrijfs-ID voor de bemonsteringsbeslissing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Filteren](../../azure-monitor/app/api-filtering-sampling.md) kan meer controle bieden over wat uw SDK verzendt.
-* Lees het artikel over het ontwikkel netwerk om [telemetrie te optimaliseren met Application Insights](https://msdn.microsoft.com/magazine/mt808502.aspx).
+* [Filteren](../../azure-monitor/app/api-filtering-sampling.md) kan een striktere controle geven over wat uw SDK stuurt.
+* Lees het artikel Ontwikkelaarsnetwerk [Telemetrie optimaliseren met toepassingsinzichten](https://msdn.microsoft.com/magazine/mt808502.aspx).

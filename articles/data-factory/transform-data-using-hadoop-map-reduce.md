@@ -1,6 +1,6 @@
 ---
-title: Gegevens transformeren met behulp van Hadoop MapReduce-activiteit
-description: Meer informatie over hoe u gegevens kunt verwerken door Hadoop MapReduce-Program ma's uit te voeren op een Azure HDInsight-cluster vanuit een Azure-data factory.
+title: Gegevens transformeren met Hadoop MapReduce activity
+description: Meer informatie over het verwerken van gegevens door Hadoop Mapte uitvoerenVerlaag programma's op een Azure HDInsight-cluster vanuit een Azure-gegevensfabriek.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,23 +11,23 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
 ms.openlocfilehash: 5d38e3126442bcf34c96cead2b2ea59507b50b8c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912868"
 ---
-# <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop MapReduce-activiteit in Azure Data Factory
+# <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Gegevens transformeren met Hadoop MapVerminder activiteit in Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](v1/data-factory-map-reduce.md)
 > * [Huidige versie](transform-data-using-hadoop-map-reduce.md)
 
-De HDInsight MapReduce-activiteit in een Data Factory [pijp lijn](concepts-pipelines-activities.md) roept het MapReduce-programma aan op [uw eigen](compute-linked-services.md#azure-hdinsight-linked-service) of HDInsight [-cluster op aanvraag](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . In dit artikel vindt u een overzicht van het artikel over de [activiteiten voor gegevens transformatie](transform-data.md) , dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten.
+De HDInsight MapReduce activiteit in een Data [Factory-pijplijn](concepts-pipelines-activities.md) roept MapReduce-programma op [uw eigen](compute-linked-services.md#azure-hdinsight-linked-service) of [on-demand HDInsight-cluster.](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Dit artikel bouwt voort op het artikel [over gegevenstransformatieactiviteiten,](transform-data.md) dat een algemeen overzicht geeft van gegevenstransformatie en de ondersteunde transformatieactiviteiten.
 
-Als u niet bekend bent met Azure Data Factory, leest u [Inleiding tot Azure Data Factory](introduction.md) en voert u de zelf studie uit: [zelf studie: gegevens transformeren](tutorial-transform-data-spark-powershell.md) voordat dit artikel wordt gelezen.
+Als u nieuw bent in Azure Data Factory, leest u [Inleiding tot Azure Data Factory](introduction.md) en doet u de zelfstudie: [Zelfstudie: gegevens transformeren](tutorial-transform-data-spark-powershell.md) voordat u dit artikel leest.
 
-Zie [Pig](transform-data-using-hadoop-pig.md) en [Hive](transform-data-using-hadoop-hive.md) voor meer informatie over het uitvoeren van Pig/Hive-scripts in een HDInsight-cluster via een pijp lijn met behulp van HDInsight Pig en Hive-activiteiten.
+Zie [Pig](transform-data-using-hadoop-pig.md) en [Hive](transform-data-using-hadoop-hive.md) voor meer informatie over het uitvoeren van Pig/Hive-scripts op een HDInsight-cluster vanuit een pijplijn met HDInsight Pig- en Hive-activiteiten.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -58,26 +58,26 @@ Zie [Pig](transform-data-using-hadoop-pig.md) en [Hive](transform-data-using-had
 }
 ```
 
-## <a name="syntax-details"></a>Syntaxis van de details
+## <a name="syntax-details"></a>Syntaxisdetails
 
-| Eigenschap          | Beschrijving                              | Verplicht |
+| Eigenschap          | Beschrijving                              | Vereist |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | Naam van de activiteit                     | Ja      |
 | description       | Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt | Nee       |
-| type              | Voor MapReduce-activiteit is het type activiteit HDinsightMapReduce | Ja      |
-| linkedServiceName | Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service. | Ja      |
-| className         | Naam van de klasse die moet worden uitgevoerd         | Ja      |
-| jarLinkedService  | Verwijzing naar een Azure Storage gekoppelde service die wordt gebruikt voor het opslaan van de jar-bestanden. Als u deze gekoppelde service niet opgeeft, wordt de Azure Storage gekoppelde service gebruikt die is gedefinieerd in de gekoppelde HDInsight-service. | Nee       |
-| jarFilePath       | Geef het pad op naar de jar-bestanden die zijn opgeslagen in de Azure Storage waarnaar wordt verwezen door jarLinkedService. De bestands naam is hoofdletter gevoelig. | Ja      |
-| jarlibs           | Teken reeks matrix van het pad naar de jar-bibliotheek bestanden waarnaar wordt verwezen door de taak die is opgeslagen in de Azure Storage gedefinieerd in jarLinkedService. De bestands naam is hoofdletter gevoelig. | Nee       |
-| getDebugInfo      | Hiermee geeft u op wanneer de logboek bestanden worden gekopieerd naar de Azure Storage gebruikt door het HDInsight-cluster (of) dat is opgegeven door jarLinkedService. Toegestane waarden: geen, altijd of mislukt. Standaard waarde: geen. | Nee       |
-| arguments         | Hiermee wordt een matrix met argumenten voor een Hadoop-taak opgegeven. De argumenten worden door gegeven als opdracht regel argumenten voor elke taak. | Nee       |
-| defines           | Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script. | Nee       |
+| type              | Voor MapReduce Activity is het activiteitstype HDinsightMapReduce | Ja      |
+| linkedServiceName | Verwijzing naar het HDInsight-cluster dat is geregistreerd als gekoppelde service in Data Factory. Zie Artikel [Gekoppelde services](compute-linked-services.md) berekenen voor meer informatie over deze gekoppelde service. | Ja      |
+| Classname         | Naam van de klasse die moet worden uitgevoerd         | Ja      |
+| jarLinkedService  | Verwijzing naar een Azure Storage Linked Service die wordt gebruikt om de Jar-bestanden op te slaan. Als u deze gekoppelde service niet opgeeft, wordt de Azure Storage Linked Service gebruikt die is gedefinieerd in de HDInsight Linked Service. | Nee       |
+| jarFilePath       | Geef het pad naar de Jar-bestanden die zijn opgeslagen in de Azure Storage die door jarLinkedService wordt verwezen. De bestandsnaam is hoofdlettergevoelig. | Ja      |
+| jarlibs           | Tekenreeksarray van het pad naar de Jar-bibliotheekbestanden waarnaar wordt verwezen door de taak die is opgeslagen in de Azure Storage die is gedefinieerd in jarLinkedService. De bestandsnaam is hoofdlettergevoelig. | Nee       |
+| getDebugInfo      | Hiermee geeft u op wanneer de logboekbestanden worden gekopieerd naar de Azure Storage die wordt gebruikt door het HDInsight-cluster (of) dat is opgegeven door jarLinkedService. Toegestane waarden: Geen, Altijd of Mislukt. Standaardwaarde: Geen. | Nee       |
+| Argumenten         | Hiermee geeft u een reeks argumenten op voor een Hadoop-taak. De argumenten worden doorgegeven als opdrachtregelargumenten voor elke taak. | Nee       |
+| Definieert           | Geef parameters op als sleutel-/waardeparen voor verwijzingen in het Hive-script. | Nee       |
 
 
 
 ## <a name="example"></a>Voorbeeld
-U kunt de HDInsight MapReduce-activiteit gebruiken om een MapReduce jar-bestand uit te voeren op een HDInsight-cluster. In de volgende JSON-voorbeeld definitie van een pijp lijn is de HDInsight-activiteit geconfigureerd om een mahout JAR-bestand uit te voeren.
+U de HDInsight MapReduce Activity gebruiken om elk MapReduce-jarbestand op een HDInsight-cluster uit te voeren. In de volgende VOORBEELD-JSON-definitie van een pijplijn is de HDInsight-activiteit geconfigureerd om een Mahout JAR-bestand uit te voeren.
 
 ```json
 {
@@ -110,16 +110,16 @@ U kunt de HDInsight MapReduce-activiteit gebruiken om een MapReduce jar-bestand 
     }
 }
 ```
-U kunt argumenten opgeven voor het MapReduce-programma in de sectie **Arguments** . Tijdens runtime ziet u enkele extra argumenten (bijvoorbeeld: MapReduce. job. Tags) van het MapReduce-Framework. Als u de argumenten wilt onderscheiden met de MapReduce argumenten, kunt u de optie en waarde als argumenten gebruiken, zoals wordt weer gegeven in het volgende voor beeld (-s,--input,--output etc., zijn opties direct gevolgd door hun waarden).
+U alle argumenten opgeven voor het programma MapReduce in de sectie **Argumenten.** Bij runtime ziet u een paar extra argumenten (bijvoorbeeld: mapreduce.job.tags) uit het MapReduce-framework. Als u uw argumenten wilt onderscheiden met de argumenten MapReduce, u overwegen zowel de optie als de waarde te gebruiken als argumenten zoals weergegeven in het volgende voorbeeld (-s, --invoer, --uitvoer enz., zijn opties die onmiddellijk worden gevolgd door hun waarden).
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere manieren transformeert:
+Bekijk de volgende artikelen waarin wordt uitgelegd hoe u gegevens op andere manieren transformeren:
 
 * [U-SQL-activiteit](transform-data-using-data-lake-analytics.md)
-* [Hive-activiteit](transform-data-using-hadoop-hive.md)
-* [Pig-activiteit](transform-data-using-hadoop-pig.md)
-* [Hadoop streaming-activiteit](transform-data-using-hadoop-streaming.md)
-* [Spark-activiteit](transform-data-using-spark.md)
+* [Hive activiteit](transform-data-using-hadoop-hive.md)
+* [Varkensactiviteit](transform-data-using-hadoop-pig.md)
+* [Hadoop Streaming activiteit](transform-data-using-hadoop-streaming.md)
+* [Vonkactiviteit](transform-data-using-spark.md)
 * [.NET aangepaste activiteit](transform-data-using-dotnet-custom-activity.md)
-* [Activiteit voor batch uitvoering Machine Learning](transform-data-using-machine-learning.md)
-* [Opgeslagen procedure activiteit](transform-data-using-stored-procedure.md)
+* [Machine Learning Batch Execution-activiteit](transform-data-using-machine-learning.md)
+* [Opgeslagen procedureactiviteit](transform-data-using-stored-procedure.md)

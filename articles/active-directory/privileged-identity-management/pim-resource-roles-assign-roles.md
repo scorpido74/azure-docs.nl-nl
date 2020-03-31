@@ -1,6 +1,6 @@
 ---
-title: Azure-resource rollen toewijzen in Privileged Identity Management-Azure Active Directory | Microsoft Docs
-description: Meer informatie over het toewijzen van Azure-resource rollen in Azure AD Privileged Identity Management (PIM).
+title: Azure-bronrollen toewijzen in Privileged Identity Management - Azure Active Directory | Microsoft Documenten
+description: Meer informatie over het toewijzen van Azure-bronrollen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,115 +16,115 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34051a31c6ccf69356f330d7c5ecb009f760857a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266557"
 ---
-# <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Azure-resource rollen toewijzen in Privileged Identity Management
+# <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Azure-bronrollen toewijzen in Privileged Identity Management
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kan de ingebouwde Azure-resource rollen beheren, evenals aangepaste rollen, inclusief (maar niet beperkt tot):
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kan de ingebouwde Azure-bronrollen beheren, evenals aangepaste rollen, waaronder (maar niet beperkt tot):
 
 - Eigenaar
 - Beheerder van gebruikerstoegang
 - Inzender
 - Beveiligingsbeheerder
-- Beveiligings beheer
+- Beveiligingsmanager
 
 > [!NOTE]
-> Gebruikers of leden van een groep die zijn toegewezen aan de rol van eigenaar of gebruikers toegangs beheerder abonnement, en globale Azure AD-beheerders die het beheer van abonnementen in azure AD inschakelen, hebben standaard resource Administrator-machtigingen. Deze beheerders kunnen rollen toewijzen, rolinstellingen configureren en toegang controleren met behulp van Privileged Identity Management voor Azure-resources. Een gebruiker kan Privileged Identity Management niet beheren voor resources zonder resource beheerders machtigingen. Bekijk de lijst met [ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md).
+> Gebruikers of leden van een groep die is toegewezen aan de abonnementsrollen Voor eigenaren of gebruikerstoegangsbeheerders en Azure AD Global-beheerders die abonnementsbeheer in Azure AD inschakelen, hebben standaard beheerders van resources. Deze beheerders kunnen rollen toewijzen, rolinstellingen configureren en toegang controleren met privileged identity management voor Azure-bronnen. Een gebruiker kan privileged identity management voor resources niet beheren zonder toestemming voor resourcebeheerders. Bekijk de lijst met [ingebouwde rollen voor Azure-resources.](../../role-based-access-control/built-in-roles.md)
 
 ## <a name="assign-a-role"></a>Een rol toewijzen
 
-Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure-resource functie.
+Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure-bronrol.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/) met een gebruiker die lid is van de beheerdersrol [privileged Role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
+1. Meld u aan bij [azure portal](https://portal.azure.com/) met een gebruiker die lid is van de rol privileged [role administrator.](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-    Voor informatie over het verlenen van een andere beheerder toegang tot het beheren van Privileged Identity Management raadpleegt u [toegang verlenen aan andere beheerders om privileged Identity Management te beheren](pim-how-to-give-access-to-pim.md).
+    Zie Toegang verlenen aan andere beheerders om privileged [identity management te beheren](pim-how-to-give-access-to-pim.md)voor informatie over het verlenen van toegang aan een andere beheerder.
 
-1. Open **Azure AD privileged Identity Management**.
+1. Azure **AD Privileged Identity Management openen**.
 
 1. Selecteer **Azure-resources**.
 
-1. Gebruik het **resource filter** om de lijst met beheerde resources te filteren.
+1. Gebruik het **filter Resource** om de lijst met beheerde resources te filteren.
 
-    ![Lijst met Azure-resources die u wilt beheren](./media/pim-resource-roles-assign-roles/resources-list.png)
+    ![Lijst met Azure-bronnen die u wilt beheren](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-1. Selecteer de resource die u wilt beheren, zoals een abonnement of beheer groep.
+1. Selecteer de resource die u wilt beheren, zoals een abonnement of beheergroep.
 
-1. Selecteer onder beheren de optie **rollen** om de lijst met rollen voor Azure-resources weer te geven.
+1. Selecteer Onder Beheren de optie **Rollen** om de lijst met rollen voor Azure-resources weer te geven.
 
-    ![Azure-resources rollen](./media/pim-resource-roles-assign-roles/resources-roles.png)
+    ![Azure-bronnenrollen](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-1. Selecteer **lid toevoegen** om het deel venster nieuwe toewijzing te openen.
+1. Selecteer **Lid toevoegen** om het deelvenster Nieuwe toewijzing te openen.
 
-1. Selecteer **een rol selecteren** om het deel venster een rol selecteren te openen.
+1. Selecteer **Selecteer Een rol selecteren** om het rolvenster Selecteren te openen.
 
-    ![Deel venster nieuwe toewijzing](./media/pim-resource-roles-assign-roles/resources-select-role.png)
+    ![Nieuw toewijzingsvenster](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-1. Selecteer een rol die u wilt toewijzen en klik vervolgens op **selecteren**.
+1. Selecteer een rol die u wilt toewijzen en klik op **Selecteren**.
 
-    Het deel venster een lid of groep selecteren wordt geopend.
+    Het deelvenster Een lid of groepsvenster selecteren wordt geopend.
 
-1. Selecteer een lid of groep die u aan de rol wilt toewijzen en klik vervolgens op **selecteren**.
+1. Selecteer een lid of groep die u aan de rol wilt toewijzen en klik op **Selecteren**.
 
-    ![Een lid of groeps deel venster selecteren](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
+    ![Een lid of groepsvenster selecteren](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-    Het deel venster lidmaatschaps instellingen wordt geopend.
+    Het deelvenster Lidmaatschapsinstellingen wordt geopend.
 
-1. Selecteer in **aanmerking komend** of **actief**in de lijst **toewijzings type** .
+1. Selecteer in de lijst **Toewijzingstype** de optie **In aanmerking komen** of **Actief**.
 
-    ![Deel venster instellingen voor lidmaatschappen](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
+    ![Deelvenster Lidmaatschappeninstellingen](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
-    Privileged Identity Management voor Azure-resources biedt twee verschillende toewijzings typen:
+    Privileged Identity Management voor Azure-resources biedt twee verschillende toewijzingstypen:
 
-    - Voor **in aanmerking komende** toewijzingen moet het lid van de rol een actie uitvoeren om de rol te gebruiken. Acties kunnen bijvoorbeeld een meervoudige verificatiecontrole, het opgeven van een zakelijke reden of het vragen om toestemming bij aangewezen fiatteurs zijn.
+    - **In aanmerking komende** toewijzingen vereisen dat het lid van de rol een actie uitvoert om de rol te gebruiken. Acties kunnen bijvoorbeeld een meervoudige verificatiecontrole, het opgeven van een zakelijke reden of het vragen om toestemming bij aangewezen fiatteurs zijn.
 
-    - Voor **actieve** toewijzingen hoeft het lid geen actie te ondernemen om de rol te gebruiken. Aan leden die als actief zijn toegewezen, zijn de bevoegdheden altijd toegewezen aan de rol.
+    - **Actieve** toewijzingen vereisen niet dat het lid actie uitvoert om de rol te gebruiken. Leden die als actief zijn toegewezen, hebben te allen tijde de bevoegdheden toegewezen aan de rol.
 
-1. Als de toewijzing permanent moet zijn (permanent in aanmerking komend of permanent toegewezen), schakelt u het selectie vakje **permanent** in.
+1. Als de toewijzing permanent moet zijn (permanent in aanmerking komend of permanent toegewezen), schakelt u het selectievakje **Permanent** in.
 
-    Afhankelijk van de rolinstellingen, wordt het selectie vakje mogelijk niet weer gegeven of kan het niet worden gewijzigd.
+    Afhankelijk van de rolinstellingen wordt het selectievakje mogelijk niet of niet-aanpasbaar weergegeven.
 
-1. Als u een specifieke duur voor de toewijzing wilt opgeven, schakelt u het selectie vakje uit en wijzigt u de begin-en/of eind datum en-tijd vakken.
+1. Als u een specifieke toewijzingsduur wilt opgeven, schakelt u het selectievakje uit en wijzigt u de begin- en/of einddatum en -tijdvakken.
 
-    ![Instellingen voor lidmaatschappen-datum en tijd](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+    ![Lidmaatschapinstellingen - datum en tijd](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
 
-1. Als u klaar bent, selecteert u **gereed**.
+1. Als u klaar bent, selecteert u **Gereed**.
 
-    ![Nieuwe toewijzing-toevoegen](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
+    ![Nieuwe toewijzing - Toevoegen](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
-1. Als u de nieuwe roltoewijzing wilt maken, selecteert u **toevoegen**. Er wordt een melding van de status weer gegeven.
+1. Als u de nieuwe roltoewijzing wilt maken, selecteert u **Toevoegen**. Er wordt een melding van de status weergegeven.
 
-    ![Nieuwe toewijzing-melding](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+    ![Nieuwe toewijzing - Melding](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Een bestaande roltoewijzing bijwerken of verwijderen
 
 Volg deze stappen om een bestaande roltoewijzing bij te werken of te verwijderen.
 
-1. Open **Azure AD privileged Identity Management**.
+1. Azure **AD Privileged Identity Management openen**.
 
 1. Selecteer **Azure-resources**.
 
-1. Selecteer de resource die u wilt beheren, zoals een abonnement of beheer groep.
+1. Selecteer de resource die u wilt beheren, zoals een abonnement of beheergroep.
 
-1. Selecteer onder beheren de optie **rollen** om de lijst met rollen voor Azure-resources weer te geven.
+1. Selecteer Onder Beheren de optie **Rollen** om de lijst met rollen voor Azure-resources weer te geven.
 
-    ![Azure-resource rollen: rol selecteren](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
+    ![Azure-bronrollen - Rol selecteren](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 
 1. Selecteer de rol die u wilt bijwerken of verwijderen.
 
-1. Zoek naar de roltoewijzing op de tabbladen **in aanmerking komende rollen** of **actieve rollen** .
+1. Zoek de roltoewijzing op de tabbladen **In aanmerking komende rollen** of Actieve **rollen.**
 
     ![Roltoewijzing bijwerken of verwijderen](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
 
-1. Selecteer **bijwerken** of **verwijderen** om de roltoewijzing bij te werken of te verwijderen.
+1. Selecteer **Bijwerken** of **Verwijderen** om de roltoewijzing bij te werken of te verwijderen.
 
-    Zie [Azure-resource rollen uitbreiden of vernieuwen in privileged Identity Management](pim-resource-roles-renew-extend.md)voor meer informatie over het uitbreiden van een roltoewijzing.
+    Zie [Azure-bronrollen uitbreiden of vernieuwen in Privileged Identity Management](pim-resource-roles-renew-extend.md)voor informatie over het uitbreiden van een roltoewijzing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure-resource rollen in Privileged Identity Management uitbreiden of vernieuwen](pim-resource-roles-renew-extend.md)
-- [Instellingen voor Azure-resource-rollen configureren in Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
+- [Azure-bronrollen uitbreiden of vernieuwen in Privileged Identity Management](pim-resource-roles-renew-extend.md)
+- [Azure-bronrolinstellingen configureren in Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
 - [Azure AD-rollen toewijzen in Privileged Identity Management](pim-how-to-add-role-to-user.md)

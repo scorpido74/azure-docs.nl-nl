@@ -1,75 +1,75 @@
 ---
-title: Sys_schema-Azure Database for MySQL gebruiken
-description: Meer informatie over het gebruik van sys_schema om prestatie problemen op te sporen en data base in Azure Database for MySQL te onderhouden.
+title: Gebruik sys_schema - Azure Database voor MySQL
+description: Meer informatie over het gebruik van sys_schema om prestatieproblemen te vinden en de database in Azure Database voor MySQL te onderhouden.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 50552b87fad9d8f58ff8c48dc03463d4c901bf99
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
-ms.translationtype: MT
+ms.date: 3/18/2020
+ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775942"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067867"
 ---
-# <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Sys_schema gebruiken voor het afstemmen van prestaties en het beheren van data bases in Azure Database for MySQL
+# <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Hoe sys_schema te gebruiken voor prestatieafstemming en databaseonderhoud in Azure Database voor MySQL
 
-De MySQL-performance_schema, die voor het eerst beschikbaar is in MySQL 5,5, biedt instrumentatie voor veel cruciale Server bronnen, zoals geheugen toewijzing, opgeslagen Program ma's, vergren deling van meta gegevens, enzovoort. De performance_schema bevat echter meer dan 80 tabellen en het ophalen van de benodigde gegevens vereist vaak join-tabellen in de performance_schema, evenals de tabellen uit de information_schema. De sys_schema biedt op zowel performance_schema als information_schema een krachtige verzameling [gebruiks vriendelijke weer gaven](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) in een alleen-lezen data base en is volledig ingeschakeld in Azure Database for MySQL versie 5,7.
+De MySQL-performance_schema, voor het eerst beschikbaar in MySQL 5.5, biedt instrumentatie voor veel vitale serverbronnen zoals geheugentoewijzing, opgeslagen programma's, metadatavergrendeling, enz. De performance_schema bevat echter meer dan 80 tabellen, en het verkrijgen van de benodigde informatie vereist vaak het samenvoegen van tabellen binnen de performance_schema, evenals tabellen van de information_schema. Voortbouwend op zowel performance_schema als information_schema biedt de sys_schema een krachtige verzameling gebruiksvriendelijke weergaven in een alleen-lezen database en is deze volledig ingeschakeld in Azure Database voor [MySQL-versie](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) 5.7.
 
-![weer gaven van sys_schema](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
+![uitzicht op sys_schema](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
-De sys_schema bevat 52 weer gaven en elke weer gave heeft een van de volgende voor voegsels:
+Er zijn 52 weergaven in de sys_schema en elke weergave heeft een van de volgende voorvoegsels:
 
-- Host_summary of IO: aan I/O gerelateerde latenties.
-- InnoDB: InnoDB buffer status en vergren delingen.
-- Geheugen: geheugen gebruik door de host en gebruikers.
-- Schema: informatie die betrekking heeft op schema, zoals automatische toename, indexen, enzovoort.
-- Instructie: informatie over SQL-instructies; Dit kan een instructie zijn die de volledige tabel scan heeft veroorzaakt, of een lange query tijd.
-- Gebruiker: resources die worden verbruikt en gegroepeerd door gebruikers. Voor beelden hiervan zijn bestands-I/O's, verbindingen en geheugen.
+- Host_summary of IO: I/O gerelateerde latencies.
+- InnoDB: InnoDB buffer status en sloten.
+- Geheugen: Geheugengebruik door de host en gebruikers.
+- Schema: Schema-gerelateerde informatie, zoals automatische toename, indexen, enz.
+- Verklaring: Informatie over SQL-instructies; het kan een instructie zijn die heeft geresulteerd in volledige tabelscan of lange querytijd.
+- Gebruiker: resources die worden verbruikt en gegroepeerd door gebruikers. Voorbeelden zijn bestand I/O's, verbindingen en geheugen.
 - Wachten: wacht gebeurtenissen gegroepeerd op host of gebruiker.
 
-Laten we nu eens kijken naar enkele veelvoorkomende gebruiks patronen van de sys_schema. Om te beginnen, groeperen we de gebruiks patronen in twee categorieën: **prestaties afstemmen** en **database onderhoud**.
+Laten we nu eens kijken naar een aantal gemeenschappelijke gebruikspatronen van de sys_schema. Om te beginnen groeperen we de gebruikspatronen in twee categorieën: **Prestatieafstemming** en **Databaseonderhoud.**
 
 ## <a name="performance-tuning"></a>Prestaties afstemmen
 
-### <a name="sysuser_summary_by_file_io"></a>*sys. user_summary_by_file_io*
+### <a name="sysuser_summary_by_file_io"></a>*sys.user_summary_by_file_io*
 
-IO is de duurste bewerking in de-data base. We kunnen de gemiddelde IO-latentie achterhalen door de weer gave *sys. user_summary_by_file_io* te doorzoeken. Met de standaard 125 GB aan ingerichte opslag ruimte, is mijn i/o-latentie ongeveer 15 seconden.
+IO is de duurste bewerking in de database. We kunnen de gemiddelde IO-latentie achterhalen door de *sys.user_summary_by_file_io-weergave* op te vragen. Met de standaard 125 GB ingerichte opslag, mijn IO latency is ongeveer 15 seconden.
 
-![io-latentie: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
+![io latentie: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
 
-Omdat Azure Database for MySQL IO inschaalt ten opzichte van opslag, vermindert mijn i/o-wacht tijd tot 571 MS.
+Omdat Azure Database for MySQL IO schaalt met betrekking tot opslag, na het verhogen van mijn ingerichte opslag tot 1 TB, vermindert mijn IO-latentie tot 571 ms.
 
-![io-latentie: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+![io latentie: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
-### <a name="sysschema_tables_with_full_table_scans"></a>*sys. schema_tables_with_full_table_scans*
+### <a name="sysschema_tables_with_full_table_scans"></a>*sys.schema_tables_with_full_table_scans*
 
-Ondanks een zorgvuldige planning kunnen veel query's nog steeds leiden tot volledige tabel scans. Raadpleeg dit artikel voor meer informatie over de typen indexen en hoe u deze kunt optimaliseren: [problemen met query prestaties oplossen](./howto-troubleshoot-query-performance.md). Volledige tabel scans zijn resource-intensief en verminderen de prestaties van uw data base. De snelste manier om tabellen met volledige tabel scan te vinden, is door de weer gave *sys. schema_tables_with_full_table_scans* op te vragen.
+Ondanks een zorgvuldige planning, kunnen veel query's nog steeds resulteren in volledige tabel scans. Voor meer informatie over de typen indexen en hoe u deze optimaliseren, u verwijzen naar dit artikel: [Hoe u queryprestaties oplossen.](./howto-troubleshoot-query-performance.md) Volledige tabelscans zijn resource-intensief en verslechteren de prestaties van uw database. De snelste manier om tabellen met volledige tabelscan te vinden, is door de *sys.schema_tables_with_full_table_scans-weergave* op te vragen.
 
-![volledige tabel scans](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
+![volledige tabelscans](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 
-### <a name="sysuser_summary_by_statement_type"></a>*sys. user_summary_by_statement_type*
+### <a name="sysuser_summary_by_statement_type"></a>*sys.user_summary_by_statement_type*
 
-Voor het oplossen van problemen met database prestaties kan het nuttig zijn om de gebeurtenissen in uw data base te identificeren en de weer gave *sys. user_summary_by_statement_type* te gebruiken.
+Om problemen met de prestaties van de database op te lossen, kan het nuttig zijn om de gebeurtenissen in uw database te identificeren en het gebruik van de *sys.user_summary_by_statement_type-weergave* kan gewoon de truc doen.
 
-![samen vatting per overzicht](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
+![samenvatting per verklaring](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
 
-In dit voor beeld Azure Database for MySQL 53 minuten besteed aan het leegmaken van het slog-query logboek 44579 keer. Dat is een lange tijd en veel IOs. U kunt deze activiteit verminderen door uw logboek voor trage query's uit te scha kelen of de frequentie van langzame query's te verlagen Azure Portal.
+In dit voorbeeld heeft Azure Database voor MySQL 53 minuten besteed aan het doorspoelen van het logboekquerylogboek 44579 keer. Dat is een lange tijd en veel IOs. U deze activiteit verminderen door uw logboek voor trage query's uit te schakelen of de frequentie van de Azure-portal voor langzame query's te verlagen.
 
-## <a name="database-maintenance"></a>Database onderhoud
+## <a name="database-maintenance"></a>Databaseonderhoud
 
-### <a name="sysinnodb_buffer_stats_by_table"></a>*sys. innodb_buffer_stats_by_table*
+### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
 
-De InnoDB-buffer groep bevindt zich in het geheugen en is het hoofd cache mechanisme tussen het DBMS en de opslag. De grootte van de buffer groep InnoDB is gekoppeld aan de prestatie-laag en kan alleen worden gewijzigd als er een andere product-SKU is gekozen. Net als bij geheugen in uw besturings systeem worden oude pagina's omgewisseld om ruimte te maken voor de gegevens van de nieuwer. Als u wilt weten welke tabellen het meeste geheugen van de InnoDB buffer gebruiken, kunt u de weer gave *sys. innodb_buffer_stats_by_table* opvragen.
+De InnoDB buffer pool bevindt zich in het geheugen en is het belangrijkste cachemechanisme tussen de DBMS en de opslag. De grootte van de InnoDB-buffergroep is gekoppeld aan de prestatielaag en kan niet worden gewijzigd tenzij een ander product SKU wordt gekozen. Net als bij het geheugen in uw besturingssysteem, worden oude pagina's verwisseld om ruimte te maken voor versere gegevens. Als u wilt weten welke tabellen het grootste deel van het InnoDB-bufferpoolgeheugen verbruiken, u de *weergave sys.innodb_buffer_stats_by_table* opvragen.
 
-![Status van InnoDB-buffer](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
+![InnoDB-bufferstatus](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
 
-In de bovenstaande afbeelding ziet u dat naast de systeem tabellen en weer gaven, elke tabel in de mysqldatabase033-data base, die als host fungeert voor een van mijn WordPress-sites, 16 KB of 1 pagina van de gegevens in het geheugen in beslag neemt.
+In de bovenstaande afbeelding is het duidelijk dat elke tabel in de mysqldatabase033-database, die een van mijn WordPress-sites host, 16 KB of 1 pagina aan gegevens in het geheugen inbeslagneemt.
 
-### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys. schema_unused_indexes* & *sys. schema_redundant_indexes*
+### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
 
-Indexen zijn fantastische hulp middelen voor het verbeteren van de Lees prestaties, maar er zijn extra kosten in rekening gebracht voor toevoegingen en opslag. *Sys. schema_unused_indexes* en *sys. schema_redundant_indexes* bieden inzicht in ongebruikte of dubbele indexen.
+Indexen zijn geweldige tools om leesprestaties te verbeteren, maar ze brengen wel extra kosten met zich mee voor wisselplaten en opslag. *Sys.schema_unused_indexes* en *sys.schema_redundant_indexes* geven inzicht in ongebruikte of dubbele indexen.
 
 ![ongebruikte indexen](./media/howto-troubleshoot-sys-schema/unused-indexes.png)
 
@@ -77,7 +77,7 @@ Indexen zijn fantastische hulp middelen voor het verbeteren van de Lees prestati
 
 ## <a name="conclusion"></a>Conclusie
 
-In samen vatting is de sys_schema een geweldig hulp middel voor het afstemmen van prestaties en het onderhoud van de data base. Zorg ervoor dat u deze functie in uw Azure Database for MySQL kunt gebruiken. 
+Samengevat, de sys_schema is een geweldig hulpmiddel voor zowel performance tuning en database onderhoud. Zorg ervoor dat u gebruik maakt van deze functie in uw Azure Database voor MySQL. 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Ga naar [MSDN-forum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) of [stack overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)om peer antwoorden te vinden op uw vragen of een nieuwe vraag/antwoord te plaatsen.
+- Ga naar [het MSDN-forum](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL) of [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)om antwoorden op je meest bezorgde vragen te vinden of een nieuwe vraag/antwoord te plaatsen.

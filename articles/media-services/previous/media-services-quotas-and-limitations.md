@@ -1,6 +1,6 @@
 ---
-title: Media Services, quota en beperkingen | Microsoft Docs
-description: Dit onderwerp worden quota en beperkingen die zijn gekoppeld aan Microsoft Azure Media Services.
+title: Quota en beperking van MediaDiensten | Microsoft Documenten
+description: In dit onderwerp worden quota's en beperkingen beschreven die zijn gekoppeld aan Microsoft Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: dc0d41457729bf5fd78adb88d683ab4fbe23a148
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60557138"
 ---
-# <a name="quotas-and-limitations"></a>Quota's en beperkingen
+# <a name="quotas-and-limitations"></a>Quota en beperkingen
 
-Dit artikel wordt beschreven, quota en beperkingen die zijn gekoppeld aan Microsoft Azure Media Services.
+In dit artikel worden quota's en beperkingen beschreven die zijn gekoppeld aan Microsoft Azure Media Services.
 
 [!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
 
-## <a name="open-a-support-ticket-to-request-changes-to-the-default-quotas"></a>Open een Ondersteuningsticket om aan te vragen van wijzigingen in de standaardquota
-U kunt een ondersteuningsticket openen om aan te vragen de wijzigingen in de standaardquota die is opgegeven. Neem de gedetailleerde informatie in de aanvraag op de gewenste quota wijzigingen, use-casescenario's en regio's die zijn vereist.
+## <a name="open-a-support-ticket-to-request-changes-to-the-default-quotas"></a>Een ondersteuningsticket openen om wijzigingen in de standaardquota aan te vragen
+Als u wijzigingen wilt aanvragen in de opgegeven standaardquota, u een ondersteuningsticket openen. Vermeld gedetailleerde informatie in de aanvraag over de gewenste quotawijzigingen, gebruiksscenario's en vereiste regio's.
 
-### <a name="how-to-open-a-support-ticket"></a>Hoe u een ondersteuningsticket openen
-In de Azure-portal, gaat u naar [Help en ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Als u niet bent aangemeld bij Azure, wordt u gevraagd uw referenties in te voeren.
+### <a name="how-to-open-a-support-ticket"></a>Een ondersteuningsticket openen
+Ga in de Azure-portal naar [Help + ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Als u niet bent ingelogd op Azure, wordt u gevraagd uw referenties in te voeren.
 
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten

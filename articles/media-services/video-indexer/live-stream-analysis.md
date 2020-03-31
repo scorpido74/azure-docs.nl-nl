@@ -1,7 +1,7 @@
 ---
-title: Analyse van live streams met behulp van Video Indexer
+title: Live stream-analyse met video-indexer
 titleSuffix: Azure Media Services
-description: In dit artikel wordt beschreven hoe u een analyse van Live Stream kunt uitvoeren met behulp van Video Indexer.
+description: In dit artikel ziet u hoe u een live stream-analyse uitvoert met Behulp van Video Indexer.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,35 +11,35 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185998"
 ---
-# <a name="live-stream-analysis-with-video-indexer"></a>Live Stream-analyse met Video Indexer
+# <a name="live-stream-analysis-with-video-indexer"></a>Live stream-analyse met Video Indexer
 
-Azure Media Services Video Indexer is een Azure-service die is ontworpen om grondige inzichten uit video-en audio bestanden offline te halen. Dit is het analyseren van een bepaald media bestand dat vooraf is gemaakt. In sommige gevallen is het echter belang rijk dat u de media inzichten van een live feed zo snel mogelijk kunt ophalen om operationele en andere use cases op tijd in te scha kelen. Zo kunnen dergelijke uitgebreide meta gegevens in een live stream door producenten van inhoud worden gebruikt om de productie van TV te automatiseren.
+Azure Media Services Video Indexer is een Azure-service die is ontworpen om diepgaande inzichten uit video- en audiobestanden offline te halen. Dit is om een bepaald mediabestand te analyseren dat al van tevoren is gemaakt. Voor sommige use cases is het echter belangrijk om de media-inzichten zo snel mogelijk uit een live feed te halen om operationele en andere use cases te ontgrendelen die op tijd zijn ingedrukt. Dergelijke rijke metadata op een live stream kan bijvoorbeeld door contentproducenten worden gebruikt om de tv-productie te automatiseren.
 
-Met een oplossing die in dit artikel wordt beschreven, kunnen klanten Video Indexer in bijna realtime-oplossingen in live feeds gebruiken. De vertraging in het indexeren kan Maxi maal vier minuten duren met behulp van deze oplossing, afhankelijk van de segmenten die worden geïndexeerd, de invoer resolutie, het type inhoud en de reken kracht die voor dit proces wordt gebruikt.
+Een oplossing beschreven in dit artikel, stelt klanten in staat om Video Indexer te gebruiken in de buurt van real-time resoluties op live feeds. De vertraging in het indexeren kan zo laag zijn als vier minuten met behulp van deze oplossing, afhankelijk van de brokken gegevens die worden geïndexeerd, de inputresolutie, het type inhoud en de rekenkracht die voor dit proces wordt gebruikt.
 
-![De Video Indexer meta gegevens voor de Live Stream](./media/live-stream-analysis/live-stream-analysis01.png)
+![De metagegevens van de video-indexer op de live stream](./media/live-stream-analysis/live-stream-analysis01.png)
 
-*Afbeelding 1: voor beeld-Player de Video Indexer meta gegevens in de Live Stream weer geven*
+*Figuur 1 – Voorbeeldspeler die de metagegevens van de Video-indexer weergeeft op de live stream*
 
-De [oplossing voor analyse van streams](https://aka.ms/livestreamanalysis) maakt gebruik van Azure functions en twee Logic apps om een live-programma van een live kanaal in Azure Media Services met video indexer te verwerken en het resultaat weer te geven met Azure Media Player de stroom van de bijna real-time gegevens stromen weer gegeven.
+De [streamanalyseoplossing](https://aka.ms/livestreamanalysis) bij de hand, maakt gebruik van Azure Functions en twee Logic Apps om een live-programma te verwerken vanaf een live-kanaal in Azure Media Services met Video Indexer en geeft het resultaat weer met Azure Media Player met de bijna realtime resulterende stream.
 
-Op hoog niveau bestaat het uit twee belang rijke stappen. De eerste stap wordt elke 60 seconden uitgevoerd en er wordt een subclip van de laatste 60 seconden afgespeeld, er wordt een activum van gemaakt en geïndexeerd via Video Indexer. Vervolgens wordt de tweede stap aangeroepen wanneer het indexeren is voltooid. De vastgelegde inzichten worden verwerkt, verzonden naar Azure Cosmos DB en de index van het subfragment wordt verwijderd.
+Op hoog niveau bestaat het uit twee hoofdstappen. De eerste stap loopt elke 60 seconden, en neemt een subclip van de laatste 60 seconden gespeeld, creëert een actief van het en indexeert het via Video Indexer. Vervolgens wordt de tweede stap aangeroepen zodra de indexering is voltooid. De vastgelegde inzichten worden verwerkt, verzonden naar Azure Cosmos DB en de subclip geïndexeerd wordt verwijderd.
 
-De voorbeeld speler speelt de Live Stream af en haalt de inzichten op uit Azure Cosmos DB, met behulp van een speciale Azure-functie. De meta gegevens en miniaturen worden weer gegeven in synchronisatie met de live video.
+De voorbeeldspeler speelt de livestream af en krijgt de inzichten van Azure Cosmos DB met behulp van een speciale Azure-functie. Het toont de metadata en miniaturen in sync met de live video.
 
-![De twee Logic apps die elke minuut in de Cloud verwerken van de Live Stream](./media/live-stream-analysis/live-stream-analysis02.png)
+![De twee logische apps verwerken de livestream elke minuut in de cloud](./media/live-stream-analysis/live-stream-analysis02.png)
 
-*Afbeelding 2: de twee Logic apps die elke minuut in de Cloud verwerken van de live stream.*
+*Figuur 2 – De twee logische apps verwerken de livestream elke minuut in de cloud.*
 
 ## <a name="step-by-step-guide"></a>Stapsgewijze handleiding 
 
-De volledige code en een stapsgewijze hand leiding voor het implementeren van de resultaten vindt u in github- [project voor Live Media Analytics met video indexer](https://aka.ms/livestreamanalysis). 
+De volledige code en een stapsgewijze handleiding voor het implementeren van de resultaten zijn te vinden in [GitHub project voor Live media analytics met Video Indexer.](https://aka.ms/livestreamanalysis) 
 
 ## <a name="next-steps"></a>Volgende stappen
 

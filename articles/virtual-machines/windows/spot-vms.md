@@ -1,6 +1,6 @@
 ---
-title: Azure spot-Vm's gebruiken
-description: Meer informatie over het gebruik van spot Vm's om kosten op te slaan.
+title: Azure Spot VM's gebruiken
+description: Meer informatie over het gebruik van Spot VM's om kosten te besparen.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -10,20 +10,20 @@ ms.topic: article
 ms.date: 11/20/2019
 ms.author: cynthn
 ms.openlocfilehash: 4acbab324c63cf0184f5384e6af5e9418ca06677
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74782097"
 ---
-# <a name="preview-use-spot-vms-in-azure"></a>Voor beeld: gebruik behulp van virtuele machines in azure
+# <a name="preview-use-spot-vms-in-azure"></a>Voorbeeld: SpotVM's gebruiken in Azure
 
 [!INCLUDE [common-spot-vms](../../../includes/virtual-machines-common-spot-vms.md)]  
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Gebruik de [Portal](spot-portal.md), [cli](../linux/spot-cli.md) of [Power shell](spot-powershell.md) om spot-vm's te implementeren.
+Gebruik de [portal,](spot-portal.md) [CLI](../linux/spot-cli.md) of [PowerShell](spot-powershell.md) om Spot VM's te implementeren.
 
-U kunt ook een [schaalset implementeren met steun-VM-exemplaren](../../virtual-machine-scale-sets/use-spot.md).
+U ook een schaalset implementeren [met Vm-exemplaren voor vlekken](../../virtual-machine-scale-sets/use-spot.md).
 
-Als er een fout optreedt, raadpleegt u [fout codes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Zie [Foutcodes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u een fout tegenkomt.
