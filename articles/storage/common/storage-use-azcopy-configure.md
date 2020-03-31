@@ -1,6 +1,6 @@
 ---
-title: AzCopy configureren, optimaliseren en problemen oplossen met Azure Storage | Microsoft Docs
-description: AzCopy configureren, optimaliseren en problemen oplossen.
+title: AzCopy configureren, optimaliseren en oplossen met Azure Storage | Microsoft Documenten
+description: AzCopy configureren, optimaliseren en oplossen.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,55 +9,55 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77526492"
 ---
-# <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
+# <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en oplossen
 
-AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren van blobs of bestanden naar of van een opslag account. Dit artikel helpt u bij het uitvoeren van geavanceerde configuratie taken en helpt u bij het oplossen van problemen die kunnen optreden tijdens het gebruik van AzCopy.
+AzCopy is een command-line hulpprogramma dat u gebruiken om blobs of bestanden te kopiëren van of naar een opslagaccount. In dit artikel u geavanceerde configuratietaken uitvoeren en u problemen oplossen die zich kunnen voordoen wanneer u AzCopy gebruikt.
 
 > [!NOTE]
-> Als u op zoek bent naar inhoud die u helpt aan de slag te gaan met AzCopy, raadpleegt u een van de volgende artikelen:
+> Als u op zoek bent naar inhoud om u op weg te helpen met AzCopy, raadpleegt u een van de volgende artikelen:
 > - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
-> - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-> - [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
-> - [Gegevens overdragen met AzCopy en Amazon S3-buckets](storage-use-azcopy-s3.md)
+> - [Gegevens overbrengen met AzCopy- en blob-opslag](storage-use-azcopy-blobs.md)
+> - [Gegevens overbrengen met AzCopy en bestandsopslag](storage-use-azcopy-files.md)
+> - [Gegevens overbrengen met AzCopy- en Amazon S3-buckets](storage-use-azcopy-s3.md)
 
-## <a name="configure-proxy-settings"></a>Proxy-instellingen configureren
+## <a name="configure-proxy-settings"></a>Proxyinstellingen configureren
 
-Als u de proxy-instellingen voor AzCopy wilt configureren, stelt u de omgevings variabele `https_proxy` in. Als u AzCopy uitvoert in Windows, detecteert AzCopy automatisch proxy-instellingen. u hoeft deze instelling niet te gebruiken in Windows. Als u kiest voor het gebruik van deze instelling in Windows, wordt automatische detectie vervangen.
+Als u de proxy-instellingen voor `https_proxy` AzCopy wilt configureren, stelt u de omgevingsvariabele in. Als u AzCopy op Windows uitvoert, detecteert AzCopy automatisch proxy-instellingen, zodat u deze instelling niet hoeft te gebruiken in Windows. Als u ervoor kiest deze instelling in Windows te gebruiken, wordt de automatische detectie overschreven.
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
-| **Windows** | Gebruik in een opdracht prompt: `set https_proxy=<proxy IP>:<proxy port>`<br> In Power shell gebruiken: `$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | In een opdrachtpromptgebruik:`set https_proxy=<proxy IP>:<proxy port>`<br> In PowerShell gebruik:`$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Macos** | `export https_proxy=<proxy IP>:<proxy port>` |
 
-Momenteel biedt AzCopy geen ondersteuning voor proxy's waarvoor authenticatie met NTLM of Kerberos is vereist.
+AzCopy biedt momenteel geen ondersteuning voor proxy's waarvoor verificatie vereist is met NTLM of Kerberos.
 
 ## <a name="optimize-performance"></a>Prestaties optimaliseren
 
-U kunt benchmark prestaties en vervolgens opdrachten en omgevings variabelen gebruiken om een optimale balans te vinden tussen prestaties en Resource verbruik.
+U prestaties benchmarken en vervolgens opdrachten en omgevingsvariabelen gebruiken om een optimale afweging te vinden tussen prestaties en resourceverbruik.
 
-Deze sectie helpt u bij het uitvoeren van deze optimalisatie taken:
+Met deze sectie u deze optimalisatietaken uitvoeren:
 
 > [!div class="checklist"]
-> * Bench Mark-tests uitvoeren
-> * Door Voer optimaliseren
-> * Geheugen gebruik optimaliseren 
-> * Bestands synchronisatie optimaliseren
+> * Benchmarktests uitvoeren
+> * Doorvoer optimaliseren
+> * Geheugengebruik optimaliseren 
+> * Bestandssynchronisatie optimaliseren
 
-### <a name="run-benchmark-tests"></a>Bench Mark-tests uitvoeren
+### <a name="run-benchmark-tests"></a>Benchmarktests uitvoeren
 
-U kunt een benchmark test voor prestaties uitvoeren op specifieke BLOB-containers om algemene prestatie statistieken en knel punten voor identiteits prestaties te bekijken. 
+U een prestatiebenchmarktest uitvoeren op specifieke blobcontainers om algemene prestatiestatistieken te bekijken en om knelpunten in identiteitsprestaties te bekijken. 
 
 > [!NOTE]
 > In de huidige versie is deze functie alleen beschikbaar voor Blob Storage-containers.
 
-Gebruik de volgende opdracht om een bench Mark-test voor prestaties uit te voeren.
+Gebruik de volgende opdracht om een prestatiebenchmarktest uit te voeren.
 
 |    |     |
 |--------|-----------|
@@ -65,73 +65,73 @@ Gebruik de volgende opdracht om een bench Mark-test voor prestaties uit te voere
 | **Voorbeeld** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
-> In dit voor beeld worden padvariabelen met enkele aanhalings tekens (' ') Inge sloten. Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
+> In dit voorbeeld worden padargumenten omsluit met enkele aanhalingstekens (''). Gebruik enkele aanhalingstekens in alle opdrachtshells, behalve de Windows Command Shell (cmd.exe). Als u een Windows Command Shell (cmd.exe) gebruikt, sluit u padargumenten om met dubbele aanhalingstekens ("") in plaats van enkele aanhalingstekens ('').
 
-Met deze opdracht wordt een prestatie Bench Mark uitgevoerd door test gegevens naar een opgegeven bestemming te uploaden. De test gegevens worden in het geheugen gegenereerd, geüpload naar het doel en vervolgens verwijderd uit de bestemming nadat de test is voltooid. U kunt opgeven hoeveel bestanden er moeten worden gegenereerd en welke grootte u wilt gebruiken met optionele opdracht parameters.
+Met deze opdracht wordt een prestatiebenchmark uitgevoerd door testgegevens naar een bepaalde bestemming te uploaden. De testgegevens worden gegenereerd in het geheugen, geüpload naar de bestemming en vervolgens van de bestemming verwijderd nadat de test is voltooid. U opgeven hoeveel bestanden u wilt genereren en hoe groot u wilt dat ze zijn met behulp van optionele opdrachtparameters.
 
-Zie [azcopy Bank](storage-ref-azcopy-bench.md)voor gedetailleerde naslag documentatie.
+Zie [azcopy bench](storage-ref-azcopy-bench.md)voor gedetailleerde referentiedocumenten.
 
-Als u gedetailleerde Help-informatie voor deze opdracht wilt weer geven, typt u `azcopy bench -h` en drukt u vervolgens op ENTER.
+Als u gedetailleerde helprichtlijnen voor `azcopy bench -h` deze opdracht wilt weergeven, typt u en drukt u op enter.
 
-### <a name="optimize-throughput"></a>Door Voer optimaliseren
+### <a name="optimize-throughput"></a>Doorvoer optimaliseren
 
-U kunt de vlag `cap-mbps` in uw opdrachten gebruiken om een plafond te plaatsen op basis van het gegevens aantal door voer. Met de volgende opdracht wordt bijvoorbeeld een taak en een cap-doorvoer snelheid hervat naar `10` megabits (MB) per seconde. 
+U `cap-mbps` de vlag in uw opdrachten gebruiken om een plafond op de doorvoergegevenssnelheid te plaatsen. Met de volgende opdracht wordt bijvoorbeeld een `10` taak hervat en wordt de doorvoer naar megabits (MB) per seconde gecapd. 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-De door Voer kan afnemen bij het overbrengen van kleine bestanden. U kunt de door Voer verhogen door de omgevings variabele `AZCOPY_CONCURRENCY_VALUE` in te stellen. Met deze variabele geeft u het aantal gelijktijdige aanvragen op dat kan worden uitgevoerd.  
+Doorvoer kan afnemen bij het overbrengen van kleine bestanden. U de doorvoer verhogen `AZCOPY_CONCURRENCY_VALUE` door de omgevingsvariabele in te stellen. Deze variabele geeft het aantal gelijktijdige aanvragen op dat kan optreden.  
 
-Als uw computer minder dan 5 Cpu's heeft, wordt de waarde van deze variabele ingesteld op `32`. Anders is de standaard waarde gelijk aan 16 vermenigvuldigd met het aantal Cpu's. De maximale standaard waarde van deze variabele is `3000`, maar u kunt deze waarde ook op een hoger of lager niveau instellen. 
+Als uw computer minder dan 5 CPU's heeft, `32`wordt de waarde van deze variabele ingesteld op . Anders is de standaardwaarde gelijk aan 16 vermenigvuldigd met het aantal CPU's. De maximale standaardwaarde `3000`van deze variabele is, maar u deze waarde handmatig hoger of lager instellen. 
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **Macos** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Gebruik de `azcopy env` om de huidige waarde van deze variabele te controleren. Als de waarde leeg is, kunt u lezen welke waarde wordt gebruikt door te kijken naar het begin van een AzCopy-logboek bestand. De geselecteerde waarde, en de reden dat deze is geselecteerd, worden daar gerapporteerd.
+Gebruik `azcopy env` de om de huidige waarde van deze variabele te controleren. Als de waarde leeg is, u lezen welke waarde wordt gebruikt door te kijken naar het begin van een AzCopy-logboekbestand. De geselecteerde waarde en de reden waarom deze is geselecteerd, worden daar gerapporteerd.
 
-Voordat u deze variabele instelt, wordt u aangeraden een bench Mark-test uit te voeren. In het Bench Mark-test proces wordt de aanbevolen gelijktijdigheids waarde gerapporteerd. Als uw netwerk voorwaarden en nettoladingen verschillen, stelt u deze variabele in op het woord `AUTO` in plaats van op een bepaald getal. Hierdoor wordt AzCopy altijd hetzelfde automatische afstemmings proces uitgevoerd dat wordt gebruikt in Bench Mark-tests.
+Voordat u deze variabele instelt, raden we u aan een benchmarktest uit te voeren. Het benchmarktestproces rapporteert de aanbevolen gelijktijdigheidswaarde. Als uw netwerkomstandigheden en payloads variëren, stelt u `AUTO` deze variabele ook in op het woord in plaats van op een bepaald nummer. Dat zal ertoe leiden dat AzCopy altijd hetzelfde automatische tuningproces uitvoert dat het gebruikt in benchmarktests.
 
-### <a name="optimize-memory-use"></a>Geheugen gebruik optimaliseren
+### <a name="optimize-memory-use"></a>Geheugengebruik optimaliseren
 
-Stel de omgevings variabele `AZCOPY_BUFFER_GB` in om de maximale hoeveelheid geheugen te bepalen die door AzCopy moet worden gebruikt bij het downloaden en uploaden van bestanden.
-Deze waarde in gigabytes (GB) uitdrukken.
+Stel `AZCOPY_BUFFER_GB` de omgevingsvariabele in om de maximale hoeveelheid van uw systeemgeheugen op te geven die u wilt dat AzCopy gebruikt bij het downloaden en uploaden van bestanden.
+Deze waarde uitdrukken in gigabytes (GB).
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
-| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+| **Macos** | `export AZCOPY_BUFFER_GB=<value>` |
 
-### <a name="optimize-file-synchronization"></a>Bestands synchronisatie optimaliseren
+### <a name="optimize-file-synchronization"></a>Bestandssynchronisatie optimaliseren
 
-De [Sync](storage-ref-azcopy-sync.md) -opdracht identificeert alle bestanden op de bestemming en vergelijkt vervolgens bestands namen en tijdstippen die het laatst zijn gewijzigd voordat de synchronisatie bewerking wordt gestart. Als u een groot aantal bestanden hebt, kunt u de prestaties verbeteren door deze bewerking vooraf uit te scha kelen. 
+De [opdracht synchroniseren](storage-ref-azcopy-sync.md) identificeert alle bestanden op de bestemming en vergelijkt vervolgens bestandsnamen en laatst gewijzigde tijdstempels voordat de synchronisatiebewerking wordt gestart. Als u een groot aantal bestanden hebt, u de prestaties verbeteren door deze verwerking vooraf te elimineren. 
 
-U kunt dit doen door in plaats daarvan de azcopy-opdracht [copy](storage-ref-azcopy-copy.md) te gebruiken en de `--overwrite`-vlag in te stellen op `ifSourceNewer`. AzCopy vergelijkt bestanden als ze worden gekopieerd zonder dat er vooraf scans en vergelijkingen worden uitgevoerd. Dit biedt een prestatie rand in gevallen waarin een groot aantal bestanden moet worden vergeleken.
+Gebruik hiervoor in plaats daarvan de opdracht [azcopy-kopie](storage-ref-azcopy-copy.md) en stelt de `--overwrite` vlag in op `ifSourceNewer`. AzCopy zal bestanden vergelijken als ze worden gekopieerd zonder het uitvoeren van up-front scans en vergelijkingen. Dit biedt een prestatievoordeel in gevallen waarin er een groot aantal bestanden te vergelijken zijn.
 
-Met de [azcopy Copy](storage-ref-azcopy-copy.md) opdracht worden geen bestanden van de bestemming verwijderd. Als u bestanden op de bestemming wilt verwijderen wanneer deze niet meer op de bron aanwezig zijn, gebruikt u de [azcopy Sync](storage-ref-azcopy-sync.md) -opdracht waarbij de vlag `--delete-destination` is ingesteld op de waarde `true` of `prompt`. 
+De [azcopy-kopieopdracht](storage-ref-azcopy-copy.md) verwijdert geen bestanden van de bestemming, dus als u bestanden op de bestemming wilt verwijderen wanneer ze `--delete-destination` niet meer bij `true` `prompt`de bron bestaan, gebruikt u de opdracht [azcopy-synchronisatie](storage-ref-azcopy-sync.md) met de vlag ingesteld op een waarde van of . 
 
 ## <a name="troubleshoot-issues"></a>Problemen oplossen
 
-AzCopy maakt logboek-en plan bestanden voor elke taak. U kunt de Logboeken gebruiken om potentiële problemen te onderzoeken en op te lossen. 
+AzCopy maakt log- en planbestanden voor elke taak. U de logboeken gebruiken om mogelijke problemen te onderzoeken en op te lossen. 
 
-De logboeken bevatten de status van de fout (`UPLOADFAILED`, `COPYFAILED`en `DOWNLOADFAILED`), het volledige pad en de reden van de fout.
+De logboeken bevatten de`UPLOADFAILED`status `COPYFAILED`van `DOWNLOADFAILED`het mislukken ( , en ), het volledige pad en de reden van de fout.
 
-Standaard bevinden de logboek-en plan bestanden zich in de map `%USERPROFILE%\.azcopy` op Windows of `$HOME$\.azcopy` Directory op Mac en Linux, maar u kunt deze locatie desgewenst wijzigen.
+Standaard bevinden de logboek- en planbestanden zich in de `%USERPROFILE%\.azcopy` directory op Windows of `$HOME$\.azcopy` directory op Mac en Linux, maar u die locatie wijzigen als u dat wilt.
 
-De relevante fout is niet noodzakelijkerwijs de eerste fout die in het bestand wordt weer gegeven. Voor fouten, zoals netwerk fouten, time-outs en fouten bij de server bezet, zal AzCopy Maxi maal 20 keer opnieuw proberen en wordt het proces voor nieuwe pogingen meestal voltooid.  De eerste fout die u ziet kan iets onschadelijk zijn.  In plaats van de eerste fout in het bestand te bekijken, zoekt u naar de fouten die zich in de buurt `UPLOADFAILED`, `COPYFAILED`of `DOWNLOADFAILED`bevinden. 
+De relevante fout is niet noodzakelijkerwijs de eerste fout die in het bestand wordt weergegeven. Voor fouten zoals netwerkfouten, time-outs en serverdrukke fouten probeert AzCopy tot 20 keer opnieuw en meestal slaagt het proces voor opnieuw proberen.  De eerste fout die u ziet, is mogelijk iets onschadelijks dat opnieuw is geprobeerd.  Dus in plaats van te kijken naar de eerste fout `UPLOADFAILED` `COPYFAILED`in `DOWNLOADFAILED`het bestand, kijk voor de fouten die in de buurt, , of . 
 
 > [!IMPORTANT]
-> Wanneer u een aanvraag indient om Microsoft Ondersteuning (of het probleem met een derde partij op te lossen), deelt u de geredigeerde versie van de opdracht die u wilt uitvoeren. Dit zorgt ervoor dat de SAS niet per ongeluk met iedereen wordt gedeeld. U kunt de geredigeerde versie vinden aan het begin van het logboek bestand.
+> Wanneer u een verzoek indient bij Microsoft Support (of het probleem oplost waarbij een derde partij betrokken is), deelt u de geredigeerde versie van de opdracht die u wilt uitvoeren. Dit zorgt ervoor dat de SAS niet per ongeluk met iemand wordt gedeeld. U vindt de geredigeerde versie aan het begin van het logboekbestand.
 
 ### <a name="review-the-logs-for-errors"></a>De logboeken controleren op fouten
 
-Met de volgende opdracht worden alle fouten met `UPLOADFAILED` status uit het `04dc9ca9-158f-7945-5933-564021086c79` logboek opgehaald:
+Met de volgende opdracht `UPLOADFAILED` worden alle `04dc9ca9-158f-7945-5933-564021086c79` fouten met de status uit het logboek verwijderd:
 
-**Windows (Power shell)**
+**Windows (PowerShell)**
 
 ```
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -143,15 +143,15 @@ Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 grep UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 ```
 
-### <a name="view-and-resume-jobs"></a>Taken weer geven en hervatten
+### <a name="view-and-resume-jobs"></a>Taken weergeven en hervatten
 
-Bij elke overdrachts bewerking wordt een AzCopy-taak gemaakt. Gebruik de volgende opdracht om de geschiedenis van taken weer te geven:
+Elke overdrachtsbewerking maakt een AzCopy-taak. Gebruik de volgende opdracht om de geschiedenis van taken weer te geven:
 
 ```
 azcopy jobs list
 ```
 
-Als u de taak statistieken wilt weer geven, gebruikt u de volgende opdracht:
+Als u de taakstatistieken wilt weergeven, gebruikt u de volgende opdracht:
 
 ```
 azcopy jobs show <job-id>
@@ -163,7 +163,7 @@ Als u de overdrachten wilt filteren op status, gebruikt u de volgende opdracht:
 azcopy jobs show <job-id> --with-status=Failed
 ```
 
-Gebruik de volgende opdracht om een mislukte/geannuleerde taak te hervatten. Met deze opdracht wordt de id samen met het SAS-token gebruikt, omdat dit om veiligheids redenen niet permanent is:
+Gebruik de volgende opdracht om een mislukte/geannuleerde taak te hervatten. Deze opdracht gebruikt de id samen met het SAS-token omdat deze om veiligheidsredenen niet persistent is:
 
 ```
 azcopy jobs resume <job-id> --source-sas="<sas-token>"
@@ -171,15 +171,15 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
 > [!TIP]
-> Plaats argumenten van het pad, zoals het SAS-token met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
+> Sluit padargumenten zoals het SAS-token om met enkele aanhalingstekens (''). Gebruik enkele aanhalingstekens in alle opdrachtshells, behalve de Windows Command Shell (cmd.exe). Als u een Windows Command Shell (cmd.exe) gebruikt, sluit u padargumenten om met dubbele aanhalingstekens ("") in plaats van enkele aanhalingstekens ('').
 
-Wanneer u een taak hervat, zoekt AzCopy naar het job plan-bestand. In het plan bestand worden alle bestanden vermeld die zijn geïdentificeerd voor verwerking toen de taak voor het eerst werd gemaakt. Wanneer u een taak hervat, probeert AzCopy alle bestanden over te dragen die worden vermeld in het plan bestand dat niet al is overgedragen.
+Wanneer u een taak hervat, bekijkt AzCopy het taakplanbestand. In het planbestand worden alle bestanden weergegeven die zijn geïdentificeerd voor verwerking toen de taak voor het eerst werd gemaakt. Wanneer u een taak hervat, probeert AzCopy alle bestanden over te zetten die zijn opgenomen in het planbestand dat nog niet is overgedragen.
 
-## <a name="change-the-location-of-the-plan-and-log-files"></a>De locatie van het plan en de logboek bestanden wijzigen
+## <a name="change-the-location-of-the-plan-and-log-files"></a>De locatie van het plan en logboekbestanden wijzigen
 
-Plan-en logboek bestanden bevinden zich standaard in de map `%USERPROFILE%\.azcopy` op Windows of in de `$HOME$\.azcopy` Directory op Mac en Linux. U kunt deze locatie wijzigen.
+Standaard bevinden u plan- en `%USERPROFILE%\.azcopy` logbestanden zich in `$HOME$\.azcopy` de directory op Windows of in de map op Mac en Linux. U deze locatie wijzigen.
 
-### <a name="change-the-location-of-plan-files"></a>De locatie van plan bestanden wijzigen
+### <a name="change-the-location-of-plan-files"></a>De locatie van planbestanden wijzigen
 
 Gebruik een van deze opdrachten.
 
@@ -187,11 +187,11 @@ Gebruik een van deze opdrachten.
 |--------|-----------|
 | **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Macos** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
-Gebruik de `azcopy env` om de huidige waarde van deze variabele te controleren. Als de waarde leeg is, worden de bestanden plannen naar de standaard locatie geschreven.
+Gebruik `azcopy env` de om de huidige waarde van deze variabele te controleren. Als de waarde leeg is, worden bestanden plannen naar de standaardlocatie geschreven.
 
-### <a name="change-the-location-of-log-files"></a>De locatie van de logboek bestanden wijzigen
+### <a name="change-the-location-of-log-files"></a>De locatie van logboekbestanden wijzigen
 
 Gebruik een van deze opdrachten.
 
@@ -199,20 +199,20 @@ Gebruik een van deze opdrachten.
 |--------|-----------|
 | **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **Macos** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-Gebruik de `azcopy env` om de huidige waarde van deze variabele te controleren. Als de waarde leeg is, worden logboeken naar de standaard locatie geschreven.
+Gebruik `azcopy env` de om de huidige waarde van deze variabele te controleren. Als de waarde leeg is, worden logboeken naar de standaardlocatie geschreven.
 
-## <a name="change-the-default-log-level"></a>Het standaard logboek niveau wijzigen
+## <a name="change-the-default-log-level"></a>Het standaardlogboekniveau wijzigen
 
-AzCopy-logboek niveau is standaard ingesteld op `INFO`. Als u de uitgebreidheid van het logboek wilt beperken om schijf ruimte te besparen, kunt u deze instelling overschrijven met de optie ``--log-level``. 
+Standaard is het azcopy-logboekniveau ingesteld op `INFO`. Als u de logverbositeit wilt verminderen om schijfruimte te besparen, overschrijft u deze instelling met behulp van de ``--log-level`` optie. 
 
-Beschik bare logboek niveaus zijn: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC`en `FATAL`.
+Beschikbare logniveaus `NONE`zijn: `INFO` `WARNING`, `ERROR` `DEBUG` `PANIC`, `FATAL`, , en .
 
-## <a name="remove-plan-and-log-files"></a>Plan-en logboek bestanden verwijderen
+## <a name="remove-plan-and-log-files"></a>Plan- en logboekbestanden verwijderen
 
-Als u alle plannings-en logboek bestanden van uw lokale computer wilt verwijderen om schijf ruimte te besparen, gebruikt u de opdracht `azcopy jobs clean`.
+Als u alle plan- en logboekbestanden van uw lokale machine `azcopy jobs clean` wilt verwijderen om schijfruimte op te slaan, gebruikt u de opdracht.
 
-Gebruik `azcopy jobs rm <job-id>`om het plan en de logboek bestanden te verwijderen die zijn gekoppeld aan één taak. Vervang de tijdelijke aanduiding `<job-id>` in dit voor beeld door de taak-id van de taak.
+Als u het plan wilt verwijderen en `azcopy jobs rm <job-id>`bestanden wilt registreren die aan slechts één taak zijn gekoppeld, gebruikt u . Vervang `<job-id>` de tijdelijke aanduiding in dit voorbeeld door de taak-id van de taak.
 
 

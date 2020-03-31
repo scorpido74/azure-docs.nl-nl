@@ -1,52 +1,52 @@
 ---
-title: Push meldingen toevoegen aan uw Xamarin. iOS-app
-description: Meer informatie over het gebruik van Azure App Service voor het verzenden van push meldingen naar uw Xamarin. iOS-app.
+title: Pushmeldingen toevoegen aan je Xamarin.iOS-app
+description: Meer informatie over het gebruik van Azure App Service om pushmeldingen naar uw Xamarin.iOS-app te verzenden.
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: f9c70491d06f61931ebabda859ff3a86ed035b44
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249280"
 ---
-# <a name="add-push-notifications-to-your-xamarinios-app"></a>Push meldingen toevoegen aan uw Xamarin. iOS-app
+# <a name="add-push-notifications-to-your-xamarinios-app"></a>Pushmeldingen toevoegen aan je Xamarin.iOS-app
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelf studie voegt u push meldingen toe aan het [Xamarin. IOS Quick Start](app-service-mobile-xamarin-ios-get-started.md) -project, zodat een push melding wordt verzonden naar het apparaat wanneer een record wordt ingevoegd.
+In deze zelfstudie voegt u pushmeldingen toe aan het [quick start-project Xamarin.iOS,](app-service-mobile-xamarin-ios-get-started.md) zodat er elke keer dat een record wordt ingevoegd een pushmelding naar het apparaat wordt verzonden.
 
-Als u het gedownloade Quick Start Server-project niet gebruikt, hebt u het uitbreidings pakket voor push meldingen nodig. Zie [werken met de .net back-end server SDK voor Azure Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) voor meer informatie.
+Als u het gedownloade quick start-serverproject niet gebruikt, hebt u het uitbreidingspakket voor pushmeldingen nodig. Zie [Werken met de .NET-backendserver SDK voor Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Voltooi de [Snelstartgids voor Xamarin. IOS](app-service-mobile-xamarin-ios-get-started.md) .
-* Een fysiek iOS-apparaat. Push meldingen worden niet ondersteund door de iOS-Simulator.
+* Voltooi de [Snelstarttutorial Xamarin.iOS.](app-service-mobile-xamarin-ios-get-started.md)
+* Een fysiek iOS-apparaat. Pushmeldingen worden niet ondersteund door de iOS-simulator.
 
-## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>De app voor push meldingen registreren op de ontwikkelaars portal van Apple
+## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>De app registreren voor pushmeldingen op de ontwikkelaarsportal van Apple
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
-## <a name="configure-your-mobile-app-to-send-push-notifications"></a>Uw mobiele app configureren voor het verzenden van push meldingen
+## <a name="configure-your-mobile-app-to-send-push-notifications"></a>Uw mobiele app configureren om pushmeldingen te verzenden
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a name="update-the-server-project-to-send-push-notifications"></a>Het server project bijwerken voor het verzenden van push meldingen
+## <a name="update-the-server-project-to-send-push-notifications"></a>Het serverproject bijwerken om pushmeldingen te verzenden
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="configure-your-xamarinios-project"></a>Uw Xamarin. iOS-project configureren
+## <a name="configure-your-xamarinios-project"></a>Uw Xamarin.iOS-project configureren
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>Pushmeldingen toevoegen aan uw app
 
-1. Voeg in **QSTodoService**de volgende eigenschap toe, zodat **AppDelegate** de mobiele client kan verkrijgen:
+1. Voeg in **QSTodoService**de volgende eigenschap toe zodat **AppDelegate** de mobiele client kan aanschaffen:
 
     ```csharp
     public MobileServiceClient GetClient {
@@ -61,14 +61,14 @@ Als u het gedownloade Quick Start Server-project niet gebruikt, hebt u het uitbr
     }
     ```
 
-2. Voeg de volgende `using`-instructie toe boven aan het **AppDelegate.cs** -bestand.
+2. Voeg de `using` volgende instructie toe aan de bovenkant van het **AppDelegate.cs** bestand.
 
     ```csharp
     using Microsoft.WindowsAzure.MobileServices;
     using Newtonsoft.Json.Linq;
     ```
 
-3. Vervang in **AppDelegate**de gebeurtenis **FinishedLaunching** :
+3. Overschrijven in **AppDelegate**de gebeurtenis **FinishedLaunching:**
 
    ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -87,9 +87,9 @@ Als u het gedownloade Quick Start Server-project niet gebruikt, hebt u het uitbr
     }
     ```
 
-4. Negeer de `RegisteredForRemoteNotifications` gebeurtenis in hetzelfde bestand. In deze code registreert u voor een eenvoudige sjabloon melding die door de server wordt verzonden over alle ondersteunde platforms.
+4. Overschrijven in hetzelfde `RegisteredForRemoteNotifications` bestand de gebeurtenis. In deze code registreert u zich voor een eenvoudige sjabloonmelding die door de server op alle ondersteunde platforms wordt verzonden.
 
-    Zie voor meer informatie over sjablonen met Notification Hubs [sjablonen](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+    Zie Sjablonen voor meer informatie over sjablonen met [meldingshubs.](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -110,7 +110,7 @@ Als u het gedownloade Quick Start Server-project niet gebruikt, hebt u het uitbr
     }
     ```
 
-5. Vervang vervolgens de gebeurtenis **DidReceivedRemoteNotification** :
+5. Overschrijven van de gebeurtenis **DidReceivedRemoteNotification:**
 
    ```csharp
     public override void DidReceiveRemoteNotification (UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
@@ -130,17 +130,17 @@ Als u het gedownloade Quick Start Server-project niet gebruikt, hebt u het uitbr
     }
     ```
 
-Uw app is nu bijgewerkt zodat push meldingen worden ondersteund.
+Uw app is nu bijgewerkt om pushmeldingen te ondersteunen.
 
-## <a name="test"></a>Push meldingen in uw app testen
+## <a name="test-push-notifications-in-your-app"></a><a name="test"></a>Pushmeldingen testen in uw app
 
-1. Druk op de knop **uitvoeren** om het project te bouwen en de app te starten in een apparaat dat geschikt is voor IOS en klik vervolgens op **OK** om Push meldingen te accepteren.
+1. Druk op de knop **Uitvoeren** om het project te bouwen en start de app op een apparaat dat geschikt is voor iOS en klik vervolgens op **OK** om pushmeldingen te accepteren.
 
    > [!NOTE]
-   > U moet expliciet push meldingen van uw app accepteren. Deze aanvraag vindt alleen de eerste keer dat de app wordt uitgevoerd.
+   > U moet expliciet pushmeldingen van uw app accepteren. Deze aanvraag vindt alleen plaats wanneer de app voor het eerst wordt uitgevoerd.
 
-2. Typ een taak in de app en klik vervolgens op het plus teken ( **+** ).
-3. Controleer of er een melding is ontvangen en klik vervolgens op **OK** om de melding te negeren.
-4. Herhaal stap 2 en sluit de app onmiddellijk en controleer vervolgens of er een melding wordt weer gegeven.
+2. Typ in de app een taak en**+** klik op het pluspictogram ( )
+3. Controleer of er een melding is ontvangen en klik op **OK** om de melding te verwijderen.
+4. Herhaal stap 2 en sluit de app onmiddellijk en controleer of er een melding wordt weergegeven.
 
-U hebt deze zelf studie voltooid.
+U hebt deze zelfstudie met succes voltooid.

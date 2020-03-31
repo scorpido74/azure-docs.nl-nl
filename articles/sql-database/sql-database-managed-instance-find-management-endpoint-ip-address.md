@@ -1,6 +1,6 @@
 ---
-title: Beheer eindpunt van beheerd exemplaar detecteren
-description: Meer informatie over het verkrijgen van een openbaar IP-adres voor Azure SQL Database Managed instance Management-eind punt en het controleren van de ingebouwde firewall beveiliging
+title: Eindpunt beheer van beheervan beheer ontdekken
+description: Meer informatie over het beheren van Azure SQL Database Managed Instance-beheer-eindpunt en het verifiëren van de ingebouwde firewallbeveiliging
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,23 +12,23 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 03cd89084c2bae3339311f2f684a0d5e7bac1f68
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825723"
 ---
-# <a name="determine-the-management-endpoint-ip-address"></a>Het IP-adres van het beheer eindpunt bepalen
+# <a name="determine-the-management-endpoint-ip-address"></a>Het IP-adres voor beheereindpunten bepalen
 
-Het virtuele cluster Azure SQL Database Managed instance bevat een beheer eindpunt dat door micro soft wordt gebruikt voor beheer bewerkingen. Het beheer eindpunt wordt beveiligd met een ingebouwde firewall op het netwerk niveau en de verificatie op basis van wederzijdse certificaten op toepassings niveau. U kunt het IP-adres van het beheer eindpunt bepalen, maar u hebt geen toegang tot dit eind punt.
+Het virtuele cluster Azure SQL Database Managed Instance bevat een beheereindpunt dat Microsoft gebruikt voor beheerbewerkingen. Het beheereindpunt wordt beveiligd met een ingebouwde firewall op netwerkniveau en wederzijdse certificaatverificatie op toepassingsniveau. U het IP-adres van het beheereindpunt bepalen, maar u hebt geen toegang tot dit eindpunt.
 
-Als u het IP-adres van het beheer wilt bepalen, moet u een DNS-zoek opdracht uitvoeren op de FQDN van uw beheerde exemplaar: `mi-name.zone_id.database.windows.net`. Hiermee wordt een DNS-vermelding geretourneerd die lijkt `trx.region-a.worker.vnet.database.windows.net`. U kunt vervolgens een DNS-zoek opdracht uitvoeren op deze FQDN met ". vnet" verwijderd. Hiermee wordt het IP-adres van het beheer geretourneerd. 
+Als u het IP-adres van het beheer wilt bepalen, `mi-name.zone_id.database.windows.net`doet u een DNS-lookup op uw beheerde instantie FQDN: . Dit retourneert een DNS-item dat is als `trx.region-a.worker.vnet.database.windows.net`. U dan een DNS-lookup op deze FQDN doen met .vnet verwijderd. Dit retourneert het IP-adres van het beheer. 
 
-Deze Power shell doet dit allemaal voor u als u \<MI FQDN-\> vervangt door de DNS-vermelding van uw beheerde exemplaar: `mi-name.zone_id.database.windows.net`:
+Deze PowerShell doet het allemaal voor \<u als\> u MI FQDN `mi-name.zone_id.database.windows.net`vervangt door de DNS-vermelding van uw beheerde instantie:
   
 ``` powershell
   $MIFQDN = "<MI FQDN>"
   resolve-dnsname $MIFQDN | select -first 1  | %{ resolve-dnsname $_.NameHost.Replace(".vnet","")}
 ```
 
-Zie voor meer informatie over beheerde exemplaren en connectiviteit de [Azure SQL database Managed instance connectivity-architectuur](sql-database-managed-instance-connectivity-architecture.md).
+Zie [Azure SQL Database Managed Instance Connectivity Architecture](sql-database-managed-instance-connectivity-architecture.md)voor meer informatie over beheerde exemplaren en connectiviteit.

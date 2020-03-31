@@ -1,5 +1,5 @@
 ---
-title: Met behulp van de Azure Cloud Shell-editor | Microsoft Docs
+title: De Azure Cloud Shell-editor gebruiken | Microsoft Documenten
 description: Overzicht van het gebruik van de Azure Cloud Shell-editor.
 services: azure
 documentationcenter: ''
@@ -15,42 +15,42 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60199205"
 ---
-# <a name="using-the-azure-cloud-shell-editor"></a>Met behulp van de Azure Cloud Shell-editor
+# <a name="using-the-azure-cloud-shell-editor"></a>De Azure Cloud Shell-editor gebruiken
 
-Azure Cloud Shell omvat een geïntegreerde bestandseditor gebouwd op basis van de open-source [Monaco Editor](https://github.com/Microsoft/monaco-editor). De Cloud Shell-editor biedt ondersteuning voor functies, zoals taalmarkeringen, het opdrachtenpalet en een bestand in bestandenverkenner.
+Azure Cloud Shell bevat een geïntegreerde bestandseditor die is gebouwd vanuit de open-source [Monaco Editor.](https://github.com/Microsoft/monaco-editor) De Cloud Shell-editor ondersteunt functies, zoals het markeren van talen, het opdrachtpalet en een bestandsverkenner.
 
 ![Cloud Shell-editor](media/using-cloud-shell-editor/open-editor.png)
 
-## <a name="opening-the-editor"></a>De editor te openen
+## <a name="opening-the-editor"></a>De editor openen
 
-Voor het eenvoudig bestand maken en bewerken, start u de editor door te voeren `code .` in de Cloud Shell-terminal. Deze actie opent de editor met uw actieve werkmap instellen in de terminal.
+Als u eenvoudig bestanden wilt maken en bewerken, start u de editor door `code .` uit te voeren in de Cloud Shell-terminal. Met deze actie wordt de editor geopend met uw actieve werkmapset in de terminal.
 
-Voor het rechtstreeks openen van een bestand voor het snel bewerken, uitvoeren `code <filename>` om de editor zonder de Verkenner te openen.
+Als u een bestand rechtstreeks wilt openen voor snelle bewerking, voert u `code <filename>` uit om de editor te openen zonder de bestandsverkenner.
 
-U opent de editor via de knop van de gebruikersinterface, klikt u op de `{}` editor-pictogram in de werkbalk. Hiermee opent u de editor en standaard van de Verkenner op de `/home/<user>` directory.
+Als u de editor wilt openen via de gebruikersinterfaceknop, klikt u op het editor-pictogram `{}` op de werkbalk. Hiermee opent u de editor en maakt u van de `/home/<user>`-map de standaardmap voor de bestandsverkenner.
 
-## <a name="closing-the-editor"></a>Sluit de editor
+## <a name="closing-the-editor"></a>De editor sluiten
 
-Sluit de editor, opent u de `...` actie deelvenster in de rechterbovenhoek van de editor en selecteer `Close editor`.
+Als u de editor `...` wilt sluiten, opent u het `Close editor`actiedeelvenster rechtsboven in de editor en selecteert u .
 
-![Editor sluiten](media/using-cloud-shell-editor/close-editor.png)
+![Sluit editor](media/using-cloud-shell-editor/close-editor.png)
 
-## <a name="command-palette"></a>Opdrachtenpalet
+## <a name="command-palette"></a>Opdrachtpalet
 
-Als u wilt het opdrachtenpalet starten, gebruikt u de `F1` wanneer de focus is ingesteld op de editor. Openen van het opdrachtenpalet kan ook worden gedaan via het deelvenster actie aan.
+Als u het opdrachtpalet `F1` wilt starten, gebruikt u de toets wanneer de focus op de editor is ingesteld. Het openen van het opdrachtpalet kan ook via het actiepaneel.
 
-![Cmd palet](media/using-cloud-shell-editor/cmd-palette.png)
+![Cmd-palet](media/using-cloud-shell-editor/cmd-palette.png)
 
-## <a name="contributing-to-the-monaco-editor"></a>Een bijdrage levert aan de Monaco-Editor
+## <a name="contributing-to-the-monaco-editor"></a>Bijdragen aan de Redacteur van Monaco
 
-Ondersteuning voor talen markeren in de Cloud Shell-editor wordt ondersteund door de upstream-functionaliteit in de [Monaco Editor](https://github.com/Microsoft/monaco-editor)Monarch syntaxis van de definities van het gebruik. Lees meer informatie over om bijdragen te leveren, de [gids voor inzenders Monaco](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md).
+Ondersteuning voor taalhoogtepunten in de Cloud Shell-editor wordt ondersteund door upstream-functionaliteit in het gebruik van monarchsyntaxisdefinities door de Editor van [Monaco.](https://github.com/Microsoft/monaco-editor) Om te leren hoe je bijdragen te leveren, lees de [Monaco bijdrage gids](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-[Probeer de Snelstartgids voor Bash in Cloud Shell](quickstart.md)
-[weergeven van de volledige lijst met geïntegreerde hulpprogramma's voor Cloud Shell](features.md)
+[Probeer de quickstart voor Bash in Cloud Shell](quickstart.md)
+[Bekijk de volledige lijst met geïntegreerde Cloud Shell-tools](features.md)

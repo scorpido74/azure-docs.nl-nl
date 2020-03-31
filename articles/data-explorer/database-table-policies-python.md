@@ -1,6 +1,6 @@
 ---
-title: 'Beleid voor Azure Data Explorer-cluster en-data base maken met behulp van de Azure Data Explorer python-bibliotheek '
-description: In dit artikel leert u hoe u beleids regels kunt maken met behulp van python.
+title: 'Beleidsregels maken voor azure data explorer-cluster en -database met de Python-bibliotheek van Azure Data Explorer '
+description: In dit artikel leert u hoe u beleid maakt met Python.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,28 +8,28 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: a0fe86e2dcb802b822cb08ed0922b5da9c5cfd1c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667277"
 ---
-# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Data Base-en tabel beleid maken voor Azure-Data Explorer met behulp van python
+# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Database- en tabelbeleid voor Azure Data Explorer maken met Python
 
 > [!div class="op_single_selector"]
-> * [C#](database-table-policies-csharp.md)
+> * [C #](database-table-policies-csharp.md)
 > * [Python](database-table-policies-python.md)
 >
 
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. In dit artikel maakt u een Data Base-en tabel beleid voor Azure Data Explorer met behulp van python.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. In dit artikel maakt u database- en tabelbeleid voor Azure Data Explorer met Python.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+* Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 * [Een cluster en database voor testdoeleinden](create-cluster-database-python.md)
-* [Een test tabel](python-ingest-data.md#create-a-table-on-your-cluster)
+* [Een testtabel](python-ingest-data.md#create-a-table-on-your-cluster)
 
-## <a name="install-the-data-libraries"></a>De gegevens bibliotheken installeren
+## <a name="install-the-data-libraries"></a>De gegevensbibliotheken installeren
 
 ```
 pip install azure-common
@@ -37,11 +37,11 @@ pip install azure-mgmt-kusto
 pip install azure-kusto-data (Optional, for changing table's policies)
 ```
 
-## <a name="authentication"></a>Verificatie
-Voor het uitvoeren van de voor beelden in dit artikel hebben we een Azure AD-toepassing en service-principal nodig die toegang hebben tot resources. U kunt dezelfde Azure AD-toepassing gebruiken voor verificatie vanuit [een test cluster en data base](create-cluster-database-csharp.md#authentication). Als u een andere Azure AD-toepassing wilt gebruiken, raadpleegt u [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnements bereik. U ziet ook hoe u de `Directory (tenant) ID`, `Application ID`en `Client Secret`kunt ophalen. U moet mogelijk de nieuwe Azure AD-toepassing toevoegen als een principal in de data base. Zie [Azure Data Explorer-database machtigingen beheren](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)voor meer informatie.    
+## <a name="authentication"></a>Authentication
+Voor het uitvoeren van de voorbeelden in dit artikel hebben we een Azure AD-toepassing en serviceprincipal nodig die toegang heeft tot bronnen. U dezelfde Azure AD-toepassing gebruiken voor verificatie vanuit [een testcluster en -database.](create-cluster-database-csharp.md#authentication) Zie [Een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnementsbereik als u een andere Azure AD-toepassing wilt gebruiken. Het laat ook zien `Directory (tenant) ID` `Application ID`hoe `Client Secret`je de , , en . Mogelijk moet u de nieuwe Azure AD-toepassing als hoofd in de database toevoegen, zie [Machtigingen voor Azure Data Explorer-database beheren.](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)    
 
-## <a name="alter-database-retention-policy"></a>Beleid voor het bewaren van data bases wijzigen
-Hiermee stelt u een Bewaar beleid in met een periode van 10 dagen voor zacht verwijderen.
+## <a name="alter-database-retention-policy"></a>Beleid voor het bewaren van gegevens wijzigen
+Hiermee stelt u een bewaarbeleid in met een soft-delete-periode van 10 dagen.
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -73,8 +73,8 @@ poller = kustoManagementClient.databases.update(resource_group_name=resource_gro
                                            parameters=DatabaseUpdate(soft_delete_period=datetime.timedelta(days=10)))
 ```
 
-## <a name="alter-database-cache-policy"></a>Cache beleid Alter data base
-Hiermee stelt u een cache beleid in voor de data base die de laatste vijf dagen aan gegevens op de cluster SSD heeft.
+## <a name="alter-database-cache-policy"></a>Databasecachebeleid wijzigen
+Hiermee stelt u een cachebeleid in voor de database die de laatste vijf dagen van gegevens op de cluster-SSD staan.
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -106,8 +106,8 @@ poller = kustoManagementClient.databases.update(resource_group_name=resource_gro
                                            parameters=DatabaseUpdate(hot_cache_period=datetime.timedelta(days=5)))
 ```
 
-## <a name="alter-table-cache-policy"></a>ALTER TABLE cache Policy
-Hiermee stelt u een cache beleid in voor de tabel die de laatste vijf dagen aan gegevens op de cluster SSD heeft.
+## <a name="alter-table-cache-policy"></a>Beleid voor tabelcache wijzigen
+Hiermee stelt u een cachebeleid in voor de tabel die de afgelopen vijf dagen aan gegevens op de cluster-SSD staan.
 
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
@@ -131,8 +131,8 @@ command = '.alter table {} policy caching '.format(table_name) +  caching_policy
 kusto_client.execute_mgmt(database_name, command)
 ```
 
-## <a name="add-a-new-principal-for-database"></a>Een nieuwe Principal toevoegen voor de data base
-Een nieuwe Azure AD-toepassing toevoegen als admin-principal voor de data base
+## <a name="add-a-new-principal-for-database"></a>Een nieuw hoofdvoor database toevoegen
+Een nieuwe Azure AD-toepassing toevoegen als beheerdersprincipal voor de database
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -168,4 +168,4 @@ kustoManagementClient.databases.add_principals(resource_group_name=resource_grou
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over data base-en tabel beleid](https://docs.microsoft.com/azure/kusto/management/policies)
+* [Lees meer over database- en tabelbeleid](https://docs.microsoft.com/azure/kusto/management/policies)

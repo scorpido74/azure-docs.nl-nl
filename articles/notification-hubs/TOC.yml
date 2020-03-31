@@ -1,4 +1,4 @@
-- name: Documentatie voor Notification Hubs
+- name: Documentatie over Notification Hubs
   href: index.yml
 - name: Overzicht
   items:
@@ -11,7 +11,9 @@
   items:
     - name: Een Notification Hub maken - Azure-portal
       href: create-notification-hub-portal.md
-    - name: Een Notification Hub configureren - Azure-portal
+    - name: Een Notification Hub maken - Azure CLI
+      href: create-notification-hub-azure-cli.md
+    - name: Een Notification Hub configureren
       href: configure-notification-hub-portal-pns-settings.md
 - name: Zelfstudies
   items:
@@ -140,6 +142,8 @@
       href: notification-hubs-push-notification-fixer.md
     - name: Pushmeldingen verzenden met behulp van Baidu Cloud Push
       href: notification-hubs-baidu-china-android-notifications-get-started.md
+    - name: APNS VOIP gebruiken via Notification Hubs
+      href: voip-apns.md
 - name: Naslaginformatie
   items:
     - name: .NET

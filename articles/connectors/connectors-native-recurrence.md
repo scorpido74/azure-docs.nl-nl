@@ -1,102 +1,102 @@
 ---
-title: Terugkerende taken en werk stromen plannen
-description: Terugkerende geautomatiseerde taken en werk stromen plannen en uitvoeren met de trigger voor terugkeer patroon in Azure Logic Apps
+title: Terugkerende taken en werkstromen plannen
+description: Terugkerende geautomatiseerde taken en werkstromen plannen en uitvoeren met de recidieftrigger in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
 ms.openlocfilehash: a9c167c5767a4156147e13a1e4ae21162e506474
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445858"
 ---
-# <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Terugkerende taken en werk stromen maken, plannen en uitvoeren met de trigger voor terugkeer patroon in Azure Logic Apps
+# <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Terugkerende taken en werkstromen maken, plannen en uitvoeren met de recidieftrigger in Azure Logic Apps
 
-Als u taken, processen of taken regel matig op een specifiek schema wilt uitvoeren, kunt u de werk stroom van uw logische app starten met de ingebouwde trigger **schema voor terugkeer patroon** . U kunt een datum en tijd instellen, evenals een tijd zone voor het starten van de werk stroom en een terugkeer patroon voor het herhalen van die werk stroom. Als er om de een of andere reden geen herhalingen worden uitgevoerd, wordt de trigger herhaald bij het volgende geplande interval. Zie voor meer informatie over de ingebouwde plannings triggers en-acties [planning en uitvoeren van terugkerende automatische, taken en werk stromen met Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Als u taken, processen of taken regelmatig wilt uitvoeren volgens een specifieke planning, u uw logische app-werkstroom starten met de ingebouwde **recidief - Trigger plannen.** U een datum en tijd instellen, evenals een tijdzone voor het starten van de werkstroom en een herhaling voor het herhalen van die werkstroom. Als herhalingen om welke reden dan ook worden gemist, blijft deze trigger terugkerend bij het volgende geplande interval. Zie [Terugkerende geautomatiseerde, taken en werkstromen plannen en uitvoeren met Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)voor meer informatie over de ingebouwde triggers en acties voor het plannen.
 
-Hier volgen enkele patronen die deze trigger ondersteunt samen met meer geavanceerde terugkeer patronen en complexe schema's:
+Hier volgen enkele patronen die deze trigger ondersteunt, samen met meer geavanceerde herhalingen en complexe schema's:
 
-* Voer onmiddellijk uit en herhaal elke *n* seconden, minuten, uren, dagen, weken of maanden.
+* Voer onmiddellijk uit en herhaal elk *n* aantal seconden, minuten, uren, dagen, weken of maanden.
 
-* Begin op een specifieke datum en tijd en voer vervolgens elke *n* seconden, minuten, uren, dagen, weken of maanden uit en herhaal deze.
+* Begin op een specifieke datum en tijd en voer elk *n-aantal* seconden, minuten, uren, dagen, weken of maanden uit en herhaal deze.
 
-* Voer een of meer keer per dag uit en herhaal deze, bijvoorbeeld om 8:00 uur en 5:00 uur.
+* Ren en herhaal op een of meer keren per dag, bijvoorbeeld om 8:00 en 17:00 uur.
 
-* Elke week uitvoeren en herhalen, maar alleen voor specifieke dagen, zoals zaterdag en zondag.
+* Ren en herhaal elke week, maar alleen voor specifieke dagen, zoals zaterdag en zondag.
 
-* Voer elke week uit en herhaal deze, maar alleen voor specifieke dagen en tijden, zoals maandag tot en met vrijdag om 8:00 uur en 5:00 uur.
+* Ren en herhaal elke week, maar alleen voor specifieke dagen en tijden, zoals maandag tot en met vrijdag om 8:00 en 17:00 uur.
 
-Zie [terugkerende geautomatiseerde taken, processen en werk stromen plannen en uitvoeren met Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)voor verschillen tussen deze trigger en de activering van het schuif venster of voor meer informatie over het plannen van terugkerende werk stromen.
+Zie [Terugkerende geautomatiseerde taken, processen en werkstromen plannen en uitvoeren met Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)voor verschillen tussen deze trigger en de trigger voor schuifvenster of voor meer informatie over het plannen van terugkerende werkstromen.
 
 > [!TIP]
-> Als u uw logische app wilt activeren en slechts één keer in de toekomst wilt uitvoeren, raadpleegt u [eenmalige taken uitvoeren](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once).
+> Zie [Taken één keer](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once)uitvoeren als u uw logische app wilt activeren en slechts één keer wilt uitvoeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [meld u dan aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Basis kennis over [Logic apps](../logic-apps/logic-apps-overview.md). Als u geen ervaring hebt met Logic apps, kunt u leren [hoe u uw eerste logische app maakt](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Basiskennis over [logische apps.](../logic-apps/logic-apps-overview.md) Als u nieuw bent in logische apps, leest u [hoe u uw eerste logische app maakt.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-## <a name="add-recurrence-trigger"></a>Trigger voor terugkeer patroon toevoegen
+## <a name="add-recurrence-trigger"></a>Recidief-trigger toevoegen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
 
-1. Wanneer Logic app Designer wordt weer gegeven, voert u in het zoekvak `recurrence` in als uw filter. Selecteer in de lijst triggers deze trigger als de eerste stap in de werk stroom van de logische app: **terugkeer patroon**
+1. Nadat Logic App Designer is weergegeven, `recurrence` voert u in het zoekvak in als filter. Selecteer deze trigger in de lijst triggers als de eerste stap in de werkstroom van uw logische app: **Herhaling**
 
-   ![Trigger voor terugkeer patroon selecteren](./media/connectors-native-recurrence/add-recurrence-trigger.png)
+   ![De trigger 'Herhaling' selecteren](./media/connectors-native-recurrence/add-recurrence-trigger.png)
 
-1. Stel het interval en de frequentie voor het terugkeerpatroon in. In dit voor beeld stelt u deze eigenschappen in om elke week uw werk stroom uit te voeren.
+1. Stel het interval en de frequentie voor het terugkeerpatroon in. Stel in dit voorbeeld deze eigenschappen in om uw werkstroom elke week uit te voeren.
 
    ![Interval en frequentie instellen](./media/connectors-native-recurrence/recurrence-trigger-details.png)
 
-   | Eigenschap | JSON-naam | Verplicht | Type | Beschrijving |
+   | Eigenschap | JSON-naam | Vereist | Type | Beschrijving |
    |----------|-----------|----------|------|-------------|
-   | **Interval** | `interval` | Ja | Geheel getal | Een positief geheel getal dat aangeeft hoe vaak de werk stroom wordt uitgevoerd op basis van de frequentie. Dit zijn de minimale en maximale intervallen: <p>-Maand: 1-16 maanden </br>-Dag: 1-500 dagen </br>-Uur: 1-12000 uur </br>-Minuut: 1-72000 minuten </br>-Seconde: 1-9999999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie ' month ' is, is het terugkeer patroon elke 6 maanden. |
-   | **Frequentie** | `frequency` | Ja | Tekenreeks | De tijds eenheid voor het terugkeer patroon: **tweede**, **minuut**, **uur**, **dag**, **week**of **maand** |
+   | **Interval** | `interval` | Ja | Geheel getal | Een positief geheel getal dat beschrijft hoe vaak de werkstroom wordt uitgevoerd op basis van de frequentie. Hier zijn de minimale en maximale intervallen: <p>- Maand: 1-16 maanden </br>- Dag: 1-500 dagen </br>- Uur: 1-12.000 uur </br>- Minuut: 1-72.000 minuten </br>- Tweede: 1-9.999.999 seconden<p>Als het interval bijvoorbeeld 6 is en de frequentie 'Maand' is, is de herhaling om de 6 maanden. |
+   | **Frequentie** | `frequency` | Ja | Tekenreeks | De eenheid van de tijd voor de herhaling: **Tweede**, **Minuut**, **Uur**, **Dag,** **Week,** of **Maand** |
    ||||||
 
    > [!IMPORTANT]
-   > Wanneer herhalingen geen geavanceerde plannings opties opgeven, worden toekomstige terugkeer patronen gebaseerd op de laatste uitvoerings tijd.
-   > De begin tijden voor deze terugkeer patronen kunnen ontstaan door factoren als latentie tijdens opslag aanroepen. Gebruik een van de volgende opties om ervoor te zorgen dat uw logische app geen herhaling mist, met name wanneer de frequentie in dagen of langer is.
+   > Wanneer herhalingen geen geavanceerde planningsopties opgeven, zijn toekomstige herhalingen gebaseerd op de laatste uitvoeringstijd.
+   > De begintijden voor deze herhalingen kunnen afdwalen als gevolg van factoren zoals latentie tijdens opslagoproepen. Gebruik een van de volgende opties om ervoor te zorgen dat uw logica-app geen herhaling mist, vooral wanneer de frequentie binnen dagen of langer is:
    > 
-   > * Geef een begin tijd op voor het terugkeer patroon.
+   > * Geef een begintijd op voor de herhaling.
    > 
-   > * Geef op na hoeveel uur en minuten het terugkeer patroon moet worden uitgevoerd met behulp van de eigenschappen **voor deze uren** en met **deze minuten** .
+   > * Geef de uren en minuten op voor wanneer u de herhaling moet uitvoeren met de eigenschappen **Op deze uren** en Bij deze **minuten.**
    > 
-   > * Gebruik de [verschuivings venster trigger](../connectors/connectors-native-sliding-window.md)in plaats van de terugkeer patroon trigger.
+   > * Gebruik de [trigger schuifvenster](../connectors/connectors-native-sliding-window.md)in plaats van de recidieftrigger.
 
-1. Als u geavanceerde plannings opties wilt instellen, opent u de lijst **nieuwe para meter toevoegen** . De opties die u selecteert, worden weer gegeven op de trigger na selectie.
+1. Als u geavanceerde planningsopties wilt instellen, opent u de lijst **Nieuwe parameter toevoegen.** Alle opties die u selecteert, worden na selectie op de trigger weergegeven.
 
-   ![Geavanceerde plannings opties](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
+   ![Geavanceerde planningsopties](./media/connectors-native-recurrence/recurrence-trigger-more-options-details.png)
 
-   | Eigenschap | JSON-naam | Verplicht | Type | Beschrijving |
+   | Eigenschap | JSON-naam | Vereist | Type | Beschrijving |
    |----------|-----------|----------|------|-------------|
-   | **Tijdzone** | `timeZone` | Nee | Tekenreeks | Is alleen van toepassing wanneer u een start tijd opgeeft, omdat deze trigger geen [UTC-offset](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijd zone die u wilt Toep assen. |
-   | **Begintijd** | `startTime` | Nee | Tekenreeks | Geef een begin datum en-tijd op in de volgende indeling: <p>JJJJ-MM-DDTuu: mm: SS als u een tijd zone selecteert <p>-of- <p>JJJJ-MM-DDTuu: mm: ssZ als u geen tijd zone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 2:00 uur wilt, geeft u "2017-09-18T14:00:00" op en selecteert u een tijd zone zoals Pacific (standaard tijd). U kunt ook "2017-09-18T14:00:00Z" opgeven zonder tijd zone. <p>**Opmerking:** Deze begin tijd heeft een maximum van 49 jaar in de toekomst en moet voldoen aan de [ISO 8601 date time-specificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [UTC datum tijd notatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), maar zonder een [UTC-afwijking](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijd zone selecteert, moet u de letter ' Z ' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de equivalente [zeemijl tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de start tijd het eerste voorval, terwijl voor complexe schema's de trigger niet eerder dan de begin tijd wordt geactiveerd. [*Wat zijn de manieren waarop ik de begin datum en-tijd kan gebruiken?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
-   | **Deze dagen** | `weekDays` | Nee | Teken reeks of teken reeks matrix | Als u week selecteert, kunt u een of meer dagen selecteren wanneer u de werk stroom wilt uitvoeren: **maandag**, **dinsdag**, **woensdag**, **donderdag**, **vrijdag**, **zaterdag**en **zondag** |
-   | **Deze uren** | `hours` | Nee | Geheel getal of gehele matrix | Als u dag of week selecteert, kunt u een of meer gehele getallen van 0 tot en met 23 selecteren als de uren van de dag waarop u de werk stroom wilt uitvoeren. <p><p>Als u bijvoorbeeld "10", "12" en "14" opgeeft, krijgt u 10 uur, 12 uur en 2 uur voor de uren van de dag, maar wordt het aantal minuten van de dag berekend op basis van het moment waarop het terugkeer patroon start. Als u het aantal minuten van de dag wilt instellen, geeft u de waarde op voor de eigenschap **in deze minuten** . |
-   | **Deze minuten** | `minutes` | Nee | Geheel getal of gehele matrix | Als u dag of week selecteert, kunt u een of meer gehele getallen van 0 tot en met 59 selecteren als de minuten van het uur wanneer u de werk stroom wilt uitvoeren. <p>U kunt bijvoorbeeld "30" opgeven als het minuut merk en het vorige voor beeld gebruiken voor uren van de dag, u krijgt 10:30 uur, 12:30 uur en 2:30 uur. |
+   | **Tijdzone** | `timeZone` | Nee | Tekenreeks | Geldt alleen wanneer u een begintijd opgeeft omdat deze trigger geen [UTC-verschuiving](https://en.wikipedia.org/wiki/UTC_offset)accepteert. Selecteer de tijdzone die u wilt toepassen. |
+   | **Begintijd** | `startTime` | Nee | Tekenreeks | Geef een begindatum en -tijd op in deze indeling: <p>YYYY-MM-DDThh:mm:ss als u een tijdzone selecteert <p>-of- <p>YYYY-MM-DDThh:mm:ssZ als u geen tijdzone selecteert <p>Als u bijvoorbeeld 18 september 2017 om 14:00 uur wilt, geeft u '2017-09-18T14:00:00' op en selecteert u een tijdzone zoals Pacific Standard Time. Of geef '2017-09-18T14:00:00Z' op zonder tijdzone. <p>**Let op:** Deze begintijd heeft een maximum van 49 jaar in de toekomst en moet de [ISO 8601-datumtijdspecificatie](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) in [utc-datumtijdnotatie](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)volgen, maar zonder [utc-offset](https://en.wikipedia.org/wiki/UTC_offset). Als u geen tijdzone selecteert, moet u de letter 'Z' aan het einde toevoegen zonder spaties. Deze "Z" verwijst naar de gelijkwaardige [nautische tijd](https://en.wikipedia.org/wiki/Nautical_time). <p>Voor eenvoudige schema's is de begintijd de eerste gebeurtenis, terwijl voor complexe schema's de trigger niet eerder dan de begintijd wordt geactiveerd. [*Op welke manieren kan ik de begindatum en -tijd gebruiken?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Deze dagen** | `weekDays` | Nee | Tekenreeks- of tekenreeksarray | Als u 'Week' selecteert, u een of meer dagen selecteren waarop u de werkstroom wilt uitvoeren: **maandag,** **dinsdag,** **woensdag,** **donderdag,** **vrijdag,** **zaterdag**en **zondag** |
+   | **Deze uren** | `hours` | Nee | Gehele of gehele array | Als u 'Dag' of 'Week' selecteert, u een of meer gehele getallen van 0 tot 23 selecteren als de uren van de dag voor wanneer u de werkstroom wilt uitvoeren. <p><p>Als u bijvoorbeeld '10', '12' en '14' opgeeft, krijgt u 10.00 uur, 12.00 en 14.00 uur voor de uren van de dag, maar worden de minuten van de dag berekend op basis van wanneer de herhaling begint. Als u de minuten van de dag wilt instellen, geeft u de waarde op voor de eigenschap **Bij deze minuten.** |
+   | **Deze minuten** | `minutes` | Nee | Gehele of gehele array | Als u 'Dag' of 'Week' selecteert, u een of meer gehele getallen van 0 tot 59 selecteren als de minuten van het uur waarop u de werkstroom wilt uitvoeren. <p>U bijvoorbeeld '30' opgeven als het minutenteken en met het vorige voorbeeld voor uren van de dag, krijgt u 10:30, 12:30 uur en 14:30 uur. |
    |||||
 
-   Stel bijvoorbeeld dat vandaag maandag 4 september 2017 is. De volgende trigger voor terugkeer patroon wordt niet *eerder* geactiveerd dan de start datum en-tijd, van maandag 18 september 2017 om 8:00 uur PST. De terugkeer planning is echter alleen ingesteld voor 10:30 uur, 12:30 uur en 2:30 uur op elke maandag. De eerste keer dat de trigger wordt geactiveerd en een werk stroom exemplaar van een logische app maakt, is 10:30 uur. Voor meer informatie over hoe start tijden werken, raadpleegt u deze [voor beelden voor de start tijd](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time).
+   Stel dat het vandaag maandag 4 september 2017 is. De volgende Recidief-trigger wordt niet *eerder* geactiveerd dan de begindatum en -tijd, namelijk maandag 18 september 2017 om 8:00 UUR PST. Het herhalingsschema is echter ingesteld op alleen maandag om 10:30, 12:30 uur en 14:30 uur. Dus de eerste keer dat de trigger wordt geactiveerd en een logische app-werkstroominstantie maakt, is om 10:30 uur. Zie deze [voorbeelden van begintijden](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)voor meer informatie over hoe begintijden werken.
 
-   Toekomstige uitvoeringen gebeuren op dezelfde dag om 12:30 uur en 2:30 PM. Elk terugkeer patroon maakt een eigen werk stroom exemplaar. Daarna herhaalt de volledige planning de volgende maandag opnieuw. [*Wat zijn enkele andere voor beelden van gevallen?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#example-recurrences)
+   Toekomstige runs gebeuren om 12:30 uur en 14:30 uur op dezelfde dag. Elke herhaling maakt zijn eigen werkstroominstantie. Daarna herhaalt het hele schema zich volgende week maandag opnieuw. [*Wat zijn enkele andere voorbeelden?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#example-recurrences)
 
-   ![Voor beeld van geavanceerde planning](./media/connectors-native-recurrence/recurrence-trigger-more-options-advanced-schedule.png)
+   ![Voorbeeld van geavanceerde planning](./media/connectors-native-recurrence/recurrence-trigger-more-options-advanced-schedule.png)
 
    > [!NOTE]
-   > De trigger toont een preview voor uw opgegeven terugkeer patroon alleen wanneer u "dag" of "week" als frequentie selecteert.
+   > De trigger toont alleen een voorbeeld voor uw opgegeven herhaling wanneer u 'Dag' of 'Week' als frequentie selecteert.
 
-1. Bouw nu uw resterende werk stroom met andere acties. Zie [Connect oren voor Azure Logic apps](../connectors/apis-list.md)voor meer acties die u kunt toevoegen.
+1. Bouw nu uw resterende werkstroom samen met andere acties. Zie [Connectors voor Azure Logic Apps voor](../connectors/apis-list.md)meer acties die u toevoegen.
 
-## <a name="workflow-definition---recurrence"></a>Werk stroom definitie-terugkeer patroon
+## <a name="workflow-definition---recurrence"></a>Werkstroomdefinitie - Herhaling
 
-In de definitie van de onderliggende werk stroom van uw logische app, die gebruikmaakt van JSON, kunt u de definitie van de [terugkeer patroon](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger) weer geven met de opties die u hebt gekozen. Als u deze definitie wilt bekijken, kiest u in de werk balk ontwerpen de optie **code weergave**. Als u wilt terugkeren naar de ontwerp functie, kiest u op de werk balk ontwerpen en **Designer**.
+In de onderliggende werkstroomdefinitie van uw logica-app, die JSON gebruikt, u de definitie van de [recidieftrigger](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger) bekijken met de opties die u hebt gekozen. Als u deze definitie wilt weergeven, kiest u op de werkbalk Code de optie **Codeweergave**. Als u wilt terugkeren naar de ontwerper, kiest u op de werkbalk **designer, Designer**.
 
-In dit voor beeld ziet u hoe een definitie van een terugkeer patroon kan worden weer gegeven in een onderliggende werk stroom definitie:
+In dit voorbeeld ziet u hoe een definitie van een recidieftrigger eruit kan zien in een onderliggende werkstroomdefinitie:
 
 ``` json
 "triggers": {
@@ -127,5 +127,5 @@ In dit voor beeld ziet u hoe een definitie van een terugkeer patroon kan worden 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Werk stromen onderbreken met vertragings acties](../connectors/connectors-native-delay.md)
+* [Werkstromen onderbreken met vertragingsacties](../connectors/connectors-native-delay.md)
 * [Connectors voor Logic Apps](../connectors/apis-list.md)

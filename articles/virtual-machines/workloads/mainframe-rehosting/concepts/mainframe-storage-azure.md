@@ -1,130 +1,130 @@
 ---
-title: Mainframe-opslag verplaatsen naar Azure Storage
-description: Zeer schaal bare Azure storage-resources kunnen op mainframe gebaseerde organisaties helpen bij het migreren en moderniseren van IBM z14-toepassingen.
+title: Mainframeopslag verplaatsen naar Azure Storage
+description: Enorm schaalbare Azure-opslagbronnen kunnen mainframegebaseerde organisaties helpen bij het migreren en moderniseren van IBM z14-toepassingen.
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76288911"
 ---
-# <a name="move-mainframe-storage-to-azure"></a>Mainframe-opslag verplaatsen naar Azure
+# <a name="move-mainframe-storage-to-azure"></a>Mainframeopslag verplaatsen naar Azure
 
-Als u mainframe-workloads op Microsoft Azure wilt uitvoeren, moet u weten hoe de functies van uw mainframe met Azure worden vergeleken. De zeer schaal bare opslag bronnen kunnen organisaties helpen te moderniseren zonder de toepassingen die ze nodig hebben, te verlaten.
+Als u mainframeworkloads wilt uitvoeren op Microsoft Azure, moet u weten hoe de mogelijkheden van uw mainframe zich verhouden tot Azure. De enorm schaalbare opslagbronnen kunnen organisaties helpen te moderniseren zonder de toepassingen waar ze op vertrouwen te verlaten.
 
-Azure biedt mainframe achtige functies en opslag capaciteit die vergelijkbaar is met IBM z14-systemen (het meest actuele model op dit moment). In dit artikel leest u hoe u vergelijk bare resultaten krijgt op Azure.
+Azure biedt mainframe-achtige functies en opslagcapaciteit die vergelijkbaar is met IBM z14-gebaseerde systemen (het meest recente model vanaf dit schrijven). In dit artikel vindt u hoe u vergelijkbare resultaten op Azure krijgen.
 
-## <a name="mainframe-storage-at-a-glance"></a>Mainframe opslag in één oogopslag
+## <a name="mainframe-storage-at-a-glance"></a>Mainframe-opslag in één oogopslag
 
-De IBM mainframe kenmerkt de opslag op twee manieren. De eerste is een opslag apparaat direct toegang (DASD). De tweede is sequentiële opslag. Voor het beheren van opslag biedt de mainframe het DFSMS (Storage Management Subsystem) van de gegevens faciliteit. Hiermee wordt de gegevens toegang tot de verschillende opslag apparaten beheerd.
+Het IBM mainframe kenmerkt opslag op twee manieren. De eerste is een direct access storage device (DASD). De tweede is sequentiële opslag. Voor het beheer van opslag biedt het mainframe het Subsysteem Gegevensfaciliteit opslagbeheer (DFSMS). Het beheert de toegang tot gegevens tot de verschillende opslagapparaten.
 
-[Dasd](https://en.wikipedia.org/wiki/Direct-access_storage_device) verwijst naar een afzonderlijk apparaat voor secundaire opslag (niet in het geheugen) waarmee een uniek adres kan worden gebruikt voor rechtstreekse toegang tot gegevens. Oorspronkelijk is de term DASD toegepast op draaiende schijven, magnetische vaten of gegevens cellen. De term kan echter ook worden toegepast op apparaten met een Ssd's (Storage Area Network), San's (Network Attached Storage) en optische stations. Voor de doel einden van dit document verwijst DASD naar draaiende schijven, San's en Ssd's.
+[DASD](https://en.wikipedia.org/wiki/Direct-access_storage_device) verwijst naar een apart apparaat voor secundaire (niet in-memory) opslag waarmee een uniek adres kan worden gebruikt voor directe toegang tot gegevens. Oorspronkelijk was de term DASD van toepassing op draaiende schijven, magnetische drums of gegevenscellen. Nu kan de term echter ook van toepassing zijn op solid-state opslagapparaten (SSD's), storage area networks (SAN's), network attached storage (NAS) en optische drives. Voor de toepassing van dit document verwijst DASD naar draaiende schijven, SAN's en SSD's.
 
-In tegens telling tot DASD-opslag verwijst sequentiële opslag op een mainframe naar apparaten zoals tape stations waar gegevens vanaf een begin punt worden benaderd en vervolgens in een regel worden gelezen of geschreven.
+In tegenstelling tot DASD-opslag verwijst sequentiële opslag op een mainframe naar apparaten zoals tapedrives waar gegevens vanaf een beginpunt worden geopend en vervolgens in een regel worden gelezen of geschreven.
 
-Opslag apparaten worden meestal gekoppeld met behulp van een glasvezel verbinding (FICON) of worden rechtstreeks geopend op de i/o-bus van het mainframe met behulp van [HiperSockets](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.znetwork/znetwork_85.htm), een IBM-technologie voor snelle communicatie tussen partities op een server met een Hyper Visor.
+Opslagapparaten zijn meestal verbonden met behulp van een glasvezelverbinding (FICON) of zijn rechtstreeks toegankelijk op de IO-bus van het mainframe met behulp van [HiperSockets](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.znetwork/znetwork_85.htm), een IBM-technologie voor snelle communicatie tussen partities op een server met een hypervisor.
 
-De meeste mainframe systemen scheiden opslag in twee typen:
+De meeste mainframesystemen scheiden opslag in twee typen:
 
-- *Online opslag* (ook wel bekend als Hot Storage) is nodig voor dagelijkse bewerkingen. DASD-opslag wordt doorgaans gebruikt voor dit doel einde. Sequentiële opslag, zoals dagelijkse tape back-ups (logische of fysieke), kan echter ook worden gebruikt voor dit doel einde.
+- *Online opslag* (ook bekend als hot storage) is nodig voor dagelijkse activiteiten. DASD-opslag wordt meestal gebruikt voor dit doel. Sequentiële opslag, zoals dagelijkse tapeback-ups (logisch of fysiek), kan echter ook voor dit doel worden gebruikt.
 
-- *Archief opslag* (ook wel koude opslag genoemd) is niet gegarandeerd om op een bepaald moment te koppelen. In plaats daarvan wordt het gekoppeld en toegankelijk als dat nodig is. Archief opslag wordt vaak geïmplementeerd met behulp van sequentiële tape back-ups (logische of fysieke) voor opslag.
+- *Archiefopslag* (ook wel koude opslag genoemd) is niet gegarandeerd om op een bepaald moment te worden gemonteerd. In plaats daarvan wordt het gemonteerd en toegankelijk als dat nodig is. Archiefopslag wordt vaak geïmplementeerd met behulp van sequentiële tapeback-ups (logisch of fysiek) voor opslag.
 
 ## <a name="mainframe-versus-io-latency-and-iops"></a>Mainframe versus IO-latentie en IOPS
 
-Mainframes worden vaak gebruikt voor toepassingen waarvoor hoge prestaties en een lage IO-latentie vereist zijn. Ze kunnen dit doen met behulp van de FICON-verbindingen met i/o-apparaten en HiperSockets. Wanneer HiperSockets worden gebruikt om toepassingen en apparaten rechtstreeks te verbinden met het i/o-kanaal van een mainframe, kan de micro seconden een latentie hebben.
+Mainframes worden vaak gebruikt voor toepassingen die hoge prestaties IO en lage IO latency vereisen. Ze kunnen dit doen met behulp van de FICON-verbindingen met IO-apparaten en HiperSockets. Wanneer HiperSockets worden gebruikt om toepassingen en apparaten rechtstreeks aan te sluiten op het IO-kanaal van een mainframe, kan latentie in de microseconden worden bereikt.
 
 ## <a name="azure-storage-at-a-glance"></a>Azure-opslag in één oogopslag
 
-Azure Infrastructure-as-a-Service ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) opties voor opslag bieden vergelijk bare mainframe capaciteit.
+Azure infrastructure-as-a-service[(IaaS)](https://azure.microsoft.com/overview/what-is-iaas/)opties voor opslag bieden vergelijkbare mainframecapaciteit.
 
-Micro soft biedt PETA bytes opslag voor toepassingen die worden gehost in azure, en u hebt verschillende opslag opties. Dit bereik van SSD-opslag voor hoge prestaties tot een goedkope Blob-opslag voor massa opslag en archieven. Daarnaast biedt Azure een optie voor gegevens redundantie voor opslag: iets wat meer inspanning in beslag neemt bij het instellen van een mainframe omgeving.
+Microsoft biedt petabytes aan opslagruimte voor toepassingen die in Azure worden gehost en u hebt verschillende opslagopties. Deze variëren van SSD-opslag voor hoge prestaties tot goedkope blobopslag voor massaopslag en archieven. Daarnaast biedt Azure een optie voor redundantie voor gegevens voor opslag, iets dat meer moeite kost om in een mainframeomgeving in te stellen.
 
-Azure Storage is beschikbaar als [Azure-schijven](/azure/virtual-machines/windows/managed-disks-overview), [Azure files](/azure/storage/files/storage-files-introduction)en [Azure-blobs](/azure/storage/blobs/storage-blobs-overview) , zoals in de volgende tabel wordt weer gegeven. Meer informatie over [Wanneer u deze gebruikt](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Azure-opslag is beschikbaar als [Azure Disks,](/azure/virtual-machines/windows/managed-disks-overview) [Azure Files](/azure/storage/files/storage-files-introduction)en [Azure Blobs,](/azure/storage/blobs/storage-blobs-overview) zoals de volgende tabel samenvat. Meer informatie over [wanneer u elk .](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
 
 <!-- markdownlint-disable MD033 -->
 
 <table>
 <thead>
-    <tr><th>Type</th><th>Beschrijving</th><th>Gebruik deze wanneer u het volgende wilt doen:</th></tr>
+    <tr><th>Type</th><th>Beschrijving</th><th>Gebruik wanneer u dat wilt:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
 </td>
 <td>
-Biedt een SMB-interface,-client bibliotheken en een <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">rest</a> -interface waarmee u overal toegang kunt krijgen tot opgeslagen bestanden.
+Biedt een SMB-interface, clientbibliotheken en een <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST-interface</a> waarmee toegang vanaf elke locatie tot opgeslagen bestanden mogelijk is.
 </td>
 <td><ul>
-<li>Til en verplaats een toepassing naar de Cloud wanneer de toepassing gebruikmaakt van de systeem eigen Api's van het systeem voor het delen van gegevens tussen IT en andere toepassingen die worden uitgevoerd in Azure.</li>
-<li>Bewaar hulpprogram ma's voor ontwikkeling en fout opsporing die toegankelijk moeten zijn vanaf veel Vm's.</li>
+<li>Een toepassing naar de cloud opheffen en verplaatsen wanneer de toepassing de API's voor native bestandssystemen gebruikt om gegevens te delen tussen de toepassing die in Azure wordt uitgevoerd.</li>
+<li>Bewaar ontwikkel- en foutopsporingstools die vanuit veel VM's moeten worden geopend.</li>
 </ul>
 </td>
 </tr>
-<tr><td>Azure Blobs
+<tr><td>Azure-blobs
 </td>
-<td>Biedt client bibliotheken en een <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">rest</a> -interface waarmee ongestructureerde gegevens kunnen worden opgeslagen en geopend op een enorme schaal in blok-blobs. Biedt ook ondersteuning voor <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure data Lake Storage Gen2</a> voor oplossingen voor enter prise Big Data Analytics.
+<td>Biedt clientbibliotheken en een <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST-interface</a> waarmee ongestructureerde gegevens op grote schaal kunnen worden opgeslagen en geopend in blokblobs. Ondersteunt ook <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> voor oplossingen voor big data-analyse van bedrijven.
 </td>
 <td><ul>
-<li>Ondersteuning voor streaming en scenario's voor wille keurige toegang in een toepassing.</li>
-<li>Vanaf elke locatie toegang hebben tot toepassings gegevens.</li>
-<li>Bouw een Enter prise data Lake on Azure en voer big data Analytics uit.</li>
+<li>Ondersteuning voor streaming- en random-access scenario's in een toepassing.</li>
+<li>Overal toegang tot toepassingsgegevens hebben.</li>
+<li>Bouw een enterprise data lake op Azure en voer big data analytics uit.</li>
 </ul></td>
 </tr>
 <tr><td>Azure-schijven
 </td>
-<td>Biedt client bibliotheken en een <a href="https://docs.microsoft.com/rest/api/compute/disks">rest</a> -interface waarmee gegevens permanent kunnen worden opgeslagen en geopend vanaf een gekoppelde virtuele harde schijf.
+<td>Biedt clientbibliotheken en een <a href="https://docs.microsoft.com/rest/api/compute/disks">REST-interface</a> waarmee gegevens voortdurend kunnen worden opgeslagen en geopend vanaf een aangesloten virtuele harde schijf.
 </td>
 <td><ul>
-<li>Til en verplaats toepassingen die gebruikmaken van systeem eigen bestandssysteem-Api's om gegevens te lezen en te schrijven naar permanente schijven.</li>
-<li>Sla gegevens op die niet hoeven te worden geopend van buiten de virtuele machine waaraan de schijf is gekoppeld.</li>
+<li>Schakel toepassingen op en verschuif die gebruikmaken van native bestandssysteem API's om gegevens te lezen en te schrijven naar hardnekkige schijven.</li>
+<li>Sla gegevens op die niet van buiten de VM hoeven te worden geopend waaraan de schijf is gekoppeld.</li>
 </ul></td>
 </tr>
 </tbody>
 </table>
 <!-- markdownlint-enable MD033 -->
 
-## <a name="azure-hot-online-and-cold-archive-storage"></a>Azure Hot (online) en koude opslag (archief)
+## <a name="azure-hot-online-and-cold-archive-storage"></a>Azure hot (online) en koude (archief)opslag
 
-Het type opslag voor een bepaald systeem is afhankelijk van de vereisten van het systeem, met inbegrip van de opslag grootte, de door Voer en de IOPS. Voor DASD opslag op een mainframe gebruiken toepassingen in azure doorgaans Azure disks-opslag in plaats daarvan. Voor mainframe archief opslag wordt Blob-opslag gebruikt in Azure.
+Het type opslag voor een bepaald systeem is afhankelijk van de vereisten van het systeem, inclusief opslaggrootte, doorvoer en IOPS. Voor DASD-opslag op een mainframe gebruiken toepassingen op Azure doorgaans Azure Disks-schijfopslag. Voor mainframearchiefopslag wordt blob-opslag gebruikt op Azure.
 
-Ssd's bieden de hoogste opslag prestaties op Azure. De volgende opties zijn beschikbaar (vanaf het schrijven van dit document):
+SSD's bieden de hoogste opslagprestaties op Azure. De volgende opties zijn beschikbaar (vanaf het schrijven van dit document):
 
 | Type         | Grootte           | IOPS                  |
 |--------------|----------------|-----------------------|
-| Ultra SSD    | 4 GB tot 64 TB  | 1\.200 tot 160.000 IOPS |
-| Premium SSD  | 32 GB tot 32 TB | 12 tot 15.000 IOPS     |
+| Ultra - SSD    | 4 GB tot 64 TB  | 1.200 tot 160.000 IOPS |
+| Premium - SSD  | 32 GB tot 32 TB | 12 tot 15.000 IOPS     |
 | Standard - SSD | 32 GB tot 32 TB | 12 tot 2.000 IOPS      |
 
-Blob-opslag biedt de grootste hoeveelheid opslag ruimte op Azure. Naast de opslag grootte biedt Azure zowel beheerde als onbeheerde opslag. Met beheerde opslag neemt Azure zorg voor het beheren van de onderliggende opslag accounts. Met niet-beheerde opslag neemt de gebruiker verantwoordelijk voor het instellen van Azure-opslag accounts van de juiste grootte om te voldoen aan de opslag vereisten.
+Blob-opslag biedt het grootste volume aan opslagruimte op Azure. Naast de opslaggrootte biedt Azure zowel beheerde als onbeheerde opslag. Met beheerde opslag zorgt Azure voor het beheer van de onderliggende opslagaccounts. Met onbeheerde opslag neemt de gebruiker de verantwoordelijkheid voor het instellen van Azure-opslagaccounts van de juiste grootte om aan de opslagvereisten te voldoen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Mainframe migratie](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Mainframe herhosten op Azure Virtual Machines](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
-- [Mainframe Compute verplaatsen naar Azure](mainframe-compute-Azure.md)
-- [Bepalen wanneer u Azure-blobs, Azure Files of Azure-schijven wilt gebruiken](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [Standard-SSD Managed Disks voor Azure VM-workloads](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [Mainframemigratie](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
+- [Mainframe rehosting op Azure Virtual Machines](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Mainframecompute verplaatsen naar Azure](mainframe-compute-Azure.md)
+- [Beslissen wanneer Azure Blobs, Azure Files of Azure Disks moeten worden gebruikt](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
+- [Standaard SSD-beheerde schijven voor Azure VM-workloads](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM-bronnen
 
-- [Parallelle Sysplex op IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS en de koppelings faciliteit: meer dan de basis beginselen](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
-- [De vereiste gebruikers voor een installatie van een Db2 pureScale-functie maken](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
-- [De opdracht Db2icrt-instantie maken](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Geclusterde database oplossing voor Db2 pureScale](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [Parallel Sysplex op IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
+- [IBM CICS en de koppelingsfaciliteit: Beyond the Basics](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [Vereiste gebruikers maken voor een Db2 pureScale Feature-installatie](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+- [Db2icrt - Instantie maken, opdracht](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+- [Db2 pureScale Clustered Database-oplossing](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 - [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 ### <a name="azure-government"></a>Azure Government
 
-- [Microsoft Azure Government Cloud voor mainframe-toepassingen](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
-- [Micro soft en FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
+- [Microsoft Azure Government cloud voor mainframetoepassingen](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+- [Microsoft en FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
 
-### <a name="more-migration-resources"></a>Meer migratie resources
+### <a name="more-migration-resources"></a>Meer migratiebronnen
 
-- [Azure Virtual Data Center lift-en Shift-gids](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+- [Azure Virtual Data Center Lift and Shift Guide](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

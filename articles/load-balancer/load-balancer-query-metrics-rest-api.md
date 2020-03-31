@@ -1,7 +1,7 @@
 ---
-title: Metrische gegevens ophalen met de REST API
+title: Statistieken ophalen met de REST API
 titleSuffix: Azure Load Balancer
-description: In dit artikel kunt u aan de slag met de Azure REST Api's voor het verzamelen van metrische gegevens over de status en het gebruik van Azure Load Balancer.
+description: Ga in dit artikel aan de slag met de Azure REST API's om status- en gebruiksstatistieken voor Azure Load Balancer te verzamelen.
 services: sql-database
 author: asudbring
 manager: KumudD
@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225244"
 ---
-# <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Load Balancer metrische gegevens over het gebruik van de REST API ophalen
+# <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Gebruiksstatistieken van Load Balancer met behulp van de REST API
 
-Het aantal bytes dat is verwerkt door een [Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview) , verzamelen gedurende een tijds interval met behulp van de [Azure rest API](/rest/api/azure/).
+Verzamel het aantal bytes dat door een [standaardloadbalancer](/azure/load-balancer/load-balancer-standard-overview) gedurende een interval van tijd is verwerkt met behulp van de [Azure REST API.](/rest/api/azure/)
 
-Volledige referentie documentatie en aanvullende voor beelden voor de REST API zijn beschikbaar in de [Azure monitor rest-referentie](/rest/api/monitor). 
+Volledige referentiedocumentatie en aanvullende voorbeelden voor de REST-API zijn beschikbaar in de [Azure Monitor REST-referentie.](/rest/api/monitor) 
 
 ## <a name="build-the-request"></a>De aanvraag maken
 
-Gebruik de volgende GET-aanvraag om de [ByteCount-metriek](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics) van een Standard Load Balancer te verzamelen. 
+Gebruik de volgende GET-aanvraag om de [Statistiek ByteCount](/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics) te verzamelen bij een standaardloadbalansr. 
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=ByteCount&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -37,28 +37,28 @@ De volgende headers zijn vereist:
 
 |Aanvraagheader|Beschrijving|  
 |--------------------|-----------------|  
-|*Content-Type:*|Vereist. Ingesteld op `application/json`.|  
+|*Inhoudstype:*|Vereist. Ingesteld op `application/json`.|  
 |*Authorization:*|Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>URI-parameters
 
-| Naam | Beschrijving |
+| Name | Beschrijving |
 | :--- | :---------- |
-| subscriptionId | De abonnements-ID waarmee een Azure-abonnement wordt geïdentificeerd. Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
-| resourceGroupName | De naam van de resource groep die de resource bevat. U kunt deze waarde verkrijgen via de Azure Resource Manager-API, CLI of de portal. |
+| subscriptionId | De abonnements-ID die een Azure-abonnement identificeert. Zie Werken met meerdere abonnementen als u meerdere abonnementen [hebt.](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) |
+| resourceGroupName | De naam van de resourcegroep die de resource bevat. U deze waarde verkrijgen via de Azure Resource Manager API, CLI of de portal. |
 | loadBalancerName | De naam van de Azure Load Balancer. |
-| metrische namen | Een door komma's gescheiden lijst met geldige [Load Balancer metrische gegevens](/azure/load-balancer/load-balancer-standard-diagnostics). |
-| api-version | De API-versie die voor de aanvraag moet worden gebruikt.<br /><br /> In dit document worden de API-versie `2018-01-01`beschreven, die is opgenomen in de bovenstaande URL.  |
-| duur | De time span van de query. Het is een teken reeks met de volgende indeling `startDateTime_ISO/endDateTime_ISO`. Deze optionele para meter is zo ingesteld dat de gegevens van een dag in het voor beeld worden geretourneerd. |
+| metrische namen | Door komma's gescheiden lijst met geldige [load balancer-statistieken](/azure/load-balancer/load-balancer-standard-diagnostics). |
+| api-versie | De API-versie die u voor de aanvraag moet gebruiken.<br /><br /> Dit document heeft `2018-01-01`betrekking op api-versie , opgenomen in de bovenstaande URL.  |
+| Tijdspanne | De tijdspanne van de query. Het is een tekenreeks met `startDateTime_ISO/endDateTime_ISO`de volgende indeling. Deze optionele parameter is ingesteld om een dag aan gegevens in het voorbeeld terug te geven. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Aanvraagbody
 
-Er is geen aanvraag tekst nodig voor deze bewerking.
+Er is geen aanvraaginstantie nodig voor deze operatie.
 
 ## <a name="handle-the-response"></a>Het antwoord verwerken
 
-De status code 200 wordt geretourneerd wanneer de lijst met metrische waarden is geretourneerd. In de [referentie documentatie](/rest/api/monitor/metrics/list#errorresponse)vindt u een volledige lijst met fout codes.
+Statuscode 200 wordt geretourneerd wanneer de lijst met metrische waarden wordt geretourneerd. Een volledige lijst met foutcodes is beschikbaar in de [referentiedocumentatie](/rest/api/monitor/metrics/list#errorresponse).
 
 ## <a name="example-response"></a>Voorbeeld van een antwoord 
 

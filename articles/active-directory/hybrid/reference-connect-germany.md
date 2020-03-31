@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381231"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect in Microsoft Cloud Duitsland - Openbare preview
@@ -38,7 +38,7 @@ Op dit moment moeten veel van de scenario's in [Microsoft Cloud Duitsland](https
 * Wanneer u zich bij uw Azure AD-directory aanmeldt, moet u een account uit het domein onmicrosoft.de gebruiken.
 
  
-## <a name="download"></a>Downloaden
+## <a name="download"></a>Download
 U kunt Azure AD Connect downloaden via de Azure AD Connect-blade in de portal.  Volg de onderstaande instructies om de Azure AD Connect-blade te vinden.
 
 ### <a name="the-azure-ad-connect-blade"></a>De Azure AD Connect-blade
@@ -54,13 +54,13 @@ U ziet deze details:
 
 In de volgende tabel staan welke functies worden weergegeven in de blade.
 
-| Titel | Description |
+| Titel | Beschrijving |
 | --- | --- |
 | SYNCHRONISATIESTATUS |Hier ziet u of synchronisatie is in- of uitgeschakeld. |
 | LAATSTE SYNCHRONISATIE |De laatste keer dat een synchronisatie is voltooid. |
 | FEDERATIEVE DOMEINEN |Hier ziet u hoeveel federatieve domeinen er momenteel zijn geconfigureerd. |
 
-## <a name="installation"></a>Installatie
+## <a name="installation"></a>Installeren
 Als u Azure AD Connect wilt installeren, kunt u [deze](how-to-connect-install-roadmap.md) documentatie gebruiken.
 
 ## <a name="advanced-features-and-additional-information"></a>Geavanceerde functies en aanvullende informatie

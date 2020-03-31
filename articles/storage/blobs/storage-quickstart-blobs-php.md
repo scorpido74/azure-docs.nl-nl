@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726396"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Objecten overdragen naar/van Azure Blob-opslag met PHP
@@ -23,7 +23,7 @@ In deze snelstart leert u hoe u PHP kunt gebruiken om blok-bobs te uploaden, te 
 
 Zorg dat u de volgende aanvullende vereisten hebt geïnstalleerd:
 
-* [PHP](https://php.net/downloads.php)
+* [Php](https://php.net/downloads.php)
 * [Azure Storage SDK voor PHP](https://github.com/Azure/azure-storage-php)
 
 ## <a name="download-the-sample-application"></a>De voorbeeldtoepassing downloaden
@@ -42,14 +42,14 @@ Met deze opdracht wordt de opslagplaats naar uw lokale git-map gekloond. Als u d
 ## <a name="configure-your-storage-connection-string"></a>De opslagverbindingsreeks configureren
 In de toepassing moet u de naam en de sleutel van uw opslagaccount opgeven om een **BlobRestProxy**-exemplaar voor uw toepassing te maken. U wordt aangeraden deze id's binnen een omgevingsvariabele op te slaan op de lokale computer waarop de toepassing wordt uitgevoerd. Gebruik een van de volgende voorbeelden, afhankelijk van uw besturingssysteem, voor het maken van de omgevingsvariabele. Vervang de waarden **youraccountname** en **youraccountkey** door uw accountnaam en -sleutel.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>
@@ -61,7 +61,7 @@ setx ACCOUNT_KEY=<youraccountkey>
 Haal de map uit uw lokale git-map en plaats deze in een map die door uw PHP-server wordt gebruikt. Open vervolgens een opdrachtprompt die is afgestemd op diezelfde map en voer het volgende in: `php composer.phar install`
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
-In dit voorbeeld wordt een testbestand in de map '.' gemaakt. Door het voorbeeldprogramma uit te voeren, wordt een testbestand geüpload naar de Blob-opslag, worden de blobs in the container vermeld en wordt het bestand met een nieuwe naam gedownload. 
+In dit voorbeeld wordt een testbestand in de map '.' gemaakt. Door het voorbeeldprogramma uit te voeren wordt een testbestand geüpload naar de Blob-opslag, worden de blobs in the container vermeld en wordt het bestand met een nieuwe naam gedownload. 
 
 Voet het voorbeeld uit. De volgende uitvoer is een voorbeeld van de uitvoer die wordt geretourneerd wanneer de toepassing wordt uitgevoerd:
   
@@ -91,7 +91,7 @@ Als eerste moeten verwijzingen worden gemaakt naar objecten die worden gebruikt 
 Zodra het **blobClient**-containerobject is gemaakt, kunt u het blob-object **Block** maken dat verwijst naar de specifieke blob waarin u geïnteresseerd bent. Vervolgens kunt u bewerkingen zoals uploaden, downloaden en kopiëren uitvoeren.
 
 > [!IMPORTANT]
-> Containernamen moeten uit kleine letters bestaan. Zie [Naming and Referencing Containers, Blobs, and Metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Containers, blobs en metagegevens een naam geven en hiernaar verwijzen) voor meer informatie over de namen van containers en blobs.
+> Containernamen moeten uit kleine letters bestaan. Zie [Naming and referencing containers, blobs, and metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Containers, blobs en metagegevens een naam geven en hiernaar verwijzen) voor meer informatie over namen voor blobs en containers.
 
 In dit gedeelte gaat u een exemplaar maken van de Azure-opslagclient, een exemplaar maken van het blob-serviceobject, een nieuwe container maken en machtigingen instellen voor de container, zodat de blobs openbaar zijn. De container heeft de naam **quickstartblobs**. 
 
@@ -122,7 +122,7 @@ In dit gedeelte gaat u een exemplaar maken van de Azure-opslagclient, een exempl
 
 Blob-opslag ondersteunt blok-blobs, toevoeg-blobs en pagina-blobs. Omdat blok-blobs het meest worden gebruikt, worden ze in deze Quick Start gebruikt.  
 
-Als u een bestand naar een blob wilt uploaden, hebt u het volledige pad van het bestand nodig dat u vindt door de naam van de map en de bestandsnaam op uw lokale schijf samen te voegen. Vervolgens kunt u het bestand uploaden naar het opgegeven pad met behulp van de methode **createBlockBlob()** . 
+Als u een bestand naar een blob wilt uploaden, hebt u het volledige pad van het bestand nodig dat u vindt door de naam van de map en de bestandsnaam op uw lokale schijf samen te voegen. Vervolgens kunt u het bestand uploaden naar het opgegeven pad met behulp van de methode **createBlockBlob()**. 
 
 De voorbeeldcode maakt gebruik van een lokaal bestand en uploadt dat naar Azure. Het bestand wordt in de code opgeslagen als **myfile** en de naam van de blob als **fileToUpload**. In het volgende voorbeeld wordt het bestand geüpload naar de container met de naam **quickstartblobs**.
 
@@ -141,11 +141,11 @@ De voorbeeldcode maakt gebruik van een lokaal bestand en uploadt dat naar Azure.
     $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 ```
 
-Gebruik de methode **createblocklist()** om een gedeeltelijke update van de inhoud van een blok-blob uit te voeren. Blok-blobs kunnen tot 4,7 TB groot zijn en kunnen van alles zijn: van Excel-spreadsheets tot grote videobestanden. Pagina-blobs worden met name gebruikt voor de VHD-bestanden die worden gebruikt ter ondersteuning van IaaS-VM‘s. Toevoeg-blobs worden gebruikt voor logboekregistratie, bijvoorbeeld wanneer u gegevens wilt wegschrijven naar een bestand en vervolgens gegevens wilt blijven toevoegen. Een toevoeg-blob moet worden gebruikt in een enkelvoudige schrijfmodus. De meeste objecten die worden opgeslagen in Blob-opslag, zijn blok-blobs.
+Gebruik de methode **createblocklist()** om een gedeeltelijke update van de inhoud van een blok-blob uit te voeren. Blok-blobs kunnen tot 4,7 TB groot zijn en kunnen van alles zijn: van Excel-spreadsheets tot grote videobestanden. Pagina-blobs worden met name gebruikt voor de VHD-bestanden die worden gebruikt ter ondersteuning van IaaS-VM‘s. Toevoeg-blobs worden gebruikt voor logboekregistratie, bijvoorbeeld wanneer u wilt schrijven naar een bestand en vervolgens meer gegevens wilt blijven toevoegen. Een toevoeg-blob moet worden gebruikt in een enkelvoudige schrijfmodus. De meeste objecten die worden opgeslagen in Blob-opslag, zijn blok-blobs.
 
 ### <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-U kunt een lijst met bestanden in de container ophalen met behulp van de methode **listBlobs()** . Met de volgende code wordt de lijst met blobs opgehaald en doorlopen, waarbij de namen van de blobs worden weergegeven die in een container zijn aangetroffen.  
+U kunt een lijst met bestanden in de container ophalen met behulp van de methode **listBlobs()**. Met de volgende code wordt de lijst met blobs opgehaald en doorlopen, waarbij de namen van de blobs worden weergegeven die in een container zijn aangetroffen.  
 
 ```PHP
     $listBlobsOptions = new ListBlobsOptions();
@@ -166,7 +166,7 @@ U kunt een lijst met bestanden in de container ophalen met behulp van de methode
 
 ### <a name="get-the-content-of-your-blobs"></a>De inhoud van uw blobs ophalen
 
-Haal de inhoud van uw blobs op met behulp van de **getBlob()** -methode. Met de volgende code wordt de inhoud weergegeven van de blob die in een vorige sectie is geüpload.
+Haal de inhoud van uw blobs op met behulp van de **getBlob()**-methode. Met de volgende code wordt de inhoud weergegeven van de blob die in een vorige sectie is geüpload.
 
 ```PHP
     $blob = $blobClient->getBlob($containerName, $fileToUpload);
@@ -174,7 +174,7 @@ Haal de inhoud van uw blobs op met behulp van de **getBlob()** -methode. Met de 
 ```
 
 ### <a name="clean-up-resources"></a>Resources opschonen
-Als u de blobs die in deze snelstart zijn geüpload niet langer nodig hebt, kunt u de volledige container verwijderen met behulp van de methode **deletecontainer()** . Als de bestanden die zijn gemaakt niet meer nodig zijn, gebruikt u de methode **deleteblob()** om ze te verwijderen.
+Als u de blobs die in deze snelstart zijn geüpload niet langer nodig hebt, kunt u de volledige container verwijderen met behulp van de methode **deletecontainer()**. Als de bestanden die zijn gemaakt niet meer nodig zijn, gebruikt u de methode **deleteblob()** om ze te verwijderen.
 
 ```PHP
     // Delete blob.

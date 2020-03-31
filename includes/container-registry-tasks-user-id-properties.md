@@ -9,13 +9,13 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 1240b4b7e2c84e798c6d7e5257e459628da1420f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68642083"
 ---
-In de uitvoer van de opdracht `identity` ziet u in de sectie de `UserAssigned` identiteit van het type is ingesteld in de taak:
+In de opdrachtuitvoer `identity` geeft de sectie `UserAssigned` de identiteit weer waarin de identiteit van het type in de taak is ingesteld:
 
 ```console
 [...]

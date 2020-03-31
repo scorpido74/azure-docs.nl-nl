@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 015631efc0077bdaab9a335b4a38fbf4f927e22d
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80129811"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80286010"
 highlightedContent:
   items:
   - title: Introductiehandleiding voor Azure-ontwikkelaars
@@ -30,9 +30,9 @@ highlightedContent:
   - title: Uw organisatie voorbereiden met het Cloud Adoption Framework
     itemType: overview
     url: https://docs.microsoft.com/azure/cloud-adoption-framework/
-  - title: Ontwikkel uw vaardigheden met Microsoft Learn
+  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning%20path
+    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
 productDirectory:
   title: Door Azure-producten bladeren
   items:
@@ -389,7 +389,7 @@ productDirectory:
     - integration
     - iot
     url: logic-apps/index.yml
-  - title: API-apps
+  - title: API Apps
     summary: Eenvoudig cloud-API's bouwen en gebruiken
     imageSrc: https://static.docs.com/ui/media/product/azure/api-apps.svg
     azureCategories:
@@ -490,8 +490,8 @@ productDirectory:
     azureCategories:
     - compute
     url: virtual-machines/workloads/sap/hana-overview-architecture.md
-  - title: Infrastructuur van service
-    summary: Microservices ontwikkelen en containers indelen op Windows of Linux
+  - title: Service Fabric
+    summary: Microservices ontwikkelen en containers indelen in Windows of Linux
     imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
     azureCategories:
     - compute
@@ -779,7 +779,7 @@ productDirectory:
     - identity
     - security
     url: https://docs.microsoft.com/azure/information-protection/
-  - title: API-beheer
+  - title: API Management
     summary: API's veilig en op schaal publiceren naar ontwikkelaars, partners en werknemers
     imageSrc: https://static.docs.com/ui/media/product/azure/api-management.svg
     azureCategories:
@@ -846,7 +846,7 @@ productDirectory:
     azureCategories:
     - iot
     url: time-series-insights/index.yml
-  - title: Meldingshubs
+  - title: Notification Hubs
     summary: Pushmeldingen verzenden naar elk platform, vanuit elke back-end
     imageSrc: https://static.docs.com/ui/media/product/azure/notification-hubs.svg
     azureCategories:
@@ -867,7 +867,7 @@ productDirectory:
     - iot
     - security
     url: asc-for-iot/index.yml
-  - title: Automatisering
+  - title: Automation
     summary: Cloudbeheer vereenvoudigen met procesautomatisering
     imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg
     azureCategories:
@@ -911,7 +911,7 @@ productDirectory:
     - management-and-governance
     - migration
     url: migrate/index.yml
-  - title: Beleid van Azure
+  - title: Azure Policy
     summary: Op grote schaal corporate governance en standaarden implementeren voor Azure-resources
     imageSrc: https://static.docs.com/ui/media/product/azure/policy.svg
     azureCategories:
@@ -1058,7 +1058,7 @@ productDirectory:
     - networking
     url: bastion/index.yml
   - title: Azure DDoS Protection
-    summary: Beveilig toepassingen tegen DDoS-aanvallen (gedistribueerde Denial-of-Service)
+    summary: Toepassingen beveiligen tegen DDoS-aanvallen (gedistribueerde Denial-of-Service)
     imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg
     azureCategories:
     - networking
@@ -1106,7 +1106,7 @@ productDirectory:
     azureCategories:
     - networking
     url: load-balancer/index.yml
-  - title: Virtueel netwerk
+  - title: Virtual Network
     summary: Privénetwerken inrichten, optioneel verbinding maken met on-premises datacenters
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg
     azureCategories:
@@ -1203,7 +1203,7 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/queues/index.yml
-  - title: Opslag
+  - title: Storage
     summary: Maak een veilige, zeer schaalbare cloudopslag voor uw gegevens, apps en workloads
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: danlep
 ms.openlocfilehash: 8444a2a99977f0e8f6324423ea676c7763481a53
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67508280"
 ---
-U kunt numerieke waarden, namen of afkortingen van namen gebruiken als u wilt opgeven, maanden of dagen kwijt bent:
+Als u maanden of dagen wilt opgeven, u numerieke waarden, namen of afkortingen van namen gebruiken:
 
-* Voor dagen zijn de numerieke waarden 0 tot en met 6 waarbij 0 wordt gestart met zondag.
+* Dagenlang zijn de numerieke waarden 0 tot 6 waar 0 begint met zondag.
 * Namen zijn in het Engels. Bijvoorbeeld: `Monday`, `January`.
-* Namen zijn niet hoofdlettergevoelig.
-* Namen kunnen worden afgekort. Drie letters is de afkorting van aanbevolen.  Bijvoorbeeld: `Mon`, `Jan`. 
+* Namen zijn ongevoelig.
+* Namen kunnen worden afgekort. Drie letters is de aanbevolen afkortingslengte.  Bijvoorbeeld: `Mon`, `Jan`. 

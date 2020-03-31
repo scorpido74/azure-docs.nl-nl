@@ -5,22 +5,22 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: a53d2b259bc4ece12c4ccb1cf47409cd2f0af86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176720"
 ---
-**Objective-C**:
+**Doelstelling-C**:
 
-1. In **QSAppDelegate.m**, importeren van de iOS-SDK en **QSTodoService.h**:
+1. Importeer in **QSAppDelegate.m**de iOS SDK en **QSTodoService.h:**
 
     ```objc
     #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
     #import "QSTodoService.h"
     ```
 
-2. In `didFinishLaunchingWithOptions` in **QSAppDelegate.m**, de volgende regels aan vóór insert `return YES;`:
+2. In `didFinishLaunchingWithOptions` **QSAppDelegate.m**de volgende regels `return YES;`invoegen vlak voor :
 
     ```objc
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -28,7 +28,7 @@ ms.locfileid: "67176720"
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
 
-3. In **QSAppDelegate.m**, voeg de volgende methoden van de handler toe. Uw app wordt nu bijgewerkt ter ondersteuning van pushmeldingen. 
+3. Voeg in **QSAppDelegate.m**de volgende handlermethoden toe. Uw app is nu bijgewerkt om pushmeldingen te ondersteunen. 
 
     ```objc
     // Registration with APNs is successful
@@ -99,7 +99,7 @@ ms.locfileid: "67176720"
 
 **Swift**:
 
-1. Bestand toevoegen **ClientManager.swift** met de volgende inhoud. Vervang *App-URL %* met de URL van de back-end van mobiele Apps van Azure.
+1. Voeg bestand **ClientManager.swift toe** met de volgende inhoud. Vervang *%AppUrl%* door de URL van de back-end van de Azure Mobile App.
 
     ```swift
     class ClientManager {
@@ -107,13 +107,13 @@ ms.locfileid: "67176720"
     }
     ```
 
-2. In **ToDoTableViewController.swift**, vervangen de `let client` regel die initialiseert een `MSClient` met deze regel:
+2. Vervang in **ToDoTableViewController.swift**de `let client` regel die `MSClient` een met deze regel initialiseert:
 
     ```swift
     let client = ClientManager.sharedClient
     ```
 
-3. In **AppDelegate.swift**, vervangt u de hoofdtekst van `func application` als volgt:
+3. Vervang in **AppDelegate.swift**de `func application` hoofdtekst van als volgt:
 
     ```swift
     func application(application: UIApplication,
@@ -126,7 +126,7 @@ ms.locfileid: "67176720"
     }
     ```
 
-4. In **AppDelegate.swift**, voeg de volgende methoden van de handler toe. Uw app wordt nu bijgewerkt ter ondersteuning van pushmeldingen.
+4. Voeg in **AppDelegate.swift**de volgende handlermethoden toe. Uw app is nu bijgewerkt om pushmeldingen te ondersteunen.
 
     ```swift
     func application(application: UIApplication,

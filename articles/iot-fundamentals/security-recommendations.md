@@ -1,6 +1,6 @@
 ---
-title: Beveiligings aanbevelingen voor Azure IoT | Microsoft Docs
-description: In dit artikel vindt u een overzicht van de extra stappen voor beveiliging in uw Azure IoT Hub-oplossing.
+title: Beveiligingsaanbevelingen voor Azure IoT | Microsoft Documenten
+description: In dit artikel worden aanvullende stappen samengevat om de beveiliging in uw Azure IoT Hub-oplossing te garanderen.
 author: dsk-2015
 manager: philmea
 ms.service: iot-hub
@@ -10,60 +10,60 @@ ms.date: 11/13/2019
 ms.author: dkshir
 ms.custom: security-recommendations
 ms.openlocfilehash: 0ada9a520a5be56444a1c3e746a68dbcf9275686
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048465"
 ---
-# <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Beveiligings aanbevelingen voor de implementatie van Azure Internet of Things (IoT)
+# <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Beveiligingsaanbevelingen voor Azure Internet of Things (IoT)-implementatie
 
-Dit artikel bevat beveiligings aanbevelingen voor IoT. Als u deze aanbevelingen implementeert, kunt u voldoen aan uw beveiligings verplichtingen, zoals beschreven in ons gedeelde verantwoordelijkheids model. Lees de [gedeelde verantwoordelijkheden voor Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)voor meer informatie over wat micro soft doet aan de verantwoordelijkheden van de service provider.
+Dit artikel bevat beveiligingsaanbevelingen voor IoT. Door deze aanbevelingen uit te voeren, u voldoen aan uw beveiligingsverplichtingen zoals beschreven in ons gedeelde verantwoordelijkheidsmodel. Lees [Gedeelde verantwoordelijkheden voor cloud computing voor](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)meer informatie over wat Microsoft doet om de verantwoordelijkheden van serviceproviders te vervullen.
 
-Enkele van de aanbevelingen in dit artikel kunnen automatisch worden bewaakt door Azure Security Center. Azure Security Center is de eerste verdedigings linie bij het beveiligen van uw resources in Azure. De beveiligings status van uw Azure-resources wordt periodiek geanalyseerd om mogelijke beveiligings problemen te identificeren. Vervolgens krijgt u aanbevelingen over hoe u deze kunt aanpakken.
+Sommige aanbevelingen in dit artikel kunnen automatisch worden gecontroleerd door Azure Security Center. Azure Security Center is de eerste verdedigingslinie bij het beveiligen van uw resources in Azure. Het analyseert periodiek de beveiligingsstatus van uw Azure-bronnen om potentiële beveiligingsproblemen te identificeren. Het geeft u vervolgens aanbevelingen over hoe ze aan te pakken.
 
-- Zie [beveiligings aanbevelingen in azure Security Center](../security-center/security-center-recommendations.md)voor meer informatie over Azure Security Center aanbevelingen.
-- Zie [Wat is er Azure Security Center?](../security-center/security-center-intro.md) voor informatie over Azure Security Center.
+- Zie [Beveiligingsaanbevelingen in Azure Security Center](../security-center/security-center-recommendations.md)voor meer informatie over aanbevelingen voor Azure Security Center.
+- Zie Wat is Azure Security Center voor informatie over Azure Security [Center?](../security-center/security-center-intro.md)
 
 ## <a name="general"></a>Algemeen
 
 | Aanbeveling | Opmerkingen | Ondersteund door ASC |
 |-|----|--|
-| Blijf up-to-date | Gebruik de nieuwste versies van ondersteunde platforms, programmeer talen, protocollen en frameworks. | - |
-| Verificatie sleutels veilig blijven | Zorg ervoor dat de apparaat-Id's en de bijbehorende verificatie sleutels fysiek veilig zijn na de implementatie. Zo voor komt u dat een schadelijk apparaat als een geregistreerd apparaat wordt beschouwd. | - |
-| Apparaat-Sdk's zo mogelijk gebruiken | Apparaat-Sdk's implementeren diverse beveiligings functies, zoals versleuteling, verificatie, enzovoort, om u te helpen bij het ontwikkelen van een robuuste en veilige Device-toepassing. Zie [Azure IOT hub Sdk's begrijpen en gebruiken](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) voor meer informatie. | - |
+| Blijf up-to-date | Gebruik de nieuwste versies van ondersteunde platforms, programmeertalen, protocollen en frameworks. | - |
+| Verificatiesleutels veilig houden | Houd de apparaat-id's en hun verificatiesleutels fysiek veilig na de implementatie. Dit voorkomt dat een kwaadaardig apparaat zich voordoet als een geregistreerd apparaat. | - |
+| Gebruik apparaat SDKs waar mogelijk | Device SDKs implementeren verschillende beveiligingsfuncties, zoals versleuteling, authenticatie, enzovoort, om u te helpen bij het ontwikkelen van een robuuste en veilige apparaattoepassing. Zie [Azure IoT Hub SDKs begrijpen en gebruiken](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) voor meer informatie. | - |
 
 ## <a name="identity-and-access-management"></a>Identiteits- en toegangsbeheer 
 
 | Aanbeveling | Opmerkingen | Ondersteund door ASC |
 |-|----|--|
-| Toegangs beheer voor de hub bepalen | [Begrijp en definieer het type toegang](iot-security-deployment.md#securing-the-cloud) dat elk onderdeel in uw IOT hub oplossing heeft, op basis van de functionaliteit. De toegestane machtigingen zijn *REGI ster lezen*, *RegistryReadWrite*, *ServiceConnect*en *DeviceConnect*. Standaard [beleid voor gedeelde toegang in uw IOT-hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions) kan ook helpen bij het definiëren van de machtigingen voor elk onderdeel op basis van de bijbehorende rol. | - |
-| Toegangs beheer voor back-end-services bepalen | Gegevens die door uw IoT Hub-oplossing zijn opgenomen, kunnen worden gebruikt door andere Azure-Services, zoals [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/), [Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/), [app service](https://docs.microsoft.com/azure/app-service/), [Logic apps](https://docs.microsoft.com/azure/logic-apps/)en [Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). Zorg ervoor dat u de juiste toegangs machtigingen begrijpt en toestaat, zoals gedocumenteerd voor deze services. | - |
+| Toegangscontrole voor de hub definiëren | [Het type toegang dat](iot-security-deployment.md#securing-the-cloud) elk onderdeel in uw IoT Hub-oplossing heeft, begrijpen en definiëren, op basis van de functionaliteit. De toegestane machtigingen zijn *Register Read*, *RegistryReadWrite,* *ServiceConnect*en *DeviceConnect*. Standaardbeleid [voor gedeelde toegang in uw IoT-hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security#access-control-and-permissions) kan ook helpen bij het definiëren van de machtigingen voor elk onderdeel op basis van de rol ervan. | - |
+| Toegangscontrole definiëren voor backendservices | Gegevens die door uw IoT Hub-oplossing worden ingenomen, kunnen worden verbruikt door andere Azure-services, zoals [Cosmos DB,](https://docs.microsoft.com/azure/cosmos-db/) [Stream Analytics,](https://docs.microsoft.com/azure/stream-analytics/) [App Service,](https://docs.microsoft.com/azure/app-service/) [Logic Apps](https://docs.microsoft.com/azure/logic-apps/)en [Blob-opslag.](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) Zorg ervoor dat u de juiste toegangsmachtigingen begrijpt en toestaat zoals gedocumenteerd voor deze services. | - |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Aanbeveling | Opmerkingen | Ondersteund door ASC |
 |-|----|--|
-| Authenticatie van het apparaat beveiligen | Zorg voor beveiligde communicatie tussen uw apparaten en uw IoT-hub met behulp van [een unieke identiteits sleutel of een beveiligings token](iot-security-deployment.md#iot-hub-security-tokens)of [een X. 509-certificaat op het apparaat](iot-security-deployment.md#x509-certificate-based-device-authentication) voor elk apparaat. Gebruik de juiste methode voor het [gebruik van beveiligings tokens op basis van het gekozen protocol (MQTT, AMQP of https)](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security). | - |
-| Communicatie met apparaat beveiligen | IoT Hub beveiligt de verbinding met de apparaten die gebruikmaken van Transport Layer Security (TLS) Standard, die ondersteuning bieden voor versies 1,2 en 1,0. Gebruik [TLS 1,2](https://tools.ietf.org/html/rfc5246) om maximale beveiliging te garanderen. | - |
-| Service communicatie beveiligen | IoT Hub biedt eind punten om verbinding te maken met back-end-services, zoals [Azure Storage](/azure/storage/) of [Event hubs](/azure/event-hubs) alleen het TLS-protocol gebruiken, en er wordt geen eind punt weer gegeven op een niet-versleuteld kanaal. Zodra deze gegevens deze back-upservices voor opslag of analyse bereiken, moet u ervoor zorgen dat u de juiste beveiligings-en versleutelings methoden voor die service hanteert en gevoelige informatie op de backend beveiligt. | - |
+| Verificatie van beveiligde apparaten | Zorg voor veilige communicatie tussen uw apparaten en uw IoT-hub, door [een unieke identiteitssleutel of beveiligingstoken te](iot-security-deployment.md#iot-hub-security-tokens)gebruiken, of een [X.509-certificaat op het apparaat](iot-security-deployment.md#x509-certificate-based-device-authentication) voor elk apparaat. Gebruik de juiste methode om beveiligingstokens te [gebruiken op basis van het gekozen protocol (MQTT, AMQP of HTTPS)](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security). | - |
+| Beveiligde apparaatcommunicatie | IoT Hub beveiligt de verbinding met de apparaten met behulp van Transport Layer Security (TLS) standaard, ondersteuning van versies 1.2 en 1.0. Gebruik [TLS 1.2](https://tools.ietf.org/html/rfc5246) om maximale beveiliging te garanderen. | - |
+| Beveiligde servicecommunicatie | IoT Hub biedt eindpunten om verbinding te maken met backendservices zoals [Azure Storage](/azure/storage/) of [Event Hubs](/azure/event-hubs) met alleen het TLS-protocol en er wordt geen eindpunt weergegeven op een niet-versleuteld kanaal. Zodra deze gegevens deze backendservices voor opslag of analyse bereiken, moet u de juiste beveiligings- en versleutelingsmethoden voor die service gebruiken en gevoelige informatie aan de backend beschermen. | - |
 
 ## <a name="networking"></a>Netwerken
 
 | Aanbeveling | Opmerkingen | Ondersteund door ASC |
 |-|----|--|
-| Toegang tot uw apparaten beveiligen | Zorg ervoor dat de poorten op uw apparaten een bare minimum hebben om ongewenste toegang te voor komen. Daarnaast bouwt u mechanismen op om het apparaat te voor komen of fysiek te knoeien. Lees de [Best practices voor IOT-beveiliging](iot-security-best-practices.md) voor meer informatie. | - |
-| Beveiligde hardware bouwen | Beveiligings functies zoals versleutelde opslag of Trusted Platform Module (TPM) opnemen om apparaten en infra structuur beter te beveiligen. Zorg ervoor dat het besturings systeem van het apparaat en de Stuur Programma's zijn bijgewerkt naar de meest recente versies en Installeer anti virus-en antimalware-mogelijkheden. Lees [IOT-beveiligings architectuur](iot-security-architecture.md) om te begrijpen hoe dit kan helpen bij het oplossen van verschillende beveiligings Risico's. | - |
+| Toegang tot uw apparaten beveiligen | Houd hardwarepoorten in uw apparaten tot een absoluut minimum om ongewenste toegang te voorkomen. Bovendien, bouwen mechanismen om te voorkomen of fysieke manipulatie van het apparaat te detecteren. Lees aanbevolen procedures voor [IoT-beveiliging](iot-security-best-practices.md) voor meer informatie. | - |
+| Veilige hardware bouwen | Neem beveiligingsfuncties op, zoals versleutelde opslag of Trusted Platform Module (TPM), om apparaten en infrastructuur veiliger te houden. Houd het besturingssysteem en stuurprogramma's van het apparaat geüpgraded naar de nieuwste versies en installeer antivirus- en antimalwaremogelijkheden als de ruimte het toelaat. Lees [de IoT-beveiligingsarchitectuur](iot-security-architecture.md) om te begrijpen hoe dit verschillende beveiligingsbedreigingen kan beperken. | - |
 
 ## <a name="monitoring"></a>Bewaking
 
 | Aanbeveling | Opmerkingen | Ondersteund door ASC |
 |-|----|--|
-| Onbevoegde toegang tot uw apparaten controleren |  De logboek functie van het besturings systeem van het apparaat gebruiken om inbreuken op de beveiliging of fysieke manipulatie van het apparaat of de poorten te controleren. | - |
-| Uw IoT-oplossing bewaken vanuit de Cloud | Bewaak de algehele status van uw IoT Hub oplossing met behulp [van de metrische gegevens in azure monitor](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics). | - |
-| Diagnostische gegevens instellen | Bekijk nauw keurig uw bewerkingen door gebeurtenissen in uw oplossing te registreren en vervolgens de diagnostische logboeken naar Azure Monitor te verzenden om inzicht te krijgen in de prestaties. Lees [monitor en diagnose problemen in uw IOT-hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health) voor meer informatie. | - |
+| Ongeautoriseerde toegang tot uw apparaten controleren |  Gebruik de logboekfunctie van uw apparaat om inbreuken op de beveiliging of fysieke manipulatie van het apparaat of de poorten ervan te controleren. | - |
+| Uw IoT-oplossing vanuit de cloud bewaken | Controleer de algehele status van uw IoT Hub-oplossing met behulp van de [statistieken in Azure Monitor.](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) | - |
+| Diagnose instellen | Houd uw activiteiten nauwlettend in de gaten door gebeurtenissen in uw oplossing te registreren en vervolgens de diagnostische logboeken naar Azure Monitor te verzenden om inzicht te krijgen in de prestaties. Lees [Problemen met monitoren en diagnosticeren in uw IoT-hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health) voor meer informatie. | - |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor geavanceerde scenario's met Azure IoT moet u mogelijk aanvullende beveiligings vereisten overwegen. Zie [IOT-beveiligings architectuur](iot-security-architecture.md) voor meer informatie.
+Voor geavanceerde scenario's met Azure IoT moet u mogelijk rekening houden met aanvullende beveiligingsvereisten. Zie [IoT-beveiligingsarchitectuur](iot-security-architecture.md) voor meer richtlijnen.
 

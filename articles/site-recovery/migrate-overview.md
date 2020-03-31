@@ -8,16 +8,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257938"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388896"
 ---
 # <a name="about-migration"></a>Info over migratie
 
 Lees dit artikel voor een snel overzicht van hoe de [Azure Site Recovery-service](site-recovery-overview.md) u helpt om machines te migreren. 
+
+> [!TIP]
+> U moet nu de Azure Migrate-service gebruiken om VM's en servers te migreren naar Azure, in plaats van de Azure Site Recovery-service. [Meer informatie](../migrate/migrate-services-overview.md).
+
 
 Dit kun je migreren met Site recovery:
 

@@ -1,20 +1,20 @@
 ---
-title: Een functie maken die wordt uitgevoerd volgens een planning in azure
+title: Een functie maken die volgens een planning in Azure wordt uitgevoerd
 description: Ontdek hoe u in Azure een functie maakt die wordt uitgevoerd op basis van een schema dat u definieert.
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 808f0f81f937da688a8873e5f6ee959976e9d6aa
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769282"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Maak een functie in Azure die wordt geactiveerd door een timer
 
-Meer informatie over het gebruik van Azure Functions om een functie zonder [Server](https://azure.microsoft.com/solutions/serverless/) te maken die wordt uitgevoerd op basis van een schema dat u definieert.
+Meer informatie over het gebruik van Azure-functies om een [serverloze](https://azure.microsoft.com/solutions/serverless/) functie te maken die wordt uitgevoerd op basis van een schema dat u definieert.
 
 ![Functie-app maken in Azure Portal](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
@@ -22,7 +22,7 @@ Meer informatie over het gebruik van Azure Functions om een functie zonder [Serv
 
 Vereisten om deze zelfstudie te voltooien:
 
-+ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
++ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="create-an-azure-function-app"></a>Een Azure-functie-app maken
 
@@ -36,7 +36,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 ## <a name="create-a-timer-triggered-function"></a>Een door een timer geactiveerde functie maken
 
-1. Vouw de functie-app uit en klik op de knop **+** naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Als dat niet het geval is, gaat u naar stap 3.
+1. Vouw de functie-app **+** uit en klik op de knop naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders ga je naar stap 3.
 
    ![De Quick Start-pagina van Functions in Azure Portal](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
@@ -51,9 +51,9 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
     | Instelling | Voorgestelde waarde | Beschrijving |
     |---|---|---|
     | **Naam** | Standaard | Bepaalt de naam van de door de timer geactiveerde functie. |
-    | **Planning** | 0 \*/1 \* \* \* \* | Een [CRON-expressie](functions-bindings-timer.md#ncrontab-expressions) met zes velden aan de hand waarvan uw functie elke minuut wordt uitgevoerd. |
+    | **Planning** | 0 \*/1 \* \* \*\* | Een [CRON-expressie](functions-bindings-timer.md#ncrontab-expressions) met zes velden aan de hand waarvan uw functie elke minuut wordt uitgevoerd. |
 
-4. Klik op **Maken**. Er wordt een functie gemaakt in de taal die elke minuut wordt uitgevoerd, op de minuut.
+4. Klik **op Maken**. Er wordt een functie gemaakt in de door u gekozen taal die elke minuut wordt uitgevoerd, op de minuut.
 
 5. Controleer of dit correct wordt uitgevoerd door de traceringsinformatie die naar logboeken wordt geschreven te bekijken.
 
@@ -69,7 +69,7 @@ U kunt het schema van de functie nu wijzigen zodat deze één keer per uur wordt
 
 ![Het timerschema voor het bijwerken van functies in Azure Portal.](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
-U hebt nu een functie die één keer per uur wordt uitgevoerd, op het uur.
+Je hebt nu een functie die eenmaal per uur, op het uur, wordt uitgevoerd.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

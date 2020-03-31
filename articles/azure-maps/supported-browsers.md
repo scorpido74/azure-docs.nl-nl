@@ -1,6 +1,6 @@
 ---
-title: Door Web SDK ondersteunde browsers | Microsoft Azure kaarten
-description: In dit artikel vindt u informatie over ondersteunde browsers voor Microsoft Azure Maps Web SDK en hoe u kunt controleren of een browser een ondersteunde browser is.
+title: Browsers met webSDK-ondersteuning | Microsoft Azure Maps
+description: In dit artikel vindt u meer informatie over ondersteunde browsers voor Microsoft Azure Maps Web SDK en hoe u controleren of een browser een ondersteunde browser is.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988784"
 ---
 # <a name="web-sdk-supported-browsers"></a>Browsers die Web-SDK ondersteunen
 
-De Azure Maps Web-SDK biedt een hulp functie met de naam [Atlas. isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-). Deze functie detecteert of een webbrowser de minimale set WebGL-functies heeft die vereist is voor het laden en weer geven van het kaart besturings element. Hier volgt een voor beeld van het gebruik van de functie:
+De Azure Maps Web SDK biedt een helperfunctie genaamd [atlas.isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-). Deze functie detecteert of een webbrowser de minimale set WebGL-functies heeft die nodig zijn om het laden en renderen van het kaartbesturingselement te ondersteunen. Hier is een voorbeeld van hoe u de functie gebruikt:
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -31,50 +31,50 @@ if (!atlas.isSupported()) {
 
 ## <a name="desktop"></a>Bureaublad
 
-De Azure Maps Web-SDK ondersteunt de volgende desktop browsers:
+De Azure Maps Web SDK ondersteunt de volgende desktopbrowsers:
 
-- Micro soft Edge (huidige en vorige versie)
+- Microsoft Edge (huidige en vorige versie)
 - Google Chrome (huidige en vorige versie)
 - Mozilla Firefox (huidige en vorige versie)
 - Apple Safari (Mac OS X) (huidige en vorige versie)
 
-Zie ook [verouderde browsers bedoelen](#Target-Legacy-Browsers) verderop in dit artikel.
+Zie ook [Verouderde browsers targeten](#Target-Legacy-Browsers) later in dit artikel.
 
-## <a name="mobile"></a>Mobiel
+## <a name="mobile"></a>Mobiele telefoon
 
-De Azure Maps Web-SDK ondersteunt de volgende mobiele browsers:
+De Azure Maps Web SDK ondersteunt de volgende mobiele browsers:
 
 - Android
-  - Huidige versie van Chrome op Android 6,0 en hoger
-  - Chrome webweergave op Android 6,0 en hoger
+  - Huidige versie van Chrome op Android 6.0 en hoger
+  - Chrome WebView op Android 6.0 en hoger
 - iOS
-  - Mobile Safari met de huidige en vorige primaire versie van iOS
-  - UIWebView en WKWebView voor de huidige en vorige primaire versie van iOS
+  - Mobile Safari op de huidige en vorige grote versie van iOS
+  - UIWebView en WKWebView op de huidige en vorige hoofdversie van iOS
   - Huidige versie van Chrome voor iOS
 
 > [!TIP]
-> Als u een kaart in een mobiele toepassing insluit met een besturings element voor webweergave, kunt u het NPM- [pakket van de Azure Maps Web SDK](https://www.npmjs.com/package/azure-maps-control) gebruiken in plaats van te verwijzen naar de versie van de SDK die wordt gehost op Azure Content Delivery Network. Deze aanpak vermindert de laad tijd omdat de SDK zich al op het apparaat van de gebruiker bevindt en niet tijdens runtime hoeft te worden gedownload.
+> Als u een kaart ineensluit in een mobiele toepassing met behulp van een WebView-besturingselement, gebruikt u mogelijk liever het [npm-pakket van de Azure Maps Web SDK](https://www.npmjs.com/package/azure-maps-control) in plaats van te verwijzen naar de versie van de SDK die wordt gehost op Azure Content Delivery Network. Deze aanpak vermindert de laadtijd omdat de SDK zich al op het apparaat van de gebruiker bevindt en niet hoeft te worden gedownload tijdens het uitvoeren van de tijd.
 
 ## <a name="nodejs"></a>Node.js
 
-De volgende Web SDK-modules worden ook ondersteund in node. js:
+De volgende Web SDK-modules worden ook ondersteund in Node.js:
 
-- Services-module ([documentatie](how-to-use-services-module.md) | [module NPM](https://www.npmjs.com/package/azure-maps-rest))
+- Services module[(documentatie](how-to-use-services-module.md) | [npm module)](https://www.npmjs.com/package/azure-maps-rest)
 
-## <a name="Target-Legacy-Browsers"></a>Doel verouderde browsers
+## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Verouderde browsers targeten
 
-Het is raadzaam om oudere browsers te richten die geen ondersteuning bieden voor WebGL of die alleen beperkte ondersteuning voor het systeem hebben. In dergelijke gevallen kunt u het beste Azure Maps-Services gebruiken in combi natie met een open-source kaart besturings element als een [Folder](https://leafletjs.com/). Hier volgt een voorbeeld:
+Misschien wilt u oudere browsers targeten die WebGL niet ondersteunen of die er slechts beperkte ondersteuning voor hebben. In dergelijke gevallen raden we u aan Azure Maps-services te gebruiken, samen met een open-source kaartbesturingselement zoals [Leaflet.](https://leafletjs.com/) Hier volgt een voorbeeld:
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps en bijsluiter" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de pen <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + bijsluiter</a> per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + bijsluiter" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zie de Pen Azure Maps +<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Folder</a> by Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de Azure Maps Web-SDK:
+Meer informatie over de Azure Maps Web SDK:
 
 > [!div class="nextstepaction"]
 > [Kaartbesturingselement](how-to-use-map-control.md)

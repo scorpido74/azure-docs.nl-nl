@@ -1,13 +1,13 @@
 ---
-title: Azure Service Fabric mesh-toepassings geheimen beheren
+title: Geheimen van Azure Service Fabric Mesh-toepassingsgeheimen beheren
 description: Beheer toepassingsgeheimen zodat u veilig een Service Fabric Mesh-toepassing kunt maken en implementeren.
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.openlocfilehash: d7946092a0bebe374404870fcd711ad33cc98b11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461927"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric Mesh-toepassingsgeheimen beheren
@@ -18,14 +18,14 @@ Een Mesh-toepassingsgeheim bestaat uit:
 * Een of meer **Geheimen/waarden**-resources die zijn opgeslagen in de **Geheimen**-resourcecontainer. Elke **Geheimen/waarden**-resource wordt gekenmerkt door een uniek versienummer. U kunt een versie van een **Geheimen/waarden**-resource niet wijzigen. U kunt alleen een nieuwe versie toevoegen.
 
 Het beheren van Geheimen bestaat uit de volgende stappen:
-1. Declareer een net **geheimen** -resource in een Azure resource model-yaml of JSON-bestand met behulp van inlinedValue-type en SecretsStoreRef content type-definities.
-2. U kunt **netgeheimen/waarden** bronnen declareren in een Azure resource model-yaml of JSON-bestand dat wordt opgeslagen in de **geheimen** -resource (uit stap 1).
+1. Declareer een Mesh **Secrets-bron** in een Azure Resource Model YAML- of JSON-bestand met inlinedValue-vriendelijk en SecretsStoreRef-contentType-definities.
+2. Declareer bronnen **over Meshgeheimen/waarden** in een Azure Resource Model YAML- of JSON-bestand dat wordt opgeslagen in de resource **Secrets** (vanaf stap 1).
 3. Wijzig Mesh-toepassing om te verwijzen naar Mesh Geheimen-waarden.
 4. Implementeer of gebruik een rolling upgrade voor de Mesh-toepassing om Geheimen-waarden te gebruiken.
 5. Gebruik Azure 'az' CLI-opdrachten om de levenscyclus van de Secure Store-service te beheren.
 
 ## <a name="declare-a-mesh-secrets-resource"></a>Een Mesh Geheimen-resource declareren
-Een mesh-geheimen bron wordt gedeclareerd in een Azure resource model JSON-of YAML-bestand met de inlinedValue-definitie. De Mesh Geheimen-resource biedt ondersteuning voor geheimen afkomstig uit de Secure Store-service. 
+Een Mesh Secrets-bron wordt gedeclareerd in een JSON- of YAML-bestand van Azure Resource Model met behulp van inlinedValue-vriendelijk definitie. De Mesh Geheimen-resource biedt ondersteuning voor geheimen afkomstig uit de Secure Store-service. 
 >
 Hier volgt een voorbeeld van hoe Mesh Geheimen-resources in een JSON-bestand worden gedeclareerd:
 
@@ -202,7 +202,7 @@ Geef **template-file** of **template-uri** door (maar niet beide).
 
 Bijvoorbeeld:
 - az mesh deployment create --c:\MyMeshTemplates\SecretTemplate1.txt
-- AZ net Deployment Create--https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- az mesh deployment create\/--https: /www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>Een geheim weergeven
 Retourneert de beschrijving van het geheim (maar niet de waarde).
