@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75708352"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Opslaan in cache toevoegen om de prestaties in Azure API Management te verbeteren
@@ -46,17 +46,17 @@ Vereisten om deze zelfstudie te voltooien:
 + [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 + [Import and publish an API](import-and-publish.md) (API's importeren en publiceren)
 
-## <a name="caching-policies"> </a>De cache beleidsregels toevoegen
+## <a name="add-the-caching-policies"></a><a name="caching-policies"> </a>De cachebeleidsregels toevoegen
 
 Met de cachebeleidsregels in dit voorbeeld wordt met de eerste aanvraag voor de bewerking **GetSpeakers** een antwoord geretourneerd van de back-endservice. Dit antwoord wordt in de cache opgeslagen en voorzien van een sleutel door de opgegeven headers en querytekenreeksparameters. Voor volgende aanroepen voor de bewerking, met overeenkomende parameters, wordt het antwoord geretourneerd dat in de cache is opgeslagen, tot het cacheduurinterval is verlopen.
 
-1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+1. Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 2. Blader naar de APIM-instantie.
 3. Selecteer het tabblad **API**.
 4. Klik in de API-lijst op **Demo Conference API**.
 5. Selecteer **GetSpeakers**.
 6. Selecteer boven in het scherm het tabblad **Ontwerp**.
-7. Klik in de sectie **Binnenkomende verwerking** op het pictogram **</>** .
+7. Klik in de sectie **Binnenkomende verwerking** op het pictogram **</>**.
 
     ![code-editor](media/api-management-howto-cache/code-editor.png)
 
@@ -77,17 +77,17 @@ Met de cachebeleidsregels in dit voorbeeld wordt met de eerste aanvraag voor de 
 > [!TIP]
 > Als u een externe cache gebruikt, zoals is beschreven in [Een externe Azure Cache voor Redis gebruiken in Azure API Management](api-management-howto-cache-external.md), wilt u misschien het kenmerk `caching-type` van het cachebeleid opgeven. Zie [API Management caching policies](api-management-caching-policies.md) (Cache-beleidsregels van API Management) voor meer informatie.
 
-## <a name="test-operation"> </a>Een bewerking aanroepen en de cache testen
+## <a name="call-an-operation-and-test-the-caching"></a><a name="test-operation"> </a>Een bewerking aanroepen en het opslaan in de cache testen
 Als u opslaan in de cache in actie wilt zien, roept u de bewerking aan vanuit de ontwikkelaarsportal.
 
 1. Blader in Azure Portal naar de APIM-instantie.
-2. Selecteer het tabblad **API's**.
+2. Selecteer het tabblad **API's.**
 3. Selecteer de API waaraan u cachebeleidsregels wilt toevoegen.
 4. Selecteer de bewerking **GetSpeakers**.
 5. Klik rechtsboven in het menu op het tabblad **Test**.
 6. Druk op **Verzenden**.
 
-## <a name="next-steps"> </a>Volgende stappen
+## <a name="next-steps"></a><a name="next-steps"> </a>Volgende stappen
 * Zie [Cachebeleidsregels][Caching policies] in [Naslaginformatie over beleid voor API Management][API Management policy reference] voor meer informatie over cachebeleidsregels.
 * Zie [Aangepast opslaan in cache in Azure API Management](api-management-sample-cache-by-key.md) voor informatie over het opslaan van items in de cache per sleutel met behulp van beleidsexpressies.
 * Voor meer informatie over het gebruik van de externe Azure Cache voor Redis raadpleegt u [Een externe Azure Cache voor Redis gebruiken in Azure API Management](api-management-howto-cache-external.md).

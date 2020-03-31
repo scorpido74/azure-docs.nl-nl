@@ -1,6 +1,6 @@
 ---
-title: Apache Sqoop-taken uitvoeren met behulp van .NET en HDInsight-Azure
-description: Meer informatie over het gebruik van de HDInsight .NET SDK voor het uitvoeren van Apache Sqoop import en export tussen een Apache Hadoop cluster en een Azure SQL Database.
+title: Apache Sqoop-taken uitvoeren met .NET en HDInsight - Azure
+description: Meer informatie over het gebruik van de HDInsight .NET SDK om Apache Sqoop import en export uit te voeren tussen een Apache Hadoop-cluster en een Azure SQL Database.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,45 +9,45 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/14/2020
 ms.openlocfilehash: f0f767273a40bc91b1d49477c896b0b157623106
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76157062"
 ---
-# <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-taken uitvoeren met behulp van .NET SDK voor Apache Hadoop in HDInsight
+# <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-taken uitvoeren met .NET SDK voor Apache Hadoop in HDInsight
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Informatie over het gebruik van de Azure HDInsight .NET SDK voor het uitvoeren van Apache Sqoop-taken in HDInsight voor het importeren en exporteren tussen een HDInsight-cluster en een Azure SQL Database-of SQL Server-Data Base.
+Meer informatie over het gebruik van de Azure HDInsight .NET SDK om Apache Sqoop-taken in HDInsight uit te voeren voor import en export tussen een HDInsight-cluster en een Azure SQL Database- of SQL Server-database.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volt ooien van de [instelling test omgeving](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [voor het gebruik van Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
+* Voltooiing van [de testomgeving instellen](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) van [Apache Sqoop gebruiken met Hadoop in HDInsight.](./hdinsight-use-sqoop.md)
 
 * [Visual Studio](https://visualstudio.microsoft.com/vs/community/).
 
-* Vertrouwd met Sqoop. Zie [Sqoop User Guide (Engelstalig](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)) voor meer informatie.
+* Vertrouwdheid met Sqoop. Zie [Sqoop-gebruikershandleiding](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)voor meer informatie.
 
-## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Sqoop in HDInsight-clusters gebruiken met de .NET SDK
+## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>Sqoop gebruiken op HDInsight-clusters met de .NET SDK
 
-De HDInsight .NET SDK biedt .NET-client Bibliotheken, zodat u gemakkelijker met HDInsight-clusters van .NET kunt werken. In deze sectie maakt u een C# console toepassing om de `hivesampletable` te exporteren naar de tabel Azure SQL database die u hebt gemaakt op basis van de vereisten.
+De HDInsight .NET SDK biedt .NET-clientbibliotheken, zodat het eenvoudiger is om met HDInsight-clusters van .NET te werken. In deze sectie maakt u een C#-consoletoepassing om de `hivesampletable` tabel naar de Azure SQL Database-tabel te exporteren die u hebt gemaakt op basis van de vereisten.
 
 ## <a name="set-up"></a>Instellen
 
-1. Start Visual Studio en maak een C# console toepassing.
+1. Start Visual Studio en maak een C#-consoletoepassing.
 
-1. Navigeer naar **Tools** > **NuGet package manager** > **Package Manager console** en voer de volgende opdracht uit:
+1. Navigeer naar **NuGet** > **Package Manager** > Package**Manager Console** en voer de volgende opdracht uit:
 
     ```
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-## <a name="sqoop-export"></a>Sqoop exporteren
+## <a name="sqoop-export"></a>Sqoop export
 
-Van Hive naar SQL Server.  In dit voor beeld worden gegevens uit de Hive `hivesampletable`-tabel naar de `mobiledata`-tabel in SQL Database geëxporteerd.
+Van Hive naar SQL Server.  In dit voorbeeld worden `hivesampletable` gegevens `mobiledata` uit de tabel Hive geëxporteerd naar de tabel in SQL Database.
 
-1. Gebruik de volgende code in het Program.cs-bestand. Bewerk de code om de waarden in te stellen voor `ExistingClusterName`en `ExistingClusterPassword`.
+1. Gebruik de volgende code in het Program.cs bestand. Bewerk de code om `ExistingClusterName`de `ExistingClusterPassword`waarden in te stellen voor , en .
 
     ```csharp
     using Microsoft.Azure.Management.HDInsight.Job;
@@ -111,13 +111,13 @@ Van Hive naar SQL Server.  In dit voor beeld worden gegevens uit de Hive `hivesa
     }
     ```
 
-1. Selecteer de toets **F5** om het programma uit te voeren.
+1. Als u het programma wilt uitvoeren, selecteert u de **F5-toets.**
 
 ## <a name="sqoop-import"></a>Sqoop importeren
 
-Van SQL Server naar Azure Storage. Dit voor beeld is afhankelijk van de hierboven uitgevoerde export.  In dit voor beeld worden gegevens uit de tabel `mobiledata` in SQL Database naar de `wasb:///tutorials/usesqoop/importeddata` map in het standaard opslag account van het cluster geïmporteerd.
+Van SQL Server naar Azure Storage. Dit voorbeeld is afhankelijk van de bovenstaande export.  In dit voorbeeld `mobiledata` worden gegevens uit `wasb:///tutorials/usesqoop/importeddata` de tabel in SQL Database geïmporteerd naar de map op het standaardopslagaccount van het cluster.
 
-1. Vervang de bovenstaande code in het `//sqoop start //sqoop end` blok door de volgende code:
+1. Vervang de bovenstaande `//sqoop start //sqoop end` code in het blok door de volgende code:
 
     ```csharp
     var tableName = "mobiledata";
@@ -129,19 +129,19 @@ Van SQL Server naar Azure Storage. Dit voor beeld is afhankelijk van de hierbove
     };
     ```
 
-1. Selecteer de toets **F5** om het programma uit te voeren.
+1. Als u het programma wilt uitvoeren, selecteert u de **F5-toets.**
 
 ## <a name="limitations"></a>Beperkingen
 
-HDInsight op basis van Linux biedt de volgende beperkingen:
+Linux-gebaseerde HDInsight presenteert de volgende beperkingen:
 
-* Bulk export: de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar Microsoft SQL Server of Azure SQL Database biedt momenteel geen ondersteuning voor bulksgewijs invoegen.
+* Bulkexport: de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar Microsoft SQL Server of Azure SQL Database, biedt momenteel geen ondersteuning voor bulkinserts.
 
-* Batching: door gebruik te maken van de `-batch` switch, voert Sqoop meerdere toevoegingen uit in plaats van de invoeg bewerkingen batch.
+* Batching: Door `-batch` de schakelaar te gebruiken, voert Sqoop meerdere inserts uit in plaats van de invoegbewerkingen te batcheren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu geleerd hoe u Sqoop kunt gebruiken. Voor meer informatie zie:
+Nu heb je geleerd hoe je Sqoop moet gebruiken. Voor meer informatie zie:
 
-* [Apache Oozie gebruiken met HDInsight](../hdinsight-use-oozie-linux-mac.md): gebruik de actie Sqoop in een Oozie-werk stroom.
-* [Gegevens uploaden naar hdinsight](../hdinsight-upload-data.md): andere methoden voor het uploaden van gegevens naar Hdinsight of Azure Blob Storage zoeken.
+* [Apache Oozie gebruiken met HDInsight](../hdinsight-use-oozie-linux-mac.md): Gebruik Sqoop-actie in een Oozie-workflow.
+* [Gegevens uploaden naar HDInsight:](../hdinsight-upload-data.md)zoek andere methoden voor het uploaden van gegevens naar HDInsight- of Azure Blob-opslag.

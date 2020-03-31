@@ -1,121 +1,147 @@
 ---
-title: Rapport over analyse gegevens van zoek verkeer
+title: Telemetrie voor analyse van zoekverkeer
 titleSuffix: Azure Cognitive Search
-description: Schakel zoek verkeer Analytics in voor Azure Cognitive Search, verzamel telemetrie en door de gebruiker geïnitieerde gebeurtenissen met behulp van Application Insights en analyseer vervolgens de resultaten in een Power BI rapport.
+description: Schakel analyse van zoekverkeer in voor Azure Cognitive Search, verzamel telemetrie en door gebruikers geïnitieerde gebeurtenissen met Behulp van Application Insights en analyseer bevindingen in een Power BI-rapport.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 84e60b0a942bad94d8e36eb20b5be8e3f55af80a
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 03/18/2020
+ms.openlocfilehash: db8c1781061f038cc90310fcd00c220fa6f5d1a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258206"
 ---
-# <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Zoek Traffic Analytics in azure Cognitive Search implementeren
+# <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Telemetriegegevens verzamelen voor analyse van zoekverkeer
 
-Zoek verkeer analyse is een patroon voor het implementeren van een feedback-lus voor uw zoek service. Doel is het verzamelen van telemetrie voor door de gebruiker geïnitieerde Klik gebeurtenissen en toetsenbord invoer. Met behulp van deze informatie kunt u de effectiviteit van uw zoek oplossing bepalen, waaronder populaire zoek termen, wissel frequentie en de resultaten van de query invoer nul als resultaat.
+Analyse van zoekverkeer is een patroon voor het verzamelen van telemetrie over gebruikersinteracties met uw Azure Cognitive Search-toepassing, zoals door gebruikers geïnitieerde klikgebeurtenissen en toetsenbordingangen. Met behulp van deze informatie u de effectiviteit van uw zoekoplossing bepalen, inclusief populaire zoektermen, klikfrequentie en welke queryinvoernulresultaten nul resultaten opleveren.
 
-Dit patroon neemt afhankelijk van [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) (een functie van [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/)) voor het verzamelen van gebruikers gegevens. U moet ook instrumentatie toevoegen aan de client code, zoals wordt beschreven in dit artikel. Ten slotte hebt u een rapportage mechanisme nodig om de gegevens te analyseren. We raden Power BI aan, maar u kunt elk hulp programma gebruiken dat verbinding maakt met Application Insights.
+Dit patroon is afhankelijk van [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) (een functie van [Azure Monitor)](https://docs.microsoft.com/azure/azure-monitor/)om gebruikersgegevens te verzamelen. Het vereist dat u instrumentatie toevoegt aan uw clientcode, zoals beschreven in dit artikel. Ten slotte hebt u een rapportagemechanisme nodig om de gegevens te analyseren. We raden Power BI aan, maar u het application dashboard of een tool gebruiken die verbinding maakt met Application Insights.
 
 > [!NOTE]
-> Het patroon dat in dit artikel wordt beschreven, is bedoeld voor geavanceerde scenario's en clickstream gegevens die door uw client worden gegenereerd. U kunt ook rapporteren over de logboek gegevens die zijn gegenereerd door uw zoek service. Zie [Resource verbruik en query activiteit bewaken](search-monitor-usage.md)voor meer informatie over service logboek rapporten.
+> Het patroon dat in dit artikel wordt beschreven, is voor geavanceerde scenario's en clickstream-gegevens die worden gegenereerd door code die u aan uw client toevoegt. Servicelogs zijn daarentegen eenvoudig in te stellen, bieden een reeks statistieken en kunnen worden uitgevoerd in de portal zonder dat er code nodig is. Het inschakelen van diagnostische logboekregistratie wordt aanbevolen voor alle scenario's. Zie [Loggegevens verzamelen en analyseren](search-monitor-logs.md)voor meer informatie .
 
-## <a name="identify-relevant-search-data"></a>Relevante Zoek gegevens identificeren
+## <a name="identify-relevant-search-data"></a>Relevante zoekgegevens identificeren
 
-Als u wilt beschikken over nuttige Zoek gegevens, is het nood zakelijk om sommige signalen van de gebruikers van de zoek toepassing te registreren. Deze signalen duiden inhoud aan waar gebruikers geïnteresseerd zijn en die relevant zijn voor hun behoeften.
+Om nuttige statistieken voor analyse van het zoekverkeer te hebben, is het noodzakelijk om bepaalde signalen van de gebruikers van uw zoektoepassing te registreren. Deze signalen betekenen inhoud waarin gebruikers geïnteresseerd zijn en die zij relevant achten. Voor analyse van zoekverkeer:
 
-Er zijn twee signalen zoeken Traffic Analytics nodig:
++ Door gebruikers gegenereerde zoekgebeurtenissen: alleen zoekopdrachten die door een gebruiker zijn gestart, zijn interessant. Zoekverzoeken die worden gebruikt om facetten, aanvullende inhoud of interne informatie in te vullen, zijn niet belangrijk en ze scheeftrekken en bias uw resultaten.
 
-+ Door de gebruiker gegenereerde Zoek gebeurtenissen: alleen Zoek opdrachten die door een gebruiker zijn gestart, zijn interessant. Zoek aanvragen die worden gebruikt voor het vullen van facetten, extra inhoud of interne informatie, zijn niet belang rijk en ze hellen en verlichten uw resultaten.
++ Door gebruikers gegenereerde klikgebeurtenissen: Op een pagina met zoekresultaten betekent een klikgebeurtenis over het algemeen dat een document een relevant resultaat is voor een specifieke zoekopdracht.
 
-+ Door de gebruiker gegenereerde Klik gebeurtenissen: door op in dit document te klikken, verwijzen we naar een gebruiker die een bepaald Zoek resultaat van een zoek query heeft geselecteerd. Een klik in het algemeen betekent dat een document een relevant resultaat is voor een specifieke zoek query.
+Door zoek- en klikgebeurtenissen te koppelen aan een correlatie-ID, krijgt u een beter inzicht in hoe goed de zoekfunctionaliteit van uw toepassing presteert.
 
-Als u een koppeling zoekt en op gebeurtenissen met een correlatie-ID klikt, kunt u het gedrag van gebruikers in uw toepassing analyseren. Deze zoek inzichten zijn niet mogelijk met alleen logboeken voor zoek verkeer.
+## <a name="add-search-traffic-analytics"></a>Analyse van zoekverkeer toevoegen
 
-## <a name="add-search-traffic-analytics"></a>Analyse van zoek verkeer toevoegen
+Op de [portalpagina](https://portal.azure.com) voor uw Azure Cognitive Search-service bevat de pagina Search Traffic Analytics een spiekbriefje voor het volgen van dit telemetriepatroon. Op deze pagina u een Application Insights-bron selecteren of maken, de instrumentatiesleutel ophalen, fragmenten kopiëren die u voor uw oplossing aanpassen en een Power BI-rapport downloaden dat is opgebouwd over het schema dat in het patroon wordt weergegeven.
 
-De signalen die in de voor gaande sectie worden vermeld, moeten worden verzameld uit de zoek toepassing, omdat de gebruiker ermee werkt. Application Insights is een uitbreid bare bewakings oplossing, beschikbaar voor meerdere platforms, met flexibele instrumentatie opties. Met het gebruik van Application Insights kunt u profiteren van de Power BI Zoek rapporten die zijn gemaakt door Azure Cognitive Search om de analyse van gegevens gemakkelijker te maken.
+![Pagina Traffic Analytics zoeken in de portal](media/search-traffic-analytics/azuresearch-trafficanalytics.png "Pagina Traffic Analytics zoeken in de portal")
 
-Op de pagina [Portal](https://portal.azure.com) voor uw Azure Cognitive Search-service bevat de pagina Zoek Traffic Analytics een cheat blad voor het volgen van dit telemetrie-patroon. U kunt ook een Application Insights resource selecteren of maken en de benodigde gegevens op één plek weer geven.
+## <a name="1---set-up-application-insights"></a>1 - Applicatieinzichten instellen
 
-![Traffic Analytics instructies zoeken][1]
+Selecteer een bestaande Application Insights-bron of [maak er een](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) als u er nog geen hebt. Als u de pagina Search Traffic Analytics gebruikt, u de instrumentatiesleutel kopiëren die uw toepassing nodig heeft om verbinding te maken met Application Insights.
 
-## <a name="1---select-a-resource"></a>1: een resource selecteren
+Zodra u een Application Insights-bron hebt, u [instructies volgen voor ondersteunde talen en platforms](https://docs.microsoft.com/azure/azure-monitor/app/platforms) om uw app te registreren. Registratie is gewoon het toevoegen van de instrumentatiesleutel van Application Insights aan uw code, die het opzetten van de koppeling. U de sleutel vinden in de portal of op de pagina Search Traffic Analytics wanneer u een bestaande bron selecteert.
 
-U moet een Application Insights resource selecteren die u wilt gebruiken of u kunt er een maken als u er nog geen hebt. U kunt een resource gebruiken die al in gebruik is om de vereiste aangepaste gebeurtenissen te registreren.
+Een snelkoppeling die werkt voor sommige Visual Studio-projecttypen wordt weergegeven in de volgende stappen. Het maakt een bron en registreert uw app in slechts een paar klikken.
 
-Wanneer u een nieuwe Application Insights resource maakt, zijn alle toepassings typen geldig voor dit scenario. Selecteer de versie die het beste past bij het platform dat u gebruikt.
+1. Open uw oplossing voor Visual Studio en ASP.NET ontwikkeling en selecteer **Project** > **Add Application Insights Telemetry.**
 
-U hebt de instrumentatie sleutel nodig voor het maken van de telemetrie-client voor uw toepassing. U kunt deze downloaden via het dash board van de Application Insights portal of u kunt het downloaden van de pagina Zoek Traffic Analytics en het exemplaar selecteren dat u wilt gebruiken.
+1. Klik op **Aan de slag**.
 
-## <a name="2---add-instrumentation"></a>2: instrumentatie toevoegen
+1. Registreer uw app door een Microsoft-account, Azure-abonnement en een Application Insights-bron op te geven (een nieuwe bron is de standaardbron). Klik **op Registreren**.
 
-In deze stap gaat u uw eigen zoek toepassing gebruiken met behulp van de Application Insights resource die u in de bovenstaande stap hebt gemaakt. Er zijn vier stappen voor dit proces:
+Op dit moment is uw toepassing ingesteld voor toepassingsbewaking, wat betekent dat alle paginabelastingen worden bijgehouden met standaardstatistieken. Zie [Telemetrie aan de serverzijde van Application Insights inschakelen](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio)voor meer informatie over de vorige stappen.
 
-**Stap 1: een telemetrie-client maken**
+## <a name="2---add-instrumentation"></a>2 - Instrumentatie toevoegen
 
-Dit is het object dat gebeurtenissen naar de Application Insights resource verzendt.
+Met deze stap u uw eigen zoektoepassing gebruiken met behulp van de Application Insights-bron die u in de bovenstaande stap hebt gemaakt. Er zijn vier stappen voor dit proces, te beginnen met het maken van een telemetrieclient.
 
-*C#*
+### <a name="step-1-create-a-telemetry-client"></a>Stap 1: Een telemetrieclient maken
 
-    private TelemetryClient telemetryClient = new TelemetryClient();
-    telemetryClient.InstrumentationKey = "<YOUR INSTRUMENTATION KEY>";
+Maak een object dat gebeurtenissen naar Application Insights verzendt. U instrumentatie toevoegen aan uw server-side application code of client-side code die wordt uitgevoerd in een browser, hier uitgedrukt als C# en JavaScript varianten (voor andere talen, zie de volledige lijst van [ondersteunde platforms en frameworks](https://docs.microsoft.com/azure/application-insights/app-insights-platforms). Kies de aanpak die u de gewenste diepte van informatie geeft.
 
-*JavaScript*
+Telemetrie aan de serverzijde legt metrische gegevens vast op de toepassingslaag, bijvoorbeeld in toepassingen die als webservice in de cloud worden uitgevoerd, of als on-premises app op een bedrijfsnetwerk. Telemetrie aan de serverzijde legt zoek- en klikgebeurtenissen, de positie van een document in de resultaten en querygegevens vast, maar uw gegevensverzameling wordt beperkt tot alle informatie die op die laag beschikbaar is.
 
-    <script type="text/javascript">var appInsights=window.appInsights||function(config){function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t}
-    ({
-    instrumentationKey: "<YOUR INSTRUMENTATION KEY>"
-    });
-    window.appInsights=appInsights;
-    </script>
+Op de client hebt u mogelijk extra code die query-invoer manipuleert, navigatie toevoegt of context bevat (bijvoorbeeld query's die zijn gestart vanaf een startpagina versus een productpagina). Als u uw oplossing beschrijft, u kiezen voor instrumentatie aan de clientzijde, zodat uw telemetrie de extra details weergeeft. Hoe dit extra detail wordt verzameld gaat verder dan het bereik van dit patroon, maar u [Application Insights voor webpagina's voor](https://docs.microsoft.com/azure/azure-monitor/app/javascript#explore-browserclient-side-data) meer richting bekijken. 
 
-Voor andere talen en platformen, zie de volledige [lijst](https://docs.microsoft.com/azure/application-insights/app-insights-platforms).
+**C# gebruiken**
 
-**Stap 2: een zoek-ID aanvragen voor correlatie**
+Voor C#wordt de **Instrumentatiesleutel** gevonden in de toepassingsconfiguratie, zoals appsettings.json als uw project ASP.NET is. Raadpleeg de registratie-instructies als u niet zeker bent van de sleutellocatie.
 
-Voor het correleren van zoek aanvragen met klikken moet u een correlatie-ID hebben die deze twee afzonderlijke gebeurtenissen verbindt. Azure Cognitive Search biedt u een zoek-ID wanneer u deze aanvraagt met een koptekst:
+```csharp
+private static TelemetryClient _telemetryClient;
 
-*C#*
-
-    // This sample uses the .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
-
-    var client = new SearchIndexClient(<SearchServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
-    var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
-    var response = await client.Documents.SearchWithHttpMessagesAsync(searchText: searchText, searchParameters: parameters, customHeaders: headers);
-    IEnumerable<string> headerValues;
-    string searchId = string.Empty;
-    if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out headerValues)){
-     searchId = headerValues.FirstOrDefault();
+// Add a constructor that accepts a telemetry client:
+public HomeController(TelemetryClient telemetry)
+    {
+        _telemetryClient = telemetry;
     }
+```
 
-*JavaScript*
+**JavaScript gebruiken**
 
-    request.setRequestHeader("x-ms-azs-return-searchid", "true");
-    request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
-    var searchId = request.getResponseHeader('x-ms-azs-searchid');
+```javascript
+<script type="text/javascript">var appInsights=window.appInsights||function(config){function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(s);try{t.cookie=u.cookie}catch(h){}for(t.queue=[],i=["Event","Exception","Metric","PageView","Trace","Dependency"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t}
+({
+instrumentationKey: "<YOUR INSTRUMENTATION KEY>"
+});
+window.appInsights=appInsights;
+</script>
+```
 
-**Stap 3: gebeurtenissen in een logboek zoeken**
+### <a name="step-2-request-a-search-id-for-correlation"></a>Stap 2: Een zoek-id aanvragen voor correlatie
 
-Telkens wanneer een zoek opdracht wordt uitgegeven door een gebruiker, moet u zich als een zoek gebeurtenis aanmelden met het volgende schema voor een Application Insights aangepaste gebeurtenis:
+Om zoekverzoeken te correleren met klikken, is het noodzakelijk om een correlatie-ID te hebben die deze twee verschillende gebeurtenissen met elkaar in verband brengt. Azure Cognitive Search biedt u een zoek-id wanneer u deze aanvraagt met een HTTP-header.
 
-**SearchServiceName**: (teken reeks) zoek service naam **SearchId**: (GUID) unieke id van de zoek query (komt in het zoek antwoord) **index**naam: (teken reeks) zoek service-index die moet worden opgevraagd **QueryTerms**: (teken reeks) zoek termen die zijn ingevoerd door de gebruiker **ResultCount**: (int) aantal documenten dat is geretourneerd (in de zoek respons) **ScoringProfile**: (teken reeks) naam van het gebruikte Score profiel
+Als u de zoek-id hebt, u correlatie maken van de statistieken die worden uitgezonden door Azure Cognitive Search voor het verzoek zelf, met de aangepaste statistieken die u registreert bij Application Insights.  
+
+**C# gebruiken**
+
+```csharp
+// This sample uses the .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
+
+var client = new SearchIndexClient(<SearchServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
+
+// Use HTTP headers so that you can get the search ID from the response
+var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
+var response = await client.Documents.SearchWithHttpMessagesAsync(searchText: searchText, searchParameters: parameters, customHeaders: headers);
+string searchId = string.Empty;
+if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues)){
+    searchId = headerValues.FirstOrDefault();
+}
+```
+
+**JavaScript gebruiken (REST-API's aanroepen)**
+
+```javascript
+request.setRequestHeader("x-ms-azs-return-searchid", "true");
+request.setRequestHeader("Access-Control-Expose-Headers", "x-ms-azs-searchid");
+var searchId = request.getResponseHeader('x-ms-azs-searchid');
+```
+
+### <a name="step-3-log-search-events"></a>Stap 3: Zoekgebeurtenissen registreren
+
+Elke keer dat een zoekaanvraag door een gebruiker wordt uitgegeven, moet u dat als zoekgebeurtenis registreren met het volgende schema op een aangepaste toepassingsgebeurtenis. Vergeet niet om alleen door gebruikers gegenereerde zoekopdrachten te registreren.
+
++ **SearchServiceName**: (tekenreeks) zoekservicenaam
++ **SearchId**: (guid) unieke id van de zoekopdracht (komt in het zoekantwoord)
++ **IndexName**: (tekenreeks) zoekservice-index die moet worden opgevraagd
++ **QueryTermen**: (tekenreeks) zoektermen die door de gebruiker zijn ingevoerd
++ **ResultCount**: (int) aantal documenten die zijn geretourneerd (komt in het zoekantwoord)
++ **ScoreProfiel**: (tekenreeks) naam van het gebruikte scoreprofiel, indien aanwezig
 
 > [!NOTE]
-> Aantal aanvragen voor door de gebruiker gegenereerde query's door $count = True toe te voegen aan uw zoek query. Meer informatie vindt u [hier](/rest/api/searchservice/search-documents#counttrue--false).
+> Vraag het aantal door de gebruiker gegenereerde query's aan door $count=true toe te voegen aan uw zoekopdracht. Zie [Documenten zoeken (REST) voor](/rest/api/searchservice/search-documents#counttrue--false)meer informatie.
 >
 
-> [!NOTE]
-> Vergeet niet alleen zoek query's te registreren die door gebruikers worden gegenereerd.
->
+**C# gebruiken**
 
-*C#*
-
-    var properties = new Dictionary <string, string> {
+```csharp
+var properties = new Dictionary <string, string> {
     {"SearchServiceName", <service name>},
     {"SearchId", <search Id>},
     {"IndexName", <index name>},
@@ -123,85 +149,91 @@ Telkens wanneer een zoek opdracht wordt uitgegeven door een gebruiker, moet u zi
     {"ResultCount", <results count>},
     {"ScoringProfile", <scoring profile used>}
     };
-    telemetryClient.TrackEvent("Search", properties);
+_telemetryClient.TrackEvent("Search", properties);
+```
 
-*JavaScript*
+**JavaScript gebruiken**
 
-    appInsights.trackEvent("Search", {
-    SearchServiceName: <service name>,
-    SearchId: <search id>,
-    IndexName: <index name>,
-    QueryTerms: <search terms>,
-    ResultCount: <results count>,
-    ScoringProfile: <scoring profile used>
-    });
+```javascript
+appInsights.trackEvent("Search", {
+SearchServiceName: <service name>,
+SearchId: <search id>,
+IndexName: <index name>,
+QueryTerms: <search terms>,
+ResultCount: <results count>,
+ScoringProfile: <scoring profile used>
+});
+```
 
-**Stap 4: gebeurtenissen op logboeken registreren**
+### <a name="step-4-log-click-events"></a>Stap 4: Klik op gebeurtenissen log
 
-Telkens wanneer een gebruiker op een document klikt, is dit een signaal dat moet worden vastgelegd voor de analyse van de zoek opdracht. Gebruik Application Insights aangepaste gebeurtenissen om deze gebeurtenissen te registreren met het volgende schema:
+Elke keer dat een gebruiker op een document klikt, is dat een signaal dat moet worden geregistreerd voor zoekanalysedoeleinden. Gebruik aangepaste gebeurtenissen met Application Insights om deze gebeurtenissen met het volgende schema te registreren:
 
-**ServiceName**: (teken reeks) zoek service naam **SearchId**: (GUID) unieke id van de gerelateerde zoek query **documenten**: (teken reeks) **positie**van document-id: (int) rang van het document in de pagina met zoek resultaten
++ **ServiceName**: (tekenreeks) naam van de zoekservice
++ **SearchId**: (guid) unieke id van de gerelateerde zoekopdracht
++ **DocId**: (tekenreeks) document-id
++ **Positie**: (int) rang van het document op de pagina met zoekresultaten
 
 > [!NOTE]
-> De positie verwijst naar de Cardinal-volg orde in uw toepassing. U kunt dit nummer instellen, zolang het altijd hetzelfde is, om een vergelijking mogelijk te maken.
+> Positie verwijst naar de hoofdvolgorde in uw aanvraag. U bent vrij om dit nummer in te stellen, zolang het altijd hetzelfde is, om te kunnen vergelijken.
 >
 
-*C#*
+**C# gebruiken**
 
-    var properties = new Dictionary <string, string> {
+```csharp
+var properties = new Dictionary <string, string> {
     {"SearchServiceName", <service name>},
     {"SearchId", <search id>},
     {"ClickedDocId", <clicked document id>},
     {"Rank", <clicked document position>}
     };
-    telemetryClient.TrackEvent("Click", properties);
+_telemetryClient.TrackEvent("Click", properties);
+```
 
-*JavaScript*
+**JavaScript gebruiken**
 
-    appInsights.trackEvent("Click", {
-        SearchServiceName: <service name>,
-        SearchId: <search id>,
-        ClickedDocId: <clicked document id>,
-        Rank: <clicked document position>
-    });
+```javascript
+appInsights.trackEvent("Click", {
+    SearchServiceName: <service name>,
+    SearchId: <search id>,
+    ClickedDocId: <clicked document id>,
+    Rank: <clicked document position>
+});
+```
 
-## <a name="3---analyze-in-power-bi"></a>3-in Power BI analyseren
+## <a name="3---analyze-in-power-bi"></a>3 - Analyseren in Power BI
 
-Nadat u uw app hebt geinstrumenteerd en hebt gecontroleerd of uw toepassing correct is verbonden met Application Insights, downloadt u een vooraf gedefinieerde rapport sjabloon om gegevens te analyseren in Power BI bureau blad. Het rapport bevat vooraf gedefinieerde grafieken en tabellen die nuttig zijn voor het analyseren van de aanvullende gegevens die zijn vastgelegd voor analyse van het zoek verkeer. 
+Nadat u uw app hebt geinstrumenteerd en hebt geverifieerd dat uw toepassing correct is verbonden met Application Insights, downloadt u een vooraf gedefinieerde rapportsjabloon om gegevens in Power BI-bureaublad te analyseren. Het rapport bevat vooraf gedefinieerde grafieken en tabellen die nuttig zijn voor het analyseren van de extra gegevens die zijn vastgelegd voor analyse van het zoekverkeer.
 
-1. Klik in het linkerdeel venster van het dash board van Azure Cognitive Search onder **instellingen**op **verkeer analyse zoeken**.
+1. Klik in het linkernavigatiedeelvenster azure cognitive search onder **Instellingen**op **Verkeer-analyse zoeken**.
 
-2. Klik op de pagina **Traffic Analytics zoeken** in stap 3 op **Power BI Desktop ophalen** om Power bi te installeren.
+1. Klik op de pagina **Verkeeranalyse zoeken** in stap 3 op **Power BI-bureaublad ophalen** om Power BI te installeren.
 
    ![Power BI-rapporten ophalen](./media/search-traffic-analytics/get-use-power-bi.png "Power BI-rapporten ophalen")
 
-2. Klik op dezelfde pagina op **Power bi rapport downloaden**.
+1. Klik op dezelfde pagina op **Power BI-rapport downloaden**.
 
-3. Het rapport wordt geopend in Power BI Desktop en u wordt gevraagd verbinding te maken met Application Insights en referenties op te geven. U kunt verbindings informatie vinden op de Azure Portal pagina's voor uw Application Insights resource. Geef voor referenties dezelfde gebruikers naam en hetzelfde wacht woord op die u gebruikt voor de aanmelding bij de portal.
+1. Het rapport wordt geopend in Power BI Desktop en u wordt gevraagd verbinding te maken met Application Insights en referenties op te geven. U verbindingsgegevens vinden op de Azure-portalpagina's voor uw Application Insights-bron. Geef voor referenties dezelfde gebruikersnaam en wachtwoord op als voor het aanmelden van portalen.
 
    ![Verbinding maken met Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Verbinding maken met Application Insights")
 
-4. Klik op **laden**.
+1. Klik **op Laden**.
 
-Het rapport bevat grafieken en tabellen waarmee u meer onderbouwde beslissingen kunt nemen om uw zoek prestaties en relevantie te verbeteren.
+Het rapport bevat grafieken en tabellen die u helpen beter geïnformeerde beslissingen te nemen om uw zoekprestaties en relevantie te verbeteren.
 
-Metrische gegevens zijn opgenomen in de volgende items:
+Statistieken omvatten de volgende items:
 
-* Zoek het volume en de populairste term-document paren: de termen die tot hetzelfde document hebben geklikt, gesorteerd door te klikken.
-* Zoek opdrachten zonder klikken: voor waarden voor top query's die geen klikken registreren
++ Zoekvolume en populairste term-documentparen: termen die resulteren in hetzelfde document waarop is geklikt, geordend met klikken.
++ Zoekopdrachten zonder klikken: termen voor topquery's die geen klikken registreren
 
-De volgende scherm afbeelding toont de ingebouwde rapporten en grafieken voor het analyseren van analyse van zoek verkeer.
+In de volgende schermafbeelding ziet u hoe een ingebouwd rapport eruit zou kunnen zien als u alle schema-elementen hebt gebruikt.
 
-![Power BI dash board voor Azure Cognitive Search](./media/search-traffic-analytics/azuresearch-powerbi-dashboard.png "Power BI dash board voor Azure Cognitive Search")
+![Power BI-dashboard voor Azure Cognitive Search](./media/search-traffic-analytics/azuresearch-powerbi-dashboard.png "Power BI-dashboard voor Azure Cognitive Search")
 
 ## <a name="next-steps"></a>Volgende stappen
-Instrumenteer uw zoek toepassing om krachtige en zicht bare gegevens over uw zoek service te krijgen.
 
-U vindt meer informatie over [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) en gaat u naar de [pagina met prijzen](https://azure.microsoft.com/pricing/details/application-insights/) voor meer informatie over de verschillende service lagen.
+Instrument uw zoekapplicatie om krachtige en inzichtelijke gegevens over uw zoekservice te krijgen.
 
-Meer informatie over het maken van geweldige rapporten. Zie [aan de slag met Power bi Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) voor meer informatie.
+U meer informatie vinden over [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) en de [prijspagina](https://azure.microsoft.com/pricing/details/application-insights/) bezoeken voor meer informatie over hun verschillende servicelagen.
 
-<!--Image references-->
-[1]: ./media/search-traffic-analytics/azuresearch-trafficanalytics.png
-[2]: ./media/search-traffic-analytics/azuresearch-appinsightsdata.png
-[3]: ./media/search-traffic-analytics/azuresearch-pbitemplate.png
+Meer informatie over het maken van geweldige rapporten. Zie [Aan de slag met Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) voor meer informatie.

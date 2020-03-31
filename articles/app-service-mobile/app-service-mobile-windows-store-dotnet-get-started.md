@@ -7,10 +7,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 9188db19adab9bd46d65fc97f1c62b39141cee90
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461382"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Een Windows-app maken met een Azure-back-end
@@ -31,35 +31,35 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 * Een actief Azure-account. Als u geen account hebt, kunt u zich aanmelden voor een proefversie van Azure en maximaal tien gratis mobiele apps krijgen die u ook na de proefperiode kunt blijven gebruiken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
 * Windows 10.
-* Visual Studio Community 2017.
+* Visual Studio Community 2017
 * Bekendheid met UWP-app-ontwikkeling. Raadpleeg de [UWP-documentatie](https://docs.microsoft.com/windows/uwp/) voor meer informatie over de [configuratie](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) die u nodig hebt om UWP-apps te bouwen.
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Een nieuwe back-end voor mobiele apps van Azure maken
 
-Volg deze stappen voor het maken van een nieuwe back-end voor mobiele apps.
+Volg deze stappen voor het maken van een nieuwe back-end voor Mobile Apps.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Een database verbinding maken en het client-en server project configureren
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Een databaseverbinding maken en het client- en serverproject configureren
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-client-project"></a>Het client project uitvoeren
+## <a name="run-the-client-project"></a>Het clientproject uitvoeren
 
 1. Open het UWP-project.
 
-2. Ga naar de [Azure Portal](https://portal.azure.com/) en navigeer naar de mobiele app die u hebt gemaakt. Zoek op de Blade `Overview` naar de URL die het open bare eind punt is voor uw mobiele app. Voor beeld-de naam van de site van mijn app ' test123 ' wordt https://test123.azurewebsites.net.
+2. Ga naar de [Azure-portal](https://portal.azure.com/) en navigeer naar de mobiele app die u hebt gemaakt. Zoek `Overview` op het blad naar de URL die het openbare eindpunt is voor uw mobiele app. Voorbeeld - de sitenaam voor mijn app-naam https://test123.azurewebsites.net"test123" is .
 
-3. Open het bestand `App.xaml.cs` in deze map-Windows-UWP-CS/ZUMOAPPNAME/. De naam van de toepassing is `ZUMOAPPNAME`.
+3. Open het `App.xaml.cs` bestand in deze map - windows-uwp-cs/ZUMOAPPNAME/. De toepassingsnaam `ZUMOAPPNAME`is .
 
-4. Vervang in `App`-klasse `ZUMOAPPURL`-para meter met een openbaar eind punt hierboven.
+4. Vervang `App` `ZUMOAPPURL` in de klasse parameter met het bovenstaande openbare eindpunt.
 
     `public static MobileServiceClient MobileService = new MobileServiceClient("ZUMOAPPURL");`
 
-    steeds
+    Wordt
     
     `public static MobileServiceClient MobileService = new MobileServiceClient("https://test123.azurewebsites.net");`
 
-5. Druk op de toets F5 om de app te implementeren en uit te voeren.
+5. Druk op de F5-toets om de app te implementeren en uit te voeren.
 
 6. Typ zinvolle tekst in de app, zoals *Voltooi de zelfstudie*, in het tekstvak **Nieuwe taak invoegen** en klik op **Opslaan**.
 

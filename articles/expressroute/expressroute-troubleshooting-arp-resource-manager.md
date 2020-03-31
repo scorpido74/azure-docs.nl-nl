@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: ARP-tabellen-problemen oplossen'
-description: Op deze pagina vindt u instructies voor het ophalen van de ARP-tabellen voor een ExpressRoute-circuit
+title: 'Azure ExpressRoute: ARP-tabellen - Probleemoplossing'
+description: Deze pagina geeft instructies voor het verkrijgen van de ARP-tabellen voor een ExpressRoute-circuit
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -9,40 +9,40 @@ ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 4f1bd064dbc0909be3deba9180be1d8b3c066fd4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076581"
 ---
-# <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-tabellen ophalen in het Resource Manager-implementatie model
+# <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-tabellen in het implementatiemodel resourcebeheer opdoen
 > [!div class="op_single_selector"]
 > * [PowerShell - Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell - Klassiek](expressroute-troubleshooting-arp-classic.md)
 > 
 > 
 
-Dit artikel begeleidt u stapsgewijs door de stappen voor het leren van de ARP-tabellen voor uw ExpressRoute-circuit.
+In dit artikel loopt u door de stappen om de ARP-tabellen voor uw ExpressRoute-circuit te leren.
 
 > [!IMPORTANT]
-> Dit document is bedoeld om u te helpen bij het vaststellen en oplossen van eenvoudige problemen. Het is niet bedoeld als vervanging van micro soft-ondersteuning. U moet een ondersteunings ticket openen met [micro soft ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u het probleem niet kunt oplossen aan de hand van de onderstaande richt lijnen.
+> Dit document is bedoeld om u te helpen bij het diagnosticeren en oplossen van eenvoudige problemen. Het is niet bedoeld als vervanging voor Microsoft-ondersteuning. U moet een ondersteuningsticket openen met [Microsoft-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u het probleem niet oplossen met behulp van de onderstaande richtlijnen.
 > 
 > 
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="address-resolution-protocol-arp-and-arp-tables"></a>ARP-en ARP-tabellen (Address Resolution Protocol)
-Address Resolution Protocol (ARP) is een Layer 2-protocol dat is gedefinieerd in [RFC 826](https://tools.ietf.org/html/rfc826). ARP wordt gebruikt om het Ethernet-adres (MAC-adres) toe te wijzen aan een IP-adres.
+## <a name="address-resolution-protocol-arp-and-arp-tables"></a>ARP- en ARP-tabellen (Address Resolution Protocol) en ARP
+Address Resolution Protocol (ARP) is een laag 2-protocol dat is gedefinieerd in [RFC 826](https://tools.ietf.org/html/rfc826). ARP wordt gebruikt om het Ethernet-adres (MAC-adres) in kaart te brengen met een ip-adres.
 
-De ARP-tabel biedt een toewijzing van het IPv4-adres en MAC-adres voor een bepaalde peering. De ARP-tabel voor een ExpressRoute-circuit peering biedt de volgende informatie voor elke interface (primair en secundair)
+De ARP-tabel biedt een toewijzing van het ipv4-adres en het MAC-adres voor een bepaalde peering. De ARP-tabel voor een ExpressRoute-circuitpeering biedt de volgende informatie voor elke interface (primair en secundair)
 
-1. Toewijzing van het IP-adres van de on-premises router interface aan het MAC-adres
-2. Toewijzing van IP-adres van de ExpressRoute-router interface aan het MAC-adres
-3. Leeftijd van de toewijzing
+1. Ip-adres van de on-premises routerinterface toewijzen aan het MAC-adres
+2. Ip-adres van de ExpressRoute-routerinterface toewijzen aan het MAC-adres
+3. Leeftijd van het in kaart brengen
 
-ARP-tabellen kunnen helpen bij het valideren van laag 2-configuratie en het oplossen van problemen met elementaire laag 2-connectiviteit. 
+ARP-tabellen kunnen helpen bij het valideren van laag 2-configuratie en het oplossen van problemen met basisproblemen met layer 2-connectiviteit. 
 
-Voor beeld van ARP-tabel: 
+Voorbeeld ARP-tabel: 
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -50,26 +50,26 @@ Voor beeld van ARP-tabel:
           0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
-De volgende sectie bevat informatie over hoe u de ARP-tabellen kunt weer geven die door de ExpressRoute-rand routers worden gezien. 
+In de volgende sectie vindt u informatie over hoe u de ARP-tabellen van de ExpressRoute-edgerouters bekijken. 
 
-## <a name="prerequisites-for-learning-arp-tables"></a>Vereisten voor het leren van ARP-tabellen
-Zorg ervoor dat u over het volgende beschikt voordat u verder gaat
+## <a name="prerequisites-for-learning-arp-tables"></a>Voorwaarden voor het leren van ARP-tabellen
+Zorg ervoor dat u het volgende hebt voordat u verder gaat
 
-* Een geldig ExpressRoute-circuit dat is geconfigureerd met ten minste één peering. Het circuit moet volledig worden geconfigureerd door de connectiviteits provider. U (of uw connectiviteits provider) moet ten minste één van de peerings (Azure private, Azure Public en micro soft) op dit circuit hebben geconfigureerd.
-* IP-adresbereiken die worden gebruikt voor het configureren van de peerings (Azure private, Azure Public en micro soft). Bekijk de voor beelden van IP-adres toewijzingen op de [pagina ExpressRoute-routerings vereisten](expressroute-routing.md) voor meer informatie over hoe IP-adressen worden toegewezen aan interfaces aan de zijkant en aan de kant van de ExpressRoute. U kunt informatie over de peering-configuratie verkrijgen door de [configuratie pagina voor ExpressRoute-peering](expressroute-howto-routing-arm.md)te bekijken.
-* Informatie van uw netwerk team/connectiviteits provider op de MAC-adressen van interfaces die worden gebruikt met deze IP-adressen.
-* U moet de meest recente Power shell-module voor Azure (versie 1,50 of hoger) hebben.
+* Een Valid ExpressRoute-circuit geconfigureerd met ten minste één peering. Het circuit moet volledig zijn geconfigureerd door de connectiviteitsprovider. U (of uw connectiviteitsprovider) moet ten minste één van de peerings (Azure private, Azure public en Microsoft) op dit circuit hebben geconfigureerd.
+* IP-adresbereiken die worden gebruikt voor het configureren van de peerings (Azure private, Azure public en Microsoft). Bekijk de voorbeelden van ip-adrestoewijzingen op de [pagina Routeringsvereisten](expressroute-routing.md) van ExpressRoute om inzicht te krijgen in hoe ip-adressen worden toegewezen aan interfaces aan uw kant en aan de ExpressRoute-kant. U informatie krijgen over de peeringconfiguratie door de [pagina met peering-peering-peering-pagina van ExpressRoute te](expressroute-howto-routing-arm.md)bekijken.
+* Informatie van uw netwerkteam / connectiviteitsprovider op de MAC-adressen van interfaces die met deze IP-adressen worden gebruikt.
+* U moet beschikken over de nieuwste PowerShell-module voor Azure (versie 1.50 of nieuwer).
 
 > [!NOTE]
-> Als laag 3 wordt opgegeven door de service provider en de ARP-tabellen in de onderstaande Portal/uitvoer leeg zijn, moet u de circuit configuratie vernieuwen met de knop Vernieuwen in de portal. Met deze bewerking wordt de juiste routerings configuratie op uw circuit toegepast. 
+> Als laag 3 wordt geleverd door de serviceprovider en de ARP-tabellen leeg zijn in de onderstaande portal/uitvoer, vernieuwt u de circuitconfiguratie met de vernieuwingsknop op de portal. Deze bewerking past de juiste routeconfiguratie toe op uw circuit. 
 >
 >
 
-## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>ARP-tabellen ophalen voor uw ExpressRoute-circuit
-In deze sectie vindt u instructies voor het weer geven van de ARP-tabellen per peering met behulp van Power shell. U of uw connectiviteits provider moet de peering hebben geconfigureerd voordat u verder gaat. Elk circuit heeft twee paden (primair en secundair). U kunt de ARP-tabel voor elk pad afzonderlijk controleren.
+## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>De ARP-tabellen voor uw ExpressRoute-circuit opvragen
+In deze sectie vindt u instructies over hoe u de ARP-tabellen per peering bekijken met PowerShell. U of uw connectiviteitsprovider moet het peering hebben geconfigureerd voordat u verder gaat. Elk circuit heeft twee paden (primair en secundair). U de ARP-tabel voor elk pad onafhankelijk controleren.
 
-### <a name="arp-tables-for-azure-private-peering"></a>ARP-tabellen voor persoonlijke Azure-peering
-De volgende cmdlet biedt de ARP-tabellen voor persoonlijke Azure-peering
+### <a name="arp-tables-for-azure-private-peering"></a>ARP-tabellen voor Azure private peering
+De volgende cmdlet biedt de ARP-tabellen voor Azure private peering
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -81,7 +81,7 @@ De volgende cmdlet biedt de ARP-tabellen voor persoonlijke Azure-peering
         # ARP table for Azure private peering - Secondary path
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
-Voorbeeld uitvoer wordt hieronder weer gegeven voor een van de paden
+Voorbeelduitvoer wordt hieronder weergegeven voor een van de paden
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -89,8 +89,8 @@ Voorbeeld uitvoer wordt hieronder weer gegeven voor een van de paden
           0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
-### <a name="arp-tables-for-azure-public-peering"></a>ARP-tabellen voor open bare Azure-peering
-Met de volgende cmdlet worden de ARP-tabellen voor open bare Azure-peering geboden
+### <a name="arp-tables-for-azure-public-peering"></a>ARP-tabellen voor azure public peering
+De volgende cmdlet biedt de ARP-tabellen voor Azure public peering
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -103,7 +103,7 @@ Met de volgende cmdlet worden de ARP-tabellen voor open bare Azure-peering gebod
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
-Voorbeeld uitvoer wordt hieronder weer gegeven voor een van de paden
+Voorbeelduitvoer wordt hieronder weergegeven voor een van de paden
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -111,8 +111,8 @@ Voorbeeld uitvoer wordt hieronder weer gegeven voor een van de paden
           0 Microsoft         64.0.0.2   aaaa.bbbb.cccc
 
 
-### <a name="arp-tables-for-microsoft-peering"></a>ARP-tabellen voor micro soft-peering
-Met de volgende cmdlet worden de ARP-tabellen voor micro soft-peering geboden
+### <a name="arp-tables-for-microsoft-peering"></a>ARP-tabellen voor Microsoft-peering
+De volgende cmdlet biedt de ARP-tabellen voor Microsoft-peering
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -125,7 +125,7 @@ Met de volgende cmdlet worden de ARP-tabellen voor micro soft-peering geboden
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 
-Voorbeeld uitvoer wordt hieronder weer gegeven voor een van de paden
+Voorbeelduitvoer wordt hieronder weergegeven voor een van de paden
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -133,22 +133,22 @@ Voorbeeld uitvoer wordt hieronder weer gegeven voor een van de paden
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 
-## <a name="how-to-use-this-information"></a>Deze informatie gebruiken
-De ARP-tabel van een peering kan worden gebruikt om de validatie van laag 2-configuratie en-connectiviteit te bepalen. Deze sectie bevat een overzicht van de wijze waarop ARP-tabellen eruitzien onder verschillende scenario's.
+## <a name="how-to-use-this-information"></a>Hoe deze informatie te gebruiken
+De ARP-tabel van een peering kan worden gebruikt om de configuratie en connectiviteit van laag 2 te valideren. In dit gedeelte vindt u een overzicht van hoe ARP-tabellen er onder verschillende scenario's uitzien.
 
-### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>ARP-tabel wanneer een circuit actief is (verwachte status)
-* De ARP-tabel bevat een vermelding voor de on-premises zijde met een geldig IP-adres en MAC-adres en een vergelijk bare vermelding voor de micro soft-kant. 
-* Het laatste octet van het on-premises IP-adres zal altijd een oneven getal zijn.
-* Het laatste octet van het micro soft IP-adres zal altijd een even getal zijn.
-* Hetzelfde MAC-adres wordt weer gegeven op de micro soft-zijde voor alle 3 peerings (primair/secundair). 
+### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>ARP-tabel wanneer een circuit in operationele staat is (verwachte status)
+* De ARP-tabel heeft een vermelding voor de on-premises zijde met een geldig IP-adres en MAC-adres en een vergelijkbare vermelding voor de Microsoft-kant. 
+* Het laatste octet van het on-premises ip-adres zal altijd een oneven getal zijn.
+* Het laatste octet van het Microsoft ip-adres zal altijd een even nummer zijn.
+* Hetzelfde MAC-adres wordt weergegeven aan de Microsoft-kant voor alle 3 peerings (primaire / secundaire). 
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
          10 On-Prem           65.0.0.1   ffff.eeee.dddd
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
-### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP-tabel wanneer de on-premises/connectiviteits provider problemen ondervindt
-Als er problemen zijn met de on-premises of connectiviteits provider, ziet u mogelijk dat er slechts één vermelding wordt weer gegeven in de ARP-tabel of het on-premises MAC-adres niet is voltooid. Hiermee wordt de toewijzing weer gegeven tussen het MAC-adres en IP-adres dat wordt gebruikt in de micro soft-zijde. 
+### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP-tabel wanneer on-premises / connectiviteit provider kant problemen heeft
+Als er problemen zijn met de on-premises of connectiviteitsprovider, u zien dat er slechts één vermelding in de ARP-tabel wordt weergegeven of dat het on-premises MAC-adres onvolledig wordt weergegeven. Hier ziet u de toewijzing tussen het MAC-adres en het IP-adres dat in de Microsoft-zijde wordt gebruikt. 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    
@@ -163,20 +163,20 @@ of
 
 
 > [!NOTE]
-> Open een ondersteunings aanvraag met uw connectiviteits provider om deze problemen op te lossen. Als de ARP-tabel geen IP-adressen heeft van de interfaces die zijn toegewezen aan MAC-adressen, controleert u de volgende informatie:
+> Open een ondersteuningsverzoek bij uw connectiviteitsprovider om dergelijke problemen te opsporen. Als de ARP-tabel geen IP-adressen heeft van de interfaces die zijn toegewezen aan MAC-adressen, controleert u de volgende informatie:
 > 
-> 1. Als het eerste IP-adres van het/30-subnet dat is toegewezen voor de koppeling tussen de MSEE-PR en MSEE, wordt gebruikt op de interface van MSEE-PR. Azure maakt altijd gebruik van het tweede IP-adres voor Msee's.
-> 2. Controleer of de VLAN-labels van de klant (C-tag) en de service (S-tag) overeenkomen met het MSEE-PR-en MSEE-paar.
+> 1. Als het eerste IP-adres van het /30-subnet dat is toegewezen voor de koppeling tussen de MSEE-PR en MSEE wordt gebruikt op de interface van MSEE-PR. Azure gebruikt altijd het tweede IP-adres voor MEEs.
+> 2. Controleer of de VLAN-tags van de klant (C-Tag) en service (S-Tag) overeenkomen met zowel het MSEE-PR- als het MSEE-paar.
 > 
 
-### <a name="arp-table-when-microsoft-side-has-problems"></a>ARP-tabel wanneer aan de kant van micro soft problemen ondervindt
-* U ziet geen ARP-tabel die wordt weer gegeven voor een peering als er problemen zijn met de zijde van micro soft. 
-* Open een ondersteunings ticket met [ondersteuning van micro soft](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Geef op dat er een probleem is met laag 2-connectiviteit. 
+### <a name="arp-table-when-microsoft-side-has-problems"></a>ARP-tabel wanneer Microsoft-zijde problemen heeft
+* U ziet geen ARP-tabel die wordt weergegeven voor een peering als er problemen zijn aan de Microsoft-kant. 
+* Open een ondersteuningsticket met [Microsoft-ondersteuning.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Geef op dat u een probleem hebt met de verbinding met laag 2. 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Laag 3-configuraties valideren voor uw ExpressRoute-circuit
-  * Route samenvatting ophalen om de status van BGP-sessies te bepalen 
-  * Route tabel ophalen om te bepalen welke voor voegsels worden geadverteerd via ExpressRoute
-* Gegevens overdracht valideren door bytes in/uit te bekijken
-* Open een ondersteuningsticket met [Microsoft ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u nog steeds problemen ondervindt.
+* Layer 3-configuraties valideren voor uw ExpressRoute-circuit
+  * Routeoverzicht ophalen om de status van BGP-sessies te bepalen 
+  * Routetabel ophalen om te bepalen welke voorvoegsels worden geadverteerd op ExpressRoute
+* Gegevensoverdracht valideren door bytes in/ uit te bekijken
+* Open een ondersteuningsticket met [Microsoft-ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u nog steeds problemen ondervindt.
 

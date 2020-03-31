@@ -1,6 +1,6 @@
 ---
-title: Inleiding tot pakket opname in azure Network Watcher | Microsoft Docs
-description: Op deze pagina vindt u een overzicht van de functionaliteit voor het vastleggen van pakketten in Network Watcher
+title: Inleiding tot packet capture in Azure Network Watcher | Microsoft Documenten
+description: Deze pagina geeft een overzicht van de mogelijkheden voor het vastleggen van pakketten van Network Watcher
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,46 +12,46 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1f17463125cead64bd58a2d07e53eee4d3cfcd70
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840805"
 ---
-# <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Inleiding tot het vastleggen van variabele pakketten in azure Network Watcher
+# <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Inleiding tot variabele pakketopname in Azure Network Watcher
 
-Met Network Watcher-functie voor het vastleggen van pakketten kunt u pakket opname sessies maken om het verkeer van en naar een virtuele machine bij te houden. Met pakket opname kunt u netwerk afwijkingen zowel reactief als proactief vaststellen. Andere gebruiken zijn onder andere het verzamelen van netwerk statistieken, het verkrijgen van informatie over inbreuken op het netwerk, het opsporen van fouten in client-server communicatie en nog veel meer.
+Met variabele pakketopname van Network Watcher u pakketopnamesessies maken om het verkeer van en naar een virtuele machine bij te houden. Packet capture helpt bij het diagnosticeren van netwerkafwijkingen, zowel reactief als proactief. Andere toepassingen zijn het verzamelen van netwerkstatistieken, het verkrijgen van informatie over netwerkinbraken, het opsporen van client-servercommunicatie en nog veel meer.
 
-Pakket opname is een extensie voor virtuele machines die extern wordt gestart via Network Watcher. Deze mogelijkheid vereenvoudigt de belasting van het hand matig uitvoeren van een pakket opname op de gewenste virtuele machine, waardoor kost bare tijd wordt bespaard. Pakket opname kan worden geactiveerd via de portal, Power shell, CLI of REST API. Een voor beeld van hoe pakket opname kan worden geactiveerd, is met waarschuwingen voor virtuele machines. Er worden filters voor de opname sessie gegeven om ervoor te zorgen dat u verkeer vastlegt dat u wilt bewaken. Filters zijn gebaseerd op 5-tuple (protocol, lokaal IP-adres, extern IP-adres, lokale poort en externe poort). De vastgelegde gegevens worden opgeslagen op de lokale schijf of een opslag-blob. Er geldt een limiet van 10 pakket opname sessies per regio per abonnement. Deze limiet geldt alleen voor de sessies en is niet van toepassing op de opgeslagen pakket opname bestanden lokaal op de virtuele machine of in een opslag account.
+Packet capture is een virtuele machine extensie die op afstand wordt gestart via Network Watcher. Deze mogelijkheid verlicht de belasting van het handmatig uitvoeren van een pakketopname op de gewenste virtuele machine, wat kostbare tijd bespaart. Packet capture kan worden geactiveerd via de portal, PowerShell, CLI of REST API. Een voorbeeld van hoe packet capture kan worden geactiveerd is met Virtual Machine-waarschuwingen. Er zijn filters beschikbaar voor de opnamesessie om ervoor te zorgen dat u verkeer vastlegt dat u wilt controleren. Filters zijn gebaseerd op 5-tuple (protocol, lokaal IP-adres, extern IP-adres, lokale poort en externe poort) informatie. De vastgelegde gegevens worden opgeslagen in de lokale schijf of een opslagblob. Er is een limiet van 10 packet capture sessies per regio per abonnement. Deze limiet is alleen van toepassing op de sessies en is niet van toepassing op de opgeslagen packet capture-bestanden, lokaal op de vm of in een opslagaccount.
 
 > [!IMPORTANT]
-> Voor pakket opname is een extensie van een virtuele machine `AzureNetworkWatcherExtension`vereist. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md).
+> Packet capture vereist een `AzureNetworkWatcherExtension`virtuele machine-extensie. Voor het installeren van de extensie op een Windows VM bezoek [Azure Network Watcher Agent virtuele machine extensie voor Windows](../virtual-machines/windows/extensions-nwa.md) en voor Linux VM bezoek Azure Network Watcher Agent virtuele machine extensie voor [Linux](../virtual-machines/linux/extensions-nwa.md).
 
-De volgende opties zijn beschikbaar voor een sessie voor het vastleggen van pakketten, zodat u de informatie die u alleen naar de gewenste informatie vastlegt, kunt verminderen:
+Om de informatie die u vastlegt te beperken tot alleen de gewenste informatie, zijn de volgende opties beschikbaar voor een pakketopnamesessie:
 
-**Configuratie vastleggen**
+**Opnameconfiguratie**
 
 |Eigenschap|Beschrijving|
 |---|---|
-|**Maximum aantal bytes per pakket (bytes)** | Het aantal bytes van elk pakket dat wordt vastgelegd, alle bytes worden vastgelegd als dit veld leeg blijft. Het aantal bytes van elk pakket dat wordt vastgelegd, alle bytes worden vastgelegd als dit veld leeg blijft. Als u alleen de IPv4-header nodig hebt, geeft u 34 hier op |
-|**Maximum aantal bytes per sessie (bytes)** | Het totale aantal bytes in dat wordt vastgelegd, zodra de waarde is bereikt, wordt de sessie beëindigd.|
-|**Tijds limiet (seconden)** | Hiermee stelt u een tijds beperking in voor de sessie voor het vastleggen van pakketten. De standaard waarde is 18000 seconden of 5 uur.|
+|**Maximale bytes per pakket (bytes)** | Het aantal bytes van elk pakket dat wordt vastgelegd, alle bytes worden vastgelegd als ze leeg blijven. Het aantal bytes van elk pakket dat wordt vastgelegd, alle bytes worden vastgelegd als ze leeg blijven. Als u alleen de IPv4-header nodig hebt , geef hier 34 aan |
+|**Maximum aantal bytes per sessie (bytes)** | Totaal aantal bytes dat wordt vastgelegd, zodra de waarde is bereikt, eindigt de sessie.|
+|**Tijdslimiet (seconden)** | Hiermee stelt u een tijdsbeperking in voor de pakketopnamesessie. De standaardwaarde is 18000 seconden of 5 uur.|
 
 **Filteren (optioneel)**
 
 |Eigenschap|Beschrijving|
 |---|---|
-|**Protocol** | Het protocol dat moet worden gefilterd voor de pakket opname. De beschik bare waarden zijn TCP, UDP en alle.|
-|**Lokaal IP-adres** | Met deze waarde wordt de pakket opname gefilterd op pakketten waarbij het lokale IP-adres overeenkomt met deze filter waarde.|
-|**Lokale poort** | Met deze waarde wordt de pakket opname gefilterd op pakketten waarbij de lokale poort overeenkomt met deze filter waarde.|
-|**Extern IP-adres** | Met deze waarde wordt de pakket opname gefilterd op pakketten waarbij het externe IP-adres overeenkomt met deze filter waarde.|
-|**Externe poort** | Met deze waarde wordt de pakket opname gefilterd op pakketten waarbij de externe poort overeenkomt met deze filter waarde.|
+|**Protocol** | Het protocol om te filteren voor het vastleggen van het pakket. De beschikbare waarden zijn TCP, UDP en Alles.|
+|**Lokaal IP-adres** | Deze waarde filtert het vastleggen van pakketten naar pakketten waarbij het lokale IP-adres overeenkomt met deze filterwaarde.|
+|**Lokale poort** | Deze waarde filtert het vastleggen van pakketten naar pakketten waar de lokale poort overeenkomt met deze filterwaarde.|
+|**Extern IP-adres** | Deze waarde filtert het vastleggen van pakketten naar pakketten waar het externe IP overeenkomt met deze filterwaarde.|
+|**Externe poort** | Deze waarde filtert het vastleggen van pakketten op pakketten waarbij de externe poort overeenkomt met deze filterwaarde.|
 
 ### <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe u pakket opnames kunt beheren via de portal door op pakket opname beheren te gaan [in de Azure Portal](network-watcher-packet-capture-manage-portal.md) of met Power shell door te bezoeken [pakket vastleggen met Power shell](network-watcher-packet-capture-manage-powershell.md).
+Ontdek hoe u pakketopnames via de portal beheren door [naar Pakketopname beheren in de Azure-portal](network-watcher-packet-capture-manage-portal.md) of met PowerShell te bezoeken door [pakketopname met PowerShell te](network-watcher-packet-capture-manage-powershell.md)beheren.
 
-Meer informatie over het maken van proactieve pakket opnames op basis van waarschuwingen voor virtuele machines. Ga naar [een waarschuwing maken geactiveerd pakket vastleggen](network-watcher-alert-triggered-packet-capture.md)
+Meer informatie over het maken van proactieve pakketopnames op basis van waarschuwingen voor virtuele machines door te gaan met [Het maken van een waarschuwingspakketopname](network-watcher-alert-triggered-packet-capture.md)
 
 <!--Image references-->
 [1]: ./media/network-watcher-packet-capture-overview/figure1.png

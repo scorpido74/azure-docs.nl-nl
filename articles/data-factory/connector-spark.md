@@ -1,6 +1,6 @@
 ---
-title: Gegevens uit Spark kopiëren
-description: Leer hoe u gegevens kopiëren van Spark naar ondersteunde sink-gegevensopslag met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens van Spark kopiëren
+description: Meer informatie over het kopiëren van gegevens van Spark naar ondersteunde sinkdatastores met behulp van een kopieeractiviteit in een Azure Data Factory-pijplijn.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,26 +12,26 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 63e352ce47c5934171594ae87ee307603fff4c35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931013"
 ---
-# <a name="copy-data-from-spark-using-azure-data-factory"></a>Gegevens kopiëren van Spark met behulp van Azure Data Factory 
+# <a name="copy-data-from-spark-using-azure-data-factory"></a>Gegevens van Spark kopiëren met Azure Data Factory 
 
-In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in Azure Data Factory om gegevens te kopiëren uit Spark. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens van Spark te kopiëren. Het bouwt voort op de [kopie activiteit overzicht](copy-activity-overview.md) artikel dat een algemeen overzicht van kopieeractiviteit presenteert.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
 Deze Spark-connector wordt ondersteund voor de volgende activiteiten:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Activiteit Lookup](control-flow-lookup-activity.md)
+- [Activiteit kopiëren](copy-activity-overview.md) met [ondersteunde bron/sinkmatrix](copy-activity-overview.md)
+- [Opzoekactiviteit](control-flow-lookup-activity.md)
 
-U kunt gegevens van Spark naar elke ondersteunde sink-gegevensopslag kopiëren. Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen/put door de kopieeractiviteit, de [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats) tabel.
+U gegevens van Spark kopiëren naar een ondersteund sink data store. Zie de tabel [Ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensopslag die wordt ondersteund als bronnen/sinks door de kopieeractiviteit.
 
-Azure Data Factory biedt een ingebouwde stuurprogramma als connectiviteit wilt inschakelen, dus hoeft u stuurprogramma voor gebruik van deze connector handmatig installeren.
+Azure Data Factory biedt een ingebouwd stuurprogramma om connectiviteit mogelijk te maken, daarom hoeft u geen stuurprogramma handmatig te installeren met deze connector.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,29 +41,29 @@ Azure Data Factory biedt een ingebouwde stuurprogramma als connectiviteit wilt i
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten meer informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek voor Spark-connector.
+In de volgende secties vindt u informatie over eigenschappen die worden gebruikt om entiteiten in gegevensfabriek te definiëren die specifiek zijn voor spark-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
 
-De volgende eigenschappen worden ondersteund voor Spark gekoppelde service:
+De volgende eigenschappen worden ondersteund voor spark-gekoppelde service:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Spark** | Ja |
-| host | IP-adres of de hostnaam naam van de Spark-server  | Ja |
-| poort | De TCP-poort die de Spark-server wordt gebruikt om te luisteren naar clientverbindingen. Als u verbinding met Azure HDInsights maken, geeft u poort 443. | Ja |
-| serverType | Het type van de Spark-server. <br/>Toegestane waarden zijn: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nee |
-| thriftTransportProtocol | Het te gebruiken in de laag Thrift-transportprotocol. <br/>Toegestane waarden zijn: **binaire**, **SASL**, **HTTP** | Nee |
-| authenticationType | De verificatiemethode die wordt gebruikt voor toegang tot de Spark-server. <br/>Toegestane waarden zijn: **anoniem**, **gebruikersnaam**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ja |
-| gebruikersnaam | De gebruikersnaam die u gebruiken voor toegang tot Spark-Server.  | Nee |
-| wachtwoord | Het wachtwoord dat overeenkomt met de gebruiker. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Nee |
-| httpPath | De gedeeltelijke URL overeenkomt met de Spark-server.  | Nee |
-| enableSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met behulp van SSL. De standaardwaarde is false.  | Nee |
-| trustedCertPath | Het volledige pad van het .pem-bestand met de vertrouwde CA-certificaten voor het controleren van de server wanneer u verbinding maakt via SSL. Deze eigenschap kan alleen worden ingesteld wanneer u SSL op zelf-hostende IR De standaardwaarde is het bestand cacerts.pem is geïnstalleerd met de IR.  | Nee |
-| useSystemTrustStore | Hiermee bepaalt u of u een CA-certificaat uit het archief van de vertrouwensrelatie systeem- of uit een opgegeven PEM-bestand. De standaardwaarde is false.  | Nee |
-| allowHostNameCNMismatch | Hiermee geeft u op of de naam van een Certificeringsinstantie uitgegeven SSL-certificaat zodat deze overeenkomen met de hostnaam van de server wanneer u verbinding maakt via SSL vereist. De standaardwaarde is false.  | Nee |
-| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server is toegestaan. De standaardwaarde is false.  | Nee |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
+| type | De eigenschap type moet zijn ingesteld op: **Spark** | Ja |
+| host | IP-adres of hostnaam van de Spark-server  | Ja |
+| poort | De TCP-poort die de Spark-server gebruikt om naar clientverbindingen te luisteren. Als u verbinding maakt met Azure HDInsights, geeft u de poort op als 443. | Ja |
+| serverType | Het type Spark-server. <br/>Toegestane waarden zijn: **SharkServer,** **SharkServer2,** **SparkThriftServer** | Nee |
+| zuinigtransportProtocol | Het transportprotocol voor gebruik in de thrift laag. <br/>Toegestane waarden zijn: **Binair**, **SASL**, **HTTP** | Nee |
+| authenticationType | De verificatiemethode die wordt gebruikt om toegang te krijgen tot de Spark-server. <br/>Toegestane waarden zijn: **Anoniem**, **Gebruikersnaam**, **Gebruikersnaam ,Password**, **WindowsAzureHDInsightService** | Ja |
+| gebruikersnaam | De gebruikersnaam die u gebruikt om toegang te krijgen tot Spark Server.  | Nee |
+| wachtwoord | Het wachtwoord dat overeenkomt met de gebruiker. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault.](store-credentials-in-key-vault.md) | Nee |
+| httpPath httpPath | De gedeeltelijke URL die overeenkomt met de Spark-server.  | Nee |
+| inschakelenSsl | Hiermee geeft u op of de verbindingen met de server zijn versleuteld met SSL. De standaardwaarde is false.  | Nee |
+| trustedCertPath | Het volledige pad van het .pem-bestand met vertrouwde CA-certificaten voor het verifiëren van de server bij het maken via SSL. Deze eigenschap kan alleen worden ingesteld wanneer ssl wordt gebruikt op zelf gehoste IR. De standaardwaarde is het cacerts.pem-bestand dat bij de IR is geïnstalleerd.  | Nee |
+| gebruik vanSystemTrustStore | Hiermee geeft u op of u een CA-certificaat wilt gebruiken in het systeemvertrouwensarchief of uit een opgegeven PEM-bestand. De standaardwaarde is false.  | Nee |
+| allowHostNameCNMismatch | Hiermee geeft u op of een door CA uitgegeven SSL-certificaatnaam moet overeenkomen met de hostnaam van de server wanneer deze verbinding maakt via SSL. De standaardwaarde is false.  | Nee |
+| allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server moeten worden toegestaan. De standaardwaarde is false.  | Nee |
+| connectVia | De [integratieruntijd](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevensarchief. Meer informatie van de sectie [Voorwaarden.](#prerequisites) Als dit niet is opgegeven, wordt de standaardruntijd voor Azure-integratie gebruikt. |Nee |
 
 **Voorbeeld:**
 
@@ -88,16 +88,16 @@ De volgende eigenschappen worden ondersteund voor Spark gekoppelde service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door Spark-gegevensset.
+Zie het artikel [gegevenssets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de Spark-gegevensset.
 
-Als u wilt kopiëren van gegevens van Spark, stel de eigenschap type van de gegevensset in **SparkObject**. De volgende eigenschappen worden ondersteund:
+Als u gegevens uit Spark wilt kopiëren, stelt u de eigenschap type van de gegevensset in op **SparkObject**. De volgende eigenschappen worden ondersteund:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **SparkObject** | Ja |
-| schema | De naam van het schema. |Nee (als 'query' in de activiteitbron is opgegeven)  |
-| table | Naam van de tabel. |Nee (als 'query' in de activiteitbron is opgegeven)  |
-| tableName | De naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en `table` voor nieuwe workloads. | Nee (als 'query' in de activiteitbron is opgegeven) |
+| schema | Naam van het schema. |Nee (als 'query' in activiteitsbron is opgegeven)  |
+| tabel | Naam van de tabel. |Nee (als 'query' in activiteitsbron is opgegeven)  |
+| tableName | Naam van de tabel met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` `table` en voor nieuwe werkbelasting. | Nee (als 'query' in activiteitsbron is opgegeven) |
 
 **Voorbeeld**
 
@@ -118,16 +118,16 @@ Als u wilt kopiëren van gegevens van Spark, stel de eigenschap type van de gege
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door Spark-bron.
+Zie het artikel [Pijplijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Spark-bron.
 
-### <a name="spark-as-source"></a>Spark-als bron
+### <a name="spark-as-source"></a>Vonk als bron
 
-Om gegevens te kopiëren uit Spark, stelt u het brontype in de kopieeractiviteit naar **SparkSource**. De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** sectie:
+Als u gegevens van Spark wilt kopiëren, stelt u het brontype in de kopieeractiviteit in op **SparkSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van kopieeractiviteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron voor kopiëren-activiteit moet worden ingesteld op: **SparkSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als de 'tableName' in de gegevensset is opgegeven) |
+| type | De eigenschap type van de bron van kopieeractiviteit moet zijn ingesteld op: **SparkSource** | Ja |
+| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
 
 **Voorbeeld:**
 
@@ -161,9 +161,9 @@ Om gegevens te kopiëren uit Spark, stelt u het brontype in de kopieeractiviteit
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+## <a name="lookup-activity-properties"></a>Eigenschappen van opzoekactiviteit
 
-Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+Ga voor meer informatie over de eigenschappen naar [opzoekactiviteit](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevensopslag](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory.

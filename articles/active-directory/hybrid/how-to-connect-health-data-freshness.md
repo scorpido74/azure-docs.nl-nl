@@ -1,6 +1,6 @@
 ---
-title: De gegevens van de Azure AD Connect Health Health-Service zijn niet up-to-date, waarschuwing | Microsoft Docs
-description: Dit document beschrijft de oorzaak van de waarschuwing dat de Health-Service gegevens niet up-to-date zijn en hoe u deze kunt oplossen.
+title: Azure AD Connect-status - Statusservicegegevens zijn niet up-to-date | Microsoft Documenten
+description: In dit document wordt de oorzaak beschreven van de waarschuwing 'Gegevens van de gezondheidsservice is niet up-to-date' en hoe u dit oplossen.
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
@@ -16,59 +16,59 @@ ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a94bd07cf5020981cdf028ec0eccfa8fa531d240
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897179"
 ---
-# <a name="health-service-data-is-not-up-to-date-alert"></a>De Health Service-gegevens zijn niet up-to-date-waarschuwing
+# <a name="health-service-data-is-not-up-to-date-alert"></a>Gegevens van de gezondheidsdienst zijn niet up-to-date
 
 ## <a name="overview"></a>Overzicht
 
-De agents op de on-premises machines die Azure AD Connect Health bewaakt regel matig gegevens uploaden naar de Azure AD Connect Health-Service. Als de service geen gegevens van een agent ontvangt, worden de gegevens die de portal presenteert, verouderd. Om het probleem te markeren, **is de status van de service niet up-to-date** . Deze waarschuwing wordt gegenereerd wanneer de service de afgelopen twee uur geen volledige gegevens heeft ontvangen.  
+De agents op de on-premises machines die Azure AD Connect Health controleert, uploaden periodiek gegevens naar de Azure AD Connect Health Service. Als de service geen gegevens van een agent ontvangt, wordt de informatie die de portal presenteert verouderd. Om het probleem te benadrukken, zal de service verhogen de **health service gegevens is niet up-to-date** alert. Deze waarschuwing wordt gegenereerd wanneer de service in de afgelopen twee uur geen volledige gegevens heeft ontvangen.  
 
-- De **waarschuwing** status waarschuwing wordt geactiveerd als de Health Service in de afgelopen twee uur slechts **gedeeltelijk** gegevens typen heeft ontvangen die vanaf de server zijn verzonden. De waarschuwing status waarschuwing triggert geen e-mail meldingen naar geconfigureerde ontvangers. 
-- De **fout** status waarschuwing wordt geactiveerd als de Health Service in de afgelopen twee uur geen gegevens typen van de server heeft ontvangen. Met de fout status waarschuwing worden e-mail meldingen naar geconfigureerde ontvangers gegenereerd.
+- De waarschuwing voor de **status waarschuwing** wordt geactiveerd als de gezondheidsservice in de afgelopen twee uur slechts **gedeeltelijke** gegevenstypen heeft ontvangen die vanaf de server zijn verzonden. De waarschuwing statuswaarschuwing leidt niet tot e-mailmeldingen voor geconfigureerde ontvangers. 
+- De foutmelding **wordt** geactiveerd als de statusservice in de afgelopen twee uur geen gegevenstypen van de server heeft ontvangen. De foutstatuswaarschuwing activeert e-mailmeldingen naar geconfigureerde ontvangers.
 
-De service haalt de gegevens op van agents die worden uitgevoerd op de on-premises machines, afhankelijk van het Service type. De volgende tabel geeft een lijst van de agents die op de computer worden uitgevoerd, wat ze doen en de gegevens typen die door de service worden gegenereerd. In sommige gevallen zijn er meerdere services betrokken bij het proces, zodat elk daarvan de culprit kan zijn. 
+De service krijgt de gegevens van agents die op de on-premises machines draaien, afhankelijk van het servicetype. In de volgende tabel worden de agents weergegeven die op de machine worden uitgevoerd, wat ze doen en de gegevenstypen die de service genereert. In sommige gevallen zijn er meerdere diensten betrokken bij het proces, dus elk van hen kan de boosdoener zijn. 
 
-## <a name="understanding-the-alert"></a>Informatie over de waarschuwing
+## <a name="understanding-the-alert"></a>Inzicht in de waarschuwing
 
-In de Blade **waarschuwings Details** wordt weer gegeven wanneer de waarschuwing is opgetreden en de laatste keer is gedetecteerd. Met een achtergrond proces dat elke twee uur wordt uitgevoerd, wordt de waarschuwing gegenereerd en opnieuw geëvalueerd. In het volgende voor beeld is de eerste waarschuwing op 03/10 om 9:59 uur. De waarschuwing bevond zich nog op 03/12 om 10:00 uur wanneer de waarschuwing opnieuw werd geëvalueerd. De Blade bevat ook informatie over de tijd waarop de Health Service voor het laatst een bepaald gegevens type heeft ontvangen. 
+Het blad **Waarschuwingsdetails** geeft aan wanneer de waarschuwing is opgetreden en voor het laatst is gedetecteerd. Een achtergrondproces dat elke twee uur wordt uitgevoerd, genereert en evalueert de waarschuwing opnieuw. In het volgende voorbeeld vond de eerste waarschuwing plaats op 03/10 om 09:59 uur. De waarschuwing bestond nog steeds op 03/12 om 10:00 uur toen de waarschuwing opnieuw werd geëvalueerd. Het blad vermeldt ook de tijd dat de Health Service voor het laatst een bepaald gegevenstype heeft ontvangen. 
  
- ![Details van Azure AD Connect Health waarschuwing](./media/how-to-connect-health-data-freshness/data-freshness-details.png)
+ ![Azure AD Connect-statuswaarschuwingsgegevens](./media/how-to-connect-health-data-freshness/data-freshness-details.png)
  
-De volgende tabel wijst service types toe aan de bijbehorende vereiste gegevens typen:
+In de volgende tabel worden servicetypen toegewezen aan overeenkomstige vereiste gegevenstypen:
 
-| Servicetype | Agent (Windows-service naam) | Doel | Gegenereerd gegevens type  |
+| Servicetype | Agent (Windows-servicenaam) | Doel | Gegenereerd gegevenstype  |
 | --- | --- | --- | --- |  
-| Azure AD Connect (synchronisatie) | Azure AD Connect Health Sync Insights-service | AAD Connect-specifieke informatie verzamelen (connectors, synchronisatie regels, enz.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService-connectors <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
-|  | Azure AD Connect Health Sync Monitoring-service | AAD Connect-specifieke prestatie meter items, ETW-traceringen, bestanden verzamelen | Prestatie meter item |
-| AD DS | Azure AD Connect Health AD DS Insights-service | Synthetische tests uitvoeren, topologie gegevens verzamelen, meta gegevens voor replicatie |  -Toevoegen-TopologyInfo-JSON <br /> -Common-TestData-JSON (maakt de test resultaten)   | 
-|  | Azure AD Connect Health AD DS Monitoring-service | Verzamelen voegt specifieke prestatie meter items, ETW-traceringen, bestanden | -Prestatie meter item  <br /> -Common-TestData-JSON (uploadt de test resultaten)  |
-| AD FS | Azure AD Connect Health AD FS Diagnostics-service | Synthetische tests uitvoeren | TestResult (Hiermee worden de test resultaten gemaakt) | 
-| | Azure AD Connect Health AD FS Insights-service  | Metrische gegevens over ADFS-gebruik verzamelen | ADFS-UsageMetrics |
-| | Azure AD Connect Health AD FS Monitoring-service | AD FS-specifieke prestatie meter items, ETW-traceringen, bestanden verzamelen | TestResult (uploadt de test resultaten) |
+| Azure AD Connect (Synchroniseren) | Azure AD Connect Health Sync Insights-service | Aad Connect-specifieke informatie verzamelen (connectors, synchronisatieregels, enz.) | - AadSyncService-synchronisatieregels <br />  - AadSyncService-connectors <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResultaten <br /> - AadSyncService-ServiceConfiguraties <br /> - AadSyncService-ServiceStatus   |
+|  | Azure AD Connect Health Sync Monitoring-service | Aad Connect-specifieke perf-tellers, ETW-sporen, bestanden verzamelen | Prestatiemeterteller |
+| AD DS | Azure AD Connect Health AD DS Insights-service | Synthetische tests uitvoeren, topologie-informatie verzamelen, replicatiemetagegevens |  - Voegt-TopologyInfo-Json toe <br /> - Common-TestData-Json (maakt de testresultaten)   | 
+|  | Azure AD Connect Health AD DS Monitoring-service | Verzamel ADDS-specifieke perf tellers, ETW traces, bestanden | - Prestatiemeterteller  <br /> - Common-TestData-Json (uploadt de testresultaten)  |
+| AD FS | Azure AD Connect Health AD FS Diagnostics-service | Synthetische tests uitvoeren | TestResult (maakt de testresultaten) | 
+| | Azure AD Connect Health AD FS Insights-service  | ADFS-gebruiksstatistieken verzamelen | Adfs-UsageMetrics |
+| | Azure AD Connect Health AD FS Monitoring-service | ADFS-specifieke perf-tellers verzamelen, ETW-sporen, bestanden | TestResultaat (uploadt de testresultaten) |
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing 
 
-De stappen die nodig zijn om de oorzaak van het probleem vast te stellen, worden hieronder gegeven. De eerste is een set basis controles die gemeen schappelijk zijn voor alle service typen. 
+Hieronder vindt u de stappen die nodig zijn om het probleem te diagnosticeren. De eerste is een set basiscontroles die gemeenschappelijk zijn voor alle servicetypen. 
 
 > [!IMPORTANT] 
-> Deze waarschuwing volgt het [Bewaar beleid](reference-connect-health-user-privacy.md#data-retention-policy) voor verbindings status gegevens
+> Deze waarschuwing volgt het beleid voor [het bewaren van gegevens van](reference-connect-health-user-privacy.md#data-retention-policy) Connect Health
 
-* Zorg ervoor dat de nieuwste versies van de agents zijn geïnstalleerd. [Release geschiedenis](reference-connect-health-version-history.md)weer geven. 
-* Zorg ervoor dat de services van Azure AD Connect Health Agents op de computer worden **uitgevoerd** . Connect Health voor AD FS moet bijvoorbeeld drie services hebben.
-  Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png) ![controleren
+* Zorg ervoor dat de nieuwste versies van de agents zijn geïnstalleerd. [Releasegeschiedenis](reference-connect-health-version-history.md)weergeven . 
+* Controleer of azure AD Connect Health Agents-services op de machine **worden uitgevoerd.** Connect Health voor AD FS moet bijvoorbeeld drie services hebben.
+  ![Azure AD Connect Health verifiëren](./media/how-to-connect-health-agent-install/install5.png)
 
-* Zorg ervoor dat u voldoet aan de [sectie vereisten](how-to-connect-health-agent-install.md#requirements).
-* Gebruik het [hulp programma](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) voor het testen van connectiviteit om verbindings problemen te detecteren.
-* Als u een HTTP-proxy hebt, volgt u deze [Configuratie stappen](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
+* Zorg ervoor dat je er overheen gaat en voldoet aan de [vereistensectie.](how-to-connect-health-agent-install.md#requirements)
+* Gebruik [testconnectiviteitstool](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) om verbindingsproblemen te ontdekken.
+* Als u een HTTP-proxy hebt, voert u de [volgende configuratiestappen uit](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Als een van de bovenstaande stappen een probleem heeft vastgesteld, lost u het op en wacht u totdat de waarschuwing is opgelost. Het waarschuwings proces wordt elke 2 uur uitgevoerd, zodat het Maxi maal twee uur duurt om de waarschuwing op te lossen. 
+Als een van de bovenstaande stappen een probleem heeft geïdentificeerd, moet u dit oplossen en wachten tot de waarschuwing is opgelost. Het waarschuwingsachtergrondproces wordt elke 2 uur uitgevoerd, dus het duurt maximaal 2 uur om de waarschuwing op te lossen. 
 
-* [Azure AD Connect Health beleid voor het bewaren van gegevens](reference-connect-health-user-privacy.md#data-retention-policy)
+* [Azure AD Connect-beleid voor het bewaren van gegevens](reference-connect-health-user-privacy.md#data-retention-policy)
 * [Veelgestelde vragen over Azure AD Connect Health](reference-connect-health-faq.md)

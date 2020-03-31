@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Azure Storage-wacht rijen maken in de portal'
-description: Gebruik de Azure Portal om een wachtrij te maken. Gebruik vervolgens de Azure Portal om een bericht toe te voegen, de bericht eigenschappen weer te geven en het bericht in de wachtrij te plaatsen.
+title: 'Snelstart: Azure Storage-wachtrijen maken in de portal'
+description: Gebruik de Azure-portal om een wachtrij te maken. Gebruik vervolgens de Azure-portal om een bericht toe te voegen, de berichteigenschappen weer te geven en het bericht in de wachtrij te zetten.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/06/2019
@@ -9,13 +9,13 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
 ms.openlocfilehash: 2876d2a680aa41372557a9f04c1d6a5eed56b8ae
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74269252"
 ---
-# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Quick Start: een wachtrij maken en een bericht toevoegen met de Azure Portal
+# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Snelstart: een wachtrij maken en een bericht toevoegen met de Azure-portal
 
 In deze quickstart leert u de [Azure-portal](https://portal.azure.com/) te gebruiken om een wachtrij te maken in Azure Storage, en om berichten toe te voegen aan en weer te verwijderen uit de wachtrij.
 
@@ -53,7 +53,7 @@ Nadat u een bericht hebt toegevoegd, wordt in de Azure-portal een lijst van alle
 
 ![Schermopname met berichteigenschappen](media/storage-quickstart-queues-portal/view-message-properties.png)
 
-## <a name="dequeue-a-message"></a>Een bericht uit de wachtrij verwijderen
+## <a name="dequeue-a-message"></a>Een bericht uit de wachtrij halen
 
 U kunt vanuit de Azure-portal een bericht uit het begin van de wachtrij verwijderen. Wanneer u een bericht uit de wachtrij verwijdert, is de verwijdering definitief. 
 

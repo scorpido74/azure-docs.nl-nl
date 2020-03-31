@@ -1,7 +1,7 @@
 ---
-title: Wijzigingen in SameSite-cookies afhandelen in de Chrome-browser | Azure
+title: Hoe om te gaan met SameSite-cookiewijzigingen in de Chrome-browser | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het verwerken van wijzigingen in SameSite-cookies in de Chrome-browser.
+description: Meer informatie over het omgaan met SameSite-cookiewijzigingen in de Chrome-browser.
 services: active-directory
 documentationcenter: ''
 author: jmprieur
@@ -14,79 +14,79 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 8fc1fab89a89fbf7e20414f292a1b02f77ac7907
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 056b787bbbcde6ba7f9510043deabdcf85ac7467
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776363"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050529"
 ---
-# <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite cookie wijzigingen in Chrome browser verwerken
+# <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite-cookiewijzigingen in Chrome-browser verwerken
 
 ## <a name="what-is-samesite"></a>Wat is SameSite?
 
-`SameSite` is een eigenschap die kan worden ingesteld in HTTP-cookies om CSRF-aanvallen (cross site request vervalsing) in webtoepassingen te voor komen:
+`SameSite`is een eigenschap die kan worden ingesteld in HTTP-cookies om aanvallen op cross site request forgery (CSRF) in webapplicaties te voorkomen:
 
-- Als `SameSite` is ingesteld op **slordig**, wordt de cookie verzonden in aanvragen binnen dezelfde site en in Get-aanvragen van andere sites. Het wordt niet verzonden in GET-aanvragen die meerdere domeinen zijn.
-- Een waarde van **strikt** zorgt ervoor dat de cookie alleen binnen dezelfde site in aanvragen wordt verzonden.
+- Wanneer `SameSite` is ingesteld op **Lax,** wordt de cookie verzonden in verzoeken binnen dezelfde site en in GET-verzoeken van andere sites. Het wordt niet verzonden in GET-verzoeken die cross-domein zijn.
+- Een waarde van **Strict** zorgt ervoor dat de cookie alleen binnen dezelfde site in aanvragen wordt verzonden.
 
-De `SameSite` waarde is standaard niet ingesteld in browsers en daarom zijn er geen beperkingen voor het verzenden van cookies in aanvragen. Een toepassing moet zich bij de CSRF-beveiliging aanmelden door het instellen van **slordig** of **strikt** volgens hun vereisten.
+Standaard is `SameSite` de waarde NIET ingesteld in browsers en daarom zijn er geen beperkingen voor cookies die in verzoeken worden verzonden. Een aanvraag zou moeten opt-in voor de CSRF bescherming door het instellen **van Lax** of **Strict** volgens hun eisen.
 
-## <a name="samesite-changes-and-impact-on-authentication"></a>Wijzigingen in SameSite en invloed op verificatie
+## <a name="samesite-changes-and-impact-on-authentication"></a>SameSite-wijzigingen en impact op verificatie
 
-Recente [updates van de standaarden op SameSite](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) stellen het beveiligen van apps voor, door het standaard gedrag van `SameSite` te maken wanneer er geen waarde is ingesteld op slordig. Deze beperking betekent dat cookies worden beperkt voor HTTP-aanvragen, behalve het ophalen van andere sites. Daarnaast wordt er geen waarde van **geen** geïntroduceerd om beperkingen te verwijderen voor het verzenden van cookies. Deze updates worden binnenkort uitgebracht in een toekomstige versie van de Chrome-browser.
+Recente [updates van de standaarden op SameSite](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) stellen `SameSite` voor om apps te beschermen door het standaardgedrag te maken van wanneer er geen waarde is ingesteld op Lax. Deze beperking betekent dat cookies worden beperkt op HTTP-verzoeken, behalve GET gemaakt van andere sites. Daarnaast wordt een waarde van **Geen** ingevoerd om beperkingen te verwijderen voor het verzonden van cookies. Deze updates zullen binnenkort worden uitgebracht in een aankomende versie van de Chrome-browser.
 
-Wanneer Web-apps met het micro soft-identiteits platform worden geverifieerd met de antwoord modus ' form_post ', reageert de aanmeldings server op de toepassing met behulp van een HTTP POST om de tokens of de verificatie code te verzenden. Omdat deze aanvraag een aanvraag voor meerdere domeinen is (van `login.microsoftonline.com` naar uw domein-voor exemplaar https://contoso.com/auth), vallen cookies die door uw app zijn ingesteld nu onder de nieuwe regels in Chrome. De cookies die moeten worden gebruikt in scenario's met meerdere sites zijn cookies die de *status* en *nonce* -waarden bevatten, die ook in de aanmeldings aanvraag worden verzonden. Er zijn andere cookies verwijderd door Azure AD om de sessie te bewaren.
+Wanneer web-apps zich verifiëren met het Microsoft Identity-platform met behulp van de reactiemodus "form_post", reageert de inlogserver op de toepassing met behulp van een HTTP-POST om de tokens of auth-code te verzenden. Omdat dit verzoek een cross-domain `login.microsoftonline.com` request is (van naar uw domein - bijvoorbeeld `https://contoso.com/auth`), vallen cookies die door uw app zijn ingesteld nu onder de nieuwe regels in Chrome. De cookies die moeten worden gebruikt in cross-site scenario's zijn cookies die de *status* en *nonce* waarden bevatten, die ook worden verzonden in het aanmeldingsverzoek. Er zijn andere cookies die door Azure AD zijn verwijderd om de sessie te houden.
 
-Als u uw web-apps niet bijwerkt, zal dit nieuwe gedrag leiden tot mislukte verificaties.
+Als u uw web-apps niet bijwerkt, leidt dit nieuwe gedrag tot verificatiefouten.
 
-## <a name="mitigation-and-samples"></a>Risico beperking en voor beelden
+## <a name="mitigation-and-samples"></a>Mitigatie en monsters
 
-Om de verificatie fouten op te lossen, kunnen Web-apps die worden geverifieerd met het micro soft Identity-platform de eigenschap `SameSite` instellen op `None` voor cookies die worden gebruikt in scenario's met meerdere domeinen wanneer ze worden uitgevoerd in de Chrome-browser.
-Andere browsers (Zie [hier](https://www.chromium.org/updates/same-site/incompatible-clients) voor een volledige lijst) Volg het vorige gedrag van `SameSite` en de cookies worden niet meegenomen als `SameSite=None` is ingesteld.
-Daarom moet de `SameSite`-`None` waarde alleen op Chrome worden ingesteld om te ondersteunen voor verificatie op meerdere web-apps, en laat de waarde leeg in andere browsers.
+Om de verificatiefouten te overwinnen, kunnen web-apps die `SameSite` authenticeren met het Microsoft-identiteitsplatform de eigenschap instellen `None` op cookies die worden gebruikt in cross-domeinscenario's wanneer ze worden uitgevoerd in de Chrome-browser.
+Andere browsers (zie [hier](https://www.chromium.org/updates/same-site/incompatible-clients) voor een volledige `SameSite` lijst) volgen het vorige `SameSite=None` gedrag van en zullen de cookies niet opnemen als deze is ingesteld.
+Daarom moeten webbrowsers, om verificatie op meerdere browsers `SameSite` te `None` ondersteunen, de waarde alleen in Chrome instellen en de waarde leeg laten in andere browsers.
 
-Deze benadering wordt uitgelegd in onze code voorbeelden hieronder.
+Deze aanpak wordt gedemonstreerd in onze code samples hieronder.
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-In de onderstaande tabel ziet u de pull-aanvragen die hebben gewerkt aan de SameSite-wijzigingen in onze ASP.NET en ASP.NET Core-voor beelden.
+De onderstaande tabel presenteert de pull-verzoeken die rond de SameSite-wijzigingen in onze ASP.NET en ASP.NET Core-samples werkten.
 
 | Voorbeeld | Pull-aanvraag |
 | ------ | ------------ |
-|  [Incrementele zelf studie voor de web-app ASP.NET Core](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Dezelfde site cookie oplossen #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
-|  [Voor beeld van ASP.NET MVC-Web-app](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Dezelfde site cookie oplossen #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
-|  [Active-Directory-DotNet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [Dezelfde site cookie oplossen #28](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
+|  [ASP.NET basiszelfstudie van Core Web App](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Dezelfde site cookie fix #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
+|  [ASP.NET MVC-voorbeeld van webapp](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Dezelfde site cookie fix #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
+|  [active-directory-dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [Dezelfde site cookie fix #28](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
 
-Zie ook voor meer informatie over het afhandelen van SameSite-cookies in ASP.NET en ASP.NET Core:
+Zie ook: ASP.NET ASP.NET
 
-- [Werken met SameSite-cookies in ASP.net core](https://docs.microsoft.com/aspnet/core/security/samesite) .
-- [ASP.NET-blog op SameSite-probleem](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
+- [Werken met SameSite-cookies in ASP.NET Kern.](https://docs.microsoft.com/aspnet/core/security/samesite)
+- [ASP.NET blog op samesite probleem](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 | Voorbeeld |
 | ------ |
-|  [MS-Identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
+|  [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 | Voorbeeld | Pull-aanvraag |
 | ------ | ------------ |
-|  [MS-Identity-Java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [Dezelfde site cookie oplossen #24](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
-|  [MS-Identity-Java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi)  | [Dezelfde site cookie oplossen #4](https://github.com/Azure-Samples/ms-identity-java-webapi/pull/4)
+|  [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [Dezelfde site cookie fix #24](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
+|  [ms-identity-java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi)  | [Dezelfde site cookie fix #4](https://github.com/Azure-Samples/ms-identity-java-webapi/pull/4)
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over SameSite en het scenario voor de web-app:
+Meer informatie over SameSite en het scenario voor webapps:
 
 > [!div class="nextstepaction"]
-> [Veelgestelde vragen over Google Chrome op SameSite](https://www.chromium.org/updates/same-site/faq)
+> [Veelgestelde vragen van Google Chrome op dezelfde site](https://www.chromium.org/updates/same-site/faq)
 
 > [!div class="nextstepaction"]
-> [Pagina chroom SameSite](https://www.chromium.org/updates/same-site)
+> [Pagina SameSite van Chromium](https://www.chromium.org/updates/same-site)
 
 > [!div class="nextstepaction"]
-> [Scenario: Web-app die gebruikers aantekent](scenario-web-app-sign-user-overview.md)
+> [Scenario: web-app die zich aanmeldt bij gebruikers](scenario-web-app-sign-user-overview.md)

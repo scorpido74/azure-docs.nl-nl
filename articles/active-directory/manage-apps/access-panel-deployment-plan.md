@@ -1,6 +1,6 @@
 ---
-title: Een Azure Active Directory implementatie van het toegangs paneel plannen
-description: Richt lijnen voor het implementeren van het Azure Active Directory toegangs venster
+title: Een Azure Active Directory Access Panel-implementatie plannen
+description: Richtlijnen voor het implementeren van het Azure Active Directory Access Panel
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -16,351 +16,351 @@ ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897071"
 ---
-# <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Een Azure Active Directory implementatie van het toegangs paneel plannen
+# <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Een Azure Active Directory Access Panel-implementatie plannen
 
-Het toegangs venster van de Azure Active Directory (Azure AD) is een portal op Internet waarmee u de ondersteunings kosten kunt verlagen, de productiviteit en de beveiliging kunt verhogen en de kans op gebruikers vermindert. Het systeem bevat gedetailleerde rapporten die bijhouden wanneer u het systeem opent en waarschuwt beheerders van misbruik of misbruik.
+Het Azure Active Directory (Azure AD) Access Panel is een webportal die helpt de ondersteuningskosten te verlagen, de productiviteit en beveiliging te verhogen en de frustratie van gebruikers te verminderen. Het systeem bevat gedetailleerde rapportage die bijhoudt wanneer u toegang krijgt tot het systeem en waarschuwt beheerders van misbruik of misbruik.
 
-Met behulp van het Azure AD-toegangs venster kunt u het volgende doen:
+Met het Azure AD Access-paneel u het nieuwe:
 
-* Ontdek en toegang tot alle Azure AD-verbonden resources van hun bedrijf, zoals toepassingen
-* Toegang aanvragen tot nieuwe apps en groepen
-* Toegang tot deze resources voor anderen beheren
-* Het opnieuw instellen van wacht woorden en Azure Multi-Factor Authentication-instellingen beheren
+* Ontdek en krijg toegang tot alle Azure AD-verbonden bronnen van hun bedrijf, zoals toepassingen
+* Toegang tot nieuwe apps en groepen aanvragen
+* Toegang tot deze bronnen beheren voor anderen
+* Zelfservicewachtwoordresets en Azure Multi-Factor Authentication-instellingen beheren
 * Hun apparaten beheren
 
-Daarnaast kunnen beheerders het volgende beheren:
+Het stelt beheerders ook in staat om te beheren:
 
-* Service voorwaarden
+* Servicevoorwaarden
 * Organisaties
-* Toegangscontroles
+* Toegangsbeoordelingen
 
 
-## <a name="benefits-of-azure-ad-access-panel-integration"></a>Voor delen van integratie van Azure AD-toegangs venster
+## <a name="benefits-of-azure-ad-access-panel-integration"></a>Voordelen van Azure AD Access Panel-integratie
 
-Het Azure AD-toegangs venster biedt bedrijven op de volgende manieren:
+Het Azure AD Access Panel biedt voordelen voor bedrijven op de volgende manieren:
 
-**Biedt intuïtieve gebruikers ervaring**: het toegangs venster biedt u één platform voor al uw Azure-toepassingen voor eenmalige aanmelding (SSO). U hebt een uniforme portal voor het vinden van bestaande instellingen en nieuwe mogelijkheden, zoals groeps beheer en self-service voor het opnieuw instellen van wacht woorden, wanneer ze worden toegevoegd. De intuïtieve ervaring stelt gebruikers in staat om sneller te werken en productiever te zijn, terwijl ze hun frustratie verminderen.
+**Intuïtieve gebruikerservaring:** het Access Panel biedt u één platform voor al uw azure single sign-on (SSO)-toepassingen. U hebt een uniforme portal om bestaande instellingen en nieuwe mogelijkheden te vinden, zoals groepsbeheer en het opnieuw instellen van selfservicewachtwoorden, terwijl deze worden toegevoegd. De intuïtieve ervaring stelt gebruikers in staat om sneller te werken en productiever te zijn, terwijl ze hun frustratie verminderen.
 
-**Verhoogt de productiviteit**: alle gebruikers toepassingen in het toegangs venster hebben SSO ingeschakeld. Door EENMALIGe aanmelding in te scha kelen tussen zakelijke toepassingen en Office 365 wordt een superieure aanmeldings ervaring gemaakt door extra aanmeldings prompts te verminderen of te elimineren. Het toegangs venster maakt gebruik van self-service en dynamisch lidmaatschap en verbetert de algehele beveiliging van uw identiteits systeem. Dit doet u door ervoor te zorgen dat de juiste personen de toegang tot de toepassingen beheren. Het toegangs venster fungeert als een samenhangende landings pagina voor u om snel resources te vinden en werk taken voort te zetten.
+**Verhoogt de productiviteit:** alle gebruikerstoepassingen in het Access Panel hebben SSO ingeschakeld. Door SSO in te schakelen voor bedrijfstoepassingen en Office 365 ontstaat een superieure aanmeldingservaring door extra aanmeldingsprompts te verminderen of te elimineren. Het Access Panel maakt gebruik van selfservice en dynamisch lidmaatschap en verbetert de algehele beveiliging van uw identiteitssysteem. Het doet dit door ervoor te zorgen dat de juiste mensen de toegang tot de applicaties beheren. Het toegangspaneel fungeert als een samenhangende bestemmingspagina om snel bronnen te vinden en werktaken voort te zetten.
 
-**Beheert kosten**: door het toegangs venster in te scha kelen met Azure AD kunt u de Divestment van on-premises infra structuur helpen. Het vermindert de ondersteunings kosten door u een consistente portal te bieden om al uw apps te vinden, toegang te vragen tot bronnen en accounts te beheren.
+**Beheert kosten:** Het inschakelen van het toegangspaneel met Azure AD kan helpen bij het desinvestering van on-premises infrastructuren. Het verlaagt de ondersteuningskosten door u een consistente portal te bieden om al uw apps te vinden, toegang tot bronnen aan te vragen en accounts te beheren.
 
-**Verhoogt de flexibiliteit en beveiliging**: het toegangs venster biedt toegang tot de beveiliging en flexibiliteit die een Cloud platform biedt. Beheerders kunnen instellingen eenvoudig wijzigen in toepassingen en bronnen en kunnen nieuwe beveiligings vereisten bieden zonder dat dit van invloed is op gebruikers.
+**Verhoogt de flexibiliteit en beveiliging:** het Access Panel geeft u toegang tot de beveiliging en flexibiliteit die een cloudplatform biedt. Beheerders kunnen eenvoudig instellingen wijzigen in toepassingen en resources en kunnen voldoen aan nieuwe beveiligingsvereisten zonder dat dit gevolgen heeft voor gebruikers.
 
-**Maakt robuuste controle en het bijhouden van het gebruik mogelijk**: bij controle en gebruik bijhouden van alle gebruikers mogelijkheden kunt u zien wanneer gebruikers hun resources gebruiken en ervoor zorgen dat u de beveiliging kunt beoordelen.
+**Maakt robuuste controle- en gebruikstracking mogelijk:** controle en gebruikstracking voor alle gebruikersmogelijkheden laten u weten wanneer gebruikers hun resources gebruiken en zorgt ervoor dat u de beveiliging beoordelen.
 
-### <a name="licensing-considerations"></a>Licentie overwegingen
+### <a name="licensing-considerations"></a>Licentieoverwegingen
 
-Het toegangs venster is gratis en er zijn geen licenties nodig om op basis niveau te gebruiken. Voor het aantal objecten in uw directory en de aanvullende functies die u wilt implementeren, kunnen echter extra licenties nodig zijn. Enkele algemene scenario's voor Azure AD met licentie vereisten zijn onder andere de volgende beveiligings functies:
+Het Toegangspaneel is gratis en vereist geen licenties om op een basisniveau te gebruiken. Het aantal objecten in uw map en de extra functies die u wilt implementeren, kan echter extra licenties vereisen. Enkele veelvoorkomende Azure AD-scenario's met licentievereisten bevatten de volgende beveiligingsfuncties:
 
-* [Azure multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
+* [Azure-verificatie met meerdere factoren](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
 
-* [Groepslid maatschap](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
+* [Groepslidmaatschap](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
 * [Self-service voor wachtwoord opnieuw instellen](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 
-* [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory-identiteitsbeveiliging](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
-Raadpleeg de [volledige licentie handleiding voor Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+Bekijk de [volledige licentiehandleiding voor Azure AD.](https://azure.microsoft.com/pricing/details/active-directory/)
 
-### <a name="prerequisites-for-deploying-the-azure-ad-access-panel"></a>Vereisten voor de implementatie van het Azure AD-toegangs venster
+### <a name="prerequisites-for-deploying-the-azure-ad-access-panel"></a>Vereisten voor het implementeren van het Azure AD Access Panel
 
-Voer de volgende vereisten uit voordat u met dit project begint:
+Voer de volgende vereisten in voordat u met dit project begint:
 
-* [SSO van de toepassing integreren](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
+* [Applicatie-SSO integreren](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-sso-deployment)
 
-* [Azure AD-gebruikers-en-groeps infrastructuur beheren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
+* [Azure AD-gebruikers- en groepsinfrastructuur beheren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)
 
-## <a name="plan-the-azure-ad-access-panel-deployment"></a>De implementatie van het Azure AD-toegangs venster plannen
+## <a name="plan-the-azure-ad-access-panel-deployment"></a>De implementatie van het Azure AD Access Panel plannen
 
-De volgende tabel geeft een overzicht van de belangrijkste use cases voor een implementatie van het toegangs paneel:
+In de volgende tabel worden de belangrijkste use cases voor een implementatie van een access panel beschreven:
 
-| Gebied| Beschrijving |
+| Onderwerp| Beschrijving |
 | - | - |
-| Toegang| De portal voor het toegangs paneel is toegankelijk vanaf zakelijke en persoonlijke apparaten in het bedrijfs netwerk. |
-|Toegang | De portal voor het toegangs paneel is toegankelijk vanaf zakelijke apparaten buiten het bedrijfs netwerk. |
-| Controle| Gebruiks gegevens worden minstens elke 29 dagen in bedrijfs systemen gedownload. |
-| Beheer| De levens cyclus van de gebruikers toewijzingen aan toepassingen en groepen die zijn verbonden met Azure AD, wordt gedefinieerd en bewaakt. |
-| Beveiliging| Toegang tot bronnen wordt geregeld via gebruikers-en groeps toewijzingen. Alleen geautoriseerde gebruikers kunnen toegang tot resources beheren. |
-| Prestaties| De tijd lijnen voor het door geven van toegangs toewijzingen worden gedocumenteerd en gecontroleerd. |
-| Gebruikers ervaring| Gebruikers zijn op de hoogte van de mogelijkheden van het toegangs venster en hoe ze deze kunnen gebruiken.|
-| Gebruikers ervaring| Gebruikers kunnen hun toegang tot toepassingen en groepen beheren.|
-| Gebruikers ervaring| Gebruikers kunnen hun accounts beheren. |
-| Gebruikers ervaring| Gebruikers zijn op de hoogte van browser compatibiliteit. |
-| Ondersteuning| Gebruikers kunnen ondersteuning voor problemen met het toegangs paneel vinden. |
+| Toegang| Access Panel portal is toegankelijk vanaf zakelijke en persoonlijke apparaten binnen het bedrijfsnetwerk. |
+|Toegang | Access Panel portal is toegankelijk vanaf zakelijke apparaten buiten het bedrijfsnetwerk. |
+| Controleren| Gebruiksgegevens worden minstens om de 29 dagen gedownload naar bedrijfssystemen. |
+| Beheer| De levenscyclus van de gebruikerstoewijzingen naar azure AD-gerelateerde toepassingen en groepen wordt gedefinieerd en gecontroleerd. |
+| Beveiliging| De toegang tot bronnen wordt beheerd via gebruikers- en groepstoewijzingen. Alleen geautoriseerde gebruikers kunnen toegang tot bronnen beheren. |
+| Prestaties| Toegangstoewijzingstijdlijnen worden gedocumenteerd en gecontroleerd. |
+| Gebruikerservaring| Gebruikers zijn zich bewust van de mogelijkheden van het Toegangspaneel en hoe ze deze kunnen gebruiken.|
+| Gebruikerservaring| Gebruikers kunnen hun toegang tot toepassingen en groepen beheren.|
+| Gebruikerservaring| Gebruikers kunnen hun accounts beheren. |
+| Gebruikerservaring| Gebruikers zijn zich bewust van de compatibiliteit van de browser. |
+| Ondersteuning| Gebruikers kunnen ondersteuning vinden voor problemen met het Access Panel. |
 
-### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Aanbevolen procedures voor het implementeren van het Azure AD-toegangs venster
+### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Aanbevolen procedures voor het implementeren van het Azure AD Access Panel
 
-De functionaliteit van het toegangs venster kan geleidelijk worden ingeschakeld. We raden u aan de volgende volg orde van de implementatie te implementeren:
+De functionaliteit van het Toegangspaneel kan geleidelijk worden ingeschakeld. We raden de volgende volgorde van implementatie aan:
 
 1. Mijn apps
-   * Start programma voor apps
-   * Self-service app-beheer
+   * Startprogramma voor apps
+   * Beheer van selfservice-apps
    * Microsoft Office 365-integratie
 
-1. Detectie van self-service app
+1. Zelfbediening app-detectie
    * Self-service voor wachtwoord opnieuw instellen
-   * Multi-Factor Authentication instellingen
+   * Instellingen voor meervoudige verificatie
    * Apparaatbeheer
    * Gebruiksvoorwaarden
    * Organisaties beheren
 
 1. Mijn groepen
    * Groepsbeheer via selfservice
-1. Toegangscontroles
-   * Toegangs beoordelings beheer
+1. Toegangsbeoordelingen
+   * Beheer van toegangsbeoordeling
 
-Vanaf mijn apps introduceert gebruikers de portal als een gemeen schappelijke locatie voor toegang tot resources. Het toevoegen van self-service toepassings detectie bouwt voort op de ervaring mijn apps. Mijn groepen en toegangs beoordelingen zijn gebaseerd op de self-service mogelijkheden.
+Beginnen met Mijn apps introduceert gebruikers naar de portal als een gemeenschappelijke plaats voor toegang tot bronnen. De toevoeging van selfservice applicatie detectie bouwt voort op de My Apps ervaring. Mijn groepen en toegangsbeoordelingen bouwen voort op de selfservicemogelijkheden.
 
-### <a name="plan-configurations-for-the-azure-ad-access-panel"></a>Configuraties voor het Azure AD-toegangs venster plannen
+### <a name="plan-configurations-for-the-azure-ad-access-panel"></a>Configuraties plannen voor het Azure AD Access-paneel
 
-De volgende tabel bevat een overzicht van een aantal belang rijke configuraties van het toegangs venster en de typische waarden die u kunt gebruiken:
+In de volgende tabel worden een aantal belangrijke configuraties van het Access Panel en de typische waarden vermeld die u mogelijk gebruikt:
 
 | Configuratie| Typische waarden |
 | - | - |
-| De test groepen bepalen| Identificeer de Azure AD-beveiligings groep die moet worden gebruikt en zorg ervoor dat alle leden van de test groep deel uitmaken. |
-| Bepaal welke groep of groepen moeten worden ingeschakeld voor productie.| Identificeer de Azure AD-beveiligings groepen of de Active Directory groepen die zijn gesynchroniseerd met Azure AD om te worden gebruikt. Zorg ervoor dat alle leden van de pilot deel uitmaken van de groep. |
-| Gebruikers toestaan om SSO te gebruiken voor bepaalde typen toepassingen| Federatieve SSO, OAuth, wacht woord-SSO, app proxy |
-| Gebruikers toestaan self-service voor wachtwoord herstel te gebruiken | Ja |
-| Gebruikers toestaan om Multi-Factor Authentication te gebruiken| Ja |
-| Gebruikers toestaan om beheer van selfservice groepen te gebruiken voor bepaalde typen groepen| Beveiligings groepen, Office 365-groepen |
-| Gebruikers toestaan self-service app-beheer te gebruiken| Ja |
-| Gebruikers toestaan om toegangs beoordelingen te gebruiken| Ja |
+| De pilootgroepen bepalen| Identificeer de Azure AD-beveiligingsgroep die moet worden gebruikt en zorg ervoor dat alle pilootleden deel uitmaken van de groep. |
+| Bepaal de groep of groepen die moeten worden ingeschakeld voor productie.| Identificeer de Azure AD-beveiligingsgroepen of de Active Directory-groepen die zijn gesynchroniseerd met Azure AD, die moeten worden gebruikt. Zorg ervoor dat alle pilootleden deel uitmaken van de groep. |
+| Gebruikers toestaan SSO te gebruiken voor bepaalde typen toepassingen| Federatieve SSO, OAuth, Wachtwoord SSO, App Proxy |
+| Gebruikers toestaan om selfservice wachtwoord opnieuw instellen te gebruiken | Ja |
+| Gebruikers toestaan multifactorauthenticatie te gebruiken| Ja |
+| Gebruikers toestaan om selfservicegroepsbeheer te gebruiken voor bepaalde typen groepen| Beveiligingsgroepen, Office 365-groepen |
+| Gebruikers toestaan selfservice-appbeheer te gebruiken| Ja |
+| Gebruikers toestaan toegangsbeoordelingen te gebruiken| Ja |
 
-### <a name="plan-consent-strategy"></a>Strategie voor het plannen van toestemming
+### <a name="plan-consent-strategy"></a>Toestemmingsstrategie plannen
 
-Gebruikers of beheerders moeten toestemming geven voor de gebruiks voorwaarden en het privacybeleid van de toepassing. Gebruik, indien mogelijk, uw bedrijfs regels, toestemming van de beheerder, waarmee gebruikers een betere ervaring kunnen krijgen.
+Gebruikers of beheerders moeten instemmen met de gebruiksvoorwaarden en het privacybeleid van een toepassing. Indien mogelijk, gezien uw bedrijfsregels, gebruik administrator toestemming, die gebruikers een betere ervaring geeft.
 
-Als u toestemming van de beheerder wilt gebruiken, moet u een globale beheerder van de organisatie zijn en moeten de toepassingen:
+Als u beheerderstoestemming wilt gebruiken, moet u een globale beheerder van de organisatie zijn en moeten de toepassingen:
 
 * Geregistreerd in uw organisatie
 
-* Geregistreerd in een andere Azure AD-organisatie en eerder door ten minste één gebruiker gezonden
+* Geregistreerd in een andere Azure AD-organisatie en eerder goedgekeurd door ten minste één gebruiker
 
-Zie [configureren hoe eind gebruikers toestemming geven voor een toepassing in azure Active Directory](configure-user-consent.md)voor meer informatie.
+Zie [De manier waarop eindgebruikers toestemming geven voor een toepassing in Azure Active Directory configureren](configure-user-consent.md)voor meer informatie.
 
-### <a name="engage-the-right-stakeholders"></a>De juiste belanghebbenden benaderen
+### <a name="engage-the-right-stakeholders"></a>Betrek de juiste stakeholders
 
-Wanneer technologie projecten mislukken, worden ze doorgaans door niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](../fundamentals/active-directory-deployment-plans.md) en dat de rol van belanghebbenden in het project goed zijn begrepen.
+Wanneer technologieprojecten mislukken, doen ze dit meestal vanwege de onafwijkende verwachtingen over impact, resultaten en verantwoordelijkheden. Om deze valkuilen te vermijden, [moet u ervoor zorgen dat u de juiste belanghebbenden indienst gaat](../fundamentals/active-directory-deployment-plans.md) en dat de rollen van belanghebbenden in het project goed worden begrepen.
 
-### <a name="plan-communications"></a>Communicatie plannen
+### <a name="plan-communications"></a>De communicatie plannen
 
-Communicatie is van cruciaal belang voor het slagen van een nieuwe service. Laat uw gebruikers proactief weten hoe en wanneer hun ervaring wordt gewijzigd en hoe u zo nodig ondersteuning krijgt.
+Communicatie is cruciaal voor het succes van elke nieuwe dienst. Informeer uw gebruikers proactief hoe en wanneer hun ervaring zal veranderen en hoe ze ondersteuning kunnen krijgen als dat nodig is.
 
-Hoewel het toegangs paneel doorgaans geen gebruikers problemen maakt, is het belang rijk om voor te bereiden. Maak hand leidingen en een lijst met alle resources voor uw ondersteunings personeel voordat u het start.
+Hoewel het Access-paneel doorgaans geen gebruikersproblemen creëert, is het belangrijk om zich voor te bereiden. Maak gidsen en een lijst met alle bronnen voor uw ondersteuningspersoneel voordat u wordt gestart.
 
-#### <a name="communications-templates"></a>Communicatie sjablonen
+#### <a name="communications-templates"></a>Communicatiesjablonen
 
-Micro soft biedt [aanpas bare sjablonen voor e-mail berichten en andere communicatie](https://aka.ms/APTemplates) voor het toegangs venster. U kunt deze assets aanpassen voor gebruik in andere communicatie kanalen die geschikt zijn voor uw bedrijfs cultuur.
+Microsoft biedt [aanpasbare sjablonen voor e-mails en andere communicatie](https://aka.ms/APTemplates) voor het Toegangspaneel. U deze activa aanpassen voor gebruik in andere communicatiekanalen, indien van toepassing op uw bedrijfscultuur.
 
 ## <a name="plan-your-sso-configuration"></a>Uw SSO-configuratie plannen
 
-Wanneer een gebruiker zich aanmeldt bij een toepassing, gaan ze een verificatie proces en moeten ze bewijzen wie ze zijn. Zonder SSO wordt een wacht woord in de toepassing opgeslagen en moet de gebruiker het wacht woord kennen. Met SSO worden referenties van gebruikers door gegeven aan de toepassing, zodat ze geen wacht woorden hoeven in te voeren voor elke toepassing.
+Wanneer een gebruiker zich aanmeldt bij een toepassing, doorlopen ze een verificatieproces en moeten ze bewijzen wie ze zijn. Zonder SSO wordt een wachtwoord opgeslagen in de toepassing en moet de gebruiker dit wachtwoord kennen. Met SSO worden de referenties van gebruikers doorgegeven aan de toepassing, zodat ze geen wachtwoorden voor elke toepassing opnieuw hoeven in te voeren.
 
-Voor het starten van toepassingen in mijn apps moet SSO zijn ingeschakeld.
+Om toepassingen in Mijn apps te starten, moet SSO zijn ingeschakeld.
 
-Azure AD biedt ondersteuning voor drie verschillende manieren om [eenmalige aanmelding in](what-is-single-sign-on.md)te scha kelen in toepassingen:
+Azure AD ondersteunt drie verschillende manieren om [eenmalige aanmelding smaken toepassingen in](what-is-single-sign-on.md)te schakelen:
 
-* **Federatieve eenmalige aanmelding** 
-    * Hiermee kan een toepassing omleiden naar Azure AD voor gebruikers verificatie in plaats van een wacht woord op te vragen. 
-    * Wordt ondersteund voor toepassingen die gebruikmaken van protocollen, zoals SAML 2,0, WS-Federation of OpenID Connect Connect, en is de uitgebreide modus van eenmalige aanmelding.
+* **Federatieve enkele aanmelding** 
+    * Hiermee stelt u een toepassing in om door te verwijzen naar Azure AD voor gebruikersverificatie, in plaats van om een wachtwoord te vragen. 
+    * Wordt ondersteund voor toepassingen die protocollen gebruiken, zoals SAML 2.0, WS-Federation of OpenID Connect, en is de rijkste modus van single sign-on.
 
-* **Eenmalige aanmelding op basis van wacht woorden** 
-    * Hiermee schakelt u beveiligde toepassings wachtwoord opslag en herhaling met behulp van een webbrowser extensie of een mobiele app. 
-    * Maakt gebruik van het bestaande aanmeldings proces dat door de toepassing wordt meegeleverd, maar een beheerder kan de wacht woorden beheren. De gebruiker is niet verplicht het wacht woord te kennen.
+* **Single sign-on op basis van wachtwoord** 
+    * Hiermee u veilige opslag en herhaling van het wachtwoord van toepassingen mogelijk maken met behulp van een webbrowserextensie of mobiele app. 
+    * Maakt gebruik van het bestaande aanmeldingsproces van de toepassing, maar stelt een beheerder in staat om de wachtwoorden te beheren. De gebruiker hoeft het wachtwoord niet te kennen.
 
-* **Bestaande eenmalige aanmelding** 
-    * Hiermee kan Azure AD profiteren van alle bestaande eenmalige aanmelding die voor de toepassing is geconfigureerd.
-    * Hiermee kunnen deze toepassingen worden gekoppeld aan de portals van het Office 365-of Azure AD-toegangs venster. 
-    * Biedt extra rapportage in azure AD wanneer de toepassingen daar worden geïntroduceerd. 
-    * Omvat het gebruik van Azure-toepassing-proxy en de gekoppelde modus voor eenmalige aanmelding.
+* **Bestaande enkele aanmelding** 
+    * Hiermee kan Azure AD profiteren van bestaande enkele aanmeldingdie is geconfigureerd voor de toepassing.
+    * Hiermee kunnen deze toepassingen worden gekoppeld aan de portals voor office 365 of Azure AD Access Panel. 
+    * Hiermee u extra rapportage in Azure AD indienen wanneer de toepassingen daar worden gestart. 
+    * Inclusief het gebruik van Azure Application Proxy en de gekoppelde enkele aanmeldingsmodus.
 
-Meer informatie over het configureren van de SSO-modus van een toepassing: [eenmalige aanmelding bij toepassingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Lees hier hoe u de SSO-modus van een toepassing configureert: [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Voor de beste ervaring met de pagina mijn apps begint u met de integratie van Cloud toepassingen die beschikbaar zijn voor federatieve SSO. Met federatieve SSO kunnen gebruikers een consistente ervaring met één klik hebben in hun app-lanceer oppervlakken en zijn ze in het algemeen beter te verstevigen in configuratie beheer.
+Voor de beste ervaring met de pagina Mijn apps, begin met de integratie van cloudtoepassingen die beschikbaar zijn voor federated SSO. Federated SSO stelt gebruikers in staat om een consistente one-click ervaring over hun app lancering oppervlakken hebben en heeft de neiging om meer robuust in configuratiecontrole.
 
-Gebruik federatieve SSO met Azure AD (OpenID Connect Connect/SAML) wanneer een toepassing dit ondersteunt, in plaats van SSO op basis van wacht woord en ADFS.
+Gebruik Federated SSO met Azure AD (OpenID Connect/SAML) wanneer een toepassing dit ondersteunt, in plaats van op een wachtwoord gebaseerde SSO en ADFS.
 
-Zie voor meer informatie over het implementeren en configureren van uw SaaS-toepassingen het [SaaS SSO-implementatie plan](https://aka.ms/deploymentplans/sso).
+Zie het [SaaS SSO-implementatieplan](https://aka.ms/deploymentplans/sso)voor meer informatie over het implementeren en configureren van uw SaaS-toepassingen.
 
-#### <a name="plan-to-deploy-the-my-apps-browser-extension"></a>De implementatie van de browser uitbreiding van mijn apps plannen
+#### <a name="plan-to-deploy-the-my-apps-browser-extension"></a>Plannen om de browserextensie Mijn apps te implementeren
 
-Wanneer gebruikers zich aanmelden bij SSO-toepassingen op basis van wacht woorden, moeten ze de uitbrei ding voor beveiligde aanmelding van mijn apps installeren en gebruiken. De uitbrei ding voert een script uit dat het wacht woord verzendt naar het aanmeld formulier van de toepassing. Gebruikers wordt gevraagd de uitbrei ding te installeren wanneer ze de SSO-toepassing op basis van een wacht woord voor het eerst starten. Meer informatie over de uitbrei ding vindt u in deze documentatie over [het installeren van de browser uitbreiding van het toegangs venster](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav).
+Wanneer gebruikers zich aanmelden bij sso-toepassingen op basis van wachtwoorden, moeten ze de inlogextensie Voor beveiliging van Mijn apps installeren en gebruiken. De extensie voert een script uit dat het wachtwoord doorstuurt naar het aanmeldingsformulier van de toepassing. Gebruikers wordt gevraagd om de extensie te installeren wanneer ze voor het eerst de op wachtwoorden gebaseerde SSO-toepassing starten. Meer informatie over de extensie vindt u in deze documentatie over [het installeren van de Access Panel browserextensie.](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-Als u SSO-toepassingen op basis van wacht woorden moet integreren, moet u een mechanisme definiëren om de uitbrei ding op schaal te implementeren met [ondersteunde browsers](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Een aantal opties:
+Als u op wachtwoorden gebaseerde SSO-toepassingen moet integreren, moet u een mechanisme definiëren om de extensie op schaal te implementeren met [ondersteunde browsers.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) Een aantal opties:
 
-* [groepsbeleid voor Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
+* [Groepsbeleid voor Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 
-* [Configuration Manager voor Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Configuratiebeheer voor Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
-* [Door de gebruiker gestuurde down load en configuratie voor Chrome, Firefox, micro soft Edge of IE](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+* [Door de gebruiker gestuurde download en configuratie voor Chrome, Firefox, Microsoft Edge of IE](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-Meer informatie: [het configureren van een eenmalige aanmelding met een wacht woord](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
+Meer informatie: [Wachtwoordeenmalige aanmelding configureren](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
 
-Gebruikers die geen SSO-toepassingen op basis van wacht woorden gebruiken, profiteren ook van de uitbrei ding. Deze voor delen zijn onder andere de mogelijkheid om apps te starten vanaf de zoek balk, toegang te verkrijgen tot recent gebruikte toepassingen en een koppeling naar de pagina mijn apps te maken.
+Gebruikers die geen gebruik maken van op een wachtwoord gebaseerde SSO-toepassingen profiteren ook van de extensie. Deze voordelen omvatten de mogelijkheid om elke app te starten vanaf de zoekbalk, het vinden van toegang tot recent gebruikte toepassingen en het hebben van een link naar de pagina Mijn apps.
 
-Dit is wat de gebruiker te zien krijgt wanneer een SSO-toepassing op basis van een wacht woord voor de eerste keer wordt gestart:
+Dit is wat de gebruiker ziet bij het starten van een op een wachtwoord gebaseerde SSO-toepassing voor de eerste keer:
 
-![Scherm afbeelding van browser extensie van mijn apps ](media/access-panel-deployment-plan/ap-dp-sign-in.png)
+![Schermafbeelding van het installatiescherm van de browserextensie Mijn apps ](media/access-panel-deployment-plan/ap-dp-sign-in.png)
 
-#### <a name="plan-for-mobile-access"></a>Mobile Access plannen
+#### <a name="plan-for-mobile-access"></a>Plannen voor mobiele toegang
 
-Een browser die is beveiligd met intune-beleid (micro soft Edge of Intune Managed Browser) is nodig voor mobiele gebruikers die SSO-toepassingen op basis van wacht woorden starten. Met een met beleid beveiligde browser kan de overdracht van het wacht woord dat voor de toepassing is opgeslagen, worden overgedragen. Micro soft Edge of de Managed browser biedt een aantal functies voor het beveiligen van webgegevens. U kunt ook micro soft Edge gebruiken voor zakelijke scenario's op iOS-en Android-apparaten. Micro soft Edge ondersteunt dezelfde beheer scenario's als de Intune Managed Browser en verbetert de gebruikers ervaring. Meer informatie: [webtoegang beheren met een door Microsoft intune-beleid beveiligde browser](https://docs.microsoft.com/intune/app-configuration-managed-browser).
+Een browser die is beveiligd met intune-beleid (Microsoft Edge of Intune Managed Browser) is noodzakelijk voor mobiele gebruikers die op wachtwoorden gebaseerde SSO-toepassingen starten. Met een browser die door het beleid is beveiligd, kan het wachtwoord dat voor de toepassing is opgeslagen, worden overgedragen. Microsoft Edge of de beheerde browser biedt een reeks functies voor webgegevensbescherming. U Microsoft Edge ook gebruiken voor bedrijfsscenario's op iOS- en Android-apparaten. Microsoft Edge ondersteunt dezelfde beheerscenario's als de Intune Managed Browser en verbetert de gebruikerservaring. Meer informatie: [Webtoegang beheren met een browser die door Microsoft Intune-beleid is beveiligd.](https://docs.microsoft.com/intune/app-configuration-managed-browser)
 
-## <a name="plan-your-my-apps-deployment"></a>Uw implementatie van mijn apps plannen
+## <a name="plan-your-my-apps-deployment"></a>Uw implementatie van Mijn apps plannen
 
-De basis van het toegangs venster is het start programma voor apps van de toepassing, die gebruikers op [https://myapps.microsoft.com](https://myapps.microsoft.com/)toegang hebben. Met de pagina's van mijn apps hebben gebruikers één plek om hun werk te starten en naar hun benodigde toepassingen te gaan. Hier vinden gebruikers een lijst van alle toepassingen waarmee ze toegang hebben tot eenmalige aanmelding. 
+De basis van het Access Panel is de applicatie [https://myapps.microsoft.com](https://myapps.microsoft.com/)launcher My Apps, die gebruikers toegang hebben op . De My Apps-pagina's geven gebruikers één plek om hun werk te starten en hun noodzakelijke toepassingen te vinden. Hier vinden gebruikers een lijst met alle toepassingen waartoe ze eenmalig toegang hebben. 
 
-![Een scherm opname van het deel venster apps](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
+![Een schermafbeelding van het deelvenster Apps](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 
-Dezelfde toepassingen worden weer gegeven in het start programma voor Office 365-apps wanneer gebruikers de Office 365-Portal gebruiken.
+Dezelfde toepassingen worden weergegeven in het startprogramma voor Office 365-apps wanneer gebruikers de Office 365-portal gebruiken.
 
-Plan de volg orde waarin u toepassingen gaat toevoegen aan het start programma voor apps en beslis of u ze geleidelijk of allemaal tegelijk wilt uitrollen. U doet dit door een toepassings voorraad te maken met het type verificatie en eventuele bestaande SSO-integraties voor elke toepassing.
+Plan de volgorde waarin u toepassingen toevoegt aan de start-installatie Mijn apps en bepaal of u ze geleidelijk of allemaal tegelijk uitrolt. Maak hiervoor een toepassingsvoorraad met het type verificatie en eventuele bestaande SSO-integraties voor elke toepassing.
 
-#### <a name="add-applications-to-the-my-apps-panel"></a>Toepassingen toevoegen aan het deel venster mijn apps
+#### <a name="add-applications-to-the-my-apps-panel"></a>Toepassingen toevoegen aan het deelvenster Mijn apps
 
-Elke toepassing met Azure AD SSO kan worden toegevoegd aan het start programma voor apps. Andere toepassingen worden toegevoegd met behulp van de optie gekoppelde SSO. U kunt een toepassings tegel configureren die wordt gekoppeld aan de URL van uw bestaande webtoepassing. Met gekoppelde SSO kunt u beginnen met het omleiden van gebruikers naar de portal mijn apps zonder alle toepassingen naar Azure AD SSO te migreren. U kunt geleidelijk overschakelen naar door Azure AD SSO geconfigureerde toepassingen zonder de gebruikers ervaring te onderbreken.
+Elke Azure AD SSO-toepassing kan worden toegevoegd aan het startprogramma Mijn apps. Andere toepassingen worden toegevoegd met behulp van de Linked SSO-optie. U een toepassingstegel configureren die verwijst naar de URL van uw bestaande webtoepassing. Met Linked SSO u gebruikers naar de My Apps-portal leiden zonder alle toepassingen te migreren naar Azure AD SSO. U geleidelijk overgaan naar azure AD SSO-geconfigureerde toepassingen zonder de gebruikerservaring te verstoren.
 
-#### <a name="use-my-apps-collections"></a>Mijn apps verzamelingen gebruiken
+#### <a name="use-my-apps-collections"></a>Mijn apps-verzamelingen gebruiken
 
-Standaard worden alle toepassingen op één pagina weer gegeven. U kunt echter verzamelingen gebruiken om gerelateerde toepassingen te groeperen en deze op een afzonderlijk tabblad te presen teren, zodat u ze eenvoudiger kunt vinden. U kunt bijvoorbeeld verzamelingen gebruiken om logische groeperingen van toepassingen te maken voor specifieke taak rollen, taken, projecten, enzovoort. Zie [mijn app-verzamelingen gebruiken om deel Vensters voor gebruikers toegang te wijzigen](access-panel-collections.md)voor meer informatie. 
+Standaard worden alle toepassingen samen op één pagina weergegeven. Maar u verzamelingen gebruiken om gerelateerde toepassingen samen te groeperen en op een apart tabblad te presenteren, waardoor ze gemakkelijker te vinden zijn. U bijvoorbeeld verzamelingen gebruiken om logische groeperingen van toepassingen te maken voor specifieke taken, taken, projecten, enzovoort. Zie Mijn [apps-verzamelingen gebruiken om gebruikerstoegangspanelen aan te passen](access-panel-collections.md)voor meer informatie. 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Plannen of mijn apps of een bestaande portal moeten worden gebruikt
 
-Uw gebruikers hebben mogelijk al een andere toepassing of portal dan mijn apps. Als dit het geval is, moet u beslissen of u beide portals wilt ondersteunen of slechts één wilt gebruiken.
+Uw gebruikers hebben mogelijk al een andere toepassing of portal dan Mijn apps. Als dat het zo is, besluit u of u beide portalen wilt ondersteunen of er slechts één wilt gebruiken.
 
-Als er al een bestaande portal wordt gebruikt als uitgangs punt voor gebruikers, kunt u de functionaliteit van mijn apps integreren met behulp van Url's voor gebruikers toegang. De functie Url's van gebruikers toegang is een directe koppeling naar de toepassingen die beschikbaar zijn in de portal mijn apps. Deze Url's kunnen worden inge sloten in een bestaande website. Wanneer een gebruiker de koppeling selecteert, wordt de toepassing geopend vanuit de portal mijn apps.
+Als een bestaande portal al wordt gebruikt als startpunt voor gebruikers, u de functionaliteit Van Mijn apps integreren met behulp van URL's van gebruikerstoegang. URL's voor gebruikerstoegang fungeren als directe koppelingen naar de toepassingen die beschikbaar zijn in de mijn apps-portal. Deze URL's kunnen worden ingesloten in een bestaande website. Wanneer een gebruiker de koppeling selecteert, wordt de toepassing geopend vanuit de mijn apps-portal.
 
-U vindt de eigenschap voor de gebruikers toegangs-URL in het gedeelte **Eigenschappen** van de toepassing in de Azure Portal.
+U de eigenschap URL van de gebruikerstoegang vinden in **het** eigenschappengebied van de toepassing in de Azure-portal.
 
-![Een scherm opname van het deel venster apps](media/access-panel-deployment-plan/ap-dp-user-access-url.png)
+![Een schermafbeelding van het deelvenster Apps](media/access-panel-deployment-plan/ap-dp-user-access-url.png)
 
 
-## <a name="plan-self-service-application-discovery-and-access"></a>De detectie en toegang van self-service toepassingen plannen
+## <a name="plan-self-service-application-discovery-and-access"></a>Detectie en toegang van selfservicetoepassingen plannen
 
-Zodra een kernset van toepassingen op de pagina mijn apps van een gebruiker is geïmplementeerd, moet u selfservice-app-beheer functies inschakelen. Met self-service app-detectie kunnen gebruikers het volgende doen:
+Zodra een kernset toepassingen is geïmplementeerd op de Mijn Apps-pagina van een gebruiker, moet u functies voor zelfservice-appbeheer inschakelen. Zelfbediening app detectie stelt gebruikers in staat om:
 
-* Nieuwe apps zoeken om toe te voegen aan mijn apps. 
-* Voeg optionele apps toe waarvan ze mogelijk niet weten dat ze tijdens de installatie nodig zijn.
+* Vind nieuwe apps om toe te voegen aan hun Mijn Apps. 
+* Voeg optionele apps toe waarvan ze mogelijk niet weten dat ze ze nodig hebben tijdens de installatie.
 
-Goedkeurings werk stromen zijn beschikbaar voor expliciete goed keuring voor toegang tot toepassingen. Gebruikers die goed keurders zijn, ontvangen meldingen binnen de portal mijn apps wanneer er een aanvraag voor toegang tot de toepassing in behandeling is.
+Goedkeuringswerkstromen zijn beschikbaar voor expliciete goedkeuring voor toegang tot toepassingen. Gebruikers die fiatteurs zijn, ontvangen meldingen binnen de mijn apps-portal wanneer er een aanvraag voor toegang tot de toepassing is ingediend.
 
-## <a name="plan-self-service-group-membership"></a>Self-service groepslid maatschap plannen 
+## <a name="plan-self-service-group-membership"></a>Zelfbedieningsgroep lidmaatschap plannen 
 
-U kunt gebruikers in staat stellen hun eigen beveiligings groepen of Office 365-groepen te maken en te beheren in azure AD. De eigenaar van de groep kan lidmaatschaps aanvragen goed keuren of weigeren en het beheer van groepslid maatschap delegeren. Self-service groeps beheer functies zijn niet beschikbaar voor beveiligings groepen met e-mail functionaliteit of distributie lijsten.
+U gebruikers inschakelen hun eigen beveiligingsgroepen of Office 365-groepen te maken en te beheren in Azure AD. De eigenaar van de groep kan lidmaatschapsaanvragen goedkeuren of weigeren en het beheer van het groepslidmaatschap delegeren. Zelfbeheerfuncties voor groepen zijn niet beschikbaar voor beveiligingsgroepen of distributielijsten met e-mail.
 
-Als u wilt plannen voor een self-service groepslid maatschap, bepaalt u of u wilt dat alle gebruikers in uw organisatie groepen kunnen maken en beheren of alleen een subset van gebruikers. Als u een subset van gebruikers toestaat, moet u een groep instellen waaraan deze personen worden toegevoegd. Zie [self-service groeps beheer instellen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) voor meer informatie over het inschakelen van deze scenario's.
+Als u wilt plannen voor het lidmaatschap van zelfbedieningsgroepen, bepaalt u of u alle gebruikers in uw organisatie toestaat groepen te maken en te beheren of alleen een subset van gebruikers. Als u een subset van gebruikers toestaat, moet u een groep instellen waaraan deze personen zijn toegevoegd. Zie [Zelfservicegroepsbeheer instellen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) voor meer informatie over het inschakelen van deze scenario's.
 
-## <a name="plan-reporting-and-auditing"></a>Rapportage en controle plannen
+## <a name="plan-reporting-and-auditing"></a>Planrapportage en auditing
 
-Azure AD biedt [rapporten die technische en zakelijke inzichten bieden](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/). Werk samen met de eigen aren van zakelijke en technische toepassingen om het eigendom van deze rapporten te aannemen en ze regel matig te gebruiken. De volgende tabel bevat enkele voor beelden van typische rapportage scenario's.
+Azure AD biedt [rapporten met technische en zakelijke inzichten.](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/) Werk samen met eigenaren van uw bedrijf en technische toepassingen om eigenaar te worden van deze rapporten en deze regelmatig te consumeren. In de volgende tabel vindt u enkele voorbeelden van typische rapportagescenario's.
 
-|   | beheer risico's.| Productiviteit verhogen| Governance en naleving |
+|   | beheer risico's.| Verhoog de productiviteit| Governance en naleving |
 |  - |- | - | - |
-| Rapporttypen|  Toepassings machtigingen en-gebruik| Activiteit voor het inrichten van accounts| Controleren wie toegang heeft tot de toepassingen |
-| Mogelijke acties| Toegang controleren; machtigingen intrekken| Eventuele inrichtings fouten herstellen| Toegang intrekken |
+| Rapporttypen|  Toepassingsmachtigingen en -gebruik| Rekeningbepalingsactiviteit| Controleren wie toegang heeft tot de toepassingen |
+| Mogelijke acties| Toegang tot de controle; machtigingen intrekken| Eventuele indikfouten herstellen| Toegang intrekken |
 
-Azure AD houdt de meeste controle gegevens gedurende 30 dagen. De gegevens zijn beschikbaar via de Azure-beheer portal of-API die u kunt downloaden naar uw analyse systemen.
+Azure AD bewaart de meeste controlegegevens gedurende 30 dagen. De gegevens zijn beschikbaar via Azure Admin Portal of API die u downloaden naar uw analysesystemen.
 
-#### <a name="auditing"></a>Controle
+#### <a name="auditing"></a>Controleren
 
-Audit logboeken voor toegang tot toepassingen zijn 30 dagen beschikbaar. Als de beveiligings controle binnen uw onderneming een langere retentie vereist, moeten de logboeken worden geëxporteerd naar een SIEM-hulp programma (Security Information Event and Management), zoals Splunk of ArcSight.
+Controlelogboeken voor toegang tot toepassingen zijn 30 dagen beschikbaar. Als beveiligingscontrole binnen uw onderneming een langere bewaring vereist, moeten de logboeken worden geëxporteerd naar een SIEM-tool (Security Information Event and Management), zoals Splunk of ArcSight.
 
-Voor controle-, rapportage-en nood herstel back-ups Documenteer de vereiste Download frequentie, het doel systeem en wie verantwoordelijk is voor het beheren van elke back-up. Mogelijk hebt u geen afzonderlijke back-ups van controle en rapportage nodig. Uw back-up voor herstel na nood gevallen moet een afzonderlijke entiteit zijn.
+Voor back-ups van controle, rapportage en noodherstel documenteert u de vereiste frequentie van downloaden, wat het doelsysteem is en wie verantwoordelijk is voor het beheer van elke back-up. U hebt mogelijk geen afzonderlijke back-ups voor controle en rapportage nodig. Uw back-up voor noodherstel moet een afzonderlijke entiteit zijn.
 
-## <a name="deploy-applications-to-users-my-apps-panel"></a>Toepassingen implementeren in het deel venster mijn apps van gebruikers
+## <a name="deploy-applications-to-users-my-apps-panel"></a>Toepassingen implementeren in het deelvenster Mijn apps van gebruikers
 
-Nadat een toepassing is geconfigureerd voor SSO, krijgen groepen toegang toegewezen. Gebruikers in de toegewezen groepen hebben toegang en ze zien de toepassing in hun apps en het start programma voor de Office 365-app.
+Nadat een toepassing is geconfigureerd voor SSO, krijgen groepen toegang toegewezen. Gebruikers in de toegewezen groepen hebben toegang en ze zien de toepassing in hun Mijn apps en het startprogramma voor Office 365-apps.
 
-Zie [gebruikers en groepen toewijzen aan een toepassing in Active Directory](methods-for-assigning-users-and-groups.md).
+Zie [Gebruikers en groepen toewijzen aan een toepassing in Active Directory](methods-for-assigning-users-and-groups.md).
 
-Als tijdens het testen of de implementatie de groepen wilt toevoegen, maar nog niet toestaan dat de toepassingen in mijn apps worden weer gegeven, raadpleegt u [een toepassing verbergen van gebruikers ervaring in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
+Zie Een toepassing verbergen voor de [gebruikerservaring in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)als u tijdens het testen of implementeren de groepen wilt toevoegen, maar nog niet toestaat dat de toepassingen worden weergegeven in Mijn apps.
 
-### <a name="deploy-microsoft-office-365-applications-to-my-apps"></a>Microsoft Office 365-toepassingen implementeren in mijn apps
+### <a name="deploy-microsoft-office-365-applications-to-my-apps"></a>Microsoft Office 365-toepassingen implementeren in Mijn apps
 
-Voor Office 365-toepassingen ontvangen gebruikers een exemplaar van Office op basis van licenties die aan hen zijn toegewezen. Een vereiste voor toegang tot Office-toepassingen is dat gebruikers de juiste licenties kunnen toewijzen die zijn gekoppeld aan de Office-toepassingen. Wanneer u een licentie voor een gebruiker toewijst, worden automatisch de toepassingen weer geven die zijn gekoppeld aan de licentie op de pagina mijn apps en in het start programma voor Office 365-apps.
+Voor Office 365-toepassingen ontvangen gebruikers een kopie van Office op basis van licenties die aan hen zijn toegewezen. Een voorwaarde voor toegang tot Office-toepassingen is dat gebruikers de juiste licenties toegewezen krijgen die zijn gekoppeld aan de Office-toepassingen. Wanneer u een gebruiker een licentie toewijst, ziet deze automatisch de toepassingen die zijn gekoppeld aan de licentie op de pagina Mijn apps en in het startprogramma voor Office 365-apps.
 
-Als u een set Office-toepassingen wilt verbergen voor gebruikers, is er een optie om apps te verbergen in de portal mijn apps, terwijl u toch toegang hebt tot de Office 365-Portal. Deze instellingen vindt u in het gedeelte gebruikers instellingen van de toepassing. Meer informatie: [een toepassing verbergen voor gebruikers ervaring in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
+Als u een set Office-toepassingen wilt verbergen voor gebruikers, is er een optie om apps te verbergen voor de mijn apps-portal, terwijl u nog steeds toegang hebt vanuit de Office 365-portal. Zoek deze instellingen in het gedeelte Gebruikersinstellingen van de toepassing. Meer informatie: [Een toepassing verbergen voor de gebruikerservaring in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
 
-![Een scherm afbeelding van het configureren van het verbergen van toepassingen](media/access-panel-deployment-plan/ap-dp-o365-portal.png)
+![Een schermafbeelding van het configureren van het verbergen van toepassingen](media/access-panel-deployment-plan/ap-dp-o365-portal.png)
 
-### <a name="deploy-application-self-service-capabilities"></a>Self-service mogelijkheden voor toepassingen implementeren
+### <a name="deploy-application-self-service-capabilities"></a>Selfservice-mogelijkheden voor toepassingen implementeren
 
-Met toegang door selfservice toepassingen kunnen gebruikers zelf toegang krijgen tot toepassingen en deze aanvragen. Gebruikers hebben de vrijheid om toegang te krijgen tot de apps die ze nodig hebben zonder telkens een IT-groep te gebruiken om toegang aan te vragen. Wanneer een gebruiker toegang vraagt en wordt goedgekeurd, hetzij automatisch of hand matig door de eigenaar van een app, worden ze toegevoegd aan een groep aan de back-end. Rapportage is ingeschakeld voor wie toegang heeft aangevraagd, goedgekeurd of verwijderd, en biedt u de controle over het beheer van de toegewezen rollen.
+Self-service applicatie toegang stelt gebruikers in staat om zelf te ontdekken en toegang tot toepassingen te vragen. Gebruikers hebben de vrijheid om toegang te krijgen tot de apps die ze nodig hebben zonder telkens via een IT-groep om toegang te vragen. Wanneer een gebruiker toegang aanvraagt en wordt goedgekeurd, automatisch of handmatig door een app-eigenaar, worden deze toegevoegd aan een groep aan de achterkant. Rapportage is ingeschakeld voor wie toegang heeft aangevraagd, goedgekeurd of verwijderd, en het geeft u controle over het beheren van de toegewezen rollen.
 
-U kunt de goed keuring van aanvragen voor toegang tot een toepassing overdragen aan zakelijke goed keurders. De zakelijke goed keurder kan de app-toegangs wachtwoorden instellen op de pagina mijn apps van de zakelijke goed keurder.
+U de goedkeuring van aanvragen voor toegang tot toepassingen delegeren aan zakelijke fiatteurs. De zakelijke goedkeurder kan de app-toegangswachtwoorden instellen vanaf de pagina Mijn apps van de zakelijke goedkeurder.
 
-Meer informatie: de [toegang tot selfservice toepassingen gebruiken](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).
+Meer informatie: [Toegang tot selfservicetoepassingen gebruiken](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).
 
-![Een scherm opname van het configureren van self-service toepassings beheer](media/access-panel-deployment-plan/ap-dp-salesforce.png)
+![Een screenshot van het configureren van selfservicetoepassingsbeheer](media/access-panel-deployment-plan/ap-dp-salesforce.png)
 
 ## <a name="validate-your-deployment"></a>Uw implementatie valideren
 
-Zorg ervoor dat de implementatie van het toegangs venster grondig wordt getest en dat er een rollback-plan aanwezig is.
+Zorg ervoor dat uw implementatie van het Access Panel grondig is getest en dat er een terugdraaiplan is.
 
-De volgende tests moeten worden uitgevoerd met apparaten in bedrijfs eigendom en persoonlijke apparaten. Deze test cases moeten ook overeenkomen met uw zakelijke gebruiks voorbeelden. Hieronder volgen enkele cases die zijn gebaseerd op de voorbeeld vereisten voor het bedrijf in dit document en aan typische technische scenario's. Voeg anderen specifiek toe aan uw behoeften.
+De volgende tests moeten worden uitgevoerd met zowel apparaten die eigendom zijn van het bedrijf als met persoonlijke apparaten. Deze testcases moeten ook uw zakelijke use cases weerspiegelen. Hieronder volgen enkele gevallen op basis van de zakelijke vereisten in dit document en op typische technische scenario's. Voeg anderen toe die specifiek zijn voor uw behoeften.
 
-#### <a name="application-sso-access-test-case-examples"></a>Case-voor beelden van Application SSO Access testen:
+#### <a name="application-sso-access-test-case-examples"></a>Voorbeelden van testcasevan toepassing SSO-toegang:
 
 
-| Businesscase| Verwacht resultaat |
+| Business case| Verwacht resultaat |
 | - | -|
-| Gebruiker meldt zich aan bij de portal mijn apps| De gebruiker kan zich aanmelden en hun toepassingen bekijken |
-| Gebruiker start een federatieve SSO-toepassing| De gebruiker wordt automatisch aangemeld bij de toepassing |
-| De gebruiker start een SSO-toepassing voor wacht woord voor de eerste keer| De gebruiker moet de uitbrei ding mijn apps installeren |
-| Gebruiker start een SSO-toepassing voor een wacht woord een volgende keer| De gebruiker wordt automatisch aangemeld bij de toepassing |
-| Gebruiker start een app vanuit Office 365 Portal| De gebruiker wordt automatisch aangemeld bij de toepassing |
-| Gebruiker start een app vanuit de Managed Browser| De gebruiker wordt automatisch aangemeld bij de toepassing |
+| Gebruiker meldt zich aan bij de mijn apps-portal| Gebruiker kan zich aanmelden en hun toepassingen bekijken |
+| Gebruiker lanceert een gefedereerde SSO-applicatie| Gebruiker wordt automatisch aangemeld bij de toepassing |
+| Gebruiker lanceert voor het eerst een Wachtwoord SSO-toepassing| Gebruiker moet de extensie Mijn apps installeren |
+| Gebruiker lanceert een wachtwoord SSO-toepassing een volgende keer| Gebruiker wordt automatisch aangemeld bij de toepassing |
+| Gebruiker start een app vanuit Office 365 Portal| Gebruiker wordt automatisch aangemeld bij de toepassing |
+| Gebruiker start een app vanuit de beheerde browser| Gebruiker wordt automatisch aangemeld bij de toepassing |
 
 
-#### <a name="application-self-service-capabilities-test-case-examples"></a>Case-voor beelden van de self-service voor toepassingen testen
+#### <a name="application-self-service-capabilities-test-case-examples"></a>Testvoorbeelden voor selfservicemogelijkheden voor toepassingen
 
 
-| Businesscase| Verwacht resultaat |
+| Business case| Verwacht resultaat |
 | - | - |
 | Gebruiker kan lidmaatschap van de toepassing beheren| Gebruiker kan leden toevoegen/verwijderen die toegang hebben tot de app |
-| Gebruiker kan de toepassing bewerken| Gebruiker kan de beschrijving en referenties voor wacht woord-SSO-toepassingen bewerken |
+| Gebruiker kan de toepassing bewerken| De gebruiker kan de beschrijving en referenties van de toepassing voor SSO-toepassingen met wachtwoord bewerken |
 
-### <a name="rollback-steps"></a>Stappen voor ongedaan maken
+### <a name="rollback-steps"></a>Terugdraaien, stappen
 
-Het is belang rijk om te plannen wat u moet doen als uw implementatie niet volgens de planning wordt uitgevoerd. Als de SSO-configuratie mislukt tijdens de implementatie, moet u weten hoe u [SSO-problemen oplost](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) en de gevolgen voor uw gebruikers vermindert. In uitzonderlijke omstandigheden is het mogelijk om [SSO terug te draaien](../manage-apps/plan-sso-deployment.md).
+Het is belangrijk om te plannen wat te doen als uw implementatie niet verloopt zoals gepland. Als de SSO-configuratie tijdens de implementatie mislukt, moet u begrijpen hoe [u SSO-problemen oplossen](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sso) en de impact voor uw gebruikers verminderen. In extreme omstandigheden moet u sso mogelijk [terugdraaien.](../manage-apps/plan-sso-deployment.md)
 
 
 ## <a name="manage-your-implementation"></a>Uw implementatie beheren
 
-U moet de rol met de minste bevoegdheden gebruiken om een vereiste taak uit te voeren binnen Azure Active Directory. [Bekijk de verschillende beschik bare rollen](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) en kies de juiste functie om uw behoeften voor elke persoon voor deze toepassing op te lossen. Sommige rollen moeten mogelijk tijdelijk worden toegepast en worden verwijderd nadat de implementatie is voltooid.
+U moet de minst bevoorrechte rol gebruiken om een vereiste taak in Azure Active Directory uit te voeren. [Bekijk de verschillende rollen die beschikbaar zijn](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) en kies de juiste om uw behoeften voor elke persona voor deze toepassing op te lossen. Sommige rollen moeten mogelijk tijdelijk worden toegepast en verwijderd nadat de implementatie is voltooid.
 
 | Persona's| Rollen| Azure AD-rol  |
 | - | -| -|
-| Helpdesk beheerder| Ondersteuning voor laag 1| Geen |
-| Identiteits beheerder| Configureren en fouten opsporen wanneer de problemen invloed hebben op Azure AD| Globale beheerder |
-| Toepassings beheerder| Gebruikers verklaring in toepassing, configuratie voor gebruikers met machtigingen| Geen |
-| Infrastructuur beheerders| Eigenaar certificaat rollover| Globale beheerder |
-| Bedrijfs eigenaar/belanghebbende| Gebruikers verklaring in toepassing, configuratie voor gebruikers met machtigingen| Geen |
+| Helpdeskbeheerder| Ondersteuning voor Tier 1| Geen |
+| Identiteitsbeheerder| Configureren en debuggen wanneer problemen van invloed zijn op Azure AD| Globale beheerder |
+| Toepassingsbeheerder| Gebruikersattest in toepassing, configuratie op gebruikers met machtigingen| Geen |
+| Infrastructuurbeheerders| Cert rollover eigenaar| Globale beheerder |
+| Bedrijfseigenaar/stakeholder| Gebruikersattest in toepassing, configuratie op gebruikers met machtigingen| Geen |
 
-U kunt [privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) gebruiken om uw rollen te beheren om extra controle, controle en toegangs beoordeling te bieden voor gebruikers met mapmachtigingen.
+U [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) gebruiken om uw rollen te beheren om gebruikers met directorymachtigingen extra controle, controle en toegangscontrole te bieden.
 
-### <a name="troubleshoot-access-panel-issues"></a>Problemen met het toegangs paneel oplossen
+### <a name="troubleshoot-access-panel-issues"></a>Problemen met het toegangspaneel oplossen
 
-Maak richt lijnen voor probleem oplossing voor uw ondersteunings organisatie met veelvoorkomende scenario's, die verwijzen naar micro soft-documentatie in hun resoluties. Mogelijk wilt u hand leidingen maken die ondersteuning bieden voor de lagen die door uw organisatie worden gebruikt.
+Maak handleidingen voor probleemoplossing voor uw ondersteuningsorganisatie met veelvoorkomende scenario's, die wijzen op Microsoft-documentatie in hun resoluties. U hulplijnen maken die ondersteuning opsplitsen in de lagen die door uw organisatie worden gebruikt.
 
-Raadpleeg deze hand leidingen voor probleem oplossing voor naslag informatie:
+Zie deze handleidingen voor het oplossen van problemen voor referentie:
 
-[Toepassingen die niet worden weer gegeven](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-application-not-appearing)
+[Toepassingen die niet worden weergegeven](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-application-not-appearing)
 
-[Onverwachte toepassingen die worden weer gegeven](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-unexpected-application)
+[Onverwachte toepassingen die worden weergegeven](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-unexpected-application)
 
-[Gebruiker kan zich niet aanmelden bij het toegangs venster](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-web-sign-in-problem)
+[Gebruiker kan zich niet aanmelden bij het Toegangspaneel](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-web-sign-in-problem)
 
-[Problemen met het gebruik van self-service toepassings toegang](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-self-service-access)
+[Problemen met selfservice-toegang tot toepassingen](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-troubleshoot-self-service-access)
 
-[Problemen met de browser uitbreiding](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-access-panel-browser-extension)
+[Problemen met de browserextensie](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-access-panel-browser-extension)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,64 +1,64 @@
 ---
-title: Gebruikers profiel en-ID voor gebruik met Azure Notebooks preview
-description: Uw gebruikers profiel en gebruikers-ID maken en beheren met Azure Notebooks, dat onderdeel wordt van de URL van gedeelde notitie blokken.
+title: Gebruikersprofiel en id voor gebruik met Azure Notebooks Preview
+description: Uw gebruikersprofiel en gebruikers-id maken en beheren met Azure-notitieblokken, die onderdeel worden van de URL van gedeelde notitieblokken.
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646276"
 ---
-# <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Uw profiel en gebruikers-ID voor Azure Notebooks preview
+# <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Uw profiel en gebruikersnaam voor De Voorvertoning van Azure Notebooks
 
-In de ruimte die krachtige, samenwerking van Azure-notitieblokken wordt uw gebruikersprofiel anderen uw openbare installatiekopie:
+Binnen de krachtige, collaboratieve ruimte van Azure Notebooks presenteert uw gebruikersprofiel uw openbare afbeelding aan anderen:
 
-[![een Azure Notebooks profiel pagina](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[![Een profielpagina van Azure Notebooks](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
-Uw gebruikers-ID is onderdeel van de URL's die u gebruiken voor het delen van projecten en notitieblokken. De volgende lijst beschrijft de verschillende URL-patronen:
+Uw gebruikersnaam maakt deel uit van de URL's die u gebruikt om projecten en notitieblokken te delen. In de volgende lijst worden de verschillende URL-patronen beschreven:
 
 - `https://notebooks.azure.com/<user_id>`: Uw profielpagina.
-- `https://notebooks.azure.com/<user_id>/projects`: Uw projecten. U ziet alle projecten. andere gebruikers zien alleen uw openbare projecten.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Project-bestanden.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Klonen van een specifieke projecten.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: De HTML-Preview-versie van een specifieke laptop of bestand.
+- `https://notebooks.azure.com/<user_id>/projects`: Uw projecten. Je ziet alle projecten; andere gebruikers zien alleen uw openbare projecten.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Projectbestanden.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Klonen van een specifiek project.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: De HTML-voorbeeld van een specifiek notitieblok of bestand.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-## <a name="your-user-id"></a>Uw gebruikers-ID
+## <a name="your-user-id"></a>Uw gebruikers-id
 
-Wanneer voor de eerste keer aanmeldt bij Azure-laptops, wordt een tijdelijke gebruikers-ID, zoals "anon-idr3ca" automatisch toegewezen door uw account. Als u een gebruikers-ID die begint hebt met "anon-', Azure-notitieblokken vraagt u om dit te wijzigen wanneer u zich aanmeldt:
+Wanneer u zich voor de eerste keer aanmeldt bij Azure Notebooks, krijgt uw account automatisch een tijdelijke gebruikers-id toegewezen, zoals 'anon-idr3ca'. Zolang u een gebruikersnaam hebt die begint met 'anon', vraagt Azure Notebooks u deze te wijzigen wanneer u zich aanmeldt:
 
-![Prompt voor het maken van een gebruikers-ID bij het aanmelden bij Azure-laptops](media/accounts/create-user-id.png)
+![Vragen om een gebruikers-id te maken wanneer u zich aanmeldt bij Azure-notitieblokken](media/accounts/create-user-id.png)
 
-Een **gebruikers-ID configureren** opdracht wordt ook weergegeven naast de naam van de tijdelijke gebruiker:
+Een opdracht **Gebruikersnaam configureren** wordt ook naast de tijdelijke gebruikersnaam weergegeven:
 
-![Gebruikers-ID-opdracht die wordt weergegeven wanneer u een tijdelijke-ID configureren](media/accounts/configure-user-id-command.png)
+![De opdracht Gebruikersnaam configureren die wordt weergegeven wanneer u een tijdelijke id gebruikt](media/accounts/configure-user-id-command.png)
 
-U kunt ook uw gebruikers-ID op elk gewenst moment wijzigen op uw profielpagina.
+U uw gebruikersnaam ook op elk gewenst moment wijzigen op uw profielpagina.
 
-Een gebruikers-ID moet bestaan uit vier tot zestien letters, cijfers en afbreek streepjes. Er zijn geen andere tekens zijn toegestaan en de gebruikers-ID mag niet beginnen of eindigen met een afbreekstreepje of gebruikmaken van meerdere opeenvolgende afbreekstreepjes in een rij. Omdat gebruikers-Id's uniek zijn voor alle Azure Notebooks accounts, ziet u mogelijk het bericht ' de gebruikers-ID is al in gebruik '. (Het bericht wordt ook weer gegeven als u een micro soft-handels merk wilt gebruiken als een gebruikers-ID). In deze gevallen kiest u een andere gebruikers-ID.
+Een gebruikersnaam moet bestaan uit vier tot zestien letters, cijfers en koppeltekens. Er zijn geen andere tekens toegestaan en de gebruikersnaam kan niet beginnen of eindigen met een koppelteken of meerdere koppeltekens op een rij gebruiken. Omdat gebruikers-id's uniek zijn voor alle Azure Notebooks-accounts, ziet u mogelijk het bericht 'Gebruikersnaam is al in gebruik'. (Het bericht wordt ook weergegeven als u een Microsoft-handelsmerk als gebruikersnaam probeert te gebruiken.) Kies in deze gevallen een andere gebruikersnaam.
 
 > [!Important]
-> Bijgewerkt met de ID wordt ongeldig alle URL's die u mogelijk hebt gedeeld met uw vorige ID. Terug naar de vorige-ID voor het valideren van de koppelingen kunt u uw ID. Het is echter mogelijk dat een andere gebruiker voor een niet-gebruikte claim in de tussentijd de ID.
+> Als u uw id wijzigt, worden alle URL's die u mogelijk hebt gedeeld met uw vorige id ongeldig. U uw id weer wijzigen naar uw vorige id om de koppelingen opnieuw te valideren. Het is echter mogelijk voor een andere gebruiker om een ongebruikte id te claimen in de tussentijd.
 
-## <a name="your-profile"></a>Uw profiel
+## <a name="your-profile"></a>Je profiel
 
-Uw profiel bestaat uit het publiek zichtbare gegevens in de URL, `https://notebooks.azure.com/<user_id>`. Uw profielpagina ziet ook uw recent gebruikte projecten en projecten met een ster.
+Uw profiel bestaat uit openbaar te bekijken `https://notebooks.azure.com/<user_id>`informatie op de URL, . Uw profielpagina toont ook uw recent gebruikte projecten en projecten met een ster.
 
-Als u wilt uw profiel bewerkt, gebruikt u de **profielgegevens bewerken** opdracht op uw profielpagina. De secties van het profiel zijn als volgt:
+Als u uw profiel wilt bewerken, gebruikt u de opdracht **Profielgegevens bewerken** op uw profielpagina. De secties van uw profiel zijn als volgt:
 
 | Sectie | Inhoud |
 | --- | --- |
-| Profielfoto | Een afbeelding die wordt weergegeven op uw profielpagina. |
-| Accountgegevens | Uw weergavenaam, gebruikers-ID en openbare e-mailaccount. Het e-mailaccount biedt andere gebruikers in een gemiddelde contact met u opnemen en kan afwijken van de [account](azure-notebooks-user-account.md) kunt u zich aanmelden bij Azure-notitieblokken zelf. |
-| Profielgegevens | Uw locatie, bedrijf, functietitel, website en een korte beschrijving van uzelf. |
-| Sociale-profielen | Uw GItHub, Twitter en Facebook-ID's, als u wilt delen. |
-| Privacyinstellingen | Biedt twee opdrachten uit:<ul><li>**Mijn profiel exporteren**: gemaakt en gedownload een *.zip* -bestand met de informatie die Azure-notitieblokken in uw profiel opslaat, zoals uw foto's, profielgegevens en -Logboeken.</li><li>**Verwijderen van Mijn Account**: uw persoonlijke gegevens die zijn opgeslagen in Azure-notitieblokken wordt verwijderd.</li></ul> |
-| Sitefuncties inschakelen | Kunt u aspecten van het gedrag van Azure-notitieblokken te bepalen:<ul><li>**Unified Frontend voor laptops**: kunt u sneller opstarten van de notebook en betere persistentie.</li><li>**Standaard worden uitgevoerd in Jjupyterlab**: Azure-notitieblokken biedt standaard een eenvoudige gebruikersinterface die geschikt is voor de meeste gebruikers. Jjupyterlab biedt een uitgebreidere maar meer gecompliceerde interface voor ervaren gebruikers.</li><li>**VNext Website**: Hiermee kunt u de gemoderniseerd web-indeling die wordt weergegeven in deze documentatie.</li></ul> |
+| Profielfoto | Een afbeelding die wordt weergegeven op je profielpagina. |
+| Accountgegevens | Uw weergavenaam, gebruikersnaam en openbaar e-mailaccount. Het e-mailaccount biedt andere gebruikers een gemiddelde om contact met u op te nemen en kan afwijken van het [account](azure-notebooks-user-account.md) dat u gebruikt om u aan te melden bij Azure Notebooks zelf. |
+| Profielinformatie | Uw locatie, bedrijf, functietitel, website, en een korte beschrijving van jezelf. |
+| Sociale profielen | Je GItHub-, Twitter- en Facebook-id's, als je ze wilt delen. |
+| Privacyinstellingen | Biedt twee opdrachten:<ul><li>**Mijn profiel exporteren:** maakt en downloadt een *.zip-bestand* met alle informatie die Azure Notebooks opslaat in uw profiel, inclusief uw foto, profielgegevens en beveiligingslogboeken.</li><li>**Mijn account verwijderen:** verwijdert permanent al uw persoonlijke gegevens die zijn opgeslagen in Azure-notitieblokken.</li></ul> |
+| Sitefuncties inschakelen | Hiermee u aspecten van het gedrag van Azure-notitieblokken beheren:<ul><li>**Unified Frontend voor notebooks:** maakt een snellere notebook opstarten en een betere persistentie.</li><li>**Standaard worden uitgevoerd in JupyterLab:** Azure Notebooks bieden standaard een eenvoudige gebruikersinterface die geschikt is voor de meeste gebruikers. JupyterLab biedt een rijkere maar ingewikkeldere interface voor ervaren gebruikers.</li><li>**VNext Website**: maakt de gemoderniseerde weblay-out in deze documentatie mogelijk.</li></ul> |
 
 ## <a name="next-steps"></a>Volgende stappen  
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: een run maken een Jupyter-notebook te doen, lineaire regressie](tutorial-create-run-jupyter-notebook.md)
+> [Zelfstudie: maak een run een Jupyter-notitieblok om lineaire regressie uit te voeren](tutorial-create-run-jupyter-notebook.md)

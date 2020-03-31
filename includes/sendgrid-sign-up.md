@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75463612"
 ---
-Azure-klanten kunnen iedere maand 25.000 gratis e-mails ontgrendelen. Met deze 25.000 gratis maandelijkse e-mails krijgt u toegang tot geavanceerde rapportage en analyse en [alle api's][all APIs] (Web, SMTP, event, parse en meer). Ga naar de pagina met [SendGrid-oplossingen][SendGrid Solutions] voor meer informatie over extra services van SendGrid.
+Azure-klanten kunnen iedere maand 25.000 gratis e-mails ontgrendelen. Deze 25.000 gratis maandelijkse e-mails geven u toegang tot geavanceerde rapportage en analyses en [alle API's][all APIs] (Web, SMTP, Event, Parse en meer). Voor informatie over extra diensten die door SendGrid worden aangeboden, gaat u naar de pagina met [SendGrid-oplossingen][SendGrid Solutions].
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>Aanmelden voor een SendGrid-account
-1. Meld u aan bij de [Azure Portal][Azure portal].
-2. Selecteer in het menu Azure Portal of de start pagina de optie **een resource maken**.
+1. Meld u aan bij [Azure Portal][Azure portal].
+2. Selecteer in het azure-portalmenu of de startpagina de optie **Een bron maken**.
 
     ![opdracht-balk-nieuw][command-bar-new]
-3. Zoek en selecteer **SendGrid**.
+3. Zoeken naar en selecteer **SendGrid**.
 
     ![sendgrid-opslaan][sendgrid-store]
 4. Vul het registratieformulier in en selecteer **Maken**.
@@ -34,11 +34,11 @@ Azure-klanten kunnen iedere maand 25.000 gratis e-mails ontgrendelen. Met deze 2
 10. Voer een **promotiecode** in als u er een hebt.
 11. Voer uw **contactgegevens** in.
 12. Lees en accepteer de **juridische bepalingen**.
-13. Nadat u uw aankoop hebt bevestigd, ziet u een pop-upvenster **implementatie is voltooid** en ziet u uw account in de lijst.
+13. Na het bevestigen van uw aankoop ziet u een pop-up **geslaagde implementatie** en ziet u uw account vermeld.
 
     ![alle-resources][all-resources]
 
-    Nadat u uw aankoop hebt voltooid en op de knop **Beheren** hebt geklikt om de verificatieprocedure van het e-mailadres te starten, ontvangt u een e-mail van SendGrid waarin u wordt gevraagd uw account te verifiëren. Als u dit e-mail bericht niet ontvangt of problemen ondervindt met het verifiëren van uw account, raadpleegt u onze veelgestelde vragen.
+    Nadat u uw aankoop hebt voltooid en op de knop **Beheren** hebt geklikt om de verificatieprocedure van het e-mailadres te starten, ontvangt u een e-mail van SendGrid waarin u wordt gevraagd uw account te verifiëren. Als je deze e-mail niet ontvangt of problemen hebt met het verifiëren van je account, raadpleeg dan onze faq.
 
     ![beheren][manage]
 
@@ -58,7 +58,7 @@ Azure-klanten kunnen iedere maand 25.000 gratis e-mails ontgrendelen. Met deze 2
 
     ![API-sleutels][api-keys]
 
-3. Klik op **API-sleutel maken**.
+3. Klik op de **API-sleutel maken**.
 
     ![algemene-api-sleutel][general-api-key]
 4. Geef ten minste de **naam van de sleutel** op, verleen volledige toegang tot **Mail verzenden** en selecteer vervolgens **Opslaan**.
@@ -72,11 +72,11 @@ Azure-klanten kunnen iedere maand 25.000 gratis e-mails ontgrendelen. Met deze 2
     ![sleutel][key]
 2. Het wachtwoord is door u gekozen tijdens de installatie. Als u wijzigingen wilt aanbrengen, selecteert u **Wachtwoord wijzigen** of **Wachtwoord opnieuw instellen**.
 
-Als u uw instellingen voor de bezorging van e-mail wilt beheren, klikt u op de knop **Beheren**. Dit wordt omgeleid naar uw SendGrid-dash board.
+Als u uw instellingen voor de bezorging van e-mail wilt beheren, klikt u op de knop **Beheren**. Hiermee wordt u omgeleid naar uw SendGrid-dashboard.
 
 ![beheren][manage]
 
-Ga voor meer informatie over het verzenden van e-mail via SendGrid naar het overzicht van de [e-mail-API][Email API Overview].
+Ga voor meer informatie over het verzenden van e-mail via SendGrid naar het [E-mailAPI-overzicht.][Email API Overview]
 
 <!--images-->
 

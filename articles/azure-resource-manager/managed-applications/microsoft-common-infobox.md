@@ -1,22 +1,22 @@
 ---
-title: InfoBox UI-element
-description: Hierin wordt het micro soft. common. InfoBox UI-element voor Azure Portal beschreven. Gebruiken om tekst of waarschuwingen toe te voegen bij het implementeren van een beheerde toepassing.
+title: InfoBox-element UI
+description: Beschrijft het Microsoft.Common.InfoBox UI-element voor Azure-portal. Tekst of waarschuwingen toevoegen bij het implementeren van beheerde toepassingen.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: tomfitz
 ms.openlocfilehash: 6d1e4a84904ef7022d9ce85803bf10285bf0b8ac
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652474"
 ---
-# <a name="microsoftcommoninfobox-ui-element"></a>Micro soft. common. InfoBox UI-element
+# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox-element UI
 
-Een besturings element waarmee een informatie venster wordt toegevoegd. Het vak bevat belang rijke tekst of waarschuwingen waarmee gebruikers inzicht kunnen krijgen in de waarden die ze bieden. Het kan ook worden gekoppeld aan een URI voor meer informatie.
+Een besturingselement dat een informatievak toevoegt. Het vak bevat belangrijke tekst of waarschuwingen die gebruikers inzicht geven in de waarden die ze opgeven. Het kan ook een link naar een URI voor meer informatie.
 
-## <a name="ui-sample"></a>UI-voor beeld
+## <a name="ui-sample"></a>UI-voorbeeld
 
 ![Microsoft.Common.InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
 
@@ -44,10 +44,10 @@ Een besturings element waarmee een informatie venster wordt toegevoegd. Het vak 
 
 ## <a name="remarks"></a>Opmerkingen
 
-* Voor `icon`gebruikt u **geen**, **info**, **waarschuwing**of **fout**.
-* De eigenschap `uri` is optioneel.
+* Voor `icon`, gebruik **Geen**, **Info**, **Waarschuwing**of **Fout**.
+* De `uri` accommodatie is optioneel.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
-* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.
+* Zie Aan de slag met [CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van ui-definities.
+* Zie [Elementen van CreateUiDefinition](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in ui-elementen .

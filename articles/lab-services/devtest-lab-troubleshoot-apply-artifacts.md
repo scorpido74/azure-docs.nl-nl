@@ -1,6 +1,6 @@
 ---
-title: Problemen met artefacten in Azure DevTest Labs oplossen | Microsoft Docs
-description: Informatie over het oplossen van problemen die zich voordoen bij het Toep assen van artefacten in een Azure DevTest Labs virtuele machine.
+title: Problemen met artefacten in Azure DevTest Labs oplossen | Microsoft Documenten
+description: Meer informatie over het oplossen van problemen die optreden bij het toepassen van artefacten in een virtuele azure devTest Labs-machine.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -13,27 +13,27 @@ ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
 ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456989"
 ---
-# <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Problemen oplossen bij het Toep assen van artefacten in een Azure DevTest Labs virtuele machine
-Het Toep assen van artefacten op een virtuele machine kan om verschillende redenen mislukken. In dit artikel wordt stapsgewijs beschreven hoe u mogelijke oorzaken kunt identificeren.
+# <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Problemen oplossen bij het toepassen van artefacten in een virtuele azure devTest Labs-machine
+Het toepassen van artefacten op een virtuele machine kan om verschillende redenen mislukken. Dit artikel leidt u door enkele van de methoden om mogelijke oorzaken te identificeren.
 
-Als u op elk gewenst moment meer hulp nodig hebt, kunt u contact opnemen met de experts van de Azure DevTest Labs (DTL) op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen.   
+Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure DevTest Labs-experts (DTL) op de [MSDN Azure- en Stack Overflow-forums.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer Ondersteuning opdoen.   
 
 > [!NOTE]
-> Dit artikel is van toepassing op virtuele Windows-en niet-Windows-machines. Hoewel er enkele verschillen zijn, worden deze expliciet in dit artikel genoemd.
+> Dit artikel is van toepassing op zowel virtuele Windows- als niet-Windows-machines. Hoewel er enkele verschillen zijn, zullen ze expliciet worden opgeroepen in dit artikel.
 
-## <a name="quick-troubleshooting-steps"></a>Snelle probleemoplossings stappen
-Controleer of de virtuele machine wordt uitgevoerd. DevTest Labs vereist dat de VM wordt uitgevoerd en dat de [Microsoft Azure virtuele machine agent (VM-agent)](../virtual-machines/extensions/agent-windows.md) is geïnstalleerd en gereed is.
+## <a name="quick-troubleshooting-steps"></a>Snelle stappen voor het oplossen van problemen
+Controleer of de VM wordt uitgevoerd. DevTest Labs vereist dat de VM wordt uitgevoerd en dat de [Microsoft Azure Virtual Machine Agent (VM Agent)](../virtual-machines/extensions/agent-windows.md) is geïnstalleerd en gereed.
 
 > [!TIP]
-> Ga in het **Azure Portal**naar de pagina **artefacten beheren** voor de virtuele machine om te zien of de VM gereed is voor het Toep assen van artefacten. Er wordt een bericht aan de bovenkant van de pagina weer gegeven. 
+> Navigeer in de **Azure-portal**naar de pagina **Artefacten beheren** voor de VM om te zien of de VM klaar is voor het toepassen van artefacten. U ziet een bericht helemaal boven aan die pagina. 
 > 
-> Inspecteer met behulp van **Azure PowerShell**de vlag **canApplyArtifacts**, die alleen wordt geretourneerd wanneer u een Get-bewerking uitvouwt. Raadpleeg de volgende voorbeeld opdracht:
+> Met **Azure PowerShell**u de vlag **applyArtifacts**inspecteren, die alleen wordt geretourneerd wanneer u een GET-bewerking uitvouwt. Zie de volgende voorbeeldopdracht:
 
 ```powershell
 Select-AzSubscription -SubscriptionId $SubscriptionId | Out-Null
@@ -47,47 +47,47 @@ $vm.Properties.canApplyArtifacts
 ```
 
 ## <a name="ways-to-troubleshoot"></a>Manieren om problemen op te lossen 
-U kunt virtuele machines die zijn gemaakt met DevTest Labs en het Resource Manager-implementatie model, met een van de volgende methoden oplossen:
+U vm's die zijn gemaakt met DevTest Labs en het implementatiemodel Resource Manager oplossen met behulp van een van de volgende methoden:
 
-- **Azure Portal** -geweldig als u snel een visuele hint moet krijgen van wat het probleem kan veroorzaken.
-- **Azure PowerShell** : als u vertrouwd bent met een Power shell-prompt, kunt u snel DevTest Labs-resources opvragen met de Azure PowerShell-cmdlets.
-
-> [!TIP]
-> Zie [problemen met artefacten in het lab diagnosticeren](devtest-lab-troubleshoot-artifact-failure.md)voor meer informatie over het controleren van de uitvoering van artefacten binnen een virtuele machine.
-
-## <a name="symptoms-causes-and-potential-resolutions"></a>Symptomen, oorzaken en mogelijke oplossingen 
-
-### <a name="artifact-appears-to-hang"></a>Artefact lijkt vast te lopen   
-Een artefact lijkt vast te lopen totdat een vooraf gedefinieerde time-outperiode verloopt en het artefact is gemarkeerd als **mislukt**.
-
-Wanneer een artefact vastloopt, moet u eerst bepalen waar deze zich bevinden. Een artefact kan tijdens de uitvoering worden geblokkeerd met een van de volgende stappen:
-
-- **Tijdens de eerste aanvraag**. DevTest Labs maakt een Azure Resource Manager-sjabloon om het gebruik van de aangepaste script extensie (CSE) aan te vragen. Daarom wordt er achter de schermen een implementatie van een resource groep geactiveerd. Als er een fout optreedt op dit niveau, krijgt u details in de **activiteiten logboeken** van de resource groep voor de desbetreffende VM.  
-    - U kunt het activiteiten logboek openen via de navigatie balk van de VM-test omgeving. Wanneer u deze optie selecteert, ziet u een vermelding voor het **Toep assen van artefacten op de virtuele machine** (als de bewerking artefacten Toep assen rechtstreeks is geactiveerd) of het **toevoegen of wijzigen van virtuele machines** (als de bewerking artefacten Toep assen onderdeel was van het proces voor het maken van de VM).
-    - Zoek naar fouten onder deze vermeldingen. De fout wordt soms niet dienovereenkomstig gelabeld en u moet elk item onderzoeken.
-    - Zorg ervoor dat u de inhoud van de JSON-nettolading bekijkt wanneer u de details van elke vermelding onderzoekt. Er wordt mogelijk een fout weer geven aan de onderkant van het document.
-- **Bij het uitvoeren van het artefact**. Dit kan worden veroorzaakt door netwerk-of opslag problemen. Zie de betreffende sectie verderop in dit artikel voor meer informatie. Dit kan ook gebeuren door de manier waarop het script is gemaakt. Bijvoorbeeld:
-    - Een Power shell-script heeft **verplichte para meters**, maar er kan wel een waarde worden door gegeven, omdat u de gebruiker de optie leeg laat of omdat u geen standaard waarde voor de eigenschap hebt in het definitie bestand artifactfile. json. Het script is vastgelopen omdat het wacht op invoer van de gebruiker.
-    - Een Power shell-script **vereist invoer** van de gebruiker als onderdeel van de uitvoering. Scripts moeten zonder tussen komst van de gebruiker worden geschreven om op de achtergrond te worden uitgevoerd.
-- **Het duurt lang voordat de VM-agent gereed is**. Wanneer de virtuele machine voor het eerst wordt gestart, of wanneer de aangepaste script extensie voor het eerst wordt geïnstalleerd om artefacten toe te passen, moet de VM mogelijk een upgrade van de VM-agent uitvoeren of wachten tot de VM-agent is geïnitialiseerd. Het kan voor komen dat de VM-agent veel tijd in beslag neemt. In dergelijke gevallen raadpleegt u [overzicht van Azure virtual machine agent](../virtual-machines/extensions/agent-windows.md) voor verdere probleem oplossing.
-
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Controleren of het artefact lijkt vast te lopen vanwege het script
-
-1. Meld u aan bij de betreffende virtuele machine.
-2. Kopieer het script lokaal in de virtuele machine of zoek het naar de virtuele machine onder `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>`. Het is de locatie waar de artefact scripts worden gedownload.
-3. Voer het script lokaal uit met behulp van een opdracht prompt met verhoogde bevoegdheid, zodat dezelfde parameter waarden worden gebruikt om het probleem te veroorzaken.
-4. Bepaal of het script te lijden heeft aan ongewenste gedrag. Indien dit het geval is, moet u een update aanvragen bij het artefact (als deze afkomstig is van de open bare opslag plaats). of maak de correcties zelf (als deze afkomstig zijn van uw persoonlijke opslag plaats).
+- **Azure-portal** - geweldig als u snel een visuele hint wilt krijgen van wat het probleem kan veroorzaken.
+- **Azure PowerShell** - als u vertrouwd bent met een PowerShell-prompt, zoekt u snel DevTest Labs-resources op met de Azure PowerShell-cmdlets.
 
 > [!TIP]
-> U kunt problemen oplossen met artefacten die worden gehost in onze [open bare opslag plaats](https://github.com/Azure/azure-devtestlab) en de wijzigingen verzenden voor onze beoordeling en goed keuring. Zie de sectie **bijdragen** in het [README.MD](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/README.md) -document.
+> Zie [Artefact-fouten in het lab diagnosticeren voor](devtest-lab-troubleshoot-artifact-failure.md)meer informatie over het controleren van artefact-uitvoering binnen een vm.
+
+## <a name="symptoms-causes-and-potential-resolutions"></a>Symptomen, oorzaken en mogelijke resoluties 
+
+### <a name="artifact-appears-to-hang"></a>Artefact lijkt te hangen   
+Een artefact lijkt te hangen totdat een vooraf gedefinieerde time-outperiode is verstreken en het artefact is gemarkeerd als **Mislukt.**
+
+Wanneer een artefact lijkt te hangen, bepaal dan eerst waar het vastzit. Een artefact kan worden geblokkeerd bij een van de volgende stappen tijdens de uitvoering:
+
+- **Tijdens het eerste verzoek**. DevTest Labs maakt een Azure Resource Manager-sjabloon om het gebruik van de Custom Script Extension (CSE) aan te vragen. Daarom wordt achter de schermen een implementatie van een resourcegroep geactiveerd. Wanneer er een fout op dit niveau optreedt, krijgt u details in de **activiteitslogboeken** van de resourcegroep voor de vm in kwestie.  
+    - U hebt toegang tot het activiteitenlogboek via de navigatiebalk van de LAB VM-pagina. Wanneer u deze selecteert, ziet u een vermelding voor het **toepassen van artefacten op virtuele machines** (als de bewerking artefacten van toepassing rechtstreeks is geactiveerd) of virtuele machines toevoegen of **wijzigen** (als de bewerking van het toepassen van artefacten deel uitmaakte van het vm-creatieproces).
+    - Zoek naar fouten onder deze vermeldingen. Soms wordt de fout niet dienovereenkomstig getagd en moet u elk item onderzoeken.
+    - Bij het onderzoeken van de details van elk item, zorg ervoor dat de inhoud van de JSON payload te controleren. Mogelijk ziet u een fout onder aan dat document.
+- **Bij het uitvoeren van het artefact.** Het kan zijn als gevolg van netwerk- of opslagproblemen. Zie de betreffende sectie later in dit artikel voor meer informatie. Het kan ook gebeuren vanwege de manier waarop het script is geschreven. Bijvoorbeeld:
+    - Een PowerShell-script heeft **verplichte parameters,** maar een geeft er geen waarde aan door, omdat u de gebruiker toestaat om het leeg te laten of omdat u geen standaardwaarde hebt voor de eigenschap in het definitiebestand artifactfile.json. Het script wordt opgehangen omdat het wacht op invoer van de gebruiker.
+    - Een PowerShell-script **vereist gebruikersinvoer** als onderdeel van de uitvoering. Scripts moeten worden geschreven om stil te werken zonder tussenkomst van de gebruiker.
+- **VM Agent duurt lang om klaar te zijn.** Wanneer de VM voor het eerst wordt gestart of wanneer de aangepaste scriptextensie voor het eerst is geïnstalleerd om het verzoek om artefacten toe te passen, moet de VM mogelijk de VM-agent upgraden of wachten tot de VM-agent wordt geïnitialiseerd. Er kunnen services zijn waarvan de VM-agent afhankelijk is en die lang nodig hebben om te initialiseren. Zie in dergelijke gevallen [het overzicht van Azure Virtual Machine Agent](../virtual-machines/extensions/agent-windows.md) voor verdere probleemoplossing.
+
+### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Controleren of het artefact lijkt te hangen vanwege het script
+
+1. Log in bij de virtuele machine in kwestie.
+2. Kopieer het script lokaal in de virtuele machine of `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>`zoek het op de virtuele machine onder . Het is de locatie waar de artefactscripts worden gedownload.
+3. Met behulp van een opdrachtprompt met verhoogde bevoegdheid voert u het script lokaal uit, met dezelfde parameterwaarden die worden gebruikt om het probleem te veroorzaken.
+4. Bepaal of het script last heeft van ongewenst gedrag. Als dat het zo is, vraag dan een update van het artefact aan (als het afkomstig is van de openbare repo); of, maak de correcties zelf (als het van uw prive repo).
+
+> [!TIP]
+> U problemen met artefacten die worden gehost in onze [openbare repo](https://github.com/Azure/azure-devtestlab) corrigeren en de wijzigingen indienen voor onze beoordeling en goedkeuring. Zie de sectie **Bijdragen** in het [README.md](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/README.md) document.
 > 
-> Zie [AUTHORING.MD](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) -document voor meer informatie over het schrijven van uw eigen artefacten.
+> Zie AUTHORING.md document [voor](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) informatie over het schrijven van uw eigen artefacten.
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-vm-agent"></a>Controleren of het artefact lijkt vast te lopen vanwege de VM-agent:
-1. Meld u aan bij de betreffende virtuele machine.
-2. Ga in bestanden Verkenner naar **C:\WindowsAzure\logs**.
-3. Zoek en open bestand **WaAppAgent. log**.
-4. Zoek naar vermeldingen die laten zien wanneer de VM-agent wordt gestart en wanneer deze de initialisatie voltooit (dat wil zeggen, de eerste heartbeat wordt verzonden). Voor keur voor nieuwere vermeldingen of specifieke items rond de periode waarin het probleem zich voordoet.
+### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-vm-agent"></a>Ga als volgt te werk om te controleren of het artefact lijkt te hangen vanwege de VM-agent:
+1. Log in bij de virtuele machine in kwestie.
+2. Navigeer naar **C:\WindowsAzure\logs**.
+3. Zoek en open bestand **WaAppAgent.log**.
+4. Zoek naar items die worden weergegeven wanneer de VM-agent wordt gestart en wanneer de initialisatie wordt afgerond (dat wil zeggen dat de eerste hartslag wordt verzonden). Geef nieuwere vermeldingen of specifiek degenen die rond de periode waarvoor u het probleem ervaart.
 
     ```
     [00000006] [11/14/2019 05:52:13.44] [INFO]  WindowsAzureGuestAgent starting. Version 2.7.41491.949
@@ -98,43 +98,43 @@ Wanneer een artefact vastloopt, moet u eerst bepalen waar deze zich bevinden. Ee
     [00000006] [11/14/2019 06:02:33.43] [INFO]  StateExecutor initialization completed.
     [00000020] [11/14/2019 06:02:33.43] [HEART] WindowsAzureGuestAgent Heartbeat.
     ```
-    In dit voor beeld ziet u dat de start tijd van de VM-agent 10 minuten en 20 seconden heeft geduurd omdat er een heartbeat is verzonden. De oorzaak in dit geval was dat de OOBE-service veel tijd in beslag neemt.
+    In dit voorbeeld u zien dat de begintijd van de VM-agent 10 minuten en 20 seconden heeft geduurd omdat er een hartslag is verzonden. De oorzaak in dit geval was de OOBE-service die lang duurde om te starten.
 
 > [!TIP]
-> Zie [extensies en functies van virtuele Azure-machines](../virtual-machines/extensions/overview.md)voor algemene informatie over Azure-extensies.
+> Zie [Azure-extensies en -functies](../virtual-machines/extensions/overview.md)voor algemene informatie over Azure-extensies.
 
-## <a name="storage-errors"></a>Opslag fouten
-DevTest Labs vereist toegang tot het opslag account van de Lab dat is gemaakt om artefacten in de cache op te slaan. Wanneer in DevTest Labs een artefact wordt toegepast, worden de artefact configuratie en de bijbehorende bestanden van de geconfigureerde opslag plaatsen gelezen. DevTest Labs configureert standaard de toegang tot de **open bare artefact opslag plaats**.
+## <a name="storage-errors"></a>Opslagfouten
+DevTest Labs vereist toegang tot het opslagaccount van het lab dat is gemaakt om artefacten in de cache te cachen. Wanneer DevTest Labs een artefact toepast, worden de artefactconfiguratie en de bestanden ervan uit de geconfigureerde opslagplaatsen gelezen. Standaard configureert DevTest Labs de toegang tot de **openbare artefactrepo.**
 
-Afhankelijk van hoe een virtuele machine is geconfigureerd, heeft deze mogelijk geen rechtstreekse toegang tot deze opslag plaats. Daarom worden in DevTest Labs de artefacten in een opslag account opgeslagen die worden gemaakt wanneer het lab voor het eerst wordt geïnitialiseerd.
+Afhankelijk van hoe een VM is geconfigureerd, heeft deze mogelijk geen directe toegang tot deze repo. Daarom cachet DevTest Labs de artefacten in een opslagaccount dat is gemaakt wanneer het lab voor het eerst wordt geïnitialiseerd.
 
-Als toegang tot dit opslag account op een wille keurige manier wordt geblokkeerd, zoals wanneer het verkeer wordt geblokkeerd van de virtuele machine naar de Azure Storage-service, wordt er mogelijk een fout weer gegeven die vergelijkbaar is met de volgende:
+Als de toegang tot dit opslagaccount op enigerlei wijze wordt geblokkeerd, zoals wanneer verkeer wordt geblokkeerd van de VM naar de Azure Storage-service, ziet u mogelijk een fout die vergelijkbaar is met de volgende:
 
 ```shell
 CSE Error: Failed to download all specified files. Exiting. Exception: Microsoft.WindowsAzure.Storage.StorageException: The remote server returned an error: (403) Forbidden. ---> System.Net.WebException: The remote server returned an error: (403) Forbidden.
 ```
 
-De bovenstaande fout wordt weer gegeven in de sectie **implementatie bericht** van de pagina **artefact resultaten** onder **artefacten beheren**. Het wordt ook weer gegeven in de **activiteiten logboeken** onder de resource groep van de betreffende virtuele machine.
+De bovenstaande fout wordt weergegeven in de sectie **Implementatiebericht** op de pagina **Artefact-resultaten** onder **Artefacten beheren**. Het wordt ook weergegeven in de **activiteitslogboeken** onder de resourcegroep van de virtuele machine in kwestie.
 
-### <a name="to-ensure-communication-to-the-azure-storage-service-isnt-being-blocked"></a>Om ervoor te zorgen dat de communicatie met de Azure Storage-service niet wordt geblokkeerd:
+### <a name="to-ensure-communication-to-the-azure-storage-service-isnt-being-blocked"></a>Ga als u ervoor zorgen dat de communicatie met de Azure Storage-service niet wordt geblokkeerd:
 
-- **Controleren op toegevoegde netwerk beveiligings groepen (NSG)** . Het kan zijn dat er een abonnements beleid is toegevoegd waar Nsg's automatisch worden geconfigureerd in alle virtuele netwerken. Dit is ook van invloed op het virtuele standaard netwerk van de Lab, indien gebruikt, of een ander virtueel netwerk dat in uw Lab is geconfigureerd, dat wordt gebruikt voor het maken van Vm's.
-- **Controleer het standaard-Lab-opslag account** (dat wil zeggen, het eerste opslag account dat is gemaakt tijdens het maken van het lab, waarvan de naam begint met de letter ' a ' en eindigt met een nummer met meerdere cijfers, een\<labname\>#).
-    1. Navigeer naar de resource groep van de test omgeving.
-    2. Zoek de bron van het type **opslag account**, waarvan de naam overeenkomt met de Conventie.
-    3. Navigeer naar de pagina voor het opslag account met de naam **firewalls en virtuele netwerken**.
-    4. Zorg ervoor dat deze is ingesteld op **alle netwerken**. Als de optie **geselecteerde netwerken** is geselecteerd, zorgt u ervoor dat de virtuele netwerken van de test omgeving die worden gebruikt voor het maken van vm's, worden toegevoegd aan de lijst.
+- **Controleer op toegevoegde netwerkbeveiligingsgroepen (NSG).** Het kan zijn dat er een abonnementsbeleid is toegevoegd waarbij NSG's automatisch worden geconfigureerd in alle virtuele netwerken. Het zou ook van invloed op het standaard virtuele netwerk van het lab, indien gebruikt, of andere virtuele netwerk geconfigureerd in uw lab, gebruikt voor het maken van VM's.
+- **Controleer het opslagaccount van het standaardlab** (dat wil zeggen het eerste opslagaccount dat is gemaakt toen het lab werd gemaakt,\<waarvan\>de naam meestal begint met de letter "a" en eindigt met een multi-digit nummer dat wil zeggen, een labnaam #).
+    1. Navigeer naar de resourcegroep van het lab.
+    2. Zoek de bron van het type **opslagaccount**, waarvan de naam overeenkomt met de conventie.
+    3. Navigeer naar de pagina met opslagaccount met de naam **Firewalls en virtuele netwerken.**
+    4. Zorg ervoor dat het is ingesteld op **alle netwerken.** Als de optie **Geselecteerde netwerken** is geselecteerd, moet u ervoor zorgen dat de virtuele netwerken van het lab die worden gebruikt om VM's te maken, aan de lijst worden toegevoegd.
 
-Zie [Azure Storage firewalls en virtuele netwerken configureren](../storage/common/storage-network-security.md)voor meer gedetailleerde probleem oplossing.
+Zie [Azure Storage-firewalls en virtuele netwerken configureren](../storage/common/storage-network-security.md)voor meer diepgaande probleemoplossing.
 
 > [!TIP]
-> **Controleer de regels voor de netwerk beveiligings groep**. Gebruik [IP-stroom controleren](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md#use-ip-flow-verify) om te controleren of het verkeer van of naar een virtuele machine wordt geblokkeerd door een regel in een netwerk beveiligings groep. U kunt ook de juiste regels voor beveiligings groepen controleren om ervoor te zorgen **dat binnenkomende NSG** regel bestaat. Zie [using effectief security rules to Troubleshooting VM Traffic Flow](../virtual-network/diagnose-network-traffic-filter-problem.md)voor meer informatie.
+> **Regels voor netwerkbeveiliging controleren**. Gebruik [IP-stroomcontrole](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md#use-ip-flow-verify) om te controleren of een regel in een netwerkbeveiligingsgroep verkeer van of naar een virtuele machine blokkeert. U ook effectieve regels voor beveiligingsgroepen controleren om ervoor te zorgen dat de **NSG-regel voor** binnenkomende toestaan bestaat. Zie [Effectieve beveiligingsregels gebruiken om de vm-verkeersstroom op te lossen voor](../virtual-network/diagnose-network-traffic-filter-problem.md)meer informatie.
 
-## <a name="other-sources-of-error"></a>Andere fout bronnen
-Er zijn andere minder voorkomende fout bronnen beschikbaar. Controleer elke beoordeling om te zien of deze van toepassing is op uw aanvraag. Hier volgt een van deze: 
+## <a name="other-sources-of-error"></a>Andere bronnen van fouten
+Er zijn andere minder frequente mogelijke bronnen van fouten. Zorg ervoor dat u elk te evalueren om te zien of het van toepassing is op uw zaak. Hier is een van hen: 
 
-- **Het persoonlijke toegangs token voor de persoonlijke opslag plaats is verlopen**. Wanneer het artefact is verlopen, worden geen scripts weer gegeven die verwijzen naar artefacten vanuit een opslag plaats met een verlopen persoonlijk toegangs token.
+- **Verlopen persoonlijke toegangstoken voor de privérepo.** Wanneer het is verlopen, wordt het artefact niet weergegeven en worden scripts die verwijzen naar artefacten uit een opslagplaats met een verlopen privétoegangstoken dienovereenkomstig mislukt.
 
 ## <a name="next-steps"></a>Volgende stappen
-Als er geen fouten zijn opgetreden en u nog steeds geen artefacten kunt Toep assen, kan een ondersteunings incident voor Azure worden vastgelegd. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+Als geen van deze fouten is opgetreden en u nog steeds geen artefacten toepassen, u een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.
 

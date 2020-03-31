@@ -1,6 +1,6 @@
 ---
-title: Lijst groepslid maatschap voor bulk down load-Azure Active Directory Portal | Microsoft Docs
-description: Voeg gebruikers bulksgewijs toe in het beheer centrum van Azure.
+title: Lijst met bulkgroepengroeplidmaatschap - Azure Active Directory-portal | Microsoft Documenten
+description: Voeg gebruikers in bulk toe in het Azure-beheercentrum.
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,36 +14,36 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e29aacb1357509e2b000a9d05c5ced8f9a30dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72517154"
 ---
-# <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Leden van een groep (preview) bulksgewijs downloaden in Azure Active Directory
+# <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Bulkdownloadleden van een groep (voorbeeld) in Azure Active Directory
 
-Met Azure Active Directory-Portal (Azure AD) kunt u de leden van een groep in uw organisatie bulksgewijs downloaden naar een bestand met door komma's gescheiden waarden (CSV).
+Met Azure Active Directory (Azure AD)-portal u de leden van een groep in uw organisatie bulk downloaden naar een CSV-bestand (comma-separate values).
 
-## <a name="to-bulk-download-group-membership"></a>Groepslid maatschap bulksgewijs downloaden
+## <a name="to-bulk-download-group-membership"></a>Groepslidmaatschap voor bulk downloaden
 
-1. Meld u aan bij [de Azure Portal](https://portal.azure.com) met een Administrator-account van de gebruiker in de organisatie. Groeps eigenaren kunnen ook leden van groepen waarvan ze eigenaar zijn, bulksgewijs downloaden.
-1. Selecteer in azure AD **groepen**  > **alle groepen**.
-1. Open de groep waarvan u het lidmaatschap wilt downloaden en selecteer **leden**.
-1. Selecteer **leden downloaden** op de pagina **leden** om een CSV-bestand te downloaden met daarin de groeps leden.
+1. Meld u aan bij [de Azure-portal](https://portal.azure.com) met een gebruikersbeheerdersaccount in de organisatie. Groepseigenaren kunnen ook massaal leden downloaden van groepen waarvan ze eigenaar zijn.
+1. Selecteer in Azure AD **Alle** > **groepen groepen**.
+1. Open de groep waarvan u het lidmaatschap wilt downloaden en selecteer **vervolgens Leden**.
+1. Selecteer **op** de pagina Leden de optie **Leden downloaden** om een CSV-bestand met de groepsleden te downloaden.
 
-   ![De opdracht leden downloaden bevindt zich op de profiel pagina voor de groep](./media/groups-bulk-download-members/download-panel.png)
+   ![De opdracht Leden downloaden staat op de profielpagina voor de groep](./media/groups-bulk-download-members/download-panel.png)
 
-## <a name="check-download-status"></a>Download status controleren
+## <a name="check-download-status"></a>Downloadstatus controleren
 
-U kunt de status van al uw bulk aanvragen in behandeling bekijken op de pagina **resultaten van bulk bewerking (preview)** .
+U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk operation results (preview).**
 
-   ![Op de pagina resultaten van bulk bewerking wordt de status van de bulksgewijze aanvraag weer gegeven](./media/groups-bulk-download-members/bulk-center.png)
+   ![Op de pagina Resultaten bulkbewerkingen ziet u de status van bulkaanvragen](./media/groups-bulk-download-members/bulk-center.png)
 
-## <a name="bulk-download-service-limits"></a>Service limieten bulksgewijs downloaden
+## <a name="bulk-download-service-limits"></a>Limieten voor bulkdownloadservice
 
-Elke bulk activiteit voor het downloaden van een lijst met groeps leden kan Maxi maal één uur worden uitgevoerd. Zo kunt u een lijst met ten minste 500.000 leden downloaden.
+Elke bulkactiviteit om een lijst met groepsleden te downloaden, kan maximaal een uur duren. Hiermee u een lijst van ten minste 500.000 leden downloaden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Groeps leden bulksgewijs importeren](groups-bulk-import-members.md)
-- [Groeps leden bulksgewijs verwijderen](groups-bulk-download-members.md)
+- [Leden van bulkimportgroepen](groups-bulk-import-members.md)
+- [Groepsleden in bulk verwijderen](groups-bulk-download-members.md)

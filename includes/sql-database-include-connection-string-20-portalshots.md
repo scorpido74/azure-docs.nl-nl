@@ -1,7 +1,7 @@
 ---
-title: De verbindingsreeks ophalen met de Azure-portal
-description: De verbindingsreeks ophalen met de Azure-portal
-keywords: SQL-verbinding, verbindingsreeks
+title: De verbindingstekenreeks verkrijgen van de Azure-portal
+description: De verbindingstekenreeks verkrijgen van de Azure-portal
+keywords: sql-verbinding, verbindingstekenreeks
 services: sql-database
 author: dalechen
 manager: craigg
@@ -11,34 +11,34 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176115"
 ---
-### <a name="obtain-the-connection-string-from-the-azure-portal"></a>De verbindingsreeks ophalen met de Azure-portal
-Gebruik de [Azure-portal](https://portal.azure.com/) om op te halen van de verbindingsreeks die nodig is voor uw clientprogramma om te communiceren met Azure SQL Database.
+### <a name="obtain-the-connection-string-from-the-azure-portal"></a>De verbindingstekenreeks verkrijgen van de Azure-portal
+Gebruik de [Azure-portal](https://portal.azure.com/) om de verbindingstekenreeks te verkrijgen die nodig is voor uw clientprogramma om te communiceren met Azure SQL Database.
 
-1. Selecteer **alle services** > **SQL-databases**.
+1. Selecteer Alle**SQL-databases** **van services** > .
 
-2. Voer de naam van uw database in het filtertekstvak in de buurt van de linkerbovenhoek van de **SQL-databases** blade.
+2. Voer de naam van uw database in in het filtertekstvak linksboven in het **SQL-databasesblad.**
 
 3. Selecteer de rij voor uw database.
 
-4. Nadat de blade wordt weergegeven voor uw database, selecteer visual gemak de **minimaliseren** knoppen om samen te vouwen de blades die u hebt gebruikt voor het bladeren door en filteren van de database.
+4. Nadat het blad voor uw database is weergegeven, selecteert u voor visueel gemak de knoppen **minimaliseren** om de bladen samen te vouwen die u hebt gebruikt voor browsen en databasefiltering.
 
-5. Selecteer op de blade voor uw database **databaseverbindingsreeksen tonen**.
+5. Selecteer **databaseverbindingstekenreeksen**weergeven op het blad voor uw database.
 
-6. Kopieer de juiste verbindingsreeks. dat wil zeggen als u van plan bent de ADO.NET-verbinding-clientbibliotheek gebruiken, kopieert u de juiste tekenreeks van de **ADO.NET** tabblad.
+6. Kopieer de juiste verbindingstekenreeks. d.w.z. Als u van plan bent de ADO.NET verbindingsbibliotheek te gebruiken, kopieert u de juiste tekenreeks van het **tabblad ADO.NET.**
 
-    ![Kopieer de ADO-verbindingsreeks voor uw database][20-CopyAdoConnectionString]
+    ![De ADO-verbindingstekenreeks voor uw database kopiëren][20-CopyAdoConnectionString]
 
-7. Indien nodig, kunt u de verbindingsreeks bewerken. dat wil zeggen uw wachtwoord in de connection string invoegen of verwijderen "@&lt;servername&gt;' van de gebruikersnaam als naam van de gebruikersnaam of de server te lang zijn.
+7. Bewerk de verbindingstekenreeks indien nodig. d.w.z. Uw wachtwoord invoegen in&lt;de&gt;verbindingstekenreeks of "@ servername" van de gebruikersnaam verwijderen als de gebruikersnaam of servernaam te lang is.
 
-8. In de ene indeling of een andere, de verbindingsinformatie in uw programma clientcode te plakken.
+8. Plak in een of andere indeling de verbindingstekenreeksgegevens in de code van het clientprogramma.
 
-Zie voor meer informatie, [tekenreeksen voor databaseverbindingen en -configuratiebestanden](https://msdn.microsoft.com/library/ms254494.aspx).
+Zie [Verbindingstekenreeksen en configuratiebestanden](https://msdn.microsoft.com/library/ms254494.aspx)voor meer informatie .
 
 <!-- Image references. -->
 

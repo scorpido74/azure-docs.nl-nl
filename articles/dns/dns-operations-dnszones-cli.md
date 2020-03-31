@@ -1,6 +1,6 @@
 ---
-title: DNS-zones beheren in Azure DNS-Azure CLI | Microsoft Docs
-description: U kunt DNS-zones beheren met behulp van Azure CLI. In dit artikel wordt beschreven hoe u DNS-zones bijwerkt, verwijdert en maakt op Azure DNS.
+title: DNS-zones beheren in Azure DNS - Azure CLI | Microsoft Documenten
+description: U DNS-zones beheren met Azure CLI. In dit artikel ziet u hoe u DNS-zones op Azure DNS bijwerkt, verwijdert en maakt.
 services: dns
 documentationcenter: na
 author: rohinkoul
@@ -14,23 +14,23 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
 ms.openlocfilehash: 413c2ab3ee04249c2bb52bf42ca6a31a58fb9082
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76936934"
 ---
-# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>DNS-zones beheren in Azure DNS met behulp van de Azure CLI
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>DNS-zones in Azure DNS beheren met de Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
-> * [PowerShell](dns-operations-dnszones.md)
+> * [Powershell](dns-operations-dnszones.md)
 > * [Azure-CLI](dns-operations-dnszones-cli.md)
 
 
-In deze hand leiding wordt uitgelegd hoe u uw DNS-zones beheert met behulp van de platformoverschrijdende Azure CLI, die beschikbaar is voor Windows, Mac en Linux. U kunt ook uw DNS-zones beheren met behulp van [Azure PowerShell](dns-operations-dnszones.md) of de Azure Portal.
+In deze handleiding ziet u hoe u uw DNS-zones beheert met behulp van het cross-platform Azure CLI, dat beschikbaar is voor Windows, Mac en Linux. U uw DNS-zones ook beheren met [Azure PowerShell](dns-operations-dnszones.md) of de Azure-portal.
 
-Deze hand leiding behandelt specifiek voor open bare DNS-zones. Zie [aan de slag met Azure DNS private zones met Azure cli](private-dns-getstarted-cli.md)voor meer informatie over het gebruik van Azure CLI voor het beheren van persoonlijke Zones in azure DNS.
+Deze handleiding gaat specifiek over openbare DNS-zones. Zie [Aan de slag met Azure DNS-privézones met Azure CLI](private-dns-getstarted-cli.md)voor informatie over het gebruik van Azure CLI voor het beheren van privézones in Azure DNS.
 
 ## <a name="introduction"></a>Inleiding
 
@@ -68,8 +68,8 @@ Kies welk Azure-abonnement u wilt gebruiken.
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>Optioneel: Azure DNS Private Zones-functie installeren/gebruiken
-De functie Azure DNS privé zone is beschikbaar via een uitbrei ding van de Azure CLI. De extensie dns van Azure CLI installeren 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>Optioneel: de functie Azure DNS Private Zones installeren/gebruiken
+De azure DNS Private Zone-functie is beschikbaar via een extensie naar de Azure CLI. De extensie dns van Azure CLI installeren 
 ```
 az extension add --name dns
 ``` 
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Ondersteuning vragen
 
-Alle Azure CLI-opdrachten met betrekking tot Azure DNS beginnen met `az network dns`. Help is beschikbaar voor elke opdracht met behulp van de `--help` optie (korte vorm `-h`).  Bijvoorbeeld:
+Alle Azure CLI-opdrachten met betrekking `az network dns`tot Azure DNS beginnen met . Hulp is beschikbaar voor `--help` elke opdracht `-h`met behulp van de optie (kort formulier).  Bijvoorbeeld:
 
 ```azurecli
 az network dns --help
@@ -98,25 +98,25 @@ az network dns zone create --help
 
 Een DNS-zone wordt gemaakt met de opdracht `az network dns zone create`. Zie `az network dns zone create -h` voor help.
 
-In het volgende voor beeld wordt een DNS-zone met de naam *contoso.com* gemaakt in de resource groep met de naam *MyResourceGroup*:
+In het volgende voorbeeld wordt een DNS-zone *contoso.com* in de resourcegroep genaamd *MyResourceGroup:*
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
 ```
 
-### <a name="to-create-a-dns-zone-with-tags"></a>Een DNS-zone met Tags maken
+### <a name="to-create-a-dns-zone-with-tags"></a>Een DNS-zone maken met tags
 
-In het volgende voor beeld ziet u hoe u een DNS-zone met twee [Azure Resource Manager Tags](dns-zones-records.md#tags)maakt, *project = demo* en *env = test*, met behulp van de para meter `--tags` (korte vorm `-t`):
+In het volgende voorbeeld ziet u hoe u een DNS-zone maakt met twee [Azure Resource Manager-tags](dns-zones-records.md#tags), *project = demo* en *env = test,* met behulp van de `--tags` parameter (kort formulier): `-t`
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
 ```
 
-## <a name="get-a-dns-zone"></a>Een DNS-zone ophalen
+## <a name="get-a-dns-zone"></a>Een DNS-zone oppakken
 
-Gebruik `az network dns zone show`om een DNS-zone op te halen. Zie `az network dns zone show --help` voor help.
+Als u een DNS-zone wilt ophalen, gebruikt u `az network dns zone show`. Zie `az network dns zone show --help` voor help.
 
-In het volgende voor beeld worden de DNS-zone *contoso.com* en de bijbehorende gegevens uit de *MyResourceGroup*van de resource groep geretourneerd. 
+In het volgende voorbeeld wordt de DNS-zone *contoso.com* en de bijbehorende gegevens van resourcegroep *MyResourceGroup geretourneerd.* 
 
 ```azurecli
 az network dns zone show --resource-group myresourcegroup --name contoso.com
@@ -167,9 +167,9 @@ az network dns zone list
 
 Wijzigingen aan een DNS-zoneresource kunnen met `az network dns zone update` worden gemaakt. Zie `az network dns zone update --help` voor help.
 
-Met deze opdracht worden geen DNS-recordsets in de zone bijgewerkt (zie [DNS-records beheren](dns-operations-recordsets-cli.md)). De opdracht wordt alleen gebruikt voor het bijwerken van eigenschappen van de zoneresource zelf. Deze eigenschappen zijn momenteel beperkt tot de [Azure Resource Manager labels](dns-zones-records.md#tags) voor de zone resource.
+Met deze opdracht worden geen DNS-recordsets in de zone bijgewerkt (zie [DNS-records beheren](dns-operations-recordsets-cli.md)). De opdracht wordt alleen gebruikt voor het bijwerken van eigenschappen van de zoneresource zelf. Deze eigenschappen zijn momenteel beperkt tot de ['tags' van Azure Resource Manager](dns-zones-records.md#tags) voor de zonebron.
 
-In het volgende voor beeld ziet u hoe u de tags op een DNS-zone bijwerkt. De bestaande tags worden vervangen door de opgegeven waarde.
+In het volgende voorbeeld ziet u hoe u de tags op een DNS-zone bijwerkt. De bestaande tags worden vervangen door de opgegeven waarde.
 
 ```azurecli
 az network dns zone update --resource-group myresourcegroup --name contoso.com --set tags.team=support
@@ -186,7 +186,7 @@ DNS-zones kunnen worden verwijderd met `az network dns zone delete`. Zie `az net
 
 Met deze opdracht wordt om bevestiging gevraagd. De optionele `--yes`-schakelaar onderdrukt deze vraag.
 
-In het volgende voor beeld ziet u hoe u de zone *contoso.com* verwijdert uit de resource groep *MyResourceGroup*.
+In het volgende voorbeeld ziet u hoe u de zone *contoso.com* verwijdert uit resourcegroep *MyResourceGroup*.
 
 ```azurecli
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
@@ -194,7 +194,7 @@ az network dns zone delete --resource-group myresourcegroup --name contoso.com
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [beheren van record sets en records](dns-getstarted-create-recordset-cli.md) in uw DNS-zone.
+Meer informatie over het [beheren van recordsets en records](dns-getstarted-create-recordset-cli.md) in uw DNS-zone.
 
-Meer informatie over hoe u [uw domein kunt delegeren naar Azure DNS](dns-domain-delegation.md).
+Meer informatie over het [delegeren van uw domein aan Azure DNS](dns-domain-delegation.md).
 

@@ -9,21 +9,21 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: ceda7bd6bd165df1eece555c6ce8a9a6c863b2c1
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77112306"
 ---
 ### <a name="create-a-user-assigned-identity"></a>Een door de gebruiker toegewezen identiteit maken
 
-Maak een identiteit met de naam *myACRTasksId* in uw abonnement met behulp van de opdracht [AZ Identity Create][az-identity-create] . U kunt dezelfde resource groep gebruiken die u eerder hebt gebruikt voor het maken van een container register of een andere.
+Maak een identiteit met de naam *myACRTasksId* in uw abonnement met behulp van de opdracht [AZ-identiteit maken.][az-identity-create] U dezelfde resourcegroep gebruiken die u eerder hebt gebruikt om een containerregister of een ander register te maken.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRTasksId
 ```
 
-Als u de door de gebruiker toegewezen identiteit in de volgende stappen wilt configureren, gebruikt u de opdracht [AZ Identity show][az-identity-show] om de resource-id, de principal-id en de client-id van de identiteit op te slaan in variabelen.
+Als u de door de gebruiker toegewezen identiteit wilt configureren in de volgende stappen, gebruikt u de opdracht [AZ-identiteitweergeven][az-identity-show] om de bron-id, de hoofd-id en de client-id van de identiteit in variabelen op te slaan.
 
 ```azurecli
 # Get resource ID of the user-assigned identity

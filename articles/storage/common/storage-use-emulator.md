@@ -1,6 +1,6 @@
 ---
-title: De Azure-opslag emulator gebruiken voor ontwikkeling en tests | Microsoft Docs
-description: De Azure-opslag emulator biedt een gratis lokale ontwikkel omgeving voor het ontwikkelen en testen van uw Azure Storage-toepassingen.
+title: Gebruik de Azure-opslagemulator voor ontwikkeling en testen | Microsoft Documenten
+description: De Azure-opslagemulator biedt een gratis lokale ontwikkelomgeving voor het ontwikkelen en testen van uw Azure Storage-toepassingen.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 08/21/2019
@@ -8,102 +8,102 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.openlocfilehash: 1f13efeb5c2ebcb8b23dea6f9ae997039972f089
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72428316"
 ---
-# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>De Azure-opslag emulator gebruiken voor ontwikkelen en testen
+# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>De Azure-opslagemulator gebruiken voor ontwikkeling en testen
 
-De Microsoft Azure Storage emulator is een hulp programma waarmee de Azure Blob-, wachtrij-en tabel services worden geëmuleerd voor lokale ontwikkelings doeleinden. U kunt uw toepassing lokaal testen op de opslag Services zonder een Azure-abonnement te maken of kosten te betalen. Als u tevreden bent over hoe uw toepassing werkt in de emulator, schakelt u over naar een Azure-opslag account in de Cloud.
+De Microsoft Azure-opslagemulator is een hulpmiddel dat de azure blob-, wachtrij- en tabelservices emuleert voor lokale ontwikkelingsdoeleinden. U uw toepassing lokaal testen op de opslagservices zonder een Azure-abonnement te maken of kosten te maken. Als u tevreden bent over de manier waarop uw toepassing werkt in de emulator, schakelt u over naar het gebruik van een Azure-opslagaccount in de cloud.
 
-## <a name="get-the-storage-emulator"></a>De opslag emulator ophalen
+## <a name="get-the-storage-emulator"></a>Download de opslagemulator
 
-De opslag emulator is beschikbaar als onderdeel van de [Microsoft Azure SDK](https://azure.microsoft.com/downloads/). U kunt de opslag emulator ook installeren met behulp van het [zelfstandige installatie programma](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (direct downloaden). Als u de opslag emulator wilt installeren, moet u beschikken over beheerders bevoegdheden op uw computer.
+De opslagemulator is beschikbaar als onderdeel van de [Microsoft Azure SDK.](https://azure.microsoft.com/downloads/) U ook de opslag emulator installeren met behulp van de [standalone installer](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (direct download). Als u de opslagemulator wilt installeren, moet u beheerdersbevoegdheden op uw computer hebben.
 
-De opslag emulator wordt momenteel alleen uitgevoerd in Windows. Als u een opslag emulator voor Linux nodig hebt, is een van de opties die door de community worden onderhouden, open-source Storage emulator- [Azurite](https://github.com/azure/azurite).
+De opslagemulator draait momenteel alleen op Windows. Als u een opslag emulator voor Linux, een optie is de gemeenschap onderhouden, open-source opslag emulator [Azurite](https://github.com/azure/azurite).
 
 > [!NOTE]
-> Gegevens die in één versie van de opslag emulator zijn gemaakt, zijn niet gegarandeerd toegankelijk als u een andere versie gebruikt. Als u uw gegevens voor de lange termijn wilt behouden, raden we u aan om die gegevens op te slaan in een Azure-opslag account, in plaats van in de-opslag emulator.
+> Gegevens die zijn gemaakt in één versie van de opslagemulator zijn niet gegarandeerd toegankelijk wanneer ze een andere versie gebruiken. Als u uw gegevens voor de lange termijn moet blijven gebruiken, raden we u aan deze gegevens op te slaan in een Azure-opslagaccount, in plaats van in de opslagemulator.
 > 
-> De opslag-emulator is afhankelijk van specifieke versies van de OData-bibliotheken. Het vervangen van de OData-Dll's die worden gebruikt door de opslag emulator met andere versies wordt niet ondersteund en kan leiden tot onverwacht gedrag. Elk versie van OData dat door de opslag service wordt ondersteund, kan echter worden gebruikt voor het verzenden van aanvragen naar de emulator.
+> De opslagemulator is afhankelijk van specifieke versies van de OData-bibliotheken. Het vervangen van de OData-DLL's die door de opslagemulator worden gebruikt door andere versies wordt niet ondersteund en kan onverwacht gedrag veroorzaken. Elke versie van OData die door de opslagservice wordt ondersteund, kan echter worden gebruikt om aanvragen naar de emulator te verzenden.
 
-## <a name="how-the-storage-emulator-works"></a>Hoe de opslag emulator werkt
+## <a name="how-the-storage-emulator-works"></a>Hoe de opslagemulator werkt
 
-De opslag emulator maakt gebruik van een lokaal Microsoft SQL Server 2012 Express LocalDB-exemplaar voor het emuleren van Azure Storage-services. U kunt ervoor kiezen om de opslag emulator te configureren voor toegang tot een lokaal exemplaar van SQL Server in plaats van het LocalDB-exemplaar. Zie de sectie [de opslag emulator starten en initialiseren](#start-and-initialize-the-storage-emulator) verderop in dit artikel voor meer informatie.
+De opslagemulator maakt gebruik van een lokale Microsoft SQL Server 2012 Express LocalDB-instantie om Azure-opslagservices te emuleren. U ervoor kiezen om de opslagemulator te configureren om toegang te krijgen tot een lokaal exemplaar van SQL Server in plaats van het LocalDB-exemplaar. Zie de sectie [Start en initialiseer de opslagemulator](#start-and-initialize-the-storage-emulator) later in dit artikel voor meer informatie.
 
-De opslag emulator maakt verbinding met SQL Server of LocalDB met behulp van Windows-verificatie.
+De opslagemulator maakt verbinding met SQL Server of LocalDB met Windows-verificatie.
 
-Er zijn enkele verschillen in functionaliteit tussen de opslag-emulator en Azure Storage-services. Zie het gedeelte [verschillen tussen de opslag emulator en de Azure Storage](#differences-between-the-storage-emulator-and-azure-storage) verderop in dit artikel voor meer informatie over deze verschillen.
+Er bestaan enkele verschillen in functionaliteit tussen de opslagemulator en Azure-opslagservices. Zie de sectie [Verschillen tussen de opslagemulator en Azure Storage](#differences-between-the-storage-emulator-and-azure-storage) later in dit artikel voor meer informatie over deze verschillen.
 
-## <a name="start-and-initialize-the-storage-emulator"></a>De opslag emulator starten en initialiseren
+## <a name="start-and-initialize-the-storage-emulator"></a>Start en initialiseer de opslagemulator
 
-De Azure-opslag emulator starten:
+Ga als eerste over de startemulator voor Azure-opslag:
 
-1. Selecteer de knop **Start** of druk op de **Windows** -toets.
-2. Begin met het typen van `Azure Storage Emulator`.
-3. Selecteer de emulator in de lijst met weer gegeven toepassingen.
+1. Selecteer de knop **Start** of druk op de **Windows-toets.**
+2. Begin `Azure Storage Emulator`met typen .
+3. Selecteer de emulator in de lijst met weergegeven toepassingen.
 
-Wanneer de opslag-emulator wordt gestart, wordt een opdracht prompt venster weer gegeven. U kunt dit console venster gebruiken om de opslag emulator te starten en te stoppen. U kunt ook gegevens wissen, status ophalen en de emulator initialiseren vanaf de opdracht prompt. Zie voor meer informatie de sectie [Naslag informatie over het opdracht regel hulpprogramma voor Storage emulator](#storage-emulator-command-line-tool-reference) verderop in dit artikel.
+Wanneer de opslagemulator wordt gestart, verschijnt er een opdrachtpromptvenster. U dit consolevenster gebruiken om de opslagemulator te starten en te stoppen. U ook gegevens wissen, status krijgen en de emulator initialiseren via de opdrachtprompt. Zie de verwijzingssectie Voor de [opdrachtregel van de opslagemulator](#storage-emulator-command-line-tool-reference) later in dit artikel.
 
 > [!NOTE]
-> De Azure Storage-emulator wordt mogelijk niet correct gestart als er een andere opslag emulator, zoals Azurite, op het systeem wordt uitgevoerd.
+> De Azure-opslagemulator wordt mogelijk niet correct gestart als een andere opslagemulator, zoals Azurite, op het systeem wordt uitgevoerd.
 
 Wanneer de emulator wordt gestart, ziet u een pictogram in het systeemvak op de taakbalk van Windows.
 
-Wanneer u het opdracht prompt venster voor de opslag-emulator sluit, blijft de opslag emulator actief. Als u de opslag emulator console opnieuw wilt openen, volgt u de voor gaande stappen als u de opslag emulator start.
+Wanneer u het venster Opdrachtprompt voor opslagemulator sluit, blijft de opslagemulator worden uitgevoerd. Als u het venster Van de Opslagemulator-console opnieuw wilt weergeven, volgt u de voorgaande stappen alsof u de opslagemulator start.
 
-De eerste keer dat u de opslag emulator uitvoert, wordt de lokale opslag omgeving voor u geïnitialiseerd. Tijdens het initialisatie proces wordt een Data Base gemaakt in LocalDB en worden de HTTP-poorten voor elke lokale opslag service gereserveerd.
+De eerste keer dat u de opslagemulator uitvoert, wordt de lokale opslagomgeving voor u geïnitialiseerd. Het initialisatieproces maakt een database in LocalDB en reserveert HTTP-poorten voor elke lokale opslagservice.
 
-De opslag emulator wordt standaard geïnstalleerd op `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator`.
+De opslagemulator is standaard `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator`geïnstalleerd op .
 
 > [!TIP]
-> U kunt de [Microsoft Azure Storage Explorer](https://storageexplorer.com) gebruiken om met lokale Storage-emulator bronnen te werken. Zoek naar ' (emulator-standaard poorten) (sleutel) ' onder ' lokale & gekoppeld ' in de structuur Storage Explorer resources Nadat u de opslag emulator hebt geïnstalleerd en gestart.
+> U de [Microsoft Azure Storage Explorer](https://storageexplorer.com) gebruiken om te werken met emulatorbronnen voor lokale opslag. Zoek naar '(Emulator - Standaardpoorten) (Sleutel)" onder 'Lokale & gekoppeld' in de bronnenstructuur van Storage Explorer nadat u de opslagemulator hebt geïnstalleerd en gestart.
 >
 
-### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>Initialiseer de opslag emulator om een andere SQL database te gebruiken
+### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>Initialiseer de opslagemulator om een andere SQL-database te gebruiken
 
-U kunt het opdracht regel programma voor de opslag-emulator gebruiken om de opslag emulator te initialiseren zodat deze verwijst naar een ander SQL database exemplaar dan het standaard LocalDB-exemplaar:
+U het opdrachtregelgereedschap voor opslagemulatorgebruiken om de opslagemulator te initialiseren om een andere SQL-databaseinstantie dan de standaard instantie LocalDB aan te wijzen:
 
-1. Open het venster Storage emulator console, zoals beschreven in de sectie [de opslag emulator starten en initialiseren](#start-and-initialize-the-storage-emulator) .
-1. Typ in het console venster de volgende opdracht, waarbij `<SQLServerInstance>` de naam van de SQL Server instantie is. Als u LocalDB wilt gebruiken, geeft u `(localdb)\MSSQLLocalDb` op als het SQL Server exemplaar.
+1. Open het venster van de Opslagemulatorconsole zoals beschreven in het [startscherm en initialiseer de sectie opslagemulator.](#start-and-initialize-the-storage-emulator)
+1. Typ in het consolevenster de `<SQLServerInstance>` volgende opdracht, waar is de naam van de SQL Server-instantie. Als u LocalDB `(localdb)\MSSQLLocalDb` wilt gebruiken, geeft u op als SQL Server-instantie.
 
    `AzureStorageEmulator.exe init /server <SQLServerInstance>`
 
-   U kunt ook de volgende opdracht gebruiken, waarmee de emulator het standaard SQL Server-exemplaar gebruikt:
+   U ook de volgende opdracht gebruiken, die de emulator aanstuurt om de standaard SQL Server-instantie te gebruiken:
 
    `AzureStorageEmulator.exe init /server .`
 
-   U kunt ook de volgende opdracht gebruiken, waarmee de data base opnieuw wordt geïnitialiseerd naar het standaard LocalDB-exemplaar:
+   U ook de volgende opdracht gebruiken, waarmee de database opnieuw wordt geïnitialt naar de standaardinstantie LocalDB:
 
    `AzureStorageEmulator.exe init /forceCreate`
 
-Zie Naslag informatie over [het opdracht regel programma voor opslag-emulator](#storage-emulator-command-line-tool-reference)voor meer gegevens over deze opdrachten.
+Zie Naslaginformatie over de [opdrachtopdracht opslagemulator.](#storage-emulator-command-line-tool-reference)
 
 > [!TIP]
-> U kunt de [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) gebruiken om uw SQL Server exemplaren te beheren, met inbegrip van de LocalDB-installatie. Geef in het dialoog venster SMSS **verbinding maken met server** de `(localdb)\MSSQLLocalDb` op in het veld **Server naam:** om verbinding te maken met het LocalDB-exemplaar.
+> U de [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) gebruiken om uw SQL Server-exemplaren te beheren, inclusief de LocalDB-installatie. Geef in het dialoogvenster SMSS `(localdb)\MSSQLLocalDb` Connect to **Server** op in het veld **Server:** maak verbinding met het instantie LocalDB.
 
-## <a name="authenticating-requests-against-the-storage-emulator"></a>Aanvragen verifiëren op basis van de opslag emulator
+## <a name="authenticating-requests-against-the-storage-emulator"></a>Aanvragen verifiëren tegen de opslagemulator
 
-Als u de opslag emulator hebt geïnstalleerd en gestart, kunt u de code hierop testen. Elke aanvraag die u voor de opslag emulator maakt, moet worden geautoriseerd, tenzij dit een anonieme aanvraag is. U kunt aanvragen voor de opslag emulator machtigen met behulp van gedeelde sleutel verificatie of met een Shared Access Signature (SAS).
+Zodra u de opslagemulator hebt geïnstalleerd en gestart, u uw code ertegen testen. Elk verzoek dat u doet tegen de opslagemulator moet worden geautoriseerd, tenzij het een anoniem verzoek is. U aanvragen tegen de opslagemulator autoriseren met behulp van Shared Key-verificatie of met een gedeelde toegangshandtekening (SAS).
 
-### <a name="authorize-with-shared-key-credentials"></a>Autoriseren met de referenties van de gedeelde sleutel
+### <a name="authorize-with-shared-key-credentials"></a>Autoriseren met referenties gedeelde sleutel
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-Zie [Azure Storage-verbindings reeksen configureren](../storage-configure-connection-string.md)voor meer informatie over verbindings reeksen.
+Zie [Azure Storage-verbindingstekenreeksen configureren](../storage-configure-connection-string.md)voor meer informatie over verbindingstekenreeksen .
 
-### <a name="authorize-with-a-shared-access-signature"></a>Autoriseren met een hand tekening voor gedeelde toegang
+### <a name="authorize-with-a-shared-access-signature"></a>Autoriseren met een handtekening voor gedeelde toegang
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Sommige client bibliotheken van Azure Storage, zoals de Xamarin-bibliotheek, bieden alleen ondersteuning voor verificatie met een SAS-token (Shared Access Signature). U kunt het SAS-token maken met behulp van [Storage Explorer](https://storageexplorer.com/) of een andere toepassing die ondersteuning biedt voor verificatie op basis van gedeelde sleutels.
+Sommige Azure-opslagclientbibliotheken, zoals de Xamarin-bibliotheek, ondersteunen alleen verificatie met een SAS-token (Shared Access Signature). U het SAS-token maken met [Storage Explorer](https://storageexplorer.com/) of een andere toepassing die verificatie van gedeelde sleutels ondersteunt.
 
-U kunt ook een SAS-token genereren met behulp van Azure PowerShell. In het volgende voor beeld wordt een SAS-token met volledige machtigingen voor een BLOB-container gegenereerd:
+U ook een SAS-token genereren met Azure PowerShell. In het volgende voorbeeld wordt een SAS-token gegenereerd met volledige machtigingen voor een blobcontainer:
 
-1. Installeer Azure PowerShell als u dit nog niet hebt gedaan (gebruik de nieuwste versie van de Azure PowerShell-cmdlets wordt aanbevolen). Zie [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps)voor installatie-instructies.
-2. Open Azure PowerShell en voer de volgende opdrachten uit, waarbij u `CONTAINER_NAME` vervangt door de naam van uw keuze:
+1. Installeer Azure PowerShell als u dat nog niet hebt gedaan (het gebruik van de nieuwste versie van de Azure PowerShell-cmdlets wordt aanbevolen). Zie [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps)voor installatie-instructies.
+2. Open Azure PowerShell en voer de `CONTAINER_NAME` volgende opdrachten uit, vervangen door een naam van uw keuze:
 
 ```powershell
 $context = New-AzStorageContext -Local
@@ -115,59 +115,59 @@ $now = Get-Date
 New-AzStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
 ```
 
-De resulterende URI voor de Shared Access-hand tekening voor de nieuwe container moet er ongeveer als volgt uitzien:
+De resulterende uri met gedeelde toeganghandtekening voor de nieuwe container moet vergelijkbaar zijn met:
 
 ```
 http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
 ```
 
-De gedeelde toegangs handtekening die is gemaakt met dit voor beeld is één dag geldig. De hand tekening verleent volledige toegang (lezen, schrijven, verwijderen, lijst) aan blobs in de container.
+De gedeelde toegangshandtekening die met dit voorbeeld is gemaakt, is één dag geldig. De handtekening verleent volledige toegang (lezen, schrijven, verwijderen, lijst) aan blobs in de container.
 
-Zie voor meer informatie over gedeelde toegangs handtekeningen [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](storage-sas-overview.md).
+Zie Beperkte toegang tot Azure [Storage-bronnen verlenen met behulp van gedeelde toegangshandtekeningen (SAS)](storage-sas-overview.md)voor meer informatie over handtekeningen voor gedeelde toegang.
 
-## <a name="addressing-resources-in-the-storage-emulator"></a>Resources adresseren in de opslag emulator
+## <a name="addressing-resources-in-the-storage-emulator"></a>Bronnen in de opslagemulator aanpakken
 
-De service-eind punten voor de opslag emulator wijken af van de eind punten voor een Azure-opslag account. De lokale computer voert geen domein naam omzetting uit, waardoor de emulator-eind punten van de opslag lokale adressen zijn.
+De serviceeindpunten voor de opslagemulator verschillen van de eindpunten voor een Azure-opslagaccount. De lokale computer doet geen domeinnaamresolutie, waarbij de eindpunten voor opslagemulators lokale adressen moeten zijn.
 
-Wanneer u een resource in een Azure-opslag account adresseert, gebruikt u het volgende schema. De account naam maakt deel uit van de URI-hostnaam en de bron die wordt geadresseerd, maakt deel uit van het URI-pad:
+Wanneer u een resource in een Azure-opslagaccount aanbiedt, gebruikt u het volgende schema. De accountnaam maakt deel uit van de URI-hostnaam en de resource die wordt geadresseerd, maakt deel uit van het URI-pad:
 
 `<http|https>://<account-name>.<service-name>.core.windows.net/<resource-path>`
 
-De volgende URI is bijvoorbeeld een geldig adres voor een BLOB in een Azure-opslag account:
+De volgende URI is bijvoorbeeld een geldig adres voor een blob in een Azure-opslagaccount:
 
 `https://myaccount.blob.core.windows.net/mycontainer/myblob.txt`
 
-Omdat de lokale computer geen domein naam omzetting heeft, maakt de account naam deel uit van het URI-pad in plaats van de naam van de host. Gebruik de volgende URI-indeling voor een bron in de-opslag emulator:
+Omdat de lokale computer geen domeinnaamresolutie doet, maakt de accountnaam deel uit van het URI-pad in plaats van de hostnaam. Gebruik de volgende URI-indeling voor een bron in de opslagemulator:
 
 `http://<local-machine-address>:<port>/<account-name>/<resource-path>`
 
-Het volgende adres kan bijvoorbeeld worden gebruikt om toegang te krijgen tot een BLOB in de-opslag emulator:
+Het volgende adres kan bijvoorbeeld worden gebruikt voor toegang tot een blob in de opslagemulator:
 
 `http://127.0.0.1:10000/myaccount/mycontainer/myblob.txt`
 
-De service-eind punten voor de opslag emulator zijn:
+De serviceeindpunten voor de opslagemulator zijn:
 
-* Blob service: `http://127.0.0.1:10000/<account-name>/<resource-path>`
-* Queue-service: `http://127.0.0.1:10001/<account-name>/<resource-path>`
-* Table service: `http://127.0.0.1:10002/<account-name>/<resource-path>`
+* Blob-service:`http://127.0.0.1:10000/<account-name>/<resource-path>`
+* Wachtrijservice:`http://127.0.0.1:10001/<account-name>/<resource-path>`
+* Tabelservice:`http://127.0.0.1:10002/<account-name>/<resource-path>`
 
-### <a name="addressing-the-account-secondary-with-ra-grs"></a>Adresseren van het account secundair met RA-GRS
+### <a name="addressing-the-account-secondary-with-ra-grs"></a>Het aanpakken van de account secundair met RA-GRS
 
-Vanaf versie 3,1 ondersteunt de opslag emulator geo-redundante replicatie met lees toegang (RA-GRS). U kunt toegang krijgen tot de secundaire locatie door deze toe te voegen-secundair aan de account naam. Het volgende adres kan bijvoorbeeld worden gebruikt voor toegang tot een blob met behulp van de alleen-lezen secundair in de opslag emulator:
+Vanaf versie 3.1 ondersteunt de opslagemulator georedundante replicatie (RA-GRS) met leestoegang. U hebt toegang tot de secundaire locatie door -secundair aan de accountnaam toe te schrijven. Het volgende adres kan bijvoorbeeld worden gebruikt voor toegang tot een blob met behulp van het alleen-lezen secundaire in de opslagemulator:
 
 `http://127.0.0.1:10000/myaccount-secondary/mycontainer/myblob.txt`
 
 > [!NOTE]
-> Gebruik de Storage-client bibliotheek voor .NET versie 3,2 of hoger voor programmatische toegang tot de secundaire met de opslag emulator. Raadpleeg de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx) voor meer informatie.
+> Gebruik de opslagclientbibliotheek voor .NET-versie 3.2 of hoger voor programmatische toegang tot het secundaire middel met de opslagemulator. Zie de [Microsoft Azure Storage Client Library voor .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) voor meer informatie.
 >
 >
 
-## <a name="storage-emulator-command-line-tool-reference"></a>Naslag informatie over het opdracht regel hulpprogramma voor opslag emulator
+## <a name="storage-emulator-command-line-tool-reference"></a>Referentie voor opdrachtregelvoor opslagemulator
 
-Vanaf versie 3,0 wordt een console venster weer gegeven wanneer u de opslag emulator start. Gebruik de opdracht regel in het console venster om de emulator te starten en te stoppen. U kunt ook een query uitvoeren voor de status en andere bewerkingen uitvoeren vanaf de opdracht regel.
+Vanaf versie 3.0 wordt een consolevenster weergegeven wanneer u de Opslagemulator start. Gebruik de opdrachtregel in het consolevenster om de emulator te starten en te stoppen. U ook vragen naar status en andere bewerkingen uitvoeren vanaf de opdrachtregel.
 
 > [!NOTE]
-> Als u de Microsoft Azure Compute emulator hebt geïnstalleerd, wordt er een pictogram van een systeemvak weer gegeven wanneer u de opslag emulator start. Klik met de rechter muisknop op het pictogram om een menu weer te geven dat een grafische manier biedt om de opslag emulator te starten en te stoppen.
+> Als u de Microsoft Azure compute emulator hebt geïnstalleerd, wordt een systeemladepictogram weergegeven wanneer u de Opslagemulator start. Klik met de rechtermuisknop op het pictogram om een menu te onthullen dat een grafische manier biedt om de Storage Emulator te starten en te stoppen.
 >
 >
 
@@ -181,150 +181,150 @@ Typ `/help` bij de opdrachtprompt om een lijst met opties te zien.
 
 | Optie | Beschrijving | Opdracht | Argumenten |
 | --- | --- | --- | --- |
-| **Beginnen** |Hiermee wordt de opslag emulator gestart. |`AzureStorageEmulator.exe start [-inprocess]` |*-Opnieuw verwerken*: Start de emulator in het huidige proces in plaats van een nieuw proces te maken. |
-| **Tab** |Hiermee stopt u de opslag emulator. |`AzureStorageEmulator.exe stop` | |
-| **Status** |Hiermee wordt de status van de opslag emulator afgedrukt. |`AzureStorageEmulator.exe status` | |
-| **Maak** |Hiermee wist u de gegevens in alle services die zijn opgegeven op de opdracht regel. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*BLOB*: verwijdert BLOB-gegevens. <br/>*Queue*: Hiermee worden de wachtrij gegevens gewist. <br/>*tabel*: tabel gegevens worden gewist. <br/>*all*: Hiermee worden alle gegevens in alle services gewist. |
-| **Init** |Voert eenmalige initialisatie uit om de emulator in te stellen. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Server serverName\instanceName*: Hiermee geeft u de server die als host fungeert voor het SQL-exemplaar. <br/>*-sqlinstance INSTANCENAME*: Hiermee geeft u de naam op van het SQL-exemplaar dat moet worden gebruikt in het standaard Server exemplaar. <br/>*-forcecreate*: Hiermee wordt het maken van de SQL database afgedwongen, zelfs als dit al bestaat. <br/>*-skipcreate*: Hiermee slaat u het maken van de SQL database over. Dit heeft prioriteit boven-forcecreate.<br/>*-reserveports*: probeert de HTTP-poorten te reserveren die aan de services zijn gekoppeld.<br/>*-unreserveports*: probeert reserve ringen te verwijderen voor de HTTP-poorten die zijn gekoppeld aan de services. Dit heeft prioriteit boven-reserveports.<br/>*-inproces*: voert de initialisatie uit in het huidige proces in plaats van een nieuw proces te starten. Het huidige proces moet worden gestart met verhoogde machtigingen als poort reserveringen worden gewijzigd. |
+| **Begin** |Start de opslagemulator op. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess:* Start de emulator in het huidige proces in plaats van een nieuw proces te maken. |
+| **Stoppen** |Stopt de opslagemulator. |`AzureStorageEmulator.exe stop` | |
+| **Status** |Hiermee wordt de status van de opslagemulator afgedrukt. |`AzureStorageEmulator.exe status` | |
+| **Wissen** |Wist de gegevens in alle services die op de opdrachtregel zijn opgegeven. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob:* Wist blobgegevens. <br/>*wachtrij:* maakt wachtrijgegevens gewist. <br/>*tabel*: Wist tabelgegevens. <br/>*alles*: Wist alle gegevens in alle diensten. |
+| **Init** |Doet eenmalige initialisatie om de emulator in te stellen. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-serverserverName\instanceName:* Hiermee geeft u de server op die de SQL-instantie host. <br/>*-sqlinstance instanceName:* hiermee geeft u de naam op van de SQL-instantie die moet worden gebruikt in de standaardserverinstantie. <br/>*-forcecreate*: Krachten creatie van de SQL-database, zelfs als deze al bestaat. <br/>*-skipcreate*: Slaat het maken van de SQL-database over. Dit heeft voorrang op -forcecreate.<br/>*-reserveports*: Pogingen om de HTTP-poorten die aan de services zijn gekoppeld te reserveren.<br/>*-unreserveports*: Pogingen om reserveringen voor de HTTP-poorten die aan de services zijn gekoppeld, te verwijderen. Dit heeft voorrang op -reserveports.<br/>*-inprocess*: Voert initialisatie uit in het huidige proces in plaats van een nieuw proces te spawnen. Het huidige proces moet worden gestart met verhoogde machtigingen als u poortreserveringen wijzigt. |
 
-## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Verschillen tussen de opslag emulator en het Azure Storage
+## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Verschillen tussen de opslagemulator en Azure Storage
 
-Omdat de opslag emulator een lokale geëmuleerde omgeving is, zijn er verschillen tussen het gebruik van de emulator en een Azure-opslag account in de Cloud:
+Omdat de opslagemulator een lokale geëmuleerde omgeving is, zijn er verschillen tussen het gebruik van de emulator en een Azure-opslagaccount in de cloud:
 
-* De opslag emulator ondersteunt slechts één vast account en een bekende verificatie sleutel.
-* De opslag emulator is geen schaal bare opslag service en biedt geen ondersteuning voor een groot aantal gelijktijdige clients.
-* Zoals beschreven in [het adresseren van resources in de-opslag emulator](#addressing-resources-in-the-storage-emulator), worden bronnen anders behandeld in de-opslag emulator versus een Azure-opslag account. Het verschil is dat het omzetten van de domein naam beschikbaar is in de Cloud, maar niet op de lokale computer.
-* Vanaf versie 3,1 ondersteunt het opslag emulator-account geo-redundante replicatie met lees toegang (RA-GRS). In de emulator hebben alle accounts RA-GRS ingeschakeld en is er nooit enige vertraging tussen de primaire en secundaire replica's. De bewerkingen BLOB-service statistieken ophalen, data base service-statistieken ophalen en Data Service statistieken ophalen worden ondersteund voor het account secundair en retour neren altijd de waarde van het element `LastSyncTime` als het huidige tijdstip volgens de onderliggende SQL database.
-* De service-eind punten van de bestands service en het SMB-protocol worden momenteel niet ondersteund in de-opslag emulator.
-* Als u een versie van de opslag Services gebruikt die niet wordt ondersteund door de emulator, retourneert de emulator een VersionNotSupportedByEmulator-fout (HTTP-status code 400-ongeldige aanvraag).
+* De opslagemulator ondersteunt slechts één vast account en een bekende verificatiesleutel.
+* De opslagemulator is geen schaalbare opslagservice en ondersteunt geen groot aantal gelijktijdige clients.
+* Zoals beschreven in [Adresseringsbronnen in de opslagemulator,](#addressing-resources-in-the-storage-emulator)worden resources anders aangepakt in de opslagemulator ten opzichte van een Azure-opslagaccount. Het verschil is omdat domeinnaamresolutie beschikbaar is in de cloud, maar niet op de lokale computer.
+* Vanaf versie 3.1 ondersteunt het opslagemulatoraccount georedundante replicatie (RA-GRS) met leestoegang. In de emulator hebben alle accounts RA-GRS ingeschakeld en is er nooit vertraging tussen de primaire en secundaire replica's. De statistieken van Blob-service statistieken, wachtrijservicestatistieken en statistieken van tabelservicestatistieken worden ondersteund op `LastSyncTime` het secundaire account en geven altijd de waarde van het antwoordelement als de huidige tijd terug volgens de onderliggende SQL-database.
+* De eindpunten voor de bestandsservice en de SMB-protocolservice worden momenteel niet ondersteund in de opslagemulator.
+* Als u een versie van de opslagservices gebruikt die niet door de emulator wordt ondersteund, retourneert de emulator een VersionNotSupportedByEmulator-fout (HTTP-statuscode 400 - Bad Request).
 
-### <a name="differences-for-blob-storage"></a>Verschillen voor Blob Storage
+### <a name="differences-for-blob-storage"></a>Verschillen voor Blob-opslag
 
-De volgende verschillen zijn van toepassing op Blob Storage in de emulator:
+De volgende verschillen zijn van toepassing op Blob-opslag in de emulator:
 
-* De opslag emulator ondersteunt alleen BLOB-grootten tot Maxi maal 2 GB.
-* De maximale lengte van een BLOB-naam in de opslag emulator is 256 tekens, terwijl de maximum lengte van een BLOB-naam in Azure Storage 1024 tekens is.
-* Met incrementele kopie kunnen moment opnamen van overschreven blobs worden gekopieerd. dit retourneert een fout bij de service.
-* Het ophalen van paginabereiken verschilt niet tussen moment opnamen die zijn gekopieerd met een incrementele Kopieer-blob.
-* Een put-BLOB-bewerking kan worden uitgevoerd op een blob die zich in de opslag emulator bevindt met een actieve lease, zelfs als de lease-ID niet is opgegeven in de aanvraag.
-* Toevoeg-BLOB-bewerkingen worden niet ondersteund door de emulator. Als u een bewerking probeert uit te voeren op een toevoeg-blob, wordt een FeatureNotSupportedByEmulator-fout geretourneerd (HTTP-status code 400-ongeldige aanvraag).
+* De opslagemulator ondersteunt alleen blobformaten tot 2 GB.
+* De maximale lengte van een blobnaam in de opslagemulator is 256 tekens, terwijl de maximale lengte van een blobnaam in Azure Storage 1024 tekens is.
+* Incrementele kopie maakt het mogelijk snapshots van overschreven blobs te kopiëren, waardoor een fout op de service wordt geretourneerd.
+* Get Page Ranges Diff werkt niet tussen gekopieerde momentopnamen met Incrementele kopieerblob.
+* Een Put Blob-bewerking kan slagen tegen een blob die bestaat in de opslagemulator met een actieve lease, zelfs als de lease-id niet is opgegeven in de aanvraag.
+* Blob-bewerkingen toevoegen worden niet ondersteund door de emulator. Als u een bewerking op een toevoegende blob probeert, wordt een FeatureNotSupportedByEmulator-fout (HTTP-statuscode 400 - Bad Request) geretourneerd.
 
-### <a name="differences-for-table-storage"></a>Verschillen voor tabel opslag
+### <a name="differences-for-table-storage"></a>Verschillen voor tabelopslag
 
-De volgende verschillen zijn van toepassing op tabel opslag in de emulator:
+De volgende verschillen zijn van toepassing op tabelopslag in de emulator:
 
-* De datum eigenschappen in de Table service in de opslag emulator ondersteunen alleen het bereik dat wordt ondersteund door SQL Server 2005 (ze moeten later zijn dan 1 januari 1753). Alle datums vóór 1 januari 1753 worden gewijzigd in deze waarde. De nauw keurigheid van datums is beperkt tot de nauw keurigheid van SQL Server 2005, wat betekent dat datums nauw keurig zijn tot 1/300th van een seconde.
-* De opslag emulator ondersteunt waarden van de eigenschappen van de partitie sleutel en de rijwaarden van minder dan 512 bytes. De totale grootte van de account naam, de tabel naam en de naam van de sleutel eigenschap kan niet groter zijn dan 900 bytes.
-* De totale grootte van een rij in een tabel in de opslag emulator is beperkt tot minder dan 1 MB.
-* In de-opslag emulator worden eigenschappen van het gegevens type `Edm.Guid` of `Edm.Binary` alleen ondersteund door de Opera tors `Equal (eq)` en `NotEqual (ne)` in query filter-teken reeksen.
+* Datumeigenschappen in de tabelservice in de opslagemulator ondersteunen alleen het bereik dat wordt ondersteund door SQL Server 2005 (ze moeten later zijn dan 1 januari 1753). Alle data voor 1 januari 1753 worden in deze waarde gewijzigd. De nauwkeurigheid van datums is beperkt tot de precisie van SQL Server 2005, wat betekent dat datums nauwkeurig zijn tot 1/300ste van een seconde.
+* De opslagemulator ondersteunt partitiesleutel- en rijsleuteleigenschapwaarden van minder dan 512 bytes per stuk. De totale grootte van de accountnaam, tabelnaam en belangrijke eigenschapsnamen samen mag niet meer dan 900 bytes bedragen.
+* De totale grootte van een rij in een tabel in de opslagemulator is beperkt tot minder dan 1 MB.
+* In de opslagemulator ondersteunen `Edm.Guid` eigenschappen `Edm.Binary` van `Equal (eq)` gegevenstype of ondersteunen alleen de en `NotEqual (ne)` vergelijkingsoperatoren in queryfiltertekenreeksen.
 
-### <a name="differences-for-queue-storage"></a>Verschillen voor wachtrij opslag
+### <a name="differences-for-queue-storage"></a>Verschillen voor wachtrijopslag
 
-Er zijn geen verschillen die specifiek zijn voor de wachtrij opslag in de emulator.
+Er zijn geen verschillen die specifiek zijn voor wachtrijopslag in de emulator.
 
-## <a name="storage-emulator-release-notes"></a>Release opmerkingen bij de opslag-emulator
+## <a name="storage-emulator-release-notes"></a>Opslag emulator release notes
 
-### <a name="version-510"></a>Versie 5,10
+### <a name="version-510"></a>Versie 5.10
 
-* De opslag emulator weigert versie 2019-07-07 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+* De opslagemulator weigert versie 2019-07-07 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten niet.
 
-### <a name="version-59"></a>Versie 5,9
+### <a name="version-59"></a>Versie 5.9
 
-* De opslag emulator weigert versie 2019-02-02 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+* De opslagemulator weigert versie 2019-02-02 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten niet.
 
-### <a name="version-58"></a>Versie 5,8
+### <a name="version-58"></a>Versie 5.8
 
-* De opslag emulator weigert versie 2018-11-09 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+* De opslagemulator weigert versie 2018-11-09 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten niet.
 
-### <a name="version-57"></a>Versie 5,7
+### <a name="version-57"></a>Versie 5.7
 
-* Er is een fout opgelost die kan leiden tot een storing als logboek registratie is ingeschakeld.
+* Fixed a bug that would cause a crash if logging was enabled.
 
-### <a name="version-56"></a>Versie 5,6
+### <a name="version-56"></a>Versie 5.6
 
-* De opslag emulator ondersteunt nu versie 2018-03-28 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+* De opslagemulator ondersteunt nu versie 2018-03-28 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten.
 
-### <a name="version-55"></a>Versie 5,5
+### <a name="version-55"></a>Versie 5.5
 
-* De opslag emulator ondersteunt nu versie 2017-11-09 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
-* Er is ondersteuning toegevoegd voor de eigenschap **created** blob, waarmee de aanmaak tijd van de BLOB wordt geretourneerd.
+* De opslagemulator ondersteunt nu versie 2017-11-09 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten.
+* Er is ondersteuning toegevoegd voor de eigenschap **Blob Created,** waarmee de creatietijd van de blob wordt geretourneerd.
 
-### <a name="version-54"></a>Versie 5,4
+### <a name="version-54"></a>Versie 5.4
 
-* Ter verbetering van de stabiliteit van de installatie probeert de emulator niet langer poorten te reserveren tijdens de installatie. Als u poort reserveringen wilt, gebruikt u de optie *-reserveports* van de opdracht **init** om deze op te geven.
+* Om de stabiliteit van de installatie te verbeteren, probeert de emulator niet langer poorten te reserveren bij de installatietijd. Als u poortreserveringen wilt, gebruikt u de optie *-reservepoorten* van de **opdracht init** om deze op te geven.
 
-### <a name="version-53"></a>Versie 5,3
+### <a name="version-53"></a>Versie 5.3
 
-* De opslag emulator ondersteunt nu versie 2017-07-29 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+* De opslagemulator ondersteunt nu versie 2017-07-29 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten.
 
-### <a name="version-52"></a>Versie 5,2
+### <a name="version-52"></a>Versie 5.2
 
-* De opslag emulator ondersteunt nu versie 2017-04-17 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
-* Er is een fout opgelost waarbij tabel eigenschaps waarden niet goed worden gecodeerd.
+* De opslagemulator ondersteunt nu versie 2017-04-17 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten.
+* Fixed a bug where table property values waren not being properly coded.
 
-### <a name="version-51"></a>Versie 5,1
+### <a name="version-51"></a>Versie 5.1
 
-* Er is een fout opgelost waarbij de opslag emulator de `DataServiceVersion`-header retourneert in sommige antwoorden waarbij de service niet is.
+* Fixed a bug where the `DataServiceVersion` storage emulator was returning the header in some responses where the service was not.
 
-### <a name="version-50"></a>Versie 5,0
+### <a name="version-50"></a>Versie 5.0
 
-* Het installatie programma voor de opslag emulator controleert niet meer op bestaande MSSQL-en .NET Framework-installaties.
-* Het installatie programma voor de opslag emulator maakt de data base niet meer als onderdeel van de installatie. De data base wordt, indien nodig, nog steeds gemaakt als onderdeel van het opstarten.
-* Voor het maken van de data base is geen uitbrei ding meer nodig.
-* Poort reserveringen zijn niet meer nodig om te worden opgestart.
-* Voegt de volgende opties toe aan `init`: `-reserveports` (vereist uitbrei ding), `-unreserveports` (vereist uitbrei ding), `-skipcreate`.
-* Met de optie voor de gebruikers interface van de opslag emulator op het pictogram van het systeemvak wordt nu de opdracht regel interface gestart. De oude gebruikers interface is niet meer beschikbaar.
-* Sommige Dll's zijn verwijderd of de naam ervan is gewijzigd.
+* De installer van de opslagemulator controleert niet meer op bestaande MSSQL- en .NET Framework-installaties.
+* De opslag emulator installer maakt niet langer de database als onderdeel van de installatie. Database wordt nog steeds gemaakt indien nodig als onderdeel van het opstarten.
+* Het maken van gegevens vereist geen hoogte meer.
+* Poortreserveringen zijn niet langer nodig voor het opstarten.
+* Hiermee worden de `init` `-reserveports` volgende opties `-unreserveports` toegevoegd aan `-skipcreate`: (vereist hoogte), (vereist hoogte), .
+* De optie Gebruikersinterface van De Emulator van de Opslag op het systeemdienbladpictogram lanceert nu de opdracht-lijninterface. De oude GUI is niet meer beschikbaar.
+* Sommige DLL's zijn verwijderd of hernoemd.
 
-### <a name="version-46"></a>Versie 4,6
+### <a name="version-46"></a>Versie 4.6
 
-* De opslag emulator ondersteunt nu versie 2016-05-31 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+* De opslagemulator ondersteunt nu versie 2016-05-31 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten.
 
-### <a name="version-45"></a>Versie 4,5
+### <a name="version-45"></a>Versie 4.5
 
-* Er is een fout opgelost die ertoe heeft geleid dat de installatie en initialisatie mislukt wanneer de naam van de back-up van de data base wordt gewijzigd.
+* Fixed a bug that caused installation and initialization to fail when the backing database is renamed.
 
-### <a name="version-44"></a>Versie 4,4
+### <a name="version-44"></a>Versie 4.4
 
-* De opslag emulator ondersteunt nu versie 2015-12-11 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
-* De garbage collection van de opslag emulator van BLOB-gegevens is nu efficiënter bij het omgaan met een groot aantal blobs.
-* Er is een fout opgelost waardoor de XML van de container-ACL iets anders kan worden gevalideerd dan hoe de opslag service dit doet.
-* Er is een fout opgelost die soms de maximale en minimale datum/tijd-waarden in de verkeerde tijd zone heeft veroorzaakt.
+* De opslagemulator ondersteunt nu versie 2015-12-11 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten.
+* De opslag emulator garbage collection van blob gegevens is nu efficiënter bij het omgaan met grote aantallen blobs.
+* Fixed a bug that caused container ACL XML to be validated iets differently from how the storage service does it.
+* Fixed a bug that sometimes caused max and min DateTime values to be reported in the incorrect time zone.
 
-### <a name="version-43"></a>Versie 4,3
+### <a name="version-43"></a>Versie 4.3
 
-* De opslag emulator ondersteunt nu versie 2015-07-08 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+* De opslagemulator ondersteunt nu versie 2015-07-08 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten.
 
-### <a name="version-42"></a>Versie 4,2
+### <a name="version-42"></a>Versie 4.2
 
-* De opslag emulator ondersteunt nu versie 2015-04-05 van de opslag Services op blob-, wachtrij-en Table service-eind punten.
+* De opslagemulator ondersteunt nu versie 2015-04-05 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten.
 
-### <a name="version-41"></a>Versie 4,1
+### <a name="version-41"></a>Versie 4.1
 
-* De opslag emulator ondersteunt nu versie 2015-02-21 van de opslag Services op blob-, wachtrij-en Table service-eind punten. De nieuwe toevoeg-BLOB-functies worden niet ondersteund.
-* De emulator retourneert nu een zinvolle fout melding voor niet-ondersteunde versies van opslag Services. U kunt het beste de nieuwste versie van de emulator gebruiken. Als u een VersionNotSupportedByEmulator-fout krijgt (HTTP-status code 400-ongeldige aanvraag), downloadt u de nieuwste versie van de emulator.
-* Er is een probleem opgelost waarbij een race condition heeft geleid tot onjuiste tabel entiteit gegevens tijdens gelijktijdige samenvoeg bewerkingen.
+* De opslagemulator ondersteunt nu versie 2015-02-21 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten. Het ondersteunt niet de nieuwe Functies van De Blob van het toevoegen.
+* De emulator retourneert nu een zinvolle foutmelding voor niet-ondersteunde versies van opslagservices. We raden u aan de nieuwste versie van de emulator te gebruiken. Als u een VersionNotSupportedByEmulator-fout krijgt (HTTP-statuscode 400 - Bad Request), downloadt u de nieuwste versie van de emulator.
+* Fixed a bug wherein a race condition caused table entity data to be incorrect during concurrent merge operations.
 
-### <a name="version-40"></a>Versie 4,0
+### <a name="version-40"></a>Versie 4.0
 
-* De naam van het uitvoer bare bestand van de opslag-emulator is gewijzigd in *AzureStorageEmulator. exe*.
+* De uitvoerbare opslagemulator is omgedoopt tot *AzureStorageEmulator.exe*.
 
-### <a name="version-32"></a>Versie 3,2
+### <a name="version-32"></a>Versie 3.2
 
-* De opslag emulator ondersteunt nu versie 2014-02-14 van de opslag Services op blob-, wachtrij-en Table service-eind punten. Bestands service-eind punten worden momenteel niet ondersteund in de-opslag emulator. Zie [versie beheer voor de Azure Storage-services](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) voor meer informatie over versie 2014-02-14.
+* De opslagemulator ondersteunt nu versie 2014-02-14 van de opslagservices op blob-, wachtrij- en tabelserviceeindpunten. Eindpunten van bestandsservice worden momenteel niet ondersteund in de opslagemulator. Zie [Versioning voor de Azure Storage Services](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) voor meer informatie over versie 2014-02-14.
 
-### <a name="version-31"></a>Versie 3,1
+### <a name="version-31"></a>Versie 3.1
 
-* Geografisch redundante opslag met lees toegang (RA-GRS) wordt nu ondersteund in de-opslag emulator. De Api's `Get Blob Service Stats`, `Get Queue Service Stats` en `Get Table Service Stats` worden ondersteund voor het account secundair en retour neren altijd de waarde van het LastSyncTime-antwoord element als de huidige tijd volgens de onderliggende SQL database. Gebruik de Storage-client bibliotheek voor .NET versie 3,2 of hoger voor programmatische toegang tot de secundaire met de opslag emulator. Zie de Microsoft Azure Storage-client bibliotheek voor .NET-referentie voor meer informatie.
+* Read-access geo-redundante opslag (RA-GRS) wordt nu ondersteund in de opslagemulator. De `Get Blob Service Stats` `Get Queue Service Stats`, `Get Table Service Stats` , en API's worden ondersteund voor het account secundaire en zal altijd de waarde van de LastSyncTime reactie element als de huidige tijd volgens de onderliggende SQL-database. Gebruik de opslagclientbibliotheek voor .NET-versie 3.2 of hoger voor programmatische toegang tot het secundaire middel met de opslagemulator. Zie de Microsoft Azure Storage Client Library for .NET Reference voor meer informatie.
 
-### <a name="version-30"></a>Versie 3,0
+### <a name="version-30"></a>Versie 3.0
 
-* De Azure-opslag emulator wordt niet meer in hetzelfde pakket geleverd als de compute-emulator.
-* De Graphical User Interface van de opslag-emulator is afgeschaft. Het is vervangen door een script bare opdracht regel interface. Zie voor meer informatie over de opdracht regel interface Naslag informatie over het opdracht regel hulpprogramma van Storage emulator. De grafische interface blijft aanwezig in versie 3,0, maar kan alleen worden geopend wanneer de compute emulator wordt geïnstalleerd door met de rechter muisknop op het pictogram van het systeemvak te klikken en de gebruikers interface van de opslag emulator weer geven te selecteren.
-* Versie 2013-08-15 van de Azure Storage-services wordt nu volledig ondersteund. (Eerder deze versie werd alleen ondersteund door de preview-versie van de opslag emulator.)
+* De Azure-opslagemulator wordt niet langer verzonden in hetzelfde pakket als de compute emulator.
+* De grafische gebruikersinterface van de opslagemulator is afgeschaft. Het is vervangen door een scriptbare command-line interface. Zie Naslaginformatie over de opdrachtregelinterface voor meer informatie over de opdrachtregelinterface. De grafische interface blijft aanwezig in versie 3.0, maar kan alleen worden geopend wanneer de Compute Emulator is geïnstalleerd door met de rechtermuisknop op het systeemladepictogram te klikken en de Emulator-gebruikersinterface van Opslag weer te geven.
+* Versie 2013-08-15 van de Azure-opslagservices wordt nu volledig ondersteund. (Voorheen werd deze versie alleen ondersteund door Storage Emulator versie 2.2.1 Preview.)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Evalueer de platformoverschrijdende, door de Community beheerde open-source Storage emulator- [Azurite](https://github.com/arafato/azurite). 
-* [Azure Storage-voor beelden met behulp van .net](../storage-samples-dotnet.md) bevatten koppelingen naar verschillende code voorbeelden die u kunt gebruiken bij het ontwikkelen van uw toepassing.
-* U kunt de [Microsoft Azure Storage Explorer](https://storageexplorer.com) gebruiken om te werken met resources in uw Cloud-opslag account en in de-opslag emulator.
+* Evalueer de cross-platform, community-maintained open-source storage emulator [Azurite.](https://github.com/arafato/azurite) 
+* [Azure Storage-voorbeelden met .NET](../storage-samples-dotnet.md) bevatten koppelingen naar verschillende codevoorbeelden die u gebruiken bij het ontwikkelen van uw toepassing.
+* U de [Microsoft Azure Storage Explorer](https://storageexplorer.com) gebruiken om te werken met bronnen in uw cloudopslagaccount en in de opslagemulator.

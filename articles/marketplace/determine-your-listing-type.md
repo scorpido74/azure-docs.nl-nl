@@ -1,70 +1,65 @@
 ---
-title: Uw publicatie optie bepalen in azure Marketplace | Azure
-description: In dit artikel worden de criteria voor geschiktheid en de publicatie vereisten beschreven die willen weten hoe u apps publiceert op de Azure Marketplace.
+title: Uw publicatieoptie bepalen in Microsoft AppSource en Azure Marketplace
+description: In dit artikel worden de geschiktheidscriteria en publicatievereisten beschreven die partners proberen te begrijpen hoe ze apps kunnen publiceren naar Microsoft AppSource en Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: pabutler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-ms.date: 06/13/2018
-ms.author: ellacroi
-ms.openlocfilehash: ed25b92dc759f687e35a8424558453a830369a57
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.topic: conceptual
+ms.date: 03/26/2020
+ms.author: dsindona
+ms.openlocfilehash: 4c41fcbb8766feb68db7d60d591e914a6ba0aea2
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548358"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349526"
 ---
-# <a name="determine-your-publishing-option"></a>Uw publicatie optie bepalen
-De publicatie optie die u kiest voor uw aanbieding is rechtstreeks gerelateerd aan de vereisten voor de geschiktheid en Marketplace GTM-voor delen. Belang rijker: de selectie van de publicatie optie en het type aanbieding bepalen hoe gebruikers met uw Marketplace-aanbieding communiceren.
+# <a name="determine-your-publishing-option"></a>Uw publicatieoptie bepalen
 
-Als u uw aanbieding wilt configureren, moet u bekend zijn met de volgende belang rijke concepten voor Marketplace: de publicatie opties, aanbiedings typen en configuratie, en aanroepen naar actie waarmee wordt bepaald hoe en waar uw aanbieding wordt weer gegeven in de Marketplace-winkel.
+De publicatieoptie die u voor uw aanbieding kiest, heeft rechtstreeks betrekking op zowel de geschiktheidsvereisten als de GTM-voordelen voor commerciële markten. Wat nog belangrijker is, de selectie van publicatie optie en aanbieding type definieert hoe gebruikers zullen omgaan met uw commerciële marktplaats te bieden.
 
-![](./media/marketplace-publishers-guide/storefronts_options_table.png)
+Om uw aanbieding te configureren, moet u de volgende belangrijke commerciële marktconcepten begrijpen: de publicatieopties, aanbiedingstypen en -configuratie en call-to-action die bepalen hoe en waar uw aanbieding wordt gepresenteerd in de commerciële marktplaats Storefronts.
 
+![Microsoft commerciële marktplaats storefronts en publicatie-opties](./media/marketplace-publishers-guide/storefronts_options_table.png)
 
-In dit artikel vindt u informatie over...
-<ul><li>    De juiste winkel voor uw oplossing bepalen </ul></li>
-<ul><li>    Welke publicatie opties en aanroepen-to-actie-bewerkingen zijn beschikbaar in elke winkel </ul></li>
-<ul><li>    Welke aanbiedings typen beschikbaar zijn voor elke publicatie optie </ul></li>
+In dit artikel leert u het volgende:
 
+- Hoe bepaal je de juiste etalage voor je oplossing?
+- Welke publicatieopties en call-to-action zijn beschikbaar in elke etalage
+- Welke aanbiedingstypen zijn beschikbaar voor elke publicatieoptie
 
-## <a name="selecting-a-storefront-publishing-option-and-offer-type-for-your-solution"></a>Een winkel, publicatie optie en type aanbieding selecteren voor uw oplossing
+## <a name="selecting-a-storefront-publishing-option-and-offer-type-for-your-solution"></a>Een winkelpui, publicatieoptie en aanbiedingstype voor uw oplossing selecteren
 
-Voordat u een publicatie optie selecteert, is het belang rijk om inzicht te krijgen in de vereisten voor de winkel geschiktheid voor Marketplace-oplossingen,-apps en-services:
+Voordat u een publicatieoptie selecteert, is het belangrijk om inzicht te krijgen in de vereisten voor geschiktheid van winkels voor commerciële marktoplossingen, -apps en -services:
 
-**Azure Marketplace** -toepassingen zijn technische oplossingen voor bouw stenen die zijn gebaseerd op of gebaseerd op Azure en die bedoeld zijn voor een IT-of ontwikkelaars doelgroep. Azure Marketplace Consulting Services zijn Professional Services-aanbiedingen waarmee klanten aan de slag kunnen met het gebruik van Azure.
+**Microsoft AppSource-toepassingen** zijn line-of-business-oplossingen die kunnen worden ingebouwd in Azure of ingebouwd voor: Dynamics 365, Office 365, Power BI of Power Apps. AppSource-adviesservices zijn professionele services die klanten helpen aan de slag te gaan met of het gebruik van Dynamics 365 en Power BI te versnellen.
 
-**AppSource** -toepassingen zijn line-of-Business-oplossingen die kunnen worden geïntegreerd in azure of zijn gebaseerd op: Dynamics 365, Office 365, Power bi of Power apps. AppSource Consulting Services zijn Professional Services-aanbiedingen waarmee klanten kunnen beginnen met het gebruik van Dynamics 365 en Power BI.
+**Azure Marketplace-toepassingen** zijn technische 'building-block'-oplossingen die zijn gebouwd op of gebouwd voor Azure en bedoeld zijn voor een IT- of ontwikkelaarsdoelgroep. Azure Marketplace-consultingservices zijn professionele services die klanten helpen aan de slag te gaan of het gebruik van Azure te versnellen.
 
+## <a name="understand-storefront-selection"></a>Storefrontselectie begrijpen
 
-## <a name="understand-storefront-selection"></a>Informatie over het selecteren van een winkel
-
-Elke winkel biedt unieke klant vereisten. De winkel waar uw aanbieding wordt gepubliceerd, wordt bepaald op basis van het aanbiedings type, biedt Transact-mogelijkheden en categorie-en/of branche selectie om een specifieke doel groep te richten. 
+Elke storefront voldoet aan unieke eisen van de klant. De etalage waar uw aanbieding zal worden gepubliceerd zal worden bepaald door het type aanbod, bieden transacties mogelijkheden en categorie en / of industrie selectie om een specifieke doelgroep te richten. 
 
 >[!Note]
->"Cross-Listen" (alleen voor SaaS-apps): wanneer een lijst of op een proef versie gebaseerde aanbieding voldoet aan de criteria voor een publiek van technische en zakelijke doel groep, wordt uw aanbieding vermeld in beide winkels. Meer informatie over de onderstaande publicatie opties.
+>'Cross-listing' (alleen voor SaaS-apps): wanneer een lijst of proefaanbieding voldoet aan de criteria voor zowel een technische als zakelijke gebruikersdoelgroep, wordt uw aanbieding in beide etalages weergegeven. Meer informatie over de publicatieopties hieronder.
 
-## <a name="choose-a-publishing-option"></a>Een publicatie optie kiezen
+## <a name="choose-a-publishing-option"></a>Een publicatieoptie kiezen
 
-De beschik bare publicatie opties bieden een gedifferentieerde klant betrokkenheid, waarbij u toegang krijgt tot het delen van leads en [commerciële Marketplace-voor delen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).  Let op de aanroepen-naar-actie die overeenkomt met de publicatie optie:
+De beschikbare publicatieopties bieden gedifferentieerde klantbetrokkenheid, terwijl u toegang krijgt tot het delen van lead- en [commerciële marktplaatsvoordelen.](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)  Let op de aanzet tot actie die overeenkomt met de publicatieoptie:
 
-| **Publicatie optie**    | **Beschrijving**  |
+| **Publicatieoptie**    | **Beschrijving**  |
 | :------------------- | :-------------------|
-| **Orderverzamellijst** | Een eenvoudige vermelding van uw toepassing of service waarmee een Marketplace-gebruiker u kan vragen verbinding te maken met de klant via de **contact persoon die mij** aanroept. |
-| **Proefversie** | Gebruik Marketplace om de detectie en het automatiseren van het inrichten van de proef ervaring van uw oplossing te verbeteren, zodat potentiële gebruikers uw SaaS-, IaaS-of micro soft-app-ervaring gratis kunnen gebruiken voor een beperkte periode voordat ze worden gekocht. De aanroepen-naar-actie die worden gebruikt voor de optie voor het publiceren van de proef versie zijn: een **gratis proef versie** of een **test station**. |
-|**BYOL**  |Gebruik Marketplace om de detectie en het automatiseren van de inrichting van uw oplossing te verbeteren en de financiële trans actie afzonderlijk te volt ooien. BYOL-aanbiedings typen zijn ideaal voor on-premises naar Cloud migraties. De aanroep van actie is **nu ontvangen**.
-| **Trans** | Uw toepassing wordt uitgevoerd op Azure en kan worden ingericht als een resource rechtstreeks in het Azure-abonnement van de klant wanneer de klant de actie **nu downloaden wordt** geselecteerd. Uw software licentie kosten kunnen eventueel worden aangeschaft en gefactureerd via de door de klant gekozen betalings wijze en voor waarden. u kunt ervoor kiezen om tijd beperkte toegang te bieden tot uw **gratis software-proef versie** (alleen beschikbaar voor Azure Marketplace.) |
+| **Lijst** | Eenvoudige vermelding van uw toepassing of service waarmee een commerciële marktplaatsgebruiker u kan verzoeken contact op te nemen met de klant via de call-to-action contact met **mij.** |
+| **Proefversie** | Gebruik de commerciële marktplaats om de vindbaarheid te verbeteren en de inrichting van de testervaring van uw oplossing te automatiseren, zodat potentiële gebruikers uw SaaS-, IaaS- of Microsoft-in-app-ervaring zonder kosten voor een beperkte tijd kunnen gebruiken voordat ze deze kopen. De call-to-action die wordt gebruikt voor de proefpublicatieoptie zijn **Gratis proefversie** of **Testdrive.** |
+| **BYOL BYOL** | Gebruik de commerciële marktplaats om de vindbaarheid te verbeteren en de inrichting van uw oplossing te automatiseren en de financiële transactie afzonderlijk te voltooien. BYOL-aanbiedingstypen zijn ideaal voor on-premises naar cloudmigraties. De call-to-action is **Get it Now**.
+| **Transact** | Transacties worden verkocht via de commerciële marktplaats. Microsoft is verantwoordelijk voor facturering en verzamelingen. De call-to-action is **Get it Now**.|
 
 >[!Note]
->Wanneer u de optie voor het publiceren van Transact gebruikt, is het belang rijk om inzicht te krijgen in de overwegingen met betrekking tot prijzen, facturering, facturering en betaling voordat u een aanbiedings type selecteert en uw aanbieding maakt. Raadpleeg het [artikel facturering van Marketplace en commerciële overwegingen voor meer informatie](./marketplace-commercial-transaction-capabilities-and-considerations.md).
+>Wanneer u de publicatieoptie Transact gebruikt, is het belangrijk om de overwegingen voor prijzen, facturering, facturering en uitbetaling te begrijpen voordat u een aanbiedingstype selecteert en uw aanbieding maakt. Bekijk het [artikel Marketplace-facturering en commerciële overwegingen voor meer informatie](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-*   Zodra u een publicatie optie hebt geselecteerd, kunt u [het aanbiedings type selecteren](./publisher-guide-by-offer-type.md) dat wordt gebruikt om uw aanbieding te presen teren.
-*   Bekijk de geschiktheids vereisten in de sectie publicatie opties per aanbiedings type om de selectie en configuratie van uw aanbieding te volt ooien.
-*   Bekijk de publicatie patronen per winkel voor voor beelden van hoe uw oplossing is gekoppeld aan een type en configuratie van een aanbieding.
-
-
-
+- Zodra u een publicatieoptie kiest, bent u klaar om [het aanbiedingstype](./publisher-guide-by-offer-type.md) te selecteren dat wordt gebruikt om uw aanbieding te presenteren.
+- Bekijk de geschiktheidsvereisten in de publicatieopties per sectie aanbiedingstype om de selectie en configuratie van uw aanbieding af te ronden.
+- Bekijk de publicatiepatronen per etalage voor voorbeelden over hoe uw oplossing wordt toegewezen aan een aanbiedingstype en -configuratie.

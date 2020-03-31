@@ -1,7 +1,7 @@
 ---
-title: Relationele SQL-gegevens model leren voor importeren en indexeren
+title: SQL-relationele gegevens modelleren voor importeren en indexeren
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het model leren van relationele gegevens, ongebruikelijk in een platte resultatenset voor indexering en zoeken in volledige tekst in azure Cognitive Search.
+description: Meer informatie over het modelleren van relationele gegevens, gedenormaliseerd tot een platte resultaatset, voor indexering en zoeken in volledige tekst in Azure Cognitive Search.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,46 +9,46 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3b973dd05d23d190c77986ca9bf6d39656739cd8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72790083"
 ---
-# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Relationele SQL-gegevens model leren voor importeren en indexeren in azure Cognitive Search
+# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Relationele SQL-gegevens modelleren voor importeren en indexeren in Azure Cognitive Search
 
-Azure Cognitive Search accepteert een vlakke rijenset als invoer voor de [Indexing-pijp lijn](search-what-is-an-index.md). Als uw bron gegevens afkomstig zijn uit gekoppelde tabellen in een relationele data base van SQL Server, wordt in dit artikel uitgelegd hoe de resultatenset moet worden samengesteld en hoe een bovenliggende/onderliggende relatie kan worden model leren in een Azure Cognitive Search-index.
+Azure Cognitive Search accepteert een platte rijset als invoer voor de [indexeringspijplijn](search-what-is-an-index.md). Als uw brongegevens afkomstig zijn van samengevoegde tabellen in een SQL Server-relationele database, wordt in dit artikel uitgelegd hoe u de resultaatset samenstellen en hoe u een bovenliggende-onderliggende relatie modelleren in een Azure Cognitive Search-index.
 
-Als illustratie verwijzen we naar een hypothetische Hotels-Data Base op basis van [demo gegevens](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels). Ga ervan uit dat de data base bestaat uit een Hotels $-tabel met 50 hotels en een tabel van kamers $ met kamers van verschillende typen, tarieven en voorzieningen, voor een totaal van 750 kamers. Er is een een-op-veel-relatie tussen de tabellen. In onze benadering levert een weer gave de query die 50 rijen, één rij per Hotel retourneert, met bijbehorende room-details die zijn Inge sloten in elke rij.
+Ter illustratie verwijzen we naar een hypothetische hotels database, gebaseerd op [demo gegevens.](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels) Stel dat de database bestaat uit een Hotels $ tafel met 50 hotels, en een Kamers $ tafel met kamers van verschillende soorten, tarieven en voorzieningen, voor een totaal van 750 kamers. Er is een één-op-veel relatie tussen de tabellen. In onze benadering biedt een weergave de query die 50 rijen, één rij per hotel, retourneert, met bijbehorende kamerdetails die in elke rij zijn ingesloten.
 
-   ![Tabellen en weer gaven in de hotels-data base](media/index-sql-relational-data/hotels-database-tables-view.png "Tabellen en weer gaven in de hotels-data base")
+   ![Tabellen en weergave in de hotels-database](media/index-sql-relational-data/hotels-database-tables-view.png "Tabellen en weergave in de hotels-database")
 
 
-## <a name="the-problem-of-denormalized-data"></a>Het probleem van Gedenormaliseerde gegevens
+## <a name="the-problem-of-denormalized-data"></a>Het probleem van gedenormaliseerde gegevens
 
-Een van de uitdagingen bij het werken met een-op-veel-relaties is dat standaard query's die zijn gebaseerd op gekoppelde tabellen, Gedenormaliseerde gegevens retour neren die niet goed werken in een Azure Cognitive Search scenario. Bekijk het volgende voor beeld dat hotels en kamers samenvoegt.
+Een van de uitdagingen bij het werken met een-op-veel relaties is dat standaardquery's die zijn gebouwd op samengevoegde tabellen gedenormaliseerde gegevens retourneren, wat niet goed werkt in een Azure Cognitive Search-scenario. Neem het volgende voorbeeld in overweging dat zich aansluit bij hotels en kamers.
 
 ```sql
 SELECT * FROM Hotels$
 INNER JOIN Rooms$
 ON Rooms$.HotelID = Hotels$.HotelID
 ```
-De resultaten van deze query retour neren alle velden in het Hotel, gevolgd door alle room-velden, met de voorbereidende gegevens van het hotel die worden herhaald voor elke kamer waarde.
+De resultaten van deze query retourneren alle velden van het hotel, gevolgd door alle velden van de ruimte, waarbij voorlopige hotelinformatie wordt herhaald voor elke kamerwaarde.
 
-   ![Gedenormaliseerde gegevens, redundante Hotel gegevens wanneer room-velden worden toegevoegd](media/index-sql-relational-data/denormalize-data-query.png "Gedenormaliseerde gegevens, redundante Hotel gegevens wanneer room-velden worden toegevoegd")
+   ![Gedenormaliseerde gegevens, redundante hotelgegevens wanneer kamervelden worden toegevoegd](media/index-sql-relational-data/denormalize-data-query.png "Gedenormaliseerde gegevens, redundante hotelgegevens wanneer kamervelden worden toegevoegd")
 
 
-Hoewel deze query op het Opper vlak slaagt (waarbij alle gegevens in een vlakke rij-set worden verstrekt), mislukt het leveren van de juiste document structuur voor de verwachte Zoek ervaring. Tijdens het indexeren maakt Azure Cognitive Search één Zoek document voor elke rij die wordt opgenomen. Als uw zoek documenten lijken op de bovenstaande resultaten, hebt u dubbele items gezien-zeven afzonderlijke documenten voor het dubbele koepel Hotel alleen. Een query op ' hotels in Florida ' zou zeven resultaten retour neren voor alleen het dubbele koepel-Hotel, waardoor andere relevante Hotels dieper in de zoek resultaten worden verdeeld.
+Hoewel deze query op het oppervlak slaagt (met alle gegevens in een platte rijset), mislukt deze niet in het leveren van de juiste documentstructuur voor de verwachte zoekervaring. Tijdens het indexeren maakt Azure Cognitive Search één zoekdocument voor elke ingenomen rij. Als uw zoekdocumenten eruit zagen als de bovenstaande resultaten, zou u duplicaten hebben waargenomen - zeven afzonderlijke documenten voor het Twin Dome-hotel alleen. Een vraag over "hotels in Florida" zou zeven resultaten voor alleen de Twin Dome hotel terugkeren, duwen andere relevante hotels diep in de zoekresultaten.
 
-Als u de verwachte ervaring van één document per Hotel wilt ontvangen, moet u een rijenset op de juiste granulatie opgeven, maar met volledige informatie. Gelukkig kunt u dit eenvoudig doen door de technieken in dit artikel te hand nemen.
+Om de verwachte ervaring van één document per hotel te krijgen, moet u een rijset op de juiste granulariteit, maar met volledige informatie. Gelukkig u dit gemakkelijk doen door de vaststelling van de technieken in dit artikel.
 
-## <a name="define-a-query-that-returns-embedded-json"></a>Een query definiëren die een Inge sloten JSON retourneert
+## <a name="define-a-query-that-returns-embedded-json"></a>Een query definiëren die ingesloten JSON retourneert
 
-Als u de verwachte Zoek ervaring wilt bieden, moet uw gegevensset bestaan uit één rij voor elk zoek document in azure Cognitive Search. In ons voor beeld hebben we één rij voor elk Hotel nodig, maar we willen dat onze gebruikers ook kunnen zoeken op andere velden die betrekking hebben op andere ruimten, zoals het nacht tempo, de grootte en het aantal bedden, of een weer gave van het strand, die allemaal deel uitmaken van een kamer detail.
+Als u de verwachte zoekervaring wilt bieden, moet uw gegevensset bestaan uit één rij voor elk zoekdocument in Azure Cognitive Search. In ons voorbeeld willen we één rij voor elk hotel, maar we willen ook dat onze gebruikers kunnen zoeken op andere kamergerelateerde velden waar ze om geven, zoals het nachttarief, de grootte en het aantal bedden, of een uitzicht op het strand, die allemaal deel uitmaken van een kamerdetail.
 
-De oplossing is het vastleggen van de ruimte Details als geneste JSON en de JSON-structuur vervolgens in een veld in een weer gave invoegen, zoals in de tweede stap wordt weer gegeven. 
+De oplossing is om de ruimtedetails vast te leggen als geneste JSON en vervolgens de JSON-structuur in een veld in een weergave in te voegen, zoals in de tweede stap wordt weergegeven. 
 
-1. Stel dat u twee gekoppelde tabellen hebt, hotels $ en kamers $, die informatie bevatten over 50 hotels en 750 kamers, en die zijn gekoppeld aan het veld HotelID. Deze tabellen bevatten individueel 50 hotels en 750 gerelateerde kamers.
+1. Stel dat u twee aangesloten tafels, Hotels $ en Kamers $, die details bevatten voor 50 hotels en 750 kamers, en zijn toegetreden op het HotelID veld. Individueel bevatten deze tafels 50 hotels en 750 gerelateerde kamers.
 
     ```sql
     CREATE TABLE [dbo].[Hotels$](
@@ -84,7 +84,7 @@ De oplossing is het vastleggen van de ruimte Details als geneste JSON en de JSON
     GO
     ```
 
-2. Een weer gave maken die bestaat uit alle velden in de bovenliggende tabel (`SELECT * from dbo.Hotels$`), met de toevoeging van een nieuw veld *ruimten* die de uitvoer van een geneste query bevat. Met een **for JSON auto** -component op `SELECT * from dbo.Rooms$` structureert u de uitvoer als JSON. 
+2. Maak een weergave die bestaat uit alle`SELECT * from dbo.Hotels$`velden in de bovenliggende tabel ( ), met de toevoeging van een nieuw gebied *Kamers* dat de uitvoer van een geneste query bevat. Een **VOOR JSON** `SELECT * from dbo.Rooms$` AUTO clausule op structuren van de output als JSON. 
 
      ```sql
    CREATE VIEW [dbo].[HotelRooms]
@@ -96,24 +96,24 @@ De oplossing is het vastleggen van de ruimte Details als geneste JSON en de JSON
    GO
    ```
 
-   In de volgende scherm afbeelding ziet u de resulterende weer gave, met het veld ruimtes van de *kamers* onderaan. Het veld *ruimtes* bestaat alleen in de weer gave HotelRooms.
+   De volgende schermafbeelding toont de resulterende weergave, met het veld *Kamers* nvarchar onderaan. Het veld *Kamers* bestaat alleen in de weergave Hotelkamers.
 
-   ![HotelRooms weer geven](media/index-sql-relational-data/hotelsrooms-view.png "HoteRooms weer geven")
+   ![HotelRooms bekijken](media/index-sql-relational-data/hotelsrooms-view.png "HoteRooms bekijken")
 
-1. Voer `SELECT * FROM dbo.HotelRooms` uit om de rij-set op te halen. Met deze query worden 50 rijen, één per Hotel, met gekoppelde room-informatie als JSON-verzameling geretourneerd. 
+1. Voer `SELECT * FROM dbo.HotelRooms` uit om de rijset op te halen. Deze query retourneert 50 rijen, één per hotel, met bijbehorende kamerinformatie als JSON-verzameling. 
 
-   ![Rijenset vanuit de weer gave HotelRooms](media/index-sql-relational-data/hotelrooms-rowset.png "Rijenset vanuit de weer gave HotelRooms")
+   ![Rowset van hotelkamers bekijken](media/index-sql-relational-data/hotelrooms-rowset.png "Rowset van hotelkamers bekijken")
 
-Deze rijenset kan nu worden geïmporteerd in azure Cognitive Search.
+Deze rijset is nu klaar voor import in Azure Cognitive Search.
 
 > [!NOTE]
-> Bij deze benadering wordt ervan uitgegaan dat de Inge sloten JSON zich onder de [maximum limieten voor kolom grootte van SQL Server](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server)bevindt. Als uw gegevens niet passen, kunt u een programmatische aanpak uitproberen, zoals wordt geïllustreerd in [voor beeld: de AdventureWorks-inventarisatie database voor Azure Cognitive Search model leren](search-example-adventureworks-modeling.md).
+> Deze benadering gaat ervan uit dat ingesloten JSON zich onder de [maximale kolomgroottelimieten van SQL Server bevindt.](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server) Als uw gegevens niet passen, u een programmatische benadering proberen, zoals geïllustreerd in [Voorbeeld: Modelleer de AdventureWorks Inventory-database voor Azure Cognitive Search](search-example-adventureworks-modeling.md).
 
- ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>Gebruik een complexe verzameling voor de ' veel'-zijde van een een-op-veel-relatie
+ ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>Gebruik een complexe collectie voor de "vele" kant van een één-op-veel relatie
 
-Maak op de Azure Cognitive Search-zijde een index schema waarmee de een-op-veel-relatie wordt gemodelleerd met geneste JSON. De resultatenset die u in de vorige sectie hebt gemaakt, komt doorgaans overeen met het hieronder opgegeven index schema (we knippen enkele velden voor de boog).
+Maak aan de azure cognitive search-kant een indexschema dat de één-op-veelrelatie modelleert met behulp van geneste JSON. De resultaatset die u in de vorige sectie hebt gemaakt, komt over het algemeen overeen met het onderstaande indexschema (we snijden een aantal velden voor beknoptheid).
 
-Het volgende voor beeld is vergelijkbaar met het voor beeld in het model leren van [complexe gegevens typen](search-howto-complex-data-types.md#creating-complex-fields). De structuur van de *lokalen* , die de focus heeft van dit artikel, bevindt zich in de verzameling velden van een index met de naam *Hotels*. In dit voor beeld wordt ook een complex type voor het *adres*weer gegeven. Dit verschilt van *kamers* in dat het bestaat uit een vaste set items, in tegens telling tot het veelvoud, een wille keurig aantal items dat is toegestaan in een verzameling.
+Het volgende voorbeeld is vergelijkbaar met het voorbeeld in [Hoe complexe gegevenstypen te modelleren](search-howto-complex-data-types.md#creating-complex-fields). De *kamers* structuur, die is de focus van dit artikel, is in de velden collectie van een index genaamd *hotels*. In dit voorbeeld wordt ook een complex type voor *Adres*weergegeven, dat verschilt van *Kamers* omdat het bestaat uit een vaste set items, in tegenstelling tot het meervoudige, willekeurige aantal items dat in een verzameling is toegestaan.
 
 ```json
 {
@@ -148,15 +148,15 @@ Het volgende voor beeld is vergelijkbaar met het voor beeld in het model leren v
 }
 ```
 
-Gezien de vorige resultatenset en het bovenstaande index schema, hebt u alle vereiste onderdelen voor een geslaagde indexerings bewerking. De samengevoegde gegevensset voldoet aan de vereisten voor indexering, maar behoudt gedetailleerde informatie. In de Azure Cognitive Search-index vallen de zoek resultaten eenvoudig in op Hotel gebaseerde entiteiten, waarbij de context van afzonderlijke ruimten en hun kenmerken behouden blijft.
+Gezien de vorige resultaatset en het bovenstaande indexschema beschikt u over alle vereiste componenten voor een succesvolle indexeringsbewerking. De afgevlakte gegevensset voldoet aan indexeringsvereisten, maar behoudt detailgegevens. In de Azure Cognitive Search-index vallen zoekresultaten gemakkelijk in hotelgebaseerde entiteiten, met behoud van de context van afzonderlijke kamers en hun kenmerken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met uw eigen gegevensset kunt u de [wizard gegevens importeren](search-import-data-portal.md) gebruiken om de index te maken en te laden. De wizard detecteert de Inge sloten JSON-verzameling, zoals de groep die is opgenomen in de *ruimten*en leidt tot een index schema dat een verzameling complexe typen bevat. 
+Met uw eigen gegevensset u de [wizard Gegevens importeren](search-import-data-portal.md) gebruiken om de index te maken en te laden. De wizard detecteert de ingesloten JSON-verzameling, zoals die in *Kamers,* en leidt een indexschema af dat een complexe tekstverzameling bevat. 
 
-  ![Index afgeleid door wizard gegevens importeren](media/index-sql-relational-data/search-index-rooms-complex-collection.png "Index afgeleid door wizard gegevens importeren")
+  ![Index afgeleid door wizard Gegevens importeren](media/index-sql-relational-data/search-index-rooms-complex-collection.png "Index afgeleid door wizard Gegevens importeren")
 
-Probeer de volgende Snelstartgids voor meer informatie over de basis stappen van de wizard gegevens importeren.
+Probeer de volgende snelstart om de basisstappen van de wizard Gegevens importeren te leren.
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: een zoek index maken met behulp van Azure Portal](search-get-started-portal.md)
+> [Snelstart: een zoekindex maken met Azure-portal](search-get-started-portal.md)

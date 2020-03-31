@@ -1,6 +1,6 @@
 ---
-title: Beleids regels maken met behulp van C# de Azure Data Explorer SDK
-description: In dit artikel leert u hoe u beleids regels kunt maken met behulp C#van.
+title: Beleidsregels maken met de Azure Data Explorer C# SDK
+description: In dit artikel leert u hoe u beleid maakt met C#.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,39 +8,39 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 17312840b0081056ad04723f2b2c241c47902021
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667290"
 ---
-# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Data Base-en tabel beleid maken voor Azure-Data Explorer met behulp vanC#
+# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Database- en tabelbeleid voor Azure Data Explorer maken met C #
 
 > [!div class="op_single_selector"]
-> * [C#](database-table-policies-csharp.md)
+> * [C #](database-table-policies-csharp.md)
 > * [Python](database-table-policies-python.md)
 >
 
-Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. In dit artikel maakt u een Data Base-en tabel beleid voor Azure Data Explorer met C#behulp van.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. In dit artikel maakt u database- en tabelbeleid voor Azure Data Explorer met C#.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Visual Studio 2019. Als u niet beschikt over Visual Studio 2019, kunt u de *gratis* [visual studio Community 2019](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** selecteert tijdens de installatie van Visual Studio.
-* Een Azure-abonnement. Als dat het geval is, kunt u een [gratis Azure-account](https://azure.microsoft.com/free/) maken voordat u begint.
-* [Een test cluster en data base](create-cluster-database-csharp.md).
-* [Een test tabel](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+* Visual Studio 2019. Als je geen Visual Studio 2019 hebt, kun je de *gratis* [Visual Studio Community 2019](https://www.visualstudio.com/downloads/)downloaden en gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** selecteert tijdens de installatie van Visual Studio.
+* Een Azure-abonnement. Als dat nodig is, u een [gratis Azure-account](https://azure.microsoft.com/free/) maken voordat u begint.
+* [Een testcluster en -database](create-cluster-database-csharp.md).
+* [Een testtafel.](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
 
-## <a name="install-c-nuget"></a>NuGet C# installeren
+## <a name="install-c-nuget"></a>C# NuGet installeren
 
-* Installeer het [Azure Data Explorer (Kusto) NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Installeer het [pakket micro soft. Azure. Kusto. data. Netstandard NuGet](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Optioneel, voor wijzigen van tabel beleid.)
-* Installeer het [NuGet-pakket micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)voor verificatie.
+* Installeer het [NuGet-pakket (Azure Data Explorer) (Kusto).](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)
+* Installeer het [Microsoft.Azure.Kusto.Data.NETStandard NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Optioneel, voor het wijzigen van tabelbeleid.)
+* Installeer het [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet-pakket](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)voor verificatie.
 
-## <a name="authentication"></a>Verificatie
-Als u de voor beelden in dit artikel wilt uitvoeren, hebt u een Azure Active Directory (Azure AD)-toepassing en service-principal nodig waarmee u toegang krijgt tot resources. U kunt dezelfde Azure AD-toepassing gebruiken voor verificatie vanuit [een test cluster en data base](create-cluster-database-csharp.md#authentication). Als u een andere Azure AD-toepassing wilt gebruiken, raadpleegt u [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnements bereik. In dit artikel wordt ook uitgelegd hoe u de `Directory (tenant) ID`, `Application ID`en `Client secret`kunt ophalen. Mogelijk moet u de nieuwe Azure AD-toepassing toevoegen als een principal in de data base. Zie [Azure Data Explorer-database machtigingen beheren](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)voor meer informatie.
+## <a name="authentication"></a>Authentication
+Als u de voorbeelden in dit artikel wilt uitvoeren, hebt u een Azure Active Directory-toepassing en serviceprincipal (Azure Directory) nodig die toegang heeft tot bronnen. U dezelfde Azure AD-toepassing gebruiken voor verificatie vanuit [een testcluster en -database.](create-cluster-database-csharp.md#authentication) Als u een andere Azure AD-toepassing wilt gebruiken, [raadpleegt u een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnementsbereik. Dit artikel laat ook `Directory (tenant) ID`zien `Application ID`hoe `Client secret`je de , en . Mogelijk moet u de nieuwe Azure AD-toepassing als hoofd in de database toevoegen. Zie [Azure Data Explorer-databasemachtigingen beheren](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)voor meer informatie.
 
-## <a name="alter-database-retention-policy"></a>Beleid voor het bewaren van data bases wijzigen
-Hiermee stelt u een Bewaar beleid in met een periode van 10 dagen voor voorlopig verwijderen.
+## <a name="alter-database-retention-policy"></a>Beleid voor het bewaren van gegevens wijzigen
+Hiermee stelt u een bewaarbeleid in met een soft-delete-periode van 10 dagen.
     
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -65,8 +65,8 @@ var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(softDeletePeriod: TimeSpan.FromDays(10)));
 ```
 
-## <a name="alter-database-cache-policy"></a>Cache beleid Alter data base
-Hiermee stelt u een cache beleid in voor de data base. De voor gaande vijf dagen van gegevens zijn op de cluster SSD.
+## <a name="alter-database-cache-policy"></a>Databasecachebeleid wijzigen
+Hiermee stelt u een cachebeleid in voor de database. De afgelopen vijf dagen van de gegevens zullen worden op het cluster SSD.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -91,8 +91,8 @@ var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(hotCachePeriod: TimeSpan.FromDays(5)));
 ```
 
-## <a name="alter-table-cache-policy"></a>ALTER TABLE cache Policy
-Hiermee stelt u een cache beleid in voor de tabel. De voor gaande vijf dagen van gegevens zijn op de cluster SSD.
+## <a name="alter-table-cache-policy"></a>Beleid voor tabelcache wijzigen
+Hiermee stelt u een cachebeleid in voor de tabel. De afgelopen vijf dagen van de gegevens zullen worden op het cluster SSD.
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -123,8 +123,8 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 }
 ```
 
-## <a name="add-a-new-principal-for-the-database"></a>Een nieuwe Principal toevoegen voor de data base
-Hiermee wordt een nieuwe Azure AD-toepassing toegevoegd als admin-principal voor de data base.
+## <a name="add-a-new-principal-for-the-database"></a>Een nieuw hoofdvoor de database toevoegen
+Hiermee voegt u een nieuwe Azure AD-toepassing toe als beheerdersprincipal voor de database.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -158,4 +158,4 @@ await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clus
 ```
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over data base-en tabel beleid](https://docs.microsoft.com/azure/kusto/management/policies)
+* [Lees meer over database- en tabelbeleid](https://docs.microsoft.com/azure/kusto/management/policies)

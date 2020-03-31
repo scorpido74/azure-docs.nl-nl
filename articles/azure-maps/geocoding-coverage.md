@@ -1,33 +1,33 @@
 ---
-title: Dekking voor geocodering | Microsoft Azure kaarten
-description: Het proces voor het converteren van een locatie adres naar de breedte-en lengte graad-coördinaten wordt geocodering genoemd. In dit artikel vindt u informatie over regio's met geocoderings dekking in Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+title: Dekking van geocodering | Microsoft Azure Maps
+description: Het proces van het converteren van locatieadres naar breedte- en lengtecoördinaten staat bekend als geocodering. In dit artikel vindt u meer informatie over regio's met geocoderingsdekking in Microsoft Azure Maps.
+author: philmea
+ms.author: philmea
 ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 149dd0a3e709bbf4660aaae176f76f560de873e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335652"
 ---
-# <a name="azure-maps-geocoding-coverage"></a>Geocoderings dekking Azure Maps
+# <a name="azure-maps-geocoding-coverage"></a>Azure Maps-dekking voor geocodering
 
-Wanneer u zoekt naar een locatie met Azure Maps, de zoek service, bijvoorbeeld [Zoek adres ophalen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), worden uw zoek termen opgehaald en worden de coördinaten voor de breedte graad en lengte graad geretourneerd. Dit proces wordt geocodering genoemd. Azure Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's en landen. Gebruik dit artikel om te bepalen met welke typen locaties u in elke regio betrouwbaar kunt zoeken. 
+Wanneer u zoekt naar een locatie met Azure Maps, neemt de zoekservice, bijvoorbeeld [Zoekadres op,](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)uw zoektermen en retourneert u de breedte- en lengtecoördinaten. Dit proces wordt geocodering genoemd. Azure Maps heeft echter niet hetzelfde niveau van informatie en nauwkeurigheid voor alle regio's en landen. Gebruik dit artikel om te bepalen naar wat voor soort locaties u betrouwbaar zoeken in elke regio. 
 
-De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van de weg en de geocoderings nauwkeurigheid van de geocoderings service. De volgende categorisaties worden gebruikt om het niveau van geocoderings ondersteuning in elk land/elke regio in te stellen.
-* **Adres punten** -adres gegevens kunnen worden omgezet naar een breedte graad/lengte graad binnen het perceel van het adres (eigenschaps grens). Ook wel nauw keurig aangeduid als ' Rooftop '. Dit is het hoogste nauwkeurigheids niveau dat beschikbaar is voor adressen. 
-* **Huis nummers** : adressen worden geïnterpoleerd naar een coördinaat van een breedte graad/lengte graad in het adres.
-* **Straat niveau** : adressen worden omgezet in de coördinaat van de breedte graad/lengte graad van de straat die het adres bevat. Het huis nummer mag niet worden verwerkt.
-* Namen van **plaatsnamen en plaatsnamen** worden ondersteund.
+De mogelijkheid om te geocoderen in een land/regio is afhankelijk van de dekking van de gegevens op de weg en de geocoderingsprecisie van de geocoderingsservice. De volgende categorisaties worden gebruikt, geef het niveau van geocoderingsondersteuning in elk land/regio aan.
+* **Adrespunten** - Adresgegevens kunnen worden opgelost tot een breedte-/lengtegraadcoördin binnen het adrespakket (eigendomsgrens). Soms aangeduid als 'Rooftop' nauwkeurig. Dit is het hoogste niveau van nauwkeurigheid dat beschikbaar is voor adressen. 
+* **Huisnummers** - Adressen worden geïnterpoleerd naar een breedtegraad/lengtegraad coördinaat op straat.
+* **Straatniveau** - Adressen worden opgelost op de breedtegraad/lengtegraad van de straat die het adres bevat. Het huisnummer mag niet worden verwerkt.
+* **Stadsniveau** - Plaatsnamen van de stad worden gesteund.
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
-| Land/regio                                       | Adres punten | Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
+| Land/regio                                       | Adrespunten | Huisnummers | Straatniveau | Stadsniveau | Aandachtspunten |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
 | Antarctica                                          |                 |                |              |      ✓     |          ✓         |
@@ -69,42 +69,42 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Paraguay                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Peru                                                |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Puerto Rico                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Saint--Barthélemy                                    |                 |                |       ✓      |      ✓     |          ✓         |
+| Sint-Barthélemie                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Kitts en Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Lucia                                         |                 |                |              |      ✓     |          ✓         |
 | Saint-Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Saint-Pierre en Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint Pierre en Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Vincent en de Grenadines                    |                 |                |              |      ✓     |          ✓         |
-| Sint-Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Zuid-Georgië en de zuidelijke Sandwich eilanden        |                 |                |              |      ✓     |          ✓         |
+| Sint Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Zuid-Georgië en de Zuidelijke Sandwich-eilanden        |                 |                |              |      ✓     |          ✓         |
 | Suriname                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad en Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
-| Verenigde Staten ondergeschikte afgelegen eilanden                |                 |                |              |      ✓     |          ✓         |
+| Verenigde Staten Kleine Afgelegen eilanden                |                 |                |              |      ✓     |          ✓         |
 | Verenigde Staten van Amerika                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
-| Britse Maagden eilanden                              |                 |                |              |      ✓     |          ✓         |
-| Amerikaanse Maagden eilanden                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Britse Maagdeneilanden                              |                 |                |              |      ✓     |          ✓         |
+| Amerikaanse Maagdeneilanden                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
-| Land/regio                                      | Adres punten |Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
+| Land/regio                                      | Adrespunten |Huisnummers | Straatniveau | Stadsniveau | Aandachtspunten |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Amerikaans-Samoa                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Australië                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Bangladesh                                          |                 |                |              |      ✓     |          ✓         |
 | Bhutan                                              |                 |                |              |      ✓     |          ✓         |
-| Brits territorium in de Indische Oceaan                      |                 |                |              |      ✓     |          ✓         |
+| Brits Territorium in de Indische Oceaan                      |                 |                |              |      ✓     |          ✓         |
 | Brunei                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Cambodja                                            |                 |                |              |      ✓     |          ✓         |
 | China                                               |                 |                |              |      ✓     |          ✓         |
-| Christmas eiland                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
-| Cocos-Keeling-eilanden                             |                 |                |              |      ✓     |          ✓         |
+| Christmaseiland                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
+| Cocoseilanden                             |                 |                |              |      ✓     |          ✓         |
 | Comoren                                             |                 |                |              |      ✓     |          ✓         |
-| Cook eilanden                                        |                 |                |              |      ✓     |          ✓         |
+| Cookeilanden                                        |                 |                |              |      ✓     |          ✓         |
 | Fiji                                                |                  |                |              |      ✓     |          ✓        |
 | Frans-Polynesië                                    |                 |                |              |      ✓     |          ✓         |
-| Heard Island en McDonald eilanden                   |                 |                |              |      ✓     |          ✓         |
+| Gehoord eiland en McDonald Eilanden                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong SAR                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonesië                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | India                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
@@ -121,19 +121,19 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Nieuw-Caledonië                                       |                 |                |              |      ✓     |          ✓         |
 | Nieuw-Zeeland                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Niue                                                |                 |                |              |      ✓     |          ✓         |
-| Norfolk eiland                                      |                 |                |              |      ✓     |          ✓         |
+| Norfolk                                      |                 |                |              |      ✓     |          ✓         |
 | Noord-Korea                                         |                 |                |              |      ✓     |          ✓         |
 | Noordelijke Marianen                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Pakistan                                            |                 |                |              |      ✓     |          ✓         |
 | Palau                                               |                 |                |              |      ✓     |          ✓         |
 | Papoea-Nieuw-Guinea                                    |                 |                |              |      ✓     |          ✓         |
 | Filipijnen                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Pitcairneilanden                                            |                 |                |              |      ✓     |          ✓         |
+| Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
 | Samoa                                               |                 |                |              |      ✓     |          ✓         |
-| Senkakuman eilanden                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Senkaku-eilanden                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapore                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Salomons eilanden                                     |                 |                |              |      ✓     |          ✓         |
-| Zuidelijk Kurils                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Salomonseilanden                                     |                 |                |              |      ✓     |          ✓         |
+| Zuidelijke Koerilen                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Sri Lanka                                           |                 |                |              |      ✓     |          ✓         |
 | Taiwan                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Thailand                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
@@ -147,7 +147,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 
 ## <a name="europe"></a>Europa
 
-| Land/regio                                      | Adres punten |Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
+| Land/regio                                      | Adrespunten |Huisnummers | Straatniveau | Stadsniveau | Aandachtspunten |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Albanië                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Andorra                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -163,19 +163,19 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Tsjechië                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Denemarken                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Estland                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Faeröereilanden                                       |                 |                |              |      ✓     |          ✓         |
+| Faeröer                                       |                 |                |              |      ✓     |          ✓         |
 | Finland                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Frankrijk                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Georgië                                             |        ✓        |        ✓       |              |      ✓     |          ✓         |
 | Duitsland                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Gibraltar                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Griekenland                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Heilbot                                           |                 |                |              |      ✓     |          ✓         |
+| Groenland                                           |                 |                |              |      ✓     |          ✓         |
 | Guernsey                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Hongarije                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | IJsland                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ierland                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Isle of man                                         |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Isle Of Man                                         |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Italië                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Jan Mayen                                           |        ✓        |                |              |      ✓     |          ✓         |
 | Jersey                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -188,14 +188,14 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Luxemburg                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Noord-Macedonië                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Werden                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Moldavië                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Monaco                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Montenegro                                          |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Nederland                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Noorwegen                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Polen                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Portugal                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| \+ Azoren en Madeira                                 |                 |                |       ✓      |      ✓     |          ✓         |
+| +Azoren en Madeira                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Roemenië                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Russische Federatie                                  |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | San Marino                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -203,7 +203,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Slowakije                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Slovenië                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Spanje                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Jan                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
+| Svalbard                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Zweden                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Zwitserland                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Tadzjikistan                                          |                 |                |              |      ✓     |          ✓         |
@@ -212,12 +212,12 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Oekraïne                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Verenigd Koninkrijk                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Oezbekistan                                          |                 |                |              |      ✓     |          ✓         |
-| Vaticaan stad                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Vaticaanstad                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Midden-Oosten en Afrika
 
-| Land/regio                                      | Adres punten |Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
+| Land/regio                                      | Adrespunten |Huisnummers | Straatniveau | Stadsniveau | Aandachtspunten |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Afghanistan                                         |                 |                |              |      ✓     |          ✓         |
 | Algerije                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -225,22 +225,22 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Bahrein                                             |        ✓        |       ✓        |       ✓      |      ✓     |          ✓         |
 | Benin                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Botswana                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Bouvet eiland                                       |                 |                |              |      ✓     |          ✓         |
+| Bouveteiland                                       |                 |                |              |      ✓     |          ✓         |
 | Burkina Faso                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Burundi                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Kameroen                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Cabo Verde                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Centraal-Afrikaanse Republiek                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Tsjaad                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Congo-Brazzaville                                               |                 |                |       ✓      |      ✓     |          ✓         |
-| Ivoor kust                                       |                 |                |       ✓      |      ✓     |          ✓         |
-| Congo (DRC)                    |                 |                |       ✓      |      ✓     |          ✓         |
+| Congo                                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Cote d'Ivoire                                       |                 |                |       ✓      |      ✓     |          ✓         |
+| Democratische Republiek Congo                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Djibouti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egypte                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Equatoriaal-Guinea, Republiek                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Eritrea                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Ethiopië                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Franse zuidelijke gebieden|                        |                |              |      ✓     |          ✓         |
+| Franse Gebieden in de zuidelijke Indische Oceaan|                        |                |              |      ✓     |          ✓         |
 | Gabon                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Gambia                                              |                 |                |              |      ✓     |          ✓         |
 | Ghana                                               |                 |                |       ✓      |      ✓     |          ✓         |
@@ -260,7 +260,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Malawi                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Maldiven                                            |                 |                |              |      ✓     |          ✓         |
 | Mali                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Marshall eilanden                                    |                 |                |              |      ✓     |          ✓         |
+| Marshalleilanden                                    |                 |                |              |      ✓     |          ✓         |
 | Mauretanië                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Mauritius                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Mayotte                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -277,7 +277,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Sint-Helena                                        |                 |                |              |      ✓     |          ✓         |
 | Saoedi-Arabië                                        |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Senegal                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Seychell                                          |                 |                |       ✓      |      ✓     |          ✓         |
+| Seychellen                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Sierra Leone                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Somalië                                             |                 |                |              |      ✓     |          ✓         |
 | Zuid-Afrika                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -285,7 +285,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Soedan                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Swaziland                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Syrië                                               |                 |                |              |      ✓     |          ✓         |
-| Sao Tomé en principe                               |                 |                |       ✓      |      ✓     |          ✓         |
+| São Tomé en Príncipe                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Tanzania                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Togo                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Tunesië                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
@@ -299,7 +299,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de pagina met [Zoek](https://docs.microsoft.com/rest/api/maps/search) informatie voor meer informatie over Azure Maps geocodering.
+Zie de zoekreferentiepagina's [voor](https://docs.microsoft.com/rest/api/maps/search) meer informatie over geocodering van Azure Maps.
 
-Meer informatie over de [dekkings gebieden voor de service Maps-verkeer](traffic-coverage.md). 
+Meer informatie over de [dekkingsgebieden voor de verkeersservice Kaarten](traffic-coverage.md). 
 

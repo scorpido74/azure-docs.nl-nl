@@ -1,6 +1,6 @@
 ---
-title: Debug Kusto-query taal inline python met VS code-Azure Data Explorer
-description: Meer informatie over het opsporen van fouten in Kusto query language (KQL) in line python met behulp van VS code.
+title: Foutopsporingskusto-querytaal inline Python met VS-code - Azure Data Explorer
+description: Meer informatie over het opsporen van Kusto-querytaal (KQL) inline Python met VS-code.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -8,52 +8,52 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.openlocfilehash: 96bd66f96b04bd7032d976ba9ebbbeb60c8415e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444472"
 ---
-# <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>Fout opsporing voor Kusto-query taal in line python met VS code
+# <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>Foutopsporingskusto-querytaal inline Python met VS-code
 
-Azure Data Explorer ondersteunt het uitvoeren van python-code die is inge sloten in Kusto-query taal met behulp van de [python ()-invoeg toepassing](/azure/kusto/query/pythonplugin) De runtime van de invoeg toepassing wordt gehost in een sandbox, een geïsoleerde en veilige python-omgeving. De invoeg toepassing python () breidt de systeem eigen functionele Kusto-query taal uit met het enorme archief van OSS Python-pakketten. Met deze extensie kunt u geavanceerde algoritmen, zoals machine learning, kunst matige intelligentie, statistische en tijd reeksen, als onderdeel van de query uitvoeren.
+Azure Data Explorer ondersteunt het uitvoeren van Python-code die is ingesloten in kusto-querytaal met behulp van de [python()-plug-in](/azure/kusto/query/pythonplugin). De plug-in runtime wordt gehost in een sandbox, een geïsoleerde en veilige Python-omgeving. De python() plugin mogelijkheid breidt Kusto query taal native functionaliteiten met het enorme archief van OSS Python pakketten. Met deze extensie u geavanceerde algoritmen uitvoeren, zoals machine learning, kunstmatige intelligentie, statistische en tijdreeksen als onderdeel van de query.
 
-Kusto query language-hulpprogram ma's zijn niet geschikt voor het ontwikkelen en opsporen van problemen met python-algoritmen. Ontwikkel daarom het algoritme voor uw favoriete python-Integrated Development Environment, zoals Jupyter, PyCharm, VS of VS code. Wanneer het algoritme is voltooid, kopieert en plakt u deze in KQL. Om deze werk stroom te verbeteren en te stroom lijnen, ondersteunt Azure Data Explorer de integratie tussen de Kusto Explorer-of Web UI-clients en de VS code voor het ontwerpen en debuggen van KQL inline python-code. 
+Kusto query taaltools zijn niet handig voor het ontwikkelen en debuggen van Python-algoritmen. Ontwikkel daarom het algoritme op uw favoriete python-geïntegreerde ontwikkelomgeving, zoals Jupyter, PyCharm, VS of VS Code. Wanneer het algoritme is voltooid, kopieer en plak je in KQL. Om deze workflow te verbeteren en te stroomlijnen, ondersteunt Azure Data Explorer integratie tussen Kusto Explorer- of Web UI-clients en VS-code voor het ontwerpen en debuggen van KQL-inline Python-code. 
 
 > [!NOTE]
-> Deze werk stroom kan alleen worden gebruikt voor het opsporen van fouten in relatief kleine invoer tabellen (Maxi maal enkele MB). Daarom moet u mogelijk de invoer voor fout opsporing beperken.  Als u een grote tabel moet verwerken, kunt u deze beperken voor fout opsporing met behulp van `| take`, `| sample`of `where rand() < 0.x`.
+> Deze werkstroom kan alleen worden gebruikt om relatief kleine invoertabellen (tot weinig MB) te debuggen. Daarom moet u mogelijk de invoer voor foutopsporing beperken.  Als u een grote tabel moet verwerken, beperkt `| take` `| sample`u `where rand() < 0.x`deze voor foutopsporing met , of .
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Installeer python [Anaconda-distributie](https://www.anaconda.com/distribution/#download-section). Selecteer in **Geavanceerde opties** **de optie Anaconda toevoegen aan de omgevings variabele PATH**.
-2. [Visual Studio Code](https://code.visualstudio.com/Download) installeren
-3. [Python-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)installeren.
+1. Installeer Python [Anaconda Distribution](https://www.anaconda.com/distribution/#download-section). Selecteer **in Geavanceerde opties**De optie **Anaconda toevoegen aan mijn PATH-omgevingsvariabele**.
+2. [Visual Studio-code installeren](https://code.visualstudio.com/Download)
+3. [Python-extensie voor Visual Studio Code installeren](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 
-## <a name="run-your-query-in-your-client-application"></a>Uw query uitvoeren in uw client toepassing
+## <a name="run-your-query-in-your-client-application"></a>Uw query uitvoeren in uw clienttoepassing
 
-1. Open in uw client toepassing een voor voegsel van een query met inline python met `set query_python_debug;`
+1. Maak in uw clienttoepassing een query met inline Python met`set query_python_debug;`
 1. Voer de query uit.
-    * Kusto Explorer: VS code wordt automatisch gestart met het script *debug_python. py* .
-    * Kusto-webgebruikersinterface: 
-        1. Down load en sla *debug_python. py*, *DF. txt*en *kargs. txt*op. Selecteer **toestaan**in het venster. Bestanden in de geselecteerde map **Opslaan** . 
+    * Kusto Explorer: VS Code wordt automatisch gestart met het *debug_python.py* script.
+    * Kusto Web UI: 
+        1. Download en sla *debug_python.py,* *df.txt*en *kargs.txt*. Selecteer **Toestaan**in het venster . **Bestanden opslaan** in geselecteerde map. 
 
-            ![De Web-UI downloadt de inline python-bestanden](media/debug-inline-python/webui-inline-python.png)
+            ![Web UI downloadt de inline python-bestanden](media/debug-inline-python/webui-inline-python.png)
 
-        1. Klik met de rechter muisknop op *debug_python. py* en open met VS code. 
-        Het *debug_python. py* -script bevat de inline python-code, uit de KQL-query, voorafgegaan door de sjabloon code voor het initialiseren van de invoer data frame van *DF. txt* en de woorden lijst met para meters van *kargs. txt*.    
+        1. Klik met de rechtermuisknop op *debug_python.py* en open met VS-code. 
+        Het *debug_python.py-script* bevat de inline Python-code, van de KQL-query, vooraf vastgelegd door de sjablooncode om het invoergegevensframe van *df.txt* en het woordenboek van parameters van *kargs.txt*te initialiseren.    
             
-1. Open in VS code het fout opsporingsprogramma VS code: **Debug** > **Start Debugging (F5)** , selecteer **python** -configuratie. Het fout opsporingsprogramma wordt gestart en automatisch onderbrekings punt voor het opsporen van fouten in de inline code.
+1. Start in VS-code de VS-codefoutfoutfoutopsporing: **Foutopsporing** > **debuggen (F5)** ontluisteren , selecteer **Python-configuratie.** De foutopsporing wordt gestart en wordt automatisch gekort om de inline-code te debuggen.
 
-### <a name="how-does-inline-python-debugging-in-vs-code-work"></a>Hoe werkt de inline python-fout opsporing in VS code?
+### <a name="how-does-inline-python-debugging-in-vs-code-work"></a>Hoe werkt inline Python-foutopsporing in VS-code?
 
-1. De query wordt geparseerd en uitgevoerd op de server totdat de vereiste `| evaluate python()`-component is bereikt.
-1. De python-sandbox wordt aangeroepen, maar in plaats van de code uit te voeren, worden de invoer tabel, de woorden lijst van de para meters en de code gedecodeerd en teruggezonden naar de client.
-1. Deze drie objecten worden opgeslagen in drie bestanden: *DF. txt*, *kargs. txt*en *debug_python. py* in de geselecteerde directory (webgebruikersinterface) of in de map client% Temp% (Kusto Explorer).
-1. VS code wordt gestart en vooraf geladen met het bestand *debug_python. py* dat een voorvoegsel code bevat voor het initialiseren van VG en kargs van hun respectieve bestanden, gevolgd door het python-script dat is inge sloten in de KQL-query.
+1. De query wordt ontleed en uitgevoerd in `| evaluate python()` de server totdat de vereiste clausule is bereikt.
+1. De Python-sandbox wordt aangeroepen, maar in plaats van de code uit te voeren, wordt de invoertabel, het woordenboek met parameters en de code geserialiseerd en teruggestuurd naar de client.
+1. Deze drie objecten worden opgeslagen in drie bestanden: *df.txt*, *kargs.txt*en *debug_python.py* in de geselecteerde directory (Web UI) of in de map %TEMP% van de client (Kusto Explorer).
+1. VS-code wordt gestart, vooraf geladen met het *debug_python.py-bestand* dat een voorvoegselcode bevat om df en kargs uit hun respectievelijke bestanden te initialiseren, gevolgd door het Python-script dat is ingebed in de KQL-query.
 
-## <a name="query-example"></a>Query voorbeeld
+## <a name="query-example"></a>Voorbeeld van query
 
-1. Voer de volgende KQL-query uit in uw client toepassing:
+1. Voer de volgende KQL-query uit in uw clienttoepassing:
 
     ```kusto
     range x from 1 to 4 step 1
@@ -64,16 +64,16 @@ Kusto query language-hulpprogram ma's zijn niet geschikt voor het ontwikkelen en
     , pack('exp', 4))
     ```
 
-    Bekijk de resulterende tabel:
+    Zie de resulterende tabel:
 
-    | x  | kabel  |
+    | x  | x4  |
     |---------|---------|
     | 1     |   1      |
     | 2     |   16      |
     | 3     |   81      |
     | 4     |    256     |
     
-1. Voer dezelfde KQL-query uit in uw client toepassing met behulp van `set query_python_debug;`:
+1. Voer dezelfde KQL-query uit `set query_python_debug;`in uw clienttoepassing met:
 
     ```kusto
     set query_python_debug;
@@ -85,13 +85,13 @@ Kusto query language-hulpprogram ma's zijn niet geschikt voor het ontwikkelen en
     , pack('exp', 4))
     ```
 
-1. VS-code wordt gestart:
+1. VS-code wordt gelanceerd:
 
-    ![Start VS code](media/debug-inline-python/launch-vs-code.png)
+    ![VS-code starten](media/debug-inline-python/launch-vs-code.png)
 
-1. VS code wordt uit-data frame en drukt ' resultaat ' af in de console voor fout opsporing:
+1. VS Code debugs en drukt 'resultaat' dataframe in de debug console:
 
-    ![VS-code fout opsporing](media/debug-inline-python/debug-vs-code.png)
+    ![VS-codefoutfoutopsporing](media/debug-inline-python/debug-vs-code.png)
 
 > [!NOTE]
-> Er zijn mogelijk verschillen tussen de installatie kopie van de python-sandbox en de lokale installatie. [Controleer de sandbox-installatie kopie voor specifieke pakketten door de invoeg toepassing op te vragen](https://github.com/Azure/azure-kusto-analytics-lib/blob/master/Utils/functions/get_modules_version.csl).
+> Er kunnen verschillen zijn tussen de Python sandbox-afbeelding en uw lokale installatie. [Controleer de sandbox-afbeelding voor specifieke pakketten door de plug-in op te vragen.](https://github.com/Azure/azure-kusto-analytics-lib/blob/master/Utils/functions/get_modules_version.csl)
