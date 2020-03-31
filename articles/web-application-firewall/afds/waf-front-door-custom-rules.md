@@ -1,100 +1,100 @@
 ---
-title: Aangepaste regel voor Web Application Firewall voor Azure front-deur
-description: Meer informatie over het gebruik van aangepaste regels voor Web Application firewall (WAF) om uw webtoepassingen te beschermen tegen kwaad aardige aanvallen.
+title: Aangepaste regel voor firewall voor Azure-voorbeheer
+description: Meer informatie over het gebruik van waf-regels (Web Application Firewall) die uw webtoepassingen beschermen tegen schadelijke aanvallen.
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 516e327cca1aa6a691a1d932c5f48c9108d818b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 158bfe30bf48ee420be8efb9ff32fff0e555d9e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512520"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475821"
 ---
-#  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Aangepaste regels voor Web Application Firewall met Azure front-deur
+#  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Aangepaste regels voor webtoepassingsfirewall met Azure Front Door
 
-Met Azure Web Application firewall (WAF) met de front-deur service kunt u de toegang tot uw webtoepassingen beheren op basis van de voor waarden die u definieert. Een aangepaste WAF-regel bestaat uit een prioriteits nummer, regel type, overeenkomst voorwaarden en een actie. Er zijn twee typen aangepaste regels: overeenkomst regels en frequentie limiet regels. Een regel voor overeenkomsten bepaalt de toegang op basis van een set overeenkomende voor waarden, terwijl een frequentie limiet regel de toegang bepaalt op basis van de overeenkomende voor waarden en de tarieven van binnenkomende aanvragen. U kunt een aangepaste regel uitschakelen om te voor komen dat deze wordt geëvalueerd, maar blijft de configuratie behouden. 
+Azure Web Application Firewall (WAF) met Front Door stelt u in staat om de toegang tot uw webtoepassingen te beheren op basis van de voorwaarden die u definieert. Een aangepaste WAF-regel bestaat uit een prioriteitsnummer, regeltype, overeenkomende voorwaarden en een actie. Er zijn twee soorten aangepaste regels: regels en regels voor tarieflimiet. Een overeenkomstregel regelt de toegang op basis van een reeks overeenkomende voorwaarden, terwijl een tarieflimietregel de toegang regelt op basis van overeenkomende voorwaarden en de tarieven van binnenkomende aanvragen. U een aangepaste regel uitschakelen om te voorkomen dat deze wordt geëvalueerd, maar de configuratie behouden blijft. 
 
-## <a name="priority-match-conditions-and-action-types"></a>Prioriteit, overeenkomst voorwaarden en actie typen
+## <a name="priority-match-conditions-and-action-types"></a>Prioriteits-, wedstrijdvoorwaarden en actietypen
 
-U kunt de toegang beheren met een aangepaste WAf-regel die een prioriteits nummer, een regel type, een matrix met matching voorwaarden en een actie definieert. 
+U de toegang beheren met een aangepaste WAf-regel die een prioriteitsnummer, een regeltype, een matrix van wedstrijdvoorwaarden en een actie definieert. 
 
-- **Prioriteit:** is een uniek geheel getal dat de volg orde van de evaluatie van WAF-regels beschrijft. Regels met een lagere prioriteit worden geëvalueerd voor regels met hogere waarden. Prioriteits nummers moeten uniek zijn onder alle aangepaste regels.
+- **Prioriteit:** is een uniek geheel getal dat de volgorde van evaluatie van WAF-regels beschrijft. Regels met lagere prioriteitswaarden worden geëvalueerd vóór regels met hogere waarden. Prioriteitsnummers moeten uniek zijn tussen alle aangepaste regels.
 
-- **Actie:** definieert hoe een aanvraag moet worden gerouteerd als er een WAF-regel wordt gevonden. U kunt een van de onderstaande acties kiezen die moeten worden toegepast wanneer een aanvraag overeenkomt met een aangepaste regel.
+- **Actie:** definieert hoe u een aanvraag routeren als een WAF-regel is gekoppeld. U een van de onderstaande acties kiezen die u wilt toepassen wanneer een aanvraag overeenkomt met een aangepaste regel.
 
-    - Met *Allow* -WAF wordt de zoek naar de back-end doorgestuurd, wordt een vermelding geregistreerd in WAF-logboeken en wordt het programma afgesloten.
-    - *Block* -request is geblokkeerd, WAF stuurt een reactie naar de client zonder de aanvraag door te sturen naar de back-end. WAF registreert een vermelding in WAF-Logboeken.
-    - *Log* -WAF registreert een vermelding in WAF-logboeken en gaat door met het evalueren van de volgende regel.
-    - *Redirect-WAF* stuurt een aanvraag om naar een opgegeven URI, registreert een vermelding in WAF-logboeken en wordt afgesloten.
+    - *Toestaan* - WAF stuurt de zoektocht naar de back-end, registreert een vermelding in WAF logs en uitgangen.
+    - *Blok* - Aanvraag wordt geblokkeerd, WAF stuurt antwoord naar client zonder het verzoek door te sturen naar de back-end. WAF registreert een vermelding in WAF-logboeken.
+    - *Log* - WAF registreert een vermelding in WAF-logboeken en blijft de volgende regel evalueren.
+    - *Redirect* - WAF verwijst verzoek om naar een opgegeven URI, registreert een vermelding in WAF-logboeken en sluit af.
 
-- **Match-voor waarde:** definieert een matching variabele, een operator en de waarde match. Elke regel kan meerdere match voorwaarden bevatten. Een match-voor waarde kan zijn gebaseerd op de geografische locatie, client-IP-adressen (CIDR), grootte of teken reeks overeenkomst. Overeenkomende teken reeksen kunnen worden vergeleken met een lijst met overeenkomende variabelen.
-  - **Overeenkomende variabele:**
-    - requestMethod
-    - String
-    - PostArgs
-    - requestUri
+- **Wedstrijdvoorwaarde:** definieert een wedstrijdvariabele, een operator en de wedstrijdwaarde. Elke regel kan meerdere wedstrijdvoorwaarden bevatten. Een overeenkomstvoorwaarde kan worden gebaseerd op geolocatie, IP-adressen (CIDR) van de client, grootte of tekenreeksovereenkomst. String match kan worden tegen een lijst van wedstrijd variabelen.
+  - **Wedstrijdvariabele:**
+    - Aanvraagmethode
+    - QueryString
+    - PostArgs (PostArgs)
+    - RequestUri
     - RequestHeader
-    - requestBody
+    - RequestBody RequestBody
     - Cookies
-  - **And**
-    - Any: wordt vaak gebruikt voor het definiëren van de standaard actie als er geen regels overeenkomen. Any is een overeenkomende operator voor alle.
-    - Waard
+  - **Operator:**
+    - Elke: wordt vaak gebruikt om standaardactie te definiëren als er geen regels zijn afgestemd. Elke is een match alle operator.
+    - Is gelijk aan
     - Contains
-    - LessThan: beperking van grootte
-    - GreaterThan: beperking van grootte
-    - LessThanOrEqual: beperking van grootte
-    - GreaterThanOrEqual: beperking van grootte
+    - LessThan: beperking van de grootte
+    - GreaterThan: beperking van de grootte
+    - LessThanOrEqual: beperking van de grootte
+    - GreaterThanOrEqual: beperking van de grootte
     - BeginsWith
     - EndsWith
-    - reguliere
+    - Regex
   
-  - **Regex** biedt geen ondersteuning voor de volgende bewerkingen: 
-    - Backreferences en vastleggen van subexpressies
-    - Wille keurige verklaringen met een breedte nul
-    - Verwijzingen naar subroutines en recursieve patronen
+  - **Regex** ondersteunt de volgende bewerkingen niet: 
+    - Backreferences en het vastleggen van subexpressies
+    - Willekeurige beweringen met nulbreedte
+    - Subroutinematige verwijzingen en recursieve patronen
     - Voorwaardelijke patronen
-    - Backtracking
-    - De \c single-byte-instructie
-    - De instructie \R nieuwe-regel overeenkomst
-    - De richt lijn \K begin van overeenkomst reset
-    - Bijschriften en Inge sloten code
-    - Atomische groepering en behorende Kwant oren
+    - Backtracking controlewerkwoorden
+    - De richtlijn \C single-byte
+    - De \R newline match richtlijn
+    - De richtlijn \K begin van het opnieuw instellen van de wedstrijd
+    - Callouts en ingesloten code
+    - Atoomgroepering en bezitterige kwantificeerders
 
-  - **Negatie [Optioneel]:** U kunt de voor waarde ' *negatie* ' instellen op ' True ' als het resultaat van een voor waarde moet worden genegeerd.
+  - **Ontkennen [optioneel]:** U de *ontmante* voorwaarde op true instellen als het resultaat van een aandoening moet worden ontkend.
       
-  - **Transformeren [Optioneel]:** Een lijst met teken reeksen met namen van trans formaties voordat de overeenkomst wordt geprobeerd. Dit kunnen de volgende trans formaties zijn:
-     - Converteren 
+  - **Transformeren [optioneel]:** Een lijst met tekenreeksen met namen van transformaties die moeten worden uitgevoerd voordat de overeenkomst wordt geprobeerd. Dit kunnen de volgende transformaties zijn:
+     - Hoofdletters 
      - Kleine letters
-     - Interne
-     - RemoveNulls
+     - Trim
+     - Nulls verwijderen
      - UrlDecode
      - UrlEncode
      
-   - **Overeenkomende waarde:** Ondersteunde waarden voor HTTP-aanvraag methoden zijn:
+   - **Wedstrijdwaarde:** Ondersteunde HTTP-aanvraagmethodewaarden zijn:
      - GET
-     - Verzenden
-     - SLAAN
-     - HOREN
+     - POST
+     - PUT
+     - HEAD
      - DELETE
-     - VERGREN delen
-     - Sluit
-     - UPLINKPOORTPROFIEL
+     - Lock
+     - Ontgrendelen
+     - PROFIEL
      - Opties
      - PROPFIND
-     - PROP patch
-     - MKCOL
-     - Kopieer
-     - Ga
+     - PROPPATCH
+     - MKCOL (MKCOL)
+     - Kopiëren
+     - Verplaatsen
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="waf-custom-rules-example-based-on-http-parameters"></a>Voor beeld van aangepaste regels voor WAF op basis van http-para meters
+### <a name="waf-custom-rules-example-based-on-http-parameters"></a>Voorbeeld van aangepaste WAF-regels op basis van http-parameters
 
-Hier volgt een voor beeld waarin de configuratie van een aangepaste regel met twee match voorwaarden wordt weer gegeven. Aanvragen zijn afkomstig van een opgegeven site, zoals gedefinieerd door de verwijzings punt, en de query teken reeks bevat geen ' wacht woord '.
+Hier is een voorbeeld dat de configuratie van een aangepaste regel met twee overeenkomende voorwaarden weergeeft. Aanvragen zijn afkomstig van een opgegeven site zoals gedefinieerd door de verwijzer en querytekenreeks bevat geen 'wachtwoord'.
 
 ```
 # http rules example
@@ -126,7 +126,7 @@ Hier volgt een voor beeld waarin de configuratie van een aangepaste regel met tw
 }
 
 ```
-Hieronder ziet u een voor beeld van een configuratie voor het blok keren van de methode ' PUT ':
+Een voorbeeldconfiguratie voor het blokkeren van de "PUT"-methode wordt hieronder weergegeven:
 
 ``` 
 # http Request Method custom rules
@@ -150,9 +150,9 @@ Hieronder ziet u een voor beeld van een configuratie voor het blok keren van de 
 }
 ```
 
-### <a name="size-constraint"></a>Grootte beperking
+### <a name="size-constraint"></a>Beperking van de grootte
 
-U kunt een aangepaste regel maken die de beperking van de grootte voor een deel van een binnenkomende aanvraag aangeeft. De onderstaande regel blokkeert bijvoorbeeld een URL die langer is dan 100 tekens.
+U een aangepaste regel bouwen die een beperking van de grootte opgeeft voor een deel van een binnenkomende aanvraag. Onder regel wordt bijvoorbeeld een url van meer dan 100 tekens verwijderd.
 
 ```
 # http parameters size constraint
@@ -177,7 +177,7 @@ U kunt een aangepaste regel maken die de beperking van de grootte voor een deel 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een firewall beleid voor webtoepassingen configureren met behulp van Azure PowerShell](waf-front-door-custom-rules-powershell.md) 
-- Meer informatie over [Web Application Firewall met de voor deur](afds-overview.md)
+- [Een Web Application Firewall-beleid configureren met Azure PowerShell](waf-front-door-custom-rules-powershell.md) 
+- Meer informatie over [webapplicationfirewall met voordeur](afds-overview.md)
 - Lees hoe u [een Front Door maakt](../../frontdoor/quickstart-create-front-door.md).
 

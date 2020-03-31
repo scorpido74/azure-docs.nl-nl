@@ -2,25 +2,25 @@
 title: Overzicht
 description: Hierin wordt beschreven hoe u Azure Resource Manager kunt gebruiken voor implementatie, beheer, en beheer van toegang tot resources in Azure.
 ms.topic: overview
-ms.date: 08/29/2019
-ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/25/2020
+ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240322"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80258138"
 ---
-# <a name="azure-resource-manager-overview"></a>Overzicht van Azure Resource Manager
+# <a name="what-is-azure-resource-manager"></a>Wat is Azure Resource Manager?
 
-Azure Resource Manager is de implementatie- en beheersservice voor Azure. Er wordt een Management-laag geboden waarmee u resources in uw Azure-abonnement kunt maken, bijwerken en verwijderen. U kunt beheer functies, zoals toegangs beheer, vergren delingen en tags, gebruiken om uw resources na de implementatie te beveiligen en te organiseren.
+Azure Resource Manager is de implementatie- en beheersservice voor Azure. Het biedt een beheerlaag waarmee u resources in uw Azure-abonnement maken, bijwerken en verwijderen. U gebruikt beheerfuncties, zoals toegangscontrole, vergrendelingen en tags, om uw resources na implementatie te beveiligen en te ordenen.
 
-Zie [Sjabloonimlementatie Overview](../templates/overview.md)voor meer informatie over Azure Resource Manager sjablonen.
+Zie [Overzicht van](../templates/overview.md)azure resource manager voor meer informatie over Azure Resource Manager-sjablonen .
 
 ## <a name="consistent-management-layer"></a>Consistente beheerlaag
 
-Wanneer een gebruiker een aanvraag verzendt vanuit een van de Azure-hulpprogram ma's, Api's of Sdk's, ontvangt de aanvraag een resource manager. De aanvraag wordt geverifieerd en geautoriseerd. Resource Manager verzendt de aanvraag naar de Azure-service, die de aangevraagde actie onderneemt. Omdat alle aanvragen worden verwerkt via dezelfde API, ziet u consistente resultaten en mogelijkheden in de verschillende hulpprogramma's.
+Wanneer een gebruiker een verzoek verzendt vanuit een van de Azure-hulpprogramma's, API's of SDK's, ontvangt Resource Manager de aanvraag. Het verifieert en machtigt het verzoek. Resourcemanager stuurt de aanvraag naar de Azure-service, waarbij de gevraagde actie wordt uitgevoerd. Omdat alle aanvragen worden verwerkt via dezelfde API, ziet u consistente resultaten en mogelijkheden in de verschillende hulpprogramma's.
 
-In de volgende afbeelding ziet u de rol Azure Resource Manager speelt bij het verwerken van Azure-aanvragen. 
+In de volgende afbeelding ziet u de rol die Azure Resource Manager speelt bij het afhandelen van Azure-aanvragen.
 
 ![Resource Manager-aanvraagmodel](./media/overview/consistent-management-layer.png)
 
@@ -31,38 +31,38 @@ Alle mogelijkheden die beschikbaar zijn in de Azure-portal zijn ook beschikbaar 
 Als u nog geen ervaring hebt met de Azure Resource Manager, zijn er enkele termen die u mogelijk niet kent.
 
 * **resource** - een beheerbaar item dat beschikbaar is via Azure. Virtuele machines, opslagaccounts, web-apps, databases en virtuele netwerken zijn voorbeelden van resources.
-* **resourcegroep** - een container met gerelateerde resources voor een Azure-oplossing. De resourcegroep bevat die resources die u als groep wilt beheren. U bepaalt welke resources deel uitmaken van een resource groep op basis van wat voor uw organisatie het meest zinvol is. Zie [Resourcegroepen](#resource-groups).
-* **resourceprovider** - een service die zorgt voor Azure-resources. Een veelvoorkomende resource provider is bijvoorbeeld micro soft. compute, die de virtuele-machine resource levert. Micro soft. Storage is een andere algemene resource provider. Zie [resource providers en-typen](resource-providers-and-types.md).
-* **Resource Manager-sjabloon** - Een JavaScript Object Notation (JSON)-bestand dat één of meer resources definieert die worden geïmplementeerd in een resourcegroep of abonnement. De sjabloon kan worden gebruikt om de resources consistent en herhaaldelijk te implementeren. Zie [overzicht van Sjabloonimlementatie](../templates/overview.md).
-* **declaratieve syntaxis** - een syntaxis waarmee u kunt aangeven 'Dit is wat ik wil maken' zonder hiervoor de nodige reeks programmeeropdrachten te hoeven maken. De sjabloon Resource Manager is een voorbeeld van een declaratieve syntaxis. In het bestand definieert u de eigenschappen voor de infrastructuur te implementeren naar Azure.  Zie [overzicht van Sjabloonimlementatie](../templates/overview.md).
+* **resourcegroep** - een container met gerelateerde resources voor een Azure-oplossing. De resourcegroep bevat die resources die u als groep wilt beheren. U bepaalt welke resources deel uitmaken van een resourcegroep op basis van wat voor uw organisatie het meest zinvol is. Zie [Resourcegroepen](#resource-groups).
+* **resourceprovider** - een service die zorgt voor Azure-resources. Voorbeeld: een veelgebruikte resourceprovider is Microsoft.Compute, die de resource van de virtuele machine levert. Microsoft.Storage is een andere algemene resourceprovider. Zie [Resourceproviders en -typen](resource-providers-and-types.md).
+* **Resource Manager-sjabloon** - Een JavaScript Object Notation (JSON)-bestand dat één of meer resources definieert die worden geïmplementeerd in een resourcegroep of abonnement. De sjabloon kan worden gebruikt om de resources consistent en herhaaldelijk te implementeren. Zie [Overzicht van sjabloonimplementatie](../templates/overview.md).
+* **declaratieve syntaxis** - een syntaxis waarmee u kunt aangeven 'Dit is wat ik wil maken' zonder hiervoor de nodige reeks programmeeropdrachten te hoeven maken. De sjabloon Resource Manager is een voorbeeld van een declaratieve syntaxis. In het bestand definieert u de eigenschappen voor de infrastructuur te implementeren naar Azure.  Zie [Overzicht van sjabloonimplementatie](../templates/overview.md).
 
 ## <a name="the-benefits-of-using-resource-manager"></a>De voordelen van Resource Manager
 
-Met Resource Manager kunt u het volgende doen:
+Met Resource Manager u het als nog niet doen:
 
-* Uw infra structuur beheren via declaratieve sjablonen in plaats van scripts.
+* Beheer uw infrastructuur via declaratieve sjablonen in plaats van scripts.
 
-* U kunt alle resources voor uw oplossing implementeren, beheren en bewaken als groep, in plaats van deze resources afzonderlijk te verwerken.
+* Implementeer, beheer en controleer alle resources voor uw oplossing als groep, in plaats van deze resources afzonderlijk te verwerken.
 
-* Implementeer uw oplossing opnieuw in de levens cyclus van de ontwikkeling en laat de betrouw baarheid van uw resources in een consistente staat worden geïmplementeerd.
+* Implementeer uw oplossing gedurende de hele ontwikkelingslevenscyclus en heb er vertrouwen in dat uw resources consistent zijn geïmplementeerd.
 
-* Definieer de afhankelijkheden tussen resources, zodat deze in de juiste volg orde worden geïmplementeerd.
+* Definieer de afhankelijkheden tussen resources, zodat ze in de juiste volgorde worden geïmplementeerd.
 
-* Toegangs beheer Toep assen op alle services in uw resource groep, omdat op rollen gebaseerde Access Control (RBAC) systeem eigen is geïntegreerd in het beheer platform.
+* Pas toegangsbeheer toe op alle services in uw resourcegroep omdat RBAC (Role-Based Access Control) native is geïntegreerd in het beheerplatform.
 
-* Pas Tags toe op resources om alle resources in uw abonnement logisch te organiseren.
+* Tags toepassen op resources om logisch alle bronnen in uw abonnement te ordenen.
 
-* Verhelder de facturering van uw organisatie door de kosten voor een groep resources te bekijken die dezelfde tag delen.
+* Verhelder de facturering van uw organisatie door de kosten weer te geven voor een groep resources die dezelfde tag delen.
 
-## <a name="understand-scope"></a>Reikwijdte
+## <a name="understand-scope"></a>Bereik
 
-Azure biedt vier bereik niveaus: [beheer groepen](../../governance/management-groups/overview.md), abonnementen, [resource groepen](#resource-groups)en resources. In de volgende afbeelding ziet u een voorbeeld van deze lagen.
+Azure biedt vier scopeniveaus: [beheergroepen,](../../governance/management-groups/overview.md)abonnementen, [resourcegroepen](#resource-groups)en resources. In de volgende afbeelding ziet u een voorbeeld van deze lagen.
 
 ![Bereik](./media/overview/scope-levels.png)
 
-U past beheerinstellingen toe op een of meer bereikniveaus. Het niveau dat u kiest, bepaalt de reikwijdte van de instelling. Lagere niveaus nemen instellingen over van hogere niveaus. Wanneer u bijvoorbeeld een [beleid](../../governance/policy/overview.md) toepast op het abonnement, wordt het beleid toegepast op alle resource groepen en resources in uw abonnement. Wanneer u een beleid toepast op de resource groep, wordt dat beleid toegepast op de resource groep en alle bijbehorende resources. Een andere resource groep beschikt echter niet over die beleids toewijzing.
+U past beheerinstellingen toe op een of meer bereikniveaus. Het niveau dat u kiest, bepaalt de reikwijdte van de instelling. Lagere niveaus nemen instellingen over van hogere niveaus. Wanneer u bijvoorbeeld een [beleid](../../governance/policy/overview.md) toepast op het abonnement, wordt het beleid toegepast op alle brongroepen en resources in uw abonnement. Wanneer u een beleid toepast op de resourcegroep, wordt dat beleid toegepast op de resourcegroep en al zijn resources. Een andere resourcegroep heeft die beleidstoewijzing echter niet.
 
-U kunt sjablonen implementeren voor beheer groepen, abonnementen of resource groepen.
+U sjablonen implementeren voor beheergroepen, abonnementen of resourcegroepen.
 
 ## <a name="resource-groups"></a>Resourcegroepen
 
@@ -82,32 +82,28 @@ Er zijn een aantal belangrijke factoren waarmee u rekening moet houden bij het d
 
 * Een resource kan communiceren met resources in andere resourcegroepen. Deze interactie is gebruikelijk wanneer er een relatie bestaat tussen de twee resources, maar deze niet dezelfde levenscyclus delen (bijvoorbeeld web-apps die verbinding maken met een database).
 
-Als u een resourcegroep maakt, moet u voor die resourcegroep een locatie opgeven. U vraagt zich misschien af: 'Waarom heeft een resourcegroep een locatie nodig? En als de resources andere locaties kunnen hebben dan de resourcegroep, wat is dan het nut van een locatie voor de resourcegroep?' De resourcegroep slaat metagegevens op over de resources. Wanneer u een locatie voor de resource groep opgeeft, geeft u op waar de meta gegevens worden opgeslagen. In verband met nalevingsvereisten moet u er mogelijk voor zorgen dat uw gegevens worden opgeslagen in een bepaalde regio.
+Als u een resourcegroep maakt, moet u voor die resourcegroep een locatie opgeven. U vraagt zich misschien af: 'Waarom heeft een resourcegroep een locatie nodig? En als de resources andere locaties kunnen hebben dan de resourcegroep, wat is dan het nut van een locatie voor de resourcegroep?' De resourcegroep slaat metagegevens op over de resources. Wanneer u een locatie voor de resourcegroep opgeeft, geeft u op waar die metagegevens zijn opgeslagen. In verband met nalevingsvereisten moet u er mogelijk voor zorgen dat uw gegevens worden opgeslagen in een bepaalde regio.
 
-Als de regio van de resource groep tijdelijk niet beschikbaar is, kunt u resources in de resource groep niet bijwerken omdat de meta gegevens niet beschikbaar zijn. De resources in andere regio's zullen nog steeds werken zoals verwacht, maar u kunt ze niet bijwerken. Zie voor meer informatie over het bouwen van betrouw bare toepassingen [ontwerpen van betrouw bare Azure-toepassingen](/azure/architecture/checklist/resiliency-per-service).
+Als het gebied van de resourcegroep tijdelijk niet beschikbaar is, u de bronnen in de brongroep niet bijwerken omdat de metagegevens niet beschikbaar zijn. De resources in andere regio's werken nog steeds zoals verwacht, maar u ze niet bijwerken. Zie [Betrouwbare Azure-toepassingen ontwerpen](/azure/architecture/checklist/resiliency-per-service)voor meer informatie over het bouwen van betrouwbare toepassingen.
 
-## <a name="resiliency-of-azure-resource-manager"></a>Tolerantie van Azure Resource Manager
+## <a name="resiliency-of-azure-resource-manager"></a>Tolerantie voor Azure Resource Manager
 
-De Azure Resource Manager-service is ontworpen voor tolerantie en voortdurende Beschik baarheid. Resource Manager-en beheer vlak bewerkingen (aanvragen die zijn verzonden naar management.azure.com) in de REST API zijn:
+De Azure Resource Manager-service is ontworpen voor tolerantie en continue beschikbaarheid. Resourcebeheer en beheervlakbewerkingen (aanvragen die naar management.azure.com) in de REST-API worden verzonden, zijn:
 
-* Verdeeld over de regio's. Sommige services zijn regionaal.
+* Verdeeld over regio's. Sommige diensten zijn regionaal.
 
-* Gedistribueerd over Beschikbaarheidszones (als de juiste regio's) op locaties met meerdere Beschikbaarheidszones.
+* Verdeeld over beschikbaarheidszones (evenals regio's) op locaties met meerdere beschikbaarheidszones.
 
-* Niet afhankelijk van één logisch Data Center.
+* Niet afhankelijk van één logisch datacenter.
 
-* Nooit ondernomen voor onderhouds activiteiten.
+* Nooit naar beneden gehaald voor onderhoudsactiviteiten.
 
-Deze tolerantie geldt voor services die aanvragen ontvangen via Resource Manager. Key Vault voor delen van deze tolerantie.
+Deze tolerantie is van toepassing op services die aanvragen ontvangen via Resource Manager. Key Vault profiteert bijvoorbeeld van deze tolerantie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor alle bewerkingen die worden aangeboden door resourceproviders, raadpleegt u de [Azure REST API's](/rest/api/azure/).
+* Zie [Resources verplaatsen naar een nieuwe resourcegroep of -abonnement](move-resource-group-and-subscription.md)voor meer informatie over het verplaatsen van resources.
 
-* Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](move-resource-group-and-subscription.md)voor meer informatie over het verplaatsen van resources.
+* Zie Tags gebruiken om [uw Azure-bronnen te ordenen](tag-resources.md)voor meer informatie over het taggen van resources.
 
-* Zie [Tags gebruiken om uw Azure-resources te organiseren](tag-resources.md)voor meer informatie over het labelen van resources.
-
-* Zie [resources vergren delen om onverwachte wijzigingen te voor komen](lock-resources.md)voor meer informatie over het vergren delen van resources.
-
-* Zie [Sjabloonimlementatie Overview](../templates/overview.md)voor meer informatie over het maken van sjablonen voor implementaties.
+* Zie [Resources vergrendelen om onverwachte wijzigingen te voorkomen](lock-resources.md)voor meer informatie over het vergrendelen van resources.

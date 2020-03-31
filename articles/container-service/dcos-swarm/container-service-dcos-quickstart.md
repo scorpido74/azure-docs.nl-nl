@@ -8,19 +8,19 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78399224"
 ---
 # <a name="deprecated-deploy-a-dcos-cluster"></a>(AFGESCHAFT) Een DC/OS-cluster implementeren
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS biedt een gedistribueerd platform voor het uitvoeren van moderne toepassingen in containers. Met Azure Container Service kunt u eenvoudig en snel een DC/OS-cluster inrichten dat gereed is voor productie. In deze Snelstartgids worden de basis stappen beschreven die nodig zijn voor het implementeren van een DC/OS-cluster en het uitvoeren van een basis werk belasting.
+DC/OS biedt een gedistribueerd platform voor het uitvoeren van moderne toepassingen in containers. Met Azure Container Service kunt u eenvoudig en snel een DC/OS-cluster inrichten dat gereed is voor productie. Deze quickstart geeft details over de basisstappen die nodig zijn om een DC/OS-cluster te implementeren en de basiswerkbelasting uit te voeren.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 Voor deze zelfstudie is versie 2.0.4 of hoger van de Azure CLI vereist. Voer `az --version` uit om de versie te bekijken. Als u wilt upgraden, raadpleegt u [Azure CLI installeren]( /cli/azure/install-azure-cli). 
 
@@ -36,7 +36,7 @@ az login
 
 Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
 
-In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS Oost*.
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -165,7 +165,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een DC/OS-cluster geïmplementeerd en een eenvoudige docker-container op het cluster uitgevoerd. Ga verder met de ACS-zelfstudies voor meer informatie over Azure Container Service.
+In deze quickstart hebt u een DC/OS-cluster geïmplementeerd en een eenvoudige Docker-container op het cluster uitgevoerd. Ga verder met de ACS-zelfstudies voor meer informatie over Azure Container Service.
 
 > [!div class="nextstepaction"]
 > [Een ACS DC/OS-cluster beheren](container-service-dcos-manage-tutorial.md)

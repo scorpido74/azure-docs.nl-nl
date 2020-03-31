@@ -1,6 +1,6 @@
 ---
-title: Onboarding-vereisten voor SAP HANA op Azure (grote exemplaren) | Microsoft Docs
-description: Onboarding-vereisten voor SAP HANA op Azure (grote exemplaren).
+title: Onboarding-vereisten voor SAP HANA op Azure (grote exemplaren) | Microsoft Documenten
+description: Onboarding-vereisten voor SAP HANA op Azure (Large Instances).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,73 +14,73 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617007"
 ---
 # <a name="onboarding-requirements"></a>Voorbereidingsvereisten
 
-In deze lijst worden de vereisten voor het uitvoeren van SAP HANA op Azure geassembleerd (grotere exemplaren).
+In deze lijst worden vereisten verzameld voor het uitvoeren van SAP HANA op Azure (Grotere exemplaren).
 
 **Microsoft Azure**
 
-- Een Azure-abonnement dat kan worden gekoppeld aan SAP HANA op Azure (grote exemplaren).
-- Micro soft Premier Support-contract. Voor specifieke informatie met betrekking tot het uitvoeren van SAP in azure raadpleegt u [SAP-ondersteunings opmerking #2015553 – SAP op Microsoft Azure: vereisten voor ondersteuning](https://launchpad.support.sap.com/#/notes/2015553). Als u gebruik maakt van HANA grote instantie-eenheden met 384 en meer Cpu's, moet u ook het Premier-ondersteunings contract uitbreiden om Azure Rapid Response toe te voegen.
-- U moet rekening houden met de HANA-Sku's voor grote instanties die u nodig hebt nadat u een schaal oefening met SAP hebt uitgevoerd.
+- Een Azure-abonnement dat kan worden gekoppeld aan SAP HANA op Azure (Large Instances).
+- Microsoft Premier-ondersteuningscontract. Zie [SAP Support Note #2015553 – SAP op Microsoft Azure: Vereiste ondersteuning voor](https://launchpad.support.sap.com/#/notes/2015553)specifieke informatie met betrekking tot het uitvoeren van SAP in Azure. Als u HANA Large Instance-eenheden met 384 en meer CPU's gebruikt, moet u ook het Premier-ondersteuningscontract verlengen met Azure Rapid Response.
+- Bewustzijn van de HANA Large Instance SKU's die je nodig hebt nadat je een maatoefening met SAP hebt uitgevoerd.
 
-**Netwerk verbinding**
+**Netwerkconnectiviteit**
 
-- ExpressRoute tussen on-premises naar Azure: om uw on-premises Data Center te verbinden met Azure, moet u ervoor zorgen dat u Mini maal een 1 Gbps-verbinding van uw Internet provider kunt best Ellen. Connectiviteit tussen HANA grote exemplaar eenheden en Azure gebruikt ook ExpressRoute-technologie. Deze ExpressRoute-verbinding tussen de HANA grote exemplaar eenheden en Azure is inbegrepen in de prijs van de HANA grote instantie-eenheden, inclusief alle gegevens binnenkomend en uitgaand verkeer voor dit specifieke ExpressRoute-circuit. Daarom bieden u als klant geen extra kosten meer dan uw ExpressRoute-koppeling tussen on-premises en Azure.
+- ExpressRoute tussen on-premises naar Azure: als u uw on-premises datacenter wilt verbinden met Azure, moet u ten minste een verbinding van 1 Gbps bestellen vanaf uw ISP. Connectiviteit tussen HANA Large Instance-eenheden en Azure maakt ook gebruik van ExpressRoute-technologie. Deze ExpressRoute-verbinding tussen de HANA Large Instance-eenheden en Azure is inbegrepen in de prijs van de HANA Large Instance-eenheden, inclusief alle gegevensin- en uitgangskosten voor dit specifieke ExpressRoute-circuit. Daarom vindt u als klant geen extra kosten te maken buiten uw ExpressRoute-koppeling tussen on-premises en Azure.
 
 **Besturingssysteem**
 
 - Licenties voor SUSE Linux Enterprise Server 12 voor SAP-toepassingen.
 
    > [!NOTE] 
-   > Het door micro soft geleverde besturings systeem is niet geregistreerd bij SUSE. Deze is niet verbonden met een exemplaar van het abonnements beheer programma.
+   > Het besturingssysteem geleverd door Microsoft is niet geregistreerd bij SUSE. Het is niet verbonden met een instantie voor abonnementsbeheer.
 
-- Het hulp programma SUSE Linux-abonnements beheer dat is geïmplementeerd in azure op een VM. Dit hulp programma biedt de mogelijkheid om SAP HANA op Azure (grote instanties) te registreren en respectievelijk te worden bijgewerkt door SUSE. (Er is geen Internet toegang in de HANA-data centrum voor grote instanties.) 
-- Licenties voor Red Hat Enterprise Linux 6,7 of 7. x voor SAP HANA.
+- SUSE Linux Subscription Management Tool geïmplementeerd in Azure op een VM. Deze tool biedt de mogelijkheid voor SAP HANA op Azure (Large Instances) te worden geregistreerd en respectievelijk bijgewerkt door SUSE. (Er is geen internettoegang binnen het HANA Large Instance datacenter.) 
+- Licenties voor Red Hat Enterprise Linux 6.7 of 7.x voor SAP HANA.
 
    > [!NOTE]
-   > Het door micro soft geleverde besturings systeem is niet geregistreerd bij Red Hat. Het is niet verbonden met een exemplaar van Red Hat Subscription Manager.
+   > Het besturingssysteem geleverd door Microsoft is niet geregistreerd bij Red Hat. Het is niet verbonden met een red hat-abonnementsbeheer-exemplaar.
 
-- Red Hat Subscription Manager geïmplementeerd in azure op een virtuele machine. Red Hat Subscription Manager biedt de mogelijkheid om SAP HANA op Azure (grote instanties) te registreren en respectievelijk bijgewerkt te worden door Red Hat. (Er is geen directe toegang tot internet vanuit de Tenant die is geïmplementeerd op de stempel van het grote Azure-exemplaar.)
-- Voor SAP moet u ook een ondersteunings contract met uw Linux-provider hebben. Deze vereiste wordt niet verwijderd door de oplossing van HANA grote instanties of het feit dat u Linux in azure uitvoert. In tegens telling tot een aantal installatie kopieën van de Linux Azure-galerie, zijn de service kosten *niet* opgenomen in de oplossings aanbieding van Hana grote instanties. Het is uw verantwoordelijkheid om te voldoen aan de vereisten van SAP met betrekking tot ondersteunings contracten met de Linux-distributeur. 
-   - Voor SUSE Linux zoekt u de vereisten van de ondersteunings contracten in [SAP note #1984787-SuSE Linux Enterprise Server 12: installatie notities](https://launchpad.support.sap.com/#/notes/1984787) en [SAP-Opmerking #1056161-SuSE-prioriteits ondersteuning voor SAP-toepassingen](https://launchpad.support.sap.com/#/notes/1056161).
-   - Voor Red Hat Linux moet u de juiste abonnements niveaus hebben die ondersteuning en service-updates bevatten voor de besturings systemen van HANA grote instanties. Red Hat adviseert het Red Hat Enterprise Linux-abonnement voor SAP-oplossing. Raadpleeg https://access.redhat.com/solutions/3082481. 
+- Red Hat Subscription Manager geïmplementeerd in Azure op een VM. De Red Hat Subscription Manager biedt de mogelijkheid voor SAP HANA op Azure (Large Instances) te worden geregistreerd en respectievelijk bijgewerkt door Red Hat. (Er is geen directe internettoegang vanuit de tenant die is geïmplementeerd op het Azure Large Instance-stempel.)
+- SAP vereist dat u ook een ondersteuningscontract hebt met uw Linux-provider. Deze vereiste wordt niet verwijderd door de oplossing van HANA Large Instance of het feit dat u Linux in Azure uitvoert. In tegenstelling tot sommige van de Linux Azure-galerijafbeeldingen, worden de servicekosten *niet* opgenomen in het oplossingsaanbod van HANA Large Instance. Het is uw verantwoordelijkheid om te voldoen aan de eisen van SAP met betrekking tot ondersteuningscontracten met de Linux-distributeur. 
+   - Voor SUSE Linux, zoek de vereisten van ondersteuning contracten in [SAP Note #1984787 - SUSE Linux Enterprise Server 12: Installatie notities](https://launchpad.support.sap.com/#/notes/1984787) en SAP Note #1056161 - [SUSE prioriteit ondersteuning voor SAP-toepassingen](https://launchpad.support.sap.com/#/notes/1056161).
+   - Voor Red Hat Linux moet u de juiste abonnementsniveaus hebben die ondersteuning en service-updates voor de besturingssystemen van HANA Large Instance bevatten. Red Hat raadt het Red Hat Enterprise Linux-abonnement voor SAP-oplossing aan. Doorverwijzen https://access.redhat.com/solutions/3082481. 
 
-Zie [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581)voor de ondersteunings matrix van de verschillende SAP Hana versies met de verschillende Linux-versies.
+Voor de ondersteuningsmatrix van de verschillende SAP HANA-versies met de verschillende Linux-versies, zie [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
-Raadpleeg voor de compatibiliteits matrix van het besturings systeem en///versie van de firmware/Stuur Programma's de [OS-upgrade voor HLI](os-upgrade-hana-large-instance.md).
+Raadpleeg [OS Upgrade voor HLI voor](os-upgrade-hana-large-instance.md)de compatibiliteitsmatrix van het besturingssysteem en hli-firmware/driverversies.
 
 
 > [!IMPORTANT] 
-> Voor het type II-eenheden wordt op dit moment alleen de SLES 12 SP2-besturingssysteem versie ondersteund. 
+> Voor type II-eenheden wordt op dit moment alleen de SLES 12 SP2 OS-versie ondersteund. 
 
 
 **Database**
 
-- Licenties en software-installatie onderdelen voor SAP HANA (platform of ENTER prise Edition).
+- Licenties en software-installatiecomponenten voor SAP HANA (platform of enterprise edition).
 
 **Toepassingen**
 
-- Licenties en software-installatie onderdelen voor SAP-toepassingen die verbinding maken met SAP HANA en gerelateerde SAP-ondersteunings contracten.
-- Licenties en software-installatie onderdelen voor niet-SAP-toepassingen die worden gebruikt met SAP HANA op Azure-omgevingen (grote exemplaren) en gerelateerde ondersteunings contracten.
+- Licenties en software-installatiecomponenten voor alle SAP-toepassingen die verbinding maken met SAP HANA en gerelateerde SAP-ondersteuningscontracten.
+- Licenties en software-installatiecomponenten voor niet-SAP-toepassingen die worden gebruikt met SAP HANA op Azure-omgevingen (Large Instances) en gerelateerde ondersteuningscontracten.
 
-**Lacune**
+**Vaardigheden**
 
-- Ervaring met en kennis van Azure IaaS en de bijbehorende onderdelen.
-- Ervaring met en kennis van het implementeren van een SAP-werk belasting in Azure.
-- SAP HANA installatie Certified Personal.
-- SAP architect-vaardig heden om hoge Beschik baarheid en herstel na nood gevallen te ontwerpen rond SAP HANA.
+- Ervaring met en kennis van Azure IaaS en de onderdelen daarvan.
+- Ervaring met en kennis van het implementeren van een SAP-workload in Azure.
+- SAP HANA installatie gecertificeerd persoonlijk.
+- VAARDIGHEDEN van SAP-architecten om hoge beschikbaarheid en disaster recovery rond SAP HANA te ontwerpen.
 
 **SAP**
 
-- Verwachting is dat u een SAP-klant bent en een ondersteunings contract met SAP hebt.
-- Met name voor implementaties van de klasse type II van HANA grote instanties, raadpleegt u met SAP op versies van SAP HANA en de uiteindelijke configuraties voor grootschalige, uitbreid bare hardware.
+- De verwachting is dat u een SAP-klant bent en een ondersteuningscontract hebt met SAP.
+- Speciaal voor implementaties van de Type II-klasse van HANA Large Instance SKU's, overleg met SAP over versies van SAP HANA en de uiteindelijke configuraties op grote schaal-up hardware.
 
 **Volgende stappen**
-- Raadpleeg de [architectuur van SAP Hana (grote instanties) op Azure](hana-architecture.md)
+- [Sap HANA-architectuur (Large Instances) verwijzen op Azure](hana-architecture.md)

@@ -1,81 +1,84 @@
 ---
-title: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
-description: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
+title: Privé verbinding maken met een web-app met Azure Private Endpoint
+description: Privé verbinding maken met een web-app met Azure Private Endpoint
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 03/18/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: ad7e04d611129766fe9fb72285fe35ccfbb17626
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.custom: fasttrack-edit
+ms.openlocfilehash: c2717b1f29af39c6fdc4602b11acba131d959f03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136669"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534385"
 ---
-# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
+# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privéeindpunten gebruiken voor Azure Web App (voorbeeld)
 
-U kunt een privé-eind punt voor uw Azure-web-app gebruiken om clients die zich in uw particuliere netwerk bevinden, veilig toegang te geven tot de app via een persoonlijke koppeling. Het persoonlijke eind punt gebruikt een IP-adres uit uw Azure VNet-adres ruimte. Netwerk verkeer tussen de client op uw particuliere netwerk en de web-app gaat over op het Vnet en een privé koppeling in het micro soft backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen.
+> [!Note]
+> De preview is beschikbaar in de regio's Oost-VS en West-VS 2 voor alle PremiumV2 Windows- en Linux Web Apps en Elastic Premium-functies. 
 
-Als u een persoonlijk eind punt gebruikt voor uw web-app, kunt u het volgende doen:
+U Privéeindpunt voor uw Azure Web App gebruiken om clients in uw privénetwerk veilig toegang te geven tot de app via Private Link. Het privéeindpunt gebruikt een IP-adres uit uw Azure VNet-adresruimte. Netwerkverkeer tussen een client op uw privénetwerk en de web-app loopt via het VNet en een privékoppeling op het Microsoft-backbonenetwerk, waardoor blootstelling van het openbare internet wordt geëlimineerd.
 
-- Uw web-app beveiligen door het service-eind punt te configureren, open bare bloot stelling te elimineren
-- Maak veilig verbinding met de web-app vanuit on-premises netwerken die verbinding maken met het Vnet met behulp van een VPN-of ExpressRoute privé-peering.
+Met Privéeindpunt voor uw web-app u:
 
-Als u alleen een beveiligde verbinding tussen uw Vnet en uw web-app nodig hebt, is service-eind punt de eenvoudigste oplossing. Als u de web-app ook van on-premises moet bereiken via een Azure-gateway, is een regionaal peered Vnet of een globaal peered Vnet, het persoonlijke eind punt is de oplossing.  
+- Beveilig uw web-app door het Service Endpoint te configureren, waardoor openbare blootstelling wordt geëlimineerd.
+- Maak veilig verbinding met Web App van on-premises netwerken die verbinding maken met het VNet via een VPN of ExpressRoute private peering.
 
-Voor meer informatie over [service-eind punten][serviceendpoint]
+Als u alleen een veilige verbinding nodig hebt tussen uw VNet en uw Web App, is een Service Endpoint de eenvoudigste oplossing. Als u de web-app ook on-premises moet bereiken via een Azure-gateway, een regionaal getouwerde VNet of een wereldwijd peered VNet, is Private Endpoint de oplossing.  
+
+Zie [Serviceeindpunten voor][serviceendpoint]meer informatie.
 
 ## <a name="conceptual-overview"></a>Conceptueel overzicht
 
-Een persoonlijk eind punt is een speciale netwerk interface (NIC) voor uw Azure-web-app in uw subnet in uw Virtual Network (Vnet).
-Wanneer u een persoonlijk eind punt voor uw web-app maakt, biedt het een beveiligde verbinding tussen clients in uw particuliere netwerk en uw web-app. Het persoonlijke eind punt krijgt een IP-adres uit het IP-adres bereik van uw Vnet.
-De verbinding tussen het persoonlijke eind punt en de web-app maakt gebruik van een beveiligde [persoonlijke koppeling][privatelink]. Privé-eind punt wordt alleen gebruikt voor binnenkomende stromen naar uw web-app. Uitgaande stromen gebruiken dit persoonlijke eind punt niet, maar u kunt via de [Vnet-integratie functie][vnetintegrationfeature]uitgaande stromen naar uw netwerk injecteren in een ander subnet.
+Een privéeindpunt is een speciale netwerkinterface (NIC) voor uw Azure Web App in een subnet in uw virtuele netwerk (VNet).
+Wanneer u een privéeindpunt voor uw web-app maakt, biedt het veilige connectiviteit tussen clients in uw privénetwerk en uw web-app. Aan het privéeindpunt wordt een IP-adres toegewezen uit het IP-adresbereik van uw VNet.
+De verbinding tussen het privéeindpunt en de web-app maakt gebruik van een beveiligde [privékoppeling.][privatelink] Privéeindpunt wordt alleen gebruikt voor binnenkomende stromen naar uw web-app. Uitgaande stromen gebruiken dit privéeindpunt niet, maar u uitgaande stromen naar uw netwerk injecteren in een ander subnet via de [VNet-integratiefunctie.][vnetintegrationfeature]
 
-Het subnet waar u het persoonlijke eind punt aansluit, kan andere resources bevatten, u hebt geen toegewezen leeg subnet nodig.
-U kunt een persoonlijk eind punt implementeren in een andere regio dan de web-app. 
+Het subnet waar u het Privéeindpunt aansluit, kan andere bronnen hebben, u hebt geen speciaal leeg subnet nodig.
+U het privéeindpunt ook implementeren in een andere regio dan de web-app. 
 
 > [!Note]
->De Vnet-integratie functie kan niet hetzelfde subnet gebruiken dan het persoonlijke eind punt. Dit is een beperking van de Vnet-integratie functie
+>De VNet-integratiefunctie kan niet hetzelfde subnet gebruiken als Private Endpoint, dit is een beperking van de VNet-integratiefunctie.
 
-Vanuit het beveiligings perspectief:
+Vanuit een veiligheidsperspectief:
 
-- Wanneer u service-eind punten voor uw web-app inschakelt, schakelt u alle open bare toegang uit
-- U kunt meerdere privé-eind punten inschakelen in andere Vnets en subnetten, waaronder Vnets in andere regio's
-- Het IP-adres van de NIC van het persoonlijke eind punt moet dynamisch zijn, maar blijft hetzelfde totdat u het persoonlijke eind punt verwijdert
-- Aan de NIC van het persoonlijke eind punt kan geen NSG worden gekoppeld
-- In het subnet waarop het persoonlijke eind punt wordt gehost, kan een NSG zijn gekoppeld, maar u moet het afdwingen van het netwerk beleid voor het privé-eind punt uitschakelen Zie [dit artikel][disablesecuritype]. Als gevolg hiervan kunt u niet filteren op alle NSG die toegang hebben tot uw persoonlijke eind punt
-- Wanneer u een persoonlijk eind punt op uw web-app inschakelt, wordt de configuratie van de [toegangs beperkingen][accessrestrictions] van de web-app niet geëvalueerd.
-- U kunt het risico op gegevens exfiltration van het vnet verminderen door alle NSG-regels te verwijderen waarbij het doel tag internet of Azure-Services is. Als u echter een Web App Service-eind punt in uw subnet toevoegt, krijgt u een web-app te bereiken die wordt gehost in hetzelfde stempel en beschikbaar te stellen aan Internet.
+- Wanneer u Privéeindpunten inschakelt voor uw web-app, schakelt u alle openbare toegang uit.
+- U meerdere privéeindpunten inschakelen in andere VNets en Subnetten, waaronder VNets in andere regio's.
+- Het IP-adres van de Private Endpoint NIC moet dynamisch zijn, maar blijft hetzelfde totdat u het privéeindpunt verwijdert.
+- De NIC van het privéeindpunt kan geen NSG-gekoppeld hebben.
+- In het subnet met het privéeindpunt kan een NSG zijn gekoppeld, maar moet u de handhaving van het netwerkbeleid voor het privéeindpunt uitschakelen: zie [Netwerkbeleid uitschakelen voor privéeindpunten][disablesecuritype]. Als gevolg hiervan u de toegang tot uw privéeindpunt niet door een NSG filteren.
+- Wanneer u Privéeindpunt inschakelt voor uw web-app, wordt de configuratie van de [toegangsbeperkingen][accessrestrictions] van de web-app niet geëvalueerd.
+- U het risico op gegevensexfiltratie van het VNet verminderen door alle NSG-regels te verwijderen waarbij de bestemming internet of Azure-services tagt. Maar als u een privéeindpunt voor web-app's toevoegt in uw subnet, bereikt u elke web-app die in dezelfde implementatiestempel wordt gehost en wordt blootgesteld aan internet.
 
-Het persoonlijke eind punt voor web-app is beschikbaar voor laag PremiumV2 en is geïsoleerd met een externe ASE.
+In de HTTP-logboeken van uw webapp vindt u het IP-adres van de clientbron. Dit wordt geïmplementeerd met behulp van het TCP Proxy-protocol en stuurt de IP-eigenschap van de client door naar de web-app. Zie [Verbindingsgegevens opvragen met TCP Proxy v2][tcpproxy]voor meer informatie.
 
-In de web-http-logboeken van uw web-app vindt u het bron-IP-adres van de client. We hebben het TCP-proxy protocol geïmplementeerd en tot en met de Web-App de IP-eigenschap van de client doorgestuurd. Raadpleeg [dit artikel][tcpproxy] voor meer informatie.
 
-![Globaal overzicht][1]
-
+  > [!div class="mx-imgBorder"]
+  > ![Algemeen overzicht van Web App Private Endpoint](media/private-endpoint/global-schema-web-app.png)
 
 ## <a name="dns"></a>DNS
 
-Omdat deze functie in preview is, wordt de DNS-vermelding niet gewijzigd tijdens de preview-versie. U moet de DNS-vermelding in uw privé-DNS-server of Azure DNS privé zone beheren. Als u een aangepaste DNS-naam moet gebruiken, moet u de aangepaste naam toevoegen in uw web-app. Tijdens de preview moet de aangepaste naam worden gevalideerd, zoals een aangepaste naam, met behulp van een open bare DNS-omzetting. [technische Naslag informatie over aangepaste DNS-validatie][dnsvalidation]
+Aangezien deze functie in preview is, wijzigen we de DNS-vermelding niet tijdens de preview. U moet de DNS-vermelding in uw privé-DNS-server of Azure DNS-privézone zelf beheren.
+Als u een aangepaste DNS-naam moet gebruiken, moet u de aangepaste naam toevoegen aan uw web-app. Tijdens het voorbeeld moet de aangepaste naam worden gevalideerd zoals elke aangepaste naam, met behulp van openbare DNS-resolutie. Zie [aangepaste DNS-validatie][dnsvalidation] voor meer informatie.
 
 ## <a name="pricing"></a>Prijzen
 
-Zie [prijzen voor persoonlijke Azure-koppelingen][pricing]voor prijs informatie.
+Zie [Azure Private Link-prijzen][pricing]voor prijsdetails.
 
 ## <a name="limitations"></a>Beperkingen
 
-De functie voor persoonlijke koppelingen en het persoonlijke eind punt worden regel matig verbeterd. Raadpleeg [dit artikel][pllimitations] voor actuele informatie over beperkingen.
+We verbeteren de Private Link-functie en private eindpunt regelmatig, controleer [dit artikel][pllimitations] voor actuele informatie over beperkingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor het implementeren van een persoonlijk eind punt voor uw web-app via de portal Zie [hoe u een persoonlijke verbinding maakt met een web-app][howtoguide]
+Privéeindpunt voor uw web-app implementeren via de portal zie [Hoe u privé verbinding maakt met een web-app][howtoguide]
 
 
-<!--Image references-->
-[1]: ./media/private-endpoint/schemaglobaloverview.png
+
 
 <!--Links-->
 [serviceendpoint]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

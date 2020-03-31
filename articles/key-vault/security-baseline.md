@@ -1,6 +1,6 @@
 ---
-title: Azure-beveiligings basislijn voor Key Vault
-description: Azure-beveiligings basislijn voor Key Vault
+title: Azure Security Baseline voor Key Vault
+description: Azure Security Baseline voor Key Vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -8,914 +8,911 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7c15786e9a5d2fe65c20a26606087cee994ab54b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: cc76f8c87eca059db85a68acbe4c317cf4904d39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302845"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457182"
 ---
-# <a name="azure-security-baseline-for-key-vault"></a>Azure-beveiligings basislijn voor Key Vault
+# <a name="azure-security-baseline-for-key-vault"></a>Azure Security Baseline voor Key Vault
 
-De Azure-beveiligings basislijn voor Key Vault bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
+De Azure Security Baseline for Key Vault bevat aanbevelingen waarmee u de beveiligingshouding van uw implementatie verbeteren.
 
-De basis lijn voor deze services wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
+De basislijn voor deze services is afkomstig van de [Azure Security Benchmark versie 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen geeft over hoe u uw cloudoplossingen op Azure beveiligen met onze richtlijnen voor best practices.
 
-Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie [overzicht azure security baselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [Beveiligingsbeheer: netwerkbeveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Beveilig bronnen met behulp van netwerk beveiligings groepen of Azure Firewall op de Virtual Network
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Resources beveiligen met netwerkbeveiligingsgroepen of Azure Firewall in uw virtuele netwerk
 
-**Hulp**: Integreer Azure Key Vault met een persoonlijke Azure-koppeling. Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Key Vault) en Azure hosted Customer/partner-services via een persoonlijk eind punt in uw virtuele netwerk.
-Een persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig een service kunt verbinden met een persoonlijke Azure-koppeling. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulatie niveau krijgt in toegangs beheer.
+**Richtlijnen**: Integreer Azure Key Vault met Azure Private Link. Azure Private Link Service stelt u in staat om toegang te krijgen tot Azure Services (bijvoorbeeld Azure Key Vault) en Azure-gehoste client-/partnerservices via een privéeindpunt in uw virtuele netwerk.
+Een Azure Private Endpoint is een netwerkinterface die u privé en veilig verbindt met een service die wordt aangedreven door Azure Private Link. Het privéeindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service effectief in uw VNet wordt opgenomen. Al het verkeer naar de service kan worden doorgestuurd via het privéeindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute- of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U verbinding maken met een instantie van een Azure-bron, zodat u het hoogste niveau van granulariteit in toegangscontrole hebt.
 
-Key Vault integreren met een persoonlijke Azure-koppeling: https://docs.microsoft.com/azure/key-vault/private-link-service
+Key Vault integreren met Azure Private Link:https://docs.microsoft.com/azure/key-vault/private-link-service
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: de configuratie en het verkeer van Vnets, subnetten en Nic's bewaken en vastleggen
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: De configuratie en het verkeer van Vnets, Subnetten en NIC's controleren en registreren
 
-**Hulp**: gebruik Azure Security Center en volg aanbevelingen voor netwerk beveiliging om uw door Key Vault geconfigureerde resources in azure te beveiligen. 
+**Richtlijnen:** Gebruik Azure Security Center en volg aanbevelingen voor netwerkbeveiliging om uw key vault-geconfigureerde resources in Azure te beveiligen. 
 
 
-Voor meer informatie over de netwerk beveiliging die wordt verstrekt door Azure Security Center: 
+Voor meer informatie over de netwerkbeveiliging van Azure Security Center: 
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="13-protect-critical-web-applications"></a>1,3: essentiële webtoepassingen beveiligen
+### <a name="13-protect-critical-web-applications"></a>1.3: Kritieke webapplicaties beschermen
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor webtoepassingen die worden uitgevoerd op Azure App Service of reken bronnen.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor webtoepassingen die worden uitgevoerd op Azure App Service of rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: communicatie met bekende schadelijke IP-adressen weigeren
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Communicatie met bekende kwaadaardige IP-adressen weigeren
 
-**Hulp**: Schakel Azure DDoS Protection Standard in op de virtuele Azure-netwerken die zijn gekoppeld aan uw Key Vault-instanties voor beveiliging tegen gedistribueerde Denial-of-service-aanvallen. Gebruik Azure Security Center geïntegreerde bedreigings informatie om communicatie met bekende of ongebruikte Internet-IP-adressen te weigeren.
+**Richtlijnen:** Schakel Azure DDoS Protection Standard in op de Azure Virtual Networks die zijn gekoppeld aan uw Key Vault-exemplaren voor bescherming tegen gedistribueerde denial-of-service-aanvallen. Gebruik Azure Security Center Integrated Threat Intelligence om communicatie met bekende kwaadaardige of ongebruikte internetIP-adressen te weigeren.
 
  
-Azure DDoS Protection Standard beheren met de Azure Portal: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection detectie van bedreigingen voor de Azure-servicelaag in Azure Security Center: https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Azure DDoS Protection Standard beheren https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection met behulp van de Azure-portal: bedreigingsdetectie voor de Azure-servicelaag in Azure Security Center:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1,5: netwerk pakketten en stroom logboeken vastleggen
+### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Netwerkpakketten en stroomlogboeken opnemen
 
-**Hulp**: Azure Key Vault maakt geen gebruik van netwerk beveiligings groepen (NSG) en stroom logboeken voor Azure Key Vault niet worden vastgelegd. Gebruik in plaats daarvan persoonlijke Azure-koppeling om uw Azure Key Vault-instanties te beveiligen en diagnostische instellingen in te stellen voor het vastleggen van metrische gegevens en controle gebeurtenissen.
-Key Vault integreren met een persoonlijke Azure-koppeling: https://docs.microsoft.com/azure/key-vault/private-link-service
+**Richtlijnen:** Azure Key Vault maakt geen gebruik van netwerkbeveiligingsgroepen (NSG) en stroomlogboeken voor Azure Key Vault worden niet vastgelegd. Gebruik in plaats daarvan Azure Private Link om uw Azure Key Vault-exemplaren te beveiligen en diagnostische instellingen in te schakelen om statistieken op te nemen en gebeurtenissen te controleren.
+Key Vault integreren met Azure Private Link:https://docs.microsoft.com/azure/key-vault/private-link-service
 
-Azure Key Vault logboek registratie: https://docs.microsoft.com/azure/key-vault/key-vault-logging
-
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
-
-**Richt lijnen**: aan deze vereiste kan worden voldaan door het configureren van Advanced Threat Protection (ATP) voor Azure Key Vault. ATP biedt een extra laag beveiligings informatie. Dit hulp programma detecteert mogelijk schadelijke pogingen om Azure Key Vault accounts te openen of misbruik te maken.
+Azure Key Vault-logboekregistratie:https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
-Wanneer Azure Security Center afwijkende activiteiten detecteert, worden er waarschuwingen weer gegeven. Er wordt ook een e-mail verzonden naar de abonnements beheerder met details van de verdachte activiteit en aanbevelingen voor het onderzoeken en oplossen van de geïdentificeerde bedreigingen.
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Netwerkgebaseerde inbraakdetectie-/inbraakpreventiesystemen (IDS/IPS) implementeren
+
+**Richtlijnen:** aan deze vereiste kan worden voldaan door geavanceerde bedreigingsbeveiliging (ATP) voor Azure Key Vault te configureren. ATP biedt een extra laag beveiligingsinformatie. Deze tool detecteert mogelijk schadelijke pogingen om toegang te krijgen tot Azure Key Vault-accounts of deze te exploiteren.
 
 
-Geavanceerde bedreigings beveiliging instellen voor Azure Key Vault: https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
+Wanneer Azure Security Center afwijkende activiteit detecteert, worden waarschuwingen weergegeven. Het e-mailt ook de abonnementsbeheerder met details van de verdachte activiteit en aanbevelingen voor het onderzoeken en herstellen van de geïdentificeerde bedreigingen.
 
 
-**Azure Security Center bewaking**: Ja
-
-**Verantwoordelijkheid**: klant
-
-### <a name="17-manage-traffic-to-web-applications"></a>1,7: verkeer naar webtoepassingen beheren
-
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor webtoepassingen die worden uitgevoerd op Azure App Service of reken bronnen.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: de complexiteit en administratieve overhead van netwerk beveiligings regels minimaliseren
-
-**Richt lijnen**: voor resources die toegang nodig hebben tot uw Azure Key Vault-instanties, gebruikt u de labels van Azure-service voor de Azure Key Vault om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld ApiManagement) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
+Geavanceerde bedreigingsbeveiliging instellen voor Azure Key Vault:https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
 
-Overzicht van Azure-service Tags: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+**Azure Security Center-bewaking:** Ja
 
-**Azure Security Center bewaking**: niet van toepassing
+**Verantwoordelijkheid**: Klant
 
-**Verantwoordelijkheid**: klant
+### <a name="17-manage-traffic-to-web-applications"></a>1.7: Verkeer naar webtoepassingen beheren
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor webtoepassingen die worden uitgevoerd op Azure App Service of rekenresources.
 
-**Hulp**: Definieer en implementeer standaard beveiligings configuraties voor netwerk resources die zijn gekoppeld aan uw Azure Key Vault-instanties met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimten ' micro soft. sleutel kluis ' en ' micro soft. Network ' om aangepaste beleids regels te maken om de netwerk configuratie van uw Azure Key Vault instanties te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities die betrekking hebben op Azure Key Vault, zoals:
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimaliseer de complexiteit en administratieve overhead van netwerkbeveiligingsregels
+
+**Richtlijnen:** Voor resources die toegang nodig hebben tot uw Azure Key Vault-exemplaren, gebruikt u Azure-servicetags voor de Azure Key Vault om netwerktoegangsbesturingselementen te definiëren in netwerkbeveiligingsgroepen of Azure Firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de servicetag (bijvoorbeeld ApiManagement) op te geven in het juiste bron- of bestemmingsveld van een regel, u het verkeer voor de desbetreffende service toestaan of weigeren. Microsoft beheert de adresvoorvoegsels van de servicetag en werkt de servicetag automatisch bij wanneer adressen worden gewijzigd.
 
 
-Key Vault moet een service-eind punt van een virtueel netwerk gebruiken
+Overzicht van Azure-servicetags:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Standaardbeveiligingsconfiguraties voor netwerkapparaten onderhouden
+
+**Richtlijnen:** standaardbeveiligingsconfiguraties definiëren en implementeren voor netwerkresources die zijn gekoppeld aan uw Azure Key Vault-exemplaren met Azure Policy. Gebruik Azure Policy-aliassen in de naamruimten 'Microsoft.KeyVault' en 'Microsoft.Network' om aangepaste beleidsregels te maken om de netwerkconfiguratie van uw Azure Key Vault-exemplaren te controleren of af te dwingen. U ook gebruik maken van ingebouwde beleidsdefinities met betrekking tot Azure Key Vault, zoals: Key Vault moet een eindpunt voor [virtuele netwerkservice gebruiken](key-vault-overview-vnet-service-endpoints.md)
 
 
-Zelf studie: beleid maken en beheren om naleving af te dwingen:
+Zelfstudie: Beleid maken en beheren om naleving af te dwingen:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Azure Policy voor beelden:
+Azure-beleidsvoorbeelden:
 
 https://docs.microsoft.com/azure/governance/policy/samples
 
-Snelstartgids: een blauw druk definiëren en toewijzen in de portal:
+Snelstart: een blauwdruk definiëren en toewijzen in de portal:
 
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: configuratie regels voor het document verkeer
+### <a name="110-document-traffic-configuration-rules"></a>1.10: Regels voor documentconfiguratie
 
-**Richt lijnen**: Gebruik labels voor bronnen die betrekking hebben op netwerk beveiliging en verkeers stroom voor uw Azure Key Vault-instanties voor het leveren van meta gegevens en logische organisaties.
-
-
-Gebruik een van de ingebouwde Azure-beleids definities die betrekking hebben op labelen, zoals ' vereist label en de waarde ', om ervoor te zorgen dat alle resources met tags worden gemaakt en u op de hoogte moet zijn van bestaande niet-gelabelde resources.
+**Richtlijnen:** Gebruik tags voor bronnen met betrekking tot netwerkbeveiliging en verkeersstroom voor uw Azure Key Vault-exemplaren om metagegevens en logische organisatie te bieden.
 
 
-U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op te zoeken of uit te voeren op resources.
+Gebruik een van de ingebouwde Azure-beleidsdefinities met betrekking tot tags, zoals 'Tag en de waarde ervan vereisen' om ervoor te zorgen dat alle resources met tags worden gemaakt en om u op de hoogte te stellen van bestaande niet-gelabelde bronnen.
 
 
-Tags gebruiken om uw Azure-resources te organiseren:
+U Azure PowerShell of Azure CLI gebruiken om acties op te zoeken of uit te voeren op basis van bronnen op basis van hun tags.
+
+
+Gebruik tags om uw Azure-bronnen te ordenen:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: gebruik automatische hulpprogram ma's om netwerk bron configuraties te bewaken en wijzigingen te detecteren
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Gebruik geautomatiseerde hulpprogramma's om netwerkbronconfiguraties te bewaken en wijzigingen te detecteren
 
-**Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk bronnen die betrekking hebben op uw Azure Key Vault exemplaren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in kritieke netwerk bronnen plaatsvinden.
+**Richtlijnen:** Gebruik Azure Activity Log om netwerkbronconfiguraties te bewaken en wijzigingen te detecteren voor netwerkbronnen die verband houden met uw Azure Key Vault-exemplaren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen plaatsvinden in kritieke netwerkbronnen.
 
-Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen:
+Azure Activity Log-gebeurtenissen weergeven en ophalen:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
 
-Waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure Monitor:
+Waarschuwingen voor activiteitenlogboeken maken, weergeven en beheren met Azure Monitor:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie [Beveiligingscontrole: Logboekregistratie en -controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)voor meer informatie.*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
+### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Gebruik goedgekeurde tijdsynchronisatiebronnen
 
-**Richt lijnen**: niet van toepassing; Micro soft onderhoudt de tijd bron die wordt gebruikt voor Azure-resources, zoals Azure Key Vault, voor tijds tempels in de logboeken.
+**Richtsnoeren**: Niet van toepassing; Microsoft onderhoudt de tijdsbron die wordt gebruikt voor Azure-bronnen, zoals Azure Key Vault, voor tijdstempels in de logboeken.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: micro soft
+**Verantwoordelijkheid**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
+### <a name="22-configure-central-security-log-management"></a>2.2: Centraal beheer van beveiligingslogboeken configureren
 
-**Hulp**: opname logboeken via Azure monitor voor het verzamelen van beveiligings gegevens die zijn gegenereerd door Azure Key Vault. Gebruik in Azure Monitor Azure Log Analytics-werk ruimte voor het opvragen en uitvoeren van analyses en gebruik Azure Storage accounts voor lange termijn/archiverings opslag. U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden. 
+**Richtlijnen:** Inname van logboeken via Azure Monitor om beveiligingsgegevens die zijn gegenereerd door Azure Key Vault te verzamelen. Gebruik in Azure Monitor azure log analytics om analyses op te vragen en uit te voeren en Azure Storage Accounts te gebruiken voor opslag op lange termijn/archiveringsopslag. U ook gegevens aan boord inschakelen en aan boord maken voor Azure Sentinel of een SIEM van derden. 
 
-Azure Key Vault logboek registratie:
-
-https://docs.microsoft.com/azure/key-vault/key-vault-logging
-
-Snelstartgids: Azure-Sentinel op de trein:
-
-https://docs.microsoft.com/azure/sentinel/quickstart-onboard
-
-**Azure Security Center bewaking**: Ja
-
-**Verantwoordelijkheid**: klant
-
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: controle logboek registratie inschakelen voor Azure-resources
-
-**Hulp**: Schakel Diagnostische instellingen in op uw Azure Key Vault-instanties voor toegang tot controle-, beveiligings-en Diagnostische logboeken. Activiteiten logboeken, die automatisch beschikbaar zijn, omvatten gebeurtenis bron, datum, gebruiker, tijds tempel, bron adressen, doel adressen en andere nuttige elementen.
-
-Azure Key Vault logboek registratie:
+Azure Key Vault-logboekregistratie:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
-**Azure Security Center bewaking**: Ja
-
-**Verantwoordelijkheid**: klant
-
-### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: beveiligings logboeken verzamelen van besturings systemen
-
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="25-configure-security-log-storage-retention"></a>2,5: Bewaar beveiliging van het beveiligings logboek configureren
-
-**Richt lijnen**: in azure monitor voor de log Analytics werk ruimte die wordt gebruikt om uw Azure Key Vault logboeken te bewaren, stelt u de retentie periode in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage-accounts voor lange termijn/archiverings opslag.
-
-De Bewaar periode voor gegevens wijzigen: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: klant
-
-### <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
-
-**Richt lijnen**: Logboeken analyseren en bewaken voor afwijkend gedrag en regel matig de resultaten controleren voor uw met Azure Key Vault beveiligde resources. Gebruik de Log Analytics werk ruimte van Azure Monitor om logboeken te controleren en query's uit te voeren op logboek gegevens. U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden. 
-
-
-Snelstartgids: Azure-Sentinel op de trein: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
-
-
-Aan de slag met Log Analytics in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
-
-Aan de slag met logboek query's in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
-
-**Azure Security Center bewaking**: Ja
-
-**Verantwoordelijkheid**: klant
-
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: waarschuwingen inschakelen voor afwijkende activiteit
-
-**Hulp**: schakel in azure Security Center Advanced Threat Protection (ATP) in voor Key Vault. Diagnostische instellingen in Azure Key Vault inschakelen en logboeken naar een Log Analytics werkruimte verzenden. Onboarding van uw Log Analytics-werk ruimte naar Azure-Sentinel, omdat dit een via-oplossing (Security Orchestration Automated Response) biedt. Hiermee kunnen playbooks (geautomatiseerde oplossingen) worden gemaakt en gebruikt om beveiligings problemen op te lossen.
-
-Snelstartgids: Azure-Sentinel op de trein:
+Snelstart: Azure Sentinel aan boord:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Beveiligings waarschuwingen beheren en erop reageren in Azure Security Center:
+**Azure Security Center-bewaking:** Ja
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Controlelogboekregistratie inschakelen voor Azure-resources
+
+**Richtlijnen:** Schakel diagnostische instellingen in op uw Azure Key Vault-exemplaren voor toegang tot controle-, beveiligings- en diagnostische logboeken. Activiteitenlogboeken, die automatisch beschikbaar zijn, bevatten gebeurtenisbron, datum, gebruiker, tijdstempel, bronadressen, bestemmingsadressen en andere nuttige elementen.
+
+Azure Key Vault-logboekregistratie:
+
+https://docs.microsoft.com/azure/key-vault/key-vault-logging
+
+**Azure Security Center-bewaking:** Ja
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: Beveiligingslogboeken verzamelen van besturingssystemen
+
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="25-configure-security-log-storage-retention"></a>2.5: Opslagbehoud beveiligingslogboeken configureren
+
+**Richtlijnen:** Stel in Azure Monitor de bewaartermijn in op basis van de nalevingsvoorschriften van uw organisatie voor de werkruimte Log Analytics die wordt gebruikt om uw Azure Key Vault-logboeken bij te houden. Gebruik Azure Storage Accounts voor opslag op lange termijn/archiverings.
+
+Wijzig de bewaarperiode voor gegevens:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="26-monitor-and-review-logs"></a>2.6: Logboeken controleren en controleren
+
+**Richtlijnen:** Analyseer en monitor logboeken op afwijkend gedrag en bekijk regelmatig de resultaten van uw door Azure Key Vault beveiligde bronnen. Gebruik de log analytics-werkruimte van Azure Monitor om logboeken te controleren en query's uit te voeren op logboekgegevens. U ook gegevens aan boord inschakelen en aan boord maken voor Azure Sentinel of een SIEM van derden. 
+
+
+Snelstart: Azure Sentinel aan boord:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+
+
+Aan de slag met Log Analytics in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+
+Aan de slag met logboekquery's in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+
+**Azure Security Center-bewaking:** Ja
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Waarschuwingen inschakelen voor afwijkende activiteit
+
+**Richtlijnen:** Schakel in Azure Security Center advanced threat protection (ATP) in voor Key Vault. Schakel diagnostische instellingen in Azure Key Vault in en stuur logboeken naar een Log Analytics-werkruimte. Aan boord van uw Log Analytics-werkruimte naar Azure Sentinel, omdat het een SOAR-oplossing (Security Orchestration Automated Response) biedt. Hierdoor kunnen playbooks (geautomatiseerde oplossingen) worden gemaakt en gebruikt om beveiligingsproblemen op te lossen.
+
+Snelstart: Azure Sentinel aan boord:
+
+https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+
+Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts
 
 
-Reageren op gebeurtenissen met Azure Monitor waarschuwingen:
+Reageren op gebeurtenissen met Azure Monitor Alerts:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="28-centralize-anti-malware-logging"></a>2,8: registratie van anti-malware centraliseren
+### <a name="28-centralize-anti-malware-logging"></a>2.8: Centraliseer anti-malware logging
 
-**Richt lijnen**: niet van toepassing; Azure Key Vault geen aan anti-malware gerelateerde logboeken verwerkt of produceert.
+**Richtsnoeren**: Niet van toepassing; Azure Key Vault verwerkt of produceert geen anti-malware gerelateerde logboeken.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="29-enable-dns-query-logging"></a>2,9: DNS-query logboek registratie inschakelen
+### <a name="29-enable-dns-query-logging"></a>2.9: DNS-querylogboekregistratie inschakelen
 
-**Richt lijnen**: niet van toepassing; Azure Key Vault verwerkt of produceert geen aan DNS gerelateerde Logboeken.
+**Richtsnoeren**: Niet van toepassing; Azure Key Vault verwerkt of produceert geen DNS-gerelateerde logboeken.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="210-enable-command-line-audit-logging"></a>2,10: controle logboek registratie op opdracht regel inschakelen
+### <a name="210-enable-command-line-audit-logging"></a>2.10: Logboekregistratie van opdrachtregelcontrole inschakelen
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteit en Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [Beveiligingsbeheer: Identiteits- en toegangscontrole](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Inventaris bijhouden van de administratieve rekeningen
 
-**Hulp**: behoud een inventaris van uw Azure Active Directory-geregistreerde toepassingen, evenals alle gebruikers accounts die toegang hebben tot uw Azure Key Vault sleutels, geheimen en certificaten. U kunt de Azure Portal of Power shell gebruiken om Key Vault toegang te zoeken en af te stemmen. Als u de toegang in Power shell wilt weer geven, gebruikt u de volgende opdracht:
-
-
-(Get-AzResource-ResourceId [KeyVaultResourceID]). Eigenschappen. AccessPolicies
-
-Een toepassing registreren met Azure Active Directory: https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
-
-Veilige toegang tot een sleutel kluis: https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
-
-**Azure Security Center bewaking**: Ja
-
-**Verantwoordelijkheid**: klant
-
-### <a name="32-change-default-passwords-where-applicable"></a>3,2: standaard wachtwoorden wijzigen indien van toepassing
-
-**Richt lijnen**: niet van toepassing; Azure Key Vault heeft niet het concept standaard wachtwoord als verificatie wordt gegeven door Active Directory en beveiligd met op rollen gebaseerd toegangs beheer.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="33-use-dedicated-administrative-accounts"></a>3,3: speciale beheerders accounts gebruiken
-
-**Richt lijnen**: Maak standaard procedures voor het gebruik van speciale beheerders accounts die toegang hebben tot uw Azure Key Vault-exemplaren. Gebruik Azure Security Center identiteits-en toegangs beheer (momenteel in de preview-versie) om het aantal actieve beheerders accounts te controleren.
+**Richtlijnen:** houd een voorraad bij van uw Azure Active Directory-geregistreerde toepassingen, evenals alle gebruikersaccounts die toegang hebben tot uw Azure Key Vault-sleutels, -geheimen en -certificaten. U de Azure-portal of PowerShell gebruiken om Key Vault-toegang op te vragen en te verzoenen. Als u de toegang in PowerShell wilt weergeven, gebruikt u de volgende opdracht:
 
 
-Identiteit en toegang controleren (preview):
+(Get-azResource -Resourceid [KeyVaultResourceID]). Eigenschappen.Toegangsbeleid
+
+Een toepassing registreren met Azure Active Directory:https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
+
+Beveiligde toegang tot een sleutelkluis:https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+
+**Azure Security Center-bewaking:** Ja
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="32-change-default-passwords-where-applicable"></a>3.2: Standaardwachtwoorden wijzigen indien van toepassing
+
+**Richtsnoeren**: Niet van toepassing; Azure Key Vault heeft niet het concept van standaardwachtwoorden, omdat verificatie wordt geleverd door Active Directory en is beveiligd met op rollen gebaseerd toegangsbeheer.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Gebruik maken van speciale administratieve rekeningen
+
+**Richtlijnen:** Maak standaard operationele procedures rond het gebruik van speciale beheerdersaccounts die toegang hebben tot uw Azure Key Vault-exemplaren. Gebruik Azure Security Center Identity and Access Management (momenteel in preview) om het aantal actieve beheerdersaccounts te controleren.
+
+
+Identiteit en toegang controleren (voorbeeld):
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige aanmelding (SSO) met Azure Active Directory gebruiken
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Gebruik eenmalige aanmelding (SSO) met Azure Active Directory
 
-**Richt lijnen**: gebruik een Azure-Service-Principal in combi natie met de AppId, TenantID en ClientSecret om uw toepassing naadloos te verifiëren en het token op te halen dat wordt gebruikt voor toegang tot uw Azure Key Vault geheimen.
+**Richtlijnen:** Gebruik een Azure-serviceprincipal in combinatie met de AppId, TenantID en ClientSecret om uw toepassing naadloos te verifiëren en het token op te halen dat wordt gebruikt om toegang te krijgen tot uw Azure Key Vault-geheimen.
 
 
-Service-naar-service-verificatie voor het Azure Key Vault met behulp van .NET:
+Service-to-service-verificatie naar Azure Key Vault met .NET:
 
 https://docs.microsoft.com/azure/key-vault/service-to-service-authentication
 
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: multi-factor Authentication gebruiken voor alle op Azure Active Directory gebaseerde toegang
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Multi-factor authenticatie gebruiken voor alle Azure Active Directory-gebaseerde toegang
 
-**Hulp**bij het inschakelen van Azure Active Directory multi-factor Authentication en het volgen van de aanbevelingen voor Azure Security Center identiteits-en toegangs beheer (momenteel in Preview) om u te helpen bij het beveiligen van uw event hub-resources.
+**Richtlijnen:** Schakel Azure Active Directory Multi-Factor Authentication in en volg aanbevelingen voor Azure Security Center Identity and Access Management (momenteel in preview) om uw resources met gebeurtenishub te beschermen.
 
 
-Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen:
+Een implementatie van Azure Multi-Factor Authentication in de cloud plannen:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
-Identiteit en toegang controleren (preview):
+Identiteit en toegang controleren (voorbeeld):
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: gebruik speciale machines (privileged Access workstations) voor alle beheer taken
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Dedicated machines (Privileged Access Workstations) gebruiken voor alle administratieve taken
 
-**Hulp**: gebruik een privileged Access-werk station (Paw) met Azure multi-factor Authentication (MFA) dat is geconfigureerd voor aanmelding bij en configureren van Key Vault ingeschakelde resources. 
+**Richtlijnen:** Gebruik een Paw (Privileged Access Workstation) met Azure Multi-Factor Authentication (MFA) geconfigureerd om in te loggen en key vault-bronnen te configureren. 
 
-Privileged Access workstations: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
+Werkstations met toegang:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
-Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
-
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: klant
-
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: logboek en waarschuwing voor verdachte activiteiten van beheerders accounts
-
-**Hulp**: gebruik Azure Active Directory (AAD) PRIVILEGED Identity Management (PIM) voor het genereren van Logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik AAD-risico detecties om waarschuwingen en rapporten weer te geven over Risk ante gebruikers gedrag. Voor aanvullende logboek registratie kunt u waarschuwingen voor Azure Security Center risico detectie verzenden naar Azure Monitor en aangepaste waarschuwingen/meldingen configureren met actie groepen.
-
-Schakel Advanced Threat Protection (ATP) in voor Azure Key Vault om waarschuwingen te genereren voor verdachte activiteiten.
-
-Azure AD Privileged Identity Management implementeren (PIM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
-
-Geavanceerde bedreigings beveiliging instellen voor Azure Key Vault (preview): https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
-
-Waarschuwingen voor Azure Key Vault (preview): https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
-
-Detectie van Azure Active Directory risico: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
-
-Actie groepen maken en beheren in de Azure Portal: https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
+Een implementatie van Azure Multi-Factor Authentication in de cloud plannen:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Azure-resources alleen beheren vanaf goedgekeurde locaties
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: Inloggen en waarschuwen voor verdachte activiteiten vanuit administratieve accounts
 
-**Hulp**: de locatie voorwaarde van een beleid voor voorwaardelijke toegang configureren en uw benoemde locaties beheren. Met benoemde locaties kunt u logische groeperingen van IP-adresbereiken of landen en regio's maken. U kunt de toegang tot gevoelige bronnen, zoals uw Key Vault geheimen, beperken tot uw geconfigureerde benoemde locaties.
+**Richtlijnen:** Gebruik Azure Active Directory (AAD) Privileged Identity Management (PIM) voor het genereren van logboeken en waarschuwingen wanneer verdachte of onveilige activiteiten in de omgeving plaatsvinden. Gebruik AAD-risicodetecties om waarschuwingen en rapporten over riskant gebruikersgedrag te bekijken. Stuur azure security center-risicodetectiewaarschuwingen voor extra logboekregistratie naar Azure Monitor en configureer aangepaste waarschuwingen/meldingen met actiegroepen.
 
-Wat is de voor waarde voor de locatie in Azure Active Directory voorwaardelijke toegang?: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Schakel advanced threat protection (ATP) voor Azure Key Vault in om waarschuwingen voor verdachte activiteiten te genereren.
+
+Azure AD Privileged Identity Management (PIM) implementeren:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+
+Geavanceerde bedreigingsbeveiliging instellen voor Azure Key Vault (voorbeeld):https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
+
+Waarschuwingen voor Azure Key Vault (voorbeeld:https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
+
+Risicodetecties van Azure Active Directory:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+
+Actiegroepen maken en beheren in de Azure-portal:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory gebruiken
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Azure-resources beheren vanaf alleen goedgekeurde locaties
 
-**Hulp**: gebruik Azure Active Directory (Aad) als centraal verificatie-en autorisatie systeem voor Azure-resources, zoals Key Vault. Hierdoor kan op rollen gebaseerd toegangs beheer (RBAC) gevoelige bronnen worden beheerd.
+**Richtlijnen**: Configureer de locatievoorwaarde van een beleid voor voorwaardelijke toegang en beheer uw benoemde locaties. Met benoemde locaties u logische groeperingen van IP-adresbereiken of landen en regio's maken. U de toegang tot gevoelige bronnen, zoals uw Key Vault-geheimen, beperken tot de geconfigureerde locaties met de naam.
+
+Wat is de locatievoorwaarde in voorwaardelijke toegang tot Azure Active Directory?:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+
+
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory gebruiken
+
+**Richtlijnen:** Gebruik Azure Active Directory (AAD) als het centrale verificatie- en autorisatiesysteem voor Azure-bronnen, zoals Key Vault. Hierdoor kan RBAC (Role-based access control) gevoelige bronnen beheren.
 
  
 
-Snelstartgids: een nieuwe Tenant maken in Azure Active Directory: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+Snelstart: een nieuwe tenant maken in Azure Active Directory:https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: regel matig gebruikers toegang controleren en afstemmen
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Regelmatig gebruikerstoegang controleren en afstemmen
 
-**Hulp**: Raadpleeg Azure Active Directory-Logboeken (Aad) om verouderde accounts met Azure Key Vault beheerders rollen te detecteren. Daarnaast kunt u toegangs Beoordelingen voor AAD gebruiken om groepslid maatschappen efficiënt te beheren, toegang te krijgen tot bedrijfs toepassingen die kunnen worden gebruikt voor toegang tot Azure Key Vault en roltoewijzingen. Gebruikers toegang moet regel matig worden gecontroleerd, bijvoorbeeld elke 90 dagen, om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
+**Richtlijnen:** Aad-logboeken (Azure Active Directory) bekijken om verouderde accounts te ontdekken met azure key vault-beheerrollen. Gebruik daarnaast AAD-toegangsbeoordelingen om groepslidmaatschappen efficiënt te beheren, toegang tot bedrijfstoepassingen die kunnen worden gebruikt om toegang te krijgen tot Azure Key Vault en roltoewijzingen. De toegang van de gebruiker moet regelmatig worden beoordeeld, zoals elke 90 dagen om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
 
-Azure Active Directory rapporten en controle-documentatie:
+Azure Active Directory-rapporten en bewakingsdocumentatie:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
 
-Wat zijn Azure AD-toegangs beoordelingen?:
+Wat zijn Azure AD Access-toegangsbeoordelingen?:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: controle pogingen om toegang te krijgen tot gedeactiveerde accounts
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Pogingen om toegang te krijgen tot gedeactiveerde accounts controleren
 
-**Hulp**: de diagnostische instellingen voor Azure Key Vault en Azure Active Directory inschakelen, waarbij alle logboeken worden verzonden naar een log Analytics-werk ruimte. Gewenste waarschuwingen configureren (zoals pogingen om toegang te krijgen tot uitgeschakelde geheimen) in Log Analytics.
+**Richtlijnen**: Schakel diagnostische instellingen in voor Azure Key Vault en Azure Active Directory en verzend alle logboeken naar een Log Analytics-werkruimte. Configureer gewenste waarschuwingen (zoals pogingen om toegang te krijgen tot uitgeschakelde geheimen) binnen Log Analytics.
 
-Azure AD-logboeken integreren met Azure Monitor-logboeken: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure AD-logboeken integreren met Azure Monitor-logboeken:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Migreren van de oude oplossing voor Key Vault: https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
+Migreren vanuit de oude Key Vault-oplossing:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: waarschuwing voor de afwijking van het aanmeldings gedrag van accounts
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Waarschuwing over afwijking van het inloggedrag van het account
 
-**Hulp**: gebruik de functies voor identiteits beveiliging en risico detectie van Azure Active Directory om automatische antwoorden te configureren op gedetecteerde verdachte acties die betrekking hebben op uw Azure Key Vault beveiligde bronnen. Schakel automatische antwoorden via Azure Sentinel in om de beveiligings reacties van uw organisatie te implementeren. 
+**Richtlijnen:** Gebruik de functies Voor identiteitsbescherming en risicodetectie van Azure Active Directory om geautomatiseerde antwoorden te configureren op gedetecteerde verdachte acties met betrekking tot uw azure key vault-beveiligde bronnen. U moet geautomatiseerde antwoorden via Azure Sentinel inschakelen om de beveiligingsreacties van uw organisatie te implementeren. 
 
-Rapport Risk ante aanmeldingen in de Azure Active Directory portal: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
+Riskantaanmeldingsrapport in de Azure Active Directory-portal:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
 
-Procedure: risico beleid configureren en inschakelen: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+How To: Risicobeleid configureren en inschakelen:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-Azure-Sentinel uitvoeren: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Azure Sentinel aan boord:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: micro soft biedt toegang tot relevante klant gegevens tijdens ondersteunings scenario's
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Microsoft toegang geven tot relevante klantgegevens tijdens ondersteuningsscenario's
 
-**Richt lijnen**: niet van toepassing; Klanten-lockbox wordt niet ondersteund voor Azure Key Vault.
+**Richtsnoeren**: Niet van toepassing; Customer Lockbox wordt niet ondersteund voor Azure Key Vault.
 
-Ondersteunde services en scenario's in algemene Beschik baarheid: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Ondersteunde services en scenario's in algemene beschikbaarheid:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [Beveiligingsbeheer: Gegevensbescherming](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Een inventaris van gevoelige informatie bijhouden
 
-**Hulp**: Tags gebruiken om Azure-resources te helpen bij het bijhouden of verwerken van gevoelige informatie over Azure Key Vault ingeschakelde resources. 
+**Richtlijnen:** Gebruik tags om te helpen bij het bijhouden van Azure-bronnen die gevoelige informatie opslaan of verwerken op azure key vault-bronnen. 
 
-Tags gebruiken om uw Azure-resources te organiseren: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
-
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: klant
-
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
-
-**Hulp**: u kunt de toegang tot Azure Key Vault beveiligen door gebruik te maken van de service-eind punten van het virtuele netwerk die zijn geconfigureerd om de toegang tot specifieke subnetten te beperken.
-
-Nadat de firewall regels van kracht zijn, kunt u alleen Azure Key Vault gegevenslaag bewerkingen uitvoeren wanneer uw aanvraag afkomstig is van de toegestane subnetten of IP-adresbereiken. Dit geldt ook voor Azure Key Vault toegang in de Azure Portal. Hoewel u naar een sleutel kluis kunt bladeren vanuit de Azure Portal, kunt u mogelijk geen sleutels, geheimen of certificaten weer geven als uw client computer zich niet in de lijst met toegestane computers bevindt. Dit is ook van invloed op de Azure Key Vault kiezer en andere Azure-Services. U kunt mogelijk lijsten met sleutel kluizen zien, maar geen lijst met sleutels als firewall regels verhinderen dat uw client computer dit doet.
-
-Azure Key Vault firewalls en virtuele netwerken configureren: https://docs.microsoft.com/azure/key-vault/key-vault-network-security
-
-Virtuele netwerk service-eind punten voor Azure Key Vault: https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+Gebruik tags om uw Azure-bronnen te ordenen:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: niet-geautoriseerde overdracht van gevoelige gegevens controleren en blok keren
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Hulp**: alle gegevens die zijn opgeslagen in azure Key Vault, worden beschouwd als gevoelig. Gebruik Azure Key Vault besturings elementen voor gegevens vlak om toegang tot Azure Key Vault geheimen te beheren. U kunt ook de ingebouwde firewall van Key Vault gebruiken om de toegang op de netwerklaag te beheren. Als u de toegang tot Azure Key Vault wilt controleren, schakelt u Key Vault Diagnostische instellingen in en verzendt u logboeken naar een Azure Storage-account of Log Analytics-werk ruimte.
+**Richtlijnen:** U de toegang tot Azure Key Vault beveiligen door gebruik te maken van eindpunten voor virtuele netwerkservices die zijn geconfigureerd om de toegang tot specifieke subnetten te beperken.
 
-Veilige toegang tot een sleutel kluis: https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+Nadat firewallregels van kracht zijn, u alleen azure key vault-gegevensvlakbewerkingen uitvoeren wanneer uw aanvraag afkomstig is van toegestane subnetten of IP-adresbereiken. Dit geldt ook voor Azure Key Vault-toegang in de Azure-portal. Hoewel u vanaf de Azure-portal naar een sleutelkluis bladeren, u mogelijk geen sleutels, geheimen of certificaten vermelden als uw clientmachine niet op de toegestane lijst staat. Dit geldt ook voor de Azure Key Vault Picker en andere Azure-services. Mogelijk u lijsten met key vaults zien, maar geen lijstsleutels, als firewallregels verhinderen dat uw clientmachine dit doet.
 
-Azure Key Vault firewalls en virtuele netwerken configureren: https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+Azure Key Vault-firewalls en virtuele netwerken configureren:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
-Azure Key Vault logboek registratie: https://docs.microsoft.com/azure/key-vault/key-vault-logging
-
-
-**Azure Security Center bewaking**: Ja
-
-**Verantwoordelijkheid**: klant
-
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: alle gevoelige gegevens in de overdracht versleutelen
-
-**Richt lijnen**: al het verkeer dat moet worden Azure Key Vault voor de toegang tot verificatie, beheer en gegevenslaag, is versleuteld en gaat over https: poort 443. (Er is echter af en toe HTTP [poort 80] verkeer voor CRL.) 
-
-Toegang tot Azure Key Vault achter een firewall: https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+Eindpunten voor virtuele netwerkservices voor Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
 
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: micro soft
+**Verantwoordelijkheid**: Klant
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: een actief detectie hulpprogramma gebruiken om gevoelige gegevens te identificeren
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Toezicht houden op en blokkeren van ongeoorloofde overdracht van gevoelige informatie
 
-**Richt lijnen**: niet van toepassing; alle gegevens in Azure Key Vault (geheimen, sleutels en certificaten) worden als gevoelig beschouwd.
+**Richtlijnen:** Alle gegevens die zijn opgeslagen in Azure Key Vault worden als gevoelig beschouwd. Gebruik toegangsbesturingselementen voor toegang tot Azure Key Vault-gegevensvlakom de toegang tot Azure Key Vault-geheimen te beheren. U ook de ingebouwde firewall van Key Vault gebruiken om de toegang op de netwerklaag te beheren. Als u de toegang tot Azure Key Vault wilt controleren, schakelt u Diagnostische instellingen voor sleutelskast in en verzendt u logboeken naar een Azure Storage-account of logboekanalysewerkruimte.
 
-**Azure Security Center bewaking**: niet van toepassing
+Beveiligde toegang tot een sleutelkluis:https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
-**Verantwoordelijkheid**: niet van toepassing
+Azure Key Vault-firewalls en virtuele netwerken configureren:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
-### <a name="46-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,6: een actief detectie hulpprogramma gebruiken om gevoelige gegevens te identificeren
-
-**Hulp**: veilige toegang tot het beheer en gegevens vlak van uw Azure Key Vault-instanties.
+Azure Key Vault-logboekregistratie:https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
-Veilige toegang tot een sleutel kluis:
+**Azure Security Center-bewaking:** Ja
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Alle gevoelige informatie tijdens het transport versleutelen
+
+**Richtlijnen:** Al het verkeer naar Azure Key Vault voor toegang tot verificatie, beheer en gegevensvlak, wordt versleuteld en gaat via HTTPS: poort 443. (Er zal echter af en toe HTTP [poort 80] verkeer voor CRL.) 
+
+Toegang tot Azure Key Vault achter een firewall:https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Microsoft
+
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Gebruik een actief detectiehulpmiddel om gevoelige gegevens te identificeren
+
+**Richtsnoeren**: Niet van toepassing; alle gegevens in Azure Key Vault (geheimen, sleutels en certificaten) worden als gevoelig beschouwd.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="46-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.6: Gebruik een actief detectiehulpmiddel om gevoelige gegevens te identificeren
+
+**Richtlijnen:** Beveiligde toegang tot het beheer- en gegevensvlak van uw Azure Key Vault-exemplaren.
+
+
+Beveiligde toegang tot een sleutelkluis:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: voor komen dat gegevens verlies op basis van host wordt gebruikt voor het afdwingen van toegangs beheer
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Gebruik hostgebaseerde preventie van gegevensverlies om toegangscontrole af te dwingen
 
-**Hulp**: micro soft beheert de onderliggende infra structuur voor Azure Key Vault en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
-
-
-Wat is Azure Key Vault? https://docs.microsoft.com/azure/key-vault/key-vault-overview
-
-Azure-klant gegevens beveiliging: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: micro soft
-
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: gevoelige informatie op rest versleutelen
-
-**Hulp**: alle beheerde objecten (sleutel, certificaten en geheimen) worden op rest versleuteld in azure Key Vault.
+**Richtlijnen:** Microsoft beheert de onderliggende infrastructuur voor Azure Key Vault en heeft strenge controles geïmplementeerd om het verlies of de blootstelling van het azure security center van de klant te voorkomen om basislijnscans uit te voeren voor uw azure key vault-beschermde resourcesta.
 
 
-Beveiligings controles voor Azure Key Vault: https://docs.microsoft.com/azure/key-vault/key-vault-security-controls
+Wat is Azure Key Vault?:https://docs.microsoft.com/azure/key-vault/key-vault-overview
+
+Azure-klantgegevensbescherming:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Microsoft
+
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Versleutel gevoelige informatie in rust
+
+**Richtlijnen:** Alle beheerde objecten (sleutel, certificaten en geheimen) worden in rust versleuteld in Azure Key Vault.
 
 
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: micro soft
-
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: wijzigingen in essentiële Azure-resources vastleggen en waarschuwen
-
-**Hulp**: gebruik de Azure Key Vault Analytics-oplossing in Azure Monitor om Azure Key Vault controle gebeurtenis logboeken te controleren.
-
-Azure Key Vault Analytics-oplossing in Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
+Beveiligingsbesturingselementen voor Azure Key Vault:https://docs.microsoft.com/azure/key-vault/key-vault-security-controls
 
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Microsoft
+
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Logboeken en waarschuwing en waarschuwing over wijzigingen in kritieke Azure-resources
+
+**Richtlijnen:** Gebruik de Azure Key Vault Analytics-oplossing in Azure Monitor om de logboeken van azure key vault-controlegebeurtenissen te bekijken.
+
+Azure Key Vault Analytics-oplossing in Azure Monitor:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
+
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Klant
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [Security Control: Vulnerability Management voor](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)meer informatie.*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Geautomatiseerde hulpprogramma's voor het scannen van kwetsbaarheden uitvoeren
 
-**Hulp**: micro soft voert beveiligings beheer uit op de onderliggende systemen die ondersteuning bieden voor Azure Key Vault.
+**Richtlijnen**: Microsoft voert kwetsbaarheidsbeheer uit op de onderliggende systemen die Azure Key Vault ondersteunen.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: micro soft
+**Verantwoordelijkheid**: Microsoft
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: geautomatiseerde oplossing voor patch beheer voor besturings systemen implementeren
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Implementatie van een oplossing voor het patchbeheer van geautomatiseerd besturingssysteem
 
-**Richt lijnen**: n.v.t.; Micro soft voert patch beheer uit op de onderliggende systemen die ondersteuning bieden voor Key Vault.
+**Richtsnoeren**: N/A; Microsoft voert patchbeheer uit op de onderliggende systemen die Key Vault ondersteunen.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: Implementeer een geautomatiseerde oplossing voor software patch beheer van derden
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Geautomatiseerde softwarepatchbeheeroplossing van derden implementeren
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: vergelijken van back-to-back-problemen
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Vergelijk back-to-back kwetsbaarheid scans
 
-**Hulp**: micro soft voert beveiligings beheer uit op de onderliggende systemen die ondersteuning bieden voor Key Vault.
+**Richtlijnen:** Microsoft voert kwetsbaarheidsbeheer uit op de onderliggende systemen die Key Vault ondersteunen.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: micro soft
+**Verantwoordelijkheid**: Microsoft
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: een risico classificatie proces gebruiken om prioriteit te geven aan het herstel van ontdekte beveiligings problemen
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Gebruik een risicobeoordelingsproces om prioriteit te geven aan het herstel van ontdekte kwetsbaarheden
 
-**Richt lijnen**: gebruik de standaard risico classificaties (beveiligde Score) van Azure Security Center.
+**Richtlijnen:** gebruik de standaardrisicoclassificaties (Secure Score) van Azure Security Center.
 
-Verbeter uw beveiligde Score in Azure Security Center:
+Verbeter uw beveiligde score in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en Asset Management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie [Beveiligingsbeheer: Voorraadbeheer en Vermogensbeheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)voor meer informatie.*
 
-### <a name="61-use-azure-asset-discovery"></a>6,1: Azure Asset Discovery gebruiken
+### <a name="61-use-azure-asset-discovery"></a>6.1: Azure Asset Discovery gebruiken
 
-**Richt lijnen**: gebruik Azure resource Graph om alle resources (inclusief Azure Key Vault instanties) in uw abonnement te doorzoeken en te detecteren. Zorg ervoor dat u de juiste machtigingen (lezen) hebt in uw Tenant en dat u alle Azure-abonnementen kunt inventariseren, evenals de resources in uw abonnementen.
+**Richtlijnen:** Gebruik Azure Resource Graph om alle bronnen (inclusief Azure Key Vault-exemplaren) in uw abonnement op te vragen en te ontdekken. Zorg ervoor dat u over de juiste (lees)machtigingen in uw tenant beschikt en dat u alle Azure-abonnementen en resources binnen uw abonnementen opsommen.
 
-Snelstartgids: uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Snelstart: Voer uw eerste Resourcegraph-query uit met Azure Resource Graph Explorer:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Ontvang abonnementen die het huidige account kan gebruiken.: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Ontvang abonnementen waartoe de lopende rekening toegang heeft.:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Wat is op rollen gebaseerd toegangs beheer (RBAC) voor Azure-resources? https://docs.microsoft.com/azure/role-based-access-control/overview
+Wat is rbac (role-based access control) voor Azure-resources?https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="62-maintain-asset-metadata"></a>6,2: meta gegevens van activa onderhouden
+### <a name="62-maintain-asset-metadata"></a>6.2: Metagegevens van activa onderhouden
 
-**Hulp**: Labels Toep assen op Azure Key Vault resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
+**Richtlijnen:** Tags toepassen op Azure Key Vault-bronnen met metagegevens om ze logisch te ordenen in een taxonomie.
 
 
 Tags maken en gebruiken:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: niet-geautoriseerde Azure-resources verwijderen
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Ongeautoriseerde Azure-bronnen verwijderen
 
-**Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, waar nodig, om Azure Key Vault instanties en gerelateerde resources te organiseren en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement.
+**Richtlijnen:** gebruik tagging, beheergroepen en afzonderlijke abonnementen, waar nodig, om Azure Key Vault-exemplaren en gerelateerde bronnen te organiseren en bij te houden. Verzoen de voorraad regelmatig en zorg ervoor dat ongeautoriseerde bronnen tijdig uit het abonnement worden verwijderd.
 
 
-Een aanvullend Azure-abonnement maken:
+Maak een extra Azure-abonnement:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 
-Beheer groepen maken voor resource organisatie en-beheer:
+Beheergroepen maken voor resourceorganisatie en -beheer:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
 
-Tags gebruiken om uw Azure-resources te organiseren: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Gebruik tags om uw Azure-bronnen te ordenen:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: een inventaris van goedgekeurde Azure-resources en software titels onderhouden
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Een inventaris bijhouden van goedgekeurde Azure-resources en softwaretitels
 
-**Hulp**: een lijst met goedgekeurde Azure-resources en goedgekeurde software voor uw reken resources definiëren
+**Richtlijnen**: Lijst met goedgekeurde Azure-resources en goedgekeurde software voor uw rekenbronnen definiëren
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitor voor niet-goedgekeurde Azure-resources
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitor voor niet-goedgekeurde Azure-bronnen
 
-**Richt lijnen**: gebruik Azure-beleid om beperkingen toe te voegen aan het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
-
-- Niet toegestane brontypen
-- Toegestane brontypen
-
-Daarnaast gebruikt u de resource grafiek van Azure voor het opvragen/detecteren van resources binnen een of meer abonnementen.
-
-Zelf studie: beleid maken en beheren om naleving af te dwingen: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-Snelstartgids: uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: klant
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: monitor voor niet-goedgekeurde software toepassingen binnen reken resources
-
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: niet-goedgekeurde Azure-resources en software toepassingen verwijderen
-
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor Azure als geheel en reken resources.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="68-use-only-approved-applications"></a>6,8: alleen goedgekeurde toepassingen gebruiken
-
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
-
-**Richt lijnen**: gebruik Azure-beleid om beperkingen toe te voegen aan het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
+**Richtlijnen:** Gebruik Azure-beleid om beperkingen op te leggen aan het type resources dat kan worden gemaakt in klantabonnementen(en) met behulp van de volgende ingebouwde beleidsdefinities:
 
 - Niet toegestane brontypen
 - Toegestane brontypen
 
-Zelf studie: beleid maken en beheren om naleving af te dwingen: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Gebruik bovendien de Azure Resource Graph om bronnen binnen het abonnement(en) op te vragen/te ontdekken.
 
-Azure Policy-voor beelden: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Zelfstudie: Beleid maken en beheren om naleving af te dwingen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: klant
-
-### <a name="610-implement-approved-application-list"></a>6,10: lijst met goedgekeurde toepassingen implementeren
-
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
-
-**Azure Security Center bewaking**: niet van toepassing
-
-**Verantwoordelijkheid**: niet van toepassing
-
-### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6,11: de mogelijkheid van gebruikers om te communiceren met kunt Manager via scripts beperken
-
-**Richt lijnen**: gebruik de voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager (arm) door ' blok toegang ' te configureren voor de app Microsoft Azure management. Dit kan ertoe leiden dat het maken en wijzigen van resources binnen een omgeving met hoge beveiliging, zoals die met Key Vault configuratie, wordt voor komen.
+Snelstart: Voer uw eerste Resourcegraph-query uit met Azure Resource Graph Explorer:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-Toegang tot beheer van Azure beheren met voorwaardelijke toegang: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Azure Security Center bewaking**: niet van toepassing
+**Verantwoordelijkheid**: Klant
 
-**Verantwoordelijkheid**: klant
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Monitor voor niet-goedgekeurde softwaretoepassingen binnen compute resources
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: de mogelijkheid van gebruikers om scripts uit te voeren binnen reken bronnen beperken
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Azure Security Center bewaking**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Niet-goedgekeurde Azure-bronnen en -softwaretoepassingen verwijderen
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: toepassingen met een hoog risico fysiek of logisch scheiden
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor Azure als geheel en voor rekenbronnen.
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor webtoepassingen die worden uitgevoerd op Azure App Service of reken bronnen.
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Azure Security Center bewaking**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+### <a name="68-use-only-approved-applications"></a>6.8: Gebruik alleen goedgekeurde aanvragen
+
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="69-use-only-approved-azure-services"></a>6.9: Alleen goedgekeurde Azure-services gebruiken
+
+**Richtlijnen:** Gebruik Azure-beleid om beperkingen op te leggen aan het type resources dat kan worden gemaakt in klantabonnementen(en) met behulp van de volgende ingebouwde beleidsdefinities:
+
+- Niet toegestane brontypen
+- Toegestane brontypen
+
+Zelfstudie: Beleid maken en beheren om naleving af te dwingen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+Azure-beleidsvoorbeelden:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="610-implement-approved-application-list"></a>6.10: Goedgekeurde aanvraaglijst implementeren
+
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11: De mogelijkheid van gebruikers beperken om via scripts met AzureResources Manager te communiceren
+
+**Richtlijnen:** Gebruik de voorwaardelijke toegang van Azure om de interactie van gebruikers met Azure Resource Manager (ARM) te beperken door 'Bloktoegang' voor de Microsoft Azure Management-app te configureren. Dit kan voorkomen dat resources worden gemaakt en gewijzigd in resources binnen een hoogbeveiligde omgeving, zoals resources met key vault-configuratie.
+
+
+Beheer de toegang tot Azure-beheer met voorwaardelijke toegang:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Klant
+
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Beperk de mogelijkheid van gebruikers om scripts uit te voeren binnen compute resources
+
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
+
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Toepassingen met een hoog risico fysiek of logisch scheiden
+
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor webtoepassingen die worden uitgevoerd op Azure App Service of rekenresources.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [Beveiligingsbeheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Veilige configuraties instellen voor alle Azure-resources
 
-**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft.-sleutel kluis ' om aangepaste beleids regels te maken om de configuratie van uw Azure Key Vault instanties te controleren of af te dwingen. U kunt ook ingebouwde Azure Policy definities gebruiken voor Azure Key Vault zoals:
-
-
-Key Vault objecten moeten worden hersteld
-
-Diagnostische instellingen voor Key Vault implementeren op Log Analytics werk ruimte
-
-Diagnostische logboeken in Key Vault moeten worden ingeschakeld
-
-Key Vault moet een service-eind punt van een virtueel netwerk gebruiken
-
-Diagnostische instellingen voor Key Vault implementeren in Event hub
+**Richtlijnen:** Gebruik Azure Policy-aliassen in de naamruimte 'Microsoft.KeyVault' om aangepaste beleidsregels te maken om de configuratie van uw Azure Key Vault-exemplaren te controleren of af te dwingen. U ook ingebouwde Azure-beleidsdefinities gebruiken voor Azure Key Vault, zoals:
 
 
-Gebruik aanbevelingen van Azure Security Center als een veilige configuratie basislijn voor uw Azure Key Vault exemplaren.
+Key Vault-objecten moeten kunnen worden hersteld
+
+Diagnostische instellingen voor Key Vault implementeren in de werkruimte Log Analytics
+
+Diagnostische logboeken in Key Vault moeten zijn ingeschakeld
+
+Key Vault moet een eindpunt voor virtuele netwerkservice gebruiken
+
+Diagnostische instellingen voor key vault implementeren in gebeurtenishub
 
 
-Beschik bare Azure Policy aliassen weer geven:
+Gebruik aanbevelingen van Azure Security Center als een veilige configuratiebasislijn voor uw Azure Key Vault-exemplaren.
+
+
+Beschikbare Azure-beleidsaliassen weergeven:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Zelf studie: beleid maken en beheren om naleving af te dwingen:
+Zelfstudie: Beleid maken en beheren om naleving af te dwingen:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7,2: veilige configuraties van besturings systemen instellen
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Veilige configuratie van het besturingssysteem instellen
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: Beveilig Azure-resource configuraties onderhouden
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Veilige Azure-bronconfiguraties behouden
 
-**Richt lijnen**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen op uw Azure Key Vault-resources. 
+**Richtlijnen**: Gebruik Azure-beleid [weigeren] en [implementeren als deze niet bestaan] om beveiligde instellingen af te dwingen voor uw azure key vault-bronnen. 
 
 
-Zelf studie: beleid maken en beheren om naleving af te dwingen:
+Zelfstudie: Beleid maken en beheren om naleving af te dwingen:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage 
 
 
   
-Azure Policy effecten begrijpen: 
+Inzicht in Azure-beleidseffecten: 
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: veilige configuraties van besturings systemen onderhouden
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Veilige configuratie van het besturingssysteem behouden
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: de configuratie van Azure-resources veilig opslaan
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Configuratie van Azure-bronnen veilig opslaan
 
-**Richt lijnen**: als u aangepaste Azure Policy definities gebruikt voor uw Azure Key Vault ingeschakelde resources, gebruikt u Azure opslag plaatsen om uw code veilig op te slaan en te beheren.
+**Richtlijnen:** Als u aangepaste Azure-beleidsdefinities gebruikt voor de ingeschakelde resources van Azure Key Vault, gebruikt u Azure Repos om uw code veilig op te slaan en te beheren.
 
 
-Code opslaan in azure DevOps: 
+Code opslaan in Azure DevOps: 
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops 
 
 
-Documentatie voor Azure opslag plaatsen: 
+Azure Repos-documentatie: 
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7,6: aangepaste installatie kopieën van een besturings systeem veilig opslaan
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Afbeeldingen van aangepaste besturingssysteemen veilig opslaan
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7,7: hulpprogram ma's voor het beheer van systeem configuratie implementeren
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Hulpprogramma's voor systeemconfiguratiebeheer implementeren
 
-**Richt lijnen**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft.-sleutel kluis ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
+**Richtlijnen:** Gebruik Azure Policy-aliassen in de naamruimte 'Microsoft.KeyVault' om aangepaste beleidsregels te maken om systeemconfiguraties te waarschuwen, te controleren en af te dwingen. Bovendien ontwikkelt u een proces en pijplijn voor het beheren van beleidsuitzonderingen.
 
 
 
-Azure Policy configureren en beheren:
+Azure-beleid configureren en beheren:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: hulpprogram ma's voor het beheer van systeem configuratie implementeren voor besturings systemen
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Systeemconfiguratiebeheertools implementeren voor besturingssystemen
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: geautomatiseerde configuratie bewaking voor Azure-Services implementeren
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Geautomatiseerde configuratiebewaking implementeren voor Azure-services
 
-**Hulp**: gebruik Azure Security Center om basislijn scans uit te voeren voor uw met Azure Key Vault beveiligde resources 
+**Richtlijnen:** Gebruik Azure Security Center om basislijnscans uit te voeren voor uw azure key vault-beveiligde bronnen. 
 
   
 
@@ -923,271 +920,271 @@ Aanbevelingen herstellen in Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: geautomatiseerde configuratie bewaking voor besturings systemen implementeren
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Geautomatiseerde configuratiebewaking voor besturingssystemen implementeren
 
-**Richt lijnen**: niet van toepassing; deze bench Mark is bedoeld voor reken resources.
+**Richtsnoeren**: Niet van toepassing; deze benchmark is bedoeld voor compute resources.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="711-manage-azure-secrets-securely"></a>7,11: Azure-geheimen veilig beheren
+### <a name="711-manage-azure-secrets-securely"></a>7.11: Azure-geheimen veilig beheren
 
-**Hulp**: gebruik Managed Service Identity in combi natie met Azure Key Vault om het geheim beheer voor uw Cloud toepassingen te vereenvoudigen en te beveiligen. Zorg ervoor dat Azure Key Vault voorlopig verwijderen is ingeschakeld.
+**Richtlijnen:** Gebruik Managed Service Identity in combinatie met Azure Key Vault om geheim beheer voor uw cloudtoepassingen te vereenvoudigen en te beveiligen. Controleer of Azure Key Vault soft delete is ingeschakeld.
 
 
-Integratie met door Azure beheerde identiteiten:
+Hoe te integreren met Azure Managed Identities:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
 
-Een Key Vault maken:
+Een key vault maken:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
 
-Key Vault verificatie bieden met een beheerde identiteit: 
+Key Vault-verificatie voorzien van een beheerde identiteit: 
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7,12: identiteiten veilig en automatisch beheren
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Identiteiten veilig en automatisch beheren
 
-**Hulp**: gebruik Managed Service Identity in combi natie met Azure Key Vault om het geheim beheer voor uw Cloud toepassingen te vereenvoudigen en te beveiligen. 
+**Richtlijnen:** Gebruik Managed Service Identity in combinatie met Azure Key Vault om geheim beheer voor uw cloudtoepassingen te vereenvoudigen en te beveiligen. 
 
   
 
-Integratie met door Azure beheerde identiteiten: 
+Hoe te integreren met Azure Managed Identities: 
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
 
 
 
-Een Key Vault maken: 
+Een key vault maken: 
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal    
 
-Key Vault verificatie bieden met een beheerde identiteit:  
+Key Vault-verificatie voorzien van een beheerde identiteit:  
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: onbedoelde referentie blootstelling elimineren
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Onbedoelde blootstelling aan referenties elimineren
 
-**Richt lijnen**: referentie scanner implementeren om referenties in code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault.  
+**Richtlijnen**: Implementeer credential scanner om referenties binnen code te identificeren. Credential Scanner stimuleert ook het verplaatsen van ontdekte referenties naar veiligere locaties zoals Azure Key Vault.  
   
- Referentie scanner instellen: https://secdevtools.azurewebsites.net/helpcredscan.html
+ Credential Scanner instellen:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [Security Control: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Gebruik centraal beheerde anti-malwaresoftware
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources. Micro soft verzorgt anti-malware voor het onderliggende platform.
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources. Microsoft verwerkt anti-malware voor onderliggend platform.
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: niet van toepassing
+**Verantwoordelijkheid**: Niet van toepassing
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: scan bestanden die moeten worden geüpload naar niet-reken resources van Azure
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Vooraf scannen van bestanden die moeten worden geüpload naar niet-compute Azure-resources
 
-**Hulp**: micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuning biedt voor Azure-Services (bijvoorbeeld Azure Key Vault), maar wordt niet uitgevoerd op de inhoud van de klant.
-
-
-Scan vooraf op inhoud die wordt geüpload of verzonden naar niet-reken resources van Azure, zoals Azure Key Vault. Micro soft heeft geen toegang tot uw gegevens in deze instanties.
+**Richtlijnen**: Microsoft-antimalware is ingeschakeld op de onderliggende host die Azure-services ondersteunt (bijvoorbeeld Azure Key Vault), maar wordt niet uitgevoerd op inhoud van de klant.
 
 
-Meer informatie over micro soft antimalware voor Azure Cloud Services en Virtual Machines: https://docs.microsoft.com/azure/security/fundamentals/antimalware
+Scan vooraf alle inhoud die wordt geüpload of verzonden naar niet-compute Azure-bronnen, zoals Azure Key Vault. Microsoft heeft in deze gevallen geen toegang tot uw gegevens.
 
-**Azure Security Center bewaking**: niet van toepassing
 
-**Verantwoordelijkheid**: klant
+Microsoft Antimalware voor Azure Cloud Services en virtuele machines begrijpen:https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: controleren of anti-malware-software en hand tekeningen zijn bijgewerkt
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources. Micro soft verzorgt anti-malware voor het onderliggende platform.
+**Verantwoordelijkheid**: Klant
 
-**Azure Security Center bewaking**: niet van toepassing
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Ervoor zorgen dat antivirussoftware en -handtekeningen worden bijgewerkt
 
-**Verantwoordelijkheid**: niet van toepassing
+**Richtsnoeren**: Niet van toepassing; deze aanbeveling is bedoeld voor rekenresources. Microsoft verwerkt anti-malware voor onderliggend platform.
+
+**Azure Security Center-bewaking:** niet van toepassing
+
+**Verantwoordelijkheid**: Niet van toepassing
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [Beveiligingsbeheer: Gegevensherstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Zorg voor regelmatige geautomatiseerde back-ups
 
-**Hulp**: zorg voor regel matige automatische back-ups van uw Key Vault-certificaten, sleutels, beheerde opslag accounts en geheimen, met de volgende Power shell-opdrachten:
+**Richtlijnen:** Zorg voor regelmatige geautomatiseerde back-ups van uw Key Vault-certificaten, sleutels, beheerde opslagaccounts en geheimen, met de volgende PowerShell-opdrachten:
 
-- Backup-AzKeyVaultCertificate
-- Backup-AzKeyVaultKey
-- Backup-AzKeyVaultManagedStorageAccount
-- Backup-AzKeyVaultSecret
+- Backup-AzKeyVaultCertificaat
+- Back-up-AzKeyVaultKeyKeyKey
+- Backup-azkeyvaultManagedStorageAccount
+- Back-up-AzKeyVaultSecret
 
-U kunt eventueel uw Key Vault-back-ups opslaan in Azure Backup.
+Optioneel u uw Key Vault-back-ups opslaan in Azure Backup.
 
-Back-up van Key Vault certificaten: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
+Een back-up maken van Key Vault-certificaten:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-Een back-up maken van Key Vault sleutels: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Een back-up maken van Key Vault Keys:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-Back-ups maken van Key Vault beheerde opslag accounts: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+Een back-up maken van key vault managed storage-accounts:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 
-Back-ups maken van Key Vault geheimen: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Een back-up maken van Key Vault Secrets:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-Azure Backup inschakelen: https://docs.microsoft.com/azure/backup
+Azure Backup inschakelen:https://docs.microsoft.com/azure/backup
 
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: volledige back-ups van het systeem uitvoeren en een back-up maken van een door de klant beheerde sleutels
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Complete systeemback-ups uitvoeren en een back-up maken van beheerde sleutels van een klant
 
-**Richt lijnen**: Maak back-ups van uw Key Vault-certificaten, sleutels, beheerde opslag accounts en geheimen, met de volgende Power shell-opdrachten:
+**Richtlijnen:** Maak back-ups van uw Key Vault-certificaten, sleutels, beheerde opslagaccounts en geheimen, met de volgende PowerShell-opdrachten:
 
-- Backup-AzKeyVaultCertificate
-- Backup-AzKeyVaultKey
-- Backup-AzKeyVaultManagedStorageAccount
-- Backup-AzKeyVaultSecret
+- Backup-AzKeyVaultCertificaat
+- Back-up-AzKeyVaultKeyKeyKey
+- Backup-azkeyvaultManagedStorageAccount
+- Back-up-AzKeyVaultSecret
 
-U kunt eventueel uw Key Vault-back-ups opslaan in Azure Backup.
+Optioneel u uw Key Vault-back-ups opslaan in Azure Backup.
 
-Back-up van Key Vault certificaten: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
+Een back-up maken van Key Vault-certificaten:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-Een back-up maken van Key Vault sleutels: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Een back-up maken van Key Vault Keys:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-Back-ups maken van Key Vault beheerde opslag accounts: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+Een back-up maken van key vault managed storage-accounts:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 
-Back-ups maken van Key Vault geheimen: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Een back-up maken van Key Vault Secrets:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-Azure Backup inschakelen: https://docs.microsoft.com/azure/backup
+Azure Backup inschakelen:https://docs.microsoft.com/azure/backup
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: alle back-ups valideren, inclusief door de klant beheerde sleutels
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Alle back-ups valideren, inclusief door de klant beheerde sleutels
 
-**Richt lijnen**: regel matig gegevens herstel van uw Key Vault-certificaten, sleutels, beheerde opslag accounts en geheimen uitvoeren met de volgende Power shell-opdrachten:
+**Richtlijnen:** Voer periodiek gegevensherstel uit van uw Key Vault-certificaten, sleutels, beheerde opslagaccounts en geheimen, met de volgende PowerShell-opdrachten:
 
-- Restore-AzKeyVaultCertificate
-- Restore-AzKeyVaultKey
-- Restore-AzKeyVaultManagedStorageAccount
+- Certificaat restore-azkeyvault
+- Herstel-azkeyvaultkey
+- Account voor beheerde opslag van azkeyvaults herstellen
 - Restore-AzKeyVaultSecret
 
-Key Vault certificaten herstellen: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
+Key Vault-certificaten herstellen:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
 
-Key Vault sleutels herstellen: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
+Key Vault Keys herstellen:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
 
-Key Vault beheerde opslag accounts herstellen: https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
+Key Vault Managed Storage Accounts herstellen:https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
 
-Key Vault geheimen herstellen: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
+Key Vault Secrets herstellen:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: zorg voor de bescherming van back-ups en door de klant beheerde sleutels
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Zorg voor bescherming van back-ups en door klanten beheerde sleutels
 
-**Hulp**: Zorg ervoor dat de functie voor voorlopig verwijderen is ingeschakeld voor Azure Key Vault. Met zacht verwijderen kunt u verwijderde sleutel kluizen en kluis objecten zoals sleutels, geheimen en certificaten herstellen. 
+**Richtlijnen:** Zorg ervoor dat soft delete is ingeschakeld voor Azure Key Vault. Soft delete maakt herstel van verwijderde sleutelkluizen en kluisobjecten zoals sleutels, geheimen en certificaten mogelijk. 
 
 
-De tijdelijke verwijdering van Azure Key Vault gebruiken: 
+Hoe gebruik je De Soft Delete van Azure Key Vault: 
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Zie [Beveiligingscontrole: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)voor meer informatie.*
 
-### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
+### <a name="101-create-an-incident-response-guide"></a>10.1: Een gids voor incidentrespons maken
 
-**Hulp**: een antwoord gids voor incidenten maken voor uw organisatie. Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die alle werk rollen definiëren, evenals fasen van incident handling/management van detectie tot een beoordeling van het incident. Deze processen moeten zich richten op het beveiligen van gevoelige systemen, zoals die van Key Vault geheimen.
+**Richtlijnen**: Bouw een incidentresponseguide voor uw organisatie. Zorg ervoor dat er geschreven incidentresponseplannen zijn die alle rollen van personeel definiëren, evenals fasen van incidentafhandeling/beheer, van detectie tot beoordeling na incidenten. Deze processen moeten zich richten op het beschermen van gevoelige systemen, zoals die met Key Vault-geheimen.
 
 
 
-Werk stroom automatisering configureren in Azure Security Center: 
+Werkstroomautomatiseringen configureren binnen Azure Security Center: 
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide   
 
 
 
-Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces:  
+Richtlijnen voor het bouwen van uw eigen beveiligingsincidentresponsproces:  
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
 
 
-Micro soft Security Response Center anatomie van een incident:   
+De anatomie van een incident door het Microsoft Security Response Center:   
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process   
 
 
 
-De klant kan ook gebruikmaken van de hand leiding voor de verwerking van het computer beveiligings incident van het NIST om hulp te bieden bij het maken van een eigen reactie plan voor incidenten: 
+De klant kan ook gebruikmaken van NIST's Computer Security Incident Handling Guide om te helpen bij het maken van hun eigen incident response plan: 
 
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: een beoordelings procedure voor incidenten en prioriteits procedures maken
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Een incidentscore- en prioriteringsprocedure maken
 
-**Hulp**: Security Center wijst aan elke waarschuwing een Ernst toe om u te helpen bepalen welke waarschuwingen het eerst moeten worden onderzocht. De ernst is gebaseerd op de manier waarop vertrouwen Security Center is in de zoek actie of het analyse programma dat wordt gebruikt om de waarschuwing te geven, evenals het betrouwbaarheids niveau dat er schadelijke bedoelingen zijn achter de activiteit die tot de waarschuwing heeft geleid. Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld productie, niet-productie) en maak een naamgevings systeem om Azure-resources duidelijk te identificeren en te categoriseren, met name voor de verwerking van gevoelige gegevens zoals Azure Key Vault geheimen.
+**Richtlijnen**: Security Center wijst een ernst toe aan elke waarschuwing om u te helpen prioriteiten te stellen welke waarschuwingen eerst moeten worden onderzocht. De ernst is gebaseerd op hoe zeker Security Center is in de bevinding of de analytische gebruikt om de waarschuwing en het betrouwbaarheidsniveau dat er kwaadaardige bedoelingen achter de activiteit die leidde tot de waarschuwing. Bovendien, duidelijk markeren abonnementen (voor bijvoorbeeld. productie, niet-prod) en maak een naamgevingssysteem om Azure-bronnen duidelijk te identificeren en te categoriseren, met name die welke gevoelige gegevens verwerken, zoals Azure Key Vault-geheimen.
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="103-test-security-response-procedures"></a>10,3: procedures voor beveiligings antwoorden testen
+### <a name="103-test-security-response-procedures"></a>10.3: Procedures voor beveiligingsrespons testen
 
-**Richt lijnen**: oefent oefeningen uit om de incident respons mogelijkheden van uw systeem te testen op een reguliere uitgebracht om uw Azure Key Vault-instanties en gerelateerde resources te beschermen. Identificeer zwakke punten en tussen ruimten en wijzig zo nodig het schema.
+**Richtlijnen:** Voer oefeningen uit om de incidentresponsemogelijkheden van uw systemen te testen op een regelmatige cadans om uw Azure Key Vault-exemplaren en gerelateerde resources te beschermen. Identificeer zwakke punten en hiaten en herzie het plan indien nodig.
 
 
-Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en uitoefenen van Program Ma's voor IT-plannen en-mogelijkheden: 
+Raadpleeg de publicatie van NIST: Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities: 
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: contact gegevens van het beveiligings incident opgeven en waarschuwings meldingen configureren voor beveiligings incidenten
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Contactgegevens beveiligingsincidenten verstrekken en waarschuwingsmeldingen configureren voor beveiligingsincidenten
 
-**Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij.  Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
+**Richtlijnen:** Contactgegevens voor beveiligingsincidenten worden door Microsoft gebruikt om contact met u op te nemen als het Microsoft Security Response Center (MSRC) ontdekt dat uw gegevens zijn geopend door een onwettige of onbevoegde partij.  Bekijk incidenten na het feit om ervoor te zorgen dat problemen worden opgelost.
 
 
 
-De Azure Security Center Security-contact persoon instellen:
+De beveiligingscontactpersoon azure security center instellen:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Azure Security Center bewaking**: Ja
+**Azure Security Center-bewaking:** Ja
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: beveiligings waarschuwingen opnemen in uw reactie systeem van uw incident
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Beveiligingswaarschuwingen opnemen in uw incidentresponsesysteem
 
-**Hulp**: exporteer uw Azure Security Center waarschuwingen en aanbevelingen met behulp van de functie continue export om risico's voor Azure Key Vault resources te identificeren. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren.  U kunt de Azure Security Center Data Connector gebruiken om de waarschuwingen naar Azure Sentinel te streamen. 
+**Richtlijnen:** exporteer uw Azure Security Center-waarschuwingen en -aanbevelingen met de functie Continue export om risico's voor azure key vault-resources te identificeren. Met Continue export u waarschuwingen en aanbevelingen handmatig of doorlopend exporteren.  U de Azure Security Center-gegevensconnector gebruiken om de waarschuwingen naar Azure Sentinel te streamen. 
 
  
 
@@ -1201,47 +1198,47 @@ Waarschuwingen streamen naar Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: de reactie op beveiligings waarschuwingen automatiseren
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Automatiseer de reactie op beveiligingswaarschuwingen
 
-**Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen om uw door Azure Key Vault beveiligde bronnen te beveiligen. 
+**Richtlijnen:** Gebruik de functie Workflowautomatisering in Azure Security Center om automatisch reacties te activeren via 'Logic Apps' over beveiligingswaarschuwingen en aanbevelingen om uw met Azure Key Vault beveiligde bronnen te beschermen. 
 
  
 
-Werk stroom automatisering en Logic Apps configureren: 
+Workflowautomatisering en logische apps configureren: 
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure Security Center bewaking**: momenteel niet beschikbaar
+**Azure Security Center-bewaking**: Momenteel niet beschikbaar
 
-**Verantwoordelijkheid**: klant
+**Verantwoordelijkheid**: Klant
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie [Security Control: Penetration Tests en Red Team Exercises](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)voor meer informatie.*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herstel van alle essentiële beveiligings resultaten binnen 60 dagen
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Voer regelmatig penetratietests uit van uw Azure-resources en zorg voor herstel van alle kritieke beveiligingsbevindingen binnen 60 dagen
 
-**Richt lijnen**: u kunt het gebruik van de pen niet rechtstreeks uitvoeren op de Azure Key Vault-service, maar het wordt aanbevolen om uw Azure-resources te testen die Key Vault gebruiken om de beveiliging van de geheimen te garanderen.
+**Richtlijnen:** U mag geen pentests uitvoeren op de Azure Key Vault-service rechtstreeks, maar het wordt aangemoedigd om uw Azure-bronnen te testen die Key Vault gebruiken om de veiligheid van de geheimen te garanderen.
 
 
-U moet de micro soft-regels voor betrokkenheid volgen om ervoor te zorgen dat de indringings tests niet worden geschonden door het micro soft-beleid:
+U moet de Microsoft-regels van betrokkenheid volgen om ervoor te zorgen dat uw penetratietests niet in strijd zijn met het Microsoft-beleid:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
 
-U vindt hier meer informatie over de strategie van micro soft en de uitvoering van de Red Teaming-en live site-indringings tests op door micro soft beheerde Cloud infrastructuur,-services en-toepassingen: 
+Meer informatie over de strategie en uitvoering van Red Teaming en live site penetratietesten van Microsoft met microsoft beheerde cloudinfrastructuur, services en toepassingen vindt u hier: 
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Azure Security Center bewaking**: niet van toepassing
+**Azure Security Center-bewaking:** niet van toepassing
 
-**Verantwoordelijkheid**: gedeeld
+**Verantwoordelijkheid**: Gedeeld
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Bekijk de [Azure Security Benchmark](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- Meer informatie over [Azure Security Baselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

@@ -1,116 +1,116 @@
 ---
-title: Gegevens versleuteling-Azure Portal-Azure Database for MySQL
-description: Meer informatie over het instellen en beheren van gegevens versleuteling voor uw Azure Database for MySQL met behulp van de Azure Portal.
+title: Gegevensversleuteling - Azure-portal - Azure Database voor MySQL
+description: Meer informatie over het instellen en beheren van gegevensversleuteling voor uw Azure Database voor MySQL met behulp van de Azure-portal.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 78a290b1e2984719645fb4d4ff253ab021a0826e
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299036"
 ---
-# <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Gegevens versleuteling voor Azure Database for MySQL met behulp van de Azure Portal
+# <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Gegevensversleuteling voor Azure Database voor MySQL met behulp van de Azure-portal
 
-Meer informatie over het gebruik van de Azure Portal voor het instellen en beheren van gegevens versleuteling voor uw Azure Database for MySQL.
+Meer informatie over het gebruik van de Azure-portal voor het instellen en beheren van gegevensversleuteling voor uw Azure Database voor MySQL.
 
-## <a name="prerequisites-for-azure-cli"></a>Vereisten voor Azure CLI
+## <a name="prerequisites-for-azure-cli"></a>Voorwaarden voor Azure CLI
 
-* U moet een Azure-abonnement hebben en een beheerder van dat abonnement zijn.
-* In Azure Key Vault maakt u een sleutel kluis en een sleutel die u kunt gebruiken voor een door de klant beheerde sleutel.
-* De sleutel kluis moet de volgende eigenschappen hebben voor gebruik als een door de klant beheerde sleutel:
-  * [Voorlopig verwijderen](../key-vault/key-vault-ovw-soft-delete.md)
+* U moet een Azure-abonnement hebben en een beheerder zijn bij dat abonnement.
+* Maak in Azure Key Vault een sleutelkluis en een sleutelsleutel voor een door de klant beheerde sleutel.
+* De sleutelkluis moet de volgende eigenschappen hebben om te gebruiken als een door de klant beheerde sleutel:
+  * [Zachte verwijderen](../key-vault/key-vault-ovw-soft-delete.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [Beveiligd leegmaken](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
+  * [Gezuiverd beschermd](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
 
-* De sleutel moet de volgende kenmerken hebben om te kunnen worden gebruikt als een door de klant beheerde sleutel:
-  * Geen verval datum
+* De sleutel moet de volgende kenmerken hebben om te gebruiken als een door de klant beheerde sleutel:
+  * Geen vervaldatum
   * Niet uitgeschakeld
-  * Kan de Get-, terugloop-, sleutel bewerking uitpakken
+  * In staat om te presteren krijgen, wrap key, uitpakken van belangrijke bewerkingen
 
-## <a name="set-the-right-permissions-for-key-operations"></a>De juiste machtigingen voor sleutel bewerkingen instellen
+## <a name="set-the-right-permissions-for-key-operations"></a>De juiste machtigingen instellen voor belangrijke bewerkingen
 
-1. Selecteer in Key Vault **toegangs beleid** > **beleid voor toegang toevoegen**.
+1. Selecteer **access-beleid** > In Key Vault selecteer**je Toegangsbeleid toevoegen**.
 
-   ![Scherm opname van Key Vault, met beleids regels voor toegang en toegangs beleid toevoegen gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   ![Schermafbeelding van Key Vault, met toegangsbeleid en Toegangsbeleid toevoegen gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. Selecteer **sleutel machtigingen**en selecteer **ophalen**, **teruglopen**, **uitpakken**en de **Principal**. Dit is de naam van de mysql-server. Als uw server-Principal niet kan worden gevonden in de lijst met bestaande principals, moet u deze registreren. U wordt gevraagd om de serverprincipal te registreren wanneer u de gegevens versleuteling voor de eerste keer probeert in te stellen. dit mislukt.
+2. Selecteer **Belangrijke machtigingen**en selecteer **Get**, **Wrap**, **Uitpakken**en de **principal,** de naam van de MySQL-server. Als uw serverprincipal niet kan worden gevonden in de lijst met bestaande principals, moet u deze registreren. U wordt gevraagd om uw serverprincipal te registreren wanneer u voor de eerste keer gegevensversleuteling probeert in te stellen en dit mislukt.
 
-   ![Overzicht van toegangs beleid](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
+   ![Overzicht van toegangsbeleid](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
 3. Selecteer **Opslaan**.
 
-## <a name="set-data-encryption-for-azure-database-for-mysql"></a>Gegevens versleuteling instellen voor Azure Database for MySQL
+## <a name="set-data-encryption-for-azure-database-for-mysql"></a>Gegevensversleuteling instellen voor Azure Database voor MySQL
 
-1. Selecteer in Azure Database for MySQL **gegevens versleuteling** om de door de klant beheerde sleutel in te stellen.
+1. Selecteer in Azure Database voor MySQL **gegevensversleuteling** om de door de klant beheerde sleutel in te stellen.
 
-   ![Scherm opname van Azure Database for MySQL, met de gegevens versleuteling gemarkeerd](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   ![Schermafbeelding van Azure Database voor MySQL, met gemarkeerde gegevensversleuteling](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
 
-2. U kunt een sleutel kluis en sleutel paar selecteren of een sleutel-id invoeren.
+2. U een sleutelkluis en sleutelpaar selecteren of een sleutel-id invoeren.
 
-   ![Scherm opname van Azure Database for MySQL, met opties voor gegevens versleuteling gemarkeerd](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   ![Schermafbeelding van Azure Database voor MySQL, met gemarkeerde opties voor gegevensversleuteling](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
 3. Selecteer **Opslaan**.
 
 4. Start de server opnieuw op om ervoor te zorgen dat alle bestanden (inclusief tijdelijke bestanden) volledig zijn versleuteld.
 
-## <a name="restore-or-create-a-replica-of-the-server"></a>Herstel of maak een replica van de server
+## <a name="restore-or-create-a-replica-of-the-server"></a>Een replica van de server herstellen of maken
 
-Nadat Azure Database for MySQL is versleuteld met een door de klant beheerde sleutel die is opgeslagen in Key Vault, wordt een nieuw gemaakt exemplaar van de server ook versleuteld. U kunt deze nieuwe kopie maken via een lokale of geo-herstel bewerking, of via een replica (lokale/Kruis regio). Voor een versleutelde MySQL-server kunt u dus de volgende stappen gebruiken om een versleutelde herstelde server te maken.
+Nadat Azure Database for MySQL is versleuteld met de beheerde sleutel van een klant die is opgeslagen in Key Vault, wordt ook elke nieuw gemaakte kopie van de server versleuteld. U deze nieuwe kopie maken via een lokale of geoherstelbewerking of via een bewerking voor replica's (lokaal/regio). Voor een versleutelde MySQL-server u dus de volgende stappen gebruiken om een versleutelde herstelde server te maken.
 
-1. Selecteer **overzicht** > **herstellen**op uw server.
+1. Selecteer **Overzicht** > **herstellen**op uw server .
 
-   ![Scherm opname van Azure Database for MySQL, met overzicht en herstellen gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   ![Schermafbeelding van Azure Database voor MySQL, met overzicht en herstel gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
-   Of voor een server waarvoor replicatie is ingeschakeld, selecteert u in de kop **instellingen** de optie **replicatie**.
+   Of selecteer **Replicatie**voor een server **Settings** met replicatiedie is ingeschakeld.
 
-   ![Scherm opname van Azure Database for MySQL, waarbij de replicatie is gemarkeerd](media/concepts-data-access-and-security-data-encryption/mysql-replica.png)
+   ![Schermafbeelding van Azure Database voor MySQL, met replicatie gemarkeerd](media/concepts-data-access-and-security-data-encryption/mysql-replica.png)
 
-2. Nadat de herstel bewerking is voltooid, wordt de nieuwe gemaakte server versleuteld met de sleutel van de primaire server. De functies en opties op de server zijn echter uitgeschakeld en de server is niet toegankelijk. Dit voor komt dat gegevens worden gemanipuleerd, omdat de identiteit van de nieuwe server nog niet is gemachtigd voor toegang tot de sleutel kluis.
+2. Nadat de herstelbewerking is voltooid, wordt de nieuwe server die is gemaakt, versleuteld met de sleutel van de primaire server. De functies en opties op de server zijn echter uitgeschakeld en de server is niet toegankelijk. Dit voorkomt gegevensmanipulatie, omdat de identiteit van de nieuwe server nog geen toestemming heeft gekregen om toegang te krijgen tot de sleutelkluis.
 
-   ![Scherm opname van Azure Database for MySQL, met een niet-toegankelijke status gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   ![Schermafbeelding van Azure Database voor MySQL, met ontoegankelijke status gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. Valideer de sleutel op de herstelde server om de server toegankelijk te maken. Selecteer **gegevens versleuteling** > **sleutel opnieuw valideren**.
+3. Als u de server toegankelijk wilt maken, moet u de sleutel op de herstelserver opnieuw valideren. Selecteer **Gegevensversleuteling** > **Revalidate-toets**.
 
    > [!NOTE]
-   > De eerste poging om opnieuw te valideren, mislukt, omdat de service-principal van de nieuwe server toegang moet krijgen tot de sleutel kluis. Als u de Service-Principal wilt genereren, selecteert u **sleutel opnieuw valideren**. er wordt dan een fout weer gegeven, maar de service-principal wordt gegenereerd. Ga daarna naar [deze stappen](#set-the-right-permissions-for-key-operations) eerder in dit artikel.
+   > De eerste poging om opnieuw te valideren mislukt, omdat de serviceprincipal van de nieuwe server toegang moet krijgen tot de sleutelkluis. Als u de serviceprincipal wilt genereren, selecteert u **De sleutel opnieuw valideren,** waardoor een fout wordt weergegeven, maar de serviceprincipal wordt gegenereerd. Daarna, verwijzen naar [deze stappen](#set-the-right-permissions-for-key-operations) eerder in dit artikel.
 
-   ![Scherm opname van Azure Database for MySQL, waarbij de stap voor hervalidatie is gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   ![Schermafbeelding van Azure Database voor MySQL, waarbij de validatiestap is gemarkeerd](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
-   U moet de sleutel kluis toegang verlenen tot de nieuwe server.
+   U moet de sleutelkluis toegang geven tot de nieuwe server.
 
-4. Nadat u de Service-Principal hebt geregistreerd, moet u de sleutel opnieuw valideren en wordt de normale functionaliteit van de server hervat.
+4. Nadat u de serviceprincipal hebt geregistreerd, wordt de sleutel opnieuw gevalideerd en wordt de normale functionaliteit van de server hervat.
 
-   ![Scherm opname van Azure Database for MySQL, met de herstelde functionaliteit](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   ![Schermafbeelding van Azure Database voor MySQL, met herstelde functionaliteit](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
 
 
-## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Een Azure Resource Manager sjabloon gebruiken om gegevens versleuteling in te scha kelen
+## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Een Azure Resource Manager-sjabloon gebruiken om gegevensversleuteling in te schakelen
 
-Naast de Azure Portal, kunt u ook gegevens versleuteling op uw Azure Database for MySQL-server inschakelen met behulp van Azure Resource Manager-sjablonen voor nieuwe en bestaande servers.
+Naast de Azure-portal u ook gegevensversleuteling op uw Azure Database voor MySQL-server inschakelen met Azure Resource Manager-sjablonen voor nieuwe en bestaande servers.
 
 ### <a name="for-a-new-server"></a>Voor een nieuwe server
 
-Gebruik een van de vooraf gemaakte Azure Resource Manager sjablonen om de server in te richten met gegevens versleuteling ingeschakeld: [voor beeld met gegevens versleuteling](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
+Gebruik een van de vooraf gemaakte Azure Resource Manager-sjablonen om de server te voorzien van gegevensversleuteling ingeschakeld: [Voorbeeld met gegevensversleuteling](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
 
-Met deze Azure Resource Manager sjabloon maakt u een Azure Database for MySQL-server en gebruikt u de sleutel **kluis** en **code** die zijn door gegeven als para meters om gegevens versleuteling op de server in te scha kelen.
+Met deze sjabloon Azure Resource Manager wordt een Azure Database voor MySQL-server gemaakt en wordt de **KeyVault** en **Key** gebruikt als parameters om gegevensversleuteling op de server in te schakelen.
 
 ### <a name="for-an-existing-server"></a>Voor een bestaande server
-Daarnaast kunt u Azure Resource Manager sjablonen gebruiken om gegevens versleuteling in te scha kelen op uw bestaande Azure Database for MySQL-servers.
+Bovendien u Azure Resource Manager-sjablonen gebruiken om gegevensversleuteling in te schakelen op uw bestaande Azure Database voor MySQL-servers.
 
-* Geef de URI van de Azure Key Vault sleutel die u eerder hebt gekopieerd, op onder de `keyVaultKeyUri` eigenschap in het object Properties.
+* Geef de URI door van de Azure Key Vault-sleutel die u eerder hebt gekopieerd onder de `keyVaultKeyUri` eigenschap in het object Eigenschappen.
 
-* Gebruik *2020-01-01-preview* als de API-versie.
+* Gebruik *2020-01-01-preview* als API-versie.
 
 ```json
 {
@@ -222,4 +222,4 @@ Daarnaast kunt u Azure Resource Manager sjablonen gebruiken om gegevens versleut
 
 ## <a name="next-steps"></a>Volgende stappen
 
- Zie [Azure database for MySQL Data Encryption with door de klant beheerde sleutel](concepts-data-encryption-mysql.md)voor meer informatie over gegevens versleuteling.
+ Zie Azure Database voor [MySQL-gegevensversleuteling met door de klant beheerde sleutel voor](concepts-data-encryption-mysql.md)meer informatie over gegevensversleuteling.
