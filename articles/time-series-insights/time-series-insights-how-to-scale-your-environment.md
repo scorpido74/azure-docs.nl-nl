@@ -1,6 +1,6 @@
 ---
-title: Uw omgeving schalen-Azure Time Series Insights | Microsoft Docs
-description: Meer informatie over het schalen van uw Azure Time Series Insights-omgeving met behulp van de Azure Portal.
+title: Hoe schaal je je omgeving - Azure Time Series Insights| Microsoft Documenten
+description: Meer informatie over het schalen van uw Azure Time Series Insights-omgeving met behulp van de Azure-portal.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 23efda2793ef5d323089ee5b72fb1ea873de6b20
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76310982"
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>Uw Time Series Insights omgeving schalen
+# <a name="how-to-scale-your-time-series-insights-environment"></a>Uw Time Series Insights-omgeving schalen
 
-In dit artikel wordt beschreven hoe u de capaciteit van uw Time Series Insights omgeving kunt wijzigen met behulp van de [Azure Portal](https://portal.azure.com). Capaciteit is de vermenigvuldiger die wordt toegepast op de ingangs frequentie, opslag capaciteit en kosten die zijn gekoppeld aan uw geselecteerde SKU.
+In dit artikel wordt beschreven hoe u de capaciteit van uw Time Series Insights-omgeving wijzigt met behulp van de [Azure-portal.](https://portal.azure.com) Capaciteit is de multiplier die wordt toegepast op het invallende tarief, de opslagcapaciteit en de kosten die zijn gekoppeld aan de geselecteerde SKU.
 
-U kunt de Azure Portal gebruiken om de capaciteit binnen een bepaalde prijs-SKU te verg Roten of te verkleinen.
+U de Azure-portal gebruiken om de capaciteit binnen een bepaalde prijs-SKU te vergroten of te verkleinen.
 
-Het wijzigen van de SKU van de prijs categorie is echter niet toegestaan. Een omgeving met een mijn prijs-SKU voor S1 kan bijvoorbeeld niet worden geconverteerd naar een S2 of andersom.
+Het wijzigen van de prijscategorie SKU is echter niet toegestaan. Een omgeving met een S1-prijsSKU kan bijvoorbeeld niet worden omgezet in een S2, of vice versa.
 
 ## <a name="ga-limits"></a>GA-limieten
 
@@ -32,26 +32,26 @@ Het wijzigen van de SKU van de prijs categorie is echter niet toegestaan. Een om
 
 ## <a name="change-the-capacity-of-your-environment"></a>De capaciteit van uw omgeving wijzigen
 
-1. Zoek en selecteer uw Time Series Insights omgeving in het Azure Portal.
+1. Zoek en selecteer in de Azure-portal uw Time Series Insights-omgeving.
 
-1. Selecteer **opslag configuratie**in het menu voor uw time series Insights omgeving.
+1. Selecteer **opslagconfiguratie**in het menu voor uw Time Series Insights-omgeving.
 
-   [![uw Time Series Insights capaciteit configureren](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
+   [![Uw Time Series Insights-capaciteit configureren](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
-1. Pas de schuif regelaar **capaciteit** aan om de capaciteit te selecteren die voldoet aan de vereisten voor uw ingangs tarieven en opslag capaciteit. Let op de **ingangs rente**, **opslag capaciteit**en **geschatte kosten** update dynamisch om de impact van de wijziging weer te geven.
+1. Pas de schuifregelaar **Capaciteit** aan om de capaciteit te selecteren die voldoet aan de vereisten voor uw invallende snelheden en opslagcapaciteit. Let op het **invallentarief**, **opslagcapaciteit**en **geschatte kostenupdate** dynamisch om de impact van de wijziging weer te geven.
 
-   [![uw omgeving configureren met behulp van de schuif regelaar capaciteit](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
+   [![Uw omgeving configureren met de schuifregelaar capaciteit](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
-   U kunt ook het nummer van de capaciteits-multiplier in het tekstvak rechts van de schuif regelaar typen.
+   U ook het nummer van de capaciteitsvermenigvuldiger in het tekstvak rechts van de schuifregelaar typen.
 
-1. Selecteer **Opslaan** om de omgeving te schalen. De voortgangs indicator wordt weer gegeven totdat de wijziging wordt doorgevoerd.
+1. Selecteer **Opslaan** om de omgeving te schalen. De voortgangsindicator wordt weergegeven totdat de wijziging is vastgelegd, tijdelijk.
 
-1. Controleer of de nieuwe capaciteit [voldoende is om beperking te voor komen](time-series-insights-diagnose-and-solve-problems.md).
+1. Controleer of de nieuwe capaciteit voldoende is [om beperking te voorkomen.](time-series-insights-diagnose-and-solve-problems.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees voor meer informatie [uitleg over retentie in time series Insights](time-series-insights-concepts-retention.md).
+- Bekijk [inzicht in Time Series Insights](time-series-insights-concepts-retention.md)voor meer informatie.
 
-- Meer informatie over het [configureren van gegevens retentie in azure time series Insights](time-series-insights-how-to-configure-retention.md).
+- Meer informatie over [het configureren van gegevensbehoud in Azure Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
-- Meer informatie over [het plannen van uw omgeving](time-series-insights-environment-planning.md).
+- Meer informatie over [het plannen van uw omgeving.](time-series-insights-environment-planning.md)

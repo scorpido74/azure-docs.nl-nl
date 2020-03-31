@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight-woorden lijst voor cluster fouten maken
+title: Azure HDInsight Een cluster maken - foutwoordenboek
 description: Meer informatie over het oplossen van fouten die optreden bij het maken van Azure HDInsight-clusters
 author: karkrish
 ms.author: v-todmc
@@ -9,209 +9,209 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
 ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302726"
 ---
-# <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: fouten bij het maken van een cluster
+# <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: fouten bij het maken van clusteren
 
-In dit artikel worden oplossingen beschreven voor fouten die u kunt tegen komen bij het maken van clusters.
+In dit artikel worden resoluties beschreven voor fouten die u zou kunnen tegenkomen bij het maken van clusters.
 
 > [!NOTE]
-> De eerste drie fouten die in dit artikel worden beschreven, zijn validatie fouten. Ze kunnen zich voordoen wanneer een Azure HDInsight-product gebruikmaakt van de **CsmDocument_2_0** klasse.
+> De eerste drie fouten die in dit artikel worden beschreven zijn validatiefouten. Ze kunnen optreden wanneer een Azure HDInsight-product de **CsmDocument_2_0** klasse gebruikt.
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fout code: DeploymentDocument ' CsmDocument_2_0 ' is niet gevalideerd
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Foutcode: DeploymentDocument 'CsmDocument_2_0' is mislukt voor de validatie
 
 ### <a name="error"></a>Fout
 
-"Locatie van script actie kan geen toegang krijgen tot URI:\<SCRIPT actie-URL\>"
+"Script actie locatie kan niet\<worden\>geopend URI: SCRIPT ACTION URL "
 
 #### <a name="error-message"></a>Foutbericht
 
-De externe server heeft een fout geretourneerd: (404) niet gevonden. "
+"De externe server heeft een fout geretourneerd: (404) Niet gevonden."
 
 ### <a name="cause"></a>Oorzaak
 
-De HDInsight-service heeft geen toegang tot de script actie-URL die u hebt gegeven als onderdeel van de aanvraag Create cluster. De service ontvangt het voor gaande fout bericht wanneer er wordt geprobeerd om de script actie te openen.
+De HDInsight-service heeft geen toegang tot de URL van de scriptactie die u hebt opgegeven als onderdeel van de clusteraanvraag maken. De service ontvangt het vorige foutbericht wanneer deze toegang probeert te krijgen tot de scriptactie.
 
 ### <a name="resolution"></a>Oplossing
 
-- Voor een HTTP-of HTTPS-URL verifieert u de URL door te proberen ernaar te gaan vanuit een incognito-browser venster.
-- Zorg ervoor dat het script bestaat in het opslag account dat u in de aanvraag geeft voor een WASB-URL. Zorg er ook voor dat de opslag sleutel voor dit opslag account juist is.
-- Zorg ervoor dat het script in het opslag account bestaat voor een ADLS-URL.
+- Voor een HTTP- of HTTPS-URL controleert u de URL door te proberen deze vanuit een incognitobrowservenster naar deze URL te gaan.
+- Voor een WASB-URL moet u ervoor zorgen dat het script bestaat in het opslagaccount dat u in de aanvraag geeft. Zorg er ook voor dat de opslagsleutel voor dit opslagaccount correct is.
+- Voor een ADLS-URL moet u ervoor zorgen dat het script in het opslagaccount bestaat.
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fout code: DeploymentDocument ' CsmDocument_2_0 ' is niet gevalideerd
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Foutcode: DeploymentDocument 'CsmDocument_2_0' is mislukt voor de validatie
 
 ### <a name="error"></a>Fout
 
-"Locatie van de script actie kan geen toegang krijgen tot URI: \<SCRIPT_ACTION_URL\>"
+"Script actie locatie kan niet \<\>worden geopend URI: SCRIPT_ACTION_URL "
 
 #### <a name="error-message"></a>Foutbericht
 
-"De opgegeven script-URI \<SCRIPT_URI\> bevindt zich in ADLS, maar dit cluster heeft geen data Lake Storage-Principal"
+"Het gegeven \<script\> URI SCRIPT_URI is in ADLS, maar dit cluster heeft geen data lake storage principal"
 
 ### <a name="cause"></a>Oorzaak
 
-De HDInsight-service heeft geen toegang tot de script actie-URL die u hebt gegeven als onderdeel van de aanvraag Create cluster. De service ontvangt het voor gaande fout bericht wanneer er wordt geprobeerd om de script actie te openen.
+De HDInsight-service heeft geen toegang tot de URL van de scriptactie die u hebt opgegeven als onderdeel van de clusteraanvraag maken. De service ontvangt het vorige foutbericht wanneer deze toegang probeert te krijgen tot de scriptactie.
 
 ### <a name="resolution"></a>Oplossing
 
-Voeg het bijbehorende Azure Data Lake Storage gen 1-account toe aan het cluster. Voeg ook de service-principal die toegang heeft tot het Data Lake Storage gen 1-account toe aan het cluster.
+Voeg het bijbehorende Azure Data Lake Storage Gen 1-account toe aan het cluster. Voeg ook de serviceprincipal toe die toegang heeft tot het Data Lake Storage Gen 1-account aan het cluster.
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fout code: DeploymentDocument ' CsmDocument_2_0 ' is niet gevalideerd
+## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Foutcode: DeploymentDocument 'CsmDocument_2_0' is mislukt voor de validatie
 
 ### <a name="error"></a>Fout
 
-"VM-grootte\<CUSTOMER_SPECIFIED_VM_SIZE\>die in de aanvraag is gegeven, is ongeldig of wordt niet ondersteund voor de rol\<ROLE\>. Geldige waarden zijn: \<VALID_VM_SIZE_FOR_ROLE\>. "
+"VM-grootte\<\>' CUSTOMER_SPECIFIED_VM_SIZE ' in het verzoek ongeldig\<is\>of niet wordt ondersteund voor rol ' ROL '. Geldige waarden \<zijn: VALID_VM_SIZE_FOR_ROLE."\>
 
 ### <a name="cause"></a>Oorzaak
 
-De grootte van de virtuele machine die u hebt opgegeven, is niet toegestaan voor de rol. Deze fout kan optreden omdat de waarde voor de VM-grootte niet werkt zoals verwacht of niet geschikt is voor de computer functie.
+De virtuele machinegrootte die u hebt opgegeven, is niet toegestaan voor de rol. Deze fout kan optreden omdat de waarde van de VM-grootte niet werkt zoals verwacht of niet geschikt is voor de computerrol.
 
 ### <a name="resolution"></a>Oplossing
 
-In het fout bericht worden de geldige waarden voor de VM-grootte weer gegeven. Selecteer een van deze waarden en voer de aanvraag cluster maken opnieuw uit.
+Het foutbericht bevat de geldige waarden voor de VM-grootte. Selecteer een van deze waarden en probeer de clusteraanvraag maken opnieuw.
 
 ---
 
-## <a name="error-codeinvalidvirtualnetworkid"></a>Fout code: InvalidVirtualNetworkId  
+## <a name="error-codeinvalidvirtualnetworkid"></a>Foutcode: OngeldigVirtualNetworkId  
 
 ### <a name="error"></a>Fout
 
-De VirtualNetworkId is niet geldig. VirtualNetworkId '\<USER_VIRTUALNETWORKID\>' * '
+"De VirtualNetworkId is niet geldig. VirtualNetworkId\<'\>USER_VIRTUALNETWORKID '*"
 
 ### <a name="cause"></a>Oorzaak
 
-De **VirtualNetworkId** -waarde die u hebt opgegeven tijdens het maken van het cluster heeft niet de juiste indeling.
+De **VirtualNetworkId-waarde** die u tijdens het maken van het cluster hebt opgegeven, bevindt zich niet in de juiste indeling.
 
 ### <a name="resolution"></a>Oplossing
 
-Zorg ervoor dat de waarden voor **VirtualNetworkId** en subnet de juiste indeling hebben. De **VirtualNetworkId** -waarde ophalen:
+Zorg ervoor dat de **virtualnetworkid-** en subnetwaarden in de juiste indeling staan. Ga als resultaat op zoek naar de **virtualnetworkid-waarde:**
 
 1. Ga naar Azure Portal.
 1. Selecteer uw virtuele netwerk.
-1. Selecteer de menu opdracht **Eigenschappen** . De waarde van de eigenschap **ResourceID** is de waarde van **VirtualNetworkId** .
+1. Selecteer het **menu-item Eigenschappen.** De **eigenschapresourceID-waarde** is de waarde **VirtualNetworkId.**
 
-Hier volgt een voor beeld van een virtuele netwerk-ID:
+Hier is een voorbeeld van een virtuele netwerk-ID:
 
-"/subscriptions/c15fd9b8-e2b8-1d4e-aa85-2e668040233b/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet"
+"/abonnementen/c15fd9b8-e2b8-1d4e-aa85-2e668040233b/resourceGroepen/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet"
 
 ---
 
-## <a name="error-code-customizationfailederrorcode"></a>Fout code: CustomizationFailedErrorCode
+## <a name="error-code-customizationfailederrorcode"></a>Foutcode: CustomizationFailedErrorCode
 
 ### <a name="error"></a>Fout
 
-' De cluster implementatie is mislukt vanwege een fout in de aangepaste script actie. Mislukte acties: \<SCRIPT_NAME\>, gaat u naar de Ambari-gebruikers interface om de fout op te lossen.
+"De implementatie van het cluster is mislukt door een fout in de aangepaste scriptactie. Mislukte \<acties:\>SCRIPT_NAME , Ga naar Ambari UI om de fout verder te debuggen."
 
 ### <a name="cause"></a>Oorzaak
 
-Het aangepaste script dat u hebt gegeven tijdens de aanvraag voor het maken van een cluster wordt uitgevoerd nadat het cluster is geïmplementeerd. Deze fout code geeft aan dat er een fout is opgetreden tijdens het uitvoeren van het aangepaste script met de naam \<SCRIPT_NAME\>.
+Het aangepaste script dat u tijdens de clusteraanvraag maken hebt opgegeven, wordt uitgevoerd nadat het cluster is geïmplementeerd. Deze foutcode geeft aan dat er een \<fout\>is opgetreden tijdens de uitvoering van het aangepaste script met de naam SCRIPT_NAME .
 
 ### <a name="resolution"></a>Oplossing
 
-Omdat het script het aangepaste script is, raden we u aan het probleem op te lossen en het script zo nodig opnieuw uit te voeren. Raadpleeg de logboeken in de map/var/lib/ambari-agent/* om de script fout op te lossen. Of open de pagina **bewerkingen** in de gebruikers interface van Ambari en selecteer vervolgens de bewerking **run_customscriptaction** om de fout gegevens weer te geven.
+Omdat het script uw aangepaste script is, raden we u aan het probleem op te lossen en het script indien nodig opnieuw uit te voeren. Als u de scriptfout wilt oplossen, onderzoekt u de logboeken in de map /var/lib/ambari-agent/*. Of open de pagina **Bewerkingen** in de Gebruikersinterface van Ambari en selecteer vervolgens de **run_customscriptaction** bewerking om de foutgegevens weer te geven.
 
 ---
 
-## <a name="error-codeinvaliddocumenterrorcode"></a>Fout code: InvalidDocumentErrorCode
+## <a name="error-codeinvaliddocumenterrorcode"></a>Foutcode: OngeldigeDocumentErrorCode
 
 ### <a name="error"></a>Fout
 
-"De \<META_STORE_TYPE\> meta Store-schema versie \<METASTORE_MAJOR_VERSION\> in de data base \<database_name\> is niet compatibel met de Cluster versie \<CLUSTER_VERSION\>"
+"De \<\> \<META_STORE_TYPE Metastore-schemaversie METASTORE_MAJOR_VERSION\> in \<database \<DATABASE_NAME\>\> is niet compatibel met clusterversie CLUSTER_VERSION"
 
 ### <a name="cause"></a>Oorzaak
 
-De aangepaste meta Store is niet compatibel met de geselecteerde versie van het HDInsight-cluster. Op dit moment ondersteunen HDInsight 4,0-clusters alleen de meta Store-versie 3,0 en hoger, terwijl HDInsight 3,6-clusters geen ondersteuning bieden voor de meta Store-versie 3,0 en hoger.
+De aangepaste metastore is niet compatibel met de geselecteerde HDInsight-clusterversie. Momenteel ondersteunen HDInsight 4.0-clusters alleen Metastore-versie 3.0 en hoger, terwijl HDInsight 3.6-clusters geen Metastore-versie 3.0 en hoger ondersteunen.
 
 ### <a name="resolution"></a>Oplossing
 
-Alleen meta Store-versies gebruiken die worden ondersteund door uw versie van het HDInsight-cluster. Als u geen aangepaste meta Store opgeeft, maakt HDInsight intern een meta Store en verwijdert deze vervolgens tijdens het verwijderen van het cluster.
+Gebruik alleen Metastore-versies die uw HDInsight-clusterversie ondersteunt. Als u geen aangepaste metastore opgeeft, maakt HDInsight intern een metastore en verwijdert deze vervolgens bij het verwijderen van het cluster.
 
 ---
 
-## <a name="error-code-failedtoconnectwithclustererrorcode"></a>Fout code: FailedToConnectWithClusterErrorCode 
+## <a name="error-code-failedtoconnectwithclustererrorcode"></a>Foutcode: FailedToConnectWithClusterErrorCode 
 
 ### <a name="error"></a>Fout
 
-' Kan geen verbinding maken met het eind punt van het cluster beheer om een schaal bewerking uit te voeren. Controleer of de netwerk beveiligings regels geen externe toegang tot het cluster blok keren en of de Cluster beheer-UI (Ambari) kan worden geopend.
+"Kan geen verbinding maken met het eindpunt van clusterbeheer om de schalingbewerking uit te voeren. Controleer of netwerkbeveiligingsregels de externe toegang tot het cluster niet blokkeren en of de gebruikersinterface van de clusterbeheerder (Ambari) met succes kan worden geopend."
 
 ### <a name="cause"></a>Oorzaak
 
-Een firewall regel in uw netwerk beveiligings groep (NSG) blokkeert de cluster communicatie met de essentiële Azure-status-en beheer Services.
+Een firewallregel op uw netwerkbeveiligingsgroep (NSG) blokkeert clustercommunicatie met kritieke Azure-status- en beheerservices.
 
 ### <a name="resolution"></a>Oplossing
 
-Als u van plan bent om netwerk beveiligings groepen te gebruiken om netwerk verkeer te beheren, voert u de volgende acties uit voordat u HDInsight installeert:
+Als u netwerkbeveiligingsgroepen wilt gebruiken om het netwerkverkeer te beheren, neemt u de volgende acties voordat u HDInsight installeert:
 
-- Bepaal de Azure-regio die u wilt gebruiken voor HDInsight.
-- Identificeer de IP-adressen die zijn vereist voor HDInsight. Zie voor meer informatie [HDInsight management IP addresses](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses) (IP-adressen voor HDInsight-beheer).
-  - Maak of wijzig de netwerk beveiligings groepen voor het subnet waarop u HDInsight wilt installeren.
-  - Voor netwerk beveiligings groepen staat u inkomend verkeer op poort 443 van de IP-adressen toe. Deze configuratie zorgt ervoor dat HDInsight-beheer Services het cluster kunnen bereiken van buiten het virtuele netwerk.
+- Identificeer het Azure-gebied dat u voor HDInsight wilt gebruiken.
+- Identificeer de IP-adressen die door HDInsight worden vereist. Zie voor meer informatie [HDInsight management IP addresses](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses) (IP-adressen voor HDInsight-beheer).
+  - Maak of wijzig de netwerkbeveiligingsgroepen voor het subnet waarop u HDInsight wilt installeren.
+  - Voor netwerkbeveiligingsgroepen u binnenkomend verkeer toestaan op poort 443 vanaf de IP-adressen. Deze configuratie zorgt ervoor dat HDInsight-beheerservices het cluster van buiten het virtuele netwerk kunnen bereiken.
 
 ---
 
-## <a name="error-code-storagepermissionsblockedformsi"></a>Fout code: StoragePermissionsBlockedForMsi  
+## <a name="error-code-storagepermissionsblockedformsi"></a>Foutcode: StoragePermissionsBlockedForMsi  
 
 ### <a name="error"></a>Fout
 
-"De beheerde identiteit heeft geen machtigingen voor het opslag account. Controleer of de rol Storage BLOB data owner is toegewezen aan de beheerde identiteit voor het opslag account. Opslag:/Subscriptions/\<abonnements-ID\>/resourceGroups/\< naam van de resource groep\>/providers/Microsoft.Storage/storageAccounts/\<naam van het opslag account\>, beheerde identiteit:/Subscriptions/\<abonnements-ID\>/resourceGroups//\< resource groep naam\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/\<door de gebruiker beheerde identiteits naam\>"
+"De beheerde identiteit heeft geen machtigingen voor het opslagaccount. Controleer of de rol 'Opslagblob-gegevenseigenaar' is toegewezen aan de beheerde identiteit voor het opslagaccount. Opslag: \</subscriptions/\> Subscription ID\< /resourceGroups/ Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>, Managed Identity: /subscriptions/ \<Subscription ID\> /resourceGroups/ /\< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>"
 
 ### <a name="cause"></a>Oorzaak
 
-U hebt niet de vereiste machtigingen voor het beheren van de identiteit opgegeven. De door de gebruiker toegewezen beheerde identiteit heeft geen Blob Storage rol Inzender op het Azure Data Lake Storage Gen2 Storage-account.
+U hebt niet de machtigingen verstrekt die nodig zijn om de identiteit te beheren. De door de gebruiker toegewezen beheerde identiteit heeft niet de rol blobopslagbijdrager in het Azure Data Lake Storage Gen2-opslagaccount.
 
 ### <a name="resolution"></a>Oplossing
 
 1. Open Azure Portal.
 1. Ga naar uw opslagaccount.
-1. Kijk onder **Access Control (IAM)** .
-1. Zorg ervoor dat de gebruiker de rol Storage BLOB data contributor of de gebruikersrol Storage BLOB-gegevens eigenaar heeft toegewezen.
+1. Kijk onder **Toegangscontrole (IAM)**.
+1. Controleer of de gebruiker de rol Opslagblob-gegevensbijdrage heeft of de rol Opslagblobgegevens-eigenaar die aan hem is toegewezen.
 
-Zie [machtigingen voor de beheerde identiteit instellen op het data Lake Storage Gen2-account](hdinsight-hadoop-use-data-lake-storage-gen2.md)voor meer informatie.
+Zie [Machtigingen instellen voor de beheerde identiteit op het Data Lake Storage Gen2-account voor](hdinsight-hadoop-use-data-lake-storage-gen2.md)meer informatie .
 
 ---
 
-## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Fout code: InvalidNetworkSecurityGroupSecurityRules  
+## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Foutcode: Ongeldige NetworkSecurityGroupSecurityRules  
 
 ### <a name="error"></a>Fout
 
-"De beveiligings regels in de netwerk beveiligings groep/Subscriptions/\<SubscriptionID\>/resourceGroups/< Resource groeps naam\> standaard/providers/micro soft. netwerk/networkSecurityGroups/\<naam netwerk beveiligings groep\> geconfigureerd met subnet/Subscriptions/\<SubscriptionID\>/resourceGroups/\<resource groeps naam\> RG-westeurope-vnet-tomtom-default/providers/micro soft. netwerk/virtualNetworks/\<virtueel De netwerk naam\>/subnets/\<subnet naam\> de vereiste binnenkomende en/of uitgaande connectiviteit niet toestaat. Ga voor meer informatie naar [een virtueel netwerk voor Azure HDInsight plannen](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)of neem contact op met de ondersteuning.
+"De beveiligingsregels in de Network\<Security\>Group /subscriptions/ SubscriptionID\> /resourceGroups/<Resource Group naam\<default/providers/Microsoft.Network/networkSecurityGroups/\>Network Security\<Group Name\> \> configured with subnet /subscriptions/\<SubscriptionID /resourceGroups/ Resource\<Group name RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/ Virtual Netwerknaam\>/subnetten/\<Subnetnaam\> staat geen vereiste inkomende en/of uitgaande connectiviteit toe. Ga voor meer informatie naar [Een virtueel netwerk plannen voor Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)of neem contact op met ondersteuning."
 
 ### <a name="cause"></a>Oorzaak
 
-Als netwerk beveiligings groepen of door de gebruiker gedefinieerde routes (Udr's) binnenkomend verkeer naar uw HDInsight-cluster beheren, moet u ervoor zorgen dat uw cluster kan communiceren met de essentiële Azure-status-en beheer Services.
+Als netwerkbeveiligingsgroepen of door gebruikers gedefinieerde routes (UDR's) binnenkomend verkeer naar uw HDInsight-cluster beheren, moet u ervoor zorgen dat uw cluster kan communiceren met kritieke Azure-status- en beheerservices.
 
 ### <a name="resolution"></a>Oplossing
 
-Als u van plan bent om netwerk beveiligings groepen te gebruiken om netwerk verkeer te beheren, voert u de volgende acties uit voordat u HDInsight installeert:
+Als u netwerkbeveiligingsgroepen wilt gebruiken om het netwerkverkeer te beheren, neemt u de volgende acties voordat u HDInsight installeert:
 
-- Identificeer de Azure-regio die u wilt gebruiken voor HDInsight en maak een veilige lijst met de IP-adressen voor uw regio. Zie [status-en beheer Services: specifieke regio's](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)voor meer informatie.
-- Identificeer de IP-adressen die HDInsight nodig heeft. Zie [IP-adressen voor HDInsight-beheer](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)voor meer informatie.
-- Maak of wijzig de netwerk beveiligings groepen voor het subnet waarop u HDInsight wilt installeren. Voor netwerk beveiligings groepen staat u inkomend verkeer op poort 443 van de IP-adressen toe. Deze configuratie zorgt ervoor dat HDInsight-beheer Services het cluster kunnen bereiken van buiten het virtuele netwerk.
+- Identificeer het Azure-gebied dat u voor HDInsight wilt gebruiken en maak een veilige lijst met de IP-adressen voor uw regio. Zie [gezondheids- en beheerdiensten: Specifieke regio's voor](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)meer informatie.
+- Identificeer de IP-adressen die HDInsight nodig heeft. Zie [IP-adressen van HDInsight-beheer voor](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)meer informatie.
+- Maak of wijzig de netwerkbeveiligingsgroepen voor het subnet waarop u HDInsight wilt installeren. Voor netwerkbeveiligingsgroepen u binnenkomend verkeer toestaan op poort 443 vanaf de IP-adressen. Deze configuratie zorgt ervoor dat HDInsight-beheerservices het cluster van buiten het virtuele netwerk kunnen bereiken.
   
 ---
 
-## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Fout code: het installeren van de onderdelen op een of meer hosts door het cluster installatie programma is mislukt
+## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Foutcode: clusterinstelling kan geen onderdelen installeren op een of meer hosts
 
 ###  <a name="error"></a>Fout
 
-"Tijdens het installeren van het cluster installatie programma zijn geen onderdelen geïnstalleerd op een of meer hosts. Probeer de aanvraag opnieuw uit te voeren. "
+"De clusterinstelling kan geen onderdelen installeren op een of meer hosts. Probeer uw verzoek opnieuw."
 
 ### <a name="cause"></a>Oorzaak 
 
-Deze fout wordt doorgaans gegenereerd wanneer er een tijdelijk probleem is of een Azure-storing.
+Deze fout wordt meestal gegenereerd wanneer er een tijdelijk probleem of een Azure-storing optreedt.
 
 ### <a name="resolution"></a>Oplossing
 
-Controleer de [Azure-status](https://status.azure.com) pagina voor eventuele Azure-uitval die van invloed kunnen zijn op de cluster implementatie. Als er geen storingen zijn, voert u de cluster implementatie opnieuw uit.
+Controleer de [Azure-statuspagina](https://status.azure.com) op Azure-storingen die van invloed kunnen zijn op de clusterimplementatie. Als er geen uitval is, probeert u de implementatie van het cluster opnieuw.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie problemen met het maken van [clusters oplossen met Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)voor meer informatie over het oplossen van problemen bij het maken van een cluster.
+Zie Fouten bij het [maken van clustercreatie oplossen met Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)voor meer informatie over het oplossen van fouten in clustercreatie.

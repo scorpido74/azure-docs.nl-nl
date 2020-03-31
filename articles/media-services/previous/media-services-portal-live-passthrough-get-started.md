@@ -1,5 +1,5 @@
 ---
-title: Live streamen met on-premises encoders met behulp van Azure Portal | Microsoft Docs
+title: Live stream met on-premises encoders via Azure portal | Microsoft Documenten
 description: In deze zelfstudie wordt u begeleid bij het maken van een kanaal dat is geconfigureerd voor een doorvoerlevering.
 services: media-services
 documentationcenter: ''
@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162749"
 ---
-# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Live streamen met on-premises encoders met behulp van Azure Portal
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Live streaming uitvoeren met on-premises encoders via Azure portal
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [Rest](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratierichtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Deze zelfstudie bevat de stappen voor het maken van een **kanaal** via Azure Portal dat is geconfigureerd voor een doorvoerlevering. 
 
@@ -47,15 +47,15 @@ Het wordt ten zeerste aanbevolen de volgende artikelen te lezen:
 * [Overzicht van live streamen met Azure Media Services](media-services-manage-channels-overview.md)
 * [Live streamen met on-premises coderingsprogramma's die multi-bitrate streams maken](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a id="scenario"></a>Algemeen scenario voor live streamen
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>Algemeen scenario voor live streamen
 
 In de volgende stappen worden de taken beschreven voor het maken van algemene toepassingen voor live streamen die kanalen gebruiken die zijn geconfigureerd voor doorvoerlevering. In deze zelfstudie wordt getoond hoe een doorvoerkanaal en live gebeurtenissen worden gemaakt en beheerd.
 
 > [!NOTE]
 > Controleer of het streaming-eindpunt van waar u inhoud wilt streamen, de status **Wordt uitgevoerd** heeft. 
     
-1. Sluit een videocamera aan op een computer. <br/>Bekijk voor het instellen van ideeën de [eenvoudige en draag bare video versnellings configuratie voor Video's]( https://link.medium.com/KNTtiN6IeT).
-1. Start en configureer een on-premises live coderingsprogramma waarmee een multi-bitrate RTMP- of Fragmented MP4-stream wordt uitgevoerd. Zie [Azure Media Services RTMP-ondersteuning en live coderingsprogramma's](https://go.microsoft.com/fwlink/?LinkId=532824) voor meer informatie.<br/>Bekijk ook deze blog: [productie van live streams met IB](https://link.medium.com/ttuwHpaJeT).
+1. Sluit een videocamera aan op een computer. <br/>Voor setup ideeën, check out [Eenvoudige en draagbare gebeurtenis video gear setup]( https://link.medium.com/KNTtiN6IeT).
+1. Start en configureer een on-premises live coderingsprogramma waarmee een multi-bitrate RTMP- of Fragmented MP4-stream wordt uitgevoerd. Zie [Azure Media Services RTMP-ondersteuning en live coderingsprogramma's](https://go.microsoft.com/fwlink/?LinkId=532824) voor meer informatie.<br/>Bekijk ook deze blog: [Live streaming productie met OBS](https://link.medium.com/ttuwHpaJeT).
    
     Deze stap kan ook worden uitgevoerd nadat u uw kanaal hebt gemaakt.
 1. Maak en start een doorvoerkanaal.
@@ -148,7 +148,7 @@ Zie [Live streamen met on-premises coderingsprogramma's die multi-bitrate stream
 ## <a name="view-archived-content"></a>Gearchiveerde inhoud weergeven
 Zelfs na het stoppen en verwijderen van de gebeurtenis kunnen gebruikers de gearchiveerde inhoud als video op aanvraag streamen, mits u de asset niet hebt verwijderd. Een asset kan niet worden verwijderd als deze wordt gebruikt door een gebeurtenis. U moet eerst de gebeurtenis verwijderen. 
 
-Voor het beheren van uw assets selecteert u **Instelling** en klikt u vervolgens op **Assets**.
+Als u uw assets wilt beheren, selecteert u **Instelling** en klikt u op **Activa**.
 
 ![Assets](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

@@ -1,53 +1,53 @@
 ---
 title: Azure Cloud Services-apps converteren naar Service Fabric
-description: Deze hand leiding vergelijkt Cloud Services Web-en werk rollen en Service Fabric stateless Services om te migreren van Cloud Services naar Service Fabric.
+description: In deze handleiding worden statusloze services voor cloudservices voor web- en werknemersrollen en servicefabric's vergeleken om te helpen migreren van Cloud Services naar Service Fabric.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: caf067f793ca2086bc068907e86a82266627d128
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75463341"
 ---
-# <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Hand leiding voor het converteren van web-en werk rollen naar Service Fabric stateless Services
-In dit artikel wordt beschreven hoe u uw Cloud Services-Web-en-werk rollen migreert naar Service Fabric stateless Services. Dit is het eenvoudigste migratie traject van Cloud Services naar Service Fabric voor toepassingen waarvan de algehele architectuur op ongeveer dezelfde manier blijft.
+# <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Handleiding voor het converteren van web- en werknemersrollen naar servicefabric-statusloze services
+In dit artikel wordt beschreven hoe u uw web- en werknemersrollen van Cloud Services migreert naar stateloze services van Service Fabric. Dit is het eenvoudigste migratiepad van Cloud Services naar Service Fabric voor toepassingen waarvan de algehele architectuur ongeveer hetzelfde zal blijven.
 
-## <a name="cloud-service-project-to-service-fabric-application-project"></a>Cloud service project to Service Fabric Application project
- Een Cloud service-project en een Service Fabric-toepassings project hebben een vergelijk bare structuur en beide vertegenwoordigen de implementatie-eenheid voor uw toepassing. dat wil zeggen dat ze elk het volledige pakket definiëren dat wordt geïmplementeerd om uw toepassing uit te voeren. Een Cloud service project bevat een of meer web-of werk rollen. Op dezelfde manier bevat een Service Fabric toepassings project een of meer services. 
+## <a name="cloud-service-project-to-service-fabric-application-project"></a>Cloud Service-project naar Service Fabric-toepassingsproject
+ Een Cloud Service-project en een Service Fabric Application-project hebben een vergelijkbare structuur en vertegenwoordigen beide de implementatie-eenheid voor uw toepassing, dat wil zeggen dat ze elk het volledige pakket definiëren dat wordt geïmplementeerd om uw toepassing uit te voeren. Een Cloud Service-project bevat een of meer web- of werknemersrollen. Op dezelfde manier bevat een Service Fabric Application-project een of meer services. 
 
-Het verschil is dat het Cloud service project de implementatie van de toepassing Couples met een VM-implementatie en daarom configuratie-instellingen voor de virtuele machine bevat, terwijl het Service Fabric toepassings project alleen een toepassing definieert die wordt geïmplementeerd in een set bestaande Vm's in een Service Fabric cluster. Het Service Fabric cluster zelf wordt slechts eenmaal geïmplementeerd, hetzij via een resource manager-sjabloon hetzij via de Azure Portal, en er kunnen meerdere Service Fabric toepassingen op worden geïmplementeerd.
+Het verschil is dat het Cloud Service-project de implementatie van de toepassing koppelt aan een VM-implementatie en er dus VM-configuratie-instellingen in bevat, terwijl het project Service Fabric Application alleen een toepassing definieert die wordt geïmplementeerd op een reeks bestaande VM's in een cluster van ServiceFabric. Het cluster Servicefabric zelf wordt slechts één keer geïmplementeerd, via een Resource Manager-sjabloon of via de Azure-portal, en er kunnen meerdere Service Fabric-toepassingen worden geïmplementeerd.
 
-![Vergelijking van Service Fabric-en Cloud Services projecten][3]
+![Service Fabric en Cloud Services projectvergelijking][3]
 
-## <a name="worker-role-to-stateless-service"></a>De werk rollen voor het stateless service
-De rol van een werk nemer vertegenwoordigt een staatloze werk belasting, wat betekent dat elke instantie van de werk belasting identiek is en dat aanvragen op elk gewenst moment naar elke wille keurige instantie kunnen worden doorgestuurd. Voor elk exemplaar wordt niet verwacht dat het vorige verzoek wordt onthouden. De status van de werk belasting wordt beheerd door een externe status opslag, zoals Azure Table Storage of Azure Cosmos DB. In Service Fabric wordt dit type werk belasting vertegenwoordigd door een stateless service. De eenvoudigste benadering voor het migreren van een werk rollen naar Service Fabric kan worden uitgevoerd door de code van de werk rollen te converteren naar een stateless service.
+## <a name="worker-role-to-stateless-service"></a>Werknemerrol naar staatloze service
+Conceptueel vertegenwoordigt een werkfunctie een statusloze werkbelasting, wat betekent dat elk exemplaar van de werkbelasting identiek is en aanvragen op elk gewenst moment naar elke instantie kunnen worden doorgestuurd. Van elk exemplaar wordt niet verwacht dat het vorige verzoek wordt onthouden. Staat dat de werkbelasting werkt op wordt beheerd door een externe status opslag, zoals Azure Table Storage of Azure Cosmos DB. In Service Fabric wordt dit type werkbelasting vertegenwoordigd door een stateless service. De eenvoudigste benadering voor het migreren van een werknemersrol naar servicefabric kan worden gedaan door de functiecode van werknemers om te zetten in een service zonder staat.
 
-![Rol van werk rollen naar stateless service][4]
+![Rol van werknemer naar staatloze service][4]
 
-## <a name="web-role-to-stateless-service"></a>stateless service van webrol
-Net als bij de rol van werk nemer vertegenwoordigt een webrole ook een staatloze werk belasting, en kan deze dus niet worden toegewezen aan een Service Fabric stateless service. Maar in tegens telling tot webrollen biedt Service Fabric geen ondersteuning voor IIS. Als u een webtoepassing van een webrole naar een stateless service wilt migreren, moet u eerst verplaatsen naar een webframework dat zelf kan worden gehost en niet afhankelijk zijn van IIS of System. Web, zoals ASP.NET Core 1.
+## <a name="web-role-to-stateless-service"></a>Webrol naar stateloze service
+Similar to Worker Role, a Web Role also represents a stateless workload, and so conceptually it too can be mapped to a Service Fabric stateless service. In tegenstelling tot webrollen ondersteunt Service Fabric echter geen IIS. Als u een webtoepassing wilt migreren van een webrol naar een stateloze service, moet u eerst overstappen naar een webframework dat zelf gehost kan worden en niet afhankelijk is van IIS of System.Web, zoals ASP.NET Core 1.
 
-| **Toepassing** | **Ondersteund** | **Migratie traject** |
+| **Toepassing** | **Ondersteund** | **Migratiepad** |
 | --- | --- | --- |
-| Webformulieren voor ASP.NET |Nee |Converteren naar ASP.NET Core 1 MVC |
-| ASP.NET MVC |Met migratie |Upgrade uitvoeren naar ASP.NET Core 1 MVC |
-| ASP.NET Web API |Met migratie |Een zelf-hostende server of ASP.NET Core 1 gebruiken |
-| ASP.NET Core 1 |Ja |N/A |
+| webformulieren ASP.NET |Nee |Converteren naar ASP.NET Core 1 MVC |
+| ASP.NET MVC |Met migratie |Upgraden naar ASP.NET Core 1 MVC |
+| ASP.NET Web-API |Met migratie |Gebruik zelfgehoste server of ASP.NET Core 1 |
+| ASP.NET Core 1 |Ja |N.v.t. |
 
-## <a name="entry-point-api-and-lifecycle"></a>Ingangs punt-API en levens cyclus
-De Worker-en Service Fabric service-Api's bieden vergelijk bare ingangs punten: 
+## <a name="entry-point-api-and-lifecycle"></a>Entry point API en levenscyclus
+Worker Role and Service Fabric-service API's bieden vergelijkbare toegangspunten: 
 
-| **Ingangs punt** | **Worker-rol** | **Service Fabric-service** |
+| **Ingangspunt** | **Rol van werknemer** | **Service Fabric-service** |
 | --- | --- | --- |
-| Verwerken |`Run()` |`RunAsync()` |
-| VM starten |`OnStart()` |N/A |
-| VM stoppen |`OnStop()` |N/A |
-| Listener voor client aanvragen openen |N/A |<ul><li> `CreateServiceInstanceListener()` voor stateless</li><li>`CreateServiceReplicaListener()` voor stateful</li></ul> |
+| Wordt verwerkt |`Run()` |`RunAsync()` |
+| VM-start |`OnStart()` |N.v.t. |
+| VM-stop |`OnStop()` |N.v.t. |
+| Listener openen voor clientaanvragen |N.v.t. |<ul><li> `CreateServiceInstanceListener()`voor staatloze</li><li>`CreateServiceReplicaListener()`voor statige</li></ul> |
 
-### <a name="worker-role"></a>Worker-rol
+### <a name="worker-role"></a>Rol van werknemer
 ```csharp
 
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -72,7 +72,7 @@ namespace WorkerRole1
 
 ```
 
-### <a name="service-fabric-stateless-service"></a>Stateless service Service Fabric
+### <a name="service-fabric-stateless-service"></a>Service Fabric Stateless Service
 ```csharp
 
 using System.Collections.Generic;
@@ -97,38 +97,38 @@ namespace Stateless1
 
 ```
 
-Beide hebben een primaire ' uitvoeren '-onderdrukking waarbij kan worden begonnen met de verwerking. Service Fabric Services combi neren `Run`, `Start`en `Stop` in één toegangs punt `RunAsync`. Uw service moet aan de slag gaan wanneer `RunAsync` wordt gestart, en moet niet meer werken wanneer de CancellationToken van de `RunAsync` methode wordt gesignaleerd. 
+Beide hebben een primaire "Run" override waarin om te beginnen met de verwerking. Service `Run`Fabric-services `Start`combineren `Stop` , en in `RunAsync`één ingangspunt, . Uw service moet `RunAsync` beginnen te werken wanneer `RunAsync` deze wordt gestart en moet stoppen met werken wanneer het CancellationToken van de methode wordt gesignaleerd. 
 
-Er zijn verschillende belang rijke verschillen tussen de levens cyclus en de levens duur van werk rollen en Service Fabric Services:
+Er zijn verschillende belangrijke verschillen tussen de levenscyclus en levensduur van Worker Roles en Service Fabric-services:
 
-* **Levens cyclus:** Het grootste verschil is dat een Werknemersrol een VM is en dat de levens cyclus is gekoppeld aan de virtuele machine, die gebeurtenissen bevat voor wanneer de virtuele machine wordt gestart en gestopt. Een Service Fabric-service heeft een levens cyclus die losstaat van de levens cyclus van de VM, dus bevat geen gebeurtenissen voor wanneer de host-VM of-machine wordt gestart en gestopt, omdat deze niet aan elkaar zijn gerelateerd.
-* **Levens duur:** Een instantie van een werk rollen wordt herhaald als de methode `Run` wordt afgesloten. De `RunAsync`-methode in een Service Fabric-service kan echter worden uitgevoerd om te worden voltooid en het service-exemplaar blijft actief. 
+* **Levenscyclus:** Het grootste verschil is dat een werknemersrol een VM is en dus de levenscyclus ervan is gekoppeld aan de VM, inclusief gebeurtenissen voor wanneer de VM wordt gestart en gestopt. Een Service Fabric-service heeft een levenscyclus die losstaat van de VM-levenscyclus, dus er zijn geen gebeurtenissen opgenomen voor wanneer de host-VM of -machine wordt gestart en gestopt, omdat deze niet gerelateerd zijn.
+* **Levensduur:** Een instantie Worker Role `Run` wordt gerecycled als de methode wordt afgesloten. De `RunAsync` methode in een Service Fabric-service kan echter worden uitgevoerd tot voltooiing en de service-instantie blijft overeind. 
 
-Service Fabric biedt een optioneel ingangs punt voor communicatie-installatie voor services die op client aanvragen Luis teren. Zowel het RunAsync als het communicatie-invoer punt zijn optionele onderdrukkingen in Service Fabric Services: uw service kan ervoor kiezen om alleen naar client aanvragen te Luis teren of alleen een verwerkings lus uit te voeren, of beide, waarom de methode RunAsync mag worden afgesloten zonder opnieuw op te starten het service-exemplaar, omdat het kan worden geluisterd naar client aanvragen.
+Service Fabric biedt een optioneel toegangspunt voor communicatie-instellingen voor services die naar clientverzoeken luisteren. Zowel het RunAsync- als het communicatie-invoerpunt zijn optionele overschrijvingen in Service Fabric-services - uw service kan ervoor kiezen om alleen naar clientaanvragen te luisteren of alleen een verwerkingslus of beide uit te voeren - daarom mag de RunAsync-methode worden afgesloten zonder opnieuw te starten de service-instantie, omdat deze kan blijven luisteren naar clientverzoeken.
 
-## <a name="application-api-and-environment"></a>Toepassings-API en-omgeving
-De Cloud Services Environment API biedt informatie en functionaliteit voor het huidige VM-exemplaar, evenals informatie over andere exemplaren van een virtuele machine. Service Fabric bevat informatie met betrekking tot de runtime en enige informatie over het knoop punt waarop een service momenteel wordt uitgevoerd. 
+## <a name="application-api-and-environment"></a>API en omgeving voor toepassingen
+De API voor de Cloud Services-omgeving biedt informatie en functionaliteit voor de huidige VM-instantie en informatie over andere VM-rolexemplaren. Service Fabric biedt informatie met betrekking tot de runtime en sommige informatie over het knooppunt waarop een service momenteel wordt uitgevoerd. 
 
-| **Omgevings taak** | **Cloud Services** | **Service Fabric** |
+| **Omgevingstaak** | **Cloudservices** | **Service Fabric** |
 | --- | --- | --- |
-| Configuratie-instellingen en wijzigings meldingen |`RoleEnvironment` |`CodePackageActivationContext` |
+| Configuratie-instellingen en wijzigingsmelding |`RoleEnvironment` |`CodePackageActivationContext` |
 | Lokale opslag |`RoleEnvironment` |`CodePackageActivationContext` |
-| Eindpunt gegevens |`RoleInstance` <ul><li>Huidige instantie: `RoleEnvironment.CurrentRoleInstance`</li><li>Andere rollen en instanties: `RoleEnvironment.Roles`</li> |<ul><li>`NodeContext` voor het huidige knooppunt adres</li><li>`FabricClient` en `ServicePartitionResolver` voor service-eindpunt detectie</li> |
-| Omgevings emulatie |`RoleEnvironment.IsEmulated` |N/A |
-| Gelijktijdige wijzigings gebeurtenis |`RoleEnvironment` |N/A |
+| Eindpuntgegevens |`RoleInstance` <ul><li>Huidige instantie:`RoleEnvironment.CurrentRoleInstance`</li><li>Andere rollen en instantie:`RoleEnvironment.Roles`</li> |<ul><li>`NodeContext`voor het huidige knooppuntadres</li><li>`FabricClient`en `ServicePartitionResolver` voor serviceeindpuntdetectie</li> |
+| Milieu-emulatie |`RoleEnvironment.IsEmulated` |N.v.t. |
+| Gebeurtenis gelijktijdige wijziging |`RoleEnvironment` |N.v.t. |
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
-Configuratie-instellingen in Cloud Services worden ingesteld voor een VM-rol en zijn van toepassing op alle exemplaren van die VM-rol. Deze instellingen zijn sleutel-waardeparen die zijn ingesteld in ServiceConfiguration. *. cscfg-bestanden en kunnen rechtstreeks via RoleEnvironment worden geopend. In Service Fabric zijn instellingen afzonderlijk van toepassing op elke service en op elke toepassing, in plaats van op een virtuele machine, omdat een VM meerdere services en toepassingen kan hosten. Een service bestaat uit drie pakketten:
+Configuratie-instellingen in Cloud Services zijn ingesteld voor een VM-rol en zijn van toepassing op alle exemplaren van die VM-rol. Deze instellingen zijn sleutelwaardeparen die zijn ingesteld in ServiceConfiguration.*.cscfg-bestanden en zijn rechtstreeks toegankelijk via RoleEnvironment. In Service Fabric zijn instellingen afzonderlijk van toepassing op elke service en op elke toepassing, in plaats van op een VM, omdat een VM meerdere services en toepassingen kan hosten. Een dienst bestaat uit drie pakketten:
 
-* **Code:** bevat de uitvoer bare bestanden van de service, binaire bestanden, dll's en alle andere bestands die een service moet uitvoeren.
-* **Configuratie:** alle configuratie bestanden en-instellingen voor een service.
-* **Gegevens:** statische gegevens bestanden die zijn gekoppeld aan de service.
+* **Code:** bevat de service-uitvoerbare bestanden, binaire bestanden, DLL's en andere bestanden die een service moet uitvoeren.
+* **Config:** alle configuratiebestanden en -instellingen voor een service.
+* **Gegevens:** statische gegevensbestanden die aan de service zijn gekoppeld.
 
-Elk van deze pakketten kan onafhankelijk van versie zijn en kan worden bijgewerkt. Net als bij Cloud Services is er via een API een configuratie pakket toegankelijk via een of meer gebeurtenissen waarmee de service van een wijziging in het configuratie pakket kan worden gewaarschuwd. U kunt een bestand settings. XML gebruiken voor de configuratie van de sleutel waarde en programmatische toegang, vergelijkbaar met de sectie app-instellingen van een app. config-bestand. In tegens telling tot Cloud Services, kan een Service Fabric configuratie pakket echter alle configuratie bestanden in een wille keurige indeling bevatten, of het nu XML, JSON, YAML of een aangepaste binaire indeling is. 
+Elk van deze pakketten kan onafhankelijk worden geversioned en geüpgraded. Net als bij Cloud Services kan een config-pakket programmatisch worden benaderd via een API en zijn gebeurtenissen beschikbaar om de service op de hoogte te stellen van een config-pakketwijziging. Een bestand Settings.xml kan worden gebruikt voor configuratie met sleutelwaarde en programmatische toegang, vergelijkbaar met het gedeelte app-instellingen van een App.config-bestand. In tegenstelling tot Cloud Services kan een Config-pakket van Service Fabric echter alle configuratiebestanden in elke indeling bevatten, of het nu XML, JSON, YAML of een aangepaste binaire indeling is. 
 
-### <a name="accessing-configuration"></a>Configuratie openen
-#### <a name="cloud-services"></a>Cloud Services
-Configuratie-instellingen van ServiceConfiguration. *. cscfg kunnen worden geopend via `RoleEnvironment`. Deze instellingen zijn wereld wijd beschikbaar voor alle rolinstanties in dezelfde Cloud service-implementatie.
+### <a name="accessing-configuration"></a>Toegang tot configuratie
+#### <a name="cloud-services"></a>Cloudservices
+Configuratie-instellingen van ServiceConfiguration.*.cscfg zijn `RoleEnvironment`toegankelijk via . Deze instellingen zijn wereldwijd beschikbaar voor alle rolinstanties in dezelfde Cloud Service-implementatie.
 
 ```csharp
 
@@ -137,9 +137,9 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Elke service heeft zijn eigen afzonderlijke configuratie pakket. Er is geen ingebouwd mechanisme voor globale configuratie-instellingen die toegankelijk zijn voor alle toepassingen in een cluster. Wanneer u het configuratie bestand met de speciale instellingen. XML van Service Fabric in een configuratie pakket gebruikt, kunnen waarden in Settings. XML worden overschreven op toepassings niveau, waardoor er configuratie-instellingen op toepassings niveau mogelijk zijn.
+Elke service heeft zijn eigen individuele configuratiepakket. Er is geen ingebouwd mechanisme voor algemene configuratie-instellingen die toegankelijk zijn voor alle toepassingen in een cluster. Wanneer u het speciale configuratiebestand Settings.xml van Service Fabric gebruikt in een configuratiepakket, kunnen waarden in Settings.xml op toepassingsniveau worden overschreven, waardoor configuratie-instellingen op toepassingsniveau mogelijk zijn.
 
-Configuratie-instellingen zijn in elk service-exemplaar toegankelijk via de `CodePackageActivationContext`van de service.
+Configuratie-instellingen zijn toegangen binnen elke service-instantie via de `CodePackageActivationContext`service.
 
 ```csharp
 
@@ -158,9 +158,9 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 
 ```
 
-### <a name="configuration-update-events"></a>Configuratie-update gebeurtenissen
-#### <a name="cloud-services"></a>Cloud Services
-De gebeurtenis `RoleEnvironment.Changed` wordt gebruikt om alle rolinstanties op de hoogte te stellen wanneer er een wijziging optreedt in de omgeving, zoals een configuratie wijziging. Dit wordt gebruikt om configuratie-updates te gebruiken zonder de rolinstanties te recyclen of om een werk proces opnieuw te starten.
+### <a name="configuration-update-events"></a>Configuratie-updategebeurtenissen
+#### <a name="cloud-services"></a>Cloudservices
+De `RoleEnvironment.Changed` gebeurtenis wordt gebruikt om alle rolinstanties op de hoogte te stellen wanneer een wijziging plaatsvindt in de omgeving, zoals een configuratiewijziging. Dit wordt gebruikt om configuratie-updates te gebruiken zonder rolexemplaren te recyclen of een werkproces opnieuw te starten.
 
 ```csharp
 
@@ -179,9 +179,9 @@ foreach (var settingChange in settingChanges)
 ```
 
 #### <a name="service-fabric"></a>Service Fabric
-Elk van de drie pakket typen in een service code, configuratie en gegevens-bevatten gebeurtenissen waarmee een service-exemplaar wordt gewaarschuwd wanneer een pakket wordt bijgewerkt, toegevoegd of verwijderd. Een service kan meerdere pakketten van elk type bevatten. Een service kan bijvoorbeeld meerdere configuratie pakketten hebben, elk afzonderlijk versie nummer en uitbreidbaar. 
+Elk van de drie pakkettypen in een service - Code, Config en Gegevens - heeft gebeurtenissen die een service-instantie op de hoogte brengen wanneer een pakket wordt bijgewerkt, toegevoegd of verwijderd. Een service kan meerdere pakketten van elk type bevatten. Een service kan bijvoorbeeld meerdere config-pakketten hebben, elk afzonderlijk geversioneerd en uitbreidbaar. 
 
-Deze gebeurtenissen zijn beschikbaar om wijzigingen in service pakketten te gebruiken zonder het service-exemplaar opnieuw te starten.
+Deze gebeurtenissen zijn beschikbaar om wijzigingen in servicepakketten te verwerken zonder de service-instantie opnieuw te starten.
 
 ```csharp
 
@@ -196,17 +196,17 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 
 ```
 
-## <a name="startup-tasks"></a>Opstart taken
-Opstart taken zijn acties die worden uitgevoerd voordat een toepassing wordt gestart. Een opstart taak wordt meestal gebruikt voor het uitvoeren van installatie scripts met verhoogde bevoegdheden. Zowel Cloud Services als Service Fabric ondersteunen Start taken. Het belangrijkste verschil is dat in Cloud Services een opstart taak is gekoppeld aan een virtuele machine omdat deze deel uitmaakt van een rolinstantie, terwijl in Service Fabric een opstart taak is gekoppeld aan een service die niet is gekoppeld aan een bepaalde virtuele machine.
+## <a name="startup-tasks"></a>Opstarttaken
+Opstarttaken zijn acties die worden uitgevoerd voordat een toepassing wordt gestart. Een opstarttaak wordt meestal gebruikt om installatiescripts uit te voeren met verhoogde bevoegdheden. Zowel Cloud Services als Service Fabric ondersteunen opstarttaken. Het belangrijkste verschil is dat in Cloud Services een opstarttaak is gekoppeld aan een VM omdat deze deel uitmaakt van een rolinstantie, terwijl in Service Fabric een opstarttaak is gekoppeld aan een service die niet is gekoppeld aan een bepaalde VM.
 
-| Service Fabric | Cloud Services |
+| Service Fabric | Cloudservices |
 | --- | --- |
-| Configuratie locatie |ServiceDefinition.csdef |
-| Bevoegdheden |"beperkt" of "verhoogde bevoegdheid" |
-| Sequentiëren |eenvoudige, achtergrond, voor grond |
+| Configuratielocatie |ServiceDefinition.csdef |
+| Bevoegdheden |"beperkt" of "verheven" |
+| Sequentiëren |"eenvoudig", "achtergrond", "voorgrond" |
 
-### <a name="cloud-services"></a>Cloud Services
-In Cloud Services wordt een opstart toegangs punt geconfigureerd per rol in ServiceDefinition. csdef. 
+### <a name="cloud-services"></a>Cloudservices
+In Cloud Services wordt een opstartpunt per rol geconfigureerd in ServiceDefinition.csdef. 
 
 ```xml
 
@@ -224,7 +224,7 @@ In Cloud Services wordt een opstart toegangs punt geconfigureerd per rol in Serv
 ```
 
 ### <a name="service-fabric"></a>Service Fabric
-In Service Fabric wordt een opstart toegangs punt geconfigureerd per service in ServiceManifest. XML:
+In ServiceFabric wordt een opstartitem per service geconfigureerd in ServiceManifest.xml:
 
 ```xml
 
@@ -240,14 +240,14 @@ In Service Fabric wordt een opstart toegangs punt geconfigureerd per service in 
 
 ``` 
 
-## <a name="a-note-about-development-environment"></a>Een opmerking over de ontwikkel omgeving
-Zowel Cloud Services als Service Fabric zijn geïntegreerd met Visual Studio met Project sjablonen en ondersteuning voor fout opsporing, configuratie en implementatie van zowel lokale als Azure. Zowel Cloud Services als Service Fabric bieden ook een Local Development runtime-omgeving. Het verschil is dat tijdens de implementatie van de Cloud service de Azure-omgeving wordt geëmuleerd waarop deze wordt uitgevoerd, Service Fabric geen emulator gebruikt. het maakt gebruik van de volledige Service Fabric runtime. De Service Fabric-omgeving die u op uw lokale ontwikkel computer uitvoert, is dezelfde omgeving die in productie wordt uitgevoerd.
+## <a name="a-note-about-development-environment"></a>Een opmerking over ontwikkelingsomgeving
+Zowel Cloud Services als Service Fabric zijn geïntegreerd met Visual Studio met projectsjablonen en ondersteuning voor het opsporen, configureren en implementeren van zowel lokaal als naar Azure. Zowel Cloud Services als Service Fabric bieden ook een lokale runtime-omgeving voor ontwikkeling. Het verschil is dat terwijl de runtime van de Cloud Service-ontwikkeling de Azure-omgeving emuleert waarop deze wordt uitgevoerd, Service Fabric geen emulator gebruikt - het maakt gebruik van de volledige runtime van Service Fabric. De Service Fabric-omgeving die u op uw lokale ontwikkelingsmachine uitvoert, is dezelfde omgeving die in productie wordt uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
-Lees meer over Service Fabric Reliable Services en de belangrijkste verschillen tussen Cloud Services en Service Fabric toepassings architectuur om te begrijpen hoe u kunt profiteren van de volledige set Service Fabric-functies.
+Lees meer over Service Fabric Reliable Services en de fundamentele verschillen tussen cloudservices en servicefabric-toepassingsarchitectuur om te begrijpen hoe u profiteren van de volledige set servicefabric-functies.
 
 * [Aan de slag met Service Fabric Reliable Services](service-fabric-reliable-services-quick-start.md)
-* [De conceptuele hand leiding voor de verschillen tussen Cloud Services en Service Fabric](service-fabric-cloud-services-migration-differences.md)
+* [Conceptuele handleiding voor de verschillen tussen Cloud Services en Service Fabric](service-fabric-cloud-services-migration-differences.md)
 
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png

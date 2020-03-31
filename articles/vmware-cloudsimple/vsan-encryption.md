@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-oplossingen (AVS)-vSAN-versleuteling voor de Privécloud-Cloud configureren
-description: Hierin wordt beschreven hoe u de vSAN-functie voor het configureren van software-versleuteling configureert, zodat uw persoonlijke cloud van AVS kan werken met een sleutel beheer server die wordt uitgevoerd in uw virtuele Azure-netwerk.
+title: Azure VMware Solution by CloudSimple - VSAN-versleuteling configureren voor Private Cloud
+description: Beschrijft hoe u de vSAN-softwareversleutelingsfunctie configureert, zodat uw CloudSimple Private Cloud kan werken met een sleutelbeheerserver die in uw virtuele Azure-netwerk wordt uitgevoerd.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,110 +8,110 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 056c05701a3915610fb17a7e8c04feb743e38286
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77020638"
 ---
-# <a name="configure-vsan-encryption-for-avs-private-cloud"></a>VSAN-versleuteling voor de Privécloud van de AVS configureren
+# <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>VSAN-versleuteling configureren voor CloudSimple Private Cloud
 
-U kunt de functie voor vSAN-software versleuteling configureren, zodat uw Privécloud een persoonlijke Cloud kan gebruiken met een sleutel beheer server die wordt uitgevoerd in uw virtuele Azure-netwerk.
+U de functie voor vSAN-softwareversleuteling configureren, zodat uw CloudSimple Private Cloud kan werken met een sleutelbeheerserver die in uw virtuele Azure-netwerk wordt uitgevoerd.
 
-VMware vereist een extern KMIP 1,1-compatibel KMS-hulp programma (Key Management Server) van derden bij het gebruik van vSAN-versleuteling. U kunt gebruikmaken van alle ondersteunde KMS die door VMware is gecertificeerd en die beschikbaar is voor Azure.
+VMware vereist het gebruik van een externe KMIP 1.1-compatibele third-party key management server (KMS) tool bij het gebruik van vSAN-versleuteling. U gebruikmaken van alle ondersteunde KMS die is gecertificeerd door VMware en beschikbaar is voor Azure.
 
-In deze hand leiding wordt beschreven hoe u HyTrust-besturings element KMS kunt gebruiken in een virtueel Azure-netwerk. Een soort gelijke benadering kan worden gebruikt voor elke andere certificerings oplossing van een derde van derden voor vSAN.
+In deze handleiding wordt beschreven hoe u HyTrust KeyControl KMS gebruiken in een virtueel Azure-netwerk. Een soortgelijke aanpak kan worden gebruikt voor elke andere gecertificeerde KMS-oplossing van derden voor vSAN.
 
-Voor deze KMS-oplossing moet u het volgende doen:
+Voor deze KMS-oplossing moet u:
 
-* Installeren, configureren en beheren van een VMware-gecertificeerd KMS-hulp programma van derden in uw virtuele Azure-netwerk.
-* Geef uw eigen licenties voor het KMS-hulp programma op.
-* Configureer en beheer vSAN-versleuteling in de Privécloud van uw Cloud met het KMS-hulp programma van derden dat wordt uitgevoerd in uw virtuele Azure-netwerk.
+* Installeer, configureer en beheer een VMware-gecertificeerd KMS-hulpprogramma van derden in uw virtuele Azure-netwerk.
+* Geef uw eigen licenties voor de KMS-tool.
+* Configureer en beheer vSAN-versleuteling in uw Private Cloud met behulp van het KMS-hulpprogramma van derden dat wordt uitgevoerd in uw virtuele Azure-netwerk.
 
-## <a name="kms-deployment-scenario"></a>Implementatie scenario voor KMS
+## <a name="kms-deployment-scenario"></a>KMS-implementatiescenario
 
-Het KMS-server cluster wordt uitgevoerd in uw virtuele Azure-netwerk en is een IP-adres dat kan worden bereikt via de automatische AVS-Cloud vCenter via de geconfigureerde Azure ExpressRoute-verbinding.
+Het KMS-servercluster wordt uitgevoerd in uw virtuele Azure-netwerk en is IP-bereikbaar vanuit het VCenter private cloud via de geconfigureerde Azure ExpressRoute-verbinding.
 
-![.. /media/KMS-cluster in een virtueel Azure-netwerk](media/vsan-kms-cluster.png)
+![.. /media/KMS-cluster in het virtuele Azure-netwerk](media/vsan-kms-cluster.png)
 
 ## <a name="how-to-deploy-the-solution"></a>De oplossing implementeren
 
-Het implementatie proces bestaat uit de volgende stappen:
+Het implementatieproces heeft de volgende stappen:
 
-1. [Controleren of aan de vereisten wordt voldaan](#verify-prerequisites-are-met)
-2. [AVS-portal: informatie over ExpressRoute-peering verkrijgen](#avs-portal-obtain-expressroute-peering-information)
-3. [Azure Portal: Verbind uw virtuele netwerk met de nieuwe AVS-Cloud](#azure-portal-connect-your-virtual-network-to-the-avs-private-cloud)
-4. [Azure Portal: Implementeer een HyTrust-besturings cluster in uw virtuele netwerk](#azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network)
+1. [Controleren of aan de vereisten is voldaan](#verify-prerequisites-are-met)
+2. [CloudSimple-portal: ExpressRoute-peering-informatie verkrijgen](#cloudsimple-portal-obtain-expressroute-peering-information)
+3. [Azure-portal: verbind uw virtuele netwerk met de Private Cloud](#azure-portal-connect-your-virtual-network-to-your-private-cloud)
+4. [Azure-portal: een HyTrust KeyControl-cluster implementeren in uw virtuele netwerk](#azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network)
 5. [HyTrust WebUI: KMIP-server configureren](#hytrust-webui-configure-the-kmip-server)
-6. [vCenter-gebruikers interface: vSAN-versleuteling configureren voor het gebruik van het KMS-cluster in uw virtuele Azure-netwerk](#vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network)
+6. [vCenter-gebruikersinterface: vSAN-versleuteling configureren om KMS-cluster te gebruiken in uw virtuele Azure-netwerk](#vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network)
 
-### <a name="verify-prerequisites-are-met"></a>Controleer of aan de vereisten wordt voldaan
+### <a name="verify-prerequisites-are-met"></a>Controleer of aan de vereisten is voldaan
 
-Controleer het volgende voordat u de implementatie implementeert:
+Controleer het volgende voordat de implementatie wordt geïmplementeerd:
 
-* De geselecteerde KMS-leverancier, het hulp programma en de versie bevinden zich in de compatibiliteits lijst vSAN.
-* De geselecteerde leverancier ondersteunt een versie van het hulp programma om uit te voeren in Azure.
-* De Azure-versie van het hulp programma KMS is KMIP 1,1-compatibel.
+* De geselecteerde KMS-leverancier, het gereedschap en de versie staan op de compatibiliteitslijst van vSAN.
+* De geselecteerde leverancier ondersteunt een versie van het hulpprogramma dat in Azure wordt uitgevoerd.
+* De Azure-versie van het KMS-hulpprogramma is KMIP 1.1-compatibel.
 * Er zijn al een Azure Resource Manager en een virtueel netwerk gemaakt.
-* Er is al een AVS-Privécloud gemaakt.
+* Er is al een CloudSimple Private Cloud gemaakt.
 
-### <a name="avs-portal-obtain-expressroute-peering-information"></a>AVS-portal: informatie over ExpressRoute-peering verkrijgen
+### <a name="cloudsimple-portal-obtain-expressroute-peering-information"></a>CloudSimple portal: ExpressRoute peering informatie verkrijgen
 
-Als u wilt door gaan met de installatie, hebt u de verificatie sleutel en peer-circuit-URI nodig voor ExpressRoute plus toegang tot uw Azure-abonnement. Deze informatie is beschikbaar op de pagina Virtual Network verbinding in de AVS-Portal. Zie [een virtuele netwerk verbinding instellen op de AVS](virtual-network-connection.md)-privécloud voor instructies. Als u problemen hebt met het verkrijgen van de informatie, opent u een [ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Om de installatie voort te zetten, hebt u de autorisatiesleutel en peer circuit URI voor ExpressRoute plus toegang tot uw Azure-abonnement nodig. Deze informatie is beschikbaar op de pagina Virtual Network Connection in de CloudSimple-portal. Zie Een [virtuele netwerkverbinding met de private cloud instellen](virtual-network-connection.md)voor instructies. Als u problemen hebt met het verkrijgen van de informatie, opent u een [ondersteuningsverzoek.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-### <a name="azure-portal-connect-your-virtual-network-to-the-avs-private-cloud"></a>Azure Portal: Verbind uw virtuele netwerk met de nieuwe AVS-Cloud
+### <a name="azure-portal-connect-your-virtual-network-to-your-private-cloud"></a>Azure-portal: verbind uw virtuele netwerk met uw private cloud
 
-1. Maak een virtuele netwerk gateway voor uw virtuele netwerk door de instructies in [een virtuele netwerk gateway configureren voor ExpressRoute te volgen met behulp van de Azure Portal](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md).
-2. Koppel uw virtuele netwerk aan het AVS ExpressRoute-circuit door de instructies in [een virtueel netwerk verbinden met een ExpressRoute-circuit te volgen met behulp van de portal](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md).
-3. Gebruik de AVS ExpressRoute-circuit gegevens ontvangen in uw welkomst bericht van AVS om uw virtuele netwerk te koppelen aan het AVS ExpressRoute-circuit in Azure.
-4. Voer de autorisatie sleutel en de URI van het peer circuit in, geef de verbinding een naam en klik op **OK**.
+1. Maak een virtuele netwerkgateway voor uw virtuele netwerk door de instructies in [Een virtuele netwerkgateway voor ExpressRoute configureren met behulp van de Azure-portal](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)te volgen.
+2. Koppel uw virtuele netwerk aan het CloudSimple ExpressRoute-circuit door de instructies in [Connect een virtueel netwerk te volgen met een ExpressRoute-circuit via de portal.](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
+3. Gebruik de cloudsimple ExpressRoute-circuitinformatie die u ontvangt in uw welkomste-mail van CloudSimple om uw virtuele netwerk te koppelen aan het CloudSimple ExpressRoute-circuit in Azure.
+4. Voer de autorisatiesleutel en peer circuit URI in, geef de verbinding een naam en klik op **OK**.
 
-![De URI van het CS-peer circuit opgeven tijdens het maken van het virtuele netwerk](media/vsan-azureportal01.png) 
+![Geef CS-peercircuit URI bij het maken van het virtuele netwerk](media/vsan-azureportal01.png) 
 
-### <a name="azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network"></a>Azure Portal: Implementeer een HyTrust-besturings cluster in de Azure Resource Manager in uw virtuele netwerk
+### <a name="azure-portal-deploy-a-hytrust-keycontrol-cluster-in-the-azure-resource-manager-in-your-virtual-network"></a>Azure-portal: een HyTrust KeyControl-cluster implementeren in Azure Resource Manager in uw virtuele netwerk
 
-Als u een HyTrust-besturings cluster wilt implementeren in de Azure Resource Manager in uw virtuele netwerk, voert u de volgende taken uit. Raadpleeg de [HyTrust-documentatie](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0) voor meer informatie.
+Als u een HyTrust KeyControl-cluster wilt implementeren in Azure Resource Manager in uw virtuele netwerk, voert u de volgende taken uit. Zie de [HyTrust documentatie](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0) voor meer informatie.
 
-1. Maak een Azure-netwerk beveiligings groep (NSG-hytrust) met de opgegeven regels voor binnenkomende verbindingen door de instructies in de HyTrust-documentatie te volgen.
-2. Genereer een SSH-sleutel paar in Azure.
-3. Implementeer het eerste knoop punt voor besturings elementen uit de installatie kopie in azure Marketplace. Gebruik de open bare sleutel van het sleutel paar dat is gegenereerd en selecteer **NSG-hytrust** als de netwerk beveiligings groep voor het besturings element Besturingselementbron.
-4. Converteer het persoonlijke IP-adres van de besturings elementen naar een statisch IP-adres.
-5. SSH naar de virtuele machine voor besturings elementen met behulp van het open bare IP-adres en de persoonlijke sleutel van het eerder genoemde sleutel paar.
-6. Wanneer u wordt gevraagd in de SSH-Shell, selecteert u `No` om het knoop punt in te stellen als het eerste knoop punt van het besturings element.
-7. Voeg extra Stuur knooppunten voor besturings elementen toe door stap 3-5 van deze procedure te herhalen en `Yes` te selecteren wanneer u wordt gevraagd of u een bestaand cluster wilt toevoegen.
+1. Maak een Azure-netwerkbeveiligingsgroep (nsg-hytrust) met opgegeven binnenkomende regels door de instructies in de HyTrust-documentatie te volgen.
+2. Genereer een SSH-sleutelpaar in Azure.
+3. Implementeer het eerste KeyControl-knooppunt vanuit de afbeelding in Azure Marketplace.  Gebruik de openbare sleutelvan het sleutelpaar dat is gegenereerd en selecteer **nsg-hytrust** als de netwerkbeveiligingsgroep voor het KeyControl-knooppunt.
+4. Converteer het privé-IP-adres van KeyControl naar een statisch IP-adres.
+5. SSH naar de KeyControl VM met behulp van haar openbare IP-adres en de prive-sleutel van de eerder genoemde sleutel paar.
+6. Wanneer u wordt gevraagd in `No` de SSH-shell, selecteert u het knooppunt in te stellen als het eerste KeyControl-knooppunt.
+7. Voeg extra KeyControl-knooppunten toe door stap 3-5 van deze procedure te herhalen en te selecteren `Yes` wanneer er wordt gevraagd om aan een bestaand cluster toe te voegen.
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI: de KMIP-server configureren
 
-Ga naar https://*Public-IP*, waarbij *openbaar IP* het open bare IP-adres is van de VM van het besturings element voor de Besturingselementbron. Volg deze stappen in de [HyTrust-documentatie](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0).
+Ga naar https://*public-ip,* waar public-ip het openbare *IP-adres* is van de KeyControl-knooppunt VM. Volg deze stappen vanuit de [HyTrust-documentatie.](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)
 
 1. [Een KMIP-server configureren](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
-2. [Een certificaat bundel maken voor VMware-versleuteling](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)
+2. [Een certificaatbundel maken voor VMware-versleuteling](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)
 
-### <a name="vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network"></a>vCenter-gebruikers interface: vSAN-versleuteling configureren voor het gebruik van het KMS-cluster in uw virtuele Azure-netwerk
+### <a name="vcenter-ui-configure-vsan-encryption-to-use-kms-cluster-in-your-azure-virtual-network"></a>vCenter-gebruikersinterface: vSAN-versleuteling configureren om KMS-cluster te gebruiken in uw virtuele Azure-netwerk
 
-Volg de HyTrust-instructies voor het [maken van een KMS-cluster in vCenter](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4).
+Volg de HyTrust-instructies om [een KMS-cluster te maken in vCenter.](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4)
 
-![Details van KMS-cluster toevoegen in vCenter](media/vsan-config01.png)
+![KMS-clusterdetails toevoegen in vCenter](media/vsan-config01.png)
 
-Ga in vCenter naar **Cluster > configureren** en selecteer **algemene** optie voor vSAN. Schakel versleuteling in en selecteer het KMS-cluster dat eerder aan vCenter is toegevoegd.
+Ga in vCenter naar **Cluster > Configureren** en selecteer **Algemene** optie voor vSAN. Schakel versleuteling in en selecteer het KMS-cluster dat eerder aan vCenter is toegevoegd.
 
 ![VSAN-versleuteling inschakelen en KMS-cluster configureren in vCenter](media/vsan-config02.png)
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 
 ### <a name="azure"></a>Azure
 
-[Een virtuele netwerk gateway configureren voor ExpressRoute met behulp van de Azure Portal](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
+[Een virtuele netwerkgateway voor ExpressRoute configureren met behulp van de Azure-portal](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
 
 [Een virtueel netwerk verbinden aan een ExpressRoute-circuit met behulp van de portal](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
-### <a name="hytrust"></a>HyTrust
+### <a name="hytrust"></a>HyTrust HyTrust
 
 [HyTrust DataControl en Microsoft Azure](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)
 
 [Een KMPI-server configureren](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
 
-[Een certificaat bundel maken voor VMware-versleuteling](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)
+[Een certificaatbundel maken voor VMware-versleuteling](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)
 
 [Het KMS-cluster maken in vSphere](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-KMS-Cluster.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____4)

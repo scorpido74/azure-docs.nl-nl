@@ -1,7 +1,7 @@
 ---
-title: 'Kolom transformatie selecteren: module verwijzing'
+title: 'Kolommen transformeren selecteren: naslagverwijzing naar de module'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module Select column Transform in Azure Machine Learning om een trans formatie te maken waarmee dezelfde subset van kolommen wordt geselecteerd als in de opgegeven gegevensset.
+description: Lees hoe u de module Kolommentransformeren selecteren in Azure Machine Learning gebruikt om een transformatie te maken die dezelfde subset van kolommen selecteert als in de opgegeven gegevensset.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,50 +9,50 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: c8d58180b11c12afb256dc888406c7c0d58fb119
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a5264c14294f84858cd489f5892b8cdd19e117d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314314"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455907"
 ---
 # <a name="select-columns-transform"></a>Kolomtransformatie selecteren
 
-In dit artikel wordt beschreven hoe u de module column Transform SELECT in Azure Machine Learning Designer kunt gebruiken. Het doel van de transformatie module select columns is ervoor te zorgen dat een voorspel bare, consistente set kolommen wordt gebruikt in downstream-machine learning bewerkingen.
+In dit artikel wordt beschreven hoe u de module Kolommen transformeren selecteren gebruiken in azure machine learning-ontwerper (voorbeeld). Het doel van de module Transformatie van kolommen selecteren is ervoor te zorgen dat een voorspelbare, consistente set kolommen wordt gebruikt in downstream machine learning-bewerkingen.
 
-Deze module is handig voor taken zoals scores, waarvoor specifieke kolommen zijn vereist. Wijzigingen in de beschik bare kolommen kunnen de pijp lijn verstoren of de resultaten wijzigen.
+Deze module is handig voor taken zoals scoren, waarvoor specifieke kolommen nodig zijn. Wijzigingen in de beschikbare kolommen kunnen de pijplijn verbreken of de resultaten wijzigen.
 
-U kunt kolommen transformeren selecteren gebruiken om een set kolommen te maken en op te slaan. Vervolgens gebruikt u de module [trans formatie Toep](apply-transformation.md) assen om deze selecties toe te passen op nieuwe gegevens.
+U gebruikt Kolommen transformeren selecteren om een reeks kolommen te maken en op te slaan. Gebruik vervolgens de module [Transformatie toepassen](apply-transformation.md) om deze selecties toe te passen op nieuwe gegevens.
 
-## <a name="how-to-use-select-columns-transform"></a>De optie kolommen transformeren gebruiken
+## <a name="how-to-use-select-columns-transform"></a>Kolommen transformeren selecteren gebruiken
 
-In dit scenario wordt ervan uitgegaan dat u de functie selectie wilt gebruiken om een dynamische set kolommen te genereren die wordt gebruikt voor het trainen van een model. Om ervoor te zorgen dat de kolom selecties hetzelfde zijn voor het Score proces, gebruikt u de transformatie module select columns om de kolom selecties vast te leggen en ze elders in de pijp lijn toe te passen.
+In dit scenario wordt ervan uitgegaan dat u functieselectie wilt gebruiken om een dynamische set kolommen te genereren die worden gebruikt voor het trainen van een model. Als u ervoor wilt zorgen dat kolomselecties hetzelfde zijn voor het scoringsproces, gebruikt u de module Kolommen transformeren selecteren om de kolomselecties vast te leggen en deze elders in de pijplijn toe te passen.
 
-1. Voeg een invoer-gegevensset toe aan uw pijp lijn in de ontwerp functie.
+1. Voeg een invoergegevensset toe aan uw pijplijn in de ontwerper.
 
-2. Een exemplaar van de [functie selectie op basis van filters](filter-based-feature-selection.md)toevoegen.
+2. Een instantie van [filtergebaseerde functieselectie](filter-based-feature-selection.md)toevoegen .
 
-3. Verbind de modules en configureer de module functie selectie om automatisch een aantal beste functies in de invoer-gegevensset te vinden.
+3. Sluit de modules aan en configureer de functieselectiemodule om automatisch een aantal beste functies in de invoergegevensset te vinden.
 
-4. Een exemplaar van [Train model](train-model.md) toevoegen en de uitvoer van [functie selectie op basis van filters](filter-based-feature-selection.md) gebruiken als invoer voor de training.
+4. Voeg een exemplaar van [Train Model toe](train-model.md) en gebruik de uitvoer van [Filtergebaseerde functieselectie](filter-based-feature-selection.md) als invoer voor training.
 
     > [!IMPORTANT]
-    > Omdat de prioriteit van de functie is gebaseerd op de waarden in de kolom, kunt u niet van tevoren weten welke kolommen beschikbaar kunnen zijn voor het trainen van het [model](train-model.md).  
-5. Koppel een instantie van de transformatie module select columns. 
+    > Omdat functiebelang is gebaseerd op de waarden in de kolom, u niet van tevoren weten welke kolommen mogelijk beschikbaar zijn voor invoer naar [Train Model.](train-model.md)  
+5. Voeg een instantie van de module Kolommen transformeren selecteren toe. 
 
-    Met deze stap wordt een kolom selectie gegenereerd als een trans formatie die kan worden opgeslagen of toegepast op andere gegevens sets. Met deze stap zorgt u ervoor dat de kolommen die zijn geïdentificeerd in functie selectie, worden opgeslagen voor andere modules die u opnieuw kunt gebruiken.
+    Met deze stap wordt een kolomselectie gegenereerd als een transformatie die kan worden opgeslagen of toegepast op andere gegevenssets. Deze stap zorgt ervoor dat de kolommen die in functieselectie zijn geïdentificeerd, worden opgeslagen voor het hergebruik van andere modules.
 
-6. Voeg de module [score model](score-model.md) toe. 
+6. Voeg de module [Scoremodel](score-model.md) toe. 
 
-   *Verbind de invoer gegevensset niet.* Voeg in plaats daarvan de module [trans formatie Toep assen](apply-transformation.md) toe en verbind de uitvoer van de functie selectie transformatie.
+   *Sluit de invoergegevensset niet aan.* Voeg in plaats daarvan de module [Transformatie toepassen](apply-transformation.md) toe en sluit de uitvoer van de functieselectietransformatie aan.
 
    > [!IMPORTANT]
-   > Het is niet mogelijk om op [filters gebaseerde functie selectie](filter-based-feature-selection.md) toe te passen op de Score gegevensset en dezelfde resultaten te verkrijgen. Omdat de functie selectie is gebaseerd op waarden, kan er een andere set kolommen worden gekozen, waardoor de Score bewerking mislukt.
-7. Voer de pijplijn uit.
+   > U niet verwachten dat [u filtergebaseerde functieselectie](filter-based-feature-selection.md) toepast op de gegevensset voor het scoren en dezelfde resultaten krijgt. Omdat functieselectie is gebaseerd op waarden, kan deze een andere set kolommen kiezen, waardoor de scoringsbewerking mislukt.
+7. Verzend de pijplijn.
 
-Dit proces voor het opslaan en vervolgens Toep assen van een kolom selectie zorgt ervoor dat hetzelfde gegevens schema beschikbaar is voor training en scores.
+Dit proces van het opslaan en vervolgens toepassen van een kolomselectie zorgt ervoor dat hetzelfde gegevensschema beschikbaar is voor training en scoren.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

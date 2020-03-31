@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning voor VMware/fysieke nood herstel naar een secundaire site met Azure Site Recovery
-description: Geeft een samen vatting van de ondersteuning voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar een secundaire site met Azure Site Recovery.
+title: Ondersteuning voor VMware/fysiek herstel van rampen naar een secundaire site met Azure Site Recovery
+description: Hiermee wordt de ondersteuning voor noodherstel van Vm's en fysieke servers naar een secundaire site samengevat met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -9,127 +9,127 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79256794"
 ---
-# <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar een secundaire site
+# <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Ondersteuningsmatrix voor noodherstel van Vm's en fysieke servers naar een secundaire site
 
-In dit artikel wordt een overzicht gegeven van wat er wordt ondersteund wanneer u de [Azure site Recovery](site-recovery-overview.md) -service gebruikt voor herstel na nood gevallen van virtuele VMware-machines of fysieke Windows/Linux-servers naar een secundaire VMware-site.
+In dit artikel wordt samengevat wat wordt ondersteund wanneer u de [Azure Site Recovery-service](site-recovery-overview.md) gebruikt voor noodherstel van VMware VM's of Windows/Linux-fysieke servers op een secundaire VMware-site.
 
-- Als u virtuele VMware-machines of fysieke servers naar Azure wilt repliceren, moet u [deze ondersteunings matrix](vmware-physical-azure-support-matrix.md)raadplegen.
-- Als u virtuele Hyper-V-machines naar een secundaire site wilt repliceren, raadpleegt u [deze ondersteunings matrix](hyper-v-azure-support-matrix.md).
+- Als u VMware VM's of fysieke servers wilt repliceren naar Azure, controleert u [deze ondersteuningsmatrix](vmware-physical-azure-support-matrix.md).
+- Als u Hyper-V VM's wilt repliceren naar een secundaire site, controleert u [deze ondersteuningsmatrix](hyper-v-azure-support-matrix.md).
 
 > [!NOTE]
-> De replicatie van on-premises virtuele VMware-machines en fysieke servers wordt verschaft door inmage Scout. Inmage Scout is opgenomen in Azure Site Recovery service-abonnement.
+> Replicatie van on-premises Vm's vmware en fysieke servers wordt geleverd door InMage Scout. InMage Scout is opgenomen in het Azure Site Recovery-serviceabonnement.
 
-## <a name="end-of-support-announcement"></a>Aankondiging voor end-of-support
-Het Site Recovery scenario voor replicatie tussen on-premises VMware-of fysieke data centers bereikt de volledige ondersteuning.
+## <a name="end-of-support-announcement"></a>Aankondiging van aflopen van ondersteuning
+Het scenario siteherstel voor replicatie tussen on-premises VMware of fysieke datacenters bereikt het einde van de ondersteuning.
 
-- Vanaf 2018 augustus kan het scenario niet worden geconfigureerd in de Recovery Services kluis en kan de inmage Scout-software niet worden gedownload van de kluis. Bestaande implementaties worden ondersteund.
-- - Van 31 2020 december wordt het scenario niet ondersteund.
-Bestaande partners kunnen nieuwe klanten aan het scenario vrijgeven totdat de ondersteuning wordt beëindigd.
-- Tijdens 2018 en 2019 worden er twee updates uitgebracht:
+- Vanaf augustus 2018 kan het scenario niet worden geconfigureerd in de vault van Recovery Services en kan de InMage Scout-software niet meer uit de kluis worden gedownload. Bestaande implementaties worden ondersteund.
+- - Vanaf 31 december 2020 wordt het scenario niet meer ondersteund.
+Bestaande partners kunnen nieuwe klanten aan het scenario aan boord nemen totdat de ondersteuning is beëindigd.
+- In de loop van 2018 en 2019 worden twee updates uitgebracht:
 
-    - Update 7: lost problemen met de netwerk configuratie en naleving op en biedt ondersteuning voor TLS 1,2.
-    - Update 8: voegt ondersteuning toe voor Linux-besturings systemen RHEL/CentOS 7.3/7,4/7.5 en voor SUSE 12
-    - Na update 8 worden er geen verdere updates uitgebracht. Er wordt beperkte hotfix-ondersteuning geboden voor de besturings systemen die zijn toegevoegd in update 8 en probleem oplossingen op basis van de beste poging.
+    - Update 7: Lost problemen met de netwerkconfiguratie en naleving op en biedt TLS 1.2-ondersteuning.
+    - Update 8: Voegt ondersteuning toe voor Linux-besturingssystemen RHEL/CentOS 7.3/7.4/7.5 en voor SUSE 12
+    - Na update 8 worden er geen verdere updates meer uitgebracht. Er zal beperkte hotfix-ondersteuning zijn voor de besturingssystemen die zijn toegevoegd in update 8 en bugfixes op basis van de beste inspanning.
 
 ## <a name="host-servers"></a>Hostservers
 
 **Besturingssysteem** | **Details**
 --- | ---
-vCenter-server | vCenter 5,5, 6,0 en 6,5<br/><br/> Als u 6,0 of 6,5 uitvoert, moet u er rekening mee houden dat er slechts 5,5 functies worden ondersteund.
+vCenter-server | vCenter 5.5, 6.0 en 6.5<br/><br/> Als u 6.0 of 6.5 uitvoert, moet u er rekening mee houden dat slechts 5,5 functies worden ondersteund.
 
 
-## <a name="replicated-vm-support"></a>Ondersteuning voor gerepliceerde VM'S
+## <a name="replicated-vm-support"></a>Ondersteuning voor gerepliceerde VM
 
-De volgende tabel bevat een overzicht van de ondersteuning van besturings systemen voor computers die met Site Recovery worden gerepliceerd. Elke werk belasting kan worden uitgevoerd op het ondersteunde besturings systeem.
+In de volgende tabel wordt een overzicht van de ondersteuning van het besturingssysteem voor machines die zijn gerepliceerd met Site recovery. Elke werkbelasting kan worden uitgevoerd op het ondersteunde besturingssysteem.
 
 **Besturingssysteem** | **Details**
 --- | ---
 Windows Server | 64-bits Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 met ten minste SP1.
-Linux | Red Hat Enterprise Linux 6.7, 6.8, 6.9, 7.1, 7.2 <br/><br/> Centos 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2 <br/><br/> Oracle Enter prise Linux 6,4, 6,5, 6,8 met de Red Hat compatible kernel of een onherstelbare versie van de Enter prise kernel 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4 
+Linux | Red Hat Enterprise Linux 6.7, 6.8, 6.9, 7.1, 7.2 <br/><br/> Centos 6,5, 6,6, 6,7, 6,8, 6,9, 7,0, 7,1, 7,2 <br/><br/> Oracle Enterprise Linux 6.4, 6.5, 6.8 met de Red Hat-compatibele kernel of Unbreakable Enterprise Kernel Release 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4 
 
 
-## <a name="linux-machine-storage"></a>Linux-machine opslag
+## <a name="linux-machine-storage"></a>Linux-machineopslag
 
 Alleen Linux-machines met de volgende opslag kunnen worden gerepliceerd:
 
-- Bestands systeem (EXT3, ETX4, ReiserFS, XFS).
-- Multipath-software-apparaattoewijzing.
-- Volume manager (LVM2).
-- Fysieke servers met HP CCISS-controller opslag worden niet ondersteund.
-- Het ReiserFS-bestands systeem wordt alleen ondersteund op SUSE Linux Enterprise Server 11 SP3.
+- Bestandssysteem (EXT3, ETX4, ReiserFS, XFS).
+- Multipath software-apparaat Mapper.
+- Volumemanager (LVM2).
+- Fysieke servers met HP CCISS-controlleropslag worden niet ondersteund.
+- Het ReiserFS-bestandssysteem wordt alleen ondersteund op SUSE Linux Enterprise Server 11 SP3.
 
-## <a name="network-configuration---hostguest-vm"></a>Netwerk configuratie-host/gast-VM
+## <a name="network-configuration---hostguest-vm"></a>Netwerkconfiguratie - Vm host/gast
 
 **Configuratie** | **Ondersteund**  
 --- | --- 
-Host-NIC-koppeling | Ja 
-Host-VLAN | Ja 
+Gastheer - NIC teaming | Ja 
+Gastheer - VLAN | Ja 
 Host - IPv4 | Ja 
-Host-IPv6 | Nee 
-Gast-VM-NIC-koppeling | Nee
-Gast-VM-IPv4 | Ja
-Gast-VM-IPv6 | Nee
-Gast-VM-Windows/Linux-statisch IP-adres | Ja
-Gast-VM-multi-NIC | Ja
+Host - IPv6 | Nee 
+Gast VM - NIC teaming | Nee
+GastVM - IPv4 | Ja
+GastVM - IPv6 | Nee
+Gast VM - Windows/Linux - Statisch IP-adres | Ja
+Gast VM - Multi-NIC | Ja
 
 
-## <a name="storage"></a>Opslag
+## <a name="storage"></a>Storage
 
-### <a name="host-storage"></a>Host Storage
+### <a name="host-storage"></a>Hostopslag
 
 **Opslag (host)** | **Ondersteund** 
 --- | --- 
 NFS | Ja 
 SMB 3.0 | N.v.t. 
 SAN (ISCSI) | Ja 
-Meerdere paden (MPIO) | Ja 
+Multi-path (MPIO) | Ja 
 
-### <a name="guest-or-physical-server-storage"></a>Opslag van gast-of fysieke servers
+### <a name="guest-or-physical-server-storage"></a>Opslag van gasten of fysieke servers
 
 **Configuratie** | **Ondersteund** 
 --- | --- 
-VMDK | Ja 
+Vmdk | Ja 
 VHD/VHDX | N.v.t. 
-VM van generatie 2 | N.v.t. 
-Gedeelde cluster schijf | Ja 
+Gen 2 VM | N.v.t. 
+Gedeelde clusterschijf | Ja 
 Versleutelde schijf | Nee 
-UEFI| Ja 
+UEFI (UEFI)| Ja 
 NFS | Nee 
 SMB 3.0 | Nee 
-RDM | Ja 
+Rdm | Ja 
 Schijf > 1 TB | Ja 
-Volume met gestripte schijf > 1 TB<br/><br/> LVM | Ja 
-Opslag ruimten | Nee 
-Hot toevoegen/verwijderen schijf | Ja 
+Volume met gestreepte schijf > 1 TB<br/><br/> Lvm | Ja 
+Opslagruimten | Nee 
+Hot add/remove disk Hot add/remove disk Hot add/remove | Ja 
 Schijf uitsluiten | Ja 
-Meerdere paden (MPIO) | N.v.t. 
+Multi-path (MPIO) | N.v.t. 
 
 ## <a name="vaults"></a>Kluizen
 
 **Actie** | **Ondersteund** 
 --- | --- 
-Kluizen verplaatsen tussen resource groepen (binnen of tussen abonnementen) | Nee 
-Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen (binnen of tussen verschillende abonnementen) | Nee 
+Kluizen verplaatsen tussen resourcegroepen (binnen of tussen abonnementen) | Nee 
+Opslag-, netwerk-, Azure-VM's verplaatsen tussen resourcegroepen (binnen of tussen abonnementen) | Nee 
 
-## <a name="mobility-service-and-updates"></a>Mobility service en updates
+## <a name="mobility-service-and-updates"></a>Mobiliteitsservice en updates
 
-De Mobility-service coördineert de replicatie tussen on-premises VMware-servers of fysieke servers en de secundaire site. Wanneer u de replicatie instelt, moet u ervoor zorgen dat u de nieuwste versie van de Mobility-service en andere onderdelen hebt.
+De Mobiliteitsservice coördineert replicatie tussen on-premises VMware-servers of fysieke servers en de secundaire site. Wanneer u replicatie instelt, moet u ervoor zorgen dat u over de nieuwste versie van de Mobiliteitsservice beschikt en van andere componenten.
 
-| **Bijwerken** | **Details** |
+| **Update** | **Details** |
 | --- | --- |
-|Scout-updates | Scout-updates zijn cumulatief. <br/><br/> [Meer informatie over en downloaden van](vmware-physical-secondary-disaster-recovery.md#updates) de nieuwste updates voor Scout |
-|Onderdeel updates | Scout-updates bevatten updates voor alle onderdelen, waaronder de RX-server, configuratie server, proces-en hoofddoel doel servers, vContinuum-servers en bron servers die u wilt beveiligen.<br/><br/> [Meer informatie](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
+|Scout updates | Scout-updates zijn cumulatief. <br/><br/> [Meer informatie over en download](vmware-physical-secondary-disaster-recovery.md#updates) de nieuwste Scout-updates |
+|Componentupdates | Scout-updates bevatten updates voor alle componenten, waaronder de RX-server, configuratieserver, proces- en masterdoelservers, vContinuum-servers en bronservers die u wilt beveiligen.<br/><br/> [Meer informatie](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De [Gebruikers handleiding voor Inmage Scout](https://aka.ms/asr-scout-user-guide) downloaden
+Download de [InMage Scout-gebruikershandleiding](https://aka.ms/asr-scout-user-guide)
 
-- [Virtuele Hyper-V-machines in VMM-Clouds repliceren naar een secundaire site](tutorial-vmm-to-vmm.md)
+- [Hyper-V VM's in VMM-clouds repliceren naar een secundaire site](tutorial-vmm-to-vmm.md)
 - [Virtuele VMware-machines en fysieke servers repliceren naar een secundaire site](tutorial-vmware-to-vmware.md)

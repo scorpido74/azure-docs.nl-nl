@@ -1,6 +1,6 @@
 ---
-title: Ingesteld op noodherstel VMware naar Azure in een omgeving met meerdere tenants met behulp van Site Recovery en het programma Cloud Solution Provider (CSP) | Microsoft Docs
-description: Beschrijft hoe u voor het instellen van VMware-noodherstel in een omgeving met meerdere tenants met Azure Site Recovery.
+title: VMware-noodherstel instellen voor Azure in een multi-tenancy-omgeving met behulp van Site Recovery en het CSP-programma (Cloud Solution Provider) | Microsoft Documenten
+description: Beschrijft hoe u VMware-noodherstel in een multi-tenantomgeving instellen met Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,97 +8,97 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60460982"
 ---
-# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Herstel van VMware na noodgevallen in een omgeving met meerdere tenants met het programma Cloud Solution Provider (CSP) instellen
+# <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>VMware-noodherstel instellen in een multi-tenancy-omgeving met het CSP-programma (Cloud Solution Provider)
 
-De [CSP-programma](https://partner.microsoft.com/en-US/cloud-solution-provider) bevordert beter samen verhalen voor Microsoft-cloudservices, waaronder Office 365, Enterprise Mobility Suite en Microsoft Azure. Met CSP, partners eigenaar van de end-to-end-relatie met klanten en worden de contactpunt voor de primaire relatie. Partners kunnen Azure-abonnementen voor klanten implementeren en de abonnementen, met hun eigen oplossingen met toegevoegde waarde, aangepaste combineren.
+Het [CSP-programma](https://partner.microsoft.com/en-US/cloud-solution-provider) bevordert beter samengaande verhalen voor Microsoft-cloudservices, waaronder Office 365, Enterprise Mobility Suite en Microsoft Azure. Met CSP zijn partners eigenaar van de end-to-end relatie met klanten en worden ze het primaire relatiecontactpunt. Partners kunnen Azure-abonnementen voor klanten implementeren en de abonnementen combineren met hun eigen aangepaste aanbiedingen met toegevoegde waarde.
 
-Met [Azure Site Recovery](site-recovery-overview.md), als partners kunt u herstel na noodgeval beheren voor klanten rechtstreeks via CSP. U kunt ook CSP gebruiken voor het instellen van Site Recovery-omgevingen, en laat klanten hun eigen behoeften van het herstel na noodgevallen in een self-servicegebruikers manier beheren. In beide gevallen worden de samenwerking tussen Site Recovery en hun klanten. Partners de klantrelatie-service en factureren van klanten voor gebruik met Site Recovery.
+Met [Azure Site Recovery](site-recovery-overview.md)u als partners noodherstel voor klanten rechtstreeks via CSP beheren. U CSP ook gebruiken om Site Recovery-omgevingen in te stellen en klanten hun eigen noodherstelbehoeften voor rampen op een selfservice-manier te laten beheren. In beide scenario's zijn partners de schakel tussen Site Recovery en hun klanten. Partners onderhouden de klantrelatie en factureren klanten voor siteherstelgebruik.
 
-Dit artikel wordt beschreven hoe u als partner kunt maken en beheren van de tenant-abonnementen via CSP, voor een scenario met meerdere tenants VMware-replicatie.
+In dit artikel wordt beschreven hoe u als partner tenantabonnementen maken en beheren via CSP, voor een VMware-replicatiescenario met meerdere tenantn.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u VMware-replicatie instelt, moet u het volgende doen:
+Als u VMware-replicatie wilt instellen, moet u het volgende doen:
 
-- [Voorbereiden](tutorial-prepare-azure.md) Azure-resources, met inbegrip van een Azure-abonnement, een Azure-netwerk en een storage-account.
-- [Voorbereiden](vmware-azure-tutorial-prepare-on-premises.md) on-premises VMware-servers en virtuele machines.
-- Voor elke tenant een afzonderlijke beheerserver die kan communiceren met de tenant-VM's en uw vCenter-servers te maken. Alleen u als partner moet toegangsrechten hebben voor deze beheerserver. Meer informatie over [omgevingen met meerdere tenants](vmware-azure-multi-tenant-overview.md).
+- [Voorbereiden](tutorial-prepare-azure.md) Azure-bronnen, waaronder een Azure-abonnement, een virtueel Azure-netwerk en een opslagaccount.
+- [Bereid](vmware-azure-tutorial-prepare-on-premises.md) on-premises VMware-servers en VM's voor.
+- Maak voor elke tenant een aparte beheerserver die kan communiceren met de tenant-VM's en uw vCenter-servers. Alleen u als partner moet toegangsrechten hebben tot deze beheerserver. Meer informatie over [omgevingen met meerdere tenant's](vmware-azure-multi-tenant-overview.md).
 
 ## <a name="create-a-tenant-account"></a>Een tenantaccount maken
 
-1. Via [Microsoft Partner Center](https://partnercenter.microsoft.com/), meld u aan bij uw CSP-account.
-2. Op de **Dashboard** in het menu **klanten**.
-3. Op de pagina die wordt geopend, klikt u op de **klant toevoegen** knop.
-4. In **nieuwe klant** pagina, vult u de accountdetails van de gegevens voor de tenant.
+1. Meld u via [Microsoft Partner Center](https://partnercenter.microsoft.com/)aan bij uw CSP-account.
+2. Selecteer **klanten**in het menu **Dashboard** .
+3. Klik op de pagina die wordt geopend op de knop **Klant toevoegen.**
+4. Vul in de pagina **Nieuwe klant** de accountgegevens van de tenant in.
 
-    ![De pagina accountgegevens](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
+    ![De pagina Accountgegevens](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
-5. Klik vervolgens op **volgende: Abonnementen**.
-6. Selecteer op de pagina Abonnementen selecteren **Microsoft Azure** selectievakje. U kunt andere abonnementen nu of op enig ander moment toevoegen.
-7. Op de **revisie** pagina, bevestig de tenantdetails van de en klik vervolgens op **indienen**.
-8. Nadat u de tenantaccount hebt gemaakt, verschijnt een bevestigingspagina weergeven van de details van de standaard-account en het wachtwoord voor dat abonnement. Sla de gegevens en het wachtwoord later zo nodig, via de Azure portal-aanmeldingspagina te wijzigen.
+5. Klik vervolgens op **Volgende: Abonnementen**.
+6. Schakel op de selectiepagina voor abonnementen het selectievakje **Microsoft Azure** in. U nu of op een ander moment andere abonnementen toevoegen.
+7. Bevestig **op** de pagina Controleren de tenantgegevens en klik op **Verzenden**.
+8. Nadat u het tenantaccount hebt gemaakt, wordt een bevestigingspagina weergegeven met de details van het standaardaccount en het wachtwoord voor dat abonnement. Sla de informatie op en wijzig het wachtwoord later indien nodig via de aanmeldingspagina van azure-portal.
 
-U kunt deze informatie delen met de tenant is, of u kunt maken en delen van een afzonderlijk account indien nodig.
+U deze informatie delen met de tenant zoals het is, of u indien nodig een apart account aanmaken en delen.
 
-## <a name="access-the-tenant-account"></a>Toegang tot de tenantaccount
+## <a name="access-the-tenant-account"></a>Toegang tot het tenantaccount
 
-Abonnement van de tenant is toegankelijk via het Microsoft Partner Center-Dashboard.
+U hebt toegang tot het abonnement van de tenant via het Microsoft Partner Center Dashboard.
 
-1. Op de **klanten** pagina, klikt u op de naam van de tenantaccount.
-2. In de **abonnementen** pagina van de tenantaccount kunt u de bestaande abonnementen te controleren en meer abonnementen toevoegen zoals vereist.
-3. Selecteer voor het beheren van de tenant-NOODHERSTELBEWERKINGEN, **alle resources (Azure portal)** . Dit biedt dat u toegang tot Azure-abonnementen van de tenant.
+1. Klik **op** de pagina Klanten op de naam van het tenantaccount.
+2. Op de pagina **Abonnementen** van het tenantaccount u de bestaande accountabonnementen controleren en naar behoefte meer abonnementen toevoegen.
+3. Als u de beheerbewerking en herstelbewerking van de tenant wilt beheren, selecteert u **Alle resources (Azure-portal)**. Hiermee krijgt u toegang tot de Azure-abonnementen van de tenant.
 
-    ![De koppeling alle Resources](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
+    ![De koppeling Alle bronnen](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
 
-4. U kunt toegang controleren door te klikken op de Azure Active Directory-koppeling in de rechterbovenhoek van de Azure-portal.
+4. U de toegang verifiëren door rechtsboven in de Azure-portal op de Azure Active Directory-koppeling te klikken.
 
-    ![Azure Active Directory link](./media/vmware-azure-multi-tenant-csp-disaster-recovery/aad-admin-display.png)
+    ![Azure Active Directory-koppeling](./media/vmware-azure-multi-tenant-csp-disaster-recovery/aad-admin-display.png)
 
-U kunt nu uitvoeren en beheren van alle Site Recovery-bewerkingen voor de tenant in Azure portal. Voor toegang tot de tenantabonnement via CSP voor beheerde noodherstel, volgt u de eerder beschreven procedure.
+U nu alle siteherstelbewerkingen voor de tenant uitvoeren en beheren in de Azure-portal. Volg het eerder beschreven proces om toegang te krijgen tot het tenantabonnement via CSP voor beheerde disaster recovery.
 
-## <a name="assign-tenant-access-to-the-subscription"></a>Tenant toegang tot het abonnement toewijzen
+## <a name="assign-tenant-access-to-the-subscription"></a>Tenanttoegang toewijzen aan het abonnement
 
-1. Zorg ervoor dat de infrastructuur voor noodherstel is ingesteld. Partners toegang krijgen tot tenant abonnementen via de portal van de CSP, ongeacht of herstel na noodgevallen wordt beheerd of selfservice. Instellen van de kluis en -infrastructuur om de abonnementen van de tenant te registreren.
-2. Geef de tenant met de [dat u hebt gemaakt](#create-a-tenant-account).
-3. U kunt als volgt een nieuwe gebruiker toevoegen aan de tenantabonnement via de portal van de CSP:
+1. Zorg ervoor dat de infrastructuur voor noodherstel is ingesteld. Partners hebben toegang tot tenantabonnementen via de CSP-portal, ongeacht of disaster recovery wordt beheerd of selfservice. Stel de kluis in en registreer de infrastructuur voor de tenantabonnementen.
+2. Geef de huurder het [account dat u hebt gemaakt.](#create-a-tenant-account)
+3. U een nieuwe gebruiker als volgt aan het tenantabonnement toevoegen via de CSP-portal:
 
-    (a) Ga naar de pagina van de tenant CSP-abonnement en selecteer vervolgens de **gebruikers en licenties** optie.
+    a) Ga naar de CSP-abonnementspagina van de tenant en selecteer de optie **Gebruikers en licenties.**
 
-      ![Pagina voor CSP-abonnement van de tenant](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+      ![De CSP-abonnementspagina van de tenant](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    (b) nu een nieuwe gebruiker maken door te voeren van de relevante gegevens en machtigingen selecteren of door de lijst met gebruikers in een CSV-bestand uploaden.
+    b) Maak nu een nieuwe gebruiker door de relevante details in te voeren en machtigingen te selecteren, of door de lijst met gebruikers in een CSV-bestand te uploaden.
     
-    c) nadat u een nieuwe gebruiker hebt gemaakt, Ga terug naar de Azure-portal. In de **abonnement** pagina, selecteert u het desbetreffende abonnement.
+    c) Nadat u een nieuwe gebruiker hebt gemaakt, gaat u terug naar de Azure-portal. Selecteer **op** de pagina Abonnement het desbetreffende abonnement.
 
-    d) Selecteer **toegangsbeheer (IAM)** , en klik vervolgens op **roltoewijzingen**.
+    d) Selecteer **Toegangsbeheer (IAM)** en klik op **Toewijzingen van rollen**.
 
-    e) Klik op **roltoewijzing toevoegen** een gebruiker met de relevante toegangsniveau toe te voegen. De gebruikers die zijn gemaakt via de CSP-portal worden weergegeven op het tabblad rol toewijzingen.
+    e) Klik **op Roltoewijzing toevoegen** om een gebruiker toe te voegen aan het relevante toegangsniveau. De gebruikers die via de CSP-portal zijn gemaakt, worden weergegeven op het tabblad Roltoewijzingen.
 
       ![Een gebruiker toevoegen](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 
-- Voor de meeste beheerbewerkingen, de *Inzender* rol is voldoende. Gebruikers met dit toegangsniveau kunnen doen alles op een abonnement, behalve toegangsniveaus wijzigen (waarvoor *eigenaar*-niveau toegang is vereist).
-- Site Recovery heeft drie [vooraf gedefinieerde gebruikersrollen](site-recovery-role-based-linked-access-control.md), die kunnen worden gebruikt voor het verder beperken toegangsniveaus zoals vereist.
+- Voor de meeste beheeractiviteiten volstaat de rol *van contribuant.* Gebruikers met dit toegangsniveau kunnen alles doen op een abonnement, behalve toegangsniveaus wijzigen (waarvoor toegang op *eigenaarniveau*vereist is).
+- Site recovery heeft ook drie [vooraf gedefinieerde gebruikersrollen,](site-recovery-role-based-linked-access-control.md)die kunnen worden gebruikt om toegangsniveaus verder te beperken, indien nodig.
 
-## <a name="multi-tenant-environments"></a>Omgevingen met meerdere tenants
+## <a name="multi-tenant-environments"></a>Omgevingen met meerdere huurders
 
-Er zijn drie belangrijke modellen voor meerdere tenants:
+Er zijn drie belangrijke multi-tenant modellen:
 
-* **Gedeelde Services-hostingprovider (HSP)** : De partner is eigenaar van de fysieke infrastructuur, en maakt gebruik van gedeelde resources (vCenter, datacenters, fysieke opslag, enzovoort) voor het hosten van meerdere tenant-VM's op dezelfde infrastructuur. De partner herstel na noodgevallen management als een beheerde service kunt opgeven of de tenant eigenaar kan herstel na noodgevallen als een oplossing voor de selfservice.
+* **Shared Hosting Services Provider (HSP)**: De partner is eigenaar van de fysieke infrastructuur en gebruikt gedeelde resources (vCenter, datacenters, fysieke opslag, enzovoort) om meerdere tenant VM's op dezelfde infrastructuur te hosten. De partner kan disaster-recovery management bieden als een managed service, of de tenant kan disaster recovery bezitten als een selfserviceoplossing.
 
-* **Toegewezen Hosting serviceprovider**: De partner is eigenaar van de fysieke infrastructuur, maar toegewezen resources (meerdere vCenters, fysieke gegevensopslag, enzovoort) gebruikt voor het hosten van elke tenant-VM's op een aparte infrastructuur. De partner herstel na noodgevallen management als een beheerde service kunt opgeven of de tenant eigenaar kan het als een oplossing voor de selfservice.
+* **Dedicated Hosting Services Provider**: De partner is eigenaar van de fysieke infrastructuur, maar maakt gebruik van speciale resources (meerdere vCenters, fysieke datastores, enzovoort) om de VM's van elke tenant op een aparte infrastructuur te hosten. De partner kan disaster-recovery management bieden als een managed service, of de tenant kan het bezitten als een selfservice-oplossing.
 
-* **Managed serviceprovider (MSP)** : De klant is eigenaar van de fysieke infrastructuur die als host fungeert voor de virtuele machines en de partner biedt inschakelen voor herstel na noodgevallen en beheer.
+* **Managed Services Provider (MSP)**: De klant is eigenaar van de fysieke infrastructuur die de VM's host, en de partner biedt disaster-recovery enablement en beheer.
 
-Door het instellen van tenant abonnementen zoals beschreven in dit artikel, kunt u snel starten zodat klanten in een van de relevante multitenant-modellen. U kunt meer informatie over de verschillende modellen voor meerdere tenants en inschakelen van on-premises toegangsbeheer [hier](vmware-azure-multi-tenant-overview.md).
+Door tenantabonnementen in te stellen zoals beschreven in dit artikel, u klanten snel inschakelen in een van de relevante multi-tenant modellen. Hier vindt u meer informatie over de verschillende multi-tenantmodellen en het inschakelen van on-premises [toegangscontroles.](vmware-azure-multi-tenant-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [op rollen gebaseerd toegangsbeheer](site-recovery-role-based-linked-access-control.md) voor het beheren van Azure Site Recovery-implementaties.
-- Meer informatie over VMware naar Azure [replicatiearchitectuur](vmware-azure-architecture.md).
-- [Bekijk de zelfstudie](vmware-azure-tutorial.md) voor het repliceren van virtuele VMware-machines naar Azure.
-Meer informatie over [omgevingen met meerdere tenants](vmware-azure-multi-tenant-overview.md) voor het repliceren van virtuele VMware-machines naar Azure.
+- Meer informatie over [op rollen gebaseerd toegangsbeheer](site-recovery-role-based-linked-access-control.md) voor azure-siteherstel-implementaties.
+- Meer informatie over VMware naar [Azure-replicatiearchitectuur](vmware-azure-architecture.md).
+- [Bekijk de zelfstudie](vmware-azure-tutorial.md) voor het repliceren van Vm's vmware naar Azure.
+Meer informatie over [multi-tenantomgevingen](vmware-azure-multi-tenant-overview.md) voor het repliceren van Vm's vMware naar Azure.

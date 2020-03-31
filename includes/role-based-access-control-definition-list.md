@@ -9,10 +9,10 @@ ms.date: 11/24/2019
 ms.author: rolyon
 ms.custom: include file
 ms.openlocfilehash: eaca725e7139d9bc6bb13a696a1f7a8ff920675d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74710384"
 ---
-[Op rollen gebaseerd toegangs beheer (RBAC) van Azure](../articles/role-based-access-control/overview.md) is het autorisatie systeem dat u gebruikt om de toegang tot Azure-resources te beheren. Als u wilt bepalen met welke resources gebruikers, groepen, service-principals of beheerde identiteiten toegang hebben, kunt u hun roltoewijzingen weer geven.
+[RBAC (Azure role-based access control)](../articles/role-based-access-control/overview.md) is het autorisatiesysteem dat u gebruikt om de toegang tot Azure-bronnen te beheren. Als u wilt bepalen tot welke resources gebruikers, groepen, serviceprincipals of beheerde identiteiten toegang hebben, geeft u hun roltoewijzingen aan.

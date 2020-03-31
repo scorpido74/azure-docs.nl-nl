@@ -1,6 +1,6 @@
 ---
-title: Controle en logboek registratie-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
-description: oplossingen voor bedreigingen die worden blootgesteld aan de Threat Modeling Tool
+title: Controle en logboekregistratie - Microsoft Threat Modeling Tool - Azure | Microsoft Documenten
+description: oplossingen voor bedreigingen die worden blootgesteld in de Threat Modeling Tool
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,159 +16,159 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: c9d20b3259cf4ea7af263d5e31145ad372db0c77
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68728417"
 ---
-# <a name="security-frame-auditing-and-logging--mitigations"></a>Beveiligings frame: Controle en logboek registratie | Oplossingen 
+# <a name="security-frame-auditing-and-logging--mitigations"></a>Beveiligingskader: controle en houtkap | Mitigaties 
 
-| Product/Service | Artikel |
+| Product/service | Artikel |
 | --------------- | ------- |
-| **Dynamics CRM**    | <ul><li>[Identificeer gevoelige entiteiten in uw oplossing en implementeer wijzigingen controleren](#sensitive-entities)</li></ul> |
-| **Webtoepassing** | <ul><li>[Controleren of controle en logboek registratie wordt afgedwongen voor de toepassing](#auditing)</li><li>[Zorg ervoor dat de draai hoek van het logboek en de schei ding worden geplaatst](#log-rotation)</li><li>[Zorg ervoor dat de toepassing geen gevoelige gebruikers gegevens registreert](#log-sensitive-data)</li><li>[Zorg ervoor dat audit-en logboek bestanden beperkte toegang hebben](#log-restricted-access)</li><li>[Zorg ervoor dat gebruikers beheer gebeurtenissen worden geregistreerd](#user-management)</li><li>[Zorg ervoor dat het systeem ingebouwde verdedigings tegen misbruik heeft](#inbuilt-defenses)</li><li>[Diagnostische logboek registratie inschakelen voor web-apps in Azure App Service](#diagnostics-logging)</li></ul> |
-| **Database** | <ul><li>[Zorg ervoor dat aanmeldings controle is ingeschakeld op SQL Server](#identify-sensitive-entities)</li><li>[Bedreigings detectie op Azure SQL inschakelen](#threat-detection)</li></ul> |
-| **Azure Storage** | <ul><li>[Azure Opslaganalyse gebruiken om de toegang van Azure Storage te controleren](#analytics)</li></ul> |
-| **WCF** | <ul><li>[Voldoende logboek registratie implementeren](#sufficient-logging)</li><li>[Voldoende verwerking van de controle fout implementeren](#audit-failure-handling)</li></ul> |
-| **Web-API** | <ul><li>[Controleren of controle en logboek registratie wordt afgedwongen voor web-API](#logging-web-api)</li></ul> |
-| **IoT-veld Gateway** | <ul><li>[Zorg ervoor dat de juiste controle en logboek registratie wordt afgedwongen op de veld Gateway](#logging-field-gateway)</li></ul> |
-| **IoT-Cloud gateway** | <ul><li>[Zorg ervoor dat de juiste controle en logboek registratie wordt afgedwongen op de Cloud gateway](#logging-cloud-gateway)</li></ul> |
+| **Dynamics CRM**    | <ul><li>[Identificeren van gevoelige entiteiten in uw oplossing en implementeren van change auditing](#sensitive-entities)</li></ul> |
+| **Webtoepassing** | <ul><li>[Ervoor zorgen dat controle en logboekregistratie wordt afgedwongen op de toepassing](#auditing)</li><li>[Zorg ervoor dat logboekrotatie en -scheiding aanwezig zijn](#log-rotation)</li><li>[Ervoor zorgen dat de toepassing geen gevoelige gebruikersgegevens registreert](#log-sensitive-data)</li><li>[Controleren en logboekbestanden hebben beperkte toegang](#log-restricted-access)</li><li>[Controleren of gebruikersbeheergebeurtenissen zijn geregistreerd](#user-management)</li><li>[Zorg ervoor dat het systeem heeft ingebouwde verdediging tegen misbruik](#inbuilt-defenses)</li><li>[Diagnostische logboekregistratie inschakelen voor webapps in Azure App Service](#diagnostics-logging)</li></ul> |
+| **Database** | <ul><li>[Controleren op inloggegevens is ingeschakeld op SQL Server](#identify-sensitive-entities)</li><li>[Bedreigingsdetectie inschakelen op Azure SQL](#threat-detection)</li></ul> |
+| **Azure Storage** | <ul><li>[Azure Storage Analytics gebruiken om de toegang tot Azure Storage te controleren](#analytics)</li></ul> |
+| **WCF** | <ul><li>[Voldoende logboekregistratie implementeren](#sufficient-logging)</li><li>[Voldoende controlefoutafhandeling implementeren](#audit-failure-handling)</li></ul> |
+| **Web-API** | <ul><li>[Controleren en loggen wordt afgedwongen op web-API](#logging-web-api)</li></ul> |
+| **IoT-veldgateway** | <ul><li>[Ervoor zorgen dat de juiste controle en logboekregistratie wordt afgedwongen op Field Gateway](#logging-field-gateway)</li></ul> |
+| **IoT Cloud Gateway** | <ul><li>[Ervoor zorgen dat de juiste controle en logboekregistratie wordt afgedwongen op Cloud Gateway](#logging-cloud-gateway)</li></ul> |
 
-## <a id="sensitive-entities"></a>Identificeer gevoelige entiteiten in uw oplossing en implementeer wijzigingen controleren
+## <a name="identify-sensitive-entities-in-your-solution-and-implement-change-auditing"></a><a id="sensitive-entities"></a>Identificeren van gevoelige entiteiten in uw oplossing en implementeren van change auditing
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Dynamics CRM | 
+| **Component**               | Dynamics CRM | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | N/A  |
-| **Stappen**                   | Entiteiten in uw oplossing identificeren die gevoelige gegevens bevatten en controle van wijzigingen voor deze entiteiten en velden implementeren |
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen**                   | Entiteiten in uw oplossing identificeren die gevoelige gegevens bevatten en wijzigingscontrole implementeren op die entiteiten en velden |
 
-## <a id="auditing"></a>Controleren of controle en logboek registratie wordt afgedwongen voor de toepassing
+## <a name="ensure-that-auditing-and-logging-is-enforced-on-the-application"></a><a id="auditing"></a>Ervoor zorgen dat controle en logboekregistratie wordt afgedwongen op de toepassing
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
+| **Component**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | N/A  |
-| **Stappen**                   | Schakel controle en logboek registratie in voor alle onderdelen. In de controle logboeken moet de gebruikers context worden vastgelegd. Alle belang rijke gebeurtenissen identificeren en deze gebeurtenissen registreren. Centrale logboek registratie implementeren |
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen**                   | Schakel controle en logboekregistratie op alle onderdelen in. Controlelogboeken moeten de context van de gebruiker vastleggen. Identificeer alle belangrijke gebeurtenissen en log deze gebeurtenissen. Gecentraliseerde logboekregistratie implementeren |
 
-## <a id="log-rotation"></a>Zorg ervoor dat de draai hoek van het logboek en de schei ding worden geplaatst
+## <a name="ensure-that-log-rotation-and-separation-are-in-place"></a><a id="log-rotation"></a>Zorg ervoor dat logboekrotatie en -scheiding aanwezig zijn
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
+| **Component**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | N/A  |
-| **Stappen**                   | <p>De draai hoek van het logboek is een geautomatiseerd proces dat wordt gebruikt in systeem beheer waarin gedateerde logboek bestanden worden gearchiveerd. Servers die grote toepassingen uitvoeren, registreren vaak elke aanvraag: in het geval van bulksgewijs Logboeken is logboek rotatie een manier om de totale grootte van de logboeken te beperken terwijl er nog steeds analyse van recente gebeurtenissen wordt toegestaan. </p><p>Logboek scheiding in principe houdt in dat u uw logboek bestanden op een andere partitie moet opslaan als waar uw besturings systeem of toepassing wordt uitgevoerd om een DOS-aanval (Denial of service) te voor komen of de downgrade van de prestaties van uw toepassing</p>|
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen**                   | <p>Logrotatie is een geautomatiseerd proces dat wordt gebruikt in systeembeheer waarbij gedateerde logbestanden worden gearchiveerd. Servers die grote toepassingen uitvoeren, loggen vaak elke aanvraag: in het licht van omvangrijke logboeken is logboekrotatie een manier om de totale grootte van de logboeken te beperken en tegelijkertijd analyse van recente gebeurtenissen mogelijk te maken. </p><p>Scheiding van logboek betekent in feite dat u uw logbestanden op een andere partitie moet opslaan als waar uw OS/toepassing wordt uitgevoerd om een Denial of service-aanval of de verlaging van de prestaties ervan af te wenden</p>|
 
-## <a id="log-sensitive-data"></a>Zorg ervoor dat de toepassing geen gevoelige gebruikers gegevens registreert
+## <a name="ensure-that-the-application-does-not-log-sensitive-user-data"></a><a id="log-sensitive-data"></a>Ervoor zorgen dat de toepassing geen gevoelige gebruikersgegevens registreert
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
+| **Component**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | N/A  |
-| **Stappen**                   | <p>Controleer of u geen gevoelige gegevens in het logboek registreert die een gebruiker naar uw site verzendt. Controleren op opzettelijke logboek registratie en neven effecten die zijn ontstaan door ontwerp problemen. Voor beelden van gevoelige gegevens zijn:</p><ul><li>Gebruikersreferenties</li><li>Sociaal-fiscaal nummer of andere identificerende informatie</li><li>Creditcard nummers of andere financiële gegevens</li><li>Status informatie</li><li>Persoonlijke sleutels of andere gegevens die kunnen worden gebruikt voor het ontsleutelen van versleutelde informatie</li><li>Systeem-of toepassings informatie die kan worden gebruikt om de toepassing effectiever te aanvallen</li></ul>|
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen**                   | <p>Controleer of u geen gevoelige gegevens registreert die een gebruiker naar uw site verzendt. Controleer op opzettelijke logging en bijwerkingen veroorzaakt door ontwerpproblemen. Voorbeelden van gevoelige gegevens zijn:</p><ul><li>Gebruikersreferenties</li><li>Sofi-nummer of andere identificerende informatie</li><li>Creditcardnummers of andere financiële informatie</li><li>Gezondheidsinformatie</li><li>Privésleutels of andere gegevens die kunnen worden gebruikt om versleutelde informatie te decoderen</li><li>Systeem- of toepassingsinformatie die kan worden gebruikt om de toepassing effectiever aan te vallen</li></ul>|
 
-## <a id="log-restricted-access"></a>Zorg ervoor dat audit-en logboek bestanden beperkte toegang hebben
+## <a name="ensure-that-audit-and-log-files-have-restricted-access"></a><a id="log-restricted-access"></a>Controleren en logboekbestanden hebben beperkte toegang
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
+| **Component**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | N/A  |
-| **Stappen**                   | <p>Controleer of de toegangs rechten voor de logboek bestanden op de juiste wijze zijn ingesteld. Toepassings accounts moeten alleen-schrijven toegang hebben en Opera tors en ondersteunings personeel mogen alleen-lezen toegang hebben als dat nodig is.</p><p>Beheerders accounts zijn de enige accounts die volledige toegang moeten hebben. Controleer Windows ACL op logboek bestanden om te controleren of ze goed zijn beperkt:</p><ul><li>Toepassings accounts moeten alleen-schrijven toegang hebben</li><li>Opera tors en ondersteunings medewerkers mogen alleen-lezen toegang hebben als dat nodig is</li><li>Beheerders zijn de enige accounts die volledige toegang moeten hebben</li></ul>|
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen**                   | <p>Controleer of de toegangsrechten voor logbestanden op de juiste manier zijn ingesteld. Toepassingsaccounts moeten alleen-schrijftoegang hebben en operators en ondersteunend personeel moeten indien nodig alleen-lezen toegang hebben.</p><p>Beheerdersaccounts zijn de enige accounts die volledige toegang moeten hebben. Controleer Windows ACL op logboekbestanden om te controleren of ze correct zijn beperkt:</p><ul><li>Toepassingsaccounts moeten alleen-schrijftoegang hebben</li><li>Exploitanten en ondersteunend personeel moeten indien nodig alleen-lezen toegang hebben</li><li>Beheerders zijn de enige accounts die volledige toegang moeten hebben</li></ul>|
 
-## <a id="user-management"></a>Zorg ervoor dat gebruikers beheer gebeurtenissen worden geregistreerd
+## <a name="ensure-that-user-management-events-are-logged"></a><a id="user-management"></a>Controleren of gebruikersbeheergebeurtenissen zijn geregistreerd
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
+| **Component**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | N/A  |
-| **Stappen**                   | <p>Zorg ervoor dat de toepassing gebruikers beheer gebeurtenissen bewaakt, zoals geslaagde en mislukte gebruikers aanmeldingen, wacht woorden opnieuw instellen, wachtwoord wijzigingen, account vergrendeling, gebruikers registratie. Dit helpt om mogelijk verdacht gedrag te detecteren en te reageren. Er kunnen ook operationele gegevens worden verzameld. bijvoorbeeld om bij te houden wie toegang heeft tot de toepassing</p>|
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen**                   | <p>Zorg ervoor dat de toepassing gebruikersbeheergebeurtenissen controleert, zoals geslaagde en mislukte gebruikersaanmeldingen, wachtwoordresets, wachtwoordwijzigingen, accountuitsluiting, gebruikersregistratie. Door dit te doen helpt bij het detecteren en reageren op potentieel verdacht gedrag. Het maakt het ook mogelijk om bedrijfsgegevens te verzamelen; bijvoorbeeld om bij te houden wie toegang heeft tot de toepassing</p>|
 
-## <a id="inbuilt-defenses"></a>Zorg ervoor dat het systeem ingebouwde verdedigings tegen misbruik heeft
+## <a name="ensure-that-the-system-has-inbuilt-defenses-against-misuse"></a><a id="inbuilt-defenses"></a>Zorg ervoor dat het systeem heeft ingebouwde verdediging tegen misbruik
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
+| **Component**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | N/A  |
-| **Stappen**                   | <p>Er moeten besturings elementen aanwezig zijn die de beveiligings uitzondering veroorzaken in het geval van misbruik van toepassingen. Bijvoorbeeld, als de invoer validatie is ingesteld en een aanvaller probeert schadelijke code te injecteren die niet overeenkomt met de regex, kan er een beveiligings uitzondering worden gegenereerd die een indicatie van misbruik van het systeem kan zijn</p><p>U kunt bijvoorbeeld het beste beveiligings uitzonderingen hebben die zijn geregistreerd en acties die worden uitgevoerd voor de volgende problemen:</p><ul><li>Invoervalidatie</li><li>CSRF schendingen</li><li>Brute kracht (bovengrens voor het aantal aanvragen per gebruiker per resource)</li><li>Schendingen van bestand uploaden</li><ul>|
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen**                   | <p>Er moeten controles worden uitgevoerd die een uitzondering vormen voor de beveiliging in geval van misbruik van toepassingen. Bijvoorbeeld, Als input validatie is op zijn plaats en een aanvaller probeert om kwaadaardige code die niet overeenkomt met de regex injecteren, kan een beveiligingsuitzondering worden gegooid die een indicatie van systeemmisbruik kan zijn</p><p>Het wordt bijvoorbeeld aanbevolen om beveiligingsuitzonderingen te laten registreren en acties te laten uitvoeren voor de volgende problemen:</p><ul><li>Invoervalidatie</li><li>CSRF-schendingen</li><li>Brute kracht (bovengrens voor aantal aanvragen per gebruiker per resource)</li><li>Schendingen van het uploaden van bestanden</li><ul>|
 
-## <a id="diagnostics-logging"></a>Diagnostische logboek registratie inschakelen voor web-apps in Azure App Service
+## <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a><a id="diagnostics-logging"></a>Diagnostische logboekregistratie inschakelen voor webapps in Azure App Service
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Webtoepassing | 
+| **Component**               | Webtoepassing | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | EnvironmentType-Azure |
-| **Referentie**              | N/A  |
-| **Stappen** | <p>Azure bevat ingebouwde diagnosefuncties voor de ondersteuning bij foutopsporing in een App Service-web-app. Het is ook van toepassing op API apps en mobiele apps. App Service web-apps bieden diagnostische functionaliteit voor het vastleggen van gegevens van zowel de webserver als de webtoepassing.</p><p>Deze worden logisch gescheiden in webserver diagnostiek en toepassings diagnoses</p>|
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | EnvironmentType - Azure |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen** | <p>Azure biedt ingebouwde diagnostiek om te helpen bij het debuggen van een App Service-web-app. Het is ook van toepassing op API-apps en mobiele apps. App Service-webapps bieden diagnostische functionaliteit voor het registreren van informatie van zowel de webserver als de webtoepassing.</p><p>Deze zijn logisch gescheiden in webserverdiagnostiek en toepassingsdiagnostiek</p>|
 
-## <a id="identify-sensitive-entities"></a>Zorg ervoor dat aanmeldings controle is ingeschakeld op SQL Server
+## <a name="ensure-that-login-auditing-is-enabled-on-sql-server"></a><a id="identify-sensitive-entities"></a>Controleren op inloggegevens is ingeschakeld op SQL Server
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Database | 
+| **Component**               | Database | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | [Aanmeldings controle configureren](https://msdn.microsoft.com/library/ms175850.aspx) |
-| **Stappen** | <p>De controle van de database server aanmelding moet zijn ingeschakeld voor het detecteren/bevestigen van wacht woorden. Het is belang rijk om mislukte aanmeldings pogingen vast te leggen. Het vastleggen van zowel geslaagde als mislukte aanmeldings pogingen biedt een extra voor deel tijdens forensische onderzoek</p>|
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [Controle van aanmelding configureren](https://msdn.microsoft.com/library/ms175850.aspx) |
+| **Stappen** | <p>Database Server login auditing moet worden ingeschakeld om te detecteren / bevestigen wachtwoord raden aanvallen. Het is belangrijk om mislukte inlogpogingen vast te leggen. Het vastleggen van zowel succesvolle als mislukte inlogpogingen biedt extra voordeel tijdens forensisch onderzoek</p>|
 
-## <a id="threat-detection"></a>Bedreigings detectie op Azure SQL inschakelen
+## <a name="enable-threat-detection-on-azure-sql"></a><a id="threat-detection"></a>Bedreigingsdetectie inschakelen op Azure SQL
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Database | 
+| **Component**               | Database | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | SQL Azure |
-| **Eigenschappen**              | SQL-versie-V12 |
-| **Referentie**              | [Aan de slag met SQL Database detectie van bedreigingen](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
-| **Stappen** |<p>Met detectie van bedreigingen worden afwijkende database activiteiten gedetecteerd die potentiële beveiligings dreigingen voor de data base aangeven. Het biedt een nieuwe beveiligingslaag, waarmee klanten potentiële bedreigingen kunnen detecteren en erop reageren zodra ze zich voordoen door beveiligings waarschuwingen te geven over afwijkende activiteiten.</p><p>Gebruikers kunnen de verdachte gebeurtenissen verkennen met behulp van Azure SQL Database controle om te bepalen of ze het resultaat zijn van een poging toegang te krijgen tot gegevens in de data base.</p><p>Met detectie van bedreigingen kunt u eenvoudig mogelijke dreigingen voor de data base aanpakken zonder dat u een beveiligings expert hoeft te zijn of om geavanceerde beveiligings bewakings systemen te beheren</p>|
+| **Kenmerken**              | SQL-versie - V12 |
+| **Verwijzingen**              | [Aan de slag met SQL Database Threat Detection](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
+| **Stappen** |<p>Threat Detection detecteert afwijkende databaseactiviteiten die potentiële beveiligingsbedreigingen voor de database aangeven. Het biedt een nieuwe beveiligingslaag, waarmee klanten potentiële bedreigingen kunnen detecteren en erop kunnen reageren wanneer ze zich voordoen door beveiligingswaarschuwingen te geven over afwijkende activiteiten.</p><p>Gebruikers kunnen de verdachte gebeurtenissen verkennen met Azure SQL Database Auditing om te bepalen of ze het gevolg zijn van een poging om toegang te krijgen tot, inbreuk te maken of gegevens in de database te exploiteren.</p><p>Threat Detection maakt het eenvoudig om potentiële bedreigingen voor de database aan te pakken zonder dat u beveiligingsexpert hoeft te zijn of geavanceerde beveiligingsbewakingssystemen hoeft te beheren</p>|
 
-## <a id="analytics"></a>Azure Opslaganalyse gebruiken om de toegang van Azure Storage te controleren
+## <a name="use-azure-storage-analytics-to-audit-access-of-azure-storage"></a><a id="analytics"></a>Azure Storage Analytics gebruiken om de toegang tot Azure Storage te controleren
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Azure Storage | 
+| **Component**               | Azure Storage | 
 | **SDL-fase**               | Implementatie |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A |
-| **Referentie**              | [Het verificatie type bewaken met behulp van Opslaganalyse](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
-| **Stappen** | <p>Voor elk opslag account kan een Azure Opslaganalyse in staat stellen om gegevens in het logboek in te voeren en op te slaan. De logboeken van de opslag analyse bevatten belang rijke informatie zoals de verificatie methode die door iemand wordt gebruikt bij het openen van opslag.</p><p>Dit kan erg nuttig zijn als u de toegang tot opslag nauw keurig kunt beveiligen. In Blob Storage kunt u bijvoorbeeld alle containers instellen op privé en het gebruik van een SAS-service in uw toepassingen implementeren. Vervolgens kunt u de logboeken regel matig controleren om te zien of de blobs toegankelijk zijn via de sleutels voor het opslag account, die kunnen wijzen op een schending van de beveiliging, of als de blobs openbaar zijn, maar ze niet moeten worden gebruikt.</p>|
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t. |
+| **Verwijzingen**              | [Storage Analytics gebruiken om het autorisatietype te controleren](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
+| **Stappen** | <p>Voor elk opslagaccount kan azure storage analytics gegevens over logboekregistratie staken en vastleggen. De opslaganalyselogboeken bevatten belangrijke informatie, zoals de verificatiemethode die door iemand wordt gebruikt wanneer hij toegang heeft tot opslag.</p><p>Dit kan echt handig zijn als je strak bewaken toegang tot opslag. In Blob Storage u bijvoorbeeld alle containers op privé instellen en het gebruik van een SAS-service in uw toepassingen implementeren. Vervolgens u de logboeken regelmatig controleren om te zien of uw blobs worden geopend met behulp van de opslagaccountsleutels, wat kan duiden op een inbreuk op de beveiliging, of als de blobs openbaar zijn, maar dat zouden ze niet moeten zijn.</p>|
 
-## <a id="sufficient-logging"></a>Voldoende logboek registratie implementeren
+## <a name="implement-sufficient-logging"></a><a id="sufficient-logging"></a>Voldoende logboekregistratie implementeren
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | WCF | 
+| **Component**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
-| **Stappen** | <p>Het ontbreken van een juiste audittrail na een veiligheids incident kan forensischee inspanningen belemmeren. Windows Communication Foundation (WCF) biedt de mogelijkheid om geslaagde en/of mislukte verificatie pogingen te registreren.</p><p>Bij het vastleggen van mislukte verificatie pogingen kunnen beheerders worden gewaarschuwd voor mogelijke beveiligings aanvallen. Op dezelfde manier kan het vastleggen van geslaagde verificatie gebeurtenissen een nuttig controlepad bieden wanneer een rechtmatig account is aangetast. De beveiligings controle functie van de WCF-service inschakelen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
+| **Stappen** | <p>Het ontbreken van een goed controlespoor na een veiligheidsincident kan forensische inspanningen belemmeren. Windows Communication Foundation (WCF) biedt de mogelijkheid om geslaagde en/of mislukte verificatiepogingen te registreren.</p><p>Mislukte verificatiepogingen loggen kunnen beheerders waarschuwen voor mogelijke brute-force-aanvallen. Op dezelfde manier kan het registreren van succesvolle verificatiegebeurtenissen een handig controlespoor bieden wanneer een legitiem account wordt gecompromitteerd. De functie voor servicebeveiliging van WCF inschakelen |
 
 ### <a name="example"></a>Voorbeeld
-Hier volgt een voor beeld van een configuratie waarvoor controle is ingeschakeld
+Het volgende is een voorbeeldconfiguratie met controle ingeschakeld
 ```
 <system.serviceModel>
     <behaviors>
@@ -185,19 +185,19 @@ Hier volgt een voor beeld van een configuratie waarvoor controle is ingeschakeld
 </system.serviceModel>
 ```
 
-## <a id="audit-failure-handling"></a>Voldoende verwerking van de controle fout implementeren
+## <a name="implement-sufficient-audit-failure-handling"></a><a id="audit-failure-handling"></a>Voldoende controlefoutafhandeling implementeren
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | WCF | 
+| **Component**               | WCF | 
 | **SDL-fase**               | Ontwikkelen |  
 | **Toepasselijke technologieën** | .NET Framework |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
-| **Stappen** | <p>De ontwikkelde oplossing is zo geconfigureerd dat er geen uitzonde ring wordt gegenereerd wanneer er niet naar een audit logboek kan worden geschreven. Als WCF zodanig is geconfigureerd dat er geen uitzonde ring optreedt wanneer het niet kan schrijven naar een audit logboek, wordt het programma niet op de hoogte gesteld van de fout en controle van kritieke beveiligings gebeurtenissen.</p>|
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
+| **Stappen** | <p>De ontwikkelde oplossing is geconfigureerd om geen uitzondering te genereren wanneer deze niet naar een controlelogboek wordt geschreven. Als WCF is geconfigureerd om geen uitzondering te maken wanneer het niet in staat is om naar een controlelogboek te schrijven, wordt het programma niet op de hoogte gesteld van het falen en kan het niet plaatsvinden dat kritieke beveiligingsgebeurtenissen worden gecontroleerd.</p>|
 
 ### <a name="example"></a>Voorbeeld
-Het `<behavior/>` element van het WCF-configuratie bestand hieronder geeft aan dat WCF de toepassing niet kan waarschuwen wanneer WCF niet naar een audit logboek kan schrijven.
+Het `<behavior/>` element van het onderstaande WCF-configuratiebestand geeft WCF de opdracht om de toepassing niet op de hoogte te stellen wanneer WCF niet naar een controlelogboek schrijft.
 ```
 <behaviors>
     <serviceBehaviors>
@@ -210,37 +210,37 @@ Het `<behavior/>` element van het WCF-configuratie bestand hieronder geeft aan d
     </serviceBehaviors>
 </behaviors>
 ```
-Configureer WCF om het programma op de hoogte te stellen wanneer het niet kan schrijven naar een audit logboek. Het programma moet een alternatief meldings schema hebben om de organisatie te waarschuwen dat de controle sporen niet worden onderhouden. 
+Configureer WCF om het programma op de hoogte te stellen wanneer het niet in staat is om naar een controlelogboek te schrijven. Het programma moet een alternatief meldingsschema hebben om de organisatie te waarschuwen dat audittrails niet worden onderhouden. 
 
-## <a id="logging-web-api"></a>Controleren of controle en logboek registratie wordt afgedwongen voor web-API
-
-| Titel                   | Details      |
-| ----------------------- | ------------ |
-| **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | N/A  |
-| **Stappen** | Schakel controle en logboek registratie in op Web-Api's. In de controle logboeken moet de gebruikers context worden vastgelegd. Alle belang rijke gebeurtenissen identificeren en deze gebeurtenissen registreren. Centrale logboek registratie implementeren |
-
-## <a id="logging-field-gateway"></a>Zorg ervoor dat de juiste controle en logboek registratie wordt afgedwongen op de veld Gateway
+## <a name="ensure-that-auditing-and-logging-is-enforced-on-web-api"></a><a id="logging-web-api"></a>Controleren en loggen wordt afgedwongen op web-API
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | IoT-veld Gateway | 
+| **Component**               | Web-API | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | N/A  |
-| **Stappen** | <p>Wanneer meerdere apparaten verbinding maken met een veld Gateway, moet u ervoor zorgen dat verbindings pogingen en verificatie status (geslaagd of mislukt) voor afzonderlijke apparaten worden geregistreerd en onderhouden op de veld Gateway.</p><p>In gevallen waarin de veld Gateway de IoT Hub referenties voor afzonderlijke apparaten onderhoudt, moet u er ook voor zorgen dat de controle wordt uitgevoerd wanneer deze referenties worden opgehaald. Ontwikkel een proces om regel matig de logboeken te uploaden naar Azure IoT Hub/Storage voor lange termijn retentie.</p> |
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen** | Controle en logboekregistratie inschakelen op web-API's. Controlelogboeken moeten de context van de gebruiker vastleggen. Identificeer alle belangrijke gebeurtenissen en log deze gebeurtenissen. Gecentraliseerde logboekregistratie implementeren |
 
-## <a id="logging-cloud-gateway"></a>Zorg ervoor dat de juiste controle en logboek registratie wordt afgedwongen op de Cloud gateway
+## <a name="ensure-that-appropriate-auditing-and-logging-is-enforced-on-field-gateway"></a><a id="logging-field-gateway"></a>Ervoor zorgen dat de juiste controle en logboekregistratie wordt afgedwongen op Field Gateway
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | IoT-Cloud gateway | 
+| **Component**               | IoT-veldgateway | 
 | **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Encarta |
-| **Eigenschappen**              | N/A  |
-| **Referentie**              | [Inleiding tot de bewaking van IoT Hub bewerkingen](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
-| **Stappen** | <p>Ontwerp voor het verzamelen en opslaan van controle gegevens die zijn verzameld via IoT Hub Operations-bewaking. De volgende bewakings categorieën inschakelen:</p><ul><li>Bewerkingen voor apparaat-id's</li><li>Communicatie tussen apparaat en Cloud</li><li>Communicatie tussen Cloud en apparaat</li><li>Verbindingen</li><li>Uploaden van bestanden</li></ul>|
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | N.v.t.  |
+| **Stappen** | <p>Wanneer meerdere apparaten verbinding maken met een veldgateway, moet u ervoor zorgen dat verbindingspogingen en verificatiestatus (succes of uitval) voor afzonderlijke apparaten worden geregistreerd en onderhouden in de Veldgateway.</p><p>Ook in gevallen waarin Field Gateway de IoT Hub-referenties voor afzonderlijke apparaten onderhoudt, moet u ervoor zorgen dat de controle wordt uitgevoerd wanneer deze referenties worden opgehaald. Ontwikkel een proces om de logboeken periodiek te uploaden naar Azure IoT Hub/storage voor langdurige retentie.</p> |
+
+## <a name="ensure-that-appropriate-auditing-and-logging-is-enforced-on-cloud-gateway"></a><a id="logging-cloud-gateway"></a>Ervoor zorgen dat de juiste controle en logboekregistratie wordt afgedwongen op Cloud Gateway
+
+| Titel                   | Details      |
+| ----------------------- | ------------ |
+| **Component**               | IoT Cloud Gateway | 
+| **SDL-fase**               | Ontwikkelen |  
+| **Toepasselijke technologieën** | Algemeen |
+| **Kenmerken**              | N.v.t.  |
+| **Verwijzingen**              | [Inleiding tot monitoring van IoT Hub-bewerkingen](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
+| **Stappen** | <p>Ontwerp voor het verzamelen en opslaan van controlegegevens die zijn verzameld via IoT Hub Operations Monitoring. Schakel de volgende bewakingscategorieën in:</p><ul><li>Apparaatidentiteitsbewerkingen</li><li>Device-to-cloud communicatie</li><li>Communicatie tussen cloud en apparaat</li><li>Verbindingen</li><li>Bestandsuploads</li></ul>|

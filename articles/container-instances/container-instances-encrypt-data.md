@@ -1,110 +1,110 @@
 ---
 title: Implementatiegegevens versleutelen
-description: Meer informatie over het versleutelen van gegevens die zijn opgeslagen voor de resources van de container instantie en hoe u de gegevens versleutelt met een door de klant beheerde sleutel
+description: Meer informatie over versleuteling van gegevens die zijn gebruikt voor uw containerinstantiebronnen en hoe u de gegevens versleutelen met een door de klant beheerde sleutel
 ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080357"
 ---
 # <a name="encrypt-deployment-data"></a>Implementatiegegevens versleutelen
 
-Bij het uitvoeren van Azure Container Instances (ACI)-resources in de cloud worden met de ACI-service gegevens verzameld en persistent gemaakt met betrekking tot uw containers. Met ACI worden deze gegevens automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Deze versleuteling beveiligt uw gegevens om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. ACI biedt u ook de mogelijkheid om deze gegevens te versleutelen met uw eigen sleutel, zodat u meer controle hebt over de gegevens met betrekking tot uw ACI-implementaties.
+Wanneer azure containerinstances (ACI)-resources in de cloud worden uitgevoerd, verzamelt en blijft de ACI-service gegevens met betrekking tot uw containers verzamelen en onderhouden. ACI versleutelt deze gegevens automatisch wanneer deze in de cloud worden weergegeven. Deze versleuteling beschermt uw gegevens om te voldoen aan de beveiligings- en nalevingsverplichtingen van uw organisatie. ACI geeft u ook de mogelijkheid om deze gegevens te versleutelen met uw eigen sleutel, zodat u meer controle hebt over de gegevens met betrekking tot uw ACI-implementaties.
 
-## <a name="about-aci-data-encryption"></a>Over ACI-gegevens versleuteling 
+## <a name="about-aci-data-encryption"></a>Over ACI-gegevensversleuteling 
 
-Gegevens in ACI worden versleuteld en ontsleuteld met 256-bits AES-versleuteling. Deze functie is ingeschakeld voor alle ACI-implementaties en u hoeft uw implementatie of containers niet te wijzigen om te profiteren van deze versleuteling. Dit omvat meta gegevens over de implementatie, omgevings variabelen, sleutels die worden door gegeven aan uw containers en logboeken die persistent zijn gemaakt nadat de containers zijn gestopt, zodat u ze nog steeds kunt zien. Versleuteling heeft geen invloed op de prestaties van de container groep en er zijn geen extra kosten voor versleuteling.
+Gegevens in ACI worden versleuteld en gedecodeerd met behulp van 256-bits AES-versleuteling. Het is ingeschakeld voor alle ACI-implementaties en u hoeft uw implementatie of containers niet te wijzigen om gebruik te maken van deze versleuteling. Dit omvat metagegevens over de implementatie, omgevingsvariabelen, sleutels die worden doorgegeven in uw containers en logboeken die zijn blijven bestaan nadat uw containers zijn gestopt, zodat u ze nog steeds zien. Versleuteling heeft geen invloed op de prestaties van uw containergroep en er zijn geen extra kosten voor versleuteling.
 
-## <a name="encryption-key-management"></a>Versleutelings sleutel beheer
+## <a name="encryption-key-management"></a>Beheer van versleutelingssleutels
 
-U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen van de container gegevens of u kunt de versleuteling beheren met uw eigen sleutels. De volgende tabel vergelijkt deze opties: 
+U vertrouwen op door Microsoft beheerde sleutels voor de versleuteling van uw containergegevens, of u de versleuteling beheren met uw eigen sleutels. In de volgende tabel worden de volgende opties vergeleken: 
 
-|    |    Door micro soft beheerde sleutels     |     Door klant beheerde sleutels     |
+|    |    Door Microsoft beheerde sleutels     |     Door klant beheerde sleutels     |
 |----|----|----|
-|    Bewerkingen voor versleuteling/ontsleuteling    |    Azure    |    Azure    |
-|    Sleutel opslag    |    Micro soft-sleutel archief    |    Azure Key Vault    |
-|    Verantwoordelijkheid voor sleutel rotatie    |    Microsoft    |    Klant    |
-|    Sleutel toegang    |    Alleen micro soft    |    Micro soft, klant    |
+|    Versleutelings-/decryptiebewerkingen    |    Azure    |    Azure    |
+|    Sleutelopslag    |    Microsoft-sleutelarchief    |    Azure Key Vault    |
+|    Belangrijkste rotatieverantwoordelijkheid    |    Microsoft    |    Klant    |
+|    Toegang tot sleutels    |    Alleen Microsoft    |    Microsoft, Klant    |
 
-In de rest van het document worden de stappen beschreven die nodig zijn voor het versleutelen van uw ACI-implementatie gegevens met uw sleutel (door de klant beheerde sleutel). 
+De rest van het document heeft betrekking op de stappen die nodig zijn om uw ACI-implementatiegegevens te versleutelen met uw sleutel (door de klant beheerde sleutel). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="encrypt-data-with-a-customer-managed-key"></a>Gegevens versleutelen met een door de klant beheerde sleutel
 
-### <a name="create-service-principal-for-aci"></a>Een service-principal maken voor ACI
+### <a name="create-service-principal-for-aci"></a>Serviceprincipal maken voor ACI
 
-De eerste stap is om ervoor te zorgen dat uw [Azure-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) beschikt over een service-principal die is toegewezen voor het verlenen van machtigingen aan de Azure container instances-service. 
+De eerste stap is ervoor te zorgen dat uw [Azure-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) een serviceprincipal heeft toegewezen voor het verlenen van machtigingen voor de Azure Container Instances-service. 
 
 > [!IMPORTANT]
-> Als u de volgende opdracht wilt uitvoeren en een Service-Principal wilt maken, controleert u of u gemachtigd bent om service-principals in uw Tenant te maken.
+> Als u de volgende opdracht wilt uitvoeren en een serviceprincipal wilt maken, bevestigt u dat u machtigingen hebt om serviceprincipals in uw tenant te maken.
 >
 
-Met de volgende CLI-opdracht wordt de ACI-SP in uw Azure-omgeving ingesteld:
+Met de volgende opdracht CLI stelt u de ACI SP in uw Azure-omgeving in:
 
 ```azurecli-interactive
 az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
-Bij de uitvoer van deze opdracht moet u een Service-Principal weer geven die is ingesteld met ' displayName ': ' Azure container instance-service '.
+De uitvoer van het uitvoeren van deze opdracht moet u een serviceprincipal weergeven die is ingesteld met 'displayName': 'Azure Container Instance Service'.
 
-Als u de Service-Principal niet kunt maken, doet u het volgende:
-* Bevestig dat u gemachtigd bent om dit te doen in uw Tenant
-* Controleer of er al een Service-Principal in uw Tenant bestaat voor de implementatie naar ACI. U kunt dit doen door `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` uit te voeren en in plaats daarvan die service-principal te gebruiken
+Als u de serviceprincipal niet maken:
+* bevestigen dat u machtigingen hebt om dit te doen in uw tenant
+* controleer of er al een serviceprincipal in uw tenant aanwezig is voor implementatie naar ACI. U dat `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` doen door die serviceprincipal uit te voeren en te gebruiken
 
-### <a name="create-a-key-vault-resource"></a>Een Key Vault resource maken
+### <a name="create-a-key-vault-resource"></a>Een Key Vault-bron maken
 
-Maak een Azure Key Vault met behulp van [Azure Portal](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault), [cli](https://docs.microsoft.com/azure/key-vault/quick-create-cli)of [Power shell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell). 
+Maak een Azure Key Vault met [Azure portal,](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) [CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli)of [PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell). 
 
-Gebruik de volgende richt lijnen voor de eigenschappen van uw sleutel kluis: 
-* Naam: een unieke naam is vereist. 
-* Abonnement: Kies een abonnement.
-* Onder resource groep kiest u een bestaande resource groep of maakt u een nieuwe en voert u de naam van een resource groep in.
-* Kies een locatie in de vervolg keuzelijst locatie.
-* U kunt de standaard waarden van de andere opties wijzigen of kiezen op basis van aanvullende vereisten.
+Gebruik de volgende richtlijnen voor de eigenschappen van uw sleutelkluis: 
+* Naam: geef een unieke naam op. 
+* Abonnement: kies een abonnement.
+* Kies onder Resourcegroep een bestaande resourcegroep of maak nieuwe en voer een naam van de resourcegroep in.
+* Kies een locatie in de vervolgkeuzelijst Locatie.
+* U de andere opties aan hun standaardinstellingen overlaten of kiezen op basis van aanvullende vereisten.
 
 > [!IMPORTANT]
-> Wanneer door de klant beheerde sleutels worden gebruikt voor het versleutelen van een ACI-implementatie sjabloon, wordt aangeraden de volgende twee eigenschappen in te stellen op de sleutel kluis, zacht verwijderen en niet leeg te maken. Deze eigenschappen zijn niet standaard ingeschakeld, maar kunnen worden ingeschakeld met Power shell of Azure CLI in een nieuwe of bestaande sleutel kluis.
+> Wanneer u door de klant beheerde sleutels gebruikt om een ACI-implementatiesjabloon te versleutelen, wordt aanbevolen de volgende twee eigenschappen in te stellen op de sleutelkluis, Soft Delete en Do Not Purge. Deze eigenschappen zijn standaard niet ingeschakeld, maar kunnen worden ingeschakeld met PowerShell of Azure CLI op een nieuwe of bestaande sleutelkluis.
 
 ### <a name="generate-a-new-key"></a>Een nieuwe sleutel genereren 
 
-Als uw sleutel kluis is gemaakt, gaat u naar de resource in Azure Portal. Klik in het navigatie menu aan de linkerkant van de Blade resource onder instellingen op **sleutels**. Klik in de weer gave voor ' sleutels ' op genereren/importeren ' om een nieuwe sleutel te genereren. Gebruik een unieke naam voor deze sleutel en andere voor keuren op basis van uw vereisten. 
+Zodra uw sleutelkluis is gemaakt, navigeert u naar de bron in azure-portal. Klik in het linkernavigatiemenu van het resourceblad onder Instellingen op **Toetsen**. Klik in de weergave 'Sleutels' op Genereren/importeren om een nieuwe sleutel te genereren. Gebruik een unieke naam voor deze sleutel en eventuele andere voorkeuren op basis van uw vereisten. 
 
 ![Een nieuwe sleutel genereren](./media/container-instances-encrypt-data/generate-key.png)
 
-### <a name="set-access-policy"></a>Toegangs beleid instellen
+### <a name="set-access-policy"></a>Toegangsbeleid instellen
 
-Maak een nieuw toegangs beleid om de ACI-service toegang tot uw sleutel te geven.
+Maak een nieuw toegangsbeleid om de ACI-service toegang te geven tot uw sleutel.
 
-* Als uw sleutel is gegenereerd, klikt u op de Blade sleutel kluis resource onder instellingen op **toegangs beleid**.
-* Klik op **toegangs beleid toevoegen**op de pagina toegangs beleid voor uw sleutel kluis.
-* Stel de *sleutel machtigingen* in om de sleutel **Get** en **unwrap** op te geven ![sleutel machtigingen instellen](./media/container-instances-encrypt-data/set-key-permissions.png)
-* Selecteer voor *Select Principal*de **service Azure container instance**
-* Klik onderaan op **toevoegen** 
+* Zodra uw sleutel is gegenereerd, klikt u onder Instellingen op **Toegangsbeleid**onder Instellingen.
+* Klik op de pagina Toegangsbeleid voor uw sleutelkluis op **Toegangsbeleid toevoegen**.
+* De *sleutelmachtigingen* instellen om sleutelmachtigingen **voor het aanvragen** en uitpakken van **sleutelsets** ![op te nemen](./media/container-instances-encrypt-data/set-key-permissions.png)
+* Selecteer Azure **Container Instance Service** voor Principal *selecteren*
+* Klik onderaan **op Toevoegen** 
 
-Het toegangs beleid wordt nu weer gegeven in het toegangs beleid van uw sleutel kluis.
+Het toegangsbeleid moet nu worden weergegeven in het toegangsbeleid van uw sleutelkluis.
 
-![Nieuw toegangs beleid](./media/container-instances-encrypt-data/access-policy.png)
+![Nieuw toegangsbeleid](./media/container-instances-encrypt-data/access-policy.png)
 
-### <a name="modify-your-json-deployment-template"></a>De JSON-implementatie sjabloon wijzigen
+### <a name="modify-your-json-deployment-template"></a>Uw JSON-implementatiesjabloon wijzigen
 
 > [!IMPORTANT]
-> Het versleutelen van implementatie gegevens met een door de klant beheerde sleutel is beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt geïmplementeerd. Geef deze API-versie op in uw implementatie sjabloon. Neem contact op met de ondersteuning van Azure als u problemen ondervindt.
+> Het versleutelen van implementatiegegevens met een door de klant beheerde sleutel is beschikbaar in de nieuwste API-versie (2019-12-01) die momenteel wordt uitgerold. Geef deze API-versie op in uw implementatiesjabloon. Als u hier problemen mee hebt, neem dan contact op met Azure Support.
 
-Wanneer de sleutel kluis sleutel en het toegangs beleid zijn ingesteld, voegt u de volgende eigenschappen toe aan uw ACI-implementatie sjabloon. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelf studie: een groep met meerdere containers implementeren met behulp van een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* Stel onder `resources``apiVersion` in op `2019-12-01`.
-* Voeg onder de sectie eigenschappen van container groep van de implementatie sjabloon een `encryptionProperties`toe, die de volgende waarden bevat:
-  * `vaultBaseUrl`: de DNS-naam van uw sleutel kluis kunt u vinden op de Blade overzicht van de sleutel kluis bron in de portal
-  * `keyName`: de naam van de sleutel die u eerder hebt gegenereerd
-  * `keyVersion`: de huidige versie van de sleutel. U kunt dit vinden door te klikken op de sleutel zelf (onder sleutels in de sectie instellingen van uw sleutel kluis resource).
-* Voeg onder de eigenschappen van de container groep een `sku` eigenschap toe met de waarde `Standard`. De eigenschap `sku` is vereist in API-versie 2019-12-01.
+Zodra de sleutelkluissleutel en het toegangsbeleid zijn ingesteld, voegt u de volgende eigenschappen toe aan uw ACI-implementatiesjabloon. Meer informatie over het implementeren van ACI-resources met een sjabloon in de [zelfstudie: een groep met meerdere containers implementeren met behulp van een resourcemanagersjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+* Onder `resources`, `apiVersion` `2019-12-01`ingesteld op .
+* Voeg onder de sectie eigenschappen van de `encryptionProperties`containergroep van de implementatiesjabloon een , die de volgende waarden bevat, toe:
+  * `vaultBaseUrl`: de DNS-naam van uw sleutelkluis, is te vinden op het overzichtsblad van de sleutelkluisbron in Portal
+  * `keyName`: de naam van de eerder gegenereerde sleutel
+  * `keyVersion`: de huidige versie van de sleutel. Dit kan worden gevonden door te klikken in de sleutel zelf (onder "Sleutels" in de sectie Instellingen van uw sleutelkluis bron)
+* Voeg onder de eigenschappen `sku` van de `Standard`containergroep een eigenschap met waarde toe . De `sku` eigenschap is vereist in API-versie 2019-12-01.
 
-In het volgende sjabloon fragment worden de volgende aanvullende eigenschappen weer gegeven voor het versleutelen van implementatie gegevens:
+In het volgende sjabloonfragment worden de volgende eigenschappen weergegeven om implementatiegegevens te versleutelen:
 
 ```json
 [...]
@@ -129,7 +129,7 @@ In het volgende sjabloon fragment worden de volgende aanvullende eigenschappen w
 ]
 ```
 
-Hieronder volgt een volledige sjabloon, aangepast aan de hand van de sjabloon in [zelf studie: een groep met meerdere containers implementeren met een resource manager-sjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Hieronder volgt een volledige sjabloon, aangepast aan de sjabloon in [Zelfstudie: Een groep met meerdere containers implementeren met behulp van een resourcemanagersjabloon](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
 
 ```json
 {
@@ -225,7 +225,7 @@ Hieronder volgt een volledige sjabloon, aangepast aan de hand van de sjabloon in
 
 ### <a name="deploy-your-resources"></a>Uw resources implementeren
 
-Als u het sjabloon bestand op uw bureau blad hebt gemaakt en bewerkt, kunt u het uploaden naar uw Cloud Shell Directory door het bestand naar de map te slepen. 
+Als u het sjabloonbestand op uw bureaublad hebt gemaakt en bewerkt, u het uploaden naar uw Cloud Shell-map door het bestand erin te slepen. 
 
 Een resourcegroep maken met de opdracht [az group create][az-group-create].
 
@@ -233,13 +233,13 @@ Een resourcegroep maken met de opdracht [az group create][az-group-create].
 az group create --name myResourceGroup --location eastus
 ```
 
-Implementeer de sjabloon met de opdracht [AZ Group Deployment Create][az-group-deployment-create] .
+Implementeer de sjabloon met de [opdracht Implementatie van az-groep.][az-group-deployment-create]
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-U ontvangt binnen enkele seconden een eerste reactie van Azure. Zodra de implementatie is voltooid, worden alle gegevens die betrekking hebben op deze door de ACI-service bewaard, versleuteld met de sleutel die u hebt ingevoerd.
+U ontvangt binnen enkele seconden een eerste reactie van Azure. Zodra de implementatie is voltooid, worden alle gegevens die ermee verbonden zijn door de ACI-service versleuteld met de door u opgegeven sleutel.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

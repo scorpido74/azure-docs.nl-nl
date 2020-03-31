@@ -9,20 +9,20 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8a2e5defd0672516d52d4f3477641f39eca63368
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597788"
 ---
-Standaard-bestands shares kunnen Maxi maal 5 TiB omvatten, hoewel de limiet voor delen kan worden verhoogd tot 100 TiB. Hiervoor moet de functie voor *grote bestands shares* worden ingeschakeld op het niveau van het opslag account. Premium Storage-accounts (*FileStorage* -opslag accounts) beschikken niet over de functie voor het delen van grote bestanden omdat alle Premium-bestands shares al zijn ingeschakeld voor het inrichten van maxi maal 100 TIB capaciteit.
+Standaard kunnen standaard bestandsshares slechts tot 5 TiB overspannen, hoewel de limiet voor het aandeel kan worden verhoogd tot 100 TiB. Hiervoor moet *de functie voor grote bestandsshare-functies* zijn ingeschakeld op het niveau van de opslagaccount. Premium opslagaccounts *(FileStorage-opslagaccounts)* hebben niet de vlag van de grote bestandsshare-functie, omdat alle premium bestandsshares al zijn ingeschakeld voor het inrichten van maximaal de volledige 100 TiB-capaciteit.
 
-U kunt grote bestands shares alleen inschakelen op lokaal redundante of zone redundante standaard opslag accounts. Wanneer u de functie vlag voor grote bestands shares hebt ingeschakeld, kunt u het redundantie niveau niet wijzigen in geografisch redundante opslag of geo-zone-redundantie.
+U alleen grote bestandsshares inschakelen op lokaal redundante of zoneredundante standaardopslagaccounts. Nadat u de vlag van de grote bestandssharefunctie hebt ingeschakeld, u het redundantieniveau niet wijzigen in georedundante of geozoneredundante opslag.
 
-Als u grote bestands shares wilt inschakelen voor een bestaand opslag account, gaat u naar de **configuratie** weergave van de inhouds opgave van het opslag account en schakelt u de schakel optie voor grote bestands shares op ingeschakeld:
+Als u grote bestandsshares op een bestaand opslagaccount wilt inschakelen, navigeert u naar de **configuratieweergave** in de inhoudsopgave van het opslagaccount en schakelt u de grote schakelaar voor het delen van bestanden naar ingeschakeld:
 
-![Een scherm opname van de schakel optie grote bestands shares beschikbaar maken in de Azure Portal](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
+![Een schermafbeelding van de schakelaar voor het inschakelen van grote bestandssharerockers in de Azure-portal](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
 
-U kunt ook 100 TiB-bestands shares inschakelen via de [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) Power shell-cmdlet en de [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) Azure cli-opdracht.
+U ook 100 TiB-bestandsshares inschakelen via [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) de PowerShell-cmdlet en de opdracht Azure CLI.
 
-Zie [een Azure-bestands share maken](../articles/storage/files/storage-how-to-create-file-share.md)voor meer informatie over het inschakelen van grote bestands shares voor nieuwe opslag accounts.
+Zie [Een Azure-bestandsshare maken](../articles/storage/files/storage-how-to-create-file-share.md)voor meer informatie over het inschakelen van grote bestandsshares op nieuwe opslagaccounts.

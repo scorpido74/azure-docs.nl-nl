@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 1c3996c3f40da496af0cd795d0873864667a1f19
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176040"
 ---
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
-1. Selecteer de virtuele machine die u wilt implementeren, en selecteer vervolgens de *opnieuw implementeren* knop in de *instellingen* blade. Mogelijk moet u scrollen om te controleren de **ondersteuning en probleemoplossing** sectie met de knop 'Implementeren' zoals in het volgende voorbeeld:
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+1. Selecteer de VM die u opnieuw wilt implementeren en selecteer vervolgens de knop *Opnieuw implementeren* in het *mes Instellingen.* Mogelijk moet u omlaag scrollen om de sectie **Ondersteuning en probleemoplossing** te zien die de knop 'Opnieuw implementeren' bevat, zoals in het volgende voorbeeld:
    
-    ![Azure VM-beheerblade](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
-2. Om te bevestigen dat de bewerking, selecteer de *opnieuw implementeren* knop:
+    ![Azure VM-blad](./media/virtual-machines-common-redeploy-to-new-node/vmoverview.png)
+2. Als u de bewerking wilt bevestigen, selecteert u de knop *Opnieuw implementeren:*
    
-    ![Opnieuw implementeren van een VM-beheerblade](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)
-3. De **Status** van de virtuele machine wordt gewijzigd in *bijwerken* als de virtuele machine wordt voorbereid om te implementeren, zoals wordt weergegeven in het volgende voorbeeld:
+    ![Een VM-blad opnieuw implementeren](./media/virtual-machines-common-redeploy-to-new-node/redeployvm.png)
+3. De **status** van de VM verandert in *bijwerken* terwijl de VM zich voorbereidt op herimplementatie, zoals in het volgende voorbeeld wordt weergegeven:
    
-    ![Virtuele machine bijwerken](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
-4. De **Status** wordt gewijzigd in *vanaf* als de virtuele machine wordt opgestart op een nieuwe Azure-host, zoals wordt weergegeven in het volgende voorbeeld:
+    ![VM-updates](./media/virtual-machines-common-redeploy-to-new-node/vmupdating.png)
+4. De **status** wordt vervolgens gewijzigd in *Starten* terwijl de VM wordt opgestart op een nieuwe Azure-host, zoals in het volgende voorbeeld wordt weergegeven:
    
     ![VM starten](./media/virtual-machines-common-redeploy-to-new-node/vmstarting.png)
-5. Nadat de virtuele machine klaar is met het opstartproces, de **Status** retourneert vervolgens naar *met*, die wijzen op de virtuele machine is opnieuw is gedistribueerd:
+5. Nadat de VM het opstartproces heeft voltooid, wordt de **status** vervolgens geretourneerd naar *Uitvoeren,* wat aangeeft dat de VM opnieuw is geïmplementeerd:
    
-    ![Virtuele machine wordt uitgevoerd](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
+    ![VM-uitgevoerd](./media/virtual-machines-common-redeploy-to-new-node/vmrunning.png)
 

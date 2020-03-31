@@ -1,6 +1,6 @@
 ---
-title: Onboarding van machines voor beheer door Azure Automation status configuratie
-description: Computers instellen voor beheer met Azure Automation status configuratie
+title: Onboarding-machines voor beheer door Azure Automation State Configuration
+description: Machines instellen voor beheer met Azure Automation State Configuration
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,110 +9,113 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 89e86a6702be7314b99975cac90818252eb07df7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
-ms.translationtype: MT
+ms.openlocfilehash: 0bf70b73098427847c73b4dd962d56d44fe6ee2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278959"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283205"
 ---
-# <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding van machines voor beheer door Azure Automation status configuratie
+# <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding-machines voor beheer door Azure Automation State Configuration
 
-## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>Waarom computers met Azure Automation status configuratie beheren?
+## <a name="why-manage-machines-with-azure-automation-state-configuration"></a>Waarom machines beheren met Azure Automation State Configuration?
 
-Azure Automation status configuratie is een configuratie beheer service voor DSC-knoop punten (desired state Configuration) in elke Cloud of on-premises Data Center.
-Hiermee kan de schaal baarheid van duizenden computers snel en eenvoudig worden uitgebreid vanaf een centrale, veilige locatie.
-U kunt eenvoudig computers onboarden, de declaratieve configuraties toewijzen en rapporten weer geven met de naleving van elke computer die u hebt opgegeven.
-De Azure Automation State Configuration-service is van DSC wat Azure Automation runbooks zijn voor het uitvoeren van Power shell-scripts.
-Met andere woorden, op dezelfde manier als Azure Automation u bij het beheren van Power shell-scripts, kunt u ook DSC-configuraties beheren.
-Zie [Azure Automation status configuratie Overview](automation-dsc-overview.md)(Engelstalig) voor meer informatie over de voor delen van het gebruik van Azure Automation status configuratie.
+Azure Automation State Configuration is a configuration management service for Desired State Configuration (DSC) nodes in any cloud or on-premises datacenter. Het is toegankelijk in de Azure-portal door **statusconfiguratie (DSC)** te selecteren onder **Configuratiebeheer**. 
 
-Azure Automation status configuratie kan worden gebruikt voor het beheren van verschillende computers:
+Deze service maakt schaalbaarheid over duizenden machines snel en eenvoudig mogelijk vanaf een centrale, veilige locatie. U eenvoudig machines aan boord nemen, ze declaratieve configuraties toewijzen en rapporten weergeven die aangeven dat elke machine voldoet aan de gewenste status die u opgeeft.
+
+De azure automation state configuration service is aan DSC wat Azure Automation runbooks zijn voor PowerShell-scripting. Met andere woorden, op dezelfde manier dat Azure Automation u helpt bij het beheren van PowerShell-scripts, helpt het u ook bij het beheren van DSC-configuraties. Zie Azure [Automation State Configuration Overview](automation-dsc-overview.md)voor meer informatie over de voordelen van het gebruik van Azure Automation State Configuration.
+
+Azure Automation State Configuration kan worden gebruikt om verschillende machines te beheren:
 
 - Virtuele machines van Azure
-- Azure virtual machines (klassiek)
-- Fysieke/virtuele Windows-machines on-premises of in een andere Cloud dan Azure (met inbegrip van AWS EC2-instanties)
-- Fysieke/virtuele Linux-machines on-premises, in azure of in een andere Cloud dan Azure
+- Azure virtuele machines (klassiek)
+- Fysieke/virtuele Windows-machines on-premises of in een andere cloud dan Azure (inclusief AWS EC2-exemplaren)
+- Fysieke/virtuele Linux-machines on-premises, in Azure of in een andere cloud dan Azure
 
-Als u de computer configuratie niet kunt beheren vanuit de Cloud, kan de configuratie van Azure Automation-status ook worden gebruikt als een eind punt voor alleen een rapport.
-Hiermee kunt u configuratie (push) configuraties via DSC instellen en rapportage details weer geven in Azure Automation.
-
-> [!NOTE]
-> Het beheren van Azure-Vm's met status configuratie is zonder extra kosten inbegrepen als de DSC-extensie van de virtuele machine is geïnstalleerd, groter is dan 2,70. Zie de [**pagina met prijzen voor Automation**](https://azure.microsoft.com/pricing/details/automation/)voor meer informatie.
-
-In de volgende secties wordt beschreven hoe u elk type machine kunt toevoegen aan Azure Automation status configuratie.
+Als u nog niet klaar bent om de machineconfiguratie vanuit de cloud te beheren, u Azure Automation State Configuration gebruiken als een eindpunt voor alleen rapport. Met deze functie u (push)-configuraties instellen via DSC en rapportagedetails weergeven in Azure Automation.
 
 > [!NOTE]
->Het implementeren van DSC voor een Linux-knoop punt maakt gebruik van de `/tmp` map en modules zoals **nxAutomation** zijn tijdelijk gedownload voor verificatie voordat ze op de juiste locatie worden geïnstalleerd. Om ervoor te zorgen dat de modules goed worden geïnstalleerd, vereist de Log Analytics-agent voor Linux lees-/schrijfmachtigingen op `/tmp` map. De Log Analytics-agent voor Linux wordt uitgevoerd als de `omsagent` gebruiker. 
->
->Als u schrijf machtiging wilt verlenen aan `omsagent` gebruiker, voert u de volgende opdrachten uit: `setfacl -m u:omsagent:rwx /tmp`
->
+> Azure VM's beheren met Azure Automation State Configuration is gratis inbegrepen als de geïnstalleerde Azure VM Desired State Configuration extension version groter is dan 2.70. Zie [**Prijspagina Automatisering voor**](https://azure.microsoft.com/pricing/details/automation/)meer informatie.
 
-## <a name="azure-virtual-machines"></a>Virtuele machines van Azure
+In de volgende secties van dit artikel wordt beschreven hoe u de hierboven vermelde machines aanpassen aan azure automation state configuration.
 
-Met de configuratie van de Azure Automation-status kunt u Azure virtual machines eenvoudig voor configuratie beheer uitvoeren met behulp van de Azure Portal, Azure Resource Manager sjablonen of Power shell. Op de schermen en zonder een beheerder die op afstand in de virtuele machine moet worden uitgevoerd, registreert de Azure VM desired state Configuration extension de VM met Azure Automation status configuratie.
-Omdat de configuratie-uitbrei ding desired state van Azure VM asynchroon wordt uitgevoerd, stappen om de voortgang op te sporen of problemen op te lossen, vindt u in de volgende sectie [**problemen met het voorbereiden van een virtuele machine in azure oplossen**](#troubleshooting-azure-virtual-machine-onboarding) .
+## <a name="onboarding-azure-vms"></a>Onboarding Azure VM's
 
-### <a name="azure-portal"></a>Azure-portal
+Met Azure Automation State Configuration u eenvoudig azure VM's instappen voor configuratiebeheer, met behulp van de Azure-portal, Azure Resource Manager-sjablonen of PowerShell. Onder de motorkap en zonder dat een beheerder een afstandsbediening in een VM hoeft te gebruiken, registreert de azure VM Desired State Configuration extension de VM met Azure Automation State Configuration. Aangezien de Azure-extensie asynchroon wordt uitgevoerd, worden stappen om de voortgang bij te houden of problemen op te lossen aangeboden in het gedeelte [Azure-onboarding](#troubleshooting-azure-virtual-machine-onboarding) voor virtuele machines van dit artikel.
 
-Ga in het [Azure Portal](https://portal.azure.com/)naar het Azure Automation account waar u virtuele machines wilt voorbereiden. Klik op de pagina status configuratie en het tabblad **knoop punten** op **+ toevoegen**.
+> [!NOTE]
+>Het implementeren van DSC naar een Linux-knooppunt maakt gebruik van de **/tmp-map.** Modules zoals `nxautomation` worden tijdelijk gedownload voor verificatie voordat ze op de juiste locaties worden geïnstalleerd. Om ervoor te zorgen dat modules correct worden geïnstalleerd, heeft de Log Analytics-agent voor Linux lees-/schrijfmachtigingen nodig voor de **/tmp-map.**<br><br>
+>De Log Analytics-agent voor `omsagent` Linux wordt uitgevoerd als gebruiker. Als u de `omsagent` gebruiker >schrijftoestemming `setfacl -m u:omsagent:rwx /tmp`wilt verlenen, voert u de opdracht uit .
 
-Selecteer een virtuele Azure-machine die u wilt vrijgeven.
+### <a name="onboard-a-vm-using-azure-portal"></a>Aan boord van een VM met Azure-portal
 
-Als op de computer niet de gewenste uitbrei ding voor Power shell is geïnstalleerd en de energie status actief is, klikt u op **verbinding maken**.
+Ga als lid aan boord van een Azure VM naar Azure Automation State Configuration via de [Azure-portal:](https://portal.azure.com/)
 
-Voer onder **registratie**de [lokale Power shell DSC-Configuration Manager waarden](/powershell/scripting/dsc/managing-nodes/metaConfig) in die vereist zijn voor uw use-case en eventueel een knooppunt configuratie die aan de virtuele machine moet worden toegewezen.
+1. Navigeer naar het Azure Automation-account waarin vm's aan boord gaan. 
+
+2. Selecteer op de pagina Statusconfiguratie het tabblad **Knooppunten** en klik op **Toevoegen**.
+
+3. Kies een VM aan boord.
+
+4. Als de machine niet de gewenste powershell-extensie heeft geïnstalleerd en de energiestatus wordt uitgevoerd, klikt u op **Verbinden**.
+
+5. Voer **onder Registratie**de [PowerShell DSC Local Configuration Manager-waarden](/powershell/scripting/dsc/managing-nodes/metaConfig) in die vereist zijn voor uw use case. Optioneel u een knooppuntconfiguratie invoeren die u aan de VM wilt toewijzen.
 
 ![onboarding](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
-### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
+### <a name="onboard-a-vm-using-azure-resource-manager-templates"></a>Een VM aan boord met Azure Resource Manager-sjablonen
 
-Virtuele Azure-machines kunnen worden geïmplementeerd en gedistribueerd naar Azure Automation status configuratie via Azure Resource Manager sjablonen. Zie [server beheerd door desired state Configuration-service](https://azure.microsoft.com/resources/templates/101-automation-configuration/) voor een voorbeeld sjabloon die een bestaande virtuele machine uitschakelt om de status configuratie te Azure Automation.
-Als u een Schaalset voor virtuele machines beheert, raadpleegt u de voorbeeld sjabloon [configuratie van virtuele-machine schaal sets die wordt beheerd door Azure Automation](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
+U een VM implementeren en aan boord nemen van Azure Automation State Configuration met Azure Resource Manager-sjablonen. Zie [Server beheerd door de betekening of seivan configuratie](https://azure.microsoft.com/resources/templates/101-automation-configuration/) door de gewenste status voor een voorbeeldsjabloon die een bestaande VM aandebeidert in Azure Automation State Configuration. Als u een VM-schaalset beheert, raadpleegt u de voorbeeldsjabloon in [vm-schaalsetconfiguratie die wordt beheerd door Azure Automation](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
 
-### <a name="powershell"></a>PowerShell
+### <a name="onboard-machines-using-powershell"></a>Boordmachines met PowerShell
 
-De cmdlet [REGI ster-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) kan worden gebruikt om virtuele machines in azure op te heffen met behulp van Power shell.
-Dit wordt momenteel echter alleen geïmplementeerd voor computers met Windows (de cmdlet activeert alleen de Windows-extensie).
+U de [cmdlet Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) in PowerShell gebruiken om VM's aan boord te nemen van Azure Automation State Configuration. 
 
-### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Virtuele machines in azure-abonnementen registreren
+> [!NOTE]
+>De `Register-AzAutomationDscNode` cmdlet is momenteel alleen geïmplementeerd voor machines met Windows, omdat het alleen de Windows-extensie activeert.
 
-De beste manier om virtuele machines van andere Azure-abonnementen te registreren, is door gebruik te maken van de DSC-extensie in een Azure Resource Manager-implementatie sjabloon.
-Voor beelden vindt u in de [desired state Configuration extension met Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
-Als u de registratie sleutel en registratie-URL wilt vinden die u wilt gebruiken als para meters in de sjabloon, raadpleegt u de sectie de volgende [**veilige registratie**](#secure-registration) .
+### <a name="register-vms-across-azure-subscriptions"></a>VM's registreren voor Azure-abonnementen
 
-## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances"></a>Fysieke/virtuele Windows-machines on-premises of in een andere Cloud dan Azure (met inbegrip van AWS EC2-instanties)
+De beste manier om VM's van andere Azure-abonnementen te registreren, is door de DSC-extensie te gebruiken in een Azure Resource Manager-implementatiesjabloon. Voorbeelden worden gegeven in [de extensie Gewenste statusconfiguratie met Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
 
-Windows-servers die on-premises of in andere Cloud omgevingen worden uitgevoerd, kunnen ook worden gewaakd naar Azure Automation status configuratie, zolang ze [uitgaande toegang hebben tot Azure](automation-dsc-overview.md#network-planning):
+Zie de [onboarding veilig met behulp van de registratiesectie](#onboarding-securely-using-registration) in dit artikel om de registratiesleutel en registratie-URL te vinden die u als parameters in de sjabloon wilt gebruiken.
 
-1. Zorg ervoor dat de meest recente versie van [WMF 5](https://aka.ms/wmf5latest) is geïnstalleerd op de computers die u wilt voorbereiden op Azure Automation status configuratie.
-1. Volg de instructies in de volgende sectie [**DSC-mailconfiguraties**](#generating-dsc-metaconfigurations) genereren voor het genereren van een map met de benodigde DSC-configuratie.
-1. Pas de Power shell DSC-configuratie op afstand toe op de computers die u wilt voorbereiden. **Op de computer waarop deze opdracht wordt uitgevoerd, moet de meest recente versie van [WMF 5](https://aka.ms/wmf5latest) zijn geïnstalleerd**:
+## <a name="onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances"></a>Onboarding fysieke/virtuele Windows-machines on-premises of in een andere cloud dan Azure (inclusief AWS EC2-exemplaren)
+
+U Windows-servers die on-premises of in andere cloudomgevingen worden uitgevoerd, ingebruiknemen in azure automation state configuration. De servers moeten [uitgaande toegang hebben tot Azure.](automation-dsc-overview.md#network-planning)
+
+1. Zorg ervoor dat de nieuwste versie van [WMF 5](https://aka.ms/wmf5latest) is geïnstalleerd op de machines om aan boord te gaan van Azure Automation State Configuration. Bovendien moet WMF 5 worden geïnstalleerd op de computer die u gebruikt voor de onboarding-bewerking.
+1. Volg de aanwijzingen in de sectie [DSC-metaconfiguraties genereren](#generating-dsc-metaconfigurations) om een map te maken met de vereiste DSC-metaconfiguraties. 
+1. Gebruik de volgende cmdlet om de PowerShell DSC-metaconfiguraties op afstand toe te passen op de machines die u aan boord wilt hebben. 
 
    ```powershell
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. Als u de Power shell DSC-webconfiguraties niet op afstand kunt Toep assen, kopieert u de map met de-configuratie van stap 2 op elke computer naar onboarding. Roep vervolgens **set-DscLocalConfigurationManager** lokaal op elke computer aan voor onboarding.
-1. Controleer met behulp van de Azure Portal of cmdlets of de computers die u wilt voorbereiden, worden weer gegeven als status configuratie knooppunten die zijn geregistreerd in uw Azure Automation-account.
+1. Als u de PowerShell DSC-metaconfiguraties niet op afstand toepassen, kopieert u de map **metaconfiguraties** naar de machines die u insuurt. Voeg vervolgens code `Set-DscLocalConfigurationManager` toe om lokaal op de machines te bellen.
+1. Controleer met de Azure-portal of cmdlets of de machines aan boord worden weergegeven als een statusconfiguratieknooppunten die zijn geregistreerd in uw Azure Automation-account.
 
-## <a name="physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure"></a>Fysieke/virtuele Linux-machines on-premises of in een andere Cloud dan Azure
+## <a name="onboarding-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure"></a>Onboarding fysieke/virtuele Linux-machines on-premises of in een andere cloud dan Azure
 
-Linux-servers die on-premises of in andere Cloud omgevingen worden uitgevoerd, kunnen ook worden gewaakd naar Azure Automation status configuratie, zolang ze [uitgaande toegang hebben tot Azure](automation-dsc-overview.md#network-planning):
+U Linux-servers die on-premises of in andere cloudomgevingen worden uitgevoerd, inbouwen op Azure Automation State Configuration. De servers moeten [uitgaande toegang hebben tot Azure.](automation-dsc-overview.md#network-planning)
 
-1. Zorg ervoor dat de meest recente versie van de [Power shell desired state Configuration voor Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) is geïnstalleerd op de computers die u wilt voorbereiden op Azure Automation status configuratie.
-2. Als de [lokale Power shell DSC-Configuration Manager standaard waarden](/powershell/scripting/dsc/managing-nodes/metaConfig4) overeenkomen met uw use-case, en u computers wilt voorbereiden, zodat deze **beide** worden opgehaald en rapporteren aan Azure Automation status configuratie:
+1. Zorg ervoor dat de nieuwste versie van [powershell gewenste statusconfiguratie voor Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) is geïnstalleerd op de machines om aan boord te gaan van Azure Automation State Configuration.
+2. Als de [PowerShell DSC Local Configuration Manager standaard](/powershell/scripting/dsc/managing-nodes/metaConfig4) overeenkomt met uw use case en u machines aan boord wilt nemen, zodat ze zowel uit de configuratie van Azure Automation State trekken als rapporteren:
 
-   - Gebruik op elke Linux-computer om de configuratie van de Azure Automation-status onboarding uit te kunnen `Register.py` de standaard instellingen van Power shell DSC Local Configuration Manager:
+   - Gebruik op elke Linux-machine aan boord `Register.py` van Azure Automation State Configuration de standaardinstellingen voor PowerShell DSC Local Configuration Manager.
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   - Als u de registratie sleutel en registratie-URL voor uw Automation-account wilt vinden, raadpleegt u de sectie de volgende [**beveiligde registratie**](#secure-registration) .
+   - Zie de [Onboarding veilig via de registratiesectie](#onboarding-securely-using-registration) als dit artikel de registratiesleutel en registratie-URL voor uw Automatiseringsaccount wilt vinden.
 
-     Als de lokale Power shell DSC-Configuration Manager standaard waarden **niet** overeenkomen met uw use-case of als u computers wilt voorbereiden die alleen rapporteren aan Azure Automation status configuratie, volgt u stap 3-6. Ga anders verder met stap 6.
+3. Als de standaardinstellingen van PowerShell DSC Local Configuration Manager (LcM) niet overeenkomen met uw use case of als u machines aan boord wilt die alleen rapporteren aan Azure Automation State Configuration, voert u stappen 4-7 uit. Ga anders rechtstreeks naar stap 7.
 
-3. Volg de instructies in de volgende sectie [**DSC-mailconfiguraties genereren**](#generating-dsc-metaconfigurations) om een map te genereren met de benodigde DSC-configuratie.
-4. De Power shell DSC-configuratie op afstand Toep assen op de computers die u wilt vrijgeven:
+4. Volg de aanwijzingen in de sectie [DSC-metaconfiguraties genereren](#generating-dsc-metaconfigurations) om een map te produceren met de vereiste DSC-metaconfiguraties.
+
+5. Zorg ervoor dat de nieuwste versie van [WMF 5](https://aka.ms/wmf5latest) is geïnstalleerd op de machine die wordt gebruikt voor onboarding.
+
+6. Voeg de code als volgt toe om de PowerShell DSC-metaconfiguraties op afstand toe te passen op de machines die u aan boord wilt hebben.
 
     ```powershell
     $SecurePass = ConvertTo-SecureString -String '<root password>' -AsPlainText -Force
@@ -125,28 +128,30 @@ Linux-servers die on-premises of in andere Cloud omgevingen worden uitgevoerd, k
     Set-DscLocalConfigurationManager -CimSession $Session -Path C:\Users\joe\Desktop\DscMetaConfigs
     ```
 
-Op de computer waarop deze opdracht wordt uitgevoerd, moet de meest recente versie van [WMF 5](https://aka.ms/wmf5latest) zijn geïnstalleerd.
+7. Als u de PowerShell DSC-metaconfiguraties niet op afstand toepassen, kopieert u de metaconfiguraties die overeenkomen met de externe machines uit de map die in stap 4 is beschreven, naar de Linux-machines.
 
-1. Als u de Power shell DSC-webconfiguraties niet op afstand kunt Toep assen, kopieert u de door de map in stap 5 op de Linux-computer overeenkomende configuratie van de betreffende computer. Roep vervolgens `SetDscLocalConfigurationManager.py` lokaal aan op elke Linux-computer die u wilt voorbereiden op Azure Automation status configuratie:
+8. Voeg code `Set-DscLocalConfigurationManager.py` toe om lokaal op elke Linux-machine aan te bellen om aan boord te gaan van Azure Automation State Configuration.
 
    `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
 
-2. Als u de Azure Portal of cmdlets wilt gebruiken, controleert u of de computers voor de onboarding nu worden weer gegeven als DSC-knoop punten die zijn geregistreerd in uw Azure Automation-account.
+9. Zorg ervoor dat de machines aan boord nu worden weergegeven als DSC-knooppunten die zijn geregistreerd in uw Azure Automation-account.
 
-## <a name="generating-dsc-metaconfigurations"></a>DSC-configuratie genereren
+## <a name="generating-dsc-metaconfigurations"></a>DSC-metaconfiguraties genereren
 
-Voor een algemene onboarding van elke machine naar Azure Automation status configuratie kan een [DSC-configuratie](/powershell/scripting/dsc/managing-nodes/metaConfig) worden gegenereerd die aangeeft dat de DSC-agent moet worden opgehaald van en/of rapport naar Azure Automation status configuratie. DSC-configuratie voor de configuratie van de Azure Automation-status kan worden gegenereerd met behulp van een Power shell DSC-configuratie of met de Azure Automation Power shell-cmdlets.
-
-> [!NOTE]
-> DSC-mailconfiguraties bevatten de geheimen die nodig zijn om een machine vrij te kunnen uitvoeren naar een Automation-account voor beheer. Zorg ervoor dat u de DSC-configuratie die u maakt op de juiste wijze beveiligt, of verwijder ze na gebruik.
-
-### <a name="using-a-dsc-configuration"></a>Een DSC-configuratie gebruiken
-
-1. Open de VSCode (of uw favoriete editor) als beheerder op een computer in uw lokale omgeving. Op de computer moet de nieuwste versie van [WMF 5](https://aka.ms/wmf5latest) zijn geïnstalleerd.
-1. Kopieer het volgende script lokaal. Dit script bevat een Power shell DSC-configuratie voor het maken van een eigen configuratie en een opdracht voor het maken van de configuratie van de-de-de-de-de-de
+Als u een machine wilt aan boord van Azure Automation State Configuration, u een [DSC-metaconfiguratie](/powershell/scripting/dsc/managing-nodes/metaConfig)genereren. Met deze configuratie moet de DSC-agent uit azure automation state configuration trekken en/of rapporteren. U een DSC-metaconfiguratie voor Azure Automation State Configuration genereren met behulp van een PowerShell DSC-configuratie of de Azure Automation PowerShell-cmdlets.
 
 > [!NOTE]
-> Naam configuratie knooppunt configuratie namen zijn hoofdletter gevoelig in de portal. Als de aanvraag niet overeenkomt met het knoop punt, wordt niet weer gegeven op het tabblad **knoop punten** .
+> DSC-metaconfiguraties bevatten de geheimen die nodig zijn om een machine aan boord te nemen van een automatiseringsaccount voor beheer. Zorg ervoor dat u alle DSC-metaconfiguraties die u maakt, goed beschermt of verwijder ze na gebruik.
+
+Proxy-ondersteuning voor metaconfiguraties wordt beheerd door LCM, de Windows PowerShell DSC-engine. De LCM draait op alle doelknooppunten en is verantwoordelijk voor het aanroepen van de configuratiebronnen die zijn opgenomen in een DSC-metaconfiguratiescript. U proxy-ondersteuning opnemen in een metaconfiguratie door definities van de `ConfigurationRepositoryWeb` `ResourceRepositoryWeb`proxy-URL en de proxy-referentie op te nemen indien nodig in de, en `ReportServerWeb` blokken. Zie [Lokaal configuratiebeheer configureren](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7).
+
+### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>DSC-metaconfiguraties genereren met behulp van een DSC-configuratie
+
+1. Open VSCode (of uw favoriete editor) als beheerder op een machine in uw lokale omgeving. De machine moet de nieuwste versie van [WMF 5](https://aka.ms/wmf5latest) hebben geïnstalleerd.
+1. Kopieer het volgende script lokaal. Dit script bevat een PowerShell DSC-configuratie voor het maken van metaconfiguraties en een opdracht om de metaconfiguratie-creatie af te trappen.
+
+    > [!NOTE]
+    > Namen configuratieknooppunt configuratieknooppunt zijn hoofdlettergevoelig in de Azure-portal. Als de aanvraag niet is afgestemd, wordt het knooppunt niet weergegeven onder het tabblad **Knooppunten.**
 
    ```powershell
    # The DSC configuration that will generate metaconfigurations
@@ -223,8 +228,8 @@ Voor een algemene onboarding van elke machine naar Azure Automation status confi
 
                 ResourceRepositoryWeb AzureAutomationStateConfiguration
                 {
-                ServerUrl       = $RegistrationUrl
-                RegistrationKey = $RegistrationKey
+                    ServerUrl       = $RegistrationUrl
+                    RegistrationKey = $RegistrationKey
                 }
             }
 
@@ -258,21 +263,25 @@ Voor een algemene onboarding van elke machine naar Azure Automation status confi
    DscMetaConfigs @Params
    ```
 
-1. Vul de registratie sleutel en de URL voor uw Automation-account in, evenals de namen van de computers die u wilt voorbereiden. Alle andere para meters zijn optioneel. Als u de registratie sleutel en registratie-URL voor uw Automation-account wilt vinden, raadpleegt u de sectie de volgende [**beveiligde registratie**](#secure-registration) .
-1. Als u wilt dat de computers DSC-status informatie rapporteren aan Azure Automation status configuratie, maar geen configuratie-of Power shell-modules, stelt u de para meter **ReportOnly** in op True.
-1. Voer het script uit. U hebt nu een map met de naam **DscMetaConfigs** in uw werkmap, met daarin de Power shell DSC-bankconfiguraties voor de machines voor onboarding (als beheerder):
+1. Vul de registratiesleutel en URL in voor uw Automatiseringsaccount, evenals de namen van de machines aan boord. Alle andere parameters zijn optioneel. Zie de [onboarding veilig via de registratiesectie](#onboarding-securely-using-registration) om de registratiesleutel en registratie-URL voor uw Automatiseringsaccount te vinden.
+
+1. Als u wilt dat de machines DSC-statusgegevens rapporteren aan azure automation state `ReportOnly` configuration, maar niet de configuratie of PowerShell-modules ophalen, stelt u de parameter in op true.
+
+1. Als `ReportOnly` deze niet is ingesteld, rapporteren de machines DSC-statusgegevens aan Azure Automation State Configuration and pull configuration or PowerShell modules. Stel parameters dienovereenkomstig in de `ConfigurationRepositoryWeb`, `ResourceRepositoryWeb`, en `ReportServerWeb` blokken.
+
+1. Voer het script uit. U moet nu een werkende map map genaamd **DscMetaConfigs**, met de PowerShell DSC metaconfiguraties voor de machines aan boord (als beheerder).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
     ```
 
-### <a name="using-the-azure-automation-cmdlets"></a>De cmdlets van Azure Automation gebruiken
+### <a name="generate-dsc-metaconfigurations-using-azure-automation-cmdlets"></a>DSC-metaconfiguraties genereren met Azure Automation-cmdlets
 
-Als de lokale Configuration Manager standaard instellingen van Power shell overeenkomen met uw use-case en u de computers wilt opdoen, zodat ze worden opgehaald van en rapporteren aan Azure Automation status configuratie, bieden de Azure Automation-cmdlets een vereenvoudigde methode voor het genereren van de DSC-configuratie die nodig is:
+Als PowerShell DSC LCM standaardinstellingen overeenkomen met uw use case en u machines aan boord wilt nemen om zowel uit azure automation state configuration te trekken als te rapporteren, u de benodigde DSC-metaconfiguraties eenvoudiger genereren met behulp van de Azure Automation-cmdlets.
 
-1. Open de Power shell-console of VSCode als beheerder op een computer in uw lokale omgeving.
-2. Verbinding maken met Azure Resource Manager met behulp van `Connect-AzAccount`
-3. Down load de Power shell DSC-configuratie voor de computers die u wilt vrijgeven uit het Automation-account waarvoor u de knoop punten wilt voorbereiden:
+1. Open de PowerShell-console of VSCode als beheerder op een machine in uw lokale omgeving.
+2. Verbinding maken met Azure Resource Manager met behulp van`Connect-AzAccount`
+3. Download de PowerShell DSC-metaconfiguraties voor de machines die u aan boord wilt nemen van het Automation-account waarin u knooppunten instelt.
 
    ```powershell
    # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
@@ -287,49 +296,57 @@ Als de lokale Configuration Manager standaard instellingen van Power shell overe
    Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
-1. U hebt nu een map met de naam ***DscMetaConfigs***, met daarin de Power shell DSC-configuratie voor de machines voor onboarding (als beheerder):
+1. U moet nu een map genaamd **DscMetaConfigs**, met de PowerShell DSC metaconfiguraties voor de machines aan boord (als beheerder).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
     ```
 
-## <a name="secure-registration"></a>Veilige registratie
+## <a name="onboarding-securely-using-registration"></a>Veilig onboarden met behulp van registratie
 
-Machines kunnen veilig onboarden op een Azure Automation-account via het WMF 5 DSC-registratie protocol, waarmee een DSC-knoop punt kan worden geverifieerd bij een Power shell DSC-pull-of-rapport server (inclusief Azure Automation status configuratie). Het knoop punt registreert de server op een **registratie-URL**en verifieert met behulp van een **registratie sleutel**. Tijdens de registratie onderhandelt het DSC-knoop punt en de DSC pull/Reporting-Server een uniek certificaat voor dit knoop punt om te gebruiken voor verificatie bij de server post-registratie. Dit proces voor komt dat niet-gehoste knoop punten elkaar nabootsen, bijvoorbeeld wanneer een knoop punt is aangetast en zich op een kwaad aardig manier bevindt. Na de registratie wordt de registratie sleutel niet opnieuw gebruikt voor verificatie en wordt deze verwijderd uit het knoop punt.
+Machines kunnen veilig aan boord gaan van een Azure Automation-account via het WMF 5 DSC-registratieprotocol. Met dit protocol kan een DSC-knooppunt worden geverifieerd naar een PowerShell DSC-pull- of rapportserver, inclusief Azure Automation State Configuration. Het knooppunt registreert zich bij de server bij de registratie-URL en verifieert met behulp van een registratiesleutel. Tijdens de registratie onderhandelen de DSC-knooppunt en de DSC-pull/report-server over een uniek certificaat voor het knooppunt dat moet worden gebruikt voor verificatie naar de server na registratie. Dit proces voorkomt dat aan boord zittende knooppunten zich voordoen als elkaar, bijvoorbeeld als een knooppunt wordt aangetast en zich kwaadwillig gedraagt. Na registratie wordt de registratiesleutel niet opnieuw gebruikt voor verificatie en wordt deze verwijderd uit het knooppunt.
 
-U kunt de informatie ophalen die is vereist voor het status configuratie registratie protocol uit **sleutels** onder **account instellingen** in de Azure Portal. Open deze Blade door te klikken op het sleutel pictogram in het deel venster **Essentials** voor het Automation-account.
+U de vereiste informatie voor het configuratieregistratieprotocol voor statusophalen ophalen bij **Sleutels** onder **Accountinstellingen** in de Azure-portal. 
 
-![Sleutels en URL van Azure Automation](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
+![Azure-automatiseringssleutels en -URL](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
 
-- Registratie-URL is het URL-veld op de Blade sleutels beheren.
-- De registratie sleutel is de primaire toegangs sleutel of secundaire toegangs sleutel op de Blade sleutels beheren. Beide sleutels kunnen worden gebruikt.
+- Registratie-URL is het URL-veld op de pagina Sleutels.
+- Registratiesleutel is de waarde van het veld **Primaire toegangssleutel** of het veld **Secundaire toegangssleutel** op de pagina Sleutels. Beide sleutels kunnen worden gebruikt.
 
-Voor extra beveiliging kunnen de primaire en secundaire toegangs sleutels van een Automation-account op elk gewenst moment opnieuw worden gegenereerd (op de pagina **sleutels beheren** ) om toekomstige knooppunt registraties te voor komen met eerdere sleutels.
+Voor extra beveiliging u de primaire en secundaire toegangssleutels van een Automatiseringsaccount op elk gewenst moment regenereren op de pagina Sleutels. Sleutelregeneratie voorkomt dat toekomstige knooppuntregistraties eerdere sleutels gebruiken.
 
-## <a name="certificate-expiration-and-re-registration"></a>Certificaten verlopen en opnieuw registreren
+## <a name="re-registering-a-node"></a>Een knooppunt opnieuw registreren
 
-Na het registreren van een machine als een DSC-knoop punt in Azure Automation status configuratie, zijn er een aantal redenen waarom u dat knoop punt in de toekomst opnieuw moet registreren:
+Nadat u een machine hebt geregistreerd als Een DSC-knooppunt in azure-automatiseringsstatusconfiguratie, zijn er verschillende redenen waarom u dat knooppunt in de toekomst opnieuw moet registreren.
 
-- Voor versies van Windows Server voorafgaand aan Windows Server 2019 onderhandelt elk knoop punt automatisch een uniek certificaat voor verificatie dat verloopt na één jaar. Op dit moment kan het Power shell DSC-registratie protocol niet automatisch certificaten vernieuwen wanneer deze bijna verlopen. u moet de knoop punten dus na een jaar opnieuw registreren. Zorg ervoor dat op elk knoop punt Windows Management Framework 5,0 RTM wordt uitgevoerd voordat u de registratie opnieuw registreert. Als het verificatie certificaat van een knoop punt verloopt en het knoop punt niet opnieuw wordt geregistreerd, kan het knoop punt niet communiceren met Azure Automation en is de status niet meer reageert. Opnieuw registreren heeft 90 dagen of minder tijd uitgevoerd vanaf de verval datum van het certificaat of op elk moment na de verloop tijd van het certificaat, waardoor er een nieuw certificaat wordt gegenereerd en gebruikt.  Een oplossing voor dit probleem is opgenomen in Windows Server 2019 en hoger.
-- Het wijzigen van [lokale Power shell DSC-Configuration Manager waarden](/powershell/scripting/dsc/managing-nodes/metaConfig4) die zijn ingesteld tijdens de eerste registratie van het knoop punt, zoals ConfigurationMode. Deze DSC-agent waarden kunnen momenteel alleen worden gewijzigd via opnieuw registreren. De enige uitzonde ring is de knooppunt configuratie die is toegewezen aan het knoop punt. Dit kan rechtstreeks in Azure Automation DSC worden gewijzigd.
+- **Certificaatverlenging.** Voor versies van Windows Server vóór Windows Server 2019 onderhandelt elk knooppunt automatisch over een uniek certificaat voor verificatie dat na een jaar verloopt. Als een certificaat verloopt zonder verlenging, kan het knooppunt niet `Unresponsive`communiceren met Azure Automation en is het gemarkeerd . Momenteel kan het PowerShell DSC-registratieprotocol certificaten niet automatisch verlengen wanneer ze bijna verlopen en moet u de knooppunten na een jaar opnieuw registreren. Voordat u zich opnieuw registreert, moet u ervoor zorgen dat op elk knooppunt WMF 5 RTM wordt uitgevoerd. 
 
-Opnieuw registreren kan op dezelfde manier worden uitgevoerd als u het knoop punt in eerste instantie hebt geregistreerd, met behulp van een van de voorbereidings methoden die in dit document worden beschreven. U hoeft de registratie van een knoop punt bij Azure Automation status configuratie niet ongedaan te maken voordat u het opnieuw registreert.
+    Herregistratie die 90 dagen of minder wordt uitgevoerd vanaf de vervaldatum van het certificaat, of op enig moment na de vervaldatum van het certificaat, resulteert in een nieuw certificaat dat wordt gegenereerd en gebruikt. Een oplossing voor dit probleem is opgenomen in Windows Server 2019 en hoger.
 
-## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Problemen met het voorbereiden van virtuele Azure-machines oplossen
+- **Wijzigingen in DSC LCM-waarden.** Mogelijk moet [u de PowerShell DSC LCM-waarden](/powershell/scripting/dsc/managing-nodes/metaConfig4) wijzigen die zijn `ConfigurationMode`ingesteld tijdens de eerste registratie van het knooppunt, bijvoorbeeld . Momenteel u deze DSC-agentwaarden alleen wijzigen door opnieuw te registreren. De enige uitzondering is de waarde knooppuntconfiguratie die aan het knooppunt is toegewezen. U dit rechtstreeks wijzigen in Azure Automation DSC.
 
-Met de configuratie van de Azure Automation-status kunt u op eenvoudige wijze Azure Windows-Vm's vrijgeven voor configuratie beheer. Onder de schermen wordt de Azure VM desired state Configuration-extensie gebruikt voor het registreren van de virtuele machine met Azure Automation status configuratie. Omdat de configuratie-uitbrei ding desired state van Azure VM asynchroon wordt uitgevoerd, kunt u de voortgang bijhouden en de uitvoering ervan oplossen.
+U een knooppunt opnieuw registreren op dezelfde manier als u het knooppunt in eerste instantie hebt geregistreerd, met behulp van een van de onboarding-methoden die in dit document worden beschreven. U hoeft het registreren van een knooppunt niet uit te schrijven bij Azure Automation State Configuration voordat u het opnieuw registreert.
+
+## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Problemen met Azure virtual machine onboarding oplossen
+
+Azure Automation State Configuration stelt u eenvoudig in te sluiten op Azure Windows VM's voor configuratiebeheer. Onder de motorkap wordt de Azure VM Desired State Configuration extension gebruikt om de VM te registreren met Azure Automation State Configuration. Aangezien de azure VM Desired State Configuration-extensie asynchroon wordt uitgevoerd, kan het belangrijk zijn de voortgang ervan bij te houden en problemen op te lossen.
 
 > [!NOTE]
-> Een methode voor het onboarden van een Azure Windows-VM naar Azure Automation status configuratie die gebruikmaakt van de desired state Configuration-extensie voor Azure VM, kan tot een uur duren voordat het knoop punt wordt weer gegeven als geregistreerd in Azure Automation. Dit wordt veroorzaakt door de installatie van Windows Management Framework 5,0 op de virtuele machine door de Azure VM DSC-extensie, die vereist is om de virtuele machine vrij te Azure Automation status configuratie.
+> Het kan tot een uur duren voordat Azure Automation deze als geregistreerd heeft om een Azure Windows VM in te zetten voor azure automation in azure automation. Deze vertraging is te wijten aan de installatie van WMF 5 op de VM door de Azure VM Desired State Configuration extension, die nodig is om de VM aan boord te gaan van Azure Automation State Configuration.
 
-Om problemen op te lossen of de status weer te geven van de extensie voor de gewenste status van de Azure VM, in de Azure Portal navigeert u naar de virtuele machine die wordt uitgevoerd en klikt u op **uitbrei dingen** onder **instellingen**. Klik op **DSC** of **DSCForLinux** , afhankelijk van uw besturings systeem. Klik op **gedetailleerde status weer geven**voor meer informatie.
+Ga als het gaat om het oplossen of weergeven van de status van de configuratie-extensie gewenste azure vm:
 
-Zie [problemen met Azure Automation desired state Configuration (DSC) oplossen](./troubleshoot/desired-state-configuration.md)voor meer informatie over het oplossen van problemen.
+1. Navigeer in de Azure-portal naar de VM die wordt aanboord.
+2. Klik op **Extensies** onder **Instellingen**. 
+3. Selecteer nu **DSC** of **DSCForLinux,** afhankelijk van uw besturingssysteem. 
+4. Voor meer informatie u op **Gedetailleerde status weergeven**klikken.
+
+Zie [Problemen met Azure Automation Desired State Configuration (DSC) voor](./troubleshoot/desired-state-configuration.md)meer informatie over probleemoplossing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie aan de slag [met de configuratie van de Azure Automation-status](automation-dsc-getting-started.md) om aan de slag te gaan.
-- Zie [configuraties compileren in azure Automation status configuratie](automation-dsc-compile.md) voor meer informatie over het compileren van DSC-configuraties zodat u ze aan doel knooppunten kunt toewijzen.
-- Zie [Azure Automation status configuratie-cmdlets](/powershell/module/az.automation#automation) voor informatie over de Power shell-cmdlet.
-- Zie [prijzen voor Azure Automation status configuratie](https://azure.microsoft.com/pricing/details/automation/) voor prijs informatie.
-- Voor een voor beeld van het gebruik van Azure Automation status configuratie in een pijp lijn voor continue implementatie gaat u naar [continue implementatie met behulp van Azure Automation-status configuratie en chocolade](automation-dsc-cd-chocolatey.md)
+- Zie [Aan de slag met Azure Automation State Configuration](automation-dsc-getting-started.md)om aan de slag te gaan.
+- Zie [Configuraties compileren in Azure Automation State Configuration](automation-dsc-compile.md)voor meer informatie over het samenstellen van DSC-configuraties, zodat u ze toewijzen aan doelknooppunten.
+- Zie Cmdlets azure [automation state configuration](/powershell/module/az.automation#automation)voor PowerShell-cmdlet .
+- Zie Azure Automation State Configuration Pricing voor prijsinformatie voor [prijsinformatie.](https://azure.microsoft.com/pricing/details/automation/)
+- Zie [Gebruiksvoorbeeld: Continue implementatie naar virtuele machines Met Azure Automation State Configuration en Chocolatey](automation-dsc-cd-chocolatey.md)voor een voorbeeld van het gebruik van Azure Automation State Configuration in a continuous deployment pipeline.

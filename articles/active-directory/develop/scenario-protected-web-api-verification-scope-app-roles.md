@@ -1,5 +1,5 @@
 ---
-title: Bereiken en de beveiligde web-API van de app-rollen controleren | Azure
+title: Scopes en app-rollen beveiligde web-API verifiëren | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een beveiligde web-API en het configureren van de code van uw toepassing.
 services: active-directory
@@ -17,29 +17,29 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 816a9620a3486b534f9293084b7c4f5b4f748033
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76768120"
 ---
-# <a name="protected-web-api-verify-scopes-and-app-roles"></a>Beveiligde web-API: scopes en app-rollen controleren
+# <a name="protected-web-api-verify-scopes-and-app-roles"></a>Beveiligde web-API: scopes en app-rollen verifiëren
 
-In dit artikel wordt beschreven hoe u autorisatie kunt toevoegen aan uw web-API. Deze bescherming zorgt ervoor dat de API alleen wordt aangeroepen door:
+In dit artikel wordt beschreven hoe u autorisatie toevoegen aan uw web-API. Deze beveiliging zorgt ervoor dat de API alleen wordt aangeroepen door:
 
-- Toepassingen namens gebruikers die de juiste bereiken hebben.
-- Daemon-apps met de juiste toepassings rollen.
+- Toepassingen namens gebruikers die over de juiste scopes beschikken.
+- Daemon-apps met de juiste toepassingsrollen.
 
 > [!NOTE]
-> De code fragmenten uit dit artikel worden geëxtraheerd uit de volgende voor beelden, die volledig functioneel zijn:
+> De codefragmenten uit dit artikel worden uit de volgende voorbeelden gehaald, die volledig functioneel zijn:
 >
-> - [Stapsgewijze zelf studie voor ASP.net core web-API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs#L37) op github
-> - [ASP.NET Web API-voor beeld](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/dfd0115533d5a230baff6a3259c76cf117568bd9/TodoListService/Controllers/TodoListController.cs#L48)
+> - [ASP.NET Core Web API incrementele zelfstudie](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Controllers/TodoListController.cs#L37) op GitHub
+> - [ASP.NET Voorbeeld van web-API](https://github.com/Azure-Samples/ms-identity-aspnet-webapi-onbehalfof/blob/dfd0115533d5a230baff6a3259c76cf117568bd9/TodoListService/Controllers/TodoListController.cs#L48)
 
-Als u een ASP.NET of ASP.NET Core Web-API wilt beveiligen, moet u het kenmerk `[Authorize]` toevoegen aan een van de volgende items:
+Als u een ASP.NET of ASP.NET Core-web-API wilt beveiligen, moet u het `[Authorize]` kenmerk toevoegen aan een van de volgende items:
 
-- De controller zelf als u wilt dat alle controller acties worden beveiligd
-- De afzonderlijke controller actie voor uw API
+- De controller zelf als u wilt dat alle controlleracties worden beschermd
+- De individuele controlleractie voor uw API
 
 ```csharp
     [Authorize]
@@ -49,14 +49,14 @@ Als u een ASP.NET of ASP.NET Core Web-API wilt beveiligen, moet u het kenmerk `[
     }
 ```
 
-Deze beveiliging is echter niet voldoende. Het garandeert alleen dat ASP.NET en ASP.NET Core het token te valideren. Uw API moet controleren of het token dat wordt gebruikt om de API aan te roepen, is aangevraagd met de verwachte claims. Deze claims hebben met name betrekking op verificatie:
+Maar deze bescherming is niet genoeg. Het garandeert alleen dat ASP.NET en ASP.NET Core het token valideren. Uw API moet controleren of het token dat wordt gebruikt om de API aan te roepen, wordt opgevraagd bij de verwachte claims. Deze beweringen moeten met name worden gecontroleerd:
 
-- De *bereiken* als de API namens een gebruiker wordt genoemd.
-- De *app-rollen* als de API kan worden aangeroepen vanuit een daemon-app.
+- De *scopes* als de API namens een gebruiker wordt aangeroepen.
+- De *app speelt een rol* als de API kan worden aangeroepen vanuit een daemon-app.
 
-## <a name="verify-scopes-in-apis-called-on-behalf-of-users"></a>Scopes verifiëren in Api's die namens gebruikers worden aangeroepen
+## <a name="verify-scopes-in-apis-called-on-behalf-of-users"></a>Scopes verifiëren in API's die namens gebruikers worden aangeroepen
 
-Als een client-app uw API namens een gebruiker aanroept, moet de API een Bearer-token aanvragen dat specifieke bereiken voor de API heeft. Zie voor meer informatie [code configuratie | Bearer-token](scenario-protected-web-api-app-configuration.md#bearer-token).
+Als een client-app uw API namens een gebruiker aanroept, moet de API een token aan toonder aanvragen met specifieke scopes voor de API. Zie Codeconfiguratie voor meer informatie [| Toondertoken](scenario-protected-web-api-app-configuration.md#bearer-token).
 
 ```csharp
 [Authorize]
@@ -80,9 +80,9 @@ public class TodoListController : Controller
 }
 ```
 
-De methode `VerifyUserHasAnyAcceptedScope` heeft iets als de volgende stappen:
+De `VerifyUserHasAnyAcceptedScope` methode doet iets als de volgende stappen:
 
-- Controleer of er een claim is met de naam `http://schemas.microsoft.com/identity/claims/scope` of `scp`.
+- Controleer of er een `http://schemas.microsoft.com/identity/claims/scope` `scp`claim is met de naam of .
 - Controleer of de claim een waarde heeft die het bereik bevat dat door de API wordt verwacht.
 
 ```csharp
@@ -113,13 +113,13 @@ De methode `VerifyUserHasAnyAcceptedScope` heeft iets als de volgende stappen:
     }
 ```
 
-De voor gaande [voorbeeld code](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47) is voor ASP.net core. Vervang voor ASP.NET alleen `HttpContext.User` door `ClaimsPrincipal.Current`en vervang het claim type `"http://schemas.microsoft.com/identity/claims/scope"` door `"scp"`. Zie ook het code fragment verderop in dit artikel.
+De voorgaande [voorbeeldcode](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/02352945c1c4abb895f0b700053506dcde7ed04a/Microsoft.Identity.Web/Resource/ScopesRequiredByWebAPIExtension.cs#L47) is voor ASP.NET Core. Voor ASP.NET, `HttpContext.User` gewoon `ClaimsPrincipal.Current`vervangen door , `"http://schemas.microsoft.com/identity/claims/scope"` `"scp"`en vervang de claim type met . Zie ook het codefragment later in dit artikel.
 
-## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>App-rollen controleren in Api's die worden aangeroepen door daemon-apps
+## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>App-rollen verifiëren in API's die worden aangeroepen door daemon-apps
 
-Als uw web-API wordt aangeroepen door een [daemon-app](scenario-daemon-overview.md), moet voor die app een toepassings machtiging voor uw web-API zijn vereist. Zoals u kunt zien in het weer geven van [toepassings machtigingen (app-rollen)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles), worden deze machtigingen beschikbaar gesteld door uw API. Een voor beeld is de `access_as_application` app-rol.
+Als uw web-API wordt aangeroepen door een [daemon-app,](scenario-daemon-overview.md)moet die app een toepassingsmachtiging voor uw web-API vereisen. Zoals wordt weergegeven in [Het blootstellen van toepassingsmachtigingen (app-rollen),](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles)worden dergelijke machtigingen weergegeven door uw API. Een voorbeeld `access_as_application` is de app-rol.
 
-U moet uw API nu controleren of het token dat wordt ontvangen de `roles` claim bevat en dat deze claim de verwachte waarde heeft. De verificatie code is vergelijkbaar met de code die de gedelegeerde machtigingen verifieert, behalve dat uw controller actie tests voor rollen heeft uitgevoerd in plaats van bereiken:
+U moet nu uw API laten verifiëren dat `roles` het token dat het ontvangt de claim bevat en of deze claim de verwachte waarde heeft. De verificatiecode is vergelijkbaar met de code die gedelegeerde machtigingen verifieert, behalve dat de actievan de controller test op rollen in plaats van scopes:
 
 ```csharp
 [Authorize]
@@ -132,7 +132,7 @@ public class TodoListController : ApiController
     }
 ```
 
-De `ValidateAppRole` methode kan er ongeveer als volgt uitzien:
+De `ValidateAppRole` methode kan ongeveer als volgt zijn:
 
 ```csharp
 private void ValidateAppRole(string appRole)
@@ -153,13 +153,13 @@ private void ValidateAppRole(string appRole)
 }
 ```
 
-Deze keer is het code fragment voor ASP.NET. Voor ASP.NET Core moet u `ClaimsPrincipal.Current` gewoon vervangen door `HttpContext.User`en de naam van de `"roles"` claim vervangen door `"http://schemas.microsoft.com/identity/claims/roles"`. Zie ook het code fragment eerder in dit artikel.
+Deze keer is het codefragment voor ASP.NET. Voor ASP.NET Core, `ClaimsPrincipal.Current` `HttpContext.User`gewoon vervangen `"roles"` door , `"http://schemas.microsoft.com/identity/claims/roles"`en vervang de naam van de claim met . Zie ook het codefragment eerder in dit artikel.
 
-### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>Alleen app-tokens accepteren als de Web-API alleen moet worden aangeroepen door daemon-apps
+### <a name="accepting-app-only-tokens-if-the-web-api-should-be-called-only-by-daemon-apps"></a>App-only tokens accepteren als de web-API alleen door daemon-apps moet worden aangeroepen
 
-Gebruikers kunnen ook rollen claims gebruiken in gebruikers toewijzings patronen, zoals wordt weer gegeven in [procedure: app-rollen toevoegen in uw toepassing en ontvangen in het token](howto-add-app-roles-in-azure-ad-apps.md). Als de rollen kunnen worden toegewezen aan beide, kunnen gebruikers met behulp van rollen het aanmelden als gebruiker en gebruikers zich aanmelden als apps. U kunt het beste verschillende rollen voor gebruikers en apps declareren om deze Verwar ring te voor komen.
+Gebruikers kunnen ook rollenclaims gebruiken in gebruikerstoewijzingspatronen, zoals wordt weergegeven in [Hoe toe te voegen: App-rollen toevoegen aan uw toepassing en deze ontvangen in het token.](howto-add-app-roles-in-azure-ad-apps.md) Als de rollen aan beide kunnen worden toegewezen, kunnen apps zich aanmelden als gebruikers en gebruikers om zich aan te melden als apps. We raden u aan verschillende rollen voor gebruikers en apps te declareren om deze verwarring te voorkomen.
 
-Als u wilt dat alleen daemon-apps uw web-API aanroepen, voegt u de voor waarde dat het token een token voor app-only is wanneer u de functie van de app valideert.
+Als u alleen daemon-apps wilt aanroepen, voegt u de voorwaarde toe dat het token een app-only token is wanneer u de app-rol valideert.
 
 ```csharp
 string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
@@ -167,9 +167,9 @@ string sub = ClaimsPrincipal.Current.FindFirst("sub")?.Value;
 bool isAppOnlyToken = oid == sub;
 ```
 
-Door de inverse voor waarde te controleren, kunnen alleen apps die zich aanmelden bij een gebruiker, uw API aanroepen.
+Als u de omgekeerde toestand controleert, kunnen alleen apps die zich aanmelden bij een gebruiker uw API aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naar productie verplaatsen](scenario-protected-web-api-production.md)
+> [Verplaatsen naar productie](scenario-protected-web-api-production.md)

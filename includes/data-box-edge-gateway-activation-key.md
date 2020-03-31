@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 4ff9aeaa7e1b6e7f3762db4e983b299a517df3da
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176673"
 ---
-De activeringscode die u gebruikt:
+De activeringssleutel die u gebruikt:
 
-- Is een Azure Active Directory (Azure AD) op basis van de verificatiesleutel.
+- Is een op Azure Directory (Azure AD) gebaseerde verificatiesleutel op basis van Azure Active Directory.
 - Verloopt na drie dagen.
-- Na apparaatactivering van het wordt niet gebruikt.
+- Wordt niet gebruikt na activering van het apparaat.
 
-Nadat u een apparaat hebt geactiveerd, worden tokens gebruikt om te communiceren met Azure.
+Nadat u een apparaat hebt geactiveerd, gebruikt het tokens om te communiceren met Azure.

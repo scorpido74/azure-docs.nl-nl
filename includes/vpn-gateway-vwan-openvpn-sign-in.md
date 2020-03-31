@@ -9,16 +9,16 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a04ac0e7c634a0d1d1909e691fabfcec3c52ebc5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471506"
 ---
-Configureer aanmeldings instellingen op de pagina **Azure VPN-eigenschappen** .
+Configureer op de pagina **Azure VPN - Eigenschappen** de aanmeldingsinstellingen.
 
-1. **Ingeschakeld instellen dat gebruikers zich kunnen aanmelden?** Met deze instelling kunnen alle gebruikers in de AD-Tenant verbinding maken met het VPN.
-2. Stel de **gebruikers toewijzing vereist** in op **Ja** als u wilt dat de aanmelding wordt beperkt tot alleen gebruikers met machtigingen voor Azure VPN.
+1. Ingeschakeld instellen voor gebruikers om zich **Yes**aan **te melden?** Met deze instelling kunnen alle gebruikers in de AD-tenant met succes verbinding maken met de VPN.
+2. **Gebruikerstoewijzing instellen vereist?** op **Ja** als u aanmelding wilt beperken tot alleen gebruikers die machtigingen hebben voor de Azure VPN.
 3. Sla uw wijzigingen op.
 
    ![Machtigingen](./media/vpn-gateway-vwan-openvpn-sign-in/user2.jpg)

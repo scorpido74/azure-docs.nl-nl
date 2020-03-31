@@ -1,6 +1,6 @@
 ---
-title: Gegevens pijplijnen bewaken en beheren-Azure
-description: Meer informatie over het gebruik van de app voor bewaking en beheer voor het bewaken en beheren van Azure-gegevens fabrieken en-pijp lijnen.
+title: Gegevenspijplijnen bewaken en beheren - Azure
+description: Meer informatie over het gebruik van de app Monitoring and Management om Azure-gegevensfabrieken en -pijplijnen te bewaken en te beheren.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,285 +13,285 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260369"
 ---
-# <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory pijp lijnen bewaken en beheren met behulp van de app voor bewaking en beheer
+# <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory-pijplijnen bewaken en beheren met de app Monitoring and Management
 > [!div class="op_single_selector"]
-> * [Azure Portal/Azure PowerShell gebruiken](data-factory-monitor-manage-pipelines.md)
-> * [De app voor bewaking en beheer gebruiken](data-factory-monitor-manage-app.md)
+> * [Azure-portal/Azure PowerShell gebruiken](data-factory-monitor-manage-pipelines.md)
+> * [De app Monitoring en Beheer gebruiken](data-factory-monitor-manage-app.md)
 >
 >
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Data Factory pijp lijnen bewaken en beheren in](../monitor-visually.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de datafabriekservice gebruikt, raadpleegt u [De pijplijnen van Gegevensfabriek controleren en beheren in](../monitor-visually.md).
 
-In dit artikel wordt beschreven hoe u met behulp van de app voor bewaking en beheer de Data Factory-pijp lijnen kunt controleren, beheren en opsporen. U kunt aan de slag met het gebruik van de toepassing door de volgende video te bekijken:
+In dit artikel wordt beschreven hoe u de app Monitoring en Beheer gebruiken om uw Data Factory-pijplijnen te bewaken, te beheren en te debuggen. U aan de slag met het gebruik van de toepassing door de volgende video te bekijken:
 
 > [!NOTE]
-> De gebruikers interface die in de video wordt weer gegeven, komt mogelijk niet exact overeen met wat u in de portal ziet. Het is iets ouder, maar concepten blijven hetzelfde. 
+> De gebruikersinterface in de video komt mogelijk niet precies overeen met wat u in de portal ziet. Het is iets ouder, maar concepten blijven hetzelfde. 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Data-Factory-Monitoring-and-Managing-Big-Data-Piplines/player]
 >
 
-## <a name="launch-the-monitoring-and-management-app"></a>De app voor bewaking en beheer starten
-Als u de app monitor en beheer wilt starten, klikt u op de **& tegel beheren** op de blade **Data Factory** voor uw Data Factory.
+## <a name="launch-the-monitoring-and-management-app"></a>De app Monitoring en Beheer starten
+Als u de app Monitor en Beheer wilt starten, klikt u op de tegel **Monitor & Beheren** op het blade van **gegevensfabriek** voor uw gegevensfabriek.
 
-![De tegel bewaking op de Data Factory start pagina](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
+![De tegel Controle op de startpagina van Data Factory](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
 
-U ziet dat de app voor bewaking en beheer geopend is in een afzonderlijk venster.  
+U ziet de app Monitoring en Beheer openen in een apart venster.  
 
 ![App voor controle en beheer](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
 > [!NOTE]
-> Als u ziet dat de webbrowser is vastgelopen bij "autoriseren...", schakelt u het selectie vakje cookies van derden **en site gegevens blok keren** uit, maakt u een uitzonde ring voor **login.microsoftonline.com**en probeert u de app opnieuw te openen.
+> Als u ziet dat de webbrowser vastzit bij 'Autoriseren...,, schakelt u het selectievakje **Cookies van derden en sitegegevens blokkeren** uit of houdt u deze geselecteerd, maakt u een uitzondering voor **login.microsoftonline.com**en probeert u de app opnieuw te openen.
 
 
-In de lijst activiteit Windows in het middelste deel venster ziet u een activiteiten venster voor elke uitvoering van een activiteit. Als u bijvoorbeeld de activiteit hebt gepland om vijf uur per uur te worden uitgevoerd, ziet u vijf activiteiten Vensters die zijn gekoppeld aan vijf gegevens segmenten. Ga als volgt te werk als u geen activiteit Vensters in de lijst onderaan ziet:
+In de lijst Activiteitwindows in het middelste deelvenster ziet u een activiteitenvenster voor elke run van een activiteit. Als u bijvoorbeeld de activiteit gepland hebt die vijf uur per uur wordt uitgevoerd, ziet u vijf activiteitsvensters die zijn gekoppeld aan vijf gegevenssegmenten. Als u geen activiteitsvensters ziet in de lijst onderaan, gaat u als volgt te werk:
  
-- Werk de filters **begin tijd** en **eind tijd** aan de bovenkant bij zodat deze overeenkomen met de begin-en eind tijd van de pijp lijn en klik vervolgens op de knop **Toep assen** .  
-- De Windows-lijst met activiteiten wordt niet automatisch vernieuwd. Klik op de knop **vernieuwen** in de werk balk van de lijst **activiteit Windows** .  
+- Werk de **begin-** en **eindtijdfilters** bovenaan bij om de begin- en eindtijden van uw pijplijn aan te passen en klik op de knop **Toepassen.**  
+- De lijst Activiteit Windows wordt niet automatisch vernieuwd. Klik **op** de knop Vernieuwen op de werkbalk in de lijst **Activiteit Windows.**  
 
-Als u geen Data Factory toepassing hebt om deze stappen te testen met, gaat u naar de zelf studie: [gegevens kopiëren van Blob Storage naar SQL database met Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Als u geen Data Factory-toepassing hebt om deze stappen mee te testen, doet u de zelfstudie: [kopieer gegevens van Blob Storage naar SQL Database met Gegevensfactory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="understand-the-monitoring-and-management-app"></a>Meer informatie over de app voor bewaking en beheer
-Er zijn drie tabbladen aan de linkerkant: **resource Explorer**, **bewakings weergaven**en **waarschuwingen**. Het eerste tabblad (**resource Explorer**) is standaard geselecteerd.
+## <a name="understand-the-monitoring-and-management-app"></a>De app Monitoring en Beheer begrijpen
+Er zijn drie tabbladen aan de linkerkant: **Resource Explorer,** **Monitoring Views**, en **Waarschuwingen**. Het eerste tabblad **(Resource Explorer)** is standaard geselecteerd.
 
-### <a name="resource-explorer"></a>Resource Explorer
+### <a name="resource-explorer"></a>Bronverkenner
 U ziet het volgende:
 
-* De resource Explorer- **structuur weergave** in het linkerdeel venster.
-* De **diagram weergave** bovenaan in het middelste deel venster.
-* De lijst met **activiteiten** onder in het middelste deel venster.
-* De tabbladen **Eigenschappen**, **activiteiten venster Verkenner**en **script** in het rechterdeel venster.
+* De **structuurweergave** Resource Explorer in het linkerdeelvenster.
+* De **diagramweergave** bovenaan in het middelste deelvenster.
+* De lijst **ActiviteitWindows** onder in het middelste deelvenster.
+* De tabbladen **Eigenschappen,** **Activiteitsvensterverkenner**en **Script** in het rechterdeelvenster.
 
-In resource Explorer ziet u alle resources (pijp lijnen, gegevens sets, gekoppelde services) in de data factory in een structuur weergave. Wanneer u een object in resource Explorer selecteert:
+In Resource Explorer ziet u alle bronnen (pijplijnen, gegevenssets, gekoppelde services) in de gegevensfabriek in een structuurweergave. Wanneer u een object selecteert in Resource Explorer:
 
-* De gekoppelde Data Factory entiteit is gemarkeerd in de diagram weergave.
-* [Gekoppelde activiteit Vensters](data-factory-scheduling-and-execution.md) worden onderaan in de lijst met activiteiten gemarkeerd.  
-* De eigenschappen van het geselecteerde object worden weer gegeven in de venster Eigenschappen in het rechterdeel venster.
-* De JSON-definitie van het geselecteerde object wordt weer gegeven, indien van toepassing. Bijvoorbeeld: een gekoppelde service, een gegevensset of een pijp lijn.
+* De entiteit Associated Data Factory wordt gemarkeerd in de diagramweergave.
+* [Gekoppelde activiteitsvensters](data-factory-scheduling-and-execution.md) worden gemarkeerd in de lijst ActiviteitWindows onderaan.  
+* De eigenschappen van het geselecteerde object worden weergegeven in het venster Eigenschappen in het rechterdeelvenster.
+* De JSON-definitie van het geselecteerde object wordt weergegeven, indien van toepassing. Bijvoorbeeld: een gekoppelde service, een gegevensset of een pijplijn.
 
-![Resource Explorer](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
+![Bronverkenner](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
-Zie het artikel [planning en uitvoering](data-factory-scheduling-and-execution.md) voor gedetailleerde conceptuele informatie over activiteit Vensters.
+Zie [het](data-factory-scheduling-and-execution.md) artikel Planning en uitvoering voor gedetailleerde conceptuele informatie over activiteitsvensters.
 
 ### <a name="diagram-view"></a>Diagramweergave
-De diagram weergave van een data factory biedt één glas venster om een data factory en de bijbehorende activa te controleren en te beheren. Wanneer u een Data Factory entiteit (gegevensset/pijp lijn) in de diagram weergave selecteert:
+De diagramweergave van een gegevensfabriek biedt één ruit om een gegevensfabriek en bijbehorende activa te controleren en te beheren. Wanneer u een entiteit Gegevensfabriek (gegevensset/pijplijn) selecteert in de diagramweergave:
 
-* De entiteit data factory is geselecteerd in de structuur weergave.
-* De bijbehorende activiteit Vensters zijn gemarkeerd in de Windows-lijst activiteit.
-* De eigenschappen van het geselecteerde object worden weer gegeven in de venster Eigenschappen.
+* De entiteit gegevensfabriek is geselecteerd in de structuurweergave.
+* De bijbehorende activiteitsvensters worden gemarkeerd in de lijst Activiteitwindows.
+* De eigenschappen van het geselecteerde object worden weergegeven in het venster Eigenschappen.
 
-Wanneer de pijp lijn is ingeschakeld (niet onderbroken), wordt deze weer gegeven met een groene lijn:
+Wanneer de pijplijn is ingeschakeld (niet in een onderbroken status), wordt deze weergegeven met een groene regel:
 
-![Pijp lijn actief](./media/data-factory-monitor-manage-app/PipelineRunning.png)
+![Pijplijn loopt](./media/data-factory-monitor-manage-app/PipelineRunning.png)
 
-U kunt een pijp lijn onderbreken, hervatten of beëindigen door deze te selecteren in de diagram weergave en de knoppen op de opdracht balk te gebruiken.
+U een pijplijn onderbreken, hervatten of beëindigen door deze te selecteren in de diagramweergave en de knoppen op de opdrachtbalk te gebruiken.
 
-![Onderbreken/hervatten op de opdracht balk](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+![Onderbreken/hervatten op de opdrachtbalk](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
  
-Er zijn drie opdracht balk knoppen voor de pijp lijn in de diagram weergave. U kunt de tweede knop gebruiken om de pijp lijn te onderbreken. Als u het onderbreken uitvoert, worden de momenteel actieve activiteiten niet beëindigd en kunnen ze worden voltooid. De derde knop pauzeert de pijp lijn en beëindigt de bestaande activiteiten die worden uitgevoerd. Met de eerste knop hervat u de pijp lijn. Wanneer de pijp lijn is onderbroken, verandert de kleur van de pijp lijn. Een onderbroken pijp lijn ziet er bijvoorbeeld uit zoals in de volgende afbeelding: 
+Er zijn drie knoppen voor de opdrachtbalk voor de pijplijn in de diagramweergave. U de tweede knop gebruiken om de pijplijn te pauzeren. Het onderbreken beëindigt de momenteel lopende activiteiten niet en laat ze doorgaan tot voltooiing. De derde knop pauzeert de pijplijn en beëindigt de bestaande uitvoeringsactiviteiten. De eerste knop hervat de pijplijn. Wanneer de pijplijn is onderbroken, verandert de kleur van de pijplijn. Een onderbroken pijplijn ziet er bijvoorbeeld uit in de volgende afbeelding: 
 
-![Pijp lijn onderbroken](./media/data-factory-monitor-manage-app/PipelinePaused.png)
+![Pijplijn onderbroken](./media/data-factory-monitor-manage-app/PipelinePaused.png)
 
-U kunt meerdere pijp lijnen selecteren met behulp van de CTRL-toets. U kunt de opdracht balk knoppen gebruiken om meerdere pijp lijnen tegelijk te onderbreken/hervatten.
+U twee of meer pijplijnen selecteren met de Ctrl-toets. U de knoppen van de opdrachtbalk gebruiken om meerdere pijplijnen tegelijk te pauzeren/hervatten.
 
-U kunt ook met de rechter muisknop op een pijp lijn klikken en opties selecteren om een pijp lijn te onderbreken, te hervatten of te beëindigen. 
+U ook met de rechtermuisknop op een pijplijn klikken en opties selecteren om een pijplijn op te schorten, te hervatten of te beëindigen. 
 
-![Context menu voor pijp lijn](./media/data-factory-monitor-manage-app/right-click-menu-for-pipeline.png)
+![Contextmenu voor pijplijn](./media/data-factory-monitor-manage-app/right-click-menu-for-pipeline.png)
 
-Klik op de optie **pijp lijn openen** om alle activiteiten in de pijp lijn te bekijken. 
+Klik **op** de optie Pijplijn openen om alle activiteiten in de pijplijn te bekijken. 
 
 ![Menu Pijplijn openen](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-In de weer gave geopend pijp lijn ziet u alle activiteiten in de pijp lijn. In dit voor beeld is er slechts één activiteit: Kopieer activiteit. 
+In de geopende pijplijnweergave ziet u alle activiteiten in de pijplijn. In dit voorbeeld is er slechts één activiteit: Activiteit kopiëren. 
 
-![Geopende pijp lijn](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
+![Geopende pijplijn](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
-Als u wilt terugkeren naar de vorige weer gave, klikt u op de naam van de data factory in het breadcrumb-menu bovenaan.
+Als u terug wilt gaan naar de vorige weergave, klikt u op de naam van de gegevensfabriek in het broodkruimelmenu bovenaan.
 
-Wanneer u in de pipeline-weer gave een uitvoer gegevensset selecteert of wanneer u de muis aanwijzer over de uitvoer gegevensset beweegt, ziet u het pop-upvenster activiteit Windows voor die gegevensset.
+In de pijplijnweergave ziet u het pop-upvenster Activiteit Windows voor die gegevensset wanneer u een uitvoergegevensset selecteert of wanneer u uw muis over de uitvoergegevensset beweegt.
 
-![Pop-upvenster activiteit Windows](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
+![Pop-upvenster Activiteit Windows](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
 
-U kunt klikken op een activiteiten venster om de details ervan weer te geven in het venster **Eigenschappen** in het rechterdeel venster.
+U op een activiteitenvenster klikken om details hiervoor te zien in het venster **Eigenschappen** in het rechterdeelvenster.
 
-![Eigenschappen van het activiteiten venster](./media/data-factory-monitor-manage-app/ActivityWindowProperties.png)
+![Eigenschappen van activiteitsvenster](./media/data-factory-monitor-manage-app/ActivityWindowProperties.png)
 
-Ga in het rechterdeel venster naar het tabblad **activiteiten venster Verkenner** om meer details weer te geven.
+Ga in het rechterdeelvenster naar het tabblad **Activiteitsvensterverkenner** voor meer details.
 
-![Activiteiten venster Verkenner](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![Activiteitsvensterverkenner](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
-U ziet ook de **opgeloste variabelen** voor elke uitvoerings poging voor een activiteit in de sectie **pogingen** .
+U ziet ook **opgeloste variabelen** voor elke runpoging voor een activiteit in de sectie **Pogingen.**
 
 ![Opgeloste variabelen](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
 
-Ga naar het tabblad **script** om de JSON-script definitie voor het geselecteerde object te bekijken.   
+Ga naar het tabblad **Script** om de JSON-scriptdefinitie voor het geselecteerde object te bekijken.   
 
-![Script tabblad](./media/data-factory-monitor-manage-app/ScriptTab.png)
+![Tabblad Script](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
-U kunt activiteiten Vensters op drie locaties bekijken:
+U activiteitsvensters op drie plaatsen zien:
 
-* De activiteit Windows pop-up in de diagram weergave (middelste deel venster).
-* Het venster activiteit Verkenner in het rechterdeel venster.
-* De lijst activiteit Windows in het onderste deel venster.
+* De pop-up activiteit Windows in de diagramweergave (middelste deelvenster).
+* De activiteitsvensterverkenner in het rechterdeelvenster.
+* De lijst Activiteit Windows in het onderste deelvenster.
 
-In de activiteit Windows pop-up en activiteiten venster Explorer kunt u naar de vorige week en de volgende week schuiven met behulp van de linker-en rechter pijlen.
+In de pop-up activiteit windows en Activiteit Venster Verkenner, u scrollen naar de vorige week en de volgende week met behulp van de links en rechts pijlen.
 
-![Pijl naar links/rechts in Verkenner-venster](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
+![Pijl-links/rechts in activiteitsvensterverkenner](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-Aan de onderkant van de diagram weergave ziet u de volgende knoppen: inzoomen, uitzoomen, passend maken, zoomen 100%, vergren delen. Met de knop **indeling vergren delen** voor komt u dat u per ongeluk tabellen en pijp lijnen verplaatst in de diagram weergave. Het is standaard ingeschakeld. U kunt deze functie uitschakelen en entiteiten verplaatsen in het diagram. Wanneer u deze functie uitschakelt, kunt u de laatste knop gebruiken om automatisch tabellen en pijp lijnen te positioneren. U kunt ook in-of uitzoomen met behulp van het muis wiel.
+Onder aan de diagramweergave ziet u de volgende knoppen: Inzoomen, Uitzoomen, Zoomen op pasvorm, Zoom 100%, Vergrendelingsindeling. Met de knop **Indeling vergrendelen** voorkomt u dat u per ongeluk tabellen en pijplijnen in de diagramweergave verplaatst. Het is standaard ingeschakeld. U het uitschakelen en entiteiten verplaatsen in het diagram. Wanneer u deze uitschakelt, u de laatste knop gebruiken om tabellen en pijplijnen automatisch te plaatsen. U ook in- of uitzoomen met het muiswiel.
 
-![Zoom opdrachten voor diagram weergave](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
+![Zoomopdrachten voor diagramweergave](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
 ### <a name="activity-windows-list"></a>Lijst Activiteitsvensters
-In de lijst activiteit Windows onder in het middelste deel venster worden alle activiteiten vensters weer gegeven voor de gegevensset die u hebt geselecteerd in resource Explorer of in de diagram weergave. De lijst is standaard in aflopende volg orde, wat betekent dat het laatste activiteiten venster bovenaan wordt weer geven.
+In de lijst Activiteitwindows onder aan het middelste deelvenster worden alle activiteitsvensters weergegeven voor de gegevensset die u hebt geselecteerd in de Resourceverkenner of de diagramweergave. Standaard is de lijst in aflopende volgorde, wat betekent dat u bovenaan het laatste activiteitsvenster ziet.
 
 ![Lijst Activiteitsvensters](./media/data-factory-monitor-manage-app/ActivityWindowsList.png)
 
-Deze lijst wordt niet automatisch vernieuwd. Gebruik daarom de knop Vernieuwen op de werk balk om deze hand matig te vernieuwen.  
+Deze lijst wordt niet automatisch vernieuwd, dus gebruik de knop Vernieuwen op de werkbalk om deze handmatig te vernieuwen.  
 
-Activiteit Vensters kunnen een van de volgende statussen hebben:
+Activiteitsvensters kunnen zich in een van de volgende statussen begeven:
 
 <table>
 <tr>
     <th align="left">Status</th><th align="left">Substatus</th><th align="left">Beschrijving</th>
 </tr>
 <tr>
-    <td rowspan="8">Wachten</td><td>ScheduleTime</td><td>De tijd voor het uitvoeren van het activiteiten venster kan niet worden uitgevoerd.</td>
+    <td rowspan="8">Wachten</td><td>PlanningTijd</td><td>De tijd is niet gekomen voor de activiteit venster uit te voeren.</td>
 </tr>
 <tr>
-<td>DatasetDependencies</td><td>De upstream-afhankelijkheden zijn niet gereed.</td>
+<td>Afhankelijkvan gegevenssetafhankelijkheden</td><td>De upstream afhankelijkheden zijn nog niet klaar.</td>
 </tr>
 <tr>
-<td>ComputeResources</td><td>De reken resources zijn niet beschikbaar.</td>
+<td>ComputeResources</td><td>De rekenbronnen zijn niet beschikbaar.</td>
 </tr>
 <tr>
-<td>ConcurrencyLimit</td> <td>Alle exemplaren van de activiteit zijn bezet en andere activiteit Vensters worden uitgevoerd.</td>
+<td>GelijktijdigheidLimiet</td> <td>Alle activiteitsinstanties zijn bezig met het uitvoeren van andere activiteitvensters.</td>
 </tr>
 <tr>
-<td>ActivityResume</td><td>De activiteit wordt gepauzeerd en de activiteiten Vensters kunnen niet worden uitgevoerd totdat deze wordt hervat.</td>
+<td>ActiviteitHervat</td><td>De activiteit wordt onderbroken en kan de activiteitsvensters niet uitvoeren totdat deze is hervat.</td>
 </tr>
 <tr>
-<td>Opnieuw proberen</td><td>De uitvoering van de activiteit wordt opnieuw uitgevoerd.</td>
+<td>Opnieuw proberen</td><td>De uitvoering van de activiteit wordt opnieuw geprobeerd.</td>
 </tr>
 <tr>
-<td>Validatie</td><td>De validatie is nog niet gestart.</td>
+<td>Validatie</td><td>Validatie is nog niet gestart.</td>
 </tr>
 <tr>
-<td>ValidationRetry</td><td>Er wordt gewacht tot de validatie is uitgevoerd.</td>
+<td>ValidatieRetry</td><td>Validatie wacht om opnieuw te worden geprobeerd.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Wordt uitgevoerd</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
+<td rowspan="2">InProgress</td><td>Valideren</td><td>De validatie is in volle gang.</td>
 </tr>
 <td>-</td>
-<td>Het activiteiten venster wordt verwerkt.</td>
+<td>Het activiteitenvenster wordt verwerkt.</td>
 </tr>
 <tr>
-<td rowspan="4">Mislukt</td><td>TimedOut</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
+<td rowspan="4">Mislukt</td><td>Time-out</td><td>De uitvoering van de activiteit duurde langer dan wat is toegestaan door de activiteit.</td>
 </tr>
 <tr>
-<td>Geannuleerd</td><td>Het activiteiten venster is geannuleerd door de gebruiker.</td>
+<td>Geannuleerd</td><td>Het activiteitenvenster is geannuleerd door gebruikersactie.</td>
 </tr>
 <tr>
-<td>Validatie</td><td>De validatie is mislukt.</td>
+<td>Validatie</td><td>Validatie is mislukt.</td>
 </tr>
 <tr>
-<td>-</td><td>Het activiteiten venster kan niet worden gegenereerd of gevalideerd.</td>
+<td>-</td><td>Het activiteitsvenster kan niet worden gegenereerd of gevalideerd.</td>
 </tr>
-<td>Gereed</td><td>-</td><td>Het activiteiten venster is klaar voor gebruik.</td>
-</tr>
-<tr>
-<td>Overgeslagen</td><td>-</td><td>Het activiteiten venster is niet verwerkt.</td>
+<td>Gereed</td><td>-</td><td>Het activiteitenvenster is klaar voor consumptie.</td>
 </tr>
 <tr>
-<td>None</td><td>-</td><td>Er is een activiteiten venster gebruikt dat bestaat uit een andere status, maar dit is opnieuw ingesteld.</td>
+<td>Overgeslagen</td><td>-</td><td>Het activiteitenvenster is niet verwerkt.</td>
+</tr>
+<tr>
+<td>Geen</td><td>-</td><td>Een activiteitsvenster bestond vroeger met een andere status, maar is opnieuw ingesteld.</td>
 </tr>
 </table>
 
 
-Wanneer u op een activiteiten venster in de lijst klikt, ziet u details hierover in de **activiteit Windows Verkenner** of in het venster **Eigenschappen** aan de rechter kant.
+Wanneer u op een activiteitenvenster in de lijst klikt, ziet u details hierover in de **activiteit Windows Verkenner** of het venster **Eigenschappen** aan de rechterkant.
 
-![Activiteiten venster Verkenner](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![Activiteitsvensterverkenner](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
-### <a name="refresh-activity-windows"></a>Windows-activiteit vernieuwen
-De details worden niet automatisch vernieuwd, dus gebruik de knop Vernieuwen (de tweede knop) op de opdracht balk om de lijst met activiteiten in Windows hand matig te vernieuwen.  
+### <a name="refresh-activity-windows"></a>Activiteitsvensters vernieuwen
+De details worden niet automatisch vernieuwd, dus gebruik de vernieuwingsknop (de tweede knop) op de opdrachtbalk om de lijst met activiteitsvensters handmatig te vernieuwen.  
 
-### <a name="properties-window"></a>venster Eigenschappen
-Het venster Eigenschappen bevindt zich in het meest rechtse deel venster van de app voor bewaking en beheer.
+### <a name="properties-window"></a>Venster Eigenschappen
+Het venster Eigenschappen bevindt zich in het bovenste deelvenster van de app Monitoring en Beheer.
 
-![venster Eigenschappen](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
+![Venster Eigenschappen](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
-Hierin worden de eigenschappen weer gegeven voor het item dat u hebt geselecteerd in de lijst resource Verkenner (structuur weergave), diagram weergave of activiteit Windows.
+Er worden eigenschappen weergegeven voor het item dat u hebt geselecteerd in de lijst Resourceverkenner (structuurweergave), diagramweergave of lijst Activiteitwindows.
 
-### <a name="activity-window-explorer"></a>Activiteiten venster Verkenner
-Het venster **activiteiten venster Verkenner** bevindt zich in het meest rechtse deel venster van de app voor bewaking en beheer. Hierin worden details weer gegeven over het activiteiten venster dat u hebt geselecteerd in het pop-upvenster activiteit Windows of de lijst activiteit Windows.
+### <a name="activity-window-explorer"></a>Activiteitsvensterverkenner
+Het **venster Activiteitvensterverkenner** bevindt zich in het bovenste deelvenster van de app Monitoring en Beheer. Hierin worden details weergegeven over het activiteitsvenster dat u hebt geselecteerd in het pop-upvenster Activiteit Windows of de lijst Activiteit Windows.
 
-![Activiteiten venster Verkenner](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
+![Activiteitsvensterverkenner](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
 
-U kunt overschakelen naar een ander activiteiten venster door erop te klikken in de weer gave kalender bovenaan. U kunt ook de pijl knoppen links/rechts bovenaan gebruiken om de activiteit Vensters uit de vorige week of de volgende week weer te geven.
+U overschakelen naar een ander activiteitenvenster door er bovenin op te klikken in de agendaweergave. U ook de pijl-links/pijl-rechts bovenaan gebruiken om activiteitsvensters van de vorige week of de volgende week te bekijken.
 
-U kunt de werkbalk knoppen in het onderste deel venster gebruiken om het activiteiten venster opnieuw uit te voeren of de details in het deel venster te vernieuwen.
+U de werkbalkknoppen in het onderste deelvenster gebruiken om het activiteitenvenster opnieuw uit te voeren of de details in het deelvenster te vernieuwen.
 
 ### <a name="script"></a>Script
-U kunt het tabblad **script** gebruiken om de JSON-definitie van de geselecteerde Data Factory entiteit (gekoppelde service, gegevensset of pijp lijn) weer te geven.
+U het tabblad **Script** gebruiken om de JSON-definitie van de geselecteerde entiteit Data Factory (gekoppelde service, gegevensset of pijplijn) weer te geven.
 
-![Script tabblad](./media/data-factory-monitor-manage-app/ScriptTab.png)
+![Tabblad Script](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
-## <a name="use-system-views"></a>Systeem weergaven gebruiken
-De bewakings-en beheer-app bevat vooraf ontwikkelde systeem weergaven (Windows**recente**activiteiten, **mislukte activiteit**Vensters, Windows **activiteiten in uitvoering**) waarmee u recente/mislukte/lopende activiteiten Vensters voor uw Data Factory kunt weer geven.
+## <a name="use-system-views"></a>Systeemweergaven gebruiken
+De app Monitoring en Beheer bevat vooraf gebouwde systeemweergaven **(Recente activiteitsvensters**, **Mislukte activiteitsvensters**, **In-Progress-activiteitvensters)** waarmee u recente/mislukte/voortgangsactiviteitvensters voor uw gegevensfabriek weergeven.
 
-Ga naar het tabblad **controle weergaven** aan de linkerkant door erop te klikken.
+Ga naar het tabblad **Controleweergaven** aan de linkerkant door erop te klikken.
 
-![Tabblad controle weergaven](./media/data-factory-monitor-manage-app/MonitoringViewsTab.png)
+![Tabblad Controleweergaven](./media/data-factory-monitor-manage-app/MonitoringViewsTab.png)
 
-Er zijn momenteel drie systeem weergaven die worden ondersteund. Selecteer een optie om de Vensters recente activiteit, mislukte activiteiten of in uitvoering te bekijken in de Windows-lijst met activiteiten (onderaan in het middelste deel venster).
+Momenteel zijn er drie systeemweergaven die worden ondersteund. Selecteer een optie om recente activiteitvensters, mislukte activiteitvensters of activiteitsvensters in de lijst ActiviteitWindows (onder aan het middelste deelvenster) te bekijken.
 
-Wanneer u de optie **recente Windows-activiteit** selecteert, ziet u alle recente activiteiten Vensters in aflopende volg orde van de tijd van de **laatste poging**.
+Wanneer u de optie **Recente activiteitsvensters** selecteert, ziet u alle recente activiteitsvensters in aflopende volgorde van de **laatste pogingstijd**.
 
-U kunt de Windows-weer gave **mislukte activiteit** gebruiken om alle mislukte activiteiten Vensters in de lijst weer te geven. Selecteer een venster voor mislukte activiteiten in de lijst om de details ervan weer te geven in het venster **Eigenschappen** of in het **venster activiteiten Verkenner**. U kunt ook alle logboeken downloaden voor een venster met een mislukte activiteit.
+U de weergave **Mislukte activiteitsvensters** gebruiken om alle mislukte activiteitsvensters in de lijst te zien. Selecteer een mislukt activiteitenvenster in de lijst om details hierover te zien in het venster **Eigenschappen** of in het **venster Activiteitsvensterverkenner**. U ook logboeken downloaden voor een mislukt activiteitenvenster.
 
-## <a name="sort-and-filter-activity-windows"></a>De activiteit Vensters sorteren en filteren
-Wijzig de instellingen voor de **Start tijd** en de **eind tijd** op de opdracht balk om de Windows-activiteit te filteren. Nadat u de begin tijd en eind tijd hebt gewijzigd, klikt u op de knop naast de eind tijd om de Windows-lijst met activiteiten te vernieuwen.
+## <a name="sort-and-filter-activity-windows"></a>Activiteitsvensters sorteren en filteren
+Wijzig de **begin-** en **eindtijdinstellingen** in de opdrachtbalk om activiteitsvensters te filteren. Nadat u de begin- en eindtijd hebt gewijzigd, klikt u op de knop naast de eindtijd om de lijst Activiteit Windows te vernieuwen.
 
-![Begin-en eind tijden](./media/data-factory-monitor-manage-app/StartAndEndTimes.png)
+![Begin- en eindtijden](./media/data-factory-monitor-manage-app/StartAndEndTimes.png)
 
 > [!NOTE]
-> Op dit moment zijn alle tijden in UTC-indeling in de app voor bewaking en beheer.
+> Momenteel zijn alle tijden in UTC-indeling in de app Monitoring and Management.
 >
 >
 
-Klik in de **lijst activiteit Windows**op de naam van een kolom (bijvoorbeeld: status).
+Klik in de **lijst Activiteitwindows**op de naam van een kolom (bijvoorbeeld: Status).
 
-![Menu voor de lijst met activiteiten van Windows](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
+![Kolommenu activiteit Windows-lijst](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
 U kunt het volgende doen:
 
-* Sorteren in oplopende volg orde.
-* In aflopende volg orde sorteren.
-* Filteren op een of meer waarden (gereed, wachtend, enzovoort).
+* Sorteren in oplopende volgorde.
+* Sorteer in aflopende volgorde.
+* Filteren op een of meer waarden (Gereed, wachten, enzovoort).
 
-Wanneer u een filter voor een kolom opgeeft, ziet u de filter knop ingeschakeld voor die kolom. Dit geeft aan dat de waarden in de kolom gefilterde waarden zijn.
+Wanneer u een filter opgeeft in een kolom, ziet u de filterknop die is ingeschakeld voor die kolom, wat aangeeft dat de waarden in de kolom gefilterde waarden zijn.
 
-![Filteren op een kolom van de Windows-lijst met activiteiten](./media/data-factory-monitor-manage-app/ActivityWindowsListFilterInColumn.png)
+![Filteren op een kolom van de lijst Activiteit Windows](./media/data-factory-monitor-manage-app/ActivityWindowsListFilterInColumn.png)
 
-U kunt hetzelfde pop-upvenster gebruiken om filters te wissen. Als u alle filters voor de lijst met activiteiten wilt wissen, klikt u op de knop Filter wissen op de opdracht balk.
+U hetzelfde pop-upvenster gebruiken om filters te wissen. Als u alle filters voor de lijst Activiteit Windows wilt wissen, klikt u op de knop Filter wissen op de opdrachtbalk.
 
-![Alle filters voor de Windows-lijst met activiteiten wissen](./media/data-factory-monitor-manage-app/ClearAllFiltersActivityWindowsList.png)
+![Alle filters voor de lijst Activiteit Windows wissen](./media/data-factory-monitor-manage-app/ClearAllFiltersActivityWindowsList.png)
 
-## <a name="perform-batch-actions"></a>Batch acties uitvoeren
-### <a name="rerun-selected-activity-windows"></a>Geselecteerde activiteit Vensters opnieuw uitvoeren
-Selecteer een activiteiten venster, klik op de pijl-omlaag voor de eerste opdracht balk knop en selecteer **opnieuw uitvoeren** / **met upstream in pijp lijn**. Wanneer u de optie **opnieuw uitvoeren met upstream in pijplijn** selecteert, worden alle Windows-activiteiten voor upstream ook opnieuw uitgevoerd.
-    ![een activiteiten venster opnieuw uit](./media/data-factory-monitor-manage-app/ReRunSlice.png)
+## <a name="perform-batch-actions"></a>Batchacties uitvoeren
+### <a name="rerun-selected-activity-windows"></a>Geselecteerde activiteitvensters opnieuw uitvoeren
+Selecteer een activiteitenvenster, klik op de pijl-omlaag voor de eerste opdrachtbalkknop en selecteer **Opnieuw uitvoeren** / **met upstream in de pijplijn**. Wanneer u de optie **Opnieuw uitvoeren met upstream in pipeline** selecteert, worden ook alle upstream-activiteitvensters opnieuw uitgevoerd.
+    ![Een activiteitenvenster opnieuw uitvoeren](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-U kunt ook meerdere activiteit Vensters in de lijst selecteren en deze op hetzelfde moment opnieuw uitvoeren. U kunt de activiteiten Vensters filteren op basis van de status (bijvoorbeeld: **mislukt**), en vervolgens de Windows mislukt-activiteit opnieuw uitvoeren nadat het probleem is verholpen dat ervoor zorgt dat de activiteit Windows mislukt. Zie de volgende sectie voor meer informatie over het filteren van activiteit Vensters in de lijst.  
+U ook meerdere activiteitsvensters in de lijst selecteren en deze tegelijkertijd opnieuw uitvoeren. U activiteitsvensters filteren op basis van de status **(bijvoorbeeld:** Mislukt)--en vervolgens de mislukte activiteitsvensters opnieuw uitvoeren nadat het probleem is verholpen waardoor de activiteitsvensters mislukken. Zie de volgende sectie voor meer informatie over filteractiviteitvensters in de lijst.  
 
-### <a name="pauseresume-multiple-pipelines"></a>Meerdere pijp lijnen onderbreken/hervatten
-U kunt meerdere pijp lijnen meerdere selecteren met behulp van de CTRL-toets. U kunt de opdracht balk knoppen (die zijn gemarkeerd in de rode rechthoek in de volgende afbeelding) gebruiken om ze te onderbreken/hervatten.
+### <a name="pauseresume-multiple-pipelines"></a>Meerdere pijplijnen onderbreken/hervatten
+U twee of meer pijplijnen selecteren met ctrl. U de knoppen van de opdrachtbalk (die zijn gemarkeerd in de rode rechthoek in de volgende afbeelding) gebruiken om ze te pauzeren/hervatten.
 
-![Onderbreken/hervatten op de opdracht balk](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
+![Onderbreken/hervatten op de opdrachtbalk](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)

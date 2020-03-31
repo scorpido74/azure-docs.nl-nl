@@ -1,42 +1,42 @@
 ---
-title: Containers implementeren met helm in Kubernetes op Azure
-description: Meer informatie over het gebruik van het helm-verpakkings programma voor het implementeren van containers in een Azure Kubernetes service-cluster (AKS)
+title: Containers met Helm implementeren in Kubernetes op Azure
+description: Meer informatie over het gebruik van het helm-verpakkingshulpprogramma om containers te implementeren in een AKS-cluster (Azure Kubernetes Service)
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
 ms.openlocfilehash: 4a9ccaff0e3425c365a64ecb4fbadf3c7aa8dcfb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595175"
 ---
-# <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Toepassingen installeren met helm in azure Kubernetes service (AKS)
+# <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Toepassingen met Helm installeren in Azure Kubernetes Service (AKS)
 
-[Helm][helm] is een open-source-verpakkings programma waarmee u de levens cyclus van Kubernetes-toepassingen kunt installeren en beheren. Net als Linux-pakket beheerders, zoals *apt* en *yum*, wordt helm gebruikt voor het beheren van Kubernetes-grafieken, die pakketten van vooraf geconfigureerde Kubernetes-resources zijn.
+[Helm][helm] is een open-source verpakkingstool die u helpt bij het installeren en beheren van de levenscyclus van Kubernetes-toepassingen. Net als bij Linux-pakketmanagers zoals *APT* en *Yum*, wordt Helm gebruikt om Kubernetes-grafieken te beheren, die pakketten zijn met vooraf geconfigureerde Kubernetes-bronnen.
 
-In dit artikel wordt beschreven hoe u helm configureert en gebruikt in een Kubernetes-cluster op AKS.
+In dit artikel ziet u hoe u Helm configureert en gebruikt in een Kubernetes-cluster op AKS.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
+In dit artikel wordt ervan uitgegaan dat u een bestaand AKS-cluster hebt. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS snelstart [met de Azure CLI][aks-quickstart-cli] of met behulp van de [Azure-portal][aks-quickstart-portal].
 
-U hebt ook de helm CLI geïnstalleerd. Dit is de client die wordt uitgevoerd op uw ontwikkel systeem. Hiermee kunt u toepassingen starten, stoppen en beheren met helm. Als u de Azure Cloud Shell gebruikt, is de CLI van helm al geïnstalleerd. Zie [Installing helm][helm-install](Engelstalig) voor installatie-instructies op uw lokale platform.
+U moet ook de Helm CLI geïnstalleerd, dat is de client die draait op uw ontwikkelingssysteem. Hiermee u toepassingen starten, stoppen en beheren met Helm. Als u de Azure Cloud Shell gebruikt, is de Helm CLI al geïnstalleerd. Zie [Helm installeren][helm-install]voor installatie-instructies op uw lokale platform.
 
 > [!IMPORTANT]
-> Helm is bedoeld om te worden uitgevoerd op Linux-knoop punten. Als u Windows Server-knoop punten in uw cluster hebt, moet u ervoor zorgen dat helm peul alleen wordt gepland voor uitvoering op Linux-knoop punten. U moet er ook voor zorgen dat alle helm-grafieken die u installeert, ook zijn gepland voor uitvoering op de juiste knoop punten. Met de opdrachten in dit artikel worden [knooppunt selecties][k8s-node-selector] gebruikt om ervoor te zorgen dat de juiste knoop punten worden gepland, maar niet alle helm-grafieken kunnen een knooppunt kiezer weer geven. U kunt ook overwegen andere opties in uw cluster te gebruiken, zoals [taints][taints].
+> Helm is bedoeld om te draaien op Linux-knooppunten. Als u Windows Server-knooppunten in uw cluster hebt, moet u ervoor zorgen dat Helm-pods alleen worden uitgevoerd op Linux-knooppunten. U moet er ook voor zorgen dat alle Helm-diagrammen die u installeert, ook op de juiste knooppunten worden uitgevoerd. De opdrachten in dit artikel gebruiken [knooppuntselecties][k8s-node-selector] om ervoor te zorgen dat pods zijn gepland op de juiste knooppunten, maar niet alle Helm-diagrammen kunnen een knooppuntkiezer blootleggen. U ook overwegen andere opties op uw cluster te gebruiken, zoals [taints.][taints]
 
-## <a name="verify-your-version-of-helm"></a>Uw versie van helm controleren
+## <a name="verify-your-version-of-helm"></a>Uw versie van Helm verifiëren
 
-Gebruik de `helm version` opdracht om te controleren of de versie van helm die u hebt geïnstalleerd:
+Gebruik `helm version` de opdracht om de versie van Helm die u hebt geïnstalleerd te verifiëren:
 
 ```console
 helm version
 ```
 
-In het volgende voor beeld ziet u dat helm-versie 3.0.0 is geïnstalleerd:
+In het volgende voorbeeld wordt Helm versie 3.0.0 geïnstalleerd:
 
 ```console
 $ helm version
@@ -44,27 +44,27 @@ $ helm version
 version.BuildInfo{Version:"v3.0.0", GitCommit:"e29ce2a54e96cd02ccfce88bee4f58bb6e2a28b6", GitTreeState:"clean", GoVersion:"go1.13.4"}
 ```
 
-Volg voor helm v3 de stappen in de [sectie helm v3](#install-an-application-with-helm-v3). Volg voor helm v2 de stappen in de [sectie helm v2](#install-an-application-with-helm-v2)
+Voor Helm v3, volg de stappen in de [Helm v3 sectie](#install-an-application-with-helm-v3). Voor Helm v2, volg de stappen in de [Helm v2 sectie](#install-an-application-with-helm-v2)
 
-## <a name="install-an-application-with-helm-v3"></a>Een toepassing installeren met helm v3
+## <a name="install-an-application-with-helm-v3"></a>Een applicatie installeren met Helm v3
 
-### <a name="add-the-official-helm-stable-charts-repository"></a>De officiële helm-opslag plaats met stabiele grafieken toevoegen
+### <a name="add-the-official-helm-stable-charts-repository"></a>Voeg de officiële Helm stable charts repository toe
 
-Gebruik de [helm opslag plaats][helm-repo-add] opdracht voor het toevoegen van de opslag plaats officiële helm stabiele grafieken.
+Gebruik de [opdracht helmrepo][helm-repo-add] om de officiële Helm-stabiele grafieken repository toe te voegen.
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-### <a name="find-helm-charts"></a>Helm-grafieken zoeken
+### <a name="find-helm-charts"></a>Helmdiagrammen zoeken
 
-Helm-grafieken worden gebruikt voor het implementeren van toepassingen in een Kubernetes-cluster. Gebruik de [helm-Zoek][helm-search] opdracht om te zoeken naar vooraf gemaakte helm-grafieken:
+Helmdiagrammen worden gebruikt om toepassingen in een Kubernetes-cluster te implementeren. Als u wilt zoeken naar vooraf gemaakte Helm-diagrammen, gebruikt u de [opdracht helmzoeken:][helm-search]
 
 ```console
 helm search repo stable
 ```
 
-In de volgende gecomprimeerde voorbeeld uitvoer ziet u enkele van de helm-grafieken die beschikbaar zijn voor gebruik:
+In de volgende verkorte voorbeelduitvoer ziet u een aantal van de helmdiagrammen die beschikbaar zijn voor gebruik:
 
 
 ```console
@@ -114,7 +114,7 @@ stable/datadog                          1.38.3          6.14.0                  
 ...
 ```
 
-Als u de lijst met grafieken wilt bijwerken, gebruikt u de opdracht [helm opslag plaats update][helm-repo-update] . In het volgende voor beeld ziet u een geslaagde opslag plaats-update:
+Als u de lijst met grafieken wilt bijwerken, gebruikt u de opdracht [repo-update van het roer.][helm-repo-update] In het volgende voorbeeld wordt een geslaagde repo-update weergegeven:
 
 ```console
 $ helm repo update
@@ -124,9 +124,9 @@ Hang tight while we grab the latest from your chart repositories...
 Update Complete. ⎈ Happy Helming!⎈
 ```
 
-### <a name="run-helm-charts"></a>Helm-grafieken uitvoeren
+### <a name="run-helm-charts"></a>Helmdiagrammen uitvoeren
 
-Als u grafieken met helm wilt installeren, gebruikt u de [installatie opdracht helm][helm-install-command] en geeft u een release naam en de naam van de grafiek op die u wilt installeren. Als u de installatie van een helm-diagram in actie wilt zien, kunt u een eenvoudige nginx-implementatie installeren met behulp van een helm-grafiek.
+Als u grafieken met Helm wilt installeren, gebruikt u de opdracht [helminstallatie][helm-install-command] en geeft u een releasenaam en de naam van de te installeren grafiek op. Als u het installeren van een Helm-diagram in actie wilt zien, installeren we een basisnginx-implementatie met behulp van een Helm-grafiek.
 
 ```console
 helm install my-nginx-ingress stable/nginx-ingress \
@@ -134,7 +134,7 @@ helm install my-nginx-ingress stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-In de volgende verkorte voorbeeld uitvoer ziet u de implementatie status van de Kubernetes-resources die zijn gemaakt door de helm-grafiek:
+In de volgende verkorte voorbeelduitvoer ziet u de implementatiestatus van de Kubernetes-bronnen die zijn gemaakt door de grafiek Helm:
 
 ```console
 $ helm install my-nginx-ingress stable/nginx-ingress \
@@ -154,7 +154,7 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 ```
 
-Gebruik de `kubectl get services` opdracht om het *externe IP-adres* van uw service op te halen. De onderstaande opdracht toont bijvoorbeeld het *externe IP-adres* voor de service *My-nginx-ingress-controller* :
+Gebruik `kubectl get services` de opdracht om het *externe IP-IP* van uw service op te halen. De onderstaande opdracht toont bijvoorbeeld het *EXTERNE-IP* voor de service *my-nginx-ingress-controller:*
 
 ```console
 $ kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
@@ -163,15 +163,15 @@ NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT
 my-nginx-ingress-controller   LoadBalancer   10.0.123.1     <EXTERNAL-IP>   80:31301/TCP,443:31623/TCP   96s   app=nginx-ingress,component=controller,release=my-nginx-ingress
 ```
 
-### <a name="list-releases"></a>Releases weer geven
+### <a name="list-releases"></a>Lijstreleases
 
-Als u een lijst met releases wilt zien die op uw cluster zijn geïnstalleerd, gebruikt u de opdracht `helm list`.
+Als u een lijst met releases wilt `helm list` zien die op uw cluster zijn geïnstalleerd, gebruikt u de opdracht.
 
 ```console
 helm list
 ```
 
-In het volgende voor beeld ziet u de release van *mijn nginx-ingang* die in de vorige stap is geïmplementeerd:
+In het volgende voorbeeld ziet u de release *van my-nginx-ingress* die in de vorige stap is geïmplementeerd:
 
 ```console
 $ helm list
@@ -182,13 +182,13 @@ my-nginx-ingress    default     1           2019-11-22 10:08:06.048477 -0600 CST
 
 ### <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u een helm-grafiek implementeert, worden er een aantal Kubernetes-resources gemaakt. Deze resources omvatten Peul, implementaties en services. Als u deze resources wilt opschonen, gebruikt u de opdracht [helm uninstall][helm-cleanup] en geeft u de naam van uw release op, zoals gevonden in de vorige `helm list` opdracht.
+Wanneer u een Helm-diagram implementeert, worden een aantal Kubernetes-bronnen gemaakt. Deze bronnen omvatten pods, implementaties en services. Als u deze resources wilt opschonen, gebruikt u de opdracht `helm list` Helm [verwijderen][helm-cleanup] en geeft u de releasenaam op, zoals in de vorige opdracht.
 
 ```console
 helm uninstall my-nginx-ingress
 ```
 
-In het volgende voor beeld ziet u de release met de naam *mijn-nginx-ingress* is verwijderd:
+In het volgende voorbeeld ziet u dat de release met de naam *my-nginx-ingress* is verwijderd:
 
 ```console
 $ helm uninstall my-nginx-ingress
@@ -196,13 +196,13 @@ $ helm uninstall my-nginx-ingress
 release "my-nginx-ingress" uninstalled
 ```
 
-## <a name="install-an-application-with-helm-v2"></a>Een toepassing installeren met helm v2
+## <a name="install-an-application-with-helm-v2"></a>Een applicatie installeren met Helm v2
 
-### <a name="create-a-service-account"></a>Een service account maken
+### <a name="create-a-service-account"></a>Een serviceaccount maken
 
-Voordat u helm kunt implementeren in een AKS-cluster met RBAC, hebt u een service account en een rol-koppeling voor de Tiller-service nodig. Zie voor meer informatie over het beveiligen van helm/Tiller in een op RBAC ingeschakeld cluster [Tiller, naam ruimten en RBAC][tiller-rbac]. Als op uw AKS-cluster geen RBAC is ingeschakeld, slaat u deze stap over.
+Voordat u Helm implementeren in een AKS-cluster met RBAC-functie, hebt u een serviceaccount en rolbinding nodig voor de Tiller-service. Zie [Tiller, Namespaces en RBAC][tiller-rbac]voor meer informatie over het beveiligen van Helm / Tiller in een cluster met RBAC. Als uw AKS-cluster niet is ingeschakeld, slaat u deze stap over.
 
-Maak een bestand met de naam `helm-rbac.yaml` en kopieer de volgende YAML:
+Maak een `helm-rbac.yaml` bestand met de naam en kopie in de volgende YAML:
 
 ```yaml
 apiVersion: v1
@@ -225,29 +225,29 @@ subjects:
     namespace: kube-system
 ```
 
-Maak het service account en de functie binding met de opdracht `kubectl apply`:
+Maak het serviceaccount en `kubectl apply` de rolbinding met de opdracht:
 
 ```console
 kubectl apply -f helm-rbac.yaml
 ```
 
-### <a name="secure-tiller-and-helm"></a>Beveiligde Tiller en helm
+### <a name="secure-tiller-and-helm"></a>Veilige Tiller en Helm
 
-De helm-client en Tiller-service verifiëren en communiceren met elkaar met behulp van TLS/SSL. Met deze verificatie methode kunt u het Kubernetes-cluster beveiligen en welke services kunnen worden geïmplementeerd. U kunt de beveiliging verbeteren door uw eigen ondertekende certificaten te genereren. Elke helm-gebruiker ontvangt een eigen client certificaat en Tiller zou worden geïnitialiseerd in het Kubernetes-cluster waarop de certificaten zijn toegepast. Zie [using TLS/SSL tussen helm en Tiller][helm2-ssl]voor meer informatie.
+De Helm-client en Tiller-service verifiëren en communiceren met elkaar via TLS/SSL. Deze verificatiemethode helpt om het Kubernetes-cluster te beveiligen en welke services kunnen worden geïmplementeerd. Om de beveiliging te verbeteren, u uw eigen ondertekende certificaten genereren. Elke Helm-gebruiker zou zijn eigen clientcertificaat ontvangen en Tiller zou worden geïnitialiseerd in het Kubernetes-cluster met toegepaste certificaten. Zie [TLS/SSL gebruiken tussen Helm en Tiller][helm2-ssl]voor meer informatie.
 
-Met een Kubernetes-cluster met RBAC kunt u het niveau van de toegangs Tiller beheren die is ingesteld op het cluster. U kunt de Kubernetes-naam ruimte definiëren die Tiller is geïmplementeerd in en beperken welke naam ruimten Tiller vervolgens bronnen kan implementeren in. Met deze aanpak kunt u Tiller-instanties maken in verschillende naam ruimten en de implementatie grenzen beperken en de gebruikers van helm-client op bepaalde naam ruimten bereiken. Zie [helm voor op rollen gebaseerde toegangs beheer][helm2-rbac]voor meer informatie.
+Met een RBAC-enabled Kubernetes-cluster u het toegangsniveau bepalen dat Tiller tot het cluster heeft. U de Kubernetes-naamruimte definiëren waarin Tiller is geïmplementeerd en beperken in welke naamruimten Tiller vervolgens resources kan implementeren. Met deze aanpak u Tiller-instanties in verschillende naamruimten maken en implementatiegrenzen beperken en de gebruikers van de Helm-client beperken tot bepaalde naamruimten. Zie [Helm-op rollen gebaseerde toegangscontroles][helm2-rbac]voor meer informatie.
 
 ### <a name="configure-helm"></a>Helm configureren
 
-Als u een Basic-Tiller in een AKS-cluster wilt implementeren, gebruikt u de opdracht [helm init][helm2-init] . Als op uw cluster geen RBAC is ingeschakeld, verwijdert u het argument en de waarde `--service-account`. In de volgende voor beelden wordt ook de [geschiedenis ingesteld: Maxi maal][helm2-history-max] 200.
+Als u een basis-Tiller wilt implementeren in een AKS-cluster, gebruikt u de opdracht [helminit.][helm2-init] Als uw cluster niet is ingeschakeld, `--service-account` verwijdert u het argument en de waarde. De volgende voorbeelden stellen ook de [history-max][helm2-history-max] op 200.
 
-Als u TLS/SSL hebt geconfigureerd voor Tiller en helm, kunt u deze eenvoudige initialisatie stap overs Laan en in plaats daarvan de vereiste `--tiller-tls-` opgeven, zoals in het volgende voor beeld wordt weer gegeven.
+Als u TLS/SSL voor Tiller en Helm hebt geconfigureerd, slaat `--tiller-tls-` u deze basisinitialisatiestap over en verstrekt u in plaats daarvan de vereiste zoals weergegeven in het volgende voorbeeld.
 
 ```console
 helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-Als u TLS/SSL hebt geconfigureerd tussen helm en Tiller, geeft u de `--tiller-tls-*` para meters en namen van uw eigen certificaten op, zoals wordt weer gegeven in het volgende voor beeld:
+Als u TLS/SSL tussen Helm en `--tiller-tls-*` Tiller hebt geconfigureerd, geeft u de parameters en namen van uw eigen certificaten op, zoals in het volgende voorbeeld wordt weergegeven:
 
 ```console
 helm init \
@@ -261,15 +261,15 @@ helm init \
     --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-### <a name="find-helm-charts"></a>Helm-grafieken zoeken
+### <a name="find-helm-charts"></a>Helmdiagrammen zoeken
 
-Helm-grafieken worden gebruikt voor het implementeren van toepassingen in een Kubernetes-cluster. Gebruik de [helm-Zoek][helm2-search] opdracht om te zoeken naar vooraf gemaakte helm-grafieken:
+Helmdiagrammen worden gebruikt om toepassingen in een Kubernetes-cluster te implementeren. Als u wilt zoeken naar vooraf gemaakte Helm-diagrammen, gebruikt u de [opdracht helmzoeken:][helm2-search]
 
 ```console
 helm search
 ```
 
-In de volgende gecomprimeerde voorbeeld uitvoer ziet u enkele van de helm-grafieken die beschikbaar zijn voor gebruik:
+In de volgende verkorte voorbeelduitvoer ziet u een aantal van de helmdiagrammen die beschikbaar zijn voor gebruik:
 
 ```
 $ helm search
@@ -304,7 +304,7 @@ stable/datadog                 0.18.0           6.3.0        DataDog Agent
 ...
 ```
 
-Als u de lijst met grafieken wilt bijwerken, gebruikt u de opdracht [helm opslag plaats update][helm2-repo-update] . In het volgende voor beeld ziet u een geslaagde opslag plaats-update:
+Als u de lijst met grafieken wilt bijwerken, gebruikt u de opdracht [repo-update van het roer.][helm2-repo-update] In het volgende voorbeeld wordt een geslaagde repo-update weergegeven:
 
 ```console
 $ helm repo update
@@ -315,9 +315,9 @@ Hold tight while we grab the latest from your chart repositories...
 Update Complete.
 ```
 
-### <a name="run-helm-charts"></a>Helm-grafieken uitvoeren
+### <a name="run-helm-charts"></a>Helmdiagrammen uitvoeren
 
-Als u grafieken met helm wilt installeren, gebruikt u de opdracht [helm installeren][helm2-install-command] en geeft u de naam van de grafiek op die u wilt installeren. Als u de installatie van een helm-diagram in actie wilt zien, kunt u een eenvoudige nginx-implementatie installeren met behulp van een helm-grafiek. Als u TLS/SSL hebt geconfigureerd, voegt u de para meter `--tls` toe om uw helm-client certificaat te gebruiken.
+Als u grafieken met Helm wilt installeren, gebruikt u de opdracht [helminstallatie][helm2-install-command] en geeft u de naam op van de te installeren grafiek. Als u het installeren van een Helm-diagram in actie wilt zien, installeren we een basisnginx-implementatie met behulp van een Helm-grafiek. Als u TLS/SSL hebt `--tls` geconfigureerd, voegt u de parameter toe om het Helm-clientcertificaat te gebruiken.
 
 ```console
 helm install stable/nginx-ingress \
@@ -325,7 +325,7 @@ helm install stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-In de volgende verkorte voorbeeld uitvoer ziet u de implementatie status van de Kubernetes-resources die zijn gemaakt door de helm-grafiek:
+In de volgende verkorte voorbeelduitvoer ziet u de implementatiestatus van de Kubernetes-bronnen die zijn gemaakt door de grafiek Helm:
 
 ```
 $ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
@@ -352,11 +352,11 @@ flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none> 
 ...
 ```
 
-Het duurt een paar minuten voordat het *externe IP-* adres van de nginx-ingress-controller service moet worden gevuld en u toegang hebt tot de server met een webbrowser.
+Het duurt een minuut of twee voordat het *EXTERNE IP-adres* van de nginx-ingress-controller-service wordt ingevuld en u toegang geeft tot het met een webbrowser.
 
-### <a name="list-helm-releases"></a>Helm releases weer geven
+### <a name="list-helm-releases"></a>Lijst Helm releases
 
-Gebruik de [lijst opdracht helm][helm2-list] voor een overzicht van de versies die op uw cluster zijn geïnstalleerd. In het volgende voor beeld ziet u de release van de nginx-ingang die in de vorige stap is geïmplementeerd. Als u TLS/SSL hebt geconfigureerd, voegt u de para meter `--tls` toe om uw helm-client certificaat te gebruiken.
+Als u een lijst met releases wilt zien die op uw cluster zijn geïnstalleerd, gebruikt u de opdracht [helmlijst.][helm2-list] In het volgende voorbeeld ziet u de nginx-ingress-release die in de vorige stap is geïmplementeerd. Als u TLS/SSL hebt `--tls` geconfigureerd, voegt u de parameter toe om het Helm-clientcertificaat te gebruiken.
 
 ```console
 $ helm list
@@ -367,7 +367,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ### <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u een helm-grafiek implementeert, worden er een aantal Kubernetes-resources gemaakt. Deze resources omvatten Peul, implementaties en services. Als u deze resources wilt opschonen, gebruikt u de opdracht `helm delete` en geeft u de naam van uw release op, zoals gevonden in de vorige `helm list` opdracht. In het volgende voor beeld wordt de release met de naam *flailing-Alpaca*verwijderd:
+Wanneer u een Helm-diagram implementeert, worden een aantal Kubernetes-bronnen gemaakt. Deze bronnen omvatten pods, implementaties en services. Als u deze bronnen `helm delete` wilt opschonen, gebruikt u de `helm list` opdracht en geeft u de releasenaam op, zoals in de vorige opdracht. In het volgende voorbeeld wordt de release met de naam *flailing-alpaca*verwijderd:
 
 ```console
 $ helm delete flailing-alpaca
@@ -377,10 +377,10 @@ release "flailing-alpaca" deleted
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de helm-documentatie voor meer informatie over het beheren van Kubernetes-toepassings implementaties met helm.
+Zie de Documentatie Helm voor meer informatie over het beheren van Kubernetes-toepassingsimplementaties met Helm.
 
 > [!div class="nextstepaction"]
-> [Documentatie voor helm][helm-documentation]
+> [Helm documentatie][helm-documentation]
 
 <!-- LINKS - external -->
 [helm]: https://github.com/kubernetes/helm/

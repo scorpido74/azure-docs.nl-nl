@@ -1,6 +1,6 @@
 ---
-title: Over Azure DevTest Labs | Microsoft Docs
-description: Informatie over hoe DevTest Labs kunt gemakkelijk te maken, beheren en controleren van virtuele machines van Azure
+title: Informatie over Azure DevTest Labs | Microsoft Documenten
+description: Ontdek hoe DevTest Labs het eenvoudig kan maken om virtuele Azure-machines te maken, te beheren en te bewaken
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
 ms.openlocfilehash: b7cd6bb1fd0377ca1440d9c667453df922aacbd4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561452"
 ---
 # <a name="about-azure-devtest-labs"></a>Over Azure DevTest Labs
-Azure DevTest Labs kunnen ontwikkelaars van teams voor het efficiënt zelf beheren van virtuele machines (VM's) en PaaS-resources zonder te wachten op goedkeuring.
+Azure DevTest Labs stelt ontwikkelaars in teams in staat om virtuele machines (VM's) en PaaS-resources efficiënt zelf te beheren zonder te wachten op goedkeuringen.
 
-DevTest Labs wordt gemaakt die bestaat uit een vooraf geconfigureerde bases of Azure Resource Manager-sjablonen labs. Deze moeten alle benodigde hulpprogramma's en software die u gebruiken kunt om omgevingen te maken. U kunt omgevingen maken in een paar minuten, in plaats van uren of dagen kwijt bent.
+DevTest Labs maakt labs die bestaan uit vooraf geconfigureerde bases of Azure Resource Manager-sjablonen. Deze hebben alle benodigde tools en software die u gebruiken om omgevingen te maken. U omgevingen maken in een paar minuten, in tegenstelling tot uren of dagen.
 
-Met behulp van DevTest Labs, kunt u de nieuwste versies van uw toepassingen testen door de volgende taken uitvoeren:
+Met DevTest Labs u de nieuwste versies van uw toepassingen testen door de volgende taken uit te voeren:
 
-- Richt snel Windows en Linux-omgevingen met behulp van herbruikbare sjablonen en artefacten.
-- Integreer uw implementatiepijplijn eenvoudig met DevTest Labs om in te richten op aanvraag omgevingen.
-- Schaal uw belastingtests door in te richten van meerdere testagents en maak vooraf ingerichte omgevingen voor training en demo's.
+- Snel Windows- en Linux-omgevingen inrichten met behulp van herbruikbare sjablonen en artefacten.
+- Integreer uw implementatiepijplijn eenvoudig met DevTest Labs om op aanvraag omgevingen in te richten.
+- Schaal uw belastingstests op door meerdere testagents in te richten en vooraf ingerichte omgevingen te maken voor training en demo's.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Azure-DevTest-Labs/player]
 
 ## <a name="capabilities"></a>Functionaliteit
-DevTest Labs biedt de volgende mogelijkheden voor ontwikkelaars die werken met virtuele machines:
+DevTest Labs biedt de volgende mogelijkheden aan ontwikkelaars die met VM's werken:
 
-- Snel virtuele machines maken met minder dan vijf eenvoudige stappen te volgen.
-- Kies uit een gecureerde lijst met VM-basissen die zijn geconfigureerd, goedgekeurd en geautoriseerd is door de teamleider of de centrale IT.
-- Virtuele machines maken van vooraf gemaakte aangepaste installatiekopieën die over de software en hulpprogramma's zijn al geïnstalleerd. 
-- Virtuele machines maken van formules die in feite aangepaste installatiekopieën die in combinatie met de meest recente builds van de software die wordt geïnstalleerd zijn wanneer de virtuele machines worden gemaakt. 
-- Artefacten die geïmplementeerd op virtuele machines zijn nadat deze zijn ingericht extensies installeren.
-- Automatisch afsluiten instelt en schema's op virtuele machines automatisch starten.
-- Claim een vooraf gemaakte virtuele machine zonder tussenkomst van het proces voor het maken.
+- Maak vm's snel door minder dan vijf eenvoudige stappen te volgen.
+- Kies uit een samengestelde lijst met VM-bases die zijn geconfigureerd, goedgekeurd en geautoriseerd door de teamleider of centrale IT.
+- Maak VM's op basis van vooraf gemaakte aangepaste afbeeldingen waarop alle software en tools al zijn geïnstalleerd. 
+- Maak VM's op basis van formules die in wezen aangepaste afbeeldingen zijn in combinatie met de nieuwste builds van de software die is geïnstalleerd wanneer de VM's worden gemaakt. 
+- Installeer artefacten die zijn geïmplementeerd op VM's nadat ze zijn ingericht.
+- Stel automatische afsluitings- en automatische startschema's in op VM's.
+- Claim een vooraf gemaakte VM zonder het creatieproces te doorlopen.
 
-DevTest Labs biedt de volgende mogelijkheden voor ontwikkelaars die werken met PaaS-omgevingen:
+DevTest Labs biedt de volgende mogelijkheden aan ontwikkelaars die met PaaS-omgevingen werken:
 
-- Resourcemanager gebruiken voor het snel PaaS-omgevingen maken door minder dan drie eenvoudige stappen te volgen.
-- Kies uit een gecureerde lijst met Resource Manager-sjablonen die zijn geconfigureerd en geautoriseerd is door de teamleider of de centrale IT.
-- Stel een lege resourcegroep (sandbox) met behulp van Resource Manager-sjabloon om Azure te verkennen in de context van een lab.
+- Gebruik Resource Manager om snel PaaS-omgevingen te maken door minder dan drie eenvoudige stappen te volgen.
+- Kies uit een samengestelde lijst met Resource Manager-sjablonen, die zijn geconfigureerd en geautoriseerd door de teamleider of centrale IT.
+- Draai een lege resourcegroep (sandbox) op met behulp van een Resource Manager-sjabloon om Azure te verkennen in de context van een lab.
 
-Met DevTest Labs kunt centrale IT te beheren afval, kosten van resources te optimaliseren en binnen een budgetten blijven door de volgende taken uitvoeren:  
+DevTest Labs stelt centrale IT ook in staat om afval te beheersen, de kosten op resources te optimaliseren en binnen budgetten te blijven door de volgende taken uit te voeren:  
 
-- Instellen van schema's voor automatisch afsluiten en automatisch wordt gestart op virtuele machines.
-- Instellen van beleidsregels voor het aantal virtuele machines die gebruikers kunnen maken.
-- Instellen van beleidsregels op een VM-grootten en galerie met installatiekopieën die gebruikers kiezen.
-- Bijhouden van kosten en doelen instellen voor labs.
-- Een melding te ontvangen op hoge geschatte kosten voor labs zodat u de nodige maatregelen kunt nemen.
+- Automatische afsluitings- en automatische startschema's instellen op VM's.
+- Het instellen van beleid op het aantal VM's dat gebruikers kunnen maken.
+- Stel beleid in op de formaten en galerijafbeeldingen van VM's waaruit gebruikers kiezen.
+- Kosten bijhouden en doelen stellen op laboratoria.
+- Op de hoogte worden gesteld van de hoge verwachte kosten voor laboratoria, zodat u de nodige acties ondernemen.
 
 DevTest Labs biedt de volgende voordelen bij het maken, configureren en beheren van omgevingen in de cloud.
 
-## <a name="cost-control-and-governance"></a>Kostenbeheer en beheer
-DevTest Labs wordt het beheersen van kosten gemakkelijker doordat u de volgende taken uitvoeren:
+## <a name="cost-control-and-governance"></a>Kostenbeheersing en governance
+DevTest Labs maakt het eenvoudiger om de kosten te beheersen door u de volgende taken te laten uitvoeren:
 
-- [Beleid instellen voor uw labs](devtest-lab-get-started-with-lab-policies.md), zoals het aantal virtuele machines per gebruiker of per lab. 
-- Maak [beleid om automatisch af te](devtest-lab-set-lab-policy.md) en virtuele machines te starten.
-- De kosten voor virtuele machines en PaaS-resources bijhouden vlechtstoffen omhoog in labs om binnen te blijven [uw budget](devtest-lab-configure-cost-management.md).
-- Binnen de context van uw labs blijven, zodat u resources buiten deze niet instellen.
+- [Stel beleidsregels in op uw labs,](devtest-lab-get-started-with-lab-policies.md)zoals het aantal VM's per gebruiker of per lab. 
+- Maak [beleid om vm's automatisch af te sluiten](devtest-lab-set-lab-policy.md) en te starten.
+- Houd de kosten bij voor VM's en PaaS-bronnen die in laboratoria zijn opgemaakt om binnen [uw budget](devtest-lab-configure-cost-management.md)te blijven.
+- Blijf binnen de context van uw labs, zodat u niet spin-up middelen buiten hen.
 
-## <a name="quickly-get-to-ready-to-test"></a>Snel toegang verkrijgen tot gereed om te testen
-DevTest Labs kunt u vooraf ingerichte omgevingen die zijn uitgerust met alles wat die uw team nodig heeft om te ontwikkelen en testen van toepassingen maken. Alleen [claim de omgevingen](devtest-lab-add-claimable-vm.md) waarop de laatste goede versie van uw toepassing is geïnstalleerd en start werken. Of gebruik containers voor het maken van de omgeving nog sneller en slanker zijn.
+## <a name="quickly-get-to-ready-to-test"></a>Snel aan de slag met de test
+Met DevTest Labs u vooraf ingerichte omgevingen maken die zijn uitgerust met alles wat uw team nodig heeft om toepassingen te ontwikkelen en te testen. Claim gewoon [de omgevingen](devtest-lab-add-claimable-vm.md) waar de laatste goede build van uw applicatie is geïnstalleerd en begin te werken. Of gebruik containers voor nog snellere, slankere omgevingcreatie.
 
-## <a name="create-once-use-everywhere"></a>Eenmaal maken, overal gebruiken
-Vastleggen en delen van PaaS [omgevingssjablonen](devtest-lab-create-environment-from-arm.md) en [artefacten](add-artifact-repository.md) binnen uw team of organisatie-alles in bronbeheer, gemakkelijk maken developer-en testomgevingen.
+## <a name="create-once-use-everywhere"></a>Maak één keer, gebruik overal
+Vastleggen en delen [environment templates](devtest-lab-create-environment-from-arm.md) van PaaS-omgevingssjablonen en [-artefacten](add-artifact-repository.md) binnen uw team of organisatie , allemaal in bronbeheer, om eenvoudig ontwikkel- en testomgevingen te maken.
 
 ## <a name="worry-free-self-service"></a>Zorgeloze selfservice
-DevTest Labs kunnen uw ontwikkelaars en testers te snel en eenvoudig [IaaS-VM's maken](devtest-lab-add-vm.md) en [PaaS-resources](devtest-lab-create-environment-from-arm.md) met behulp van een set met vooraf geconfigureerde resources.
+Met DevTest Labs kunnen uw ontwikkelaars en testers snel en eenvoudig [IaaS-vm's](devtest-lab-add-vm.md) en [PaaS-bronnen](devtest-lab-create-environment-from-arm.md) maken met behulp van een set vooraf geconfigureerde bronnen.
 
-## <a name="use-iaas-and-paas-resources"></a>Gebruik van IaaS en PaaS-resources 
-Ontwikkelaars kunnen ook Stel PaaS-resources, zoals Azure Service Fabric-clusters, de functie Web Apps van Azure App Service en SharePoint-farms, met behulp van Resource Manager-sjablonen. Om te beginnen op PaaS in labs, gebruikt u de sjablonen van de [openbare omgeving opslagplaats](devtest-lab-configure-use-public-environments.md) of [in het lab verbinden met uw eigen Git-opslagplaats](devtest-lab-create-environment-from-arm.md#configure-your-own-template-repositories). U kunt ook kosten bijhouden op deze resources om binnen uw budget te blijven.
+## <a name="use-iaas-and-paas-resources"></a>IaaS- en PaaS-bronnen gebruiken 
+Ontwikkelaars kunnen paas-bronnen, zoals Azure Service Fabric-clusters, de Web Apps-functie van Azure App Service en SharePoint-farms, ook opdraaien met behulp van Resource Manager-sjablonen. Om aan de slag te gaan met PaaS in labs, gebruikt u de sjablonen uit de [openbare omgevingrepository](devtest-lab-configure-use-public-environments.md) of [verbindt u het lab met uw eigen Git-repository.](devtest-lab-create-environment-from-arm.md#configure-your-own-template-repositories) U ook de kosten van deze resources bijhouden om binnen uw budget te blijven.
 
-## <a name="integrate-with-your-existing-toolchain"></a>Integratie met uw bestaande hulpprogrammaketen
-Gebruik en-klare-invoegtoepassingen of de API voor inrichten ontwikkeling/testen omgevingen rechtstreeks vanuit uw favoriete [continue integratie (CI) hulpprogramma](devtest-lab-integrate-ci-cd-vsts.md), geïntegreerde ontwikkelingsomgeving (IDE) of pijplijn voor geautomatiseerde release. U kunt ook de uitgebreide opdrachtregelprogramma gebruiken.
+## <a name="integrate-with-your-existing-toolchain"></a>Integreren met uw bestaande toolchain
+Gebruik vooraf gemaakte plug-ins of de API om ontwikkel-/testomgevingen rechtstreeks te voorzien vanuit uw gewenste [continue integratietool (CI),](devtest-lab-integrate-ci-cd-vsts.md)geïntegreerde ontwikkelomgeving (IDE) of geautomatiseerde releasepijplijn. U ook gebruik maken van de uitgebreide command-line tool.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
-- Zie voor meer informatie over DevTest Labs, [DevTest Labs-concepten](devtest-lab-concepts.md).
-- Zie voor een overzicht met stapsgewijze instructies [zelfstudie: Een lab instellen met behulp van Azure DevTest Labs](tutorial-create-custom-lab.md).
+- Zie [DevTest Labs-concepten voor](devtest-lab-concepts.md)meer informatie over DevTest Labs.
+- Zie [Zelfstudie: Een lab instellen met Azure DevTest Labs](tutorial-create-custom-lab.md)voor een walkthrough met stapsgewijze instructies.

@@ -1,6 +1,6 @@
 ---
-title: Gedrag van sessies configureren-Azure Active Directory B2C | Microsoft Docs
-description: Het gedrag van sessies in Azure Active Directory B2C configureren.
+title: Sessiegedrag configureren - Azure Active Directory B2C | Microsoft Documenten
+description: Sessiegedrag configureren in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,51 +11,51 @@ ms.date: 04/16/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c1d39fdbca9484f47ce0c8537c82247b75b2e3db
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186808"
 ---
-# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Sessie gedrag in Azure Active Directory B2C configureren
+# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Sessiegedrag configureren in Azure Active Directory B2C
 
-Met deze functie beschikt u over een nauw keurige controle, [per gebruiker](user-flow-overview.md), van:
+Deze functie geeft u fijnkorrelige controle, op een [per-gebruiker flow basis](user-flow-overview.md)van:
 
-- De levens duur van webtoepassings sessies die worden beheerd door Azure AD B2C.
-- Gedrag van eenmalige aanmelding (SSO) voor meerdere apps en gebruikers stromen in uw Azure AD B2C-Tenant.
+- Levensduur van webtoepassingssessies die worden beheerd door Azure AD B2C.
+- SSO-gedrag (Single Sign-on) in meerdere apps en gebruikersstromen in uw Azure AD B2C-tenant.
 
-Deze instellingen zijn niet beschikbaar voor gebruikers stromen voor wacht woord opnieuw instellen.
+Deze instellingen zijn niet beschikbaar voor gebruikersstromen voor het opnieuw instellen van wachtwoorden.
 
-Azure AD B2C ondersteunt het [OpenID Connect Connect-verificatie protocol](openid-connect.md) voor het inschakelen van beveiligde aanmelding bij webtoepassingen. U kunt de volgende eigenschappen gebruiken voor het beheren van sessies van webtoepassingen:
+Azure AD B2C ondersteunt het [OpenID Connect-verificatieprotocol](openid-connect.md) voor het inschakelen van veilige aanmelding bij webtoepassingen. U de volgende eigenschappen gebruiken om webtoepassingssessies te beheren:
 
-## <a name="session-behavior-properties"></a>Eigenschappen van sessie gedrag
+## <a name="session-behavior-properties"></a>Eigenschappen van sessiegedrag
 
-- **Levens duur van de web-app (minuten)** : de levens duur van de Azure AD B2C's-sessie cookie die is opgeslagen in de browser van de gebruiker wanneer de verificatie is geslaagd.
-    - Standaard instelling = 1440 minuten.
-    - Mini maal (inclusief) = 15 minuten.
+- **Levensduur van de web-app-sessie (minuten)** - De levensduur van de sessiecookie van Azure AD B2C die is opgeslagen in de browser van de gebruiker bij succesvolle verificatie.
+    - Standaard = 1440 minuten.
+    - Minimum (inclusief) = 15 minuten.
     - Maximum (inclusief) = 1440 minuten.
-- **Time-out voor web-app-sessietime** -als deze schakel optie is ingesteld op **absoluut**, wordt de gebruiker na de periode die is opgegeven door de duur van de **Web-app-sessie (minuten)** , gedwongen deze te verifiëren. Als deze schakel optie is ingesteld op **Rolling** (de standaard instelling), blijft de gebruiker aangemeld zolang de gebruiker voortdurend actief is in uw webtoepassing.
-- **Configuratie van eenmalige aanmelding** Als u meerdere toepassingen en gebruikers stromen hebt in uw B2C-Tenant, kunt u gebruikers interacties voor hen beheren met de **configuratie-eigenschap voor eenmalige aanmelding** . U kunt de eigenschap instellen op een van de volgende instellingen:
-    - **Tenant** : dit is de standaard instelling. Met deze instelling kunnen meerdere toepassingen en gebruikers stromen in uw B2C-Tenant dezelfde gebruikers sessie delen. Wanneer een gebruiker zich bijvoorbeeld bij een toepassing aanmeldt, kan de gebruiker zich bij het openen van de app ook probleemloos aanmelden bij een andere, contoso-apotheek.
-    - **Toepassing** : met deze instelling kunt u een gebruikers sessie alleen voor een toepassing, onafhankelijk van andere toepassingen, onderhouden. Als u bijvoorbeeld wilt dat de gebruiker zich aanmeldt bij Contoso apotheek (met dezelfde referenties), zelfs als de gebruiker al is aangemeld bij Contoso-winkelen, een andere toepassing op dezelfde B2C-Tenant.
-    - **Beleid** : met deze instelling kunt u een gebruikers sessie alleen voor een gebruikers stroom onderhouden, onafhankelijk van de toepassingen die er gebruik van maken. Als de gebruiker zich al heeft aangemeld en een MFA-stap (multi factor Authentication) heeft voltooid, kan de gebruiker toegang krijgen tot hogere beveiligings onderdelen van meerdere toepassingen, zolang de sessie die aan de gebruikers stroom is gebonden, niet verloopt.
-    - **Uitgeschakeld** : deze instelling zorgt ervoor dat de gebruiker tijdens elke uitvoering van het beleid de volledige gebruikers stroom uitvoert.
+- **Time-out van web-apps -** Als deze switch is ingesteld op **Absoluut,** wordt de gebruiker gedwongen om opnieuw te verifiëren nadat de periode die is opgegeven door de levensduur van de **web-app-sessie (minuten)** verstrijkt. Als deze switch is ingesteld op **Rollen** (de standaardinstelling), blijft de gebruiker aangemeld zolang de gebruiker voortdurend actief is in uw webtoepassing.
+- **Configuratie met één aanmelding** Als u meerdere toepassingen en gebruikersstromen in uw B2C-tenant hebt, u gebruikersinteracties in deze gebruikers beheren met de eigenschap **Configuratie voor één aanmelding.** U de eigenschap instellen op een van de volgende instellingen:
+    - **Tenant** - Deze instelling is de standaardinstelling. Met deze instelling kunnen meerdere toepassingen en gebruikersstromen in uw B2C-tenant dezelfde gebruikerssessie delen. Bijvoorbeeld, zodra een gebruiker zich aanmeldt bij een toepassing, kan de gebruiker zich ook naadloos aanmelden bij een andere, Contoso Pharmacy, bij toegang tot een toepassing.
+    - **Toepassing** - Met deze instelling u een gebruikerssessie exclusief voor een toepassing onderhouden, onafhankelijk van andere toepassingen. Als u bijvoorbeeld wilt dat de gebruiker zich aanmeldt bij Contoso Pharmacy (met dezelfde referenties), zelfs als de gebruiker al is aangemeld bij Contoso Shopping, een andere toepassing op dezelfde B2C-tenant.
+    - **Beleid** - Met deze instelling u een gebruikerssessie exclusief voor een gebruikersstroom onderhouden, onafhankelijk van de toepassingen die deze gebruiken. Als de gebruiker zich bijvoorbeeld al heeft aangemeld en een MFA-stap (Multi factor Authentication) heeft voltooid, kan de gebruiker toegang krijgen tot delen met een hogere beveiliging van meerdere toepassingen, zolang de sessie die is gekoppeld aan de gebruikersstroom niet verloopt.
+    - **Uitgeschakeld** - Deze instelling dwingt de gebruiker om de volledige gebruikersstroom uit te voeren bij elke uitvoering van het beleid.
 
 De volgende use cases zijn ingeschakeld met behulp van deze eigenschappen:
 
-- Voldoen aan de beveiligings-en nalevings vereisten van uw branche door de juiste levens duur van de webtoepassingsproxy in te stellen.
-- Verificatie afdwingen na een bepaalde tijds periode tijdens de interactie van een gebruiker met een hoog beveiligings onderdeel van uw webtoepassing.
+- Voldoe aan de beveiligings- en nalevingsvereisten van uw branche door de juiste levensduur van de webtoepassingssessie in te stellen.
+- Verificatie afdwingen na een bepaalde periode tijdens de interactie van een gebruiker met een hoogbeveiligd onderdeel van uw webtoepassing.
 
 ## <a name="configure-the-properties"></a>De eigenschappen configureren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD B2C Tenant bevat.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+2. Zorg ervoor dat u de map met uw Azure AD B2C-tenant gebruikt door het **filter Directory + abonnement** in het bovenste menu te selecteren en de map te kiezen die uw Azure AD B2C-tenant bevat.
 3. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
-4. Selecteer **gebruikers stromen (beleid)** .
-5. Open de gebruikers stroom die u eerder hebt gemaakt.
+4. Selecteer **Gebruikersstromen (beleidsregels)**.
+5. Open de gebruikersstroom die u eerder hebt gemaakt.
 6. Selecteer **Eigenschappen**.
-7. Configureer de duur van de **Web-app-sessie (minuten)** , **time-out voor de web-app sessie**, **configuratie van eenmalige aanmelding**en **vereisen een id-token in afmeldings aanvragen** , indien nodig.
+7. Configureer **de sessielevensduur van de web-app (minuten),** **een time-out van de web-app-sessie,** **een malige aanmeldingsconfiguratie**en **Een ID-token vereisen in afmeldverzoeken** als dat nodig is.
 
-    ![Instellingen voor de eigenschappen van sessie gedrag in de Azure Portal](./media/session-behavior/session-behavior.png)
+    ![Eigenschappeninstellingen voor sessiegedrag in de Azure-portal](./media/session-behavior/session-behavior.png)
 
 8. Klik op **Opslaan**.

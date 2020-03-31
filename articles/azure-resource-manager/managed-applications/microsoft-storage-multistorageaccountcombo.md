@@ -1,22 +1,22 @@
 ---
-title: MultiStorageAccountCombo UI-element
-description: Hierin wordt het element micro soft. storage. MultiStorageAccountCombo UI voor Azure Portal beschreven.
+title: MultiStorageAccountCombo-gebruikersinterface-element
+description: Beschrijft het Microsoft.Storage.MultiStorageAccountCombo UI-element voor Azure-portal.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 06412a1f08f1f242a3f3bd9be17b795ee09fcf9d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651876"
 ---
-# <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI element
+# <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo-gebruikersinterfaceelement
 
-Een groep besturings elementen voor het maken van verschillende opslag accounts met namen die beginnen met een gemeen schappelijk voor voegsel.
+Een groep besturingselementen voor het maken van meerdere opslagaccounts met namen die beginnen met een gemeenschappelijk voorvoegsel.
 
-## <a name="ui-sample"></a>UI-voor beeld
+## <a name="ui-sample"></a>UI-voorbeeld
 
 ![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
 
@@ -60,13 +60,13 @@ Een groep besturings elementen voor het maken van verschillende opslag accounts 
 
 ## <a name="remarks"></a>Opmerkingen
 
-- De waarde voor `defaultValue.prefix` wordt samengevoegd met een of meer gehele getallen om de volg orde van de namen van opslag accounts te genereren. Als `defaultValue.prefix` bijvoorbeeld **sa** is en `count` **2**is, worden de namen van opslag accounts **SA1** en **sa2** gegenereerd. De namen van gegenereerde opslag accounts worden automatisch voor uniekheid gevalideerd.
-- De namen van de opslag accounts worden gegenereerd lexicographically op basis van `count`. Als `count` bijvoorbeeld 10 is, wordt de naam van het opslag account end met gehele getallen van twee cijfers (01, 02, 03).
-- De standaard waarde voor `defaultValue.prefix` is **Null**en voor `defaultValue.type` is **Premium_LRS**.
-- Elk type dat niet in `constraints.allowedTypes` is opgegeven, is verborgen en elk type dat niet in `constraints.excludedTypes` is opgegeven, wordt weer gegeven. `constraints.allowedTypes` en `constraints.excludedTypes` zijn beide optioneel, maar kunnen niet tegelijkertijd worden gebruikt.
-- Naast het genereren van opslag accountnamen, wordt `count` gebruikt om de juiste vermenigvuldiger voor het element in te stellen. Het ondersteunt een statische waarde, zoals **2**, of een dynamische waarde van een ander element, zoals `[steps('step1').storageAccountCount]`. De standaard waarde is **1**.
+- De waarde `defaultValue.prefix` voor wordt gekoppeld aan een of meer gehele getallen om de volgorde van opslagaccountnamen te genereren. Bijvoorbeeld, als `defaultValue.prefix` **is sa** `count` en is **2,** dan opslag account namen **sa1** en **sa2** worden gegenereerd. Gegenereerde opslagaccountnamen worden automatisch gevalideerd voor uniciteit.
+- De namen van het opslagaccount `count`worden lexicografisch gegenereerd op basis van . Als u `count` bijvoorbeeld 10 is, eindigen de namen van het opslagaccount met getallen getallen (01, 02, 03).
+- De standaardwaarde `defaultValue.prefix` voor is `defaultValue.type` **null**en is **Premium_LRS**.
+- Elk type dat `constraints.allowedTypes` niet is opgegeven, wordt `constraints.excludedTypes` verborgen en elk type dat niet is opgegeven, wordt weergegeven. `constraints.allowedTypes`en `constraints.excludedTypes` zijn beide optioneel, maar kunnen niet tegelijkertijd worden gebruikt.
+- Naast het genereren van namen `count` van opslagaccount, wordt gebruikt om de juiste multiplier voor het element in te stellen. Het ondersteunt een statische waarde, zoals **2,** of `[steps('step1').storageAccountCount]`een dynamische waarde van een ander element, zoals . De standaardwaarde is **1**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
-* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.
+* Zie Aan de slag met [CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van ui-definities.
+* Zie [Elementen van CreateUiDefinition](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in ui-elementen .

@@ -1,88 +1,88 @@
 ---
 title: Implementatiemodi
-description: Hierin wordt beschreven hoe u kunt opgeven of u een volledige of incrementele implementatie modus met Azure Resource Manager wilt gebruiken.
+description: Beschrijft hoe u opgeven of u een volledige of incrementele implementatiemodus wilt gebruiken met Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 9cc0e8eb20a0375a98906524d4d598ccb473d2a8
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1077d92f076797fb03c4fe750b353e2306f9b6de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207584"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460242"
 ---
-# <a name="azure-resource-manager-deployment-modes"></a>Implementatie modi Azure Resource Manager
+# <a name="azure-resource-manager-deployment-modes"></a>Implementatiemodi azure resource manager
 
-Wanneer u uw resources implementeert, geeft u op dat de implementatie een incrementele update of een volledige update is. Het verschil tussen deze twee modi is hoe Resource Manager bestaande resources in de resource groep die zich niet in de sjabloon bevinden, afhandelt.
+Wanneer u uw resources implementeert, geeft u op dat de implementatie een incrementele update of een volledige update is. Het verschil tussen deze twee modi is hoe Resource Manager omgaat met bestaande resources in de resourcegroep die niet in de sjabloon staan.
 
-Voor beide modi probeert Resource Manager alle resources te maken die zijn opgegeven in de sjabloon. Als de resource al bestaat in de resource groep en de bijbehorende instellingen niet worden gewijzigd, wordt er geen bewerking voor die resource uitgevoerd. Als u de eigenschaps waarden voor een resource wijzigt, wordt de resource bijgewerkt met de nieuwe waarden. Als u de locatie of het type van een bestaande resource probeert bij te werken, mislukt de implementatie met een fout. Implementeer in plaats daarvan een nieuwe resource met de locatie of het type dat u nodig hebt.
+Voor beide modi probeert Resource Manager alle resources te maken die in de sjabloon zijn opgegeven. Als de resource al bestaat in de resourcegroep en de instellingen ongewijzigd zijn, wordt er geen bewerking uitgevoerd voor die resource. Als u de eigenschapswaarden voor een resource wijzigt, wordt de resource bijgewerkt met die nieuwe waarden. Als u de locatie of het type bestaande resource probeert bij te werken, mislukt de implementatie met een fout. Implementeer in plaats daarvan een nieuwe resource met de locatie of het type dat u nodig hebt.
 
-De standaard modus is incrementeel.
+De standaardmodus is incrementeel.
 
 ## <a name="complete-mode"></a>Volledige modus
 
-In de volledige modus **verwijdert** Resource Manager resources die voor komen in de resource groep, maar die niet zijn opgegeven in de sjabloon.
+In de volledige modus **verwijdert** Resourcemanager resources die in de resourcegroep bestaan, maar die niet zijn opgegeven in de sjabloon.
 
-Als uw sjabloon een resource bevat die niet is geïmplementeerd omdat de [voor waarde](conditional-resource-deployment.md) wordt geëvalueerd als onwaar, is het resultaat afhankelijk van de rest API versie die u gebruikt om de sjabloon te implementeren. Als u een eerdere versie dan 2019-05-10 gebruikt, wordt de resource **niet verwijderd**. Met 2019-05-10 of hoger wordt de resource **verwijderd**. Met de nieuwste versies van Azure PowerShell en Azure CLI verwijdert u de resource.
+Als uw sjabloon een resource bevat die niet is geïmplementeerd omdat [de voorwaarde](conditional-resource-deployment.md) wordt geëvalueerd, is het resultaat afhankelijk van de REST API-versie die u gebruikt om de sjabloon te implementeren. Als u een versie gebruikt die eerder is dan 2019-05-10, wordt de bron **niet verwijderd.** Met 2019-05-10 of hoger wordt de bron **verwijderd.** De nieuwste versies van Azure PowerShell en Azure CLI verwijderen de bron.
 
-Wees voorzichtig met het gebruik van de volledige modus met [Kopieer lussen](copy-resources.md). Alle resources die niet zijn opgegeven in de sjabloon na het oplossen van de Kopieer-lus, worden verwijderd.
+Wees voorzichtig met behulp van de volledige modus met [kopieerlussen.](copy-resources.md) Alle resources die niet in de sjabloon zijn opgegeven na het oplossen van de kopieerlus, worden verwijderd.
 
-Als u naar [meer dan één resource groep in een sjabloon](cross-resource-group-deployment.md)implementeert, kunnen resources in de resource groep die zijn opgegeven in de implementatie bewerking worden verwijderd. Resources in de secundaire resource groepen worden niet verwijderd.
+Als u implementeert in [meer dan één resourcegroep in een sjabloon,](cross-resource-group-deployment.md)komen resources in de resourcegroep die in de implementatiebewerking is opgegeven, in aanmerking om te worden verwijderd. Bronnen in de secundaire resourcegroepen worden niet verwijderd.
 
-Er zijn een aantal verschillen in de manier waarop bron typen het verwijderen van de modus volt ooien verwerken. Bovenliggende resources worden automatisch verwijderd als ze niet worden gebruikt in een sjabloon die wordt geïmplementeerd in de modus voltooid. Sommige onderliggende resources worden niet automatisch verwijderd wanneer ze niet in de sjabloon staan. Deze onderliggende resources worden echter verwijderd als de bovenliggende resource wordt verwijderd.
+Er zijn enkele verschillen in de manier waarop resourcetypen verwijderingen in de volledige modus verwerken. Bovenliggende bronnen worden automatisch verwijderd wanneer deze niet in een sjabloon staan die in de volledige modus is geïmplementeerd. Sommige onderliggende bronnen worden niet automatisch verwijderd wanneer ze niet in de sjabloon staan. Deze onderliggende bronnen worden echter verwijderd als de bovenliggende bron wordt verwijderd.
 
-Als uw resource groep bijvoorbeeld een DNS-zone (het resource type micro soft. Network/dnsZones) en een CNAME-record (micro soft. Network/dnsZones/CNAME-resource type) bevat, is de DNS-zone de bovenliggende resource voor de CNAME-record. Als u implementeert in de modus volledig en u de DNS-zone niet in uw sjabloon opneemt, worden de DNS-zone en de CNAME-record verwijderd. Als u de DNS-zone in uw sjabloon opneemt, maar niet de CNAME-record opneemt, wordt de CNAME niet verwijderd.
+Als uw resourcegroep bijvoorbeeld een DNS-zone (Microsoft.Network/dnsZones-brontype) en een CNAME-record (Microsoft.Network/dnsZones/CNAME-brontype) bevat, is de DNS-zone de bovenliggende bron voor de CNAME-record. Als u de volledige modus implementeert en de DNS-zone niet in uw sjabloon opneemt, worden de DNS-zone en de CNAME-record beide verwijderd. Als u de DNS-zone in uw sjabloon opneemt, maar de CNAME-record niet opneemt, wordt de CNAME niet verwijderd.
 
-Zie [Azure-resources verwijderen voor implementaties in de volledige modus](complete-mode-deletion.md)voor een lijst met de verwijdering van resource typen die worden verwijderd.
+Zie [Verwijdering van Azure-resources voor implementaties in de volledige modus](complete-mode-deletion.md)voor een lijst met hoe resourcetypen verwijdering verwerken.
 
-Als de resource groep is [vergrendeld](../management/lock-resources.md), worden de resources niet verwijderd in de modus volt ooien.
+Als de brongroep is [vergrendeld,](../management/lock-resources.md)worden de resources in de volledige modus niet verwijderd.
 
 > [!NOTE]
-> Alleen hoofd niveau sjablonen ondersteunen de volledige implementatie modus. Voor [gekoppelde of geneste sjablonen](linked-templates.md)moet u de incrementele modus gebruiken.
+> Alleen sjablonen op basisniveau ondersteunen de volledige implementatiemodus. Voor [gekoppelde of geneste sjablonen](linked-templates.md)moet u de incrementele modus gebruiken.
 >
-> [Implementaties op abonnements niveau](deploy-to-subscription.md) bieden geen ondersteuning voor de modus volt ooien.
+> [Implementaties op abonnementsniveau](deploy-to-subscription.md) ondersteunen de volledige modus niet.
 >
-> De portal biedt momenteel geen ondersteuning voor de volledige modus.
+> Momenteel ondersteunt de portal geen volledige modus.
 >
 
 ## <a name="incremental-mode"></a>Incrementele modus
 
-In de incrementele modus blijven Resource Manager **ongewijzigde** resources die voor komen in de resource groep, maar niet in de sjabloon opgegeven. Resources in de sjabloon **worden toegevoegd** aan de resource groep.
+In de incrementele modus laat Resource Manager **ongewijzigde** resources achter die in de resourcegroep bestaan, maar die niet zijn opgegeven in de sjabloon. Resources in de sjabloon **worden toegevoegd aan** de resourcegroep.
 
 > [!NOTE]
-> Wanneer een bestaande resource opnieuw wordt geïmplementeerd in de incrementele modus, worden alle eigenschappen opnieuw toegepast. De **eigenschappen zijn niet incrementeel toegevoegd**. Een veelvoorkomende misverstand is om te denken dat eigenschappen die niet zijn opgegeven in de sjabloon, ongewijzigd blijven. Als u bepaalde eigenschappen niet opgeeft, interpreteert Resource Manager de implementatie als het overschrijven van die waarden. Eigenschappen die niet in de sjabloon zijn opgenomen, worden opnieuw ingesteld op de standaard waarden. Geef alle niet-standaard waarden voor de resource op, niet alleen voor de resources die u wilt bijwerken. De resource definitie in de sjabloon bevat altijd de laatste status van de resource. Het kan geen gedeeltelijke update voor een bestaande resource vertegenwoordigen.
+> Wanneer u een bestaande resource opnieuw implementeert in de incrementele modus, worden alle eigenschappen opnieuw toegepast. De **eigenschappen worden niet stapsgewijs toegevoegd.** Een veelvoorkomend misverstand is om te denken dat eigenschappen die niet in de sjabloon zijn opgegeven, ongewijzigd blijven. Als u bepaalde eigenschappen niet opgeeft, interpreteert Resource Manager de implementatie als het overschrijven van deze waarden. Eigenschappen die niet in de sjabloon zijn opgenomen, worden gereset naar de standaardwaarden. Geef alle niet-standaardwaarden voor de resource op, niet alleen de waarden die u bijwerkt. De resourcedefinitie in de sjabloon bevat altijd de uiteindelijke status van de resource. Het kan geen gedeeltelijke update van een bestaande bron vertegenwoordigen.
 
-## <a name="example-result"></a>Voorbeeld resultaat
+## <a name="example-result"></a>Voorbeeldresultaat
 
-Houd rekening met het volgende scenario om het verschil tussen de modus incrementeel en volledig te illustreren.
+Als u het verschil tussen incrementele en volledige modi wilt illustreren, moet u het volgende scenario overwegen.
 
-**Resource groep** bevat:
+**Resourcegroep** bevat:
 
-* Resource A
-* Resource B
-* Resource C
+* Bron A
+* Bron B
+* Bron C
 
 **Sjabloon** bevat:
 
-* Resource A
-* Resource B
-* Resource D
+* Bron A
+* Bron B
+* Bron D
 
-Wanneer de resource groep wordt geïmplementeerd in de **incrementele** modus, heeft:
+Wanneer de **resourcegroep** in incrementele modus wordt geïmplementeerd, heeft:
 
-* Resource A
-* Resource B
-* Resource C
-* Resource D
+* Bron A
+* Bron B
+* Bron C
+* Bron D
 
-Wanneer de implementatie is geïmplementeerd in de modus **voltooid** , wordt bron C verwijderd. De resource groep heeft:
+Wanneer resource C in **de volledige** modus wordt geïmplementeerd, wordt deze verwijderd. De resourcegroep heeft:
 
-* Resource A
-* Resource B
-* Resource D
+* Bron A
+* Bron B
+* Bron D
 
-## <a name="set-deployment-mode"></a>Implementatie modus instellen
+## <a name="set-deployment-mode"></a>Implementatiemodus instellen
 
-Als u de implementatie modus wilt instellen tijdens de implementatie met Power shell, gebruikt u de para meter `Mode`.
+Als u de implementatiemodus wilt instellen bij `Mode` het implementeren met PowerShell, gebruikt u de parameter.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment `
@@ -92,10 +92,10 @@ New-AzResourceGroupDeployment `
   -TemplateFile c:\MyTemplates\storage.json
 ```
 
-Als u de implementatie modus wilt instellen tijdens de implementatie met Azure CLI, gebruikt u de para meter `mode`.
+Als u de implementatiemodus wilt instellen bij `mode` het implementeren met Azure CLI, gebruikt u de parameter.
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --mode Complete \
   --resource-group ExampleGroup \
@@ -103,7 +103,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-In het volgende voor beeld ziet u een gekoppelde sjabloon die is ingesteld op incrementele implementatie modus:
+In het volgende voorbeeld wordt een gekoppelde sjabloon weergegeven die is ingesteld op incrementele implementatiemodus:
 
 ```json
 "resources": [
@@ -121,6 +121,6 @@ In het volgende voor beeld ziet u een gekoppelde sjabloon die is ingesteld op in
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Azure Resource Manager sjablonen ontwerpen](template-syntax.md)voor meer informatie over het maken van Resource Manager-sjablonen.
-* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van resources.
-* Zie [Azure rest API](/rest/api/)om de bewerkingen voor een resource provider weer te geven.
+* Zie [Azure Resource Manager-sjablonen ontwerpen](template-syntax.md)voor meer informatie over het maken van Resource Manager-sjablonen.
+* Zie Een toepassing implementeren [met azure resource manager-sjabloon](deploy-powershell.md)voor meer informatie over het implementeren van resources.
+* Zie [Azure REST API](/rest/api/)als u de bewerkingen voor een resourceprovider wilt weergeven.

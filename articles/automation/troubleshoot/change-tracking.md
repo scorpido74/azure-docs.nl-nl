@@ -1,6 +1,6 @@
 ---
-title: Problemen met Azure Wijzigingen bijhouden oplossen
-description: Meer informatie over het oplossen van problemen met de functie Wijzigingen bijhouden en de inventaris van Azure Automation.
+title: Problemen oplossen met Azure Change Tracking
+description: Meer informatie over het oplossen en oplossen van problemen met de functie Azure Automation Change Tracking and Inventory.
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
@@ -10,34 +10,34 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 6cadaea1a20743071acbe8860df02ca7bbdde954
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198527"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>Problemen met Wijzigingen bijhouden en Inventaris oplossen
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>Scenario: Wijzigingen bijhouden records niet worden weer gegeven voor Windows-computers
+### <a name="scenario-change-tracking-records-arent-showing-for-windows-machines"></a><a name="records-not-showing-windows"></a>Scenario: Trackingrecords wijzigen worden niet weergegeven voor Windows-machines
 
 #### <a name="issue"></a>Probleem
 
-U ziet geen Wijzigingen bijhouden of inventarisatie resultaten voor Windows-machines die zijn voor bereid op Wijzigingen bijhouden.
+U ziet geen wijzigingenbijhouden of voorraadresultaten voor Windows-machines die zijn aanboord voor Change Tracking.
 
 #### <a name="cause"></a>Oorzaak
 
 Deze fout kan de volgende oorzaken hebben:
 
-* Micro soft monitoring agent wordt niet uitgevoerd.
-* De communicatie met het Automation-account wordt geblokkeerd.
-* De Management Packs voor Wijzigingen bijhouden zijn niet gedownload.
-* De virtuele machine die wordt vrijgegeven, kan afkomstig zijn van een gekloonde computer die niet is Sysprep met micro soft monitoring agent geïnstalleerd.
+* De Microsoft Monitoring Agent wordt niet uitgevoerd.
+* De communicatie naar het Automation-account wordt geblokkeerd.
+* De beheerpakketten voor Change Tracking worden niet gedownload.
+* De VM wordt aan boord kan afkomstig zijn van een gekloonde machine die niet was sysprepped met de Microsoft Monitoring Agent geïnstalleerd.
 
 #### <a name="resolution"></a>Oplossing
 
-De oplossingen die hieronder worden beschreven, kunnen helpen bij het oplossen van uw probleem. Als u nog steeds hulp nodig hebt, kunt u Diagnostische gegevens verzamelen en contact opnemen met ondersteuning. Ga op de agent computer naar C:\Program Files\Microsoft monitoring Agent\Agent\Tools en voer de volgende opdrachten uit:
+De onderstaande oplossingen kunnen helpen bij het oplossen van uw probleem. Als u nog steeds hulp nodig hebt, u diagnostische informatie verzamelen en contact opnemen met ondersteuning. Navigeer op de agentmachine naar C:\Program Files\Microsoft Monitoring Agent\Agent\Tools en voer de volgende opdrachten uit:
 
 ```cmd
 net stop healthservice
@@ -47,73 +47,73 @@ net start healthservice
 ```
 
 > [!NOTE]
-> Fout tracering is standaard ingeschakeld. Als u uitgebreide fout berichten wilt inschakelen, zoals in het voor gaande voor beeld, gebruikt u de *ver* -para meter. Gebruik voor informatie tracering *inf* bij het aanroepen van **StartTracing. cmd**.
+> Standaard is fouttracering ingeschakeld. Als u verbose foutberichten wilt inschakelen zoals in het voorgaande voorbeeld, gebruikt u de parameter *VER.* Gebruik *INF voor* informatiesporen wanneer u een beroep doet op **StartTracing.cmd**.
 
-##### <a name="microsoft-monitoring-agent-not-running"></a>Micro soft monitoring agent wordt niet uitgevoerd
+##### <a name="microsoft-monitoring-agent-not-running"></a>Microsoft Monitoring Agent wordt niet uitgevoerd
 
-Controleer of micro soft Monitoring Agent (HealthService. exe) wordt uitgevoerd op de computer.
+Controleer of de Microsoft Monitoring Agent (HealthService.exe) op de machine wordt uitgevoerd.
 
-##### <a name="communication-to-automation-account-blocked"></a>Communicatie met Automation-account geblokkeerd
+##### <a name="communication-to-automation-account-blocked"></a>Communicatie naar automatiseringsaccount geblokkeerd
 
-Controleer Logboeken op de computer en zoek naar gebeurtenissen die het woord ' change tracking ' bevatten.
+Controleer Logboeken op de machine en zoek naar gebeurtenissen met het woord 'changetracking' in de machine.
 
-Zie [resources automatiseren in uw Data Center of in de Cloud met behulp van Hybrid Runbook worker](../automation-hybrid-runbook-worker.md#network-planning) voor meer informatie over adressen en poorten die moeten worden toegestaan om wijzigingen bijhouden te kunnen werken.
+Zie [Resources automatiseren in uw datacenter of cloud met Hybride runbookworker](../automation-hybrid-runbook-worker.md#network-planning) om meer te weten te komen over adressen en poorten die moeten worden toegestaan om Change Tracking te laten werken.
 
-##### <a name="management-packs-not-downloaded"></a>Management Packs niet gedownload
+##### <a name="management-packs-not-downloaded"></a>Beheerpakketten niet gedownload
 
-Controleer of de volgende Wijzigingen bijhouden-en Inventory Management Packs lokaal zijn geïnstalleerd:
+Controleer of de volgende pakketten voor het bijhouden en beheren van wijzigingen lokaal zijn geïnstalleerd:
 
-* Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
-* Micro soft. intelligence packs. InventoryChangeTracking. *
-* Micro soft. intelligence packs. SingletonInventoryCollection. *
+* Microsoft.IntelligencePacks.changetrackingdirectagent.*
+* Microsoft.IntelligencePacks.InventoryChangeTracking.*
+* Microsoft.IntelligencePacks.SingletonInventoryCollection.*
 
-##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>VM van een gekloonde computer die niet is Sysprep
+##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>VM van gekloonde machine die niet is gesysprepped
 
-Als u een gekloonde installatie kopie gebruikt, Sysprep de installatie kopie eerst en installeert u vervolgens micro soft monitoring agent.
+Als u een gekloonde afbeelding gebruikt, moet u de afbeelding eerst voorbereiden en vervolgens de Microsoft Monitoring Agent installeren.
 
 ## <a name="linux"></a>Linux
 
-### <a name="scenario-no-change-tracking-or-inventory-results-on-linux-machines"></a>Scenario: geen Wijzigingen bijhouden-of inventaris resultaten op Linux-machines
+### <a name="scenario-no-change-tracking-or-inventory-results-on-linux-machines"></a>Scenario: Geen resultaten voor het bijhouden van wijzigingen of voorraad op Linux-machines
 
 #### <a name="issue"></a>Probleem
 
-U ziet geen inventaris-of Wijzigingen bijhouden resultaten voor Linux-machines die zijn voor bereid op Wijzigingen bijhouden. 
+U ziet geen voorraad- of wijzigingstrackingresultaten voor Linux-machines die zijn aanboord voor Change Tracking. 
 
 #### <a name="cause"></a>Oorzaak
-Hier vindt u mogelijke oorzaken die specifiek zijn voor dit probleem:
+Hier zijn mogelijke oorzaken specifiek voor dit probleem:
 * De Log Analytics-agent voor Linux wordt niet uitgevoerd.
-* De Log Analytics-agent voor Linux is niet juist geconfigureerd.
+* De Log Analytics-agent voor Linux is niet correct geconfigureerd.
 * Er zijn FIM-conflicten (File Integrity Monitoring).
 
 #### <a name="resolution"></a>Oplossing 
 
-##### <a name="log-analytics-agent-for-linux-not-running"></a>Log Analytics-agent voor Linux niet actief
+##### <a name="log-analytics-agent-for-linux-not-running"></a>Log Analytics-agent voor Linux wordt niet uitgevoerd
 
-Controleer of de daemon voor de Log Analytics-agent voor Linux (omsagent) wordt uitgevoerd op de computer. Voer de volgende query uit in de Log Analytics-werk ruimte die is gekoppeld aan uw Automation-account.
+Controleer of de daemon voor de Log Analytics-agent voor Linux (omsagent) op uw machine wordt uitgevoerd. Voer de volgende query uit in de werkruimte Log Analytics die is gekoppeld aan uw Automatiseringsaccount.
 
 ```loganalytics Copy
 Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Als uw machine niet in query resultaten wordt weer geven, is deze niet recent ingecheckt. Er is waarschijnlijk een probleem met de lokale configuratie en u moet de agent opnieuw installeren. Zie [logboek gegevens verzamelen met de log Analytics-agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)voor meer informatie over de installatie en configuratie. 
+Als u uw machine niet ziet in queryresultaten, is deze niet onlangs ingecheckt. Er is waarschijnlijk een lokaal configuratieprobleem en u moet de agent opnieuw installeren. Zie [Logboekgegevens verzamelen met de loganalyse-agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)voor informatie over installatie en configuratie. 
 
-Als uw computer in de query resultaten wordt weer gegeven, controleert u de scope configuratie. Zie [oplossingen voor doel bewaking in azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
+Als uw machine wordt weergegeven in de queryresultaten, controleert u de scopeconfiguratie. Zie [Oplossingen voor targetingbewaking in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
 
-Raadpleeg het volgende voor meer informatie over het oplossen van dit probleem [: u ziet geen Linux-gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data).
+Voor meer problemen met dit probleem raadpleegt u [Probleem: U ziet geen Linux-gegevens.](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data)
 
-##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Log Analytics-agent voor Linux is niet juist geconfigureerd
+##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Log Analytics-agent voor Linux niet correct geconfigureerd
 
-De Log Analytics-agent voor Linux is mogelijk niet juist geconfigureerd voor de logboek-en opdracht regel uitvoer verzameling met behulp van het hulp programma OMS-logboek verzamelaar. Bekijk [wijzigingen in uw omgeving bijhouden met de wijzigingen bijhouden oplossing](../change-tracking.md).
+De loganalyse-agent voor Linux is mogelijk niet correct geconfigureerd voor het verzamelen van logboek- en opdrachtregeluitvoer met behulp van het gereedschap OMS-logboekverzamelaar. Zie [Wijzigingen in uw omgeving bijhouden met de oplossing Wijzigingstracking.](../change-tracking.md)
 
 ##### <a name="fim-conflicts"></a>FIM-conflicten
 
-De FIM-functie van Azure Security Center kan de integriteit van uw Linux-bestanden onjuist valideren. Controleer of FIM operationeel is en correct is geconfigureerd voor Linux-bestands bewaking. Bekijk [wijzigingen in uw omgeving bijhouden met de wijzigingen bijhouden oplossing](../change-tracking.md).
+De FIM-functie van Azure Security Center valideert mogelijk ten onrechte de integriteit van uw Linux-bestanden. Controleer of FIM operationeel en correct is geconfigureerd voor Linux-bestandsbewaking. Zie [Wijzigingen in uw omgeving bijhouden met de oplossing Wijzigingstracking.](../change-tracking.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, kunt u een van de volgende kanalen gebruiken voor meer ondersteuning.
+Als u uw probleem niet ziet of niet in staat bent om uw probleem op te lossen, gebruikt u een van de volgende kanalen voor meer ondersteuning.
 
-* Krijg antwoorden van Azure-experts via [Azure-forums](https://azure.microsoft.com/support/forums/).
-* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport), het officiële Microsoft Azure-account voor het verbeteren van de gebruikerservaring door de Azure-community in contact te brengen met de juiste resources: antwoorden, ondersteuning en experts.
-* Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+* Krijg antwoorden van Azure-experts via [Azure Forums.](https://azure.microsoft.com/support/forums/)
+* Maak [@AzureSupport](https://twitter.com/azuresupport) verbinding met – het officiële Microsoft Azure-account voor het verbeteren van de klantervaring door de Azure-community te verbinden met de juiste bronnen: antwoorden, ondersteuning en experts.
+* Als u meer hulp nodig hebt, u een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer **Ondersteuning opdoen**.

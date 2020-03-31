@@ -1,5 +1,5 @@
 ---
-title: Overzicht van ankers maken & zoeken
+title: Overzicht van & zoekankers maken
 description: Uitgebreide uitleg over het maken en vinden van ankers met Azure Spatial Anchors.
 author: ramonarguelles
 manager: vriveras
@@ -9,17 +9,17 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: f406edb42204e7ffc94bcbfa1e22b269aea67b32
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74270446"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Ankers maken en vinden met behulp van ruimtelijke beankeringen van Azure
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Ankers maken en lokaliseren met Azure Spatial Anchors
 
 Met Azure Spatial Anchors kunt u ankers delen tussen verschillende apparaten.
 
-Er worden verschillende ontwikkel omgevingen ondersteund.
+Het ondersteunt verschillende ontwikkelomgevingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Voor meer informatie kiest u uw ontwikkelomgeving:

@@ -1,6 +1,6 @@
 ---
-title: Statistische bewerkingen op tabellen uit Spark Cassandra-API van Azure Cosmos DB
-description: In dit artikel bevat informatie over eenvoudige aggregatiebewerkingen uit te voeren op basis van de Cassandra-API van Azure Cosmos DB-tabellen uit Spark
+title: Samenvoegbewerkingen op Azure Cosmos DB Cassandra-API-tabellen uit Spark
+description: Dit artikel behandelt basisaggregatiebewerkingen tegen Azure Cosmos DB Cassandra API-tabellen van Spark
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,20 +9,20 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60894183"
 ---
-# <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Statistische bewerkingen op tabellen uit Spark Cassandra-API van Azure Cosmos DB 
+# <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Samenvoegbewerkingen op Azure Cosmos DB Cassandra-API-tabellen uit Spark 
 
-Dit artikel wordt beschreven basic aggregatiebewerkingen uit te voeren op basis van de Cassandra-API van Azure Cosmos DB-tabellen uit Spark. 
+In dit artikel worden elementaire samenvoegbewerkingen voor Azure Cosmos DB Cassandra-API tabellen uit Spark beschreven. 
 
 > [!NOTE]
-> Filteren op de server en server-side-aggregatie wordt momenteel niet ondersteund in Azure Cosmos DB Cassandra-API.
+> Server-side filtering en server-side aggregatie wordt momenteel niet ondersteund in Azure Cosmos DB Cassandra API.
 
-## <a name="cassandra-api-configuration"></a>Configuratie van de Cassandra-API
+## <a name="cassandra-api-configuration"></a>Cassandra API-configuratie
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -48,7 +48,7 @@ spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
-## <a name="sample-data-generator"></a>Voorbeeld gegevensgenerator
+## <a name="sample-data-generator"></a>Voorbeeldgegevensgenerator
 
 ```scala
 // Generate a simple dataset containing five values
@@ -67,7 +67,7 @@ booksDF.write
   .save()
 ```
 
-## <a name="count-operation"></a>Aantal bewerking
+## <a name="count-operation"></a>Tellingsbewerking
 
 
 ### <a name="rdd-api"></a>RDD-API
@@ -76,30 +76,30 @@ booksDF.write
 sc.cassandraTable("books_ks", "books").count
 ```
 
-**De uitvoer:**
+**Output:**
 ```
 res48: Long = 5
 ```
 
-### <a name="dataframe-api"></a>Dataframe API
+### <a name="dataframe-api"></a>Api voor gegevensframe
 
-Tellen mee voor dataframes wordt momenteel niet ondersteund.  Het onderstaande voorbeeld ziet u hoe u een aantal dataframe uitvoert na het opslaan van het gegevensframe in het geheugen als tijdelijke oplossing.
+Tel mee dat dataframes momenteel niet worden ondersteund.  In het onderstaande voorbeeld ziet u hoe u een gegevensframetelling uitvoert nadat u het gegevensframe als tijdelijke oplossing hebt voortgehouden in het geheugen.
 
-Kies een [opslagoptie]( https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#which-storage-level-to-choose) uit de volgende beschikbare opties om te voorkomen dat wordt uitgevoerd in het 'buiten het geheugen' problemen:
+Kies een [opslagoptie]( https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#which-storage-level-to-choose) uit de volgende beschikbare opties om te voorkomen dat u problemen met 'buiten het geheugen' tegenkomt:
 
-* MEMORY_ONLY: Dit is de standaardoptie voor opslag. Winkels RDD als gedeserialiseerde Java-objecten in de JVM. Als de RDD niet in het geheugen past, aantal partities niet in cache en ze worden herberekend op elk gewenst moment telkens wanneer die ze zijn later nodig.
+* MEMORY_ONLY: dit is de standaardopslagoptie. Slaat RDD op als gedeserialiseerde Java-objecten in de JVM. Als de RDD niet in het geheugen past, worden sommige partities niet in de cache opgeslagen en worden ze opnieuw berekend op de vlucht elke keer dat ze nodig zijn.
 
-* MEMORY_AND_DISK: Winkels RDD als gedeserialiseerde Java-objecten in de JVM. Als de RDD niet in het geheugen past, slaat u de partities die niet passen op schijf, en indien nodig, lees de hulpbronnen vanaf de locatie die zijn opgeslagen.
+* MEMORY_AND_DISK: Slaat RDD op als gedeserialiseerde Java-objecten in de JVM. Als de RDD niet in het geheugen past, slaat u de partities op die niet op de schijf passen en leest u ze wanneer nodig vanaf de locatie waarop ze zijn opgeslagen.
 
-* MEMORY_ONLY_SER (Java/Scala): Winkels RDD als geserialiseerde objecten-1-byte-matrix met Java per partitie. Deze optie is de ruimte-efficiëntie in vergelijking met gedeserialiseerde objecten, met name wanneer u een snelle serializer, maar meer CPU-intensieve te lezen.
+* MEMORY_ONLY_SER (Java/Scala): Slaat RDD op als geserialiseerde Java-objecten- one-byte array per partitie. Deze optie is ruimte-efficiënt in vergelijking met gedeserialiseerde objecten, vooral bij het gebruik van een snelle serializer, maar meer CPU-intensief om te lezen.
 
-* MEMORY_AND_DISK_SER (Java/Scala): Deze opslagoptie, zoals MEMORY_ONLY_SER, het enige verschil is dat deze morsen partities die niet in het schijfgeheugen van de in plaats van ze recomputing passen wanneer ze zijn later nodig.
+* MEMORY_AND_DISK_SER (Java/Scala): Deze opslagoptie is als MEMORY_ONLY_SER, het enige verschil is dat het partities morst die niet in het schijfgeheugen passen in plaats van ze opnieuw op te nemen wanneer ze nodig zijn.
 
-* DISK_ONLY: Slaat de RDD-partities op de schijf alleen.
+* DISK_ONLY: slaat alleen de RDD-partities op de schijf op.
 
-* MEMORY_ONLY_2, MEMORY_AND_DISK_2…: Hetzelfde als de bovenstaande niveaus repliceert, maar elke partitie op twee clusterknooppunten.
+* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Hetzelfde als de bovenstaande niveaus, maar repliceert elke partitie op twee clusterknooppunten.
 
-* OFF_HEAP (experimenteel): Net als bij MEMORY_ONLY_SER, maar de gegevens worden opgeslagen in off-heap-geheugen en hiervoor uit heap-geheugen moet vooraf worden ingeschakeld. 
+* OFF_HEAP (experimenteel): Vergelijkbaar met MEMORY_ONLY_SER, maar het slaat de gegevens op in off-heap geheugen, en het vereist off-heap geheugen worden ingeschakeld van tevoren. 
 
 ```scala
 //Workaround
@@ -134,7 +134,7 @@ select book_author, count(*) as count from books_vw group by book_author;
 select count(*) from books_vw;
 ```
 
-## <a name="average-operation"></a>Bewerking Average
+## <a name="average-operation"></a>Gemiddelde bewerking
 
 ### <a name="rdd-api"></a>RDD-API
 
@@ -142,12 +142,12 @@ select count(*) from books_vw;
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Double) => c).mean
 ```
 
-**De uitvoer:**
+**Output:**
 ```
 res24: Double = 16.016000175476073
 ```
 
-### <a name="dataframe-api"></a>Dataframe API
+### <a name="dataframe-api"></a>Api voor gegevensframe
 
 ```scala
 spark
@@ -159,7 +159,7 @@ spark
   .show
 ```
 
-**De uitvoer:**
+**Output:**
 ```
 +------------------+
 |   avg(book_price)|
@@ -173,7 +173,7 @@ spark
 ```sql
 select avg(book_price) from books_vw;
 ```
-**De uitvoer:**
+**Output:**
 ```
 16.016000175476073
 ```
@@ -186,12 +186,12 @@ select avg(book_price) from books_vw;
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).min
 ```
 
-**De uitvoer:**
+**Output:**
 ```
 res31: Float = 11.33
 ```
 
-### <a name="dataframe-api"></a>Dataframe API
+### <a name="dataframe-api"></a>Api voor gegevensframe
 
 ```scala
 spark
@@ -203,7 +203,7 @@ spark
   .show
 ```
 
-**De uitvoer:**
+**Output:**
 ```
 +---------------+
 |min(book_price)|
@@ -218,12 +218,12 @@ spark
 select min(book_price) from books_vw;
 ```
 
-**De uitvoer:**
+**Output:**
 ```
 11.33
 ```
 
-## <a name="max-operation"></a>Max-bewerking
+## <a name="max-operation"></a>Maximale werking
 
 ### <a name="rdd-api"></a>RDD-API
 
@@ -231,7 +231,7 @@ select min(book_price) from books_vw;
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).max
 ```
 
-### <a name="dataframe-api"></a>Dataframe API
+### <a name="dataframe-api"></a>Api voor gegevensframe
 
 ```scala 
 spark
@@ -243,7 +243,7 @@ spark
   .show
 ```
 
-**De uitvoer:**
+**Output:**
 ```
 +---------------+
 |max(book_price)|
@@ -257,12 +257,12 @@ spark
 ```sql
 select max(book_price) from books_vw;
 ```
-**De uitvoer:**
+**Output:**
 ```
 22.45
 ```
 
-## <a name="sum-operation"></a>Sum-bewerking
+## <a name="sum-operation"></a>Sombewerking
 
 ### <a name="rdd-api"></a>RDD-API
 
@@ -270,12 +270,12 @@ select max(book_price) from books_vw;
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).sum
 ```
 
-**De uitvoer:**
+**Output:**
 ```
 res46: Double = 80.08000087738037
 ```
 
-### <a name="dataframe-api"></a>Dataframe API
+### <a name="dataframe-api"></a>Api voor gegevensframe
 
 ```scala
 spark
@@ -286,7 +286,7 @@ spark
   .agg(sum("book_price"))
   .show
 ```
-**De uitvoer:**
+**Output:**
 ```
 +-----------------+
 |  sum(book_price)|
@@ -301,12 +301,12 @@ spark
 select sum(book_price) from books_vw;
 ```
 
-**De uitvoer:**
+**Output:**
 ```
 80.08000087738037
 ```
 
-## <a name="top-or-comparable-operation"></a>Boven- of vergelijkbare bewerking
+## <a name="top-or-comparable-operation"></a>Top of vergelijkbare bewerking
 
 ### <a name="rdd-api"></a>RDD-API
 
@@ -315,14 +315,14 @@ val readCalcTopRDD = sc.cassandraTable("books_ks", "books").select("book_name","
 readCalcTopRDD.zipWithIndex.filter(_._2 < 3).collect.foreach(println)
 //delivers the first top n items without collecting the rdd to the driver.
 ```
-**De uitvoer:**
+**Output:**
 ```
 (CassandraRow{book_name: A sign of four, book_price: 22.45},0)
 (CassandraRow{book_name: The adventures of Sherlock Holmes, book_price: 19.83},1)
 (CassandraRow{book_name: The memoirs of Sherlock Holmes, book_price: 14.22},2)
 readCalcTopRDD: org.apache.spark.rdd.RDD[com.datastax.spark.connector.CassandraRow] = MapPartitionsRDD[430] at sortBy at command-2371828989676374:1
 ```
-### <a name="dataframe-api"></a>Dataframe API
+### <a name="dataframe-api"></a>Api voor gegevensframe
 
 ```scala
 import org.apache.spark.sql.functions._
@@ -341,7 +341,7 @@ readBooksDF.explain
 readBooksDF.show
 ```
 
-**De uitvoer:**
+**Output:**
 ```
 == Physical Plan ==
 TakeOrderedAndProject(limit=3, orderBy=[book_price#1840 DESC NULLS LAST], output=[book_name#1839,book_price#1840])
@@ -366,6 +366,6 @@ select book_name,book_price from books_vw order by book_price desc limit 3;
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Om te tabel kopieerbewerkingen uitvoert, Zie:
+Zie het uitvoeren van tabelkopieerbewerkingen:
 
-* [Kopieerbewerkingen tabel](cassandra-spark-table-copy-ops.md)
+* [Bewerkingen voor tabelkopiëren](cassandra-spark-table-copy-ops.md)

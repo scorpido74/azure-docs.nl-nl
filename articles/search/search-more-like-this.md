@@ -1,7 +1,7 @@
 ---
-title: query functie moreLikeThis (preview)
+title: moreLikeDeze queryfunctie (voorbeeld)
 titleSuffix: Azure Cognitive Search
-description: Beschrijft de functie moreLikeThis (preview), die beschikbaar is in Preview-versies van de Azure Cognitive Search REST API.
+description: Beschrijft de functie moreLikeThis (preview), die beschikbaar is in previewversies van de Azure Cognitive Search REST API.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -10,37 +10,37 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 95b9c76a2ff962cb2fa4bacbb1b1e9a953b7014f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873808"
 ---
-# <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (preview) in azure Cognitive Search
+# <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (preview) in Azure Cognitive Search
 
 > [!IMPORTANT] 
-> Deze functie is momenteel beschikbaar als openbare preview-versie. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is momenteel geen portal-of .NET SDK-ondersteuning.
+> Deze functie is momenteel beschikbaar als openbare preview-versie. Preview-functionaliteit wordt geleverd zonder overeenkomst op serviceniveau en wordt niet aanbevolen voor productieworkloads. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie. De [REST API versie 2019-05-06-Preview](search-api-preview.md) biedt deze functie. Er is momenteel geen portal of .NET SDK-ondersteuning.
 
-`moreLikeThis=[key]` is een query parameter in de [Search Documents-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) waarmee documenten worden gevonden die vergelijkbaar zijn met het document dat is opgegeven door de document sleutel. Wanneer een zoek opdracht wordt gemaakt met `moreLikeThis`, wordt er een query gegenereerd met zoek termen die zijn geëxtraheerd uit het opgegeven document waarin het document het beste wordt beschreven. De gegenereerde query wordt vervolgens gebruikt voor het maken van de zoek opdracht. Standaard wordt de inhoud van alle Doorzoek bare velden beschouwd als minus alle beperkte velden die u hebt opgegeven met behulp van de para meter `searchFields`. De para meter `moreLikeThis` kan niet worden gebruikt met de zoek parameter `search=[string]`.
+`moreLikeThis=[key]`is een queryparameter in de [API voor zoekdocumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) waarin documenten worden gevonden die vergelijkbaar zijn met het document dat door de documentsleutel is opgegeven. Wanneer een zoekaanvraag `moreLikeThis`wordt gedaan met , wordt een query gegenereerd met zoektermen die zijn geëxtraheerd uit het opgegeven document dat dat document het beste beschrijft. De gegenereerde query wordt vervolgens gebruikt om de zoekaanvraag te maken. Standaard wordt de inhoud van alle doorzoekbare velden in aanmerking `searchFields` genomen, verminderd met de beperkte velden die u met de parameter hebt opgegeven. De `moreLikeThis` parameter kan niet worden `search=[string]`gebruikt met de zoekparameter.
 
-Standaard wordt de inhoud van alle Doorzoek bare velden op het hoogste niveau beschouwd. Als u in plaats daarvan bepaalde velden wilt opgeven, kunt u de para meter `searchFields` gebruiken. 
+Standaard wordt de inhoud van alle doorzoekbare velden op het hoogste niveau in aanmerking genomen. Als u bepaalde velden wilt opgeven, `searchFields` kunt u de parameter gebruiken. 
 
-U kunt `MoreLikeThis` niet gebruiken voor Doorzoek bare subvelden in een [complex type](search-howto-complex-data-types.md).
+U kunt `MoreLikeThis` geen doorzoekbare subvelden in een [complex type gebruiken.](search-howto-complex-data-types.md)
 
 ## <a name="examples"></a>Voorbeelden
 
-In de volgende voor beelden wordt het voor beeld van hotels gebruikt [in Quick Start: Maak een zoek index in de Azure Portal](search-get-started-portal.md).
+Alle volgende voorbeelden gebruiken het voorbeeld van De hotels van [Quickstart: Maak een zoekindex in de Azure-portal.](search-get-started-portal.md)
 
 ### <a name="simple-query"></a>Eenvoudige query
 
-De volgende query zoekt naar documenten waarvan de beschrijvings velden het meest overeenkomen met het veld van het bron document, zoals opgegeven door de para meter `moreLikeThis`:
+In de volgende query worden documenten gevonden waarvan de beschrijvingsvelden `moreLikeThis` het meest lijken op het veld van het brondocument zoals opgegeven door de parameter:
 
 ```
 GET /indexes/hotels-sample-index/docs?moreLikeThis=29&searchFields=Description&api-version=2019-05-06-Preview
 ```
 
-In dit voor beeld zoekt de aanvraag naar hotels die vergelijkbaar zijn met die van `HotelId` 29.
-In plaats van HTTP GET te gebruiken, kunt u ook `MoreLikeThis` aanroepen met HTTP POST:
+In dit voorbeeld zoekt het verzoek naar hotels `HotelId` die vergelijkbaar zijn met die met 29.
+In plaats van HTTP GET `MoreLikeThis` te gebruiken, u ook een beroep doen op HTTP POST:
 
 ```
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06-Preview
@@ -52,15 +52,15 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06-Preview
 
 ### <a name="apply-filters"></a>Filters toepassen
 
-`MoreLikeThis` kan worden gecombineerd met andere algemene query parameters, zoals `$filter`. Zo kan de query worden beperkt tot alleen hotels waarvan de categorie ' budget ' is, waarbij de classificatie hoger is dan 3,5:
+`MoreLikeThis`kan worden gecombineerd met andere `$filter`algemene queryparameters zoals . De query kan bijvoorbeeld worden beperkt tot alleen hotels waarvan de categorie 'Budget' is en waar de beoordeling hoger is dan 3,5:
 
 ```
 GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2019-05-06-Preview
 ```
 
-### <a name="select-fields-and-limit-results"></a>Velden selecteren en de resultaten beperken
+### <a name="select-fields-and-limit-results"></a>Velden selecteren en resultaten beperken
 
-De `$top` selector kan worden gebruikt om het aantal resultaten te beperken dat in een `MoreLikeThis` query moet worden geretourneerd. U kunt ook velden selecteren met `$select`. Hier worden de eerste drie hotels geselecteerd samen met hun ID, naam en classificatie: 
+De `$top` kiezer kan worden gebruikt om te beperken `MoreLikeThis` hoeveel resultaten moeten worden geretourneerd in een query. Ook kunnen velden worden `$select`geselecteerd met . Hier worden de top drie hotels geselecteerd, samen met hun ID, Naam en Waardering: 
 
 ```
 GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&$top=3&$select=HotelId,HotelName,Rating&api-version=2019-05-06-Preview
@@ -68,7 +68,7 @@ GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt elk hulp programma voor webtesting gebruiken om te experimenteren met deze functie.  U kunt het beste postman gebruiken voor deze oefening.
+U elk hulpprogramma voor webtests gebruiken om met deze functie te experimenteren.  We raden aan om Postman te gebruiken voor deze oefening.
 
 > [!div class="nextstepaction"]
-> [Azure Cognitive Search REST-Api's verkennen met behulp van postman](search-get-started-postman.md)
+> [Azure Cognitive Search REST API's verkennen met behulp van Postbode](search-get-started-postman.md)

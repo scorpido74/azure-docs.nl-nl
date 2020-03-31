@@ -1,6 +1,6 @@
 ---
-title: Een virtuele Azure-machine maken en beheren metC#
-description: Gebruik C# en Azure Resource Manager voor het implementeren van een virtuele machine en alle ondersteunende resources.
+title: 'Een Azure Virtual Machine maken en beheren met C #'
+description: Gebruik C# en Azure Resource Manager om een virtuele machine en al zijn ondersteunende resources te implementeren.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,39 +15,39 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 3930e51f63615abd21a7b04199a0f4767925792a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944516"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Virtuele Windows-machines maken en beheren in azure met behulp vanC# #
+# <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Windows VM's maken en beheren in Azure met C # #
 
-Een [virtuele machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) van Azure heeft verschillende ondersteunende Azure-resources nodig. In dit artikel wordt beschreven hoe u VM-resources kunt maken C#, beheren en verwijderen met. In deze zelfstudie leert u procedures om het volgende te doen:
+Een [Azure Virtual Machine](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) heeft verschillende ondersteunende Azure-bronnen nodig. In dit artikel wordt vm-resources maken, beheren en verwijderen met C#. Procedures voor:
 
 > [!div class="checklist"]
 > * Een Visual Studio-project maken
 > * Het pakket installeren
 > * Referenties maken
 > * Resources maken
-> * Beheer taken uitvoeren
+> * Beheertaken uitvoeren
 > * Resources verwijderen
 > * De toepassing uitvoeren
 
-Het duurt ongeveer 20 minuten om deze stappen uit te voeren.
+Het duurt ongeveer 20 minuten om deze stappen te doen.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
-1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **.net desktop Development** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **.NET Framework 4-4,6-ontwikkel Programma's** automatisch voor u worden geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de .NET-workload toevoegen met behulp van de Visual Studio Launcher.
-2. Klik in Visual Studio op **File** > **New** > **Project**.
-3. In **sjablonen** > **Visual C#** selecteert u **console-app (.NET Framework)** , voert u *myDotnetProject* in voor de naam van het project, selecteert u de locatie van het project en klikt u vervolgens op **OK**.
+1. Als u dit nog niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **.NET-bureaubladontwikkeling** op de pagina Workloads en klik op **Installeren**. In het overzicht u zien dat **.NET Framework 4 - 4.6 ontwikkeltools** automatisch voor u worden geselecteerd. Als u Visual Studio al hebt geïnstalleerd, u de .NET-werkbelasting toevoegen met behulp van de Visual Studio Launcher.
+2. Klik in Visual**New** > Studio op Nieuw**project** **bestand** > .
+3. Selecteer **in Sjablonen** > **Visual C#** de optie Console App **(.NET Framework),** voer *myDotnetProject* in voor de naam van het project, selecteer de locatie van het project en klik op **OK**.
 
 ## <a name="install-the-package"></a>Het pakket installeren
 
-NuGet-pakketten zijn de eenvoudigste manier om de bibliotheken te installeren die u nodig hebt om deze stappen te volt ooien. Ga als volgt te werk om de bibliotheken te verkrijgen die u nodig hebt in Visual Studio:
+NuGet-pakketten zijn de eenvoudigste manier om de bibliotheken te installeren die u nodig hebt om deze stappen te voltooien. Ga als volgt te werk om de bibliotheken te krijgen die u nodig hebt in Visual Studio:
 
-1. Klik op **extra** > **Nuget package manager**en klik vervolgens op **Package Manager-console**.
-2. Typ deze opdracht in de-console:
+1. Klik **op Extra** > **Nuget Package Manager**en klik vervolgens op Package Manager **Console**.
+2. Typ deze opdracht in de console:
 
     ```
     Install-Package Microsoft.Azure.Management.Fluent
@@ -55,11 +55,11 @@ NuGet-pakketten zijn de eenvoudigste manier om de bibliotheken te installeren di
 
 ## <a name="create-credentials"></a>Referenties maken
 
-Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een [Active Directory Service-Principal](../../active-directory/develop/howto-create-service-principal-portal.md). Noteer ook de toepassings-ID, de verificatie sleutel en de Tenant-ID die u in een latere stap nodig hebt.
+Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een [Active Directory-serviceprincipal.](../../active-directory/develop/howto-create-service-principal-portal.md) U moet ook de toepassings-ID, de verificatiesleutel en de tenant-id registreren die u in een latere stap nodig hebt.
 
-### <a name="create-the-authorization-file"></a>Het autorisatie bestand maken
+### <a name="create-the-authorization-file"></a>Het autorisatiebestand maken
 
-1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject* >  ** > nieuw item** **toe te voegen** en selecteer vervolgens **tekst bestand** in *visuele C# items*. Noem het bestand *azureauth. Properties*en klik vervolgens op **toevoegen**.
+1. Klik in Solution Explorer met de rechtermuisknop op *myDotnetProject* > Nieuw**item****toevoegen** > en selecteer **vervolgens Tekstbestand** in Visual *C# Items*. Geef de eigenschappen van bestand *azureauth.en*klik op **Toevoegen**.
 2. Voeg deze autorisatie-eigenschappen toe:
 
     ```
@@ -73,18 +73,18 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
     graphURL=https://graph.microsoft.com/
     ```
 
-    Vervang **&lt;abonnement-id&gt;** door uw abonnements-id, **&lt;toepassings-id&gt;** met de Active Directory toepassings-id, **&lt;verificatie sleutel&gt;** met de toepassings sleutel en **&lt;Tenant-id&gt;** met de Tenant-id.
+    Vervang ** &lt;abonnements-id&gt; ** door uw abonnements-id, ** &lt;toepassings-id&gt; ** door de Active ** &lt;Directory-toepassingsid, verificatiesleutel&gt; ** door de toepassingssleutel en ** &lt;tenant-id&gt; ** door de tenant-id.
 
-3. Sla het bestand azureauth. Properties op. 
-4. Stel een omgevings variabele in Windows met de naam AZURE_AUTH_LOCATION met het volledige pad naar het autorisatie bestand dat u hebt gemaakt. U kunt bijvoorbeeld de volgende Power shell-opdracht gebruiken:
+3. Sla het bestand azureauth.properties op. 
+4. Stel een omgevingsvariabele in Windows met de naam AZURE_AUTH_LOCATION met het volledige pad naar autorisatiebestand dat u hebt gemaakt. De volgende PowerShell-opdracht kan bijvoorbeeld worden gebruikt:
 
     ```
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
     ```
 
-### <a name="create-the-management-client"></a>De Management-client maken
+### <a name="create-the-management-client"></a>De beheerclient maken
 
-1. Open het Program.cs-bestand voor het project dat u hebt gemaakt. Voeg deze instructies vervolgens toe aan de bestaande instructies boven aan het bestand:
+1. Open het Program.cs bestand voor het project dat u hebt gemaakt. Voeg deze vervolgens toe met behulp van instructies aan de bestaande instructies boven aan het bestand:
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -94,7 +94,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     ```
 
-2. Voeg deze code toe aan de methode Main om de Management-client te maken:
+2. Als u de beheerclient wilt maken, voegt u deze code toe aan de hoofdmethode:
 
     ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
@@ -111,9 +111,9 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
 
 ### <a name="create-the-resource-group"></a>De resourcegroep maken
 
-Alle resources moeten deel uitmaken van een [resource groep](../../azure-resource-manager/management/overview.md).
+Alle resources moeten zijn opgenomen in een [resourcegroep](../../azure-resource-manager/management/overview.md).
 
-Als u waarden voor de toepassing wilt opgeven en de resource groep wilt maken, voegt u deze code toe aan de methode Main:
+Als u waarden voor de toepassing wilt opgeven en de resourcegroep wilt maken, voegt u deze code toe aan de hoofdmethode:
 
 ```csharp
 var groupName = "myResourceGroup";
@@ -128,9 +128,9 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 ### <a name="create-the-availability-set"></a>De beschikbaarheidsset maken
 
-Met [beschikbaarheids sets](tutorial-availability-sets.md) kunt u gemakkelijker de virtuele machines onderhouden die door uw toepassing worden gebruikt.
+[Beschikbaarheidssets](tutorial-availability-sets.md) maken het eenvoudiger voor u om de virtuele machines te onderhouden die door uw toepassing worden gebruikt.
 
-Als u de beschikbaarheidsset wilt maken, voegt u deze code toe aan de methode Main:
+Als u de beschikbaarheidsset wilt maken, voegt u deze code toe aan de hoofdmethode:
 
 ```csharp
 Console.WriteLine("Creating availability set...");
@@ -141,11 +141,11 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
     .Create();
 ```
 
-### <a name="create-the-public-ip-address"></a>Het open bare IP-adres maken
+### <a name="create-the-public-ip-address"></a>Het openbare IP-adres maken
 
 Een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) is nodig om te communiceren met de virtuele machine.
 
-Als u het open bare IP-adres voor de virtuele machine wilt maken, voegt u deze code toe aan de methode Main:
+Als u het openbare IP-adres voor de virtuele machine wilt maken, voegt u deze code toe aan de hoofdmethode:
    
 ```csharp
 Console.WriteLine("Creating public IP address...");
@@ -158,9 +158,9 @@ var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
-Een virtuele machine moet zich in een subnet van een [virtueel netwerk](../../virtual-network/virtual-networks-overview.md)bevinden.
+Een virtuele machine moet zich in een subnet van een [virtueel netwerk bevinden.](../../virtual-network/virtual-networks-overview.md)
 
-Als u een subnet en een virtueel netwerk wilt maken, voegt u deze code toe aan de methode Main:
+Als u een subnet en een virtueel netwerk wilt maken, voegt u deze code toe aan de hoofdmethode:
 
 ```csharp
 Console.WriteLine("Creating virtual network...");
@@ -172,11 +172,11 @@ var network = azure.Networks.Define("myVNet")
     .Create();
 ```
 
-### <a name="create-the-network-interface"></a>De netwerk interface maken
+### <a name="create-the-network-interface"></a>De netwerkinterface maken
 
-Een virtuele machine heeft een netwerk interface nodig om te communiceren met het virtuele netwerk.
+Een virtuele machine heeft een netwerkinterface nodig om te communiceren op het virtuele netwerk.
 
-Als u een netwerk interface wilt maken, voegt u deze code toe aan de methode Main:
+Als u een netwerkinterface wilt maken, voegt u deze code toe aan de hoofdmethode:
 
 ```csharp
 Console.WriteLine("Creating network interface...");
@@ -192,9 +192,9 @@ var networkInterface = azure.NetworkInterfaces.Define("myNIC")
 
 ### <a name="create-the-virtual-machine"></a>De virtuele machine maken
 
-Nu u alle ondersteunende resources hebt gemaakt, kunt u een virtuele machine maken.
+Nu u alle ondersteunende bronnen hebt gemaakt, u een virtuele machine maken.
 
-Als u de virtuele machine wilt maken, voegt u deze code toe aan de methode Main:
+Als u de virtuele machine wilt maken, voegt u deze code toe aan de hoofdmethode:
 
 ```csharp
 Console.WriteLine("Creating virtual machine...");
@@ -212,11 +212,11 @@ azure.VirtualMachines.Define(vmName)
 ```
 
 > [!NOTE]
-> In deze zelf studie maakt u een virtuele machine waarop een versie van het Windows Server-besturings systeem wordt uitgevoerd. Zie voor meer informatie over het selecteren van andere installatie kopieën [navigeren en installatie kopieën van virtuele Azure-machines selecteren met Windows Power shell en de Azure cli](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Met deze zelfstudie wordt een virtuele machine gemaakt waarop een versie van het Windows Server-besturingssysteem wordt uitgevoerd. Zie Navigeren en selecteren van [Azure-afbeeldingen voor virtuele machines met Windows PowerShell en azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie over het selecteren van andere afbeeldingen.
 > 
 >
 
-Als u een bestaande schijf wilt gebruiken in plaats van een Marketplace-installatie kopie, gebruikt u deze code:
+Als u een bestaande schijf wilt gebruiken in plaats van een marketplace-afbeelding, gebruikt u deze code:
 
 ```csharp
 var managedDisk = azure.Disks.Define("myosdisk")
@@ -237,19 +237,19 @@ azure.VirtualMachines.Define("myVM")
     .Create();
 ```
 
-## <a name="perform-management-tasks"></a>Beheer taken uitvoeren
+## <a name="perform-management-tasks"></a>Beheertaken uitvoeren
 
-Tijdens de levenscyclus van een virtuele machine wilt u mogelijk beheertaken uitvoeren, zoals het starten, stoppen of verwijderen van een virtuele machine. U kunt ook code maken om herhaalde of complexe taken te automatiseren.
+Tijdens de levenscyclus van een virtuele machine wilt u mogelijk beheertaken uitvoeren, zoals het starten, stoppen of verwijderen van een virtuele machine. Daarnaast u code maken om repetitieve of complexe taken te automatiseren.
 
-Wanneer u iets moet doen met de virtuele machine, moet u een exemplaar hiervan ophalen:
+Wanneer u iets met de VM moet doen, moet u er een voorbeeld van krijgen:
 
 ```csharp
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
-### <a name="get-information-about-the-vm"></a>Informatie over de virtuele machine ophalen
+### <a name="get-information-about-the-vm"></a>Informatie over de VM
 
-Als u informatie over de virtuele machine wilt ophalen, voegt u deze code toe aan de methode Main:
+Als u informatie wilt krijgen over de virtuele machine, voegt u deze code toe aan de hoofdmethode:
 
 ```csharp
 Console.WriteLine("Getting information about the virtual machine...");
@@ -319,9 +319,9 @@ Console.ReadLine();
 
 ### <a name="stop-the-vm"></a>De virtuele machine stoppen
 
-U kunt een virtuele machine stoppen en alle instellingen behouden, maar er nog steeds kosten in rekening worden gebracht, of u kunt een virtuele machine stoppen en de toewijzing ervan ongedaan maken. Wanneer de toewijzing van een virtuele machine ongedaan wordt gemaakt, worden alle resources die eraan zijn gekoppeld, ook ongedaan gemaakt en wordt de facturering voor het apparaat beëindigd.
+U een virtuele machine stoppen en alle instellingen behouden, maar er nog steeds kosten voor in rekening worden gebracht, of u een virtuele machine stoppen en detoewijzing ervan doen. Wanneer een virtuele machine is toegewezen, worden alle resources die eraan zijn gekoppeld ook deallocatie en eindigt de facturering ervoor.
 
-Als u de virtuele machine wilt stoppen zonder de toewijzing ervan op te heffen, voegt u deze code toe aan de methode Main:
+Als u de virtuele machine wilt stoppen zonder deze te dealeren, voegt u deze code toe aan de hoofdmethode:
 
 ```csharp
 Console.WriteLine("Stopping vm...");
@@ -330,7 +330,7 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-Als u de toewijzing van de virtuele machine ongedaan wilt maken, wijzigt u de uitgeschakeld-aanroep naar deze code:
+Als u de virtuele machine wilt detoewijzen, wijzigt u de PowerOff-aanroep in deze code:
 
 ```csharp
 vm.Deallocate();
@@ -338,7 +338,7 @@ vm.Deallocate();
 
 ### <a name="start-the-vm"></a>De virtuele machine starten
 
-Als u de virtuele machine wilt starten, voegt u deze code toe aan de methode Main:
+Als u de virtuele machine wilt starten, voegt u deze code toe aan de hoofdmethode:
 
 ```csharp
 Console.WriteLine("Starting vm...");
@@ -347,11 +347,11 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="resize-the-vm"></a>Grootte van de virtuele machine wijzigen
+### <a name="resize-the-vm"></a>Het formaat van de vm wijzigen
 
-Veel aspecten van de implementatie moeten worden overwogen bij het bepalen van de grootte van de virtuele machine. Zie [VM-grootten](sizes.md)voor meer informatie.  
+Veel aspecten van de implementatie moeten worden overwogen bij de beslissing over een grootte voor uw virtuele machine. Zie [VM-formaten voor](sizes.md)meer informatie .  
 
-Als u de grootte van de virtuele machine wilt wijzigen, voegt u deze code toe aan de methode Main:
+Als u de grootte van de virtuele machine wilt wijzigen, voegt u deze code toe aan de hoofdmethode:
 
 ```csharp
 Console.WriteLine("Resizing vm...");
@@ -362,9 +362,9 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>Een gegevens schijf toevoegen aan de VM
+### <a name="add-a-data-disk-to-the-vm"></a>Een gegevensschijf toevoegen aan de virtuele machine
 
-Als u een gegevens schijf aan de virtuele machine wilt toevoegen, voegt u deze code toe aan de methode Main. In dit voor beeld wordt een gegevens schijf met een grootte van 2 GB toegevoegd, Han een LUN van 0 en het cache type ReadWrite:
+Als u een gegevensschijf aan de virtuele machine wilt toevoegen, voegt u deze code toe aan de hoofdmethode. In dit voorbeeld wordt een gegevensschijf van 2 GB, han een LUN van 0 en een caching-type ReadWrite toegevoegd:
 
 ```csharp
 Console.WriteLine("Adding data disk to vm...");
@@ -377,9 +377,9 @@ Console.ReadLine();
 
 ## <a name="delete-resources"></a>Resources verwijderen
 
-Omdat er in rekening worden gebracht voor resources die worden gebruikt in azure, is het altijd verstandig om resources te verwijderen die niet meer nodig zijn. Als u de virtuele machines en alle ondersteunende bronnen wilt verwijderen, moet u de resource groep verwijderen.
+Omdat er kosten in rekening worden gebracht voor resources die in Azure worden gebruikt, is het altijd een goede gewoonte om resources te verwijderen die niet langer nodig zijn. Als u de virtuele machines en alle ondersteunende resources wilt verwijderen, hoeft u alleen de brongroep te verwijderen.
 
-Als u de resource groep wilt verwijderen, voegt u deze code toe aan de methode Main:
+Als u de brongroep wilt verwijderen, voegt u deze code toe aan de hoofdmethode:
 
 ```csharp
 azure.ResourceGroups.DeleteByName(groupName);
@@ -387,12 +387,12 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Het duurt ongeveer vijf minuten voordat deze console toepassing volledig van begin tot eind kan worden uitgevoerd. 
+Het duurt ongeveer vijf minuten voordat deze consoletoepassing volledig van begin tot eind wordt uitgevoerd. 
 
-1. Klik op **Start**om de console toepassing uit te voeren.
+1. Als u de consoletoepassing wilt uitvoeren, klikt u op **Start**.
 
-2. Voordat u op **Enter** drukt om resources te verwijderen, kan het enkele minuten duren voordat het maken van de resources in de Azure Portal is gecontroleerd. Klik op de implementatie status om informatie over de implementatie weer te geven.
+2. Voordat u op **Enter** drukt om resources te verwijderen, u enkele minuten nodig hebben om de creatie van de resources in de Azure-portal te verifiëren. Klik op de implementatiestatus om informatie over de implementatie te bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Profiteer van het gebruik van een sjabloon voor het maken van een virtuele machine met behulp van de informatie in [een C# Azure virtual machine implementeren met en een resource manager-sjabloon](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Meer informatie over het gebruik [van de Azure-bibliotheken voor .net](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).
+* Profiteer van het gebruik van een sjabloon om een virtuele machine te maken met behulp van de informatie in [Een Azure Virtual Machine implementeren met C# en een Resource Manager-sjabloon.](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* Meer informatie over het gebruik van de [Azure-bibliotheken voor .NET](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet).

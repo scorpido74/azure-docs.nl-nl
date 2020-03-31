@@ -9,24 +9,24 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.custom: include
 ms.openlocfilehash: de79ea50d12ab322d1e28d0ad650df30ecc0c222
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74806576"
 ---
-## <a name="install-client-library-packages"></a>Client bibliotheek pakketten installeren
+## <a name="install-client-library-packages"></a>Clientbibliotheekpakketten installeren
 
 > [!NOTE]
-> De voor beelden die hier worden weer gegeven, gebruiken de Azure Storage-client bibliotheek versie 12. De client bibliotheek van versie 12 maakt deel uit van de Azure SDK. Zie de Azure SDK-opslag plaats op [github](https://github.com/Azure/azure-sdk)voor meer informatie over de Azure SDK.
+> De voorbeelden die hier worden weergegeven, gebruiken de Azure Storage-clientbibliotheek versie 12. De clientbibliotheek van versie 12 is onderdeel van de Azure SDK. Zie de Azure SDK-repository op [GitHub](https://github.com/Azure/azure-sdk)voor meer informatie over de Azure SDK.
 
-Als u het Blob Storage-pakket wilt installeren, voert u de volgende opdracht uit vanuit de NuGet Package Manager-console:
+Voer de volgende opdracht uit in de NuGet package manager console als u het Blob-opslagpakket wilt installeren:
 
 ```powershell
 Install-Package Azure.Storage.Blobs
 ```
 
-De voor beelden die hier worden weer gegeven, gebruiken ook de nieuwste versie van de [Azure Identity client-bibliotheek voor .net](https://www.nuget.org/packages/Azure.Identity/) om te verifiëren met Azure AD-referenties. Als u het pakket wilt installeren, voert u de volgende opdracht uit vanuit de NuGet Package Manager-console:
+De hier weergegeven voorbeelden gebruiken ook de nieuwste versie van de [Azure Identity-clientbibliotheek voor .NET](https://www.nuget.org/packages/Azure.Identity/) om te verifiëren met Azure AD-referenties. Voer de volgende opdracht uit in de NuGet package manager console om het pakket te installeren:
 
 ```powershell
 Install-Package Azure.Identity

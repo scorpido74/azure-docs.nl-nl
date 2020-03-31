@@ -1,6 +1,6 @@
 ---
-title: KEUR CI/CD met Azure Container Service en Swarm
-description: Gebruik Azure Container Service met docker Swarm, een Azure Container Registry en Azure DevOps om voortdurend een .NET core-toepassing met meerdere containers te leveren
+title: (AFGESCHAFT) CI/CD met Azure Container Service en Swarm
+description: Azure Container Service gebruiken met Docker Swarm, een Azure Container Registry en Azure DevOps om continu een .NET Core-toepassing met meerdere containers te leveren
 author: jcorioland
 ms.service: container-service
 ms.topic: conceptual
@@ -8,218 +8,218 @@ ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
 ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76549050"
 ---
-# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>KEUR Volledige CI/CD-pijp lijn voor het implementeren van een toepassing met meerdere containers op Azure Container Service met docker Swarm met Azure DevOps Services
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(AFGESCHAFT) Volledige CI/CD-pijplijn voor het implementeren van een multicontainertoepassing op Azure Container Service met Docker Swarm met Azure DevOps Services
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Een van de grootste uitdagingen bij het ontwikkelen van moderne toepassingen voor de Cloud is dat deze toepassingen continu kunnen worden geleverd. In dit artikel leert u hoe u een volledige doorlopende integratie-en implementatie pijplijn (CI/CD) kunt implementeren met Azure Container Service met docker Swarm, Azure Container Registry en Azure pipelines management.
+Een van de grootste uitdagingen bij het ontwikkelen van moderne applicaties voor de cloud is het continu kunnen leveren van deze applicaties. In dit artikel leert u hoe u een CI/CD-pijplijn (full continuous integration and deployment) implementeert met Azure Container Service met Docker Swarm, Azure Container Registry en Azure Pipelines-beheer.
 
 
-![Voorbeeld toepassing MyShop](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
+![Voorbeeldtoepassing MyShop](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
-Het doel is om deze toepassing voortdurend te leveren in een docker Swarm-cluster met behulp van Azure DevOps Services. In de volgende afbeelding vindt u meer informatie over deze continue bezorgings pijplijn:
+Het doel is om deze toepassing continu te leveren in een Docker Swarm-cluster, met azure DevOps-services. De volgende figuur beschrijft deze continue leveringspijplijn:
 
-![Voorbeeld toepassing MyShop](./media/container-service-docker-swarm-setup-ci-cd/full-ci-cd-pipeline.png)
+![Voorbeeldtoepassing MyShop](./media/container-service-docker-swarm-setup-ci-cd/full-ci-cd-pipeline.png)
 
-Hier volgt een korte uitleg van de stappen:
+Hier is een korte uitleg van de stappen:
 
-1. Code wijzigingen worden doorgevoerd in de opslag plaats van de bron code (hier, GitHub) 
-1. GitHub activeert een build in azure DevOps Services 
-1. Azure DevOps Services haalt de nieuwste versie van de bronnen op en bouwt alle installatie kopieën op waaruit de toepassing is samengesteld. 
-1. Azure DevOps Services pusht elke installatie kopie naar een docker-REGI ster dat is gemaakt met behulp van de Azure Container Registry-service 
+1. Codewijzigingen zijn vastgelegd in de broncoderepository (hier, GitHub) 
+1. GitHub activeert een build in Azure DevOps Services 
+1. Azure DevOps Services krijgt de nieuwste versie van de bronnen en bouwt alle afbeeldingen die de toepassing samenstellen 
+1. Azure DevOps Services duwt elke afbeelding naar een Docker-register dat is gemaakt met behulp van de Azure Container Registry-service 
 1. Azure DevOps Services activeert een nieuwe release 
-1. De release voert enkele opdrachten uit met SSH op het hoofd knooppunt van het Azure container service-cluster 
-1. Docker Swarm op het cluster haalt de nieuwste versie van de installatie kopieën op 
-1. De nieuwe versie van de toepassing wordt geïmplementeerd met behulp van docker opstellen 
+1. Met de release worden enkele opdrachten uitgevoerd met SSH op het clustermasterknooppunt Azure containerservice 
+1. Docker Zwerm op het cluster trekt de nieuwste versie van de beelden 
+1. De nieuwe versie van de toepassing wordt geïmplementeerd met Docker Compose 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u met deze zelf studie begint, moet u de volgende taken uitvoeren:
+Voordat u met deze zelfstudie begint, moet u de volgende taken voltooien:
 
 - [Een Swarm-cluster in Azure Container Service maken](container-service-deployment.md)
 - [Verbinding maken met het Swarm-cluster in Azure Container Service](../container-service-connect.md)
-- [Een Azure container Registry maken](../../container-registry/container-registry-get-started-portal.md)
-- [Een Azure DevOps Services-organisatie en een project maken](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
-- [De GitHub-opslag plaats splitsen in uw GitHub-account](https://github.com/jcorioland/MyShop/)
+- [Een Azure-containerregister maken](../../container-registry/container-registry-get-started-portal.md)
+- [Een Azure DevOps Services-organisatie en -project laten maken](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
+- [Fork de GitHub repository naar uw GitHub-account](https://github.com/jcorioland/MyShop/)
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-U hebt ook een Ubuntu-machine (14,04 of 16,04) nodig waarop docker is geïnstalleerd. Deze computer wordt door Azure DevOps Services gebruikt tijdens de processen van Azure pipeline. Een manier om deze machine te maken, is met behulp van de installatie kopie die beschikbaar is in azure Marketplace. 
+Je hebt ook een Ubuntu (14.04 of 16.04) machine nodig met Docker geïnstalleerd. Deze machine wordt gebruikt door Azure DevOps Services tijdens de Azure Pipelines-processen. Een manier om deze machine te maken is door de afbeelding te gebruiken die beschikbaar is in de Azure Marketplace. 
 
-## <a name="step-1-configure-your-azure-devops-services-organization"></a>Stap 1: uw Azure DevOps Services-organisatie configureren 
+## <a name="step-1-configure-your-azure-devops-services-organization"></a>Stap 1: Uw Azure DevOps Services-organisatie configureren 
 
-In deze sectie gaat u uw Azure DevOps Services-organisatie configureren.
+In deze sectie configureert u uw Azure DevOps Services-organisatie.
 
-### <a name="configure-an-azure-devops-services-linux-build-agent"></a>Een Azure DevOps Services Linux-bouw agent configureren
+### <a name="configure-an-azure-devops-services-linux-build-agent"></a>Een Linux-buildagent van Azure DevOps Services configureren
 
-Als u docker-installatie kopieën wilt maken en deze installatie kopieën wilt pushen naar een Azure container Registry vanuit een Azure DevOps Services-build, moet u een Linux-agent registreren. U hebt de volgende installatie opties:
+Als u Docker-afbeeldingen wilt maken en deze afbeeldingen vanuit een Azure DevOps Services-build naar een Azure DevOps Services-build wilt pushen, moet u een Linux-agent registreren. U hebt de volgende installatieopties:
 
-* [Een agent implementeren in Linux](https://www.visualstudio.com/docs/build/admin/agents/v2-linux)
+* [Een agent implementeren op Linux](https://www.visualstudio.com/docs/build/admin/agents/v2-linux)
 
 * [Docker gebruiken om de Azure DevOps Services-agent uit te voeren](https://hub.docker.com/r/microsoft/vsts-agent)
 
-### <a name="install-the-docker-integration-azure-devops-services-extension"></a>De docker-integratie Azure DevOps Services-extensie installeren
+### <a name="install-the-docker-integration-azure-devops-services-extension"></a>De azure DevOps Services-extensie docker-integratie installeren
 
-Micro soft biedt een Azure DevOps Services-extensie om te werken met docker in azure Pipelins-processen. Deze uitbrei ding is beschikbaar in [Azure DevOps Services Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker). Klik op **installeren** om deze extensie toe te voegen aan uw Azure DevOps Services-organisatie:
+Microsoft biedt een Azure DevOps Services-extensie om te werken met Docker in Azure Pipelines-processen. Deze extensie is beschikbaar in de [Azure DevOps Services Marketplace.](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker) Klik **op Installeren** om deze extensie toe te voegen aan uw Azure DevOps Services-organisatie:
 
-![Docker-integratie installeren](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
+![De Docker-integratie installeren](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
 
-U wordt gevraagd om verbinding te maken met uw Azure DevOps Services-organisatie met behulp van uw referenties. 
+U wordt gevraagd verbinding te maken met uw Azure DevOps Services-organisatie met uw referenties. 
 
-### <a name="connect-azure-devops-services-and-github"></a>Verbinding maken met Azure DevOps Services en GitHub
+### <a name="connect-azure-devops-services-and-github"></a>Azure DevOps Services en GitHub verbinden
 
 Stel een verbinding in tussen uw Azure DevOps Services-project en uw GitHub-account.
 
-1. Klik in uw Azure DevOps Services-project op het **instellingen** pictogram op de werk balk en selecteer **Services**.
+1. Klik in uw Azure DevOps Services-project op het pictogram **Instellingen** op de werkbalk en selecteer **Services**.
 
-    ![Azure DevOps Services-externe verbinding](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
+    ![Azure DevOps Services - Externe verbinding](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-1. Klik aan de linkerkant op **nieuw service-eind punt** > **github**.
+1. Klik aan de linkerkant op **Nieuw serviceeindpunt** > **GitHub**.
 
-    ![Azure DevOps Services-GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
+    ![Azure DevOps Services - GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
-1. Als u Azure DevOps-Services wilt machtigen voor gebruik met uw GitHub-account, klikt u op **autoriseren** en volgt u de procedure in het venster dat wordt geopend.
+1. Als u Azure DevOps Services wilt autoriseren om met uw GitHub-account te werken, klikt u op **Autoriseren** en volgt u de procedure in het venster dat wordt geopend.
 
-    ![Azure DevOps Services-GitHub autoriseren](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
+    ![Azure DevOps Services - GitHub autoriseren](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
 
-### <a name="connect-azure-devops-services-to-your-azure-container-registry-and-azure-container-service-cluster"></a>Azure DevOps-Services verbinden met uw Azure container Registry en Azure Container Service-cluster
+### <a name="connect-azure-devops-services-to-your-azure-container-registry-and-azure-container-service-cluster"></a>Azure DevOps Services verbinden met uw Azure-containerregister en Azure Container Service-cluster
 
-De laatste stappen voor het ophalen van de CI/CD-pijp lijn zijn het configureren van externe verbindingen met uw container register en uw docker Swarm-cluster in Azure. 
+De laatste stappen voordat u in de CI/CD-pijplijn stapt, zijn het configureren van externe verbindingen met uw containerregister en uw Docker Swarm-cluster in Azure. 
 
-1. Voeg in de **Services** -instellingen van uw Azure DevOps Services-project een service-eind punt van het type **docker-REGI ster**toe. 
+1. Voeg in de **Services-instellingen** van uw Azure DevOps Services-project een serviceeindpunt toe van het **type Docker Registry.** 
 
-1. Voer in het pop-upvenster dat wordt geopend de URL en de referenties in van uw Azure container Registry.
+1. Voer in de pop-up die wordt geopend de URL en de referenties van uw Azure-containerregister in.
 
-    ![Azure DevOps Services-docker-REGI ster](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
+    ![Azure DevOps Services - Docker-register](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
 
-1. Voor het docker Swarm-cluster voegt u een eind punt van het type **SSH**toe. Voer vervolgens de SSH-verbindings gegevens van uw Swarm-cluster in.
+1. Voeg voor het cluster Docker Swarm een eindpunt van het type **SSH**toe. Voer vervolgens de SSH-verbindingsgegevens van uw Swarm-cluster in.
 
-    ![Azure DevOps Services-SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-ssh.png)
+    ![Azure DevOps Services - SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-ssh.png)
 
-Alle configuratie wordt nu uitgevoerd. In de volgende stappen maakt u de CI/CD-pijp lijn die de toepassing bouwt en implementeert op het docker Swarm-cluster. 
+Alle configuratie is nu gedaan. In de volgende stappen maakt u de CI/CD-pijplijn die de toepassing bouwt en implementeert naar het Docker Zwerm-cluster. 
 
-## <a name="step-2-create-the-build-pipeline"></a>Stap 2: de build-pijp lijn maken
+## <a name="step-2-create-the-build-pipeline"></a>Stap 2: De buildpijplijn maken
 
-In deze stap stelt u een build-pijp lijn in voor uw Azure DevOps Services-project en definieert u de build-werk stroom voor uw container installatie kopieën
+In deze stap stelt u een buildpijplijn in voor uw Azure DevOps Services-project en definieert u de buildworkflow voor uw containerafbeeldingen
 
-### <a name="initial-pipeline-setup"></a>Eerste pijp lijn instellen
+### <a name="initial-pipeline-setup"></a>Initiële pijplijninstallatie
 
-1. Als u een build-pijp lijn wilt maken, maakt u verbinding met uw Azure DevOps Services-project en klikt u op **build & release**. 
+1. Als u een buildpijplijn wilt maken, maakt u verbinding met uw Azure DevOps Services-project en klikt u op **Build & Release**. 
 
-1. Klik in de sectie **Build Definitions** op **+ New**. Selecteer de **lege** sjabloon.
+1. Klik **in** de sectie Definities bouwen op **+ Nieuw**. Selecteer de sjabloon **Leeg** maken.
 
-    ![Azure DevOps-nieuwe build-pijp lijn](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
+    ![Azure DevOps - Nieuwe buildpijplijn](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
 
-1. Configureer de nieuwe build met een GitHub-opslagplaats bron, Controleer **doorlopende integratie**en selecteer de agent wachtrij waarin u uw Linux-agent hebt geregistreerd. Klik op **maken** om de build-pijp lijn te maken.
+1. Configureer de nieuwe build met een GitHub-bron, controleer **Continue integratie**en selecteer de agentwachtrij waar u uw Linux-agent hebt geregistreerd. Klik **op Maken** om de buildpijplijn te maken.
 
-    ![Azure DevOps Services-build-pijp lijn maken](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
+    ![Azure DevOps-services - Buildpipeline maken](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
 
-1. Open op de pagina **samenstellings definities** eerst het tabblad **opslag plaats** en configureer de build om de Fork te gebruiken van het MyShop-project dat u hebt gemaakt in de vereisten. Zorg ervoor dat u *ACS-docs* als **standaard vertakking**selecteert.
+1. Open op de pagina **Definities bouwen** eerst het tabblad **Repository** en configureer de build om de vork van het MyShop-project te gebruiken dat u in de vereisten hebt gemaakt. Zorg ervoor dat u *acs-documenten* selecteert als **standaardvertakking**.
 
-    ![Azure DevOps Services: opslagplaats configuratie samen stellen](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
+    ![Azure DevOps-services - Repository-configuratie bouwen](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
 
-1. Configureer op het tabblad **Triggers** dat de build moet worden geactiveerd na elke door voer. Selecteer **doorlopende integratie** en **batch wijzigingen**.
+1. Configureer op het tabblad **Triggers** de build die na elke commit moet worden geactiveerd. Selecteer **Continue integratie** en **batchwijzigingen**.
 
-    ![Azure DevOps Services-build trigger-configuratie](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
+    ![Azure DevOps-services - Triggerconfiguratie bouwen](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
 
-### <a name="define-the-build-workflow"></a>De werk stroom voor bouwen definiëren
-In de volgende stappen wordt de werk stroom bouwen gedefinieerd. Er zijn vijf container installatie kopieën die kunnen worden gemaakt voor de *MyShop* -toepassing. Elke installatie kopie wordt gemaakt met behulp van de Dockerfile die zich in de project mappen bevinden:
+### <a name="define-the-build-workflow"></a>De buildwerkstroom definiëren
+In de volgende stappen wordt de buildworkflow gedefinieerd. Er zijn vijf containerafbeeldingen om te bouwen voor de *MyShop-applicatie.* Elke afbeelding wordt gemaakt met behulp van het Dockerfile in de projectmappen:
 
 * ProductsApi
 * Proxy
 * RatingsApi
-* RecommendationsApi
-* ShopFront
+* AanbevelingenApi
+* Winkelvoor
 
-U moet voor elke installatie kopie twee stappen voor docker toevoegen, één om de installatie kopie te bouwen en één om de installatie kopie te pushen in het Azure container Registry. 
+U moet twee Docker-stappen toevoegen voor elke afbeelding, één om de afbeelding te maken en één om de afbeelding in het Azure-containerregister te duwen. 
 
-1. Als u een stap wilt toevoegen in de werk stroom bouwen, klikt u op **+ Build-stap toevoegen** en selecteert u **docker**.
+1. Als u een stap in de buildwerkstroom wilt toevoegen, klikt u op **+ Buildstap toevoegen** en selecteert u **Docker**.
 
-    ![Azure DevOps Services-build-stappen toevoegen](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
+    ![Azure DevOps-services - Buildstappen toevoegen](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-1. Configureer voor elke installatie kopie één stap die gebruikmaakt van de `docker build` opdracht.
+1. Configureer voor elke afbeelding één `docker build` stap die de opdracht gebruikt.
 
-    ![Azure DevOps Services-docker-build](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
+    ![Azure DevOps Services - Docker Build](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
-    Voor de bouw bewerking selecteert u uw Azure container Registry, de actie **een installatie kopie maken** en de Dockerfile die elke installatie kopie definieert. Stel de **Build-context** in als de hoofdmap van de Dockerfile en definieer de naam van de **installatie kopie**. 
+    Selecteer voor de buildbewerking uw Azure-containerregister, de **actie Een afbeelding maken** en het Dockerbestand dat elke afbeelding definieert. Stel de **context Build** in als de hoofdmap Dockerfile en definieer de **afbeeldingsnaam**. 
     
-    Zoals in het voor gaande scherm wordt weer gegeven, start u de naam van de installatie kopie met de URI van uw Azure container Registry. (U kunt ook een build-variabele gebruiken om de tag van de afbeelding te para meters, zoals de build-id in dit voor beeld).
+    Zoals op het vorige scherm wordt weergegeven, start u de afbeeldingsnaam met de URI van uw Azure-containerregister. (U ook een buildvariabele gebruiken om de tag van de afbeelding te parameteriseren, zoals de build-id in dit voorbeeld.)
 
-1. Configureer voor elke installatie kopie een tweede stap die gebruikmaakt van de `docker push` opdracht.
+1. Configureer voor elke afbeelding een `docker push` tweede stap die de opdracht gebruikt.
 
-    ![Azure DevOps Services-docker-push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
+    ![Azure DevOps Services - Docker Push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
-    Voor de push-bewerking selecteert u uw Azure container Registry, de actie **een installatie kopie pushen** en voert u de naam van de **installatie kopie** in die in de vorige stap is ingebouwd.
+    Selecteer voor de pushbewerking uw Azure-containerregister, de **actie Een afbeelding pushen** en voer de **afbeeldingsnaam** in die in de vorige stap is gebouwd.
 
-1. Nadat u de stappen voor het bouwen en pushen voor elk van de vijf installatie kopieën hebt geconfigureerd, voegt u twee extra stappen toe aan de werk stroom bouwen.
+1. Nadat u de build- en pushstappen voor elk van de vijf afbeeldingen hebt geconfigureerd, voegt u nog twee stappen toe in de werkstroom voor bouwen.
 
-    a. Een opdracht regel taak die gebruikmaakt van een bash-script om het *BuildNumber* -exemplaar in het bestand docker-Compose. yml te vervangen door de huidige build-id. Raadpleeg het volgende scherm voor meer informatie.
+    a. Een opdrachtregeltaak die een bashscript gebruikt om de gebeurtenis *BuildNumber* in het docker-compose.yml-bestand te vervangen door de huidige build-id. Zie het volgende scherm voor meer informatie.
 
-    ![Azure DevOps Services-update opstellen van bestand](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
+    ![Azure DevOps Services - Bestand samenstellen bijwerken](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
-    b. Een taak die het bijgewerkte opgebouwde bestand als een bouw artefact heeft neergezet zodat het in de release kan worden gebruikt. Raadpleeg het volgende scherm voor meer informatie.
+    b. Een taak die het bijgewerkte bestand Compose als een build-artefact laat vallen, zodat het in de release kan worden gebruikt. Zie het volgende scherm voor meer informatie.
 
-    ![Azure DevOps Services-opstellen van opstel bestand publiceren](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
+    ![Azure DevOps Services - Bestand opstellen publiceren](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
 
-1. Klik op **Opslaan** en geef uw build-pijp lijn een naam.
+1. Klik **op Opslaan** en een naam geven aan de buildpijplijn.
 
-## <a name="step-3-create-the-release-pipeline"></a>Stap 3: de release pijplijn maken
+## <a name="step-3-create-the-release-pipeline"></a>Stap 3: De releasepijplijn maken
 
-Met Azure DevOps Services kunt u [releases in meerdere omgevingen beheren](https://www.visualstudio.com/team-services/release-management/). U kunt continue implementatie inschakelen om ervoor te zorgen dat uw toepassing op een eenvoudige manier wordt geïmplementeerd in uw andere omgevingen (zoals dev, test, pre-productie en productie). U kunt een nieuwe omgeving maken die uw Azure Container Service docker Swarm-cluster vertegenwoordigt.
+Met Azure DevOps Services u [releases beheren in verschillende omgevingen.](https://www.visualstudio.com/team-services/release-management/) U continue implementatie inschakelen om ervoor te zorgen dat uw toepassing op een soepele manier wordt geïmplementeerd in uw verschillende omgevingen (zoals dev, test, pre-productie en productie). U een nieuwe omgeving maken die uw Azure Container Service Docker Swarm-cluster vertegenwoordigt.
 
-![Azure DevOps Services: release naar ACS](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
+![Azure DevOps Services - Vrijgeven aan ACS](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
 
-### <a name="initial-release-setup"></a>Installatie van de eerste release
+### <a name="initial-release-setup"></a>Initiële release-installatie
 
-1. Als u een release pijplijn wilt maken, klikt u op **Releases** >  **+ release**
+1. Als u een releasepijplijn wilt maken, klikt u op **Releases** > **+ Release**
 
-1. Als u de artefact bron wilt configureren, klikt u op **artefacten** > **een artefact bron te koppelen**. Koppel deze nieuwe release pijplijn aan de build die u in de vorige stap hebt gedefinieerd. Op deze manier is het bestand docker-Compose. yml beschikbaar in het release proces.
+1. Als u de artefactbron wilt configureren, klikt u op **Artefacten** > **Koppeling van een artefactbron**. Koppel deze nieuwe releasepijplijn hier aan de build die u in de vorige stap hebt gedefinieerd. Door dit te doen, is het docker-compose.yml-bestand beschikbaar in het releaseproces.
 
-    ![Azure DevOps Services-release artefacten](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
+    ![Azure DevOps Services - Artefacten vrijgeven](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
-1. Als u de release trigger wilt configureren, klikt u op **Triggers** en selecteert u **doorlopende implementatie**. Stel de trigger in op dezelfde artefact bron. Deze instelling zorgt ervoor dat een nieuwe release wordt gestart zodra de build is voltooid.
+1. Als u de releasetrigger wilt configureren, klikt u op **Triggers** en selecteert u **Continue implementatie**. Stel de trigger in op dezelfde artefactbron. Deze instelling zorgt ervoor dat een nieuwe release wordt gestart zodra de build is voltooid.
 
-    ![Azure DevOps Services-release triggers](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
+    ![Azure DevOps Services - Triggers vrijgeven](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
 
-### <a name="define-the-release-workflow"></a>De release werk stroom definiëren
+### <a name="define-the-release-workflow"></a>De releasewerkstroom definiëren
 
-De release werk stroom bestaat uit twee taken die u toevoegt.
+De releaseworkflow bestaat uit twee taken die u toevoegt.
 
-1. Configureer een taak voor het veilig kopiëren van het opstellende bestand naar een *Deploy* -map op het knoop punt docker Swarm-Master, met behulp van de SSH-verbinding die u eerder hebt geconfigureerd. Raadpleeg het volgende scherm voor meer informatie.
+1. Configureer een taak om het compositiebestand veilig te kopiëren naar een *implementatiemap* op het hoofdknooppunt Docker Swarm, met behulp van de SSH-verbinding die u eerder hebt geconfigureerd. Zie het volgende scherm voor meer informatie.
 
-    ![Azure DevOps Services-release-SCP](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
+    ![Azure DevOps Services - SCP vrijgeven](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-1. Configureer een tweede taak om een bash-opdracht uit te voeren om `docker` en `docker-compose` opdrachten uit te voeren op het hoofd knooppunt. Raadpleeg het volgende scherm voor meer informatie.
+1. Configureer een tweede taak om `docker` een `docker-compose` bashopdracht uit te voeren om uit te voeren en opdrachten op het hoofdknooppunt. Zie het volgende scherm voor meer informatie.
 
-    ![Azure DevOps Services-release bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
+    ![Azure DevOps Services - Release Bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
-    De opdracht die wordt uitgevoerd op het hoofd gebruik van de docker-CLI en de docker-CLI om de volgende taken uit te voeren:
+    De opdracht die op de master is uitgevoerd, gebruikt de Docker CLI en de Docker-Compose CLI om de volgende taken uit te voeren:
 
-   - Meld u aan bij het Azure container Registry (er worden drie build variab'les gebruikt die zijn gedefinieerd op het tabblad **variabelen** )
-   - Definieer de **DOCKER_HOST** variabele die moet worden gebruikt voor het Swarm-eind punt (: 2375)
-   - Ga naar de *Deploy* -map die is gemaakt door de vorige beveiligde Kopieer taak en die het docker-Compose. yml-bestand bevat 
-   - Voer `docker-compose` opdrachten uit waarmee de nieuwe installatie kopieën worden opgehaald, stop de services, verwijder de services en maak de containers.
+   - Inloggen bij het Azure-containerregister (het maakt gebruik van drie buildvariab'les die zijn gedefinieerd op het tabblad **Variabelen)**
+   - De **DOCKER_HOST** variabele definiëren om met het Swarm-eindpunt te werken (:2375)
+   - Navigeer naar de *map implementeren* die is gemaakt door de vorige beveiligde kopieertaak en die het docker-compose.yml-bestand bevat 
+   - Voer `docker-compose` opdrachten uit die de nieuwe afbeeldingen trekken, de services stoppen, de services verwijderen en de containers maken.
 
      >[!IMPORTANT]
-     > Zoals u in het voor gaande scherm ziet, schakelt u het selectie vakje **mislukken op stderr** uit. Dit is een belang rijke instelling, omdat `docker-compose` verschillende diagnostische berichten afdrukt, zoals containers die worden gestopt of verwijderd, op de standaard fout uitvoer. Als u het selectie vakje inschakelt, wordt in azure DevOps Services gerapporteerd dat er fouten zijn opgetreden tijdens de release, zelfs als alles goed gaat.
+     > Zoals op het vorige scherm wordt weergegeven, laat u het selectievakje **Fail ontsmet op STDERR** onaangevinkt. Dit is een belangrijke `docker-compose` instelling, omdat verschillende diagnostische berichten, zoals containers, worden gestopt of verwijderd, worden afgedrukt op de standaardfoutuitvoer. Als u het selectievakje inschakelt, meldt Azure DevOps Services dat er fouten zijn opgetreden tijdens de release, zelfs als alles goed gaat.
      >
-1. Sla deze nieuwe release pijplijn op.
+1. Sla deze nieuwe releasepijplijn op.
 
 
 >[!NOTE]
->Deze implementatie omvat enige downtime omdat de oude services worden gestopt en de nieuwe wordt uitgevoerd. U kunt dit voor komen door een Blue-groen implementatie uit te voeren.
+>Deze implementatie omvat enige downtime omdat we de oude services stoppen en de nieuwe uitvoeren. Het is mogelijk om dit te voorkomen door het doen van een blauw-groene inzet.
 >
 
-## <a name="step-4-test-the-cicd-pipeline"></a>Stap 4. De CI/CD-pijp lijn testen
+## <a name="step-4-test-the-cicd-pipeline"></a>Stap 4. De CI/CD-pijplijn testen
 
-Nu u klaar bent met de configuratie, is het tijd om deze nieuwe CI/CD-pijp lijn te testen. De eenvoudigste manier om dit te testen is het bijwerken van de bron code en het door voeren van de wijzigingen in uw GitHub-opslag plaats. Een paar seconden na het pushen van de code ziet u een nieuwe build die wordt uitgevoerd in azure DevOps Services. Zodra de implementatie is voltooid, wordt een nieuwe release geactiveerd en wordt de nieuwe versie van de toepassing op het Azure Container Service cluster geïmplementeerd.
+Nu u klaar bent met de configuratie, is het tijd om deze nieuwe CI / CD-pijplijn te testen. De eenvoudigste manier om het te testen is om de broncode bij te werken en de wijzigingen in uw GitHub-repository te verbinden. Een paar seconden nadat u de code hebt ingedrukt, ziet u een nieuwe build in Azure DevOps Services. Zodra deze is voltooid, wordt een nieuwe release geactiveerd en wordt de nieuwe versie van de toepassing geïmplementeerd op het Azure Container Service-cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor meer informatie over CI/CD met Azure DevOps Services raadpleegt u het artikel over [Azure pipelines](/azure/devops/pipelines/?view=azure-devops) .
+* Zie het [documentaalpipelinesdocumentatie](/azure/devops/pipelines/?view=azure-devops) van Azure Pipelines voor meer informatie over CI/CD met Azure DevOps Services.

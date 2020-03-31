@@ -1,6 +1,6 @@
 ---
-title: Fout opsporing voor HTTP-headers voor Azure CDN van micro soft | Microsoft Docs
-description: Debug cache-aanvraag headers bieden aanvullende informatie over het cache beleid dat wordt toegepast op de aangevraagde Asset. Deze headers zijn specifiek voor Azure CDN van micro soft.
+title: HTTP-headers voor Azure CDN van Microsoft debuggen | Microsoft Documenten
+description: Foutopsporingscacheaanvragen bevat aanvullende informatie over het cachebeleid dat is toegepast op het aangevraagde element. Deze headers zijn specifiek voor Azure CDN van Microsoft.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: magattus
 ms.openlocfilehash: 297c65c1cd89163b8663819f844dc6c2a83fd1bf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68814068"
 ---
-# <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Fout opsporing voor de HTTP-header voor Azure CDN van micro soft
-De antwoord header `X-Cache`voor fout opsporing bevat details over de laag van de CDN-stack waaruit de inhoud afkomstig is. Deze header is specifiek voor Azure CDN van micro soft.
+# <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Foutopsporing HTTP-header voor Azure CDN van Microsoft
+De foutopsporingsantwoordkop `X-Cache`geeft details over welke laag van de CDN-stack de inhoud is aangeboden. Deze header is specifiek voor Azure CDN van Microsoft.
 
-### <a name="response-header-format"></a>Indeling van de antwoord header
+### <a name="response-header-format"></a>Indeling voor antwoordkoppen
 
-Header | Description
+Header | Beschrijving
 -------|------------
-X-cache: TCP_HIT | Deze header wordt geretourneerd wanneer de inhoud wordt geleverd vanuit de cache van de CDN-rand. 
-X-cache: TCP_REMOTE_HIT | Deze header wordt geretourneerd wanneer de inhoud wordt geleverd vanuit de regionale cache van de CDN (oorspronkelijke afschermings laag)
-X-cache: TCP_MISS | Deze header wordt geretourneerd als er een cache-Missing is en de inhoud van de oorsprong wordt geleverd. 
+X-Cache: TCP_HIT | Deze koptekst wordt geretourneerd wanneer de inhoud wordt weergegeven vanuit de CDN-randcache. 
+X-Cache: TCP_REMOTE_HIT | Deze koptekst wordt geretourneerd wanneer de inhoud wordt weergegeven vanuit de regionale cache van CDN (Origin shield-laag)
+X-Cache: TCP_MISS | Deze header wordt geretourneerd wanneer er een cache ontbreekt en de inhoud wordt weergegeven vanuit de Origin. 
 
 

@@ -1,34 +1,33 @@
 ---
-title: Migratie naar partner Center | Azure Marketplace
-description: Aanbiedingen migreren van Cloud Partner-portal naar het partner centrum.
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+title: Migratie naar partnercentrum | Azure Marketplace
+description: Migrerende aanbiedingen van Cloud Partner Portal naar Partner Center.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.author: v-chjen
-ms.openlocfilehash: cf1f7f7ebd7d0761f3bec0ab5a27e1d54fde256e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 8ef117425f945d14db535ea3ecedc50d18819868
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480656"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280164"
 ---
 # <a name="cloud-partner-portal-migration-to-partner-center"></a>Migratie van Cloud Partner-portal naar Partnercentrum
 
-Micro soft migreert aanbiedingen van Cloud Partner-portal naar het partner centrum om uw account en beheer ervaring te stroom lijnen. Als u momenteel gezamenlijke onderpand beheert in de One Commercial partner go-to-Market (OCP GTM)-catalogus, kunt u binnenkort uw zakelijke onderpand bijwerken in het partner centrum.
+Om uw account te stroomlijnen en beheerervaring aan te bieden, migreert Microsoft aanbiedingen van Cloud Partner Portal naar Partner Center. Als u momenteel co-sell onderpand beheert in de One Commercial Partner Go-to-Market (OCP GTM) catalogus, u uw co-sell onderpand binnenkort bijwerken in Partner Center.
 
-| **Aanbiedings type** | **Aanbod beheer gemigreerd van Cloud Partner-portal naar partner centrum** | **De mogelijkheid om onderpand in het partner centrum bij te werken** |
+| **Aanbiedingstype** | **Aanbiedingsbeheer gemigreerd van Cloud Partner Portal naar Partner Center** | **Mogelijkheid om onderpand bij te werken in Partner Center** |
 |    -----------------------    |    -----------------------------  |  -----------------------------  |
-| Software as a Service (SaaS) |     Nu verkrijgbaar       |   Algemene Beschik baarheid rond feb. 2020      |
-| Dynamics 365 voor klant betrokkenheid & PowerApps      |     Nu verkrijgbaar        |   Nu verkrijgbaar      |
+| Software as a Service (SaaS) |     Nu verkrijgbaar       |   Algemene beschikbaarheid rond februari 2020      |
+| Dynamics 365 voor customer engagement & PowerApps      |     Nu verkrijgbaar        |   Nu verkrijgbaar      |
 | Dynamics 365 for Operations     |     Nu verkrijgbaar       |   Nu verkrijgbaar     |
-| Dynamics 365 Business Central      |     Nu verkrijgbaar        |   Algemene Beschik baarheid rond feb. 2020     |
-| Azure Application     |     Algemene Beschik baarheid dec. 2019       |   Algemene Beschik baarheid rond feb. 2020     |
-| Azure Virtual Machine      |     Binnenkort aangekondigd       |   Binnenkort aangekondigd    |
-| Azure-container     |     Binnenkort aangekondigd       |   Binnenkort aangekondigd     |
-| Adviesservice      |     Binnenkort aangekondigd       |   Binnenkort aangekondigd     |
-| Module IoT Edge      |     Binnenkort aangekondigd       |   Binnenkort aangekondigd     |
-| Power BI service-app     |     Binnenkort aangekondigd       |   Binnenkort aangekondigd     |
+| Dynamics 365 Business Central      |     Nu verkrijgbaar        |   Algemene beschikbaarheid rond februari 2020     |
+| Azure Application     |     Algemene beschikbaarheid december 2019       |   Algemene beschikbaarheid rond februari 2020     |
+| Virtuele Azure-machine      |     Te worden aangekondigd       |   Te worden aangekondigd    |
+| Azure-container     |     Te worden aangekondigd       |   Te worden aangekondigd     |
+| Adviesservice      |     Te worden aangekondigd       |   Te worden aangekondigd     |
+| IoT Edge-module      |     Te worden aangekondigd       |   Te worden aangekondigd     |
+| Power BI-service-app     |     Te worden aangekondigd       |   Te worden aangekondigd     |
 |  |  |

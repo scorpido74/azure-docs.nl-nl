@@ -1,6 +1,6 @@
 ---
-title: Een lijst met groepen in de Azure Active Directory portal downloaden | Microsoft Docs
-description: Down load groeps eigenschappen in bulk in het Azure-beheer centrum in Azure Active Directory.
+title: Een lijst met groepen downloaden in de Azure Active Directory-portal | Microsoft Documenten
+description: Groepseigenschappen in bulk downloaden in het Azure-beheercentrum in Azure Active Directory.
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,35 +14,35 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b08e807e179270b63ca81d3777c230c3e129c3a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72517149"
 ---
-# <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Bulksgewijs downloaden van een lijst met groepen (preview) in Azure Active Directory
+# <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Bulk download een lijst met groepen (voorbeeld) in Azure Active Directory
 
-Met Azure Active Directory-Portal (Azure AD) kunt u de lijst met alle groepen in uw organisatie bulksgewijs downloaden naar een bestand met door komma's gescheiden waarden (CSV).
+Met Azure Active Directory (Azure AD)-portal u de lijst met alle groepen in uw organisatie downloaden naar een CSV-bestand (comma-separate values).
 
 ## <a name="to-download-a-list-of-groups"></a>Een lijst met groepen downloaden
 
-1. Meld u aan bij [de Azure Portal](https://portal.azure.com) met een beheerders account in de organisatie.
-1. Selecteer in azure AD **groepen**  > **Download groepen**.
-1. Selecteer op de pagina **groepen downloaden** de optie **Start** om een CSV-bestand te ontvangen waarin uw groepen worden weer gegeven.
+1. Meld u aan bij [de Azure-portal](https://portal.azure.com) met een beheerdersaccount in de organisatie.
+1. Selecteer groepen downloaden **groepen** > **in**Azure AD .
+1. Selecteer op de **downloadpagina Groepen** de optie **Start** om een CSV-bestand te ontvangen met uw groepen.
 
-   ![De opdracht groepen downloaden bevindt zich op de pagina alle groepen](./media/groups-bulk-download/bulk-download.png)
+   ![De opdracht Downloadgroepen bevindt zich op de pagina Alle groepen](./media/groups-bulk-download/bulk-download.png)
 
-## <a name="check-download-status"></a>Download status controleren
+## <a name="check-download-status"></a>Downloadstatus controleren
 
-U kunt de status van al uw bulk aanvragen in behandeling bekijken op de pagina **resultaten van bulk bewerking (preview)** .
+U de status van al uw in behandeling zijnde bulkaanvragen bekijken op de pagina **Bulk operation results (preview).**
 
-   ![Op de pagina resultaten van bulk bewerking wordt de status van de bulksgewijze aanvraag weer gegeven](./media/groups-bulk-download/bulk-center.png)
+   ![Op de pagina Resultaten bulkbewerkingen ziet u de status van bulkaanvragen](./media/groups-bulk-download/bulk-center.png)
 
-## <a name="bulk-download-service-limits"></a>Service limieten bulksgewijs downloaden
+## <a name="bulk-download-service-limits"></a>Limieten voor bulkdownloadservice
 
-Elke bulk activiteit voor het downloaden van een groeps lijst kan Maxi maal één uur worden uitgevoerd. Hiermee kunt u een lijst met ten minste 300.000 groepen downloaden.
+Elke bulkactiviteit om een groepslijst te downloaden, kan maximaal een uur duren. Hiermee u een lijst van ten minste 300.000 groepen downloaden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Groeps leden bulksgewijs verwijderen](groups-bulk-remove-members.md)
+- [Groepsleden in bulk verwijderen](groups-bulk-remove-members.md)
 - [Leden van een groep downloaden](groups-bulk-download-members.md)

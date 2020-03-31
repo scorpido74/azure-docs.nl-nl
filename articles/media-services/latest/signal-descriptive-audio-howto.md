@@ -1,6 +1,6 @@
 ---
-title: Beschrijvende audio sporen met Azure Media Services v3 | Microsoft Docs
-description: Volg de stappen in deze zelf studie voor het uploaden van een bestand, het coderen van de video, het toevoegen van beschrijvende geluids sporen en het streamen van uw inhoud met Media Services v3.
+title: Signaal beschrijvende audiotracks met Azure Media Services v3 | Microsoft Documenten
+description: Volg de stappen van deze zelfstudie om een bestand te uploaden, de video te coderen, beschrijvende audiotracks toe te voegen en uw inhoud te streamen met Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,30 +13,30 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72392187"
 ---
-# <a name="signal-descriptive-audio-tracks"></a>Beschrijvende geluids sporen voor signalen
+# <a name="signal-descriptive-audio-tracks"></a>Signaal beschrijvende audiotracks
 
-U kunt een commentaar track toevoegen aan uw video om visueel gehandicapten te helpen bij het volgen van de video-opname door naar de gesp roken tekst te Luis teren. In Media Services v3 signaleert u beschrijvende audio tracks door aantekeningen te maken op het audio spoor in het manifest bestand.
+U een gesproken kuur aan uw video toevoegen om gebruikers met een visuele beperking te helpen de video-opname te volgen door naar de gesproken tekst te luisteren. In Media Services v3 signaleert u beschrijvende audiotracks door de audiotrack in het manifestbestand te annoteren.
 
-In dit artikel wordt beschreven hoe u een video codeert, een alleen-audio-MP4-bestand (AAC-codec) met een beschrijvende audio in het uitvoer activum uploadt en het ISM-bestand bewerkt om de beschrijvende audio toe te voegen.
+In dit artikel ziet u hoe u een video codeert, een MP4-bestand (AAC-codec) met alleen audio uploadt dat beschrijvende audio bevat in het uitvoerelement en het .ism-bestand bewerkt om de beschrijvende audio op te nemen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Een Azure Media Services-account maken](create-account-cli-how-to.md).
 - Volg de stappen in [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Toegang tot de Azure Media Services-API met de Azure CLI) en sla de referenties op. U hebt deze nodig voor toegang tot de API.
-- Bekijk [dynamische verpakkingen](dynamic-packaging-overview.md).
-- Bekijk de zelf studie [Video's uploaden, coderen en streamen](stream-files-tutorial-with-api.md) .
+- Bekijk [dynamische verpakking](dynamic-packaging-overview.md).
+- Bekijk de zelfstudie [Van video's uploaden, coderen en streamen.](stream-files-tutorial-with-api.md)
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Een invoerasset maken en er een lokaal bestand in uploaden 
 
-Met de functie **CreateInputAsset** wordt een nieuwe [invoerasset](https://docs.microsoft.com/rest/api/media/assets) gemaakt en het opgegeven lokale videobestand wordt hierin geladen. Deze **asset** wordt gebruikt als invoer voor uw coderingstaak. In Media Services-v3 kan de invoer voor een **taak** een **asset** zijn of het kan de inhoud zijn die u beschikbaar stelt voor uw Media Services-account via HTTPS-URL's. 
+Met de functie **CreateInputAsset** wordt een nieuwe [invoerasset](https://docs.microsoft.com/rest/api/media/assets) gemaakt en het opgegeven lokale videobestand wordt hierin geladen. Deze **asset** wordt gebruikt als invoer voor uw coderingstaak. In Media Services v3 kan de invoer naar een **taak** een **asset**zijn of inhoud die u via HTTPS-URL's beschikbaar stelt voor uw Media Services-account. 
 
-Zie [dit artikel](job-input-from-http-how-to.md) voor meer informatie over het coderen van een HTTPS-URL.  
+Zie [dit artikel](job-input-from-http-how-to.md) als u wilt weten hoe u een HTTPS-URL coderen.  
 
 In Media Services v3 kunt u Azure Storage-API's gebruiken om bestanden te uploaden. Het volgende .NET-fragment laat zien hoe.
 
@@ -48,41 +48,41 @@ De volgende functie voert deze acties uit:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-Als u de naam van het gemaakte invoer element wilt door geven aan andere methoden, moet u ervoor zorgen dat u de eigenschap `Name` gebruikt voor het activa object dat wordt geretourneerd door `CreateInputAssetAsync`, bijvoorbeeld inputAsset.Name. 
+Als u de naam van het gemaakte invoerelement aan andere methoden `Name` moet doorgeven, moet `CreateInputAssetAsync`u de eigenschap gebruiken op het assetobject dat is geretourneerd uit bijvoorbeeld inputAsset.Name. 
 
-## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Een uitvoer activum maken om het resultaat van de coderings taak op te slaan
+## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Een uitvoeritem maken om het resultaat van de coderingstaak op te slaan
 
-In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het resultaat van de coderingstaak opgeslagen. De volgende functie laat zien hoe u een uitvoer activum maakt.
+In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het resultaat van de coderingstaak opgeslagen. In de volgende functie ziet u hoe u een uitvoerelement maakt.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
-Als u de naam van het gemaakte uitvoer activum wilt door geven aan andere methoden, moet u ervoor zorgen dat u de eigenschap `Name` gebruikt voor het activa object dat wordt geretourneerd door `CreateIOutputAssetAsync`, bijvoorbeeld outputAsset.Name. 
+Als u de naam van het gemaakte uitvoerelement moet doorgeven aan `Name` andere methoden, moet `CreateIOutputAssetAsync`u de eigenschap gebruiken op het assetobject dat is geretourneerd uit bijvoorbeeld outputAsset.Name. 
 
-In het geval van dit artikel geeft u de `outputAsset.Name` waarde door aan de functies `SubmitJobAsync` en `UploadAudioIntoOutputAsset`.
+Geef in het geval van `outputAsset.Name` dit `SubmitJobAsync` artikel `UploadAudioIntoOutputAsset` de waarde door aan de en functies.
 
-## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Een trans formatie en een taak maken die het geüploade bestand codeert
+## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Een transformatie maken en een taak die het geüploade bestand codeert
 
-Bij het coderen of verwerken van inhoud in Media Services is het een gangbaar patroon om de coderingsinstellingen als recept in te stellen. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door voor elke nieuwe video nieuwe taken in te dienen, past u dat recept toe op alle video's in de bibliotheek. Een recept in Media Services wordt aangeroepen als een **transformatie**. Zie [Transformaties en taken](transform-concept.md) voor meer informatie. Het voorbeeld dat wordt beschreven in deze zelfstudie definieert een recept dat de video codeert om het te streamen naar tal van iOS- en Android-apparaten. 
+Bij het coderen of verwerken van inhoud in Media Services is het een gangbaar patroon om de coderingsinstellingen als recept in te stellen. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door voor elke nieuwe video nieuwe taken in te dienen, past u dat recept toe op alle video's in de bibliotheek. Een recept in Media Services wordt aangeroepen als een **transformatie**. Zie [Transformeren en taken voor](transform-concept.md)meer informatie. Het voorbeeld dat wordt beschreven in deze zelfstudie definieert een recept dat de video codeert om het te streamen naar tal van iOS- en Android-apparaten. 
 
-In het volgende voor beeld wordt een Transform gemaakt (als deze niet bestaat).
+In het volgende voorbeeld wordt een transformatie veroorzaakt (als deze niet bestaat).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#EnsureTransformExists)]
 
-Met de volgende functie wordt een taak verzonden.
+Met de volgende functie wordt een taak ingediend.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#SubmitJob)]
 
 ## <a name="wait-for-the-job-to-complete"></a>Wacht tot de taak is voltooid
 
-De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. U kunt het beste Event Grid gebruiken om te wachten tot de taak is voltooid.
+De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. We raden u aan Event Grid te gebruiken om te wachten tot de taak is voltooid.
 
-De taak doorloopt doorgaans de volgende statussen: **gepland**, **in de wachtrij geplaatst**, **verwerkt**, **voltooid** (de eind status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
+De taak gaat meestal door de volgende statussen: **Gepland**, **Wachtrij**, **Verwerking**, **Voltooid** (de uiteindelijke status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
 
-Zie [Handling Event grid Events](reacting-to-media-services-events.md)(Engelstalig) voor meer informatie.
+Zie [Gebeurtenissen op het afhandelen van gebeurtenisrasters](reacting-to-media-services-events.md)voor meer informatie .
 
-## <a name="upload-the-audio-only-mp4-file"></a>Het MP4-bestand met alleen audio uploaden
+## <a name="upload-the-audio-only-mp4-file"></a>Het MP4-audiobestand uploaden
 
-Upload het extra MP4-bestand met alleen audio (AAC-codec) met een beschrijvende audio in het uitvoer element.  
+Upload het aanvullende MP4-bestand (Alleen audio) met beschrijvende audio in het uitvoerelement.  
 
 ```csharp
 private static async Task UpoadAudioIntoOutputAsset(
@@ -127,22 +127,22 @@ private static async Task UpoadAudioIntoOutputAsset(
 }
 ```
 
-Hier volgt een voor beeld van een aanroep van de functie `UpoadAudioIntoOutputAsset`:
+Hier is een voorbeeld van `UpoadAudioIntoOutputAsset` een oproep naar de functie:
 
 ```csharp
 await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName, outputAsset.Name, "audio_description.m4a");
 ```
 
-## <a name="edit-the-ism-file"></a>Het ISM-bestand bewerken
+## <a name="edit-the-ism-file"></a>Het .ism-bestand bewerken
 
-Wanneer uw coderings taak is voltooid, bevat de uitvoer-Asset de bestanden die door de coderings taak zijn gegenereerd. 
+Wanneer uw coderingstaak is uitgevoerd, bevat het uitvoeritem de bestanden die door de coderingstaak zijn gegenereerd. 
 
-1. Navigeer in het Azure Portal naar het opslag account dat is gekoppeld aan uw Media Services-account. 
-1. Zoek de container met de naam van uw uitvoer activum. 
-1. Zoek in de container het. ISM-bestand en klik op **BLOB bewerken** (in het rechter venster). 
-1. Bewerk het ISM-bestand door de informatie over het geüploade MP4-bestand (AAC-codec) met de beschrijvende audio toe te voegen en op **Opslaan** te drukken wanneer u klaar bent.
+1. Navigeer in de Azure-portal naar het opslagaccount dat is gekoppeld aan uw Media Services-account. 
+1. Zoek de container met de naam van uw uitvoeractief. 
+1. Zoek in de container het .ism-bestand en klik op **Blob bewerken** (in het rechtervenster). 
+1. Bewerk het .ism-bestand door de informatie over het geüploade MP4-bestand (AAC-codec) met beschrijvende audio toe te voegen en druk op **Opslaan** wanneer u klaar bent.
 
-    U moet de para meters Accessibility en Role toevoegen aan het. ISM-bestand om de beschrijvende audio tracks te Signa leren. Het is uw verantwoordelijkheid om deze para meters op de juiste wijze in te stellen om een audio track als audio beschrijving te Signa leren. Voeg bijvoorbeeld `<param name="accessibility" value="description" />` en `<param name="role" value="alternate" />` toe aan het. ISM-bestand voor een specifiek audio spoor, zoals wordt weer gegeven in het volgende voor beeld.
+    Als u de beschrijvende audiotracks wilt signaleren, moet u parameters 'toegankelijkheid' en 'rol' toevoegen aan het .ism-bestand. Het is uw verantwoordelijkheid om deze parameters correct in te stellen om een audiotrack als audiobeschrijving te signaleren. Voeg bijvoorbeeld `<param name="accessibility" value="description" />` toe `<param name="role" value="alternate" />` aan het .ism-bestand voor een specifieke audiotrack, zoals in het volgende voorbeeld wordt weergegeven.
  
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -200,13 +200,13 @@ Wanneer uw coderings taak is voltooid, bevat de uitvoer-Asset de bestanden die d
 </smil>
 ```
 
-## <a name="get-a-streaming-locator"></a>Een streaming-Locator ophalen
+## <a name="get-a-streaming-locator"></a>Ontvang een streaming locator
 
 Nadat de codering is voltooid, bestaat de volgende stap eruit om de video in de uitvoerasset beschikbaar te maken voor weergave door clients. U kunt dit doen in twee stappen: maak eerst een [streaming-locator](https://docs.microsoft.com/rest/api/media/streaminglocators) en bouw vervolgens de streaming-URL's die clients kunnen gebruiken. 
 
 Het proces van het maken van een **streaming-locator** wordt publiceren genoemd. De **streaming-locator** is standaard onmiddellijk geldig nadat u de API-aanroepen hebt gemaakt en totdat deze wordt verwijderd, tenzij u de optionele start- en eindtijden configureert. 
 
-Bij het maken van een [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) moet u de gewenste **StreamingPolicyName** opgeven. In dit voorbeeld zult u in-the-clear (of niet-versleutelde) inhoud streamen, zodat het vooraf gedefinieerde duidelijke streamingbeleid, **PredefinedStreamingPolicy.ClearStreamingOnly** wordt gebruikt.
+Bij het maken van een [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) moet u de gewenste **StreamingPolicyName** opgeven. In dit voorbeeld streamt u in-the-clear (of niet-versleutelde inhoud), zodat het vooraf gedefinieerde duidelijke streamingbeleid **(PredefinedStreamingPolicy.ClearStreamingOnly)** wordt gebruikt.
 
 > [!IMPORTANT]
 > Wanneer u een aangepast [streamingbeleid](https://docs.microsoft.com/rest/api/media/streamingpolicies) gebruikt, moet u een beperkte set met dergelijke beleidsregels ontwerpen voor uw Media Service-account, en deze opnieuw gebruiken voor de StreamingLocators wanneer dezelfde versleutelingsopties en protocollen nodig zijn. Uw Media Service-account heeft een quotum voor het aantal streaming-beleidsvermeldingen. U hoeft geen nieuw streaming-beleid te maken voor elke streaming-locator.
@@ -233,8 +233,8 @@ In dit artikel gebruiken we Azure Media Player om de stream te testen.
 > [!NOTE]
 > Als een speler wordt gehost op een https-site, moet u de URL bijwerken naar 'https'.
 
-1. Open een browser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
-2. Plak in het vak **URL:** een van de waarden van de streaming-URL die u hebt ontvangen van uw toepassing. 
+1. Open een webbrowser en [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)navigeer naar .
+2. Plak in het **vak URL:** een van de streaming URL-waarden die u van uw toepassing hebt ontvangen. 
  
      U kunt de URL plakken in de HLS-, Dash-, of Smooth-indeling. Azure Media Player schakelt over op naar een geschikt streaming-protocol zodat de stream automatisch op uw apparaat wordt afgespeeld.
 3. Klik op **Update Player**.
