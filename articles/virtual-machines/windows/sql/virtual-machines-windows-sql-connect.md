@@ -1,6 +1,6 @@
 ---
-title: Verbinding maken met een SQL Server virtuele machine (Resource Manager) | Microsoft Docs
-description: Meer informatie over hoe u verbinding maakt met SQL Server die worden uitgevoerd op een virtuele machine in Azure. In dit onderwerp wordt gebruikgemaakt van het klassieke implementatie model. De scenario's variëren afhankelijk van de netwerk configuratie en de locatie van de client.
+title: Verbinding maken met een VIRTUELE SQL Server -machine (Resource Manager) | Microsoft Documenten
+description: Meer informatie over hoe u verbinding maken met SQL Server die wordt uitgevoerd op een virtuele machine in Azure. In dit onderwerp wordt het klassieke implementatiemodel gebruikt. De scenario's verschillen afhankelijk van de netwerkconfiguratie en de locatie van de client.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -15,107 +15,107 @@ ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243170"
 ---
-# <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Verbinding maken met een SQL Server virtuele machine in azure
+# <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Verbinding maken met een virtuele sql server-machine op Azure
 
 ## <a name="overview"></a>Overzicht
 
-In dit onderwerp wordt beschreven hoe u verbinding maakt met uw SQL Server-exemplaar dat wordt uitgevoerd op een virtuele Azure-machine. Het omvat enkele [algemene verbindings scenario's](#connection-scenarios) en geeft vervolgens [de stappen in de portal voor het wijzigen van connectiviteits instellingen](#change). Zie de [hand matige configuratie](#manual) aan het einde van dit onderwerp als u een verbinding met een externe-portal wilt oplossen of als u deze wilt configureren. 
+In dit onderwerp wordt beschreven hoe u verbinding maken met uw SQL Server-exemplaar dat wordt uitgevoerd op een virtuele Azure-machine. Het omvat een aantal [algemene connectiviteitsscenario's](#connection-scenarios) en biedt vervolgens [stappen in de portal voor het wijzigen van verbindingsinstellingen.](#change) Als u problemen moet oplossen of connectiviteit buiten de portal wilt configureren, raadpleegt u de [handmatige configuratie](#manual) aan het einde van dit onderwerp. 
 
-Zie [een SQL Server virtuele machine inrichten in azure](virtual-machines-windows-portal-sql-server-provision.md)als u liever een volledig overzicht van zowel het inrichten als de connectiviteit zou hebben.
+Zie [Een SQL Server Virtual Machine inrichten op Azure](virtual-machines-windows-portal-sql-server-provision.md)als u liever een volledige doorloop van zowel provisioning als connectiviteit wilt hebben.
 
-## <a name="connection-scenarios"></a>Verbindings scenario's
+## <a name="connection-scenarios"></a>Verbindingsscenario's
 
-De manier waarop een client verbinding maakt met SQL Server die op een virtuele machine wordt uitgevoerd, verschilt afhankelijk van de locatie van de client en de netwerk configuratie.
+De manier waarop een client verbinding maakt met SQL Server die op een virtuele machine wordt uitgevoerd, verschilt afhankelijk van de locatie van de client en de netwerkconfiguratie.
 
-Als u in de Azure Portal een SQL Server virtuele machine inricht, hebt u de mogelijkheid om het type **SQL-verbinding**op te geven.
+Als u een SQL Server VM inde inde Azure-portal indient, u het type **SQL-connectiviteit**opgeven.
 
-![Open bare SQL-connectiviteits optie tijdens inrichten](./media/virtual-machines-windows-sql-connect/sql-vm-portal-connectivity.png)
+![Openbare SQL-connectiviteitsoptie tijdens het inrichten](./media/virtual-machines-windows-sql-connect/sql-vm-portal-connectivity.png)
 
-De opties voor connectiviteit zijn onder andere:
+Uw opties voor connectiviteit zijn:
 
 | Optie | Beschrijving |
 |---|---|
-| **Open** | Via Internet verbinding maken met SQL Server |
-| **Eigen** | Verbinding maken met SQL Server in hetzelfde virtuele netwerk |
-| **Lokale** | Verbinding maken met SQL Server lokaal op dezelfde virtuele machine | 
+| **Public** | Verbinding maken met SQL Server via internet |
+| **Privé** | Verbinding maken met SQL Server in hetzelfde virtuele netwerk |
+| **Lokale** | Lokaal verbinding maken met SQL Server op dezelfde virtuele machine | 
 
-In de volgende secties worden de **open bare** en **persoonlijke** opties uitvoeriger beschreven.
+In de volgende secties worden de **openbare** en **private** opties nader toegelicht.
 
-## <a name="connect-to-sql-server-over-the-internet"></a>Via Internet verbinding maken met SQL Server
+## <a name="connect-to-sql-server-over-the-internet"></a>Verbinding maken met SQL Server via internet
 
-Als u via Internet verbinding wilt maken met uw SQL Server data base-engine, selecteert u **openbaar** voor het **SQL-verbindings** type in de portal tijdens het inrichten. De portal voert automatisch de volgende stappen uit:
+Als u verbinding wilt maken met uw SQL Server-databaseengine vanaf internet, selecteert u **Openbaar** voor het **SQL-connectiviteitstype** in de portal tijdens de inrichting. De portal doet automatisch de volgende stappen:
 
-* Hiermee schakelt u het TCP/IP-protocol in voor SQL Server.
-* Hiermee configureert u een firewall regel voor het openen van de SQL Server TCP-poort (standaard 1433).
-* Hiermee schakelt u SQL Server verificatie in, die is vereist voor open bare toegang.
-* Hiermee configureert u de netwerk beveiligings groep op de virtuele machine naar alle TCP-verkeer op de SQL Server poort.
+* Hiermee schakelt u het TCP/IP-protocol voor SQL Server in.
+* Hiermee configureert u een firewallregel om de SQL Server TCP-poort te openen (standaard 1433).
+* Hiermee schakelt SQL Server-verificatie in, vereist voor openbare toegang.
+* Hiermee configureert u de netwerkbeveiligingsgroep op de VM voor al het TCP-verkeer op de SQL Server-poort.
 
 > [!IMPORTANT]
-> Het TCP/IP-protocol wordt niet automatisch ingeschakeld voor de installatie kopieën van de virtuele machine voor de SQL Server Developer-en Express-edities. Voor ontwikkel aars en Express-edities moet u SQL Server Configuration Manager gebruiken om [het TCP/IP-protocol hand matig in te scha kelen](#manualtcp) nadat de virtuele machine is gemaakt.
+> De virtuele machineafbeeldingen voor de SQL Server Developer- en Express-edities schakelen het TCP/IP-protocol niet automatisch in. Voor Ontwikkelaars- en Express-edities moet u SQL Server Configuration Manager gebruiken om [het TCP/IP-protocol handmatig in](#manualtcp) te schakelen nadat u de VM hebt gemaakt.
 
-Elke client met Internet toegang kan verbinding maken met het SQL Server-exemplaar door ofwel het open bare IP-adres van de virtuele machine of een DNS-label op te geven dat aan dat IP-adres is toegewezen. Als de SQL Server poort 1433 is, hoeft u deze niet op te geven in de connection string. De volgende connection string maakt verbinding met een SQL-VM met een DNS-label van `sqlvmlabel.eastus.cloudapp.azure.com` met behulp van SQL-verificatie (u kunt ook het open bare IP-adres gebruiken).
+Elke client met internettoegang kan verbinding maken met de SQL Server-instantie door het openbare IP-adres van de virtuele machine of een DNS-label op te geven dat aan dat IP-adres is toegewezen. Als de SQL Server-poort 1433 is, hoeft u deze niet op te geven in de verbindingstekenreeks. De volgende verbindingstekenreeks maakt verbinding met een `sqlvmlabel.eastus.cloudapp.azure.com` SQL VM met een DNS-label met SQL-verificatie (u ook het openbare IP-adres gebruiken).
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
 ```
 
-Hoewel Hiermee connectiviteit voor clients via internet is ingeschakeld, betekent dit niet dat iedereen verbinding kan maken met uw SQL Server. Externe clients hebben de juiste gebruikers naam en wacht woord. Voor extra beveiliging kunt u echter de bekende poort 1433 voor komen. Als u bijvoorbeeld SQL Server hebt geconfigureerd om te Luis teren op poort 1500 en de juiste firewall-en netwerk beveiligings groep regels hebt ingesteld, kunt u verbinding maken door het poort nummer toe te voegen aan de server naam. In het volgende voor beeld wordt het vorige gewijzigd door een aangepast poort nummer, **1500**, toe te voegen aan de server naam:
+Hoewel dit connectiviteit voor clients via internet mogelijk maakt, betekent dit niet dat iemand verbinding kan maken met uw SQL Server. Externe klanten moeten de juiste gebruikersnaam en wachtwoord. Voor extra beveiliging u echter de bekende poort 1433 vermijden. Als u SQL Server bijvoorbeeld hebt geconfigureerd om te luisteren op poort 1500 en de juiste regels voor firewall- en netwerkbeveiligingsgroepen hebt ingesteld, u verbinding maken door het poortnummer toe te schrijven aan de servernaam. In het volgende voorbeeld wordt het vorige gewijzigd door een aangepast poortnummer, **1500,** toe te voegen aan de servernaam:
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
 ```
 
 > [!NOTE]
-> Wanneer u via internet een query uitvoert op SQL Server in een VM, gelden voor alle uitgaande gegevens van het Azure-Data Center normale [prijzen voor uitgaande gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/).
+> Wanneer u SQL Server in een VM via internet opvraagt, zijn alle uitgaande gegevens uit het Azure-datacenter onderworpen aan normale [prijzen voor uitgaande gegevensoverdrachten.](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 ## <a name="connect-to-sql-server-within-a-virtual-network"></a>Verbinding maken met SQL Server binnen een virtueel netwerk
 
-Wanneer u **privé** kiest voor het **SQL-verbindings** type in de portal, configureert Azure de meeste instellingen die identiek zijn aan **openbaar**. Het enige verschil is dat er geen regel voor de netwerk beveiligings groep is voor het toestaan van buiten verkeer op de SQL Server poort (standaard 1433).
+Wanneer u **Privé** kiest voor het **SQL-connectiviteitstype** in de portal, configureert Azure de meeste instellingen die identiek zijn aan **Openbaar.** Het enige verschil is dat er geen netwerkbeveiligingsgroepregel is om extern verkeer toe te staan op de SQL Server-poort (standaard 1433).
 
 > [!IMPORTANT]
-> Het TCP/IP-protocol wordt niet automatisch ingeschakeld voor de installatie kopieën van de virtuele machine voor de SQL Server Developer-en Express-edities. Voor ontwikkel aars en Express-edities moet u SQL Server Configuration Manager gebruiken om [het TCP/IP-protocol hand matig in te scha kelen](#manualtcp) nadat de virtuele machine is gemaakt.
+> De virtuele machineafbeeldingen voor de SQL Server Developer- en Express-edities schakelen het TCP/IP-protocol niet automatisch in. Voor Ontwikkelaars- en Express-edities moet u SQL Server Configuration Manager gebruiken om [het TCP/IP-protocol handmatig in](#manualtcp) te schakelen nadat u de VM hebt gemaakt.
 
-Persoonlijke connectiviteit wordt vaak gebruikt in combi natie met [Virtual Network](../../../virtual-network/virtual-networks-overview.md), waardoor verschillende scenario's mogelijk zijn. U kunt virtuele machines in hetzelfde virtuele netwerk verbinden, zelfs als deze Vm's in verschillende resource groepen bestaan. En met een [site-naar-site-VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)kunt u een hybride architectuur maken waarmee vm's worden verbonden met on-premises netwerken en machines.
+Privéconnectiviteit wordt vaak gebruikt in combinatie met [Virtual Network](../../../virtual-network/virtual-networks-overview.md), waardoor verschillende scenario's mogelijk zijn. U VM's in hetzelfde virtuele netwerk verbinden, zelfs als deze VM's in verschillende brongroepen bestaan. En met een [site-to-site VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)u een hybride architectuur maken die VM's verbindt met on-premises netwerken en machines.
 
-Met virtuele netwerken kunt u ook uw Azure-Vm's toevoegen aan een domein. Dit is de enige manier om Windows-verificatie te gebruiken om SQL Server. De andere verbindings scenario's vereisen SQL-verificatie met gebruikers namen en wacht woorden.
+Met virtuele netwerken u ook uw Azure VM's aansluiten bij een domein. Dit is de enige manier om Windows-verificatie te gebruiken voor SQL Server. De andere verbindingsscenario's vereisen SQL-verificatie met gebruikersnamen en wachtwoorden.
 
-Ervan uitgaande dat u DNS in uw virtuele netwerk hebt geconfigureerd, kunt u verbinding maken met uw SQL Server-exemplaar door de SQL Server VM-computer naam op te geven in de connection string. In het volgende voor beeld wordt ook aangenomen dat Windows-verificatie ook is geconfigureerd en dat de gebruiker toegang heeft gekregen tot het SQL Server exemplaar.
+Ervan uitgaande dat u DNS in uw virtuele netwerk hebt geconfigureerd, u verbinding maken met uw SQL Server-instantie door de naam van de SQL Server VM-computer op te geven in de verbindingstekenreeks. In het volgende voorbeeld wordt ook ervan uitgegaan dat Windows-verificatie ook is geconfigureerd en dat de gebruiker toegang heeft gekregen tot het SQL Server-exemplaar.
 
 ```
 Server=mysqlvm;Integrated Security=true
 ```
 
-## <a id="change"></a>SQL-Verbindings instellingen wijzigen
+## <a name="change-sql-connectivity-settings"></a><a id="change"></a>SQL-connectiviteitsinstellingen wijzigen
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-U kunt de connectiviteits instellingen voor uw SQL Server virtuele machine wijzigen in de Azure Portal.
+U de verbindingsinstellingen voor uw virtuele SQL Server-machine wijzigen in de Azure-portal.
 
-1. Selecteer in de Azure Portal **virtuele SQL-machines**.
+1. Selecteer SQL virtuele machines in de **Azure-portal.**
 
-2. Selecteer uw SQL Server-VM.
+2. Selecteer uw SQL Server VM.
 
-3. Selecteer bij **instellingen**de optie **beveiliging**.
+3. Selecteer **Onder Instellingen**de optie **Beveiliging**.
 
-4. Wijzig het **SQL-connectiviteits niveau** in uw vereiste instelling. U kunt dit gebied eventueel gebruiken om de SQL Server poort of de instellingen voor SQL-verificatie te wijzigen.
+4. Wijzig het **SQL-connectiviteitsniveau** in de vereiste instelling. U dit gebied optioneel gebruiken om de SQL Server-poort of de SQL-verificatieinstellingen te wijzigen.
 
    ![SQL-connectiviteit wijzigen](./media/virtual-machines-windows-sql-connect/sql-vm-portal-connectivity-change.png)
 
-5. Wacht enkele minuten totdat de update is voltooid.
+5. Wacht enkele minuten tot de update is voltooid.
 
-   ![Update melding voor SQL-VM](./media/virtual-machines-windows-sql-connect/sql-vm-updating-notification.png)
+   ![SQL VM-updatemelding](./media/virtual-machines-windows-sql-connect/sql-vm-updating-notification.png)
 
-## <a id="manualtcp"></a>TCP/IP inschakelen voor ontwikkel aars-en Express-edities
+## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a>TCP/IP inschakelen voor ontwikkelaars- en Express-edities
 
-Wanneer u SQL Server connectiviteits instellingen wijzigt, schakelt Azure het TCP/IP-protocol niet automatisch in voor SQL Server Developer-en Express-edities. In de onderstaande stappen wordt uitgelegd hoe u TCP/IP handmatig kunt inschakelen, zodat u op afstand via een IP-adres verbinding kunt maken.
+Wanneer u sql server-connectiviteitsinstellingen wijzigt, schakelt Azure het TCP/IP-protocol voor SQL Server Developer- en Express-edities niet automatisch in. In de onderstaande stappen wordt uitgelegd hoe u TCP/IP handmatig kunt inschakelen, zodat u op afstand via een IP-adres verbinding kunt maken.
 
-Maak eerst verbinding met de SQL Server computer met extern bureau blad.
+Maak eerst verbinding met de SQL Server-machine met extern bureaublad.
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
@@ -125,29 +125,29 @@ Schakel vervolgens het TCP/IP-protocol in met **SQL Server Configuration Manager
 
 ## <a name="connect-with-ssms"></a>Verbinden met SSMS
 
-De volgende stappen laten zien hoe u een optioneel DNS-label maakt voor uw Azure-VM en vervolgens verbinding maakt met SQL Server Management Studio (SSMS).
+In de volgende stappen wordt uitgelegd hoe u een optioneel DNS-label voor uw Azure VM maakt en vervolgens verbinding maakt met SQL Server Management Studio (SSMS).
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## <a id="manual"></a>Hand matige configuratie en probleem oplossing
+## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a>Handmatige configuratie en probleemoplossing
 
-Hoewel de portal opties biedt voor het automatisch configureren van connectiviteit, is het handig om te weten hoe u de connectiviteit hand matig kunt configureren. Meer informatie over de vereisten kan ook problemen oplossen.
+Hoewel de portal opties biedt om de connectiviteit automatisch te configureren, is het handig om te weten hoe u de connectiviteit handmatig configureren. Inzicht in de vereisten kan ook helpen bij het oplossen van problemen.
 
-De volgende tabel bevat de vereisten om verbinding te maken met SQL Server die worden uitgevoerd op een virtuele Azure-machine.
+In de volgende tabel worden de vereisten weergegeven om verbinding te maken met SQL Server die in een Azure-vm wordt uitgevoerd.
 
 | Vereiste | Beschrijving |
 |---|---|
-| [Verificatie modus SQL Server inschakelen](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | SQL Server-verificatie is vereist om extern verbinding te maken met de virtuele machine tenzij u Active Directory op een Virtual Network hebt geconfigureerd. |
-| [Een SQL-aanmelding maken](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Als u SQL-verificatie gebruikt, hebt u een SQL-aanmelding nodig met een gebruikers naam en wacht woord die ook machtigingen voor uw doel database hebben. |
+| [SQL Server-verificatiemodus inschakelen](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | SQL Server-verificatie is nodig om op afstand verbinding te maken met de virtuele machine, tenzij u Active Directory op een virtueel netwerk hebt geconfigureerd. |
+| [Een SQL-aanmelding maken](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Als u SQL-verificatie gebruikt, hebt u een SQL-login nodig met een gebruikersnaam en wachtwoord met machtigingen voor uw doeldatabase. |
 | [TCP/IP-protocol inschakelen](#manualtcp) | SQL Server moet verbindingen via TCP toestaan. |
-| [Firewall regel inschakelen voor de SQL Server poort](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | De firewall op de virtuele machine moet binnenkomend verkeer op de SQL Server poort toestaan (standaard 1433). |
-| [Een regel voor de netwerk beveiligings groep maken voor TCP 1433](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | U moet de virtuele machine toestaan verkeer te ontvangen op de SQL Server poort (standaard 1433) als u verbinding wilt maken via internet. Voor lokale en virtuele netwerk verbindingen is dit niet vereist. Dit is de enige stap die is vereist in de Azure Portal. |
+| [Firewallregel inschakelen voor de SQL Server-poort](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | De firewall op de VM moet binnenkomend verkeer toestaan op de SQL Server-poort (standaard 1433). |
+| [Een netwerkbeveiligingsgroepregel maken voor TCP 1433](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | U moet toestaan dat de VM verkeer ontvangt op de SQL Server-poort (standaard 1433) als u verbinding wilt maken via internet. Lokale en virtuele netwerkverbindingen vereisen dit niet. Dit is de enige stap die nodig is in de Azure-portal. |
 
 > [!TIP]
-> De stappen in de bovenstaande tabel worden voor u uitgevoerd wanneer u connectiviteit in de portal configureert. Gebruik deze stappen alleen om uw configuratie te bevestigen of om connectiviteit hand matig in te stellen voor SQL Server.
+> De stappen in de bovenstaande tabel worden voor u uitgevoerd wanneer u de verbinding in de portal configureert. Gebruik deze stappen alleen om uw configuratie te bevestigen of om handmatig connectiviteit in te stellen voor SQL Server.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een SQL Server virtuele machine inrichten in azure voor informatie over het inrichten van instructies in](virtual-machines-windows-portal-sql-server-provision.md)combi natie met deze connectiviteits stappen.
+Zie [Een SQL Server Virtual Machine inrichten op Azure](virtual-machines-windows-portal-sql-server-provision.md)voor het inrichten van instructies samen met deze verbindingsstappen.
 
-Zie [SQL Server op azure virtual machines](virtual-machines-windows-sql-server-iaas-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in azure vm's.
+Zie [SQL Server op Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in Azure VM's.

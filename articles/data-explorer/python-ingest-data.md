@@ -1,34 +1,34 @@
 ---
 title: Gegevens opnemen met behulp van de Python-bibliotheek voor Azure Data Explorer
-description: In dit artikel leert u hoe u gegevens kunt opnemen in azure Data Explorer met behulp van python.
+description: In dit artikel leert u hoe u gegevens in neemt (laden) in Azure Data Explorer met Python.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 28151476ce96fabc92e04078396119d0eb8c2f17
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79251724"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389355"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Gegevens opnemen met behulp van de Python-bibliotheek voor Azure Data Explorer
 
-In dit artikel neemt u gegevens op met behulp van de Azure Data Explorer python-bibliotheek. Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Azure Data Explorer biedt twee clientbibliotheken voor Python: een [ingest-bibliotheek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) en [een data-bibliotheek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Met deze bibliotheken kunt u gegevens opnemen in en laden in een cluster en gegevens uit uw code opvragen.
+In dit artikel neemt u gegevens in met de Azure Data Explorer Python-bibliotheek. Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Azure Data Explorer biedt twee clientbibliotheken voor Python: een [ingest-bibliotheek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) en [een data-bibliotheek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Met deze bibliotheken u gegevens opnemen of laden in een cluster en querygegevens van uw code.
 
-Maak eerst een tabel en gegevens toewijzing in een cluster. Vervolgens plaatst u op te nemen gegevens in de wachtrij en valideert u de resultaten.
+Maak eerst een tabel en gegevenstoewijzing in een cluster. Vervolgens plaatst u op te nemen gegevens in de wachtrij en valideert u de resultaten.
 
-Dit artikel is ook beschikbaar als [Azure-notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
+Dit artikel is ook beschikbaar als [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Python 3.4 +](https://www.python.org/downloads/).
+* [Python 3.4+](https://www.python.org/downloads/).
 
-* [Een cluster en data base](create-cluster-database-portal.md).
+* [Een cluster en database](create-cluster-database-portal.md).
 
 ## <a name="install-the-data-and-ingest-libraries"></a>De bibliotheken data en ingest installeren
 
@@ -49,7 +49,7 @@ from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
 ```
 
-Azure Data Explorer maakt gebruik van de id van uw AAD-tenant om een toepassing te verifiëren. Om uw tenant-id te vinden, gebruikt u de volgende URL, waarbij u *YourDomain* vervangt door uw domeinnaam.
+Azure Data Explorer maakt gebruik van uw AAD-tenant-id om een toepassing te verifiëren. Om uw tenant-id te vinden, gebruikt u de volgende URL, waarbij u *YourDomain* vervangt door uw domeinnaam.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
@@ -61,7 +61,7 @@ Dus als uw domein *contoso.com* is, wordt de URL bijvoorbeeld: [https://login.wi
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-De tenant-id is `6babcaad-604b-40ac-a9d7-9fd97c0b779f` in dit voorbeeld. Stel de waarden voor AAD_TENANT_ID, KUSTO_URI, KUSTO_INGEST_URI en KUSTO_DATABASE in voordat deze code wordt uitgevoerd.
+De tenant-id is in dit geval `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Stel de waarden voor AAD_TENANT_ID, KUSTO_URI, KUSTO_INGEST_URI en KUSTO_DATABASE in voordat deze code wordt uitgevoerd.
 
 ```python
 AAD_TENANT_ID = "<TenantId>"
@@ -70,7 +70,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-Stel nu de verbindingsreeks samen. In dit voorbeeld wordt apparaatverificatie gebruikt voor toegang tot het cluster. U kunt ook een [AAD-toepassingscertificaat](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), een [AAD-toepassingssleutel](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20) en een [AAD-gebruiker en -wachtwoord](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34) gebruiken.
+Nu maakt u de verbindingsreeks. In dit voorbeeld wordt apparaatverificatie gebruikt voor toegang tot het cluster. U kunt ook een [AAD-toepassingscertificaat](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), een [AAD-toepassingssleutel](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20) en een [AAD-gebruiker en -wachtwoord](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34) gebruiken.
 
 U maakt de doeltabel en toewijzing in een latere stap.
 
@@ -87,7 +87,7 @@ DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 
 ## <a name="set-source-file-information"></a>Gegevens van bronbestand instellen
 
-Importeer aanvullende klassen en stel constanten in voor het gegevensbronbestand. In dit voorbeeld wordt een voorbeeldbestand gebruikt dat wordt gehost in Azure Blob Storage. De set met voorbeeldgegevens **StormEvents** bevat gegevens van het weer afkomstig van de [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Importeer aanvullende klassen en stel constanten in voor het gegevensbronbestand. In dit voorbeeld wordt een voorbeeldbestand gebruikt dat wordt gehost in Azure Blob Storage. De **StormEvents-gegevensset** bevat weergerelateerde gegevens van de [National Centers for Environmental Information.](https://www.ncdc.noaa.gov/stormevents/)
 
 ```python
 from azure.storage.blob import BlockBlobService
@@ -136,7 +136,7 @@ Zet een bericht in de wachtrij om gegevens op te halen uit blob-opslag en die ge
 INGESTION_CLIENT = KustoIngestClient(KCSB_INGEST)
 
 # All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.csv,
+INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, dataFormat=DataFormat.CSV,
                                            mappingReference=DESTINATION_TABLE_COLUMN_MAPPING, additionalProperties={'ignoreFirstRecord': 'true'})
 # FILE_SIZE is the raw size of the data in bytes
 BLOB_DESCRIPTOR = BlobDescriptor(BLOB_PATH, FILE_SIZE)
@@ -160,7 +160,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="run-troubleshooting-queries"></a>Query's voor probleemoplossing uitvoeren
 
-Meld u aan bij [https://dataexplorer.azure.com](https://dataexplorer.azure.com) en maak verbinding met uw cluster. Voer de volgende opdracht uit in uw database om te zien of er in de afgelopen vier uur fouten zijn opgetreden tijdens het opnemen van gegevens. Vervang de naam van de database voordat u de opdracht uitvoert.
+Meld u [https://dataexplorer.azure.com](https://dataexplorer.azure.com) aan en maak verbinding met uw cluster. Voer de volgende opdracht uit in uw database om te zien of er in de afgelopen vier uur fouten zijn opgetreden tijdens het opnemen van gegevens. Vervang de naam van de database voordat u de opdracht uitvoert.
 
 ```Kusto
 .show ingestion failures
@@ -177,7 +177,7 @@ Voer de volgende opdracht uit om de status op te vragen van alle bewerkingen voo
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om onze andere artikelen te volgen, moet u de resources die u hebt gemaakt, blijven gebruiken. Voer anders de volgende opdracht uit in uw database om de tabel StormEvents op te schonen.
+Als u van plan bent onze andere artikelen te volgen, behoudt u de resources die u hebt gemaakt. Voer anders de volgende opdracht uit in uw database om de tabel StormEvents op te schonen.
 
 ```Kusto
 .drop table StormEvents

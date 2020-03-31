@@ -9,27 +9,27 @@ ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 2303d36e93cecfca03894a8b0e55458c03b13d78
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73412959"
 ---
-**Uitgaande gegevens overdrachten**: [uitgaande gegevens overdracht](https://azure.microsoft.com/pricing/details/bandwidth/) (gegevens die uit de Azure-data centers worden verzonden) zijn er facturen voor bandbreedte gebruik.
+**Uitgaande gegevensoverdrachten**: [Uitgaande gegevensoverdrachten](https://azure.microsoft.com/pricing/details/bandwidth/) (gegevens die uitgaan van Azure-datacenters) vereisen facturering voor bandbreedtegebruik.
 
-**Trans acties**: u wordt gefactureerd voor het aantal trans acties dat u uitvoert op een Standard Managed disk. Voor standaard Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB van de door Voer beschouwd als één I/O-bewerking. I/O-bewerkingen die groter zijn dan 256 KiB door Voer, worden beschouwd als meerdere I/O's van grootte 256 KiB. Voor standaard Hdd's wordt elke IO-bewerking beschouwd als één trans actie, ongeacht de I/O-grootte.
+**Transacties:** er worden kosten in rekening gebracht voor het aantal transacties dat u uitvoert op een standaard beheerde schijf. Voor standaard SSD's wordt elke I/O-bewerking die minder dan of gelijk is aan 256 KiB-doorvoer beschouwd als één I/O-bewerking. I/O-bewerkingen groter dan 256 KiB-doorvoer worden beschouwd als meerdere I/O's van maat 256 KiB. Voor standaard HDD's wordt elke IO-bewerking beschouwd als één transactie, ongeacht de I/O-grootte.
 
-Zie [Managed disks prijzen](https://azure.microsoft.com/pricing/details/managed-disks)voor gedetailleerde informatie over de prijzen voor Managed disks, waaronder transactie kosten.
+Zie [Managed Disks Pricing](https://azure.microsoft.com/pricing/details/managed-disks)voor gedetailleerde informatie over de prijzen voor beheerde schijven, inclusief transactiekosten.
 
-### <a name="ultra-disk-vm-reservation-fee"></a>Kosten voor de reserve ring van ultra schijf-VM
+### <a name="ultra-disk-vm-reservation-fee"></a>Vm-reserveringskosten voor ultraschijven
 
-Azure-Vm's hebben de mogelijkheid om aan te geven of ze compatibel zijn met ultra disks. Een ultra Disk-compatibele VM wijst toegewezen bandbreedte capaciteit toe tussen het Compute-VM-exemplaar en de schaal eenheid voor blok opslag om de prestaties te optimaliseren en de latentie te verminderen. Het toevoegen van deze mogelijkheid op de VM resulteert in een reserverings kosten die alleen worden opgelegd als u ultra Disk-functionaliteit op de virtuele machine hebt ingeschakeld zonder een ultra schijf aan de VM te koppelen. Wanneer een ultra schijf is gekoppeld aan de ultra Disk compatible VM, worden deze kosten niet toegepast. Deze kosten zijn per vCPU ingericht op de VM. 
+Azure VM's hebben de mogelijkheid om aan te geven of ze compatibel zijn met ultraschijven. Een vm met ultraschijfcompatibele kent specifieke bandbreedtecapaciteit toe tussen de compute VM-instantie en de blokopslagschaaleenheid om de prestaties te optimaliseren en de latentie te verminderen. Het toevoegen van deze mogelijkheid aan de VM resulteert in een reserveringskosten die alleen worden opgelegd als u ultraschijfmogelijkheden op de VM hebt ingeschakeld zonder er een ultraschijf aan te koppelen. Wanneer een ultraschijf is aangesloten op de vm met ultraschijfcompatibel, wordt deze kosten niet toegepast. Deze kosten zijn per vCPU op de VM. 
 
 > [!Note]
-> Voor [beperkte core VM-grootten](../articles/virtual-machines/linux/constrained-vcpu.md)zijn de reserverings kosten gebaseerd op het werkelijke aantal vcpu's en niet de beperkte kernen. Voor Standard_E32-8s_v3 is de reserverings kosten gebaseerd op 32 kernen. 
+> Voor [beperkte vm-formaten](../articles/virtual-machines/linux/constrained-vcpu.md)is de reserveringsvergoeding gebaseerd op het werkelijke aantal vCPU's en niet op de beperkte kernen. Voor Standard_E32-8s_v3 wordt de reserveringsvergoeding gebaseerd op 32 cores. 
 
-Raadpleeg de [pagina met prijzen voor Azure](https://azure.microsoft.com/pricing/details/managed-disks/) disks voor Ultra Disk-prijs informatie.
+Raadpleeg de [prijspagina azure disks](https://azure.microsoft.com/pricing/details/managed-disks/) voor details over de prijsmet hoge schijf.
 
-### <a name="azure-disk-reservation"></a>Azure-schijf reservering
+### <a name="azure-disk-reservation"></a>Azure-schijfreservering
 
-Schijf reservering is de mogelijkheid om één jaar aan schijf opslag vooraf te kopen tegen een korting, waardoor de totale kosten worden verminderd. Wanneer u een schijf reservering aanschaft, selecteert u een specifieke schijf-SKU in een doel regio, bijvoorbeeld 10 P30 (1TiB) Premium Ssd's in de regio VS Oost 2 voor een periode van één jaar. De reserverings ervaring is vergelijkbaar met de gereserveerde exemplaren van virtuele machines (VM). U kunt virtuele machines en schijf reserveringen bundelen om uw besparingen te maximaliseren. De Azure Disk reservation biedt nu één jaar toezeggings plan voor Premium SSD Sku's van P30 (1TiB) tot P80 (32 TiB) in alle productie regio's. Zie de [pagina met prijzen voor Azure disks](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over de prijzen voor gereserveerde schijven.
+Schijfreservering is de optie om een jaar schijfopslag vooraf aan te schaffen tegen een korting, waardoor uw totale kosten worden verlaagd. Wanneer u een schijfreservering koopt, selecteert u een specifieke Schijf-SKU in een doelgebied, bijvoorbeeld 10 P30 -premium-SSD's in de regio Oost-VS 2 voor een periode van één jaar. De reserveringservaring is vergelijkbaar met vm-exemplaren (reserved virtual machine). U VM- en schijfreserveringen bundelen om uw besparingen te maximaliseren. Azure Disks Reservering biedt voorlopig een jaar verbintenisplan voor premium SSD SKU's van P30 (1TiB) tot P80 (32 TiB) in alle productieregio's. Zie de [prijspagina voor gereserveerde](https://azure.microsoft.com/pricing/details/managed-disks/)schijven voor meer informatie over de prijzen voor gereserveerde schijven.

@@ -1,29 +1,29 @@
 ---
-title: Naslag informatie over Java script-ontwikkel aars voor Azure Functions
-description: Meer informatie over het ontwikkelen van functies met behulp van Java script.
+title: JavaScript-ontwikkelaarsverwijzing voor Azure-functies
+description: Meer informatie over het ontwikkelen van functies met JavaScript.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
 ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276827"
 ---
-# <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaars handleiding voor Azure Functions java script
+# <a name="azure-functions-javascript-developer-guide"></a>JavaScript-ontwikkelaarshandleiding voor Azure Functions
 
-Deze hand leiding bevat informatie over de complexiteit voor het schrijven van Azure Functions met Java script.
+Deze handleiding bevat informatie over de fijne kneepjes van het schrijven van Azure-functies met JavaScript.
 
-Een Java script-functie is een geëxporteerde `function` die wordt uitgevoerd wanneer geactiveerd ([triggers worden geconfigureerd in function. json](functions-triggers-bindings.md)). Het eerste argument dat aan elke functie is door gegeven, is een `context`-object, dat wordt gebruikt voor het ontvangen en verzenden van bindings gegevens, logboek registratie en communicatie met de runtime.
+Een JavaScript-functie is `function` een geëxporteerde die wordt uitgevoerd wanneer deze wordt geactiveerd[(triggers worden geconfigureerd in function.json).](functions-triggers-bindings.md) Het eerste argument dat aan `context` elke functie wordt doorgegeven, is een object dat wordt gebruikt voor het ontvangen en verzenden van bindende gegevens, logboekregistratie en communicatie met de runtime.
 
-In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen. Voltooi de Quick Start van functies om uw eerste functie te maken met behulp van [Visual Studio code](functions-create-first-function-vs-code.md) of [in de portal](functions-create-first-azure-function.md).
+In dit artikel wordt ervan uitgegaan dat u de verwijzing naar de [ontwikkelaar van Azure-functies](functions-reference.md)al hebt gelezen. Voltooi de functies snelstart om uw eerste functie te maken, met behulp van [Visual Studio Code](functions-create-first-function-vs-code.md) of in de [portal](functions-create-first-azure-function.md).
 
-Dit artikel biedt ook ondersteuning voor [type script app-ontwikkeling](#typescript).
+Dit artikel ondersteunt ook [de ontwikkeling van typescript-apps](#typescript).
 
 ## <a name="folder-structure"></a>Mapstructuur
 
-De vereiste mapstructuur voor een Java script-project ziet er als volgt uit. Deze standaard instelling kan worden gewijzigd. Zie het gedeelte [script](#using-scriptfile) voor meer informatie.
+De vereiste mapstructuur voor een JavaScript-project ziet er als volgt uit. Deze standaardinstelling kan worden gewijzigd. Zie het gedeelte [scriptBestand](#using-scriptfile) hieronder voor meer informatie.
 
 ```
 FunctionsProject
@@ -42,17 +42,17 @@ FunctionsProject
  | - extensions.csproj
 ```
 
-In de hoofdmap van het project bevindt zich een gedeeld [host. json](functions-host-json.md) -bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een map met een eigen code bestand (. js) en een bindings configuratie bestand (function. json). De naam van de bovenliggende map van `function.json`is altijd de naam van uw functie.
+Aan de basis van het project is er een gedeeld [host.json-bestand](functions-host-json.md) dat kan worden gebruikt om de functie-app te configureren. Elke functie heeft een map met een eigen codebestand (.js) en bindend configuratiebestand (function.json). De naam `function.json`van 's bovenliggende directory is altijd de naam van uw functie.
 
-De bindings uitbreidingen vereist in [versie 2. x](functions-versions.md) van de functions runtime worden gedefinieerd in het `extensions.csproj` bestand, met de daad werkelijke bibliotheek bestanden in de map `bin`. Wanneer u lokaal ontwikkelt, moet u [bindings uitbreidingen registreren](./functions-bindings-register.md#extension-bundles). Bij het ontwikkelen van functies in de Azure Portal, wordt deze registratie voor u uitgevoerd.
+De bindingsextensies die vereist zijn in [versie 2.x](functions-versions.md) van de runtime Functies worden gedefinieerd in het `extensions.csproj` bestand, met de werkelijke bibliotheekbestanden in de `bin` map. Wanneer u lokaal ontwikkelt, moet u [bindende extensies registreren.](./functions-bindings-register.md#extension-bundles) Bij het ontwikkelen van functies in de Azure-portal wordt deze registratie voor u uitgevoerd.
 
 ## <a name="exporting-a-function"></a>Een functie exporteren
 
-Java script-functies moeten worden geëxporteerd via [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) (of [`exports`](https://nodejs.org/api/modules.html#modules_exports)). De geëxporteerde functie moet een Java script-functie die wordt uitgevoerd wanneer deze wordt geactiveerd.
+JavaScript-functies moeten worden [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) geëxporteerd [`exports`](https://nodejs.org/api/modules.html#modules_exports)via (of ). Uw geëxporteerde functie moet een JavaScript-functie zijn die wordt uitgevoerd wanneer deze wordt geactiveerd.
 
-De functies runtime zoekt standaard naar uw functie in `index.js`, waarbij `index.js` dezelfde bovenliggende map deelt als de overeenkomstige `function.json`. In het standaard geval moet de geëxporteerde functie de enige export zijn van het bestand of de export met de naam `run` of `index`. Meer informatie over het configureren van het [toegangs punt van uw functie](functions-reference-node.md#configure-function-entry-point) vindt u in de bestands locatie en export naam van uw functie.
+Standaard zoekt de runtime Functies naar `index.js`uw `index.js` functie in , waarin `function.json`dezelfde bovenliggende map wordt gedeeld als de bijbehorende . In het standaardgeval moet uw geëxporteerde functie de enige export `run` `index`zijn uit het bestand of de exportnaam of . Als u de bestandslocatie en exportnaam van uw functie wilt configureren, leest u hieronder het [ingangspunt van uw functie](functions-reference-node.md#configure-function-entry-point) configureren.
 
-De geëxporteerde functie heeft een aantal argumenten door gegeven bij de uitvoering. Het eerste argument dat wordt gebruikt, is altijd een `context`-object. Als uw functie synchroon is (geen belofte retourneert), moet u het `context`-object door geven, omdat het aanroepen van `context.done` vereist is voor het juiste gebruik.
+Uw geëxporteerde functie wordt doorgegeven aan een aantal argumenten voor uitvoering. Het eerste argument dat `context` nodig is, is altijd een object. Als uw functie synchroon is (geen belofte retourneert), moet u het `context` object doorgeven, omdat aanroepen `context.done` vereist is voor correct gebruik.
 
 ```javascript
 // You should include context, other arguments are optional
@@ -63,9 +63,9 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 ```
 
 ### <a name="exporting-an-async-function"></a>Een async-functie exporteren
-Wanneer u de [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) declaratie of de enkelvoudige java script- [belofte](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) in versie 2. x van de functions-runtime gebruikt, hoeft u de [`context.done`](#contextdone-method) call back niet expliciet aan te roepen om aan te geven dat de functie is voltooid. De functie wordt voltooid wanneer de geëxporteerde async-functie/Promise is voltooid. Voor functies die zijn gericht op versie 1. x runtime moet u [`context.done`](#contextdone-method) aanroepen wanneer uw code wordt uitgevoerd.
+Wanneer u [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) de declaratie of de eenvoudige JavaScript-beloften in versie 2.x [`context.done`](#contextdone-method) van de runtime Functies gebruikt, hoeft u niet expliciet de callback te bellen om aan te geven dat uw functie is voltooid. [Promises](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) Uw functie wordt voltooid wanneer de geëxporteerde async-functie/Belofte is voltooid. Voor functies die zich richten op de versie [`context.done`](#contextdone-method) 1.x runtime, moet u nog steeds bellen wanneer uw code is uitgevoerd.
 
-Het volgende voor beeld is een eenvoudige functie die logboeken aanmeldt dat deze is geactiveerd en de uitvoering onmiddellijk voltooit.
+Het volgende voorbeeld is een eenvoudige functie die registreert dat het werd geactiveerd en voltooit onmiddellijk uitvoering.
 
 ```javascript
 module.exports = async function (context) {
@@ -73,9 +73,9 @@ module.exports = async function (context) {
 };
 ```
 
-Bij het exporteren van een async-functie kunt u ook een uitvoer binding configureren om de `return` waarde te nemen. Dit wordt aanbevolen als u slechts één uitvoer binding hebt.
+Wanneer u een async-functie exporteert, u `return` ook een uitvoerbinding configureren om de waarde te nemen. Dit wordt aanbevolen als u slechts één uitvoerbinding hebt.
 
-Als u een uitvoer wilt toewijzen met behulp van `return`, wijzigt u de eigenschap `name` in `$return` in `function.json`.
+Als u een `return`uitvoer `name` wilt `$return` toewijzen `function.json`met behulp van , wijzigt u de eigenschap in .
 
 ```json
 {
@@ -85,7 +85,7 @@ Als u een uitvoer wilt toewijzen met behulp van `return`, wijzigt u de eigenscha
 }
 ```
 
-In dit geval moet uw functie eruitzien zoals in het volgende voor beeld:
+In dit geval moet uw functie er als volgt uitzien:
 
 ```javascript
 module.exports = async function (context, req) {
@@ -98,17 +98,17 @@ module.exports = async function (context, req) {
 ```
 
 ## <a name="bindings"></a>Bindingen 
-In Java script worden [bindingen](functions-triggers-bindings.md) geconfigureerd en gedefinieerd in de functie Function. json van een functie. Functies werken op een aantal manieren met bindingen.
+In JavaScript worden [bindingen](functions-triggers-bindings.md) geconfigureerd en gedefinieerd in de function.json van een functie. Functies werken op een aantal manieren samen met bindingen.
 
 ### <a name="inputs"></a>Invoer
-De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de invoer van de trigger en de andere is de extra invoer. Triggers en andere invoer bindingen (bindingen van `direction === "in"`) kunnen op drie manieren worden gelezen door een functie:
- - **_[Aanbevolen]_ Als para meters die zijn door gegeven aan de functie.** Ze worden door gegeven aan de functie in dezelfde volg orde als waarin ze zijn gedefinieerd in *Function. json*. De eigenschap `name` die in *Function. json* is gedefinieerd, hoeft niet overeen te komen met de naam van uw para meter, hoewel het moet.
+Invoer is onderverdeeld in twee categorieën in Azure-functies: de ene is de trigger-invoer en de andere is de extra invoer. Trigger- en andere invoerbindingen `direction === "in"`(bindingen van) kunnen door een functie op drie manieren worden gelezen:
+ - **_[Aanbevolen]_ Als parameters doorgegeven aan uw functie.** Ze worden doorgegeven aan de functie in dezelfde volgorde dat ze zijn gedefinieerd in *function.json*. De `name` eigenschap gedefinieerd in *function.json* hoeft niet overeen te komen met de naam van uw parameter, hoewel dit wel zou moeten.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **Als leden van het object [`context.bindings`](#contextbindings-property) .** Elk lid krijgt de naam van de `name` eigenschap die in *Function. json*is gedefinieerd.
+ - **Als leden [`context.bindings`](#contextbindings-property) van het object.** Elk lid wordt `name` benoemd door de eigenschap gedefinieerd in *function.json*.
  
    ```javascript
    module.exports = async function(context) { 
@@ -118,7 +118,7 @@ De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de in
    };
    ```
    
- - **Als invoer met behulp van het Java script [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) -object.** Dit is in wezen hetzelfde als het door voeren van invoer als para meters, maar biedt u de mogelijkheid om invoer dynamisch te verwerken.
+ - **Als invoer met [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) het JavaScript-object.** Dit is in wezen hetzelfde als het passeren van ingangen als parameters, maar stelt u in staat om dynamisch te hanteren ingangen.
  
    ```javascript
    module.exports = async function(context) { 
@@ -129,11 +129,11 @@ De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de in
    ```
 
 ### <a name="outputs"></a>Uitvoer
-Outputs (bindingen van `direction === "out"`) kunnen op verschillende manieren worden geschreven naar een functie. In alle gevallen komt de eigenschap `name` van de binding zoals gedefinieerd in *Function. json* overeen met de naam van het object lid dat is geschreven in uw functie. 
+Outputs (bindingen `direction === "out"`van) kunnen door een functie op een aantal manieren worden geschreven. In alle gevallen `name` komt de eigenschap van de binding zoals gedefinieerd in *function.json* overeen met de naam van het objectlid dat in uw functie is geschreven. 
 
-U kunt gegevens aan uitvoer bindingen op een van de volgende manieren toewijzen (deze methoden niet combi neren):
+U gegevens op een van de volgende manieren toewijzen aan uitvoerbindingen (combineer deze methoden niet):
 
-- **_[Aanbevolen voor meerdere uitvoer]_ Een object retour neren.** Als u een functie van async/Promise retourneert, kunt u een object retour neren met de toegewezen uitvoer gegevens. In het onderstaande voor beeld zijn de uitvoer bindingen de naam ' httpResponse ' en ' queueOutput ' in *Function. json*.
+- **_[Aanbevolen voor meerdere uitgangen]_ Een object retourneren.** Als u een retourfunctie async/Promise gebruikt, u een object retourneren met toegewezen uitvoergegevens. In het onderstaande voorbeeld worden de uitvoerbindingen 'httpResponse' en 'queueOutput' genoemd in *function.json*.
 
   ```javascript
   module.exports = async function(context) {
@@ -147,9 +147,9 @@ U kunt gegevens aan uitvoer bindingen op een van de volgende manieren toewijzen 
   };
   ```
 
-  Als u een synchrone functie gebruikt, kunt u dit object retour neren met behulp van [`context.done`](#contextdone-method) (Zie voor beeld).
-- **_[Aanbevolen voor één uitvoer]_ Een waarde rechtstreeks en met de naam van de $return binding wordt geretourneerd.** Dit werkt alleen voor async/Promise-functies. Zie voor beelden van [het exporteren van een async-functie](#exporting-an-async-function). 
-- **Waarden toewijzen aan `context.bindings`** U kunt waarden rechtstreeks aan context. bindingen toewijzen.
+  Als u een synchrone functie gebruikt, [`context.done`](#contextdone-method) kunt u dit object retourneren met (zie voorbeeld).
+- **_[Aanbevolen voor één uitvoer]_ Een waarde rechtstreeks retourneren en de $return bindende naam gebruiken.** Dit werkt alleen voor async / Promise terugkerende functies. Zie voorbeeld bij [het exporteren van een async-functie](#exporting-an-async-function). 
+- **Waarden toewijzen `context.bindings` aan** U waarden rechtstreeks toewijzen aan context.bindingen.
 
   ```javascript
   module.exports = async function(context) {
@@ -162,9 +162,9 @@ U kunt gegevens aan uitvoer bindingen op een van de volgende manieren toewijzen 
   };
   ```
 
-### <a name="bindings-data-type"></a>Gegevens type bindingen
+### <a name="bindings-data-type"></a>Gegevenstype Bindingen
 
-Als u het gegevens type voor een invoer binding wilt definiëren, gebruikt u de eigenschap `dataType` in de bindings definitie. Als u de inhoud van een HTTP-aanvraag in binaire indeling wilt lezen, gebruikt u bijvoorbeeld het type `binary`:
+Als u het gegevenstype voor een `dataType` invoerbinding wilt definiëren, gebruikt u de eigenschap in de bindingsdefinitie. Als u bijvoorbeeld de inhoud van een HTTP-aanvraag `binary`in binaire indeling wilt lezen, gebruikt u het type :
 
 ```json
 {
@@ -175,12 +175,12 @@ Als u het gegevens type voor een invoer binding wilt definiëren, gebruikt u de 
 }
 ```
 
-Opties voor `dataType` zijn: `binary`, `stream`en `string`.
+Opties `dataType` voor `binary`zijn: `stream` `string`, , en .
 
-## <a name="context-object"></a>context object
-De runtime gebruikt een `context`-object voor het door geven van gegevens van en naar uw functie en om u te laten communiceren met de runtime. Het context object kan worden gebruikt voor het lezen en instellen van gegevens van bindingen, het schrijven van Logboeken en het gebruik van de `context.done` terugbellen wanneer de geëxporteerde functie synchroon is.
+## <a name="context-object"></a>contextobject
+De runtime `context` maakt gebruik van een object om gegevens door te geven aan en van uw functie en om u te laten communiceren met de runtime. Het contextobject kan worden gebruikt voor het lezen en instellen `context.done` van gegevens uit bindingen, het schrijven van logboeken en het gebruik van de callback wanneer uw geëxporteerde functie synchroon is.
 
-Het `context`-object is altijd de eerste para meter voor een functie. Deze moet worden opgenomen, omdat deze belang rijke methoden heeft, zoals `context.done` en `context.log`. U kunt het object een naam, ongeacht wat u wilt, bijvoorbeeld `ctx` of `c`).
+Het `context` object is altijd de eerste parameter voor een functie. Het moet worden opgenomen omdat het `context.done` belangrijke `context.log`methoden heeft, zoals en . U het object een naam geven `ctx` `c`wat u wilt (bijvoorbeeld of ).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -190,15 +190,15 @@ module.exports = function(ctx) {
 };
 ```
 
-### <a name="contextbindings-property"></a>context. bindings, eigenschap
+### <a name="contextbindings-property"></a>context.bindingen eigenschap
 
 ```js
 context.bindings
 ```
 
-Retourneert een benoemd object dat wordt gebruikt om bindings gegevens te lezen of toe te wijzen. Invoer-en trigger gegevens voor bindingen kunnen worden geopend door het lezen van eigenschappen op `context.bindings`. Uitvoer binding gegevens kunnen worden toegewezen door gegevens toe te voegen aan `context.bindings`
+Retourneert een benoemd object dat wordt gebruikt om bindende gegevens te lezen of toe te wijzen. Invoer- en triggerbindingsgegevens kunnen worden `context.bindings`geopend door eigenschappen te lezen op . Uitvoerbindingsgegevens kunnen worden toegewezen door gegevens toe te voegen aan`context.bindings`
 
-Bijvoorbeeld, de volgende bindings definities in uw functie. json bieden u de mogelijkheid om de inhoud van een wachtrij te openen vanaf `context.bindings.myInput` en om uitvoer te koppelen aan een wachtrij met behulp van `context.bindings.myOutput`.
+Met de volgende bindende definities in uw function.json u `context.bindings.myInput` bijvoorbeeld de inhoud van `context.bindings.myOutput`een wachtrij openen en uitvoer toewijzen aan een wachtrij met behulp van.
 
 ```json
 {
@@ -224,27 +224,27 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
-U kunt ervoor kiezen om uitvoer binding gegevens te definiëren met behulp van de methode `context.done` in plaats van het `context.binding`-object (zie hieronder).
+U ervoor kiezen om `context.done` uitvoerbindingsgegevens `context.binding` te definiëren met behulp van de methode in plaats van het object (zie hieronder).
 
-### <a name="contextbindingdata-property"></a>context. bindingData eigenschap
+### <a name="contextbindingdata-property"></a>context.bindingData, eigenschap
 
 ```js
 context.bindingData
 ```
 
-Retourneert een benoemd object dat trigger-meta gegevens en functie aanroepgegevens bevat (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Voor een voor beeld van meta gegevens van triggers raadpleegt u dit [voor beeld van Event hubs](functions-bindings-event-hubs-trigger.md).
+Retourneert een benoemd object dat triggermetagegevens `sys.utcNow` `sys.randGuid`en functieaanroepgegevens bevat (`invocationId`, `sys.methodName`, , ). Zie dit voorbeeld van [gebeurtenishubs](functions-bindings-event-hubs-trigger.md)voor een voorbeeld van triggermetagegevens .
 
-### <a name="contextdone-method"></a>context. Done-methode
+### <a name="contextdone-method"></a>context.done-methode
 
 ```js
 context.done([err],[propertyBag])
 ```
 
-Laat de runtime weten dat uw code is voltooid. Wanneer uw functie gebruikmaakt van de [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) declaratie, hoeft u `context.done()`niet te gebruiken. De `context.done` call back wordt impliciet aangeroepen. Asynchrone functies zijn beschikbaar in knoop punt 8 of een latere versie, waarvoor versie 2. x van de functions-runtime vereist is.
+Laat de runtime weten dat uw code is voltooid. Wanneer uw functie [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) de aangifte gebruikt, `context.done()`hoeft u deze niet te gebruiken. De `context.done` callback wordt impliciet genoemd. Async-functies zijn beschikbaar in Node 8 of een latere versie, waarvoor versie 2.x van de runtime Functies vereist is.
 
-Als uw functie geen async-functie is, **moet u `context.done` aanroepen** om de runtime te informeren dat de functie is voltooid. Er wordt een time-out uitgevoerd als deze ontbreekt.
+Als uw functie geen async-functie is, **moet u bellen** `context.done` om de runtime te informeren dat uw functie is voltooid. De uitvoering is een moment uit als het ontbreekt.
 
-Met de `context.done` methode kunt u zowel een door de gebruiker gedefinieerde fout terugsturen naar de runtime als een JSON-object dat uitvoer bindings gegevens bevat. Eigenschappen die aan `context.done` worden door gegeven, overschrijven alle sets op het `context.bindings`-object.
+Met `context.done` de methode u zowel een door de gebruiker gedefinieerde fout doorgeven aan de runtime als een JSON-object met uitvoerbindingsgegevens. Eigenschappen die `context.done` worden doorgegeven `context.bindings` om alles wat op het object is ingesteld, te overschrijven.
 
 ```javascript
 // Even though we set myOutput to have:
@@ -256,37 +256,37 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 //  -> text: 'hello there, world', noNumber: true
 ```
 
-### <a name="contextlog-method"></a>context. log-methode  
+### <a name="contextlog-method"></a>context.log-methode  
 
 ```js
 context.log(message)
 ```
 
-Hiermee kunt u naar de streaming-functie Logboeken schrijven op het standaard tracerings niveau. Op `context.log`zijn er aanvullende logboek registratie methoden beschikbaar waarmee u functie Logboeken kunt schrijven op andere tracerings niveaus:
+Hiermee u schrijven naar de streamingfunctielogboeken op het standaardtraceringsniveau. Op `context.log`zijn er aanvullende registratiemethoden beschikbaar waarmee u functielogboeken op andere traceringsniveaus schrijven:
 
 
 | Methode                 | Beschrijving                                |
 | ---------------------- | ------------------------------------------ |
-| **fout (_bericht_)**   | Schrijft naar logboek registratie op fout niveau of lager.   |
-| **Warning (_bericht_)**    | Schrijft naar logboek registratie op waarschuwings niveau of lager. |
-| **info (_bericht_)**    | Schrijft naar logboek registratie op info niveau of lager.    |
-| **uitgebreid (_bericht_)** | Schrijft naar uitgebreide logboek registratie.           |
+| **fout(_bericht_)**   | Schrijft naar logboekregistratie op foutniveau of lager.   |
+| **waarschuwen(_bericht_)**    | Hiermee schrijft u naar logboekregistratie op waarschuwingsniveau of lager. |
+| **info(_bericht_)**    | Schrijft naar het registreren op infoniveau of lager.    |
+| **verbose(_bericht_)** | Schrijft naar verbose niveau logging.           |
 
-In het volgende voor beeld wordt een logboek op het tracerings niveau waarschuwing geschreven:
+In het volgende voorbeeld wordt een logboek geschreven op het niveau van de waarschuwingstracering:
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
 
-U kunt [de drempel waarde tracerings niveau voor logboek registratie configureren](#configure-the-trace-level-for-console-logging) in het bestand host. json. Zie voor meer informatie over het schrijven van Logboeken [trace-uitvoer](#writing-trace-output-to-the-console) .
+U [de drempelwaarde op traceniveau configureren voor het inloggen](#configure-the-trace-level-for-console-logging) in het bestand host.json. Zie hieronder het schrijven [van trace outputs](#writing-trace-output-to-the-console) voor meer informatie over het schrijven van logboeken.
 
-Lees de [controle Azure functions](functions-monitoring.md) voor meer informatie over het weer geven en opvragen van functie Logboeken.
+Lees [Azure-functies voor het bewaken van Azure-functies](functions-monitoring.md) voor meer informatie over het weergeven en opvragen van functielogboeken.
 
-## <a name="writing-trace-output-to-the-console"></a>Tracerings uitvoer naar de console schrijven 
+## <a name="writing-trace-output-to-the-console"></a>Trace-uitvoer naar de console schrijven 
 
-In functies gebruikt u de `context.log`-methoden voor het schrijven van uitvoer naar de-console. In functions v2. x, traceer uitvoer met `console.log` worden vastgelegd op functie-app niveau. Dit betekent dat de uitvoer van `console.log` niet is gekoppeld aan een specifieke functie aanroep en niet wordt weer gegeven in de logboeken van een specifieke functie. Ze worden echter door gegeven aan Application Insights. In functions v1. x kunt u `console.log` niet gebruiken om te schrijven naar de-console.
+In Functies gebruikt `context.log` u de methoden om traceoutput naar de console te schrijven. In Functies v2.x worden `console.log` trace-uitvoermetbehulp van de functie-app vastgelegd op het niveau van de functie-app. Dit betekent dat `console.log` uitvoer uit niet zijn gekoppeld aan een specifieke functieaanroep en niet worden weergegeven in de logboeken van een specifieke functie. Ze verspreiden zich echter wel naar Application Insights. In Functies v1.x kunt `console.log` u niet naar de console schrijven.
 
-Wanneer u `context.log()`aanroept, wordt uw bericht naar de-console geschreven op het niveau van de standaard tracering. Dit is het tracerings niveau _info_ . Met de volgende code wordt naar de-console op het tracerings niveau info geschreven:
+Wanneer u `context.log()`belt, wordt uw bericht naar de console geschreven op het standaardtraceringsniveau, dat is het niveau van de infotraceringswaarde. _info_ De volgende code schrijft naar de console op het niveau van de infotracerings:
 
 ```javascript
 context.log({hello: 'world'});  
@@ -298,31 +298,31 @@ Deze code is gelijk aan de bovenstaande code:
 context.log.info({hello: 'world'});  
 ```
 
-Deze code schrijft naar de-console op fout niveau:
+Deze code wordt op foutniveau naar de console geschreven:
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-Omdat de _fout_ het hoogste traceer niveau is, wordt deze tracering naar de uitvoer op alle tracerings niveaus geschreven zolang logboek registratie is ingeschakeld.
+Omdat _fout_ het hoogste traceerniveau is, wordt dit spoor naar de uitvoer geschreven op alle spoorniveaus, zolang logboekregistratie is ingeschakeld.
 
-Alle `context.log`-methoden ondersteunen dezelfde parameter indeling die wordt ondersteund door de methode node. js [util. Format](https://nodejs.org/api/util.html#util_util_format_format). Bekijk de volgende code, waarmee functie Logboeken worden geschreven met behulp van het standaard tracerings niveau:
+Alle `context.log` methoden ondersteunen dezelfde parameterindeling die wordt ondersteund door de methode Node.js [util.format](https://nodejs.org/api/util.html#util_util_format_format). Overweeg de volgende code, die functielogboeken schrijft met behulp van het standaardtraceringsniveau:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
 context.log('Request Headers = ' + JSON.stringify(req.headers));
 ```
 
-U kunt ook dezelfde code in de volgende indeling schrijven:
+U dezelfde code ook in de volgende indeling schrijven:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>Het tracerings niveau voor console logboek registratie configureren
+### <a name="configure-the-trace-level-for-console-logging"></a>Het traceerniveau voor consolelogboekregistratie configureren
 
-Met de functie 1. x kunt u het tracerings niveau van de drempel waarde voor het schrijven naar de-console definiëren, zodat u gemakkelijk kunt bepalen hoe traceringen naar de console worden geschreven vanuit uw functie. Als u de drempel waarde wilt instellen voor alle traceringen die naar de-console worden geschreven, gebruikt u de eigenschap `tracing.consoleLevel` in het bestand host. json. Deze instelling is van toepassing op alle functies in uw functie-app. In het volgende voor beeld wordt de drempel voor tracering ingesteld om uitgebreide logboek registratie in te scha kelen:
+Met functies 1.x u het drempelspoorniveau definiëren voor het schrijven naar de console, waardoor u eenvoudig de manier bepalen waarop sporen naar de console worden geschreven vanuit uw functie. Als u de drempelwaarde wilt instellen voor `tracing.consoleLevel` alle traces die naar de console zijn geschreven, gebruikt u de eigenschap in het bestand host.json. Deze instelling is van toepassing op alle functies in uw functie-app. In het volgende voorbeeld wordt de traceerdrempel ingesteld om verboselogging in te schakelen:
 
 ```json
 {
@@ -332,44 +332,44 @@ Met de functie 1. x kunt u het tracerings niveau van de drempel waarde voor het 
 }  
 ```
 
-De waarden van **consoleLevel** komen overeen met de namen van de `context.log`-methoden. Als u alle traceer logboek registratie wilt uitschakelen voor de-console, stelt u **consoleLevel** in op _uit_. Zie voor meer informatie [host. json Reference](functions-host-json-v1.md).
+Waarden van **consoleNiveau** komen overeen met de namen van de `context.log` methoden. Als u alle tracelogging op de console wilt uitschakelen, stelt u **consoleNiveau** _in op uit_. Zie [host.json referentie voor](functions-host-json-v1.md)meer informatie .
 
-## <a name="http-triggers-and-bindings"></a>HTTP-triggers en-bindingen
+## <a name="http-triggers-and-bindings"></a>HTTP-triggers en bindingen
 
-HTTP-en webhook-triggers en HTTP-uitvoer bindingen gebruiken aanvraag-en antwoord objecten om de HTTP-berichten te vertegenwoordigen.  
+HTTP- en webhook-triggers en HTTP-uitvoerbindingen gebruiken aanvraag- en antwoordobjecten om de HTTP-berichten weer te geven.  
 
-### <a name="request-object"></a>Aanvraag object
+### <a name="request-object"></a>Object Aanvragen
 
-Het `context.req`-object (Request) heeft de volgende eigenschappen:
+Het `context.req` object (aanvraag) heeft de volgende eigenschappen:
 
 | Eigenschap      | Beschrijving                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _organen_        | Een object dat de hoofd tekst van de aanvraag bevat.               |
-| _koppen_     | Een object dat de aanvraag headers bevat.                   |
-| _methode_      | De HTTP-methode van de aanvraag.                                |
-| _originalUrl_ | De URL van de aanvraag.                                        |
-| _params_      | Een object dat de routerings parameters van de aanvraag bevat. |
-| _ophalen_       | Een object dat de query parameters bevat.                  |
-| _rawBody_     | De hoofd tekst van het bericht als een teken reeks.                           |
+| _Lichaam_        | Een object dat de hoofdtekst van het verzoek bevat.               |
+| _Headers_     | Een object dat de aanvraagkoppen bevat.                   |
+| _Methode_      | De HTTP-methode van de aanvraag.                                |
+| _originalUrl (originalUrl)_ | De URL van het verzoek.                                        |
+| _Params_      | Een object dat de routeringsparameters van de aanvraag bevat. |
+| _Query_       | Een object dat de queryparameters bevat.                  |
+| _rawBody rawBody_     | Het lichaam van het bericht als een string.                           |
 
 
 ### <a name="response-object"></a>Responsobject
 
-Het object `context.res` (Response) heeft de volgende eigenschappen:
+Het `context.res` object (respons) heeft de volgende eigenschappen:
 
 | Eigenschap  | Beschrijving                                               |
 | --------- | --------------------------------------------------------- |
-| _organen_    | Een object dat de hoofd tekst van het antwoord bevat.         |
-| _koppen_ | Een object dat de antwoord headers bevat.             |
-| _isRaw_   | Hiermee wordt aangegeven dat de opmaak voor het antwoord wordt overgeslagen.    |
-| _hebben_  | De HTTP-status code van het antwoord.                     |
-| _cookies_ | Een matrix met HTTP-cookie-objecten die in het antwoord zijn ingesteld. Een HTTP-cookie object heeft een `name`, `value`en andere cookie-eigenschappen, zoals `maxAge` of `sameSite`. |
+| _Lichaam_    | Een object dat de hoofdtekst van de reactie bevat.         |
+| _Headers_ | Een object dat de antwoordkoppen bevat.             |
+| _isRaw_   | Geeft aan dat de opmaak wordt overgeslagen voor het antwoord.    |
+| _status_  | De HTTP-statuscode van het antwoord.                     |
+| _Cookies_ | Een array met HTTP-cookieobjecten die zijn ingesteld in het antwoord. Een HTTP-cookieobject `name` `value`heeft een , en `maxAge` andere `sameSite`cookie-eigenschappen, zoals of . |
 
-### <a name="accessing-the-request-and-response"></a>De aanvraag en het antwoord openen 
+### <a name="accessing-the-request-and-response"></a>Toegang tot het verzoek en antwoord 
 
-Wanneer u met HTTP-triggers werkt, kunt u op een aantal manieren toegang krijgen tot de HTTP-aanvraag-en-antwoord objecten:
+Wanneer u met HTTP-triggers werkt, hebt u op verschillende manieren toegang tot de HTTP-aanvraag- en antwoordobjecten:
 
-+ **Van `req`-en `res` eigenschappen van het `context`-object.** Op deze manier kunt u het conventionele patroon gebruiken om toegang te krijgen tot HTTP-gegevens van het context object, in plaats van het volledige `context.bindings.name` patroon te gebruiken. In het volgende voor beeld ziet u hoe u toegang krijgt tot de `req`-en `res` objecten op de `context`:
++ **Van `req` `res` en eigenschappen `context` op het object.** Op deze manier u het conventionele patroon gebruiken om toegang te krijgen `context.bindings.name` tot HTTP-gegevens vanuit het contextobject, in plaats van het volledige patroon te gebruiken. In het volgende voorbeeld `req` ziet `res` u `context`hoe u toegang krijgt tot de objecten en objecten op :
 
     ```javascript
     // You can access your HTTP request off the context ...
@@ -378,7 +378,7 @@ Wanneer u met HTTP-triggers werkt, kunt u op een aantal manieren toegang krijgen
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ **Van de benoemde invoer-en uitvoer bindingen.** Op deze manier werken de HTTP-trigger en de bindingen hetzelfde als elke andere binding. In het volgende voor beeld wordt het object Response ingesteld met behulp van een benoemde `response` binding: 
++ **Van de benoemde invoer- en uitvoerbindingen.** Op deze manier werken de HTTP-trigger en bindingen hetzelfde als elke andere binding. In het volgende voorbeeld wordt het `response` antwoordobject ingesteld met een benoemde binding: 
 
     ```json
     {
@@ -390,9 +390,9 @@ Wanneer u met HTTP-triggers werkt, kunt u op een aantal manieren toegang krijgen
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Alleen antwoord]_ Door `context.res.send(body?: any)`aan te roepen.** Er wordt een HTTP-antwoord gemaakt met invoer `body` als de antwoord tekst. `context.done()` wordt impliciet aangeroepen.
++ **_[Alleen reactie]_ Door `context.res.send(body?: any)`te bellen.** Er wordt een HTTP-antwoord gemaakt met invoer `body` als antwoordinstantie. `context.done()`wordt impliciet genoemd.
 
-+ **_[Alleen antwoord]_ Door `context.done()`aan te roepen.** Een speciaal type HTTP-binding retourneert het antwoord dat is door gegeven aan de `context.done()` methode. De volgende HTTP-uitvoer binding definieert een `$return` uitvoer parameter:
++ **_[Alleen reactie]_ Door `context.done()`te bellen.** Een speciaal type HTTP-binding retourneert `context.done()` het antwoord dat wordt doorgegeven aan de methode. In de volgende HTTP-uitvoerbinding wordt een `$return` uitvoerparameter gedefinieerd:
 
     ```json
     {
@@ -409,30 +409,30 @@ Wanneer u met HTTP-triggers werkt, kunt u op een aantal manieren toegang krijgen
 
 ## <a name="scaling-and-concurrency"></a>Schalen en gelijktijdigheid
 
-Standaard controleert Azure Functions automatisch de belasting van uw toepassing en worden er indien nodig extra exemplaren van de host voor node. js gemaakt. Functies gebruiken ingebouwde (niet door de gebruiker te configureren) drempel waarden voor verschillende trigger typen om te bepalen wanneer instanties moeten worden toegevoegd, zoals de leeftijd van berichten en de grootte van de wachtrij voor Queue trigger. Zie [hoe het verbruik en de Premium-abonnementen werken](functions-scale.md#how-the-consumption-and-premium-plans-work)voor meer informatie.
+Azure Functions controleert standaard automatisch de belasting van uw toepassing en maakt indien nodig extra hostexemplaren voor Node.js. Functies gebruiken ingebouwde (niet door de gebruiker configureerbare) drempels voor verschillende triggertypen om te bepalen wanneer instanties moeten worden toegevoegd, zoals de leeftijd van berichten en de grootte van de wachtrij voor QueueTrigger. Zie [Hoe de consumptie- en premieplannen werken](functions-scale.md#how-the-consumption-and-premium-plans-work)voor meer informatie .
 
-Dit gedrag van schalen is voldoende voor veel node. js-toepassingen. Voor CPU-gebonden toepassingen kunt u de prestaties verder verbeteren door gebruik te maken van werk processen in meerdere talen.
+Dit schaalgedrag is voldoende voor veel Node.js-toepassingen. Voor CPU-gebonden toepassingen u de prestaties verder verbeteren door gebruik te maken van meerdere taalwerkprocessen.
 
-Elk functions-exemplaar heeft standaard een werk proces met één taal. U kunt het aantal werk processen per host (Maxi maal 10) verhogen met behulp van de [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) toepassings instelling. Azure Functions probeert vervolgens gelijktijdige functie aanroepen voor deze werk nemers gelijkmatig te verdelen. 
+Standaard heeft elke hostinstantie Functions één taalwerkproces. U het aantal werkprocessen per host (tot 10) verhogen met behulp van de [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) toepassingsinstelling. Azure Functions probeert vervolgens gelijktijdige functieaanroepen gelijkmatig over deze werknemers te distribueren. 
 
-De FUNCTIONS_WORKER_PROCESS_COUNT is van toepassing op elke host die functies maakt wanneer uw toepassing wordt geschaald om aan de vraag te voldoen. 
+De FUNCTIONS_WORKER_PROCESS_COUNT is van toepassing op elke host die Functions maakt wanneer u uw toepassing uitschaalt om aan de vraag te voldoen. 
 
-## <a name="node-version"></a>Knooppunt versie
+## <a name="node-version"></a>Knooppuntversie
 
-In de volgende tabel ziet u de huidige ondersteunde node. js-versies voor elke primaire versie van de functions-runtime, door het besturings systeem:
+In de volgende tabel worden de huidige ondersteunde Node.js-versies voor elke belangrijke versie van de runtime functies per besturingssysteem weergegeven:
 
-| Functie versie | Knooppunt versie (Windows) | Knooppunt versie (Linux) |
+| Versie functies | Knooppuntversie (Windows) | Node Versie (Linux) |
 |---|---| --- |
 | 1.x | 6.11.2 (vergrendeld door de runtime) | N.v.t. |
-| 2.x  | ~ 8<br/>~ 10 (aanbevolen)<br/>~ 12<sup>*</sup> | ~ 8 (aanbevolen)<br/>~ 10  |
-| controleert | ~ 10<br/>~ 12 (aanbevolen)  | ~ 10<br/>~ 12 (aanbevolen) |
+| 2.x  | ~8.<br/>~10 (aanbevolen)<br/>~12<sup>*</sup> | ~8 (aanbevolen)<br/>~10  |
+| 3.x | ~10<br/>~12 (aanbevolen)  | ~10<br/>~12 (aanbevolen) |
 
-<sup>*</sup> Het knoop punt ~ 12 is momenteel toegestaan op versie 2. x van de functions-runtime. Voor de beste prestaties raden we u echter aan functions runtime versie 3. x met het knoop punt ~ 12 te gebruiken. 
+<sup>*</sup>Node ~12 is momenteel toegestaan op versie 2.x van de runtime functies. Voor de beste prestaties raden we echter aan functies runtime versie 3.x met Node ~12 te gebruiken. 
 
-U kunt de huidige versie bekijken die door de runtime wordt gebruikt door de bovenstaande app-instelling te controleren of door `process.version` af te drukken vanuit een functie. Richt de versie in Azure in door de WEBSITE_NODE_DEFAULT_VERSION [app-instelling](functions-how-to-use-azure-function-app-settings.md#settings) in te stellen op een ondersteunde versie van LTS, zoals `~10`.
+U de huidige versie zien die de runtime gebruikt `process.version` door de bovenstaande app-instelling te controleren of door af te drukken vanuit een functie. Target de versie in Azure door de instelling van de [WEBSITE_NODE_DEFAULT_VERSION-app in](functions-how-to-use-azure-function-app-settings.md#settings) te stellen op een ondersteunde LTS-versie, zoals `~10`.
 
 ## <a name="dependency-management"></a>Beheer van afhankelijkheden
-Als u Community-bibliotheken in uw Java script-code wilt gebruiken, zoals in het onderstaande voor beeld wordt weer gegeven, moet u ervoor zorgen dat alle afhankelijkheden zijn geïnstalleerd op uw functie-app in Azure.
+Als u communitybibliotheken wilt gebruiken in uw JavaScript-code, zoals in het onderstaande voorbeeld wordt weergegeven, moet u ervoor zorgen dat alle afhankelijkheden zijn geïnstalleerd op uw functie-app in Azure.
 
 ```javascript
 // Import the underscore.js library
@@ -446,32 +446,32 @@ module.exports = function(context) {
 ```
 
 > [!NOTE]
-> U moet een `package.json`-bestand definiëren in de hoofdmap van uw functie-app. Als u het bestand definieert, kunnen alle functies in de app dezelfde pakketten in de cache delen, wat de beste prestaties biedt. Als er een versie conflict ontstaat, kunt u dit oplossen door een `package.json` bestand toe te voegen aan de map van een specifieke functie.  
+> U moet `package.json` een bestand definiëren aan de basis van uw functie-app. Als u het bestand definieert, kunnen alle functies in de app dezelfde pakketten in de cache delen, wat de beste prestaties biedt. Als er een versieconflict ontstaat, kunt `package.json` u dit oplossen door een bestand toe te voegen in de map van een specifieke functie.  
 
-Wanneer u functie-apps vanuit broncode beheer implementeert, wordt in de map van elk `package.json` bestand dat in uw opslag plaats aanwezig is, een `npm install` geactiveerd tijdens de implementatie. Maar wanneer u implementeert via de portal of CLI, moet u de pakketten hand matig installeren.
+Bij het implementeren van functie-apps vanuit bronbeheer wordt `package.json` elk `npm install` bestand dat in uw repo aanwezig is, geactiveerd in de map tijdens de implementatie. Maar bij het implementeren via de Portal of CLI, moet u de pakketten handmatig installeren.
 
-Er zijn twee manieren om pakketten te installeren op uw functie-app: 
+Er zijn twee manieren om pakketten in uw functie-app te installeren: 
 
 ### <a name="deploying-with-dependencies"></a>Implementeren met afhankelijkheden
-1. Installeer alle vereiste pakketten lokaal door `npm install`uit te voeren.
+1. Installeer alle benodigde pakketten `npm install`lokaal door te draaien.
 
-2. Implementeer uw code en zorg ervoor dat de map `node_modules` is opgenomen in de implementatie. 
+2. Implementeer uw code en `node_modules` zorg ervoor dat de map is opgenomen in de implementatie. 
 
 
 ### <a name="using-kudu"></a>Kudu gebruiken
 1. Ga naar `https://<function_app_name>.scm.azurewebsites.net`.
 
-2. Klik op **debug Console** > **cmd**.
+2. Klik op Console > **CMD** **debuggen**.
 
-3. Ga naar `D:\home\site\wwwroot`en sleep het bestand Package. json naar de map **wwwroot** in het bovenste gedeelte van de pagina.  
-    U kunt ook op andere manieren bestanden uploaden naar uw functie-app. Zie de [functie-app-bestanden bijwerken](functions-reference.md#fileupdate)voor meer informatie. 
+3. Ga `D:\home\site\wwwroot`naar , en sleep vervolgens uw package.json-bestand naar de **map wwwroot** aan de bovenste helft van de pagina.  
+    U bestanden ook op andere manieren uploaden naar uw functie-app. Zie [App-bestanden voor](functions-reference.md#fileupdate)meer informatie bijwerken . 
 
-4. Nadat het bestand Package. json is geüpload, voert u de `npm install` opdracht uit in de **kudu-console voor externe uitvoering**.  
-    Met deze actie worden de pakketten gedownload die in het bestand Package. json zijn aangegeven en wordt de functie-app opnieuw gestart.
+4. Nadat het bestand package.json is `npm install` geüpload, voert u de opdracht uit in de **kudu-externe uitvoeringsconsole**.  
+    Met deze actie worden de pakketten die in het bestand package.json zijn aangegeven, gedownload en wordt de functie-app opnieuw gestart.
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 
-In functions worden [app-instellingen](functions-app-settings.md), zoals teken reeksen voor service verbindingen, weer gegeven als omgevings variabelen tijdens de uitvoering. U kunt deze instellingen openen met behulp van `process.env`, zoals hier wordt weer gegeven in de tweede en derde aanroepen naar `context.log()` waar de `AzureWebJobsStorage` en `WEBSITE_SITE_NAME` omgevings variabelen worden geregistreerd:
+In Functies worden [app-instellingen](functions-app-settings.md), zoals serviceverbindingstekenreeksen, tijdens de uitvoering weergegeven als omgevingsvariabelen. U toegang `process.env`krijgen tot deze instellingen met behulp `context.log()` van , `AzureWebJobsStorage` `WEBSITE_SITE_NAME` zoals hier weergegeven in de tweede en derde gesprekken naar waar we de en de omgeving variabelen log:
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -485,17 +485,17 @@ module.exports = async function (context, myTimer) {
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Wanneer u lokaal uitvoert, worden de app-instellingen gelezen uit het bestand [Local. settings. json](functions-run-local.md#local-settings-file) project.
+Wanneer u lokaal wordt uitgevoerd, worden de app-instellingen gelezen in het projectbestand [local.settings.json.](functions-run-local.md#local-settings-file)
 
-## <a name="configure-function-entry-point"></a>Functie-ingangs punt configureren
+## <a name="configure-function-entry-point"></a>Functie-invoerpunt configureren
 
-De `function.json` eigenschappen `scriptFile` en `entryPoint` kunnen worden gebruikt voor het configureren van de locatie en de naam van de geëxporteerde functie. Deze eigenschappen kunnen belang rijk zijn wanneer uw Java script wordt transmaald.
+De `function.json` `scriptFile` eigenschappen `entryPoint` en kunnen worden gebruikt om de locatie en naam van uw geëxporteerde functie te configureren. Deze eigenschappen kunnen belangrijk zijn wanneer uw JavaScript wordt getranspileerd.
 
 ### <a name="using-scriptfile"></a>`scriptFile` gebruiken
 
-Een Java script-functie wordt standaard uitgevoerd vanuit `index.js`, een bestand met dezelfde bovenliggende map als de bijbehorende `function.json`.
+Standaard wordt een JavaScript-functie `index.js`uitgevoerd vanuit een bestand dat dezelfde `function.json`bovenliggende map deelt als het bijbehorende .
 
-`scriptFile` kan worden gebruikt om een mapstructuur te verkrijgen die eruitziet als in het volgende voor beeld:
+`scriptFile`kan worden gebruikt om een mapstructuur te krijgen die lijkt op het volgende voorbeeld:
 
 ```
 FunctionApp
@@ -509,7 +509,7 @@ FunctionApp
  | - package.json
 ```
 
-De `function.json` voor `myNodeFunction` moet een `scriptFile` eigenschap bevatten die verwijst naar het bestand met de geëxporteerde functie om uit te voeren.
+De `function.json` `myNodeFunction` optie moet `scriptFile` een eigenschap bevatten die naar het bestand wijst met de geëxporteerde functie die moet worden uitgevoerd.
 
 ```json
 {
@@ -522,9 +522,9 @@ De `function.json` voor `myNodeFunction` moet een `scriptFile` eigenschap bevatt
 
 ### <a name="using-entrypoint"></a>`entryPoint` gebruiken
 
-In `scriptFile` (of `index.js`) moet een functie worden geëxporteerd met behulp van `module.exports` om te vinden en uit te voeren. De functie die wordt uitgevoerd wanneer de trigger wordt geactiveerd, is standaard de enige export vanuit dat bestand, de export met de naam `run`, of de export met de naam `index`.
+In `scriptFile` (of), `index.js`moet een functie `module.exports` worden geëxporteerd met behulp van te worden gevonden en uitgevoerd. Standaard is de functie die wordt uitgevoerd wanneer geactiveerd, de `run`enige export uit `index`dat bestand, de naam export of de export met de naam .
 
-Dit kan worden geconfigureerd met behulp van `entryPoint` in `function.json`, zoals in het volgende voor beeld:
+Dit kan worden `entryPoint` geconfigureerd `function.json`met behulp van in , zoals in het volgende voorbeeld:
 
 ```json
 {
@@ -535,7 +535,7 @@ Dit kan worden geconfigureerd met behulp van `entryPoint` in `function.json`, zo
 }
 ```
 
-In functions v2. x, dat de para meter `this` in gebruikers functies ondersteunt, kan de functie code in het volgende voor beeld worden gebruikt:
+In Functies v2.x, `this` die de parameter in gebruikersfuncties ondersteunt, kan de functiecode dan zijn zoals in het volgende voorbeeld:
 
 ```javascript
 class MyObj {
@@ -553,56 +553,56 @@ const myObj = new MyObj();
 module.exports = myObj;
 ```
 
-In dit voor beeld is het belang rijk te weten dat er een object wordt geëxporteerd, maar er zijn geen garanties voor het behoud van de status tussen uitvoeringen.
+In dit voorbeeld is het belangrijk op te merken dat, hoewel een object wordt geëxporteerd, er geen garanties zijn voor het behoud van de staat tussen executies.
 
-## <a name="local-debugging"></a>Lokale fout opsporing
+## <a name="local-debugging"></a>Lokale foutopsporing
 
-Wanneer een node. js-proces wordt gestart met de para meter `--inspect`, wordt geluisterd naar een client voor fout opsporing op de opgegeven poort. In Azure Functions 2. x kunt u argumenten opgeven die moeten worden door gegeven aan het node. js-proces dat uw code uitvoert door de omgevings variabele of app-instelling `languageWorkers:node:arguments = <args>`toe te voegen. 
+Wanneer gestart `--inspect` met de parameter, luistert een Node.js-proces naar een foutopsporingsclient op de opgegeven poort. In Azure Functions 2.x u argumenten opgeven die u wilt doorgeven aan het Node.js-proces waarbij uw code wordt uitgevoerd door de omgevingsvariabele of app-instelling toe te voegen. `languageWorkers:node:arguments = <args>` 
 
-Als u lokaal fouten wilt opsporen, voegt u `"languageWorkers:node:arguments": "--inspect=5858"` onder `Values` in het bestand [Local. settings. json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) toe en koppelt u een fout opsporingsprogramma aan poort 5858.
+Als u lokaal wilt `"languageWorkers:node:arguments": "--inspect=5858"` `Values` debuggen, voegt u onder in het bestand [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) toe en voegt u een foutopsporing toe aan poort 5858.
 
-Als u fouten opspoort met behulp van VS code, wordt de para meter `--inspect` automatisch toegevoegd met behulp van de `port` waarde in het bestand Launch. json van het project.
+Wanneer u debugging met `--inspect` VS-code gebruikt, `port` wordt de parameter automatisch toegevoegd met behulp van de waarde in het launch.json-bestand van het project.
 
-In versie 1. x kan het instellen van `languageWorkers:node:arguments` niet worden uitgevoerd. De poort voor fout opsporing kan worden geselecteerd met de para meter [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) op Azure functions core tools.
+In versie 1.x `languageWorkers:node:arguments` werkt de instelling niet. De foutopsporingspoort kan worden [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) geselecteerd met de parameter op Azure Functions Core Tools.
 
 ## <a name="typescript"></a>TypeScript
 
-Wanneer u versie 2. x van de functions runtime richt, hebben zowel [Azure functions voor Visual Studio code](functions-create-first-function-vs-code.md) als de [Azure functions core tools](functions-run-local.md) u functie-apps kunnen maken met behulp van een sjabloon die type script functie-app-projecten ondersteunt. De sjabloon genereert `package.json` en `tsconfig.json` project bestanden die het eenvoudiger maken om Java script-functies van type script-code te delen, uit te voeren en te publiceren met deze hulpprogram ma's.
+Wanneer u versie 2.x van de runtime van de functies target, u met zowel [Azure Functions for Visual Studio Code](functions-create-first-function-vs-code.md) als de Azure Functions Core [Tools](functions-run-local.md) functie-apps maken met behulp van een sjabloon die typeScript-functie-appprojecten ondersteunt. De sjabloon `package.json` `tsconfig.json` genereert en projecteert bestanden waarmee javascriptfuncties gemakkelijker kunnen worden getransoneerd, uitgevoerd en gepubliceerd met deze hulpprogramma's.
 
-Een gegenereerd `.funcignore` bestand wordt gebruikt om aan te geven welke bestanden worden uitgesloten wanneer een project wordt gepubliceerd naar Azure.  
+Een `.funcignore` gegenereerd bestand wordt gebruikt om aan te geven welke bestanden worden uitgesloten wanneer een project wordt gepubliceerd in Azure.  
 
-Type script-bestanden (. TS) worden omgezet in Java script-bestanden (. js) in de uitvoer Directory `dist`. Type script-sjablonen gebruiken de [para meter`scriptFile`](#using-scriptfile) in `function.json` om de locatie van het overeenkomstige js-bestand in de map `dist` aan te geven. De uitvoer locatie wordt ingesteld door de sjabloon met behulp van `outDir` para meter in het `tsconfig.json`-bestand. Als u deze instelling of de naam van de map wijzigt, kan de runtime niet vinden welke code moet worden uitgevoerd.
+TypeScript-bestanden (.ts) worden in de `dist` uitvoermap getransderpileerd naar JavaScript-bestanden (.js). TypeScript-sjablonen [ `scriptFile` ](#using-scriptfile) gebruiken `function.json` de parameter in om de locatie `dist` van het bijbehorende .js-bestand in de map aan te geven. De uitvoerlocatie wordt door de `outDir` sjabloon `tsconfig.json` ingesteld met behulp van parameter in het bestand. Als u deze instelling of de naam van de map wijzigt, kan de runtime de code die moet worden uitgevoerd niet vinden.
 
 > [!NOTE]
-> Experimentele ondersteuning voor type script bestaat uit versie 1. x van de functions-runtime. Met de experimentele versie worden type script-bestanden omgezet in Java script-bestanden wanneer de functie wordt aangeroepen. In versie 2. x is deze experimentele ondersteuning vervangen door de methode die wordt gebruikt door het hulp programma dat transpilation voordat de host wordt geïnitialiseerd en tijdens het implementatie proces.
+> Experimentele ondersteuning voor TypeScript bestaat versie 1.x van de runtime Functies. De experimentele versie transpiles TypeScript-bestanden in JavaScript-bestanden wanneer de functie wordt aangeroepen. In versie 2.x is deze experimentele ondersteuning vervangen door de toolgestuurde methode die transpilatie doet voordat de host wordt geïnitialiseerd en tijdens het implementatieproces.
 
-De manier waarop u lokaal een type script-project ontwikkelt en implementeert, is afhankelijk van uw ontwikkel programma.
+De manier waarop u lokaal een TypeScript-project ontwikkelt en implementeert, is afhankelijk van uw ontwikkeltool.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-Met de [Azure functions voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) -extensie kunt u uw functies ontwikkelen met behulp van type script. De belangrijkste hulp middelen zijn vereist voor de uitbrei ding Azure Functions.
+Met de extensie [Azure Functions for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) u uw functies ontwikkelen met TypeScript. De Core Tools is een vereiste van de Azure Functions-extensie.
 
-Als u een type script-functie-app in Visual Studio code wilt maken, kiest u `TypeScript` als taal wanneer u een functie-app maakt.
+Als u een TypeScript-functie-app `TypeScript` wilt maken in Visual Studio Code, kiest u als taal wanneer u een functie-app maakt.
 
-Wanneer u op **F5** drukt om de app lokaal uit te voeren, wordt transpilation uitgevoerd voordat de host (func. exe) is geïnitialiseerd. 
+Wanneer u op **F5** drukt om de app lokaal uit te voeren, wordt transpilatie uitgevoerd voordat de host (func.exe) wordt geïnitialiseerd. 
 
-Wanneer u de functie-app in azure implementeert met behulp van de knop **implementeren in functie app...** , genereert de Azure functions extensie eerst een productie-app-kant van Java script-bestanden van de type script-bron bestanden.
+Wanneer u uw functie-app implementeert naar Azure met de knop **Deploy to function-app...** genereert de Azure Functions-extensie eerst een productieklare build van JavaScript-bestanden uit de TypeScript-bronbestanden.
 
-### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+### <a name="azure-functions-core-tools"></a>Core-hulpprogramma's voor Azure-functies
 
-Er zijn verschillende manieren waarop een type script-project verschilt van een Java script-project wanneer de kern Hulpprogramma's worden gebruikt.
+Er zijn verschillende manieren waarop een TypeScript-project verschilt van een JavaScript-project wanneer u de Core-hulpprogramma's gebruikt.
 
 #### <a name="create-project"></a>Project maken
 
-Als u een type script-functie-app-project wilt maken met behulp van basis Hulpprogramma's, moet u de optie type script taal opgeven wanneer u de functie-app maakt. U kunt dit op een van de volgende manieren doen:
+Als u een typeScript-functie-appproject wilt maken met Core Tools, moet u de optie TypeScript-taal opgeven wanneer u de functie-app maakt. U dit op een van de volgende manieren doen:
 
-- Voer de `func init` opdracht uit, selecteer `node` als taal stack en selecteer vervolgens `typescript`.
+- Voer `func init` de opdracht `node` uit, selecteer als `typescript`taalstapel en selecteer .
 
 - Voer de opdracht `func init --worker-runtime typescript` uit.
 
 #### <a name="run-local"></a>Lokaal uitvoeren
 
-Als u de code van de functie-app lokaal wilt uitvoeren met behulp van basis Hulpprogramma's, gebruikt u de volgende opdrachten in plaats van `func host start`: 
+Als u de functie-app-code lokaal wilt uitvoeren met `func host start`Core Tools, gebruikt u de volgende opdrachten in plaats van: 
 
 ```command
 npm install
@@ -618,40 +618,40 @@ De `npm start` opdracht is gelijk aan de volgende opdrachten:
 
 #### <a name="publish-to-azure"></a>Publiceren naar Azure
 
-Voordat u de opdracht [`func azure functionapp publish`] gebruikt om te implementeren in azure, maakt u een productie-gereed build van Java script-bestanden van de type script-bron bestanden. 
+Voordat u [`func azure functionapp publish`] de opdracht gebruikt om te implementeren in Azure, maakt u een productieklare build van JavaScript-bestanden uit de TypeScript-bronbestanden. 
 
-Met de volgende opdrachten wordt uw type script-project voor bereid en gepubliceerd met kern Hulpprogramma's: 
+De volgende opdrachten bereiden en publiceren uw TypeScript-project met behulp van Core Tools: 
 
 ```command
 npm run build:production 
 func azure functionapp publish <APP_NAME>
 ```
 
-Vervang `<APP_NAME>` in deze opdracht door de naam van uw functie-app.
+Vervang in deze `<APP_NAME>` opdracht de naam van uw functie-app.
 
-## <a name="considerations-for-javascript-functions"></a>Overwegingen voor Java script-functies
+## <a name="considerations-for-javascript-functions"></a>Overwegingen voor JavaScript-functies
 
-Wanneer u werkt met Java script-functies, moet u rekening houden met de overwegingen in de volgende secties.
+Wanneer u met JavaScript-functies werkt, moet u rekening houden met de overwegingen in de volgende secties.
 
-### <a name="choose-single-vcpu-app-service-plans"></a>VCPU plannen voor eenmalige App Service kiezen
+### <a name="choose-single-vcpu-app-service-plans"></a>Kies abonnementen voor één vCPU-appservice
 
-Wanneer u een functie-app maakt die gebruikmaakt van het App Service-abonnement, wordt u aangeraden een schema met één vCPU te selecteren in plaats van een plan met meerdere Vcpu's. Vandaag voeren functies java script-functies efficiënter uit op virtuele machines met één vCPU, en het gebruik van grotere Vm's produceert niet de verwachte prestatie verbeteringen. Als dat nodig is, kunt u hand matig uitschalen door meer VM-exemplaren met één vCPU toe te voegen of automatisch schalen in te scha kelen. Zie [aantal exemplaren hand matig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)voor meer informatie.
+Wanneer u een functie-app maakt die het App Service-abonnement gebruikt, raden we u aan een enkel-vCPU-abonnement te selecteren in plaats van een abonnement met meerdere vCPU's. Tegenwoordig worden JavaScript-functies efficiënter uitgevoerd op vm's met één vCPU en het gebruik van grotere VM's levert niet de verwachte prestatieverbeteringen op. Indien nodig u handmatig uitschalen door meer single-vCPU VM-exemplaren toe te voegen, of u automatisch schalen inschakelen. Zie [Het aantal instance per eer handmatig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)voor meer informatie .
 
 ### <a name="cold-start"></a>Koude start
 
-Bij het ontwikkelen van Azure Functions in het serverloze hosting model is koude start een werkelijkheid. *Koude start* verwijst naar het feit dat het starten van de functie-app voor de eerste keer na een periode van inactiviteit langer duurt. Voor Java script-functies met grote afhankelijkheids structuren met name kan koude start aanzienlijk zijn. Als u het koude start proces wilt versnellen, [voert u indien mogelijk uw functies als pakket bestand uit](run-functions-from-deployment-package.md) . Bij veel implementatie methoden wordt standaard het model voor uitvoeren vanaf pakket gebruikt, maar als u een grote koude start ondervindt die niet op deze manier wordt uitgevoerd, kan deze wijziging een aanzienlijke verbetering opleveren.
+Bij het ontwikkelen van Azure-functies in het serverloze hostingmodel zijn koude starts een realiteit. *Koude start* verwijst naar het feit dat wanneer uw functie-app voor het eerst start na een periode van inactiviteit, het langer duurt om op te starten. Voor JavaScript-functies met grote afhankelijkheidsbomen in het bijzonder kan koude start aanzienlijk zijn. Voer uw functies als [pakketbestand](run-functions-from-deployment-package.md) waar mogelijk uit om het koude startproces te versnellen. Veel implementatiemethoden gebruiken standaard de run van het pakketmodel, maar als u grote koude starts ondervindt en niet op deze manier wordt uitgevoerd, kan deze wijziging een aanzienlijke verbetering bieden.
 
-### <a name="connection-limits"></a>Verbindings limieten
+### <a name="connection-limits"></a>Verbindingslimieten
 
-Wanneer u een servicespecifieke client gebruikt in een Azure Functions-toepassing, moet u geen nieuwe client maken bij elke functie aanroep. Maak in plaats daarvan een enkele statische client in het globale bereik. Zie [verbindingen beheren in azure functions](manage-connections.md)voor meer informatie.
+Wanneer u een servicespecifieke client gebruikt in een Azure Functions-toepassing, maakt u geen nieuwe client bij elke functieaanroep. Maak in plaats daarvan één statische client in het globale bereik. Zie [Verbindingen beheren in Azure-functies](manage-connections.md)voor meer informatie.
 
-### <a name="use-async-and-await"></a>`async` en `await` gebruiken
+### <a name="use-async-and-await"></a>Gebruik `async` en`await`
 
-Wanneer u Azure Functions in Java script schrijft, moet u code schrijven met behulp van de `async` en `await` tref woorden. Het schrijven van code met behulp van `async` en `await` in plaats van retour aanroepen of `.then` en `.catch` met beloftes helpt twee veelvoorkomende problemen te voor komen:
- - Niet-onderschepte uitzonde ringen veroorzaken waardoor [het node. js-proces vastloopt](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), waardoor de uitvoering van andere functies kan worden beïnvloed.
- - Onverwacht gedrag, zoals ontbrekende logboeken van context. log, veroorzaakt door asynchrone aanroepen die niet goed zijn gewacht.
+Wanneer u Azure-functies in JavaScript schrijft, moet u code schrijven met de `async` trefwoorden en `await` trefwoorden. Het schrijven `async` `await` van code met `.then` behulp `.catch` van en in plaats van callbacks of en met Beloften helpt voorkomen dat twee veelvoorkomende problemen:
+ - Het gooien van niet-gevangen uitzonderingen die [crashen de Node.js proces](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly), mogelijk van invloed op de uitvoering van andere functies.
+ - Onverwacht gedrag, zoals ontbrekende logboeken uit context.log, veroorzaakt door asynchrone oproepen die niet goed worden afgewacht.
 
-In het onderstaande voor beeld wordt de asynchrone methode `fs.readFile` aangeroepen met een fout-eerste call back functie als de tweede para meter. Met deze code worden beide hierboven vermelde problemen veroorzaakt. Een uitzonde ring die niet expliciet is gevangen in het juiste bereik, heeft het hele proces vastlopen (probleem #1). Het aanroepen van `context.done()` buiten het bereik van de call back-functie betekent dat de functie aanroep kan eindigen voordat het bestand wordt gelezen (probleem #2 oplossen). In dit voor beeld roept `context.done()` te vroeg resultaten aan in ontbrekende logboek vermeldingen die beginnen met `Data from file:`.
+In het onderstaande voorbeeld `fs.readFile` wordt de asynchrone methode aangeroepen met een error-first callback-functie als tweede parameter. Deze code veroorzaakt beide bovengenoemde problemen. Een uitzondering die niet expliciet is gevangen in de juiste scope crashte het hele proces (probleem #1). Bellen `context.done()` buiten het bereik van de callback-functie betekent dat de functieaanroep kan eindigen voordat het bestand wordt gelezen (probleem #2). In dit voorbeeld `context.done()` resulteert het te vroeg bellen `Data from file:`in ontbrekende logboekvermeldingen die beginnen met .
 
 ```javascript
 // NOT RECOMMENDED PATTERN
@@ -672,9 +672,9 @@ module.exports = function (context) {
 }
 ```
 
-Als u de sleutel woorden `async` en `await` gebruikt, kunt u beide fouten voor komen. U moet de functie node. js Utility gebruiken [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) de functies van fout eerste gebruik in te scha kelen in functies die kunnen worden teruggebeld.
+Het `async` gebruik `await` van de en trefwoorden helpt voorkomen dat beide fouten. U moet de hulpprogramma [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) functie Node.js gebruiken om fout-eerste callback-achtige functies om te zetten in wachtbare functies.
 
-In het onderstaande voor beeld mislukken alle niet-verwerkte uitzonde ringen die tijdens de uitvoering van de functie worden gegenereerd de afzonderlijke aanroep die een uitzonde ring heeft veroorzaakt. Het sleutel woord `await` houdt in dat de stappen na het `readFileAsync` alleen worden uitgevoerd nadat `readFile` is voltooid. Met `async` en `await`hoeft u de `context.done()` call back niet aan te roepen.
+In het onderstaande voorbeeld mislukken onverwerkte uitzonderingen die tijdens de functieuitvoering worden gegooid, alleen de individuele aanroep die een uitzondering heeft gegenereerd. Het `await` trefwoord betekent `readFileAsync` dat stappen `readFile` die volgen pas worden uitgevoerd nadat ze zijn voltooid. Met `async` `await`en , u hoeft ook `context.done()` niet te bellen terug.
 
 ```javascript
 // Recommended pattern
@@ -703,4 +703,4 @@ Zie de volgende bronnen voor meer informatie:
 + [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)
 + [Azure Functions triggers en bindingen](functions-triggers-bindings.md)
 
-[' func Azure functionapp Publish ']: functions-run-local.md#project-file-deployment
+['func azure functionapp publish']: functions-run-local.md#project-file-deployment

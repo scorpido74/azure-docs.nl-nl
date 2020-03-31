@@ -1,116 +1,116 @@
 ---
-title: Uitgaand verkeer vergren delen
-description: Meer informatie over het integreren van Azure Firewall voor het beveiligen van uitgaand verkeer vanuit een App Service omgeving.
+title: Uitgaand verkeer afsluiten
+description: Meer informatie over hoe u integreren met Azure Firewall om uitgaand verkeer te beveiligen vanuit een App Service-omgeving.
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 84fcb9076bbc1e75d46d9a6682c96035576ae09e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243859"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475439"
 ---
-# <a name="locking-down-an-app-service-environment"></a>Een App Service Environment vergren delen
+# <a name="locking-down-an-app-service-environment"></a>Een app-serviceomgeving vergrendelen
 
-De App Service Environment (ASE) heeft een aantal externe afhankelijkheden waarvoor toegang tot is vereist om goed te kunnen functioneren. De ASE in de Azure-klant Virtual Network (VNet). Klanten moeten het ASE-afhankelijkheids verkeer toestaan. Dit is een probleem voor klanten die alle uitgevallen uit hun VNet willen vergren delen.
+De App Service Environment (ASE) heeft een aantal externe afhankelijkheden waartoe het toegang nodig heeft om goed te kunnen functioneren. De ASE woont in de klant Azure Virtual Network (VNet). Klanten moeten toestaan dat de ASE afhankelijkheid verkeer, dat is een probleem voor klanten die willen vergrendelen alle uitgang en hun VNet.
 
-Er zijn een aantal inkomende eind punten die worden gebruikt om een ASE te beheren. Het inkomende beheer verkeer kan niet via een firewall apparaat worden verzonden. De bron adressen voor dit verkeer zijn bekend en worden gepubliceerd in het document met [app service Environment-beheer adressen](https://docs.microsoft.com/azure/app-service/environment/management-addresses) . Er is ook een servicetag met de naam AppServiceManagement die kan worden gebruikt met netwerk beveiligings groepen (Nsg's) om inkomend verkeer te beveiligen.
+Er zijn een aantal binnenkomende eindpunten die worden gebruikt om een ASE te beheren. Het binnenkomende beheerverkeer kan niet via een firewall-apparaat worden verzonden. De bronadressen voor dit verkeer zijn bekend en worden gepubliceerd in het document Voor het beheer van adressen van de [App Service Environment.](https://docs.microsoft.com/azure/app-service/environment/management-addresses) Er is ook een Service Tag genaamd AppServiceManagement die kan worden gebruikt met Network Security Groups (NSGs) om inkomend verkeer te beveiligen.
 
-De uitgaande afhankelijkheden voor ASE zijn bijna volledig gedefinieerd met FQDN-adressen, die geen statische aflopen van hun. Het ontbreken van statische adressen betekent dat netwerk beveiligings groepen niet kunnen worden gebruikt om het uitgaande verkeer van een ASE te vergren delen. De adressen veranderen vaak voldoende, waardoor er geen regels kunnen worden ingesteld op basis van de huidige oplossing en gebruiken om Nsg's te maken. 
+De ASE-uitgaande afhankelijkheden worden bijna volledig gedefinieerd met FQDN's, die geen statische adressen achter zich hebben. Het ontbreken van statische adressen betekent dat netwerkbeveiligingsgroepen niet kunnen worden gebruikt om het uitgaande verkeer van een ASE af te sluiten. De adressen veranderen vaak genoeg dat men geen regels kan instellen op basis van de huidige resolutie en die niet gebruiken om NSG's te maken. 
 
-De oplossing voor het beveiligen van uitgaande adressen berust op het gebruik van een firewall apparaat waarmee het uitgaande verkeer op basis van domein namen kan worden beheerd. Azure Firewall kunt het uitgaande HTTP-en HTTPS-verkeer beperken op basis van de FQDN van de bestemming.  
+De oplossing voor het beveiligen van uitgaande adressen ligt in het gebruik van een firewall-apparaat dat uitgaand verkeer op basis van domeinnamen kan beheren. Azure Firewall kan uitgaand HTTP- en HTTPS-verkeer beperken op basis van de FQDN van de bestemming.  
 
-## <a name="system-architecture"></a>Systeem architectuur
+## <a name="system-architecture"></a>Systeemarchitectuur
 
-Voor het implementeren van een ASE met uitgaand verkeer via een firewall apparaat moeten routes worden gewijzigd in het subnet ASE. Routes worden op een IP-niveau toegepast. Als u zich niet bij het definiëren van uw routes bevindt, kunt u TCP-antwoord verkeer afdwingen voor de bron van een ander adres. Als uw antwoord adres afwijkt van het adres verkeer dat is verzonden naar, wordt het probleem asymmetrische route ring genoemd en wordt TCP onderbroken.
+Het implementeren van een ASE met uitgaand verkeer dat door een firewall-apparaat gaat, vereist het wijzigen van routes op het ASE-subnet. Routes werken op IP-niveau. Als u niet voorzichtig bent met het definiëren van uw routes, u TCP-antwoordverkeer naar de bron vanaf een ander adres dwingen. Wanneer uw antwoordadres verschilt van het adres waarnaar is verzonden, wordt het probleem asymmetrische routering genoemd en wordt het TCP gebroken.
 
-Er moeten routes zijn gedefinieerd zodat inkomend verkeer naar de ASE kan reageren op dezelfde manier als waarop het verkeer is binnengekomen. Routes moeten worden gedefinieerd voor inkomende beheer aanvragen en voor inkomende toepassings aanvragen.
+Er moeten routes zijn gedefinieerd zodat inkomend verkeer naar de ASE kan terugantwoorden op dezelfde manier als het verkeer binnenkwam. Routes moeten worden gedefinieerd voor binnenkomende beheeraanvragen en voor binnenkomende aanvraagaanvragen.
 
-Het verkeer van en naar een ASE moet naleven met de volgende conventies
+Het verkeer van en naar een ASE moet zich houden aan de volgende verdragen
 
-* Het verkeer naar Azure SQL, Storage en Event hub wordt niet ondersteund bij gebruik van een firewall apparaat. Dit verkeer moet rechtstreeks naar deze services worden verzonden. De manier om dat te doen is door service-eind punten voor deze drie services te configureren. 
-* Er moeten route tabel regels worden gedefinieerd waarmee binnenkomend beheer verkeer kan worden verzonden vanaf waar het is gearriveerd.
-* Er moeten regels voor route tabellen worden gedefinieerd die binnenkomende toepassings verkeer terugsturen van waar ze zijn ontvangen. 
-* Al het andere verkeer dat de ASE verlaat, kan met een route tabel regel naar uw firewall apparaat worden verzonden.
+* Het verkeer naar Azure SQL, Storage en Event Hub wordt niet ondersteund met het gebruik van een firewall-apparaat. Dit verkeer moet rechtstreeks naar deze diensten worden verzonden. De manier om dat te laten gebeuren is door serviceeindpunten voor deze drie services te configureren. 
+* Routetabelregels moeten worden gedefinieerd die binnenkomend beheerverkeer terugsturen van waar het vandaan komt.
+* Routetabelregels moeten worden gedefinieerd die binnenkomend toepassingsverkeer terugsturen van waar het vandaan komt. 
+* Al het andere verkeer dat de ASE verlaat, kan met een routetabelregel naar uw firewall-apparaat worden verzonden.
 
-![ASE met Azure Firewall-verbindings stroom][5]
+![ASE met Azure Firewall-verbindingsstroom][5]
 
-## <a name="locking-down-inbound-management-traffic"></a>Inkomend beheer verkeer vergren delen
+## <a name="locking-down-inbound-management-traffic"></a>Binnenkomend beheerverkeer vergrendelen
 
-Als aan uw ASE-subnet nog geen NSG is toegewezen, maakt u er een. Stel binnen de NSG de eerste regel in om verkeer toe te staan van de servicetag met de naam AppServiceManagement op poorten 454, 455. De regel voor het toestaan van toegang vanaf de AppServiceManagement-tag is het enige wat vereist is van open bare Ip's om uw ASE te beheren. De adressen achter die servicetag worden alleen gebruikt voor het beheren van de Azure App Service. Het beheer verkeer dat via deze verbindingen loopt, wordt versleuteld en beveiligd met verificatie certificaten. Typisch verkeer op dit kanaal omvat dingen zoals door de klant geïnitieerde opdrachten en status controles. 
+Als uw ASE-subnet er nog geen NSG aan heeft toegewezen, maakt u er een. Stel binnen de NSG de eerste regel in om verkeer toe te staan vanaf de ServiceTag met de naam AppServiceManagement op poorten 454, 455. De regel om toegang toe te staan vanaf de AppServiceManagement-tag is het enige dat vereist is van openbare IP's om uw ASE te beheren. De adressen achter die servicetag worden alleen gebruikt om de Azure App-service te beheren. Het beheerverkeer dat door deze verbindingen stroomt, wordt versleuteld en beveiligd met verificatiecertificaten. Typisch verkeer op dit kanaal omvat zaken als door klanten geïnitieerde opdrachten en statussondes. 
 
-As die via de portal worden gemaakt met een nieuw subnet, worden gemaakt met een NSG die de regel toestaan bevat voor de AppServiceManagement-tag.  
+Ases die via de portal worden gemaakt met een nieuw subnet worden gemaakt met een NSG die de allow regel voor de AppServiceManagement tag bevat.  
 
-Uw ASE moet ook binnenkomende aanvragen van de Load Balancer tag op poort 16001 toestaan. De aanvragen van de Load Balancer op poort 16001 blijven Alive-controles tussen de Load Balancer en de front-ends van ASE. Als poort 16001 is geblokkeerd, wordt uw ASE beschadigd.
+Uw ASE moet ook binnenkomende aanvragen toestaan van de tag Load Balancer op poort 16001. De verzoeken van de Load Balancer op poort 16001 zijn keep alive checks tussen de Load Balancer en de ASE front ends. Als poort 16001 is geblokkeerd, wordt uw ASE ongezond.
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Azure Firewall configureren met uw ASE 
 
-De stappen voor het vergren delen van uitgaand verkeer van uw bestaande ASE met Azure Firewall zijn:
+De stappen om uitgangen van uw bestaande ASE met Azure Firewall te vergrendelen zijn:
 
-1. Schakel service-eind punten in op de SQL-, opslag-en Event hub in uw ASE-subnet. Als u service-eind punten wilt inschakelen, gaat u naar de netwerk Portal > subnetten en selecteert u micro soft. EventHub, micro soft. SQL en micro soft. storage in de vervolg keuzelijst service-eind punten. Wanneer u service-eind punten hebt ingeschakeld voor Azure SQL, moeten alle Azure SQL-afhankelijkheden die uw apps hebben, ook worden geconfigureerd met Service-eind punten. 
+1. Serviceeindpunten inschakelen voor SQL, Storage en Event Hub op uw ASE-subnet. Als u serviceeindpunten wilt inschakelen, gaat u naar de > subnetten van de netwerkportal en selecteert u Microsoft.EventHub, Microsoft.SQL en Microsoft.Storage in de vervolgkeuzelijst Service-eindpunten. Wanneer serviceeindpunten zijn ingeschakeld voor Azure SQL, moeten alle Azure SQL-afhankelijkheden die uw apps hebben, ook worden geconfigureerd met serviceeindpunten. 
 
-   ![Service-eind punten selecteren][2]
+   ![serviceeindpunten selecteren][2]
   
-1. Maak een subnet met de naam AzureFirewallSubnet in het VNet waar uw ASE bestaat. Volg de instructies in de [Azure firewall-documentatie](https://docs.microsoft.com/azure/firewall/) om uw Azure firewall te maken.
+1. Maak een subnet met de naam AzureFirewallSubnet in het VNet waar uw ASE bestaat. Volg de aanwijzingen in de [Azure Firewall-documentatie](https://docs.microsoft.com/azure/firewall/) om uw Azure Firewall te maken.
 
-1. Selecteer in de Azure Firewall UI-> regels > toepassings regel verzameling de optie toepassings regel verzameling toevoegen. Geef een naam, prioriteit en set toestaan op. Geef in de sectie FQDN-Tags een naam op, stel de bron adressen in op * en selecteer de App Service Environment FQDN-code en de Windows Update. 
+1. Selecteer in de >-regelverzameling van de toepassingsregel Azure Firewall > Regels de optie Toepassingsregelverzameling toevoegen. Geef een naam, prioriteit en stel Toestaan in. Geef in de sectie FQDN-tags een naam op, stel de bronadressen in op * en selecteer de FQDN-tag van de app-serviceomgeving en de Windows Update. 
    
-   ![Toepassings regel toevoegen][1]
+   ![Toepassingsregel toevoegen][1]
    
-1. Selecteer in de Azure Firewall GEBRUIKERSINTERFACE > regels > netwerk regel verzameling de optie netwerk regel verzameling toevoegen. Geef een naam, prioriteit en set toestaan op. Geef in de sectie regels onder IP-adressen een naam op, selecteer een ptocol van een **wille keurige**, set *-bron-en doel adressen en stel de poorten in op 123. Met deze regel kan het systeem klok synchronisatie uitvoeren met behulp van NTP. Maak een andere regel op dezelfde manier als poort 12000 om eventuele systeem problemen te sorteren. 
+1. Selecteer netwerkregelverzameling toevoegen in de Azure Firewall UI >-regels > netwerkregelverzameling. Geef een naam, prioriteit en stel Toestaan in. Geef in de sectie Regels onder IP-adressen een naam op, selecteer een ptocol van **Any**, set * op Bron- en bestemmingsadressen en stel de poorten in op 123. Met deze regel kan het systeem kloksynchronisatie uitvoeren met NTP. Maak een andere regel op dezelfde manier om 12000 te poortom te helpen triage eventuele systeemproblemen. 
 
-   ![NTP-netwerk regel toevoegen][3]
+   ![NTP-netwerkregel toevoegen][3]
    
-1. Selecteer in de Azure Firewall GEBRUIKERSINTERFACE > regels > netwerk regel verzameling de optie netwerk regel verzameling toevoegen. Geef een naam, prioriteit en set toestaan op. Geef in de sectie regels onder service Tags een naam op, selecteer een protocol van **any**, stel * in op bron adressen, selecteer een service-tag van AzureMonitor en stel de poorten in op 80, 443. Met deze regel kan het systeem Azure Monitor met informatie over de status en de metrische gegevens opgeven.
+1. Selecteer netwerkregelverzameling toevoegen in de Azure Firewall UI >-regels > netwerkregelverzameling. Geef een naam, prioriteit en stel Toestaan in. Geef in de sectie Regels onder Servicetags een naam op, selecteer een protocol van **Any**, set * op Bronadressen, selecteer een servicetag van AzureMonitor en stel de poorten in op 80, 443. Met deze regel kan het systeem Azure Monitor voorzien van informatie over status- en statistieken.
 
-   ![NTP-service label toevoegen netwerk regel][6]
+   ![Ntp-servicetagnetwerkregel toevoegen][6]
    
-1. Een route tabel maken met de beheer adressen van [app service Environment-beheer]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) adressen met een volgende hop van Internet. De vermeldingen in de route tabel zijn vereist om problemen met asymmetrische route ring te voor komen. Voeg routes toe voor de hieronder vermelde IP-adres afhankelijkheden in de IP-adres afhankelijkheden met een volgende hop van Internet. Voeg een route voor virtuele apparaten toe aan de route tabel voor 0.0.0.0/0 met de volgende hop die uw Azure Firewall privé-IP-adres is. 
+1. Maak een routetabel met de beheeradressen van adressen voor het beheer van [de app-serviceomgeving]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) met een volgende internethop. De routetabelvermeldingen zijn nodig om asymmetrische routeproblemen te voorkomen. Voeg routes toe voor de ip-adresafhankelijkheden die hieronder worden vermeld in de afhankelijkheid van het IP-adres met een volgende internethop. Voeg een route voor virtueel toestel toe aan uw routetabel voor 0.0.0.0/0 met de volgende hop als privé-IP-adres van Azure Firewall. 
 
-   ![Een route tabel maken][4]
+   ![Een routetabel maken][4]
    
-1. Wijs de route tabel toe die u hebt gemaakt in uw ASE-subnet.
+1. Wijs de routetabel die u hebt gemaakt toe aan uw ASE-subnet.
 
-#### <a name="deploying-your-ase-behind-a-firewall"></a>Uw ASE achter een firewall implementeren
+#### <a name="deploying-your-ase-behind-a-firewall"></a>Uw ASE implementeren achter een firewall
 
-De stappen voor het implementeren van uw ASE achter een firewall zijn hetzelfde als het configureren van uw bestaande ASE met een Azure Firewall, behalve dat u uw ASE-subnet moet maken en vervolgens de vorige stappen kunt volgen. Als u uw ASE wilt maken in een bestaand subnet, moet u een resource manager-sjabloon gebruiken, zoals beschreven in het document over het [maken van uw ASE met een resource manager-sjabloon](https://docs.microsoft.com/azure/app-service/environment/create-from-template).
+De stappen om uw ASE achter een firewall te implementeren zijn hetzelfde als het configureren van uw bestaande ASE met een Azure Firewall, behalve dat u uw ASE-subnet moet maken en vervolgens de vorige stappen moet volgen. Als u uw ASE wilt maken in een bestaand subnet, moet u een resourcemanagersjabloon gebruiken zoals beschreven in het document voor [Het maken van uw ASE met een resourcebeheersjabloon.](https://docs.microsoft.com/azure/app-service/environment/create-from-template)
 
-## <a name="application-traffic"></a>Toepassings verkeer 
+## <a name="application-traffic"></a>Toepassingsverkeer 
 
-Met de bovenstaande stappen kan uw ASE zonder problemen worden uitgevoerd. U moet nog steeds dingen configureren om te voldoen aan de behoeften van uw toepassing. Er zijn twee problemen met toepassingen in een ASE die is geconfigureerd met Azure Firewall.  
+Met de bovenstaande stappen kan uw ASE probleemloos werken. U moet nog steeds dingen configureren om aan uw toepassingsbehoeften te voldoen. Er zijn twee problemen voor toepassingen in een ASE die is geconfigureerd met Azure Firewall.  
 
-- Toepassings afhankelijkheden moeten worden toegevoegd aan de Azure Firewall of de route tabel. 
-- Er moeten routes worden gemaakt voor het toepassings verkeer om asymmetrische routerings problemen te voor komen
+- Toepassingsafhankelijkheden moeten worden toegevoegd aan de Azure Firewall of de routetabel. 
+- Er moeten routes worden gemaakt voor het toepassingsverkeer om asymmetrische routeringsproblemen te voorkomen
 
-Als uw toepassingen afhankelijkheden hebben, moeten ze aan uw Azure Firewall worden toegevoegd. Maak toepassings regels om HTTP/HTTPS-verkeer en netwerk regels voor alle andere toe te staan. 
+Als uw toepassingen afhankelijkheden hebben, moeten ze worden toegevoegd aan uw Azure Firewall. Maak toepassingsregels om HTTP/HTTPS-verkeer en netwerkregels voor al het andere toe te staan. 
 
-Als u het adres bereik weet dat door het verkeer van de toepassing wordt aangevraagd, kunt u dit toevoegen aan de route tabel die is toegewezen aan uw ASE-subnet. Als het adres bereik groot of niet opgegeven is, kunt u een netwerk apparaat gebruiken zoals de Application Gateway om u een adres te geven dat u aan de route tabel wilt toevoegen. Lees voor meer informatie over het configureren van een Application Gateway met uw ILB ASE het [integreren van uw ILB-ASE met een Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
+Als u weet van welk adresbereik het verkeer van uw aanvraagaanvraag afkomstig is, u dat toevoegen aan de routetabel die is toegewezen aan uw ASE-subnet. Als het adresbereik groot of niet is opgegeven, u een netwerktoestel zoals de Toepassingsgateway gebruiken om u één adres te geven dat u aan uw routetabel toevoegen. Lees [Uw ILB ASE integreren met een Application Gateway voor](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) meer informatie over het configureren van een Application Gateway met uw ILB ASE
 
-Dit gebruik van de Application Gateway is slechts één voor beeld van het configureren van uw systeem. Als u dit pad hebt gevolgd, moet u een route toevoegen aan de route tabel van het ASE-subnet, zodat het antwoord verkeer dat naar de Application Gateway wordt verzonden, rechtstreeks gaat. 
+Dit gebruik van de Application Gateway is slechts één voorbeeld van het configureren van uw systeem. Als u dit pad hebt gevolgd, moet u een route toevoegen aan de ase-subnetroutetabel, zodat het antwoordverkeer dat naar de toepassingsgateway wordt verzonden, er rechtstreeks naartoe zou gaan. 
 
 ## <a name="logging"></a>Logboekregistratie 
 
-Azure Firewall kunt logboeken naar Azure Storage, Event hub of Azure Monitor logboeken verzenden. Als u uw app wilt integreren met een ondersteunde bestemming, gaat u naar de Azure Firewall-Portal > Diagnostische logboeken en schakelt u de logboeken voor de gewenste bestemming in. Als u integreert met Azure Monitor-logboeken, kunt u de logboek registratie voor elk verkeer dat naar Azure Firewall wordt verzonden, weer geven. Als u het niet-toegestane verkeer wilt zien, opent u de Log Analytics werkruimte Portal > Logboeken en voert u een query in zoals 
+Azure Firewall kan logboeken verzenden naar Azure Storage-, Event Hub- of Azure Monitor-logboeken. Als u uw app wilt integreren met een ondersteunde bestemming, gaat u naar de Azure Firewall-portal > diagnostische logboeken en schakelt u de logboeken in voor de gewenste bestemming. Als u integreert met Azure Monitor-logboeken, u logboekregistratie zien voor verkeer dat naar Azure Firewall wordt verzonden. Als u het verkeer wilt zien dat wordt geweigerd, opent u de werkruimteportal log-analyse > logboeken en voert u een query in zoals 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Het integreren van uw Azure Firewall met Azure Monitor-Logboeken is handig wanneer u voor het eerst van een toepassing werkt wanneer u niet op de hoogte bent van alle toepassings afhankelijkheden. Meer informatie over Azure Monitor Logboeken vindt u [in azure monitor logboek gegevens analyseren](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Het integreren van uw Azure Firewall met Azure Monitor-logboeken is handig wanneer u voor het eerst een toepassing laat werken wanneer u niet op de hoogte bent van alle toepassingsafhankelijkheden. Meer informatie over Azure Monitor-logboeken [vindt u in Azure Monitor.](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
  
 ## <a name="dependencies"></a>Afhankelijkheden
 
-De volgende informatie is alleen vereist als u een ander firewall apparaat dan Azure Firewall wilt configureren. 
+De volgende informatie is alleen vereist als u een ander firewalltoestel dan Azure Firewall wilt configureren. 
 
-- Services die geschikt zijn voor service-eind punten moeten worden geconfigureerd met Service-eind punten.
-- Afhankelijkheden van IP-adressen zijn voor niet-HTTP/S-verkeer (TCP-en UDP-verkeer)
-- FQDN HTTP/HTTPS-eind punten kunnen worden geplaatst op het apparaat van de firewall.
-- Joker teken-HTTP/HTTPS-eind punten zijn afhankelijkheden die kunnen variëren met uw ASE op basis van een aantal kwalificaties. 
-- Linux-afhankelijkheden zijn alleen relevant als u Linux-apps in uw ASE implementeert. Als u geen Linux-apps in uw ASE implementeert, hoeft u deze adressen niet aan uw firewall toe te voegen. 
+- Services-serviceeindpuntservices moeten worden geconfigureerd met serviceeindpunten.
+- Afhankelijkheden van IP-adressen zijn voor niet-HTTP/S-verkeer (zowel TCP- als UDP-verkeer)
+- FQDN HTTP/HTTPS-eindpunten kunnen in uw firewallapparaat worden geplaatst.
+- JokerHTTP/HTTPS-eindpunten zijn afhankelijkheden die kunnen variëren met uw ASE op basis van een aantal kwalificatietoernooien. 
+- Linux-afhankelijkheden zijn alleen een punt van zorg als u Linux-apps implementeert in uw ASE. Als u geen Linux-apps implementeert in uw ASE, hoeven deze adressen niet aan uw firewall te worden toegevoegd. 
 
-#### <a name="service-endpoint-capable-dependencies"></a>Afhankelijkheden voor service-eind punten 
+#### <a name="service-endpoint-capable-dependencies"></a>Afhankelijke afhankelijkheden met serviceeindpunt 
 
 | Eindpunt |
 |----------|
@@ -118,28 +118,28 @@ De volgende informatie is alleen vereist als u een ander firewall apparaat dan A
 | Azure Storage |
 | Azure Event Hub |
 
-#### <a name="ip-address-dependencies"></a>Afhankelijkheden van IP-adressen
+#### <a name="ip-address-dependencies"></a>Afhankelijkheden van IP-adres
 
 | Eindpunt | Details |
 |----------| ----- |
-| \*: 123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
-| \*: 12000 | Deze poort wordt gebruikt voor een systeem bewaking. Als dit is geblokkeerd, zijn er problemen met de sorteren, maar uw ASE blijft actief. |
-| 40.77.24.27:80 | Nodig om problemen met ASE te controleren en te melden |
-| 40.77.24.27:443 | Nodig om problemen met ASE te controleren en te melden |
-| 13.90.249.229:80 | Nodig om problemen met ASE te controleren en te melden |
-| 13.90.249.229:443 | Nodig om problemen met ASE te controleren en te melden |
-| 104.45.230.69:80 | Nodig om problemen met ASE te controleren en te melden |
-| 104.45.230.69:443 | Nodig om problemen met ASE te controleren en te melden |
-| 13.82.184.151:80 | Nodig om problemen met ASE te controleren en te melden |
-| 13.82.184.151:443 | Nodig om problemen met ASE te controleren en te melden |
+| \*:123 | NTP klok te controleren. Verkeer wordt gecontroleerd op meerdere eindpunten op poort 123 |
+| \*:12000 | Deze poort wordt gebruikt voor een aantal systeemmonitoring. Als geblokkeerd, dan zullen sommige problemen moeilijker te triage, maar uw ASE zal blijven werken |
+| 40.77.24.27:80 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 40.77.24.27:443 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 13.90.249.229:80 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 13.90.249.229:443 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 104.45.230.69:80 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 104.45.230.69:443 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 13.82.184.151:80 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 13.82.184.151:443 | Nodig om ase-problemen te monitoren en te waarschuwen |
 
-Met een Azure Firewall krijgt u automatisch alle onderstaande instellingen die zijn geconfigureerd met de FQDN-Tags. 
+Met een Azure Firewall krijgt u automatisch alles hieronder geconfigureerd met de FQDN-tags. 
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS-afhankelijkheden 
 
 | Eindpunt |
 |----------|
-|graph.windows.net:443 |
+|graph.microsoft.com:443 |
 |login.live.com:443 |
 |login.windows.com:443 |
 |login.windows.net:443 |
@@ -216,15 +216,15 @@ Met een Azure Firewall krijgt u automatisch alle onderstaande instellingen die z
 |gmstorageprodsn1.table.core.windows.net:443 |
 |rteventservice.trafficmanager.net:443 |
 
-#### <a name="wildcard-httphttps-dependencies"></a>Joker teken-HTTP/HTTPS-afhankelijkheden 
+#### <a name="wildcard-httphttps-dependencies"></a>Afhankelijkheden van Jokerteken HTTP/HTTPS 
 
 | Eindpunt |
 |----------|
-|Go-Prod-\*. cloudapp.net:443 |
-| \*. management.azure.com:443 |
-| \*. update.microsoft.com:443 |
-| \*. windowsupdate.microsoft.com:443 |
-| \*. identity.azure.net:443 |
+|gr-Prod-\*.cloudapp.net:443 |
+| \*.management.azure.com:443 |
+| \*.update.microsoft.com:443 |
+| \*.windowsupdate.microsoft.com:443 |
+| \*.identity.azure.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux-afhankelijkheden 
 
@@ -239,7 +239,7 @@ Met een Azure Firewall krijgt u automatisch alle onderstaande instellingen die z
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
-| \*. cdn.mscr.io:443 |
+| \*.cdn.mscr.io:443 |
 |mcr.microsoft.com:443 |
 |packages.fluentbit.io:80 |
 |packages.fluentbit.io:443 |
@@ -256,19 +256,19 @@ Met een Azure Firewall krijgt u automatisch alle onderstaande instellingen die z
 |40.76.35.62:11371 |
 |104.215.95.108:11371 |
 
-## <a name="us-gov-dependencies"></a>US Gov afhankelijkheden
+## <a name="us-gov-dependencies"></a>Amerikaanse Gov afhankelijkheden
 
-Volg voor as in US Gov regio's de instructies in de sectie [Azure firewall configureren met uw ASE](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase) in dit document voor het configureren van een Azure Firewall met uw ASE.
+Volg de instructies in het gedeelte Azure Firewall configureren met het gedeelte [ASE](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase) van dit document om een Azure Firewall met uw ASE te configureren voor ASE's in amerikaanse gov-regio's.
 
-Als u een ander apparaat dan Azure Firewall wilt gebruiken in US Gov 
+Als u een ander apparaat dan Azure Firewall in US Gov wilt gebruiken 
 
-* Services die geschikt zijn voor service-eind punten moeten worden geconfigureerd met Service-eind punten.
-* FQDN HTTP/HTTPS-eind punten kunnen worden geplaatst op het apparaat van de firewall.
-* Joker teken-HTTP/HTTPS-eind punten zijn afhankelijkheden die kunnen variëren met uw ASE op basis van een aantal kwalificaties.
+* Services-serviceeindpuntservices moeten worden geconfigureerd met serviceeindpunten.
+* FQDN HTTP/HTTPS-eindpunten kunnen in uw firewallapparaat worden geplaatst.
+* JokerHTTP/HTTPS-eindpunten zijn afhankelijkheden die kunnen variëren met uw ASE op basis van een aantal kwalificatietoernooien.
 
-Linux is niet beschikbaar in US Gov regio's en wordt dus niet weer gegeven als een optionele configuratie.
+Linux is niet beschikbaar in de Amerikaanse Gov regio's en is dus niet vermeld als een optionele configuratie.
 
-#### <a name="service-endpoint-capable-dependencies"></a>Afhankelijkheden voor service-eind punten ####
+#### <a name="service-endpoint-capable-dependencies"></a>Afhankelijke afhankelijkheden met serviceeindpunt ####
 
 | Eindpunt |
 |----------|
@@ -276,28 +276,28 @@ Linux is niet beschikbaar in US Gov regio's en wordt dus niet weer gegeven als e
 | Azure Storage |
 | Azure Event Hub |
 
-#### <a name="ip-address-dependencies"></a>Afhankelijkheden van IP-adressen
+#### <a name="ip-address-dependencies"></a>Afhankelijkheden van IP-adres
 
 | Eindpunt | Details |
 |----------| ----- |
-| \*: 123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
-| \*: 12000 | Deze poort wordt gebruikt voor een systeem bewaking. Als dit is geblokkeerd, zijn er problemen met de sorteren, maar uw ASE blijft actief. |
-| 40.77.24.27:80 | Nodig om problemen met ASE te controleren en te melden |
-| 40.77.24.27:443 | Nodig om problemen met ASE te controleren en te melden |
-| 13.90.249.229:80 | Nodig om problemen met ASE te controleren en te melden |
-| 13.90.249.229:443 | Nodig om problemen met ASE te controleren en te melden |
-| 104.45.230.69:80 | Nodig om problemen met ASE te controleren en te melden |
-| 104.45.230.69:443 | Nodig om problemen met ASE te controleren en te melden |
-| 13.82.184.151:80 | Nodig om problemen met ASE te controleren en te melden |
-| 13.82.184.151:443 | Nodig om problemen met ASE te controleren en te melden |
+| \*:123 | NTP klok te controleren. Verkeer wordt gecontroleerd op meerdere eindpunten op poort 123 |
+| \*:12000 | Deze poort wordt gebruikt voor een aantal systeemmonitoring. Als geblokkeerd, dan zullen sommige problemen moeilijker te triage, maar uw ASE zal blijven werken |
+| 40.77.24.27:80 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 40.77.24.27:443 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 13.90.249.229:80 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 13.90.249.229:443 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 104.45.230.69:80 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 104.45.230.69:443 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 13.82.184.151:80 | Nodig om ase-problemen te monitoren en te waarschuwen |
+| 13.82.184.151:443 | Nodig om ase-problemen te monitoren en te waarschuwen |
 
 #### <a name="dependencies"></a>Afhankelijkheden ####
 
 | Eindpunt |
 |----------|
-| \*. ctldl.windowsupdate.com:80 |
-| \*. management.usgovcloudapi.net:80 |
-| \*. update.microsoft.com:80 |
+| \*.ctldl.windowsupdate.com:80 |
+| \*.management.usgovcloudapi.net:80 |
+| \*.update.microsoft.com:80 |
 |admin.core.usgovcloudapi.net:80 |
 |azperfmerges.blob.core.windows.net:80 |
 |azperfmerges.blob.core.windows.net:80 |
@@ -340,9 +340,9 @@ Linux is niet beschikbaar in US Gov regio's en wordt dus niet weer gegeven als e
 |management.usgovcloudapi.net:80 |
 |maupdateaccountff.blob.core.usgovcloudapi.net:80 |
 |mscrl.microsoft.com
-|OCSP. Digicert. 0 |
+|ocsp.digicert.0 |
 |ocsp.msocsp.co|
-|OCSP. VeriSign. 0 |
+|ocsp.verisign.0 |
 |rteventse.trafficmanager.net:80 |
 |settings-n.data.microsoft.com:80 |
 |shavamafestcdnprod1.azureedge.net:80 |
@@ -354,8 +354,8 @@ Linux is niet beschikbaar in US Gov regio's en wordt dus niet weer gegeven als e
 |www.msftconnecttest.com:80 |
 |www.thawte.com:80 |
 |\*ctldl.windowsupdate.com:443 |
-|\*. management.usgovcloudapi.net:443 |
-|\*. update.microsoft.com:443 |
+|\*.management.usgovcloudapi.net:443 |
+|\*.update.microsoft.com:443 |
 |admin.core.usgovcloudapi.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
 |azperfmerges.blob.core.windows.net:443 |

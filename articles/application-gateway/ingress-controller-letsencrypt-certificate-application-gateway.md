@@ -1,6 +1,6 @@
 ---
-title: LetsEncrypt.org-certificaten gebruiken met Application Gateway
-description: In dit artikel vindt u informatie over het verkrijgen van een certificaat van LetsEncrypt.org en het op uw Application Gateway gebruiken voor AKS-clusters.
+title: LetsEncrypt.org certificaten gebruiken met Application Gateway
+description: In dit artikel vindt u informatie over het verkrijgen van een certificaat van LetsEncrypt.org en gebruiken op uw Application Gateway voor AKS-clusters.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73957972"
 ---
-# <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Certificaten gebruiken met LetsEncrypt.org in Application Gateway voor AKS-clusters
+# <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>Certificaten gebruiken met LetsEncrypt.org op Application Gateway voor AKS-clusters
 
-In deze sectie configureert u uw AKS om [LetsEncrypt.org](https://letsencrypt.org/) te gebruiken en automatisch een TLS/SSL-certificaat voor uw domein te verkrijgen. Het certificaat wordt geïnstalleerd op Application Gateway, waarmee SSL/TLS-beëindiging voor uw AKS-cluster wordt uitgevoerd. De installatie die hier wordt beschreven, maakt gebruik van de Kubernetes-invoeg toepassing voor [certificaat beheer](https://github.com/jetstack/cert-manager) , waarmee het maken en beheren van certificaten wordt geautomatiseerd.
+In deze sectie configureert u uw AKS om gebruik te maken [van LetsEncrypt.org](https://letsencrypt.org/) en automatisch een TLS/SSL-certificaat voor uw domein te verkrijgen. Het certificaat wordt geïnstalleerd op Application Gateway, waarmee SSL/TLS-beëindiging voor uw AKS-cluster wordt uitgevoerd. De hier beschreven setup maakt gebruik van de [cert-manager](https://github.com/jetstack/cert-manager) Kubernetes add-on, die het maken en beheren van certificaten automatiseert.
 
-Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op uw bestaande AKS-cluster te installeren.
+Volg de onderstaande stappen om [cert-manager](https://docs.cert-manager.io) te installeren op uw bestaande AKS-cluster.
 
-1. Helm grafiek
+1. Helmdiagram
 
-    Voer het volgende script uit om de `cert-manager` helm-grafiek te installeren. Dit is:
+    Voer het volgende script `cert-manager` uit om de helmdiagram te installeren. Dit zal:
 
-    - een nieuwe `cert-manager` naam ruimte maken op uw AKS
-    - Maak de volgende CRDs: Certificate, Challenge, ClusterIssuer, Issuer, order
-    - CERT-beheer grafiek (van [docs.cert-Manager.io)](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps) installeren
+    - een nieuwe `cert-manager` naamruimte op uw AKS maken
+    - de volgende CRD's maken: certificaat, uitdaging, clusteruitgever, emittent, order
+    - cert-manager-diagram installeren (vanaf [docs.cert-manager.io)](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps)
 
     ```bash
     #!/bin/bash
@@ -54,16 +54,16 @@ Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op 
       jetstack/cert-manager
     ```
 
-2. ClusterIssuer-resource
+2. ClusterIssuer-bron
 
-    Maak een `ClusterIssuer` resource. Het is vereist voor `cert-manager` om de `Lets Encrypt` certificerings instantie te vertegenwoordigen waar de ondertekende certificaten worden verkregen.
+    Maak `ClusterIssuer` een resource. Het is `cert-manager` vereist door `Lets Encrypt` de certificaatautoriteit te vertegenwoordigen waar de ondertekende certificaten zullen worden verkregen.
 
-    Door gebruik te maken van de niet-naam ruimte `ClusterIssuer` resource, geeft CERT-Manager certificaten uit die kunnen worden gebruikt vanuit meerdere naam ruimten. `Let’s Encrypt` gebruikt het ACME-protocol om te controleren of u een bepaalde domein naam beheert en een certificaat uitgeeft. Meer informatie over het configureren van `ClusterIssuer` eigenschappen [vindt u hier](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer` vraagt `cert-manager` om certificaten uit te geven met behulp van de `Lets Encrypt` faserings omgeving die wordt gebruikt voor het testen (het basis certificaat is niet aanwezig in de browser-en client vertrouwensrelatie archieven).
+    Met behulp van de `ClusterIssuer` niet-namespaced resource geeft cert-manager certificaten uit die kunnen worden verbruikt uit meerdere naamruimten. `Let’s Encrypt`gebruikt het ACME-protocol om te controleren of u een bepaalde domeinnaam beheert en om u een certificaat te geven. Meer details over `ClusterIssuer` het configureren van eigenschappen [hier](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html). `ClusterIssuer`zal `cert-manager` instrueren om certificaten `Lets Encrypt` uit te geven met behulp van de faseringsomgeving die wordt gebruikt voor het testen (het rootcertificaat is niet aanwezig in browser-/clientvertrouwenswinkels).
 
-    Het standaard type Challenge in de onderstaande YAML is `http01`. Andere uitdagingen worden beschreven in [letsencrypt.org-vraag typen](https://letsencrypt.org/docs/challenge-types/)
+    Het standaard uitdagingstype in de `http01`Onderstaande YAML is . Andere uitdagingen worden gedocumenteerd op [letsencrypt.org - Challenge Types](https://letsencrypt.org/docs/challenge-types/)
 
     > [!IMPORTANT] 
-    > `<YOUR.EMAIL@ADDRESS>` in de onderstaande YAML bijwerken
+    > Update `<YOUR.EMAIL@ADDRESS>` in de YAML hieronder
 
     ```bash
     #!/bin/bash
@@ -95,13 +95,13 @@ Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op 
 
 3. App implementeren
 
-    Maak een ingangs bron om de `guestbook` toepassing beschikbaar te maken met behulp van de Application Gateway met het certificaat voor het versleutelen van certificaten.
+    Maak een Ingress-bron `guestbook` om de toepassing bloot te leggen met behulp van de Toepassingsgateway met het certificaat Met versleutelen door te maken.
 
-    Zorg ervoor dat Application Gateway een open bare frontend-IP-configuratie met een DNS-naam heeft (met behulp van het standaard `azure.com` domein, of een `Azure DNS Zone` service inrichten en uw eigen aangepaste domein toewijst).
-    Let op de aantekening `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`, waarbij CERT-beheer aangeeft dat de gelabelde ingangs bron moet worden verwerkt.
+    Zorg ervoor dat u Application Gateway een openbare Frontend IP-configuratie heeft met een DNS-naam (gebruik het standaarddomein `azure.com` of een `Azure DNS Zone` service inrichten en uw eigen aangepaste domein toewijzen).
+    Let op de `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`annotatie , die cert-manager vertelt om de gelabelde Ingress-bron te verwerken.
 
     > [!IMPORTANT] 
-    > Werk `<PLACEHOLDERS.COM>` in het onderstaande YAML met uw eigen domein (of de Application Gateway, bijvoorbeeld ' kh-aks-ingress.westeurope.cloudapp.azure.com ')
+    > Update `<PLACEHOLDERS.COM>` in de YAML hieronder met uw eigen domein (of de Application Gateway een, bijvoorbeeld 'kh-aks-ingress.westeurope.cloudapp.azure.com')
 
     ```bash
     kubectl apply -f - <<EOF
@@ -127,15 +127,15 @@ Volg de onderstaande stappen om [CERT-Manager](https://docs.cert-manager.io) op 
     EOF
     ```
 
-    Na een paar seconden hebt u via de Application Gateway HTTPS-URL toegang tot de `guestbook`-service met het automatisch uitgegeven **staging** `Lets Encrypt`-certificaat.
-    U ontvangt mogelijk een waarschuwing van een ongeldige certificerings instantie in uw browser. Het faserings certificaat wordt uitgegeven door `CN=Fake LE Intermediate X1`. Dit geeft aan dat het systeem werkt zoals verwacht en dat u klaar bent voor uw productie certificaat.
+    Na een paar seconden hebt `guestbook` u toegang tot de service via de HTTPS-url van de Application Gateway met behulp van het automatisch uitgegeven **staging-certificaat.** `Lets Encrypt`
+    Uw browser kan u waarschuwen voor een ongeldige cert-autoriteit. Het certificaat voor `CN=Fake LE Intermediate X1`de fasering wordt afgegeven door . Dit is een indicatie dat het systeem werkte zoals verwacht en u klaar bent voor uw productiecertificaat.
 
-4. Productie certificaat
+4. Productiecertificaat
 
-    Zodra het faserings certificaat is geïnstalleerd, kunt u overschakelen naar een productie server:
-    1. Vervang de tijdelijke aantekening van uw ingangs resource door: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
-    1. Verwijder de bestaande staging-`ClusterIssuer` die u in de vorige stap hebt gemaakt en maak een nieuwe door de ACME-server te vervangen door de ClusterIssuer YAML hierboven met `https://acme-v02.api.letsencrypt.org/directory`
+    Zodra uw faseringscertificaat is ingesteld, u overschakelen naar een productie-ACME-server:
+    1. Vervang de tijdelijke annotatie op uw Ingress-bron door:`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
+    1. Verwijder de `ClusterIssuer` bestaande fasering die u in de vorige stap hebt gemaakt en maak een nieuwe door de ACME-server te vervangen door de hierboven genoemde ClusterIssuer YAML`https://acme-v02.api.letsencrypt.org/directory`
 
 5. Verlopen en verlengen van certificaten
 
-    Voordat het `Lets Encrypt` certificaat verloopt, wordt het certificaat in het Kubernetes-geheim archief automatisch door `cert-manager` bijgewerkt. Op dat moment wordt Application Gateway ingangs controller het bijgewerkte geheim toegepast dat wordt vermeld in de binnenkomende resources die worden gebruikt om de Application Gateway te configureren.
+    Voordat `Lets Encrypt` het certificaat `cert-manager` verloopt, wordt het certificaat automatisch bijgewerkt in de geheime opslag van Kubernetes. Op dat moment past Application Gateway Ingress Controller het bijgewerkte geheim toe waarnaar wordt verwezen in de binnenkomende bronnen die worden gebruikt om de Application Gateway te configureren.

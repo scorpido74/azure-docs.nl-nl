@@ -1,6 +1,6 @@
 ---
-title: Details verzamelen over alle virtuele machines in een abonnement met Power shell
-description: Details verzamelen over alle virtuele machines in een abonnement met Power shell
+title: Gegevens verzamelen over alle VM's in een abonnement met PowerShell
+description: Gegevens verzamelen over alle VM's in een abonnement met PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -16,23 +16,23 @@ ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
 ms.openlocfilehash: 237081380445f2b2e4168ee3afe9a3ed7544fc89
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900205"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Details verzamelen over alle virtuele machines in een abonnement met Power shell
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Gegevens verzamelen over alle VM's in een abonnement met PowerShell
 
-Met dit script maakt u een CSV met de VM-naam, de naam van de resource groep, de regio, de Virtual Network, het subnet, het privé-IP-adres, het type besturings systeem en het open bare IP-adres van de virtuele machines in het abonnement.
+Met dit script wordt een csv gemaakt die het VM-naam, de naam van de resourcegroep, regio, virtueel netwerk, subnet, privé-IP-adres, OS-type en openbaar IP-adres van de VM's in het opgegeven abonnement bevat.
 
-Als u geen [Azure-abonnement](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) hebt, maakt u een [gratis account](https://azure.microsoft.com/free) voordat u begint.
+Als u geen [Azure-abonnement](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)hebt, maakt u een [gratis account](https://azure.microsoft.com/free) voordat u begint.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -70,14 +70,14 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>Uitleg van het script
-In dit script worden de volgende opdrachten gebruikt om een CSV-export van de gegevens van Vm's in een abonnement te maken. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+Dit script gebruikt volgende opdrachten om een csv-export van de details van VM's in een abonnement te maken. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 |Opdracht|Opmerkingen|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Hiermee stelt u de Tenant, het abonnement en de omgeving in voor cmdlets die moeten worden gebruikt in de huidige sessie.|
+|[Select-AzAbonnement](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Hiermee stelt u de tenant, het abonnement en de omgeving in voor cmdlets die in de huidige sessie kunnen worden gebruikt.|
 |[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Hiermee haalt u de eigenschappen van een virtuele machine op.|
-|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Hiermee haalt u een openbaar IP-adres op.|
-|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Hiermee wordt een netwerk interface opgehaald.|
+|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Krijgt een openbaar IP-adres.|
+|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Krijgt een netwerkinterface.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

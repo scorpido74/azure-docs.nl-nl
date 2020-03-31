@@ -1,6 +1,6 @@
 ---
-title: Een paneel toevoegen aan de oplossing voor externe controle UI - Azure | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u een nieuw deelvenster toevoegen aan het dashboard in de Remote Monitoring solution accelerator-Webgebruikersinterface.
+title: Een paneel toevoegen aan de gebruikersinterface van de oplossing voor externe bewaking - Azure | Microsoft Documenten
+description: In dit artikel ziet u hoe u een nieuw paneel toevoegt aan het dashboard in de webgebruikersinterface voor het versnellersweb op afstand.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,57 +9,57 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447060"
 ---
-# <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepaste paneel toevoegen aan het dashboard in de Remote Monitoring solution accelerator-Webgebruikersinterface
+# <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Een aangepast paneel toevoegen aan het dashboard in de web-gebruikersinterface van de oplossing voor externe bewaking
 
-In dit artikel wordt beschreven hoe u een nieuw deelvenster op een dashboardpagina toevoegen in de Remote Monitoring solution accelerator-Webgebruikersinterface. Dit artikel wordt beschreven:
+In dit artikel ziet u hoe u een nieuw paneel toevoegt aan een dashboardpagina in de webgebruikersinterface voor het versnellersweb op afstand. Het artikel beschrijft:
 
-- Klik hier voor meer informatie over het voorbereiden van een lokale ontwikkelingsomgeving.
-- Hoe u een nieuw deelvenster toevoegen aan een dashboardpagina in de web-UI.
+- Hoe maak je een lokale ontwikkelingsomgeving voor te bereiden.
+- Een nieuw paneel toevoegen aan een dashboardpagina in de webgebruikersinterface.
 
-Het deelvenster Voorbeeld in dit artikel wordt weergegeven op de dashboardpagina van de bestaande.
+Het voorbeeldpaneel in dit artikel wordt weergegeven op de bestaande dashboardpagina.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt de stappen in deze handleiding hebt voltooid, moet u de volgende software is geïnstalleerd op uw lokale ontwikkelcomputer:
+Als u de stappen in deze handleiding wilt uitvoeren, hebt u de volgende software nodig die op uw lokale ontwikkelingsmachine is geïnstalleerd:
 
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-U moet de stappen in de [een aangepaste pagina toevoegen aan de Remote Monitoring solution accelerator-Webgebruikersinterface](iot-accelerators-remote-monitoring-customize-page.md) artikel voordat u doorgaat.
+Voer de stappen in de [aangepaste pagina Toevoegen uit aan het webgebruikersinterfacevan de rasgebruikersinterface](iot-accelerators-remote-monitoring-customize-page.md) van de oplossing voor externe bewaking voordat u verdergaat.
 
 ## <a name="add-a-panel"></a>Een deelvenster toevoegen
 
-Als u wilt toevoegen een deelvenster aan de web-UI, moet u de bronbestanden die definiëren van het paneel toevoegen en wijzig vervolgens het dashboard om het deelvenster weer te geven.
+Als u een deelvenster wilt toevoegen aan de webgebruikersinterface, moet u de bronbestanden toevoegen die het deelvenster definiëren en vervolgens het dashboard wijzigen om het deelvenster weer te geven.
 
-### <a name="add-the-new-files-that-define-the-panel"></a>Toevoegen van de nieuwe bestanden die het paneel definiëren
+### <a name="add-the-new-files-that-define-the-panel"></a>De nieuwe bestanden toevoegen die het deelvenster definiëren
 
-Aan de slag te gaan, de **src/overzicht/onderdelen/pagina's / dashboard/panelen/examplePanel** map bevat de bestanden die een deelvenster definieert, met inbegrip van:
+Om u op weg te helpen, bevat de map **src/walkthrough/components/pages/dashboard/panels/examplePanel** de bestanden die een paneel definiëren, waaronder:
 
-**examplePanel.js**
+**voorbeeldPanel.js**
 
 [!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
-Kopieer de **src/overzicht/onderdelen/pagina's / dashboard/panelen/examplePanel** map die u wilt de **src/onderdelen/pagina's / dashboard/panelen** map.
+Kopieer de **src/walkthrough/components/pages/dashboard/panels/examplePanel** map naar de **src/components/pages/dashboard/panels** map.
 
-Voeg de volgende uitvoer naar de **src/walkthrough/components/pages/dashboard/panels/index.js** bestand:
+Voeg de volgende export toe aan het bestand **src/walkthrough/components/pages/dashboard/panels/index.js:**
 
 ```js
 export * from './examplePanel';
 ```
 
-### <a name="add-the-panel-to-the-dashboard"></a>Het paneel aan het dashboard toevoegen
+### <a name="add-the-panel-to-the-dashboard"></a>Het deelvenster toevoegen aan het dashboard
 
-Wijzig de **src/components/pages/dashboard/dashboard.js** om toe te voegen van het paneel.
+Wijzig de **src/components/pages/dashboard/dashboard.js** om het paneel toe te voegen.
 
-De voorbeeld-deelvenster toevoegen aan de lijst van de invoer van deelvensters:
+Voeg het voorbeeldpaneel toe aan de lijst met invoer uit deelvensters:
 
 ```js
 import {
@@ -74,7 +74,7 @@ import {
 } from './panels';
 ```
 
-De celdefinitie van de volgende toevoegen aan het raster in de pagina-inhoud:
+Voeg de volgende celdefinitie toe aan het raster in de pagina-inhoud:
 
 ```js
           <Cell className="col-2">
@@ -82,18 +82,18 @@ De celdefinitie van de volgende toevoegen aan het raster in de pagina-inhoud:
           </Cell>
 ```
 
-## <a name="test-the-flyout"></a>De flyout testen
+## <a name="test-the-flyout"></a>Test de flyout
 
-Als de web UI niet al lokaal wordt uitgevoerd, voert u de volgende opdracht uit in de hoofdmap van de lokale kopie van de opslagplaats:
+Als de webgebruikersinterface nog niet lokaal wordt uitgevoerd, voert u de volgende opdracht uit in de hoofdtekst van uw lokale kopie van de opslagplaats:
 
 ```cmd/sh
 npm start
 ```
 
-De vorige opdracht wordt uitgevoerd de Webinterface lokaal op [ http://localhost:3000/dashboard ](http://localhost:3000/dashboard). Navigeer naar de **Dashboard** pagina om het nieuwe deelvenster weer te geven.
+Met de vorige opdracht wordt [http://localhost:3000/dashboard](http://localhost:3000/dashboard)de gebruikersinterface lokaal uitgevoerd op . Navigeer naar de **dashboardpagina** om het nieuwe deelvenster weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over de resources beschikbaar om u te helpen bij het toevoegen of aanpassen van dashboards in de web-UI in de oplossingsverbetering voor externe controle.
+In dit artikel leert u over de beschikbare bronnen om u te helpen dashboards toe te voegen of aan te passen in de web-gebruikersinterface in de versneller van de oplossing voor externe bewaking.
 
-Zie voor meer informatie over de oplossingsverbetering voor externe controle [architectuur voor externe controle](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Zie [Remote Monitoring architecture](iot-accelerators-remote-monitoring-sample-walkthrough.md)voor meer conceptuele informatie over de remote monitoring oplossingsversneller.

@@ -1,7 +1,7 @@
 ---
 title: Status van het databasemigratiescenario
 titleSuffix: Azure Database Migration Service
-description: Meer informatie over de status van de migratie scenario's die door Azure Database Migration Service worden ondersteund.
+description: Meer informatie over de status van de migratiescenario's die worden ondersteund door Azure Database Migration Service.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,47 +13,47 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
 ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254917"
 ---
-# <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status van migratie scenario's die door Azure Database Migration Service worden ondersteund
+# <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status van migratiescenario's die worden ondersteund door Azure Database Migration Service
 
-Azure Database Migration Service is ontworpen ter ondersteuning van verschillende migratie scenario's (bron/doel paren) voor zowel offline (eenmalige) als online (continue synchronisatie)-migraties. De dekking van het scenario dat door Azure Database Migration Service wordt gegeven, wordt verlengd over een bepaalde periode. Nieuwe scenario's worden regel matig toegevoegd. In dit artikel worden migratie scenario's beschreven die momenteel door Azure Database Migration Service worden ondersteund en de status (persoonlijke preview, open bare preview of algemene Beschik baarheid) voor elk scenario.
+Azure Database Migration Service is ontworpen om verschillende migratiescenario's (bron-/doelparen) te ondersteunen voor zowel offline (eenmalige) als online (continuous sync) migraties. De scenariodekking van Azure Database Migration Service wordt in de loop van de tijd uitgebreid. Er worden regelmatig nieuwe scenario's toegevoegd. In dit artikel worden migratiescenario's geïdentificeerd die momenteel worden ondersteund door azure databasemigratieservice en de status (privévoorbeeld, openbare preview of algemene beschikbaarheid) voor elk scenario.
 
 ## <a name="offline-versus-online-migrations"></a>Offline versus online migraties
 
-Met Azure Database Migration Service kunt u een offline-of online migratie uitvoeren. Met *offline* migraties begint de uitval tijd van de toepassing op het moment dat de migratie wordt gestart. Gebruik een *online* migratie om de downtime te beperken tot de tijd die nodig is om naar de nieuwe omgeving te knippen wanneer de migratie is voltooid. Het is raadzaam om een offline migratie te testen om te bepalen of de downtime acceptabel is. Als dat niet het geval is, kunt u een online migratie uitvoeren.
+Met Azure Database Migration Service u een offline of een online migratie doen. Bij *offline* migraties begint de uitvaltijd van toepassingen op hetmoment dat de migratie wordt gestart. Gebruik een *online* migratie om downtime te beperken tot de tijd die nodig is om te worden teruggebracht naar de nieuwe omgeving wanneer de migratie is voltooid. Het wordt aanbevolen om een offline migratie te testen om te bepalen of de downtime acceptabel is; zo niet, doe dan een online migratie.
 
-## <a name="migration-scenario-status"></a>Status van migratie scenario
+## <a name="migration-scenario-status"></a>Status migratiescenario
 
-De status van de migratie scenario's die door Azure Database Migration Service worden ondersteund, is afhankelijk van de tijd. Over het algemeen worden scenario's eerst uitgebracht in **een persoonlijke preview**. Klanten die deel uitmaken van de preview-versie van een persoonlijke voor beeld, moeten een benoeming indienen via de [DMS preview-site](https://aka.ms/dms-preview). Na een persoonlijke Preview wordt de status van het scenario gewijzigd in **open bare preview**. Azure Database Migration Service gebruikers kunnen migratie scenario's in open bare preview-versie rechtstreeks vanuit de gebruikers interface uitproberen. Het is niet nodig om u aan te melden.  Migratie scenario's in de open bare preview-versie zijn echter mogelijk niet beschikbaar in alle regio's en kunnen aanvullende wijzigingen ondergaan voordat de definitieve versie wordt uitgebracht. Na de open bare Preview wordt de status van het scenario gewijzigd in **Algemeen Beschik baarheid**. Algemene Beschik baarheid (GA) is de laatste release status en de functionaliteit is voltooid en toegankelijk voor alle gebruikers.
+De status van migratiescenario's die worden ondersteund door Azure Database Migration Service varieert met de tijd. Over het algemeen worden scenario's eerst vrijgegeven in **privévoorbeeld**. Deelnemen aan private preview vereist dat klanten een nominatie indienen via de [DMS Preview-site.](https://aka.ms/dms-preview) Na een privévoorbeeld wordt de scenariostatus gewijzigd in **openbare voorbeeld**. Gebruikers van Azure Database Migration Service kunnen migratiescenario's in een openbare preview rechtstreeks vanuit de gebruikersinterface uitproberen. Aanmelden is niet nodig.  Migratiescenario's in openbare preview zijn echter mogelijk niet in alle regio's beschikbaar en kunnen aanvullende wijzigingen ondergaan voordat de definitieve release wordt vrijgegeven. Na een openbare preview verandert de scenariostatus **in de algemene beschikbaarheid**. Algemene beschikbaarheid (GA) is de status van de definitieve release en de functionaliteit is volledig en toegankelijk voor alle gebruikers.
 
-## <a name="migration-scenario-support"></a>Ondersteuning voor migratie scenario's
+## <a name="migration-scenario-support"></a>Ondersteuning voor migratiescenario's
 
-In de volgende tabellen ziet u welke migratie scenario's worden ondersteund bij het gebruik van Azure Database Migration Service.
+In de volgende tabellen wordt weergegeven welke migratiescenario's worden ondersteund bij het gebruik van Azure Database Migration Service.
 
 > [!NOTE]
-> Als een scenario dat hieronder wordt weer gegeven, niet wordt weer gegeven in de gebruikers interface, neemt u contact op met de alias voor [Azure data base-migraties](mailto:AskAzureDatabaseMigrations@service.microsoft.com) voor aanvullende informatie.
+> Als een scenario dat hieronder wordt weergegeven, niet wordt weergegeven in de gebruikersinterface, neemt u contact op met de alias [Azure Database Migrations vragen](mailto:AskAzureDatabaseMigrations@service.microsoft.com) voor aanvullende informatie.
 
 > [!IMPORTANT]
-> Als u alle scenario's wilt weer geven die momenteel door Azure Database Migration Service worden ondersteund in de persoonlijke preview, raadpleegt u de [DMS preview-site](https://aka.ms/dms-preview).
+> Zie de [DMS Preview-site](https://aka.ms/dms-preview)als u alle scenario's wilt weergeven die momenteel worden ondersteund door Azure Database Migration Service in Private Preview.
 
-### <a name="offline-one-time-migration-support"></a>Offline migratie-ondersteuning (eenmalig)
+### <a name="offline-one-time-migration-support"></a>Ondersteuning voor offline (eenmalige) migratie
 
-De volgende tabel toont Azure Database Migration Service ondersteuning voor offline migraties.
+In de volgende tabel ziet u ondersteuning voor Azure Database Migration Service voor offlinemigraties.
 
 | Doel  | Bron | Ondersteuning | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL-data base** | SQL-Server | ✔ | Algemene beschikbaarheid |
+| **Azure SQL Database** | SQL Server | ✔ | Algemene beschikbaarheid |
 |   | RDS SQL |  |  |
 |   | Oracle |  |  |
-| **Azure SQL DB MI** | SQL-Server | ✔ | Algemene beschikbaarheid |
+| **Azure SQL DB MI** | SQL Server | ✔ | Algemene beschikbaarheid |
 |   | RDS SQL |  |  |
 |   | Oracle |  |   |
-| **Azure SQL-VM** | SQL-Server | ✔ | Algemene beschikbaarheid |
+| **Azure SQL-VM** | SQL Server | ✔ | Algemene beschikbaarheid |
 |   | Oracle |   |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | Algemene beschikbaarheid |
 | **Azure DB voor MySQL** | MySQL |   |   |
@@ -61,27 +61,27 @@ De volgende tabel toont Azure Database Migration Service ondersteuning voor offl
 | **Azure DB voor PostgreSQL** | PostgreSQL |  |
 |  | RDS PostgreSQL |   |   |
 
-### <a name="online-continuous-sync-migration-support"></a>Ondersteuning voor migratie van online (continue synchronisatie)
+### <a name="online-continuous-sync-migration-support"></a>Ondersteuning voor online (continuous sync) migratie
 
-De volgende tabel toont Azure Database Migration Service ondersteuning voor online migraties.
+In de volgende tabel ziet u ondersteuning voor Azure Database Migration Service voor onlinemigraties.
 
 | Doel  | Bron | Ondersteuning | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL-data base** | SQL-Server | ✔ | Algemene beschikbaarheid |
+| **Azure SQL Database** | SQL Server | ✔ | Algemene beschikbaarheid |
 |   | RDS SQL | ✔ | Algemene beschikbaarheid |
 |   | Oracle |  |  |
-| **Azure SQL DB MI** | SQL-Server | ✔ | Algemene beschikbaarheid |
+| **Azure SQL DB MI** | SQL Server | ✔ | Algemene beschikbaarheid |
 |   | RDS SQL | ✔ | Algemene beschikbaarheid |
-|   | Oracle | ✔ | Persoonlijke preview |
-| **Azure SQL-VM** | SQL-Server |   |   |
+|   | Oracle | ✔ | Privévoorbeeld |
+| **Azure SQL-VM** | SQL Server |   |   |
 |   | Oracle  |  |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | Algemene beschikbaarheid |
 | **Azure DB voor MySQL** | MySQL | ✔ | Algemene beschikbaarheid |
 |   | RDS MySQL | ✔ | Algemene beschikbaarheid |
 | **Azure DB voor PostgreSQL** | PostgreSQL | ✔ | Algemene beschikbaarheid |
 |   | RDS PostgreSQL | ✔ | Algemene beschikbaarheid |
-|   | Oracle | ✔ | Open bare preview |
+|   | Oracle | ✔ | Openbare preview |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het artikel [Wat is de Azure database Migration service](dms-overview.md)voor een overzicht van Azure database Migration service en regionale Beschik baarheid.
+Zie het artikel Wat is de Azure Database [Migration Service](dms-overview.md)voor een overzicht van azure database migration service en regionale beschikbaarheid .

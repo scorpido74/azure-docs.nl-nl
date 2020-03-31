@@ -1,21 +1,21 @@
 ---
 title: SELECT-component in Azure Cosmos DB
-description: Meer informatie over de SQL SELECT-component voor Azure Cosmos DB. Gebruik SQL als Azure Cosmos DB JSON-query taal.
+description: Meer informatie over SQL SELECT-component voor Azure Cosmos DB. Sql gebruiken als json-querytaal van Azure Cosmos DB.
 author: ginarobinson
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
 ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77469932"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>SELECT-component in Azure Cosmos DB
 
-Elke query bestaat uit een SELECT-component en optionele [from](sql-query-from.md) -en [where](sql-query-where.md) -componenten, per ANSI SQL-standaards. Normaal gesp roken wordt de bron in de component FROM genummerd en de WHERE-component past een filter op de bron toe om een subset van JSON-items op te halen. De SELECT-component vervolgens projecteert de aangevraagde JSON-waarden in de selectie lijst.
+Elke query bestaat uit een SELECT-clausule en optionele [FROM-](sql-query-from.md) en [WHERE-clausules,](sql-query-where.md) per ANSI SQL-standaarden. Doorgaans wordt de bron in de FROM-component opgesomd en wordt de WHERE-component een filter op de bron toepast om een subset van JSON-items op te halen. De SELECT-component projecteert vervolgens de gevraagde JSON-waarden in de selecte lijst.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -36,33 +36,33 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  De eigenschappen of de waarde die moet worden geselecteerd voor de resultatenset.  
+  Eigenschappen of waarde die moeten worden geselecteerd voor de resultaatset.  
   
 - `'*'`  
 
-  Hiermee geeft u op dat de waarde zonder wijzigingen moet worden opgehaald. Specifiek als de verwerkte waarde een object is, worden alle eigenschappen worden opgehaald.  
+  Hiermee geeft u op dat de waarde moet worden opgehaald zonder wijzigingen aan te brengen. Specifiek als de verwerkte waarde een object is, worden alle eigenschappen opgehaald.  
   
 - `<object_property_list>`  
   
-  Hiermee geeft u de lijst met eigenschappen die moeten worden opgehaald. Elke geretourneerde waarde is een object met de eigenschappen die zijn opgegeven.  
+  Hiermee geeft u de lijst op met eigenschappen die moeten worden opgehaald. Elke geretourneerde waarde is een object met de opgegeven eigenschappen.  
   
 - `VALUE`  
 
-  Hiermee geeft u op dat de JSON-waarde moet worden opgehaald in plaats van de volledige JSON-object. Dit betekent, in tegens telling tot `<property_list>` de geprojecteerde waarde in een object niet inpakt.  
+  Hiermee geeft u op dat de JSON-waarde moet worden opgehaald in plaats van het volledige JSON-object. Dit, `<property_list>` in tegenstelling tot niet wrap de geprojecteerde waarde in een object.  
  
 - `DISTINCT`
   
-  Hiermee geeft u op dat dubbele waarden van geprojecteerde eigenschappen moeten worden verwijderd.  
+  Hiermee geeft u op dat duplicaten van geprojecteerde eigenschappen moeten worden verwijderd.  
 
 - `<scalar_expression>`  
 
-  Expressie voor de waarde die moet worden berekend. Zie de sectie [scalaire expressies](sql-query-scalar-expressions.md) voor meer informatie.  
+  Expressie die de te berekenen waarde vertegenwoordigt. Zie [scalaire expressies](sql-query-scalar-expressions.md) sectie voor meer informatie.  
 
 ## <a name="remarks"></a>Opmerkingen
 
-De syntaxis van de `SELECT *` is alleen geldig als FROM-component precies één alias heeft gedeclareerd. `SELECT *` biedt een identiteits projectie. Dit kan nuttig zijn als er geen projectie nodig is. Selecteer * is alleen geldig als FROM-component is opgegeven en slechts één invoer bron geïntroduceerd.  
+De `SELECT *` syntaxis is alleen geldig als DE-component precies één alias heeft gedeclareerd. `SELECT *`geeft een identiteitsprojectie, die nuttig kan zijn als er geen projectie nodig is. SELECT * is alleen geldig als DE-clausule is opgegeven en slechts één invoerbron wordt geïntroduceerd.  
   
-Zowel `SELECT <select_list>` als `SELECT *` zijn ' syntactische suiker ' en kunnen ook worden aangegeven met behulp van eenvoudige SELECT-instructies, zoals hieronder wordt weer gegeven.  
+Beide `SELECT <select_list>` `SELECT *` en zijn "syntactische suiker" en kan alternatief worden uitgedrukt met behulp van eenvoudige SELECT verklaringen zoals hieronder weergegeven.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
@@ -78,7 +78,7 @@ Zowel `SELECT <select_list>` als `SELECT *` zijn ' syntactische suiker ' en kunn
   
 ## <a name="examples"></a>Voorbeelden
 
-In het volgende voor beeld van de query SELECT worden `address` geretourneerd van `Families` waarvan de `id` overeenkomt met `AndersenFamily`:
+Het volgende voorbeeld `address` van `Families` `id` SELECT-query retourneert van de volgende overeenkomsten: `AndersenFamily`
 
 ```sql
     SELECT f.address
@@ -86,7 +86,7 @@ In het volgende voor beeld van de query SELECT worden `address` geretourneerd va
     WHERE f.id = "AndersenFamily"
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [{
@@ -98,8 +98,8 @@ De resultaten zijn:
     }]
 ```
 
-### <a name="quoted-property-accessor"></a>Accessor van de geciteerde eigenschap
-U kunt eigenschappen openen met de operator voor de geciteerde eigenschap []. Zo is `SELECT c.grade` bijvoorbeeld het equivalent van `SELECT c["grade"]`. Deze syntaxis is handig als u een eigenschap wilt escapepen die spaties, speciale tekens bevat of dezelfde naam heeft als een SQL-tref woord of gereserveerd woord.
+### <a name="quoted-property-accessor"></a>Accessor van eigenschap tussen aanhalingstekens
+U hebt toegang tot eigenschappen via de vermelde vastgoedbeheerder []. Zo is `SELECT c.grade` bijvoorbeeld het equivalent van `SELECT c["grade"]`. Deze syntaxis is handig om te ontsnappen aan een eigenschap die spaties, speciale tekens of dezelfde naam heeft als een SQL-trefwoord of gereserveerd woord.
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ U kunt eigenschappen openen met de operator voor de geciteerde eigenschap []. Zo
 
 ### <a name="nested-properties"></a>Geneste eigenschappen
 
-In het volgende voor beeld worden twee geneste eigenschappen, `f.address.state` en `f.address.city`, geprojecteerd.
+In het volgende voorbeeld worden `f.address.state` `f.address.city`twee geneste eigenschappen en .
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -117,7 +117,7 @@ In het volgende voor beeld worden twee geneste eigenschappen, `f.address.state` 
     WHERE f.id = "AndersenFamily"
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [{
@@ -127,7 +127,7 @@ De resultaten zijn:
 ```
 ### <a name="json-expressions"></a>JSON-expressies
 
-Projectie biedt ook ondersteuning voor JSON-expressies, zoals wordt weer gegeven in het volgende voor beeld:
+Projectie ondersteunt ook JSON-expressies, zoals in het volgende voorbeeld wordt weergegeven:
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
@@ -135,7 +135,7 @@ Projectie biedt ook ondersteuning voor JSON-expressies, zoals wordt weer gegeven
     WHERE f.id = "AndersenFamily"
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [{
@@ -147,7 +147,7 @@ De resultaten zijn:
     }]
 ```
 
-In het voor gaande voor beeld moet de SELECT-component een JSON-object maken en aangezien het voor beeld geen sleutel bevat, gebruikt de component de impliciete argument naam van de variabele `$1`. Met de volgende query worden twee impliciete argument variabelen geretourneerd: `$1` en `$2`.
+In het voorgaande voorbeeld moet de SELECT-component een JSON-object maken en aangezien de steekproef `$1`geen sleutel bevat, gebruikt de component de impliciete argumentvariabelenaam . Met de volgende query worden `$1` twee `$2`impliciete argumentvariabelen geretourneerd: en .
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -156,7 +156,7 @@ In het voor gaande voor beeld moet de SELECT-component een JSON-object maken en 
     WHERE f.id = "AndersenFamily"
 ```
 
-De resultaten zijn:
+U ziet deze uitvoer:
 
 ```json
     [{
@@ -169,11 +169,11 @@ De resultaten zijn:
       }
     }]
 ```
-## <a name="reserved-keywords-and-special-characters"></a>Gereserveerde tref woorden en speciale tekens
+## <a name="reserved-keywords-and-special-characters"></a>Gereserveerde trefwoorden en speciale tekens
 
-Als uw gegevens eigenschappen bevatten met dezelfde namen als gereserveerde tref woorden, zoals ' order ' of ' groep ', hebben de query's voor deze documenten een syntaxis fout. U moet expliciet de eigenschap in `[]` teken toevoegen om de query uit te voeren.
+Als uw gegevens eigenschappen bevatten met dezelfde namen als gereserveerde zoekwoorden zoals 'volgorde' of 'Groeperen', leiden de query's tegen deze documenten tot syntaxisfouten. U moet de eigenschap `[]` expliciet in teken opnemen om de query met succes uit te voeren.
 
-Hier ziet u bijvoorbeeld een document met een eigenschap met de naam `order` en een eigenschap `price($)` die speciale tekens bevat:
+Hier vindt u bijvoorbeeld een document `order` met een `price($)` eigenschap met de naam en een eigenschap met speciale tekens:
 
 ```json
 {
@@ -190,7 +190,7 @@ Hier ziet u bijvoorbeeld een document met een eigenschap met de naam `order` en 
 }
 ```
 
-Als u een query uitvoert die de eigenschap `order` of `price($)` bevat, wordt er een syntaxis fout weer gegeven.
+Als u een query uitvoert `order` die `price($)` de eigenschap of eigenschap bevat, ontvangt u een syntaxisfout.
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -204,7 +204,7 @@ Het resultaat is:
 Syntax error, incorrect syntax near 'order'
 `
 
-U moet dezelfde query's opnieuw schrijven zoals hieronder wordt beschreven:
+U moet dezelfde query's opnieuw schrijven als hieronder:
 
 ```sql
 SELECT * FROM c WHERE c["order"].orderId = "12345"
@@ -216,6 +216,6 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Aan de slag](sql-query-getting-started.md)
+- [Slag](sql-query-getting-started.md)
 - [.NET-voorbeelden voor Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [WHERE-component](sql-query-where.md)
+- [WHERE-clausule](sql-query-where.md)

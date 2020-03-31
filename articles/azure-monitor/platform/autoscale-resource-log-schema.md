@@ -1,26 +1,26 @@
 ---
-title: Schema voor logboek gebeurtenissen van Azure automatisch schalen
-description: Indeling van Logboeken voor het bewaken en oplossen van problemen met automatisch schalen
+title: Azure-schema voor logboekgebeurtenissen automatisch schalen
+description: Opmaak van logboeken voor het bewaken en oplossen van automatische schaalacties
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 3c32f15208a8e692054ee6c1f7effc6b7c89de3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75395950"
 ---
-# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Azure Monitor resource logboek schema voor acties voor automatisch schalen
+# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Schema voor automatisch schalen van Azure Monitor-acties
 
-Hieronder vindt u de algemene notaties voor het automatisch schalen van resource logboeken, inclusief voorbeeld gegevens. Niet alle onderstaande voor beelden zijn juist gevormd door JSON omdat ze mogelijk meerdere waarden bevatten die geldig kunnen zijn voor een bepaald veld. 
+Hieronder volgen de algemene indelingen voor bronlogboeken voor automatisch schalen met voorbeeldgegevens die zijn opgenomen. Niet alle onderstaande voorbeelden zijn goed gevormd JSON omdat ze meerdere waarden kunnen bevatten die geldig kunnen zijn voor een bepaald veld. 
 
-Gebruik gebeurtenissen van dit type om problemen op te lossen die u mogelijk ondervindt met automatisch schalen. Zie problemen [met automatisch schalen oplossen](autoscale-troubleshoot.md)voor meer informatie.
+Gebruik dit soort gebeurtenissen om problemen op te lossen die u mogelijk ondervindt bij autoscale. Zie [Problemen met automatisch schalen oplossen](autoscale-troubleshoot.md)voor meer informatie.
 
 
-## <a name="profile-evaluation"></a>Profiel evaluatie
+## <a name="profile-evaluation"></a>Profielevaluatie
 
-Vastgelegd wanneer automatisch schalen de eerste keer controleert op een profiel voor automatisch schalen
+Opgenomen wanneer autoscale eerst naar een autoscale-profiel kijkt
 
 ```json
 {
@@ -37,9 +37,9 @@ Vastgelegd wanneer automatisch schalen de eerste keer controleert op een profiel
 }
 ```
 
-## <a name="profile-cooldown-evaluation"></a>Evaluatie van profiel cooldown
+## <a name="profile-cooldown-evaluation"></a>Profiel cooldown evaluatie
 
-Deze waarde wordt vastgelegd wanneer automatisch schalen evalueert als het niet mogelijk is om een schaal te doen wegens een koele periode. 
+Opgenomen wanneer autoscale evalueert als het niet moet doen een schaal als gevolg van een cool down periode. 
 
 ```json
 {
@@ -60,9 +60,9 @@ Deze waarde wordt vastgelegd wanneer automatisch schalen evalueert als het niet 
 }
 ```
 
-## <a name="rule-evaluation"></a>Regel evaluatie
+## <a name="rule-evaluation"></a>Regelevaluatie
 
-Wordt vastgelegd wanneer automatisch schalen eerst een bepaalde schaal regel begint te evalueren. 
+Opgenomen wanneer autoscale voor het eerst begint met het evalueren van een bepaalde schaalregel. 
 
 ```json
 {
@@ -89,7 +89,7 @@ Wordt vastgelegd wanneer automatisch schalen eerst een bepaalde schaal regel beg
 
 ## <a name="metric-evaluation"></a>Metrische evaluatie
 
-Vastgelegd wanneer automatisch schalen de metriek heeft geëvalueerd die wordt gebruikt om een schaal actie te activeren. 
+Opgenomen wanneer autoscale de statistiek evalueerde die wordt gebruikt om een schaalactie te activeren. 
 
 ```json
 {
@@ -111,9 +111,9 @@ Vastgelegd wanneer automatisch schalen de metriek heeft geëvalueerd die wordt g
 }
 ```
 
-## <a name="instance-count-evaluation"></a>Evaluatie van aantal exemplaren
+## <a name="instance-count-evaluation"></a>Evaluatie van het aantal instance's
 
-Vastgelegd wanneer automatisch schalen het aantal exemplaren evalueert dat al in de voor bereiding wordt uitgevoerd om te bepalen of het meer moet beginnen, afsluiten of niets doet. 
+Opgenomen wanneer autoscale evalueert het aantal exemplaren dat al wordt uitgevoerd in voorbereiding voor de beslissing of het moet meer beginnen, afsluiten sommige, of niets doen. 
 
 ```json
 {
@@ -132,9 +132,9 @@ Vastgelegd wanneer automatisch schalen het aantal exemplaren evalueert dat al in
 }
 ```
 
-## <a name="scale-action-evaluation"></a>Beoordeling van schaal acties
+## <a name="scale-action-evaluation"></a>Evaluatie van schaalacties
 
-Wordt vastgelegd wanneer automatisch schalen de evaluatie start als een schaal actie moet worden uitgevoerd. 
+Geregistreerd wanneer autoscale de evaluatie start als er een schaalactie moet plaatsvinden. 
 
 ```json
 {
@@ -152,9 +152,9 @@ Wordt vastgelegd wanneer automatisch schalen de evaluatie start als een schaal a
 }
 ```
 
-## <a name="instance-update-evaluation"></a>Evaluatie van exemplaar-updates
+## <a name="instance-update-evaluation"></a>Evaluatie van de evaluatie van de instantie-update
 
-Vastgelegd wanneer automatisch schalen het aantal Compute-exemplaren bijwerkt dat wordt uitgevoerd, hetzij omhoog of omlaag.
+Opgenomen wanneer automatisch schalen het aantal compute-exemplaren bijwerkt dat wordt uitgevoerd, omhoog of omlaag.
 
 ```json
 {
@@ -173,9 +173,9 @@ Vastgelegd wanneer automatisch schalen het aantal Compute-exemplaren bijwerkt da
 }
 ```
 
-## <a name="scale-action"></a>Schaal actie
+## <a name="scale-action"></a>Schaalactie
 
-Vastgelegd wanneer automatisch schalen een schaal actie initieert, hetzij omhoog of omlaag. 
+Opgenomen wanneer autoscale een schaalactie initieert, omhoog of omlaag. 
 ```json
 {
   "time": "2018-09-10 18:12:00.6132593",
@@ -196,9 +196,9 @@ Vastgelegd wanneer automatisch schalen een schaal actie initieert, hetzij omhoog
 }
 ```
 
-## <a name="scale-action-tracking"></a>Actie voor het bijhouden van schalen
+## <a name="scale-action-tracking"></a>Actietracking schalen
 
-Vastgelegd op verschillende intervallen van een instantie schaal actie.
+Opgenomen met verschillende intervallen van een instantieschaalactie.
 
 ```json
 {

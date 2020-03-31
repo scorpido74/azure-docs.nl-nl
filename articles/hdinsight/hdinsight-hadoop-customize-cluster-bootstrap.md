@@ -1,6 +1,6 @@
 ---
-title: Configuraties van Azure HDInsight-clusters aanpassen met Boots trap
-description: Meer informatie over hoe u de configuratie van HDInsight-clusters programmatisch kunt aanpassen met behulp van .net-, Power shell-en Resource Manager-sjablonen.
+title: Azure HDInsight-clusterconfiguraties aanpassen met start-ups
+description: Meer informatie over het programmatisch aanpassen van hdInsight-clusterconfiguratie met behulp van sjablonen .Net, PowerShell en Resource Manager.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,53 +9,53 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272524"
 ---
-# <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-clusters aanpassen met Boots trap
+# <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-clusters aanpassen met Bootstrap
 
-Met Boots trap scripts kunt u programmatisch onderdelen installeren en configureren in azure HDInsight.
+Met Bootstrap-scripts u onderdelen in Azure HDInsight programmatisch installeren en configureren.
 
-Er zijn drie benaderingen om instellingen van het configuratie bestand in te stellen wanneer uw HDInsight-cluster wordt gemaakt:
+Er zijn drie benaderingen om configuratiebestandsinstellingen in te stellen wanneer uw HDInsight-cluster wordt gemaakt:
 
 * Azure PowerShell gebruiken
 * .NET SDK gebruiken
-* Azure Resource Manager sjabloon gebruiken
+* Sjabloon Azure Resource Manager gebruiken
 
-Met deze programmatische methoden kunt u bijvoorbeeld opties in deze bestanden configureren:
+Met deze programmatische methoden u bijvoorbeeld opties in deze bestanden configureren:
 
-* clusterIdentity.xml
-* bestand core-site. XML
-* gateway. XML
+* clusterIdentiteit.xml
+* core-site.xml
+* gateway.xml
 * hbase-env.xml
 * hbase-site.xml
 * hdfs-site.xml
 * hive-env.xml
-* Hive-site. XML
+* hive-site.xml
 * mapred-site
 * oozie-site.xml
 * oozie-env.xml
-* Storm-site. XML
+* stormsite.xml
 * tez-site.xml
 * webhcat-site.xml
-* yarn-site. XML
-* server. Properties (Kafka-Broker-configuratie)
+* garen-site.xml
+* server.properties (kafka-broker configuratie)
 
-Zie [HDInsight-clusters aanpassen met script Action (Linux)](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over het installeren van extra onderdelen in het HDInsight-cluster tijdens de aanmaak tijd.
+Zie [HDInsight-clusters aanpassen met Scriptactie (Linux)](hdinsight-hadoop-customize-cluster-linux.md)voor informatie over het installeren van extra componenten op het HDInsight-cluster tijdens de creatietijd.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
+* Als u PowerShell gebruikt, hebt u de [Az-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 
-Met de volgende Power shell-code wordt een [Apache Hive](https://hive.apache.org/) configuratie aangepast:
+Met de volgende PowerShell-code wordt een [Apache Hive-configuratie](https://hive.apache.org/) aangepast:
 
 > [!IMPORTANT]  
-> De para meter `Spark2Defaults` moet mogelijk worden gebruikt met [add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). U kunt lege waarden door geven aan de para meter, zoals wordt weer gegeven in het code voorbeeld hieronder.
+> De `Spark2Defaults` parameter moet mogelijk worden gebruikt met [Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue). U lege waarden doorgeven aan de parameter zoals weergegeven in het onderstaande codevoorbeeld.
 
 ```powershell
 # hive-site.xml configuration
@@ -81,16 +81,16 @@ New-AzHDInsightCluster `
     -Config $config
 ```
 
-Een volledig werkend Power shell-script vindt u in [bijlage](#appendix-powershell-sample).
+Een volledig werkend PowerShell-script is te vinden in [bijlage.](#appendix-powershell-sample)
 
-**De wijziging controleren:**
+**Ga als volgt te werk om de wijziging te verifiëren:**
 
-1. Ga naar `https://CLUSTERNAME.azurehdinsight.net/` waarbij `CLUSTERNAME` de naam van het cluster is.
-1. Ga in het menu links naar **Hive** > **configs** > **Geavanceerd**.
-1. Vouw **Geavanceerde Hive-site**uit.
-1. Zoek **Hive. MailStore. client. socket. timeout** en bevestig dat de waarde **90s**is.
+1. Navigeer `https://CLUSTERNAME.azurehdinsight.net/` naar `CLUSTERNAME` waar de naam van uw cluster is.
+1. Navigeer in het linkermenu naar **Hive** > **Configs** > **Advanced.**
+1. Geavanceerde **hive-site**uitbreiden.
+1. Zoek **hive.metastore.client.socket.time-out** en bevestig dat de waarde **90 is.**
 
-Meer voor beelden over het aanpassen van andere configuratie bestanden:
+Nog meer voorbeelden over het aanpassen van andere configuratiebestanden:
 
 ```xml
 # hdfs-site.xml configuration
@@ -108,11 +108,11 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>.NET SDK gebruiken
 
-Zie de [Azure HDInsight-SDK voor .net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
+Zie [Azure HDInsight SDK voor .NET](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sjabloon gebruiken
 
-U kunt Boots trap gebruiken in Resource Manager-sjabloon:
+U bootstrap gebruiken in de sjabloon Resourcemanager:
 
 ```json
 "configurations": {
@@ -124,18 +124,18 @@ U kunt Boots trap gebruiken in Resource Manager-sjabloon:
 }
 ```
 
-![Hadoop-cluster Azure Resource Manager sjabloon aanpassen](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![Hadoop past sjabloon clusterbootstrap Azure Resource Manager aan](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>Zie ook
 
-* [Apache Hadoop clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) vindt u instructies voor het maken van een HDInsight-cluster met behulp van andere aangepaste opties.
-* [Script actie scripts voor HDInsight ontwikkelen](hdinsight-hadoop-script-actions-linux.md)
-* [Apache Spark op HDInsight-clusters installeren en gebruiken](spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [Installeer en gebruik Apache Giraph in HDInsight-clusters](hdinsight-hadoop-giraph-install.md).
+* [Apache Hadoop-clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) biedt instructies voor het maken van een HDInsight-cluster met behulp van andere aangepaste opties.
+* [Scriptactiescripts ontwikkelen voor HDInsight](hdinsight-hadoop-script-actions-linux.md)
+* [Apache Spark installeren en gebruiken op HDInsight-clusters](spark/apache-spark-jupyter-spark-sql-use-portal.md)
+* [Installeer en gebruik Apache Giraph op HDInsight clusters.](hdinsight-hadoop-giraph-install.md)
 
-## <a name="appendix-powershell-sample"></a>Bijlage: Power shell-voor beeld
+## <a name="appendix-powershell-sample"></a>Aanhangsel: PowerShell-monster
 
-Met dit Power shell-script maakt u een HDInsight-cluster en past u een Hive-instelling aan. Zorg ervoor dat u waarden invoert voor `$nameToken`, `$httpPassword`en `$sshPassword`.
+Dit PowerShell-script maakt een HDInsight-cluster en past een Hive-instelling aan. Zorg ervoor dat `$nameToken`u `$httpPassword`waarden `$sshPassword`invoert voor , en .
 
 ```powershell
 ####################################

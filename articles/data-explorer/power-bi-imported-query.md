@@ -1,6 +1,6 @@
 ---
-title: Gegevens visualiseren vanuit Azure Data Explorer met een Power BI geïmporteerde query
-description: 'In dit artikel leert u hoe u een van de drie opties voor het visualiseren van gegevens in Power BI kunt gebruiken: het importeren van een query vanuit Azure Data Explorer.'
+title: Gegevens uit Azure Data Explorer visualiseren met een geïmporteerde Query van Power BI
+description: 'In dit artikel leert u hoe u een van de drie opties gebruikt voor het visualiseren van gegevens in Power BI: het importeren van een query uit Azure Data Explorer.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,23 +8,23 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: ff156ab3fe74115bce8f7d6bdd3ba47b514f5ff5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77562476"
 ---
 # <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Gegevens visualiseren met behulp van een query die is geïmporteerd in Power BI
 
-Azure Data Explorer is een snelle en zeer schaalbare service om gegevens in logboeken en telemetriegegevens te verkennen. Power BI is een business analytics-oplossing waarmee u uw gegevens kunt visualiseren en de gegevens kunt delen in uw organisatie.
+Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverkenning voor telemetrische gegevens en gegevens uit logboeken. Power BI is een business analytics-oplossing waarmee u uw gegevens kunt visualiseren en de gegevens kunt delen in uw organisatie.
 
-Azure Data Explorer biedt drie opties om gegevens te verbinden in Power BI: de ingebouwde connector gebruiken, een query importeren uit Azure Data Explorer, of een SQL-query gebruiken. In dit artikel leest u hoe u een query importeert, zodat u gegevens kunt ophalen en weer geven in een Power BI-rapport.
+Azure Data Explorer biedt drie opties waarmee u verbinding kunt maken met gegevens in Power BI: de ingebouwde connector gebruiken, een query importeren uit Azure Data Explorer, of een SQL-query gebruiken. In dit artikel ziet u hoe u een query importeert, zodat u gegevens verzamelen en visualiseren in een Power BI-rapport.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt het volgende nodig om dit artikel te volt ooien:
+Je hebt het volgende nodig om dit artikel te voltooien:
 
 * Een organisatie-e-mailaccount dat lid is van Azure Active Directory, zodat u verbinding kunt maken met het [Azure Data Explorer-helpcluster](https://dataexplorer.azure.com/clusters/help/databases/samples).
 
@@ -36,7 +36,7 @@ U hebt het volgende nodig om dit artikel te volt ooien:
 
 Eerst maakt u een query in de Azure Data Explorer-desktop-app en exporteert u deze voor gebruik in Power BI. Vervolgens maakt u verbinding met het Azure Data Explorer-helpcluster en haalt u een subset gegevens op uit de tabel *StormEvents*. [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-1. Ga in een browser naar [https://help.kusto.windows.net/](https://help.kusto.windows.net/) om de Azure Data Explorer-desktop-app te starten.
+1. Ga in een [https://help.kusto.windows.net/](https://help.kusto.windows.net/) browser naar de bureaubladapp Azure Data Explorer.
 
 1. Kopieer in de desktop-app de volgende query in het queryvenster rechtsboven, en voer deze uit.
 
@@ -78,7 +78,7 @@ Eerst maakt u een query in de Azure Data Explorer-desktop-app en exporteert u de
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u het rapport dat u hebt gemaakt voor dit artikel niet meer nodig hebt, verwijdert u het bestand Power BI Desktop (. pbix).
+Als u het rapport dat u voor dit artikel hebt gemaakt, niet meer nodig hebt, verwijdert u het Power BI-bureaubladbestand (.pbix).
 
 ## <a name="next-steps"></a>Volgende stappen
 

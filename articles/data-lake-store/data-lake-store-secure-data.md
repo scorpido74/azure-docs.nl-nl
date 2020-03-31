@@ -1,6 +1,6 @@
 ---
-title: Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Meer informatie over het beveiligen van gegevens in Azure Data Lake Storage Gen1 met behulp van groepen en toegangs beheer lijsten
+title: Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1 | Microsoft Documenten
+description: Meer informatie over het beveiligen van gegevens in Azure Data Lake Storage Gen1 met behulp van groepen en toegangscontrolelijsten
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,33 +13,33 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260304"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1
-Het beveiligen van gegevens in Azure Data Lake Storage Gen1 is een benadering van drie stappen.  Op rollen gebaseerd toegangs beheer (RBAC) en toegangs beheer lijsten (Acl's) moet zijn ingesteld om de toegang tot gegevens voor gebruikers en beveiligings groepen volledig in te scha kelen.
+Het beveiligen van gegevens in Azure Data Lake Storage Gen1 is een aanpak in drie stappen.  Zowel op rollen gebaseerde toegangscontrole (RBAC) als toegangscontrolelijsten (ACL's) moeten zijn ingesteld om gebruikers en beveiligingsgroepen volledig toegang tot gegevens mogelijk te maken.
 
-1. Begin met het maken van beveiligings groepen in Azure Active Directory (AAD). Deze beveiligings groepen worden gebruikt voor het implementeren van op rollen gebaseerd toegangs beheer (RBAC) in Azure Portal. Zie voor meer informatie [Access Control op basis van rollen in Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
-2. Wijs de AAD-beveiligings groepen toe aan het Data Lake Storage Gen1-account. Hiermee beheert u de toegang tot het Data Lake Storage Gen1-account vanuit de portal-en beheer bewerkingen van de portal of Api's.
-3. Wijs de AAD-beveiligings groepen toe als Acl's (toegangs beheer lijsten) op het Data Lake Storage Gen1 bestands systeem.
-4. Daarnaast kunt u ook een IP-adres bereik instellen voor clients die toegang hebben tot de gegevens in Data Lake Storage Gen1.
+1. Begin met het maken van beveiligingsgroepen in Azure Active Directory (AAD). Deze beveiligingsgroepen worden gebruikt om rbac (role-based access control) te implementeren in Azure-portal. Zie [Toegangsbeheer op basis van rollen in Microsoft Azure](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
+2. Wijs de AAD-beveiligingsgroepen toe aan het Data Lake Storage Gen1-account. Hiermee wordt de toegang tot het Data Lake Storage Gen1-account vanuit de portal- en beheerbewerkingen vanuit de portal of API's beheerd.
+3. Wijs de AAD-beveiligingsgroepen toe als toegangscontrolelijsten (ACL's) op het Data Lake Storage Gen1-bestandssysteem.
+4. Daarnaast u ook een IP-adresbereik instellen voor clients die toegang hebben tot de gegevens in Data Lake Storage Gen1.
 
-In dit artikel vindt u instructies voor het gebruik van de Azure Portal om de bovenstaande taken uit te voeren. Zie [beveiliging in azure data Lake Storage gen1](data-lake-store-security-overview.md)voor gedetailleerde informatie over de wijze waarop data Lake Storage gen1 beveiliging implementeert op het niveau van account en gegevens. Zie [overzicht van Access Control in data Lake Storage gen1](data-lake-store-access-control.md)voor uitgebreide informatie over de implementatie van acl's in data Lake Storage gen1.
+In dit artikel vindt u instructies over het gebruik van de Azure-portal om de bovenstaande taken uit te voeren. Zie [Beveiliging in Azure Data Lake Storage Gen1](data-lake-store-security-overview.md)voor uitgebreide informatie over hoe Data Lake Storage Gen1 beveiliging op account- en gegevensniveau implementeert. Zie Overzicht van toegangscontrole in Data Lake Storage Gen1 voor deep-dive informatie over de manier waarop ACL's worden geïmplementeerd in Data Lake Storage [Gen1.](data-lake-store-access-control.md)
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaan:
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **Een Data Lake Storage gen1-account**. Zie [aan de slag met Azure data Lake Storage gen1](data-lake-store-get-started-portal.md) voor instructies over het maken van een account.
+* **Een Data Lake Storage Gen1-account**. Zie [Aan de slag met Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) voor instructies over het maken van een account.
 
-## <a name="create-security-groups-in-azure-active-directory"></a>Beveiligings groepen maken in Azure Active Directory
-Zie [beveiligings groepen beheren in azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor instructies over het maken van Aad-beveiligings groepen en het toevoegen van gebruikers aan de groep.
+## <a name="create-security-groups-in-azure-active-directory"></a>Beveiligingsgroepen maken in Azure Active Directory
+Zie [Beveiligingsgroepen beheren in Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor instructies over het maken van AAD-beveiligingsgroepen en het toevoegen van gebruikers aan de groep.
 
 > [!NOTE] 
-> U kunt zowel gebruikers als andere groepen toevoegen aan een groep in azure AD met behulp van de Azure Portal. Als u een Service-Principal wilt toevoegen aan een groep, gebruikt u echter [de Power shell-module van Azure AD](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
+> U zowel gebruikers als andere groepen toevoegen aan een groep in Azure AD met behulp van de Azure-portal. Als u echter een serviceprincipal aan een groep wilt toevoegen, gebruikt u de [PowerShell-module van Azure AD.](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md)
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs
@@ -50,109 +50,109 @@ Zie [beveiligings groepen beheren in azure Active Directory](../active-directory
 > Add-AzureADGroupMember -ObjectId <Group object ID> -RefObjectId <SPI object ID>
 > ```
  
-## <a name="assign-users-or-security-groups-to-data-lake-storage-gen1-accounts"></a>Gebruikers of beveiligings groepen toewijzen aan Data Lake Storage Gen1 accounts
-Wanneer u gebruikers of beveiligings groepen toewijst aan Data Lake Storage Gen1 accounts, beheert u de toegang tot de beheer bewerkingen op het account met behulp van de Azure Portal-en Azure Resource Manager-Api's. 
+## <a name="assign-users-or-security-groups-to-data-lake-storage-gen1-accounts"></a>Gebruikers of beveiligingsgroepen toewijzen aan Data Lake Storage Gen1-accounts
+Wanneer u gebruikers of beveiligingsgroepen toewijst aan Data Lake Storage Gen1-accounts, beheert u de toegang tot de beheerbewerkingen voor het account met behulp van de Azure-portal en Azure Resource Manager API's. 
 
-1. Open een Data Lake Storage Gen1-account. Klik in het linkerdeel venster op **alle resources**en klik vervolgens op de Blade alle resources op de account naam waaraan u een gebruiker of beveiligings groep wilt toewijzen.
+1. Open een Data Lake Storage Gen1-account. Klik in het linkerdeelvenster op **Alle bronnen**en klik vervolgens in het blad Alle bronnen op de accountnaam waaraan u een gebruiker of beveiligingsgroep wilt toewijzen.
 
-2. Klik op de Blade Data Lake Storage Gen1 account op **Access Control (IAM)** . In de Blade worden standaard de abonnements eigenaren weer gegeven als de eigenaar.
+2. Klik in het accountblad Data Lake Storage Gen1 op **Toegangsbeheer (IAM).** Het blad vermeldt standaard de eigenaren van het abonnement als eigenaar.
    
-    ![Beveiligings groep toewijzen aan Azure Data Lake Storage Gen1 account](./media/data-lake-store-secure-data/adl.select.user.icon1.png "Beveiligings groep toewijzen aan Azure Data Lake Storage Gen1 account")
+    ![Beveiligingsgroep toewijzen aan Azure Data Lake Storage Gen1-account](./media/data-lake-store-secure-data/adl.select.user.icon1.png "Beveiligingsgroep toewijzen aan Azure Data Lake Storage Gen1-account")
 
-3. Klik op de Blade **Access Control (IAM)** op **toevoegen** om de Blade **machtigingen toevoegen** te openen. Selecteer op de Blade **machtigingen toevoegen** een **rol** voor de gebruiker/groep. Zoek naar de beveiligings groep die u eerder hebt gemaakt in Azure Active Directory en selecteer deze. Als u een groot aantal gebruikers en groepen wilt doorzoeken, gebruikt u het tekstvak **selecteren** om op de groeps naam te filteren. 
+3. Klik in het **IAM-blad (Access Control)** op **Toevoegen** om het blad **Machtigingen toevoegen** te openen. Selecteer **in** het blad Machtigingen toevoegen een **rol** voor de gebruiker/groep. Zoek naar de beveiligingsgroep die u eerder in Azure Active Directory hebt gemaakt en selecteer deze. Als u veel gebruikers en groepen hebt om naar te zoeken, gebruikt u het tekstvak **selecteren** om op de groepsnaam te filteren. 
    
     ![Een rol voor de gebruiker toevoegen](./media/data-lake-store-secure-data/adl.add.user.1.png "Een rol voor de gebruiker toevoegen")
    
-    De rol **eigenaar** en **Inzender** bieden toegang tot diverse beheer functies voor het data Lake-account. Voor gebruikers die met gegevens in het data Lake werken, maar wel account beheer gegevens moeten weer geven, kunt u ze toevoegen aan de rol van **lezer** . Het bereik van deze rollen is beperkt tot de beheer bewerkingen die betrekking hebben op het Data Lake Storage Gen1-account.
+    De rol **Eigenaar** en **bijdrager** biedt toegang tot verschillende beheerfuncties op het datalake-account. Voor gebruikers die interactie hebben met gegevens in het gegevensmeer, maar nog steeds accountbeheergegevens moeten bekijken, u deze toevoegen aan **de** leesrol. Het bereik van deze rollen is beperkt tot de beheeractiviteiten met betrekking tot het Data Lake Storage Gen1-account.
    
-    Voor gegevens bewerkingen worden de afzonderlijke bestandssysteem machtigingen gedefinieerd wat gebruikers kunnen doen. Daarom kan een gebruiker met een rol van lezer alleen de beheer instellingen weer geven die zijn gekoppeld aan het account, maar kunnen ze gegevens lezen en schrijven op basis van bestandssysteem machtigingen die eraan zijn toegewezen. Data Lake Storage Gen1 machtigingen voor bestands systemen worden beschreven in [beveiligings groep als Acl's toewijzen aan het Azure data Lake Storage gen1 bestands systeem](#filepermissions).
+    Voor gegevensbewerkingen definiëren afzonderlijke bestandssysteemmachtigingen wat de gebruikers kunnen doen. Daarom kan een gebruiker met een Reader-rol alleen de beheerdersinstellingen weergeven die aan het account zijn gekoppeld, maar kan deze mogelijk gegevens lezen en schrijven op basis van machtigingen voor bestandssystemen die aan het account zijn toegewezen. Gegevenslake Storage Gen1-bestandssysteemmachtigingen worden beschreven in [De beveiligingsgroep toewijzen als ACL's aan het Azure Data Lake Storage Gen1-bestandssysteem](#filepermissions).
 
     > [!IMPORTANT]
-    > Alleen de rol **eigenaar** maakt automatisch toegang tot het bestands systeem mogelijk. De **Inzender**, **lezer**en alle andere rollen hebben acl's nodig om elk niveau van toegang tot mappen en bestanden in te scha kelen.  De rol van **eigenaar** biedt bestands-en mapmachtigingen voor Super gebruikers die niet kunnen worden overschreven via acl's. Zie voor meer informatie over hoe RBAC-beleid is toegewezen aan gegevens toegang [RBAC voor account beheer](data-lake-store-security-overview.md#rbac-for-account-management).
+    > Alleen de rol **Eigenaar** maakt automatisch toegang tot het bestandssysteem mogelijk. Voor **de inzender,** **de lezer**en alle andere rollen zijn ACL's vereist om elk niveau van toegang tot mappen en bestanden in te schakelen.  De rol **Eigenaar** biedt machtigingen voor supergebruikersbestanden en mappen die niet via ACL's kunnen worden overschreven. Zie [RBAC voor accountbeheer voor](data-lake-store-security-overview.md#rbac-for-account-management)meer informatie over hoe RBAC-beleidsregels gegevenstoegang toewijzen.
 
-4. Als u een groep/gebruiker wilt toevoegen die niet wordt weer gegeven op de Blade **machtigingen toevoegen** , kunt u ze uitnodigen door hun e-mail adres te typen in het tekstvak **selecteren** en deze vervolgens te selecteren in de lijst.
+4. Als u een groep/gebruiker wilt toevoegen die niet wordt vermeld in het blad **Machtigingen toevoegen,** u deze uitnodigen door hun e-mailadres in het tekstvak **selecteren** te typen en deze vervolgens in de lijst te selecteren.
    
-    ![Een beveiligings groep toevoegen](./media/data-lake-store-secure-data/adl.add.user.2.png "Een beveiligings groep toevoegen")
+    ![Een beveiligingsgroep toevoegen](./media/data-lake-store-secure-data/adl.add.user.2.png "Een beveiligingsgroep toevoegen")
    
-5. Klik op **Opslaan**. U ziet nu de beveiligings groep die u hebt toegevoegd, zoals hieronder wordt weer gegeven.
+5. Klik op **Opslaan**. U ziet de beveiligingsgroep die is toegevoegd zoals hieronder wordt weergegeven.
    
-    ![Beveiligings groep toegevoegd](./media/data-lake-store-secure-data/adl.add.user.3.png "Beveiligings groep toegevoegd")
+    ![Beveiligingsgroep toegevoegd](./media/data-lake-store-secure-data/adl.add.user.3.png "Beveiligingsgroep toegevoegd")
 
-6. Uw gebruiker/beveiligings groep heeft nu toegang tot het Data Lake Storage Gen1-account. Als u toegang wilt verlenen aan specifieke gebruikers, kunt u deze toevoegen aan de beveiligings groep. Als u de toegang voor een gebruiker wilt intrekken, kunt u deze uit de beveiligings groep verwijderen. U kunt ook meerdere beveiligings groepen toewijzen aan een account. 
+6. Uw gebruikers-/beveiligingsgroep heeft nu toegang tot het Data Lake Storage Gen1-account. Als u toegang wilt bieden aan specifieke gebruikers, u deze toevoegen aan de beveiligingsgroep. Als u de toegang voor een gebruiker wilt intrekken, u deze verwijderen uit de beveiligingsgroep. U ook meerdere beveiligingsgroepen aan een account toewijzen. 
 
-## <a name="filepermissions"></a>Gebruikers of beveiligings groepen als Acl's toewijzen aan het Data Lake Storage Gen1 bestands systeem
-Door gebruikers/beveiligings groepen toe te wijzen aan het Data Lake Storage Gen1 bestands systeem, stelt u toegangs beheer in voor de gegevens die zijn opgeslagen in Data Lake Storage Gen1.
+## <a name="assign-users-or-security-groups-as-acls-to-the-data-lake-storage-gen1-file-system"></a><a name="filepermissions"></a>Gebruikers of beveiligingsgroepen toewijzen als ACL's aan het Data Lake Storage Gen1-bestandssysteem
+Door gebruikers-/beveiligingsgroepen toe te wijs aan het Data Lake Storage Gen1-bestandssysteem, stelt u toegangscontrole in op de gegevens die zijn opgeslagen in Data Lake Storage Gen1.
 
-1. Klik op de Blade Data Lake Storage Gen1 account op **Data Explorer**.
+1. Klik in het accountblad Data Lake Storage Gen1 op **Data Explorer**.
    
-    ![Gegevens weer geven via Data Explorer](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Gegevens weer geven via Data Explorer")
-2. Klik op de Blade **Data Explorer** op de map waarvoor u de ACL wilt configureren en klik vervolgens op **toegang**. Als u Acl's wilt toewijzen aan een bestand, moet u eerst op het bestand klikken om het te bekijken en vervolgens op **toegang** klikken op de Blade **voor beeld van bestand** .
+    ![Gegevens weergeven via Data Explorer](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Gegevens weergeven via Data Explorer")
+2. Klik in het **blade van Data Explorer** op de map waarvoor u de ACL wilt configureren en klik vervolgens op **Access**. Als u ACL's aan een bestand wilt toewijzen, moet u eerst op het bestand klikken om het te bekijken en vervolgens op **Toegang** klikken vanuit het **blade voor bestandsvoorbeeld.**
    
-    ![Acl's op Data Lake Storage Gen1 bestands systeem instellen](./media/data-lake-store-secure-data/adl.acl.1.png "Acl's op Data Lake Storage Gen1 bestands systeem instellen")
-3. Op de Blade **toegang** worden de eigen aren en toegewezen machtigingen vermeld die al aan de root zijn toegewezen. Klik op het pictogram **toevoegen** om extra toegangs-acl's toe te voegen.
+    ![ACL's instellen op het Data Lake Storage Gen1-bestandssysteem](./media/data-lake-store-secure-data/adl.acl.1.png "ACL's instellen op het Data Lake Storage Gen1-bestandssysteem")
+3. Het **Access-blad** bevat de eigenaren en toegewezen machtigingen die al aan de root zijn toegewezen. Klik **op** het pictogram Toevoegen om extra Toegangsaac's toe te voegen.
     > [!IMPORTANT]
-    > Het instellen van toegangs machtigingen voor één bestand geeft niet noodzakelijkerwijs een gebruiker/groep toegang tot het bestand. Het pad naar het bestand moet toegankelijk zijn voor de toegewezen gebruiker/groep. Zie [algemene scenario's met betrekking tot machtigingen](data-lake-store-access-control.md#common-scenarios-related-to-permissions)voor meer informatie en voor beelden.
+    > Het instellen van toegangsmachtigingen voor één bestand geeft een gebruiker/groep niet noodzakelijkerwijs toegang tot dat bestand. Het pad naar het bestand moet toegankelijk zijn voor de toegewezen gebruiker/groep. Zie [Algemene scenario's met betrekking tot machtigingen](data-lake-store-access-control.md#common-scenarios-related-to-permissions)voor meer informatie en voorbeelden.
    
-    ![Standaard-en aangepaste toegang weer geven](./media/data-lake-store-secure-data/adl.acl.2.png "Standaard-en aangepaste toegang weer geven")
+    ![Standaard- en aangepaste toegang weergeven](./media/data-lake-store-secure-data/adl.acl.2.png "Standaard- en aangepaste toegang weergeven")
    
-   * De **eigen aren** en **iedereen** hebben toegang tot UNIX-stijl, waarbij u lezen, schrijven, uitvoeren (LSU) opgeeft voor drie afzonderlijke gebruikers klassen: eigenaar, groep en anderen.
-   * **Toegewezen machtigingen** komen overeen met de POSIX-acl's waarmee u machtigingen kunt instellen voor specifieke benoemde gebruikers of groepen buiten de eigenaar of groep van het bestand. 
+   * De **eigenaren** en **alle anderen** bieden UNIX-stijl toegang, waar u lezen, schrijven, uitvoeren (rwx) opgeeft aan drie verschillende gebruikersklassen: eigenaar, groep en anderen.
+   * **Toegewezen machtigingen** komen overeen met de POSIX ACL's waarmee u machtigingen instellen voor specifieke benoemde gebruikers of groepen buiten de eigenaar of groep van het bestand. 
      
-     Zie voor meer informatie [HDFS acl's](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Zie [Access Control in data Lake Storage gen1](data-lake-store-access-control.md)voor meer informatie over de implementatie van acl's in data Lake Storage gen1.
-4. Klik op het pictogram **toevoegen** om de Blade **machtigingen toewijzen** te openen. Klik in deze Blade op **gebruiker of groep selecteren**en zoek in de Blade **gebruiker of groep** naar de beveiligings groep die u eerder hebt gemaakt in azure Active Directory. Als u veel groepen wilt doorzoeken, gebruikt u het tekstvak bovenaan om de groeps naam te filteren. Klik op de groep die u wilt toevoegen en klik vervolgens op **selecteren**.
+     Zie [HDFS ACL's voor](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)meer informatie . Zie Toegangscontrole in Data Lake Storage Gen1 voor meer informatie over de manier waarop ACL's worden geïmplementeerd in Data Lake Storage [Gen1.](data-lake-store-access-control.md)
+4. Klik **op** het pictogram Toevoegen om het **blad Machtigingen toewijzen te** openen. Klik in dit blad op **Gebruiker of groep selecteren**en zoek vervolgens in **Gebruiker- of groepsblad selecteren** naar de beveiligingsgroep die u eerder in Azure Active Directory hebt gemaakt. Als u veel groepen hebt om naar te zoeken, gebruikt u het tekstvak bovenaan om op de groepsnaam te filteren. Klik op de groep die u wilt toevoegen en klik vervolgens op **Selecteren**.
    
     ![Een groep toevoegen](./media/data-lake-store-secure-data/adl.acl.3.png "Een groep toevoegen")
-5. Klik op **machtigingen selecteren**, selecteer de machtigingen, of de machtigingen moeten worden toegepast op recursief en of u de machtigingen wilt toewijzen als toegangs-ACL, standaard-ACL of beide. Klik op **OK**.
+5. Klik **op Machtigingen selecteren**, selecteer de machtigingen, of de machtigingen moeten worden toegepast op recursieve ly, en of u de machtigingen wilt toewijzen als een toegang ACL, standaard ACL, of beide. Klik op **OK**.
    
     ![Machtigingen toewijzen aan groep](./media/data-lake-store-secure-data/adl.acl.4.png "Machtigingen toewijzen aan groep")
    
-    Zie [Access Control in data Lake Storage gen1](data-lake-store-access-control.md)voor meer informatie over machtigingen in data Lake Storage gen1 en standaard-acl's.
-6. Nadat u op **OK** hebt geklikt op de Blade **machtigingen selecteren** , worden de zojuist toegevoegde groep en de bijbehorende machtigingen nu weer gegeven op de Blade **toegang** .
+    Zie [Toegangsbeheer in Data Lake Storage Gen1](data-lake-store-access-control.md)voor meer informatie over machtigingen in Data Lake Storage Gen1 en Standaard/Access ACL's.
+6. Nadat u op **Ok** hebt geklikt in het blad **Machtigingen selecteren,** worden de nieuw toegevoegde groep en de bijbehorende machtigingen nu weergegeven in het **access-blad.**
    
     ![Machtigingen toewijzen aan groep](./media/data-lake-store-secure-data/adl.acl.5.png "Machtigingen toewijzen aan groep")
    
    > [!IMPORTANT]
-   > In de huidige versie kunt u Maxi maal 28 vermeldingen onder **toegewezen machtigingen**hebben. Als u meer dan 28 gebruikers wilt toevoegen, moet u beveiligings groepen maken, gebruikers toevoegen aan beveiligings groepen en toegang bieden tot deze beveiligings groepen voor het Data Lake Storage Gen1-account.
+   > In de huidige versie u maximaal 28 vermeldingen hebben onder **Toegewezen machtigingen**. Als u meer dan 28 gebruikers wilt toevoegen, moet u beveiligingsgroepen maken, gebruikers toevoegen aan beveiligingsgroepen, toegang bieden tot die beveiligingsgroepen voor het Data Lake Storage Gen1-account.
    > 
    > 
-7. Indien nodig kunt u ook de toegangs machtigingen wijzigen nadat u de groep hebt toegevoegd. Schakel het selectie vakje voor elk type machtiging (lezen, schrijven, uitvoeren) in of uit, op basis van het feit of u die machtiging wilt verwijderen of toewijzen aan de beveiligings groep. Klik op **Opslaan** om de wijzigingen op te slaan of op **verwijderen** om de wijzigingen ongedaan te maken.
+7. Indien nodig u ook de toegangsmachtigingen wijzigen nadat u de groep hebt toegevoegd. Schakel het selectievakje voor elk machtigingstype (Lezen, Schrijven, Uitvoeren) uit of in of in op basis van de vraag of u die toestemming wilt verwijderen of toewijzen aan de beveiligingsgroep. Klik **op Opslaan** om de wijzigingen op te slaan of Verwijder **de** wijzigingen om de wijzigingen ongedaan te maken.
 
-## <a name="set-ip-address-range-for-data-access"></a>IP-adres bereik instellen voor toegang tot gegevens
-Met Data Lake Storage Gen1 kunt u de toegang tot uw gegevens archief op netwerk niveau verder vergren delen. U kunt de firewall inschakelen, een IP-adres opgeven of een IP-adres bereik definiëren voor uw vertrouwde clients. Zodra deze functie is ingeschakeld, kunnen alleen clients met de IP-adressen binnen het gedefinieerde bereik verbinding maken met de Store.
+## <a name="set-ip-address-range-for-data-access"></a>IP-adresbereik instellen voor gegevenstoegang
+Data Lake Storage Gen1 stelt u in staat om de toegang tot uw gegevensarchief op netwerkniveau verder te vergrendelen. U firewall inschakelen, een IP-adres opgeven of een IP-adresbereik definiëren voor uw vertrouwde clients. Zodra deze is ingeschakeld, kunnen alleen clients met de IP-adressen binnen het gedefinieerde bereik verbinding maken met de winkel.
 
-![Firewall instellingen en IP-toegang](./media/data-lake-store-secure-data/firewall-ip-access.png "Firewall instellingen en IP-adres")
+![Firewall-instellingen en IP-toegang](./media/data-lake-store-secure-data/firewall-ip-access.png "Firewall-instellingen en IP-adres")
 
-## <a name="remove-security-groups-for-a-data-lake-storage-gen1-account"></a>Beveiligings groepen voor een Data Lake Storage Gen1 account verwijderen
-Wanneer u beveiligings groepen uit Data Lake Storage Gen1 accounts verwijdert, wijzigt u alleen de toegang tot de beheer bewerkingen op het account met behulp van de Azure Portal en de Azure Resource Manager-Api's.  
+## <a name="remove-security-groups-for-a-data-lake-storage-gen1-account"></a>Beveiligingsgroepen voor een Data Lake Storage Gen1-account verwijderen
+Wanneer u beveiligingsgroepen uit Gegevenslake Storage Gen1-accounts verwijdert, wijzigt u alleen de toegang tot de beheerbewerkingen voor het account met behulp van de API's Azure Portal en Azure Resource Manager.  
 
-Toegang tot gegevens is ongewijzigd en wordt nog steeds beheerd door de toegangs-Acl's.  De uitzonde ring hierop zijn gebruikers/groepen in de rol eigen aren.  Gebruikers/groepen die zijn verwijderd uit de rol eigen aren zijn niet langer super gebruikers en hun toegang tot de toegangs beheer lijst instellingen wordt hersteld. 
+De toegang tot gegevens is ongewijzigd en wordt nog steeds beheerd door de toegangs-ACL's.  De uitzondering hierop zijn gebruikers/groepen in de rol Eigenaren.  Gebruikers/groepen die uit de rol Eigenaren zijn verwijderd, zijn niet langer supergebruikers en hun toegang valt terug tot toegang tot ACL-instellingen. 
 
-1. Klik op de Blade Data Lake Storage Gen1 account op **Access Control (IAM)** . 
+1. Klik in het accountblad Data Lake Storage Gen1 op **Toegangsbeheer (IAM).** 
    
-    ![Beveiligings groep toewijzen aan Data Lake Storage Gen1 account](./media/data-lake-store-secure-data/adl.select.user.icon.png "Beveiligings groep toewijzen aan Data Lake Storage Gen1 account")
-2. Klik op de Blade **Access Control (IAM)** op de beveiligings groep (en) die u wilt verwijderen. Klik op **Verwijderen**.
+    ![Beveiligingsgroep toewijzen aan Data Lake Storage Gen1-account](./media/data-lake-store-secure-data/adl.select.user.icon.png "Beveiligingsgroep toewijzen aan Data Lake Storage Gen1-account")
+2. Klik in het **IAM-blad (Access Control)** op de beveiligingsgroep(s) die u wilt verwijderen. Klik op **Verwijderen**.
    
-    ![De beveiligings groep is verwijderd](./media/data-lake-store-secure-data/adl.remove.group.png "De beveiligings groep is verwijderd")
+    ![Beveiligingsgroep verwijderd](./media/data-lake-store-secure-data/adl.remove.group.png "Beveiligingsgroep verwijderd")
 
-## <a name="remove-security-group-acls-from-a-data-lake-storage-gen1-file-system"></a>Acl's van beveiligings groepen verwijderen uit een Data Lake Storage Gen1 bestands systeem
-Wanneer u de Acl's van beveiligings groepen uit een Data Lake Storage Gen1 bestands systeem verwijdert, wijzigt u de toegang tot de gegevens in het Data Lake Storage Gen1-account.
+## <a name="remove-security-group-acls-from-a-data-lake-storage-gen1-file-system"></a>ACL's van beveiligingsgroepen verwijderen uit een Gegevensmeeropslag Gen1-bestandssysteem
+Wanneer u acl.s. beveiligingsgroepacl. verwijdert uit een Data Lake Storage Gen1-bestandssysteem, wijzigt u de toegang tot de gegevens in het Data Lake Storage Gen1-account.
 
-1. Klik op de Blade Data Lake Storage Gen1 account op **Data Explorer**.
+1. Klik in het accountblad Data Lake Storage Gen1 op **Data Explorer**.
    
     ![Mappen maken in Data Lake Storage Gen1-account](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Mappen maken in Data Lake Storage Gen1-account")
-2. Klik op de Blade **Data Explorer** op de map waarvoor u de ACL wilt verwijderen en klik vervolgens op **toegang**. Als u Acl's voor een bestand wilt verwijderen, moet u eerst op het bestand klikken om het te bekijken en vervolgens op **toegang** klikken op de Blade **voor beeld van bestand** . 
+2. Klik in het **blade van Data Explorer** op de map waarvoor u de ACL wilt verwijderen en klik vervolgens op **Access**. Als u ACL's voor een bestand wilt verwijderen, moet u eerst op het bestand klikken om het te bekijken en vervolgens op **Toegang** klikken vanuit het **blade voor bestandsvoorbeeld.** 
    
-    ![Acl's op Data Lake Storage Gen1 bestands systeem instellen](./media/data-lake-store-secure-data/adl.acl.1.png "Acl's op Data Lake Storage Gen1 bestands systeem instellen")
-3. Klik op de Blade **toegang** op de beveiligings groep die u wilt verwijderen. Klik op de Blade **toegangs gegevens** op **verwijderen**.
+    ![ACL's instellen op het Data Lake Storage Gen1-bestandssysteem](./media/data-lake-store-secure-data/adl.acl.1.png "ACL's instellen op het Data Lake Storage Gen1-bestandssysteem")
+3. Klik in het **Access-blad** op de beveiligingsgroep die u wilt verwijderen. Klik in het blad **Toegangsdetails** op **Verwijderen**.
    
     ![Machtigingen toewijzen aan groep](./media/data-lake-store-secure-data/adl.remove.acl.png "Machtigingen toewijzen aan groep")
 
 ## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
-* [Gegevens kopiëren van Azure Storage-blobs naar Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [Gegevens uit Azure Storage Blobs kopiëren naar Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Azure Data Lake Analytics gebruiken met Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Azure HDInsight gebruiken met Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Aan de slag met Data Lake Storage Gen1 met behulp van Power shell](data-lake-store-get-started-powershell.md)
-* [Aan de slag met Data Lake Storage Gen1 met behulp van .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Diagnostische logboeken openen voor Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md)
+* [Aan de slag met Data Lake Storage Gen1 met behulp van PowerShell](data-lake-store-get-started-powershell.md)
+* [Aan de slag met Data Lake Storage Gen1 met .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Toegang tot diagnostische logboeken voor Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md)
 

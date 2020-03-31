@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 6d7a94d258a6d030da9ec129cacb7abfa45cbbdc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176064"
 ---
-#### <a name="to-exit-maintenance-mode"></a>Om af te sluiten van onderhoudsmodus
-1. Typ bij de opdrachtprompt:
+#### <a name="to-exit-maintenance-mode"></a>Onderhoudsmodus afsluiten
+1. Bij het opdrachtprompttype:
    
      `Exit-HcsMaintenanceMode`
-2. Een waarschuwingsbericht wordt weergegeven en een bevestigingsbericht weergegeven. Type **Y** om onderhoudsmodus af te sluiten.
+2. Er verschijnt een waarschuwingsbericht en een bevestigingsbericht. Type **Y** om de onderhoudsmodus af te sluiten.
    
-    Beide controllers wordt opnieuw opgestart. Wanneer de computer opnieuw opgestart is, wordt een ander bericht weergegeven dat aangeeft dat het apparaat in de normale modus is.
+    Beide controllers worden opnieuw opgestart. Wanneer de herstart is voltooid, verschijnt er een ander bericht dat aangeeft dat het apparaat de normale modus heeft.
 

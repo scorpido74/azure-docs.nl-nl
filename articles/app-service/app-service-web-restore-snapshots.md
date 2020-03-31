@@ -1,65 +1,65 @@
 ---
-title: App herstellen vanuit een moment opname
-description: Meer informatie over het herstellen van uw app vanuit een moment opname. Herstellen van onverwacht gegevens verlies in Premium-laag met de automatische schaduw kopieën.
+title: App herstellen vanuit een momentopname
+description: Meer informatie over het herstellen van uw app vanaf een momentopname. Herstel van onverwacht gegevensverlies in Premium-laag met de automatische schaduwkopieën.
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
 ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255138"
 ---
-# <a name="restore-an-app-in-azure-from-a-snapshot"></a>Een app in azure herstellen vanuit een moment opname
-In dit artikel wordt beschreven hoe u een app in [Azure app service](../app-service/overview.md) kunt herstellen vanuit een moment opname. U kunt uw app herstellen naar een eerdere status op basis van een van de moment opnamen van uw app. U hoeft geen back-up van moment opnamen in te scha kelen. het platform slaat automatisch een moment opname van alle apps op voor gegevens herstel doeleinden.
+# <a name="restore-an-app-in-azure-from-a-snapshot"></a>Een app in Azure herstellen vanuit een momentopname
+In dit artikel ziet u hoe u een app in [Azure App Service](../app-service/overview.md) herstellen vanuit een momentopname. U uw app herstellen naar een eerdere status, op basis van een van de momentopnamen van uw app. U hoeft geen back-up van momentopnamen in te schakelen, het platform slaat automatisch een momentopname van alle apps op voor gegevenshersteldoeleinden.
 
-Moment opnamen zijn incrementele schaduw kopieën, en ze bieden diverse voor delen ten opzichte van regel matige [back-ups](manage-backup.md):
-- Er zijn geen fouten bij het kopiëren van bestanden vanwege bestands vergrendelingen.
-- Geen beperking van de opslag grootte.
-- Er is geen configuratie vereist.
+Snapshots zijn incrementele schaduwkopieën en bieden verschillende voordelen ten opzichte van reguliere [back-ups:](manage-backup.md)
+- Geen fouten in bestandskopie als gevolg van bestandsvergrendelingen.
+- Geen beperking van de opslaggrootte.
+- Geen configuratie vereist.
 
-Herstellen vanaf moment opnamen is beschikbaar voor apps die worden uitgevoerd in de **Premium** -laag of hoger. Zie [een app omhoog schalen in azure](manage-scale-up.md)voor meer informatie over het omhoog schalen van uw app.
+Herstellen van momentopnamen is beschikbaar voor apps die in **premium-laag** of hoger worden uitgevoerd. Zie [Een app opschalen in Azure](manage-scale-up.md)voor informatie over het opschalen van uw app.
 
 ## <a name="limitations"></a>Beperkingen
 
-- De functie is momenteel beschikbaar als preview-versie.
-- U kunt alleen herstellen naar dezelfde app of naar een sleuf die bij die app hoort.
-- App Service stopt de doel-app of doel sleuf tijdens het herstellen.
-- App Service behoudt drie maanden aan moment opnamen voor herstel van platform gegevens.
-- U kunt moment opnamen alleen herstellen voor de afgelopen 30 dagen.
-- App Services die op een App Service Environment worden uitgevoerd, bieden geen ondersteuning voor moment opnamen.
+- De functie is momenteel in preview.
+- U alleen herstellen naar dezelfde app of naar een sleuf die bij die app hoort.
+- App Service stopt de doel-app of doelsleuf tijdens het herstellen.
+- App Service houdt drie maanden ter waarde van snapshots voor platform data recovery doeleinden.
+- U alleen momentopnamen van de afgelopen 30 dagen herstellen.
+- App-services die worden uitgevoerd in een App-serviceomgeving, bieden geen ondersteuning voor momentopnamen.
  
 
-## <a name="restore-an-app-from-a-snapshot"></a>Een app herstellen vanuit een moment opname
+## <a name="restore-an-app-from-a-snapshot"></a>Een app herstellen vanuit een momentopname
 
-1. Klik op de pagina **instellingen** van uw app in de [Azure Portal](https://portal.azure.com)op **back-ups** om de pagina **back-ups** weer te geven. Klik vervolgens op **herstellen** onder het gedeelte **snap shot (preview)** .
+1. Klik op de pagina **Instellingen** van uw app in de [Azure-portal](https://portal.azure.com)op **Back-ups** om de pagina **Back-ups** weer te geven. Klik vervolgens op **Herstellen** onder de sectie **Momentopname (voorbeeld).**
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 
-2. Selecteer op de pagina **herstellen** de moment opname die u wilt herstellen.
+2. Selecteer **op** de pagina Herstellen de momentopname die u wilt herstellen.
    
     ![](./media/app-service-web-restore-snapshots/2.png)
    
-3. Geef het doel op voor het herstellen van de app in de **terugzet bestemming**.
+3. Geef de bestemming op voor het app-herstel in **Bestemming Herstellen**.
    
     ![](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > Als u **overschrijven**kiest, worden alle bestaande gegevens in het huidige bestands systeem van uw app gewist en overschreven. Voordat u op **OK**klikt, moet u ervoor zorgen dat het wat u wilt doen.
+   > Als u **Overschrijven**kiest, worden alle bestaande gegevens in het huidige bestandssysteem van uw app gewist en overschreven. Voordat u op **OK**klikt, moet u ervoor zorgen dat dit is wat u wilt doen.
    > 
    > 
       
    > [!Note]
-   > Als gevolg van actuele technische beperkingen kunt u alleen herstellen naar apps in dezelfde schaal eenheid. Deze beperking wordt in een toekomstige release verwijderd.
+   > Vanwege de huidige technische beperkingen u alleen herstellen naar apps in dezelfde schaaleenheid. Deze beperking wordt verwijderd in een toekomstige release.
    > 
    > 
    
-    U kunt een **bestaande app** selecteren om naar een sleuf te herstellen. Voordat u deze optie gebruikt, moet u al een sleuf hebben gemaakt in uw app.
+    U **Bestaande app** selecteren om te herstellen naar een sleuf. Voordat u deze optie gebruikt, moet u al een sleuf in uw app hebben gemaakt.
 
-4. U kunt ervoor kiezen om uw site configuratie te herstellen.
+4. U ervoor kiezen om uw siteconfiguratie te herstellen.
    
     ![](./media/app-service-web-restore-snapshots/4.png)
 

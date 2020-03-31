@@ -1,6 +1,6 @@
 ---
-title: Cast Labs gebruiken om Widevine-licenties te leveren aan Azure Media Services | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u Azure Media Services (AMS) kunt gebruiken voor het leveren van een stroom die dynamisch wordt versleuteld door AMS met zowel PlayReady als Widevine DRMs.
+title: CastLabs gebruiken om Widevine-licenties te leveren aan Azure Media Services | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u Azure Media Services (AMS) gebruiken om een stream te leveren die dynamisch is versleuteld door AMS met zowel PlayReady- als Widevine-DRM's.
 services: media-services
 documentationcenter: ''
 author: Mingfeiy
@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
 ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74969136"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>castLabs gebruiken om Widevine-licenties te leveren aan Azure Media Services 
@@ -31,93 +31,93 @@ ms.locfileid: "74969136"
 
 ## <a name="overview"></a>Overzicht
 
-In dit artikel wordt beschreven hoe u Azure Media Services (AMS) kunt gebruiken voor het leveren van een stroom die dynamisch wordt versleuteld door AMS met zowel PlayReady als Widevine DRMs. De PlayReady-licentie is afkomstig van Media Services PlayReady-licentie server en de Widevine-licentie wordt geleverd door de **cast Labs** -licentie server.
+In dit artikel wordt beschreven hoe u Azure Media Services (AMS) gebruiken om een stream te leveren die dynamisch is versleuteld door AMS met zowel PlayReady- als Widevine-DRM's. De PlayReady-licentie is afkomstig van Media Services PlayReady-licentieserver en Widevine-licentie wordt geleverd door **de castLabs-licentieserver.**
 
-Voor het afspelen van inhoud die is beveiligd met CENC (PlayReady en/of Widevine), kunt u [Azure Media Player](https://aka.ms/azuremediaplayer)gebruiken. Zie het [amp-document](https://amp.azure.net/libs/amp/latest/docs/) voor meer informatie.
+Als u streaming-inhoud wilt afspelen die is beschermd door CENC (PlayReady en/of Widevine), u [Azure Media Player gebruiken.](https://aka.ms/azuremediaplayer) Zie [AMP-document](https://amp.azure.net/libs/amp/latest/docs/) voor meer informatie.
 
-In het volgende diagram ziet u een architectuur op hoog niveau Azure Media Services-en cast Labs-integratie.
+In het volgende diagram wordt een azure mediaservices op hoog niveau en de castLabs-integratiearchitectuur getoond.
 
-![opneming](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
+![Integratie](./media/media-services-castlabs-integration/media-services-castlabs-integration.png)
 
-## <a name="typical-system-set-up"></a>Standaard configuratie van het systeem
+## <a name="typical-system-set-up"></a>Typisch systeem instellen
 
 * Media-inhoud wordt opgeslagen in AMS.
-* Sleutel-Id's van inhouds sleutels worden opgeslagen in zowel cast Labs als AMS.
-* Cast Labs en AMS hebben beide token verificatie ingebouwd. In de volgende secties worden verificatie tokens besproken. 
-* Wanneer een client aanvragen voor het streamen van de video, wordt de inhoud dynamisch versleuteld met **common Encryption** (CENC) en dynamisch verpakt door AMS naar Smooth streaming en streepje. We leveren ook PlayReady M2TS-elementaire stroom versleuteling voor HLS streaming-protocol.
-* PlayReady-licentie wordt opgehaald uit de AMS-licentie server en de Widevine-licentie wordt opgehaald van de cast Labs-licentie server. 
-* Media Player bepaalt automatisch welke licentie moet worden opgehaald op basis van de functionaliteit van het client platform. 
+* Belangrijke id's van inhoudssleutels worden opgeslagen in zowel castLabs als AMS.
+* castLabs en AMS hebben beide tokenauthenticatie ingebouwd. In de volgende secties worden verificatietokens besproken. 
+* Wanneer een client vraagt om de video te streamen, wordt de inhoud dynamisch versleuteld met **Common Encryption** (CENC) en dynamisch verpakt door AMS naar Smooth Streaming en DASH. We leveren ook PlayReady M2TS elementaire stream encryptie voor HLS streaming protocol.
+* PlayReady-licentie wordt opgehaald van AMS-licentieserver en Widevine-licentie wordt opgehaald van castLabs-licentieserver. 
+* Media Player bepaalt automatisch welke licentie u wilt ophalen op basis van de mogelijkheden van het clientplatform. 
 
-## <a name="authentication-token-generation-for-getting-a-license"></a>Het genereren van het verificatie token voor het verkrijgen van een licentie
+## <a name="authentication-token-generation-for-getting-a-license"></a>Verificatietokengeneratie voor het verkrijgen van een licentie
 
-Cast Labs en AMS ondersteunen JWT (JSON Web Token)-token indeling die wordt gebruikt voor het autoriseren van een licentie. 
+Zowel castLabs als AMS ondersteunen JWT -token-indeling (JSON Web Token) die wordt gebruikt om een licentie te autoriseren. 
 
 ### <a name="jwt-token-in-ams"></a>JWT-token in AMS
 
 In de volgende tabel wordt JWT-token in AMS beschreven. 
 
-| Verlener | De uitgevende teken reeks van de gekozen Secure token service (STS) |
+| Verlener | Tekenreeks van de gekozen Secure Token Service (STS) |
 | --- | --- |
-| Doelgroep |Reeks publiek van de gebruikte STS |
-| Claims |Een set claims |
-| NotBefore |De geldigheid van het token starten |
-| Verloopt |Eind geldigheid van het token |
-| SigningCredentials |De sleutel die wordt gedeeld tussen PlayReady-licentie server, cast Labs-licentie server en STS, kan een symmetrische of asymmetrische sleutel zijn. |
+| Doelgroep |Publiekstekenreeks van de gebruikte STS |
+| Claims |Een reeks claims |
+| NotBefore |Startgeldigheid van het token |
+| Verloopt |Einde geldigheid van het token |
+| Logopen voor ondertekening |De sleutel die wordt gedeeld tussen PlayReady License Server, castLabs License Server en STS, het kan ofwel symmetrische of asymmetrische sleutel. |
 
-### <a name="jwt-token-in-castlabs"></a>JWT-token in cast Labs
+### <a name="jwt-token-in-castlabs"></a>JWT-token in castLabs
 
-In de volgende tabel wordt JWT-token in cast Labs beschreven. 
+In de volgende tabel wordt JWT-token in castLabs beschreven. 
 
-| Naam | Beschrijving |
+| Name | Beschrijving |
 | --- | --- |
-| optData |Een JSON-teken reeks met informatie over u. |
-| CRT |Een JSON-teken reeks met informatie over de Asset, de licentie gegevens en de weergave rechten. |
-| iat |De huidige datum/tijd in de epoche. |
-| jti |Een unieke id over dit token (elke token kan slechts één keer worden gebruikt in het cast Labs-systeem). |
+| optData |Een JSON-tekenreeks met informatie over u. |
+| Crt |Een JSON-tekenreeks met informatie over het item, de licentiegegevens en afspeelrechten. |
+| Iat |De huidige datumtijd in het tijdperk. |
+| Gti |Een unieke id over dit token (elk token kan slechts één keer worden gebruikt in het castLabs-systeem). |
 
-## <a name="sample-solution-setup"></a>Installatie van de voorbeeld oplossing
+## <a name="sample-solution-setup"></a>Voorbeeldoplossing instellen
 
-De [voorbeeld oplossing](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) bestaat uit twee projecten:
+De [voorbeeldoplossing](https://github.com/AzureMediaServicesSamples/CastlabsIntegration) bestaat uit twee projecten:
 
-* Een console-app die kan worden gebruikt om DRM-beperkingen op een al opgenomen asset in te stellen voor zowel PlayReady als Widevine.
-* Een webtoepassing die tokens doorwerkt die kan worden gezien als een zeer vereenvoudigde versie van een STS.
+* Een console-app die kan worden gebruikt om DRM-beperkingen in te stellen voor een reeds ingenomen asset, voor zowel PlayReady als Widevine.
+* Een webapplicatie die tokens uitdeelt, die kunnen worden gezien als een zeer vereenvoudigde versie van een STS.
 
-De console toepassing gebruiken:
+Ga als nodig de consoletoepassing gebruiken:
 
-1. Wijzig de instellingen van de app. config in AMS, cast Labs-referenties, STS-configuratie en gedeelde sleutel.
-2. Upload een asset in AMS.
-3. Haal de UUID op uit de geüploade Asset en wijzig regel 32 in het Program.cs-bestand:
+1. Wijzig de app.config in het instellen van AMS-referenties, castLabs-referenties, STS-configuratie en gedeelde sleutel.
+2. Upload een asset naar AMS.
+3. Haal de UUID uit het geüploade item en wijzig lijn 32 in het Program.cs bestand:
    
-      var objIAsset = _context. Assets. where (x = > x.Id = = "NB: Cid: UUID: dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault ();
-4. Gebruik een AssetId voor het benoemen van de asset in het cast Labs-systeem (regel 44 in het Program.cs-bestand).
+      var objIAsset = _context. Assets.Where(x => x.Id == "nb:cid:UUID:dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault();
+4. Gebruik een AssetId voor het benoemen van de asset in het castLabs-systeem (lijn 44 in het Program.cs bestand).
    
-   U moet AssetId instellen voor **cast Labs**; Dit moet een unieke alfanumerieke teken reeks zijn.
+   U moet AssetId instellen voor **castLabs;** het moet een unieke alfanumerieke tekenreeks zijn.
 5. Voer het programma uit.
 
-De Web Application (STS) gebruiken:
+Ga als lid van de webtoepassing (STS):
 
-1. Wijzig de web. config in instellen cast Labs handelaar-ID, de STS-configuratie en de gedeelde sleutel.
-2. Implementeren naar Azure websites.
-3. Ga naar de website.
+1. Wijzig de web.config in het instellen van castlabs merchant ID, de STS-configuratie en de gedeelde sleutel.
+2. Implementeren op Azure-websites.
+3. Navigeer naar de website.
 
 ## <a name="playing-back-a-video"></a>Een video afspelen
 
-Als u een video wilt afspelen die is versleuteld met een gemeen schappelijke versleuteling (PlayReady en/of Widevine), kunt u de [Azure Media Player](https://aka.ms/azuremediaplayer)gebruiken. Wanneer u de console-app uitvoert, worden de inhouds sleutel-ID en de manifest-URL geechod.
+Als u een video wilt afspelen die is versleuteld met algemene versleuteling (PlayReady en/of Widevine), u de [Azure Media Player gebruiken.](https://aka.ms/azuremediaplayer) Bij het uitvoeren van de console-app worden de Inhoudssleutel-ID en de manifest-URL herhaald.
 
-1. Open een nieuw tabblad en start uw STS: http://[yourStsName]. azurewebsites. net/API/token/AssetID/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
+1. Open een nieuw tabblad en start uw STS: http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid].
 2. Ga naar [Azure Media Player](https://aka.ms/azuremediaplayer).
-3. Plak de streaming-URL.
-4. Klik op het selectie vakje **Geavanceerde opties** .
-5. Selecteer PlayReady en/of Widevine in de vervolg keuzelijst **beveiliging** .
-6. Plak het token dat u hebt ontvangen van uw STS in het tekstvak token. 
+3. Plak in de streaming-URL.
+4. Klik op het selectievakje **Geavanceerde opties.**
+5. Selecteer **playready** en/of Widevine in de vervolgkeuzelijst Beveiliging.
+6. Plak het token dat je van je STS hebt gekregen in het tekstvak Token. 
    
-   De castLab-licentie server heeft het voor voegsel ' Bearer = ' vóór het token niet nodig. Verwijder deze voordat u het token verzendt.
+   De castLab-licentieserver heeft het voorvoegsel "Bearer=" niet nodig voor het token. Dus verwijder dat voordat u het token indient.
 7. Werk de speler bij.
 8. De video moet worden afgespeeld.
 
 ## <a name="additional-notes"></a>Aanvullende opmerkingen
 
-* Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
+* Widevine is een service van Google Inc. en onderworpen aan de servicevoorwaarden en het privacybeleid van Google, Inc.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

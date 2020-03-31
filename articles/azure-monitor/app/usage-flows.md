@@ -1,5 +1,5 @@
 ---
-title: Analyseer gebruikers navigatie patronen met Gebruikersstromen in Azure-toepassing inzichten | Micro soft docs
+title: Gebruikersnavigatiepatronen analyseren met gebruikersstromen in Azure Application Insights | Microsoft-documenten
 description: Analyseer hoe gebruikers navigeren tussen de pagina's en functies van uw web-app.
 ms.topic: conceptual
 author: NumberByColors
@@ -7,85 +7,85 @@ ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: a4a81a3e4c5759e444836162319abb97d83a4c74
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671066"
 ---
-# <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analyseer gebruikers navigatie patronen met Gebruikersstromen in Application Insights
+# <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Gebruikersnavigatiepatronen analyseren met gebruikersstromen in toepassingsstatistieken
 
-![Application Insights Gebruikersstromen-hulp programma](./media/usage-flows/00001-flows.png)
+![Gereedschap Gebruikersstromen voor toepassingsinzichten](./media/usage-flows/00001-flows.png)
 
-Het hulp programma Gebruikersstromen visualiseert hoe gebruikers navigeren tussen de pagina's en functies van uw site. Het is handig voor het beantwoorden van vragen als:
+Het gereedschap Gebruikersstromen visualiseert hoe gebruikers navigeren tussen de pagina's en functies van uw site. Het is geweldig voor het beantwoorden van vragen als:
 
-* Hoe navigeren kunnen gebruikers een pagina op uw site verlaten?
-* Wat kunnen gebruikers klikken op een pagina op uw site?
-* Waar bevinden de locaties die gebruikers het meest voor komen van uw site?
-* Zijn er locaties waar gebruikers dezelfde actie kunnen herhalen?
+* Hoe navigeren gebruikers weg van een pagina op uw site?
+* Waar klikken gebruikers op een pagina op uw site?
+* Waar zijn de plaatsen die gebruikers churn meest van uw site?
+* Zijn er plaatsen waar gebruikers steeds dezelfde actie herhalen?
 
-Het hulp programma Gebruikersstromen wordt gestart vanuit een initiële pagina weergave, aangepaste gebeurtenis of uitzonde ring die u opgeeft. Op basis van deze eerste gebeurtenis bevat Gebruikersstromen de gebeurtenissen die voor en na de gebruikers sessies hebben plaatsgevonden. Regels van de variërende dikte geven aan hoe vaak elk pad is gevolgd door gebruikers. De knoop punten voor het starten van speciale **sessies** laten zien waar de volgende knoop punten zijn begonnen met een sessie. Knoop punten bij het beëindigen van **sessies** laten zien hoeveel gebruikers geen pagina weergaven of aangepaste gebeurtenissen hebben verzonden na het voor gaande knoop punt, waarbij gebruikers waarschijnlijk uw site verlaten.
+Het gereedschap Gebruikersstromen begint vanuit een eerste paginaweergave, aangepaste gebeurtenis of uitzondering die u opgeeft. Gezien deze eerste gebeurtenis toont User Flows de gebeurtenissen die voor en na tijdens gebruikerssessies zijn gebeurd. Lijnen van verschillende dikte geven aan hoe vaak elk pad werd gevolgd door gebruikers. Met de knooppunten **Met speciale sessie gestart** wordt weergegeven waar de volgende knooppunten een sessie zijn begonnen. **Met** de knooppunten Sessie einde wordt weergegeven hoeveel gebruikers geen paginaweergaven of aangepaste gebeurtenissen hebben verzonden na het vorige knooppunt, waarbij wordt benadrukt waar gebruikers waarschijnlijk uw site hebben verlaten.
 
 > [!NOTE]
-> Uw Application Insights resource moet pagina weergaven of aangepaste gebeurtenissen bevatten voor het gebruik van het hulp programma Gebruikersstromen. [Meer informatie over het instellen van uw app voor het automatisch verzamelen van pagina weergaven met de Application Insights java script SDK](../../azure-monitor/app/javascript.md).
+> Uw toepassingsstatistiekenbron moet paginaweergaven of aangepaste gebeurtenissen bevatten om het gereedschap Gebruikersstromen te gebruiken. [Meer informatie over het instellen van uw app om paginaweergaven automatisch te verzamelen met de Application Insights JavaScript SDK.](../../azure-monitor/app/javascript.md)
 >
 >
 
 ## <a name="start-by-choosing-an-initial-event"></a>Begin met het kiezen van een eerste gebeurtenis
 
-![Kies een eerste gebeurtenis voor Gebruikersstromen](./media/usage-flows/00002-flows-initial-event.png)
+![Een eerste gebeurtenis kiezen voor gebruikersstromen](./media/usage-flows/00002-flows-initial-event.png)
 
-Als u wilt beginnen met het beantwoorden van vragen met het Gebruikersstromen-hulp programma, kiest u een eerste pagina weergave, aangepaste gebeurtenis of uitzonde ring die als uitgangs punt voor de visualisatie fungeert:
+Als u vragen wilt beantwoorden met het gereedschap Gebruikersstromen, kiest u een eerste paginaweergave, aangepaste gebeurtenis of uitzondering om als uitgangspunt voor de visualisatie te dienen:
 
-1. Klik op de koppeling in de titel **Wat doen gebruikers doen na...?** of klik op de knop **bewerken** .
-2. Selecteer een pagina weergave, aangepaste gebeurtenis of uitzonde ring in de vervolg keuzelijst voor de **eerste gebeurtenis** .
-3. Klik op **Create Graph**.
+1. Klik op de link in de **What do users do after...?** title, of klik op de knop **Bewerken.**
+2. Selecteer een paginaweergave, aangepaste gebeurtenis of uitzondering in de vervolgkeuzelijst **Eerste gebeurtenis.**
+3. Klik **op Grafiek maken**.
 
-In de kolom ' stap 1 ' van de visualisatie ziet u wat gebruikers het meest vaak hebben gedaan, net na de eerste gebeurtenis, van boven naar beneden geordend van de meeste naar minst frequent. In ' stap 2 ' en de volgende kolommen ziet u wat gebruikers daarna hebben gedaan, waardoor ze een foto maken van alle manieren waarop gebruikers via uw site hebben genavigeerd.
+De kolom "Stap 1" van de visualisatie laat zien wat gebruikers het vaakst deden net na de eerste gebeurtenis, van boven naar beneden besteld van de meeste tot minst frequent. De "Stap 2" en de daaropvolgende kolommen laten zien wat gebruikers daarna hebben gedaan, waardoor een beeld ontstaat van alle manieren waarop gebruikers door uw site hebben genavigeerd.
 
-Standaard worden alleen de laatste 24 uur van pagina weergaven en aangepaste gebeurtenissen van uw site wille keurig gesampled met het hulp programma Gebruikersstromen. U kunt het tijds bereik verg Roten en de prestaties en nauw keurigheid voor wille keurige steek proeven in het menu bewerken wijzigen.
+Standaard worden in het gereedschap Gebruikersstromen alleen de laatste 24 uur paginaweergaven en aangepaste gebeurtenis van uw site verwijderd. U het tijdsbereik vergroten en de balans tussen prestaties en nauwkeurigheid voor willekeurige steekproeven wijzigen in het menu Bewerken.
 
-Als sommige pagina weergaven, aangepaste gebeurtenissen en uitzonde ringen niet relevant voor u zijn, klikt u op de **X** op de knoop punten die u wilt verbergen. Wanneer u de knoop punten hebt geselecteerd die u wilt verbergen, klikt u op de knop **grafiek maken** onder de visualisatie. Als u alle knoop punten wilt zien die u hebt verborgen, klikt u op de knop **bewerken** en bekijkt u de sectie **uitgesloten gebeurtenissen** .
+Als sommige paginaweergaven, aangepaste gebeurtenissen en uitzonderingen niet relevant voor u zijn, klikt u op de **X** op de knooppunten die u wilt verbergen. Nadat u de knooppunten hebt geselecteerd die u wilt verbergen, klikt u op de knop **Grafiek maken** onder de visualisatie. Als u alle knooppunten wilt zien die u hebt verborgen, klikt u op de knop **Bewerken** en kijkt u vervolgens naar de sectie **Uitgesloten gebeurtenissen.**
 
-Als er pagina weergaven of aangepaste gebeurtenissen ontbreken die u verwacht te zien in de visualisatie:
+Als paginaweergaven of aangepaste gebeurtenissen ontbreken, verwacht u dat u in de visualisatie zult zien:
 
-* Controleer de sectie **uitgesloten gebeurtenissen** in het menu **bewerken** .
-* Gebruik de plus knoppen op **andere** knoop punten om minder frequente gebeurtenissen in de visualisatie op te neemt.
-* Als de door u verwachte pagina weergave of aangepaste gebeurtenis niet regel matig wordt verzonden door gebruikers, probeert u het tijds bereik van de visualisatie in het menu **bewerken** te verg Roten.
-* Zorg ervoor dat de pagina weergave, aangepaste gebeurtenis of uitzonde ring die u verwacht, is ingesteld om te worden verzameld door de Application Insights SDK in de bron code van uw site. [Meer informatie over het verzamelen van aangepaste gebeurtenissen.](../../azure-monitor/app/api-custom-events-metrics.md)
+* Controleer de sectie **Uitgesloten gebeurtenissen** in het menu **Bewerken.**
+* Gebruik de plusknoppen op **andere** knooppunten om minder frequente gebeurtenissen in de visualisatie op te nemen.
+* Als de paginaweergave of aangepaste gebeurtenis die u verwacht zelden door gebruikers wordt verzonden, probeert u het tijdsbereik van de visualisatie in het menu **Bewerken te** vergroten.
+* Zorg ervoor dat de paginaweergave, aangepaste gebeurtenis of uitzondering waarvan u verwacht dat deze door de Application Insights SDK in de broncode van uw site wordt verzameld. [Meer informatie over het verzamelen van aangepaste evenementen.](../../azure-monitor/app/api-custom-events-metrics.md)
 
-Als u meer stappen in de visualisatie wilt zien, gebruikt u de vervolg keuzelijst voor **gaande stappen** en **volgende stappen** boven de visualisatie.
+Als u meer stappen in de visualisatie wilt zien, gebruikt u de vervolgkeuzestappen **Vorige stappen** en **Vervolgstappen** boven de visualisatie.
 
-## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Wanneer worden er een pagina of functie bezocht, waar worden gebruikers naartoe?
+## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Waar gaan gebruikers na een bezoek aan een pagina of functie naartoe en waar klikken ze op?
 
-![Gebruik Gebruikersstromen om inzicht te krijgen in waar gebruikers klikken](./media/usage-flows/00003-flows-one-step.png)
+![Gebruikersstromen gebruiken om te begrijpen waar gebruikers op klikken](./media/usage-flows/00003-flows-one-step.png)
 
-Als uw eerste gebeurtenis een pagina weergave is, is de eerste kolom (' stap 1 ') van de visualisatie een snelle manier om te begrijpen wat gebruikers direct na de pagina hebben bezocht. Probeer uw site te openen in een venster naast de visualisatie Gebruikersstromen. Vergelijk uw verwachtingen over hoe gebruikers met de pagina communiceren met de lijst met gebeurtenissen in de kolom ' stap 1 '. Vaak kan een UI-element op de pagina die niet van belang is voor uw team, zich op de meest gebruikte pagina bevindt. Het kan een geweldig uitgangs punt zijn voor ontwerp verbeteringen voor uw site.
+Als uw eerste gebeurtenis een paginaweergave is, is de eerste kolom ("Stap 1") van de visualisatie een snelle manier om te begrijpen wat gebruikers onmiddellijk na het bezoeken van de pagina hebben gedaan. Probeer uw site te openen in een venster naast de visualisatie gebruikersstromen. Vergelijk uw verwachtingen over de manier waarop gebruikers met de pagina communiceren met de lijst met gebeurtenissen in de kolom Stap 1. Vaak kan een UI-element op de pagina dat onbelangrijk lijkt voor uw team een van de meest gebruikte op de pagina zijn. Het kan een geweldig uitgangspunt zijn voor ontwerpverbeteringen aan uw site.
 
-Als uw eerste gebeurtenis een aangepaste gebeurtenis is, laat de eerste kolom zien wat gebruikers hebben gedaan nadat deze actie is uitgevoerd. Net als bij pagina weergaven kunt u overwegen of het waargenomen gedrag van uw gebruikers overeenkomt met de doel stellingen en verwachtingen van uw team. Als de geselecteerde begin gebeurtenis ' toegevoegd item aan de winkel wagen ' is, ziet u bijvoorbeeld of ' Ga naar de kassa ' en ' voltooide aankoop ' in de visualisatie kort daarna weer gegeven. Als gebruikers gedrag afwijkt van uw verwachtingen, kunt u de visualisatie gebruiken om te begrijpen hoe gebruikers het huidige ontwerp van uw site krijgen.
+Als uw eerste gebeurtenis een aangepaste gebeurtenis is, wordt in de eerste kolom weergegeven wat gebruikers hebben gedaan vlak na het uitvoeren van die actie. Net als bij paginaweergaven moet u overwegen of het waargenomen gedrag van uw gebruikers overeenkomt met de doelstellingen en verwachtingen van uw team. Als uw geselecteerde eerste gebeurtenis bijvoorbeeld 'Toegevoegd item aan winkelwagentje' is, moet u kijken of 'Ga naar afhandeling' en 'Voltooide aankoop' kort daarna in de visualisatie worden weergegeven. Als het gedrag van gebruikers verschilt van uw verwachtingen, gebruikt u de visualisatie om te begrijpen hoe gebruikers worden "gevangen" door het huidige ontwerp van uw site.
 
-## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>Waar bevinden de locaties die gebruikers het meest voor komen van uw site?
+## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>Waar zijn de plaatsen die gebruikers churn meest van uw site?
 
-Bekijk de gebeëindigde knoop punten van **sessies** die hoog worden weer gegeven in een kolom in de visualisatie, met name vroegtijdig in een stroom. Dit betekent dat veel gebruikers waarschijnlijk vanaf uw site hebben gereden na het voorafgaande pad van pagina's en UI-interacties. Soms wordt het verloop verwacht-nadat een aankoop is voltooid op een commerce-site, maar gewoonlijk is het verloop een teken van ontwerp problemen, slechte prestaties of andere problemen met uw site die kunnen worden verbeterd.
+Kijk uit voor **sessieknooppunten die** hoog in een kolom in de visualisatie worden weergegeven, vooral vroeg in een stroom. Dit betekent dat veel gebruikers waarschijnlijk gekarnd van uw site na het volgen van de voorgaande pad van pagina's en UI interacties. Soms wordt churn verwacht - na het voltooien van een aankoop op een e-commercesite, bijvoorbeeld - maar meestal is churn een teken van ontwerpproblemen, slechte prestaties of andere problemen met uw site die kunnen worden verbeterd.
 
-Houd er wel op dat knoop punten die door deze **sessie zijn beëindigd** alleen worden gebaseerd op de telemetrie die door deze Application Insights resource is verzameld. Als Application Insights geen telemetrie voor bepaalde gebruikers interacties ontvangt, kunnen gebruikers nog steeds op deze manieren verbinding hebben met uw site, nadat de Gebruikersstromen hulp programma de melding heeft gegeven dat de sessie is beëindigd.
+Houd er rekening mee dat **sessieknooppunten** alleen gebaseerd zijn op telemetrie die wordt verzameld door deze Application Insights-bron. Als Application Insights geen telemetrie ontvangt voor bepaalde gebruikersinteracties, kunnen gebruikers nog steeds op die manieren met uw site hebben samengewerkt nadat de sessie is beëindigd nadat de sessie is beëindigd.
 
-## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>Zijn er locaties waar gebruikers dezelfde actie kunnen herhalen?
+## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>Zijn er plaatsen waar gebruikers steeds dezelfde actie herhalen?
 
-Zoek naar een pagina weergave of een aangepaste gebeurtenis die door veel gebruikers wordt herhaald tijdens de volgende stappen in de visualisatie. Dit betekent meestal dat gebruikers terugkerende acties uitvoeren op uw site. Als u een herhaling vindt, overweeg dan het ontwerp van uw site te wijzigen of nieuwe functionaliteit toe te voegen om herhaling te verminderen. U kunt bijvoorbeeld bulksgewijze bewerkings functionaliteit toevoegen als u gebruikers vindt die herhaalde acties uitvoeren voor elke rij van een TABLE-element.
+Zoek naar een paginaweergave of aangepaste gebeurtenis die door veel gebruikers wordt herhaald in de volgende stappen in de visualisatie. Dit betekent meestal dat gebruikers repetitieve acties uitvoeren op uw site. Als u herhaling vindt, denk dan na over het wijzigen van het ontwerp van uw site of het toevoegen van nieuwe functionaliteit om herhaling te verminderen. Bijvoorbeeld bulkbewerkingsfunctionaliteit toevoegen als u gebruikers ziet die repetitieve acties uitvoeren op elke rij van een tabelelement.
 
 ## <a name="common-questions"></a>Veelgestelde vragen
 
-### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>Vertegenwoordigt de eerste gebeurtenis de eerste keer dat de gebeurtenis wordt weer gegeven in een sessie of op elk moment dat deze in een sessie wordt weer gegeven?
+### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>Vertegenwoordigt de eerste gebeurtenis de eerste keer dat de gebeurtenis in een sessie wordt weergegeven of wanneer deze in een sessie wordt weergegeven?
 
-De eerste gebeurtenis in de visualisatie vertegenwoordigt alleen de eerste keer dat een gebruiker die pagina weergave of aangepaste gebeurtenis tijdens een sessie heeft verzonden. Als gebruikers de eerste gebeurtenis meerdere keren in een sessie kunnen verzenden, wordt in de kolom ' stap 1 ' alleen weer gegeven hoe gebruikers zich gedragen na het *eerste* exemplaar van de oorspronkelijke gebeurtenis, niet alle exemplaren.
+De eerste gebeurtenis op de visualisatie vertegenwoordigt alleen de eerste keer dat een gebruiker die paginaweergave of aangepaste gebeurtenis tijdens een sessie heeft verzonden. Als gebruikers de eerste gebeurtenis meerdere keren in een sessie kunnen verzenden, wordt in de kolom Stap 1 alleen weergegeven hoe gebruikers zich gedragen na de *eerste* instantie van de eerste gebeurtenis, niet alle exemplaren.
 
-### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>Enkele van de knoop punten in mijn visualisatie zijn te hoog. Bijvoorbeeld een knoop punt met de tekst ' knop geklikt '. Hoe kan ik deze opsplitsen in meer gedetailleerde knoop punten?
+### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>Sommige knooppunten in mijn visualisatie zijn te hoog niveau. Bijvoorbeeld een knooppunt met de tekst 'Button Clicked'. Hoe kan ik het opsplitsen in meer gedetailleerde knooppunten?
 
-Gebruik de opties **splitsen** op in het menu **bewerken** :
+Gebruik de opties **Splitsen op** in het menu **Bewerken:**
 
-1. Kies de gebeurtenis die u wilt opsplitsen in het menu **gebeurtenis** .
-2. Kies een dimensie in het menu **dimensie** . Als u bijvoorbeeld een gebeurtenis met de naam ' knop geklikt ' hebt, kunt u een aangepaste eigenschap met de naam ' button name ' proberen.
+1. Kies de gebeurtenis die u wilt opsplitsen in het **menu Evenement.**
+2. Kies een dimensie in het menu **Dimensie.** Als u bijvoorbeeld een gebeurtenis hebt met de naam 'Button Clicked', probeert u een aangepaste eigenschap met de naam 'Button Name'.
 
 ## <a name="next-steps"></a>Volgende stappen
 

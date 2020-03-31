@@ -1,101 +1,101 @@
 ---
 title: Overzicht van consul
-description: Een overzicht van consul verkrijgen
+description: Een overzicht van Consul
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594206"
 ---
 # <a name="consul"></a>Consul
 
 ## <a name="overview"></a>Overzicht
 
-[Consul][consul] is een service netwerk oplossing met meerdere Data Centers om verbinding te maken met services tussen runtime platforms en deze te beveiligen. [Connect][consul-features] is het onderdeel dat Service-Mesh mogelijkheden biedt.
+[Consul][consul] is een multi-datacenter bewuste service netwerkoplossing voor het verbinden en beveiligen van diensten via runtime platforms. [Connect][consul-features] is het onderdeel dat servicemesh-mogelijkheden biedt.
 
 ## <a name="architecture"></a>Architectuur
 
-Consul biedt standaard een gegevens vlak dat bestaat uit op [Envoy][envoy-proxy]gebaseerde [zijspanken][consul-sidecar] . Consul heeft een pluggable proxy-architectuur. Deze intelligente proxy's bepalen al het netwerk verkeer in en uit uw gestuurde apps en workloads.
+Consul biedt standaard een datavliegtuig dat bestaat uit [op envoy][envoy-proxy]gebaseerde [zijspannen.][consul-sidecar] Consul heeft een pluggable proxy architectuur. Deze intelligente proxy's regelen al het netwerkverkeer in en uit uw meshed apps en workloads.
 
-Het besturings vlak beheert de configuratie en het beleid via de volgende [onderdelen][consul-architecture]:
+Het besturingsvlak beheert de configuratie en het beleid via de volgende [componenten:][consul-architecture]
 
-- **Server** : een consul-agent die wordt uitgevoerd in de server modus die de consul-cluster status onderhoudt.
+- **Server** - Een consul-agent die wordt uitgevoerd in de servermodus die de status van het Consul-cluster behoudt.
 
-- **Client** -een consul-agent die wordt uitgevoerd in de modus Lightweight client. Voor elk reken knooppunt moet een client agent worden uitgevoerd. Deze client-Brokers configureren en beleid tussen de werk belastingen en de consul-configuratie. 
+- **Klant** - Een consul-agent die in lichtgewicht clientmodus draait. Elke compute-knooppunt moet een clientagent hebben die wordt uitgevoerd. Deze client makelaars configuratie en beleid tussen de workloads en de Consul configuratie. 
 
-In het volgende architectuur diagram ziet u hoe de verschillende onderdelen binnen het vlak van de gegevens en het besturings element werken.
+Het volgende architectuurdiagram laat zien hoe de verschillende componenten in het gegevensvlak en het controlevlak met elkaar in wisselwerking staan.
 
-![Overzicht van consul-onderdelen en-architectuur.](media/servicemesh/consul/about-architecture.png)
-
-
-## <a name="selection-criteria"></a>Selectie criteria
-
-Het is belang rijk dat u de volgende gebieden begrijpt en overweegt om consul te evalueren voor uw workloads:
-
-- [Consul-principes](#consul-principles)
-- [Bieden](#capabilities)
-- [Scenario's](#scenarios)
+![Overzicht van consul componenten en architectuur.](media/servicemesh/consul/about-architecture.png)
 
 
-### <a name="consul-principles"></a>Consul-principes
+## <a name="selection-criteria"></a>Selectiecriteria
 
-De volgende principes [begeleiden][consul-principles] het consul-project:
+Het is belangrijk om de volgende gebieden te begrijpen en te overwegen bij het evalueren van Consul op uw workloads:
 
-- **API-aangedreven** -Codify alle configuratie en beleid.
+- [Consul-beginselen](#consul-principles)
+- [Functionaliteit](#capabilities)
+- [Scenario 's](#scenarios)
 
-- Voer Anywhere-Connect-workloads uit op verschillende runtime platforms (Kubernetes, Vm's, Serverloos) **en maak er verbinding mee** .
 
-- **Breid en integreer** veilig werk belastingen over de infra structuur.
+### <a name="consul-principles"></a>Consul-beginselen
+
+De volgende principes [zijn de leidraad voor][consul-principles] het consul-project:
+
+- **API-Driven** - Codificer alle configuratie en beleid.
+
+- **Run and Connect Anywhere** - Connect workloads over runtime platforms (Kubernetes, VM's, Serverless).
+
+- **Uitbreiden en integreren** - Workloads veilig aansluiten op de infrastructuur.
 
 
 ### <a name="capabilities"></a>Functionaliteit
 
 Consul biedt de volgende mogelijkheden:
 
-- **Net** -gateway (Data Center met meerdere gegevens), virtuele machines (buiten cluster knooppunten), service synchronisatie, ingebouwd in de optie fout opsporing
+- **Mesh** – gateway (multi datacenter), virtuele machines (uit clusterknooppunten), servicesynchronisatie, ingebouwde foutopsporingsoptie
 
-- **Proxy's** – Envoy, ingebouwde proxy, pluggable, N4-proxy beschikbaar voor Windows-workloads
+- **Proxy's** - Envoy, ingebouwde proxy, pluggable, l4 proxy beschikbaar voor Windows-workloads
 
-- **Verkeers beheer** – route ring, splitsen, oplossing
+- **Traffic Management** – routing, splitting, resolution
 
-- **Beleid** : bedoelt, acl's
+- **Beleid** – intenties, ACL's
 
-- **Beveiliging** : autorisatie, authenticatie, versleuteling, op SPIFFE gebaseerde identiteiten, externe CA (kluis), certificaat beheer en rotatie
+- **Beveiliging** – autorisatie, verificatie, versleuteling, op SPIFFE gebaseerde identiteiten, externe CA (Vault), certificaatbeheer en rotatie
 
-- **Waarneem** bare statistieken, UI-dash board, Prometheus, grafana
+- **Waarneembaarheid** – metrics, ui dashboard, prometheus, grafana
 
 
-### <a name="scenarios"></a>Scenario 's
+### <a name="scenarios"></a>Scenario's
 
-Consul is goed geschikt voor de volgende scenario's:
+Consul is zeer geschikt voor en voorgesteld voor de volgende scenario's:
 
-- Bestaande consul Connected workloads uitbreiden
+- Bestaande door consul verbonden workloads uitbreiden
 
-- Nalevings vereisten rond certificaat beheer
+- Nalevingsvereisten rond certificaatbeheer
 
-- Multi Cluster service net
+- Multiclusterservicenet
 
-- Werk belastingen op basis van VM'S die moeten worden opgenomen in het service-net
+- VM-gebaseerde workloads die moeten worden opgenomen in de servicemesh
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende documentatie wordt beschreven hoe u consul kunt installeren in azure Kubernetes service (AKS):
+In de volgende documentatie wordt beschreven hoe u Consul installeren op Azure Kubernetes Service (AKS):
 
 > [!div class="nextstepaction"]
-> [Consul installeren in azure Kubernetes service (AKS)][consul-install]
+> [Consul installeren in Azure Kubernetes Service (AKS)][consul-install]
 
-U kunt ook nog verder consul-functies en-architectuur verkennen:
+U ook de functies en architectuur van Consul verder verkennen:
 
 - [Consul-functies][consul-features]
-- [Consul-architectuur][consul-architecture]
-- [Consul-hoe Connect werkt][consul-how-connect-works]
+- [Consul Architectuur][consul-architecture]
+- [Consul - Hoe Connect werkt][consul-how-connect-works]
 
 <!-- LINKS - external -->
 [consul]: https://www.consul.io/mesh.html

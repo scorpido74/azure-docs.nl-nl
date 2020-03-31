@@ -1,91 +1,91 @@
 ---
-title: Sjablonen voor Azure Block Chain-tokens
-description: Sjablonen voor Azure Block Chain-tokens zijn gestandaardiseerde en herbruikbare sjablonen waarmee het maken en implementeren van op het groot boek gebaseerde tokens wordt vereenvoudigd.
+title: Azure Blockchain-tokenssjablonen
+description: Azure Blockchain Tokens-sjablonen zijn gestandaardiseerde en herbruikbare sjablonen die het maken en implementeren van tokens op basis van grootboek vereenvoudigen.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 9600a6a251552acd319cc68d2bd281584d65546d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252205"
 ---
-# <a name="azure-blockchain-tokens-templates"></a>Sjablonen voor Azure Block Chain-tokens
+# <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain-tokenssjablonen
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Een Azure Block Chain-tokens-sjabloon is een gestandaardiseerde en herbruikbare sjabloon waarmee het maken en implementeren van op het groot boek gebaseerde tokens wordt vereenvoudigd. Een sjabloon bestaat uit een formule die is gebaseerd op de [ttf-grammatica (token taxonomie Framework)](overview.md#token-taxonomy-framework) . De grammatica omvat het basis token type en de set gedragingen voor het token.  
+Een Azure Blockchain Tokens-sjabloon is een gestandaardiseerde en herbruikbare sjabloon die het maken en implementeren van tokens op basis van grootboek vereenvoudigt. Een sjabloon bestaat uit een formule, die is gebaseerd op de [grammatica van het Token Taxonomy Framework (TTF).](overview.md#token-taxonomy-framework) De grammatica omvat het basistokentype en de set gedragingen voor het token.  
 
-Bijvoorbeeld, **τϜ {d, m, b, r}-** token sjabloon beschrijft een vervangbaar-basis token dat sub-elementbaar, mintable, brandbaar is en functie ondersteuning heeft.
+Zo beschrijft de tokensjabloon **τ{d,m,b,r}** een fungibel basistoken dat ondergedeeld, vervangbaar, brandbaar en rolondersteuning heeft.
   
-## <a name="base-token-types"></a>Basis token typen
+## <a name="base-token-types"></a>Basistokentypen
 
-Wanneer u het op het groot boek gebaseerde token voor uw specifieke Asset definieert en maakt, is het belang rijk om te bepalen welk basis token u wilt gebruiken.
+Bij het definiëren en maken van het token op basis van grootboek voor uw specifieke asset, is het belangrijk om te overwegen welk basistoken u moet gebruiken.
 
-### <a name="fungible"></a>Vervangbaar
+### <a name="fungible"></a>Fungibel
 
-Vervangbaar tokens (τF) hebben elkaar onderling verwisselbaar, zolang ze zich in dezelfde klasse of reeks bevinden. Een token heeft dezelfde waarde als een ander token of een bepaalde hoeveelheid tokens heeft dezelfde waarde als een andere gelijk aantal. Een dollar is bijvoorbeeld een vervangbaar-token. Als twee personen elk een geld van de dollar hebben, kunnen ze deze dollar kosten zonder enige voor delen. De geld facturen hebben een gelijke waarde. 
+Fungibele tokens (τF) hebben verwisselbare waarde met elkaar, zolang ze in dezelfde klasse of serie. Een token heeft dezelfde waarde als een ander token of een bepaalde hoeveelheid tokens heeft dezelfde waarde als een andere evenveel. Een dollar is bijvoorbeeld een fungibel token. Als twee mensen elk een dollarbiljet vasthouden, kunnen ze deze dollarbiljetten zonder consequenties omwisselen. De dollarbiljetten hebben dezelfde waarde. 
 
-### <a name="non-fungible"></a>Niet-vervangbaar
+### <a name="non-fungible"></a>Niet-fungibel
 
-Niet-vervangbaar tokens (τN) zijn niet uitwisselbaar met andere tokens van hetzelfde type, aangezien ze doorgaans verschillende waarden hebben. Een eigenschaps titel is bijvoorbeeld een niet-vervangbaar-token. Eigenschaps titels voor twee verschillende appartementen in een Apartment-complex zijn niet noodzakelijkerwijs gelijk aan een gelijke waarde, omdat de locatie van de eenheid of de basis van de eenheid is. De waargenomen waarde van de twee eigenschaps titel tokens is niet gelijk.
+Niet-fungibele tokens (τN) zijn niet uitwisselbaar met andere tokens van hetzelfde type als ze meestal verschillende waarden hebben. Een eigenschapstitel is bijvoorbeeld een niet-fungibel token. Eigendomstitels van twee verschillende appartementen in een appartementencomplex zijn niet noodzakelijkerwijs van gelijke waarde, vanwege de locatie van de eenheid of op welke verdieping de eenheid zich bevindt. De waargenomen waarde van de twee eigenschaptiteltokens is niet gelijk.
 
 ### <a name="hybrid"></a>Hybride
 
-Hybride tokens zijn tokens met onderdelen van zowel vervangbaar-tokens als niet-vervangbaar-tokens. Een hybride token is een basis token type dat eigenaar is van een klasse van het andere token type.
+Hybride tokens zijn tokens die componenten hebben van zowel fungibele tokens als niet-fungibele tokens. Een hybride token is een basistokentype dat eigenaar is van een klasse van het andere tokentype.
 
-#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Hybride niet-vervangbaar Base met vervangbaar-segmenten
+#### <a name="hybrid-non-fungible-base-with-fungible-segments"></a>Hybride niet-fungibele basis met fungibele segmenten
 
-Een hybride niet-vervangbaar Base met vervangbaar segmenten token heeft een niet-vervangbaar Base met vervangbaar-token segmenten.
-Een concert ticket is bijvoorbeeld een hybride token waarbij de datum en tijd van het concert het basis token niet-vervangbaar zijn. De tickets in verschillende Seat-secties voor het gegeven concert zijn de segmenten met vervangbaar-tokens. De tickets kunnen worden uitgewisseld in hun afzonderlijke zitplaatsen, maar niet in secties.
+Een hybride niet-fungibele basis met fungibele segmenten token heeft een niet-fungibele basis met fungibele token segmenten.
+Een concertticket is bijvoorbeeld een hybride token waarbij de datum en het tijdstip van het concert het niet-fungibele basistoken is. De tickets in verschillende zitgedeeltes voor het gegeven concert zijn de segmenten met fungibele tokens. De tickets zijn inwisselbaar in hun individuele zitgedeeltes, maar niet over secties.
 
-#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Hybride vervangbaar-basis met niet-vervangbaar segmenten
+#### <a name="hybrid-fungible-base-with-non-fungible-segments"></a>Hybride fungibele basis met niet-fungibele segmenten
 
-Een hybride vervangbaar-basis met een niet-vervangbaar segmenten-token heeft een vervangbaar Base met niet-vervangbaar-token segmenten. Een voor beeld van een hypothecaire beveiliging is een Hybrid-token waarbij meerdere eigen aren de vervangbaar Base zijn die over veel eigen aren wordt gesplitst. De beveiliging is uitwisselbaar. De afzonderlijke hypotheken zijn de niet-vervangbaar segmenten die de specifieke, voor de beveiliging van hypothecaire veiligheid vertegenwoordigen.
+Een hybride fungibele basis met een niet-fungibele segmenten token heeft een fungibele basis met niet-fungibele token segmenten. Bijvoorbeeld, een hypotheek ondersteund beveiliging is een hybride token waar meerdere eigenaren zijn de fungibele basis die is verdeeld over veel eigenaren. De beveiliging is uitwisselbaar. De individuele hypotheken zijn de niet-fungibele segmenten die de specifieke hypotheek ondersteund zekerheid vertegenwoordigen.
 
-## <a name="token-behaviors"></a>Token gedrag
+## <a name="token-behaviors"></a>Tokengedrag
 
-Een token gedrag definieert mogelijkheden of beperkingen van het token. Het gedrag bevat ondersteunende eigenschappen die deel uitmaken van de token definitie. Gedragingen kunnen worden toegepast op alle token typen of alleen op één. Gedragingen kunnen intern of extern zijn, afhankelijk van de gedrags effecten. Een intern gedrag maakt of beperkt eigenschappen van het token zelf. Een extern gedrag maakt of beperkt de aanroep van het gedrag van een externe actor.
+Een tokengedrag definieert mogelijkheden of beperkingen van het token. Het gedrag omvat ondersteunende eigenschappen die deel uitmaken van de tokendefinitie. Gedragingen kunnen worden toegepast op alle tokentypen of slechts één. Gedrag kan intern of extern zijn, afhankelijk van wat de gedrageffecten zijn. Een intern gedrag maakt of beperkt eigenschappen op het token zelf. Een extern gedrag maakt of beperkt de aanroep van het gedrag van een externe actor.
 
-Zie [token-samenstel](composability.md)baarheid voor meer informatie over tokens die worden ondersteund door tokens van Azure Block chain.
+Zie [token composability](composability.md)voor meer informatie over Azure Blockchain Tokens die token taxonomy framework (TTF) worden ondersteund.
 
-## <a name="pre-built-token-templates"></a>Vooraf samengestelde token sjablonen
+## <a name="pre-built-token-templates"></a>Vooraf gebouwde tokensjablonen
 
-Azure Block Chain tokens biedt vier vooraf ontwikkelde token sjablonen die zonder wijzigingen kunnen worden gebruikt. U kunt deze vooraf gemaakte sjablonen voor de meeste use-cases aanroepen om uw tokens snel te maken, implementeren en beheren.
+Azure Blockchain Tokens biedt vier vooraf gebouwde tokensjablonen die zonder wijziging kunnen worden gebruikt. U een beroep doen op deze vooraf gebouwde sjablonen voor de meeste use cases om snel aan de slag te gaan met het maken, implementeren en beheren van uw tokens.
 
-### <a name="commodity-tokens"></a>Basisproduct tokens
+### <a name="commodity-tokens"></a>Commodity tokens
 
-Basisproduct tokens hebben een consistente waarde en kunnen worden overschreven. Bijvoorbeeld een vat olie of een energie-eenheid.
+Commodity tokens hebben een consistente waarde en zijn overdraagbaar. Bijvoorbeeld een vat olie of een eenheid energie.
 
-**τF {~ d, t, m, b, r}** -vervangbaar, volledig, overdraagbaar, mintable, brandbaar en hebben functie ondersteuning
+**τF{~d,t,m,b,r}** - fungibel, geheel, overdraagbaar, mintbaar, brandbaar en rolondersteuning
 
-Veel Block Chain-scenario's vereisen transparantie en zicht baarheid in de toeleverings keten of meerdere organisaties. Basisproduct tokens zijn gebaseerd op deze algemene use cases. De tokens zijn onderling verwisselbaar en consistent. De sjabloon voor het basisproduct token is flexibel en aanpasbaar met meta gegevens.
+Veel blockchain-scenario's vereisen transparantie en zichtbaarheid in de supply chain of meerdere organisaties. Commodity tokens zijn gebaseerd op deze veelvoorkomende use cases. De tokens zijn uitwisselbaar en consistent. De sjabloon voor commodity-token is flexibel en aanpasbaar met metagegevens.
 
 ### <a name="qualified-tokens"></a>Gekwalificeerde tokens
 
-Gekwalificeerde tokens vertegenwoordigen een toegewezen object en zijn meestal gekoppeld aan één entiteit en kunnen niet worden overgedragen. Bijvoorbeeld een diploma of een parkeer schending.
+Gekwalificeerde tokens vertegenwoordigen iets verdiend en zijn meestal gekoppeld aan één entiteit en kunnen niet worden overgedragen. Bijvoorbeeld een diploma of een parkeerovertreding.
 
-**τN {s, ~ t}** -niet-vervangbaar, Singleton en niet-overdraag bare
+**τN{s,~t}** - niet-fungibel, singleton en niet-overdraagbaar
 
-De eigendom van het token kan niet worden gewijzigd vanwege verschillende audit-en attest scenario's. Er is een set use-cases die een gekwalificeerd token moeten bieden, ongeacht of de koppeling goed of slecht is.
+Verschillende controle- en attestscenario's vereisen dat het eigendom van het token niet kan worden gewijzigd. Er is een set van use cases, die een behoefte hebben om een gekwalificeerde token te verstrekken of de vereniging goed of slecht is.
 
-### <a name="asset-tokens"></a>Asset-tokens
+### <a name="asset-tokens"></a>Assettokens
 
-Asset-tokens hebben een unieke waarde die afhankelijk is van het item en niet commoditized. Bijvoorbeeld een museum artefact of een eigenschaps titel.
+Asset tokens hebben een unieke waarde afhankelijk van het item en zijn niet gecommoditiseerd. Bijvoorbeeld een museumartefact of een eigendomstitel.
 
-**τN {s, t}** -niet-vervangbaar, Singleton en overdraagbaar
+**τN{s,t}** - niet-fungibel, singleton en overdraagbaar
 
-Asset-tokens kunnen worden verward met basisproduct tokens. Het belangrijkste verschil tussen de twee tokens is dat Asset-tokens inherent uniek zijn en dat de waarde onafhankelijk is van het type token. Zo is een stuk illustratie zoals een olie tekening door een gevestigde kunstenaar een Asset-token. Een Art-afdruk van de Mona Lisa wordt echter beschouwd als een basisproduct token. Op dezelfde manier is een eigenschaps titel een Asset-token, omdat de waarde bestaat in de subjectieve kwaliteiten van de eigenschap.
+Asset tokens kunnen worden verward met commodity tokens. Het grote verschil tussen de twee tokens is dat asset tokens inherent uniek zijn en waarde onafhankelijk is van het type token dat het is. Een kunstwerk als een olieverfschilderij van een gevestigde kunstenaar is bijvoorbeeld een assettoken. Echter, een kunstafdruk van de Mona Lisa wordt beschouwd als een commodity token. Op dezelfde manier is een eigendomstitel een activatoken omdat de waarde bestaat in de subjectieve kwaliteiten van het onroerend goed.
 
-### <a name="ticket-tokens"></a>Ticket tokens
+### <a name="ticket-tokens"></a>Tickettokens
 
-Ticket tokens hebben een consistente waarde, maar verlopen normaal gesp roken. Bijvoorbeeld een vlieg ticket.
+Tickettokens hebben een consistente waarde, maar verlopen meestal. Bijvoorbeeld een vliegticket.
 
-**τN {m, b, r}** -non-vervangbaar, mintable, brandable en hebben ondersteuning voor rollen.
+**τN{m,b,r}** - niet-fungibel, mintbaar, brandbaar en hebben rolondersteuning.
 
-Ticket tokens hebben doorgaans een verloop datum die ze afwijkt van een regulier basisproduct token. Bijvoorbeeld, een vliegtuig ticket, een concert ticket of een sport ticket hebben allemaal opties voor toegewezen zitplaatsen met specifieke datum van gebruik. U kunt tickets niet eenvoudig uitwisselen tussen datums of plaatsen.
+Tickettokens hebben meestal een vervaldatum waardoor ze verschillen van een normaal commodity-token. Een vliegticket, concertticket of sportticket hebben bijvoorbeeld allemaal opties voor toegewezen zitplaatsen met specifieke gebruiksdata. U niet gemakkelijk tickets uitwisselen tussen data of zitjes.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u meer flexibiliteit nodig hebt voor uw scenario, kunt u leren hoe u uw eigen token sjablonen maakt met behulp van [token-opstellen](composability.md).
+Als u meer flexibiliteit voor uw scenario nodig hebt, leest u meer over het maken van uw eigen tokensjablonen met behulp van [tokencomposability.](composability.md)

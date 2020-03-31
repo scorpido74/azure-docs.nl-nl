@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Apache Kafka maken met Azure PowerShell-HDInsight'
+title: 'Snelstart: Apache Kafka maken met Azure PowerShell - HDInsight'
 description: In deze snelstartgids leert u hoe u met Azure PowerShell een Apache Kafka-cluster maakt in Azure HDInsight. Er wordt ook aandacht besteed aan Kafka-onderwerpen, -abonnees en -consumenten.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.openlocfilehash: d14d8f38ff8a2bed01584d5c5fec56d254cede05
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73494755"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Snelstartgids: Apache Kafka cluster maken in azure HDInsight met behulp van Power shell
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Snelstart: Apache Kafka-cluster maken in Azure HDInsight met PowerShell
 
 [Apache Kafka](https://kafka.apache.org/) is een open-source, gedistribueerd streamingplatform. Het wordt vaak gebruikt als een berichtenbroker, omdat het een functionaliteit biedt die vergelijkbaar is met een publicatie-/abonnementswachtrij voor berichten. 
 
@@ -25,19 +25,19 @@ In deze snelstartgids leert u hoe u met Azure PowerShell een [Apache Kafka](http
 
 De Kafka-API is alleen toegankelijk voor resources binnen hetzelfde virtuele netwerk. In deze snelstart benadert u het cluster rechtstreeks via SSH. Als u andere services, netwerken of virtuele machines wilt verbinden met Kafka, moet u eerst een virtueel netwerk maken en vervolgens de resources maken in het netwerk. Zie het document [Verbinding maken met Apache Kafka via een virtueel netwerk](apache-kafka-connect-vpn-gateway.md) voor meer informatie.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* De Power shell [AZ-module](https://docs.microsoft.com/powershell/azure/overview) is geïnstalleerd.
+* De PowerShell [Az Module](https://docs.microsoft.com/powershell/azure/overview) geïnstalleerd.
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij uw Azure-abonnement met de cmdlet `Connect-AzAccount` en volg de instructies op het scherm.
+Meld u aan bij `Connect-AzAccount` uw Azure-abonnement met de cmdlet en volg de aanwijzingen op het scherm.
 
 ```azurepowershell-interactive
 # Login to your Azure subscription
@@ -64,10 +64,10 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
-Kafka in HDInsight maakt gebruik van Azure Managed Disks voor het opslaan van Kafka-gegevens. Daarnaast gebruikt het cluster Azure Storage voor het opslaan van gegevens zoals logboeken. Gebruik [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) om een nieuw opslag account te maken.
+Kafka in HDInsight maakt gebruik van Azure Managed Disks voor het opslaan van Kafka-gegevens. Daarnaast gebruikt het cluster Azure Storage voor het opslaan van gegevens zoals logboeken. Gebruik [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) om een nieuw opslagaccount aan te maken.
 
 > [!IMPORTANT]  
-> `BlobStorage` van het type opslag account kan alleen worden gebruikt als secundaire opslag voor HDInsight-clusters.
+> Opslagaccountsoort `BlobStorage` kan alleen worden gebruikt als secundaire opslag voor HDInsight-clusters.
 
 ```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"
@@ -98,7 +98,7 @@ New-AzStorageContainer -Name $containerName -Context $storageContext
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka-cluster maken
 
-Maak een Apache Kafka in HDInsight-cluster met [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
+Maak een Apache Kafka op HDInsight cluster met [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
 
 ```azurepowershell-interactive
 # Create a Kafka 1.1 cluster
@@ -135,7 +135,7 @@ Het kan tot 20 minuten duren om het HDInsight-cluster te maken.
 
 Met de parameter `-DisksPerWorkerNode` configureert u de schaalbaarheid van Kafka in HDInsight. Kafka in HDInsight gebruikt de lokale schijf van de virtuele machines in het cluster voor het opslaan van gegevens. Omdat Kafka veel gebruikmaakt van invoer/uitvoer, wordt [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) gebruikt voor een hoge doorvoer en meer opslag per knooppunt.
 
-Het type beheerde schijf is __Standaard__ (HDD) of __Premium__ (SSD). Het type schijf is afhankelijk van de VM-grootte die wordt gebruikt door de werkknooppunten (Kafka-brokers). Premium-schijven worden automatisch gebruikt met VM's uit de DS- en GS-serie. Alle andere VM-typen gebruiken standaardschijven. U kunt het type VM instellen met de parameter `-WorkerNodeSize`. Zie de [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) -documentatie voor meer informatie over para meters.
+Het type beheerde schijf is __Standaard__ (HDD) of __Premium__ (SSD). Het type schijf is afhankelijk van de VM-grootte die wordt gebruikt door de werkknooppunten (Kafka-brokers). Premium-schijven worden automatisch gebruikt met VM's uit de DS- en GS-serie. Alle andere VM-typen gebruiken standaardschijven. U kunt het type VM instellen met de parameter `-WorkerNodeSize`. Zie de documentatie [Nieuw-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) voor meer informatie over parameters.
 
 Als u van plan bent om meer dan 32 werkknooppunten te gebruiken (bij het maken van het cluster of bij het omhoog schalen van het cluster nadat dit is gemaakt), moet u de parameter `-HeadNodeSize` gebruiken om een VM-grootte op te geven met ten minste 8 kerngeheugens en 14 GB RAM-geheugen. Zie [Prijsdetails voor Azure HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) voor meer informatie over knooppuntgrootten en de bijbehorende kosten.
 
@@ -174,7 +174,7 @@ Welcome to Kafka on HDInsight.
 Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 ```
 
-## <a id="getkafkainfo"></a>Informatie over de Apache Zookeeper- en Broker-hosts ophalen
+## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Informatie over de Apache Zookeeper- en Broker-hosts ophalen
 
 Als u met Kafka werkt, moet u de *Zookeeper*- en *Broker*-hosts kennen. Deze hosts worden gebruikt met de Kafka-API en veel van de hulpprogramma's die bij Kafka worden meegeleverd.
 
@@ -194,7 +194,7 @@ In deze sectie vraagt u de hostgegevens op uit de Apache Ambari REST API in het 
 
     Wanneer u daarom wordt gevraagd, typt u de naam van het Kafka-cluster.
 
-3. Als u een omgevings variabele met Zookeeper-hostgegevens wilt instellen, gebruikt u de onderstaande opdracht. Met de opdracht worden alle Zookeeper-hosts opgehaald en worden alleen de eerste twee vermeldingen geretourneerd. De reden hiervoor is dat u een bepaalde mate van redundantie wilt voor het geval één host onbereikbaar is.
+3. Als u een omgevingsvariabele wilt instellen met hostgegevens van Zookeeper, gebruikt u de onderstaande opdracht. De opdracht haalt alle Zookeeper-hosts op en retourneert vervolgens alleen de eerste twee vermeldingen. De reden hiervoor is dat u een bepaalde mate van redundantie wilt voor het geval één host onbereikbaar is.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -232,7 +232,7 @@ In deze sectie vraagt u de hostgegevens op uit de Apache Ambari REST API in het 
 
 ## <a name="manage-apache-kafka-topics"></a>Apache Kafka-onderwerpen beheren
 
-Kafka slaat gegevensstromen op in zogenaamde *onderwerpen (topics)* . U kunt het hulpprogramma `kafka-topics.sh` gebruiken om onderwerpen te beheren.
+Kafka slaat gegevensstromen op in zogenaamde *onderwerpen (topics)*. U kunt het hulpprogramma `kafka-topics.sh` gebruiken om onderwerpen te beheren.
 
 * **Als u een onderwerp wilt maken**, gebruikt u de volgende opdracht in de SSH-verbinding:
 
@@ -319,7 +319,7 @@ U kunt ook programmatisch producenten en consumenten maken. Zie het document [Pr
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u deze niet meer nodig hebt, kunt u de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep, HDInsight en alle gerelateerde resources te verwijderen.
+Wanneer dit niet meer nodig is, u de opdracht [Verwijderen-AzResourceGroep](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resourcegroep HDInsight en alle gerelateerde resources te verwijderen.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup

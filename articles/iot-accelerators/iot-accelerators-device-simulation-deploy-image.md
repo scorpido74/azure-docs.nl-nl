@@ -1,6 +1,6 @@
 ---
-title: Implementeren van een aangepaste installatiekopie voor Apparaatsimulatie - Azure | Microsoft Docs
-description: In deze handleiding leert u hoe u een aangepaste Docker-installatiekopie van de Apparaatsimulatie-oplossing implementeren in Azure.
+title: Een aangepaste apparaatsimulatieafbeelding implementeren - Azure| Microsoft Documenten
+description: In deze handleiding leert u hoe u een aangepaste Docker-afbeelding van de oplossing apparaatsimulatie implementeert in Azure.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -10,52 +10,52 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c1f321f452b65016c11cb66d08ebab108509cc62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61448393"
 ---
-# <a name="deploy-a-custom-device-simulation-docker-image"></a>Een aangepaste docker-installatiekopie voor Apparaatsimulatie implementeren
+# <a name="deploy-a-custom-device-simulation-docker-image"></a>Een aangepaste dockerafbeelding voor apparaatsimulatie implementeren
 
-U kunt de Apparaatsimulatie-oplossing voor het toevoegen van aangepaste functies wijzigen. Bijvoorbeeld, de [serialiseren telemetrie met behulp van Protocol Buffers](iot-accelerators-device-simulation-protobuf.md) artikel leest u hoe u een aangepast apparaat toevoegen aan de oplossing die gebruikmaakt van Protocol Buffers (Protobuf) om telemetrie te verzenden. Nadat u uw wijzigingen lokaal hebt getest, wordt de volgende stap is het implementeren van uw wijzigingen naar uw instantie Apparaatsimulatie in Azure. Als u wilt deze taak hebt voltooid, moet u maken en implementeren van een Docker-installatiekopie met de gewijzigde service.
+U de oplossing apparaatsimulatie wijzigen om aangepaste functies toe te voegen. In het artikel [Telemetrie Serialiseren met protocolbuffers](iot-accelerators-device-simulation-protobuf.md) ziet u bijvoorbeeld hoe u een aangepast apparaat toevoegt aan de oplossing die Protocolbuffers (Protobuf) gebruikt om telemetrie te verzenden. Nadat u uw wijzigingen lokaal hebt getest, is de volgende stap het implementeren van uw wijzigingen in uw apparaatsimulatie-instantie in Azure. Als u deze taak wilt voltooien, moet u een Docker-afbeelding maken en implementeren die uw gewijzigde service bevat.
 
-De stappen in deze procedure-naar-handleiding leert u hoe aan:
+De stappen in deze handleiding laten u zien hoe u:
 
 1. Een ontwikkelomgeving voorbereiden
-1. Een nieuwe Docker-installatiekopie genereren
-1. Apparaatsimulatie voor het gebruik van de nieuwe Docker-installatiekopie configureren
-1. Een met behulp van de nieuwe simulatie uitvoeren
+1. Een nieuwe Docker-afbeelding genereren
+1. Apparaatsimulatie configureren om uw nieuwe Docker-afbeelding te gebruiken
+1. Een simulatie uitvoeren met de nieuwe afbeelding
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor de stappen in deze handleiding, hebt u het volgende nodig:
+Als u de stappen in deze handleiding wilt uitvoeren, hebt u het volgende nodig:
 
-* Een geïmplementeerde [Apparaatsimulatie](quickstart-device-simulation-deploy.md) exemplaar.
-* Docker. Download de [Docker Community Edition](https://www.docker.com/products/docker-engine#/download) voor uw platform.
-* Een [Docker Hub-account](https://hub.docker.com/) waar u uw Docker-installatiekopieën kunt uploaden. Maak in uw Docker Hub-account, een openbare opslagplaats met de naam **apparaatsimulatie**.
-* Een aangepast en getest [Apparaatsimulatie-oplossing](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) op uw lokale computer. Bijvoorbeeld, kunt u de oplossing [serialiseren telemetrie met behulp van Protocol Buffers](iot-accelerators-device-simulation-protobuf.md).
-* Een shell die SSH kunt uitvoeren. Als u Git voor Windows hebt geïnstalleerd, kunt u de **bash** shell die deel uitmaakt van e-installatie. U kunt ook uw [Azure Cloud Shell](https://shell.azure.com/).
+* Een [geïmplementeerdapparaatsimulatie-exemplaar.](quickstart-device-simulation-deploy.md)
+* Docker. Download de [Docker Community Edition](https://www.docker.com/products/docker-engine#/download) voor je platform.
+* Een [Docker Hub-account](https://hub.docker.com/) waar u uw Docker-afbeeldingen uploaden. Maak in uw Docker Hub-account een openbare opslagplaats genaamd **apparaatsimulatie.**
+* Een aangepaste en geteste [device simulation oplossing](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) op uw lokale machine. U de oplossing bijvoorbeeld wijzigen om [telemetrie te serialiseren met behulp van Protocolbuffers.](iot-accelerators-device-simulation-protobuf.md)
+* Een schelp die SSH kan draaien. Als u Git Voor Windows installeert, u de **bash-shell** gebruiken die deel uitmaakt van de installatie. U uw [Azure Cloud Shell](https://shell.azure.com/)ook gebruiken.
 
-De instructies in dit artikel wordt ervan uitgegaan dat u gebruikmaakt van Windows. Als u een ander besturingssysteem gebruikt, moet u mogelijk enkele van de bestandspaden en opdrachten op basis van uw omgeving aanpassen.
+De instructies in dit artikel gaan ervan uit dat u Windows gebruikt. Als u een ander besturingssysteem gebruikt, moet u mogelijk een aantal bestandspaden en opdrachten aanpassen aan uw omgeving.
 
-## <a name="create-a-new-docker-image"></a>Een nieuwe Docker-installatiekopie maken
+## <a name="create-a-new-docker-image"></a>Een nieuwe Docker-afbeelding maken
 
-Voor het implementeren van uw eigen wijzigingen aan de Apparaatsimulatie-service, moet u de build- en -scripts in **scripts\docker** map voor het uploaden van de containers naar uw docker-hub-account
+Als u uw eigen wijzigingen wilt implementeren in de apparaatsimulatieservice, moet u de build- en implementatiescripts bewerken in de map **scripts\docker** om de containers te uploaden naar uw docker-hub-account
 
-### <a name="modify-the-docker-scripts"></a>De docker-scripts wijzigen
+### <a name="modify-the-docker-scripts"></a>De dockerscripts wijzigen
 
-Wijzigen van de Docker **build.cmd**, **publish.cmd**, en **run.cmd** scripts in de **scripts\docker** map met uw Docker-Hub de gegevens van de opslagplaats. Deze stappen wordt ervan uitgegaan dat u hebt gemaakt met een openbare opslagplaats met de naam **apparaatsimulatie**:
+Wijzig de Docker **build.cmd,** **publish.cmd**en **run.cmd** scripts in de map **scripts\docker** met uw Docker Hub-archiefinformatie. Deze stappen gaan ervan uit dat u een openbare opslagplaats hebt gemaakt, **apparaatsimulatie**genaamd:
 
 `DOCKER_IMAGE={your-docker-hub-username}/device-simulation`
 
-Update de **docker-compose.yml** bestand als volgt:
+Werk het **docker-compose.yml-bestand** als volgt bij:
 
 `image: {your-docker-hub-username}/device-simulation`
 
-### <a name="configure-the-solution-to-include-any-new-files"></a>De oplossing configureren voor alle nieuwe bestanden
+### <a name="configure-the-solution-to-include-any-new-files"></a>De oplossing configureren om nieuwe bestanden op te nemen
 
-Als u nieuwe bestanden die apparaat-model hebt toegevoegd, moet u ze expliciet opneemt in de oplossing. Voeg een vermelding aan de **services/services.csproj** voor elk bestand om op te nemen. Bijvoorbeeld, als u de [serialiseren telemetrie met behulp van Protocol Buffers](iot-accelerators-device-simulation-protobuf.md) instructies, de volgende vermeldingen toe te voegen:
+Als u nieuwe apparaatmodelbestanden hebt toegevoegd, moet u deze expliciet in de oplossing opnemen. Voeg een vermelding toe aan de **services/services.csproj** voor elk extra bestand dat moet worden opgenomen. Als u bijvoorbeeld de [telemetrie van Serialize hebt voltooid met behulp van protocolbuffers](iot-accelerators-device-simulation-protobuf.md) how-to, voegt u de volgende vermeldingen toe:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -66,25 +66,25 @@ Als u nieuwe bestanden die apparaat-model hebt toegevoegd, moet u ze expliciet o
 </None>
 ```
 
-### <a name="generate-new-docker-images-and-push-to-docker-hub"></a>Nieuwe Docker-installatiekopieën genereren en pushen naar Docker Hub
+### <a name="generate-new-docker-images-and-push-to-docker-hub"></a>Nieuwe Docker-afbeeldingen genereren en naar Docker Hub pushen
 
-Publicatie van de nieuwe Docker-installatiekopie naar Docker Hub met behulp van uw docker-hub-account:
+Publiceer de nieuwe Docker-afbeelding op Docker Hub met uw dockerhub-account:
 
-1. Open een opdrachtprompt en navigeer naar de lokale kopie van de opslagplaats van de simulatie van Apparaatbeheer.
+1. Open een opdrachtprompt en navigeer naar uw lokale kopie van de apparaatsimulatieopslagplaats.
 
-1. Navigeer naar de **docker** map:
+1. Navigeer naar de **map docker:**
 
     ```cmd
     cd scripts\docker
     ```
 
-1. Voer de volgende opdracht om de Docker-installatiekopie te bouwen:
+1. Voer de volgende opdracht uit om de Docker-afbeelding te bouwen:
 
     ```cmd
     build.cmd
     ```
 
-1. Voer de volgende opdracht voor het publiceren van de Docker-installatiekopie naar uw Docker Hub-opslagplaats. Meld u aan Docker met de referenties van uw Docker Hub:
+1. Voer de volgende opdracht uit om de Docker-afbeelding naar uw Docker Hub-opslagplaats te publiceren. Meld u aan bij Docker met uw Docker Hub-referenties:
 
     ```cmd
     docker login
@@ -97,27 +97,27 @@ Publicatie van de nieuwe Docker-installatiekopie naar Docker Hub met behulp van 
 
 ## <a name="update-the-service"></a>De service bijwerken
 
-Voor het bijwerken van de Apparaatsimulatie-container voor het gebruik van uw aangepaste installatiekopie, voert u de volgende stappen uit:
+Voer de volgende stappen uit om de apparaatsimulatiecontainer bij te werken om uw aangepaste afbeelding te gebruiken:
 
-* SSH gebruiken om te verbinden met de virtuele machine die als host fungeert voor uw Apparaatsimulatie-exemplaar. Gebruik de IP-adres en het wachtwoord die u hebt genoteerd een in de vorige sectie:
+* Gebruik SSH om verbinding te maken met de virtuele machine die uw apparaatsimulatie-instantie host. Gebruik het IP-adres en wachtwoord waar u in de vorige sectie rekening mee hebt gemaakt:
 
     ```sh
     ssh azureuser@{your vm ip address}
     ```
 
-* Navigeer naar de **/app** directory:
+* Navigeer naar de **/app-map:**
 
     ```sh
     cd /app
     ```
 
-* Bewerk de **docker-compose.yml** bestand:
+* Bewerk het **docker-compose.yml-bestand:**
 
     ```sh
     sudo nano docker-compose.yml
     ```
 
-    Wijzig de **installatiekopie** zodat het aangepaste **apparaatsimulatie** installatiekopie die u hebt geüpload naar uw Docker Hub-opslagplaats:
+    Wijzig de **afbeelding** om de aangepaste apparaatsimulatieafbeelding die u hebt geüpload naar uw Docker **Hub-opslagplaats** te plaatsen:
 
     ```yml
     image: {your-docker-hub-username}/device-simulation
@@ -125,20 +125,20 @@ Voor het bijwerken van de Apparaatsimulatie-container voor het gebruik van uw aa
 
     Sla uw wijzigingen op.
 
-* Voer de volgende opdracht uit om het opnieuw opstarten van de microservices:
+* Voer de volgende opdracht uit om de microservices opnieuw te starten:
 
     ```sh
     sudo start.sh
     ```
 
-## <a name="run-your-simulation"></a>De simulatie uitvoeren
+## <a name="run-your-simulation"></a>Voer uw simulatie uit
 
-U kunt nu een simulatie met behulp van uw aangepaste Apparaatsimulatie-oplossing uitvoeren:
+U nu een simulatie uitvoeren met uw aangepaste apparaatsimulatieoplossing:
 
-1. Start uw Apparaatsimulatie web-UI van [Microsoft Azure IoT-oplossingsversnellers](https://www.azureiotsolutions.com/Accelerators#dashboard).
+1. Start de webgebruikersinterface voor apparaatsimulatie vanaf [Microsoft Azure IoT Solution Accelerators.](https://www.azureiotsolutions.com/Accelerators#dashboard)
 
-1. Gebruik de web-UI te configureren en een simulatie uitvoeren. Als u eerder hebt voltooid [serialiseren telemetrie met behulp van Protocol Buffers](iot-accelerators-device-simulation-protobuf.md), kunt u uw aangepaste Apparaatmodel.
+1. Gebruik de web-gebruikersinterface om een simulatie te configureren en uit te voeren. Als u telemetrie eerder hebt voltooid [met behulp van Protocolbuffers,](iot-accelerators-device-simulation-protobuf.md)u uw aangepaste apparaatmodel gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu hebt u geleerd hoe u een aangepaste Apparaatsimulatie-installatiekopie implementeert, kunt u leren hoe u [gebruiken van een bestaande IoT-hub met de oplossingsversnellers Apparaatsimulatie](iot-accelerators-device-simulation-choose-hub.md).
+Nu u hebt geleerd hoe u een aangepaste apparaatsimulatieafbeelding implementeert, u leren hoe u [een bestaande IoT-hub gebruiken met de apparaatsimulatieoplossingsversneller.](iot-accelerators-device-simulation-choose-hub.md)

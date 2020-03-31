@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: de functie voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory om automatisch gebruikers accounts in te richten en de inrichting te deactiveren.
+title: 'Zelfstudie: Airstack configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor Airstack.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,145 +16,145 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: Zhchia
 ms.openlocfilehash: 17736f5215c4ed80a2140cfc664ef76b1a055f79
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77060385"
 ---
-# <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>Zelf studie: een luchtstack configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>Zelfstudie: Airstack configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in de werk stack en de Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen op de luchtstack.
+Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Airstack en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen voor Airstack.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector bevindt zich momenteel in de open bare preview. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in Public Preview. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
-* Een Azure AD-Tenant
-* [Een luchtstack-Tenant](https://airstack.com/pricing/)
-* Een gebruikers account in de netstack met beheerders machtigingen.
+* Een Azure AD-tenant
+* [Een Airstack-huurder](https://airstack.com/pricing/)
+* Een gebruikersaccount in Airstack met beheerdersmachtigingen.
 
-## <a name="assigning-users-to-airstack"></a>Gebruikers toewijzen aan de netstack
+## <a name="assigning-users-to-airstack"></a>Gebruikers toewijzen aan Airstack
 
-Azure Active Directory gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot de luchtstack. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan de luchtstack door de volgende instructies te volgen:
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
+Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang tot Airstack nodig hebben. Eenmaal besloten, u deze gebruikers en/ of groepen toewijzen aan Airstack door de instructies hier te volgen:
+* [Een gebruiker of groep toewijzen aan een bedrijfsapp](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-airstack"></a>Belang rijke tips voor het toewijzen van gebruikers aan de luchtstack
+## <a name="important-tips-for-assigning-users-to-airstack"></a>Belangrijke tips voor het toewijzen van gebruikers aan Airstack
 
-* U wordt aangeraden één Azure AD-gebruiker aan de netstack toe te wijzen om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het wordt aanbevolen dat één Azure AD-gebruiker aan Airstack wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-* Wanneer u een gebruiker toewijst aan de wachtrij, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker aan Airstack toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
 
-## <a name="setup-airstack-for-provisioning"></a>Installatie van de luchtstack voor inrichting
+## <a name="setup-airstack-for-provisioning"></a>Setup Airstack voor provisioning
 
-1. Meld u aan bij uw [luchtstack-beheer console](https://airstack-qa.lenovosoftware.com/). Navigeer naar **instellingen**.
+1. Meld u aan bij uw [Airstack Admin Console](https://airstack-qa.lenovosoftware.com/). Navigeer naar **Instellingen**.
 
-    ![Beheer console van de luchtstack](media/airstack-provisioning-tutorial/airstackadminmenu.png)
+    ![Airstack-beheerconsole](media/airstack-provisioning-tutorial/airstackadminmenu.png)
 
-2.  Ga in het menu aan de linkerkant van het scherm naar **Azure config** .
+2.  Navigeer naar **Azure Config** in het menu aan de linkerkant van het scherm.
 
-    ![SCIM toevoegen](media/airstack-provisioning-tutorial/azureconfig.png)
+    ![Airstack Voeg SCIM toe](media/airstack-provisioning-tutorial/azureconfig.png)
 
-3.  Klik op de knop **genereren** . Kopieer het **geheime token voor Azure**. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichting van uw verzameling van uw luchtstack-toepassing in de Azure Portal.
+3.  Klik op de knop **Genereren.** Kopieer het **geheime token voor Azure**. Deze waarde wordt ingevoerd in het veld Geheim token op het tabblad Provisioning van uw Airstack-toepassing in de Azure-portal.
 
-    ![Token voor het maken van een luchtstack](media/airstack-provisioning-tutorial/generatetoken.png)
+    ![Airstack Token maken](media/airstack-provisioning-tutorial/generatetoken.png)
 
-## <a name="add-airstack-from-the-gallery"></a>Een luchtstack toevoegen vanuit de galerie
+## <a name="add-airstack-from-the-gallery"></a>Airstack toevoegen vanuit de galerie
 
-Voordat u de functie voor het automatisch inrichten van gebruikers met Azure AD configureert, moet u de toepassing uit de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u Airstack configureert voor automatische gebruikersvoorziening met Azure AD, moet u Airstack vanuit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om de werk stack van de Azure AD-toepassings galerie toe te voegen:**
+**Voer de volgende stappen uit om Airstack toe te voegen vanuit de Azure AD-toepassingsgalerie:**
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak **netstack**in, Selecteer in het paneel resultaten de optie **luchtstack** en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **Airstack**in het zoekvak, selecteer **Airstack** in het deelvenster Resultaten en klik vervolgens op de knop **Toevoegen** om de toepassing toe te voegen.
 
-    ![De lijst met resultaten](common/search-new-app.png)
+    ![Airstack in de resultatenlijst](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-airstack"></a>Automatische gebruikers inrichting configureren voor de luchtstack 
+## <a name="configuring-automatic-user-provisioning-to-airstack"></a>Automatische gebruikersvoorziening configureren voor Airstack 
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in de stroom te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in Airstack te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor de werk stack in te scha kelen, gevolgd door de instructies in de [zelf studie voor eenmalige aanmelding in de netstack](https://docs.microsoft.com/azure/active-directory/saas-apps/airstack-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar in de compliment
+> U er ook voor kiezen om SAML-gebaseerde single sign-on in te schakelen voor Airstack, volgens de instructies in de [Airstack Single sign-on tutorial](https://docs.microsoft.com/azure/active-directory/saas-apps/airstack-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren
 
-### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor de luchtstack in azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>Ga als een te meer met de automatische gebruikersvoorziening voor Airstack in Azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **luchtstack**.
+2. Selecteer **Airstack**in de lijst met toepassingen .
 
-    ![De koppeling naar de netstack in de lijst met toepassingen](common/all-applications.png)
+    ![De Airstack-koppeling in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de invoer `https://api-as.lenovosoftware.com/0/as/common/scim` in de **Tenant-URL**. Voer de waarde voor het **scim-verificatie token** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met de luchtstack. Als de verbinding mislukt, zorg er dan voor dat het account van de netstack beheerders machtigingen heeft en probeer het opnieuw.
+5. Voer onder de sectie `https://api-as.lenovosoftware.com/0/as/common/scim` **Beheerdersreferenties** invoer in **Tenant-URL**in . Voer de waarde van de **SCIM-verificatietoken** in die eerder in **Secret Token**is opgehaald. Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met Airstack. Als de verbinding mislukt, moet u ervoor zorgen dat uw Airstack-account beheerdersmachtigingen heeft en het opnieuw proberen.
 
-    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje in - **Stuur een e-mailmelding wanneer er een fout optreedt**.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met de wachtrij**.
+8. Selecteer Azure **Active Directory-gebruikers synchroniseren met Airstack**onder de sectie **Toewijzingen** .
 
-    ![Gebruikers toewijzingen van de gebruiker](media/airstack-provisioning-tutorial/mappings.png)
+    ![Airstack-gebruikerstoewijzingen](media/airstack-provisioning-tutorial/mappings.png)
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de luchtstack in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in de werk stack voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Airstack in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in Airstack te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Gebruikers kenmerken van de gebruiker](media/airstack-provisioning-tutorial/attributes.png)
+    ![Gebruikerskenmerken van Airstack](media/airstack-provisioning-tutorial/attributes.png)
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+10. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
-11. Als u de Azure AD-inrichtings service voor de netstack wilt inschakelen, wijzigt **u de** **inrichtings status** in in het gedeelte **instellingen** .
+11. Als u de Azure AD-inrichtingsservice voor Airstack wilt inschakelen, wijzigt u de **inrichtingsstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-12. Definieer de gebruikers en/of groepen die u wilt inrichten voor de luchtstack door de gewenste waarden in het **bereik** in het gedeelte **instellingen** te kiezen.
+12. Definieer de gebruikers en/of groepen die u aan Airstack wilt inrichten door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingskader](common/provisioning-scope.png)
 
-13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+13. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op de netstack.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitenrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op Airstack.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische gebruikersaccountinrichting voor](../app-provisioning/check-status-user-account-provisioning.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../app-provisioning/check-status-user-account-provisioning.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md)
 

@@ -1,201 +1,201 @@
 ---
-title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
-description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
+title: Back-ups maken van Azure VM's in een vault van Recovery Services
+description: Beschrijft hoe u een back-up maakt van Azure VM's in een vault van Recovery Services met behulp van de Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273512"
 ---
-# <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
+# <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van Azure VM's in een vault van Recovery Services
 
-In dit artikel wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis, met behulp van de [Azure backup](backup-overview.md) -service.
+In dit artikel wordt beschreven hoe u een back-up maakt van Azure VM's in een vault van Recovery Services met behulp van de [Azure Backup-service.](backup-overview.md)
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 >
-> * Virtuele Azure-machines voorbereiden.
+> * Azure VM's voorbereiden.
 > * Maak een kluis.
-> * Virtuele machines detecteren en een back-upbeleid configureren.
-> * Schakel back-ups voor virtuele Azure-machines in.
+> * Ontdek VM's en configureer een back-upbeleid.
+> * Back-up voor Azure VM's inschakelen.
 > * De eerste back-up uitvoeren.
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u een kluis instelt en Vm's selecteert waarvan u een back-up wilt maken. Het is handig als u een back-up wilt maken van meerdere Vm's. U kunt ook rechtstreeks vanuit de VM-instellingen [een back-up maken van één Azure-VM](backup-azure-vms-first-look-arm.md) .
+> In dit artikel wordt beschreven hoe u een kluis instelt en vm's selecteert om een back-up te maken. Het is handig als u een back-up wilt maken van meerdere VM's. U ook [een back-up maken van één Azure-vm](backup-azure-vms-first-look-arm.md) rechtstreeks vanuit de VM-instellingen.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
 * [Bekijk](backup-architecture.md#architecture-built-in-azure-vm-backup) de Azure VM-back-uparchitectuur.
-* [Meer informatie over](backup-azure-vms-introduction.md) Back-ups van Azure-VM'S en de uitbrei ding van back-ups.
-* [Raadpleeg de ondersteunings matrix](backup-support-matrix-iaas.md) voordat u een back-up configureert.
+* [Meer informatie over](backup-azure-vms-introduction.md) Azure VM-back-up en de back-upextensie.
+* [Bekijk de ondersteuningsmatrix](backup-support-matrix-iaas.md) voordat u een back-up configureert.
 
-Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk moet doen:
+Daarnaast zijn er een paar dingen die je zou kunnen moeten doen in sommige omstandigheden:
 
-* **Installeer de VM-agent op de VM**: Azure backup maakt back-ups van virtuele Azure-machines door een uitbrei ding te installeren in de Azure VM-agent die op de computer wordt uitgevoerd. Als uw virtuele machine is gemaakt op basis van een installatie kopie van Azure Marketplace, wordt de agent geïnstalleerd en uitgevoerd. Als u een aangepaste VM maakt of een on-premises machine migreert, moet u [de agent mogelijk hand matig installeren](#install-the-vm-agent).
+* **Installeer de VM-agent op de VM:** Azure Backup maakt back-ups van Azure VM's door een extensie te installeren voor de Azure VM-agent die op de machine wordt uitgevoerd. Als uw VM is gemaakt op basis van een Azure-marketplace-afbeelding, wordt de agent geïnstalleerd en uitgevoerd. Als u een aangepaste vm maakt of als u een on-premises machine migreert, moet u de agent mogelijk [handmatig installeren.](#install-the-vm-agent)
 
 ## <a name="create-a-vault"></a>Een kluis maken
 
- Een kluis slaat back-ups en herstel punten op die gedurende een periode zijn gemaakt en slaat back-upbeleid op dat is gekoppeld aan back-upcomputers. Maak als volgt een kluis:
+ Een kluis slaat back-ups en herstelpunten op die in de loop van de tijd zijn gemaakt en slaat back-upbeleid op dat is gekoppeld aan back-upapparaten. Maak als volgt een kluis:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Typ **Recovery Services**in zoeken. Klik onder **Services**op **Recovery Services kluizen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+2. Typ **Herstelservices**in zoekopdrachten . Klik **onder Services**op **Vaults van Herstelservices**.
 
-     ![Recovery Services kluizen zoeken](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
+     ![Zoeken naar vaults van Recovery Services](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
 
-3. Klik in **Recovery Services menu kluizen** op **+ toevoegen**.
+3. Klik in **het menu Vaults van Recovery Services** op **+Toevoegen**.
 
      ![Een Recovery Services-kluis maken, stap 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
-4. Typ in **Recovery Services kluis**een beschrijvende naam om de kluis aan te duiden.
+4. Typ in **de kluis Van Recovery Services**een vriendelijke naam om de kluis te identificeren.
     * De naam moet uniek zijn voor het Azure-abonnement.
-    * Dit kan twee tot 50 tekens bevatten.
-    * De naam moet beginnen met een letter en mag alleen letters, cijfers en afbreek streepjes bevatten.
-5. Selecteer het Azure-abonnement, de resource groep en de geografische regio waarin de kluis moet worden gemaakt. Klik vervolgens op **Maken**.
+    * Het kan 2 tot 50 tekens bevatten.
+    * Het moet beginnen met een brief, en het kan alleen letters, cijfers en koppeltekens bevatten.
+5. Selecteer het Azure-abonnement, de resourcegroep en de geografische regio waarin de kluis moet worden gemaakt. Klik vervolgens op **Maken**.
     * Het kan even duren voordat de kluis is gemaakt.
-    * Bewaak de status meldingen in de rechter bovenhoek van de portal.
+    * Controleer de statusmeldingen in het rechterbovengedeelte van de portal.
 
-Nadat de kluis is gemaakt, wordt deze weer gegeven in de lijst Recovery Services kluizen. Als uw kluis niet wordt weer geven, selecteert u **vernieuwen**.
+Nadat de kluis is gemaakt, wordt deze weergegeven in de lijst met kluizen van Herstelservices. Als u uw kluis niet ziet, selecteert u **Vernieuwen**.
 
 ![Lijst met back-upkluizen](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
 >[!NOTE]
-> Azure Backup kunt nu de naam van de resource groep aanpassen die is gemaakt door de Azure Backup-service. Zie voor meer informatie [Azure backup resource groep voor virtual machines](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
+> Azure Backup maakt nu het mogelijk om de naam van de brongroep aan te passen die is gemaakt door de Azure Backup-service. Zie [Azure Backup-brongroep voor virtuele machines voor](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)meer informatie.
 
-### <a name="modify-storage-replication"></a>Opslag replicatie wijzigen
+### <a name="modify-storage-replication"></a>Opslagreplicatie wijzigen
 
-Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+Standaard gebruiken kluizen [georedundante opslag (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
 
 * Als de kluis uw primaire back-upmechanisme is, raden we u aan GRS te gebruiken.
-* U kunt [lokaal redundante opslag (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gebruiken voor een goedkopere optie.
+* U [lokaal redundante opslag (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gebruiken voor een goedkopere optie.
 
-Wijzig het type opslag replicatie als volgt:
+Wijzig het type opslagreplicatie als volgt:
 
-1. Klik in de nieuwe kluis op **Eigenschappen** in de sectie **instellingen** .
-2. In **Eigenschappen**, onder **back-upconfiguratie**, klikt u op **bijwerken**.
-3. Selecteer het type opslag replicatie en klik op **Opslaan**.
+1. Klik in de nieuwe kluis op **Eigenschappen** in de sectie **Instellingen.**
+2. Klik in **Eigenschappen**onder **Back-upconfiguratie**op **Bijwerken**.
+3. Selecteer het type opslagreplicatie en klik op **Opslaan**.
 
       ![De opslagconfiguratie voor nieuwe kluis instellen](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
 
 > [!NOTE]
-   > U kunt het type opslag replicatie niet wijzigen nadat de kluis is ingesteld en back-upitems bevat. Als u dit wilt doen, moet u de kluis opnieuw maken.
+   > U het type opslagreplicatie niet wijzigen nadat de kluis is ingesteld en bevat back-upitems. Als je dit wilt doen, moet je de kluis opnieuw maken.
 
-## <a name="apply-a-backup-policy"></a>Een back-upbeleid Toep assen
+## <a name="apply-a-backup-policy"></a>Een back-upbeleid toepassen
 
-Configureer een back-upbeleid voor de kluis.
+Een back-upbeleid configureren voor de kluis.
 
-1. Klik in de kluis op **+ back-up** in de sectie **overzicht** .
+1. Klik in de kluis op **+Back-up** in de sectie **Overzicht.**
 
-   ![Knop back-up](./media/backup-azure-arm-vms-prepare/backup-button.png)
+   ![Knop Back-up](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-2. In **back-updoel** > **waar wordt uw workload uitgevoerd?** Selecteer **Azure**. In **waarvan wilt u een back-up maken?** Selecteer de **virtuele machine** >  **OK**. Hiermee wordt de VM-extensie in de kluis geregistreerd.
+2. In **Back-updoel** > **Waar wordt uw werkbelasting uitgevoerd?** selecteer **Azure**. In **Wat wilt u een back-up maken?** Selecteer Virtuele **machine** >  **OK**. Hiermee wordt de VM-extensie in de kluis geregistreerd.
 
-   ![Deel Vensters voor back-up en back-up](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
+   ![Deelvensters Back-upen en back-updoelen](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-3. Selecteer in **back-upbeleid**het beleid dat u aan de kluis wilt koppelen.
-    * Het standaard beleid maakt eenmaal per dag een back-up van de VM. De dagelijkse back-ups worden 30 dagen bewaard. Moment opnamen voor direct herstel worden twee dagen bewaard.
-    * Als u het standaard beleid niet wilt gebruiken, selecteert u **nieuwe maken**en maakt u een aangepast beleid zoals beschreven in de volgende procedure.
+3. Selecteer **in Back-upbeleid**het beleid dat u aan de kluis wilt koppelen.
+    * Met het standaardbeleid wordt één keer per dag een back-up van de vm gemaakt. De dagelijkse back-ups worden 30 dagen bewaard. Momentopnamen voor direct herstel worden twee dagen bewaard.
+    * Als u het standaardbeleid niet wilt gebruiken, selecteert u **Nieuw maken**en maakt u een aangepast beleid zoals beschreven in de volgende procedure.
 
-      ![Standaard back-upbeleid](./media/backup-azure-arm-vms-prepare/default-policy.png)
+      ![Standaardback-upbeleid](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-4. Selecteer in **virtuele machines selecteren**de vm's waarvan u een back-up wilt maken met behulp van het beleid. Klik vervolgens op **OK**.
+4. Selecteer **in Virtuele machines selecteren**de VM's waarop u een back-up wilt maken met behulp van het beleid. Klik vervolgens op **OK**.
 
-   * De geselecteerde Vm's worden gevalideerd.
-   * U kunt alleen Vm's in dezelfde regio als de kluis selecteren.
-   * Er kan alleen een back-up van virtuele machines worden gemaakt in één kluis.
+   * De geselecteerde VM's worden gevalideerd.
+   * U alleen VM's selecteren in dezelfde regio als de kluis.
+   * VM's kunnen alleen worden geback-upt in één kluis.
 
-     ![Het deel venster virtuele machines selecteren](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
+     ![Deelvenster 'Virtuele machines selecteren'](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-5. Klik in **back-up**op **back-up inschakelen**. Hiermee wordt het beleid geïmplementeerd voor de kluis en de virtuele machines en wordt de back-upextensie geïnstalleerd op de VM-agent die wordt uitgevoerd op de virtuele machine van Azure.
+5. Klik **in Back-up**op **Back-up inschakelen**. Hiermee wordt het beleid geïmplementeerd in de kluis en naar de VM's en wordt de back-upextensie op de VM-agent die op de Azure VM wordt uitgevoerd, geïnstalleerd.
 
-     ![Knop back-up inschakelen](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
+     ![Knop Back-up inschakelen](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
 Na het inschakelen van back-up:
 
-* De back-upservice installeert de back-upextensie, ongeacht of de virtuele machine wordt uitgevoerd.
+* De back-upservice installeert de back-upextensie, ongeacht of de VM wordt uitgevoerd.
 * Een eerste back-up wordt uitgevoerd in overeenstemming met uw back-upschema.
-* Houd bij het uitvoeren van back-ups rekening met het volgende:
-  * Een virtuele machine die wordt uitgevoerd, heeft de grootste kans om een toepassings consistent herstel punt vast te leggen.
-  * Maar zelfs als de VM is uitgeschakeld, wordt er een back-up van gemaakt. Een dergelijke virtuele machine wordt ook wel een offline-VM genoemd. In dit geval wordt het herstel punt vastlopen consistent.
-* Expliciete uitgaande verbinding is niet vereist voor het toestaan van back-ups van virtuele Azure-machines.
+* Wanneer back-ups worden uitgevoerd, moet u er rekening mee houden dat:
+  * Een VM die wordt uitgevoerd heeft de grootste kans voor het vastleggen van een toepassingsconsistent herstelpunt.
+  * Echter, zelfs als de VM is uitgeschakeld is een back-up. Zo'n VM staat bekend als een offline VM. In dit geval is het herstelpunt crashconsistent.
+* Expliciete uitgaande connectiviteit is niet vereist om back-ups van Azure VM's toe te staan.
 
 ### <a name="create-a-custom-policy"></a>Aangepast beleid maken
 
-Als u hebt geselecteerd voor het maken van een nieuw back-upbeleid, vult u de beleids instellingen in.
+Als u hebt geselecteerd om een nieuw back-upbeleid te maken, vult u de beleidsinstellingen in.
 
-1. Geef in **beleids naam**een beschrijvende naam op.
-2. Geef in **back-upschema**op wanneer back-ups moeten worden gemaakt. U kunt dagelijks of wekelijks back-ups maken voor Azure-Vm's.
-3. Geef in **direct terugzetten**op hoe lang u moment opnamen lokaal wilt behouden voor direct terugzetten.
-    * Wanneer u een back-up van VM-schijven herstelt, worden deze vanuit het netwerk gekopieerd naar de opslag locatie voor herstel. Met direct terugzetten kunt u lokaal opgeslagen moment opnamen gebruiken die zijn gemaakt tijdens een back-uptaak, zonder te wachten tot back-upgegevens worden overgebracht naar de kluis.
-    * U kunt moment opnamen voor direct terugzetten tussen een en vijf dagen bewaren. Twee dagen is de standaard instelling.
-4. Geef in **Bewaar termijn**op hoe lang u uw dagelijkse of wekelijkse back-uppunten wilt houden.
-5. Geef bij het **bewaren van maandelijks back-uppunt**op of u een maandelijkse back-up van uw dagelijkse of wekelijkse back-ups wilt behouden.
-6. Klik op **OK** om het beleid op te slaan.
+1. Geef **in De naam van het beleid**een zinvolle naam op.
+2. Geef in **back-upschema**aan wanneer back-ups moeten worden gemaakt. U dagelijkse of wekelijkse back-ups maken voor Azure VM's.
+3. Geef in **Instant Restore**op hoe lang u momentopnamen lokaal wilt behouden voor direct herstel.
+    * Wanneer u back-ups van VM-schijven herstelt, worden deze over het hele netwerk gekopieerd van opslag naar de locatie voor herstelopslag. Met direct herstel u gebruikmaken van lokaal opgeslagen momentopnamen die zijn gemaakt tijdens een back-uptaak, zonder te wachten tot back-upgegevens naar de kluis worden overgebracht.
+    * U momentopnamen voor direct herstel tussen één tot vijf dagen behouden. Twee dagen is de standaardinstelling.
+4. Geef in **het bewaarbereik**op hoe lang u uw dagelijkse of wekelijkse back-uppunten wilt behouden.
+5. Geef **in Retentie van het maandelijkse back-uppunt**op of u een maandelijkse back-up van uw dagelijkse of wekelijkse back-ups wilt behouden.
+6. Klik op **OK** het beleid op te slaan.
 
     ![Nieuw back-upbeleid](./media/backup-azure-arm-vms-prepare/new-policy.png)
 
 > [!NOTE]
-   > Azure Backup biedt geen ondersteuning voor automatische aanpassing van de klok voor zomer-en winter wijzigingen voor back-ups van Azure-VM'S. Wanneer er wijzigingen optreden, moet u het back-upbeleid hand matig aanpassen.
+   > Azure Backup biedt geen ondersteuning voor automatische klokaanpassing voor wijzigingen bij het herstellen van daglicht voor Azure VM-back-ups. Als er tijdswijzigingen optreden, wijzigt u het back-upbeleid handmatig naar behoefte.
 
 ## <a name="trigger-the-initial-backup"></a>De eerste back-up activeren
 
-De eerste back-up wordt uitgevoerd volgens de planning, maar u kunt deze als volgt direct uitvoeren:
+De eerste back-up wordt uitgevoerd volgens het schema, maar u deze onmiddellijk als volgt uitvoeren:
 
-1. Klik in het menu kluis op **Back-upitems**.
-2. Klik in **Back-upitems**op **virtuele machine van Azure**.
-3. Klik in de lijst **Back-upitems** op het weglatings teken (...).
-4. Klik op **Nu back-up maken**.
-5. In **Nu back-up**kunt u het besturings element kalender gebruiken om de laatste dag te selecteren dat het herstel punt moet worden bewaard. Klik vervolgens op **OK**.
-6. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken** > worden **uitgevoerd**. Afhankelijk van de grootte van de virtuele machine kan het maken van de eerste back-up even duren.
+1. Klik in het kluismenu op **Back-upitems**.
+2. Klik **in Back-upitems**op **Azure Virtual Machine**.
+3. Klik in de lijst **Back-upitems** op de ellips (...).
+4. Klik **nu op Back-up**.
+5. Gebruik **in Nu back-up**het agendabesturingselement om de laatste dag te selecteren waarop het herstelpunt moet worden behouden. Klik vervolgens op **OK**.
+6. Controleer de portalmeldingen. U de voortgang van de taak in het kluisdashboard controleren > **Back-uptaken** > **in uitvoering**. Afhankelijk van de grootte van de virtuele machine kan het maken van de eerste back-up even duren.
 
-## <a name="verify-backup-job-status"></a>Status van back-uptaak controleren
+## <a name="verify-backup-job-status"></a>Status back-uptaak verifiëren
 
-De details van de back-uptaak voor elke VM-back-up bestaan uit twee fasen: de **momentopname** fase, gevolgd door de fase **gegevens overdragen naar de kluis** .<br/>
-De momentopname fase garandeert de beschik baarheid van een herstel punt dat is opgeslagen samen met de schijven voor **onmiddellijke herstel** bewerkingen en is Maxi maal vijf dagen beschikbaar, afhankelijk van de retentie van de moment opname die door de gebruiker is geconfigureerd. Bij het overdragen van gegevens naar de kluis wordt een herstel punt in de kluis gemaakt voor lange termijn retentie. Het overdragen van gegevens naar de kluis begint alleen wanneer de fase van de moment opname is voltooid.
+De taakgegevens voor back-ups voor elke VM-back-up bestaan uit twee fasen, de **momentopnamefase** gevolgd door de **overdrachtsgegevens naar de kluisfase.**<br/>
+De momentopnamefase garandeert de beschikbaarheid van een herstelpunt dat samen met de schijven is opgeslagen voor **Instant Restores** en is maximaal vijf dagen beschikbaar, afhankelijk van de momentopnameretentie die door de gebruiker is geconfigureerd. Het overbrengen van gegevens naar kluis creëert een herstelpunt in de kluis voor langdurige bewaring. Gegevens overbrengen naar kluis begint pas nadat de momentopnamefase is voltooid.
 
   ![Status van back-uptaak](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
 
-Er worden twee **subtaken** uitgevoerd op de back-end, een voor front-end back-uptaak die kan worden gecontroleerd op de Blade Details van de **back-uptaak** , zoals hieronder wordt vermeld:
+Er zijn twee **subtaken** die worden uitgevoerd op de backend, een voor front-end back-up taak die kan worden gecontroleerd vanuit de **Back-up Job** details blade zoals hieronder vermeld:
 
   ![Status van back-uptaak](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 
-De **overdracht van gegevens naar de kluis** fase kan meerdere dagen duren, afhankelijk van de grootte van de schijven, het verloop per schijf en verschillende andere factoren.
+De **overdrachtsgegevens naar de kluisfase** kunnen meerdere dagen in beslag nemen, afhankelijk van de grootte van de schijven, de verloop per schijf en verschillende andere factoren.
 
-De taak status kan variëren, afhankelijk van de volgende scenario's:
+De taakstatus kan variëren afhankelijk van de volgende scenario's:
 
-**Snapshot** | **Gegevens overdragen aan de kluis** | **Taak status**
+**Momentopname** | **Gegevens overbrengen naar kluis** | **Functiestatus**
 --- | --- | ---
 Voltooid | Wordt uitgevoerd | Wordt uitgevoerd
 Voltooid | Overgeslagen | Voltooid
 Voltooid | Voltooid | Voltooid
-Voltooid | Mislukt | Voltooid met waarschuwing
+Voltooid | Mislukt | Aangevuld met waarschuwing
 Mislukt | Mislukt | Mislukt
 
-Met deze mogelijkheid kunnen twee back-ups voor dezelfde virtuele machine parallel worden uitgevoerd, maar in beide fase (moment opname, gegevens overdragen naar de kluis) kan slechts één subtaak worden uitgevoerd. In scenario's werd een back-uptaak uitgevoerd waardoor de back-up van de volgende dag niet kan worden vermeden met deze ontkoppelings functionaliteit. De back-ups van de volgende dag kunnen een moment opname hebben voltooid terwijl **gegevens worden overgedragen naar de kluis die** wordt overgeslagen als de back-uptaak van een eerdere dag wordt uitgevoerd.
-Met het incrementele herstel punt dat in de kluis is gemaakt, worden alle verloop van het laatste herstel punt dat in de kluis is gemaakt, vastgelegd. Er is geen kosten gevolgen voor de gebruiker.
+Nu met deze mogelijkheid, voor dezelfde VM, twee back-ups kunnen parallel worden uitgevoerd, maar in beide fasen (momentopname, overdracht van gegevens naar kluis) slechts een subtaak kan worden uitgevoerd. Dus in scenario's waren een back-up taak in uitvoering resulteerde in de volgende dag back-up te mislukken zal worden vermeden met deze ontkoppeling functionaliteit. De back-ups van de volgende dag kunnen momentopname hebben voltooid terwijl **Transfergegevens naar kluis** zijn overgeslagen als de back-uptaak van een eerdere dag wordt uitgevoerd.
+Het incrementele herstelpunt dat in de kluis is gemaakt, legt alle churn vast van het laatste herstelpunt dat in de kluis is gemaakt. Er zijn geen kosten van invloed op de gebruiker.
 
 ## <a name="optional-steps"></a>Optionele stappen
 
 ### <a name="install-the-vm-agent"></a>De VM-agent installeren
 
-Azure Backup maakt back-ups van virtuele Azure-machines door een uitbrei ding te installeren in de Azure VM-agent die op de computer wordt uitgevoerd. Als uw virtuele machine is gemaakt op basis van een installatie kopie van Azure Marketplace, wordt de agent geïnstalleerd en uitgevoerd. Als u een aangepaste VM maakt of een on-premises machine migreert, moet u de agent mogelijk hand matig installeren, zoals in de tabel wordt samenvatten.
+Azure Backup maakt een back-up van Azure VM's door een extensie te installeren voor de Azure VM-agent die op de machine wordt uitgevoerd. Als uw vm is gemaakt op basis van een Azure Marketplace-afbeelding, wordt de agent geïnstalleerd en uitgevoerd. Als u een aangepaste vm maakt of als u een on-premises machine migreert, moet u de agent mogelijk handmatig installeren, zoals samengevat in de tabel.
 
-**VM** | **Details**
+**Vm** | **Details**
 --- | ---
-**Windows** | 1. [down load en installeer](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) het MSI-bestand van de agent.<br/><br/> 2. Installeer met beheerders machtigingen op de computer.<br/><br/> 3. Controleer de installatie. Klik in *C:\WindowsAzure\Packages* op de virtuele machine met de rechter muisknop op **WaAppAgent. exe** > **Eigenschappen**. Op het tabblad **Details** moet de **product versie** 2.6.1198.718 of hoger zijn.<br/><br/> Als u de agent bijwerkt, moet u ervoor zorgen dat er geen back-upbewerkingen worden uitgevoerd en [installeert u de agent opnieuw](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-**Linux** | Installeer met behulp van een RPM-of een DEB-pakket vanuit de pakket opslagplaats van uw distributie. Dit is de aanbevolen methode voor het installeren en upgraden van de Azure Linux-agent. Alle [gewaarmerkte distributie providers](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen. De agent is beschikbaar op [github](https://github.com/Azure/WALinuxAgent), maar we raden niet aan om te installeren.<br/><br/> Als u de agent bijwerkt, zorg er dan voor dat er geen back-upbewerkingen worden uitgevoerd en werk de binaire bestanden bij.
+**Windows** | 1. [Download en installeer](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) het agent MSI-bestand.<br/><br/> 2. Installeer met beheerdersmachtigingen op de machine.<br/><br/> 3. Controleer de installatie. Klik in *C:\WindowsAzure\Packages* on the VM met de rechtermuisknop op **Eigenschappen van WaAppAgent.exe** > **Properties**. Op het tabblad **Details** moet **productversie** 2.6.1198.718 of hoger zijn.<br/><br/> Als u de agent bijwerkt, controleert u of er geen back-upbewerkingen worden uitgevoerd en [installeert u de agent opnieuw.](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)
+**Linux** | Installeren met behulp van een RPM of een DEB-pakket uit de pakketrepository van uw distributie. Dit is de voorkeursmethode voor het installeren en upgraden van de Azure Linux-agent. Alle [goedgekeurde distributieproviders](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integreren het Azure Linux-agentpakket in hun afbeeldingen en repositories. De agent is beschikbaar op [GitHub,](https://github.com/Azure/WALinuxAgent)maar we raden niet aan om vanaf daar te installeren.<br/><br/> Als u de agent bijwerkt, controleert u of er geen back-upbewerkingen worden uitgevoerd en werkt u de binaire bestanden bij.
 
 >[!NOTE]
-> **Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine.**
+> **Azure Backup ondersteunt nu selectieve schijfback-up en herstel met behulp van de Azure Virtual Machine-back-upoplossing.**
 >
->Momenteel biedt Azure Backup ondersteuning voor het maken van back-ups van alle schijven (besturings systeem en gegevens) in een virtuele machine met behulp van de back-upoplossing van de VM. Met de functionaliteit voor uitsluiten van schijven krijgt u een optie om een back-up te maken van een of enkele van de vele gegevens schijven in een VM. Dit biedt een efficiënte en rendabele oplossing voor uw back-up-en herstel behoeften. Elk herstel punt bevat gegevens van de schijven die zijn opgenomen in de back-upbewerking, waarmee u een subset van schijven die zijn hersteld vanaf het opgegeven herstel punt tijdens de herstel bewerking kunt laten herstellen. Dit is van toepassing om beide te herstellen vanuit de moment opname en de kluis.
+>Tegenwoordig ondersteunt Azure Backup een back-up van alle schijven (besturingssysteem en gegevens) in een VM samen met behulp van de back-upoplossing voor virtuele machines. Met de functionaliteit van de uitgesloten schijf krijgt u een optie om een of enkele back-ups te maken van de vele gegevensschijven in een vm. Dit biedt een efficiënte en kosteneffectieve oplossing voor uw back-up- en herstelbehoeften. Elk herstelpunt bevat gegevens van de schijven die zijn opgenomen in de back-upbewerking, waarmee u verder een subset van schijven laten herstellen vanaf het gegeven herstelpunt tijdens de herstelbewerking. Dit geldt voor het herstellen van zowel de momentopname als de kluis.
 >
->**Als u zich wilt aanmelden voor de preview, schrijft u voor AskAzureBackupTeam@microsoft.com**
+>**Als u zich wilt aanmelden voor de preview, schrijft u ons opAskAzureBackupTeam@microsoft.com**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Los eventuele problemen met [Azure VM-agents](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) of [back-ups van Azure VM](backup-azure-vms-troubleshoot.md)op.
-* [Herstellen](backup-azure-arm-restore-vms.md) Azure-Vm's.
+* Problemen met [Azure VM-agents](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) of [Azure VM-back-up oplossen.](backup-azure-vms-troubleshoot.md)
+* [Herstellen](backup-azure-arm-restore-vms.md) Azure VM's.

@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Monitor Workbooks
-description: Vereenvoudig complexe rapportage met vooraf samengestelde en aangepaste werkmappen met para meters
+description: Complexe rapportage vereenvoudigen met vooraf gebouwde en aangepaste geparametereerde werkmappen
 author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
@@ -9,122 +9,122 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658231"
 ---
-# <a name="azure-monitor-workbooks"></a>Azure Monitor werkmappen
+# <a name="azure-monitor-workbooks"></a>Azure Monitor-werkmappen
 
-Werkmappen bieden een flexibel canvas voor gegevens analyse en het maken van uitgebreide visuele rapporten in de Azure Portal. Hiermee kunt u in meerdere gegevens bronnen in azure tikken en deze combi neren in Unified Interactive-ervaringen. 
+Werkmappen bieden een flexibel canvas voor gegevensanalyse en het maken van uitgebreide visuele rapporten binnen de Azure-portal. Hiermee u meerdere gegevensbronnen uit heel Azure gebruiken en deze combineren tot uniforme interactieve ervaringen. 
 
 ## <a name="data-sources"></a>Gegevensbronnen
 
-Werkmappen kunnen gegevens uit meerdere bronnen in azure opvragen. Auteurs van werkmappen kunnen deze gegevens transformeren om inzicht te krijgen in de beschik baarheid, de prestaties, het gebruik en de algemene status van de onderliggende onderdelen. U kunt bijvoorbeeld prestatie logboeken analyseren van virtuele machines om een hoog CPU-of laag geheugen te identificeren en de resultaten weer te geven als een raster in een interactief rapport.
+Werkmappen kunnen gegevens uit meerdere bronnen binnen Azure opvragen. Auteurs van werkmappen kunnen deze gegevens omzetten om inzicht te geven in de beschikbaarheid, prestaties, het gebruik en de algehele status van de onderliggende componenten. Bijvoorbeeld het analyseren van prestatielogboeken van virtuele machines om hoge CPU- of lage geheugenexemplaren te identificeren en de resultaten weer te geven als een raster in een interactief rapport.
   
-Maar de kracht van werkmappen is de mogelijkheid om gegevens uit verschillende bronnen in één rapport te combi neren. Dit maakt het mogelijk om samengestelde resource weergaven te maken of samen te voegen over resources, waardoor rijkere gegevens en inzichten worden ingeschakeld die anders niet mogelijk zouden zijn.
+Maar de echte kracht van werkmappen is de mogelijkheid om gegevens uit verschillende bronnen te combineren in één rapport. Dit maakt het mogelijk samengestelde resourceweergaven te maken of voegt zich bij bronnen toe, zodat rijkere gegevens en inzichten die anders onmogelijk zouden zijn.
 
-Werkmappen zijn momenteel compatibel met de volgende gegevens bronnen:
+Werkmappen zijn momenteel compatibel met de volgende gegevensbronnen:
 
-* [Logboeken](workbooks-data-sources.md#logs)
-* [Metrische gegevens](workbooks-data-sources.md#metrics)
-* [Azure-resource grafiek](workbooks-data-sources.md#azure-resource-graph)
-* [Waarschuwingen (preview-versie)](workbooks-data-sources.md#alerts-preview)
-* [Workload status (preview-versie)](workbooks-data-sources.md#workload-health-preview)
-* [Azure Resource Health (preview-versie)](workbooks-data-sources.md#azure-resource-health)
-* [Azure Data Explorer (preview-versie)](workbooks-data-sources.md#azure-data-explorer-preview)
+* [Logs](workbooks-data-sources.md#logs)
+* [Statistieken](workbooks-data-sources.md#metrics)
+* [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
+* [Waarschuwingen (preview)](workbooks-data-sources.md#alerts-preview)
+* [Werkbelastingstatus (voorbeeld)](workbooks-data-sources.md#workload-health-preview)
+* [Azure-bronstatus (voorbeeld)](workbooks-data-sources.md#azure-resource-health)
+* [Azure Data Explorer (voorbeeld)](workbooks-data-sources.md#azure-data-explorer-preview)
 
 ## <a name="visualizations"></a>Visualisaties
 
-Werkmappen bieden een uitgebreide set mogelijkheden voor het visualiseren van uw gegevens. Raadpleeg de onderstaande voorbeeld koppelingen voor gedetailleerde voor beelden van elk type visualisatie:
+Werkmappen bieden een uitgebreide set mogelijkheden voor het visualiseren van uw gegevens. Voor gedetailleerde voorbeelden van elk visualisatietype u onderstaande voorbeeldkoppelingen raadplegen:
 
 * [Tekst](workbooks-visualizations.md#text)
-* [Diagrammen](workbooks-visualizations.md#charts)
+* [Grafieken](workbooks-visualizations.md#charts)
 * [Rasters](workbooks-visualizations.md#grids)
-* [Pagina's](workbooks-visualizations.md#tiles)
-* [Mapstructuren](workbooks-visualizations.md#trees)
+* [Tegels](workbooks-visualizations.md#tiles)
+* [Bomen](workbooks-visualizations.md#trees)
 * [Grafieken](workbooks-visualizations.md#graphs)
 
-![Voor beelden van werkmap visualisaties](./media/workbooks-overview/visualizations.png)
+![Voorbeeld van werkmapvisualisaties](./media/workbooks-overview/visualizations.png)
 
 ## <a name="getting-started"></a>Aan de slag
 
-Als u de werkmappen-ervaring wilt verkennen, gaat u eerst naar de Azure Monitor-service. U kunt dit doen door **monitor** te typen in het zoekvak in de Azure Portal.
+Als u de werkmappenervaring wilt verkennen, navigeert u eerst naar de Azure Monitor-service. Dit kan door **Monitor** in het zoekvak in de Azure-portal te typen.
 
-Selecteer vervolgens **werkmappen (preview)** .
+Selecteer vervolgens **Werkmappen (voorbeeld)**.
 
-![Scherm afbeelding van de knop voor beeld van werkmappen gemarkeerd in een rood vak](./media/workbooks-overview/workbooks-preview.png)
+![Schermafbeelding van de knop Voorbeeld van werkmappen die is gemarkeerd in een rood vak](./media/workbooks-overview/workbooks-preview.png)
 
-### <a name="gallery"></a>Gallery
+### <a name="gallery"></a>Galerie
 
-Hiermee gaat u naar de galerie met werkmappen:
+Dit brengt u naar de werkmappengalerie:
 
-![Scherm afbeelding van de galerie met Azure Monitor werkmappen](./media/workbooks-overview/gallery.png)
+![Schermafbeelding van de galerieweergave Azure Monitor-werkmappen](./media/workbooks-overview/gallery.png)
 
-### <a name="workbooks-versus-workbook-templates"></a>Werkmappen versus werkmap sjablonen
+### <a name="workbooks-versus-workbook-templates"></a>Werkmappen versus werkmapsjablonen
 
-U kunt een _werkmap_ in een groen en een aantal _werkmap sjablonen_ in paars weer geven. Sjablonen fungeren als gerapporteerde rapporten die zijn ontworpen voor flexibel gebruik door meerdere gebruikers en teams. Als u een sjabloon opent, wordt een tijdelijke werkmap gemaakt die is gevuld met de inhoud van de sjabloon. 
+U een _werkmap_ in het groen en een aantal _werkmapsjablonen_ in paars weergeven. Sjablonen dienen als samengestelde rapporten die zijn ontworpen voor flexibel hergebruik door meerdere gebruikers en teams. Als u een sjabloon opent, wordt een tijdelijke werkmap gemaakt die is gevuld met de inhoud van de sjabloon. 
 
-U kunt de para meters van de werkmap op basis van een sjabloon aanpassen en analyses uitvoeren zonder bang te zijn voor het verbreken van de toekomstige rapportage ervaring voor collega's. Als u een sjabloon opent, wijzigingen aanbrengt en vervolgens het pictogram opslaan selecteert, wordt de sjabloon opgeslagen als een werkmap die vervolgens groen wordt weer gegeven, zodat de oorspronkelijke sjabloon ongewijzigd blijft. 
+U de parameters van de op een sjabloon gebaseerde werkmap aanpassen en analyses uitvoeren zonder bang te zijn voor het doorbreken van de toekomstige rapportage-ervaring voor collega's. Als u een sjabloon opent, voert u enkele aanpassingen uit en selecteert u het pictogram Opslaan dat u de sjabloon opslaat als een werkmap die vervolgens in het groen wordt weergegeven en de oorspronkelijke sjabloon onaangeroerd laat. 
 
-Onder de motorkap verschillen sjablonen ook van opgeslagen werkmappen. Als u een werkmap opslaat, wordt een gekoppelde Azure Resource Manager resource gemaakt, terwijl de tijdelijke werkmap die wordt gemaakt wanneer alleen een sjabloon wordt geopend, geen unieke resource is gekoppeld. Raadpleeg het [artikel werkmappen Access Control](workbooks-access-control.md)voor meer informatie over het beheren van toegangs beheer in werkmappen.
+Onder de motorkap verschillen sjablonen ook van opgeslagen werkmappen. Als u een werkmap opslaat, wordt een gekoppelde Azure Resource Manager-bron gemaakt, terwijl in de tijdelijke werkmap die is gemaakt bij het openen van een sjabloon geen unieke resource is gekoppeld. Raadpleeg het artikel voor het [besturingselement voor werkmappen](workbooks-access-control.md)voor meer informatie over hoe toegangsbeheer wordt beheerd in werkmappen.
 
-### <a name="exploring-a-workbook-template"></a>Een werkmap sjabloon verkennen
+### <a name="exploring-a-workbook-template"></a>Een werkmapsjabloon verkennen
 
-Selecteer **analyse van toepassings fouten** om een van de standaard sjablonen voor toepassings werkmappen te bekijken.
+Selecteer **Analyse van toepassingsfouten** om een van de standaardwerkmapsjablonen voor toepassingen te bekijken.
 
-![Scherm opname van sjabloon voor toepassings fout analyse](./media/workbooks-overview/failure-analysis.png)
+![Schermafbeelding van de analysesjabloon voor toepassingsfouten](./media/workbooks-overview/failure-analysis.png)
 
-Zoals eerder is aangegeven, maakt het openen van de sjabloon een tijdelijke werkmap waarmee u kunt werken. De werkmap wordt standaard geopend in de Lees modus, waarin alleen de informatie wordt weer gegeven voor de beoogde analyse-ervaring die is gemaakt door de oorspronkelijke auteur van de sjabloon.
+Zoals eerder vermeld, maakt het openen van de sjabloon een tijdelijke werkmap waarmee u communiceren. Standaard wordt de werkmap geopend in de leesmodus, waarin alleen de informatie wordt weergegeven voor de beoogde analyse-ervaring die is gemaakt door de oorspronkelijke sjabloonauteur.
 
-In het geval van deze bepaalde werkmap is de ervaring interactief. U kunt het abonnement, de beoogde apps en het tijds bereik van de gegevens die u wilt weer geven aanpassen. Wanneer u deze selecties hebt gemaakt, wordt het raster van HTTP-aanvragen ook interactief weer gegeven. Als u een afzonderlijke rij selecteert, worden de gegevens in de twee grafieken onder aan het rapport gewijzigd.
+In het geval van deze specifieke werkmap is de ervaring interactief. U het abonnement, de gerichte apps en het tijdsbereik van de gegevens die u wilt weergeven, aanpassen. Zodra u deze selecties hebt gemaakt, is het raster van HTTP-aanvragen ook interactief, waarbij het selecteren van een afzonderlijke rij de gegevens in de twee grafieken onder aan het rapport wijzigt.
 
-### <a name="editing-mode"></a>Bewerkings modus
+### <a name="editing-mode"></a>Bewerkingsmodus
 
-Als u wilt weten hoe deze werkmap sjabloon samen wordt geplaatst, moet u de bewerkings modus **wijzigen door bewerken**te selecteren. 
+Als u wilt begrijpen hoe deze werkmapsjabloon is samengesteld, moet u wisselen naar de bewerkingsmodus door **Bewerken te selecteren.** 
 
-![Scherm opname van sjabloon voor toepassings fout analyse](./media/workbooks-overview/edit.png)
+![Schermafbeelding van de analysesjabloon voor toepassingsfouten](./media/workbooks-overview/edit.png)
 
-Wanneer u overschakelt naar de bewerkings modus, ziet u dat er een aantal **bewerkings** vakken worden weer gegeven aan de rechter kant die overeenkomt met elk afzonderlijk aspect van uw werkmap.
+Zodra u bent overgestapt naar de bewerkingsmodus, ziet u dat er een aantal **bewerkingsvakken** rechts lijken die overeenkomen met elk afzonderlijk aspect van uw werkmap.
 
-![Scherm afbeelding van de knop bewerken](./media/workbooks-overview/edit-mode.png)
+![Schermafbeelding van de knop Bewerken](./media/workbooks-overview/edit-mode.png)
 
-Als we de knop bewerken direct onder het raster van aanvraag gegevens selecteren, kunnen we zien dat dit deel van onze werkmap bestaat uit een Kusto-query op basis van gegevens uit een Application Insights bron.
+Als we de bewerkingsknop direct onder het raster van aanvraaggegevens selecteren, kunnen we zien dat dit deel van onze werkmap bestaat uit een Kusto-query tegen gegevens uit een Application Insights-bron.
 
-![Scherm opname van onderliggende Kusto-query](./media/workbooks-overview/kusto.png)
+![Schermafbeelding van onderliggende Kusto-query](./media/workbooks-overview/kusto.png)
 
-Als u op de andere **bewerkings** knoppen aan de rechter kant klikt, wordt een aantal van de belangrijkste onderdelen voor werkmappen, zoals op [prijs op basis](workbooks-visualizations.md#text)van korting, UI-elementen voor [parameter selectie](workbooks-parameters.md) en andere [grafiek/visualisatie typen](workbooks-visualizations.md)weer geven. 
+Als u klikt op de andere **knoppen bewerken** aan de rechterkant, worden een aantal kerncomponenten weergegeven die werkmappen vormen, zoals op markdown gebaseerde [tekstvakken,](workbooks-visualizations.md#text)gebruikersinterface-elementen [voor parameterselectie](workbooks-parameters.md) en andere [grafiek-/visualisatietypen](workbooks-visualizations.md). 
 
-Het verkennen van de vooraf gemaakte sjablonen in de Bewerk modus en deze vervolgens aanpassen aan uw behoeften en uw eigen aangepaste werkmap opslaan is een uitstekende manier om te leren wat er mogelijk is met Azure Monitor-werkmappen.
+Het verkennen van de vooraf gebouwde sjablonen in de bewerkingsmodus en deze vervolgens aanpassen aan uw behoeften en het opslaan van uw eigen aangepaste werkmap is een uitstekende manier om te beginnen met meer informatie over wat er mogelijk is met Azure Monitor-werkmappen.
 
 ## <a name="pinning-visualizations"></a>Visualisaties vastmaken
 
-De stappen voor tekst, query's en metrische gegevens in een werkmap kunnen worden vastgemaakt met behulp van de knop vastmaken op deze items terwijl de werkmap zich in de pincode modus bevindt, of als de auteur van de werkmap instellingen heeft ingeschakeld voor dat element om het speld pictogram zichtbaar te maken. 
+Stappen voor tekst, query's en statistieken in een werkmap kunnen worden vastgemaakt met de pinknop op die items terwijl de werkmap in de pinmodus staat, of als de auteur van de werkmap instellingen voor dat element heeft ingeschakeld om het pinpictogram zichtbaar te maken. 
 
-Als u toegang wilt krijgen tot de modus pincode, klikt u op **bewerken** om de bewerkings modus in te voeren en selecteert u het pictogram blauwe pincode in de bovenste balk. Er wordt dan een afzonderlijk speld pictogram weer gegeven boven elk *invoervak* van het werkmap onderdeel aan de rechter kant van het scherm.
+Als u de pinmodus wilt openen, klikt u op **Bewerken** om de bewerkingsmodus in te voeren en selecteert u het blauwe pictogram voor de pin in de bovenste balk. Er verschijnt dan een afzonderlijk pinpictogram boven het *vak Bewerken* van elk overeenkomstig werkmaponderdeel aan de rechterkant van het scherm.
 
-![Ervaring vastmaken](./media/workbooks-overview/pin-experience.png)
-
-> [!NOTE]
-> De status van de werkmap wordt opgeslagen op het moment van de pincode en vastgemaakte werkmappen op een dash board worden niet bijgewerkt als de onderliggende werkmap wordt gewijzigd. Als u een vastgemaakte werkmap onderdeel wilt bijwerken, moet u dat onderdeel verwijderen en opnieuw vastmaken.
-
-## <a name="dashboard-time-ranges"></a>Tijd bereik van dash board
-
-Met de vastgemaakte werkmap-onderdelen wordt het tijds bereik van het dash board in acht genomen als het vastgemaakte item is geconfigureerd voor het gebruik van een *tijds bereik* parameter. De waarde van het tijds bereik van het dash board wordt gebruikt als de waarde van de tijds bereik parameter en elke wijziging van het tijds bereik van het dash board zorgt ervoor dat het vastgemaakte item wordt bijgewerkt. Als een vastgemaakt deel het tijds bereik van het dash board gebruikt, ziet u de ondertitel van de bijgewerkte onderdeel Update om het tijds bereik van het dash board weer te geven wanneer het tijds bereik verandert. 
-
-Vastgemaakte werkmap onderdelen die gebruikmaken van een tijds bereik parameter, worden automatisch vernieuwd tegen een snelheid die wordt bepaald door het tijds bereik van het dash board. De laatste keer dat de query is uitgevoerd, wordt deze weer gegeven in de ondertitel van het vastgemaakte gedeelte.
-
-Als een vastgemaakte stap een expliciet ingesteld tijds bereik heeft (geen tijds bereik parameter gebruikt), wordt dat tijds bereik altijd gebruikt voor het dash board, ongeacht de instellingen van het dash board. De ondertitel van het vastgemaakte deel geeft niet het tijds bereik van het dash board weer en de query wordt niet automatisch vernieuwd op het dash board. De ondertitel toont de laatste keer dat de query wordt uitgevoerd.
+![Pin-ervaring](./media/workbooks-overview/pin-experience.png)
 
 > [!NOTE]
-> Query's die de gegevens bron voor *samen voegen* gebruiken, worden momenteel niet ondersteund bij het vastmaken aan dash boards.
+> De status van de werkmap wordt opgeslagen op het moment van de pin en vastgemaakte werkmappen op een dashboard worden niet bijgewerkt als de onderliggende werkmap wordt gewijzigd. Als u een vastgemaakt werkmaponderdeel wilt bijwerken, moet u dat onderdeel verwijderen en opnieuw vastmaken.
 
-## <a name="sharing-workbook-templates"></a>Werkmap Sjablonen delen
+## <a name="dashboard-time-ranges"></a>Dashboardtijdbereiken
 
-Wanneer u begint met het maken van uw eigen werkmap sjablonen, wilt u deze mogelijk delen met de bredere community. Ga naar onze [github-opslag plaats](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)voor meer informatie en om andere sjablonen te verkennen die geen deel uitmaken van de standaard Azure monitor galerie weergave. Als u door bestaande werkmappen wilt bladeren, gaat u naar de [werkmap bibliotheek](https://github.com/microsoft/Application-Insights-Workbooks/tree/master/Workbooks) op github.
+Vastgemaakte werkmapquerydelen respecteren het tijdsbereik van het dashboard als het vastgemaakte item is geconfigureerd om een parameter *Tijdbereik* te gebruiken. De tijdbereikwaarde van het dashboard wordt gebruikt als de waarde van de parameter tijdbereik en elke wijziging van het dashboardtijdbereik zorgt ervoor dat het vastgemaakte item wordt bijgewerkt. Als een vastgemaakt onderdeel het tijdsbereik van het dashboard gebruikt, ziet u de ondertitel van de vastgemaakte onderdeelupdate om het tijdsbereik van het dashboard weer te geven wanneer het tijdsbereik verandert. 
+
+Bovendien worden vastgemaakte werkmaponderdelen met behulp van een parameter voor tijdbereik automatisch vernieuwd met een snelheid die wordt bepaald door het tijdsbereik van het dashboard. De laatste keer dat de query is uitgevoerd, wordt weergegeven in de ondertitel van het vastgemaakte onderdeel.
+
+Als een vastgemaakte stap een expliciet ingesteld tijdsbereik heeft (geen parameter voor tijdbereik gebruikt), wordt dat tijdsbereik altijd gebruikt voor het dashboard, ongeacht de instellingen van het dashboard. De ondertitel van het vastgemaakte onderdeel geeft het tijdsbereik van het dashboard niet weer en de query wordt niet automatisch vernieuwd op het dashboard. De ondertitel wordt weergegeven wanneer de query voor het laatst is uitgevoerd.
+
+> [!NOTE]
+> Query's met de *gegevensbron samenvoegen* worden momenteel niet ondersteund bij het vastmaken aan dashboards.
+
+## <a name="sharing-workbook-templates"></a>Werkmapsjablonen delen
+
+Zodra u begint met het maken van uw eigen werkmapsjablonen, wilt u deze misschien delen met de bredere community. Ga naar onze [GitHub-repository](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)voor meer informatie en voor het verkennen van andere sjablonen die geen deel uitmaken van de standaardweergave van de Azure Monitor-galerie. Ga naar de [Werkmapbibliotheek](https://github.com/microsoft/Application-Insights-Workbooks/tree/master/Workbooks) op GitHub om door bestaande werkmappen te bladeren.
 
 ## <a name="next-step"></a>Volgende stap
 
-* [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
-* De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.
+* [Ga aan de slag met](workbooks-visualizations.md) het leren van meer over werkmappen met veel uitgebreide visualisatiesopties.
+* [Beheer](workbooks-access-control.md) en deel de toegang tot uw werkmapbronnen.

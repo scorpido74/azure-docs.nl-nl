@@ -7,7 +7,7 @@
     - name: De Bing Zoeken-API's vergelijken
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Snelstarts voor REST API
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: REST-API
@@ -66,7 +66,7 @@
           href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-entitysearch/?view=azure-node-latest'
         - name: Aan de slag
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch'
-- name: Bronnen
+- name: Resources
   items:
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/'

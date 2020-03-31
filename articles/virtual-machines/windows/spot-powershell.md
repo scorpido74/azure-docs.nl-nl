@@ -1,6 +1,6 @@
 ---
-title: Power shell gebruiken voor het implementeren van Azure spot-Vm's
-description: Meer informatie over het gebruik van Azure PowerShell voor het implementeren van spot-Vm's om kosten op te slaan.
+title: PowerShell gebruiken om Azure Spot VM's te implementeren
+description: Meer informatie over het gebruik van Azure PowerShell om Spot VM's te implementeren om kosten te besparen.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -10,36 +10,36 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77158941"
 ---
-# <a name="preview-deploy-spot-vms-using-azure-powershell"></a>Voor beeld: spot-Vm's implementeren met behulp van Azure PowerShell
+# <a name="preview-deploy-spot-vms-using-azure-powershell"></a>Voorbeeld: SpotVM's implementeren met Azure PowerShell
 
 
-Met behulp van [Spot vm's](spot-vms.md) kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
+Met behulp van [Spot VM's](spot-vms.md) u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kostenbesparing. Op elk moment waarop Azure de capaciteit terug nodig heeft, wordt spotvm's van Spot v.s. Daarom zijn Spot VM's ideaal voor workloads die onderbrekingen kunnen verwerken, zoals batchverwerkingstaken, dev/testomgevingen, grote compute workloads en meer.
 
-Prijzen voor spot Vm's zijn variabel, op basis van de regio en de SKU. Zie prijzen voor VM'S voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie. Zie [Spot vm's-prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de maximum prijs.
+De prijzen voor spotVM's zijn variabel, gebaseerd op regio en SKU. Zie VM-prijzen voor [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) en [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)voor meer informatie. Zie [Spot VM's - Prijzen](spot-vms.md#pricing)voor meer informatie over het instellen van de max.
 
-U hebt de mogelijkheid om een maximum prijs voor de virtuele machine in te stellen die u wilt betalen, per uur. De maximale prijs voor een steun-VM kan worden ingesteld in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.98765`bijvoorbeeld een maximum prijs van $0,98765 USD per uur. Als u de maximum prijs instelt op `-1`, wordt de VM niet verwijderd op basis van de prijs. De prijs voor de virtuele machine is de huidige prijs voor steun of de prijs voor een standaard-VM, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn.
+Je hebt de mogelijkheid om een maximale prijs die u bereid bent te betalen, per uur, voor de VM. De maximale prijs voor een Spot VM kan worden ingesteld in Amerikaanse dollars (USD), met behulp van maximaal 5 decimalen. De waarde `0.98765`is bijvoorbeeld een maximale prijs van $ 0,98765 USD per uur. Als u de maximale `-1`prijs instelt, wordt de VM niet uitgezet op basis van de prijs. De prijs voor de VM zal de huidige prijs voor spot of de prijs voor een standaard VM, die ooit minder is, zolang er capaciteit en quotum beschikbaar is.
 
 > [!IMPORTANT]
-> Spot instanties zijn momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Spotexemplaren staan momenteel in openbare preview.
+> Deze preview-versie wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie.
 >
 
 
 
 ## <a name="create-the-vm"></a>De virtuele machine maken
 
-Maak een spotVM met [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) om de configuratie te maken. Neem `-Priority Spot` op en stel `-MaxPrice` in op:
-- `-1` zodat de virtuele machine niet wordt verwijderd op basis van de prijs.
-- een dollar bedrag, Maxi maal vijf cijfers. `-MaxPrice .98765` betekent bijvoorbeeld dat de toewijzing van de virtuele machine ongedaan wordt gemaakt wanneer de prijs voor een spotVM ongeveer $. 98765 per uur duurt.
+Maak een spotVM met [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) om de configuratie te maken. Opnemen `-Priority Spot` en `-MaxPrice` instellen op:
+- `-1`dus de VM is niet uitgezet op basis van de prijs.
+- een dollarbedrag, tot 5 cijfers. Bijvoorbeeld, `-MaxPrice .98765` betekent dat de VM zal worden deallocated zodra de prijs voor een spotVM gaat ongeveer $.98765 per uur.
 
 
-In dit voor beeld wordt een spotVM gemaakt die niet wordt toegewezen op basis van de prijzen (alleen wanneer Azure de capaciteit nodig heeft).
+In dit voorbeeld wordt een spotVM gemaakt die niet wordt toegewezen op basis van prijzen (alleen wanneer Azure de capaciteit terug nodig heeft).
 
 ```azurepowershell-interactive
 $resourceGroup = "mySpotRG"
@@ -72,7 +72,7 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-Nadat de VM is gemaakt, kunt u een query uitvoeren om de maximum prijs voor alle virtuele machines in de resource groep weer te geven.
+Nadat de VM is gemaakt, u de maximale prijs voor alle VM's in de resourcegroep bekijken.
 
 ```azurepowershell-interactive
 Get-AzVM -ResourceGroupName $resourceGroup | `
@@ -81,6 +81,6 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt ook een spot-VM maken met behulp van de [Azure cli](../linux/spot-cli.md) of een [sjabloon](../linux/spot-template.md).
+U ook een spot-vm maken met de [Azure CLI](../linux/spot-cli.md) of een [sjabloon.](../linux/spot-template.md)
 
-Als er een fout optreedt, raadpleegt u [fout codes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Zie [Foutcodes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u een fout tegenkomt.

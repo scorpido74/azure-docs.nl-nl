@@ -1,27 +1,27 @@
 ---
-title: Een Service Fabric-app implementeren met aan het systeem toegewezen MI
-description: In dit artikel wordt beschreven hoe u een door het systeem toegewezen beheerde identiteit toewijst aan een Azure Service Fabric-toepassing
+title: Een Service Fabric-app implementeren met mi met systeemtoegewezen MI
+description: In dit artikel ziet u hoe u een door het systeem toegewezen beheerde identiteit toewijst aan een Azure Service Fabric-toepassing
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614822"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Service Fabric-toepassing implementeren met door het systeem toegewezen beheerde identiteit (preview)
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Servicefabric-toepassing implementeren met door het systeem toegewezen beheerde identiteit (voorbeeld)
 
-Als u toegang wilt krijgen tot de functie Managed Identity voor Azure Service Fabric-toepassingen, moet u eerst de service beheerde identiteits token inschakelen op het cluster. Deze service is verantwoordelijk voor de verificatie van Service Fabric toepassingen met behulp van hun beheerde identiteiten en voor het verkrijgen van toegangs tokens in hun naam. Zodra de service is ingeschakeld, kunt u deze weer geven in Service Fabric Explorer onder het gedeelte **systeem** in het linkerdeel venster, dat wordt uitgevoerd onder de naam **Fabric:/System/ManagedIdentityTokenService** naast andere systeem services.
+Als u toegang wilt krijgen tot de beheerde identiteitsfunctie voor Azure Service Fabric-toepassingen, moet u eerst de Managed Identity Token Service in het cluster inschakelen. Deze service is verantwoordelijk voor de verificatie van Service Fabric-toepassingen met behulp van hun beheerde identiteiten en voor het verkrijgen van toegangstokens namens hen. Zodra de service is ingeschakeld, u deze zien in Service Fabric Explorer onder de sectie **Systeem** in het linkerdeelvenster, uitgevoerd onder de naam **fabric:/System/ManagedIdentityTokenService** naast andere systeemservices.
 
 > [!NOTE] 
-> De implementatie van Service Fabric toepassingen met beheerde identiteiten wordt ondersteund vanaf de API-versie `"2019-06-01-preview"`. U kunt ook dezelfde API-versie gebruiken voor het toepassings type, de versie van het toepassings type en service bronnen. De mini maal ondersteunde Service Fabric runtime is 6,5 CU2. In additoin moet de ontwikkel-en pakket omgeving ook de SF .NET SDK op CU2 of hoger hebben
+> Implementatie van Service Fabric-toepassingen met beheerde identiteiten wordt ondersteund vanaf de API-versie. `"2019-06-01-preview"` U dezelfde API-versie ook gebruiken voor toepassingstype, toepassingstypeversie en servicebronnen. De minimaal ondersteunde Service Fabric-runtime is 6,5 CU2. In additoin moet de build/package-omgeving ook de SF .Net SDK op CU2 of hoger hebben
 
 ## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
 
 ### <a name="application-template"></a>Toepassingsjabloon
 
-Als u een toepassing met een door het systeem toegewezen beheerde identiteit wilt inschakelen, voegt u de eigenschap **Identity** toe aan de toepassings resource, met het type **systemAssigned** , zoals wordt weer gegeven in het volgende voor beeld:
+Als u toepassing wilt inschakelen met een door het systeem toegewezen beheerde identiteit, voegt u de **eigenschap identiteit** toe aan de toepassingsbron, waarbij het **typesysteem Toegewezen** wordt zoals in het onderstaande voorbeeld wordt weergegeven:
 
 ```json
     {
@@ -43,13 +43,13 @@ Als u een toepassing met een door het systeem toegewezen beheerde identiteit wil
       }
     }
 ```
-Met deze eigenschap declareert u (in Azure Resource Manager, respectievelijk de beheerde identiteits-en Service Fabric resource providers, die deze resource een impliciete (`system assigned`) beheerde identiteit heeft.
+Deze eigenschap verklaart (aan Azure Resource Manager en de Managed Identity and Service Fabric Resource`system assigned`Providers, respectievelijk, dat deze bron een impliciete ( ) beheerde identiteit heeft.
 
-### <a name="application-and-service-package"></a>Toepassings-en service pakket
+### <a name="application-and-service-package"></a>Toepassings- en servicepakket
 
-1. Werk het toepassings manifest bij om een **ManagedIdentity** -element toe te voegen aan de sectie **principals** met een enkel item, zoals hieronder wordt weer gegeven:
+1. Werk het toepassingsmanifest bij om een **ManagedIdentity-element** toe te voegen aan de sectie **Principals,** met één vermelding zoals hieronder wordt weergegeven:
 
-    **ApplicationManifest. XML**
+    **ApplicationManifest.xml**
 
     ```xml
     <Principals>
@@ -58,11 +58,11 @@ Met deze eigenschap declareert u (in Azure Resource Manager, respectievelijk de 
       </ManagedIdentities>
     </Principals>
     ```
-    Hiermee wijst u de identiteit die aan de toepassing is toegewezen als een resource toe aan een beschrijvende naam, voor verdere toewijzing aan de services die deel uitmaakt van de toepassing. 
+    Hiermee wordt de identiteit die aan de toepassing is toegewezen als bron in kaart gebracht voor een vriendschappelijke naam, voor verdere toewijzing aan de services die de toepassing omvatten. 
 
-2. Voeg in de sectie **ServiceManifestImport** die overeenkomt met de service waaraan de beheerde identiteit wordt toegewezen, een **IdentityBindingPolicy** -element toe, zoals hieronder wordt aangegeven:
+2. Voeg in de sectie **ServiceManifestImport** die overeenkomt met de service waaraan de beheerde identiteit wordt toegewezen, een element **IdentityBindingPolicy** toe, zoals hieronder wordt aangegeven:
 
-    **ApplicationManifest. XML**
+    **ApplicationManifest.xml**
 
       ```xml
         <ServiceManifestImport>
@@ -72,11 +72,11 @@ Met deze eigenschap declareert u (in Azure Resource Manager, respectievelijk de 
         </ServiceManifestImport>
       ```
 
-    Dit element wijst de identiteit van de toepassing toe aan de service. zonder deze toewijzing heeft de service geen toegang meer tot de identiteit van de toepassing. In het bovenstaande code fragment wordt de `SystemAssigned` identiteit (een gereserveerd tref woord) toegewezen aan de definitie van de service onder de beschrijvende naam `WebAdmin`.
+    Dit element wijst de identiteit van de toepassing toe aan de service; zonder deze toewijzing heeft de service geen toegang tot de identiteit van de toepassing. In het bovenstaande `SystemAssigned` fragment wordt de identiteit (die een gereserveerd zoekwoord is) `WebAdmin`toegewezen aan de definitie van de service onder de vriendelijke naam .
 
-3. Werk het service manifest bij om een **ManagedIdentity** -element toe te voegen aan de sectie **resources** met de naam die overeenkomt met de waarde van de `ServiceIdentityRef` instelling van de `IdentityBindingPolicy` definitie in het manifest van de toepassing:
+3. Werk het servicemanifest bij om een **ManagedIdentity-element** toe te `ServiceIdentityRef` voegen aan `IdentityBindingPolicy` de sectie **Resources** met de naam die overeenkomt met de waarde van de instelling van de definitie in het toepassingsmanifest:
 
-    **ServiceManifest. XML**
+    **ServiceManifest.xml**
 
     ```xml
       <Resources>
@@ -86,12 +86,12 @@ Met deze eigenschap declareert u (in Azure Resource Manager, respectievelijk de 
         </ManagedIdentities>
       </Resources>
     ```
-    Dit is de equivalente toewijzing van een identiteit aan een service zoals hierboven wordt beschreven, maar vanuit het perspectief van de service definitie. Er wordt naar de identiteit verwezen met de beschrijvende naam (`WebAdmin`), zoals aangegeven in het manifest van de toepassing.
+    Dit is de gelijkwaardige toewijzing van een identiteit aan een service zoals hierboven beschreven, maar vanuit het perspectief van de servicedefinitie. De identiteit wordt hier aangeduid met`WebAdmin`de vriendelijke naam ( ), zoals aangegeven in het aanvraagmanifest.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Ondersteuning voor beheerde identiteiten](./concepts-managed-identity.md) bekijken in azure service Fabric
-* [Een nieuwe implementeren](./configure-new-azure-service-fabric-enable-managed-identity.md) Azure Service Fabric-cluster met ondersteuning voor beheerde identiteiten 
-* [Beheerde identiteit inschakelen](./configure-existing-cluster-enable-managed-identity-token-service.md) in een bestaand Azure service Fabric-cluster
-* Gebruikmaken van de [beheerde identiteit van](./how-to-managed-identity-service-fabric-app-code.md) een service Fabric toepassing uit de bron code
+* [Beheerde identiteitsondersteuning controleren](./concepts-managed-identity.md) in Azure Service Fabric
+* [Een nieuwe implementeren](./configure-new-azure-service-fabric-enable-managed-identity.md) Azure Service Fabric-cluster met beheerde identiteitsondersteuning 
+* [Beheerde identiteit inschakelen](./configure-existing-cluster-enable-managed-identity-token-service.md) in een bestaand Azure Service Fabric-cluster
+* De beheerde identiteit van een Service Fabric-toepassing [gebruiken vanuit de broncode](./how-to-managed-identity-service-fabric-app-code.md)
 * [Een Azure Service Fabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [Een Azure Service Fabric-toepassing toegang verlenen tot andere Azure-resources](./how-to-grant-access-other-resources.md)
+* [Een Azure Service Fabric-toepassing toegang verlenen tot andere Azure-bronnen](./how-to-grant-access-other-resources.md)

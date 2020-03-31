@@ -5,20 +5,20 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 69dc0e1c14bc88cdbf0aa48700f95058ba759cc0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176541"
 ---
-1. In de oplossingsweergave (of **Solution Explorer** in Visual Studio), met de rechtermuisknop op de **onderdelen** map, klikt u op **meer onderdelen ophalen...** , zoek de **Google Cloud Messaging-Client** onderdeel en voeg deze toe aan het project.
-2. Open het bestand ToDoActivity.cs-project en voeg de volgende gebruiksinstructie aan de klasse:
+1. Klik in de oplossingsweergave (of **Solution Explorer** in Visual Studio) met de rechtermuisknop op de map **Componenten,** klik op **Meer componenten opvragen...**, zoek naar de component Google Cloud **Messaging-client** en voeg deze toe aan het project.
+2. Open het ToDoActivity.cs projectbestand en voeg de volgende instructie toe aan de klasse:
 
     ```csharp
     using Gcm.Client;
     ```
 
-3. In de **ToDoActivity** klasse, voeg de volgende nieuwe code: 
+3. Voeg in de klasse **ToDoActiviteit** de volgende nieuwe code toe: 
 
     ```csharp
     // Create a new instance field for this activity.
@@ -42,8 +42,8 @@ ms.locfileid: "67176541"
     }
     ```
 
-    Hiermee kunt u toegang tot de mobiele client-exemplaar van het serviceproces van de push-handler.
-4. Voeg de volgende code aan de **OnCreate** methode na de **MobileServiceClient** wordt gemaakt:
+    Hierdoor hebt u toegang tot de mobiele clientinstance vanuit het push handler-serviceproces.
+4. Voeg de volgende code toe aan de **methode OnCreate** nadat de **MobileServiceClient** is gemaakt:
 
     ```csharp
     // Set the current instance of TodoActivity.
@@ -57,4 +57,4 @@ ms.locfileid: "67176541"
     GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
     ```
 
-Uw **ToDoActivity** is nu klaar voor het toevoegen van pushmeldingen.
+Uw **ToDoActivity** is nu voorbereid op het toevoegen van pushmeldingen.

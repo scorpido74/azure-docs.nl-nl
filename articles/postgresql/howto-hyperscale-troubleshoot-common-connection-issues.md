@@ -1,65 +1,65 @@
 ---
-title: Problemen met verbindingen oplossen-grootschalige (Citus)-Azure Database for PostgreSQL
-description: Meer informatie over het oplossen van verbindings problemen met Azure Database for PostgreSQL-grootschalige (Citus)
-keywords: postgresql-verbinding, connection string, connectiviteits problemen, tijdelijke fout, verbindings fout
+title: Problemen met verbindingen oplossen - Hyperscale (Citus) - Azure Database voor PostgreSQL
+description: Meer informatie over het oplossen van verbindingsproblemen met Azure Database voor PostgreSQL - Hyperscale (Citus)
+keywords: postgresql-verbinding, verbindingstekenreeks, verbindingsproblemen, tijdelijke fout, verbindingsfout
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/8/2019
 ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74977502"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Verbindings problemen met Azure Database for PostgreSQL-grootschalige (Citus) oplossen
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Verbindingsproblemen met Azure Database voor PostgreSQL - Hyperscale (Citus) oplossen
 
-Verbindings problemen kunnen verschillende oorzaken hebben, zoals:
+Verbindingsproblemen kunnen worden veroorzaakt door verschillende dingen, zoals:
 
 * Firewallinstellingen
-* Time-out van verbinding
-* Onjuiste aanmeldings gegevens
-* Verbindings limiet bereikt voor Server groep
-* Problemen met de infra structuur van de service
-* Onderhoud van de service
-* Het coördinator knooppunt voert een failover uit naar nieuwe hardware
+* Time-out verbinding
+* Onjuiste aanmeldingsgegevens
+* Verbindingslimiet bereikt voor servergroep
+* Problemen met de infrastructuur van de dienst
+* Onderhoudsonderhoud
+* De coördinator knooppunt niet over naar nieuwe hardware
 
-Over het algemeen kunnen verbindings problemen met grootschalige als volgt worden geclassificeerd:
+Over het algemeen kunnen verbindingsproblemen met Hyperscale als volgt worden geclassificeerd:
 
-* Tijdelijke fouten (kort geduurd of tijdelijk)
-* Permanente of niet-tijdelijke fouten (fouten die regel matig worden herhaald)
+* Tijdelijke fouten (kortstondig of intermitterend)
+* Permanente of niet-tijdelijke fouten (fouten die zich regelmatig voordoen)
 
 ## <a name="troubleshoot-transient-errors"></a>Tijdelijke fouten oplossen
 
-Er zijn een aantal redenen om tijdelijke fouten te voor komen. Het meest voorkomende systeem onderhoud, fout met hardware of software en vCore upgrades van het coördinator knooppunt.
+Tijdelijke fouten optreden om een aantal redenen. De meest voorkomende zijn systeemonderhoud, fout met hardware of software en coördinator node vCore-upgrades.
 
-Het inschakelen van hoge Beschik baarheid voor grootschalige-server groeps knooppunten kan deze typen problemen automatisch oplossen. Uw toepassing moet echter nog steeds worden voor bereid om de verbinding kort te verliezen. Ook kunnen andere gebeurtenissen langer duren om te beperken, bijvoorbeeld wanneer een grote trans actie een langlopend herstel veroorzaakt.
+Het inschakelen van hoge beschikbaarheid voor knooppunten van hyperscale-serverskan dit soort problemen automatisch beperken. Uw aanvraag moet echter nog steeds bereid zijn om de verbinding kort te verliezen. Ook andere gebeurtenissen kunnen langer duren om te beperken, zoals wanneer een grote transactie een langdurig herstel veroorzaakt.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Stappen voor het oplossen van problemen met de tijdelijke verbinding
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Stappen om tijdelijke verbindingsproblemen op te lossen
 
-1. Controleer het [Microsoft Azure-service dashboard](https://azure.microsoft.com/status) voor eventuele bekende storingen die zijn opgetreden tijdens het moment waarop de toepassing fouten rapporteert.
-2. Toepassingen die verbinding maken met een Cloud service zoals grootschalige (Citus), moeten tijdelijke fouten verwachten en op de juiste wijze reageren. Zo moeten toepassingen proberen logica te implementeren om deze fouten af te handelen in plaats van ze te halen als toepassings fouten aan gebruikers.
-3. Omdat de Server groep de resource limieten nadert, kunnen fouten lijken op problemen met de tijdelijke verbinding. Het verg Roten van het RAM-geheugen of het toevoegen van werk knooppunten en herverdelings gegevens kan helpen.
-4. Als verbindings problemen blijven bestaan of langer dan 60 seconden of vaker dan één keer per dag optreden, moet u een Azure-ondersteunings aanvraag indienen door **ondersteuning** te selecteren op de [ondersteunings](https://azure.microsoft.com/support/options) site van Azure.
+1. Controleer het [Microsoft Azure Service Dashboard](https://azure.microsoft.com/status) op bekende storingen die zich hebben voorgedaan tijdens de tijd waarin de toepassing fouten rapporteerde.
+2. Toepassingen die verbinding maken met een cloudservice zoals Hyperscale (Citus) moeten tijdelijke fouten verwachten en gracieus reageren. Toepassingen moeten bijvoorbeeld logica voor nieuwe apparaten implementeren om deze fouten te verwerken in plaats van ze te vereersten als toepassingsfouten voor gebruikers.
+3. Als de servergroep de resourcelimieten nadert, kunnen fouten tijdelijke verbindingsproblemen lijken. Het verhogen van knooppunt-RAM, het toevoegen van werknemersknooppunten en het opnieuw in evenwicht brengen van gegevens kan helpen.
+4. Als verbindingsproblemen blijven bestaan of langer dan 60 seconden duren of meer dan één keer per dag optreden, dient u een Azure-ondersteuningsaanvraag in door Ondersteuning op de [Azure Support-site](https://azure.microsoft.com/support/options) **te** selecteren.
 
-## <a name="troubleshoot-persistent-errors"></a>Problemen met persistente fouten oplossen
+## <a name="troubleshoot-persistent-errors"></a>Permanente fouten oplossen
 
-Als de toepassing permanent geen verbinding kan maken met grootschalige (Citus), zijn de meest voorkomende oorzaken voor een onjuiste firewall configuratie of een gebruikers fout.
+Als de toepassing voortdurend geen verbinding maakt met Hyperscale (Citus), zijn de meest voorkomende oorzaken een fout van de firewall of een fout van de gebruiker.
 
-* Firewall configuratie van coördinator knooppunt: Zorg ervoor dat de firewall van de grootschalige-server zo is geconfigureerd dat verbindingen van uw client worden toegestaan, inclusief proxy servers en gateways.
-* Firewall configuratie van de client: de firewall op uw client moet verbindingen met uw database server toestaan. Sommige firewalls vereisen niet alleen toepassing op naam, maar kunnen de IP-adressen en poorten van de server toestaan.
-* Gebruikers fout: dubbel Controleer de connection string. Mogelijk hebt u niet-getypte para meters zoals de server naam. U kunt verbindings reeksen vinden voor verschillende taal frameworks en psql in de Azure Portal. Ga naar de pagina **verbindings reeksen** in de Server groep grootschalige (Citus). Houd er ook wel voor dat grootschalige-clusters (Citus) slechts één data base hebben en dat de vooraf gedefinieerde naam **Citus**is.
+* Coördinator node firewall configuratie: Zorg ervoor dat de Hyperscale server firewall is geconfigureerd om verbindingen van uw client, met inbegrip van proxy servers en gateways mogelijk te maken.
+* Clientfirewallconfiguratie: de firewall op uw client moet verbindingen met uw databaseserver toestaan. Sommige firewalls vereisen dat niet alleen toepassing op naam, maar waardoor de IP-adressen en poorten van de server.
+* Gebruikersfout: Controleer de verbindingstekenreeks opnieuw. Mogelijk hebt u verkeerd getypte parameters zoals de servernaam. U verbindingstekenreeksen voor verschillende taalframeworks en psql vinden in de Azure-portal. Ga naar de pagina **Verbindingstekenreeksen** in de servergroep Hyperscale (Citus). Houd er ook rekening mee dat Hyperscale (Citus) clusters slechts één database hebben en de vooraf gedefinieerde naam **citus**is.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen voor het oplossen van problemen met de permanente verbinding
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Stappen om permanente verbindingsproblemen op te lossen
 
-1. Stel [firewall regels](howto-hyperscale-manage-firewall-using-portal.md) in om het client-IP-adres toe te staan. Stel voor tijdelijke test doeleinden alleen een firewall regel in met behulp van 0.0.0.0 als het begin-IP-adres en gebruik 255.255.255.255 als het laatste IP-adres. Met deze regel wordt de server naar alle IP-adressen geopend. Als de regel uw connectiviteits probleem oplost, verwijdert u deze en maakt u een firewall regel voor een adequaat beperkt IP-adres of adres bereik.
-2. Controleer op alle firewalls tussen de client en Internet of poort 5432 is geopend voor uitgaande verbindingen.
-3. Controleer uw connection string en andere Verbindings instellingen.
-4. Controleer de service status in het dash board.
+1. Firewallregels [firewall rules](howto-hyperscale-manage-firewall-using-portal.md) instellen om het IP-adres van de client toe te staan. Alleen voor tijdelijke testdoeleinden stelt u een firewallregel in met 0.0.0.0 als start-IP-adres en met 255.255.255.255 als het uiteindelijke IP-adres. Met die regel wordt de server geopend voor alle IP-adressen. Als de regel uw verbindingsprobleem oplost, verwijdert u deze en maakt u een firewallregel voor een op de juiste manier beperkt IP-adres- of adresbereik.
+2. Zorg er op alle firewalls tussen de client en het internet voor dat poort 5432 open is voor uitgaande verbindingen.
+3. Controleer uw verbindingstekenreeks en andere verbindingsinstellingen.
+4. Controleer de servicestatus in het dashboard.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de concepten van [firewall regels in azure database for PostgreSQL-grootschalige (Citus)](concepts-hyperscale-firewall-rules.md)
-* Zie [firewall regels beheren voor Azure database for PostgreSQL-grootschalige (Citus)](howto-hyperscale-manage-firewall-using-portal.md)
+* Meer informatie over de concepten [firewallregels in Azure Database voor PostgreSQL - Hyperscale (Citus)](concepts-hyperscale-firewall-rules.md)
+* Bekijk hoe [u firewallregels voor Azure Database voor PostgreSQL - Hyperscale (Citus) beheert](howto-hyperscale-manage-firewall-using-portal.md)

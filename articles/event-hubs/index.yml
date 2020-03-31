@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 01/29/2020
-  ms.openlocfilehash: 28cfe37f6058dbedb11fb6fe01d932cbb10cbd18
-  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.openlocfilehash: 957a942efd618003dd3ff3f9f76be72799770859
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77162953"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80288288"
 landingContent:
 - title: Over Event Hubs
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Event Hub maken waarvoor Apache Kafka is ingeschakeld
-      url: event-hubs-create-kafka-enabled.md
+      url: event-hubs-create.md
     - text: Een Kafka-broker spiegelen in een Event Hub
       url: event-hubs-kafka-mirror-maker-tutorial.md
     - text: Apache Spark aan een Event Hub koppelen
@@ -143,7 +143,7 @@ landingContent:
       url: event-hubs-ip-filtering.md
     - text: Service-eindpunten voor virtueel netwerk gebruiken
       url: event-hubs-service-endpoints.md
+    - text: Privé-eindpunten gebruiken
+      url: private-link-service.md
     - text: Door de klant beheerde sleutels configureren voor versleuteling van data-at-rest
       url: configure-customer-managed-key.md
-    - text: Integratie van virtuele netwerken en firewalls inschakelen
-      url: event-hubs-tutorial-virtual-networks-firewalls.md

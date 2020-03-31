@@ -1,102 +1,103 @@
 ---
 title: De gebruikersinterface aanpassen
 titleSuffix: Azure AD B2C
-description: Meer informatie over het aanpassen van de gebruikers interface voor uw toepassingen die gebruikmaken van Azure Active Directory B2C.
+description: Meer informatie over het aanpassen van de gebruikersinterface voor uw toepassingen die Azure Active Directory B2C gebruiken.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 03/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dad4c156b088c28ccf199cb155278ac9a189e4be
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 839e13dffc7d15b8cd258dd4b7dda6776223d052
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051738"
 ---
-# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>De gebruikers interface in Azure Active Directory B2C aanpassen
+# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>De gebruikersinterface aanpassen in Azure Active Directory B2C
 
-De gebruikers interface die Azure Active Directory B2C (Azure AD B2C) aan uw klanten wordt weer gegeven, kunt u voorzien van een naadloze gebruikers ervaring in uw toepassing. Deze ervaring omvat het aanmelden, aanmelden, het bewerken van profielen en het opnieuw instellen van wacht woorden. In dit artikel worden de methoden voor het aanpassen van gebruikers interface (UI) geïntroduceerd voor gebruikers stromen en aangepaste beleids regels.
+Door de gebruikersinterface die Azure Active Directory B2C (Azure AD B2C) weergeeft aan uw klanten, te brandmerken en aan te passen, u een naadloze gebruikerservaring in uw toepassing bieden. Deze ervaringen omvatten aanmelden, aanmelden, profielbewerking en het opnieuw instellen van wachtwoorden. In dit artikel worden de methoden voor gebruikersinterface (UI) aangepast voor zowel gebruikersstromen als aangepaste beleidsregels.
 
-## <a name="ui-customization-in-different-scenarios"></a>UI-aanpassing in verschillende scenario's
+## <a name="ui-customization-in-different-scenarios"></a>Aanpassing van de gebruikersinterface in verschillende scenario's
 
-Er zijn verschillende manieren voor het aanpassen van de gebruikers interface van de gebruiker, die voor verschillende scenario's van toepassing is.
+Er zijn verschillende manieren om de gebruikersinterface van de gebruikerservaringen van uw toepassing aan te passen, elk geschikt voor verschillende scenario's.
 
 ### <a name="user-flows"></a>Gebruikersstromen
 
-Als u gebruik maakt van [gebruikers stromen](user-flow-overview.md), kunt u het uiterlijk van de pagina's van de gebruikers stroom wijzigen met behulp van ingebouwde *sjablonen voor pagina-indeling*of door gebruik te maken van uw eigen HTML en CSS. Beide methoden worden verderop in dit artikel besproken.
+Als u [gebruikersstromen](user-flow-overview.md)gebruikt, u het uiterlijk van uw gebruikersstroompagina's wijzigen met behulp van ingebouwde *pagina-indelingssjablonen*of met behulp van uw eigen HTML en CSS. Beide methoden worden later in dit artikel besproken.
 
-U gebruikt de [Azure Portal](tutorial-customize-ui.md) voor het configureren van de UI-aanpassing voor gebruikers stromen.
+U gebruikt de [Azure-portal](tutorial-customize-ui.md) om de aanpassing van de gebruikersinterface voor gebruikersstromen te configureren.
 
 > [!TIP]
-> Als u alleen het banner logo, de achtergrond afbeelding en de achtergrond kleur van de pagina's van uw gebruikers stroom wilt wijzigen, kunt u de functie [voor bedrijfs huisstijl (preview)](#company-branding-preview) proberen die verderop in dit artikel wordt beschreven.
+> Als u alleen het bannerlogo, de achtergrondafbeelding en de achtergrondkleur van uw gebruikersstroompagina's wilt wijzigen, u de functie [Bedrijfsbranding (voorbeeld)](#company-branding-preview) proberen die later in dit artikel wordt beschreven.
 
 ### <a name="custom-policies"></a>Aangepast beleid
 
-Als u [aangepaste beleids regels](custom-policy-overview.md) gebruikt voor het aanmelden of aanmelden, het opnieuw instellen van wacht woorden of het bewerken van profielen in uw toepassing, gebruikt u [beleids bestanden om de gebruikers interface aan te passen](custom-policy-ui-customization.md).
+Als u [aangepaste beleidsregels](custom-policy-overview.md) gebruikt om aanmelding of aanmelding, wachtwoordreset of profielbewerking in uw toepassing te bieden, gebruikt u [beleidsbestanden om de gebruikersinterface aan te passen.](custom-policy-ui-customization.md)
 
-Als u dynamische inhoud op basis van de beslissing van een klant wilt opgeven, gebruikt u aangepaste beleids regels die de [pagina-inhoud dynamisch kunnen wijzigen](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) , afhankelijk van een para meter die wordt verzonden in een query reeks. U kunt bijvoorbeeld de achtergrond afbeelding wijzigen op de Azure AD B2C registratie-of aanmeldings pagina op basis van een para meter die u doorgeeft vanuit uw web-of mobiele toepassing.
+Als u dynamische inhoud moet bieden op basis van de beslissing van een klant, gebruikt u aangepast beleid dat [pagina-inhoud dynamisch](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) kan wijzigen, afhankelijk van een parameter die in een querytekenreeks wordt verzonden. U bijvoorbeeld de achtergrondafbeelding op de aanmeldings- of aanmeldingspagina van Azure AD B2C wijzigen op basis van een parameter die u passeert vanaf uw web- of mobiele toepassing.
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
-U kunt Java script-code aan de client zijde inschakelen in zowel [gebruikers stromen](user-flow-javascript-overview.md) als [aangepaste beleids regels](page-layout.md).
+U JavaScript-code aan clientzijde inschakelen in zowel [gebruikersstromen](user-flow-javascript-overview.md) als [aangepaste beleidsregels.](page-layout.md)
 
-### <a name="sign-in-only-ui-customization"></a>Aangepaste UI-aanpassing
+### <a name="sign-in-only-ui-customization"></a>Alleen in-- en gebruikersinterface aanpassen ondertekenen
 
-Als u zich alleen aanmeldt, samen met de bijbehorende pagina voor het opnieuw instellen van wacht woorden en verificatie-e-mails, gebruikt u dezelfde aanpassings stappen die worden gebruikt voor een [aanmeldings pagina van Azure AD](../active-directory/fundamentals/customize-branding.md).
+Als u alleen aanmeldingsmeldingen verstrekt, samen met de bijbehorende pagina voor het opnieuw instellen van wachtwoorden en verificatie-e-mails, gebruikt u dezelfde aanpassingsstappen die worden gebruikt voor een [aanmeldingspagina van Azure AD.](../active-directory/fundamentals/customize-branding.md)
 
-Als klanten proberen hun profiel te bewerken voordat ze zich aanmelden, worden ze omgeleid naar een pagina die u aanpast door gebruik te maken van dezelfde stappen die worden gebruikt voor het aanpassen van de aanmeldings pagina van Azure AD.
+Als klanten proberen hun profiel te bewerken voordat ze zich aanmelden, worden ze doorgestuurd naar een pagina die u aanpast met dezelfde stappen die worden gebruikt voor het aanpassen van de aanmeldingspagina van Azure AD.
 
 ## <a name="page-layout-templates"></a>Sjablonen voor pagina-indeling
 
-Gebruikers stromen bieden verschillende ingebouwde sjablonen waaruit u kunt kiezen om uw gebruikers ervaring-pagina's een professioneel uiterlijk te geven. Deze indelings sjablonen kunnen ook worden gebruikt als uitgangs punt voor uw eigen aanpassing.
+Gebruikersstromen bieden verschillende ingebouwde sjablonen waaruit u kiezen om uw gebruikerservaringspagina's een professionele uitstraling te geven. Deze lay-outsjablonen kunnen ook als uitgangspunt dienen voor uw eigen aanpassing.
 
-Onder **aanpassen** in het menu links selecteert u **pagina-indelingen** en selecteert u vervolgens **sjabloon**.
+Selecteer **pagina-indelingen** **onder Aanpassen** in het linkermenu en selecteer **Sjabloon**.
 
-![Vervolg keuzelijst sjabloon selectie in de pagina gebruikers stroom van Azure Portal](media/customize-ui-overview/template-selection.png)
+![Vervolgkeuzelijst voor sjabloonselectie op de pagina gebruikersstromen van Azure-portal](media/customize-ui-overview/template-selection.png)
 
-Selecteer vervolgens een sjabloon in de lijst. Hier volgen enkele voor beelden van de aanmeldings pagina's voor elke sjabloon:
+Selecteer vervolgens een sjabloon in de lijst. Hier volgen voorbeelden van de aanmeldingspagina's voor elke sjabloon:
 
-| Oceaan blauw | Pastel grijs | Klassiek |
+| Oceaanblauw | Leigrijs | Klassiek |
 |:-:|:-:|:-:|
-|![Voor beeld van de sjabloon oceaan blauw die wordt weer gegeven op de aanmeldings pagina voor aanmelden](media/customize-ui-overview/template-ocean-blue.png)|![Voor beeld van de sjabloon pastel grijs weer gegeven op de aanmeldings pagina voor aanmelden](media/customize-ui-overview/template-slate-gray.png)|![Voor beeld van de klassieke sjabloon die wordt weer gegeven op de aanmeldings pagina voor aanmelden](media/customize-ui-overview/template-classic.png)|
+|![Voorbeeld van de sjabloon Ocean Blue die wordt weergegeven op de aanmeldingspagina](media/customize-ui-overview/template-ocean-blue.png)|![Voorbeeld van de sjabloon Leisteengrijs die wordt weergegeven op de aanmeldingspagina](media/customize-ui-overview/template-slate-gray.png)|![Voorbeeld van de klassieke sjabloon die wordt weergegeven op de aanmeldingspagina](media/customize-ui-overview/template-classic.png)|
 
-Wanneer u een sjabloon kiest, wordt de geselecteerde indeling toegepast op alle pagina's in uw gebruikers stroom en de URI voor elke pagina wordt weer gegeven in het veld **aangepaste pagina-URI** .
+Wanneer u een sjabloon kiest, wordt de geselecteerde indeling toegepast op alle pagina's in uw gebruikersstroom en is de URI voor elke pagina zichtbaar in het veld **Aangepaste pagina URI.**
 
 ## <a name="custom-html-and-css"></a>Aangepaste HTML en CSS
 
-Als u uw eigen beleids indeling wilt ontwerpen met uw aangepaste HTML en CSS, kunt u dit doen door de wissel knop ' aangepaste pagina-inhoud gebruiken ' in te scha kelen voor elk van de indelings namen die in uw beleid aanwezig zijn. Volg de onderstaande instructies met betrekking tot de aangepaste indelings configuraties:
+Als u uw eigen beleidsindeling wilt ontwerpen met uw aangepaste HTML en CSS, u dit doen door de schakeloptie 'Aangepaste pagina-inhoud gebruiken' in te schakelen voor elk van de indelingsnamen die in uw beleid aanwezig zijn. Volg de onderstaande instructies met betrekking tot de aangepaste lay-out configuraties:
 
-Azure AD B2C code wordt uitgevoerd in de browser van uw klant door gebruik te maken van een aanpak genaamd [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/).
+Azure AD B2C voert code uit in de browser van uw klant met behulp van een aanpak genaamd [Cross-Origin Resource Sharing (CORS).](https://www.w3.org/TR/cors/)
 
-Tijdens runtime wordt inhoud geladen vanuit een URL die u opgeeft in uw gebruikers stroom of aangepast beleid. Elke pagina in de gebruikers ervaring laadt de inhoud van de URL die u voor die pagina opgeeft. Nadat de inhoud is geladen vanuit uw URL, wordt deze samengevoegd met een HTML-fragment dat is ingevoegd door Azure AD B2C, waarna de pagina wordt weer gegeven aan uw klant.
+Bij runtime wordt inhoud geladen vanuit een URL die u opgeeft in uw gebruikersstroom of aangepaste beleid. Elke pagina in de gebruikerservaring laadt de inhoud van de URL die u voor die pagina opgeeft. Nadat de inhoud is geladen vanuit uw URL, wordt deze samengevoegd met een HTML-fragment dat is ingevoegd door Azure AD B2C en vervolgens wordt de pagina weergegeven aan uw klant.
 
-Lees de volgende richt lijnen voordat u uw eigen HTML-en CSS-bestanden gebruikt om de gebruikers interface aan te passen:
+Bekijk de volgende richtlijnen voordat u uw eigen HTML- en CSS-bestanden gebruikt om de gebruikersinterface aan te passen:
 
-- Azure AD B2C HTML-inhoud in uw pagina's **samenvoegt** . Kopieer en probeer de standaard inhoud die Azure AD B2C levert niet te worden gewijzigd. Het is het beste om uw HTML-inhoud helemaal zelf te bouwen en de standaard inhoud als referentie te gebruiken.
-- **Java script** kan worden opgenomen in uw aangepaste inhoud voor [gebruikers stromen](user-flow-javascript-overview.md) en [aangepaste beleids regels](javascript-samples.md).
-- Ondersteunde **browser versies** zijn:
-  - Internet Explorer 11, 10 en micro soft Edge
+- Azure AD B2C voegt HTML-inhoud **samen** in uw pagina's. Kopieer en probeer de standaardinhoud die Azure AD B2C biedt niet te kopiëren en te proberen te wijzigen. Het is het beste om uw HTML-inhoud helemaal opnieuw te bouwen en de standaardinhoud als referentie te gebruiken.
+- **JavaScript** kan worden opgenomen in uw aangepaste inhoud voor zowel [gebruikersstromen](user-flow-javascript-overview.md) als [aangepaste beleidsregels.](javascript-samples.md)
+- Ondersteunde **browserversies** zijn:
+  - Internet Explorer 11, 10 en Microsoft Edge
   - Beperkte ondersteuning voor Internet Explorer 9 en 8
-  - Google Chrome 42,0 en hoger
-  - Mozilla Firefox 38,0 en hoger
-- Voeg geen **formulier Tags** toe aan uw HTML-bestand. Formulier Tags veroorzaken een conflict met de POST-bewerkingen die zijn gegenereerd door de HTML die is geïnjecteerd door Azure AD B2C.
+  - Google Chrome 42.0 en hoger
+  - Mozilla Firefox 38.0 en hoger
+  - Safari voor iOS en macOS, versie 12 en hoger
+- Neem geen **formuliertags** op in uw HTML. Formuliertags verstoren de POST-bewerkingen die worden gegenereerd door de HTML die is geïnjecteerd door Azure AD B2C.
 
-### <a name="where-do-i-store-ui-content"></a>Waar kan ik de inhoud van de gebruikers interface opslaan?
+### <a name="where-do-i-store-ui-content"></a>Waar kan ik ui-inhoud opslaan?
 
-Wanneer u uw eigen HTML-en CSS-bestanden gebruikt om de gebruikers interface aan te passen, kunt u de inhoud van de gebruikers interface hosten op een openbaar beschikbaar HTTPS-eind punt dat CORS ondersteunt. Bijvoorbeeld [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), webservers, CDN'S, AWS S3 of het delen van bestanden.
+Wanneer u uw eigen HTML- en CSS-bestanden gebruikt om de gebruikersinterface aan te passen, u uw UI-inhoud hosten op een openbaar beschikbaar HTTPS-eindpunt dat CORS ondersteunt. Azure [Blob-opslag,](../storage/blobs/storage-blobs-introduction.md)webservers, CDN's, AWS S3 of systemen voor het delen van bestanden.
 
-Het belang rijk punt is dat u de inhoud host op een openbaar beschik bare HTTPS-eind punt waarvoor CORS is ingeschakeld. U moet een absolute URL gebruiken wanneer u deze in uw inhoud opgeeft.
+Het belangrijkste punt is dat u de inhoud host op een openbaar beschikbaar HTTPS-eindpunt met CORS ingeschakeld. U moet een absolute URL gebruiken wanneer u deze in uw inhoud opgeeft.
 
 ## <a name="get-started-with-custom-html-and-css"></a>Aan de slag met aangepaste HTML en CSS
 
-Ga aan de slag met uw eigen HTML en CSS op uw pagina's voor gebruikers ervaring door deze richt lijnen te volgen.
+Ga aan de slag met uw eigen HTML en CSS in uw gebruikerservaringspagina's door deze richtlijnen te volgen.
 
-- Maak goed opgemaakte HTML-inhoud met een leeg `<div id="api"></div>`-element ergens in de `<body>`. Dit element markeert waar de Azure AD B2C inhoud wordt ingevoegd. In het volgende voor beeld ziet u een minimale pagina:
+- Maak goed gevormde HTML-inhoud `<div id="api"></div>` met een `<body>`leeg element dat zich ergens in de . Dit element markeert waar de Azure AD B2C-inhoud wordt ingevoegd. In het volgende voorbeeld ziet u een minimale pagina:
 
     ```html
     <!DOCTYPE html>
@@ -112,7 +113,7 @@ Ga aan de slag met uw eigen HTML en CSS op uw pagina's voor gebruikers ervaring 
     </html>
     ```
 
-- Gebruik CSS om de UI-elementen die Azure AD B2C invoegen in uw pagina, te opmaken. In het volgende voor beeld ziet u een eenvoudig CSS-bestand dat ook instellingen bevat voor de door aanmeldingen geïnjecteerde HTML-elementen:
+- Gebruik CSS om de ui-elementen te stylen die Azure AD B2C in uw pagina invoegt. In het volgende voorbeeld ziet u een eenvoudig CSS-bestand met instellingen voor de indeinste HTML-elementen:
 
     ```css
     h1 {
@@ -137,89 +138,89 @@ Ga aan de slag met uw eigen HTML en CSS op uw pagina's voor gebruikers ervaring 
     }
     ```
 
-- Host uw inhoud op een HTTPS-eind punt (met CORS toegestaan). De GET-en OPTIONS-aanvraag methoden moeten zijn ingeschakeld bij het configureren van CORS.
-- Een gebruikers stroom of aangepast beleid maken of bewerken om de inhoud te gebruiken die u hebt gemaakt.
+- Host uw inhoud op een HTTPS-eindpunt (met CORS toegestaan). Zowel de methoden voor het aanvragen van GET als opties moeten zijn ingeschakeld bij het configureren van CORS.
+- Maak of bewerk een gebruikersstroom of aangepast beleid om de inhoud te gebruiken die u hebt gemaakt.
 
-### <a name="html-fragments-from-azure-ad-b2c"></a>HTML-fragmenten van Azure AD B2C
+### <a name="html-fragments-from-azure-ad-b2c"></a>HTML-fragmenten uit Azure AD B2C
 
-De volgende tabel bevat de HTML-fragmenten die Azure AD B2C worden samengevoegd in het `<div id="api"></div>`-element dat zich in uw inhoud bevindt.
+In de volgende tabel worden de HTML-fragmenten weergegeven `<div id="api"></div>` die Azure AD B2C samenvoegt tot het element in uw inhoud.
 
-| Pagina ingevoegd | Beschrijving van HTML |
+| Ingevoegde pagina | Beschrijving van HTML |
 | ------------- | ------------------- |
-| ID-provider selecteren | Bevat een lijst met knoppen voor id-providers die de klant kan kiezen tijdens het registreren of aanmelden. Deze knoppen bevatten sociale id-providers zoals Facebook, Google of lokale accounts (op basis van e-mail adres of gebruikers naam). |
-| Lokaal account registreren | Bevat een formulier voor het registreren van een lokaal account op basis van een e-mail adres of een gebruikers naam. Het formulier kan verschillende invoer besturings elementen bevatten, zoals een tekstinvoervak, een vak voor het invoeren van een wacht woord, keuze rondje, vervolg keuze vakjes en selectie vakjes met meerdere selecties. |
-| Aanmelding voor sociaal account | Kan worden weer gegeven wanneer u zich aanmeldt met een bestaand account van een id-provider voor sociale netwerken, zoals Facebook of Google. Dit wordt gebruikt wanneer aanvullende informatie van de klant moet worden verzameld met behulp van een aanmeldings formulier. |
-| Unified Sign-up of aanmelden | Hiermee worden zowel registratie als gebruikers met sociale id-providers, zoals Facebook-, Google-of lokale accounts, afgehandeld. |
-| Multi-Factor Authentication | Klanten kunnen hun telefoon nummers (met behulp van tekst of spraak) verifiëren tijdens het registreren of aanmelden. |
-| Fout | Geeft fout informatie aan de klant. |
+| Selectie identiteitsprovider | Bevat een lijst met knoppen voor identiteitsproviders waaruit de klant kan kiezen tijdens het aanmelden of aanmelden. Deze knoppen omvatten aanbieders van sociale identiteit, zoals Facebook, Google of lokale accounts (op basis van e-mailadres of gebruikersnaam). |
+| Aanmelden voor lokale account | Bevat een formulier voor lokale accountaanmelding op basis van een e-mailadres of een gebruikersnaam. Het formulier kan verschillende invoerbesturingselementen bevatten, zoals tekstinvoervak, wachtwoordinvoervak, keuzerondje, keuzelijst voor één keuzeen en selectievakjes voor meerdere knoppen. |
+| Aanmelden voor een sociaal account | Kan worden weergegeven wanneer u zich aanmeldt met een bestaand account van een aanbieder van sociale identiteit, zoals Facebook of Google. Het wordt gebruikt wanneer aanvullende informatie moet worden verzameld van de klant met behulp van een aanmeldingsformulier. |
+| Verenigd aanmelden of aanmelden | Hiermee verwerkt u zowel aanmeldingals aanmelding van klanten die aanbieders van sociale identiteit kunnen gebruiken, zoals Facebook, Google of lokale accounts. |
+| Multi-Factor Authentication | Klanten kunnen hun telefoonnummers (met tekst of stem) verifiëren tijdens het aanmelden of aanmelden. |
+| Fout | Biedt foutinformatie aan de klant. |
 
-## <a name="company-branding-preview"></a>Huis stijl van bedrijf (preview-versie)
+## <a name="company-branding-preview"></a>Bedrijfsbranding (preview)
 
-U kunt de pagina's van uw gebruikers stroom aanpassen met een banner logo, achtergrond afbeelding en achtergrond kleur door Azure Active Directory [bedrijfs huisstijl](../active-directory/fundamentals/customize-branding.md)te gebruiken.
+U uw gebruikersstroompagina's aanpassen met een bannerlogo, achtergrondafbeelding en achtergrondkleur met azure active directory [bedrijfsbranding.](../active-directory/fundamentals/customize-branding.md)
 
-Als u de pagina's van uw gebruikers stroom wilt aanpassen, moet u eerst de huis stijl van het bedrijf in Azure Active Directory configureren. vervolgens schakelt u deze in op de pagina-indelingen van uw gebruikers stromen in Azure AD B2C.
+Als u uw gebruikersstroompagina's wilt aanpassen, configureert u eerst bedrijfsbranding in Azure Active Directory en schakelt u deze in in de pagina-indelingen van uw gebruikersstromen in Azure AD B2C.
 
 [!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
 
 ### <a name="configure-company-branding"></a>Bedrijfshuisstijl configureren
 
-Begin met het instellen van het banner logo, de achtergrond afbeelding en de achtergrond kleur in de **bedrijfs huisstijl**.
+Begin met het instellen van het bannerlogo, de achtergrondafbeelding en de achtergrondkleur binnen **bedrijfsbranding.**
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
-1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
-1. Selecteer **bedrijfs huisstijl**onder **beheren**.
-1. Volg de stappen in [huis stijl toevoegen aan de aanmeldings pagina van uw organisatie Azure Active Directory](../active-directory/fundamentals/customize-branding.md).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Selecteer het **filter Directory + abonnement** in het bovenste menu en selecteer vervolgens de map met uw Azure AD B2C-tenant.
+1. Zoek en selecteer **Azure AD B2C**in de Azure-portal .
+1. Selecteer **onder Beheren**de optie **Bedrijfsbranding**.
+1. Volg de stappen in [Branding toevoegen aan de aanmeldingspagina](../active-directory/fundamentals/customize-branding.md)van Azure Active Directory van uw organisatie .
 
-Houd bij het configureren van de huis stijl van het bedrijf in Azure AD B2C de volgende zaken:
+Houd rekening met deze dingen wanneer u bedrijfsbranding configureert in Azure AD B2C:
 
-* De huis stijl van het bedrijf in Azure AD B2C is momenteel beperkt tot de **achtergrond afbeelding**, het **vaandel logo**en de aanpassing van de **achtergrond kleur** . De andere eigenschappen in het deel venster huis stijl van het bedrijf, bijvoorbeeld in **Geavanceerde instellingen**, worden *niet ondersteund*.
-* Op de pagina's van de gebruikers stroom wordt de achtergrond kleur weer gegeven voordat de achtergrond afbeelding wordt geladen. We raden u aan een achtergrond kleur te kiezen die nauw keurig overeenkomt met de kleuren in de achtergrond afbeelding voor een probleemloze laad ervaring.
-* Het banner logo wordt weer gegeven in de verificatie-e-mail berichten die worden verzonden naar uw gebruikers wanneer ze een registratie gebruikers stroom initiëren.
+* Bedrijfsbranding in Azure AD B2C is momenteel beperkt tot **achtergrondafbeelding,** **bannerlogo**en **aanpassing van de achtergrondkleur.** De andere eigenschappen in het bedrijfshuismerkvenster, bijvoorbeeld die in **geavanceerde instellingen,** *worden niet ondersteund*.
+* In de pagina's van de gebruikersstroom wordt de achtergrondkleur weergegeven voordat de achtergrondafbeelding wordt geladen. We raden u aan een achtergrondkleur te kiezen die nauw aansluit bij de kleuren in uw achtergrondafbeelding voor een vloeiendere laadervaring.
+* Het bannerlogo wordt weergegeven in de verificatie-e-mails die naar uw gebruikers worden verzonden wanneer ze een aanmeldingsgebruikersstroom starten.
 
-### <a name="enable-branding-in-user-flow-pages"></a>Huis stijl inschakelen op pagina's van gebruikers stroom
+### <a name="enable-branding-in-user-flow-pages"></a>Branding inschakelen op gebruikersstroompagina's
 
-Zodra u de huis stijl van uw bedrijf hebt geconfigureerd, schakelt u deze in uw gebruikers stromen in.
+Zodra u bedrijfsbranding hebt geconfigureerd, schakelt u deze in in uw gebruikersstromen.
 
-1. Selecteer **Azure AD B2C**in het menu links van de Azure Portal.
-1. Selecteer onder **beleids regels** **gebruikers stromen (beleid)** .
-1. Selecteer de gebruikers stroom waarvoor u de huis stijl van het bedrijf wilt inschakelen. Huis stijl van bedrijf wordt **niet ondersteund** voor de gebruikers stroom typen *Aanmelden v1* en *profiel bewerkings v1* .
-1. Onder **aanpassen**selecteert u **pagina-indelingen**en selecteert u vervolgens de lay-out die u wilt toevoegen. Selecteer bijvoorbeeld **Unified logging of aanmeldings pagina**.
-1. Kies voor de versie van de **pagina-indeling (preview)** versie **1.2.0** of hoger.
+1. Selecteer **Azure AD B2C**in het linkermenu van de Azure-portal .
+1. Selecteer **onder Beleid**de optie **Gebruikersstromen (beleidsregels)**.
+1. Selecteer de gebruikersstroom waarvoor u bedrijfsbranding wilt inschakelen. Bedrijfsbranding **wordt niet ondersteund** voor de typen *V1-* en *Profielbewerking v1-gebruikersstroom.*
+1. Selecteer onder **Pagina-indelingen**aanpassen en selecteer vervolgens de indeling die u wilt maken. **Customize** Selecteer bijvoorbeeld **Unified sign up or sign in page**.
+1. Kies versie **1.2.0** of hoger voor de **versie pagina-indeling (voorbeeld).**
 1. Selecteer **Opslaan**.
 
-Als u alle pagina's in de gebruikers stroom wilt gaan, stelt u de versie van de pagina-indeling in voor elke pagina-indeling in de gebruikers stroom.
+Als u alle pagina's in de gebruikersstroom wilt brandmerken, stelt u de pagina-indelingsversie in voor elke pagina-indeling in de gebruikersstroom.
 
-![De selectie van de pagina-indeling in Azure AD B2C in het Azure Portal](media/customize-ui-overview/portal-02-page-layout-select.png)
+![Selectie van pagina-indeling in Azure AD B2C in de Azure-portal](media/customize-ui-overview/portal-02-page-layout-select.png)
 
-In dit voor beeld wordt een aangepast banner logo en een achtergrond afbeelding weer gegeven op een pagina voor *aanmelding en aanmeldings van* de gebruikers stroom die gebruikmaakt van de sjabloon blauw:
+In dit geannoteerde voorbeeld wordt een aangepast bannerlogo en achtergrondafbeelding weergegeven op een *pagina Aanmelden en aanmelden voor* gebruikersstroom die de sjabloon Ocean Blue gebruikt:
 
-![Aanmeld-en aanmeldings pagina die wordt aangeboden door Azure AD B2C](media/customize-ui-overview/template-ocean-blue-branded.png)
+![Aanmeldings-/aanmeldingspagina voor merkproducten die wordt weergegeven door Azure AD B2C](media/customize-ui-overview/template-ocean-blue-branded.png)
 
-### <a name="use-company-branding-assets-in-custom-html"></a>Bedrijfs huisstijl assets gebruiken in aangepaste HTML
+### <a name="use-company-branding-assets-in-custom-html"></a>Bedrijfsmerkelementen gebruiken in aangepaste HTML
 
-Als u de huis stijl van uw bedrijf in aangepaste HTML wilt gebruiken, voegt u de volgende tags toe buiten de `<div id="api">`-tag:
+Als u uw bedrijfsmerkelementen wilt gebruiken in `<div id="api">` aangepaste HTML, voegt u de volgende tags toe buiten de tag:
 
 ```HTML
 <img data-tenant-branding-background="true" />
 <img data-tenant-branding-logo="true" alt="Company Logo" />
 ```
 
-De afbeeldings bron wordt vervangen door de achtergrond afbeelding en het logo banner. Zoals beschreven in de sectie [aan de slag met aangepaste HTML en CSS](#get-started-with-custom-html-and-css) , gebruikt u CSS-klassen voor het opmaken en positioneren van de assets op de pagina.
+De beeldbron wordt vervangen door die van de achtergrondafbeelding en het bannerlogo. Zoals beschreven in de sectie [Aan de slag met aangepaste HTML en CSS,](#get-started-with-custom-html-and-css) gebruikt u CSS-klassen om de elementen op de pagina te stylen en te positioneren.
 
 ## <a name="localize-content"></a>Inhoud lokaliseren
 
-U kunt uw HTML-inhoud lokaliseren door [taal aanpassing](user-flow-language-customization.md) in te scha kelen in uw Azure AD B2C-Tenant. Als u deze functie inschakelt, kunnen Azure AD B2C de OpenID Connect Connect-para meter `ui-locales` naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om taalspecifieke HTML-pagina's op te geven.
+U lokaliseert uw HTML-inhoud door [taalaanpassing](user-flow-language-customization.md) in te schakelen in uw Azure AD B2C-tenant. Als u deze functie inschakelt, kan Azure `ui-locales` AD B2C de parameter OpenID Connect doorsturen naar uw eindpunt. Uw inhoudsserver kan deze parameter gebruiken om taalspecifieke HTML-pagina's te verstrekken.
 
-Inhoud kan vanaf verschillende locaties worden opgehaald op basis van de land instelling die wordt gebruikt. In het eind punt waarvoor CORS is ingeschakeld, stelt u een mapstructuur in om inhoud voor specifieke talen te hosten. U roept de juiste waarde aan als u de Joker teken `{Culture:RFC5646}`gebruikt.
+Inhoud kan worden getrokken uit verschillende plaatsen op basis van de landinplaats die wordt gebruikt. In het eindpunt met CORS stelt u een mapstructuur in om inhoud voor specifieke talen te hosten. U belt de juiste als u de `{Culture:RFC5646}`waarde van de wildcard gebruikt.
 
-Uw aangepaste pagina-URI kan er bijvoorbeeld als volgt uitzien:
+Uw aangepaste pagina URI kan er bijvoorbeeld uitzien als:
 
 ```HTTP
 https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
 ```
 
-U kunt de pagina in het Frans laden door inhoud op te halen uit:
+U de pagina in het Frans laden door inhoud uit:
 
 ```HTTP
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
@@ -227,15 +228,15 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 ## <a name="examples"></a>Voorbeelden
 
-U kunt verschillende voorbeeld sjabloon bestanden vinden in de [B2C-AzureBlobStorage-client](https://github.com/azureadquickstarts/b2c-azureblobstorage-client) opslagplaats op github.
+U verschillende voorbeeldsjabloonbestanden vinden in de [B2C-AzureBlobStorage-Client-repository](https://github.com/azureadquickstarts/b2c-azureblobstorage-client) op GitHub.
 
-De voorbeeld HTML-en CSS-bestanden in de sjablonen bevinden zich in de map [/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) .
+De voorbeeld-HTML- en CSS-bestanden in de sjablonen bevinden zich in de [map /sample_templates.](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u gebruik maakt van **gebruikers stromen**, kunt u uw gebruikers interface aanpassen met behulp van de zelf studie:
+- Als u **gebruikersstromen**gebruikt, u uw gebruikersinterface aanpassen met de zelfstudie:
 
-    [Pas de gebruikers interface van uw toepassingen aan in azure Active Directory B2C](tutorial-customize-ui.md).
-- Als u **aangepast beleid**gebruikt, kunt u de gebruikers interface nu aanpassen met het artikel:
+    [Pas de gebruikersinterface van uw toepassingen aan in Azure Active Directory B2C](tutorial-customize-ui.md).
+- Als u **aangepast beleid gebruikt,** u de gebruikersinterface aanpassen met het artikel:
 
-    [Pas de gebruikers interface van uw toepassing aan met behulp van een aangepast beleid in azure Active Directory B2C](custom-policy-ui-customization.md).
+    [Pas de gebruikersinterface van uw toepassing aan met een aangepast beleid in Azure Active Directory B2C](custom-policy-ui-customization.md).

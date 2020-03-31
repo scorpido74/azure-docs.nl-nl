@@ -1,26 +1,26 @@
 ---
-title: Het bijhouden van afhankelijkheden in Azure-toepassing Insights met opentellingen python | Microsoft Docs
-description: Afhankelijkheids aanroepen voor uw python-apps bewaken via opentellingen python.
+title: Afhankelijkheidstracking in Azure-toepassingsinzichten met OpenCensus Python | Microsoft Documenten
+description: Monitor afhankelijkheidsoproepen voor uw Python-apps via OpenCensus Python.
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.openlocfilehash: e400669fd96518adead74a81fc332767c5f9b23b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669927"
 ---
-# <a name="track-dependencies-with-opencensus-python"></a>Afhankelijkheden bijhouden met opentellingen python
+# <a name="track-dependencies-with-opencensus-python"></a>Afhankelijkheden bijhouden met OpenCensus Python
 
-Een afhankelijkheid is een extern onderdeel dat wordt aangeroepen door uw toepassing. Afhankelijkheids gegevens worden verzameld met opentellingen python en de verschillende integraties. De gegevens worden vervolgens naar Application Insights onder Azure Monitor verzonden als `dependencies` telemetrie.
+Een afhankelijkheid is een externe component die door uw toepassing wordt aangeroepen. Afhankelijkheidsgegevens worden verzameld met OpenCensus Python en de verschillende integraties. De gegevens worden vervolgens verzonden naar `dependencies` Application Insights onder Azure Monitor als telemetrie.
 
-Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen PYTHON SDK](../../azure-monitor/app/opencensus-python.md).
+Ten eerste, instrument uw Python applicatie met de nieuwste [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md).
 
-## <a name="in-process-dependencies"></a>In-process afhankelijkheden
+## <a name="in-process-dependencies"></a>Afhankelijkheden in het proces
 
-Met opentellingen python SDK voor Azure Monitor kunt u ' in-process ' telemetrie (informatie en logica die in uw toepassing plaatsvinden) verzenden. In-process afhankelijkheden hebben het `type` veld als `INPROC` in Analytics.
+Met OpenCensus Python SDK voor Azure Monitor u 'in-process' afhankelijkheidstelemetrie verzenden (informatie en logica die binnen uw toepassing plaatsvindt). In-process afhankelijkheden hebben `type` het `INPROC` veld zoals in analytics.
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -33,11 +33,11 @@ with tracer.span(name='foo'): # <-- A dependency telemetry item will be sent for
     print('Hello, World!')
 ```
 
-## <a name="dependencies-with-requests-integration"></a>Afhankelijkheden met de integratie van ' aanvragen '
+## <a name="dependencies-with-requests-integration"></a>Afhankelijkheden met integratie met "aanvragen"
 
-Volg uw uitgaande aanvragen met de opentellings `requests`-integratie.
+Volg uw uitgaande verzoeken `requests` met de OpenCensus-integratie.
 
-Down load en installeer `opencensus-ext-requests` van [PyPI](https://pypi.org/project/opencensus-ext-requests/) en voeg deze toe aan de traceer integraties. Aanvragen die worden verzonden via de python- [aanvragen](https://pypi.org/project/requests/) bibliotheek, worden bijgehouden.
+Download en `opencensus-ext-requests` installeer van [PyPI](https://pypi.org/project/opencensus-ext-requests/) en voeg het toe aan de trace-integraties. Aanvragen die worden verzonden via de [Python-aanvragenbibliotheek,](https://pypi.org/project/requests/) worden bijgehouden.
 
 ```python
 import requests
@@ -54,11 +54,11 @@ with tracer.span(name='parent'):
     response = requests.get(url='https://www.wikipedia.org/wiki/Rabbit') # <-- this request will be tracked
 ```
 
-## <a name="dependencies-with-httplib-integration"></a>Afhankelijkheden met ' httplib-integratie
+## <a name="dependencies-with-httplib-integration"></a>Afhankelijkheden met "httplib" integratie
 
-Volg uw uitgaande aanvragen met opentellingen `httplib` integratie.
+Houd uw uitgaande aanvragen `httplib` bij met OpenCensus-integratie.
 
-Down load en installeer `opencensus-ext-httplib` van [PyPI](https://pypi.org/project/opencensus-ext-httplib/) en voeg deze toe aan de traceer integraties. Aanvragen die worden verzonden via [http. client](https://docs.python.org/3.7/library/http.client.html) voor Python3 of [httplib](https://docs.python.org/2/library/httplib.html) voor Python2 worden bijgehouden.
+Download en `opencensus-ext-httplib` installeer van [PyPI](https://pypi.org/project/opencensus-ext-httplib/) en voeg het toe aan de trace-integraties. Aanvragen die via [http.client](https://docs.python.org/3.7/library/http.client.html) voor Python3 of [httplib](https://docs.python.org/2/library/httplib.html) voor Python2 worden verzonden, worden bijgehouden.
 
 ```python
 import http.client as httplib
@@ -80,11 +80,11 @@ response = conn.getresponse()
 conn.close()
 ```
 
-## <a name="dependencies-with-django-integration"></a>Afhankelijkheden met ' Django-integratie
+## <a name="dependencies-with-django-integration"></a>Afhankelijkheden met "django" integratie
 
-Volg uw uitgaande Django-aanvragen met de opentellings `django`-integratie.
+Volg uw uitgaande Django-verzoeken `django` met de OpenCensus-integratie.
 
-Down load en installeer `opencensus-ext-django` van [PyPI](https://pypi.org/project/opencensus-ext-django/) en voeg de volgende regel toe aan de sectie `MIDDLEWARE` in het bestand Django `settings.py`.
+Download en `opencensus-ext-django` installeer van [PyPI](https://pypi.org/project/opencensus-ext-django/) en `MIDDLEWARE` voeg de `settings.py` volgende regel toe aan de sectie in het Django-bestand.
 
 ```python
 MIDDLEWARE = [
@@ -93,7 +93,7 @@ MIDDLEWARE = [
 ]
 ```
 
-Aanvullende configuratie kan worden gegeven, Lees [aanpassingen](https://github.com/census-instrumentation/opencensus-python#customization) voor een volledige referentie.
+Extra configuratie kan worden verstrekt, lees [aanpassingen](https://github.com/census-instrumentation/opencensus-python#customization) voor een volledige referentie.
 
 ```python
 OPENCENSUS = {
@@ -106,11 +106,11 @@ OPENCENSUS = {
 }
 ```
 
-## <a name="dependencies-with-mysql-integration"></a>Afhankelijkheden met MySQL-integratie
+## <a name="dependencies-with-mysql-integration"></a>Afhankelijkheden met "mysql" integratie
 
-Volg uw MYSQL-afhankelijkheden met de opentellings `mysql` integratie. Deze integratie ondersteunt de [mysql-connector](https://pypi.org/project/mysql-connector-python/) bibliotheek.
+Houd uw MYSQL-afhankelijkheden `mysql` bij met de OpenCensus-integratie. Deze integratie ondersteunt de [mysql-connector](https://pypi.org/project/mysql-connector-python/) bibliotheek.
 
-Down load en installeer `opencensus-ext-mysql` van [PyPI](https://pypi.org/project/opencensus-ext-mysql/) en voeg de volgende regels toe aan uw code.
+Download en `opencensus-ext-mysql` installeer van [PyPI](https://pypi.org/project/opencensus-ext-mysql/) en voeg de volgende regels toe aan uw code.
 
 ```python
 from opencensus.trace import config_integration
@@ -118,11 +118,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['mysql'])
 ```
 
-## <a name="dependencies-with-pymysql-integration"></a>Afhankelijkheden met ' pymysql-integratie
+## <a name="dependencies-with-pymysql-integration"></a>Afhankelijkheden met "pymysql" integratie
 
-Volg uw PyMySQL-afhankelijkheden met de opentellings `pymysql` integratie.
+Houd uw PyMySQL-afhankelijkheden `pymysql` bij met de OpenCensus-integratie.
 
-Down load en installeer `opencensus-ext-pymysql` van [PyPI](https://pypi.org/project/opencensus-ext-pymysql/) en voeg de volgende regels toe aan uw code.
+Download en `opencensus-ext-pymysql` installeer van [PyPI](https://pypi.org/project/opencensus-ext-pymysql/) en voeg de volgende regels toe aan uw code.
 
 ```python
 from opencensus.trace import config_integration
@@ -130,11 +130,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['pymysql'])
 ```
 
-## <a name="dependencies-with-postgresql-integration"></a>Afhankelijkheden met ' postgresql-integratie
+## <a name="dependencies-with-postgresql-integration"></a>Afhankelijkheden met "postgresql" integratie
 
-Volg uw PostgreSQL-afhankelijkheden met de opentellings `postgresql` integratie. Deze integratie biedt ondersteuning voor de [psycopg2](https://pypi.org/project/psycopg2/) -bibliotheek.
+Houd uw PostgreSQL-afhankelijkheden `postgresql` bij met de OpenCensus-integratie. Deze integratie ondersteunt de [psycopg2](https://pypi.org/project/psycopg2/) bibliotheek.
 
-Down load en installeer `opencensus-ext-postgresql` van [PyPI](https://pypi.org/project/opencensus-ext-postgresql/) en voeg de volgende regels toe aan uw code.
+Download en `opencensus-ext-postgresql` installeer van [PyPI](https://pypi.org/project/opencensus-ext-postgresql/) en voeg de volgende regels toe aan uw code.
 
 ```python
 from opencensus.trace import config_integration
@@ -142,11 +142,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['postgresql'])
 ```
 
-## <a name="dependencies-with-pymongo-integration"></a>Afhankelijkheden met ' pymongo-integratie
+## <a name="dependencies-with-pymongo-integration"></a>Afhankelijkheden met "pymongo" integratie
 
-Volg uw MongoDB-afhankelijkheden met de opentellings `pymongo` integratie. Deze integratie biedt ondersteuning voor de [pymongo](https://pypi.org/project/pymongo/) -bibliotheek.
+Houd uw MongoDB-afhankelijkheden `pymongo` bij met de OpenCensus-integratie. Deze integratie ondersteunt de [pymongo](https://pypi.org/project/pymongo/) bibliotheek.
 
-Down load en installeer `opencensus-ext-pymongo` van [PyPI](https://pypi.org/project/opencensus-ext-pymongo/) en voeg de volgende regels toe aan uw code.
+Download en `opencensus-ext-pymongo` installeer van [PyPI](https://pypi.org/project/opencensus-ext-pymongo/) en voeg de volgende regels toe aan uw code.
 
 ```python
 from opencensus.trace import config_integration
@@ -154,9 +154,9 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['pymongo'])
 ```
 
-### <a name="dependencies-with-sqlalchemy-integration"></a>Afhankelijkheden met ' sqlalchemy-integratie
+### <a name="dependencies-with-sqlalchemy-integration"></a>Afhankelijkheden met "sqlalchemie" integratie
 
-Houd uw afhankelijkheden bij met SQLAlchemy met opentellingen `sqlalchemy` integratie. Deze integratie houdt het gebruik van het [sqlalchemy](https://pypi.org/project/SQLAlchemy/) -pakket bij, ongeacht de onderliggende data base.
+Houd uw afhankelijkheden bij met SQLAlchemy met opencensus-integratie. `sqlalchemy` Deze integratie houdt het gebruik van het [sqlalchemy-pakket](https://pypi.org/project/SQLAlchemy/) bij, ongeacht de onderliggende database.
 
 ```python
 from opencensus.trace import config_integration
@@ -169,5 +169,5 @@ config_integration.trace_integrations(['sqlalchemy'])
 * [Toepassingskaart](../../azure-monitor/app/app-map.md)
 * [Beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Zoeken](../../azure-monitor/app/diagnostic-search.md)
-* [Logboek query (Analytics)](../../azure-monitor/log-query/log-query-overview.md)
-* [Transactie diagnostiek](../../azure-monitor/app/transaction-diagnostics.md)
+* [Query log (Analytics)](../../azure-monitor/log-query/log-query-overview.md)
+* [Diagnostische gegevens voor transacties](../../azure-monitor/app/transaction-diagnostics.md)

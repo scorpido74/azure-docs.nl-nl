@@ -8,19 +8,18 @@ ms.topic: include
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 5972f5745a2a01cbb7f23cc0523b2aef75e08a61
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7ecc36218df23d81c4646612b5474a1465f428eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673304"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282474"
 ---
-FedEx, UPS of DHL kan worden gebruikt voor het verzenden van het pakket naar Azure-datacenter. Als u gebruiken van een provider dan FedEx/DHL wilt, neem dan contact op met de Azure Data Box operationele team op `adbops@microsoft.com`
+FedEx, UPS of DHL kunnen worden gebruikt om het pakket naar Azure-datacenter te verzenden. Als u een andere provider dan FedEx/DHL wilt gebruiken, neemt u contact op met het Azure Data Box Operations-team op`adbops@microsoft.com`
 
-- Geef een geldige FedEx, UPS of DHL luchtvaartmaatschappij accountnummer dat Microsoft gebruikt om de schijven terug af te leveren. 
-    
-    - Een nummer FedEx, UPS of DHL is vereist voor het verzenden van de schijven van de Verenigde Staten en Europa-locaties. 
-    - Een nummer DHL verdient de voorkeur voor het verzenden van stations van Azië en Australië locaties. 
-    - Als u een accountnummer hebt, maakt u een [FedEx](https://www.fedex.com/us/oadr/) of [DHL](http://www.dhl.com/) doorberekend aan.
-- Wanneer uw pakketten worden verzonden, moet u de [servicevoorwaarden van Microsoft Azure](https://azure.microsoft.com/support/legal/services-terms/).
-- Goed uw schijven om te voorkomen van potentiële schade voorkomen en vertragingen in de verwerking van pakket.
+* Geef een geldig FedEx-, UPS- of DHL-provideraccountnummer op dat Microsoft zal gebruiken om de schijven terug te verzenden.
+  * Een FedEx-, UPS- of DHL-rekeningnummer is vereist voor het verzenden van schijven terug vanuit de VS en Europa.A FedEx, UPS, or DHL account number is required for shipping drives back from the U and Europe locations.
+    * Een DHL-rekeningnummer heeft de voorkeur voor het verzenden van schijven terug uit Azië en Australië locaties.
+    * Als u geen rekeningnummer hebt, maakt u een [FedEx-](https://www.fedex.com/us/oadr/) of [DHL-carrieraccount](http://www.dhl.com/) aan.
+* Wanneer u uw pakketten verzendt, moet u de [Microsoft Azure-servicevoorwaarden volgen.](https://azure.microsoft.com/support/legal/services-terms/)
+* Pak de uwe schijven goed in te pakken om mogelijke schade en vertragingen in de verwerking te voorkomen.

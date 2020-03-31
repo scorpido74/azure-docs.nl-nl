@@ -1,6 +1,6 @@
 ---
-title: Fouten opsporen in Azure Data Lake Analytics code lokaal
-description: Informatie over het gebruik van Azure Data Lake Tools voor Visual Studio fouten opsporen in U-SQL-taken op uw lokale werkstation.
+title: Azure Data Lake Analytics-code lokaal debuggen
+description: Meer informatie over het gebruik van Azure Data Lake Tools voor Visual Studio om U-SQL-taken op uw lokale werkstation te debuggen.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 0827311218202de447e5cf27356e00c4da020e94
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61472988"
 ---
-# <a name="debug-azure-data-lake-analytics-code-locally"></a>Fouten opsporen in Azure Data Lake Analytics code lokaal
+# <a name="debug-azure-data-lake-analytics-code-locally"></a>Azure Data Lake Analytics-code lokaal debuggen
 
-Net zoals u in de Azure Data Lake Analytics-service kunt, kunt u Azure Data Lake Tools voor Visual Studio voor het uitvoeren en fouten opsporen in Azure Data Lake Analytics-code op uw lokale werkstation.
+U Azure Data Lake Tools voor Visual Studio gebruiken om Azure Data Lake Analytics-code uit te voeren en te debuggen op uw lokale werkstation, net zoals u dat in de Azure Data Lake Analytics-service.
 
-Meer informatie over het [U-SQL-script uitvoeren op uw lokale computer](data-lake-analytics-data-lake-tools-local-run.md).
+Meer informatie over het [uitvoeren van U-SQL-script op uw lokale machine.](data-lake-analytics-data-lake-tools-local-run.md)
 
 ## <a name="debug-scripts-and-c-assemblies-locally"></a>Lokaal fouten opsporen in scripts en C#-assembly's
 
-U kunt fouten opsporen C#-assembly's zonder te verzenden en ze naar de Azure Data Lake Analytics-service te registreren. U kunt onderbrekingspunten instellen in zowel de code-behind-bestand en een waarnaar wordt verwezen, C#-project.
+U C#-samenstellingen debuggen zonder ze in te dienen en te registreren bij de Azure Data Lake Analytics-service. U breekpunten instellen in zowel het code-behind-bestand als in een C#-project waarnaar wordt verwezen.
 
-### <a name="debug-local-code-in-a-code-behind-file"></a>Fouten opsporen in lokale code in een code-behind-bestand
+### <a name="debug-local-code-in-a-code-behind-file"></a>Lokale code debuggen in een code-achterbestand
 
-1. Onderbrekingspunten instellen in de code-behind-bestand.
-2. Selecteer **F5** fouten opsporen in het script lokaal.
+1. Breekpunten instellen in het code-achterbestand.
+2. Selecteer **F5** om het script lokaal te debuggen.
 
 > [!NOTE]
-   > De volgende procedure werkt alleen in Visual Studio 2015. In oudere versies van Visual Studio, u moet wellicht handmatig toe te voegen de **PDB** bestanden.  
+   > De volgende procedure werkt alleen in Visual Studio 2015. In oudere Visual Studio-versies moet u mogelijk handmatig de **PDB-bestanden** toevoegen.  
    >
    >
 
-### <a name="debug-local-code-in-a-referenced-c-project"></a>Fouten opsporen in lokale code in een waarnaar wordt verwezen, C#-project
+### <a name="debug-local-code-in-a-referenced-c-project"></a>Lokale code debuggen in een C#-project waarnaar wordt verwezen
 
-1. Maak een C#-assemblyproject en bouw het voor het genereren van de uitvoer **DLL** bestand.
-2. Registreert de **DLL** bestand met behulp van een U-SQL-instructie:
+1. Maak een C#-assemblageproject en bouw het om het **uitvoer-DLL-bestand** te genereren.
+2. Registreer het **DLL-bestand** met een U-SQL-instructie:
 
         CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
         
 3. Stel onderbrekingspunten in in de C#-code.
-4. Selecteer **F5** fouten opsporen in het script door te verwijzen naar de C# **DLL** lokaal bestand.
+4. Selecteer **F5** om het script te debuggen door het C# **DLL-bestand** lokaal te verwijzen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor een voorbeeld van een complexere query [websitelogboeken analyseren met Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-- Taakdetails Zie [gebruik Job Browser en Job View voor Azure Data Lake Analytics-taken](data-lake-analytics-data-lake-tools-view-jobs.md).
-- Als u wilt de vertex execution view gebruiken, Zie [de Vertex Execution View gebruiken in Data Lake Tools voor Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
+- Zie [Websitelogboeken analyseren met Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)voor een voorbeeld van een complexere query.
+- Zie [Taakbrowser en taakweergave gebruiken voor Azure Data Lake Analytics-taken](data-lake-analytics-data-lake-tools-view-jobs.md)als u taakgegevens wilt weergeven.
+- Zie [De uitvoeringsweergave Vertex gebruiken in Data Lake Tools voor Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)als u de weergave vertex-uitvoering wilt gebruiken.

@@ -1,67 +1,67 @@
 ---
-title: Geth gebruiken om aan de Azure Block Chain-service te koppelen
-description: Koppelen aan een Geth-exemplaar in het Azure Block Chain Service-transactie knooppunt
+title: Geth gebruiken om te koppelen aan Azure Blockchain-service
+description: Koppelen aan een Geth-exemplaar op het transactieknooppunt van Azure Blockchain Service
 ms.date: 11/20/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 9da78eac1dc429bcc0ad52bb9cb2f1fb743a90d4
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74455829"
 ---
-# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Snelstartgids: Geth gebruiken om aan een Azure Block Chain Service-transactie knooppunt te koppelen
+# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Snelstart: Gebruik Geth om te koppelen aan een Azure Blockchain Service-transactieknooppunt
 
-In deze Quick Start gebruikt u de Geth-client om te koppelen aan een Geth-exemplaar in een Azure Block Chain Service Trans Action-knoop punt. Na de koppeling gebruikt u de Geth java script-console om een Web3 java script Dapp-API aan te roepen.
+In deze quickstart gebruikt u de Geth-client om een Geth-exemplaar op een Azure Blockchain Service-transactieknooppunt te koppelen. Eenmaal aangesloten, gebruikt u de Geth JavaScript-console om een web3 JavaScript Dapp API aan te roepen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
 * [Geth](https://github.com/ethereum/go-ethereum/wiki/geth) installeren
-* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp van de Azure Portal](create-member.md) of [Quick Start: een Azure Block Chain Service Block Chain-lid maken met behulp van Azure cli](create-member-cli.md)
+* Snelstart [voltooien: een blockchain-lid maken met behulp van de Azure-portal](create-member.md) of [Quickstart: een Azure Blockchain Service-blockchain-lid maken met Azure CLI](create-member-cli.md)
 
-## <a name="get-geth-connection-string"></a>Geth connection string ophalen
+## <a name="get-geth-connection-string"></a>Geth-verbindingstekenreeks oppakken
 
-U kunt de Geth-connection string voor een Azure Block Chain Service-transactie knooppunt ophalen in de Azure Portal.
+U de geth-verbindingstekenreeks voor een Azure Blockchain Service-transactieknooppunt in de Azure-portal krijgen.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Ga naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten** en de koppeling standaard transactie knooppunt.
+1. Ga naar uw Azure Blockchain Service-lid. Selecteer **Transactieknooppunten** en de standaardkoppeling transactieknooppunt.
 
-    ![Standaard transactie knooppunt selecteren](./media/connect-geth/transaction-nodes.png)
+    ![Standaardtransactieknooppunt selecteren](./media/connect-geth/transaction-nodes.png)
 
-1. Selecteer **verbindings reeksen**.
-1. Kopieer de connection string van **https (toegangs sleutel 1)** . U hebt de teken reeks nodig voor de volgende sectie.
+1. Selecteer **Verbindingstekenreeksen**.
+1. Kopieer de verbindingstekenreeks vanuit **HTTPS (Access-toets 1)**. Je hebt het touwtje nodig voor de volgende sectie.
 
     ![Verbindingsreeks](./media/connect-geth/connection-string.png)
 
 ## <a name="connect-to-geth"></a>Verbinding maken met Geth
 
-1. Open een opdrachtprompt of de shell.
-1. Gebruik de subopdracht Geth attach om aan het actieve Geth-exemplaar in uw transactie knooppunt te koppelen. Plak de connection string als een argument voor de subopdracht attach. Bijvoorbeeld:
+1. Open een opdrachtprompt of shell.
+1. Gebruik de subcommand Geth attachattach om te koppelen aan de runh-instantie op uw transactieknooppunt. Plak de verbindingstekenreeks als argument voor de subopdracht Koppelen. Bijvoorbeeld:
 
     ``` bash
     geth attach <connection string>
     ```
 
-1. Wanneer u bent verbonden met de Ethereum-console van het transactie knooppunt, kunt u de Web3 java script Dapp API of de beheer-API aanroepen.
+1. Eenmaal verbonden met de Ethereum-console van het transactieknooppunt, u de web3 JavaScript Dapp API of de admin-API aanroepen.
 
-    Gebruik bijvoorbeeld de volgende API om de chainId te vinden.
+    Gebruik bijvoorbeeld de volgende API om de chainId te achterhalen.
 
     ``` bash
     admin.nodeInfo.protocols.istanbul.config.chainId
     ```
 
-    In dit voor beeld is de chainId 661.
+    In dit voorbeeld is de chainId 661.
 
-    ![Optie voor Azure Block Chain-Service](./media/connect-geth/geth-attach.png)
+    ![Azure Blockchain-service, optie](./media/connect-geth/geth-attach.png)
 
-1. Als u de verbinding met de console wilt verbreken, typt u `exit`.
+1. Als u de verbinding `exit`met de console wilt verbreken, typt u .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de Geth-client gebruikt om een Geth-exemplaar te koppelen aan een Azure Block Chain Service-transactie knooppunt. Probeer de volgende zelf studie voor het gebruik van Azure Block Chain Development Kit voor Ethereum voor het maken, bouwen, implementeren en uitvoeren van een slimme contract functie via een trans actie.
+In deze quickstart hebt u de Geth-client gebruikt om een Geth-exemplaar op een Azure Blockchain Service-transactieknooppunt te koppelen. Probeer de volgende zelfstudie om Azure Blockchain Development Kit voor Ethereum te gebruiken om een slimme contractfunctie te maken, te bouwen, implementeren en uitvoeren via een transactie.
 
 > [!div class="nextstepaction"]
-> [Slimme contracten maken, bouwen en implementeren in azure Block Chain Service](send-transaction.md)
+> [Slimme contracten maken, bouwen en implementeren op Azure Blockchain Service](send-transaction.md)

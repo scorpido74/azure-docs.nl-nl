@@ -1,7 +1,7 @@
 ---
-title: 'Regressie van beslissings bos: module verwijzing'
+title: 'Decision Forest Regression: Module Referentie'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de Perceptron-module met twee klassen in Azure Machine Learning om een machine learning model te maken op basis van het gemiddelde Perceptron-algoritme.
+description: Meer informatie over het gebruik van de tweeklassengemiddelde Perceptron-module in Azure Machine Learning om een machine learning-model te maken op basis van het gemiddelde perceptronalgoritme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,53 +10,53 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 73e23dd7d350ea63e9fd8b933a525a9d8aad9e3e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920770"
 ---
-# <a name="two-class-averaged-perceptron-module"></a>Gemiddelde Perceptron-module met twee klassen
+# <a name="two-class-averaged-perceptron-module"></a>Twee-klasse gemiddelde Perceptron module
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module beschreven in Azure Machine Learning designer (preview).
 
-Gebruik deze module om een machine learning model te maken op basis van het gemiddelde Perceptron-algoritme.  
+Gebruik deze module om een machine learning-model te maken op basis van het gemiddelde perceptronalgoritme.  
   
-Dit classificatie algoritme is een leer methode met toezicht en vereist een *gecodeerde gegevensset*, die een kolom Label bevat. U kunt het model trainen door het model en de gecodeerde gegevensset op te geven als invoer voor het [trainen van modellen](./train-model.md). Het getrainde model kan vervolgens worden gebruikt om waarden te voors pellen voor de nieuwe invoer voorbeelden.  
+Dit classificatiealgoritme is een begeleide leermethode en vereist een *gelabelde gegevensset,* die een labelkolom bevat. U het model trainen door het model en de gelabelde gegevensset op te geven als input voor [Train Model.](./train-model.md) Het getrainde model kan vervolgens worden gebruikt om waarden voor de nieuwe invoervoorbeelden te voorspellen.  
 
-### <a name="about-averaged-perceptron-models"></a>Over gemiddelde Perceptron-modellen
+### <a name="about-averaged-perceptron-models"></a>Over gemiddelde perceptronmodellen
 
-De *methode gemiddeld Perceptron* is een vroege en eenvoudige versie van een Neural-netwerk. In deze benadering worden de invoer ingedeeld in verschillende mogelijke uitvoer op basis van een lineaire functie en vervolgens gecombineerd met een set gewichten die zijn afgeleid van de functie Vector, dus de naam ' Perceptron '.
+De *gemiddelde perceptronmethode* is een vroege en eenvoudige versie van een neuraal netwerk. In deze benadering worden ingangen ingedeeld in verschillende mogelijke uitgangen op basis van een lineaire functie en vervolgens gecombineerd met een set gewichten die zijn afgeleid van de functievector, vandaar de naam 'perceptron'.
 
-De eenvoudiger Perceptron modellen zijn geschikt voor het leren van lineaire opvallende patronen, terwijl Neural netwerken (met name Neural Networks) een complexere klassen grenzen kunnen vormen. Perceptrons zijn echter sneller en omdat de cases serieel worden verwerkt, kan Perceptrons worden gebruikt met doorlopende training.
+De eenvoudigere perceptronmodellen zijn geschikt voor het leren van lineair scheidbare patronen, terwijl neurale netwerken (vooral diepe neurale netwerken) complexere klassengrenzen kunnen modelleren. Echter, perceptrons zijn sneller, en omdat ze cases serieel verwerken, kunnen perceptrons worden gebruikt met continue training.
 
-## <a name="how-to-configure-two-class-averaged-perceptron"></a>Gemiddelde Perceptron configureren voor twee klassen
+## <a name="how-to-configure-two-class-averaged-perceptron"></a>Perceptron met twee klassen gemiddeld configureren
 
-1.  Voeg de **gemiddelde Perceptron-module met twee klassen** toe aan de pijp lijn.  
+1.  Voeg de **module Averaged Perceptron met twee klassen** toe aan uw pijplijn.  
 
-2.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
+2.  Geef op hoe u het model wilt trainen door de optie **Trainer-modus maken in** te stellen.  
   
-    -   **Eén para meter**: als u weet hoe u het model wilt configureren, geeft u een specifieke set waarden als argumenten op.
+    -   **Eén parameter:** Als u weet hoe u het model wilt configureren, geeft u een specifieke set waarden op als argumenten.
 
-    -   **Parameter bereik**: Selecteer deze optie als u niet zeker weet wat de beste para meters zijn en u een parameter sweep wilt uitvoeren. Selecteer een bereik met waarden om over te sporen en het [model Hyper parameters](tune-model-hyperparameters.md) wordt herhaald op alle mogelijke combi Naties van de instellingen die u hebt verstrekt om de Hyper parameters te bepalen die de optimale resultaten opleveren.  
+    -   **Parameterbereik:** Selecteer deze optie als u niet zeker bent van de beste parameters en een parametersweep wilt uitvoeren. Selecteer een reeks waarden om over te herhalen en de [Tune Model Hyperparameters](tune-model-hyperparameters.md) herhalen over alle mogelijke combinaties van de instellingen die u hebt opgegeven om de hyperparameters te bepalen die de optimale resultaten opleveren.  
   
-3.  Geef voor het **leer tempo**een waarde op voor het *leer tempo*. De waarden voor het leer tempo bepalen de grootte van de stap die wordt gebruikt in stochastische verloop Daal telkens wanneer het model wordt getest en gecorrigeerd.
+3.  Geef **voor leersnelheid**een waarde op voor het *leerpercentage*. De leersnelheidwaarden bepalen de grootte van de stap die wordt gebruikt bij een stochastische gradiëntdaling telkens wanneer het model wordt getest en gecorrigeerd.
   
-     Door het aantal kleiner te maken, test u het model vaker, met het risico dat u mogelijk vastloopt in een lokaal vaste waarde. Door de stap groter te maken, kunt u sneller convergeren, tegen het risico van een overschrijding van de echte minima.
+     Door de snelheid kleiner te maken, test u het model vaker, met het risico dat u vast komt te zitten in een lokaal plateau. Door de stap groter te maken, u sneller convergeren, met het risico dat u de echte minima overtreedt.
   
-4.  Voor het **maximum aantal herhalingen**typt u het aantal keren dat het algoritme de trainings gegevens moet onderzoeken.  
+4.  Typ **voor maximaal aantal iteraties**het aantal keren dat het algoritme de trainingsgegevens moet onderzoeken.  
   
-     Als u een vroege regel matig stopt, levert dat betere generalisatie. Het verhogen van het aantal iteraties verbetert de fitting, tegen het risico van overmontage.
+     Vroeg stoppen zorgt vaak voor een betere generalisatie. Het verhogen van het aantal iteraties verbetert de montage, met het risico van overfitting.
   
-5.  Voor **wille keurig getal zaad**typt u optioneel een geheel getal dat moet worden gebruikt als seed. Het gebruik van een Seed wordt aanbevolen als u de reproduceer baarheid van de pijp lijn in uitvoeringen wilt garanderen.  
+5.  Typ **bij Willekeurig getalzaad**eventueel een gehele waarde die u als zaad wilt gebruiken. Het gebruik van een zaad wordt aanbevolen als u wilt reproduceerbaarheid van de pijplijn over loopt te waarborgen.  
   
-1.  Verbind een trainings gegevensset en een van de trainings modules:
+1.  Sluit een trainingsgegevensset en een van de trainingsmodules aan:
   
-    -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](train-model.md) .
+    -   Als u **De trainermodus maken** instelt op Eén **parameter,** gebruikt u de module [Treinmodel.](train-model.md)
 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+Bekijk de [set modules die beschikbaar zijn](module-reference.md) voor Azure Machine Learning. 

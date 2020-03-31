@@ -1,6 +1,6 @@
 ---
-title: Beveiligings controles voor Azure Windows Virtual Machines
-description: Een controle lijst met beveiligings controles voor het evalueren van Azure Windows Virtual Machines
+title: Beveiligingsbesturingselementen voor Azure Windows Virtual Machines
+description: Een checklist met beveiligingscontroles voor de evaluatie van Azure Windows Virtual Machines
 services: virtual-machines
 ms.service: virtual-machines
 documentationcenter: ''
@@ -10,60 +10,60 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: f105eac0f6f21ea3358340a4e2aaec7d1f1a95ad
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190547"
 ---
-# <a name="security-controls-for-windows-virtual-machines"></a>Beveiligings controles voor Windows Virtual Machines
+# <a name="security-controls-for-windows-virtual-machines"></a>Beveiligingsbesturingselementen voor virtuele Windows-machines
 
-In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zijn ingebouwd in Windows Virtual Machines.
+In dit artikel worden de beveiligingsbesturingselementen die zijn ingebouwd in Virtuele Windows-machines, document.
 
 [!INCLUDE [Security controls header](../../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Netwerk
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen |
+| Beveiligingscontrole | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Ondersteuning voor service-eind punten| Ja | |
+| Ondersteuning voor serviceeindpunten| Ja | |
 | Ondersteuning voor VNet-injectie| Ja | |
-| Ondersteuning voor netwerk isolatie en firewalling| Ja |  |
-| Ondersteuning voor geforceerde tunneling| Ja | Zie [geforceerde tunneling configureren met het Azure Resource Manager-implementatie model](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
+| Ondersteuning voor Netwerkisolatie en Firewalling| Ja |  |
+| Ondersteuning voor gedwongen tunneling| Ja | Zie [Geforceerde tunneling configureren met behulp van het Azure Resource Manager-implementatiemodel](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
 
-## <a name="monitoring--logging"></a>& Logboek registratie controleren
+## <a name="monitoring--logging"></a>Controle & logboekregistratie
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen|
+| Beveiligingscontrole | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | [Een virtuele Windows-machine bewaken en bijwerken in azure](tutorial-monitoring.md). |
-| Logboek registratie en controle op het vlak van controle en beheer| Ja |  |
-| Logboek registratie en controle van het gegevens vlak | Nee |  |
+| Azure-bewakingsondersteuning (logboekanalyses, app-inzichten, enz.)| Ja | [Een virtuele Windows-machine in Azure bewaken en bijwerken.](tutorial-monitoring.md) |
+| Logboekregistratie en audit van het controle- en beheervlak| Ja |  |
+| Logboekregistratie en -audit van gegevensvliegtuigen | Nee |  |
 
 ## <a name="identity"></a>Identiteit
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen|
+| Beveiligingscontrole | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Verificatie| Ja |  |
+| Authentication| Ja |  |
 | Autorisatie| Ja |  |
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen |
+| Beveiligingscontrole | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Zie [virtuele schijven op een Windows-VM versleutelen](/azure/virtual-machines/windows/encrypt-disks). |
-| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Azure Virtual Machines ondersteunt [ExpressRoute](/azure/expressroute) -en VNet-versleuteling. Zie [in-transit versleuteling in vm's](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
-| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | Door de klant beheerde sleutels is een ondersteund Azure-versleutelings scenario. Zie [Azure Encryption Overview](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)(Engelstalig).|
-| Versleuteling op kolom niveau (Azure Data Services)| N.v.t. | |
-| Versleutelde API-aanroepen| Ja | Via HTTPS en TLS. |
+| Server-side encryptie in rust: door Microsoft beheerde sleutels | Ja | Zie [Virtuele schijven versleutelen op een Windows-vm](/azure/virtual-machines/windows/encrypt-disks). |
+| Versleuteling tijdens het transport (zoals ExpressRoute-versleuteling, vnet-versleuteling en VNet-VNet-versleuteling)| Ja | Azure Virtual Machines ondersteunt [ExpressRoute-](/azure/expressroute) en VNet-versleuteling. Zie [Versleuteling in transit in VM's](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
+| Server-side encryptie in rust: door de klant beheerde sleutels (BYOK) | Ja | Door de klant beheerde sleutels is een ondersteund Azure-versleutelingsscenario; zie [overzicht van Azure-versleuteling](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
+| Versleuteling op kolomniveau (Azure Data Services)| N.v.t. | |
+| API-aanroepen versleuteld| Ja | Via HTTPS en TLS. |
 
 
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 
-| Beveiligings beheer | Ja/Nee | Opmerkingen|
+| Beveiligingscontrole | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Ondersteuning voor configuratie beheer (versie van configuratie, enz.)| Ja |  | 
+| Ondersteuning voor configuratiebeheer (versiebeheer van configuratie, enz.)| Ja |  | 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ingebouwde beveiligings controles in Azure-Services](../../security/fundamentals/security-controls.md).
+- Meer informatie over de [ingebouwde beveiligingsbesturingselementen voor Azure-services](../../security/fundamentals/security-controls.md).

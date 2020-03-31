@@ -1,6 +1,6 @@
 ---
-title: MapReduce-en SSH-verbinding met Apache Hadoop-Azure HDInsight
-description: Meer informatie over het gebruik van SSH voor het uitvoeren van MapReduce-taken met Apache Hadoop op HDInsight.
+title: MapReduce en SSH-verbinding met Apache Hadoop - Azure HDInsight
+description: Meer informatie over het gebruik van SSH om MapReduce-taken uit te voeren met Apache Hadoop op HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,45 +9,45 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/10/2020
 ms.openlocfilehash: 543bc29adc85bd767de9479607d067fadf7b0078
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934705"
 ---
-# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>MapReduce gebruiken met Apache Hadoop op HDInsight met SSH
+# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>MapGebruikenReduce met Apache Hadoop op HDInsight met SSH
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Meer informatie over het verzenden van MapReduce-taken van een SSH-verbinding (Secure Shell) naar HDInsight.
+Meer informatie over het indienen van MapReduce-taken vanuit een Secure Shell-verbinding (SSH) naar HDInsight.
 
 > [!NOTE]
-> Zie [op Linux gebaseerde hdinsight-tips](../hdinsight-hadoop-linux-information.md)als u al bekend bent met het gebruik van Apache Hadoop servers die zijn gebaseerd op Linux, maar geen ervaring hebt met hdinsight.
+> Als u al bekend bent met het gebruik van Linux-gebaseerde Apache Hadoop servers, maar je bent nieuw bij HDInsight, zie [Linux-gebaseerde HDInsight tips](../hdinsight-hadoop-linux-information.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
+Een Apache Hadoop cluster op HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="use-hadoop-commands"></a>Hadoop-opdrachten gebruiken
 
-1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik [de ssh-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer de opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Nadat u verbinding hebt gemaakt met het HDInsight-cluster, gebruikt u de volgende opdracht om een MapReduce-taak te starten:
+1. Nadat u bent verbonden met het HDInsight-cluster, gebruikt u de volgende opdracht om een taak MapReduce te starten:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    Met deze opdracht wordt de `wordcount`-klasse gestart, die deel uitmaakt van het `hadoop-mapreduce-examples.jar` bestand. Het `/example/data/gutenberg/davinci.txt` document als invoer wordt gebruikt en de uitvoer wordt opgeslagen op `/example/data/WordCountOutput`.
+    Met deze `wordcount` opdracht wordt de klasse `hadoop-mapreduce-examples.jar` gestart, die in het bestand staat. Het gebruikt `/example/data/gutenberg/davinci.txt` het document als invoer `/example/data/WordCountOutput`en de uitvoer wordt opgeslagen bij .
 
     > [!NOTE]
-    > Zie [MapReduce gebruiken in Apache Hadoop op HDInsight](hdinsight-use-mapreduce.md)voor meer informatie over deze MapReduce-taak en de voorbeeld gegevens.
+    > Zie [MapReduce gebruiken in Apache Hadoop op HDInsight](hdinsight-use-mapreduce.md)voor meer informatie over deze mapReduce-taak en de voorbeeldgegevens.
 
-    De taak verzendt details tijdens het proces en retourneert informatie die lijkt op de volgende tekst wanneer de taak is voltooid:
+    De taak zendt details uit terwijl deze worden verwerkt en retourneert informatie die vergelijkbaar is met de volgende tekst wanneer de taak is voltooid:
 
     ```output
     File Input Format Counters
@@ -56,24 +56,24 @@ Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met be
     Bytes Written=337623
     ```
 
-1. Wanneer de taak is voltooid, gebruikt u de volgende opdracht om de uitvoer bestanden weer te geven:
+1. Wanneer de taak is voltooid, gebruikt u de volgende opdracht om de uitvoerbestanden weer te geven:
 
     ```bash
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    Met deze opdracht worden twee bestanden `_SUCCESS` en `part-r-00000`weer gegeven. Het `part-r-00000` bestand bevat de uitvoer voor deze taak.
+    Met deze opdracht `_SUCCESS` worden `part-r-00000`twee bestanden weergegeven en . Het `part-r-00000` bestand bevat de uitvoer voor deze taak.
 
     > [!NOTE]  
-    > Sommige MapReduce-taken kunnen de resultaten splitsen over meerdere **deel-r-# # # #** -bestanden. Als dit het geval is, gebruikt u het achtervoegsel # # # # # om de volg orde van de bestanden aan te geven.
+    > Sommige mapReduce-taken kunnen de resultaten splitsen over meerdere **deel-r-#####--bestanden.** Gebruik dan het achtervoegsel ##### om de volgorde van de bestanden aan te geven.
 
-1. Als u de uitvoer wilt weer geven, gebruikt u de volgende opdracht:
+1. Als u de uitvoer wilt weergeven, gebruikt u de volgende opdracht:
 
     ```bash
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Met deze opdracht wordt een lijst weer gegeven met de woorden die zijn opgenomen in het **wasbs://example/data/Gutenberg/DaVinci.txt** -bestand en het aantal keer dat elk woord is opgetreden. De volgende tekst is een voor beeld van de gegevens die in het bestand zijn opgenomen:
+    Met deze opdracht wordt een lijst weergegeven met de woorden die zich in het **wasbs://example/data/gutenberg/davinci.txt-bestand** bevinden en het aantal keren dat elk woord is opgetreden. De volgende tekst is een voorbeeld van de gegevens in het bestand:
 
     ```output
     wreathed        3
@@ -87,7 +87,7 @@ Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met be
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zoals u ziet, bieden Hadoop-opdrachten een eenvoudige manier om MapReduce-taken uit te voeren in een HDInsight-cluster en vervolgens de taak uitvoer weer te geven. Voor informatie over andere manieren om met Hadoop in HDInsight te werken:
+Zoals u zien, bieden Hadoop-opdrachten een eenvoudige manier om MapReduce-taken uit te voeren in een HDInsight-cluster en vervolgens de taakuitvoer weer te geven. Voor informatie over andere manieren waarop u met Hadoop werken aan HDInsight:
 
-* [MapReduce gebruiken in HDInsight Hadoop](hdinsight-use-mapreduce.md)
-* [Apache Hive gebruiken met Apache Hadoop op HDInsight](hdinsight-use-hive.md)
+* [MapgebruikenReduce op HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [Gebruik Apache Hive met Apache Hadoop op HDInsight](hdinsight-use-hive.md)

@@ -1,7 +1,7 @@
 ---
-title: Een web-API configureren die web-Api's aanroept | Azure
+title: Een web-API configureren die web-API's aanroept | Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het bouwen van een web-API die web-Api's aanroept (de code configuratie van de app)
+description: Meer informatie over het maken van een web-API die web-API's aanroept (de codeconfiguratie van de app)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,23 +16,23 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 82b5e1d9753fbb65fd81f24b06016d302457144e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76834090"
 ---
-# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Een web-API die web-Api's aanroept: code configuratie
+# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Een web-API die web-API's aanroept: codeconfiguratie
 
-Nadat u uw web-API hebt geregistreerd, kunt u de code voor de toepassing configureren.
+Nadat u uw web-API hebt geregistreerd, u de code voor de toepassing configureren.
 
-De code die u gebruikt om uw web-API te configureren, zodat downstream Web-Api's worden aangeroepen boven op de code die wordt gebruikt om een web-API te beveiligen. Zie [Protected Web API: app Configuration](scenario-protected-web-api-app-configuration.md)(Engelstalig) voor meer informatie.
+De code die u gebruikt om uw web-API zo te configureren dat deze downstream web-API's aanroept, bouwt bovenop de code die wordt gebruikt om een web-API te beschermen. Zie [Beveiligde web-API: App-configuratie voor](scenario-protected-web-api-app-configuration.md)meer informatie.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>Code geabonneerd op OnTokenValidated
 
-Boven op de code configuratie voor beveiligde web-Api's moet u zich abonneren op de validatie van het Bearer-token dat u ontvangt wanneer uw API wordt aangeroepen:
+Naast de codeconfiguratie voor beveiligde web-API's, moet u zich abonneren op de validatie van het token aan toonder dat u ontvangt wanneer uw API wordt aangeroepen:
 
 ```csharp
 /// <summary>
@@ -67,18 +67,18 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 }
 ```
 
-## <a name="on-behalf-of-flow"></a>Namens-stroom
+## <a name="on-behalf-of-flow"></a>Namens de stroom
 
-De methode AddAccountToCacheFromJwt () moet:
+De methode AddAccountToCacheFromJwt() moet:
 
-- Exemplaar een vertrouwelijke client toepassing van micro soft Authentication Library (MSAL).
-- Roep de `AcquireTokenOnBehalf` methode aan. Deze aanroep is een uitwisseling van het Bearer-token dat is verkregen door de client voor de Web-API op basis van een Bearer-token voor dezelfde gebruiker, maar heeft de API-aanroep een downstream API.
+- Een vertrouwelijke clienttoepassing van de Microsoft Authentication Library (MSAL) instantiëren.
+- Roep `AcquireTokenOnBehalf` de methode. Deze oproep wisselt het token aan toonder dat door de client voor de web-API is overgenomen, tegen een token aan toonder voor dezelfde gebruiker, maar het heeft de API-aanroep een downstream-API.
 
-### <a name="instantiate-a-confidential-client-application"></a>Een vertrouwelijke client toepassing instantiëren
+### <a name="instantiate-a-confidential-client-application"></a>Instantiate een vertrouwelijke client applicatie
 
-Deze stroom is alleen beschikbaar in de vertrouwelijke client stroom, zodat de beveiligde web-API client referenties (client Secret of Certificate) aan de [klasse ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) verstrekt via de methode `WithClientSecret` of `WithCertificate`.
+Deze stroom is alleen beschikbaar in de vertrouwelijke clientstroom, zodat de beveiligde web-API clientreferenties (clientgeheim `WithClientSecret` of `WithCertificate` certificaat) via de klasse of methode biedt aan de [klasse ConfidentialClientApplicationBuilder.](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)
 
-![Lijst met IConfidentialClientApplication-methoden](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
+![Lijst met iConfidentialClientApplication-methoden](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
 ```csharp
 IConfidentialClientApplication app;
@@ -96,20 +96,20 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 #endif
 ```
 
-Ten slotte, in plaats van de identiteit te bewijzen via een client geheim of een certificaat, kunnen vertrouwelijke client toepassingen hun identiteit bewijzen door gebruik te maken van client verklaringen.
-Zie voor meer informatie over dit geavanceerde scenario [vertrouwelijke client verklaringen](msal-net-client-assertions.md).
+Ten slotte, in plaats van het bewijzen van hun identiteit via een klant geheim of een certificaat, vertrouwelijke client toepassingen kunnen hun identiteit te bewijzen met behulp van client beweringen.
+Zie [Vertrouwelijke clientbeweringen voor](msal-net-client-assertions.md)meer informatie over dit geavanceerde scenario.
 
-### <a name="how-to-call-on-behalf-of"></a>Namens aanroepen
+### <a name="how-to-call-on-behalf-of"></a>Hoe te bellen Op-Behalf-Of
 
-U maakt de aanroepen van de OBO-aanroep door de [AcquireTokenOnBehalf-methode](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) aan te roepen op de `IConfidentialClientApplication`-interface.
+U doet de On-Behalf-Of (OBO) aanroep door de `IConfidentialClientApplication` [AcquireTokenOnBehalf-methode](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) op de interface aan te roepen.
 
-De klasse `UserAssertion` is gebaseerd op het Bearer-token dat door de Web-API van de eigen clients wordt ontvangen. Er zijn [twee constructors](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet):
-* Een JSON Web Token (JWT) Bearer-token
-* Een voor elk soort gebruikers Assertie, een ander soort beveiligings token, waarvan het type wordt opgegeven in een extra para meter met de naam `assertionType`
+De `UserAssertion` klasse is opgebouwd uit het token aan toonder dat door de web-API van zijn eigen clients wordt ontvangen. Er zijn [twee constructeurs:](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)
+* Een die een JSON Web Token (JWT) toonder token neemt
+* Een die elke vorm van bewering van de gebruiker, een ander soort beveiligingstoken, waarvan het type wordt vervolgens opgegeven in een extra parameter met de naam`assertionType`
 
-![UserAssertion-eigenschappen en-methoden](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
+![Eigenschappen en methoden voor UserAssertion](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-In de praktijk wordt de OBO-stroom vaak gebruikt voor het verkrijgen van een token voor een downstream API en deze op te slaan in de cache van de MSAL.NET-gebruikers token. U doet dit zodat andere onderdelen van de Web-API later kunnen worden aangeroepen op de [onderdrukkingen](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) van ``AcquireTokenOnSilent`` om de downstream-api's aan te roepen. Deze aanroep heeft gevolgen voor het vernieuwen van de tokens, indien nodig.
+In de praktijk wordt de OBO-stroom vaak gebruikt om een token voor een downstream-API te verkrijgen en op te slaan in de MSAL.NET user token cache. U doet dit zodat andere delen van de web-API ``AcquireTokenOnSilent`` later een beroep kunnen doen op de [overschrijvingen](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) om de downstream API's te bellen. Deze oproep heeft het effect van het vernieuwen van de tokens, indien nodig.
 
 ```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -144,11 +144,11 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-De stroom namens-of (OBO) wordt gebruikt om een token op te halen voor het aanroepen van de stroomafwaartse Web-API. In deze stroom ontvangt uw web-API een Bearer-token met door de gebruiker gedelegeerde machtigingen van de client toepassing. vervolgens wordt dit token door gegeven aan een ander toegangs token om de stroomafwaartse Web-API aan te roepen.
+De OBO-stroom (Namens-rekening) wordt gebruikt om een token te verkrijgen om de downstream web-API aan te roepen. In deze stroom ontvangt uw web-API een token aan toonder met door de gebruiker gedelegeerde machtigingen van de clienttoepassing en wisselt dit token vervolgens om voor een ander toegangstoken om de downstream web-API aan te roepen.
 
-De onderstaande code maakt gebruik van de `SecurityContextHolder` van Lente Security Framework in de Web-API om het gevalideerde Bearer-token op te halen. Vervolgens wordt de MSAL Java-bibliotheek gebruikt voor het verkrijgen van een token voor de downstream API met behulp van de `acquireToken`-aanroep met `OnBehalfOfParameters`. MSAL slaat het token op, zodat volgende aanroepen naar de API `acquireTokenSilently` kunnen gebruiken om het token in de cache op te halen.
+De onderstaande code maakt `SecurityContextHolder` gebruik van Spring Security framework's in de web-API om het gevalideerde token aan toonder te krijgen. Vervolgens gebruikt het de MSAL Java-bibliotheek om `acquireToken` een `OnBehalfOfParameters`token voor downstream-API te verkrijgen met behulp van de aanroep met . MSAL caches het token, zodat latere `acquireTokenSilently` oproepen naar de API kunnen gebruiken om de cache token te krijgen.
 
 ```Java
 @Component
@@ -213,21 +213,21 @@ class MsalAuthHelper {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-De stroom namens-of (OBO) wordt gebruikt om een token op te halen voor het aanroepen van de stroomafwaartse Web-API. In deze stroom ontvangt uw web-API een Bearer-token met door de gebruiker gedelegeerde machtigingen van de client toepassing. vervolgens wordt dit token door gegeven aan een ander toegangs token om de stroomafwaartse Web-API aan te roepen.
+De OBO-stroom (Namens-rekening) wordt gebruikt om een token te verkrijgen om de downstream web-API aan te roepen. In deze stroom ontvangt uw web-API een token aan toonder met door de gebruiker gedelegeerde machtigingen van de clienttoepassing en wisselt dit token vervolgens om voor een ander toegangstoken om de downstream web-API aan te roepen.
 
-Een python-Web-API moet een middleware gebruiken om het Bearer-token te valideren dat van de client is ontvangen. De Web-API kan vervolgens het toegangs token voor downstream API verkrijgen met behulp van de MSAL python-bibliotheek door de [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) methode aan te roepen. Een voor beeld van het demonstreren van deze stroom met MSAL python is nog niet beschikbaar.
+Een Python-web-API moet een aantal middleware gebruiken om het token aan toonder dat van de client is ontvangen, te valideren. De web-API kan vervolgens het toegangstoken voor downstream-API [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) verkrijgen met behulp van MSAL Python-bibliotheek door de methode aan te roepen. Een voorbeeld dat deze stroom met MSAL Python aantoont, is nog niet beschikbaar.
 
 ---
 
-U kunt ook een voor beeld van een OBO-stroom implementatie bekijken in [node. js en Azure functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
+U ook een voorbeeld zien van de implementatie van de OBO-stroom in [Node.js en Azure-functies.](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)
 
 ## <a name="protocol"></a>Protocol
 
-Zie voor meer informatie over het OBO-protocol [micro soft Identity platform en OAuth 2,0-of-flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
+Zie Microsoft Identity Platform en [OAuth 2.0 On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)voor meer informatie over het OBO-protocol.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-API die web-Api's aanroept: een Token ophalen voor de app](scenario-web-api-call-api-acquire-token.md)
+> [Een web-API die web-API's aanroept: een token voor de app aanschaffen](scenario-web-api-call-api-acquire-token.md)

@@ -1,6 +1,6 @@
 ---
 title: Een virtuele machine maken in DevTest Labs met Azure PowerShell
-description: Meer informatie over het gebruik van Azure DevTest Labs voor het maken en beheren van virtuele machines met Azure PowerShell.
+description: Meer informatie over het gebruik van Azure DevTest Labs om virtuele machines te maken en te beheren met Azure PowerShell.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,23 +14,23 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 13014c39641203bddadf858c34cff67462b3a4b3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76167113"
 ---
-# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Een virtuele machine maken met DevTest Labs met behulp van Azure PowerShell
-In dit artikel wordt beschreven hoe u een virtuele machine in Azure DevTest Labs maakt met behulp van Azure PowerShell. U kunt Power shell-scripts gebruiken voor het automatiseren van het maken van virtuele machines in een lab in Azure DevTest Labs. 
+# <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Een virtuele machine maken met DevTest Labs met Azure PowerShell
+In dit artikel ziet u hoe u een virtuele machine maakt in Azure DevTest Labs met Azure PowerShell. U PowerShell-scripts gebruiken om het maken van virtuele machines in een lab in Azure DevTest Labs te automatiseren. 
 
 ## <a name="prerequisites"></a>Vereisten
 Voordat u begint:
 
-- [Een lab maken](devtest-lab-create-lab.md) als u geen bestaand Lab wilt gebruiken om het script of de opdrachten in dit artikel te testen. 
-- [Installeer Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0) of gebruik de Azure Cloud shell die is geïntegreerd in de Azure Portal. 
+- [Maak een lab](devtest-lab-create-lab.md) als u geen bestaand lab wilt gebruiken om het script of de opdrachten in dit artikel te testen. 
+- [Installeer Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0) of gebruik Azure Cloud Shell die is geïntegreerd in de Azure-portal. 
 
 ## <a name="powershell-script"></a>PowerShell-script
-In het voorbeeld script in deze sectie wordt de cmdlet [invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) gebruikt.  Met deze cmdlet wordt de resource-ID van het lab gebruikt, de naam van de actie die moet worden uitgevoerd (`createEnvironment`) en de para meters die nodig zijn om die actie uit te voeren. De para meters bevinden zich in een hash-tabel die alle eigenschappen van de beschrijving van de virtuele machine bevat. 
+Het voorbeeldscript in deze sectie gebruikt de cmdlet [Invoke-AzResourceAction.](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0)  Deze cmdlet neemt de resource-ID van het lab, de naam van de actie uit te voeren (`createEnvironment`) en de parameters die nodig zijn uit te voeren die actie. De parameters bevinden zich in een hashtabel die alle eigenschappen van de virtuele machinebeschrijving bevat. 
 
 ```powershell
 [CmdletBinding()]
@@ -115,29 +115,29 @@ finally {
 }
 ```
 
-Met de eigenschappen voor de virtuele machine in het bovenstaande script kunnen we een virtuele machine maken met Windows Server 2016 Data Center als het besturings systeem. Voor elk type virtuele machine is deze eigenschappen iets anders. In de sectie [virtuele machine definiëren](#define-virtual-machine) ziet u hoe u kunt bepalen welke eigenschappen in dit script moeten worden gebruikt.
+De eigenschappen voor de virtuele machine in het bovenstaande script stellen ons in staat om een virtuele machine te maken met Windows Server 2016 DataCenter als besturingssysteem. Voor elk type virtuele machine zullen deze eigenschappen iets anders zijn. In de sectie [Virtuele machine definiëren](#define-virtual-machine) ziet u hoe u bepalen welke eigenschappen u in dit script wilt gebruiken.
 
-De volgende opdracht geeft een voor beeld van het uitvoeren van het script dat is opgeslagen in een bestands naam: Create-LabVirtualMachine. ps1. 
+De volgende opdracht geeft een voorbeeld van het uitvoeren van het script dat is opgeslagen in een bestandsnaam: Create-LabVirtualMachine.ps1. 
 
 ```powershell
  PS> .\Create-LabVirtualMachine.ps1 -ResourceGroupName 'MyLabResourceGroup' -LabName 'MyLab' -userName 'AdminUser' -password 'Password1!' -VMName 'MyLabVM'
 ```
 
 ## <a name="define-virtual-machine"></a>Virtuele machine definiëren
-In deze sectie wordt beschreven hoe u de eigenschappen kunt ophalen die specifiek zijn voor een type virtuele machine die u wilt maken. 
+In deze sectie ziet u hoe u de eigenschappen krijgt die specifiek zijn voor een type virtuele machine dat u wilt maken. 
 
 ### <a name="use-azure-portal"></a>Azure Portal gebruiken
-U kunt een Azure Resource Manager sjabloon genereren bij het maken van een virtuele machine in de Azure Portal. U hoeft het proces voor het maken van de virtuele machine niet te volt ooien. U kunt de stappen alleen volgen totdat u de sjabloon ziet. Dit is de beste manier om de benodigde JSON-beschrijving op te halen als u nog geen Lab-VM hebt gemaakt. 
+U een Azure Resource Manager-sjabloon genereren bij het maken van een vm in de Azure-portal. U hoeft het proces van het maken van de VM niet te voltooien. U volgt de stappen alleen totdat u de sjabloon ziet. Dit is de beste manier om de benodigde JSON-beschrijving te krijgen als u nog geen lab-VM hebt gemaakt. 
 
-1. Navigeer naar [Azure Portal](https://portal.azure.com).
-2. Selecteer **alle services** in het navigatie menu links.
-3. Zoek en selecteer **DevTest Labs** in de lijst met Services. 
-4. Selecteer op de pagina **DevTest Labs** uw Lab in de lijst met Labs.
-5. Op de start pagina van uw Lab selecteert u **+ toevoegen** op de werk balk. 
-6. Selecteer een **basis installatie kopie** voor de virtuele machine. 
-7. Selecteer de **Opties voor automatisering** onder aan de pagina boven de knop **verzenden** . 
-8. U ziet de **Azure Resource Manager sjabloon** voor het maken van de virtuele machine. 
-9. Het JSON-segment in de sectie **resources** bevat de definitie voor het afbeeldings type dat u eerder hebt geselecteerd. 
+1. Navigeer naar de [Azure-portal](https://portal.azure.com).
+2. Selecteer **Alle services** in het linkernavigatiemenu.
+3. Zoek naar en selecteer **DevTest Labs** in de lijst met services. 
+4. Selecteer op de pagina **DevTest Labs** uw lab in de lijst met labs.
+5. Selecteer **+ Toevoegen** op de werkbalk op de startpagina voor uw lab. 
+6. Selecteer een **basisafbeelding** voor de VM. 
+7. Selecteer **automatiseringsopties** onder aan de pagina boven de knop **Verzenden.** 
+8. U ziet de **sjabloon Azure Resource Manager** voor het maken van de virtuele machine. 
+9. Het JSON-segment in de sectie **Resources** heeft de definitie voor het afbeeldingstype dat u eerder hebt geselecteerd. 
 
     ```json
     {
@@ -177,22 +177,22 @@ U kunt een Azure Resource Manager sjabloon genereren bij het maken van een virtu
     }
     ```
 
-In dit voor beeld ziet u hoe u een definitie van een Azure Market Place-installatie kopie krijgt. Op dezelfde manier kunt u een definitie van een aangepaste installatie kopie, een formule of een omgeving verkrijgen. Voeg de benodigde artefacten voor de virtuele machine toe en stel de vereiste geavanceerde instellingen in. Nadat u waarden hebt opgegeven voor de vereiste velden en eventuele optionele velden, voordat u de knop **Opties voor automatisering** selecteert.
+In dit voorbeeld ziet u hoe u een definitie van een Azure Market Place-afbeelding krijgt. U een definitie van een aangepaste afbeelding, een formule of een omgeving op dezelfde manier krijgen. Voeg alle artefacten toe die nodig zijn voor de virtuele machine en stel de vereiste geavanceerde instellingen in. Nadat u waarden hebt opgemaakt voor de vereiste velden en eventuele optionele velden, selecteert u de knop **Automatiseringsopties.**
 
 ### <a name="use-azure-rest-api"></a>Azure REST API gebruiken
-De volgende procedure bevat stappen voor het ophalen van eigenschappen van een installatie kopie met behulp van de REST API: deze stappen werken alleen voor een bestaande virtuele machine in een lab. 
+De volgende procedure geeft u stappen om eigenschappen van een afbeelding te krijgen met behulp van de REST API: deze stappen werken alleen voor een bestaande VM in een lab. 
 
-1. Ga naar de pagina [virtual machines-lijst](/rest/api/dtl/virtualmachines/list) , selecteer de knop **try it** . 
+1. Navigeer naar de [lijstpagina Virtuele machines -](/rest/api/dtl/virtualmachines/list) selecteer de knop **Proberen.** 
 2. Selecteer uw **Azure-abonnement**.
-3. Voer de **resource groep voor het lab in**.
-4. Voer de **naam van het lab in**. 
+3. Voer de **resourcegroep voor het lab in.**
+4. Voer de **naam van het lab in.** 
 5. Selecteer **Uitvoeren**.
-6. U ziet de **Eigenschappen voor de installatie kopie** op basis van de virtuele machine die is gemaakt. 
+6. U ziet de **eigenschappen voor de afbeelding** op basis waarvan de VM is gemaakt. 
 
-## <a name="set-expiration-date"></a>Verval datum instellen
-In scenario's zoals training, demo's en proef versies kunt u virtuele machines maken en deze automatisch na een vaste duur verwijderen, zodat u geen onnodige kosten hebt. U kunt een verval datum voor een virtuele machine instellen tijdens het maken met behulp van Power shell, zoals wordt weer gegeven in de sectie voor beeld [Power shell-script](#powershell-script) .
+## <a name="set-expiration-date"></a>Vervaldatum instellen
+In scenario's zoals training, demo's en proefversies u virtuele machines maken en deze automatisch verwijderen na een vaste duur, zodat u geen onnodige kosten hoeft te maken. U een vervaldatum voor een virtuele machine instellen terwijl u deze maakt met PowerShell, zoals wordt weergegeven in het voorbeeld [PowerShell-scriptgedeelte.](#powershell-script)
 
-Hier volgt een voor beeld van een Power shell-script waarmee de verval datum wordt ingesteld voor alle bestaande Vm's in een Lab:
+Hier is een voorbeeld van PowerShell-script waarin de vervaldatum voor alle bestaande VM's in een lab wordt ingesteld:
 
 ```powershell
 # Values to change
@@ -225,4 +225,4 @@ Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende inhoud: [Azure PowerShell documentatie voor Azure DevTest Labs](/powershell/module/az.devtestlabs/)
+Bekijk de volgende inhoud: [Azure PowerShell-documentatie voor Azure DevTest Labs](/powershell/module/az.devtestlabs/)

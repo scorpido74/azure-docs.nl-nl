@@ -1,30 +1,30 @@
 ---
-title: Invoer binding van de Azure Functions signalerings service
-description: Meer informatie over het retour neren van de eind punt-URL en toegangs token van de seingevings service in Azure Functions.
+title: Invoerbinding van Azure Functions SignalR Service
+description: Lees hier de URL van een SignalR-service-eindpunt en toegangstoken in Azure-functies.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77530261"
 ---
-# <a name="signalr-service-input-binding-for-azure-functions"></a>Invoer binding van de signalerings service voor Azure Functions
+# <a name="signalr-service-input-binding-for-azure-functions"></a>SignalR-serviceinvoerbinding voor Azure-functies
 
-Voordat een client verbinding kan maken met de Azure signalerings service, moet deze de URL van het service-eind punt en een geldig toegangs Token ophalen. De *SignalRConnectionInfo* -invoer binding produceert de eind punt-URL van de seingevings service en een geldig token dat wordt gebruikt om verbinding te maken met de service. Omdat het token een beperkte tijd is en kan worden gebruikt om een specifieke gebruiker te verifiëren bij een verbinding, moet u het token niet in de cache opslaan of delen tussen clients. Een HTTP-trigger die gebruikmaakt van deze binding, kan door clients worden gebruikt om de verbindings gegevens op te halen.
+Voordat een client verbinding kan maken met Azure SignalR Service, moet deze de URL van het serviceeindpunt en een geldig toegangstoken ophalen. De *inputbinding van SignalRConnectionInfo* produceert de URL van het eindpunt van de SignalR-service en een geldig token dat wordt gebruikt om verbinding te maken met de service. Omdat het token beperkt is in de tijd en kan worden gebruikt om een specifieke gebruiker te verifiëren voor een verbinding, moet u het token niet in de cache opslaan of delen tussen clients. Een HTTP-trigger met deze binding kan door clients worden gebruikt om de verbindingsgegevens op te halen.
 
-Zie voor meer informatie over hoe deze binding wordt gebruikt voor het maken van een "Negotiate"-functie die kan worden verbruikt door een seingevings client-SDK het [artikel Azure functions ontwikkeling en configuratie](../azure-signalr/signalr-concept-serverless-development-config.md) in de documentatie over de concepten van de signalerings service.
+Zie het artikel over de [ontwikkeling en configuratie](../azure-signalr/signalr-concept-serverless-development-config.md) van Azure Functions in de documentatie van de SignalR Service-concepten voor meer informatie over hoe deze binding wordt gebruikt om een onderhandelingsfunctie te maken die kan worden verbruikt door een SDK van de SignalR-client.
 
-Zie het [overzicht](functions-bindings-signalr-service.md)voor meer informatie over de installatie-en configuratie details.
+Zie het [overzicht](functions-bindings-signalr-service.md)voor informatie over de installatie en configuratiedetails.
 
 ## <a name="example"></a>Voorbeeld
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die signaal verbindings gegevens ophaalt met behulp van de invoer binding en retourneert deze over http.
+In het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) weergegeven die signalr-verbindingsgegevens verwerft met behulp van de invoerbinding en deze retourneert via HTTP.
 
 ```cs
 [FunctionName("negotiate")]
@@ -36,13 +36,13 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-In het volgende voor beeld ziet u een ingangs verbindings gegevens invoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding om de verbindings gegevens te retour neren.
+In het volgende voorbeeld wordt een signalr-verbindingsgegevensbinding weergegeven in een *function.json-bestand* en een [C#Script-functie](functions-reference-csharp.md) die de binding gebruikt om de verbindingsgegevens terug te sturen.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u bindende gegevens in het *bestand function.json:*
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -54,7 +54,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de C# script code:
+Hier is de C# Script code:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -66,13 +66,13 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-In het volgende voor beeld ziet u een ingangs verbindings gegevens invoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding om de verbindings gegevens op te halen.
+In het volgende voorbeeld wordt een Input voor de SignalR-verbindingsinformatie weergegeven in een *function.json-bestand* en een [JavaScript-functie](functions-reference-node.md) die de binding gebruikt om de verbindingsgegevens terug te sturen.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u bindende gegevens in het *bestand function.json:*
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -84,7 +84,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de JavaScript-code:
+Hier is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -94,11 +94,11 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-In het volgende voor beeld ziet u een ingangs verbindings gegevens invoer binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding om de verbindings gegevens te retour neren.
+In het volgende voorbeeld wordt een SignalR-verbindingsgegevensbinding weergegeven in een *function.json-bestand* en een [Python-functie](functions-reference-python.md) die de binding gebruikt om de verbindingsgegevens terug te sturen.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u bindende gegevens in het *bestand function.json:*
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -110,7 +110,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de python-code:
+Hier is de Python-code:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -125,7 +125,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het volgende voor beeld ziet u een [Java-functie](functions-reference-java.md) die signaal verbindings gegevens ophaalt met behulp van de invoer binding en retourneert deze over http.
+In het volgende voorbeeld wordt een [Java-functie](functions-reference-java.md) weergegeven die signalr-verbindingsgegevens verwerft met behulp van de invoerbinding en deze retourneert via HTTP.
 
 ```java
 @FunctionName("negotiate")
@@ -145,13 +145,13 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="authenticated-tokens"></a>Geverifieerde tokens
 
-Als de functie wordt geactiveerd door een geverifieerde client, kunt u een claim voor een gebruikers-ID toevoegen aan het gegenereerde token. U kunt eenvoudig verificatie toevoegen aan een functie-app met behulp van [app service-verificatie](../app-service/overview-authentication-authorization.md).
+Als de functie wordt geactiveerd door een geverifieerde client, u een claim voor gebruikersnaam toevoegen aan het gegenereerde token. U eenvoudig verificatie toevoegen aan een functie-app met [app-serviceverificatie.](../app-service/overview-authentication-authorization.md)
 
-App Service-verificatie sets HTTP-headers met de naam `x-ms-client-principal-id` en `x-ms-client-principal-name` die respectievelijk de client-Principal-ID en-naam van de geverifieerde gebruiker bevatten.
+App Service Authentication stelt `x-ms-client-principal-id` respectievelijk `x-ms-client-principal-name` DE NAAM EN de clientprincipal-id en naam van de geverifieerde gebruiker in.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-U kunt de eigenschap `UserId` van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}`.
+U `UserId` de eigenschap van de binding instellen op de `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`waarde van een koptekst met behulp van een [bindende expressie](./functions-bindings-expressions-patterns.md): of.
 
 ```cs
 [FunctionName("negotiate")]
@@ -166,11 +166,11 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-U kunt de eigenschap `userId` van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}`.
+U `userId` de eigenschap van de binding instellen op de `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`waarde van een koptekst met behulp van een [bindende expressie](./functions-bindings-expressions-patterns.md): of.
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -183,7 +183,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de C# script code:
+Hier is de C# Script code:
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -197,11 +197,11 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-U kunt de eigenschap `userId` van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}`.
+U `userId` de eigenschap van de binding instellen op de `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`waarde van een koptekst met behulp van een [bindende expressie](./functions-bindings-expressions-patterns.md): of.
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -214,7 +214,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de JavaScript-code:
+Hier is de JavaScript-code:
 
 ```javascript
 module.exports = async function (context, req, connectionInfo) {
@@ -226,9 +226,9 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-U kunt de eigenschap `userId` van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}`.
+U `userId` de eigenschap van de binding instellen op de `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`waarde van een koptekst met behulp van een [bindende expressie](./functions-bindings-expressions-patterns.md): of.
 
-Voor beeld van function. json:
+Voorbeeld functie.json:
 
 ```json
 {
@@ -241,7 +241,7 @@ Voor beeld van function. json:
 }
 ```
 
-Dit is de python-code:
+Hier is de Python-code:
 
 ```python
 def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
@@ -258,7 +258,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-U kunt de eigenschap `userId` van de binding met de waarde uit een van beide kopteksten instellen met behulp van een [bindings expressie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` of `{headers.x-ms-client-principal-name}`.
+U `userId` de eigenschap van de binding instellen op de `{headers.x-ms-client-principal-id}` `{headers.x-ms-client-principal-name}`waarde van een koptekst met behulp van een [bindende expressie](./functions-bindings-expressions-patterns.md): of.
 
 ```java
 @FunctionName("negotiate")
@@ -279,4 +279,4 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Signaal service berichten verzenden (uitvoer binding)](./functions-bindings-signalr-service-output.md) 
+- [Berichten van SignalR-service verzenden (uitvoerbinding)](./functions-bindings-signalr-service-output.md) 

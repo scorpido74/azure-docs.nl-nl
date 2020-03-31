@@ -1,6 +1,6 @@
 ---
-title: Azure voordeur Service - laag Toepassingsbeveiliging | Microsoft Docs
-description: In dit artikel helpt u begrijpen hoe Azure voordeur Service kunt beschermen en beveiligen van uw back-ends
+title: Azure Front Door - Beveiliging van toepassingslagen | Microsoft Documenten
+description: Dit artikel helpt u te begrijpen hoe Azure Front Door de back-ends van uw toepassing beschermen en beveiligen
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,42 +11,42 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193914"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471792"
 ---
-# <a name="application-layer-security-with-front-door"></a>Toepassingsbeveiliging van laag met de voordeur
-Azure voordeur Service biedt web application protection mogelijkheid voor het beveiligen van uw webtoepassingen tegen netwerkaanvallen veelvoorkomende web beveiligingslekken zoals SQL-injectie of Cross-Site Scripting (XSS). Ingeschakeld voor HTTP (s) van front-ends, van de voordeur laag Toepassingsbeveiliging is wereldwijd worden gedistribueerd en altijd op aanvallen op de Azure-netwerk moet worden gestopt edge, ver van uw back-ends. Met extra beveiliging en optimalisatie van prestaties, voordeur biedt een snelle en veilige web ervaringen aan uw eindgebruikers.
+# <a name="application-layer-security-with-front-door"></a>Beveiliging van toepassingslagen met voordeur
+Azure Front Door biedt webapplicatiebescherming om uw webtoepassingen te beschermen tegen netwerkaanvallen en veelvoorkomende webkwetsbaarheden zoals SQL Injection of Cross Site Scripting (XSS). Ingeschakeld voor http(s) front-ends, Front Door's applicatie laag beveiliging is wereldwijd gedistribueerd en altijd aan, het stoppen van kwaadaardige aanvallen op azure's netwerk rand, ver weg van uw backends. Met extra beveiliging en prestatieoptimalisatie biedt Front Door snelle en veilige webervaringen aan uw eindgebruikers.
 
-## <a name="application-protection"></a>Toepassingsbeveiliging
-Beveiliging van de voordeur is geconfigureerd op elke omgeving edge over de hele wereld, in overeenstemming met toepassingen, en blokkeert automatisch niet-HTTP (s)-verkeer van uw webtoepassingen is bereikt. Onze gedistribueerde architectuur met meerdere tenants kan algemene beveiliging op schaal zonder verlies van prestaties. Voor workloads van HTTP (s), de voordeur web application protection-service biedt een uitgebreide regelengine voor het aangepaste regels, vooraf geconfigureerde ruleset tegen algemene aanvallen, en gedetailleerde logboekregistratie voor alle aanvragen die overeenkomt met een regel. Flexibele herstelacties met inbegrip van toestaan, blokkeren of logboekbestanden worden alleen ondersteund.
+## <a name="application-protection"></a>Toepassingsbescherming
+De applicatiebeveiliging van Front Door is geconfigureerd op elke randomgeving over de hele wereld, in lijn met toepassingen, en blokkeert automatisch niet-http(s) verkeer van het bereiken van uw webapplicaties. Onze multi-tenant gedistribueerde architectuur maakt wereldwijde bescherming op schaal mogelijk zonder in te leveren op prestaties. Voor http(s) workloads biedt de webapplicatiebeveiligingsservice van Front Door een uitgebreide regelsengine voor aangepaste regels, vooraf geconfigureerde regelset tegen veelvoorkomende aanvallen en gedetailleerde logboekregistratie voor alle aanvragen die overeenkomen met een regel. Flexibele acties, waaronder alleen toestaan, blokkeren of loggen, worden ondersteund.
 
-## <a name="custom-access-control-rules"></a>Regels voor aangepaste toegang
-- **IP-lijst en lijst met geblokkeerde websites toestaan:** U kunt aangepaste regels voor het beheren van toegang tot uw webtoepassingen op basis van de lijst met client-IP-adressen configureren. Zowel de IP-v4-processors en de IP-v6 worden ondersteund
-- **Geografische gebaseerd toegangsbeheer:** U kunt aangepaste regels voor het beheren van toegang tot uw webtoepassingen op basis van de landcode die afkomstig van een client-IP-adres is configureren
-- **HTTP-parameters voor het filteren:** U kunt regels voor aangepaste toegang op basis van die overeenkomt met de parameters van de aanvraag HTTP (s) met inbegrip van kopteksten, URL en queryreeksen configureren
+## <a name="custom-access-control-rules"></a>Aangepaste regels voor toegangscontrole
+- **LIJST- en bloklijst voor IP-toestaan:** U aangepaste regels configureren om de toegang tot uw webtoepassingen te beheren op basis van een lijst met IP-adressen van client. Zowel IP v4 als IP v6 worden ondersteund
+- **Geografisch gebaseerd toegangsbeheer:** U aangepaste regels configureren om de toegang tot uw webtoepassingen te beheren op basis van landcode die een client-IP
+- **HTTP-parameters filteren:** U aangepaste toegangsregels configureren op basis van overeenkomende http-queryparameters, waaronder kopteksten, URL' s en querytekenreeksen
 
-## <a name="azure-managed-rules"></a>Azure beheerde regels
-- Een vooraf geconfigureerde set regels op basis van veelvoorkomende bovenste OWASP beveiligingslekken is standaard ingeschakeld. Preview-versie is inclusief de set met regels sqli en xss aanvragen controleren. Aanvullende regels worden toegevoegd. U kunt beginnen met de enige actie log voor het valideren van vooraf geconfigureerde regels werken zoals verwacht voor uw toepassingen 
+## <a name="azure-managed-rules"></a>Azure-beheerde regels
+- Een vooraf geconfigureerde set regels tegen veelvoorkomende OWASP-kwetsbaarheden is standaard ingeschakeld. Bij preview, de set van regels omvat sqli en xss verzoeken controleren. Er worden aanvullende regels toegevoegd. U ervoor kiezen om te beginnen met alleen logboekactie om vooraf geconfigureerde regels te valideren die werken zoals verwacht voor uw toepassingen 
 
-## <a name="rate-limiting"></a>Frequentielimieten instellen
-- Een regel voor snelheid is abnormaal veel verkeer vanaf elke client-IP-beperken.  U kunt een drempel instellen op aantal webaanvragen toegestaan door een client-IP-adres tijdens een duur van één minuut.
+## <a name="rate-limiting"></a>Snelheidsbeperking
+- Een regel voor tariefcontrole is om abnormaal hoog verkeer van een client-IP te beperken.  U een drempel waarde instellen voor het aantal webaanvragen dat een client-IP gedurende een duur van één minuut heeft toegestaan.
 
-## <a name="centralized-protection-policy"></a>Beleid voor gecentraliseerde beveiliging
-- U kunt diverse beveiligingsregels definiëren en ze toevoegen aan een beleid in volgorde van prioriteit. Aangepaste regels hebben een hogere prioriteit dan de beheerde ruleset om toe te staan van uitzonderingen. Een enkele beleidsregel is gekoppeld aan uw webtoepassing.  Dezelfde web-beveiligingsbeleid wordt gerepliceerd naar alle edge-servers op alle locaties, ervoor te zorgen consistent beveiligingsbeleid in alle regio 's
+## <a name="centralized-protection-policy"></a>Gecentraliseerd beschermingsbeleid
+- U verschillende beveiligingsregels definiëren en deze in prioriteitsvolgorde toevoegen aan een beleid. Aangepaste regels hebben een hogere prioriteit dan beheerde regelset om uitzonderingen toe te staan. Aan uw webtoepassing is één beleid gekoppeld.  Hetzelfde beleid voor de bescherming van webapplicaties wordt gerepliceerd naar alle edge-servers op alle locaties, zorgen voor een consistent beveiligingsbeleid in alle regio's
 
 ## <a name="configuration"></a>Configuratie
-- Tijdens de preview kunt u REST-API's, PowerShell of CLI kunt gebruiken om te maken en implementeren van de voordeur toepassing beveiligingsregels en het beleid. Portal-toegang wordt ondersteund voordat de service algemeen beschikbaar is. 
+- Tijdens de preview u REST API's, PowerShell of CLI gebruiken om de regels en beleidsregels voor toepassingsbescherming van Front Door te maken en te implementeren. Toegang tot portalen wordt ondersteund voordat de service algemeen beschikbaar is. 
 
 
 ## <a name="monitoring"></a>Bewaking
-Voordeur biedt de mogelijkheid voor het bewaken van webtoepassingen tegen aanvallen met realtime metrische gegevens die kunnen worden geïntegreerd met Azure Monitor om te houden van waarschuwingen en gemakkelijk trends te bewaken.
+Front Door biedt de mogelijkheid om webapplicaties te monitoren tegen aanvallen met behulp van realtime statistieken die zijn geïntegreerd met Azure Monitor om waarschuwingen bij te houden en trends eenvoudig te volgen.
 
 ## <a name="pricing"></a>Prijzen
-Beveiliging van de laag van de voordeur toepassingen is gratis tijdens de Preview-versie.
+De beveiliging van de toepassingslaag van De voordeur is gratis tijdens de preview.
 
 
 ## <a name="next-steps"></a>Volgende stappen

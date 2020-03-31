@@ -1,179 +1,179 @@
 ---
-title: Updatebeheer logboeken van Azure doorzoeken
-description: In dit artikel wordt beschreven hoe u een query kunt uitvoeren op de logboeken voor Updatebeheer in uw Log Analytics-werk ruimte.
+title: Logboeken voor Azure-updatebeheer
+description: In dit artikel wordt beschreven hoe u de logboeken voor Updatebeheer in uw logboekanalysewerkruimte opvragen.
 services: automation
 ms.subservice: update-management
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79216847"
 ---
-# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Query's voor Updatebeheer bijwerken in Azure Monitor logboeken
+# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Query-updaterecords voor Updatebeheer in Azure-monitorlogboeken
 
-Naast de details die in de Updatebeheer oplossing zijn opgenomen, kunt u zoeken op de logboeken die zijn opgeslagen in uw Log Analytics-werk ruimte. Selecteer op de pagina oplossing in het linkerdeel venster **Logboeken**. De pagina **Zoeken in Logboeken** wordt geopend.
+Naast de details die worden verstrekt in de updatebeheeroplossing, u zoeken naar de logboeken die zijn opgeslagen in uw Log Analytics-werkruimte. Selecteer op de oplossingspagina in het linkerdeelvenster **Logboeken**. De pagina **Logboekzoeken** wordt geopend.
 
-Meer informatie over het aanpassen van de query's of het gebruik ervan vanaf verschillende clients en meer vindt u op: [log Analytics Search API-documentatie](https://dev.loganalytics.io/).
+U ook leren hoe u de query's aanpassen of gebruiken van verschillende clients en meer door te bezoeken: [Log Analytics search API-documentatie](https://dev.loganalytics.io/).
 
 ## <a name="update-records"></a>Records bijwerken
 
-Records die worden verzameld door Updatebeheer voor virtuele Windows-en Linux-machines en de gegevens typen die worden weer gegeven in de zoek resultaten van de logboeken. In de volgende secties worden deze records beschreven.
+Records die worden verzameld door Update Management voor Windows- en Linux-VM's en de gegevenstypen die worden weergegeven in de zoekresultaten van logboeken. In de volgende secties worden deze records beschreven.
 
 ### <a name="required-updates"></a>Vereiste updates
 
-Er wordt een record met een type `RequiredUpdate` gemaakt die de vereiste updates vertegenwoordigt voor een machine. Deze records hebben de eigenschappen in de volgende tabel:
+Er `RequiredUpdate` wordt een record gemaakt met een type dat wordt gemaakt voor updates die door een machine zijn vereist. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving | 
 |----------|-------------|
-| Computer | Volledig gekwalificeerde domein naam van de rapport computer. |
-| KBID | Knowledge Base-artikel-ID voor Windows Update. |
-| ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. | 
+| Computer | Volledig gekwalificeerde domeinnaam van de rapportagemachine. |
+| KBID | Knowledge base artikel-ID voor de Windows-update. |
+| ManagementGroupName | Naam van de beheergroep Operations Manager of de werkruimte Log Analytics. | 
 | Product | De producten waarvoor de update van toepassing is. | 
-| PublishDate | De datum waarop de update gereed is om te worden gedownload en geïnstalleerd vanaf Windows Update. |
-| Server | | 
-| SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
-| SourceSystem | *Operations Manager* | 
-| TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. | 
-| TimeGenerated | De datum en tijd waarop de record is gemaakt. | 
-| Type | *Bijwerken* | 
-| UpdateClassification | Hiermee wordt het type updates aangegeven dat kan worden toegepast. Voor Windows:<br> *Essentiële updates*<br> *Beveiligings updates*<br> *Update pakketten*<br> *Functie pakketten*<br> *Service packs*<br> *Definitie-updates*<br> *Hulpprogramma's*<br> *Updates*. Voor Linux:<br> *Essentiële en beveiligings updates*<br> *Overig* |
-| UpdateSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> *Kritieke*<br> *Belangrijk*<br> *Prioriteit*<br> *Gebrek* |
-| UpdateTitle | De titel van de update.|
+| PublishDate | De datum waarop de update is gedownload en geïnstalleerd vanuit Windows Update. |
+| server | | 
+| SourceHealthServiceId | Unieke id die de Windows-agent-id van Log Analytics vertegenwoordigt. |
+| SourceSystem | *OperationsManager* | 
+| TenantId | Unieke id die de instantie van Azure Active Directory van uw organisatie vertegenwoordigt. | 
+| TimeGenerated | Datum en tijd waarop de record is gemaakt. | 
+| Type | *Update* | 
+| Classificatie bijwerken | Geeft aan welk type updates kan worden toegepast. Voor Windows:<br> *Essentiële updates*<br> *Beveiligingsupdates*<br> *Updatepakketten*<br> *Functiepakketten*<br> *Servicepacks*<br> *Definitie-updates*<br> *Hulpprogramma's*<br> *Updates*. Voor Linux:<br> *Essentiële en beveiligingsupdates*<br> *Overige* |
+| Ernst bijwerken | Ernst beoordeling voor de kwetsbaarheid. Waarden zijn:<br> *Kritiek*<br> *Belangrijk*<br> *Matige*<br> *Lage* |
+| Titel bijwerken | De titel van de update.|
 
-### <a name="update"></a>Bijwerken
+### <a name="update"></a>Update
 
-Er wordt een record met een type `Update` gemaakt die de beschik bare updates en de installatie status voor een machine weergeeft. Deze records hebben de eigenschappen in de volgende tabel:
+Er `Update` wordt een record gemaakt met een type updates die beschikbaar zijn en de installatiestatus ervan voor een machine. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving | 
 |----------|-------------|
-| ApprovalSource | Is alleen van toepassing op Windows-besturings systemen. De waarde is *Microsoft Update*. |
-| Goedgekeurd | *Waar* of *Onwaar* |
+| GoedkeuringSbron | Alleen van toepassing op Windows-besturingssysteem. Waarde is *Microsoft Update*. |
+| Goedgekeurd | *Waar* of *onwaar* |
 | Classificatie | *Updates* |
-| Computer | Volledig gekwalificeerde domein naam van de rapport computer. |
-| ComputerEnvironment | *Azure* of *niet-Azure*. |
-| MSRCBulletinID | ID-nummer van beveiligings Bulletin | 
-| MSRCSeverity | Ernst classificatie voor het beveiligings probleem. Waarden zijn:<br> *Kritieke*<br> *Belangrijk*<br> *Prioriteit*<br> *Gebrek* |  
-| KBID | Knowledge Base-artikel-ID voor Windows Update. |
-| ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
-| UpdateID | De unieke id van de software-update. |
-| RevisionNumber | Het revisie nummer van een specifieke revisie van een update. |
-| Optioneel | *Waar* of *Onwaar* | 
-| RebootBehavior | Het gedrag voor opnieuw opstarten na het installeren/verwijderen van een update. |
-| _ResourceId | De unieke id voor de resource waaraan de record is gekoppeld. |
-| Type | *Bijwerken* |
-| VMUUID | De unieke id voor de virtuele machine. |
-| MG | De unieke id voor de beheer groep of Log Analytics werk ruimte. | 
-| TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. | 
-| SourceSystem | *Operations Manager* | 
-| TimeGenerated | De datum en tijd waarop de record is gemaakt. | 
-| SourceComputerId | De unieke id van de bron computer. | 
+| Computer | Volledig gekwalificeerde domeinnaam van de rapportagemachine. |
+| Computeromgeving | *Azure* of *Niet-Azure*. |
+| MSRCBulletinID | Id-nummer van beveiligingsbulletin | 
+| MSRCSeverity | Ernst beoordeling voor de kwetsbaarheid. Waarden zijn:<br> *Kritiek*<br> *Belangrijk*<br> *Matige*<br> *Lage* |  
+| KBID | Knowledge base artikel-ID voor de Windows-update. |
+| ManagementGroupName | Naam van de beheergroep Operations Manager of de werkruimte Log Analytics. |
+| UpdateID | Unieke id van de software-update. |
+| RevisionNumber | Het revisienummer van een specifieke revisie van een update. |
+| Optioneel | *Waar* of *onwaar* | 
+| RebootBehavior | Het rebootgedrag na het installeren/verwijderen van een update. |
+| _ResourceId | Unieke id voor de resource waarmee de record is gekoppeld. |
+| Type | *Update* |
+| VMUUID | Unieke id voor de virtuele machine. |
+| MG | Unieke id voor de beheergroep of Log Analytics-werkruimte. | 
+| TenantId | Unieke id die de instantie van Azure Active Directory van uw organisatie vertegenwoordigt. | 
+| SourceSystem | *OperationsManager* | 
+| TimeGenerated | Datum en tijd waarop de record is gemaakt. | 
+| SourceComputerId | Unieke id die de broncomputer vertegenwoordigt. | 
 | Titel | De titel van de update. |
-| PublishedDate (UTC) | De datum waarop de update gereed is om te worden gedownload en geïnstalleerd vanaf Windows Update.  |
+| PublishedDate (UTC) | De datum waarop de update is gedownload en geïnstalleerd vanuit Windows Update.  |
 | UpdateState | De huidige status van de update. | 
 | Product | De producten waarvoor de update van toepassing is. |
 | SubscriptionId | De unieke id voor het Azure-abonnement. | 
-| ResourceGroup | De naam van de resource groep waarvan de resource lid is. | 
-| ResourceProvider | Hiermee geeft u de resource provider op. | 
+| ResourceGroup | Naam van de resourcegroep waarvan de resource lid is. | 
+| ResourceProvider | Hiermee geeft u de resourceprovider op. | 
 | Resource | De naam van de resource. | 
-| ResourceType | De naam van het resource type. | 
+| ResourceType | Naam van het resourcetype. | 
 
 ### <a name="update-agent"></a>Agent bijwerken
 
-Er wordt een record met een type `UpdateAgent` gemaakt met details van de Update Agent op de computer. Deze records hebben de eigenschappen in de volgende tabel:
+Er `UpdateAgent` wordt een record gemaakt met een type tekst die details geeft over de updateagent op de machine. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving | 
 |----------|-------------|
-| AgeofOldestMissingRequiredUpdate | | 
-| AutomaticUpdateEnabled | | 
-| Computer | Volledig gekwalificeerde domein naam van de rapport computer. |
+| AgeofoldestMissingRequiredUpdate | | 
+| Automatisch bijwerkeningeschakeld | | 
+| Computer | Volledig gekwalificeerde domeinnaam van de rapportagemachine. |
 | DaySinceLastUpdateBucket | | 
-| ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
-| OSVersion | De versie van het besturings systeem. |
-| Server | |
-| SourceHealthServiceId | De unieke id die de Log Analytics Windows agent-ID vertegenwoordigt. |
-| SourceSystem | *Operations Manager* | 
-| TenantId | De unieke id die uw organisatie-exemplaar van Azure Active Directory vertegenwoordigt. |
-| TimeGenerated | De datum en tijd waarop de record is gemaakt. |
-| Type | *Bijwerken* | 
-| WindowsUpdateAgentVersion | De versie van de Windows Update-Agent. |
-| WSUSServer | Er worden fouten weer gegeven als de Windows Update-Agent een probleem heeft met het oplossen van problemen. |
+| ManagementGroupName | Naam van de beheergroep Operations Manager of de werkruimte Log Analytics. |
+| OSVersion | De versie van het besturingssysteem. |
+| server | |
+| SourceHealthServiceId | Unieke id die de Windows-agent-id van Log Analytics vertegenwoordigt. |
+| SourceSystem | *OperationsManager* | 
+| TenantId | Unieke id die de instantie van Azure Active Directory van uw organisatie vertegenwoordigt. |
+| TimeGenerated | Datum en tijd waarop de record is gemaakt. |
+| Type | *Update* | 
+| WindowsUpdateAgentVersion | Versie van de Windows Update-agent. |
+| WSUSServer | Hiermee worden fouten weergegeven als de Windows Update-agent een probleem heeft om te helpen bij het oplossen van problemen. |
 
-### <a name="update-deployment-status"></a>Implementatie status bijwerken 
+### <a name="update-deployment-status"></a>Implementatiestatus bijwerken 
 
-Er wordt een record met een type `UpdateRunProgress` gemaakt die de update-implementatie status van een geplande implementatie per computer biedt. Deze records hebben de eigenschappen in de volgende tabel:
+Er `UpdateRunProgress` wordt een record gemaakt met een type bestand dat de implementatiestatus van een geplande implementatie per machine ondersteunt. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving | 
 |----------|-------------|
-| Computer | Volledig gekwalificeerde domein naam van de rapport computer. |
-| ComputerEnvironment | *Azure* of *niet-Azure*. | 
-| CorrelationId | De unieke id van de runbook-taak die wordt uitgevoerd voor de update. |
-| EndTime | Het tijdstip waarop het synchronisatie proces is beëindigd. | 
-| ErrorResult | Windows Update fout code gegenereerd als de installatie van een update mislukt. | 
-| Status | De mogelijke installatie status van een update op de client computer, *in uitvoering*, is *voltooid*, *is gedeeltelijk mislukt*. |
-| KBID | Knowledge Base-artikel-ID voor Windows Update. | 
-| ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
-| OSType | Hiermee geeft u het type besturings systeem, *Windows* of *Linux*. | 
+| Computer | Volledig gekwalificeerde domeinnaam van de rapportagemachine. |
+| Computeromgeving | *Azure* of *Niet-Azure*. | 
+| CorrelationId | Unieke id van de runbook-taak die wordt uitgevoerd voor de update. |
+| EndTime | Het moment waarop het synchronisatieproces is beëindigd. | 
+| Foutresultaat | Windows Update-foutcode gegenereerd als een update niet wordt geïnstalleerd. | 
+| Installatiestatus | De mogelijke installatiestatus van een update op de clientcomputer, *In uitvoering*, *Geslaagd*, *Gedeeltelijk mislukt*. |
+| KBID | Knowledge base artikel-ID voor de Windows-update. | 
+| ManagementGroupName | Naam van de beheergroep Operations Manager of de werkruimte Log Analytics. |
+| OSType | Hiermee geeft u het type besturingssysteem, *Windows* of *Linux op.* | 
 | Product | De producten waarvoor de update van toepassing is. |
 | Resource | De naam van de resource. | 
-| ResourceId | De unieke id voor de resource waaraan de record is gekoppeld. |
-| ResourceProvider | Hiermee geeft u de resource provider op. | 
-| ResourceType | De naam van het resource type. | 
-| SourceComputerId | De unieke id van de bron computer. | 
-| SourceSystem | *Operations Manager* |
-| StartTime | Tijd waarop de update is gepland om te worden geïnstalleerd. |
+| ResourceId | Unieke id voor de resource waarmee de record is gekoppeld. |
+| ResourceProvider | Hiermee geeft u de resourceprovider op. | 
+| ResourceType | Naam van het resourcetype. | 
+| SourceComputerId | Unieke id die de broncomputer vertegenwoordigt. | 
+| SourceSystem | *OperationsManager* |
+| StartTime | Tijd wanneer de update is gepland om te worden geïnstalleerd. |
 | SubscriptionId | De unieke id voor het Azure-abonnement. | 
-| SucceededOnRetry | Toont wanneer de uitvoering van de update bij de eerste poging is mislukt en de huidige bewerking een nieuwe poging doet. |
-| TimeGenerated | De datum en tijd waarop de record is gemaakt. |
+| SucceededOnRetry | Hiermee wordt weergegeven wanneer de update-uitvoering is mislukt bij de eerste poging en de huidige bewerking een poging tot nieuwe poging is. |
+| TimeGenerated | Datum en tijd waarop de record is gemaakt. |
 | Titel | De titel van de update. |
-| Type | *Updaterunprogress Installation* |
-| UpdateId | De unieke id van de software-update. |
-| VMUUID | De unieke id voor de virtuele machine. |
-| _ResourceId | De unieke id voor de resource waaraan de record is gekoppeld. |
+| Type | *UpdateRunProgress* |
+| UpdateId (UpdateId) | Unieke id van de software-update. |
+| VMUUID | Unieke id voor de virtuele machine. |
+| _ResourceId | Unieke id voor de resource waarmee de record is gekoppeld. |
 
-### <a name="update-summary"></a>Samen vatting van update 
+### <a name="update-summary"></a>Overzicht bijwerken 
 
-Er wordt een record met een type `UpdateSummary` gemaakt die een update overzicht per computer biedt. Deze records hebben de eigenschappen in de volgende tabel:
+Er `UpdateSummary` wordt een record gemaakt met een type bestand dat updatesamenvatting per machine biedt. Deze records hebben de eigenschappen in de volgende tabel:
 
 | Eigenschap | Beschrijving | 
 |----------|-------------|
-| Computer | Volledig gekwalificeerde domein naam van de rapport computer. |
-| ComputerEnvironment | *Azure* of *niet-Azure*. | 
-| CriticalUpdatesMissing | Aantal ontbrekende essentiële updates die van toepassing zijn. | 
-| ManagementGroupName | De naam van de Operations Manager beheer groep of Log Analytics werk ruimte. |
-| NETRuntimeVersion | De versie van .NET Framework geïnstalleerd op de Windows-computer. |
-| OldestMissingSecurityUpdateBucket | Waarden zijn:<br> *Recent*<br> *30 dagen geleden*<br> *60 dagen geleden*<br> *Versie* | 
-| OldestMissingSecurityUpdateInDays | Totaal aantal dagen voor de oudste update dat is gedetecteerd als van toepassing die niet is geïnstalleerd. |
-| OsVersion | De versie van het besturings systeem. |
-| OtherUpdatesMissing | Aantal gedetecteerde updates dat ontbreekt. |
+| Computer | Volledig gekwalificeerde domeinnaam van de rapportagemachine. |
+| Computeromgeving | *Azure* of *Niet-Azure*. | 
+| CriticalUpdatesMissing | Aantal kritieke updates dat van toepassing is. | 
+| ManagementGroupName | Naam van de beheergroep Operations Manager of de werkruimte Log Analytics. |
+| NETRuntimeVersion | Versie van .NET Framework geïnstalleerd op de Windows-computer. |
+| OldestMissingSecurityUpdateBucket | Waarden zijn:<br> *Recent*<br> *30 dagen geleden*<br> *60 dagen geleden*<br> *Ouder* | 
+| OldestMissingSecurityUpdateInDays | Totaal aantal dagen voor de oudste update die is gedetecteerd als van toepassing die niet is geïnstalleerd. |
+| OsVersion | De versie van het besturingssysteem. |
+| OtherUpdatesMissing | Aantal gedetecteerde updates ontbreekt. |
 | Resource |  De naam van de resource. | 
-| ResourceGroup | De naam van de resource groep waarvan de resource lid is. |
-| ResourceId | De unieke id voor de resource waaraan de record is gekoppeld. |
-| ResourceProvider | Hiermee geeft u de resource provider op. |
-| ResourceType | De naam van het resource type. |
-| RestartPending | *Waar* of *Onwaar*. |
-| SecurityUpdatesMissing | Aantal ontbrekende beveiligings updates die van toepassing zijn.| 
-| SourceComputerId | De unieke id voor de virtuele machine. |
+| ResourceGroup | Naam van de resourcegroep waarvan de resource lid is. |
+| ResourceId | Unieke id voor de resource waarmee de record is gekoppeld. |
+| ResourceProvider | Hiermee geeft u de resourceprovider op. |
+| ResourceType | Naam van het resourcetype. |
+| Opnieuw opstartenAfhankelijk | *Waar* of *Onwaar*. |
+| SecurityUpdatesMissing | Aantal ontbrekende beveiligingsupdates van toepassing.| 
+| SourceComputerId | Unieke id voor de virtuele machine. |
 | SourceSystem | *OpsManager* | 
 | SubscriptionId | De unieke id voor het Azure-abonnement. |
-| TimeGenerated | De datum en tijd waarop de record is gemaakt. |
-| TotalUpdatesMissing | Totaal aantal ontbrekende updates die van toepassing zijn. | 
-| Type | *Update Summary* |
-| VMUUID | De unieke id voor de virtuele machine. |
-| WindowsUpdateAgentVersion | De versie van de Windows Update-Agent. |
-| WindowsUpdateSetting | Hier wordt de status van de Windows Update-agent weer gegeven. Mogelijke waarden zijn:<br> *Geplande installatie*<br> *Melden voor installatie*<br> Fout geretourneerd door beschadigde WUA-agent. | 
-| WSUSServer | Er worden fouten weer gegeven als de Windows Update-Agent een probleem heeft met het oplossen van problemen. |
-| _ResourceId | De unieke id voor de resource waaraan de record is gekoppeld. |
+| TimeGenerated | Datum en tijd waarop de record is gemaakt. |
+| TotalUpdatesMissing | Totaal aantal ontbrekende updates van toepassing. | 
+| Type | *UpdateSummary* |
+| VMUUID | Unieke id voor de virtuele machine. |
+| WindowsUpdateAgentVersion | Versie van de Windows Update-agent. |
+| WindowsUpdateSetting | Hiermee wordt de status van de Windows Update-agent weergegeven. Mogelijke waarden zijn:<br> *Geplande installatie*<br> *Melding vóór installatie*<br> Fout teruggekeerd van ongezonde WUA-agent. | 
+| WSUSServer | Hiermee worden fouten weergegeven als de Windows Update-agent een probleem heeft om te helpen bij het oplossen van problemen. |
+| _ResourceId | Unieke id voor de resource waarmee de record is gekoppeld. |
 
 ## <a name="sample-queries"></a>Voorbeeldquery's
 
-De volgende secties bieden voorbeeld logboek query's voor update records die worden verzameld voor Updatebeheer.
+In de volgende secties worden voorbeeldlogboekquery's opgenomen voor updaterecords die worden verzameld voor Updatebeheer.
 
-### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Controleren of niet-Azure-machines zijn voor bereid
+### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Controleren of niet-Azure-machines aan boord zijn
 
-Als u wilt controleren of rechtstreeks verbonden computers communiceren met Azure Monitor-logboeken, voert u een van de volgende zoek opdrachten in het logboek uit.
+Voer een van de volgende logboekzoekopdrachten uit om te bevestigen dat direct verbonden machines communiceren met Azure Monitor-logboeken.
 
 #### <a name="linux"></a>Linux
 
@@ -189,28 +189,28 @@ Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-Op een Windows-computer kunt u de volgende informatie controleren om de agent connectiviteit met Azure Monitor-logboeken te controleren:
+Op een Windows-computer u de volgende gegevens controleren om de verbinding met Azure Monitor-logboeken te verifiëren:
 
-1. Open **micro soft Monitoring Agent**in het configuratie scherm. Op het tabblad **log Analytics van Azure** wordt het volgende bericht weer gegeven: **micro soft monitoring agent heeft verbinding gemaakt met log Analytics**.
-2. Open het Windows-gebeurtenis logboek. Ga naar **Application and Services Servicelogboeken\operations Manager** en zoek naar gebeurtenis-id 3000 en gebeurtenis-id 5002 van de bron **service connector**. Deze gebeurtenissen geven aan dat de computer is geregistreerd bij de Log Analytics-werk ruimte en dat er configuratie wordt ontvangen.
+1. Open **Microsoft Monitoring Agent**in het Configuratiescherm . Op het tabblad **Azure Log Analytics** geeft de agent het volgende bericht weer: de Microsoft Monitoring Agent is verbonden met **Logboekanalyse**.
+2. Open het Windows-gebeurtenislogboek. Ga naar **Logboeken voor toepassingen en services\Operations Manager** en zoek naar gebeurtenis-id 3000 en gebeurtenis-id 5002 via de **bronserviceconnector**. Deze gebeurtenissen geven aan of de computer is geregistreerd bij de Log Analytics-werkruimte en of deze de configuratie ontvangt.
 
-Als de agent niet kan communiceren met Azure Monitor-logboeken en de agent is geconfigureerd voor communicatie met Internet via een firewall of proxy server, controleert u of de firewall of proxy server correct is geconfigureerd. Zie [netwerk configuratie voor Windows-agent](../azure-monitor/platform/agent-windows.md) of [netwerk configuratie voor Linux-agent](../log-analytics/log-analytics-agent-linux.md)voor informatie over het controleren van de juiste configuratie van de firewall of proxy server.
+Als de agent niet kan communiceren met Azure Monitor-logboeken en de agent is geconfigureerd om met internet te communiceren via een firewall of proxyserver, controleert u of de firewall of proxyserver correct is geconfigureerd. Zie [Netwerkconfiguratie voor Windows-agent](../azure-monitor/platform/agent-windows.md) of [Netwerkconfiguratie voor Linux-agent voor](../log-analytics/log-analytics-agent-linux.md)meer informatie over het controleren van de firewall of proxyserver.
 
 > [!NOTE]
-> Als uw Linux-systemen zijn geconfigureerd om te communiceren met een proxy-of Log Analytics gateway en u deze oplossing onboardt, werkt u de *proxy. conf* -machtigingen om de omiuser-groep lees machtigingen te verlenen voor het bestand met de volgende opdrachten:
+> Als uw Linux-systemen zijn geconfigureerd om te communiceren met een proxy of Log Analytics Gateway en u deze oplossing onboarding, werkt u de *proxy.conf-machtigingen* bij om de omiusergroep toestemming te geven voor het bestand met behulp van de volgende opdrachten:
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
-Nieuwe toegevoegde Linux-agents tonen de status **bijgewerkt** nadat een evaluatie is uitgevoerd. Dit proces kan maximaal zes uur duren.
+Nieuw toegevoegde Linux-agents tonen een status van **bijgewerkt** nadat een beoordeling is uitgevoerd. Dit proces kan maximaal zes uur duren.
 
-Zie [Operations Manager integratie valideren met Azure monitor logboeken](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)om te controleren of een Operations Manager-beheer groep communiceert met Azure monitor-Logboeken.
+Zie [Operations Manager-integratie valideren met Azure Monitor-logboeken](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)als u wilt controleren of een beheergroep Operations Manager communiceert met Azure Monitor-logboeken.
 
-### <a name="single-azure-vm-assessment-queries-windows"></a>Enkelvoudige Azure VM-evaluatie query's (Windows)
+### <a name="single-azure-vm-assessment-queries-windows"></a>Query's voor één Azure VM-beoordeling (Windows)
 
-Vervang de VMUUID-waarde door de VM-GUID van de virtuele machine waarop u een query uitvoert. U kunt de VMUUID die moeten worden gebruikt, vinden door de volgende query uit te voeren in Azure Monitor logs: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Vervang de VMUUID-waarde door de VM-GUID van de virtuele machine die u opvraagt. U de VMUUID vinden die moet worden gebruikt door de volgende query uit te voeren in Azure Monitor-logboeken:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
-#### <a name="missing-updates-summary"></a>Samen vatting van ontbrekende updates
+#### <a name="missing-updates-summary"></a>Overzicht van ontbrekende updates
 
 ```loganalytics
 Update
@@ -235,12 +235,12 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-### <a name="single-azure-vm-assessment-queries-linux"></a>Enkelvoudige Azure VM-evaluatie query's (Linux)
+### <a name="single-azure-vm-assessment-queries-linux"></a>Query's voor één Azure VM -beoordeling (Linux)
 
-Voor sommige Linux-distributies is er sprake [van een conflict](https://en.wikipedia.org/wiki/Endianness) tussen de VMUUID-waarden die afkomstig zijn van Azure Resource Manager en wat wordt opgeslagen in azure monitor Logboeken. Met de volgende query wordt gecontroleerd op een overeenkomst op basis van de endian. Vervang de waarden voor VMUUID door de indeling big endian en little-endian van de GUID om de resultaten correct te retour neren. U kunt de VMUUID die moeten worden gebruikt, vinden door de volgende query uit te voeren in Azure Monitor logs: `Update | where Computer == "<machine name>"
+Voor sommige Linux-distro's is er een [endianness-mismatch](https://en.wikipedia.org/wiki/Endianness) met de VMUUID-waarde die afkomstig is van Azure Resource Manager en wat is opgeslagen in Azure Monitor-logboeken. De volgende query controleert op een overeenkomst op een van beide endianness. Vervang de VMUUID-waarden door het grote endiaanse en -endian-formaat van de GUID om de resultaten correct te retourneren. U de VMUUID vinden die moet worden gebruikt door de volgende query uit te voeren in Azure Monitor-logboeken:`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
-#### <a name="missing-updates-summary"></a>Samen vatting van ontbrekende updates
+#### <a name="missing-updates-summary"></a>Overzicht van ontbrekende updates
 
 ```loganalytics
 Update
@@ -266,9 +266,9 @@ Update
 
 ```
 
-### <a name="multi-vm-assessment-queries"></a>Multi-VM-evaluatie query's
+### <a name="multi-vm-assessment-queries"></a>Multi-VM-beoordelingsquery's
 
-#### <a name="computers-summary"></a>Computers overzicht
+#### <a name="computers-summary"></a>Overzicht van computers
 
 ```loganalytics
 Heartbeat
@@ -310,7 +310,7 @@ on SourceComputerId
 
 ```
 
-#### <a name="missing-updates-summary"></a>Samen vatting van ontbrekende updates
+#### <a name="missing-updates-summary"></a>Overzicht van ontbrekende updates
 
 ```loganalytics
 Update
@@ -411,5 +411,5 @@ Update
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zoek opdrachten in Logboeken in [Azure monitor logboeken](../log-analytics/log-analytics-log-searches.md) gebruiken om gedetailleerde update gegevens weer te geven.
-* [Waarschuwingen maken](automation-tutorial-update-management.md#configure-alerts) voor de implementatie status van de update.
+* Gebruik logboekzoekopdrachten in [Azure Monitor-logboeken](../log-analytics/log-analytics-log-searches.md) om gedetailleerde updategegevens weer te geven.
+* [Maak waarschuwingen](automation-tutorial-update-management.md#configure-alerts) voor de implementatiestatus van updates.
