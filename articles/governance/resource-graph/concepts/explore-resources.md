@@ -1,26 +1,26 @@
 ---
 title: Uw Azure-resources verkennen
-description: Meer informatie over het gebruik van de resource Graph-query taal om uw resources te verkennen en te ontdekken hoe ze zijn verbonden.
+description: Leer de querytaal Resourcegraph te gebruiken om uw bronnen te verkennen en te ontdekken hoe ze zijn verbonden.
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.openlocfilehash: 0c191915b8c558d80ffef554ef758a35157e035c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76156978"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Azure-resources verkennen met Resource Graph
 
-Azure resource Graph biedt de mogelijkheid om uw Azure-resources snel en op schaal te verkennen en te detecteren. Het is ontworpen voor snelle reacties en is een fantastische manier om meer te weten te komen over uw omgeving en over de eigenschappen van uw Azure-resources.
+Azure Resource Graph biedt de mogelijkheid om uw Azure-bronnen snel en op schaal te verkennen en te ontdekken. Ontworpen voor snelle reacties, is het een geweldige manier om meer te weten te komen over uw omgeving en ook over de eigenschappen die deel uitmaken van uw Azure-bronnen.
 
-## <a name="explore-virtual-machines"></a>Virtuele machines verkennen
+## <a name="explore-virtual-machines"></a>Ontdek virtuele machines
 
-Een algemene resource in Azure is een virtuele machine. Als resource type hebben virtuele machines veel eigenschappen die kunnen worden opgevraagd. Elke eigenschap biedt een optie voor het filteren of zoeken naar precies de bron waarnaar u op zoek bent.
+Een veelgebruikte bron in Azure is een virtuele machine. Als resourcetype hebben virtuele machines veel eigenschappen die kunnen worden opgevraagd. Elke eigenschap biedt een optie voor het filteren of het vinden van precies de bron die u zoekt.
 
 ### <a name="virtual-machine-discovery"></a>Detectie van virtuele machines
 
-Laten we beginnen met een eenvoudige query om één VM op te halen uit onze omgeving en de eigenschappen te bekijken die worden geretourneerd.
+Laten we beginnen met een eenvoudige query om een enkele VM uit onze omgeving te halen en te kijken naar de eigenschappen die worden geretourneerd.
 
 ```kusto
 Resources
@@ -37,9 +37,9 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ```
 
 > [!NOTE]
-> Met de cmdlet Azure PowerShell `Search-AzGraph` wordt standaard een **PSCustomObject** geretourneerd. Om ervoor te hebben dat de uitvoer er hetzelfde uitziet als wat wordt geretourneerd door Azure CLI, wordt de `ConvertTo-Json`-cmdlet gebruikt. De standaard waarde voor **diepte** is _2_. Als u deze instelt op _100_ , worden alle geretourneerde niveaus geconverteerd.
+> De Azure `Search-AzGraph` PowerShell-cmdlet retourneert standaard een **PSCustomObject.** Om de uitvoer er hetzelfde uit te laten `ConvertTo-Json` zien als wat wordt geretourneerd door Azure CLI, wordt de cmdlet gebruikt. De standaardwaarde voor **Diepte** is _2_. Als u deze instelt op _100,_ moeten alle geretourneerde niveaus worden geconverteerd.
 
-De JSON-resultaten zijn vergelijkbaar met het volgende voor beeld:
+De JSON-resultaten zijn gestructureerd vergelijkbaar met het volgende voorbeeld:
 
 ```json
 [
@@ -104,11 +104,11 @@ De JSON-resultaten zijn vergelijkbaar met het volgende voor beeld:
 ]
 ```
 
-De eigenschappen geven ons aanvullende informatie over de virtuele-machine bron zelf, alles uit de SKU, het besturings systeem, de schijven, tags en de resource groep en het abonnement waarvan het deel uitmaakt.
+De eigenschappen vertellen ons aanvullende informatie over de virtuele machine bron zelf, alles van SKU, OS, schijven, tags, en de resource groep en abonnement is het een lid van.
 
 ### <a name="virtual-machines-by-location"></a>Virtuele machines op locatie
 
-Als we de resource van de virtuele machines hebben geleerd, gaan we de **locatie** -eigenschap gebruiken om alle virtuele machines op locatie te tellen. Als u de query wilt bijwerken, worden de limieten verwijderd en wordt het aantal locatie waarden samenvatten.
+Rekening houdend met wat we geleerd hebben over de bron van virtuele machines, laten we de **locatieeigenschap** gebruiken om alle virtuele machines per locatie te tellen. Als u de query wilt bijwerken, verwijderen we de limiet en vatten we het aantal locatiegegevens samen.
 
 ```kusto
 Resources
@@ -124,7 +124,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
 ```
 
-De JSON-resultaten zijn vergelijkbaar met het volgende voor beeld:
+De JSON-resultaten zijn gestructureerd vergelijkbaar met het volgende voorbeeld:
 
 ```json
 [
@@ -143,11 +143,11 @@ De JSON-resultaten zijn vergelijkbaar met het volgende voor beeld:
 ]
 ```
 
-Nu kunt u zien hoeveel virtuele machines er in elke Azure-regio zijn.
+We kunnen nu zien hoeveel virtuele machines we in elke Azure-regio hebben.
 
-### <a name="virtual-machines-by-sku"></a>Virtuele machines per SKU
+### <a name="virtual-machines-by-sku"></a>Virtuele machines van SKU
 
-Als u terugkeert naar de oorspronkelijke eigenschappen van de virtuele machine, gaat u naar de virtuele machines met een SKU-grootte van **Standard_B2s**. Als de JSON wordt weer gegeven, ziet u dat deze is opgeslagen in **Properties. hardwareprofile. vmsize**. De query wordt bijgewerkt, zodat alle virtuele machines worden gevonden die overeenkomen met deze grootte en alleen de naam van de virtuele machine en regio retour neren.
+Terug te gaan naar de oorspronkelijke virtuele machine eigenschappen, laten we proberen om alle virtuele machines die een SKU grootte van **Standard_B2s**hebben te vinden. Kijkend naar de JSON terug, zien we dat het is opgeslagen in **properties.hardwareprofile.vmsize**. We werken de query bij om alle VM's te vinden die overeenkomen met deze grootte en alleen de naam van de VM en regio terug te geven.
 
 ```kusto
 Resources
@@ -163,9 +163,9 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
-### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuele machines die zijn verbonden met Premium beheerde schijven
+### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Virtuele machines verbonden met schijven met een premium beheerde schijf
 
-Als we de details willen ophalen van voor Premium beheerde schijven die zijn gekoppeld aan deze **Standard_B2s** virtuele machines, kunnen we de query uitbreiden om ons de bron-id van deze beheerde schijven te geven.
+Als we de details van door premium beheerde schijven die zijn gekoppeld aan deze **Standard_B2s** virtuele machines wilden krijgen, kunnen we de query uitbreiden om ons de bron-ID van die beheerde schijven te geven.
 
 ```kusto
 Resources
@@ -176,7 +176,7 @@ Resources
 ```
 
 > [!NOTE]
-> Een andere manier om de SKU te verkrijgen zou zijn met behulp van de **aliass** -eigenschap **micro soft. Compute/informatie/SKU. name**. Zie de voor beelden [aliassen weer geven](../samples/starter.md#show-aliases) en [afzonderlijke alias waarden weer geven](../samples/starter.md#distinct-alias-values) .
+> Een andere manier om de SKU te krijgen zou zijn geweest met behulp van de **aliassen** eigenschap **Microsoft.Compute / virtualMachines / sku.name**. Zie de voorbeelden [Aliassen weergeven](../samples/starter.md#show-aliases) [en Verschillende aliaswaarden weergeven.](../samples/starter.md#distinct-alias-values)
 
 ```azurecli-interactive
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -186,13 +186,13 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualmachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
-Het resultaat is een lijst met schijf-Id's.
+Het resultaat is een lijst met schijf-id's.
 
-### <a name="managed-disk-discovery"></a>Detectie van beheerde schijven
+### <a name="managed-disk-discovery"></a>Beheerde schijfdetectie
 
-Met de eerste record uit de vorige query gaan we de eigenschappen verkennen die aanwezig zijn op de beheerde schijf die is gekoppeld aan de eerste virtuele machine. De bijgewerkte query maakt gebruik van de schijf-ID en wijzigt het type.
+Met de eerste record van de vorige query verkennen we de eigenschappen die bestaan op de beheerde schijf die is gekoppeld aan de eerste virtuele machine. De bijgewerkte query gebruikt de schijf-id en wijzigt het type.
 
-Voor beeld van uitvoer van de vorige query bijvoorbeeld:
+Voorbeeld uitvoer van de vorige query bijvoorbeeld:
 
 ```json
 [
@@ -207,11 +207,11 @@ Resources
 | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-Voordat u de query uitvoert, weet u zeker dat het **type** **micro soft. Compute/disks**is?
-Als u de volledige ID bekijkt, ziet u **/providers/Microsoft.Compute/disks/** als onderdeel van de teken reeks. Dit teken reeks fragment geeft u een hint voor het type waarnaar moet worden gezocht. Een alternatieve methode is om de limiet te verwijderen per type en in plaats daarvan alleen op het ID-veld te zoeken. Als de ID uniek is, wordt er slechts één record geretourneerd en bevat de eigenschap **type** deze details.
+Voordat u de query uitvoert, hoe wisten we dat het **type** nu **Microsoft.Compute/disks**moet zijn?
+Als u de volledige id bekijkt, ziet u **/providers/Microsoft.Compute/disks/** als onderdeel van de tekenreeks. Dit tekenreeksfragment geeft u een hint naar welk type u moet zoeken. Een alternatieve methode zou zijn om de limiet te verwijderen op type en in plaats daarvan alleen zoeken op het id-veld. Omdat de ID uniek is, wordt slechts één record geretourneerd en de **eigenschap type** erop biedt dat detail.
 
 > [!NOTE]
-> Voor een goede werking van dit voor beeld moet u het veld ID vervangen door een resultaat uit uw eigen omgeving.
+> Om dit voorbeeld te laten werken, moet u het id-veld vervangen door een resultaat uit uw eigen omgeving.
 
 ```azurecli-interactive
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
@@ -221,7 +221,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/disks' and id ==
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
 ```
 
-De JSON-resultaten zijn vergelijkbaar met het volgende voor beeld:
+De JSON-resultaten zijn gestructureerd vergelijkbaar met het volgende voorbeeld:
 
 ```json
 [
@@ -255,9 +255,9 @@ De JSON-resultaten zijn vergelijkbaar met het volgende voor beeld:
 ]
 ```
 
-## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Virtuele machines verkennen voor het vinden van open bare IP-adressen
+## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Virtuele machines verkennen om openbare IP-adressen te vinden
 
-Met deze set query's worden eerst alle netwerk interfaces (NIC) die zijn verbonden met virtuele machines gezocht en opgeslagen. Vervolgens gebruiken de query's de lijst met Nic's om elke IP-adres bron te vinden die een openbaar IP-adres is en deze waarden op te slaan. Ten slotte bieden de query's een lijst met de open bare IP-adressen.
+Met deze set query's worden eerst alle NIC-bronnen (network interfaces) gevonden en opgeslagen die zijn aangesloten op virtuele machines. Vervolgens gebruiken de query's de lijst met NIC's om elke IP-adresbron te vinden die een openbaar IP-adres is en deze waarden op te slaan. Ten slotte bieden de query's een lijst met de openbare IP-adressen.
 
 ```azurecli-interactive
 # Use Resource Graph to get all NICs and store in the 'nics.txt' file
@@ -275,7 +275,7 @@ $nics = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virt
 $nics.nic
 ```
 
-Gebruik het bestand (Azure CLI) of de variabele (Azure PowerShell) in de volgende query om de gerelateerde netwerk interface bronnen weer te geven, waarbij een openbaar IP-adres aan de NIC is gekoppeld.
+Gebruik het bestand (Azure CLI) of variable (Azure PowerShell) in de volgende query om de bijbehorende netwerkinterfacebronnen te krijgen waar een openbaar IP-adres aan de NIC is gekoppeld.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
@@ -293,7 +293,7 @@ $ips = Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/netwo
 $ips.publicIp
 ```
 
-Gebruik ten slotte de lijst met open bare IP-adres bronnen die zijn opgeslagen in het bestand (Azure CLI) of variabele (Azure PowerShell) om het werkelijke open bare IP-adres van het gerelateerde object en weer gave op te halen.
+Gebruik ten slotte de lijst met openbare IP-adresbronnen die zijn opgeslagen in het bestand (Azure CLI) of variabele (Azure PowerShell) om het werkelijke openbare IP-adres van het gerelateerde object en de bijbehorende weergave te halen.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources
@@ -305,10 +305,10 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-Zie de [lijst virtuele machines met hun netwerk interface en openbaar IP-](../samples/advanced.md#join-vmpip) voor beeld voor meer informatie over het uitvoeren van deze stappen in één query met de operator `join`.
+Zie de virtuele machines lijst met hun `join` [netwerkinterface en openbare IP-steekproef](../samples/advanced.md#join-vmpip) om te zien hoe u deze stappen in één query met de operator uitvoeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [query taal](query-language.md).
-- Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
-- Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
+- Meer informatie over de [querytaal](query-language.md).
+- Zie de taal die wordt gebruikt in [Starter-query's](../samples/starter.md).
+- Zie geavanceerde toepassingen in [Geavanceerde query's](../samples/advanced.md).

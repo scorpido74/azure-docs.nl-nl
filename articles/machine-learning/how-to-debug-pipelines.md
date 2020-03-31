@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 578e935ee742ad476aeafb53670f0a92035249e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064085"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388981"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten in Machine Learning-pijplijnen opsporen en oplossen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "80064085"
 In dit artikel leert u hoe u [machine learning-pijplijnen](concept-ml-pipelines.md) opsporen en oplossen in de [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) en Azure Machine [Learning-ontwerper (preview).](https://docs.microsoft.com/azure/machine-learning/concept-designer) Er wordt informatie verstrekt over hoe:
 
 * Foutopsporing met de Azure Machine Learning SDK
-* Foutopsporing met de Azure Machine Learning Designer
+* Foutopsporing met de Azure Machine Learning-ontwerper
 * Foutopsporing met toepassingsinzichten
 * Foutopsporing interactief met behulp van Visual Studio Code (VS Code) en de Python Tools for Visual Studio (PTVSD)
 
@@ -91,7 +91,7 @@ In de onderstaande tabel vindt u informatie over verschillende foutopsporingsopt
 | Bibliotheek                    | Type   | Voorbeeld                                                          | Doel                                  | Resources                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning-SDK | Gegevens | `run.log(name, val)`                                             | Gebruikersinterface van Azure Machine Learning Portal             | [Experimenten volgen](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml.core.Run, klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Python afdrukken/logboekregistratie    | Logboek    | `print(val)`<br>`logging.info(message)`                          | Stuurprogrammalogboeken, Azure Machine Learning Designer | [Experimenten volgen](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python-logboekregistratie](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| Python afdrukken/logboekregistratie    | Logboek    | `print(val)`<br>`logging.info(message)`                          | Driver logs, Azure Machine Learning designer | [Experimenten volgen](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python-logboekregistratie](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | Logboek    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights - traces                | [Fouten met pijplijnen opsporen in Application Insights](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python logging kookboek](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>Voorbeeld van logboekopties
@@ -136,8 +136,8 @@ Voor pijplijnen die in de ontwerper zijn gemaakt, u de **logboekbestanden** vind
 Wanneer u een pijplijnrun verzendt en op de ontwerppagina blijft, u de logboekbestanden vinden die voor elke module zijn gegenereerd.
 
 1. Selecteer een module in het ontwerpcanvas.
-1. Ga in het rechterdeelvenster van de module naar het tabblad **Uitvoer+ogs.**
-1. Het logboekbestand selecteren`70_driver_log.txt`
+1. Ga in het rechterdeelvenster van de module naar het tabblad **Uitvoer + logboeken.**
+1. Selecteer het `70_driver_log.txt`logboekbestand .
 
     ![Logboeken van de paginamodule](./media/how-to-debug-pipelines/pipelinerun-05.png)
 
@@ -148,8 +148,8 @@ U de logboekbestanden van specifieke uitvoeringen ook vinden in de detailpagina 
 1. Selecteer een pijplijnrun die is gemaakt in de ontwerper.
     ![Pagina Pijplijnrun](./media/how-to-debug-pipelines/pipelinerun-04.png)
 1. Selecteer een module in het voorbeeldvenster.
-1. Ga in het rechterdeelvenster van de module naar het tabblad **Uitvoer+ogs.**
-1. Het logboekbestand selecteren`70_driver_log.txt`
+1. Ga in het rechterdeelvenster van de module naar het tabblad **Uitvoer + logboeken.**
+1. Selecteer het `70_driver_log.txt`logboekbestand .
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Foutopsporing en problemen oplossen in toepassingsinzichten
 Zie deze handleiding: [Foutopsporingsen en oplossen van machine learning-pijplijnen in Application Insights](how-to-debug-pipelines-application-insights.md) voor meer informatie over het gebruik van de OpenCensus Python-bibliotheek op deze manier.

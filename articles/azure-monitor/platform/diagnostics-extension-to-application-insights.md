@@ -1,27 +1,27 @@
 ---
-title: Azure Diagnostics gegevens naar Application Insights verzenden
-description: De Azure Diagnostics open bare configuratie bijwerken om gegevens te verzenden naar Application Insights.
+title: Azure Diagnostics-gegevens naar toepassingsinzichten verzenden
+description: Werk de openbare configuratie van Azure Diagnostics bij om gegevens naar Application Insights te verzenden.
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77672324"
 ---
-# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>De diagnostische gegevens voor de Cloud service, virtuele machine of Service Fabric verzenden naar Application Insights
-Cloud Services, Virtual Machines, Virtual Machine Scale Sets en Service Fabric gebruiken allemaal de Azure Diagnostics extensie voor het verzamelen van gegevens.  Diagnostische gegevens van Azure worden verzonden naar Azure Storage tabellen.  U kunt echter ook alle of een subset van de gegevens naar andere locaties pipeen met Azure Diagnostics extensie 1,5 of hoger.
+# <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Diagnostische gegevens over Cloud Service, Virtual Machine of Service Fabric naar Application Insights verzenden
+Cloudservices, virtuele machines, virtuele machineschaalsets en servicestructuur gebruiken allemaal de Azure Diagnostics-extensie om gegevens te verzamelen.  Azure-diagnose verzendt gegevens naar Azure Storage-tabellen.  U echter ook alle of een subset van de gegevens naar andere locaties leiden met Azure Diagnostics-extensie 1.5 of hoger.
 
-In dit artikel wordt beschreven hoe u gegevens van de Azure Diagnostics extensie verzendt naar Application Insights.
+In dit artikel wordt beschreven hoe u gegevens van de Azure Diagnostics-extensie naar Application Insights verzendt.
 
-## <a name="diagnostics-configuration-explained"></a>Configuratie van diagnostische gegevens wordt uitgelegd
-De Azure Diagnostics-extensie 1,5 geïntroduceerde sinks, die extra locaties zijn waar u Diagnostische gegevens kunt verzenden.
+## <a name="diagnostics-configuration-explained"></a>Diagnostische configuratie uitgelegd
+De Azure diagnostics extension 1.5 introduceerde sinks, die extra locaties zijn waar u diagnostische gegevens verzenden.
 
-Voorbeeld configuratie van een Sink voor Application Insights:
+Voorbeeldconfiguratie van een sink voor Application Insights:
 
 ```XML
 <SinksConfig>
@@ -56,35 +56,35 @@ Voorbeeld configuratie van een Sink voor Application Insights:
     ]
 }
 ```
-- Het kenmerk **sink** *name* is een teken reeks waarde waarmee de Sink uniek wordt geïdentificeerd.
+- Het kenmerk **Sink** *Sink-naam* is een tekenreekswaarde die de gootsteen op unieke wijze identificeert.
 
-- Het element **ApplicationInsights** geeft instrumentatie sleutel aan van de Application Insights-resource waar de diagnostische gegevens van Azure worden verzonden.
-    - Als u geen bestaande Application Insights resource hebt, raadpleegt u [een nieuwe Application Insights resource maken](../../azure-monitor/app/create-new-resource.md ) voor meer informatie over het maken van een resource en het ophalen van de instrumentatie sleutel.
-    - Als u een Cloud service ontwikkelt met Azure SDK 2,8 en hoger, wordt deze instrumentatie sleutel automatisch ingevuld. De waarde is gebaseerd op de configuratie-instelling **APPINSIGHTS_INSTRUMENTATIONKEY** service wanneer het Cloud service project wordt ingepakt. Zie [Application Insights gebruiken met Cloud Services](../../azure-monitor/app/cloudservices.md).
+- Het element **ApplicationInsights** geeft de instrumentatiesleutel op van de bron Toepassingsinzichten waarin de Azure-diagnostische gegevens worden verzonden.
+    - Zie [Een nieuwe Application Insights-bron maken](../../azure-monitor/app/create-new-resource.md ) voor meer informatie over het maken van een resource en het verkrijgen van de instrumentatiesleutel als u geen bestaande Application Insights-bron hebt.
+    - Als u een Cloud Service ontwikkelt met Azure SDK 2.8 en hoger, wordt deze instrumentatiesleutel automatisch ingevuld. De waarde is gebaseerd op de **APPINSIGHTS_INSTRUMENTATIONKEY** serviceconfiguratie-instelling bij het verpakken van het Cloud Service-project. Zie [Toepassingsinzichten gebruiken met CloudServices](../../azure-monitor/app/cloudservices.md).
 
-- Het element **channels** bevat een of meer **kanaal** elementen.
-    - Het *naam* kenmerk verwijst uniek naar dat kanaal.
-    - Met het kenmerk *LogLevel* kunt u het logboek niveau opgeven dat door het kanaal wordt toegestaan. De beschik bare logboek niveaus in volg orde van de meest minimale informatie zijn:
-        - Uitgebreid
+- Het element **Kanalen** bevat een of meer **kanaalelementen.**
+    - Het *naamkenmerk* verwijst op unieke wijze naar dat kanaal.
+    - Met het kenmerk *loglevel* u het logboekniveau opgeven dat het kanaal toestaat. De beschikbare logniveaus in volgorde van de meeste tot minste informatie zijn:
+        - Verbose
         - Informatie
         - Waarschuwing
         - Fout
         - Kritiek
 
-Een kanaal fungeert als een filter en biedt u de mogelijkheid specifieke logboek niveaus te selecteren om naar de doel-sink te verzenden. U kunt bijvoorbeeld uitgebreide logboeken verzamelen en deze naar opslag verzenden, maar alleen fouten naar de Sink verzenden.
+Een kanaal werkt als een filter en stelt u in staat om specifieke logboekniveaus te selecteren die u naar de doelgootsteen wilt verzenden. U bijvoorbeeld uitgebreide logboeken verzamelen en deze naar de opslag verzenden, maar alleen fouten naar de gootsteen verzenden.
 
-In de volgende afbeelding ziet u deze relatie.
+De volgende afbeelding toont deze relatie.
 
-![Open bare configuratie van diagnostische gegevens](media/diagnostics-extension-to-application-insights/AzDiag_Channels_App_Insights.png)
+![Openbare configuratie van diagnostische gegevens](media/diagnostics-extension-to-application-insights/AzDiag_Channels_App_Insights.png)
 
-In de volgende afbeelding ziet u een overzicht van de configuratie waarden en hoe ze werken. U kunt meerdere sinks in de configuratie op verschillende niveaus in de hiërarchie toevoegen. De Sink op het hoogste niveau fungeert als globale instelling en de filter die is opgegeven bij het afzonderlijke element fungeert als een onderdrukking voor die globale instelling.
+In de volgende afbeelding worden de configuratiewaarden en de manier waarop deze werken samengevat. U meerdere sinks in de configuratie opnemen op verschillende niveaus in de hiërarchie. De gootsteen op het hoogste niveau fungeert als een globale instelling en de instelling die is opgegeven bij het afzonderlijke element fungeert als een overschrijving naar die globale instelling.
 
-![Configuratie van diagnose filters met Application Insights](media/diagnostics-extension-to-application-insights/Azure_Diagnostics_Sinks.png)
+![Diagnostische sinks configuratie met Application Insights](media/diagnostics-extension-to-application-insights/Azure_Diagnostics_Sinks.png)
 
-## <a name="complete-sink-configuration-example"></a>Voor beeld van de Sink-configuratie volt ooien
-Hier volgt een volledig voor beeld van het open bare configuratie bestand dat
-1. stuurt alle fouten naar Application Insights (opgegeven op het knoop punt **DiagnosticMonitorConfiguration** )
-2. verzendt ook uitgebreide logboeken voor de toepassings Logboeken (opgegeven op het knoop punt **Logboeken** ).
+## <a name="complete-sink-configuration-example"></a>Voorbeeld van volledige sinkconfiguratie
+Hier is een compleet voorbeeld van het openbare configuratiebestand dat
+1. stuurt alle fouten naar Application Insights (opgegeven op het knooppunt **DiagnosticMonitorConfiguration)**
+2. stuurt ook Verbose-niveaulogboeken voor de toepassingslogboeken (opgegeven op het knooppunt **Logboeken).**
 
 ```XML
 <WadCfg>
@@ -168,9 +168,9 @@ Hier volgt een volledig voor beeld van het open bare configuratie bestand dat
     }
 }
 ```
-In de vorige configuratie hebben de volgende regels de volgende betekenis:
+In de vorige configuratie hebben de volgende regels de volgende betekenissen:
 
-### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Alle gegevens die worden verzameld door Azure Diagnostics verzenden
+### <a name="send-all-the-data-that-is-being-collected-by-azure-diagnostics"></a>Alle gegevens verzenden die worden verzameld door Azure-diagnose
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights">
@@ -182,7 +182,7 @@ In de vorige configuratie hebben de volgende regels de volgende betekenis:
 }
 ```
 
-### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Alleen fouten logboeken naar de Application Insights-Sink verzenden
+### <a name="send-only-error-logs-to-the-application-insights-sink"></a>Alleen foutlogboeken verzenden naar de sink Application Insights
 
 ```XML
 <DiagnosticMonitorConfiguration overallQuotaInMB="4096" sinks="ApplicationInsights.MyTopDiagdata">
@@ -194,7 +194,7 @@ In de vorige configuratie hebben de volgende regels de volgende betekenis:
 }
 ```
 
-### <a name="send-verbose-application-logs-to-application-insights"></a>Uitgebreide toepassings logboeken naar Application Insights verzenden
+### <a name="send-verbose-application-logs-to-application-insights"></a>Verbose-toepassingslogboeken naar Application Insights verzenden
 
 ```XML
 <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
@@ -208,12 +208,12 @@ In de vorige configuratie hebben de volgende regels de volgende betekenis:
 
 ## <a name="limitations"></a>Beperkingen
 
-- **Logboek type alleen kanalen en geen prestatie meter items.** Als u een kanaal met een prestatie meter element opgeeft, wordt dit genegeerd.
-- **Het logboek niveau voor een kanaal kan niet groter zijn dan het logboek niveau voor de gegevens die worden verzameld door Azure Diagnostics.** U kunt bijvoorbeeld geen toepassings logboek fouten verzamelen in het element logs en proberen uitgebreide logboeken te verzenden naar de Sink voor het inzicht van de toepassing. Het kenmerk *scheduledTransferLogLevelFilter* moet altijd gelijke of meer logboeken verzamelen dan de logboeken die u probeert te verzenden naar een sink.
-- **U kunt geen BLOB-gegevens verzenden die zijn verzameld door de Azure Diagnostics-extensie naar Application Insights.** Bijvoorbeeld iets dat is opgegeven onder het knoop punt *directory's* . Voor crash dumps wordt de daad werkelijke crash dump verzonden naar de Blob-opslag en alleen een melding dat de crash dump is gegenereerd, wordt verzonden naar Application Insights.
+- **Kanalen loggen alleen type en niet prestatiemeteritems.** Als u een kanaal opgeeft met een prestatiemeterelement, wordt dit genegeerd.
+- **Het logboekniveau voor een kanaal mag het logboekniveau niet overschrijden voor wat wordt verzameld door Azure-diagnose.** U bijvoorbeeld geen fouten in het logboeken verzamelen en probeert Verbose-logboeken naar de gootsteen Voor toepassingsinzicht te verzenden. Het *kenmerk scheduledTransferLogLevelFilter* moet altijd gelijke of meer logboeken verzamelen dan de logboeken die u naar een gootsteen probeert te verzenden.
+- **U blobgegevens die zijn verzameld door azure-diagnostische extensie niet verzenden naar Application Insights.** Bijvoorbeeld alles wat is opgegeven onder het knooppunt *Mappen.* Voor Crash Dumps wordt de werkelijke crashdump verzonden naar blobopslag en wordt alleen een melding verzonden dat de crashdump is gegenereerd naar Application Insights.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [het weer geven van uw Azure diagnostische gegevens](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) in Application Insights.
-* Gebruik [Power shell](../../cloud-services/cloud-services-diagnostics-powershell.md) om de Azure Diagnostics-extensie voor uw toepassing in te scha kelen.
-* [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) gebruiken om de Azure Diagnostics-extensie voor uw toepassing in te scha kelen
+* Meer informatie over het [weergeven van uw Azure-diagnostische gegevens](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) in Application Insights.
+* Gebruik [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) om de Azure-diagnostische extensie voor uw toepassing in te schakelen.
+* [Visual Studio gebruiken](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) om de Azure-diagnostische extensie voor uw toepassing in te schakelen
 

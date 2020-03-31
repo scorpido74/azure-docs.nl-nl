@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Azure Data Lake Storage Gen1 vanuit VNETs | Microsoft Docs
+title: Verbinding maken met Azure Data Lake Storage Gen1 van VNETs | Microsoft Documenten
 description: Verbinding maken met Azure Data Lake Storage Gen1 vanuit Azure VNETs
 services: data-lake-store,data-catalog
 documentationcenter: ''
@@ -13,27 +13,27 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
 ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60878865"
 ---
-# <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Toegang tot Azure Data Lake Storage Gen1 van virtuele machines binnen een Azure VNET
-Azure Data Lake Storage Gen1 is een PaaS-service die wordt uitgevoerd op het openbare Internet-IP-adressen. Een server die u verbinding met het openbare Internet maken kunt kunt maken doorgaans verbinding met Azure Data Lake Storage Gen1 eindpunten ook. Standaard worden alle virtuele machines die zich in Azure vnet's hebben toegang tot het Internet en daarom hebben toegang tot Azure Data Lake Storage Gen1. Het is echter mogelijk om te configureren van virtuele machines in een VNET-naar-geen toegang tot het Internet. Voor dergelijke VM's wordt toegang tot Azure Data Lake Storage Gen1 beperkt ook. Openbare toegang via Internet blokkeren voor virtuele machines in Azure vnet's kan worden gedaan met behulp van een van de volgende methoden:
+# <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Toegang tot Azure Data Lake Storage Gen1 vanuit VM's binnen een Azure VNET
+Azure Data Lake Storage Gen1 is een PaaS-service die wordt uitgevoerd op openbare IP-adressen op internet. Elke server die verbinding kan maken met het openbare internet, kan doorgaans ook verbinding maken met Azure Data Lake Storage Gen1-eindpunten. Standaard hebben alle VM's die zich in Azure VNETs bevinden toegang tot internet en hebben ze dus toegang tot Azure Data Lake Storage Gen1. Het is echter mogelijk om VM's in een VNET te configureren om geen toegang tot internet te hebben. Voor dergelijke VM's is de toegang tot Azure Data Lake Storage Gen1 ook beperkt. Het blokkeren van openbare internettoegang voor VM's in Azure VNET's kan worden gedaan met behulp van een van de volgende benaderingen:
 
-* Door het configureren van de Netwerkbeveiligingsgroep groepen (NSG)
-* Door gebruiker gedefinieerde Routes (UDR) configureren
-* Door het uitwisselen van routes via BGP (dynamische routering standaardprotocol), wanneer u ExpressRoute gebruikt, die toegang blokkeren tot met Internet
+* Door netwerkbeveiligingsgroepen (NSG) te configureren
+* Door Gebruikersgedefinieerde routes (UDR) te configureren
+* Door routes uit te wisselen via BGP (industriestandaard dynamic routing protocol), wanneer ExpressRoute wordt gebruikt, blokkeert dat de toegang tot het internet
 
-In dit artikel leert u hoe u kunt toegang inschakelen voor Azure Data Lake Storage Gen1 van Azure VM's, die zijn beperkt tot toegang tot resources met behulp van een van de drie methoden die eerder is vermeld.
+In dit artikel leert u hoe u toegang tot Azure Data Lake Storage Gen1 inschakelen vanuit Azure VM's, die zijn beperkt tot toegang tot bronnen met behulp van een van de drie eerder genoemde methoden.
 
-## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Om verbinding met Azure Data Lake Storage Gen1 van virtuele machines met beperkte connectiviteit
-Voor toegang tot Azure Data Lake Storage Gen1 van dergelijke virtuele machines, moet u configureren zodat ze toegang krijgen tot het IP-adres voor de regio waar het Gen1 van Azure Data Lake Storage-account beschikbaar is. U kunt de IP-adressen voor uw Data Lake Storage Gen1 account regio's identificeren door het omzetten van de DNS-namen van uw accounts (`<account>.azuredatalakestore.net`). U kunt oplossen door een DNS-namen van uw accounts, kunt u hulpprogramma's zoals **nslookup**. Open een opdrachtprompt op uw computer en voer de volgende opdracht uit:
+## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Connectiviteit met Azure Data Lake Storage Gen1 inschakelen vanuit VM's met beperkte connectiviteit
+Als u toegang wilt krijgen tot Azure Data Lake Storage Gen1 van dergelijke VM's, moet u deze configureren om toegang te krijgen tot het IP-adres voor het gebied waar het Azure Data Lake Storage Gen1-account beschikbaar is. U de IP-adressen voor uw Data Lake Storage Gen1-accountregio's identificeren door de DNS-namen van uw accounts op te lossen (`<account>.azuredatalakestore.net`). Als u DNS-namen van uw accounts wilt oplossen, u hulpprogramma's zoals **nslookup**gebruiken. Open een opdrachtprompt op uw computer en voer de volgende opdracht uit:
 
     nslookup mydatastore.azuredatalakestore.net
 
-De uitvoer lijkt op het volgende. De waarde op basis van **adres** eigenschap is het IP-adres dat is gekoppeld aan uw Data Lake Storage Gen1-account.
+De uitvoer lijkt op het volgende. De waarde ten opzichte **van de** eigenschap Adres is het IP-adres dat is gekoppeld aan uw Data Lake Storage Gen1-account.
 
     Non-authoritative answer:
     Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
@@ -41,16 +41,16 @@ De uitvoer lijkt op het volgende. De waarde op basis van **adres** eigenschap is
     Aliases:  mydatastore.azuredatalakestore.net
 
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Inschakelen van de connectiviteit van VM's die zijn beperkt met behulp van NSG
-Wanneer een NSG-regel wordt gebruikt om toegang tot het Internet te blokkeren, kunt u een andere NSG waarmee toegang tot het Data Lake Storage Gen1 IP-adres maken. Zie voor meer informatie over NSG-regels, [overzicht van netwerkbeveiligingsgroepen](../virtual-network/security-overview.md). Zie voor instructies over het maken van nsg's [over het maken van een netwerkbeveiligingsgroep](../virtual-network/tutorial-filter-network-traffic.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Connectiviteit van VM's beperkt door gebruik te maken van NSG
+Wanneer een NSG-regel wordt gebruikt om de toegang tot internet te blokkeren, u een andere NSG maken waarmee toegang tot het IP-adres Data Lake Storage Gen1 kan worden geopend. Zie [Overzicht netwerkbeveiligingsgroepen](../virtual-network/security-overview.md)voor meer informatie over NSG-regels. Zie [Een netwerkbeveiligingsgroep maken](../virtual-network/tutorial-filter-network-traffic.md)voor instructies over het maken van NSGs.
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Inschakelen van de connectiviteit van VM's die zijn beperkt met behulp van UDR of ExpressRoute
-Wanneer, routes, udr's of uitgewisseld BGP routes worden gebruikt om toegang tot het Internet te blokkeren, moet een speciale route worden geconfigureerd zodat virtuele machines in deze subnetten toegang Data Lake Storage Gen1 eindpunten tot hebben. Zie voor meer informatie, [overzicht van de gebruiker gedefinieerde routes](../virtual-network/virtual-networks-udr-overview.md). Zie voor instructies over het maken van udr's [udr's van maken in Resource Manager](../virtual-network/tutorial-create-route-table-powershell.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Connectiviteit van VM's beperkt door udr of ExpressRoute te gebruiken
+Wanneer routes, ofwel UDR's of BGP-uitwisselingsroutes, worden gebruikt om de toegang tot het internet te blokkeren, moet een speciale route worden geconfigureerd zodat VM's in dergelijke subnetten toegang hebben tot Data Lake Storage Gen1-eindpunten. Zie [Overzicht van door de gebruiker gedefinieerde routes](../virtual-network/virtual-networks-udr-overview.md)voor meer informatie. Zie [UDR's maken in Resourcemanager](../virtual-network/tutorial-create-route-table-powershell.md)voor instructies voor het maken van UDR's.
 
-### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Inschakelen van de connectiviteit van VM's die zijn beperkt met behulp van ExpressRoute
-Wanneer een ExpressRoute-circuit is geconfigureerd, kunnen de on-premises servers toegang tot Data Lake Storage Gen1 via openbare peering. Meer informatie over het configureren van ExpressRoute voor openbare peering is beschikbaar op [Veelgestelde vragen over ExpressRoute](../expressroute/expressroute-faqs.md).
+### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Connectiviteit van VM's beperkt inschakelen met ExpressRoute
+Wanneer een ExpressRoute-circuit is geconfigureerd, hebben de on-premises servers toegang tot Data Lake Storage Gen1 via openbare peering. Meer informatie over het configureren van ExpressRoute voor openbare peering is beschikbaar op [ExpressRoute VEELGestelde vragen.](../expressroute/expressroute-faqs.md)
 
 ## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
-* [Het beveiligen van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1](data-lake-store-security-overview.md)
+* [Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1](data-lake-store-security-overview.md)
 

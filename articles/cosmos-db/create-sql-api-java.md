@@ -1,6 +1,6 @@
 ---
-title: 'Quick Start: Java gebruiken om een document database te maken met behulp van Azure Cosmos DB'
-description: In deze Quick start ziet u een voor beeld van een Java-code waarmee u verbinding kunt maken met de Azure Cosmos DB SQL-API.
+title: Snelstart - Java gebruiken om een documentdatabase te maken met Azure Cosmos DB
+description: Deze quickstart presenteert een Java-codevoorbeeld waarmee u verbinding maken en query's maken met de Azure Cosmos DB SQL API
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -10,13 +10,13 @@ ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 489f241453436190213b99cb4e7be0688a8b6237
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240175"
 ---
-# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Quick Start: een Java-app maken voor het beheren van Azure Cosmos DB SQL-API-gegevens
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Snelstart: een Java-app bouwen om Azure Cosmos DB SQL API-gegevens te beheren
 
 
 > [!div class="op_single_selector"]
@@ -27,26 +27,26 @@ ms.locfileid: "79240175"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-In deze Quick Start maakt en beheert u een Azure Cosmos DB SQL-API-account van de Azure Portal en gebruikt u een Java-app die is gekloond van GitHub. Eerst maakt u een Azure Cosmos DB SQL-API-account met behulp van de Azure Portal, vervolgens maakt u een Java-app met behulp van de SQL Java SDK en voegt u vervolgens bronnen toe aan uw Cosmos DB-account met behulp van de Java-toepassing. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
+In deze quickstart maakt en beheert u een Azure Cosmos DB SQL API-account vanuit de Azure-portal en gebruikt u een Java-app die is gekloond vanuit GitHub. Eerst maakt u een Azure Cosmos DB SQL API-account met behulp van de Azure-portal, maakt u vervolgens een Java-app met de SQL Java SDK en voegt u vervolgens resources toe aan uw Cosmos DB-account met behulp van de Java-toepassing. Azure Cosmos DB is een databaseservice met meerdere modellen waarmee u snel document-, tabel-, sleutelwaarde- en grafiekdatabases maken en opvragen met globale distributie- en horizontale schaalmogelijkheden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement. U kunt ook de [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator) gebruiken met een URI van `https://localhost:8081` en de sleutel `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
-- [Jdk 8 (Java Development Kit)](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Verwijs uw `JAVA_HOME` omgevings variabele naar de map waarin de JDK is geïnstalleerd.
-- Een [binair maven-archief](https://maven.apache.org/download.cgi). Voer `apt-get install maven` uit op Ubuntu om Maven te installeren.
-- [Git](https://www.git-scm.com/downloads). Voer `sudo apt-get install git` uit om Git te installeren op Ubuntu.
+- Een Azure-account met een actief abonnement. [Maak er gratis een.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Of [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement. U ook de [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) gebruiken met een URI van `https://localhost:8081` en de sleutel. `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Wijs `JAVA_HOME` uw omgevingsvariabele op de map waar de JDK is geïnstalleerd.
+- Een [Maven binair archief](https://maven.apache.org/download.cgi). Op Ubuntu, `apt-get install maven` uitvoeren om Maven te installeren.
+- [Git.](https://www.git-scm.com/downloads) Voer op Ubuntu uit `sudo apt-get install git` om Git te installeren.
 
-## <a name="introductory-notes"></a>Inleidende opmerkingen
+## <a name="introductory-notes"></a>Inleidende notities
 
-*De structuur van een Cosmos DB-account.* Een Cosmos DB- *account* bevat geen API-of programmeer taal, maar heeft geen of meer *data bases*, een *Data Base* (DB) bevat nul of meer *containers*en een *container* bevat nul of meer items, zoals in het onderstaande diagram wordt weer gegeven:
+*De structuur van een Cosmos DB account.* Ongeacht api- of programmeertaal bevat een Cosmos *DB-account* nul of meer *databases,* een *database* (DB) bevat nul of meer *containers*en een *container* bevat nul of meer items, zoals in het onderstaande diagram wordt weergegeven:
 
-![Azure Cosmos-account-entiteiten](./media/databases-containers-items/cosmos-entities.png)
+![Azure Cosmos-accountentiteiten](./media/databases-containers-items/cosmos-entities.png)
 
-U kunt hier meer lezen over data bases, containers en items [.](databases-containers-items.md) Enkele belang rijke eigenschappen worden op het niveau van de container gedefinieerd, onder de *ingerichte door Voer* en de *partitie sleutel*. 
+U hier meer lezen over databases, containers en [items.](databases-containers-items.md) Een paar belangrijke eigenschappen worden gedefinieerd op het niveau van de container, waaronder *ingerichte doorvoer* en *partitiesleutel*. 
 
-De ingerichte door Voer wordt gemeten in aanvraag eenheden (*RUs*) die een monetaire prijs hebben en die een substantiële bepaling van de bedrijfs kosten van het account zijn. Ingerichte door Voer kan worden geselecteerd bij granulatie op basis van een container of nauw keurigheid per data base, maar de specificatie voor door Voer op container niveau verdient doorgaans de voor keur. U kunt hier meer lezen over het inrichten van de door Voer [.](set-throughput.md)
+De ingerichte doorvoer wordt gemeten in Request Units *(RU's)* die een monetaire prijs hebben en een belangrijke bepalende factor zijn in de bedrijfskosten van de rekening. Ingerichte doorvoer kan worden geselecteerd op granulariteit per container of per database granulariteit, maar de doorvoerspecificatie op containerniveau heeft meestal de voorkeur. U hier meer lezen over het inrichten van [doorvoer.](set-throughput.md)
 
-Naarmate items worden ingevoegd in een Cosmos DB container, groeit de data base horizon taal door meer opslag en reken kracht toe te voegen voor het afhandelen van aanvragen. Opslag-en reken capaciteit worden toegevoegd aan discrete eenheden die *partities*worden genoemd, en u moet één veld in uw documenten selecteren als partitie sleutel die elk document aan een partitie toewijst. De manier waarop partities worden beheerd, is dat aan elke partitie een ongeveer gelijk segment uit het bereik van partitie sleutel waarden wordt toegewezen. Daarom wordt u aangeraden een partitie sleutel te kiezen die relatief wille keurig of gelijkmatig gedistribueerd is. Als dat niet het geval is, zien sommige partities veel meer aanvragen (*Hot Partition*), terwijl andere partities veel minder aanvragen (*koude partitie*) zien, en dit moet worden vermeden. Meer informatie over partitionering vindt u [hier](partitioning-overview.md).
+Als items in een Cosmos DB-container worden ingevoegd, wordt de database horizontaal door meer opslag en rekenkracht toe te voegen om aanvragen af te handelen. Opslag- en rekencapaciteit worden toegevoegd in afzonderlijke eenheden die *partities*worden genoemd en u moet één veld in uw documenten kiezen als de partitiesleutel die elk document aan een partitie toewijst. De manier waarop partities worden beheerd, is dat aan elke partitie een ongeveer gelijk segment wordt toegewezen dat uit het bereik van partitiesleutelwaarden wordt toegewezen. daarom wordt u geadviseerd om een partitiesleutel te kiezen die relatief willekeurig of gelijkmatig verdeeld is. Anders zullen sommige partities aanzienlijk meer aanvragen zien *(hot partition)* terwijl andere partities aanzienlijk minder aanvragen zien *(koude partitie),* en dit moet worden vermeden. U hier meer informatie [vinden](partitioning-overview.md)over partitioneren.
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
 
@@ -81,61 +81,61 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. Sla dit anders over en ga naar [De app uitvoeren](#run-the-app). 
 
-### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Database resources beheren met behulp van de synchrone API (Sync)
+### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Databasebronnen beheren met behulp van de synchrone (synchronisatie)API
 
-* Initialisatie van `CosmosClient`. De `CosmosClient` biedt logische weer gave aan de client zijde voor de Azure Cosmos-database service. Deze client wordt gebruikt om aanvragen aan de service te configureren en uitvoeren.
+* Initialisatie van `CosmosClient`. De `CosmosClient` logische weergave aan clientzijde voor de Azure Cosmos-databaseservice biedt. Deze client wordt gebruikt om aanvragen aan de service te configureren en uitvoeren.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* `CosmosDatabase` maken.
+* `CosmosDatabase`Oprichting.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosContainer` maken.
+* `CosmosContainer`Oprichting.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* Items maken met behulp van de `createItem` methode.
+* Item creatie met `createItem` behulp van de methode.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* Punt Lees bewerkingen worden uitgevoerd met behulp van `readItem` methode.
+* Point reads worden `readItem` uitgevoerd met behulp van methode.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
-* SQL-query's via JSON worden uitgevoerd met behulp van de `queryItems` methode.
+* SQL-query's via JSON `queryItems` worden uitgevoerd met behulp van de methode.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
 
-### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Database resources beheren met de asynchrone API (async)
+### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Databasebronnen beheren met behulp van de asynchrone (async)-API
 
-* Asynchrone API-aanroepen worden direct geretourneerd zonder dat er wordt gewacht op een reactie van de server. In het licht hiervan geven de volgende code fragmenten goede ontwerp patronen weer voor het uitvoeren van alle voor gaande beheer taken met behulp van async API.
+* Async API-aanroepen keren onmiddellijk terug, zonder te wachten op een reactie van de server. In het licht hiervan tonen de volgende codefragmenten de juiste ontwerppatronen voor het uitvoeren van alle voorgaande beheertaken met behulp van async API.
 
-* Initialisatie van `CosmosAsyncClient`. De `CosmosAsyncClient` biedt logische weer gave aan de client zijde voor de Azure Cosmos-database service. Deze client wordt gebruikt om asynchrone aanvragen voor de service te configureren en uit te voeren.
+* Initialisatie van `CosmosAsyncClient`. De `CosmosAsyncClient` logische weergave aan clientzijde voor de Azure Cosmos-databaseservice biedt. Deze client wordt gebruikt voor het configureren en uitvoeren van asynchrone aanvragen tegen de service.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
 
-* `CosmosAsyncDatabase` maken.
+* `CosmosAsyncDatabase`Oprichting.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* `CosmosAsyncContainer` maken.
+* `CosmosAsyncContainer`Oprichting.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
-* Net als bij de Sync API wordt het maken van items uitgevoerd met behulp van de `createItem` methode. Dit voor beeld laat zien hoe u op efficiënte wijze talloze async-`createItem` aanvragen afgeeft door zich te abonneren op een reactieve stroom die de aanvragen uitgeeft en meldingen verzendt. Aangezien dit eenvoudige voor beeld wordt uitgevoerd om te worden voltooid en beëindigd, worden `CountDownLatch` exemplaren gebruikt om ervoor te zorgen dat het programma niet wordt beëindigd tijdens het maken van het item. **De juiste asynchrone programmerings procedure is niet blok keren op asynchrone aanroepen-in realistische use-case-aanvragen worden gegenereerd op basis van een hoofd ()-lus die voor onbepaalde tijd wordt uitgevoerd, waardoor de nood zaak voor het vergren delen van asynchrone aanroepen niet meer nodig is.**
+* Net als bij de synchronisatie-API wordt `createItem` het maken van items uitgevoerd met behulp van de methode. In dit voorbeeld ziet u hoe `createItem` u op efficiënte wijze talloze async-aanvragen verzenden door u te abonneren op een Reactieve stream die de aanvragen uitgeeft en meldingen afdrukt. Aangezien dit eenvoudige voorbeeld wordt voltooid `CountDownLatch` en beëindigd, worden instanties gebruikt om ervoor te zorgen dat het programma niet wordt beëindigd tijdens het maken van artikelen. **De juiste asynchrone programmeerpraktijk is niet te blokkeren op async-oproepen - in realistische use-cases worden aanvragen gegenereerd vanuit een hoofdlus() die voor onbepaalde tijd wordt uitgevoerd, waardoor de noodzaak om async-oproepen te vergrendelen niet nodig is.**
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
    
-* Net als bij de Sync-API worden punt Lees bewerkingen uitgevoerd met behulp van `readItem` methode.
+* Net als bij de synchronisatie-API `readItem` worden puntreads uitgevoerd met behulp van de methode.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
 
-* Net als bij de API Sync worden SQL-query's via JSON uitgevoerd met behulp van de `queryItems` methode.
+* Net als bij de synchronisatie-API worden SQL-query's via JSON uitgevoerd met behulp van de `queryItems` methode.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
-## <a name="run-the-app"></a>De app kunt uitvoeren
+## <a name="run-the-app"></a>De app uitvoeren
 
 Ga nu terug naar de Azure-portal om de verbindingsreeksgegevens op te halen en start de app met uw eindpuntgegevens. Hierdoor kan de app communiceren met de gehoste database.
 
@@ -151,7 +151,7 @@ Ga nu terug naar de Azure-portal om de verbindingsreeksgegevens op te halen en s
     mvn package
     ```
 
-3. Gebruik in het git-Terminal venster de volgende opdracht om de Java-toepassing te starten (Vervang SYNCASYNCMODE door `sync` of `async` afhankelijk van de voorbeeld code die u wilt uitvoeren, vervang YOUR_COSMOS_DB_HOSTNAME door de waarde van de geciteerde URI van de portal en vervang YOUR_COSMOS_DB_MASTER_KEY door de geciteerde primaire sleutel van de portal)
+3. Gebruik in het venster van de git-terminal de volgende opdracht `sync` om `async` de Java-toepassing te starten (vervang SYNCASYNCMODE door of afhankelijk van welke voorbeeldcode u wilt uitvoeren, vervang YOUR_COSMOS_DB_HOSTNAME door de geciteerde URI-waarde van de portal en vervang YOUR_COSMOS_DB_MASTER_KEY door de geciteerde primaire sleutel van portal)
 
     ```bash
     mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
@@ -160,10 +160,10 @@ Ga nu terug naar de Azure-portal om de verbindingsreeksgegevens op te halen en s
 
     Het terminalvenster geeft een melding dat de database FamilyDB is gemaakt. 
     
-4. De app maakt een Data Base met de naam `AzureSampleFamilyDB`
-5. De app maakt een container met de naam `FamilyContainer`
-6. De app voert punt lezen uit met behulp van object-Id's en de partitie sleutel waarde (in het voor beeld lastName). 
-7. Met de app worden items gezocht voor het ophalen van alle families met achternaam in (' Splinter ', ' Wakefield ', ' Johnson ')
+4. De app maakt database met naam`AzureSampleFamilyDB`
+5. De app maakt container met naam`FamilyContainer`
+6. De app voert puntreads uit met object----id's en partitiesleutelwaarde (wat achternaam is in ons voorbeeld). 
+7. De app zal items opvragen om alle gezinnen met achternaam op te halen ('Andersen', 'Wakefield', 'Johnson')
 
 7. De resources die zijn gemaakt, worden niet verwijderd door de app. Ga terug naar de portal om [de resources te verwijderen](#clean-up-resources).  uit uw account zodat u daarvoor geen kosten in rekening worden gebracht.
 
@@ -177,7 +177,7 @@ Ga nu terug naar de Azure-portal om de verbindingsreeksgegevens op te halen en s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB SQL-API-account maakt, een document database en-container maakt met behulp van de Data Explorer en een Java-app uitvoert om hetzelfde te doen met een programma. U kunt nu aanvullende gegevens in uw Azure Cosmos DB-account importeren. 
+In deze quickstart hebt u geleerd hoe u een Azure Cosmos DB SQL API-account maakt, een documentdatabase en -container maakt met behulp van de Data Explorer en een Java-app uitvoert om hetzelfde programmatisch te doen. U nu extra gegevens importeren in uw Azure Cosmos DB-account. 
 
 > [!div class="nextstepaction"]
 > [Gegevens importeren in Azure Cosmos DB](import-data.md)

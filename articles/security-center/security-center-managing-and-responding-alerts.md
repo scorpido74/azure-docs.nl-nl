@@ -11,21 +11,21 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/27/2019
+ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 834a097eb77cc7de2d0a3643bf1499ff7517ddb0
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
-ms.translationtype: MT
+ms.openlocfilehash: 6ea951b542d893b8fef3cdf19a964ce2ef8a034d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912270"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415713"
 ---
-# <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Beveiligings waarschuwingen beheren en erop reageren in Azure Security Center
+# <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center
 
-In dit onderwerp wordt beschreven hoe u de waarschuwingen die u hebt ontvangen, kunt weer geven en verwerken om uw resources te beveiligen. 
+In dit onderwerp ziet u hoe u de waarschuwingen weergeven en verwerken die u hebt ontvangen om uw resources te beschermen. 
 
-* Zie [beveiligings waarschuwings typen](security-center-alerts-overview.md#security-alert-types)voor meer informatie over de verschillende typen waarschuwingen.
-* Zie [how Azure Security Center detecteert en reageert op bedreigingen](security-center-alerts-overview.md#detect-threats)voor een overzicht van de manier waarop Security Center waarschuwingen genereert.
+* Zie [Beveiligingswaarschuwingstypen](alerts-reference.md)voor meer informatie over de verschillende typen waarschuwingen.
+* Zie [Hoe Azure Security Center](security-center-alerts-overview.md)bedreigingen detecteert en reageert voor een overzicht van hoe Beveiligingscentrum waarschuwingen genereert.
 
 > [!NOTE]
 > Als u geavanceerde detectie wilt inschakelen, voert u een upgrade uit naar Azure Security Center Standard. Er is een gratis proefversie beschikbaar. Als u een upgrade wilt uitvoeren, selecteert u de prijscategorie in het [beveiligingsbeleid](tutorial-security-policy.md). Zie [Prijsinformatie over Azure Security Center](security-center-pricing.md) voor meer informatie.
@@ -34,62 +34,44 @@ In dit onderwerp wordt beschreven hoe u de waarschuwingen die u hebt ontvangen, 
 Security Center verzamelt, analyseert en integreert automatisch logboekgegevens van uw Azure-resources, het netwerk en verbonden partneroplossingen, zoals firewall- en eindpuntbeveiligingsoplossingen om werkelijke dreigingen te detecteren en fout-positieven te reduceren. In Security Center wordt een lijst met beveiligingswaarschuwingen met prioriteiten weergegeven samen met de informatie die u nodig hebt om snel onderzoek te doen naar het probleem en aanbevelingen voor het herstellen van een aanval.
 
 > [!NOTE]
-> Zie [how Azure Security Center detecteert en reageert op bedreigingen](security-center-alerts-overview.md#detect-threats)voor meer informatie over de werking van Security Center detectie mogelijkheden.
+> Zie [Hoe Azure Security Center bedreigingen detecteert en reageert](security-center-alerts-overview.md#detect-threats)voor meer informatie over hoe detectiemogelijkheden voor beveiligingspersoneel werken.
 
-## <a name="manage-your-security-alerts"></a>Beveiligings waarschuwingen beheren
+## <a name="manage-your-security-alerts"></a>Uw beveiligingswaarschuwingen beheren
 
-1. Ga in het Security Center-dash board naar de tegel **bedreigings beveiliging** om de waarschuwingen weer te geven en te bekijken.
+1. Zie in het dashboard Beveiligingscentrum voor bedreigingen de tegel **Bedreigingsbeveiliging** om de waarschuwingen weer te geven en te bekijken.
 
     ![De tegel Beveiligingswaarschuwingen in Security Center](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
 
-1. Klik op de tegel om meer informatie over de waarschuwingen weer te geven.
+1. Als u meer informatie over de waarschuwingen wilt zien, klikt u op de tegel.
 
    ![Beveiligingswaarschuwingen in Security Center](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-1. Als u de weer gegeven waarschuwingen wilt filteren, klikt u op **filter**en selecteert u op de Blade **filter** die wordt geopend de filter opties die u wilt Toep assen. De lijst wordt bijgewerkt op basis van het geselecteerde filter. Filteren kan zeer nuttig zijn. U kunt u bijvoorbeeld concentreren op de beveiligingswaarschuwingen van de afgelopen 24 uur, omdat u een mogelijke inbreuk in het systeem onderzoekt.
+1. Als u de weergegeven waarschuwingen wilt filteren, klikt u op **Filter**en selecteert u in het **filterblad** dat wordt geopend de filteropties die u wilt toepassen. De lijst wordt bijgewerkt volgens het geselecteerde filter. Filteren kan zeer nuttig zijn. U kunt u bijvoorbeeld concentreren op de beveiligingswaarschuwingen van de afgelopen 24 uur, omdat u een mogelijke inbreuk in het systeem onderzoekt.
 
     ![Waarschuwingen filteren in Security Center](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
 
 ## <a name="respond-to-security-alerts"></a>Reageren op beveiligingswaarschuwingen
 
-1. Klik in de lijst **beveiligings waarschuwingen** op een beveiligings waarschuwing. De betrokken resources en de stappen die u moet nemen om een aanval te herstellen, worden weer gegeven.
+1. Klik in de lijst **Beveiligingswaarschuwingen** op een beveiligingswaarschuwing. De middelen die betrokken zijn en de stappen die u moet nemen om een aanval te verwerkeren wordt weergegeven.
 
     ![Reageren op beveiligingswaarschuwingen](./media/security-center-managing-and-responding-alerts/security-center-alert.png)
 
 1. Nadat u de informatie hebt bekeken, klikt u op een bron die is aangevallen.
 
-    ![Suggesties voor wat u moet doen over beveiligings waarschuwingen](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
+    ![Suggesties voor wat te doen met beveiligingswaarschuwingen](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    De sectie **algemene informatie** kan inzicht bieden in wat de beveiligings waarschuwing heeft geactiveerd. Hierin worden gegevens weer gegeven, zoals de doel resource, het bron-IP-adres (indien van toepassing), als de waarschuwing nog steeds actief is en aanbevelingen voor het oplossen van problemen.  
+    De sectie **Algemene informatie** kan inzicht geven in wat de beveiligingswaarschuwing heeft geactiveerd. Het toont informatie zoals de doelbron, bron-IP-adres (indien van toepassing), als de waarschuwing nog actief is en aanbevelingen over hoe te herstellen.  
 
     > [!NOTE]
-    >In sommige gevallen is het bron-IP-adres niet beschikbaar. sommige logboeken voor Windows-beveiligings gebeurtenissen bevatten niet het IP-adres.
+    >In sommige gevallen is het ip-adres van de bron niet beschikbaar, sommige logboeken van Windows-beveiligingsgebeurtenissen bevatten geen IP-adres.
 
-1. De herstels tappen die door Security Center worden voorgesteld, zijn afhankelijk van de beveiligings waarschuwing. Volg deze voor elke waarschuwing. 
+1. De herstelstappen die door Security Center worden voorgesteld, verschillen per beveiligingswaarschuwing. Volg ze voor elke waarschuwing. 
 
-    In sommige gevallen moet u, om een beveiligings waarschuwing te verminderen, mogelijk andere Azure-besturings elementen of-services gebruiken om het aanbevolen herstel te implementeren. 
-
-    De volgende onderwerpen helpen u bij het door lopen van de verschillende waarschuwingen, volgens de resource typen:
-    
-    * [Waarschuwingen voor IaaS Windows-computers](threat-protection.md#windows-machines)
-    * [Waarschuwingen voor IaaS Linux-machines](threat-protection.md#linux-machines)
-    * [Waarschuwingen voor Azure App Service](threat-protection.md#app-services)
-    * [Waarschuwingen voor Azure-containers](threat-protection.md#azure-containers)
-    * [Waarschuwingen voor SQL Database en SQL Data Warehouse](threat-protection.md#data-sql)
-    * [Waarschuwingen voor Azure Storage](threat-protection.md#azure-storage)
-    * [Waarschuwingen voor Cosmos DB](threat-protection.md#cosmos-db)
-
-    In de volgende onderwerpen wordt uitgelegd hoe Security Center de verschillende telemetrie gebruikt die wordt verzameld van integratie met de Azure-infra structuur, om extra beveiligings lagen toe te passen voor resources die in azure zijn geïmplementeerd:
-    
-    * [Waarschuwingen voor Azure Management Layer (Azure Resource Manager) (preview)](threat-protection.md#management-layer)
-    * [Waarschuwingen voor Azure Key Vault (preview-versie)](threat-protection.md#azure-keyvault)
-    * [Waarschuwingen voor Azure Network Layer](threat-protection.md#network-layer)
-    * [Waarschuwingen van andere services](threat-protection.md#alerts-other)    
+    In sommige gevallen moet u mogelijk andere Azure-besturingselementen of services gebruiken om de aanbevolen herstelprocedure te implementeren om een beveiligingswaarschuwing te beperken. 
 
 ## <a name="see-also"></a>Zie ook
 
-In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid in Security Center configureert. Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+In dit document hebt u kunnen lezen hoe u het beveiligingsbeleid in Security Center configureert. Zie de volgende onderwerpen voor meer informatie over Security Center:
 
-* [Beveiligings waarschuwingen in azure Security Center](security-center-alerts-overview.md).
-* [Beveiligings incidenten afhandelen](security-center-incident.md)
-* [Plannings- en bedieningsgids voor Azure Security Center](security-center-planning-and-operations-guide.md)
+* [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-overview.md).
+* [Omgaan met beveiligingsincidenten](security-center-incident.md)

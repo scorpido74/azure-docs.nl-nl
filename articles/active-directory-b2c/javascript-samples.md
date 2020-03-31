@@ -12,43 +12,43 @@ ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187658"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-voorbeelden voor gebruik in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-U kunt uw eigen Java script-client-side code toevoegen aan uw Azure Active Directory B2C-toepassingen (Azure AD B2C).
+U uw eigen JavaScript-clientcode toevoegen aan uw Azure Active Directory B2C-toepassingen (Azure AD B2C).
 
-Java script inschakelen voor uw toepassingen:
+Ga als u JavaScript inschakelen voor uw toepassingen:
 
 * Een element toevoegen aan uw [aangepaste beleid](custom-policy-overview.md)
-* Selecteer een [pagina-indeling](page-layout.md)
-* [B2clogin.com](b2clogin.md) in uw aanvragen gebruiken
+* Een [pagina-indeling selecteren](page-layout.md)
+* Gebruik [b2clogin.com](b2clogin.md) in uw verzoeken
 
-In dit artikel wordt beschreven hoe u het aangepaste beleid kunt wijzigen om het uitvoeren van scripts mogelijk te maken.
+In dit artikel wordt beschreven hoe u uw aangepaste beleid wijzigen om scriptuitvoering in te schakelen.
 
 > [!NOTE]
-> Als u Java script wilt inschakelen voor gebruikers stromen, raadpleegt u [Java script en pagina-indelings versies in azure Active Directory B2C](user-flow-javascript-overview.md).
+> Zie [JavaScript- en pagina-indelingsversies in Azure Active Directory B2C](user-flow-javascript-overview.md)als u JavaScript wilt inschakelen voor gebruikersstromen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="select-a-page-layout"></a>Selecteer een pagina-indeling
+### <a name="select-a-page-layout"></a>Een pagina-indeling selecteren
 
-* Selecteer een [pagina-indeling](contentdefinitions.md#select-a-page-layout) voor de elementen van de gebruikers interface van uw toepassing.
+* Selecteer een [pagina-indeling](contentdefinitions.md#select-a-page-layout) voor de gebruikersinterface-elementen van uw toepassing.
 
-    Als u van plan bent java script te gebruiken, moet u [een versie](contentdefinitions.md#migrating-to-page-layout) van de pagina-indeling met pagina `contract` versie definiëren voor *alle* inhouds definities in uw aangepaste beleid.
+    Als u JavaScript wilt gebruiken, moet u een `contract` [pagina-indelingsversie](contentdefinitions.md#migrating-to-page-layout) met paginaversie definiëren voor *alle* inhoudsdefinities in uw aangepaste beleid.
 
 ## <a name="add-the-scriptexecution-element"></a>Het element ScriptExecution toevoegen
 
-U kunt het uitvoeren van scripts inschakelen door het element **ScriptExecution** toe te voegen aan het element [RelyingParty](relyingparty.md) .
+U schakelt scriptuitvoering in door het element **ScriptExecution** toe te voegen aan het element [RelyingParty.](relyingparty.md)
 
-1. Open het bestand aangepast beleid. Bijvoorbeeld *SignUpOrSignin. XML*.
-2. Voeg het element **ScriptExecution** toe aan het element **UserJourneyBehaviors** van **RelyingParty**:
+1. Open uw aangepaste beleidsbestand. U bijvoorbeeld *SignUpOrSignin.xml .*
+2. Voeg het element **ScriptExecution** toe aan het element **UserJourneyBehaviors** van **RelyingParty:**
 
     ```XML
     <RelyingParty>
@@ -59,15 +59,15 @@ U kunt het uitvoeren van scripts inschakelen door het element **ScriptExecution*
       ...
     </RelyingParty>
     ```
-3. Opslaan en upload het bestand.
+3. Sla het bestand op en upload het.
 
 [!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>JavaScript-voorbeelden
 
-### <a name="show-or-hide-a-password"></a>Weergeven of verbergen van een wachtwoord
+### <a name="show-or-hide-a-password"></a>Een wachtwoord weergeven of verbergen
 
-Er is een veelgebruikte manier om te helpen uw klanten bij hun aanmelding geslaagd zodat ze om te zien wat zij hun wachtwoord hebt ingevoerd. Deze optie kan gebruikers zich aanmelden door zodat ze eenvoudig bekijken en correcties aan hun wachtwoord indien nodig. Een veld van het type wacht woord heeft een selectie vakje met een **wachtwoord label weer geven** .  Dit kan de gebruiker om te zien van het wachtwoord in tekst zonder opmaak. Dit codefragment in uw sjabloon registreren of aanmelden voor een zelf-gecontroleerde pagina opnemen:
+Een veelvoorkomende manier om uw klanten te helpen met hun succes met aanmelden, is door hen te laten zien wat ze als wachtwoord hebben ingevoerd. Deze optie helpt gebruikers zich aan te melden door ze in staat te stellen hun wachtwoord gemakkelijk te zien en te corrigeren als dat nodig is. Elk veld van typewachtwoord heeft een selectievakje met een **wachtwoordlabel weergeven.**  Hierdoor kan de gebruiker het wachtwoord in platte tekst zien. Neem dit codefragment op in uw aanmeldings- of aanmeldingssjabloon voor een zelfverklaarde pagina:
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -111,9 +111,9 @@ function setupPwdTogglers(){
 setupPwdTogglers();
 ```
 
-### <a name="add-terms-of-use"></a>Gebruiksrechtovereenkomst toevoegen
+### <a name="add-terms-of-use"></a>Gebruiksvoorwaarden toevoegen
 
-Voeg de volgende code toe aan de pagina waar u een selectie vakje voor de **gebruiks voorwaarden** wilt toevoegen. Dit selectievakje is meestal nodig in uw lokale account aanmelden en sociale account aanmeldingspagina's.
+Voeg de volgende code toe aan uw pagina waar u een **selectievakje Gebruiksvoorwaarden** wilt opnemen. Dit selectievakje is meestal nodig in uw lokale aanmeldingspagina's voor uw account en aanmeldingspagina's voor sociale netwerken.
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -138,8 +138,8 @@ function addTermsOfUseLink() {
 }
 ```
 
-Vervang `termsOfUseUrl` door de koppeling naar uw gebruiksrecht overeenkomst in de code. Maak voor uw Directory een nieuw gebruikers kenmerk met de naam **termsOfUse** en voeg vervolgens **termsOfUse** als een gebruikers kenmerk toe.
+Vervang in de `termsOfUseUrl` code de koppeling naar uw gebruiksvoorwaardenovereenkomst. Maak voor uw directory een nieuw gebruikerskenmerk met de naam **termsOfUse** en voeg vervolgens **termenOfUse** als gebruikerskenmerk toe.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe u de gebruikers interface van uw toepassingen kunt aanpassen in [de gebruikers interface van uw toepassing aanpassen met behulp van een aangepast beleid in azure Active Directory B2C](custom-policy-ui-customization.md).
+Meer informatie over hoe u de gebruikersinterface van uw toepassingen aanpassen in [De gebruikersinterface van uw toepassing aanpassen met behulp van een aangepast beleid in Azure Active Directory B2C](custom-policy-ui-customization.md).

@@ -1,6 +1,6 @@
 ---
-title: Concepten van Azure IoT Hub Device Provisioning Service-apparaten
-description: Hierin worden de concepten beschreven van het opnieuw inrichten van apparaten voor Azure IoT Hub Device Provisioning Service (DPS)
+title: Azure IoT Hub Device Provisioning Service - Apparaatconcepten
+description: Beschrijft concepten voor het opnieuw inrichten van apparaten voor de DPS (Azure IoT Hub Device Provisioning Service)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,84 +8,84 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975343"
 ---
-# <a name="iot-hub-device-reprovisioning-concepts"></a>Concepten IoT Hub apparaten opnieuw inrichten
+# <a name="iot-hub-device-reprovisioning-concepts"></a>Concepten voor het opnieuw inrichten van IoT Hub Device
 
-Tijdens de levens cyclus van een IoT-oplossing is het gebruikelijk om apparaten te verplaatsen tussen IoT-hubs. De redenen hiervoor kunnen de volgende scenario's omvatten:
+Tijdens de levenscyclus van een IoT-oplossing is het gebruikelijk om apparaten tussen IoT-hubs te verplaatsen. De redenen voor deze verhuizing kunnen de volgende scenario's zijn:
 
-* **Geolocatie/geolatentie**: wanneer een apparaat tussen locaties wordt verplaatst, wordt de netwerk latentie verbeterd doordat het apparaat wordt gemigreerd naar een dichter IOT-hub.
+* **Geolocatie / GeoLatentie:** Als een apparaat tussen locaties beweegt, wordt de netwerklatentie verbeterd door het apparaat te laten migreren naar een nauwere IoT-hub.
 
-* **Multitenancy: een**apparaat kan worden gebruikt binnen dezelfde IOT-oplossing en opnieuw worden toegewezen aan een nieuwe klant of klant site. Deze nieuwe klant kan worden verwerkt met behulp van een andere IoT-hub.
+* **Multi-tenancy**: Een apparaat kan binnen dezelfde IoT-oplossing worden gebruikt en opnieuw worden toegewezen aan een nieuwe klant of klantsite. Deze nieuwe klant kan worden bediend met behulp van een andere IoT-hub.
 
-* **Oplossings wijziging**: een apparaat kan worden verplaatst naar een nieuwe of bijgewerkte IOT-oplossing. Bij deze opnieuw toewijzen kan het apparaat worden gecommuniceerd met een nieuwe IoT-hub die is verbonden met andere back-end-onderdelen.
+* **Wijziging van de oplossing:** een apparaat kan worden verplaatst naar een nieuwe of bijgewerkte IoT-oplossing. Voor deze hertoewijzing moet het apparaat mogelijk communiceren met een nieuwe IoT-hub die is verbonden met andere back-endcomponenten.
 
-* **Quarantaine**: vergelijkbaar met een oplossings wijziging. Een apparaat dat defecte, gemanipuleerd of verouderd is, kan opnieuw worden toegewezen aan een IoT-hub, die alleen kan worden bijgewerkt en weer in overeenstemming kan worden gebracht. Zodra het apparaat correct werkt, wordt het opnieuw gemigreerd naar de hoofd hub.
+* **Quarantaine:** vergelijkbaar met een oplossingswijziging. Een apparaat dat defect, gecompromitteerd of verouderd is, kan opnieuw worden toegewezen aan een IoT-hub die alleen kan worden bijgewerkt en weer in overeenstemming kan worden. Zodra het apparaat goed functioneert, wordt het vervolgens teruggemigreerd naar de hoofdhub.
 
-De ondersteuning voor het opnieuw inrichten binnen de Device Provisioning Service is bedoeld voor deze behoeften. Apparaten kunnen automatisch opnieuw worden toegewezen aan nieuwe IoT-hubs op basis van het beleid voor opnieuw inrichten dat is geconfigureerd op de inschrijvings vermelding van het apparaat.
+Ondersteuning opnieuw inrichten binnen de Service Voor het inrichten van apparaten is voor deze behoeften. Apparaten kunnen automatisch opnieuw worden toegewezen aan nieuwe IoT-hubs op basis van het herinrichtingsbeleid dat is geconfigureerd bij de inschrijvingsvermelding van het apparaat.
 
-## <a name="device-state-data"></a>Status gegevens van apparaat
+## <a name="device-state-data"></a>Gegevens over apparaatstatus
 
-De status gegevens van het apparaat bestaan uit de [dubbele](../iot-hub/iot-hub-devguide-device-twins.md) en apparaats mogelijkheden. Deze gegevens worden opgeslagen in het Device Provisioning service-exemplaar en de IoT-hub waaraan een apparaat is toegewezen.
+Gegevens over de apparaatstatus zijn samengesteld uit de [apparaattweeling](../iot-hub/iot-hub-devguide-device-twins.md) en apparaatmogelijkheden. Deze gegevens worden opgeslagen in de instantie Device Provisioning Service en de IoT-hub waaraan een apparaat is toegewezen.
 
-![Inrichten met Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Inrichten bij de dienst voor inrichting van apparaten](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
-Wanneer een apparaat voor het eerst wordt ingericht met een Device Provisioning service-exemplaar, worden de volgende stappen uitgevoerd:
+Wanneer een apparaat in eerste instantie is ingericht met een apparaatinrichtingsservice, worden de volgende stappen uitgevoerd:
 
-1. Het apparaat verzendt een inrichtings aanvraag naar een Device Provisioning service-exemplaar. Het service-exemplaar verifieert de apparaat-id op basis van een inschrijvings vermelding en maakt de initiële configuratie van de status gegevens van het apparaat. Met het service-exemplaar wordt het apparaat toegewezen aan een IoT-hub op basis van de registratie configuratie en wordt de toewijzing van de IoT-hub naar het apparaat geretourneerd.
+1. Het apparaat stuurt een inrichtingsverzoek naar een apparaatinrichtingsservice-exemplaar. De serviceinstantie verifieert de apparaatidentiteit op basis van een inschrijvingsvermelding en maakt de eerste configuratie van de apparaatstatusgegevens. De service-instantie wijst het apparaat toe aan een IoT-hub op basis van de inschrijvingsconfiguratie en retourneert die Toewijzing van de IoT-hub naar het apparaat.
 
-2. Het inrichtings service-exemplaar geeft een kopie van alle initiële status gegevens van het apparaat aan de toegewezen IoT-hub. Het apparaat maakt verbinding met de toegewezen IoT-hub en begint met bewerkingen.
+2. De instantie voor het inrichten van de service geeft een kopie van de oorspronkelijke apparaatstatusgegevens aan de toegewezen IoT-hub. Het apparaat maakt verbinding met de toegewezen IoT-hub en begint met bewerkingen.
 
-Na verloop van tijd kunnen de status gegevens van het apparaat op de IoT-hub worden bijgewerkt door de bewerkingen van het [apparaat](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) en de [back-end-bewerkingen](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations). De initiële status informatie voor de apparaten die is opgeslagen in het Device Provisioning service-exemplaar blijft ongewijzigd. Deze ongewijzigde apparaatstatus is de initiële configuratie.
+Na verloop van tijd kunnen de gegevens van de apparaatstatus op de IoT-hub worden bijgewerkt door [apparaatbewerkingen](../iot-hub/iot-hub-devguide-device-twins.md#device-operations) en [back-endbewerkingen](../iot-hub/iot-hub-devguide-device-twins.md#back-end-operations). De initiële apparaatstatusstatusgegevens die zijn opgeslagen in de instantie Apparaatvoorzieningsservice blijft onaangeroerd. Deze onaangeroerde apparaatstatusgegevens zijn de eerste configuratie.
 
-![Inrichten met Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
+![Inrichten bij de dienst voor inrichting van apparaten](./media/concepts-device-reprovisioning/dps-provisioning-2.png)
 
-Afhankelijk van het scenario is het mogelijk dat er, als een apparaat wordt verplaatst tussen IoT-hubs, ook de apparaatstatus moet worden gemigreerd die is bijgewerkt op de vorige IoT-hub naar de nieuwe IoT hub. Deze migratie wordt ondersteund door het opnieuw inrichten van beleid in de Device Provisioning Service.
+Afhankelijk van het scenario kan het nodig zijn om de apparaatstatus die op de vorige IoT-hub is bijgewerkt naar de nieuwe IoT-hub te migreren naar de nieuwe IoT-hub, aangezien een apparaat tussen IoT-hubs wordt verplaatst. Deze migratie wordt ondersteund door het opnieuw inrichten van beleid in de Apparaatinrichtingsservice.
 
-## <a name="reprovisioning-policies"></a>Beleid opnieuw inrichten
+## <a name="reprovisioning-policies"></a>Beleid voor het opnieuw inrichten
 
-Afhankelijk van het scenario verzendt een apparaat doorgaans een aanvraag naar een inrichtings service-exemplaar bij het opnieuw opstarten. Het ondersteunt ook een methode om het inrichten op aanvraag hand matig te activeren. Het beleid voor opnieuw inrichten voor een inschrijvings vermelding bepaalt hoe het Device Provisioning service-exemplaar deze inrichtings aanvragen verwerkt. Het beleid bepaalt ook of de status gegevens van het apparaat tijdens het opnieuw inrichten moeten worden gemigreerd. Dezelfde beleids regels zijn beschikbaar voor individuele inschrijvingen en inschrijvings groepen:
+Afhankelijk van het scenario stuurt een apparaat meestal een verzoek naar een inrichtingsserviceinstantie bij opnieuw opstarten. Het ondersteunt ook een methode om handmatig te activeren provisioning on demand. Het herinderingsbeleid voor een inschrijvingsitem bepaalt hoe de serviceinstantie voor het inrichten van apparaten met deze inrichtingsaanvragen omgaat. Het beleid bepaalt ook of apparaatstatusgegevens moeten worden gemigreerd tijdens het opnieuw inrichten. Hetzelfde beleid is beschikbaar voor afzonderlijke inschrijvingen en inschrijvingsgroepen:
 
-* **Gegevens opnieuw inrichten en migreren**: dit beleid is de standaard instelling voor nieuwe inschrijvings vermeldingen. Met dit beleid wordt actie ondernomen wanneer apparaten die zijn gekoppeld aan de inschrijvings vermelding een nieuwe aanvraag verzenden (1). Afhankelijk van de configuratie van de registratie vermelding, kan het apparaat opnieuw worden toegewezen aan een andere IoT-hub. Als het apparaat IoT hubs wijzigt, wordt de registratie van het apparaat met de eerste IoT-hub verwijderd. De bijgewerkte Apparaatstatus van de eerste IoT-hub wordt gemigreerd naar de nieuwe IoT hub (2). Tijdens de migratie wordt de status van het apparaat gerapporteerd als **toewijzing**.
+* **Gegevens opnieuw inrichten en migreren:** dit beleid is de standaardinstelling voor nieuwe inschrijvingsitems. Dit beleid onderneemt actie wanneer apparaten die zijn gekoppeld aan het inschrijvingsitem een nieuwe aanvraag indienen (1). Afhankelijk van de configuratie van de inschrijvingsinvoer kan het apparaat opnieuw worden toegewezen aan een andere IoT-hub. Als het apparaat IoT-hubs wijzigt, wordt de apparaatregistratie met de oorspronkelijke IoT-hub verwijderd. De bijgewerkte informatie over de status van het apparaat van die oorspronkelijke IoT-hub wordt gemigreerd naar de nieuwe IoT-hub (2). Tijdens de migratie wordt de status van het apparaat gerapporteerd als **Toewijzen**.
 
-    ![Inrichten met Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Inrichten bij de dienst voor inrichting van apparaten](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **Opnieuw inrichten en opnieuw instellen op de eerste configuratie**: dit beleid voert actie uit wanneer aan de inschrijvings vermelding een nieuwe inrichtings aanvraag wordt verzonden (1). Afhankelijk van de configuratie van de registratie vermelding, kan het apparaat opnieuw worden toegewezen aan een andere IoT-hub. Als het apparaat IoT hubs wijzigt, wordt de registratie van het apparaat met de eerste IoT-hub verwijderd. De initiële configuratie gegevens die het exemplaar van de inrichtings service dat is ontvangen toen het apparaat werd ingericht, worden geleverd aan de nieuwe IoT hub (2). Tijdens de migratie wordt de status van het apparaat gerapporteerd als **toewijzing**.
+* **Opnieuw inrichten en opnieuw instellen op initiële config**: Dit beleid onderneemt actie wanneer apparaten die zijn gekoppeld aan de inschrijvingsvermelding een nieuwe inrichtingsaanvraag indienen (1). Afhankelijk van de configuratie van de inschrijvingsinvoer kan het apparaat opnieuw worden toegewezen aan een andere IoT-hub. Als het apparaat IoT-hubs wijzigt, wordt de apparaatregistratie met de oorspronkelijke IoT-hub verwijderd. De eerste configuratiegegevens die de inrichtingsservice-instantie heeft ontvangen toen het apparaat werd ingericht, worden verstrekt aan de nieuwe IoT-hub (2). Tijdens de migratie wordt de status van het apparaat gerapporteerd als **Toewijzen**.
 
-    Dit beleid wordt vaak gebruikt voor het opnieuw instellen van de fabriek zonder IoT-hubs te wijzigen.
+    Dit beleid wordt vaak gebruikt voor een fabrieksreset zonder IoT-hubs te wijzigen.
 
-    ![Inrichten met Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Inrichten bij de dienst voor inrichting van apparaten](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
-* **Nooit opnieuw inrichten**: het apparaat wordt nooit opnieuw toegewezen aan een andere hub. Dit beleid is bedoeld voor het beheer van neerwaartse compatibiliteit.
+* **Nooit opnieuw inrichten**: Het apparaat wordt nooit opnieuw toegewezen aan een andere hub. Dit beleid is bedoeld voor het beheren van backwards compatibility.
 
 ### <a name="managing-backwards-compatibility"></a>Achterwaartse compatibiliteit beheren
 
-Vóór september 2018 heeft het toewijzen van apparaten aan IoT-hubs een plak gedrag. Wanneer een apparaat het inrichtings proces terugkeert, wordt het alleen toegewezen aan dezelfde IoT-hub.
+Vóór september 2018 hadden apparaattoewijzingen aan IoT-hubs een plakkerig gedrag. Wanneer een apparaat het inrichtingsproces heeft doorlopen, wordt het alleen toegewezen aan dezelfde IoT-hub.
 
-Voor oplossingen die afhankelijk zijn van dit gedrag bevat de inrichtings service achterwaartse compatibiliteit. Dit gedrag wordt momenteel onderhouden voor apparaten op basis van de volgende criteria:
+Voor oplossingen die afhankelijk zijn van dit gedrag, bevat de inrichtingsservice achterwaartse compatibiliteit. Dit gedrag wordt momenteel gehandhaafd voor apparaten volgens de volgende criteria:
 
-1. De apparaten maken verbinding met een API-versie vóór de beschik baarheid van native ondersteuning voor het opnieuw inrichten in de Device Provisioning Service. Raadpleeg de onderstaande API-tabel.
+1. De apparaten maken verbinding met een API-versie voordat u de ondersteuning voor native reprovisioning in de Service voor apparaatinrichting beschikbaar maakt. Raadpleeg de onderstaande API-tabel.
 
-2. Er is voor de inschrijvings vermelding voor de apparaten geen Revisioning-beleid op ingesteld.
+2. De inschrijvingsvermelding voor de apparaten heeft geen reprovisioning-beleid.
 
-Deze compatibiliteit zorgt ervoor dat eerder geïmplementeerde apparaten hetzelfde gedrag hebben als tijdens de eerste test. Als u het vorige gedrag wilt behouden, slaat u geen beleid voor opnieuw inrichten op bij deze inschrijvingen. Als er een beleid voor opnieuw inrichten is ingesteld, heeft het beleid voor opnieuw inrichten voor rang op het gedrag. Klanten kunnen het gedrag van het apparaat bijwerken zonder dat ze de installatie kopie van het apparaat hoeven te wijzigen.
+Deze compatibiliteit zorgt ervoor dat eerder geïmplementeerde apparaten hetzelfde gedrag vertonen als tijdens de eerste tests. Als u het vorige gedrag wilt behouden, slaat u een herinrichtingsbeleid niet op voor deze inschrijvingen. Als een herinrichtingsbeleid is ingesteld, heeft het herinrichtende beleid voorrang op het gedrag. Door het reprovisioning-beleid voorrang te geven, kunnen klanten het gedrag van apparaten bijwerken zonder het apparaat opnieuw te hoeven aaien.
 
-In het volgende stroom diagram kunt u zien wanneer het gedrag aanwezig is:
+In het volgende stroomdiagram u weergeven wanneer het gedrag aanwezig is:
 
-![stroom diagram voor achterwaartse compatibiliteit](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
+![achterwaartse compatibiliteitsstroomdiagram](./media/concepts-device-reprovisioning/reprovisioning-compatibility-flow.png)
 
-In de volgende tabel ziet u de API-versies vóór de beschik baarheid van native ondersteuning voor het opnieuw inrichten van de Device Provisioning Service:
+In de volgende tabel worden de API-versies weergegeven vóór de beschikbaarheid van native reprovisioning-ondersteuning in de service voor apparaatinrichting:
 
-| REST-API | C SDK | Python-SDK |  Node-SDK | Java SDK | .NET SDK |
+| REST API | C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
 | [2018-04-01 en eerder](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 en eerder](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 en eerder](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 of eerder](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 of eerder](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 of eerder](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 
 > [!NOTE]
-> Deze waarden en koppelingen zijn waarschijnlijk gewijzigd. Dit is alleen een tijdelijke aanduiding om te bepalen waar de versies door een klant kunnen worden bepaald en wat de verwachte versies zullen zijn.
+> Deze waarden en links zullen waarschijnlijk veranderen. Dit is slechts een tijdelijke aanduiding poging om te bepalen waar de versies kunnen worden bepaald door een klant en wat de verwachte versies zullen zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 

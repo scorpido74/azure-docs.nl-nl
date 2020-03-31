@@ -1,100 +1,100 @@
 ---
-title: Een Open Geospatial Consortium-kaartLaag (OGC) toevoegen | Microsoft Azure kaarten
-description: Meer informatie over het bedekken van een OGC-kaartLaag op de kaart en het gebruik van de verschillende opties in de klasse OgcMapLayer.
-author: farah-alyasari
-ms.author: v-faalya
+title: Een kaartlaag van het Open Geospatial Consortium (OGC) toevoegen | Microsoft Azure Maps
+description: Meer informatie over hoe u een OGC-kaartlaag op de kaart bedekken en hoe u de verschillende opties in de klasse OgcMapLayer gebruiken.
+author: philmea
+ms.author: philmea
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c41ee293c853572ec9e1f9dd3edf001c805924d3
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402770"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334287"
 ---
-# <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Een kaartLaag toevoegen vanuit de Open Geospatial Consortium (OGC)
+# <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Een kaartlaag van het Open Geospatial Consortium (OGC) toevoegen
 
-De `atlas.layer.OgcMapLayer`-klasse kan installatie kopie van Webmapping-Services (WMS) en WMTS (web mapping tile Services) op de kaart bedekken. WMS is een standaard protocol dat door OGC is ontwikkeld voor het leveren van geoverwijzings installatie kopieën via internet. Afbeelding georefererend is de processen voor het koppelen van een afbeelding aan een geografische locatie. WMTS is ook een standaard protocol dat is ontwikkeld door OGC. Het is ontworpen voor het leveren van vooraf gerenderde en geoverwijzinge kaart tegels.
+De `atlas.layer.OgcMapLayer` klasse kan WMS-afbeeldingen (Web Map Services) en WMTS-afbeeldingen (Web Map Tile Services) op de kaart plaatsen. WMS is een standaard protocol ontwikkeld door OGC voor het serveren van georeferenced kaartbeelden via het internet. Beeldgeoreferencing is de processen van het koppelen van een afbeelding aan een geografische locatie. WMTS is ook een standaard protocol ontwikkeld door OGC. Het is ontworpen voor het serveren van vooraf gerenderde en georeferenced kaarttegels.
 
-De volgende secties bevatten een overzicht van de functies van de Webmapping-service die worden ondersteund door de `OgcMapLayer` klasse.
+In de volgende secties worden de functies van `OgcMapLayer` de webkaartservice beschreven die door de klasse worden ondersteund.
 
-**Web mapping service (WMS)**
+**Webmapservice (WMS)**
 
-- Ondersteunde versies: `1.0.0`, `1.1.0`, `1.1.1`en `1.3.0`
-- De service moet het `EPSG:3857` projectie systeem ondersteunen of de service moet in staat zijn om reprojecties te verwerken.
-- GetFeatureInfo vereist dat de service ondersteuning biedt voor `EPSG:4326` of voor het verwerken van reprojecties. 
+- Ondersteunde versies: `1.0.0` `1.1.0`, `1.1.1`, en`1.3.0`
+- De service moet `EPSG:3857` het projectiesysteem ondersteunen of herprojecties verwerken.
+- GetFeatureInfo vereist dat `EPSG:4326` de service herprojecties ondersteunt of verwerkt. 
 - Ondersteunde bewerkingen:
 
     | | |
     | :-- | :-- |
-    | GetCapabilities | Hiermee worden meta gegevens van de service met de ondersteunde mogelijkheden opgehaald |
-    | GetMap | Hiermee wordt een kaart afbeelding voor een opgegeven regio opgehaald |
-    | GetFeatureInfo | Hiermee wordt `feature_info`opgehaald, die onderliggende gegevens bevat over de functie |
+    | GetCapabilities GetCapabilities GetCapabilities GetCapabilit | Haalt metagegevens over de service op met de ondersteunde mogelijkheden |
+    | GetMap (GetMap) | Hiermee haalt u een kaartafbeelding op voor een bepaald gebied |
+    | GetFeatureInfo | Ophalen `feature_info`, die onderliggende gegevens over de functie bevat |
 
-**Webmapping-tegel service (WMTS)**
+**Webmaptegelservice (WMTS)**
 
-- Ondersteunde versies: `1.0.0`
-- Tegels moeten `TileWidth == TileHeight`zijn.
-- CRS ondersteund: `EPSG:3857` of `GoogleMapsCompatible` 
-- De TileMatrix-id moet een geheel getal zijn dat overeenkomt met een zoom niveau op de kaart. Op een Azure-kaart is het zoom niveau een waarde tussen `"0"` en `"22"`. Dit betekent dat `"0"` wordt ondersteund, maar `"00"` niet wordt ondersteund.
+- Ondersteunde versies:`1.0.0`
+- Tegels moeten vierkant zijn, zodanig dat `TileWidth == TileHeight`.
+- CRS ondersteund: `EPSG:3857` of`GoogleMapsCompatible` 
+- De TileMatrix-id moet een gehele waarde zijn die overeenkomt met een zoomniveau op de kaart. Op een azure-kaart is het `"0"` zoomniveau een waarde tussen en `"22"`. Dus, `"0"` wordt ondersteund, `"00"` maar wordt niet ondersteund.
 - Ondersteunde bewerkingen:
 
     | | |
     | :-- | :-- |
-    | GetCapabilities | Hiermee worden de ondersteunde bewerkingen en functies opgehaald |
-    | GetTile | Hiermee wordt de afbeelding voor een bepaalde tegel opgehaald |
+    | GetCapabilities GetCapabilities GetCapabilities GetCapabilit | Hiermee haalt u de ondersteunde bewerkingen en functies op |
+    | GetTile (GetTile) | Hiermee haalt u afbeeldingen op voor een bepaalde tegel |
 
-## <a name="overlay-an-ogc-map-layer"></a>Een OGC-kaartLaag bedekken
+## <a name="overlay-an-ogc-map-layer"></a>Een OGC-kaartlaag bedekken
 
-Het `url` kan de basis-URL voor de service zijn of een volledige URL met de query voor het ophalen van de mogelijkheden van de service. Afhankelijk van de gegevens die u opgeeft, kan de WFS-client verschillende standaard-URL-indelingen proberen om te bepalen hoe de service voor het eerst wordt geopend.
+Het `url` kan de basis-URL voor de service of een volledige URL met de query voor het verkrijgen van de mogelijkheden van de service. Afhankelijk van de verstrekte details kan de WFS-client verschillende standaard URL-indelingen proberen om te bepalen hoe u in eerste instantie toegang tot de service krijgen.
 
-De volgende code laat zien hoe u een OGC-kaartLaag kunt bedekken op de kaart.
-
-<br/>
-
-<iframe height='700' scrolling='no' title='Voor beeld van OGC-kaartLaag' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk het <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>voor beeld</a> Azure Maps van de OGC-kaartLaag van de Pen (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-## <a name="ogc-map-layer-options"></a>Opties voor OGC-kaartLaag
-
-In het onderstaande voor beeld ziet u de verschillende opties voor de OGC-kaartLaag. U kunt in de rechter bovenhoek op de knop code-pen klikken om de code-pen te bewerken.
+In de volgende code ziet u hoe u een OGC-kaartlaag op de kaart overlayt.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Opties voor OGC-kaartLaag' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de OGC voor de <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>kaart laag</a> van de pen Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Voorbeeld van de laag OGC Map' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie het voorbeeld van de pen<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC-kaartlaag</a> van Azure Maps op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="ogc-web-map-service-explorer"></a>OGC Web map service Explorer
+## <a name="ogc-map-layer-options"></a>Opties voor OGC-kaartlagen
 
-Met het volgende hulp programma worden afbeeldingen van de web map Services (WMS) en WMTS (web map tile Services) als lagen bedekt. U kunt selecteren welke lagen in de service worden weer gegeven op de kaart. U kunt ook de bijbehorende legenda's voor deze lagen weer geven.
+Het onderstaande voorbeeld toont de verschillende OGC-kaartlaagopties. U op de codepenknop in de rechterbovenhoek klikken om de codepen te bewerken.
 
 <br/>
 
-<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web map service Explorer' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web map service Explorer</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Opties voor OGC-kaartlagen' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de opties voor pen <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC-kaartlagen</a> van Azure Maps ()<a href='https://codepen.io/azuremaps'>@azuremaps</a>op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-U kunt ook de kaart instellingen voor het gebruik van een proxy service opgeven. Met de proxy service kunt u bronnen laden die worden gehost op domeinen waarvoor CORs niet is ingeschakeld.
+## <a name="ogc-web-map-service-explorer"></a>OGC Web Map Service Explorer
+
+Met het volgende gereedschap worden afbeeldingen uit de Web Map Services (WMS) en Web Map Tile Services (WMTS) als lagen overlays. U selecteren welke lagen in de service op de kaart worden weergegeven. U ook de bijbehorende legenda's voor deze lagen weergeven.
+
+<br/>
+
+<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web Map Service Explorer' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de Pen OGC Web Map<a href='https://codepen.io/azuremaps'>@azuremaps</a>Service <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>explorer</a> by Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+U ook de kaartinstellingen opgeven om een proxyservice te gebruiken. Met de proxyservice u resources laden die worden gehost op domeinen die cors niet hebben ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
+Meer informatie over de lessen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [OgcMapLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.ogcmaplayer)
+> [Ogcmaplayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.ogcmaplayer)
 
 > [!div class="nextstepaction"]
-> [OgcMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.ogcmaplayeroptions)
+> [OgcmaplayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.ogcmaplayeroptions)
 
-Raadpleeg de volgende artikelen, met code voorbeelden die u aan uw kaarten kunt toevoegen:
+Zie de volgende artikelen, die codevoorbeelden bevatten die u aan uw kaarten zou kunnen toevoegen:
 
 > [!div class="nextstepaction"]
 > [Verbinding maken met een WFS-service](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [Kern bewerkingen gebruiken](spatial-io-core-operations.md)
+> [Benut kernactiviteiten](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Details van ondersteunde gegevens indeling](spatial-io-supported-data-format-details.md)
+> [Details van ondersteunde gegevensindeling](spatial-io-supported-data-format-details.md)

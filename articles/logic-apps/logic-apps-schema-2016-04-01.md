@@ -1,6 +1,6 @@
 ---
 title: Schema-updates juni-1-2016
-description: De schema versie 2016-06-01 is bijgewerkt voor definities van logische apps in Azure Logic Apps
+description: Bijgewerkte schemaversie 2016-06-01 voor definities van logische apps in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,27 +9,27 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792871"
 ---
-# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schema-updates voor Azure Logic Apps van 1 juni 2016
+# <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schema-updates voor Azure Logic Apps - 1 juni 2016
 
-De [bijgewerkte schema](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) -en API-versie voor Azure Logic apps bevatten belang rijke verbeteringen die logische apps betrouwbaarder en gemakkelijker te gebruiken zijn:
+De [bijgewerkte schema-](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json) en API-versie voor Azure Logic Apps bevat belangrijke verbeteringen die logische apps betrouwbaarder en gebruiksvriendelijker maken:
 
-* Met [bereiken](#scopes) kunt u acties groeperen of nesten als een verzameling acties.
-* [Voor waarden en lussen](#conditions-loops) zijn nu acties voor de eerste klasse.
-* Nauw keurige volg orde voor het uitvoeren van acties met de eigenschap `runAfter`, het vervangen van `dependsOn`
+* [Met scopes](#scopes) kun je acties groeperen of nesten als een verzameling acties.
+* [Voorwaarden en lussen](#conditions-loops) zijn nu eersteklas acties.
+* Nauwkeuriger bestellen voor het `runAfter` uitvoeren van acties met het pand, ter vervanging`dependsOn`
 
-Als u uw Logic apps van het voorbeeld schema van 1 augustus 2015 wilt bijwerken naar het schema van 1 juni 2016, [raadpleegt u de sectie upgrades](#upgrade-your-schema).
+Als u uw logische apps wilt upgraden van het previewschema van 1 augustus 2015 naar het schema van 1 juni 2016, [raadpleegt u de upgradesectie](#upgrade-your-schema).
 
 <a name="scopes"></a>
 
 ## <a name="scopes"></a>Bereiken
 
-Dit schema bevat scopes waarmee u acties kunt groeperen of acties in elkaar moet nesten. Een voor waarde kan bijvoorbeeld een andere voor waarde bevatten. Lees meer over de syntaxis van het [bereik](../logic-apps/logic-apps-loops-and-scopes.md)of Bekijk dit voor beeld van een basis bereik:
+Dit schema bevat scopes waarmee u acties groeperen of acties in elkaar nesten. Een voorwaarde kan bijvoorbeeld een andere voorwaarde bevatten. Meer informatie over [de syntaxis van het bereik](../logic-apps/logic-apps-loops-and-scopes.md)of dit voorbeeld van het basisbereik bekijken:
 
 ```json
 {
@@ -53,9 +53,9 @@ Dit schema bevat scopes waarmee u acties kunt groeperen of acties in elkaar moet
 
 <a name="conditions-loops"></a>
 
-## <a name="conditions-and-loops-changes"></a>Voor waarden en lussen
+## <a name="conditions-and-loops-changes"></a>Voorwaarden en lussen veranderen
 
-In vorige schema versies waren voor waarden en lussen para meters die zijn gekoppeld aan één actie. In dit schema wordt deze beperking opgetrokken, dus voor waarden en lussen zijn nu beschikbaar als actie typen. Meer informatie over [lussen en bereiken](../logic-apps/logic-apps-loops-and-scopes.md), [voor waarden](../logic-apps/logic-apps-control-flow-conditional-statement.md)of een overzicht van dit basis voorbeeld waarin een voorwaarde actie wordt weer gegeven:
+In eerdere schemaversies waren voorwaarden en lussen parameters die aan één actie waren gekoppeld. Dit schema tilt deze beperking op, zodat voorwaarden en lussen nu beschikbaar zijn als actietypen. Meer informatie over [lussen en scopes,](../logic-apps/logic-apps-loops-and-scopes.md) [voorwaarden](../logic-apps/logic-apps-control-flow-conditional-statement.md)of dit basisvoorbeeld waarin een voorwaardeactie wordt weergegeven:
 
 ```json
 {
@@ -83,9 +83,9 @@ In vorige schema versies waren voor waarden en lussen para meters die zijn gekop
 
 <a name="run-after"></a>
 
-## <a name="runafter-property"></a>eigenschap runAfter
+## <a name="runafter-property"></a>'runAfter' eigenschap
 
-De eigenschap `runAfter` vervangt `dependsOn`, wat nauw keuriger is wanneer u de uitvoerings volgorde voor acties opgeeft op basis van de status van vorige acties. De eigenschap `dependsOn` aangegeven of de actie is uitgevoerd en is geslaagd, op basis van het feit of de vorige actie is geslaagd, mislukt of is overgeslagen, niet het aantal keren dat u de actie wilt uitvoeren. De eigenschap `runAfter` biedt flexibiliteit als een object dat alle actie namen opgeeft waarna het object wordt uitgevoerd. Deze eigenschap definieert ook een matrix met statussen die acceptabel zijn als triggers. Als u bijvoorbeeld wilt dat een actie wordt uitgevoerd nadat actie een slaagt en ook nadat actie B is geslaagd of mislukt, stelt u deze `runAfter` eigenschap in:
+De `runAfter` eigenschap `dependsOn`vervangt, waardoor u meer precisie geeft wanneer u de taak voor uitvoeren opgeeft op basis van de status van eerdere acties. De `dependsOn` eigenschap gaf aan of "de actie is uitgevoerd en is geslaagd", op basis van de vraag of de vorige actie is geslaagd, mislukt of als overgeslagen - niet het aantal keren dat u de actie wilt uitvoeren. De `runAfter` eigenschap biedt flexibiliteit als een object dat alle actienamen opgeeft waarna het object wordt uitgevoerd. Deze eigenschap definieert ook een reeks statussen die acceptabel zijn als triggers. Als u bijvoorbeeld wilt dat een actie wordt uitgevoerd nadat actie A is `runAfter` geslaagd en ook nadat actie B is geslaagd of mislukt, stelt u de eigenschap in:
 
 ```json
 {
@@ -99,61 +99,61 @@ De eigenschap `runAfter` vervangt `dependsOn`, wat nauw keuriger is wanneer u de
 
 ## <a name="upgrade-your-schema"></a>Uw schema bijwerken
 
-Als u een upgrade wilt uitvoeren naar het [meest recente schema](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json), hoeft u slechts een paar stappen uit te voeren. Het upgrade proces omvat het uitvoeren van het upgrade script, het opslaan als een nieuwe logische app, en als u dat wilt, is het mogelijk de vorige logische app te overschrijven.
+Als u wilt upgraden naar het [meest recente schema,](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json)hoeft u slechts een paar stappen te nemen. Het upgradeproces omvat het uitvoeren van het upgradescript, opslaan als een nieuwe logische app en als u dat wilt, mogelijk het overschrijven van de vorige logische app.
 
-1. Open uw logische app in de Azure Portal.
+1. Open uw logische app in de Azure-portal.
 
-2. Ga naar **overzicht**. Kies op de werk balk van de logische app de optie **schema bijwerken**.
+2. Ga naar **Overzicht**. Kies **Schema bijwerken**op de werkbalk logische app .
    
-   ![Een update schema kiezen][1]
+   ![Schema bijwerken kiezen][1]
    
-   De bijgewerkte definitie wordt geretourneerd, die u zo nodig kunt kopiëren en plakken in een resource definitie. 
+   De bijgewerkte definitie wordt geretourneerd, die u indien nodig kopiëren en plakken in een resourcedefinitie. 
 
    > [!IMPORTANT]
-   > *Zorg ervoor dat* u **opslaan kiest als** u wilt dat alle verbindings verwijzingen geldig blijven in de bijgewerkte logische app.
+   > *Zorg ervoor dat* u **Opslaan als** kiest, zodat alle verbindingsverwijzingen geldig blijven in de bijgewerkte logica-app.
 
-3. Kies **Opslaan als**in de werk balk Blade bijwerken.
+3. Kies **opslaan als**op de werkbalk van het upgradeblad .
 
-4. Voer de naam en de status van de logica in. Kies **maken**om uw bijgewerkte logische app te implementeren.
+4. Voer de logische naam en status in. Als u uw bijgewerkte logica-app wilt implementeren, kiest u **Maken**.
 
-5. Controleer of uw bijgewerkte logische app werkt zoals verwacht.
+5. Controleer of uw bijgewerkte logica-app werkt zoals verwacht.
    
    > [!NOTE]
-   > Als u een hand matige of aanvraag trigger gebruikt, wordt de call back-URL in uw nieuwe logische app gewijzigd. Test de nieuwe URL om te controleren of de end-to-end-ervaring werkt. Als u eerdere Url's wilt behouden, kunt u de bestaande logische app klonen.
+   > Als u een handleiding of verzoektrigger gebruikt, wordt de URL van de terugbel-terugroep in uw nieuwe logische app gewijzigd. Test de nieuwe URL om ervoor te zorgen dat de end-to-end ervaring werkt. Als u eerdere URL's wilt behouden, u uw bestaande logische app klonen.
 
-6. *Optioneel* Als u uw vorige logische app wilt overschrijven met de nieuwe schema versie, kiest u in de werk balk **klonen**naast **schema bijwerken**. Deze stap is alleen nodig als u dezelfde resource-ID of de aanvraag-URL van uw logische app wilt blijven gebruiken.
+6. *Optioneel* Als u uw vorige logische app wilt overschrijven met de nieuwe schemaversie, kiest u op de werkbalk **Kloon**naast **Schema bijwerken**. Deze stap is alleen nodig als u dezelfde bron-id wilt behouden of de URL van de trigger van uw logische app wilt activeren.
 
-## <a name="upgrade-tool-notes"></a>Opmerkingen bij upgrade hulpprogramma
+## <a name="upgrade-tool-notes"></a>Notities met het hulpprogramma bijwerken
 
-### <a name="mapping-conditions"></a>Toewijzings voorwaarden
+### <a name="mapping-conditions"></a>Voorwaarden in kaart brengen
 
-In de definitie van de upgrade maakt het hulp programma het beste resultaat bij het groeperen van waar en ONWAAR Branch-acties samen als een bereik. Met name het ontwerp patroon van `@equals(actions('a').status, 'Skipped')` wordt weer gegeven als een `else` actie. Als het hulp programma echter niet-herken bare patronen detecteert, kan het hulp programma afzonderlijke voor waarden maken voor zowel de vertakking waar als de onwaar. U kunt, indien nodig, acties opnieuw toewijzen na de upgrade.
+In de geüpgradede definitie doet de tool de beste moeite om true- en false branch-acties samen te groeperen als een scope. In het bijzonder, `@equals(actions('a').status, 'Skipped')` de `else` ontwerper patroon van verschijnt als een actie. Als het gereedschap echter onherkenbare patronen detecteert, kan het gereedschap afzonderlijke voorwaarden creëren voor zowel de ware als de valse vertakking. U acties opnieuw toewijzen na een upgrade, indien nodig.
 
-#### <a name="foreach-loop-with-condition"></a>foreach-lus met voor waarde
+#### <a name="foreach-loop-with-condition"></a>"foreach" lus met voorwaarde
 
-In het nieuwe schema kunt u de filter actie gebruiken om het patroon te repliceren dat gebruikmaakt **van een voor elke** lus met één voor waarde per item. De wijziging wordt echter automatisch uitgevoerd wanneer u een upgrade uitvoert. De voor waarde wordt een filter actie die **voor elke** lus wordt weer gegeven, waarbij alleen een matrix van items wordt geretourneerd die overeenkomen met de voor waarde, en die matrix wordt door gegeven aan **elke** actie. Zie [lussen en bereiken](../logic-apps/logic-apps-loops-and-scopes.md)voor een voor beeld.
+In het nieuwe schema u de filteractie gebruiken om het patroon te repliceren dat een **voor elke** lus gebruikt met één voorwaarde per item. De wijziging vindt echter automatisch plaats wanneer u een upgrade uitvoert. De voorwaarde wordt een filteractie die wordt weergegeven voorafgaand aan de **voor elke** lus, waarbij alleen een reeks items wordt geretourneerd die overeenkomen met de voorwaarde en die array wordt doorgeretourond aan **Voor elke** actie. Zie Bijvoorbeeld [Lussen en scopes.](../logic-apps/logic-apps-loops-and-scopes.md)
 
 ### <a name="resource-tags"></a>Resourcetags
 
-Nadat u de upgrade hebt uitgevoerd, worden de resource Tags verwijderd, dus u moet ze opnieuw instellen voor de bijgewerkte werk stroom.
+Nadat u een upgrade hebt uitgevoerd, worden brontags verwijderd, dus u moet ze opnieuw instellen voor de bijgewerkte werkstroom.
 
 ## <a name="other-changes"></a>Andere wijzigingen
 
-### <a name="renamed-manual-trigger-to-request-trigger"></a>De naam van de trigger Manual is gewijzigd in de trigger ' aanvraag '
+### <a name="renamed-manual-trigger-to-request-trigger"></a>Omgedoopt tot 'handmatige' trigger naar 'request' trigger
 
-Het trigger type `manual` is afgeschaft en heeft een andere naam gekregen `request` met type `http`. Deze wijziging maakt meer consistentie voor het soort patroon dat wordt gebruikt voor het bouwen van de trigger.
+Het `manual` triggertype is afgeschaft en omgedoopt `request` tot `http`met tekst . Deze wijziging zorgt voor meer consistentie voor het soort patroon dat de trigger wordt gebruikt om te bouwen.
 
-### <a name="new-filter-action"></a>Nieuwe actie filter
+### <a name="new-filter-action"></a>Nieuwe 'filter'-actie
 
-Als u een grote matrix omlaag wilt filteren op een kleinere set items, accepteert het nieuwe `filter` type een matrix en een voor waarde, evalueert de voor waarde voor elk item en retourneert een matrix met items die aan de voor waarde voldoen.
+Als u een grote array wilt filteren tot `filter` een kleinere set items, accepteert het nieuwe type een array en een voorwaarde, evalueert het de voorwaarde voor elk item en retourneert het een array met items die aan de voorwaarde voldoen.
 
-### <a name="restrictions-for-foreach-and-until-actions"></a>Beperkingen voor de acties foreach en until
+### <a name="restrictions-for-foreach-and-until-actions"></a>Beperkingen voor 'foreach' en 'until' acties
 
-De lus `foreach` en `until` zijn beperkt tot één actie.
+De `foreach` `until` en lus zijn beperkt tot een enkele actie.
 
-### <a name="new-trackedproperties-for-actions"></a>Nieuwe ' trackedProperties ' voor acties
+### <a name="new-trackedproperties-for-actions"></a>Nieuwe 'trackedProperties' voor acties
 
-Acties kunnen nu een extra eigenschap met de naam `trackedProperties`, die gelijk is aan de `runAfter` en `type` eigenschappen. Dit object geeft bepaalde actie-invoer of uitvoer op die u wilt opnemen in de telemetrie van Azure diagnostische gegevens die worden verzonden als onderdeel van een werk stroom. Bijvoorbeeld:
+Acties kunnen nu een `trackedProperties`extra eigenschap genaamd `runAfter` , `type` dat is broer of zus aan de en eigenschappen. Met dit object worden bepaalde actie-ingangen of uitvoer opgegeven die u wilt opnemen in de Azure Diagnostic-telemetrie, die wordt uitgestoten als onderdeel van een werkstroom. Bijvoorbeeld:
 
 ``` json
 {
@@ -174,7 +174,7 @@ Acties kunnen nu een extra eigenschap met de naam `trackedProperties`, die gelij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Werk stroom definities voor logische apps maken](../logic-apps/logic-apps-author-definitions.md)
+* [Werkstroomdefinities voor logische apps maken](../logic-apps/logic-apps-author-definitions.md)
 * [Implementatie van logische apps automatiseren](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->

@@ -1,53 +1,53 @@
 ---
 title: Wederzijdse TLS-verificatie configureren
-description: Meer informatie over het verifiëren van client certificaten op TLS. Azure App Service kunt het client certificaat beschikbaar maken voor de app-code voor verificatie.
+description: Meer informatie over het verifiëren van clientcertificaten op TLS. Azure App Service kan het clientcertificaat ter verificatie beschikbaar maken voor de app-code.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 357ea2cc598bca3e008a74f021895e1e45a3874f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300997"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Wederzijdse TLS-verificatie voor Azure App Service configureren
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Tls-wederzijdse verificatie configureren voor Azure App Service
 
-U kunt de toegang tot uw Azure App Service-app beperken door verschillende verificatie typen in te scha kelen. Een manier om dit te doen is door een client certificaat aan te vragen wanneer de client aanvraag over TLS/SSL gaat en het certificaat te valideren. Dit mechanisme heet TLS wederzijdse verificatie of verificatie van client certificaten. In dit artikel wordt beschreven hoe u uw app instelt voor gebruik van verificatie van client certificaten.
+U de toegang tot uw Azure App Service-app beperken door verschillende soorten verificatie hiervoor in te schakelen. Een manier om dit te doen is het aanvragen van een clientcertificaat wanneer de clientaanvraag via TLS/SSL is en het certificaat valideren. Dit mechanisme wordt TLS-wederzijdse verificatie of clientcertificaatverificatie genoemd. In dit artikel ziet u hoe u uw app instelt om verificatie van clientcertificaat te gebruiken.
 
 > [!NOTE]
-> Als u toegang tot uw site hebt via HTTP en niet HTTPS, ontvangt u geen client certificaat. Als voor uw toepassing client certificaten zijn vereist, moet u dus geen aanvragen voor uw toepassing via HTTP toestaan.
+> Als u uw site via HTTP opent en niet HTTPS, ontvangt u geen clientcertificaat. Dus als uw toepassing clientcertificaten vereist, moet u geen aanvragen toestaan voor uw toepassing via HTTP.
 >
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="enable-client-certificates"></a>Client certificaten inschakelen
+## <a name="enable-client-certificates"></a>Clientcertificaten inschakelen
 
-Als u uw app wilt instellen op client certificaten vereist, moet u de `clientCertEnabled` instelling voor uw app instellen op `true`. Als u de instelling wilt instellen, voert u de volgende opdracht uit in de [Cloud shell](https://shell.azure.com).
+Als u uw app wilt instellen om clientcertificaten te vereisen, moet u de `clientCertEnabled` instelling voor uw app instellen op `true`. Als u de instelling wilt instellen, voert u de volgende opdracht uit in de [Cloud Shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
-## <a name="exclude-paths-from-requiring-authentication"></a>Paden uitsluiten voor het vereisen van verificatie
+## <a name="exclude-paths-from-requiring-authentication"></a>Paden uitsluiten van verificatie
 
-Wanneer u wederzijdse verificatie inschakelt voor uw toepassing, is voor alle paden in de hoofdmap van uw app een client certificaat vereist voor toegang. Als u wilt toestaan dat bepaalde paden open blijven voor anonieme toegang, kunt u uitsluitings paden definiëren als onderdeel van de configuratie van uw toepassing.
+Wanneer u wederzijdse auth inschakelt voor uw toepassing, vereisen alle paden onder de hoofdmap van uw app een clientcertificaat voor toegang. Als u wilt dat bepaalde paden open blijven voor anonieme toegang, u uitsluitingspaden definiëren als onderdeel van uw toepassingsconfiguratie.
 
-Uitsluitings paden kunnen worden geconfigureerd door **configuratie** > **algemene instellingen** te selecteren en een uitgesloten pad te definiëren. In dit voor beeld wordt aan alles onder `/public` pad voor uw toepassing geen client certificaat gevraagd.
+Uitsluitingspaden kunnen worden geconfigureerd door**Algemene configuratie-instellingen** **te** > selecteren en een uitsluitingspad te definiëren. In dit voorbeeld `/public` zou alles onder pad voor uw aanvraag geen clientcertificaat aanvragen.
 
-![Paden voor certificaat uitsluiting][exclusion-paths]
+![Certificaatuitsluitingspaden][exclusion-paths]
 
 
-## <a name="access-client-certificate"></a>Client certificaat openen
+## <a name="access-client-certificate"></a>Clientcertificaat toegang tot client
 
-In App Service wordt SSL-beëindiging van de aanvraag uitgevoerd op het front-end-load balancer. Bij het door sturen van de aanvraag naar uw app-code met [client certificaten ingeschakeld](#enable-client-certificates), App Service een `X-ARR-ClientCert` aanvraag header met het client certificaat injecteren. App Service doet niets met dit client certificaat, behalve het door sturen naar uw app. Uw app-code is verantwoordelijk voor het valideren van het client certificaat.
+In App Service vindt SSL-beëindiging van de aanvraag plaats bij de frontend load balancer. Wanneer u het verzoek doorstuurt naar uw app-code `X-ARR-ClientCert` met [clientcertificaten ingeschakeld,](#enable-client-certificates)injecteert App Service een aanvraagkop met het clientcertificaat. App Service doet niets met dit clientcertificaat anders dan doorsturen naar uw app. Uw app-code is verantwoordelijk voor het valideren van het clientcertificaat.
 
-Voor ASP.NET is het client certificaat beschikbaar via de eigenschap **HttpRequest. ClientCertificate** .
+Voor ASP.NET is het clientcertificaat beschikbaar via de eigenschap **HttpRequest.ClientCertificate.**
 
-Voor andere toepassings Stacks (node. js, PHP, enzovoort) is het client certificaat beschikbaar in uw app via een base64-gecodeerde waarde in de `X-ARR-ClientCert` aanvraag header.
+Voor andere toepassingsstacks (Node.js, PHP, etc.) is het clientcert beschikbaar in uw `X-ARR-ClientCert` app via een base64 gecodeerde waarde in de aanvraagheader.
 
-## <a name="aspnet-sample"></a>ASP.NET-voor beeld
+## <a name="aspnet-sample"></a>ASP.NET monster
 
 ```csharp
     using System;
@@ -171,9 +171,9 @@ Voor andere toepassings Stacks (node. js, PHP, enzovoort) is het client certific
     }
 ```
 
-## <a name="nodejs-sample"></a>Voor beeld van node. js
+## <a name="nodejs-sample"></a>Voorbeeld van Node.js
 
-Met de volgende voorbeeld code van node. js wordt de `X-ARR-ClientCert`-header opgehaald en wordt [knooppunt vervalsing](https://github.com/digitalbazaar/forge) gebruikt om de met base64 gecodeerde PEM-teken reeks te converteren naar een certificaat object en dit te valideren:
+De volgende Node.js-voorbeeldcode krijgt de `X-ARR-ClientCert` koptekst en maakt gebruik van [node-smederij](https://github.com/digitalbazaar/forge) om de base64-gecodeerde PEM-tekenreeks om te zetten in een certificaatobject en deze te valideren:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -216,9 +216,9 @@ export class AuthorizationHandler {
 }
 ```
 
-## <a name="java-sample"></a>Java-voor beeld
+## <a name="java-sample"></a>Java-voorbeeld
 
-De volgende Java-klasse codeert het certificaat van `X-ARR-ClientCert` naar een `X509Certificate`-exemplaar. `certificateIsValid()` valideert of de vinger afdruk van het certificaat overeenkomt met dat van de constructor en dat het certificaat niet is verlopen.
+Met de volgende klasse Java `X-ARR-ClientCert` codeert u het certificaat van een `X509Certificate` instantie. `certificateIsValid()`valideert dat de duimafdruk van het certificaat overeenkomt met de afdruk van de constructeur en dat certificaat niet is verlopen.
 
 
 ```java

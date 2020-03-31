@@ -1,6 +1,6 @@
 ---
-title: Aangepaste regels voor WAF configureren & standaardregelset voor Azure front deur
-description: Meer informatie over het configureren van een WAF-beleid bestaat uit zowel aangepaste als beheerde regels voor een bestaand eind punt voor deuren.
+title: WAF-aangepaste regels configureren & standaardregelset voor Azure-voordeur
+description: Meer informatie over het configureren van een WAF-beleid bestaat uit zowel aangepaste als beheerde regels voor een bestaand Front Door-eindpunt.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,28 +8,28 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
 ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74186640"
 ---
-# <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Een firewall beleid voor webtoepassingen configureren met behulp van Azure PowerShell
+# <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Een Web Application Firewall-beleid configureren met Azure PowerShell
 
-Het beleid van de Azure Web Application firewall (WAF) definieert inspecties die vereist zijn wanneer een aanvraag aan de voor deur arriveert.
-In dit artikel wordt beschreven hoe u een WAF-beleid configureert dat bestaat uit een aantal aangepaste regels en met door Azure beheerde standaard regelset ingeschakeld.
+Het WAF-beleid (Azure Web Application Firewall) definieert inspecties die nodig zijn wanneer een aanvraag bij De Voordeur binnenkomt.
+In dit artikel ziet u hoe u een WAF-beleid configureert dat bestaat uit een aantal aangepaste regels en met Azure-beheerde standaardregelset ingeschakeld.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint met het instellen van een beleid voor frequentie limieten, stelt u uw Power shell-omgeving in en maakt u een voor deur profiel.
+Voordat u begint met het instellen van een tarieflimietbeleid, stelt u uw PowerShell-omgeving in en maakt u een voordeurprofiel.
 
 ### <a name="set-up-your-powershell-environment"></a>Uw PowerShell-omgeving instellen
 
 Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-model om uw Azure-resources te beheren. 
 
-U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en de AZ Power shell-module te installeren.
+U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en installeer de Az PowerShell-module.
 
 #### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -43,18 +43,18 @@ Voordat u de Front Door-module installeert, moet u controleren of u de nieuwste 
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
 
-#### <a name="install-azfrontdoor-module"></a>De module AZ.-ingang installeren 
+#### <a name="install-azfrontdoor-module"></a>Az.FrontDoor-module installeren 
 
 ```
 Install-Module -Name Az.FrontDoor
 ```
-### <a name="create-a-front-door-profile"></a>Een voor deur profiel maken
+### <a name="create-a-front-door-profile"></a>Een voordeurprofiel maken
 
-Maak een voor deur profiel door de instructies te volgen die worden beschreven in [Quick Start: een front deur-profiel maken](../../frontdoor/quickstart-create-front-door.md)
+Een voordeurprofiel maken door de instructies te volgen die in [Quickstart zijn beschreven: Een voordeurprofiel maken](../../frontdoor/quickstart-create-front-door.md)
 
-## <a name="custom-rule-based-on-http-parameters"></a>Aangepaste regel op basis van http-para meters
+## <a name="custom-rule-based-on-http-parameters"></a>Aangepaste regel op basis van http-parameters
 
-In het volgende voor beeld ziet u hoe u een aangepaste regel configureert met twee match-voor waarden met behulp van [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject). Aanvragen zijn afkomstig van een opgegeven site, zoals gedefinieerd door de verwijzings punt, en de query teken reeks bevat geen ' wacht woord '. 
+In het volgende voorbeeld ziet u hoe u een aangepaste regel configureert met twee overeenkomstvoorwaarden met [Nieuw-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject). Aanvragen zijn afkomstig van een opgegeven site zoals gedefinieerd door de verwijzer en querytekenreeks bevat geen 'wachtwoord'. 
 
 ```powershell-interactive
 $referer = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestHeader -OperatorProperty Equal -Selector "Referer" -MatchValue "www.mytrustedsites.com/referpage.html"
@@ -62,42 +62,42 @@ $password = New-AzFrontDoorWafMatchConditionObject -MatchVariable QueryString -O
 $AllowFromTrustedSites = New-AzFrontDoorWafCustomRuleObject -Name "AllowFromTrustedSites" -RuleType MatchRule -MatchCondition $referer,$password -Action Allow -Priority 1
 ```
 
-## <a name="custom-rule-based-on-http-request-method"></a>Aangepaste regel op basis van de HTTP-aanvraag methode
+## <a name="custom-rule-based-on-http-request-method"></a>Aangepaste regel op basis van http-aanvraagmethode
 
-Maak een regel met behulp van [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject) als volgt:
+Maak als volgt een regel die de methode "PUT" blokkeert met [New-AzFrontDoorWafCustomRuleObject:](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)
 
 ```powershell-interactive
 $put = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestMethod -OperatorProperty Equal -MatchValue PUT
 $BlockPUT = New-AzFrontDoorWafCustomRuleObject -Name "BlockPUT" -RuleType MatchRule -MatchCondition $put -Action Block -Priority 2
 ```
 
-## <a name="create-a-custom-rule-based-on-size-constraint"></a>Een aangepaste regel maken op basis van de grootte beperking
+## <a name="create-a-custom-rule-based-on-size-constraint"></a>Een aangepaste regel maken op basis van groottebeperking
 
-In het volgende voor beeld wordt een regel voor het blok keren van aanvragen met een URL die langer is dan 100 tekens gemaakt met behulp van Azure PowerShell:
+In het volgende voorbeeld wordt een regel gemaakt die aanvragen blokkeert met Url die langer is dan 100 tekens met Azure PowerShell:
 ```powershell-interactive
 $url = New-AzFrontDoorWafMatchConditionObject -MatchVariable RequestUri -OperatorProperty GreaterThanOrEqual -MatchValue 100
 $URLOver100 = New-AzFrontDoorWafCustomRuleObject -Name "URLOver100" -RuleType MatchRule -MatchCondition $url -Action Block -Priority 3
 ```
-## <a name="add-managed-default-rule-set"></a>Beheerde standaard regelset toevoegen
+## <a name="add-managed-default-rule-set"></a>Beheerde standaardregelset toevoegen
 
-In het volgende voor beeld wordt een beheerde standaardregelset gemaakt met behulp van Azure PowerShell:
+In het volgende voorbeeld wordt een beheerde standaardregelset gemaakt met Azure PowerShell:
 ```powershell-interactive
 $managedRules =  New-AzFrontDoorWafManagedRuleObject -Type DefaultRuleSet -Version 1.0
 ```
-## <a name="configure-a-security-policy"></a>Een beveiligings beleid configureren
+## <a name="configure-a-security-policy"></a>Een beveiligingsbeleid configureren
 
-Zoek de naam van de resource groep die het voorste deur profiel bevat met behulp van `Get-AzResourceGroup`. Vervolgens configureert u een beveiligings beleid met gemaakte regels in de vorige stappen met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resource groep die het voorste deur profiel bevat.
+Zoek de naam van de resourcegroep die `Get-AzResourceGroup`het frontdoorprofiel bevat met behulp van . Configureer vervolgens een beveiligingsbeleid met gemaakte regels in de vorige stappen met [Nieuw-AzFrontDoorWafBeleid](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resourcegroep die het frontdoorprofiel bevat.
 
 ```powershell-interactive
 $myWAFPolicy=New-AzFrontDoorWafPolicy -Name $policyName -ResourceGroupName $resourceGroupName -Customrule $AllowFromTrustedSites,$BlockPUT,$URLOver100 -ManagedRule $managedRules -EnabledState Enabled -Mode Prevention
 ```
 
-## <a name="link-policy-to-a-front-door-front-end-host"></a>Beleid koppelen aan een front-end-host voor de voor deur
+## <a name="link-policy-to-a-front-door-front-end-host"></a>Het beleid koppelen aan een front-door front-end host
 
-Koppel het object voor het beveiligings beleid aan een bestaande front-endwebserver front-end-host en werk front-deur eigenschappen bij. Haal eerst het voorste deur object op met [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor).
-Stel vervolgens de front-end *WebApplicationFirewallPolicyLink* -eigenschap in op de *resourceId* van ' $myWAFPolicy $ ' die in de vorige stap is gemaakt met [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor). 
+Koppel het beveiligingsbeleid object aan een bestaande Front Door front-end host en werk front door eigenschappen bij. Haal eerst het object Voordeur op met [Get-AzFrontDoor.](/powershell/module/Az.FrontDoor/Get-AzFrontDoor)
+Stel vervolgens de eigenschap Front-end *WebApplicationFirewallPolicyLink* in op de *resourceId* van de '$myWAFPolicy$' die in de vorige stap is gemaakt met [Set-AzFrontDoor.](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) 
 
-In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Quick Start: een front deur](../../frontdoor/quickstart-create-front-door.md) -artikel maken. Vervang ook in het onderstaande voor beeld $frontDoorName door de naam van uw voorste deur profiel. 
+In het onderstaande voorbeeld wordt de naam van de resourcegroep *myResourceGroupFD1* gebruikt met de veronderstelling dat u het frontdoorprofiel hebt gemaakt met instructies in het [quickstart-artikel: Een voordeurartikel maken.](../../frontdoor/quickstart-create-front-door.md) Vervang in het onderstaande voorbeeld ook $frontDoorName door de naam van uw voordeurprofiel. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -108,9 +108,9 @@ In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGr
  ```
 
 > [!NOTE]
-> U hoeft slechts één keer op de eigenschap *WebApplicationFirewallPolicyLink* in te stellen om een beveiligings beleid te koppelen aan de front-end van de voor deur. Volgende beleids updates worden automatisch toegepast op de front-end.
+> U hoeft de eigenschap *WebApplicationFirewallPolicyLink* slechts één keer in te stellen om een beveiligingsbeleid te koppelen aan een frontdoorfront-end. Volgende beleidsupdates worden automatisch toegepast op de front-end.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [voor deur](../../frontdoor/front-door-overview.md) 
-- Meer informatie over [WAF met de voor deur](afds-overview.md)
+- Meer informatie over [Voordeur](../../frontdoor/front-door-overview.md) 
+- Meer informatie over [WAF met Voordeur](afds-overview.md)

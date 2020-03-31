@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenis schema's — Azure Event Grid IoT Edge | Microsoft Docs
-description: Gebeurtenis schema's in Event Grid op IoT Edge.
+title: Gebeurtenisschema's — Azure Event Grid IoT Edge | Microsoft Documenten
+description: Gebeurtenisschema's in gebeurtenisraster op IoT Edge.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,28 +10,28 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73242461"
 ---
 # <a name="event-schemas"></a>Gebeurtenisschema's
 
-Event Grid-module accepteert en levert gebeurtenissen in JSON-indeling. Er zijn momenteel drie schema's die worden ondersteund door Event Grid:-
+Event Grid module accepteert en levert evenementen in JSON-formaat. Er zijn momenteel drie schema's die worden ondersteund door Event Grid: -
 
 * **EventGridSchema**
-* **CustomSchema**
+* **AangepastSchema**
 * **CloudEventSchema**
 
-U kunt het schema configureren waaraan een uitgever moet voldoen tijdens het maken van het onderwerp. Als u geen waarde opgeeft, wordt standaard **EventGridSchema**. Gebeurtenissen die niet voldoen aan het verwachte schema, worden geweigerd.
+U het schema configureren waaraan een uitgever moet voldoen tijdens het maken van onderwerpen. Als dit niet is opgegeven, wordt deze standaard ingesteld op **EventGridSchema**. Gebeurtenissen die niet voldoen aan het verwachte schema, worden afgewezen.
 
-Abonnees kunnen ook het schema configureren waarin de gebeurtenissen moeten worden bezorgd. Indien niet opgegeven, is het schema standaard het onderwerp.
-Momenteel moet het leverings schema van de abonnee overeenkomen met het invoer schema van het onderwerp. 
+Abonnees kunnen ook het schema configureren waarin ze de gebeurtenissen willen leveren. Als dit niet is opgegeven, is standaard het schema van het onderwerp.
+Momenteel moet het schema voor de levering van abonnees overeenkomen met het invoerschema van het onderwerp. 
 
 ## <a name="eventgrid-schema"></a>EventGrid-schema
 
-Het EventGrid-schema bestaat uit een set vereiste eigenschappen waaraan een publicerende entiteit moet voldoen. Elke uitgever moet de velden op het hoogste niveau vullen.
+EventGrid-schema bestaat uit een set vereiste eigenschappen waaraan een publicerende entiteit moet voldoen. Elke uitgever moet de velden op het hoogste niveau invullen.
 
 ```json
 [
@@ -50,22 +50,22 @@ Het EventGrid-schema bestaat uit een set vereiste eigenschappen waaraan een publ
 ]
 ```
 
-### <a name="eventgrid-schema-properties"></a>Eigenschappen van EventGrid-schema
+### <a name="eventgrid-schema-properties"></a>Gebeurtenisgrid-schema-eigenschappen
 
 Alle gebeurtenissen hebben de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Verplicht | Beschrijving |
+| Eigenschap | Type | Vereist | Beschrijving |
 | -------- | ---- | ----------- |-----------
-| onderwerp | string | Nee | Moet overeenkomen met het onderwerp waarop het wordt gepubliceerd. Event Grid vult het met de naam van het onderwerp dat wordt gepubliceerd als niet opgegeven. |
-| Onderwerp | string | Ja | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
-| Type | string | Ja | Gebeurtenis type voor deze gebeurtenis bron, bijvoorbeeld BlobCreated. |
-| eventTime | string | Ja | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| Id | string | Nee | De unieke id voor de gebeurtenis. |
-| gegevens | object | Nee | Wordt gebruikt om gebeurtenis gegevens vast te leggen die specifiek zijn voor de publicatie-entiteit. |
-| dataVersion | string | Ja | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
-| metadataVersion | string | Nee | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
+| onderwerp | tekenreeks | Nee | Moet overeenkomen met het onderwerp waarop het is gepubliceerd. Event Grid vult het met de naam van het onderwerp waarop het is gepubliceerd als niet gespecificeerd. |
+| Onderwerp | tekenreeks | Ja | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| eventType | tekenreeks | Ja | Gebeurtenistype voor deze gebeurtenisbron, bijvoorbeeld BlobCreated. |
+| eventTime | tekenreeks | Ja | De tijd dat de gebeurtenis wordt gegenereerd op basis van de UTC-tijd van de provider. |
+| Id | tekenreeks | Nee | Unieke id voor de gebeurtenis. |
+| data | object | Nee | Wordt gebruikt om gebeurtenisgegevens vast te leggen die specifiek zijn voor de publicerende entiteit. |
+| dataVersion | tekenreeks | Ja | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
+| metadataVersion | tekenreeks | Nee | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
-### <a name="example--eventgrid-schema-event"></a>Voor beeld: EventGrid-schema gebeurtenis
+### <a name="example--eventgrid-schema-event"></a>Voorbeeld — Gebeurtenis EventGrid-schema
 
 ```json
 [
@@ -83,15 +83,15 @@ Alle gebeurtenissen hebben de volgende gegevens op het hoogste niveau:
 ]
 ```
 
-## <a name="customevent-schema"></a>CustomEvent-schema
+## <a name="customevent-schema"></a>Schema CustomEvent
 
-In aangepaste schema's zijn er geen verplichte eigenschappen die worden afgedwongen zoals het EventGrid-schema. De publicatie-entiteit kan het gebeurtenis schema volledig beheren. Het biedt maximale flexibiliteit en maakt scenario's mogelijk waarin al een op gebeurtenissen gebaseerd systeem is geïnstalleerd en bestaande gebeurtenissen opnieuw moet gebruiken en/of niet aan een specifiek schema hoeven te worden gekoppeld.
+In het aangepaste schema zijn er geen verplichte eigenschappen die worden afgedwongen, zoals het EventGrid-schema. De publicatieentiteit kan het gebeurtenisschema volledig beheren. Het biedt maximale flexibiliteit en maakt scenario's mogelijk waarin u al een op gebeurtenissen gebaseerd systeem hebt en bestaande gebeurtenissen wilt hergebruiken en/of niet wilt worden gekoppeld aan een specifiek schema.
 
 ### <a name="custom-schema-properties"></a>Aangepaste schema-eigenschappen
 
-Geen verplichte eigenschappen. Het is tot de publicatie-entiteit om de payload te bepalen.
+Geen verplichte eigenschappen. Het is aan de publicerende entiteit om de payload te bepalen.
 
-### <a name="example--custom-schema-event"></a>Voor beeld: aangepaste schema gebeurtenis
+### <a name="example--custom-schema-event"></a>Voorbeeld — Aangepaste schemagebeurtenis
 
 ```json
 [
@@ -106,13 +106,13 @@ Geen verplichte eigenschappen. Het is tot de publicatie-entiteit om de payload t
 
 ## <a name="cloudevent-schema"></a>CloudEvent-schema
 
-Naast de hierboven genoemde schema's ondersteunt Event Grid systeem eigen gebeurtenissen in het [JSON-schema CloudEvents](https://github.com/cloudevents/spec/blob/master/json-format.md). CloudEvents is een open specificatie voor het beschrijven van gebeurtenis gegevens. Het vereenvoudigt interoperabiliteit door een gemeen schappelijk gebeurtenis schema te bieden voor het publiceren en gebruiken van gebeurtenissen. Het maakt deel uit van [CNCF](https://www.cncf.io/) en momenteel beschik bare versie is 1,0-RC1.
+Naast de bovenstaande schema's ondersteunt Gebeurtenisraster gebeurtenissen in het [JSON-schema van CloudEvents.](https://github.com/cloudevents/spec/blob/master/json-format.md) CloudEvents is een open specificatie voor het beschrijven van gebeurtenisgegevens. Het vereenvoudigt de interoperabiliteit door een gemeenschappelijk gebeurtenisschema voor het publiceren en consumeren van gebeurtenissen op te geven. Het is onderdeel van [CNCF](https://www.cncf.io/) en momenteel beschikbaar versie is 1.0-rc1.
 
 ### <a name="cloudevent-schema-properties"></a>Eigenschappen van CloudEvent-schema
 
-Raadpleeg de [CloudEvents-specificatie](https://github.com/cloudevents/spec/blob/master/json-format.md#3-envelope) voor de eigenschappen van de verplichte envelop.
+Raadpleeg [de CloudEvents-specificatie](https://github.com/cloudevents/spec/blob/master/json-format.md#3-envelope) voor de verplichte envelopeigenschappen.
 
-### <a name="example--cloud-event"></a>Voor beeld: Cloud gebeurtenis
+### <a name="example--cloud-event"></a>Voorbeeld — cloudgebeurtenis
 ```json
 [{
        "id": "1807",

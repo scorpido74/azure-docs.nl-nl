@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: RDS SQL Server online migreren naar SQL Database'
+title: 'Zelfstudie: RDS SQL Server online migreren naar SQL Database'
 titleSuffix: Azure Database Migration Service
-description: Meer informatie over het uitvoeren van een online migratie van RDS SQL Server naar Azure SQL Database enkele data base of een beheerd exemplaar met behulp van de Azure Database Migration Service.
+description: Lees een online migratie van RDS SQL Server naar Azure SQL Database single database of beheerde instantie met behulp van de Azure Database Migration Service.
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: db561761acbd5ff991f88cfd18cec8d4625336f2
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 8d538deca610fd9981d401d28b6bea1c31c6d4c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255526"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298875"
 ---
-# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Zelf studie: RDS-SQL Server naar Azure SQL Database of een Azure SQL Database beheerd exemplaar online migreren met behulp van DMS
-U kunt de Azure Database Migration Service gebruiken om de data bases van een RDS-SQL Server exemplaar te migreren naar [Azure SQL database](https://docs.microsoft.com/azure/sql-database/) of een [Azure SQL database beheerd exemplaar](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) met minimale downtime. In deze zelf studie migreert u de **Adventureworks2012** -data base die is hersteld naar een RDS SQL Server exemplaar van SQL Server 2012 (of hoger) naar Azure SQL database of een Azure SQL database beheerd exemplaar met behulp van de Azure database Migration service.
+# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Zelfstudie: RDS SQL Server migreren naar Azure SQL Database of een Azure SQL Database beheerd exemplaar online met Behulp van DMS
+U de Azure Database Migration Service gebruiken om de databases te migreren van een RDS SQL Server-instantie naar [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) of een Azure SQL [Database-beheerde instantie](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) met minimale downtime. In deze zelfstudie migreert u de **Adventureworks2012-database** die is hersteld naar een RDS SQL Server-exemplaar van SQL Server 2012 (of hoger) naar Azure SQL Database of een Azure SQL Database beheerd exemplaar met behulp van de Azure Database Migration Service.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Maak een instantie van Azure SQL Database of een beheerde instantie van Azure SQL Database. 
+> * Maak een exemplaar van Azure SQL Database of een Azure SQL Database beheerde instantie. 
 > * Het voorbeeldschema migreren met behulp van de Data Migration Assistant.
 > * De Azure-portal gebruiken om een Azure Database Migration Service-exemplaar te maken.
 > * Een migratieproject maken met behulp van de Azure Database Migration Service.
@@ -40,7 +40,7 @@ In deze zelfstudie leert u het volgende:
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-In dit artikel wordt een online migratie van RDS SQL Server naar Azure SQL Database of een Azure SQL Database beheerd exemplaar beschreven.
+In dit artikel wordt een onlinemigratie beschreven van RDS SQL Server naar Azure SQL Database of een azure SQL Database beheerde instantie.
 
 ## <a name="prerequisites"></a>Vereisten
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
@@ -49,26 +49,26 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 * Maak een Azure SQL Database. Dit doet u door de details in het artikel [Een Azure SQL-database maken in de Microsoft Azure-portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) te volgen.
 
     > [!NOTE]
-    > Als u migreert naar een beheerde instantie van Azure SQL Database, volgt u de details in het artikel [een Azure SQL database beheerd exemplaar maken](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)en vervolgens een lege data base maken met de naam **AdventureWorks2012**. 
+    > Als u migreert naar een door Azure SQL Database beheerde instantie, volgt u de details in het artikel [Een azure SQL Database-beheerde instantie maken](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)en maakt u vervolgens een lege database met de naam **AdventureWorks2012**. 
  
 * Download en installeer de [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 of hoger.
-* Maak een Microsoft Azure Virtual Network voor Azure Database Migration Service met behulp van het Azure Resource Manager-implementatie model. Als u migreert naar een Azure SQL Database beheerde instantie, moet u ervoor zorgen dat u het DMS-exemplaar maakt in hetzelfde virtuele netwerk dat wordt gebruikt voor het beheerde exemplaar van Azure SQL Database, maar in een ander subnet.  Als u een ander virtueel netwerk gebruikt voor DMS, moet u ook een virtueel netwerk peering maken tussen de twee virtuele netwerken. Raadpleeg de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)voor meer informatie over het maken van een virtueel netwerk, met name de Quick Start-artikelen met stapsgewijze Details.
+* Maak een Microsoft Azure Virtual Network for Azure Database Migration Service met behulp van het Azure Resource Manager-implementatiemodel. Als u migreert naar een door Azure SQL Database beheerde instantie, moet u de DMS-instantie maken in hetzelfde virtuele netwerk dat wordt gebruikt voor de beheerde instantie Azure SQL Database, maar in een ander subnet.  Als u een ander virtueel netwerk voor DMS gebruikt, moet u een virtueel netwerk maken dat peering tussen de twee virtuele netwerken. Zie de [virtual network documentation](https://docs.microsoft.com/azure/virtual-network/)en vooral de quickstart-artikelen met stapsgewijze details voor meer informatie over het maken van een virtueel netwerk.
 
     > [!NOTE]
-    > Als u tijdens de installatie van het virtuele netwerk ExpressRoute gebruikt met Network-peering voor micro soft, voegt u de volgende service- [eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) toe aan het subnet waarin de service wordt ingericht:
+    > Als u ExpressRoute gebruikt met netwerkpeering naar Microsoft, voegt u tijdens de installatie van het virtuele netwerk ExpressRoute met netwerkpeering aan Microsoft de volgende [serviceeindpunten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) toe aan het subnet waarin de service wordt ingericht:
     >
-    > * Eind punt van de doel database (bijvoorbeeld SQL-eind punt, Cosmos DB-eind punt, enzovoort)
-    > * Opslag eindpunt
-    > * Service Bus-eind punt
+    > * Eindpunt van doeldatabase (bijvoorbeeld SQL-eindpunt, Cosmos DB-eindpunt, enzovoort)
+    > * Eindpunt voor opslag
+    > * Eindpunt van servicebus
     >
-    > Deze configuratie is nood zakelijk omdat de Azure Database Migration Service geen verbinding met internet heeft. 
+    > Deze configuratie is nodig omdat de Azure Database Migration Service geen internetverbinding heeft. 
 
-* Zorg ervoor dat de regels voor de netwerk beveiligings groep van uw virtuele netwerk niet de volgende binnenkomende communicatie poorten blok keren tot Azure Database Migration Service: 443, 53, 9354, 445, 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG verkeer van virtuele netwerken.
+* Zorg ervoor dat de regels van uw beveiligingsgroep voor virtuele netwerken niet de volgende binnenkomende communicatiepoorten naar Azure Database Migration Service blokkeren: 443, 53, 9354, 445, 12000. Zie het artikel [Netwerkverkeer filteren met netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van het virtuele netwerk.
 * Configureer uw [Windows Firewall voor toegang tot de database-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Open uw Windows-firewall voor toegang voor de Azure Database Migration Service tot de SQL Server-bron, die standaard TCP-poort 1433 gebruikt.
-* Maak een [firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) op serverniveau voor de Azure SQL Database-server om voor de Azure Database Migration Service toegang tot de doeldatabase toe te staan. Geef het subnet-bereik van het virtuele netwerk op dat wordt gebruikt voor de Azure Database Migration Service.
+* Maak een [firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) op serverniveau voor de Azure SQL Database-server om voor de Azure Database Migration Service toegang tot de doeldatabase toe te staan. Geef het subnetbereik op van het virtuele netwerk dat wordt gebruikt voor de Azure Database Migration Service.
 * Zorg ervoor dat de referenties waarmee verbinding wordt gemaakt met het bronexemplaar voor RDS SQL Server gekoppeld zijn aan een account dat lid is van de serverrol 'Processadmin' en van de databaserollen 'db_owner' op alle databases die moeten worden gemigreerd.
-* Zorg ervoor dat de referenties die worden gebruikt om verbinding te maken met de doel-Azure SQL Database instantie over de machtiging beheer DATABASE hebben op de doel-Azure SQL-data bases en een lid van de rol sysadmin bij het migreren naar een Azure SQL Database beheerd exemplaar.
+* Controleer of de referenties die worden gebruikt om verbinding te maken met de instantie Azure SQL Database zijn ingeschakeld, de machtigingen voor de CONTROLEDATABASE hebben op de doelazure SQL-databases en een lid van de sysadmin-rol als u migreert naar een door Azure SQL Database beheerde instantie.
 * De versie van de RDS SQL-bronserver moet SQL Server 2012 of hoger zijn. Zie het artikel [Hoe de versie, de editie en het updateniveau van de SQL-server en de bijbehorende onderdelen worden bepaald](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an) om te bepalen welke versie van uw SQL Server-exemplaar wordt uitgevoerd.
 * Inschakelen van Change Data Capture (CDC) op de RDS SQL Server-database en alle gebruikerstabellen die geselecteerd zijn voor migratie.
     > [!NOTE]
@@ -105,8 +105,8 @@ DMA gebruiken voor het migreren van het schema naar Azure SQL Database.
 
 Voer voor het migreren van het schema **AdventureWorks2012** naar Azure SQL Database, de volgende stappen uit:
 
-1. Selecteer het pictogram Nieuw (+) in de Data Migration Assistant, en selecteer vervolgens onder **Projecttype** **Migratie**.
-2. Geef een projectnaam op, selecteer in het tekstvak **Bronservertype** **SQL Server**en in het tekstvak **Doelservertype** **Azure SQL Database**.
+1. Selecteer het pictogram Nieuw (+) in de Data Migration Assistant, en selecteer vervolgens onder **Projecttype****Migratie**.
+2. Geef een projectnaam op, selecteer in het tekstvak **Bronservertype****SQL Server**en in het tekstvak **Doelservertype****Azure SQL Database**.
 3. Selecteer onder **Migratiebereik**, selecteer **Alleen schema**.
 
     Na het uitvoeren van de vorige stappen, moet de DMA-interface worden weergegeven zoals in de volgende afbeelding:
@@ -146,7 +146,7 @@ Voer voor het migreren van het schema **AdventureWorks2012** naar Azure SQL Data
 
     ![Resourceproviders weergeven](media/tutorial-sql-server-to-azure-sql-online/portal-select-resource-provider.png)
 
-3. Zoek naar migratie en selecteer rechts van **Microsoft.DataMigration** de optie **Registreren**.
+3. Zoek naar migratie en selecteer Vervolgens rechts van **Microsoft.DataMigration**de optie **Register**.
 
     ![Resourceprovider registreren](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-register-resource-provider.png)    
 
@@ -156,7 +156,7 @@ Voer voor het migreren van het schema **AdventureWorks2012** naar Azure SQL Data
 
     ![Azure Marketplace](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/portal-marketplace.png)
 
-2. Selecteer in het scherm **Azure Database Migration Service** **Maken**.
+2. Selecteer in het scherm **Azure Database Migration Service****Maken**.
 
     ![Azure Database Migration Service-exemplaar maken](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create1.png)
   
@@ -164,11 +164,11 @@ Voer voor het migreren van het schema **AdventureWorks2012** naar Azure SQL Data
 
 4. Selecteer het abonnement waarin u het Azure Database Migration Service-exemplaar wilt maken. 
 
-5. Selecteer een bestaand virtueel netwerk of maak een nieuwe.
+5. Selecteer een bestaand virtueel netwerk of maak een nieuw netwerk.
 
-    Het virtuele netwerk biedt Azure Database Migration Service toegang tot de bron-SQL Server en het doel Azure SQL Database exemplaar.
+    Het virtuele netwerk biedt Azure Database Migration Service toegang tot de bron SQL Server en de doelstelling Azure SQL Database instance.
 
-    Zie het artikel [een virtueel netwerk maken met behulp van de Azure Portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een virtueel netwerk in de Azure Portal.
+    Zie het artikel Een virtueel netwerk maken met de [Azure-portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een virtueel netwerk in de Azure-portal.
 
 6. Selecteer een prijscategorie. Zorg dat u de prijscategorie Premium selecteert voor deze onlinemigratie.
 
@@ -194,17 +194,17 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 4. Geef in het scherm **Nieuw migratieproject** een naam op voor het project, selecteer in het tekstvak **Bronservertype** de optie **AWS RDS voor SQL Server** en selecteer in het tekstvak **Doelservertype** de optie **Azure SQL Database**.
 
     > [!NOTE]
-    > Selecteer **Azure SQL database** voor het doel server type om te migreren naar een Azure SQL database Singleton-data base en naar een Azure SQL database beheerd exemplaar.
+    > Selecteer Azure SQL **Database** voor het migreren naar zowel een Azure SQL Database singleton-database als naar een azure SQL Database-beheerde instantie voor het selecteren van Azure SQL Database voor het migreren naar zowel een Singleton-database van Azure SQL Database als naar een azure SQL Database-beheerde instantie.
 
-5. Selecteer in de sectie **Het type activiteit kiezen** de optie **Onlinegegevensmigratie**.
+5. Selecteer online **gegevensmigratie**in de sectie **Type activiteit kiezen** .
 
     > [!IMPORTANT]
-    > Zorg ervoor dat u **Online gegevens migratie**selecteert. offline migraties worden niet ondersteund voor dit scenario.
+    > Zorg ervoor dat u **Online gegevensmigratie**selecteert; offlinemigraties worden niet ondersteund voor dit scenario.
 
     ![Azure Database Migration Service-project maken](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 
     > [!NOTE]
-    > U kunt ook **project maken** selecteren om het migratie project nu te maken en de migratie later uitvoeren.
+    > U afwisselend **project maken kiezen** om nu het migratieproject te maken en de migratie later uit te voeren.
 
 6. Selecteer **Opslaan**.
 
@@ -223,7 +223,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
     Wanneer er geen vertrouwd certificaat is geïnstalleerd, genereert SQL Server een zelfondertekend certificaat wanneer het exemplaar wordt gestart. Dit certificaat wordt gebruikt voor het versleutelen van de referenties voor clientverbindingen.
 
     > [!CAUTION]
-    > SSL-verbindingen die zijn versleuteld met behulp van een zelfondertekend certificaat bieden geen sterke beveiliging. Ze zijn vatbaar voor man-in-the-middle-aanvallen. U moet niet vertrouwen op SSL met behulp van zelfondertekende certificaten in een productieomgeving of op servers die zijn verbonden met internet.
+    > TLS-verbindingen die zijn versleuteld met een zelfondertekend certificaat bieden geen sterke beveiliging. Ze zijn vatbaar voor man-in-the-middle-aanvallen. U moet niet vertrouwen op TLS met behulp van zelfondertekende certificaten in een productieomgeving of op servers die zijn verbonden met het internet.
 
    ![Brondetails](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-source-details3.png)
 
@@ -250,12 +250,12 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
     | Instelling | Beschrijving |
     | ------------- | ------------- |
     | **Maximale aantal tabellen om parallel te laden** | Geeft het aantal tabellen aan dat DMS gelijktijdig tijdens de migratie uitvoert. De standaardwaarde is 5, maar deze kan worden ingesteld op een optimale waarde om te voldoen aan specifieke migratiebehoeften op basis van elke POC-migratie. |
-    | **Wanneer de brontabel wordt afgekapt** | Geeft aan of DMS de doeltabel tijdens de migratie afkapt. Deze instelling kan nuttig zijn als een of meer tabellen worden afgekapt als onderdeel van het migratie proces. |
-    | **Instellingen voor LOB-gegevens (Large Objects, grote objecten) configureren** | Geeft aan of DMS onbeperkte LOB-gegevens migreert of de gemigreerde LOB-gegevens tot een specifieke grootte beperkt.  Wanneer er een limiet is voor de LOB-gegevens die zijn gemigreerd, worden alle LOB-gegevens die groter zijn dan die limiet afgekapt. Voor productiemigraties is het raadzaam om **Onbeperkte LOB-grootte toestaan** te selecteren om gegevensverlies te voorkomen. Selecteer om onbeperkte LOB-grootte toe te staan het selectievakje **Migrate LOB data in a single block when the LOB size is less than (KB) specified** (LOB-gegevens in één blok migreren wanneer de LOB-grootte kleiner is dan het opgegeven aantal KB) voor betere prestaties. |
+    | **Wanneer de brontabel wordt afgekapt** | Geeft aan of DMS de doeltabel tijdens de migratie afkapt. Deze instelling kan handig zijn als een of meer tabellen worden afgekapt als onderdeel van het migratieproces. |
+    | **Instellingen voor LOB-gegevens (Large Objects, grote objecten) configureren** | Geeft aan of DMS onbeperkte LOB-gegevens migreert of de gemigreerde LOB-gegevens tot een specifieke grootte beperkt.  Wanneer er een limiet is voor de LOB-gegevens die zijn gemigreerd, worden lob-gegevens die verder gaan dan die limiet, afgekapt. Voor productiemigraties is het raadzaam om **Onbeperkte LOB-grootte toestaan** te selecteren om gegevensverlies te voorkomen. Selecteer om onbeperkte LOB-grootte toe te staan het selectievakje **Migrate LOB data in a single block when the LOB size is less than (KB) specified** (LOB-gegevens in één blok migreren wanneer de LOB-grootte kleiner is dan het opgegeven aantal KB) voor betere prestaties. |
 
     ![Geavanceerde instellingen voor onlinemigratie instellen](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
 
-5. Selecteer **Opslaan**, geef in het scherm **Migratieoverzicht** in het tekstvak **Naam activiteit** een naam op voor de migratieactiviteit en controleer het overzicht om ervoor te zorgen dat de bron- en doeldetails overeenkomen met wat u eerder hebt opgegeven.
+5. Selecteer **Opslaan**, geef op het scherm **Migratieoverzicht** in het tekstvak **Naam activiteit** een naam op voor de migratieactiviteit, en controleer vervolgens het overzicht om te verzekeren dat de bron- en doeldetails overeenkomen met wat u eerder hebt opgegeven.
 
     ![Migratieoverzicht](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-migration-summary.png)
 
@@ -292,6 +292,6 @@ Nadat de eerste volledige lading is voltooid, worden de databases gemarkeerd als
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie het artikel [Bekende problemen met en tijdelijke oplossingen voor onlinemigraties naar Azure SQL Database](known-issues-azure-sql-online.md) voor informatie over bekende problemen en beperkingen bij het uitvoeren van onlinemigraties naar Azure SQL Database.
-* Zie het artikel [Wat is de Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview) voor informatie over de Azure Database Migration Service.
+* Raadpleeg het artikel [Wat is de Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview) voor informatie over de Azure Database Migration Service.
 * Zie het artikel [Wat is de service Azure SQL Database?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) voor informatie over Azure SQL Database.
-* Zie de pagina [Azure SQL database Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)(Engelstalig) voor meer informatie over het Azure SQL database van beheerde exemplaren.
+* Zie de pagina Azure SQL Database [Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)voor informatie over azure SQL Database managed instances.

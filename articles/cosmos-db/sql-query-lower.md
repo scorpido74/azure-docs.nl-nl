@@ -1,6 +1,6 @@
 ---
-title: LAGER in Azure Cosmos DB query taal
-description: Meer informatie over de lagere SQL-systeem functie in Azure Cosmos DB om een teken reeks expressie te retour neren na het omzetten van een hoofd letter-teken in kleine letters
+title: LAGER in Azure Cosmos DB-querytaal
+description: Meer informatie over de functie LOWER SQL-systeem in Azure Cosmos DB om een tekenreeksexpressie te retourneren nadat u hoofdlettergegevens hebt geconverteerd naar kleine letters
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 80dba57d4fe05630eb5ae4f8fc96bd0aa214c6d4
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302267"
 ---
-# <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
+# <a name="lower-azure-cosmos-db"></a>LAGER (Azure Cosmos DB)
  Retourneert een tekenreeksexpressie na het converteren van tekens in hoofdletters naar kleine letters.  
 
-De lagere systeem functie maakt geen gebruik van de index. Als u van plan bent om niet-hoofdletter gevoelige vergelijkingen te maken, kan de functie lagere systeem een aanzienlijke hoeveelheid van RU verbruiken. Als dit het geval is, kunt u in plaats van het gebruik van de functie lagere systeem gegevens elke keer voor vergelijkingen te normaliseren, de behuizing tijdens het invoegen normaliseren. Vervolgens wordt een query zoals SELECT * FROM c waarbij LOWER (c. name) = ' Bob ' gewoon geselecteerd * van c waarbij c.name = ' Bob '.
+De functie LOWER-systeem maakt geen gebruik van de index. Als u van plan bent om frequente gevallen ongevoelige vergelijkingen te doen, kan de lagere systeemfunctie een aanzienlijke hoeveelheid RU's verbruiken. Als dit het geval is, in plaats van het gebruik van de lagere systeemfunctie om gegevens te normaliseren elke keer voor vergelijkingen, u de behuizing normaliseren bij het inbrengen. Dan wordt een query zoals SELECT * FROM c WHERE LOWER(c.name) = 'bob' gewoon SELECT * FROM c WHERE c.name = 'bob'.
 
 ## <a name="syntax"></a>Syntaxis
   
@@ -28,21 +28,21 @@ LOWER(<str_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *str_expr*  
-   Is een teken reeks expressie.  
+   Is een tekenreeksexpressie.  
   
-## <a name="return-types"></a>Retour typen
+## <a name="return-types"></a>Retourtypen
   
   Retourneert een tekenreeksexpressie.  
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld ziet u hoe u `LOWER` gebruikt in een query.  
+  In het volgende voorbeeld `LOWER` ziet u hoe u deze in een query gebruiken.  
   
 ```sql
 SELECT LOWER("Abc") AS lower
 ```  
   
- Hier volgt de resultatenset.  
+ Hier is het resultaat ingesteld.  
   
 ```json
 [{"lower": "abc"}]  
@@ -51,10 +51,10 @@ SELECT LOWER("Abc") AS lower
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeem functie maakt geen gebruik van de index.
+Deze systeemfunctie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Teken reeks functies Azure Cosmos DB](sql-query-string-functions.md)
-- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
+- [Tekenreeksfuncties Azure Cosmos DB](sql-query-string-functions.md)
+- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

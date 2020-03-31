@@ -1,6 +1,6 @@
 ---
-title: StorSimple Snapshot Manager gebruikers interface | Microsoft Docs
-description: Hierin wordt de StorSimple-Snapshot Manager gebruikers interface beschreven en wordt uitgelegd hoe u deze kunt gebruiken voor het beheren van back-uptaken en de back-upcatalogus.
+title: StorSimple Snapshot Manager-gebruikersinterface | Microsoft Documenten
+description: Beschrijft de gebruikersinterface van StorSimple Snapshot Manager en legt uit hoe u deze gebruiken om back-uptaken en de back-upcatalogus te beheren.
 services: storsimple
 documentationcenter: NA
 author: twooley
@@ -16,438 +16,438 @@ ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
 ms.openlocfilehash: 56771d2e62289485017f34c6a9ab26e1d53610ec
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75933979"
 ---
-# <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>StorSimple Snapshot Manager gebruikers interface gebruiken voor het beheren van back-uptaken en een back-upcatalogus
+# <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>De gebruikersinterface van StorSimple Snapshot Manager gebruiken om back-uptaken en back-upcatalogus te beheren
 
 ## <a name="overview"></a>Overzicht
-De StorSimple-Snapshot Manager heeft een intuïtieve gebruikers interface die u kunt gebruiken om back-ups te maken en te beheren. Deze zelf studie biedt een inleiding tot de gebruikers interface en legt uit hoe elk van de onderdelen moet worden gebruikt. Zie [Wat is StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) voor een gedetailleerde beschrijving van de StorSimple-Snapshot Manager.
+De StorSimple Snapshot Manager heeft een intuïtieve gebruikersinterface die u gebruiken om back-ups te maken en te beheren. Deze zelfstudie geeft een inleiding tot de gebruikersinterface en legt vervolgens uit hoe u elk van de componenten gebruiken. Zie [Wat is StorSimple Snapshot Manager voor](storsimple-what-is-snapshot-manager.md) een gedetailleerde beschrijving van de StorSimple Snapshot Manager?
 
-### <a name="console-description"></a>Console beschrijving
-Als u de gebruikers interface wilt weer geven, klikt u op het pictogram StorSimple Snapshot Manager op het bureau blad. Het console venster wordt weer gegeven, zoals wordt weer gegeven in de volgende afbeelding.
+### <a name="console-description"></a>Beschrijving van de console
+Als u de gebruikersinterface wilt weergeven, klikt u op het pictogram StorSimple Snapshot Manager op uw bureaublad. Het consolevenster wordt weergegeven, zoals in de volgende afbeelding wordt weergegeven.
 
-![Snapshot Manager deel Vensters StorSimple](./media/storsimple-use-snapshot-manager/HCS_SSM_gui_panes.png)
+![Deelvensters van StorSimple-momentopnamebeheer](./media/storsimple-use-snapshot-manager/HCS_SSM_gui_panes.png)
 
-Het console venster bevat vijf hoofd elementen. Klik op de juiste koppeling voor een volledige beschrijving van elk element.
+Het consolevenster heeft vijf belangrijke elementen. Klik op de juiste link voor een volledige beschrijving van elk element.
 
-* [Menu balk](#menu-bar) 
-* [Werk balk](#tool-bar) 
-* [Deel venster bereik](#scope-pane) 
-* [Resultaten deel venster](#results-pane) 
-* [Acties deel venster](#actions-pane) 
+* [Menubalk](#menu-bar) 
+* [Gereedschapsbalk](#tool-bar) 
+* [Deelvenster Bereik](#scope-pane) 
+* [Deelvenster Resultaten](#results-pane) 
+* [Deelvenster Acties](#actions-pane) 
 
-Daarnaast ondersteunt de StorSimple-Snapshot Manager [toetsenbord navigatie en een aantal snelkoppelingen](#keyboard-navigation-and-shortcuts).
+Daarnaast ondersteunt de StorSimple Snapshot Manager [toetsenbordnavigatie en een aantal sneltoetsen.](#keyboard-navigation-and-shortcuts)
 
-### <a name="console-accessibility"></a>Console toegankelijkheid
-De StorSimple-Snapshot Manager gebruikers interface ondersteunt de toegankelijkheids functies die worden geboden door het Windows-besturings systeem en de micro soft Management Console (MMC), evenals een aantal StorSimple Snapshot Manager – specifieke sneltoetsen. 
+### <a name="console-accessibility"></a>Toegankelijkheid van de console
+De gebruikersinterface van StorSimple Snapshot Manager ondersteunt de toegankelijkheidsfuncties van het Windows-besturingssysteem en de Microsoft Management Console (MMC), evenals enkele StorSimple Snapshot Manager-specifieke sneltoetsen. 
 
-* Ga naar sneltoetsen [voor Windows](https://support.microsoft.com/kb/126449)voor een beschrijving van de toegankelijkheids functies van Windows. 
-* Ga voor een beschrijving van de toegankelijkheids functies van MMC naar [Toegankelijkheid voor mmc 3,0](https://technet.microsoft.com/library/cc766075.aspx)
-* Ga naar [toetsenbord navigatie en snelkoppelingen](#keyboard-navigation-and-shortcuts)voor een beschrijving van de StorSimple Snapshot Manager toegankelijkheids functies.
+* Ga voor een beschrijving van de [toegankelijkheidsfuncties](https://support.microsoft.com/kb/126449)van Windows naar Sneltoetsen voor Windows . 
+* Ga voor een beschrijving van de toegankelijkheidsfuncties van MMC naar [Toegankelijkheid voor MMC 3.0](https://technet.microsoft.com/library/cc766075.aspx)
+* Ga voor een beschrijving van de [toegankelijkheidsfuncties](#keyboard-navigation-and-shortcuts)van StorSimple Snapshot Manager naar Toetsenbordnavigatie en sneltoetsen .
 
 ## <a name="menu-bar"></a>Menubalk
-De menu balk boven aan het console venster bevat [bestanden](#file-menu), [acties](#action-menu), [weer gaven](#view-menu), [Favorieten](#favorites-menu), [Vensters](#window-menu)en [Help](#help-menu) -menu's.
+De menubalk boven aan het consolevenster bevat [menu's Bestand,](#file-menu) [Actie](#action-menu), [Weergave](#view-menu), [Favorieten,](#favorites-menu) [Venster](#window-menu)en [Help.](#help-menu)
 
-Klik op een item in de menu balk om een lijst met beschik bare opdrachten in het menu weer te geven. In het volgende voor beeld ziet u het menu **weer gave** dat is geselecteerd in de menu balk.
+Klik op een item op de menubalk om een lijst met beschikbare opdrachten in dat menu te bekijken. In het volgende voorbeeld wordt het menu **Weergave** weergegeven dat is geselecteerd op de menubalk.
 
-![Het menu weer gave is geselecteerd](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png)
+![Menu Weergeven geselecteerd](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png)
 
 ### <a name="file-menu"></a>Menu Bestand
-Het menu **bestand** bevat standaard opdrachten van micro soft Management Console (MMC).
+Het menu **Bestand** bevat standaard MMC-opdrachten (Microsoft Management Console).
 
-#### <a name="menu-access"></a>Menu toegang
-Klik op **bestand** in de menu balk om het menu **bestand** weer te geven. Het volgende menu wordt weer gegeven.
+#### <a name="menu-access"></a>Menutoegang
+Als u het menu **Bestand wilt** weergeven, klikt u op **Bestand** op de menubalk. Het volgende menu wordt weergegeven.
 
-![Menu bestand van StorSimple Snapshot Manager](./media/storsimple-use-snapshot-manager/HCS_SSM_FileMenu.png) 
+![Menu StorSimple Snapshot Manager-bestand](./media/storsimple-use-snapshot-manager/HCS_SSM_FileMenu.png) 
 
-#### <a name="menu-description"></a>Menu beschrijving
-In de volgende tabel worden de items beschreven die worden weer gegeven in het menu **bestand** .
+#### <a name="menu-description"></a>Menubeschrijving
+In de volgende tabel worden items beschreven die worden weergegeven in het menu **Bestand.**
 
 | Menu-item | Beschrijving |
 |:--- |:--- |
-| Nieuw |Klik op **Nieuw** om een nieuwe console te maken op basis van de StorSimple-Snapshot Manager. |
-| Open |Klik op **openen** om een bestaande console te openen. |
-| Opslaan |Klik op **Opslaan** om de huidige console op te slaan. |
-| Opslaan als |Klik op **Opslaan als** om een nieuw, gewijzigd exemplaar van de huidige console te maken. Gebruik de optie **Opslaan als** om een weer gave aan te passen en deze op te slaan zodat u deze later kunt ophalen. U kunt bijvoorbeeld StorSimple Snapshot Manager-modules maken die naar specifieke servers verwijzen. |
-| Module toevoegen/verwijderen |Klik op **module toevoegen/verwijderen** om modules toe te voegen of te verwijderen en knoop punten in het deel venster **bereik** te organiseren. Ga voor meer informatie naar modules [en uitbrei dingen toevoegen, verwijderen en indelen in MMC 3,0](https://technet.microsoft.com/library/cc722035.aspx). |
-| Opties |Klik op **Opties** om het console pictogram te wijzigen, geef de gebruikers toegangs modi en machtigingen op of verwijder console bestanden om de beschik bare schijf ruimte te verg Roten. |
-| Lijst met bestands paden |Klik op een pad in de genummerde lijst om een bestand opnieuw te openen dat u onlangs hebt geopend. |
-| Afsluiten |Klik op **Afsluiten** om het menu **bestand** te sluiten. |
+| Nieuw |Klik **op Nieuw** om een nieuwe console te maken op basis van de StorSimple Snapshot Manager. |
+| Geopend |Klik **op Openen** om een bestaande console te openen. |
+| Opslaan |Klik **op Opslaan** om de huidige console op te slaan. |
+| Opslaan als |Klik **op Opslaan als** om een nieuwe, hernoemde instantie van de huidige console te maken. Gebruik de optie **Opslaan als** om een weergave aan te passen en op te slaan voor later ophalen. U bijvoorbeeld StorSimple Snapshot Manager-modules maken die naar specifieke servers wijzen. |
+| Module toevoegen toevoegen/verwijderen |Klik **op Module toevoegen/verwijderen** om modules toe te voegen of te verwijderen en om knooppunten in het **deelvenster Bereik te** ordenen. Ga voor meer informatie naar [Module-ins en extensies toevoegen, verwijderen en organiseren in MMC 3.0](https://technet.microsoft.com/library/cc722035.aspx). |
+| Opties |Klik **op Opties** om het consolepictogram te wijzigen, gebruikerstoegangsmodi en -machtigingen op te geven of consolebestanden te verwijderen om de beschikbare schijfruimte te vergroten. |
+| Lijst met bestandspaden |Klik op een pad in de genummerde lijst om een bestand dat u onlangs hebt geopend, opnieuw te openen. |
+| Afsluiten |Klik **op Afsluiten** om het menu **Bestand** te sluiten. |
 
-### <a name="action-menu"></a>Actie menu
-Gebruik het menu **actie** om een van de beschik bare acties te selecteren. De items die voor u beschikbaar zijn, zijn afhankelijk van de selectie die u hebt gemaakt in het deel venster **bereik** of het deel venster met **resultaten** .
+### <a name="action-menu"></a>Actiemenu
+Gebruik het menu **Actie** om uit beschikbare acties te selecteren. De items die voor u beschikbaar zijn, zijn afhankelijk van de selectie die u maakt in het deelvenster **Bereik** of het deelvenster **Resultaten.**
 
-#### <a name="menu-access"></a>Menu toegang
-Ga op een van de volgende manieren te werk om het **actie** menu te bekijken:
+#### <a name="menu-access"></a>Menutoegang
+Ga als volgt te werk om het menu **Actie** weer te geven:
 
-* Klik met de rechter muisknop op een item in het deel venster **bereik** of in het deel venster met **resultaten** .
-* Selecteer een item in het deel venster **bereik** of het deel venster met **resultaten** en klik vervolgens op **actie** op de menu balk. 
+* Klik met de rechtermuisknop op een item in het **deelvenster Bereik** of het deelvenster **Resultaten.**
+* Selecteer een item in het **deelvenster Bereik** of het deelvenster **Resultaten** en klik op **Actie** op de menubalk. 
 
-Als u bijvoorbeeld het bovenste knoop punt in het deel venster **bereik** selecteert en vervolgens met de rechter muisknop klikt of op **actie** klikt in de menu balk, wordt het volgende menu weer gegeven.
+Als u bijvoorbeeld het bovenste knooppunt in het **deelvenster Bereik** selecteert en vervolgens met de rechtermuisknop of klik op **Actie** in de menubalk, wordt het volgende menu weergegeven.
 
-![StorSimple Snapshot Manager actie menu](./media/storsimple-use-snapshot-manager/HCS_SSM_Action_menu.png)
+![Menu StorSimple Snapshot Manager Actie](./media/storsimple-use-snapshot-manager/HCS_SSM_Action_menu.png)
 
-Het deel venster **acties** (rechts van de console) bevat dezelfde lijst met acties als het menu **actie** . Daarnaast bevat het deel venster **acties** de opties in het menu **weer geven** waarmee u een aangepaste weer gave van het **resultaat** venster kunt maken.
+Het deelvenster **Handelingen** (rechts van de console) bevat dezelfde lijst met acties als het menu **Actie.** Bovendien bevat het deelvenster **Handelingen** de **menuopties weergave,** waarmee u een aangepaste weergave van het deelvenster **Resultaten** maken.
 
-![Deel venster acties met het menu weer gave openen](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
+![Deelvenster Handelingen met het menu Weergave geopend](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
 
-#### <a name="menu-description"></a>Menu beschrijving
-De volgende tabel bevat een alfabetische lijst met StorSimple-Snapshot Manager acties. 
+#### <a name="menu-description"></a>Menubeschrijving
+De volgende tabel bevat een alfabetische lijst met StorSimple Snapshot Manager-acties. 
 
-* In de kolom **actie** worden acties weer gegeven die u kunt uitvoeren op knoop punten en resultaten. 
-* In de **Navigatie** kolom wordt uitgelegd hoe u het juiste **actie** menu weergeeft, zodat u de actie kunt selecteren. Sommige acties worden weer gegeven in meerdere **actie** menu's. Selecteer voor deze acties één **Navigatie** optie in de lijst met opsommings tekens. 
-* De kolom **Beschrijving** bevat informatie over het gebruik van elke actie in het menu **actie** of in het deel venster acties en legt uit wat het doet.
+* In de kolom **Actie** worden acties weergegeven die u uitvoeren op knooppunten en resultaten. 
+* In de kolom **Navigatie** wordt uitgelegd hoe u het juiste **actiemenu** weergeeft, zodat u de actie selecteren. Sommige acties worden **Action** weergegeven in meerdere actiemenu's. Selecteer voor deze acties één **navigatieoptie** in de lijst met opsommingstekens. 
+* In **de** kolom Beschrijving wordt beschreven hoe u elke actie gebruikt in **het** actiemenu of het deelvenster Handelingen en wordt uitgelegd wat deze actie doet.
 
 > [!NOTE]
-> Het deel venster **acties** en de **actie** menu's bevatten extra opties, zoals **weer gave**, **nieuw venster van hier**, **vernieuwen**, **lijst exporteren**en **Help**. Deze opties zijn beschikbaar als onderdeel van de MMC en zijn niet specifiek voor StorSimple Snapshot Manager. De tabel bevat beschrijvingen van deze opties.
+> Het deelvenster **Acties** en **de actiemenu's** bevatten extra opties, zoals **Weergave**, Nieuw venster **van hier,** **Vernieuwen,** **Exportlijst**en **Help**. Deze opties zijn beschikbaar als onderdeel van het MMC en zijn niet specifiek voor StorSimple Snapshot Manager. De tabel bevat beschrijvingen van deze opties.
 > 
 > 
 
 | Actie | Navigatie | Beschrijving |
 |:--- |:--- |:--- |
-| Verifiëren |Klik op het knoop punt **apparaten** en klik met de rechter muisknop op een apparaat in het **resultaten** venster. |Klik op **verifiëren** om het wacht woord in te voeren dat u voor het apparaat hebt geconfigureerd. |
-| Kloon |Vouw **back-upcatalogus**uit, vouw **Cloud momentopnamen**uit, klik op een gedateerde back-up en selecteer vervolgens een volume in het **resultaten** venster. |Klik op **klonen** om een kopie van een Cloud momentopname te maken en op te slaan op een locatie die u opgeeft. |
-| Een apparaat configureren |Klik met de rechter muisknop op het knoop punt **apparaten** . |Klik op **een apparaat configureren** om één apparaat of meerdere apparaten te configureren om verbinding te maken met de Windows-host. |
-| Back-upbeleid maken |Voer een van de volgende handelingen uit:<ul><li>Klik met de rechter muisknop op **back-upbeleid**.</li><li>Klik of vouw **volume groepen**uit en klik met de rechter muisknop op een volume groep.</li><li>Klik of vouw **back-upcatalogus**uit en klik met de rechter muisknop op een volume groep.</li></ul> |Klik op **back-upbeleid maken** om een geplande back-up voor een volume groep te configureren. |
-| Een volume groep maken |Voer een van de volgende handelingen uit:<ul><li>Klik op het knoop punt **volumes** en klik vervolgens met de rechter muisknop op een volume in het **resultaten** venster.</li><li>Klik met de rechter muisknop op het knoop punt **volume groepen** .</li></ul> |Klik op **volume groep maken** om volumes aan een volume groep toe te wijzen. |
-| Verwijderen |Klik op een knoop punt of resultaat (dit item wordt weer gegeven in veel **actie** menu's en in deel Vensters met **acties** ). |Klik op **verwijderen** om het knoop punt of resultaat dat u hebt geselecteerd, te verwijderen. Wanneer het bevestigings venster wordt weer gegeven, bevestigt of annuleert u het verwijderen. |
-| Details |Klik op het knoop punt **apparaten** en klik vervolgens met de rechter muisknop op een apparaat in het **resultaten** venster. |Klik op **Details** om de configuratie gegevens voor een apparaat weer te geven. |
-| Bewerken |Klik op **back-upbeleid**en klik vervolgens met de rechter muisknop op een beleid in het **resultaten** venster. |Klik op **bewerken** om het back-upschema voor een volume groep te wijzigen. |
-| Lijst exporteren |Klik op een knoop punt of resultaat (dit item wordt weer gegeven in alle **actie** menu's en **acties** deel Vensters). |Klik op **lijst exporteren** om een lijst op te slaan in een bestand met door komma's gescheiden waarden (CSV). U kunt dit bestand vervolgens importeren in een spreadsheet toepassing voor analyse. |
-| Help |Klik op een knoop punt of resultaat. (Dit item wordt weer gegeven in de deel Vensters alle **actie** menu's en **acties** .) |Klik op **Help** om online-Help te openen in een afzonderlijk browser venster. |
-| Nieuw venster vanaf hier |Klik op een knoop punt of resultaat (dit item wordt weer gegeven in alle **actie** menu's en **acties** deel Vensters). |Klik **hier op nieuw venster** om een nieuw StorSimple-Snapshot Manager venster te openen. |
-| Vernieuwen |Klik op een knoop punt of resultaat (dit item wordt weer gegeven in alle **actie** menu's en **acties** deel Vensters). |Klik op **vernieuwen** om het momenteel weer gegeven StorSimple-Snapshot Manager venster bij te werken. |
-| Apparaat vernieuwen |Klik op het knoop punt **apparaten** en klik met de rechter muisknop op een apparaat in het **resultaten** venster. |Klik op **apparaat vernieuwen** om een specifiek verbonden apparaat te synchroniseren met StorSimple Snapshot Manager. |
-| Apparaten vernieuwen |Klik met de rechter muisknop op het knoop punt **apparaten** . |Klik op **apparaten vernieuwen** om de lijst met verbonden apparaten te synchroniseren met StorSimple Snapshot Manager. |
-| Volumes opnieuw scannen |Klik met de rechter muisknop op het knoop punt **volumes** . |Klik op **volumes opnieuw scannen** om de lijst met volumes die wordt weer gegeven in het **resultaat** venster bij te werken. |
-| Herstellen |Vouw **back-upcatalogus**uit, vouw een volume groep uit, vouw **lokale moment opnamen** of **Cloud momentopnamen**uit en klik met de rechter muisknop op een back-up. |Klik op **herstellen** om de huidige volume groeps gegevens te vervangen door de gegevens van de geselecteerde back-up. |
-| Back-up maken |Voer een van de volgende handelingen uit:<ul><li>Vouw **volume groepen**uit en klik met de rechter muisknop op een volume groep.</li><li>Vouw **back-upcatalogus**uit en klik met de rechter muisknop op een volume groep.</li></ul> |Klik op **back-up maken** om onmiddellijk een back-uptaak te starten. |
-| Invoer weer geven in-/uitschakelen |Klik met de rechter muisknop op het bovenste knoop punt in het deel venster **bereik** (het knoop punt **StorSimple Snapshot Manager** in de voor beelden). |Klik op **in-/uitschakelen wordt weer gegeven** om de volume groepen en de bijbehorende back-ups weer te geven of te verbergen die zijn geïmporteerd uit het StorSimple Apparaatbeheer service-dash board. |
+| Verifiëren |Klik op het knooppunt **Apparaten** en klik met de rechtermuisknop op een apparaat in het deelvenster **Resultaten.** |Klik **op Verifiëren** om het wachtwoord in te voeren dat u voor het apparaat hebt geconfigureerd. |
+| Klonen |**Back-upcatalogus**uitvouwen, **Cloudmomentopnamen**uitbreiden, op een gedateerde back-up klikken en vervolgens een volume selecteren in het deelvenster **Resultaten.** |Klik **op Clone** om een kopie van een cloudmomentopname te maken en deze op te slaan op een locatie die u aanwijst. |
+| Een apparaat configureren |Klik met de rechtermuisknop op het knooppunt **Apparaten.** |Klik **op Een apparaat configureren** om één apparaat of meerdere apparaten te configureren om verbinding te maken met de Windows-host. |
+| Back-upbeleid maken |Voer een van de volgende handelingen uit:<ul><li>Klik met de rechtermuisknop op **Back-upbeleid**.</li><li>Klik of vouw **Volumegroepen**uit en klik vervolgens met de rechtermuisknop op een volumegroep.</li><li>Klik op een **back-upcatalogus**of vouw deze uit en klik vervolgens met de rechtermuisknop op een volumegroep.</li></ul> |Klik **op Back-upbeleid maken** om een geplande back-up voor een volumegroep te configureren. |
+| Volumegroep maken |Voer een van de volgende handelingen uit:<ul><li>Klik op het knooppunt **Volumes** en klik vervolgens met de rechtermuisknop op een volume in het deelvenster **Resultaten.**</li><li>Klik met de rechtermuisknop op het knooppunt **Volumegroepen.**</li></ul> |Klik **op Volumegroep maken** om volumes toe te wijzen aan een volumegroep. |
+| Verwijderen |Klik op een knooppunt of resultaat **Action** (Dit item wordt weergegeven in veel actiemenu's en actiedeelvensters.) **Actions** |Klik **op Verwijderen** om het knooppunt of resultaat dat u hebt geselecteerd te verwijderen. Wanneer het bevestigingsdialoogvenster wordt weergegeven, bevestigt of annuleert u de verwijdering. |
+| Details |Klik op het knooppunt **Apparaten** en klik vervolgens met de rechtermuisknop op een apparaat in het deelvenster **Resultaten.** |Klik op **Details** om de configuratiegegevens voor een apparaat te bekijken. |
+| Bewerken |Klik **op Back-upbeleid**en klik vervolgens met de rechtermuisknop op een beleid in het deelvenster **Resultaten.** |Klik **op Bewerken** om het back-upschema voor een volumegroep te wijzigen. |
+| Exportlijst |Klik op een knooppunt of resultaat **Action** (Dit item wordt weergegeven in alle actiemenu's en actiedeelvensters.) **Actions** |Klik **op Lijst exporteren** om een lijst op te slaan in een CSV-bestand (comma-separated value). U dit bestand vervolgens importeren in een spreadsheettoepassing voor analyse. |
+| Help |Klik op een knooppunt of resultaat. (Dit item wordt **Action** weergegeven in alle actiemenu's en actiedeelvensters.) **Actions** |Klik op **Help** om online Help te openen in een apart browservenster. |
+| Nieuw venster vanaf hier |Klik op een knooppunt of resultaat **Action** (Dit item wordt weergegeven in alle actiemenu's en actiedeelvensters.) **Actions** |Klik **op Nieuw venster van hier** om een nieuw StorSimple Snapshot Manager-venster te openen. |
+| Vernieuwen |Klik op een knooppunt of resultaat **Action** (Dit item wordt weergegeven in alle actiemenu's en actiedeelvensters.) **Actions** |Klik **op Vernieuwen** om het momenteel weergegeven venster StorSimple Snapshot Manager bij te werken. |
+| Apparaat vernieuwen |Klik op het knooppunt **Apparaten** en klik met de rechtermuisknop op een apparaat in het deelvenster **Resultaten.** |Klik **op Apparaat vernieuwen** om een specifiek verbonden apparaat te synchroniseren met StorSimple Snapshot Manager. |
+| Apparaten vernieuwen |Klik met de rechtermuisknop op het knooppunt **Apparaten.** |Klik **op Apparaten vernieuwen** om de lijst met verbonden apparaten te synchroniseren met StorSimple Snapshot Manager. |
+| Volumes opnieuw scannen |Klik met de rechtermuisknop op het knooppunt **Volumes.** |Klik **op Volumes opnieuw scannen** om de lijst met volumes bij te werken die in het deelvenster **Resultaten** worden weergegeven. |
+| Herstellen |Vouw **back-upcatalogus**uit, vouw een volumegroep uit, vouw **Lokale momentopnamen** of **Cloudsnapshots**uit en klik vervolgens met de rechtermuisknop op een back-up. |Klik **op Herstellen** om de huidige volumegroepgegevens te vervangen door de gegevens van de geselecteerde back-up. |
+| Maak een back-up |Voer een van de volgende handelingen uit:<ul><li>**Volumegroepen**uitvouwen en klik vervolgens met de rechtermuisknop op een volumegroep.</li><li>Vouw **back-upcatalogus**uit en klik vervolgens met de rechtermuisknop op een volumegroep.</li></ul> |Klik **op Back-up maken** om onmiddellijk een back-uptaak te starten. |
+| Weergave importeren in- of uitschakelen |Klik met de rechtermuisknop op het bovenste knooppunt in het deelvenster **Scope** (het knooppunt **Van Momentopname van StorSimple** in de voorbeelden). |Klik **op Weergave importeren inschakelen** om de volumegroepen en bijbehorende back-ups weer te geven of te verbergen die zijn geïmporteerd uit het storSimple Device Manager-servicedashboard. |
 
 ### <a name="view-menu"></a>Menu Beeld
-Gebruik het menu **weer gave** om een aangepaste weer gave van de inhoud van het **resultaten** venster te maken. Het menu **weer gave** bevat **kolommen toevoegen/verwijderen** en opties **aanpassen** .
+Gebruik het menu **Weergave** om een aangepaste weergave van de inhoud van het deelvenster **Resultaten** te maken. Het menu **Weergave** bevat **Kolommen toevoegen/verwijderen** en opties **aanpassen.**
 
-#### <a name="menu-access"></a>Menu toegang
-U kunt het menu **weer geven** openen via de menu balk of in het deel venster **acties** .
+#### <a name="menu-access"></a>Menutoegang
+U hebt toegang tot het menu **Weergave** op de menubalk of in het deelvenster **Handelingen.**
 
-![Menu StorSimple Snapshot Manager weer geven](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png) 
+![Menu StorSimple Snapshot Manager-weergave](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png) 
 
-#### <a name="menu-description"></a>Menu beschrijving
-In de volgende tabel worden de items beschreven die worden weer gegeven in het menu **beeld** .
+#### <a name="menu-description"></a>Menubeschrijving
+In de volgende tabel worden items beschreven die worden weergegeven in het menu **Weergave.**
 
 | Menu-item | Beschrijving |
 |:--- |:--- |
-| Kolommen toevoegen/verwijderen |Klik op **kolommen toevoegen/verwijderen** om kolommen toe te voegen aan of te verwijderen uit het **resultaten** venster. |
-| Aanpassen |Klik op **aanpassen** om items weer te geven of te verbergen in het StorSimple Snapshot Manager console venster. |
+| Kolommen toevoegen/verwijderen |Klik **op Kolommen toevoegen/verwijderen** om kolommen toe te voegen of te verwijderen in het deelvenster **Resultaten.** |
+| Aanpassen |Klik **op Aanpassen** om items weer te geven of te verbergen in het consolevenster Van StorSimple Snapshot Manager. |
 
 ### <a name="favorites-menu"></a>Menu Favorieten
-Gebruik het menu **Favorieten** om pagina weergaven en taken die u regel matig gebruikt, toe te voegen, te verwijderen en te organiseren. 
+Gebruik het menu **Favorieten** om paginaweergaven en taken die u vaak gebruikt, toe te voegen, te verwijderen en te ordenen. 
 
-#### <a name="menu-access"></a>Menu toegang
-U kunt het menu **Favorieten** openen via de menu balk.
+#### <a name="menu-access"></a>Menutoegang
+U het menu **Favorieten** openen op de menubalk.
 
-![Menu StorSimple-favorieten Snapshot Manager](./media/storsimple-use-snapshot-manager/HCS_SSM_FavoritesMenu.png)
+![Menu StorSimple Snapshot Manager-favorieten](./media/storsimple-use-snapshot-manager/HCS_SSM_FavoritesMenu.png)
 
-#### <a name="menu-description"></a>Menu beschrijving
-In de volgende tabel worden de items beschreven die in het menu **Favorieten** worden weer gegeven.
-
-| Menu-item | Beschrijving |
-|:--- |:--- |
-| Toevoegen aan Favorieten |Klik op **toevoegen aan favorieten** om de huidige weer gave toe te voegen aan de lijst met favorieten. |
-| Favorieten ordenen |Klik op **Favorieten ordenen** om de inhoud van de map Favorieten in te delen. |
-
-### <a name="window-menu"></a>Venster menu
-Gebruik het menu **venster** om StorSimple Snapshot Manager console Vensters toe te voegen en opnieuw in te delen.
-
-#### <a name="menu-access"></a>Menu toegang
-U kunt het menu **venster** openen in de menu balk.
-
-![Menu venster StorSimple-Snapshot Manager](./media/storsimple-use-snapshot-manager/HCS_SSM_WindowMenu.png)
-
-De genummerde lijst onder in het menu toont de Vensters die momenteel zijn geopend. Klik op een venster in die lijst om het venster op de voor grond te brengen. 
-
-#### <a name="menu-description"></a>Menu beschrijving
-In de volgende tabel worden de items beschreven die worden weer gegeven in het menu venster.
+#### <a name="menu-description"></a>Menubeschrijving
+In de volgende tabel worden items beschreven die worden weergegeven in het menu **Favorieten.**
 
 | Menu-item | Beschrijving |
 |:--- |:--- |
-| Nieuw venster |Klik op **nieuw venster** om een nieuw console venster te openen (naast het bestaande venster). |
-| Cascade |Klik op **trapsgewijs** om de geopende console vensters in een trapsgewijze stijl weer te geven. |
-| Horizon taal naast elkaar |Klik op **tegel horizon taal** om de geopende console vensters weer te geven in een tegel indeling (of raster). |
-| Pictogrammen schikken |Als u meerdere console vensters hebt geopend en verspreid over uw bureau blad, minimaliseert u deze en klikt u vervolgens op **Pictogrammen schikken** om ze in een horizontale rij aan de onderkant van het scherm te rangschikken. |
+| Toevoegen aan Favorieten |Klik **op Toevoegen aan favorieten** om de huidige weergave toe te voegen aan uw lijst met favorieten. |
+| Favorieten organiseren |Klik **op Favorieten organiseren** om de inhoud van de map Favorieten te ordenen. |
+
+### <a name="window-menu"></a>Venstermenu
+Gebruik het menu **Venster** om de consolevensters van StorSimple Snapshot Manager toe te voegen en opnieuw te rangschikken.
+
+#### <a name="menu-access"></a>Menutoegang
+U hebt toegang tot het **menu Venster** op de menubalk.
+
+![Venster van StorSimple-momentopnamebeheer](./media/storsimple-use-snapshot-manager/HCS_SSM_WindowMenu.png)
+
+De genummerde lijst onder aan het menu toont de vensters die momenteel geopend zijn. Klik op een venster in die lijst om het venster naar de voorgrond te brengen. 
+
+#### <a name="menu-description"></a>Menubeschrijving
+In de volgende tabel worden de items beschreven die in het menu Venster worden weergegeven.
+
+| Menu-item | Beschrijving |
+|:--- |:--- |
+| Nieuw venster |Klik **op Nieuw venster** om een nieuw consolevenster te openen (naast het bestaande venster). |
+| Trapsgewijze |Klik **op Trapsgewijs** om de geopende consolevensters in een trapsgewijze stijl weer te geven. |
+| Tegel horizontaal |Klik horizontaal op **Tegel** om de geopende consolevensters weer te geven in een tegel- of rasterindeling. |
+| Pictogrammen rangschikken |Als u meerdere consolevensters open en verspreid over uw bureaublad hebt, minimaliseert u deze en klikt u vervolgens op **Pictogrammen rangschikken** om ze in een horizontale rij onder aan het scherm te rangschikken. |
 
 ### <a name="help-menu"></a>Menu Help
-Gebruik het menu **Help** om de beschik bare online-Help voor StorSimple Snapshot Manager en de MMC weer te geven. U kunt ook informatie weer geven over de MMC en StorSimple Snapshot Manager software versies die momenteel op uw systeem zijn geïnstalleerd. 
+Gebruik het **Help-menu** om de beschikbare online help voor StorSimple Snapshot Manager en het MMC weer te geven. U ook informatie bekijken over de softwareversies MMC en StorSimple Snapshot Manager die momenteel op uw systeem zijn geïnstalleerd. 
 
-U kunt het menu **Help** openen in de menu balk. U kunt ook toegang krijgen tot StorSimple Snapshot Manager Help-onderwerpen in het deel venster **acties** .
+U hebt toegang tot het **Menu Help** op de menubalk. U ook de helponderwerpen van StorSimple Snapshot Manager openen in het deelvenster **Handelingen.**
 
-![Menu Help voor StorSimple-Snapshot Manager](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpMenu.png)
+![StorSimple-knopbeheermenu](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpMenu.png)
 
-#### <a name="menu-description"></a>Menu beschrijving
-In de volgende tabel worden de items beschreven die in het menu Help worden weer gegeven.
+#### <a name="menu-description"></a>Menubeschrijving
+In de volgende tabel worden items beschreven die in het Menu Help worden weergegeven.
 
 | Menu-item | Beschrijving |
 |:--- |:--- |
-| Help bij StorSimple Snapshot Manager |Klik op **Help op StorSimple Snapshot Manager** om StorSimple Snapshot Manager Help in een afzonderlijk venster te openen. |
-| Help-onderwerpen |Klik op **Help-onderwerpen** om de online Help van MMC te openen in een afzonderlijk venster. |
-| Tech Center-website |Klik op **tech** Center website om de start pagina van micro soft TechNet Tech Center te openen in een afzonderlijk venster. |
-| Over micro soft Management Console |Klik op **over micro soft Management Console** om te zien welke versie van micro soft Management Console op uw systeem is geïnstalleerd. |
-| Over StorSimple-Snapshot Manager |Klik op **info StorSimple Snapshot Manager** om te zien welke versie van de module op uw systeem is geïnstalleerd. |
+| Hulp bij StorSimple Snapshot Manager |Klik **op Help op StorSimple Snapshot Manager** om StorSimple Snapshot Manager help in een apart venster te openen. |
+| Help-onderwerpen |Klik op **Help-onderwerpen** om Online Help van MMC in een apart venster te openen. |
+| Website van TechCenter |Klik **op TechCenter-website** om de startpagina van het Microsoft TechNet Tech Center in een apart venster te openen. |
+| Informatie over Microsoft Management Console |Klik **op Microsoft Management Console** om te zien welke versie van de Microsoft Management Console op uw systeem is geïnstalleerd. |
+| Over StorSimple Snapshot Manager |Klik **op Over StorSimple Snapshot Manager** om te zien welke versie van de module op uw systeem is geïnstalleerd. |
 
-## <a name="tool-bar"></a>Werk balk
-De werk balk bevindt zich onder de menu balk en bevat navigatie-en taak pictogrammen. Elk pictogram is een snelkoppeling naar een specifieke taak.
+## <a name="tool-bar"></a>Gereedschapsbalk
+De gereedschapsbalk, die zich onder de menubalk bevindt, bevat navigatie- en taakpictogrammen. Elk pictogram is een snelkoppeling naar een specifieke taak.
 
-### <a name="icon-descriptions"></a>Pictogram beschrijvingen
-In de volgende tabel worden de pictogrammen beschreven die worden weer gegeven op de werk balk. 
+### <a name="icon-descriptions"></a>Pictogrambeschrijvingen
+In de volgende tabel worden de pictogrammen beschreven die op de gereedschapsbalk worden weergegeven. 
 
 | Pictogram | Beschrijving |
 |:--- |:--- |
-| ![Pijl-links](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |Klik op het pictogram met de pijl naar links om terug te keren naar de vorige pagina. |
-| ![Pijl-rechts](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |Klik op de pijl-rechts om naar de volgende pagina te gaan (als de pijl grijs is, is de actie niet beschikbaar). |
-| ![Pictogram omhoog](./media/storsimple-use-snapshot-manager/HCS_SSM_Up.png) |Klik op het pictogram omhoog om één niveau omhoog te gaan in de console structuur (het deel venster **bereik** ). |
-| ![Console structuur weer geven/verbergen](./media/storsimple-use-snapshot-manager/HCS_SSM_ShowConsoleTree.png) |Klik op het pictogram console structuur weer geven/verbergen om het deel venster **bereik** weer te geven of te verbergen. |
-| ![Lijst exporteren](./media/storsimple-use-snapshot-manager/HCS_SSM_ExportListIcon.png) |Klik op het pictogram lijst exporteren om een lijst te exporteren naar een CSV-bestand dat u opgeeft. |
-| ![Help-pictogram](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpIcon.png) |Klik op het pictogram Help om een online Help-onderwerp over MMC te openen. |
-| ![Deel venster acties weer geven/verbergen](./media/storsimple-use-snapshot-manager/HCS_SSM_ShowAction.png) |Klik op het pictogram **acties** deel venster weer geven/verbergen om het deel venster **acties** weer te geven of te verbergen. |
+| ![Pijl-links](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |Klik op het pijl-linkspictogram om terug te keren naar de vorige pagina. |
+| ![Pijl-rechts](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |Klik op de rechterpijl om naar de volgende pagina te gaan (als de pijl grijs is, is de actie niet beschikbaar). |
+| ![Pictogram Omhoog](./media/storsimple-use-snapshot-manager/HCS_SSM_Up.png) |Klik op het pictogram omhoog om één niveau hoger te gaan in de consolestructuur (het **deelvenster Bereik).** |
+| ![Consolestructuur weergeven/verbergen](./media/storsimple-use-snapshot-manager/HCS_SSM_ShowConsoleTree.png) |Klik op het pictogram consolestructuur weergeven/verbergen om het **deelvenster Bereik** weer te geven of te verbergen. |
+| ![Exportlijst](./media/storsimple-use-snapshot-manager/HCS_SSM_ExportListIcon.png) |Klik op het pictogram lijst exporteren om een lijst te exporteren naar een CSV-bestand dat u opgeeft. |
+| ![Help-pictogram](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpIcon.png) |Klik op het helppictogram om een online MMC Help-onderwerp te openen. |
+| ![Deelvenster Acties weergeven/verbergen](./media/storsimple-use-snapshot-manager/HCS_SSM_ShowAction.png) |Klik op het pictogram van het deelvenster **Handelingen** weergeven/verbergen om het deelvenster **Handelingen** weer te geven of te verbergen. |
 
-## <a name="scope-pane"></a>Deel venster bereik
-Het deel venster **bereik** is het meest linkse deel venster in de Snapshot Manager StorSimple-gebruikers interface. Het bevat de console structuur (of knoop punt) en is het primaire navigatie mechanisme voor StorSimple Snapshot Manager. 
+## <a name="scope-pane"></a>Deelvenster Bereik
+Het deelvenster **Scope** is het meest linkse deelvenster in de gebruikersinterface van De Momentopname van StorSimple. Het bevat de console (of knooppunt) boom en is het primaire navigatiemechanisme voor StorSimple Snapshot Manager. 
 
-### <a name="scope-pane-structure"></a>Structuur van het bereik venster
-Het deel venster **bereik** bevat een reeks klikbare objecten (knoop punten) die zijn georganiseerd in een boom structuur. 
+### <a name="scope-pane-structure"></a>Structuur van het deelvenster Scope
+Het deelvenster **Scope** bevat een reeks klikbare objecten (knooppunten) die zijn georganiseerd in een structuur structuur. 
 
-![Deel venster bereik](./media/storsimple-use-snapshot-manager/HCS_SSM_Scope_pane.png) 
+![Deelvenster Bereik](./media/storsimple-use-snapshot-manager/HCS_SSM_Scope_pane.png) 
 
-* Als u een knoop punt wilt uitvouwen of samen vouwen, klikt u op het pijl pictogram naast de naam van het knoop punt.
-* Als u de status of de inhoud van een knoop punt wilt weer geven, klikt u op de naam van het knoop punt. De informatie wordt weer gegeven in het deel venster met **resultaten** . 
+* Als u een knooppunt wilt uitvouwen of samenvouwen, klikt u op het pijlpictogram naast de naam van het knooppunt.
+* Als u de status of inhoud van een knooppunt wilt weergeven, klikt u op de naam van het knooppunt. De informatie wordt weergegeven in het deelvenster **Resultaten.** 
 
-Het deel venster **bereik** bevat de volgende knoop punten: 
+Het deelvenster **Bereik** bevat de volgende knooppunten: 
 
-* [Knoop punt apparaten](#devices-node) 
-* [Knoop punt volumes](#volumes-node) 
-* [Knoop punt volume groepen](#volume-groups-node) 
-* [Knoop punt voor back-upbeleid](#backup-policies-node) 
-* [Knoop punt voor back-up van catalogus](#backup-catalog-node) 
-* [Taak knooppunt](#jobs-node) 
+* [Knooppunt apparaten](#devices-node) 
+* [Volumes knooppunt](#volumes-node) 
+* [Knooppunt Volumegroepen](#volume-groups-node) 
+* [Knooppunt Back-upbeleid](#backup-policies-node) 
+* [Knooppunt Back-upcatalogus](#backup-catalog-node) 
+* [Vacatures knooppunt](#jobs-node) 
 
-### <a name="scope-pane-tasks"></a>Taken in het deel venster bereik
-U kunt het deel venster **bereik** gebruiken om een actie op een specifiek knoop punt te volt ooien. Als u een taak wilt selecteren, voert u een van de volgende handelingen uit:
+### <a name="scope-pane-tasks"></a>Taken van het deelvenster Bereik
+U het deelvenster **Bereik** gebruiken om een actie op een specifiek knooppunt uit te voeren. Ga als volgt te werk om een taak te selecteren:
 
-* Klik met de rechter muisknop op het knoop punt en selecteer de taak in het menu dat wordt weer gegeven.
-* Klik op het knoop punt en klik vervolgens op **actie** op de menu balk. Selecteer de taak in het menu dat wordt weer gegeven.
-* Klik op het knoop punt en selecteer vervolgens de actie in het deel venster **acties** .
+* Klik met de rechtermuisknop op het knooppunt en selecteer de taak in het menu dat wordt weergegeven.
+* Klik op het knooppunt en klik vervolgens op **Actie** op de menubalk. Selecteer de taak in het menu dat wordt weergegeven.
+* Klik op het knooppunt en selecteer de actie in het deelvenster **Handelingen.**
 
-Wanneer u een knoop punt selecteert en een van deze methoden gebruikt om een taken lijst weer te geven, worden alleen de acties weer gegeven die op dat knoop punt kunnen worden uitgevoerd.
+Wanneer u een knooppunt selecteert en een van deze methoden gebruikt om een takenlijst te zien, worden alleen de acties weergegeven die op dat knooppunt kunnen worden uitgevoerd.
 
-### <a name="devices-node"></a>Knoop punt apparaten
-Het knoop punt **apparaten** vertegenwoordigt de StorSimple-apparaten en StorSimple virtuele apparaten die zijn verbonden met StorSimple Snapshot Manager. Selecteer dit knoop punt om verbinding te maken met een apparaat en deze te configureren, en importeer de bijbehorende volumes, volume groepen en bestaande back-upkopieën. Meerdere apparaten kunnen worden verbonden met één host.
+### <a name="devices-node"></a>Knooppunt apparaten
+Het knooppunt **Apparaten** vertegenwoordigt de StorSimple-apparaten en StorSimple-virtuele apparaten die zijn verbonden met StorSimple Snapshot Manager. Selecteer dit knooppunt om verbinding te maken en een apparaat te configureren en importeer de bijbehorende volumes, volumesgroepen en bestaande back-ups. Meerdere apparaten kunnen op één host worden aangesloten.
 
-* Als u het knoop punt wilt uitbreiden, klikt u op het pijl pictogram naast **apparaten**.
-* Als u een menu met beschik bare acties wilt weer geven, klikt u met de rechter muisknop op het knoop punt **apparaten** of klikt u met de rechter muisknop op een van de knoop punten in de uitgebreide weer gave.
-* Als u een lijst met geconfigureerde apparaten wilt weer geven, klikt u op **apparaten** in het deel venster **bereik** . De lijst met apparaten, samen met informatie over elk apparaat, wordt weer gegeven in het deel venster met **resultaten** .
+* Als u het knooppunt wilt uitvouwen, klikt u op het pijlpictogram naast **Apparaten**.
+* Als u een menu met beschikbare acties wilt zien, klikt u met de rechtermuisknop op het knooppunt **Apparaten** of klikt u met de rechtermuisknop op een van de knooppunten die in de uitgebreide weergave worden weergegeven.
+* Als u een lijst met geconfigureerde apparaten wilt weergeven, klikt u op **Apparaten** in het **deelvenster Bereik.** De lijst met apparaten, samen met informatie over elk apparaat, wordt weergegeven in het deelvenster **Resultaten.**
 
-### <a name="volumes-node"></a>Knoop punt volumes
-Het knoop punt **volumes** vertegenwoordigt de stations die overeenkomen met de volumes die zijn gekoppeld door de host, met inbegrip van de schijven die zijn gedetecteerd via iSCSI en die zijn gedetecteerd via een apparaat. Gebruik dit knoop punt om de lijst met beschik bare volumes weer te geven en afzonderlijke volumes aan volume groepen toe te wijzen.
+### <a name="volumes-node"></a>Volumes knooppunt
+Het knooppunt **Volumes** vertegenwoordigt de stations die overeenkomen met de volumes die door de host zijn gemonteerd, inclusief de stations die via iSCSI zijn ontdekt en die via een apparaat zijn ontdekt. Gebruik dit knooppunt om de lijst met beschikbare volumes weer te geven en afzonderlijke volumes toe te wijzen aan volumegroepen.
 
-* Als u het knoop punt wilt uitbreiden, klikt u op het pijl pictogram naast **volumes**.
-* Als u een menu met beschik bare acties wilt weer geven, klikt u met de rechter muisknop op het knoop punt **volumes** of klikt u met de rechter muisknop op een van de knoop punten in de uitgebreide weer gave.
-* Klik op **volumes** in het deel venster **bereik** om een lijst met volumes weer te geven. De lijst met volumes, samen met informatie over elk volume, wordt weer gegeven in het deel venster met **resultaten** .
+* Als u het knooppunt wilt uitvouwen, klikt u op het pijlpictogram naast **Volumes**.
+* Als u een menu met beschikbare acties wilt zien, klikt u met de rechtermuisknop op het knooppunt **Volumes** of klikt u met de rechtermuisknop op een van de knooppunten die in de uitgebreide weergave worden weergegeven.
+* Als u een lijst met volumes wilt weergeven, klikt u op **Volumes** in het deelvenster **Bereik.** De lijst met volumes, samen met informatie over elk volume, wordt weergegeven in het deelvenster **Resultaten.**
 
-### <a name="volume-groups-node"></a>Knoop punt volume groepen
-Volume groepen worden ook wel consistentie groepen genoemd. Elke volume groep is een groep toepassings gerelateerde volumes waarmee de consistentie van toepassingen tijdens back-upbewerkingen kan worden gewaarborgd. Gebruik het knoop punt **volume groepen** voor het configureren van deze groepen en voor het uitvoeren van interactieve back-ups of het maken van back-upschemas. 
+### <a name="volume-groups-node"></a>Knooppunt Volumegroepen
+Volumegroepen worden ook wel consistentiegroepen genoemd. Elke volumegroep is een pool van toepassingsgerelateerde volumes die helpt om de consistentie van de toepassing tijdens back-upbewerkingen te garanderen. Gebruik het knooppunt **Volumegroepen** om deze groepen te configureren en interactieve back-ups te maken of back-upschema's te maken. 
 
-* Als u het knoop punt wilt uitbreiden, klikt u op het pijl pictogram naast **volume groepen**.
-* Als u een menu met beschik bare acties wilt zien, klikt u met de rechter muisknop op het knoop punt **volume groepen** of met de rechter muisknop op een van de knoop punten die in de uitgebreide weer gave worden weer gegeven.
-* Als u een lijst met volume groepen wilt weer geven, klikt u op **volume groepen** in het deel venster **bereik** . De lijst met volume groepen, samen met informatie over elke volume groep, wordt weer gegeven in het deel venster met **resultaten** .
+* Als u het knooppunt wilt uitvouwen, klikt u op het pijlpictogram naast **Volumegroepen**.
+* Als u een menu met beschikbare acties wilt zien, klikt u met de rechtermuisknop op het knooppunt **Volumegroepen** of klikt u met de rechtermuisknop op een van de knooppunten die in de uitgebreide weergave worden weergegeven.
+* Als u een lijst met volumegroepen wilt bekijken, klikt u op **Volumegroepen** in het **deelvenster Bereik.** De lijst met volumegroepen, samen met informatie over elke volumegroep, wordt weergegeven in het deelvenster **Resultaten.**
 
-### <a name="backup-policies-node"></a>Knoop punt voor back-upbeleid
-Een back-upbeleid is taak planningen voor lokale en Cloud momentopnamen. Gebruik het knoop punt **back-upbeleid** om op te geven hoe vaak een back-up wordt gemaakt en hoe lang een back-up moet worden bewaard. 
+### <a name="backup-policies-node"></a>Knooppunt Back-upbeleid
+Back-upbeleid zijn taakschema's voor lokale en cloudmomentopnamen. Gebruik het knooppunt **Back-upbeleid** om aan te geven hoe vaak een back-up wordt gemaakt en hoe lang een back-up moet worden bewaard. 
 
-* Klik op het pijl pictogram naast **back-upbeleid**om het knoop punt uit te vouwen.
-* Als u een menu met beschik bare acties wilt zien, klikt u met de rechter muisknop op het knoop punt **back-upbeleid** of klikt u met de rechter muisknop op een van de knoop punten in de uitgebreide weer gave.
-* Klik op **back-upbeleid** in het deel venster **bereik** om een lijst met back-upbeleid weer te geven. De lijst met back-upbeleiden, samen met informatie over elk beleid, wordt weer gegeven in het deel venster met **resultaten** .
+* Als u het knooppunt wilt uitbreiden, klikt u op het pijlpictogram naast **Back-upbeleid**.
+* Als u een menu met beschikbare acties wilt zien, klikt u met de rechtermuisknop op het knooppunt **Back-upbeleid** of klikt u met de rechtermuisknop op een van de knooppunten die in de uitgebreide weergave worden weergegeven.
+* Als u een lijst met back-upbeleid wilt bekijken, klikt u op **Back-upbeleid** in het deelvenster **Bereik.** De lijst met back-upbeleid en informatie over elk beleid worden weergegeven in het deelvenster **Resultaten.**
 
 > [!NOTE]
-> U kunt Maxi maal 64 back-ups behouden.
+> U maximaal 64 back-ups behouden.
 
 
-### <a name="backup-catalog-node"></a>Knoop punt voor back-up van catalogus
-Het **back-upcatalogus** knooppunt bevat lijsten met back-ups op site en off-site van Azure StorSimple-volumes. Dit knoop punt is ingedeeld op volume groep en elke volume groeps container bevat afzonderlijke structuren voor lokale moment opnamen (het knoop punt **lokale moment opnamen**s) en Cloud momentopnamen (het knoop punt voor **Cloud momentopnamen** ). Wanneer dit is uitgevouwen, worden in elke volume groeps container alle geslaagde back-ups weer gegeven die interactief of door een geconfigureerd beleid zijn gemaakt.
+### <a name="backup-catalog-node"></a>Knooppunt Back-upcatalogus
+Het knooppunt **Back-upcatalogus** bevat lijsten met on-site en off-site back-ups van Azure StorSimple-volumes. Dit knooppunt is georganiseerd op volumegroep en elke volumegroepcontainer bevat afzonderlijke structuren voor lokale momentopnamen (het knooppunt **van Lokale momentopnamen)** en cloudmomentopnamen (het knooppunt **Cloudsnapshots).** In elke volumegroepcontainer worden in elke volumegroepcontainer alle succesvolle back-ups weergegeven die interactief of door een geconfigureerd beleid zijn gemaakt.
 
-* Als u het knoop punt wilt uitbreiden, klikt u op het pijl pictogram naast **back-upcatalogus**.
-* Als u een menu met beschik bare acties wilt weer geven, klikt u met de rechter muisknop op het knoop punt **back-upcatalogus** of klikt u met de rechter muisknop op een van de knoop punten in de uitgebreide weer gave
-* Als u een lijst met back-upmomentopnamen wilt bekijken, klikt u in het deel venster **bereik** op **back-catalogus** . De lijst met moment opnamen, samen met informatie over elke moment opname, wordt weer gegeven in het deel venster met **resultaten** .
+* Als u het knooppunt wilt uitbreiden, klikt u op het pijlpictogram naast **Back-upcatalogus**.
+* Als u een menu met beschikbare acties wilt zien, klikt u met de rechtermuisknop op het knooppunt **Back-upcatalogus** of klikt u met de rechtermuisknop op een van de knooppunten die in de uitgebreide weergave worden weergegeven.
+* Als u een lijst met back-upmomentopnamen wilt bekijken, klikt u op **Back-upcatalogus** in het deelvenster **Bereik.** De lijst met momentopnamen, samen met informatie over elke momentopname, wordt weergegeven in het deelvenster **Resultaten.**
 
-### <a name="local-snapshots-node"></a>Knoop punt lokale moment opnamen
-Het knoop punt **lokale moment opnamen** bevat lokale moment opnamen voor een specifieke volume groep. Het knoop punt bevindt zich onder het knoop punt **back-upcatalogus** in het deel venster **bereik** . Lokale moment opnamen zijn tijdgebonden kopieën van volume gegevens die zijn opgeslagen op het Azure StorSimple-apparaat. Normaal gesp roken kan dit type back-up snel worden gemaakt en hersteld. U kunt een lokale moment opname gebruiken, net zoals u een lokale back-up maakt.
+### <a name="local-snapshots-node"></a>Knooppunt Lokale momentopnamen
+Het knooppunt **Lokale momentopnamen** bevat lokale momentopnamen voor een specifieke volumegroep. Het knooppunt bevindt zich onder het knooppunt **Back-upcatalogus** in het deelvenster **Bereik.** Lokale momentopnamen zijn point-in-time kopieën van volumegegevens die zijn opgeslagen op het Azure StorSimple-apparaat. Dit type back-up kan doorgaans snel worden gemaakt en hersteld. U een lokale momentopname gebruiken zoals u een lokale back-upkopie zou maken.
 
-* Als u het knoop punt wilt uitbreiden, klikt u op het pijl pictogram naast **lokale moment opnamen**.
-* Als u een menu met beschik bare acties wilt weer geven, klikt u met de rechter muisknop op het knoop punt **lokale moment opnamen** of met de rechter muisknop op een van de knoop punten die in de uitgebreide weer gave worden weer gegeven.
-* Als u een lijst met lokale moment opnamen wilt zien, klikt u op **lokale moment opnamen** in het deel venster **bereik** . De lijst met moment opnamen, samen met informatie over elke moment opname, wordt weer gegeven in het deel venster met **resultaten** .
+* Als u het knooppunt wilt uitvouwen, klikt u op het pijlpictogram naast **Lokale momentopnamen**.
+* Als u een menu met beschikbare acties wilt zien, klikt u met de rechtermuisknop op het knooppunt **Lokale momentopnamen** of klikt u met de rechtermuisknop op een van de knooppunten die in de uitgebreide weergave worden weergegeven.
+* Als u een lijst met lokale momentopnamen wilt bekijken, klikt u op **Lokale momentopnamen** in het **deelvenster Bereik.** De lijst met momentopnamen, samen met informatie over elke momentopname, wordt weergegeven in het deelvenster **Resultaten.**
 
-### <a name="cloud-snapshots-node"></a>Knoop punt voor Cloud momentopnamen
-Het knoop punt voor **Cloud momentopnamen** bevat Cloud momentopnamen voor een specifieke volume groep. Het knoop punt bevindt zich onder het knoop punt **back-upcatalogus** in het deel venster **bereik** . Cloud momentopnamen zijn tijdgebonden kopieën van volume gegevens die in de Cloud zijn opgeslagen. Een Cloud momentopname is gelijk aan een moment opname die wordt gerepliceerd op een ander, off-site opslag systeem. Cloud momentopnamen zijn bijzonder handig in scenario's voor herstel na nood gevallen.
+### <a name="cloud-snapshots-node"></a>Knooppunt voor cloudmomentopnamen
+Het knooppunt **CloudSnapshots** bevat cloudmomentopnamen voor een specifieke volumegroep. Het knooppunt bevindt zich onder het knooppunt **Back-upcatalogus** in het deelvenster **Bereik.** Cloudmomentopnamen zijn point-in-time kopieën van volumegegevens die in de cloud zijn opgeslagen. Een cloudmomentopname is gelijk aan een momentopname die wordt gerepliceerd op een ander, off-site opslagsysteem. Cloudsnapshots zijn vooral handig in scenario's voor noodherstel.
 
-* Als u het knoop punt wilt uitbreiden, klikt u op het pijl pictogram naast **Cloud momentopnamen**.
-* Als u een menu met beschik bare acties wilt weer geven, klikt u met de rechter muisknop op het knoop punt voor **Cloud momentopnamen** of klikt u met de rechter muisknop op een van de knoop punten in de uitgebreide weer gave.
-* Als u een lijst met Cloud momentopnamen wilt bekijken, klikt u op **Cloud momentopnamen** in het deel venster **bereik** . De lijst met moment opnamen, samen met informatie over elke moment opname, wordt weer gegeven in het deel venster met **resultaten** .
+* Als u het knooppunt wilt uitbreiden, klikt u op het pijlpictogram naast **Cloudsnapshots**.
+* Als u een menu met beschikbare acties wilt zien, klikt u met de rechtermuisknop op het knooppunt **Cloudmomentopnamen** of klikt u met de rechtermuisknop op een van de knooppunten die in de uitgebreide weergave worden weergegeven.
+* Als u een lijst met cloudmomentopnamen wilt bekijken, klikt u op **Cloudmomentopnamen** in het deelvenster **Bereik.** De lijst met momentopnamen, samen met informatie over elke momentopname, wordt weergegeven in het deelvenster **Resultaten.**
 
-### <a name="jobs-node"></a>Taak knooppunt
-Het knoop punt **taken** bevat informatie over geplande, actieve en recent voltooide back-uptaken. 
+### <a name="jobs-node"></a>Vacatures knooppunt
+Het knooppunt **Taken** bevat informatie over geplande, lopende en recent voltooide back-uptaken. 
 
-* Als u het knoop punt wilt uitbreiden, klikt u op het pijl pictogram naast **taken**.
-* Als u een menu met beschik bare acties wilt zien, klikt u met de rechter muisknop op het knoop punt **taken** of klikt u met de rechter muisknop op een van de knoop punten in de uitgebreide weer gave.
-* Als u een lijst met geplande taken wilt weer geven, vouwt u het knoop punt **taken** uit en klikt u vervolgens op **gepland**. De lijst met eerder geconfigureerde taken en informatie over elke taak wordt weer gegeven in het deel venster met **resultaten** . 
-* Als u een lijst met recent voltooide taken wilt weer geven, vouwt u het knoop punt **taken** uit en klikt u vervolgens op **afgelopen 24 uur**. Een lijst met taken die in de afgelopen 24 uur zijn voltooid, wordt weer gegeven in het **resultaten** venster. Het deel venster met **resultaten** bevat ook informatie over elke voltooide taak.
-* Als u een lijst met taken wilt zien die momenteel worden uitgevoerd, vouwt u het knoop punt **taken** uit en klikt u vervolgens op **uitvoeren**. De lijst met momenteel actieve taken en informatie over elke taak wordt weer gegeven in het **resultaten** venster.
+* Als u het knooppunt wilt uitvouwen, klikt u op het pijlpictogram naast **Vacatures**.
+* Als u een menu met beschikbare acties wilt zien, klikt u met de rechtermuisknop op het knooppunt **Vacatures** of klikt u met de rechtermuisknop op een van de knooppunten die in de uitgebreide weergave worden weergegeven.
+* Als u een lijst met geplande taken wilt weergeven, vouwt u het knooppunt **Taken** uit en klikt u op **Gepland**. De lijst met eerder geconfigureerde taken en informatie over elke taak wordt weergegeven in het deelvenster **Resultaten.** 
+* Als u een lijst met onlangs voltooide taken wilt bekijken, vouwt u het knooppunt **Vacatures** uit en klikt u op **Laatste 24 uur**. Er wordt een lijst met taken weergegeven die in de afgelopen 24 uur zijn voltooid in het deelvenster **Resultaten.** Het deelvenster **Resultaten** bevat ook informatie over elke voltooide taak.
+* Als u een lijst wilt zien met taken die momenteel worden uitgevoerd, vouwt u het knooppunt **Vacatures** uit en klikt u op **Uitvoeren**. De lijst met momenteel lopende taken en informatie over elke taak wordt weergegeven in het deelvenster **Resultaten.**
 
-## <a name="results-pane"></a>Resultaten deel venster
-Het deel venster met **resultaten** is het middelste deel venster in de Snapshot Manager StorSimple-gebruikers interface. Het bevat lijsten en gedetailleerde status informatie voor het knoop punt dat u hebt geselecteerd in het deel venster **bereik** .
+## <a name="results-pane"></a>Deelvenster Resultaten
+Het deelvenster **Resultaten** is het middelste deelvenster in de gebruikersinterface van De Momentopname van StorSimple. Het bevat lijsten en gedetailleerde statusgegevens voor het knooppunt dat u in het deelvenster **Bereik** hebt geselecteerd.
 
 ### <a name="example"></a>Voorbeeld
-Als u het volgende voor beeld wilt weer geven, klikt u op het knoop punt **volume groepen** in het deel venster **bereik** . In het deel venster met **resultaten** wordt een lijst met volume groepen weer gegeven met informatie over elke groep.
+Als u het volgende voorbeeld wilt zien, klikt u op het knooppunt **Volumegroepen** in het deelvenster **Bereik.** In het deelvenster **Resultaten** wordt een lijst met volumegroepen weergegeven met details over elke groep.
 
-![Resultaten deel venster](./media/storsimple-use-snapshot-manager/HCS_SSM_Results_pane.png) 
+![Deelvenster Resultaten](./media/storsimple-use-snapshot-manager/HCS_SSM_Results_pane.png) 
 
-U kunt de details configureren die worden weer gegeven in het **resultaten** venster: Klik met de rechter muisknop op een knoop punt in het deel venster **bereik** , klik op **weer geven**en klik vervolgens op **kolommen toevoegen/verwijderen**.
+U de details in het deelvenster **Resultaten** configureren: klik met de rechtermuisknop op een knooppunt in het **deelvenster Bereik,** klik op **Weergave**en klik vervolgens op **Kolommen toevoegen/verwijderen**.
 
-## <a name="actions-pane"></a>Acties deel venster
-Het deel venster **acties** is het rechterdeel venster in de Snapshot Manager StorSimple-gebruikers interface. Het bevat een menu met bewerkingen dat u kunt uitvoeren op het knoop punt, de weer gave of de gegevens die u selecteert in het deel venster **bereik** of in het deel venster met **resultaten** . Het deel venster **acties** bevat dezelfde opdrachten als de **actie** menu's die beschikbaar zijn voor items in het deel venster **bereik** en het **resultaten** deel venster. Zie de tabel in de sectie **actie** menu voor een beschrijving van elke actie.
+## <a name="actions-pane"></a>Deelvenster Acties
+Het deelvenster **Handelingen** is het rechterdeelvenster in de gebruikersinterface van De Stijlmomentopnamebeheer. Het bevat een menu met bewerkingen dat u uitvoeren op het knooppunt, de weergave of de gegevens die u selecteert in het deelvenster **Bereik** of het deelvenster **Resultaten.** Het deelvenster **Handelingen** bevat dezelfde opdrachten als de **actiemenu's** die beschikbaar zijn voor items in het deelvenster **Bereik** en het deelvenster **Resultaten.** Zie de tabel in de sectie **Actiemenu** voor een beschrijving van elke actie.
 
 ### <a name="examples"></a>Voorbeelden
-Als u het volgende voor beeld wilt weer geven, vouwt u in het deel venster **bereik** het knoop punt **taken** uit en klikt u op **gepland**. In het deel venster **acties** worden de beschik bare acties voor het **geplande** knoop punt weer gegeven.
+Als u het volgende **Scope** voorbeeld wilt zien, vouwt u het knooppunt **Taken** uit en klikt u op **Gepland**. In het deelvenster **Handelingen** worden de beschikbare acties voor het **geplande** knooppunt weergegeven.
 
-![Voor beeld van geplande taken in het deel venster acties](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane.png) 
+![Voorbeeld van geplande taken in het deelvenster Acties](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane.png) 
 
-Als u meer opties wilt zien, vouwt u in het deel venster **bereik** het knoop punt **taken** uit, klikt u op **gepland**en klikt u vervolgens op een geplande taak in het **resultaten** venster. In het deel venster **acties** worden de beschik bare acties voor de geplande taak weer gegeven, zoals in het volgende voor beeld wordt weer gegeven.
+Als u meer opties wilt zien, vouwt u in het deelvenster **Bereik** het knooppunt **Taken** uit, klikt u op **Gepland**en klikt u vervolgens op een geplande taak in het deelvenster **Resultaten.** In het deelvenster **Handelingen** worden de beschikbare acties voor de geplande taak weergegeven, zoals in het volgende voorbeeld wordt weergegeven.
 
-![Voor beeld van taak acties in het deel venster acties](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
+![Voorbeeld van taakacties in het deelvenster Acties](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
 
-## <a name="keyboard-navigation-and-shortcuts"></a>Toetsenbord navigatie en snelkoppelingen
-StorSimple Snapshot Manager maakt gebruik van de toegankelijkheids functies van het Windows-besturings systeem en de micro soft Management Console (MMC). Het bevat ook een aantal toetsenbord navigatie functies en snelkoppelingen die specifiek zijn voor de StorSimple-Snapshot Manager, zoals beschreven in de volgende secties.
+## <a name="keyboard-navigation-and-shortcuts"></a>Toetsenbordnavigatie en sneltoetsen
+StorSimple Snapshot Manager maakt de toegankelijkheidsfuncties van het Windows-besturingssysteem en de Microsoft Management Console (MMC) mogelijk. Het bevat ook een aantal functies voor toetsenbordnavigatie en sneltoetsen die specifiek zijn voor de StorSimple Snapshot Manager, zoals beschreven in de volgende secties.
 
-* [Toetsen bord navigatie toetsen](#keyboard-navigation-keys) 
-* [Sneltoetsen in de menu balk](#menu-bar-shortcut-keys) 
-* [Sneltoetsen in het deel venster bereik](#scope-pane-shortcut-keys) 
+* [Navigatietoetsen toetsenbord](#keyboard-navigation-keys) 
+* [Sneltoetsen op de menubalk](#menu-bar-shortcut-keys) 
+* [Sneltoetsen in het deelvenster Bereik](#scope-pane-shortcut-keys) 
 
-### <a name="keyboard-navigation-keys"></a>Toetsen bord navigatie toetsen
-In de volgende tabel worden de sleutels beschreven die u kunt gebruiken om te navigeren in de StorSimple-Snapshot Manager gebruikers interface. 
+### <a name="keyboard-navigation-keys"></a>Navigatietoetsen toetsenbord
+In de volgende tabel worden de toetsen beschreven die u gebruiken om door de gebruikersinterface van StorSimple Snapshot Manager te navigeren. 
 
-| Navigatie sleutel | Actie |
+| Navigatiesleutel | Actie |
 |:--- |:--- |
-| Pijl-omlaag |Gebruik de pijl-omlaag om verticaal naar het volgende item in een menu of deel venster te gaan. |
-| Enter |Druk op ENTER om een actie te volt ooien en ga vervolgens verder met de volgende stap. U kunt bijvoorbeeld op ENTER drukken om **volgende**te selecteren, op **OK**te klikken of te **maken**, en vervolgens naar de volgende stap in een wizard te gaan. |
-| Esc |Druk op de ESC-toets om een menu te sluiten of om een pagina te annuleren en te sluiten. |
-| F1 |Druk op de F1-toets om een Help-onderwerp voor het huidige actieve venster weer te geven. |
-| F5 |Druk op de toets F5 om een knoop punt te vernieuwen. |
-| F6 |Druk op F6 om van het deel venster **bereik** naar het deel venster met **resultaten** te gaan. |
-| F10 |Druk op de F10-toets om naar de menu balk te gaan. |
-| Pijltoets-links |Gebruik de toets pijl-links om horizon taal te verplaatsen van een menu balk naar de vorige optie. Wanneer u naar het vorige item op de menu balk gaat, wordt het actie-(of context) menu voor het vorige item weer gegeven. |
-| Pijltoets-rechts |Gebruik de toets pijl-rechts om horizon taal te verplaatsen van de ene menu balk naar de volgende. Wanneer u naar het volgende item in de menu balk gaat, wordt het actie-(of context) menu voor het nieuwe item weer gegeven. |
-| Tab-toets |Gebruik de tab-toets om naar het volgende deel venster op de console of naar de volgende selectie of tekstvak op een pagina te gaan. |
-| Pijl-omhoog |Gebruik de pijl-omhoog om verticaal naar het vorige item in een menu of deel venster te gaan. |
+| Pijl |Gebruik de pijl-omlaag om verticaal naar het volgende item in een menu of deelvenster te gaan. |
+| Enter |Druk op de enter-toets om een actie te voltooien en ga vervolgens door naar de volgende stap. U bijvoorbeeld op Enter drukken om **Volgende**, **OK**of **Maken**te selecteren en vervolgens naar de volgende stap in een wizard gaan. |
+| Esc |Druk op de Esc-toets om een menu te sluiten of om een pagina te annuleren en te sluiten. |
+| F1 |Druk op de F1-toets om een helponderwerp voor het momenteel actieve venster weer te geven. |
+| F5 |Druk op de F5-toets om een knooppunt te vernieuwen. |
+| F6 |Druk op de F6-toets om van het deelvenster **Bereik** naar het deelvenster **Resultaten** te gaan. |
+| F10 |Druk op de F10-toets om naar de menubalk te gaan. |
+| Pijltoets-links |Gebruik de pijl-linksom horizontaal van een menubalknaar de vorige optie te gaan. Wanneer u naar het vorige item op de menubalk gaat, wordt het actiemenu (of context) voor het vorige item weergegeven. |
+| Pijltoets-rechts |Gebruik de pijl-rechtsom horizontaal van de ene menubalknaar de volgende te gaan. Wanneer u naar het volgende item op de menubalk gaat, wordt het actiemenu (of context) voor het nieuwe item weergegeven. |
+| Tabtoets |Gebruik de Tab-toets om naar het volgende deelvenster op de console of naar het volgende selectie- of tekstvak op een pagina te gaan. |
+| Pijl-omhoog |Gebruik de pijl-omhoog om verticaal naar het vorige item in een menu of deelvenster te gaan. |
 
-### <a name="menu-bar-shortcut-keys"></a>Sneltoetsen in de menu balk
-In de volgende tabel worden de toetscombinaties voor de menu balk beschreven. Nadat u op de sneltoetsen hebt gedrukt en het menu wordt geopend, kunt u sneltoetsen gebruiken (de onderstreepte sleutels in het menu). Ga naar de [menu balk](#menu-bar)voor meer informatie over de menu balk.
+### <a name="menu-bar-shortcut-keys"></a>Sneltoetsen op de menubalk
+In de volgende tabel worden de combinaties van sneltoetsen voor de menubalk beschreven. Nadat u op de sneltoetsen hebt ingedrukt en het menu wordt geopend, u sneltoetsen (de onderstreepte toetsen in het menu) gebruiken. Ga voor meer informatie over de menubalk naar [menubalk.](#menu-bar)
 
-| Shortcutdimensie | Resultaat | Sneltoets voor menu | Resultaat |
+| Snelkoppeling | Resultaat | Sneltoets menu | Resultaat |
 |:--- |:--- |:--- |:--- |
-| ALT + F |Hiermee opent u het menu **bestand** . |N |Hiermee opent u een nieuw console-exemplaar. |
-|  |O |Hiermee opent u de pagina **systeem beheer** . | |
-|  |S |Hiermee slaat u de StorSimple-Snapshot Manager-console op. | |
-|  |A |Hiermee opent u de pagina **Opslaan als** . | |
-|  |mln. |Hiermee opent u de pagina **module toevoegen/verwijderen** . | |
-|  |P |Hiermee opent u de pagina **Opties** . | |
-|  |H |Hiermee opent u online-Help. | |
-| ALT + A |Hiermee opent u het menu **actie** . |I |Hiermee wordt de weergave optie importeren in-en uitgeschakeld. |
-|  |W |Hiermee opent u een nieuwe StorSimple-Snapshot Manager-console. | |
-|  |F |Hiermee wordt de StorSimple-Snapshot Manager-console bijgewerkt. | |
-|  |L |Hiermee opent u de pagina **lijst exporteren** . | |
-|  |H |Hiermee opent u online-Help. | |
-| ALT + V |Hiermee opent u het menu **weer gave** . |A |Hiermee opent u de pagina **kolommen toevoegen/verwijderen** . |
-|  |U |Hiermee opent u de pagina **weer gave aanpassen** . | |
-| ALT+O |Hiermee opent u het menu **Favorieten** . |A |Hiermee opent **u de pagina toevoegen aan favorieten** . |
-|  |O |Hiermee opent u de pagina **Favorieten indelen** . | |
-| ALT + W |Hiermee opent u het menu **venster** . |N |Hiermee opent u een ander StorSimple-Snapshot Manager venster. |
-|  |C |Geeft alle geopende console vensters weer in een trapsgewijs opmaak profiel. | |
-|  |T |Geeft alle geopende console vensters weer in een raster patroon. | |
-|  |I |Hiermee rangschikt u pictogrammen in een horizontale rij onder aan het scherm. | |
-| ALT + H |Hiermee opent u het menu **Help** . |H |Hiermee opent u online-Help. |
-|  |T |Hiermee opent u de micro soft TechNet Tech Center-webpagina. | |
-|  |A |Hiermee opent u de pagina **over micro soft Management Console** . | |
+| ALT+F |Hiermee opent u het menu **Bestand.** |N |Hiermee opent u een nieuwe console-instantie. |
+|  |O |Hiermee opent u de pagina **Systeembeheer.** | |
+|  |S |Slaat de StorSimple Snapshot Manager-console op. | |
+|  |A |Hiermee opent u de pagina **Opslaan als.** | |
+|  |M |Hiermee opent u de modulepagina **toevoegen/verwijderen.** | |
+|  |P |Hiermee opent u de pagina **Opties.** | |
+|  |H |Opent online Help. | |
+| ALT+A |Hiermee opent u het menu **Actie.** |I |Hiermee schakelt u de optie importweergave in en uit. |
+|  |W |Hiermee opent u een nieuwe StorSimple Snapshot Manager-console. | |
+|  |F |Werkt de StorSimple Snapshot Manager-console bij. | |
+|  |L |Hiermee opent u de pagina **Exportlijst.** | |
+|  |H |Opent online Help. | |
+| ALT+V |Hiermee opent u het menu **Weergave.** |A |Hiermee opent u de pagina **Kolommen toevoegen/verwijderen.** |
+|  |U |Hiermee opent u de pagina **Weergave aanpassen.** | |
+| ALT+O |Hiermee opent u het menu **Favorieten.** |A |Hiermee opent u de pagina **Toevoegen aan favorieten.** |
+|  |O |Hiermee opent u de pagina **Favorieten organiseren.** | |
+| ALT+W |Hiermee opent u het menu **Venster.** |N |Hiermee opent u een ander venster Van Eenvoudige Momentopnamebeheer. |
+|  |C |Hiermee worden alle geopende consolevensters in een trapsgewijze stijl weergegeven. | |
+|  |T |Hiermee worden alle geopende consolevensters weergegeven in een rasterpatroon. | |
+|  |I |Rangschikt pictogrammen in een horizontale rij aan de onderkant van het scherm. | |
+| ALT+H |Hiermee opent u het **menu Help.** |H |Opent online Help. |
+|  |T |Hiermee opent u de webpagina van Microsoft TechNet Tech Center. | |
+|  |A |Hiermee opent u de pagina **Over Microsoft Management Console.** | |
 
-### <a name="scope-pane-shortcut-keys"></a>Sneltoetsen in het deel venster bereik
-In de volgende tabellen worden de sneltoetsen voor elk knoop punt in het deel venster **bereik** weer gegeven. 
+### <a name="scope-pane-shortcut-keys"></a>Sneltoetsen in het deelvenster Bereik
+In de volgende tabellen worden de combinaties van sneltoetsen voor elk knooppunt in het deelvenster **Bereik** weergegeven. 
 
-* [Sneltoetsen voor het knoop punt apparaten](#devices-node-shortcut-keys)
-* [Sneltoetsen voor het volume knooppunt](#volumes-node-shortcut-keys)
-* [Sneltoetsen voor het knoop punt volume groepen](#volume-groups-node-shortcut-keys)
-* [Sneltoetsen voor het knoop punt back-upbeleid](#backup-policies-node-shortcut-keys)
-* [Sneltoetsen voor back-upcatalogus knooppunt](#backup-catalog-node-shortcut-keys)
-* [Sneltoetsen voor taken knooppunt](#jobs-node-shortcut-keys)
+* [Sneltoetsen voor het knooppunt apparaten](#devices-node-shortcut-keys)
+* [Sneltoetsen voor het knooppunt volumes](#volumes-node-shortcut-keys)
+* [Sneltoetsen voor knooppunt volumegroepen](#volume-groups-node-shortcut-keys)
+* [Sneltoetsen knooppunt sneltoetsen](#backup-policies-node-shortcut-keys)
+* [Sneltoetsen voor back-ups van het knooppunt Voor catalogus](#backup-catalog-node-shortcut-keys)
+* [Sneltoetsen voor het knooppunt takenvan taken van het takennet](#jobs-node-shortcut-keys)
 
-#### <a name="devices-node-shortcut-keys"></a>Sneltoetsen voor het knoop punt apparaten
-| Menu snelkoppeling | Resultaat |
+#### <a name="devices-node-shortcut-keys"></a>Sneltoetsen voor het knooppunt apparaten
+| Menusneltoets | Resultaat |
 |:--- |:--- |
-| C |Hiermee opent **u de pagina een apparaat configureren** . |
-| D |Hiermee vernieuwt u de lijst met apparaten en apparaatgegevens. |
-| V |Hiermee opent u het menu **weer gave** . |
-| W |Hiermee opent u een nieuw StorSimple Snapshot Manager-console, gericht op het knoop punt **Details** . |
-| F |Hiermee wordt de StorSimple-Snapshot Manager-console bijgewerkt. |
-| L |Hiermee opent u de pagina **lijst exporteren** . |
-| H |Hiermee opent u online-Help. |
+| C |Hiermee opent u de pagina **Een apparaat configureren.** |
+| D |Hiermee wordt de lijst met apparaten en apparaatgegevens vernieuwd. |
+| V |Hiermee opent u het menu **Weergave.** |
+| W |Hiermee opent u een nieuwe StorSimple Snapshot Manager-console die is gericht op het knooppunt **Details.** |
+| F |Werkt de StorSimple Snapshot Manager-console bij. |
+| L |Hiermee opent u de pagina **Exportlijst.** |
+| H |Opent online Help. |
 
-#### <a name="volumes-node-shortcut-keys"></a>Sneltoetsen voor het volume knooppunt
-| Menu snelkoppeling | Resultaat |
+#### <a name="volumes-node-shortcut-keys"></a>Sneltoetsen voor het knooppunt volumes
+| Menusneltoets | Resultaat |
 |:--- |:--- |
 | V |Hiermee wordt de lijst met volumes bijgewerkt. |
-| V (twee keer drukken) |Hiermee opent u het menu **weer gave** . |
-| W |Hiermee opent u een nieuw StorSimple Snapshot Manager-console, gericht op het knoop punt **volumes** . |
-| F |Hiermee wordt de StorSimple-Snapshot Manager-console bijgewerkt. |
-| L |Hiermee opent u de pagina **lijst exporteren** . |
-| H |Hiermee opent u online-Help. |
+| V (druk twee keer op) |Hiermee opent u het menu **Weergave.** |
+| W |Hiermee opent u een nieuwe StorSimple Snapshot Manager-console die is gericht op het knooppunt **Volumes.** |
+| F |Werkt de StorSimple Snapshot Manager-console bij. |
+| L |Hiermee opent u de pagina **Exportlijst.** |
+| H |Opent online Help. |
 
-#### <a name="volume-groups-node-shortcut-keys"></a>Sneltoetsen voor het knoop punt volume groepen
-| Menu snelkoppeling | Resultaat |
+#### <a name="volume-groups-node-shortcut-keys"></a>Sneltoetsen voor knooppunt volumegroepen
+| Menusneltoets | Resultaat |
 |:--- |:--- |
-| G |Hiermee opent u de pagina **een volume groep maken** . |
-| V |Hiermee opent u het menu **weer gave** . |
-| W |Hiermee opent u een nieuw StorSimple Snapshot Manager-console, gericht op het knoop punt **volume groepen** . |
-| F |Hiermee wordt de StorSimple-Snapshot Manager-console bijgewerkt. |
-| L |Hiermee opent u de pagina **lijst exporteren** . |
-| H |Hiermee opent u online-Help. |
+| G |Hiermee opent u de pagina **Een volumegroep maken.** |
+| V |Hiermee opent u het menu **Weergave.** |
+| W |Hiermee opent u een nieuwe StorSimple Snapshot Manager-console die is gericht op het knooppunt **Volumegroepen.** |
+| F |Werkt de StorSimple Snapshot Manager-console bij. |
+| L |Hiermee opent u de pagina **Exportlijst.** |
+| H |Opent online Help. |
 
-#### <a name="backup-policies-node-shortcut-keys"></a>Sneltoetsen voor het knoop punt back-upbeleid
-| Menu snelkoppeling | Resultaat |
+#### <a name="backup-policies-node-shortcut-keys"></a>Sneltoetsen knooppunt sneltoetsen
+| Menusneltoets | Resultaat |
 |:--- |:--- |
-| B |Hiermee opent u de pagina **een beleid maken** . |
-| V |Hiermee opent u het menu **weer gave** . |
-| W |Hiermee opent u een nieuw StorSimple Snapshot Manager-console, gericht op het knoop punt **volume groepen** . |
-| F |Hiermee wordt de StorSimple-Snapshot Manager-console bijgewerkt. |
-| L |De * *-pagina export lijst exporteren wordt geopend. |
-| H |Hiermee opent u online-Help. |
+| B |Hiermee opent u de pagina **Een beleid maken.** |
+| V |Hiermee opent u het menu **Weergave.** |
+| W |Hiermee opent u een nieuwe StorSimple Snapshot Manager-console die is gericht op het knooppunt **Volumegroepen.** |
+| F |Werkt de StorSimple Snapshot Manager-console bij. |
+| L |Hiermee opent u de pagina **Exportlijst **. |
+| H |Opent online Help. |
 
-#### <a name="backup-catalog-node-shortcut-keys"></a>Sneltoetsen voor back-upcatalogus knooppunt
-| Menu snelkoppeling | Resultaat |
+#### <a name="backup-catalog-node-shortcut-keys"></a>Sneltoetsen voor back-ups van het knooppunt Voor catalogus
+| Menusneltoets | Resultaat |
 |:--- |:--- |
-| W |Hiermee opent u een nieuw StorSimple Snapshot Manager-console, gericht op het knoop punt **volume groepen** . |
-| F |Hiermee wordt de StorSimple-Snapshot Manager-console bijgewerkt. |
-| H |Hiermee opent u online-Help. |
+| W |Hiermee opent u een nieuwe StorSimple Snapshot Manager-console die is gericht op het knooppunt **Volumegroepen.** |
+| F |Werkt de StorSimple Snapshot Manager-console bij. |
+| H |Opent online Help. |
 
-#### <a name="jobs-node-shortcut-keys"></a>Sneltoetsen voor taken knooppunt
-| Menu snelkoppeling | Resultaat |
+#### <a name="jobs-node-shortcut-keys"></a>Sneltoetsen voor het knooppunt takenvan taken van het takennet
+| Menusneltoets | Resultaat |
 |:--- |:--- |
-| V |Hiermee opent u het menu **weer gave** . |
-| W |Hiermee opent u een nieuw StorSimple Snapshot Manager-console, gericht op het knoop punt **taken** . |
-| F |Hiermee wordt de StorSimple-Snapshot Manager-console bijgewerkt. |
-| L |Hiermee opent u de pagina **lijst exporteren** . |
-| H |Online-Help openen |
+| V |Hiermee opent u het menu **Weergave.** |
+| W |Hiermee opent u een nieuwe StorSimple Snapshot Manager-console die is gericht op het knooppunt **Vacatures.** |
+| F |Werkt de StorSimple Snapshot Manager-console bij. |
+| L |Hiermee opent u de pagina **Exportlijst.** |
+| H |Opent online Help |
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het [gebruik van StorSimple Snapshot Manager voor het beheren van uw StorSimple-oplossing](storsimple-snapshot-manager-admin.md).
-* Meer informatie over het [gebruik van StorSimple Snapshot Manager om apparaten te verbinden en te beheren](storsimple-snapshot-manager-manage-devices.md).
+* Meer informatie over het [gebruik van StorSimple Snapshot Manager om uw StorSimple-oplossing te beheren.](storsimple-snapshot-manager-admin.md)
+* Meer informatie over het [gebruik van StorSimple Snapshot Manager om apparaten te verbinden en te beheren.](storsimple-snapshot-manager-manage-devices.md)
 

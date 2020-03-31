@@ -6,17 +6,17 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77593373"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Zelfstudie: Een toepassing bijwerken in AKS (Azure Kubernetes Service)
 
 Nadat een toepassing is geïmplementeerd in Kubernetes, kunt u deze bijwerken door een nieuwe containerinstallatiekopie of versie van de installatiekopie op te geven. De update wordt gefaseerd, zodat telkens maar een deel van de implementatie wordt bijgewerkt. Dankzij deze gefaseerde update kan de toepassing tijdens de update worden uitgevoerd. Het biedt ook een terugdraaimechanisme als er een implementatiefout optreedt.
 
-In deze zelfstudie, deel zes van zeven, wordt de voorbeeldapp Azure Vote bijgewerkt. In deze zelfstudie leert u procedures om het volgende te doen:
+In deze zelfstudie, deel zes van zeven, wordt de voorbeeldapp Azure Vote bijgewerkt. Procedures voor:
 
 > [!div class="checklist"]
 > * De code van de front-endtoepassing bijwerken
@@ -28,9 +28,9 @@ In deze zelfstudie, deel zes van zeven, wordt de voorbeeldapp Azure Vote bijgewe
 
 In eerdere zelfstudies is een toepassing verpakt in een containerinstallatiekopie. Deze installatiekopie is geüpload naar Azure Container Registry en u hebt een AKS-cluster gemaakt. De toepassing is vervolgens geïmplementeerd in het AKS-cluster.
 
-Er is ook een toepassingsopslagplaats gekloond die de broncode van de toepassing bevat en een vooraf gemaakt Docker Compose-bestand dat in deze zelfstudie wordt gebruikt. Controleer of u een kloon van de opslagplaats hebt gemaakt en of u mappen in de gekloonde map hebt gewijzigd. Als u deze stappen niet hebt voltooid en wilt volgen, kunt u beginnen met [zelf studie 1: container installatie kopieën maken][aks-tutorial-prepare-app].
+Er is ook een toepassingsopslagplaats gekloond die de broncode van de toepassing bevat en een vooraf gemaakt Docker Compose-bestand dat in deze zelfstudie wordt gebruikt. Controleer of u een kloon van de opslagplaats hebt gemaakt en of u mappen in de gekloonde map hebt gewijzigd. Als u deze stappen niet hebt voltooid en deze zelfstudie wilt volgen, gaat u eerst naar [Zelfstudie 1: Containerinstallatiekopieën maken][aks-tutorial-prepare-app].
 
-Voor deze zelfstudie moet u Azure CLI versie 2.0.53 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Voor deze zelfstudie moet u Azure CLI versie 2.0.53 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
 
 ## <a name="update-an-application"></a>Een toepassing bijwerken
 
@@ -54,7 +54,7 @@ Sla het bestand op en sluit het. In `vi` gebruikt u `:wq`.
 
 ## <a name="update-the-container-image"></a>De containerinstallatiekopie bijwerken
 
-Als u de front-end-installatie kopie opnieuw wilt maken en de bijgewerkte toepassing wilt testen, gebruikt u [docker-opstellen][docker-compose]. Het argument `--build` wordt gebruikt om Docker Compose te instrueren de installatiekopie van de toepassing opnieuw te maken:
+Gebruik [docker-compose][docker-compose] om de front-endinstallatiekopie opnieuw te maken en de bijgewerkte toepassing te testen. Het argument `--build` wordt gebruikt om Docker Compose te instrueren de installatiekopie van de toepassing opnieuw te maken:
 
 ```console
 docker-compose up --build -d
@@ -82,10 +82,10 @@ Gebruik [docker tag][docker-tag] om de installatiekopie te taggen. Vervang `<acr
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Gebruik nu [docker push][docker-push] om de installatie kopie naar uw REGI ster te uploaden. Vervang `<acrLoginServer>` door de naam van de ACR-aanmeldingsserver.
+Gebruik nu [docker push][docker-push] om de installatiekopie naar uw register te uploaden. Vervang `<acrLoginServer>` door de naam van de ACR-aanmeldingsserver.
 
 > [!NOTE]
-> Als u problemen ondervindt met het pushen van uw ACR-REGI ster, moet u ervoor zorgen dat u nog steeds bent aangemeld. Voer de opdracht [AZ ACR login][az-acr-login] uit met behulp van de naam van uw Azure container Registry die u hebt gemaakt in de stap [een Azure container Registry maken](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) . Bijvoorbeeld `az acr login --name <azure container registry name>`.
+> Als u problemen ondervindt bij het pushen naar uw ACR-register, moet u ervoor zorgen dat u nog steeds bent ingelogd. Voer de opdracht [az acr-aanmelding uit][az-acr-login] met de naam van uw Azure Container Registry dat u hebt gemaakt in de stap [Een Azure-containerregister maken.](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) Bijvoorbeeld `az acr login --name <azure container registry name>`.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -93,7 +93,7 @@ docker push <acrLoginServer>/azure-vote-front:v2
 
 ## <a name="deploy-the-updated-application"></a>De bijgewerkte toepassing implementeren
 
-Voor een maximale uptime moeten meerdere exemplaren van de toepassingsschil worden uitgevoerd. Controleer het aantal uitgevoerde front-end-instanties met de opdracht [kubectl Get peul][kubectl-get] :
+Voor een maximale uptime moeten meerdere exemplaren van de toepassingsschil worden uitgevoerd. Controleer het aantal actieve exemplaren van de front-end met de opdracht [kubectl get pods][kubectl-get]:
 
 ```
 $ kubectl get pods

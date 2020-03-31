@@ -1,32 +1,32 @@
 ---
-title: 'Snelstartgids: analyse van Java-Web-apps met Azure-toepassing Insights'
+title: 'Quickstart: Java-webapp-analyses met Azure Application Insights'
 description: 'Toepassingsprestaties bewaken met Application Insights voor Java-web-apps. '
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: 484d4e8df8a8fdceed62a65858126a16d028121e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: efa498ba600a664beab4b9a49eae2b2c3f1c8397
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670080"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298301"
 ---
-# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Snelstartgids: aan de slag met Application Insights in een Java-webproject
+# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Snelstart: Aan de slag met Application Insights in een Java webproject
 
-In deze Quick Start gebruikt u Application Insights om automatisch een aanvraag te instrumenteren, afhankelijkheden bij te houden en prestatie meter items te verzamelen, prestatie problemen en uitzonde ringen te diagnosticeren en code te schrijven om te volgen wat gebruikers met uw app doen.
+In deze quickstart gebruikt u Application Insights om automatisch het aanvragen van instrumenten in te dienen, afhankelijkheden bij te houden en prestatiemeteritems te verzamelen, prestatieproblemen en uitzonderingen te diagnosticeren en code te schrijven om bij te houden wat gebruikers met uw app doen.
 
-Application Insights is een uitbreid bare analyse service voor webontwikkelaars waarmee u de prestaties en het gebruik van uw Live-toepassing kunt begrijpen. Application Insights biedt ondersteuning voor Java-apps die in Linux, Unix of Windows worden uitgevoerd.
+Application Insights is een uitbreidbare analyseservice voor webontwikkelaars die u helpt de prestaties en het gebruik van uw live-toepassing te begrijpen. Application Insights biedt ondersteuning voor Java-apps die in Linux, Unix of Windows worden uitgevoerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Een werkende Java-toepassing.
+* Een Azure-account met een actief abonnement. [Maak gratis een account aan.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* Een werkende Java-applicatie.
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Een Application Insights-instrumentatiesleutel ophalen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Maak een Application Insights resource in het Azure Portal. Stel het toepassingstype in op Java-webtoepassing.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+2. Maak in de Azure Portaleen Application Insights-resource. Stel het toepassingstype in op Java-webtoepassing.
 
 3. Zoek de instrumentatiesleutel van de nieuwe resource. U moet deze sleutel zo dadelijk in de code van uw project plakken.
 
@@ -34,11 +34,11 @@ Application Insights is een uitbreid bare analyse service voor webontwikkelaars 
 
 ## <a name="add-the-application-insights-sdk-for-java-to-your-project"></a>De Application Insights-SDK voor Java toevoegen aan uw project
 
-*Kies het project type.*
+*Kies uw projecttype.*
 
 # <a name="maven"></a>[Maven](#tab/maven)
 
-Als uw project al is ingesteld voor het gebruik van Maven voor Build, voegt u de volgende code samen in uw *pom. XML-* bestand.
+Als uw project al is ingesteld om Maven te gebruiken voor build, voegt u de volgende code samen met uw *pom.xml-bestand.*
 
 Vervolgens vernieuwt u de projectafhankelijkheden om de binaire bestanden te downloaden.
 
@@ -56,7 +56,7 @@ Vervolgens vernieuwt u de projectafhankelijkheden om de binaire bestanden te dow
 
 # <a name="gradle"></a>[Gradle](#tab/gradle)
 
-Als uw project al is ingesteld voor het gebruik van Gradle voor Build, voegt u de volgende code samen in uw *Build. Gradle* -bestand.
+Als uw project al is ingesteld om Gradle te gebruiken voor build, voegt u de volgende code samen met uw *build.gradle-bestand.*
 
 Vervolgens vernieuwt u de projectafhankelijkheden om de binaire bestanden te downloaden.
 
@@ -74,22 +74,22 @@ Download de [nieuwste versie](https://github.com/Microsoft/ApplicationInsights-J
 
 ---
 
-### <a name="questions"></a>Beantwoorden
-* *Wat is de relatie tussen de `-web-auto`, `-web` en `-core` onderdelen?*
-  * `applicationinsights-web-auto` geeft u metrische gegevens die het aantal HTTP servlet-aanvragen en-reactie tijden bijhouden door het Application Insights servlet-filter tijdens runtime automatisch te registreren.
-  * `applicationinsights-web` biedt ook metrische gegevens die het aantal servlet en reactie tijden voor HTTP-aanvragen bijhouden, maar hiervoor hand matige registratie van het Application Insights servlet-filter in uw toepassing.
-  * `applicationinsights-core` geeft u alleen de bare API, bijvoorbeeld als uw toepassing niet op servlet is gebaseerd.
+### <a name="questions"></a>Vragen
+* *Wat is de relatie `-web-auto` `-web` tussen `-core` de , en componenten?*
+  * `applicationinsights-web-auto`geeft je metrics die het aantal AANVRAGEN en reactietijden van HTTP servlet-aanvragen bijhouden, door automatisch het applicatieinzichten-filter te registreren tijdens runtime.
+  * `applicationinsights-web`geeft je ook statistieken die het aantal AANVRAGEN en reactietijden van HTTP-servlet bijhouden, maar vereist handmatige registratie van het Application Insights-servlet-filter in je sollicitatie.
+  * `applicationinsights-core`geeft u alleen de kale API, bijvoorbeeld als uw toepassing niet op servlet-gebaseerd is.
   
 * *Hoe moet ik de SDK bijwerken naar de nieuwste versie?*
-  * Als u Gradle of maven gebruikt...
-    * Werk uw build-bestand bij om de meest recente versie op te geven.
-  * Als u afhankelijkheden hand matig beheert...
+  * Als u Gradle of Maven gebruikt...
+    * Werk uw buildbestand bij om de nieuwste versie op te geven.
+  * Als u afhankelijkheden handmatig beheert...
     * Download de meest recente [Application Insights-SDK voor Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) en vervang de oude versie. De wijzigingen worden beschreven in de [SDK-releaseopmerkingen](https://github.com/Microsoft/ApplicationInsights-Java#release-notes).
 
-## <a name="add-an-applicationinsightsxml-file"></a>Een *ApplicationInsights. XML-* bestand toevoegen
-Voeg *ApplicationInsights. XML* toe aan de map resources in uw project of zorg ervoor dat deze is toegevoegd aan het pad van de implementatie klasse van uw project. Kopieer de volgende XML-code naar het bestand.
+## <a name="add-an-applicationinsightsxml-file"></a>Een *bestand ApplicationInsights.xml* toevoegen
+Voeg *ApplicationInsights.xml* toe aan de map resources in uw project of zorg ervoor dat deze is toegevoegd aan het pad van de implementatieklasse van uw project. Kopieer de volgende XML-code naar het bestand.
 
-Vervang de instrumentatie sleutel door de toets die u hebt ontvangen van de Azure Portal.
+Vervang de instrumentatiesleutel door de toets die u van de Azure-portal hebt gekregen.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -118,18 +118,18 @@ Vervang de instrumentatie sleutel door de toets die u hebt ontvangen van de Azur
 </ApplicationInsights>
 ```
 
-Het configuratie bestand kan optioneel zijn op elke locatie die toegankelijk is voor uw toepassing.  De eigenschap systeem `-Dapplicationinsights.configurationDirectory` geeft de map op die *ApplicationInsights. XML*bevat. Bijvoorbeeld: een configuratiebestand in `E:\myconfigs\appinsights\ApplicationInsights.xml` wordt geconfigureerd met eigenschap `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"`.
+Optioneel kan het configuratiebestand op elke locatie zijn die toegankelijk is voor uw toepassing.  De eigenschap `-Dapplicationinsights.configurationDirectory` systeem geeft de map op die *ApplicationInsights.xml*bevat. Bijvoorbeeld: een configuratiebestand in `E:\myconfigs\appinsights\ApplicationInsights.xml` wordt geconfigureerd met eigenschap `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"`.
 
 * De instrumentatiesleutel wordt samen met alle telemetrie-items verzonden en instrueert Application Insights om deze in de resource weer te geven.
 * Het onderdeel voor de HTTP-aanvraag is optioneel. Het verzendt automatisch telemetrie over aanvragen en reactietijden naar de portal.
-* Correlatie tussen gebeurtenissen is een aanvulling op het onderdeel voor de HTTP-aanvraag. Er wordt een id toegewezen aan elke aanvraag die door de server wordt ontvangen. Vervolgens wordt deze id als eigenschap toegevoegd aan elk item van telemetrie als de eigenschap Operation.Id. Hiermee kunt u de telemetrie die aan elke aanvraag is gekoppeld, correleren door een filter in [Diagnostische Zoek opdrachten][diagnostic]in te stellen.
+* Correlatie tussen gebeurtenissen is een aanvulling op het onderdeel voor de HTTP-aanvraag. Het wijst een id toe aan elk verzoek dat door de server wordt ontvangen. Vervolgens voegt het deze id als eigenschap toe aan elk item van telemetrie als de eigenschap 'Operation.Id'. Op deze manier kunt u correlaties zichtbaar maken tussen de telemetrie die aan elke aanvraag is gekoppeld. Dit doet u door een filter in te stellen in [Diagnostische gegevens doorzoeken][diagnostic].
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>Andere manieren om de instrumentatiesleutel in te stellen
 De Application Insights-SDK zoekt in deze volgorde naar de sleutel:
 
-1. Systeem eigenschap:-DAPPINSIGHTS_INSTRUMENTATIONKEY = your_ikey
-2. Omgevings variabele: APPINSIGHTS_INSTRUMENTATIONKEY
-3. Configuratie bestand: *ApplicationInsights. XML*
+1. Systeemeigenschap: -DAPPINSIGHTS_INSTRUMENTATIONKEY=your_ikey
+2. Omgevingsvariabele: APPINSIGHTS_INSTRUMENTATIONKEY
+3. Configuratiebestand: *ApplicationInsights.xml*
 
 U kunt de instrumentatiesleutel ook [instellen in code](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
 
@@ -144,23 +144,23 @@ U kunt de instrumentatiesleutel ook [instellen in code](../../azure-monitor/app/
 
 ## <a name="add-agent"></a>Agent toevoegen
 
-[Installeer de Java-Agent voor het](java-agent.md) vastleggen van uitgaande HTTP-aanroepen, JDBC-query's, toepassings logboeken en betere bewerkings namen.
+[Installeer de Java-agent](java-agent.md) om uitgaande HTTP-oproepen, JDBC-query's, logboekregistratie van toepassingen en een betere naamvan de bewerking vast te leggen.
 
 ## <a name="run-your-application"></a>Uw toepassing uitvoeren
 Voer uw app uit in de foutopsporingsmodus op uw ontwikkelcomputer of publiceer de app op uw server.
 
 ## <a name="view-your-telemetry-in-application-insights"></a>Uw telemetrie in Application Insights weergeven
-Ga terug naar uw Application Insights-resource in de [Microsoft Azure Portal](https://portal.azure.com).
+Ga terug naar uw Application Insights-bron in [de Microsoft Azure-portal.](https://portal.azure.com)
 
 Gegevens van HTTP-aanvragen worden weergegeven op de overzichtsblade. (Als dit niet het geval is, wacht u een paar seconden en klikt u vervolgens op Vernieuwen.)
 
-![Scherm opname van voorbeeld gegevens van overzicht](./media/java-get-started/overview-graphs.png)
+![Schermafbeelding van overzichtsvoorbeeldgegevens](./media/java-get-started/overview-graphs.png)
 
 [Meer informatie over metrische gegevens.][metrics]
 
 Klik in een grafiek voor gedetailleerdere cumulatieve metrische gegevens.
 
-![Deel venster met Application Insights fouten met grafieken](./media/java-get-started/006-barcharts.png)
+![Deelvenster Toepassingsinzichten met grafieken](./media/java-get-started/006-barcharts.png)
 
 <!--
 [TODO update image with 2.5.0 operation naming provided by agent]
@@ -169,14 +169,14 @@ Klik in een grafiek voor gedetailleerdere cumulatieve metrische gegevens.
 ### <a name="instance-data"></a>Gegevens van exemplaren
 Klik op een specifiek aanvraagtype om de afzonderlijke exemplaren weer te geven.
 
-![Inzoomen op een specifieke voorbeeld weergave](./media/java-get-started/007-instance.png)
+![Inzoomen op een specifieke voorbeeldweergave](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analyse: krachtige querytaal
 Naarmate u meer gegevens verzamelt, kunt u query's uitvoeren voor zowel het samenvoegen van gegevens als het zoeken naar afzonderlijke exemplaren.  [Analyse](../../azure-monitor/app/analytics.md) is een krachtig hulpprogramma om inzicht te krijgen in prestaties en gebruik, en om diagnoses uit te voeren.
 
 ![Voorbeeld van het hulpprogramma Analyse](./media/java-get-started/0025.png)
 
-## <a name="7-install-your-app-on-the-server"></a>7. Installeer uw app op de server
+## <a name="install-your-app-on-the-server"></a>Uw app installeren op de server
 Publiceer nu uw app op de server, geef de app vrij voor gebruik en bekijk de telemetrische gegevens die in de portal binnenkomen.
 
 * Controleer of de firewall het verzenden van telemetrie door uw app naar deze poorten toestaat:
@@ -192,9 +192,9 @@ Publiceer nu uw app op de server, geef de app vrij voor gebruik en bekijk de tel
 
     (Dit onderdeel schakelt prestatiemeteritems in.)
 
-## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (veer boot)
+## <a name="azure-app-service-config-spring-boot"></a>Azure App Service config (Spring Boot)
 
-Voor Spring boot-apps die worden uitgevoerd in Windows is aanvullende configuratie vereist om te worden uitgevoerd op Azure-app Services. Wijzig **Web. config** en voeg de volgende configuratie toe:
+Voor Spring Boot-apps die op Windows worden uitgevoerd, is extra configuratie vereist om op Azure App Services te worden uitgevoerd. Wijzig **web.config** en voeg de volgende configuratie toe:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -210,30 +210,30 @@ Voor Spring boot-apps die worden uitgevoerd in Windows is aanvullende configurat
 ```
 
 ## <a name="exceptions-and-request-failures"></a>Uitzonderingen en mislukte aanvragen
-Niet-verwerkte uitzonde ringen en mislukte aanvragen worden automatisch door het webfilter van Application Insights verzameld.
+Niet-afgehandelde uitzonderingen en aanvraagfouten worden automatisch verzameld door het webfilter Application Insights.
 
-Als u gegevens over andere uitzonde ringen wilt verzamelen, kunt u [aanroepen naar trackException () in uw code invoegen][apiexceptions].
+Als u gegevens wilt verzamelen over andere uitzonderingen, u [oproepen invoegen om Exception() in uw code te volgen.][apiexceptions]
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Methodeaanroepen en externe afhankelijkheden bewaken
 [Installeer de Java-agent](java-agent.md) om gespecificeerde interne methoden en oproepen via JDBC vast te leggen, inclusief timinggegevens.
 
-En voor automatische bewerkings naam.
+En voor automatische operatienaamgeving.
 
-## <a name="w3c-distributed-tracing"></a>Gedistribueerde W3C-tracering
+## <a name="w3c-distributed-tracing"></a>W3C distributed tracing
 
-De Application Insights Java SDK ondersteunt nu [W3C-gedistribueerde tracering](https://w3c.github.io/trace-context/).
+De Application Insights Java SDK ondersteunt nu [W3C distributed tracing.](https://w3c.github.io/trace-context/)
 
-De configuratie van de inkomende SDK wordt verder uitgelegd in ons artikel over [correlatie](correlation.md#telemetry-correlation-in-the-java-sdk).
+De inkomende SDK-configuratie wordt verder uitgelegd in ons artikel over [correlatie.](correlation.md#telemetry-correlation-in-the-java-sdk)
 
-De uitgaande SDK-configuratie wordt gedefinieerd in het bestand [AI-agent. XML](java-agent.md) .
+Uitgaande SDK-configuratie wordt gedefinieerd in het [AI-Agent.xml-bestand.](java-agent.md)
 
 ## <a name="performance-counters"></a>Prestatiemeteritems
-Open **onderzoek**, **metrische gegevens**om een aantal prestatie meter items weer te geven.
+Open **Onderzoeken**, **Statistieken**, om een reeks prestatiemeteritems te bekijken.
 
-![Scherm afbeelding van het deel venster metrische gegevens met het proces eigen bytes geselecteerd](./media/java-get-started/011-perf-counters.png)
+![Schermafbeelding van het deelvenster Statistieken met geselecteerde privébytes voor processen](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Het verzamelen van prestatiemeteritems aanpassen
-Als u het verzamelen van de standaard set prestatie meter items wilt uitschakelen, voegt u de volgende code toe onder het hoofd knooppunt van het bestand *ApplicationInsights. XML* :
+Als u het verzamelen van de standaardset prestatiemeteritems wilt uitschakelen, voegt u de volgende code toe onder het hoofdknooppunt van het bestand *ApplicationInsights.xml:*
 
 ```XML
     <PerformanceCounters>
@@ -286,19 +286,19 @@ Elk [Windows-prestatiemeteritem](https://msdn.microsoft.com/library/windows/desk
 ## <a name="get-user-and-session-data"></a>Gebruikers- en sessiegegevens ophalen
 U verzendt nu telemetrie vanaf de webserver. Wilt u echt een volledig inzicht in uw toepassing, dan kunt u nog meer bewakingsopties toevoegen:
 
-* [Voeg telemetrie toe aan uw webpagina's][usage] om pagina weergaven en metrische gegevens over gebruikers te controleren.
-* [Stel webtests][availability] in om ervoor te zorgen dat uw toepassing Live en responsief blijft.
+* [Voeg telemetrie toe aan uw webpagina's][usage] voor het bewaken van paginaweergaven en metrische gegevens over gebruikers.
+* [Stel webtests in][availability] om te controleren of de toepassing live en responsief blijft.
 
 ## <a name="send-your-own-telemetry"></a>Uw eigen telemetrie verzenden
 Nu u de SDK hebt geïnstalleerd, kunt u de API gebruiken voor het verzenden van uw eigen telemetrie.
 
-* [Houd aangepaste gebeurtenissen en metrische gegevens][api] bij om te zien wat gebruikers met uw toepassing doen.
-* [Zoeken naar gebeurtenissen en logboeken][diagnostic] om problemen te onderzoeken.
+* [Houd aangepaste gebeurtenissen en metrische gegevens bij][api] voor meer informatie over wat gebruikers met uw toepassing doen.
+* [Doorzoek gebeurtenissen en logboeken][diagnostic] om problemen beter te kunnen analyseren.
 
 ## <a name="availability-web-tests"></a>Webtests voor beschikbaarheid
 Application Insights kan uw website regelmatig testen om te controleren of deze actief is en goed reageert.
 
-[Meer informatie over het instellen van Beschik baarheid van webtesten.][availability]
+[Meer informatie over het instellen van webtests voor beschikbaarheid.][availability]
 
 ## <a name="questions-problems"></a>Vragen? Problemen?
 [Problemen met Java oplossen](java-troubleshoot.md)
@@ -308,7 +308,7 @@ Application Insights kan uw website regelmatig testen om te controleren of deze 
 * [Unix-prestatiemeteritems bewaken](java-collectd.md)
 * Voeg [bewaking toe aan uw webpagina's](javascript.md) om de laadtijden, AJAX-aanroepen en browseruitzonderingen te bewaken.
 * Typ [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) om het gebruik in de browser of op de server bij te houden.
-* Gebruik [Analytics](../../azure-monitor/app/analytics.md) om vanuit uw app krachtige query's voor telemetrie uit te voeren
+* [Analytics gebruiken](../../azure-monitor/app/analytics.md) voor krachtige query's via telemetrie vanuit uw app
 * Voor meer informatie gaat u naar [Azure voor Java-ontwikkelaars](/java/azure).
 
 <!--Link references-->

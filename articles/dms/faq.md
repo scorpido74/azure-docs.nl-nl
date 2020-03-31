@@ -1,6 +1,6 @@
 ---
-title: Veelgestelde vragen-Azure Database Migration Service
-description: Veelgestelde vragen over het gebruik van Azure Database Migration Service om database migraties uit te voeren.
+title: Veelgestelde vragen - Azure Database Migration Service
+description: Veelgestelde vragen over het gebruik van Azure Database Migration Service om databasemigraties uit te voeren.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,62 +12,62 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650978"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Veelgestelde vragen over het gebruik van Azure Database Migration Service
 
-Dit artikel bevat veelgestelde vragen over het gebruik van Azure Database Migration Service in combi natie met gerelateerde antwoorden.
+In dit artikel worden veelgestelde vragen over het gebruik van Azure Database Migration Service weergegeven, samen met gerelateerde antwoorden.
 
 ## <a name="overview"></a>Overzicht
 
 **V. Wat is Azure Database Migration Service?**
-Azure Database Migration Service is een volledig beheerde service die is ontworpen om naadloze migratie van meerdere database bronnen naar Azure-gegevens platforms mogelijk te maken met minimale downtime. De service is momenteel in algemene Beschik baarheid, met voortdurende ontwikkelings inspanningen gericht op:
+Azure Database Migration Service is een volledig beheerde service die is ontworpen om naadloze migraties van meerdere databasebronnen naar Azure Data-platforms mogelijk te maken met minimale downtime. De service bevindt zich momenteel in algemene beschikbaarheid, met voortdurende ontwikkelingsinspanningen gericht op:
 
-* Betrouw baarheid en prestaties.
-* Herhaling toevoegen van bron-doel paren.
-* Voortdurende investeringen in migraties zonder wrijving.
+* Betrouwbaarheid en prestaties.
+* Iteratieve toevoeging van bron-doelparen.
+* Blijveninvesteren in frictievrije migraties.
 
-**V. welke bron-en doel paren worden momenteel ondersteund Azure Database Migration Service?**
-De service biedt momenteel ondersteuning voor verschillende bron-en doel paren of migratie scenario's. Zie de artikel [status van migratie scenario's die worden ondersteund door de Azure database Migration service](https://docs.microsoft.com/azure/dms/resource-scenario-status)voor een volledige lijst met de status van elk beschikbaar migratie scenario.
+**V. Welke bron-/doelparen ondersteunt Azure Database Migration Service momenteel?**
+De service ondersteunt momenteel verschillende bron-/doelparen of migratiescenario's. Zie het artikel [Status van migratiescenario's dat wordt ondersteund door de Azure Database Migration Service](https://docs.microsoft.com/azure/dms/resource-scenario-status)voor een volledige lijst met de status van elk beschikbaar migratiescenario.
 
-Andere migratie scenario's zijn beschikbaar als preview-versie en vereisen het indienen van een benoeming via de DMS-preview-site. Voor een volledig overzicht van de scenario's in de preview-versie en om u aan te melden om deel te nemen aan een van deze aanbiedingen, raadpleegt u de [DMS preview-site](https://aka.ms/dms-preview/).
+Andere migratiescenario's zijn in preview en vereisen het indienen van een nominatie via de DMS Preview-site. Zie de [DMS Preview-site](https://aka.ms/dms-preview/)voor een volledige lijst van de scenario's in preview en om u aan te melden om deel te nemen aan een van deze aanbiedingen.
 
-**V. welke versies van SQL Server ondersteunen Azure Database Migration Service als bron?**
-Bij de migratie van SQL Server worden ondersteunde bronnen voor Azure Database Migration Service SQL Server 2005 tot en met SQL Server 2019.
+**V. Welke versies van SQL Server ondersteunt Azure Database Migration Service als bron?**
+Bij het migreren van SQL Server zijn ondersteunde bronnen voor Azure Database Migration Service SQL Server 2005 tot en met SQL Server 2019.
 
-**V Azure Database Migration Service: wat is het verschil tussen een offline-en online migratie?**
-U kunt Azure Database Migration Service gebruiken om offline-en online migraties uit te voeren. Bij een *offline* migratie wordt de uitval tijd van toepassingen gestart wanneer de migratie wordt gestart. Bij een *online* migratie is downtime beperkt tot de tijd die aan het einde van de migratie moet worden afgekapt. We raden u aan eerst een offlinemigratie te testen om te bepalen of de downtime aanvaardbaar is. Zo niet, voer dan een onlinemigratie uit.
+**V: Wat is het verschil tussen een offline- en een onlinemigratie bij het gebruik van Azure Database Migration Service?**
+U Azure Database Migration Service gebruiken om offline en online migraties uit te voeren. Bij een *offlinemigratie* begint de uitvaltijd van de toepassing wanneer de migratie wordt gestart. Met een *online* migratie is downtime beperkt tot de tijd om te stoppen aan het einde van de migratie. We raden u aan eerst een offlinemigratie te testen om te bepalen of de downtime aanvaardbaar is. Zo niet, voer dan een onlinemigratie uit.
 
 > [!NOTE]
-> Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/database-migration/) van Azure Database Migration Service voor meer informatie.
+> Als u Azure Database Migration Service gebruikt om een onlinemigratie uit te voeren, moet u een instantie maken op basis van de prijscategorie Premium. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/database-migration/) van Azure Database Migration Service voor meer informatie.
 
-**V. Hoe komt Azure Database Migration Service te vergelijken met andere hulpprogram ma's voor migratie van micro soft-data bases, zoals de data base Migration Assistant (DMA) of SQL Server Migration Assistant (SSMA)?**
-Azure Database Migration Service is de voorkeurs methode voor database migratie naar Microsoft Azure op schaal. Zie voor meer informatie over de manier waarop Azure Database Migration Service vergelijkt met andere hulpprogram ma's voor migratie van micro soft-data bases en voor aanbevelingen over het gebruik van de service voor verschillende scenario's, de blog berichten over de [hulp middelen en services voor database migratie van micro soft](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529).
+**V. Hoe verhoudt Azure Database Migration Service zich tot andere hulpprogramma's voor databasemigratie van Microsoft, zoals de Database Migration Assistant (DMA) of SQL Server Migration Assistant (SSMA)?**
+Azure Database Migration Service is de voorkeursmethode voor databasemigratie naar Microsoft Azure op schaal. Zie voor meer informatie over hoe azure database migration service zich verhoudt tot andere hulpprogramma's voor databasemigratie van Microsoft en voor aanbevelingen over het gebruik van de service voor verschillende scenario's, de blogposting [Waarin microsoft's Database Migration Tools and Services worden onderscheiden.](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)
 
-**V. Hoe werkt Azure Database Migration Service vergelijken met de Azure Migrate-aanbieding?**
-Azure Migrate helpt bij het migreren van on-premises virtuele machines naar Azure IaaS. De service beoordeelt de geschiktheid voor migratie en op basis van prestaties en biedt een schatting van de kosten voor het uitvoeren van uw on-premises virtuele machines in Azure. Azure Migrate is nuttig voor lift-en-Shift-migraties van on-premises VM-gebaseerde workloads naar Azure IaaS Vm's. Maar in tegens telling tot Azure Database Migration Service is Azure Migrate geen gespecialiseerde data base Migration service voor Azure PaaS relationele data base-platformen, zoals Azure SQL Database of Azure SQL Database beheerd exemplaar.
+**V. Hoe verhoudt Azure Database Migration Service zich tot de Azure Migrate-aanbieding?**
+Azure Migrate helpt bij de migratie van on-premises virtuele machines naar Azure IaaS. De service beoordeelt de geschiktheid van migratie en prestatiegebaseerde grootte en biedt kostenramingen voor het uitvoeren van uw on-premises virtuele machines in Azure. Azure Migreren is handig voor lift-and-shift migraties van on-premises VM-gebaseerde workloads naar Azure IaaS VM's. In tegenstelling tot Azure Database Migration Service is Azure Migrate echter geen gespecialiseerde databasemigratieservicedie wordt aangeboden voor relationele databaseplatforms van Azure PaaS, zoals Azure SQL Database of Azure SQL Database Managed Instance.
 
 ## <a name="setup"></a>Instellen
 
 **V. Wat zijn de vereisten voor het gebruik van Azure Database Migration Service?**
-Er zijn verschillende vereisten vereist om ervoor te zorgen dat Azure Database Migration Service probleemloos wordt uitgevoerd bij het uitvoeren van database migraties. Sommige van de vereisten gelden voor alle scenario's (bron-doel paren) die door de service worden ondersteund, terwijl andere vereisten uniek zijn voor een specifiek scenario.
+Er zijn verschillende vereisten vereist om ervoor te zorgen dat azure databasemigratieservice probleemloos wordt uitgevoerd bij het uitvoeren van databasemigraties. Sommige van de vereisten zijn van toepassing op alle scenario's (brondoelparen) die door de service worden ondersteund, terwijl andere vereisten uniek zijn voor een specifiek scenario.
 
-Azure Database Migration Service vereisten die gemeen schappelijk zijn voor alle ondersteunde migratie scenario's zijn onder andere het volgende:
+Vereisten voor Azure Database Migration Service die veel voorkomen in alle ondersteunde migratiescenario's, zijn de noodzaak om:
 
-* Maak een Microsoft Azure Virtual Network voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Zorg ervoor dat de regels voor de netwerk beveiligings groep van uw virtuele netwerk niet de volgende communicatie poorten 443, 53, 9354, 445, 12000 blok keren. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG verkeer van virtuele netwerken.
-* Wanneer u een firewall apparaat voor uw bron database (s) gebruikt, moet u mogelijk firewall regels toevoegen om Azure Database Migration Service toegang te geven tot de bron database (s) voor de migratie.
+* Maak een Microsoft Azure Virtual Network for Azure Database Migration Service met behulp van het Azure Resource Manager-implementatiemodel, dat site-to-site-connectiviteit biedt met uw on-premises bronservers met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)
+* Zorg ervoor dat de regels van uw netwerknetwerkbeveiligingsgroep de volgende communicatiepoorten 443, 53, 9354, 445, 12000 niet blokkeren. Zie het artikel [Netwerkverkeer filteren met netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van het virtuele netwerk.
+* Wanneer u een firewalltoestel gebruikt voor uw brondatabase(s), moet u mogelijk firewallregels toevoegen om Azure Database Migration Service toegang te geven tot de brondatabase(s) voor migratie.
 
-Zie de gerelateerde zelf studies in de Azure Database Migration Service [documentatie](https://docs.microsoft.com/azure/dms/dms-overview) op docs.Microsoft.com voor een lijst met alle vereisten die vereist zijn voor het concurreren van specifieke migratie scenario's met behulp van Azure database Migration service.
+Zie de gerelateerde zelfstudies in de [documentatie](https://docs.microsoft.com/azure/dms/dms-overview) van azure databasemigration service op docs.microsoft.com voor een lijst met alle vereisten die nodig zijn om te concurreren met specifieke migratiescenario's met Azure Database Migration Service.
 
-**V. Hoe kan ik het IP-adres voor Azure Database Migration Service vinden zodat ik een acceptatie lijst kan maken voor de firewall regels die worden gebruikt voor toegang tot mijn bron database voor migratie?**
-Mogelijk moet u firewall regels toevoegen om Azure Database Migration Service toegang te geven tot uw bron database voor migratie. Het IP-adres voor de service is dynamisch, maar als u ExpressRoute gebruikt, wordt dit adres privé toegewezen door uw bedrijfs netwerk. De eenvoudigste manier om het juiste IP-adres te identificeren, is om de bijbehorende netwerk interface te zoeken in dezelfde resource groep als uw ingerichte Azure Database Migration Service bron. Normaal gesp roken begint de naam van de netwerk interface bron met het voor voegsel van de NIC en gevolgd door een unieke teken-en nummer reeks, bijvoorbeeld NIC-jj6tnztnmarpsskr82rbndyp. Als u deze netwerk interface bron selecteert, ziet u het IP-adres dat moet worden opgenomen in de acceptatie lijst op de pagina Resource overzicht Azure Portal.
+**V. Hoe vind ik het IP-adres voor Azure Database Migration Service, zodat ik een lijst met toegestane kan maken voor de firewallregels die worden gebruikt om toegang te krijgen tot mijn brondatabase voor migratie?**
+Mogelijk moet u firewallregels toevoegen waarmee Azure Database Migration Service toegang heeft tot uw brondatabase voor migratie. Het IP-adres voor de service is dynamisch, maar als u ExpressRoute gebruikt, wordt dit adres privé toegewezen door uw bedrijfsnetwerk. De eenvoudigste manier om het juiste IP-adres te identificeren, is door in dezelfde brongroep te zoeken als uw ingerichte Azure Database Migration Service-bron om de bijbehorende netwerkinterface te vinden. Meestal begint de naam van de netwerkinterfacebron met het NIC-voorvoegsel en wordt gevolgd door een uniek teken en getalreeks, bijvoorbeeld NIC-jj6tnztnmarpsskr82rbndyp. Als u deze netwerkinterfacebron selecteert, ziet u het IP-adres dat moet worden opgenomen in de lijst toestaan op de Azure-portalpagina voor resourceoverzicht.
 
-Mogelijk moet u ook de poort bron opnemen die SQL Server luistert op de acceptatie lijst. Standaard is dit poort 1433, maar de bron SQL Server kan worden geconfigureerd voor het Luis teren op andere poorten. In dit geval moet u ook deze poorten opnemen in de acceptatie lijst. U kunt bepalen op welke poort SQL Server wordt geluisterd met behulp van een query voor dynamische beheer weergave:
+Mogelijk moet u ook de poortbron opnemen die SQL Server luistert in de lijst met toegestane gegevens. Standaard is het poort 1433, maar de bron SQL Server kan worden geconfigureerd om te luisteren op andere poorten ook. In dit geval moet u deze poorten ook op de lijst met toegestane plaatsen opnemen. U de poort bepalen waarop SQL Server luistert met behulp van een dynamic management view-query:
 
 ```sql
     SELECT DISTINCT
@@ -76,7 +76,7 @@ Mogelijk moet u ook de poort bron opnemen die SQL Server luistert op de acceptat
     WHERE local_tcp_port IS NOT NULL
 ```
 
-U kunt ook bepalen welke poort SQL Server luistert door het SQL Server fouten logboek op te vragen:
+U ook de poort bepalen die SQL Server luistert door het SQL Server-foutlogboek op te vragen:
 
 ```sql
     USE master
@@ -85,38 +85,38 @@ U kunt ook bepalen welke poort SQL Server luistert door het SQL Server fouten lo
     GO
 ```
 
-**V. Hoe kan ik een Microsoft Azure Virtual Network in te stellen?**
-Hoewel u meerdere micro soft-zelf studies hebt waarmee u het proces voor het instellen van een virtueel netwerk kunt door lopen, wordt de officiële documentatie weer gegeven in het artikel [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+**V. Hoe stel ik een Microsoft Azure Virtual Network in?**
+Terwijl meerdere Microsoft-zelfstudies die u kunnen leiden door het proces van het opzetten van een virtueel netwerk, de officiële documentatie wordt weergegeven in het artikel [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ## <a name="usage"></a>Gebruik
 
-**V. Wat is een overzicht van de stappen die nodig zijn om Azure Database Migration Service te gebruiken voor het uitvoeren van een database migratie?**
-Tijdens een typische, eenvoudige database migratie:
+**V. Wat is een overzicht van de stappen die nodig zijn om Azure Database Migration Service te gebruiken om een databasemigratie uit te voeren?**
+Tijdens een typische, eenvoudige databasemigratie u:
 
-1. Een doel database (s) maken.
-2. Evalueer uw bron database (s).
-    * Voor homogene migraties kunt u uw bestaande data base (s) beoordelen met behulp van [DMA](https://www.microsoft.com/download/details.aspx?id=53595).
-    * Voor heterogene migraties (van concurrentie bronnen) kunt u uw bestaande data base (s) beoordelen met [SSMA](https://aka.ms/get-ssma). U kunt SSMA ook gebruiken om database objecten te converteren en het schema te migreren naar uw doel platform.
-3. Maak een instantie van Azure Database Migration Service.
-4. Maak een migratie project waarin de bron database (s), doel database (s) en de te migreren tabellen worden opgegeven.
+1. Een doeldatabase(en) maken.
+2. Beoordeel uw brondatabase(s).
+    * Voor homogene migraties beoordeelt u uw bestaande database(en) met behulp van [DMA.](https://www.microsoft.com/download/details.aspx?id=53595)
+    * Voor heterogene migraties (uit concurrentiebronnen) beoordeel je bestaande database(en) met [SSMA.](https://aka.ms/get-ssma) U gebruikt SSMA ook om databaseobjecten te converteren en het schema te migreren naar uw doelplatform.
+3. Maak een exemplaar van de Azure Database Migration Service.
+4. Maak een migratieproject met de brondatabase(s), doeldatabase(s) en de tabellen die moeten worden gemigreerd.
 5. Start de volledige belasting.
 6. Kies de volgende validatie.
-7. Voer een hand matige overschakeling van uw productie omgeving uit naar de nieuwe cloud-gebaseerde data base.
+7. Voer een handmatige omschakeling van uw productieomgeving uit naar de nieuwe clouddatabase.
 
-## <a name="troubleshooting-and-optimization"></a>Problemen oplossen en optimaliseren
+## <a name="troubleshooting-and-optimization"></a>Probleemoplossing en optimalisatie
 
-**V. Ik stel een migratie project in in DMS en ik ondervind problemen bij het maken van verbinding met mijn bron database. Wat moet ik doen?**
-Als u problemen ondervindt bij het maken van verbinding met uw bron database systeem tijdens het werken met de migratie, maakt u een virtuele machine in het virtuele netwerk waarmee u uw DMS-exemplaar hebt ingesteld. In de virtuele machine moet u een verbindings test kunnen uitvoeren, zoals het gebruik van een UDL-bestand om een verbinding met SQL Server te testen of om Robo 3T gebruiken te downloaden om MongoDB-verbindingen te testen. Als de verbindings test is geslaagd, hebt u geen probleem met het maken van verbinding met de bron database. Als de verbindings test niet slaagt, neemt u contact op met uw netwerk beheerder.
+**V. Ik ben het opzetten van een migratieproject in DMS, en ik heb moeite met verbinding maken met mijn bron database. Wat moet ik doen?**
+Als u tijdens het werken aan migratie geen verbinding maken met uw brondatabasesysteem, maakt u een virtuele machine in het virtuele netwerk waarmee u uw DMS-exemplaar instelt. In de virtuele machine moet u een connecttest kunnen uitvoeren, zoals het gebruik van een UDL-bestand om een verbinding met SQL Server te testen of robo 3T downloaden om MongoDB-verbindingen te testen. Als de verbindingstest slaagt, hebt u geen probleem met het maken van verbinding met uw brondatabase. Als de verbindingstest niet slaagt, neemt u contact op met de netwerkbeheerder.
 
 **V. Waarom is mijn Azure Database Migration Service niet beschikbaar of gestopt?**
-Als de gebruiker de Azure Database Migration Service (DMS) expliciet stopt of als de service gedurende een periode van 24 uur inactief is, wordt de status van de service gestopt of automatisch onderbroken. In elk geval is de service niet beschikbaar en is de status gestopt.  Als u actieve migraties wilt hervatten, start u de service opnieuw.
+Als de gebruiker Azure Database Migration Service (DMS) expliciet stopt of als de service gedurende 24 uur inactief is, wordt de service in een gestopte of automatisch onderbroken status. In elk geval is de service niet beschikbaar en in een gestopte status.  Als u actieve migraties wilt hervatten, start u de service opnieuw.
 
-**V. zijn er aanbevelingen voor het optimaliseren van de prestaties van Azure Database Migration Service?**
-U kunt een aantal dingen doen om uw database migratie te versnellen met behulp van de service:
+**V. Zijn er aanbevelingen voor het optimaliseren van de prestaties van Azure Database Migration Service?**
+U een paar dingen doen om de migratie van uw database te versnellen met behulp van de service:
 
-* Gebruik de prijs categorie multi CPU-Algemeen wanneer u een service-exemplaar maakt waarmee de service kan profiteren van meerdere Vcpu's voor parallel Lise ring en een snellere gegevens overdracht.
-* U kunt uw Azure SQL Database doel exemplaar tijdens de gegevens migratie tijdelijk opschalen naar de SKU voor de Premium-laag om Azure SQL Database beperking te minimaliseren die van invloed kan zijn op de activiteiten voor gegevens overdracht wanneer u Sku's van een lager niveau gebruikt.
+* Gebruik de multi CPU General Purpose Pricing Tier wanneer u uw service-instantie maakt, zodat de service gebruik kan maken van meerdere vCPU's voor parallellen en snellere gegevensoverdracht.
+* Schaal uw Azure SQL Database-doelinstantie tijdelijk op naar de SKU-niveau Premium tijdens de gegevensmigratiebewerking om azure SQL Database-beperking te minimaliseren die van invloed kan zijn op gegevensoverdrachtsactiviteiten bij het gebruik van SKU's op een lager niveau.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het artikel [Wat is de Azure database Migration service](dms-overview.md)voor een overzicht van de Azure database Migration service en regionale Beschik baarheid.
+Zie het artikel [Wat is de Azure Database Migration Service](dms-overview.md)voor een overzicht van de Azure Database Migration Service en regionale beschikbaarheid.

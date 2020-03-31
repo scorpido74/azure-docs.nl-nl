@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een gast gebruiker toevoegen met Power shell-Azure AD'
+title: 'Snelstart: een gastgebruiker toevoegen met PowerShell - Azure AD'
 description: In deze snelstartgids leert u hoe u PowerShell gebruikt voor het verzenden van een uitnodiging naar een externe gebruiker van de Azure AD B2B-samenwerking.
 services: active-directory
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240924"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Snelstart: Een gastgebruiker toevoegen met PowerShell
 
 Er zijn veel manieren waarop u externe partners voor uw apps en services met Azure Active Directory B2B-samenwerking kunt uitnodigen. In de vorige snelstartgids hebt u gezien hoe u gastgebruikers rechtstreeks toevoegt in de Azure Active Directory-adminportal. U kunt ook PowerShell gebruiken om gastgebruikers individueel of bulksgewijs toe te voegen. In deze snelstartgids gebruikt u de opdracht New-AzureADMSInvitation om een gastgebruiker toe te voegen aan uw Azure-tenant.
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -75,14 +75,14 @@ Voer uw referenties in wanneer dit wordt gevraagd.
 
 ## <a name="send-an-invitation"></a>Een uitnodiging verzenden
 
-1. Als u een uitnodiging voor uw test-e-mail account wilt verzenden, voert u de volgende Power shell-opdracht uit (Vervang **"Sanda"** en **Sanda\@fabrikam.com** met uw test account naam en e-mail adres): 
+1. Als u een uitnodiging wilt verzenden naar uw teste-mailaccount, voert u de volgende PowerShell-opdracht uit (vervang **"Sanda"** en **sanda\@fabrikam.com** door de naam en het e-mailadres van uw testaccount): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
    ```
 2. De opdracht verzendt een uitnodiging naar het opgegeven e-mailadres. Controleer de uitvoer, die er als volgt moet uitzien:
 
-   ![PowerShell-uitvoer die wacht op acceptatie door de gebruiker](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
+   ![PowerShell-uitvoer wordt weergegeven in afwachting van acceptatie van de gebruiker](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
 
 ## <a name="verify-the-user-exists-in-the-directory"></a>Controleer of de gebruiker bestaat in de map
 
@@ -91,7 +91,7 @@ Voer uw referenties in wanneer dit wordt gevraagd.
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Controleer de uitvoer om te controleren of de gebruiker die u hebt uitgenodigd, wordt weer gegeven met een user principal name (UPN) in de notatie *emailaddress*#EXT #\@*domein*. Bijvoorbeeld *sanda_fabrikam. com # ext #\@contoso.onmicrosoft.com*, waarbij contoso.onmicrosoft.com de organisatie is van waaruit u de uitnodigingen hebt verzonden.
+3. Controleer de uitvoer om te controleren of de gebruiker die u hebt uitgenodigd, wordt vermeld, met een gebruikersnaam (UPN) in de indeling *e-mailadres*#EXT#\@*domein*. Bijvoorbeeld *\@sanda_fabrikam.com#EXT# contoso.onmicrosoft.com*, waar contoso.onmicrosoft.com de organisatie is van waaruit u de uitnodigingen hebt verzonden.
 
    ![PowerShell-uitvoer met weergave van gastgebruiker toegevoegd](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

@@ -1,7 +1,7 @@
 ---
-title: PaaS Web & Mobile-toepassingen beveiligen
+title: PaaS-web & mobiele toepassingen beveiligen
 titleSuffix: Azure App Service
-description: 'Meer informatie over Azure App Service aanbevolen procedures voor beveiliging bij het beveiligen van uw PaaS-web-en mobiele toepassingen. '
+description: 'Meer informatie over de aanbevolen procedures voor azure App Service-beveiliging voor het beveiligen van uw PaaS-web- en mobiele toepassingen. '
 services: security
 documentationcenter: na
 author: techlake
@@ -17,35 +17,35 @@ ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
 ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77500287"
 ---
-# <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Aanbevolen procedures voor het beveiligen van PaaS web-en mobiele toepassingen met Azure App Service
+# <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Aanbevolen procedures voor het beveiligen van PaaS-web- en mobiele toepassingen met Azure App Service
 
-In dit artikel bespreken we een verzameling [Azure app service](/azure/app-service/overview) aanbevolen procedures voor beveiliging voor het beveiligen van uw PaaS-web-en mobiele toepassingen. Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure en de ervaringen van klanten, zoals uzelf.
+In dit artikel bespreken we een verzameling best practices voor [Azure App Service-beveiliging](/azure/app-service/overview) voor het beveiligen van uw PaaS-web- en mobiele toepassingen. Deze best practices zijn afgeleid van onze ervaring met Azure en de ervaringen van klanten zoals uzelf.
 
-Azure App Service is een PaaS-aanbieding (platform-as-a-Service) waarmee u web-en mobiele apps voor elk platform of apparaat kunt maken en overal en op locatie verbinding kunt maken met gegevens. App Service bevat de web-en mobiele mogelijkheden die eerder afzonderlijk zijn geleverd als Azure-websites en Azure Mobile Services. Deze service bevat ook nieuwe mogelijkheden voor het automatiseren van bedrijfsprocessen en het hosten van cloud-API's. Als één geïntegreerde service biedt App Service een uitgebreide set mogelijkheden voor web-, mobiele en integratie scenario's.
+Azure App Service is een PaaS-platform-as-a-service-aanbod waarmee u web- en mobiele apps maken voor elk platform of apparaat en overal, in de cloud of on-premises verbinding maken met gegevens. App Service omvat de web- en mobiele mogelijkheden die voorheen afzonderlijk werden geleverd als Azure Websites en Azure Mobile Services. Deze service bevat ook nieuwe mogelijkheden voor het automatiseren van bedrijfsprocessen en het hosten van cloud-API's. Als één geïntegreerde service biedt App Service een uitgebreide reeks mogelijkheden voor web-, mobiele en integratiescenario's.
 
 ## <a name="authenticate-through-azure-active-directory-ad"></a>Verifiëren via Azure Active Directory (AD)
-App Service biedt een OAuth 2,0-Service voor uw ID-provider. OAuth 2,0 richt zich op de vereenvoudiging van client ontwikkelaars en biedt specifieke autorisatie stromen voor webtoepassingen, desktop toepassingen en mobiele telefoons. Azure AD maakt gebruik van OAuth 2,0 zodat u toegang tot mobiele en webtoepassingen kunt autoriseren. Zie [verificatie en autorisatie in azure app service](../../app-service/overview-authentication-authorization.md)voor meer informatie.
+App Service biedt een OAuth 2.0-service voor uw identiteitsprovider. OAuth 2.0 richt zich op de eenvoud van clientontwikkelaars en biedt specifieke autorisatiestromen voor webtoepassingen, desktoptoepassingen en mobiele telefoons. Azure AD gebruikt OAuth 2.0 om u in staat te stellen toegang tot mobiele en webtoepassingen te autoriseren. Zie [Verificatie en autorisatie in Azure App Service](../../app-service/overview-authentication-authorization.md)voor meer informatie.
 
 ## <a name="restrict-access-based-on-role"></a>Toegang beperken op basis van rol
-Het beperken van de toegang is van cruciaal belang voor organisaties die beveiligings beleid voor gegevens toegang willen afdwingen. U kunt op rollen gebaseerd toegangs beheer (RBAC) gebruiken om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen bij een bepaald bereik, zoals de beveiligings principes van de nood zaak om te kennen en te voldoen aan bevoegdheden. Zie [Wat is op rollen gebaseerd toegangs beheer](/azure/role-based-access-control/overview)voor meer informatie over het verlenen van gebruikers toegang tot toepassingen.
+Het beperken van de toegang is noodzakelijk voor organisaties die beveiligingsbeleid voor gegevenstoegang willen afdwingen. U RBAC (Role-based access control) gebruiken om machtigingen toe te wijzen aan gebruikers, groepen en toepassingen op een bepaald bereik, zoals de noodzaak om te weten en de minste beveiligingsprincipes voor bevoegdheden. Zie [Wat is op rolgebaseerde toegangscontrole voor](/azure/role-based-access-control/overview)meer informatie over het verlenen van gebruikers toegang tot toepassingen.
 
-## <a name="protect-your-keys"></a>Uw sleutels beveiligen
-Het maakt niet uit hoe goed uw beveiliging is als u uw abonnements sleutels kwijtraakt. Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met Key Vault kunt u sleutels en geheimen versleutelen (zoals verificatie sleutels, sleutels voor opslag accounts, sleutels voor gegevens versleuteling,. PFX-bestanden en wacht woorden) met behulp van sleutels die worden beveiligd door Hardware Security modules (Hsm's). Voor extra zekerheid kunt u de sleutels importeren of genereren in HSM's. U kunt Key Vault ook gebruiken om uw TLS-certificaten te beheren met automatische verlenging. Zie [Wat is Azure Key Vault](../../key-vault/key-vault-overview.md) voor meer informatie.
+## <a name="protect-your-keys"></a>Bescherm uw sleutels
+Het maakt niet uit hoe goed uw beveiliging is als u uw abonnementssleutels verliest. Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met Key Vault u sleutels en geheimen versleutelen (zoals verificatiesleutels, opslagaccountsleutels, gegevensversleutelingssleutels,. PFX-bestanden en wachtwoorden met behulp van sleutels die worden beschermd door hardwarebeveiligingsmodules (HSM's). Voor extra zekerheid kunt u de sleutels importeren of genereren in HSM's. U Key Vault ook gebruiken om uw TLS-certificaten te beheren met automatische verlenging. Zie [Wat is Azure Key Vault](../../key-vault/key-vault-overview.md) voor meer informatie.
 
-## <a name="restrict-incoming-source-ip-addresses"></a>IP-adressen van binnenkomende bronnen beperken
-[App service omgevingen](../../app-service/environment/intro.md) hebben een functie voor integratie van virtuele netwerken waarmee u de inkomende bron-IP-adressen kunt beperken via netwerk beveiligings groepen (nsg's). Als u niet bekend bent met Azure Virtual Networks (VNETs), is dit een mogelijkheid waarmee u veel van uw Azure-resources kunt plaatsen in een niet-Internet-Routeer netwerk waarmee u de toegang tot beheert. Zie [uw app integreren met een Azure-Virtual Network](../../app-service/web-sites-integrate-with-vnet.md)voor meer informatie.
+## <a name="restrict-incoming-source-ip-addresses"></a>IP-adressen van binnenkomende bron beperken
+[App Service Environments](../../app-service/environment/intro.md) heeft een virtuele netwerkintegratiefunctie waarmee u ip-adressen van binnenkomende bronnen beperken via netwerkbeveiligingsgroepen (NSG's). Als u niet bekend bent met Azure Virtual Networks (VNETs), is dit een mogelijkheid waarmee u veel van uw Azure-bronnen in een niet-internet, routeerbaar netwerk plaatsen waarmee u de toegang tot u beheert. Zie Uw [app integreren met een Azure Virtual Network](../../app-service/web-sites-integrate-with-vnet.md)voor meer informatie.
 
-Voor App Service in Windows kunt u IP-adressen ook dynamisch beperken door het web. config te configureren. Zie [dynamische IP-beveiliging](/iis/configuration/system.webServer/security/dynamicIpSecurity/)voor meer informatie.
+Voor App Service op Windows u IP-adressen ook dynamisch beperken door de web.config te configureren. Zie [Dynamische IP-beveiliging](/iis/configuration/system.webServer/security/dynamicIpSecurity/)voor meer informatie .
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u een verzameling van App Service aanbevolen beveiligings procedures geïntroduceerd voor het beveiligen van uw PaaS-webtoepassingen en mobiele toepassingen. Zie voor meer informatie over het beveiligen van uw PaaS-implementaties:
+In dit artikel wordt u kennis gemaakt met een verzameling best practices voor app-servicebeveiliging voor het beveiligen van uw PaaS-web- en mobiele toepassingen. Zie voor meer informatie over het beveiligen van uw PaaS-implementaties:
 
 - [PaaS-implementaties beveiligen](paas-deployments.md)
-- [PaaS-data bases beveiligen in azure](paas-applications-using-sql.md)
+- [PaaS-databases beveiligen in Azure](paas-applications-using-sql.md)

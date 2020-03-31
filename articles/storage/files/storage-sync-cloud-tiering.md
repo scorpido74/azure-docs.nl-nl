@@ -1,126 +1,128 @@
 ---
-title: Wat is Azure File Sync Cloud lagen? Microsoft Docs
-description: Meer informatie over de functie voor Cloud lagen van Azure File Sync
+title: Azure File Sync Cloud Tiering begrijpen | Microsoft Documenten
+description: Meer informatie over de functie Cloud Tiering van Azure File Sync
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 03/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fea9cebc5199fc7c1fc5c081aa45f08044c21e44
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 11f9097fc4875f0a4300ac56dafe7af9a0b00c97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268091"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454615"
 ---
-# <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
-Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand met de Azure File Sync bestandssysteem filter (StorageSync. sys) vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
+# <a name="cloud-tiering-overview"></a>Overzicht van cloudlagen
+Cloudtiering is een optionele functie van Azure File Sync, waarbij vaak geopende bestanden lokaal op de server in de cache worden opgeslagen, terwijl alle andere bestanden zijn gelaagd tot Azure Files op basis van beleidsinstellingen. Wanneer een bestand is gelaagd, vervangt het azure file sync-bestandssysteemfilter (StorageSync.sys) het bestand lokaal door een aanwijzer of een reparsepunt. Het heespunt vertegenwoordigt een URL naar het bestand in Azure-bestanden. Een gelaagd bestand heeft zowel het kenmerk 'offline' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS dat is ingesteld in NTFS, zodat toepassingen van derden trapsgewijs gelaagde bestanden kunnen identificeren.
  
-Wanneer een gebruiker een gelaagd bestand opent, Azure File Sync de bestands gegevens naadloos terugroepen van Azure Files zonder dat de gebruiker moet weten dat het bestand is opgeslagen in Azure. 
+Wanneer een gebruiker een gelaagd bestand opent, roept Azure File Sync naadloos de bestandsgegevens van Azure Files terug zonder dat de gebruiker hoeft te weten dat het bestand is opgeslagen in Azure. 
  
  > [!Important]  
- > Cloud lagen worden niet ondersteund voor Server eindpunten op de Windows-systeem volumes en alleen bestanden met een grootte van meer dan 64 KiB kunnen worden getierd naar Azure Files.
+ > Cloudtiering wordt niet ondersteund op het Windows-systeemvolume.
     
-Azure File Sync biedt geen ondersteuning voor het laag maken van bestanden die kleiner zijn dan 64 KiB omdat de prestatie overhead van het trapsgewijs scha kelen van lagen en het terugtrekken van dergelijke kleine bestanden niet groter wordt dan de ruimte besparing.
-
  > [!Important]  
- > Als u bestanden wilt terughalen die zijn getierd, moet de netwerk bandbreedte ten minste 1 Mbps zijn. Als de netwerk bandbreedte kleiner is dan 1 Mbps, kunnen bestanden niet worden ingetrokken vanwege een time-outfout.
+ > Als u bestanden wilt terugroepen die zijn gelaagd, moet de netwerkbandbreedte ten minste 1 Mbps bedragen. Als de netwerkbandbreedte minder dan 1 Mbps bedraagt, kunnen bestanden zich mogelijk niet herinneren met een time-outfout.
 
-## <a name="cloud-tiering-faq"></a>Veelgestelde vragen over Cloud lagen
+## <a name="cloud-tiering-faq"></a>Veelgestelde vragen over cloudlagen
 
 <a id="afs-cloud-tiering"></a>
-### <a name="how-does-cloud-tiering-work"></a>Hoe werkt Cloud lagen?
-Het Azure File Sync-systeem filter bouwt een ' heatmap ' van uw naam ruimte op elk server eindpunt. Het controleert de toegang (lees-en schrijf bewerkingen) in de loop van de tijd en wijst vervolgens, op basis van de frequentie en de Recency van toegang, een hitte Score toe aan elk bestand. Een veelgebruikt bestand dat onlangs is geopend, wordt beschouwd als hot, terwijl een bestand dat nauwelijks is gerakend en gedurende enige tijd niet toegankelijk is, als koud wordt beschouwd. Wanneer het bestands volume op een server de drempel waarde voor vrije ruimte van het volume overschrijdt dat u hebt ingesteld, worden de coole bestanden gelaagd tot Azure Files tot er aan het percentage van de vrije ruimte wordt voldaan.
+### <a name="how-does-cloud-tiering-work"></a>Hoe werkt cloudtiering?
+Met het azure file sync-systeemfilter wordt een 'heatmap' van uw naamruimte op elk servereindpunt gemaakt. Het controleert toegangen (lees- en schrijfbewerkingen) in de loop van de tijd en wijst vervolgens, op basis van zowel de frequentie als de recentheid van de toegang, een warmtescore toe aan elk bestand. Een vaak geopend bestand dat onlangs is geopend, wordt als hot beschouwd, terwijl een bestand dat nauwelijks wordt aangeraakt en al enige tijd niet is geopend, als cool wordt beschouwd. Wanneer het bestandsvolume op een server de ingestelde volumedrempel voor vrije ruimte overschrijdt, worden de coolste bestanden in Azure-bestanden geklasseerd totdat aan uw percentage vrije ruimte is voldaan.
 
-In versie 4,0 en hoger van de Azure File Sync-agent kunt u ook een datum beleid opgeven op elk server eindpunt dat bestanden die niet worden geopend of gewijzigd binnen een opgegeven aantal dagen worden getierd.
+In versies 4.0 en hoger van de Azure File Sync-agent u bovendien een datumbeleid opgeven voor elk servereindpunt dat alle bestanden die niet binnen een bepaald aantal dagen zijn geopend of gewijzigd, laagbrengt.
+
+<a id="tiering-minimum-file-size"></a>
+### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Wat is de minimale bestandsgrootte voor een bestand tot laag?
+Voor agentversies 9.x en nieuwer is de minimale bestandsgrootte voor een bestandstot laag gebaseerd op de clustergrootte van het bestandssysteem (het dubbele van de clustergrootte van het bestandssysteem). Als de clustergrootte van het NTFS-bestandssysteem bijvoorbeeld 4 KB is, is de resulterende minimale bestandsgrootte voor een bestand tot laag 8 KB. Voor agentversies 8.x en ouder is de minimale bestandsgrootte voor een bestand tot laag 64 KB.
 
 <a id="afs-volume-free-space"></a>
-### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Hoe werkt het volume beschik bare ruimte voor volumes?
-Beschik bare volume ruimte is de hoeveelheid vrije ruimte die u wilt reserveren op het volume waarop een server eindpunt zich bevindt. Als volume beschik bare ruimte bijvoorbeeld is ingesteld op 20% op een volume met één server eindpunt, wordt Maxi maal 80% van de volume ruimte ingen Omen door de meest recent geopende bestanden, waarbij alle resterende bestanden die niet in deze ruimte passen, naar Azure worden gelaagd. Volume beschik bare ruimte is van toepassing op volume niveau in plaats van op het niveau van afzonderlijke directory's of synchronisatie groepen. 
+### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Hoe werkt het opslaglaagbeleid voor beschikbare volumeruimte?
+Volumevrije ruimte is de hoeveelheid vrije ruimte die u wilt reserveren op het volume waarop een servereindpunt zich bevindt. Als bijvoorbeeld volumevrije ruimte is ingesteld op 20% op een volume met één servereindpunt, wordt tot 80% van de volumeruimte ingenomen door de meest recent geopende bestanden, waarbij de resterende bestanden die niet in deze ruimte passen, zijn gelaagd tot Azure. Volumevrije ruimte is van toepassing op volumeniveau in plaats van op het niveau van individuele mappen of synchronisatiegroepen. 
 
 <a id="volume-free-space-fastdr"></a>
-### <a name="how-does-the-volume-free-space-tiering-policy-work-with-regards-to-new-server-endpoints"></a>Wat is het gebruik van het volume beschik bare ruimte voor volumes met betrekking tot nieuwe server eindpunten?
-Wanneer een server-eind punt nieuw is ingericht en verbonden met een Azure-bestands share, wordt door de server eerst de naam ruimte opgehaald en worden de daad werkelijke bestanden uitgelicht totdat de drempel waarde voor de vrije ruimte van het volume wordt bereikt. Dit proces wordt ook wel snelle herstel na nood gevallen of snelle naam ruimte herstel genoemd.
+### <a name="how-does-the-volume-free-space-tiering-policy-work-with-regards-to-new-server-endpoints"></a>Hoe werkt het opslaglaagbeleid voor beschikbare volumeruimte met betrekking tot de nieuwe servereindpunten?
+Wanneer een servereindpunt onlangs is ingericht en is verbonden met een Azure-bestandsshare, haalt de server eerst de naamruimte naar beneden en haalt vervolgens de werkelijke bestanden naar beneden totdat deze de volumevrije ruimtedrempel bereikt. Dit proces wordt ook wel snel herstel van de ramp of snelle naamruimte herstellen genoemd.
 
 <a id="afs-effective-vfs"></a>
-### <a name="how-is-volume-free-space-interpreted-when-i-have-multiple-server-endpoints-on-a-volume"></a>Hoe wordt de beschik bare volume ruimte geïnterpreteerd wanneer ik meerdere server eindpunten op een volume heb?
-Wanneer er meer dan één server eindpunt op een volume is, is de limiet voor de beschik bare volume ruimte het grootste volume dat is opgegeven voor elk server eindpunt op dat volume. Bestanden worden trapsgewijs gelaagd op basis van hun gebruiks patronen, ongeacht het server eindpunt waarvan ze deel uitmaken. Als u bijvoorbeeld twee server eindpunten hebt op een volume, Endpoint1 en Endpoint2, waarbij Endpoint1 een volume drempel waarde voor vrije ruimte heeft van 25% en Endpoint2 een volume drempel waarde voor vrije ruimte van 50% heeft, is de drempel waarde voor volume vrije ruimte voor beide server eindpunten 50%. 
+### <a name="how-is-volume-free-space-interpreted-when-i-have-multiple-server-endpoints-on-a-volume"></a>Hoe wordt vrije ruimte op een volume geïnterpreteerd wanneer ik meerdere servereindpunten heb op een volume?
+Wanneer er meer dan één servereindpunt op een volume is, is de effectieve volumevrije ruimtedrempel de grootste volumevrije ruimte die is opgegeven voor een servereindpunt op dat volume. Bestanden worden gelaagd op basis van hun gebruikspatronen, ongeacht welk servereindpunt waartoe ze behoren. Als u bijvoorbeeld twee servereindpunten op een volume, Endpoint1 en Endpoint2 hebt, waarbij Endpoint1 een volumevrije ruimtedrempel van 25% heeft en Endpoint2 een volumevrije ruimtedrempel van 50%, is de volumevrije ruimtedrempel voor beide servereindpunten 50%. 
 
 <a id="date-tiering-policy"></a>
-### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Hoe werkt het beleid voor de datum lagen in combi natie met het volume beschik bare ruimte-laag beleid? 
-Wanneer u Cloud Tiering inschakelt op een server eindpunt, stelt u een volume beschik bare ruimte beleid in. Het heeft altijd voor rang op elk ander beleid, inclusief het datum beleid. U kunt desgewenst een datum beleid inschakelen voor elk server eindpunt op dat volume, wat betekent dat alleen bestanden die toegankelijk zijn (dat wil zeggen, gelezen of beschreven) binnen het bereik van de dagen dat dit beleid wordt beschreven, lokaal worden bewaard, met eventuele verouderde bestanden. Houd er rekening mee dat het volume beschik bare ruimte beleid altijd voor rang heeft en wanneer er niet voldoende vrije ruimte op het volume is om zoveel dagen aan bestanden te bewaren, zoals wordt beschreven in het datum beleid, Azure File Sync de Coldest-bestanden blijven door lopen totdat het volume vrij is Er wordt aan het ruimte percentage voldaan.
+### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Hoe werkt het opslaglaagbeleid voor datums in combinatie met het opslaglaagbeleid voor beschikbare volumeruimte? 
+Wanneer u cloudlagen inschakelt op een servereindpunt, stelt u een beleid voor volumevrije ruimte in. Het heeft altijd voorrang op andere beleidsregels, inclusief het datumbeleid. Optioneel u een datumbeleid inschakelen voor elk servereindpunt op dat volume, wat betekent dat alleen bestanden die toegankelijk zijn (dat wil zeggen, lezen of geschreven zijn) binnen het bereik van dagen dat dit beleid beschrijft, lokaal worden bewaard, waarbij stalbestanden worden gelaagd. Houd er rekening mee dat het beleid voor volumevrije ruimte altijd voorrang heeft en als er niet genoeg vrije ruimte op het volume is om zoveel dagen aan bestanden te behouden als beschreven in het datumbeleid, blijft Azure File Sync de koudste bestanden tieren totdat het volume vrij is ruimtepercentage is voldaan.
 
-Stel dat u een op een datum gebaseerd laag beleid hebt van 60 dagen en een volume beschik bare ruimte op basis van 20%. Als na het Toep assen van het datum beleid minder dan 20% van de beschik bare ruimte op het volume is, wordt het volume beschik bare ruimte beleid in en wordt het datum beleid overschreven. Dit leidt ertoe dat er meer bestanden worden getierd, zodat de hoeveelheid gegevens die op de server wordt bewaard, van 60 dagen aan gegevens kan worden teruggebracht tot 45 dagen. Dit beleid zorgt er ook voor dat de lagen die buiten uw tijds bereik vallen, worden afgehandeld, zelfs als u niet de drempel waarde voor vrije ruimte hebt bereikt. een bestand dat 61 dagen oud is, wordt getiereerd, zelfs als uw volume leeg is.
+Stel dat u een op datum gebaseerd tieringbeleid van 60 dagen en een volumevrije ruimtebeleid van 20% hebt. Als er na het toepassen van het datumbeleid minder dan 20% vrije ruimte op het volume is, zal het volumevrije ruimtebeleid het datumbeleid intrappen en overschrijven. Dit zal resulteren in meer bestanden worden tiered, zodanig dat de hoeveelheid gegevens bewaard op de server kan worden teruggebracht van 60 dagen van de gegevens tot 45 dagen. Omgekeerd zal dit beleid de gelaagdheid van bestanden die buiten uw tijdsbereik vallen, zelfs als u uw drempelruimtedrempel voor vrije ruimte niet hebt bereikt, afdwingen, zodat een bestand dat 61 dagen oud is, wordt gelaagd, zelfs als uw volume leeg is.
 
 <a id="volume-free-space-guidelines"></a>
-### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>Hoe kan ik de juiste hoeveelheid beschik bare volume ruimte bepalen?
-De hoeveelheid gegevens die u moet blijven lokale, wordt bepaald door enkele factoren: uw band breedte, het toegangs patroon van uw gegevensset en uw budget. Als u een verbinding met een lage band breedte hebt, wilt u mogelijk meer van uw gegevens lokaal houden om ervoor te zorgen dat uw gebruikers een minimale vertraging hebben. Als dat niet het geval is, kunt u deze baseren op het verloop tempo tijdens een bepaalde periode. Als u bijvoorbeeld weet dat ongeveer 10% van uw gegevensset van 1 TB wordt gewijzigd of elke maand actief wordt gebruikt, is het raadzaam om 100 GB lokaal te houden, zodat u niet vaak bestanden terugroept. Als uw volume 2 TB is, moet u 5% (of 100 GB) lokaal blijven, wat betekent dat de resterende 95% uw volume beschik bare ruimte percentage is. We raden u echter aan een buffer toe te voegen voor Peri Oden met een hoger verloop, met andere woorden, beginnend met een lager volume beschik bare ruimte percentage en het vervolgens aanpassen als dat later nodig is. 
+### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>Hoe bepaal ik de juiste hoeveelheid beschikbare volumeruimte?
+De hoeveelheid gegevens die u lokaal moet bewaren, wordt bepaald door een aantal factoren: uw bandbreedte, het toegangspatroon van uw gegevensset en uw budget. Als u een verbinding met een lage bandbreedte hebt, wilt u misschien meer van uw gegevens lokaal houden om ervoor te zorgen dat er een minimale vertraging is voor uw gebruikers. Anders u deze gedurende een bepaalde periode baseren op de churn rate. Als u bijvoorbeeld weet dat ongeveer 10% van uw 1 TB-gegevensset elke maand wordt gewijzigd of actief wordt geopend, wilt u misschien 100 GB lokaal houden, zodat u niet vaak bestanden terugbelt. Als uw volume 2TB is, wilt u 5% (of 100 GB) lokaal houden, wat betekent dat de resterende 95% uw volumevrije ruimtepercentage is. We raden u echter aan een buffer toe te voegen om rekening te houden met perioden met een hogere churn , met andere woorden, te beginnen met een lager volumevrije ruimtepercentage en deze vervolgens aan te passen indien nodig later. 
 
-Als u meer gegevens lokaal houdt, betekent dit lagere kosten voor uitgaand verkeer naarmate er minder bestanden worden ingetrokken van Azure, maar moet u ook een grotere hoeveelheid on-premises opslag onderhouden, die op eigen kosten wordt geleverd. Zodra u een exemplaar van Azure File Sync hebt geïmplementeerd, kunt u de uitvoer van uw opslag account op ongeveer meter bekijken, ongeacht of uw volume beschik bare ruimte-instellingen geschikt zijn voor uw gebruik. Ervan uitgaande dat het opslag account alleen uw Azure File Sync Cloud-eind punt bevat (dat wil zeggen, uw synchronisatie share), dan betekent hoge uitbrei ding dat veel bestanden worden ingetrokken vanuit de Cloud. u kunt overwegen uw lokale cache te verg Roten.
+Het lokaal houden van meer gegevens betekent lagere uitgangskosten omdat er minder bestanden worden teruggeroepen uit Azure, maar u moet ook een grotere hoeveelheid on-premises opslag onderhouden, wat op eigen kosten gebeurt. Zodra u een exemplaar van Azure File Sync hebt geïmplementeerd, u de uitgang van uw opslagaccount bekijken om ruwweg te meten of uw instellingen voor volumevrije ruimte geschikt zijn voor uw gebruik. Ervan uitgaande dat het opslagaccount alleen uw Azure File Sync Cloud Endpoint bevat (dat wil zeggen uw synchronisatieaandeel), betekent een hoge uitgang dat veel bestanden uit de cloud worden teruggeroepen en u moet overwegen uw lokale cache te vergroten.
 
 <a id="how-long-until-my-files-tier"></a>
-### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Ik heb een nieuw server eindpunt toegevoegd. Hoe lang duurt het tot mijn bestanden op deze server laag?
-Wanneer de bestanden in versie 4,0 en hoger van de Azure File Sync-agent zijn geüpload naar de Azure-bestands share, worden ze op basis van uw beleid gelaagd zodra de volgende sessie wordt uitgevoerd. dit gebeurt eenmaal per uur. Bij oudere agents kan het tot 24 uur duren voordat lagen worden gelaagd.
+### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Ik heb een nieuw servereindpunt toegevoegd. Hoe lang duurt het voordat mijn bestanden op deze serverlaag staan?
+In versie 4.0 en hoger van de Azure File Sync-agent worden deze, zodra uw bestanden zijn geüpload naar het Azure-bestandsaandeel, op basis van uw beleid gelaagd zodra de volgende gelaagdheidssessie wordt uitgevoerd, die eenmaal per uur plaatsvindt. Op oudere agenten kan tiering tot 24 uur duren.
 
 <a id="is-my-file-tiered"></a>
-### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Hoe kan ik zien of een bestand is getierd?
-Er zijn verschillende manieren om te controleren of een bestand naar uw Azure-bestands share is getierd:
+### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Hoe weet ik of een bestand is trapsgewijs?
+Er zijn verschillende manieren om te controleren of een bestand is gelaagd voor uw Azure-bestandsshare:
     
-   *  **Controleer de bestands kenmerken van het bestand.**
-     Klik met de rechter muisknop op een bestand, ga naar **Details**en schuif omlaag naar de eigenschap **Attributes** . Voor een gelaagd bestand zijn de volgende kenmerken ingesteld:     
+   *  **Controleer de bestandskenmerken in het bestand.**
+     Klik met de rechtermuisknop op een bestand, ga naar **Details**en blader naar beneden naar de eigenschap **Kenmerken.** Een gelaagd bestand heeft de volgende kenmerken:     
         
-        | Kenmerk letter | Kenmerk | Definitie |
+        | Kenmerkletter | Kenmerk | Definitie |
         |:----------------:|-----------|------------|
-        | A | Archiveren | Geeft aan dat er een back-up moet worden gemaakt van het bestand met back-upsoftware. Dit kenmerk is altijd ingesteld, ongeacht of het bestand op de schijf is gelaagd of volledig wordt opgeslagen. |
-        | P | Sparse-bestand | Geeft aan dat het bestand een sparse-bestand is. Een sparse-bestand is een speciaal type bestand dat NTFS biedt voor efficiënt gebruik wanneer het bestand op de schijf stroom grotendeels leeg is. Azure File Sync maakt gebruik van verspreide bestanden omdat een bestand volledig is gelaagd of gedeeltelijk wordt ingetrokken. In een volledig gelaagd bestand wordt de bestands stroom opgeslagen in de Cloud. Het deel van het bestand bevindt zich al op schijf in een gedeeltelijk ingetrokken bestand. Als een bestand volledig wordt ingetrokken, wordt Azure File Sync geconverteerd van een sparse-bestand naar een gewoon bestand. Dit kenmerk wordt alleen ingesteld op Windows Server 2016 en ouder.|
-        | M | Gegevens toegang intrekken | Geeft aan dat de gegevens van het bestand niet volledig aanwezig zijn in de lokale opslag. Als u het bestand leest, wordt er ten minste een deel van de bestands inhoud opgehaald van een Azure-bestands share waarop het server-eind punt is aangesloten. Dit kenmerk wordt alleen ingesteld op Windows Server 2019. |
-        | Winst | Reparsepunt | Geeft aan dat het bestand een reparsepunt heeft. Een reparsepunt is een speciale verwijzing voor gebruik door een bestandssysteem filter. Azure File Sync maakt gebruik van reparsepunten om te definiëren dat de Azure File Sync bestandssysteem filter (StorageSync. sys) de locatie van de Cloud waar het bestand is opgeslagen. Dit biedt ondersteuning voor naadloze toegang. Gebruikers hoeven niet te weten dat Azure File Sync wordt gebruikt of hoe ze toegang krijgen tot het bestand in de Azure-bestands share. Wanneer een bestand volledig wordt ingetrokken, verwijdert Azure File Sync het reparsepunt uit het bestand. |
-        | O | Off line | Geeft aan dat sommige of alle inhoud van het bestand niet op de schijf worden opgeslagen. Wanneer een bestand volledig is ingetrokken, Azure File Sync dit kenmerk verwijdert. |
+        | A | Archiveren | Geeft aan dat er een back-up van het bestand moet worden gemaakt door back-upsoftware. Dit kenmerk is altijd ingesteld, ongeacht of het bestand is gelaagd of volledig op schijf is opgeslagen. |
+        | P | Spaarzaam bestand | Geeft aan dat het bestand een schaars bestand is. Een schaars bestand is een gespecialiseerd type bestand dat NTFS biedt voor efficiënt gebruik wanneer het bestand op de schijfstroom grotendeels leeg is. Azure File Sync maakt gebruik van schaarse bestanden omdat een bestand volledig gelaagd is of gedeeltelijk wordt teruggeroepen. In een volledig gelaagd bestand wordt de bestandsstream opgeslagen in de cloud. In een gedeeltelijk teruggeroepen bestand staat dat deel van het bestand al op schijf. Als een bestand volledig wordt teruggeroepen naar de schijf, converteert Azure File Sync het van een schaars bestand naar een normaal bestand. Dit kenmerk is alleen ingesteld op Windows Server 2016 en ouder.|
+        | M | Terugroepen op gegevenstoegang | Geeft aan dat de gegevens van het bestand niet volledig aanwezig zijn op lokale opslag. Als u het bestand leest, wordt ten minste een deel van de bestandsinhoud opgehaald uit een Azure-bestandsshare waarmee het servereindpunt is verbonden. Dit kenmerk is alleen ingesteld op Windows Server 2019. |
+        | L | Reparsepunt | Geeft aan dat het bestand een reparsepunt heeft. Een reparsepunt is een speciale aanwijzer voor gebruik door een filter van het bestandssysteem. Azure File Sync gebruikt reparsepunten om te definiëren op het Azure File Sync-bestandssysteemfilter (StorageSync.sys) de cloudlocatie waar het bestand is opgeslagen. Dit ondersteunt naadloze toegang. Gebruikers hoeven niet te weten dat Azure File Sync wordt gebruikt of hoe ze toegang krijgen tot het bestand in uw Azure-bestandsshare. Wanneer een bestand volledig wordt teruggeroepen, verwijdert Azure File Sync het reparsepunt uit het bestand. |
+        | O | Offline | Geeft aan dat de inhoud van het bestand niet op de schijf is opgeslagen of dat sommige of alle inhoud van het bestand niet is opgeslagen. Wanneer een bestand volledig wordt teruggeroepen, verwijdert Azure File Sync dit kenmerk. |
 
-        ![Het dialoog venster Eigenschappen voor een bestand, met het tabblad Details geselecteerd](media/storage-files-faq/azure-file-sync-file-attributes.png)
+        ![Het dialoogvenster Eigenschappen voor een bestand, waarbij het tabblad Details is geselecteerd](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
-        U kunt de kenmerken van alle bestanden in een map weer geven door het veld **kenmerken** toe te voegen aan de tabel weergave van bestanden Verkenner. Als u dit wilt doen, klikt u met de rechter muisknop op een bestaande kolom (bijvoorbeeld **grootte**), selecteert u **meer**en selecteert u vervolgens **kenmerken** in de vervolg keuzelijst.
+        U de kenmerken voor alle bestanden in een map bekijken door het veld **Kenmerken** toe te voegen aan de tabelweergave van Verkenner. Klik hiervoor met de rechtermuisknop op een bestaande kolom (bijvoorbeeld **Grootte),** selecteer **Meer**en selecteer **vervolgens Kenmerken** in de vervolgkeuzelijst.
         
-   * **Gebruik `fsutil` om op reparsepunten te controleren op een bestand.**
-       Zoals beschreven in de voor gaande optie, bevat een gelaagd bestand altijd een reparsepunt set. Een reparse-wijzer is een speciale verwijzing voor het Azure File Sync bestandssysteem filter (StorageSync. sys). Als u wilt controleren of een bestand een reparsepunt heeft, voert u in een opdracht prompt met verhoogde bevoegdheid of een Power shell-venster het `fsutil`-hulp programma uit:
+   * **Met `fsutil` gebruiken om te controleren op hees punten op een bestand.**
+       Zoals beschreven in de vorige optie, heeft een gelaagd bestand altijd een hees puntset. Een hearse aanwijzer is een speciale aanwijzer voor het azure file sync-bestandssysteemfilter (StorageSync.sys). Voer het `fsutil` hulpprogramma uit om te controleren of een bestand een reparsepunt heeft:
     
         ```powershell
         fsutil reparsepoint query <your-file-name>
         ```
 
-        Als het bestand een reparsepunt heeft, kunt u de waarde van het **reparse-label zien: 0x8000001e**. Deze hexadecimale waarde is de reparsepunt waarde die het eigendom is van Azure File Sync. De uitvoer bevat ook de reparsegegevens die het pad naar het bestand op uw Azure-bestands share vertegenwoordigt.
+        Als het bestand een reparse punt heeft, u **reparse tagwaarde verwachten: 0x8000001e**. Deze hexadecimale waarde is de reparse puntwaarde die eigendom is van Azure File Sync. De uitvoer bevat ook de hearse gegevens die het pad naar uw bestand op uw Azure-bestandsshare vertegenwoordigen.
 
         > [!WARNING]  
-        > De opdracht `fsutil reparsepoint` Utility kan ook een reparsepunt verwijderen. Voer deze opdracht niet uit, tenzij het Azure File Sync technisch team u vraagt. Als u deze opdracht uitvoert, kan dit leiden tot gegevens verlies. 
+        > De `fsutil reparsepoint` utility opdracht heeft ook de mogelijkheid om een reparse punt te verwijderen. Voer deze opdracht niet uit, tenzij het azure file sync-engineeringteam u daarom vraagt. Als u deze opdracht uitvoert, kan dit leiden tot gegevensverlies. 
 
 <a id="afs-recall-file"></a>
 
-### <a name="a-file-i-want-to-use-has-been-tiered-how-can-i-recall-the-file-to-disk-to-use-it-locally"></a>Een bestand dat ik wil gebruiken, is gelaagd. Hoe kan ik het bestand intrekken op schijf om het lokaal te gebruiken?
-De eenvoudigste manier om een bestand in te trekken op schijf is door het bestand te openen. Het Azure File Sync bestandssysteem filter (StorageSync. sys) downloadt het bestand naadloos van uw Azure-bestands share zonder uw eigen werk. Voor bestands typen die gedeeltelijk kunnen worden gelezen uit, zoals multi media-of zip-bestanden, wordt het hele bestand niet gedownload door een bestand te openen.
+### <a name="a-file-i-want-to-use-has-been-tiered-how-can-i-recall-the-file-to-disk-to-use-it-locally"></a>Een bestand dat ik wil gebruiken is gelaagd. Hoe kan ik het bestand op schijf herinneren om het lokaal te gebruiken?
+De eenvoudigste manier om een bestand terug te roepen naar de schijf is door het bestand te openen. Het azure file sync-bestandssysteemfilter (StorageSync.sys) downloadt het bestand naadloos uit uw Azure-bestandsshare zonder dat u werkt. Voor bestandstypen waarvan gedeeltelijk kan worden gelezen, zoals multimedia- of .zip-bestanden, wordt het openen van een bestand niet het hele bestand gedownload.
 
-U kunt Power shell ook gebruiken om te forceren dat een bestand wordt ingetrokken. Deze optie kan nuttig zijn als u meerdere bestanden tegelijk wilt intrekken, bijvoorbeeld alle bestanden in een map. Open een Power shell-sessie met het server knooppunt waar Azure File Sync is geïnstalleerd en voer vervolgens de volgende Power shell-opdrachten uit:
+U PowerShell ook gebruiken om een bestand terug te roepen. Deze optie kan handig zijn als u meerdere bestanden tegelijk wilt terugroepen, zoals alle bestanden in een map. Open een PowerShell-sessie op het serverknooppunt waar Azure File Sync is geïnstalleerd en voer de volgende PowerShell-opdrachten uit:
     
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
-Optionele para meters:
-* `-Order CloudTieringPolicy` worden de laatst gewijzigde bestanden eerst ingetrokken.  
-* `-ThreadCount` bepaalt hoeveel bestanden parallel kunnen worden ingetrokken.
-* `-PerFileRetryCount`bepaalt hoe vaak een terugroep bewerking wordt uitgevoerd voor een bestand dat momenteel is geblokkeerd.
-* `-PerFileRetryDelaySeconds`bepaalt de tijd in seconden tussen nieuwe pogingen en moet altijd worden gebruikt in combi natie met de vorige para meter.
+Optionele parameters:
+* `-Order CloudTieringPolicy`herinnert zich eerst de meest recent gewijzigde bestanden.  
+* `-ThreadCount`bepaalt hoeveel bestanden parallel kunnen worden teruggeroepen.
+* `-PerFileRetryCount`hiermee wordt bepaald hoe vaak een terugroepactie wordt geprobeerd van een bestand dat momenteel is geblokkeerd.
+* `-PerFileRetryDelaySeconds`bepaalt de tijd in seconden tussen het opnieuw inroepen van pogingen en moet altijd worden gebruikt in combinatie met de vorige parameter.
 
 > [!Note]  
-> Als het lokale volume dat als host fungeert voor de server onvoldoende beschik bare ruimte heeft om alle gelaagde gegevens in te trekken, mislukt de `Invoke-StorageSyncFileRecall`-cmdlet.  
+> Als het lokale volume dat de server host niet genoeg vrije `Invoke-StorageSyncFileRecall` ruimte heeft om alle gelaagde gegevens terug te roepen, mislukt de cmdlet.  
 
 <a id="sizeondisk-versus-size"></a>
-### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Waarom wordt de eigenschap *grootte op schijf* voor een bestand niet overeenkomen met de eigenschap *grootte* na gebruik van Azure file sync? 
-In Windows Verkenner worden twee eigenschappen beschikbaar gesteld om de grootte van een bestand weer te geven: **grootte** en **grootte op schijf**. Deze eigenschappen wijken in betekenis. **Grootte** vertegenwoordigt de volledige grootte van het bestand. **Grootte op schijf** staat voor de grootte van de bestands stroom die op de schijf is opgeslagen. De waarden voor deze eigenschappen kunnen verschillende oorzaken hebben, zoals compressie, het gebruik van Gegevensontdubbeling of Cloud lagen met Azure File Sync. Als een bestand wordt gelaagd voor een Azure-bestands share, is de grootte op de schijf nul, omdat de bestands stroom wordt opgeslagen in de Azure-bestands share en niet op de schijf. Het is ook mogelijk dat een bestand gedeeltelijk wordt gelaagd (of gedeeltelijk wordt ingetrokken). In een gedeeltelijk gelaagd bestand bevindt zich een deel van het bestand op schijf. Dit kan gebeuren wanneer bestanden gedeeltelijk worden gelezen door toepassingen als multimedia spelers of zip-hulpprogram ma's. 
+### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Waarom komt de *eigenschap Grootte op schijf* voor een bestand niet overeen met de eigenschap *Grootte* na het gebruik van Azure File Sync? 
+In Windows Verkenner worden twee eigenschappen weergegeven die de grootte van een bestand weergeven: **grootte** en **grootte op schijf**. Deze eigenschappen verschillen subtiel in betekenis. **Grootte** vertegenwoordigt de volledige grootte van het bestand. **Grootte op schijf** vertegenwoordigt de grootte van de bestandsstream die op de schijf is opgeslagen. De waarden voor deze eigenschappen kunnen om verschillende redenen verschillen, zoals compressie, gebruik van gegevensdeduplicatie of cloudgelaagdheid met Azure File Sync. Als een bestand is gelaagd tot een Azure-bestandsshare, is de grootte op de schijf nul, omdat de bestandsstroom is opgeslagen in uw Azure-bestandsshare en niet op de schijf. Het is ook mogelijk dat een bestand gedeeltelijk wordt gerijstoond (of gedeeltelijk wordt teruggeroepen). In een gedeeltelijk gelaagd bestand bevindt een deel van het bestand zich op schijf. Dit kan gebeuren wanneer bestanden gedeeltelijk worden gelezen door toepassingen zoals multimediaspelers of zip-hulpprogramma's. 
 
 <a id="afs-force-tiering"></a>
-### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Hoe kan ik moet een bestand of map geforceerd worden getierd?
-Wanneer de functie voor Cloud lagen is ingeschakeld, worden bestanden in Cloud lagen automatisch gelaagd op basis van de laatste toegangs-en wijzigings tijden om het percentage beschik bare ruimte op het Cloud eindpunt te verkrijgen. Soms wilt u een bestand op laag hand matig geforceerd afdwingen. Dit kan handig zijn als u een groot bestand opslaat dat u niet langer wilt gebruiken gedurende een lange periode en u de beschik bare ruimte op uw volume nu wilt gebruiken voor andere bestanden en mappen. U kunt de lagen afdwingen met behulp van de volgende Power shell-opdrachten:
+### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Hoe dwing ik een bestand of directory te laten tieren?
+Wanneer de functie voor cloudgelaagdheid is ingeschakeld, worden bestanden met cloudlagen automatisch laagbestandbestanden op basis van laatste toegang en worden de tijden aangepast om het volumevrije ruimtepercentage te bereiken dat is opgegeven op het eindpunt van de cloud. Soms wilt u een bestand echter handmatig naar laag dwingen. Dit kan handig zijn als u een groot bestand opslaat dat u lange tijd niet meer wilt gebruiken en u wilt dat de vrije ruimte op uw volume nu wordt gebruikt voor andere bestanden en mappen. U tiering forceren met behulp van de volgende PowerShell-opdrachten:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
@@ -128,11 +130,11 @@ Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ```
 
 <a id="afs-image-thumbnail"></a>
-### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Waarom worden mijn gelaagde bestanden niet weer gegeven als miniaturen of voor beelden in Windows Verkenner?
-Voor gelaagde bestanden zijn miniaturen en voor beelden niet zichtbaar op het server eindpunt. Dit gedrag wordt verwacht omdat de functie van de miniatuur cache in Windows het lezen van bestanden met het kenmerk offline overs Laan. Als Cloud lagen zijn ingeschakeld, kan de Lees bewerking door gelaagde bestanden worden gedownload (ingetrokken).
+### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Waarom worden in mijn gelaagde bestanden geen miniaturen of voorvertoningen weergegeven in Windows Verkenner?
+Voor gelaagde bestanden zijn miniaturen en voorvertoningen niet zichtbaar op het eindpunt van de server. Dit gedrag wordt verwacht omdat de miniatuurcachefunctie in Windows opzettelijk het lezen van bestanden met het offline kenmerk overslaat. Als Cloud Tiering is ingeschakeld, zou het lezen van gelaagde bestanden ertoe leiden dat deze worden gedownload (teruggeroepen).
 
-Dit gedrag is niet specifiek voor Azure File Sync. in Windows Verkenner wordt een ' grijze X ' weer gegeven voor bestanden waarvoor het kenmerk offline is ingesteld. Het pictogram X wordt weer geven bij het openen van bestanden via SMB. Raadpleeg [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105) voor een gedetailleerde uitleg van dit gedrag
+Dit gedrag is niet specifiek voor Azure File Sync, Windows Explorer geeft een 'grijze X' weer voor bestanden met de offline attribuutset. U ziet het X-pictogram wanneer u bestanden via SMB opent. Voor een gedetailleerde uitleg van dit gedrag, verwijzen naar[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
+* [Planning voor een Azure File Sync Deployment](storage-sync-files-planning.md)

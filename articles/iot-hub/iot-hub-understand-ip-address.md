@@ -1,6 +1,6 @@
 ---
-title: Informatie over het IP-adres van uw IoT-hub | Microsoft Docs
-description: Meer informatie over het opvragen van uw IoT hub IP-adres en de bijbehorende eigenschappen. Het IP-adres van uw IoT-hub kan worden gewijzigd tijdens bepaalde scenario's, zoals herstel na nood gevallen of een regionale failover.
+title: Inzicht in het IP-adres van uw IoT-hub | Microsoft Documenten
+description: Meer informatie over het opvragen van uw IP-adres van uw IoT-hub en de eigenschappen ervan. Het IP-adres van uw IoT-hub kan veranderen tijdens bepaalde scenario's, zoals disaster recovery of regionale failover.
 author: philmea
 ms.author: philmea
 ms.service: iot-hub
@@ -8,49 +8,49 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367564"
 ---
-# <a name="iot-hub-ip-addresses"></a>IoT Hub IP-adressen
+# <a name="iot-hub-ip-addresses"></a>IP-adressen van IoT Hub
 
-De IP-adres voorvoegsels van IoT Hub open bare eind punten worden periodiek gepubliceerd onder het label _AzureIoTHub_ - [service](../virtual-network/service-tags-overview.md).
+De IP-adresvoorvoegsels van openbare eindpunten van IoT Hub worden periodiek gepubliceerd onder de _AzureIoTHub-servicetag_ [service tag](../virtual-network/service-tags-overview.md).
 
 > [!NOTE]
-> Voor apparaten die zijn geïmplementeerd in een on-premises netwerk, ondersteunt Azure IoT Hub VNET-connectiviteits integratie met persoonlijke eind punten. Zie [IOT hub ondersteuning voor VNET](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) voor meer informatie.
+> Voor apparaten die worden geïmplementeerd binnen on-premises netwerken, ondersteunt Azure IoT Hub VNET-connectiviteitsintegratie met privéeindpunten. Zie [IoT Hub-ondersteuning voor VNET's](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints) voor meer informatie.
 
 
-U kunt deze IP-adres voorvoegsels gebruiken om de connectiviteit tussen IoT Hub en uw apparaten of netwerk assets te beheren, zodat u verschillende netwerk isolatie doelen kunt implementeren:
+U deze IP-adresvoorvoegsels gebruiken om de connectiviteit tussen IoT Hub en uw apparaten of netwerkassets te beheren om verschillende netwerkisolatiedoelen te implementeren:
 
 | Doel | Toepasselijke scenario's | Methode |
 |------|-----------|----------|
-| Zorg ervoor dat uw apparaten en services met alleen IoT Hub-eind punten communiceren | [Apparaat-naar-Cloud](./iot-hub-devguide-messaging.md)-en [Cloud-naar-apparaat](./iot-hub-devguide-messages-c2d.md) -berichten, [directe methoden](./iot-hub-devguide-direct-methods.md), [apparaat-en module apparaatdubbels](./iot-hub-devguide-device-twins.md) en [streams](./iot-hub-device-streams-overview.md) van apparaten | Gebruik _AzureIoTHub_ -en _EventHub_ -service tags om IOT hub en Event hub IP-adres voorvoegsels te detecteren en configureer regels voor het op uw apparaten en services ingestelde firewall-instellingen voor deze IP-adres voorvoegsels dienovereenkomstig. verkeer verplaatsen naar andere doel-IP-adressen waarvoor u niet wilt dat de apparaten of services communiceren met. |
-| Zorg ervoor dat het eind punt van uw IoT Hub alleen verbindingen van uw apparaten en netwerk assets ontvangt | [Apparaat-naar-Cloud](./iot-hub-devguide-messaging.md)-en [Cloud-naar-apparaat](./iot-hub-devguide-messages-c2d.md) -berichten, [directe methoden](./iot-hub-devguide-direct-methods.md), [apparaat-en module apparaatdubbels](./iot-hub-devguide-device-twins.md) en [streams](./iot-hub-device-streams-overview.md) van apparaten | Gebruik IoT Hub [IP-filter functie](iot-hub-ip-filtering.md) om verbindingen van uw apparaten en IP-adressen van netwerk activa (Zie de sectie [beperkingen](#limitations-and-workarounds) ) toe te staan. | 
-| Zorg ervoor dat de aangepaste eindpunt resources (opslag accounts, service bus en Event hubs) van uw routes alleen bereikbaar zijn vanaf uw netwerk assets | [Bericht routering](./iot-hub-devguide-messages-d2c.md) | Volg de richt lijnen van uw resource over het beperken van connectiviteit (bijvoorbeeld via [firewall regels](../storage/common/storage-network-security.md), [persoonlijke koppelingen](../private-link/private-endpoint-overview.md)of [service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md)). Gebruik _AzureIoTHub_ -service tags om IOT hub IP-adres voorvoegsels te detecteren en regels toe te voegen voor de IP-voor voegsels van de firewall configuratie van uw bron (Zie de sectie [beperkingen](#limitations-and-workarounds) ). |
+| Zorg ervoor dat uw apparaten en services alleen communiceren met IoT Hub-eindpunten | [Device-to-cloud](./iot-hub-devguide-messaging.md)en [cloud-to-device](./iot-hub-devguide-messages-c2d.md) messaging, [directe methoden,](./iot-hub-devguide-direct-methods.md) [apparaat- en moduletweelingen](./iot-hub-devguide-device-twins.md) en [apparaatstreams](./iot-hub-device-streams-overview.md) | Gebruik _AzureIoTHub-_ en _EventHub-servicetags_ om IoT Hub en IP-adresvoorvoegsels van Event Hub te ontdekken en ALLOW-regels te configureren voor de firewall-instelling van uw apparaten en services voor die ip-adresvoorvoegsels; verkeer naar andere ip-adressen van de bestemming te laten vallen waarmee u niet wilt dat de apparaten of services communiceren. |
+| Ervoor zorgen dat het eindpunt van uw IoT Hub-apparaat alleen verbindingen ontvangt van uw apparaten en netwerkassets | [Device-to-cloud](./iot-hub-devguide-messaging.md)en [cloud-to-device](./iot-hub-devguide-messages-c2d.md) messaging, [directe methoden,](./iot-hub-devguide-direct-methods.md) [apparaat- en moduletweelingen](./iot-hub-devguide-device-twins.md) en [apparaatstreams](./iot-hub-device-streams-overview.md) | Gebruik de [IP-filterfunctie](iot-hub-ip-filtering.md) van IoT Hub om verbindingen vanaf uw apparaten en IP-adressen van netwerkactiva toe te staan (zie [sectie beperkingen).](#limitations-and-workarounds) | 
+| Zorg ervoor dat de aangepaste eindpuntbronnen van uw routes (opslagaccounts, servicebus en gebeurtenishubs) alleen bereikbaar zijn vanuit uw netwerkassets | [Berichtroutering](./iot-hub-devguide-messages-d2c.md) | Volg de richtlijnen van uw resource voor beperking van connectiviteit (bijvoorbeeld via [firewallregels,](../storage/common/storage-network-security.md) [privékoppelingen](../private-link/private-endpoint-overview.md)of [serviceeindpunten);](../virtual-network/virtual-network-service-endpoints-overview.md) _Gebruik AzureIoTHub-servicetags_ om IP-adresvoorvoegsels van IoT Hub te ontdekken en ALLOW-regels toe te voegen voor die IP-voorvoegsels in de firewallconfiguratie van uw bron (zie [sectie beperkingen).](#limitations-and-workarounds) |
 
 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-* Wanneer u regels voor toestaan toevoegt aan de firewall configuratie van uw apparaten, kunt u het beste specifieke [poorten opgeven die worden gebruikt door de toepasselijke protocollen](./iot-hub-devguide-protocols.md#port-numbers).
+* Wanneer u ALLOW-regels toevoegt in de firewallconfiguratie van uw apparaten, u het beste specifieke poorten leveren [die worden gebruikt door toepasselijke protocollen.](./iot-hub-devguide-protocols.md#port-numbers)
 
-* De IP-adres voorvoegsels van IoT hub zijn onderhevig aan wijzigingen. Deze wijzigingen worden regel matig gepubliceerd via service Tags voordat ze van kracht worden. Het is daarom belang rijk dat u processen ontwikkelt om regel matig de meest recente service tags op te halen en te gebruiken. Dit proces kan worden geautomatiseerd via de [service Tags detectie-API](../virtual-network/service-tags-overview.md#service-tags-on-premises). Houd er rekening mee dat service Tags detectie-API nog steeds beschikbaar is in de preview-versie. in sommige gevallen is het niet mogelijk om de volledige lijst met tags en IP-adressen te maken. Als de detectie-API algemeen beschikbaar is, kunt u overwegen de service tags te gebruiken in de te [downloaden JSON-indeling](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files). 
+* De IP-adresvoorvoegsels van de IoT-hub kunnen worden gewijzigd. Deze wijzigingen worden periodiek gepubliceerd via servicetags voordat ze van kracht worden. Het is daarom belangrijk dat u processen ontwikkelt om regelmatig de nieuwste servicetags op te halen en te gebruiken. Dit proces kan worden geautomatiseerd via de [service tags discovery API.](../virtual-network/service-tags-overview.md#service-tags-on-premises) Houd er rekening mee dat de API voor het ontdekken van servicetags nog steeds in een voorbeeld is en in sommige gevallen mogelijk niet de volledige lijst met tags en IP-adressen produceert. Totdat de detectie-API algemeen beschikbaar is, u overwegen de [servicetags in downloadbare JSON-indeling te gebruiken.](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) 
 
-* Gebruik de *AzureIoTHub. [ regio naam]* label voor het identificeren van IP-voor voegsels die worden gebruikt door IOT hub-eind punten in een specifieke regio. Als u wilt account voor herstel na nood gevallen van Data Center of [regionale failover](iot-hub-ha-dr.md) , zorgt u ervoor dat de verbinding met IP-voor voegsels van de geografische paar regio van uw IOT hub ook is ingeschakeld.
+* Gebruik de *AzureIoTHub.[ regionaam]* tag om IP-voorvoegsels te identificeren die worden gebruikt door IoT-hubeindpunten in een specifieke regio. Als u rekening wilt houden met het herstel van datacenterrampen of [regionale failover,](iot-hub-ha-dr.md) is ook de verbinding met IP-voorvoegsels van het geo-pair-gebied van uw IoT Hub ingeschakeld.
 
-* Het instellen van firewall regels in IoT Hub blokkeert mogelijk de connectiviteit die nodig is om Azure CLI-en Power shell-opdrachten uit te voeren op uw IoT Hub. U kunt dit voor komen door regels toe te voegen voor de IP-adres voorvoegsels van uw clients om CLI-of Power shell-clients opnieuw in te scha kelen om met uw IoT Hub te communiceren.  
+* Het instellen van firewallregels in IoT Hub kan de connectiviteit blokkeren die nodig is om Azure CLI- en PowerShell-opdrachten tegen uw IoT-hub uit te voeren. Om dit te voorkomen, u ALLOW-regels toevoegen voor de IP-adresvoorvoegsels van uw clients om CLI- of PowerShell-clients opnieuw in te schakelen om met uw IoT Hub te communiceren.  
 
 
 ## <a name="limitations-and-workarounds"></a>Beperkingen en tijdelijke oplossingen
 
-* IoT Hub IP-filter functie heeft een limiet van 10 regels. Deze limiet en kan via aanvragen worden verhoogd via de klant ondersteuning van Azure. 
+* IoT Hub IP-filterfunctie heeft een limiet van 10 regels. Deze limiet kan worden verhoogd via aanvragen via Azure Customer Support. 
 
-* De geconfigureerde [IP-filter regels](iot-hub-ip-filtering.md) worden alleen toegepast op uw IOT hub IP-eind punten en niet op het ingebouwde Event hub-eind punt van uw IOT-hub. Als u ook wilt dat IP-filtering moet worden toegepast op de Event hub waar uw berichten worden opgeslagen, kunt u uw eigen event hub-resource plaatsen, waar u uw gewenste IP-filter regels rechtstreeks kunt configureren. Hiervoor moet u uw eigen event hub-resource inrichten en [bericht routering](./iot-hub-devguide-messages-d2c.md) instellen om uw berichten te verzenden naar die resource in plaats van de ingebouwde Event hub van uw IOT hub. Ten slotte, zoals beschreven in de bovenstaande tabel, om de functionaliteit voor bericht routering in te scha kelen, moet u ook verbinding met de IP-adres voorvoegsels van IoT Hub naar uw ingerichte Event hub-resource toestaan.
+* Uw geconfigureerde [IP-filterregels](iot-hub-ip-filtering.md) worden alleen toegepast op ip-eindpunten van uw IoT Hub en niet op het ingebouwde Event Hub-eindpunt van uw IoT-hub. Als u ook ip-filtering wilt toepassen op de gebeurtenishub waar uw berichten worden opgeslagen, u dit doen door uw eigen Event Hub-bron mee te nemen, waar u de gewenste IP-filterregels rechtstreeks configureren. Hiervoor moet u uw eigen Event Hub-bron inrichten en [berichtroutering](./iot-hub-devguide-messages-d2c.md) instellen om uw berichten naar die bron te verzenden in plaats van de ingebouwde Event Hub van uw IoT Hub. Ten slotte, zoals besproken in de bovenstaande tabel, moet u ook connectiviteit toestaan van de IP-adresvoorvoegsels van IoT Hub naar uw ingerichte Event Hub-bron om de functionaliteit voor het routeren van berichten mogelijk te maken.
 
-* Wanneer een route ring naar een opslag account wordt toegestaan, kan verkeer van de IP-adres voorvoegsels van IoT Hub alleen worden uitgevoerd als het opslag account zich in een andere regio bevindt als uw IoT Hub.
+* Wanneer u naar een opslagaccount routert, is het alleen mogelijk om verkeer toe te staan via de IP-adresvoorvoegsels van IoT Hub wanneer het opslagaccount zich in een andere regio bevindt als uw IoT Hub.
 
 ## <a name="support-for-ipv6"></a>Ondersteuning voor IPv6 
 
-IPv6 wordt momenteel niet ondersteund in IoT Hub.
+IPv6 wordt momenteel niet ondersteund op IoT Hub.

@@ -5,13 +5,13 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: e66e7d4646b650d2d811d3807db04605dfddeded
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67176549"
 ---
-1. In uw **app** project, open het bestand `AndroidManifest.xml`. Voeg de volgende code na de `application` openingstag:
+1. Open het bestand `AndroidManifest.xml`in uw **app-project** . Voeg de volgende `application` code toe na de openingstag:
 
     ```xml
     <service android:name=".ToDoMessagingService">
@@ -26,7 +26,7 @@ ms.locfileid: "67176549"
     </service>
     ```
 
-2. Open het bestand `ToDoActivity.java`, en breng de volgende wijzigingen:
+2. Open het `ToDoActivity.java`bestand en breng de volgende wijzigingen aan:
 
     - Voeg de importinstructie toe:
 
@@ -34,13 +34,13 @@ ms.locfileid: "67176549"
         import com.google.firebase.iid.FirebaseInstanceId;
         ```
 
-    - De definitie van `MobileServiceClient` van **persoonlijke** naar **persoonlijke statische**, zodat er nu als volgt uitziet:
+    - Verander de `MobileServiceClient` definitie van **privé** naar **privé statisch,** dus het ziet er nu als volgt uit:
 
         ```java
         private static MobileServiceClient mClient;
         ```
 
-    - Voeg `registerPush` methode:
+    - Methode `registerPush` toevoegen:
 
         ```java
         public static void registerPush() {
@@ -56,13 +56,13 @@ ms.locfileid: "67176549"
         }
         ```
 
-    - Update de **onCreate** -methode van de `ToDoActivity` klasse. Zorg ervoor dat u deze Voeg code toe na de `MobileServiceClient` wordt geïnstantieerd.
+    - Werk de **methode onCreate** van de `ToDoActivity` klasse bij. Zorg ervoor dat u `MobileServiceClient` deze code toevoegt nadat deze is geinstantieerd.
 
         ```java
         registerPush();
         ```
 
-3. Voeg een nieuwe klasse voor het afhandelen van meldingen. Open in Projectverkenner het **app** > **java** > **uw project-naamruimte** knooppunten, en met de rechtermuisknop op het knooppunt van de naam van pakket. Klik op **nieuw**, en klik vervolgens op **Java-klasse**. Typ in het vak naam `ToDoMessagingService`, en klik vervolgens op OK. Vervang daarna de klassendeclaratie met:
+3. Voeg een nieuwe klasse toe om meldingen te verwerken. Open in Project Explorer de**knooppunten Java** > **your-project-namespace** van de **app** > en klik met de rechtermuisknop op het knooppunt met de naam van het pakket. Klik **op Nieuw**en klik vervolgens op **Java-klasse**. Typ in `ToDoMessagingService`Naam en klik op OK. Vervang vervolgens de klassedeclaratie door:
 
     ```java
     import android.app.Notification;
@@ -101,7 +101,7 @@ ms.locfileid: "67176549"
     }
     ```
 
-4. Voeg een andere klasse voor het afhandelen van token-updates. Maak `ToDoInstanceIdService` java klasse en vervang de klassendeclaratie met:
+4. Voeg een andere klasse toe om token-updates af te handelen. Maak `ToDoInstanceIdService` javaklasse en vervang de klassedeclaratie door:
 
     ```java
     import com.google.firebase.iid.FirebaseInstanceIdService;
@@ -115,4 +115,4 @@ ms.locfileid: "67176549"
     }
     ```
 
-Uw app wordt nu bijgewerkt ter ondersteuning van pushmeldingen.
+Uw app is nu bijgewerkt om pushmeldingen te ondersteunen.

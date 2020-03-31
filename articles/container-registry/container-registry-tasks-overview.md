@@ -1,140 +1,140 @@
 ---
 title: Overzicht van ACR-taken
-description: Een inleiding tot ACR-taken, een reeks functies in Azure Container Registry die beveiligde, geautomatiseerde build van container installatie kopieën biedt, beheer en patches in de Cloud.
+description: Een inleiding tot ACR Tasks, een reeks functies in Azure Container Registry die veilige, geautomatiseerde containerimage-build, beheer en patching in de cloud biedt.
 ms.topic: article
 ms.date: 01/22/2020
 ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79087275"
 ---
-# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Bouw en onderhoud van container installatie kopieën automatiseren met ACR-taken
+# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Bouw en onderhoud van containerafbeeldingen automatiseren met ACR-taken
 
-Containers bieden nieuwe niveaus van virtualisatie, het isoleren van afhankelijkheden van toepassingen en ontwikkel aars uit infra structuur en operationele vereisten. Wat er nog steeds blijft, is echter de nood zaak om te bepalen hoe deze Application Virtualization wordt beheerd en gepatchd over de levens cyclus van de container.
+Containers bieden nieuwe niveaus van virtualisatie, waarbij toepassings- en ontwikkelaarsafhankelijkheden worden geïsoleerd van infrastructuur en operationele vereisten. Wat overblijft, is echter de noodzaak om aan te pakken hoe deze applicatie virtualisatie wordt beheerd en gepatcht over de levenscyclus van de container.
 
-## <a name="what-is-acr-tasks"></a>Wat zijn ACR-taken?
+## <a name="what-is-acr-tasks"></a>Wat is ACR-taken?
 
-**ACR-taken** is een reeks functies in azure container Registry. Het bevat een Cloud installatie kopie voor het maken van een container voor [platforms](#image-platforms) , waaronder Linux, Windows en arm, en kan het [besturings systeem en Framework-patches](#automate-os-and-framework-patching) voor uw docker-containers automatiseren. ACR-taken breiden de ontwikkelings cyclus "binnenste loop" niet alleen uit naar de Cloud met builds van installatie kopieën op aanvraag, maar biedt ook automatische builds die worden geactiveerd door bron code-updates, updates naar de basis installatie kopie van een container of timers. Zo kunt u met de basis installatie-update triggers de werk stroom voor het besturings systeem en toepassings raamwerk automatiseren, waarbij beveiligde omgevingen worden onderhouden en de principes van onveranderlijke containers worden gevolgd.
+**ACR Tasks** is een reeks functies binnen Azure Container Registry. Het biedt cloudgebaseerde containerimagebuilding voor [platforms](#image-platforms) zoals Linux, Windows en ARM, en kan [os- en frameworkpatching](#automate-os-and-framework-patching) voor uw Docker-containers automatiseren. ACR Tasks breidt niet alleen uw "inner-loop" ontwikkelingscyclus uit naar de cloud met on-demand containerimagebuilds, maar maakt ook geautomatiseerde builds mogelijk die worden geactiveerd door broncode-updates, updates van de basisafbeelding van een container of timers. Met basisimage-updatetriggers u bijvoorbeeld uw patchworkflow voor het patchen van uw besturingssysteem en toepassingsframework automatiseren, veilige omgevingen onderhouden terwijl u zich houdt aan de beginselen van onveranderlijke containers.
 
-## <a name="task-scenarios"></a>Taak scenario's
+## <a name="task-scenarios"></a>Taakscenario's
 
-ACR-taken bieden ondersteuning voor verschillende scenario's voor het maken en onderhouden van container installatie kopieën en andere artefacten. Zie de volgende secties in dit artikel voor meer informatie.
+ACR Tasks ondersteunt verschillende scenario's voor het maken en onderhouden van containerafbeeldingen en andere artefacten. Zie de volgende secties in dit artikel voor meer informatie.
 
-* **[Snelle taak](#quick-task)** : bouw en push één container installatie kopie naar een container register op aanvraag in azure, zonder dat hiervoor een lokale docker-engine moet worden geïnstalleerd. Denk `docker build`, `docker push` in de Cloud.
-* **Automatisch geactiveerde taken** : Schakel een of meer *Triggers* in om een installatie kopie samen te stellen.
-  * **[Activeren bij het bijwerken van de bron code](#trigger-task-on-source-code-update)** 
-  * **[Activeren bij basis installatie kopie-update](#automate-os-and-framework-patching)** 
-  * **[Activeren volgens een planning](#schedule-a-task)** 
-* **[Taken met meerdere stappen](#multi-step-tasks)** : Breid de build-and-push mogelijkheden van één installatie kopie uit van ACR-taken met meerdere stappen, op meerdere containers gebaseerde werk stromen. 
+* **[Snelle taak](#quick-task)** - Bouw en duw één containerafbeelding op aanvraag in Azure naar een containerregister, zonder dat u een lokale Docker Engine-installatie nodig hebt. Denk `docker build` `docker push` , in de cloud.
+* **Automatisch geactiveerde taken** : Schakel een of meer *triggers* in om een afbeelding te maken:
+  * **[Trigger bij broncode-update](#trigger-task-on-source-code-update)** 
+  * **[Trigger op basisafbeeldingsupdate](#automate-os-and-framework-patching)** 
+  * **[Trigger op een schema](#schedule-a-task)** 
+* **[Taak in meerdere stappen](#multi-step-tasks)** : breid de build-and-push-mogelijkheden voor meerdere afbeeldingen uit met workflows in meerdere stappen, meerdere containers. 
 
-Elke ACR-taak heeft een gekoppelde [broncode context](#context-locations) : de locatie van een set bron bestanden die wordt gebruikt om een container installatie kopie of ander artefact te bouwen. Voor beelden van contexten zijn een Git-opslag plaats of een lokaal bestands systeem.
+Elke ACR-taak heeft een bijbehorende [broncodecontext](#context-locations) - de locatie van een set bronbestanden die worden gebruikt om een containerafbeelding of ander artefact te bouwen. Voorbeeldcontexten zijn een Git-repository of een lokaal bestandssysteem.
 
-Taken kunnen ook gebruikmaken van [variabelen uitvoeren](container-registry-tasks-reference-yaml.md#run-variables), zodat u taak definities opnieuw kunt gebruiken en tags voor installatie kopieën en artefacten standaardisert.
+Taken kunnen ook profiteren van [runvariabelen,](container-registry-tasks-reference-yaml.md#run-variables)zodat u taakdefinities opnieuw gebruiken en tags voor afbeeldingen en artefacten standaardiseren.
 
 ## <a name="quick-task"></a>Snelle taak
 
-Het proces voor de duur van de binnenste cyclus, het iteratieproces voor het schrijven van code, het ontwikkelen en testen van uw toepassing voordat u een bron beheer uitvoert, is het begin van het beheer van de container levenscyclus.
+De inner-loop ontwikkelingscyclus, het iteratieve proces van het schrijven van code, het bouwen en testen van uw toepassing voordat u zich verbindt tot bronbeheer, is echt het begin van container lifecycle management.
 
-Voordat u uw eerste regel code doorvoert, kunt u met de [snelle taak](container-registry-tutorial-quick-task.md) functie van ACR-taken een geïntegreerde ontwikkel ervaring bieden door de build-installatie kopieën van de container te offloaden naar Azure. Met snelle taken kunt u uw geautomatiseerde build-definities controleren en mogelijke problemen ondervangen voordat u uw code doorvoert.
+Voordat u uw eerste regel code vastlegt, kan de [snelle taakfunctie](container-registry-tutorial-quick-task.md) van ACR Tasks een geïntegreerde ontwikkelingservaring bieden door uw containerimagebuilds naar Azure te ontladen. Met snelle taken u uw geautomatiseerde builddefinities verifiëren en potentiële problemen oplossen voordat u uw code ingaat.
 
-Met de vertrouwde `docker build`-indeling wordt met de opdracht [AZ ACR build][az-acr-build] in azure cli een [context](#context-locations) (de set te bouwen bestanden) gemaakt, wordt de ACR-taken verzonden en wordt standaard de ingebouwde installatie kopie naar het REGI ster gepusht na voltooiing.
+Met behulp `docker build` van de vertrouwde indeling neemt de opdracht [az acr build][az-acr-build] in de Azure CLI een [context](#context-locations) (de set bestanden die moeten worden gebouwd), stuurt deze ACR Tasks en duwt standaard de gebouwde afbeelding naar het register na voltooiing.
 
-Zie voor een inleiding de Snelstartgids voor het [maken en uitvoeren van een container installatie kopie](container-registry-quickstart-task-cli.md) in azure container Registry.  
+Zie voor een inleiding de snelle start voor [het maken en uitvoeren van een containerafbeelding](container-registry-quickstart-task-cli.md) in Azure Container Registry.  
 
-ACR-taken is ontworpen als een levens cyclus voor containers. U kunt bijvoorbeeld ACR-taken integreren in uw CI/CD-oplossing. Door de opdracht [AZ login][az-login] met een [Service-Principal][az-login-service-principal]uit te voeren, kan uw CI/cd-oplossing [AZ ACR build][az-acr-build] -opdrachten verzenden om installatie kopieën te starten.
+ACR Tasks is ontworpen als een primitieve containerlevenscyclus. Integreer bijvoorbeeld ACR Tasks in uw CI/CD-oplossing. Door [az login][az-login] uit te voeren met een [service principal,][az-login-service-principal]kan je CI/CD-oplossing dan az [acr build][az-acr-build] commando's geven om image builds af te trappen.
 
-Informatie over het gebruik van snelle taken in de eerste zelf studie over ACR-taken, [bouw container installatie kopieën in de Cloud met Azure container Registry taken](container-registry-tutorial-quick-task.md).
+Lees hoe u snelle taken gebruiken in de eerste zelfstudie van ACR-taken, [Containerafbeeldingen maken in de cloud met Azure Container Registry Tasks](container-registry-tutorial-quick-task.md).
 
 > [!TIP]
-> Als u een installatie kopie rechtstreeks vanuit de bron code wilt maken en pushen zonder Dockerfile, levert Azure Container Registry de opdracht [AZ ACR Pack build][az-acr-pack-build] (preview). Dit hulp programma bouwt en duwt een installatie kopie van de bron code van de toepassing met behulp van de [native Buildpacks](https://buildpacks.io/)van de Cloud.
+> Als u een afbeelding rechtstreeks vanuit de broncode wilt bouwen en pushen, zonder Dockerfile, biedt Azure Container Registry de opdracht [az acr pack build][az-acr-pack-build] (preview). Deze tool bouwt en duwt een afbeelding van de broncode van toepassingen met behulp van [Cloud Native Buildpacks.](https://buildpacks.io/)
 
-## <a name="trigger-task-on-source-code-update"></a>Taak activeren bij het bijwerken van de bron code
+## <a name="trigger-task-on-source-code-update"></a>Taak activeren bij broncode-update
 
-Een taak voor het maken van een container installatie kopie of een taken uit meerdere stappen activeren wanneer de code wordt vastgelegd, of een pull-aanvraag wordt gedaan of bijgewerkt naar een open bare of persoonlijke Git-opslag plaats in GitHub of Azure DevOps. Configureer bijvoorbeeld een build-taak met de Azure CLI-opdracht [AZ ACR Task Create][az-acr-task-create] door een Git-opslag plaats en optioneel een vertakking en Dockerfile op te geven. Wanneer uw team code in de opslag plaats bijwerkt, activeert een webhook met ACR-gemaakte taken een build van de container installatie kopie die is gedefinieerd in de opslag plaats. 
+Activeer een containerimagebuild of multi-step taak wanneer code is vastgelegd of een pull-aanvraag wordt gedaan of bijgewerkt, naar een openbare of private Git-opslagplaats in GitHub of Azure DevOps. Configureer bijvoorbeeld een buildtaak met de [opdracht Az ACR-taak van][az-acr-task-create] Azure CLI door een Git-repository op te geven en optioneel een branch en Dockerfile. Wanneer uw team code bijwerkt in de opslagplaats, activeert een webhook die door ACR Tasks is gemaakt, een build van de containerafbeelding die in de repo is gedefinieerd. 
 
-ACR-taken bieden ondersteuning voor de volgende triggers wanneer u een Git-opslag plaats instelt als de context van de taak:
+ACR-taken ondersteunt de volgende triggers wanneer u een Git repo instelt als context van de taak:
 
 | Trigger | Standaard ingeschakeld |
 | ------- | ------------------ |
 | Doorvoeren | Ja |
 | Pull-aanvraag | Nee |
 
-Als u een trigger voor het bijwerken van de bron code wilt configureren, moet u de taak een persoonlijk toegangs token (PAT) geven om de webhook in te stellen in de open bare of persoonlijke GitHub of Azure DevOps opslag plaats.
+Als u een trigger voor de broncodeupdate wilt configureren, moet u de taak een persoonlijk toegangstoken (PAT) verstrekken om de webhook in de openbare of private GitHub of Azure DevOps repo in te stellen.
 
 > [!NOTE]
-> Op dit moment bieden ACR-taken geen ondersteuning voor commit-of pull-aanvraag triggers in GitHub Enter prise opslag plaatsen.
+> Momenteel ondersteunt ACR Tasks geen commit- of pull-aanvraagtriggers in GitHub Enterprise-repo's.
 
-Meer informatie over het activeren van builds op basis van de bron code in de tweede zelf studie ACR-taken, het [automatiseren van container installatie kopieën met Azure container Registry taken](container-registry-tutorial-build-task.md).
+Meer informatie over het activeren van builds op broncodecommit in de tweede zelfstudie van ACR-taken, [Containerimagebuilds automatiseren met Azure Container Registry Tasks.](container-registry-tutorial-build-task.md)
 
-## <a name="automate-os-and-framework-patching"></a>Reparatie van besturings systemen en Framework automatiseren
+## <a name="automate-os-and-framework-patching"></a>Os- en frameworkpatching automatiseren
 
-De kracht van ACR taken om de werk stroom voor het bouwen van containers echt te verbeteren, is van de mogelijkheid om een update naar een *basis installatie kopie*te detecteren. Een functie van de meeste container installatie kopieën, een basis installatie kopie is een bovenliggende installatie kopie waarop een of meer installatie kopieën van toepassingen zijn gebaseerd. Basis installatie kopieën bevatten doorgaans het besturings systeem en soms toepassings raamwerken. 
+De kracht van ACR-taken om uw werkstroom voor containerbuild echt te verbeteren, komt voort uit de mogelijkheid om een update van een *basisafbeelding*te detecteren. Een functie van de meeste containerafbeeldingen, een basisafbeelding is een bovenliggende afbeelding waarop een of meer toepassingsafbeeldingen zijn gebaseerd. Basisafbeeldingen bevatten doorgaans het besturingssysteem en soms toepassingsframeworks. 
 
-U kunt een ACR-taak instellen om een afhankelijkheid van een basis installatie kopie bij te houden bij het opbouwen van een toepassings installatie kopie. Wanneer de bijgewerkte basis installatie kopie naar het REGI ster wordt gepusht of een basis installatie kopie is bijgewerkt in een open bare opslag plaats, zoals in docker hub, kunnen ACR-taken automatisch eventuele installatie kopieën van toepassingen maken op basis van het bestand.
-Met deze automatische detectie en het opnieuw samen stellen van ACR-taken bespaart u de tijd en inspanningen die normaal gesp roken nodig zijn voor het hand matig bijhouden en bijwerken van elke toepassings installatie kopie die verwijst naar de bijgewerkte basis installatie kopie.
+U een ACR-taak instellen om een afhankelijkheid van een basisafbeelding bij te houden wanneer deze een toepassingsafbeelding bouwt. Wanneer de bijgewerkte basisafbeelding naar uw register wordt gepusht of een basisafbeelding wordt bijgewerkt in een openbare repo, zoals in Docker Hub, kan ACR Tasks automatisch toepassingsafbeeldingen bouwen op basis daarvan.
+Met deze automatische detectie en wederopbouw bespaart ACR Tasks u de tijd en moeite die normaal gesproken nodig is om elke toepassingsafbeelding handmatig bij te houden en bij te werken die verwijst naar uw bijgewerkte basisafbeelding.
 
-Meer informatie over het [bijwerken van basis installatie kopieën](container-registry-tasks-base-images.md) voor ACR-taken. En lees hoe u een installatie kopie bouwt wanneer een basis installatie kopie wordt gepusht naar een container register in de zelf studie [container installatie kopieën automatiseren wanneer een basis installatie kopie wordt bijgewerkt in een Azure container Registry](container-registry-tutorial-base-image-update.md)
+Meer informatie over [basisimage-updatetriggers](container-registry-tasks-base-images.md) voor ACR-taken. En meer informatie over het activeren van een afbeeldingsopbouw wanneer een basisafbeelding naar een containerregister wordt gepusht in de zelfstudie [Automatiseer containerimagebuilds wanneer een basisafbeelding wordt bijgewerkt in een Azure-containerregister](container-registry-tutorial-base-image-update.md)
 
 ## <a name="schedule-a-task"></a>Een taak plannen
 
-U kunt een taak optioneel plannen door een of meer *Timer triggers* in te stellen wanneer u de taak maakt of bijwerkt. Het plannen van een taak is handig voor het uitvoeren van container werkbelastingen op een gedefinieerd schema, of het uitvoeren van onderhouds bewerkingen of tests op installatie kopieën die regel matig naar het REGI ster worden gepusht. Zie [een ACR-taak uitvoeren volgens een gedefinieerd schema](container-registry-tasks-scheduled.md)voor meer informatie.
+Plan optioneel een taak door een of meer *timertriggers* in te stellen wanneer u de taak maakt of bijwerkt. Het plannen van een taak is handig voor het uitvoeren van containerworkloads volgens een gedefinieerd schema of het uitvoeren van onderhoudsbewerkingen of tests op afbeeldingen die regelmatig naar uw register worden gepusht. Zie Een [ACR-taak uitvoeren volgens een gedefinieerd schema voor](container-registry-tasks-scheduled.md)meer informatie.
 
 ## <a name="multi-step-tasks"></a>Taken met meerdere stappen
 
-Taken met meerdere stappen bieden taak definitie en uitvoering op basis van een stap voor het bouwen, testen en bijwerken van container installatie kopieën in de Cloud. Taak stappen die in een [yaml-bestand](container-registry-tasks-reference-yaml.md) zijn gedefinieerd, geven afzonderlijke compilatie-en push bewerkingen voor container installatie kopieën of andere artefacten. Ze kunnen ook de uitvoering definiëren van een of meer containers, waarbij elke stap de container als uitvoeringsomgeving gebruikt.
+Taken in meerdere stappen bieden stapsgewijze taakdefinitie en -uitvoering voor het maken, testen en patchen van containerafbeeldingen in de cloud. Taakstappen die zijn gedefinieerd in een [YAML-bestand](container-registry-tasks-reference-yaml.md) specificeren afzonderlijke build- en pushbewerkingen voor containerafbeeldingen of andere artefacten. Ze kunnen ook de uitvoering definiëren van een of meer containers, waarbij elke stap de container als uitvoeringsomgeving gebruikt.
 
-U kunt bijvoorbeeld een taak met meerdere stappen maken waarmee het volgende wordt geautomatiseerd:
+U bijvoorbeeld een taak in meerdere stappen maken die het volgende automatiseert:
 
-1. Een installatie kopie voor een webtoepassing bouwen
-1. De Web Application-container uitvoeren
-1. Een test installatie kopie voor een webtoepassing bouwen
-1. Voer de test container voor webtoepassingen uit, waarmee tests worden uitgevoerd voor de actieve toepassings container
-1. Als de tests zijn geslaagd, bouwt u een helm-archief pakket voor grafieken op
-1. Een `helm upgrade` uitvoeren met het nieuwe helm-archief pakket voor grafieken
+1. Een afbeelding van een webtoepassing maken
+1. De webtoepassingscontainer uitvoeren
+1. Een testafbeelding voor webtoepassingen maken
+1. Voer de testcontainer voor webtoepassingen uit, die tests uitvoert met de lopende toepassingscontainer
+1. Als de tests slagen, bouwt u een Helm-archiefpakket
+1. Een `helm upgrade` pakket met behulp van het nieuwe helmdiagramarchief uitvoeren
 
-Met taken met meerdere stappen kunt u het bouwen, uitvoeren en testen van een afbeelding in meer samenstel bare stappen splitsen, met ondersteuning voor afhankelijkheden tussen verschillende stappen. Met taken met meerdere stappen in ACR-taken hebt u meer gedetailleerde controle over het bouwen, testen en OS-en Framework-patch werk stromen.
+Met taken in meerdere stappen u het gebouw, het uitvoeren en testen van een afbeelding splitsen in meer composable stappen, met ondersteuning voor afhankelijkheid tussen stappen. Met taken in meerdere stappen in ACR-taken hebt u meer gedetailleerde controle over werkstromen voor het maken, testen en bewerken van afbeeldingen en framework-opdrachten.
 
-Meer informatie over taken in meerdere stappen in de stappen voor het [bouwen, testen en patchen van taken uitvoeren in ACR-taken](container-registry-tasks-multi-step.md).
+Meer informatie over taken in meerdere stappen in Taken met meerdere stappen uitvoeren in Taken [met meerdere stappen uitvoeren in ACR-taken](container-registry-tasks-multi-step.md).
 
-## <a name="context-locations"></a>Context locaties
+## <a name="context-locations"></a>Contextlocaties
 
-De volgende tabel bevat enkele voor beelden van ondersteunde context locaties voor ACR-taken:
+In de volgende tabel vindt u enkele voorbeelden van ondersteunde contextlocaties voor ACR-taken:
 
-| Context locatie | Beschrijving | Voorbeeld |
+| Contextlocatie | Beschrijving | Voorbeeld |
 | ---------------- | ----------- | ------- |
-| Lokaal bestands systeem | Bestanden in een map op het lokale bestands systeem. | `/home/user/projects/myapp` |
-| Hoofd vertakking GitHub | Bestanden in de hoofd vertakking (of een andere standaard) van een open bare of persoonlijke GitHub-opslag plaats.  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub-vertakking | Specifieke vertakking van een open bare of particuliere GitHub-opslag plaats.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| Submap GitHub | Bestanden in een submap van een open bare of persoonlijke GitHub-opslag plaats. Voor beeld wordt een combi natie van een vertakking en submap opgegeven. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| GitHub door voeren | Specifieke door Voer in een open bare of persoonlijke GitHub-opslag plaats. Voor beeld toont een combi natie van een commit hash (SHA) en een specificatie van een submap. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
-| Submap voor Azure DevOps | Bestanden in een submap van een open bare of persoonlijke Azure-opslag plaats. Voor beeld wordt een combi natie van een specificatie van branch en submap weer gegeven. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
-| Externe tarball | Bestanden in een gecomprimeerd archief op een externe webserver. | `http://remoteserver/myapp.tar.gz` |
+| Lokaal bestandssysteem | Bestanden in een map op het lokale bestandssysteem. | `/home/user/projects/myapp` |
+| GitHub master branch | Bestanden binnen de hoofd -of andere standaardtak van een openbare of private GitHub-opslagplaats.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub-filiaal | Specifieke tak van een openbare of private GitHub repo.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub-submap | Bestanden in een submap in een openbare of private GitHub repo. Voorbeeld toont de combinatie van een branch en submap specificatie. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub commit | Specifieke commit in een openbare of private GitHub repo. Voorbeeld toont een combinatie van een commit hash (SHA) en submap specificatie. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
+| Submap Azure DevOps | Bestanden in een submap in een openbare of private Azure-repo. Voorbeeld toont een combinatie van branch en submap specificatie. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| Remote tarball | Bestanden in een gecomprimeerd archief op een externe webserver. | `http://remoteserver/myapp.tar.gz` |
 
 > [!NOTE]
-> Wanneer u een privé Git-opslag plaats als context voor een taak gebruikt, moet u een persoonlijk toegangs token (PAT) opgeven.
+> Wanneer u een privé-Git-repo gebruikt als context voor een taak, moet u een persoonlijk toegangstoken (PAT) verstrekken.
 
-## <a name="image-platforms"></a>Afbeeldings platforms
+## <a name="image-platforms"></a>Afbeeldingsplatforms
 
-Standaard bouwt ACR-taken installatie kopieën voor het Linux-besturings systeem en de amd64-architectuur. Geef het `--platform` label op om Windows-installatie kopieën of Linux-installatie kopieën voor andere architecturen te maken. Geef het besturings systeem en eventueel een ondersteunde architectuur op in de indeling van het besturings systeem/de architectuur (bijvoorbeeld `--platform Linux/arm`). Voor ARM-architecturen geeft u optioneel een variant op in de indeling OS/Architecture/variant (bijvoorbeeld `--platform Linux/arm64/v8`):
+Standaard bouwt ACR Tasks afbeeldingen voor het Linux OS en de amd64-architectuur. Geef `--platform` de tag op om Windows-afbeeldingen of Linux-afbeeldingen voor andere architecturen te bouwen. Geef het besturingssysteem op en eventueel een ondersteunde architectuur `--platform Linux/arm`in de OS/architectuurindeling (bijvoorbeeld). Voor ARM-architecturen geeft u optioneel een variant op in `--platform Linux/arm64/v8`OS/architectuur/variantformaat (bijvoorbeeld):
 
 | OS | Architectuur|
 | --- | ------- | 
-| Linux | amd64<br/>scherp<br/>arm64<br/>386 |
+| Linux | amd64<br/>arm<br/>arm64<br/>386 |
 | Windows | amd64 |
 
 ## <a name="view-task-output"></a>Taakuitvoer weergeven
 
-Elke taak wordt uitgevoerd, genereert een logboek uitvoer die u kunt inspecteren om te bepalen of de taak stappen zijn uitgevoerd. Wanneer u een taak hand matig start, wordt de logboek uitvoer voor de taak uitvoering naar de console gestreamd en ook opgeslagen om later op te halen. Wanneer een taak automatisch wordt geactiveerd, bijvoorbeeld door het door voeren van een bron code of een update van een basis installatie kopie, worden de taak Logboeken alleen opgeslagen. Bekijk de uitvoerings Logboeken in de Azure Portal of gebruik de opdracht [AZ ACR taak logs](/cli/azure/acr/task#az-acr-task-logs) .
+Elke taakrun genereert logboekuitvoer die u controleren om te bepalen of de taakstappen zijn uitgevoerd. Wanneer u een taak handmatig activeert, wordt de logboekuitvoer voor de taaktaak uitgevoerd naar de console gestreamd en ook opgeslagen voor later ophalen. Wanneer een taak automatisch wordt geactiveerd, bijvoorbeeld door een broncodecommit of een basisafbeeldingsupdate, worden taaklogboeken alleen opgeslagen. Bekijk de run logs in de Azure portal of gebruik de opdracht [az acr-taaklogboeken.](/cli/azure/acr/task#az-acr-task-logs)
 
-Meer informatie over het [weer geven en beheren van taak logboeken](container-registry-tasks-logs.md).
+Meer informatie over [het weergeven en beheren van taaklogboeken.](container-registry-tasks-logs.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u klaar bent voor het automatiseren van container installatie kopieën en onderhoud in de Cloud, raadpleegt u de [reeks zelf](container-registry-tutorial-quick-task.md)studies over ACR-taken.
+Wanneer u klaar bent om het bouwen en onderhoud van containerafbeeldingen in de cloud te automatiseren, raadpleegt u de [zelfstudiereeks ACR Tasks.](container-registry-tutorial-quick-task.md)
 
-Installeer eventueel de [docker-extensie voor Visual Studio code](https://code.visualstudio.com/docs/azure/docker) en de [Azure-account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) extensie om met uw Azure-container registers te werken. Pull-en push-installatie kopieën naar een Azure container Registry, of voer ACR-taken uit, allemaal in Visual Studio code.
+Installeer eventueel de [Docker-extensie voor Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) en de [Azure-accountextensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) om te werken met uw Azure-containerregisters. Afbeeldingen naar een Azure-containerregister trekken en pushen of ACR-taken uitvoeren, allemaal binnen Visual Studio Code.
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

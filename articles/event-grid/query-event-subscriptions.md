@@ -1,6 +1,6 @@
 ---
-title: Query's uitvoeren op Azure Event Grid abonnementen
-description: In dit artikel wordt beschreven hoe u Event Grid abonnementen in uw Azure-abonnement kunt weer geven. U kunt verschillende para meters opgeven op basis van het type abonnement.
+title: Azure-gebeurtenisrasterabonnementen opvragen
+description: In dit artikel wordt beschreven hoe u gebeurtenisrasterabonnementen in uw Azure-abonnement aanbieden. U geeft verschillende parameters op basis van het type abonnement.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721537"
 ---
-# <a name="query-event-grid-subscriptions"></a>Query's uitvoeren op Event Grid abonnementen 
+# <a name="query-event-grid-subscriptions"></a>Abonnement op querygebeurtenisraster 
 
-In dit artikel wordt beschreven hoe u de Event Grid-abonnementen in uw Azure-abonnement kunt weer geven. Wanneer u een query uitvoert op uw bestaande Event Grid-abonnementen, is het belang rijk dat u de verschillende soorten abonnementen begrijpt. U kunt verschillende para meters opgeven op basis van het type abonnement dat u wilt ophalen.
+In dit artikel wordt beschreven hoe u de gebeurtenisrasterabonnementen in uw Azure-abonnement weergeven. Wanneer u uw bestaande Event Grid-abonnementen opvraagt, is het belangrijk om inzicht te krijgen in de verschillende typen abonnementen. U geeft verschillende parameters op basis van het type abonnement dat u wilt krijgen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="resource-groups-and-azure-subscriptions"></a>Resource groepen en Azure-abonnementen
+## <a name="resource-groups-and-azure-subscriptions"></a>Brongroepen en Azure-abonnementen
 
-Azure-abonnementen en resource groepen zijn geen Azure-resources. Daarom hebben Event grid-abonnementen op resource groepen of Azure-abonnementen niet dezelfde eigenschappen als Event grid-abonnementen op Azure-resources. Event grid-abonnementen op resource groepen of Azure-abonnementen worden beschouwd als globaal.
+Azure-abonnementen en resourcegroepen zijn geen Azure-bronnen. Daarom hebben gebeurtenisrasterabonnementen op resourcegroepen of Azure-abonnementen niet dezelfde eigenschappen als gebeurtenisrasterabonnementen op Azure-bronnen. Gebeurtenisnetabonnementen op resourcegroepen of Azure-abonnementen worden als globaal beschouwd.
 
-Als u Event grid-abonnementen wilt ophalen voor een Azure-abonnement en de bijbehorende resource groepen, hoeft u geen para meters op te geven. Zorg ervoor dat u het Azure-abonnement hebt geselecteerd dat u wilt doorzoeken. In de volgende voor beelden worden geen Event grid-abonnementen voor aangepaste onderwerpen of Azure-resources weer gegeven.
+Als u gebeurtenisrasterabonnementen wilt krijgen voor een Azure-abonnement en de brongroepen, hoeft u geen parameters op te geven. Zorg ervoor dat u het Azure-abonnement hebt geselecteerd dat u wilt opvragen. In de volgende voorbeelden worden geen gebeurtenisrasterabonnementen voor aangepaste onderwerpen of Azure-bronnen toegevoegd.
 
 Gebruik voor Azure CLI:
 
@@ -40,7 +40,7 @@ Set-AzContext -Subscription "My Azure Subscription"
 Get-AzEventGridSubscription
 ```
 
-Als u Event grid-abonnementen wilt ophalen voor een Azure-abonnement, geeft u het onderwerp type **micro soft. resources. abonnementen**op.
+Als u gebeurtenisrasterabonnementen voor een Azure-abonnement wilt aanvragen, geeft u het onderwerptype **Microsoft.Resources.Subscriptions op**.
 
 Gebruik voor Azure CLI:
 
@@ -54,7 +54,7 @@ Gebruik voor PowerShell:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 ```
 
-Als u Event grid-abonnementen wilt ophalen voor alle resource groepen binnen een Azure-abonnement, geeft u het onderwerp type **micro soft. resources. ResourceGroups**op.
+Als u gebeurtenisrasterabonnementen wilt krijgen voor alle resourcegroepen binnen een Azure-abonnement, geeft u het onderwerptype **Microsoft.Resources.ResourceGroups op.**
 
 Gebruik voor Azure CLI:
 
@@ -68,7 +68,7 @@ Gebruik voor PowerShell:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 ```
 
-Als u Event grid-abonnementen wilt ophalen voor een opgegeven resource groep, geeft u de naam van de resource groep op als para meter.
+Als u gebeurtenisrasterabonnementen voor een bepaalde resourcegroep wilt krijgen, geeft u de naam van de resourcegroep op als parameter.
 
 Gebruik voor Azure CLI:
 
@@ -82,11 +82,11 @@ Gebruik voor PowerShell:
 Get-AzEventGridSubscription -ResourceGroupName myResourceGroup
 ```
 
-## <a name="custom-topics-and-azure-resources"></a>Aangepaste onderwerpen en Azure-resources
+## <a name="custom-topics-and-azure-resources"></a>Aangepaste onderwerpen en Azure-bronnen
 
-Aangepaste onderwerpen over Event grid zijn Azure-resources. Daarom zoekt u Event grid-abonnementen voor aangepaste onderwerpen en andere resources, zoals Blob Storage-account, op dezelfde manier. Als u Event grid-abonnementen voor aangepaste onderwerpen wilt ophalen, moet u para meters opgeven die de resource identificeren of de locatie van de resource identificeren. Het is niet mogelijk om op grote schaal een query uit te zoeken op Event grid-abonnementen voor resources in uw Azure-abonnement.
+Aangepaste onderwerpen van het gebeurtenisraster zijn Azure-bronnen. Daarom vraagt u op dezelfde manier gebeurtenisrasterabonnementen op voor aangepaste onderwerpen en andere bronnen, zoals blob-opslagaccount. Als u gebeurtenisrasterabonnementen voor aangepaste onderwerpen wilt krijgen, moet u parameters opgeven die de bron identificeren of de locatie van de resource identificeren. Het is niet mogelijk om in grote lijnen query-abonnementop gebeurtenisrasterabonnementen voor resources in uw Azure-abonnement.
 
-Als u Event grid-abonnementen voor aangepaste onderwerpen en andere resources op een locatie wilt ophalen, geeft u de naam van de locatie op.
+Geef de naam van de locatie op om gebeurtenisrasterabonnementen voor aangepaste onderwerpen en andere bronnen op een locatie op te nemen.
 
 Gebruik voor Azure CLI:
 
@@ -100,7 +100,7 @@ Gebruik voor PowerShell:
 Get-AzEventGridSubscription -Location westus2
 ```
 
-Als u abonnementen op aangepaste onderwerpen voor een locatie wilt ophalen, geeft u de locatie en het type onderwerp van **micro soft. EventGrid. topics**.
+Als u abonnementen wilt krijgen op aangepaste onderwerpen voor een locatie, geeft u de locatie en het onderwerptype **Microsoft.EventGrid.Topics op.**
 
 Gebruik voor Azure CLI:
 
@@ -114,7 +114,7 @@ Gebruik voor PowerShell:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
 ```
 
-Als u abonnementen voor opslag accounts voor een locatie wilt ophalen, geeft u de locatie en het type onderwerp van **micro soft. storage. Storage accounts**op.
+Als u abonnementen wilt krijgen op opslagaccounts voor een locatie, geeft u de locatie en het onderwerptype **Microsoft.Storage.StorageAccounts op.**
 
 Gebruik voor Azure CLI:
 
@@ -128,7 +128,7 @@ Gebruik voor PowerShell:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
 ```
 
-Als u Event grid-abonnementen voor een aangepast onderwerp wilt ophalen, geeft u de naam van het aangepaste onderwerp en de naam van de bijbehorende resource groep op.
+Als u gebeurtenisrasterabonnementen voor een aangepast onderwerp wilt krijgen, geeft u de naam van het aangepaste onderwerp en de naam van de brongroep op.
 
 Gebruik voor Azure CLI:
 
@@ -142,7 +142,7 @@ Gebruik voor PowerShell:
 Get-AzEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
 ```
 
-Als u Event grid-abonnementen voor een bepaalde resource wilt ophalen, geeft u de resource-ID op.
+Als u gebeurtenisrasterabonnementen voor een bepaalde resource wilt krijgen, geeft u de resource-id op.
 
 Gebruik voor Azure CLI:
 
@@ -160,6 +160,6 @@ Get-AzEventGridSubscription -ResourceId $resourceid
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Event grid aflevering van berichten en probeer het opnieuw](delivery-and-retry.md).
+* Voor informatie over het bezorgen en opnieuw proberen van [gebeurtenissen, het verzenden van het gebeurtenisrasterbericht en het opnieuw proberen](delivery-and-retry.md).
 * Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.
-* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.
+* Zie [Aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md)om snel aan de slag te gaan met gebeurtenisraster.

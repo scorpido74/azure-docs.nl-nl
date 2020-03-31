@@ -1,6 +1,6 @@
 ---
-title: Netwerk latentie van Azure virtual machine testen in een virtueel Azure-netwerk | Microsoft Docs
-description: Meer informatie over het testen van de netwerk latentie tussen virtuele machines van Azure in een virtueel netwerk
+title: Azure-netwerklatentie voor virtuele machines testen in een virtueel Azure-netwerk | Microsoft Documenten
+description: Meer informatie over het testen van netwerklatentie tussen virtuele Azure-machines in een virtueel netwerk
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,115 +15,115 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
 ms.openlocfilehash: 00efc2754948d53d4f80a6261dbd4041b358185b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74896363"
 ---
 # <a name="test-vm-network-latency"></a>Netwerklatentie van VM testen
 
-Meet de netwerk latentie van uw virtuele Azure-machine (VM) met een hulp programma dat is ontworpen voor de taak om de meest nauw keurige resultaten te krijgen. Openbaar beschik bare hulpprogram ma's zoals SockPerf (voor Linux) en latte. exe (voor Windows) kunnen netwerk latentie isoleren en meten terwijl andere typen latentie worden uitgesloten, zoals toepassings latentie. Deze hulpprogram ma's zijn gericht op het soort netwerk verkeer dat van invloed is op de prestaties van toepassingen (met name Transmission Control Protocol [TCP] en het UDP-verkeer (User Data gram Protocol). 
+Om de meest nauwkeurige resultaten te bereiken, meet u de netwerklatentie van uw Azure-virtuele machine (VM) met een tool die is ontworpen voor de taak. Openbaar beschikbare tools zoals SockPerf (voor Linux) en latte.exe (voor Windows) kunnen de netwerklatentie isoleren en meten, terwijl andere soorten latentie, zoals de latentie van toepassingen, worden uitgesloten. Deze tools richten zich op het soort netwerkverkeer dat van invloed is op de prestaties van toepassingen (namelijk Transmission Control Protocol [TCP] en User Datagram Protocol [UDP]-verkeer). 
 
-Andere veelgebruikte connectiviteits hulpprogramma's, zoals ping, kunnen latentie meten, maar de resultaten vertegenwoordigen mogelijk niet het netwerk verkeer dat wordt gebruikt in echte werk belastingen. Dit komt doordat de meeste van deze hulpprogram ma's gebruikmaken van de Internet Control Message Protocol (ICMP), die anders kan worden behandeld vanuit toepassings verkeer en waarvan de resultaten mogelijk niet van toepassing zijn op werk belastingen die gebruikmaken van TCP en UDP. 
+Andere veelvoorkomende connectiviteitstools, zoals Ping, kunnen latentie meten, maar de resultaten ervan vertegenwoordigen mogelijk niet het netwerkverkeer dat wordt gebruikt in echte workloads. Dat komt omdat de meeste van deze hulpprogramma's gebruik maken van het Internet Control Message Protocol (ICMP), dat anders kan worden behandeld dan toepassingsverkeer en waarvan de resultaten mogelijk niet van toepassing zijn op workloads die TCP en UDP gebruiken. 
 
-Voor een nauw keurige test van de netwerk latentie van de protocollen die worden gebruikt door de meeste toepassingen, SockPerf (voor Linux) en latte. exe (voor Windows), worden de meest relevante resultaten geproduceerd. Dit artikel heeft betrekking op beide hulpprogram ma's.
+Voor nauwkeurige netwerklatentietesten van de protocollen die door de meeste toepassingen worden gebruikt, produceren SockPerf (voor Linux) en latte.exe (voor Windows) de meest relevante resultaten. Dit artikel behandelt beide tools.
 
 ## <a name="overview"></a>Overzicht
 
-Met twee Vm's, een als afzender en een als ontvanger, maakt u een communicatie kanaal in twee richtingen. Met deze methode kunt u pakketten in beide richtingen verzenden en ontvangen en de RTT (round trip time) meten.
+Door twee VM's te gebruiken, één als afzender en één als ontvanger, maakt u een communicatiekanaal in twee richtingen. Met deze aanpak u pakketten in beide richtingen verzenden en ontvangen en de retourtijd (RTT) meten.
 
-U kunt deze methode gebruiken om de netwerk latentie tussen twee Vm's te meten of zelfs tussen twee fysieke computers. Latentie metingen kunnen nuttig zijn voor de volgende scenario's:
+U deze benadering gebruiken om de netwerklatentie tussen twee VM's of zelfs tussen twee fysieke computers te meten. Latentiemetingen kunnen nuttig zijn voor de volgende scenario's:
 
-- Stel een bench Mark in voor de netwerk latentie tussen de geïmplementeerde Vm's.
-- Vergelijk de effecten van wijzigingen in de netwerk latentie nadat de gerelateerde wijzigingen zijn aangebracht in:
-  - Besturings systeem (OS) of netwerk stack software, inclusief configuratie wijzigingen.
-  - Een VM-implementatie methode, zoals implementeren naar een beschikbaarheids zone of proximity placement Group (PPG).
-  - VM-eigenschappen, zoals versneld netwerken of grootte wijzigingen.
-  - Een virtueel netwerk, zoals wijzigingen in de route ring of het filteren.
+- Stel een benchmark vast voor netwerklatentie tussen de geïmplementeerde VM's.
+- Vergelijk de effecten van wijzigingen in netwerklatentie nadat gerelateerde wijzigingen zijn aangebracht in:
+  - Besturingssysteem (OS) of netwerkstacksoftware, inclusief configuratiewijzigingen.
+  - Een VM-implementatiemethode, zoals het implementeren naar een beschikbaarheidszone of een nabijheidsplaatsingsgroep (PPG).
+  - VM-eigenschappen, zoals Versnelde netwerken of groottewijzigingen.
+  - Een virtueel netwerk, zoals het routeren of filteren van wijzigingen.
 
-### <a name="tools-for-testing"></a>Hulpprogram ma's voor testen
-Om latentie te meten, hebt u twee verschillende hulp middelen:
+### <a name="tools-for-testing"></a>Hulpmiddelen voor het testen
+Als u de latentie wilt meten, hebt u twee verschillende gereedschapsopties:
 
-* Voor Windows-systemen: [latte. exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
-* Voor Linux-systemen: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
+* Voor Windows-systemen: [latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Voor Linux-gebaseerde systemen: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
-Met deze hulpprogram ma's kunt u ervoor zorgen dat alleen TCP-of UDP-Payload-leverings tijden worden gemeten en niet ICMP (ping) of andere pakket typen die niet worden gebruikt door toepassingen en niet van invloed zijn op de prestaties.
+Door deze hulpprogramma's te gebruiken, u ervoor zorgen dat alleen de levertijden van TCP- of UDP-payloadworden gemeten en niet ICMP (Ping) of andere pakkettypen die niet door toepassingen worden gebruikt en geen invloed hebben op hun prestaties.
 
 ### <a name="tips-for-creating-an-optimal-vm-configuration"></a>Tips voor het maken van een optimale VM-configuratie
 
-Houd bij het maken van de VM-configuratie de volgende aanbevelingen in acht:
+Houd bij het maken van uw VM-configuratie rekening met de volgende aanbevelingen:
 - Gebruik de nieuwste versie van Windows of Linux.
-- Versneld netwerken inschakelen voor de beste resultaten.
-- Implementeer Vm's met een [Azure proximity-plaatsings groep](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
-- Grotere Vm's doen over het algemeen beter dan kleinere Vm's.
+- Schakel Accelerated Networking in voor de beste resultaten.
+- Vm's implementeren met een [Azure-plaatsingsgroep voor nabijheid](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+- Grotere VM's presteren over het algemeen beter dan kleinere VM's.
 
 ### <a name="tips-for-analysis"></a>Tips voor analyse
 
-Houd bij het analyseren van test resultaten rekening met de volgende aanbevelingen:
+Houd bij het analyseren van testresultaten rekening met de volgende aanbevelingen:
 
-- Maak een vroege basis lijn, zodra de implementatie, configuratie en optimalisaties zijn voltooid.
-- Vergelijk nieuwe resultaten altijd met een basis lijn of, in andere gevallen, van de ene test naar de andere met beheerde wijzigingen.
+- Stel een basislijn vast in een vroeg stadium, zodra de implementatie, configuratie en optimalisaties zijn voltooid.
+- Vergelijk nieuwe resultaten altijd met een basislijn of, anders, van de ene test naar de andere met gecontroleerde wijzigingen.
 - Herhaal tests wanneer wijzigingen worden waargenomen of gepland.
 
 
-## <a name="test-vms-that-are-running-windows"></a>Vm's testen waarop Windows wordt uitgevoerd
+## <a name="test-vms-that-are-running-windows"></a>VM's testen waarop Windows wordt uitgevoerd
 
-### <a name="get-latteexe-onto-the-vms"></a>Latte. exe op de Vm's ophalen
+### <a name="get-latteexe-onto-the-vms"></a>Download latte.exe op de VM's
 
-Down load de [meest recente versie van latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b).
+Download de [nieuwste versie van latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b).
 
-Overweeg om latte. exe in een afzonderlijke map te plaatsen, zoals *c:\Tools*.
+Overweeg om latte.exe in een aparte map te plaatsen, zoals *c:\tools*.
 
-### <a name="allow-latteexe-through-windows-defender-firewall"></a>Latte. exe toestaan via Windows Defender firewall
+### <a name="allow-latteexe-through-windows-defender-firewall"></a>Latte.exe toestaan via Windows Defender Firewall
 
-Maak op de *ontvanger*een regel voor toestaan op Windows Defender firewall zodat het latte. exe-verkeer kan binnenkomen. Het is eenvoudig om het hele latte. exe-programma op naam toe te staan in plaats van specifieke TCP-poorten toestaan.
+Maak op de *ontvanger*een regel Toestaan op Windows Defender Firewall zodat het latte.exe-verkeer kan aankomen. Het is het gemakkelijkst om het hele latte.exe-programma op naam toe te staan in plaats van specifieke TCP-poorten toe te staan.
 
-Sta latte. exe toe via Windows Defender Firewall door de volgende opdracht uit te voeren:
+Sta latte.exe toe via Windows Defender Firewall door de volgende opdracht uit te voeren:
 
 ```cmd
 netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY
 ```
 
-Als u bijvoorbeeld latte. exe naar de map *c:\Tools* hebt gekopieerd, zou dit de opdracht zijn:
+Als u bijvoorbeeld latte.exe naar de map *c:\tools* hebt gekopieerd, is dit de opdracht:
 
 `netsh advfirewall firewall add rule program=c:\tools\latte.exe name="Latte" protocol=any dir=in action=allow enable=yes profile=ANY`
 
-### <a name="run-latency-tests"></a>Latentie tests uitvoeren
+### <a name="run-latency-tests"></a>Latentietests uitvoeren
 
-* Start latte. exe op de *ontvanger*(Voer de opdracht uit vanuit het CMD-venster, niet vanuit Power shell):
+* Op de *ontvanger*, start latte.exe (voer het uit het CMD-venster, niet van PowerShell):
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    Rond 65.000 iteraties is lang genoeg om representatieve resultaten te retour neren.
+    Ongeveer 65.000 iteraties is lang genoeg om representatieve resultaten terug te geven.
 
-    Elk beschikbaar poort nummer is prima.
+    Alle beschikbare poortnummer is prima.
 
-    Als de virtuele machine een IP-adres heeft van 10.0.0.4, ziet de opdracht er als volgt uit:
+    Als de VM een IP-adres van 10.0.0.4 heeft, ziet de opdracht er als volgt uit:
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* Start latte. exe op de *afzender*(Voer de opdracht uit vanuit het CMD-venster, niet vanuit Power shell):
+* Op de *afzender*, start latte.exe (voer het uit het CMD-venster, niet van PowerShell):
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    De resulterende opdracht is hetzelfde als op de ontvanger, behalve met de toevoeging van&nbsp; *-c* om aan te geven dat dit de *client*of *afzender*is:
+    De resulterende opdracht is hetzelfde als op de&nbsp;ontvanger, behalve met de toevoeging van *-c* om aan te geven dat dit de *client*is, of *afzender:*
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 
-Wacht op de resultaten. Afhankelijk van hoe ver de Vm's bestaan, kan het enkele minuten duren voordat de test is voltooid. Overweeg te beginnen met minder herhalingen om te testen op geslaagde pogingen voordat u langere tests uitvoert.
+Wacht op de resultaten. Afhankelijk van hoe ver uit elkaar de VM's zijn, kan de test een paar minuten duren om te voltooien. Overweeg om te beginnen met minder iteraties om te testen op succes voordat u langere tests uitvoert.
 
-## <a name="test-vms-that-are-running-linux"></a>Vm's testen waarop Linux wordt uitgevoerd
+## <a name="test-vms-that-are-running-linux"></a>VM's testen waarop Linux wordt uitgevoerd
 
-Gebruik [SockPerf](https://github.com/mellanox/sockperf)om virtuele machines met Linux te testen.
+Als u VM's wilt testen waarop Linux wordt uitgevoerd, gebruikt u [SockPerf](https://github.com/mellanox/sockperf).
 
-### <a name="install-sockperf-on-the-vms"></a>SockPerf installeren op de virtuele machines
+### <a name="install-sockperf-on-the-vms"></a>Installeer SockPerf op de VM's
 
-Voer op de virtuele Linux-machines, zowel de *afzender* als de *ontvanger*, de volgende opdrachten uit om SockPerf op de virtuele machines voor te bereiden. Er zijn opdrachten voor de primaire distributies.
+Op de Linux VM's, zowel *afzender* als *ontvanger,* voeren de volgende commando's uit om SockPerf op de VM's voor te bereiden. Commando's zijn voorzien voor de grote distro's.
 
 #### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>Voor Red Hat Enterprise Linux (RHEL)/CentOS
 
@@ -152,9 +152,9 @@ Voer de volgende opdrachten uit:
     sudo apt-get install -y autoconf
 ```
 
-#### <a name="for-all-distros"></a>Voor alle distributies
+#### <a name="for-all-distros"></a>Voor alle distro's
 
-Kopieer, compileer en installeer SockPerf aan de hand van de volgende stappen:
+Kopieer, compileer en installeer SockPerf volgens de volgende stappen:
 
 ```bash
 #Bash - all distros
@@ -172,35 +172,35 @@ make
 sudo make install
 ```
 
-### <a name="run-sockperf-on-the-vms"></a>SockPerf uitvoeren op de Vm's
+### <a name="run-sockperf-on-the-vms"></a>Run SockPerf op de VM's
 
-Nadat de SockPerf-installatie is voltooid, zijn de Vm's klaar om de latentie tests uit te voeren. 
+Nadat de SockPerf installatie is voltooid, zijn de VM's klaar om de latentietests uit te voeren. 
 
-Start eerst SockPerf op de *ontvanger*.
+Start eerst SockPerf op de *ontvanger.*
 
-Elk beschikbaar poort nummer is prima. In dit voor beeld gebruiken we poort 12345:
+Alle beschikbare poortnummer is prima. In dit voorbeeld gebruiken we poort 12345:
 
 ```bash
 #Server/Receiver - assumes server's IP is 10.0.0.4:
 sudo sockperf sr --tcp -i 10.0.0.4 -p 12345
 ```
 
-Nu de server luistert, kan de client beginnen met het verzenden van pakketten naar de server op de poort waarop deze luistert (in dit geval 12345).
+Nu de server luistert, kan de client beginnen met het verzenden van pakketten naar de server op de poort waarop hij luistert (in dit geval 12345).
 
-Ongeveer 100 seconden is lang genoeg om representatieve resultaten te retour neren, zoals wordt weer gegeven in het volgende voor beeld:
+Ongeveer 100 seconden is lang genoeg om representatieve resultaten terug te geven, zoals in het volgende voorbeeld wordt weergegeven:
 
 ```bash
 #Client/Sender - assumes server's IP is 10.0.0.4:
 sockperf ping-pong -i 10.0.0.4 --tcp -m 350 -t 101 -p 12345  --full-rtt
 ```
 
-Wacht op de resultaten. Afhankelijk van hoe ver de Vm's bestaan, is het aantal iteraties afhankelijk. Als u wilt testen op geslaagd voordat u langere tests uitvoert, kunt u overwegen om te beginnen met korte tests van ongeveer 5 seconden.
+Wacht op de resultaten. Afhankelijk van hoe ver de VM's uit elkaar liggen, zal het aantal iteraties variëren. Om te testen op succes voordat u langere tests uitvoert, u overwegen te beginnen met kortere tests van ongeveer 5 seconden.
 
-In dit SockPerf-voor beeld wordt een 350-byte bericht grootte gebruikt. Dit is normaal voor een gemiddeld pakket. U kunt de grootte verg Roten of verkleinen om de resultaten nauw keuriger weer te geven die op uw Vm's worden uitgevoerd.
+In dit voorbeeld SockPerf wordt een berichtgrootte van 350 byte gebruikt, wat typisch is voor een gemiddeld pakket. U de grootte hoger of lager aanpassen om resultaten te bereiken die nauwkeuriger de werkbelasting weergeven die op uw VM's wordt uitgevoerd.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Verbeter de latentie met een [plaatsings groep voor Azure nabijheid](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
-* Meer informatie over het [optimaliseren van netwerken voor vm's](../virtual-network/virtual-network-optimize-network-bandwidth.md) voor uw scenario.
-* Meer informatie over [hoe band breedte wordt toegewezen aan virtuele machines](../virtual-network/virtual-machine-network-throughput.md).
-* Zie [Veelgestelde vragen over Azure Virtual Network](../virtual-network/virtual-networks-faq.md)voor meer informatie.
+* De latentie verbeteren met een [Azure-plaatsingsgroep](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)voor nabijheid .
+* Meer informatie over het [optimaliseren van netwerken voor VM's](../virtual-network/virtual-network-optimize-network-bandwidth.md) voor uw scenario.
+* Lees [hoe bandbreedte wordt toegewezen aan virtuele machines.](../virtual-network/virtual-machine-network-throughput.md)
+* Zie [Veelgestelde vragen over het Virtuele Azure-netwerk](../virtual-network/virtual-networks-faq.md)van Azure .

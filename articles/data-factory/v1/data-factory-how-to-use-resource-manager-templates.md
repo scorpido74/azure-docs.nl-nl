@@ -1,6 +1,6 @@
 ---
-title: Resource Manager-sjablonen gebruiken in Data Factory
-description: Meer informatie over het maken en gebruiken van Azure Resource Manager sjablonen voor het maken van Data Factory entiteiten.
+title: Resourcebeheersjablonen gebruiken in Gegevensfabriek
+description: Meer informatie over het maken en gebruiken van Azure Resource Manager-sjablonen om entiteiten in gegevensfabriek te maken.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,48 +12,48 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972861"
 ---
-# <a name="use-templates-to-create-azure-data-factory-entities"></a>Sjablonen gebruiken om Azure Data Factory entiteiten te maken
+# <a name="use-templates-to-create-azure-data-factory-entities"></a>Sjablonen gebruiken om Entiteiten van Azure Data Factory te maken
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Data Factory. 
 
 ## <a name="overview"></a>Overzicht
-Bij het gebruik van Azure Data Factory voor uw behoeften op het gebied van gegevens integratie, kunt u het hetzelfde patroon gebruiken voor verschillende omgevingen, of dezelfde taak herhaaldelijk in dezelfde oplossing implementeren. Met sjablonen kunt u deze scenario's op een eenvoudige manier implementeren en beheren. Sjablonen in Azure Data Factory zijn ideaal voor scenario's waarbij herbruikbaarheid en herhalingen betrokken zijn.
+Tijdens het gebruik van Azure Data Factory voor uw behoeften op het gebied van gegevensintegratie, u merken dat u hetzelfde patroon in verschillende omgevingen hergebruikt of dezelfde taak herhaaldelijk implementeert binnen dezelfde oplossing. Sjablonen helpen u deze scenario's eenvoudig te implementeren en te beheren. Sjablonen in Azure Data Factory zijn ideaal voor scenario's die herbruikbaarheid en herhaling inhouden.
 
-Denk na over de situatie waarin een organisatie tien productie bedrijven wereld wijd heeft. De logboeken van elke fabriek worden opgeslagen in een afzonderlijke on-premises SQL Server-Data Base. Het bedrijf wil één data warehouse in de Cloud bouwen voor ad-hoc-analyses. Het wil ook dezelfde logica maar verschillende configuraties hebben voor ontwikkelings-, test-en productie omgevingen.
+Denk aan de situatie waarin een organisatie heeft 10 fabrieken over de hele wereld. De logboeken van elke installatie worden opgeslagen in een afzonderlijke on-premises SQL Server-database. Het bedrijf wil één datawarehouse bouwen in de cloud voor ad hoc analytics. Het wil ook dezelfde logica hebben, maar verschillende configuraties voor ontwikkelings-, test- en productieomgevingen.
 
-In dit geval moet een taak in dezelfde omgeving worden herhaald, maar met verschillende waarden voor de 10 gegevens fabrieken voor elke fabriek. In feite is **herhaling** aanwezig. Sjabloon staat de abstractie van deze algemene stroom (dat wil zeggen, pijp lijnen met dezelfde activiteiten in elke data factory) toe, maar gebruikt een apart parameter bestand voor elke productie-fabriek.
+In dit geval moet een taak worden herhaald binnen dezelfde omgeving, maar met verschillende waarden in de 10 datafabrieken voor elke productie-installatie. In feite is **herhaling** aanwezig. Templating maakt de abstractie van deze generieke stroom mogelijk (dat wil zeggen pijpleidingen met dezelfde activiteiten in elke gegevensfabriek), maar gebruikt een afzonderlijk parameterbestand voor elke productie-installatie.
 
-Bovendien kunnen sjablonen, aangezien de organisatie deze 10 gegevens fabrieken meermaals wil implementeren in verschillende omgevingen, gebruikmaken van deze **herbruikbaarheid** door gebruik te maken van afzonderlijke parameter bestanden voor ontwikkelings-, test-en productie omgevingen.
+Bovendien, omdat de organisatie deze 10 datafabrieken meerdere keren in verschillende omgevingen wil implementeren, kunnen sjablonen deze **herbruikbaarheid** gebruiken door gebruik te maken van afzonderlijke parameterbestanden voor ontwikkelings-, test- en productieomgevingen.
 
-## <a name="templating-with-azure-resource-manager"></a>Sjabloon met Azure Resource Manager
-[Azure Resource Manager sjablonen](../../azure-resource-manager/templates/overview.md) zijn een uitstekende manier om sjabloon in azure Data Factory te krijgen. Resource Manager-sjablonen definiëren de infra structuur en configuratie van uw Azure-oplossing via een JSON-bestand. Omdat Azure Resource Manager sjablonen met alle/de meeste Azure-Services werken, kan deze veel worden gebruikt om eenvoudig alle resources van uw Azure-assets te beheren. Zie [Azure Resource Manager sjablonen ontwerpen](../../azure-resource-manager/templates/template-syntax.md) voor meer informatie over de Resource Manager-sjablonen in het algemeen.
+## <a name="templating-with-azure-resource-manager"></a>Templating met Azure Resource Manager
+[Azure Resource Manager-sjablonen](../../azure-resource-manager/templates/overview.md) zijn een geweldige manier om templating in Azure Data Factory te bereiken. Resourcebeheersjablonen definiëren de infrastructuur en configuratie van uw Azure-oplossing via een JSON-bestand. Omdat Azure Resource Manager-sjablonen werken met alle/de meeste Azure-services, kan deze op grote schaal worden gebruikt om eenvoudig alle resources van uw Azure-assets te beheren. Zie [Sjablonen voor Azure Resource Manager ontwerpen](../../azure-resource-manager/templates/template-syntax.md) voor meer informatie over de Resource Manager-sjablonen in het algemeen.
 
-## <a name="tutorials"></a>Zelfstudie
-Raadpleeg de volgende zelf studies voor stapsgewijze instructies voor het maken van Data Factory entiteiten met behulp van Resource Manager-sjablonen:
+## <a name="tutorials"></a>Zelfstudies
+Zie de volgende zelfstudies voor stapsgewijze instructies om entiteiten in gegevensfabriek te maken met behulp van Resource Manager-sjablonen:
 
-* [Zelf studie: een pijp lijn maken om gegevens te kopiëren met behulp van Azure Resource Manager sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [Zelf studie: een pijp lijn maken voor het verwerken van gegevens met behulp van Azure Resource Manager sjabloon](data-factory-build-your-first-pipeline.md)
+* [Zelfstudie: Een pijplijn maken om gegevens te kopiëren met de sjabloon Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [Zelfstudie: Een pijplijn maken om gegevens te verwerken met de sjabloon Azure Resource Manager](data-factory-build-your-first-pipeline.md)
 
-## <a name="data-factory-templates-on-github"></a>Data Factory sjablonen op GitHub
-Bekijk de volgende Azure Quick Start-sjablonen op GitHub:
+## <a name="data-factory-templates-on-github"></a>Gegevensfabrieksjablonen op GitHub
+Bekijk de volgende Azure-sjablonen voor snel starten op GitHub:
 
-* [Een gegevensfactory maken voor het kopiëren van gegevens van Azure Blob Storage naar Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
-* [Een gegevensfactory maken met hive-activiteit in een Azure HDInsight-cluster](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
-* [Een gegevensfactory maken voor het kopiëren van gegevens uit Sales Force naar Azure-blobs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
-* [Een gegevensfactory maken die activiteiten koppelt: kopieert gegevens van een FTP-server naar Azure-blobs, roept een Hive-script op een HDInsight-cluster op aanvraag om de gegevens te transformeren en kopieert resultaat naar Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
+* [Een gegevensfabriek maken om gegevens uit Azure Blob Storage naar Azure SQL-database te kopiëren](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
+* [Een gegevensfabriek maken met Hive-activiteit op azure HDInsight-cluster](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
+* [Een gegevensfabriek maken om gegevens van Salesforce naar Azure Blobs te kopiëren](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
+* [Een gegevensfabriek maken die activiteiten ketent: kopieert gegevens van een FTP-server naar Azure Blobs, roept een hivescript op een on-demand HDInsight-cluster om de gegevens te transformeren en kopieert het resultaat naar Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-U kunt uw Azure Data Factory sjablonen gratis delen in [Azure Quick Start](https://azure.microsoft.com/documentation/templates/). Raadpleeg de [bijdrage gids](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) bij het ontwikkelen van sjablonen die kunnen worden gedeeld via deze opslag plaats.
+Voel je vrij om uw Azure Data Factory-sjablonen te delen bij [Azure Quick start.](https://azure.microsoft.com/documentation/templates/) Raadpleeg de [bijdragegids](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) tijdens het ontwikkelen van sjablonen die via deze repository kunnen worden gedeeld.
 
-De volgende secties bevatten informatie over het definiëren van Data Factory resources in een resource manager-sjabloon.
+In de volgende secties vindt u informatie over het definiëren van gegevensfabrieksbronnen in een resourcemanagersjabloon.
 
-## <a name="defining-data-factory-resources-in-templates"></a>Data Factory resources in sjablonen definiëren
-De sjabloon op het hoogste niveau voor het definiëren van een data factory is:
+## <a name="defining-data-factory-resources-in-templates"></a>Gegevensfabriekresources definiëren in sjablonen
+De sjabloon op het hoogste niveau voor het definiëren van een gegevensfabriek is:
 
 ```JSON
 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -93,7 +93,7 @@ U definieert een gegevensfactory in de Resource Manager-sjabloon zoals in het vo
     "location": "East US"
 }
 ```
-De dataFactoryName wordt als volgt gedefinieerd in ' variabelen ':
+De dataFactoryName wordt gedefinieerd in "variabelen" als:
 
 ```JSON
 "dataFactoryName": "[concat('<myDataFactoryName>', uniqueString(resourceGroup().id))]",
@@ -111,9 +111,9 @@ De dataFactoryName wordt als volgt gedefinieerd in ' variabelen ':
 }
 ```
 
-Zie [gekoppelde](data-factory-azure-blob-connector.md#azure-storage-linked-service) Services voor opslag of [gekoppelde reken](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) service voor meer informatie over de JSON-eigenschappen voor de specifieke gekoppelde service die u wilt implementeren. De para meter ' dependsOn ' geeft de naam van de bijbehorende data factory. Een voor beeld van het definiëren van een gekoppelde service voor Azure Storage wordt weer gegeven in de volgende JSON-definitie:
+Zie [Storage Linked Service](data-factory-azure-blob-connector.md#azure-storage-linked-service) of Compute Linked [Services](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) voor meer informatie over de JSON-eigenschappen voor de specifieke gekoppelde service die u wilt implementeren. De parameter 'dependsOn' geeft de naam van de bijbehorende gegevensfabriek aan. Een voorbeeld van het definiëren van een gekoppelde service voor Azure Storage wordt weergegeven in de volgende JSON-definitie:
 
-### <a name="define-datasets"></a>Gegevens sets definiëren
+### <a name="define-datasets"></a>Gegevenssets definiëren
 
 ```JSON
 "type": "datasets",
@@ -127,7 +127,7 @@ Zie [gekoppelde](data-factory-azure-blob-connector.md#azure-storage-linked-servi
     ...
 }
 ```
-Raadpleeg de [ondersteunde gegevens archieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor meer informatie over de JSON-eigenschappen voor het specifieke type gegevensset dat u wilt implementeren. Houd er rekening mee dat de para meter ' dependsOn ' de naam van de bijbehorende data factory en de gekoppelde opslag service bevat. Een voor beeld van het definiëren van het type gegevensset van Azure Blob-opslag wordt weer gegeven in de volgende JSON-definitie:
+Raadpleeg [Ondersteunde gegevensarchieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor meer informatie over de JSON-eigenschappen voor het specifieke gegevenssettype dat u wilt implementeren. Let op: de parameter 'dependsOn' geeft de naam op van de bijbehorende gegevensfabriek en opslaggekoppelde service. Een voorbeeld van het definiëren van het type Azure blob-opslag wordt weergegeven in de volgende JSON-definitie:
 
 ```JSON
 "type": "datasets",
@@ -153,7 +153,7 @@ Raadpleeg de [ondersteunde gegevens archieven](data-factory-data-movement-activi
 }
 ```
 
-### <a name="define-pipelines"></a>Pijp lijnen definiëren
+### <a name="define-pipelines"></a>Pijplijnen definiëren
 
 ```JSON
 "type": "dataPipelines",
@@ -173,7 +173,7 @@ Raadpleeg de [ondersteunde gegevens archieven](data-factory-data-movement-activi
 }
 ```
 
-Raadpleeg de [definitie van pijp lijnen](data-factory-create-pipelines.md#pipeline-json) voor meer informatie over de JSON-eigenschappen voor het definiëren van de specifieke pijp lijn en activiteiten die u wilt implementeren. Houd er rekening mee dat de para meter ' dependsOn ' de naam van de data factory bevat en alle bijbehorende gekoppelde services of gegevens sets. Een voor beeld van een pijp lijn waarmee gegevens worden gekopieerd van Azure-Blob Storage naar Azure SQL Database wordt weer gegeven in het volgende JSON-code fragment:
+Raadpleeg [het definiëren van pijplijnen](data-factory-create-pipelines.md#pipeline-json) voor meer informatie over de JSON-eigenschappen voor het definiëren van de specifieke pijplijn en activiteiten die u wilt implementeren. Let op de parameter 'dependsOn' geeft de naam van de gegevensfabriek en de bijbehorende gekoppelde services of gegevenssets op. In het volgende JSON-fragment wordt een voorbeeld van een pijplijn weergegeven die gegevens kopieert van Azure Blob Storage naar Azure SQL Database:
 
 ```JSON
 "type": "datapipelines",
@@ -227,13 +227,13 @@ Raadpleeg de [definitie van pijp lijnen](data-factory-create-pipelines.md#pipeli
     "end": "2016-10-04T00:00:00Z"
 }
 ```
-## <a name="parameterizing-data-factory-template"></a>Parameterizing-sjabloon Data Factory
-Zie [Aanbevolen procedures voor het maken van Azure Resource Manager sjablonen](../../azure-resource-manager/resource-manager-template-best-practices.md)voor best practices voor parameterizing. Over het algemeen moet het parameter gebruik worden geminimaliseerd, met name als er variabelen kunnen worden gebruikt. Geef alleen para meters op in de volgende scenario's:
+## <a name="parameterizing-data-factory-template"></a>Sjabloon Gegevensfabriek parameteriseren
+Zie [Aanbevolen procedures voor het maken van Azure Resource Manager-sjablonen voor](../../azure-resource-manager/resource-manager-template-best-practices.md)aanbevolen procedures voor aanbevolen procedures. In het algemeen moet het gebruik van parameters worden geminimaliseerd, vooral als variabelen in plaats daarvan kunnen worden gebruikt. Geef alleen parameters op in de volgende scenario's:
 
-* Instellingen variëren per omgeving (bijvoorbeeld: ontwikkeling, testen en productie)
-* Geheimen (zoals wacht woorden)
+* Instellingen verschillen per omgeving (bijvoorbeeld ontwikkeling, test en productie)
+* Geheimen (zoals wachtwoorden)
 
-Als u geheimen van [Azure Key Vault](../../key-vault/key-vault-overview.md) moet halen wanneer u Azure Data Factory entiteiten implementeert met behulp van sjablonen, geeft u de **sleutel kluis** en **geheime naam** op, zoals wordt weer gegeven in het volgende voor beeld:
+Als u geheimen uit [Azure Key Vault](../../key-vault/key-vault-overview.md) moet halen bij het implementeren van Azure Data Factory-entiteiten met behulp van sjablonen, geeft u de **sleutelkluis** en **de geheime naam** op zoals weergegeven in het volgende voorbeeld:
 
 ```JSON
 "parameters": {
@@ -250,6 +250,6 @@ Als u geheimen van [Azure Key Vault](../../key-vault/key-vault-overview.md) moet
 ```
 
 > [!NOTE]
-> Tijdens het exporteren van sjablonen voor bestaande gegevens fabrieken wordt momenteel nog niet ondersteund.
+> Hoewel het exporteren van sjablonen voor bestaande gegevensfabrieken momenteel nog niet wordt ondersteund, is het in de maak.
 >
 >

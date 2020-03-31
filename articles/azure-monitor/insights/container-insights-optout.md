@@ -1,43 +1,43 @@
 ---
-title: Hoe Stop bewaking Your Azure Kubernetes Service-cluster | Microsoft Docs
-description: Dit artikel wordt beschreven hoe u kunt niet meer controleren van uw Azure-AKS-cluster met Azure Monitor voor containers.
+title: Het bewaken van uw Azure Kubernetes Service-cluster stoppen | Microsoft Documenten
+description: In dit artikel wordt beschreven hoe u de bewaking van uw Azure AKS-cluster met Azure Monitor voor containers stopzetten.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275254"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Stoppen met het controleren van uw Azure Kubernetes Service (AKS) met Azure Monitor voor containers
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Stoppen met controleren van Azure Kubernetes Service (AKS) met Azure Monitor voor containers
 
-Nadat u de bewaking van uw AKS-cluster hebt ingeschakeld, kunt u de bewaking van het cluster als u besluit dat u niet meer om te controleren, wilt stoppen. Dit artikel wordt beschreven hoe u dit doen met de Azure CLI of met de opgegeven Azure Resource Manager-sjablonen.  
+Nadat u de bewaking van uw AKS-cluster hebt ingeschakeld, u stoppen met het bewaken van het cluster als u besluit dat u het niet langer wilt controleren. In dit artikel ziet u hoe u dit uitvoeren met de Azure CLI of met de meegeleverde Azure Resource Manager-sjablonen.  
 
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 
-Gebruik de opdracht [AZ AKS Disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) om Azure monitor voor containers uit te scha kelen. Met de opdracht wordt de agent uit de cluster knooppunten verwijderd, wordt de oplossing niet verwijderd of worden de gegevens die al zijn verzameld en opgeslagen in uw Azure Monitor-resource.  
+Gebruik de opdracht [az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) om Azure Monitor uit te schakelen voor containers. De opdracht verwijdert de agent uit de clusterknooppunten, hiermee wordt de oplossing of de gegevens die al zijn verzameld en opgeslagen in uw Azure Monitor-bron niet verwijderd.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
-Zie [bewaking inschakelen met Azure cli](container-insights-enable-new-cluster.md#enable-using-azure-cli)om de bewaking van uw cluster weer in te scha kelen.
+Zie Bewaking inschakelen met Azure [CLI](container-insights-enable-new-cluster.md#enable-using-azure-cli)als u de bewaking voor uw cluster opnieuw wilt inschakelen.
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
-Gegeven worden twee Azure Resource Manager-sjabloon voor de ondersteuning van de resources van de oplossing consistent en herhaaldelijk in de resourcegroep te verwijderen. Een JSON-sjabloon waarmee de configuratie wordt opgegeven voor het stoppen van de bewaking en de andere bevat parameter waarden die u configureert om de AKS-cluster resource-ID en de resource groep op te geven waarin het cluster is geïmplementeerd.
+Provided are two Azure Resource Manager template to support removing the solution resources consistent and repeatedly in your resource group. Een daarvan is een JSON-sjabloon waarin de configuratie wordt opgegeven om de bewaking te stoppen en de andere parameterwaarden die u configureert om de AKS-clusterbron-id en de brongroep op te geven waarin het cluster is geïmplementeerd.
 
-Als u niet bekend met het concept bent van het implementeren van resources met behulp van een sjabloon, Zie:
+Zie als u niet bekend bent met het concept van het implementeren van resources met behulp van een sjabloon:
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
+* [Resources implementeren met Resource Manager-sjablonen en de Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
->De sjabloon moet worden geïmplementeerd in dezelfde resource groep van het cluster. Als u andere eigenschappen of invoeg toepassingen weglaat wanneer u deze sjabloon gebruikt, kan dit leiden tot verwijdering van het cluster. Bijvoorbeeld *enableRBAC* voor RBAC-beleid dat is geïmplementeerd in uw cluster of *aksResourceTagValues* als er labels zijn opgegeven voor het AKS-cluster.  
+>De sjabloon moet worden geïmplementeerd in dezelfde resourcegroep van het cluster. Als u andere eigenschappen of invoegtoepassingen weglaat wanneer u deze sjabloon gebruikt, kan dit ertoe leiden dat deze als volgt wordt verwijderd uit het cluster. Schakel bijvoorbeeld *RBAC* in voor RBAC-beleid dat in uw cluster is geïmplementeerd of *aksResourceTagValues* als tags zijn opgegeven voor het AKS-cluster.  
 >
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet worden uitgevoerd van Azure CLI versie 2.0.27 of hoger. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u ervoor kiest de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer uit om `az --version`uw versie te identificeren. Zie [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)installeren als u de Azure CLI moet installeren of upgraden.
 
 ### <a name="create-template"></a>Sjabloon maken
 
@@ -89,7 +89,7 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
     }
     ```
 
-2. Sla dit bestand op als **OptOutTemplate. json** naar een lokale map.
+2. Sla dit bestand op als **OptOutTemplate.json** in een lokale map.
 
 3. Plak de volgende JSON-syntaxis in het bestand:
 
@@ -115,21 +115,21 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
     }
     ```
 
-4. Bewerk de waarden voor **aksResourceId** en **aksResourceLocation** met behulp van de waarden van het AKS-cluster, dat u kunt vinden op de pagina **Eigenschappen** voor het geselecteerde cluster.
+4. Bewerk de waarden voor **aksResourceId** en **aksResourceLocation** met behulp van de waarden van het AKS-cluster, die u vinden op de pagina **Eigenschappen** voor het geselecteerde cluster.
 
-    ![De eigenschappenpagina van container](media/container-insights-optout/container-properties-page.png)
+    ![Pagina Containereigenschappen](media/container-insights-optout/container-properties-page.png)
 
-    Terwijl u zich op de pagina **Eigenschappen** bevindt, kopieert u ook de **resource-id van de werk ruimte**. Deze waarde is vereist als u besluit dat u wilt verwijderen van de Log Analytics-werkruimte later opnieuw. Verwijderen van de Log Analytics-werkruimte wordt niet uitgevoerd als onderdeel van dit proces.
+    Kopieer ook de **werkruimtebron-id**op de pagina **Eigenschappen** . Deze waarde is vereist als u besluit dat u de werkruimte Log Analytics later wilt verwijderen. Het verwijderen van de werkruimte Log Analytics wordt niet uitgevoerd als onderdeel van dit proces.
 
-    Bewerk de waarden voor **aksResourceTagValues** zodat deze overeenkomen met de bestaande label waarden die zijn opgegeven voor het AKS-cluster.
+    Bewerk de waarden voor **aksResourceTagValues** die overeenkomen met de bestaande tagwaarden die zijn opgegeven voor het AKS-cluster.
 
-5. Sla dit bestand op als **OptOutParam. json** naar een lokale map.
+5. Sla dit bestand op als **OptOutParam.json** in een lokale map.
 
 6. U kunt deze sjabloon nu implementeren.
 
-### <a name="remove-the-solution-using-azure-cli"></a>Verwijderen van de oplossing met behulp van Azure CLI
+### <a name="remove-the-solution-using-azure-cli"></a>De oplossing verwijderen met Azure CLI
 
-De volgende opdracht uit met Azure CLI op Linux te verwijderen van de oplossing en het opschonen van de configuratie van uw AKS-cluster worden uitgevoerd.
+Voer de volgende opdracht uit met Azure CLI op Linux om de oplossing te verwijderen en de configuratie op uw AKS-cluster op te schonen.
 
 ```azurecli
 az login   
@@ -137,17 +137,17 @@ az account set --subscription "Subscription Name"
 az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
-Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt een bericht dat lijkt op de volgende mogelijkheden van het resultaat geretourneerd:
+Het kan enkele minuten duren voordat de configuratiewijziging is voltooid. Wanneer het is voltooid, wordt een bericht dat vergelijkbaar is met het volgende dat het resultaat bevat, geretourneerd:
 
 ```output
 ProvisioningState       : Succeeded
 ```
 
-### <a name="remove-the-solution-using-powershell"></a>Verwijderen van de oplossing met behulp van PowerShell
+### <a name="remove-the-solution-using-powershell"></a>De oplossing verwijderen met PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Voer de volgende PowerShell-opdrachten in de map met de sjabloon voor het verwijderen van de oplossing en het opschonen van de configuratie van uw AKS-cluster.    
+Voer de volgende PowerShell-opdrachten uit in de map met de sjabloon om de oplossing te verwijderen en de configuratie uit uw AKS-cluster op te schonen.    
 
 ```powershell
 Connect-AzAccount
@@ -155,7 +155,7 @@ Select-AzSubscription -SubscriptionName <yourSubscriptionName>
 New-AzResourceGroupDeployment -Name opt-out -ResourceGroupName <ResourceGroupName> -TemplateFile .\OptOutTemplate.json -TemplateParameterFile .\OptOutParam.json
 ```
 
-Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt een bericht dat lijkt op de volgende mogelijkheden van het resultaat geretourneerd:
+Het kan enkele minuten duren voordat de configuratiewijziging is voltooid. Wanneer het is voltooid, wordt een bericht dat vergelijkbaar is met het volgende dat het resultaat bevat, geretourneerd:
 
 ```output
 ProvisioningState       : Succeeded
@@ -164,4 +164,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als de werkruimte alleen ter ondersteuning van de bewaking van het cluster is gemaakt en deze niet meer nodig hebt, hebt u deze handmatig te verwijderen. Als u niet bekend bent met het verwijderen van een werk ruimte, raadpleegt u [een Azure log Analytics-werk ruimte verwijderen met de Azure Portal](../../log-analytics/log-analytics-manage-del-workspace.md). Vergeet niet om de **resource-id van de werk ruimte** die u eerder in stap 4 hebt gekopieerd, te zien.
+Als de werkruimte alleen is gemaakt ter ondersteuning van het bewaken van het cluster en het is niet langer nodig, moet u het handmatig verwijderen. Zie [Een Azure Log Analytics-werkruimte verwijderen met de Azure-portal](../../log-analytics/log-analytics-manage-del-workspace.md)als u niet bekend bent met het verwijderen van een werkruimte. Vergeet niet de **Workspace Resource ID** die eerder in stap 4 is gekopieerd, dat heb je nodig.

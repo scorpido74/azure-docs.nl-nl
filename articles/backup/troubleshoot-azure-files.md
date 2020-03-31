@@ -4,10 +4,10 @@ description: Dit artikel gaat over het oplossen van problemen die optreden bij h
 ms.date: 08/20/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252387"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Problemen bij het maken van back-ups van Azure-bestanden oplossen
@@ -21,7 +21,7 @@ Back-up voor Azure-bestandsshares is in preview. Azure-bestandsshares worden ond
 - Er is geen CLI beschikbaar voor het beveiligen van Azure Files met behulp van Azure Backup.
 - Het maximumaantal geplande back-ups per dag is één.
 - Het maximumaantal on-demand back-ups per dag is vier.
-- Gebruik [resourcevergrendelingen](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) voor het opslagaccount om per ongeluk verwijderen van back-ups uit de Recovery Services-kluis te voorkomen.
+- Gebruik [bronvergrendelingen](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) op het opslagaccount om te voorkomen dat back-ups per ongeluk worden verwijderd in uw vault van Recovery Services.
 - Verwijder geen momentopnamen die met Azure Backup zijn gemaakt. Het verwijderen van momentopnamen kan leiden tot het verlies van herstelpunten en/of herstelfouten.
 - Verwijder geen bestandsshares die zijn beveiligd met Azure Backup. Met de huidige oplossing worden alle momentopnamen die zijn gemaakt met Azure Backup, verwijderd zodra de bestandsshare wordt verwijderd. Alle herstelpunten gaan dan dus verloren
 
@@ -33,14 +33,14 @@ De volgende tabel is bedoeld voor het configureren van de back-up:
 
 | Foutberichten | Tips voor (tijdelijke) oplossing |
 | ------------------ | ----------------------------- |
-| Kan mijn opslagaccount niet vinden voor het configureren van back-up voor Azure-bestandsshares | <ul><li>Wacht totdat de detectie is voltooid. <li>Controleer of een bestandsshare van het opslagaccount al is beveiligd met een andere Recovery Services-kluis. **Opmerking**: alle bestandsshares in een opslagaccount kunnen in maar één Recovery Services-kluis worden beveiligd. <li>Controleer of de bestandsshare niet aanwezig is in een van de niet-ondersteunde opslagaccounts.<li> Zorg ervoor dat het selectie vakje **vertrouwde micro soft-Services toegang tot dit opslag account toestaan** is ingeschakeld in het opslag account. [Meer informatie.](../storage/common/storage-network-security.md)|
+| Kan mijn opslagaccount niet vinden voor het configureren van back-up voor Azure-bestandsshares | <ul><li>Wacht totdat de detectie is voltooid. <li>Controleer of een bestandsshare van het opslagaccount al is beveiligd met een andere Recovery Services-kluis. **Opmerking**: alle bestandsshares in een opslagaccount kunnen in maar één Recovery Services-kluis worden beveiligd. <li>Controleer of de bestandsshare niet aanwezig is in een van de niet-ondersteunde opslagaccounts.<li> Controleer of het selectievakje **Vertrouwde Microsoft-services toestaan toegang te krijgen tot dit opslagaccount** is ingeschakeld in het opslagaccount. [Meer weten?](../storage/common/storage-network-security.md)|
 | Fout in de portal geeft aan dat de detectie van opslagaccounts is mislukt. | Als uw abonnement een partnerabonnement (CSP ingeschakeld) is, kunt u de fout negeren. Als CSP niet is ingeschakeld voor uw abonnement en uw opslagaccounts niet kunnen worden gedetecteerd, neemt u contact op met de ondersteuning.|
 | Validatie of registratie van geselecteerd opslagaccount is mislukt.| Voer de bewerking opnieuw uit. Neem contact op met de ondersteuning als het probleem zich blijft voordoen.|
 | Kan bestandsshares niet vinden of weergeven in het geselecteerde opslagaccount. | <ul><li> Controleer of het opslagaccount bestaat in de resourcegroep (en niet is verwijderd of verplaatst na de laatste validatie/registratie in de kluis).<li>Controleer of de bestandsshare die u wilt beveiligen niet is verwijderd. <li>Controleer of het opslagaccount een ondersteund opslagaccount voor het maken van back-ups van bestandsshares is.<li>Controleer of de bestandsshare al in dezelfde Recovery Services-kluis wordt beveiligd.|
 | Configuratie van de back-up van bestandsshares (of de configuratie van het beveiligingsbeleid) mislukt. | <ul><li>Voer de bewerking opnieuw uit om te kijken of het probleem zich blijft voordoen. <li> Controleer of de bestandsshare die u wilt beveiligen niet is verwijderd. <li> Als u probeert om meerdere bestandsshares tegelijk te beveiligen en sommige bestandsshares mislukken, kunt u de back-up van de mislukte bestandsshares opnieuw proberen te configureren. |
-| De Recovery Services-kluis kan niet worden verwijderd nadat de beveiliging van een bestandsshare is gestopt. | Open in Azure Portal uw kluis > **Back-upinfrastructuur** > **Opslagaccounts** en klik op **Registratie opheffen** om het opslagaccount uit de Recovery Services-kluis te verwijderen.|
+| De Recovery Services-kluis kan niet worden verwijderd nadat de beveiliging van een bestandsshare is gestopt. | Open in de Azure-portal uw Vault-> **Back-upinfrastructuuropslagaccounts** > **Storage accounts** en klik op **Aanmelden** verwijderen om het opslagaccount uit de kluis Herstelservices te verwijderen.|
 
-## <a name="error-messages-for-backup-or-restore-job-failures"></a>Fout berichten voor mislukte back-up-of herstel taken
+## <a name="error-messages-for-backup-or-restore-job-failures"></a>Foutberichten voor back-ups of taakfouten herstellen
 
 | Foutberichten | Tips voor (tijdelijke) oplossing |
 | -------------- | ----------------------------- |
@@ -67,7 +67,7 @@ De volgende tabel is bedoeld voor het configureren van de back-up:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het maken van back-ups van Azure-bestands shares:
+Zie voor meer informatie over het maken van back-ups van Azure-bestandsshares:
 
-- [Een back-up maken van Azure-bestandsshares](backup-afs.md)
-- [Back up Azure File share FAQ](backup-azure-files-faq.md) (Veelgestelde vragen over back-ups maken van Azure-bestandsshares)
+- [Back-ups maken van Azure-bestandsshares](backup-afs.md)
+- [Veelgestelde vragen over azure-bestandsshare](backup-azure-files-faq.md)

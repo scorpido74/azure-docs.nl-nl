@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor werkmappen-gegevens bronnen | Micro soft docs
-description: Vereenvoudig complexe rapportage met vooraf opgebouwde en aangepaste werkmappen met para meters Azure Monitor gebaseerd op meerdere gegevens bronnen
+title: Gegevensbronnen voor Azure Monitor-werkmappen | Microsoft-documenten
+description: Vereenvoudig complexe rapportage met vooraf gebouwde en aangepaste geparameteriseerde Azure Monitor-werkmappen die zijn gemaakt van meerdere gegevensbronnen
 services: azure-monitor
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,77 +11,77 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79248578"
 ---
-# <a name="azure-monitor-workbooks-data-sources"></a>Gegevens bronnen Azure Monitor werkmappen
+# <a name="azure-monitor-workbooks-data-sources"></a>Gegevensbronnen voor Azure Monitor-werkmappen
 
-Werkmappen zijn compatibel met een groot aantal gegevens bronnen. In dit artikel vindt u informatie bronnen die momenteel beschikbaar zijn voor Azure Monitor-werkmappen.
+Werkmappen zijn compatibel met een groot aantal gegevensbronnen. In dit artikel vindt u gegevensbronnen die momenteel beschikbaar zijn voor Azure Monitor-werkmappen.
 
 ## <a name="logs"></a>Logboeken
 
-Met werkmappen kunt u query's uitvoeren op Logboeken vanuit de volgende bronnen:
+In werkmappen u logboeken opvragen uit de volgende bronnen:
 
-* Azure Monitor Logboeken (Application Insights resources en Log Analytics-werk ruimten.)
-* Resource gerichte gegevens (activiteiten Logboeken)
+* Azure Monitor-logboeken (Resources voor toepassingsinzichten en werkruimten voor logboekanalyse.)
+* Resourcegerichte gegevens (activiteitslogboeken)
 
-Ontwerpers van werkmappen kunnen KQL-query's gebruiken waarmee de onderliggende resource gegevens worden getransformeerd om een resultatenset te selecteren die kan worden gevisualiseerd als tekst, grafieken of rasters.
+Auteurs van werkmapauteurs kunnen KQL-query's gebruiken die de onderliggende brongegevens transformeren om een resultaatset te selecteren die kan worden gevisualiseerd als tekst, grafieken of rasters.
 
-![Scherm afbeelding van werkmappen rapport interface](./media/workbooks-overview/logs.png)
+![Schermafbeelding van de rapportinterface van werkmappen](./media/workbooks-overview/logs.png)
 
-Ontwerpers van werkmappen kunnen eenvoudig een query uitvoeren op meerdere resources, waardoor er een echt uniforme uitgebreide rapportage ervaring wordt gemaakt.
+Auteurs van werkmaps kunnen eenvoudig een query uitvoeren in meerdere bronnen, waardoor een echt uniforme rijke rapportage-ervaring wordt gemaakt.
 
 ## <a name="metrics"></a>Metrische gegevens
 
-Azure-resources verzenden [metrische gegevens](data-platform-metrics.md) die via werkmappen kunnen worden geopend. Metrische gegevens kunnen worden geopend in werkmappen via een gespecialiseerd besturings element waarmee u de doel resources, de gewenste metrische gegevens en de aggregatie kunt opgeven. Deze gegevens kunnen vervolgens worden getekend in grafieken of rasters.
+Azure-bronnen zenden [statistieken](data-platform-metrics.md) uit die via werkmappen kunnen worden geopend. Statistieken kunnen worden geopend in werkmappen via een gespecialiseerd besturingselement waarmee u de doelbronnen, de gewenste statistieken en hun aggregatie opgeven. Deze gegevens kunnen vervolgens worden uitgezet in grafieken of rasters.
 
-![Scherm afbeelding van metrische werkmap grafieken van CPU-gebruik](./media/workbooks-overview/metrics-graph.png)
+![Schermafbeelding van grafieken met werkmapstatistieken van het cpu-gebruik](./media/workbooks-overview/metrics-graph.png)
 
-![Scherm afbeelding van de interface voor metrische gegevens van werkmap](./media/workbooks-overview/metrics.png)
+![Schermafbeelding van de interface voor werkmapstatistieken](./media/workbooks-overview/metrics.png)
 
 ## <a name="azure-resource-graph"></a>Azure Resource Graph 
 
-Werkmappen bieden ondersteuning voor het uitvoeren van query's voor resources en hun meta gegevens met behulp van Azure resource Graph (ARG). Deze functie wordt hoofd zakelijk gebruikt voor het bouwen van aangepaste query bereiken voor-rapporten. Het resource bereik wordt weer gegeven via een KQL die ARG ondersteunt, wat vaak voldoende is voor algemene use-cases.
+Werkmappen ondersteunen query's voor resources en hun metagegevens met Behulp van Azure Resource Graph (ARG). Deze functionaliteit wordt voornamelijk gebruikt om aangepaste queryscopes voor rapporten te maken. De resourcescope wordt uitgedrukt via een KQL-subset die ARG ondersteunt – wat vaak voldoende is voor veelvoorkomende use cases.
 
-Als u een query besturings element wilt maken met deze gegevens bron, gebruikt u de vervolg keuzelijst query type om Azure resource Graph te kiezen en selecteert u de abonnementen die u wilt instellen. Gebruik het besturings element query om de ARG KQL-subset toe te voegen waarmee een interessante resource deel verzameling wordt geselecteerd.
+Als u een querybesturingselement deze gegevensbron wilt laten gebruiken, gebruikt u de vervolgkeuzelijst Querytype om Azure Resource Graph te kiezen en selecteert u de gewenste abonnementen. Gebruik het besturingselement Query om de ARG KQL-subset toe te voegen die een interessante bronsubset selecteert.
 
 
-![Scherm opname van KQL-query van Azure resource Graph](./media/workbooks-overview/azure-resource-graph.png)
+![Schermafbeelding van De KQL-query azure resourcegraph](./media/workbooks-overview/azure-resource-graph.png)
 
-## <a name="alerts-preview"></a>Waarschuwingen (preview-versie)
+## <a name="alerts-preview"></a>Waarschuwingen (voorbeeld)
 
-Met werkmappen kunnen gebruikers de actieve waarschuwingen die betrekking hebben op hun resources visualiseren. Met deze functie kunt u rapporten maken waarmee meldings gegevens (waarschuwingen) en diagnostische informatie (metrische gegevens, Logboeken) in één rapport worden opgenomen. Deze informatie kan ook samen worden samengevoegd om uitgebreide rapporten te maken waarin inzichten over deze gegevens bronnen worden gecombineerd.
+Met werkmappen kunnen gebruikers de actieve waarschuwingen met betrekking tot hun bronnen visualiseren. Met deze functie u rapporten maken die meldingsgegevens (waarschuwing) en diagnostische informatie (statistieken, logboeken) samenbrengen in één rapport. Deze informatie kan ook worden samengevoegd om uitgebreide rapporten te maken die inzichten in deze gegevensbronnen combineren.
 
-Als u wilt dat een query besturings element deze gegevens bron gebruikt, gebruikt u de vervolg keuzelijst query type om waarschuwingen te kiezen en selecteert u de abonnementen, resource groepen of bronnen om te richten. Gebruik de vervolg keuzelijst waarschuwings filter om een interessante subset van waarschuwingen voor uw analyse behoeften te selecteren.
+Als u een querybesturingselement deze gegevensbron wilt laten gebruiken, gebruikt u de vervolgkeuzelijst Querytype om Waarschuwingen te kiezen en selecteert u de abonnementen, resourcegroepen of resources die u wilt targeten. Gebruik de dropdowns van waarschuwingsfilters om een interessante subset van waarschuwingen voor uw analytische behoeften te selecteren.
 
-![Scherm afbeelding van waarschuwings query's](./media/workbooks-overview/alerts.png)
+![Schermafbeelding van waarschuwingenquery](./media/workbooks-overview/alerts.png)
 
-## <a name="workload-health-preview"></a>Workload status (preview-versie)
+## <a name="workload-health-preview"></a>Werkbelastingstatus (voorbeeld)
 
-Azure Monitor heeft functionaliteit waarmee de beschik baarheid en prestaties van Windows-of Linux-gast besturingssystemen proactief worden bewaakt. Azure Monitor modellen van belang rijke onderdelen en hun relaties, criteria om de status van die onderdelen te meten en welke onderdelen u waarschuwen wanneer er een onjuiste voor waarde wordt gedetecteerd. Met werkmappen kunnen gebruikers deze informatie gebruiken om uitgebreide interactieve rapporten te maken.
+Azure Monitor heeft functionaliteit die proactief de beschikbaarheid en prestaties van Windows- of Linux-gastbesturingssystemen bewaakt. Azure Monitor modelleert belangrijke onderdelen en hun relaties, criteria voor het meten van de status van die componenten en welke onderdelen u waarschuwen wanneer een ongezonde toestand wordt gedetecteerd. Met werkmappen kunnen gebruikers deze informatie gebruiken om uitgebreide interactieve rapporten te maken.
 
-Als u een query besturings element wilt gebruiken deze gegevens bron, gebruikt u de vervolg keuzelijst **query type** om de werk belasting status te kiezen en selecteert u abonnement, resource groep of VM-resources om te richten. Gebruik de vervolg keuzelijst status filters om een interessante subset met status incidenten voor uw analyse behoeften te selecteren.
+Als u een querybesturingselement deze gegevensbron wilt laten gebruiken, gebruikt u de vervolgkeuzelijst **Querytype** om Workloadstatus te kiezen en selecteert u abonnements-, resourcegroep- of VM-resources die u wilt targeten. Gebruik de vervolgkeuzelijst voor het filter om een interessante subset van gezondheidsincidenten te selecteren voor uw analytische behoeften.
 
-![Scherm afbeelding van waarschuwings query's](./media/workbooks-overview/workload-health.png)
+![Schermafbeelding van waarschuwingenquery](./media/workbooks-overview/workload-health.png)
 
-## <a name="azure-resource-health"></a>Azure-resource status 
+## <a name="azure-resource-health"></a>Azure-bronstatus 
 
-Werkmappen bieden ondersteuning voor de Azure-resource status en combi neren met andere gegevens bronnen om uitgebreide, interactieve status rapporten te maken
+Werkmappen ondersteunen het verkrijgen van Azure-bronstatus en het combineren met andere gegevensbronnen om rijke, interactieve statusrapporten te maken
 
-Als u een query besturings element wilt gebruiken deze gegevens bron, gebruikt u de vervolg keuzelijst **query type** om de Azure-status te kiezen en selecteert u de resources die u wilt instellen. Gebruik de vervolg keuzelijst status filters om een interessante subset van resource problemen voor uw analyse behoeften te selecteren.
+Als u een querybesturingselement deze gegevensbron wilt laten gebruiken, gebruikt u de vervolgkeuzelijst **Querytype** om Azure-status te kiezen en selecteert u de resources die u wilt targeten. Gebruik de vervolgkeuzelijst voor statusfilters om een interessante subset van resourceproblemen voor uw analytische behoeften te selecteren.
 
-![Scherm afbeelding van waarschuwings query's](./media/workbooks-overview/resource-health.png)
+![Schermafbeelding van waarschuwingenquery](./media/workbooks-overview/resource-health.png)
 
-## <a name="azure-data-explorer-preview"></a>Azure Data Explorer (preview-versie)
+## <a name="azure-data-explorer-preview"></a>Azure Data Explorer (voorbeeld)
 
-Werkmappen bieden nu ondersteuning voor het uitvoeren van query's vanuit [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/) -clusters met de krachtige [Kusto](https://docs.microsoft.com/azure/kusto/query/index) -query taal.   
+Werkmappen hebben nu ondersteuning voor query's vanuit [Azure Data Explorer-clusters](https://docs.microsoft.com/azure/data-explorer/) met de krachtige [Kusto-querytaal.](https://docs.microsoft.com/azure/kusto/query/index)   
 
-![Scherm opname van het Kusto-query venster](./media/workbooks-overview/data-explorer.png)
+![Schermafbeelding van het queryvenster Kusto](./media/workbooks-overview/data-explorer.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
-* De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.
+* [Ga aan de slag met](workbooks-visualizations.md) het leren van meer over werkmappen met veel uitgebreide visualisatiesopties.
+* [Beheer](workbooks-access-control.md) en deel de toegang tot uw werkmapbronnen.

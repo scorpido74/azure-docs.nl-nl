@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Data Factory-connector
-description: Meer informatie over de ondersteunde connectors in Data Factory.
+description: Leer de ondersteunde connectors in Data Factory.
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -10,15 +10,15 @@ ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: 7b01e9936189a40fcf1400d3e6ee948032786d3a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444179"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Overzicht van Azure Data Factory-connector
 
-Azure Data Factory ondersteunen de volgende gegevens archieven en-indelingen via kopiëren, gegevens stroom, zoeken, meta gegevens ophalen en activiteiten verwijderen. Klik op elk gegevens Archief voor meer informatie over de ondersteunde mogelijkheden en de bijbehorende configuraties.
+Azure Data Factory ondersteunt de volgende gegevensopslag en -indelingen via activiteiten kopiëren, gegevensstromen, opzoeken, Metagegevens ophalen en verwijderen. Klik op elk gegevensarchief om de ondersteunde mogelijkheden en de bijbehorende configuraties in details te leren.
 
 ## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
 
@@ -30,8 +30,8 @@ Azure Data Factory ondersteunen de volgende gegevens archieven en-indelingen via
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Kopieer activiteit](copy-activity-overview.md)
-- [Gegevens stroom toewijzen](concepts-data-flow-overview.md)
+- [Activiteit kopiëren](copy-activity-overview.md)
+- [Gegevensstroom toewijzen](concepts-data-flow-overview.md)
 - [Lookup Activity](control-flow-lookup-activity.md)
 - [Get Metadata Activity](control-flow-get-metadata-activity.md)
 - [Activiteit verwijderen](delete-activity.md)

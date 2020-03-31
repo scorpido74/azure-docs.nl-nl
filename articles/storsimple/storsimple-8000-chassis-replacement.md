@@ -1,6 +1,6 @@
 ---
-title: Vervang chassis op StorSimple 8000-apparaat | Microsoft Docs
-description: Beschrijft hoe u verwijdert en vervangt u het chassis voor uw StorSimple primaire behuizing of EBOD behuizing.
+title: Chassis vervangen op storSimple 8000-serie | Microsoft Documenten
+description: Beschrijft hoe u het chassis voor uw StorSimple primaire behuizing of EBOD-behuizing verwijderen en vervangen.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,47 +15,47 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 7dfc39f4d08c8a49d1564a0a5bd7e3ef4156e3fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61312442"
 ---
-# <a name="replace-the-chassis-on-your-storsimple-device"></a>Vervang het chassis op uw StorSimple-apparaat
+# <a name="replace-the-chassis-on-your-storsimple-device"></a>Het chassis van uw StorSimple-apparaat vervangen
 ## <a name="overview"></a>Overzicht
-In deze zelfstudie wordt uitgelegd hoe om te verwijderen en een chassis in een StorSimple 8000-apparaat vervangen. Het StorSimple 8100-model is een één behuizing-apparaat (één chassis), terwijl de 8600 een dubbele behuizing-apparaat (twee chassis is). Zijn mogelijk twee chassis dat op het apparaat kan mislukken voor een model 8600: het chassis voor de primaire behuizing of het chassis voor de EBOD-behuizing.
+In deze zelfstudie wordt uitgelegd hoe u een chassis in een StorSimple 8000-serie verwijderen en vervangen. De StorSimple 8100 model is een enkele behuizing apparaat (een chassis), terwijl de 8600 is een dubbele behuizing apparaat (twee chassis). Voor een 8600-model zijn er mogelijk twee chassis dat in het apparaat kan uitvallen: het chassis voor de primaire behuizing of het chassis voor de EBOD-behuizing.
 
-De vervangende chassis dat wordt geleverd door Microsoft is in beide gevallen moet leeg zijn. Er is geen voeding en koeling Modules (PCMs), controller-modules, solid state harde schijven (SSD's), harde schijven (HDD's) of EBOD-modules worden opgenomen.
+In beide gevallen is het vervangende chassis dat door Microsoft wordt verzonden leeg. Er worden geen Power- en Cooling Modules (PCM's), controllermodules, solid state disk drives (SSD's), harde schijven (HDD's) of EBOD-modules meegeleverd.
 
 > [!IMPORTANT]
-> Voordat u verwijdert en vervangt het chassis, lees de veiligheidsinformatie in [StorSimple onderdeel Hardwarevervanging](storsimple-8000-hardware-component-replacement.md).
+> Voordat u het chassis verwijdert en vervangt, controleert u de veiligheidsinformatie in [StorSimple hardwarecomponentvervanging.](storsimple-8000-hardware-component-replacement.md)
 
 
-## <a name="remove-the-chassis"></a>Verwijderen van het chassis
-Voer de volgende stappen uit als u wilt verwijderen van het chassis op uw StorSimple-apparaat.
+## <a name="remove-the-chassis"></a>Het chassis verwijderen
+Voer de volgende stappen uit om het chassis op uw StorSimple-apparaat te verwijderen.
 
-#### <a name="to-remove-a-chassis"></a>Verwijderen van een chassis
-1. Zorg ervoor dat het StorSimple-apparaat wordt afgesloten en niet met alle bronnen van de stroom verbonden.
-2. Verwijder alle netwerk- en SAS-kabels, indien van toepassing.
-3. Verwijder de eenheid van het rek te plaatsen.
-4. Verwijder elk van de stations en houd er rekening mee de implementatiesleuven waarvan ze zijn verwijderd. Zie voor meer informatie, [verwijderen van het schijfstation](storsimple-8000-disk-drive-replacement.md#remove-the-disk-drive).
-5. Op de EBOD-behuizing (indien dit het chassis dat is mislukt is), verwijderen van de modules EBOD-controller. Zie voor meer informatie, [een EBOD-controller verwijderen](storsimple-8000-ebod-controller-replacement.md#remove-an-ebod-controller).
+#### <a name="to-remove-a-chassis"></a>Een chassis verwijderen
+1. Zorg ervoor dat het StorSimple-apparaat is uitgeschakeld en losgekoppeld van alle stroombronnen.
+2. Verwijder indien van toepassing alle netwerk- en SAS-kabels.
+3. Haal het apparaat uit het rek.
+4. Verwijder elk van de stations en noteer de sleuven waaruit ze worden verwijderd. Zie [Het schijfstation verwijderen](storsimple-8000-disk-drive-replacement.md#remove-the-disk-drive)voor meer informatie .
+5. Verwijder op de EBOD-behuizing (als dit het chassis is dat is mislukt), verwijder de EBOD-controllermodules. Zie [Een EBOD-controller verwijderen](storsimple-8000-ebod-controller-replacement.md#remove-an-ebod-controller)voor meer informatie.
    
-    Op de primaire behuizing (indien dit het chassis dat is mislukt is), verwijderen van de controllers en houd er rekening mee de implementatiesleuven waarvan ze zijn verwijderd. Zie voor meer informatie, [verwijderen van een domeincontroller](storsimple-8000-controller-replacement.md#remove-a-controller).
+    Op de primaire behuizing (als dit het chassis is dat is mislukt), verwijdert u de controllers en noteert u de sleuven waaruit ze worden verwijderd. Zie [Een controller verwijderen](storsimple-8000-controller-replacement.md#remove-a-controller)voor meer informatie.
 
-## <a name="install-the-chassis"></a>Installeer het chassis
-Voer de volgende stappen uit voor het installeren van het chassis op uw StorSimple-apparaat.
+## <a name="install-the-chassis"></a>Het chassis installeren
+Voer de volgende stappen uit om het chassis op uw StorSimple-apparaat te installeren.
 
-#### <a name="to-install-a-chassis"></a>Voor het installeren van een chassis
-1. Koppel het chassis in het rek te plaatsen. Zie voor meer informatie, [Rack koppelen uw StorSimple 8100-apparaat](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) of [Rack koppelen uw StorSimple 8600-apparaat](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
-2. Nadat het chassis is gekoppeld in het rack, installeert u de modules netwerkcontroller in de dezelfde functies die ze eerder zijn geïnstalleerd in.
-3. Installeer de stations in de dezelfde functies en -sleuven die ze eerder zijn geïnstalleerd in.
+#### <a name="to-install-a-chassis"></a>Een chassis installeren
+1. Monteer het chassis in het rek. Zie Voor meer informatie: [houd uw StorSimple 8100-apparaat](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) op een rack-mount of [rack-mount uw StorSimple 8600-apparaat .](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device)
+2. Nadat het chassis in het rek is gemonteerd, installeert u de controllermodules in dezelfde posities waarin ze eerder zijn geïnstalleerd.
+3. Installeer de schijven in dezelfde posities en sleuven waarin ze eerder zijn geïnstalleerd.
    
    > [!NOTE]
-   > U wordt aangeraden dat u eerst de SSD's in de sleuven installeren en vervolgens de HDD's installeren.
+   > We raden u aan de SSD's eerst in de sleuven te installeren en vervolgens de HDD's te installeren.
   
-4. Het apparaat is gekoppeld in het rek en de onderdelen zijn geïnstalleerd, uw apparaat aansluiten op de juiste energiebronnen en schakel het apparaat. Zie voor meer informatie, [uw StorSimple 8100-apparaat bekabelen](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) of [uw StorSimple 8600-apparaat bekabelen](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
+4. Als het apparaat in het rek is gemonteerd en de onderdelen zijn geïnstalleerd, sluit u het apparaat aan op de juiste stroombronnen en schakelt u het apparaat in. Zie Kabel [uw StorSimple 8100-apparaat](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) of [kabel uw StorSimple 8600-apparaat](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [StorSimple onderdeel Hardwarevervanging](storsimple-8000-hardware-component-replacement.md).
+Meer informatie over [het vervangen van StorSimple-hardwarecomponenten](storsimple-8000-hardware-component-replacement.md).
 

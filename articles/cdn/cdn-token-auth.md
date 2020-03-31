@@ -1,6 +1,6 @@
 ---
-title: Beveiligen van Azure CDN-assets met tokenverificatie | Microsoft Docs
-description: Informatie over het gebruik van tokenverificatie voor beveiligde toegang tot uw Azure CDN-assets.
+title: Azure CDN-assets beveiligen met tokenverificatie| Microsoft Documenten
+description: Meer informatie over het gebruik van tokenverificatie om toegang te krijgen tot uw Azure CDN-assets.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -15,60 +15,60 @@ ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
 ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593396"
 ---
-# <a name="securing-azure-cdn-assets-with-token-authentication"></a>Beveiligen van Azure CDN-assets met tokenverificatie
+# <a name="securing-azure-cdn-assets-with-token-authentication"></a>Azure CDN-elementen beveiligen met tokenverificatie
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Overzicht
 
-Tokenverificatie is een mechanisme waarmee u om te voorkomen dat het Azure Content Delivery Network (CDN) die activa voor niet-geautoriseerde clients. Tokenverificatie gewoonlijk wordt uitgevoerd om te voorkomen dat *hotlinking* van inhoud, waarin een andere website, zoals een prikbord maakt gebruik van uw activa zonder toestemming. Hotlinking kunnen een invloed hebben op de kosten voor de levering van inhoud. Tokenverificatie op CDN inschakelt, worden aanvragen door CDN edge-server geverifieerd, voordat het CDN de inhoud te leveren. 
+Tokenverificatie is een mechanisme waarmee u voorkomen dat het Azure Content Delivery Network (CDN) assets aan onbevoegde clients kan leveren. Tokenverificatie wordt meestal gedaan om *hotlinking* van inhoud te voorkomen, waarbij een andere website, zoals een prikbord, uw assets zonder toestemming gebruikt. Hotlinking kan van invloed zijn op de leveringskosten van uw inhoud. Door tokenverificatie op CDN in te schakelen, worden aanvragen geverifieerd door cdn-edgeserver voordat het CDN de inhoud levert. 
 
 ## <a name="how-it-works"></a>Hoe werkt het?
 
-Tokenverificatie controleert u of aanvragen worden gegenereerd door een vertrouwde site doordat aanvragen naar de waarde voor een token dat bevat informatie over de aanvrager kan gecodeerde bevatten. Content wordt geleverd voor een aanvrager alleen als de gecodeerde gegevens voldoet aan de vereisten; anders worden aanvragen geweigerd. U kunt de vereisten instellen met behulp van een of meer van de volgende parameters:
+Tokenverificatie controleert of aanvragen worden gegenereerd door een vertrouwde site door dat aanvragen een tokenwaarde moeten bevatten die gecodeerde informatie over de aanvrager bevat. Inhoud wordt alleen aan een aanvrager aangeboden als de gecodeerde informatie aan de vereisten voldoet; anders worden verzoeken geweigerd. U de vereisten instellen met behulp van een of meer van de volgende parameters:
 
-- Land/regio: Toestaan of weigeren van aanvragen die afkomstig van de landen/regio's zijn opgegeven zijn door hun [landcode](/previous-versions/azure/mt761717(v=azure.100)).
-- URL: Alleen aanvragen die overeenkomen met de opgegeven asset of het pad toestaan.
-- Host: Toestaan of weigeren van aanvragen die gebruikmaken van de opgegeven hosts in de aanvraagheader.
-- Verwijzende site: Toestaan of weigeren van aanvraag van de opgegeven verwijzende site.
-- IP-adres: Alleen aanvragen die afkomstig van specifieke IP-adres of IP-subnet zijn toestaan.
-- Protocol: Toestaan of weigeren op basis van het protocol dat wordt gebruikt om aan te vragen van de inhoud.
-- Vervaltijd: Toewijzen van een bepaalde datum en tijd om ervoor te zorgen dat een koppeling geldig alleen voor een beperkte periode blijft.
+- Land: Verzoeken toestaan of weigeren die afkomstig zijn uit de landen/regio's die zijn opgegeven door hun [landcode](/previous-versions/azure/mt761717(v=azure.100)).
+- URL: Sta alleen aanvragen toe die overeenkomen met het opgegeven element of pad.
+- Host: aanvragen toestaan of weigeren die de opgegeven hosts in de aanvraagkop gebruiken.
+- Verwijzer: Verzoek van de opgegeven verwijzer toestaan of weigeren.
+- IP-adres: Sta alleen aanvragen toe die afkomstig zijn van een specifiek IP-adres of IP-subnet.
+- Protocol: Aanvragen toestaan of weigeren op basis van het protocol dat wordt gebruikt om de inhoud op te vragen.
+- Verlooptijd: wijs een datum en tijdsperiode toe om ervoor te zorgen dat een koppeling slechts voor een beperkte periode geldig blijft.
 
-Zie voor meer informatie de gedetailleerde configuratie-voorbeelden voor elke parameter in [instellen van tokenverificatie](#setting-up-token-authentication).
+Zie voor meer informatie de gedetailleerde configuratievoorbeelden voor elke parameter in [Het instellen van tokenverificatie](#setting-up-token-authentication).
 
 >[!IMPORTANT] 
-> Als het token autorisatie voor elk pad voor dit account is ingeschakeld, is standard-cachemodus de enige modus die kan worden gebruikt voor het opslaan van de query-tekenreeks. Zie [Cachegedrag in Azure CDN bepalen met queryreeksen](cdn-query-string-premium.md) voor meer informatie.
+> Als tokenautorisatie is ingeschakeld voor elk pad in dit account, is de standaardcachemodus de enige modus die kan worden gebruikt voor het caching van querytekenreeksen. Zie [Cachegedrag in Azure CDN bepalen met queryreeksen](cdn-query-string-premium.md) voor meer informatie.
 
 ## <a name="reference-architecture"></a>Referentiearchitectuur
 
-Het volgende werkstroomdiagram wordt beschreven hoe het CDN-token verificatie gebruikt om u te werken met uw web-app.
+In het volgende werkstroomdiagram wordt beschreven hoe het CDN tokenverificatie gebruikt om met uw web-app te werken.
 
-![Werkstroom voor CDN-tokenverificatie](./media/cdn-token-auth/cdn-token-auth-workflow2.png)
+![Workflow voor cdn-tokenverificatie](./media/cdn-token-auth/cdn-token-auth-workflow2.png)
 
-## <a name="token-validation-logic-on-cdn-endpoint"></a>Token validatielogica op CDN-eindpunt
+## <a name="token-validation-logic-on-cdn-endpoint"></a>Tokenvalidatielogica op CDN-eindpunt
     
-Het volgende stroomdiagram wordt beschreven hoe een clientaanvraag door Azure CDN wordt gevalideerd als tokenverificatie voor CDN-eindpunt is geconfigureerd.
+In het volgende stroomdiagram wordt beschreven hoe Azure CDN een clientaanvraag valideert wanneer tokenverificatie is geconfigureerd op CDN-eindpunt.
 
-![Token validatielogica van CDN](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
+![Logica voor cdn-tokenvalidatie](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
 
 ## <a name="setting-up-token-authentication"></a>Tokenverificatie instellen
 
-1. Uit de [Azure-portal](https://portal.azure.com), blader naar uw CDN-profiel, en selecteer vervolgens **beheren** om te starten van de aanvullende portal.
+1. Blader vanuit de [Azure-portal](https://portal.azure.com)naar uw CDN-profiel en selecteer **Beheren** om de aanvullende portal te starten.
 
-    ![Knop voor CDN-profiel beheren](./media/cdn-token-auth/cdn-manage-btn.png)
+    ![Knop CDN-profiel beheren](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. Beweeg de muisaanwijzer over **HTTP grote**en selecteer vervolgens **Token Authentication** in de flyout. U kunt vervolgens de versleutelingssleutel en versleuteling parameters als volgt instellen:
+2. Plaats de plaats boven **HTTP Large**en selecteer **Token Auth** in de flyout. U vervolgens de coderingssleutel- en versleutelingsparameters als volgt instellen:
 
-   1. Maak een of meer versleutelingssleutels. Een coderingssleutel is hoofdlettergevoelig en kan elke combinatie van alfanumerieke tekens bevatten. Alle andere soorten tekens, inclusief spaties, zijn niet toegestaan. De maximale lengte is 250 tekens. Om ervoor te zorgen dat uw versleutelingssleutels worden willekeurige, het wordt aanbevolen dat u ze hebt maken met behulp van de [OpenSSL hulpprogramma](https://www.openssl.org/). 
+   1. Maak een of meer versleutelingssleutels. Een versleutelingssleutel is hoofdlettergevoelig en kan elke combinatie van alfanumerieke tekens bevatten. Andere typen tekens, inclusief spaties, zijn niet toegestaan. De maximale lengte is 250 tekens. Om ervoor te zorgen dat uw versleutelingssleutels willekeurig zijn, wordt aanbevolen deze te maken met behulp van het [OpenSSL-hulpprogramma.](https://www.openssl.org/) 
 
-      Het hulpprogramma OpenSSL heeft de volgende syntaxis:
+      Het gereedschap OpenSSL heeft de volgende syntaxis:
 
       ```rand -hex <key length>```
 
@@ -76,37 +76,37 @@ Het volgende stroomdiagram wordt beschreven hoe een clientaanvraag door Azure CD
 
       ```OpenSSL> rand -hex 32``` 
 
-      Om te voorkomen uitvaltijd, zowel de primaire en een back-upsleutel te maken. Een back-upsleutel biedt ononderbroken toegang tot uw inhoud wanneer de primaire sleutel wordt bijgewerkt.
+      Maak zowel een primaire als een back-upsleutel om downtime te voorkomen. Een back-upsleutel biedt ononderbroken toegang tot uw inhoud wanneer uw primaire sleutel wordt bijgewerkt.
     
-   2. Voer een unieke versleutelingssleutel in de **primaire sleutel** in en voert u een back-upsleutel in (optioneel) de **-back-Upsleutel** vak.
+   2. Voer een unieke versleutelingssleutel in het vak **Primaire sleutel** in en voer optioneel een back-upsleutel in het vak **Back-upsleutel** in.
 
-   3. Selecteer de versie van de minimale codering voor elke sleutel van de **minimumversie versleuteling** lijst en selecteer vervolgens **Update**:
-      - **V2**: Geeft aan dat de sleutel kan worden gebruikt voor het genereren van versie 2.0 en 3.0-tokens. Gebruik deze optie alleen als u van de versleutelingssleutel van een oudere versie 2.0 worden overgezet naar een versie 3.0-sleutel.
-      - **V3**: (Aanbevolen) Geeft aan dat de sleutel kan alleen worden gebruikt voor het genereren van tokens voor versie 3.0.
+   3. Selecteer de minimale versleutelingsversie voor elke sleutel in de lijst **Minimale versleutelingsversie** en selecteer **Bijwerken:**
+      - **V2**: Geeft aan dat de sleutel kan worden gebruikt om versie 2.0 en 3.0-tokens te genereren. Gebruik deze optie alleen als u overstapt van een verouderde versie 2.0-versleutelingssleutel naar een versie 3.0-toets.
+      - **V3**: (Aanbevolen) Geeft aan dat de sleutel alleen kan worden gebruikt om versie 3.0-tokens te genereren.
 
-      ![CDN-setup van token verificatiesleutel](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
+      ![CDN-token auth-installatiesleutel](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. Gebruik het hulpprogramma coderen voor versleuteling parameters instellen en het genereren van een token. Met het hulpprogramma versleutelen, kunt u toestaan of weigeren aanvragen op basis van de verlooptijd van, land/regio, verwijzende site, protocol en client-IP-adres (in een combinatie). Hoewel er geen limiet voor het aantal en de combinatie van parameters die kunnen worden gecombineerd voor het token van een formulier, is de totale lengte van een token beperkt tot 512 tekens. 
+   4. Gebruik het versleutelingsgereedschap om versleutelingsparameters in te stellen en een token te genereren. Met de versleutelingstool u aanvragen toestaan of weigeren op basis van verlooptijd, land/regio, verwijzer, protocol en client-IP (in elke combinatie). Hoewel er geen limiet is aan het aantal en de combinatie van parameters die kunnen worden gecombineerd tot een token, is de totale lengte van een token beperkt tot 512 tekens. 
 
-      ![CDN hulpprogramma versleutelen](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
+      ![Gereedschap CDN-versleuteling](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
-      Voer waarden in voor een of meer van de volgende parameters versleuteling in de **versleutelen hulpprogramma** sectie: 
+      Voer waarden in voor een of meer van de volgende versleutelingsparameters in de sectie **Gereedschap versleutelen:** 
 
       > [!div class="mx-tdCol2BreakAll"] 
       > <table>
       > <tr>
       >   <th>Parameternaam</th> 
-      >   <th>Description</th>
+      >   <th>Beschrijving</th>
       > </tr>
       > <tr>
       >    <td><b>ec_expire</b></td>
-      >    <td>Een verlooptijd toegewezen aan een token, waarna het token is verlopen. Aanvragen verzonden nadat de verlooptijd van de zijn geweigerd. Deze parameter wordt gebruikt voor een Unix-timestamp, die is gebaseerd op het aantal seconden sinds de standaard Unix-epoche van `1/1/1970 00:00:00 GMT`. (U kunt online hulpprogramma's gebruiken om te schakelen tussen (standaardtijd) en de Unix-tijd.)> 
-      >    Bijvoorbeeld, als u wilt dat het token verloopt op `12/31/2016 12:00:00 GMT`, voer de waarde van de Unix-timestamp, `1483185600`. 
+      >    <td>Wijst een vervaldatum toe aan een token, waarna het token verloopt. Aanvragen die na de vervaldatum worden ingediend, worden geweigerd. Deze parameter maakt gebruik van een Unix-tijdstempel, die is gebaseerd `1/1/1970 00:00:00 GMT`op het aantal seconden sinds het standaard Unix-tijdperk van . (U online tools gebruiken om te converteren tussen standaardtijd en Unix-tijd.)> 
+      >    Als u bijvoorbeeld wilt dat het `12/31/2016 12:00:00 GMT`token verloopt bij , `1483185600`voert u de waarde van de Unix-tijdstempel in, . 
       > </tr>
       > <tr>
       >    <td><b>ec_url_allow</b></td> 
-      >    <td>Kunt u aan te passen van tokens, voor een bepaalde asset of een pad. Dit beperkt de toegang tot aanvragen waarvan de URL begint met een specifieke relatief pad. URL's zijn hoofdlettergevoelig. Meerdere paden invoeren door elk pad scheiden met een door komma's; Voeg geen spaties. Afhankelijk van uw vereisten, kunt u verschillende waarden instellen voor een ander niveau van toegang.> 
-      >    Bijvoorbeeld, voor de URL `http://www.mydomain.com/pictures/city/strasbourg.png`, deze aanvragen zijn toegestaan voor de volgende invoerwaarden: 
+      >    <td>Hiermee u tokens afstemmen op een bepaald actief of pad. Het beperkt de toegang tot aanvragen waarvan de URL begint met een specifiek relatief pad. URL's zijn hoofdlettergevoelig. Voer meerdere paden in door elk pad te scheiden met een komma; voeg geen spaties toe. Afhankelijk van uw vereisten u verschillende waarden instellen om een ander toegangsniveau te bieden.> 
+      >    Voor de URL `http://www.mydomain.com/pictures/city/strasbourg.png`zijn deze aanvragen bijvoorbeeld toegestaan voor de volgende invoerwaarden: 
       >    <ul>
       >       <li>Invoerwaarde `/`: Alle aanvragen zijn toegestaan.</li>
       >       <li>Invoerwaarde `/pictures`, de volgende aanvragen zijn toegestaan: <ul>
@@ -114,80 +114,80 @@ Het volgende stroomdiagram wordt beschreven hoe een clientaanvraag door Azure CD
       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
       >       </ul></li>
-      >       <li>Invoerwaarde `/pictures/`: Alleen aanvragen die de `/pictures/` pad zijn toegestaan. Bijvoorbeeld `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
-      >       <li>Invoerwaarde `/pictures/city/strasbourg.png`: Alleen aanvragen voor deze specifieke pad en de activa zijn toegestaan.</li>
+      >       <li>Invoerwaarde: `/pictures/`Alleen aanvragen `/pictures/` die het pad bevatten, zijn toegestaan. Bijvoorbeeld `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
+      >       <li>Invoerwaarde `/pictures/city/strasbourg.png`: Alleen aanvragen voor dit specifieke pad en deze asset zijn toegestaan.</li>
       >    </ul>
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>U kunt alleen aanvragen die afkomstig uit een of meer opgegeven landen/regio's zijn. Aanvragen die afkomstig van alle andere landen/regio's zijn worden geweigerd. Gebruik van twee letters [3166 ISO-landcode](/previous-versions/azure/mt761717(v=azure.100)) voor elk land en gescheiden van elkaar met een door komma's, Voeg een spatie. Bijvoorbeeld, als u toegang toestaan van alleen de Verenigde Staten en Frankrijk wilt, voert u `US,FR`.</td>
+      >    <td>Hiermee worden alleen aanvragen mogelijk die afkomstig zijn uit een of meer specifieke landen/regio's. Aanvragen die afkomstig zijn uit alle andere landen/regio's worden geweigerd. Gebruik voor elk land een [tweeletterige ISO 3166-landcode](/previous-versions/azure/mt761717(v=azure.100)) en scheid elk land met een komma; voeg geen spatie toe. Als u bijvoorbeeld alleen toegang wilt toestaan vanuit de `US,FR`Verenigde Staten en Frankrijk, voert u .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>Weigert de aanvragen die afkomstig uit een of meer opgegeven landen/regio's zijn. Aanvragen die afkomstig van alle andere landen/regio's zijn zijn toegestaan. De implementatie is hetzelfde als de <b>ec_country_allow</b> parameter. Als een landcode aanwezig in zowel is de <b>ec_country_allow</b> en <b>ec_country_deny</b> parameters, de <b>ec_country_allow</b> parameter voorrang.</td>
+      >    <td>Weigert verzoeken die afkomstig zijn uit een of meer specifieke landen/regio's. Aanvragen die afkomstig zijn uit alle andere landen/regio's zijn toegestaan. De implementatie is hetzelfde als de <b>parameter ec_country_allow.</b> Als een landcode aanwezig is in zowel de <b>ec_country_allow-</b> als <b>ec_country_deny</b> parameters, heeft de <b>parameter ec_country_allow</b> voorrang.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
-      >    <td>Staat alleen aanvragen van de opgegeven verwijzende site. Een verwijzende site identificeert de URL van de webpagina die is gekoppeld aan de resource wordt aangevraagd. Neem het protocol niet in de waarde van parameter.> 
-      >    De volgende soorten invoer zijn toegestaan:
+      >    <td>Hiermee worden alleen aanvragen van de opgegeven verwijzer mogelijk. Een verwijzer identificeert de URL van de webpagina die is gekoppeld aan de gevraagde bron. Neem het protocol niet op in de parameterwaarde.> 
+      >    De volgende typen invoer zijn toegestaan:
       >    <ul>
       >       <li>Een hostnaam of een hostnaam en een pad.</li>
-      >       <li>Meerdere verwijzende sites. Als u wilt meerdere verwijzende sites toevoegen, scheidt u elke verwijzende site met een komma; Voeg een spatie. Als u een waarde van de verwijzende site opgeven, maar de verwijzende site-informatie niet in de aanvraag vanwege de configuratie van de browser wordt verzonden, wordt standaard de aanvraag geweigerd.</li> 
-      >       <li>Aanvragen met verwijzende site-informatie ontbreekt of is leeg. Standaard de <b>ec_ref_allow</b> parameter dergelijke aanvragen worden geblokkeerd. Als u wilt toestaan dat deze aanvragen, voert u een van beide de tekst 'ontbreekt', of een lege waarde invoeren (met behulp van een afsluitende komma).</li> 
-      >       <li>Subdomeinen. Als u wilt toestaan dat subdomeinen, geeft u een sterretje (\*). Bijvoorbeeld, om toe te staan alle subdomeinen van `contoso.com`, voer `*.contoso.com`.</li>
+      >       <li>Meerdere verwijzers. Als u meerdere verwijzers wilt toevoegen, scheidt u elke verwijzer met een komma; voeg geen spatie toe. Als u een verwijzerwaarde opgeeft, maar de verwijzerinformatie niet wordt verzonden in het verzoek vanwege de browserconfiguratie, wordt het verzoek standaard geweigerd.</li> 
+      >       <li>Verzoeken met ontbrekende of lege verwijzerinformatie. Standaard blokkeert de <b>parameter ec_ref_allow</b> dit soort aanvragen. Als u deze aanvragen wilt toestaan, voert u de tekst 'ontbrekend' in of voert u een lege waarde in (met behulp van een slepende komma).</li> 
+      >       <li>Subdomeinen. Als u subdomeinen wilt toestaan,\*voert u een sterretje in ( ). Bijvoorbeeld om alle subdomeinen `contoso.com`van `*.contoso.com`, enter .</li>
       >    </ul> 
-      >    Bijvoorbeeld, om toe te staan van toegang voor aanvragen van `www.contoso.com`, alle subdomeinen onder `contoso2.com`, en voert u aanvragen met verwijzende sites leeg is of ontbreekt, `www.contoso.com,*.contoso.com,missing`.</td>
+      >    Als u bijvoorbeeld toegang wilt `www.contoso.com`verlenen voor `contoso2.com`aanvragen van alle subdomeinen onder `www.contoso.com,*.contoso.com,missing`en aanvragen met lege of ontbrekende verwijzers, voert u in .</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_ref_deny</b></td>
-      >    <td>Hiermee worden aanvragen van de opgegeven verwijzende site geweigerd. De implementatie is hetzelfde als de <b>ec_ref_allow</b> parameter. Als een verwijzende site aanwezig is in zowel de <b>ec_ref_allow</b> en <b>ec_ref_deny</b> parameters, de <b>ec_ref_allow</b> parameter voorrang.</td>
+      >    <td>Weigert verzoeken van de opgegeven verwijzer. De implementatie is hetzelfde als de <b>parameter ec_ref_allow.</b> Als een verwijzer aanwezig is in zowel de <b>ec_ref_allow</b> als <b>ec_ref_deny</b> parameters, heeft de <b>parameter ec_ref_allow</b> voorrang.</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_proto_allow</b></td> 
-      >    <td>U kunt alleen aanvragen van het opgegeven protocol. Geldige waarden zijn `http`, `https`, of `http,https`.</td>
+      >    <td>Hiermee kunnen alleen aanvragen van het opgegeven protocol worden ingediend. Geldige waarden `http` `https`zijn `http,https`, , of .</td>
       > </tr>
       > <tr>
       >    <td><b>ec_proto_deny</b></td>
-      >    <td>Hiermee worden aanvragen van het opgegeven protocol geweigerd. De implementatie is hetzelfde als de <b>ec_proto_allow</b> parameter. Als een protocol aanwezig in zowel is de <b>ec_proto_allow</b> en <b>ec_proto_deny</b> parameters, de <b>ec_proto_allow</b> parameter voorrang.</td>
+      >    <td>Weigert verzoeken van het opgegeven protocol. De implementatie is hetzelfde als de <b>parameter ec_proto_allow.</b> Als een protocol aanwezig is in zowel de <b>ec_proto_allow-</b> als <b>ec_proto_deny</b> parameters, heeft de <b>parameter ec_proto_allow</b> voorrang.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_clientip</b></td>
-      >    <td>Toegang beperkt tot de IP-adres van de opgegeven aanvrager. Zowel IPV4 als IPV6 worden ondersteund. U kunt een aanvraag voor één IP-adres of IP-adressen die zijn gekoppeld aan een specifiek subnet opgeven. Bijvoorbeeld, `11.22.33.0/22` kunnen aanvragen van IP-adressen 11.22.32.1-11.22.35.254.</td>
+      >    <td>Beperkt de toegang tot het IP-adres van de opgegeven aanvrager. Zowel IPV4 als IPV6 worden ondersteund. U één IP-adres met één aanvraag of IP-adressen opgeven die zijn gekoppeld aan een specifiek subnet. Hiermee worden `11.22.33.0/22` bijvoorbeeld aanvragen van IP-adressen 11.22.32.1 tot 11.22.35.254.</td>
       > </tr>
       > </table>
 
-   5. Nadat u klaar bent met het invoeren van parameterwaarden voor versleuteling, selecteert u een sleutel voor het versleutelen van (als u zowel de primaire en een back-upsleutel hebt gemaakt) van de **sleutel te versleutelen** lijst.
+   5. Nadat u klaar bent met het invoeren van parameterwaarden voor versleuteling, selecteert u een sleutel om te versleutelen (als u zowel een primaire als een back-upsleutel hebt gemaakt) in de lijst **Sleutel tot versleutelen.**
     
-   6. Selecteer een versleutelingsversie van de **Versleutelingsversie** lijst: **V2** voor versie 2 of **V3** voor versie 3 (aanbevolen). 
+   6. Selecteer een versleutelingsversie in de lijst **Versleutelingsversie:** **V2** voor versie 2 of **V3** voor versie 3 (aanbevolen). 
 
-   7. Selecteer **versleutelen** om het token te genereren.
+   7. Selecteer **Versleutelen** om het token te genereren.
 
-      Nadat het token is gegenereerd, wordt deze weergegeven in de **gegenereerd Token** vak. Voor het gebruik van het token, voegt u deze als een queryreeks aan het einde van het bestand in uw URL-pad. Bijvoorbeeld `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
+      Nadat het token is gegenereerd, wordt het weergegeven in het vak **Gegenereerde token.** Als u het token wilt gebruiken, wordt het toegevoegd als een querytekenreeks aan het einde van het bestand in uw URL-pad. Bijvoorbeeld `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-   8. Test indien gewenst uw token met het hulpprogramma decoderen zodat u de parameters van uw token kunt bekijken. Plak de waarde voor de token in de **Token voor het ontsleutelen van** vak. Selecteer de versleutelingssleutel te gebruiken van de **sleutel te ontsleutelen** lijst en selecteer vervolgens **ontsleutelen**.
+   8. Test eventueel uw token met het gereedschap decoderen, zodat u de parameters van uw token bekijken. Plak de tokenwaarde in het vak **Token naar Decoderen.** Selecteer de versleutelingssleutel die u wilt gebruiken in de lijst **Sleutel tot decoderen** en selecteer **Vervolgens Decoderen**.
 
-      Nadat het token wordt ontsleuteld, de volgende parameters worden weergegeven in de **oorspronkelijke Parameters** vak.
+      Nadat het token is gedecodeerd, worden de parameters weergegeven in het vak **Oorspronkelijke parameters.**
 
-   9. (Optioneel) pas het type antwoordcode dat wordt geretourneerd wanneer een aanvraag wordt geweigerd. Selecteer **ingeschakeld**, selecteer vervolgens de responscode van de **antwoordcode** lijst. **De headernaam** wordt automatisch ingesteld op **locatie**. Selecteer **opslaan** voor het implementeren van de nieuwe antwoordcode. Voor bepaalde responscodes, u moet ook de URL opgeven van de foutpagina weergegeven in de **headerwaarde** vak. De **403** antwoordcode (verboden) is standaard geselecteerd. 
+   9. Past eventueel het type antwoordcode aan dat wordt geretourneerd wanneer een aanvraag wordt geweigerd. Selecteer **Ingeschakeld**en selecteer vervolgens de antwoordcode in de lijst **Antwoordcode.** **Koptekstnaam** wordt automatisch ingesteld op **Locatie**. Selecteer **Opslaan** om de nieuwe antwoordcode te implementeren. Voor bepaalde antwoordcodes moet u ook de URL van uw foutpagina invoeren in het vak **Koptekstwaarde.** De **responscode van 403** (Verboden) is standaard geselecteerd. 
 
-3. Onder **HTTP grote**, selecteer **regels-Engine**. U de regelengine gebruiken voor het definiëren van paden voor het toepassen van de functie, de functie tokenverificatie inschakelen en extra token verificatie-gerelateerde functies inschakelen. Zie voor meer informatie, [verwijzing regelengine](cdn-rules-engine-reference.md).
+3. Selecteer Rules **Engine**onder **HTTP Large**. U gebruikt de regelsengine om paden te definiëren om de functie toe te passen, de tokenverificatiefunctie in te schakelen en extra tokenverificatiegerelateerde mogelijkheden in te schakelen. Zie [Verwijzing van de engine rules .](cdn-rules-engine-reference.md)
 
-   1. Selecteer een bestaande regel of een nieuwe regel voor het definiëren van de asset of het pad voor die u wilt toepassen van tokenverificatie maken. 
-   2. Als tokenverificatie voor een regel, schakelt **[Token Authentication](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** uit de **functies** lijst en selecteer vervolgens **ingeschakeld**. Selecteer **Update** als u een regel wilt bijwerken of **toevoegen** als u een regel wilt maken.
+   1. Selecteer een bestaande regel of maak een nieuwe regel om het element of pad te definiëren waarvoor u tokenverificatie wilt toepassen. 
+   2. Als u tokenverificatie op een regel wilt inschakelen, selecteert u **[Token Auth](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** in de lijst **Onderdelen** en selecteert u **Ingeschakeld**. Selecteer **Bijwerken** als u een regel bijwerkt of **Toevoegen** als u een regel maakt.
         
-      ![Voorbeeld van CDN regels-engine tokenverificatie inschakelen](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
+      ![CDN-regels engine token authenticatie inschakelen voorbeeld](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
-4. U kunt ook aanvullende verificatie-gerelateerde functies token inschakelen in de regelengine. Als u wilt inschakelen op een van de volgende functies, selecteert u deze in de **functies** lijst en selecteer vervolgens **ingeschakeld**.
+4. In de regelsengine u ook extra tokenverificatiegerelateerde functies inschakelen. Als u een van de volgende functies wilt inschakelen, selecteert u deze in de lijst **Onderdelen** en selecteert u **Ingeschakeld**.
     
-   - **[Autorisatiecode denial-of token](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)** : Bepaalt het type van de reactie die aan een gebruiker wordt geretourneerd wanneer een aanvraag wordt geweigerd. Hier regels overschrijven de responscode instellen in de **aangepaste denial-of verwerking** sectie op de verificatiepagina op basis van tokens.
+   - **[Token Auth Denial Code:](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)** bepaalt het type reactie dat wordt geretourneerd aan een gebruiker wanneer een verzoek wordt geweigerd. Regels die hier zijn ingesteld, overschrijven de antwoordcode die is ingesteld in de sectie **Aangepaste ontkenningsafhandeling** op de verificatiepagina op basis van tokens.
 
-   - **[Auth-token is hoofdlettergevoeligheid niet URL](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** : Hiermee bepaalt u of de URL die wordt gebruikt voor het valideren van het token hoofdlettergevoelig is.
+   - **[Url-aanvraag voor token-auth negeren:](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)** bepaalt of de URL die wordt gebruikt om het token te valideren, hoofdlettergevoelig is.
 
-   - **[De Auth Parameter-token](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)** : Naam van het token Authentication queryreeks-parameter die wordt weergegeven in de aangevraagde URL. 
+   - **[Token Auth-parameter:](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)** wijzigt de parameter token auth-querytekenreeks die wordt weergegeven in de gevraagde URL. 
         
-     ![Voorbeeld van instellingen voor tokenverificatie CDN de regelengine](./media/cdn-token-auth/cdn-rules-engine2.png)
+     ![Voorbeeld van het voorbeeld van de instellingen voor verificatie van de cdn-regels-token](./media/cdn-token-auth/cdn-rules-engine2.png)
 
-5. U kunt uw token aanpassen door de toegang tot de broncode in [GitHub](https://github.com/VerizonDigital/ectoken).
+5. U uw token aanpassen door toegang te krijgen tot broncode in [GitHub.](https://github.com/VerizonDigital/ectoken)
    Beschikbare talen zijn onder andere:
     
    - C
@@ -197,6 +197,6 @@ Het volgende stroomdiagram wordt beschreven hoe een clientaanvraag door Azure CD
    - Java
    - Python 
 
-## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN-functies en prijzen-provider
+## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN-functies en providerprijzen
 
-Zie voor meer informatie over functies [Azure CDN-producteigenschappen](cdn-features.md). Zie voor meer informatie over de prijzen [prijzen van Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
+Zie [Azure CDN-productfuncties](cdn-features.md)voor informatie over functies. Zie Prijzen van [het Content Delivery Network voor](https://azure.microsoft.com/pricing/details/cdn/)informatie over prijzen.

@@ -1,6 +1,6 @@
 ---
-title: Prestatie-overwegingen voor Azure NetApp Files | Microsoft Docs
-description: Beschrijving van prestatie-overwegingen voor Azure NetApp bestanden.
+title: Prestatieoverwegingen voor Azure NetApp-bestanden | Microsoft Documenten
+description: Beschrijft prestatieoverwegingen voor Azure NetApp-bestanden.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,53 +15,53 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
 ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67454137"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Prestatie-overwegingen voor Azure NetApp Files
 
-De [doorvoerlimiet](azure-netapp-files-service-levels.md) voor een volume wordt bepaald door een combinatie van het quotum dat is toegewezen aan het volume en de service level geselecteerd. Wanneer u Prestatieplannen over Azure NetApp bestanden maken, moet u inzicht in verschillende overwegingen. 
+De [doorvoerlimiet](azure-netapp-files-service-levels.md) voor een volume wordt bepaald door een combinatie van het quotum dat is toegewezen aan het volume en het geselecteerde serviceniveau. Wanneer u prestatieplannen maakt voor Azure NetApp-bestanden, moet u verschillende overwegingen begrijpen. 
 
-## <a name="quota-and-throughput"></a>Quota en doorvoer  
+## <a name="quota-and-throughput"></a>Quotum en doorvoer  
 
-De doorvoerlimiet voor de is slechts één factor van de werkelijke prestaties die zal worden gerealiseerd.  
+De doorvoerlimiet is slechts één bepalende factor voor de werkelijke prestaties die zullen worden gerealiseerd.  
 
-Prestatieoverwegingen voor typische opslag, met inbegrip van lezen en schrijven combinatie, de grootte, willekeurige of opeenvolgende patronen en vele andere factoren dragen bij aan de totale prestaties die worden geleverd.  
+Typische overwegingen op het het uitvoeren van opslagprestaties, waaronder lees- en schrijfmix, de overdrachtsgrootte, willekeurige of sequentiële patronen en vele andere factoren zullen bijdragen aan de totale geleverde prestaties.  
 
-De maximale empirische doorvoer die is waargenomen in de testfase is 4.500 MiB/s.  Op de Premium storage-laag wordt een volume-quotum van 70.31 TiB een doorvoerlimiet hoog genoeg is voor dit niveau van de prestaties van een ingericht.  
+De maximale empirische doorvoer die is waargenomen in het testen is 4.500 MiB/s.  Op de opslaglaag Premium biedt een volumequotum van 70,31 TiB een doorvoerlimiet die hoog genoeg is om dit prestatieniveau te bereiken.  
 
-Als u volume quotum bedragen dan 70.31 TiB toewijst overweegt, kan extra quota worden toegewezen aan een volume voor het opslaan van aanvullende gegevens. Het toegevoegde quotum wordt echter niet resulteren in een verdere toename van de werkelijke doorvoer.  
+Als u overweegt volumequotumbedragen toe te wijzen boven 70,31 TiB, kan een extra quotum worden toegewezen aan een volume voor het opslaan van aanvullende gegevens. Het toegevoegde quotum zal echter niet leiden tot een verdere toename van de werkelijke doorvoer.  
 
-Zie [prestaties benchmarks voor Azure NetApp Files](azure-netapp-files-performance-benchmarks.md) voor meer informatie.
+Zie [Prestatiebenchmarks voor Azure NetApp-bestanden](azure-netapp-files-performance-benchmarks.md) voor meer informatie.
 
-## <a name="overprovisioning-the-volume-quota"></a>Overmatige inrichting van het volume-quotum
+## <a name="overprovisioning-the-volume-quota"></a>Overprovisioning van het volumequotum
 
-Als de prestaties van de workload doorvoerlimiet afhankelijk is, is het mogelijk om te overprovision van het volume-quotum voor het instellen van een hogere doorvoer en betere prestaties.  
+Als de prestaties van een werkbelasting doorvoerlimiet gebonden zijn, is het mogelijk om het volumequotum te overprovisioneren om een hoger doorvoerniveau in te stellen en hogere prestaties te bereiken.  
 
-Bijvoorbeeld, als een volume in de Premium storage-laag slechts 500 GiB van gegevens heeft, maar is 128 MiB/s aan doorvoer vereist, kunt u instellen de quota in 2 TiB zodat het doorvoerniveau van de dienovereenkomstig is ingesteld (64 MiB/s per TB * 2 TiB = 128 MiB/s).  
+Als een volume in de Premium-opslaglaag bijvoorbeeld slechts 500 GiB-gegevens heeft, maar 128 MiB/s doorvoer vereist, u het quotum instellen op 2 TiB, zodat het doorvoerniveau dienovereenkomstig wordt ingesteld (64 MiB/s per TB * 2 TiB = 128 MiB/s).  
 
-Als u een volume voor het bereiken van een hogere doorvoer consistent overprovision, kunt u overwegen een hoger serviceniveau in plaats daarvan.  In het bovenstaande voorbeeld kunt u de dezelfde doorvoerlimiet met de helft van het volume-quotum bereiken met behulp van de Ultra opslaglaag in plaats daarvan (128 MiB/s per TiB * 1 TiB = 128 MiB/s).
+Als u een volume consistent overprovisiont voor het bereiken van een hogere doorvoer, u in plaats daarvan overwegen een hoger serviceniveau te gebruiken.  In het bovenstaande voorbeeld u dezelfde doorvoerlimiet bereiken met de helft van het volumequotum door in plaats daarvan de Ultra-opslaglaag (128 MiB/s per TiB * 1 TiB = 128 MiB/s) te gebruiken.
 
-## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dynamisch verhogen of verlagen volume quotum
+## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dynamisch verhogen of verlagen van volumequota
 
-Als uw prestatievereisten tijdelijke aard is, of als u beschikt over meer prestatiebehoeften voor een vaste periode, u dynamisch kunt vergroten of verkleinen van volume quota om aan te passen onmiddellijk de maximale doorvoer.  Houd rekening met de volgende overwegingen: 
+Als uw prestatievereisten tijdelijk van aard zijn of als u gedurende een bepaalde periode de prestatiebehoefte hebt verhoogd, u het volumequotum dynamisch verhogen of verlagen om de doorvoerlimiet onmiddellijk aan te passen.  Let op de volgende overwegingen: 
 
-* Volume quota kan worden vergroot of verkleind hoeft u geen i/o onderbreken en toegang tot het volume niet wordt onderbroken of is beïnvloed.  
+* Volumequota kunnen worden verhoogd of verlaagd zonder dat io hoeft te worden onderbroken en de toegang tot het volume wordt niet onderbroken of beïnvloed.  
 
-    U kunt het quotum aanpassen tijdens een actieve i/o-transactie op basis van een volume.  Houd er rekening mee dat volume quotum kan nooit onder het bedrag aan logische gegevens die zijn opgeslagen in het volume worden verlaagd.
+    U het quotum tijdens een actieve I/O-transactie aanpassen aan een volume.  Houd er rekening mee dat het volumequotum nooit lager kan zijn dan de hoeveelheid logische gegevens die in het volume wordt opgeslagen.
 
-* Wanneer het quotum is gewijzigd, is de overeenkomstige wijziging in doorvoerlimiet nagenoeg onmiddellijke. 
+* Wanneer het volumequotum wordt gewijzigd, is de bijbehorende wijziging in doorvoerlimiet vrijwel onmiddellijk. 
 
-    De wijziging niet onderbreken of invloed op de volumetoegang of i/o.  
+    De wijziging onderbreekt of beïnvloedt de volumetoegang of I/O niet.  
 
-* Aanpassen volume quotum vereist een wijziging in de grootte van de capaciteit van toepassingen.  
+* Voor het aanpassen van het volumequotum is een wijziging in de grootte van de capaciteitsgroep vereist.  
 
-    De grootte van de capaciteit van toepassingen kan worden aangepast dynamisch en zonder enige impact op de beschikbaarheid van volumes of i/o.
+    De grootte van de capaciteitspool kan dynamisch en zonder gevolgen voor de beschikbaarheid van het volume of I/O worden aangepast.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Serviceniveau's voor Azure NetApp Files](azure-netapp-files-service-levels.md)
-- [Referentiepunten voor prestaties voor Azure NetApp-bestanden](azure-netapp-files-performance-benchmarks.md)
+- [Prestatiebenchmarks voor Azure NetApp Files](azure-netapp-files-performance-benchmarks.md)

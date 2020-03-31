@@ -14,3 +14,15 @@
       href: ./create.md
     - name: Uw resources beheren
       href: ./manage.md
+- name: Naslaginformatie
+  items:
+    - name: Azure CLI
+      href: /cli/azure/account/management-group
+    - name: Azure PowerShell
+      href: '/powershell/module/az.resources/#resources'
+    - name: Azure-SDK voor .NET
+      href: /dotnet/api/overview/azure/managementgroups
+    - name: Azure SDK voor Node
+      href: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - name: REST
+      href: /rest/api/resources/managementgroups

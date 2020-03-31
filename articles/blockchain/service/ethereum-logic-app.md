@@ -1,287 +1,287 @@
 ---
-title: Ethereum Block Chain-connector gebruiken met Azure Logic Apps-Azure Block Chain-Service
-description: Gebruik de Ethereum Block Chain-connector met Azure Logic Apps om slimme contract functies te activeren en te reageren op slimme contract gebeurtenissen.
+title: Ethereum Blockchain-connector gebruiken met Azure Logic Apps - Azure Blockchain-service
+description: Gebruik de Ethereum Blockchain-connector met Azure Logic Apps om slimme contractfuncties te activeren en te reageren op slimme contractgebeurtenissen.
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: chrisseg
 ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74325224"
 ---
-# <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>De Ethereum Block Chain-connector gebruiken met Azure Logic Apps
+# <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>De Ethereum Blockchain-connector gebruiken met Azure Logic Apps
 
-Gebruik de [Ethereum Block Chain-connector](https://docs.microsoft.com/connectors/blockchainethereum/) met [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) om slimme contract acties uit te voeren en te reageren op slimme contract gebeurtenissen. Stel bijvoorbeeld dat u een REST-gebaseerde micro service wilt maken die gegevens uit een Block Chain-boek houding retourneert. Door gebruik te maken van een logische app, kunt u HTTP-aanvragen accepteren die query's uitvoeren op gegevens die zijn opgeslagen in een Block Chain-groot boek.
+Gebruik de [Ethereum Blockchain-connector](https://docs.microsoft.com/connectors/blockchainethereum/) met [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) om slimme contractacties uit te voeren en te reageren op slimme contractgebeurtenissen. Stel dat u een op rust gebaseerde microservice wilt maken die informatie uit een blockchain-grootboek retourneert. Door een logische app te gebruiken, u HTTP-verzoeken accepteren die informatie opvragen die is opgeslagen in een blockchain-grootboek.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voltooi de optionele [Snelstartgids: gebruik Visual Studio code om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md). De Snelstartgids helpt u bij het installeren [van Azure Block Chain Development Kit voor Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) en het instellen van uw Block Chain-ontwikkel omgeving.
+Voltooi de optionele vereiste [Quickstart: Gebruik Visual Studio Code om verbinding te maken met een Azure Blockchain Service consortiumnetwerk.](connect-vscode.md) De quickstart begeleidt u al bij het installeren van [Azure Blockchain Development Kit voor Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) en het opzetten van uw blockchain-ontwikkelomgeving.
 
 ## <a name="create-a-logic-app"></a>Een logische app maken
 
-Azure Logic Apps helpt u bij het plannen en automatiseren van bedrijfs processen en werk stromen wanneer u systemen en services moet integreren. Eerst maakt u een logica die gebruikmaakt van de Ethereum Block Chain-connector.
+Azure Logic Apps helpt u bedrijfsprocessen en workflows te plannen en te automatiseren wanneer u systemen en services moet integreren. Eerst maak je een logica die de Ethereum Blockchain-connector gebruikt.
 
-1. Selecteer in [Azure Portal](https://portal.azure.com) **Een resource maken** > **Integratie** > **Logische app**.
-1. Geef onder **logische app maken**Details op over waar u uw logische app maakt. Wanneer u klaar bent, selecteert u **maken**.
+1. Selecteer in [Azure Portal](https://portal.azure.com)**Een resource maken** > **Integratie** > **Logische app**.
+1. Geef **onder Logica-app maken**informatie op waar u uw logische app maken. Nadat u klaar bent, selecteert u **Maken**.
 
-    Zie [automatische werk stromen maken met Azure Logic apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md)voor meer informatie over het maken van logische apps.
+    Zie [Geautomatiseerde werkstromen maken met Azure Logic Apps](../../logic-apps/quickstart-create-first-logic-app-workflow.md)voor meer informatie over het maken van logische apps.
 
-1. Nadat Azure uw app heeft geïmplementeerd, selecteert u de resource van de logische app.
-1. Selecteer in de ontwerp functie voor Logic Apps onder **sjablonen**de optie **lege logische app**.
+1. Nadat Azure uw app heeft geïmplementeerd, selecteert u uw logische app-bron.
+1. Selecteer in de Logic Apps Designer onder **Sjablonen**de optie **Lege logica-app**.
 
 Elke logische app moet beginnen met een trigger, die wordt geactiveerd wanneer er een bepaalde gebeurtenis plaatsvindt of wanneer er aan een bepaalde voorwaarde is voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exemplaar van een logische app dat wordt gestart en de werkstroom uitvoert.
 
-De Ethereum Block Chain-connector heeft één trigger en verschillende acties. Welke trigger of actie u gebruikt, is afhankelijk van uw scenario.
+De Ethereum Blockchain-connector heeft één trigger en verschillende acties. Welke trigger of actie u gebruikt, is afhankelijk van uw scenario.
 
-Als uw werk stroom:
+Als uw werkstroom:
 
-* Hiermee wordt geactiveerd wanneer een gebeurtenis op de Block Chain plaatsvindt, [de gebeurtenis trigger gebruiken](#use-the-event-trigger).
-* Query's uitvoeren of een slim contract implementeren, [acties gebruiken](#use-actions).
-* Volgt een veelvoorkomend scenario, [Genereer een werk stroom met behulp van de Developer Kit](#generate-a-workflow).
+* Hiermee wordt geactiveerd wanneer een gebeurtenis plaatsvindt op de blockchain, [Gebruik de gebeurtenistrigger](#use-the-event-trigger).
+* Query's of implementeert een slim contract, [Acties gebruiken](#use-actions).
+* Volgt een veelvoorkomend scenario, [Een werkstroom genereren met behulp van de ontwikkelaarskit.](#generate-a-workflow)
 
-## <a name="use-the-event-trigger"></a>De gebeurtenis trigger gebruiken
+## <a name="use-the-event-trigger"></a>De gebeurtenistrigger gebruiken
 
-Gebruik Ethereum Block Chain-gebeurtenis triggers wanneer u wilt dat een logische app wordt uitgevoerd nadat een info contract gebeurtenis plaatsvindt. U wilt bijvoorbeeld een e-mail verzenden wanneer een slimme contract functie wordt aangeroepen.
+Gebruik Ethereum Blockchain-gebeurtenistriggers wanneer u een logische app wilt uitvoeren nadat een slimme contractgebeurtenis optreedt. U wilt bijvoorbeeld een e-mail verzenden wanneer een slimme contractfunctie wordt aangeroepen.
 
-1. Selecteer in de Logic Apps Designer de Ethereum Block Chain-connector.
-1. Selecteer op het tabblad **Triggers** **Wanneer een info contract gebeurtenis optreedt**.
-1. Wijzig of [Maak een API-verbinding met de](#create-an-api-connection) Azure Block Chain-service.
-1. Voer de details in van het slimme contract dat u wilt controleren op gebeurtenissen.
+1. Selecteer in de Logic Apps Designer de Ethereum Blockchain-connector.
+1. Selecteer op het tabblad **Triggers** de optie **Wanneer een slimme contractgebeurtenis plaatsvindt**.
+1. Een [API-verbinding met](#create-an-api-connection) Azure Blockchain Service wijzigen of maken.
+1. Voer de details in over het slimme contract dat u wilt controleren op gebeurtenissen.
 
-    ![Logic Apps Designer met eigenschappen van gebeurtenis trigger](./media/ethereum-logic-app/event-properties.png)
+    ![Logic Apps Designer with Event trigger properties Logic Apps Designer with Event trigger properties Logic Apps Designer with Event trigger properties Logic Apps](./media/ethereum-logic-app/event-properties.png)
 
     | Eigenschap | Beschrijving |
     |----------|-------------|
-    | **ABI contract** | Met de ABI (contract Application Binary Interface) worden de Smart contract interfaces gedefinieerd. Zie [Get the contract Abi](#get-the-contract-abi)voor meer informatie. |
-    | **Info contract adres** | Het contract adres is het doel adres van het slimme contract op de Ethereum Block chain. Zie [het contract adres ophalen](#get-the-contract-address)voor meer informatie. |
-    | **Gebeurtenis naam** | Selecteer een slimme contract gebeurtenis om te controleren. De logische app wordt geactiveerd door de gebeurtenis. |
-    | **Interval** en **frequentie** | Selecteer hoe vaak u wilt controleren op de gebeurtenis. |
+    | **Contract ABI** | De contractapplicatie binaire interface (ABI) definieert de smart contract interfaces. Zie [Het contract ABI opvragen](#get-the-contract-abi)voor meer informatie. |
+    | **Slim contractadres** | Het contractadres is het slimme contractbestemmingsadres op de Ethereum-blockchain. Zie [Het contractadres opvragen](#get-the-contract-address)voor meer informatie. |
+    | **Gebeurtenisnaam** | Selecteer een slimme contractgebeurtenis om te controleren. De gebeurtenis activeert de logische app. |
+    | **Interval** en **frequentie** | Selecteer hoe vaak u wilt controleren op het evenement. |
 
 1. Selecteer **Opslaan**.
 
-Als u uw logische app wilt volt ooien, kunt u een nieuwe stap toevoegen waarmee een actie wordt uitgevoerd op basis van de gebeurtenis trigger Ethereum Block chain. U kunt bijvoorbeeld een e-mail bericht verzenden.
+Om uw logica-app te voltooien, u een nieuwe stap toevoegen die een actie uitvoert op basis van de trigger van De Ethereum Blockchain-gebeurtenis. Stuur bijvoorbeeld een e-mail.
 
 ## <a name="use-actions"></a>Acties gebruiken
 
-Gebruik de Ethereum Block Chain-acties wanneer u wilt dat een logische app een actie uitvoert op het block chaine groot boek. Stel dat u een REST-gebaseerde micro service wilt maken die een functie van een slim contract aanroept wanneer een HTTP-aanvraag wordt gedaan bij een logische app.
+Gebruik de Ethereum Blockchain-acties wanneer u een logische app wilt om een actie uit te voeren op het blockchain-grootboek. U wilt bijvoorbeeld een op RUST gebaseerde microservice maken die een slimme contractfunctie aanroept wanneer een HTTP-aanvraag wordt ingediend bij een logische app.
 
-Voor connector acties is een trigger vereist. U kunt een Ethereum Block Chain-connector actie gebruiken als de volgende stap na een trigger, zoals een HTTP-aanvraag trigger voor een micro service.
+Connectoracties vereisen een trigger. U een Ethereum Blockchain-connectoractie gebruiken als de volgende stap na een trigger, zoals een HTTP-aanvraagtrigger voor een microservice.
 
-1. Selecteer in de ontwerp functie voor Logic Apps de optie **nieuwe stap** na een trigger.
-1. Selecteer de Ethereum Block Chain-connector.
-1. Selecteer een van de beschik bare acties op het tabblad **acties** .
+1. Selecteer in de Maker van Logische apps de optie **Nieuwe stap** na een trigger.
+1. Selecteer de Ethereum Blockchain-connector.
+1. Selecteer op het tabblad **Acties** een van de beschikbare acties.
 
-    ![Logic Apps Designer met acties-eigenschappen](./media/ethereum-logic-app/action-properties.png)
+    ![Logic Apps Designer with Actions eigenschappen](./media/ethereum-logic-app/action-properties.png)
 
-1. Wijzig of [Maak een API-verbinding met de](#create-an-api-connection) Azure Block Chain-service.
-1. Afhankelijk van de actie die u hebt gekozen, geeft u de volgende details op over de functie van het slimme contract.
+1. Een [API-verbinding met](#create-an-api-connection) Azure Blockchain Service wijzigen of maken.
+1. Afhankelijk van de actie die u hebt gekozen, geeft u de volgende details over uw slimme contractfunctie.
 
     | Eigenschap | Beschrijving |
     |----------|-------------|
-    | **ABI contract** | In het contract ABI worden de slimme contract interfaces gedefinieerd. Zie [Get the contract Abi](#get-the-contract-abi)voor meer informatie. |
-    | **Byte code van contract** | De gecompileerde byte code van het Smart contract. Zie [Get the contract byte code](#get-the-contract-bytecode)(Engelstalig) voor meer informatie. |
-    | **Info contract adres** | Het contract adres is het doel adres van het slimme contract op de Ethereum Block chain. Zie [het contract adres ophalen](#get-the-contract-address)voor meer informatie. |
-    | **Naam van de functie voor slimme contracten** | Selecteer de naam van de functie voor de actie. De lijst wordt ingevuld op basis van de details in het contract ABI. |
+    | **Contract ABI** | Het contract ABI definieert de slimme contractinterfaces. Zie [Het contract ABI opvragen](#get-the-contract-abi)voor meer informatie. |
+    | **Contractbytecode** | De gecompileerde slimme contractbytecode. Zie [De contractbytecode opvragen](#get-the-contract-bytecode)voor meer informatie . |
+    | **Slim contractadres** | Het contractadres is het slimme contractbestemmingsadres op de Ethereum-blockchain. Zie [Het contractadres opvragen](#get-the-contract-address)voor meer informatie. |
+    | **Naam van de functie Slim contract** | Selecteer de naam van de functie Slimme contract voor de actie. De lijst wordt ingevuld op basis van de details in het contract ABI. |
 
-    Na het selecteren van een naam van een slimme contract functie ziet u mogelijk de vereiste velden voor functie parameters. Voer de waarden of dynamische inhoud in die vereist zijn voor uw scenario.
+    Nadat u een naam van een slimme contractfunctie hebt geselecteerd, ziet u mogelijk vereiste velden voor functieparameters. Voer de waarden of dynamische inhoud in die nodig zijn voor uw scenario.
 
-U kunt nu uw logische app gebruiken. Wanneer de logische app-gebeurtenis wordt geactiveerd, wordt de actie Ethereum Block Chain uitgevoerd. Bijvoorbeeld, een HTTP-aanvraag trigger voert een Ethereum Block Chain actie uit om een Smart contract status waarde op te vragen. Deze query resulteert in een HTTP-antwoord dat de waarde retourneert.
+U nu uw logica-app gebruiken. Wanneer de gebeurtenis logische app wordt geactiveerd, wordt de Ethereum Blockchain-actie uitgevoerd. Een HTTP-aanvraagtrigger voert bijvoorbeeld een Ethereum-blockchain-actie uit om een slimme contractstatuswaarde op te vragen. Deze query resulteert in een HTTP-antwoord dat de waarde retourneert.
 
-## <a name="generate-a-workflow"></a>Een werk stroom genereren
+## <a name="generate-a-workflow"></a>Een werkstroom genereren
 
-De Azure Block Chain Development Kit voor Ethereum Visual Studio code extension kan werk stromen voor logische apps genereren voor veelvoorkomende scenario's. Er zijn vier scenario's beschikbaar:
+De Azure Blockchain Development Kit voor Ethereum Visual Studio Code-extensie kan logische app-workflows genereren voor veelvoorkomende scenario's. Er zijn vier scenario's beschikbaar:
 
-* Gegevens publiceren naar een Azure SQL Database-exemplaar
-* Gebeurtenis publiceren naar een exemplaar van Azure Event Grid of Azure Service Bus
-* Rapport publicatie
-* Micro service op REST basis
+* Het publiceren van gegevens naar een Azure SQL-database-exemplaar
+* Gebeurtenispublicatie naar een instantie van Azure Event Grid of Azure Service Bus
+* Publicatie van rapport
+* REST-gebaseerde microservice
 
- De Azure Block Chain Development Kit maakt gebruik van truffle om Block Chain-ontwikkeling te vereenvoudigen. Als u een logische app op basis van een slim contract wilt genereren, hebt u een Truffle-oplossing nodig voor het slimme contract. U hebt ook een verbinding met uw Azure Block Chain Service consortium-netwerk nodig. Zie [Visual Studio code gebruiken om verbinding te maken met een Azure Block Chain Service consortium Network Quick](connect-vscode.md)start voor meer informatie.
+ De Azure Blockchain Development Kit gebruikt Truffel om de ontwikkeling van blockchain te vereenvoudigen. Om een logische app te genereren op basis van een slim contract, heb je een Truffel-oplossing nodig voor het slimme contract. U hebt ook een verbinding nodig met uw Azure Blockchain Service-consortiumnetwerk. Zie [Visual Studio Code gebruiken om snel verbinding te maken met een Azure Blockchain Service consortiumnetwerk](connect-vscode.md)voor meer informatie.
 
-Met de volgende stappen wordt bijvoorbeeld een op REST gebaseerde micro service Logic-app gegenereerd op basis van het Smart-contract **HelloBlockchain** Quick Start:
+De volgende stappen genereren bijvoorbeeld een REST-gebaseerde microservicelogische app op basis van het smart contract voor quickstart **HelloBlockchain:**
 
-1. Vouw in de Visual Studio code Explorer-zijbalk de map **contracten** in uw oplossing uit.
-1. Klik met de rechter muisknop op **HelloBlockchain. Sol** en selecteer micro **Services voor slimme contracten genereren** in het menu.
+1. Vouw in de zijbalk van de Visual Studio Code explorer de **map contracten** in uw oplossing uit.
+1. Klik met de rechtermuisknop op **HelloBlockchain.sol** en selecteer **Microservices genereren voor slimme contracten** in het menu.
 
-    ![Venster Visual Studio code met de selectie micro Services voor slimme contracten genereren](./media/ethereum-logic-app/generate-logic-app.png)
+    ![Deelvenster Visual Studio Code met de selectie Microservices genereren voor slimme contracten](./media/ethereum-logic-app/generate-logic-app.png)
 
-1. Selecteer in het opdracht palet **Logic app**.
-1. Voer het **contract adres**in. Zie [het contract adres ophalen](#get-the-contract-address)voor meer informatie.
-1. Selecteer het Azure-abonnement en de resource groep voor de logische app.
+1. Selecteer **Logic App**in het opdrachtpalet .
+1. Voer het **contractadres in**. Zie [Het contractadres opvragen](#get-the-contract-address)voor meer informatie.
+1. Selecteer de Azure-abonnements- en brongroep voor de logische app.
 
-    De configuratie van de logische app en de code bestanden worden gegenereerd in de **generatedLogicApp** -map.
+    De configuratie- en codebestanden van de logische app worden gegenereerd in de **map generatedLogicApp.**
 
-1. Bekijk de **generatedLogicApp/HelloBlockchain-** map. Er is een JSON-bestand van de logische app voor elke functie, gebeurtenis en eigenschap van een slim contract.
-1. Open de **generatedLogicApp/HelloBlockchain/service/eigenschap. Bestand RequestMessage. logicapp. json** en kopieer de inhoud.
+1. Bekijk de **map generatedLogicApp/HelloBlockchain.** Er is een JSON-bestand voor logica-apps voor elke slimme contractfunctie, gebeurtenis en eigenschap.
+1. Open de **eigenschap generatedLogicApp/HelloBlockchain/Service/property. RequestMessage.logicapp.json** bestand en kopieer de inhoud.
 
-    ![JSON-bestand met te kopiëren code](./media/ethereum-logic-app/requestmessage.png)
+    ![JSON-bestand met code om te kopiëren](./media/ethereum-logic-app/requestmessage.png)
 
-1. Selecteer in uw logische app de **code weergave Logic app**. Vervang de bestaande JSON door de gegenereerde JSON van de logische app.
+1. Selecteer in uw logische app **de codeweergave Logische app**. Vervang de bestaande JSON door de gegenereerde logica-app JSON.
 
-    ![Code weergave van logische apps met nieuwe vervangen app code](./media/ethereum-logic-app/code-view.png)
+    ![Logische app-codeweergave met nieuwe vervangen app-code](./media/ethereum-logic-app/code-view.png)
 
-1. Selecteer **Designer** om over te scha kelen naar de ontwerp weergave.
-1. De logische app bevat de basis stappen voor het scenario. U moet echter de configuratie gegevens voor de Ethereum Block Chain-connector bijwerken.
-1. Selecteer de stap **verbindingen** en wijzig of [Maak een API-verbinding](#create-an-api-connection) met de Azure Block Chain-service.
+1. Selecteer **Ontwerper** om over te schakelen naar de ontwerpweergave.
+1. De logische app bevat de basisstappen voor het scenario. U moet echter de configuratiegegevens voor de Ethereum Blockchain-connector bijwerken.
+1. Selecteer de stap **Verbindingen** en wijzig of [maak een API-verbinding met](#create-an-api-connection) Azure Blockchain Service.
 
-    ![Ontwerp weergave met de selectie verbindingen](./media/ethereum-logic-app/microservice-logic-app.png)
+    ![Ontwerpweergave met de selectie Verbindingen](./media/ethereum-logic-app/microservice-logic-app.png)
 
-1. U kunt nu uw logische app gebruiken. Als u de micro service op REST basis wilt testen, geeft u een HTTP POST-aanvraag voor de URL van de logische app-aanvraag. Kopieer de **http post-URL-** inhoud van de stap **Wanneer een HTTP-aanvraag is ontvangen** .
+1. U nu uw logica-app gebruiken. Als u de op REST gebaseerde microservice wilt testen, geeft u een HTTP POST-verzoek uit aan de URL van de logische app-aanvraag. Kopieer de INHOUD van de **HTTP-POST-URL** van de stap **Wanneer een HTTP-aanvraag wordt ontvangen.**
 
-    ![Deel venster Logic Apps Designer met de HTTP POST-URL](./media/ethereum-logic-app/post-url.png)
+    ![Deelvenster Logische apps-ontwerper met de HTTP-POST-URL](./media/ethereum-logic-app/post-url.png)
 
-1. Gebruik krul om een HTTP POST-aanvraag te maken. Vervang de tekst van de tijdelijke aanduiding *\<URL voor HTTP POST\>* door de URL van de vorige stap.
+1. Gebruik cURL om een HTTP POST-aanvraag te maken. Vervang de URL van de tijdelijke * \<aanduidinghttp post\> * door de URL uit de vorige stap.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
     ```
 
-    De krul opdracht retourneert een reactie van de logische app. In dit geval is het antwoord de uitvoer van de **RequestMessage** -functie van het slimme contract.
+    Met de opdracht cURL retourneert u een antwoord van de logische app. In dit geval is het antwoord de uitvoer van de smart contract-functie **RequestMessage.**
 
-    ![Code-uitvoer van de RequestMessage-functie voor slimme contracten](./media/ethereum-logic-app/curl.png)
+    ![Codeuitvoer van de smartcontractfunctie RequestMessage](./media/ethereum-logic-app/curl.png)
 
-Zie de [pagina Azure Block Chain Development Kit voor Ethereum wiki](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)voor meer informatie over het gebruik van de Development Kit.
+Zie de [Wikipagina azure blockchain-ontwikkeling voor Ethereum voor](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)meer informatie over het gebruik van de ontwikkelingskit.
 
 ## <a name="create-an-api-connection"></a>Een API-verbinding maken
 
-Er is een API-verbinding met een Block Chain vereist voor de Ethereum Block Chain-connector. U kunt de API-connector gebruiken voor meerdere Logic apps. Sommige eigenschappen zijn vereist en andere zijn afhankelijk van uw scenario.
+Een API-verbinding met een blockchain is vereist voor de Ethereum Blockchain-connector. U de API-connector voor meerdere logische apps gebruiken. Sommige eigenschappen zijn vereist en andere zijn afhankelijk van uw scenario.
 
 > [!IMPORTANT]
-> Een persoonlijke sleutel of account adres en wacht woord zijn vereist voor het maken van trans acties in een Block chain. Er is slechts één vorm van verificatie nodig. U hoeft niet zowel de persoonlijke sleutel als de account gegevens op te geven. Voor het uitvoeren van een query op contracten is geen trans actie vereist. Als u acties gebruikt waarmee de contract status wordt opgevraagd, zijn de persoonlijke sleutel of het account adres en het wacht woord niet vereist.
+> Een privésleutel of accountadres en wachtwoord zijn vereist voor het maken van transacties op een blockchain. Er is slechts één vorm van authenticatie nodig. U hoeft niet zowel de privésleutel als de accountgegevens op te geven. Voor het opvragen van contracten is geen transactie vereist. Als u acties gebruikt die de contractstatus van query's uitvoeren, zijn de privésleutel of het accountadres en het wachtwoord niet vereist.
 
-Om u te helpen bij het instellen van een verbinding met een Azure Block Chain service-lid, heeft de volgende lijst mogelijk eigenschappen die u mogelijk nodig hebt, afhankelijk van uw scenario.
+Om u te helpen bij het instellen van een verbinding met een Azure Blockchain Service-lid, heeft de volgende lijst mogelijke eigenschappen die u mogelijk nodig hebt, afhankelijk van uw scenario.
 
 | Eigenschap | Beschrijving |
 |----------|-------------|
-|**Verbindingsnaam** | De naam van de API-verbinding. Vereist. |
-|**RPC-eind punt Ethereum** | Het HTTP-adres van het knoop punt van de Azure Block Chain Service-trans actie. Vereist. Zie [het RPC-eind punt ophalen](#get-the-rpc-endpoint)voor meer informatie. |
-|**Persoonlijke sleutel** | Persoonlijke sleutel van het Ethereum-account. De persoonlijke sleutel of het account adres en het wacht woord zijn vereist voor trans acties. Zie [de persoonlijke sleutel ophalen](#get-the-private-key)voor meer informatie. |
-|**Account adres** | Adres van lid van Azure Block Chain Service-account. De persoonlijke sleutel of het account adres en het wacht woord zijn vereist voor trans acties. Zie [het account adres ophalen](#get-the-account-address)voor meer informatie. |
-|**Account wachtwoord** | Het wacht woord voor het account wordt ingesteld wanneer u het lid maakt. Zie [Ethereum-account](consortium.md#ethereum-account)voor meer informatie over het opnieuw instellen van het wacht woord.|
+|**Verbindingsnaam** | Naam van de API-verbinding. Vereist. |
+|**Ethereum RPC-eindpunt** | HTTP-adres van het transactieknooppunt Azure Blockchain Service. Vereist. Zie [Het RPC-eindpunt ophalen](#get-the-rpc-endpoint)voor meer informatie. |
+|**Persoonlijke sleutel** | Ethereum account privésleutel. Privésleutel of accountadres en wachtwoord zijn vereist voor transacties. Zie [De privésleutel ophalen](#get-the-private-key)voor meer informatie. |
+|**Accountadres** | Azure Blockchain Service-accountadres. Privésleutel of accountadres en wachtwoord zijn vereist voor transacties. Zie [Het accountadres opvragen](#get-the-account-address)voor meer informatie. |
+|**Accountwachtwoord** | Het accountwachtwoord wordt ingesteld wanneer u het lid maakt. Zie [Ethereum-account](consortium.md#ethereum-account)voor informatie over het opnieuw instellen van het wachtwoord.|
 
-## <a name="get-the-rpc-endpoint"></a>Het RPC-eind punt ophalen
+## <a name="get-the-rpc-endpoint"></a>Het RPC-eindpunt downloaden
 
-Het RPC-eindpunt adres van de Azure Block Chain-service is vereist om verbinding te maken met een Block chain-netwerk. U kunt het eindpunt adres ophalen met behulp van de Azure Block Chain Development Kit voor Ethereum of de Azure Portal.
+Het RPC-eindpuntadres van Azure Blockchain Service is vereist om verbinding te maken met een blockchain-netwerk. U het eindpuntadres ophalen met behulp van de Azure Blockchain Development Kit voor Ethereum of de Azure-portal.
 
-**De Development Kit gebruiken:**
+**Ga als het gaat om het gebruik van de development kit:**
 
-1. Klik onder **Azure Block Chain-Service** in Visual Studio code met de rechter muisknop op het consortium.
-1. Selecteer het **RPC-eindpunt adres kopiëren**.
+1. Klik onder **Azure Blockchain Service** in Visual Studio Code met de rechtermuisknop op het consortium.
+1. Selecteer **RPC-eindpuntadres kopiëren**.
 
-    ![Deel venster Visual Studio code met het consortium met de selectie voor het kopiëren van RPC-eind punten](./media/ethereum-logic-app/devkit-rpc.png)
+    ![Deelvenster Visual Studio-code met het consortium met de selectie RPC-eindpunten kopiëren](./media/ethereum-logic-app/devkit-rpc.png)
 
-    Het RPC-eind punt wordt gekopieerd naar het klem bord.
+    Het RPC-eindpunt wordt naar het klembord gekopieerd.
 
-**Als u de Azure Portal wilt gebruiken:**
+**Ga als een te meer meting in de Azure-portal:**
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Ga naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten** en de koppeling standaard transactie knooppunt.
+1. Ga naar uw Azure Blockchain Service-lid. Selecteer **Transactieknooppunten** en de standaardkoppeling transactieknooppunt.
 
-    ![Pagina transactie knooppunten met de (standaard knooppunt) selectie](./media/ethereum-logic-app/transaction-nodes.png)
+    ![Transactieknooppunten pagina met de (standaard knooppunt) selectie](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. Selecteer **verbindings reeksen** > **toegangs sleutels**.
-1. Kopieer het eindpunt adres van **https (toegangs sleutel 1)** of **https (toegangs sleutel 2)** .
+1. Selecteer**Toegangstoetsen voor** **verbindingstekenreeksen** > .
+1. Kopieer het eindpuntadres van **HTTPS (Access-toets 1)** of **HTTPS (Access-toets 2)**.
 
-    ![Azure Portal met de connection string toegangs sleutels](./media/ethereum-logic-app/connection-string.png)
+    ![Azure-portal met de toegangssleutels voor verbindingstekenreeksen](./media/ethereum-logic-app/connection-string.png)
 
-    Het RPC-eind punt is de HTTPS-URL, die het adres en de toegangs sleutel bevat van het trans actie-knoop punt van uw Azure Block Chain service-lid.
+    Het RPC-eindpunt is de HTTPS-URL, die het adres en de toegangssleutel van uw azure blockchain-servicelidtransactieknooppunt bevat.
 
-## <a name="get-the-private-key"></a>De persoonlijke sleutel ophalen
+## <a name="get-the-private-key"></a>Haal de privésleutel
 
-U kunt de persoonlijke sleutel van het Ethereum-account gebruiken om te verifiëren bij het verzenden van een trans actie naar de Block chain. De open bare en persoonlijke sleutels van uw Ethereum-account worden gegenereerd op basis van een webinstructie van 12 woorden. De Azure Block Chain Development Kit voor Ethereum genereert een instructie wanneer u verbinding maakt met een Azure Block Chain Service consortium-lid. U kunt het eindpunt adres ophalen met de uitbrei ding Development Kit.
+U de privésleutel van het Ethereum-account gebruiken om te verifiëren wanneer u een transactie naar de blockchain verzendt. De openbare en privésleutels van uw Ethereum-account worden gegenereerd uit een ezelsbruggetje van 12 woorden. De Azure Blockchain Development Kit voor Ethereum genereert een ezelsbruggetje wanneer u verbinding maakt met een Azure Blockchain Service-consortiumlid. U het eindpuntadres ophalen met behulp van de uitbreiding van de ontwikkelkit.
 
-1. Open in Visual Studio code het opdracht palet (F1).
-1. Selecteer **Azure Block chain: persoonlijke sleutel ophalen**.
-1. Selecteer de door u opgeslagen instructie wanneer u verbinding maakt met het consortium.
+1. Open in Visual Studio Code het opdrachtpalet (F1).
+1. Selecteer **Azure Blockchain: privésleutel ophalen**.
+1. Selecteer het ezelsbruggetje dat je hebt opgeslagen wanneer je verbinding maakt met het consortiumlid.
 
-    ![Opdracht palet met een optie voor het selecteren van de instructie](./media/ethereum-logic-app/private-key.png)
+    ![Opdrachtpalet met een optie om het ezelsbruggetje te selecteren](./media/ethereum-logic-app/private-key.png)
 
-    De persoonlijke sleutel wordt gekopieerd naar het klem bord.
+    De privésleutel wordt gekopieerd naar uw klembord.
 
-## <a name="get-the-account-address"></a>Het account adres ophalen
+## <a name="get-the-account-address"></a>Het accountadres opvragen
 
-U kunt de leden account en het wacht woord gebruiken om te verifiëren wanneer u een trans actie verzendt naar de Block chain. Het wacht woord wordt ingesteld wanneer u het lid maakt.
+U het ledenaccount en wachtwoord gebruiken om te verifiëren wanneer u een transactie naar de blockchain verzendt. Het wachtwoord wordt ingesteld wanneer u het lid maakt.
 
-1. Ga in het Azure Portal naar de overzichts pagina van de Azure Block Chain-service.
-1. Kopieer het adres van het **lid-account** .
+1. Ga in de Azure-portal naar de overzichtspagina van uw Azure Blockchain Service.
+1. Kopieer het **accountadres van het lid.**
 
-    ![Overzichts pagina met het adres van het lid-account](./media/ethereum-logic-app/member-account.png)
+    ![Overzichtspagina met het accountadres van het lid](./media/ethereum-logic-app/member-account.png)
 
-Zie [Ethereum-account](consortium.md#ethereum-account)voor meer informatie over het account adres en het wacht woord.
+Zie [Ethereum-account](consortium.md#ethereum-account)voor meer informatie over het accountadres en wachtwoord.
 
-## <a name="get-the-contract-abi"></a>De ABI van het contract ophalen
+## <a name="get-the-contract-abi"></a>Ontvang het contract ABI
 
-In het contract ABI worden de slimme contract interfaces gedefinieerd. Hierin wordt beschreven hoe u met het slimme contract communiceert. U kunt de contract ABI ophalen met behulp van de Azure Block Chain Development Kit voor Ethereum. U kunt dit bestand ook ophalen uit het meta gegevensbestand voor contracten dat is gemaakt door de volheid-compiler.
+Het contract ABI definieert de slimme contractinterfaces. Het beschrijft hoe om te gaan met de slimme contract. U het contract ABI krijgen met behulp van de Azure Blockchain Development Kit voor Ethereum. U het ook krijgen uit het bestand met contractmetagegevens dat is gemaakt door de samensesoliditeitscompiler.
 
-**De Development Kit gebruiken:**
+**Ga als het gaat om het gebruik van de development kit:**
 
-Als u de Development Kit of Truffle hebt gebruikt om uw slimme contract te maken, kunt u de extensie gebruiken om de contract ABI naar het klem bord te kopiëren.
+Als u de ontwikkelingskit of truffel hebt gebruikt om uw slimme contract op te bouwen, u de verlenging gebruiken om het contract ABI naar het klembord te kopiëren.
 
-1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het volheid-project uit.
-1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Selecteer **contract Abi kopiëren**.
+1. Vouw in het deelvenster Visual Studio Code explorer de map **build/contracts** van uw Solidity-project uit.
+1. Klik met de rechtermuisknop op het JSON-bestand met contractmetagegevens. De bestandsnaam is de slimme contractnaam gevolgd door de **.json** extensie.
+1. Selecteer **Abi van contract kopiëren**.
 
-    ![Visual Studio code-deel venster met de selectie van het Kopieer contract ABI](./media/ethereum-logic-app/abi-devkit.png)
+    ![Deelvenster Visual Studio Code met de ABI-selectie van het contract kopiëren](./media/ethereum-logic-app/abi-devkit.png)
 
-    Het contract ABI wordt gekopieerd naar het klem bord.
+    Het contract ABI wordt gekopieerd naar het klembord.
 
-**Het meta gegevensbestand voor het contract gebruiken:**
+**Ga als nodig de toepassing van het bestand met contractmetagegevens gebruiken:**
 
-1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Zoek de sectie **Abi** in het JSON-bestand.
-1. Kopieer de JSON-matrix **Abi** .
+1. Open het bestand met contractmetagegevens in de map **build/contracts** van uw Solidity-project. De bestandsnaam is de slimme contractnaam gevolgd door de **.json** extensie.
+1. Zoek de **abi** sectie in het JSON-bestand.
+1. Kopieer de **abi** JSON-array.
 
-    ![ABI-code in het meta gegevens bestand van het contract](./media/ethereum-logic-app/abi-metadata.png)
+    ![ABI-code in het bestand met metagegevens van het contract](./media/ethereum-logic-app/abi-metadata.png)
 
-## <a name="get-the-contract-bytecode"></a>De byte code van het contract ophalen
+## <a name="get-the-contract-bytecode"></a>De contractbytecode ophalen
 
-De byte code van het contract is het gecompileerde slimme contract dat door de virtuele Ethereum-machine wordt uitgevoerd. U kunt de byte code van het contract ophalen met behulp van de Azure Block Chain Development Kit voor Ethereum. U kunt deze ook ophalen uit de volheid-compiler.
+De contractbytecode is het gecompileerde slimme contract uitgevoerd door de Virtuele Machine van Ethereum. U de contractbytecode krijgen met behulp van de Azure Blockchain Development Kit voor Ethereum. U het ook krijgen van de Solidity compiler.
 
-**De Development Kit gebruiken:**
+**Ga als het gaat om het gebruik van de development kit:**
 
-Als u de Development Kit of Truffle hebt gebruikt om uw slimme contract te maken, kunt u de extensie gebruiken om de byte code van het contract te kopiëren naar het klem bord.
+Als u de ontwikkelingskit of truffel hebt gebruikt om uw slimme contract op te bouwen, u de verlenging gebruiken om de contractbytecode naar het klembord te kopiëren.
 
-1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het volheid-project uit.
-1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Selecteer de **byte code van het Kopieer contract**.
+1. Vouw in het deelvenster Visual Studio Code explorer de map **build/contracts** van uw Solidity-project uit.
+1. Klik met de rechtermuisknop op het JSON-bestand met contractmetagegevens. De bestandsnaam is de slimme contractnaam gevolgd door de **.json** extensie.
+1. Selecteer **Contractbytecode kopiëren**.
 
-    ![Deel venster Visual Studio met de byte code ring van het Kopieer contract](./media/ethereum-logic-app/bytecode-devkit.png)
+    ![Deelvenster Visual Studio-code met de selectie Contractbytecode kopiëren](./media/ethereum-logic-app/bytecode-devkit.png)
 
-    De byte code van het contract wordt gekopieerd naar het klem bord.
+    De contractbytecode wordt gekopieerd naar het klembord.
 
-**Het meta gegevensbestand voor het contract gebruiken:**
+**Ga als nodig de toepassing van het bestand met contractmetagegevens gebruiken:**
 
-1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Zoek het **byte code** -element in het JSON-bestand.
-1. Kopieer de waarde van de **byte code** .
+1. Open het bestand met contractmetagegevens in de map **build/contracts** van uw Solidity-project. De bestandsnaam is de slimme contractnaam gevolgd door de **.json** extensie.
+1. Zoek het **element bytecode** in het JSON-bestand.
+1. Kopieer de **waarde van de bytecode.**
 
-    ![Venster Visual Studio code met byte code in de meta gegevens](./media/ethereum-logic-app/bytecode-metadata.png)
+    ![Deelvenster Visual Studio-code met bytecode in de metagegevens](./media/ethereum-logic-app/bytecode-metadata.png)
 
-**De volheid compiler gebruiken:**
+**Ga als u de samenstollende compiler Soliditeit gebruiken:**
 
-Gebruik de opdracht `solc --bin <smart contract>.sol` om de byte code van het contract te genereren.
+Gebruik de `solc --bin <smart contract>.sol` opdracht om de contractbytecode te genereren.
 
-## <a name="get-the-contract-address"></a>Het contract adres ophalen
+## <a name="get-the-contract-address"></a>Het contractadres opvragen
 
-Het contract adres is het doel adres van het slimme contract op de Ethereum Block chain. U kunt dit adres gebruiken om een trans actie-of query status van een slim contract te verzenden. U kunt het contract adres ophalen uit de Truffle-migratie of het meta gegevens bestand van het contract.
+Het contractadres is het slimme contractbestemmingsadres op de Ethereum-blockchain. U gebruikt dit adres om een transactie- of querystatus van een slim contract te verzenden. U het contractadres ophalen van de truffelmigratie-uitvoer of het bestand met metagegevens van het contract.
 
-**De Truffle migrate output gebruiken:**
+**Ga als gevolg van het gebruik van de truffelmigratie-uitvoer:**
 
-Truffle geeft het contract adres na de implementatie van het slimme contract weer. Kopieer het **contract adres** uit de uitvoer.
+Truffel geeft het contractadres weer na de implementatie van het slimme contract. Kopieer het **contractadres** uit de uitvoer.
 
-![Truffle-migratie-uitvoer met het contract adres in Visual Studio code](./media/ethereum-logic-app/contract-address-truffle.png)
+![Truffelmigratie-uitvoer met het contractadres in Visual Studio Code](./media/ethereum-logic-app/contract-address-truffle.png)
 
-**Het meta gegevensbestand voor het contract gebruiken:**
+**Ga als nodig de toepassing van het bestand met contractmetagegevens gebruiken:**
 
-1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Zoek de sectie **netwerken** in het JSON-bestand.
-1. Particuliere netwerken worden aangeduid met een netwerk-ID met gehele getallen. Zoek de adres waarde binnen de sectie netwerk.
-1. Kopieer de **adres** waarde.
+1. Open het bestand met contractmetagegevens in de map **build/contracts** van uw Solidity-project. De bestandsnaam is de slimme contractnaam gevolgd door de **.json** extensie.
+1. Zoek de **sectie netwerken** in het JSON-bestand.
+1. Particuliere netwerken worden geïdentificeerd door een gehele netwerk-ID. Zoek de adreswaarde in de netwerksectie.
+1. Kopieer de **adreswaarde.**
 
-![Meta gegevens met de adres waarde in Visual Studio code](./media/ethereum-logic-app/contract-address-metadata.png)
+![Metagegevens met de adreswaarde in Visual Studio Code](./media/ethereum-logic-app/contract-address-metadata.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de algemene scenario's in de video [met Logic apps](https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true).
+Bekijk veelvoorkomende scenario's in de video [Meer doen met Logische apps](https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true).

@@ -1,24 +1,24 @@
 ---
-title: Registratie fouten van resource provider
-description: Hierin wordt beschreven hoe u registratie fouten van Azure-resource providers oplost bij het implementeren van resources met Azure Resource Manager.
+title: Registratiefouten van resourceprovider
+description: Beschrijft hoe u registratiefouten van Azure-resourcesprovider oplossen bij het implementeren van resources met Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273772"
 ---
-# <a name="resolve-errors-for-resource-provider-registration"></a>Los fouten voor de registratie van de resourceprovider
+# <a name="resolve-errors-for-resource-provider-registration"></a>Fouten oplossen voor de registratie van de resourceprovider
 
-Dit artikel beschrijft de fouten die optreden kunnen bij het gebruik van een resourceprovider die u hebt nog niet eerder in uw abonnement gebruikt.
+In dit artikel worden de fouten beschreven die u tegenkomen bij het gebruik van een resourceprovider die u nog niet eerder in uw abonnement hebt gebruikt.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Symptoom
 
-Als u resources implementeert, krijgt u mogelijk de volgende code en het bericht:
+Bij het implementeren van resources ontvangt u mogelijk de volgende foutcode en -bericht:
 
 ```
 Code: NoRegisteredProviderFound
@@ -26,16 +26,16 @@ Message: No registered resource provider found for location {location}
 and API version {api-version} for type {resource-type}.
 ```
 
-Of een soortgelijk bericht waarin wordt vermeld:
+U ook een soortgelijk bericht ontvangen waarin staat:
 
 ```
 Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
-Het foutbericht geeft suggesties voor de ondersteunde locaties en API-versies. U kunt de sjabloon wijzigen in een van de voorgestelde waarden. De meeste providers zijn geregistreerde automatisch door de Azure-portal of de opdrachtregelinterface die u gebruikt, maar niet alle. Als u een bepaalde resourceprovider voordat u dit nog niet hebt gebruikt, moet u wellicht dat de provider registreren.
+Het foutbericht moet u suggesties geven voor de ondersteunde locaties en API-versies. U uw sjabloon wijzigen in een van de voorgestelde waarden. De meeste providers worden automatisch geregistreerd door de Azure-portal of de command-line interface die u gebruikt, maar niet alle. Als u een bepaalde resourceprovider nog niet eerder hebt gebruikt, moet u deze provider mogelijk registreren.
 
-Als u automatisch afsluiten uitschakelt voor virtuele machines, wordt er mogelijk een fout bericht met de volgende strekking weer gegeven:
+Of wanneer u automatisch afsluiten voor virtuele machines uitschakelt, ontvangt u mogelijk een foutmelding die vergelijkbaar is met:
 
 ```
 Code: AuthorizationFailed
@@ -44,34 +44,34 @@ Message: The client '<identifier>' with object id '<identifier>' does not have a
 
 ## <a name="cause"></a>Oorzaak
 
-U ontvangt deze fout berichten om een van de volgende redenen:
+U ontvangt deze fouten om een van deze redenen:
 
-* De vereiste resource provider is niet geregistreerd voor uw abonnement
-* API-versie niet ondersteund voor het resourcetype
-* Locatie niet ondersteund voor het resourcetype
-* Als u virtuele machines automatisch wilt afsluiten, moet u de resource provider micro soft. DevTestLab registreren.
+* De vereiste resourceprovider is niet geregistreerd voor uw abonnement
+* API-versie die niet wordt ondersteund voor het brontype
+* Locatie die niet wordt ondersteund voor het resourcetype
+* Voor het automatisch afsluiten van VM's moet de Microsoft.DevTestLab-bronprovider zijn geregistreerd.
 
-## <a name="solution-1---powershell"></a>Oplossing 1: PowerShell
+## <a name="solution-1---powershell"></a>Oplossing 1 - PowerShell
 
-Voor Power shell gebruikt u **Get-AzResourceProvider** om de registratie status te bekijken.
+Gebruik **Get-AzResourceProvider** voor PowerShell om uw registratiestatus te bekijken.
 
 ```powershell
 Get-AzResourceProvider -ListAvailable
 ```
 
-Als u een provider wilt registreren, gebruikt u **REGI ster-AzResourceProvider** en geeft u de naam op van de resource provider die u wilt registreren.
+Als u een provider wilt registreren, gebruikt u **Register-AzResourceProvider** en geeft u de naam op van de resourceprovider die u wilt registreren.
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
-Voor de ondersteunde locaties voor een bepaald type resource, gebruikt u:
+Gebruik het volgende om de ondersteunde locaties voor een bepaald type resource te gebruiken:
 
 ```powershell
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-Voor de ondersteunde API-versies voor een bepaald type resource, gebruikt u:
+Gebruik het volgende om de ondersteunde API-versies voor een bepaald type resource te gebruiken:
 
 ```powershell
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
@@ -79,29 +79,29 @@ Voor de ondersteunde API-versies voor een bepaald type resource, gebruikt u:
 
 ## <a name="solution-2---azure-cli"></a>Oplossing 2 - Azure CLI
 
-Als u wilt controleren of de provider is geregistreerd, gebruikt u de opdracht `az provider list`.
+Als u wilt zien of `az provider list` de provider is geregistreerd, gebruikt u de opdracht.
 
 ```azurecli-interactive
 az provider list
 ```
 
-Als u een resource provider wilt registreren, gebruikt u de opdracht `az provider register` en geeft u de *naam ruimte* op die u wilt registreren.
+Als u een resourceprovider `az provider register` wilt registreren, gebruikt u de opdracht en geeft u de *naamruimte* op die u wilt registreren.
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Cdn
 ```
 
-Als u wilt zien van de ondersteunde locaties en API-versies voor een resourcetype, gebruikt u:
+Gebruik het als u de ondersteunde locaties en API-versies voor een resourcetype wilt bekijken:
 
 ```azurecli-interactive
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-## <a name="solution-3---azure-portal"></a>Oplossing 3 - Azure portal
+## <a name="solution-3---azure-portal"></a>Oplossing 3 - Azure-portal
 
-U kunt de status van inschrijving en registreren van een naamruimte van de resource provider via de portal.
+U de registratiestatus bekijken en een naamruimte van een resourceprovider registreren via de portal.
 
-1. Selecteer in de portal **alle services**.
+1. Selecteer **alle services**in de portal .
 
    ![Alle services selecteren](./media/error-register-resource-provider/select-all-services.png)
 
@@ -109,14 +109,14 @@ U kunt de status van inschrijving en registreren van een naamruimte van de resou
 
    ![Abonnementen selecteren](./media/error-register-resource-provider/select-subscriptions.png)
 
-1. Selecteer het abonnement dat u gebruiken wilt voor het registreren van de resourceprovider in de lijst met abonnementen.
+1. Selecteer in de lijst met abonnementen het abonnement dat u wilt gebruiken voor het registreren van de resourceprovider.
 
    ![Abonnement selecteren om resourceprovider te registreren](./media/error-register-resource-provider/select-subscription-to-register.png)
 
-1. Selecteer **resource providers**voor uw abonnement.
+1. Selecteer **Resourceproviders**voor uw abonnement .
 
    ![Resourceproviders selecteren](./media/error-register-resource-provider/select-resource-provider.png)
 
-1. Bekijk de lijst met resource providers en selecteer zo nodig de **registratie** koppeling om de resource provider te registreren van het type dat u wilt implementeren.
+1. Bekijk de lijst met resourceproviders en selecteer indien nodig de koppeling **Register** om de resourceprovider te registreren van het type dat u probeert te implementeren.
 
-   ![Lijst met resourceproviders](./media/error-register-resource-provider/list-resource-providers.png)
+   ![Resourceproviders aanbieden](./media/error-register-resource-provider/list-resource-providers.png)

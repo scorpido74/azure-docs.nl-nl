@@ -19,8 +19,6 @@
           href: connect-metamask.md
         - name: Met behulp van Geth
           href: connect-geth.md
-        - name: Met behulp van Truffle
-          href: connect-truffle.md
 - name: Zelfstudies
   items:
     - name: Slimme contracten maken
@@ -59,7 +57,7 @@
       href: ethereum-logic-app.md
     - name: Azure Blockchain Service bewaken
       href: monitor-azure-blockchain-service.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure Blockchain Dev Kit
       href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'

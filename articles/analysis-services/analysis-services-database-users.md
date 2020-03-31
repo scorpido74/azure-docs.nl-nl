@@ -1,6 +1,6 @@
 ---
-title: Database rollen en-gebruikers beheren in Azure Analysis Services | Microsoft Docs
-description: Meer informatie over het beheren van database rollen en-gebruikers op een Analysis Services-server in Azure.
+title: Databaserollen en -gebruikers beheren in Azure Analysis Services | Microsoft Documenten
+description: Meer informatie over het beheren van databaserollen en gebruikers op een Analysis Services-server in Azure.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,88 +8,88 @@ ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 51c01869e6152d8e9357644457df11f4fcf5ec5f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273703"
 ---
-# <a name="manage-database-roles-and-users"></a>Database rollen en-gebruikers beheren
+# <a name="manage-database-roles-and-users"></a>Databaserollen en -gebruikers beheren
 
-Op het niveau van de model database moeten alle gebruikers deel uitmaken van een rol. Rollen definiëren gebruikers met bepaalde machtigingen voor de model database. Alle gebruikers of beveiligings groepen die aan een rol worden toegevoegd, moeten een account in een Azure AD-Tenant hebben in hetzelfde abonnement als de-server. 
+Op het niveau van de modeldatabase moeten alle gebruikers tot een rol behoren. Rollen definiëren gebruikers met bepaalde machtigingen voor de modeldatabase. Elke gebruiker of beveiligingsgroep die aan een rol is toegevoegd, moet een account hebben in een Azure AD-tenant in hetzelfde abonnement als de server. 
 
-De manier waarop u rollen definieert, is afhankelijk van het hulp programma dat u gebruikt, maar het effect is hetzelfde.
+Hoe u rollen definieert, is afhankelijk van het gereedschap dat u gebruikt, maar het effect is hetzelfde.
 
-Rolmachtigingen zijn onder andere:
-*  **Beheerder** : gebruikers hebben volledige machtigingen voor de data base. Database rollen met beheerders machtigingen verschillen van Server beheerders.
-*  **Proces** : gebruikers kunnen verbinding maken met en proces bewerkingen uitvoeren op de data base en model database gegevens analyseren.
-*  **Lezen** -gebruikers kunnen een client toepassing gebruiken om verbinding te maken met de model database gegevens en deze te analyseren.
+Functiemachtigingen zijn onder andere:
+*  **Beheerder** - Gebruikers hebben volledige machtigingen voor de database. Databaserollen met beheerdersmachtigingen verschillen van serverbeheerders.
+*  **Proces** - Gebruikers kunnen verbinding maken met en procesbewerkingen uitvoeren in de database en modeldatabasegegevens analyseren.
+*  **Lees** - Gebruikers kunnen een clienttoepassing gebruiken om verbinding te maken met en modeldatabasegegevens te analyseren.
 
-Bij het maken van een tabellaire model project maakt u rollen en voegt u gebruikers of groepen toe aan die rollen met behulp van Role Manager in Visual Studio met Analysis Services-projecten. Wanneer u hebt geïmplementeerd op een server, gebruikt u SQL Server Management Studio (SSMS), [Analysis Services Power shell-cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)of [Tabellaire model scripting language](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) om rollen en gebruikers leden toe te voegen of te verwijderen.
+Wanneer u een tabelmodelproject maakt, maakt u rollen en voegt u gebruikers of groepen toe aan die rollen met behulp van Rolbeheer in Visual Studio met analysis services-projecten. Wanneer u wordt geïmplementeerd op een server, gebruikt u SQL Server Management Studio (SSMS), [Analysis Services PowerShell-cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)of [TMSL (Tabular Model Scripting Language)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) om rollen en gebruikersleden toe te voegen of te verwijderen.
 
-**Beveiligings groepen** moeten [e-mail hebben ingeschakeld](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) waarbij de eigenschap `MailEnabled` is ingesteld op `True`. Wanneer u een groep op basis van een e-mail adres opgeeft, gebruikt u `obj:groupid@tenantid`.
+**Beveiligingsgroepen** moeten [per e-mail](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) zijn ingeschakeld met de `MailEnabled` eigenschap ingesteld op `True`. Bij het opgeven van een `obj:groupid@tenantid`groep per e-mailadres gebruik .
 
 
-## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Rollen en gebruikers toevoegen aan of beheren in Visual Studio  
+## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Rollen en gebruikers toevoegen of beheren in Visual Studio  
   
-1.  Klik in **Tabellaire model Verkenner**met de rechter muisknop op **rollen**.  
+1.  Klik in **Tabelmodelverkenner**met de rechtermuisknop **op Rollen**.  
   
-2.  Klik in **Role Manager** op **New**.  
+2.  Klik **in Rolbeheer**op **Nieuw**.  
   
 3.  Typ een naam voor de rol.  
   
-     Standaard is de naam van de standaardrol incrementeel genummerd voor elke nieuwe rol. U kunt het beste een naam invoeren waarmee het lidtype duidelijk wordt geïdentificeerd, bijvoorbeeld financiële managers of human resources-specialisten.  
+     Standaard wordt de naam van de standaardrol incrementeel genummerd voor elke nieuwe rol. Het wordt aanbevolen een naam te typen die het type lid duidelijk identificeert, bijvoorbeeld Finance Managers of Human Resources Specialists.  
   
 4.  Selecteer een van de volgende machtigingen:  
   
     |Machtiging|Beschrijving|  
     |----------------|-----------------|  
-    |**Geen**|Leden kunnen het model schema niet lezen of wijzigen en kunnen geen gegevens opvragen.|  
-    |**Lezen**|Leden kunnen gegevens opvragen (op basis van Row filters), maar kunnen het model schema niet wijzigen.|  
-    |**Lezen en verwerken**|Leden kunnen gegevens opvragen (op basis van filters op rijniveau) en proces uitvoeren en alle bewerkingen verwerken, maar kunnen het model schema niet wijzigen.|  
-    |**Host**|Leden kunnen proces uitvoeren en alle bewerkingen verwerken. Kan het model schema niet lezen of wijzigen en kan geen gegevens opvragen.|  
-    |**Beheerder**|Leden kunnen het model schema wijzigen en alle gegevens opvragen.|   
+    |**Geen**|Leden kunnen het modelschema niet lezen of wijzigen en kunnen geen gegevens opvragen.|  
+    |**Lezen**|Leden kunnen gegevens opvragen (op basis van rijfilters), maar kunnen het modelschema niet wijzigen.|  
+    |**Lezen en verwerken**|Leden kunnen gegevens opvragen (op basis van filters op rijniveau) en Alle bewerkingen verwerken en verwerken, maar het modelschema niet wijzigen.|  
+    |**Proces**|Leden kunnen Proces- en procesbewerkingen uitvoeren. Kan het modelschema niet lezen of wijzigen en kan geen gegevens opvragen.|  
+    |**Beheerder**|Leden kunnen het modelschema wijzigen en alle gegevens opvragen.|   
   
-5.  Als de rol die u maakt lees-of lees-en proces machtiging heeft, kunt u rijdefinities toevoegen met behulp van een DAX-formule. Klik op het tabblad **rij filters** , selecteer een tabel en klik vervolgens op het **Dax-filter** veld en typ een Dax-formule.
+5.  Als de rol die u maakt, lees- of lees- en procesmachtigingen heeft, u rijfilters toevoegen met behulp van een DAX-formule. Klik op het tabblad **Rijfilters,** selecteer een tabel, klik vervolgens op het veld **DAX-filter** en typ een DAX-formule.
   
-6.  Klik op **leden** > **externe toevoegen**.  
+6.  Klik **Members** > **op Leden Extern toevoegen**.  
   
-8.  In **extern lid toevoegen**voert u gebruikers of groepen in uw TENANT Azure AD op e-mail adres in. Nadat u op OK hebt geklikt en rollen beheerder hebt gesloten, worden rollen en Rolgroepen weer gegeven in Tabellaire model Verkenner. 
+8.  Voer **in Extern lid**toevoegen gebruikers of groepen in uw tenant Azure AD in op e-mailadres. Nadat u op OK hebt geklikt en Rolbeheer hebt gesloten, worden rollen en rolleden weergegeven in Tabelmodelverkenner. 
  
-     ![Rollen en gebruikers in Tabellaire model Verkenner](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
+     ![Rollen en gebruikers in Tabelmodel Explorer](./media/analysis-services-database-users/aas-roles-tmexplorer.png)
 
 9. Implementeren op uw Azure Analysis Services-server.
 
 
-## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Rollen en gebruikers in SSMS toevoegen of beheren
+## <a name="to-add-or-manage-roles-and-users-in-ssms"></a>Rollen en gebruikers toevoegen of beheren in SSMS
 
-Als u functies en gebruikers wilt toevoegen aan een geïmplementeerde model database, moet u met de server zijn verbonden als server beheerder of al een databaserol met beheerders machtigingen.
+Als u rollen en gebruikers wilt toevoegen aan een geïmplementeerde modeldatabase, moet u als serverbeheerder of al in een databaserol met beheerdersmachtigingen met de server zijn verbonden.
 
-1. Klik in object Exporer met de rechter muisknop op **rollen** > **nieuwe rol**.
+1. Klik in Object Exporer met de rechtermuisknop op**Nieuwe rol** **Rollen** > .
 
-2. Voer bij **rol maken**de naam en beschrijving van een rol in.
+2. Voer **in Rol maken**een rolnaam en -beschrijving in.
 
 3. Selecteer een machtiging.
 
    |Machtiging|Beschrijving|  
    |----------------|-----------------|  
-   |**Volledig beheer (beheerder)**|Leden kunnen het model schema en proces wijzigen en kunnen query's uitvoeren op alle gegevens.| 
-   |**Data base verwerken**|Leden kunnen proces uitvoeren en alle bewerkingen verwerken. Kan het model schema niet wijzigen en kan geen gegevens opvragen.|  
-   |**Lezen**|Leden kunnen gegevens opvragen (op basis van Row filters), maar kunnen het model schema niet wijzigen.|  
+   |**Volledige controle (beheerder)**|Leden kunnen het modelschema wijzigen, verwerken en alle gegevens opvragen.| 
+   |**Database verwerken**|Leden kunnen Proces- en procesbewerkingen uitvoeren. Kan het modelschema niet wijzigen en kan geen gegevens opvragen.|  
+   |**Lezen**|Leden kunnen gegevens opvragen (op basis van rijfilters), maar kunnen het modelschema niet wijzigen.|  
   
-4. Klik op **lidmaatschap**en voer een gebruiker of groep in uw TENANT Azure AD op e-mail adres in.
+4. Klik **op Lidmaatschap**en voer vervolgens een gebruiker of groep in uw tenant Azure AD in op e-mailadres.
 
      ![Gebruiker toevoegen](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
-5. Als de rol die u maakt lees machtiging heeft, kunt u rijdefinities toevoegen met behulp van een DAX-formule. Klik op **rij filters**, selecteer een tabel en typ vervolgens een Dax-formule in het veld **Dax-filter** . 
+5. Als de rol die u maakt leestoestemming heeft, u rijfilters toevoegen met behulp van een DAX-formule. Klik **op Rijfilters,** selecteer een tabel en typ een DAX-formule in het veld **DAX-filter.** 
 
-## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Rollen en gebruikers toevoegen met behulp van een TMSL-script
+## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>Rollen en gebruikers toevoegen met een TMSL-script
 
-U kunt een TMSL-script uitvoeren in het XMLA-venster in SSMS of met behulp van Power shell. Gebruik de opdracht [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) en het object [roles](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl) .
+U een TMSL-script uitvoeren in het XMLA-venster in SSMS of met PowerShell. Gebruik de opdracht [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) en het object [Rollen.](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl)
 
-**Voor beeld van TMSL-script**
+**Voorbeeld van TMSL-script**
 
-In dit voor beeld worden een B2B externe gebruiker en een groep toegevoegd aan de rol analist met lees machtigingen voor de SalesBI-data base. Zowel de externe gebruiker als de groep moeten dezelfde Tenant Azure AD hebben.
+In dit voorbeeld worden een Externe B2B-gebruiker en een groep toegevoegd aan de rol Analist met Leesmachtigingen voor de SalesBI-database. Zowel de externe gebruiker als de groep moeten zich in dezelfde tenant Azure AD bevinden.
 
 ```
 {
@@ -117,39 +117,39 @@ In dit voor beeld worden een B2B externe gebruiker en een groep toegevoegd aan d
 }
 ```
 
-## <a name="to-add-roles-and-users-by-using-powershell"></a>Rollen en gebruikers toevoegen met behulp van Power shell
+## <a name="to-add-roles-and-users-by-using-powershell"></a>Rollen en gebruikers toevoegen met PowerShell
 
-De [sqlserver](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) -module biedt taak-specifieke data base management-cmdlets en de cmdlet invoke-ASCmd voor algemeen gebruik die een TMSL-query (Tabellair model scripting language) of script accepteert. De volgende cmdlets worden gebruikt voor het beheren van database rollen en-gebruikers.
+De [SqlServer-module](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) biedt taakspecifieke databasebeheercmdlets en de cmdlet voor algemene doeleinden Invoke-ASCmd die een TMSL-query of -script (Tabular Model Scripting Language) accepteert. De volgende cmdlets worden gebruikt voor het beheren van databaserollen en gebruikers.
   
 |Cmdlet|Beschrijving|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Een lid toevoegen aan een databaserol.| 
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Een lid uit een databaserol verwijderen.|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Voer een TMSL-script uit.|
+|[Verwijder-Rollid](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Een lid uit een databaserol verwijderen.|   
+|[Aanroepen-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|Een TMSL-script uitvoeren.|
 
-## <a name="row-filters"></a>Rijgegevens  
+## <a name="row-filters"></a>Rijfilters  
 
-Met rijdefinities definieert u welke rijen in een tabel door leden van een bepaalde rol kunnen worden opgevraagd. Rij filters worden gedefinieerd voor elke tabel in een model met behulp van DAX-formules.  
+Rijfilters bepalen welke rijen in een tabel kunnen worden opgevraagd door leden van een bepaalde rol. Rijfilters worden voor elke tabel in een model gedefinieerd met DAX-formules.  
   
-Rijdefinities kunnen alleen worden gedefinieerd voor rollen met de machtigingen lezen en lezen en verwerken. Als er geen filter voor een bepaalde tabel is gedefinieerd, kunnen leden standaard alle rijen in de tabel doorzoeken, tenzij kruislings filteren van toepassing is op een andere tabel.
+Rijfilters kunnen alleen worden gedefinieerd voor rollen met machtigingen lezen en lezen en verwerken. Als een rijfilter niet is gedefinieerd voor een bepaalde tabel, kunnen leden standaard alle rijen in de tabel opvragen, tenzij kruisfiltering van toepassing is vanuit een andere tabel.
   
- Voor rijgegevens is een DAX-formule vereist, die moet resulteren in een waar/onwaar-waarde om de rijen te definiëren die door leden van de desbetreffende rol kunnen worden opgevraagd. De rijen die niet zijn opgenomen in de DAX-formule, kunnen niet worden opgevraagd. Bijvoorbeeld, de tabel Klanten met de volgende rij filters expressie, *= klanten [land] = "USA"* , leden van de rol verkoop kunnen alleen klanten in de Verenigde Staten bekijken.  
+ Rijfilters vereisen een DAX-formule, die moet worden geëvalueerd tot een WAARDE WAAR/ONWAAR, om de rijen te definiëren die kunnen worden opgevraagd door leden van die specifieke rol. Rijen die niet in de DAX-formule zijn opgenomen, kunnen niet worden opgevraagd. De tabel Klanten met de volgende rijfiltersexpressie *=Klanten [Land] = 'VS'*, leden van de rol Verkoop kunnen bijvoorbeeld alleen klanten in de VS zien.  
   
-Rijgegevens zijn van toepassing op de opgegeven rijen en gerelateerde rijen. Wanneer een tabel meerdere relaties heeft, past filters beveiliging toe voor de relatie die actief is. Rij filters worden gekruist met andere rijtypen die zijn gedefinieerd voor gerelateerde tabellen, bijvoorbeeld:  
+Rijfilters zijn van toepassing op de opgegeven rijen en gerelateerde rijen. Wanneer een tabel meerdere relaties heeft, wordt met filters beveiliging toegepast voor de relatie die actief is. Rijfilters worden doorsneden met andere rijbestanden die zijn gedefinieerd voor gerelateerde tabellen, bijvoorbeeld:  
   
 |Tabel|DAX-expressie|  
 |-----------|--------------------|  
-|Regio|= Regio [land] = "USA"|  
-|ProductCategory|= ProductCategory [name] = "fietsen"|  
-|Transacties|=Transactions[Year]=2016|  
+|Regio|=Regio[Land]="USA"|  
+|ProductCategory|=Productcategorie[Naam]="Fietsen"|  
+|Transacties|=Transacties[Jaar]=2016|  
   
- Het net-effect kan leden rijen van gegevens opvragen waarbij de klant zich in de Verenigde Staten bevindt, de product categorie fietsen is en het jaar 2016 is. Gebruikers kunnen geen trans acties buiten de USA aanvragen, trans acties die geen fietsen of trans acties zijn die niet in 2016 zijn, tenzij ze lid zijn van een andere rol die deze machtigingen verleent.
+ Het netto-effect is dat leden rijen met gegevens kunnen opvragen waar de klant zich in de VS bevindt, de productcategorie fietsen is en het jaar 2016. Gebruikers kunnen geen transacties buiten de VS, transacties die geen fietsen zijn, of transacties niet in 2016 opvragen, tenzij ze lid zijn van een andere rol die deze machtigingen verleent.
   
- U kunt het filter, *= False ()* , gebruiken om de toegang tot alle rijen voor een hele tabel te weigeren.
+ U het filter *=FALSE()* gebruiken om toegang tot alle rijen voor een hele tabel te weigeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-  [Server beheerders  beheren](analysis-services-server-admins.md)  
-  [Azure Analysis Services beheren met Power shell](analysis-services-powershell.md)  
-  [Naslag informatie over tabellaire model scripting language (TMSL)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
+  [Serverbeheerders beheren](analysis-services-server-admins.md)   
+  [Azure Analysis Services beheren met PowerShell](analysis-services-powershell.md)  
+  [TMSL-naslaggids (TMSL)](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
 

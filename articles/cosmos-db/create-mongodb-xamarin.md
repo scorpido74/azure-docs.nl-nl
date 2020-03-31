@@ -1,21 +1,21 @@
 ---
-title: Bouw een Xamarin-app met .NET en de API van Azure Cosmos DB voor MongoDB
+title: Een Xamarin-app bouwen met de API van .NET en Azure Cosmos DB voor MongoDB
 description: Deze snelstart bevat een voorbeeld van Xamarin-code dat u kunt gebruiken om verbinding te maken met de Azure Cosmos DB-API voor MongoDB en er query's op uit te voeren
 author: codemillmatt
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2018
+ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: a21e3705fe367e478ec02b82ec83c4ad7cfb4151
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445446"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79481684"
 ---
-# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Quick Start: een Xamarin. Forms-app maken met .NET SDK en de API van Azure Cosmos DB voor MongoDB
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>QuickStart: een Xamarin.Forms-app bouwen met de API van .NET SDK en Azure Cosmos DB voor MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -34,7 +34,7 @@ In deze snelstart laten we u zien hoe u een [Cosmos-account maakt dat is geconfi
 
 Als u het voorbeeld wilt uitvoeren, hebt u [Visual Studio](https://www.visualstudio.com/downloads/) of [Visual Studio voor Mac](https://visualstudio.microsoft.com/vs/mac/) en een geldig Azure Cosmos DB-account nodig.
 
-Als u Visual Studio nog niet hebt, downloadt u [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/) met de **mobiele ontwikkeling met de .net** -werk belasting die is geïnstalleerd met Setup.
+Als je Visual Studio nog niet hebt, download je [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) met de mobiele **ontwikkelmet .NET-workload** geïnstalleerd met setup.
 
 Als u liever op een Mac werkt, download dan [Visual Studio voor Mac](https://visualstudio.microsoft.com/vs/mac/) en voer de installatie uit.
 
@@ -52,10 +52,18 @@ Het voorbeeld dat in dit artikel is beschreven, is compatibel met MongoDB.Driver
 
 Download eerst de voorbeeld-app uit GitHub. Deze implementeert een takenlijst-app met het documentopslagmodel van MongoDB.
 
-1. Open een opdrachtprompt, maak een nieuwe map met de naam git-samples en sluit vervolgens de opdrachtprompt.
+
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+1. Open in Windows een opdrachtprompt of open op Mac de terminal, maak een nieuwe map met de naam git-samples en sluit vervolgens het venster.
+
+    ```batch
+    md "C:\git-samples"
+    ```
 
     ```bash
-    md "C:\git-samples"
+    mkdir '$home\git-samples\
     ```
 
 2. Open een git-terminalvenster, bijvoorbeeld git bash, en gebruik de `cd`-opdracht om naar de nieuwe map te gaan voor het installeren van de voorbeeld-app.
@@ -70,7 +78,7 @@ Download eerst de voorbeeld-app uit GitHub. Deze implementeert een takenlijst-ap
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started.git
     ```
 
-Als u niet git wilt gebruiken, kunt u ook [het project als een ZIP-bestand downloaden](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started/archive/master.zip)
+Als u git niet wilt gebruiken, u het project ook [downloaden als zip-bestand](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started/archive/master.zip)
 
 ## <a name="review-the-code"></a>De code bekijken
 
@@ -86,6 +94,8 @@ De volgende codefragmenten zijn allemaal afkomstig uit de klasse `MongoService`,
 
     settings.SslSettings =
         new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+    settings.RetryWrites = false;
 
     MongoClient mongoClient = new MongoClient(settings);
     ```
@@ -159,6 +169,11 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 2. Open het bestand **APIKeys.cs** in de directory **Helpers** van het project **TaskList.Core**.
 
 3. Kopieer de waarde van uw **primaire verbindingsreeks** uit de portal (met behulp van de knop Kopiëren) en maak deze de waarde van het veld **ConnectionString** in uw **APIKeys.cs**-bestand.
+
+4. Verwijder `&replicaSet=globaldb` uit de verbindingstekenreeks. U krijgt een runtime-fout als u die waarde niet uit de querytekenreeks verwijdert.
+
+> [!IMPORTANT]
+> U moet `&replicaSet=globaldb` het sleutel/waardepaar uit de querytekenreeks van de verbindingstekenreeks verwijderen om een runtime-fout te voorkomen.
 
 U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB.
 

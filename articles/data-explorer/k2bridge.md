@@ -1,77 +1,77 @@
 ---
-title: Gegevens visualiseren vanuit Azure Data Explorer met behulp van Kibana
-description: In dit artikel leert u hoe u Azure Data Explorer kunt instellen als gegevens bron voor Kibana
+title: Gegevens van Azure Data Explorer visualiseren met Kibana
+description: In dit artikel leert u hoe u Azure Data Explorer instelt als gegevensbron voor Kibana
 author: orspod
 ms.author: orspodek
 ms.reviewer: guregini
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 30d74f36c6462d1fba039595d2ed6fe722b742e8
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: fac9c78607e50dca384670bf4cc08b50f723312b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79164811"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065613"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-kibana-with-the-k2bridge-open-source-connector"></a>Gegevens visualiseren vanuit Azure Data Explorer in Kibana met de K2Bridge-open-source-connector
+# <a name="visualize-data-from-azure-data-explorer-in-kibana-with-the-k2bridge-open-source-connector"></a>Gegevens van Azure Data Explorer in Kibana visualiseren met de K2Bridge opensourceconnector
 
-Met K2Bridge (Kibana-Kusto Bridge) kunt u Azure Data Explorer als gegevens bron gebruiken om die gegevens te visualiseren in Kibana. K2Bridge is een [open-source](https://github.com/microsoft/K2Bridge) container toepassing die fungeert als een proxy tussen een Kibana-exemplaar en een Azure Data Explorer-cluster. In dit artikel wordt beschreven hoe u K2Bridge kunt gebruiken om die verbinding te maken.
+Met K2Bridge (Kibana-Kusto Bridge) u Azure Data Explorer als gegevensbron gebruiken en die gegevens in Kibana visualiseren. K2Bridge is een [open-source](https://github.com/microsoft/K2Bridge) containerized toepassing die fungeert als een proxy tussen een Kibana-instantie en een Azure Data Explorer-cluster. In dit artikel wordt beschreven hoe u K2Bridge gebruiken om die verbinding te maken.
 
-K2Bridge zet Kibana-query's om naar Kusto query language (KQL) en stuurt de Data Explorer resultaten van Azure terug naar Kibana. 
+K2Bridge vertaalt Kibana-query's naar Kusto Query Language (KQL) en stuurt de resultaten van Azure Data Explorer terug naar Kibana. 
 
    ![grafiek](media/k2bridge/k2bridge-chart.png)
 
-K2Bridge ondersteunt het tabblad Discover van Kibana, waar u het volgende kunt doen:
-* De gegevens zoeken en verkennen
+K2Bridge ondersteunt het tabblad Discover van Kibana, waar u:
+* De gegevens doorzoeken en verkennen
 * Resultaten filteren
-* Velden toevoegen aan of verwijderen uit het resultaten raster
-* Record inhoud weer geven
-* Zoek opdrachten opslaan en delen
+* Velden in het resultatenraster toevoegen of verwijderen
+* Recordinhoud weergeven
+* Zoekopdrachten opslaan en delen
 
-In de onderstaande afbeelding ziet u een Kibana-exemplaar dat is gebonden aan Azure Data Explorer door K2Bridge. De gebruikers ervaring in Kibana is ongewijzigd.
+De afbeelding hieronder toont een Kibana-instantie die is gekoppeld aan Azure Data Explorer door K2Bridge. De gebruikerservaring in Kibana is ongewijzigd.
 
-   [![pagina Kibana](media/k2bridge/k2bridge-kibana-page.png)](media/k2bridge/k2bridge-kibana-page.png#lightbox)
+   [![Kibana-pagina](media/k2bridge/k2bridge-kibana-page.png)](media/k2bridge/k2bridge-kibana-page.png#lightbox)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u gegevens kunt visualiseren vanuit Azure Data Explorer in Kibana, moet u de volgende voor bereidingen hebben:
+Voordat u gegevens uit Azure Data Explorer in Kibana visualiseren, moet u het volgende klaarhebben:
 
-* [Helm v3](https://github.com/helm/helm#install), het Kubernetes-pakket beheer
-* Het cluster Azure Kubernetes service (AKS) of een ander Kubernetes-cluster (versie 1,14 naar versie 1,16 zijn getest en gecontroleerd). Als u een AKS-cluster nodig hebt, raadpleegt u een AKS-cluster implementeren [met behulp van de Azure cli](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) of [met behulp van de Azure Portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
-* Een [Azure Data Explorer-cluster](create-cluster-database-portal.md), met inbegrip van:
-    * De URL van het Azure Data Explorer-cluster 
-    * De database naam
+* [Helm V3](https://github.com/helm/helm#install), de Kubernetes package manager
+* Azure Kubernetes Service (AKS) cluster, of een ander Kubernetes-cluster (versie 1.14 naar versie 1.16 zijn getest en geverifieerd). Als u een AKS-cluster nodig hebt, raadpleegt u Een AKS-cluster implementeren met de Azure CLI of de [Azure-portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) [gebruiken](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+* Een [Azure Data Explorer-cluster](create-cluster-database-portal.md), inclusief:
+    * URL van het Azure Data Explorer-cluster 
+    * De databasenaam
     
-* Een Azure AD-service-principal die is gemachtigd voor het weer geven van gegevens in azure Data Explorer, waaronder:
-    * De client-ID 
-    * Het client geheim
+* Een Azure AD-serviceprincipal die is gemachtigd om gegevens weer te geven in Azure Data Explorer, waaronder:
+    * De client-id 
+    * Het geheim van de klant
 
-    Een service-principal met de machtiging ' Viewer ' wordt aanbevolen. Het wordt afgeraden om hogere machtigingen te gebruiken.
+    Een serviceprincipal met 'Viewer'-toestemming wordt aanbevolen. Het wordt afgeraden om hogere machtigingen te gebruiken.
 
-    * [Stel de machtigingen voor de weer gave van het cluster in voor de Azure AD-Service-Principal](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+    * [Stel de weergavemachtigingen van het cluster in voor de azure AD-serviceprincipal](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
 
-    Zie [een Azure AD-service-principal maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)voor meer informatie over de Azure AD-Service-Principal.
+    Zie [Een Azure AD-serviceprincipal maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)voor meer informatie over de azure AD-serviceprincipal .
 
-## <a name="run-k2bridge-on-azure-kubernetes-service-aks"></a>K2Bridge uitvoeren op Azure Kubernetes service (AKS)
+## <a name="run-k2bridge-on-azure-kubernetes-service-aks"></a>K2Bridge uitvoeren op Azure Kubernetes-service (AKS)
 
-K2Bridges's helm-grafiek verwijst standaard naar een openbaar beschik bare afbeelding die zich bevindt op de Container Registry van micro soft (MCR). MCR vereist geen referenties en werkt out-of-the-box.
+Standaard verwijst de Helm-grafiek van K2Bridges naar een openbaar beschikbare afbeelding in het Container Registry (MCR) van Microsoft. MCR heeft geen referenties nodig en werkt out-of-the-box.
 
-1. Down load de vereiste helm-grafieken.
+1. Download de vereiste Helmgrafieken.
 
-1. Voeg de Elasticsearch-afhankelijkheid toe aan helm. 
-    De Elasticsearch-afhankelijkheid is dat K2Bridge een interne kleine Elasticsearch-instantie gebruikt om aanvragen te verwerken die betrekking hebben op meta gegevens (zoals index patronen en opgeslagen query's). Er worden geen bedrijfs gegevens opgeslagen in dit interne exemplaar en het kan worden beschouwd als implementatie details. 
+1. Voeg de afhankelijkheid van Elasticsearch toe aan Helm. 
+    De reden voor de elasticsearch-afhankelijkheid is dat K2Bridge een interne kleine Elasticsearch-instantie gebruikt om metagegevensgerelateerde aanvragen te bedienen (zoals indexpatronen en opgeslagen query's). Er worden geen bedrijfsgegevens opgeslagen in dit interne exemplaar en kunnen worden beschouwd als een implementatiedetail. 
 
-    1. De Elasticsearch-afhankelijkheid toevoegen aan helm:
+    1. Ga als u de afhankelijkheid van Elasticsearch toevoegt aan Helm:
 
         ```bash
         helm repo add elastic https://helm.elastic.co
         helm repo update
         ```
 
-    1. Als u de K2Bridge-grafiek wilt ophalen uit de map Charts van de GitHub-opslag plaats:
-        1. Kloon de opslag plaats vanuit [github](https://github.com/microsoft/K2Bridge).
-        1. Ga naar de K2Bridges root repository Directory.
+    1. Ga als beste uit de K2Bridge-grafiek onder de grafiekenmap van de GitHub-repository:
+        1. Kloon de repository van [GitHub.](https://github.com/microsoft/K2Bridge)
+        1. Ga naar de K2Bridges root repository directory.
         1. Uitvoeren:
 
             ```bash
@@ -90,118 +90,120 @@ K2Bridges's helm-grafiek verwijst standaard naar een openbaar beschik bare afbee
         ADX_TENANT_ID=[SERVICE_PRINCIPAL_TENANT_ID]
         ```
 
-    1. Beschrijving Schakel Azure-toepassing Insights-telemetrie in. 
-        Als dit de eerste keer is dat u Azure-toepassing Insights gebruikt, moet u eerst [een Application Insights resource maken](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource). U moet [de instrumentatie sleutel](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) naar een variabele kopiëren: 
+    1. (Optioneel) Azure Application Insights-telemetrie inschakelen. 
+        Als dit de eerste keer is dat u Azure Application Insights gebruikt, moet u eerst [een Application Insights-bron maken.](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) U moet [de instrumentatiesleutel naar](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) een variabele kopiëren: 
 
         ```bash
         APPLICATION_INSIGHTS_KEY=[INSTRUMENTATION_KEY]
         COLLECT_TELEMETRY=true
         ```
 
-    1. <a name="install-k2bridge-chart"></a>De K2Bridge-grafiek installeren:
+    1. <a name="install-k2bridge-chart"></a>Installeer de K2Bridge-grafiek:
 
         ```bash
         helm install k2bridge charts/k2bridge -n k2bridge --set image.repository=$REPOSITORY_NAME/$CONTAINER_NAME --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=latest] [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
         ```
 
-        In [configuratie](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md) vindt u de volledige set configuratie opties.
+        In [Configuration](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md) vindt u de volledige set configuratieopties.
 
-    1. Met de opdracht uitvoer wordt de volgende helm-opdracht voorgesteld om uit te voeren voor de implementatie van Kibana. Voer desgewenst de volgende handelingen uit:
+    1. De opdrachtuitvoer stelt de volgende opdracht Helm voor om Kibana te implementeren. Optioneel uitvoeren:
 
         ```bash
         helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=6.8.5 --set elasticsearchHosts=http://k2bridge:8080
         ```
-    1. Gebruik poort door sturen om toegang te krijgen tot Kibana op localhost: 
+        
+    1. Gebruik port forwarding om toegang te krijgen tot Kibana op localhost: 
 
         ```bash
         kubectl port-forward service/kibana-kibana 5601 --namespace k2bridge
         ```
-    1. Maak verbinding met Kibana door naar http://127.0.0.1:5601te bladeren.
+        
+    1. Maak verbinding met Kibana door te bladeren naar http://127.0.0.1:5601.
 
-    1. Maak Kibana beschikbaar voor de eind gebruikers. Er zijn meerdere methoden om dit te doen. De methode die u gebruikt, is afhankelijk van uw use-case.
+    1. Stel Kibana bloot aan de eindgebruikers. Er zijn meerdere methoden om dit te doen. De methode die u gebruikt, is grotendeels afhankelijk van uw use case.
 
         Bijvoorbeeld:
 
-        De service beschikbaar maken als een Load Balancer-service. U doet dit door de volgende para meter toe te voegen aan de installatie opdracht K2Bridge helm ([hierboven](#install-k2bridge-chart)):
-
-        `--set service.type=LoadBalancer`
+        Stel de service bloot als een LoadBalancer-service. Voeg hiervoor de `--set service.type=LoadBalancer` parameter toe aan de installatieopdracht K2Bridge Helm[(hierboven).](#install-k2bridge-chart)        
     
         Voer vervolgens
-
-           ```bash
-           kubectl get service -w -n k2bridge
-           ```   
-        De uitvoer moet er als volgt uitzien: 
+        
+        ```bash
+        kubectl get service -w -n k2bridge
+        ```
+        
+        De uitvoer moet eruit zien als: 
 
         ```bash
         NAME            TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
         kibana-kibana   LoadBalancer   xx.xx.xx.xx   <pending>      5601:30128/TCP   4m24s
         ```
-        U kunt vervolgens het gegenereerde externe IP-adres gebruiken dat wordt weer gegeven en gebruiken voor toegang tot Kibana door een browser te openen voor het volgende: `\<EXTERNAL-IP>:5601`.
+ 
+        U vervolgens het gegenereerde EXTERNE IP gebruiken dat wordt weergegeven en `<EXTERNAL-IP>:5601`deze gebruiken om toegang te krijgen tot Kibana door een browser te openen voor.
 
-1. Configureer index patronen voor toegang tot uw gegevens:  
-In een nieuw Kibana-exemplaar:
+1. Configureer indexpatronen om toegang te krijgen tot uw gegevens:  
+In een nieuwe Kibana instantie:
      1. Open Kibana.
-     1. Ga naar beheer.
-     1. Selecteer **index patronen**. 
-     1. Maak een index patroon.
-De naam van de index moet exact overeenkomen met de naam van de tabel of de functie naam, zonder een asterisk. U kunt de relevante regel uit de lijst kopiëren.
+     1. Navigeer naar Beheer.
+     1. Selecteer **Indexpatronen**. 
+     1. Maak een indexpatroon.
+De naam van de index moet exact overeenkomen met de tabelnaam of functienaam, zonder sterretje. U de relevante regel uit de lijst kopiëren.
 
 > [!Note]
-> Als u wilt uitvoeren op andere Kubernetes-providers, wijzigt u de Elasticsearch storageClassName in `values.yaml` zodat deze past bij de provider.
+> Als u op andere Kubernetes-providers wilt draaien, wijzigt u de Elasticsearch-storageClassName in `values.yaml` de door de provider voorgestelde opslag.
 
 ## <a name="visualize-data"></a>Gegevens visualiseren
 
-Wanneer Azure Data Explorer is geconfigureerd als een gegevens bron voor Kibana, kunt u Kibana gebruiken om de gegevens te verkennen. 
+Wanneer Azure Data Explorer is geconfigureerd als gegevensbron voor Kibana, u Kibana gebruiken om de gegevens te verkennen. 
 
-1. Selecteer in Kibana in het menu links het tabblad **ontdekken** .
+1. Selecteer in Kibana in het linkermenu het tabblad **Ontdekken.**
 
-1. Selecteer in de vervolg keuzelijst links een index patroon (in dit geval een Azure Data Explorer-tabel) waarmee de gegevens bron wordt gedefinieerd die u wilt verkennen.
+1. Selecteer in de linkervervolgkeuzelijst een indexpatroon (in dit geval een tabel azure data explorer) waarin de gegevensbron wordt gedefinieerd die u wilt verkennen.
     
-   ![Een index patroon selecteren](media/k2bridge/k2bridge-select-an-index-pattern.png)
+   ![Een indexpatroon selecteren](media/k2bridge/k2bridge-select-an-index-pattern.png)
 
-1. Als uw gegevens een veld met een tijd filter hebben, kunt u het tijds bereik opgeven. Stel in de rechter bovenhoek van de pagina een tijd filter in. Discover toont standaard gegevens gedurende de laatste 15 minuten.
+1. Als uw gegevens een tijdfilterveld hebben, u het tijdsbereik opgeven. Rechtsboven op de pagina een tijdfilter instellen. Discover toont standaard gegevens van de laatste 15 minuten.
 
-   ![Tijd filter](media/k2bridge/k2bridge-time-filter.png)
+   ![Tijdfilter](media/k2bridge/k2bridge-time-filter.png)
     
-1. In de resultaten tabel worden de eerste 500 records weer gegeven. U kunt een document uitbreiden om de veld gegevens in JSON-of tabel indelingen te controleren.
+1. De resultatentabel toont de eerste 500 records. U een document uitbreiden om de veldgegevens te onderzoeken in JSON- of tabelindelingen.
 
    ![Een record uitbreiden](media/k2bridge/k2bridge-expand-record.png)
 
-1. De resultaten tabel bevat standaard kolommen voor het document _source en het veld tijd (indien aanwezig). U kunt opgeven welke kolommen moeten worden toegevoegd aan de resultaten tabel door **toe te voegen** naast de veld naam in de zijbalk links.
+1. Standaard bevat de resultatentabel kolommen voor het document _source en het tijdveld (als het bestaat). U specifieke kolommen kiezen die aan de resultatentabel moeten worden toegevoegd door **toevoegen** te selecteren naast de veldnaam in de linkerzijbalk.
 
    ![Specifieke kolommen](media/k2bridge/k2bridge-specific-columns.png)
     
-1. Op de query balk kunt u de gegevens doorzoeken door:
-    * Een zoek term invoeren
-    * De Lucene-query syntaxis gebruiken. 
+1. In de querybalk u de gegevens doorzoeken op:
+    * Een zoekterm invoeren
+    * Met behulp van de syntaxis van de Lucene-query. 
     Bijvoorbeeld:
-        * Zoek "fout" om alle records te vinden die deze waarde bevatten. 
-        * Zoek naar ' status: 200 ', om alle records met de status waarde 200 te verkrijgen. 
-    * Logische Opera tors gebruiken (en, of, niet)
-    * Joker tekens gebruiken (sterretje "\*" of vraag teken "?") Bijvoorbeeld:
-        * De query `"destination_city: L*"` komt overeen met records waarbij de waarde van de doel plaats begint met ' l ' (K2Bridge is niet hoofdletter gevoelig).
+        * Zoek op 'fout' om alle records te vinden die deze waarde bevatten. 
+        * Zoek naar "status: 200", om alle records met een statuswaarde van 200 te krijgen. 
+    * Logische operatoren gebruiken (EN, OF, NIET)
+    * Jokertekens gebruiken (sterretje \* " of vraagteken "?") Bijvoorbeeld:
+        * De `"destination_city: L*"` query komt overeen met records waarin de waarde van de doelstad begint met 'l' (K2Bridge is niet hoofdlettergevoelig).
 
     ![Query uitvoeren](media/k2bridge/k2bridge-run-query.png)
     
     > [!Tip]
-    > In [zoeken](https://github.com/microsoft/K2Bridge/blob/master/docs/searching.md)vindt u meer zoek regels en logica.
+    > In [Zoeken](https://github.com/microsoft/K2Bridge/blob/master/docs/searching.md)vindt u meer zoekregels en logica.
 
-1. Gebruik de **lijst met velden** op de rechter zijbalk van de pagina om de zoek resultaten te filteren. 
-    De lijst met velden is de locatie waar u het volgende kunt zien:
-    * De bovenste vijf waarden voor het veld
+1. Als u uw zoekresultaten wilt filteren, gebruikt u de **lijst met velden** op de rechterzijbalk van de pagina. 
+    In de veldenlijst u het overzicht zien:
+    * De top vijf waarden voor het veld
     * Het aantal records dat het veld bevat
     * Het percentage records dat elke waarde bevat. 
     
     >[!Tip]
-    > Gebruik het pictogram van het vergroot glas (+) om alle records met een specifieke waarde te vinden.
+    > Gebruik het pictogram (+) vergrootglas om alle records met een specifieke waarde te zoeken.
     
-    ![Velden lijst](media/k2bridge/k2bridge-field-list.png)
+    ![Lijst met velden](media/k2bridge/k2bridge-field-list.png)
    
-    U kunt de resultaten ook filteren met behulp van het pictogram van het vergroot glas (+) in de weer gave resultaat tabel indeling van elke record in de tabel met resultaten.
+    U de resultaten ook filteren met het pictogram (+) vergrootglas in de weergave met de indeling van de resultatentabel van elke record in de resultatentabel.
     
-     ![Tabel lijst](media/k2bridge/k2bridge-table-list.png)
+     ![Tabellijst](media/k2bridge/k2bridge-table-list.png)
     
-1. Selecteer ofwel om uw zoek opdracht op te **slaan** of te **delen** .
+1. Selecteer uw zoekopdracht **opslaan** of **delen.**
 
-     ![Zoek opdracht opslaan](media/k2bridge/k2bridge-save-search.png)
+     ![Zoeken opslaan](media/k2bridge/k2bridge-save-search.png)

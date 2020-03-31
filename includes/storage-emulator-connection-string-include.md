@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67176239"
 ---
-De opslagemulator ondersteunt één vast account en een bekende verificatiesleutel voor gedeelde sleutelverificatie. Dit account en de sleutel zijn de enige gedeelde sleutel-referenties zijn toegestaan voor gebruik met de opslagemulator. Dit zijn:
+De opslagemulator ondersteunt één vast account en een bekende verificatiesleutel voor Shared Key-verificatie. Dit account en deze sleutel zijn de enige shared key-referenties die zijn toegestaan voor gebruik met de opslagemulator. Dit zijn:
 
 ```
 Account name: devstoreaccount1
@@ -19,13 +19,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> De verificatiesleutel die wordt ondersteund door de opslagemulator is alleen bedoeld voor testen van de functionaliteit van uw client verificatiecode op te geven. Deze worden niet elk doeleinde security dienen. U kunt uw productie-opslagaccount en de sleutel niet gebruiken met de opslagemulator. U moet het account ontwikkeling niet gebruiken met productiegegevens.
+> De verificatiesleutel die wordt ondersteund door de opslagemulator is alleen bedoeld voor het testen van de functionaliteit van uw clientverificatiecode. Het dient geen enkel veiligheidsdoel. U uw productieopslagaccount en sleutel niet gebruiken met de opslagemulator. U mag het ontwikkelingsaccount niet gebruiken met productiegegevens.
 > 
-> De opslagemulator ondersteunt alleen verbindingen via HTTP. HTTPS is echter het aanbevolen-protocol voor toegang tot resources in een productie-Azure storage-account.
+> De opslagemulator ondersteunt alleen verbinding via HTTP. HTTPS is echter het aanbevolen protocol voor toegang tot bronnen in een Azure-opslagaccount voor productie.
 > 
 
-#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Verbinding maken met de emulator-account met behulp van een snelkoppeling
-De eenvoudigste manier om verbinding maken met de opslagemulator vanuit uw toepassing is het configureren van een verbindingsreeks in het configuratiebestand van de toepassing die verwijst naar de snelkoppeling naar de `UseDevelopmentStorage=true`. Hier volgt een voorbeeld van een verbindingsreeks voor de opslagemulator in een *app.config* bestand: 
+#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Verbinding maken met het emulatoraccount via een snelkoppeling
+De eenvoudigste manier om verbinding te maken met de opslagemulator van uw toepassing is door `UseDevelopmentStorage=true`een verbindingstekenreeks in het configuratiebestand van uw toepassing te configureren die verwijst naar de snelkoppeling. Hier is een voorbeeld van een verbindingstekenreeks met de opslagemulator in een *app.config-bestand:* 
 
 ```xml
 <appSettings>
@@ -33,8 +33,8 @@ De eenvoudigste manier om verbinding maken met de opslagemulator vanuit uw toepa
 </appSettings>
 ```
 
-#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Verbinding maken met de emulator-account met behulp van de bekende accountnaam en -sleutel
-Voor het maken van een verbindingsreeks die verwijst naar de emulator accountnaam en sleutel, moet u de eindpunten voor elk van de services die u wilt gebruiken van de emulator in de verbindingsreeks opgeven. Dit is nodig zodat de verbindingsreeks verwijst naar de emulator-eindpunten anders dan die voor een productie-storage-account zijn. Bijvoorbeeld, er de waarde van de verbindingsreeks als volgt:
+#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Maak verbinding met het emulator-account met de bekende accountnaam en -sleutel
+Als u een verbindingstekenreeks wilt maken die verwijst naar de naam en de sleutel van het emulatoraccount, moet u de eindpunten opgeven voor elk van de services die u vanuit de emulator wilt gebruiken in de verbindingstekenreeks. Dit is nodig zodat de verbindingstekenreeks verwijst naar de emulatoreindpunten, die anders zijn dan die voor een productieopslagaccount. De waarde van uw verbindingstekenreeks ziet er bijvoorbeeld als volgt uit:
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
@@ -44,10 +44,10 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-Deze waarde is gelijk aan de snelkoppeling naar de bovenstaande `UseDevelopmentStorage=true`.
+Deze waarde is identiek aan `UseDevelopmentStorage=true`de bovenstaande snelkoppeling.
 
-#### <a name="specify-an-http-proxy"></a>Geef een HTTP-proxy
-U kunt ook een HTTP-proxy moet worden gebruikt wanneer u bij het testen van uw service op basis van de opslagemulator opgeven. Dit kan nuttig zijn voor de naleving van HTTP-aanvragen en antwoorden tijdens de foutopsporing bewerkingen op de storage-services zijn. Als u een proxy, voeg de `DevelopmentStorageProxyUri` optie in als de verbindingstekenreeks en stel de waarde op de proxy-URI. Dit is bijvoorbeeld een verbindingsreeks die verwijst naar de opslagemulator en configureert u een HTTP-proxy:
+#### <a name="specify-an-http-proxy"></a>Een HTTP-proxy opgeven
+U ook een HTTP-proxy opgeven die u wilt gebruiken wanneer u uw service test tegen de opslagemulator. Dit kan handig zijn voor het observeren van HTTP-verzoeken en -antwoorden terwijl u bewerkingen debugt tegen de opslagservices. Als u een proxy `DevelopmentStorageProxyUri` wilt opgeven, voegt u de optie toe aan de verbindingstekenreeks en stelt u de waarde ervan in op de proxy-URI. Hier is bijvoorbeeld een verbindingstekenreeks die naar de opslagemulator verwijst en een HTTP-proxy configureert:
 
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri

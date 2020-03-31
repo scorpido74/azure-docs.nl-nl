@@ -5,18 +5,18 @@ services: virtual-machines-linux
 author: MashaMSFT
 manager: craigg
 ms.date: 10/22/2019
-ms.topic: conceptual
 tags: azure-service-management
+ms.topic: conceptual
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 85d2396a05e7496b56bd83bd834150aa6d864c62
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 43ba4eed4dcfd6d8e86c21f1ee5214108c44a8c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882710"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060236"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Een virtuele SQL Server-machine inrichten in Azure Portal
 
@@ -30,16 +30,16 @@ In deze zelfstudie leert u het volgende:
 
 * [Een virtuele Linux SQL-machine vanuit de galerie te maken](#create)
 * [Verbinding te maken met de nieuwe virtuele machine via ssh](#connect)
-* [Het SA-wachtwoord te wijzigen](#password)
-* [Voor externe verbindingen te configureren](#remote)
+* [Het SA-wachtwoord wijzigen](#password)
+* [Configureren voor externe verbindingen](#remote)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free) voordat u begint.
 
-## <a id="create"></a> Een virtuele Linux-machine maken waarop SQL Server is geïnstalleerd
+## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a> Een virtuele Linux-machine maken waarop SQL Server is geïnstalleerd
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer **Een resource maken** in het linkerdeelvenster.
 
@@ -49,13 +49,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
    ![Alle VM-installatiekopieën bekijken](./media/provision-sql-server-linux-virtual-machine/azure-compute-blade.png)
 
-1. Typ **SQL Server 2019**in het zoekvak en selecteer **Enter** om de zoek opdracht te starten.
+1. Typ SQL Server **2019**in het zoekvak en selecteer **Enter** om de zoekopdracht te starten.
 
-1. Beperk de lijst met zoekresultaten door **Besturingssysteem** > **Redhat** te selecteren.
+1. Beperk de zoekresultaten door **besturingssysteem** > **Redhat te**selecteren .
 
-    ![Zoek filter voor VM-installatie kopieën van SQL Server 2019](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
+    ![Zoekfilter voor VM-afbeeldingen van SQL Server 2019](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
 
-1. Selecteer een SQL Server 2019 Linux-installatie kopie uit de zoek resultaten. In deze zelf studie wordt gebruikgemaakt **van SQL Server 2019 op RHEL74**.
+1. Selecteer een SQL Server 2019 Linux-afbeelding in de zoekresultaten. Deze zelfstudie maakt gebruik van **SQL Server 2019 op RHEL74**.
 
    > [!TIP]
    > Met de Developer-versie kunt u testen of ontwikkelen met de functies van de Enterprise-editie, zonder SQL Server-licentiekosten. U betaalt alleen om met de virtuele Linux-machine te werken.
@@ -71,29 +71,29 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 1. Voer bij **Naam virtuele machine** een naam in voor uw nieuwe Linux-VM.
 1. Typ of selecteer vervolgens de volgende waarden:
-   * **Regio**: Selecteer de Azure-regio die het meest geschikt is voor u.
-   * **Beschikbaarheids opties**: Kies de optie Beschik baarheid en redundantie die het meest geschikt is voor uw apps en gegevens.
-   * **Grootte wijzigen**: Selecteer deze optie om een computer grootte te kiezen en kies **vervolgens selecteren**. Zie [Linux VM-grootten](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) voor meer informatie over de grootte van VM-machines.
+   * **Regio:** Selecteer het Azure-gebied dat bij u in de juiste plaats is.
+   * **Beschikbaarheidsopties:** kies de beschikbaarheids- en redundantieoptie die het beste is voor uw apps en gegevens.
+   * **Grootte wijzigen:** selecteer deze optie om een machinegrootte te kiezen en kies **Selecteren**wanneer u klaar bent . Zie [Linux VM-grootten](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes) voor meer informatie over de grootte van VM-machines.
 
      ![Een VM-grootte kiezen](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
    > Voor de ontwikkeling en het uitvoeren van functionele tests kunt u het beste een VM-formaat van **DS2** of groter kiezen. Gebruik **DS13** of groter als u prestatietests wilt uitvoeren.
 
-   * **Verificatie type**: Selecteer de **open bare SSH-sleutel**.
+   * **Verificatietype**: Selecteer **openbare ssh-sleutel**.
 
      > [!Note]
      > U hebt de keuze om voor de verificatie een openbare SSH-sleutel of een wachtwoord te gebruiken. SSH is veiliger. Zie [SSH-sleutels maken in Linux en Mac voor virtuele Linux-machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys) voor instructies over het maken van een SSH-sleutel.
 
-   * **Gebruikers naam**: Voer de naam van de beheerder voor de virtuele machine in.
-   * **Open bare SSH-sleutel**: Voer uw open bare RSA-sleutel in.
-   * **Open bare binnenkomende poorten**: Kies **geselecteerde poorten toestaan** en selecteer de SSH-poort **(22)** in de lijst **open bare binnenkomende poorten selecteren** . Deze stap is nodig in deze quickstart om verbinding te maken en de SQL Server-configuratie te voltooien. Als u extern verbinding wilt maken met SQL Server, moet u verkeer hand matig toestaan voor de standaard poort (1433) die door Microsoft SQL Server wordt gebruikt voor verbindingen via Internet nadat de virtuele machine is gemaakt.
+   * **Gebruikersnaam:** voer de naam van de beheerder voor de vm in.
+   * **SSH-openbare sleutel**: Voer uw RSA-openbare sleutel in.
+   * **Openbare binnenkomende poorten:** kies **Geselecteerde poorten toestaan** en kies de **SSH-poort (22)** in de lijst **Openbare binnenkomende poorten selecteren.** Deze stap is nodig in deze quickstart om verbinding te maken en de SQL Server-configuratie te voltooien. Als u op afstand verbinding wilt maken met SQL Server, moet u verkeer handmatig toestaan naar de standaardpoort (1433) die door Microsoft SQL Server wordt gebruikt voor verbindingen via internet nadat de virtuele machine is gemaakt.
 
      ![Poorten voor inkomend verkeer](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
 1. Maak eventuele wijzigingen in de instellingen in de volgende aanvullende tabbladen of behoud de standaardinstellingen.
     * **Schijven**
-    * **Netwerken**
+    * **Networking**
     * **Beheer**
     * **Gastconfiguratie**
     * **Tags**
@@ -101,7 +101,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 1. Selecteer **Controleren + maken**.
 1. Selecteer in het deelvenster **Controleren + maken** de optie **Maken**.
 
-## <a id="connect"></a> Verbinding maken met de virtuele Linux-machine
+## <a name="connect-to-the-linux-vm"></a><a id="connect"></a> Verbinding maken met de virtuele Linux-machine
 
 Als u al een BASH-shell gebruikt, moet u verbinding maken met de virtuele Azure-machine via de opdracht **ssh**. In de volgende opdracht vervangt u de VM-gebruikersnaam en het IP-adres om verbinding te maken met uw virtuele Linux-machine.
 
@@ -128,7 +128,7 @@ Zie [Een virtuele Linux-machine in Azure maken met behulp van de portal](https:/
 > [!Note]
 > Als er een PuTTY-beveiligingswaarschuwing wordt weergegeven dat de hostsleutel van de server niet in het register wordt opgeslagen, kunt u uit de volgende opties kiezen. Als u deze host vertrouwt, selecteert u **Ja** om de sleutel aan de PuTTy-cache toe te voegen en door te gaan met verbinding maken. Als u eenmalig verbinding wilt maken, zonder de sleutel aan de cache toe te voegen, selecteert u **Nee**. Als u deze host niet vertrouwt, selecteert u **Annuleren** om de verbinding te verbreken.
 
-## <a id="password"></a>Het SA-wachtwoord wijzigen
+## <a name="change-the-sa-password"></a><a id="password"></a>Het SA-wachtwoord wijzigen
 
 Op de nieuwe virtuele machine wordt SQL Server geïnstalleerd met een willekeurig SA-wachtwoord. Stel dit wachtwoord opnieuw in voordat u met de SA-aanmeldingsgegevens verbinding met SQL Server maakt.
 
@@ -161,7 +161,7 @@ Meerdere SQL-Server-[pakketten](sql-server-linux-virtual-machines-overview.md#pa
    source ~/.bashrc
    ```
 
-## <a id="remote"></a> Voor externe verbindingen configureren
+## <a name="configure-for-remote-connections"></a><a id="remote"></a> Voor externe verbindingen configureren
 
 Als u op afstand verbinding wilt maken met SQL Server op de virtuele Azure-machine, moet u een inkomende regel configureren in de netwerkbeveiligingsgroep. De regel staat verkeer op de poort toe waarop door SQL Server wordt geluisterd (standaard is dat 1433). De volgende stappen laten zien hoe Azure Portal voor deze stap kan worden gebruikt.
 
