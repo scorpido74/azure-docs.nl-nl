@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: StarLeaf configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op StarLeaf.
+title: 'Zelfstudie: StarLeaf configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor StarLeaf.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,145 +16,145 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
 ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064288"
 ---
-# <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Zelf studie: StarLeaf configureren voor automatische gebruikers inrichting
+# <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Zelfstudie: StarLeaf configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in StarLeaf en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in StarLeaf.
+Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in StarLeaf en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen voor StarLeaf.
 
 > [!NOTE]
->  In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+>  In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Deze connector is momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies.
+> Deze connector bevindt zich momenteel in Voorbeeld. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie over de algemene gebruiksvoorwaarden van Microsoft Azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al de volgende vereisten hebt:
 
 * Een Azure AD-tenant.
-* [Een StarLeaf-Tenant](https://www.starleaf.com/solutions/).
-* Een gebruikers account in StarLeaf met beheerders machtigingen.
+* [Een StarLeaf huurder](https://www.starleaf.com/solutions/).
+* Een gebruikersaccount in StarLeaf met beheerdersmachtigingen.
 
 ## <a name="assign-users-to-starleaf"></a>Gebruikers toewijzen aan StarLeaf
-Azure Active Directory gebruikt een concept met de naam toewijzingen om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd toewijzingen om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u bepalen welke gebruikers en groepen in azure AD toegang nodig hebben tot StarLeaf. Vervolgens kunt u de gebruikers en groepen toewijzen aan StarLeaf door [deze instructies](../manage-apps/assign-user-or-group-access-portal.md)te volgen.
+Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en groepen in Azure AD toegang tot StarLeaf nodig hebben. Vervolgens u de gebruikers en groepen toewijzen aan StarLeaf door deze instructies op te [volgen.](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-starleaf"></a>Belang rijke tips voor het toewijzen van gebruikers aan StarLeaf
+## <a name="important-tips-for-assigning-users-to-starleaf"></a>Belangrijke tips voor het toewijzen van gebruikers aan StarLeaf
 
-* Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan StarLeaf om de configuratie van automatische gebruikers inrichting te testen. U kunt later extra gebruikers en groepen toewijzen.
+* Het wordt aanbevolen dat één Azure AD-gebruiker aan StarLeaf wordt toegewezen om de automatische configuratie van gebruikersinrichting te testen. Extra gebruikers en groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan StarLeaf, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol standaard toegang worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker aan StarLeaf toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de functie Standaardtoegang zijn uitgesloten van inrichten.
 
-## <a name="set-up-starleaf-for-provisioning"></a>StarLeaf instellen voor inrichting
+## <a name="set-up-starleaf-for-provisioning"></a>StarLeaf instellen voor inrichten
 
-Voordat u StarLeaf configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten configureren in StarLeaf:
+Voordat u StarLeaf configureert voor automatische gebruikersvoorziening met Azure AD, moet u SCIM-provisioning configureren in StarLeaf:
 
-1. Meld u aan bij de [StarLeaf-beheer console](https://portal.starleaf.com/#page=login). Navigeer naar **integraties** > **integratie toevoegen**.
+1. Meld u aan bij uw [StarLeaf-beheerconsole](https://portal.starleaf.com/#page=login). Navigeren naar **integraties** > **Integratie toevoegen**.
 
-    ![SCIM StarLeaf toevoegen](media/starleaf-provisioning-tutorial/image00.png)
+    ![StarLeaf Add SCIM](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Selecteer het **type** dat moet worden Microsoft Azure Active Directory. Voer een passende naam in **naam**in. Klik op **Apply** (Toepassen).
+2. Selecteer het **type dat** Microsoft Azure Active Directory wordt. Voer een geschikte naam in **Naam**in . Klik op **Toepassen**.
 
-    ![SCIM StarLeaf toevoegen](media/starleaf-provisioning-tutorial/image01.png)
+    ![StarLeaf Add SCIM](media/starleaf-provisioning-tutorial/image01.png)
 
-3.  De **scim basis-URL** en **toegangs token** waarden worden vervolgens weer gegeven. Deze waarden worden ingevoerd in de velden **Tenant-URL** en **geheim-token** op het tabblad inrichten van uw StarLeaf-toepassing in de Azure Portal. 
+3.  De **URL-url-basis** en **de tokenwaarden van Access** worden vervolgens weergegeven. Deze waarden worden ingevoerd in de velden **URL van tenant** en geheim **token** op het tabblad Inrichten van uw StarLeaf-toepassing in de Azure-portal. 
 
     ![StarLeaf-token maken](media/starleaf-provisioning-tutorial/image02.png)
 
-## <a name="add-starleaf-from-the-gallery"></a>StarLeaf toevoegen vanuit de galerie
+## <a name="add-starleaf-from-the-gallery"></a>StarLeaf toevoegen vanuit de galerij
 
-Als u StarLeaf wilt configureren voor het automatisch inrichten van gebruikers met Azure AD, moet u StarLeaf van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Als u StarLeaf wilt configureren voor automatische gebruikersvoorziening met Azure AD, moet u StarLeaf vanuit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om StarLeaf toe te voegen vanuit de Azure AD-toepassings galerie:**
+**Voer de volgende stappen uit om StarLeaf toe te voegen vanuit de Azure AD-toepassingsgalerie:**
 
-1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
+1. Selecteer **Azure Active Directory**in de **[Azure-portal](https://portal.azure.com)** in het linkernavigatiedeelvenster .
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+2. Ga naar **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **Nieuwe toepassing** boven aan het deelvenster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **StarLeaf**in het zoekvak en selecteer **StarLeaf** in het deel venster resultaten.
-    ![StarLeaf in de lijst met resultaten](common/search-new-app.png)
+4. Typ **StarLeaf**in het zoekvak , selecteer **StarLeaf** in het resultatenpaneel.
+    ![StarLeaf in de resultatenlijst](common/search-new-app.png)
 
-## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Automatische gebruikers inrichting configureren voor StarLeaf
+## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Automatische gebruikersinrichting configureren voor StarLeaf
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in StarLeaf te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in StarLeaf te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **StarLeaf**.
+2. Selecteer **StarLeaf**in de lijst met toepassingen .
 
-    ![De koppeling StarLeaf in de lijst met toepassingen](common/all-applications.png)
+    ![De StarLeaf-koppeling in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Tabblad Inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Tabblad Inrichten](common/provisioning-automatic.png)
 
-5. In het gedeelte beheerders referenties voert u de **scim basis-URL** en **toegangs token** waarden in die respectievelijk eerder zijn opgehaald in de **Tenant-URL** en het **geheime token** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met StarLeaf. Als de verbinding mislukt, zorg er dan voor dat uw StarLeaf-account beheerders machtigingen heeft en probeer het opnieuw.
+5. Voer onder de sectie Beheerdersreferenties de URL en **Access Token-waarden** van **SCIM Base** in die eerder zijn opgehaald in respectievelijk **tenant-URL** en **Secret Token.** Klik **op Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met StarLeaf. Als de verbinding mislukt, moet u ervoor zorgen dat uw StarLeaf-account beheerdersmachtigingen heeft en het opnieuw proberen.
 
-    ![Tenant-URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Tenant URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **een e-mail melding verzenden wanneer een fout** is opgetreden in.
+6. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fout moet ontvangen en schakel het selectievakje **Een e-mailmelding verzenden in wanneer er een fout optreedt in.**
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mail met meldingen](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
-8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met StarLeaf**.
+8. Selecteer Azure **Active Directory-gebruikers synchroniseren met StarLeaf**onder de sectie **Toewijzingen** .
 
     ![StarLeaf-token maken](media/starleaf-provisioning-tutorial/usermapping.png)
 
-9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar StarLeaf in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in StarLeaf voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+9. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar StarLeaf in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in StarLeaf te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
     ![StarLeaf-token maken](media/starleaf-provisioning-tutorial/userattribute.png)
 
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+10. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 
 
-11. Als u de Azure AD-inrichtings service voor **StarLeaf wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+11. Als u de Azure AD-inrichtingsservice voor StarLeaf wilt inschakelen, wijzigt u de **inrichtingsstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Status inrichten ingeschakeld](common/provisioning-toggle-on.png)
 
-12. Definieer de gebruikers en/of groepen die u wilt inrichten voor StarLeaf door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+12. Definieer de gebruikers en/of groepen die u aan StarLeaf wilt inrichten door de gewenste waarden in **Scope** te kiezen in de sectie **Instellingen.**
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingskader](common/provisioning-scope.png)
 
-13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+13. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Configuratie van het opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op StarLeaf.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitenrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op StarLeaf.
 
-Voor meer informatie over het lezen van de Azure AD-inrichtings logboeken raadpleegt u [rapportage over automatische gebruikers accounts inrichten](../app-provisioning/check-status-user-account-provisioning.md)
+Zie [Rapportage over automatische gebruikersaccountinrichting](../app-provisioning/check-status-user-account-provisioning.md) voor meer informatie over het lezen van de azure AD-inrichtingslogboeken.
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="connector-limitations"></a>Verbindingsbeperkingen
 
-* StarLeaf biedt momenteel geen ondersteuning voor het inrichten van groepen. 
-* StarLeaf vereist dat de waarden voor **e-mail** en **gebruikers naam** dezelfde bron waarde hebben.
+* StarLeaf ondersteunt momenteel geen groepsinrichting. 
+* StarLeaf vereist **dat e-mail-** en **userName-waarden** dezelfde bronwaarde hebben.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountinrichting voor bedrijfsapps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [controleren van Logboeken en het ophalen van rapporten over inrichtings activiteiten](../app-provisioning/check-status-user-account-provisioning.md).
+* Meer informatie over het [bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../app-provisioning/check-status-user-account-provisioning.md).

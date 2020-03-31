@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Zscaler Beta configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts naar Zscaler Beta.
+title: 'Zelfstudie: Zscaler-bèta configureren voor automatische gebruikersvoorziening met Azure Active Directory | Microsoft Documenten'
+description: Meer informatie over het configureren van Azure Active Directory om gebruikersaccounts automatisch in te richten en te de-provisionen voor De Bèta van Zscaler.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,37 +16,37 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 505cd7a3350c937885f0f03268ef326a4f784258
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062724"
 ---
-# <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Zelf studie: Zscaler Beta configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Zelfstudie: Zscaler-bèta configureren voor automatische gebruikersinrichting
 
-Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Zscaler Beta en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Zscaler Beta.
+Het doel van deze zelfstudie is om de stappen aan te tonen die moeten worden uitgevoerd in Zscaler Beta en Azure Active Directory (Azure AD) om Azure AD te configureren om gebruikers en/of groepen automatisch in te richten en te de-provisionen voor Bèta van Zscaler.
 
 > [!NOTE]
-> In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../active-directory-saas-app-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
+> In deze zelfstudie wordt een connector beschreven die is gebouwd bovenop de Azure AD User Provisioning Service. Zie Gebruikersinrichting en deprovisioning voor SaaS-toepassingen automatiseren voor belangrijke details over wat deze service doet, hoe deze werkt en veelgestelde vragen, zie [Gebruikersinrichting automatiseren en deprovisioning voor SaaS-toepassingen met Azure Active Directory](../active-directory-saas-app-provisioning.md).
 >
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u het volgende al hebt:
+Het scenario dat in deze zelfstudie wordt beschreven, gaat ervan uit dat u al het volgende hebt:
 
-* Een Azure AD-Tenant
-* Een Zscaler Beta-Tenant
-* Een gebruikers account in Zscaler Beta met beheerders machtigingen
+* Een Azure AD-tenant
+* Een Zscaler Beta-tenant
+* Een gebruikersaccount in De Bèta van Zscaler met beheerdersmachtigingen
 
 > [!NOTE]
-> De integratie van Azure AD-inrichting is afhankelijk van de Zscaler Beta SCIM-API, die beschikbaar is voor Zscaler bèta-ontwikkel aars voor accounts met het ondernemings pakket.
+> De integratie van Azure AD-inrichting is gebaseerd op de Zscaler Beta SCIM API, die beschikbaar is voor Zscaler Beta-ontwikkelaars voor accounts met het Enterprise-pakket.
 
 ## <a name="adding-zscaler-beta-from-the-gallery"></a>Zscaler Beta toevoegen vanuit de galerie
 
-Voordat u Zscaler Beta configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u Zscaler Beta van de Azure AD-toepassings galerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
+Voordat u Zscaler-bèta configureert voor automatische gebruikersvoorziening met Azure AD, moet u Zscaler-bèta vanuit de Azure AD-toepassingsgalerie toevoegen aan uw lijst met beheerde SaaS-toepassingen.
 
-**Voer de volgende stappen uit om Zscaler Beta toe te voegen vanuit de Azure AD-toepassings galerie:**
+**Als u Zscaler-bèta wilt toevoegen vanuit de Azure AD-toepassingsgalerie, voert u de volgende stappen uit:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -66,107 +66,107 @@ Voordat u Zscaler Beta configureert voor het automatisch inrichten van gebruiker
 
 ## <a name="assigning-users-to-zscaler-beta"></a>Gebruikers toewijzen aan Zscaler Beta
 
-Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers, worden alleen de gebruikers en/of groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept genaamd 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In het kader van automatische gebruikersinrichting worden alleen de gebruikers en/of groepen die zijn 'toegewezen' aan een toepassing in Azure AD gesynchroniseerd.
 
-Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u beslissen welke gebruikers en/of groepen in azure AD toegang nodig hebben tot Zscaler Beta. Nadat u hebt besloten, kunt u deze gebruikers en/of groepen toewijzen aan Zscaler Beta door de volgende instructies te volgen:
+Voordat u automatische gebruikersinrichting configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in Azure AD toegang nodig hebben tot De Bèta van Zscaler. Eenmaal besloten, u deze gebruikers en/of groepen toewijzen aan Zscaler Beta door de instructies hier te volgen:
 
-* [Een gebruiker of groep toewijzen aan een bedrijfs-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Een gebruiker of groep toewijzen aan een bedrijfsapp](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-zscaler-beta"></a>Belang rijke tips voor het toewijzen van gebruikers aan Zscaler Beta
+### <a name="important-tips-for-assigning-users-to-zscaler-beta"></a>Belangrijke tips voor het toewijzen van gebruikers aan Zscaler Beta
 
-* Het is raadzaam dat er één Azure AD-gebruiker wordt toegewezen aan Zscaler Beta om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* Het wordt aanbevolen dat één Azure AD-gebruiker wordt toegewezen aan De Bèta van Zscaler om de automatische configuratie van de gebruikersvoorziening te testen. Mogelijk worden later extra gebruikers en/of groepen toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Zscaler beta, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan De Bèta van Zscaler, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het toewijzingsdialoogvenster. Gebruikers met de **functie Standaardtoegang** zijn uitgesloten van inrichten.
 
-## <a name="configuring-automatic-user-provisioning-to-zscaler-beta"></a>Automatische gebruikers inrichting configureren voor Zscaler Beta
+## <a name="configuring-automatic-user-provisioning-to-zscaler-beta"></a>Automatische gebruikersvoorziening configureren voor Zscaler-bèta
 
-In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Zscaler Beta te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
+In deze sectie u de azure AD-inrichtingsservice configureren om gebruikers en/of groepen in De Bèta van Zscaler te maken, bij te werken en uit te schakelen op basis van gebruikers- en/of groepstoewijzingen in Azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Zscaler beta, gevolgd door de instructies in de [zelf studie voor Zscaler bèta-](zscaler-beta-tutorial.md)eenmalige aanmelding. Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
+> U er ook voor kiezen om SAML-gebaseerde single sign-on in te schakelen voor Zscaler Beta, volgens de instructies in de [Zscaler Beta single sign-on tutorial](zscaler-beta-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikersinrichting worden geconfigureerd, hoewel deze twee functies elkaar complimenteren.
 
-### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Zscaler beta in azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Ga als een te meer met de automatische gebruikersinrichting voor Zscaler-bèta in Azure AD:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en selecteer **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Zscaler Beta**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **vervolgens De Bèta van Zscaler**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Zscaler Beta**.
+2. Selecteer **Zscaler Beta**in de lijst met toepassingen .
 
     ![De Zscaler Beta-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten.**
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **inrichtingsmodus** in op **Automatisch**.
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
 
-5. Voer in het gedeelte **beheerders referenties** de **Tenant-URL** en het **geheime token** van uw Zscaler-bèta account in, zoals beschreven in stap 6.
+5. Voer onder de sectie **Beheerdersreferenties** de **URL van de tenant** en het geheime **token** van uw Zscaler-bètaaccount in zoals beschreven in stap 6.
 
-6. Als u de **Tenant-URL** en het **geheime token**wilt ophalen, gaat u naar **Beheer > verificatie-instellingen** in de gebruikers interface van de Zscaler-bèta Portal en klikt u op **SAML** onder **verificatie type**.
+6. Als u de **URL van** de tenant en het geheime **token wilt**verkrijgen, navigeert u naar Beheer > **verificatie-instellingen** in de gebruikersinterface van de Bètaportal Zscaler en klikt u op **SAML** onder **Verificatietype**.
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
 
-    Klik op **SAML configureren** om de SAML-opties voor **configuratie** te openen.
+    Klik op **SAML configureren** om de **SAML-opties voor configuratie** te openen.
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    Selecteer **op scim gebaseerde inrichting inschakelen** om de **basis-URL** en **Bearer-token**op te halen en sla de instellingen vervolgens op. Kopieer de **basis-URL** naar de **Tenant-URL**en **Bearer-token** naar een **geheim token** in de Azure Portal.
+    Selecteer **SCIM-gebaseerde inrichting inschakelen** om **basis-URL** en **dragertoken**op te halen en sla vervolgens de instellingen op. Kopieer de **url van** de basis naar **tenant**en token **aan toonder** naar **Secret Token** in de Azure-portal.
 
-7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Zscaler Beta. Als de verbinding mislukt, zorg er dan voor dat uw Zscaler-bèta account beheerders machtigingen heeft en probeer het opnieuw.
+7. Klik op **Verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met De Bèta van Zscaler wanneer u de velden in stap 5 bevolken. Als de verbinding mislukt, moet u ervoor zorgen dat uw Zscaler-bètaaccount beheerdersmachtigingen heeft en het opnieuw proberen.
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
 
-8. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **e-mail melding verzenden als er een fout optreedt**.
+8. Voer in het veld **Meldingse-e-mail** het e-mailadres in van een persoon of groep die de meldingen van provisioning-fouten moet ontvangen en schakel het selectievakje **Een e-mailmelding verzenden wanneer er een fout optreedt**in.
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/notification.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
 9. Klik op **Opslaan**.
 
-10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Zscaler Beta**.
+10. Selecteer azure **Active Directory-gebruikers synchroniseren met de bètaversie van Zscaler**onder de sectie **Toewijzingen** .
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
 
-11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Zscaler beta in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Zscaler Beta voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+11. Controleer de gebruikerskenmerken die zijn gesynchroniseerd van Azure AD naar Zscaler Beta in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen matching** worden gebruikt om de gebruikersaccounts in De Bèta van Zscaler te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
 
-12. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Zscaler Beta**.
+12. Selecteer Azure **Active Directory-groepen synchroniseren met De bèta van Zscaler**onder de sectie **Toewijzingen** .
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
 
-13. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Zscaler beta in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de groepen in Zscaler Beta voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+13. Controleer de groepskenmerken die zijn gesynchroniseerd van Azure AD naar Zscaler Beta in de sectie **Kenmerktoewijzing.** De kenmerken die zijn geselecteerd als **eigenschappen Matching** worden gebruikt om de groepen in De Bèta van Zscaler te matchen voor updatebewerkingen. Selecteer de knop **Opslaan** om wijzigingen door te voeren.
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
 
-14. Raadpleeg de volgende instructies in de [zelf studie](./../active-directory-saas-scoping-filters.md)voor het filteren op bereik voor het configureren van bereik filters.
+14. Als u scopingfilters wilt configureren, raadpleegt u de volgende instructies in de zelfstudie van het [Scoping-filter.](./../active-directory-saas-scoping-filters.md)
 
-15. Als u de Azure AD Provisioning Service voor Zscaler Beta wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+15. Als u de Azure AD-inrichtingsservice voor De Bèta van Zscaler wilt inschakelen, wijzigt u de **instelstatus** in **Aan** in de sectie **Instellingen.**
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
 
-16. Definieer de gebruikers en/of groepen die u wilt inrichten voor Zscaler Beta door de gewenste waarden in het **bereik** in het gedeelte **instellingen** te kiezen.
+16. Definieer de gebruikers en/of groepen die u wilt inrichten voor De Bèta van Zscaler door de gewenste waarden in **Bereik** te kiezen in de sectie **Instellingen.**
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/scoping.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/scoping.png)
 
-17. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+17. Wanneer u klaar bent voor inlevering, klikt u op **Opslaan.**
 
-    ![Zscaler bèta inrichten](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
+    ![Zscaler Beta Provisioning](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
 
-Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Zscaler Beta.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn gedefinieerd in **Bereik** in de sectie **Instellingen.** De eerste synchronisatie duurt langer om uit te voeren dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. U de sectie **Synchronisatiedetails** gebruiken om de voortgang te controleren en koppelingen naar het installatieactiviteitsrapport te volgen, waarin alle acties worden beschreven die zijn uitgevoerd door de Azure AD-inrichtingsservice op De Bèta van Zscaler.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../active-directory-saas-provisioning-reporting.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische gebruikersaccountinrichting voor](../active-directory-saas-provisioning-reporting.md)meer informatie over het lezen van de azure AD-inrichtingslogboeken.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Gebruikersaccountvoorziening voor Enterprise Apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../active-directory-saas-provisioning-reporting.md)
+* [Meer informatie over het bekijken van logboeken en het verzamelen van rapporten over inrichtingsactiviteiten](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-beta-provisioning-tutorial/tutorial-general-01.png

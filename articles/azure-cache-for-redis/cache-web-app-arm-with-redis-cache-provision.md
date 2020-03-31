@@ -1,6 +1,6 @@
 ---
-title: Een web-app inrichten met Azure cache voor redis
-description: Gebruik Azure Resource Manager sjabloon voor het implementeren van een web-app met Azure cache voor redis.
+title: Web-app inrichten met Azure-cache voor Redis
+description: Gebruik de sjabloon Azure Resource Manager om de web-app te implementeren met Azure Cache voor Redis.
 services: app-service
 author: yegu-ms
 ms.service: app-service
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
 ms.openlocfilehash: 11c854491ab030394eb61964979cb04a5a4b489b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75433383"
 ---
-# <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Een web-app plus Azure cache maken voor redis met behulp van een sjabloon
+# <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Een web-app plus Azure-cache voor Redis maken met behulp van een sjabloon
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In dit onderwerp leert u hoe u een Azure Resource Manager sjabloon maakt waarmee een Azure-web-app met Azure cache voor redis wordt geïmplementeerd. U leert hoe u kunt definiëren welke resources worden geïmplementeerd en hoe u para meters definieert die worden opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen.
+In dit onderwerp leert u hoe u een Azure Resource Manager-sjabloon maakt waarmee een Azure Web App met Azure Cache voor Redis wordt geïmplementeerd. U leert hoe u definiëren welke resources worden geïmplementeerd en hoe u parameters definieert die zijn opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen.
 
-Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md)voor meer informatie over het maken van sjablonen. Zie [resource typen van micro soft. cache](/azure/templates/microsoft.cache/allversions)voor meer informatie over de JSON-syntaxis en eigenschappen voor cache resource typen.
+Zie [Azure Resource Manager-sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md)voor meer informatie over het maken van sjablonen. Zie [Microsoft.Cache-brontypen](/azure/templates/microsoft.cache/allversions)voor meer informatie over de syntaxis en eigenschappen van JSON voor cachebronnen.
 
-Zie voor de volledige sjabloon [Web-app met Azure cache voor redis-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
+Zie [Web-app met Azure-cache voor Redis-sjabloon voor](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json)de volledige sjabloon .
 
-## <a name="what-you-will-deploy"></a>Wat u gaat implementeren
-In deze sjabloon voert u de volgende implementatie uit:
+## <a name="what-you-will-deploy"></a>Wat u gaat inzetten
+In deze sjabloon implementeert u het:
 
 * Azure Web App
 * Azure Cache voor Redis
 
 Klik op de volgende knop om de implementatie automatisch uit te voeren:
 
-[![Implementeren in Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
+[![Implementeren naar Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
-## <a name="parameters-to-specify"></a>Para meters om op te geven
+## <a name="parameters-to-specify"></a>Parameters op te geven
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>Variabelen voor namen
-Deze sjabloon maakt gebruik van variabelen om namen voor de resources te maken. De functie [Unique string](../azure-resource-manager/templates/template-functions-string.md#uniquestring) wordt gebruikt om een waarde te maken op basis van de resource groep-ID.
+Deze sjabloon gebruikt variabelen om namen voor de resources te construeren. Het maakt gebruik van de [uniekeString-functie](../azure-resource-manager/templates/template-functions-string.md#uniquestring) om een waarde te construeren op basis van de brongroep-id.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -53,9 +53,9 @@ Deze sjabloon maakt gebruik van variabelen om namen voor de resources te maken. 
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
 ### <a name="azure-cache-for-redis"></a>Azure Cache voor Redis
-Hiermee maakt u de Azure-cache voor redis die wordt gebruikt met de web-app. De naam van de cache is opgegeven in de variabele **cachemap** .
+Hiermee maakt u de Azure-cache voor Redis die wordt gebruikt met de web-app. De naam van de cache is opgegeven in de variabele **cacheName.**
 
-De sjabloon maakt de cache op dezelfde locatie als de resource groep.
+De sjabloon maakt de cache op dezelfde locatie als de resourcegroep.
 
     {
       "name": "[variables('cacheName')]",
@@ -77,9 +77,9 @@ De sjabloon maakt de cache op dezelfde locatie als de resource groep.
 
 
 ### <a name="web-app"></a>Web-app
-Hiermee maakt u de web-app met de naam die is opgegeven in de variabele voor de **Websitenaam** .
+Hiermee maakt u de web-app met de naam die is opgegeven in de variabele **webSiteName.**
 
-U ziet dat de web-app is geconfigureerd met app-instellings eigenschappen, zodat deze kan worden gebruikt met de Azure-cache voor redis. Deze app-instellingen worden dynamisch gemaakt op basis van de waarden die tijdens de implementatie worden gegeven.
+Merk op dat de web-app is geconfigureerd met eigenschappen voor app-instelling waarmee deze kan werken met de Azure-cache voor Redis. Deze app-instellingen worden dynamisch gemaakt op basis van waarden die tijdens de implementatie worden verstrekt.
 
     {
       "apiVersion": "2015-08-01",

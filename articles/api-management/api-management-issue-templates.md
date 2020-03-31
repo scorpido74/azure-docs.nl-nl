@@ -1,6 +1,6 @@
 ---
-title: Sjablonen uitgeven in azure API Management | Microsoft Docs
-description: Meer informatie over het aanpassen van de inhoud van de probleem pagina's in de ontwikkelaars Portal in azure API Management.
+title: Probleemsjablonen in Azure API-beheer | Microsoft Documenten
+description: Meer informatie over het aanpassen van de inhoud van de uitgiftepagina's in de ontwikkelaarsportal in Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,32 +14,32 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249579"
 ---
-# <a name="issue-templates-in-azure-api-management"></a>Sjablonen uitgeven in azure API Management
-Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met de syntaxis van de [DotLiquid](http://dotliquidmarkup.org/) en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u een grote flexibiliteit om de inhoud van de pagina's zo te configureren dat ze met deze sjablonen overeenkomen.  
+# <a name="issue-templates-in-azure-api-management"></a>Probleemsjablonen in Azure API-beheer
+Azure API Management biedt u de mogelijkheid om de inhoud van ontwikkelaarsportalpagina's aan te passen met behulp van een reeks sjablonen die de inhoud ervan configureren. Met behulp van [DotLiquid](http://dotliquidmarkup.org/) syntaxis en de editor van uw keuze, zoals [DotLiquid voor ontwerpers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een meegeleverde set van gelokaliseerde [string bronnen,](api-management-template-resources.md#strings) [Glyph middelen,](api-management-template-resources.md#glyphs)en [Pagina besturingselementen](api-management-page-controls.md), hebt u grote flexibiliteit om de inhoud van de pagina's te configureren zoals u dat wilt met behulp van deze sjablonen.  
   
- Met de sjablonen in deze sectie kunt u de inhoud van de uitgifte pagina's in de ontwikkelaars portal aanpassen.  
+ Met de sjablonen in deze sectie u de inhoud van de uitgiftepagina's aanpassen in de ontwikkelaarsportal.  
   
 -   [Lijst met problemen](#IssueList)  
   
 > [!NOTE]
->  Voor beelden van standaard sjablonen zijn opgenomen in de volgende documentatie, maar zijn onderhevig aan wijzigingen als gevolg van voortdurende verbeteringen. U kunt de Live standaard sjablonen in de ontwikkelaars portal weer geven door te navigeren naar de gewenste afzonderlijke sjablonen. Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.  
+>  Standaardsjablonen voor voorbeelden zijn opgenomen in de volgende documentatie, maar kunnen worden gewijzigd als gevolg van continue verbeteringen. U de standaardstandaardsjablonen in de ontwikkelaarsportal bekijken door naar de gewenste afzonderlijke sjablonen te navigeren. Zie [De API Management-ontwikkelaarsportal aanpassen met sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="IssueList"></a>Lijst met problemen  
- Met de sjabloon **probleem lijst** kunt u de hoofd tekst van de pagina probleem lijst in de ontwikkelaars portal aanpassen.  
+##  <a name="issue-list"></a><a name="IssueList"></a>Lijst met problemen  
+ Met de sjabloon **Probleemlijst** u de hoofdtekst van de pagina met de uitgiftelijst aanpassen in de ontwikkelaarsportal.  
   
- ![Ontwikkelaars Portal probleem lijst](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "Ontwikkelaars portal voor APIM issue List")  
+ ![Ontwikkelaarsportal voor probleemlijst](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM-lijst-ontwikkelaarsportal")  
   
-### <a name="default-template"></a>Standaard sjabloon  
+### <a name="default-template"></a>Standaardsjabloon  
   
 ```xml
 <div class="row">
@@ -92,21 +92,21 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 ```
   
 ### <a name="controls"></a>Besturingselementen  
- De `Issue list` sjabloon kan gebruikmaken van de volgende [pagina besturings elementen](api-management-page-controls.md).  
+ De `Issue list` sjabloon kan de volgende [paginabesturingselementen](api-management-page-controls.md)gebruiken .  
   
--   [paginering-besturings element](api-management-page-controls.md#paging-control)  
+-   [paging-control](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Gegevensmodel  
   
 |Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`Issues`|Verzameling van [uitgifte](api-management-template-data-model-reference.md#Issue) -entiteiten.|De problemen die zichtbaar zijn voor de huidige gebruiker.|  
-|`Paging`|De entiteit [paging](api-management-template-data-model-reference.md#Paging) .|De paginerings gegevens voor de verzameling toepassingen.|  
-|`IsAuthenticated`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker is aangemeld bij de ontwikkelaars Portal.|  
-|`CanReportIssues`|booleaans|Hiermee wordt aangegeven of de huidige gebruiker machtigingen heeft om een probleem op te lossen.|  
+|`Issues`|Verzameling van [entiteiten voor uitgifte.](api-management-template-data-model-reference.md#Issue)|De problemen zichtbaar voor de huidige gebruiker.|  
+|`Paging`|[Paging](api-management-template-data-model-reference.md#Paging) entiteit.|De paging informatie voor de aanvragen verzamelen.|  
+|`IsAuthenticated`|booleaans|Of de huidige gebruiker is aangemeld bij de ontwikkelaarsportal.|  
+|`CanReportIssues`|booleaans|Of de huidige gebruiker machtigingen heeft om een probleem in te dienen.|  
 |`Search`|tekenreeks|Deze eigenschap is afgeschaft en mag niet worden gebruikt.|  
   
-### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
+### <a name="sample-template-data"></a>Voorbeeldsjabloongegevens  
   
 ```json
 {
@@ -138,4 +138,4 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.
+Zie [De API Management-ontwikkelaarsportal aanpassen met sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.
