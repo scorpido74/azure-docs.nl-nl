@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Biedt een overzicht van ondersteuningsinstellingen en -beperkingen bij het maken van back-ups van Azure VM's met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: c30a1d1b30fcc7a12449b44d35704b3b43daa385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d86ce94c62ec9f25b364e9fdc963e3043b274722
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247902"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389287"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -115,7 +115,6 @@ Herstelpunten op DPM-/MABS-schijf | 64 voor bestandsservers en 448 voor app-serv
 **Herstellen** | **Ondersteund**
 --- | ---
 Bestanden herstellen op verschillende besturingssystemen | U bestanden herstellen op elke machine met hetzelfde (of compatibele) besturingssysteem als de back-up VM. Zie de [tabel Compatibel besturingssysteem](backup-azure-restore-files-from-vm.md#system-requirements).
-Bestanden herstellen op klassieke VM's | Wordt niet ondersteund.
 Bestanden herstellen van versleutelde VM's | Wordt niet ondersteund.
 Bestanden herstellen van opslagaccounts met beperkte netwerkopslag | Wordt niet ondersteund.
 Bestanden herstellen op VM's met Windows-opslagruimten | Herstellen wordt niet ondersteund op dezelfde vm.<br/><br/> Herstel in plaats daarvan de bestanden op een compatibele virtuele machine.
