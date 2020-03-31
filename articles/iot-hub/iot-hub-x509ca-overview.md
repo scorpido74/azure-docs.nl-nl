@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Azure IoT Hub X. 509 CA-beveiliging | Microsoft Docs
-description: 'Overzicht: apparaten verifiëren voor het IoT Hub met behulp van X. 509-certificerings instanties.'
+title: Overzicht van Azure IoT Hub X.509 CA-beveiliging | Microsoft Documenten
+description: Overzicht - hoe u apparaten verifieert naar IoT Hub met behulp van X.509-certificaatautoriteiten.
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -9,79 +9,79 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284510"
 ---
-# <a name="device-authentication-using-x509-ca-certificates"></a>Verificatie van apparaten met behulp van X. 509 CA-certificaten
+# <a name="device-authentication-using-x509-ca-certificates"></a>Apparaatverificatie met behulp van X. 509 CA-certificaten
 
-In dit artikel wordt beschreven hoe u een X. 509 certificerings instantie (CA)-certificaten gebruikt om apparaten te verifiëren die IoT Hub verbinden.  In dit artikel leert u het volgende:
+In dit artikel wordt beschreven hoe u CA-certificaten (X.509 Certificate Authority) gebruiken om apparaten die iot-hub verbinden, te verifiëren.  In dit artikel leert u:
 
-* Een X. 509 CA-certificaat ophalen
-* Het CA-certificaat voor X. 509 registreren bij IoT Hub
-* Apparaten ondertekenen met X. 509 CA-certificaten
-* De verificatie van apparaten die zijn ondertekend met X. 509 CA
+* Een X.509 CA-certificaat aanvragen
+* Het X.509 CA-certificaat registreren bij IoT Hub
+* Apparaten ondertekenen met X.509 CA-certificaten
+* Hoe apparaten die zijn ondertekend met X.509 CA worden geverifieerd
 
 ## <a name="overview"></a>Overzicht
 
-Met de functie X. 509 CA kan de verificatie van het apparaat worden IoT Hub met behulp van een certificerings instantie (CA). Het vereenvoudigt het initiële inschrijvings proces voor apparaten en de logistiek van de toeleverings keten tijdens de fabricage van het apparaat. [Meer informatie vindt u in dit scenario artikel over de waarde van het gebruik van X. 509 CA-certificaten](iot-hub-x509ca-concept.md) voor verificatie van apparaten.  U wordt aangeraden dit scenario artikel te lezen voordat u verdergaat, omdat u kunt nagaan waarom de volgende stappen zijn uitgevoerd.
+Met de x.509 CA-functie apparaatverificatie naar IoT Hub worden gemaakt met behulp van een Certificaatautoriteit (CA). Het vereenvoudigt het initiële apparaatinschrijvingsproces en de logistiek van de supply chain tijdens de productie van apparaten. [Meer informatie in dit scenarioartikel over de waarde van het gebruik van X.509 CA-certificaten](iot-hub-x509ca-concept.md) voor apparaatverificatie.  We raden u aan dit scenarioartikel te lezen voordat u verdergaat, omdat dit verklaart waarom de volgende stappen bestaan.
 
 ## <a name="prerequisite"></a>Vereiste
 
-Als u de functie X. 509 CA gebruikt, moet u een IoT Hub-account hebben.  [Meer informatie over hoe u een IOT hub-exemplaar maakt](quickstart-send-telemetry-dotnet.md) als u er nog geen hebt.
+Als u de X.509 CA-functie gebruikt, heeft u een IoT Hub-account.  [Meer informatie over het maken van een IoT Hub-exemplaar](quickstart-send-telemetry-dotnet.md) als u er nog geen hebt.
 
-## <a name="how-to-get-an-x509-ca-certificate"></a>Een X. 509 CA-certificaat ophalen
+## <a name="how-to-get-an-x509-ca-certificate"></a>Een X.509 CA-certificaat aanvragen
 
-Het X. 509 CA-certificaat bevindt zich bovenaan de keten van certificaten voor elk van uw apparaten.  U kunt er een kopen of maken, afhankelijk van hoe u deze wilt gebruiken.
+Het X.509 CA-certificaat staat bovenaan de certificatenketen voor elk van uw apparaten.  U er een kopen of maken, afhankelijk van hoe u het wilt gebruiken.
 
-Voor productie omgeving wordt u aangeraden een X. 509 CA-certificaat te kopen bij een open bare basis certificerings instantie. Het kopen van een CA-certificaat heeft het voor deel van de basis-CA die fungeert als een vertrouwde derde partij om te kunnen betalen voor de rechtmatigheid van uw apparaten. Overweeg deze optie als u wilt dat uw apparaten deel uitmaken van een open IoT-netwerk waar ze naar verwachting kunnen communiceren met producten of services van derden.
+Voor de productieomgeving raden we u aan een X.509 CA-certificaat aan te schaffen bij een openbare basiscertificaatinstantie. De aankoop van een CA-certificaat heeft het voordeel dat de basis-CA optreedt als een vertrouwde derde partij om in te staan voor de legitimiteit van uw apparaten. Overweeg deze optie als u van plan bent uw apparaten deel uit te laten maken van een open IoT-netwerk waar ze naar verwachting communiceren met producten of services van derden.
 
-U kunt ook een zelfondertekende X. 509-certificerings instantie maken voor experimenten of voor gebruik in gesloten IoT-netwerken.
+U ook een zelfondertekende X.509 CA maken voor experimenten of voor gebruik in gesloten IoT-netwerken.
 
-Ongeacht hoe u uw X. 509 CA-certificaat aanschaft, moet u ervoor zorgen dat het geheim van de persoonlijke sleutel wordt bewaard en beveiligd blijft.  Dit is nodig om vertrouwens relaties te maken in de X. 509 CA-verificatie.
+Ongeacht hoe u uw X.509 CA-certificaat verkrijgt, zorg ervoor dat u de bijbehorende privésleutel te allen tijde geheim en beschermd houdt.  Dit is nodig voor het vertrouwen in de X.509 CA-verificatie.
 
-Meer informatie over het [maken van een ZELFONDERTEKEND CA-certificaat](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), dat u kunt gebruiken voor experimenten tijdens deze functie beschrijving.
+Meer informatie over het [maken van een zelfondertekend CA-certificaat,](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)dat u gebruiken voor experimenten in deze functiebeschrijving.
 
-## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>Apparaten ondertekenen in de certificaat vertrouwens keten
+## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>Apparaten aanmelden bij de vertrouwensketen van het certificaat
 
-De eigenaar van een X. 509 CA-certificaat kan cryptografisch een tussenliggende CA ondertekenen die op zijn beurt een andere tussenliggende CA kan ondertekenen, enzovoort, totdat de laatste tussenliggende CA dit proces beëindigt door een apparaat te ondertekenen. Het resultaat is een trapsgewijs getrapte keten van certificaten, ook wel een certificaat vertrouwens keten genoemd. In Real-Life is dit afspeelt als overdracht van vertrouwens relatie met het ondertekenen van apparaten. Deze delegering is belang rijk omdat hiermee een cryptografische variabele keten wordt gemaakt en het delen van de handtekening sleutels wordt voor komen.
+De eigenaar van een X.509 CA-certificaat kan cryptografisch een tussenliggende CA ondertekenen die op zijn beurt een andere tussenliggende CA kan ondertekenen, enzovoort, totdat de laatste tussentijdse CA dit proces beëindigt door een apparaat te ondertekenen. Het resultaat is een trapsgewijze keten van certificaten die bekend staat als een certificaatketen van vertrouwen. In het echte leven speelt dit zich af als een delegatie van vertrouwen naar het ondertekenen van apparaten. Deze delegatie is belangrijk omdat het een cryptografisch variabele keten van bewaring vaststelt en het delen van ondertekeningssleutels vermijdt.
 
-![img-algemeen-CERT-keten-van-vertrouwen](./media/generic-cert-chain-of-trust.png)
+![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-Het certificaat van het apparaat (ook wel een blad certificaat genoemd) moet de *object naam* hebben ingesteld op de **apparaat-id** die is gebruikt bij het registreren van het IOT-apparaat in de Azure-IOT hub. Deze instelling is vereist voor verificatie.
+Het apparaatcertificaat (ook wel een bladcertificaat genoemd) moet de *onderwerpnaam* hebben ingesteld op de **apparaat-id** die is gebruikt bij het registreren van het IoT-apparaat in de Azure IoT Hub. Deze instelling is vereist voor verificatie.
 
-Hier vindt u informatie over het [maken van een certificaat keten](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) als gereed voor het ondertekenen van apparaten.
+Lees hier hoe [u een certificaatketen](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) maakt zoals die is gedaan bij het ondertekenen van apparaten.
 
-## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>Het CA-certificaat voor X. 509 registreren bij IoT Hub
+## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>Het X.509 CA-certificaat registreren bij IoT Hub
 
-Registreer uw X. 509 CA-certificaat om te IoT Hub waar het wordt gebruikt voor de verificatie van uw apparaten tijdens de registratie en de verbinding.  Het registreren van het X. 509-CA-certificaat is een proces dat uit twee stappen bestaat en dat het certificaat bestand uploadt en bewijs van bezit is.
+Registreer uw X.509 CA-certificaat op IoT Hub, waar het wordt gebruikt om uw apparaten te verifiëren tijdens registratie en verbinding.  Het registreren van het X.509 CA-certificaat is een proces in twee stappen dat bestaat uit het uploaden van certificaatbestanden en het bewijs van bezit.
 
-Het upload proces omvat het uploaden van een bestand dat uw certificaat bevat.  Dit bestand mag nooit persoonlijke sleutels bevatten.
+Het uploadproces houdt in dat u een bestand uploadt dat uw certificaat bevat.  Dit bestand mag nooit privésleutels bevatten.
 
-De stap bewijs van de verwerkings fase omvat een cryptografisch vraag-en reactie proces tussen u en IoT Hub.  Als de inhoud van een digitaal certificaat openbaar is en daarom vatbaar is voor inbreuk, moet IoT Hub controleren of u echt eigenaar bent van het CA-certificaat.  Dit doet u door een wille keurige uitdaging te genereren die u moet ondertekenen met de bijbehorende persoonlijke sleutel van het CA-certificaat.  Als u het geheim van de persoonlijke sleutel hebt behouden en u hebt beveiligd zoals eerder aanbevolen, hebt u alleen de kennis over het uitvoeren van deze stap. Geheim houding van persoonlijke sleutels is de bron van vertrouwen in deze methode.  Nadat u de uitdaging hebt ondertekend, moet u deze stap volt ooien door een bestand met de resultaten te uploaden.
+Het bewijs van bezit stap omvat een cryptografische uitdaging en reactieproces tussen u en IoT Hub.  Aangezien de inhoud van digitale certificaten openbaar is en dus vatbaar is voor afluisteren, wil IoT Hub nagaan of u echt eigenaar bent van het CA-certificaat.  Dit doet u door een willekeurige uitdaging te genereren die u moet ondertekenen met de bijbehorende privésleutel van het CA-certificaat.  Als u de private key geheim en beschermd hield zoals eerder geadviseerd, dan alleen u zult beschikken over de kennis om deze stap te voltooien. Geheimhouding van privésleutels is de bron van vertrouwen in deze methode.  Nadat u de uitdaging hebt ondertekend, voltooit u deze stap door een bestand met de resultaten te uploaden.
 
-Meer informatie over hoe u [uw CA-certificaat kunt registreren](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
+Meer informatie over het [registreren van uw CA-certificaat](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Een apparaat maken op IoT Hub
 
-Als u wilt voor komen dat apparaten worden geïmiteerd, IoT Hub moet u ervoor zorgen dat u weet welke apparaten u kunt verwachten.  Hiervoor maakt u een apparaat in het apparaat-REGI ster van de IoT Hub.  Dit proces wordt geautomatiseerd wanneer IoT Hub [Device Provisioning Service](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/)wordt gebruikt. 
+Om apparaatimitatie uit te sluiten, vereist IoT Hub dat u het laat weten welke apparaten u verwachten.  Dit doe je door een apparaatinvoer te maken in het apparaatregister van de IoT Hub.  Dit proces wordt geautomatiseerd bij het gebruik van de IoT Hub [Device Provisioning Service.](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) 
 
-Hier vindt u informatie over het [hand matig maken van een apparaat in IOT hub](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub).
+Lees hier hoe u [handmatig een apparaat maakt in IoT Hub.](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub)
 
-Een X. 509-apparaat maken voor uw IoT-hub
+Maak een X.509-apparaat voor uw IoT-hub
 
-## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>Apparaten verifiëren die zijn ondertekend met X. 509 CA-certificaten
+## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>Authenticerende apparaten die zijn ondertekend met X.509 CA-certificaten
 
-Als X. 509 CA-certificaat is geregistreerd en apparaten die zijn aangemeld bij een certificaat keten van vertrouwen, wordt de verificatie van het apparaat gehandhaafd wanneer het apparaat verbinding maakt, zelfs voor de eerste keer.  Wanneer een X. 509 CA-ondertekend apparaat verbinding maakt, wordt de certificaat keten geüpload voor validatie. De keten bevat alle tussenliggende CA-en apparaat certificaten.  Met deze informatie wordt het apparaat in een proces met twee stappen IoT Hub geverifieerd.  IoT Hub cryptografische validatie van de certificaat keten voor interne consistentie en vervolgens een bewijs van een gebezite uitdaging voor het apparaat.  IoT Hub declareert het apparaat authentiek op basis van een geslaagde reactie van het apparaat.  Deze verklaring gaat ervan uit dat de persoonlijke sleutel van het apparaat is beveiligd en dat alleen het apparaat kan reageren op deze uitdaging.  U wordt aangeraden beveiligde chips als HSM (hardware Secure modules) te gebruiken in apparaten om persoonlijke sleutels te beveiligen.
+Met X.509 CA certificaat geregistreerd en apparaten aangemeld bij een certificaat keten van vertrouwen, wat overblijft is apparaat authenticatie wanneer het apparaat verbinding maakt, zelfs voor de eerste keer.  Wanneer een x.509 CA-ondertekend apparaat verbinding maakt, wordt de certificaatketen geüpload voor validatie. De keten bevat alle tussentijdse CA- en apparaatcertificaten.  Met deze informatie verifieert IoT Hub het apparaat in een proces in twee stappen.  IoT Hub valideert de certificaatketen cryptografisch voor interne consistentie en geeft vervolgens een proof-of-possession-uitdaging uit aan het apparaat.  IoT Hub verklaart het apparaat authentiek op een succesvolle proof-of-possession reactie van het apparaat.  In deze verklaring wordt ervan uitgegaan dat de privésleutel van het apparaat is beveiligd en dat alleen het apparaat met succes op deze uitdaging kan reageren.  We raden u aan veilige chips zoals Hardware Secure Modules (HSM) in apparaten te gebruiken om privésleutels te beschermen.
 
-Een geslaagde apparaat-verbinding met IoT Hub het verificatie proces is voltooid en is ook de juiste installatie.
+Een succesvolle apparaatverbinding met IoT Hub voltooit het verificatieproces en is ook indicatief voor een goede installatie.
 
-Hier vindt u informatie over het [volt ooien van deze stap voor de verbinding](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)met het apparaat.
+Meer informatie hier hoe u [deze stap voor apparaatverbinding voltooien.](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [de waarde van X. 509 ca-verificatie](iot-hub-x509ca-concept.md) in IOT.
+Meer informatie over [de waarde van X.509 CA-verificatie](iot-hub-x509ca-concept.md) in IoT.
 
-Aan de slag met IoT Hub [Device Provisioning Service](https://docs.microsoft.com/azure/iot-dps/).
+Aan de slag met de Service [voor het inrichten van IoT-hubapparaten](https://docs.microsoft.com/azure/iot-dps/).

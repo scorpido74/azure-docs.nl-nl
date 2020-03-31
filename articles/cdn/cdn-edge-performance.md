@@ -1,6 +1,6 @@
 ---
-title: Prestaties van edge-knooppunt in Azure CDN analyseren | Microsoft Docs
-description: Prestaties van edge-knooppunt in Microsoft Azure CDN analyseren. Randprestatieanalyse biedt gedetailleerde informatie over verkeer en bandbreedtegebruik gebruik voor het CDN.
+title: Prestaties van het randknooppunt analyseren in Azure CDN | Microsoft Documenten
+description: Analyseer de prestaties van het randknooppunt in Microsoft Azure CDN. Edge Performance Analytics biedt gedetailleerd informatieverkeer en bandbreedtegebruik voor het CDN.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593903"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Prestaties van edge nod analyseren in Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Overzicht
-Randprestatieanalyse biedt gedetailleerde informatie over verkeer en bandbreedtegebruik gebruik voor het CDN. Deze informatie kan vervolgens worden gebruikt voor het genereren van statistieken over trends, waardoor u meer inzicht krijgen in hoe uw assets worden opgeslagen en worden geleverd aan uw clients. Op zijn beurt Hiermee kunt u een strategie voor het optimaliseren van de levering van inhoud van uw formulier en om te bepalen welke problemen moeten worden aangepakt voor beter gebruik te maken van het CDN. Als gevolg hiervan niet alleen kunt gegevens leveringsprestaties te verbeteren, maar worden ook uw CDN-kosten verlagen.
+Edge performance analytics biedt gedetailleerd informatieverkeer en bandbreedtegebruik voor het CDN. Deze informatie kan vervolgens worden gebruikt om trending statistieken te genereren, waarmee u inzicht krijgt in hoe uw assets in de cache worden opgeslagen en aan uw klanten worden geleverd. Op zijn beurt u een strategie vormen over hoe u de levering van uw inhoud optimaliseren en om te bepalen welke problemen moeten worden aangepakt om het CDN beter te kunnen gebruiken. Hierdoor u niet alleen de prestaties van de gegevensbezorging verbeteren, maar u ook uw CDN-kosten verlagen.
 
 > [!NOTE]
 > Alle rapporten gebruiken UTC/GMT-notatie bij het opgeven van een datum/tijd.
@@ -33,159 +33,159 @@ Randprestatieanalyse biedt gedetailleerde informatie over verkeer en bandbreedte
 > 
 
 ## <a name="reports-and-log-collection"></a>Rapporten en logboekverzameling
-CDN activiteitsgegevens moeten worden verzameld door de module Randprestatieanalyse voordat deze rapporten kunt genereren. Dit verzamelingsproces treedt op wanneer een dag en het bevat informatie over de activiteit die heeft plaatsgevonden tijdens de vorige dag. Dit betekent dat de statistieken van een rapport vertegenwoordigen een voorbeeld van de statistieken van de dag op het moment dat deze is verwerkt, en gaat het niet noodzakelijk bevatten de volledige set gegevens voor de huidige dag. Er is de primaire functie van deze rapporten om prestaties vast te stellen. Ze moeten niet worden gebruikt voor factureringsdoeleinden of exacte numerieke statistieken.
+CDN-activiteitsgegevens moeten worden verzameld door de Edge Performance Analytics-module voordat deze rapporten kunnen genereren. Dit incassoproces vindt één keer per dag plaats en dekt de activiteit die tijdens de vorige dag heeft plaatsgevonden. Dit betekent dat de statistieken van een rapport een voorbeeld van de statistieken van de dag vertegenwoordigen op het moment dat het werd verwerkt en niet noodzakelijkerwijs de volledige set gegevens voor de huidige dag bevatten. De primaire functie van deze rapporten is het beoordelen van de prestaties. Ze mogen niet worden gebruikt voor factureringsdoeleinden of exacte numerieke statistieken.
 
 > [!NOTE]
-> De onbewerkte gegevens op basis waarvan Edge prestaties analytische rapporten worden gegenereerd, is ten minste 90 dagen beschikbaar.
+> De ruwe gegevens waaruit Edge Performance Analytic-rapporten worden gegenereerd, zijn ten minste 90 dagen beschikbaar.
 > 
 > 
 
 ## <a name="dashboard"></a>Dashboard
-Het dashboard Randprestatieanalyse houdt bij of de huidige en historische CDN-verkeer via een grafiek en statistieken. Dit dashboard gebruiken voor het detecteren van recente en op lange termijn trends op de prestaties van het CDN-verkeer voor uw account.
+Het Edge Performance Analytics-dashboard houdt het huidige en historische CDN-verkeer bij via een grafiek en statistieken. Gebruik dit dashboard om recente en langetermijntrends op het werk van CDN-verkeer voor uw account te detecteren.
 
 Dit dashboard bestaat uit:
 
-* Een interactieve grafiek waarmee de visualisatie van de belangrijkste metrische gegevens en trends.
-* Een tijdlijn met een idee van de lange termijn patronen voor belangrijke metrische gegevens en trends.
-* Belangrijke metrische gegevens en statistische informatie over onze CDN-netwerk verbetert de siteverkeer wordt gemeten door de algehele prestaties, gebruik en de efficiëntie.
+* Een interactieve grafiek die het mogelijk maakt de visualisatie van belangrijke statistieken en trends.
+* Een tijdlijn die een gevoel geeft van langetermijnpatronen voor belangrijke statistieken en trends.
+* Belangrijke statistieken en statistische informatie over hoe ons CDN-netwerk het siteverkeer verbetert, gemeten aan de hand van de algehele prestaties, het gebruik en de efficiëntie.
 
-### <a name="accessing-the-edge-performance-dashboard"></a>Toegang tot het dashboard van de prestaties van edge
-1. Klik in de blade CDN-profiel op de **beheren** knop.
+### <a name="accessing-the-edge-performance-dashboard"></a>Toegang tot het dashboard voor edge performance
+1. Klik in het CDN-profielblad op de knop **Beheren.**
    
-    ![Knop blade CDN-profiel beheren](./media/cdn-edge-performance/cdn-manage-btn.png)
+    ![Knop CDN-profielblad beheer](./media/cdn-edge-performance/cdn-manage-btn.png)
    
-    De CDN-beheerportal wordt geopend.
-2. Beweeg de muisaanwijzer over de **Analytics** tabblad en klik vervolgens Beweeg de muisaanwijzer over de **Randprestatieanalyse** flyout.  Klik op **Dashboard**.
+    Het CDN-beheerportaal wordt geopend.
+2. Plaats de plaats op het tabblad **Analytics** en plaats de plaats vervolgens boven de flyout **edge performance analytics.**  Klik op **dashboard**.
    
-    De edge-knooppunt analytics-dashboard wordt weergegeven.
+    Het edge node analytics-dashboard wordt weergegeven.
 
 ### <a name="chart"></a>Grafiek
-Het dashboard bevat een grafiek die een metrische waarde houdt gedurende de periode die is geselecteerd in de tijdlijn die direct eronder weergegeven.  Een tijdlijn grafieken omhoog naar de laatste twee jaar van CDN activiteit wordt direct onder de grafiek weergegeven.
+Het dashboard bevat een grafiek die een statistiek bijhoudt over de periode die is geselecteerd in de tijdlijn die direct eronder wordt weergegeven.  Een tijdlijn die grafieken tot de laatste twee jaar van CDN-activiteit wordt weergegeven direct onder de grafiek.
 
-#### <a name="using-the-chart"></a>Met behulp van de grafiek
-* Standaard wordt de cache-efficiëntie voor de afgelopen 30 dagen worden uitgezet.
-* In deze grafiek is gegenereerd op basis van gegevens die dagelijks wordt gesorteerd.
-* Aanwijzen van een dag in de grafiek regel geeft een datum en de waarde van de metrische gegevens op die datum.
-* Klik op markeren tijdens het weekend als u wilt schakelen tussen een overlay van lichte grijze verticale staven die tijdens het weekend naar de grafiek vertegenwoordigen. Dit type overlay is handig voor het identificeren van patronen in het netwerkverkeer via tijdens het weekend.
-* Klik op View één jaar geleden als u wilt een overlay van het vorige jaar activiteit gedurende de dezelfde periode op de grafiek in-of uitschakelen. Dit type vergelijking biedt inzicht in gebruikspatronen van op de lange termijn CDN. De rechterbovenhoek hoek rechtsboven van de grafiek bevat een legenda die aangeeft van de kleurcode voor elke lijndiagram.
+#### <a name="using-the-chart"></a>De grafiek gebruiken
+* Standaard wordt de cache-efficiëntiesnelheid van de afgelopen 30 dagen in kaart gebracht.
+* Deze grafiek wordt gegenereerd op basis van gegevens die dagelijks worden verzameld.
+* Als u meer dan een dag op de lijngrafiek zweeft, wordt een datum en de waarde van de statistiek op die datum vermeld.
+* Klik op Weekends markeren om een overlay van lichtgrijze verticale balken in te schakelen die weekends in de grafiek weergeven. Dit type overlay is handig voor het identificeren van verkeerspatronen in het weekend.
+* Klik op Een jaar geleden weergeven om een overlay van de activiteit van het vorige jaar in dezelfde periode in de grafiek in te schakelen. Dit type vergelijking geeft inzicht in lange termijn CDN-gebruikspatronen. De rechterbovenhoek van de grafiek bevat een legenda die de kleurcode voor elke lijngrafiek aangeeft.
 
-#### <a name="updating-the-chart"></a>Bijwerken van de grafiek
-* Tijdsbereik: Voer een van de volgende opties:
-  * Selecteer de gewenste regio in de tijdlijn. De grafiek wordt bijgewerkt met gegevens die overeenkomt met de geselecteerde periode.
-  * Dubbelklik op de grafiek om alle beschikbare historische gegevens tot een maximum van twee jaar weer te geven.
-* Metriek: Klik op het pictogram dat wordt weergegeven naast de gewenste metrische gegevens. De grafiek en in de tijdlijn wordt vernieuwd op basis van gegevens voor de bijbehorende metrische gegevens.
+#### <a name="updating-the-chart"></a>De grafiek bijwerken
+* Tijdbereik: Voer een van de volgende handelingen uit:
+  * Selecteer het gewenste gebied in de tijdlijn. De grafiek wordt bijgewerkt met gegevens die overeenkomen met de geselecteerde periode.
+  * Dubbelklik op de grafiek om alle beschikbare historische gegevens weer te geven tot een maximum van twee jaar.
+* Statistiek: klik op het grafiekpictogram dat naast de gewenste statistiek wordt weergegeven. De grafiek en de tijdlijn worden vernieuwd met gegevens voor de bijbehorende statistiek.
 
-### <a name="key-metrics-and-statistics"></a>Belangrijke metrische gegevens en statistieken
-#### <a name="efficiency-metrics"></a>Efficiëntie van metrische gegevens
-Het doel van deze metrische gegevens is om te zien of de efficiëntie van de cache kan worden verbeterd. De belangrijkste voordelen afgeleid van de efficiëntie van caches zijn:
+### <a name="key-metrics-and-statistics"></a>Belangrijkste statistieken en statistieken
+#### <a name="efficiency-metrics"></a>Efficiëntiestatistieken
+Het doel van deze statistieken is om te zien of cache-efficiëntie kan worden verbeterd. De belangrijkste voordelen van cache-efficiëntie zijn:
 
-* Minder belasting van de oorspronkelijke server dit tot leiden kan:
-  * Betere prestaties van web-server.
+* Verminderde belasting op de oorsprongsserver die kan leiden tot:
+  * Betere webserverprestaties.
   * Lagere operationele kosten.
-* Gegevens levering versnelling verbeterd omdat meer aanvragen rechtstreeks vanuit het CDN moeten worden verzonden.
+* Verbeterde versnelling van de gegevenslevering, aangezien meer aanvragen rechtstreeks vanuit het CDN worden ingediend.
 
-| Veld | Description |
+| Veld | Beschrijving |
 | --- | --- |
-| Cache Efficiency |Geeft het percentage van de overgedragen gegevens die uit de cache in behandeling is genomen. Deze metrische metingen wanneer er een in cache opgeslagen versie van de gevraagde inhoud rechtstreeks vanuit het CDN (edge-servers) wordt aangeboden voor aanvragers (bijvoorbeeld webbrowser) |
-| Trefferfrequentie in sjablooncache |Geeft het percentage van de aanvragen die zijn aangeleverd vanuit de cache. Deze metrische metingen wanneer er een in cache opgeslagen versie van de gevraagde inhoud rechtstreeks vanuit het CDN (edge-servers) in behandeling is genomen voor aanvragers (bijvoorbeeld webbrowser). |
-| % van de externe Bytes - geen Cache-configuratie |Geeft het percentage van het verkeer dat is aangeleverd vanuit bronservers naar het CDN (edge-servers) die wordt niet in cache worden opgeslagen als gevolg van de Bypass-Cache-functie (http-regels-Engine). |
-| % van de externe Bytes - Cache is verlopen |Geeft het percentage van het verkeer dat is aangeleverd vanuit bronservers naar het CDN (edge-servers) als gevolg van verouderde inhoud opnieuw te worden gevalideerd. |
+| Cache-efficiëntie |Geeft het percentage overgedragen gegevens aan dat vanuit de cache is weergegeven. Deze statistiek meet wanneer een in de cache opgeslagen versie van de gevraagde inhoud rechtstreeks van de CDN (edge servers) aan aanvragers (bijvoorbeeld webbrowser) werd aangeboden |
+| Hitsnelheid |Geeft het percentage aanvragen aan dat vanuit de cache is ontvangen. Deze statistiek meet wanneer een in de cache opgeslagen versie van de gevraagde inhoud rechtstreeks van de CDN (edge servers) aan aanvragers (bijvoorbeeld webbrowser) werd aangeboden. |
+| % van de externe bytes - Geen cache-config |Geeft het percentage verkeer aan dat is weergegeven van oorsprongsservers naar de CDN (edge servers) dat niet in de cache wordt opgeslagen als gevolg van de functie Cache omzeilen (HTTP Rules Engine). |
+| % van de externe bytes - verlopen cache |Hiermee geeft u het percentage verkeer aan dat is weergegeven van oorsprongsservers naar de CDN (edge servers) als gevolg van verouderde inhoudsvalidatie. |
 
 #### <a name="usage-metrics"></a>Metrische gebruiksgegevens
-Het doel van deze metrische gegevens is te bieden inzicht in de volgende kostenbesparende maateenheden:
+Het doel van deze statistieken is om inzicht te geven in de volgende kostenbesparende maatregelen:
 
-* Minimaliseren operationele kosten dankzij het CDN.
-* CDN-uitgaven te reduceren door middel van cache-efficiëntie en compressie.
+* Het minimaliseren van de operationele kosten via het CDN.
+* Vermindering van cdn-uitgaven door cache-efficiëntie en compressie.
 
 > [!NOTE]
-> Cijfers voor het volume van netwerkverkeer vertegenwoordigen verkeer dat is gebruikt in berekeningen van de verhoudingen en percentages, en kan alleen een gedeelte van het totale verkeer weergeven voor klanten met hoog volume.
+> Verkeersvolumenummers vertegenwoordigen verkeer dat is gebruikt bij berekeningen van ratio's en percentages en mogen slechts een deel van het totale verkeer voor klanten met een hoog volume weergeven.
 > 
 > 
 
-| Veld | Description |
+| Veld | Beschrijving |
 | --- | --- |
-| Ave uitgaande Bytes |Geeft het gemiddelde aantal bytes dat voor elke aanvraag die worden aangeleverd vanuit het CDN (edge-servers) voor de aanvrager (bijvoorbeeld webbrowser) is overgedragen. |
-| No Cache Config Byte Rate |Geeft het percentage van het verkeer naar de aanvrager (bijvoorbeeld een webbrowser) die wordt niet in cache worden opgeslagen vanwege de Bypass-Cache-functie worden aangeleverd vanuit het CDN (edge-servers). |
-| Snelheid van de gecomprimeerde Byte |Geeft het percentage van het verkeer vanuit het CDN (edge-servers) verzonden naar aanvragers (bijvoorbeeld webbrowser) in een gecomprimeerde indeling. |
-| Uitgaande bytes |Geeft de hoeveelheid gegevens in bytes, die uit het CDN (edge-servers) werden geleverd aan de aanvrager (bijvoorbeeld webbrowser). |
-| Bytes In |Geeft aan de hoeveelheid gegevens in bytes, van aanvragers (bijvoorbeeld een webbrowser) verzonden naar het CDN (edge-servers). |
-| Externe bytes |Geeft de hoeveelheid gegevens in bytes, dat vanaf bronservers CDN en de klant wordt verzonden naar het CDN (edge-servers). |
+| Ave Bytes Uit |Geeft het gemiddelde aantal bytes aan dat wordt overgedragen voor elk verzoek dat van de CDN (edge servers) naar de aanvrager wordt verzonden (bijvoorbeeld webbrowser). |
+| Geen cache config byte-snelheid |Hiermee geeft u het percentage verkeer aan dat van de CDN (edge servers) naar de aanvrager (bijvoorbeeld webbrowser) wordt weergegeven, dat niet in de cache wordt opgeslagen vanwege de functie Bypass-cache. |
+| Gecomprimeerde bytesnelheid |Geeft het percentage verkeer aan dat van de CDN (edge servers) naar aanvragers (bijvoorbeeld webbrowser) wordt verzonden in een gecomprimeerde indeling. |
+| Bytes uit |Geeft de hoeveelheid gegevens aan in bytes die zijn geleverd van de CDN (edge servers) aan de aanvrager (bijvoorbeeld webbrowser). |
+| Bytes In |Geeft de hoeveelheid gegevens aan, in bytes, verzonden van aanvragers (bijvoorbeeld webbrowser) naar het CDN (edge servers). |
+| Bytes afstandsbediening |Geeft de hoeveelheid gegevens aan, in bytes, die van CDN- en klantoorsprongservers naar het CDN (edge servers) worden verzonden. |
 
 #### <a name="performance-metrics"></a>Metrische gegevens voor prestaties
-Het doel van deze metrische gegevens is om bij te houden van de algehele prestaties van CDN voor uw verkeer.
+Het doel van deze statistieken is om de algehele CDN-prestaties voor uw verkeer bij te houden.
 
-| Veld | Description |
+| Veld | Beschrijving |
 | --- | --- |
-| Overdrachtssnelheid |Geeft aan dat de gemiddelde frequentie van die inhoud van het CDN is overgedragen voor een aanvrager. |
-| Duration |Geeft aan dat de gemiddelde tijd in milliseconden, die nodig was voor het leveren van een asset voor een aanvrager (bijvoorbeeld webbrowser). |
-| Gecomprimeerde aanvraagsnelheid |Geeft het percentage treffers in die werden geleverd uit het CDN (edge-servers) voor de aanvrager (bijvoorbeeld webbrowser) in een gecomprimeerde indeling. |
-| Frequentie van 4XX-fouten |Geeft het percentage treffers en die een statuscode 4xx gegenereerd. |
-| Frequentie van 5xx-fouten |Geeft het percentage treffers en die een statuscode 5xx gegenereerd. |
-| Aantal treffers |Geeft het aantal aanvragen voor CDN-inhoud. |
+| Overdrachtssnelheid |Geeft de gemiddelde snelheid aan waarmee inhoud van het CDN naar een aanvrager is overgebracht. |
+| Duur |Geeft de gemiddelde tijd aan, in milliseconden, het duurde om een asset te leveren aan een aanvrager (bijvoorbeeld webbrowser). |
+| Gecomprimeerde aanvraagsnelheid |Hiermee geeft u het percentage treffers aan dat van de CDN (edge servers) naar de aanvrager (bijvoorbeeld webbrowser) in een gecomprimeerde indeling is geleverd. |
+| 4xx Foutpercentage |Geeft het percentage hits aan dat een 4xx-statuscode heeft gegenereerd. |
+| 5xx Foutpercentage |Geeft het percentage hits aan dat een statuscode van 5xx heeft gegenereerd. |
+| Treffers |Geeft het aantal aanvragen voor CDN-inhoud aan. |
 
-#### <a name="secure-traffic-metrics"></a>Beveiligd verkeer metrische gegevens
-Het doel van deze metrische gegevens is om bij te houden van CDN-prestaties voor HTTPS-verkeer.
+#### <a name="secure-traffic-metrics"></a>Statistieken over veilig verkeer
+Het doel van deze statistieken is om cdn-prestaties voor HTTPS-verkeer bij te houden.
 
-| Veld | Description |
+| Veld | Beschrijving |
 | --- | --- |
-| Secure Cache Efficiency |Geeft het percentage van de gegevens die worden overgedragen naar HTTPS-aanvragen die zijn behandeld uit de cache. Deze metrische metingen wanneer er een in cache opgeslagen versie van de aangevraagde inhoud is aangeleverd rechtstreeks vanuit het CDN (edge-servers) voor aanvragers (bijvoorbeeld webbrowser) via HTTPS. |
-| Overdrachtssnelheid beveiligen |Geeft aan dat de gemiddelde frequentie van die inhoud uit het CDN (edge-servers) is overgedragen aan aanvragers (bijvoorbeeld webservers) via HTTPS. |
-| Gemiddelde duur van de beveiligde |Geeft aan dat de gemiddelde tijd in milliseconden, die nodig was voor het leveren van een asset voor een aanvrager (bijvoorbeeld een webbrowser) via HTTPS. |
-| Treffers beveiligen |Geeft het aantal HTTPS-aanvragen voor CDN-inhoud. |
-| Uitgaande Bytes beveiligen |Geeft de hoeveelheid HTTPS-verkeer, in bytes, die is geleverd uit het CDN (edge-servers) voor de aanvrager (bijvoorbeeld webbrowser). |
+| Veilige cache-efficiëntie |Geeft het percentage gegevens aan dat wordt overgedragen voor HTTPS-verzoeken dat vanuit de cache is weergegeven. Deze statistiek meet wanneer een in de cache opgeslagen versie van de gevraagde inhoud rechtstreeks van de CDN (edge servers) naar aanvragers (bijvoorbeeld webbrowser) via HTTPS werd aangeboden. |
+| Veilige overdrachtssnelheid |Geeft de gemiddelde snelheid aan waarmee inhoud van de CDN (edge servers) naar aanvragers (bijvoorbeeld webservers) via HTTPS is overgedragen. |
+| Gemiddelde beveiligde duur |Geeft de gemiddelde tijd aan, in milliseconden, het duurde om een asset te leveren aan een aanvrager (bijvoorbeeld webbrowser) via HTTPS. |
+| Beveiligde hits |Geeft het aantal HTTPS-aanvragen voor CDN-inhoud aan. |
+| Beveiligde bytes uit |Geeft de hoeveelheid HTTPS-verkeer aan, in bytes, die zijn geleverd van de CDN (edge servers) aan de aanvrager (bijvoorbeeld webbrowser). |
 
 ## <a name="reports"></a>Rapporten
-Elk rapport dat in deze module bevat een grafiek en statistieken over het gebruik van bandbreedte en verkeer voor verschillende soorten metrische gegevens (bijv, HTTP-statuscodes, cache-statuscodes, aanvraag-URL, enz.). Deze informatie kan worden gebruikt om te dieper beter hoe inhoud wordt er aangeleverd aan uw clients en voor het afstemmen van CDN-gedrag om gegevens leveringsprestaties te verbeteren.
+Elk rapport in deze module bevat een grafiek en statistieken over bandbreedte en verkeersgebruik voor verschillende soorten statistieken (bijvoorbeeld HTTP-statuscodes, statuscodes in de cache, URL van aanvragen, enz.). Deze informatie kan worden gebruikt om dieper in te gaan op de manier waarop inhoud aan uw klanten wordt aangeboden en om het GEDRAG van CDN te verfijnen om de prestaties van de gegevensbezorging te verbeteren.
 
-### <a name="accessing-the-edge-performance-reports"></a>Toegang tot de rapporten van de prestaties van edge
-1. Klik in de blade CDN-profiel op de **beheren** knop.
+### <a name="accessing-the-edge-performance-reports"></a>Toegang tot de prestatierapporten van edge
+1. Klik in het CDN-profielblad op de knop **Beheren.**
    
-    ![Knop blade CDN-profiel beheren](./media/cdn-edge-performance/cdn-manage-btn.png)
+    ![Knop CDN-profielblad beheer](./media/cdn-edge-performance/cdn-manage-btn.png)
    
-    De CDN-beheerportal wordt geopend.
-2. Beweeg de muisaanwijzer over de **Analytics** tabblad en klik vervolgens Beweeg de muisaanwijzer over de **Randprestatieanalyse** flyout.  Klik op **HTTP Large Object**.
+    Het CDN-beheerportaal wordt geopend.
+2. Plaats de plaats op het tabblad **Analytics** en plaats de plaats vervolgens boven de flyout **edge performance analytics.**  Klik op **HTTP Large Object**.
    
-    Het edge-knooppunt analytics Rapporten scherm wordt weergegeven.
+    Het scherm met edge node analytics-rapporten wordt weergegeven.
 
-| Rapport | Description |
+| Rapport | Beschrijving |
 | --- | --- |
-| Dagelijks overzicht |Kunt u dagelijks verkeer trends gedurende een opgegeven periode bekijken. Elke staaf in deze grafiek vertegenwoordigt een bepaalde datum. De grootte van de balk geeft het totale aantal hits dat is opgetreden op die datum. |
-| Samenvatting per uur |Kunt u bekijken per uur verkeer trends gedurende een opgegeven periode. Elke staaf in deze grafiek vertegenwoordigt één uur op een bepaalde datum. De grootte van de balk geeft het totale aantal hits die zijn opgetreden tijdens dat uur. |
-| Protocollen |Geeft de uitsplitsing van verkeer tussen de protocollen HTTP en HTTPS. Een ringdiagram geeft het percentage treffers en die voor elk type protocol zijn opgetreden. |
-| HTTP-methoden |Hiermee kunt u een idee van waarmee HTTP-methoden worden gebruikt om aan te vragen van uw gegevens te krijgen. Meestal zijn de meest voorkomende HTTP-aanvraagmethoden GET, HEAD en POST. Een ringdiagram geeft het percentage treffers en die voor elk type HTTP-aanvraagmethode zijn opgetreden. |
-| URL 's |Bevat een grafiek waarin de bovenste 10 aangevraagde URL's worden weergegeven. Een balk wordt weergegeven voor elke URL. De hoogte van de balk geeft aan hoeveel treffers dat bepaalde URL is gegenereerd via de tijdsduur wordt gedekt door het rapport. Statistieken voor de top 100 aangevraagde dat URL 's direct onder deze grafiek worden weergegeven. |
-| CNAMEs |Bevat een grafiek waarin de top 10 CNAME's gebruikt voor het aanvragen van assets na verloop van de tijd standaardbewaartermijn van een rapport worden weergegeven. Statistieken voor de top 100 aangevraagd dat CNAME 's direct onder deze grafiek worden weergegeven. |
-| Oorsprongen |Bevat een grafiek waarin de bovenste 10 CDN worden weergegeven of klant bronservers waaruit activa zijn aangevraagd gedurende een opgegeven periode. Statistieken voor de top 100 aangevraagd CDN of klant bronservers direct onder deze grafiek worden weergegeven. Klant-bronservers worden aangeduid met de naam die is gedefinieerd in de mapnaam-optie. |
-| Geo-POP 's |Laat zien hoeveel van uw verkeer wordt gerouteerd via een bepaalde point-of-presence (POP). De afkorting van drie letters vertegenwoordigt een pop-server in onze CDN-netwerk. |
-| Clients |Bevat een grafiek met de top 10-clients die activa aangevraagd gedurende een opgegeven periode. Voor de doeleinden van dit rapport worden beschouwd als alle aanvragen die afkomstig uit hetzelfde IP-adres zijn zijn van dezelfde client. Statistieken voor de top 100 clients worden direct onder deze grafiek weergegeven. Dit rapport is nuttig om te bepalen downloaden activiteit patronen voor uw belangrijkste clients. |
-| Statusbepaling van de cache |Geeft een gedetailleerd overzicht van de cachegedrag, waarbij waarschijnlijk benaderingen voor het verbeteren van de algehele gebruikerservaring. Omdat de snelste prestaties afkomstig zijn uit de cache-hits, kunt u gegevens leveren snelheden worden bereikt door Minimalisatie van het aantal missers in cache en verlopen cachetreffers kunt optimaliseren. |
-| GEEN Details |Bevat een grafiek waarin de bovenste 10 URL's voor activa waarvoor cache inhoud nieuwheid niet is ingeschakeld gedurende een opgegeven periode. Statistieken voor de top 100 URL's voor deze typen activa worden direct onder deze grafiek weergegeven. |
-| Details van CONFIG_NOCACHE |Bevat een grafiek waarin de top 10-URL's voor activa die niet in cache vanwege een CDN-configuratie van de klant opgeslagen zijn worden weergegeven. Deze typen activa zijn geleverd rechtstreeks vanuit de oorspronkelijke server. Statistieken voor de top 100 URL's voor deze typen activa worden direct onder deze grafiek weergegeven. |
-| Details van UNCACHEABLE |Bevat een grafiek die de top 10 URL's voor activa die niet kunnen worden opgeslagen vanwege de gegevens van aanvragen van koptekst wordt weergegeven. Statistieken voor de top 100 URL's voor deze typen activa worden direct onder deze grafiek weergegeven. |
-| Details van TCP_HIT |Bevat een grafiek waarin de bovenste 10 URL's voor activa die onmiddellijk uit de cache worden behandeld. Statistieken voor de top 100 URL's voor deze typen activa worden direct onder deze grafiek weergegeven. |
-| TCP_MISS Details |Bevat een grafiek waarin de bovenste 10 URL's voor activa die de Cachestatus van een van TCP_MISS hebben worden weergegeven. Statistieken voor de top 100 URL's voor deze typen activa worden direct onder deze grafiek weergegeven. |
-| Details van TCP_EXPIRED_HIT |Bevat een grafiek waarin de bovenste 10 URL's voor verouderde activa die zijn aangeleverd rechtstreeks vanuit de pop-server worden weergegeven. Statistieken voor de top 100 URL's voor deze typen activa worden direct onder deze grafiek weergegeven. |
-| TCP_EXPIRED_MISS Details |Bevat een grafiek waarin de bovenste 10 URL's voor verouderde activa waarvoor een nieuwe versie moest worden opgehaald uit de oorspronkelijke server. Statistieken voor de top 100 URL's voor deze typen activa worden direct onder deze grafiek weergegeven. |
-| TCP_CLIENT_REFRESH_MISS Details |Een staafdiagram waarin de top 10-URL's voor activa zijn opgehaald van een bronserver vanwege een niet-cache-aanvraag van de client bevat. Statistieken voor de top 100 URL's voor deze typen aanvragen worden direct onder deze grafiek weergegeven. |
-| Client-aanvraagtypen |Geeft het type van de aanvragen die zijn aangebracht door HTTP-clients (bijvoorbeeld browsers). Dit rapport bevat een ringdiagram waarmee u een idee over hoe aanvragen worden verwerkt. Informatie over bandbreedte en verkeer voor elk aanvraagtype wordt weergegeven onder de grafiek. |
-| Gebruikersagent |Bevat een staafdiagram weergeven van de bovenste 10 gebruikersagenten om aan te vragen van uw inhoud via het CDN. Een van de gebruikersagent is meestal een webbrowser, MediaPlayer of de browser van een mobiele telefoon. Statistieken voor de top 100 gebruikersagenten worden direct onder deze grafiek weergegeven. |
-| Verwijzende sites |Bevat een staafdiagram weergeven van de bovenste 10 verwijzende sites tot inhoud toegankelijk is via het CDN. Een verwijzende site is meestal de URL van de webpagina's of de resource die is gekoppeld aan uw inhoud. Hieronder de grafiek vindt u gedetailleerde informatie voor de top 100 van verwijzende sites. |
-| Compressietypen |Een ringdiagram die problematisch zijn, aangevraagde activa door of ze zijn gecomprimeerd door onze edge-servers bevat. Het percentage van de gecomprimeerde activa is onderverdeeld door het type compressie gebruikt. Hieronder de grafiek vindt u gedetailleerde informatie voor elk compressietype en status. |
-| Bestandstypen |Bevat een staafdiagram waarin de bovenste 10 bestandstypen die zijn aangevraagd via onze CDN voor uw account worden weergegeven. Voor de toepassing van dit rapport wordt een bestandstype wordt gedefinieerd door de extensie van de asset en typt u internetmedia (bijvoorbeeld .html \[text/html\], htm \[text/html\], .aspx \[text/html\], enz.). Hieronder de grafiek vindt u gedetailleerde informatie voor de top 100 bestandstypen. |
-| Unieke bestanden |Bevat een grafiek die grafieken van het totale aantal unieke activa die zijn aangevraagd op een bepaalde dag gedurende een opgegeven periode. |
-| Samenvatting van Auth-token |Bevat een cirkeldiagram die een kort overzicht geeft op of de aangevraagde activa zijn beveiligd door verificatie op basis van tokens. Beveiligde assets worden weergegeven in de grafiek op basis van de resultaten van de poging tot verificatie. |
-| Token Authentication weigeren Details |Bevat een staafdiagram waarin kunt u weergeven van de bovenste 10 aanvragen die zijn geweigerd vanwege de verificatie op basis van tokens. |
-| HTTP-responscodes |Geeft een overzicht van de HTTP-statuscodes (bijvoorbeeld 200 OK, 403 verboden, 404 niet wordt gevonden, enzovoort) die op uw HTTP-clients zijn geleverd door onze edge-servers. Een cirkeldiagram kunt u snel inzicht in hoe uw assets zijn opgehaald. Gedetailleerde statistische gegevens is opgegeven voor elke reactiecode onder de grafiek. |
-| 404-fouten |Bevat een staafdiagram waarin kunt u weergeven van de bovenste 10 aanvragen dat heeft geresulteerd in een antwoordcode 404 niet gevonden. |
-| 403 fouten |Bevat een staafdiagram waarin kunt u de bovenste 10 aanvragen dat heeft geresulteerd in een 403 verboden-antwoordcode weergeven. Een 403 verboden-antwoordcode treedt op wanneer een aanvraag is geweigerd door een klant origin-server of een edge-server op de pop-server. |
-| 4XX-fouten |Bevat een staafdiagram waarin kunt u de bovenste 10 aanvragen dat heeft geresulteerd in een antwoordcode in het bereik van 400 weergeven. 403 uitgesloten van dit rapport zijn niet gevonden en 404 verboden-responscodes. Een antwoordcode 4xx treedt meestal op wanneer een aanvraag wordt geweigerd als gevolg van een Clientfout. |
-| 504 fouten |Bevat een staafdiagram waarin kunt u de bovenste 10 aanvragen dat heeft geresulteerd in een 504 time-out van Gateway-antwoordcode weergeven. Een 504 time-out van Gateway-antwoordcode treedt op wanneer een time-out optreedt bij een HTTP-proxy probeert te communiceren met een andere server. In het geval van het CDN een 504 time-out van Gateway-antwoordcode treedt meestal op wanneer een edge-server kan tot stand brengen van communicatie met een klant oorspronkelijke server is. |
-| 502 fouten |Bevat een staafdiagram waarin kunt u de bovenste 10 aanvragen dat heeft geresulteerd in een 502 Ongeldige Gateway-antwoordcode weergeven. Een 502 Ongeldige Gateway-antwoordcode treedt op wanneer een HTTP-protocol-fout tussen een server en een HTTP-proxy optreedt. In het geval van het CDN een 502 Ongeldige Gateway-antwoordcode treedt meestal op wanneer een klant oorspronkelijke server een ongeldige reactie op een edge-server retourneert. Een antwoord is ongeldig als kan niet worden geparseerd of onvolledig is. |
-| 5XX-fouten |Bevat een staafdiagram waarin kunt u de bovenste 10 aanvragen dat heeft geresulteerd in een antwoordcode binnen het bereik 500 weergeven.  Uitgesloten van dit rapport zijn 502 Ongeldige Gateway en 504 time-out van Gateway-responscodes. |
+| Dagelijkse samenvatting |Hiermee u dagelijkse verkeerstrends over een bepaalde periode bekijken. Elke balk in deze grafiek vertegenwoordigt een bepaalde datum. De grootte van de balk geeft het totale aantal treffers aan dat op die datum is opgetreden. |
+| Uuroverzicht |Hiermee u verkeerstrends per uur over een bepaalde periode bekijken. Elke balk op deze grafiek vertegenwoordigt één uur op een bepaalde datum. De grootte van de balk geeft het totale aantal treffers aan dat tijdens dat uur is opgetreden. |
+| Protocollen |Hiermee wordt de uitsplitsing van het verkeer tussen de HTTP- en HTTPS-protocollen weergegeven. Een donutdiagram geeft het percentage treffers aan dat voor elk type protocol is opgetreden. |
+| HTTP-methoden |Hiermee u snel een idee krijgen van welke HTTP-methoden worden gebruikt om uw gegevens op te vragen. De meest voorkomende HTTP-aanvraagmethoden zijn meestal GET, HEAD en POST. Een donutdiagram geeft het percentage treffers aan dat is opgetreden voor elk type HTTP-aanvraagmethode. |
+|  URL's |Bevat een grafiek met de top 10 gevraagde URL's. Voor elke URL wordt een balk weergegeven. De hoogte van de balk geeft aan hoeveel hits die bepaalde URL heeft gegenereerd in de periode die in het rapport wordt bestreken. Statistieken voor de top 100 gevraagde URL's worden direct onder deze grafiek weergegeven. |
+| CNAMEs |Bevat een grafiek met de top 10 CNAMEs die worden gebruikt om activa op te vragen gedurende de periode van een rapport. Statistieken voor de top 100 gevraagde CNAMEs worden direct onder deze grafiek weergegeven. |
+| Oorsprong |Bevat een grafiek met de top 10 CDN- of klantoorsprongservers waaruit activa gedurende een bepaalde periode zijn aangevraagd. Statistieken voor de top 100 gevraagde CDN- of klantorigin-servers worden direct onder deze grafiek weergegeven. Servers van klantoorsprong worden geïdentificeerd aan de andere naam die is gedefinieerd in de optie Mapnaam. |
+| Geo POP's |Laat zien hoeveel van uw verkeer wordt gerouteerd via een bepaald point-of-presence (POP). De afkorting met drie letters vertegenwoordigt een POP in ons CDN-netwerk. |
+| Clients |Bevat een grafiek met de top 10 clients die activa hebben aangevraagd gedurende een bepaalde periode. Voor de toepassing van dit rapport worden alle verzoeken die afkomstig zijn van hetzelfde IP-adres beschouwd als van dezelfde client. Statistieken voor de top 100 clients worden direct onder deze grafiek weergegeven. Dit rapport is handig voor het bepalen van downloadactiviteitspatronen voor uw topclients. |
+| Cachestatussen |Geeft een gedetailleerde uitsplitsing van cachegedrag, wat benaderingen kan onthullen voor het verbeteren van de algehele gebruikerservaring. Aangezien de snelste prestaties afkomstig zijn van cachehits, u de leveringssnelheden van gegevens optimaliseren door cachefouten en verlopen cachehits te minimaliseren. |
+| NONE Details |Bevat een grafiek met de top 10 URL's voor elementen waarvoor de versheid van cache-inhoud gedurende een bepaalde periode niet is gecontroleerd. Statistieken voor de top 100 URL's voor dit soort assets worden direct onder deze grafiek weergegeven. |
+| CONFIG_NOCACHE Details |Bevat een grafiek met de bovenste 10 URL's voor elementen die niet in de cache zijn opgeslagen vanwege de CDN-configuratie van de klant. Deze typen assets werden rechtstreeks vanaf de oorsprongsserver bediend. Statistieken voor de top 100 URL's voor dit soort assets worden direct onder deze grafiek weergegeven. |
+| NIET-CACHEBARE gegevens |Bevat een grafiek met de bovenste 10 URL's voor elementen die niet in de cache kunnen worden opgeslagen vanwege het aanvragen van kopgegevens. Statistieken voor de top 100 URL's voor dit soort assets worden direct onder deze grafiek weergegeven. |
+| TCP_HIT Details |Bevat een grafiek met de top 10 URL's voor assets die onmiddellijk vanuit de cache worden weergegeven. Statistieken voor de top 100 URL's voor dit soort assets worden direct onder deze grafiek weergegeven. |
+| TCP_MISS Details |Bevat een grafiek met de top 10 URL's voor elementen met een cachestatus van TCP_MISS. Statistieken voor de top 100 URL's voor dit soort assets worden direct onder deze grafiek weergegeven. |
+| TCP_EXPIRED_HIT Details |Bevat een grafiek met de top 10 URL's voor verouderde elementen die rechtstreeks vanuit de POP zijn weergegeven. Statistieken voor de top 100 URL's voor dit soort assets worden direct onder deze grafiek weergegeven. |
+| TCP_EXPIRED_MISS Details |Bevat een grafiek met de top 10 URL's voor verouderde elementen waarvoor een nieuwe versie moest worden opgehaald van de oorsprongsserver. Statistieken voor de top 100 URL's voor dit soort assets worden direct onder deze grafiek weergegeven. |
+| TCP_CLIENT_REFRESH_MISS Details |Bevat een staafdiagram met de bovenste 10 URL's voor assets die zijn opgehaald van een oorsprongsserver vanwege een no-cache-aanvraag van de client. Statistieken voor de top 100 URL's voor dit soort aanvragen worden direct onder deze grafiek weergegeven. |
+| Clientaanvraagtypen |Geeft het type aanvragen aan dat is gedaan door HTTP-clients (bijvoorbeeld browsers). Dit rapport bevat een donutgrafiek die inzicht geeft in hoe aanvragen worden behandeld. Bandbreedte- en verkeersinformatie voor elk aanvraagtype wordt onder de grafiek weergegeven. |
+| User Agent |Bevat een staafdiagram met de top 10 gebruikersagents om uw inhoud op te vragen via onze CDN. Een gebruikersagent is doorgaans een webbrowser, mediaspeler of een browser voor mobiele telefoons. Statistieken voor de top 100 gebruikersagents worden direct onder deze grafiek weergegeven. |
+| Verwijzers |Bevat een staafgrafiek met de top 10 referrers van inhoud die via ons CDN wordt geopend. Een verwijzer is doorgaans de URL van de webpagina of bron die naar uw inhoud verwijst. Gedetailleerde informatie wordt gegeven onder de grafiek voor de top 100 verwijzers. |
+| Compressietypen |Bevat een donutgrafiek die de gevraagde elementen opsplitst door of ze zijn gecomprimeerd door onze edge-servers. Het percentage gecomprimeerde elementen wordt opgesplitst naar het type compressie dat wordt gebruikt. Gedetailleerde informatie wordt weergegeven onder de grafiek voor elk compressietype en elke status. |
+| Bestandstypen |Bevat een staafdiagram met de top 10 bestandstypen die via ons CDN zijn aangevraagd voor uw account. Voor de toepassing van dit rapport wordt een bestandstype gedefinieerd door de bestandsnaamextensie van het \[actief en\]het \[internetmediatype\](bijvoorbeeld \[.html-tekst/html, .htm-tekst/html, .aspx-tekst/html,\]enz.). Gedetailleerde informatie wordt weergegeven onder de grafiek voor de top 100 bestandstypen. |
+| Unieke bestanden |Bevat een grafiek die het totale aantal unieke activa dat op een bepaalde dag is aangevraagd, over een bepaalde periode vastzet. |
+| Token Auth-overzicht |Bevat een cirkeldiagram dat een snel overzicht geeft over de vraag of aangevraagde elementen zijn beschermd door tokenverificatie. Beveiligde elementen worden weergegeven in de grafiek op basis van de resultaten van hun poging tot verificatie. |
+| Token Auth-weigeringsgegevens |Bevat een staafgrafiek waarmee u de top 10-aanvragen bekijken die zijn geweigerd vanwege verificatie op basis van tokens. |
+| HTTP-antwoordcodes |Biedt een uitsplitsing van de HTTP-statuscodes (bijvoorbeeld 200 OK, 403 Verboden, 404 niet gevonden, enz.) die door onze edge-servers aan uw HTTP-clients zijn geleverd. Met een cirkeldiagram u snel beoordelen hoe uw assets zijn bediend. Gedetailleerde statistische gegevens worden verstrekt voor elke responscode onder de grafiek. |
+| 404 fouten |Bevat een staafdiagram waarmee u de top 10-aanvragen bekijken die hebben geleid tot een antwoordcode van 404 niet gevonden. |
+| 403 Fouten |Bevat een staafdiagram waarmee u de top 10-aanvragen bekijken die hebben geleid tot een 403 verboden antwoordcode. Een 403 Verboden reactiecode treedt op wanneer een verzoek wordt geweigerd door een server van de oorsprong van de klant of een edge-server op onze POP. |
+| 4xx-fouten |Bevat een staafdiagram waarmee u de top 10-aanvragen bekijken die hebben geleid tot een antwoordcode in het bereik van 400. Uitgesloten van dit rapport zijn 403 Niet gevonden en 404 Verboden reactiecodes. Doorgaans treedt een 4xx-antwoordcode op wanneer een aanvraag wordt geweigerd als gevolg van een clientfout. |
+| 504 Fouten |Bevat een staafdiagram waarmee u de top 10-aanvragen bekijken die hebben geleid tot een 504 Gateway Timeout-antwoordcode. Een 504 Gateway Timeout-antwoordcode treedt op wanneer een time-out optreedt wanneer een HTTP-proxy probeert te communiceren met een andere server. In het geval van onze CDN treedt een 504 Gateway Timeout-antwoordcode meestal op wanneer een edge-server geen communicatie kan tot stand brengen met een server van klantoorsprong. |
+| 502 fouten |Bevat een staafdiagram waarmee u de top 10-aanvragen bekijken die hebben geleid tot een 502 Bad Gateway-antwoordcode. Een 502 Bad Gateway-antwoordcode treedt op wanneer een HTTP-protocolfout optreedt tussen een server en een HTTP-proxy. In het geval van onze CDN treedt een 502 Bad Gateway-antwoordcode meestal op wanneer een server van klantoorsprong een ongeldig antwoord op een edge-server retourneert. Een antwoord is ongeldig als het niet kan worden ontleed of als het onvolledig is. |
+| 5xx-fouten |Bevat een staafdiagram waarmee u de top 10-aanvragen bekijken die hebben geleid tot een antwoordcode in het 500-bereik.  Uitgesloten van dit rapport zijn 502 Bad Gateway en 504 Gateway Timeout response codes. |
 
 ## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure CDN](cdn-overview.md)
 * [Realtime statistieken in Microsoft Azure CDN](cdn-real-time-stats.md)
-* [Standaardgedrag HTTP met behulp van de regelengine](cdn-rules-engine.md)
+* [StandaardHTTP-gedrag overschrijven met de rules-engine](cdn-rules-engine.md)
 * [Geavanceerde HTTP-rapporten](cdn-advanced-http-reports.md)
 

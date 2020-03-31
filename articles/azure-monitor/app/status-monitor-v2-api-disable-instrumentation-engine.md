@@ -1,27 +1,27 @@
 ---
-title: API-naslag informatie over Azure-toepassing Insights-agent
-description: Application Insights agent API-verwijzing. Disable-InstrumentationEngine. Bewaak de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises worden gehost, in Vm's of op Azure.
+title: Api-verwijzing naar Azure Application Insights Agent-api
+description: Api-referentie van Application Insights Agent. Uitschakelen-InstrumentatieMotor. Monitor de prestaties van de website zonder de website opnieuw te implementeren. Werkt met ASP.NET web-apps die on-premises, in VM's of op Azure worden gehost.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: dafa12db95a10df467bf0d042cfd9395720648b2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671372"
 ---
-# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Application Insights agent-API: Disable-InstrumentationEngine
+# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Application Insights Agent API: Disable-InstrumentationEngine
 
-In dit artikel wordt een cmdlet beschreven die lid is van de [Power shell-module AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+In dit artikel wordt een cmdlet beschreven die lid is van de [Az.ApplicationMonitor PowerShell-module.](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)
 
 ## <a name="description"></a>Beschrijving
-Hiermee schakelt u de instrumentatie-engine uit door enkele register sleutels te verwijderen.
+Hiermee schakelt u de instrumentatie-engine uit door enkele registersleutels te verwijderen.
 Start IIS opnieuw op om de wijzigingen van kracht te laten worden.
 
 > [!IMPORTANT] 
-> Voor deze cmdlet is een Power shell-sessie met beheerders machtigingen vereist.
+> Deze cmdlet vereist een PowerShell-sessie met beheerdersmachtigingen.
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -32,12 +32,12 @@ PS C:\> Disable-InstrumentationEngine
 ## <a name="parameters"></a>Parameters 
 
 ### <a name="-verbose"></a>-Verbose
-**Algemene para meter.** Gebruik deze optie om gedetailleerde logboeken uit te voeren.
+**Algemene parameter.** Gebruik deze schakelaar om gedetailleerde logboeken uit te schakelen.
 
 ## <a name="output"></a>Uitvoer
 
 
-#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Voorbeeld uitvoer van het uitschakelen van de instrumentatie-engine
+#### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Voorbeelduitvoer van het uitschakelen van de instrumentatie-engine
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -50,5 +50,5 @@ Configuring registry for instrumentation engine...
 
 ## <a name="next-steps"></a>Volgende stappen
 
- Meer doen met Application Insights agent:
- - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .
+ Doe meer met Application Insights Agent:
+ - Gebruik onze gids om application insights agent op te [lossen.](status-monitor-v2-troubleshoot.md)

@@ -1,6 +1,6 @@
 ---
-title: StringToArray in Azure Cosmos DB-query taal
-description: Meer informatie over de SQL-functie StringToArray in Azure Cosmos DB.
+title: StringToArray in Azure Cosmos DB-querytaal
+description: Meer informatie over SQL-systeemfunctie StringToArray in Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302913"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
- Retourneert een expressie die is vertaald naar een matrix. Als expressie niet kan worden vertaald, retourneert ongedefinieerd.  
+ Retourneert expressie die is vertaald naar een array. Als expressie niet kan worden vertaald, wordt niet gedefinieerd geretourneerd.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -26,20 +26,20 @@ StringToArray(<str_expr>)
 ## <a name="arguments"></a>Argumenten
   
 *str_expr*  
-   Is een teken reeks expressie die moet worden geparseerd als een JSON-matrix expressie. 
+   Is een tekenreeksexpressie die moet worden ontleed als een JSON Array-expressie. 
   
-## <a name="return-types"></a>Retour typen
+## <a name="return-types"></a>Retourtypen
   
-  Retourneert een matrix expressie of is niet gedefinieerd. 
+  Geeft als resultaat een matrixexpressie of niet gedefinieerd. 
   
 ## <a name="remarks"></a>Opmerkingen
-  Geneste teken reeks waarden moeten worden geschreven met dubbele aanhalings tekens die een geldige JSON moeten hebben. Zie [JSON.org](https://json.org/) voor meer informatie over de JSON-indeling.
+  Geneste tekenreekswaarden moeten worden geschreven met dubbele aanhalingstekens om geldige JSON te zijn. Zie [json.org](https://json.org/)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld ziet u hoe `StringToArray` zich gedraagt in verschillende typen. 
+  In het volgende `StringToArray` voorbeeld ziet u hoe zich zich gedraagt voor verschillende typen. 
   
- Hier volgen enkele voor beelden met geldige invoer.
+ Hieronder volgen voorbeelden met geldige invoer.
 
 ```sql
 SELECT 
@@ -50,31 +50,31 @@ SELECT
     StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
 ```
 
-Hier volgt de resultatenset.
+Hier is het resultaat ingesteld.
 
 ```json
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
-Hier volgt een voor beeld van ongeldige invoer. 
+Het volgende is een voorbeeld van ongeldige invoer. 
    
- Enkele aanhalings tekens in de matrix zijn geen geldige JSON.
-Hoewel ze wel geldig zijn binnen een query, worden ze niet geparseerd naar geldige matrices. Teken reeksen binnen de matrix teken reeks moeten worden voorafgegaan door ' [\\'\\'] ' of de omliggende aanhaling moet één ' ['] ' zijn.
+ Enkele aanhalingstekens binnen de array zijn niet geldig JSON.
+Hoewel ze geldig zijn binnen een query, zullen ze niet ontlopen naar geldige arrays. Tekenreeksen binnen de arraytekenreeks moeten\\\\worden ontsnapt aan "[ " "]" of het omringende citaat moet alleenstaand zijn "[""]'.
 
 ```sql
 SELECT
     StringToArray("['5','6','7']")
 ```
 
-Hier volgt de resultatenset.
+Hier is het resultaat ingesteld.
 
 ```json
 [{}]
 ```
 
-Hier volgen enkele voor beelden van ongeldige invoer.
+Hieronder volgen voorbeelden van ongeldige invoer.
    
- De door gegeven expressie wordt geparseerd als een JSON-matrix. de volgende evaluaties zijn niet van het type matrix en daarom wordt ongedefinieerd geretourneerd.
+ De doorgegeven expressie wordt ontleed als een JSON-array; het volgende niet evalueren om array te typen en dus ongedefinieerd terug te keren.
    
 ```sql
 SELECT
@@ -85,7 +85,7 @@ SELECT
     StringToArray(undefined)
 ```
 
-Hier volgt de resultatenset.
+Hier is het resultaat ingesteld.
 
 ```json
 [{}]
@@ -93,10 +93,10 @@ Hier volgt de resultatenset.
 
 ## <a name="remarks"></a>Opmerkingen
 
-Deze systeem functie maakt geen gebruik van de index.
+Deze systeemfunctie maakt geen gebruik van de index.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Teken reeks functies Azure Cosmos DB](sql-query-string-functions.md)
-- [Systeem functies Azure Cosmos DB](sql-query-system-functions.md)
+- [Tekenreeksfuncties Azure Cosmos DB](sql-query-string-functions.md)
+- [Systeemfuncties Azure Cosmos DB](sql-query-system-functions.md)
 - [Inleiding tot Azure Cosmos DB](introduction.md)

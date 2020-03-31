@@ -1,6 +1,6 @@
 ---
-title: ClaimsSchema-Azure Active Directory B2C | Microsoft Docs
-description: Geef het ClaimsSchema-element van een aangepast beleid in Azure Active Directory B2C op.
+title: Claimschema - Azure Active Directory B2C | Microsoft Documenten
+description: Geef het element ClaimSchema van een aangepast beleid op in Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,17 +11,17 @@ ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78397814"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Het **ClaimsSchema** -element definieert de claim typen waarnaar kan worden verwezen als onderdeel van het beleid. Claim schema is de plaats waar u uw claims declareert. Een claim kan de voor naam, achternaam, weergave naam, het telefoon nummer en meer zijn. Het element ClaimsSchema bevat een lijst met **claim** type-elementen. Het element **claim** type bevat het kenmerk **id** , dat de claim naam is.
+Het element **ClaimSchema** definieert de claimtypen waarnaar kan worden verwezen als onderdeel van het beleid. Claims schema is de plaats waar u uw claims declareert. Een claim kan voornaam, achternaam, weergavenaam, telefoonnummer en meer zijn. ClaimSchema-element bevat een lijst met **ClaimType-elementen.** Het element **ClaimType** bevat het kenmerk **Id,** de claimnaam.
 
 ```XML
 <BuildingBlocks>
@@ -40,62 +40,62 @@ Het **ClaimsSchema** -element definieert de claim typen waarnaar kan worden verw
 
 ## <a name="claimtype"></a>ClaimType
 
-Het element **claim** type bevat het volgende kenmerk:
+Het element **ClaimType** bevat het volgende kenmerk:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Id | Ja | Een id die wordt gebruikt voor het claim type. Andere elementen kunnen deze id in het beleid gebruiken. |
+| Id | Ja | Een id die wordt gebruikt voor het claimtype. Andere elementen kunnen deze id gebruiken in het beleid. |
 
-Het element **claim** type bevat de volgende elementen:
+Het **element ClaimType** bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Voorvallen | Beschrijving |
 | ------- | ----------- | ----------- |
-| DisplayName | 1:1 | De titel die wordt weer gegeven voor gebruikers op verschillende schermen. De waarde kan worden [gelokaliseerd](localization.md). |
-| Gegevenstype | 1:1 | Het type claim. |
-| DefaultPartnerClaimTypes | 0:1 | De standaard claim typen voor de partner die moeten worden gebruikt voor een opgegeven protocol. De waarde kan worden overschreven in het **PartnerClaimType** dat is opgegeven in de **input claim** -of **output claim** -elementen. Gebruik dit element om de standaard naam voor een protocol op te geven.  |
-| Subnetmasker | 0:1 | Een optionele teken reeks maskerings tekens die kunnen worden toegepast wanneer de claim wordt weer gegeven. Het telefoon nummer 324-232-4343 kan bijvoorbeeld worden gemaskeerd als XXX-XXX-4343. |
-| UserHelpText | 0:1 | Een beschrijving van het claim type waarmee gebruikers het doel kunnen begrijpen. De waarde kan worden [gelokaliseerd](localization.md). |
-| UserInputType | 0:1 | Het type invoer besturings element dat beschikbaar moet zijn voor de gebruiker bij het hand matig invoeren van de claim gegevens voor het claim type. Zie de gebruikers invoer typen die verderop op deze pagina zijn gedefinieerd. |
-| AdminHelpText | 0:1 | Een beschrijving van het claim type die nuttig kan zijn voor beheerders om het doel ervan te begrijpen. |
-| Beperking | 0:1 | De waarde-beperkingen voor deze claim, zoals een reguliere expressie (regex) of een lijst met acceptabele waarden. De waarde kan worden [gelokaliseerd](localization.md). |
-PredicateValidationReference| 0:1 | Een verwijzing naar een **PredicateValidationsInput** -element. Met de **PredicateValidationReference** -elementen kunt u een validatie proces uitvoeren om ervoor te zorgen dat alleen goed gevormde gegevens worden ingevoerd. Zie [predikaten](predicates.md)voor meer informatie. |
+| DisplayName | 1:1 | De titel die wordt weergegeven aan gebruikers op verschillende schermen. De waarde kan worden [gelokaliseerd](localization.md). |
+| DataType | 1:1 | Het type van de claim. |
+| DefaultPartnerClaimTypes DefaultPartnerClaimTypes DefaultPartnerClaimTypes DefaultPartner | 0:1 | De standaardclaimtypen van de partner die moeten worden gebruikt voor een opgegeven protocol. De waarde kan worden overschreven in het **PartnerClaimType** dat is opgegeven in de elementen **InputClaim** of **OutputClaim.** Gebruik dit element om de standaardnaam voor een protocol op te geven.  |
+| Maskeren | 0:1 | Een optionele reeks maskertekens die kunnen worden toegepast bij het weergeven van de claim. Het telefoonnummer 324-232-4343 kan bijvoorbeeld worden gemaskeerd als XXX-XXX-4343. |
+| UserHelpText | 0:1 | Een beschrijving van het claimtype dat gebruikers kan helpen om het doel ervan te begrijpen. De waarde kan worden [gelokaliseerd](localization.md). |
+| UserInputType | 0:1 | Het type invoerbesturingselement dat beschikbaar moet zijn voor de gebruiker bij het handmatig invoeren van de claimgegevens voor het claimtype. Zie de gebruikersinvoertypen die later op deze pagina worden gedefinieerd. |
+| AdminHelpTekst | 0:1 | Een beschrijving van het claimtype dat beheerders kunnen helpen om het doel ervan te begrijpen. |
+| Beperking | 0:1 | De waardebeperkingen voor deze claim, zoals een reguliere expressie (Regex) of een lijst met acceptabele waarden. De waarde kan worden [gelokaliseerd](localization.md). |
+PredicaatValidatieReferentie| 0:1 | Een verwijzing naar een **element PredicaatValidatiesInput.** Met de **elementen PredicateValidationReference** u een validatieproces uitvoeren om ervoor te zorgen dat alleen goed gevormde gegevens worden ingevoerd. Zie [Predicaten voor](predicates.md)meer informatie. |
 
 
 
-### <a name="datatype"></a>Gegevenstype
+### <a name="datatype"></a>DataType
 
-Het **Data type** -element ondersteunt de volgende waarden:
+Het element **DataType** ondersteunt de volgende waarden:
 
 | Type | Beschrijving |
 | ------- | ----------- |
-|booleaans|Vertegenwoordigt een Booleaanse waarde (`true` of `false`).|
-|date| Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum van een dag. De waarde van de datum volgt de ISO 8601-Conventie.|
-|Datum/tijd|Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag. De waarde van de datum volgt de ISO 8601-Conventie.|
-|duration|Vertegenwoordigt een tijds interval in jaren, maanden, dagen, uren, minuten en seconden. De indeling van is `PnYnMnDTnHnMnS`, waarbij `P` positief of `N` voor negatieve waarde aangeeft. `nY` is het aantal jaren, gevolgd door een letterlijke `Y`. `nMo` is het aantal maanden gevolgd door een letterlijke `Mo`. `nD` is het aantal dagen, gevolgd door een letterlijke `D`. Voor beelden: `P21Y` is 21 jaar. `P1Y2Mo` staat voor één jaar en twee maanden. `P1Y2Mo5D` staat voor één jaar, twee maanden en vijf dagen.  `P1Y2M5DT8H5M620S` staat voor één jaar, twee maanden, vijf dagen, acht uur, vijf minuten en twintig seconden.  |
-|phoneNumber|Vertegenwoordigt een telefoon nummer. |
-|int| Vertegenwoordigt een getal tussen-2.147.483.648 en 2.147.483.647|
-|long| Vertegenwoordigt een getal tussen-9.223.372.036.854.775.808 en 9.223.372.036.854.775.807 |
-|tekenreeks| Geeft tekst als een reeks van UTF-16-code-eenheden.|
-|stringCollection|Vertegenwoordigt een verzameling `string`.|
-|userIdentity| Vertegenwoordigt een gebruikers-id.|
-|userIdentityCollection|Vertegenwoordigt een verzameling `userIdentity`.|
+|booleaans|Vertegenwoordigt een Booleaanse (of`true` `false`) waarde.|
+|date| Vertegenwoordigt een moment in de tijd, meestal uitgedrukt als een datum van een dag. De waarde van de datum volgt op het ISO 8601-verdrag.|
+|Datetime|Vertegenwoordigt een moment in de tijd, meestal uitgedrukt als een datum en tijd van de dag. De waarde van de datum volgt op het ISO 8601-verdrag.|
+|duur|Vertegenwoordigt een tijdsinterval in jaren, maanden, dagen, uren, minuten en seconden. De notatie `PnYnMnDTnHnMnS`van `P` is , `N` waar positief aangeeft, of voor negatieve waarde. `nY`is het aantal jaren gevolgd `Y`door een letterlijke . `nMo`is het aantal maanden gevolgd `Mo`door een letterlijke . `nD`is het aantal dagen gevolgd `D`door een letterlijke . Voorbeelden: `P21Y` vertegenwoordigt 21 jaar. `P1Y2Mo`vertegenwoordigt een jaar, en twee maanden. `P1Y2Mo5D`vertegenwoordigt een jaar, twee maanden en vijf dagen.  `P1Y2M5DT8H5M620S`staat voor een jaar, twee maanden, vijf dagen, acht uur, vijf minuten en twintig seconden.  |
+|phoneNumber|Vertegenwoordigt een telefoonnummer. |
+|int| Vertegenwoordigt getal tussen -2.147.483.648 en 2.147.483.647|
+|long| Vertegenwoordigt het getal tussen -9.223.372.036.854.775.808 tot 9.223.372.036.854.775.807 |
+|tekenreeks| Hiermee vertegenwoordigt u tekst als een reeks UTF-16-code-eenheden.|
+|tekenreeksVerzameling|Vertegenwoordigt een `string`verzameling van .|
+|userIdentity| Vertegenwoordigt een gebruikersidentiteit.|
+|userIdentity|Vertegenwoordigt een `userIdentity`verzameling van .|
 
-### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
+### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes DefaultPartnerClaimTypes DefaultPartnerClaimTypes DefaultPartner
 
-De **DefaultPartnerClaimTypes** kan het volgende element bevatten:
+De **DefaultPartnerClaimTypes** kunnen het volgende element bevatten:
 
-| Element | Instanties | Beschrijving |
+| Element | Voorvallen | Beschrijving |
 | ------- | ----------- | ----------- |
-| Protocol | 1: n | Lijst met protocollen met de standaard type naam van de partner claim. |
+| Protocol | 1:n | Lijst met protocollen met de typenaam standaardpartnerclaim. |
 
-Het **protocol** element bevat de volgende kenmerken:
+Het **element Protocol** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Naam | Ja | De naam van een geldig protocol dat door Azure AD B2C wordt ondersteund. Mogelijke waarden zijn: OAuth1, OAuth2, SAML2, OpenIdConnect. |
-| PartnerClaimType | Ja | De claim type naam die moet worden gebruikt. |
+| Name | Ja | De naam van een geldig protocol dat wordt ondersteund door Azure AD B2C. Mogelijke waarden zijn: OAuth1, OAuth2, SAML2, OpenIdConnect. |
+| PartnerClaimType | Ja | De naam van het claimtype die moet worden gebruikt. |
 
-In het volgende voor beeld, wanneer het Framework voor identiteits ervaring communiceert met een SAML2-ID-provider of Relying Party toepassing, wordt de claim **Achternaam** toegewezen aan `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, met OpenIdConnect en OAuth2, de claim wordt toegewezen aan `family_name`.
+In het volgende voorbeeld wordt de **claim** toegewezen aan `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, met OpenIdConnect en OAuth2, wanneer het Identity Experience Framework samenwerkt met een `family_name`SAML2-identiteitsprovider of een aanvraag voor een relying party.
 
 ```XML
 <ClaimType Id="surname">
@@ -109,7 +109,7 @@ In het volgende voor beeld, wanneer het Framework voor identiteits ervaring comm
 </ClaimType>
 ```
 
-Als gevolg hiervan verzendt het JWT-token dat is uitgegeven door Azure AD B2C, het `family_name` in plaats van de naam van de claim **type name.**
+Als gevolg hiervan zendt het JWT-token uitgegeven door `family_name` Azure AD B2C de **naamnaam**ClaimType uit .
 
 ```JSON
 {
@@ -121,16 +121,16 @@ Als gevolg hiervan verzendt het JWT-token dat is uitgegeven door Azure AD B2C, h
 }
 ```
 
-### <a name="mask"></a>Subnetmasker
+### <a name="mask"></a>Maskeren
 
-Het **masker** element bevat de volgende kenmerken:
+Het element **Masker** bevat de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| `Type` | Ja | Het type van het claim masker. Mogelijke waarden: `Simple` of `Regex`. De waarde `Simple` geeft aan dat een eenvoudig tekst masker wordt toegepast op het voorste gedeelte van een teken reeks claim. De waarde `Regex` geeft aan dat een reguliere expressie wordt toegepast op de teken reeks claim als geheel.  Als de `Regex` waarde is opgegeven, moet er ook een optioneel kenmerk worden gedefinieerd met de reguliere expressie die moet worden gebruikt. |
-| `Regex` | Nee | Als **`Type`** is ingesteld op `Regex`, geeft u de reguliere expressie op die moet worden gebruikt.
+| `Type` | Ja | Het type claimmasker. Mogelijke `Simple` waarden: `Regex`of . De `Simple` waarde geeft aan dat een eenvoudig tekstmasker wordt toegepast op het regelgedeelte van een tekenreeksclaim. De `Regex` waarde geeft aan dat een reguliere expressie wordt toegepast op de tekenreeksclaim als geheel.  Als `Regex` de waarde is opgegeven, moet ook een optioneel kenmerk worden gedefinieerd met de reguliere expressie die moet worden gebruikt. |
+| `Regex` | Nee | Als **`Type`** ingesteld `Regex`is op , geeft u de normale expressie op die u wilt gebruiken.
 
-In het volgende voor beeld wordt een **phonenumber** -claim met het `Simple` masker geconfigureerd:
+In het volgende voorbeeld wordt een `Simple` **claim PhoneNumber** geconfigureerd met het masker:
 
 ```XML
 <ClaimType Id="PhoneNumber">
@@ -141,11 +141,11 @@ In het volgende voor beeld wordt een **phonenumber** -claim met het `Simple` mas
 </ClaimType>
 ```
 
-In het Framework voor identiteits ervaring wordt het telefoon nummer weer gegeven en worden de eerste zes cijfers verborgen:
+Het Identity Experience Framework geeft het telefoonnummer weer terwijl u de eerste zes cijfers verbergt:
 
-![De telefoon nummer claim die in de browser wordt weer gegeven met de eerste zes cijfers, gemaskeerd door XS](./media/claimsschema/mask.png)
+![Telefoonnummer claim weergegeven in browser met eerste zes cijfers gemaskeerd door Xs](./media/claimsschema/mask.png)
 
-In het volgende voor beeld wordt een **AlternateEmail** -claim met het `Regex` masker geconfigureerd:
+In het volgende voorbeeld wordt een `Regex` **AlternateEmail-claim** geconfigureerd met het masker:
 
 ```XML
 <ClaimType Id="AlternateEmail">
@@ -156,39 +156,39 @@ In het volgende voor beeld wordt een **AlternateEmail** -claim met het `Regex` m
 </ClaimType>
 ```
 
-In het Framework voor identiteits ervaring worden alleen de eerste letter van het e-mail adres en de domein naam van het e-mail bericht weer gegeven:
+Het Identity Experience Framework geeft alleen de eerste letter van het e-mailadres en de e-maildomeinnaam weer:
 
-![E-mail claim die in de browser wordt weer gegeven met tekens die worden gemaskeerd door sterretjes](./media/claimsschema/mask-regex.png)
+![E-mailclaim weergegeven in browser met tekens gemaskeerd door sterretjes](./media/claimsschema/mask-regex.png)
 
 
 ### <a name="restriction"></a>Beperking
 
-Het **beperkings** element kan het volgende kenmerk bevatten:
+Het element **Beperking** kan het volgende kenmerk bevatten:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| MergeBehavior | Nee | De methode die wordt gebruikt voor het samen voegen van opsommings waarden met een claim type in een bovenliggend beleid met dezelfde id. Gebruik dit kenmerk wanneer u een claim overschrijft die is opgegeven in het basis beleid. Mogelijke waarden: `Append`, `Prepend`of `ReplaceAll`. De `Append` waarde is een verzameling gegevens die moet worden toegevoegd aan het einde van de verzameling die in het bovenliggende beleid is opgegeven. De `Prepend` waarde is een verzameling gegevens die moet worden toegevoegd vóór de verzameling die in het bovenliggende beleid is opgegeven. De `ReplaceAll` waarde is een verzameling gegevens die is opgegeven in het bovenliggende beleid en die moet worden genegeerd. |
+| Samenvoeggedrag | Nee | De methode die wordt gebruikt om opsommingswaarden samen te voegen met een ClaimType in een bovenliggend beleid met dezelfde id. Gebruik dit kenmerk wanneer u een claim overschrijft die is opgegeven in het basisbeleid. Mogelijke `Append`waarden: `Prepend`, `ReplaceAll`, of . De `Append` waarde is een verzameling gegevens die moet worden toegevoegd aan het einde van de verzameling die is opgegeven in het bovenliggende beleid. De `Prepend` waarde is een verzameling gegevens die moet worden toegevoegd voordat de verzameling is opgegeven in het bovenliggende beleid. De `ReplaceAll` waarde is een verzameling gegevens die zijn opgegeven in het bovenliggende beleid dat moet worden genegeerd. |
 
-Het **beperkings** element bevat de volgende elementen:
+Het **element Beperking** bevat de volgende elementen:
 
-| Element | Instanties | Beschrijving |
+| Element | Voorvallen | Beschrijving |
 | ------- | ----------- | ----------- |
-| Opsomming | 1: n | De beschik bare opties in de gebruikers interface waarmee de gebruiker een claim kan selecteren, zoals een waarde in een vervolg keuzelijst. |
-| Patroon | 1:1 | De reguliere expressie die moet worden gebruikt. |
+| Inventarisatie | 1:n | De beschikbare opties in de gebruikersinterface die de gebruiker voor een claim kan selecteren, zoals een waarde in een vervolgkeuzelijst. |
+| Patroon | 1:1 | De reguliere uitdrukking te gebruiken. |
 
-#### <a name="enumeration"></a>Opsomming
+#### <a name="enumeration"></a>Inventarisatie
 
-Het **opsommings** element definieert beschik bare opties die de gebruiker kan selecteren voor een claim in de gebruikers interface, zoals een waarde in een `CheckboxMultiSelect`, `DropdownSingleSelect`of `RadioSingleSelect`. U kunt ook beschik bare opties definiëren en lokaliseren met het element [LocalizedCollections](localization.md#localizedcollections) . Gebruik [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) -claim transformatie om een item op te zoeken in een claim **opsommings** verzameling.
+Met **het element Opsomming somordedes** beschikbare opties voor de gebruiker om te `CheckboxMultiSelect` `DropdownSingleSelect`selecteren `RadioSingleSelect`voor een claim in de gebruikersinterface, zoals een waarde in een , , of . U ook beschikbare opties definiëren en lokaliseren met element [Gelokaliseerde collecties.](localization.md#localizedcollections) Als u een item wilt opzoeken uit een verzameling **claim-opsommingen,** gebruikt u [GetMappedValueFromLocalizedCollection-claimtransformatie.](string-transformations.md#getmappedvaluefromlocalizedcollection)
 
-Het **opsommings** element bevat de volgende kenmerken:
+Het element **Opsomming bevat** de volgende kenmerken:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| Tekst | Ja | De weergave teken reeks die wordt weer gegeven aan de gebruiker in de gebruikers interface voor deze optie. |
-|Waarde | Ja | De claim waarde die is gekoppeld aan het selecteren van deze optie. |
-| SelectByDefault | Nee | Hiermee wordt aangegeven of deze optie standaard moet worden geselecteerd in de gebruikers interface. Mogelijke waarden: True of false. |
+| Tekst | Ja | De weergavetekenreeks die voor deze optie aan de gebruiker in de gebruikersinterface wordt weergegeven. |
+|Waarde | Ja | De claimwaarde die is gekoppeld aan het selecteren van deze optie. |
+| Standaard selecteren | Nee | Geeft aan of deze optie standaard moet worden geselecteerd in de gebruikersinterface. Mogelijke waarden: Waar of Onwaar. |
 
-In het volgende voor beeld wordt een lijst claim voor een **plaats** keuzelijst geconfigureerd met een standaard waarde ingesteld op `New York`:
+In het volgende voorbeeld wordt een claim voor een `New York`lijst met stedenvervolgkeuzelijst geconfigureerd met een standaardwaarde die is ingesteld op: **city**
 
 ```XML
 <ClaimType Id="city">
@@ -203,20 +203,20 @@ In het volgende voor beeld wordt een lijst claim voor een **plaats** keuzelijst 
 </ClaimType>
 ```
 
-Lijst met vervolg steden met een standaard waarde ingesteld op New York:
+Vervolgkeuzelijst met een standaardwaarde ingesteld op New York:
 
-![Besturings element voor vervolg keuzelijst wordt weer gegeven in de browser en de standaard waarde wordt weer gegeven](./media/claimsschema/dropdownsingleselect.png)
+![Vervolgkeuzebesturingselement dat in de browser wordt weergegeven en de standaardwaarde wordt weergegeven](./media/claimsschema/dropdownsingleselect.png)
 
 ### <a name="pattern"></a>Patroon
 
-Het element **pattern** kan de volgende kenmerken bevatten:
+Het element **Patroon** kan de volgende kenmerken bevatten:
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| RegularExpression | Ja | De reguliere expressie die de claims van dit type moet overeenkomen om geldig te zijn. |
-| HelpText | Nee | Een fout bericht voor gebruikers als de reguliere expressie is mislukt. |
+| Reguliere expressie | Ja | De reguliere expressie die dit type beweert, moet overeenkomen om geldig te zijn. |
+| HelpTekst | Nee | Een foutbericht voor gebruikers als de reguliere expressiecontrole mislukt. |
 
-In het volgende voor beeld wordt een **e-mail** claim geconfigureerd met de reguliere expressie invoer validatie en Help-tekst:
+In het volgende voorbeeld wordt een **e-mailclaim** geconfigureerd met regelmatige expressieinvoervalidatie en Help-tekst:
 
 ```XML
 <ClaimType Id="email">
@@ -233,34 +233,34 @@ In het volgende voor beeld wordt een **e-mail** claim geconfigureerd met de regu
  </ClaimType>
 ```
 
-In het Framework voor identiteits ervaring wordt de e-mailadres claim met invoer validatie voor de e-mail indeling weer gegeven:
+Het Identity Experience Framework geeft de e-mailadresclaim weer met validatie van e-mailformaatinvoer:
 
-![Tekstvak met fout bericht geactiveerd door regex-beperking](./media/claimsschema/pattern.png)
+![TextBox met foutbericht geactiveerd door regex-beperking](./media/claimsschema/pattern.png)
 
 ### <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C ondersteunt diverse invoer typen voor gebruikers, zoals een tekstvak, wacht woord en vervolg keuzelijst die kunnen worden gebruikt bij het hand matig invoeren van claim gegevens voor het claim type. U moet de **UserInputType** opgeven wanneer u gegevens van de gebruiker verzamelt met behulp van een [zelfondertekend technisch profiel](self-asserted-technical-profile.md) en [weer gave-besturings elementen](display-controls.md).
+Azure AD B2C ondersteunt verschillende gebruikersinvoertypen, zoals een tekstvak, wachtwoord en vervolgkeuzelijst die kunnen worden gebruikt bij het handmatig invoeren van claimgegevens voor het claimtype. U moet het **UserInputType** opgeven wanneer u informatie van de gebruiker verzamelt met behulp van een [zelf-beweerde technisch profiel](self-asserted-technical-profile.md) en [display-besturingselementen](display-controls.md).
 
-Het **UserInputType** -element beschik bare invoer typen voor gebruikers:
+De beschikbare gebruikersinvoertypen van het **UserInputType-element:**
 
-| UserInputType | Ondersteunde claim type | Beschrijving |
+| UserInputType | Ondersteund claimtype | Beschrijving |
 | --------- | -------- | ----------- |
-|CheckboxMultiSelect| `string` |Vervolg keuzelijst meervoudige selectie. De claim waarde wordt weer gegeven in een komma als scheidings teken reeks van de geselecteerde waarden. |
-|DateTimeDropdown | `date`, `dateTime` |Vervolg keuzelijst om een dag, maand en jaar te selecteren. |
-|DropdownSingleSelect |`string` |Eén vervolg keuzelijst selecteren. De claim waarde is de geselecteerde waarde.|
-|EmailBox | `string` |Invoer veld voor e-mail. |
-|Bepaalde | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Een veld waarin alleen tekst in een alinea code wordt weer gegeven. |
-|Wachtwoord | `string` |Tekstvak voor wacht woord.|
-|RadioSingleSelect |`string` | Verzameling keuze rondjes. De claim waarde is de geselecteerde waarde.|
-|Kenmerk | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Tekstvak met het kenmerk alleen-lezen. |
+|SelectievakjeMultiSelect| `string` |Keuzelijst voor meerdere selecties. De claimwaarde wordt weergegeven in een tekenreeks kommascheiding van de geselecteerde waarden. |
+|DateTimeDropdown | `date`, `dateTime` |Vervolgkeuzeafzetten om een dag, maand en jaar te selecteren. |
+|VervolgkeuzelijstEénselecteren |`string` |Het vervolgkeuzevak selecteren selecteert. De claimwaarde is de geselecteerde waarde.|
+|E-mailbox | `string` |Invoerveld e-mail. |
+|Alinea | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Een veld dat alleen tekst weergeeft in een alineatag. |
+|Wachtwoord | `string` |Wachtwoordtekstvak.|
+|RadioEnkelselecteren |`string` | Verzameling keuzerondjes. De claimwaarde is de geselecteerde waarde.|
+|Readonly | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Alleen-lezen tekstvak. |
 |Tekstvak |`boolean`, `int`, `string` |Tekstvak met één regel. |
 
 
 #### <a name="textbox"></a>Tekstvak
 
-Het invoer type **tekstvak** wordt gebruikt om een tekstvak met één regel te maken.
+Het invoertype **TextBox-gebruikers** wordt gebruikt om een tekstvak met één regel op te geven.
 
-![Tekstvak met de eigenschappen die zijn opgegeven bij claim type](./media/claimsschema/textbox.png)
+![TextBox met eigenschappen die zijn opgegeven in claimtype](./media/claimsschema/textbox.png)
 
 ```XML
 <ClaimType Id="displayName">
@@ -271,11 +271,11 @@ Het invoer type **tekstvak** wordt gebruikt om een tekstvak met één regel te m
 </ClaimType>
 ```
 
-#### <a name="emailbox"></a>EmailBox
+#### <a name="emailbox"></a>E-mailbox
 
-Het invoer type voor de **EmailBox** -gebruiker wordt gebruikt om een eenvoudig invoer veld voor e-mail op te geven.
+Het invoertype Van De Gebruiker van **EmailBox** wordt gebruikt om een basisgebied van e-mailinput te verstrekken.
 
-![EmailBox die de eigenschappen weer geven die zijn opgegeven bij claim type](./media/claimsschema/emailbox.png)
+![EmailBox met eigenschappen die zijn opgegeven in claimtype](./media/claimsschema/emailbox.png)
 
 ```XML
 <ClaimType Id="email">
@@ -291,9 +291,9 @@ Het invoer type voor de **EmailBox** -gebruiker wordt gebruikt om een eenvoudig 
 
 #### <a name="password"></a>Wachtwoord
 
-Het invoer type voor de **wachtwoord** gebruiker wordt gebruikt om een wacht woord op te nemen dat door de gebruiker is ingevoerd.
+Het invoertype **Wachtwoord** wordt gebruikt om een wachtwoord op te nemen dat door de gebruiker is ingevoerd.
 
-![Claim type gebruiken met wacht woord](./media/claimsschema/password.png)
+![Claimtype gebruiken met wachtwoord](./media/claimsschema/password.png)
 
 ```XML
 <ClaimType Id="password">
@@ -306,9 +306,9 @@ Het invoer type voor de **wachtwoord** gebruiker wordt gebruikt om een wacht woo
 
 #### <a name="datetimedropdown"></a>DateTimeDropdown
 
-Het invoer type **DateTimeDropdown** -gebruiker wordt gebruikt om een set vervolg keuzelijsten op te geven om een dag, maand en jaar te selecteren. U kunt predikaten en PredicateValidations-elementen gebruiken om de minimum-en maximum datum waarden te bepalen. Zie de sectie **een datum bereik configureren** van [predikaten en PredicateValidations](predicates.md)voor meer informatie.
+Het invoertype **van de gebruiker DateTimeDropdown** wordt gebruikt om een reeks vervolgkeuzevoorbeelden te bieden om een dag, maand en jaar te selecteren. U elementen Predicaten en Predicatenvalidatiegebruiken gebruiken om de minimum- en maximumdatumwaarden te bepalen. Zie de sectie **Een datumbereik** van [Predicaten en Predicaten](predicates.md)configureren voor meer informatie.
 
-![Claim type gebruiken met datetimedropdown](./media/claimsschema/datetimedropdown.png)
+![Claimtype gebruiken met datetimedropdown](./media/claimsschema/datetimedropdown.png)
 
 ```XML
 <ClaimType Id="dateOfBirth">
@@ -319,11 +319,11 @@ Het invoer type **DateTimeDropdown** -gebruiker wordt gebruikt om een set vervol
 </ClaimType>
 ```
 
-#### <a name="radiosingleselect"></a>RadioSingleSelect
+#### <a name="radiosingleselect"></a>RadioEnkelselecteren
 
-Het invoer type van de **RadioSingleSelect** -gebruiker wordt gebruikt om een verzameling keuze rondjes te bieden waarmee de gebruiker één optie kan selecteren.
+Het type **radiosingleselect-invoertype** wordt gebruikt om een verzameling keuzerondjes te bieden waarmee de gebruiker één optie kan selecteren.
 
-![Claim type gebruiken met radiodsingleselect](./media/claimsschema/radiosingleselect.png)
+![Claimtype gebruiken met radiodsingleselect](./media/claimsschema/radiosingleselect.png)
 
 ```XML
 <ClaimType Id="color">
@@ -338,11 +338,11 @@ Het invoer type van de **RadioSingleSelect** -gebruiker wordt gebruikt om een ve
 </ClaimType>
 ```
 
-#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
+#### <a name="dropdownsingleselect"></a>VervolgkeuzelijstEénselecteren
 
-Het invoer type **DropdownSingleSelect** -gebruiker wordt gebruikt om een vervolg keuzelijst te bieden waarmee de gebruiker één optie kan selecteren.
+Het type **vervolgkeuzetype DropdownSingleSelect** wordt gebruikt om een vervolgkeuzelijst te bieden waarmee de gebruiker één optie kan selecteren.
 
-![Claim type gebruiken met dropdownsingleselect](./media/claimsschema/dropdownsingleselect.png)
+![Claimtype gebruiken met dropdownsingleselect](./media/claimsschema/dropdownsingleselect.png)
 
 ```XML
 <ClaimType Id="city">
@@ -357,11 +357,11 @@ Het invoer type **DropdownSingleSelect** -gebruiker wordt gebruikt om een vervol
 </ClaimType>
 ```
 
-#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
+#### <a name="checkboxmultiselect"></a>SelectievakjeMultiSelect
 
-Het invoer type **CheckboxMultiSelect** -gebruiker wordt gebruikt om een verzameling selectie vakjes op te geven waarmee de gebruiker meerdere opties kan selecteren.
+Het type gebruikersinvoer van **CheckboxMultiSelect** wordt gebruikt om een verzameling selectievakjes op te geven waarmee de gebruiker meerdere opties kan selecteren.
 
-![Claim type gebruiken met checkboxmultiselect](./media/claimsschema/checkboxmultiselect.png)
+![Claimtype gebruiken met selectievakjeMultiselect](./media/claimsschema/checkboxmultiselect.png)
 
 ```XML
 <ClaimType Id="languages">
@@ -376,11 +376,11 @@ Het invoer type **CheckboxMultiSelect** -gebruiker wordt gebruikt om een verzame
 </ClaimType>
 ```
 
-#### <a name="readonly"></a>Kenmerk
+#### <a name="readonly"></a>Readonly
 
-Het invoer type **ReadOnly** wordt gebruikt om een veld met het kenmerk alleen-lezen te bieden om de claim en waarde weer te geven.
+Het invoertype **Alleen-lezen** wordt gebruikt om een alleen-lezen veld te bieden om de claim en waarde weer te geven.
 
-![Claim type gebruiken met alleen-lezen](./media/claimsschema/readonly.png)
+![Claimtype gebruiken met alleen-lezen](./media/claimsschema/readonly.png)
 
 ```XML
 <ClaimType Id="membershipNumber">
@@ -392,11 +392,11 @@ Het invoer type **ReadOnly** wordt gebruikt om een veld met het kenmerk alleen-l
 ```
 
 
-#### <a name="paragraph"></a>Bepaalde
+#### <a name="paragraph"></a>Alinea
 
-Het invoer type **alinea** gebruiker wordt gebruikt om een veld op te geven waarin alleen tekst in een alinea code wordt weer gegeven.  Bijvoorbeeld &lt;p&gt;tekst&lt;/p&gt;. Het invoer type van een **alinea** gebruiker `OutputClaim` van een zelf-bevestigd technisch profiel moet het kenmerk `Required` `false` instellen (standaard).
+Het invoertype **Alinea-gebruiker** wordt gebruikt om een veld op te geven dat alleen tekst in een alineatag weergeeft.  Bijvoorbeeld &lt;p-tekst&lt;&gt;&gt;/p . Een **alinea-invoertype** `OutputClaim` zelfgeclaimd technisch profiel moet `Required` het `false` kenmerk (standaard) instellen.
 
-![Claim type gebruiken met alinea](./media/claimsschema/paragraph.png)
+![Claimtype gebruiken met alinea](./media/claimsschema/paragraph.png)
 
 ```XML
 <ClaimType Id="responseMsg">

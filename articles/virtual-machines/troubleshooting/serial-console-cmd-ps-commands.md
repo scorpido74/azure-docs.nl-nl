@@ -1,6 +1,6 @@
 ---
-title: CMD en Power shell in azure Windows-Vm's | Microsoft Docs
-description: CMD-en Power shell-opdrachten binnen SAC gebruiken in azure Windows-Vm's
+title: CMD en PowerShell in Azure Windows VM's | Microsoft Documenten
+description: CMD- en PowerShell-opdrachten gebruiken in SAC in Azure Windows VM's
 services: virtual-machines-windows
 documentationcenter: ''
 author: alsin
@@ -14,59 +14,59 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77167033"
 ---
-# <a name="windows-commands---cmd-and-powershell"></a>Windows-opdrachten-CMD en Power shell
+# <a name="windows-commands---cmd-and-powershell"></a>Windows-opdrachten - CMD en PowerShell
 
-Deze sectie bevat voor beelden van opdrachten voor het uitvoeren van veelvoorkomende taken in scenario's waarbij u SAC wellicht moet gebruiken om toegang te krijgen tot uw Windows-VM, bijvoorbeeld wanneer u problemen met de RDP-verbinding moet oplossen.
+Deze sectie bevat voorbeeldopdrachten voor het uitvoeren van veelvoorkomende taken in scenario's waarin u SAC moet gebruiken om toegang te krijgen tot uw Windows-vm, bijvoorbeeld wanneer u rdp-verbindingsfouten moet oplossen.
 
-SAC is opgenomen in alle versies van Windows sinds Windows Server 2003, maar is standaard uitgeschakeld. SAC is afhankelijk van het `sacdrv.sys`-kernelstuurprogramma, de `Special Administration Console Helper`-service (`sacsvr`) en het `sacsess.exe` proces. Zie [Hulpprogram ma's en instellingen voor noodsituatie beheer Services](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))voor meer informatie.
+SAC is sinds Windows Server 2003 in alle versies van Windows opgenomen, maar is standaard uitgeschakeld. SAC vertrouwt op `sacdrv.sys` de kernel `Special Administration Console Helper` driver, de service (`sacsvr`), en het `sacsess.exe` proces. Zie [Hulpprogramma's en instellingen voor noodbeheerservices](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10))voor meer informatie.
 
-Met SAC kunt u verbinding maken met uw actieve besturings systeem via seriële poort. Wanneer u CMD vanuit SAC start, wordt `sacsess.exe` gestart `cmd.exe` in het besturings systeem dat wordt uitgevoerd. U kunt in taak beheer zien of u RDP naar uw virtuele machine tegelijk hebt verbonden met SAC via de seriële console-functie. De CMD-toegang die u via SAC hebt, is hetzelfde `cmd.exe` u gebruikt wanneer u verbinding maakt via RDP. Alle dezelfde opdrachten en hulpprogram ma's zijn beschikbaar, inclusief de mogelijkheid om Power shell vanuit dat CMD-exemplaar te starten. Dit is een belang rijk verschil tussen SAC en de Windows Recovery Environment (WinRE) in die SAC stelt u in staat om uw actieve besturings systeem te beheren, waarbij WinRE wordt opgestart in een ander, mini maal besturings systeem. Azure-Vm's bieden geen ondersteuning voor de mogelijkheid om toegang te krijgen tot WinRE, met de functie seriële console kunnen virtuele Azure-machines worden beheerd via SAC.
+Met SAC u verbinding maken met uw draaiende besturingssysteem via de seriële poort. Wanneer u CMD van `sacsess.exe` `cmd.exe` SAC start, wordt gestart binnen uw hardloop-besturingssysteem. Dat zie je in Taakbeheer als je rdp met je VM tegelijk bent verbonden met SAC via de seriële consolefunctie. De CMD die u via `cmd.exe` SAC benadert, is dezelfde die u gebruikt wanneer u via RDP bent aangesloten. Alle dezelfde opdrachten en tools zijn beschikbaar, met inbegrip van de mogelijkheid om PowerShell te starten vanuit dat CMD-exemplaar. Dat is een groot verschil tussen SAC en de Windows Recovery Environment (WinRE) in die SAC is laat u uw lopende OS, waar WinRE laarzen in een ander, minimaal OS te beheren. Hoewel Azure VM's geen ondersteuning bieden voor de mogelijkheid om toegang te krijgen tot WinRE, kunnen Azure VM's met de seriële consolefunctie via SAC worden beheerd.
 
-Omdat SAC is beperkt tot een 80x24-scherm buffer zonder terug te schuiven, voegt u `| more` toe aan opdrachten om de uitvoer één pagina tegelijk weer te geven. Gebruik `<spacebar>` om de volgende pagina weer te geven of `<enter>` om de volgende regel weer te geven.
+Omdat SAC is beperkt tot een 80x24-schermbuffer zonder terugte scrollen, voegt u toe `| more` aan opdrachten om de uitvoer één pagina tegelijk weer te geven. Gebruik `<spacebar>` om de volgende `<enter>` pagina te zien of om de volgende regel te zien.
 
-`SHIFT+INSERT` is de snelkoppeling paste voor het venster van de seriële console.
+`SHIFT+INSERT`is de plaksnelkoppeling voor het seriële consolevenster.
 
-Vanwege de beperkte scherm buffer van SAC kunnen langere opdrachten gemakkelijker worden getypt in een lokale tekst editor en vervolgens in SAC worden geplakt.
+Vanwege de beperkte schermbuffer van SAC kunnen langere opdrachten gemakkelijker worden uitgetypt in een lokale teksteditor en vervolgens in SAC worden geplakt.
 
-## <a name="view-and-edit-windows-registry-settings"></a>Windows-register instellingen weer geven en bewerken
+## <a name="view-and-edit-windows-registry-settings"></a>Windows-registerinstellingen weergeven en bewerken
 ### <a name="verify-rdp-is-enabled"></a>Controleren of RDP is ingeschakeld
 `reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections`
 
 `reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections`
 
-De tweede sleutel (onder \Policies) bevindt zich alleen als de relevante groeps beleids instelling is geconfigureerd.
+De tweede sleutel (onder \Beleid) bestaat alleen als de relevante groepsbeleidsinstelling is geconfigureerd.
 
 ### <a name="enable-rdp"></a>RDP inschakelen
 `reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0`
 
 `reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0`
 
-De tweede sleutel (onder \Policies) zou alleen nodig zijn als de relevante groeps beleids instelling is geconfigureerd. De waarde wordt bij volgende vernieuwing van groeps beleid herschreven als deze is geconfigureerd in groeps beleid.
+De tweede sleutel (onder \Beleid) zou alleen nodig zijn als de relevante groepsbeleidsinstelling was geconfigureerd. Waarde wordt herschreven bij de volgende vernieuwing van het groepsbeleid als deze is geconfigureerd in groepsbeleid.
 
-## <a name="manage-windows-services"></a>Windows-Services beheren
+## <a name="manage-windows-services"></a>Windows Services beheren
 
-### <a name="view-service-state"></a>Service status weer geven
+### <a name="view-service-state"></a>Servicestatus weergeven
 `sc query termservice`
-###  <a name="view-service-logon-account"></a>Aanmeldings account voor service weer geven
+###  <a name="view-service-logon-account"></a>Aanmeldingsaccount voor service weergeven
 `sc qc termservice`
-### <a name="set-service-logon-account"></a>Aanmeldings account voor service instellen
+### <a name="set-service-logon-account"></a>Aanmeldingsaccount voor service instellen
 `sc config termservice obj= "NT Authority\NetworkService"`
 
-Er is een spatie vereist na het gelijkteken.
-### <a name="set-service-start-type"></a>Start type van service instellen
+Een ruimte is vereist na de gelijken teken.
+### <a name="set-service-start-type"></a>Begintype service instellen
 `sc config termservice start= demand`
 
-Er is een spatie vereist na het gelijkteken. Mogelijke begin waarden zijn `boot`, `system`, `auto`, `demand`, `disabled`, `delayed-auto`.
-### <a name="set-service-dependencies"></a>Service afhankelijkheden instellen
+Een ruimte is vereist na de gelijken teken. Mogelijke startwaarden `boot` `system`zijn `auto` `demand`, `disabled` `delayed-auto`, , , , .
+### <a name="set-service-dependencies"></a>Serviceafhankelijkheden instellen
 `sc config termservice depend= RPCSS`
 
-Er is een spatie vereist na het gelijkteken.
+Een ruimte is vereist na de gelijken teken.
 ### <a name="start-service"></a>Service starten
 `net start termservice`
 
@@ -79,25 +79,25 @@ of
 of
 
 `sc stop termservice`
-## <a name="manage-networking-features"></a>Netwerk functies beheren
-### <a name="show-nic-properties"></a>NIC-eigenschappen weer geven
+## <a name="manage-networking-features"></a>Netwerkfuncties beheren
+### <a name="show-nic-properties"></a>NIC-eigenschappen weergeven
 `netsh interface show interface`
-### <a name="show-ip-properties"></a>IP-eigenschappen weer geven
+### <a name="show-ip-properties"></a>IP-eigenschappen weergeven
 `netsh interface ip show config`
-### <a name="show-ipsec-configuration"></a>IPSec-configuratie weer geven
+### <a name="show-ipsec-configuration"></a>IPSec-configuratie weergeven
 `netsh nap client show configuration`
 ### <a name="enable-nic"></a>NIC inschakelen
 `netsh interface set interface name="<interface name>" admin=enabled`
-### <a name="set-nic-to-use-dhcp"></a>NIC instellen voor gebruik van DHCP
+### <a name="set-nic-to-use-dhcp"></a>NIC instellen om DHCP te gebruiken
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-[Klik hier](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts)voor meer informatie over `netsh`.
+Voor meer `netsh`informatie over , [klik hier](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
 
-Virtuele Azure-machines moeten altijd in het gast besturingssysteem worden geconfigureerd om DHCP te gebruiken voor het verkrijgen van een IP-adres. De statische IP-instelling van Azure maakt nog steeds gebruik van DHCP om het statische IP-adres aan de virtuele machine toe te wijzen.
+Azure VM's moeten altijd in het gastbesturingssysteem zijn geconfigureerd om DHCP te gebruiken om een IP-adres te verkrijgen. De statische IP-instelling azure gebruikt DHCP nog steeds om het statische IP aan de VM te geven.
 ### <a name="ping"></a>Ping
 `ping 8.8.8.8`
-### <a name="port-ping"></a>Poort ping
-De Telnet-client installeren
+### <a name="port-ping"></a>Poortping
+De telnetclient installeren
 
 `dism /online /Enable-Feature /FeatureName:TelnetClient`
 
@@ -105,36 +105,36 @@ Connectiviteit testen
 
 `telnet bing.com 80`
 
-De Telnet-client verwijderen
+De telnetclient verwijderen
 
 `dism /online /Disable-Feature /FeatureName:TelnetClient`
 
-Wanneer dit is beperkt tot de methoden die beschikbaar zijn in Windows, kan Power shell een betere benadering zijn voor het testen van poort connectiviteit. Zie de sectie Power shell hieronder voor voor beelden.
-### <a name="test-dns-name-resolution"></a>DNS-naam omzetting testen
+Wanneer powershell standaard beperkt is tot methoden die beschikbaar zijn in Windows, kan het een betere benadering zijn voor het testen van poortconnectiviteit. Zie de PowerShell sectie hieronder voor voorbeelden.
+### <a name="test-dns-name-resolution"></a>DNS-naamomzetting testen
 `nslookup bing.com`
-### <a name="show-windows-firewall-rule"></a>Windows Firewall regel weer geven
+### <a name="show-windows-firewall-rule"></a>Windows Firewall-regel weergeven
 `netsh advfirewall firewall show rule name="Remote Desktop - User Mode (TCP-In)"`
 ### <a name="disable-windows-firewall"></a>Windows Firewall uitschakelen
 `netsh advfirewall set allprofiles state off`
 
-U kunt deze opdracht gebruiken bij het oplossen van problemen om de Windows Firewall tijdelijk uit te laten zien. Het wordt ingeschakeld bij de volgende keer opnieuw opstarten of wanneer u deze inschakelt met behulp van de onderstaande opdracht. Stop de Windows Firewall service (MPSSVC) of base filtering Engine-service (BFE) niet als een manier om de Windows Firewall uit te voeren. Als u MPSSVC of BFE stopt, wordt alle connectiviteit geblokkeerd.
+U deze opdracht gebruiken wanneer u problemen oplost om de Windows Firewall tijdelijk uit te sluiten. Het zal worden ingeschakeld bij de volgende herstart of wanneer u het inschakelt met behulp van de onderstaande opdracht. Stop de Windows Firewall-service (MPSSVC) of Base Filtering Engine (BFE) niet als een manier om de Windows Firewall uit te sluiten. Als u MPSSVC of BFE stopt, wordt alle connectiviteit geblokkeerd.
 ### <a name="enable-windows-firewall"></a>Windows Firewall inschakelen
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>Gebruikers en groepen beheren
-### <a name="create-local-user-account"></a>Lokaal gebruikers account maken
+### <a name="create-local-user-account"></a>Lokaal gebruikersaccount maken
 `net user /add <username> <password>`
 ### <a name="add-local-user-to-local-group"></a>Lokale gebruiker toevoegen aan lokale groep
 `net localgroup Administrators <username> /add`
-### <a name="verify-user-account-is-enabled"></a>Controleren of gebruikers account is ingeschakeld
+### <a name="verify-user-account-is-enabled"></a>Controleren of het gebruikersaccount is ingeschakeld
 `net user <username> | find /i "active"`
 
-Voor Azure-Vm's die zijn gemaakt op basis van een gegeneraliseerde installatie kopie, wordt de naam van het lokale beheerders account gewijzigd in de naam die tijdens het inrichten van de virtuele machine Het wordt dus doorgaans niet `Administrator`.
-### <a name="enable-user-account"></a>Gebruikers account inschakelen
+Azure VM's die zijn gemaakt op grond van algemene afbeelding, hebben het lokale beheerdersaccount een nieuwe naam op de naam die is opgegeven tijdens de vm-inrichting. Dus het zal `Administrator`meestal niet .
+### <a name="enable-user-account"></a>Gebruikersaccount inschakelen
 `net user <username> /active:yes`
-### <a name="view-user-account-properties"></a>Eigenschappen van gebruikers accounts weer geven
+### <a name="view-user-account-properties"></a>Eigenschappen van gebruikersaccounts weergeven
 `net user <username>`
 
-Voorbeeld regels die van belang zijn voor een lokaal beheerders account:
+Voorbeeldlijnen van interesse van een lokaal beheerdersaccount:
 
 `Account active Yes`
 
@@ -148,66 +148,66 @@ Voorbeeld regels die van belang zijn voor een lokaal beheerders account:
 
 `Local Group Memberships *Administrators`
 
-### <a name="view-local-groups"></a>Lokale groepen weer geven
+### <a name="view-local-groups"></a>Lokale groepen bekijken
 `net localgroup`
-## <a name="manage-the-windows-event-log"></a>Het Windows-gebeurtenis logboek beheren
-### <a name="query-event-log-errors"></a>Query gebeurtenis logboek fouten
+## <a name="manage-the-windows-event-log"></a>Het Windows-gebeurtenislogboek beheren
+### <a name="query-event-log-errors"></a>Fouten in querygebeurtenislogboeken
 `wevtutil qe system /c:10 /f:text /q:"Event[System[Level=2]]" | more`
 
-Wijzig `/c:10` in het gewenste aantal gebeurtenissen dat moet worden geretourneerd of verplaats het om alle gebeurtenissen te retour neren die overeenkomen met het filter.
-### <a name="query-event-log-by-event-id"></a>Query gebeurtenis logboek op gebeurtenis-ID
+Wijzig `/c:10` in het gewenste aantal gebeurtenissen om terug te keren of verplaats deze om alle gebeurtenissen die overeenkomen met het filter te retourneren.
+### <a name="query-event-log-by-event-id"></a>Querygebeurtenislogboek op gebeurtenis-id
 `wevtutil qe system /c:1 /f:text /q:"Event[System[EventID=11]]" | more`
-### <a name="query-event-log-by-event-id-and-provider"></a>Query gebeurtenis logboek op gebeurtenis-ID en provider
+### <a name="query-event-log-by-event-id-and-provider"></a>Querygebeurtenislogboek op gebeurtenis-id en provider
 `wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Hyper-V-Netvsc'] and EventID=11]]" | more`
-### <a name="query-event-log-by-event-id-and-provider-for-the-last-24-hours"></a>Query gebeurtenis logboek op gebeurtenis-ID en provider voor de afgelopen 24 uur
+### <a name="query-event-log-by-event-id-and-provider-for-the-last-24-hours"></a>Querygebeurtenislogboek door gebeurtenis-id en provider voor de afgelopen 24 uur
 `wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Hyper-V-Netvsc'] and EventID=11 and TimeCreated[timediff(@SystemTime) <= 86400000]]]"`
 
-Gebruik `604800000` om 7 dagen terug te kijken in plaats van 24 uur.
-### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Query gebeurtenis logboek op gebeurtenis-ID, provider en Event data in de afgelopen 7 dagen
+Gebruik `604800000` om terug te kijken 7 dagen in plaats van 24 uur.
+### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Querygebeurtenislogboek door Gebeurtenis-ID, Provider en EventData in de afgelopen 7 dagen
 `wevtutil qe security /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>Geïnstalleerde toepassingen weer geven of verwijderen
-### <a name="list-installed-applications"></a>Geïnstalleerde toepassingen weer geven
+## <a name="view-or-remove-installed-applications"></a>Geïnstalleerde toepassingen weergeven of verwijderen
+### <a name="list-installed-applications"></a>Geïnstalleerde toepassingen weergeven
 `wmic product get Name,InstallDate | sort /r | more`
 
-De `sort /r` wordt aflopend gesorteerd op installatie datum zodat u gemakkelijk kunt zien wat onlangs is geïnstalleerd. Gebruik `<spacebar>` om door te gaan naar de volgende pagina van de uitvoer of `<enter>` om één regel te vervroegen.
+De `sort /r` soorten aflopend op installatiedatum om het gemakkelijk te maken om te zien wat onlangs werd geïnstalleerd. Met `<spacebar>` gebruiken om door te gaan `<enter>` naar de volgende pagina met uitvoer, of om een regel vooruit te gaan.
 ### <a name="uninstall-an-application"></a>Een toepassing verwijderen
 `wmic path win32_product where name="<name>" call uninstall`
 
-Vervang `<name>` door de naam die u in de bovenstaande opdracht hebt geretourneerd voor de toepassing die u wilt verwijderen.
+Vervang `<name>` de naam die in de bovenstaande opdracht wordt geretourneerd voor de toepassing die u wilt verwijderen.
 
-## <a name="file-system-management"></a>Bestandssysteem beheer
-### <a name="get-file-version"></a>Bestands versie ophalen
+## <a name="file-system-management"></a>Bestandssysteembeheer
+### <a name="get-file-version"></a>Bestandsversie downloaden
 `wmic datafile where "drive='C:' and path='\\windows\\system32\\drivers\\' and filename like 'netvsc%'" get version /format:list`
 
-In dit voor beeld wordt de bestands versie van het virtuele NIC-stuur programma (netvsc. sys, netvsc63. sys of netvsc60. sys) als resultaat gegeven, afhankelijk van de Windows-versie.
-### <a name="scan-for-system-file-corruption"></a>Controleren op beschadiging van het systeem bestand
+In dit voorbeeld wordt de bestandsversie van het virtuele NIC-stuurprogramma geretourneerd, dat is netvsc.sys, netvsc63.sys of netvsc60.sys, afhankelijk van de Windows-versie.
+### <a name="scan-for-system-file-corruption"></a>Scannen op beschadiging van systeembestanden
 `sfc /scannow`
 
-Zie ook [een Windows-installatie kopie herstellen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
-### <a name="scan-for-system-file-corruption"></a>Controleren op beschadiging van het systeem bestand
+Zie ook [Een Windows-afbeelding herstellen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
+### <a name="scan-for-system-file-corruption"></a>Scannen op beschadiging van systeembestanden
 `dism /online /cleanup-image /scanhealth`
 
-Zie ook [een Windows-installatie kopie herstellen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
-### <a name="export-file-permissions-to-text-file"></a>Bestands machtigingen exporteren naar tekst bestand
+Zie ook [Een Windows-afbeelding herstellen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
+### <a name="export-file-permissions-to-text-file"></a>Bestandsmachtigingen exporteren naar tekstbestand
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
-### <a name="save-file-permissions-to-acl-file"></a>Bestands machtigingen voor ACL-bestand opslaan
+### <a name="save-file-permissions-to-acl-file"></a>Bestandsmachtigingen opslaan in ACL-bestand
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /save %temp%\MachineKeys_permissions_before.aclfile /t`
-### <a name="restore-file-permissions-from-acl-file"></a>Bestands machtigingen herstellen vanuit het ACL-bestand
+### <a name="restore-file-permissions-from-acl-file"></a>Bestandsmachtigingen uit ACL-bestand herstellen
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
-Het pad bij het gebruik van `/restore` moet de bovenliggende map zijn van de map die u hebt opgegeven bij het gebruik van `/save`. In dit voor beeld is `\RSA` het bovenliggende item van de `\MachineKeys` map die is opgegeven in het bovenstaande voor beeld `/save`.
-### <a name="take-ntfs-ownership-of-a-folder"></a>NTFS-eigendom van een map maken
+Het pad `/restore` bij gebruik moet de bovenliggende map `/save`zijn van de map die u hebt opgegeven bij het gebruik van . In dit `\RSA` voorbeeld is de `\MachineKeys` bovenliggende `/save` map die is opgegeven in het bovenstaande voorbeeld.
+### <a name="take-ntfs-ownership-of-a-folder"></a>NTFS-eigendom nemen van een map
 `takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
-### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>NTFS-machtigingen voor een recursief toekennen aan een map
+### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>NTFS-machtigingen opnieuw toekennen aan een map
 `icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"`
 ## <a name="manage-devices"></a>Apparaten beheren
-### <a name="remove-non-present-pnp-devices"></a>Niet-bestaande PNP-apparaten verwijderen
+### <a name="remove-non-present-pnp-devices"></a>Niet-aanwezig PNP-apparaten verwijderen
 `%windir%\System32\RUNDLL32.exe %windir%\System32\pnpclean.dll,RunDLL_PnpClean /Devices /Maxclean`
-## <a name="manage-group-policy"></a>groepsbeleid beheren
-### <a name="force-group-policy-update"></a>Update van groeps beleid afdwingen
+## <a name="manage-group-policy"></a>Groepsbeleid beheren
+### <a name="force-group-policy-update"></a>Groepsbeleidsupdate forceren
 `gpupdate /force /wait:-1`
 ## <a name="miscellaneous-tasks"></a>Diverse taken
-### <a name="show-os-version"></a>Versie van besturings systeem weer geven
+### <a name="show-os-version"></a>OS-versie weergeven
 `ver`
 
 of
@@ -219,15 +219,15 @@ of
 `systeminfo  find /i "os name"`
 
 `systeminfo | findstr /i /r "os.*version.*build"`
-### <a name="view-os-install-date"></a>Installatie datum van besturings systeem weer geven
+### <a name="view-os-install-date"></a>Installatiedatum besturingssysteem weergeven
 `systeminfo | find /i "original"`
 
 of
 
 `wmic os get installdate`
-### <a name="view-last-boot-time"></a>Laatste opstart tijd weer geven
+### <a name="view-last-boot-time"></a>Laatste opstarttijd weergeven
 `systeminfo | find /i "system boot time"`
-### <a name="view-time-zone"></a>Tijd zone weer geven
+### <a name="view-time-zone"></a>Tijdzone bekijken
 `systeminfo | find /i "time zone"`
 
 of
@@ -236,71 +236,71 @@ of
 ### <a name="restart-windows"></a>Windows opnieuw starten
 `shutdown /r /t 0`
 
-Wanneer u `/f` toevoegt, worden actieve toepassingen geforceerd gesloten zonder dat gebruikers worden gewaarschuwd.
-### <a name="detect-safe-mode-boot"></a>Opstarten in veilige modus detecteren
+Het `/f` toevoegen dwingt het uitvoeren van toepassingen om te sluiten zonder gebruikers te waarschuwen.
+### <a name="detect-safe-mode-boot"></a>Boot veilige modus detecteren
 `bcdedit /enum | find /i "safeboot"`
 
-## <a name="windows-commands---powershell"></a>Windows-opdrachten-Power shell
+## <a name="windows-commands---powershell"></a>Windows-opdrachten - PowerShell
 
-Als u Power shell wilt uitvoeren in SAC, typt u na het bereiken van een opdracht prompt:
+Als u PowerShell in SAC wilt uitvoeren, typt u het type:
 
 `powershell <enter>`
 
 > [!CAUTION]
-> Verwijder de PSReadLine-module uit de Power shell-sessie voordat u andere Power shell-opdrachten uitvoert. Er is een bekend probleem waarbij extra tekens kunnen worden geïntroduceerd in tekst die vanuit het klem bord wordt geplakt als PSReadLine wordt uitgevoerd in een Power shell-sessie in SAC.
+> Verwijder de PSReadLine-module uit de PowerShell-sessie voordat u andere PowerShell-opdrachten uitvoert. Er is een bekend probleem waarbij extra tekens kunnen worden geïntroduceerd in tekst die van het klembord wordt geplakt als PSReadLine wordt uitgevoerd in een PowerShell-sessie in SAC.
 
-Controleer eerst of PSReadLine is geladen. Het wordt standaard geladen op Windows Server 2016, Windows 10 en latere versies van Windows. Als deze hand matig is geïnstalleerd, is deze alleen aanwezig op eerdere Windows-versies.
+Controleer eerst of PSReadLine is geladen. Het wordt standaard geladen op Windows Server 2016, Windows 10 en latere versies van Windows. Het zou alleen aanwezig zijn op eerdere Windows-versies als het handmatig was geïnstalleerd.
 
-Als deze opdracht wordt geretourneerd naar een prompt zonder uitvoer, is de module niet geladen en kunt u de Power shell-sessie in SAC als normaal blijven gebruiken.
+Als deze opdracht terugkeert naar een prompt zonder uitvoer, is de module niet geladen en u de PowerShell-sessie in SAC gewoon blijven gebruiken.
 
 `get-module psreadline`
 
-Als de bovenstaande opdracht de versie van de PSReadLine-module retourneert, voert u de volgende opdracht uit om het bestand te verwijderen. Met deze opdracht wordt de module niet verwijderd of verwijderd, wordt deze alleen uit de huidige Power shell-sessie verwijderd.
+Als de bovenstaande opdracht de PSReadLine-moduleversie retourneert, voert u de volgende opdracht uit om deze te ontladen. Met deze opdracht wordt de module niet verwijderd of verwijderd, deze wordt alleen uit de huidige PowerShell-sessie verwijderd.
 
 `remove-module psreadline`
 
-## <a name="view-and-edit-windows-registry-settings"></a>Windows-register instellingen weer geven en bewerken
+## <a name="view-and-edit-windows-registry-settings"></a>Windows-registerinstellingen weergeven en bewerken
 ### <a name="verify-rdp-is-enabled"></a>Controleren of RDP is ingeschakeld
 `get-itemproperty -path 'hklm:\system\curRentcontrolset\control\terminal server' -name 'fdenytsconNections'`
 
 `get-itemproperty -path 'hklm:\software\policies\microsoft\windows nt\terminal services' -name 'fdenytsconNections'`
 
-De tweede sleutel (onder \Policies) bevindt zich alleen als de relevante groeps beleids instelling is geconfigureerd.
+De tweede sleutel (onder \Beleid) bestaat alleen als de relevante groepsbeleidsinstelling is geconfigureerd.
 ### <a name="enable-rdp"></a>RDP inschakelen
 `set-itemproperty -path 'hklm:\system\curRentcontrolset\control\terminal server' -name 'fdenytsconNections' 0 -type dword`
 
 `set-itemproperty -path 'hklm:\software\policies\microsoft\windows nt\terminal services' -name 'fdenytsconNections' 0 -type dword`
 
-De tweede sleutel (onder \Policies) zou alleen nodig zijn als de relevante groeps beleids instelling is geconfigureerd. De waarde wordt bij volgende vernieuwing van groeps beleid herschreven als deze is geconfigureerd in groeps beleid.
-## <a name="manage-windows-services"></a>Windows-Services beheren
-### <a name="view-service-details"></a>Details van service weer geven
+De tweede sleutel (onder \Beleid) zou alleen nodig zijn als de relevante groepsbeleidsinstelling was geconfigureerd. Waarde wordt herschreven bij de volgende vernieuwing van het groepsbeleid als deze is geconfigureerd in groepsbeleid.
+## <a name="manage-windows-services"></a>Windows Services beheren
+### <a name="view-service-details"></a>Servicegegevens weergeven
 `get-wmiobject win32_service -filter "name='termservice'" |  format-list Name,DisplayName,State,StartMode,StartName,PathName,ServiceType,Status,ExitCode,ServiceSpecificExitCode,ProcessId`
 
-`Get-Service` kan worden gebruikt, maar bevat niet het account voor aanmelding bij de service. `Get-WmiObject win32-service` doet.
-### <a name="set-service-logon-account"></a>Aanmeldings account voor service instellen
+`Get-Service`kan worden gebruikt, maar bevat niet het service-aanmeldingsaccount. `Get-WmiObject win32-service`Doet.
+### <a name="set-service-logon-account"></a>Aanmeldingsaccount voor service instellen
 `(get-wmiobject win32_service -filter "name='termservice'").Change($null,$null,$null,$null,$null,$false,'NT Authority\NetworkService')`
 
-Wanneer u een ander service account dan `NT AUTHORITY\LocalService`, `NT AUTHORITY\NetworkService`of `LocalSystem`gebruikt, geeft u het wacht woord van het account op als laatste (achtste) argument na de account naam.
-### <a name="set-service-startup-type"></a>Opstart type van service instellen
+Wanneer u een ander `NT AUTHORITY\LocalService` `NT AUTHORITY\NetworkService`serviceaccount `LocalSystem`gebruikt dan , of het accountwachtwoord opgeeft als het laatste (achtste) argument na de accountnaam.
+### <a name="set-service-startup-type"></a>Opstarttype service instellen
 `set-service termservice -startuptype Manual`
 
-`Set-service` accepteert `Automatic`, `Manual`of `Disabled` voor het opstart type.
-### <a name="set-service-dependencies"></a>Service afhankelijkheden instellen
+`Set-service`accepteert, `Automatic` `Manual`of `Disabled` voor opstarttype.
+### <a name="set-service-dependencies"></a>Serviceafhankelijkheden instellen
 `Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\TermService' -Name DependOnService -Value @('RPCSS','TermDD')`
 ### <a name="start-service"></a>Service starten
 `start-service termservice`
 ### <a name="stop-service"></a>Service stoppen
 `stop-service termservice`
-## <a name="manage-networking-features"></a>Netwerk functies beheren
-### <a name="show-nic-properties"></a>NIC-eigenschappen weer geven
+## <a name="manage-networking-features"></a>Netwerkfuncties beheren
+### <a name="show-nic-properties"></a>NIC-eigenschappen weergeven
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
 of
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
-`Get-NetAdapter` is beschikbaar in 2012 +, voor 2008R2 gebruiken `Get-WmiObject`.
-### <a name="show-ip-properties"></a>IP-eigenschappen weer geven
+`Get-NetAdapter`is beschikbaar in 2012+, voor 2008R2 gebruik `Get-WmiObject`.
+### <a name="show-ip-properties"></a>IP-eigenschappen weergeven
 `get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'" |  format-list DNSHostName,IPAddress,DHCPEnabled,IPSubnet,DefaultIPGateway,MACAddress,DHCPServer,DNSServerSearchOrder`
 ### <a name="enable-nic"></a>NIC inschakelen
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | enable-netadapter`
@@ -309,175 +309,175 @@ of
 
 `(get-wmiobject win32_networkadapter -filter "servicename='netvsc'").enable()`
 
-`Get-NetAdapter` is beschikbaar in 2012 +, voor 2008R2 gebruiken `Get-WmiObject`.
-### <a name="set-nic-to-use-dhcp"></a>NIC instellen voor gebruik van DHCP
+`Get-NetAdapter`is beschikbaar in 2012+, voor 2008R2 gebruik `Get-WmiObject`.
+### <a name="set-nic-to-use-dhcp"></a>NIC instellen om DHCP te gebruiken
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} | Set-NetIPInterface -DHCP Enabled`
 
 `(get-wmiobject Win32_NetworkAdapterConfiguration -filter "ServiceName='netvsc'").EnableDHCP()`
 
-`Get-NetAdapter` is beschikbaar op 2012 +. Gebruik `Get-WmiObject`voor 2008R2. Virtuele Azure-machines moeten altijd in het gast besturingssysteem worden geconfigureerd om DHCP te gebruiken voor het verkrijgen van een IP-adres. De statische IP-instelling van Azure maakt nog steeds gebruik van DHCP om het IP-adres aan de virtuele machine toe te wijzen.
+`Get-NetAdapter`is beschikbaar op 2012+. Voor 2008R2 `Get-WmiObject`gebruik . Azure VM's moeten altijd in het gastbesturingssysteem zijn geconfigureerd om DHCP te gebruiken om een IP-adres te verkrijgen. De statische IP-instelling azure maakt nog steeds gebruik van DHCP om het IP aan de VM te geven.
 ### <a name="ping"></a>Ping
 `test-netconnection`
 
 > [!NOTE]
-> De cmdlet write-Progress werkt mogelijk niet met deze opdracht. Als oplossing kunt u `$ProgressPreference = "SilentlyContinue"` uitvoeren in Power shell om de voortgangs balk uit te scha kelen.
+> De cmdlet Schrijfvoortgang werkt mogelijk niet met deze opdracht. Als beperking u `$ProgressPreference = "SilentlyContinue"` in PowerShell worden uitgevoerd om de voortgangsbalk uit te schakelen.
 
 of
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
 
-`Test-Netconnection` zonder para meters wordt geprobeerd `internetbeacon.msedge.net`pingen. Deze is beschikbaar op 2012 +. Voor 2008R2 gebruikt u `Get-WmiObject` zoals in het tweede voor beeld.
-### <a name="port-ping"></a>Poort ping
+`Test-Netconnection`zonder enige parameters zal `internetbeacon.msedge.net`proberen te pingen . Het is beschikbaar op 2012+. Voor 2008R2 `Get-WmiObject` gebruik zoals in het tweede voorbeeld.
+### <a name="port-ping"></a>Poortping
 `test-netconnection -ComputerName bing.com -Port 80`
 
 of
 
 `(new-object Net.Sockets.TcpClient).BeginConnect('bing.com','80',$null,$null).AsyncWaitHandle.WaitOne(300)`
 
-`Test-NetConnection` is beschikbaar op 2012 +. Voor 2008R2 gebruiken `Net.Sockets.TcpClient`
-### <a name="test-dns-name-resolution"></a>DNS-naam omzetting testen
+`Test-NetConnection`is beschikbaar op 2012+. Voor 2008R2 gebruik`Net.Sockets.TcpClient`
+### <a name="test-dns-name-resolution"></a>DNS-naamomzetting testen
 `resolve-dnsname bing.com`
 
 of
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
-`Resolve-DnsName` is beschikbaar op 2012 +. Gebruik `System.Net.DNS`voor 2008R2.
-### <a name="show-windows-firewall-rule-by-name"></a>Windows Firewall-regel op naam weer geven
+`Resolve-DnsName`is beschikbaar op 2012+. Voor 2008R2 `System.Net.DNS`gebruik .
+### <a name="show-windows-firewall-rule-by-name"></a>Windows-firewallregel op naam weergeven
 `get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP`
-### <a name="show-windows-firewall-rule-by-port"></a>Windows Firewall-regel per poort weer geven
+### <a name="show-windows-firewall-rule-by-port"></a>Windows-firewallregel per poort weergeven
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
 of
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
-`Get-NetFirewallPortFilter` is beschikbaar op 2012 +. Gebruik het `hnetcfg.fwpolicy2` COM-object voor 2008R2.
-### <a name="disable-windows-firewall"></a>Windows Firewall uitschakelen
+`Get-NetFirewallPortFilter`is beschikbaar op 2012+. Voor 2008R2 `hnetcfg.fwpolicy2` gebruik maken van de COM object.
+### <a name="disable-windows-firewall"></a>Windows-firewall uitschakelen
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
-`Set-NetFirewallProfile` is beschikbaar op 2012 +. Voor 2008R2 gebruikt u `netsh advfirewall` als waarnaar wordt verwezen in de sectie CMD hierboven.
+`Set-NetFirewallProfile`is beschikbaar op 2012+. Voor 2008R2 `netsh advfirewall` gebruik zoals vermeld in de CMD sectie hierboven.
 ## <a name="manage-users-and-groups"></a>Gebruikers en groepen beheren
-### <a name="create-local-user-account"></a>Lokaal gebruikers account maken
+### <a name="create-local-user-account"></a>Lokaal gebruikersaccount maken
 `new-localuser <name>`
-### <a name="verify-user-account-is-enabled"></a>Controleren of gebruikers account is ingeschakeld
+### <a name="verify-user-account-is-enabled"></a>Controleren of het gebruikersaccount is ingeschakeld
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
 of
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
-`Get-LocalUser` is beschikbaar op 2012 +. Gebruik `Get-WmiObject`voor 2008R2. Dit voor beeld toont het ingebouwde lokale beheerders account, dat altijd SID-`S-1-5-21-*-500`heeft. Voor Azure-Vm's die zijn gemaakt op basis van een gegeneraliseerde installatie kopie, wordt de naam van het lokale beheerders account gewijzigd in de naam die tijdens het inrichten van de virtuele machine Het wordt dus doorgaans niet `Administrator`.
+`Get-LocalUser`is beschikbaar op 2012+. Voor 2008R2 `Get-WmiObject`gebruik . In dit voorbeeld wordt het ingebouwde lokale `S-1-5-21-*-500`beheerdersaccount weergegeven, dat altijd SID heeft. Azure VM's die zijn gemaakt op grond van algemene afbeelding, hebben het lokale beheerdersaccount een nieuwe naam op de naam die is opgegeven tijdens de vm-inrichting. Dus het zal `Administrator`meestal niet .
 ### <a name="add-local-user-to-local-group"></a>Lokale gebruiker toevoegen aan lokale groep
 `add-localgroupmember -group Administrators -member <username>`
-### <a name="enable-local-user-account"></a>Lokale gebruikers account inschakelen
+### <a name="enable-local-user-account"></a>Lokaal gebruikersaccount inschakelen
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser`
 
-In dit voor beeld wordt het ingebouwde lokale beheerders account ingeschakeld, dat altijd SID-`S-1-5-21-*-500`heeft. Voor Azure-Vm's die zijn gemaakt op basis van een gegeneraliseerde installatie kopie, wordt de naam van het lokale beheerders account gewijzigd in de naam die tijdens het inrichten van de virtuele machine Het wordt dus doorgaans niet `Administrator`.
-### <a name="view-user-account-properties"></a>Eigenschappen van gebruikers accounts weer geven
+In dit voorbeeld wordt het ingebouwde lokale `S-1-5-21-*-500`beheerdersaccount mogelijk, dat altijd SID heeft. Azure VM's die zijn gemaakt op grond van algemene afbeelding, hebben het lokale beheerdersaccount een nieuwe naam op de naam die is opgegeven tijdens de vm-inrichting. Dus het zal `Administrator`meestal niet .
+### <a name="view-user-account-properties"></a>Eigenschappen van gebruikersaccounts weergeven
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
 of
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
-`Get-LocalUser` is beschikbaar op 2012 +. Gebruik `Get-WmiObject`voor 2008R2. Dit voor beeld toont het ingebouwde lokale beheerders account, dat altijd SID-`S-1-5-21-*-500`heeft.
-### <a name="view-local-groups"></a>Lokale groepen weer geven
+`Get-LocalUser`is beschikbaar op 2012+. Voor 2008R2 `Get-WmiObject`gebruik . In dit voorbeeld wordt het ingebouwde lokale `S-1-5-21-*-500`beheerdersaccount weergegeven, dat altijd SID heeft.
+### <a name="view-local-groups"></a>Lokale groepen bekijken
 `(get-localgroup).name | sort` `(get-wmiobject win32_group).Name | sort`
 
-`Get-LocalUser` is beschikbaar op 2012 +. Gebruik `Get-WmiObject`voor 2008R2.
-## <a name="manage-the-windows-event-log"></a>Het Windows-gebeurtenis logboek beheren
-### <a name="query-event-log-errors"></a>Query gebeurtenis logboek fouten
+`Get-LocalUser`is beschikbaar op 2012+. Voor 2008R2 `Get-WmiObject`gebruik .
+## <a name="manage-the-windows-event-log"></a>Het Windows-gebeurtenislogboek beheren
+### <a name="query-event-log-errors"></a>Fouten in querygebeurtenislogboeken
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Level=2]]" | more`
 
-Wijzig `/c:10` in het gewenste aantal gebeurtenissen dat moet worden geretourneerd of verplaats het om alle gebeurtenissen te retour neren die overeenkomen met het filter.
-### <a name="query-event-log-by-event-id"></a>Query gebeurtenis logboek op gebeurtenis-ID
+Wijzig `/c:10` in het gewenste aantal gebeurtenissen om terug te keren of verplaats deze om alle gebeurtenissen die overeenkomen met het filter te retourneren.
+### <a name="query-event-log-by-event-id"></a>Querygebeurtenislogboek op gebeurtenis-id
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[EventID=11]]" | more`
-### <a name="query-event-log-by-event-id-and-provider"></a>Query gebeurtenis logboek op gebeurtenis-ID en provider
+### <a name="query-event-log-by-event-id-and-provider"></a>Querygebeurtenislogboek op gebeurtenis-id en provider
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Hyper-V-Netvsc'] and EventID=11]]" | more`
-### <a name="query-event-log-by-event-id-and-provider-for-the-last-24-hours"></a>Query gebeurtenis logboek op gebeurtenis-ID en provider voor de afgelopen 24 uur
+### <a name="query-event-log-by-event-id-and-provider-for-the-last-24-hours"></a>Querygebeurtenislogboek door gebeurtenis-id en provider voor de afgelopen 24 uur
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Hyper-V-Netvsc'] and EventID=11 and TimeCreated[timediff(@SystemTime) <= 86400000]]]"`
 
-Gebruik `604800000` om 7 dagen terug te kijken in plaats van 24 uur. |
-### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Query gebeurtenis logboek op gebeurtenis-ID, provider en Event data in de afgelopen 7 dagen
+Gebruik `604800000` om terug te kijken 7 dagen in plaats van 24 uur. |
+### <a name="query-event-log-by-event-id-provider-and-eventdata-in-the-last-7-days"></a>Querygebeurtenislogboek door Gebeurtenis-ID, Provider en EventData in de afgelopen 7 dagen
 `get-winevent -logname system -maxevents 1 -filterxpath "*[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4624 and TimeCreated[timediff(@SystemTime) <= 604800000]] and EventData[Data[@Name='TargetUserName']='<username>']]" | more`
-## <a name="view-or-remove-installed-applications"></a>Geïnstalleerde toepassingen weer geven of verwijderen
-### <a name="list-installed-software"></a>Geïnstalleerde software weer geven
+## <a name="view-or-remove-installed-applications"></a>Geïnstalleerde toepassingen weergeven of verwijderen
+### <a name="list-installed-software"></a>Geïnstalleerde software weergeven
 `get-wmiobject win32_product | select installdate,name | sort installdate -descending | more`
 ### <a name="uninstall-software"></a>Software verwijderen
 `(get-wmiobject win32_product -filter "Name='<name>'").Uninstall()`
-## <a name="file-system-management"></a>Bestandssysteem beheer
-### <a name="get-file-version"></a>Bestands versie ophalen
+## <a name="file-system-management"></a>Bestandssysteembeheer
+### <a name="get-file-version"></a>Bestandsversie downloaden
 `(get-childitem $env:windir\system32\drivers\netvsc*.sys).VersionInfo.FileVersion`
 
-In dit voor beeld wordt de bestands versie van het stuur programma van de virtuele NIC met de naam netvsc. sys, netvsc63. sys of netvsc60. sys als resultaat gegeven, afhankelijk van de Windows-versie.
-### <a name="download-and-extract-file"></a>Bestand downloaden en uitpakken
+In dit voorbeeld wordt de bestandsversie van het virtuele NIC-stuurprogramma geretourneerd, dat netvsc.sys, netvsc63.sys of netvsc60.sys heeft, afhankelijk van de Windows-versie.
+### <a name="download-and-extract-file"></a>Bestand downloaden en extraheren
 `$path='c:\bin';md $path;cd $path;(new-object net.webclient).downloadfile( ('htTp:/'+'/download.sysinternals.com/files/SysinternalsSuite.zip'),"$path\SysinternalsSuite.zip");(new-object -com shelL.apPlication).namespace($path).CopyHere( (new-object -com shelL.apPlication).namespace("$path\SysinternalsSuite.zip").Items(),16)`
 
-In dit voor beeld wordt een `c:\bin` map gemaakt. vervolgens wordt de Sysinternals-Suite met hulpprogram ma's gedownload en geëxtraheerd in `c:\bin`.
+In dit `c:\bin` voorbeeld wordt een map maakt en vervolgens de `c:\bin`Sysinternals-suite met hulpprogramma's gedownload en geëxtraheerd naar .
 ## <a name="miscellaneous-tasks"></a>Diverse taken
-### <a name="show-os-version"></a>Versie van besturings systeem weer geven
+### <a name="show-os-version"></a>OS-versie weergeven
 `get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
-### <a name="view-os-install-date"></a>Installatie datum van besturings systeem weer geven
+### <a name="view-os-install-date"></a>Installatiedatum besturingssysteem weergeven
 `(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).installdate)`
-### <a name="view-last-boot-time"></a>Laatste opstart tijd weer geven
+### <a name="view-last-boot-time"></a>Laatste opstarttijd weergeven
 `(get-wmiobject win32_operatingsystem).lastbootuptime`
-### <a name="view-windows-uptime"></a>Uptime van Windows weer geven
+### <a name="view-windows-uptime"></a>Windows-uptime weergeven
 `"{0:dd}:{0:hh}:{0:mm}:{0:ss}.{0:ff}" -f ((get-date)-(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).lastbootuptime))`
 
-Retourneert de actieve tijds duur als `<days>:<hours>:<minutes>:<seconds>:<milliseconds>`, bijvoorbeeld `49:16:48:00.00`.
+Retourneert `<days>:<hours>:<minutes>:<seconds>:<milliseconds>`uptime `49:16:48:00.00`als, bijvoorbeeld .
 ### <a name="restart-windows"></a>Windows opnieuw starten
 `restart-computer`
 
-Wanneer u `-force` toevoegt, worden actieve toepassingen geforceerd gesloten zonder dat gebruikers worden gewaarschuwd.
-## <a name="instance-metadata"></a>Meta gegevens van instantie
+Het `-force` toevoegen dwingt het uitvoeren van toepassingen om te sluiten zonder gebruikers te waarschuwen.
+## <a name="instance-metadata"></a>Metagegevens van instantie
 
-U kunt de meta gegevens van Azure-exemplaren vanuit uw Azure-VM opvragen om de details te bekijken, zoals osType, location, vmSize, vmId, name, resourceGroupName, subscriptionId, privateIpAddress en publicIpAddress.
+U Azure-instantiemetagegevens vanuit uw Azure VM opvragen om details zoals osType, Locatie, vmSize, vmId, naam, resourceGroupName, subscriptionId, privateIpAddress en publicIpAddress weer te geven.
 
-Voor het opvragen van meta gegevens van exemplaren is een goede gast netwerk verbinding vereist, omdat het een REST-aanroep doet via de Azure-host naar de meta gegevens service van het exemplaar. Dus als u wel de meta gegevens van het exemplaar kunt opvragen, geeft u aan dat de gast via het netwerk kan communiceren met een door Azure gehoste service.
+Voor het opvragen van metagegevens van instanties is een gezonde gastnetwerkverbinding vereist, omdat er een REST-gesprek wordt gemaakt via de Azure-host naar de metagegevensservice van de instantie. Dus als u metagegevens van bijvoorbeeld opvragen, geeft dat aan dat de gast via het netwerk kan communiceren met een door Azure gehoste service.
 
-Zie [Azure instance meta data service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)(Engelstalig) voor meer informatie.
+Zie [Azure Instance Metadata-service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)voor meer informatie.
 
-### <a name="instance-metadata"></a>Meta gegevens van instantie
+### <a name="instance-metadata"></a>Metagegevens van instantie
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`
 
 `$im | convertto-json`
-### <a name="os-type-instance-metadata"></a>Type besturings systeem (meta gegevens van exemplaar)
+### <a name="os-type-instance-metadata"></a>BE-type (instantiemetagegevens)
 `$im.Compute.osType`
-### <a name="location-instance-metadata"></a>Locatie (meta gegevens van exemplaar)
+### <a name="location-instance-metadata"></a>Locatie (metagegevens van instantie)
 `$im.Compute.Location`
-### <a name="size-instance-metadata"></a>Grootte (meta gegevens van exemplaar)
+### <a name="size-instance-metadata"></a>Grootte (instantiemetagegevens)
 `$im.Compute.vmSize`
-### <a name="vm-id-instance-metadata"></a>VM-ID (meta gegevens van exemplaar)
+### <a name="vm-id-instance-metadata"></a>VM-id (metagegevens van instantie)
 `$im.Compute.vmId`
-### <a name="vm-name-instance-metadata"></a>VM-naam (meta gegevens van exemplaar)
+### <a name="vm-name-instance-metadata"></a>VM-naam (metagegevens van instantie)
 `$im.Compute.name`
-### <a name="resource-group-name-instance-metadata"></a>Naam van de resource groep (meta gegevens van het exemplaar)
+### <a name="resource-group-name-instance-metadata"></a>Naam van resourcegroep (metagegevens van instantie)
 `$im.Compute.resourceGroupName`
-### <a name="subscription-id-instance-metadata"></a>Abonnements-ID (meta gegevens van exemplaar)
+### <a name="subscription-id-instance-metadata"></a>Abonnements-id (metagegevens van instantie)
 `$im.Compute.subscriptionId`
-### <a name="tags-instance-metadata"></a>Tags (meta gegevens van exemplaar)
+### <a name="tags-instance-metadata"></a>Tags (metagegevens van instantie)
 `$im.Compute.tags`
-### <a name="placement-group-id-instance-metadata"></a>Plaatsings groep-ID (meta gegevens van exemplaar)
+### <a name="placement-group-id-instance-metadata"></a>Groep-id voor plaatsing (metagegevens van instantie)
 `$im.Compute.placementGroupId`
-### <a name="platform-fault-domain-instance-metadata"></a>Platform fout domein (meta gegevens van exemplaar)
+### <a name="platform-fault-domain-instance-metadata"></a>Domein van platformfout (metagegevens van instance)
 `$im.Compute.platformFaultDomain`
-### <a name="platform-update-domain-instance-metadata"></a>Platform update domein (meta gegevens van exemplaar)
+### <a name="platform-update-domain-instance-metadata"></a>Domein platformupdate (metagegevens van instance)
 `$im.Compute.platformUpdateDomain`
-### <a name="ipv4-private-ip-address-instance-metadata"></a>Privé IP-adres van IPv4 (meta gegevens van exemplaar)
+### <a name="ipv4-private-ip-address-instance-metadata"></a>IPv4-privé-IP-adres (metagegevens van instance)
 `$im.network.interface.ipv4.ipAddress.privateIpAddress`
-### <a name="ipv4-public-ip-address-instance-metadata"></a>Openbaar IP-adres van IPv4 (meta gegevens van exemplaar)
+### <a name="ipv4-public-ip-address-instance-metadata"></a>IPv4-openbaar IP-adres (metagegevens van instanties)
 `$im.network.interface.ipv4.ipAddress.publicIpAddress`
-### <a name="ipv4-subnet-address--prefix-instance-metadata"></a>IPv4-subnet adres/voor voegsel (meta gegevens van exemplaar)
+### <a name="ipv4-subnet-address--prefix-instance-metadata"></a>IPv4-subnetadres / voorvoegsel (metagegevens van instance)
 `$im.network.interface.ipv4.subnet.address`
 
 `$im.network.interface.ipv4.subnet.prefix`
-### <a name="ipv6-ip-address-instance-metadata"></a>IP-adres van IPv6 (meta gegevens van exemplaar)
+### <a name="ipv6-ip-address-instance-metadata"></a>IPv6-IP-adres (metagegevens van instantie)
 `$im.network.interface.ipv6.ipAddress`
-### <a name="mac-address-instance-metadata"></a>MAC-adres (meta gegevens van exemplaar)
+### <a name="mac-address-instance-metadata"></a>MAC-adres (metagegevens van instantie)
 `$im.network.interface.macAddress`
 
 ## <a name="next-steps"></a>Volgende stappen
-* De Windows-documentatie pagina van de hoofd console bevindt zich [hier](serial-console-windows.md).
-* De seriële console is ook beschikbaar voor [Linux](serial-console-linux.md) -vm's.
-* Meer informatie over [Diagnostische gegevens over opstarten](boot-diagnostics.md).
+* De belangrijkste seriële console Windows documentatie pagina is [hier](serial-console-windows.md)te vinden .
+* De seriële console is ook beschikbaar voor [Linux](serial-console-linux.md) VM's.
+* Meer informatie over [opstartdiagnostiek](boot-diagnostics.md).

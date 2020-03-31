@@ -1,6 +1,6 @@
 ---
-title: Problemen met VM-en omgevings fouten Azure DevTest Labs
-description: Meer informatie over het oplossen van problemen met de virtuele machine (VM) en het maken van een omgeving in Azure DevTest Labs.
+title: Problemen met VM- en omgevingsfouten Azure DevTest Labs oplossen
+description: Meer informatie over het oplossen van fouten in virtuele machines (VM) en het maken van omgevingen in Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,39 +13,39 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 155a359608cf6d846578306545f5ce0b4003949c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76166347"
 ---
-# <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Problemen met de virtuele machine (VM) en het maken van een omgeving oplossen in Azure DevTest Labs
-DevTest Labs geeft u waarschuwingen als een computer naam ongeldig is of als u een test beleid schendt. Soms ziet u een rood `X` naast de VM of omgevings status van uw Lab, waarmee u wordt geïnformeerd dat er iets verkeerd is gegaan.  In dit artikel vindt u enkele trucs die u kunt gebruiken om het onderliggende probleem te vinden en om het probleem in de toekomst te voor komen.
+# <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Vm- en fouten bij het maken van omgevingen oplossen in Azure DevTest Labs
+DevTest Labs geeft u waarschuwingen als een machinenaam ongeldig is of als u op het punt staat een labbeleid te schenden. Soms ziet u `X` rood naast uw lab-VM- of omgevingstatus die u informeert dat er iets mis is gegaan.  Dit artikel biedt een paar trucs die u gebruiken om het onderliggende probleem te vinden en, hopelijk, het probleem in de toekomst te voorkomen.
 
-## <a name="portal-notifications"></a>Portal meldingen
-Als u de Azure Portal gebruikt, is de eerste plaats om te kijken naar het **deel venster meldingen**.  De meldingen van het deelvenster, beschikbaar op de opdrachtbalk door te klikken op de **belpictogram** , laat u weten of het lab maken van virtuele machine of de omgeving is geslaagd of mislukt.  Als er een fout is opgetreden, wordt het fout bericht weer gegeven dat is gekoppeld aan het maken van een fout. De details bevatten vaak meer informatie om het probleem op te lossen. In het volgende voor beeld is het maken van de virtuele machine mislukt vanwege het uitvoeren van de kern geheugens. In het gedetailleerde bericht wordt uitgelegd hoe u het probleem kunt oplossen en een kern quotum toename aanvragen.
+## <a name="portal-notifications"></a>Portalmeldingen
+Als u de Azure-portal gebruikt, u eerst naar het **deelvenster Meldingen**kijken.  In het deelvenster Meldingen, dat beschikbaar is op de opdrachtbalk door op het **belpictogram**te klikken, wordt u weergegeven of de lab-vm of het maken van de omgeving is geslaagd of niet.  Als er een fout is opgetreden, ziet u het foutbericht dat is gekoppeld aan de creatiefout. De details geven vaak meer informatie om u te helpen het probleem op te lossen. In het volgende voorbeeld is het maken van virtuele machines mislukt omdat de kernen opraken. In het gedetailleerde bericht wordt uitgelegd hoe u het probleem oplossen en een verhoging van het kernquotum aanvragen.
 
-![Azure Portal-melding](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
+![Azure-portalmelding](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 
-### <a name="vm-in-corruption-state"></a>Virtuele machine in beschadigde status
-Als u de status van uw virtuele machine in het Lab als **beschadigd**ziet, is de onderliggende VM mogelijk verwijderd van de pagina met **virtuele machines** waarnaar de gebruiker kan navigeren vanuit de **virtual machines** pagina (niet van de pagina DevTest Labs). Ruim uw Lab op in DevTest Labs door de virtuele machine uit het lab te verwijderen. Maak vervolgens de virtuele machine opnieuw in het lab. 
+### <a name="vm-in-corruption-state"></a>VM in corruptiestaat
+Als u de status van uw vm in het lab als **beschadigd**ziet, is de onderliggende virtuele machine mogelijk verwijderd van de pagina **Virtuele machine** waarnaar de gebruiker kan navigeren vanaf de pagina **Virtuele machines** (niet vanaf de pagina DevTest Labs). Ruim je lab op in DevTest Labs door de VM uit het lab te verwijderen. Maak vervolgens uw VM opnieuw in het lab. 
 
-![VM met beschadigde status](./media/troubleshoot-vm-environment-creation-failures/vm-corrupted-state.png)
+![VM in beschadigde staat](./media/troubleshoot-vm-environment-creation-failures/vm-corrupted-state.png)
 
 
 
 ## <a name="activity-logs"></a>Activiteitenlogboeken
-Bekijk activiteiten Logboeken als u een fout ergens anders onderzoekt nadat u uw VM of omgeving hebt gemaakt. In deze sectie wordt beschreven hoe u Logboeken voor Vm's en omgevingen kunt vinden.
+Bekijk activiteitslogboeken als u een fout onderzoekt ergens na een poging tot het maken van uw VM of omgeving. In deze sectie ziet u hoe u logboeken voor VM's en omgevingen vinden.
 
-## <a name="activity-logs-for-virtual-machines"></a>Activiteiten logboeken voor virtuele machines
+## <a name="activity-logs-for-virtual-machines"></a>Activiteitslogboeken voor virtuele machines
 
-1. Op de start pagina van uw Lab selecteert u de VM om de pagina **virtuele machine** te starten.
-2. Selecteer op de pagina **virtuele machine** , in de sectie **bewaking** van het linkermenu, het **activiteiten logboek** om alle logboeken weer te geven die zijn gekoppeld aan de VM.
-3. Selecteer in de activiteiten logboek items de bewerking die is mislukt. Normaal gesp roken wordt de mislukte bewerking `Write Virtualmachines`genoemd.
-4. Ga in het rechterdeel venster naar het tabblad JSON. U ziet de details in de JSON-weer gave van het logboek.
+1. Selecteer op de startpagina van uw lab de VM om de **pagina Virtuele machine** te starten.
+2. Selecteer op de pagina **Virtuele machine** in de sectie **CONTROLE van** het linkermenu het **logboek Activiteit** om alle logboeken te bekijken die aan de virtuele machine zijn gekoppeld.
+3. Selecteer in de items van het activiteitenlogboek de bewerking die is mislukt. De mislukte bewerking wordt `Write Virtualmachines`meestal genoemd .
+4. Ga in het rechterdeelvenster naar het tabblad JSON. U ziet de details in de JSON-weergave van het logboek.
 
-    ![Activiteiten logboek voor een VM](./media/troubleshoot-vm-environment-creation-failures/vm-activity-log.png)
-5. Bekijk het JSON-logboek totdat u de eigenschap `statusMessage` hebt gevonden. Het biedt u het belangrijkste fout bericht en gedetailleerde informatie, indien van toepassing. De volgende JSON is een voor beeld van de fout overschrijdt die eerder in dit artikel is aangetroffen.
+    ![Activiteitenlogboek voor een vm](./media/troubleshoot-vm-environment-creation-failures/vm-activity-log.png)
+5. Kijk door de JSON log `statusMessage` tot u de woning vindt. Het geeft u de belangrijkste foutmelding en verdere details informatie, indien van toepassing. De volgende JSON is een voorbeeld voor de kern geciteerd overschreden fout eerder in dit artikel.
 
     ```json
     "properties": {
@@ -54,27 +54,27 @@ Bekijk activiteiten Logboeken als u een fout ergens anders onderzoekt nadat u uw
     },
     ```
 
-## <a name="activity-log-for-an-environment"></a>Activiteiten logboek voor een omgeving
+## <a name="activity-log-for-an-environment"></a>Activiteitenlogboek voor een omgeving
 
-Voer de volgende stappen uit om het activiteiten logboek voor het maken van een omgeving te bekijken:
+Voer de volgende stappen uit om het activiteitenlogboek voor het maken van een omgeving te bekijken:
 
-1. Op de start pagina van uw Lab selecteert u **configuratie en beleid** in het menu links.
-2. Selecteer op de pagina **configuratie en beleid** de optie **activiteiten logboeken** in het menu.
-3. Zoek naar de fout in de lijst met activiteiten in het logboek en selecteer deze.
-4. Ga in het rechterdeel venster naar het tabblad JSON en zoek naar het **statusMessage**.
+1. Selecteer op de startpagina van uw lab **Configuratie en beleid** in het linkermenu.
+2. Selecteer **activiteitslogboeken** op de pagina **Configuratie en beleid** in het menu.
+3. Zoek naar de fout in de activiteitenlijst in het logboek en selecteer deze.
+4. Ga in het rechterdeelvenster naar het tabblad JSON en zoek naar de **statusMessage**.
 
-    ![Activiteiten logboek omgeving](./media/troubleshoot-vm-environment-creation-failures/envirionment-activity-log.png)
+    ![Milieuactiviteitslogboek](./media/troubleshoot-vm-environment-creation-failures/envirionment-activity-log.png)
 
-## <a name="resource-manager-template-deployment-logs"></a>Implementatie logboeken van Resource Manager-sjabloon
-Als uw omgeving of virtuele machine is gemaakt via Automation, is er nog een laatste plaats om fout gegevens te bekijken. Dat is het Azure Resource Manager sjabloon implementatie logboek. Wanneer een Lab-resource wordt gemaakt via Automation, wordt deze vaak uitgevoerd via een Azure Resource Manager sjabloon implementatie. Zie[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) voor voor beelden van Azure Resource Manager sjablonen die DevTest Labs-resources maken.
+## <a name="resource-manager-template-deployment-logs"></a>Implementatielogboeken voor resourcebeheer-sjablonen
+Als uw omgeving of virtuele machine is gemaakt door middel van automatisering, is er nog een laatste plek om foutinformatie te zoeken. Dat is het azure resource manager-sjabloonimplementatielogboek. Wanneer een labbron wordt gemaakt door middel van automatisering, wordt dit vaak gedaan via een Azure Resource Manager-sjabloonimplementatie. Zie[https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) voor voorbeeld Azure Resource Manager-sjablonen waarmee DevTest Labs-bronnen zijn gemaakt.
 
-Voer de volgende stappen uit om de implementatie logboeken van de Lab-sjabloon te bekijken:
+Voer de volgende stappen uit om de implementatielogboeken van de labsjabloon te bekijken:
 
-1. Start de pagina voor de resource groep waarin het lab zich bevindt.
-2. Selecteer **implementaties** in het menu links onder **instellingen**.
-3. Zoek naar implementaties met de status mislukt en selecteer deze.
-4. Selecteer op de pagina **implementatie** de koppeling **bewerkings Details** voor de bewerking die is mislukt.
-5. In het venster **bewerkings Details** vindt u meer informatie over de bewerking die is mislukt.
+1. Start de pagina voor de resourcegroep waarin het lab bestaat.
+2. Selecteer **Implementaties** in het linkermenu onder **Instellingen**.
+3. Zoek naar implementaties met een mislukte status en selecteer deze.
+4. Selecteer **op** de pagina Implementatie de koppeling **Bewerkingsdetails** voor de bewerking die is mislukt.
+5. U ziet details over de bewerking die is mislukt in het venster Details van de **Bewerking.**
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [problemen met artefacten oplossen](devtest-lab-troubleshoot-artifact-failure.md)
+Zie [Artefact-fouten oplossen](devtest-lab-troubleshoot-artifact-failure.md)

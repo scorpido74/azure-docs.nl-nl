@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics query's lokaal testen in Visual Studio
-description: In dit artikel wordt beschreven hoe u query's lokaal test met Azure Stream Analytics-Hulpprogram Ma's voor Visual Studio.
+title: Azure Stream Analytics-query's lokaal testen in Visual Studio
+description: In dit artikel wordt beschreven hoe u query's lokaal testen met Azure Stream Analytics Tools voor Visual Studio.
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,72 +8,72 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76834902"
 ---
-# <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Stream Analytics query's lokaal testen met Visual Studio
+# <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Query's van Stream Analytics lokaal testen met Visual Studio
 
-U kunt Azure Stream Analytics-hulpprogram ma's voor Visual Studio gebruiken om uw Stream Analytics-taken lokaal te testen met voorbeeld gegevens of [Live-gegevens](stream-analytics-live-data-local-testing.md). 
+U Azure Stream Analytics-hulpprogramma's voor Visual Studio gebruiken om uw Stream Analytics-taken lokaal te testen met voorbeeldgegevens of [livegegevens.](stream-analytics-live-data-local-testing.md) 
 
-Gebruik deze [Quick](stream-analytics-quick-create-vs.md) start om te leren hoe u met Visual Studio een stream Analytics taak maakt.
+Gebruik deze [Quickstart](stream-analytics-quick-create-vs.md) om te leren hoe u een Stream Analytics-taak maakt met Visual Studio.
 
 ## <a name="test-your-query"></a>De query testen
 
-Dubbel klik in uw Azure Stream Analytics project op **script. asaql** om het script in de editor te openen. U kunt de query compileren om te zien of er syntaxis fouten zijn. De query-editor ondersteunt IntelliSense, syntaxis kleuren en een fout markering.
+Dubbelklik in uw Azure Stream Analytics-project op **Script.asaql** om het script in de editor te openen. U de query compileren om te zien of er syntaxisfouten zijn. De queryeditor ondersteunt IntelliSense, syntaxiskleuring en een foutmarkering.
 
-![Query-Editor](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
+![Query-editor](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
  
 ### <a name="add-local-input"></a>Lokale invoer toevoegen
 
-Als u uw query wilt valideren op basis van lokale statische gegevens, klikt u met de rechter muisknop op de invoer en selecteert u **lokale invoer toevoegen**.
+Als u uw query wilt valideren aan de hand van lokale statische gegevens, klikt u met de rechtermuisknop op de invoer en selecteert u **Lokale invoer toevoegen**.
    
 ![Lokale invoer toevoegen](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
-Selecteer in het pop-upvenster voorbeeld gegevens uit het lokale pad en **Sla**het op.
+Selecteer in het pop-upvenster voorbeeldgegevens van uw lokale pad en **Sla op**.
    
 ![Lokale invoer toevoegen](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
-Een bestand met de naam **local_EntryStream. json** wordt automatisch toegevoegd aan de map met invoer gegevens.
+Een bestand met de naam **local_EntryStream.json** wordt automatisch toegevoegd aan uw invoermap.
    
-![Bestand lijst met lokale invoer mappen](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
+![Bestandslijst met lokale invoermappen](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    
-Selecteer **lokaal uitvoeren** in de query-editor. U kunt ook op F5 drukken.
+Selecteer **Lokaal uitvoeren** in de queryeditor. Of je drukt op F5.
    
 ![Lokaal uitvoeren](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
    
-De uitvoer kan rechtstreeks vanuit Visual Studio in een tabel indeling worden weer gegeven.
+De uitvoer kan rechtstreeks vanuit Visual Studio in een tabelindeling worden bekeken.
 
-![Uitvoer in tabel indeling](./media/stream-analytics-vs-tools-local-run/stream-analytics-for-vs-local-result.png)
+![Uitvoer in tabelindeling](./media/stream-analytics-vs-tools-local-run/stream-analytics-for-vs-local-result.png)
 
-U vindt het uitvoerpad vanuit de uitvoer van de console. Druk op een wille keurige toets om de map met het resultaat te openen.
+U het uitvoerpad vinden vanaf de uitgang van de console. Druk op een toets om de resultaatmap te openen.
    
 ![Lokaal uitvoeren](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-02.png)
    
 Controleer de resultaten in de lokale map.
    
-![Resultaat van lokale map](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-03.png)
+![Resultaat lokale map](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-03.png)
    
 
-### <a name="sample-input"></a>Voorbeeld invoer
-U kunt ook voorbeeld invoer gegevens verzamelen van uw invoer bronnen naar een lokaal bestand. Klik met de rechter muisknop op het invoer configuratie bestand en selecteer **voorbeeld gegevens**. 
+### <a name="sample-input"></a>Voorbeeldinvoer
+U ook voorbeeldinvoergegevens uit uw invoerbronnen verzamelen naar een lokaal bestand. Klik met de rechtermuisknop op het invoerconfiguratiebestand en selecteer **Voorbeeldgegevens**. 
 
 ![Voorbeeldgegevens](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
 
-U kunt alleen voorbeeld gegevens stromen van Event Hubs-of IoT-hubs. Andere invoer bronnen worden niet ondersteund. Vul in het pop-upvenster het lokale pad in om de voorbeeld gegevens op te slaan en selecteer voor **beeld**.
+U alleen gegevensstreamen van Gebeurtenishubs of IoT-hubs bekijken. Andere invoerbronnen worden niet ondersteund. Vul in het pop-updialoogvenster het lokale pad in om de voorbeeldgegevens op te slaan en selecteer **Voorbeeld**.
 
-![Voorbeeld gegevens configuratie](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
+![Voorbeeldgegevensconfiguratie](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
  
-U kunt de voortgang bekijken in het **uitvoer** venster. 
+U de voortgang zien in het venster **Uitvoer.** 
 
-![Voorbeeld gegevens uitvoer](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
+![Voorbeeldgegevensuitvoer](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Snelstartgids: een Stream Analytics-taak maken met behulp van Visual Studio](stream-analytics-quick-create-vs.md)
+* [Snelstart: een functie Stream Analytics maken met Visual Studio](stream-analytics-quick-create-vs.md)
 * [Visual Studio gebruiken om Azure Stream Analytics-taken weer te geven](stream-analytics-vs-tools.md)
-* [Live-gegevens lokaal testen met Azure Stream Analytics-hulpprogram ma's voor Visual Studio (preview)](stream-analytics-live-data-local-testing.md)
-* [Zelf studie: een Azure Stream Analytics-taak implementeren met CI/CD met behulp van Azure DevOps](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [Live gegevens lokaal testen met Azure Stream Analytics-hulpprogramma's voor Visual Studio (Preview)](stream-analytics-live-data-local-testing.md)
+* [Zelfstudie: Een Azure Stream Analytics-taak implementeren met CI/CD met Azure DevOps](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Continue integratie en ontwikkeling met Stream Analytics-hulpprogramma’s](stream-analytics-tools-for-visual-studio-cicd.md)

@@ -1,66 +1,84 @@
 ---
-title: Visualisatie van afhankelijkheden in Azure Migrate
-description: Hierin wordt een overzicht gegeven van de evaluatie berekeningen in de server Assessment-service in Azure Migrate
+title: Afhankelijkheidsanalyse in Azure Migrate Server Assessment
+description: Beschrijft hoe u afhankelijkheidsanalyse gebruiken voor beoordeling met Azure Migrate Server Assessment.
 ms.topic: conceptual
-ms.date: 02/24/2020
-ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/11/2020
+ms.openlocfilehash: f96496b66d6bcfd397fb0a7303d3dbfb4fd6f6b6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269703"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455635"
 ---
-# <a name="dependency-visualization"></a>Visualisatie van afhankelijkheden
+# <a name="dependency-analysis"></a>Afhankelijkheidsanalyse
 
-In dit artikel wordt de afhankelijkheids visualisatie in Azure Migrate beschreven: Server evaluatie.
+In dit artikel wordt afhankelijkheidsanalyse beschreven in Azure Migrate:Server Assessment.
 
-## <a name="what-is-dependency-visualization"></a>Wat is de visualisatie van afhankelijkheden?
+## <a name="overview"></a>Overzicht
 
-Met de visualisatie van afhankelijkheden kunt u afhankelijkheden identificeren tussen on-premises machines die u wilt beoordelen en migreren naar Azure. 
+Afhankelijkheidsanalyse helpt u om afhankelijkheden te identificeren tussen on-premises machines die u wilt beoordelen en migreren naar Azure. 
 
-- In Azure Migrate: Server analyse verzamelt u computers in een groep en evalueert u vervolgens de groep. Met een afhankelijkheids visualisatie kunt u machines nauw keuriger groeperen, met een hoge mate van vertrouwen voor evaluatie.
-- Met de functie voor afhankelijkheids visualisatie kunt u computers identificeren die samen moeten worden gemigreerd. U kunt nagaan of machines in gebruik zijn of in plaats van gemigreerd kunnen worden.
-- Met het visualiseren van afhankelijkheden kunt u ervoor zorgen dat er geen onverwachte storingen optreden tijdens de migratie.
-- Visualisatie is vooral nuttig als u niet zeker weet of machines deel uitmaken van een app-implementatie die u naar Azure wilt migreren.
+- In Azure Migrate:Server Assessment verzamelt u machines in een groep en beoordeelt u de groep. Afhankelijkheidsanalyse helpt u om machines nauwkeuriger te groeperen, met een hoog vertrouwen voor beoordeling.
+- Met afhankelijkheidsanalyse u machines identificeren die samen moeten worden gemigreerd. U bepalen of machines in gebruik zijn of dat ze kunnen worden buiten bedrijf gesteld in plaats van gemigreerd.
+- Het analyseren van afhankelijkheden helpt ervoor te zorgen dat er niets achterblijft en voorkom verrassingsonderbrekingen tijdens migratie.
+- Analyse is vooral handig als u niet zeker weet of machines deel uitmaken van een app-implementatie die u naar Azure wilt migreren.
+- [Lees](common-questions-discovery-assessment.md#what-is-dependency-visualization) veelgestelde vragen over afhankelijkheidsanalyse.
 
+Er zijn twee opties voor het implementeren van afhankelijkheidsanalyse
+
+- **Op agentgebaseerd:** voor afhankelijkheidsanalyse op basis van agenten moeten agents worden geïnstalleerd op elke on-premises machine die u wilt analyseren.
+- **Agentless**: Met agentless analyse hoeft u geen agents te installeren op machines die u wilt controleren. Deze optie is momenteel in preview en is alleen beschikbaar voor VMware VM's.
 
 > [!NOTE]
-> Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.
+> Afhankelijkheidsanalyse is niet beschikbaar in Azure Government.
 
-## <a name="agent-basedagentless-visualization"></a>Op agents gebaseerde en zonder agents visualisatie
+## <a name="agentless-analysis"></a>Agentloze analyse
 
-Er zijn twee opties voor het implementeren van afhankelijkheids visualisatie:
+Agentless dependency analysis werkt door het vastleggen van TCP-verbindingsgegevens van machines waarvoor deze is ingeschakeld. Er zijn geen agents geïnstalleerd op machines die u wilt analyseren.
 
-- **Op agent gebaseerd**: voor visualisatie op basis van een agent moeten agents worden geïnstalleerd op elke on-premises computer die u wilt analyseren.
-- Zonder **agent**: met deze optie hoeft u geen agents te installeren op computers die u wilt kruisen. Deze optie is momenteel in Preview en is alleen beschikbaar voor virtuele VMware-machines.
+### <a name="collected-data"></a>Verzamelde gegevens
+
+Nadat de afhankelijkheidsdetectie is gestart, verzamelt het toestel elke vijf minuten gegevens van machines om gegevens te verzamelen. Deze gegevens worden verzameld van gast VM's via vCenter Server, met behulp van vSphere API's. De verzamelde gegevens worden verwerkt op het Azure Migrate-toestel om identiteitsgegevens af te leiden en worden elke zes uur naar Azure Migrate verzonden.
+
+Polling verzamelt deze gegevens van machines: 
+- Naam van processen die actieve verbindingen hebben.
+- Naam van de toepassing die processen uitvoert die actieve verbindingen hebben.
+- Bestemmingspoort op de actieve verbindingen.
+
+## <a name="agent-based-analysis"></a>Agent-gebaseerde analyse
+
+Voor analyse op basis van agenten gebruikt Server Assessment de [servicekaartoplossing](../azure-monitor/insights/service-map.md) in Azure Monitor om afhankelijkheidsvisualisatie en -analyse mogelijk te maken. De [Microsoft Monitoring Agent/Log Analytics-agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent) en de [afhankelijkheidsagent](../azure-monitor/platform/agents-overview.md#dependency-agent)moeten worden geïnstalleerd op elke machine die u wilt analyseren.
+
+### <a name="collected-data"></a>Verzamelde gegevens
+
+Voor op agenten gebaseerde visualisatie worden de volgende gegevens verzameld:
+
+- Naam van de sourcemachineserver, proces, naam van de toepassing.
+- Naam, proces, toepassingsnaam en poort van doelmachineserver.
+- Het aantal verbindingen, latentie en gegevensoverdrachtsgegevens wordt verzameld en beschikbaar voor Log Analytics-query's. 
 
 
-## <a name="agent-based-visualization"></a>Visualisatie op basis van een agent
+## <a name="compare-agentless-and-agent-based"></a>Vergelijk agentless en agent-based
 
-**Vereiste** | **Details** | **Meer informatie**
+De verschillen tussen agentloze visualisatie en agentgebaseerde visualisatie worden samengevat in de tabel.
+
+**Vereiste** | **Zonder agent** | **Agent-based**
 --- | --- | ---
-**Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn, met het Azure Migrate: Server assessment tool is toegevoegd aan het project.<br/><br/>  U kunt de visualisatie van de afhankelijkheid implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises machines te detecteren. | [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/><br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/><br/> Meer informatie over het instellen van het Azure Migrate-apparaat voor de evaluatie van [Hyper-V](how-to-set-up-appliance-hyper-v.md)-, [VMware](how-to-set-up-appliance-vmware.md)-en fysieke servers.
-**Vereiste agents** | Installeer de volgende agents op elke computer die u wilt analyseren:<br/><br/> [Micro soft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/><br/> De [afhankelijkheids agent](../azure-monitor/platform/agents-overview.md#dependency-agent).<br/><br/> Als on-premises computers niet zijn verbonden met internet, moet u Log Analytics gateway op deze machines downloaden en installeren. | Meer informatie over het installeren van de [dependency agent](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) en [MMA](how-to-create-group-machine-dependencies.md#install-the-mma).
-**Log Analytics** | Azure Migrate gebruikt de [servicetoewijzing](../operations-management-suite/operations-management-suite-service-map.md) oplossing in [Azure monitor logboeken](../log-analytics/log-analytics-overview.md) voor de visualisatie van afhankelijkheden.<br/><br/> U koppelt een nieuwe of bestaande Log Analytics-werk ruimte aan een Azure Migrate-project. De werk ruimte voor een Azure Migrate project kan niet worden gewijzigd nadat deze is toegevoegd. <br/><br/> De werk ruimte moet zich in hetzelfde abonnement bevinden als het Azure Migrate-project.<br/><br/> De werk ruimte moet zich bevinden in de regio's VS-Oost, Zuidoost-Azië of Europa-west. Werk ruimten in andere regio's kunnen niet worden gekoppeld aan een project.<br/><br/> De werk ruimte moet zich in een regio bevinden waarin [servicetoewijzing wordt ondersteund](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).<br/><br/> In Log Analytics wordt de werk ruimte die is gekoppeld aan Azure Migrate gelabeld met de sleutel van het migratie project en de project naam.
-**Uitgaven** | De Servicetoewijzing oplossing heeft geen kosten in rekening gebracht voor de eerste 180 dagen (vanaf de dag dat u de werk ruimte Log Analytics koppelt aan het Azure Migrate project)/<br/><br/> Na 180 dagen zijn de standaard Log Analytics kosten van toepassing.<br/><br/> Bij het gebruik van een andere oplossing dan Servicetoewijzing in de gekoppelde Log Analytics werk ruimte worden [standaard kosten](https://azure.microsoft.com/pricing/details/log-analytics/) in rekening gebracht voor log Analytics.<br/><br/> Wanneer het Azure Migrate project wordt verwijderd, wordt de werk ruimte samen niet verwijderd. Na het verwijderen van het project is Servicetoewijzing gebruik niet gratis en worden voor elk knoop punt de kosten in rekening gebracht volgens de betaalde laag van Log Analytics werk ruimte/<br/><br/>Als u projecten hebt die u hebt gemaakt vóór Azure Migrate algemene Beschik baarheid (GA 28 februari 2018), hebt u mogelijk extra Servicetoewijzing kosten in rekening gebracht. Om ervoor te zorgen dat u na 180 dagen alleen betaalt, is het raadzaam om een nieuw project te maken, omdat bestaande werk ruimten voor GA nog steeds toerekenbaar zijn.
-**Beheer** | Wanneer u agents registreert bij de werk ruimte, gebruikt u de ID en de sleutel van het Azure Migrate project.<br/><br/> U kunt de Log Analytics-werk ruimte gebruiken buiten Azure Migrate.<br/><br/> Als u het gekoppelde Azure Migrate project verwijdert, wordt de werk ruimte niet automatisch verwijderd. [Verwijder deze hand matig](../azure-monitor/platform/manage-access.md).<br/><br/> Verwijder de werk ruimte die is gemaakt door Azure Migrate, tenzij u het Azure Migrate project verwijdert. Als u dat wel doet, werkt de visualisatie functionaliteit voor afhankelijkheden niet zoals verwacht.
+Ondersteuning | Deze optie is momenteel in preview en is alleen beschikbaar voor VMware VM's. [Bekijk](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) ondersteunde besturingssystemen. | In het algemeen beschikbaarheid (GA).
+Agent | Het is niet nodig om agents te installeren op machines die u wilt controleren. | Agents die moeten worden geïnstalleerd op elke on-premises machine die u wilt analyseren: de [Microsoft Monitoring-agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)en de [afhankelijkheidsagent.](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent) 
+Log Analytics | Niet vereist. | Azure Migrate gebruikt de [Service Map-oplossing](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) in [Azure Monitor-logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) voor afhankelijkheidsanalyse. 
+Hoe werkt het? | Hiermee legt u TCP-verbindingsgegevens vast op machines die zijn ingeschakeld voor afhankelijkheidsvisualisatie. Na ontdekking verzamelt het gegevens met intervallen van vijf minuten. | Servicemap-agents die op een machine zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
+Gegevens | Naam van de sourcemachineserver, proces, naam van de toepassing.<br/><br/> Naam, proces, toepassingsnaam en poort van doelmachineserver. | Naam van de sourcemachineserver, proces, naam van de toepassing.<br/><br/> Naam, proces, toepassingsnaam en poort van doelmachineserver.<br/><br/> Het aantal verbindingen, latentie en gegevensoverdrachtsgegevens wordt verzameld en beschikbaar voor Log Analytics-query's. 
+Visualisatie | Afhankelijkheidskaart van één server kan gedurende een uur tot 30 dagen worden bekeken. | Afhankelijkheidskaart van één server.<br/><br/> Kaart kan worden bekeken meer dan een uur alleen.<br/><br/> Afhankelijkheidskaart van een groep servers.<br/><br/> Servers in een groep toevoegen en verwijderen uit de kaartweergave.
+Gegevensexport | Kan momenteel niet worden gedownload in tabelindeling. | Gegevens kunnen worden opgevraagd met Log Analytics.
 
-## <a name="agentless-visualization"></a>Visualisatie zonder agent
-
-
-**Vereiste** | **Details** | **Meer informatie**
---- | --- | ---
-**Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn, met het Azure Migrate: Server assessment tool is toegevoegd aan het project.<br/><br/>  U kunt afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises VMWare-machines te detecteren. | [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/><br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/><br/> Meer informatie over het instellen van het Azure Migrate-apparaat voor de evaluatie van virtuele [VMware](how-to-set-up-appliance-vmware.md) -machines.
-**Vereiste agents** | Er is geen agent vereist voor computers die u wilt analyseren.
-**Ondersteunde besturingssystemen** | Bekijk de [besturings systemen](migrate-support-matrix-vmware.md#agentless-dependency-visualization) die worden ondersteund voor visualisatie zonder agent.
-**VM's** | **VMware-hulpprogram ma's**: VMware-hulpprogram ma's moeten zijn geïnstalleerd en worden uitgevoerd op de virtuele machines die u wilt analyseren.<br/><br/> **Account**: op het Azure migrate apparaat moet u een gebruikers account toevoegen dat kan worden gebruikt om toegang te krijgen tot vm's voor analyse.<br/><br/> **Windows-vm's**: het gebruikers account moet een lokale of een domein beheerder zijn op de computer.<br/><br/> **Linux-vm's**: de hoofd bevoegdheid is vereist voor het account. De gebruikers account vereist ook deze twee mogelijkheden op/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE. | [Meer informatie over](migrate-appliance.md) het Azure migrate apparaat.
-**VMware** | **vCenter**: voor het apparaat is een vCenter Server-account met alleen-lezen toegang vereist en de bevoegdheden voor virtual machines > gast bewerkingen zijn ingeschakeld.<br/><br/> **ESXi-hosts**: op ESXi-hosts waarop vm's worden uitgevoerd die u wilt analyseren, moet het Azure migrate apparaat verbinding kunnen maken met TCP-poort 443.
-**Verzamelde gegevens** |  Analyse van de afhankelijkheid van agents werkt door TCP-verbindings gegevens vast te leggen van computers waarop deze is ingeschakeld. Nadat de detectie van afhankelijkheden is ingeschakeld, verzamelt het apparaat TCP-verbindings gegevens elke vijf minuten van gast-Vm's. Deze gegevens worden verzameld van gast-Vm's via vCenter Server met behulp van vSphere-Api's. De verzamelde gegevens worden verwerkt op het apparaat om elke 6 uur afhankelijkheids informatie af te leiden en te verzenden naar Azure Migrate. De volgende gegevens worden verzameld van elke computer: <br/> -Namen van processen die actieve verbindingen hebben.<br/> -Namen van toepassingen die het proces uitvoeren met actieve verbindingen.<br/> -Doel poort voor de actieve verbindingen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Visualisatie van afhankelijkheid instellen](how-to-create-group-machine-dependencies.md)
-- [Probeer visualisatie van de afhankelijkheid van agents uit](how-to-create-group-machine-dependencies-agentless.md) voor VMware-vm's.
-- Bekijk [Veelgestelde vragen](common-questions-discovery-assessment.md#what-is-dependency-visualization) over de visualisatie van afhankelijkheden.
+- Bekijk de vereisten voor het opzetten van op agentgebaseerde analyses voor Vm's op basis [van VMware,](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements) [fysieke servers](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)en [Hyper-V VM's](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+- [Bekijk](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) de vereisten voor agentless analyse van VMware VM's.
+- [Afhankelijkheidsvisualisatie](how-to-create-group-machine-dependencies.md) op basis van agent instellen
+- [Probeer](how-to-create-group-machine-dependencies-agentless.md) agentloze afhankelijkheidsvisualisatie voor VMware VM's uit.
+- Lees [veelgestelde vragen](common-questions-discovery-assessment.md#what-is-dependency-visualization) over afhankelijkheidsvisualisatie.
 
 

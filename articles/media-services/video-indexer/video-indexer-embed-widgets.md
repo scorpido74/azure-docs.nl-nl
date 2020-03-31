@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 4d92bd3709c5f56db0095ca1be2caa0e9c78b42f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336820"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389372"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video-indexerwidgets insluiten in uw apps
 
@@ -48,7 +48,7 @@ Je de widget Player gebruiken om video te streamen met behulp van adaptieve bits
 |`showCaptions` | Een Booleaanse waarde | Zorgt ervoor dat speler wordt geladen met de ondertiteling al ingeschakeld.<br/> Bijvoorbeeld: `showCaptions=true`. |
 |`type`| | Hiermee activeert u een skin voor audiospelers (het videogedeelte wordt verwijderd).<br/> Bijvoorbeeld: `type=audio`. |
 |`autoplay` | Een Booleaanse waarde | Geeft aan of de speler moet beginnen met het afspelen van de video wanneer deze is geladen. De standaardwaarde is `true`.<br/> Bijvoorbeeld: `autoplay=false`. |
-|`language` | Een taalcode | Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Bijvoorbeeld: `language=de-DE`.|
+|`language`/`locale` | Een taalcode | Hiermee bepaalt u de taal van de speler. De standaardwaarde is `en-US`.<br/>Bijvoorbeeld: `language=de-DE`.|
 
 ### <a name="editor-widget"></a>Object Editor
 
@@ -233,14 +233,14 @@ Als u videoindexer-inzichten insluit met uw eigen `GetVttUrl` Azure Media [Playe
 
 U de gewenste inzichten kiezen. Geef hiervoor op als waarde voor de volgende URL-parameter die is toegevoegd aan de insluitcode die `&widgets=<list of wanted widgets>`u krijgt (uit de API of van de web-app): .
 
-De mogelijke waarden zijn: **mensen,** **trefwoorden,** **sentimenten,** **transcript**, en **zoeken**.
+De mogelijke waarden `people` `animatedCharacters` zijn: `sentiments`, `emotions` `topics`, `keyframes` `transcript`, `ocr` `keywords` `labels` `speakers`, , , , , , , `scenes`, en `namedEntities`.
 
-Als u bijvoorbeeld een widget wilt insluiten die alleen mensen en zoekinzichten bevat, ziet de iframe-insluit-URL er als volgt uit:
+Als u bijvoorbeeld een widget wilt insluiten die alleen personen en trefwoordeninzichten bevat, ziet de IFrame-insluit-URL er als volgt uit:
 
-`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-De titel van het iframe-venster `&title=<YourTitle>` kan ook worden aangepast door de iframe-URL te verstrekken. (Hiermee wordt de \<HTML-titel> waarde aangepast).
-
+De titel van het iframe-venster `&title=<YourTitle>` kan ook worden aangepast door de iframe-URL te verstrekken. (Hiermee wordt de <title> HTML-waarde aangepast).
+   
 Als u bijvoorbeeld uw iframevenster de titel 'MyInsights' wilt geven, ziet de URL er als volgt uit:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
@@ -257,15 +257,14 @@ Bijvoorbeeld:
 
 Standaard heeft Video Indexer-speler automatisch ondertiteling gegenereerd die zijn gebaseerd op het transcript van de video. Het transcript wordt uit de video gehaald met de brontaal die is geselecteerd toen de video werd geüpload.
 
-Als u wilt insluiten met een `&captions=< Language | "all" | "false" >` andere taal, u toevoegen aan de URL van de speler insluiten. Als u bijschriften in alle beschikbare `all`talen wilt, gebruikt u de waarde . Als u wilt dat de bijschriften standaard worden `&showCaptions=true`weergegeven, u doorstaan.
+Als u wilt insluiten met een andere taal, u &captions=< Language Code > toevoegen aan de URL van de insluitende speler. Als u wilt dat de bijschriften standaard worden weergegeven, u &showCaptions=true doorgeven.
 
 De insluit-URL ziet er dan als volgt uit:
 
-`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
-
-Als u bijschriften wilt uitschakelen, `captions` kunt u `false`de parameterwaarde doorgeven als .
+`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=en-us`
 
 #### <a name="autoplay"></a>Automatisch afspelen
+
 Standaard begint de speler de video af te spelen. u ervoor kiezen `&autoplay=false` om dit niet te doen door door te geven aan de vorige insluit-URL.
 
 ## <a name="code-samples"></a>Codevoorbeelden

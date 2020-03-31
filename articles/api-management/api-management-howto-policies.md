@@ -1,6 +1,6 @@
 ---
-title: Beleid in azure API Management | Microsoft Docs
-description: Meer informatie over het maken, bewerken en configureren van beleid in API Management.
+title: Beleidsregels in Azure API-beheer | Microsoft Documenten
+description: Meer informatie over het maken, bewerken en configureren van beleid in API-beheer.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,32 +13,32 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70072310"
 ---
-# <a name="policies-in-azure-api-management"></a>Beleids regels in azure API Management
+# <a name="policies-in-azure-api-management"></a>Beleidsregels in Azure API Management
 
-In azure API Management (APIM) zijn beleids regels een krachtige mogelijkheid van het systeem waarmee de uitgever het gedrag van de API via configuratie kan wijzigen. Beleids regels zijn een verzameling instructies die opeenvolgend worden uitgevoerd op de aanvraag of het antwoord van een API. Populaire instructies omvatten indelings conversie van XML naar JSON en aanroep frequentie beperken om de hoeveelheid binnenkomende oproepen van een ontwikkelaar te beperken. Er zijn nog veel meer beleids regels beschikbaar.
+In Azure API Management (APIM) zijn beleidsregels een krachtige mogelijkheid van het systeem waarmee de uitgever het gedrag van de API kan wijzigen door middel van configuratie. Beleidsregels zijn een verzameling instructies die achtereenvolgens worden uitgevoerd op verzoek of antwoord van een API. Populaire instructies omvatten indelingconversie van XML naar JSON en gesprekssnelheid beperken om het aantal inkomende oproepen van een ontwikkelaar te beperken. Er zijn veel meer beleidsregels beschikbaar.
 
-Beleids regels worden binnen de gateway toegepast die zich tussen de API-consumer en de beheerde API bevindt. De gateway ontvangt alle aanvragen en stuurt deze doorgaans niet-gewijzigd naar de onderliggende API. Een beleid kan echter wijzigingen Toep assen op zowel de inkomende aanvraag als het uitgaande antwoord.
+Beleidsregels worden toegepast binnen de gateway die zich bevindt tussen de API-consument en de beheerde API. De gateway ontvangt alle aanvragen en stuurt deze meestal ongewijzigd door naar de onderliggende API. Een beleid kan echter wijzigingen toepassen op zowel de binnenkomende aanvraag als het uitgaande antwoord.
 
 Beleidsexpressies kunnen worden gebruikt als kenmerkwaarden of tekstwaarden in API Management-beleidsregels, tenzij het beleid iets anders aangeeft. Sommige beleidsregels, zoals de beleidsregels [Stroom controleren][Control flow] en [Variabele instellen][Set variable], zijn gebaseerd op beleidsexpressies. Zie [Geavanceerde beleidsregels][Advanced policies] en [Beleidsexpressies][Policy expressions] voor meer informatie.
 
-## <a name="sections"> </a>Informatie over beleids configuratie
+## <a name="understanding-policy-configuration"></a><a name="sections"> </a>Beleidsconfiguratie begrijpen
 
-De beleids definitie is een eenvoudig XML-document dat een reeks van binnenkomende en uitgaande instructies beschrijft. De XML kan rechtstreeks worden bewerkt in het definitie venster. Er wordt een lijst met-instructies aan de rechter kant en de instructies die van toepassing zijn op het huidige bereik, worden ingeschakeld en gemarkeerd.
+De beleidsdefinitie is een eenvoudig XML-document dat een reeks binnenkomende en uitgaande instructies beschrijft. De XML kan rechtstreeks in het definitievenster worden bewerkt. Een lijst met verklaringen wordt aan de rechterkant verstrekt en verklaringen die van toepassing zijn op het huidige bereik worden ingeschakeld en gemarkeerd.
 
-Als u op een ingeschakelde instructie klikt, wordt de juiste XML toegevoegd op de locatie van de cursor in de definitie weergave. 
+Als u op een ingeschakelde instructie klikt, wordt de juiste XML toegevoegd op de locatie van de cursor in de definitieweergave. 
 
 > [!NOTE]
-> Als het beleid dat u wilt toevoegen niet is ingeschakeld, controleert u of u zich in het juiste bereik voor dat beleid bevindt. Elke beleids instructie is ontworpen voor gebruik in bepaalde bereiken en beleids secties. Als u de beleids secties en-bereiken voor een beleid wilt bekijken, raadpleegt u de sectie **gebruik** van het beleid in de [Naslag informatie over beleid][Policy Reference].
+> Als het beleid dat u wilt toevoegen niet is ingeschakeld, moet u ervoor zorgen dat u zich binnen de juiste scope voor dat beleid bevindt. Elke beleidsverklaring is ontworpen voor gebruik in bepaalde scopes en beleidsonderdelen. Als u de beleidsonderdelen en -kaders voor een beleid wilt controleren, raadpleegt u de sectie **Gebruik** voor dat beleid in de [beleidsverwijzing][Policy Reference].
 > 
 > 
 
-De configuratie is onderverdeeld in `inbound`, `backend`, `outbound`, en `on-error`. De reeks opgegeven beleids instructies wordt uitgevoerd in de volg orde van een aanvraag en een antwoord.
+De configuratie is `inbound` `backend`onderverdeeld `outbound`in `on-error`, , en . De reeks opgegeven beleidsoverzichten wordt uitgevoerd om een aanvraag en een antwoord te kunnen ontvangen.
 
 ```xml
 <policies>
@@ -58,25 +58,25 @@ De configuratie is onderverdeeld in `inbound`, `backend`, `outbound`, en `on-err
 </policies> 
 ```
 
-Als er een fout optreedt tijdens de verwerking van een aanvraag, worden alle resterende stappen in `inbound`de `backend`secties, `outbound` of worden overgeslagen en wordt de uitvoering naar de instructies in `on-error` de sectie geleid. Door beleids instructies in de `on-error` sectie in te stellen, kunt u de fout controleren met behulp van de `context.LastError` eigenschap, het fout bericht `set-body` controleren en aanpassen met behulp van het beleid en configureren wat er gebeurt als er een fout optreedt. Er zijn fout codes voor ingebouwde stappen en voor fouten die kunnen optreden tijdens het verwerken van beleids instructies. Zie [fout afhandeling in API management-beleid](/azure/api-management/api-management-error-handling-policies)voor meer informatie.
+Als er een fout optreedt tijdens de verwerking van `inbound` `backend`een `outbound` aanvraag, worden alle resterende stappen in `on-error` de , of secties overgeslagen en springt de uitvoering naar de instructies in de sectie. Door beleidsoverzichten `on-error` in de sectie te plaatsen, u de fout bekijken door de `context.LastError` eigenschap te gebruiken, de foutfoutfout te inspecteren en aan te passen met behulp van het `set-body` beleid en configureren wat er gebeurt als er een fout optreedt. Er zijn foutcodes voor ingebouwde stappen en voor fouten die kunnen optreden tijdens de verwerking van beleidsinstructies. Zie [Foutafhandeling in API-beheerbeleid](/azure/api-management/api-management-error-handling-policies)voor meer informatie .
 
-## <a name="scopes"> </a>Beleids regels configureren
+## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Beleid configureren
 
-Zie [beleid instellen of bewerken](set-edit-policies.md)voor meer informatie over het configureren van beleid.
+Zie Beleid instellen of bewerken voor informatie over het configureren van [beleid.](set-edit-policies.md)
 
-## <a name="policy-reference"></a>Beleids verwijzing
+## <a name="policy-reference"></a>Beleidsreferentie
 
-Zie de [beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en de bijbehorende instellingen.
+Zie de [beleidsverwijzing](api-management-policy-reference.md) voor een volledige lijst met beleidsoverzichten en hun instellingen.
 
-## <a name="policy-samples"></a>Voor beelden van beleid
+## <a name="policy-samples"></a>Beleidsvoorbeelden
 
-Zie [beleids voorbeelden](policy-samples.md) voor meer code voorbeelden.
+Zie [Beleidsvoorbeelden](policy-samples.md) voor meer codevoorbeelden.
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="apply-policies-specified-at-different-scopes"></a>Beleids regels Toep assen die zijn opgegeven bij verschillende bereiken
+### <a name="apply-policies-specified-at-different-scopes"></a>Beleid toepassen dat op verschillende scopes is opgegeven
 
-Als u een beleid hebt op het globale niveau en een beleid dat is geconfigureerd voor een API, worden beide beleids regels toegepast wanneer de desbetreffende API wordt gebruikt. API Management maakt deterministische volg orde van gecombineerde beleids instructies mogelijk via het basis element. 
+Als u een beleid op globaal niveau hebt en een beleid dat is geconfigureerd voor een API, worden beide beleidsregels toegepast wanneer die specifieke API wordt gebruikt. API Management maakt het mogelijk om gecombineerde beleidsoverzichten via het basiselement te bepalen. 
 
 ```xml
 <policies>
@@ -88,15 +88,15 @@ Als u een beleid hebt op het globale niveau en een beleid dat is geconfigureerd 
 </policies>
 ```
 
-In het bovenstaande voor beeld beleid wordt de `cross-domain` instructie uitgevoerd voordat een hoger beleid wordt gevolgd door het `find-and-replace` beleid. 
+In de bovenstaande voorbeeldbeleidsdefinitie wordt de `cross-domain` instructie uitgevoerd voordat een hoger `find-and-replace` beleid wordt uitgevoerd dat op zijn beurt door het beleid zou worden gevolgd. 
 
 ### <a name="restrict-incoming-requests"></a>Binnenkomende aanvragen beperken
 
-Als u een nieuwe instructie wilt toevoegen om binnenkomende aanvragen te beperken tot opgegeven IP-adressen, plaatst u de cursor net `inbound` in de inhoud van het XML-element en klikt u op de instructie **Caller ip's beperken** .
+Als u een nieuwe instructie wilt toevoegen om binnenkomende aanvragen te beperken `inbound` tot opgegeven IP-adressen, plaatst u de cursor net binnen de inhoud van het XML-element en klikt u op de instructie **Beller-IP-adressen beperken.**
 
-![Restrictie beleid][policies-restrict]
+![Beperkingsbeleid][policies-restrict]
 
-Hiermee voegt u een XML-fragment toe `inbound` aan het-element dat hulp biedt bij het configureren van de-instructie.
+Hiermee wordt een XML-fragment toegevoegd aan het `inbound` element dat richtlijnen biedt voor het configureren van de instructie.
 
 ```xml
 <ip-filter action="allow | forbid">
@@ -115,11 +115,11 @@ Als u binnenkomende aanvragen wilt beperken en alleen die van een IP-adres van 1
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het gebruik van beleid:
+Zie voor meer informatie over beleid:
 
-+ [Api's transformeren](transform-api.md)
-+ [Beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en hun instellingen
-+ [Voor beelden van beleid](policy-samples.md)   
++ [API's transformeren](transform-api.md)
++ [Beleidsreferentie](api-management-policy-reference.md) voor een volledige lijst met beleidsoverzichten en hun instellingen
++ [Beleidsvoorbeelden](policy-samples.md)   
 
 [Policy Reference]: api-management-policy-reference.md
 [Product]: api-management-howto-add-products.md

@@ -1,6 +1,6 @@
 ---
-title: Statussen voor taken en knoop punten tellen-Azure Batch | Microsoft Docs
-description: Tel de status van Azure Batch taken en reken knooppunten op om batch-oplossingen te beheren en te bewaken.
+title: Statussen tellen voor taken en knooppunten - Azure Batch | Microsoft Documenten
+description: Tel de status van Azure Batch-taken en rekenknooppunten om batchoplossingen te beheren en te bewaken.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -10,37 +10,37 @@ ms.date: 09/07/2018
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: a7b58e96918d26851812aa96c18043121c081e94
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023919"
 ---
-# <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Batch-oplossingen bewaken door taken en knoop punten te tellen per status
+# <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Batch-oplossingen bewaken door taken en knooppunten op status te tellen
 
-Als u grootschalige Azure Batch oplossingen wilt bewaken en beheren, hebt u nauw keurige aantallen resources in verschillende staten nodig. Azure Batch biedt efficiënte bewerkingen voor het ophalen van deze aantallen voor batch *taken* en *reken knooppunten*. Gebruik deze bewerkingen in plaats van mogelijk tijdrovende lijst query's die gedetailleerde informatie over grote verzamelingen taken of knoop punten retour neren.
+Als u grootschalige Azure Batch-oplossingen wilt bewaken en beheren, hebt u nauwkeurige tellingen van resources in verschillende statussen nodig. Azure Batch biedt efficiënte bewerkingen om deze tellingen voor *batchtaken* en *compute-knooppunten*op te halen. Gebruik deze bewerkingen in plaats van mogelijk tijdrovende lijstquery's die gedetailleerde informatie over grote verzamelingen taken of knooppunten retourneren.
 
-* [Taak aantallen ophalen][rest_get_task_counts] haalt een totaal aantal actieve, uitgevoerde en voltooide taken in een taak op en van taken die zijn geslaagd of mislukt. 
+* [Als u taaktellingen ophaalt,][rest_get_task_counts] wordt een geaggregeerd aantal actieve, actieve en voltooide taken in een taak en van taken die zijn geslaagd of mislukt. 
 
-  Door taken in elke status te tellen, kunt u de taak voortgang gemakkelijker weer geven voor een gebruiker of onverwachte vertragingen of fouten detecteren die van invloed kunnen zijn op de taak. Taak aantallen ophalen is beschikbaar vanaf de API-versie 2017 van de batch-service, -06-01.5.1 en gerelateerde Sdk's en hulpprogram ma's.
+  Door taken in elke status te tellen, u de voortgang van de taak gemakkelijker weergeven aan een gebruiker of onverwachte vertragingen of fouten detecteren die van invloed kunnen zijn op de taak. Get Task Counts is beschikbaar vanaf Batch Service API versie 2017-06-01.5.1 en gerelateerde SDKs en tools.
 
-* Aantallen van het aantal [weer geven][rest_get_node_counts] van de lijst wordt opgehaald uit een van de bestemde en lage prioriteits knooppunten in elke groep die zich in verschillende statussen bevinden: maken, inactief, offline, afgebroken, opnieuw opstarten, opnieuw maken van installatie kopieën, starten en andere. 
+* [Lijst pool knooppunt telt][rest_get_node_counts] krijgt het aantal speciale en lage prioriteit compute nodes in elke groep die zich in verschillende staten: maken, inactief, offline, vooruitlopen, rebooten, reimaging, starten, en anderen. 
 
-  Door knoop punten te tellen in elke status kunt u bepalen wanneer u beschikt over de juiste reken resources om uw taken uit te voeren en mogelijke problemen met uw Pools te identificeren. Het aantal verzamelingen van de lijst is beschikbaar vanaf de API-versie van de batch-service 2018 -03-01.6.1 en gerelateerde Sdk's en hulpprogram ma's.
+  Door knooppunten in elke status te tellen, u bepalen wanneer u over voldoende rekenbronnen beschikt om uw taken uit te voeren en potentiële problemen met uw pools identificeren. Lijstpool knooppunttellingen is beschikbaar vanaf Batch Service API-versie 2018-03-01.6.1 en gerelateerde SDK's en -hulpprogramma's.
 
-Als u een versie van de service gebruikt die geen ondersteuning biedt voor het aantal taken of bewerkingen in het aantal knoop punten, kunt u in plaats daarvan een lijst query gebruiken om deze resources te tellen. Gebruik een lijst query ook om informatie te krijgen over andere batch-resources, zoals toepassingen, bestanden en taken. Zie [Query's maken om batch resources efficiënt weer te geven](batch-efficient-list-queries.md)voor meer informatie over het Toep assen van filters op lijst query's.
+Als u een versie van de service gebruikt die geen ondersteuning biedt voor het aantal taken voor taaktelling of knooppunttelling, gebruikt u in plaats daarvan een lijstquery om deze resources te tellen. Gebruik ook een lijstquery om informatie te krijgen over andere Batchbronnen, zoals toepassingen, bestanden en taken. Zie [Query's maken om batchbronnen efficiënt weer te geven](batch-efficient-list-queries.md)voor meer informatie over het toepassen van filters op lijstquery's.
 
-## <a name="task-state-counts"></a>Aantal taak status
+## <a name="task-state-counts"></a>Tellingen van taakstatus
 
-De bewerking taak aantal ophalen telt taken met de volgende statussen:
+De bewerking Taaktellingen opvoeren telt taken op de volgende statussen:
 
-- **Actief** : een taak die in de wachtrij is geplaatst en kan worden uitgevoerd, maar die momenteel niet is toegewezen aan een reken knooppunt. Een taak wordt ook `active` als deze [afhankelijk is van een bovenliggende taak](batch-task-dependencies.md) die nog niet is voltooid. 
-- **Uitvoeren** : een taak die is toegewezen aan een reken knooppunt, maar nog niet is voltooid. Een taak telt als `running` wanneer de status ervan `preparing` of `running`is, zoals wordt aangegeven door de bewerking [informatie over een taak ophalen][rest_get_task] .
-- **Voltooid** : een taak die niet langer in aanmerking komt voor uitvoering, omdat deze is voltooid, of als deze is voltooid en de limiet voor nieuwe pogingen is bereikt. 
-- **Geslaagd** : een taak waarvan het resultaat van het uitvoeren van de taak is `success`. Batch bepaalt of een taak is geslaagd of mislukt door de eigenschap `TaskExecutionResult` van de eigenschap [executionInfo][rest_get_exec_info] te controleren.
-- **Is mislukt** Een taak waarvan het resultaat van het uitvoeren van de taak is `failure`.
+- **Actief** - een taak die in de wachtrij staat en kan worden uitgevoerd, maar momenteel niet is toegewezen aan een compute-knooppunt. Een taak `active` is ook afhankelijk [van een bovenliggende taak](batch-task-dependencies.md) die nog niet is voltooid. 
+- **Uitvoeren** - Een taak die is toegewezen aan een compute-knooppunt, maar nog niet is voltooid. Een taak wordt `running` geteld als wanneer `preparing` `running`de status is of , zoals aangegeven door de [informatie over een taakbewerking opbrengen.][rest_get_task]
+- **Voltooid** - Een taak die niet langer in aanmerking komt om uit te voeren, omdat deze is voltooid of zonder succes is voltooid en ook de limiet voor opnieuw proberen heeft uitgeput. 
+- **Geslaagd** - Een taak waarvan het `success`resultaat van taakuitvoering is. Batch bepaalt of een taak is geslaagd `TaskExecutionResult` of mislukt door de eigenschap [executionInfo te][rest_get_exec_info] controleren.
+- **Mislukt** Een taak waarvan het `failure`resultaat van taakuitvoering is.
 
-In het volgende voor beeld van de .NET-code ziet u hoe u taak aantallen kunt ophalen per status: 
+In het volgende voorbeeld van .NET-code ziet u hoe u taaktellingen op de status ophalen: 
 
 ```csharp
 var taskCounts = await batchClient.JobOperations.GetJobTaskCountsAsync("job-1");
@@ -52,31 +52,31 @@ Console.WriteLine("Succeeded task count: {0}", taskCounts.Succeeded);
 Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 ```
 
-U kunt een vergelijkbaar patroon voor REST en andere ondersteunde talen gebruiken om taak aantallen voor een taak te ontvangen. 
+U een vergelijkbaar patroon voor REST en andere ondersteunde talen gebruiken om taaktellingen voor een taak te krijgen. 
 
 > [!NOTE]
-> De API-versies van de batch-service vóór 2018 -08-01.7.0 retour neren ook een `validationStatus` eigenschap in het antwoord taak aantallen ophalen. Deze eigenschap geeft aan of batch de status aantallen heeft gecontroleerd op consistentie met de statussen die zijn gerapporteerd in de API lijst taken. Een waarde van `validated` geeft alleen aan dat de batch ten minste één keer voor de taak is gecontroleerd op consistentie. De waarde van de eigenschap `validationStatus` geeft niet aan of de aantallen die de telling van het aantal taken ophalen op dit moment actueel zijn.
+> Batch Service API-versies vóór 2018-08-01.7.0 retourneren ook een `validationStatus` eigenschap in het antwoord Taaktellingen ontvangen. Deze eigenschap geeft aan of Batch de statustellingen heeft gecontroleerd op consistentie met de statussen die worden gerapporteerd in de API Lijsttaken. Een waarde `validated` van geeft alleen aan dat Batch ten minste één keer op consistentie is gecontroleerd voor de taak. De waarde `validationStatus` van de eigenschap geeft niet aan of de tellingen die taaktellingen ophalen momenteel up-to-date zijn.
 >
 
-## <a name="node-state-counts"></a>Aantal knooppunt statussen
+## <a name="node-state-counts"></a>Knooppuntstatustelt
 
-De bewerking aantal knoop punten van een lijst groep telt het aantal reken knooppunten op basis van de volgende statussen in elke groep. Er worden afzonderlijke statistische aantallen gegeven voor toegewezen knoop punten en knoop punten met lage prioriteit in elke groep.
+De bewerking Aantal tellingen van lijstgroepknooppunten telt rekenknooppunten door de volgende statussen in elke groep. Er worden afzonderlijke geaggregeerde tellingen verstrekt voor speciale knooppunten en knooppunten met een lage prioriteit in elke groep.
 
-- **Maken** : een door Azure toegewezen virtuele machine die nog niet is gestart om lid te worden van een groep.
-- **Inactief** : er is een beschik bare Compute-knoop punt dat momenteel geen taak wordt uitgevoerd.
-- **LeavingPool** : een knoop punt dat de pool verlaat, hetzij omdat de gebruiker deze expliciet verwijdert of omdat het formaat van de groep wordt gewijzigd of automatisch wordt geschaald.
-- **Offline** : een knoop punt dat batch niet kan gebruiken om nieuwe taken te plannen.
-- **Afgebroken** : een knoop punt met lage prioriteit dat uit de groep is verwijderd omdat Azure de virtuele machine heeft teruggewonnen. Een `preempted` knoop punt kan opnieuw worden geïnitialiseerd als er een VM-capaciteit met lage prioriteit beschikbaar is.
-- **Opnieuw opstarten** : een knoop punt dat opnieuw wordt opgestart.
-- **Reimaging** : een knoop punt waarop het besturings systeem opnieuw wordt geïnstalleerd.
-- **Uitvoeren** : een knoop punt waarop een of meer taken worden uitgevoerd (anders dan de begin taak).
-- **Starten** : een knoop punt waarop de batch-service wordt gestart. 
-- **StartTaskFailed** : een knoop punt waarop de [begin taak][rest_start_task] is mislukt en alle pogingen zijn uitgeput, en waarop `waitForSuccess` is ingesteld op de begin taak. Het knoop punt is niet bruikbaar voor het uitvoeren van taken.
-- **Onbekend** : een knoop punt dat contact heeft gemaakt met de batch-service en waarvan de status niet bekend is.
-- **Onbruikbaar** : een knoop punt dat niet kan worden gebruikt voor het uitvoeren van taken vanwege fouten.
-- **WaitingForStartTask** : een knoop punt waarop de begin taak wordt uitgevoerd, maar `waitForSuccess` is ingesteld en de begin taak is niet voltooid.
+- **Maken** - Een vm met Azure-toegewezen die nog niet is begonnen met het deelnemen aan een pool.
+- **Niet actief** : een beschikbaar rekenknooppunt dat momenteel geen taak uitvoert.
+- **LeavingPool** - Een knooppunt dat de groep verlaat, hetzij omdat de gebruiker het expliciet heeft verwijderd of omdat de groep het formaat of de automatische schaling wordt gewijzigd of automatisch wordt afschalen.
+- **Offline** - Een knooppunt dat Batch niet kan gebruiken om nieuwe taken te plannen.
+- **Voorkom -** Een knooppunt met lage prioriteit dat uit de groep is verwijderd omdat Azure de VM heeft teruggevorderd. Een `preempted` knooppunt kan opnieuw worden geinitialiseerd wanneer er een vm-capaciteit met lage prioriteit beschikbaar is.
+- **Rebooten** - Een knooppunt dat opnieuw wordt opgestart.
+- **Reimaging** - Een knooppunt waarop het besturingssysteem opnieuw wordt geïnstalleerd.
+- **Uitvoeren** - Een knooppunt waarop een of meer taken worden uitgevoerd (andere dan de starttaak).
+- **Start** - Een knooppunt waarop de batchservice wordt gestart. 
+- **StartTaskFailed** - Een knooppunt waarop de [starttaak][rest_start_task] is mislukt en `waitForSuccess` alle nieuwe pogingen heeft uitgeput en waarop is ingesteld op de starttaak. Het knooppunt is niet bruikbaar voor het uitvoeren van taken.
+- **Onbekend** - Een knooppunt dat het contact met de Batch-service heeft verloren en waarvan de staat niet bekend is.
+- **Onbruikbaar** - Een knooppunt dat niet kan worden gebruikt voor taakuitvoering vanwege fouten.
+- **WaitingForStartTask** - Een knooppunt waarop de starttaak `waitForSuccess` is gestart, maar is ingesteld en de starttaak is nog niet voltooid.
 
-Het volgende C# code fragment laat zien hoe u het aantal knoop punten van alle groepen in het huidige account kunt weer geven:
+In het volgende C#-fragment ziet u hoe u knooppunttellingen weergeeft voor alle groepen in de lopende rekening:
 
 ```csharp
 foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts())
@@ -96,7 +96,7 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts())
     Console.WriteLine("Low-priority node count in Preempted state: {0}", nodeCounts.LowPriority.Preempted);
 }
 ```
-Het volgende C# code fragment toont hoe u het aantal knoop punten voor een bepaalde groep in het huidige account kunt weer geven.
+In het volgende C#-fragment ziet u hoe u knooppunttellingen voor een bepaalde groep in de lopende rekening weergeeft.
 
 ```csharp
 foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODATADetailLevel(filterClause: "poolId eq 'testpool'")))
@@ -116,13 +116,13 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
     Console.WriteLine("Low-priority node count in Preempted state: {0}", nodeCounts.LowPriority.Preempted);
 }
 ```
-U kunt een vergelijkbaar patroon voor REST en andere ondersteunde talen gebruiken om het aantal knoop punten voor Pools te verkrijgen.
+U een vergelijkbaar patroon voor REST en andere ondersteunde talen gebruiken om knooppunttellingen voor groepen te krijgen.
  
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Overzicht van Batch-functies](batch-api-basics.md) voor meer informatie over de concepten en functies van de Batch-service. In het artikel worden de primaire batch-resources zoals Pools, reken knooppunten, Jobs en taken beschreven en wordt een overzicht gegeven van de functies van de service.
+* Zie [Overzicht van Batch-functies](batch-api-basics.md) voor meer informatie over de concepten en functies van de Batch-service. Het artikel bespreekt de primaire batchbronnen, zoals pools, rekenknooppunten, taken en taken, en biedt een overzicht van de functies van de service.
 
-* Zie [Query's maken om batch-resources efficiënt weer te geven](batch-efficient-list-queries.md)voor informatie over het Toep assen van filters op query's met een lijst met batch-resources.
+* Zie [Query's maken om batchbronnen efficiënt weer te geven](batch-efficient-list-queries.md)voor informatie over het toepassen van filters op query's met batchbronnen.
 
 
 [rest_get_task_counts]: /rest/api/batchservice/job/gettaskcounts

@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-bericht sessies | Microsoft Docs
-description: In dit artikel wordt uitgelegd hoe u met behulp van sessies gezamenlijke en geordende verwerking van gerelateerde berichten kunt maken.
+title: Azure Service Bus-berichtensessies | Microsoft Documenten
+description: In dit artikel wordt uitgelegd hoe u sessies gebruiken om gezamenlijke en geordende verwerking van niet-begrensde reeksen gerelateerde berichten mogelijk te maken.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,97 +14,97 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660662"
 ---
 # <a name="message-sessions"></a>Berichtsessies
-Microsoft Azure Service Bus-sessies maken gezamenlijke en geordende verwerking van niet-gebonden reeksen van gerelateerde berichten mogelijk. Sessies kunnen worden gebruikt in de eerste in, first out (FIFO) en aanvraag/antwoord-patronen. In dit artikel wordt beschreven hoe u met behulp van sessies deze patronen kunt implementeren wanneer u Service Bus gebruikt. 
+Microsoft Azure Service Bus-sessies maken gezamenlijke en geordende afhandeling van niet-begrensde reeksen gerelateerde berichten mogelijk. Sessies kunnen worden gebruikt in first in, first out (FIFO) en request-response patronen. In dit artikel ziet u hoe u sessies gebruikt om deze patronen te implementeren bij het gebruik van Service Bus. 
 
-## <a name="first-in-first-out-fifo-pattern"></a>FIFO-patroon (First-in, first out)
-Gebruik sessies om een FIFO-garantie in Service Bus te realiseren. Service Bus is niet een voor Schrift over de aard van de relatie tussen de berichten en definieert ook niet een bepaald model om te bepalen waar een bericht reeks begint of eindigt.
+## <a name="first-in-first-out-fifo-pattern"></a>First-in, first out (FIFO) patroon
+Gebruik sessies om een FIFO-garantie in Service Bus te realiseren. Service Bus is niet prescriptief over de aard van de relatie tussen de berichten, en definieert ook niet een bepaald model om te bepalen waar een berichtreeks begint of eindigt.
 
 > [!NOTE]
-> De laag basis van Service Bus biedt geen ondersteuning voor sessies. De Standard-en Premium-lagen ondersteunen sessies. Zie [Service Bus prijzen](https://azure.microsoft.com/pricing/details/service-bus/)voor verschillen tussen deze lagen.
+> De basislaag van Service Bus biedt geen ondersteuning voor sessies. De standaard- en premium-ondersteuningssessies. Zie [Servicebus-prijzen](https://azure.microsoft.com/pricing/details/service-bus/)voor verschillen tussen deze lagen.
 
-Elke afzender kan een sessie maken bij het indienen van berichten in een onderwerp of wachtrij door de eigenschap [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) in te stellen op een door de toepassing gedefinieerde id die uniek is voor de sessie. Op het AMQP 1,0-protocol niveau wordt deze waarde toegewezen aan de eigenschap *Group-ID* .
+Elke afzender kan een sessie maken wanneer hij berichten in een onderwerp of wachtrij verzendt door de eigenschap [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) in te stellen op een toepassingscode die uniek is voor de sessie. Op het PROTOCOLniveau van AMQP 1.0 wordt deze waarde toegewezen aan de eigenschap *group-id.*
 
-In sessie-wacht rijen of-abonnementen kunnen sessies aanwezig zijn wanneer er ten minste één bericht is met de sessie- [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId). Als er een sessie bestaat, is er geen tijd of API voor wanneer de sessie verloopt of verdwijnt. In theorie kan een bericht worden ontvangen voor een sessie, het volgende bericht in de tijd van het jaar en als de sessie- **id** overeenkomt met het komt overeen met het service bus perspectief.
+Bij sessiebewuste wachtrijen of abonnementen ontstaan sessies wanneer er ten minste één bericht is met de [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId)van de sessie. Zodra een sessie bestaat, is er geen gedefinieerde tijd of API voor wanneer de sessie verloopt of verdwijnt. Theoretisch kan een bericht worden ontvangen voor een sessie vandaag, het volgende bericht in een jaar tijd, en als de **SessionId** overeenkomt, de sessie is hetzelfde vanuit de Service Bus perspectief.
 
-Normaal gesp roken bevat een toepassing echter een duidelijk begrip van waar een reeks gerelateerde berichten begint en eindigt. Service Bus stelt geen specifieke regels in.
+Meestal heeft een toepassing echter een duidelijk idee van waar een reeks gerelateerde berichten begint en eindigt. Service Bus stelt geen specifieke regels in.
 
-Een voor beeld van het afbakenen van een reeks voor het overdragen van een bestand is het instellen van de **Label** eigenschap voor het eerste bericht dat moet worden **gestart**, voor tussenliggende berichten tot **inhoud**en voor het laatste bericht dat moet worden **beëindigd**. De relatieve positie van de inhouds berichten kan worden berekend als het huidige bericht *SequenceNumber* Delta van het **begin** bericht *SequenceNumber*.
+Een voorbeeld van het definiëren van een reeks voor het overbrengen van een bestand is het instellen van de eigenschap **Label** voor het eerste bericht dat **wordt gestart,** voor tussenliggende berichten naar **inhoud**en voor het laatste bericht om te **eindigen**. De relatieve positie van de inhoudsberichten kan worden berekend als de delta van het huidige bericht *SequenceNumber* vanaf het **beginbericht** *SequenceNumber*.
 
-Met de sessie functie in Service Bus kan een specifieke ontvangst bewerking worden uitgevoerd, in [](/dotnet/api/microsoft.servicebus.messaging.messagesession) de vorm van C# MessageSession in de en Java-api's. U schakelt het onderdeel in door de eigenschap [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) in te stellen voor de wachtrij of het abonnement via Azure Resource Manager, of door de vlag in te stellen in de portal. Het is vereist voordat u de gerelateerde API-bewerkingen probeert te gebruiken.
+De sessiefunctie in Service Bus maakt een specifieke ontvangstbewerking mogelijk, in de vorm van [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) in de C# en Java API's. U schakelt de functie in door de eigenschap [requiresSession](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) in te stellen in de wachtrij of het abonnement via Azure Resource Manager of door de vlag in de portal in te stellen. Dit is vereist voordat u probeert de gerelateerde API-bewerkingen te gebruiken.
 
-Stel in de Portal de vlag in met het volgende selectie vakje:
+Stel in de portal de vlag in met het volgende selectievakje:
 
 ![][2]
 
 > [!NOTE]
-> Wanneer sessies zijn ingeschakeld voor een wachtrij of een abonnement, kunnen de client toepassingen ***geen*** normale berichten meer verzenden/ontvangen. Alle berichten moeten worden verzonden als onderdeel van een sessie (door de sessie-id in te stellen) en ontvangen door de sessie te ontvangen.
+> Wanneer Sessies zijn ingeschakeld in een wachtrij of een abonnement, kunnen de clienttoepassingen geen gewone berichten ***meer*** verzenden/ontvangen. Alle berichten moeten worden verzonden als onderdeel van een sessie (door het sessie-id in te stellen) en ontvangen door de sessie te ontvangen.
 
-De Api's voor sessies bestaan op de wachtrij-en abonnements-clients. Er is een essentieel model dat bepaalt wanneer er sessies en berichten worden ontvangen en een op een handler gebaseerd model, vergelijkbaar met *OnMessage*, waarmee de complexiteit van het beheer van de receive-lus wordt verborgen.
+De API's voor sessies bestaan op wachtrij- en abonnementsclients. Er is een noodzakelijk model dat bepaalt wanneer sessies en berichten worden ontvangen, en een handler-gebaseerd model, vergelijkbaar met *OnMessage,* dat de complexiteit van het beheren van de ontvangen lus verbergt.
 
-### <a name="session-features"></a>Sessie functies
+### <a name="session-features"></a>Sessiefuncties
 
-Sessies bieden gelijktijdige demultiplexing van Interleaved-berichten stromen tijdens het behoud en het garanderen van de bestelde levering.
+Sessies bieden gelijktijdige demultiplexing van interleaved berichtstromen met behoud en garantie van de bestelde levering.
 
 ![][1]
 
-Er wordt een [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -ontvanger gemaakt door de client die een sessie accepteert. De client roept [QueueClient. AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) of [QueueClient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) aan C#in. In het reactieve call back-model registreert het een sessie-handler.
+Een [MessageSession-ontvanger](/dotnet/api/microsoft.servicebus.messaging.messagesession) wordt gemaakt door dat de client een sessie accepteert. De client roept [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) of [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) in C#. In het reactieve callbackmodel registreert het een sessiehandler.
 
-Wanneer het [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -object wordt geaccepteerd en terwijl het wordt bewaard door een-client, bevat die client een exclusieve vergren deling voor alle berichten met de [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) van die sessie die voor komt in de wachtrij of het abonnement, en ook op alle berichten met die **SessionID** die nog steeds arriveren terwijl de sessie wordt gehouden.
+Wanneer het [Object MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) wordt geaccepteerd en terwijl het door een client wordt bewaard, houdt die client een exclusief slot op alle berichten met de [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) van die sessie die in de wachtrij of het abonnement bestaat, en ook op alle berichten met die **SessionId** die nog steeds aankomen terwijl de sessie wordt gehouden.
 
-De vergren deling wordt vrijgegeven wanneer **Close** of **CloseAsync** wordt aangeroepen, of wanneer de vergren deling verloopt in gevallen waarin de toepassing de sluit bewerking niet kan uitvoeren. De sessie vergrendeling moet worden behandeld als een exclusieve vergren deling van een bestand, wat inhoudt dat de toepassing de sessie moet sluiten zodra deze niet meer nodig is en/of geen verdere berichten verwacht.
+Het slot wordt vrijgegeven wanneer **Sluiten** of **CloseAsync** wordt aangeroepen of wanneer het slot verloopt in gevallen waarin de toepassing de sluitbewerking niet kan uitvoeren. Het sessieslot moet worden behandeld als een exclusief slot op een bestand, wat betekent dat de toepassing de sessie moet sluiten zodra het niet meer nodig heeft en/of geen verdere berichten verwacht.
 
-Wanneer meerdere gelijktijdige ontvangers uit de wachtrij halen, worden de berichten die tot een bepaalde sessie behoren, verzonden naar de specifieke ontvanger die momenteel de vergren deling voor die sessie bevat. Met deze bewerking wordt een Interleaved-berichten stroom in één wachtrij of abonnement schoon gemultiplext voor verschillende ontvangers en kunnen ontvangers ook live op verschillende client computers worden uitgevoerd, omdat het vergrendelings beheer aan de service zijde in Service Bus.
+Wanneer meerdere gelijktijdige ontvangers uit de wachtrij worden getrokken, worden de berichten die behoren tot een bepaalde sessie verzonden naar de specifieke ontvanger die momenteel het slot voor die sessie vasthoudt. Met die bewerking wordt een interleaved berichtenstroom in één wachtrij of abonnement netjes gedemultiplexed naar verschillende ontvangers en kunnen die ontvangers ook op verschillende clientmachines leven, omdat het vergrendelingsbeheer service-kant gebeurt, binnen Service Bus.
 
-In de vorige afbeelding worden drie sessie ontvangers gelijktijdig weer gegeven. Een sessie met `SessionId` = 4 heeft geen actieve, eigenaarste client, wat betekent dat er geen berichten vanuit deze specifieke sessie worden afgeleverd. Een sessie werkt op verschillende manieren als een subwachtrij.
+De vorige illustratie toont drie gelijktijdige sessie-ontvangers. Eén sessie `SessionId` met = 4 heeft geen actieve, bezittende client, wat betekent dat er geen berichten worden bezorgd vanuit deze specifieke sessie. Een sessie werkt op vele manieren als een subwachtrij.
 
-De sessie vergrendeling die wordt gehouden door de sessie ontvanger is een paraplu voor de bericht vergrendelingen die worden gebruikt door de modus voor het weer geven van *vergren delingen* . Een ontvanger kan niet twee berichten gelijktijdig hebben ' in vlucht ', maar de berichten moeten op volg orde worden verwerkt. Een nieuw bericht kan alleen worden verkregen wanneer het vorige bericht is voltooid of onbesteld is. Het afbreken van een bericht zorgt ervoor dat hetzelfde bericht opnieuw wordt weer gegeven met de volgende ontvangst bewerking.
+Het sessieslot dat door de sessieontvanger wordt vastgehouden, is een paraplu voor de berichtvergrendelingen die worden gebruikt door de peek-lock-vereffeningsmodus. *peek-lock* Een ontvanger kan niet twee berichten tegelijk 'tijdens de vlucht' hebben, maar de berichten moeten in volgorde worden verwerkt. Een nieuw bericht kan alleen worden verkregen als het eerdere bericht is voltooid of doodgeletterd is. Als u een bericht verlaat, wordt hetzelfde bericht opnieuw weergegeven bij de volgende ontvangstbewerking.
 
-### <a name="message-session-state"></a>Status van de bericht sessie
+### <a name="message-session-state"></a>Status van berichtsessie
 
-Wanneer werk stromen worden verwerkt in Cloud systemen met hoge Beschik baarheid, moet de werk stroom-handler die aan een bepaalde sessie is gekoppeld, kunnen worden hersteld van onverwachte fouten en kan het gedeeltelijk voltooide werk worden hervat op een ander proces of op een andere computer dan waar het werk begon.
+Wanneer werkstromen worden verwerkt in cloudsystemen met grote beschikbaarheid, moet de workflowhandler die aan een bepaalde sessie is gekoppeld, kunnen herstellen van onverwachte fouten en kan hij gedeeltelijk voltooide werkzaamheden hervatten op een ander proces of machine dan waar het werk begon.
 
-De functie sessie status maakt een door de toepassing gedefinieerde aantekening van een bericht sessie binnen de Broker mogelijk, zodat de vastgelegde verwerkings status ten opzichte van die sessie direct beschikbaar wordt wanneer de sessie wordt verkregen door een nieuwe processor.
+De sessiestatusfaciliteit maakt een door de toepassing gedefinieerde annotatie van een berichtsessie binnen de broker mogelijk, zodat de opgenomen verwerkingsstatus ten opzichte van die sessie direct beschikbaar wordt wanneer de sessie wordt overgenomen door een nieuwe processor.
 
-Vanuit het Service Bus perspectief is de status van de bericht sessie een ondoorzichtig binair object dat gegevens kan bevatten van de grootte van één bericht, 256 KB voor Service Bus standaard en 1 MB voor Service Bus Premium. De verwerkings status ten opzichte van een sessie kan worden vastgehouden binnen de sessie status, of de sessie status kan verwijzen naar een opslag locatie of database record die dergelijke informatie bevat.
+Vanuit het perspectief servicebus is de status van de berichtsessie een ondoorzichtig binair object dat gegevens van de grootte van één bericht kan bevatten, namelijk 256 KB voor Service Bus Standard, en 1 MB voor Service Bus Premium. De verwerkingsstatus ten opzichte van een sessie kan worden gehouden in de sessiestatus of de sessiestatus kan wijzen op een opslaglocatie of databaserecord met dergelijke informatie.
 
-De Api's voor het beheren van de sessie status, [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) en [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState), kunt u vinden in het object [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) in zowel de als de C# Java-api's. Een sessie die eerder geen sessie statusset had, retourneert een **Null** -verwijzing voor **GetState**. Het wissen van de eerder ingestelde sessie status is voltooid met [SetState (null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_).
+De API's voor het beheren van de sessiestatus, [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) en [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)zijn te vinden op het object [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) in zowel de C#- als java-API's. Een sessie die voorheen geen sessiestatus had ingesteld, retourneert een **null-verwijzing** voor **GetState**. Het wissen van de eerder ingestelde sessiestatus gebeurt met [SetState(null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_).
 
-De sessie status blijft ongewijzigd, omdat deze niet is gewist ( **Null**wordt geretourneerd), zelfs als alle berichten in een sessie worden verbruikt.
+De sessiestatus blijft zolang deze niet is gewist **(null retourneren),** zelfs als alle berichten in een sessie worden verbruikt.
 
-Alle bestaande sessies in een wachtrij of abonnement kunnen worden geïnventariseerd met de **SessionBrowser** -methode in de Java API en met [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) op de [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) en [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) in de .net-client.
+Alle bestaande sessies in een wachtrij of abonnement kunnen worden opgesomd met de **SessionBrowser-methode** in de Java-API en met [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) op de [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) en [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) in de .NET-client.
 
-De sessie status die is opgeslagen in een wachtrij of in een abonnement, telt de opslag limiet van die entiteit. Wanneer de toepassing is voltooid met een sessie, wordt het aanbevolen om de status van de toepassing op te schonen om te voor komen dat de kosten voor externe beheer worden bespaard.
+De sessiestatus die in een wachtrij of in een abonnement wordt gehouden, telt mee voor het opslagquotum van die entiteit. Wanneer de toepassing is voltooid met een sessie, is het daarom raadzaam voor de toepassing om de bewaarde status op te schonen om externe beheerkosten te voorkomen.
 
 ### <a name="impact-of-delivery-count"></a>Impact van het aantal levering
 
-De definitie van het aantal leveringen per bericht in de context van sessies verschilt enigszins van de definitie in afwezigheid van sessies. Hier volgt een tabel met een samen vatting van het aantal leverings stappen.
+De definitie van het aantal bezorging per bericht in de context van sessies wijkt enigszins af van de definitie bij afwezigheid van sessies. Hier is een tabel met een samenvatting wanneer het aantal levering wordt verhoogd.
 
-| Scenario | Is het aantal leveringen van het bericht verhoogd |
+| Scenario | Is het aantal bezorgingshoeveelheden van het bericht verhoogd |
 |----------|---------------------------------------------|
-| Sessie wordt geaccepteerd, maar de sessie vergrendeling verloopt (vanwege een time-out) | Ja |
-| Sessie wordt geaccepteerd, de berichten in de sessie worden niet voltooid (zelfs als ze zijn vergrendeld) en de sessie wordt gesloten | Nee |
-| Sessie wordt geaccepteerd, berichten worden voltooid en de sessie wordt vervolgens expliciet gesloten | N.v.t. (het is de standaard stroom). Hier worden berichten uit de sessie verwijderd) |
+| Sessie wordt geaccepteerd, maar het sessieslot verloopt (vanwege een time-out) | Ja |
+| Sessie wordt geaccepteerd, de berichten binnen de sessie zijn niet voltooid (zelfs als ze zijn vergrendeld) en de sessie is gesloten | Nee |
+| Sessie wordt geaccepteerd, berichten worden voltooid en vervolgens wordt de sessie expliciet gesloten | N/A (Het is de standaard stroom. Hier worden berichten uit de sessie verwijderd) |
 
-## <a name="request-response-pattern"></a>Aanvraag-antwoord patroon
-Het [patroon aanvraag/antwoord](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) is een goed opgezet integratie patroon waarmee de toepassing Sender een aanvraag kan verzenden en biedt de ontvanger een manier om een antwoord te verzenden naar de toepassing van de afzender. Voor dit patroon is doorgaans een wachtrij of onderwerp vereist voor het verzenden van antwoorden naar de toepassing. In dit scenario bieden sessies een eenvoudige alternatieve oplossing met vergelijk bare semantiek. 
+## <a name="request-response-pattern"></a>Patroon voor antwoord op verzoek
+Het [patroon van het verzoek-antwoord](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) is een gevestigd integratiepatroon waarmee de afzendertoepassing een verzoek kan verzenden en biedt een manier voor de ontvanger om een antwoord correct terug te sturen naar de afzendertoepassing. Dit patroon heeft meestal een wachtrij of onderwerp van korte duur nodig om de toepassing naar te sturen. In dit scenario bieden sessies een eenvoudige alternatieve oplossing met vergelijkbare semantiek. 
 
-Meerdere toepassingen kunnen hun aanvragen verzenden naar één aanvraag wachtrij, waarbij een specifieke header parameter is ingesteld op unieke identificatie van de afzender toepassing. De receiver-toepassing kan de aanvragen die afkomstig zijn in de wachtrij verwerken en antwoorden verzenden voor een wachtrij met sessies, waarbij de sessie-ID wordt ingesteld op de unieke id die de afzender heeft verzonden op het aanvraag bericht. De toepassing die de aanvraag heeft verzonden, kan vervolgens berichten ontvangen over een specifieke sessie-ID en de antwoorden op de juiste manier verwerken.
+Meerdere toepassingen kunnen hun aanvragen naar één aanvraagwachtrij sturen, waarbij een specifieke kopparameter is ingesteld om de afzendertoepassing op unieke wijze te identificeren. De ontvangertoepassing kan de aanvragen verwerken die in de wachtrij binnenkomen en antwoorden verzenden in een wachtrij met sessies, waarbij de sessie-id wordt ingesteld op de unieke id die de afzender in het verzoekbericht had verzonden. De toepassing die het verzoek heeft verzonden, kan vervolgens berichten ontvangen op een specifieke sessie-id en de antwoorden correct verwerken.
 
 > [!NOTE]
-> De toepassing die de eerste aanvragen verzendt, moet weten over de sessie-ID en `SessionClient.AcceptMessageSession(SessionID)` gebruiken om de sessie te vergren delen waarop het antwoord wordt verwacht. Het is een goed idee om een GUID te gebruiken die het exemplaar van de toepassing uniek identificeert als een sessie-id. Er mag geen sessie-handler of `AcceptMessageSession(timeout)` in de wachtrij staan om ervoor te zorgen dat antwoorden beschikbaar zijn om te worden vergrendeld en verwerkt door specifieke ontvangers.
+> De toepassing die de eerste verzoeken verzendt, `SessionClient.AcceptMessageSession(SessionID)` moet op de hoogte zijn van de sessie-id en de sessie vergrendelen waarop de sessie wordt verwacht. Het is een goed idee om een GUID te gebruiken die de instantie van de toepassing op een unieke wijze identificeert als een sessie-id. Er mag geen sessie-handler of `AcceptMessageSession(timeout)` in de wachtrij staan om ervoor te zorgen dat antwoorden beschikbaar zijn om te worden vergrendeld en verwerkt door specifieke ontvangers.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de voor beelden van [micro soft. Azure. ServiceBus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) of [micro soft. ServiceBus. Messa ging](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) voor een voor beeld waarin de .NET Framework-client wordt gebruikt voor het afhandelen van sessie bewuste berichten. 
+- Zie de [voorbeelden van Microsoft.Azure.ServiceBus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) of [Microsoft.ServiceBus.Messaging](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) voor een voorbeeld dat de .NET Framework-client gebruikt om sessiebewuste berichten te verwerken. 
 
-Zie de volgende onderwerpen voor meer informatie over Service Bus Messa ging:
+Zie de volgende onderwerpen voor meer informatie over berichten over Service Bus:
 
 * [Service Bus-wachtrijen, -onderwerpen en -abonnementen](service-bus-queues-topics-subscriptions.md)
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)

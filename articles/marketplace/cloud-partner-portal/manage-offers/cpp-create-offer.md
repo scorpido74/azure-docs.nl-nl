@@ -1,62 +1,61 @@
 ---
-title: Marketplace-aanbiedingen maken | Azure Marketplace
-description: Aanbiedingen maken op Azure en AppSource marketplaces met behulp van de Cloud Partner-portal
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Marktplaatsaanbiedingen maken | Azure Marketplace
+description: Aanbiedingen maken op de Azure- en AppSource-marktplaatsen met behulp van de Cloud Partner Portal
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: pabutler
-ms.openlocfilehash: 4aa4e154c99f20963485a98d1a21af4ae2b7a1b1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d14940eff569a80759e9db0bfa2d6d1541a01377
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828103"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286469"
 ---
-# <a name="create-azure-marketplace-and-appsource-offers"></a>Azure Marketplace-en AppSource-aanbiedingen maken
+# <a name="create-azure-marketplace-and-appsource-offers"></a>Azure Marketplace- en AppSource-aanbiedingen maken
 
-Een essentieel doel van de Cloud Partner-portal is om uitgevers in staat te stellen om aanbiedingen te maken (en vervolgens te publiceren) naar de Microsoft Azure-en AppSource-markt plaatsen.  Met deze bewerking begint altijd met het selecteren van het gewenste type aanbieding in het [menu nieuwe aanbieding](../portal-tour/cpp-new-offer-menu.md).  Als antwoord wordt de juiste **nieuwe aanbiedings** pagina weer gegeven voor het type aanbieding.  De volgende afbeelding toont bijvoorbeeld de standaard pagina voor **nieuwe aanbiedingen** voor een type Azure-toepassing.
+Een essentieel doel van de Cloud Partner Portal is om uitgevers in staat te stellen aanbiedingen te maken (en vervolgens te publiceren) aan de Microsoft Azure en AppSource Marketplaces.  Deze bewerking begint altijd met het selecteren van het gewenste aanbiedingstype in het [menu Nieuwe aanbieding](../portal-tour/cpp-new-offer-menu.md).  Als reactie hierop wordt de juiste pagina **Met nieuwe aanbieding** weergegeven voor dat aanbiedingstype.  In de volgende afbeelding wordt bijvoorbeeld de standaardpagina **met nieuwe aanbieding** voor een Azure-toepassingstype weergegeven.
 
-![Standaard pagina van de nieuwe aanbieding](./media/new-offer-page.png)
+![Standaardpagina Nieuwe aanbieding](./media/new-offer-page.png)
 
-Er zijn twee tabblad selecties beschikbaar in de horizontale menu balk die boven aan deze pagina wordt weer gegeven: 
-- Tabblad **Editor** : Hiermee wordt het invoeren van informatie en het uploaden van assets voor het nieuwe exemplaar van de aanbieding ingeschakeld.  Dit tabblad wordt standaard weer gegeven.
-- Tabblad **status** : bevat de publicatie status en een lijst met alle validatie-en revisie problemen. 
+Er zijn twee tabselecties beschikbaar in de horizontale menubalk die naar boven aan deze pagina wordt weergegeven: 
+- **Tabblad Editor** - Hiermee u informatie invoeren en elementen uploaden voor het nieuwe aanbiedingsexemplaar.  Dit tabblad wordt standaard weergegeven.
+- **Tabblad Status** - Geeft de publicatiestatus op en geeft eventuele validatie- en controleproblemen weer. 
 
-Wanneer u een aanbieding maakt, gebruikt u het tabblad **Editor** om informatie over de aanbieding in te voeren. 
+Wanneer u een aanbieding maakt, gebruikt u het tabblad **Editor** om informatie over die aanbieding in te voeren. 
 
-## <a name="editing-operations"></a>Bewerkingen bewerken
+## <a name="editing-operations"></a>Bewerkingsbewerkingen
 
-Op de horizontale werk balk boven het gedeelte voor gegevens invoer worden de volgende knoppen weer gegeven:
+Op de horizontale werkbalk, die zich boven het gegevensinvoergebied bevindt, worden de volgende knoppen weergegeven:
 
 |   Knop    |   Doel                                                          |
 |   ------    |  --------                                                          |
-| **Opslaan**    | Hiermee worden wijzigingen in recente gegevens invoer opgeslagen.  U moet wijzigingen hand matig opslaan voordat u naar de pagina navigeert of uw wijzigingen gaan verloren. | 
-| **Hierdoor** | Wijzigingen in recente gegevens invoer worden verwijderd (sinds de laatste keer dat het bestand is opgeslagen)             |
-| **Vergelijken** | Vergelijkt de status van de huidige aanbieding met de gepubliceerde aanbieding.  Alleen ingeschakeld nadat een aanbieding is gepubliceerd.  |
-| **Publiceren** | Hiermee wordt het publicatie proces voor deze aanbieding gestart                       |
-| **Verwijderen**  | Deze aanbieding wordt verwijderd nadat deze is gemaakt, maar voordat deze wordt gepubliceerd. |
+| **Opslaan**    | Hiermee worden recente wijzigingen in gegevensinvoer opgeslagen.  U moet wijzigingen handmatig opslaan voordat u van de pagina wegnavigeert of voordat uw wijzigingen verloren gaan. | 
+| **Negeren** | Recente wijzigingen bij gegevensinvoer verwijderen (sinds de laatste opslag)             |
+| **Vergelijken** | Hiermee vergelijkt u de status van het huidige aanbod met het gepubliceerde aanbod.  Alleen ingeschakeld nadat een aanbieding is gepubliceerd.  |
+| **Publiceren** | Begint het publicatieproces voor deze aanbieding                       |
+| **Verwijderen**  | Hiermee verwijdert u deze aanbieding nadat deze is gemaakt, maar voordat deze is gepubliceerd. |
 |   |   |
 
 
 ## <a name="editing-tabs"></a>Tabbladen bewerken
 
-Wanneer u een aanbieding maakt, geeft u de vereiste en optionele gegevens op elk tabblad op in de verticale kolom links van de pagina **nieuw aanbod** .  Standaard besturings elementen voor de gebruikers interface, zoals tekst vakken, vervolg keuzemenu's en selectie vakjes, worden weer gegeven voor het verzamelen van gegevens.  Hoewel de specifieke verzameling bewerkings tabbladen afhankelijk is van het type aanbieding, worden in de volgende tabel enkele van de algemene tabbladen weer gegeven.
+Wanneer u een aanbieding maakt, levert u de vereiste en optionele gegevens op elk tabblad in de verticale kolom links van de pagina **Nieuwe aanbieding.**  Standaardbesturingselementen voor de gebruikersinterface, zoals tekstvakken, vervolgkeuzemenu's en selectievakjes, worden weergegeven voor het verzamelen van gegevens.  Hoewel de specifieke verzameling bewerkingstabbladen afhankelijk is van het aanbiedingstype, worden in de volgende tabel enkele algemene tabbladen weergegeven.
 
-|      Tabblad naam       |   Doel                                                            |
+|      Tabbladnaam       |   Doel                                                            |
 |      --------       |   -------                                                            |
-| **Aanbiedings instellingen**  | De identiteits gegevens van de aanbieding en uitgever verzamelen.                    |
-| **SKU's**            | Hiermee worden de technische en bedrijfs kenmerken gedefinieerd voor elke SKU-versie (Stock-Keeping Unit) van uw aanbieding |
-| **Station testen**      | Voor deze typen die deze optionele functie ondersteunen, definieert u een demonstratie voor uw aanbieding.  Zie [Wat is een test station?](../test-drive/what-is-test-drive.md) voor meer informatie.  |
-| **Marketplace** of **winkel** | Hiermee worden tekst reeksen, documenten en afbeeldingen verzameld die worden gebruikt om de aanbieding in de Marketplace weer te geven |
-| **Ondersteuning**         | Verzamelt contact gegevens voor klant-, technische en online ondersteuning  |
+| **Aanbiedingsinstellingen**  | Verzamelt identiteitsgegevens van aanbiedingen en uitgevers.                    |
+| **SKU's**            | Definieert de technische en zakelijke kenmerken voor elke SKU-versie (Stock-Unit) van uw aanbieding |
+| **Test Drive**      | Voor de typen die deze optionele functie ondersteunen, definieert u een demonstratie voor uw aanbieding.  Zie [Wat is Testdrive voor](../test-drive/what-is-test-drive.md) meer informatie?  |
+| **Marktplaats** of **winkelpui** | Verzamelt teksttekenreeksen, documenten en afbeeldingen die worden gebruikt om de aanbieding op de marktplaats weer te geven |
+| **Ondersteuning**         | Verzamelt contactgegevens voor klant-, engineering- en online ondersteuning  |
 |  |  |
 
-De inhoud van de tabbladen met dezelfde naam kan verschillen tussen de verschillende typen aanbiedingen.  Specifieke details van deze tabbladen vindt u in de sectie aanbieding maken voor elk type aanbieding.
+De inhoud van de tabbladen met dezelfde naam kan verschillen tussen verschillende aanbiedingstypen.  Aanbiedingsspecifieke details van deze tabbladen worden weergegeven in de sectie 'Aanbieding maken' voor elk aanbiedingstype.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u een aanbieding hebt gemaakt en opgeslagen en voor of nadat u deze hebt gepubliceerd, kunt u [de status ervan bekijken](./cpp-view-status-offer.md).
+Nadat u een aanbieding hebt gemaakt en opgeslagen en deze vóór of nadat u deze hebt gepubliceerd, u [de status ervan bekijken.](./cpp-view-status-offer.md)

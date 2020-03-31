@@ -1,70 +1,70 @@
 ---
-title: REGI ster-webhook-schema referentie
-description: Naslag informatie voor JSON-nettolading voor webhook-aanvragen in een Azure container Registry die worden gegenereerd wanneer webhooks zijn ingeschakeld voor artefact push of gebeurtenissen verwijderen
+title: Register webhook schema referentie
+description: Referentie voor JSON-payload voor webhook-aanvragen in een Azure-containerregister, die worden gegenereerd wanneer webhooks zijn ingeschakeld voor artefactpush- of verwijdergebeurtenissen
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74455976"
 ---
-# <a name="azure-container-registry-webhook-reference"></a>Verwijzing naar Azure Container Registry webhook
+# <a name="azure-container-registry-webhook-reference"></a>Webhook-verwijzing naar Azure Container Registry
 
-U kunt [webhooks configureren](container-registry-webhook.md) voor uw container register die gebeurtenissen genereren wanneer bepaalde acties worden uitgevoerd. Schakel bijvoorbeeld webhooks in die worden geactiveerd wanneer een container installatie kopie of het helm-diagram wordt gepusht naar een REGI ster of verwijderd. Wanneer een webhook wordt geactiveerd, wordt door Azure Container Registry een HTTP-of HTTPS-aanvraag met informatie over de gebeurtenis uitgegeven aan een eind punt dat u opgeeft. De webhook kan vervolgens door het eind punt worden verwerkt en dienovereenkomstig worden toegepast.
+U [webhooks configureren](container-registry-webhook.md) voor uw containerregister die gebeurtenissen genereren wanneer bepaalde acties ertegen worden uitgevoerd. Schakel bijvoorbeeld webhooks in die worden geactiveerd wanneer een containerafbeelding of Helm-diagram naar een register wordt gepusht of wordt verwijderd. Wanneer een webhook wordt geactiveerd, geeft Azure Container Registry een HTTP- of HTTPS-verzoek met informatie over de gebeurtenis uit aan een eindpunt dat u opgeeft. Uw eindpunt kan dan de webhook verwerken en dienovereenkomstig handelen.
 
-De volgende secties beschrijven het schema van webhook-aanvragen die worden gegenereerd door ondersteunde gebeurtenissen. De gebeurtenis secties bevatten het payload-schema voor het gebeurtenis type, een voor beeld van een aanvraag lading en een of meer voorbeeld opdrachten waarmee de webhook wordt geactiveerd.
+In de volgende secties wordt het schema beschreven van webhook-aanvragen die worden gegenereerd door ondersteunde gebeurtenissen. De gebeurtenissecties bevatten het payload-schema voor het gebeurtenistype, een voorbeeldaanvraagpayload en een of meer voorbeeldopdrachten die de webhook zouden activeren.
 
-Zie [Azure container Registry-webhooks gebruiken](container-registry-webhook.md)voor meer informatie over het configureren van webhooks voor uw Azure container Registry.
+Zie [Webhooks](container-registry-webhook.md)gebruiken voor informatie over het configureren van webhooks voor uw Azure-containerregister.
 
-## <a name="webhook-requests"></a>Webhook-aanvragen
+## <a name="webhook-requests"></a>Webhook-verzoeken
 
 ### <a name="http-request"></a>HTTP-aanvraag
 
-Met een geactiveerde webhook wordt een HTTP-`POST` aanvraag verzonden naar het URL-eind punt dat u hebt opgegeven tijdens het configureren van de webhook.
+Een geactiveerde webhook `POST` maakt een HTTP-aanvraag naar het URL-eindpunt dat u hebt opgegeven toen u de webhook configureerde.
 
-### <a name="http-headers"></a>HTTP-headers
+### <a name="http-headers"></a>HTTP-kopteksten
 
-Webhook-aanvragen bevatten een `Content-Type` van `application/json` als u geen aangepaste koptekst voor `Content-Type` hebt opgegeven voor uw webhook.
+Webhook-verzoeken `Content-Type` bevatten `application/json` een van als `Content-Type` u geen aangepaste header voor uw webhook hebt opgegeven.
 
-Er worden geen andere headers aan de aanvraag toegevoegd naast de aangepaste headers die u mogelijk hebt opgegeven voor de webhook.
+Er worden geen andere kopteksten aan de aanvraag toegevoegd die verder gaan dan de aangepaste kopteksten die u mogelijk voor de webhook hebt opgegeven.
 
-## <a name="push-event"></a>Push gebeurtenis
+## <a name="push-event"></a>Pushgebeurtenis
 
-Webhook geactiveerd wanneer een container installatie kopie naar een opslag plaats wordt gepusht.
+Webhook geactiveerd wanneer een containerafbeelding naar een opslagplaats wordt gepusht.
 
-### <a name="push-event-payload"></a>Nettolading van push gebeurtenis
+### <a name="push-event-payload"></a>Laadgebeurtenispayload pushen
 
 |Element|Type|Beschrijving|
 |-------------|----------|-----------|
-|`id`|Tekenreeks|De ID van de webhook-gebeurtenis.|
-|`timestamp`|Datum/tijd|Het tijdstip waarop de webhook-gebeurtenis is geactiveerd.|
-|`action`|Tekenreeks|De actie die de gebeurtenis webhook heeft geactiveerd.|
-|[stemming](#target)|Complex type|Het doel van de gebeurtenis die de gebeurtenis webhook heeft geactiveerd.|
-|[schot](#request)|Complex type|De aanvraag die de gebeurtenis webhook heeft gegenereerd.|
+|`id`|Tekenreeks|De ID van het webhook evenement.|
+|`timestamp`|DateTime|Het moment waarop de webhook-gebeurtenis werd geactiveerd.|
+|`action`|Tekenreeks|De actie die de webhook-gebeurtenis heeft geactiveerd.|
+|[Doel](#target)|Complex Type|Het doel van de gebeurtenis die de gebeurtenis webhook heeft geactiveerd.|
+|[Verzoek](#request)|Complex Type|Het verzoek dat de webhook-gebeurtenis heeft gegenereerd.|
 
-### <a name="target"></a>stemming
+### <a name="target"></a><a name="target"></a>Doel
 
 |Element|Type|Beschrijving|
 |------------------|----------|-----------|
 |`mediaType`|Tekenreeks|Het MIME-type van het object waarnaar wordt verwezen.|
-|`size`|Int32|Het aantal bytes van de inhoud. Gelijk aan het veld lengte.|
-|`digest`|Tekenreeks|De samen vatting van de inhoud, zoals gedefinieerd in de HTTP API-specificatie van Regi ster v2.|
-|`length`|Int32|Het aantal bytes van de inhoud. Gelijk aan het veld grootte.|
-|`repository`|Tekenreeks|De naam van de opslag plaats.|
-|`tag`|Tekenreeks|De naam van de afbeeldings code.|
+|`size`|Int32|Het aantal bytes van de inhoud. Hetzelfde als het veld Lengte.|
+|`digest`|Tekenreeks|De samenvatting van de inhoud, zoals gedefinieerd in de Registry V2 HTTP API Specification.|
+|`length`|Int32|Het aantal bytes van de inhoud. Hetzelfde als het veld Grootte.|
+|`repository`|Tekenreeks|De naam van de opslagplaats.|
+|`tag`|Tekenreeks|De naam van de afbeeldingstag.|
 
-### <a name="request"></a>schot
+### <a name="request"></a><a name="request"></a>Verzoek
 
 |Element|Type|Beschrijving|
 |------------------|----------|-----------|
-|`id`|Tekenreeks|De ID van de aanvraag die de gebeurtenis heeft gestart.|
-|`host`|Tekenreeks|De extern toegankelijke hostnaam van het register exemplaar, zoals opgegeven door de HTTP-host-header op binnenkomende aanvragen.|
-|`method`|Tekenreeks|De aanvraag methode waarmee de gebeurtenis is gegenereerd.|
-|`useragent`|Tekenreeks|De header van de gebruikers agent van de aanvraag.|
+|`id`|Tekenreeks|De id van het verzoek dat de gebeurtenis heeft geïnitieerd.|
+|`host`|Tekenreeks|De extern toegankelijke hostnaam van de registerinstantie, zoals opgegeven door de HTTP-hostheader bij binnenkomende aanvragen.|
+|`method`|Tekenreeks|De aanvraagmethode die de gebeurtenis heeft gegenereerd.|
+|`useragent`|Tekenreeks|De header van de gebruikersagent van de aanvraag.|
 
-### <a name="payload-example-image-push-event"></a>Voor beeld van Payload: installatie kopie push gebeurtenis
+### <a name="payload-example-image-push-event"></a>Payload voorbeeld: image push gebeurtenis
 
 ```JSON
 {
@@ -88,38 +88,38 @@ Webhook geactiveerd wanneer een container installatie kopie naar een opslag plaa
 }
 ```
 
-Voor beeld van [docker cli](https://docs.docker.com/engine/reference/commandline/cli/) -opdracht waarmee de installatie kopie **Push** Event-webhook wordt geactiveerd:
+Voorbeeld Van de opdracht [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) die de webhook van de **afbeeldingspushgebeurtenis** activeert:
 
 ```bash
 docker push myregistry.azurecr.io/hello-world:v1
 ```
 
-## <a name="chart-push-event"></a>Push gebeurtenis van grafiek
+## <a name="chart-push-event"></a>Grafiekpushgebeurtenis
 
-Webhook geactiveerd wanneer een helm-grafiek naar een opslag plaats wordt gepusht.
+Webhook geactiveerd wanneer een Helm grafiek wordt geduwd naar een repository.
 
-### <a name="chart-push-event-payload"></a>Nettolading van push gebeurtenis van grafiek
+### <a name="chart-push-event-payload"></a>Payload van grafiekpushgebeurtenis
 
 |Element|Type|Beschrijving|
 |-------------|----------|-----------|
-|`id`|Tekenreeks|De ID van de webhook-gebeurtenis.|
-|`timestamp`|Datum/tijd|Het tijdstip waarop de webhook-gebeurtenis is geactiveerd.|
-|`action`|Tekenreeks|De actie die de gebeurtenis webhook heeft geactiveerd.|
-|[stemming](#helm_target)|Complex type|Het doel van de gebeurtenis die de gebeurtenis webhook heeft geactiveerd.|
+|`id`|Tekenreeks|De ID van het webhook evenement.|
+|`timestamp`|DateTime|Het moment waarop de webhook-gebeurtenis werd geactiveerd.|
+|`action`|Tekenreeks|De actie die de webhook-gebeurtenis heeft geactiveerd.|
+|[Doel](#helm_target)|Complex Type|Het doel van de gebeurtenis die de gebeurtenis webhook heeft geactiveerd.|
 
-### <a name="helm_target"></a>stemming
+### <a name="target"></a><a name="helm_target"></a>Doel
 
 |Element|Type|Beschrijving|
 |------------------|----------|-----------|
 |`mediaType`|Tekenreeks|Het MIME-type van het object waarnaar wordt verwezen.|
 |`size`|Int32|Het aantal bytes van de inhoud.|
-|`digest`|Tekenreeks|De samen vatting van de inhoud, zoals gedefinieerd in de HTTP API-specificatie van Regi ster v2.|
-|`repository`|Tekenreeks|De naam van de opslag plaats.|
-|`tag`|Tekenreeks|De naam van de grafiek code.|
+|`digest`|Tekenreeks|De samenvatting van de inhoud, zoals gedefinieerd in de Registry V2 HTTP API Specification.|
+|`repository`|Tekenreeks|De naam van de opslagplaats.|
+|`tag`|Tekenreeks|De naam van de grafiektag.|
 |`name`|Tekenreeks|De naam van de grafiek.|
-|`version`|Tekenreeks|De grafiek versie.|
+|`version`|Tekenreeks|De grafiekversie.|
 
-### <a name="payload-example-chart-push-event"></a>Payload-voor beeld: grafiek push gebeurtenis
+### <a name="payload-example-chart-push-event"></a>Payload voorbeeld: grafiek push gebeurtenis
 
 ```JSON
 {
@@ -138,7 +138,7 @@ Webhook geactiveerd wanneer een helm-grafiek naar een opslag plaats wordt gepush
 }
 ```
 
-Voor beeld van een [Azure cli](/cli/azure/acr) -opdracht waarmee de **chart_push** Event-webhook wordt geactiveerd:
+Voorbeeld [van de](/cli/azure/acr) opdracht Azure CLI waarmee de **webhook van** de chart_push gebeurtenis wordt geactiveerd:
 
 ```azurecli
 az acr helm push wordpress-5.4.0.tgz --name MyRegistry
@@ -146,36 +146,36 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ## <a name="delete-event"></a>Gebeurtenis verwijderen
 
-Webhook wordt geactiveerd wanneer een afbeeldings opslagplaats of-manifest wordt verwijderd. Wordt niet geactiveerd wanneer een label wordt verwijderd.
+Webhook geactiveerd wanneer een afbeeldingsopslagplaats of -manifest wordt verwijderd. Niet geactiveerd wanneer een tag wordt verwijderd.
 
-### <a name="delete-event-payload"></a>Gebeurtenis lading verwijderen
+### <a name="delete-event-payload"></a>Gebeurtenispayload verwijderen
 
 |Element|Type|Beschrijving|
 |-------------|----------|-----------|
-|`id`|Tekenreeks|De ID van de webhook-gebeurtenis.|
-|`timestamp`|Datum/tijd|Het tijdstip waarop de webhook-gebeurtenis is geactiveerd.|
-|`action`|Tekenreeks|De actie die de gebeurtenis webhook heeft geactiveerd.|
-|[stemming](#delete_target)|Complex type|Het doel van de gebeurtenis die de gebeurtenis webhook heeft geactiveerd.|
-|[schot](#delete_request)|Complex type|De aanvraag die de gebeurtenis webhook heeft gegenereerd.|
+|`id`|Tekenreeks|De ID van het webhook evenement.|
+|`timestamp`|DateTime|Het moment waarop de webhook-gebeurtenis werd geactiveerd.|
+|`action`|Tekenreeks|De actie die de webhook-gebeurtenis heeft geactiveerd.|
+|[Doel](#delete_target)|Complex Type|Het doel van de gebeurtenis die de gebeurtenis webhook heeft geactiveerd.|
+|[Verzoek](#delete_request)|Complex Type|Het verzoek dat de webhook-gebeurtenis heeft gegenereerd.|
 
-### <a name="delete_target"></a>stemming
+### <a name="target"></a><a name="delete_target"></a>Doel
 
 |Element|Type|Beschrijving|
 |------------------|----------|-----------|
 |`mediaType`|Tekenreeks|Het MIME-type van het object waarnaar wordt verwezen.|
-|`digest`|Tekenreeks|De samen vatting van de inhoud, zoals gedefinieerd in de HTTP API-specificatie van Regi ster v2.|
-|`repository`|Tekenreeks|De naam van de opslag plaats.|
+|`digest`|Tekenreeks|De samenvatting van de inhoud, zoals gedefinieerd in de Registry V2 HTTP API Specification.|
+|`repository`|Tekenreeks|De naam van de opslagplaats.|
 
-### <a name="delete_request"></a>schot
+### <a name="request"></a><a name="delete_request"></a>Verzoek
 
 |Element|Type|Beschrijving|
 |------------------|----------|-----------|
-|`id`|Tekenreeks|De ID van de aanvraag die de gebeurtenis heeft gestart.|
-|`host`|Tekenreeks|De extern toegankelijke hostnaam van het register exemplaar, zoals opgegeven door de HTTP-host-header op binnenkomende aanvragen.|
-|`method`|Tekenreeks|De aanvraag methode waarmee de gebeurtenis is gegenereerd.|
-|`useragent`|Tekenreeks|De header van de gebruikers agent van de aanvraag.|
+|`id`|Tekenreeks|De id van het verzoek dat de gebeurtenis heeft geïnitieerd.|
+|`host`|Tekenreeks|De extern toegankelijke hostnaam van de registerinstantie, zoals opgegeven door de HTTP-hostheader bij binnenkomende aanvragen.|
+|`method`|Tekenreeks|De aanvraagmethode die de gebeurtenis heeft gegenereerd.|
+|`useragent`|Tekenreeks|De header van de gebruikersagent van de aanvraag.|
 
-### <a name="payload-example-image-delete-event"></a>Voor beeld van Payload: afbeelding verwijderen gebeurtenis
+### <a name="payload-example-image-delete-event"></a>Payload-voorbeeld: gebeurtenis voor het verwijderen van afbeeldingen
 
 ```JSON
 {
@@ -196,7 +196,7 @@ Webhook wordt geactiveerd wanneer een afbeeldings opslagplaats of-manifest wordt
   }
 ```
 
-Voor beelden van [Azure cli](/cli/azure/acr) -opdrachten waarmee een **Delete** Event-webhook wordt geactiveerd:
+Voorbeeld [van Azure CLI-opdrachten](/cli/azure/acr) die een webhook **voor verwijderen** activeren:
 
 ```azurecli
 # Delete repository
@@ -206,32 +206,32 @@ az acr repository delete --name MyRegistry --repository MyRepository
 az acr repository delete --name MyRegistry --image MyRepository:MyTag
 ```
 
-## <a name="chart-delete-event"></a>Gebeurtenis grafiek verwijderen
+## <a name="chart-delete-event"></a>Gebeurtenis voor het verwijderen van grafieken
 
-Webhook geactiveerd wanneer een helm-grafiek of-opslag plaats wordt verwijderd. 
+Webhook geactiveerd wanneer een Helm-grafiek of -opslagplaats wordt verwijderd. 
 
-### <a name="chart-delete-event-payload"></a>Gebeurtenis lading van grafiek verwijderen
+### <a name="chart-delete-event-payload"></a>Gebeurtenispayload voor het verwijderen van grafieken
 
 |Element|Type|Beschrijving|
 |-------------|----------|-----------|
-|`id`|Tekenreeks|De ID van de webhook-gebeurtenis.|
-|`timestamp`|Datum/tijd|Het tijdstip waarop de webhook-gebeurtenis is geactiveerd.|
-|`action`|Tekenreeks|De actie die de gebeurtenis webhook heeft geactiveerd.|
-|[stemming](#chart_delete_target)|Complex type|Het doel van de gebeurtenis die de gebeurtenis webhook heeft geactiveerd.|
+|`id`|Tekenreeks|De ID van het webhook evenement.|
+|`timestamp`|DateTime|Het moment waarop de webhook-gebeurtenis werd geactiveerd.|
+|`action`|Tekenreeks|De actie die de webhook-gebeurtenis heeft geactiveerd.|
+|[Doel](#chart_delete_target)|Complex Type|Het doel van de gebeurtenis die de gebeurtenis webhook heeft geactiveerd.|
 
-### <a name="chart_delete_target"></a>stemming
+### <a name="target"></a><a name="chart_delete_target"></a>Doel
 
 |Element|Type|Beschrijving|
 |------------------|----------|-----------|
 |`mediaType`|Tekenreeks|Het MIME-type van het object waarnaar wordt verwezen.|
 |`size`|Int32|Het aantal bytes van de inhoud.|
-|`digest`|Tekenreeks|De samen vatting van de inhoud, zoals gedefinieerd in de HTTP API-specificatie van Regi ster v2.|
-|`repository`|Tekenreeks|De naam van de opslag plaats.|
-|`tag`|Tekenreeks|De naam van de grafiek code.|
+|`digest`|Tekenreeks|De samenvatting van de inhoud, zoals gedefinieerd in de Registry V2 HTTP API Specification.|
+|`repository`|Tekenreeks|De naam van de opslagplaats.|
+|`tag`|Tekenreeks|De naam van de grafiektag.|
 |`name`|Tekenreeks|De naam van de grafiek.|
-|`version`|Tekenreeks|De grafiek versie.|
+|`version`|Tekenreeks|De grafiekversie.|
 
-### <a name="payload-example-chart-delete-event"></a>Voor beeld van Payload: grafiek verwijderen gebeurtenis
+### <a name="payload-example-chart-delete-event"></a>Payload-voorbeeld: gebeurtenis voor het verwijderen van grafieken
 
 ```JSON
 {
@@ -250,7 +250,7 @@ Webhook geactiveerd wanneer een helm-grafiek of-opslag plaats wordt verwijderd.
 }
 ```
 
-Voor beeld van een [Azure cli](/cli/azure/acr) -opdracht waarmee de **chart_delete** Event-webhook wordt geactiveerd:
+Voorbeeld [van de](/cli/azure/acr) opdracht Azure CLI waarmee de **webhook van** de chart_delete gebeurtenis wordt geactiveerd:
 
 ```azurecli
 az acr helm delete wordpress --version 5.4.0 --name MyRegistry
@@ -258,4 +258,4 @@ az acr helm delete wordpress --version 5.4.0 --name MyRegistry
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure Container Registry-webhooks gebruiken](container-registry-webhook.md)
+[Webhooks van Azure Container Registry gebruiken](container-registry-webhook.md)

@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 Series-hardware-onderdelen en-status | Microsoft Docs
-description: Meer informatie over het bewaken van de hardwareonderdelen van uw StorSimple-apparaat via de StorSimple Apparaatbeheer service.
+title: StorSimple 8000-serie hardwarecomponenten en -status | Microsoft Documenten
+description: Meer informatie over het bewaken van de hardwarecomponenten van uw StorSimple-apparaat via de StorSimple Device Manager-service.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,137 +15,137 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79254740"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>De StorSimple Apparaatbeheer-service gebruiken voor het bewaken van hardware-onderdelen en-status
+# <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>De StorSimple Device Manager-service gebruiken om hardwareonderdelen en status te controleren
 
 ## <a name="overview"></a>Overzicht
-In dit artikel worden de verschillende fysieke en logische onderdelen in uw on-premises StorSimple 8000 Series-apparaat beschreven. Ook wordt uitgelegd hoe u de status van de apparaatstatus bewaakt met behulp van de Blade **status en hardware** -status in de StorSimple-Apparaatbeheer service.
+Dit artikel beschrijft de verschillende fysieke en logische componenten in uw on-premises StorSimple 8000-serie apparaat. Het legt ook uit hoe u de status van de apparaatcomponent controleren met behulp van het beheer van de **status status status en de hardwarestatus** in de StorSimple Device Manager-service.
 
-Op de Blade **status en hardware Health** wordt de hardware-status weer gegeven van alle onderdelen van de StorSimple.
+Het verloop van de status en de **hardwarestatus** toont de hardwarestatus van alle StorSimple-apparaatonderdelen.
 
-Onder de lijst met onderdelen voor 8100 zijn drie secties te beschrijven:
+Onder de lijst van componenten voor 8100 staan drie secties die beschrijven:
 
-* **Gedeelde onderdelen** : deze zijn geen onderdeel van de controllers, zoals schijf stations, behuizing-, voeding-en koel module (PCM) onderdelen en PCM-Tempe ratuur, lijn spanning en lijn stroom sensors.
-* **Onderdelen van controller 0** : de onderdelen die zich bevinden op controller 0, zoals controller, SAS-uitbrei ding en connector, controller temperatuur Sens oren en de verschillende netwerk interfaces.
-* **Controller 1-onderdelen** : de onderdelen die controller 1 vormen, vergelijkbaar met die van controller 0.
+* **Gedeelde componenten** – Deze maken geen deel uit van de controllers, zoals schijven, behuizings-, energie- en koelmodulecomponenten en PCM-temperatuur, lijnspanning en lijnstroomsensoren.
+* **Controller 0 Componenten** – De componenten die zich op Controller 0 bevinden, zoals controller, SAS expander en connector, temperatuursensoren voor de controller en de verschillende netwerkinterfaces.
+* **Controller 1 Componenten** – De componenten die controller 1 vormen, vergelijkbaar met die voor Controller 0.
 
-Een 8600-apparaat heeft extra onderdelen die overeenkomen met de EBOD-behuizing (Extendedity of disks). Onder de lijst met onderdelen bevinden zich vijf secties. Er zijn drie secties die de onderdelen in de primaire behuizing bevatten en identiek zijn aan die van 8100. Er zijn twee extra secties voor de EBOD behuizing waarin wordt beschreven:
+Een 8600-apparaat heeft extra componenten die overeenkomen met de Extended Bunch of Disks (EBOD)-behuizing. Onder de lijst van componenten staan vijf secties. Hiervan zijn er drie secties die de componenten in de primaire behuizing bevatten en identiek zijn aan de secties die voor 8100 zijn beschreven. Er zijn twee extra secties voor de EBOD-behuizing die beschrijven:
 
-* **EBOD controller 0 onderdelen** : de onderdelen die zich bevinden op EBOD Enclosure 0, zoals de EBOD-controller, SAS-uitbrei ding en connector, en controller temperatuur sensors.
-* **EBOD controller 1-onderdelen** : de onderdelen die deel uitmaakten van EBOD Enclosure 1, vergelijkbaar met die van EBOD Enclosure 0.
-* **Gedeelde onderdelen van EBOD Enclosure** : de onderdelen die aanwezig zijn in de EBOD-behuizing en PCM die geen deel uitmaken van de EBOD-controller.
+* **EBOD Controller 0 Componenten** – De componenten die zich op EBOD-behuizing 0 bevinden, zoals de EBOD-controller, SAS-expander en -connector en temperatuursensoren voor de controller.
+* **EBOD Controller 1 Componenten** – De componenten die EBOD-behuizing 1 vormen, vergelijkbaar met de componenten die zijn beschreven voor EBOD-behuizing 0.
+* **EBOD-behuizing Gedeelde componenten** – De componenten die aanwezig zijn in de EBOD-behuizing en PCM die geen deel uitmaken van de EBOD-controller.
 
 > [!NOTE]
-> **De hardware-status is niet beschikbaar voor een StorSimple Cloud Appliance (8010/8020).**
+> **De hardwarestatus is niet beschikbaar voor een StorSimple Cloud Appliance (8010/8020).**
 
 
-## <a name="monitor-the-hardware-status"></a>De hardware-status controleren
-Voer de volgende stappen uit om de hardware-status van een onderdeel van een apparaat weer te geven:
+## <a name="monitor-the-hardware-status"></a>De hardwarestatus controleren
+Voer de volgende stappen uit om de hardwarestatus van een apparaatcomponent weer te geven:
 
-1. Navigeer naar **apparaten**, selecteer een specifiek StorSimple-apparaat. Ga naar **Monitor > hardware Health**.
+1. Navigeer naar **apparaten,** selecteer een specifiek StorSimple-apparaat. Ga naar **Monitor > Hardware-status**.
 
     ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
-2. Ga naar de sectie **hardware-onderdelen** en kies uit de beschik bare onderdelen. Klik op het onderdeel label om de lijst uit te vouwen en de status van de verschillende onderdelen van het apparaat weer te geven. Zie de [gedetailleerde onderdelen lijst voor de primaire behuizing](#component-list-for-primary-enclosure-of-storsimple-device) en de [gedetailleerde onderdelen lijst voor de EBOD behuizing](#component-list-for-ebod-enclosure-of-storsimple-device).
+2. Zoek de sectie **Hardware-onderdelen** en kies uit de beschikbare componenten. Klik op het componentlabel om de lijst uit te vouwen en de status van de verschillende apparaatonderdelen weer te geven. Zie de [gedetailleerde componentlijst voor de primaire bijlage](#component-list-for-primary-enclosure-of-storsimple-device) en de gedetailleerde [componentlijst voor de EBOD-bijlage](#component-list-for-ebod-enclosure-of-storsimple-device).
 
     ![](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
-3. Gebruik het volgende schema voor kleur codering om de status van het onderdeel te interpreteren:
+3. Gebruik het volgende kleurencoderingsschema om de componentstatus te interpreteren:
    
-   * **Groen vinkje** : Hiermee wordt een gezonde component met de status **OK** aangeduid.
-   * **Geel** : Hiermee wordt een gedegradeerd onderdeel met een **waarschuwings** status aangeduid.
-   * **Rood uitroep teken** : Hiermee wordt een defect onderdeel aangeduid dat de **status mislukt** heeft.
-   * **Wit met zwarte tekst** : Hiermee wordt een onderdeel aangeduid dat niet aanwezig is.
+   * **Groene controle** : duidt op een gezonde component met **de OK-status.**
+   * **Geel** : duidt een afgebroken component aan in **de status Waarschuwing.**
+   * **Rode uitroeptekens** : duidt op een mislukte component met de **status Fout.**
+   * **Wit met zwarte tekst** – geeft een component aan die niet aanwezig is.
    
-   In de volgende scherm afbeelding ziet u een apparaat met onderdelen in **OK**, **waarschuwing**en **fout** status.
+   In de volgende schermafbeelding wordt een apparaat weergegeven met onderdelen in de status **OK,** **Waarschuwing**en **Fout.**
        
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
-   Als u de **lijst met gedeelde onderdelen**uitbreidt, kunnen we zien dat het NVRAM en het cluster gedegradeerd zijn.
+   Door de **lijst met gedeelde componenten**uit te breiden, kunnen we zien dat de NVRAM en het cluster zijn afgebroken.
 
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
-   Als u de lijst met **Controller 1-onderdelen** uitbreidt, kunnen we zien dat het cluster knooppunt is mislukt.  
+   Als we de lijst **met onderdelen van Controller 1** uitbreiden, kunnen we zien dat het clusterknooppunt is mislukt.  
 
    ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
-4. Neem contact op met Microsoft Ondersteuning als u een onderdeel tegen komt dat niet in **orde** is. Als waarschuwingen zijn ingeschakeld op uw apparaat, ontvangt u een e-mail waarschuwing. Als u een defect hardwareonderdeel moet vervangen, raadpleegt u [StorSimple hardware-onderdeel vervanging](storsimple-hardware-component-replacement.md).
+4. Als u een component tegenkomt die niet **in de status Gezond** staat, neemt u contact op met Microsoft Support. Als waarschuwingen zijn ingeschakeld op uw apparaat, ontvangt u een e-mailmelding. Zie [StorSimple hardwarecomponentvervanging](storsimple-hardware-component-replacement.md)als u een mislukte hardwarecomponent moet vervangen.
 
-## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Onderdelen lijst voor de primaire behuizing van het StorSimple-apparaat
-De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in de primaire behuizing (aanwezig in 8100 en 8600) van uw on-premises StorSimple-apparaat.
+## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Componentlijst voor primaire behuizing van StorSimple-apparaat
+In de volgende tabel worden de fysieke en logische componenten in de primaire behuizing (aanwezig in 8100 en 8600) van uw on-premises StorSimple-apparaat beschreven.
 
-| Onderdeel | Module | Type | Locatie | De vervangable-eenheid (FRU) van het veld? | Beschrijving |
+| Onderdeel | Module | Type | Locatie | Veldvervangbare eenheid (FRU)? | Beschrijving |
 | --- | --- | --- | --- | --- | --- |
-| Station in sleuf [0-11] |Schijf stations |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de SSD-of HDD-schijven in de primaire behuizing. |
-| Omgevings temperatuur sensor |Sluit |Fysiek |Gedeeld |Nee |Meet de Tempe ratuur binnen het chassis. |
-| Mid-vlieg temperatuur sensor |Sluit |Fysiek |Gedeeld |Nee |Meet de Tempe ratuur van het middel vlak. |
-| Hoorbaar alarm |Sluit |Fysiek |Gedeeld |Nee |Hiermee wordt aangegeven of het hoorbare alarm subsysteem binnen het chassis functioneel is. |
-| Sluit |Sluit |Fysiek |Gedeeld |Ja |Hiermee wordt de aanwezigheid van een chassis aangegeven. |
-| Instellingen voor de behuizing |Sluit |Fysiek |Gedeeld |Nee |Verwijst naar het voor paneel van het chassis. |
-| Lijn spanning-Sens oren |PCM |Fysiek |Gedeeld |Nee |Voor talrijke spannings sensors wordt de status weer gegeven. Dit geeft aan of de gemeten spanning binnen de tolerantie valt. |
-| Regel huidige Sens oren |PCM |Fysiek |Gedeeld |Nee |De status van een groot aantal regel huidige Sens oren wordt weer gegeven. Dit geeft aan of de gemeten huidige waarde binnen de tolerantie ligt. |
-| Temperatuur sensors in PCM |PCM |Fysiek |Gedeeld |Nee |De status van een groot aantal temperatuur Sens oren zoals de inlaat-en hotspot Sens oren wordt weer gegeven. Dit geeft aan of de gemeten Tempe ratuur binnen de tolerantie ligt. |
-| Voeding [0-1] |PCM |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de energie-eenheden in de twee PCMs die zich op de achterkant van het apparaat bevinden. |
-| Koeling [0-1] |PCM |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de vier ventilatoren in de twee PCMs. |
-| Batterij [0-1] |PCM |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de back-upbatterij modules die zijn aangesloten op de PCM. |
-| Metis |N.v.t. |Logisch |Gedeeld |N.v.t. |Hiermee wordt de status van de accu's weer gegeven: of ze moeten worden geloosd en de eind tijd nadert. |
-| Cluster |N.v.t. |Logisch |Gedeeld |N.v.t. |Hier wordt de status weer gegeven van het cluster dat is gemaakt tussen de twee geïntegreerde controller modules. |
-| clusterknooppunt |N.v.t. |Logisch |Gedeeld |N.v.t. |Hiermee wordt de status van de controller aangegeven als onderdeel van het cluster. |
-| Cluster quorum |N.v.t. |Logisch | |N.v.t. |Hiermee wordt de aanwezigheid van het grootste schijf lidmaatschap in de HDD-opslag groep aangegeven. |
-| HDD-gegevens ruimte |N.v.t. |Logisch |Gedeeld |N.v.t. |De opslag ruimte die wordt gebruikt voor gegevens in de opslag groep van de harde schijf (HDD). |
-| Ruimte voor HDD-beheer |N.v.t. |Logisch |Gedeeld |N.v.t. |De ruimte die is gereserveerd in de HDD-opslag groep voor beheer taken. |
-| HDD-quorum ruimte |N.v.t. |Logisch |Gedeeld |N.v.t. |De ruimte die in de opslag groep voor de harde schijf is gereserveerd voor het cluster quorum. |
-| Ruimte voor HDD-vervanging |N.v.t. |Logisch |Gedeeld |N.v.t. |De ruimte die in de opslag groep voor de HDD is gereserveerd voor het vervangen van de controller. |
-| Gegevens ruimte SSD |N.v.t. |Logisch |Gedeeld |N.v.t. |De opslag ruimte die wordt gebruikt voor gegevens in de opslag groep voor de Solid-State Drive (SSD). |
-| SSD NVRAM space |N.v.t. |Logisch |Gedeeld |N.v.t. |De opslag ruimte in de SSD-opslag groep die is toegewezen voor de NVRAM-logica. |
-| HDD-opslag groep |N.v.t. |Logisch |Gedeeld |N.v.t. |Hier wordt de status weer gegeven van de logische opslag groep die is gemaakt op basis van de Hdd's van het apparaat. |
-| SSD-opslag groep |N.v.t. |Logisch |Gedeeld |N.v.t. |Hier wordt de status weer gegeven van de logische opslag groep die is gemaakt op basis van de Ssd's van het apparaat. |
-| Controller [0-1] [status] |I/O |Fysiek |Regelaar |Ja |Hiermee wordt de status van de controller weer gegeven en wordt aangegeven of deze zich in de modus actief of stand-by binnen het chassis bevindt. |
-| Temperatuur sensors in controller |I/O |Fysiek |Regelaar |Nee |Voor talrijke temperatuur Sens oren, zoals I/O-module, CPU-Tempe ratuur, DIMM-en PCIe-Sens oren, wordt de status weer gegeven. Dit geeft aan of de gedetecteerde Tempe ratuur binnen de tolerantie ligt. |
-| SAS-expansie |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de SAS-expansie (Serial Attached SCSI) aangegeven, die wordt gebruikt om de geïntegreerde opslag te verbinden met de controller. |
-| SAS-connector [0-1] |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van elke SAS-connector aangegeven, die wordt gebruikt voor het verbinden van geïntegreerde opslag met de SAS-uitbrei ding. |
-| SBB mid-plan Interconnect |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de mid-vlieg connector aangegeven, die wordt gebruikt voor het verbinden van elke controller met het middel vlak. |
-| Processor kern |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de processor kernen binnen elke controller aangegeven. |
-| Behuizing elektronica kracht |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van het energie systeem aangegeven dat wordt gebruikt door de behuizing. |
-| Behuizing elektronica Diagnostics |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de diagnostische subsystemen aangegeven die worden verschaft door de controller. |
-| Base Board Management Controller (BMC) |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de Base Board management controller (BMC) aangegeven, een gespecialiseerde service processor die het hardwareapparaat bewaakt via Sens oren en met de systeem beheerder communiceert via een onafhankelijke verbinding. |
-| Ethernet |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van elk van de netwerk interfaces aangegeven, dat wil zeggen, de beheer-en gegevens poorten die op de controller zijn opgenomen. |
-| NVRAM |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van het NVRAM aangegeven, een niet-vluchtige wille keurig toegangs geheugen dat wordt gebruikt door de accu waarmee toepassings kritieke informatie wordt bewaard in het geval van een stroom storing. |
+| Station in sleuf [0-11] |Schijven |Fysiek |Gedeeld |Ja |Voor elk van de SSD-schijven of de HDD-schijven in de primaire behuizing wordt één regel gepresenteerd. |
+| Omgevingstemperatuursensor |Behuizing |Fysiek |Gedeeld |Nee |Meet de temperatuur in het chassis. |
+| Middenvlaktemperatuursensor |Behuizing |Fysiek |Gedeeld |Nee |Meet de temperatuur van het middenvlak. |
+| Hoorbaar alarm |Behuizing |Fysiek |Gedeeld |Nee |Geeft aan of het subsysteem voor hoorbaar alarm in het chassis functioneel is. |
+| Behuizing |Behuizing |Fysiek |Gedeeld |Ja |Geeft de aanwezigheid van een chassis aan. |
+| Instellingen voor behuizing |Behuizing |Fysiek |Gedeeld |Nee |Verwijst naar het voorpaneel van het chassis. |
+| Lijnspanningssensoren |PCM |Fysiek |Gedeeld |Nee |Talrijke lijnspanningssensoren hebben hun staat weergegeven, wat aangeeft of de gemeten spanning binnen tolerantie is. |
+| Lijnstroomsensoren |PCM |Fysiek |Gedeeld |Nee |Talrijke lijn huidige sensoren hebben hun staat weergegeven, die aangeeft of de gemeten stroom is binnen tolerantie. |
+| Temperatuursensoren in PCM |PCM |Fysiek |Gedeeld |Nee |Tal van temperatuursensoren zoals Inlaat- en Hotspot-sensoren hebben hun toestand weergegeven, wat aangeeft of de gemeten temperatuur binnen de tolerantie valt. |
+| Voeding [0-1] |PCM |Fysiek |Gedeeld |Ja |Voor elk van de voedingen in de twee PCM's aan de achterkant van het apparaat wordt één regel gepresenteerd. |
+| Koeling [0-1] |PCM |Fysiek |Gedeeld |Ja |Een lijn wordt gepresenteerd voor elk van de vier koelventilatoren die in de twee PCM's. |
+| Batterij [0-1] |PCM |Fysiek |Gedeeld |Ja |Voor elk van de back-upbatterijmodules die in het PCM zitten, wordt één regel gepresenteerd. |
+| Metis |N.v.t. |Logisch |Gedeeld |N.v.t. |Geeft de status van de batterijen weer: of ze moeten worden opgeladen en naderen het einde van de levensduur. |
+| Cluster |N.v.t. |Logisch |Gedeeld |N.v.t. |Hiermee geeft u de status weer van het cluster dat is gemaakt tussen de twee geïntegreerde controllermodules. |
+| Clusterknooppunt |N.v.t. |Logisch |Gedeeld |N.v.t. |Geeft de status van de controller aan als onderdeel van het cluster. |
+| Clusterquorum |N.v.t. |Logisch | |N.v.t. |Geeft de aanwezigheid aan van het meerderheidslidmaatschap van de schijf in de HDD-opslaggroep. |
+| HDD-gegevensruimte |N.v.t. |Logisch |Gedeeld |N.v.t. |De opslagruimte die wordt gebruikt voor gegevens in de opslaggroep harde schijf (HDD). |
+| HDD-beheerruimte |N.v.t. |Logisch |Gedeeld |N.v.t. |De ruimte die is gereserveerd in de HDD-opslaggroep voor beheertaken. |
+| HDD-quorumruimte |N.v.t. |Logisch |Gedeeld |N.v.t. |De ruimte die is gereserveerd in de HDD-opslaggroep voor clusterquorum. |
+| HDD vervangende ruimte |N.v.t. |Logisch |Gedeeld |N.v.t. |De ruimte gereserveerd in de HDD-opslagpool voor vervanging van de controller. |
+| SSD-gegevensruimte |N.v.t. |Logisch |Gedeeld |N.v.t. |De opslagruimte die wordt gebruikt voor gegevens in de ssd-opslaggroep (solid state drive). |
+| SSD NVRAM-ruimte |N.v.t. |Logisch |Gedeeld |N.v.t. |De opslagruimte in de SSD-opslaggroep die is toegewezen aan NVRAM-logica. |
+| HDD-opslaggroep |N.v.t. |Logisch |Gedeeld |N.v.t. |Hiermee geeft u de status weer van de logische opslaggroep die is gemaakt met apparaat-hdd's. |
+| SSD-opslaggroep |N.v.t. |Logisch |Gedeeld |N.v.t. |Hiermee geeft u de status weer van de logische opslaggroep die is gemaakt met apparaat-SSD's. |
+| Controller [0-1] [staat] |I/o |Fysiek |Controller |Ja |Hiermee geeft u de status van de controller weer en of deze zich in de actieve of stand-bymodus in het chassis bevindt. |
+| Temperatuursensoren in controller |I/o |Fysiek |Controller |Nee |Tal van temperatuursensoren zoals I/O-module, CPU-temperatuur, DIMM en PCIe-sensoren hebben hun status weergegeven, wat aangeeft of de aangetroffen temperatuur binnen de tolerantie valt. |
+| SAS expander |I/o |Fysiek |Controller |Nee |Geeft de status aan van de seriële gekoppelde SCSI-expander (SAS), die wordt gebruikt om de geïntegreerde opslag op de controller aan te sluiten. |
+| SAS-connector [0-1] |I/o |Fysiek |Controller |Nee |Geeft de status aan van elke SAS-connector, die wordt gebruikt om geïntegreerde opslag aan te sluiten op de SAS-expander. |
+| SBB mid-plane interconnect |I/o |Fysiek |Controller |Nee |Geeft de status van de middenvlakconnector aan, die wordt gebruikt om elke controller aan te sluiten op het middenvlak. |
+| Processorkern |I/o |Fysiek |Controller |Nee |Geeft de status van de processorkernen binnen elke controller aan. |
+| Behuizing elektronica vermogen |I/o |Fysiek |Controller |Nee |Geeft de status aan van het stroomsysteem dat door de behuizing wordt gebruikt. |
+| Behuizing elektronica diagnostiek |I/o |Fysiek |Controller |Nee |Geeft de status aan van de diagnostische subsystemen die door de controller worden geleverd. |
+| Baseboard Management Controller (BMC) |I/o |Fysiek |Controller |Nee |Geeft de status van de baseboard management controller (BMC) aan, een gespecialiseerde serviceprocessor die het hardwareapparaat controleert via sensoren en communiceert met de systeembeheerder via een onafhankelijke verbinding. |
+| Ethernet |I/o |Fysiek |Controller |Nee |Geeft de status van elk van de netwerkinterfaces aan, dat wil zeggen het beheer en de gegevenspoorten die op de controller worden geleverd. |
+| Nvram |I/o |Fysiek |Controller |Nee |Geeft de status van NVRAM aan, een niet-vluchtig willekeurig toegangsgeheugen dat wordt ondersteund door de batterij die dient om toepassingskritieke informatie te bewaren in het geval van stroomuitval. |
 
-## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Lijst met onderdelen voor EBOD Enclosure van StorSimple-apparaat
-De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in de EBOD Enclosure (alleen aanwezig in het 8600-model) van uw on-premises StorSimple-apparaat.
+## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Componentlijst voor EBOD-behuizing van StorSimple-apparaat
+In de volgende tabel worden de fysieke en logische componenten in de EBOD-behuizing (alleen aanwezig in 8600-model) van uw on-premises StorSimple-apparaat beschreven.
 
-| Onderdeel | Module | Type | Locatie | FRU? | Beschrijving |
+| Onderdeel | Module | Type | Locatie | Fru? | Beschrijving |
 | --- | --- | --- | --- | --- | --- |
-| Station in sleuf [0-11] |Schijf stations |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de harde schijven in de voor zijde van de EBOD-behuizing. |
-| Omgevings temperatuur sensor |Sluit |Fysiek |Gedeeld |Nee |Meet de Tempe ratuur binnen het chassis. |
-| Mid-vlieg temperatuur sensor |Sluit |Fysiek |Gedeeld |Nee |Meet de Tempe ratuur van het middel vlak. |
-| Hoorbaar alarm |Sluit |Fysiek |Gedeeld |Nee |Hiermee wordt aangegeven of het hoorbare alarm subsysteem binnen het chassis functioneel is. |
-| Sluit |Sluit |Fysiek |Gedeeld |Ja |Hiermee wordt de aanwezigheid van een chassis aangegeven. |
-| Instellingen voor de behuizing |Sluit |Fysiek |Gedeeld |Nee |Verwijst naar het OPS-of het voor paneel van het chassis. |
-| Lijn spanning-Sens oren |PCM |Fysiek |Gedeeld |Nee |Voor talrijke spannings sensors wordt de status weer gegeven. Dit geeft aan of de gemeten spanning binnen de tolerantie valt. |
-| Regel huidige Sens oren |PCM |Fysiek |Gedeeld |Nee |De status van een groot aantal regel huidige Sens oren wordt weer gegeven. Dit geeft aan of de gemeten huidige waarde binnen de tolerantie ligt. |
-| Temperatuur sensors in PCM |PCM |Fysiek |Gedeeld |Nee |De status van een groot aantal temperatuur Sens oren zoals de inlaat-en hotspot Sens oren wordt weer gegeven. Dit geeft aan of de gemeten Tempe ratuur binnen de tolerantie ligt. |
-| Voeding [0-1] |PCM |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de energie-eenheden in de twee PCMs die zich op de achterkant van het apparaat bevinden. |
-| Koeling [0-1] |PCM |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de vier ventilatoren in de twee PCMs. |
-| Lokale opslag [HDD] |N.v.t. |Logisch |Gedeeld |N.v.t. |Hier wordt de status weer gegeven van de logische opslag groep die is gemaakt op basis van de Hdd's van het apparaat. |
-| Controller [0-1] [status] |I/O |Fysiek |Regelaar |Ja |Hiermee wordt de status van de controllers in de EBOD-module weer gegeven. |
-| Temperatuur sensors in EBOD |I/O |Fysiek |Regelaar |Nee |De status van een groot aantal temperatuur Sens oren van elke controller wordt weer gegeven. Dit geeft aan of de Tempe ratuur binnen de tolerantie ligt. |
-| SAS-expansie |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de SAS-uitbreidings module aangegeven, die wordt gebruikt om de geïntegreerde opslag te verbinden met de controller. |
-| SAS-connector [0-2] |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van elke SAS-connector aangegeven, die wordt gebruikt voor het verbinden van geïntegreerde opslag met de SAS-uitbrei ding. |
-| SBB mid-plan Interconnect |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de mid-vlieg connector aangegeven, die wordt gebruikt voor het verbinden van elke controller met het middel vlak. |
-| Behuizing elektronica kracht |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van het energie systeem aangegeven dat wordt gebruikt door de behuizing. |
-| Behuizing elektronica Diagnostics |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de diagnostische subsystemen aangegeven die worden verschaft door de controller. |
-| Verbinding met apparaat-controller |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de verbinding tussen de I/O-module EBOD en de apparaat-controller aangegeven. |
+| Station in sleuf [0-11] |Schijven |Fysiek |Gedeeld |Ja |Voor elk van de HDD-schijven aan de voorzijde van de EBOD-behuizing wordt één lijn gepresenteerd. |
+| Omgevingstemperatuursensor |Behuizing |Fysiek |Gedeeld |Nee |Meet de temperatuur in het chassis. |
+| Middenvlaktemperatuursensor |Behuizing |Fysiek |Gedeeld |Nee |Meet de temperatuur van het middenvlak. |
+| Hoorbaar alarm |Behuizing |Fysiek |Gedeeld |Nee |Geeft aan of het subsysteem voor hoorbaar alarm in het chassis functioneel is. |
+| Behuizing |Behuizing |Fysiek |Gedeeld |Ja |Geeft de aanwezigheid van een chassis aan. |
+| Instellingen voor behuizing |Behuizing |Fysiek |Gedeeld |Nee |Verwijst naar de OPS of het voorpaneel van het chassis. |
+| Lijnspanningssensoren |PCM |Fysiek |Gedeeld |Nee |Talrijke lijnspanningssensoren hebben hun staat weergegeven, wat aangeeft of de gemeten spanning binnen tolerantie is. |
+| Lijnstroomsensoren |PCM |Fysiek |Gedeeld |Nee |Talrijke lijn huidige sensoren hebben hun staat weergegeven, die aangeeft of de gemeten stroom is binnen tolerantie. |
+| Temperatuursensoren in PCM |PCM |Fysiek |Gedeeld |Nee |Tal van temperatuursensoren zoals Inlaat- en Hotspot-sensoren hebben hun toestand weergegeven, wat aangeeft of de gemeten temperatuur binnen de tolerantie valt. |
+| Voeding [0-1] |PCM |Fysiek |Gedeeld |Ja |Voor elk van de voedingen in de twee PCM's aan de achterkant van het apparaat wordt één regel gepresenteerd. |
+| Koeling [0-1] |PCM |Fysiek |Gedeeld |Ja |Een lijn wordt gepresenteerd voor elk van de vier koelventilatoren die in de twee PCM's. |
+| Lokale opslag [HDD] |N.v.t. |Logisch |Gedeeld |N.v.t. |Hiermee geeft u de status weer van de logische opslaggroep die is gemaakt met apparaat-hdd's. |
+| Controller [0-1] [staat] |I/o |Fysiek |Controller |Ja |Hiermee geeft u de status van de controllers weer in de EBOD-module. |
+| Temperatuursensoren in EBOD |I/o |Fysiek |Controller |Nee |Talrijke temperatuursensoren van elke controller hebben hun toestand weergegeven, wat aangeeft of de aangetroffen temperatuur binnen de tolerantie valt. |
+| SAS expander |I/o |Fysiek |Controller |Nee |Geeft de status aan van de SAS-expander, die wordt gebruikt om de geïntegreerde opslag op de controller aan te sluiten. |
+| SAS-connector [0-2] |I/o |Fysiek |Controller |Nee |Geeft de status aan van elke SAS-connector, die wordt gebruikt om geïntegreerde opslag aan te sluiten op de SAS-expander. |
+| SBB mid-plane interconnect |I/o |Fysiek |Controller |Nee |Geeft de status van de middenvlakconnector aan, die wordt gebruikt om elke controller aan te sluiten op het middenvlak. |
+| Behuizing elektronica vermogen |I/o |Fysiek |Controller |Nee |Geeft de status aan van het stroomsysteem dat door de behuizing wordt gebruikt. |
+| Behuizing elektronica diagnostiek |I/o |Fysiek |Controller |Nee |Geeft de status aan van de diagnostische subsystemen die door de controller worden geleverd. |
+| Verbinding met apparaatcontroller |I/o |Fysiek |Controller |Nee |Geeft de status van de verbinding tussen de EBOD I/O-module en de apparaatcontroller aan. |
 
 ## <a name="next-steps"></a>Volgende stappen
-* Als u de StorSimple Apparaatbeheer-service wilt gebruiken om uw apparaat te beheren, gaat u naar [de StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-apparaat te beheren](storsimple-8000-manager-service-administration.md).
-* Als u problemen moet oplossen met een onderdeel van een apparaat met een gedegradeerde of mislukte status, raadpleegt u [StorSimple-bewakings indicatoren](storsimple-monitoring-indicators.md).
-* Zie [StorSimple hardware component Replacement](storsimple-hardware-component-replacement.md)(Engelstalig) als u een defect hardwareonderdeel wilt vervangen.
-* Als er problemen blijven optreden, neemt u [contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md).
+* Als u de StorSimple Device Manager-service wilt gebruiken om uw apparaat te beheren, gaat u [naar de StorSimple Device Manager-service gebruiken om uw StorSimple-apparaat te beheren.](storsimple-8000-manager-service-administration.md)
+* Als u een apparaatcomponent met een gedegradeerde of mislukte status moet oplossen, raadpleegt u [de bewakingsindicatoren van StorSimple.](storsimple-monitoring-indicators.md)
+* Zie [StorSimple hardwarecomponentvervanging](storsimple-hardware-component-replacement.md)als u een mislukte hardwarecomponent wilt vervangen.
+* Als u apparaatproblemen blijft ondervinden, [neemt u contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 

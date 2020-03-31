@@ -1,7 +1,7 @@
 ---
 title: Aangepaste R-modules definiëren
 titleSuffix: ML Studio (classic) - Azure
-description: In dit onderwerp wordt beschreven hoe u een aangepaste R Studio (klassiek) ontwerpt en implementeert. Hierin wordt uitgelegd wat aangepaste R-modules zijn en welke bestanden worden gebruikt om deze te bepalen.
+description: In dit onderwerp wordt beschreven hoe u een aangepaste R Studio (klassiek) schrijven en implementeren. Het legt uit wat aangepaste R-modules zijn en welke bestanden worden gebruikt om ze te definiëren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,38 +11,38 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218168"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Aangepaste R-modules voor Azure Machine Learning Studio definiëren (klassiek)
+# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Aangepaste R-modules definiëren voor Azure Machine Learning Studio (klassiek)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-In dit onderwerp wordt beschreven hoe u een aangepaste R Studio (klassiek) ontwerpt en implementeert. Hierin wordt uitgelegd wat aangepaste R-modules zijn en welke bestanden worden gebruikt om deze te bepalen. Deze ziet u hoe u een van de bestanden die een module definiëren en registreren van de module voor implementatie in een Machine Learning-werkruimte. De elementen en kenmerken die worden gebruikt in de definitie van de aangepaste module worden vervolgens in meer detail beschreven. Het gebruik van aanvullende functionaliteit, bestanden en meerdere uitvoer wordt ook beschreven. 
+In dit onderwerp wordt beschreven hoe u een aangepaste R Studio (klassiek) schrijven en implementeren. Het legt uit wat aangepaste R-modules zijn en welke bestanden worden gebruikt om ze te definiëren. Het illustreert hoe u de bestanden maken die een module definiëren en hoe u de module registreert voor implementatie in een Machine Learning-werkruimte. De elementen en kenmerken die in de definitie van de aangepaste module worden gebruikt, worden vervolgens nader beschreven. Hoe u extra functionaliteit en bestanden en meerdere uitgangen gebruikt wordt ook besproken. 
 
 
 
 ## <a name="what-is-a-custom-r-module"></a>Wat is een aangepaste R-module?
-Een **aangepaste module** is een door de gebruiker gedefinieerde module die naar uw werk ruimte kan worden geüpload en die als onderdeel van Azure machine learning Studio (klassiek) experiment kan worden uitgevoerd. Een **aangepaste r-module** is een aangepaste module waarmee een door de gebruiker gedefinieerde R-functie wordt uitgevoerd. **R** is een programmeer taal voor statistische computing en grafische afbeeldingen die veel worden gebruikt door statistici en gegevens wetenschappers voor het implementeren van algoritmen. R is momenteel de enige ondersteunde in aangepaste modules, maar ondersteuning voor extra talen is gepland voor toekomstige versies taal.
+Een **aangepaste module** is een door de gebruiker gedefinieerde module die kan worden geüpload naar uw werkruimte en kan worden uitgevoerd als onderdeel van het Azure Machine Learning Studio (klassiek) experiment. Een **aangepaste R-module** is een aangepaste module die een door de gebruiker gedefinieerde R-functie uitvoert. **R** is een programmeertaal voor statistische computing en afbeeldingen die op grote schaal wordt gebruikt door statistici en data scientists voor het implementeren van algoritmen. Momenteel is R de enige taal die wordt ondersteund in aangepaste modules, maar ondersteuning voor extra talen is gepland voor toekomstige releases.
 
-Aangepaste modules hebben de status van de **eerste klasse** in azure machine learning Studio (klassiek) in de zin dat ze kunnen worden gebruikt, net als bij andere modules. Ze kunnen worden uitgevoerd met andere modules, die zijn opgenomen in de gepubliceerde experimenten of in visualisaties. Hebt u controle over de algoritme die is geïmplementeerd door de module, de invoer en uitvoerpoorten die worden gebruikt, de parameters modelleren en andere verschillende gedrag voor runtime. Een experiment met aangepaste modules kan ook worden gepubliceerd in de Azure AI Gallery delen.
+Aangepaste modules hebben **eersteklas status** in Azure Machine Learning Studio (klassiek) in de zin dat ze kunnen worden gebruikt net als elke andere module. Ze kunnen worden uitgevoerd met andere modules, opgenomen in gepubliceerde experimenten of in visualisaties. U hebt controle over het algoritme dat door de module wordt geïmplementeerd, de invoer- en uitvoerpoorten die moeten worden gebruikt, de modelleringsparameters en andere verschillende runtime-gedragingen. Een experiment met aangepaste modules kan ook worden gepubliceerd in de Azure AI-galerie voor eenvoudig delen.
 
 ## <a name="files-in-a-custom-r-module"></a>Bestanden in een aangepaste R-module
-Een aangepaste R-module is gedefinieerd door een ZIP-bestand dat ten minste twee bestanden bevat:
+Een aangepaste R-module wordt gedefinieerd door een .zip-bestand dat ten minste twee bestanden bevat:
 
-* Een **bron bestand** dat de R-functie implementeert die beschikbaar is gesteld door de module
-* Een **XML-definitie bestand** met een beschrijving van de interface van de aangepaste module
+* Een **bronbestand** dat de R-functie implementeert die door de module wordt weergegeven
+* Een **XML-definitiebestand** dat de aangepaste module-interface beschrijft
 
-Aanvullende hulpbestanden kunnen ook worden opgenomen in het ZIP-bestand die kan worden benaderd vanaf de aangepaste module functionaliteit biedt. Deze optie wordt beschreven in het gedeelte **argumenten** van de sectie met referentie **-elementen in het XML-definitie bestand** volgens het Snelstartgids-voor beeld.
+Extra extra bestanden kunnen ook worden opgenomen in het .zip-bestand dat functionaliteit biedt die toegankelijk is vanuit de aangepaste module. Deze optie wordt besproken in het gedeelte **Argumenten** van de verwijzingssectie **Elementen in het XML-definitiebestand** volgens het voorbeeld snelstart.
 
-## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Voorbeeld van de Quick Start: definiëren, verpakken en het registreren van een aangepaste R-module
-In dit voorbeeld ziet u hoe u de bestanden die vereist zijn door een aangepaste R-module, verpakken in een zip-bestand, en vervolgens de module hebt geregistreerd in uw Machine Learning-werkruimte. Het voorbeeld bestand zip-pakket en voorbeeld bestanden kunnen worden gedownload van [CustomAddRows. zip](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
+## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Snelstartvoorbeeld: een aangepaste R-module definiëren, verpakken en registreren
+In dit voorbeeld wordt uitgelegd hoe u de bestanden samenstellen die vereist zijn door een aangepaste R-module, ze verpakken in een zip-bestand en de module vervolgens registreren in uw Machine Learning-werkruimte. Het voorbeeld zip-pakket en voorbeeldbestanden kunnen worden gedownload van [download CustomAddRows.zip-bestand](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
 
 ## <a name="the-source-file"></a>Het bronbestand
-Bekijk het voor beeld van een aangepaste module voor het **toevoegen van rijen** waarmee de standaard implementatie van de module **rijen toevoegen** wordt gebruikt voor het samen voegen van rijen (waarnemingen) van twee gegevens sets (Data frames). In de Standard-module **Rows toevoegen** worden de rijen van de tweede invoer-gegevensset toegevoegd aan het einde van de eerste invoer gegevensset met behulp van het algoritme `rbind`. De aangepaste functie `CustomAddRows` op dezelfde manier accepteert twee gegevens sets, maar u kunt ook een Booleaanse swap para meter accepteren als extra invoer. Als de para meter swap is ingesteld op **False**, wordt dezelfde gegevensset geretourneerd als de standaard implementatie. Maar als de para meter swap **True**is, voegt de functie rijen van de eerste invoer-gegevensset toe aan het einde van de tweede gegevensset in plaats daarvan. Het bestand CustomAddRows. R dat de implementatie bevat van de R-`CustomAddRows` functie die wordt weer gegeven door de module **aangepaste rijen toevoegen** , heeft de volgende R-code.
+Overweeg het voorbeeld van een module **Aangepaste rijen toevoegen** die de standaardimplementatie wijzigt van de module Rijen **toevoegen** die wordt gebruikt om rijen (observaties) uit twee gegevenssets (gegevensframes) te verbinden. De standaardmodule **Rijen toevoegen** voegt de rijen van de tweede invoergegevensset `rbind` toe aan het einde van de eerste invoergegevensset met behulp van het algoritme. De `CustomAddRows` aangepaste functie accepteert ook twee gegevenssets, maar accepteert ook een Booleaanse swapparameter als extra invoer. Als de swapparameter is ingesteld op **FALSE,** retourneert deze dezelfde gegevensset als de standaardimplementatie. Maar als de swapparameter **WAAR**is, voegt de functie rijen van de eerste invoergegevensset toe aan het einde van de tweede gegevensset. Het bestand CustomAddRows.R dat de `CustomAddRows` implementatie van de R-functie bevat die wordt weergegeven door de module Rijen toevoegen met **aangepaste toevoegen,** heeft de volgende R-code.
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
     {
@@ -56,8 +56,8 @@ Bekijk het voor beeld van een aangepaste module voor het **toevoegen van rijen**
         } 
     } 
 
-### <a name="the-xml-definition-file"></a>De definitie van het XML-bestand
-Als u deze `CustomAddRows` functie beschikbaar wilt maken als de module Azure Machine Learning Studio (klassiek), moet er een XML-definitie bestand worden gemaakt om op te geven hoe de module **aangepaste rijen toevoegen** eruit moet zien en zich gedraagt. 
+### <a name="the-xml-definition-file"></a>Het XML-definitiebestand
+Als u `CustomAddRows` deze functie als de module Azure Machine Learning Studio (klassieke) wilt blootstellen, moet een XML-definitiebestand worden gemaakt om op te geven hoe de module **Aangepaste rijen toevoegen** eruit moet zien en zich moet gedragen. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -92,96 +92,96 @@ Als u deze `CustomAddRows` functie beschikbaar wilt maken als de module Azure Ma
     </Module>
 
 
-Het is belang rijk om te weten dat de waarde van de **id-** kenmerken van de **invoer** -en **ARG** -elementen in het XML-bestand exact moet overeenkomen met de namen van de functie parameters van de R-code in het bestand CustomAddRows. R: (*dataset1*, *dataset2*en *swap* in het voor beeld). Op dezelfde manier moet de waarde van het kenmerk **Entry Point** van het **taal** element exact overeenkomen met de naam van de functie in het R-script: (*CustomAddRows* in het voor beeld). 
+Het is van cruciaal belang op te merken dat de waarde van de **id-kenmerken** van de **invoer-** en **argelementen** in het XML-bestand moet overeenkomen met de functieparameternamen van de R-code in het bestand CustomAddRows.R PRECIES: (*gegevensset1*, *gegevensset2*en *swap* in het voorbeeld). Ook moet de waarde van het **entryPoint-kenmerk** van het element **Taal** overeenkomen met de naam van de functie in het R-script PRECIES: (*CustomAddRows* in het voorbeeld). 
 
-Het kenmerk **id** voor het element **output** komt daarentegen niet overeen met een van de variabelen in het R-script. Als er meer dan één uitvoer vereist is, retourneert eenvoudigweg een lijst van de R-functie met *de resultaten die in dezelfde volg orde* zijn geplaatst als **uitvoer** elementen die in het XML-bestand worden gedefinieerd.
+Het **id-kenmerk** voor het element **Uitvoer** komt daarentegen niet overeen met variabelen in het R-script. Wanneer er meer dan één uitvoer vereist is, retourneert u eenvoudig een lijst van de R-functie met resultaten *die in dezelfde volgorde* zijn geplaatst als **uitvoerelementen,** worden gedeclareerd in het XML-bestand.
 
-### <a name="package-and-register-the-module"></a>Het pakket en de module registreren
-Sla deze twee bestanden op als *CustomAddRows. R* en *CustomAddRows. XML* en voer de twee bestanden vervolgens samen in een *CustomAddRows. zip* -bestand.
+### <a name="package-and-register-the-module"></a>Pakket en registreer de module
+Sla deze twee bestanden op als *CustomAddRows.R* en *CustomAddRows.xml* en rits de twee bestanden samen in een *bestand CustomAddRows.zip.*
 
-Als u deze wilt registreren in uw Machine Learning-werk ruimte, gaat u naar uw werk ruimte in Azure Machine Learning Studio (klassiek), klikt u op de knop **+ Nieuw** aan de onderkant en kiest u **module-> van zip-pakket** om de nieuwe aangepaste module voor het **toevoegen van rijen** te uploaden.
+Als u ze wilt registreren in uw Machine Learning-werkruimte, gaat u naar uw werkruimte in Azure Machine Learning Studio (klassiek), klikt u op de **+NIEUWE** knop onderaan en kiest **u MODULE-> VAN ZIP-PAKKET** om de nieuwe module **Aangepaste rijen toevoegen** te uploaden.
 
 ![Zip uploaden](./media/custom-r-modules/upload-from-zip-package.png)
 
-De module **aangepaste rijen toevoegen** is nu gereed om toegang te krijgen tot uw machine learning experimenten.
+De module **Aangepaste rijen toevoegen** is nu klaar om te worden geopend door uw Machine Learning-experimenten.
 
-## <a name="elements-in-the-xml-definition-file"></a>Elementen in het definitie van het XML-bestand
+## <a name="elements-in-the-xml-definition-file"></a>Elementen in het XML-definitiebestand
 ### <a name="module-elements"></a>Module-elementen
-Het **module** -element wordt gebruikt voor het definiëren van een aangepaste module in het XML-bestand. Meerdere modules kunnen in één XML-bestand worden gedefinieerd met behulp van meerdere **module** -elementen. Elke module in uw werkruimte moet een unieke naam hebben. Een aangepaste module hebt geregistreerd met dezelfde naam als een bestaande aangepaste module en de bestaande module vervangt door de nieuwe. Aangepaste modules kunnen echter worden geregistreerd met dezelfde naam als een bestaande Azure Machine Learning Studio (klassieke) module. Als dat het geval is, worden ze weer gegeven in de categorie **aangepast** van het module palet.
+Het **element Module** wordt gebruikt om een aangepaste module in het XML-bestand te definiëren. Meerdere modules kunnen in één XML-bestand worden gedefinieerd met meerdere **module-elementen.** Elke module in uw werkruimte moet een unieke naam hebben. Registreer een aangepaste module met dezelfde naam als een bestaande aangepaste module en vervangt de bestaande module door de nieuwe. Aangepaste modules kunnen echter worden geregistreerd met dezelfde naam als een bestaande Azure Machine Learning Studio (klassieke) module. Als dit het zo is, worden ze weergegeven in de categorie **Aangepast** van het modulepalet.
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
         <Description>Appends one dataset to another...</Description>/> 
 
 
-Binnen het **module** -element kunt u twee extra optionele elementen opgeven:
+Binnen het element **Module** u twee extra optionele elementen opgeven:
 
-* een **eigenaars** element dat is inge sloten in de module  
-* een **beschrijvings** element dat tekst bevat die wordt weer gegeven in snelle Help voor de module en wanneer u de muis aanwijzer over de module in de machine learning gebruikers interface beweegt.
+* een **eigenaarelement** dat in de module is ingesloten  
+* een **beschrijvingselement** dat tekst bevat die in snelle hulp voor de module wordt weergegeven en wanneer u de module in de machine learning-gebruikersinterface overdekomma's houdt.
 
-Regels voor de limieten van de tekens in de Module-elementen:
+Regels voor tekenslimieten in de module-elementen:
 
-* De waarde van het **naam** kenmerk in het **module** -element mag niet langer zijn dan 64 tekens. 
-* De inhoud van het **beschrijvings** element mag niet langer zijn dan 128 tekens.
-* De inhoud van het **eigenaars** element mag niet langer zijn dan 32 tekens.
+* De waarde van het **kenmerk naam** in het element **Module** mag niet langer zijn dan 64 tekens. 
+* De inhoud van het element **Beschrijving** mag niet groter zijn dan 128 tekens in lengte.
+* De inhoud van het element **Eigenaar** mag niet groter zijn dan 32 tekens in lengte.
 
-Resultaten van een module kunnen deterministische of nondeterministic.* * standaard, alle modules worden beschouwd als deterministisch. Op basis van een niet-veranderende set invoer parameters en gegevens, moet de module dezelfde resultaten eacRAND of een functie tijd retour neren die wordt uitgevoerd. Op basis van dit gedrag Azure Machine Learning Studio (klassiek) alleen modules opnieuw uit te voeren die zijn gemarkeerd als deterministisch als een para meter of de invoer gegevens zijn gewijzigd. Retourneren van de resultaten in de cache levert ook veel sneller uitvoeren van experimenten.
+De resultaten van een module kunnen deterministisch of niet-deterministisch zijn.** Standaard worden alle modules als deterministisch beschouwd. Dat wil zeggen, gezien een onveranderlijke set van input parameters en gegevens, moet de module dezelfde resultaten eacRAND of een functie tijd die het wordt uitgevoerd terug te keren. Gezien dit gedrag voert Azure Machine Learning Studio (klassiek) alleen modules opnieuw uit die als deterministisch zijn gemarkeerd als een parameter of de invoergegevens zijn gewijzigd. Het retourneren van de in de cache opgeslagen resultaten biedt ook een veel snellere uitvoering van experimenten.
 
-Er zijn functies die niet-deterministisch, zoals RAND of een functie die de huidige datum of tijd retourneert. Als uw module een niet-deterministische functie gebruikt, kunt u opgeven dat de module niet-deterministisch is door het optionele kenmerk **isDeterministic** in te stellen op **False**. Hierdoor weet u zeker dat de module wordt opnieuw uitgevoerd wanneer het experiment wordt uitgevoerd, zelfs als de invoer-module en de parameters zijn niet gewijzigd. 
+Er zijn functies die niet deterministisch zijn, zoals RAND of een functie die de huidige datum of tijd retourneert. Als uw module een niet-deterministische functie gebruikt, u opgeven dat de module niet-deterministisch is door het optionele **kenmerk isDeterministic** in te stellen op **FALSE**. Dit zorgt ervoor dat de module opnieuw wordt uitgevoerd wanneer het experiment wordt uitgevoerd, zelfs als de moduleinvoer en parameters niet zijn gewijzigd. 
 
-### <a name="language-definition"></a>Definitie van de taal
-Het **taal** element in het XML-definitie bestand wordt gebruikt om de taal van de aangepaste module op te geven. Momenteel is R de enige ondersteunde taal. De waarde van het kenmerk **sourceFile** moet de naam zijn van het R-bestand dat de functie bevat die moet worden aangeroepen wanneer de module wordt uitgevoerd. Dit bestand moet deel uitmaken van het zip-pakket. De waarde van het **Entry Point** -kenmerk is de naam van de functie die wordt aangeroepen en moet overeenkomen met een geldige functie die is gedefinieerd in het bron bestand.
+### <a name="language-definition"></a>Taaldefinitie
+Het **element Taal** in uw XML-definitiebestand wordt gebruikt om de aangepaste moduletaal op te geven. Momenteel is R de enige ondersteunde taal. De waarde van het kenmerk **sourceFile** moet de naam zijn van het R-bestand dat de functie bevat die moet worden aanroepen wanneer de module wordt uitgevoerd. Dit bestand moet deel uitmaken van het zip-pakket. De waarde van het **kenmerk entryPoint** is de naam van de functie die wordt aangeroepen en moet overeenkomen met een geldige functie die is gedefinieerd in het bronbestand.
 
     <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
 
 
 ### <a name="ports"></a>Poorten
-De invoer-en uitvoer poorten voor een aangepaste module zijn opgegeven in onderliggende elementen van de sectie **poorten** van het XML-definitie bestand. De volgorde van deze elementen bepaalt de lay-out ervaren (UX) door gebruikers. De eerste onderliggende **invoer** of **uitvoer** die wordt vermeld in het element **ports** van het XML-bestand wordt de meest linkse invoer poort in de machine learning UX.
-Elke invoer-en uitvoer poort heeft mogelijk een onderliggend onderliggend **Beschrijving** -element met de tekst die wordt weer gegeven wanneer u de muis aanwijzer boven de poort in de machine learning gebruikers interface houdt.
+De invoer- en uitvoerpoorten voor een aangepaste module worden opgegeven in onderliggende elementen van de sectie **Poorten** van het XML-definitiebestand. De volgorde van deze elementen bepaalt de lay-out ervaren (UX) door gebruikers. De eerste **onderliggende invoer** of **uitvoer** die wordt weergegeven in het element **Poorten** van het XML-bestand, wordt de meest linkse invoerpoort in de MACHINE Learning UX.
+Elke invoer- en uitvoerpoort kan een optioneel **onderliggend element Beschrijving** hebben dat de tekst opgeeft die wordt weergegeven wanneer u de muiscursor boven de poort in de gebruikersinterface machine learning plaatst.
 
-**Poort regels**:
+**Havenregels**:
 
-* Het maximum aantal **invoer-en uitvoer poorten** is 8 voor elke poort.
+* Het maximum aantal **invoer- en uitvoerpoorten** is 8 voor elk.
 
 ### <a name="input-elements"></a>Invoerelementen
-Ingangspoorten kunnen u gegevens doorgeven aan uw R-functie en de werkruimte. De volgende **gegevens typen** worden ondersteund voor invoer poorten: 
+Met invoerpoorten u gegevens doorgeven aan uw R-functie en werkruimte. De **gegevenstypen** die worden ondersteund voor invoerpoorten zijn als volgt: 
 
-**DataTable:** Dit type wordt door gegeven aan uw R-functie als data. frame. Alle typen (zoals CSV-bestanden of ARFF-bestanden) die worden ondersteund door Machine Learning en die compatibel zijn met **DataTable** , worden in feite geconverteerd naar een gegevens. frame. 
+**Gegevenstabel:** Dit type wordt doorgegeven aan uw R-functie als een data.frame. In feite worden alle typen (bijvoorbeeld CSV-bestanden of ARFF-bestanden) die worden ondersteund door Machine Learning en die compatibel zijn met **DataTable,** automatisch geconverteerd naar een data.frame. 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
            </Input>
 
-Het kenmerk id dat is gekoppeld aan elke **DataTable** **-** invoer poort moet een unieke waarde hebben en deze waarde moet overeenkomen met de bijbehorende benoemde para meter in uw R-functie.
-Optionele **DataTable** -poorten die niet als invoer worden door gegeven in een experiment, hebben de waarde **Null** die is door gegeven aan de R-functie en optionele zip-poorten worden genegeerd als de invoer niet is verbonden. Het kenmerk **isOptional** is optioneel voor zowel de **DataTable** -als de **zip** -typen en is standaard ingesteld op *Onwaar* .
+Het **id-kenmerk** dat aan elke **DataTable-invoerpoort** is gekoppeld, moet een unieke waarde hebben en deze waarde moet overeenkomen met de bijbehorende parameter in uw R-functie.
+Optionele **DataTable-poorten** die niet worden doorgegeven als invoer in een experiment hebben de waarde **NULL** doorgegeven aan de R-functie en optionele zip-poorten worden genegeerd als de invoer niet is verbonden. Het kenmerk **isOptioneel** is optioneel voor zowel de **typen DataTable** als **Zip** en is standaard *onwaar.*
 
-**Zip:** Aangepaste modules kunnen een zip-bestand accepteren als invoer. Deze invoer is uitgepakt in de R-werkmap van uw functie
+**Zip:** Aangepaste modules kunnen een zip-bestand accepteren als invoer. Deze invoer wordt uitgepakt in de R-werkmap van uw functie
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
            </Input>
 
-Voor aangepaste R-modules moet de ID voor een zip-poort niet overeenkomen met de para meters van de R-functie. Dit is omdat het zip-bestand automatisch naar de R-werkmap wordt opgehaald.
+Voor aangepaste R-modules hoeft de ID voor een Zip-poort niet overeen te komen met de parameters van de R-functie. Dit komt omdat het zip-bestand automatisch wordt geëxtraheerd naar de R-werkmap.
 
-**Invoer regels:**
+**Invoerregels:**
 
-* De waarde van het kenmerk **id** van het element **input** moet een geldige R-variabelenaam zijn.
-* De waarde van het kenmerk **id** van het **invoer** element mag niet langer zijn dan 64 tekens.
-* De waarde van het kenmerk **name** van het element **input** mag niet langer zijn dan 64 tekens.
-* De inhoud van het **beschrijvings** element mag niet langer zijn dan 128 tekens
-* De waarde van het kenmerk **type** van het element **input** moet *zip* of *DataTable*zijn.
-* De waarde van het kenmerk **isOptional** van het **input** -element is niet vereist (en is standaard *Onwaar* wanneer niet opgegeven); maar als deze waarde is opgegeven, moet deze *True* of *False*zijn.
+* De waarde van het **id-kenmerk** van het **element Invoer** moet een geldige R-variabele naam zijn.
+* De waarde van het **id-kenmerk** van het **element Invoer** mag niet langer zijn dan 64 tekens.
+* De waarde van het **naamkenmerk** van het **element Invoer** mag niet langer zijn dan 64 tekens.
+* De inhoud van het element **Beschrijving** mag niet langer zijn dan 128 tekens
+* De waarde van het **typekenmerk** van het **element Invoer** moet *Zip* of *DataTable*zijn.
+* De waarde van het kenmerk **isOptioneel** van het **element Invoer** is niet vereist (en is standaard *onwaar* wanneer dit niet is opgegeven); maar als het is gespecificeerd, moet het *waar* of *onwaar*zijn.
 
-### <a name="output-elements"></a>Uitvoer-elementen
-**Standaard uitvoer poorten:** Uitvoer poorten worden toegewezen aan de retour waarden van uw R-functie, die vervolgens door volgende modules kan worden gebruikt. *DataTable* is het enige standaard uitvoer poort type dat momenteel wordt ondersteund. (Ondersteuning voor *leerers* en *trans formaties* wordt aangekondigd.) Een *DataTable* -uitvoer wordt als volgt gedefinieerd:
+### <a name="output-elements"></a>Uitvoerelementen
+**Standaarduitgangspoorten:** Uitvoerpoorten worden toegewezen aan de retourwaarden van uw R-functie, die vervolgens door volgende modules kunnen worden gebruikt. *DataTable* is het enige standaard uitvoerpoorttype dat momenteel wordt ondersteund. (Ondersteuning voor *leerlingen* en *transformaties* is aanstaande.) Een *DataTable-uitvoer* wordt gedefinieerd als:
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
     </Output>
 
-Voor uitvoer in aangepaste R-modules hoeft de waarde van het kenmerk id niet overeen te komen met iets in het R **-** script, maar dit moet uniek zijn. Voor een enkele module-uitvoer moet de retour waarde van de functie R een *Data. frame*zijn. Als u wilt meer dan een object van een ondersteunde gegevenstype uitvoer, moeten de juiste uitvoerpoorten worden opgegeven in de definitie van het XML-bestand en de objecten moeten worden geretourneerd als een lijst. De uitvoer-objecten worden toegewezen aan de uitvoer van de poorten van links naar rechts, te zetten op basis van de volgorde waarin de objecten in de lijst met resultaten worden geplaatst.
+Voor uitvoer in aangepaste R-modules hoeft de waarde van het **id-kenmerk** niet te corresponderen met iets in het R-script, maar het moet wel uniek zijn. Voor één module-uitvoer moet de retourwaarde van de functie R een *data.frame*zijn. Als u meer dan één object van een ondersteund gegevenstype wilt uitvoeren, moeten de juiste uitvoerpoorten worden opgegeven in het XML-definitiebestand en moeten de objecten als lijst worden geretourneerd. De uitvoerobjecten worden toegewezen aan uitvoerpoorten van links naar rechts, die de volgorde weergeven waarin de objecten in de geretourneerde lijst worden geplaatst.
 
-Als u bijvoorbeeld de module **aangepaste rijen toevoegen** wilt wijzigen in uitvoer van de oorspronkelijke twee gegevens sets, *dataset1* en *dataset2*, naast de nieuwe gekoppelde gegevensset, *gegevensset*(in een volg orde, van links naar rechts, zoals: *DataSet*, *dataset1*, *Dataset2*), definieert u als volgt de uitvoer poorten in het bestand CustomAddRows. XML:
+Als u bijvoorbeeld de module **Aangepaste rijen toevoegen** wilt wijzigen om de oorspronkelijke twee gegevenssets uit te zetten, *gegevensset1* en *gegevensset2,* definieert u naast de nieuwe samengevoegde *gegevensset, gegevensset*(in een volgorde, van links naar rechts, zoals: *gegevensset*, *gegevensset1*, *gegevensset2),* en definieervervolgens de uitvoerpoorten in het xml-bestand CustomAddRows.xml als volgt:
 
     <Ports> 
         <Output id="dataset" name="Dataset Out" type="DataTable"> 
@@ -202,7 +202,7 @@ Als u bijvoorbeeld de module **aangepaste rijen toevoegen** wilt wijzigen in uit
     </Ports> 
 
 
-En retour neren de lijst met objecten in een lijst in de juiste volg orde in ' CustomAddRows. R ':
+En retourneer de lijst met objecten in een lijst in de juiste volgorde in 'CustomAddRows.R':
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -211,28 +211,28 @@ En retour neren de lijst met objecten in een lijst in de juiste volg orde in ' C
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**Visualisatie-uitvoer:** U kunt ook een uitvoer poort van het type *visualisatie*opgeven, waarin de uitvoer van het R graphics-apparaat en de console-uitvoer wordt weer gegeven. Deze poort maakt geen deel uit van de uitvoer van de R-functie en de volgorde van de andere poort uitvoertypen niet verstoort. Als u een visualisatie poort wilt toevoegen aan de aangepaste modules, voegt u een **uitvoer** element met de waarde *visualisatie* voor het **type** kenmerk toe:
+**Visualisatie-uitvoer:** U ook een uitvoerpoort van type *Visualisatie*opgeven, die de uitvoer van het R-grafische apparaat en de console-uitvoer weergeeft. Deze poort maakt geen deel uit van de R-functieoutput en verstoort de volgorde van de andere uitvoerpoorttypen niet. Als u een visualisatiepoort wilt toevoegen aan de aangepaste modules, voegt u een **element Uitvoer** met een waarde van *visualisatie* toe voor het **typekenmerk:**
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
     </Output>
 
-**Uitvoer regels:**
+**Uitvoerregels:**
 
-* De waarde van het kenmerk **id** van het element **output** moet een geldige R-variabelenaam zijn.
-* De waarde van het kenmerk **id** van het element **output** mag niet langer zijn dan 32 tekens.
-* De waarde van het kenmerk **name** van het element **output** mag niet langer zijn dan 64 tekens.
-* De waarde van het kenmerk **type** van het element **output** moet *visualisatie*zijn.
+* De waarde van het **id-kenmerk** van het element **Uitvoer** moet een geldige R-variabele naam zijn.
+* De waarde van het **id-kenmerk** van het element **Uitvoer** mag niet langer zijn dan 32 tekens.
+* De waarde van het **naamkenmerk** van het element **Uitvoer** mag niet langer zijn dan 64 tekens.
+* De waarde van het **typekenmerk** van het element **Uitvoer** moet *Visualisatie*zijn .
 
 ### <a name="arguments"></a>Argumenten
-Aanvullende gegevens kunnen worden door gegeven aan de functie R via module parameters die zijn gedefinieerd in het element **Arguments** . Deze parameters worden weergegeven in het deelvenster met de meest rechtse eigenschappen van de Machine Learning-gebruikersinterface wanneer de module is geselecteerd. Argumenten kunnen bestaan uit een van de ondersteunde typen of kunt u een aangepaste opsomming wanneer dat nodig is. Net als bij **poort** elementen kunnen **argumenten** elementen een optioneel **beschrijvings** element hebben dat de tekst bevat die wordt weer gegeven wanneer u de muis aanwijzer boven de parameter naam houdt.
-Optionele eigenschappen voor een module, zoals defaultValue, minValue en maxValue, kunnen worden toegevoegd aan een argument als kenmerken voor een **Eigenschappen** -element. Geldige eigenschappen voor het element **Properties** zijn afhankelijk van het argument type en worden beschreven met de ondersteunde argument typen in de volgende sectie. Voor argumenten waarvoor de eigenschap **isOptional** is ingesteld op **' True '** , hoeft de gebruiker geen waarde in te voeren. Als een waarde niet aan het argument is opgegeven, klikt u vervolgens het argument niet doorgegeven aan de functie voor het item. Argumenten van de functie voor de vermelding die optioneel zijn moeten expliciet worden verwerkt door de functie, bijvoorbeeld een standaardwaarde van NULL in de definitie van de vermelding punt functie toegewezen. Een optioneel argument wordt alleen de andere argument beperkingen, dat wil zeggen min of max, afdwingen als een waarde is opgegeven door de gebruiker.
-Net als bij invoer en uitvoer is het essentieel dat aan elk van de para meters unieke ID-waarden zijn gekoppeld. In het Snelstartgids-voor beeld is de bijbehorende id/para meter *gewisseld*.
+Aanvullende gegevens kunnen worden doorgegeven aan de R-functie via moduleparameters die zijn gedefinieerd in het element **Argumenten.** Deze parameters worden weergegeven in het deelvenster meest rechtse eigenschappen van de machine learning-gebruikersinterface wanneer de module is geselecteerd. Argumenten kunnen een van de ondersteunde typen zijn of u een aangepaste opsomming maken wanneer dat nodig is. Net als bij de **elementen Poorten** kunnen de **elementen Arguments** een optioneel **beschrijvingselement** hebben dat de tekst opgeeft die wordt weergegeven wanneer u de muis boven de parameternaam houdt.
+Optionele eigenschappen voor een module, zoals standaardWaarde, minValue en maxValue, kunnen aan elk argument worden toegevoegd als kenmerken van een **element Eigenschappen.** Geldige eigenschappen voor het element **Eigenschappen** zijn afhankelijk van het argumenttype en worden beschreven met de ondersteunde argumenttypen in de volgende sectie. Argumenten met de **eigenschap isOptional** ingesteld op **'true'** vereisen niet dat de gebruiker een waarde invoert. Als er geen waarde aan het argument wordt verstrekt, wordt het argument niet doorgegeven aan de functie itemitem. Argumenten van de optie entry point die optioneel zijn, moeten expliciet door de functie worden behandeld, bijvoorbeeld door een standaardwaarde van NULL toegewezen te krijgen in de definitie van de entry point-functie. Een optioneel argument zal alleen de andere argumentbeperkingen afdwingen, d.w.z. min of max, als een waarde door de gebruiker wordt opgegeven.
+Net als bij ingangen en uitgangen is het van cruciaal belang dat elk van de parameters unieke ID-waarden bevatten die eraan zijn gekoppeld. In ons quickstartvoorbeeld was de bijbehorende id/parameter *swap*.
 
-### <a name="arg-element"></a>Func-element
-Een module parameter wordt gedefinieerd met behulp van het onderliggende element **ARG** van de sectie **Arguments** van het XML-definitie bestand. Net als bij de onderliggende elementen in de sectie **poorten** , definieert de volg orde van de para meters in de sectie **argumenten** de lay-out die in de UX is aangetroffen. De parameters weergegeven van boven naar beneden in de gebruikersinterface in dezelfde volgorde als waarin ze zijn gedefinieerd in het XML-bestand. De typen die worden ondersteund door Machine Learning voor parameters worden hier weergegeven. 
+### <a name="arg-element"></a>Arg-element
+Een moduleparameter wordt gedefinieerd met het element **Arg-onderliggende** element van de sectie **Argumenten** van het XML-definitiebestand. Net als bij de onderliggende elementen in de sectie **Poorten,** definieert het ordenen van parameters in de sectie **Argumenten** de indeling die in de UX wordt aangetroffen. De parameters worden van boven naar beneden in de gebruikersinterface weergegeven in dezelfde volgorde waarin ze zijn gedefinieerd in het XML-bestand. De typen die door Machine Learning worden ondersteund voor parameters, worden hier weergegeven. 
 
-**int** : een geheel getal (32-bits) type parameter.
+**int** – een parameter van het gehele gehele getal (32-bits).
 
     <Arg id="intValue1" name="Int Param" type="int">
         <Properties min="0" max="100" default="0" />
@@ -240,9 +240,9 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
     </Arg>
 
 
-* *Optionele eigenschappen*: **min**, **Max**, **standaard** en **isOptional**
+* *Optionele eigenschappen*: **min**, **max,** **standaard** en **isOptioneel**
 
-**dubbele** -een dubbele-type para meter.
+**dubbel** – een parameter van het dubbele type.
 
     <Arg id="doubleValue1" name="Double Param" type="double">
         <Properties min="0.000" max="0.999" default="0.3" />
@@ -250,9 +250,9 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
     </Arg>
 
 
-* *Optionele eigenschappen*: **min**, **Max**, **standaard** en **isOptional**
+* *Optionele eigenschappen*: **min**, **max,** **standaard** en **isOptioneel**
 
-**BOOL** : een Boole-para meter die wordt vertegenwoordigd door een selectie vakje in UX.
+**bool** – een Booleaanse parameter die wordt vertegenwoordigd door een selectievakje in UX.
 
     <Arg id="boolValue1" name="Boolean Param" type="bool">
         <Properties default="true" />
@@ -261,18 +261,18 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
 
 
 
-* *Optionele eigenschappen*: **standaard** -False als niet ingesteld
+* *Optionele eigenschappen*: **standaard** - false als deze niet is ingesteld
 
-**teken reeks**: een standaard teken reeks
+**tekenreeks**: een standaardtekenreeks
 
     <Arg id="stringValue1" name="My string Param" type="string">
         <Properties isOptional="true" />
         <Description>String Parameter 1</Description>
     </Arg>    
 
-* *Optionele eigenschappen*: **standaard** en **isOptional**
+* *Optionele eigenschappen*: **standaard** en **isOptioneel**
 
-**ColumnPicker**: een kolom selectie parameter. Dit type wordt weergegeven in de UX als een kolomkiezer. Het element **Property** wordt hier gebruikt om de id op te geven van de poort van waaruit kolommen worden geselecteerd, waarbij het doel poort type *DataTable*moet zijn. Het resultaat van de kolomselectie wordt doorgegeven aan de R-functie als een lijst met tekenreeksen die de naam van de geselecteerde kolom bevat. 
+**ColumnPicker**: een parameter kolomselectie. Dit type wordt in de UX weergegeven als een kolomkiezer. Het element **Eigenschap** wordt hier gebruikt om de id van de poort op te geven waaruit kolommen zijn geselecteerd, waarbij het doelpoorttype *Gegevenstabel*moet zijn. Het resultaat van de kolomselectie wordt doorgegeven aan de functie R als een lijst met tekenreeksen met de geselecteerde kolomnamen. 
 
         <Arg id="colset" name="Column set" type="ColumnPicker">      
           <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
@@ -280,12 +280,12 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
         </Arg>
 
 
-* *Vereiste eigenschappen*: **portId** : komt overeen met de id van een INPUT-element met type *DataTable*.
+* *Vereiste eigenschappen*: **portId** - komt overeen met de id van een invoerelement met type *DataTable*.
 * *Optionele eigenschappen*:
   
-  * **allowedTypes** : Hiermee filtert u de kolom typen waaruit u kunt kiezen. Geldige waarden zijn: 
+  * **allowedTypes** - Filtert de kolomtypen waaruit u kiezen. Geldige waarden zijn: 
     
-    * Numeric
+    * Numeriek
     * Booleaans
     * Categorische gegevens
     * Tekenreeks
@@ -293,31 +293,31 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
     * Functie
     * Score
     * Alle
-  * **standaard** -geldige standaard selecties voor de kolom kiezer zijn onder andere: 
+  * **standaard** - Geldige standaardselecties voor de kolomkiezer zijn: 
     
-    * None
-    * NumericFeature
-    * NumericLabel
-    * NumericScore
-    * NumericAll
-    * BooleanFeature
+    * Geen
+    * Numerieke functie
+    * NumericLabel (NumericLabel)
+    * NumericScore (NumericScore)
+    * NumericAll (NumericAll)
+    * BooleanFunctie
     * BooleanLabel
     * BooleanScore
     * BooleanAll
-    * CategoricalFeature
-    * CategoricalLabel
-    * CategoricalScore
-    * CategoricalAll
-    * StringFeature
-    * StringLabel
-    * StringScore
-    * StringAll
-    * AllLabel
+    * Categorischfunctie
+    * CategorischLabel
+    * CategorischScore
+    * CategorischAll
+    * StringFunctie
+    * StringLabel (StringLabel)
+    * StringScore (StringScore)
+    * StringAll (StringAll)
+    * AllLabel AllLabel
     * AllFeature
-    * AllScore
+    * AllScore AllScore
     * Alle
 
-**Dropdown**: een door de gebruiker opgegeven lijst met opsommings (vervolg keuzelijst). De vervolg keuzelijst items worden opgegeven in het **Eigenschappen** element met behulp van een **item** -element. De **id** voor elk **item** moet uniek zijn en een geldige R-variabele zijn. De waarde van de **naam** van een **item** fungeert als de tekst die u ziet en de waarde die wordt door gegeven aan de functie R.
+**Vervolgkeuzelijst:** een door de gebruiker opgegeven lijst met opsommingen (vervolgkeuzelijst). De vervolgkeuzeitems worden in het element **Eigenschappen** opgegeven met een **item-element.** De **id** voor elk **item** moet uniek zijn en een geldige R-variabele. De waarde van de **naam** van een **item** dient als zowel de tekst die u ziet als de waarde die wordt doorgegeven aan de functie R.
 
     <Arg id="color" name="Color" type="DropDown">
       <Properties default="red">
@@ -329,17 +329,17 @@ Een module parameter wordt gedefinieerd met behulp van het onderliggende element
     </Arg>    
 
 * *Optionele eigenschappen*:
-  * **default** -de waarde voor de eigenschap Default moet overeenkomen met een id-waarde van een van de **item** elementen.
+  * **standaard** - De waarde voor de standaardeigenschap moet overeenkomen met een id-waarde van een van de **itemelementen.**
 
-### <a name="auxiliary-files"></a>Aanvullende bestanden
-Elk bestand dat wordt geplaatst in uw aangepaste module-ZIP-bestand is het verstandig om beschikbaar voor gebruik tijdens de uitvoeringstijd. Een directory-structuren aanwezig blijven behouden. Dit betekent dat file sourcing hetzelfde lokaal en in de uitvoering van Azure Machine Learning Studio (klassiek) werkt. 
+### <a name="auxiliary-files"></a>Hulpbestanden
+Elk bestand dat in uw aangepaste module ZIP-bestand wordt geplaatst, zal beschikbaar zijn voor gebruik tijdens de uitvoeringstijd. Alle aanwezige directorystructuren blijven behouden. Dit betekent dat bestandssourcing lokaal hetzelfde werkt en in de Azure Machine Learning Studio (klassieke) uitvoering. 
 
 > [!NOTE]
-> U ziet dat alle bestanden worden uitgepakt naar de map src, zodat alle paden het voor voegsel src/hebben.
+> Merk op dat alle bestanden worden geëxtraheerd naar 'src' directory, zodat alle paden moeten hebben 'src /' voorvoegsel.
 > 
 > 
 
-Stel dat u rijen met NAs wilt verwijderen uit de gegevensset en ook dubbele rijen wilt verwijderen voordat u de gegevens uitCustomAddRowst en dat u al een R-functie hebt geschreven die in een bestand RemoveDupNARows. R:
+Stel dat u rijen met NOS uit de gegevensset wilt verwijderen en ook dubbele rijen wilt verwijderen voordat u deze in CustomAddRows plaatst, en u hebt al een R-functie geschreven die dat doet in een bestand RemoveDupNARows.R:
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -348,7 +348,7 @@ Stel dat u rijen met NAs wilt verwijderen uit de gegevensset en ook dubbele rije
         finalDataFrame <- dataFrame[complete.cases(dataFrame),]
         return(finalDataFrame)
     }
-U kunt het aanvullende bestand RemoveDupNARows.R in de functie CustomAddRows verzendt via bron:
+U het hulpbestand RemoveDupNARows.R in de functie CustomAddRows bron:
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
         source("src/RemoveDupNARows.R")
@@ -361,13 +361,13 @@ U kunt het aanvullende bestand RemoveDupNARows.R in de functie CustomAddRows ver
         return (dataset)
     }
 
-Upload vervolgens een zip-bestand met ' CustomAddRows. R ', ' CustomAddRows. XML ' en ' RemoveDupNARows. R ' als een aangepaste R-module.
+Upload vervolgens een zip-bestand met 'CustomAddRows.R', 'CustomAddRows.xml' en 'RemoveDupNARows.R' als aangepaste R-module.
 
 ## <a name="execution-environment"></a>Uitvoeringsomgeving
-De uitvoerings omgeving voor het R-script maakt gebruik van dezelfde versie van R als de **script module Execute r** en kan dezelfde standaard pakketten gebruiken. U kunt ook extra R-pakketten toevoegen aan uw aangepaste module door ze in de aangepaste module-zip-pakket. Alleen ze laden in uw R-script als in uw eigen R-omgeving. 
+De uitvoeringsomgeving voor het R-script gebruikt dezelfde versie van R als de **Script-module Uitvoeren** en kan dezelfde standaardpakketten gebruiken. U ook extra R-pakketten toevoegen aan uw aangepaste module door ze op te nemen in het aangepaste zip-pakket van de module. Gewoon laden ze in uw R script als je zou in je eigen R-omgeving. 
 
-**De beperkingen van de uitvoerings omgeving** zijn onder andere:
+**Beperkingen van de uitvoeringsomgeving** zijn onder andere:
 
-* Niet-permanente bestandssysteem: bestanden die zijn geschreven wanneer de aangepaste module wordt uitgevoerd voor verschillende runs van dezelfde module niet permanent.
-* Er is geen toegang tot het netwerk
+* Niet-permanente bestandssysteem: bestanden die zijn geschreven wanneer de aangepaste module wordt uitgevoerd, blijven niet bestaan in meerdere runs van dezelfde module.
+* Geen netwerktoegang
 

@@ -1,6 +1,6 @@
 ---
-title: Beveiliging afdwingen met beleids regels op virtuele Linux-machines in azure
-description: Een beleid Toep assen op een virtuele machine met Azure Resource Manager Linux
+title: Beveiliging afdwingen met beleid voor Linux VM's in Azure
+description: Een beleid toepassen op een Virtual Machine van Azure Resource Manager Linux
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
 ms.openlocfilehash: 7ab48430ae4d6585c908b53017122096175abac3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74035323"
 ---
-# <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Beleids regels Toep assen op virtuele Linux-machines met Azure Resource Manager
-Door gebruik te maken van beleids regels kan een organisatie verschillende conventies en regels voor de hele onderneming afdwingen. Afdwinging van het gewenste gedrag kan het risico verkleinen en bijdragen aan het succes van de organisatie. In dit artikel wordt beschreven hoe u Azure Resource Manager-beleid kunt gebruiken om het gewenste gedrag voor de Virtual Machines van uw organisatie te definiëren.
+# <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Beleidsregels toepassen op Linux VM's met Azure Resource Manager
+Door beleid te gebruiken, kan een organisatie verschillende conventies en regels in de hele onderneming afdwingen. Handhaving van het gewenste gedrag kan helpen risico's te beperken en tegelijkertijd bij te dragen aan het succes van de organisatie. In dit artikel beschrijven we hoe u azure resource manager-beleid gebruiken om het gewenste gedrag voor de virtuele machines van uw organisatie te definiëren.
 
-Zie [Wat is Azure Policy?](../../governance/policy/overview.md)voor een inleiding tot het beleid.
+Zie [Wat is Azure-beleid voor](../../governance/policy/overview.md)een inleiding tot beleidsregels?
 
-## <a name="permitted-virtual-machines"></a>Toegestaan Virtual Machines
-Om ervoor te zorgen dat virtuele machines voor uw organisatie compatibel zijn met een toepassing, kunt u de toegestane besturings systemen beperken. In het volgende voor beeld is het mogelijk dat alleen Ubuntu 14.04.2-LTS-Virtual Machines worden gemaakt.
+## <a name="permitted-virtual-machines"></a>Toegestane virtuele machines
+Om ervoor te zorgen dat virtuele machines voor uw organisatie compatibel zijn met een toepassing, u de toegestane besturingssystemen beperken. In het volgende beleidsvoorbeeld staat u toe dat alleen Ubuntu 14.04.2-LTS Virtual Machines worden gemaakt.
 
 ```json
 {
@@ -79,7 +79,7 @@ Om ervoor te zorgen dat virtuele machines voor uw organisatie compatibel zijn me
 }
 ```
 
-Gebruik een Joker teken voor het wijzigen van het voor gaande beleid om een Ubuntu LTS-installatie kopie toe te staan: 
+Gebruik een wild card om het vorige beleid te wijzigen om een Ubuntu LTS-afbeelding toe te staan: 
 
 ```json
 {
@@ -88,11 +88,11 @@ Gebruik een Joker teken voor het wijzigen van het voor gaande beleid om een Ubun
 }
 ```
 
-Zie [beleids aliassen](../../governance/policy/concepts/definition-structure.md#aliases)voor informatie over beleids velden.
+Zie [Beleidsaliassen voor](../../governance/policy/concepts/definition-structure.md#aliases)informatie over beleidsvelden .
 
 ## <a name="managed-disks"></a>Managed Disks
 
-Gebruik het volgende beleid om het gebruik van beheerde schijven te vereisen:
+Als u het gebruik van beheerde schijven wilt vereisen, gebruikt u het volgende beleid:
 
 ```json
 {
@@ -138,11 +138,11 @@ Gebruik het volgende beleid om het gebruik van beheerde schijven te vereisen:
 }
 ```
 
-## <a name="images-for-virtual-machines"></a>Installatie kopieën voor Virtual Machines
+## <a name="images-for-virtual-machines"></a>Afbeeldingen voor virtuele machines
 
-Uit veiligheids overwegingen kunt u vereisen dat alleen goedgekeurde aangepaste installatie kopieën in uw omgeving worden geïmplementeerd. U kunt de resource groep opgeven die de goedgekeurde installatie kopieën bevat of de specifieke goedgekeurde installatie kopieën.
+Om veiligheidsredenen u vereisen dat alleen goedgekeurde aangepaste afbeeldingen in uw omgeving worden geïmplementeerd. U de resourcegroep opgeven die de goedgekeurde afbeeldingen bevat, of de specifieke goedgekeurde afbeeldingen.
 
-In het volgende voor beeld zijn installatie kopieën van een goedgekeurde resource groep vereist:
+In het volgende voorbeeld worden afbeeldingen van een goedgekeurde resourcegroep vereist:
 
 ```json
 {
@@ -169,7 +169,7 @@ In het volgende voor beeld zijn installatie kopieën van een goedgekeurde resour
 } 
 ```
 
-In het volgende voor beeld worden de goedgekeurde afbeeldings-Id's opgegeven:
+In het volgende voorbeeld worden de goedgekeurde afbeeldings-geïdentificeerde afbeeldingen opgegeven:
 
 ```json
 {
@@ -178,9 +178,9 @@ In het volgende voor beeld worden de goedgekeurde afbeeldings-Id's opgegeven:
 }
 ```
 
-## <a name="virtual-machine-extensions"></a>Extensies voor virtuele machines
+## <a name="virtual-machine-extensions"></a>Virtuele machine-extensies
 
-Mogelijk wilt u het gebruik van bepaalde typen uitbrei dingen verbieden. Een extensie is bijvoorbeeld mogelijk niet compatibel met bepaalde installatie kopieën van virtuele machines. In het volgende voor beeld ziet u hoe u een specifieke uitbrei ding blokkeert. Hierbij wordt gebruikgemaakt van uitgever en type om te bepalen welke extensie moet worden geblokkeerd.
+U het gebruik van bepaalde typen extensies verbieden. Een extensie is bijvoorbeeld mogelijk niet compatibel met bepaalde aangepaste afbeeldingen van virtuele machines. In het volgende voorbeeld ziet u hoe u een specifieke extensie blokkeren. Het maakt gebruik van uitgever en type om te bepalen welke extensie te blokkeren.
 
 ```json
 {
@@ -209,6 +209,6 @@ Mogelijk wilt u het gebruik van bepaalde typen uitbrei dingen verbieden. Een ext
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Nadat u een beleids regel hebt gedefinieerd (zoals weer gegeven in de voor gaande voor beelden), moet u de beleids definitie maken en deze toewijzen aan een bereik. Het bereik kan een abonnement, een resource groep of een resource zijn. Zie [Azure Portal gebruiken om](../../governance/policy/assign-policy-portal.md)beleids regels toe te wijzen en te beheren, [Power shell gebruiken om beleid toe te](../../governance/policy/assign-policy-powershell.md)wijzen of [Azure CLI gebruiken om beleid](../../governance/policy/assign-policy-azurecli.md)toe te wijzen.
-* Zie [Wat is Azure Policy?](../../governance/policy/overview.md)voor een inleiding tot bron beleid.
+* Nadat u een beleidsregel hebt gedefinieerd (zoals in de voorgaande voorbeelden), moet u de beleidsdefinitie maken en aan een bereik toewijzen. Het bereik kan een abonnement, resourcegroep of resource zijn. Zie [Azure portal gebruiken om resourcebeleid toe te wijzen en te beheren,](../../governance/policy/assign-policy-portal.md) [PowerShell gebruiken om beleid toe te wijzen](../../governance/policy/assign-policy-powershell.md)of Azure CLI gebruiken om beleid toe te [wijzen.](../../governance/policy/assign-policy-azurecli.md)
+* Zie [Wat is Azure-beleid voor](../../governance/policy/overview.md)een inleiding tot resourcebeleid?
 * Voor begeleiding bij de manier waarop ondernemingen Resource Manager effectief kunnen gebruiken voor het beheer van abonnementen, gaat u naar [Azure enterprise-platform - Prescriptieve abonnementsgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).

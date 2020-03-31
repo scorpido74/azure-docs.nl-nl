@@ -1,131 +1,131 @@
 ---
-title: Service Fabric Services partitioneren
-description: Hierin wordt beschreven hoe u Service Fabric stateful-Services partitioneert. Partities maken gegevens opslag mogelijk op de lokale computers, zodat de gegevens en reken kracht samen kunnen worden geschaald.
+title: Services voor partitioneringsservice
+description: Beschrijft hoe u servicefabric-stateful services verdelen. Partities maken gegevensopslag op de lokale machines mogelijk, zodat gegevens en rekenkracht samen kunnen worden geschaald.
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258614"
 ---
-# <a name="partition-service-fabric-reliable-services"></a>Service Fabric betrouw bare Services partitioneren
-Dit artikel bevat een inleiding tot de basis concepten van het partitioneren van Azure Service Fabric reliable Services. De bron code die in het artikel wordt gebruikt, is ook beschikbaar op [github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+# <a name="partition-service-fabric-reliable-services"></a>Partitioneren van Service Fabric-betrouwbare services
+Dit artikel geeft een inleiding tot de basisconcepten van het partitioneren van betrouwbare services voor Azure Service Fabric. De broncode die in het artikel wordt gebruikt, is ook beschikbaar op [GitHub.](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)
 
 ## <a name="partitioning"></a>Partitionering
-Partitioneren is niet uniek voor Service Fabric. Eigenlijk is het een kern patroon van het bouwen van schaal bare Services. In een bredere zin kunnen we nadenken over partitioneren als een concept van het delen van de status (gegevens) en te berekenen in kleinere, toegankelijke eenheden om de schaal baarheid en prestaties te verbeteren. Een bekende vorm van partitionering is het [partitioneren van gegevens][wikipartition], ook wel bekend als sharding.
+Partitioneren is niet uniek voor Service Fabric. In feite is het een kernpatroon van het bouwen van schaalbare services. In bredere zin kunnen we partitioneren als een concept van het verdelen van status (data) en compute in kleinere toegankelijke eenheden om schaalbaarheid en prestaties te verbeteren. Een bekende vorm van partitionering is [gegevenspartitionering][wikipartition], ook wel bekend als sharding.
 
-### <a name="partition-service-fabric-stateless-services"></a>Partities Service Fabric stateless Services
-Voor stateless Services kunt u nadenken over een partitie die een logische eenheid is die een of meer exemplaren van een service bevat. In afbeelding 1 ziet u een stateless service met vijf instanties die over een cluster worden gedistribueerd met behulp van één partitie.
+### <a name="partition-service-fabric-stateless-services"></a>Statusloze services voor partitieservicefabric
+Voor stateloze services u denken aan een partitie die een logische eenheid is die een of meer exemplaren van een service bevat. Figuur 1 toont een statusloze service met vijf exemplaren verdeeld over een cluster met één partitie.
 
-![Stateless service](./media/service-fabric-concepts-partitioning/statelessinstances.png)
+![Staatloze service](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-Er zijn heel twee soorten stateless service oplossingen. De eerste is een service die de status van het externe apparaat persistent maakt, bijvoorbeeld in een Azure SQL database (zoals een website waar de sessie gegevens en gegevens worden opgeslagen). De tweede is een alleen-reken kundige service (zoals een calculator of afbeeldings miniatuur) die geen permanente status beheert.
+Er zijn echt twee soorten stateless service oplossingen. De eerste is een service die de status extern blijft bestaan, bijvoorbeeld in een Azure SQL-database (zoals een website die de sessie-informatie en -gegevens opslaat). De tweede is alleen berekeningen services (zoals een rekenmachine of afbeelding miniaturen) die geen permanente status beheren.
 
-In beide gevallen is het partitioneren van een stateless service een zeer zeldzaam scenario: de schaal baarheid en beschik baarheid worden normaal gesp roken bereikt door meer instanties toe te voegen. De enige keer dat u meerdere partities wilt overwegen voor stateless service exemplaren, is wanneer u aan speciale routerings aanvragen moet voldoen.
+In beide gevallen is het partitioneren van een stateless service een zeer zeldzaam scenario - schaalbaarheid en beschikbaarheid wordt normaal gesproken bereikt door meer exemplaren toe te voegen. De enige keer dat u meerdere partities voor stateless service-exemplaren wilt overwegen, is wanneer u aan speciale routeringsaanvragen moet voldoen.
 
-Denk bijvoorbeeld aan een geval waarbij gebruikers met Id's in een bepaald bereik alleen moeten worden geleverd door een bepaald service-exemplaar. Een ander voor beeld van wanneer u een stateless service partitioneert wanneer u een echt gepartitioneerde back-end hebt (bijvoorbeeld een Shard-SQL database) en u wilt bepalen welk service-exemplaar moet schrijven naar de data base Shard--of andere voorbereidende werkzaamheden uitvoeren in de stateless service waarvoor dezelfde partitie-informatie is vereist als wordt gebruikt in de back-end. Deze soorten scenario's kunnen ook op verschillende manieren worden opgelost en hoeven niet noodzakelijkerwijs service partitioneren.
+Neem bijvoorbeeld een geval waarin gebruikers met id's in een bepaald bereik alleen door een bepaalde service-instantie mogen worden bediend. Een ander voorbeeld van wanneer u een stateless service partitioneren, is wanneer u een echt verdeelde backend hebt (bijvoorbeeld een geshard SQL-database) en u wilt bepalen welke serviceinstantie naar de database moet schrijven of ander voorbereidingswerk binnen de stateloze service waarvoor dezelfde partitioneringsgegevens nodig zijn als in de backend. Dit soort scenario's kan ook worden opgelost op verschillende manieren en vereisen niet noodzakelijkerwijs service partitionering.
 
-De rest van dit scenario is gericht op stateful Services.
+De rest van deze walkthrough richt zich op stateful services.
 
-### <a name="partition-service-fabric-stateful-services"></a>Service Fabric stateful Services partitioneren
-Met Service Fabric kunt u eenvoudig schaal bare stateful services ontwikkelen door een eerste klasse te bieden voor het partitioneren van de status (gegevens). In het algemeen kunt u nadenken over een partitie van een stateful service als een schaal eenheid die zeer betrouwbaar is via [replica's](service-fabric-availability-services.md) die worden gedistribueerd en verdeeld over de knoop punten in een cluster.
+### <a name="partition-service-fabric-stateful-services"></a>Stateful services partition service fabric
+Service Fabric maakt het eenvoudig om schaalbare stateful services te ontwikkelen door een eersteklas manier aan te bieden om de partitiestatus (gegevens) te verdelen. Conceptueel u een partitie van een stateful service zien als een schaaleenheid die zeer betrouwbaar is via [replica's](service-fabric-availability-services.md) die worden gedistribueerd en gebalanceerd over de knooppunten in een cluster.
 
-Partitioneren in de context van Service Fabric stateful Services verwijst naar het proces van het bepalen of een bepaalde service partitie verantwoordelijk is voor een deel van de volledige status van de service. (Zoals eerder vermeld, is een partitie een set [replica's](service-fabric-availability-services.md)). Het is een goed idee over Service Fabric dat de partities op verschillende knoop punten worden geplaatst. Hierdoor kunnen ze worden uitgebreid naar de resource limiet van een knoop punt. Wanneer de gegevens moeten groeien, worden de partities verg root en Service Fabric worden partities op verschillende knoop punten opnieuw verdeeld. Zo zorgt u ervoor dat hardwarebronnen blijvend worden gebruikt.
+Partitionering in het kader van Service Fabric stateful services verwijst naar het proces om te bepalen dat een bepaalde servicepartitie verantwoordelijk is voor een deel van de volledige status van de service. (Zoals eerder vermeld, een partitie is een set van [replica's).](service-fabric-availability-services.md) Een groot ding over Service Fabric is dat het plaatst de partities op verschillende knooppunten. Hierdoor kunnen ze uitgroeien tot de resourcelimiet van een knooppunt. Naarmate de gegevensbehoeften toenemen, groeien partities en brengt Service Fabric partities tussen knooppunten opnieuw in evenwicht. Dit zorgt voor een voortdurend efficiënt gebruik van hardwaremiddelen.
 
-Stel dat u begint met een cluster met vijf knoop punten en een service die is geconfigureerd met 10 partities en een doel van drie replica's. In dit geval moet Service Fabric de replica's in het hele cluster verdelen en distribueren, en kunt u met twee primaire [replica's](service-fabric-availability-services.md) per knoop punt eindigen.
-Als u het cluster nu naar tien knoop punten wilt uitschalen, worden de primaire [replica's](service-fabric-availability-services.md) op alle tien knoop punten opnieuw gebalanceerd met Service Fabric. Als u terugschaalt naar 5 knoop punten, Service Fabric alle replica's op de vijf knoop punten opnieuw verdelen.  
+Als u een voorbeeld wilt geven, zegt u dat u begint met een cluster met 5 node en een service die is geconfigureerd om 10 partities en een doel van drie replica's te hebben. In dit geval zou Service Fabric de replica's over het cluster in evenwicht brengen en distribueren - en zou u eindigen met twee primaire [replica's](service-fabric-availability-services.md) per knooppunt.
+Als u het cluster nu moet uitschalen naar 10 knooppunten, brengt Service Fabric de primaire [replica's](service-fabric-availability-services.md) opnieuw in evenwicht tussen alle 10 knooppunten. Als u teruggeschaald wordt naar 5 knooppunten, brengt Service Fabric alle replica's opnieuw in evenwicht op de 5 knooppunten.  
 
-In afbeelding 2 ziet u de distributie van 10 partities vóór en na het schalen van het cluster.
+Figuur 2 toont de verdeling van 10 partities voor en na het schalen van het cluster.
 
-![Stateful service](./media/service-fabric-concepts-partitioning/partitions.png)
+![Statige dienst](./media/service-fabric-concepts-partitioning/partitions.png)
 
-Als gevolg hiervan wordt het uitschalen bereikt omdat aanvragen van clients worden gedistribueerd op computers, de algehele prestaties van de toepassing worden verbeterd en de toegang tot de gegevens segmenten wordt beperkt.
+Als gevolg hiervan wordt de scale-out bereikt omdat aanvragen van clients worden verdeeld over computers, de algehele prestaties van de toepassing worden verbeterd en de discussie over de toegang tot brokken gegevens wordt verminderd.
 
-## <a name="plan-for-partitioning"></a>Partitioneren plannen
-Voordat u een service implementeert, moet u altijd rekening houden met de strategieën voor partitioneren die nodig zijn om uit te schalen. Er zijn verschillende manieren, maar alle focussen op wat de toepassing nodig heeft. Voor de context van dit artikel worden enkele van de belang rijke aspecten in overweging nemen.
+## <a name="plan-for-partitioning"></a>Plannen voor partitionering
+Voordat u een service implementeert, moet u altijd rekening houden met de partitioneringsstrategie die nodig is om uit te schalen. Er zijn verschillende manieren, maar ze richten zich allemaal op wat de applicatie moet bereiken. Voor de context van dit artikel, laten we eens kijken naar enkele van de belangrijkste aspecten.
 
-Een goede benadering is om te denken over de structuur van de status die moet worden gepartitioneerd, zoals in de eerste stap.
+Een goede aanpak is om na te denken over de structuur van de staat die moet worden verdeeld, als de eerste stap.
 
-Laten we een eenvoudig voor beeld maken. Als u een service voor een hele regio wilt bouwen, kunt u een partitie maken voor elke plaats in de regio. Vervolgens kunt u de stemmen voor elke persoon opslaan in de plaats in de partitie die overeenkomt met die plaats. Afbeelding 3 illustreert een verzameling personen en de plaats waarin ze zich bevinden.
+Laten we een eenvoudig voorbeeld nemen. Als u een dienst voor een provincie-brede opiniepeiling zou bouwen, kon u een verdeling voor elke stad in de provincie creëren. Vervolgens u de stemmen voor elke persoon in de stad opslaan in de partitie die overeenkomt met die stad. Figuur 3 illustreert een reeks mensen en de stad waarin ze wonen.
 
 ![Eenvoudige partitie](./media/service-fabric-concepts-partitioning/cities.png)
 
-Wanneer de populatie van steden sterk varieert, kan het voor komen dat u een aantal partities met veel gegevens (bijvoorbeeld Seattle) en andere partities met een zeer weinig status (bijvoorbeeld Kirkland) hebt. Wat is de impact van het hebben van partities met een oneven hoeveelheid status?
+Aangezien de bevolking van steden sterk varieert, u eindigen met een aantal partities die veel gegevens bevatten (bijvoorbeeld Seattle) en andere partities met zeer weinig staat (bijvoorbeeld Kirkland). Dus wat is de impact van het hebben van partities met ongelijke hoeveelheden staat?
 
-Als u het voor beeld opnieuw vindt, kunt u gemakkelijk zien dat de partitie met de stemmen voor Seattle meer verkeer krijgt dan het Kirkland. Service Fabric zorgt er standaard voor dat er precies hetzelfde aantal primaire en secundaire replica's is op elk knoop punt. Het kan voor komen dat u zich kunt voordoen met knoop punten die replica's bevatten die meer verkeer leveren en andere die minder verkeer leveren. U wilt liever warme en koude vlekken in een cluster vermijden.
+Als u over het voorbeeld opnieuw denkt, u gemakkelijk zien dat de verdeling die de stemmen voor Seattle houdt meer verkeer dan Kirkland één zal krijgen. Standaard zorgt Service Fabric ervoor dat er ongeveer hetzelfde aantal primaire en secundaire replica's op elk knooppunt staan. Dus je kan eindigen met knooppunten die replica's die meer verkeer en anderen die minder verkeer dienen te houden. U wilt bij voorkeur warme en koude plekken als deze in een cluster vermijden.
 
-Als u dit wilt voor komen, moet u twee dingen doen vanuit een partitie punt van de weer gave:
+Om dit te voorkomen, moet u twee dingen doen, vanuit een partitionering oogpunt:
 
 * Probeer de status te partitioneren zodat deze gelijkmatig over alle partities wordt verdeeld.
-* Rapport belasting van elk van de replica's voor de service. (Raadpleeg dit artikel voor meer informatie over [metrische gegevens en belasting](service-fabric-cluster-resource-manager-metrics.md)). Service Fabric biedt de mogelijkheid om de belasting te rapporteren die wordt verbruikt door services, zoals de hoeveelheid geheugen of het aantal records. Op basis van de gerapporteerde metrische gegevens, Service Fabric detecteert dat sommige partities hogere belastingen bieden dan andere, en het cluster opnieuw verdelen door replica's naar meer geschikte knoop punten te verplaatsen, zodat het algehele knoop punt niet overbelast is.
+* Rapportbelasting van elk van de replica's voor de service. (Voor informatie over hoe, check out dit artikel over [Metrics en Load](service-fabric-cluster-resource-manager-metrics.md)). Service Fabric biedt de mogelijkheid om de belasting te melden die wordt verbruikt door services, zoals de hoeveelheid geheugen of het aantal records. Op basis van de gerapporteerde statistieken detecteert Service Fabric dat sommige partities hogere belastingen bevatten dan andere en herinevenwicht en herinevenwicht en brengt het cluster opnieuw in evenwicht door replica's naar meer geschikte knooppunten te verplaatsen, zodat het algehele knooppunt overbelast is.
 
-Soms kunt u niet weten hoeveel gegevens er in een bepaalde partitie worden weer gegeven. Een algemene aanbeveling is daarom beide te doen door een strategie voor partitionering te nemen waarmee de gegevens gelijkmatig over de partities en seconde worden verdeeld, door de belasting van de rapportage.  De eerste methode voor komt situaties die in het stemmen-voor beeld worden beschreven, terwijl de tweede de tijdelijke verschillen in de toegang of belasting in de loop van de tijd vereenvoudigt.
+Soms u niet weten hoeveel gegevens er in een bepaalde partitie zullen zijn. Dus een algemene aanbeveling is om beide te doen - eerste, door het aannemen van een partitionering strategie die de gegevens gelijkmatig verspreidt over de partities en ten tweede, door het melden van belasting.  De eerste methode voorkomt situaties die in het stemvoorbeeld worden beschreven, terwijl de tweede helpt tijdelijke verschillen in toegang of belasting in de loop van de tijd glad te strijken.
 
-Een ander aspect van het plannen van partities is het kiezen van het juiste aantal partities dat moet worden gestart.
-Vanuit een Service Fabric perspectief is er niets dat voor komt dat u kunt beginnen met een groter aantal partities dan verwacht voor uw scenario.
-Ervan uitgaande dat het maximum aantal partities een geldige benadering is.
+Een ander aspect van partitieplanning is om het juiste aantal partities te kiezen om mee te beginnen.
+Vanuit het oogpunt van Service Fabric is er niets dat u ervan weerhoudt om met een hoger aantal partities te beginnen dan verwacht voor uw scenario.
+In feite, ervan uitgaande dat het maximum aantal partities is een geldige aanpak.
 
-In zeldzame gevallen is het mogelijk dat u uiteindelijk meer partities nodig hebt dan u eerst hebt gekozen. Wanneer u het aantal partities na het feit niet kunt wijzigen, moet u een aantal geavanceerde partitie benaderingen Toep assen, zoals het maken van een nieuw service-exemplaar van hetzelfde service type. U moet ook enkele logica van de client implementeren die de aanvragen naar het juiste service-exemplaar doorstuurt, op basis van kennis aan de client zijde die de client code moet onderhouden.
+In zeldzame gevallen hebt u uiteindelijk meer partities nodig dan u in eerste instantie hebt gekozen. Aangezien u het aantal partities na het feit niet wijzigen, moet u een aantal geavanceerde partitiebenaderingen toepassen, zoals het maken van een nieuwe service-instantie van hetzelfde servicetype. U moet ook een aantal client-side logica implementeren die de aanvragen doorstuurt naar de juiste service-instantie, op basis van de klantkennis die uw clientcode moet onderhouden.
 
-Een andere overweging voor het partitioneren van de planning is de beschik bare computer bronnen. Als de status moet worden geopend en opgeslagen, kunt u het volgende doen:
+Een andere overweging voor het partitioneren van planning is de beschikbare computerbronnen. Aangezien de status moet worden geopend en opgeslagen, bent u verplicht om te volgen:
 
-* Limieten voor netwerk bandbreedte
-* Systeem geheugen limieten
-* Limieten voor schijf opslag
+* Limieten voor netwerkbandbreedte
+* Systeemgeheugenlimieten
+* Limieten voor schijfopslag
 
-Wat gebeurt er als u de resource beperkingen in een actief cluster uitvoert? Het antwoord is dat u het cluster eenvoudig kunt uitschalen om te voorzien in de nieuwe vereisten.
+Dus wat gebeurt er als u in een lopend cluster resourcebeperkingen tegenkomt? Het antwoord is dat u het cluster eenvoudig uitschalen om aan de nieuwe vereisten te voldoen.
 
-[De hand leiding voor capaciteits planning](service-fabric-capacity-planning.md) biedt richt lijnen voor het bepalen van het aantal knoop punten dat nodig is voor uw cluster.
+[De capaciteitsplanningshandleiding](service-fabric-capacity-planning.md) biedt richtlijnen voor het bepalen van het aantal knooppunten dat uw cluster nodig heeft.
 
 ## <a name="get-started-with-partitioning"></a>Aan de slag met partitioneren
-In deze sectie wordt beschreven hoe u aan de slag gaat met het partitioneren van uw service.
+In deze sectie wordt beschreven hoe u aan de slag met het partitioneren van uw service.
 
-Service Fabric biedt een keuze uit drie partitie schema's:
+Service Fabric biedt een keuze uit drie partitieschema's:
 
-* Partitioneren met een bereik (ook wel bekend als UniformInt64Partition).
-* Partitioneren met een naam. Toepassingen die gebruikmaken van dit model, bevatten meestal gegevens die kunnen worden gebuckd binnen een gebonden set. Enkele algemene voor beelden van gegevens velden die als benoemde partitie sleutels worden gebruikt, zijn regio's, post codes, klant groepen of andere zakelijke grenzen.
-* Singleton-partitionering. Singleton-partities worden meestal gebruikt wanneer de service geen extra route ring nodig heeft. Stateless Services gebruiken bijvoorbeeld standaard dit partitie schema.
+* Bereikverdeling (ook wel uniformint64Partition genoemd).
+* Benoemde partitionering. Toepassingen die dit model gebruiken, hebben meestal gegevens die kunnen worden gebucketd, binnen een begrensde set. Enkele veelvoorkomende voorbeelden van gegevensvelden die worden gebruikt als benoemde partitiesleutels, zijn regio's, postcodes, klantgroepen of andere bedrijfsgrenzen.
+* Singleton partitioneren. Singleton-partities worden meestal gebruikt wanneer de service geen extra routering vereist. Stateless services maken bijvoorbeeld standaard gebruik van dit partitieschema.
 
-Het schema voor het partitioneren van namen en Singleton zijn speciale vormen van partities met een bereik. Standaard worden in de Visual Studio-sjablonen voor Service Fabric gepartitioneerde partities gebruikt, aangezien dit het meest voorkomende is en het handigst is. De rest van dit artikel is gericht op het partitioneren van het bereik.
+Named en Singleton partitionering schemes are special forms of ranged partitions. Standaard gebruiken de Visual Studio-sjablonen voor Service Fabric bereikbare partitionering, omdat dit de meest voorkomende en nuttige is. De rest van dit artikel richt zich op de ranged partitionering regeling.
 
-### <a name="ranged-partitioning-scheme"></a>Schema voor partitioneren met bereik
-Dit wordt gebruikt om een bereik met gehele getallen (aangeduid met een lage sleutel en hoge sleutel) en een aantal partities (n) op te geven. Er worden n partities gemaakt, die elk verantwoordelijk zijn voor een niet-overlappend subbereik van het totale partitie sleutel bereik. Een voor beeld: een partitie schema met een lage sleutel van 0, een hoge sleutel van 99 en een aantal van 4 zou vier partities maken, zoals hieronder wordt weer gegeven.
+### <a name="ranged-partitioning-scheme"></a>Bereikverdelingsschema
+Dit wordt gebruikt om een geheel getalbereik (geïdentificeerd door een low key en high key) en een aantal partities (n) op te geven. Het maakt n partities, elk verantwoordelijk voor een niet-overlappende subrange van de totale partitie sleutel bereik. Een bereikverdelingsschema met een lage toets van 0, een hoge toets van 99 en een telling van 4 maakt bijvoorbeeld vier partities, zoals hieronder wordt weergegeven.
 
-![Bereik partitioneren](./media/service-fabric-concepts-partitioning/range-partitioning.png)
+![Bereikverdeling](./media/service-fabric-concepts-partitioning/range-partitioning.png)
 
-Een veelvoorkomende aanpak is het maken van een hash op basis van een unieke sleutel in de gegevensset. Enkele algemene voor beelden van sleutels zijn een voertuig identificatienummer (chassis nummer), een werk nemer-ID of een unieke teken reeks. Als u deze unieke sleutel gebruikt, genereert u vervolgens een hash-code, modulus het sleutel bereik om als uw sleutel te gebruiken. U kunt de boven-en ondergrens van het toegestane sleutel bereik opgeven.
+Een gemeenschappelijke aanpak is het maken van een hash op basis van een unieke sleutel binnen de gegevensset. Enkele veelvoorkomende voorbeelden van sleutels zijn een voertuigidentificatienummer (VIN), een werknemers-ID of een unieke tekenreeks. Door deze unieke sleutel te gebruiken, genereert u vervolgens een hash-code, modulus het sleutelbereik, om te gebruiken als uw sleutel. U de boven- en ondergrenzen van het toegestane sleutelbereik opgeven.
 
-### <a name="select-a-hash-algorithm"></a>Hash-algoritme selecteren
-Een belang rijk onderdeel van hashing is het selecteren van uw hash-algoritme. Een overweging is of het doel is om Vergelijk bare sleutels in de buurt te groeperen (gevoelige hashing van lokalen), of dat de activiteit breed moet worden verdeeld over alle partities (distributie-hashing).
+### <a name="select-a-hash-algorithm"></a>Een hash-algoritme selecteren
+Een belangrijk onderdeel van hashing is het selecteren van uw hash-algoritme. Een overweging is of het doel is om vergelijkbare toetsen dicht bij elkaar te groeperen (plaatsgevoelige hashing)-- of als activiteit breed moet worden verdeeld over alle partities (distributiehashing), wat vaker voorkomt.
 
-De kenmerken van een goede distributie-hash-algoritme zijn dat ze gemakkelijk te berekenen zijn, het een aantal botsingen heeft en de sleutels gelijkmatig distribueert. Een goed voor beeld van een efficiënt hash-algoritme is het [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) hash-algoritme.
+De kenmerken van een goede distributie hashing algoritme zijn dat het gemakkelijk te berekenen, het heeft weinig botsingen, en het verdeelt de toetsen gelijkmatig. Een goed voorbeeld van een efficiënt hash algoritme is het [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) hash algoritme.
 
-Een goede resource voor algemene hash-code algoritmen is de [Wikipedia-pagina op hash-functies](https://en.wikipedia.org/wiki/Hash_function).
+Een goede bron voor algemene hash code algoritme keuzes is de [Wikipedia-pagina over hash functies](https://en.wikipedia.org/wiki/Hash_function).
 
-## <a name="build-a-stateful-service-with-multiple-partitions"></a>Een stateful service met meerdere partities bouwen
-Laten we uw eerste betrouw bare stateful service maken met meerdere partities. In dit voor beeld maakt u een zeer eenvoudige toepassing waarin u alle achternamen wilt opslaan die beginnen met dezelfde letter in dezelfde partitie.
+## <a name="build-a-stateful-service-with-multiple-partitions"></a>Een stateful service bouwen met meerdere partities
+Laten we uw eerste betrouwbare stateful service maken met meerdere partities. In dit voorbeeld bouwt u een zeer eenvoudige toepassing waarbij u alle achternamen wilt opslaan die met dezelfde letter in dezelfde partitie beginnen.
 
-Voordat u code schrijft, moet u nadenken over de partities en partitie sleutels. U hebt 26 partities nodig (één voor elke letter in het alfabet), maar wat zijn de lage en hoge sleutels?
-Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de lage sleutel en 25 als hoge sleutel gebruiken, aangezien elke letter een eigen sleutel is.
+Voordat u een code schrijft, moet u nadenken over de partities en partitiesleutels. Je hebt 26 partities nodig (één voor elke letter in het alfabet), maar hoe zit het met de lage en hoge toetsen?
+Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 gebruiken als de low key en 25 als de hoge toets, omdat elke letter zijn eigen sleutel is.
 
 > [!NOTE]
-> Dit is een vereenvoudigd scenario, zoals in werkelijkheid de distributie zou ongelijk zijn. Achternamen die beginnen met de letters "S" of "M", komen vaker voor dan de naam die begint met "X" of "Y".
+> Dit is een vereenvoudigd scenario, omdat de verdeling in werkelijkheid ongelijk zou zijn. Achternamen die beginnen met de letters "S" of "M" komen vaker voor dan die beginnen met "X" of "Y".
 > 
 > 
 
-1. Open **Visual Studio** > - **bestand** > **Nieuw** > **project**.
-2. Kies in het dialoog venster **Nieuw project** de service Fabric toepassing.
-3. Roep het project "AlphabetPartitions" aan.
-4. Kies in het dialoog venster **een service maken** de optie **stateful** service en roep het ' alfabet. processing ' aan.
-5. Stel het aantal partities in. Open het bestand applicationManifest. XML dat zich bevindt in de map Application Package root van het AlphabetPartitions-project en werk de para meter bij Processing_PartitionCount op 26 zoals hieronder wordt weer gegeven.
+1. Open **Visual Studio** > **File New** > **New** > **Project**.
+2. Kies in het dialoogvenster **Nieuw project** de toepassing Servicefabric.
+3. Noem het project "AlphabetPartitions".
+4. Kies in het dialoogvenster **Een service maken** de optie **Stateful-service** en noem deze "Alphabet.Processing".
+5. Stel het aantal partities in. Open het bestand Applicationmanifest.xml in de map ApplicationPackageRoot van het project AlphabetPartitions en werk de parameter Processing_PartitionCount naar 26, zoals hieronder weergegeven.
    
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
    
-    U moet ook de eigenschappen LowKey en HighKey van het element StatefulService in de ApplicationManifest. XML bijwerken zoals hieronder wordt weer gegeven.
+    U moet ook de LowKey- en HighKey-eigenschappen van het element StatefulService bijwerken in het toepassingsmanifest.xml zoals hieronder wordt weergegeven.
    
     ```xml
     <Service Name="Processing">
@@ -134,25 +134,25 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
       </StatefulService>
     </Service>
     ```
-6. Als de service toegankelijk is, opent u een eind punt op een poort door het eindpunt element van ServiceManifest. XML (in de map PackageRoot) toe te voegen voor de alfabet. processing-service, zoals hieronder wordt weer gegeven:
+6. Als u wilt dat de service toegankelijk is, opent u een eindpunt op een poort door het eindpuntelement van ServiceManifest.xml (in de map PackageRoot) toe te voegen voor de alphabet.processing-service zoals hieronder wordt weergegeven:
    
     ```xml
     <Endpoint Name="ProcessingServiceEndpoint" Port="8089" Protocol="http" Type="Internal" />
     ```
    
-    De service is nu geconfigureerd om te Luis teren naar een intern eind punt met 26 partities.
-7. Vervolgens moet u de methode `CreateServiceReplicaListeners()` van de verwerkings klasse overschrijven.
+    Nu is de service geconfigureerd om te luisteren naar een intern eindpunt met 26 partities.
+7. Vervolgens moet u de `CreateServiceReplicaListeners()` methode van de klasse Processing overschrijven.
    
    > [!NOTE]
-   > Voor dit voor beeld wordt ervan uitgegaan dat u een eenvoudige HttpCommunicationListener gebruikt. Zie voor meer informatie over betrouw bare service communicatie [het betrouw bare communicatie model voor services](service-fabric-reliable-services-communication.md).
+   > Voor dit voorbeeld gaan we ervan uit dat u een eenvoudige HttpCommunicationListener gebruikt. Zie [The Reliable Service communication model](service-fabric-reliable-services-communication.md)voor meer informatie over betrouwbare servicecommunicatie.
    > 
    > 
-8. Een aanbevolen patroon voor de URL waar een replica op luistert, is de volgende indeling: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`.
-    Daarom wilt u uw communicatie-listener configureren om te Luis teren naar de juiste eind punten en met dit patroon.
+8. Een aanbevolen patroon voor de URL waarop een replica `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`luistert, is de volgende indeling: .
+    Zo wilt u uw communicatieluisteraar configureren om te luisteren op de juiste eindpunten en met dit patroon.
    
-    Meerdere replica's van deze service worden mogelijk gehost op dezelfde computer, dus dit adres moet uniek zijn voor de replica. Dit is de reden waarom partitie-ID + replica-ID zich in de URL bevindt. HttpListener kunnen Luis teren op meerdere adressen op dezelfde poort zolang het URL-voor voegsel uniek is.
+    Meerdere replica's van deze service kunnen op dezelfde computer worden gehost, dus dit adres moet uniek zijn voor de replica. Dit is de reden waarom partitie-ID + replica-ID in de URL staan. HttpListener kan op meerdere adressen op dezelfde poort luisteren, zolang het URL-voorvoegsel uniek is.
    
-    De extra GUID is daar voor een geavanceerde situatie waarbij secundaire replica's ook op alleen-lezen aanvragen Luis teren. Als dat het geval is, moet u ervoor zorgen dat er een nieuw uniek adres wordt gebruikt bij het overstappen van de primaire naar de secundaire client, zodat clients het adres opnieuw kunnen omzetten. \+ wordt gebruikt als het adres, zodat de replica luistert op alle beschik bare hosts (IP, FQDN, localhost, enzovoort) In de volgende code ziet u een voor beeld.
+    De extra GUID is er voor een geavanceerde case waar secundaire replica's ook luisteren naar alleen-lezen verzoeken. Wanneer dat het geval is, wilt u ervoor zorgen dat een nieuw uniek adres wordt gebruikt bij de overgang van primair naar secundair om clients te dwingen het adres opnieuw op te lossen. '+' wordt hier als adres gebruikt, zodat de replica luistert op alle beschikbare hosts (IP, FQDN, localhost, enz.) De onderstaande code toont een voorbeeld.
    
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -178,9 +178,9 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
     }
     ```
    
-    Het is ook een goed idee dat de gepubliceerde URL enigszins afwijkt van het Luister-URL-voor voegsel.
-    De luister-URL wordt gegeven aan HttpListener. De gepubliceerde URL is de URL die wordt gepubliceerd naar het Service Fabric Naming Service, dat wordt gebruikt voor service detectie. Clients vragen om dit adres via die detectie service. Het adres dat clients krijgen, moet het daad werkelijke IP of de FQDN van het knoop punt hebben om verbinding te kunnen maken. Daarom moet u + vervangen door het IP-adres of de FQDN van het knoop punt, zoals hierboven wordt weer gegeven.
-9. De laatste stap bestaat uit het toevoegen van de verwerkings logica aan de service zoals hieronder wordt weer gegeven.
+    Het is ook vermeldenswaard dat de gepubliceerde URL iets verschilt van het voorvoegsel van de luister-URL.
+    De luister-URL wordt gegeven aan HttpListener. De gepubliceerde URL is de URL die wordt gepubliceerd naar de Service Fabric Naming Service, die wordt gebruikt voor servicedetectie. Klanten zullen vragen om dit adres via die discovery service. Het adres dat clients krijgen, moet het werkelijke IP of FQDN van het knooppunt hebben om verbinding te maken. Dus je moet '+' te vervangen door ip of FQDN van het knooppunt zoals hierboven weergegeven.
+9. De laatste stap is het toevoegen van de verwerkingslogica aan de service zoals hieronder wordt weergegeven.
    
     ```csharp
     private async Task ProcessInternalRequest(HttpListenerContext context, CancellationToken cancelRequest)
@@ -224,19 +224,19 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
     }
     ```
    
-    `ProcessInternalRequest` leest de waarden van de query teken reeks parameter die wordt gebruikt om de partitie aan te roepen en roept `AddUserAsync` om de LastName toe te voegen aan de betrouw bare woorden lijst `dictionary`.
-10. We gaan een stateless service toevoegen aan het project om te zien hoe u een bepaalde partitie kunt aanroepen.
+    `ProcessInternalRequest`hiermee worden de waarden gelezen van de parameter `AddUserAsync` querytekenreeks die wordt gebruikt `dictionary`om de partitie aan te roepen en wordt aangebeld om de achternaam toe te voegen aan het betrouwbare woordenboek .
+10. Laten we een stateloze service toevoegen aan het project om te zien hoe u een bepaalde partitie aanroepen.
     
-    Deze service fungeert als een eenvoudige webinterface die de para meter LastName als een query teken reeks parameter accepteert, bepaalt de partitie sleutel en verzendt deze naar de alfabet. processing-service voor verwerking.
-11. In het dialoog venster **een service maken** kiest u **stateless** service en roept u deze ' alfabet. Web ' aan, zoals hieronder wordt weer gegeven.
+    Deze service fungeert als een eenvoudige webinterface die de achternaam accepteert als parameter querytekenreeks, de partitiesleutel bepaalt en deze naar de alphabet.processing-service stuurt voor verwerking.
+11. Kies in het dialoogvenster **Een service maken** de optie **Staatloze** service en noem deze "Alphabet.Web" zoals hieronder wordt weergegeven.
     
-    ![Scherm afbeelding stateless service](./media/service-fabric-concepts-partitioning/createnewstateless.png).
-12. Werk de eindpunt gegevens in ServiceManifest. XML van de alfabet. WebApi-service bij om een poort te openen, zoals hieronder wordt weer gegeven.
+    ![Schermafbeelding van stateloze service](./media/service-fabric-concepts-partitioning/createnewstateless.png).
+12. Werk de eindpuntgegevens in servicemanifest.xml van de Alphabet.WebApi-service bij om een poort te openen zoals hieronder wordt weergegeven.
     
     ```xml
     <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8081"/>
     ```
-13. U moet een verzameling ServiceInstanceListeners in het web class ophalen. U kunt er ook voor kiezen om een eenvoudige HttpCommunicationListener te implementeren.
+13. U moet een verzameling ServiceInstanceListeners retourneren in het klassenweb. Nogmaals, u ervoor kiezen om een eenvoudige HttpCommunicationListener te implementeren.
     
     ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -252,7 +252,7 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
         return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInputRequest);
     }
     ```
-14. Nu moet u de verwerkings logica implementeren. De HttpCommunicationListener roept `ProcessInputRequest` wanneer een aanvraag binnenkomt. We gaan nu de onderstaande code toevoegen.
+14. Nu moet u de verwerkingslogica implementeren. De HttpCommunicationListener `ProcessInputRequest` belt wanneer er een verzoek binnenkomt. Dus laten we doorgaan en voeg de code hieronder.
     
     ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
@@ -298,7 +298,7 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
     }
     ```
     
-    Laten we stap voor stap door lopen. De code leest de eerste letter van de query teken reeks parameter `lastname` in een teken. Vervolgens wordt de partitie sleutel voor deze letter bepaald door de hexadecimale waarde van `A` af te trekken van de hexadecimale waarde van de achternaam ' eerste letter '.
+    Laten we er stap voor stap doorheen lopen. De code leest de eerste letter `lastname` van de querytekenreeksparameter in een char. Vervolgens bepaalt het de partitiesleutel voor deze letter door `A` de hexadecimale waarde van de hexadecimale waarde van de eerste letter van de achternamen af te trekken.
     
     ```csharp
     string lastname = context.Request.QueryString["lastname"];
@@ -306,20 +306,20 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
     ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
     ```
     
-    Houd er rekening mee dat we voor dit voor beeld 26 partities met één partitie sleutel per partitie gebruiken.
-    Vervolgens verkrijgen we de service partitie `partition` voor deze sleutel met behulp van de methode `ResolveAsync` op het `servicePartitionResolver`-object. `servicePartitionResolver` is gedefinieerd als
+    Vergeet niet dat we in dit voorbeeld 26 partities gebruiken met één partitiesleutel per partitie.
+    Vervolgens verkrijgen we de `partition` servicepartitie voor `ResolveAsync` deze sleutel `servicePartitionResolver` met behulp van de methode op het object. `servicePartitionResolver`wordt gedefinieerd als
     
     ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
-    De `ResolveAsync` methode gebruikt de service-URI, de partitie sleutel en een annulerings token als para meters. De service-URI voor de verwerkings service is `fabric:/AlphabetPartitions/Processing`. Daarna krijgen we het eind punt van de partitie.
+    De `ResolveAsync` methode neemt de service URI, de partitiesleutel en een annuleringstoken als parameters. De service URI voor `fabric:/AlphabetPartitions/Processing`de verwerkingsservice is . Vervolgens krijgen we het eindpunt van de partitie.
     
     ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
     ```
     
-    Ten slotte maken we de eind punt-URL plus de query reeks en roepen we de verwerkings service aan.
+    Ten slotte bouwen we de URL van het eindpunt plus de querystring en bellen we de verwerkingsservice.
     
     ```csharp
     JObject addresses = JObject.Parse(ep.Address);
@@ -331,8 +331,8 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
     string result = await this.httpClient.GetStringAsync(primaryReplicaUriBuilder.Uri);
     ```
     
-    Zodra de verwerking is voltooid, wordt de uitvoer teruggeschreven.
-15. De laatste stap is het testen van de service. Visual Studio gebruikt toepassings parameters voor lokale en Cloud implementatie. Als u de service met 26 partities lokaal wilt testen, moet u het `Local.xml`-bestand bijwerken in de map Application parameters van het AlphabetPartitions-project, zoals hieronder wordt weer gegeven:
+    Zodra de verwerking is gedaan, schrijven we de output terug.
+15. De laatste stap is het testen van de service. Visual Studio gebruikt toepassingsparameters voor lokale en cloudimplementatie. Als u de service met 26 partities lokaal `Local.xml` wilt testen, moet u het bestand bijwerken in de map ApplicationParameters van het project AlfabetPartities zoals hieronder wordt weergegeven:
     
     ```xml
     <Parameters>
@@ -340,24 +340,24 @@ Omdat we letterlijk één partitie per letter willen hebben, kunnen we 0 als de 
       <Parameter Name="WebApi_InstanceCount" Value="1" />
     </Parameters>
     ```
-16. Nadat u de implementatie hebt voltooid, kunt u de service en alle partities ervan controleren in de Service Fabric Explorer.
+16. Zodra u de implementatie hebt voltooid, u de service en alle partities controleren in de Service Fabric Explorer.
     
-    ![Scherm afbeelding Service Fabric Explorer](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
-17. In een browser kunt u de logica voor partitionering testen door `http://localhost:8081/?lastname=somename`in te voeren. U ziet dat elke achternaam die begint met dezelfde letter wordt opgeslagen in dezelfde partitie.
+    ![Schermafbeelding van De Verkenner van de servicestof](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
+17. In een browser u de partitielogica testen door . `http://localhost:8081/?lastname=somename` U zult zien dat elke achternaam die begint met dezelfde letter wordt opgeslagen in dezelfde partitie.
     
-    ![Scherm afbeelding browser](./media/service-fabric-concepts-partitioning/samplerunning.png)
+    ![Schermafbeelding van browser](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-De volledige bron code van het voor beeld is beschikbaar op [github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
+De volledige broncode van het voorbeeld is beschikbaar op [GitHub.](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)
 
-## <a name="reliable-services-and-actor-forking-subprocesses"></a>Subprocessen voor Reliable Services en actor vertakkingen
-Service Fabric biedt geen ondersteuning voor betrouw bare Services en vervolgens betrouw bare Actors die subprocessen splitsen. Een voor beeld van waarom de niet-ondersteunde [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) niet kan worden gebruikt om een niet-ondersteund subproces te registreren en annulerings tokens worden alleen verzonden naar geregistreerde processen. wat resulteert in allerlei problemen, zoals upgrade fouten, wanneer subprocessen niet worden gesloten nadat het bovenliggende proces een annulerings token heeft ontvangen. 
+## <a name="reliable-services-and-actor-forking-subprocesses"></a>Betrouwbare services en actor forking subprocessen
+Service Fabric ondersteunt geen betrouwbare services en vervolgens betrouwbare actoren die subprocessen forking. Een voorbeeld van waarom het niet wordt ondersteund is [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) kan niet worden gebruikt om een niet-ondersteunde subproces te registreren, en annuleringstokens worden alleen verzonden naar geregistreerde processen; wat resulteert in allerlei problemen, zoals upgradefouten, wanneer subprocessen niet sluiten nadat het bovenliggende proces een annuleringstoken heeft ontvangen. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende onderwerpen voor informatie over Service Fabric concepten:
+Zie het volgende voor informatie over servicefabric-concepten:
 
-* [Beschik baarheid van Service Fabric Services](service-fabric-availability-services.md)
-* [Schaal baarheid van Service Fabric Services](service-fabric-concepts-scalability.md)
-* [Capaciteits planning voor Service Fabric toepassingen](service-fabric-capacity-planning.md)
+* [Beschikbaarheid van Service Fabric-services](service-fabric-availability-services.md)
+* [Schaalbaarheid van servicefabric-services](service-fabric-concepts-scalability.md)
+* [Capaciteitsplanning voor Service Fabric-toepassingen](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 

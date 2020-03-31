@@ -1,6 +1,6 @@
 ---
-title: Ruimte beheer voor bestanden met één/gegroepeerde Data bases
-description: Op deze pagina wordt beschreven hoe u de bestands ruimte beheert met één en gegroepeerde Data bases in Azure SQL Database, en vindt u code voorbeelden om te bepalen of u een enkele of een gegroepeerde Data Base moet verkleinen en hoe u een verkleinings bewerking voor een Data Base kunt uitvoeren.
+title: Beheer van bestandsruimte voor afzonderlijke/samengevoegde databases
+description: Op deze pagina wordt beschreven hoe u bestandsruimte beheert met afzonderlijke en samengevoegde databases in Azure SQL Database en bevat codevoorbeelden om te bepalen of u één of een gepoolde database moet verkleinen en hoe u een databasekrimpende bewerking uitvoeren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,22 +12,22 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 007bbffbd7c4fcad339f88eb78991eb39fb829e6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74420979"
 ---
-# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Bestands ruimte voor één en gegroepeerde Data bases in Azure SQL Database beheren
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Bestandsruimte beheren voor afzonderlijke en samengevoegde databases in Azure SQL Database
 
-In dit artikel worden verschillende soorten opslag ruimte beschreven voor enkelvoudige en gegroepeerde Data bases in Azure SQL Database, en stappen die kunnen worden uitgevoerd wanneer de bestands ruimte die voor data bases en elastische Pools wordt toegewezen, expliciet moet worden beheerd.
+In dit artikel worden verschillende typen opslagruimte voor afzonderlijke en samengevoegde databases in Azure SQL Database beschreven en stappen die kunnen worden genomen wanneer de bestandsruimte die is toegewezen voor databases en elastische pools expliciet moet worden beheerd.
 
 > [!NOTE]
-> Dit artikel is niet van toepassing op de implementatie optie Managed instance in Azure SQL Database.
+> Dit artikel is niet van toepassing op de beheerde instantieimplementatieoptie in Azure SQL Database.
 
 ## <a name="overview"></a>Overzicht
 
-Bij één en gegroepeerde Data bases in Azure SQL Database zijn er werkbelasting patronen waarbij de toewijzing van onderliggende gegevens bestanden voor data bases groter kan worden dan de hoeveelheid gebruikte gegevens pagina's. Dit probleem kan optreden als er meer ruimte wordt gebruikt en er tegelijkertijd gegevens worden verwijderd. De reden hiervoor is dat de toegewezen bestands ruimte niet automatisch wordt vrijgemaakt wanneer gegevens worden verwijderd.
+Met afzonderlijke en samengevoegde databases in Azure SQL Database zijn er werkbelastingpatronen waarbij de toewijzing van onderliggende gegevensbestanden voor databases groter kan worden dan de hoeveelheid gebruikte gegevenspagina's. Dit probleem kan optreden als er meer ruimte wordt gebruikt en er tegelijkertijd gegevens worden verwijderd. De reden hiervoor is dat toegewezen bestandsruimte niet automatisch wordt teruggewonnen wanneer gegevens worden verwijderd.
 
 Mogelijk moet u in de volgende scenario's het gebruik van bestandsruimte bewaken en gegevensbestanden verkleinen:
 
@@ -35,47 +35,47 @@ Mogelijk moet u in de volgende scenario's het gebruik van bestandsruimte bewaken
 - Sta toe dat de maximale grootte van één database of elastische pool wordt verkleind.
 - Sta toe dat databases en elastische pools afzonderlijk naar een andere servicelaag of prestatielaag kunnen worden omgezet met een kleinere maximale grootte.
 
-### <a name="monitoring-file-space-usage"></a>Bestands ruimte gebruik bewaken
+### <a name="monitoring-file-space-usage"></a>Gebruik van bestandsruimte controleren
 
-De meeste metrische gegevens over opslag ruimte worden weer gegeven in het Azure Portal en de volgende Api's meten alleen de grootte van de gebruikte data pagina's:
+De meeste statistieken voor opslagruimte die worden weergegeven in de Azure-portal en de volgende API's meten alleen de grootte van gebruikte gegevenspagina's:
 
-- Api's met metrische gegevens op basis van Azure Resource Manager, waaronder Power shell [Get-Metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- API's op basis van Azure Resource Manager, waaronder [PowerShell-get-metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
+- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
-De volgende Api's meten echter ook de grootte van de ruimte die is toegewezen voor data bases en elastische Pools:
+De volgende API's meten echter ook de grootte van de toegewezen ruimte voor databases en elastische pools:
 
-- T-SQL: [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-### <a name="shrinking-data-files"></a>Gegevens bestanden verkleinen
+### <a name="shrinking-data-files"></a>Krimpende gegevensbestanden
 
-De SQL Database-Service verkleint gegevens bestanden niet automatisch om ongebruikte toegewezen ruimte te claimen vanwege de mogelijke gevolgen voor de prestaties van de data base.  Klanten kunnen gegevens bestanden echter verkleint via self-service tegelijk, door de stappen te volgen die worden beschreven in [herclaimen ongebruikte toegewezen ruimte](#reclaim-unused-allocated-space).
+De SQL Database-service krimpt gegevensbestanden niet automatisch om ongebruikte toegewezen ruimte terug te winnen vanwege de mogelijke impact op de databaseprestaties.  Klanten kunnen echter gegevensbestanden via selfservice krimpen op een moment dat ze kiezen door de stappen te volgen die zijn beschreven in het terugvorderen van [niet-gebruikte toegewezen ruimte.](#reclaim-unused-allocated-space)
 
 > [!NOTE]
-> In tegens telling tot gegevens bestanden verkleint de SQL Database-service automatisch de logboek bestanden omdat deze bewerking geen invloed heeft op de prestaties van de data base.
+> In tegenstelling tot gegevensbestanden krimpt de SQL Database-service automatisch logboekbestanden, omdat die bewerking geen invloed heeft op de prestaties van de database.
 
-## <a name="understanding-types-of-storage-space-for-a-database"></a>Wat is de typen opslag ruimte voor een Data Base?
+## <a name="understanding-types-of-storage-space-for-a-database"></a>Typen opslagruimte voor een database begrijpen
 
-Meer informatie over de volgende hoeveel heden voor opslag ruimte zijn belang rijk voor het beheren van de bestands ruimte van een Data Base.
+Inzicht in de volgende hoeveelheden opslagruimte zijn belangrijk voor het beheren van de bestandsruimte van een database.
 
-|Aantal data bases|Definitie|Opmerkingen|
+|Databasehoeveelheid|Definitie|Opmerkingen|
 |---|---|---|
-|**Gebruikte gegevens ruimte**|De hoeveelheid ruimte die wordt gebruikt voor het opslaan van database gegevens in 8 KB-pagina's.|Over het algemeen neemt de gebruikte ruimte toe (afname) op INSERT (deletes). In sommige gevallen wordt de gebruikte ruimte niet gewijzigd op invoeg-of verwijderingen, afhankelijk van de hoeveelheid en het patroon van de gegevens die zijn betrokken bij de bewerking en eventuele fragmentatie. Als u bijvoorbeeld één rij uit elke gegevens pagina verwijdert, wordt de gebruikte ruimte niet noodzakelijkerwijs kleiner.|
-|**Toegewezen gegevens ruimte**|De hoeveelheid geformatteerde bestands ruimte die beschikbaar is gesteld voor het opslaan van database gegevens.|De hoeveelheid toegewezen ruimte neemt automatisch toe, maar verlaagt nooit na het verwijderen. Dit gedrag zorgt ervoor dat toekomstige toevoegingen sneller zijn omdat de ruimte niet opnieuw moet worden geformatteerd.|
-|**Toegewezen gegevens ruimte, maar niet gebruikt**|Het verschil tussen de hoeveelheid toegewezen gegevens ruimte en de gebruikte gegevens ruimte.|Deze hoeveelheid vertegenwoordigt de maximale hoeveelheid beschik bare ruimte die kan worden vrijgemaakt door database gegevens bestanden te verkleinen.|
-|**Maximale grootte van gegevens**|De maximale hoeveelheid ruimte die kan worden gebruikt voor het opslaan van database gegevens.|De toegewezen hoeveelheid gegevens ruimte kan niet groter zijn dan de maximale grootte van de gegevens.|
+|**Gebruikte gegevensruimte**|De hoeveelheid ruimte die wordt gebruikt om databasegegevens op te slaan in 8 KB-pagina's.|Over het algemeen neemt de gebruikte ruimte toe (afneemt) op inserts (deletes). In sommige gevallen verandert de gebruikte ruimte niet op inserts of deletes, afhankelijk van de hoeveelheid en het patroon van de gegevens die betrokken zijn bij de bewerking en eventuele fragmentatie. Als u bijvoorbeeld één rij van elke gegevenspagina verwijderd, wordt de gebruikte ruimte niet noodzakelijkerwijs kleiner.|
+|**Toegewezen gegevensruimte**|De hoeveelheid opgemaakte bestandsruimte die beschikbaar is gesteld voor het opslaan van databasegegevens.|De toegewezen hoeveelheid ruimte groeit automatisch, maar neemt nooit af na verwijderingen. Dit gedrag zorgt ervoor dat toekomstige wisselplaten sneller zijn, omdat de ruimte niet hoeft te worden geformatteerd.|
+|**Toegewezen gegevensruimte, maar ongebruikt**|Het verschil tussen de hoeveelheid toegewezen gegevensruimte en de gebruikte gegevensruimte.|Deze hoeveelheid vertegenwoordigt de maximale hoeveelheid vrije ruimte die kan worden teruggewonnen door databasegegevensbestanden te verkleinen.|
+|**Maximale grootte van gegevens**|De maximale hoeveelheid ruimte die kan worden gebruikt voor het opslaan van databasegegevens.|De hoeveelheid toegewezen gegevensruimte kan niet verder groeien dan de maximale grootte van de gegevens.|
 
-In het volgende diagram ziet u de relatie tussen de verschillende typen opslag ruimte voor een Data Base.
+In het volgende diagram wordt de relatie tussen de verschillende typen opslagruimte voor een database weergegeven.
 
-![typen opslag ruimte en relaties](./media/sql-database-file-space-management/storage-types.png)
+![opslagtypen en relaties](./media/sql-database-file-space-management/storage-types.png)
 
-## <a name="query-a-single-database-for-storage-space-information"></a>Een query uitvoeren op één Data Base voor informatie over de opslag ruimte
+## <a name="query-a-single-database-for-storage-space-information"></a>Eén database opvragen voor informatie over opslagruimte
 
-De volgende query's kunnen worden gebruikt om de hoeveelheid opslag ruimte voor één Data Base te bepalen.  
+De volgende query's kunnen worden gebruikt om de hoeveelheden opslagruimte voor één database te bepalen.  
 
-### <a name="database-data-space-used"></a>Gebruikte ruimte voor database gegevens
+### <a name="database-data-space-used"></a>Gebruikte databasegegevensruimte
 
-Wijzig de volgende query om de hoeveelheid gebruikte database gegevens ruimte te retour neren.  De eenheden van het query resultaat zijn in MB.
+Wijzig de volgende query om de gebruikte hoeveelheid databasegegevensruimte te retourneren.  Eenheden van het queryresultaat zijn in MB.
 
 ```sql
 -- Connect to master
@@ -86,9 +86,9 @@ WHERE database_name = 'db1'
 ORDER BY end_time DESC
 ```
 
-### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Toegewezen en ongebruikte toegewezen ruimte voor database gegevens
+### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Databasegegevensruimte toegewezen en ongebruikte toegewezen ruimte
 
-Gebruik de volgende query om de hoeveelheid toegewezen database gegevensruimte en de hoeveelheid niet-gebruikte ruimte te retour neren.  De eenheden van het query resultaat zijn in MB.
+Gebruik de volgende query om de toegewezen hoeveelheid databasegegevensruimte en de toegewezen hoeveelheid ongebruikte ruimte terug te geven.  Eenheden van het queryresultaat zijn in MB.
 
 ```sql
 -- Connect to database
@@ -100,9 +100,9 @@ GROUP BY type_desc
 HAVING type_desc = 'ROWS'
 ```
 
-### <a name="database-data-max-size"></a>Maximale grootte van database gegevens
+### <a name="database-data-max-size"></a>Maximale grootte van databasegegevens
 
-Wijzig de volgende query om de maximale grootte van de database gegevens te retour neren.  De eenheden van het query resultaat bevinden zich in bytes.
+Wijzig de volgende query om de maximale grootte van de databasegegevens te retourneren.  Eenheden van het queryresultaat bevinden zich in bytes.
 
 ```sql
 -- Connect to database
@@ -110,24 +110,24 @@ Wijzig de volgende query om de maximale grootte van de database gegevens te reto
 SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 ```
 
-## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Wat is de typen opslag ruimte voor een elastische pool?
+## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Inzicht in typen opslagruimte voor een elastische groep
 
-Meer informatie over de volgende hoeveel heden voor opslag ruimte zijn belang rijk voor het beheren van de bestands ruimte van een elastische pool.
+Inzicht in de volgende opslagruimtehoeveelheden zijn belangrijk voor het beheren van de bestandsruimte van een elastische groep.
 
-|Hoeveelheid elastische Pools|Definitie|Opmerkingen|
+|Elastische poolhoeveelheid|Definitie|Opmerkingen|
 |---|---|---|
-|**Gebruikte gegevens ruimte**|De som van de gegevens ruimte die wordt gebruikt door alle data bases in de elastische pool.||
-|**Toegewezen gegevens ruimte**|De som van de gegevens ruimte die wordt toegewezen door alle data bases in de elastische pool.||
-|**Toegewezen gegevens ruimte, maar niet gebruikt**|Het verschil tussen de hoeveelheid toegewezen gegevens ruimte en de gegevens ruimte die wordt gebruikt door alle data bases in de elastische pool.|Deze hoeveelheid vertegenwoordigt de maximale hoeveelheid ruimte die is toegewezen voor de elastische pool en die kan worden vrijgemaakt door database gegevens bestanden te verkleinen.|
-|**Maximale grootte van gegevens**|De maximale hoeveelheid gegevens ruimte die door de elastische pool kan worden gebruikt voor alle data bases.|De toegewezen ruimte voor de elastische pool mag niet groter zijn dan de maximale grootte van de elastische pool.  Als dit probleem zich voordoet, kan de toegewezen ruimte die niet wordt gebruikt, worden vrijgemaakt door de gegevens bestanden van de data base te verkleinen.|
+|**Gebruikte gegevensruimte**|De optelling van de gegevensruimte die door alle databases in de elastische groep wordt gebruikt.||
+|**Toegewezen gegevensruimte**|De optelling van de gegevensruimte die door alle databases in de elastische groep wordt toegewezen.||
+|**Toegewezen gegevensruimte, maar ongebruikt**|Het verschil tussen de toegewezen hoeveelheid gegevensruimte en de gegevensruimte die wordt gebruikt door alle databases in de elastische groep.|Deze hoeveelheid vertegenwoordigt de maximale hoeveelheid ruimte die is toegewezen voor de elastische groep die kan worden teruggewonnen door databasegegevensbestanden te verkleinen.|
+|**Maximale grootte van gegevens**|De maximale hoeveelheid gegevensruimte die door de elastische groep kan worden gebruikt voor al zijn databases.|De ruimte die is toegewezen voor het elastische zwembad mag niet groter zijn dan de maximale grootte van het elastische zwembad.  Als deze voorwaarde optreedt, kan de toegewezen ruimte die niet wordt gebruikt, worden teruggewonnen door databasegegevensbestanden te verkleinen.|
 
-## <a name="query-an-elastic-pool-for-storage-space-information"></a>Een elastische pool doorzoeken op informatie over de opslag ruimte
+## <a name="query-an-elastic-pool-for-storage-space-information"></a>Een elastische groep opvragen voor informatie over opslagruimte
 
-De volgende query's kunnen worden gebruikt om de hoeveelheid opslag ruimte voor een elastische pool te bepalen.  
+De volgende query's kunnen worden gebruikt om de hoeveelheden opslagruimte voor een elastische groep te bepalen.  
 
-### <a name="elastic-pool-data-space-used"></a>Gebruikte gegevens ruimte elastische pool
+### <a name="elastic-pool-data-space-used"></a>Gebruikte gegevensruimte voor elastische pool
 
-Wijzig de volgende query om de hoeveelheid gebruikt gegevens ruimte van elastische groepen te retour neren.  De eenheden van het query resultaat zijn in MB.
+Wijzig de volgende query om de gebruikte hoeveelheid elastische poolgegevensruimte terug te geven.  Eenheden van het queryresultaat zijn in MB.
 
 ```sql
 -- Connect to master
@@ -138,16 +138,16 @@ WHERE elastic_pool_name = 'ep1'
 ORDER BY end_time DESC
 ```
 
-### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Gegevens ruimte voor elastische Pools toegewezen en ongebruikte toegewezen ruimte
+### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Toegewezen en ongebruikte toegewezen ruimte voor elastische poolgegevens
 
-Wijzig de volgende voor beelden om een tabel te retour neren met een lijst met de toegewezen ruimte en de ongebruikte toegewezen ruimte voor elke data base in een elastische pool. De tabel bewaart data bases van deze data bases met de grootste hoeveelheid ongebruikte toegewezen ruimte op de minimale hoeveelheid ongebruikte toegewezen ruimte.  De eenheden van het query resultaat zijn in MB.  
+Wijzig de volgende voorbeelden om een tabel weer te geven met de toegewezen en niet-gebruikte toegewezen ruimte voor elke database in een elastische groep. De tabel beveelt databases uit die databases met de grootste hoeveelheid ongebruikte toegewezen ruimte naar de minste hoeveelheid ongebruikte toegewezen ruimte.  Eenheden van het queryresultaat zijn in MB.  
 
-De query resultaten voor het bepalen van de toegewezen ruimte voor elke data base in de pool kunnen samen worden toegevoegd om de totale toegewezen ruimte voor de elastische pool te bepalen. De toegewezen elastische groeps ruimte mag niet groter zijn dan de maximale grootte van de elastische pool.  
+De queryresultaten voor het bepalen van de ruimte die voor elke database in de groep is toegewezen, kunnen worden bijelkaar opgeteld om de totale ruimte te bepalen die is toegewezen aan de elastische groep. De toegewezen elastische zwembadruimte mag de maximale grootte van het elastische zwembad niet overschrijden.  
 
 > [!IMPORTANT]
-> De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
+> De PowerShell Azure Resource Manager (RM)-module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkelingen zijn voor de Az.Sql-module. De AzureRM-module blijft bugfixes ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de Az-module en in de AzureRm-modules zijn nagenoeg identiek. Zie De nieuwe Azure [PowerShell Az-module introduceren](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit ervan.
 
-Voor het Power shell-script is SQL Server Power shell-module vereist. Zie [Power shell-module downloaden](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) om te installeren.
+Het PowerShell-script vereist SQL Server PowerShell-module – zie [PowerShell-module downloaden](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) om te installeren.
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -180,13 +180,13 @@ Write-Output "`n" "ElasticPoolName: $poolName"
 Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocatedUnusedInMB -Descending | Format-Table
 ```
 
-De volgende scherm afbeelding is een voor beeld van de uitvoer van het script:
+De volgende schermafbeelding is een voorbeeld van de uitvoer van het script:
 
-![voor beeld van een elastische groep met toegewezen ruimte en ongebruikte ruimte](./media/sql-database-file-space-management/elastic-pool-allocated-unused.png)
+![elastische pool toegewezen ruimte en ongebruikte toegewezen ruimte voorbeeld](./media/sql-database-file-space-management/elastic-pool-allocated-unused.png)
 
-### <a name="elastic-pool-data-max-size"></a>Maximale grootte van elastische groeps gegevens
+### <a name="elastic-pool-data-max-size"></a>Maximale grootte van elastische poolgegevens
 
-Wijzig de volgende T-SQL-query om de maximale grootte van de elastische pool gegevens te retour neren.  De eenheden van het query resultaat zijn in MB.
+Wijzig de volgende T-SQL-query om de maximale grootte van de elastische groepgegevens te retourneren.  Eenheden van het queryresultaat zijn in MB.
 
 ```sql
 -- Connect to master
@@ -197,46 +197,46 @@ WHERE elastic_pool_name = 'ep1'
 ORDER BY end_time DESC
 ```
 
-## <a name="reclaim-unused-allocated-space"></a>Ongebruikte toegewezen ruimte opnieuw claimen
+## <a name="reclaim-unused-allocated-space"></a>Ongebruikte toegewezen ruimte terugwinnen
 
 > [!NOTE]
-> Deze opdracht kan de prestaties van de data base beïnvloeden terwijl deze wordt uitgevoerd, en indien mogelijk moet worden uitgevoerd tijdens peri Oden van weinig gebruik.
+> Deze opdracht kan van invloed zijn op de prestaties van de database tijdens het uitvoeren en moet, indien mogelijk, worden uitgevoerd tijdens perioden van weinig gebruik.
 
-### <a name="dbcc-shrink"></a>DBCC Shrink
+### <a name="dbcc-shrink"></a>DBCC krimpen
 
-Zodra de data bases zijn geïdentificeerd voor het vrijmaken van ongebruikte toegewezen ruimte, wijzigt u de naam van de data base in de volgende opdracht om de gegevens bestanden voor elke Data Base te verkleinen.
+Zodra databases zijn geïdentificeerd voor het terugwinnen van niet-gebruikte toegewezen ruimte, wijzigt u de naam van de database in de volgende opdracht om de gegevensbestanden voor elke database te verkleinen.
 
 ```sql
 -- Shrink database data space allocated.
 DBCC SHRINKDATABASE (N'db1')
 ```
 
-Deze opdracht kan de prestaties van de data base beïnvloeden terwijl deze wordt uitgevoerd, en indien mogelijk moet worden uitgevoerd tijdens peri Oden van weinig gebruik.  
+Deze opdracht kan van invloed zijn op de prestaties van de database tijdens het uitvoeren en moet, indien mogelijk, worden uitgevoerd tijdens perioden van weinig gebruik.  
 
 Zie [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)voor meer informatie over deze opdracht.
 
-### <a name="auto-shrink"></a>Automatisch verkleinen
+### <a name="auto-shrink"></a>Automatisch krimpen
 
-U kunt automatisch verkleinen ook inschakelen voor een Data Base.  Automatisch verkleinen vermindert de complexiteit van bestands beheer en is minder belang rijk voor de database prestaties dan `SHRINKDATABASE` of `SHRINKFILE`.  Automatisch verkleinen kan bijzonder nuttig zijn voor het beheren van elastische Pools met veel data bases.  Automatisch verkleinen kan echter minder effectief zijn bij het vrijmaken van bestands ruimte dan `SHRINKDATABASE` en `SHRINKFILE`.
-Als u automatisch verkleinen wilt inschakelen, wijzigt u de naam van de data base in de volgende opdracht.
+Als alternatief kan automatisch krimpen worden ingeschakeld voor een database.  Auto shrink vermindert de complexiteit van bestandsbeheer en `SHRINKDATABASE` heeft `SHRINKFILE`minder impact op de prestaties van de database dan of .  Automatisch krimpen kan vooral handig zijn voor het beheren van elastische pools met veel databases.  Autokrimp kan echter minder effectief zijn in `SHRINKDATABASE` `SHRINKFILE`het terugvorderen van bestandsruimte dan en .
+Als u automatisch verkleinen wilt inschakelen, wijzigt u de naam van de database in de volgende opdracht.
 
 ```sql
 -- Enable auto-shrink for the database.
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-Zie [Data Base set](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) Options (Engelstalig) voor meer informatie over deze opdracht.
+Zie [OPTIES voor databaseset](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) voor meer informatie over deze opdracht.
 
-### <a name="rebuild-indexes"></a>Indexen opnieuw samen stellen
+### <a name="rebuild-indexes"></a>Indexen opnieuw opbouwen
 
-Nadat database gegevensbestanden zijn verkleind, kunnen de indexen gefragmenteerd raken en de effectiviteit van de prestatie optimalisatie verliezen. Als er sprake is van verminderde prestaties, kunt u database indexen opnieuw samen stellen. Zie [indexen opnieuw indelen en opnieuw samen stellen](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)voor meer informatie over fragmentatie en het opnieuw opbouwen van indexen.
+Nadat databasegegevensbestanden zijn gekrompen, kunnen indexen gefragmenteerd raken en hun effectiviteit van prestatieoptimalisatie verliezen. Als prestatiedegradatie optreedt, u overwegen database-indexen opnieuw op te bouwen. Zie [Indexen reorganiseren en opnieuw opbouwen voor](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)meer informatie over fragmentatie en wederopbouw.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor informatie over de maximale grootte van data bases:
-  - [Azure SQL Database op vCore gebaseerde inkoop model limieten voor één data base](sql-database-vcore-resource-limits-single-databases.md)
-  - [Resource limieten voor afzonderlijke data bases met behulp van het DTU-gebaseerd inkoop model](sql-database-dtu-resource-limits-single-databases.md)
-  - [Azure SQL Database op vCore gebaseerde inkoop model limieten voor elastische Pools](sql-database-vcore-resource-limits-elastic-pools.md)
-  - [Bronnen limieten voor elastische Pools met behulp van het DTU-gebaseerd inkoop model](sql-database-dtu-resource-limits-elastic-pools.md)
-- Zie [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)voor meer informatie over de opdracht `SHRINKDATABASE`.
-- Zie [indexen opnieuw indelen en opnieuw samen stellen](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)voor meer informatie over fragmentatie en het opnieuw opbouwen van indexen.
+- Zie voor informatie over de maximale grootte van de database:
+  - [Azure SQL Database vCore-gebaseerde inkoopmodellimieten voor één database](sql-database-vcore-resource-limits-single-databases.md)
+  - [Resourcelimieten voor afzonderlijke databases met behulp van het op DTU gebaseerde inkoopmodel](sql-database-dtu-resource-limits-single-databases.md)
+  - [Azure SQL Database vCore-gebaseerde inkoopmodellimieten voor elastische pools](sql-database-vcore-resource-limits-elastic-pools.md)
+  - [Resourceslimieten voor elastische pools met behulp van het op DTU gebaseerde inkoopmodel](sql-database-dtu-resource-limits-elastic-pools.md)
+- Zie [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) `SHRINKDATABASE` voor meer informatie over de opdracht.
+- Zie [Indexen reorganiseren en opnieuw opbouwen voor](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)meer informatie over fragmentatie en wederopbouw.

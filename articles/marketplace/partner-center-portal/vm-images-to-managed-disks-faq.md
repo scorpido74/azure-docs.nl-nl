@@ -1,39 +1,38 @@
 ---
-title: Er worden installatie kopieën van virtuele machines (VM) verplaatst naar Managed Disk Storage in azure Marketplace
-description: Om sneller, betrouwbaardere opslag en ondersteuning te bieden voor nieuwe Marketplace-functies en-mogelijkheden, verplaatsen we VM-installatie kopieën van Marketplace naar Managed Disk Storage.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: We verplaatsen vm-afbeeldingen (virtual machine) naar beheerde schijfopslag in de Azure Marketplace
+description: Om snellere, betrouwbaardere opslag en ondersteuning te bieden voor nieuwe marketplace-functies en -mogelijkheden, verplaatsen we vm-afbeeldingen van Marketplace naar beheerde schijfopslag.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 17b418ab82cc88b4368efe247b06c0c8bbb27453
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198731"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285109"
 ---
-# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Er worden installatie kopieën van virtuele machines (VM) op Azure Marketplace verplaatst naar Managed Disk Storage
+# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>We verplaatsen VM-afbeeldingen (virtual machine) op Azure Marketplace naar beheerde schijfopslag
 
-Om sneller, betrouwbaardere opslag en ondersteuning te bieden voor nieuwe Marketplace-functies en-mogelijkheden, verplaatsen we VM-installatie kopieën van Marketplace naar Managed Disk Storage.
+Om snellere, betrouwbaardere opslag en ondersteuning te bieden voor nieuwe marketplace-functies en -mogelijkheden, verplaatsen we vm-afbeeldingen van Marketplace naar beheerde schijfopslag.
 
-Vanaf 2 januari 2020 worden VM-installatie kopieën verplaatst naar beheerde schijf opslag in fasen. In de eerste fase verplaatsen we alleen installatie kopieën zonder nieuwe implementaties of actieve Vm's in de afgelopen 90 dagen. Voordat we een van de installatie kopieën verplaatsen, sturen we een e-mail om de uitgever te laten weten welke afbeeldingen worden verplaatst en wanneer ze worden verplaatst.
+Vanaf 2 januari 2020 verplaatsen we VM-afbeeldingen gefaseerd naar beheerde schijfopslag. In de eerste fase verplaatsen we alleen afbeeldingen zonder nieuwe implementaties of het uitvoeren van VM's in de afgelopen 90 dagen. Voordat we een van de afbeeldingen verplaatsen, sturen we een e-mail om de uitgever te laten weten welke afbeeldingen worden verplaatst en wanneer ze worden verplaatst.
 
-Uitgevers of consumenten hoeven geen actie te ondernemen en gebruikers worden niet beïnvloed. De Marketplace-aanbiedingen blijven beschikbaar en klanten kunnen nog steeds beheerde virtuele machines implementeren vanaf deze installatie kopieën, tijdens en na de verplaatsing.
+Uitgevers of consumenten hoeven geen actie te ondernemen en gebruikers worden niet beïnvloed. De marktplaatsaanbiedingen blijven beschikbaar en klanten kunnen nog steeds beheerde VM's implementeren vanuit deze afbeeldingen, tijdens en na de verhuizing.
 
-Als u vragen hebt, kunt u [contact met ons](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)opnemen.
+Mocht u vragen hebben, neem dan [contact met ons op.](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)
 
 ## <a name="faqs"></a>Veelgestelde vragen
 
-### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>Werken de gebruikers van mijn VM-installatie kopieën een storing?
+### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>Zouden de gebruikers van mijn VM-afbeeldingen een storing ervaren?
 
-Gebruikers van de VM-installatie kopieën hebben geen onderbrekingen. 
+Gebruikers van de VM-afbeeldingen zullen geen storing ervaren. 
 
-In de eerste fase worden alleen VM-installatie kopieën verplaatst die geen actieve Vm's hebben. Omdat er geen gebruikers zijn voor deze installatie kopieën, heeft dit geen invloed. Voor de volgende fasen is er geen invloed op de gebruikers.
+In de eerste fase verplaatsen we alleen VM-afbeeldingen die geen vm's hebben. Aangezien er geen gebruikers voor deze beelden zijn, zal er geen invloed zijn. Ook voor de volgende fasen zal er geen gevolgen zijn voor de gebruikers.
 
-### <a name="how-long-does-it-take-for-the-process-to-complete"></a>Hoe lang duurt het om het proces te volt ooien?
+### <a name="how-long-does-it-take-for-the-process-to-complete"></a>Hoe lang duurt het voordat het proces is voltooid?
 
 Het kan tot 24 uur duren voordat de migratie is voltooid.
 
@@ -41,26 +40,26 @@ Het kan tot 24 uur duren voordat de migratie is voltooid.
 
 Nee. Uitgevers of consumenten hoeven geen actie te ondernemen.
 
-### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Moet ik mijn systeem bijwerken om de Cloud Portal-Api's op een andere manier aan te roepen nadat ze zijn verplaatst naar Managed Disk-opslag?
+### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Moet ik mijn systeem bijwerken om de API's van de Cloud Portal op een andere manier te bellen nadat ze zijn verplaatst naar beheerde schijfopslag?
 
 Nee. Uw bestaande API-aanroepen blijven werken.
 
-### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Moeten al mijn VM-installatie kopieën tegelijk worden verplaatst naar de beheerde schijf?
+### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Zouden al mijn VM-afbeeldingen tegelijkertijd naar Managed Disk worden verplaatst?
 
-We gaan al uw VM-installatie kopieën op dezelfde dag verplaatsen. U ontvangt een melding zodra deze zijn verplaatst.
+We verplaatsen al uw VM-afbeeldingen op dezelfde dag. We zullen u hiervan op de hoogte stellen zodra ze zijn verplaatst.
 
-### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>Kan ik aanvragen om het verplaatsen van mijn VM-installatie kopieën naar een later tijdstip te plannen?
+### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>Kan ik vragen om de verplaatsing van mijn VM-afbeeldingen naar een later tijdstip te plannen?
 
-U wordt aangeraden de installatie kopieën op de geplande datum te verplaatsen. Als u echter problemen hebt, kunt u contact met ons opnemen om de verplaatsing opnieuw te plannen.
+We raden u aan de afbeeldingen op de geplande datum te verplaatsen. Mocht u zich echter zorgen maken, neem dan contact met ons op om de verhuizing te verzetten.
 
-### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Kan ik tijdens de verhuizing updates voor mijn VM-installatie kopieën publiceren?
+### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Kan ik tijdens de verhuizing updates van mijn VM-afbeeldingen publiceren?
 
-Updates van de VM-installatie kopieën kunnen niet worden gemaakt tijdens de verplaatsing.
+Updates van de VM-afbeeldingen kunnen niet worden uitgevoerd tijdens de verhuizing.
 
-### <a name="will-the-publishing-process-change-after-my-vm-image-is-moved-to-managed-disk"></a>Wordt het publicatie proces gewijzigd nadat mijn VM-installatie kopie naar een beheerde schijf is verplaatst?
+### <a name="will-the-publishing-process-change-after-my-vm-image-is-moved-to-managed-disk"></a>Wordt het publicatieproces gewijzigd nadat mijn VM-afbeelding is verplaatst naar Beheerde schijf?
 
-Nee, het publicatie proces blijft hetzelfde. 
+Nee, het publicatieproces blijft hetzelfde. 
 
-### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>Kan de uitgever hun aanbiedingen verplaatsen naar een beheerde schijf?
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>Kan de uitgever zijn aanbiedingen verplaatsen naar Managed Disk?
 
-Nee, de uitgevers kunnen hun aanbiedingen niet naar Managed Disk verplaatsen. Ze moeten wachten en hun afbeeldingen worden automatisch verplaatst. Er worden meldingen verzonden naar de uitgever voordat we wijzigingen aanbrengen.
+Nee, de uitgevers kunnen hun aanbiedingen niet verplaatsen naar Managed Disk. Ze zullen moeten wachten en hun beelden worden automatisch verplaatst. We sturen meldingen naar de uitgever voordat we wijzigingen aanbrengen.

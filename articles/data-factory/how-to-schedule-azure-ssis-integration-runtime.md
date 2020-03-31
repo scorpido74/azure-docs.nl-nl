@@ -1,6 +1,6 @@
 ---
-title: Azure-SSIS Integration Runtime plannen
-description: In dit artikel wordt beschreven hoe u het starten en stoppen van Azure-SSIS Integration Runtime kunt plannen met behulp van Azure Data Factory.
+title: Runtime azure-SSIS-integratie plannen
+description: In dit artikel wordt beschreven hoe u de runtime voor het starten en stoppen van Azure-SSIS-integratie inplannen met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -14,34 +14,34 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440319"
 ---
-# <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime volgens een planning starten en stoppen
-In dit artikel wordt beschreven hoe u het starten en stoppen van Azure-SSIS Integration Runtime (IR) kunt plannen met behulp van Azure Data Factory (ADF). Azure-SSIS IR is een ADF-reken resource die is toegewezen voor het uitvoeren van SQL Server Integration Services (SSIS)-pakketten. Er zijn kosten verbonden aan het uitvoeren van Azure-SSIS IR. Daarom wilt u uw IR doorgaans alleen uitvoeren als u SSIS-pakketten moet uitvoeren in Azure en de IR wilt stoppen wanneer u deze niet meer nodig hebt. U kunt de ADF-gebruikers interface (UI)/app of Azure PowerShell gebruiken om [uw IR hand matig te starten of te stoppen](manage-azure-ssis-integration-runtime.md).
+# <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime gepland starten en stoppen
+In dit artikel wordt beschreven hoe u de start en het stoppen van Azure-SSIS Integration Runtime (IR) inplant met behulp van Azure Data Factory (ADF). Azure-SSIS IR is ADF compute resource die is gebruikt voor het uitvoeren van SQL Server Integration Services (SSIS)-pakketten. Het uitvoeren van Azure-SSIS IR heeft een kosten verbonden aan het. Daarom wilt u uw IR meestal alleen uitvoeren wanneer u SSIS-pakketten in Azure moet uitvoeren en uw IR moet stoppen wanneer u deze niet meer nodig hebt. U de ADF-gebruikersinterface (UI)/app of Azure PowerShell gebruiken om uw IR handmatig te [starten of te stoppen).](manage-azure-ssis-integration-runtime.md)
 
-U kunt ook webactiviteiten maken in ADF-pijp lijnen om uw IR op schema te starten/stoppen, bijvoorbeeld om de tijd in de ochtend te starten voordat u uw dagelijkse ETL-workloads uitvoert en deze op de middag stopt nadat deze zijn voltooid.  U kunt ook een activiteit voor het uitvoeren van SSIS-pakketten koppelen tussen twee webactiviteiten die uw IR starten en stoppen, zodat uw IR op aanvraag kan worden gestart/gestopt, net zo lang vóór/na de uitvoering van het pakket. Zie voor meer informatie over het uitvoeren van SSIS-pakket activiteit [een SSIS-pakket uitvoeren met behulp van SSIS-pakket activiteit uitvoeren in het ADF-pijplijn](how-to-invoke-ssis-package-ssis-activity.md) artikel.
+U ook webactiviteiten maken in ADF-pijplijnen om uw IR op schema te starten/te stoppen, bijvoorbeeld om deze 's ochtends te starten voordat u uw dagelijkse ETL-workloads uitvoert en deze 's middags stopt nadat ze zijn voltooid.  U ook een SSIS-pakketactiviteit uitvoeren tussen twee webactiviteiten die uw IR starten en stoppen, zodat uw IR op aanvraag start/stopt, net op tijd voor/na uw pakketuitvoering. Zie [Een SSIS-pakket uitvoeren met ssis-pakketactiviteit uitvoeren in het ADF-pijplijnartikel](how-to-invoke-ssis-package-ssis-activity.md) voor meer informatie over activiteiten in het SSIS-pakket uitvoeren.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-Als u uw Azure-SSIS IR al hebt ingericht, richt u het in door de instructies in de [zelf studie](tutorial-create-azure-ssis-runtime-portal.md)te volgen. 
+Als u uw Azure-SSIS IR nog niet hebt ingericht, moet u deze inrichten door instructies in de zelfstudie te [volgen.](tutorial-create-azure-ssis-runtime-portal.md) 
 
-## <a name="create-and-schedule-adf-pipelines-that-start-and-or-stop-azure-ssis-ir"></a>ADF-pijp lijnen maken en plannen die Azure-SSIS IR starten en of stoppen
-In deze sectie wordt uitgelegd hoe u webactiviteiten in ADF-pijp lijnen kunt gebruiken om uw Azure-SSIS IR op schema te starten of te stoppen, of om het & op aanvraag te stoppen. U wordt begeleid bij het maken van drie pijp lijnen: 
+## <a name="create-and-schedule-adf-pipelines-that-start-and-or-stop-azure-ssis-ir"></a>ADF-pijplijnen maken en plannen die Azure-SSIS IR starten en of stoppen
+In deze sectie ziet u hoe u webactiviteiten in ADF-pijplijnen gebruiken om uw Azure-SSIS IR op schema te starten/stoppen of te beginnen & op aanvraag te stoppen. Wij begeleiden u bij het maken van drie pijpleidingen: 
 
-1. De eerste pijp lijn bevat een webactiviteit waarmee uw Azure-SSIS IR wordt gestart. 
-2. De tweede pijp lijn bevat een webactiviteit die uw Azure-SSIS IR stopt.
-3. De derde pijp lijn bevat een uitvoering van SSIS-pakket activiteiten die zijn gekoppeld aan twee webactiviteiten die uw Azure-SSIS IR starten/stoppen. 
+1. De eerste pijplijn bevat een webactiviteit waarmee uw Azure-SSIS IR wordt gestart. 
+2. De tweede pijplijn bevat een webactiviteit die uw Azure-SSIS IR stopt.
+3. De derde pijplijn bevat een activiteit uitvoeren SSIS-pakket die is geketend tussen twee webactiviteiten die uw Azure-SSIS IR starten/stoppen. 
 
-Nadat u deze pijp lijnen hebt gemaakt en getest, kunt u een plannings trigger maken en deze aan een pijp lijn koppelen. De schema trigger definieert een schema voor het uitvoeren van de gekoppelde pijp lijn. 
+Nadat u deze pijplijnen hebt gemaakt en getest, u een planningstrigger maken en deze koppelen aan elke pijplijn. De planningstrigger definieert een planning voor het uitvoeren van de bijbehorende pijplijn. 
 
-U kunt bijvoorbeeld twee triggers maken, de eerste is gepland om dagelijks om 6 uur te worden uitgevoerd en aan de eerste pijp lijn te zijn gekoppeld, terwijl de tweede is gepland om dagelijks om 6 uur te worden uitgevoerd en aan de tweede pijp lijn te zijn gekoppeld.  Op deze manier hebt u een periode tussen 6 en 6 uur elke dag als uw IR actief is, zodat u uw dagelijkse ETL-workloads kunt uitvoeren.  
+U bijvoorbeeld twee triggers maken, de eerste wordt dagelijks om 6 uur 's 6 uur uitgevoerd en gekoppeld aan de eerste pijplijn, terwijl de tweede wordt uitgevoerd om dagelijks om 18.00 uur en gekoppeld aan de tweede pijplijn.  Op deze manier heeft u elke dag een periode tussen 6.00 en 18.00 uur wanneer uw IR wordt uitgevoerd, klaar om uw dagelijkse ETL-workloads uit te voeren.  
 
-Als u een derde trigger maakt die gepland is om dagelijks om middernacht te worden uitgevoerd en aan de derde pijp lijn is gekoppeld, wordt die pijp lijn om middernacht elke dag uitgevoerd, waarna uw IR wordt gestart voordat de uitvoering van het pakket wordt uitgevoerd, waarna het pakket wordt uitgevoerd en onmiddellijk uw IR na het uitvoeren van het pakket stoppen, zodat de infra rood idly niet wordt uitgevoerd.
+Als u een derde trigger maakt die dagelijks om middernacht wordt uitgevoerd en gekoppeld aan de derde pijplijn, wordt die pijplijn elke dag om middernacht uitgevoerd, begint u uw IR vlak voor de uitvoering van het pakket, voert u uw pakket vervolgens uit en onmiddellijk het stoppen van uw IR net na pakket uitvoering, zodat uw IR zal niet worden uitgevoerd werkeloos.
 
 ### <a name="create-your-adf"></a>Uw ADF maken
 
@@ -50,156 +50,156 @@ Als u een derde trigger maakt die gepland is om dagelijks om middernacht te word
    
    ![Nieuw -> DataFactory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
    
-3. Voer op de pagina **nieuw Data Factory** **Gegevensfactory myazuressisdatafactory** in als **naam**. 
+3. Typ **myAzureSsisDataFactory** voor **naam**op de pagina **Nieuwe gegevensfabriek** . 
       
-   ![De pagina Nieuwe data factory](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
+   ![Pagina Nieuwe gegevensfactory](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
  
-   De naam van uw ADF moet globaal uniek zijn. Als het volgende fout bericht wordt weer gegeven, wijzigt u de naam van de ADF (bijvoorbeeld Uwnaammyazuressisdatafactory) en probeert u deze opnieuw te maken. Zie [het artikel Data Factory naamgevings regels](naming-rules.md) voor meer informatie over naamgevings regels voor ADF-artefacten.
+   De naam van uw ADF moet wereldwijd uniek zijn. Als u de volgende fout ontvangt, wijzigt u de naam van uw ADF (bijvoorbeeld uw naamMyAzureSsisDataFactory) en probeert u deze opnieuw te maken. Zie [artikel Gegevensfabriek - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor ADF-artefacten.
   
    `Data factory name MyAzureSsisDataFactory is not available`
       
-4. Selecteer uw Azure- **abonnement** waaronder u uw ADF wilt maken. 
-5. Voer een van de volgende stappen uit voor **Resourcegroep**:
+4. Selecteer uw **Azure-abonnement** waaronder u uw ADF wilt maken. 
+5. Ga **voor Resourcegroep**naar een van de volgende stappen:
      
-   - Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst. 
-   - Selecteer **nieuwe maken**en voer de naam van de nieuwe resource groep in.   
+   - Selecteer **Bestaande gebruiken**en selecteer een bestaande resourcegroep in de vervolgkeuzelijst. 
+   - Selecteer **Nieuw maken**en voer de naam van uw nieuwe resourcegroep in.   
          
-   Zie [resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie over resource groepen.
+   Zie [Resourcegroepen gebruiken om uw Azure-bronnenartikel te beheren](../azure-resource-manager/management/overview.md) voor meer informatie over resourcegroepen.
    
-6. Selecteer voor **versie** **v2** .
-7. Selecteer bij **locatie**een van de locaties die worden ondersteund voor het maken van ADF vanuit de vervolg keuzelijst.
+6. Selecteer **V2** voor **versie**.
+7. Selecteer **bij Locatie**een van de locaties die worden ondersteund voor ADF-creatie in de vervolgkeuzelijst.
 8. Selecteer **Vastmaken aan dashboard**.     
-9. Klik op **Maken**.
-10. In het Azure-dash board ziet u de volgende tegel met de status: **Data Factory implementeren**. 
+9. Klik **op Maken**.
+10. Op het Azure-dashboard ziet u de volgende tegel met status: **Gegevensfabriek implementeren**. 
 
     ![tegel met de status 'gegevensfactory implementeren'](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
    
-11. Nadat het maken is voltooid, ziet u de pagina ADF zoals hieronder wordt weer gegeven.
+11. Nadat de aanmaak is voltooid, u uw ADF-pagina zien zoals hieronder weergegeven.
    
     ![Startpagina van de gegevensfactory](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
    
-12. Klik op **auteur & monitor** om de ADF-gebruikers interface/-app op een afzonderlijk tabblad te starten.
+12. Klik **op Auteur &-monitor** om de ADF-gebruikersinterface/-app op een apart tabblad te starten.
 
-### <a name="create-your-pipelines"></a>Uw pijp lijnen maken
+### <a name="create-your-pipelines"></a>Maak uw pijplijnen
 
-1. Selecteer op **de pagina aan de slag de** optie **pijp lijn maken**. 
+1. Selecteer in De pagina Laten **beginnen** de optie **Pijplijn maken**. 
 
    ![Pagina Aan de slag](./media/how-to-schedule-azure-ssis-integration-runtime/get-started-page.png)
    
-2. Vouw in de werkset **activiteiten** het menu **Algemeen** uit en sleep **& een** webactiviteit naar het ontwerp oppervlak voor pijp lijnen neer te zetten. Wijzig op het tabblad **Algemeen** van het venster Eigenschappen van activiteit de naam van de activiteit in **startMyIR**. Schakel over naar het tabblad **instellingen** en voer de volgende acties uit.
+2. Vouw in **de gereedschapsset Activiteiten** het menu **Algemeen** uit en sleep & een **webactiviteit** op het oppervlak van de pijplijnontwerper neer te zetten. Wijzig in het tabblad **Algemeen** van het venster activiteitseigenschappen de activiteitsnaam in **startMyIR**. Ga naar het tabblad **Instellingen** en doe de volgende acties.
 
-    1. Voor **URL**voert u de volgende URL in voor rest API die wordt gestart Azure-SSIS IR, waarbij u `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`en `{integrationRuntimeName}` vervangt door de werkelijke waarden voor uw ir: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` u kunt ook & de resource-id van uw IR kopiëren van de controle pagina op de ADF-gebruikers interface/-app om het volgende deel van de bovenstaande URL te vervangen: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
+    1. Voer **voor URL**de volgende URL voor REST API in waarmee `{subscriptionId}` `{resourceGroupName}`Azure-SSIS IR wordt gestart, waarbij u, de `{factoryName}`werkelijke waarden voor uw IR, vervangt en `{integrationRuntimeName}` de werkelijke waarden voor uw IR vervangt: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` U ook de bron-id van uw IR kopiëren & plakken vanaf de controlepagina op ADF UI/app om het volgende deel van de bovenstaande URL te vervangen:`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
-       ![ADF SSIS IR-Resource-ID](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
+       ![ADF SSIS IR-bron-id](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
-    2. Selecteer voor **methode** **post**. 
-    3. Voer `{"message":"Start my IR"}`in bij **hoofd tekst**. 
-    4. Voor **verificatie**selecteert u **MSI** om de beheerde identiteit voor uw ADF te gebruiken. zie [beheerde identiteit voor Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) artikel voor meer informatie.
-    5. Voer `https://management.azure.com/`in voor de **resource**.
+    2. Selecteer **POST**voor **Methode**. 
+    3. Voor **lichaam,** voer `{"message":"Start my IR"}`. 
+    4. Zie [Beheerde identiteit voor het](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) artikel Gegevensfabriek voor **verificatie**, selecteer **MSI** om de beheerde identiteit voor uw ADF te gebruiken voor meer informatie.
+    5. Voer **voor** `https://management.azure.com/`Resource .
     
-       ![ADF-webactiviteits schema SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
+       ![AdF-webactiviteitsschema SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
   
-3. Kloon de eerste pijp lijn om een tweede te maken, waarbij u de naam van de activiteit wijzigt in **stopMyIR** en de volgende eigenschappen vervangt.
+3. Kloon de eerste pijplijn om een tweede te maken, waarbij de activiteitsnaam wordt gewijzigd om **MyIR** te stoppen en de volgende eigenschappen te vervangen.
 
-    1. Voor **URL**voert u de volgende URL in voor REST API die Azure-SSIS IR stopt, `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`en `{integrationRuntimeName}` vervangen door de werkelijke waarden voor uw IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
+    1. Voer **voor URL**de volgende URL voor REST API in waarmee `{subscriptionId}` `{resourceGroupName}`Azure-SSIS IR wordt gestopt, waarbij de `{factoryName}` `{integrationRuntimeName}` werkelijke waarden voor uw IR worden vervangen door de werkelijke waarden:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
     
-    2. Voer `{"message":"Stop my IR"}`in bij **hoofd tekst**. 
+    2. Voor **lichaam,** voer `{"message":"Stop my IR"}`. 
 
-4. Maak een derde pijp lijn, Sleep & Haal een activiteit uit het **uitvoeren van SSIS-pakketten** uit de werkset **activiteiten** op het ontwerp oppervlak voor pijp lijnen en configureer deze volgens de instructies in [een SSIS-pakket aanroepen met behulp van SSIS-pakket activiteit uitvoeren in het ADF](how-to-invoke-ssis-package-ssis-activity.md) -artikel.  U kunt ook in plaats daarvan een **opgeslagen procedure** -activiteit gebruiken en deze configureren volgens de instructies in [een SSIS-pakket aanroepen met behulp van opgeslagen procedure activiteit in het ADF](how-to-invoke-ssis-package-stored-procedure-activity.md) -artikel.  Vervolgens koppelt u de activiteit Execute SSIS package/opgeslagen procedure tussen twee webactiviteiten die uw IR starten/stoppen, vergelijkbaar met die webactiviteiten in de eerste/tweede pijp lijnen.
+4. Maak een derde pijplijn, sleep & een **Activiteit SSIS-pakket uitvoeren** van **activiteiten** op het oppervlak van de pijplijnontwerper te laten vallen en configureer deze volgens de instructies in [Een SSIS-pakket aanroepen met de activiteit SSIS-pakket uitvoeren in het ADF-artikel.](how-to-invoke-ssis-package-ssis-activity.md)  U ook een **activiteit Opgeslagen procedure** gebruiken en deze configureren volgens de instructies in Een [SSIS-pakket aanroepen met behulp van Activiteit Opgeslagen procedure in het ADF-artikel.](how-to-invoke-ssis-package-stored-procedure-activity.md)  Chain vervolgens de activiteit SSIS-pakket/opgeslagen procedure uitvoeren tussen twee webactiviteiten die uw IR starten/stoppen, vergelijkbaar met die webactiviteiten in de eerste/tweede pijplijn.
 
    ![ADF-webactiviteit op aanvraag SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png)
 
-5. Wijs de beheerde identiteit voor uw ADF toe aan de rol **Inzender** , zodat webactiviteiten in de pijp lijnen rest API kunnen aanroepen om Azure-SSIS IRs in IT te starten of te stoppen.  Op de pagina ADF in Azure Portal klikt u op **toegangs beheer (IAM)** , klikt u op **+ roltoewijzing toevoegen**en voert u vervolgens de volgende acties uit op de Blade **roltoewijzing toevoegen** .
+5. Wijs de beheerde identiteit voor uw ADF een **inzenderrol** toe aan zichzelf, zodat webactiviteiten in de pijplijnen REST API kunnen aanroepen om Azure-SSIS IRs te starten/stoppen die daarin zijn ingericht.  Klik op uw ADF-pagina in Azure-portal op **Toegangsbeheer (IAM),** klik **op + Roltoewijzing toevoegen**en voer vervolgens op **Roltoewijzingsblad toevoegen** de volgende acties uit.
 
-    1. Selecteer voor **rol** **Inzender**. 
-    2. **Als u toegang wilt toewijzen**, selecteert u **Azure AD-gebruiker,-groep of Service-Principal**. 
-    3. Zoek bij **selecteren**naar de ADF-naam en selecteer deze. 
+    1. Selecteer Voor **Rol** **de optie Bijdrager**. 
+    2. Selecteer Azure AD-gebruiker, -groep of serviceprincipal **voor Toegang toewijzen**tot , selecteer **Azure AD-gebruiker, -groep of serviceprincipal**. 
+    3. Zoek **voor Selecteren**naar uw ADF-naam en selecteer deze. 
     4. Klik op **Opslaan**.
     
-   ![Roltoewijzing beheerde identiteits toewijzing van ADF](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
+   ![AdF-taaktaak voor beheerde identiteitsrollen](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
-6. Valideer uw ADF en alle pijplijn instellingen door te klikken op **Validate all/validate** op de werk balk Factory/pipeline. Sluit de **validatie-uitvoer van de fabriek/pijp lijn** door te klikken op de knop **>>** .  
+6. Valideer uw ADF en alle pijplijninstellingen door op **Alles valideren/valideren** op de werkbalk fabriek/pijplijn te klikken. Sluit **Fabrieks-/pijplijnvalidatieuitvoer** **>>** door op knop te klikken.  
 
    ![Pijplijn valideren](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
 
-### <a name="test-run-your-pipelines"></a>Test uw pijp lijnen uitvoeren
+### <a name="test-run-your-pipelines"></a>Test uw pijplijnen uit te voeren
 
-1. Selecteer **test uitvoering** op de werk balk voor elke pijp lijn en Zie **uitvoer** venster in het onderste deel venster. 
+1. Selecteer **Testrun** op de werkbalk voor elke pijplijn en zie **Uitvoervenster** in het onderste deelvenster. 
 
-   ![Test uitvoering](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
+   ![Testrun](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
     
-2. Als u de derde pijp lijn wilt testen, start u SQL Server Management Studio (SSMS). Voer de volgende acties uit in het venster **verbinding maken met server** . 
+2. Als u de derde pijplijn wilt testen, start u SQL Server Management Studio (SSMS). Ga in het venster **Verbinding maken met server** de volgende acties uit. 
 
-    1. Voer bij **Server naam** **&lt;de naam van de Azure SQL database-server in&gt;. database.Windows.net**.
-    2. Selecteer **opties > >** .
-    3. Selecteer **SSISDB**om **verbinding te maken met de data base**.
+    1. Voer **voor Servernaam** ** &lt;de naam&gt;van de Azure SQL Database-server in.database.windows.net**.
+    2. Selecteer **Opties >>**.
+    3. Selecteer **SSISDB** **voor Verbinding maken met database**.
     4. Selecteer **Verbinden**. 
-    5. Vouw **Integration Services catalogs** -> **SSISDB** -> uw map-> Projects-> uw **SSIS-project** ->- **pakketten**. 
-    6. Klik met de rechter muisknop op het opgegeven SSIS-pakket om uit te voeren en selecteer **rapporten** -> **standaard rapporten** -> **alle uitvoeringen**. 
-    7. Controleer of de toepassing is uitgevoerd. 
+    5. **Integratieservicescatalogi** -> **ssisdb** -> uw map -> **projecten** -> uw SSIS-project -> **Pakketten**uit. 
+    6. Klik met de rechtermuisknop op het opgegeven SSIS-pakket om -> **alle uitvoeringen**uit te voeren en selecteer -> **Standaardrapporten**rapporten. **Reports** 
+    7. Controleer of het is uitgevoerd. 
 
-   ![SSIS-pakket uitvoering verifiëren](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
+   ![SSIS-pakket uitvoeren controleren](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
 
-### <a name="schedule-your-pipelines"></a>Uw pijp lijnen plannen
+### <a name="schedule-your-pipelines"></a>Uw pijplijnen plannen
 
-Nu uw pijp lijnen werken zoals verwacht, kunt u triggers maken om ze uit te voeren op opgegeven cadences. Zie [de pijp lijn activeren op basis van een](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule) artikel voor meer informatie over het koppelen van triggers aan pijp lijnen.
+Nu uw pijplijnen werken zoals u had verwacht, u triggers maken om ze uit te voeren op opgegeven cadans. Zie [De pijplijn activeren in een planningsartikel](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule) voor meer informatie over het koppelen van triggers aan pijplijnen.
 
-1. Selecteer op de werk balk pijp lijn de optie **trigger** en selecteer **Nieuw/bewerken**. 
+1. Selecteer op de werkbalk van de pijplijn De optie **Activeren** en selecteer **Nieuw/Bewerken**. 
 
-   ![Trigger-> nieuw/bewerken](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
+   ![Trigger -> Nieuw/Bewerken](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
 
-2. Selecteer **+ Nieuw**in het deel venster **triggers toevoegen** .
+2. Selecteer in het deelvenster **Triggers toevoegen** de optie **+ Nieuw**.
 
-   ![Triggers toevoegen-nieuw](./media/how-to-schedule-azure-ssis-integration-runtime/add-triggers-new.png)
+   ![Triggers toevoegen - Nieuw](./media/how-to-schedule-azure-ssis-integration-runtime/add-triggers-new.png)
 
-3. Voer in het deel venster **nieuwe trigger** de volgende acties uit: 
+3. Ga in het deelvenster **Nieuwe trigger** de volgende acties uitvoeren: 
 
-    1. Voer bij **naam**een naam in voor de trigger. In het volgende voor beeld is **dagelijks uitvoeren** de naam van de trigger. 
-    2. Selecteer bij **type**de optie **planning**. 
-    3. Voer voor **begin datum (UTC)** een begin datum en-tijd in UTC in. 
-    4. Voer voor **terugkeer patroon**een uitgebracht in voor de trigger. In het volgende voor beeld is het **dagelijks** één keer. 
-    5. Selecteer bij **einde** **geen einde** of voer een eind datum en-tijd in na selectie **op datum**. 
-    6. Selecteer **geactiveerd** om de trigger onmiddellijk te activeren nadat u de volledige ADF-instellingen hebt gepubliceerd. 
-    7. Selecteer **Next**.
+    1. Voer voor **Naam**een naam in voor de trigger. In het volgende voorbeeld is **Dagelijks uitvoeren** de triggernaam. 
+    2. Selecteer Voor **Tekst**de optie **Planning**. 
+    3. Voer **voor begindatum (UTC)** een begindatum en -tijd in in UTC. 
+    4. Voer voor **Herhaling**een cadans in voor de trigger. In het volgende voorbeeld is het **eenmaal Dagelijks.** 
+    5. Selecteer Voor **Einde** **Geen einde** of voer een einddatum en -tijd in nadat u Op **datum hebt**geselecteerd . 
+    6. Selecteer **Geactiveerd** om de trigger direct nadat u de hele ADF-instellingen hebt gepubliceerd, te activeren. 
+    7. Selecteer **Volgende**.
 
-   ![Trigger-> nieuw/bewerken](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
+   ![Trigger -> Nieuw/Bewerken](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     
-4. Controleer op de pagina **para meters voor uitvoeren van trigger** een waarschuwing en selecteer **volt ooien**. 
-5. Publiceer de volledige ADF-instellingen door **Alles publiceren** te selecteren in de werk balk van de fabriek. 
+4. Controleer op de pagina **Parameters activeren** elke waarschuwing en selecteer **Voltooien**. 
+5. Publiceer de hele ADF-instellingen door **Alles publiceren** te selecteren op de werkbalk van de fabriek. 
 
    ![Alles publiceren](./media/how-to-schedule-azure-ssis-integration-runtime/publish-all.png)
 
-### <a name="monitor-your-pipelines-and-triggers-in-azure-portal"></a>Bewaak uw pijp lijnen en triggers in Azure Portal
+### <a name="monitor-your-pipelines-and-triggers-in-azure-portal"></a>Uw pijplijnen en triggers in Azure-portal bewaken
 
-1. Als u de uitvoering van triggers en pijplijn uitvoeringen wilt bewaken, gebruikt u het tabblad **controleren** links van de gebruikers interface/app van ADF. Zie [het artikel pijp lijn controleren](quickstart-create-data-factory-portal.md#monitor-the-pipeline) voor gedetailleerde stappen.
+1. Als u triggerruns en pijplijnuitvoeringen wilt controleren, gebruikt u het tabblad **Monitor** links van de ADF-gebruikersinterface/-app. Zie [Het pijplijnartikel controleren](quickstart-create-data-factory-portal.md#monitor-the-pipeline) voor gedetailleerde stappen.
 
    ![Pijplijnuitvoeringen](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
 
-2. Als u de uitvoeringen van de activiteit wilt weer geven die zijn gekoppeld aan een pijplijn uitvoering, selecteert u de eerste koppeling (uitvoering van de**activiteit weer geven**) in de kolom **acties** . Voor de derde pijp lijn ziet u drie uitvoeringen van de activiteit, één voor elke gekoppelde activiteit in de pijp lijn (webactiviteit voor het starten van uw IR, opgeslagen procedure activiteit voor het uitvoeren van uw pakket en webactiviteit om uw IR te stoppen). Als u de pijp lijn opnieuw wilt weer geven, selecteert u de koppeling **pijp lijnen** bovenaan.
+2. Als u de activiteitsruns wilt weergeven die zijn gekoppeld aan een pijplijnrun, selecteert u de eerste koppeling **(Activiteitsuitvoeringen weergeven)** in de kolom **Acties.** Voor de derde pijplijn ziet u drie activiteitsruns, één voor elke geketende activiteit in de pijplijn (webactiviteit om uw IR, opgeslagen procedureactiviteit om uw pakket uit te voeren en webactiviteit om uw IR te stoppen). Als u de pijplijnweeruitvoeringen opnieuw wilt weergeven, selecteert u bovenaan de koppeling **Pijplijnen.**
 
    ![Uitvoering van activiteiten](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
 
-3. Als u de trigger uitvoeringen wilt weer geven, selecteert u **trigger uitvoeringen** in de vervolg keuzelijst onder **pijplijn uitvoeringen** bovenaan. 
+3. Als u de triggerruns wilt weergeven, selecteert u **Trigger Runs** in de vervolgkeuzelijst onder **Pijplijnuitvoeringen** bovenaan. 
 
    ![Triggeruitvoeringen](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
 
-### <a name="monitor-your-pipelines-and-triggers-with-powershell"></a>Uw pijp lijnen en triggers bewaken met Power shell
+### <a name="monitor-your-pipelines-and-triggers-with-powershell"></a>Uw pijplijnen en triggers bewaken met PowerShell
 
-Gebruik scripts zoals de volgende voor beelden om uw pijp lijnen en triggers te bewaken.
+Gebruik scripts zoals de volgende voorbeelden om uw pijplijnen en triggers te controleren.
 
-1. De status van een pijplijn uitvoering ophalen.
+1. Krijg de status van een pijplijnrun.
 
    ```powershell
    Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
    ```
 
-2. Informatie over een trigger ophalen.
+2. Krijg informatie over een trigger.
 
    ```powershell
    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
    ```
 
-3. De status ophalen van de uitvoering van een trigger.
+3. Krijg de status van een trigger run.
 
    ```powershell
    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
@@ -207,69 +207,69 @@ Gebruik scripts zoals de volgende voor beelden om uw pijp lijnen en triggers te 
 
 ## <a name="create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir"></a>Azure Automation-runbook maken en plannen waarmee Azure-SSIS IR wordt gestart/gestopt
 
-In deze sectie leert u hoe u Azure Automation runbook maakt dat Power shell-script uitvoert, uw Azure-SSIS IR start/stopt volgens een planning.  Dit is handig wanneer u extra scripts wilt uitvoeren vóór/na het starten/stoppen van uw IR voor vóór/na de verwerking.
+In deze sectie leert u Azure Automation-runbook maken waarmee PowerShell-script wordt uitgevoerd, waarbij uw Azure-SSIS IR volgens een planning wordt gestart/gestopt.  Dit is handig wanneer u extra scripts wilt uitvoeren voor/na het starten/stoppen van uw IR voor pre/post-processing.
 
 ### <a name="create-your-azure-automation-account"></a>Uw Azure Automation-account maken
 
-Als u nog geen Azure Automation-account hebt, maakt u er een door de instructies in deze stap te volgen. Zie [een Azure Automation-account maken](../automation/automation-quickstart-create-account.md) voor gedetailleerde stappen. Als onderdeel van deze stap maakt u een **uitvoeren als** -account voor Azure (een Service-Principal in uw Azure Active Directory) en wijst u dit toe aan een **Inzender** rol in uw Azure-abonnement. Zorg ervoor dat het hetzelfde abonnement is dat de ADF bevat met Azure SSIS IR. Azure Automation gebruikt dit account voor de verificatie van Azure Resource Manager en het uitvoeren van uw resources. 
+Als u nog geen Azure Automation-account hebt, maakt u er een door de instructies in deze stap te volgen. Zie Een azure [automation-accountartikel maken](../automation/automation-quickstart-create-account.md) voor gedetailleerde stappen. Als onderdeel van deze stap maakt u een **Azure Run As-account** (een serviceprincipal in uw Azure Active Directory) en wijst u deze een **inzenderrol** toe in uw Azure-abonnement. Zorg ervoor dat het hetzelfde abonnement is dat uw ADF bevat met Azure SSIS IR. Azure Automation gebruikt dit account om te verifiëren bij Azure Resource Manager en om uw resources te gebruiken. 
 
-1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. ADF-gebruikers interface/-app wordt momenteel alleen ondersteund in micro soft Edge en Google Chrome-webbrowsers.
+1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Momenteel wordt ADF UI/app alleen ondersteund in microsoft edge- en Google Chrome-webbrowsers.
 2. Meld u aan bij de [Azure-portal](https://portal.azure.com/).    
-3. Selecteer **Nieuw** in het menu links, selecteer **controle en beheer**en selecteer **Automation**. 
+3. Selecteer **Nieuw** in het linkermenu, selecteer **Monitoring + Beheer**en selecteer **Automatisering**. 
 
-   ![New-> Controle en beheer-> Automation](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
+   ![Nieuwe -> Monitoring + Management -> Automation](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
     
-2. Voer de volgende acties uit in het deel venster **Automation-account toevoegen** .
+2. Ga in het deelvenster **Automatiseringsaccount toevoegen** de volgende acties uit.
 
-    1. Voer bij **naam**een naam in voor uw Azure Automation-account. 
-    2. Selecteer bij **abonnement**het abonnement met uw ADF met Azure-SSIS IR. 
-    3. Voor **resource groep**selecteert u **Nieuw maken** om een nieuwe resource groep te maken of **bestaande gebruiken** om een bestaande te selecteren. 
-    4. Selecteer voor **locatie**een locatie voor uw Azure Automation-account. 
-    5. Bevestig een **uitvoeren als-account voor Azure maken** als **Ja**. Een service-principal wordt in uw Azure Active Directory gemaakt en een rol **Inzender** toegewezen in uw Azure-abonnement.
-    6. Selecteer **vastmaken aan dash board** om het permanent weer te geven in het Azure-dash board. 
+    1. Voer voor **Naam**een naam in voor uw Azure Automation-account. 
+    2. Selecteer **bij Abonnement**het abonnement met uw ADF met Azure-SSIS IR. 
+    3. Selecteer **Voor resourcegroep** **Nieuw maken** om een nieuwe resourcegroep te maken of Bestaand **gebruiken** om een bestaande groep te selecteren. 
+    4. Selecteer **voor Locatie**een locatie voor uw Azure Automation-account. 
+    5. Bevestig **Azure Run As-account maken** als **Ja**. Er wordt een serviceprincipal gemaakt in uw Azure Active Directory en een **bijdrager** toegewezen aan uw Azure-abonnement.
+    6. Selecteer **Vastmaken aan dashboard** om het permanent weer te geven in het Azure-dashboard. 
     7. Selecteer **Maken**. 
 
-   ![New-> Controle en beheer-> Automation](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
+   ![Nieuwe -> Monitoring + Management -> Automation](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
    
-3. U ziet de implementatie status van uw Azure Automation-account in azure dash board en meldingen. 
+3. U ziet de implementatiestatus van uw Azure Automation-account in azure-dashboard en meldingen. 
     
-   ![Automation implementeren](./media/how-to-schedule-azure-ssis-integration-runtime/deploying-automation.png) 
+   ![Automatisering implementeren](./media/how-to-schedule-azure-ssis-integration-runtime/deploying-automation.png) 
     
-4. U ziet de start pagina van uw Azure Automation-account nadat het is gemaakt. 
+4. U ziet de startpagina van uw Azure Automation-account nadat deze is gemaakt. 
 
-   ![Start pagina Automation](./media/how-to-schedule-azure-ssis-integration-runtime/automation-home-page.png)
+   ![Startpagina voor automatisering](./media/how-to-schedule-azure-ssis-integration-runtime/automation-home-page.png)
 
 ### <a name="import-adf-modules"></a>ADF-modules importeren
 
-1. Selecteer in het menu links de optie **modules** in **gedeelde bronnen** en controleer of u **AZ. DataFactory** + **AZ. profile** hebt in de lijst met modules.
+1. Selecteer **Modules** in de sectie **GEDEELDE RESOURCES** in het linkermenu en controleer of u **Az.DataFactory** + **Az.Profile** in de lijst met modules hebt.
 
-   ![De vereiste modules controleren](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
+   ![Controleer de vereiste modules](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  Als **AZ. DataFactory**niet is geïnstalleerd, gaat u naar de PowerShell Gallery voor de [module AZ. DataFactory](https://www.powershellgallery.com/packages/Az.DataFactory/), selecteert **u implementeren naar Azure Automation**, selecteert u uw Azure Automation account en selecteert u **OK**. Ga terug naar **modules** weer geven in **gedeelde bronnen** in het menu links en wacht totdat u de **status** van **AZ. DataFactory** -module is gewijzigd in **beschikbaar**.
+2.  Als u geen **Az.DataFactory**hebt, gaat u naar de PowerShell Gallery for [Az.DataFactory-module,](https://www.powershellgallery.com/packages/Az.DataFactory/)selecteert **u Implementeren in Azure Automation,** selecteert u uw Azure Automation-account en selecteert u **OK**. Ga terug naar de weergave **van modules** in de sectie **GEDEELDE RESOURCES** in het linkermenu en wacht tot u de module **STATUS** van **Az.DataFactory** hebt gewijzigd in **Beschikbaar.**
 
-    ![De Data Factory-module verifiëren](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
+    ![De module Gegevensfabriek verifiëren](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  Als u geen **AZ. profile**hebt, gaat u naar de PowerShell Gallery voor de [module AZ. profile](https://www.powershellgallery.com/packages/Az.profile/), selecteert **u implementeren naar Azure Automation**, selecteert u uw Azure Automation account en selecteert u **OK**. Ga terug naar **modules** weer geven in **gedeelde bronnen** in het linkermenu en wacht totdat de **status** van de **AZ. profile** -module is gewijzigd in **beschikbaar**.
+3.  Als u geen **Az.Profile hebt,** gaat u naar de module PowerShell-galerie voor [Az.Profile,](https://www.powershellgallery.com/packages/Az.profile/)selecteert **u Implementeren in Azure Automation,** selecteert u uw Azure Automation-account en selecteert u **OK**. Ga terug naar de weergave **van modules** in de sectie **GEDEELDE RESOURCES** in het linkermenu en wacht tot u de **status** van de module **Az.Profile** hebt gewijzigd in **Beschikbaar**.
 
-    ![De profiel module verifiëren](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
+    ![De profielmodule verifiëren](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
-### <a name="create-your-powershell-runbook"></a>Uw Power shell-runbook maken
+### <a name="create-your-powershell-runbook"></a>Uw PowerShell-runbook maken
 
-De volgende sectie bevat stappen voor het maken van een Power shell-runbook. Het script dat is gekoppeld aan uw runbook start/stopt Azure-SSIS IR op basis van de opdracht die u voor de **bewerkings** parameter opgeeft. In deze sectie vindt u niet de volledige Details voor het maken van een runbook. Zie [een runbook](../automation/automation-quickstart-create-runbook.md) -artikel maken voor meer informatie.
+In de volgende sectie vindt u stappen voor het maken van een PowerShell-runbook. Het script dat aan uw runbook is gekoppeld, start/stopt Azure-SSIS IR op basis van de opdracht die u opgeeft voor de parameter **OPERATION.** In deze sectie worden niet de volledige details gegeven voor het maken van een runbook. Zie [Een runbook-artikel maken](../automation/automation-quickstart-create-runbook.md) voor meer informatie.
 
-1. Ga naar het tabblad **Runbooks** en selecteer **+ een runbook toevoegen** op de werk balk. 
+1. Ga naar het tabblad **Runbooks** en selecteer **+ Voeg een runbook toe** vanaf de werkbalk. 
 
-   ![Een runbook-knop toevoegen](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
+   ![Knop Een runbook toevoegen](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
    
-2. Selecteer **een nieuw Runbook maken** en voer de volgende acties uit: 
+2. Selecteer **Een nieuw runbook maken** en voer de volgende acties uit: 
 
-    1. Voer bij **naam** **StartStopAzureSsisRuntime**in.
-    2. Voor het **type Runbook**selecteert u **Power shell**.
+    1. Voer Voor **Naam** **StartStopAzureSsisRuntime**in .
+    2. Selecteer **PowerShell** **voor runbook-type**.
     3. Selecteer **Maken**.
     
-   ![Een runbook-knop toevoegen](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
+   ![Knop Een runbook toevoegen](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
    
-3. Kopieer & plak het volgende Power shell-script in het venster van het runbook-script. Sla het runbook op en publiceer het met behulp van de knoppen **Opslaan** en **publiceren** op de werk balk. 
+3. Kopieer & plak het volgende PowerShell-script naar het scriptvenster van de runbook. Sla uw runbook op en publiceer deze met de knoppen **Opslaan** en **publiceren** op de werkbalk. 
 
     ```powershell
     Param
@@ -324,65 +324,65 @@ De volgende sectie bevat stappen voor het maken van een Power shell-runbook. Het
     "##### Completed #####"    
     ```
 
-   ![Power shell-runbook bewerken](./media/how-to-schedule-azure-ssis-integration-runtime/edit-powershell-runbook.png)
+   ![PowerShell-runbook bewerken](./media/how-to-schedule-azure-ssis-integration-runtime/edit-powershell-runbook.png)
     
-4. Test uw runbook door te klikken op de knop **Start** op de werk balk. 
+4. Test uw runbook door de knop **Start** op de werkbalk te selecteren. 
 
-   ![Knop runbook starten](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
+   ![Knop Runbook starten](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
     
-5. Voer in het deel venster **Runbook starten** de volgende acties uit: 
+5. Voer in het deelvenster **Runbook starten** de volgende acties uit: 
 
-    1. Voer bij naam van de **resource groep**de naam in van de resource groep met de ADF Azure-SSIS IR. 
-    2. Voer bij **naam van Data Factory**de naam van de ADF in met Azure-SSIS IR. 
-    3. Voer voor **AZURESSISNAME**de naam van Azure-SSIS IR in. 
-    4. Voer **begin**in bij **bewerking**. 
+    1. Voer voor naam van **resourcegroep**de naam in van de resourcegroep met uw ADF met Azure-SSIS IR. 
+    2. Voer voor de naam van **de gegevensfabriek**de naam van uw ADF in met Azure-SSIS IR. 
+    3. Voer voor **AZURESSISNAME**de naam Azure-SSIS IR in. 
+    4. Voer **START**in voor **BEWERKING**. 
     5. Selecteer **OK**.  
 
    ![Runbook-venster starten](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
    
-6. Selecteer in het venster taak de optie **uitvoer** tegel. Wacht in het uitvoer venster op het bericht **# # # # # voltooide # #** # # # nadat het # # # # # wordt weer gegeven als # **#** # # #. Het starten van Azure-SSIS IR duurt ongeveer 20 minuten. **Taak** venster sluiten en teruggaan naar het **Runbook** -venster.
+6. **Selecteer** uitvoertegel in het taakvenster. Wacht in het uitvoervenster op het bericht **##### Voltooid #####** nadat u **##### Starting ##### ziet.** Het starten van Azure-SSIS IR duurt ongeveer 20 minuten. Sluit **het venster Taak** en ga terug naar het venster **Runbook.**
 
-   ![Azure SSIS-IR-gestart](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
+   ![Azure SSIS IR - gestart](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
     
-7. Herhaal de vorige twee stappen met **stoppen** als waarde voor de **bewerking**. Start uw runbook opnieuw door te klikken op de knop **Start** op de werk balk. Voer de naam van uw resource groep, ADF en Azure-SSIS IR in. Voer bij **bewerking** **Stop**in. Wacht in het uitvoer venster op het bericht **# # # # # voltooide # #** # # # nadat je # # # # # **Stop # #** # # # hebt gestopt. Het stoppen van Azure-SSIS IR duurt niet zo lang als het wordt gestart. **Taak** venster sluiten en teruggaan naar het **Runbook** -venster.
+7. Herhaal de vorige twee stappen met **STOP** als waarde voor **BEWERKING**. Start uw runbook opnieuw door de knop **Start** op de werkbalk te selecteren. Voer de namen van uw resourcegroep, ADF en Azure-SSIS IR in. Voer **STOP**in voor **BEWERKING**. Wacht in het uitvoervenster op het bericht **##### Voltooid #####** nadat u **##### Stopt ##### ziet.** Het stoppen van Azure-SSIS IR duurt niet zo lang als het starten ervan. Sluit **het venster Taak** en ga terug naar het venster **Runbook.**
 
-8. U kunt uw runbook ook activeren via een webhook die kan worden gemaakt door het menu-item **webhooks** te selecteren of op basis van een schema dat kan worden gemaakt door het menu-item **planningen** te selecteren zoals hieronder wordt aangegeven.  
+8. U uw runbook ook activeren via een webhook die kan worden gemaakt door het **menu-item Webhooks** te selecteren of op een schema dat kan worden gemaakt door het **menu-item Schema's** te selecteren zoals hieronder is aangegeven.  
 
-## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Schema's voor uw runbook maken om Azure-SSIS IR te starten/stoppen
+## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Schema's maken voor uw runbook om Azure-SSIS IR te starten/stoppen
 
-In de vorige sectie hebt u uw Azure Automation runbook gemaakt waarmee u Azure-SSIS IR kunt starten of stoppen. In deze sectie maakt u twee planningen voor uw runbook. Bij het configureren van de eerste planning geeft u **Start** voor **bewerking**op. Op dezelfde manier kunt u bij het configureren van de tweede de **bewerking** **stoppen** opgeven. Zie [een plannings artikel maken](../automation/shared-resources/schedules.md#creating-a-schedule) voor gedetailleerde stappen voor het maken van planningen.
+In de vorige sectie hebt u uw Azure Automation-runbook gemaakt waarmee Azure-SSIS IR kan worden gestart of gestopt. In deze sectie maakt u twee schema's voor uw runbook. Wanneer u het eerste schema configureert, geeft u **START** for **OPERATION**op. Op dezelfde manier geeft u bij het configureren van de tweede **functie STOP** op voor **BEWERKING**. Zie [Een planningsartikel maken](../automation/shared-resources/schedules.md#creating-a-schedule) voor gedetailleerde stappen om schema's te maken.
 
-1. In het venster **Runbook** selecteert u **planningen**en selecteert u **+ een schema toevoegen** op de werk balk. 
+1. Selecteer In het venster **Runbook** de optie **Schema's**en selecteer **+ Een schema toevoegen** op de werkbalk. 
 
-   ![Azure SSIS-IR-gestart](./media/how-to-schedule-azure-ssis-integration-runtime/add-schedules-button.png)
+   ![Azure SSIS IR - gestart](./media/how-to-schedule-azure-ssis-integration-runtime/add-schedules-button.png)
    
-2. Voer de volgende acties uit in het deel venster **Runbook plannen** : 
+2. Voer in het deelvenster **Runbook plannen** de volgende acties uit: 
 
-    1. Selecteer **een planning koppelen aan uw runbook**. 
-    2. Selecteer **een nieuw schema maken**.
-    3. Voer in **Nieuw** deel venster **Start IR dagelijks** in als **naam**. 
-    4. Voer bij **starten**een tijd in van een paar minuten na de huidige tijd. 
-    5. Selecteer **terugkerend**voor **terugkeer patroon**. 
-    6. Voer **1** in voor **herhalen**en selecteer **dag**. 
+    1. Selecteer **Een planning koppelen aan uw runbook**. 
+    2. Selecteer **Een nieuw schema maken**.
+    3. Voer in het deelvenster **Nieuwe planning** **dagelijks IR starten** in voor **Naam**. 
+    4. Voer **bij Start**een tijd in die een paar minuten na de huidige tijd ligt. 
+    5. Selecteer **Terugkerende**optie Voor **Herhaling**. 
+    6. Voer voor **Elke Recur** **1** in en selecteer **Dag**. 
     7. Selecteer **Maken**. 
 
-   ![Begin van planning voor Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
+   ![Planning voor Azure SSIS IR start](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     
-3. Schakel over naar **para meters en voer het tabblad instellingen uit** . Geef de namen van de resource groep, ADF en Azure-SSIS IR op. Voer voor **bewerking** **Start** in en selecteer **OK**. Selecteer **OK** om de pagina planning op **schema** van uw runbook weer te geven. 
+3. Schakel over naar het tabblad **Parameters en voer instellingen uit.** Geef de namen resourcegroep, ADF en Azure-SSIS IR op. Voer VOOR **BEWERKING** **START** in en selecteer **OK**. Selecteer **opnieuw OK** om de planning op de pagina **Schema's** van uw runbook weer te geven. 
 
-   ![Plannen voor het staren van de Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
+   ![Schema voor het staren naar de Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
     
-4. Herhaal de vorige twee stappen om een planning te maken met de naam **Stop IR Daily**. Voer een tijd in die ten minste 30 minuten na de tijd die u hebt opgegeven voor het **dagelijkse begin** van de IR. Voer bij **bewerking** **Stop** in en selecteer **OK**. Selecteer **OK** om de pagina planning op **schema** van uw runbook weer te geven. 
+4. Herhaal de vorige twee stappen om dagelijks een schema met de naam **Stop IR te**maken. Voer een tijd in die ten minste 30 minuten na de opgegeven tijd voor **het dagelijks schema starten van IR** is opgegeven. Voer VOOR **BEWERKING** **STOPPEN** in en selecteer **OK**. Selecteer **opnieuw OK** om de planning op de pagina **Schema's** van uw runbook weer te geven. 
 
-5. Selecteer in het venster **Runbook** de optie **taken** in het menu links. U ziet de taken die door uw planningen zijn gemaakt op de opgegeven tijden en hun status. U kunt de taak details zien, zoals de uitvoer, vergelijkbaar met wat u hebt gezien nadat u uw runbook hebt getest. 
+5. Selecteer In het venster **Runbook** de optie **Taken** in het linkermenu. U ziet de vacatures die zijn gemaakt door uw schema's op de opgegeven tijdstippen en hun statussen. U de taakgegevens, zoals de uitvoer, zien die vergelijkbaar zijn met wat u hebt gezien nadat u uw runbook hebt getest. 
 
-   ![Plannen voor het staren van de Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/schedule-jobs.png)
+   ![Schema voor het staren naar de Azure SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/schedule-jobs.png)
     
-6. Wanneer u klaar bent met testen, kunt u uw planningen uitschakelen door ze te bewerken. Selecteer **schema's** in het linkermenu en selecteer dagelijks **IR dagelijks starten/IR stoppen**en selecteer **Nee** voor **ingeschakeld**. 
+6. Nadat u klaar bent met testen, schakelt u uw schema's uit door ze te bewerken. Selecteer **Schema's** in het linkermenu, selecteer **IR dagelijks starten/IR stoppen dagelijks**en selecteer **Nee** voor **Ingeschakeld**. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende blog bericht:
--   [Uw ETL/ELT-werk stromen moderniseren en uitbreiden met SSIS-activiteiten in ADF-pijp lijnen](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
+Zie de volgende blogpost:
+-   [Uw ETL/ELT-workflows moderniseren en uitbreiden met SSIS-activiteiten in ADF-pijplijnen](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
 
 Raadpleeg de volgende artikelen uit de SSIS-documentatie: 
 

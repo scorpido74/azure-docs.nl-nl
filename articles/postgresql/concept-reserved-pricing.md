@@ -1,49 +1,49 @@
 ---
-title: Prijzen voor gereserveerde berekeningen-Azure Database for PostgreSQL-één server
-description: Vooruitbetalen voor Azure Database for PostgreSQL Compute-resources met gereserveerde capaciteit
+title: Gereserveerde rekenprijzen - Azure Database voor PostgreSQL - Single Server
+description: Vooraf betalen voor Azure Database voor PostgreSQL-compute resources met gereserveerde capaciteit
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 634ab645ea49c29bb5624afd82e549dfbc8d0fdf
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 66d7228e78f03196da0b26249e7f1f86e79d79fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769894"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159010"
 ---
-# <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure Database for PostgreSQL Compute-resources met gereserveerde capaciteit
+# <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Vooraf betalen voor Azure Database voor PostgreSQL-compute resources met gereserveerde capaciteit
 
-Azure Database for PostgreSQL helpt u bij het besparen van geld door vooraf te betalen voor reken resources vergeleken met prijzen voor betalen per gebruik. Met Azure Database for PostgreSQL gereserveerde capaciteit kunt u voor een periode van één jaar vooraf een toezeg ging op de PostgreSQL-server uitvoeren om een aanzienlijke korting op de reken kosten te krijgen. Als u Azure Database for PostgreSQL gereserveerde capaciteit wilt kopen, moet u de Azure-regio, het implementatie type, de prestatie-laag en de periode opgeven. </br>
+Azure Database voor PostgreSQL helpt u nu geld te besparen door vooraf te betalen voor rekenresources in vergelijking met betalen per gebruik-prijzen. Met Azure Database voor gereserveerde capaciteit van PostgreSQL maakt u vooraf een toezegging op de PostgreSQL-server voor een periode van één of drie jaar om een aanzienlijke korting op de rekenkosten te krijgen. Als u Azure Database wilt aanschaffen voor gereserveerde postgreSQL-capaciteit, moet u de Azure-regio, het implementatietype, de prestatielaag en de term opgeven. </br>
 
-U hoeft de reserve ring niet toe te wijzen aan specifieke Azure Database for PostgreSQL-servers. Een Azure Database for PostgreSQL die al wordt uitgevoerd, krijgt automatisch het voor deel van gereserveerde prijzen. Als u een reserve ring aanschaft, betaalt u de reken kosten vooraf voor een periode van één jaar. Zodra u een reserve ring koopt, worden de Azure data base for PostgreSQL-reken kosten die overeenkomen met de reserverings kenmerken, niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven. Een reserve ring geldt niet voor software-, netwerk-of opslag kosten die zijn gekoppeld aan de PostgreSQL-database servers. Aan het einde van de reserverings termijn verloopt het facturerings voordeel en de Azure Database for PostgreSQL worden gefactureerd op basis van de betalen naar gebruik-prijs. Reserve ringen worden niet automatisch vernieuwd. Voor prijs informatie raadpleegt u de [Azure database for PostgreSQL gereserveerde capaciteits aanbieding](https://azure.microsoft.com/pricing/details/postgresql/). </br>
+U hoeft de reservering niet toe te wijzen aan specifieke Azure Database voor PostgreSQL-servers. Een reeds draaiende Azure Database voor PostgreSQL of nieuwe nieuwe bestanden, krijgt automatisch het voordeel van gereserveerde prijzen. Door een reservering aan te schaffen, betaalt u de rekenkosten voor een periode van één of drie jaar vooraf. Zodra u een reservering koopt, worden de Azure-database voor PostgreSQL-rekenkosten die overeenkomen met de reserveringskenmerken, niet langer in rekening gebracht tegen de pay-as-you-go-tarieven. Een reservering dekt geen software- en netwerkkosten of opslagkosten die zijn gekoppeld aan de PostgreSQL-databaseservers. Aan het einde van de reserveringsperiode verloopt het factureringsvoordeel en wordt de Azure Database voor PostgreSQL gefactureerd tegen de pay-as-you-go-prijs. Reserveringen worden niet automatisch verlengd. Zie voor prijsinformatie de [azure database voor gereserveerde capaciteit van PostgreSQL.](https://azure.microsoft.com/pricing/details/postgresql/) </br>
 
 > [!IMPORTANT]
-> Prijzen voor gereserveerde capaciteit zijn alleen beschikbaar voor de implementatie van Azure Database for PostgreSQL [één server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) en niet voor de implementatie van [grootschalige Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) .
+> Gereserveerde capaciteitsprijzen zijn alleen beschikbaar voor de Azure Database voor PostgreSQL [Single server-implementatie](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) en niet voor [Hyperscale Citus-implementatie.](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus)
 
-U kunt Azure Database for PostgreSQL gereserveerde capaciteit kopen in de [Azure Portal](https://portal.azure.com/). De gereserveerde capaciteit kopen:
+U Azure Database kopen voor gereserveerde postgreSQL-capaciteit in de [Azure-portal.](https://portal.azure.com/) Ga als bedoeld als bedoeld als gevolg van de aankoop van de gereserveerde capaciteit:
 
-* U moet de rol van eigenaar zijn voor minstens één bedrijf of een afzonderlijk abonnement met betalen per gebruik-tarieven.
-* Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com/). Als deze instelling is uitgeschakeld, moet u een EA-beheerder zijn voor het abonnement.
-* Voor de Cloud Solution Provider (CSP)-programma kunnen alleen beheerders of verkoop medewerkers Azure Database for PostgreSQL gereserveerde capaciteit kopen. </br>
+* U moet in de eigenaarrol zijn voor ten minste één Enterprise- of individueel abonnement met betalen per gebruik.
+* Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com/). Of als die instelling is uitgeschakeld, moet u een EA-beheerder op het abonnement zijn.
+* Voor Het CSP-programma (Cloud Solution Provider) kunnen alleen de beheerdersagenten of verkoopagents Azure Database kopen voor gereserveerde postgreSQL-capaciteit. </br>
 
-De details over de manier waarop zakelijke klanten en betalen per gebruik-klanten in rekening worden gebracht voor reserverings aankopen, Zie [het gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) en [inzicht krijgen in het gebruik van Azure-reserve ringen voor uw abonnement op basis van betalen naar gebruik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
-
-
-## <a name="determine-the-right-server-size-before-purchase"></a>De juiste server grootte bepalen vóór de aankoop
-
-De grootte van de reserve ring moet worden gebaseerd op de totale reken tijd die wordt gebruikt door de bestaande of binnenkort gedistribueerde servers binnen een bepaalde regio en met dezelfde prestatie-laag en hardwarematige generatie.</br>
-
-Stel bijvoorbeeld dat u een algemeen doel, GEN5-32 vCore PostgreSQL-data base, en twee geoptimaliseerd voor geheugen, GEN5 – 16 vCore PostgreSQL-data bases, uitvoert. Verder moet u in de volgende maand een extra algemeen doel, GEN5-32 vCore-database server en één geoptimaliseerd voor geheugen, GEN5-16 vCore-database server, implementeren. Stel dat u weet dat u deze resources ten minste één jaar nodig hebt. In dit geval moet u een 64 (2x32)-vCores aanschaffen, een reserve ring van 1 jaar voor een algemene doel einde van de data base-GEN5 en een 48 (2x16 + 16) vCore 1 jaar reserve ring voor single data base Optimized-GEN5
+De details over hoe zakelijke klanten en Pay-As-You-Go-klanten in rekening worden gebracht voor reserveringsaankopen, zie [inzicht in azure-reserveringsgebruik voor uw Enterprise-inschrijving](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) en [inzicht in Azure-reserveringsgebruik voor uw Pay-As-You-Go-abonnement.](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
 
 
-## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Azure Database for PostgreSQL gereserveerde capaciteit kopen
+## <a name="determine-the-right-server-size-before-purchase"></a>Bepaal de juiste servergrootte vóór aankoop
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+De grootte van de reservering moet worden gebaseerd op de totale hoeveelheid rekenkracht die wordt gebruikt door de bestaande of binnenkort te implementeren servers binnen een specifieke regio en dezelfde prestatielaag en hardwaregeneratie gebruikt.</br>
+
+Stel dat u één algemeen doel gebruikt, Gen5 – 32 vCore PostgreSQL-database en twee geoptimaliseerd geheugen, Gen5 – 16 vCore PostgreSQL-databases. Verder, laten we verondersteld dat u van plan bent om te implementeren binnen de volgende maand een extra algemeen doel, Gen5 - 32 vCore database server, en een geheugen geoptimaliseerd, Gen5 - 16 vCore database server. Stel dat u weet dat u deze bronnen minstens 1 jaar nodig hebt. In dit geval moet u een 64 (2x32) vCores, 1 jaar reserveren voor single database general purpose - Gen5 en een 48 (2x16 + 16) vCore 1 jaar reserveren voor single database geheugen geoptimaliseerd - Gen5
+
+
+## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Azure Database kopen voor gereserveerde PostgreSQL-capaciteit
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer **Alle services** > **Reserveringen**.
-3. Selecteer **toevoegen** en selecteer vervolgens in het deel venster reserve ringen **Azure database for PostgreSQL** om een nieuwe reserve ring voor uw postgresql-data bases aan te schaffen.
-4. Vul de vereiste velden in. Bestaande of nieuwe data bases die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de korting op gereserveerde capaciteit. Het werkelijke aantal Azure Database for PostgreSQL servers dat de korting krijgt, is afhankelijk van het bereik en de geselecteerde hoeveelheid.
+3. Selecteer **Toevoegen** en selecteer vervolgens in het deelvenster Reserveringen kopen de optie **Azure Database voor PostgreSQL** om een nieuwe reservering voor uw PostgreSQL-databases te kopen.
+4. Vul de vereiste velden in. Bestaande of nieuwe databases die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de korting op de gereserveerde capaciteit. Het werkelijke aantal van uw Azure Database voor PostgreSQL-servers die de korting krijgen, is afhankelijk van de geselecteerde scope en hoeveelheid.
 
 
 ![Overzicht van gereserveerde prijzen](media/concepts-reserved-pricing/postgresql-reserved-price.png)
@@ -53,34 +53,34 @@ In de volgende tabel worden de vereiste velden beschreven.
 
 | Veld | Beschrijving |
 | :------------ | :------- |
-| Abonnement   | Het abonnement dat wordt gebruikt om te betalen voor de reserve ring van de Azure Database for PostgreSQL gereserveerde capaciteit. Voor de betalings methode voor het abonnement worden de kosten vooraf in rekening gebracht voor de reserve ring van de Azure Database for PostgreSQL gereserveerde capaciteit. Het abonnements type moet een Enter prise Agreement zijn (nummer van de aanbieding: MS-AZR-0017P of MS-AZR-0148P) of een afzonderlijke overeenkomst met betalen per gebruik-prijs (aanbiedings nummers: MS-AZR-0003P of MS-AZR-0023P). Voor een Enterprise-abonnement worden de kosten in mindering gebracht op het toezeggingsbedrag of ze worden in rekening gebracht als overschrijding. Voor een individueel abonnement met betalen per gebruik-tarieven worden de kosten in rekening gebracht op basis van de credit card of factuur betalings methode voor het abonnement.
-| Scope | Het bereik van de vCore-reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u het volgende selecteert: </br></br> **Gedeeld**, de vCore-reserverings korting wordt toegepast op Azure database for PostgreSQL servers die worden uitgevoerd in een abonnement binnen uw facturerings context. Voor zakelijke klanten is het gedeelde bereik de inschrijving en omvat alle abonnementen binnen de inschrijving. Voor betalen per gebruik-klanten bestaat het gedeelde bereik uit alle abonnementen op gebruiksbasis gemaakt door de accountbeheerder.</br></br> **Eén abonnement**, de vCore-reserverings korting wordt toegepast op Azure database for PostgreSQL servers in dit abonnement. </br></br> **Eén resource groep**, de reserverings korting wordt toegepast op Azure database for PostgreSQL servers in het geselecteerde abonnement en de geselecteerde resource groep in dat abonnement.
-| Regio | De Azure-regio die wordt gedekt door de Azure Database for PostgreSQL gereserveerde capaciteits reservering.
-| Implementatie type | Het resource type Azure Database for PostgreSQL waarvoor u de reserve ring wilt kopen.
-| Prestatielaag | De servicelaag voor de Azure Database for PostgreSQL-servers.
-| Termijn | Één jaar
-| Hoeveelheid | De hoeveelheid reken resources die worden aangeschaft in de Azure Database for PostgreSQL gereserveerde capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld werkt met of plant om een Azure Database for PostgreSQL servers uit te voeren met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, zou u de hoeveelheid instellen op 16 om het voor deel van alle servers te maximaliseren.
+| Abonnement   | Het abonnement dat wordt gebruikt om te betalen voor de Gereserveerde capaciteitsreservering van Azure Database voor PostgreSQL. De betalingsmethode voor het abonnement wordt in rekening gebracht voor de vooraf gemaakte kosten voor de gereserveerde capaciteitsreservering van PostgreSQL. Het abonnementstype moet een ondernemingsovereenkomst zijn (aanbiedingsnummers: MS-AZR-0017P of MS-AZR-0148P) of een individuele overeenkomst met pay-as-you-go-prijzen (aanbiedingsnummers: MS-AZR-0003P of MS-AZR-0023P). Voor een Enterprise-abonnement worden de kosten in mindering gebracht op het toezeggingsbedrag of ze worden in rekening gebracht als overschrijding. Voor een individueel abonnement met betalen per gebruik worden de kosten in rekening gebracht op de creditcard- of factuurbetalingsmethode op het abonnement.
+| Bereik | Het bereik van de vCore-reservering kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u: </br></br> **Gedeeld**, de vCore-reserveringskorting wordt toegepast op Azure Database voor PostgreSQL-servers die worden uitgevoerd in abonnementen binnen uw factureringscontext. Voor zakelijke klanten is het gedeelde bereik de inschrijving en omvat het alle abonnementen binnen de inschrijving. Voor betalen per gebruik-klanten bestaat het gedeelde bereik uit alle abonnementen op gebruiksbasis gemaakt door de accountbeheerder.</br></br> **Eén abonnement**, de vCore-reserveringskorting wordt toegepast op Azure Database voor PostgreSQL-servers in dit abonnement. </br></br> **Eén resourcegroep**, de reserveringskorting wordt toegepast op Azure Database voor PostgreSQL-servers in het geselecteerde abonnement en de geselecteerde resourcegroep binnen dat abonnement.
+| Regio | De Azure-regio die wordt gedekt door de reservering van de Azure Database voor postgreSQL gereserveerde capaciteit.
+| Implementatietype | Het Azure Database for PostgreSQL-brontype waarvoor u de reservering wilt kopen.
+| Prestatielaag | De servicelaag voor de Azure Database voor PostgreSQL-servers.
+| Termijn | Een jaar
+| Aantal | De hoeveelheid rekenresources die worden aangeschaft in de Azure Database voor gereserveerde capaciteitsreservering van PostgreSQL. Het aantal is een aantal vCores in de geselecteerde Azure-regio en prestatielaag die worden gereserveerd en krijgt de factureringskorting. Als u bijvoorbeeld een Azure-database uitvoert of van plan bent uit te voeren voor PostgreSQL-servers met de totale rekencapaciteit van Gen5 16 vCores in de regio Oost-VS, geeft u een hoeveelheid op als 16 om het voordeel voor alle servers te maximaliseren.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor ruiling en terugbetaling van Azure-reserveringen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) voor meer informatie.
 
-## <a name="vcore-size-flexibility"></a>flexibiliteit van vCore-grootte
+## <a name="vcore-size-flexibility"></a>vCore-grootteflexibiliteit
 
-met de flexibiliteit van vCore-grootte kunt u binnen een prestatie-laag en-regio omhoog of omlaag schalen zonder verlies van het voor deel van de gereserveerde capaciteit. 
+VCore-grootteflexibiliteit helpt u omhoog of omlaag te schalen binnen een prestatieniveau en regio, zonder het gereserveerde capaciteitsvoordeel te verliezen. 
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
-Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Als u vragen hebt of hulp nodig hebt, [maakt u een ondersteuningsverzoek.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De vCore-reserverings korting wordt automatisch toegepast op het aantal Azure Database for PostgreSQL servers dat overeenkomt met het reserverings bereik en de kenmerken voor de gereserveerde capaciteit van de Azure Database for PostgreSQL. U kunt het bereik van de Azure Data Base voor PostgreSQL gereserveerde capaciteits reservering bijwerken via Azure Portal, Power shell, CLI of via de API. </br></br>
-Zie Azure Database for PostgreSQL gereserveerde capaciteit beheren voor meer informatie over het beheren van de gereserveerde capaciteit van Azure Database for PostgreSQL.
+De vCore-reserveringskorting wordt automatisch toegepast op het aantal Azure Database voor PostgreSQL-servers dat overeenkomt met de Azure Database voor postgreSQL gereserveerde capaciteitsreserveringsscope en kenmerken. U het bereik van de Azure-database voor gereserveerde postgreSQL-capaciteitsreservering bijwerken via Azure portal, PowerShell, CLI of via de API. </br></br>
+Zie Azure Database beheren voor gereserveerde postgreSQL-capaciteit voor meer informatie over het beheren van de gereserveerde Capaciteit van Azure Database voor PostgreSQL.
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-* [Wat zijn Azure Reservations](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)?
+* [Wat zijn Azure-reserveringen?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
 * [Azure-reserveringen beheren](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
 * [Korting op Azure-reserveringen begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
 * [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-postgresql)

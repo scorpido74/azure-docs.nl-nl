@@ -1,6 +1,6 @@
 ---
-title: Aanbevelingen voor Endpoint Protection in azure Security Centers
-description: Hoe de Endpoint Protection-oplossingen worden gedetecteerd en in orde worden geïdentificeerd.
+title: Aanbevelingen voor endpointbeveiliging in Azure Security Centers
+description: Hoe de oplossingen voor endpointbescherming worden ontdekt en geïdentificeerd als gezond.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,50 +14,50 @@ ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
 ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208539"
 ---
-# <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-evaluatie en aanbevelingen in Azure Security Center
+# <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Beoordeling van endpointbeveiliging en aanbevelingen in Azure Security Center
 
-Azure Security Center biedt status beoordelingen van [ondersteunde](security-center-services.md#endpoint-supported) versies van Endpoint Protection-oplossingen. In dit artikel worden de scenario's beschreven die leiden tot Security Center om de volgende twee aanbevelingen te genereren:
+Azure Security Center biedt statusbeoordelingen van [ondersteunde](security-center-services.md#endpoint-supported) versies van Endpoint-beveiligingsoplossingen. In dit artikel worden de scenario's uitgelegd die security center ertoe leiden de volgende twee aanbevelingen te genereren:
 
-* **Endpoint Protection-oplossingen op uw virtuele machine installeren**
-* **Problemen met de status van Endpoint Protection op uw computers oplossen**
+* **Endpoint-beveiligingsoplossingen installeren op uw virtuele machine**
+* **Gezondheidsproblemen met de beveiliging van eindpunten op uw machines oplossen**
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) wordt uitgevoerd en het resultaat **AMServiceEnabled is: False**
+* Security Center raadt u aan **"Point protection solutions on virtual machine"** te installeren wanneer [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) wordt uitgevoerd en het resultaat **AMServiceEnabled: False** is
 
-* Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) wordt uitgevoerd en een van de volgende situaties zich voordoet:
+* Security Center raadt u **aan om problemen met de status van eindpuntbeveiliging op uw machines op** te lossen wanneer [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) wordt uitgevoerd en een van de volgende handelingen optreedt:
 
   * Een van de volgende eigenschappen is onwaar:
 
     **AMServiceEnabled**
 
-    **AntispywareEnabled**
+    **AntispywareIngeschakeld**
 
-    **RealTimeProtectionEnabled**
+    **RealTimeProtectionIngeschakeld**
 
-    **BehaviorMonitorEnabled**
+    **BehaviorMonitorIngeschakeld**
 
-    **IoavProtectionEnabled**
+    **IoavProtectionIngeschakeld**
 
-    **OnAccessProtectionEnabled**
+    **OnAccessProtectionIngeschakeld**
 
   * Als een of beide van de volgende eigenschappen 7 of meer zijn.
 
     **AntispywareSignatureAge**
 
-    **AntivirusSignatureAge**
+    **AntivirusSignatureAge AntivirusSignatureAge AntivirusSignatureAge AntivirusSignature**
 
-## <a name="microsoft-system-center-endpoint-protection"></a>Micro soft System Center Endpoint Protection
+## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center-eindpuntbeveiliging
 
-* Security Center raadt u **aan om Endpoint Protection-oplossingen op virtuele machine te installeren** bij het importeren van **SCEPMpModule (' $env:P rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1 ')** en het uitvoeren van **Get-MProtComputerStatus** resultaten met **AMServiceEnabled = False**
+* Security Center raadt u aan **"Point protection solutions on virtual machine"** te installeren bij het importeren van **SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** en **get-MProtComputerStatus** resultaten met **AMServiceEnabled = false**
 
-* Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer **Get-MprotComputerStatus** wordt uitgevoerd en een van de volgende situaties zich voordoet:
+* Security Center raadt u **aan om problemen met de status van eindpuntbeveiliging op uw machines op** te lossen wanneer **Get-MprotComputerStatus** wordt uitgevoerd en een van de volgende handelingen optreedt:
 
     * Ten minste één van de volgende eigenschappen is onwaar:
 
@@ -73,7 +73,7 @@ Azure Security Center biedt status beoordelingen van [ondersteunde](security-cen
     
             **OnAccessProtectionEnabled**
           
-    * Als een of beide van de volgende handtekening updates groter of gelijk zijn aan 7. 
+    * Als een of beide van de volgende handtekeningupdates groter of gelijk is aan 7. 
 
             **AntispywareSignatureAge**
     
@@ -81,104 +81,104 @@ Azure Security Center biedt status beoordelingen van [ondersteunde](security-cen
 
 ## <a name="trend-micro"></a>Trend Micro
 
-* Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer een van de volgende controles niet is voldaan:
-    * **HKLM: \ SOFTWARE\TrendMicro\Deep Security-Agent** bestaat
-    * **HKLM: \ SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** bestaat
-    * Het bestand **dsa_query. cmd** bevindt zich in de installatiemap
-    * Resultaten van **dsa_query. cmd** uitvoeren met **component. am. mode: on-trend micro diepe beveiligings agent gedetecteerd**
+* Security Center raadt u aan **"Point protection solutions on virtual machine installeren"** wanneer niet aan een van de volgende controles wordt voldaan:
+    * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent** bestaat
+    * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** bestaat
+    * Het **bestand dsa_query.cmd** wordt gevonden in de installatiemap
+    * **Dsa_query.cmd-resultaten** uitvoeren met **Component.AM.mode: on - Trend Micro Deep Security Agent gedetecteerd**
 
-## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
-Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer een van de volgende controles niet is voldaan:
+## <a name="symantec-endpoint-protection"></a>Symantec-eindpuntbeveiliging
+Security Center raadt u aan **"Point protection solutions on virtual machine installeren"** wanneer niet aan een van de volgende controles wordt voldaan:
 
-* **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 of
 
-* **HKLM: \ Software\Wow6432Node\Symantec\Symantec endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM: \ Software\Wow6432Node\Symantec\Symantec endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer niet aan een van de volgende controles wordt voldaan:
+Security Center raadt u **aan om problemen met de status van eindpuntbeveiliging op uw machines op** te lossen wanneer niet aan een van de volgende controles wordt voldaan:
 
-* Raadpleeg Symantec Version > = 12: register locatie: **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion "-waarde" PRODUCTVERSION "**
+* Symantec Version >= 12: Registerlocatie: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"**
 
-* Controleer de status van de realtime-beveiliging: **HKLM: \ Software\Wow6432Node\Symantec\Symantec endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
+* Controleer de status van realtimebeveiliging: **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
 
-* Controleer de status van de handtekening update: **HKLM\Software\Symantec\Symantec endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 dagen**
+* Status handtekeningupdate controleren: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 dagen**
 
-* Volledige scan status controleren: **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime < = 7 dagen**
+* Controleer de status Van volledige scan: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 dagen**
 
-* Zoek handtekening versie nummer pad naar versie van de hand tekening voor Symantec 12: **register paden + "CurrentVersion\SharedDefs"-waarde "SRTSP"** 
+* Handtekeningversienummer Path naar signature-versie zoeken voor Symantec 12: **Registerpaden+ 'CurrentVersion\SharedDefs' -Waarde "SRTSP"** 
 
-* Pad naar versie van de hand tekening voor Symantec 14: **register paden + "CurrentVersion\SharedDefs\SDSDefs"-waarde "SRTSP"**
+* Pad naar handtekeningversie voor Symantec 14: **Registerpaden+ "CurrentVersion\SharedDefs\SDSDefs" -Waarde "SRTSP"**
 
-Register paden:
+Registerpaden:
 
-* **"HKLM: \ Software\Symantec\Symantec Endpoint Protection" + $Path;**
-* **"HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
+* **"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path;**
+* **"HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
 
-## <a name="mcafee-endpoint-protection-for-windows"></a>McAfee Endpoint Protection voor Windows
+## <a name="mcafee-endpoint-protection-for-windows"></a>McAfee-eindpuntbeveiliging voor Windows
 
-Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer een van de volgende controles niet is voldaan:
+Security Center raadt u aan **"Point protection solutions on virtual machine installeren"** wanneer niet aan een van de volgende controles wordt voldaan:
 
-* **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion** bestaat
+* **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion** bestaat
 
-* **HKLM: \ SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
+* **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
-Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer niet aan een van de volgende controles wordt voldaan:
+Security Center raadt u **aan om problemen met de status van eindpuntbeveiliging op uw machines op** te lossen wanneer niet aan een van de volgende controles wordt voldaan:
 
-* McAfee-versie: **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion > = 10**
+* McAfee-versie: **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
 
-* Handtekening versie zoeken: **HKLM: \ Software\McAfee\AVSolution\DS\DS-waarde "dwContentMajorVersion"**
+* Signature Version zoeken: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "dwcontentmajorVersion"**
 
-* Handtekening datum zoeken: **HKLM: \ Software\McAfee\AVSolution\DS\DS-value "szContentCreationDate" > = 7 dagen**
+* Zoek handtekening datum: **HKLM:\Software\McAfee\AVSolution\DS\DS -Waarde "szContentCreationDate" >= 7 dagen**
 
-* Zoek scan datum: **HKLM: \ Software\McAfee\Endpoint\AV\ODS-value "LastFullScanOdsRunTime" > = 7 dagen**
+* Zoekscandatum: **HKLM:\Software\McAfee\Endpoint\AV\ODS -Waarde "LastFullScanOdsRunTime" >= 7 dagen**
 
 ## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>McAfee Endpoint Security voor Linux Threat Prevention 
 
-Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer een van de volgende controles niet is voldaan:
+Security Center raadt u aan **"Point protection solutions on virtual machine installeren"** wanneer niet aan een van de volgende controles wordt voldaan:
 
-- Bestands **/opt/ISEC/ens/threatprevention/bin/isecav** afsluiten 
+- File **/opt/isec/ens/threatprevention/bin/isecav** exits 
 
-- de uitvoer van de **/opt/ISEC/ens/threatprevention/bin/isecav-versie** is: **McAfee name = McAfee Endpoint Security for Linux Threat Prevention en McAfee Version > = 10**
+- **"/opt/isec/ens/threatprevention/bin/isecav --version"** output is: **McAfee name = McAfee Endpoint Security for Linux Threat Prevention and McAfee version >= 10**
 
-Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer niet aan een van de volgende controles wordt voldaan:
+Security Center raadt u **aan om problemen met de status van eindpuntbeveiliging op uw machines op** te lossen wanneer niet aan een van de volgende controles wordt voldaan:
 
-- **'/opt/ISEC/ens/threatprevention/bin/isecav--listtask '** retourneert **snelle scan, volledige scan** en beide scans < = 7 dagen
+- **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** retourneert **Quick scan, Volledige scan** en beide scans <= 7 dagen
 
-- **"/opt/ISEC/ens/threatprevention/bin/isecav--listtask"** retourneert **dat-en Engine-update tijdstip** en beide < = 7 dagen
+- **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** retourneert **DAT en engine Update tijd** en beiden <= 7 dagen
 
-- **"/opt/ISEC/ens/threatprevention/bin/isecav--getoasconfig--Summary"** retourneert de status **van de toegangs controle**
+- **"/opt/isec/ens/threatprevention/bin/isecav --getoasconfig --summary"** retourneert **on access scanstatus**
 
-## <a name="sophos-antivirus-for-linux"></a>Sophos Anti Virus voor Linux 
+## <a name="sophos-antivirus-for-linux"></a>Sophos Antivirus voor Linux 
 
-Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer een van de volgende controles niet is voldaan:
+Security Center raadt u aan **"Point protection solutions on virtual machine installeren"** wanneer niet aan een van de volgende controles wordt voldaan:
 
-- Bestand **/opt/Sophos-AV/bin/savdstatus** wordt afgesloten of zoekt naar een aangepaste locatie **' readlink $ (wat savscan) '**
+- Bestand **/opt/sophos-av/bin/savdstatus** exits of zoek naar aangepaste locatie **"readlink $(which savscan)"**
 
-- **"/opt/Sophos-AV/bin/savdstatus--version"** retourneert Sophos name = **Sophos Anti-virus-en sophos-versie > = 9**
+- **"/opt/sophos-av/bin/savdstatus --version"** retourneert sophosnaam = **Sophos Anti-Virus en versie >= 9**
 
-Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer niet aan een van de volgende controles wordt voldaan:
+Security Center raadt u **aan om problemen met de status van eindpuntbeveiliging op uw machines op** te lossen wanneer niet aan een van de volgende controles wordt voldaan:
 
-- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep-i "geplande scan.\* voltooid | ' staart 1 '** , retourneert een waarde
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Geplande scan . \* voltooid" | staart -1"**, geeft een waarde
 
-- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep "scannen voltooid"** | ' staart 1 ', retourneert een waarde
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan voltooid"** | staart -1", geeft een waarde
 
-- **"/opt/Sophos-AV/bin/savdstatus--Last update"** retourneert Last update, die < = 7 dagen moet zijn 
+- **"/opt/sophos-av/bin/savdstatus --lastupdate"** retourneert lastUpdate, die moet worden <= 7 dagen 
 
-- **'/opt/Sophos-AV/bin/savdstatus-v '** is gelijk aan **' on-Access scanning ' wordt uitgevoerd '** 
+- **"/opt/sophos-av/bin/savdstatus -v"** is gelijk aan **"On-access scanning is running"** 
 
-- **'/opt/Sophos-AV/bin/savconfig Get LiveProtection '** retourneert ingeschakeld
+- **"/opt/sophos-av/bin/savconfig get LiveProtection"** retouren ingeschakeld
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Micro soft antimalware extension-logboeken zijn beschikbaar op: **%systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (of PaaSAntimalware) \1.5.5.x (versie nummer) \CommandExecution.log**
+Microsoft Antimalware-extensielogboeken zijn beschikbaar op: **%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(of PaaSAntimalware)\1.5.5.x(versie#)\CommandExecution.log**
 
 ### <a name="support"></a>Ondersteuning
 
-Neem contact op met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/)voor meer informatie. Of het bestand een ondersteunings incident van Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
+Neem voor meer hulp contact op met de Azure-experts op de [FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/forums/) Of dien een Azure-ondersteuningsincident in. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer Ondersteuning krijgen. Lees de veelgestelde vragen over [Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor informatie over het gebruik van Azure Support.

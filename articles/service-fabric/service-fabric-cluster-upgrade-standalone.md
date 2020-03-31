@@ -1,45 +1,45 @@
 ---
-title: Een zelfstandige Azure Service Fabric-cluster upgraden
-description: Meer informatie over het bijwerken van de versie of configuratie van een zelfstandige Azure Service Fabric-cluster.  T
+title: Een zelfstandig Azure Service Fabric-cluster upgraden
+description: Meer informatie over het upgraden van de versie of configuratie van een zelfstandig Azure Service Fabric-cluster.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451826"
 ---
-# <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Een Service Fabric zelfstandige cluster bijwerken en bijwerken
+# <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Een zelfstandig cluster voor ServiceFabric upgraden en bijwerken
 
-Voor elk modern systeem is het ontwerpen van een hoge mate van omvang voor het succes van uw product op lange termijn. Een zelfstandige Azure Service Fabric cluster is een bron waarvan u de eigenaar bent. In dit artikel wordt beschreven wat er kan worden bijgewerkt of bijgewerkt.
+Voor elk modern systeem, het ontwerpen voor upgradability is de sleutel tot het bereiken van succes op lange termijn van uw product. Een zelfstandig cluster azure service fabric is een bron waarvan u eigenaar bent. In dit artikel wordt beschreven wat kan worden bijgewerkt of bijgewerkt.
 
-## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>De infrastructuur versie beheren die op uw cluster wordt uitgevoerd
-Zorg ervoor dat uw cluster altijd een [ondersteunde service Fabric versie](service-fabric-versions.md)uitvoert. Wanneer micro soft de release van een nieuwe versie van Service Fabric aankondigt, wordt de vorige versie gemarkeerd voor het einde van de ondersteuning na mini maal 60 dagen na de datum van de aankondiging. Nieuwe releases worden aangekondigd [op het service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric/). De nieuwe versie kan op dat moment worden gekozen.
+## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>De fabricversie beheren die op uw cluster wordt uitgevoerd
+Zorg ervoor dat uw cluster altijd een [ondersteunde Service Fabric-versie](service-fabric-versions.md)uitvoert. Wanneer Microsoft de release van een nieuwe versie van Service Fabric aankondigt, wordt de vorige versie gemarkeerd voor het einde van de ondersteuning na een minimum van 60 dagen vanaf de datum van de aankondiging. Nieuwe releases worden aangekondigd [op de Service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric/). De nieuwe release is beschikbaar om te kiezen op dat punt.
 
-U kunt uw cluster zo instellen dat automatische infrastructuur upgrades worden ontvangen wanneer deze door micro soft worden uitgebracht of u kunt hand matig een ondersteunde infrastructuur versie selecteren waarop u het cluster wilt maken. Lees voor meer informatie [de service Fabric-versie die op uw cluster wordt uitgevoerd, bijwerken](service-fabric-cluster-upgrade-windows-server.md).
+U instellen dat uw cluster automatische fabric-upgrades ontvangt, omdat deze door Microsoft worden uitgebracht of u handmatig een ondersteunde fabricversie selecteren waarop uw cluster moet worden ingeschakeld. Lees Voor meer informatie [de versie Van de Servicefabric die op uw cluster wordt uitgevoerd, bijwerken.](service-fabric-cluster-upgrade-windows-server.md)
 
 ## <a name="customize-configuration-settings"></a>Configuratie-instellingen aanpassen
 
-Er kunnen veel verschillende [configuratie-instellingen](service-fabric-cluster-manifest.md) worden ingesteld in het bestand *ClusterConfig. json* , zoals het betrouwbaarheids niveau van het cluster en de knooppunt eigenschappen.  Lees voor meer informatie [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md).  Veel andere, geavanceerdere instellingen kunnen ook worden aangepast.  Lees [service Fabric cluster Fabric-instellingen](service-fabric-cluster-fabric-settings.md)voor meer informatie.
+Er kunnen veel verschillende [configuratie-instellingen](service-fabric-cluster-manifest.md) worden ingesteld in het *clusterconfig.json-bestand,* zoals het betrouwbaarheidsniveau van het cluster en de eigenschappen van het knooppunt.  Lees Voor meer informatie [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md).  Veel andere, meer geavanceerde, instellingen kunnen ook worden aangepast.  Lees voor meer informatie de [instellingen van de clusterstructuur service](service-fabric-cluster-fabric-settings.md).
 
-## <a name="define-node-properties"></a>Knooppunt eigenschappen definiëren
-Soms wilt u ervoor zorgen dat bepaalde werk belastingen alleen worden uitgevoerd op bepaalde typen knoop punten in het cluster. Een voor beeld: een bepaalde werk belasting kan Gpu's of Ssd's vereisen, terwijl anderen dat niet mogelijk is. Voor elk van de knooppunt typen in een cluster kunt u aangepaste knooppunt eigenschappen toevoegen aan cluster knooppunten. Plaatsings beperkingen zijn de instructies die zijn gekoppeld aan afzonderlijke services die worden geselecteerd voor een of meer knooppunt eigenschappen. Plaatsings beperkingen bepalen waar services moeten worden uitgevoerd.
+## <a name="define-node-properties"></a>Knooppunteigenschappen definiëren
+Soms wilt u er soms voor zorgen dat bepaalde workloads alleen worden uitgevoerd op bepaalde typen knooppunten in het cluster. Voor sommige workloads kunnen bijvoorbeeld GPU's of SSD's nodig zijn, terwijl andere dat niet mogelijk zijn. Voor elk van de knooppunttypen in een cluster u aangepaste knooppunteigenschappen toevoegen aan clusterknooppunten. Plaatsingsbeperkingen zijn de instructies die zijn gekoppeld aan afzonderlijke services die selecteren voor een of meer knooppunteigenschappen. Plaatsingsbeperkingen bepalen waar services moeten worden uitgevoerd.
 
-Lees de [knooppunt eigenschappen en plaatsings beperkingen](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)voor meer informatie over het gebruik van plaatsings beperkingen, eigenschappen van knoop punten en hoe u deze definieert.
+Lees [knooppunteigenschappen en plaatsingsbeperkingen](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)voor meer informatie over het gebruik van plaatsingsbeperkingen, knooppunteigenschappen en hoe u deze definiëren.
  
 
-## <a name="add-capacity-metrics"></a>Metrische gegevens over capaciteit toevoegen
-Voor elk van de typen knoop punten kunt u aangepaste metrische gegevens voor capaciteit toevoegen die u in uw toepassingen wilt gebruiken om de belasting te rapporteren. Raadpleeg de Service Fabric cluster resource manager-documenten voor het [beschrijven van uw cluster](service-fabric-cluster-resource-manager-cluster-description.md) en [metrische gegevens en belasting](service-fabric-cluster-resource-manager-metrics.md)voor meer informatie over het gebruik van metrische gegevens over capaciteit voor het rapporteren van de belasting.
+## <a name="add-capacity-metrics"></a>Capaciteitsstatistieken toevoegen
+Voor elk van de knooppunttypen u aangepaste capaciteitsstatistieken toevoegen die u in uw toepassingen wilt gebruiken om belasting te rapporteren. Raadpleeg de documenten van Service Fabric Cluster Resource Manager Over het [beschrijven van uw cluster](service-fabric-cluster-resource-manager-cluster-description.md) en metrische gegevens [en belasting](service-fabric-cluster-resource-manager-metrics.md)voor meer informatie over het gebruik van capaciteitsstatistieken voor het melden van belasting.
 
-## <a name="patch-the-os-in-the-cluster-nodes"></a>Het besturings systeem in de cluster knooppunten bijwerken
-De patch Orchestration Application (POA) is een Service Fabric-toepassing waarmee het besturings systeem patches op een Service Fabric cluster zonder downtime wordt geautomatiseerd. De [patch Orchestration-toepassing voor Windows](service-fabric-patch-orchestration-application.md) kan worden geïmplementeerd in uw cluster om patches te installeren op een gegroepeerde manier terwijl de services steeds beschikbaar blijven. 
+## <a name="patch-the-os-in-the-cluster-nodes"></a>Het besturingssysteem in de clusterknooppunten patchen
+De patch orchestration-toepassing (POA) is een Service Fabric-toepassing die patching van het besturingssysteem op een Service Fabric-cluster automatiseert zonder downtime. De [Patch Orchestration-toepassing voor Windows](service-fabric-patch-orchestration-application.md) kan op uw cluster worden geïmplementeerd om patches op een georkestreerde manier te installeren, terwijl de services altijd beschikbaar blijven. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het aanpassen van een aantal van de [service Fabric-cluster infrastructuur instellingen](service-fabric-cluster-fabric-settings.md)
-* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-up-down.md)
-* Meer informatie over [toepassings upgrades](service-fabric-application-upgrade.md)
+* Meer informatie over het aanpassen van enkele instellingen voor [clusterfabricen](service-fabric-cluster-fabric-settings.md) voor servicefabric
+* Meer informatie over het [schalen van uw cluster in en uit](service-fabric-cluster-scale-up-down.md)
+* Meer informatie over [toepassingsupgrades](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

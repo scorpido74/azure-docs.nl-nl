@@ -1,6 +1,6 @@
 ---
-title: Gegevens verplaatsen vanuit MySQL met Azure Data Factory
-description: Meer informatie over het verplaatsen van gegevens uit de MySQL-data base met behulp van Azure Data Factory.
+title: Gegevens uit MySQL verplaatsen met Azure Data Factory
+description: Meer informatie over het verplaatsen van gegevens uit MySQL-database met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,109 +13,109 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281286"
 ---
-# <a name="move-data-from-mysql-using-azure-data-factory"></a>Gegevens verplaatsen vanuit MySQL met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+# <a name="move-data-from-mysql-using-azure-data-factory"></a>Gegevens verplaatsen van MySQL met Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van de datafabriekservice die u gebruikt:"]
 > * [Versie 1](data-factory-onprem-mysql-connector.md)
 > * [Versie 2 (huidige versie)](../connector-mysql.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [mysql-connector in v2](../connector-mysql.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Zie [MySQL-connector in V2](../connector-mysql.md)als u de huidige versie van de Data Factory-service gebruikt.
 
 
-In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een on-premises MySQL-data base te verplaatsen. Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit.
+In dit artikel wordt uitgelegd hoe u de activiteit kopiëren in Azure Data Factory gebruiken om gegevens uit een on-premises MySQL-database te verplaatsen. Het bouwt voort op het artikel [Data Movement Activities,](data-factory-data-movement-activities.md) dat een algemeen overzicht geeft van gegevensverplaatsing met de kopieeractiviteit.
 
-U kunt gegevens van een on-premises MySQL-gegevens archief kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als sinks op basis van de Kopieer activiteit. Data Factory ondersteunt momenteel alleen het verplaatsen van gegevens van een MySQL-gegevens archief naar andere gegevens archieven, maar niet voor het verplaatsen van gegevens van andere gegevens archieven naar een MySQL-gegevens archief. 
+U gegevens uit een on-premises MySQL-gegevensarchief kopiëren naar elk ondersteund sinkdataarchief. Zie de tabel [Ondersteunde gegevensopslag](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die als sinks worden ondersteund door de kopieeractiviteit. Datafactory ondersteunt momenteel alleen het verplaatsen van gegevens van een MySQL-gegevensarchief naar andere gegevensopslag, maar niet voor het verplaatsen van gegevens van andere gegevensopslag naar een MySQL-gegevensarchief. 
 
 ## <a name="prerequisites"></a>Vereisten
-Data Factory-service ondersteunt het maken van verbinding met on-premises MySQL-bronnen met behulp van de Data Management Gateway. Zie [gegevens verplaatsen tussen on-premises locaties en een Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor meer informatie over Data Management Gateway en stapsgewijze instructies voor het instellen van de gateway.
+Data Factory-service ondersteunt het verbinden met on-premises MySQL-bronnen met behulp van de Data Management Gateway. Bekijk [het verplaatsen van gegevens tussen on-premises locaties en een cloudartikel](data-factory-move-data-between-onprem-and-cloud.md) voor meer informatie over Data Management Gateway en stapsgewijze instructies voor het instellen van de gateway.
 
-De gateway is vereist, zelfs als de MySQL-data base wordt gehost op een virtuele Azure IaaS-machine (VM). U kunt de gateway op dezelfde VM installeren als het gegevens archief of op een andere virtuele machine zolang de gateway verbinding kan maken met de data base.
+Gateway is vereist, zelfs als de MySQL-database wordt gehost in een Azure IaaS virtuele machine (VM). U de gateway op dezelfde VM installeren als het gegevensarchief of op een andere virtuele machine, zolang de gateway verbinding kan maken met de database.
 
 > [!NOTE]
-> Zie problemen [met gateway problemen oplossen](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) voor tips over het oplossen van problemen met verbinding/gateway.
+> Zie [Problemen met de gateway oplossen](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) voor tips over het oplossen van verbindings-/gatewaygerelateerde problemen.
 
 ## <a name="supported-versions-and-installation"></a>Ondersteunde versies en installatie
-Als Data Management Gateway verbinding met de MySQL-data base wilt maken, moet u de [mysql-connector/net voor micro soft Windows](https://dev.mysql.com/downloads/connector/net/) (versie tussen 6.6.5 en 6.10.7) installeren op hetzelfde systeem als de Data Management Gateway. Dit 32 bits stuur programma is compatibel met 64-bits Data Management Gateway. MySQL-versie 5,1 en hoger wordt ondersteund.
+Als u wilt dat gegevensbeheergateway verbinding maakt met de MySQL-database, moet u de [MySQL Connector/NET voor Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (versie tussen 6.6.5 en 6.10.7) installeren op hetzelfde systeem als de Data Management Gateway. Dit 32-bits stuurprogramma is compatibel met 64-bits Data Management Gateway. MySQL versie 5.1 en hoger wordt ondersteund.
 
 > [!TIP]
-> Als u de fout melding ' authenticatie is mislukt omdat de externe partij de transport stroom heeft gesloten. ', moet u overwegen om de MySQL-Connector/NET te upgraden naar een hogere versie.
+> Als u fout op 'Verificatie mislukt omdat de externe partij de transportstream heeft gesloten' hebt geraakt, u overwegen de MySQL Connector/NET te upgraden naar een hogere versie.
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een on-premises Cassandra-gegevens opslag met behulp van verschillende hulpprogram ma's/Api's. 
+U een pijplijn maken met een kopieeractiviteit die gegevens verplaatst van een on-premises Cassandra-gegevensarchief met behulp van verschillende hulpprogramma's/API's. 
 
-- De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren. 
-- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
+- De eenvoudigste manier om een pijplijn te maken, is door de **wizard Kopiëren**te gebruiken. Zie [Zelfstudie: Maak een pijplijn met wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough voor het maken van een pijplijn met de wizard Gegevens kopiëren. 
+- U ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio,** **Azure PowerShell,** **Azure Resource Manager-sjabloon,** **.NET API**en REST **API**. Zie [Zelfstudie voor activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies om een pijplijn met een kopieeractiviteit te maken. 
 
-Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
+Of u nu de hulpprogramma's of API's gebruikt, u voert de volgende stappen uit om een pijplijn te maken die gegevens van een brongegevensarchief naar een sink-gegevensarchief verplaatst:
 
-1. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory.
-2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven. 
-3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt. 
+1. Maak **gekoppelde services** om invoer- en uitvoergegevensopslag te koppelen aan uw gegevensfabriek.
+2. Maak **gegevenssets** om invoer- en uitvoergegevens voor de kopieerbewerking weer te geven. 
+3. Maak een **pijplijn** met een kopieeractiviteit die een gegevensset als invoer en een uitvoerset als uitvoer neemt. 
 
-Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling.  Zie voor een voor beeld met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens uit een on-premises MySQL-gegevens archief [JSON-voor beeld: gegevens kopiëren van MySQL naar Azure Blob](#json-example-copy-data-from-mysql-to-azure-blob) in dit artikel. 
+Wanneer u de wizard gebruikt, worden JSON-definities voor deze gegevensfabrieksentiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u tools/API's (behalve .NET API) gebruikt, definieert u deze entiteiten in de Data Factory met behulp van de JSON-indeling.  Zie [JSON-voorbeeld: Gegevens kopiëren van MySQL naar Azure Blob](#json-example-copy-data-from-mysql-to-azure-blob) voor een voorbeeld van JSON voor gegevensfabriekentiteiten die worden gebruikt om gegevens uit een on-premises MySQL-gegevensarchief te kopiëren. 
 
-De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor een MySQL-gegevens archief:
+In de volgende secties vindt u informatie over JSON-eigenschappen die worden gebruikt om gegevensfabrieksentiteiten te definiëren die specifiek zijn voor een MySQL-gegevensarchief:
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
-De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zijn voor de aan MySQL gekoppelde service.
+## <a name="linked-service-properties"></a>Gekoppelde service-eigenschappen
+In de volgende tabel vindt u een beschrijving voor JSON-elementen die specifiek zijn voor de gekoppelde MySQL-service.
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De eigenschap type moet worden ingesteld op: **OnPremisesMySql** |Ja |
-| server |De naam van de MySQL-server. |Ja |
-| enddatabase |De naam van de MySQL-data base. |Ja |
-| schema |De naam van het schema in de data base. |Nee |
-| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de MySQL-data base. Mogelijke waarden zijn: `Basic`. |Ja |
-| userName |Geef de gebruikers naam op om verbinding te maken met de MySQL-data base. |Ja |
-| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven. |Ja |
-| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises MySQL-data base. |Ja |
+| type |De eigenschap type moet zijn ingesteld op: **OnPremisesMySql** |Ja |
+| server |Naam van de MySQL-server. |Ja |
+| database |Naam van de MySQL-database. |Ja |
+| schema |Naam van het schema in de database. |Nee |
+| authenticationType |Type verificatie wordt gebruikt om verbinding te maken met de MySQL-database. Mogelijke waarden `Basic`zijn: . |Ja |
+| userName |Geef de gebruikersnaam op om verbinding te maken met de MySQL-database. |Ja |
+| wachtwoord |Geef een wachtwoord op voor het opgegeven gebruikersaccount. |Ja |
+| gatewayNaam |Naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises MySQL-database. |Ja |
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
+Zie het artikel [Gegevenssets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets. Secties zoals structuur, beschikbaarheid en beleid van een gegevensset JSON zijn vergelijkbaar voor alle gegevenssettypen (Azure SQL, Azure blob, Azure table, etc.).
 
-De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **RelationalTable** (die mysql-gegevensset bevat) heeft de volgende eigenschappen:
+De sectie **typeEigenschappen** is verschillend voor elk type gegevensset en geeft informatie over de locatie van de gegevens in het gegevensarchief. De sectie typeEigenschappen voor de gegevensset van type **RelationalTable** (inclusief MySQL-gegevensset) heeft de volgende eigenschappen
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| tableName |De naam van de tabel in de MySQL-data base-instantie waarnaar de gekoppelde service verwijst. |Nee (als de **query** van **RelationalSource** is opgegeven) |
+| tableName |Naam van de tabel in de instantie MySQL Database waarnaar de gekoppelde service verwijst. |Nee (als **query** van **RelationalSource** is opgegeven) |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen, zoals naam, beschrijving, invoer-en uitvoer tabellen, zijn beschikbaar voor alle typen activiteiten.
+Zie het artikel [Pijplijnmaken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer- en uitvoertabellen zijn beschikbaar voor alle soorten activiteiten.
 
-Terwijl de eigenschappen die beschikbaar zijn in de sectie **typeProperties** van de activiteit, verschillen per activiteitstype. Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks.
+Overwegende dat de eigenschappen die beschikbaar zijn in de sectie **typeEigenschappen** van de activiteit per activiteitstype verschillen. Voor Kopieeractiviteit variëren ze afhankelijk van de soorten bronnen en putten.
 
-Wanneer de bron in de Kopieer activiteit van het type **RelationalSource** (inclusief MySQL) is, zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
+Wanneer de bron in kopieeractiviteit van het type **RelationalSource** is (inclusief MySQL), zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
 | Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Nee (als **TableName** van **gegevensset** is opgegeven) |
+| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-querytekenreeks. Selecteer bijvoorbeeld * in MyTable. |Nee (als **tabelNaam** van **de gegevensset** is opgegeven) |
 
 
-## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van MySQL naar Azure Blob
-Dit voor beeld bevat een voor beeld van JSON-definities die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Hierin ziet u hoe u gegevens van een on-premises MySQL-data base kopieert naar een Azure-Blob Storage. Gegevens kunnen echter worden gekopieerd naar de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) opgegeven sinks met behulp van de Kopieer activiteit in azure Data Factory.
+## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-voorbeeld: Gegevens kopiëren van MySQL naar Azure Blob
+In dit voorbeeld worden voorbeeld-JSON-definities gegeven die u gebruiken om een pijplijn te maken met Behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell.](data-factory-copy-activity-tutorial-using-powershell.md) Hierin wordt weergegeven hoe u gegevens uit een on-premises MySQL-database kopiëren naar een Azure Blob Storage. Gegevens kunnen echter worden gekopieerd naar een van de putten die [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) zijn vermeld met behulp van de kopieeractiviteit in Azure Data Factory.
 
 > [!IMPORTANT]
-> Dit voor beeld bevat JSON-fragmenten. Het bevat geen stapsgewijze instructies voor het maken van de data factory. Zie [gegevens verplaatsen tussen on-premises locaties en een Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor stapsgewijze instructies.
+> Dit voorbeeld bevat JSON-fragmenten. Het bevat geen stapsgewijze instructies voor het maken van de gegevensfabriek. Zie [gegevens verplaatsen tussen on-premises locaties en cloudartikelen](data-factory-move-data-between-onprem-and-cloud.md) voor stapsgewijze instructies.
 
-Het voor beeld heeft de volgende data factory entiteiten:
+Het voorbeeld heeft de volgende gegevensfabriekentiteiten:
 
 1. Een gekoppelde service van het type [OnPremisesMySql](data-factory-onprem-mysql-connector.md#linked-service-properties).
-2. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [RelationalTable](data-factory-onprem-mysql-connector.md#dataset-properties).
-4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [RelationalSource](data-factory-onprem-mysql-connector.md#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+2. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een [invoergegevensset](data-factory-create-datasets.md) van type [RelationalTable](data-factory-onprem-mysql-connector.md#dataset-properties).
+4. Een [uitvoergegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. Een [pijplijn](data-factory-create-pipelines.md) met kopieeractiviteit die [RelationalSource](data-factory-onprem-mysql-connector.md#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)gebruikt.
 
-In het voor beeld worden gegevens gekopieerd van een query resultaat in de MySQL-data base naar een BLOB per uur. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
+Het voorbeeld kopieert gegevens uit een queryresultaat in de MySQL-database naar een blob per uur. De JSON-eigenschappen die in deze monsters worden gebruikt, worden beschreven in secties die de monsters volgen.
 
-De eerste stap is het instellen van de Data Management Gateway. De instructies bevinden zich in het [verplaatsen van gegevens tussen on-premises locaties en Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikelen.
+Als eerste stap, het instellen van de data management gateway. De instructies bevinden zich in de [verhuisgegevens tussen on-premises locaties en cloudartikelen.](data-factory-move-data-between-onprem-and-cloud.md)
 
-**Gekoppelde MySQL-service:**
+**MySQL-gekoppelde service:**
 
 ```JSON
     {
@@ -135,7 +135,7 @@ De eerste stap is het instellen van de Data Management Gateway. De instructies b
     }
 ```
 
-**Azure Storage gekoppelde service:**
+**Gekoppelde Azure Storage-service:**
 
 ```JSON
     {
@@ -149,11 +149,11 @@ De eerste stap is het instellen van de Data Management Gateway. De instructies b
     }
 ```
 
-**MySQL-invoer gegevensset:**
+**MySQL-invoergegevensset:**
 
-In het voor beeld wordt ervan uitgegaan dat u in MySQL een tabel ' MyTable ' hebt gemaakt en deze een kolom bevat met de naam ' timestampcolumn ' voor tijdreeks gegevens.
+In het voorbeeld wordt ervan uitgegaan dat u een tabel "MyTable" in MySQL hebt gemaakt en een kolom bevat die "tijdstempelkolom" wordt genoemd voor tijdreeksgegevens.
 
-Als u ' Extern ' instelt, informeert de Data Factory-service dat de tabel extern is voor de data factory en wordt deze niet geproduceerd door een activiteit in de data factory.
+Als u "extern" instelt: "true" informeert de service Data Factory dat de tabel zich buiten de gegevensfabriek bevindt en niet wordt geproduceerd door een activiteit in de gegevensfabriek.
 
 ```JSON
     {
@@ -179,9 +179,9 @@ Als u ' Extern ' instelt, informeert de Data Factory-service dat de tabel extern
     }
 ```
 
-**Azure Blob-uitvoer gegevensset:**
+**Azure Blob-uitvoergegevensset:**
 
-Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1). Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van het jaar, de maand, de dag en het uur van de begin tijd.
+Gegevens worden elk uur naar een nieuwe blob geschreven (frequentie: uur, interval: 1). Het mappad voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van de begintijd van jaar, maand, dag en uur.
 
 ```JSON
     {
@@ -239,9 +239,9 @@ Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interv
     }
 ```
 
-**Pijp lijn met Kopieer activiteit:**
+**Pijplijn met kopieeractiviteit:**
 
-De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **RelationalSource** en het **sink** -type is ingesteld op **BlobSink**. Met de SQL-query die is opgegeven voor de **query** -eigenschap worden de gegevens in het afgelopen uur geselecteerd om te kopiëren.
+De pijplijn bevat een kopieeractiviteit die is geconfigureerd om de invoer- en uitvoergegevenssets te gebruiken en die elk uur moet worden uitgevoerd. In de JSON-definitie van pijplijn wordt het **brontype** ingesteld op **RelationalSource** en wordt **het gootsteentype** ingesteld op **BlobSink**. De SQL-query die is opgegeven voor de **eigenschap query** selecteert de gegevens in het afgelopen uur die u wilt kopiëren.
 
 ```JSON
     {
@@ -290,61 +290,61 @@ De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik
 ```
 
 
-### <a name="type-mapping-for-mysql"></a>Type toewijzing voor MySQL
-Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) voert Kopieer activiteit automatisch type conversies uit van bron typen naar Sink-typen met de volgende twee stappen:
+### <a name="type-mapping-for-mysql"></a>Typetoewijzing voor MySQL
+Zoals vermeld in het artikel [gegevensverplaatsingsactiviteiten](data-factory-data-movement-activities.md) voert kopieeractiviteit automatische typeconversies uit van brontypen naar sinktypen met de volgende benadering in twee stappen:
 
-1. Converteren van systeem eigen bron typen naar .NET-type
-2. Converteren van .NET-type naar systeem eigen Sink-type
+1. Converteren van native brontypen naar .NET-type
+2. Converteren van .NET-type naar native sinktype
 
 Bij het verplaatsen van gegevens naar MySQL worden de volgende toewijzingen gebruikt van MySQL-typen naar .NET-typen.
 
-| MySQL-database type | .NET Framework type |
+| MySQL-databasetype | .NET Framework type |
 | --- | --- |
-| bigint niet ondertekend |decimaal |
+| bigint unsigned |Decimal |
 | bigint |Int64 |
-| bit |decimaal |
-| blob |Byte[] |
-| bool |Booleaans |
-| char |Tekenreeks |
-| date |Datum en tijd |
-| datum/tijd |Datum en tijd |
-| decimal |decimaal |
-| dubbele precisie |Double-waarde |
-| double |Double-waarde |
-| enum |Tekenreeks |
-| float |Enkelvoudig |
-| geheel getal niet ondertekend |Int64 |
+| bit |Decimal |
+| blob |Byte |
+| Booleaanse waarde |Booleaans |
+| Char |Tekenreeks |
+| date |Datum/tijd |
+| datum/tijd |Datum/tijd |
+| decimal |Decimal |
+| dubbele precisie |Double |
+| double |Double |
+| Enum |Tekenreeks |
+| float |Enkel |
+| int unsigned |Int64 |
 | int |Int32 |
-| geheel getal niet ondertekend |Int64 |
+| geheel niet ondertekend |Int64 |
 | geheel getal |Int32 |
-| lange varbinary |Byte[] |
+| lange varbinary |Byte |
 | lange varchar |Tekenreeks |
-| longblob |Byte[] |
-| longtext |Tekenreeks |
-| mediumblob |Byte[] |
-| mediumint niet ondertekend |Int64 |
+| longblob (longblob) |Byte |
+| Longtext |Tekenreeks |
+| mediumblob |Byte |
+| mediumint unsigned |Int64 |
 | mediumint |Int32 |
-| mediumtext |Tekenreeks |
-| numeric |decimaal |
-| real |Double-waarde |
+| mediumtekst |Tekenreeks |
+| numeriek |Decimal |
+| real |Double |
 | set |Tekenreeks |
-| niet-ondertekend in smallint |Int32 |
+| smallint unsigned |Int32 |
 | smallint |Int16 |
 | tekst |Tekenreeks |
 | tijd |TimeSpan |
-| tijdstempel |Datum en tijd |
-| tinyblob |Byte[] |
-| tinyint niet ondertekend |Int16 |
+| tijdstempel |Datum/tijd |
+| tinyblob |Byte |
+| tinyint unsigned |Int16 |
 | tinyint |Int16 |
 | tinytext |Tekenreeks |
 | varchar |Tekenreeks |
 | jaar |Int |
 
-## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
-Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in Sink-gegevensset.
+## <a name="map-source-to-sink-columns"></a>Kaartbron om kolommen te laten zinken
+Zie Kolommen van [gegevenssetsin Azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in brongegevensset naar kolommen in sink dataset.
 
-## <a name="repeatable-read-from-relational-sources"></a>Herhaal bare Lees bewerking van relationele bronnen
-Houd bij het kopiëren van gegevens uit relationele gegevens archieven de Herhaal baarheid in de hand om onbedoelde resultaten te voor komen. In Azure Data Factory kunt u een segment hand matig opnieuw uitvoeren. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment op een van beide manieren opnieuw wordt uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht het aantal keren dat een segment wordt gestart. Zie [Herhaal bare Lees bewerking van relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Herhaalbaar lezen uit relationele bronnen
+Houd bij het kopiëren van gegevens uit relationele gegevensopslag rekening met herhaalbaarheid om onbedoelde resultaten te voorkomen. In Azure Data Factory u een segment handmatig opnieuw uitvoeren. U ook het beleid voor een wijziging opnieuw configureren, zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment in beide richtingen wordt opnieuw uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht hoe vaak een segment wordt uitgevoerd. Zie [Herhaalbaar lezen uit relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Prestaties en afstemming
-Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.
+## <a name="performance-and-tuning"></a>Prestaties en tuning
+Zie [Handleiding activiteitsprestaties kopiëren & tuningom](data-factory-copy-activity-performance.md) meer te weten te komen over de belangrijkste factoren die van invloed zijn op de prestaties van gegevensverplaatsing (Kopieeractiviteit) in Azure Data Factory en op verschillende manieren om deze te optimaliseren.

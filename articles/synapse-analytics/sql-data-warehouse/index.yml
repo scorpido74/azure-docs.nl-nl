@@ -4,20 +4,20 @@ summary: Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopsla
 metadata:
   title: Azure Synapse Analytics
   description: Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources.
-  services: sql-data-warehouse
-  ms.service: sql-data-warehouse
-  ms.subservice: design
+  services: synapse-analytics
+  ms.service: synapse-analytics
+  ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 10/03/2019
-  ms.openlocfilehash: 36943d330d0bd97fe6139f5cfa19da571fc70835
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 0622aa7566d88a58ae33741cd844ba66b2459ec1
+  ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80135671"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80346568"
 landingContent:
 - title: Info over Azure Synapse Analytics
   linkLists:
@@ -91,7 +91,7 @@ landingContent:
     links:
     - text: Azure Active Directory-verificatie configureren
       url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
-- title: Bronnen
+- title: Resources
   linkLists:
   - linkListType: video
     links:

@@ -9,17 +9,17 @@ ms.date: 03/05/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78668918"
 ---
 >[!NOTE]
->We werken hard om extra regio's toe te voegen. Wanneer een regio wordt toegevoegd, worden deze toegevoegd aan deze lijst.
+>We werken er hard aan om extra regio's toe te voegen. Wanneer een regio wordt toegevoegd, voegen we deze toe aan deze lijst.
 >
 
-**Amerikaanse**
+**Americas**
 * Brazilië - zuid
 * Canada - midden
 * VS - centraal
@@ -34,7 +34,7 @@ ms.locfileid: "78668918"
 **Europa**
 * Frankrijk - centraal
 * Europa - noord
-* Noor wegen-Oost
+* Noorwegen-Oost
 * Verenigd Koninkrijk Zuid
 * Verenigd Koninkrijk West
 * Europa -west
@@ -52,8 +52,8 @@ ms.locfileid: "78668918"
 * India - west
 
 **Midden-Oosten en Afrika**
-* Zuid-Afrika - noord
-* UAE - centraal
+* Zuid-Afrika Noord
+* VAE Centraal
 
 **Azure Government**
 * US DoD Central

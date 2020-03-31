@@ -1,6 +1,6 @@
 ---
-title: 'Een Azure bastion-host maken: Portal'
-description: In dit artikel leest u hoe u een Azure bastion-host maakt met behulp van de portal
+title: 'Een Azure Bastion-host maken: portal'
+description: In dit artikel vindt u meer informatie over het maken van een Azure Bastion-host met behulp van de portal
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,59 +8,59 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 14a596d78fb1f560c62013e7e439ed60d3a29b8f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79366140"
 ---
-# <a name="create-an-azure-bastion-host-using-the-portal"></a>Een Azure bastion-host maken met behulp van de portal
+# <a name="create-an-azure-bastion-host-using-the-portal"></a>Een Azure Bastion-host maken met behulp van de portal
 
-In dit artikel wordt beschreven hoe u een Azure bastion-host maakt met behulp van de Azure Portal. Zodra u de Azure Bastion-service in uw virtuele netwerk hebt ingericht, is de naadloze RDP/SSH-ervaring beschikbaar voor alle virtuele machines in hetzelfde virtuele netwerk. Azure Bastion-implementatie is per virtueel netwerk, niet per abonnement/account of virtuele machine.
+In dit artikel ziet u hoe u een Azure Bastion-host maakt met behulp van de Azure-portal. Zodra u de Azure Bastion-service in uw virtuele netwerk indient, is de naadloze RDP/SSH-ervaring beschikbaar voor alle VM's in hetzelfde virtuele netwerk. Azure Bastion-implementatie is per virtueel netwerk, niet per abonnement/account of virtuele machine.
 
-U kunt een nieuwe bastion-host maken in de portal door alle instellingen hand matig op te geven of door de instellingen te gebruiken die overeenkomen met een bestaande virtuele machine. Zie het artikel [Quick](quickstart-host-portal.md) start voor het maken van een bastion-host met behulp van VM-instellingen. U kunt eventueel [Azure PowerShell](bastion-create-host-powershell.md) gebruiken om een Azure bastion-host te maken.
+U een nieuwe bastionhostbron in de portal maken door alle instellingen handmatig op te geven of door de instellingen te gebruiken die overeenkomen met een bestaande vm. Zie het [snelstartartikel](quickstart-host-portal.md) om een bastionhost te maken met vm-instellingen. Optioneel u [Azure PowerShell](bastion-create-host-powershell.md) gebruiken om een Azure Bastion-host te maken.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Bastion is beschikbaar in de volgende open bare Azure-regio's:
+Bastion is beschikbaar in de volgende openbare Azure-regio's:
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-## <a name="createhost"></a>Een bastion-host maken
+## <a name="create-a-bastion-host"></a><a name="createhost"></a>Een Bastion-host maken
 
-In deze sectie kunt u een nieuwe Azure Bastion-resource maken op basis van de Azure Portal.
+Met deze sectie u een nieuwe Azure Bastion-bron maken vanuit de Azure-portal.
 
-1. Selecteer in het menu [Azure Portal](https://portal.azure.com) of op de **Start** pagina de optie **een resource maken**.
+1. Selecteer in het menu [azure portal](https://portal.azure.com) of op **de** startpagina de optie Een **bron maken**.
 
-1. Typ **Bastion**in het veld *Marketplace doorzoeken* op de pagina **Nieuw** en klik vervolgens op **Enter** om naar de zoek resultaten te gaan.
+1. Typ **Bastion**op de pagina **Nieuw** in het veld *Marktplaats* zoeken en klik vervolgens op **Enter** om naar de zoekresultaten te gaan.
 
-1. Klik in de resultaten op **Bastion**. Zorg ervoor dat de uitgever van *micro soft* is en dat de categorie *netwerk*is.
+1. Klik in de resultaten op **Bastion**. Zorg ervoor dat de uitgever *Microsoft* is en de categorie *Netwerken*.
 
-1. Klik op de pagina **Bastion** op **maken** om de pagina **een bastion maken** te openen.
+1. Klik op de pagina **Bastion** op **Maken** om de pagina **Een bastion maken** te openen.
 
-1. Configureer op de pagina **een bastion maken** een nieuwe Bastion-resource. Geef de configuratie-instellingen voor uw Bastion-resource op.
+1. Configureer op de pagina **Een bastion maken** een nieuwe Bastion-bron. Geef de configuratie-instellingen voor uw Bastion-bron op.
 
     ![een bastion maken](./media/bastion-create-host-portal/settings.png)
 
-    * **Abonnement**: het Azure-abonnement dat u wilt gebruiken voor het maken van een nieuwe Bastion-resource.
-    * **Resource groep**: de Azure-resource groep waarin de nieuwe Bastion-resource wordt gemaakt. Als u geen bestaande resource groep hebt, kunt u een nieuwe maken.
-    * **Naam**: de naam van de nieuwe Bastion-resource
-    * **Regio**: de open bare Azure-regio waarin de resource wordt gemaakt.
-    * **Virtueel netwerk**: het virtuele netwerk waarin de Bastion-resource wordt gemaakt. U kunt tijdens dit proces een nieuw virtueel netwerk maken in de portal of een bestaand virtueel netwerk gebruiken. Als u een bestaand virtueel netwerk gebruikt, zorg er dan voor dat het bestaande virtuele netwerk voldoende vrije adres ruimte heeft om de vereisten van het Bastion-subnet aan te passen.
-    * **Subnet**: het subnet in het virtuele netwerk waarop de nieuwe bastion-host wordt geïmplementeerd. U moet een subnet maken met de naam waarde **AzureBastionSubnet**. Met deze waarde kan Azure weten met welk subnet de Bastion-resources moeten worden geïmplementeerd. Dit wijkt af van een gateway-subnet. U moet een subnet van Mini maal/27 of groter (/27,/26 enzovoort) gebruiken.
+    * **Abonnement:** het Azure-abonnement dat u wilt gebruiken om een nieuwe Bastion-bron te maken.
+    * **Resourcegroep:** de Azure-brongroep waarin de nieuwe Bastion-bron wordt gemaakt. Als u geen bestaande resourcegroep hebt, u een nieuwe groep maken.
+    * **Naam**: De naam van de nieuwe Bastion-bron
+    * **Regio**: de openbare azure-regio waarin de bron wordt gemaakt.
+    * **Virtueel netwerk**: het virtuele netwerk waarin de Bastion-bron wordt gemaakt. U tijdens dit proces een nieuw virtueel netwerk in de portal maken of een bestaand virtueel netwerk gebruiken. Als u een bestaand virtueel netwerk gebruikt, moet u ervoor zorgen dat het bestaande virtuele netwerk voldoende vrije adresruimte heeft om aan de bastionsubnetvereisten te voldoen.
+    * **Subnet**: Het subnet in uw virtuele netwerk waarop de nieuwe Bastion-hostbron wordt geïmplementeerd. U moet een subnet maken met de naamwaarde **AzureBastionSubnet**. Met deze waarde weet Azure naar welk subnet de Bastion-resources moeten worden geïmplementeerd. Dit is anders dan een Gateway-subnet. U moet een subnet van ten minste /27 of groter gebruiken (/27, /26, enzovoort).
     
-       Maak de **AzureBastionSubnet** zonder route tabellen of delegaties. Als u netwerk beveiligings groepen op de **AzureBastionSubnet**gebruikt, raadpleegt u het artikel [over het werken met nsg's](bastion-nsg.md) .
-    * **Openbaar IP-adres**: de open bare IP van de Bastion-bron waarop RDP/SSH wordt gebruikt (via poort 443). Maak een nieuw openbaar IP-adres of gebruik een bestaande. Het open bare IP-adres moet zich in dezelfde regio bevinden als de Bastion-resource die u maakt.
-    * **Naam van openbaar IP-adres**: de naam van de resource voor het open bare IP-adres.
-    * **SKU openbaar IP-adres**: deze instelling **is standaard vooraf ingevuld.** Azure Bastion gebruikt/ondersteunt alleen de standaard open bare IP-SKU.
-    * **Toewijzing**: deze instelling wordt standaard vooraf ingevuld in **statisch**.
+       Maak het **AzureBastionSubnet** zonder routetabellen of delegaties. Als u netwerkbeveiligingsgroepen op het **AzureBastionSubnet**gebruikt, raadpleegt u het artikel [Werken met NSGs.](bastion-nsg.md)
+    * **Openbaar IP-adres**: Het openbare IP-adres van de Bastion-bron waarop RDP/SSH zal worden geopend (via poort 443). Maak een nieuw openbaar IP-adres of gebruik een bestaand IP-adres. Het openbare IP-adres moet zich in dezelfde regio bevinden als de Bastion-bron die u maakt.
+    * **Naam van het openbare IP-adres**: de naam van de bron van het openbare IP-adres.
+    * **Openbaar IP-adres SKU**: Deze instelling is standaard vooraf ingevuld op **Standaard**. Azure Bastion gebruikt/ondersteunt alleen de Standard Public IP SKU.
+    * **Toewijzing:** deze instelling wordt standaard vooraf ingevuld in **Statisch**.
 
-1. Wanneer u klaar bent met het opgeven van de instellingen, klikt u op **controleren + maken**. Hiermee worden de waarden gevalideerd. Zodra de validatie is geslaagd, kunt u beginnen met het aanmaak proces.
-1. Klik op de pagina **een bastion maken** op **maken**.
-1. Er wordt een bericht weer gegeven met de melding dat uw implementatie zich bevindt. De status wordt op deze pagina weer gegeven wanneer de resources zijn gemaakt. Het duurt ongeveer vijf minuten voordat de Bastion-resource wordt gemaakt en geïmplementeerd.
+1. Als u klaar bent met het opgeven van de instellingen, klikt u op **Controleren + Maken**. Hiermee worden de waarden gevalideerd. Zodra de validatie is voorbij, u het creatieproces starten.
+1. Klik **op de** pagina Een bastion maken op **Maken**.
+1. U ziet een bericht waarin staat dat uw implementatie aan de gang is. Status wordt weergegeven op deze pagina als de bronnen worden gemaakt. Het duurt ongeveer 5 minuten voordat de Bastion-bron is gemaakt en geïmplementeerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees de [Veelgestelde vragen over Bastion](bastion-faq.md) voor meer informatie.
+* Lees de [Veelgestelde vragen over bastion](bastion-faq.md) voor meer informatie.
 
-* Als u netwerk beveiligings groepen wilt gebruiken met het Azure Bastion-subnet, raadpleegt u [werken met nsg's](bastion-nsg.md).
+* Zie [Werken met NSGs](bastion-nsg.md)als u netwerkbeveiligingsgroepen wilt gebruiken met het subnet Azure Bastion.

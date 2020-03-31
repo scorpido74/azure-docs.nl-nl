@@ -16,12 +16,12 @@
       href: sql-data-warehouse-service-capacity-limits.md
     - name: Veelgestelde vragen
       href: sql-data-warehouse-overview-faq.md
-- name: Releaseopmerkingen
-  items:
-    - name: Recente versie
-      href: release-notes-10-0-10106-0.md
-    - name: Upgrade-schema Gen2-regio's
-      href: gen2-migration-schedule.md
+    - name: Releaseopmerkingen
+      items:
+        - name: Recente versie
+          href: release-notes-10-0-10106-0.md
+        - name: Upgrade-schema Gen2-regio's
+          href: gen2-migration-schedule.md
 - name: Snelstartgidsen
   expanded: true
   items:

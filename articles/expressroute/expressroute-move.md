@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute: circuits van het klassieke naar het Azure Resource Manager verplaatsen'
-description: Overzicht van het overbruggen van het klassieke implementatiemodel en het Resource Manager-implementatiemodel.
+title: 'ExpressRoute: circuits verplaatsen van klassiek naar Azure Resource Manager'
+description: Overzicht van het overbruggen van de klassieke en de Resource Manager-implementatiemodellen.
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
 ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645902"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute-circuits verplaatsen van het klassieke naar het Resource Manager-implementatiemodel
@@ -57,7 +57,7 @@ De volgende klassieke bewerkingen worden ondersteund in een ExpressRoute-circuit
 * Koppelingen tussen virtuele netwerken en klassieke virtuele netwerken maken, bijwerken, verkrijgen en verwijderen
 * Autorisaties voor koppelingen met virtuele netwerken voor abonnementoverschrijdende connectiviteit maken, bijwerken, verkrijgen en verwijderen
 
-Echter, wanneer **allowClassicOperations** is ingesteld op TRUE, kan u niet de volgende klassieke bewerkingen uitvoeren:
+Wanneer **allowClassicOperations** echter is ingesteld op TRUE, u de volgende klassieke bewerkingen niet uitvoeren:
 
 * BGP-peerings (Border Gateway Protocol) maken, bijwerken, verkrijgen of verwijderen voor persoonlijke of openbare Azure-peerings en Microsoft-peerings
 * ExpressRoute-circuits verwijderen

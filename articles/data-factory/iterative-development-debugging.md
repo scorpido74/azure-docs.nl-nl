@@ -1,6 +1,6 @@
 ---
-title: Iteratieve ontwikkeling en fout opsporing in Azure Data Factory
-description: Meer informatie over het ontwikkelen en fouten opsporen Data Factory pijp lijnen iteratief in de Azure Portal.
+title: Iteratieve ontwikkeling en foutopsporing in Azure Data Factory
+description: Meer informatie over het iteratief ontwikkelen en debuggen van Data Factory-pijplijnen in de Azure-portal.
 ms.date: 09/26/2018
 ms.topic: conceptual
 ms.service: data-factory
@@ -11,67 +11,67 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 3a771181f8f2785339cbc47e0a0234b9c4e39adc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74926854"
 ---
-# <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratieve ontwikkeling en fout opsporing met Azure Data Factory
+# <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratief ontwikkelen en fouten opsporen met Azure Data Factory
 
-Met Azure Data Factory kunt u Data Factory pijp lijnen iteratief ontwikkelen en fouten opsporen.
+Met Azure Data Factory u iteratief Data Factory-pijplijnen ontwikkelen en debuggen.
 
-Bekijk de volgende video voor een inleiding en demonstratie van acht minuten voor deze functie:
+Bekijk de volgende video voor een acht minuten durende introductie en demonstratie van deze functie:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
-## <a name="iterative-debugging-features"></a>Herhaalde functies voor fout opsporing
-Maak pijp lijnen en voer tests uit met de functie voor **fout opsporing** in het pijplijn doek zonder een regel code te schrijven.
+## <a name="iterative-debugging-features"></a>Iteratieve foutopsporingsfuncties
+Maak pijplijnen en doe testruns met de **foutopsporingsmogelijkheid** in het pijplijncanvas zonder één regel code te schrijven.
 
-![Mogelijkheid tot fouten opsporen op het pijplijn papier](media/iterative-development-debugging/iterative-development-image1.png)
+![Foutopsporingsfunctie op het pijplijncanvas](media/iterative-development-debugging/iterative-development-image1.png)
 
-Bekijk de resultaten van uw test uitvoeringen in het **uitvoer** venster van het pijp lijn papier.
+Bekijk de resultaten van uw testruns in het **uitvoervenster** van het pijplijncanvas.
 
-![Uitvoer venster van het pijp lijn papier](media/iterative-development-debugging/iterative-development-image2.png)
+![Uitvoervenster van het pijplijncanvas](media/iterative-development-debugging/iterative-development-image2.png)
 
-Wanneer een test uitvoering slaagt, voegt u meer activiteiten aan uw pijp lijn toe en voert u de fout opsporing op een iteratieve manier door. U kunt ook een test uitvoering **Annuleren** terwijl deze wordt uitgevoerd.
+Nadat een testrun is geslaagd, voegt u meer activiteiten toe aan uw pijplijn en blijft u op een iteratieve manier foutopsporing. U ook een testuitvoeren **annuleren** terwijl deze aan de gang is.
 
-![Een test uitvoering annuleren](media/iterative-development-debugging/iterative-development-image3.png)
+![Een testrun annuleren](media/iterative-development-debugging/iterative-development-image3.png)
 
-Wanneer u test uitvoeringen uitvoert, hoeft u uw wijzigingen niet te publiceren naar de data factory voordat u **debug**selecteert. Deze functie is handig in scenario's waarin u er zeker van wilt zijn dat de wijzigingen werken zoals verwacht voordat u de data factory werk stroom bijwerkt.
+Wanneer u testtests uitvoert, hoeft u uw wijzigingen in de gegevensfabriek niet te publiceren voordat u **Foutopsporing**selecteert. Deze functie is handig in scenario's waarin u ervoor wilt zorgen dat de wijzigingen werken zoals verwacht voordat u de werkstroom van de gegevensfabriek bijwerkt.
 
 > [!IMPORTANT]
-> Als u **debug** selecteert, wordt de pijp lijn werkelijk uitgevoerd. Als de pijp lijn bijvoorbeeld Kopieer activiteit bevat, kopieert de test uitvoering de gegevens van de bron naar het doel. Als gevolg hiervan raden wij u aan test mappen in uw Kopieer activiteiten en andere activiteiten te gebruiken bij het opsporen van fouten. Nadat u de fout opsporing voor de pijp lijn hebt uitgevoerd, gaat u naar de daad werkelijke mappen die u wilt gebruiken voor normale bewerkingen.
+> Als **u Foutopsporing selecteert,** wordt de pijplijn uitgevoerd. Als de pijplijn bijvoorbeeld kopieeractiviteit bevat, kopieert de testrun gegevens van bron naar bestemming. Daarom raden we u aan testmappen te gebruiken in uw kopieeractiviteiten en andere activiteiten bij het foutopsporing. Nadat u de pijplijn hebt verwijderd, schakelt u over naar de werkelijke mappen die u bij normale bewerkingen wilt gebruiken.
 
-## <a name="visualizing-debug-runs"></a>Fouten in de fout opsporing in visualiseren
+## <a name="visualizing-debug-runs"></a>Foutopsporing van foutopsporing visualiseren
 
-U kunt alle debug-uitvoeringen die worden uitgevoerd voor uw data factory, op één plek visualiseren. Selecteer **debug-uitvoeringen weer geven** in de rechter bovenhoek van de pagina. Deze functie is handig in scenario's waarin u hoofd pijplijnen hebt voor het starten van debug-uitvoeringen voor onderliggende pijp lijnen en u wilt dat één weer gave alle actieve debug-uitvoeringen ziet.
+U alle foutopsporingsuitvoeringen die aan de gang zijn voor uw gegevensfabriek op één plaats visualiseren. Selecteer **Foutopsporing weergeven in** de rechterbovenhoek van de pagina. Deze functie is handig in scenario's waarin er masterpijplijnen zijn die foutopsporingsprogramma's voor onderliggende pijplijnen starten, en u wilt dat één weergave alle actieve foutopsporingsuitvoeringen ziet.
 
-![Selecteer het pictogram actieve debug-uitvoeringen weer geven](media/iterative-development-debugging/view-debug-runs-image1.png)
+![Het pictogram Actieve foutopsporing weergeven selecteren](media/iterative-development-debugging/view-debug-runs-image1.png)
 
-![Voorbeeld lijst met actieve debug-uitvoeringen](media/iterative-development-debugging/view-debug-runs-image2.png)
+![Voorbeeldlijst met actieve foutopsporingsuitvoeringen](media/iterative-development-debugging/view-debug-runs-image2.png)
 
-Als u actieve gegevens stroom fout opsporing sessies hebt, worden deze sessies weer gegeven in het onderste gedeelte van het actieve venster fout opsporing. U kunt een actieve Data flow-sessie selecteren en het respectieve cluster stoppen.
+Als u actieve foutopsporingssessies in gegevensstroom hebt, worden deze sessies weergegeven in het onderste deel van het actieve foutopsporingsvenster. U een actieve gegevensstroomsessie selecteren en het betreffende cluster stoppen.
 
-![Voorbeeld lijst van actieve gegevens stroom fout opsporing uitgevoerd](media/data-flow/dfsessions.png)
+![Voorbeeldlijst met foutopsporing van actieve gegevensstromen](media/data-flow/dfsessions.png)
 
-## <a name="monitoring-debug-runs"></a>Fout opsporing van bewaking wordt uitgevoerd
+## <a name="monitoring-debug-runs"></a>Foutopsporing controleren
 
-De test uitvoeringen die met de mogelijkheid voor **fout opsporing** worden gestart, zijn niet beschikbaar in de lijst op het tabblad **monitor** . U kunt alleen uitvoeringen weer geven die zijn geactiveerd met het venster **trigger Now**, **Schedule**of **tumblingvenstertriggers** op het tabblad **monitor** . U kunt zien dat de laatste test uitvoering is gestart met de functie voor **fout opsporing** in het **uitvoer** venster van het pijp lijn papier.
+De testuitvoeringen die zijn gestart met de **foutopsporingsmogelijkheid,** zijn niet beschikbaar in de lijst op het tabblad **Monitor.** U alleen uitgevoerd e-runs zien die worden geactiveerd met **triggernow-,** **plannings-** of **tumblingwindow-triggers** op het tabblad **Monitor.** U de laatste testrun zien die is gestart met de **foutopsporingsmogelijkheid** in het **uitvoervenster** van het pijplijncanvas.
 
-## <a name="setting-breakpoints-for-debugging"></a>Onderbrekings punten instellen voor fout opsporing
+## <a name="setting-breakpoints-for-debugging"></a>Breekpunten instellen voor foutopsporing
 
-Met Data Factory kunt u ook fouten opsporen totdat u een bepaalde activiteit op het pijplijn doek hebt bereikt. Plaats een onderbrekings punt op de activiteit tot u wilt testen en selecteer **fout opsporing**. Data Factory zorgt ervoor dat de test alleen wordt uitgevoerd tot de activiteit onderbrekings punt op het pijp lijn-canvas. Deze functie voor het *opsporen van fouten* is handig wanneer u niet de volledige pijp lijn wilt testen, maar alleen een subset van activiteiten in de pijp lijn.
+Met Data Factory kun je ook debuggen totdat je een bepaalde activiteit op het pijplijncanvas hebt bereikt. Plaats gewoon een breekpunt op de activiteit totdat u wilt testen, en selecteer **Foutopsporing**. Data Factory zorgt ervoor dat de test alleen wordt uitgevoerd totdat de breekpuntactiviteit op het pijplijncanvas wordt uitgevoerd. Deze *foutopsporingsfunctie Tot* is handig als u niet de hele pijplijn wilt testen, maar slechts een subset van activiteiten in de pijplijn.
 
-![Onderbrekings punten op het pijp lijn papier](media/iterative-development-debugging/iterative-development-image4.png)
+![Breekpunten op het pijplijncanvas](media/iterative-development-debugging/iterative-development-image4.png)
 
-Selecteer een element op het pijplijn doek om een onderbrekings punt in te stellen. De optie *debug until* wordt weer gegeven als een lege rode cirkel in de rechter bovenhoek van het element.
+Als u een breekpunt wilt instellen, selecteert u een element op het pijplijncanvas. Een *optie Foutopsporing tot* wordt weergegeven als een lege rode cirkel in de rechterbovenhoek van het element.
 
-![Voordat een onderbrekings punt voor het geselecteerde element wordt ingesteld](media/iterative-development-debugging/iterative-development-image5.png)
+![Voordat u een breekpunt instelt op het geselecteerde element](media/iterative-development-debugging/iterative-development-image5.png)
 
-Nadat u de optie *debug until* hebt geselecteerd, verandert deze in een gevulde rode cirkel om aan te geven dat het onderbrekings punt is ingeschakeld.
+Nadat u de optie *Foutopsporing tot hebt* geselecteerd, wordt deze gewijzigd in een gevulde rode cirkel om aan te geven dat het breekpunt is ingeschakeld.
 
-![Na het instellen van een onderbrekings punt voor het geselecteerde element](media/iterative-development-debugging/iterative-development-image6.png)
+![Na het instellen van een breekpunt op het geselecteerde element](media/iterative-development-debugging/iterative-development-image6.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 [Continue integratie en implementatie in Azure Data Factory](continuous-integration-deployment.md)

@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 3eec6583ebdff35d7e40d2eec305a947de0cb87c
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299449"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
@@ -26,17 +26,17 @@ ms.locfileid: "79299449"
 
 ## <a name="powershell"></a>PowerShell
 
-U kunt Azure PowerShell gebruiken om een incrementele moment opname te maken. U hebt de nieuwste versie van Azure PowerShell nodig. de volgende opdracht wordt geïnstalleerd of de bestaande installatie wordt bijgewerkt naar de laatste:
+U Azure PowerShell gebruiken om een incrementele momentopname te maken. U hebt de nieuwste versie van Azure PowerShell nodig, de volgende opdracht installeert deze of werkt uw bestaande installatie bij naar de laatste:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-Als dat is gebeurd, meldt u zich aan bij uw Power shell-sessie met `az login`.
+Zodra dat is geïnstalleerd, log je `az login`in op je PowerShell-sessie met .
 
-Als u een incrementele moment opname met Azure PowerShell wilt maken, stelt u de configuratie met [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) met de para meter `-Incremental` in en geeft u die als variabele door aan [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) via de `-Snapshot` para meter.
+Als u een incrementele momentopname wilt maken met Azure PowerShell, `-Incremental` stelt u de configuratie met [Nieuw-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) in met de parameter en geeft u die vervolgens als variabele door aan [Nieuw-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) via de `-Snapshot` parameter.
 
-Vervang `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`en `<yourDesiredSnapShotNameHere>` met uw waarden. vervolgens kunt u het volgende script gebruiken om een incrementele moment opname te maken:
+Vervang `<yourDiskNameHere>` `<yourResourceGroupNameHere>`, `<yourDesiredSnapShotNameHere>` en met uw waarden, dan u het volgende script gebruiken om een incrementele momentopname te maken:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -47,9 +47,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` eigenschappen van moment opnamen. `SourceResourceId` is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId` is de waarde die wordt overgenomen van de eigenschap `UniqueId` van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, wordt de waarde van de eigenschap `UniqueId` gewijzigd.
+U incrementele momentopnamen van `SourceResourceId` dezelfde `SourceUniqueId` schijf identificeren met de eigenschappen en de eigenschappen van momentopnamen. `SourceResourceId`is de Azure Resource Manager-bron-id van de bovenliggende schijf. `SourceUniqueId`is de waarde die `UniqueId` is overgenomen van de eigenschap van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met `UniqueId` dezelfde naam maakt, verandert de waarde van de eigenschap.
 
-Met `SourceResourceId` en `SourceUniqueId` kunt u een lijst maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. Vervang `<yourResourceGroupNameHere>` door uw waarde en u kunt het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven:
+U kunt `SourceResourceId` `SourceUniqueId` een lijst met alle momentopnamen die aan een bepaalde schijf zijn gekoppeld, gebruiken en maken. Vervang `<yourResourceGroupNameHere>` door uw waarde en vervolgens u het volgende voorbeeld gebruiken om uw bestaande incrementele momentopnamen weer te geven:
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -69,7 +69,7 @@ $incrementalSnapshots
 
 ## <a name="resource-manager-template"></a>Resource Manager-sjabloon
 
-U kunt ook Azure Resource Manager sjablonen gebruiken om een incrementele moment opname te maken. U moet ervoor zorgen dat de apiVersion is ingesteld op **2019-03-01** en dat de incrementele eigenschap ook is ingesteld op True. Het volgende code fragment is een voor beeld van het maken van een incrementele moment opname met Resource Manager-sjablonen:
+U azure resource beheersjablonen ook gebruiken om een incrementele momentopname te maken. U moet ervoor zorgen dat de apiVersie is ingesteld op **2019-03-01** en dat de incrementele eigenschap ook is ingesteld op true. Het volgende fragment is een voorbeeld van het maken van een incrementele momentopname met Resource Manager-sjablonen:
 
 ```json
 {
@@ -105,4 +105,4 @@ U kunt ook Azure Resource Manager sjablonen gebruiken om een incrementele moment
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure-Managed disks back-ups kopiëren naar een andere regio met differentiële mogelijkheden van incrementele moment opnamen](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)als u voorbeeld code wilt zien met behulp van de differentiële mogelijkheden van incrementele moment opnamen.
+Zie [Azure Managed Disks back-ups kopiëren naar een andere regio met differentiële mogelijkheden van incrementele momentopnamen](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)als u voorbeeldcode wilt zien die de differentiële mogelijkheid van incrementele momentopnamen weergeeft.

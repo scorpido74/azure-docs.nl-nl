@@ -1,53 +1,53 @@
 ---
-title: Overzicht van de Azure HPC-cache
-description: Hierin wordt de Azure HPC-cache, een oplossing voor bestands toegang voor High-Performance Computing beschreven
+title: Overzicht van Azure HPC-cache
+description: Beschrijft Azure HPC Cache, een systeemversneller voor bestandstoegang voor krachtige computing
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241190"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Wat is Azure HPC Cache?
 
-De Azure HPC-cache versnelt de toegang tot uw gegevens voor HPC-taken (High-Performance Computing). Door bestanden in Azure in de cache op te slaan, brengt Azure HPC cache de schaal baarheid van Cloud Computing over aan uw bestaande werk stroom. Deze service kan ook worden gebruikt voor werk stromen waarbij uw gegevens op WAN-koppelingen worden opgeslagen, zoals in uw lokale Data Center-network-attached storage omgeving (NAS).
+Azure HPC Cache versnelt de toegang tot uw gegevens voor HPC-taken (High-Performance Computing). Door bestanden in Azure te plaatsen, brengt Azure HPC Cache de schaalbaarheid van cloud computing naar uw bestaande workflow. Deze service kan zelfs worden gebruikt voor werkstromen waarbij uw gegevens worden opgeslagen via WAN-koppelingen, zoals in uw lokale NAS-omgeving (Network-attached Storage).
 
-De Azure HPC-cache is eenvoudig te starten en te controleren vanaf de Azure Portal. Bestaande NFS-opslag of nieuwe BLOB-containers kunnen deel uitmaken van de geaggregeerde naam ruimte, waardoor client toegang eenvoudig kan worden gemaakt, zelfs als u het back-end-opslag doel wijzigt.
+Azure HPC-cache is eenvoudig te starten en te bewaken vanaf de Azure-portal. Bestaande NFS-opslag of nieuwe Blob-containers kunnen deel gaan uitmaken van de geaggregeerde naamruimte, waardoor clienttoegang eenvoudig is, zelfs als u het back-endopslagdoel wijzigt.
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
 
-Azure HPC cache verbetert de productiviteit die het beste is voor werk stromen als deze:
+Azure HPC-cache verhoogt de productiviteit het beste voor workflows zoals deze:
 
-* Werk stroom voor lezen van zware bestands toegang
-* Gegevens die zijn opgeslagen in met NFS toegankelijke opslag, Azure Blob of beide
-* Compute-farms van Maxi maal 75.000 CPU-kernen
+* Werkstroom voor leeszware bestandstoegang
+* Gegevens die zijn opgeslagen in nfs-toegankelijke opslag, Azure Blob of beide
+* Compute farms van maximaal 75.000 CPU-cores
 
-Een Azure HPC-cache kan worden toegevoegd aan een groot aantal werk stromen in veel branches. Elk systeem waarbij een groot aantal machines toegang moet hebben tot een set bestanden op schaal en met lage latentie voor deel is van deze service. De volgende secties geven specifieke voor beelden.
+Azure HPC-cache kan worden toegevoegd aan een breed scala aan werkstromen in vele bedrijfstakken. Elk systeem waarbij een groot aantal machines toegang nodig heeft tot een set bestanden op schaal en met een lage latentie, zal van deze service profiteren. De onderstaande secties geven specifieke voorbeelden.
 
-### <a name="visual-effects-vfx-rendering"></a>Rendering van visuele effecten (VFX)
+### <a name="visual-effects-vfx-rendering"></a>Visual effects (VFX) rendering
 
-In media en entertainment kan Azure HPC cache de toegang tot gegevens versnellen voor tijdgebonden rendering-projecten. VFX rendering-werk stromen vereisen vaak verwerking van de laatste minuut door grote aantallen reken knooppunten. Gegevens voor deze werk stromen bevinden zich doorgaans in een on-premises NAS-omgeving. Met de Azure HPC-cache kunt u de bestands gegevens in de Cloud opslaan om de latentie te verminderen en de flexibiliteit te verhogen voor rendering op aanvraag.
+In media en entertainment kan Azure HPC Cache de toegang tot gegevens versnellen voor tijdkritische renderingprojecten. VFX-renderingworkflows vereisen vaak last-minute verwerking door grote aantallen compute nodes. Gegevens voor deze werkstromen bevinden zich doorgaans in een on-premises NAS-omgeving. Azure HPC-cache kan die bestandsgegevens in de cloud in de cache opslaan om de latentie te verminderen en de flexibiliteit voor on-demand rendering te verbeteren.
 
 ### <a name="life-sciences"></a>Biowetenschappen
 
-Veel biowetenschappen-werk stromen kunnen profiteren van scale-out bestands caches.
+Veel life sciences workflows kunnen profiteren van scale-out file caching.
 
-Een onderzoek instituut dat de genomic-analyse werk stromen in azure wil bepoorten, kan deze eenvoudig verplaatsen met behulp van de Azure HPC-cache. Omdat de cache POSIX-bestands toegang biedt, zijn er geen wijzigingen aan de client zijde nodig om de bestaande client werk stroom in de Cloud uit te voeren.
+Een onderzoeksinstituut dat zijn genomische analyseworkflows wil overzetten naar Azure, kan deze eenvoudig verschuiven met Azure HPC-cache. Omdat de cache POSIX-bestandstoegang biedt, zijn er geen wijzigingen aan de clientzijde nodig om hun bestaande clientworkflow in de cloud uit te voeren.
 
-De Azure HPC-cache kan ook worden gebruikt om de efficiëntie te verbeteren van taken zoals secundaire analyse, farmacologische simulatie of AI-gestuurde afbeeldings analyse.
+Azure HPC-cache kan ook worden gebruikt om de efficiëntie te verbeteren in taken zoals secundaire analyse, farmacologische simulatie of AI-gestuurde beeldanalyse.
 
 ### <a name="financial-services-analytics"></a>Analyse voor financiële dienstverlening
 
-Een implementatie van een Azure HPC-cache kan bijdragen aan het versnellen van kwantitatieve analyse berekeningen, workloads voor risico analyse en Monte Carlo-simulaties om financiële diensten bedrijven beter inzicht te geven in het nemen van strategische beslissingen.
+Een Azure HPC-cache-implementatie kan helpen bij het versnellen van kwantitatieve analyseberekeningen, risicoanalyseworkloads en Monte Carlo-simulaties om financiële dienstverleners beter inzicht te geven om strategische beslissingen te nemen.
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-De Azure HPC-cache is beschikbaar in de volgende Azure-regio's:
+Azure HPC-cache is beschikbaar in deze Azure-regio's:
 
 * VS - oost
 * VS - oost 2
@@ -58,16 +58,16 @@ De Azure HPC-cache is beschikbaar in de volgende Azure-regio's:
 * VS - west 2
 * Korea - centraal
 
-Controleer de [product pagina van de Azure HPC-cache](https://azure.microsoft.com/services/hpc-cache) voor de meest recente beschikbaarheids gegevens.
+Controleer de [productpagina azure HPC Cache](https://azure.microsoft.com/services/hpc-cache) voor de meest recente beschikbaarheidsinformatie.
 
-## <a name="service-availability"></a>Service beschikbaarheid
+## <a name="service-availability"></a>Beschikbaarheid van service
 
-U moet toegang aanvragen voor elk abonnement dat u wilt gebruiken met de Azure HPC-cache. Deze beperking helpt de kwaliteit van de service in de eerste maanden van algemene Beschik baarheid te garanderen.
+U moet toegang aanvragen voor elk abonnement dat u gebruikt met Azure HPC-cache. Deze beperking zorgt voor de kwaliteit van de dienstverlening in de eerste maanden van algemene beschikbaarheid.
 
-Vraag toegang aan door [dit formulier](https://aka.ms/onboard-hpc-cache)in te vullen. Nadat uw abonnement is toegevoegd aan de lijst met toegangs rechten, kunt u caches maken.
+Vraag toegang aan door [dit formulier](https://aka.ms/onboard-hpc-cache)in te vullen. Nadat uw abonnement is toegevoegd aan de toegangslijst, u caches maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees de [product pagina van de Azure HPC-cache](https://azure.microsoft.com/services/hpc-cache) voor meer informatie over de mogelijkheden
-* Meer informatie over product [vereisten](hpc-cache-prereqs.md)
-* [Een HPC-cache van Azure maken](hpc-cache-create.md) op basis van de Azure Portal
+* Lees de [productpagina azure HPC Cache](https://azure.microsoft.com/services/hpc-cache) voor meer informatie over de mogelijkheden
+* Meer informatie over [productvereisten](hpc-cache-prereqs.md)
+* [Een Azure HPC-cache maken](hpc-cache-create.md) vanuit de Azure-portal

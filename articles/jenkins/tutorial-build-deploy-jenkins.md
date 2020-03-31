@@ -1,14 +1,14 @@
 ---
-title: Zelf studie-CI/CD van Jenkins naar Azure Vm's met Azure DevOps Services
+title: Zelfstudie - CI/CD van Jenkins naar Azure VM's met Azure DevOps-services
 description: In deze zelfstudie leert u hoe u continue integratie (CI) en continue implementatie (CD) van een Node.js-app kunt instellen met Jenkins voor Azure VM's vanuit Release Management in Visual Studio Team Services of Microsoft Team Foundation Server
-keywords: Jenkins, azure, devops, virtual machine, cicd
+keywords: jenkins, azure, devops, virtuele machine, cicd
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78192605"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Zelfstudie: Uw app implementeren voor Linux Virtual Machines in Azure met Jenkins en Azure DevOps Services
@@ -17,7 +17,7 @@ Continue integratie en continue implementatie vormen een pijplijn waarmee u uw c
 
 In deze zelfstudie gebruikt u Jenkins om een Node.js-web-app te maken. Vervolgens gebruikt u Azure DevOps om deze te implementeren
 
-naar een [implementatiegroep](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups/index?view=vsts) die virtuele Linux-machines (VM's) bevat. In deze zelfstudie leert u procedures om het volgende te doen:
+naar een [implementatiegroep](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups/index?view=vsts) die virtuele Linux-machines (VM's) bevat. Procedures voor:
 
 > [!div class="checklist"]
 > * De voorbeeld-app downloaden.
@@ -25,8 +25,8 @@ naar een [implementatiegroep](https://docs.microsoft.com/azure/devops/pipelines/
 > * Een Jenkins Freestyle-project configureren voor Node.js.
 > * Jenkins configureren voor de integratie met Azure DevOps Services.
 > * Een Jenkins-service-eindpunt maken.
-> * Een implementatiegroep voor de virtuele Azure-machines maken.
-> * Een release pijplijn voor een Azure-pijp lijn maken.
+> * Een implementatiegroep maakt voor de virtuele Azure-machines.
+> * Maak een Azure Pipelines release pipeline.
 > * Handmatige en door CI geactiveerde implementaties uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
@@ -96,9 +96,9 @@ Eerst moet u twee Jenkins-invoegtoepassingen configureren: **NodeJS** en **Conti
 5. Selecteer **Release activeren in TFS/Team Services**. Voer de URI voor uw Azure DevOps Services-organisatie in, bijvoorbeeld **https://{naam-van-uw-organisatie}.visualstudio.com**.
 6. Voer de naam van het **project** in.
 7. Kies een naam voor de release-pijplijn. (U maakt deze release-pijplijn later in Azure DevOps Services.)
-8. Kies referenties om verbinding te maken met uw Azure DevOps-Services of Azure DevOps Server omgeving:
+8. Kies referenties om verbinding te maken met uw Azure DevOps Services- of Azure DevOps Server-omgeving:
    - Laat **Gebruikersnaam** leeg als u Azure DevOps Services gebruikt. 
-   - Voer een gebruikers naam en wacht woord in als u een on-premises versie van Azure DevOps Server gebruikt.    
+   - Voer een gebruikersnaam en wachtwoord in als u een on-premises versie van Azure DevOps Server gebruikt.    
    ![Jenkins-acties na maken configureren](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Sla het Jenkins-project op.
 
@@ -124,7 +124,7 @@ U hebt een [implementatiegroep](https://www.visualstudio.com/docs/build/concepts
 
 1. Open het tabblad **Releases** van de hub **Release&amp; maken**, open **Implementatiegroepen** en selecteer **+ nieuw**.
 2. Geef een naam voor de implementatiegroep en een optionele beschrijving op. Selecteer vervolgens **Maken**.
-3. Kies het besturingssysteem voor de virtuele machine van uw implementatiedoel. Selecteer bijvoorbeeld **Ubuntu 16.04+** .
+3. Kies het besturingssysteem voor de virtuele machine van uw implementatiedoel. Selecteer bijvoorbeeld **Ubuntu 16.04+**.
 4. Selecteer **Een persoonlijk toegangstoken in het script gebruiken voor verificatie**.
 5. Selecteer de koppeling **Systeemvereisten**. Installeer de vereisten voor uw besturingssysteem.
 6. Selecteer **Script kopiëren naar Klembord** om het script te kopiëren.
@@ -132,7 +132,7 @@ U hebt een [implementatiegroep](https://www.visualstudio.com/docs/build/concepts
 8. Na de installatie wordt u gevraagd om implementatiegroepstags. Accepteer de standaardwaarden.
 9. Controleer in Azure DevOps Services uw zojuist geregistreerde virtuele machine in **Doelen** onder **Implementatiegroepen**.
 
-## <a name="create-an-azure-pipelines-release-pipeline"></a>Een release pijplijn voor een Azure-pijp lijn maken
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Een Azure Pipelines-releasepijplijn maken
 
 Met een release-pijplijn geeft u het proces op dat in Azure DevOps Services wordt gebruikt om de app te implementeren. In dit voorbeeld voert u een shellscript uit.
 
@@ -143,7 +143,7 @@ De release-pijplijn in Azure Pipelines maken:
 3. Selecteer in de sectie **Artefacten** de optie **+ artefacten toevoegen** en kies **Jenkins** voor **Brontype**. Selecteer de verbinding voor uw Jenkins-service-eindpunt. Selecteer vervolgens de Jenkins-brontaak en selecteer **Toevoegen**.
 4. Selecteer het beletselteken naast **Omgeving 1**. Selecteer **Implementatiegroepsfase toevoegen**.
 5. Kies uw implementatiegroep.
-5. Selecteer **+** als u een taak wilt toevoegen aan **Implementatiegroepsfase**.
+5. Selecteer **+** om een taak toe te voegen aan **de groepfase Implementatie**.
 6. Selecteer de taak **Shellscript** en selecteer **Toevoegen**. De taak **Shellscript** bevat de configuratie voor een script dat moet worden uitgevoerd op elke server om Node.js te installeren en de app te starten.
 8. Voor **Scriptpad** typt u **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh**.
 9. Selecteer **Geavanceerd**, en schakel vervolgens **Werkmap opgeven** in.
@@ -157,14 +157,14 @@ De release-pijplijn in Azure Pipelines maken:
 2. Selecteer de build die u hebt voltooid in de gemarkeerde vervolgkeuzelijst en selecteer **Wachtrij**.
 3. Kies de releasekoppeling in het pop-upbericht. Bijvoorbeeld: 'Release **Release 1** is gemaakt'.
 4. Open het tabblad **Logboeken** om de uitvoer van de releaseconsole te bekijken.
-5. Open in uw browser de URL van een van de servers die u hebt toegevoegd aan de implementatiegroep. Typ bijvoorbeeld **http://{ip-adres-van-uw-server}** .
+5. Open in uw browser de URL van een van de servers die u hebt toegevoegd aan de implementatiegroep. Typ bijvoorbeeld **http://{ip-adres-van-uw-server}**.
 6. Ga naar de Git-bronopslagplaats en wijzig de inhoud van de kop **h1** in het bestand app/views/index.jade met gewijzigde tekst.
 7. Voer uw wijziging door.
 8. Na een paar minuten ziet u dat er een nieuwe release is gemaakt op de pagina **Releases** van Azure DevOps. Open de release om te zien welke implementatie wordt uitgevoerd. Gefeliciteerd!
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Problemen met de Jenkins-invoegtoepassing oplossen
 
-Als u problemen ondervindt met de Jenkins-invoegtoepassingen, kunt u in [Jenkins JIRA](https://issues.jenkins-ci.org/) een ticket openen voor het specifieke onderdeel.
+Als u bugs tegenkomt met de Jenkins-plug-ins, dient u een probleem op in de [Jenkins JIRA](https://issues.jenkins-ci.org/) voor de specifieke component.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -173,12 +173,12 @@ In deze zelfstudie hebt u de implementatie van een app in Azure geautomatiseerd 
 > [!div class="checklist"]
 > * Uw app maakt in Jenkins.
 > * Jenkins configureren voor de integratie met Azure DevOps Services.
-> * Een implementatiegroep voor de virtuele Azure-machines maken.
-> * Maak een Azure-pijp lijn waarmee de Vm's worden geconfigureerd en de app wordt geïmplementeerd.
+> * Een implementatiegroep maakt voor de virtuele Azure-machines.
+> * Maak een Azure Pipeline die de VM's configureert en de app implementeert.
 
-Raadpleeg voor meer informatie over het gebruik van Azure-pijp lijnen voor zowel de build-als [de](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)release-procedure.
+Raadpleeg [dit](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)voor meer informatie over het gebruik van Azure Pipelines voor zowel stappen voor build en release .
 
-Ga verder met de volgende zelf studie voor meer informatie over het maken van een YAML CI/CD-pijp lijn om te implementeren op Vm's.
+Ga door naar de volgende zelfstudie voor meer informatie over het maken van een op YAML gebaseerde CI/CD-pijplijn om te implementeren in VM's.
 
 > [!div class="nextstepaction"]
 > [Jenkins op Azure](/azure/Jenkins/)

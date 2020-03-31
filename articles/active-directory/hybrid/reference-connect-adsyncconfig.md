@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: ADSyncConfig PowerShell Reference | Microsoft Docs'
+title: 'Azure AD Connect: ADSyncConfig PowerShell-referentie | Microsoft Documenten'
 description: Dit document bevat referentie-informatie voor de ADSyncConfig.psm1 PowerShell-module.
 author: billmath
 manager: daveba
@@ -11,20 +11,20 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381192"
 ---
-# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  ADSyncConfig PowerShell Reference
-De volgende documentatie bevat referentie-informatie voor de ADSyncConfig.psm1 PowerShell-Module die is opgenomen in Azure AD Connect.
+# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell-referentie
+De volgende documentatie bevat referentiegegevens voor de ADSyncConfig.psm1 PowerShell-module die is opgenomen in Azure AD Connect.
 
 
 ## <a name="get-adsyncadconnectoraccount"></a>Get-ADSyncADConnectorAccount
 
 ### <a name="synopsis"></a>SAMENVATTING
-Haalt de accountnaam en het domein dat is geconfigureerd in elk AD-Connector
+Hiermee krijgt u de accountnaam en het domein dat is geconfigureerd in elke AD-connector
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -33,7 +33,7 @@ Get-ADSyncADConnectorAccount
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Deze functie maakt gebruik van de cmdlet 'Get-ADSyncConnector' dat is opgenomen in het AAD Connect om op te halen van connectiviteit Parameters van een tabel met de AD connector (s)-account.
+Deze functie maakt gebruik van de cmdlet 'Get-ADSyncConnector' die aanwezig is in AAD Connect om uit Connectivity Parameters een tabel met het AD Connector-account(s) op te halen.
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -45,7 +45,7 @@ Get-ADSyncADConnectorAccount
 ## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-ADSyncObjectsWithInheritanceDisabled
 
 ### <a name="synopsis"></a>SAMENVATTING
-AD-objecten opgehaald met de overname van machtigingen is uitgeschakeld
+Hiermee wordt AD-objecten met overerving van machtigingen uitgeschakeld
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -54,7 +54,7 @@ Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] 
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Zoekt in de parameter SearchBase vanaf AD en retourneert alle objecten, gefilterd op de objectklasse-parameter met de overname van ACL op dit moment uitgeschakeld.
+Zoekt in AD vanaf de parameter SearchBase en retourneert alle objecten, gefilterd op objectklasse, waarop de ACL-overerving momenteel is uitgeschakeld.
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -82,7 +82,7 @@ Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=co
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-searchbase"></a>-SearchBase
-De SearchBase voor de LDAP-query die een DistinguishedName AD-domein of een FQDN-naam worden kan
+De SearchBase voor de LDAP-query die een onderscheiden AD-domein of een FQDN kan zijn
 
 ```yaml
 Type: String
@@ -96,8 +96,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-objectclass"></a>-ObjectClass
-De klasse van de objecten te zoeken die kan worden ' *' (voor elke objectklasse), 'user', 'groep', 'container', enzovoort. Deze functie wordt standaard zoeken voor de objectklasse 'organizationalUnit'.
+#### <a name="-objectclass"></a>-ObjectKlasse
+De klasse van de objecten die moeten zoeken en die '*' kunnen zijn (voor elke objectklasse), 'gebruiker', 'groep', 'container', enz. Standaard zoekt deze functie naar objectklasse 'organizationalUnit'.
 
 ```yaml
 Type: String
@@ -113,12 +113,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
-## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
+## <a name="set-adsyncbasicreadpermissions"></a>AdSyncBasicReadPermissions instellen
 
 ### <a name="synopsis"></a>SAMENVATTING
-Uw Active Directory-forest en domein voor eenvoudige lees-en schrijfmachtigingen worden geïnitialiseerd.
+Initialiseer uw Active Directory-forest en -domein voor basisleesmachtigingen.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -135,24 +135,24 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-De functie Set ADSyncBasicReadPermissions krijgt de vereiste machtigingen voor de AD-synchronisatie-account, waaronder de volgende:
+De functie Set-ADSyncBasicReadPermissions geeft vereiste machtigingen aan het AD-synchronisatieaccount, waaronder het volgende:
 1.
-Toegang van de eigenschap lezen op alle kenmerken voor alle onderliggende computerobjecten
+Toegang tot eigenschap lezen op alle kenmerken voor alle nakomelingcomputerobjecten
 2.
-Toegang van de eigenschap lezen op alle kenmerken voor alle onderliggende apparaatobjecten
+Toegang tot eigenschap lezen op alle kenmerken voor alle objecten van het nakomelingapparaat
 3.
-Eigenschap lezen-toegang op alle kenmerken voor alle onderliggende foreignsecurityprincipal objecten
+Toegang tot eigendom lezen op alle kenmerken voor alle nakomelende foreignsecurityprincipal-objecten
 5.
-Toegang van de eigenschap lezen op alle kenmerken voor alle onderliggende objecten
+Toegang tot eigenschap lezen op alle kenmerken voor alle gebruikersobjecten van afstammelingen
 6.
-Toegang van de eigenschap lezen op alle kenmerken voor alle onderliggende inetorgperson-objecten
+Eigenschapstoegang lezen op alle kenmerken voor alle afstammelinginetorgperson-objecten
 7.
-Toegang van de eigenschap lezen op alle kenmerken voor alle objecten van de onderliggende groep
+Eigenschapstoegang lezen op alle kenmerken voor alle afstammelingengroepobjecten
 8.
-Eigenschap lezen-toegang op alle kenmerken voor alle descendantobjecten contact op met
+Eigenschapstoegang lezen op alle kenmerken voor alle objecten met afstammelingencontact
 
 Deze machtigingen worden toegepast op alle domeinen in het forest.
-U kunt eventueel een DistinguishedName in ADobjectDN parameter voor het instellen van deze machtigingen voor die AD-Object alleen (inclusief overname sub-objecten) opgeven.
+Optioneel u een parameter DistinguishedName in ADobjectDN opgeven om deze machtigingen alleen op dat AD-object in te stellen (inclusief overerving naar subobjecten).
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -178,8 +178,8 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnecto
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-De naam van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountNaam
+De naam van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -193,8 +193,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Het domein van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomein
+Het domein van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-De DistinguishedName van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+De DistinguishedName van het Active Directory-account dat wordt of zal worden gebruikt door Azure AD Connect Sync om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName van het doelobject AD machtigingen in te stellen (optioneel)
+DistinguishedName van het doel-AD-object om machtigingen in te stellen (optioneel)
 
 ```yaml
 Type: String
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Optionele parameter om aan te geven als AdminSDHolder container niet met deze machtigingen moet worden bijgewerkt
+Optionele parameter om aan te geven of de container AdminSDHolder niet met deze machtigingen moet worden bijgewerkt
 
 ```yaml
 Type: SwitchParameter
@@ -254,7 +254,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-Geeft aan wat er gebeuren zou als de cmdlet wordt uitgevoerd.
+Hiermee wordt weergegeven wat er zou gebeuren als u de cmdlet uitvoert.
 De cmdlet wordt niet uitgevoerd.
 
 ```yaml
@@ -269,8 +269,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Controleer of
-Vraagt u om bevestiging voordat u de cmdlet uitvoert.
+#### <a name="-confirm"></a>-Confirm
+Hiermee wordt u gevraagd om bevestiging voordat u de cmdlet uitvoert.
 
 ```yaml
 Type: SwitchParameter
@@ -286,12 +286,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
-## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
+## <a name="set-adsyncexchangehybridpermissions"></a>Machtigingen voor ADSyncExchange-hybriden instellen
 
 ### <a name="synopsis"></a>SAMENVATTING
-Uw Active Directory-forest en domein voor de functie Hybride Exchange worden geïnitialiseerd.
+Initialiseer uw Active Directory-forest en -domein voor de functie Hybride exchange.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -308,18 +308,18 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-De functie Set ADSyncExchangeHybridPermissions krijgt de vereiste machtigingen voor de AD-synchronisatie-account, waaronder de volgende:
+De functie Set-ADSyncExchangeHybridPermissions geeft vereiste machtigingen aan het AD-synchronisatieaccount, waaronder het volgende:
 1.
-Eigenschap voor lezen/schrijven toegang op alle kenmerken voor alle onderliggende objecten
+Toegang tot de eigenschap Lezen/schrijven op alle kenmerken voor alle afstammelingengebruikersobjecten
 2.
-Toegang voor lezen/schrijven-eigenschap op alle kenmerken voor alle onderliggende inetorgperson-objecten
+Toegang tot de eigenschap Lezen/schrijven op alle kenmerken voor alle afstammelinginetorgperson-objecten
 3.
-Toegang voor lezen/schrijven-eigenschap op alle kenmerken voor alle objecten van de onderliggende groep
+Toegang tot de eigenschap Lezen/schrijven op alle kenmerken voor alle afstammelingengroepobjecten
 4.
-Eigenschap voor lezen/schrijven toegang op alle kenmerken voor alle onderliggende contact op met objecten
+Toegang tot de eigenschap Lezen/schrijven op alle kenmerken voor alle objecten met afstammelingencontact
 
 Deze machtigingen worden toegepast op alle domeinen in het forest.
-U kunt eventueel een DistinguishedName in ADobjectDN parameter voor het instellen van deze machtigingen voor die AD-Object alleen (inclusief overname sub-objecten) opgeven.
+Optioneel u een parameter DistinguishedName in ADobjectDN opgeven om deze machtigingen alleen op dat AD-object in te stellen (inclusief overerving naar subobjecten).
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -345,8 +345,8 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADCon
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-De naam van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountNaam
+De naam van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -360,8 +360,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Het domein van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomein
+Het domein van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -376,7 +376,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-De DistinguishedName van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+De DistinguishedName van het Active Directory-account dat wordt of zal worden gebruikt door Azure AD Connect Sync om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -391,7 +391,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName van het doelobject AD machtigingen in te stellen (optioneel)
+DistinguishedName van het doel-AD-object om machtigingen in te stellen (optioneel)
 
 ```yaml
 Type: String
@@ -406,7 +406,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Optionele parameter om aan te geven als AdminSDHolder container niet met deze machtigingen moet worden bijgewerkt
+Optionele parameter om aan te geven of de container AdminSDHolder niet met deze machtigingen moet worden bijgewerkt
 
 ```yaml
 Type: SwitchParameter
@@ -421,7 +421,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-Geeft aan wat er gebeuren zou als de cmdlet wordt uitgevoerd.
+Hiermee wordt weergegeven wat er zou gebeuren als u de cmdlet uitvoert.
 De cmdlet wordt niet uitgevoerd.
 
 ```yaml
@@ -436,8 +436,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Controleer of
-Vraagt u om bevestiging voordat u de cmdlet uitvoert.
+#### <a name="-confirm"></a>-Confirm
+Hiermee wordt u gevraagd om bevestiging voordat u de cmdlet uitvoert.
 
 ```yaml
 Type: SwitchParameter
@@ -453,12 +453,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
-## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
+## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Machtigingen voor ADSyncExchangeMailPublicFolder instellen
 
 ### <a name="synopsis"></a>SAMENVATTING
-Uw Active Directory-forest en domein voor openbare map Exchange Mail-functie worden geïnitialiseerd.
+Initialiseer uw Active Directory-forest en -domein voor de functie Openbare map van Exchange Mail.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -476,12 +476,12 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-De functie Set ADSyncExchangeMailPublicFolderPermissions krijgt de vereiste machtigingen voor de AD-synchronisatie-account, waaronder de volgende:
+De functie Machtigingen voor set-ADSyncExchangeMailPublicFoldergeeft vereiste machtigingen aan het AD-synchronisatieaccount, waaronder het volgende:
 1.
-Eigenschap lezen-toegang op alle kenmerken voor alle onderliggende publicfolder objecten
+Toegang tot eigenschap lezen op alle kenmerken voor alle objecten van de nakomeling openbare map
 
 Deze machtigingen worden toegepast op alle domeinen in het forest.
-U kunt eventueel een DistinguishedName in ADobjectDN parameter voor het instellen van deze machtigingen voor die AD-Object alleen (inclusief overname sub-objecten) opgeven.
+Optioneel u een parameter DistinguishedName in ADobjectDN opgeven om deze machtigingen alleen op dat AD-object in te stellen (inclusief overerving naar subobjecten).
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -507,8 +507,8 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnect
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-De naam van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountNaam
+De naam van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -522,8 +522,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Het domein van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomein
+Het domein van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -538,7 +538,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-De DistinguishedName van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+De DistinguishedName van het Active Directory-account dat wordt of zal worden gebruikt door Azure AD Connect Sync om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -553,7 +553,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName van het doelobject AD machtigingen in te stellen (optioneel)
+DistinguishedName van het doel-AD-object om machtigingen in te stellen (optioneel)
 
 ```yaml
 Type: String
@@ -568,7 +568,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Optionele parameter om aan te geven als AdminSDHolder container niet met deze machtigingen moet worden bijgewerkt
+Optionele parameter om aan te geven of de container AdminSDHolder niet met deze machtigingen moet worden bijgewerkt
 
 ```yaml
 Type: SwitchParameter
@@ -583,7 +583,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-Geeft aan wat er gebeuren zou als de cmdlet wordt uitgevoerd.
+Hiermee wordt weergegeven wat er zou gebeuren als u de cmdlet uitvoert.
 De cmdlet wordt niet uitgevoerd.
 
 ```yaml
@@ -598,8 +598,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Controleer of
-Vraagt u om bevestiging voordat u de cmdlet uitvoert.
+#### <a name="-confirm"></a>-Confirm
+Hiermee wordt u gevraagd om bevestiging voordat u de cmdlet uitvoert.
 
 ```yaml
 Type: SwitchParameter
@@ -615,12 +615,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
-## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
+## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Consistentieguidpermissions instellen-ADSyncMsDs
 
 ### <a name="synopsis"></a>SAMENVATTING
-Uw Active Directory-forest en domein voor mS-DS-ConsistencyGuid functie initialiseren.
+Initialiseer uw Active Directory-forest en -domein voor de mS-DS-ConsistencyGuid-functie.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -637,12 +637,12 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-De functie Set ADSyncMsDsConsistencyGuidPermissions krijgt de vereiste machtigingen voor de AD-synchronisatie-account, waaronder de volgende:
+De functie Set-ADSyncMsDsConsistencyGuidPermissions geeft vereiste machtigingen aan het AD-synchronisatieaccount, waaronder het volgende:
 1.
-Eigenschap voor lezen/schrijven toegang op mS-DS-ConsistencyGuid kenmerk voor alle onderliggende objecten
+Toegang tot de eigenschap Lezen/schrijven op het kenmerk mS-DS-ConsistencyGuid voor alle gebruikersobjecten van afstammelingen
 
 Deze machtigingen worden toegepast op alle domeinen in het forest.
-U kunt eventueel een DistinguishedName in ADobjectDN parameter voor het instellen van deze machtigingen voor die AD-Object alleen (inclusief overname sub-objecten) opgeven.
+Optioneel u een parameter DistinguishedName in ADobjectDN opgeven om deze machtigingen alleen op dat AD-object in te stellen (inclusief overerving naar subobjecten).
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -668,8 +668,8 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-De naam van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountNaam
+De naam van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -683,8 +683,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Het domein van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomein
+Het domein van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -699,7 +699,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-De DistinguishedName van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+De DistinguishedName van het Active Directory-account dat wordt of zal worden gebruikt door Azure AD Connect Sync om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -714,7 +714,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName van het doelobject AD machtigingen in te stellen (optioneel)
+DistinguishedName van het doel-AD-object om machtigingen in te stellen (optioneel)
 
 ```yaml
 Type: String
@@ -729,7 +729,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Optionele parameter om aan te geven als AdminSDHolder container niet met deze machtigingen moet worden bijgewerkt
+Optionele parameter om aan te geven of de container AdminSDHolder niet met deze machtigingen moet worden bijgewerkt
 
 ```yaml
 Type: SwitchParameter
@@ -744,7 +744,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-Geeft aan wat er gebeuren zou als de cmdlet wordt uitgevoerd.
+Hiermee wordt weergegeven wat er zou gebeuren als u de cmdlet uitvoert.
 De cmdlet wordt niet uitgevoerd.
 
 ```yaml
@@ -759,8 +759,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Controleer of
-Vraagt u om bevestiging voordat u de cmdlet uitvoert.
+#### <a name="-confirm"></a>-Confirm
+Hiermee wordt u gevraagd om bevestiging voordat u de cmdlet uitvoert.
 
 ```yaml
 Type: SwitchParameter
@@ -776,12 +776,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
 ### <a name="synopsis"></a>SAMENVATTING
-Uw Active Directory-forest en domein voor de wachtwoord-hashsynchronisatie worden geïnitialiseerd.
+Initialiseer uw Active Directory-forest en -domein voor wachtwoordhashsynchronisatie.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -797,13 +797,13 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-De functie Set ADSyncPasswordHashSyncPermissions krijgt de vereiste machtigingen voor de AD-synchronisatie-account, waaronder de volgende:
+De functie Set-ADSyncPasswordHashSyncPermissions geeft vereiste machtigingen aan het AD-synchronisatieaccount, waaronder het volgende:
 1.
-Directorywijzigingen repliceren
+Mapwijzigingen repliceren
 2.
-Alle Active Directory repliceren gewijzigd
+Mapwijzigingen repliceren Alles
 
-Deze machtigingen zijn opgegeven voor alle domeinen in het forest.
+Deze machtigingen worden gegeven aan alle domeinen in het forest.
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -819,8 +819,8 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=A
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-De naam van het Active Directory-account dat wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountNaam
+De naam van het Active Directory-account dat wordt gebruikt door Azure AD Connect Sync om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -834,8 +834,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Het domein van het Active Directory-account dat wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomein
+Het domein van het Active Directory-account dat wordt gebruikt door Azure AD Connect Sync om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -850,7 +850,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-De DistinguishedName van het Active Directory-account dat wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+De DistinguishedName van het Active Directory-account dat wordt gebruikt door Azure AD Connect Sync om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -865,7 +865,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-Geeft aan wat er gebeuren zou als de cmdlet wordt uitgevoerd.
+Hiermee wordt weergegeven wat er zou gebeuren als u de cmdlet uitvoert.
 De cmdlet wordt niet uitgevoerd.
 
 ```yaml
@@ -880,8 +880,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Controleer of
-Vraagt u om bevestiging voordat u de cmdlet uitvoert.
+#### <a name="-confirm"></a>-Confirm
+Hiermee wordt u gevraagd om bevestiging voordat u de cmdlet uitvoert.
 
 ```yaml
 Type: SwitchParameter
@@ -897,12 +897,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
 ### <a name="synopsis"></a>SAMENVATTING
-Uw Active Directory-forest en domein voor het terugschrijven van Azure AD worden geïnitialiseerd.
+Initialiseer uw Active Directory-forest en -domein voor het terugschrijven van wachtwoorden vanuit Azure AD.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -919,16 +919,16 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-De functie Set ADSyncPasswordWritebackPermissions krijgt de vereiste machtigingen voor de AD-synchronisatie-account, waaronder de volgende:
+De functie Set-ADSyncPasswordWritebackPermissions geeft vereiste machtigingen aan het AD-synchronisatieaccount, waaronder het volgende:
 1.
-Wachtwoord opnieuw instellen van onderliggende gebruikersobjecten
+Wachtwoord opnieuw instellen op gebruikersobjecten van afstammelingen
 2.
-De eigenschap schrijftoegang op lockoutTime kenmerk voor alle onderliggende objecten
+Eigenschapstoegang schrijven op het kenmerk LockoutTime voor alle gebruikersobjecten van afstammelingen
 3.
-De eigenschap schrijftoegang op pwdLastSet kenmerk voor alle onderliggende objecten
+Eigenschapstoegang schrijven op het kenmerk PWDLastSet voor alle gebruikersobjecten van afstammelingen
 
 Deze machtigingen worden toegepast op alle domeinen in het forest.
-U kunt eventueel een DistinguishedName in ADobjectDN parameter voor het instellen van deze machtigingen voor die AD-Object alleen (inclusief overname sub-objecten) opgeven.
+Optioneel u een parameter DistinguishedName in ADobjectDN opgeven om deze machtigingen alleen op dat AD-object in te stellen (inclusief overerving naar subobjecten).
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -954,8 +954,8 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -AD
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-De naam van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountNaam
+De naam van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -969,8 +969,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Het domein van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomein
+Het domein van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -985,7 +985,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-De DistinguishedName van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+De DistinguishedName van het Active Directory-account dat wordt of zal worden gebruikt door Azure AD Connect Sync om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -1000,7 +1000,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName van het doelobject AD machtigingen in te stellen (optioneel)
+DistinguishedName van het doel-AD-object om machtigingen in te stellen (optioneel)
 
 ```yaml
 Type: String
@@ -1015,7 +1015,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Optionele parameter om aan te geven als AdminSDHolder container niet met deze machtigingen moet worden bijgewerkt
+Optionele parameter om aan te geven of de container AdminSDHolder niet met deze machtigingen moet worden bijgewerkt
 
 ```yaml
 Type: SwitchParameter
@@ -1030,7 +1030,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-Geeft aan wat er gebeuren zou als de cmdlet wordt uitgevoerd.
+Hiermee wordt weergegeven wat er zou gebeuren als u de cmdlet uitvoert.
 De cmdlet wordt niet uitgevoerd.
 
 ```yaml
@@ -1045,8 +1045,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Controleer of
-Vraagt u om bevestiging voordat u de cmdlet uitvoert.
+#### <a name="-confirm"></a>-Confirm
+Hiermee wordt u gevraagd om bevestiging voordat u de cmdlet uitvoert.
 
 ```yaml
 Type: SwitchParameter
@@ -1062,14 +1062,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
-## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
+## <a name="set-adsyncrestrictedpermissions"></a>Machtigingen voor SET-ADSyncRestrictedS
 
 ### <a name="synopsis"></a>SAMENVATTING
-De machtigingen van een AD-object dat niet anders is opgenomen in een beveiligde AD-beveiligingsgroep uitbreiden.
-Een typisch voorbeeld is de AD Connect-account (MSOL) automatisch gemaakt door AAD Connect.
-Dit account heeft repliceren machtigingen voor alle domeinen, maar kan worden tamelijk eenvoudig als het niet is beveiligd.
+Verscherp machtigingen voor een AD-object dat anders niet is opgenomen in een ad-beveiligde beveiligingsgroep.
+Een typisch voorbeeld is het AD Connect-account (MSOL) dat door AAD Connect automatisch is gemaakt.
+Dit account heeft repliceren machtigingen op alle domeinen, maar kan gemakkelijk worden gecompromitteerd als het niet is beschermd.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -1079,15 +1079,15 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-De functie Set ADSyncRestrictedPermissions wordt webserverbeheerders oo machtigingen voor het account dat is opgegeven.
-Machtigingen verstrakking omvat de volgende stappen:
+De functie Set-ADSyncRestrictedPermissions scherpt de machtigingen aan die het opgegeven account hebben.
+Het aanscherpen van machtigingen omvat de volgende stappen:
 1.
-Overname in het opgegeven object uitschakelen
+Overerving op het opgegeven object uitschakelen
 2.
-Verwijder alle ACE's op het specifieke object, met uitzondering van ACE's die specifiek zijn voor zelf.
-We willen de standaardmachtigingen behouden als het gaat om zelf.
+Verwijder alle AME's op het specifieke object, met uitzondering van AME's die specifiek zijn voor SELF.
+We willen de standaard machtigingen intact te houden als het gaat om SELF.
 3.
-Deze specifieke machtigingen toewijzen:
+Wijs deze specifieke machtigingen toe:
 
         Type    Name                                        Access              Applies To
         =============================================================================================
@@ -1114,8 +1114,8 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN "CN=TestAccount1,CN=Users,
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName van het Active Directory-account waarvan de machtigingen wilt hoger worden ingesteld.
-Dit is meestal de MSOL_nnnnnnnnnn of een aangepast domein-account dat is geconfigureerd in uw AD-Connector.
+DistinguishedName van het Active Directory-account waarvan de machtigingen moeten worden aangescherpt.
+Dit is meestal het MSOL_nnnnnnnnnn-account of een aangepast domeinaccount dat is geconfigureerd in uw AD-connector.
 
 ```yaml
 Type: String
@@ -1130,7 +1130,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-credential"></a>-Credential
-Beheerdersreferentie waarvoor de vereiste bevoegdheden beschikt om de machtigingen voor het account ADConnectorAccountDN te beperken. Dit is meestal de beheerder van de Enterprise- of -domein. Gebruik de volledig gekwalificeerde domeinnaam van het administrator-account om te voorkomen dat account opzoeken fouten.
+Beheerdersreferenties die de nodige bevoegdheden hebben om de machtigingen voor het ADConnectorAccountDN-account te beperken. Dit is meestal de Enterprise- of Domeinbeheerder. Gebruik de volledig gekwalificeerde domeinnaam van het beheerdersaccount om fouten in het opzoeken van accounts te voorkomen.
 Voorbeeld: CONTOSO\admin
 
 ```yaml
@@ -1145,8 +1145,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-disablecredentialvalidation"></a>-DisableCredentialValidation
-Wanneer DisableCredentialValidation wordt gebruikt, wordt de functie wordt niet gecontroleerd als de referenties die zijn opgegeven in - referenties zijn geldig in AD en of het opgegeven account heeft de machtigingen die nodig zijn om de machtigingen voor het account ADConnectorAccountDN te beperken.
+#### <a name="-disablecredentialvalidation"></a>-CredentialValidation uitschakelen
+Wanneer DisableCredentialValidation wordt gebruikt, controleert de functie niet of de referenties die zijn opgegeven in -Referentie geldig zijn in AD en of het opgegeven account de nodige bevoegdheden heeft om de machtigingen op het ADConnectorAccountDN-account te beperken.
 
 ```yaml
 Type: SwitchParameter
@@ -1161,7 +1161,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-Geeft aan wat er gebeuren zou als de cmdlet wordt uitgevoerd.
+Hiermee wordt weergegeven wat er zou gebeuren als u de cmdlet uitvoert.
 De cmdlet wordt niet uitgevoerd.
 
 ```yaml
@@ -1176,8 +1176,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Controleer of
-Vraagt u om bevestiging voordat u de cmdlet uitvoert.
+#### <a name="-confirm"></a>-Confirm
+Hiermee wordt u gevraagd om bevestiging voordat u de cmdlet uitvoert.
 
 ```yaml
 Type: SwitchParameter
@@ -1193,12 +1193,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
 ### <a name="synopsis"></a>SAMENVATTING
-Uw Active Directory-forest en domein voor write-back van groep van Azure AD worden geïnitialiseerd.
+Initialiseer uw Active Directory-forest en -domein voor groepsterugschrijven vanuit Azure AD.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -1215,13 +1215,13 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-De functie Set ADSyncUnifiedGroupWritebackPermissions krijgt de vereiste machtigingen voor de AD-synchronisatie-account, waaronder de volgende:
+De functie Set-ADSyncUnifiedGroupWritebackPermissions geeft vereiste machtigingen voor het AD-synchronisatieaccount, waaronder het volgende:
 1.
-Algemene lezen/schrijven, verwijderen, structuur verwijderen en Create\Delete onderliggende voor alle objecttypen en subobjecten groeperen
+Algemene teksttekst lezen/schrijven, verwijderen, structuur verwijderen en onderliggend verwijderen voor alle typen groepsobject en subobjecten
 
 Deze machtigingen worden toegepast op alle domeinen in het forest.
-U kunt eventueel een DistinguishedName in ADobjectDN parameter voor het instellen van deze machtigingen voor die AD-Object alleen (inclusief overname sub-objecten) opgeven.
-In dit geval worden ADobjectDN de DN-naam van de Container die u wenst te koppelen met de functie GroupWriteback.
+Optioneel u een parameter DistinguishedName in ADobjectDN opgeven om deze machtigingen alleen op dat AD-object in te stellen (inclusief overerving naar subobjecten).
+In dit geval is ADobjectDN de distinguished name of the Container die u wilt koppelen aan de GroupWriteback-functie.
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -1247,8 +1247,8 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector'
 
 ### <a name="parameters"></a>PARAMETERS
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-De naam van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountNaam
+De naam van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -1262,8 +1262,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Het domein van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+#### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomein
+Het domein van het Active Directory-account dat door Azure AD Connect Sync wordt of zal worden gebruikt om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -1278,7 +1278,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-De DistinguishedName van het Active Directory-account dat is of wordt gebruikt door Azure AD Connect Sync om objecten in de directory te beheren.
+De DistinguishedName van het Active Directory-account dat wordt of zal worden gebruikt door Azure AD Connect Sync om objecten in de map te beheren.
 
 ```yaml
 Type: String
@@ -1293,7 +1293,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-DistinguishedName van het doelobject AD machtigingen in te stellen (optioneel)
+DistinguishedName van het doel-AD-object om machtigingen in te stellen (optioneel)
 
 ```yaml
 Type: String
@@ -1308,7 +1308,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-Optionele parameter om aan te geven als AdminSDHolder container niet met deze machtigingen moet worden bijgewerkt
+Optionele parameter om aan te geven of de container AdminSDHolder niet met deze machtigingen moet worden bijgewerkt
 
 ```yaml
 Type: SwitchParameter
@@ -1323,7 +1323,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-Geeft aan wat er gebeuren zou als de cmdlet wordt uitgevoerd.
+Hiermee wordt weergegeven wat er zou gebeuren als u de cmdlet uitvoert.
 De cmdlet wordt niet uitgevoerd.
 
 ```yaml
@@ -1338,8 +1338,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Controleer of
-Vraagt u om bevestiging voordat u de cmdlet uitvoert.
+#### <a name="-confirm"></a>-Confirm
+Hiermee wordt u gevraagd om bevestiging voordat u de cmdlet uitvoert.
 
 ```yaml
 Type: SwitchParameter
@@ -1355,12 +1355,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .
 
-## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
+## <a name="show-adsyncadobjectpermissions"></a>Toon-ADSyncADObjectMachtigingen
 
 ### <a name="synopsis"></a>SAMENVATTING
-Ziet u de machtigingen van een opgegeven AD-object.
+Hiermee worden machtigingen van een opgegeven AD-object weergegeven.
 
 ### <a name="syntax"></a>SYNTAXIS
 
@@ -1369,8 +1369,8 @@ Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>BESCHRIJVING
-Deze functie retourneert alle AD-machtigingen die momenteel is ingesteld voor een bepaald AD-object dat is opgegeven in de parameter - ADobjectDN.
-De ADobjectDN moet worden opgegeven in een indeling DistinguishedName.
+Met deze functie worden alle AD-machtigingen geretourneerd die momenteel zijn ingesteld voor een bepaald AD-object dat is opgegeven in de parameter -ADobjectDN.
+De ADobjectDN moet worden geleverd in een DistinguishedName-indeling.
 
 ### <a name="examples"></a>VOORBEELDEN
 
@@ -1382,7 +1382,7 @@ Show-ADSyncADObjectPermissions -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-{{Fill ADobjectDN Description}}
+{{ADobjectDN-beschrijving invullen}}
 
 ```yaml
 Type: String
@@ -1398,4 +1398,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Deze cmdlet biedt ondersteuning voor de meest gebruikte parameters: -Debug, - ErrorAction, - ErrorVariable, - InformationAction, -InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable - Verbose, - WarningAction en -WarningVariable.
-Zie about_CommonParameters voor meer informatie (https://go.microsoft.com/fwlink/?LinkID=113216).
+Zie about_CommonParameters voor meerhttps://go.microsoft.com/fwlink/?LinkID=113216)informatie .

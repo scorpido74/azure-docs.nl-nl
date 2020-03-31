@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Microsoft Azure Data Box Disk | Microsoft Docs in gegevens
-description: Beschrijft Azure Data Box Disk, een cloudoplossing waarmee u grote hoeveelheden gegevens naar Azure kunt overdragen.
+description: Beschrijft Azure Data Box Disk, een cloudoplossing waarmee u grote hoeveelheden gegevens aan Azure kunt overdragen
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,10 +10,10 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240728"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Wat is Azure Data Box Disk?
@@ -84,12 +84,12 @@ Ga naar [Azure Data Box Disk-beveiliging en -gegevensbescherming](data-box-disk-
 | Gegevensinterface                                          | USB   |
 | Beveiliging                                                | Vooraf versleuteld met BitLocker en beveiligde updates <br> Met wachtwoordsleutels beschermde schijven <br> Gegevens altijd versleuteld  |
 | Overdrachtssnelheid                                      | tot 430 MBps, afhankelijk van de bestandsgrootte      |
-|Beheer                                               | Azure-portal |
+|Beheer                                               | Azure Portal |
 
 
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
-Voor informatie over de beschik baarheid van regio's gaat u naar [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk kan ook in de Azure Government Cloud worden geïmplementeerd. Zie [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)voor meer informatie.
+Ga voor informatie over de beschikbaarheid van regio's naar [Azure-producten die beschikbaar zijn per regio.](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) Data Box Disk kan ook worden geïmplementeerd in de Azure Government Cloud. Zie [Wat is Azure-overheid voor](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)meer informatie?
 
 
 ## <a name="pricing"></a>Prijzen
@@ -98,6 +98,6 @@ Ga naar de [pagina met prijzen](https://azure.microsoft.com/pricing/details/data
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- De [Vereisten voor Data Box Disk](data-box-disk-system-requirements.md) bekijken.
+- Raadpleeg de [Vereisten voor Data Box](data-box-disk-system-requirements.md).
 - De [Limieten voor Data Box Disk](data-box-disk-limits.md) begrijpen.
 - Snel [Azure Data Box Disk](data-box-disk-quickstart-portal.md) in Azure Portal implementeren.

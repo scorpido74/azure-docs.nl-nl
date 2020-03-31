@@ -1,39 +1,36 @@
 ---
-title: Query's uitvoeren op Shard-data bases
-description: Query's uitvoeren op Shards met behulp van de client bibliotheek voor Elastic data base.
+title: Geshard databases voor query's
+description: Voer query's uit over shards met behulp van de elastische databaseclientbibliotheek.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 6458b52e707b7e4c11fe8b501f3393e1009a748c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ae14a9fd8fc8479eac596fb694e12e3e0a9027f5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067300"
 ---
-# <a name="multi-shard-querying-using-elastic-database-tools"></a>Multi-Shard query's uitvoeren met behulp van Elastic data base-hulpprogram ma's
+# <a name="multi-shard-querying-using-elastic-database-tools"></a>Multi-shard query's met behulp van elastische databasetools
 
 ## <a name="overview"></a>Overzicht
 
-Met de [Elastic database-hulpprogram ma's](sql-database-elastic-scale-introduction.md)kunt u Shard-database oplossingen maken. **Query's voor meerdere Shard** worden gebruikt voor taken zoals het verzamelen/rapporteren van gegevens waarvoor een query moet worden uitgevoerd die over meerdere Shards wordt uitgerekt. (Dit is in tegens telling tot [gegevens afhankelijke route ring](sql-database-elastic-scale-data-dependent-routing.md), waardoor alle werk wordt uitgevoerd op één Shard.)
+Met de [tools Elastic Database](sql-database-elastic-scale-introduction.md)u geshard databaseoplossingen maken. **Multi-shard query's** worden gebruikt voor taken zoals het verzamelen/rapporteren van gegevens waarvoor een query moet worden uitgevoerd die zich uitstrekt over verschillende shards. (Contrast dit met [gegevensafhankelijke routering](sql-database-elastic-scale-data-dependent-routing.md), die alle werkzaamheden op één enkele shard uitvoert.)
 
-1. U kunt een **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) of **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.net) ontvangen](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)met behulp van de **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), de **TryGetListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [ .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)) of de **GetShardMap** -methode ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)). Zie [een ShardMapManager maken](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) en [een RangeShardMap of ListShardMap ophalen](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
-2. Maak een **MultiShardConnection** -object ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)).
-3. Maak een **MultiShardStatement of MultiShardCommand** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)).
-4. Stel de **eigenschap CommandText** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) in op een T-SQL-opdracht.
-5. Voer de opdracht uit door de methode **ExecuteQueryAsync of ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)) aan te roepen.
-6. Bekijk de resultaten met behulp van de klasse **MultiShardResultSet of MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)).
+1. Ontvang een **RangeShardMap** ([Java,](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap) [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1)) of **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.listshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.listshardmap-1)) met behulp van de **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetrangeshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap)), de **TryGetListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.trygetlistshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap)), of de **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getshardmap), [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap)) methode. Zie [Een ShardMapManager maken](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) en een [RangeShardMap of ListShardMap opmaken](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
+2. Maak een **object MultiShardConnection** [(Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardconnection), [.NET).](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection)
+3. Een **MultiShardStatement of MultiShardCommand** [(Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET) maken.](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)
+4. Stel de **eigenschap CommandText** [(Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement), [.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)in op een opdracht T-SQL.
+5. Voer de opdracht uit door de methode **ExecuteQueryAsync of ExecuteReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardstatement.executeQueryAsync), [.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand)aan te roepen.
+6. Bekijk de resultaten met de klasse **MultiShardResultSet of MultiShardDataReader** [(Java](/java/api/com.microsoft.azure.elasticdb.query.multishard.multishardresultset), [.NET).](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader)
 
 ## <a name="example"></a>Voorbeeld
 
-De volgende code illustreert het gebruik van meerdere Shard query's met behulp van een bepaalde **ShardMap** met de naam *myShardMap*.
+De volgende code illustreert het gebruik van multi-shard query's met behulp van een bepaalde **ShardMap** genaamd *myShardMap*.
 
 ```csharp
 using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards(), myShardConnectionString))
@@ -58,14 +55,14 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 }
 ```
 
-Een belang rijk verschil is het bouwen van multi-Shard-verbindingen. Waar **SqlConnection** op een afzonderlijke data base werkt, gebruikt de **MultiShardConnection** een ***verzameling Shards*** als invoer. Vul de verzameling Shards van een Shard-kaart in. De query wordt vervolgens uitgevoerd op de verzameling van Shards met behulp van **Union alle** semantiek voor het samen stellen van één geheel resultaat. Optioneel, de naam van de Shard waarvan de rij afkomstig is, kan worden toegevoegd aan de uitvoer met behulp van de eigenschap **ExecutionOptions** op de opdracht.
+Een belangrijk verschil is de aanleg van multi-shard verbindingen. Waar **SqlConnection** werkt op een individuele database, neemt de **MultiShardConnection** een ***verzameling scherven*** als invoer. Bevolk de verzameling scherven van een shardkaart. De query wordt vervolgens uitgevoerd op het verzamelen van scherven met behulp van **UNION ALL** semantiek om een enkel totaalresultaat samen te stellen. Optioneel kan de naam van de scherf waar de rij vandaan komt aan de uitvoer worden toegevoegd met behulp van de eigenschap **ExecutionOptions** op opdracht.
 
-Let op de aanroep van **myShardMap. GetShards ()** . Deze methode haalt alle Shards op uit de Shard-kaart en biedt een eenvoudige manier om een query uit te voeren op alle relevante data bases. De verzameling Shards voor een query met meerdere Shard kan worden verfijnd door een LINQ-query uit te voeren op de verzameling die wordt geretourneerd door de aanroep van **myShardMap. GetShards ()** . In combi natie met het gedeeltelijke resultaten beleid is de huidige mogelijkheid in query's met meerdere Shard ontworpen om goed te werken voor tien tallen tot honderden Shards.
+Let op de oproep naar **myShardMap.GetShards()**. Deze methode haalt alle scherven uit de shardkaart en biedt een eenvoudige manier om een query uit te voeren in alle relevante databases. De verzameling scherven voor een multi-shardquery kan verder worden verfijnd door een LINQ-query uit te voeren over de verzameling die is geretourneerd van de oproep naar **myShardMap.GetShards()**. In combinatie met het beleid voor gedeeltelijke resultaten is de huidige mogelijkheid voor multi-shardquery's ontworpen om goed te werken voor tientallen tot honderden scherven.
 
-Een beperking met meerdere Shard query's is momenteel het ontbreken van validatie voor Shards en shardlets die worden opgevraagd. Hoewel gegevens afhankelijke route ring verifieert dat een bepaalde Shard deel uitmaakt van de Shard-kaart op het moment van query's, voert multi-Shard-query's deze controle niet uit. Dit kan leiden tot query's voor meerdere Shard die worden uitgevoerd op data bases die zijn verwijderd uit de Shard-toewijzing.
+Een beperking met multi-shard query's is momenteel het ontbreken van validatie voor shards en shardlets die worden opgevraagd. Terwijl gegevensafhankelijke routering controleert of een bepaalde shard deel uitmaakt van de shardkaart op het moment van query's, voeren multishardquery's deze controle niet uit. Dit kan leiden tot multi-shard query's die worden uitgevoerd op databases die zijn verwijderd uit de shardkaart.
 
-## <a name="multi-shard-queries-and-split-merge-operations"></a>Multi-Shard query's en Split-Merge-bewerkingen
+## <a name="multi-shard-queries-and-split-merge-operations"></a>Multi-shardquery's en gesplitste samenvoegbewerkingen
 
-Query's met meerdere Shard controleren niet of shardlets op de opgevraagde data base deel nemen aan actieve Split-Merge-bewerkingen. (Zie [schalen met behulp van het Elastic database hulp programma voor splitsen en samen voegen](sql-database-elastic-scale-overview-split-and-merge.md).) Dit kan leiden tot inconsistenties waarbij rijen uit dezelfde shardlet worden weer gegeven voor meerdere data bases in dezelfde multi-Shard-query. Houd rekening met deze beperkingen en overweeg om doorlopende Split-Merge-bewerkingen en wijzigingen aan de Shard-kaart uit te voeren tijdens het uitvoeren van query's voor meerdere Shard.
+Multi-shardquery's controleren niet of shardlets in de opgevraagde database deelnemen aan lopende split-merge-bewerkingen. (Zie [Schalen met het gereedschap Gesplitst samenvoegen van elastic database](sql-database-elastic-scale-overview-split-and-merge.md).) Dit kan leiden tot inconsistenties waarbij rijen van dezelfde shardlet worden weergegeven voor meerdere databases in dezelfde multi-shardquery. Wees u bewust van deze beperkingen en overweeg lopende split-merge-bewerkingen en wijzigingen in de shardmap af te voeren tijdens het uitvoeren van multi-shardquery's.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: Scoped Synchronization for Azure AD Domain Services | Microsoft Docs
-description: Meer informatie over het configureren van een scoped synchronisatie vanuit Azure AD naar een door Azure Active Directory Domain Services beheerd domein
+title: Scoped-synchronisatie voor Azure AD-domeinservices | Microsoft Documenten
+description: Meer informatie over het configureren van scoped-synchronisatie van Azure AD naar een beheerd Azure Active Directory Domain Services-domein
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,85 +12,85 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
 ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613044"
 ---
-# <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Scoped Synchronization from Azure AD to Azure Active Directory Domain Services configureren
+# <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Scoped synchronisatie configureren van Azure AD naar Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (Azure AD DS) om verificatie services te bieden, synchroniseert gebruikers en groepen van Azure AD. In een hybride omgeving kunnen gebruikers en groepen van een on-premises Active Directory Domain Services-omgeving (AD DS) eerst worden gesynchroniseerd met Azure AD met behulp van Azure AD Connect en vervolgens worden gesynchroniseerd met Azure AD DS.
+Azure Active Directory Domain Services (Azure AD DS) synchroniseert gebruikers en groepen vanuit Azure AD om verificatieservices te bieden. In een hybride omgeving kunnen gebruikers en groepen uit een on-premises AD DS-omgeving (Active Directory Domain Services) eerst worden gesynchroniseerd met Azure AD met Azure AD Connect en vervolgens worden gesynchroniseerd met Azure AD DS.
 
-Standaard worden alle gebruikers en groepen van een Azure AD-Directory gesynchroniseerd met een door Azure AD DS beheerd domein. Als u specifieke vereisten hebt, kunt u in plaats daarvan ervoor kiezen om alleen een gedefinieerde set gebruikers te synchroniseren.
+Standaard worden alle gebruikers en groepen uit een Azure AD-map gesynchroniseerd met een door Azure AD DS beheerd domein. Als u specifieke behoeften hebt, u er in plaats daarvan voor kiezen om alleen een gedefinieerde set gebruikers te synchroniseren.
 
-In dit artikel wordt beschreven hoe u een door Azure AD DS beheerd domein maakt dat gebruikmaakt van een synchronisatie met een scope en vervolgens de set gebruikers met een bereik wijzigt of uitschakelt.
+In dit artikel ziet u hoe u een door Azure AD DS beheerd domein maakt dat scoped-synchronisatie gebruikt en vervolgens de set scoped-gebruikers wijzigt of uitschakelt.
 
-## <a name="scoped-synchronization-overview"></a>Overzicht van scoped Synchronization
+## <a name="scoped-synchronization-overview"></a>Overzicht van scoped-synchronisatie
 
-Standaard worden alle gebruikers en groepen van een Azure AD-Directory gesynchroniseerd met een door Azure AD DS beheerd domein. Als slechts een paar gebruikers toegang nodig hebben tot het beheerde domein, kunt u alleen die gebruikers accounts synchroniseren. Deze synchronisatie met een bereik is gebaseerd op een groep. Wanneer u synchronisatie op basis van een groeps bereik configureert, worden alleen de gebruikers accounts die deel uitmaken van de groepen die u opgeeft gesynchroniseerd met het door Azure AD DS beheerde domein.
+Standaard worden alle gebruikers en groepen uit een Azure AD-map gesynchroniseerd met een door Azure AD DS beheerd domein. Als slechts een paar gebruikers toegang nodig hebben tot het beheerde domein, u alleen die gebruikersaccounts synchroniseren. Deze scoped synchronisatie is groepsgebaseerd. Wanneer u groepssynchronisatie op basis van scope configureert, worden alleen de gebruikersaccounts die behoren tot de groepen die u opgeeft, gesynchroniseerd met het door Azure AD DS beheerde domein.
 
-De volgende tabel bevat een overzicht van het gebruik van scoped Synchronization:
+In de volgende tabel wordt beschreven hoe u scoped-synchronisatie gebruiken:
 
-| Huidige status | Gewenste status | Vereiste configuratie |
+| Huidige status | Gewenste staat | Vereiste configuratie |
 | --- | --- | --- |
-| Een bestaand beheerd domein is geconfigureerd voor het synchroniseren van alle gebruikers accounts en-groepen. | U wilt alleen gebruikers accounts synchroniseren die deel uitmaken van specifieke groepen. | U kunt niet wijzigen van het synchroniseren van alle gebruikers naar het gebruik van scoped synchronisatie. [Verwijder het bestaande beheerde domein](delete-aadds.md)en volg de stappen in dit artikel om een Azure AD DS beheerd domein met scoped Synchronization opnieuw te maken. |
-| Geen bestaand beheerd domein. | U wilt een nieuw beheerd domein maken en alleen gebruikers accounts synchroniseren die tot specifieke groepen behoren. | Volg de stappen in dit artikel om een door Azure AD DS beheerd domein te maken waarin de synchronisatie met scoped is geconfigureerd. |
-| Een bestaand beheerd domein is geconfigureerd voor het synchroniseren van alleen accounts die deel uitmaken van specifieke groepen. | U wilt de lijst met groepen wijzigen waarvan gebruikers moeten worden gesynchroniseerd met het door Azure AD DS beheerde domein. | Volg de stappen in dit artikel om scoped Synchronization te wijzigen. |
+| Een bestaand beheerd domein is geconfigureerd om alle gebruikersaccounts en -groepen te synchroniseren. | U wilt alleen gebruikersaccounts synchroniseren die deel uitmaken van specifieke groepen. | U niet veranderen van het synchroniseren van alle gebruikers naar het gebruik van scoped synchronization. [Verwijder het bestaande beheerde domein](delete-aadds.md)en volg vervolgens de stappen in dit artikel om opnieuw een door Azure AD DS beheerd domein te maken met scoped synchronisatie geconfigureerd. |
+| Geen bestaand beheerd domein. | U wilt een nieuw beheerd domein maken en alleen gebruikersaccounts van specifieke groepen synchroniseren. | Volg de stappen in dit artikel om een door Azure AD DS beheerd domein te maken met scoped synchronisatie geconfigureerd. |
+| Een bestaand beheerd domein is geconfigureerd om alleen accounts te synchroniseren die deel uitmaken van specifieke groepen. | U wilt de lijst met groepen wijzigen waarvan de gebruikers moeten worden gesynchroniseerd met het beheerde Azure AD DS-domein. | Volg de stappen in dit artikel om scoped synchronisatie te wijzigen. |
 
-Met de Azure Portal of Power shell kunt u de scoped synchronisatie-instellingen configureren:
+U gebruikt de Azure-portal of PowerShell om de synchronisatie-instellingen voor scopen te configureren:
 
-| Bewerking | | |
+| Actie | | |
 |--|--|--|
-| Een door Azure AD DS beheerd domein maken en een synchronisatie met een scope configureren | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
-| Scoped synchronisatie wijzigen | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
-| Scoped synchronisatie uitschakelen | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
+| Een door Azure AD DS beheerd domein maken en scoped synchronisatie configureren | [Azure-portal](#enable-scoped-synchronization-using-the-azure-portal) | [Powershell](#enable-scoped-synchronization-using-powershell) |
+| Scoped-synchronisatie wijzigen | [Azure-portal](#modify-scoped-synchronization-using-the-azure-portal) | [Powershell](#modify-scoped-synchronization-using-powershell) |
+| Scoped-synchronisatie uitschakelen | [Azure-portal](#disable-scoped-synchronization-using-the-azure-portal) | [Powershell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> Als u het synchronisatie bereik wijzigt, wordt het door Azure AD DS beheerde domein om alle gegevens opnieuw te synchroniseren.
+> Als u het synchronisatiebereik wijzigt, wordt het beheerde Azure AD DS-domein opnieuw gesynchroniseerd.
 > 
->  * Wanneer u het synchronisatie bereik voor een door Azure AD DS beheerd domein wijzigt, wordt een volledige hersynchronisatie uitgevoerd.
->  * Objecten die niet meer nodig zijn in het door Azure AD DS beheerde domein worden verwijderd. Nieuwe objecten worden gemaakt in het beheerde domein.
->  * Het kan enige tijd duren voordat de synchronisatie is voltooid. De synchronisatie tijd is afhankelijk van het aantal objecten, zoals gebruikers, groepen en groepslid maatschappen in de Azure AD DS beheerde domein en Azure AD-adres lijst. Voor grote mappen met veel honderd duizenden objecten kan het enkele dagen duren voordat de synchronisatie is uitgevoerd.
+>  * Wanneer u het synchronisatiebereik voor een door Azure AD DS beheerd domein wijzigt, vindt een volledige resynchronisatie plaats.
+>  * Objecten die niet langer nodig zijn in het beheerde Azure AD DS-domein, worden verwijderd. Er worden nieuwe objecten gemaakt in het beheerde domein.
+>  * Opnieuw synchroniseren kan lang duren. De synchronisatietijd is afhankelijk van het aantal objecten, zoals gebruikers, groepen en groepslidmaatschappen in het azure AD DS-beheerde domein en de Azure AD-map. Voor grote mappen met vele honderdduizenden objecten kan opnieuw worden gesanerd, een paar dagen opnieuw worden gesynchroniseerd.
 
-## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Scoped synchronisatie inschakelen met behulp van de Azure Portal
+## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Scoped-synchronisatie inschakelen met de Azure-portal
 
-1. Volg de [zelf studie voor het maken en configureren van een Azure AD DS-exemplaar](tutorial-create-instance-advanced.md). Voer alle vereisten en implementatie stappen uit, anders dan voor synchronisatie bereik.
-1. Kies **scoped** bij de synchronisatie stap en selecteer vervolgens de Azure ad-groepen die u wilt synchroniseren met het Azure AD DS-exemplaar.
+1. Volg de [zelfstudie om een Azure AD DS-exemplaar te maken en te configureren.](tutorial-create-instance-advanced.md) Voer alle vereisten en implementatiestappen uit, behalve voor synchronisatiebereik.
+1. Kies **Scoped** bij de synchronisatiestap en selecteer vervolgens de Azure AD-groepen die u wilt synchroniseren met het Azure AD DS-exemplaar.
 
-De Azure AD DS Managed Domain kan tot een uur duren om de implementatie te volt ooien. In de Azure Portal wordt op de pagina **overzicht** voor uw door Azure AD DS beheerde domein de huidige status weer gegeven in de gehele implementatie fase.
+Het beheerde Azure AD DS-domein kan tot een uur duren voordat de implementatie is voltooid. In de Azure-portal wordt op de **pagina Overzicht** voor uw door Azure AD DS beheerde domein de huidige status in deze implementatiefase weergegeven.
 
-Wanneer de Azure Portal laat zien dat de inrichting van het beheerde Azure AD DS-domein is voltooid, moeten de volgende taken worden uitgevoerd:
+Wanneer de Azure-portal aangeeft dat het door Azure AD DS beheerde domein is voltooid, moeten de volgende taken worden voltooid:
 
-* Werk de DNS-instellingen voor het virtuele netwerk bij, zodat de virtuele machines het beheerde domein kunnen vinden voor het lid worden van het domein of de verificatie.
-    * Als u DNS wilt configureren, selecteert u uw door Azure AD DS beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd deze DNS-instellingen automatisch te configureren.
-* [Wachtwoord synchronisatie inschakelen voor Azure AD Domain Services](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) zodat eind gebruikers zich kunnen aanmelden bij het beheerde domein met hun bedrijfs referenties.
+* Dns-instellingen voor het virtuele netwerk bijwerken, zodat virtuele machines het beheerde domein kunnen vinden voor domeinjoin of verificatie.
+    * Als u DNS wilt configureren, selecteert u uw door Azure AD DS beheerde domein in de portal. In het **venster Overzicht** wordt u gevraagd deze DNS-instellingen automatisch te configureren.
+* [Wachtwoordsynchronisatie inschakelen voor Azure AD Domain Services,](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich kunnen aanmelden bij het beheerde domein met hun bedrijfsreferenties.
 
-## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>Scoped Synchronization wijzigen met behulp van de Azure Portal
+## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>Scoped synchronisatie wijzigen met de Azure-portal
 
-Voer de volgende stappen uit om de lijst met groepen te wijzigen waarvan gebruikers moeten worden gesynchroniseerd met het beheerde Azure AD DS-domein:
+Voer de volgende stappen uit om de lijst met groepen te wijzigen waarvan de gebruikers moeten worden gesynchroniseerd met het beheerde Azure AD DS-domein:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw instantie, bijvoorbeeld *aaddscontoso.com*.
-1. Selecteer **synchronisatie** in het menu aan de linkerkant.
-1. Als u een groep wilt toevoegen, **selecteert u groepen bovenaan selecteren** en kiest u vervolgens de groepen die u wilt toevoegen.
-1. Als u een groep uit het synchronisatie bereik wilt verwijderen, selecteert u deze in de lijst met momenteel gesynchroniseerde groepen en kiest u **groepen verwijderen**.
-1. Wanneer alle wijzigingen zijn aangebracht, selecteert u **synchronisatie bereik opslaan**.
+1. Zoek en selecteer Azure AD Domain Services in de **Azure-portal.** Kies uw instantie, zoals *aaddscontoso.com*.
+1. Selecteer **Synchronisatie in** het menu aan de linkerkant.
+1. Als u een groep wilt toevoegen, kiest u **+ Groepen** bovenaan selecteren en kiest u de groepen die u wilt toevoegen.
+1. Als u een groep uit het synchronisatiebereik wilt verwijderen, selecteert u deze in de lijst met momenteel gesynchroniseerde groepen en kiest u **Groepen verwijderen**.
+1. Wanneer alle wijzigingen zijn aangebracht, selecteert u **Synchronisatiebereik opslaan**.
 
-Als u het synchronisatie bereik wijzigt, wordt het door Azure AD DS beheerde domein om alle gegevens opnieuw te synchroniseren. Objecten die niet meer nodig zijn in het door Azure AD DS beheerde domein, worden verwijderd en het kan enige tijd duren voordat de synchronisatie is voltooid.
+Als u het synchronisatiebereik wijzigt, wordt het beheerde Azure AD DS-domein opnieuw gesynchroniseerd. Objecten die niet langer nodig zijn in het beheerde Azure AD DS-beheerde domein worden verwijderd en opnieuw synchronisatie kan lang duren.
 
-## <a name="disable-scoped-synchronization-using-the-azure-portal"></a>Scoped synchronisatie uitschakelen met behulp van de Azure Portal
+## <a name="disable-scoped-synchronization-using-the-azure-portal"></a>Scoped-synchronisatie uitschakelen met de Azure-portal
 
-Voer de volgende stappen uit als u de synchronisatie op basis van een groep wilt uitschakelen voor een beheerd domein in azure AD DS:
+Voer de volgende stappen uit om op groepen gebaseerde scopen voor een door Azure AD DS beheerd domein uit te schakelen:
 
-1. Zoek in het Azure Portal naar en selecteer **Azure AD Domain Services**. Kies uw instantie, bijvoorbeeld *aaddscontoso.com*.
-1. Selecteer **synchronisatie** in het menu aan de linkerkant.
-1. Stel het synchronisatie **bereik in op** **alle**en selecteer vervolgens **synchronisatie bereik opslaan**.
+1. Zoek en selecteer Azure AD Domain Services in de **Azure-portal.** Kies uw instantie, zoals *aaddscontoso.com*.
+1. Selecteer **Synchronisatie in** het menu aan de linkerkant.
+1. Stel het synchronisatiebereik in van **Scoped** naar **Alles**en selecteer **synchronisatiebereik opslaan**.
 
-Als u het synchronisatie bereik wijzigt, wordt het door Azure AD DS beheerde domein om alle gegevens opnieuw te synchroniseren. Objecten die niet meer nodig zijn in het door Azure AD DS beheerde domein, worden verwijderd en het kan enige tijd duren voordat de synchronisatie is voltooid.
+Als u het synchronisatiebereik wijzigt, wordt het beheerde Azure AD DS-domein opnieuw gesynchroniseerd. Objecten die niet langer nodig zijn in het beheerde Azure AD DS-beheerde domein worden verwijderd en opnieuw synchronisatie kan lang duren.
 
-## <a name="powershell-script-for-scoped-synchronization"></a>Power shell-script voor synchronisatie met scopes
+## <a name="powershell-script-for-scoped-synchronization"></a>PowerShell-script voor scoped synchronisatie
 
-Als u synchronisatie met een scope wilt configureren met behulp van Power shell, moet u eerst het volgende script opslaan in een bestand met de naam `Select-GroupsToSync.ps1`. Met dit script wordt Azure AD DS zodanig geconfigureerd dat geselecteerde groepen vanuit Azure AD worden gesynchroniseerd. Alle gebruikers accounts die deel uitmaken van de opgegeven groepen, worden gesynchroniseerd met het door Azure AD DS beheerde domein.
+Als u scoped synchronisatie wilt configureren met PowerShell, slaat `Select-GroupsToSync.ps1`u eerst het volgende script op in een bestand met de naam . Met dit script configureert Azure AD DS om geselecteerde groepen uit Azure AD te synchroniseren. Alle gebruikersaccounts die deel uitmaken van de opgegeven groepen worden gesynchroniseerd met het beheerde Azure AD DS-domein.
 
 Dit script wordt gebruikt in de extra stappen in dit artikel.
 
@@ -171,30 +171,30 @@ foreach ($id in $newGroupIds)
 Write-Output "****************************************************************************`n"
 ```
 
-## <a name="enable-scoped-synchronization-using-powershell"></a>Scoped synchronisatie inschakelen met Power shell
+## <a name="enable-scoped-synchronization-using-powershell"></a>Scoped-synchronisatie inschakelen met PowerShell
 
-Gebruik Power shell om deze reeks stappen te volt ooien. Raadpleeg de instructies om Azure Active Directory Domain Services in te [scha kelen met behulp van Power shell](powershell-create-instance.md). Een paar stappen in dit artikel worden enigszins gewijzigd om de scoped synchronisatie te configureren.
+Gebruik PowerShell om deze set stappen uit te voeren. Raadpleeg de instructies om Azure Active Directory Domain Services in te [schakelen met PowerShell](powershell-create-instance.md). Een paar stappen in dit artikel worden enigszins gewijzigd om scoped synchronization te configureren.
 
-1. Voer de volgende taken uit in het artikel om Azure AD DS in te scha kelen met behulp van Power shell. Stop bij de stap om het beheerde domein daad werkelijk te maken. U configureert de scoped synchronisatie u maakt het door Azure AD DS beheerde domein.
+1. Voltooi de volgende taken uit het artikel om Azure AD DS in te schakelen met PowerShell. Stop bij de stap om het beheerde domein daadwerkelijk te maken. U configureert de scoped synchronisatie die u maakt van het door Azure AD DS beheerde domein.
 
-   * [Installeer de vereiste Power shell-modules](powershell-create-instance.md#prerequisites).
-   * [Maak de vereiste service-principal en Azure AD-groep voor beheerders toegang](powershell-create-instance.md#create-required-azure-ad-resources).
-   * [Ondersteunende Azure-resources maken, zoals een virtueel netwerk en subnetten](powershell-create-instance.md#create-supporting-azure-resources).
+   * [Installeer de vereiste PowerShell-modules.](powershell-create-instance.md#prerequisites)
+   * [Maak de vereiste serviceprincipal en Azure AD-groep voor beheerderstoegang](powershell-create-instance.md#create-required-azure-ad-resources).
+   * [Maak ondersteunende Azure-bronnen zoals een virtueel netwerk en subnetten.](powershell-create-instance.md#create-supporting-azure-resources)
 
-1. Bepaal welke groepen en gebruikers ze bevatten die u wilt synchroniseren vanuit Azure AD. Maak een lijst met de weergave namen van de groepen die moeten worden gesynchroniseerd met Azure AD DS.
+1. Bepaal de groepen en gebruikers die ze bevatten die u vanuit Azure AD wilt synchroniseren. Maak een lijst met de weergavenamen van de groepen die moeten worden gesynchroniseerd met Azure AD DS.
 
-1. Voer het [script uit in de vorige sectie](#powershell-script-for-scoped-synchronization) en gebruik de para meter *-groupsToAdd* om de lijst met groepen die moeten worden gesynchroniseerd door te geven.
+1. Voer het [script uit de vorige sectie uit](#powershell-script-for-scoped-synchronization) en gebruik de parameter *-groupsToAdd* om de lijst met groepen door te geven om te synchroniseren.
 
    > [!WARNING]
-   > U moet de groep *Aad DC-Administrators* opnemen in de lijst met groepen voor synchronisatie met een bereik. Als u deze groep niet opneemt, is het door Azure AD DS beheerde domein onbruikbaar.
+   > U moet de groep *AAD DC-beheerders* opnemen in de lijst met groepen voor synchronisatie met bereik. Als u deze groep niet opneemt, is het beheerde Azure AD DS-domein onbruikbaar.
 
    ```powershell
    .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
    ```
 
-1. Maak nu de door Azure AD DS beheerde domein en schakel op groepen gebaseerde synchronisatie van het bereik in. Neem *' filteredSync ' = ' enabled* ' op in de para meter *-Properties* .
+1. Maak nu het door Azure AD DS beheerde domein en schakel op groepsgerichte scopesynchronisatie in. Voeg *'filteredSync' = 'Ingeschakeld' toe* in de parameter *Eigenschappen.*
 
-    Stel de ID van uw Azure-abonnement in en geef een naam op voor het beheerde domein, zoals *aaddscontoso.com*. U kunt uw abonnements-ID ophalen met behulp van de cmdlet [Get-AzSubscription][Get-AzSubscription] . Stel de naam van de resource groep, de naam van het virtuele netwerk en de regio in op de waarden die worden gebruikt in de vorige stappen voor het maken van de ondersteunende Azure-resources:
+    Stel uw Azure-abonnements-id in en geef vervolgens een naam op voor het beheerde domein, zoals *aaddscontoso.com*. U uw abonnements-ID krijgen met de [cmdlet Get-AzSubscription.][Get-AzSubscription] Stel de naam van de brongroep, de naam van het virtuele netwerk en het gebied in op de waarden die in de vorige stappen zijn gebruikt om de ondersteunende Azure-bronnen te maken:
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
@@ -211,32 +211,32 @@ Gebruik Power shell om deze reeks stappen te volt ooien. Raadpleeg de instructie
    -Force -Verbose
    ```
 
-Het duurt enkele minuten om de resource te maken en het besturings element terug te sturen naar de Power shell-prompt. Het beheerde domein van Azure AD DS blijft op de achtergrond worden ingericht en kan tot een uur duren voordat de implementatie is voltooid. In de Azure Portal wordt op de pagina **overzicht** voor uw door Azure AD DS beheerde domein de huidige status weer gegeven in de gehele implementatie fase.
+Het duurt een paar minuten om de resource te maken en het besturingselement terug te geven aan de PowerShell-prompt. Het beheerde Azure AD DS-domein blijft op de achtergrond worden ingericht en kan tot een uur duren voordat de implementatie is voltooid. In de Azure-portal wordt op de **pagina Overzicht** voor uw door Azure AD DS beheerde domein de huidige status in deze implementatiefase weergegeven.
 
-Wanneer de Azure Portal laat zien dat de inrichting van het beheerde Azure AD DS-domein is voltooid, moeten de volgende taken worden uitgevoerd:
+Wanneer de Azure-portal aangeeft dat het door Azure AD DS beheerde domein is voltooid, moeten de volgende taken worden voltooid:
 
-* Werk de DNS-instellingen voor het virtuele netwerk bij, zodat de virtuele machines het beheerde domein kunnen vinden voor het lid worden van het domein of de verificatie.
-    * Als u DNS wilt configureren, selecteert u uw door Azure AD DS beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd deze DNS-instellingen automatisch te configureren.
-* Als u een beheerd domein van Azure AD DS hebt gemaakt in een regio die Beschikbaarheidszones ondersteunt, maakt u een netwerk beveiligings groep om het verkeer in het virtuele netwerk voor het door Azure AD DS beheerde domein te beperken. Er wordt een Azure Standard-load balancer gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerk beveiligings groep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
-    * Als u de netwerk beveiligings groep en de vereiste regels wilt maken, selecteert u uw door Azure AD DS beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd om de netwerk beveiligings groep automatisch te maken en te configureren.
-* [Wachtwoord synchronisatie inschakelen voor Azure AD Domain Services](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) zodat eind gebruikers zich kunnen aanmelden bij het beheerde domein met hun bedrijfs referenties.
+* Dns-instellingen voor het virtuele netwerk bijwerken, zodat virtuele machines het beheerde domein kunnen vinden voor domeinjoin of verificatie.
+    * Als u DNS wilt configureren, selecteert u uw door Azure AD DS beheerde domein in de portal. In het **venster Overzicht** wordt u gevraagd deze DNS-instellingen automatisch te configureren.
+* Als u een door Azure AD DS beheerd domein hebt gemaakt in een regio die beschikbaarheidszones ondersteunt, maakt u een netwerkbeveiligingsgroep om het verkeer in het virtuele netwerk voor het beheerde Azure AD DS-beheerde domein te beperken. Er wordt een Azure-standaardloadbalancer gemaakt waarvoor deze regels moeten worden geïnstalleerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist dat het beheerde domein correct werkt.
+    * Als u de netwerkbeveiligingsgroep en vereiste regels wilt maken, selecteert u uw door Azure AD DS beheerde domein in de portal. In het venster **Overzicht** wordt u gevraagd om de netwerkbeveiligingsgroep automatisch te maken en te configureren.
+* [Wachtwoordsynchronisatie inschakelen voor Azure AD Domain Services,](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds) zodat eindgebruikers zich kunnen aanmelden bij het beheerde domein met hun bedrijfsreferenties.
 
-## <a name="modify-scoped-synchronization-using-powershell"></a>Scoped Synchronization wijzigen met Power shell
+## <a name="modify-scoped-synchronization-using-powershell"></a>Scoped synchronisatie wijzigen met PowerShell
 
-Als u de lijst met groepen wilt wijzigen waarvan gebruikers moeten worden gesynchroniseerd met de Azure AD DS beheerde domein, voert u het [Power shell-script](#powershell-script-for-scoped-synchronization) opnieuw uit en geeft u de nieuwe lijst met groepen op. In het volgende voor beeld bevat de groepen die worden gesynchroniseerd niet langer *GroupName2*en bevat nu *GroupName3*.
+Als u de lijst met groepen wilt wijzigen waarvan de gebruikers moeten worden gesynchroniseerd met het door Azure AD DS beheerde domein, voert u het [PowerShell-script](#powershell-script-for-scoped-synchronization) opnieuw uit en geeft u de nieuwe lijst met groepen op. In het volgende voorbeeld bevatten de groepen die moeten worden gesynchroniseerd *GroupName2*niet meer en bevat nu *GroupName3*.
 
 > [!WARNING]
-> U moet de groep *Aad DC-Administrators* opnemen in de lijst met groepen voor synchronisatie met een bereik. Als u deze groep niet opneemt, is het door Azure AD DS beheerde domein onbruikbaar.
+> U moet de groep *AAD DC-beheerders* opnemen in de lijst met groepen voor synchronisatie met bereik. Als u deze groep niet opneemt, is het beheerde Azure AD DS-domein onbruikbaar.
 
 ```powershell
 .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName3")
 ```
 
-Als u het synchronisatie bereik wijzigt, wordt het door Azure AD DS beheerde domein om alle gegevens opnieuw te synchroniseren. Objecten die niet meer nodig zijn in het door Azure AD DS beheerde domein, worden verwijderd en het kan enige tijd duren voordat de synchronisatie is voltooid.
+Als u het synchronisatiebereik wijzigt, wordt het beheerde Azure AD DS-domein opnieuw gesynchroniseerd. Objecten die niet langer nodig zijn in het beheerde Azure AD DS-beheerde domein worden verwijderd en opnieuw synchronisatie kan lang duren.
 
-## <a name="disable-scoped-synchronization-using-powershell"></a>Scoped synchronisatie uitschakelen met Power shell
+## <a name="disable-scoped-synchronization-using-powershell"></a>Scoped-synchronisatie uitschakelen met PowerShell
 
-Als u synchronisatie op basis van een groep wilt uitschakelen voor een beheerd domein in azure AD DS, stelt u *"filteredSync" = "uitgeschakeld"* in op de Azure AD DS-resource en werkt u het beheerde domein bij. Wanneer dit is voltooid, worden alle gebruikers en groepen ingesteld op synchroniseren vanuit Azure AD.
+Als u groepssynchronisatie voor een door Azure AD DS beheerd domein wilt uitschakelen, stelt u *'filteredSync' = 'Uitgeschakeld'* in op de Azure AD DS-bron en werkt u het beheerde domein bij. Als deze is voltooid, worden alle gebruikers en groepen ingesteld op synchronisatie vanuit Azure AD.
 
 ```powershell
 // Retrieve the Azure AD DS resource.
@@ -249,11 +249,11 @@ $disableScopedSync = @{"filteredSync" = "Disabled"}
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $disableScopedSync
 ```
 
-Als u het synchronisatie bereik wijzigt, wordt het door Azure AD DS beheerde domein om alle gegevens opnieuw te synchroniseren. Objecten die niet meer nodig zijn in het door Azure AD DS beheerde domein, worden verwijderd en het kan enige tijd duren voordat de synchronisatie is voltooid.
+Als u het synchronisatiebereik wijzigt, wordt het beheerde Azure AD DS-domein opnieuw gesynchroniseerd. Objecten die niet langer nodig zijn in het beheerde Azure AD DS-beheerde domein worden verwijderd en opnieuw synchronisatie kan lang duren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het synchronisatie proces [begrijpen synchronisatie in azure AD Domain Services](synchronization.md).
+Zie Synchronisatie [begrijpen in Azure AD Domain Services](synchronization.md)voor meer informatie over het synchronisatieproces.
 
 <!-- EXTERNAL LINKS -->
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription

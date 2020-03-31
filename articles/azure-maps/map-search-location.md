@@ -1,7 +1,7 @@
 ---
-title: Zoek resultaten weer geven op een kaart | Microsoft Azure kaarten
-description: In dit artikel leert u hoe u een zoek opdracht kunt uitvoeren met Microsoft Azure Maps Web SDK en de resultaten op de kaart kunt weer geven.
-author: jingjing-z
+title: Zoekresultaten weergeven op een kaart | Microsoft Azure Maps
+description: In dit artikel leert u hoe u een zoekaanvraag uitvoert met Microsoft Azure Maps Web SDK en de resultaten op de kaart weergeeft.
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/29/2019
 ms.topic: conceptual
@@ -9,70 +9,73 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 13daf20e364b1e629b3ae13be2c9406da3702211
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e82a1daee381c7bad19c83fa735d0028bef2010e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209644"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371402"
 ---
-# <a name="show-search-results-on-the-map"></a>Zoek resultaten weer geven op de kaart
+# <a name="show-search-results-on-the-map"></a>Zoekresultaten weergeven op de kaart
 
-Dit artikel laat u zien hoe u kunt zoeken naar interessante locaties en de zoek resultaten op de kaart kunt weer geven.
+In dit artikel ziet u hoe u zoeken naar de locatie van interesse en de zoekresultaten op de kaart weergeven.
 
-Er zijn twee manieren om te zoeken naar een locatie van belang. Een van de manieren is een service module te gebruiken voor het maken van een zoek opdracht. De andere manier is om een zoek opdracht te maken om te [Azure Maps fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) via de [API voor ophalen](https://fetch.spec.whatwg.org/). Beide manieren worden hieronder besproken.
+Er zijn twee manieren om te zoeken naar een locatie van belang. Een manier is om een servicemodule te gebruiken om een zoekverzoek in te dienen. De andere manier is om een zoekaanvraag te maken voor [Azure Maps Fuzzy search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) via de Fetch [API](https://fetch.spec.whatwg.org/). Beide manieren worden hieronder besproken.
 
-## <a name="make-a-search-request-via-service-module"></a>Een zoek aanvraag indienen via de service module
+## <a name="make-a-search-request-via-service-module"></a>Een zoekverzoek indienen via de servicemodule
 
-<iframe height='500' scrolling='no' title='Zoek resultaten weer geven op een kaart (Service module)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/zLdYEB/'>Zoek resultaten weer geven op een kaart (Service module)</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zoekresultaten weergeven op een kaart (servicemodule)' src='//codepen.io/azuremaps/embed/zLdYEB/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de zoekresultaten van Pen Tonen op een kaart<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/zLdYEB/'>(ServiceModule)</a> van Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-In de bovenstaande code maakt het eerste blok een kaart object en stelt het verificatie mechanisme in voor het gebruik van het toegangs token. U kunt [een overzicht maken](./map-create.md) voor instructies.
+In de bovenstaande code construeert het eerste blok een kaartobject en stelt het verificatiemechanisme in om het toegangstoken te gebruiken. U [een kaart maken](./map-create.md) voor instructies.
 
-Met het tweede code blok wordt een `TokenCredential` voor het verifiëren van HTTP-aanvragen voor Azure Maps met het toegangs token gemaakt. Vervolgens wordt de `TokenCredential` door gegeven aan `atlas.service.MapsURL.newPipeline()` en wordt een [pijplijn](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) instantie gemaakt. De `searchURL` vertegenwoordigt een URL voor het Azure Maps van [Zoek](https://docs.microsoft.com/rest/api/maps/search) bewerkingen.
+Het tweede codeblok `TokenCredential` maakt een code om HTTP-aanvragen te verifiëren voor Azure Maps met het toegangstoken. Vervolgens wordt `TokenCredential` de `atlas.service.MapsURL.newPipeline()` aan- en wordt een [pijplijninstantie](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) gegeven. Het `searchURL` vertegenwoordigt een URL naar Azure Maps [Search](https://docs.microsoft.com/rest/api/maps/search) operations.
 
-Met het derde code blok wordt een gegevens bron object gemaakt met behulp van de klasse [Data Source](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) en worden er Zoek resultaten aan toegevoegd. Een [symbool laag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) maakt gebruik van tekst of pictogrammen voor het weer geven van op punten gebaseerde gegevens die in de [gegevens bron](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) zijn verpakt als symbolen op de kaart.  Vervolgens wordt er een symbool laag gemaakt. De gegevens bron wordt toegevoegd aan de Symbol-laag, die vervolgens wordt toegevoegd aan de kaart.
+Het derde codeblok maakt een gegevensbronobject met de klasse [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) en voegt er zoekresultaten aan toe. Een [symboollaag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) gebruikt tekst of pictogrammen om op punten gebaseerde gegevens die in de [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) zijn verpakt, weer te geven als symbolen op de kaart.  Vervolgens wordt een symboollaag gemaakt. De gegevensbron wordt toegevoegd aan de symboollaag, die vervolgens aan de kaart wordt toegevoegd.
 
-Het vierde code blok maakt gebruik van de methode [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) in de [module service](how-to-use-services-module.md). U kunt met behulp van de zoek actie voor het maken van een vrije tekst zoeken naar interessante [rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) . Aanvragen ophalen voor de zoek actie voor fuzzy-API kan elke combi natie van fuzzy invoer verwerken. Een verzameling geojson-functies uit het antwoord wordt vervolgens geëxtraheerd met behulp van de `geojson.getFeatures()` methode en toegevoegd aan de gegevens bron, waardoor automatisch de gegevens worden weer gegeven op de kaart via de laag van het symbool.
+Het vierde codeblok gebruikt de [methode SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams) in de [servicemodule](how-to-use-services-module.md). Hiermee u een gratis formulier tekst zoeken via de [Get Search Fuzzy rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) om te zoeken naar punt van belang uit te voeren. Als u aanvragen naar de Search Fuzzy API krijgt, u elke combinatie van vage ingangen verwerken. Een GeoJSON-functieverzameling uit het antwoord `geojson.getFeatures()` wordt vervolgens geëxtraheerd met behulp van de methode en toegevoegd aan de gegevensbron, wat automatisch resulteert in de gegevens die via de symboollaag op de kaart worden weergegeven.
 
-Het laatste code blok past de camera grenzen voor de kaart aan met behulp van de eigenschap [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) van de kaart.
+Het laatste codeblok past de cameragrenzen voor de kaart aan met de eigenschap [SetCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) van de kaart.
 
-De zoek aanvraag, de gegevens bron, de symbool-laag en de camera grenzen bevinden zich in de [gebeurtenislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) van de kaart. We willen er zeker van zijn dat de resultaten worden weer gegeven nadat de kaart volledig is geladen.
+De zoekaanvraag, gegevensbron, symboollaag en cameragrenzen bevinden zich in de [gebeurtenislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) van de kaart. We willen ervoor zorgen dat de resultaten worden weergegeven na de kaart volledig wordt geladen.
 
 
-## <a name="make-a-search-request-via-fetch-api"></a>Een zoek aanvraag indienen via de API voor ophalen
+## <a name="make-a-search-request-via-fetch-api"></a>Een zoekaanvraag indienen via Fetch API
 
-<iframe height='500' scrolling='no' title='Zoek resultaten weer geven op een kaart' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de pen <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Zoek resultaten weer geven op een kaart</a> op basis van Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Zoekresultaten weergeven op een kaart' src='//codepen.io/azuremaps/embed/KQbaeM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de zoekresultaten van Pen <a href='https://codepen.io/azuremaps/pen/KQbaeM/'>Weergeven</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>op een kaart van Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-In de bovenstaande code maakt het eerste code blok een kaart object. Het verificatie mechanisme wordt ingesteld voor het gebruik van het toegangs token. U kunt [een overzicht maken](./map-create.md) voor instructies.
+In de bovenstaande code construeert het eerste codeblok een kaartobject. Het stelt het verificatiemechanisme in om het toegangstoken te gebruiken. U [een kaart maken](./map-create.md) voor instructies.
 
-Het tweede code blok maakt een URL voor het maken van een zoek opdracht. Er worden ook twee matrices gemaakt voor het opslaan van grenzen en pincodes voor zoek resultaten.
+Met het tweede codeblok wordt een URL aangegaan om een zoekverzoek in te dienen. Het maakt ook twee arrays om grenzen en pinnen op te slaan voor zoekresultaten.
 
-Het derde code blok maakt gebruik van de [API voor ophalen](https://fetch.spec.whatwg.org/). De [ophaal-API](https://fetch.spec.whatwg.org/) wordt gebruikt om een aanvraag in te stellen voor [Azure Maps fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) om te zoeken naar de gewenste punten. De fuzzy Search-API kan elke combi natie van fuzzy invoer verwerken. Vervolgens wordt het antwoord verwerkt en geparseerd en worden de resultaten van de zoek opdracht toegevoegd aan de searchPins-matrix.
+Het derde codeblok maakt gebruik van de [API Ophalen](https://fetch.spec.whatwg.org/). De [API ophalen](https://fetch.spec.whatwg.org/) wordt gebruikt om een aanvraag in te dienen voor Azure Maps Fuzzy search [API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) om te zoeken naar de bezienswaardigheden. De Fuzzy search API kan elke combinatie van fuzzy ingangen aan. Vervolgens wordt het zoekantwoord verwerkt en ontrelijkt en wordt de resultaatpins toegevoegd aan de array searchPins.
 
-Met het vierde code blok wordt een gegevens bron object gemaakt met behulp van de klasse [Data Source](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) . In de code voegen we Zoek resultaten toe aan het bron object. Een [symbool laag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) maakt gebruik van tekst of pictogrammen voor het weer geven van op punten gebaseerde gegevens die in de [gegevens bron](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) zijn verpakt als symbolen op de kaart. Vervolgens wordt er een symbool laag gemaakt. De gegevens bron wordt toegevoegd aan de Symbol-laag, die vervolgens wordt toegevoegd aan de kaart.
+Met het vierde codeblok wordt een gegevensbronobject gemaakt met de klasse [DataSource.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) In de code voegen we zoekresultaten toe aan het bronobject. Een [symboollaag](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) gebruikt tekst of pictogrammen om op punten gebaseerde gegevens die in de [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) zijn verpakt, weer te geven als symbolen op de kaart. Vervolgens wordt een symboollaag gemaakt. De gegevensbron wordt toegevoegd aan de symboollaag, die vervolgens aan de kaart wordt toegevoegd.
 
-Met het laatste code blok wordt een [BoundingBox](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.boundingbox?view=azure-iot-typescript-latest) -object gemaakt. Het gebruikt de matrix met resultaten en vervolgens worden de camera grenzen voor de kaart aangepast met behulp van de [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)van de kaart. Vervolgens worden de resultaat pinnen weer gegeven.
+Met het laatste codeblok wordt een [BoundingBox-object](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.boundingbox?view=azure-iot-typescript-latest) gemaakt. Het maakt gebruik van de array van de resultaten, en vervolgens past de camera grenzen voor de kaart met behulp van de [map setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-). Het maakt dan het resultaat pinnen.
 
-De zoek aanvraag, de gegevens bron, de symbool-laag en de grenzen van de camera worden ingesteld in de [gebeurtenislistener van de](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) kaart, om ervoor te zorgen dat de resultaten worden weer gegeven nadat de kaart volledig is geladen.
+De zoekaanvraag, de gegevensbron, de symboollaag en de cameragrenzen zijn ingesteld in de [gebeurtenislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) van de kaart om ervoor te zorgen dat de resultaten worden weergegeven nadat de kaart volledig is geladen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over **fuzzy Search**:
+> [!div class="nextstepaction"]
+> [Aanbevolen procedures voor het gebruik van de zoekservice](how-to-use-best-practices-for-search.md)
+
+Meer informatie over **Fuzzy Search:**
 
 > [!div class="nextstepaction"]
-> [Azure Maps fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+> [Azure Maps Fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
 
-Meer informatie over de klassen en methoden die in dit artikel worden gebruikt:
-
-> [!div class="nextstepaction"]
-> [Diagram](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-
-Raadpleeg de volgende artikelen voor voor beelden van volledige code:
+Meer informatie over de lessen en methoden die in dit artikel worden gebruikt:
 
 > [!div class="nextstepaction"]
-> [Informatie ophalen uit een coördinaat](./map-get-information-from-coordinate.md)
+> [Kaart](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+Zie de volgende artikelen voor volledige code voorbeelden:
+
+> [!div class="nextstepaction"]
+> [Informatie ophalen uit een coördinaat](map-get-information-from-coordinate.md)
 <!-- Comment added to suppress false positive warning -->
 > [!div class="nextstepaction"]
-> [Route beschrijving van A naar B weer geven](./map-route.md)
+> [Routebeschrijving van A naar B](map-route.md)

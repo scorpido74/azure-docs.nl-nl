@@ -1,44 +1,44 @@
 ---
 title: Een Azure Load Balancer-regel voor een cluster maken
-description: Configureer een Azure Load Balancer voor het openen van poorten voor uw Azure Service Fabric-cluster.
+description: Configureer een Azure Load Balancer om poorten te openen voor uw Azure Service Fabric-cluster.
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025381"
 ---
-# <a name="open-ports-for-a-service-fabric-cluster"></a>Poorten openen voor een Service Fabric cluster
+# <a name="open-ports-for-a-service-fabric-cluster"></a>Poorten openen voor een Service Fabric-cluster
 
-De load balancer die met uw Azure Service Fabric cluster wordt geïmplementeerd, stuurt verkeer naar uw app die op een knoop punt wordt uitgevoerd. Als u de app wijzigt om een andere poort te gebruiken, moet u die poort zichtbaar maken (of een andere poort routeren) in de Azure Load Balancer.
+De load balancer die is geïmplementeerd met uw Azure Service Fabric-cluster leidt verkeer naar uw app die op een knooppunt wordt uitgevoerd. Als u uw app wijzigt om een andere poort te gebruiken, moet u die poort (of route een andere poort) in de Azure Load Balancer blootleggen.
 
-Wanneer u uw Service Fabric-cluster in azure hebt geïmplementeerd, is er automatisch een load balancer voor u gemaakt. Als u geen load balancer hebt, raadpleegt u [een Internet gerichte Load Balancer configureren](../load-balancer/load-balancer-get-started-internet-portal.md).
+Toen u uw Cluster Servicefabric in Azure hebt geïmplementeerd, is er automatisch een load balancer voor u gemaakt. Zie [Een op internet gerichte load balancer configureren](../load-balancer/load-balancer-get-started-internet-portal.md)als u geen load balancer hebt.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="configure-service-fabric"></a>Service Fabric configureren
+## <a name="configure-service-fabric"></a>Servicefabric configureren
 
-Het configuratie bestand **ServiceManifest. XML** van service Fabric toepassing definieert de eind punten die uw toepassing verwacht te gebruiken. Nadat het configuratie bestand is bijgewerkt om een eind punt te definiëren, moeten de load balancer worden bijgewerkt om die (of een andere) poort beschikbaar te maken. Zie [een eind punt instellen](service-fabric-service-manifest-resources.md)voor meer informatie over het maken van het service Fabric-eind punt.
+Het **config-bestand ServiceFabric-toepassing ServiceManifest.xml** definieert de eindpunten die uw toepassing verwacht te gebruiken. Nadat het config-bestand is bijgewerkt om een eindpunt te definiëren, moet de load balancer worden bijgewerkt om die (of een andere) poort bloot te leggen. Zie [Een eindpunt instellen](service-fabric-service-manifest-resources.md)voor meer informatie over het maken van het eindpunt van de servicefabric.
 
 ## <a name="create-a-load-balancer-rule"></a>Een load balancer-regel maken
 
-Met een Load Balancer regel wordt een Internet gerichte poort geopend en verkeer doorgestuurd naar de poort van het interne knoop punt dat door uw toepassing wordt gebruikt. Als u geen load balancer hebt, raadpleegt u [een Internet gerichte Load Balancer configureren](../load-balancer/load-balancer-get-started-internet-portal.md).
+Een load balancer-regel opent een poort op interneten en stuurt verkeer door naar de poort van het interne knooppunt die door uw toepassing wordt gebruikt. Zie [Een op internet gerichte load balancer configureren](../load-balancer/load-balancer-get-started-internet-portal.md)als u geen load balancer hebt.
 
-Als u een Load Balancer regel wilt maken, moet u de volgende informatie verzamelen:
+Als u een regel load balancer wilt maken, moet u de volgende gegevens verzamelen:
 
-- Naam van Load Balancer.
-- De resource groep van de load balancer en het service Fabric-cluster.
+- Naam van de load balancer.
+- Resourcegroep van het cluster load balancer en servicefabric.
 - Externe poort.
 - Interne poort.
 
 ## <a name="azure-cli"></a>Azure-CLI
-Er wordt slechts één opdracht gebruikt om een load balancer regel te maken met de **Azure cli**. U hoeft alleen de naam van de load balancer en de resource groep te kennen om een nieuwe regel te maken.
+Er is slechts één opdracht nodig om een regel voor de load balancer te maken met de **Azure CLI.** U hoeft alleen maar de naam van de load balancer en resourcegroep te kennen om een nieuwe regel te maken.
 
 >[!NOTE]
->Als u de naam van de load balancer wilt bepalen, gebruikt u deze opdracht om snel een lijst met alle load balancers en de bijbehorende resource groepen weer te geven.
+>Als u de naam van de load balancer wilt bepalen, gebruikt u deze opdracht om snel een lijst te krijgen met alle load balancers en de bijbehorende resourcegroepen.
 >
 >`az network lb list --query "[].{ResourceGroup: resourceGroup, Name: name}"`
 >
@@ -48,31 +48,31 @@ Er wordt slechts één opdracht gebruikt om een load balancer regel te maken met
 az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol Tcp --lb-name LB-svcfab3 -g svcfab_cli -n my-app-rule
 ```
 
-De Azure CLI-opdracht heeft een aantal para meters die in de volgende tabel worden beschreven:
+De opdracht Azure CLI heeft een aantal parameters die in de volgende tabel worden beschreven:
 
 | Parameter | Beschrijving |
 | --------- | ----------- |
-| `--backend-port`  | De poort waarnaar de Service Fabric toepassing luistert. |
-| `--frontend-port` | De poort die door de load balancer wordt weer gegeven voor externe verbindingen. |
-| `-lb-name` | De naam van de load balancer die moet worden gewijzigd. |
-| `-g`       | De resource groep met zowel het load balancer als het Service Fabric cluster. |
+| `--backend-port`  | De poort waar de Service Fabric-applicatie naar luistert. |
+| `--frontend-port` | De poort die de load balancer blootstelt voor externe verbindingen. |
+| `-lb-name` | De naam van de load balancer om te veranderen. |
+| `-g`       | De resourcegroep met zowel het cluster load balancer als Service Fabric. |
 | `-n`       | De gewenste naam van de regel. |
 
 
 >[!NOTE]
->Zie [een Load Balancer maken met de Azure cli](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)voor meer informatie over het maken van een Load Balancer met de Azure cli.
+>Zie [Een load balancer maken met de Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)voor meer informatie over het maken van een load balancer met de Azure CLI.
 
 ## <a name="powershell"></a>PowerShell
 
-Power shell is iets gecompliceerder dan de Azure CLI. Volg deze conceptuele stappen om een regel te maken:
+PowerShell is een beetje ingewikkelder dan de Azure CLI. Volg deze conceptuele stappen om een regel te maken:
 
-1. Haal de load balancer van Azure.
-2. Een regel maken.
+1. Haal de load balancer uit Azure.
+2. Maak een regel.
 3. Voeg de regel toe aan de load balancer.
 4. Werk de load balancer bij.
 
 >[!NOTE]
->Als u de naam van de load balancer wilt bepalen, gebruikt u deze opdracht om snel een lijst met alle load balancers en gekoppelde resource groepen weer te geven.
+>Als u de naam van de load balancer wilt bepalen, gebruikt u deze opdracht om snel een lijst te krijgen met alle load balancers en bijbehorende resourcegroepen.
 >
 >`Get-AzLoadBalancer | Select Name, ResourceGroupName`
 
@@ -93,11 +93,11 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-Met betrekking tot de `New-AzLoadBalancerRuleConfig` opdracht, de `-FrontendPort` vertegenwoordigt de poort die door de load balancer wordt weer gegeven voor externe verbindingen, en de `-BackendPort` vertegenwoordigt de poort waarnaar de service Fabric-app luistert.
+Wat `New-AzLoadBalancerRuleConfig` de opdracht `-FrontendPort` betreft, vertegenwoordigt de poort die de load `-BackendPort` balancer blootstelt voor externe verbindingen en de poort waar de servicefabric-app naar luistert.
 
 >[!NOTE]
->Zie [een Load Balancer maken met Power shell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)voor meer informatie over het maken van een Load Balancer met Power shell.
+>Zie [Een load balancer maken met PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)voor meer informatie over het maken van een load balancer met PowerShell.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [netwerken in service Fabric](service-fabric-patterns-networking.md).
+Meer informatie over [netwerken in Service Fabric](service-fabric-patterns-networking.md).

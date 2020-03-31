@@ -1,7 +1,7 @@
 ---
-title: ML-modellen bouwen met Designer
+title: Ml-modellen bouwen met ontwerper
 titleSuffix: Azure Machine Learning
-description: Meer informatie over de termen, concepten en werk stromen die samen de ontwerper vormen voor Azure Machine Learning.
+description: Meer informatie over de termen, concepten en werkstroom die de ontwerper vormt voor Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,130 +10,130 @@ ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
 ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037632"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is Azure Machine Learning Designer (preview)? 
+# <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is een Azure Machine Learning-ontwerpfunctie (preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Met Azure Machine Learning Designer kunt u [gegevens sets](#datasets) en [modules](#module) op een interactief canvas visueel verbinden om machine learning modellen te maken. Voor meer informatie over hoe u aan de slag kunt gaan met de ontwerp functie, Zie [zelf studie: prijs van auto Mobile voors pellen met de ontwerper](tutorial-designer-automobile-price-train-score.md)
+Met Azure Machine Learning designer u [gegevenssets](#datasets) en [modules](#module) visueel verbinden op een interactief canvas om machine learning-modellen te maken. Zie [Zelfstudie: Autoprijs voorspellen met de ontwerper](tutorial-designer-automobile-price-train-score.md) voor meer informatie over hoe u aan de slag gaan met de ontwerper
 
-![Voor beeld van Azure Machine Learning Designer](./media/concept-designer/designer-drag-and-drop.gif)
+![Voorbeeld van Azure Machine Learning-ontwerper](./media/concept-designer/designer-drag-and-drop.gif)
 
-De ontwerp functie maakt gebruik van uw Azure Machine Learning- [werk ruimte](concept-workspace.md) voor het organiseren van gedeelde resources zoals:
+De ontwerper gebruikt uw Azure Machine [Learning-werkruimte](concept-workspace.md) om gedeelde bronnen te ordenen, zoals:
 
 + [Pijplijnen](#pipeline)
 + [Gegevenssets](#datasets)
-+ [Reken resources](#compute)
++ [Rekenresources](#compute)
 + [Geregistreerde modellen](concept-azure-machine-learning-architecture.md#models)
-+ [Gepubliceerde pijp lijnen](#publish)
-+ [Realtime-eind punten](#deploy)
++ [Gepubliceerde pijplijnen](#publish)
++ [Real-time eindpunten](#deploy)
 
-## <a name="model-training-and-deployment"></a>Model training en-implementatie
+## <a name="model-training-and-deployment"></a>Modeltraining en -implementatie
 
-De Designer biedt u een visueel canvas om machine learning modellen te bouwen, te testen en te implementeren. Met de ontwerp functie kunt u het volgende doen:
+De ontwerper geeft je een visueel canvas voor het bouwen, testen en implementeren van machine learning-modellen. Met de ontwerper u:
 
-+ [Gegevens sets](#datasets) en [modules](#module) slepen en neerzetten op het canvas.
-+ Verbind de modules samen om een [pijp lijn concept](#pipeline-draft)te maken.
-+ Een [pijplijn uitvoering](#pipeline-run) verzenden met behulp van de reken resources in uw Azure machine learning-werk ruimte.
-+ Converteer uw **trainings pijplijnen** om **pijp lijnen**af te leiden.
-+ [Publiceer](#publish) uw pijp lijnen naar een rest **pijplijn-eind punt** om nieuwe pijplijn uitvoeringen met verschillende para meters en gegevens sets te verzenden.
-    + Publiceer een **trainings pijplijn** om één pijp lijn te gebruiken voor het trainen van meerdere modellen tijdens het wijzigen van para meters en gegevens sets.
-    + Publiceer een batch-uitstel **pijp lijn** om voor spellingen te maken op nieuwe gegevens met behulp van een eerder getraind model.
-+ [Implementeer](#deploy) een **real-time pipeline-pijp lijn** naar een real-time eind punt om voor spellingen te maken op nieuwe gegevens in realtime.
++ Gegevenssets en [datasets](#datasets) [modules](#module) slepen en neerzetten op het canvas.
++ Sluit de modules aan elkaar om een [pijplijnontwerp](#pipeline-draft)te maken.
++ Verzend een [pijplijnuitvoering](#pipeline-run) met behulp van de rekenbronnen in uw Azure Machine Learning-werkruimte.
++ Converteer uw **trainingspijplijnen** **naar inferencepipelines.**
++ [Publiceer](#publish) uw pijplijnen naar een eindpunt van de **REST-pijplijn** om nieuwe pijplijnuitvoeringen met verschillende parameters en gegevenssets in te dienen.
+    + Publiceer een **trainingspijplijn** om één pijplijn opnieuw te gebruiken om meerdere modellen te trainen terwijl parameters en gegevenssets worden gewijzigd.
+    + Publiceer een **batch-inference pipeline** om voorspellingen te doen over nieuwe gegevens met behulp van een eerder getraind model.
++ [Implementeer](#deploy) een **real-time inference pipeline** naar een real-time eindpunt om voorspellingen te doen over nieuwe gegevens in realtime.
 
-![Werk stroom diagram voor training, batch deinterferentie en real-time detrainer in de ontwerp functie](./media/concept-designer/designer-workflow-diagram.png)
+![Werkstroomdiagram voor training, batch-gevolgtrekking en realtime gevolgtrekking in de ontwerper](./media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>Pijplijn
 
-Een [pijp lijn](concept-azure-machine-learning-architecture.md#ml-pipelines) bestaat uit gegevens sets en analytische modules, waarmee u samen verbinding maakt. Pijp lijnen hebben veel gebruiks mogelijkheden: u kunt een pijp lijn maken die één model traint of één waarmee meerdere modellen worden getraind. U kunt een pijp lijn maken die voor spellingen in realtime of in batch maakt, of een pijp lijn maken die alleen gegevens opschoont. Met pijp lijnen kunt u uw werk opnieuw gebruiken en uw projecten ordenen.
+Een [pijplijn](concept-azure-machine-learning-architecture.md#ml-pipelines) bestaat uit datasets en analytische modules, die je met elkaar verbindt. Pijpleidingen hebben vele toepassingen: u een pijpleiding maken die een enkel model traint, of een die meerdere modellen traint. U een pijplijn maken die voorspellingen in realtime of in batch maakt, of een pijplijn maken die alleen gegevens opschonen. Met pijplijnen u uw werk hergebruiken en uw projecten organiseren.
 
-### <a name="pipeline-draft"></a>Pijp lijn concept
+### <a name="pipeline-draft"></a>Pijplijnontwerp
 
-Wanneer u een pijp lijn in de ontwerp functie bewerkt, wordt uw voortgang opgeslagen als een **pijp lijn concept**. U kunt een pijp lijn concept op elk gewenst moment bewerken door modules toe te voegen of te verwijderen, reken doelen te configureren, para meters te maken, enzovoort.
+Terwijl u een pijplijn in de ontwerper bewerkt, wordt uw voortgang opgeslagen als een **pijplijnontwerp.** U op elk gewenst moment een pijplijnconcept bewerken door modules toe te voegen of te verwijderen, rekendoelen te configureren, parameters te maken, enzovoort.
 
-Een geldige pijp lijn heeft de volgende kenmerken:
+Een geldige pijplijn heeft de volgende kenmerken:
 
-* Gegevens sets kunnen alleen verbinding maken met modules.
-* Modules kunnen alleen verbinding maken met gegevens sets of andere modules.
-* Alle invoer poorten voor modules moeten een verbinding met de gegevens stroom hebben.
-* Alle vereiste para meters voor elke module moeten worden ingesteld.
+* Gegevenssets kunnen alleen verbinding maken met modules.
+* Modules kunnen alleen verbinding maken met gegevenssets of andere modules.
+* Alle invoerpoorten voor modules moeten een verbinding hebben met de gegevensstroom.
+* Alle vereiste parameters voor elke module moeten worden ingesteld.
 
-Wanneer u klaar bent voor het uitvoeren van uw pijp lijn concept, verzendt u een pijplijn uitvoering.
+Wanneer u klaar bent om uw pijplijnconcept uit te voeren, dient u een pijplijnrun in.
 
-### <a name="pipeline-run"></a>Pijplijn uitvoering
+### <a name="pipeline-run"></a>Pijplijnrun
 
-Telkens wanneer u een pijp lijn uitvoert, worden de configuratie van de pijp lijn en de resultaten ervan opgeslagen in uw werk ruimte als een **pijplijn uitvoering**. U kunt teruggaan naar elke pijplijn uitvoering om deze te controleren op probleem oplossing of controle doeleinden. Een pijplijn uitvoering **klonen** om een nieuw pijp lijn concept te maken dat u kunt bewerken.
+Telkens wanneer u een pijplijn uitvoert, worden de configuratie van de pijplijn en de resultaten ervan als **pijplijn uitgevoerd**in uw werkruimte opgeslagen. U teruggaan naar elke pijplijn die wordt uitgevoerd om deze te inspecteren op probleemoplossing of controledoeleinden. **Kloon** een pijplijnrun om een nieuw pijplijnconcept te maken dat u bewerken.
 
-Pijplijn uitvoeringen worden in [experimenten](concept-azure-machine-learning-architecture.md#experiments) gegroepeerd om de uitvoerings geschiedenis te organiseren. U kunt het experiment instellen voor elke pijplijn uitvoering. 
+Pijplijnuitvoeringen zijn gegroepeerd in [experimenten](concept-azure-machine-learning-architecture.md#experiments) om rungeschiedenis te organiseren. U het experiment instellen voor elke pijplijnuitvoering. 
 
 ## <a name="datasets"></a>Gegevenssets
 
-Met een machine learning-gegevensset kunt u eenvoudig toegang krijgen tot uw gegevens en deze gebruiken. De ontwerper bevat een aantal voorbeeld gegevens sets waarmee u kunt experimenteren. U kunt meer gegevens sets [registreren](how-to-create-register-datasets.md) wanneer u ze nodig hebt.
+Een machine learning-gegevensset maakt het eenvoudig om toegang te krijgen tot en met uw gegevens te werken. Een aantal voorbeeldgegevenssets zijn opgenomen in de ontwerper waarmee u experimenteren. U meer gegevenssets [registreren](how-to-create-register-datasets.md) als u ze nodig hebt.
 
 ## <a name="module"></a>Module
 
-Een module is een algoritme dat u met uw gegevens kunt uitvoeren. De ontwerper heeft een aantal modules die variëren van de functies voor het inkomen van gegevens in trainings processen voor training, waardering en validatie.
+Een module is een algoritme dat u met uw gegevens kunt uitvoeren. De ontwerper heeft een aantal modules, variërend van gegevens binnendringen functies tot training, scoren, en validatie processen.
 
-Een module kan een reeks parameters hebben waarmee u de interne algoritmen van de module kunt configureren. Wanneer u een module op het canvas selecteert, worden de para meters van de module weer gegeven in het deel venster Eigenschappen rechts van het canvas. U kunt de parameters in dit deelvenster wijzigen om het model af te stemmen. U kunt de reken resources voor afzonderlijke modules in de ontwerp functie instellen. 
+Een module kan een reeks parameters hebben waarmee u de interne algoritmen van de module kunt configureren. Wanneer u een module op het canvas selecteert, worden de parameters van de module weergegeven in het deelvenster Properties, rechts van het canvas. U kunt de parameters in dit deelvenster wijzigen om het model af te stemmen. U de rekenresources voor afzonderlijke modules in de ontwerper instellen. 
 
-![Eigenschappen van module](./media/concept-designer/properties.png)
+![Module-eigenschappen](./media/concept-designer/properties.png)
 
-Zie voor meer informatie over de beschik bare bibliotheek met machine learning algoritmen [overzicht van algoritme & module](algorithm-module-reference/module-reference.md)
+Zie Overzicht van het [referentieoverzicht van & module](algorithm-module-reference/module-reference.md)
 
-## <a name="compute"></a>Reken resources
+## <a name="compute-resources"></a><a name="compute"></a>Rekenresources
 
-Gebruik reken resources van uw werk ruimte om uw pijp lijn uit te voeren en uw geïmplementeerde modellen als realtime-eind punten of pijplijn eindpunten te hosten (voor batch-deinterferentie). De ondersteunde compute-doelen zijn:
+Gebruik rekenresources uit uw werkruimte om uw pijplijn uit te voeren en uw geïmplementeerde modellen te hosten als realtime eindpunten of pijplijneindpunten (voor batch-gevolgtrekking). De ondersteunde compute targets zijn:
 
 | Rekendoel | Training | Implementatie |
 | ---- |:----:|:----:|
-| Azure Machine Learning-Computing | ✓ | |
+| Azure Machine Learning compute | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Reken doelen zijn gekoppeld aan uw [Azure machine learning-werk ruimte](concept-workspace.md). U beheert uw reken doelen in uw werk ruimte in [Azure machine learning Studio (klassiek)](https://ml.azure.com).
+Rekendoelen zijn gekoppeld aan uw [Azure Machine Learning-werkruimte.](concept-workspace.md) U beheert uw rekendoelen in uw werkruimte in [Azure Machine Learning Studio (klassiek).](https://ml.azure.com)
 
 ## <a name="deploy"></a>Implementeren
 
-Als u real-time-interferentie wilt uitvoeren, moet u een pijp lijn als een **real-time-eind punt**implementeren. Het real-time eind punt maakt een interface tussen een externe toepassing en uw score model. Een aanroep van een real-time eind punt retourneert Voorspellings resultaten voor de toepassing in realtime. Als u een real-time eind punt wilt aanroepen, geeft u de API-sleutel door die is gemaakt tijdens het implementeren van het eind punt. Het eind punt is gebaseerd op REST, een populaire architectuur keuze voor webprogrammeer projecten.
+Als u realtime inferencing wilt uitvoeren, moet u een pijplijn implementeren als een **realtime eindpunt.** Het realtime eindpunt creëert een interface tussen een externe toepassing en uw scoremodel. Een oproep naar een real-time eindpunt retourneert voorspellingsresultaten in realtime naar de toepassing. Als u een aanroep wilt voeren naar een realtime eindpunt, passeert u de API-sleutel die is gemaakt toen u het eindpunt hebt geïmplementeerd. Het eindpunt is gebaseerd op REST, een populaire architectuurkeuze voor webprogrammeringsprojecten.
 
-Realtime-eind punten moeten worden geïmplementeerd in een Azure Kubernetes-service cluster.
+Realtime eindpunten moeten worden geïmplementeerd in een Azure Kubernetes Service-cluster.
 
-Zie [zelf studie: een machine learning model implementeren met de ontwerp functie](tutorial-designer-automobile-price-deploy.md)voor meer informatie over het implementeren van uw model.
+Zie [Zelfstudie: Een machine learning-model implementeren met de ontwerper](tutorial-designer-automobile-price-deploy.md)voor meer informatie over het implementeren van uw model.
 
 ## <a name="publish"></a>Publiceren
 
-U kunt ook een pijp lijn publiceren naar een **pijplijn eindpunt**. Net als bij een real-time-eind punt kunt u met een pijplijn eindpunt nieuwe pijp lijn uitvoeringen vanuit externe toepassingen verzenden met behulp van REST-aanroepen. U kunt echter geen gegevens in realtime verzenden of ontvangen met behulp van een pijplijn eindpunt.
+U ook een pijplijn naar een **pijplijneindpunt**publiceren. Net als bij een realtime eindpunt u met een eindpunt voor pijplijnnieuwe pijplijnuitvoeringen van externe toepassingen indienen met REST-aanroepen. U echter geen gegevens in realtime verzenden of ontvangen met behulp van een eindpunt van de pijplijn.
 
-Gepubliceerde pijp lijnen zijn flexibel, ze kunnen worden gebruikt om modellen te trainen of opnieuw te trainen, een batch-detraining [uit te voeren](how-to-run-batch-predictions-designer.md), nieuwe gegevens te verwerken en nog veel meer. U kunt meerdere pijp lijnen naar één pijp lijn-eind punt publiceren en opgeven welke pijplijn versie moet worden uitgevoerd.
+Gepubliceerde pijplijnen zijn flexibel, ze kunnen worden gebruikt om modellen te trainen of om te [scholen, batch-inferencing uit te voeren,](how-to-run-batch-predictions-designer.md)nieuwe gegevens te verwerken en nog veel meer. U meerdere pijplijnen publiceren naar één pijplijneindpunt en opgeven welke pijplijnversie moet worden uitgevoerd.
 
-Een gepubliceerde pijp lijn wordt uitgevoerd op de reken resources die u in de pijp lijn concept voor elke module definieert.
+Een gepubliceerde pijplijn wordt uitgevoerd op de rekenbronnen die u definieert in het pijplijnconcept voor elke module.
 
-De Designer maakt hetzelfde [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) -object als de SDK.
+De ontwerper maakt hetzelfde [Object PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) als de SDK.
 
 
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>Overstappen van de visuele interface naar de ontwerp functie
+## <a name="moving-from-the-visual-interface-to-the-designer"></a>Overstappen van de visuele interface naar de ontwerper
 
-De visuele interface (preview) is bijgewerkt en is nu Azure Machine Learning Designer (preview). De ontwerp functie is opnieuw ontworpen om een op een pijp lijn gebaseerde backend te gebruiken die volledig is geïntegreerd met de andere functies van Azure Machine Learning. 
+De visuele interface (preview) is bijgewerkt en is nu Azure Machine Learning designer (preview). De ontwerper is opnieuw ontworpen om een backend op basis van pijplijnen te gebruiken die volledig integreert met de andere functies van Azure Machine Learning. 
 
-Als gevolg van deze updates zijn sommige concepten en voor waarden voor de visuele interface gewijzigd of is de naam van de weer gegeven. Zie de onderstaande tabel voor de belangrijkste concept wijzigingen. 
+Als gevolg van deze updates zijn sommige concepten en termen voor de visuele interface gewijzigd of hernoemd. Zie de onderstaande tabel voor de belangrijkste conceptuele wijzigingen. 
 
-| Concept in de ontwerp functie | Eerder in de visuele interface |
+| Concept in de ontwerper | Voorheen in de visuele interface |
 | ---- |:----:|
-| Pijp lijn concept | Experiment |
-| Real-time eind punt | Webservice |
+| Pijplijnontwerp | Experiment |
+| Real-time eindpunt | Webservice |
 
-### <a name="migrating-to-the-designer"></a>Migreren naar de ontwerp functie
+### <a name="migrating-to-the-designer"></a>Migreren naar de ontwerper
 
-U kunt bestaande visuele interface experimenten en webservices omzetten in pijp lijnen en real-time eind punten in de ontwerp functie. Gebruik de volgende stappen om uw Visual Interface-assets te migreren:
+U bestaande visuele interface-experimenten en webservices converteren naar pijplijnen en realtime eindpunten in de ontwerper. Gebruik de volgende stappen om uw visuele interface-elementen te migreren:
 
 [!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Leer de basis beginselen van predictive analytics en machine learning met [de zelf studie: prijs van auto Mobile met de ontwerper](tutorial-designer-automobile-price-train-score.md)
-* Meer informatie over het wijzigen van bestaande [ontwerp voorbeelden](samples-designer.md) om ze aan te passen aan uw behoeften.
+* Leer de basisprincipes van predictive analytics en machine learning met [Tutorial: Predict auto prijs with the designer](tutorial-designer-automobile-price-train-score.md)
+* Meer informatie over het aanpassen van bestaande [designervoorbeelden](samples-designer.md) om ze aan te passen aan uw behoeften.
 

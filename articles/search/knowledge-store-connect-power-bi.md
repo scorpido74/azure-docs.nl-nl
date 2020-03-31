@@ -1,7 +1,7 @@
 ---
-title: Verbinding maken met een kennis archief (preview) met Power BI
+title: Verbinding maken met een kenniswinkel (preview) met Power BI
 titleSuffix: Azure Cognitive Search
-description: Verbind een Azure Cognitive Search Knowledge Store (preview) met Power BI voor analyse en onderzoek.
+description: Verbind een Azure Cognitive Search knowledge store (preview) met Power BI voor analyse en verkenning.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
@@ -9,85 +9,85 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270031"
 ---
-# <a name="connect-a-knowledge-store-with-power-bi"></a>Verbinding maken met een kennis archief met Power BI
+# <a name="connect-a-knowledge-store-with-power-bi"></a>Sluit een kenniswinkel aan met Power BI
 
 > [!IMPORTANT] 
-> Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
+> Knowledge store is momenteel in openbare preview. Preview-functionaliteit wordt geleverd zonder overeenkomst op serviceniveau en wordt niet aanbevolen voor productieworkloads. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure Previews voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)meer informatie. De [REST API versie 2019-05-06-Preview](search-api-preview.md) biedt preview functies. Er is momenteel beperkte portalondersteuning en geen .NET SDK-ondersteuning.
 
-In dit artikel leert u hoe u verbinding kunt maken met een kennis archief en hoe u deze kunt verkennen met behulp van Power Query in de Power BI Desktop-app. U kunt sneller aan de slag met sjablonen of een aangepast dash board maken.
+In dit artikel leert u hoe u verbinding maken met een kennisarchief en een kenniswinkel verkennen met Power Query in de Power BI Desktop-app. U sneller aan de slag met sjablonen of een aangepast dashboard maken.
 
-+ Volg de stappen in [een kennis archief maken in de Azure Portal](knowledge-store-create-portal.md) of [maak een Azure Cognitive Search Knowledge Store door rest te gebruiken](knowledge-store-create-rest.md) om het voor beeld van het kennis archief te maken dat wordt gebruikt in dit overzicht. U hebt ook de naam nodig van het Azure Storage-account dat u hebt gebruikt om het kennis archief te maken, samen met de toegangs sleutel van de Azure Portal.
++ Volg de stappen in [Een kennisarchief maken in de Azure-portal](knowledge-store-create-portal.md) of [Maak een Azure Cognitive Search-kennisarchief met REST](knowledge-store-create-rest.md) om de voorbeeldkenniswinkel te maken die in deze walkthrough wordt gebruikt. U hebt ook de naam nodig van het Azure Storage-account dat u hebt gebruikt om de kenniswinkel te maken, samen met de toegangssleutel van de Azure-portal.
 
-+ [Power BI Desktop installeren](https://powerbi.microsoft.com/downloads/)
++ [Installer Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
-## <a name="sample-power-bi-template---azure-portal-only"></a>Voor beeld-Power BI sjabloon-alleen Azure Portal
+## <a name="sample-power-bi-template---azure-portal-only"></a>Voorbeeld van Power BI-sjabloon - alleen Azure-portal
 
-Wanneer u een [kennis archief maakt met behulp van de Azure Portal](knowledge-store-create-portal.md), kunt u een [Power bi sjabloon](https://github.com/Azure-Samples/cognitive-search-templates) downloaden op de tweede pagina van de wizard **gegevens importeren** . Met deze sjabloon krijgt u verschillende visualisaties, zoals WordCloud en Network Navigator, voor inhoud op basis van tekst. 
+Wanneer u een [kennisarchief maakt met de Azure-portal,](knowledge-store-create-portal.md)u een [Power BI-sjabloon](https://github.com/Azure-Samples/cognitive-search-templates) downloaden op de tweede pagina van de wizard **Gegevens importeren.** Deze sjabloon biedt u verschillende visualisaties, zoals WordCloud en Network Navigator, voor inhoud op basis van tekst. 
 
-Klik op **Power bi sjabloon ophalen** op de pagina **cognitieve vaardig heden toevoegen** om de sjabloon op te halen en te downloaden van de open bare github locatie. De wizard wijzigt de sjabloon om de vorm van uw gegevens aan te passen, zoals vastgelegd in de Knowledge Store-projecties die zijn opgegeven in de wizard. Daarom is de sjabloon die u downloadt, afhankelijk van elke keer dat u de wizard uitvoert, ervan uitgaande dat er verschillende gegevens invoer en vaardigheids selecties zijn.
+Klik **op Power BI-sjabloon ophalen** op de pagina Cognitieve vaardigheden **toevoegen** om de sjabloon op te halen en te downloaden van de openbare GitHub-locatie. De wizard wijzigt de sjabloon om de vorm van uw gegevens aan te passen, zoals vastgelegd in de projecties voor kennisarchiefdie in de wizard zijn opgegeven. Om deze reden varieert de sjabloon die u downloadt elke keer dat u de wizard uitvoert, uitgaande van verschillende gegevensinvoer en vaardigheidsselecties.
 
-![Voor beeld van Azure Cognitive Search Power BI sjabloon](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Voor beeld Power BI sjabloon")
+![Voorbeeld van Azure Cognitive Search Power BI-sjabloon](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Voorbeeld van Power BI-sjabloon")
 
 > [!NOTE]
-> Hoewel de sjabloon wordt gedownload terwijl de wizard halverwege de vlucht is, moet u wachten totdat het kennis archief daad werkelijk is gemaakt in azure Table Storage voordat u het kunt gebruiken.
+> Hoewel de sjabloon wordt gedownload terwijl de wizard zich halverwege de vlucht bevindt, moet u wachten tot de kenniswinkel daadwerkelijk is gemaakt in Azure Table-opslag voordat u deze gebruiken.
 
 ## <a name="connect-with-power-bi"></a>Verbinden met Power BI
 
-1. Start Power BI Desktop en klik op **gegevens ophalen**.
+1. Start Power BI Desktop en klik op **Gegevens opvragen**.
 
-1. Selecteer in het venster **gegevens ophalen** de optie **Azure**en selecteer vervolgens **Azure Table Storage**.
+1. Selecteer **Azure**en selecteer **azure-tabelopslag**in het venster **Gegevens opdoen** en selecteer vervolgens Azure Table Storage .
 
-1. Klik op **Verbinding maken**.
+1. Klik op **Verbinden**.
 
-1. Voer bij **account naam of-URL**de naam in van uw Azure Storage account (de volledige URL wordt voor u gemaakt).
+1. Voer **voor accountnaam of URL**de naam van uw Azure Storage-account in (de volledige URL wordt voor u gemaakt).
 
-1. Als u hierom wordt gevraagd, voert u de sleutel voor het opslag account in.
+1. Voer de sleutel van het opslagaccount in als u daarom wordt gevraagd.
 
-1. Selecteer de tabellen die het Hotel bevatten beoordelingen gegevens die zijn gemaakt door de vorige scenario's. 
+1. Selecteer de tabellen met de gegevens van hotelbeoordelingen die zijn gemaakt door de vorige walkthroughs. 
 
-   + Voor de portal-walkthrough zijn tabel namen *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases*en *hotelReviewsSsPages*. 
+   + Voor de portal walkthrough zijn tabelnamen *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases*en *hotelReviewsSsPages*. 
    
-   + Voor de REST-instructies zijn tabel namen *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases*en *hotelReviewsSentiment*.
+   + Voor de REST walkthrough zijn tafelnamen *hotelReviewsDocument,* *hotelReviewsPages,* *hotelReviewsKeyPhrases*en *hotelReviewsSentiment*.
 
-1. Klik op **laden**.
+1. Klik **op Laden**.
 
-1. Klik op het bovenste lint op **Query's bewerken** om de **Power query editor**te openen.
+1. Klik op het bovenste lint op **Query's bewerken** om de Power Query Editor te **openen.**
 
    ![Power Query openen](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query openen")
 
-1. Selecteer *hotelReviewsSsDocument*en verwijder vervolgens de kolommen *PartitionKey*, *RowKey*en *Time Stamp* . 
+1. Selecteer *hotelReviewsSsDocument*en verwijder vervolgens de kolommen *PartitionKey,* *RowKey*en *Timestamp.* 
    ![Tabellen bewerken](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Tabellen bewerken")
 
-1. Klik op het pictogram met tegengestelde pijlen aan de rechter kant van de tabel om de *inhoud*uit te vouwen. Wanneer de lijst met kolommen wordt weer gegeven, selecteert u alle kolommen en vervolgens selecteert u de kolommen die beginnen met ' meta data '. Klik op **OK** om de geselecteerde kolommen weer te geven.
+1. Klik op het pictogram met tegengestelde pijlen aan de rechterbovenzijde van de tabel om de *inhoud*uit te vouwen. Wanneer de lijst met kolommen wordt weergegeven, selecteert u alle kolommen en schakelt u kolommen uit die beginnen met 'metagegevens'. Klik op **OK** om de geselecteerde kolommen weer te geven.
 
-   ![Tabellen bewerken](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Inhoud uitvouwen")
+   ![Tabellen bewerken](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Inhoud uitbreiden")
 
-1. Wijzig het gegevens type voor de volgende kolommen door te klikken op het pictogram ABC-123 linksboven in de kolom.
+1. Wijzig het gegevenstype voor de volgende kolommen door linksboven in de kolom op het pictogram ABC-123 te klikken.
 
-   + Voor *content. Latitude* en *content. lengte graad*, selecteert u **decimaal getal**.
-   + Voor *content. reviews_date* en *content. Reviews_dateAdded*selecteert u **datum en tijd**.
+   + Selecteer **Decimalnumber**voor *content.latitude* en *Content.longitude*.
+   + Selecteer **Datum/tijd**voor *Content.reviews_date* en *Content.reviews_dateAdded*.
 
-   ![Gegevens typen wijzigen](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Gegevens typen wijzigen")
+   ![Gegevenstypen wijzigen](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Gegevenstypen wijzigen")
 
-1. Selecteer *hotelReviewsSsPages*en herhaal stap 9 en 10 om de kolommen te verwijderen en de *inhoud*uit te vouwen.
-1. Wijzig het gegevens type voor *content. SentimentScore* naar een **decimaal getal**.
-1. Selecteer *hotelReviewsSsKeyPhrases* en herhaal stap 9 en 10 om de kolommen te verwijderen en de *inhoud*uit te vouwen. Er zijn geen wijzigingen in het gegevens type voor deze tabel.
+1. Selecteer *hotelReviewsSsPages*en herhaal vervolgens stap 9 en 10 om de kolommen te verwijderen en de *inhoud*uit te vouwen.
+1. Wijzig het gegevenstype voor *Content.SentimentScore* in **Decimal Number**.
+1. Selecteer *hotelReviewsSsKeyPhrases* en herhaal stap 9 en 10 om de kolommen te verwijderen en de *inhoud*uit te breiden. Er zijn geen wijzigingen in het gegevenstype voor deze tabel.
 
-1. Klik op de opdracht balk op **sluiten en Toep assen**.
+1. Klik op de opdrachtbalk op **Sluiten en Toepassen**.
 
-1. Klik op de tegel model in het navigatie deel venster links en controleer of Power BI relaties tussen alle drie de tabellen weergeeft.
+1. Klik op de tegel Model in het linkernavigatiedeelvenster en valideer of Power BI relaties tussen alle drie de tabellen weergeeft.
 
    ![Relaties valideren](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Relaties valideren")
 
-1. Dubbel klik op elke relatie en zorg ervoor dat de **Kruis filter richting** is ingesteld op **beide**.  Hierdoor kunnen uw visuals worden vernieuwd wanneer een filter wordt toegepast.
+1. Dubbelklik op elke relatie en zorg ervoor dat de **richting Kruisfilter** is ingesteld op **Beide**.  Hierdoor kunnen uw visuals worden vernieuwd wanneer een filter wordt toegepast.
 
-1. Klik op de tegel rapport in het navigatie deel venster aan de linkerkant om gegevens te verkennen met behulp van visualisaties. Voor tekst velden zijn tabellen en kaarten nuttige visualisaties. U kunt de velden in elk van de drie tabellen kiezen om de tabel of de kaart op te vullen. 
+1. Klik op de tegel Rapport in het linkernavigatiedeelvenster om gegevens te verkennen via visualisaties. Voor tekstvelden zijn tabellen en kaarten nuttige visualisaties. U velden kiezen uit elk van de drie tabellen om de tabel of kaart in te vullen. 
 
 <!-- ## Try with larger data sets
 
@@ -108,15 +108,15 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>Opruimen
 
-Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de resources die u hebt gemaakt, nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen, maar u kunt ook de resourcegroep verwijderen als u de volledige resourceset wilt verwijderen.
 
-U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
+U resources in de portal vinden en beheren met de koppeling **Alle resources** of **Resourcegroepen** in het linkernavigatiedeelvenster.
 
-Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven.
+Als u een gratis service gebruikt, moet u er rekening mee houden dat u beperkt bent tot drie indexen, indexeerders en gegevensbronnen. U afzonderlijke items in de portal verwijderen om onder de limiet te blijven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het volgende artikel voor meer informatie over het verkennen van dit kennis archief met behulp van Storage Explorer.
+Zie het volgende artikel voor meer informatie over het verkennen van deze kenniswinkel met Storage Explorer.
 
 > [!div class="nextstepaction"]
-> [Weer geven met Storage Explorer](knowledge-store-view-storage-explorer.md)
+> [Weergeven met Storage Explorer](knowledge-store-view-storage-explorer.md)

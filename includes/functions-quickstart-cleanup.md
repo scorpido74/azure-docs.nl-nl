@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: a1bedf97f5ae7c48e5bcb47880a25ee1219b917b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e5213a20036385ff25373252e6670d8bd86a4b07
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175819"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056585"
 ---
-Andere Quick Starts in deze verzameling zijn op deze Quick Start gebaseerd. Verwijder de resources niet als u van plan bent om te werken met volgende snelstartgidsen, zelfstudies of een van de services die u in deze snelstartgids hebt gemaakt.
+Andere Quick Starts in deze verzameling zijn op deze Quick Start gebaseerd. Als u van plan bent om te werken met volgende quickstarts, tutorials, of met een van de services die u hebt gemaakt in deze quickstart, niet opruimen van de middelen.
 
-*Resources* verwijst in Azure naar functie-apps, functies, opslagaccounts enzovoort. Deze zijn gegroepeerd in *resourcegroepen*. U kunt alle resources in een groep verwijderen door de groep zelf te verwijderen. 
+*Resources* in Azure verwijzen naar functie-apps, functies, opslagaccounts, enzovoort. Ze zijn gegroepeerd in *resourcegroepen*en u alles in een groep verwijderen door de groep te verwijderen. 
 
 U hebt resources gemaakt om deze snelstartgidsen te voltooien. Deze resources kunnen bij u in rekening worden gebracht, afhankelijk van de [accountstatus](https://azure.microsoft.com/account/) en [serviceprijzen](https://azure.microsoft.com/pricing/). Als u de resources niet meer nodig hebt, kunt u ze als volgt verwijderen:
 
@@ -25,7 +25,7 @@ U hebt resources gemaakt om deze snelstartgidsen te voltooien. Deze resources ku
 
    Selecteer **Resourcegroepen** en selecteer vervolgens de resourcegroep die u hebt gebruikt voor deze snelstartgids, om deze pagina te openen vanuit het dashboard.
 
-2. Bekijk op de pagina **Resourcegroep** de lijst met opgenomen resources en controleer of dit de resources zijn die u wilt verwijderen.
+2. Bekijk op de pagina **Resourcegroep** de lijst met opgenomen bronnen en controleer of deze bronnen zijn die u wilt verwijderen.
  
 3. Selecteer **Resourcegroep verwijderen** en volg de instructies.
 

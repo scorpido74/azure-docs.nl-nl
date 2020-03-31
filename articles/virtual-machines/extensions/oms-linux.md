@@ -1,6 +1,6 @@
 ---
-title: Log Analytics VM-extensie voor Linux
-description: De Log Analytics-agent op Linux-machine met behulp van de extensie van een virtuele machine implementeren.
+title: De virtuele-machine-extensie Log Analytics voor Linux
+description: Implementeer de Log Analytics-agent op de virtuele linuxmachine met behulp van een virtuele machine-extensie.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -15,20 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
 ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250554"
 ---
-# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics VM-extensie voor Linux
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>De virtuele-machine-extensie Log Analytics voor Linux
 
 ## <a name="overview"></a>Overzicht
 
-Azure Monitor Logboeken biedt bewakings-, waarschuwings-en waarschuwings functies voor het door voeren van waarschuwingen voor Cloud-en on-premises activa. De Log Analytics extensie van de virtuele machine voor Linux wordt gepubliceerd en ondersteund door micro soft. De extensie voor de Log Analytics-agent geïnstalleerd op virtuele Azure-machines en virtuele machines voor een bestaande Log Analytics-werkruimte worden ingeschreven. In dit document worden de ondersteunde platforms, configuraties en implementatie-opties voor de extensie van de Log Analytics-virtuele machine voor Linux.
+Azure Monitor Logs biedt beheer-, waarschuwings- en waarschuwingsherstelmogelijkheden voor cloud- en on-premises assets. De log analytics virtuele machine extensie voor Linux wordt gepubliceerd en ondersteund door Microsoft. De extensie installeert de Log Analytics-agent op virtuele Azure-machines en schrijft virtuele machines in een bestaande Log Analytics-werkruimte. In dit document worden de ondersteunde platforms, configuraties en implementatieopties voor de extensie voor virtuele machines van Log Analytics voor Linux beschreven.
 
 >[!NOTE]
->Als onderdeel van de lopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor, wordt de OMS-Agent voor Windows of Linux worden aangeduid als de Log Analytics-agent voor Windows en de Log Analytics-agent voor Linux.
+>Als onderdeel van de voortdurende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor, wordt de OMS-agent voor Windows of Linux de Log Analytics-agent voor Windows en Log Analytics-agent voor Linux genoemd.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,12 +36,12 @@ Azure Monitor Logboeken biedt bewakings-, waarschuwings-en waarschuwings functie
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-Raadpleeg het [overzichts artikel log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) voor meer informatie over de ondersteunde Linux-distributies.
+Zie het overzichtsartikel van de [Log Analytics-agent](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) voor meer informatie over de ondersteunde Linux-distributies.
 
-### <a name="agent-and-vm-extension-version"></a>Versie agent en VM-extensie
-De volgende tabel bevat een toewijzing van de versie van de Log Analytics VM-extensie en bundel van Log Analytics-agent voor elke versie. Een koppeling naar de opmerkingen bij de release voor de versie van Log Analytics-agent-bundel is opgenomen. Opmerkingen bij de release bevatten informatie over oplossingen voor problemen en nieuwe functies die beschikbaar zijn voor een opgegeven agent-release.  
+### <a name="agent-and-vm-extension-version"></a>Versie agent- en VM-extensie
+In de volgende tabel vindt u een toewijzing van de versie van de VM-extensie Log Analytics en de log-analyse-agentbundel voor elke release. Een link naar de release notes voor de Log Analytics agent bundel versie is inbegrepen. Release notes bevatten details over bug fixes en nieuwe functies beschikbaar voor een bepaalde agent release.  
 
-| Versie van de extensie log Analytics virtuele Linux-machine | Log Analytics-Agent bundelversie krijgt | 
+| Versie van De versie van de systeemsysteem van De Analyse van Linux VM | Log Analytics Agent-bundelversie | 
 |--------------------------------|--------------------------|
 | 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
@@ -64,15 +64,15 @@ De volgende tabel bevat een toewijzing van de versie van de Log Analytics VM-ext
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center richt de Log Analytics-agent automatisch en verbindt deze met een standaard Log Analytics-werkruimte gemaakt door ASC in uw Azure-abonnement. Als u van Azure Security Center gebruikmaakt, niet uitgevoerd door de stappen in dit document. In dat geval wordt de geconfigureerde werkruimte overschreven en de verbinding met Azure Security Center.
+Azure Security Center voorziet automatisch in de loganalytics-agent en verbindt deze met een standaard Log Analytics-werkruimte die door ASC is gemaakt in uw Azure-abonnement. Als u Azure Security Center gebruikt, voert u de stappen in dit document niet uit. Hierdoor overschrijft u de geconfigureerde werkruimte en verbreekt de verbinding met Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-De Log Analytics-Agent-extensie voor Linux is vereist dat de virtuele doelmachine is verbonden met internet. 
+De Log Analytics Agent-extensie voor Linux vereist dat de beoogde virtuele machine is verbonden met het internet. 
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON ziet u het schema voor de Log Analytics-Agent-extensie. De uitbrei ding vereist de werk ruimte-ID en de werkruimte sleutel van de doel Log Analytics werkruimte; deze waarden vindt u in de Azure Portal [log Analytics-werk ruimte](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) . Omdat de sleutel van de werkruimte moet worden behandeld als gevoelige gegevens, moet deze worden opgeslagen in de instellingsconfiguratie van een beveiligde. Azure-VM-extensie beveiligde instellingsgegevens versleuteld en alleen op de virtuele doelmachine worden ontsleuteld. Houd er rekening mee dat **workspaceId** en **workspaceKey** hoofdletter gevoelig zijn.
+In de volgende JSON wordt het schema voor de extensie Log Analytics Agent weergegeven. De extensie vereist de werkruimte-id en werkruimtesleutel van de doellogboekanalysewerkruimte. deze waarden zijn [te vinden in uw Log Analytics-werkruimte](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) in de Azure-portal. Omdat de werkruimtesleutel moet worden behandeld als gevoelige gegevens, moet deze worden opgeslagen in een configuratie met beveiligde instellingen. Azure VM-extensiebeveiligde instellingsgegevens worden versleuteld en alleen gedecodeerd op de virtuele doelmachine. WerkruimteId **workspaceId** en **werkruimteSleutel** zijn hoofdlettergevoelig.
 
 ```json
 {
@@ -99,27 +99,27 @@ De volgende JSON ziet u het schema voor de Log Analytics-Agent-extensie. De uitb
 ```
 
 >[!NOTE]
->Het bovenstaande schema wordt ervan uitgegaan dat er op het hoogste niveau van de sjabloon worden geplaatst. Als u de virtuele machine in de sjabloon plaatst, moeten de eigenschappen `type` en `name` worden gewijzigd, [zoals hieronder beschreven](#template-deployment).
+>Het bovenstaande schema gaat ervan uit dat het op het wortelniveau van de sjabloon wordt geplaatst. Als u deze in de bron van `type` de `name` virtuele machine in de sjabloon plaatst, moeten de eigenschappen en eigenschappen worden gewijzigd, zoals [verder naar beneden](#template-deployment)wordt beschreven.
 
-### <a name="property-values"></a>Waarden van eigenschappen
+### <a name="property-values"></a>Eigenschapswaarden
 
-| Naam | Waarde / voorbeeld |
+| Name | Waarde / Voorbeeld |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
-| publisher | Microsoft.EnterpriseCloud.Monitoring |
+| uitgever | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
-| typeHandlerVersion | 1.7 |
-| werkruimte-id (bijvoorbeeld) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
-| workspaceKey (bijvoorbeeld) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
+| typeHandlerVersie | 1.7 |
+| workspaceId (bijv. | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceKey (bijv. | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9XffbrTahyrwv35W0pOqQAU7uQ== |
 
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
-Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor de configuratie na implementatie vereist is, zoals het onboarden van Azure Monitor-Logboeken. Een voor beeld van een resource manager-sjabloon met de extensie van de Log Analytics agent-VM vindt u in de [Galerie van Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)start. 
+Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor een configuratie na implementatie vereist is, zoals onboarding in Azure Monitor-logboeken. Een voorbeeld sjabloon resourcebeheer met de VM-extensie Log Analytics Agent is te vinden in de [Azure Quickstart Gallery](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
-De JSON-configuratie voor een VM-extensie worden genest in de bron van de virtuele machine of geplaatst op de hoofdmap of het hoogste niveau van een Resource Manager JSON-sjabloon. De plaatsing van de JSON-configuratie is van invloed op de waarde van de resourcenaam en het type. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/templates/child-resource-name-type.md). 
+De JSON-configuratie voor een virtuele machine-extensie kan worden genest in de bron van de virtuele machine of op het hoofd- of hoogste niveau van een JSON-sjabloon voor Resource Manager worden geplaatst. De plaatsing van de JSON-configuratie is van invloed op de waarde van de resourcenaam en -type. Zie [Naam en type voor onderliggende bronnen instellen voor](../../azure-resource-manager/templates/child-resource-name-type.md)meer informatie . 
 
-Het volgende voorbeeld wordt ervan uitgegaan dat de VM-extensie is genest in de bron van de virtuele machine. Bij het nesten van de extensie bron wordt de JSON in het `"resources": []`-object van de virtuele machine geplaatst.
+In het volgende voorbeeld wordt ervan uitgegaan dat de VM-extensie is genest in de bron van de virtuele machine. Bij het nesten van de extensiebron wordt `"resources": []` de JSON in het object van de virtuele machine geplaatst.
 
 ```json
 {
@@ -144,7 +144,7 @@ Het volgende voorbeeld wordt ervan uitgegaan dat de VM-extensie is genest in de 
 }
 ```
 
-Bij het plaatsen van de JSON-extensie in de hoofdmap van de sjabloon, naam van de resource bevat een verwijzing naar de bovenliggende virtuele machine en het type weerspiegelt de geneste configuratie.  
+Wanneer u de uitbreidingsJSON aan de hoofdmap van de sjabloon plaatst, bevat de bronnaam een verwijzing naar de bovenliggende virtuele machine en het type weerspiegelt de geneste configuratie.  
 
 ```json
 {
@@ -171,7 +171,7 @@ Bij het plaatsen van de JSON-extensie in de hoofdmap van de sjabloon, naam van d
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
 
-De Azure CLI kan worden gebruikt voor het implementeren van de Log Analytics-Agent-VM-extensie op een bestaande virtuele machine. Vervang de waarde van *myWorkspaceKey* hieronder door de werkruimte sleutel en de *myWorkspaceId* -waarde met uw werk ruimte-id. Deze waarden zijn te vinden in uw Log Analytics-werk ruimte in de Azure Portal onder *Geavanceerde instellingen*. 
+De Azure CLI kan worden gebruikt om de VM-extensie Log Analytics Agent te implementeren op een bestaande virtuele machine. Vervang de *myWorkspaceKey-waarde* hieronder door uw werkruimtesleutel en de *myWorkspaceId-waarde* door uw werkruimte-id. Deze waarden zijn te vinden in uw Log Analytics-werkruimte in de Azure-portal onder *Geavanceerde instellingen*. 
 
 ```azurecli
 az vm extension set \
@@ -187,33 +187,33 @@ az vm extension set \
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met behulp van de Azure CLI. Als wilt zien de implementatiestatus van extensies voor een bepaalde virtuele machine, voert u de volgende opdracht uit met de Azure CLI.
+Gegevens over de status van extensie-implementaties kunnen worden opgehaald uit de Azure-portal en met behulp van de Azure CLI. Als u de implementatiestatus van extensies voor een bepaalde VM wilt bekijken, voert u de volgende opdracht uit met de Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Extensie uitvoering uitvoer wordt vastgelegd in het volgende bestand:
+De uitvoer van extensieuitvoering wordt vastgelegd in het volgende bestand:
 
 ```
 /opt/microsoft/omsagent/bin/stdout
 ```
 
-### <a name="error-codes-and-their-meanings"></a>Foutcodes en hun betekenis
+### <a name="error-codes-and-their-meanings"></a>Foutcodes en hun betekenissen
 
 | Foutcode | Betekenis | Mogelijke actie |
 | :---: | --- | --- |
-| 9 | Met de naam voortijdig inschakelen | [Werk de Azure Linux-agent](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) bij naar de meest recente beschik bare versie. |
-| 10 | Virtuele machine is al verbonden met een Log Analytics-werkruimte | StopOnMultipleConnections ingesteld op false in de openbare-instellingen voor de virtuele machine verbinding met de werkruimte die is opgegeven in het extensieschema, of verwijder deze eigenschap. Deze virtuele machine in rekening gebracht wanneer er voor elke werkruimte is verbonden met. |
-| 11 | Ongeldige configuratie opgegeven voor de extensie | Volg de voorgaande voorbeelden om in te stellen alle eigenschapswaarden die nodig zijn voor implementatie. |
-| 17 | Meld u Analytics-pakket-installatiefout | 
-| 19 | Fout tijdens de installatie van de OMI-pakket | 
-| 20 | Fout tijdens de installatie van de SCX-pakket |
-| 51 | Deze extensie wordt niet ondersteund voor besturingssysteem van de virtuele machine | |
-| 55 | Kan geen verbinding maken met de Azure Monitor-service of de vereiste pakketten ontbreken of met dpkg Package Manager is vergrendeld| Controleer of het systeem heeft toegang tot Internet of dat een geldige HTTP-proxy is opgegeven. Bovendien Controleer de juistheid van de werkruimte-ID en controleer of curl en tar-hulpprogramma's zijn geïnstalleerd. |
+| 9 | Voortijdig bellen inschakelen | [Werk de Azure Linux Agent](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) bij naar de nieuwste beschikbare versie. |
+| 10 | VM is al verbonden met een Log Analytics-werkruimte | Als u de vm wilt verbinden met de werkruimte die is opgegeven in het extensieschema, stelt u stopOnMultipleConnections in op false in openbare instellingen of verwijdert u deze eigenschap. Deze VM wordt één keer gefactureerd voor elke werkruimte waaraan deze is verbonden. |
+| 11 | Ongeldige config verstrekt aan de uitbreiding | Volg de voorgaande voorbeelden om alle eigenschapswaarden in te stellen die nodig zijn voor implementatie. |
+| 17 | Installatiefout log Analytics-pakket | 
+| 19 | OMI-pakketinstallatiestoring | 
+| 20 | Installatiefout SCX-pakket |
+| 51 | Deze extensie wordt niet ondersteund op het werkingssysteem van de VM | |
+| 55 | Kan geen verbinding maken met de Azure Monitor-service of vereiste pakketten ontbreken of dpkg-pakketbeheer is vergrendeld| Controleer of het systeem toegang tot internet heeft of dat er een geldige HTTP-proxy is verstrekt. Controleer bovendien de juistheid van de werkruimte-id en controleer of de voorzieningen voor krul en teer zijn geïnstalleerd. |
 
-Meer informatie over het oplossen van problemen vindt u in de [log Analytics-agent-for-Linux Troubleshooting Guide (Engelstalig](../../azure-monitor/platform/vmext-troubleshoot.md)).
+Aanvullende informatie over probleemoplossing is te vinden in de [Handleiding voor het oplossen van problemen met logboekanalyse-voor-Linux.](../../azure-monitor/platform/vmext-troubleshoot.md)
 
 ### <a name="support"></a>Ondersteuning
 
-Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
+Als u op enig moment in dit artikel meer hulp nodig hebt, u contact opnemen met de Azure-experts op de [FORUMS VOOR MSDN Azure en Stack Overflow.](https://azure.microsoft.com/support/forums/) U ook een Azure-ondersteuningsincident indienen. Ga naar de [Azure-ondersteuningssite](https://azure.microsoft.com/support/options/) en selecteer Ondersteuning krijgen. Lees de veelgestelde vragen over [Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor informatie over het gebruik van Azure Support.

@@ -1,50 +1,50 @@
 ---
-title: Over back-ups van Azure-bestands share
-description: Meer informatie over het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
+title: Back-up van Azure-bestandsshare
+description: Meer informatie over het maken van back-ups van Azure-bestandsshares in de kluis Van Recovery Services
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: 0e17b05a3febaa673fb29d45c2bcef25e2996df8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78386718"
 ---
-# <a name="about-azure-file-share-backup"></a>Over back-ups van Azure-bestands share
+# <a name="about-azure-file-share-backup"></a>Back-up van Azure-bestandsshare
 
-Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplossing die uw gegevens in de Cloud beschermt en extra onderhouds overhead voor on-premises back-upoplossingen verwijdert. De Azure Backup-service kan naadloos worden geïntegreerd met Azure file sync en biedt u de mogelijkheid om uw bestands share gegevens en uw back-ups te centraliseren. Met deze eenvoudige, betrouw bare en veilige oplossing kunt u de beveiliging van uw zakelijke bestands shares in een paar eenvoudige stappen configureren met een garantie dat u uw gegevens kunt herstellen in het geval van een nood geval.
+Azure file share backup is een native, cloud gebaseerde back-upoplossing die uw gegevens in de cloud beschermt en extra onderhoudsoverheadkosten elimineert die betrokken zijn bij on-premises back-upoplossingen. De Azure Backup-service integreert probleemloos met Azure-bestandssynchronisatie en stelt u in staat om uw gegevens voor het delen van bestanden en uw back-ups te centraliseren. Met deze eenvoudige, betrouwbare en veilige oplossing u de beveiliging voor uw bedrijfsbestandsaandelen in enkele eenvoudige stappen configureren met de zekerheid dat u uw gegevens herstellen in geval van een rampscenario.
 
-## <a name="key-benefits-of-azure-file-share-backup"></a>Belangrijkste voor delen van back-ups van Azure-bestands share
+## <a name="key-benefits-of-azure-file-share-backup"></a>Belangrijkste voordelen van back-ups van Azure-bestandsshare
 
-* Geen infra structuur: er is geen implementatie nodig om de beveiliging voor uw bestands shares te configureren.
-* Ingebouwde beheer mogelijkheden: u kunt back-ups plannen en de gewenste Bewaar periode opgeven zonder de extra overhead voor het weghalen van gegevens.
-* Direct terugzetten: back-up van Azure-bestands share maakt gebruik van moment opnamen van bestands shares, zodat u alleen de bestanden kunt selecteren die u onmiddellijk wilt herstellen.
-* Waarschuwingen en rapportage: u kunt waarschuwingen configureren voor back-up-en herstel fouten en de rapportage oplossing van Azure Backup gebruiken om inzicht te krijgen in de back-ups van uw bestands shares.
+* Geen infrastructuur: er is geen implementatie nodig om de beveiliging voor uw bestandsshares te configureren.
+* Ingebouwde beheermogelijkheden: u back-ups plannen en de gewenste bewaarperiode opgeven zonder de extra overhead van het snoeien van gegevens.
+* Direct herstellen: Azure file share backup maakt gebruik van snapshots voor bestandsshare, zodat u alleen de bestanden selecteren die u direct wilt herstellen.
+* Waarschuwingen en rapportage: u waarschuwingen configureren voor back-ups en herstelfouten en de rapportageoplossing van Azure Backup gebruiken om inzicht te krijgen in back-ups van uw bestanden.
 
-## <a name="architecture"></a>De architectuur
+## <a name="architecture"></a>Architectuur
 
-![Azure file share-back-uparchitectuur](./media/azure-file-share-backup-overview/azure-file-shares-backup-architecture.png)
+![Back-uparchitectuur voor Azure-bestanden](./media/azure-file-share-backup-overview/azure-file-shares-backup-architecture.png)
 
 ## <a name="how-the-backup-process-works"></a>Hoe het back-upproces werkt
 
-1. De eerste stap bij het configureren van de back-up voor Azure-bestands shares is het maken van een Recovery Services-kluis. De kluis biedt een geconsolideerde weer gave van de back-ups die zijn geconfigureerd voor verschillende werk belastingen.
+1. De eerste stap in het configureren van back-ups voor Azure File-shares is het maken van een kluis met herstelservices. De kluis geeft u een geconsolideerde weergave van de back-ups die zijn geconfigureerd voor verschillende workloads.
 
-2. Wanneer u een kluis hebt gemaakt, detecteert de Azure Backup-service de opslag accounts die kunnen worden geregistreerd bij de kluis. U kunt het opslag account selecteren dat als host fungeert voor de bestands shares die u wilt beveiligen.
+2. Zodra u een kluis hebt gemaakt, detecteert de Azure Backup-service de opslagaccounts die bij de kluis kunnen worden geregistreerd. U het opslagaccount selecteren dat de bestandsshares host die u wilt beveiligen.
 
-3. Nadat u het opslag account hebt geselecteerd, wordt in de Azure Backup-service de set bestands shares weer gegeven die aanwezig zijn in het opslag account en worden de namen opgeslagen in de catalogus met beheer lagen.
+3. Nadat u het opslagaccount hebt geselecteerd, geeft de Azure Backup-service de set bestandsshares weer die aanwezig zijn in het opslagaccount en worden hun namen opgeslagen in de catalogus van de beheerlaag.
 
-4. Vervolgens configureert u het back-upbeleid (planning en retentie) op basis van uw vereisten en selecteert u de bestands shares waarvan u een back-up wilt maken. De Azure Backup-service registreert de planningen in het besturings vlak voor geplande back-ups.
+4. Vervolgens configureert u het back-upbeleid (planning en retentie) op basis van uw vereisten en selecteert u de bestandsshares om een back-up te maken. De Azure Backup-service registreert de schema's in het controlevlak om geplande back-ups uit te maken.
 
-5. Op basis van het opgegeven beleid activeert de Azure Backup Scheduler op het geplande tijdstip back-ups. Als onderdeel van deze taak wordt de moment opname van de bestands share gemaakt met behulp van de bestands share-API. Alleen de URL van de moment opname wordt opgeslagen in het meta gegevens archief.
+5. Op basis van het opgegeven beleid activeert de Azure Backup scheduler back-ups op het geplande tijdstip. Als onderdeel van die taak wordt de momentopname voor bestandsshare gemaakt met behulp van de API voor bestandsshare. Alleen de url van de momentopname wordt opgeslagen in het metagegevensarchief.
 
     >[!NOTE]
-    >De bestands share gegevens worden niet overgebracht naar de back-upservice omdat de back-upservice moment opnamen maakt en beheert die deel uitmaken van uw opslag account.
+    >De gegevens voor bestandsshare worden niet overgedragen naar de back-upservice, omdat de back-upservice momentopnamen maakt en beheert die deel uitmaken van uw opslagaccount.
 
-6. U kunt de inhoud van de Azure-bestands share (afzonderlijke bestanden of de volledige share) herstellen op basis van moment opnamen die beschikbaar zijn op de bron bestands share. Zodra de bewerking is geactiveerd, wordt de URL van de moment opname opgehaald uit het meta gegevens archief en worden de gegevens weer gegeven en overgebracht van de bron momentopname naar de doel bestands share van uw keuze.
+6. U de inhoud van azure-bestandendelen (afzonderlijke bestanden of het volledige aandeel) herstellen van momentopnamen die beschikbaar zijn in de bronbestandsshare. Zodra de bewerking is geactiveerd, wordt de momentopname-URL opgehaald uit het metagegevensarchief en worden de gegevens weergegeven en overgedragen van de bronmomentopname naar het doelbestandaandeel van uw keuze.
 
-7. De bewakings gegevens van de taak back-up en herstel worden gepusht naar de Azure Backup monitoring-service. Hierdoor kunt u Cloud back-ups voor uw bestands shares in één dash board bewaken. Daarnaast kunt u ook waarschuwingen of e-mail meldingen configureren wanneer de status van de back-up wordt beïnvloed. E-mails worden verzonden via de e-mail service van Azure.
+7. De gegevens voor het back-upen en herstellen van taakbewaking worden naar de Azure Backup Monitoring-service gepusht. Hiermee u cloudback-ups voor uw bestandsshares in één dashboard controleren. Bovendien u ook waarschuwingen of e-mailmeldingen configureren wanneer de back-upstatus wordt beïnvloed. E-mails worden verzonden via de Azure-e-mailservice.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [maken van back-ups van Azure-bestands shares](backup-afs.md)
-* Vind antwoorden op [vragen over het maken van back-ups van Azure files](backup-azure-files-faq.md)
+* Meer informatie over het [maken van back-ups van Azure-bestandsshares](backup-afs.md)
+* Antwoorden vinden [op vragen over het maken van back-ups van Azure-bestanden](backup-azure-files-faq.md)

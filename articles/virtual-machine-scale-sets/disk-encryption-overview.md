@@ -1,6 +1,6 @@
 ---
-title: Azure Disk Encryption voor Virtual Machine Scale Sets inschakelen
-description: In dit artikel vindt u instructies voor het inschakelen van Microsoft Azure schijf versleuteling voor Virtual Machine Scale Sets
+title: Azure-schijfversleuteling inschakelen voor virtuele machineschaalsets
+description: In dit artikel vindt u instructies voor het inschakelen van Microsoft Azure Disk Encryption for Virtual Machine Scale Sets
 author: msmbaldwin
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
@@ -8,25 +8,25 @@ ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 36eb83d99af299260ebbbd74fe56d69921ba389b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278973"
 ---
-# <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>Azure Disk Encryption voor Virtual Machine Scale Sets
+# <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>Azure-schijfversleuteling voor virtuele machineschaalsets
 
-Azure Disk Encryption biedt volume versleuteling voor het besturings systeem en de gegevens schijven van uw virtuele machines, waardoor uw gegevens worden beschermd en beveiligd om te voldoen aan de verplichtingen van de organisatie beveiliging en naleving. Zie [Azure Disk Encryption: virtuele Linux-machines](../virtual-machines/linux/disk-encryption-overview.md) en- [Azure Disk Encryption: Windows-vm's](../virtual-machines/windows/disk-encryption-overview.md) voor meer informatie.  
+Azure Disk Encryption biedt volumeversleuteling voor het besturingssysteem en de gegevensschijven van uw virtuele machines, zodat uw gegevens worden beschermd en beschermd om te voldoen aan de verplichtingen op het gebied van organisatiebeveiliging en naleving. Zie [Azure Disk Encryption: Linux VM's](../virtual-machines/linux/disk-encryption-overview.md) en [Azure Disk Encryption: Windows VM's voor](../virtual-machines/windows/disk-encryption-overview.md) meer informatie  
 
-Azure Disk Encryption kan ook worden toegepast op schaal sets voor virtuele Windows-en Linux-machines, in deze gevallen:
-- Schaal sets die zijn gemaakt met Managed disks. Azure Disk Encryption wordt niet ondersteund voor een systeem eigen (of niet-beheerde) schijf schaal sets.
-- Besturings systeem-en gegevens volumes in Windows-schaal sets.
-- Gegevens volumes in Linux-schaal sets. Versleuteling van de besturingssysteem schijf wordt op dit moment niet ondersteund voor Linux-schaal sets.
+Azure Disk Encryption kan ook worden toegepast op Windows en Linux virtuele machine schaalsets, in deze gevallen:
+- Schaalsets gemaakt met beheerde schijven. Azure Disk-versleuteling wordt niet ondersteund voor native (of onbeheerde) schijfwaarden.
+- BE- en gegevensvolumes in Windows-schaalsets.
+- Datavolumes in Linux schaalsets. OS-schijfversleuteling wordt momenteel NIET ondersteund voor Linux-schaalsets.
 
-In slechts enkele minuten kunt u de basis principes van Azure Disk Encryption voor virtuele-machine schaal sets [versleutelen met behulp van de Azure cli](disk-encryption-cli.md) of de [schaal sets van virtuele machines versleutelen met behulp van de Azure PowerShell](disk-encryption-powershell.md) zelf studies.
+U de basisprincipes van Azure Disk Encryption voor virtuele machineschaalsets in slechts enkele minuten leren met de [schaalsets voor virtuele machines versleutelen met behulp van de azure CLI-](disk-encryption-cli.md) of [de schaalsets voor virtuele machines versleutelen met behulp van de Azure PowerShell-zelfstudies.](disk-encryption-powershell.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een schaal sets voor virtuele machines versleutelen met behulp van de Azure Resource Manager](disk-encryption-azure-resource-manager.md)
-- [Een sleutel kluis maken en configureren voor Azure Disk Encryption](disk-encryption-key-vault.md)
-- [Azure Disk Encryption gebruiken met uitbreidings reeksen voor de schaalset voor virtuele machines](disk-encryption-extension-sequencing.md)
+- [Een virtuele machineschaalsets versleutelen met Azure Resource Manager](disk-encryption-azure-resource-manager.md)
+- [Een sleutelkluis maken en configureren voor Azure Disk Encryption](disk-encryption-key-vault.md)
+- [Azure-schijfversleuteling gebruiken met detectie van extensie voor virtuele machineschaal](disk-encryption-extension-sequencing.md)

@@ -1,72 +1,72 @@
 ---
-title: Access-controle logboeken-Azure Portal-Azure Database for MySQL
-description: In dit artikel wordt beschreven hoe u de audit Logboeken in Azure Database for MySQL kunt configureren en openen vanuit de Azure Portal.
+title: Access audit logs - Azure portal - Azure Database for MySQL
+description: In dit artikel wordt beschreven hoe u de controlelogboeken in Azure Database voor MySQL configureert en opent vanuit de Azure-portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: ff1a6c63b6eb99acdef955806a138e3e22b8902a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 188ef3a1b9777c37f8557a69e19887638a973611
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773707"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062530"
 ---
-# <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Controle logboeken voor Azure Database for MySQL in het Azure Portal configureren en openen
+# <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Controlelogboeken configureren en openen voor Azure Database voor MySQL in de Azure-portal
 
-U kunt de [Azure database for MySQL controle logboeken](concepts-audit-logs.md) en diagnostische instellingen van de Azure Portal configureren.
+U de [Azure Database voor MySQL-controlelogboeken](concepts-audit-logs.md) en diagnostische instellingen configureren vanuit de Azure-portal.
 
 > [!IMPORTANT]
-> De functionaliteit van het controle logboek is momenteel beschikbaar als preview-versie.
+> De functionaliteit van het controlelogboek is momenteel in preview.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
+Om deze handleiding door te nemen, hebt u het volgende nodig:
 
-- [Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md)
+- [Azure-database voor MySQL-server](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-## <a name="configure-audit-logging"></a>Controle logboek registratie configureren
+## <a name="configure-audit-logging"></a>Controlelogboekregistratie configureren
 
-Controle logboek registratie inschakelen en configureren.
+Controlelogboekregistratie inschakelen en configureren.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer uw Azure Database for MySQL-server.
+1. Selecteer uw Azure Database voor MySQL-server.
 
-1. Selecteer in de sectie **instellingen** van de zijbalk **server parameters**.
+1. Selecteer **serverparameters**onder de sectie **Instellingen** in de zijbalk .
     ![Serverparameters](./media/howto-configure-audit-logs-portal/server-parameters.png)
 
-1. Werk de para meter **audit_log_enabled** bij naar aan.
-    controle logboeken ![inschakelen](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
+1. Werk de **parameter audit_log_enabled** bij aan AAN.
+    ![Controlelogboeken inschakelen](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. Selecteer de [gebeurtenis typen](concepts-audit-logs.md#configure-audit-logging) die moeten worden geregistreerd door de **audit_log_events** -para meter bij te werken.
-    ![controle logboek gebeurtenissen](./media/howto-configure-audit-logs-portal/audit-log-events.png)
+1. Selecteer de [gebeurtenistypen](concepts-audit-logs.md#configure-audit-logging) die moeten worden geregistreerd door de **parameter audit_log_events** bij te werken.
+    ![Gebeurtenis van het controlelogboek](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
-1. Voeg MySQL-gebruikers toe die moeten worden uitgesloten van logboek registratie door de para meter **audit_log_exclude_users** bij te werken. Geef gebruikers op door hun MySQL-gebruikers naam op te geven.
-    ![controle logboek gebruikers uitsluiten](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
+1. Voeg mysql-gebruikers toe die moeten worden uitgesloten van logboekregistratie door de **parameter audit_log_exclude_users** bij te werken. Geef gebruikers op door hun MySQL-gebruikersnaam op te geven.
+    ![Controlelogboek sluit gebruikers uit](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
 
-1. Wanneer u de para meters hebt gewijzigd, kunt u op **Opslaan**klikken. Of u kunt uw wijzigingen **negeren** .
-    ](./media/howto-configure-audit-logs-portal/save-parameters.png) ![opslaan
+1. Zodra u de parameters hebt gewijzigd, u op **Opslaan**klikken. Of u uw wijzigingen **verwijderen.**
+    ![Opslaan](./media/howto-configure-audit-logs-portal/save-parameters.png)
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnostische logboeken instellen
 
-1. Selecteer in de sectie **bewaking** van de zijbalk **Diagnostische instellingen**.
+1. Selecteer onder de sectie **Controle** in de zijbalk de optie **Diagnostische instellingen**.
 
-1. Klik op "+ diagnostische instelling toevoegen" ![diagnostische instelling toevoegen](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. Klik op '+ Diagnostische ![instelling toevoegen' Diagnostische instelling toevoegen](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
-1. Geef een naam op voor de diagnostische instelling.
+1. Geef een diagnostische instellingsnaam op.
 
-1. Geef op welke gegevens moeten worden gesinkt om de controle Logboeken (opslag account, Event Hub en/of Log Analytics-werk ruimte) te verzenden.
+1. Geef op welke gegevens de controlelogboeken moeten worden verzonden (opslagaccount, gebeurtenishub en/of Logboekanalysewerkruimte).
 
-1. Selecteer ' MySqlAuditLogs ' als het logboek type.
-![diagnostische instelling configureren](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
+1. Selecteer "MySqlAuditLogs" als het logboektype.
+![Diagnostische instelling configureren](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
 
-1. Zodra u de gegevens sinks hebt geconfigureerd om de controle logboeken te pipeen naar, kunt u op **Opslaan**klikken.
-diagnostische instelling ![opslaan](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
+1. Zodra u de gegevensgootstenen hebt geconfigureerd om de controlelogboeken naar te verzenden, u op **Opslaan**klikken.
+![Diagnostische instelling opslaan](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
 
-1. Open de audit logboeken door ze te verkennen in de gegevens-sinks die u hebt geconfigureerd. Het kan tot tien minuten duren voordat de logboeken worden weer gegeven.
+1. Toegang tot de controlelogboeken door ze te verkennen in de gegevenssinks die u hebt geconfigureerd. Het kan tot 10 minuten duren voordat de logboeken worden weergegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [audit logboeken](concepts-audit-logs.md) in azure database for MySQL.
+- Meer informatie over [controlelogboeken](concepts-audit-logs.md) in Azure Database voor MySQL.

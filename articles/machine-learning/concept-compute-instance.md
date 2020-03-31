@@ -1,7 +1,7 @@
 ---
-title: Wat is een Azure Machine Learning Compute-instantie?
+title: Wat is een Azure Machine Learning-rekenexemplaar?
 titleSuffix: Azure Machine Learning
-description: Meer informatie over de Azure Machine Learning Compute-instantie, een volledig beheerd werk station in de Cloud.
+description: Meer informatie over het rekenexemplaar Azure Machine Learning, een volledig beheerd cloudwerkstation.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,144 +10,144 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
 ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283925"
 ---
-# <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning Compute-instantie?
+# <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekenexemplaar?
 
-Een Azure Machine Learning Compute-instantie (preview) is een volledig beheerd werk station in de Cloud voor gegevens wetenschappers. 
+Een Azure Machine Learning-rekeninstantie (preview) is een volledig beheerd cloudwerkstation voor gegevenswetenschappers. 
 
-Reken instanties maken het eenvoudig om aan de slag te gaan met Azure Machine Learning-ontwikkeling en bieden mogelijkheden voor het beheer en de bedrijfs voorbereiding voor IT-beheerders.  
+Compute-exemplaren maken het eenvoudig om aan de slag te gaan met azure machine learning-ontwikkeling en bieden beheer- en bedrijfsgereedheidsmogelijkheden voor IT-beheerders.  
 
-Gebruik een reken instantie als uw volledig geconfigureerde en beheerde ontwikkel omgeving in de Cloud.
+Gebruik een rekeninstantie als uw volledig geconfigureerde en beheerde ontwikkelomgeving in de cloud.
 
-Reken instanties worden meestal gebruikt als ontwikkel omgevingen.  Ze kunnen ook worden gebruikt als een reken doel voor training en voor het afleiden van ontwikkel-en test doeleinden.  Voor grote taken is een [Azure machine learning Compute-Cluster](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
+Compute-exemplaren worden meestal gebruikt als ontwikkelomgevingen.  Ze kunnen ook worden gebruikt als een rekendoel voor training en inferencing voor ontwikkeling en testen.  Voor grote taken is een [Azure Machine Learning-compute cluster](how-to-set-up-training-targets.md#amlcompute) met multi-node scaling-mogelijkheden een betere rekendoelkeuze.
 
 
-## <a name="why-use-a-compute-instance"></a>Waarom een reken instantie gebruiken?
+## <a name="why-use-a-compute-instance"></a>Waarom een rekeninstantie gebruiken?
 
-Een reken instantie is een volledig beheerd werk station in de cloud dat is geoptimaliseerd voor uw machine learning-ontwikkel omgeving. Het biedt de volgende voor delen:
+Een rekeninstantie is een volledig beheerd cloudgebaseerd werkstation dat is geoptimaliseerd voor uw ontwikkelomgeving voor machine learning. Het biedt de volgende voordelen:
 
 |Belangrijkste voordelen||
 |----|----|
-|Productiviteit|Gegevens wetenschappers kunnen modellen bouwen en implementeren met behulp van geïntegreerde notebooks en de volgende hulpprogram ma's in hun webbrowser:<br/>-Jupyter<br/>-Jjupyterlab<br/>-RStudio|
-|Beheerde & beveiligd|Verminder uw beveiligings footprint en voeg naleving toe met beveiligings vereisten voor ondernemingen. Reken instanties bieden robuust beheer beleid en beveiligde netwerk configuraties zoals:<br/><br/>-Automatisch inrichten vanuit Resource Manager-sjablonen of Azure Machine Learning SDK<br/>- [op rollen gebaseerd toegangs beheer (RBAC)](/azure/role-based-access-control/overview)<br/>[ondersteuning voor virtuele netwerken](how-to-enable-virtual-network.md#compute-instance) - <br/>-SSH-beleid voor het inschakelen/uitschakelen van SSH-toegang|
-|Vooraf geconfigureerde&nbsp;of&nbsp;ML|Bespaar tijd bij het instellen van taken met vooraf geconfigureerde en up-to-date ML-pakketten, diepe leer frameworks, GPU-Stuur Programma's.|
-|Volledig aanpasbaar|Uitgebreide ondersteuning voor Azure VM-typen, waaronder Gpu's en persistente aanpassing op laag niveau, zoals het installeren van pakketten en stuur Programma's, maakt een koud probleem van geavanceerde scenario's. |
+|Productiviteit|Gegevenswetenschappers kunnen modellen bouwen en implementeren met geïntegreerde notitieblokken en de volgende tools in hun webbrowser:<br/>- Jupyter<br/>- JupyterLab<br/>- RStudio|
+|Beheerd & veilig|Verminder uw beveiligingsvoetafdruk en voeg naleving toe aan de beveiligingsvereisten van de onderneming. Compute-exemplaren bieden robuust beheerbeleid en veilige netwerkconfiguraties, zoals:<br/><br/>- Automatisch inrichten vanuit Resource Manager-sjablonen of Azure Machine Learning SDK<br/>- [Op rollen gebaseerde toegangscontrole (RBAC)](/azure/role-based-access-control/overview)<br/>- [Ondersteuning voor virtueel netwerk](how-to-enable-virtual-network.md#compute-instance)<br/>- SSH-beleid om SSH-toegang in te schakelen/uit te schakelen|
+|Vooraf geconfigureerd&nbsp;&nbsp;of ML|Bespaar tijd op installatietaken met vooraf geconfigureerde en up-to-date ML-pakketten, deep learning-frameworks, GPU-stuurprogramma's.|
+|Volledig aanpasbaar|Brede ondersteuning voor Azure VM-typen, waaronder GPU's en aanhoudende aanpassingen op laag niveau, zoals het installeren van pakketten en stuurprogramma's, maken geavanceerde scenario's een fluitje van een cent. |
 
-## <a name="contents"></a>Hulpprogram ma's en omgevingen
+## <a name="tools-and-environments"></a><a name="contents"></a>Tools en omgevingen
 
-Met Azure Machine Learning Compute-instantie kunt u modellen ontwerpen, trainen en implementeren in een volledig geïntegreerde laptop ervaring in uw werk ruimte.
+Met de rekeninstantie Azure Machine Learning u modellen maken, trainen en implementeren in een volledig geïntegreerde notebookervaring in uw werkruimte.
 
 
-Deze hulpprogram ma's en omgevingen zijn geïnstalleerd op het reken exemplaar: 
+Deze hulpprogramma's en omgevingen zijn geïnstalleerd op de compute instance: 
 
-|Algemene hulpprogram ma's & omgevingen|Details|
+|Algemene hulpmiddelen & omgevingen|Details|
 |----|:----:|
 |Stuurprogramma's|`CUDA`</br>`cuDNN`</br>`NVIDIA`</br>`Blob FUSE` |
 |Intel MPI-bibliotheek||
-|Azure CLI ||
-|Azure Machine Learning-voor beelden ||
-|EDAT-engine Azure Machine Learning ||
+|Azure-CLI ||
+|Azure Machine Learning-voorbeelden ||
+|Azure Machine Learning EDAT-engine ||
 |Docker||
 |Nginx||
-|NCCL 2,0 ||
+|NCCL 2.0 ||
 |Protobuf|| 
 
-|**R** -hulpprogram ma's & omgevingen|Details|
+|**R-tools** & omgevingen|Details|
 |----|:----:|
-|Open source-editie van RStudio-server||
+|RStudio Server Open Source Edition||
 |R-kernel||
 |Azure Machine Learning SDK voor R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK-voorbeelden|
 
-|**PYTHON** -hulpprogram ma's & omgevingen|Details|
+|**PYTHON-tools** & omgevingen|Details|
 |----|----|
-|Anaconda python||
-|Jupyter en-extensies||
-|Jjupyterlab en-extensies||
+|Anaconda Python||
+|Jupyter en uitbreidingen||
+|Jupyterlab en uitbreidingen||
 |Visual Studio Code ||
-[Azure Machine Learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>van PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
+[Azure Machine Learning-SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>van PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
 |Andere PyPI-pakketten|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
-|Conda-pakketten|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
-|Uitgebreide leer pakketten|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
+|Conda pakketten|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
+|Deep learning pakketten|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
 |ONNX-pakketten|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
-|Azure Machine Learning python & R SDK-voor beelden||
+|Azure Machine Learning Python & R SDK-voorbeelden||
 
-Python-pakketten zijn allemaal geïnstalleerd in de **Python 3,6-AzureML-** omgeving.  
+Python-pakketten zijn allemaal geïnstalleerd in de **Python 3.6 - AzureML-omgeving.**  
 
-Reken instanties worden meestal gebruikt als ontwikkel omgevingen.  Ze kunnen ook worden gebruikt als een reken doel voor training en voor het afleiden van ontwikkel-en test doeleinden.  Voor grote taken is een [Azure machine learning Compute-Cluster](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
+Compute-exemplaren worden meestal gebruikt als ontwikkelomgevingen.  Ze kunnen ook worden gebruikt als een rekendoel voor training en inferencing voor ontwikkeling en testen.  Voor grote taken is een [Azure Machine Learning-compute cluster](how-to-set-up-training-targets.md#amlcompute) met multi-node scaling-mogelijkheden een betere rekendoelkeuze.
 
 ### <a name="installing-packages"></a>Pakketten installeren
 
-U kunt pakketten rechtstreeks in een Jupyter-notebook of Rstudio installeren:
+U pakketten direct installeren in een Jupyter-laptop of Rstudio:
 
-* RStudio gebruik het tabblad **pakketten** aan de rechter kant of op het tabblad **console** linksboven.  
-* Python: Voeg installatie code toe en voer uit in een Jupyter notebook-cel.
+* RStudio Gebruik het tabblad **Pakketten** rechtsonder of het tabblad **Console** linksboven.  
+* Python: Voeg installatiecode toe en voer deze uit in een Jupyter-notitieblokcel.
 
-Of u kunt op een van de volgende manieren toegang krijgen tot een Terminal venster:
+Of u op een van de volgende manieren toegang krijgen tot een terminalvenster:
 
-* RStudio: Selecteer het tabblad **Terminal** aan de rechter bovenhoek.
-* Jupyter Lab: Selecteer de tegel **Terminal** onder de **andere** kop op het tabblad Start.
-* Jupyter: Selecteer **nieuwe > Terminal** rechtsboven op het tabblad bestanden.
-* SSH naar de computer.  Installeer Python-pakketten vervolgens in de **Python 3,6-AzureML-** omgeving.  R-pakketten installeren in de **R** -omgeving.
+* RStudio: Selecteer het tabblad **Terminal** linksboven.
+* Jupyter Lab: Selecteer de **tegel Terminal** onder de **andere** kop op het tabblad Launcher.
+* Jupyter: Selecteer **Nieuw>Terminal** rechtsboven op het tabblad Bestanden.
+* SSH naar de machine.  Installeer vervolgens Python-pakketten in de **Python 3.6 - AzureML-omgeving.**  Installeer R-pakketten in de **R-omgeving.**
 
 ## <a name="accessing-files"></a>Toegang tot bestanden
 
-Notebooks en R-scripts worden opgeslagen in het standaard opslag account van uw werk ruimte in de Azure-bestands share.  Deze bestanden bevinden zich in de map gebruikers bestanden. Met deze opslag kunt u eenvoudig notitie blokken delen tussen Compute-exemplaren. Het opslag account zorgt er ook voor dat uw notitie blokken veilig blijven behouden wanneer u een reken instantie stopt of verwijdert.
+Notitieblokken en R-scripts worden opgeslagen in het standaardopslagaccount van uw werkruimte in Azure-bestandsshare.  Deze bestanden bevinden zich onder uw map 'Gebruikersbestanden'. Deze opslag maakt het eenvoudig om notitieblokken te delen tussen compute-exemplaren. Het opslagaccount houdt uw notitieblokken ook veilig bewaard wanneer u een rekeninstantie stopt of verwijdert.
 
-Het account van de Azure-bestands share van uw werk ruimte is gekoppeld als een station op het reken exemplaar. Dit station is de standaard werkmap voor Jupyter, Jupyter Labs en RStudio.
+Het Azure-account voor bestandsshare van uw werkruimte is gemonteerd als een station op de rekeninstantie. Dit station is de standaard werkende directory voor Jupyter, Jupyter Labs en RStudio.
 
-De bestanden in de bestands share zijn toegankelijk vanuit alle reken instanties in dezelfde werk ruimte. Wijzigingen in deze bestanden op het reken exemplaar worden betrouwbaar weer gegeven in de bestands share.
+De bestanden in de bestandsshare zijn toegankelijk vanuit alle compute-instanties in dezelfde werkruimte. Eventuele wijzigingen in deze bestanden op de compute instance worden betrouwbaar gehandhaafd terug naar het bestandsaandeel.
 
-U kunt de meest recente Azure Machine Learning-voor beelden ook klonen naar uw map in de map gebruikers bestanden in de werkruimte bestands share.
+U ook de nieuwste Azure Machine Learning-voorbeelden klonen naar uw map onder de map gebruikersbestanden in het delen van werkruimtebestanden.
 
-Het schrijven van kleine bestanden kan langzamer zijn op netwerk stations dan het schrijven naar de virtuele machine zelf.  Als u veel kleine bestanden schrijft, kunt u een map rechtstreeks op het reken exemplaar gebruiken, zoals een `/tmp` Directory. Houd er rekening mee dat deze bestanden niet toegankelijk zijn vanuit andere compute-instanties in de werk ruimte.
+Het schrijven van kleine bestanden kan langzamer op netwerkstations dan schrijven naar de VM zelf.  Als u veel kleine bestanden schrijft, probeert u een map `/tmp` rechtstreeks op de rekeninstantie te gebruiken, zoals een map. Houd er rekening mee dat deze bestanden niet toegankelijk zijn vanaf andere compute-instanties in de werkruimte.
 
-## <a name="managing-a-compute-instance"></a>Een reken instantie beheren
+## <a name="managing-a-compute-instance"></a>Een rekeninstantie beheren
 
-Selecteer in uw werk ruimte in Azure Machine Learning Studio **Compute**en selecteer vervolgens **Compute instance** bovenin.
+Selecteer in uw werkruimte in Azure Machine Learning-studio **Compute**en selecteer **Vervolgens Compute Instance** bovenaan.
 
-![Een reken instantie beheren](./media/concept-compute-instance/manage-compute-instance.png)
+![Een rekeninstantie beheren](./media/concept-compute-instance/manage-compute-instance.png)
 
-U kunt de volgende acties uitvoeren:
+U de volgende acties uitvoeren:
 
-* Maak een reken instantie. Geef de naam, het type van de Azure-VM op, inclusief Gpu's (het VM-type kan niet worden gewijzigd na het maken), schakel SSH-toegang in/uit en configureer de instellingen voor het virtuele netwerk optioneel. U kunt ook rechtstreeks vanuit geïntegreerde notebooks, Azure Portal, Resource Manager-sjabloon of Azure Machine Learning SDK een exemplaar maken. Het quotum toegewezen kernen per regio dat van toepassing is op het maken van een reken instantie is Unified en gedeeld met Azure Machine Learning quotum voor reken clusters.
-* Het tabblad Compute instances vernieuwen
-* Een reken instantie starten, stoppen en opnieuw starten
-* Een reken instantie verwijderen
+* Een rekeninstantie maken. Geef de naam op, het Type Azure VM inclusief GPU's (let op vm-type kan niet worden gewijzigd na het maken), ssh-toegang inschakelen/uitschakelen en configureren van virtuele netwerkinstellingen optioneel. U ook een exemplaar rechtstreeks maken vanuit geïntegreerde notitieblokken, Azure-portal, Resource Manager-sjabloon of Azure Machine Learning SDK. De toegewezen kernen per regioquotum dat van toepassing is op het maken van rekeninstanties, worden samengevoegd en gedeeld met azure Machine Learning-compute clusterquota.
+* Het tabblad Rekeninstanties vernieuwen
+* Een rekeninstantie starten, stoppen en opnieuw starten
+* Een rekeninstantie verwijderen
 
-Voor elk reken exemplaar in uw werk ruimte kunt u het volgende doen:
+Voor elke rekeninstantie in uw werkruimte u:
 
-* Toegang tot Jupyter, Jjupyterlab, RStudio op het reken exemplaar
-* SSH naar Compute-instantie. SSH-toegang is standaard uitgeschakeld, maar kan worden ingeschakeld op het moment dat het reken proces wordt gemaakt. SSH-toegang is via het mechanisme voor open bare/persoonlijke sleutels. Op het tabblad krijgt u details over SSH-verbindingen zoals IP-adres, gebruikers naam en poort nummer.
-* Details ophalen over een specifiek reken exemplaar, zoals het IP-adres en de regio.
+* Toegang tot Jupyter, JupyterLab, RStudio op de compute instance
+* SSH in compute instance. SSH-toegang is standaard uitgeschakeld, maar kan worden ingeschakeld op de tijd van het maken van compute-instanties. SSH-toegang is via publiek/private sleutelmechanisme. Op het tabblad vindt u details voor ssh-verbinding, zoals IP-adres, gebruikersnaam en poortnummer.
+* Informatie over een specifieke rekeninstantie zoals IP-adres en regio.
 
-Met [RBAC](/azure/role-based-access-control/overview) kunt u bepalen welke gebruikers in de werk ruimte een reken instantie kunnen maken, verwijderen, starten, stoppen en opnieuw starten. Alle gebruikers in de rol Inzender en eigenaar van de werk ruimte kunnen reken instanties maken, verwijderen, starten, stoppen en opnieuw starten in de werk ruimte. Alleen de maker van een specifiek reken exemplaar heeft echter toegang tot Jupyter, Jjupyterlab en RStudio op die reken instantie. De maker van het reken exemplaar heeft het reken exemplaar dat eraan is toegewezen, heeft toegang tot het hoofd, en kan Terminal in via Jupyter. Reken instantie heeft een aanmelding voor één gebruiker van de maker gebruiker en alle acties gebruiken de identiteit van die gebruiker voor RBAC en de toewijzing van experimenten. SSH-toegang wordt beheerd via het mechanisme voor open bare/persoonlijke sleutels.
+[Met RBAC](/azure/role-based-access-control/overview) u bepalen welke gebruikers in de werkruimte een rekeninstantie kunnen maken, verwijderen, starten, stoppen, opnieuw opstarten. Alle gebruikers in de rol van werkruimtebijdrage en eigenaar kunnen rekeninstanties in de werkruimte maken, verwijderen, starten, stoppen en opnieuw starten. Alleen de maker van een specifieke compute instance heeft echter toegang tot Jupyter, JupyterLab en RStudio op die rekeninstantie. De maker van de compute instance heeft de compute instance gewijd aan hen, hebben root-toegang, en kan terminal in via Jupyter. Compute-instantie heeft eenmalige gebruikerslogin van de makergebruiker en alle acties gebruiken de identiteit van die gebruiker voor RBAC en attributie van experimentuitvoeringen. SSH-toegang wordt gecontroleerd via een publiek/privaat sleutelmechanisme.
 
-U kunt ook een exemplaar maken
-* Rechtstreeks vanuit de ervaring met geïntegreerde notebooks
-* In Azure Portal
-* Van Azure Resource Manager sjabloon
+U ook een instantie maken
+* Rechtstreeks vanuit de geïntegreerde notebooks-ervaring
+* In Azure-portal
+* Vanuit azure resource manager-sjabloon
 * Met Azure Machine Learning SDK
 
-Het quotum toegewezen kernen per regio, dat van toepassing is op het maken van een reken instantie, wordt gecombineerd en gedeeld met Azure Machine Learning trainings cluster quota. 
+De toegewezen kernen per regioquotum, dat van toepassing is op het maken van rekeninstanties, worden samengevoegd en gedeeld met het azure Machine Learning-trainingsclusterquotum. 
 
-## <a name="compute-target"></a>Reken doel
+## <a name="compute-target"></a>Rekendoel
 
-Reken instanties kunnen worden gebruikt als een [trainings berekenings doel](concept-compute-target.md#train) vergelijkbaar met Azure machine learning Compute-trainings clusters. Richt een multi-GPU-VM in om gedistribueerde trainings taken uit te voeren met tensor flow/PyTorch-schattingen. U kunt ook een uitvoerings configuratie maken en deze gebruiken om uw experiment uit te voeren op reken exemplaar. U kunt reken instantie gebruiken als een lokaal doel voor het afwijzen van de implementatie voor scenario's voor testen en fout opsporing.
+Compute-exemplaren kunnen worden gebruikt als een [trainingsdoel dat](concept-compute-target.md#train) vergelijkbaar is met azure Machine Learning-trainingstrainingsclusters voor gegevens. Inrichten van een multi-GPU VM om gedistribueerde trainingstaken uit te voeren met TensorFlow/PyTorch schatters. U ook een run-configuratie maken en deze gebruiken om uw experiment uit te voeren op rekeninstantie. U rekeninstantie gebruiken als een lokaal doel voor implementatie van gebruikers voor het testen/debuggen van scenario's.
 
-## <a name="notebookvm"></a>Wat is er gebeurd met de VM van de notebook?
+## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Wat is er gebeurd met Notebook VM?
 
-Reken instanties vervangen de VM van de notebook.  
+Compute-exemplaren vervangen de vm notebook.  
 
-Alle notitieblok bestanden die zijn opgeslagen in de werkruimte bestands share en gegevens in werkruimte gegevens archieven, zijn toegankelijk vanuit een reken instantie. Alle aangepaste pakketten die eerder op een notebook-VM zijn geïnstalleerd, moeten echter opnieuw worden geïnstalleerd op de reken instantie. Quota beperkingen die van toepassing zijn op het maken van reken clusters, zijn ook van toepassing op het maken van reken instanties. 
+Alle notitieblokbestanden die zijn opgeslagen in de bestandsshare en gegevens in werkruimtegegevensopslag, zijn toegankelijk via een rekeninstantie. Alle aangepaste pakketten die eerder op een notebook-vm zijn geïnstalleerd, moeten echter opnieuw worden geïnstalleerd op de rekeninstantie. Quotabeperkingen die van toepassing zijn op het maken van rekenclusters zijn ook van toepassing op het maken van rekeninstanties. 
 
-Er kunnen geen nieuwe Vm's voor het notitie blok worden gemaakt. U kunt echter nog steeds toegang krijgen tot en gebruikmaken van de laptop-Vm's die u hebt gemaakt, met volledige functionaliteit. Reken instanties kunnen worden gemaakt in dezelfde werk ruimte als de bestaande virtuele machines van het werk blok. 
+Er kunnen geen nieuwe notebook-VM's worden gemaakt. U echter nog steeds toegang krijgen tot notebookvm's die u hebt gemaakt, met volledige functionaliteit. Compute-exemplaren kunnen worden gemaakt in dezelfde werkruimte als de bestaande notebook-VM's. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
- * [Zelf studie: uw eerste ml-model trainen](tutorial-1st-experiment-sdk-train.md) laat zien hoe u een reken instantie met een geïntegreerde notebook kunt gebruiken.
+ * [Zelfstudie: Train uw eerste ML-model](tutorial-1st-experiment-sdk-train.md) laat zien hoe u een rekeninstantie gebruiken met een geïntegreerd notitieblok.

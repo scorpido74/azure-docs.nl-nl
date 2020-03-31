@@ -1,6 +1,6 @@
 ---
-title: Upgrade van het besturings systeem voor de SAP HANA op Azure (grote exemplaren) | Microsoft Docs
-description: Upgrade van het besturings systeem uitvoeren voor SAP HANA op Azure (grote exemplaren)
+title: Upgrade van het besturingssysteem voor de SAP HANA op Azure (Large Instances)| Microsoft Documenten
+description: Upgrade van het besturingssysteem voor SAP HANA uitvoeren op Azure (Grote exemplaren)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,121 +14,121 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a0a5d39a7cb2162186291ea534a623ef45c40d4
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78675616"
 ---
-# <a name="operating-system-upgrade"></a>Upgrade van besturings systeem
-In dit document worden de details van upgrades van besturings systemen op de HANA grote instanties beschreven.
+# <a name="operating-system-upgrade"></a>Upgrade van het besturingssysteem
+Dit document beschrijft de details over upgrades van het besturingssysteem op de HANA Large Instances.
 
 >[!NOTE]
->De upgrade van het besturings systeem is de verantwoordelijkheid van de klant. micro soft Operations Support kan u begeleiden bij de belangrijkste gebieden die u tijdens de upgrade kunt bekijken. Neem ook contact op met de leverancier van uw besturings systeem voordat u een upgrade gaat plannen.
+>De OS-upgrade is de verantwoordelijkheid van de klant, Microsoft operations support kan u begeleiden naar de belangrijkste gebieden om op te letten tijdens de upgrade. U moet uw leverancier van het besturingssysteem ook raadplegen voordat u van plan bent voor een upgrade.
 
-Tijdens het inrichten van de HLI-eenheid installeert het micro soft Operations-team het besturings systeem.
-U moet de installatie van het besturings systeem (voor beeld: patches, afstemming, upgrades enz.) op de////-eenheid hand matig uitvoeren.
+Tijdens de inrichting van HLI-eenheden installeert het Microsoft-operationele team het besturingssysteem.
+In de loop van de tijd bent u verplicht om het besturingssysteem (Voorbeeld: patchen, afstemmen, upgraden, enz.) op de HLI-eenheid te onderhouden.
 
-Voordat u belang rijke wijzigingen doorvoert aan het besturings systeem (bijvoorbeeld een upgrade van SP1 naar SP2), moet u contact opnemen met het micro soft Operations-team door een ondersteunings ticket te openen om te raadplegen.
+Voordat u grote wijzigingen in het besturingssysteem uitvoert (bijvoorbeeld SP1 upgraden naar SP2), moet u contact opnemen met het Microsoft Operations-team door een ondersteuningsticket te openen om te raadplegen.
 
-In uw ticket insluiten:
+Neem deel aan je ticket:
 
-* De ID van uw HLI-abonnement.
-* De naam van uw server.
-* Het patch niveau dat u wilt Toep assen.
+* Uw HLI-abonnements-ID.
+* Je servernaam.
+* Het patchniveau dat u van plan bent toe te passen.
 * De datum waarop u deze wijziging plant. 
 
-U wordt aangeraden dit ticket ten minste één week voor de gewenste upgrade datum te openen, omdat het operationele team een controle moet uitvoeren als er een firmware-upgrade nodig is op de Blade van de server.
+We raden u aan dit ticket ten minste één week voor de gewenste upgradedatum te openen omdat het Operations-team controleert of een firmware-upgrade nodig is op uw serverblade.
 
 
-Zie [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581)voor de ondersteunings matrix van de verschillende SAP Hana versies met de verschillende Linux-versies.
+Voor de ondersteuningsmatrix van de verschillende SAP HANA-versies met de verschillende Linux-versies, zie [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
 
 ## <a name="known-issues"></a>Bekende problemen
 
-Hier volgen enkele veelvoorkomende bekende problemen tijdens de upgrade:
-- De Software Foundation-software (SFS) wordt na de upgrade van het besturings systeem verwijderd uit de SKU-klasse. U moet de compatibele SFS na de upgrade van het besturings systeem opnieuw installeren.
-- Ethernet-kaart Stuur programma's (ENIC en FNIC) worden teruggedraaid naar een oudere versie. Na de upgrade moet u de compatibele versie van de Stuur Programma's opnieuw installeren.
+De volgende zijn de weinige veel voorkomende bekende problemen tijdens de upgrade:
+- Op SKU Type II klasse SKU wordt de software foundation software (SFS) verwijderd na de OS-upgrade. U moet de compatibele SFS opnieuw installeren na de os-upgrade.
+- Ethernet-kaartstuurprogramma's (ENIC en FNIC) rolden terug naar de oudere versie. U moet de compatibele versie van de stuurprogramma's opnieuw installeren na de upgrade.
 
-## <a name="sap-hana-large-instance-type-i-recommended-configuration"></a>Aanbevolen configuratie van SAP HANA grote instantie (type I)
+## <a name="sap-hana-large-instance-type-i-recommended-configuration"></a>SAP HANA Large Instance (Type I) aanbevolen configuratie
 
-De configuratie van het besturings systeem kan van de aanbevolen instellingen in de loop van de tijd worden overgenomen door patches, systeem upgrades en wijzigingen die door klanten zijn aangebracht. Daarnaast identificeert micro soft updates die nodig zijn voor bestaande systemen om ervoor te zorgen dat ze optimaal worden geconfigureerd voor de beste prestaties en tolerantie. De volgende instructies zijn een overzicht van aanbevelingen voor netwerk prestaties, stabiliteit van het systeem en optimale HANA-prestaties.
+De configuratie van het besturingssysteem kan in de loop van de tijd afwijken van de aanbevolen instellingen als gevolg van patching, systeemupgrades en wijzigingen die door klanten zijn aangebracht. Daarnaast identificeert Microsoft updates die nodig zijn voor bestaande systemen om ervoor te zorgen dat ze optimaal zijn geconfigureerd voor de beste prestaties en veerkracht. In de volgende instructies worden aanbevelingen gegeven die betrekking hebben op netwerkprestaties, systeemstabiliteit en optimale HANA-prestaties.
 
-### <a name="compatible-enicfnic-driver-versions"></a>Compatibele versies van Stuur Programma's voor eNIC/fNIC
-  Om de juiste netwerk prestaties en systeem stabiliteit te hebben, wordt aanbevolen om ervoor te zorgen dat de systeemspecifieke, juiste versie van eNIC-en fNIC-Stuur Programma's wordt geïnstalleerd, zoals in de volgende compatibiliteits tabel wordt weer gegeven. Servers worden aan klanten geleverd met compatibele versies. Houd er rekening mee dat in sommige gevallen tijdens het herstellen van het besturings systeem/de kernel de Stuur Programma's kunnen worden teruggedraaid naar de standaard versies van het stuur programma. Zorg ervoor dat de juiste versie van het stuur programma post OS/kernel-patch bewerkingen uitvoert.
+### <a name="compatible-enicfnic-driver-versions"></a>Compatibele eNIC/fNIC driver versies
+  Om de juiste netwerkprestaties en systeemstabiliteit te hebben, wordt geadviseerd ervoor te zorgen dat de OS-specifieke geschikte versie van eNIC- en fNIC-stuurprogramma's worden geïnstalleerd zoals afgebeeld in de volgende compatibiliteitstabel. Servers worden geleverd aan klanten met compatibele versies. Houd er rekening mee dat in sommige gevallen, tijdens het patchen van het besturingssysteem/kernel, stuurprogramma's kunnen worden teruggedraaid naar de standaardstuurprogrammaversies. Controleer of de juiste stuurprogrammaversie post-OS/Kernel-patchbewerkingen uitvoert.
        
       
-  |  BESTURINGSSYSTEEM leverancier    |  Versie van besturingssysteem pakket     |  Firmwareversie  |  eNIC-stuur programma |  fNIC-stuur programma | 
+  |  Os-leverancier    |  Versie van OS-pakket     |  Firmwareversie  |  eNIC Driver |  fNIC Driver | 
   |---------------|-------------------------|--------------------|--------------|--------------|
-  |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
-  |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
-  |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
+  |   Suse        |  SLES 12 SP2            |   3.1.3u           |  2.3.0.40    |   1.6.0.34   |
+  |   Suse        |  SLES 12 SP3            |   3.1.3u           |  2.3.0.44    |   1.6.0.36   |
+  |   Red Hat     |  RHEL 7.2               |   3.1.3u           |  2.3.0.39    |   1.6.0.34   |
  
 
-### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Opdrachten voor het upgraden van Stuur Programma's en het opschonen van oude RPM-pakketten
+### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Opdrachten voor de upgrade van de bestuurder en voor het reinigen van oude rpm-pakketten
 ```
 rpm -U driverpackage.rpm
 rpm -e olddriverpackage.rpm
 ```
 
-#### <a name="commands-to-confirm"></a>Te bevestigen opdrachten
+#### <a name="commands-to-confirm"></a>Opdrachten om te bevestigen
 ```
 modinfo enic
 modinfo fnic
 ```
 
-### <a name="suse-hlis-grub-update-failure"></a>SuSE HLIs GRUB-Update fout
-SAP on Azure HANA grote instanties (type I) kunnen na de upgrade een niet-opstart bare status hebben. Met de onderstaande procedure wordt dit probleem opgelost.
-#### <a name="execution-steps"></a>Uitvoerings stappen
+### <a name="suse-hlis-grub-update-failure"></a>SuSE HLI's GRUB update storing
+SAP op Azure HANA Large Instances (Type I) kan na een upgrade in een niet-opstartbare status zijn. De onderstaande procedure lost dit probleem op.
+#### <a name="execution-steps"></a>Uitvoeringsstappen
 
 
-*   Voer `multipath -ll` opdracht uit.
-*   Haal de LUN-ID op waarvan de grootte ongeveer 50G is of gebruik de opdracht: `fdisk -l | grep mapper`
-*   `/etc/default/grub_installdevice` bestand bijwerken met regel `/dev/mapper/<LUN ID>`. Voor beeld:/dev/mapper/3600a09803830372f483f495242534a56
+*   Opdracht `multipath -ll` uitvoeren.
+*   Haal de LUN-id met een geschatte grootte van ongeveer 50G of gebruik de opdracht:`fdisk -l | grep mapper`
+*   Bestand `/etc/default/grub_installdevice` bijwerken `/dev/mapper/<LUN ID>`met regel . Voorbeeld: /dev/mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
->LUN-ID varieert van server naar server.
+>LUN ID varieert van server tot server.
 
 
 ### <a name="disable-edac"></a>EDAC uitschakelen 
-   De module fout detectie en correctie (EDAC) helpt bij het detecteren en corrigeren van geheugen fouten. De onderliggende hardware voor SAP HANA on Azure Large Instances (type I) voert echter al dezelfde functie uit. Als dezelfde functie is ingeschakeld op het niveau van de hardware en het besturings systeem (OS), kunnen er conflicten ontstaan en kan dit ertoe leiden dat de server af en toe niet kan worden gepland. Daarom is het raadzaam om de module uit te scha kelen vanuit het besturings systeem.
+   De EDAC-module (Error Detection And Correction) helpt bij het opsporen en corrigeren van geheugenfouten. De onderliggende hardware voor SAP HANA op Azure Large Instances (Type I) werkt echter al dezelfde functie. Het hebben van dezelfde functie ingeschakeld op de hardware en besturingssysteem (OS) niveaus kan leiden tot conflicten en kan leiden tot incidentele, ongeplande shutdowns van de server. Daarom wordt aanbevolen om de module uit te schakelen van het besturingssysteem.
 
-#### <a name="execution-steps"></a>Uitvoerings stappen
+#### <a name="execution-steps"></a>Uitvoeringsstappen
 
-* Controleer of de EDAC-module is ingeschakeld. Als een uitvoer in de onderstaande opdracht wordt geretourneerd, betekent dit dat de module is ingeschakeld. 
+* Controleer of edac-module is ingeschakeld. Als een uitvoer wordt geretourneerd in onderstaande opdracht, betekent dit dat de module is ingeschakeld. 
 ```
 lsmod | grep -i edac 
 ```
-* Schakel de modules uit door de volgende regels toe te voegen aan het bestand `/etc/modprobe.d/blacklist.conf`
+* De modules uitschakelen door de volgende regels aan het bestand toe te voegen`/etc/modprobe.d/blacklist.conf`
 ```
 blacklist sb_edac
 blacklist edac_core
 ```
-De computer moet opnieuw worden opgestart om wijzigingen te kunnen aanbrengen. Voer de opdracht `lsmod` uit en controleer of de module niet aanwezig is in de uitvoer.
+Een reboot is vereist om wijzigingen in te voeren. Voer `lsmod` de opdracht uit en controleer of de module daar niet aanwezig is in uitvoer.
 
 
-### <a name="kernel-parameters"></a>Kernel-para meters
-   Zorg ervoor dat de juiste instelling voor `transparent_hugepage`, `numa_balancing`, `processor.max_cstate`, `ignore_ce` en `intel_idle.max_cstate` worden toegepast.
+### <a name="kernel-parameters"></a>Kernelparameters
+   Zorg ervoor dat `transparent_hugepage`de `numa_balancing` `processor.max_cstate`juiste `ignore_ce` `intel_idle.max_cstate` instelling voor , , en worden toegepast.
 
-* intel_idle. max_cstate = 1
-* processor. max_cstate = 1
-* transparent_hugepage = nooit
-* numa_balancing = uitschakelen
-* MCE = ignore_ce
+* intel_idle.max_cstate=1
+* processor.max_cstate=1
+* transparent_hugepage=nooit
+* numa_balancing=uitschakelen
+* mce=ignore_ce
 
 
-#### <a name="execution-steps"></a>Uitvoerings stappen
+#### <a name="execution-steps"></a>Uitvoeringsstappen
 
-* Voeg deze para meters toe aan de `GRB_CMDLINE_LINUX` regel in het bestand `/etc/default/grub`
+* Deze parameters toevoegen `GRB_CMDLINE_LINUX` aan de regel in het bestand`/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```
-* Maak een nieuw grub-bestand.
+* Maak een nieuw grubbestand.
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
-* Systeem opnieuw opstarten.
+* Reboot systeem.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [back-up en herstellen](hana-overview-high-availability-disaster-recovery.md) voor het back-uptype van het besturings systeem I SKU-klasse.
-- Raadpleeg de [back-up van het besturings systeem voor de type II sku's van Revision 3-stem pels](os-backup-type-ii-skus.md) voor de klasse type II SKU.
+- Raadpleeg [Back-up en herstel](hana-overview-high-availability-disaster-recovery.md) voor de klasse SKU van het BE-back-uptype I.
+- Verwijs [OS Backup voor Type II SKU's van revisie 3-stempels](os-backup-type-ii-skus.md) voor de klasse SKU van type II.

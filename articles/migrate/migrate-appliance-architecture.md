@@ -3,16 +3,16 @@ title: Azure Migrate-toestelarchitectuur
 description: Biedt een overzicht van het Azure Migrate-toestel dat wordt gebruikt bij serverbeoordeling en -migratie.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 25dc530199cde3408ce3bd6641aeb9bb8595465d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d55d123bb056b46b5e78dd8ac836eeaf9b42fe70
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337595"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389015"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate-toestelarchitectuur
 
-In dit artikel worden de azure migrate-toestelarchitectuur en -processen beschreven. Het Azure Migrate-toestel is een lichtgewicht toestel dat op locatie wordt geïmplementeerd om VM's en fysieke servers te ontdekken die u wilt beoordelen voor migratie naar Azure. 
+In dit artikel worden de azure migrate-toestelarchitectuur en -processen beschreven. Het Azure Migrate-toestel is een lichtgewicht toestel dat op locatie wordt geïmplementeerd om VM's en fysieke servers te detecteren voor migratie naar Azure. 
 
 ## <a name="deployment-scenarios"></a>Implementatiescenario's
 
@@ -20,10 +20,10 @@ Het Azure Migrate-toestel wordt gebruikt in de volgende scenario's.
 
 **Scenario** | **Hulpprogramma** | **Gebruikt voor** 
 --- | --- | ---
-**VMware VM-beoordeling** | Azure Migreren: serverbeoordeling | Ontdek VMware VM's.<br/><br/> Ontdek machine-apps en afhankelijkheden.<br/><br/> Verzamel metagegevens en prestatiemetagegevens van machines en verzend naar Azure.
-**VMware VM-migratie (zonder agent)** | Azure Migreren: servermigratie | Ontdek VMware VM's<br/><br/>  VMware VM's repliceren met [agentloze migratie](server-migrate-overview.md).
-**Hyper-V VM-beoordeling** | Azure Migreren: serverbeoordeling | Ontdek Hyper-V VM's.<br/><br/> Verzamel metagegevens en prestatiemetagegevens van machines en verzend naar Azure.
-**Fysieke machine** |  Azure Migreren: serverbeoordeling |  Ontdek fysieke servers.<br/><br/> Verzamel metagegevens en prestatiemetagegevens van machines en verzend naar Azure.
+**VMware VM-beoordeling** | Azure Migreren:Serverbeoordeling | Ontdek VMware VM's.<br/><br/> Ontdek machine-apps en afhankelijkheden.<br/><br/> Verzamel metagegevens en prestatiemetagegevens van machines en verzend naar Azure.
+**VMware VM-migratie (zonder agent)** | Azure Migreren:Servermigratie | Ontdek VMware VM's<br/><br/>  VMware VM's repliceren met [agentloze migratie](server-migrate-overview.md).
+**Hyper-V VM-beoordeling** | Azure Migreren:Serverbeoordeling | Ontdek Hyper-V VM's.<br/><br/> Verzamel metagegevens en prestatiemetagegevens van machines en verzend naar Azure.
+**Fysieke machine** |  Azure Migreren:Serverbeoordeling |  Ontdek fysieke servers.<br/><br/> Verzamel metagegevens en prestatiemetagegevens van machines en verzend naar Azure.
 
 ## <a name="appliance-components"></a>Toestelonderdelen
 
@@ -40,25 +40,25 @@ Het apparaat heeft een aantal onderdelen.
 
 ## <a name="appliance-deployment"></a>Toestelimplementatie
 
-- Het Azure Migrate-toestel kan worden ingesteld met behulp van een sjabloon (alleen Hyper-V of VMware) of een PowerShell-script-installatieprogramma. [Meer informatie](deploy-appliance.md#deployment-options) over de opties. 
+- Het Azure Migrate-toestel kan worden ingesteld met behulp van een sjabloon voor [Hyper-V](how-to-set-up-appliance-hyper-v.md) of [VMware](how-to-set-up-appliance-vmware.md) of met behulp van een PowerShell-scriptinstallatievoor [VMware/Hyper-V](deploy-appliance-script.md)en voor [fysieke servers](how-to-set-up-appliance-physical.md). 
 - Vereisten voor apparaatondersteuning en implementatievereisten worden samengevat in de [ondersteuningsmatrix voor apparaten.](migrate-appliance.md)
 
 
 ## <a name="appliance-registration"></a>Toestelregistratie
 
-Tijdens het instellen van het toestel registreert u het toestel met Azure Migrate.Tijdens het instellen en registreren vinden de acties die in de tabel zijn samengevat.
+Tijdens het instellen van het toestel registreert u het toestel met Azure Migrate en vinden de acties die in de tabel zijn samengevat, plaats.
 
 **Actie** | **Details** | **Machtigingen**
 --- | --- | ---
 **Bronproviders registreren** | Deze resourcesproviders worden geregistreerd in het abonnement dat u kiest tijdens het instellen van apparaten: Microsoft.OffAzure, Microsoft.Migrate en Microsoft.KeyVault.<br/><br/> Als u een resourceprovider registreert, configureert u uw abonnement om met de resourceprovider te werken. | Als u de resourceproviders wilt registreren, hebt u een rol inzender of eigenaar bij het abonnement nodig.
-**Azure AD-app-communicatie maken** | Azure Migrate maakt een Azure Active Directory-app (Azure AD) voor communicatie (verificatie en autorisatie) tussen de agents die op het toestel worden uitgevoerd en hun respectieve services die op Azure worden uitgevoerd.<br/><br/> Deze app heeft geen bevoegdheden om Azure resource manager calls of RBAC-toegang te geven op een resource. | U hebt [deze machtigingen](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) nodig voor Azure Migrate om de app te maken.
+**Azure AD-app-communicatie maken** | Azure Migrate maakt een Azure Active Directory-app (Azure AD) voor communicatie (verificatie en autorisatie) tussen de agents die op het toestel worden uitgevoerd en hun respectieve services die op Azure worden uitgevoerd.<br/><br/> Deze app heeft geen bevoegdheden om Azure Resource Manager-aanroepen of RBAC-toegang te geven op een resource. | U hebt [deze machtigingen](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) nodig voor Azure Migrate om de app te maken.
 **Kluis Azure AD-apps-Key maken** | Deze app is alleen gemaakt voor agentless migratie van VMware VM's naar Azure.<br/><br/> Het wordt uitsluitend gebruikt om toegang te krijgen tot de sleutelkluis die is gemaakt in het abonnement van de gebruiker voor agentloze migratie.<br/><br/> Het heeft RBAC-toegang op de Azure-sleutelkluis (gemaakt in de tenant van de klant), wanneer detectie wordt gestart vanuit het toestel. | U hebt [deze machtigingen](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) nodig voor Azure Migrate om de app te maken.
 
 
 
 ## <a name="collected-data"></a>Verzamelde gegevens
 
-Gegevens die door de client worden verzameld voor alle implementatiescenario's, worden volledig vastgelegd in de [ondersteuningsmatrix voor apparaten.](migrate-appliance.md)
+Gegevens die door de client worden verzameld voor alle implementatiescenario's, worden samengevat in de [ondersteuningsmatrix voor apparaten.](migrate-appliance.md)
 
 ## <a name="discovery-and-collection-process"></a>Detectie- en inzamelingsproces
 
@@ -89,7 +89,8 @@ Het toestel communiceert met vCenter Servers en Hyper-V hosts/cluster met behulp
 
 Het toestel wordt bijgewerkt terwijl de Azure Migrate-agents die op het toestel worden uitgevoerd, worden bijgewerkt. Dit gebeurt automatisch omdat automatisch bijwerken standaard is ingeschakeld op het toestel. U deze standaardinstelling wijzigen om de agents handmatig bij te werken.
 
-U schakelt automatische update in het register uit door HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" sleutel in te stellen op 0 (DWORD). Als u besluit om handmatige updates te gebruiken, is het belangrijk om alle agents op het toestel tegelijkertijd bij te werken met behulp van de knop **Bijwerken** voor elke verouderde agent op het toestel.
+U schakelt automatische update in het register uit door de HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance "AutoUpdate" sleutel in te stellen op 0 (DWORD).
+
  
 
 ## <a name="next-steps"></a>Volgende stappen
