@@ -1,6 +1,6 @@
 ---
-title: Incrementeel meerdere tabellen kopiëren met behulp van Power shell
-description: In deze zelf studie maakt u een Azure Data Factory pijp lijn waarmee de Delta gegevens uit meerdere tabellen in een on-premises SQL Server-Data Base stapsgewijs naar een Azure SQL Database worden gekopieerd.
+title: Stapsgewijs meerdere tabellen kopiëren met PowerShell
+description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn die deltagegevens stapsgewijs kopieert van meerdere tabellen in een on-premises SQL Server-database naar een Azure SQL-database.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -12,15 +12,15 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/30/2020
 ms.openlocfilehash: 5654e1f8b8a55c705798368df70ce300241c9dff
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76989077"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Incrementeel laden van gegevens uit meerdere tabellen in SQL Server naar een Azure SQL Database
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Gegevens van meerdere tabellen in SQL Server stapsgewijs laden in een Azure SQL-database
 
-In deze zelf studie maakt u een Azure-data factory met een pijp lijn waarmee de Delta gegevens uit meerdere tabellen in een on-premises SQL Server naar een Azure SQL Database worden geladen.    
+In deze zelfstudie maakt u een Azure-gegevensfabriek met een pijplijn die deltagegevens van meerdere tabellen in on-premises SQL Server naar een Azure SQL-database laadt.    
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -42,13 +42,13 @@ Dit zijn de belangrijke stappen voor het maken van deze oplossing:
 
 1. **Selecteer de grenswaardekolom**.
 
-    Selecteer één kolom voor elke tabel in de brongegevens opslag, waarmee u de nieuwe of bijgewerkte records voor elke uitvoering kunt identificeren. Normaal gesproken nemen de gegevens in deze geselecteerde kolom (bijvoorbeeld, last_modify_time of id) toe wanneer de rijen worden gemaakt of bijgewerkt. De maximale waarde in deze kolom wordt gebruikt als grenswaarde.
+    Selecteer één kolom voor elke tabel in het brongegevensarchief, waarmee u de nieuwe of bijgewerkte records voor elke run identificeren. Normaal gesproken nemen de gegevens in deze geselecteerde kolom (bijvoorbeeld, last_modify_time of id) toe wanneer de rijen worden gemaakt of bijgewerkt. De maximale waarde in deze kolom wordt gebruikt als grenswaarde.
 
 2. **Bereid een gegevensopslag voor om de grenswaarde in op te slaan**.
 
     In deze zelfstudie slaat u de grenswaarde op in een SQL-database.
 
-3. **Maak een pijplijn met de volgende activiteiten**:
+3. **Maak een pijplijn met de volgende activiteiten:**
     
     a. Maak een ForEach-activiteit die door een lijst met namen van gegevensbrontabellen loopt, die als parameter is doorgegeven aan de pijplijn. Voor elke brontabel roept deze de volgende activiteiten voor het laden van de deltagegevens voor deze tabel op.
 
@@ -63,7 +63,7 @@ Dit zijn de belangrijke stappen voor het maken van deze oplossing:
     ![Stapsgewijs gegevens laden](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
 
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -72,9 +72,9 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Brontabellen maken in uw SQL Server-database
 
-1. Open [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) of [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)en maak verbinding met uw on-premises SQL Server-Data Base.
+1. Open [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) of Azure Data [Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)en maak verbinding met uw on-premises SQL Server-database.
 
-2. Klik in **Server Explorer (SSMS)** of in het **deel venster connections (Azure Data Studio)** met de rechter muisknop op de data base en kies **nieuwe query**.
+2. Klik in **Server Explorer (SSMS)** of in het **deelvenster Verbindingen (Azure Data Studio)** met de rechtermuisknop op de database en kies **Nieuwe query**.
 
 3. Voer de volgende SQL-opdracht uit op uw database om tabellen te maken met de naam `customer_table` en `project_table`:
 
@@ -109,11 +109,11 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     ('project3','3/4/2017 5:16:00 AM');
     ```
 
-### <a name="create-destination-tables-in-your-azure-sql-database"></a>Doel tabellen in uw Azure SQL Database maken
+### <a name="create-destination-tables-in-your-azure-sql-database"></a>Doeltabellen maken in uw Azure SQL-database
 
-1. Open [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) of [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)en maak verbinding met uw on-premises SQL Server-Data Base.
+1. Open [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) of Azure Data [Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)en maak verbinding met uw on-premises SQL Server-database.
 
-2. Klik in **Server Explorer (SSMS)** of in het **deel venster connections (Azure Data Studio)** met de rechter muisknop op de data base en kies **nieuwe query**.
+2. Klik in **Server Explorer (SSMS)** of in het **deelvenster Verbindingen (Azure Data Studio)** met de rechtermuisknop op de database en kies **Nieuwe query**.
 
 3. Voer de volgende SQL-opdracht uit op uw SQL-database om tabellen te maken met de naam `customer_table` en `project_table`:  
 
@@ -132,7 +132,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     );
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Een andere tabel in de Azure SQL Database maken om de bovengrens waarde op te slaan
+### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Een andere tabel maken in de Azure SQL Database om de hoge watermerkwaarde op te slaan
 
 1. Voer de volgende SQL-opdracht uit op de SQL-database om een tabel met de naam `watermarktable` te maken om de grenswaarde op te slaan: 
     
@@ -155,7 +155,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Een opgeslagen procedure maken in de Azure SQL Database 
+### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Een opgeslagen procedure maken in de Azure SQL-database 
 
 Voer de volgende opdracht uit om een opgeslagen procedure te maken in de SQL-database. Deze opgeslagen procedure werkt de bovengrenswaarde bij elke pijplijnuitvoering bij. 
 
@@ -173,13 +173,13 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Gegevens typen en aanvullende opgeslagen procedures maken in de Azure SQL Database
+### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Gegevenstypen en aanvullende opgeslagen procedures maken in de Azure SQL-database
 
 Voer de volgende query uit om twee opgeslagen procedures en twee gegevenstypen te maken in de SQL-database. Deze worden gebruikt voor het samenvoegen van de gegevens uit de brontabellen in doeltabellen. 
 
-Om het traject eenvoudig te laten beginnen, gebruiken we rechtstreeks deze opgeslagen procedures waarmee de Delta gegevens worden door gegeven via een tabel variabele en deze vervolgens samen voegen in het doel archief. Wees voorzichtig dat er geen ' groot ' aantal Delta rijen (meer dan 100) wordt verwacht dat moet worden opgeslagen in de tabel variabele.  
+Om de reis gemakkelijk te maken om mee te beginnen, gebruiken we deze opgeslagen procedures die de deltagegevens doorgeven via een tabelvariabele en voegen ze vervolgens samen in het doelarchief. Wees voorzichtig het is niet verwacht dat een "groot" aantal delta rijen (meer dan 100) worden opgeslagen in de tabel variabele.  
 
-Als u een groot aantal Delta rijen in het doel archief moet samen voegen, kunt u het beste de Kopieer activiteit gebruiken om alle Delta gegevens te kopiëren naar een tijdelijke tabel ' staging ' in het doel archief en vervolgens uw eigen opgeslagen procedure hebt gemaakt zonder tabel Varia te gebruiken kan ze van de tabel "staging" samen voegen met de tabel definitief. 
+Als u een groot aantal deltarijen moet samenvoegen in het doelarchief, raden we u aan om kopieeractiviteit te gebruiken om alle deltagegevens eerst te kopiëren naar een tijdelijke 'staging'-tabel in het doelarchief en vervolgens uw eigen opgeslagen procedure te bouwen zonder tabelvariabele te gebruiken om ze samen te voegen van de tabel 'staging' naar de tabel 'definitief'. 
 
 
 ```sql
@@ -263,7 +263,7 @@ Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure Pow
     ```powershell
     $dataFactoryName = "ADFIncMultiCopyTutorialFactory";
     ```
-5. Voer de volgende **set-AzDataFactoryV2-** cmdlet uit om de Data Factory te maken: 
+5. Voer de volgende **set-AzDataFactoryV2-cmdlet** uit om de gegevensfabriek te maken: 
     
     ```powershell
     Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
@@ -287,13 +287,13 @@ Houd rekening met de volgende punten:
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 
-U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in uw on-premises SQL Server-Data Base en Azure SQL Database. 
+U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services voor uw on-premises SQL Server-database en Azure SQL Database. 
 
 ### <a name="create-the-sql-server-linked-service"></a>De gekoppelde service voor SQL Server maken
 
 In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppelen.
 
-1. Maak een JSON-bestand met de naam **SqlServerLinkedService. json** in de map C:\ADFTutorials\IncCopyMultiTableTutorial (Maak de lokale mappen als ze nog niet bestaan) met de volgende inhoud. Selecteer de juiste sectie op basis van de verificatie die u gebruikt om verbinding te maken met SQL Server.  
+1. Maak een JSON-bestand met de naam **SqlServerLinkedService.json** in de map C:\ADFTutorials\IncCopyMultiTableTutorial (maak de lokale mappen als deze nog niet bestaan) met de volgende inhoud. Selecteer de juiste sectie op basis van de verificatie die u gebruikt om verbinding te maken met SQL Server.  
 
     > [!IMPORTANT]
     > Selecteer de juiste sectie op basis van de verificatie die u gebruikt om verbinding te maken met SQL Server.
@@ -349,13 +349,13 @@ In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppe
     > - Vervang &lt;servername>, &lt;databasename>,&lt; username> en&lt; password> door de waarden van uw SQL Server-exemplaar voordat u het bestand opslaat.
     > - Als u een slash wilt gebruiken (`\`) in de naam van uw gebruikersaccount of server, moet u het escapeteken (`\`) gebruiken. Een voorbeeld is `mydomain\\myuser`.
 
-2. Voer in Power shell de volgende cmdlet uit om over te scha kelen naar de map C:\ADFTutorials\IncCopyMultiTableTutorial.
+2. Voer in PowerShell de volgende cmdlet uit om over te schakelen naar de map C:\ADFTutorials\IncCopyMultiTableTutorial.
 
     ```powershell
     Set-Location 'C:\ADFTutorials\IncCopyMultiTableTutorial'
     ```
 
-3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureStorageLinkedService te maken. In het volgende voorbeeld geeft u de waarden door voor de parameters *ResourceGroupName* en *DataFactoryName*: 
+3. Voer de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureStorageLinkedService te maken. In het volgende voorbeeld geeft u waarden door voor de parameters *ResourceGroupName* en *DataFactoryName:* 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
@@ -372,7 +372,7 @@ In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppe
 
 ### <a name="create-the-sql-database-linked-service"></a>De gekoppelde SQL-databaseservice maken
 
-1. Maak een JSON-bestand met de naam **AzureSQLDatabaseLinkedService. json** in de map C:\ADFTutorials\IncCopyMultiTableTutorial met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang &lt;servername&gt;, &lt;database naam&gt;, &lt;gebruikers naam&gt;en &lt;wachtwoord&gt; met de naam van uw SQL Server-Data Base, de naam van uw data base, gebruikers naam en wacht woord voordat u het bestand opslaat. 
+1. Maak een JSON-bestand met de naam **AzureSQLDatabaseLinkedService.json** in C:\ADFTutorials\IncCopyMultiTableTutorial-map met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang &lt;&gt;servernaam, &lt;&gt;databasenaam, &lt;gebruikersnaam&gt;en &lt;wachtwoord&gt; door de naam van uw SQL Server-database, de naam van uw database, gebruikersnaam en wachtwoord voordat u het bestand opslaat. 
 
     ```json
     {  
@@ -388,7 +388,7 @@ In deze stap gaat u uw on-premises SQL Server-database aan de data factory koppe
         }
     }
     ```
-2. Voer in Power shell de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureSQLDatabaseLinkedService te maken. 
+2. Voer in PowerShell de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureSQLDatabaseLinkedService te maken. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -433,7 +433,7 @@ In deze stap maakt u gegevenssets die de gegevensbron, het gegevensdoel en de pl
 
     De kopieeractiviteit in de pijplijn gebruikt een SQL-query voor het laden van de gegevens in plaats van de hele tabel te laden.
 
-2. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset source dataset te maken.
+2. Voer de cmdlet **Set-AzDataFactoryV2Dataset uit** om de gegevensset SourceDataset te maken.
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -451,7 +451,7 @@ In deze stap maakt u gegevenssets die de gegevensbron, het gegevensdoel en de pl
 
 ### <a name="create-a-sink-dataset"></a>Een sinkgegevensset maken
 
-1. Maak een JSON-bestand met de naam **SinkDataset. json** in dezelfde map met de volgende inhoud. Het element tableName wordt in runtime dynamisch ingesteld door de pijplijn. De ForEach-activiteit in de pijplijn doorloopt een lijst met namen van tabellen en geeft de tabelnaam door aan deze gegevensset in elke iteratie. 
+1. Maak een JSON-bestand met de naam **SinkDataset.json** in dezelfde map met de volgende inhoud. Het element tableName wordt in runtime dynamisch ingesteld door de pijplijn. De ForEach-activiteit in de pijplijn doorloopt een lijst met namen van tabellen en geeft de tabelnaam door aan deze gegevensset in elke iteratie. 
 
     ```json
     {  
@@ -480,7 +480,7 @@ In deze stap maakt u gegevenssets die de gegevensbron, het gegevensdoel en de pl
     }
     ```
 
-2. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset SinkDataset te maken.
+2. Voer de cmdlet **Set-AzDataFactoryV2Dataset uit** om de gegevensset SinkDataset te maken.
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -500,7 +500,7 @@ In deze stap maakt u gegevenssets die de gegevensbron, het gegevensdoel en de pl
 
 In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde. 
 
-1. Maak een JSON-bestand met de naam **water Mark DataSet. json** in dezelfde map met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam **WatermarkDataset.json** in dezelfde map met de volgende inhoud: 
 
     ```json
     {
@@ -517,7 +517,7 @@ In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde.
         }
     }    
     ```
-2. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset water Mark dataset te maken.
+2. Voer de cmdlet **Set-AzDataFactoryV2Dataset uit** om de gegevensset WatermarkDataset te maken.
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
@@ -535,19 +535,19 @@ In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde.
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **foreach-activiteit** doorloopt de lijst met tabel namen en voert de volgende bewerkingen uit: 
+In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **Activiteit VoorElke** doorloopt de lijst met tabelnamen en voert de volgende bewerkingen uit: 
 
-1. Gebruik de **opzoek activiteit** om de oude watermerk waarde op te halen (de aanvankelijke waarde of het item dat is gebruikt in de laatste iteratie).
+1. Gebruik de **opzoekactiviteit** om de oude watermerkwaarde op te halen (de oorspronkelijke waarde of de waarde die in de laatste iteratie is gebruikt).
 
-2. Gebruik de **opzoek activiteit** om de nieuwe watermerk waarde op te halen (de maximum waarde van de kolom water merk in de bron tabel).
+2. Gebruik de **activiteit Opzoeken** om de nieuwe watermerkwaarde op te halen (de maximale waarde van de watermerkkolom in de brontabel).
 
-3. Gebruik de **Kopieer activiteit** om gegevens tussen deze twee watermerk waarden te kopiëren van de bron database naar de doel database.
+3. Gebruik de **activiteit Kopiëren** om gegevens tussen deze twee watermerkwaarden uit de brondatabase naar de doeldatabase te kopiëren.
 
-4. Gebruik de **activiteit** van de procedure voor het bijwerken van de oude watermerk waarde die in de eerste stap van de volgende iteratie moet worden gebruikt. 
+4. Gebruik de **activiteit StoredProcedure** om de oude watermerkwaarde bij te werken die in de eerste stap van de volgende iteratie moet worden gebruikt. 
 
 ### <a name="create-the-pipeline"></a>Maak de pijplijn
 
-1. Maak een JSON-bestand met de naam **IncrementalCopyPipeline. json** in dezelfde map met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam **IncrementalCopyPipeline.json** in dezelfde map met de volgende inhoud: 
 
     ```json
     {  
@@ -763,7 +763,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **for
         }
     }
     ```
-2. Voer de cmdlet **set-AzDataFactoryV2Pipeline** uit om de pijp lijn IncrementalCopyPipeline te maken.
+2. Voer de cmdlet **Set-AzDataFactoryV2Pipeline** uit om de incrementele pipeline van de pijplijn te maken.
     
    ```powershell
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
@@ -781,7 +781,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **for
  
 ## <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
-1. Maak een parameter bestand met de naam **para meters. json** in dezelfde map met de volgende inhoud:
+1. Maak een parameterbestand met de naam **Parameters.json** in dezelfde map met de volgende inhoud:
 
     ```json
     {
@@ -802,7 +802,7 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **for
         ]
     }
     ```
-2. Voer de pijplijn IncrementalCopyPipeline uit met behulp van de cmdlet **invoke-AzDataFactoryV2Pipeline** . Vervang tijdelijke aanduidingen door de namen van uw eigen resourcegroep en data factory.
+2. Voer de pipeline IncrementalCopyPipeline uit met de cmdlet **Invoke-AzDataFactoryV2Pipeline.** Vervang tijdelijke aanduidingen door de namen van uw eigen resourcegroep en data factory.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"        
@@ -810,34 +810,34 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **for
 
 ## <a name="monitor-the-pipeline"></a>De pijplijn bewaken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 2. Selecteer **Alle services**, zoek met het trefwoord *gegevensfactory's* en selecteer **Gegevensfactory's**. 
 
 3. Zoek naar uw data factory in de lijst met data factory’s, en selecteer deze om de pagina **Data Factory** te openen. 
 
-4. Selecteer op de pagina **Data Factory** de optie **Author & monitor** om Azure Data Factory op een afzonderlijk tabblad te starten.
+4. Selecteer op de **fabriekspagina Gegevens** de optie **Auteur & monitor** om Azure Data Factory op een apart tabblad te starten.
 
-5. Selecteer op de pagina **aan de slag** de optie **monitor** aan de linkerkant. 
-![pijplijn wordt uitgevoerd](media/doc-common-process/get-started-page-monitor-button.png)    
+5. Selecteer Op de pagina **Laten we aan de slag** de optie **Monitor** aan de linkerkant. 
+![Pijplijnuitvoeringen](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. U kunt alle pijplijnactiviteiten en hun status zien. Let erop dat in het volgende voorbeeld de status van de pijplijnactiviteit **Geslaagd** is. U kunt parameters controleren die zijn doorgegeven aan de pijplijn door de koppeling in de kolom **Parameters** te selecteren. Als er een fout is opgetreden, ziet u een koppeling in de kolom **Fout**.
 
     ![Pijplijnuitvoeringen](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
-7. Wanneer u de koppeling in de kolom **acties** selecteert, ziet u alle uitvoeringen van de activiteit voor de pijp lijn. 
+7. Wanneer u de koppeling in de kolom **Acties** selecteert, ziet u alle activiteitsuitvoeringen voor de pijplijn. 
 
-8. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **alle pijplijn uitvoeringen**. 
+8. Als u terug wilt gaan naar de weergave **Pijplijnuitvoeringen,** selecteert u **Alle pijplijnuitvoeringen**. 
 
 ## <a name="review-the-results"></a>De resultaten bekijken
 
 Voer in SQL Server Management Studio de volgende query's uit op de SQL-doeldatabase om te controleren of de gegevens van de brontabellen naar de doeltabellen zijn gekopieerd: 
 
-**Query** 
+**Query’s uitvoeren** 
 ```sql
 select * from customer_table
 ```
 
-**Uitvoer**
+**Output**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -849,13 +849,13 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**Query**
+**Query’s uitvoeren**
 
 ```sql
 select * from project_table
 ```
 
-**Uitvoer**
+**Output**
 
 ```
 ===================================
@@ -866,13 +866,13 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-**Query**
+**Query’s uitvoeren**
 
 ```sql
 select * from watermarktable
 ```
 
-**Uitvoer**
+**Output**
 
 ```
 ======================================
@@ -905,7 +905,7 @@ VALUES
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupname -dataFactoryName $dataFactoryName -ParameterFile ".\Parameters.json"
     ```
-2. Volg de pijplijnuitvoeringen met behulp van de instructies in de sectie [De pijplijn bewaken](#monitor-the-pipeline). Wanneer de status van de pijp lijn wordt **uitgevoerd**, ziet u een andere actie koppeling onder **acties** om de uitvoering van de pijp lijn te annuleren. 
+2. Volg de pijplijnuitvoeringen met behulp van de instructies in de sectie [De pijplijn bewaken](#monitor-the-pipeline). Wanneer de pijplijnstatus **in uitvoering**is, ziet u een andere actiekoppeling onder **Acties** om de pijplijnrun te annuleren. 
 
 3. Klik op **Vernieuwen** om de lijst te vernieuwen totdat de uitvoering van de pijplijn is voltooid. 
 
@@ -915,12 +915,12 @@ VALUES
 
 Voer in SQL Server Management Studio de volgende query's uit op de doeldatabase om te controleren dat de bijgewerkte/nieuwe gegevens van de brontabellen naar de doeltabellen zijn gekopieerd. 
 
-**Query** 
+**Query’s uitvoeren** 
 ```sql
 select * from customer_table
 ```
 
-**Uitvoer**
+**Output**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -934,13 +934,13 @@ PersonID    Name    LastModifytime
 
 Let op de nieuwe waarden van **Name** en **LastModifytime** voor de **PersonID** voor nummer 3. 
 
-**Query**
+**Query’s uitvoeren**
 
 ```sql
 select * from project_table
 ```
 
-**Uitvoer**
+**Output**
 
 ```
 ===================================
@@ -954,13 +954,13 @@ NewProject  2017-10-01 00:00:00.000
 
 Let erop dat de invoer van **NewProject** toegevoegd is aan project_table. 
 
-**Query**
+**Query’s uitvoeren**
 
 ```sql
 select * from watermarktable
 ```
 
-**Uitvoer**
+**Output**
 
 ```
 ======================================

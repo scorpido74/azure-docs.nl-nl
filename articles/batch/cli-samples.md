@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-voor beelden-batch
-description: Voor beelden van Azure CLI voor Azure Batch service. Meer informatie over het maken van een batch-account en het toevoegen van een toepassing.
+title: Azure CLI-voorbeelden - Batch
+description: Azure CLI-voorbeelden voor Azure Batch-service. Meer informatie over het maken van een Batch-account en het toevoegen van een toepassing.
 services: batch
 documentationcenter: batch
 author: LauraBrenner
@@ -16,10 +16,10 @@ ms.date: 01/29/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: dd95511365a25c8f642cb7dcc5ef477f90926d31
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77022695"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Azure CLI-voorbeelden voor Azure Batch
@@ -28,7 +28,7 @@ De volgende tabel bevat koppelingen naar Azure CLI-voorbeelden voor Azure Batch.
 
 |  |  |
 |---|---|
-|**Een Batch-account maken**||
+|**Batch-account maken**||
 | [Een Batch-account maken in Batch-servicemodus](./scripts/batch-cli-sample-create-account.md) | Hiermee maakt u een Batch-account in de standaardmodus en koppelt het aan een opslagaccount. |
 | [Een Batch-account maken in gebruikersabonnementmodus](./scripts/batch-cli-sample-create-user-subscription-account.md) | Hiermee maakt u een Batch-account in gebruikersabonnementmodus. |
 |**Een toepassing toevoegen**||

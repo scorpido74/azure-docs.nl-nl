@@ -1,5 +1,5 @@
 ---
-title: Een virtuele machine maken door een beheerde schijf te koppelen als besturingssysteem schijf-Power shell-voor beeld
+title: Een VM maken door een beheerde schijf als OS-schijf te koppelen - PowerShell-voorbeeld
 description: Voorbeeld van Azure PowerShell-script - Een VM maken door een beheerde schijf te koppelen als besturingssysteemschijf
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 891c82c75c6e059e4ceeba110e1de5515755e71f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75463671"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>Een virtuele machine maken met behulp van een bestaande beheerde besturingssysteemschijf met PowerShell

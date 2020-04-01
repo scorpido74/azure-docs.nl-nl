@@ -1,5 +1,5 @@
 ---
-title: Een node. js Express-app maken met de API van Azure Cosmos DB voor MongoDB (Part2)
+title: Node.js Express-app maken met azure cosmos DB's API voor MongoDB (Deel2)
 description: Deel 2 van de serie zelfstudies voor het maken van een MongoDB-app met Angular en Node op Azure Cosmos DB, waarbij gebruik wordt gemaakt van dezelfde API's als voor MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: 693222f4c1abd9bda128d18dc4dd67703a245bc8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441135"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Een Angular-app maken met de API van Azure Cosmos DB voor MongoDB - een Node.js Express-app maken
@@ -102,7 +102,7 @@ Voor deze zelfstudie hebt u verder nodig:
     * Behandelt alles dat zich in de map dist bevindt, dat wil zeggen de statische inhoud
     * Haalt de app op en behandelt index.html voor alle GET-aanvragen die niet op de server worden gevonden (voor dieptekoppelingen)
     * Start de server met app.listen
-    * Gebruikt een pijl functie om te registreren dat de poort actief is
+    * Gebruikt een pijlfunctie om te registreren dat de poort in leven is
     
    ```node
    const express = require('express');

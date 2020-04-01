@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: groep toegang verlenen tot Azure-resources met RBAC en Azure PowerShell'
-description: Meer informatie over hoe u een groep toegang verleent tot Azure-resources met behulp van RBAC (op rollen gebaseerd toegangs beheer) en Azure PowerShell in deze zelf studie.
+title: 'Zelfstudie: Groepstoegang verlenen tot Azure-bronnen met RBAC en Azure PowerShell'
+description: In deze zelfstudie u een groep toegang verlenen tot Azure-bronnen met behulp van RBAC (Role Based Access Control) en Azure PowerShell.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,13 +14,13 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77138246"
 ---
-# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Zelf studie: een groep toegang verlenen tot Azure-resources met RBAC en Azure PowerShell
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Zelfstudie: Een groep toegang verlenen tot Azure-bronnen met RBAC en Azure PowerShell
 
 [Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelfstudie geeft u een groep toestemming om alles in een abonnement te bekijken en om alles in een resourcegroep te beheren met Azure PowerShell.
 
@@ -31,7 +31,7 @@ In deze zelfstudie leert u het volgende:
 > * Toegang opvragen
 > * Toegang intrekken
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 In RBAC verleent u toegang door een roltoewijzing te maken. Een roltoewijzing bestaat uit drie elementen: beveiligings-principal, roldefinitie en bereik (ook wel scope of niveau genoemd). Dit zijn de twee roltoewijzingen die u gaat uitvoeren in deze zelfstudie:
 
-| Beveiligings-principal | Roldefinitie | Bereik |
+| Beveiligings-principal | Roldefinitie ophalen | Bereik |
 | --- | --- | --- |
 | Groep<br>(RBAC Tutorial Group) | [Lezer](built-in-roles.md#reader) | Abonnement |
 | Groep<br>(RBAC Tutorial Group)| [Inzender](built-in-roles.md#contributor) | Resourcegroep<br>(rbac-tutorial-resource-group) |
@@ -70,7 +70,7 @@ Als u een rol wilt toewijzen, hebt u een gebruiker, groep of service-principal n
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-Als u geen machtigingen hebt om groepen te maken, kunt u de [zelf studie proberen: verleen een gebruiker toegang tot Azure-resources met RBAC en Azure PowerShell](tutorial-role-assignments-user-powershell.md) in plaats daarvan.
+Als u geen machtigingen hebt om groepen te maken, u de [zelfstudie: Een gebruiker toegang verlenen tot Azure-bronnen met RBAC en Azure PowerShell](tutorial-role-assignments-user-powershell.md) in plaats daarvan proberen.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -281,7 +281,7 @@ Als u de in deze zelfstudie gemaakte resources wilt opschonen, verwijdert u de r
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. Wanneer u wordt gevraagd te bevestigen, typt u **j**. Het duurt een paar seconden om te verwijderen.
+1. Wanneer u wordt gevraagd om te bevestigen, typt u **Y**. Het duurt een paar seconden om te verwijderen.
 
 1. Verwijder de groep met de opdracht [Remove-AzureADGroup](/powershell/module/azuread/remove-azureadgroup).
 

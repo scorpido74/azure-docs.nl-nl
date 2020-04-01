@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/03/2020
 ms.author: tarcher
 ms.openlocfilehash: e9b8ad7a7fcc499f8760b56e6a737be8a6a9e06c
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79199720"
 ---
 ## <a name="prerequisites"></a>Vereisten
@@ -25,7 +25,7 @@ Jenkins biedt ondersteuning voor een model waarin de Jenkins-server werk delegee
 
 ## <a name="connect-to-jenkins"></a>Verbinding maken met Jenkins
 
-Navigeer naar uw virtuele machine (bijvoorbeeld `http://jenkins2517454.eastus.cloudapp.azure.com/`) in uw webbrowser. De Jenkins-console is niet toegankelijk via onbeveiligde HTTP. Om die reden bevat de pagina instructies om de console veilig vanaf uw computer te gebruiken via een SSH-tunnel.
+Navigeer naar uw virtuele machine `http://jenkins2517454.eastus.cloudapp.azure.com/`(bijvoorbeeld ) in uw webbrowser. De Jenkins-console is niet toegankelijk via onbeveiligde HTTP. Om die reden bevat de pagina instructies om de console veilig vanaf uw computer te gebruiken via een SSH-tunnel.
 
 ![Jenkins ontgrendelen](./media/jenkins-install-solution-template-steps/jenkins-ssh-instructions.png)
 
@@ -67,7 +67,7 @@ Selecteer het tabblad **Build** en selecteer vervolgens **Add build step**, **In
 
 ![De Gradle-wrapper gebruiken om de code te bouwen](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-config.png) 
 
-Selecteer **Geavanceerd** en voer vervolgens in het veld `complete`Root Build script**de waarde** in. Selecteer **Opslaan**.
+Selecteer **Geavanceerd** en voer vervolgens in het veld **Root Build script** de waarde `complete` in. Selecteer **Opslaan**.
 
 ![Geavanceerde instellingen opgeven in de stap voor het bouwen van de Gradle-wrapper](./media/jenkins-install-solution-template-steps/jenkins-job-gradle-advances.png) 
 

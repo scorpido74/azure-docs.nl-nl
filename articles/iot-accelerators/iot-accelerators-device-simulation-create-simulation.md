@@ -10,13 +10,13 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "61448522"
 ---
-# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Zelfstudie: Maken en uitvoeren van een IoT-apparaat simuleren
+# <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Zelfstudie: Een nieuwe IoT-apparaatsimulatie maken en uitvoeren
 
 In deze zelfstudie gebruikt u Apparaatsimulatie om met behulp van een of meer gesimuleerde apparaten een nieuwe IoT-simulatie te maken en uit te voeren.
 
@@ -28,7 +28,7 @@ In deze zelfstudie hebt u:
 > * Metrische gegevens voor een simulatie weergeven
 > * Een simulatie stoppen
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 

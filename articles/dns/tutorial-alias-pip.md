@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een alias record voor Azure DNS maken om te verwijzen naar een openbaar IP-adres van Azure'
+title: 'Zelfstudie: Een Azure DNS-aliasrecord maken om te verwijzen naar een openbaar IP-adres van Azure'
 description: In deze zelfstudie leert u hoe u een Azure DNS-aliasrecord zo configureert dat deze naar een openbaar Azure-IP-adres verwijst.
 services: dns
 author: rohinkoul
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77149929"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Zelfstudie: Een aliasrecord zo configureren dat deze naar een openbaar Azure-IP-adres verwijst 
@@ -21,11 +21,11 @@ In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > * Een netwerkinfrastructuur maken.
 > * Een virtuele webserver maken.
-> * Een aliasrecord maken
+> * Een aliasrecord maken.
 > * De aliasrecord testen.
 
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet een beschikbare domeinnaam hebben die u in Azure DNS kunt hosten om te testen. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
@@ -36,16 +36,16 @@ Het voorbeelddomein dat wordt gebruikt voor deze zelfstudie is contoso.com, maar
 
 ## <a name="create-the-network-infrastructure"></a>De netwerkinfrastructuur maken
 Maak eerst een virtueel netwerk en een subnet waaraan u de webservers gaat toevoegen.
-1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+1. Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 2. Selecteer helemaal linksboven in de portal **Een resource maken**. Typ *resourcegroep* in het zoekvak en maak een resourcegroep met de naam **RG-DNS-Alias-pip**.
-3. Selecteer **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
+3. Selecteer**Networking** > Een **virtueel netwerknetwerk voor bronnen** > **maken**.
 4. Maak een virtueel netwerk met de naam **VNet-Server**. Plaats het in de resourcegroep **RG-DNS-Alias-pip** en geef het subnet de naam **SN-Web**.
 
 ## <a name="create-a-web-server-virtual-machine"></a>Een virtuele webserver maken
-1. Selecteer **Een resource maken** > **Windows Server 2016 VM**.
+1. Selecteer **Een bron** > **Windows Server 2016 VM maken**.
 2. Geef **Web-01** op als naam en plaats de virtuele machine in de resourcegroep **RG-DNS-Alias-TM**. Voer een gebruikersnaam en wachtwoord in en selecteer **OK**.
-3. Voor **grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
-4. Selecteer voor **Instellingen** het virtuele netwerk **VNet-Servers** en het subnet **SN-Web**. Selecteer voor openbare inkomende poorten **HTTP** > **HTTPS** > **RDP (3389)** en selecteer vervolgens **OK**.
+3. Voor **Grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
+4. Selecteer voor **Instellingen** het virtuele netwerk **VNet-Servers** en het subnet **SN-Web**. Selecteer **HTTP** > **HTTPS** > **RDP (3389)** en selecteer **OK**voor openbare binnenkomende poorten.
 5. Op de pagina**Overzicht** selecteert u **Maken**.
 
 Deze procedure duurt een paar minuten.
@@ -54,9 +54,9 @@ Deze procedure duurt een paar minuten.
 
 Installeren IIS op **Web01**.
 
-1. Maak verbinding met **Web-01** en meld u aan.
+1. Maak verbinding met **Web-01**en meld u aan.
 2. Selecteer op het dashboard **Serverbeheer** de optie **Functies en onderdelen toevoegen**.
-3. Selecteer drie keer **Volgende**. Selecteer op de pagina **Serverfuncties** de optie **Webserver (IIS)** .
+3. Selecteer drie keer **Volgende**. Selecteer op de pagina **Serverfuncties** de optie **Webserver (IIS)**.
 4. Selecteer **Onderdelen toevoegen** en selecteer **Volgende**.
 5. Selecteer viermaal **Volgende** en selecteer vervolgens **Installeren**. Deze procedure duurt een paar minuten.
 6. Nadat de installatie is voltooid, selecteert u **Sluiten**.
@@ -70,10 +70,10 @@ Maak een aliasrecord dat naar het openbare IP-adres verwijst.
 2. Selecteer **Recordset**.
 3. Selecteer **web01** in het tekstvak **Naam**.
 4. Laat het **Type** een **A**-record.
-5. Schakel het selectievakje **Alias recordset** in.
+5. Schakel het selectievakje **Alias Record Set** in.
 6. Selecteer **Azure-service kiezen** en selecteer vervolgens het openbare IP-adres **Web-01-ip**.
 
-## <a name="test-the-alias-record"></a>De aliasrecord testen
+## <a name="test-the-alias-record"></a>Het aliasrecord testen
 
 1. Selecteer in de resourcegroep **RG-DNS-Alias-pip** de virtuele machine **Web-01**. Noteer het openbare IP-adres.
 1. Ga in een webbrowser naar de Fully Qualified Domain Name voor de virtuele machine Web01-01. Een voorbeeld is **web01.contoso.com**. De IIS-standaardwebpagina wordt nu weergegeven.

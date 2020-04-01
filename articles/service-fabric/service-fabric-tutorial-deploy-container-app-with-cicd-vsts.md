@@ -1,14 +1,14 @@
 ---
-title: Een container toepassing implementeren met CI/CD
+title: Een containertoepassing implementeren met CI/CD
 description: In deze zelfstudie leert u continue integratie en implementatie in te stellen voor een Azure Service Fabric-containertoepassing met behulp van Visual Studio Azure DevOps.
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614125"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Zelfstudie: Een containertoepassing met CI/CD implementeren in een Service Fabric-cluster
@@ -32,7 +32,7 @@ Voor u met deze zelfstudie begint:
 
 ## <a name="prepare-a-publish-profile"></a>Een publicatieprofiel voorbereiden
 
-Nu u een [containertoepassing hebt geïmplementeerd](service-fabric-host-app-in-a-container.md), bent u klaar om continue integratie in te stellen.  Bereid eerst een publicatieprofiel binnen uw toepassing voor, dat kan worden gebruikt door het implementatieproces dat in Azure DevOps wordt uitgevoerd.  Het publicatieprofiel moet worden geconfigureerd zodat het cluster dat u eerder hebt gemaakt als doel kan dienen.  Start Visual Studio en open een bestaand Service Fabric-toepassingsproject.  Klik in **Solution Explorer** met de rechtermuisknop op de toepassing en selecteer **Publish...** .
+Nu u een [containertoepassing hebt geïmplementeerd](service-fabric-host-app-in-a-container.md), bent u klaar om continue integratie in te stellen.  Bereid eerst een publicatieprofiel binnen uw toepassing voor, dat kan worden gebruikt door het implementatieproces dat in Azure DevOps wordt uitgevoerd.  Het publicatieprofiel moet worden geconfigureerd zodat het cluster dat u eerder hebt gemaakt als doel kan dienen.  Start Visual Studio en open een bestaand Service Fabric-toepassingsproject.  Klik in **Solution Explorer** met de rechtermuisknop op de toepassing en selecteer **Publish...**.
 
 Kies een doelprofiel in het toepassingsproject, dat voor de werkstroom voor continue integratie kan worden gebruikt, bijvoorbeeld Cloud.  Geef het eindpunt voor de clusterverbinding op.  Schakel het selectievakje bij **Upgrade the Application** in, zodat voor elke implementatie in Azure DevOps een upgrade voor de toepassing wordt uitgevoerd.  Klik op de hyperlink **Save** om de instellingen op te slaan in het publicatieprofiel. Klik vervolgens op **Cancel** om het dialoogvenster te sluiten.
 
@@ -42,7 +42,7 @@ Kies een doelprofiel in het toepassingsproject, dat voor de werkstroom voor cont
 
 Deel de bronbestanden van uw toepassing met een teamproject in Azure DevOps zodat u builds kunt genereren.
 
-Maak een nieuwe Git-opslagplaats voor uw project door op de statusbalk in de linkeronderhoek van Visual Studio **Add to Source Control** -> **Git** te selecteren.
+Maak een nieuwe lokale Git repo voor uw project door **Toevoegen aan Source Control** -> **Git** te selecteren op de statusbalk in de rechterbenedenhoek van Visual Studio.
 
 Ga naar de **Push**-weergave in **Team Explorer** en selecteer onder **Push to Azure DevOps** de knop **Publish Git Repo**.
 
@@ -99,7 +99,7 @@ Klik in het dialoogvenster **Save build pipeline and queue** op **Save & queue**
 
 ![Triggers selecteren][save-and-queue]
 
-Hiermee worden ook triggers gebouwd na pushen of inchecken. Als u de voortgang van de build wilt controleren, gaat u naar het tabblad **builds** .  Nadat u hebt gecontroleerd of de build is uitgevoerd, definieert u een release definitie waarmee uw toepassing wordt geïmplementeerd in een cluster.
+Hiermee worden ook triggers gebouwd na pushen of inchecken. Als u de voortgang van de build wilt controleren, schakelt u over naar het tabblad **Builds.**  Zodra u controleert of de build succesvol wordt uitgevoerd, definieert u een releasedefinitie die uw toepassing in een cluster implementeert.
 
 ### <a name="create-a-release-definition"></a>Release-definitie maken
 
@@ -111,7 +111,7 @@ Selecteer **Tasks**, vervolgens **Environment 1** en dan **+New** om een cluster
 
 ![Clusterverbinding toevoegen][add-cluster-connection]
 
-Selecteer in de weergave **Add new Service Fabric Connection** **Certificate Based**- of **Azure Active Directory**-verificatie.  Geef de verbindingsnaam mysftestcluster op en het clustereindpunt tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000 (of het eindpunt van het cluster waarin de implementatie wordt uitgevoerd).
+Selecteer in de weergave **Add new Service Fabric Connection****Certificate Based**- of **Azure Active Directory**-verificatie.  Geef de verbindingsnaam mysftestcluster op en het clustereindpunt tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000 (of het eindpunt van het cluster waarin de implementatie wordt uitgevoerd).
 
 Voor verificatie op basis van verificatie voegt u de **vingerafdruk voor servercertificaat** toe van het servercertificaat waarmee het cluster is gemaakt.  Voeg in het **clientcertificaat** de basis-64-codering van het certificaatbestand van de client toe. Zie het pop-upitem met de Help voor dat veld voor informatie over hoe u de basis-64-representatie van het certificaat ophaalt. Voeg ook het **wachtwoord** voor het certificaat toe.  U kunt het cluster- of het servercertificaat gebruiken als u geen apart clientcertificaat hebt.
 
@@ -126,7 +126,7 @@ Klik op **Docker Settings** en klik vervolgens op **Configure Docker settings**.
 
 ![Agent voor release-pijplijn][release-pipeline-agent]
 
-Voeg vervolgens een build-artefact toe aan de pijplijn, zodat met de releasedefinitie de uitvoer van de build kan worden gevonden. Selecteer **Pipeline** en **Artifacts**-> **+Add**.  Selecteer in **Source (Build definition)** de build-definitie die u eerder hebt gemaakt.  Klik op **Add** om het build-artefact op te slaan.
+Voeg vervolgens een build-artefact toe aan de pijplijn, zodat met de releasedefinitie de uitvoer van de build kan worden gevonden. Selecteer **Pipeline** en **Artifacts**->**+Add**.  Selecteer in **Source (Build definition)** de build-definitie die u eerder hebt gemaakt.  Klik op **Add** om het build-artefact op te slaan.
 
 ![Artefact toevoegen][add-artifact]
 
@@ -134,7 +134,7 @@ Schakel een trigger voor continue implementatie in, zodat automatisch een releas
 
 ![Trigger inschakelen][enable-trigger]
 
-Selecteer **+Release** -> **Create a Release** -> **Create** om handmatig een release te maken. U kunt de voortgang van de release volgen op het tabblad **Releases**.
+Selecteer **+ Maak** -> **een release** -> **maken** om handmatig een release te maken. U kunt de voortgang van de release volgen op het tabblad **Releases**.
 
 Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een webbrowser en ga naar `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170616.3).
 

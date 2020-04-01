@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: omgevings Machine Learning instellen op Azure IoT Edge'
-description: 'Zelf studie: uw omgeving voorbereiden voor het ontwikkelen en implementeren van modules voor machine learning aan de rand.'
+title: 'Zelfstudie: Omgeving instellen - Machine Learning op Azure IoT Edge'
+description: 'Zelfstudie: Bereid uw omgeving voor op de ontwikkeling en implementatie van modules voor machine learning aan de rand.'
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,136 +9,136 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79296796"
 ---
-# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Zelf studie: een omgeving instellen voor machine learning op IoT Edge
+# <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Zelfstudie: Een omgeving instellen voor machine learning op IoT Edge
 
 > [!NOTE]
-> Dit artikel maakt deel uit van een reeks voor een zelf studie over het gebruik van Azure Machine Learning op IoT Edge. Als u rechtstreeks in dit artikel hebt gearriveerd, raden we u aan om te beginnen met het [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de reeks voor de beste resultaten.
+> Dit artikel maakt deel uit van een reeks voor een zelfstudie over het gebruik van Azure Machine Learning op IoT Edge. Als u rechtstreeks tot dit artikel bent gekomen, raden we u aan om te beginnen met het [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de serie voor de beste resultaten.
 
-Dit artikel helpt u bij het voorbereiden van uw omgeving voor ontwikkeling en implementatie. Stel eerst een ontwikkel machine in met alle hulpprogram ma's die u nodig hebt. Maak vervolgens de benodigde cloud resources in Azure.
+In dit artikel u uw omgeving voorbereiden op ontwikkeling en implementatie. Stel eerst een ontwikkelmachine op met alle gereedschappen die je nodig hebt. Maak vervolgens de benodigde cloudbronnen in Azure.
 
-## <a name="set-up-the-development-vm"></a>De ontwikkelings-VM instellen
+## <a name="set-up-the-development-vm"></a>De ontwikkel-VM instellen
 
-Deze stap wordt doorgaans uitgevoerd door een Cloud ontwikkelaar. Een deel van de software kan ook nuttig zijn voor een gegevens wetenschapper.
+Deze stap wordt meestal uitgevoerd door een cloudontwikkelaar. Sommige van de software kan ook nuttig zijn voor een data scientist.
 
-We hebben een Power shell-script gemaakt waarmee een virtuele Azure-machine wordt gemaakt waarbij veel van de vereiste onderdelen al zijn geconfigureerd. De virtuele machine die wordt gemaakt, moet [geneste virtualisatie](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)kunnen verwerken. Daarom kiest u een [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) machine grootte.
+We hebben een PowerShell-script gemaakt dat een Azure-virtuele machine maakt met veel van de vereisten die al zijn geconfigureerd. De VM die we maken moet [geneste virtualisatie](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)kunnen verwerken, daarom hebben we gekozen voor een [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) machinegrootte.
 
-De ontwikkelings-VM wordt ingesteld met:
+De ontwikkeling VM zal worden opgezet met:
 
 * Windows 10
 * [Chocolatey](https://chocolatey.org/)
-* [Docker Desktop voor Windows](https://www.docker.com/products/docker-desktop)
+* [Docker-bureaublad voor Windows](https://www.docker.com/products/docker-desktop)
 * [Git voor Windows](https://gitforwindows.org/)
-* [Git Credential Manager voor Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
+* [Git-referentiebeheer voor Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
 * [.NET Core-SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)
-* [VS code-extensies](https://marketplace.visualstudio.com/search?target=VSCode)
-  * [Azure IoT-Hulpprogram Ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+* [VS-code-extensies](https://marketplace.visualstudio.com/search?target=VSCode)
+  * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+  * [C #](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   * [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
   * [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 
-De ontwikkel-VM is niet strikt nood zakelijk. alle ontwikkel hulpprogramma's kunnen worden uitgevoerd op een lokale computer. We raden u echter ten zeerste aan gebruik te maken van de virtuele machine om een veld op niveau af te spelen.
+De ontwikkelaar VM is niet strikt noodzakelijk - alle ontwikkeltools kunnen worden uitgevoerd op een lokale machine. We raden echter ten zeerste aan om de VM te gebruiken om een gelijk speelveld te garanderen.
 
 Het duurt ongeveer 30 minuten om de virtuele machine te maken en te configureren.
 
-1. Kloon of down load de voorbeeld opslagplaats voor [machine learning en IOT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) naar de lokale computer.
+1. Kloon of download de [Machine Learning en IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) sample repository naar uw lokale computer.
 
-1. Open Power shell als beheerder en ga naar de map **\IoTEdgeAndMlSample\DevVM** die zich bevindt in de hoofdmap waarin u de code hebt gedownload. We verwijzen naar de hoofdmap voor uw bron als `srcdir`.
+1. Open PowerShell als beheerder en navigeer naar de **\IoTEdgeAndMlSample\DevVM-map** onder de hoofdmap waar u de code hebt gedownload. We verwijzen naar de hoofdmap `srcdir`voor uw bron als .
 
     ```powershell
     cd c:\srcdir\IoTEdgeAndMlSample\DevVM
     ```
 
-   De map DevVM bevat de bestanden die nodig zijn om een virtuele machine van Azure te maken die geschikt is voor het volt ooien van deze zelf studie.
+   De Map DevVM bevat de bestanden die nodig zijn om een virtuele Azure-machine te maken die geschikt is voor het voltooien van deze zelfstudie.
 
-1. Voer de volgende opdracht uit om scripts toe te staan. Kies **Ja** als u hierom wordt gevraagd.
+1. Voer de volgende opdracht uit om de uitvoering van scripts toe te staan. Kies **Ja tot alles** wanneer daarom wordt gevraagd.
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-1. Voer Create-AzureDevVM. ps1 uit.
+1. Uitvoeren Create-AzureDevVM.ps1.
 
     ```powershell
     .\Create-AzureDevVm.ps1
     ```
 
-    Wanneer u hierom wordt gevraagd, geeft u de volgende informatie op:
+    Geef de volgende informatie op wanneer u daarom wordt gevraagd:
 
-    * **Azure-abonnements-id**: uw abonnements-id, die u kunt vinden in [Azure-abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in de portal.
-    * **Naam van resource groep**: de naam van een nieuwe of bestaande resource groep in Azure.
-    * **Locatie**: Kies een Azure-locatie waar de virtuele machine wordt gemaakt. Bijvoorbeeld ' vs West 2 ' of ' Europa-noord '. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor meer informatie.
-    * **Gebruikers naam**: Geef een naam op voor het beheerders account voor de virtuele machine.
-    * **Wacht woord**: Stel een wacht woord in voor het beheerders account voor de virtuele machine.
+    * **Azure Subscription ID**: Uw abonnements-ID, die kan worden gevonden in [Azure-abonnementen](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) in portal.
+    * **Naam resourcegroep:** de naam van een nieuwe of bestaande resourcegroep in Azure.
+    * **Locatie:** kies een Azure-locatie waar de virtuele machine wordt gemaakt. Bijvoorbeeld 'West US 2' of 'Noord-Europa'. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor meer informatie.
+    * **Gebruikersnaam:** Geef een gedenkwaardige naam op voor het beheerdersaccount voor de VM.
+    * **Wachtwoord:** stel een wachtwoord in voor het beheerdersaccount voor de vm.
 
-   Het script wordt gedurende enkele minuten uitgevoerd, omdat de volgende stappen worden uitgevoerd:
+   Het script wordt enkele minuten uitgevoerd terwijl de volgende stappen worden uitgevoerd:
 
-    1. Installeert de [Azure PowerShell AZ-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
-    1. Hiermee wordt u gevraagd om u aan te melden bij Azure.
-    1. Hiermee wordt de informatie voor het maken van uw VM bevestigd. Druk op **j** of **Enter** om door te gaan.
-    1. Maakt de resource groep als deze niet bestaat.
-    1. Hiermee implementeert u de virtuele machine.
+    1. Installeert de [Azure PowerShell Az-module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
+    1. Vraagt u zich aan te melden bij Azure.
+    1. Bevestigt de informatie voor het maken van uw VM. Druk op **y** of **Enter** om door te gaan.
+    1. Hiermee maakt u de resourcegroep als deze niet bestaat.
+    1. Implementeert de virtuele machine.
     1. Hiermee schakelt u Hyper-V in op de VM.
-    1. Hiermee installeert u de benodigde software voor het ontwikkelen en klonen van de voorbeeld opslagplaats.
-    1. Hiermee wordt de virtuele machine opnieuw opgestart.
-    1. Hiermee maakt u een RDP-bestand op uw bureau blad om verbinding te maken met de virtuele machine.
+    1. Installeert software nodig voor ontwikkeling en kloon de steekproef repository.
+    1. Start de VM opnieuw.
+    1. Hiermee maakt u een RDP-bestand op uw bureaublad om verbinding te maken met de virtuele machine.
 
-   Als u wordt gevraagd de naam van de virtuele machine opnieuw op te starten, kunt u de naam van de VM kopiëren uit de script uitvoer. De uitvoer toont ook het pad naar het RDP-bestand om verbinding te maken met de virtuele machine.
+   Als u wordt gevraagd om de naam van de virtuele machine opnieuw op te starten, u de naam uit de scriptuitvoer kopiëren. De uitvoer toont ook het pad naar het RDP-bestand voor verbinding maken met de VM.
 
 ### <a name="set-auto-shutdown-schedule"></a>Schema voor automatisch afsluiten instellen
 
-Om u te helpen kosten te verlagen, is de ontwikkelings-VM gemaakt met een schema voor automatische afsluiting dat is ingesteld op 1900 PST. U moet deze instelling mogelijk bijwerken, afhankelijk van uw locatie en planning. De afsluit planning bijwerken:
+Om u te helpen de kosten te verlagen, is de ontwikkelings-VM gemaakt met een automatisch uitschakelschema dat is ingesteld op 1900 PST. Mogelijk moet u deze instelling bijwerken, afhankelijk van uw locatie en planning. Ga als u het afsluitschema bijwerken:
 
-1. Navigeer in het Azure Portal naar de virtuele machine die het script heeft gemaakt.
+1. Navigeer in de Azure-portal naar de VM die het script heeft gemaakt.
 
-1. Selecteer in het menu van het linkerdeel venster onder **bewerkingen**de optie **automatisch afsluiten**.
+1. Selecteer In het menu van het linkerdeelvenster onder **Bewerkingen**de optie **Automatisch afsluiten**.
 
-1. Pas de **geplande afsluiting** en de gewenste **tijd zone** aan en selecteer **Opslaan**.
+1. Pas de **geplande afsluiting** en **tijdzone** naar wens aan en selecteer **Opslaan**.
 
-## <a name="connect-to-the-development-vm"></a>Verbinding maken met de ontwikkelings-VM
+## <a name="connect-to-the-development-vm"></a>Verbinding maken met de ontwikkel-VM
 
-Nu u een virtuele machine hebt gemaakt, moet u de installatie van de benodigde software volt ooien om de zelf studie te volt ooien.
+Nu dat we een VM hebben gemaakt moeten we klaar zijn met het installeren van de software die nodig is om de tutorial te voltooien.
 
-1. Dubbel klik op het RDP-bestand dat door het script op uw bureau blad is gemaakt.
+1. Dubbelklik op het RDP-bestand dat het script op uw bureaublad heeft gemaakt.
 
-1. Er wordt een dialoog venster weer gegeven met de melding dat de uitgever van de externe verbinding onbekend is. Dit is acceptabel, dus Selecteer **verbinding maken**.
+1. U krijgt een dialoogvenster te zien waarin staat dat de uitgever van de externe verbinding onbekend is. Dit is acceptabel, dus selecteer **Connect**.
 
-1. Geef het beheerders wachtwoord op dat u hebt opgegeven om de virtuele machine te maken en klik op **OK**.
+1. Geef het beheerderswachtwoord op dat u hebt opgegeven om de vm te maken en klik op **OK**.
 
-1. U wordt gevraagd om het certificaat voor de virtuele machine te accepteren. Selecteer **Ja**.
+1. U wordt gevraagd het certificaat voor de VM te accepteren. Selecteer **Ja**.
 
-## <a name="install-visual-studio-code-extensions"></a>Visual Studio code-extensies installeren
+## <a name="install-visual-studio-code-extensions"></a>Visual Studio Code-extensies installeren
 
-Nu u verbinding hebt gemaakt met de ontwikkel machine, voegt u een aantal nuttige uitbrei dingen toe aan Visual Studio code om de ontwikkelings ervaring eenvoudiger te maken.
+Nu u verbinding hebt gemaakt met de ontwikkelingsmachine, voegt u enkele nuttige extensies toe aan Visual Studio Code om de ontwikkelingservaring gemakkelijker te maken.
 
-1. Maak verbinding met de ontwikkel-VM, open een Power shell-venster en navigeer naar de **C:\source\IoTEdgeAndMlSample\DevVM** -map. Deze map is gemaakt door het script waarmee de virtuele machine is gemaakt.
+1. Maak verbinding met de ontwikkel-VM, open een PowerShell-venster en navigeer naar de map **C:\source\IoTEdgeAndMlSample\DevVM.** Deze map is gemaakt door het script dat de VM heeft gemaakt.
 
     ```powershell
     cd C:\source\IoTEdgeAndMlSample\DevVM
     ```
 
-1. Voer de volgende opdracht uit om scripts toe te staan. Kies **Ja** als u hierom wordt gevraagd.
+1. Voer de volgende opdracht uit om de uitvoering van scripts toe te staan. Kies **Ja tot alles** wanneer daarom wordt gevraagd.
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-1. Voer het script voor Visual Studio code Extensions uit.
+1. Voer het script voor Visual Studio Code-extensies uit.
 
     ```powershell
     .\Enable-CodeExtensions.ps1
     ```
 
-1. Het script wordt uitgevoerd met een paar minuten installatie van VS code-extensies:
+1. Het script wordt enkele minuten uitgevoerd bij het installeren van VS-code-extensies:
 
     * Azure IoT Tools
     * Python
@@ -146,80 +146,80 @@ Nu u verbinding hebt gemaakt met de ontwikkel machine, voegt u een aantal nuttig
     * Docker
     * PowerShell
 
-## <a name="set-up-iot-hub-and-storage"></a>IoT Hub en opslag instellen
+## <a name="set-up-iot-hub-and-storage"></a>IoT-hub en -opslag instellen
 
-Deze stappen worden doorgaans uitgevoerd door een Cloud ontwikkelaar.
+Deze stappen worden meestal uitgevoerd door een cloudontwikkelaar.
 
-Azure IoT Hub is het hart van een IoT-toepassing, omdat deze beveiligde communicatie afhandelt tussen IoT-apparaten en de Cloud. Het is het belangrijkste coördinatie punt voor de werking van de IoT Edge machine learning oplossing.
+Azure IoT Hub is het hart van elke IoT-toepassing omdat het veilige communicatie tussen IoT-apparaten en de cloud verwerkt. Het is het belangrijkste coördinatiepunt voor de werking van de IoT Edge machine learning-oplossing.
 
-* IoT Hub gebruikt routes voor het omleiden van binnenkomende gegevens van IoT-apparaten naar andere downstream-Services. We zullen gebruikmaken van IoT Hub routes voor het verzenden van apparaatgegevens naar Azure Storage. In Azure Storage worden de gegevens van het apparaat gebruikt door Azure Machine Learning om onze resterende resterende levens duur-classificatie (bruikbare levens duur) te trainen.
+* IoT Hub gebruikt routes om binnenkomende gegevens van IoT-apparaten naar andere downstreamservices te leiden. We maken gebruik van IoT Hub-routes om apparaatgegevens naar Azure Storage te verzenden. In Azure Storage worden de apparaatgegevens verbruikt door Azure Machine Learning om onze resterende gebruiksduur (RUL) te trainen.
 
-* Verderop in de zelf studie gebruiken we IoT Hub om het Azure IoT Edge-apparaat te configureren en te beheren.
+* Later in de zelfstudie gebruiken we IoT Hub om ons Azure IoT Edge-apparaat te configureren en te beheren.
 
-In deze sectie gebruikt u een script om een Azure IoT hub en een Azure Storage-account te maken. Vervolgens configureert u in de Azure Portal een route waarmee gegevens die door de hub worden ontvangen, worden doorgestuurd naar een Azure Storage-container. Deze stappen duren ongeveer tien minuten om te volt ooien.
+In deze sectie gebruikt u een script om een Azure IoT-hub en een Azure Storage-account te maken. Vervolgens configureert u in de Azure-portal een route die gegevens die door de hub zijn ontvangen doorstuurt naar een Azure Storage-container. Deze stappen duren ongeveer 10 minuten.
 
-1. Maak verbinding met de ontwikkel-VM, open een Power shell-venster en navigeer naar de **IoTHub** -map.
+1. Maak verbinding met de ontwikkel-VM, open een PowerShell-venster en navigeer naar de **IoTHub-map.**
 
     ```powershell
     cd C:\source\IoTEdgeAndMlSample\IoTHub
     ```
 
-1. Voer het aanmaak script uit. Gebruik dezelfde waarden voor abonnements-ID, locatie en resource groep als bij het maken van de ontwikkelings-VM.
+1. Voer het creatiescript uit. Gebruik dezelfde waarden voor abonnements-ID, locatie en resourcegroep als bij het maken van de ontwikkel-VM.
 
     ```powershell
     .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location <location> -ResourceGroupName <resource group>
     ```
 
     * U wordt gevraagd zich aan te melden bij Azure.
-    * Het script bevestigt de gegevens voor het maken van uw hub en opslag account. Druk op **j** of **Enter** om door te gaan.
+    * Het script bevestigt de informatie voor het aanmaken van uw Hub- en Opslagaccount. Druk op **y** of **Enter** om door te gaan.
 
-Het uitvoeren van het script duurt ongeveer twee minuten. Zodra het script is voltooid, wordt de naam van de IoT-hub en het opslag account uitgevoerd.
+Het uitvoeren van het script duurt ongeveer twee minuten. Zodra het script is voltooid, wordt de naam van de IoT-hub en het opslagaccount uitgevoerd.
 
 ## <a name="review-route-to-storage-in-iot-hub"></a>Route naar opslag in IoT Hub bekijken
 
-Als onderdeel van het maken van de IoT-hub, heeft het script dat we in de vorige sectie hebben uitgevoerd ook een aangepast eind punt en een route gemaakt. IoT Hub routes bestaan uit een query-expressie en een eind punt. Als een bericht overeenkomt met de expressie, worden de gegevens via de route naar het bijbehorende eind punt verzonden. Eind punten kunnen worden Event Hubs, Service Bus wacht rijen en onderwerpen. In dit geval is het eind punt een BLOB-container in een opslag account. We gaan de Azure Portal gebruiken om de route te bekijken die door ons script is gemaakt.
+Als onderdeel van het maken van de IoT-hub heeft het script dat we in de vorige sectie hebben uitgevoerd, ook een aangepast eindpunt en een route gemaakt. IoT Hub-routes bestaan uit een queryexpressie en een eindpunt. Als een bericht overeenkomt met de expressie, worden de gegevens langs de route naar het bijbehorende eindpunt verzonden. Eindpunten kunnen gebeurtenishubs, wachtrijen voor servicebussen en onderwerpen zijn. In dit geval is het eindpunt een blobcontainer in een opslagaccount. Laten we de Azure-portal gebruiken om de route te bekijken die door ons script is gemaakt.
 
-1. Open de [Azure Portal](https://portal.azure.com) en ga naar de resource groep die u voor deze zelf studie gebruikt.
+1. Open de [Azure-portal](https://portal.azure.com) en ga naar de resourcegroep die u voor deze zelfstudie gebruikt.
 
-1. Selecteer in de lijst met resources het IoT Hub dat het script heeft gemaakt. Er is een naam die eindigt op wille keurige tekens zoals `IotEdgeAndMlHub-jrujej6de6i7w`.
+1. Selecteer in de lijst met bronnen de IoT-hub die het script heeft gemaakt. Het heeft een naam die eindigt `IotEdgeAndMlHub-jrujej6de6i7w`met willekeurige tekens zoals .
 
-1. Selecteer in het menu van het linkerdeel venster onder **berichten**de optie **bericht routering**.
+1. Selecteer **berichtroutering**in het menu van het linkerdeelvenster onder **Berichten**.
 
-1. Op de pagina **bericht routering** selecteert u het tabblad **aangepaste eind punten** .
+1. Selecteer op de pagina **Berichtroutering** het tabblad **Aangepaste eindpunten.**
 
-1. Vouw de sectie **opslag** uit:
+1. De sectie **Opslag** uitvouwen:
 
-   ![Controleren of de turbofanDeviceStorage is in de lijst met aangepaste eind punten](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
+   ![Controleren of turbofanDeviceStorage zich in de lijst met aangepaste eindpunten bevindt](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-   We zien **turbofanDeviceStorage** in de lijst met aangepaste eind punten. Houd rekening met de volgende kenmerken over dit eind punt:
+   We zien **dat turbofanDeviceStorage** in de lijst met aangepaste eindpunten staat. Let op de volgende kenmerken van dit eindpunt:
 
-   * Deze verwijst naar de BLOB storage-container die u hebt gemaakt met de naam `devicedata`, zoals aangegeven door de **container naam**.
-   * De **filename-indeling** heeft partitie als laatste element in de naam. Deze indeling is handiger voor de bestands bewerkingen die we gaan uitvoeren met Azure Notebooks verderop in de zelf studie.
-   * De **status** ervan moet in orde zijn.
+   * Het wijst naar de blob-opslagcontainer die u hebt gemaakt, zoals `devicedata` aangegeven door **containernaam**.
+   * De **bestandsnaamnotatie** heeft partitie als laatste element in de naam. We vinden deze indeling handiger voor de bestandsbewerkingen die we later in de zelfstudie met Azure-notitieblokken zullen uitvoeren.
+   * De **status** moet gezond zijn.
 
-1. Selecteer het tabblad **routes** .
+1. Selecteer het tabblad **Routes**.
 
 1. Selecteer de route met de naam **turbofanDeviceDataToStorage**.
 
-1. Op de pagina **routes Details** ziet u dat het eind punt van de route het **turbofanDeviceStorage** -eind punt is.
+1. Houd er op de pagina **Routes details** rekening mee dat het eindpunt van de route het eindpunt **van turbofanDeviceStorage** is.
 
-   ![Bekijk de details van de turbofanDeviceDataToStorage-route](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
+   ![Bekijk de details over de turbofanDeviceDataToStorage-route](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. Bekijk de **routerings query**, die is ingesteld op **True**. Deze instelling betekent dat alle telemetrie-berichten van het apparaat overeenkomen met deze route. en daarom worden alle berichten naar het **turbofanDeviceStorage** -eind punt verzonden.
+1. Kijk naar de **routeringsquery**, die is ingesteld op **true**. Deze instelling betekent dat alle telemetrieberichten van het apparaat overeenkomen met deze route; en daarom worden alle berichten naar het **turbofanDeviceStorage** eindpunt gestuurd.
 
-1. Omdat er geen bewerkingen zijn uitgevoerd, sluit u deze pagina.
+1. Omdat er geen bewerkingen zijn aangebracht, sluit u deze pagina.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebben we een IoT Hub gemaakt en een route naar een Azure Storage-account geconfigureerd. Vervolgens verzenden we gegevens van een set gesimuleerde apparaten via de IoT Hub naar het opslag account. Verderop in de zelf studie, nadat we onze IoT Edge apparaat en modules hebben geconfigureerd, gaan we de routes opnieuw bezoeken en kijken we nog iets meer op de routerings query.
+In dit artikel hebben we een IoT-hub gemaakt en een route naar een Azure Storage-account geconfigureerd. Vervolgens sturen we gegevens van een set gesimuleerde apparaten via de IoT-hub naar het opslagaccount. Later in de zelfstudie, nadat we ons IoT Edge-apparaat en -modules hebben geconfigureerd, zullen we routes opnieuw bekijken en iets meer kijken naar de routeringsquery.
 
-Zie voor meer informatie over de stappen in dit gedeelte van de Machine Learning op IoT Edge zelf studie:
+Zie voor meer informatie over de stappen in dit gedeelte van de machine learning op IoT Edge-zelfstudie:
 
 * [Basisprincipes van Azure IoT](https://docs.microsoft.com/azure/iot-fundamentals/)
-* [Bericht routering configureren met IoT Hub](../iot-hub/tutorial-routing.md)
-* [Een IoT-hub maken met behulp van de Azure Portal](../iot-hub/iot-hub-create-through-portal.md)
+* [Berichtroutering configureren met IoT Hub](../iot-hub/tutorial-routing.md)
+* [Een IoT-hub maken met de Azure-portal](../iot-hub/iot-hub-create-through-portal.md)
 
-Ga door naar het volgende artikel om een gesimuleerd apparaat te maken dat u wilt bewaken.
+Ga verder naar het volgende artikel om een gesimuleerd apparaat te maken om te controleren.
 
 > [!div class="nextstepaction"]
 > [Apparaatgegevens genereren](tutorial-machine-learning-edge-03-generate-data.md)

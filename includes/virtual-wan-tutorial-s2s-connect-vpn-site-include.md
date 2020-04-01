@@ -9,37 +9,37 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75450840"
 ---
-1. Selecteer **VPN-sites verbinden** om de pagina **verbinding maken met sites** te openen.
+1. Selecteer **VPN-sites verbinden** om de pagina **Connect-sites te** openen.
 
-    ![verbinding maken met](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "verbinding maken")
+    ![Verbinding](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "verbinding maken")
 
    Vul de volgende velden in:
 
-   * Geef een vooraf gedeelde sleutel op. Als u geen sleutel invoert, wordt er door Azure automatisch een voor u gegenereerd.
-   * Selecteer het protocol en de IPsec-instellingen. Raadpleeg [standaard/aangepaste IPSec-Details] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
-   * Selecteer de juiste optie voor het **door geven van de standaard route**. Met de optie **Enable** kan de virtuele hub een geleerde standaard route naar deze verbinding door geven. Met deze vlag wordt de standaard route doorgifte alleen naar een verbinding alleen als de standaard route al door de virtuele WAN-hub is geleerd als gevolg van het implementeren van een firewall in de hub, of als een andere verbonden site geforceerde tunneling heeft ingeschakeld. De standaard route is niet afkomstig van de virtuele WAN-hub.
+   * Voer een vooraf gedeelde sleutel in. Als u geen sleutel invoert, genereert Azure er een voor u.
+   * Selecteer de instellingen voor Protocol en IPsec. Raadpleeg [standaard/aangepaste IPSec-details] (https://docs.microsoft.com/azure/virtual-wan/virtual-wan-ipsec)
+   * Selecteer de juiste optie voor **Standaardroute voor uitdragen**. Met de optie **Inschakelen** kan de virtuele hub een geleerde standaardroute naar deze verbinding verspreiden. Met deze vlag kan standaard routepropagatie naar een verbinding alleen worden uitgevoerd als de standaardroute al wordt geleerd door de Virtuele WAN-hub als gevolg van het implementeren van een firewall in de hub of als een andere verbonden site tunneling heeft geforceerd ingeschakeld. De standaardroute is niet afkomstig van de virtuele WAN-hub.
 
 2. Selecteer **Verbinden**.
-3. In een paar minuten wordt de verbinding en connectiviteits status weer gegeven op de site.
+3. In een paar minuten toont de site de verbindings- en verbindingsstatus.
 
    ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
-   **Verbindings status:** Dit is de status van de Azure-resource voor de verbinding die de VPN-site verbindt met de VPN-gateway van de Azure-hub. Zodra de bewerking voor het besturings vlak is voltooid, wordt de verbinding met Azure VPN gateway en het on-premises VPN-apparaat voortgezet.
+   **Verbindingsstatus:** Dit is de status van de Azure-bron voor de verbinding die de VPN-site verbindt met de VPN-gateway van de Azure-hub. Zodra deze besturingsvlakbewerking succesvol is, gaan azure VPN-gateway en het on-premises VPN-apparaat over tot het tot stand brengen van connectiviteit.
 
-   **Verbindings status:** Dit is de daad werkelijke status van connectiviteit (gegevenspad) tussen de VPN-gateway van Azure in de hub en de VPN-site. Er kunnen een van de volgende statussen worden weer gegeven:
+   **Verbindingsstatus:** Dit is de status van de werkelijke connectiviteit (datapad) tussen de VPN-gateway van Azure in de hub en vpn-site. Het kan een van de volgende toestanden weergeven:
 
-    * **Onbekend**: deze status wordt doorgaans weer gegeven als de back-end-systemen met de overgang naar een andere status werken.
-    * **Verbinding maken**: er wordt geprobeerd een Azure VPN-gateway te bereiken met de daad werkelijke on-PREMISES VPN-site.
-    * **Verbonden**: de verbinding wordt tot stand gebracht tussen de Azure VPN-gateway en de on-PREMISES VPN-site.
-    * De **verbinding is verbroken**: deze status wordt gezien als de verbinding is verbroken om een van de volgende redenen (on-premises of in Azure).
-4. Binnen een hub-VPN-site kunt u ook het volgende doen: 
+    * **Onbekend**: Deze status wordt meestal gezien als de backend-systemen werken om over te schakelen naar een andere status.
+    * **Verbinding maken:** Azure VPN-gateway probeert de huidige on-premises VPN-site te bereiken.
+    * **Verbonden**: Connectiviteit is tot stand gekomen tussen azure VPN-gateway en on-premises VPN-site.
+    * **Losgekoppeld**: Deze status wordt gezien als, om welke reden dan ook (on-premises of in Azure), de verbinding is verbroken.
+4. Binnen een hub VPN-site u bovendien het volgende doen: 
 
    * Bewerk of verwijder de VPN-verbinding.
-   * Verwijder de site in de Azure Portal.
-   * Down load een vertakking-specifieke configuratie voor meer informatie over de Azure-zijde met behulp van het context menu (...) naast de site. Als u de configuratie voor alle verbonden sites in uw hub wilt downloaden, selecteert u **VPN-configuratie downloaden** in het bovenste menu.
+   * Verwijder de site in de Azure-portal.
+   * Download een branch-specifieke configuratie voor meer informatie over de Azure-kant met behulp van het context (...) menu naast de site. Als u de configuratie voor alle verbonden sites in uw hub wilt downloaden, selecteert u **VPN Config downloaden** in het bovenste menu.

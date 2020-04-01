@@ -1,6 +1,6 @@
 ---
-title: Een Service Fabric-cluster maken in Power shell
-description: 'Azure PowerShell-voorbeeld script: een Service Fabric cluster maken dat is beveiligd met een X. 509-certificaat.'
+title: Een cluster van servicefabric maken in Powershell
+description: Azure PowerShell Script-voorbeeld - Maak een Service Fabric-cluster dat is beveiligd met een X.509-certificaat.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -15,10 +15,10 @@ ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: f8e1a0ca86f9346cf07c87a738d48cb56f6d7d57
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614771"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Een Service Fabric-cluster maken
@@ -27,7 +27,7 @@ Met dit voorbeeldscript wordt een Service Fabric-cluster met vijf knooppunten ge
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Installeer zo nodig de Azure PowerShell volgens de instructies in de [Azure PowerShell handleiding](/powershell/azure/overview) en voer vervolgens `Connect-AzAccount` uit om verbinding maken met Azure. 
+Installeer indien nodig de Azure PowerShell met de instructie in `Connect-AzAccount` de [Azure PowerShell-handleiding](/powershell/azure/overview) en voer deze uit om een verbinding met Azure te maken. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -48,7 +48,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Hiermee wordt een nieuw Service Fabric-cluster gemaakt. |
+| [Nieuw-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | Hiermee wordt een nieuw Service Fabric-cluster gemaakt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

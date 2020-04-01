@@ -1,5 +1,5 @@
 ---
-title: "Zelf studie: Load Balancer Vm's binnen een zone--Azure Portal"
+title: "Zelfstudie: VM's voor load Balancer binnen een Azure-portal"
 titleSuffix: Azure Load Balancer
 description: Deze zelfstudie laat zien hoe u met behulp van Azure Portal een standaard load balancer kunt maken met een zonegebonden front-end voor de taakverdeling van VM's binnen een beschikbaarheidszone.
 services: load-balancer
@@ -16,10 +16,10 @@ ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251893"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Zelfstudie: Met behulp van Azure Portal taakverdeling van virtuele machines uitvoeren binnen een beschikbaarheidszone met Standard Load Balancer
@@ -35,50 +35,50 @@ Deze zelfstudie toont de stappen voor het maken van een openbare [Azure Standard
 > * Een elementaire IIS-site (Internet Information Services) maken.
 > * Een load balancer in actie zien.
 
-Zie [Standard Load Balancer en beschikbaarheidszones](load-balancer-standard-availability-zones.md) voor meer informatie over het gebruik van beschikbaarheidszones met Standard Load Balancer.
+Zie [Standaardloadbalancer en beschikbaarheidszones](load-balancer-standard-availability-zones.md)voor meer informatie over het gebruik van beschikbaarheidszones met StandaardLoad Balancer.
 
 Als u dat liever wilt, kunt u [Azure CLI](load-balancer-standard-public-zonal-cli.md) gebruiken om deze zelfstudie te voltooien.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 
 ## <a name="create-a-public-standard-load-balancer-instance"></a>Een openbare Standard Load Balancer-instantie maken
 
 Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar IP-adres. Wanneer u een nieuw openbaar IP-adres maakt tijdens het maken van de load balancer, wordt het automatisch geconfigureerd als een standaard SKU-versie. Het is ook automatisch zoneredundant.
 
-1. Selecteer **Een resource maken** > **Netwerken** > **Load Balancer** linksboven in het scherm.
-2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Controleren + maken**:
+1. Selecteer linksboven in het scherm de optie **Een resource** > **Netwerklastbalancer****Networking** > maken .
+2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Controleren + maken**:
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Abonnement               | Selecteer uw abonnement.    |    
     | Resourcegroep         | Selecteer **Nieuwe maken** en typ *MyResourceGroupZLB* in het tekstvak.|
-    | Naam                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
-    | Type          | Selecteer **Openbaar**.                                        |
-    | SKU           | selecteer **Standaard**.                          |
+    | Type          | Select **Openbaar**.                                        |
+    | SKU           | Selecteer **Standaard**.                          |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. |
-    | Naam openbare IP-adres              | Typ *myPublicIP* in het tekstvak.   |
+    | Naam openbaar IP-adres              | Typ *myPublicIP* in het tekstvak.   |
     |Beschikbaarheidszone| Selecteer **1**.    |
-3. Klik op het tabblad **Controleren + Maken** op **Maken**.   
+3. Klik op het tabblad **Beoordelen en maken** op **Maken**.   
 
 ## <a name="create-backend-servers"></a>Back-endservers maken
 
 In deze sectie gaat u een virtueel netwerk maken. U gaat ook twee virtuele machines maken in dezelfde zone (namelijk in zone 1) voor de regio die aan de back-endpool van de load balancer wordt toegevoegd. Vervolgens installeert u IIS op de virtuele machines om de zone-redundante Load Balancer te testen. Als u dit op één virtuele machine mislukt, mislukt de statustest voor de virtuele machine in dezelfde regio. Verkeer blijft worden aangeleverd door andere virtuele machines binnen dezelfde regio.
 
-## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en parameters
 
-In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
+In deze sectie moet u de volgende parameters in de stappen vervangen door de onderstaande informatie:
 
 | Parameter                   | Waarde                |
 |-----------------------------|----------------------|
-| **\<resource-group-name >**  | myResourceGroupZLB (bestaande resource groep selecteren) |
-| **\<virtuele-netwerk naam >** | myVNet          |
-| **\<regio-naam >**          | Europa -west      |
-| **> \<IPv4-adres ruimte**   | 10.0.0.0 \ 16          |
-| **\<subnet naam >**          | myBackendSubnet        |
-| **\<subnet-adres bereik >** | 10.0.0.0 \ 24          |
+| **\<resourcegroepnaam>**  | myResourceGroupZLB (Bestaande resourcegroep selecteren) |
+| **\<>van de naam van het virtuele netwerk** | myVNet          |
+| **\<regionaam>**          | Europa -west      |
+| **\<IPv4-adresruimte>**   | 10.0.0.0\16          |
+| **\<subnetnaam>**          | myBackendSubnet        |
+| **\<subnet-adresbereik>** | 10.0.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -96,15 +96,15 @@ In deze sectie moet u de volgende para meters in de stappen vervangen door de on
 In deze sectie maakt u NSG-regels om inkomende verbindingen via HTTP en Microsoft Remote Desktop Protocol (RDP) toe te staan met Azure Portal.
 
 1. Selecteer in het meest linkse menu van Azure Portal **Alle resources**. Vervolgens zoekt en selecteert u **myNetworkSecurityGroup**. Deze bevindt zich in de resourcegroep **myResourceGroupZLB**.
-2. Selecteer onder **Instellingen** **Inkomende beveiligingsregels**. Selecteer vervolgens **Toevoegen**.
+2. Selecteer **onder Instellingen** **binnenkomende beveiligingsregels**. Selecteer vervolgens **Toevoegen**.
 3. Voer deze waarden in voor de inkomende beveiligingsregel met de naam **myHTTPRule** om binnenkomende HTTP-verbindingen via poort 80 toe te staan:
     - **Service Tag** bij **Bron**
     - **Internet** bij **Bronservicetag**
     - **80** bij **Poortbereiken van doel**
     - **vTCP** bij **Protocol**
     - **Toestaan** bij **Actie**
-    - **100** bij **Prioriteit**
-    - **myHTTPRule** bij **Naam**
+    - **100**, voor **Prioriteit**.
+    - **mijnHTTPRule**, voor **Naam**.
     - **HTTP toestaan** bij **Beschrijving**.
 4. Selecteer **OK**.
  
@@ -116,15 +116,15 @@ In deze sectie maakt u NSG-regels om inkomende verbindingen via HTTP en Microsof
     - **3389** bij **Poortbereiken van doel**
     - **TCP** bij **Protocol**
     - **Toestaan** bij **Actie**
-    - **200** bij **Prioriteit**
-    - **myRDPRule** bij **Naam**
+    - **200**, voor **Prioriteit**.
+    - **myRDPRule**, voor **Naam**.
     - **RDP toestaan** bij **Beschrijving**
 
       ![Een RDP-regel maken](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 
-1. Selecteer **Een resource maken** > **Compute** > **Windows Server 2016 Datacenter** linksboven in het scherm. Voer deze waarden in voor de virtuele machine:
+1. Selecteer linksboven in het scherm de optie **Een resource** > **Compute** > **Windows Server 2016-datacenter maken**. Voer deze waarden in voor de virtuele machine:
     - **myVM1** als naam van de virtuele machine.        
     - **azureuser** als gebruikersnaam van de beheerder.    
     - **myResourceGroupZLB** bij **Resourcegroep**. Selecteer **Bestaande gebruiken** en vervolgens **myResourceGroupZLB**
@@ -147,7 +147,7 @@ In deze sectie maakt u NSG-regels om inkomende verbindingen via HTTP en Microsof
 1. Selecteer **Alle resources** in het meest linkse menu. Selecteer vervolgens **myVM1** uit de lijst met resources. Deze bevindt zich in de resourcegroep **myResourceGroupZLB**.
 2. Selecteer op de **overzichtspagina** de optie **Verbinding maken** om via RDP verbinding te maken met de virtuele machine.
 3. Meld u aan bij de virtuele machine met de gebruikersnaam en het wachtwoord die u hebt opgegeven tijdens het maken van de virtuele machine. U moet mogelijk **Meer opties** selecteren om de aanmeldingsgegevens op te geven die u hebt ingevoerd tijdens het maken van de VM. Selecteer vervolgens **Een ander account gebruiken**. En selecteer vervolgens **OK**. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Selecteer **Ja** om door te gaan met de verbinding.
-4. Ga op de serverdesktop naar **Windows Systeembeheer** > **Windows Powershell**.
+4. Navigeer op het serverbureaublad naar **Windows-beheerprogramma's** > **Windows PowerShell**.
 6. In het venster **PowerShell** voert u de volgende opdrachten uit om de IIS-server te installeren. Met deze opdrachten wordt ook het standaardbestand iisstart.htm verwijderd en een nieuw bestand iisstart.htm toegevoegd dat de naam van de VM weergeeft:
 
    ```azurepowershell-interactive
@@ -171,11 +171,11 @@ In deze sectie configureert u de instellingen voor de load balancer voor een bac
 Om verkeer te distribueren naar de VM's bevat een back-endadresgroep de IP-adressen van de virtuele netwerkinterfacekaarten die zijn verbonden met de load balancer. Maak de back-endadresgroep **myBackendPool** om **VM1** en **VM2** op te nemen.
 
 1. Selecteer **Alle resources** in het meest linkse menu. Selecteer vervolgens **myLoadBalancer** uit de lijst met resources.
-2. Selecteer **Back-endgroepen** in **Instellingen**. Selecteer vervolgens **Toevoegen**.
+2. Selecteer **Backend-groepen**onder **Instellingen**. Selecteer vervolgens **Toevoegen**.
 3. Voer de volgende acties uit op de pagina **Een back-endpool toevoegen**:
     - Voer **myBackEndPool** in als de naam van uw back-endpool.
     - Voor **Virtueel netwerk** selecteert u in de vervolgkeuzelijst **myVNet**. 
-    - Voor **Virtuele machine** en **IP-adres** voegt u **myVM1** en **myVM2** toe met de bijbehorende openbare IP-adressen.
+    - Voor **virtuele machine** en **IP-adres,** voeg **myVM1** en **myVM2** en de bijbehorende openbare IP-adressen.
 4. Selecteer **Toevoegen**.
 5. Controleer of de instelling voor de back-endpool van de load balancer beide VM's (**myVM1** en **myVM2**) weergeeft.
  
@@ -202,7 +202,7 @@ U gebruikt een statustest om de load balancer de status van uw app te laten bewa
 Een load balancer-regel bepaalt hoe het verkeer over de VM's wordt verdeeld. U definieert de front-end-IP-configuratie voor het inkomende verkeer en de back-end-IP-groep om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak een load balancer-regel met de naam **myLoadBalancerRuleWeb** om te luisteren op poort 80 van de front-end **FrontEndLoadBalancer**. De regel is bedoeld voor het verzenden van netwerkverkeer met taakverdeling naar de back-endadresgroep **myBackEndPool**, ook via poort 80. 
 
 1. Selecteer **Alle resources** in het meest linkse menu. Selecteer vervolgens **myLoadBalancer** uit de lijst met resources.
-2. Selecteer onder **Instellingen** **Load balancer-regels**. Selecteer vervolgens **Toevoegen**.
+2. Selecteer onder **Instellingen****Load balancer-regels**. Selecteer vervolgens **Toevoegen**.
 3. Gebruik deze waarden om de taakverdelingsregel te configureren:
     - **myHTTPRule** als naam van de load balancer-regel.
     - **TCP** als protocoltype.
@@ -215,7 +215,7 @@ Een load balancer-regel bepaalt hoe het verkeer over de VM's wordt verdeeld. U d
     ![Een load balancer-regel toevoegen](./media/tutorial-load-balancer-standard-zonal-portal/load-balancing-rule.png)
 
 ## <a name="test-the-load-balancer"></a>Load balancer testen
-1. Zoek op het scherm **Overzicht** het openbare IP-adres voor de load balancer op. Selecteer **Alle resources**. Selecteer vervolgens **myPublicIP**. 
+1. Zoek het openbare IP-adres voor de load balancer op het **scherm Overzicht.** Selecteer **Alle resources**. Selecteer vervolgens **myPublicIP**. 
 
 2. Kopieer het openbare IP-adres. Plak het vervolgens in de adresbalk van de browser. De standaardpagina met de naam van de webpagina van de server wordt weergegeven in de browser.
 
@@ -229,4 +229,4 @@ Verwijder de resourcegroep, de load balancer en alle gerelateerde resources, wan
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [Standard Load Balancer](load-balancer-standard-overview.md).
-- [Taken over VM's in meerdere beschikbaarheidszones verdelen](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
+- [Vm's voor laadbalans in beschikbaarheidszones](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
