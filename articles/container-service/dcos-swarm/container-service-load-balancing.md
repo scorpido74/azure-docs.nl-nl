@@ -8,10 +8,10 @@ ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273378"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(AFGESCHAFT) Taken over containers verdelen in een DC/OS-cluster in Azure Container Service
@@ -43,7 +43,7 @@ Er zijn twee taakverdelingslagen in het Azure Container Service DC/OS-cluster:
 
 Marathon Load Balancer herconfigureert zichzelf dynamisch op basis van de containers die u hebt geïmplementeerd. De Load Balancer past zich ook aan het verlies van een container of agent aan. Als dit gebeurt, wordt de container door Apache Mesos elders opnieuw gestart en wordt marathon-lb aangepast.
 
-Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud shell in uw browser te openen.
+Ga [https://shell.azure.com](https://shell.azure.com) naar Cloud Shell openen in uw browser.
 
 Voer de volgende opdracht uit om de marathon-taakverdeling op het cluster van de openbare agent te installeren.
 

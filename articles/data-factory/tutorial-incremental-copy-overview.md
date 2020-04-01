@@ -1,5 +1,5 @@
 ---
-title: Incrementeel gegevens kopiëren door
+title: Gegevens stapsgewijs kopiëren op basis van
 description: Deze zelfstudies tonen hoe u stapsgewijs gegevens kunt kopiëren van een brongegevensarchief naar een doelgegevensarchief. De eerste kopieert gegevens uit één tabel.
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: e87f8d648a617aab24008bd63596db31dd24ab68
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74926441"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Incrementeel laden van gegevens van een brongegevensarchief naar een doelgegevensarchief
@@ -33,7 +33,7 @@ Zie de volgende zelfstudies voor stapsgewijze instructies:
 - [Incrementeel gegevens uit meerdere tabellen in een lokale SQL Server naar een Azure SQL Database kopiëren](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 Zie voor sjablonen het volgende:
-- [Delta kopie met controle tabel](solution-template-delta-copy-with-control-table.md)
+- [Een deltakopie maken met behulp van een tabel met besturingselementen](solution-template-delta-copy-with-control-table.md)
 
 ## <a name="delta-data-loading-from-sql-db-by-using-the-change-tracking-technology"></a>Delta-gegevens laden uit SQL DB met behulp van de technologie voor wijzigingen bijhouden
 Technologie voor het bijhouden van wijzigingen is een lichtgewicht oplossing in SQL Server en Azure SQL Database waarmee een efficiënt mechanisme wordt geboden voor het bijhouden van wijzigingen in toepassingen. Hiermee kan een toepassing eenvoudig gegevens herkennen die zijn toegevoegd, bijgewerkt of verwijderd. 
@@ -46,16 +46,16 @@ Zie de volgende zelfstudies voor stapsgewijze instructies: <br/>
 - [Incrementeel gegevens kopiëren van Azure SQL Database naar Azure Blob Storage met behulp van technologie voor wijzigingen bijhouden](tutorial-incremental-copy-change-tracking-feature-powershell.md)
 
 ## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>Alleen nieuwe en gewijzigde bestanden laden met behulp van LastModifiedDate
-U kunt de nieuwe en gewijzigde bestanden alleen kopiëren met behulp van LastModifiedDate naar het doel archief. ADF scant alle bestanden in het bron archief, past het bestands filter toe op hun LastModifiedDate en kopieert alleen het nieuwe en bijgewerkte bestand sinds de laatste keer naar het doel archief.  Houd er rekening mee dat u met ADF een enorme hoeveelheid bestanden kunt scannen, maar slechts een paar bestanden naar een bestemming wilt kopiëren. het is ook mogelijk dat de lange duur als gevolg van het scannen van bestanden nog steeds tijdrovend is.   
+U de nieuwe en gewijzigde bestanden alleen kopiëren met LastModifiedDate naar het doelarchief. ADF scant alle bestanden uit het bronarchief, past het bestandsfilter toe op hun LastModifiedDate en kopieert het nieuwe en bijgewerkte bestand alleen sinds de laatste keer naar het doelarchief.  Houd er rekening mee als u ADF enorme hoeveelheden bestanden laat scannen, maar slechts een paar bestanden naar de bestemming kopieert, zou u nog steeds verwachten dat de lange duur als gevolg van het scannen van bestanden ook tijdrovend is.   
 
 Zie de volgende zelfstudies voor stapsgewijze instructies: <br/>
 - [Nieuwe bestanden stapsgewijs kopiëren van Azure Blob-opslag naar Azure Blob-opslag op basis van LastModifiedDate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 Zie voor sjablonen het volgende:
-- [Nieuwe bestanden kopiëren op LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
+- [Nieuwe bestanden kopiëren op basis van LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>Alleen nieuwe bestanden laden met behulp van de op tijdsbasis gepartitioneerde map- of bestandsnaam.
-U kunt alleen nieuwe bestanden kopiëren als bestanden of mappen al op basis van tijd zijn gepartitioneerd met tijdsdeelinformatie die onderdeel is van de bestands- of mapnaam (bijvoorbeeld /yyyy/mm/dd/file.csv). Het is de meest krachtige aanpak voor het stapsgewijs laden van nieuwe bestanden. 
+U kunt alleen nieuwe bestanden kopiëren als bestanden of mappen al op basis van tijd zijn gepartitioneerd met tijdsdeelinformatie die onderdeel is van de bestands- of mapnaam (bijvoorbeeld /yyyy/mm/dd/file.csv). Het is de meest performante aanpak voor het stapsgewijs laden van nieuwe bestanden. 
 
 Zie de volgende zelfstudies voor stapsgewijze instructies: <br/>
 - [Nieuwe bestanden stapsgewijs kopiëren van Azure Blob-opslag naar Azure Blob-opslag op basis van de op tijdsbasis gepartitioneerde map- of bestandsnaam](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)

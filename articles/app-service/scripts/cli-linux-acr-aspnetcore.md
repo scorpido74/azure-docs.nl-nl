@@ -1,6 +1,6 @@
 ---
-title: 'CLI: ASP.NET Core-app maken op basis van ACR'
-description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. Dit voor beeld laat zien hoe u een Linux ASP.NET Core-app kunt maken op basis van ACR.
+title: 'CLI: ASP.NET Core-app maken vanuit ACR'
+description: Meer informatie over het gebruik van de Azure CLI om de implementatie en het beheer van uw App Service-app te automatiseren. In dit voorbeeld ziet u hoe u een Linux-ASP.NET Core-app van ACR maakt.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/13/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 9733475753cb9d7fae5f452b33842602f56eff52
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 64177d00b302f9df8a0b28067031bd7cc1b3a156
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685978"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057774"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>Een app van ASP.NET Core maken in een Docker-container in App Service vanuit Azure Container Registry
 
@@ -37,13 +37,13 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-abonnement. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-plan. |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Hiermee maakt u een App Service-app. |
 | [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | Hiermee stelt u de Docker-container voor de App Service-app in. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Meer voorbeelden van App Service CLI-scripts vindt u in de [documentatie van Azure App Service](../samples-cli.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met mijn Award-punten bovenste sub/bovenste team | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en mijn toekennings punten boven-sub/beste team.
+title: 'Zelfstudie: Azure Active Directory-integratie met het beste subteam van mijn awardpunten | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Het beste subteam van Mijn awardpunten.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: b1de9e394dd1e6b4c47b8de3175dd1e8fba1d87e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73161340"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Zelf studie: integratie Azure Active Directory met mijn toekennings punten bovenste sub/bovenste team
+# <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Zelfstudie: Azure Active Directory-integratie met het beste subteam van mijn awardpunten
 
-In deze zelf studie leert u hoe u mijn toekennings punten kunt integreren met Azure Active Directory (Azure AD).
-Het integreren van mijn Award-punten in het bovenste sub/beste-team met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u My Award Points Top Sub/Top Team integreert met Azure Active Directory (Azure AD).
+De integratie van My Award Points Top Sub/Top Team met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot mijn toekennings punten bovenste sub/top-team.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij mijn toekennings punten voor het bovenste sub/bovenste team (eenmalige aanmelding) met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Het Beste Sub/Topteam van Mijn Award Points.
+* U uw gebruikers automatisch laten aanmelden bij Mijn Award Points Top Sub/Top Team (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om Azure AD-integratie met mijn toekennings punten te configureren voor het bovenste sub/bovenste team:
+Als u azure AD-integratie wilt configureren met het beste subteam van Mijn awardpunten/ topteam, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Mijn toekennings punten voor het bovenste sub/bovenste team abonnement voor eenmalige aanmelding
+* Mijn Award Points Top Sub/Top Team single sign-on enabled abonnement
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Mijn Award Points top sub/top-team ondersteunt door **SP** GEÏNITIEERDe SSO
+* My Award Points Top Sub/Top Team ondersteunt **SP** geïnitieerde SSO
 
-## <a name="adding-my-award-points-top-subtop-team-from-the-gallery"></a>Het bovenste sub/bovenste team van de toewijzings punten toevoegen vanuit de galerie
+## <a name="adding-my-award-points-top-subtop-team-from-the-gallery"></a>Mijn Award Points Top Sub/Top Team toevoegen vanuit de galerij
 
-Als u de integratie van mijn toekennings punten wilt configureren in azure AD, moet u het bovenste sub/bovenste team van de toewijzings punten toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van My Award Points Top Sub/Top Team wilt configureren in Azure AD, moet u My Award Points Top Sub/Top Team uit de galerij toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit als u mijn toekennings punten wilt toevoegen aan het bovenste sub/bovenste team van de galerie:**
+**Voer de volgende stappen uit om Mijn Award Points Top Sub/Top Team toe te voegen vanuit de galerij:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Als u de integratie van mijn toekennings punten wilt configureren in azure AD, m
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **mijn toekennings punten bovenste sub/top-team**, selecteer **mijn toekennings punten bovenste sub/bovenste team** uit het paneel resultaten en klik vervolgens op **toevoegen** knop om de toepassing toe te voegen.
+4. Typ in het zoekvak **Mijn Award Points Top Sub/Top Team**, selecteer Mijn Award Points Top **Sub/Top Team** uit het resultaatpaneel en klik op Knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Het bovenste sub/bovenste team van de Award-punten in de lijst met resultaten](common/search-new-app.png)
+     ![Mijn Award Points Top Sub/Top Team in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met mijn Award Points top-sub/beste team op basis van een test gebruiker met de naam **Julia Simon**.
-Voor eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in mijn toekennings punten voor het bovenste sub/bovenste team tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met My Award Points Top Sub/Top Team op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding op het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Mijn Award Points Top Sub/Top Team.
 
-U moet de volgende bouw stenen volt ooien om de eenmalige aanmelding van Azure AD te configureren en te testen met mijn Award-punten in het bovenste sub/bovenste team:
+Als u Azure AD-singlesign-aan wilt configureren en testen met Het Beste Sub/Topteam van Mijn awardpunten, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **Mijn toekennings punten configureren eenmalige aanmelding voor het sub/bovenste team** -voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **Maak mijn toekennings punten boven-sub/bovenste team test gebruiker** -om een tegen hanger te hebben van Julia Simon in mijn toekennings punten aan het bovenste sub/bovenste team dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **Configureer My Award Points Top Sub/Top Team Single Sign-On** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **Maak mijn Award Points Top Sub / Top Team test gebruiker** - om een tegenhanger van Britta Simon in Mijn Award Points Top Sub / Top Team die is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met mijn Award-punten in het bovenste sub/bovenste team:
+Voer de volgende stappen uit om azure AD-eenmaligaanmelding te configureren met Het beste subteam van Mijn awardpunten:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **mijn toekennings punten bovenste sub/bovenste team** toepassings integratie de optie **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de integratiepagina **Mijn awardpunten topsub/topteamtoepassing** de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,18 +103,18 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Mijn toekennings punten boven-sub/bovenste team domein en Url's eenmalige aanmelding gegevens](common/sp-signonurl.png)
+    ![Mijn Award Points Top Sub/Top Team Domain en URL's single sign-on information](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<Azure AD Identifier>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<Azure AD Identifier>`
 
     > [!NOTE]
-    > De waarde is niet echt. U krijgt de `<Azure AD Identifier>` waarde in de volgende stappen in deze zelf studie.
+    > De waarde is niet echt. U krijgt `<Azure AD Identifier>` de waarde in de latere stappen in deze zelfstudie.
 
-5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer de gewenste URL ('s) volgens uw vereiste op de sectie **mijn toekennings punten instellen voor het bovenste sub/bovenste team** . 
+6. Kopieer in de sectie **Mijn awardpunten topsub/topteam** de juiste URL(s) volgens uw vereiste. 
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -125,11 +125,11 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
     c. Afmeldings-URL
 
     >[!NOTE]
-    >Voeg de gekopieerde id-waarde van Azure AD toe met de aanmeldings-URL op de plaats van `<Azure AD Identifier>` in het gedeelte **basis configuratie van SAML** in de Azure Portal.
+    >De gekopieerde Azure AD-id-waarde toevoegen aan de `<Azure AD Identifier>` URL Aanmelden in de plaats van in de sectie **BasisSAML-configuratie** in de Azure-portal.
 
-### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>Mijn toekennings punten configureren eenmalige sub/bovenste team-eenmalige aanmelding
+### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>Mijn Award Points Top Sub/Top Team Single Sign-On configureren
 
-Voor het configureren van eenmalige aanmelding op **mijn toekennings punten aan de bovenkant van het sub/top-team** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [mijn toekennings punten bovenste sub/top team ondersteunings team](mailto:myawardpoints@biworldwide.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de kant **van mijn awardpunten aan de bovensub/topteam,** moet u de gedownloade **XML met federatiemetagegevens** en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam voor mijn awardpunten topsub/topteam](mailto:myawardpoints@biworldwide.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -147,28 +147,28 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om gebruik te maken van eenmalige aanmelding van Azure door toegang te verlenen tot mijn bekroonde punten voor het bovenste en bovenste team.
+In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot My Award Points Top Sub/Top Team.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **mijn toekennings punten bovenste sub/bovenste team**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, Selecteer **Alle toepassingen**en selecteer Vervolgens Mijn Award Points **Top Sub/Top Team**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen **mijn toekennings punten bovenste sub/bovenste team**.
+2. Selecteer in de lijst met toepassingen de optie **Mijn awardpunten topsub/topteam**.
 
-    ![De koppeling voor het bovenste sub/bovenste team van mijn toewijzings punten in de lijst met toepassingen](common/all-applications.png)
+    ![De link Mijn Award Points Top Sub/Top Team in de lijst Met toepassingen](common/all-applications.png)
 
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -176,26 +176,26 @@ In deze sectie schakelt u Julia Simon in om gebruik te maken van eenmalige aanme
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-my-award-points-top-subtop-team-test-user"></a>Mijn toekennings punten maken bovenste sub/bovenste team test gebruiker
+### <a name="create-my-award-points-top-subtop-team-test-user"></a>Mijn Award Points Top Sub/Top Team testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in mijn Award Points top sub/top team. Werk met [mijn bekroonde punten het bovenste sub/bovenste team ondersteunings team](mailto:myawardpoints@biworldwide.com) om de gebruikers toe te voegen aan het bovenste sub/bovenste team platform van mijn Award-punten. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in Mijn Award Points Top Sub / Top Team. Werk samen met [het ondersteuningsteam Top Sub/Top Team van Mijn Award Points](mailto:myawardpoints@biworldwide.com) om de gebruikers toe te voegen in het My Award Points Top Sub/Top Team-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u in het deel venster toegang op de tegel voor het bovenste sub/bovenste team van mijn toewijzings punten klikt, moet u automatisch worden aangemeld bij het bovenste sub/bovenste team van mijn toekennings punten waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de sub-sub-/topteamtegel Mijn awardpunten klikt in het toegangspaneel, moet u automatisch worden aangemeld bij het Topsub/Topteam van Mijn awardpunten waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

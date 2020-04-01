@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Procore SSO | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Procore eenmalige aanmelding.
+title: 'Zelfstudie: Azure Active Directory-integratie met Procore SSO | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Procore SSO.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,44 +17,44 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca6863a6b02e867afd732ce1662136051b8afec8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093668"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Zelfstudie: Azure Active Directory-integratie met Procore eenmalige aanmelding
+# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Zelfstudie: Azure Active Directory-integratie met Procore SSO
 
-In deze zelfstudie leert u hoe u Procore SSO integreren met Azure Active Directory (Azure AD).
-Procore SSO integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u Procore SSO integreert met Azure Active Directory (Azure AD).
+De integratie van Procore SSO met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot Procore eenmalige aanmelding heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Procore SSO (Single Sign-On) inschakelen met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Procore SSO.
+* U uw gebruikers automatisch laten aanmelden bij Procore SSO (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Procore eenmalige aanmelding, moet u de volgende items:
+Als u Azure AD-integratie met Procore SSO wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Procore SSO eenmalige aanmelding ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Procore SSO-abonnement met één aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor procore SSO **IDP** gestart door SSO
+* Procore SSO ondersteunt **IDP** geïnitieerde SSO
 
-## <a name="adding-procore-sso-from-the-gallery"></a>Procore SSO uit de galerie toe te voegen
+## <a name="adding-procore-sso-from-the-gallery"></a>Procore SSO toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Procore SSO in Azure AD, moet u Procore SSO uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Procore SSO in Azure AD wilt configureren, moet u Procore SSO vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Procore SSO uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u Procore SSO vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -66,31 +66,31 @@ Voor het configureren van de integratie van Procore SSO in Azure AD, moet u Proc
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Procore SSO**, selecteer **Procore SSO** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Selecteer **Procore**SSO in het zoekvak , selecteer **Procore SSO** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-    ![Procore eenmalige aanmelding in de lijst met resultaten](common/search-new-app.png)
+    ![Procore SSO in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Procore eenmalige aanmelding op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Procore eenmalige aanmelding tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Procore SSO op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppeling slinken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Procore SSO.
 
-Als u wilt configureren en Azure AD eenmalige aanmelding met Procore eenmalige aanmelding testen, moet u uitvoeren van de volgende bouwstenen:
+Als u Azure AD-singlesign-aan met Procore SSO wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Procore SSO Single Sign-On](#configure-procore-sso-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Procore SSO testgebruiker](#create-procore-sso-test-user)**  : als u wilt een equivalent van Britta Simon in Procore eenmalige aanmelding die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Procore SSO Single Sign-On](#configure-procore-sso-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak Procore SSO-testgebruiker](#create-procore-sso-test-user)** - om een tegenhanger van Britta Simon in Procore SSO te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Procore eenmalige aanmelding, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Procore SSO te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Procore SSO** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Procore SSO-toepassingsintegratie** de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,13 +104,13 @@ Voor het configureren van Azure AD eenmalige aanmelding met Procore eenmalige aa
 
 4. In de sectie **SAML-basisconfiguratie** hoeft de gebruiker geen enkele stap uit te voeren omdat de app al vooraf is geïntegreerd met Azure.
 
-    ![Procore SSO-domein en URL's, eenmalige aanmelding informatie](common/preintegrated.png)
+    ![Informatie over Procore SSO-domein en URL's met eenmalige aanmelding](common/preintegrated.png)
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **Procore SSO instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer in de sectie **Procore SSO instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -120,27 +120,27 @@ Voor het configureren van Azure AD eenmalige aanmelding met Procore eenmalige aa
 
     c. Afmeldings-URL
 
-### <a name="configure-procore-sso-single-sign-on"></a>Eenmalige aanmelding Procore eenmalige aanmelding configureren
+### <a name="configure-procore-sso-single-sign-on"></a>Procore SSO-aanmelding configureren
 
-1. Het configureren van eenmalige aanmelding op **Procore SSO** zijde, zich aanmelden bij uw site procore bedrijf als beheerder.
+1. Als u eenmalige aanmelding wilt configureren aan **de Procore SSO-zijde,** meldt u zich aan bij uw procore-bedrijfssite als beheerder.
 
-2. In de vervolgkeuzelijst werkset omlaag, klik op **Admin** de SSO-instellingen voor pagina te openen.
+2. Klik in de vervolgkeuzelijst op **Beheerder** om de pagina SSO-instellingen te openen.
 
     ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/procore_tool_admin.png)
 
-3. Plak de waarden in de vakken zoals beschreven onder-
+3. Plak de waarden in de onderstaande vakken.
 
     ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/procore_setting_admin.png)  
 
-    a. In de **eenmalige aanmelding op URL-verlener** tekst vak, plak de waarde van **Azure AD-id** die u hebt gekopieerd vanuit Azure portal.
+    a. Plak in het **tekstvak URL van een enkele aanmelding op emittent** de waarde van **azure AD-id** die u hebt gekopieerd uit de Azure-portal.
 
-    b. In de **SAML Meld u op de doel-URL** vak, plak de waarde van **aanmeldings-URL** die u hebt gekopieerd vanuit Azure portal.
+    b. Plak in het vak **SAML-aanmeldings-URL** de waarde van **de aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
-    c. Open nu het **federatieve metagegevens-XML** hierboven gedownload vanuit Azure portal en kopieer het certificaat in de tag met de naam **X509Certificate**. Plak de gekopieerde waarde in de **Single Sign On x509 certificaat** vak.
+    c. Open nu de XML **met federatiemetagegevens** die hierboven zijn gedownload van de Azure-portal en kopieer het certificaat in de tag met de naam **X509Certificate**. Plak de gekopieerde waarde in het vak **Enkelteken op x509-certificaat.**
 
 4. Klik op **Save Changes** (Wijzigingen opslaan).
 
-5. Na deze instellingen zijn, moet u voor het verzenden van de **domeinnaam** (bijvoorbeeld **contoso.com**) via waarmee u zich bij Procore naar de [Procore ondersteuningsteam](https://support.procore.com/) en deze zullen activeren van federatieve SSO voor dat domein.
+5. Na deze instellingen moet u de **domeinnaam** (bijvoorbeeld **contoso.com)** waarmee u zich aanmeldt bij Procore naar het [Procore Support-team](https://support.procore.com/) sturen en ze activeren federatieve SSO voor dat domein.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -158,25 +158,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld `brittasimon@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Procore eenmalige aanmelding.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Procore SSO.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Procore SSO**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Procore SSO**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Procore SSO**.
+2. Selecteer **Procore SSO**in de lijst met toepassingen .
 
-    ![De koppeling Procore eenmalige aanmelding in de lijst met toepassingen](common/all-applications.png)
+    ![De Procore SSO-koppeling in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -186,55 +186,55 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-procore-sso-test-user"></a>Procore SSO testgebruiker maken
+### <a name="create-procore-sso-test-user"></a>Procore SSO-testgebruiker maken
 
-Volg de onderstaande stappen voor het maken van een Procore testgebruiker Procore SSO aan.
+Volg de onderstaande stappen om een Procore-testgebruiker aan De Kant van Procore SSO te maken.
 
-1. Meld u aan uw site procore bedrijf als een beheerder.    
+1. Meld u aan bij uw procore-bedrijfssite als beheerder.    
 
-2. In de vervolgkeuzelijst werkset omlaag, klik op **Directory** om het bedrijf directory-pagina te openen.
+2. Klik in de vervolgkeuzelijst op **Directory** om de pagina met de bedrijfsmap te openen.
 
     ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/Procore_sso_directory.png)
 
-3. Klik op **toevoegen van een persoon** optie voor het openen van het formulier en voer de volgende mogelijkheden: uitvoeren
+3. Klik op De optie **Een persoon toevoegen** om het formulier te openen en de volgende opties uit te voeren -
 
     ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a. In de **voornaam** tekstvak de voornaam van de gebruiker van het type, zoals **Julia**.
+    a. Typ in het tekstvak **Voornaam** de voornaam van de gebruiker zoals **Britta**.
 
-    b. In de **achternaam** tekstvak, de achternaam van de gebruiker van het type, zoals **Simon**.
+    b. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker zoals **Simon**.
 
-    c. In de **e-mailadres** tekstvak van de gebruiker van het type e-mailadres zoals BrittaSimon@contoso.com.
+    c. Typ in het tekstvak **E-mailadres** het BrittaSimon@contoso.come-mailadres van de gebruiker als .
 
-    d. Selecteer **machtigingssjabloon** als **machtigingssjabloon Later toepassen**.
+    d. Selecteer **Machtigingssjabloon** als **machtigingssjabloon later toepassen**.
 
-    e. Klik op **Create**.
+    e. Klik **op Maken**.
 
-4. Controleer en de details voor de toegevoegde contactpersoon bijwerken.
+4. Controleer en werk de details voor de nieuw toegevoegde contactpersoon in en werk deze bij.
 
     ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/Procore_user_check.png)
 
-5. Klik op **opslaan en uitnodiging verzenden** (als een uitnodiging via e-mail vereist is) of **opslaan** (opslaan rechtstreeks) om de Gebruikersregistratie te voltooien.
+5. Klik op **Uitnodiging opslaan en verzenden** (als een uitnodiging via e-mail vereist is) of **Opslaan** (direct opslaan) om de gebruikersregistratie te voltooien.
     
     ![Eenmalige aanmelding configureren](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Procore eenmalige aanmelding in het toegangsvenster, moet u worden automatisch aangemeld bij de Procore SSO waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de Procore SSO-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Procore SSO waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

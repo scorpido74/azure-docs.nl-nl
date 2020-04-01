@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
 ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77670352"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Gebruik Application Insights om inzicht te krijgen in de wijze waarop klanten van uw app gebruikmaken
@@ -30,9 +30,9 @@ Azure Application Insights verzamelt gebruiksgegevens om u meer inzicht te geven
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
-- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
+- Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende workloads:
     - ASP.NET-ontwikkeling en webontwikkeling
     - Azure-ontwikkeling
 - Download en installeer de [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
@@ -41,7 +41,7 @@ Vereisten voor het voltooien van deze zelfstudie:
 - [Gebruikerscontext](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) verzenden om bij te houden wat een gebruiker in de loop der tijd doet en volledig gebruikmaken van de gebruiksfuncties.
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
-Meld u aan bij de Azure-portal op [https://portal.azure.com](https://portal.azure.com).
+Log in bij de [https://portal.azure.com](https://portal.azure.com)Azure-portal op .
 
 ## <a name="get-information-about-your-users"></a>Informatie over uw gebruikers verzamelen
 In het deelvenster **Gebruikers** kunt u op verschillende manieren inzicht krijgen in belangrijke informatie over uw gebruikers. U kunt dit deelvenster gebruiken om informatie te begrijpen over waarvandaan uw gebruikers verbinding maken, details van hun client en welke delen van uw toepassing ze bezoeken. 
@@ -56,11 +56,11 @@ In het deelvenster **Gebruikers** kunt u op verschillende manieren inzicht krijg
 
     ![Tijdsbereik wijzigen](media/tutorial-users/TimeRange.png)
 
-4. Klik op de vervolgkeuzelijst **Splitsen op basis van** om een uitsplitsing op basis van een gebruikerseigenschap aan de grafiek toe te voegen.  Selecteer **Land of regio**.  De grafiek bevat dezelfde gegevens, maar biedt u de mogelijkheid om een uitsplitsing van het aantal gebruikers voor elk land of elke regio weer te geven.
+4. Klik op de vervolgkeuzelijst **Splitsen op basis van** om een uitsplitsing op basis van een gebruikerseigenschap aan de grafiek toe te voegen.  Selecteer **Land of regio**.  De grafiek bevat dezelfde gegevens, maar u een uitsplitsing van het aantal gebruikers voor elk land / regio te bekijken.
 
     ![Land of regio-grafiek](media/tutorial-users/CountryorRegion.png)
 
-5. Plaats de cursor op verschillende balken in het diagram en houd er rekening mee dat het aantal voor elk land/elke regio alleen het tijd venster weerspiegelt dat door die balk wordt weer gegeven.
+5. Plaats de cursor over verschillende balken in de grafiek en houd er rekening mee dat het aantal voor elk land/regio alleen het tijdvenster weergeeft dat door die balk wordt weergegeven.
 6. Bekijk de kolom **Insights** aan de rechterkant voor analyse van uw gebruikersgegevens.  Dit levert informatie op zoals het aantal unieke sessies gedurende de periode en records met gemeenschappelijke eigenschappen die significant zijn voor de gebruikersgegevens 
 
     ![Insights-kolom](media/tutorial-users/insights.png)
@@ -83,7 +83,7 @@ Het deelvenster **Sessies** lijkt op het deelvenster **Gebruikers**.  Terwijl **
     ![Sessietijdlijn](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Vergelijkbare gebruikers groeperen
-Een **cohort** is een set gebruikers die is gegroepeerd op soort gelijke kenmerken.  U kunt cohorten gebruiken om gegevens in andere deelvensters te filteren zodat u bepaalde groepen gebruikers kunt analyseren.  U wilt bijvoorbeeld alleen gebruikers analyseren die een aankoop hebben voltooid.
+Een **cohort** is een groep gebruikers die is gegroepeerd op vergelijkbare kenmerken.  U kunt cohorten gebruiken om gegevens in andere deelvensters te filteren zodat u bepaalde groepen gebruikers kunt analyseren.  U wilt bijvoorbeeld alleen gebruikers analyseren die een aankoop hebben voltooid.
 
 1.  Selecteer **Cohorten** in het menu.
 2.  Klik op **Nieuw** om een nieuw cohort te maken.
@@ -131,7 +131,7 @@ Een **Gebruikersstroom** visualiseert hoe gebruikers navigeren tussen de pagina'
 
 1.  Selecteer **Gebruikersstromen** in het menu.
 2.  Klik op **Nieuw** om een ​​nieuwe gebruikersstroom te maken en klik vervolgens op **Bewerken** om de details te bewerken.
-3.  Verhoog het **Tijdsbereik**  tot 7 dagen en selecteer vervolgens een eerste gebeurtenis.  De stroom volgt gebruikerssessies die beginnen met die gebeurtenis.
+3.  Verhoog het **Tijdsbereik ** tot 7 dagen en selecteer vervolgens een eerste gebeurtenis.  De stroom volgt gebruikerssessies die beginnen met die gebeurtenis.
 
     ![](media/tutorial-users/flowsedit.png)
 

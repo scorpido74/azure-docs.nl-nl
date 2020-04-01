@@ -1,5 +1,5 @@
 ---
-title: Voor beeld van Azure CLI-script-Vm's opnieuw opstarten
+title: Voorbeeld van Azure CLI Script - VM's opnieuw starten
 description: Azure CLI-voorbeeldscript - Virtuele machines opnieuw opstarten op label en op id
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5545fc07bd7b30225bcaf01eee8f10a141cd8d57
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 47a6db8d554cd0e6b913e887a4dd3d7bdc438ed0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040256"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066464"
 ---
 # <a name="restart-vms"></a>Virtuele machines opnieuw opstarten
 
@@ -33,13 +33,13 @@ Dit voorbeeld laat een aantal manieren zien waarop u enkele virtuele machines ku
 
 Met de eerste opdracht worden alle virtuele machines in de resourcegroep opnieuw opgestart.
 
-```bash
+```azurecli
 az vm restart --ids $(az vm list --resource-group myResourceGroup --query "[].id" -o tsv)
 ```
 
 Met de tweede opdracht worden de gelabelde virtuele machines opgevraagd met behulp van `az resource list` en wordt er gefilterd op de resources die virtuele machines zijn en worden deze machines vervolgens opnieuw opgestart.
 
-```bash
+```azurecli
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
@@ -77,13 +77,13 @@ Met dit script worden alle virtuele machines in de resourcegroep opnieuw opgesta
 
 Nadat het voorbeeldscript is uitgevoerd, kan de volgende opdracht worden gebruikt om de resourcegroep, de virtuele machines en alle gerelateerde resources te verwijderen.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete -n myResourceGroup --no-wait --yes
 ```
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

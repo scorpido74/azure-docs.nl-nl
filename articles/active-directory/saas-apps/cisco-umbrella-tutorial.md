@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Cisco paraplu | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met Cisco Umbrella | Microsoft Documenten'
 description: Informatie over jet configureren van eenmalige aanmelding tussen Azure Active Directory en Cisco Umbrella.
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ee91ca53e32bfdc387dc20054493d02d506a75da
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73158640"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Zelf studie: integratie met Cisco paraplu Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Zelfstudie: Azure Active Directory-integratie met Cisco Umbrella
 
 In deze zelfstudie leert u hoe u Cisco Umbrella kunt integreren met Azure Active Directory (Azure AD).
 Als u Cisco Umbrella integreert met Azure AD biedt u dit de volgende voordelen:
@@ -33,7 +33,7 @@ Als u Cisco Umbrella integreert met Azure AD biedt u dit de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -54,7 +54,7 @@ Voor het configureren van de integratie van Cisco Umbrella in Azure AD, moet u C
 
 **Als u Cisco Umbrella vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -77,12 +77,12 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 
 Als u Azure AD-eenmalige aanmelding met [toepassingsnaam] wilt configureren en testen, moet u de volgende stappen uitvoeren:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eenmalige aanmelding voor Cisco Umbrella configureren](#configure-cisco-umbrella-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Testgebruiker van Cisco Umbrella maken](#create-cisco-umbrella-test-user)** : als u een equivalent van Britta Simon in Cisco Umbrella wilt hebben dat is gekoppeld aan de weergave van gebruiker in Azure AD.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor Cisco Umbrella configureren](#configure-cisco-umbrella-single-sign-on)**: als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker van Cisco Umbrella maken](#create-cisco-umbrella-test-user)**: als u een equivalent van Britta Simon in Cisco Umbrella wilt hebben dat is gekoppeld aan de weergave van gebruiker in Azure AD.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -110,7 +110,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     b. Klik op **Extra URL's instellen**.
 
-    c. Typ een URL in het tekstvak **Aanmeldings-URL**: `https://login.umbrella.com/sso`
+    c. Typ een URL in het tekstvak **AANmeldings-URL:**`https://login.umbrella.com/sso`
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om de **metagegevens-XML** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
@@ -146,7 +146,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     ![De Volgende](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-6. In de **optie A: Upload XML-bestand**uploadt u het **XML-bestand met federatieve meta gegevens** dat u hebt gedownload van de Azure Portal en na het uploaden van meta gegevens worden de onderstaande waarden automatisch ingevuld. Klik vervolgens op **volgende**.
+6. Upload in optie **A: Upload XML-bestand**, upload het **XML-bestand federatiemetagegevens** dat u hebt gedownload van de Azure-portal en na het uploaden van metagegevens worden de onderstaande waarden automatisch ingevuld en klikt u op **VOLGENDE**.
 
     ![De Choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
@@ -154,7 +154,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     ![De Test](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_test.png)
 
-8. Klik op **OPSLAAN**.
+8. Klik **op OPSLAAN**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -172,14 +172,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -193,7 +193,7 @@ In deze sectie hebt u Britta Simon in staat gesteld gebruik te maken van eenmali
 
     ![De koppeling Cisco Umbrella in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -201,9 +201,9 @@ In deze sectie hebt u Britta Simon in staat gesteld gebruik te maken van eenmali
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -212,7 +212,7 @@ In deze sectie hebt u Britta Simon in staat gesteld gebruik te maken van eenmali
 Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij Cisco Umbrella, dienen ze te worden ingericht in Cisco Umbrella.  
 In het geval van Cisco Umbrella moet het inrichten handmatig te worden uitgevoerd.
 
-**Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
 
 1. Meld u in een andere browser als beheerder aan bij de bedrijfssite van Cisco Umbrella.
 
@@ -230,13 +230,13 @@ In het geval van Cisco Umbrella moet het inrichten handmatig te worden uitgevoer
 
     c. Selecteer uw rol in **Choose Delegated Admin Role**.
   
-    d. In het veld **e-mail adres** voert u het EmailAddress van de gebruiker in, zoals **brittasimon\@contoso.com**.
+    d. Voer in het veld **E-mailadres** het e-mailadres van de gebruiker in, zoals **\@brittasimon contoso.com**.
 
     e. Voer in het veld **Wachtwoord** uw wachtwoord in.
 
     f. Voer in het veld **Wachtwoord bevestigen** uw wachtwoord opnieuw in.
 
-    g. Klik op **MAKEN**.
+    g. Klik **op MAKEN**.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
@@ -244,10 +244,10 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Cisco Umbrella in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Cisco Umbrella waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

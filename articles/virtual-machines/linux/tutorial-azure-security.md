@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-Azure Security Center gebruiken voor Linux-Vm's in azure
+title: Zelfstudie - Azure Security Center voor Linux VM's gebruiken in Azure
 description: In deze zelfstudie krijgt u informatie over de functies van Azure Security Center die helpen uw virtuele Linux-machines in Azure te beschermen en te beveiligen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 5c5a8bc06c676121c20f6e1f83a26dd9343e6847
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77605517"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Linux-machines te controleren
@@ -27,12 +27,12 @@ ms.locfileid: "77605517"
 Met Azure Security Center kunt u meer inzicht krijgen in de beveiliging van uw Azure-resources. Security Center biedt geïntegreerde beveiligingsbewaking. De service kan bedreigingen detecteren die anders misschien onopgemerkt blijven. In deze zelfstudie krijgt u meer informatie over Azure Security Center en leert u het volgende te doen:
  
 > [!div class="checklist"]
-> * Gegevensverzameling instellen
+> * Gegevensverzameling kunt instellen
 > * Beveiligingsbeleid kunt instellen
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
-> * Gedetecteerde bedreigingen kunt controleren
+> * Gedetecteerde bedreigingen controleren
 
-## <a name="security-center-overview"></a>Security Center-overzicht
+## <a name="security-center-overview"></a>Overzicht van Security Center
 
 Security Center identificeert mogelijke configuratieproblemen voor virtuele machine (VM's) en gerichte beveiligingsrisico's. Dit kan het volgende omvatten: virtuele machines waarbij netwerkbeveiligingsgroepen ontbreken, niet-versleutelde schijven en RDP-beveiligingsaanvallen (Remote Desktop Protocol). De informatie wordt op het Security Center-dashboard in duidelijke grafieken weergegeven.
 
@@ -44,7 +44,7 @@ Security Center biedt niet alleen gegevensdetectie maar ook aanbevelingen voor g
 
 ![Aanbevelingen](./media/tutorial-azure-security/recommendations.png)
 
-## <a name="set-up-data-collection"></a>Gegevensverzameling instellen
+## <a name="set-up-data-collection"></a>Gegevensverzameling kunt instellen
 
 Voordat u VM-beveiligingsconfiguraties kunt inzien, moet u eerst gegevensverzameling instellen in Security Center. Dit omvat het inschakelen van gegevensverzameling, waardoor de Microsoft Monitoring Agent automatisch wordt geïnstalleerd voor alle VM's in uw abonnement.
 
@@ -103,14 +103,14 @@ Wanneer aanbevelingen worden doorgevoerd, worden ze als opgelost gemarkeerd.
 
 ## <a name="view-detected-threats"></a>Gedetecteerde bedreigingen bekijken
 
-Security Center geeft naast aanbevelingen voor resourceconfiguratie ook meldingen voor geconstateerde bedreigingen weer. De functie voor beveiligingsmeldingen combineert de verzamelde gegevens van elke VM, Azure-netwerklogboeken en gekoppelde partneroplossingen om bedreigingen voor Azure-resources te detecteren. Zie [How Security Center bedreigingen detecteren?](../../security-center/security-center-alerts-overview.md#detect-threats)voor uitgebreide informatie over de detectie mogelijkheden van Security Center bedreigingen.
+Security Center geeft naast aanbevelingen voor resourceconfiguratie ook meldingen voor geconstateerde bedreigingen weer. De functie voor beveiligingsmeldingen combineert de verzamelde gegevens van elke VM, Azure-netwerklogboeken en gekoppelde partneroplossingen om bedreigingen voor Azure-resources te detecteren. Zie Hoe detecteert Security Center bedreigingen voor diepgaande informatie over de detectiemogelijkheden van beveiligingscentrum [voor bedreigingen?](../../security-center/security-center-alerts-overview.md#detect-threats)
 
 De functie voor beveiligingsmeldingen vereist dat de Security Center-prijscategorie wordt verhoogd van *Gratis* naar *Standard*. Er is een **gratis proefversie** beschikbaar wanneer u naar deze hogere prijscategorie overstapt. 
 
 De prijscategorie wijzigen:  
 
 1. Klik in het Security Center-dashboard op **Beveiligingsbeleid** en selecteer vervolgens uw abonnement.
-2. Selecteer **Prijscategorie**.
+2. Selecteer **Prijsniveau**.
 3. Selecteer **Standard** en klik vervolgens op **Opslaan** boven in de blade.
 
 
@@ -126,10 +126,10 @@ Selecteer een waarschuwing om informatie weer te geven. U kunt bijvoorbeeld een 
 In deze zelfstudie hebt u Azure Security Center ingesteld en vervolgens VM's in Security Center gecontroleerd. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Gegevensverzameling instellen
+> * Gegevensverzameling kunt instellen
 > * Beveiligingsbeleid kunt instellen
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
-> * Gedetecteerde bedreigingen kunt controleren
+> * Gedetecteerde bedreigingen controleren
 
 Ga naar de volgende zelfstudie voor meer informatie over het maken van een CI/CD-pijplijn met Jenkins, GitHub en Docker.
 

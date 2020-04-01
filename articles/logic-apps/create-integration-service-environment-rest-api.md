@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 2c6e35b1e7d160064998004f87c5b14d0eaeac5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127658"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478831"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Een integratieserviceomgeving (ISE) maken met de Logic Apps REST API
 
 In dit artikel ziet u hoe u een [ *integratieserviceomgeving* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) maakt via de Logic Apps REST API voor scenario's waarin uw logische apps en integratieaccounts toegang nodig hebben tot een [virtueel Azure-netwerk.](../virtual-network/virtual-networks-overview.md) Een ISE is een geïsoleerde omgeving die gebruik maakt van speciale opslag en andere resources die gescheiden worden gehouden van de 'globale' Logic Apps-service met meerdere tenant. Deze scheiding vermindert ook de impact die andere Azure-tenants kunnen hebben op de prestaties van uw apps. Een ISE voorziet u ook van uw eigen statische IP-adressen. Deze IP-adressen staan los van de statische IP-adressen die worden gedeeld door de logische apps in de openbare, multi-tenant service.
 
-Zie Verbinding maken met [azure-netwerken via Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)als u een ISE wilt maken met de Azure-portal.
+U ook een ISE maken met behulp van de [sjabloon Voor snelstartvan Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) of met behulp van de [Azure-portal.](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
 
 > [!IMPORTANT]
 > Logische apps, ingebouwde triggers, ingebouwde acties en connectors die in uw ISE worden uitgevoerd, gebruiken een prijsplan dat verschilt van het prijsplan voor consumptie. Zie het [prijsmodel van Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing)voor meer informatie over hoe prijzen en facturering werken voor ISE's. Zie [Logic Apps-prijzen](../logic-apps/logic-apps-pricing.md)voor prijstarieven.

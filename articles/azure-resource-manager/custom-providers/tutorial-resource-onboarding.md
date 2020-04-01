@@ -1,37 +1,37 @@
 ---
-title: Zelf studie-onboarding van resources
-description: Met onboarding van resources via aangepaste providers kunt u bestaande Azure-resources bewerken en uitbreiden.
+title: Zelfstudie - onboarding voor resources
+description: Met resource onboarding via aangepaste providers u bestaande Azure-bronnen manipuleren en uitbreiden.
 ms.topic: tutorial
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75649937"
 ---
-# <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Zelf studie: een onboarding van resources met aangepaste Azure-providers
+# <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Zelfstudie: Resource onboarding met Azure Custom Providers
 
-In deze zelf studie implementeert u naar Azure een aangepaste resource provider die de Azure Resource Manager-API uitbreidt met het resource type micro soft. CustomProviders/Associations. De zelf studie laat zien hoe u bestaande resources uitbreidt die zich buiten de resource groep bevinden waar het exemplaar van de aangepaste provider zich bevindt. In deze zelf studie wordt de aangepaste resource provider gevoed door een Azure Logic-app, maar u kunt een open bare API-eind punt gebruiken.
+In deze zelfstudie implementeert u naar Azure een aangepaste resourceprovider die de Azure Resource Manager API uitbreidt met het resourcetype Microsoft.CustomProviders/associations. In de zelfstudie wordt uitgelegd hoe u bestaande resources uitbreiden die zich buiten de resourcegroep bevinden waarin de instantie van de aangepaste provider zich bevindt. In deze zelfstudie wordt de aangepaste resourceprovider aangedreven door een Azure-logica-app, maar u elk openbaar API-eindpunt gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze zelf studie moet u het volgende weten:
+Om deze zelfstudie te voltooien, moet je het weten:
 
-* De mogelijkheden van [aangepaste Azure-providers](overview.md).
-* Basis informatie over het [onboarden van resources met aangepaste providers](concepts-resource-onboarding.md).
+* De mogelijkheden van [Azure Custom Providers](overview.md).
+* Basisinformatie over [resource onboarding bij aangepaste providers.](concepts-resource-onboarding.md)
 
-## <a name="get-started-with-resource-onboarding"></a>Aan de slag met het voorbereiden van resources
+## <a name="get-started-with-resource-onboarding"></a>Aan de slag met resource onboarding
 
-In deze zelf studie zijn er twee onderdelen die moeten worden geïmplementeerd: de aangepaste provider en de koppeling. Als u het proces eenvoudiger wilt maken, kunt u eventueel één sjabloon gebruiken waarmee beide worden geïmplementeerd.
+In deze zelfstudie zijn er twee stukken die moeten worden geïmplementeerd: de aangepaste provider en de koppeling. Om het proces eenvoudiger te maken, u optioneel één sjabloon gebruiken die beide implementeert.
 
-Deze resources worden gebruikt voor de sjabloon:
+De sjabloon gebruikt de volgende bronnen:
 
-* Micro soft. CustomProviders/resourceProviders
-* Microsoft.Logic/workflows
-* Micro soft. CustomProviders/Associations
+* Microsoft.CustomProviders/resourceProviders
+* Microsoft.Logic/werkstromen
+* Microsoft.CustomProviders/koppelingen
 
 ```json
 {
@@ -203,89 +203,89 @@ Deze resources worden gebruikt voor de sjabloon:
 }
 ```
 
-### <a name="deploy-the-custom-provider-infrastructure"></a>De aangepaste provider infrastructuur implementeren
+### <a name="deploy-the-custom-provider-infrastructure"></a>De aangepaste providerinfrastructuur implementeren
 
-In het eerste deel van de sjabloon wordt de infra structuur van de aangepaste provider geïmplementeerd. Deze infra structuur definieert het effect van de bron van de koppelingen. Als u niet bekend bent met aangepaste providers, raadpleegt u de [basis beginselen van aangepaste](overview.md)providers.
+Het eerste deel van de sjabloon implementeert de aangepaste providerinfrastructuur. Deze infrastructuur definieert het effect van de associatiebron. Zie [Basisbeginselen](overview.md)van aangepaste providers als u niet bekend bent met aangepaste providers.
 
-We gaan de infra structuur van de aangepaste provider implementeren. U kunt de voor gaande sjabloon kopiëren, opslaan en implementeren, of de infra structuur volgen en implementeren met behulp van de Azure Portal.
+Laten we de infrastructuur van de aangepaste provider implementeren. Kopieer, sla en implementeer de voorgaande sjabloon of volg de infrastructuur met behulp van de Azure-portal.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com).
+1. Ga naar de [Azure-portal.](https://portal.azure.com)
 
-2. Zoek naar **sjablonen** in **alle services** of via het hoofd zoekvak:
+2. Zoek naar **sjablonen** in **Alle services** of met het hoofdzoekvak:
 
    ![Sjablonen zoeken](media/tutorial-resource-onboarding/templates.png)
 
-3. Selecteer **toevoegen** in het deel venster **sjablonen** :
+3. Selecteer **Toevoegen** in het deelvenster **Sjablonen:**
 
-   ![Selecteer E-mail](media/tutorial-resource-onboarding/templatesadd.png)
+   ![Selecteer Toevoegen](media/tutorial-resource-onboarding/templatesadd.png)
 
-4. Voer onder **Algemeen**een **naam** en **Beschrijving** in voor de nieuwe sjabloon:
+4. Voer **onder Algemeen**een **naam** en **beschrijving** in voor de nieuwe sjabloon:
 
-   ![Naam en beschrijving van de sjabloon](media/tutorial-resource-onboarding/templatesdescription.png)
+   ![Naam en beschrijving van sjabloon](media/tutorial-resource-onboarding/templatesdescription.png)
 
-5. Maak de Resource Manager-sjabloon door te kopiëren in de JSON-sjabloon vanuit de sectie aan de slag met het voorbereiden van resources in dit artikel:
+5. Maak de sjabloon Resourcemanager door te kopiëren in de JSON-sjabloon in het gedeelte 'Aan de slag met resource onboarding' van dit artikel:
 
    ![Een Resource Manager-sjabloon maken](media/tutorial-resource-onboarding/templatesarmtemplate.png)
 
-6. Selecteer **toevoegen** om de sjabloon te maken. Als de nieuwe sjabloon niet wordt weer gegeven, selecteert u **vernieuwen**.
+6. Selecteer **Toevoegen** om de sjabloon te maken. Als de nieuwe sjabloon niet wordt weergegeven, selecteert u **Vernieuwen**.
 
-7. Selecteer de sjabloon die u zojuist hebt gemaakt en selecteer vervolgens **implementeren**:
+7. Selecteer de nieuw gemaakte sjabloon en selecteer **Vervolgens Implementeren:**
 
-   ![Selecteer de nieuwe sjabloon en selecteer vervolgens implementeren](media/tutorial-resource-onboarding/templateselectspecific.png)
+   ![Selecteer de nieuwe sjabloon en selecteer Vervolgens Implementeren](media/tutorial-resource-onboarding/templateselectspecific.png)
 
-8. Voer de instellingen voor de vereiste velden in en selecteer vervolgens het abonnement en de resource groep. U kunt het vak **aangepaste resource provider-id** leeg laten.
+8. Voer de instellingen voor de vereiste velden in en selecteer vervolgens de abonnements- en brongroep. U het vak **Custom Resource Provider Id** leeg laten.
 
    | Naam van instelling | Vereist? | Beschrijving |
    | ------------ | -------- | ----------- |
-   | Locatie | Ja | De locatie van de resources in de sjabloon. |
-   | Naam van logische app | Nee | De naam van de logische app. |
-   | Naam van de aangepaste resource provider | Nee | De naam van de aangepaste resource provider. |
-   | Aangepaste resource provider-id | Nee | Een bestaande aangepaste resource provider die ondersteuning biedt voor de koppelings bron. Als u hier een waarde opgeeft, wordt de logische app en de implementatie van de aangepaste provider overgeslagen. |
-   | Naam van koppeling | Nee | De naam van de koppelings bron. |
+   | Locatie | Ja | De locatie voor de resources in de sjabloon. |
+   | Logische app-naam | Nee | De naam van de logische app. |
+   | Aangepaste naam resourceprovider | Nee | De naam van de aangepaste resourceprovider. |
+   | Aangepaste resourceprovider-id | Nee | Een bestaande aangepaste resourceprovider die de koppelingsbron ondersteunt. Als u hier een waarde opgeeft, worden de logische app en de aangepaste providerimplementatie overgeslagen. |
+   | Naam van de vereniging | Nee | De naam van de associatiebron. |
 
-   Voorbeeld parameters:
+   Voorbeeldparameters:
 
-   ![Sjabloon parameters invoeren](media/tutorial-resource-onboarding/templatescustomprovider.png)
+   ![Sjabloonparameters invoeren](media/tutorial-resource-onboarding/templatescustomprovider.png)
 
-9. Ga naar de implementatie en wacht totdat deze is voltooid. U ziet een item zoals in de volgende scherm afbeelding. U ziet de nieuwe koppelings resource als een uitvoer:
+9. Ga naar de implementatie en wacht tot het is voltooid. Je zou iets als de volgende screenshot moeten zien. U moet de nieuwe koppelingsbron als een uitvoer zien:
 
    ![Geslaagde implementatie](media/tutorial-resource-onboarding/customproviderdeployment.png)
 
-   Hier ziet u de resource groep, met **verborgen typen weer geven** geselecteerd:
+   Hier is de resourcegroep, waarbij **Verborgen typen weergeven** zijn geselecteerd:
 
    ![Implementatie van aangepaste provider](media/tutorial-resource-onboarding/showhidden.png)
 
-10. Bekijk het tabblad **geschiedenis uitvoeringen** van logische apps om de aanroepen voor de koppeling te maken:
+10. De logica-app **Voert geschiedenis** tabblad om de oproepen voor de koppeling te maken te zien:
 
-    ![Geschiedenis van uitvoeringen van logische app](media/tutorial-resource-onboarding/logicapprun.png)
+    ![Logica-app Voert geschiedenis uit](media/tutorial-resource-onboarding/logicapprun.png)
 
-## <a name="deploy-additional-associations"></a>Aanvullende koppelingen implementeren
+## <a name="deploy-additional-associations"></a>Extra koppelingen implementeren
 
-Nadat u de aangepaste provider infrastructuur hebt ingesteld, kunt u eenvoudig meer koppelingen implementeren. De resource groep voor aanvullende koppelingen hoeft niet hetzelfde te zijn als de resource groep waar u de infra structuur van de aangepaste provider hebt geïmplementeerd. Als u een koppeling wilt maken, moet u de machtigingen micro soft. CustomProviders/resourceproviders/write hebben voor de opgegeven aangepaste resource provider-ID.
+Nadat u de aangepaste providerinfrastructuur hebt ingesteld, u eenvoudig meer koppelingen implementeren. De resourcegroep voor extra koppelingen hoeft niet dezelfde te zijn als de resourcegroep waarin u de aangepaste providerinfrastructuur hebt geïmplementeerd. Als u een koppeling wilt maken, moet u microsoft.customproviders/resourceproviders/schrijfmachtigingen hebben op de opgegeven aangepaste resourceprovider-id.
 
-1. Ga naar de resource groep **micro soft. CustomProviders/resourceProviders** van de aangepaste provider in de resource groepen van de vorige implementatie. U moet het selectie vakje **verborgen typen weer geven** inschakelen:
+1. Ga naar de aangepaste provider **Microsoft.CustomProviders/resourceProviders-bron** in de brongroep van de vorige implementatie. U moet het selectievakje **Verborgen typen weergeven** inschakelen:
 
    ![Ga naar de resource](media/tutorial-resource-onboarding/showhidden.png)
 
-2. Kopieer de eigenschap Resource-ID van de aangepaste provider.
+2. Kopieer de eigenschap Resource-id van de aangepaste provider.
 
-3. Zoek naar **sjablonen** in **alle services** of via het hoofd zoekvak:
+3. Zoek naar **sjablonen** in **Alle services** of met het hoofdzoekvak:
 
    ![Sjablonen zoeken](media/tutorial-resource-onboarding/templates.png)
 
-4. Selecteer de eerder gemaakte sjabloon en selecteer vervolgens **implementeren**:
+4. Selecteer de eerder gemaakte sjabloon en selecteer **Vervolgens Implementeren:**
 
-   ![Selecteer de eerder gemaakte sjabloon en selecteer vervolgens implementeren](media/tutorial-resource-onboarding/templateselectspecific.png)
+   ![Selecteer de eerder gemaakte sjabloon en selecteer Vervolgens Implementeren](media/tutorial-resource-onboarding/templateselectspecific.png)
 
-5. Voer de instellingen voor de vereiste velden in en selecteer vervolgens het abonnement en een andere resource groep. Voer voor de instelling van de **aangepaste resource provider-id** de resource-id in die u hebt gekopieerd uit de aangepaste provider die u eerder hebt geïmplementeerd.
+5. Voer de instellingen voor de vereiste velden in en selecteer vervolgens het abonnement en een andere brongroep. Voer voor de instelling **Aangepaste resourceprovider-id** de resource-id in die u hebt gekopieerd van de aangepaste provider die u eerder hebt geïmplementeerd.
 
-6. Ga naar de implementatie en wacht totdat deze is voltooid. Nu moet alleen de resource nieuwe koppelingen worden geïmplementeerd:
+6. Ga naar de implementatie en wacht tot het is voltooid. Het moet nu alleen de nieuwe associaties resource implementeren:
 
-   ![Resource voor nieuwe koppelingen](media/tutorial-resource-onboarding/createdassociationresource.png)
+   ![Nieuwe associaties bron](media/tutorial-resource-onboarding/createdassociationresource.png)
 
-Als u wilt, kunt u teruggaan naar de **uitvoerings geschiedenis** van de logische app en zien dat er een andere aanroep is uitgevoerd naar de logische app. U kunt de logische app bijwerken om extra functionaliteit voor elke gemaakte koppeling uit te breiden.
+Als u wilt, u teruggaan naar de geschiedenis van de logica-app **Uitvoeren** en zien dat er een ander gesprek is gevoerd naar de logische app. U de logische app bijwerken om extra functionaliteit voor elke gemaakte koppeling uit te breiden.
 
 ## <a name="getting-help"></a>Ondersteuning vragen
 
-Als u vragen hebt over aangepaste Azure-providers, kunt u ze vragen op [stack overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Er is mogelijk al een vergelijk bare vraag beantwoord, dus controleer eerst vóór het boeken. Voeg de tag `azure-custom-providers` toe om snel antwoord te krijgen.
+Als u vragen hebt over Azure Custom Providers, probeert u deze te vragen op [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Een soortgelijke vraag kan al zijn beantwoord, dus controleer eerst voor het posten. Voeg de `azure-custom-providers` tag toe om snel te reageren!
 

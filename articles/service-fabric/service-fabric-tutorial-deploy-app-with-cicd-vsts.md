@@ -1,14 +1,14 @@
 ---
-title: Een app implementeren met CI-en Azure-pijp lijnen
+title: Een app implementeren met CI- en Azure-pijplijnen
 description: In deze zelfstudie leert u hoe u een continue integratie en implementatie instelt voor een Service Fabric-toepassing met behulp van Azure Pipelines.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 11485d22abcf0b8e1eb13d8123ff21c7fe0079f8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75614139"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Zelfstudie: Een toepassing met CI/CD implementeren in een Service Fabric-cluster
@@ -35,15 +35,15 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Installeer Visual Studio 2019](https://www.visualstudio.com/) en installeer de werk belasting van **Azure Development** en **ASP.net en Web Development** .
+* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Installeer Visual Studio 2019](https://www.visualstudio.com/) en installeer de **Azure-ontwikkel-** en **ASP.NET- en webontwikkelingsworkloads.**
 * [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
 * Maak een Windows Service Fabric-cluster in Azure, bijvoorbeeld door [deze zelfstudie te volgen](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * Maak een [Azure DevOps-organisatie](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Hiermee kunt u een project maken in Azure DevOps en Azure Pipelines gebruiken.
 
 ## <a name="download-the-voting-sample-application"></a>De voorbeeldtoepassing om te stemmen downloaden
 
-Als u in [deel één van deze zelfstudiereeks](service-fabric-tutorial-create-dotnet-app.md) niet de voorbeeldtoepassing om te stemmen hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen op de lokale computer.
+Als u niet bouwen van de stemming voorbeeld applicatie in [deel een van deze tutorial serie,](service-fabric-tutorial-create-dotnet-app.md)u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de opslagplaats van de voorbeeld-app te klonen op uw lokale computer.
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>Een publicatieprofiel voorbereiden
 
-U hebt [een toepassing gemaakt](service-fabric-tutorial-create-dotnet-app.md) en [de toepassing in Azure geïmplementeerd](service-fabric-tutorial-deploy-app-to-party-cluster.md). U kunt nu continue integratie instellen.  Bereid eerst binnen uw toepassing een publicatieprofiel voor, dat kan worden gebruikt door het implementatieproces dat in Azure Pipelines wordt uitgevoerd.  Het publicatieprofiel moet worden geconfigureerd zodat het cluster dat u eerder hebt gemaakt als doel kan dienen.  Start Visual Studio en open een bestaand Service Fabric-toepassingsproject.  Klik in **Solution Explorer** met de rechtermuisknop op de toepassing en selecteer **Publish...** .
+U hebt [een toepassing gemaakt](service-fabric-tutorial-create-dotnet-app.md) en [de toepassing in Azure geïmplementeerd](service-fabric-tutorial-deploy-app-to-party-cluster.md). U kunt nu continue integratie instellen.  Bereid eerst binnen uw toepassing een publicatieprofiel voor, dat kan worden gebruikt door het implementatieproces dat in Azure Pipelines wordt uitgevoerd.  Het publicatieprofiel moet worden geconfigureerd zodat het cluster dat u eerder hebt gemaakt als doel kan dienen.  Start Visual Studio en open een bestaand Service Fabric-toepassingsproject.  Klik in **Solution Explorer** met de rechtermuisknop op de toepassing en selecteer **Publish...**.
 
 Kies een doelprofiel in het toepassingsproject, dat voor de werkstroom voor continue integratie kan worden gebruikt, bijvoorbeeld Cloud.  Geef het eindpunt voor de clusterverbinding op.  Schakel het selectievakje bij **Upgrade the Application** in, zodat voor elke implementatie in Azure DevOps een upgrade voor de toepassing wordt uitgevoerd.  Klik op de hyperlink **Save** om de instellingen op te slaan in het publicatieprofiel. Klik vervolgens op **Cancel** om het dialoogvenster te sluiten.
 
@@ -61,7 +61,7 @@ Kies een doelprofiel in het toepassingsproject, dat voor de werkstroom voor cont
 
 Deel de bronbestanden van uw toepassing met een project in Azure DevOps zodat u builds kunt genereren.
 
-Maak een nieuwe Git-opslagplaats voor uw project door op de statusbalk in de linkeronderhoek van Visual Studio **Add to Source Control** -> **Git** te selecteren.
+Maak een nieuwe lokale Git repo voor uw project door **Toevoegen aan Source Control** -> **Git** te selecteren op de statusbalk in de rechterbenedenhoek van Visual Studio.
 
 Ga naar de **Push**-weergave in **Team Explorer** en selecteer onder **Push to Azure DevOps** de knop **Publish Git Repo**.
 
@@ -75,9 +75,9 @@ Als u de opslagplaats pusht, wordt er een nieuw project voor uw account gemaakt 
 
 ## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Continue levering configureren met Azure Pipelines
 
-In een pijp lijn voor het bouwen van Azure-pijp lijnen wordt een werk stroom beschreven die bestaat uit een reeks bouw stappen die opeenvolgend worden uitgevoerd. Maak een build-pijplijn die een Service Fabric-toepassingspakket maakt en andere artefacten, om deze in een Service Fabric-cluster te implementeren. Meer informatie over [build-pijplijnen van Azure Pipelines](https://www.visualstudio.com/docs/build/define/create). 
+Een Azure Pipelines build pipeline beschrijft een werkstroom die bestaat uit een set buildstappen die opeenvolgend worden uitgevoerd. Maak een build-pijplijn die een Service Fabric-toepassingspakket maakt en andere artefacten, om deze in een Service Fabric-cluster te implementeren. Meer informatie over [build-pijplijnen van Azure Pipelines](https://www.visualstudio.com/docs/build/define/create). 
 
-Een release-pijplijn van Azure Pipelines beschrijft een werkstroom waarmee een toepassingspakket in een cluster wordt geïmplementeerd. Als de build-pijplijn en de release-pijplijn samen worden gebruikt, wordt hiermee de hele werkstroom uitgevoerd, te beginnen met bronbestanden en te eindigen met het uitvoeren van een toepassing in uw cluster. Meer informatie over [release-pijplijnen in Azure Pipelines](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Een release-pijplijn van Azure Pipelines beschrijft een werkstroom waarmee een toepassingspakket in een cluster wordt geïmplementeerd. Als de build-pijplijn en de release-pijplijn samen worden gebruikt, wordt hiermee de hele werkstroom uitgevoerd, te beginnen met bronbestanden en te eindigen met het uitvoeren van een toepassing in uw cluster. Meer informatie over [azure pipelines release pipelines](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
 ### <a name="create-a-build-pipeline"></a>Een build-pijplijn maken
 
@@ -91,7 +91,7 @@ Selecteer **Azure Repos Git** als de bron, **Voting** Team project, **Voting** R
 
 ![Opslagplaats selecteren][select-repo]
 
-Selecteer in **Select a template** de sjabloon **Azure Service Fabric Application** en klik op **Apply**.
+Selecteer **in Een sjabloon selecteren**de toepassingssjabloon Azure Service **Fabric** en klik op **Toepassen**.
 
 ![Build-sjabloon kiezen][select-build-template]
 
@@ -103,7 +103,7 @@ Schakel onder **Triggers** continue integratie in door **Enable continuous integ
 
 ![Triggers selecteren][save-and-queue2]
 
-Hiermee worden ook triggers gebouwd na pushen of inchecken. Als u de voortgang van de build wilt controleren, gaat u naar het tabblad **builds** .  Nadat u hebt gecontroleerd of de build is uitgevoerd, definieert u een release pijplijn die uw toepassing implementeert in een cluster.
+Hiermee worden ook triggers gebouwd na pushen of inchecken. Als u de voortgang van de build wilt controleren, schakelt u over naar het tabblad **Builds.**  Zodra u controleert of de build succesvol is uitgevoerd, definieert u een releasepijplijn die uw toepassing naar een cluster implementeert.
 
 ### <a name="create-a-release-pipeline"></a>Een release-pijplijn maken
 
@@ -111,19 +111,19 @@ Selecteer het tabblad **Pijplijnen**, vervolgens **Releases** en daarna **+ Nieu
 
 ![Release-sjabloon kiezen][select-release-template]
 
-Selecteer **Tasks**->**Environment 1** en vervolgens **+New** om een nieuwe clusterverbinding toe te voegen.
+Selecteer **Takenomgeving**->**1** en vervolgens **+Nieuw** om een nieuwe clusterverbinding toe te voegen.
 
 ![Clusterverbinding toevoegen][add-cluster-connection]
 
-Selecteer in de weergave **Add new Service Fabric Connection** **Certificate Based**- of **Azure Active Directory**-verificatie.  Geef de verbindingsnaam mysftestcluster op en het clustereindpunt tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000 (of het eindpunt van het cluster waarin de implementatie wordt uitgevoerd).
+Selecteer in de weergave **Add new Service Fabric Connection****Certificate Based**- of **Azure Active Directory**-verificatie.  Geef de verbindingsnaam mysftestcluster op en het clustereindpunt tcp://mysftestcluster.southcentralus.cloudapp.azure.com:19000 (of het eindpunt van het cluster waarin de implementatie wordt uitgevoerd).
 
-Voor verificatie op basis van certificaten voegt u de **vinger afdruk van het server certificaat** toe van het server certificaat dat is gebruikt om het cluster te maken.  Voeg in het **clientcertificaat** de basis-64-codering van het certificaatbestand van de client toe. Zie het pop-upitem met de Help voor dat veld voor informatie over hoe u de basis-64-representatie van het certificaat ophaalt. Voeg ook het **wachtwoord** voor het certificaat toe.  U kunt het cluster- of het servercertificaat gebruiken als u geen apart clientcertificaat hebt.
+Voeg voor verificatie op basis van certificaten de duimafdruk van het **servercertificaat** toe dat wordt gebruikt om het cluster te maken.  Voeg in het **clientcertificaat** de basis-64-codering van het certificaatbestand van de client toe. Zie het pop-upitem met de Help voor dat veld voor informatie over hoe u de basis-64-representatie van het certificaat ophaalt. Voeg ook het **wachtwoord** voor het certificaat toe.  U kunt het cluster- of het servercertificaat gebruiken als u geen apart clientcertificaat hebt.
 
 Voor Azure Active Directory-referenties voegt u de **vingerafdruk voor servercertificaat** toe van het servercertificaat dat is gebruikt om het cluster te maken en in de velden **Username** en **Password** de referenties die u wilt gebruiken om het cluster te verbinden.
 
 Klik op **Add** om de clusterverbinding op te slaan.
 
-Voeg vervolgens een build-artefact toe aan de pijplijn, zodat met de release-pijplijn de uitvoer van de build kan worden gevonden. Selecteer **Pipeline** en **Artifacts**-> **+Add**.  Selecteer in **Source (Build definition)** de build-pijplijn die u eerder hebt gemaakt.  Klik op **Add** om het build-artefact op te slaan.
+Voeg vervolgens een build-artefact toe aan de pijplijn, zodat met de release-pijplijn de uitvoer van de build kan worden gevonden. Selecteer **Pipeline** en **Artifacts**->**+Add**.  Selecteer in **Source (Build definition)** de build-pijplijn die u eerder hebt gemaakt.  Klik op **Add** om het build-artefact op te slaan.
 
 ![Artefact toevoegen][add-artifact]
 
@@ -131,7 +131,7 @@ Schakel een trigger voor continue implementatie in, zodat automatisch een releas
 
 ![Trigger inschakelen][enable-trigger]
 
-Selecteer **+Release** -> **Create a Release** -> **Create** om handmatig een release te maken. U kunt de voortgang van de release volgen op het tabblad **Releases**.
+Selecteer **+ Maak** -> **een release** -> **maken** om handmatig een release te maken. U kunt de voortgang van de release volgen op het tabblad **Releases**.
 
 Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een webbrowser en ga naar `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170616.3).
 

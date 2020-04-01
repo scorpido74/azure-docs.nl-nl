@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 0c2190c29054301a8e21a9a27eb078802fbc9612
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350865"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474477"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen door resultatensets op te slaan in de cache  
 Wanneer de cache van de resultatenset is ingeschakeld, cachet SQL Analytics automatisch queryresultaten in de gebruikersdatabase voor herhaald gebruik.  Hierdoor kunnen volgende query-uitvoeringen rechtstreeks resultaten uit de volgehouden cache krijgen, zodat herberekening niet nodig is.   Het incachezetten van resultaten verbetert de queryprestaties en vermindert het gebruik van rekenbronnen.  Bovendien gebruiken query's met in de cache ingestelde resultaten geen gelijktijdigheidssleuven en tellen ze dus niet mee voor bestaande gelijktijdigheidslimieten. Voor beveiliging hebben gebruikers alleen toegang tot de resultaten in de cache als ze dezelfde machtigingen voor gegevenstoegang hebben als de gebruikers die de resultaten in de cache maken.  
@@ -65,10 +65,10 @@ Resultatenset in cache wordt opnieuw gebruikt voor een query als aan alle volgen
 - Er is een exacte overeenkomst tussen de nieuwe query en de vorige query die de cache van de resultaatset heeft gegenereerd.
 - Er zijn geen gegevens- of schemawijzigingen in de tabellen waaruit de resultaatset in de cache is gegenereerd.
 
-Voer deze opdracht uit om te controleren of een query is uitgevoerd met een hit or miss-hit of misser van de resultaatcache. Als er een cache hit, de result_cache_hit zal terugkeren 1.
+Voer deze opdracht uit om te controleren of een query is uitgevoerd met een hit or miss-hit of misser van de resultaatcache. De kolom result_set_cache retourneert 1 voor cachehit, 0 voor cachemissen en negatieve waarden om redenen waarom resultaatsetcache niet is gebruikt. Kijk [op sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7) voor meer informatie.
 
 ```sql
-SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests 
+SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

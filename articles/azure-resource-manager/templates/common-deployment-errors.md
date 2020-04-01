@@ -165,7 +165,7 @@ Of de antwoordinhoud met:
 
 Met deze informatie u bepalen of een waarde in de sjabloon onjuist wordt ingesteld.
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Op dit moment biedt Azure CLI geen ondersteuning voor het inschakelen van foutopsporingslogboekregistratie, maar u defoutfoutinglogboeken ophalen.
 

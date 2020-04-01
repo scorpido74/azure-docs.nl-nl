@@ -18,4 +18,4 @@ ms.locfileid: "77137679"
 > [!div class="op_single_selector"]
 > * [Portal](../articles/iot-central/core/howto-manage-iot-central-from-portal.md)
 > * [CLI](../articles/iot-central/core/howto-manage-iot-central-from-cli.md)
-> * [Powershell](../articles/iot-central/core/howto-manage-iot-central-from-powershell.md)
+> * [PowerShell](../articles/iot-central/core/howto-manage-iot-central-from-powershell.md)

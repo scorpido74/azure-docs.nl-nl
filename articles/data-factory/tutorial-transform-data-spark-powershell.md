@@ -1,5 +1,5 @@
 ---
-title: 'Gegevens transformeren met behulp van Spark in Azure Data Factory '
+title: 'Gegevens transformeren met Spark in Azure Data Factory '
 description: Deze zelfstudie biedt stapsgewijze instructies voor het transformeren van gegevens met behulp van Spark-activiteit in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: e70a59a75531cb7c3a7e5c5573f9e50cc574ab09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439153"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Gegevens transformeren in de cloud met behulp van Spark-activiteit in Azure Data Factory
@@ -25,9 +25,9 @@ In deze zelfstudie gebruikt u Azure PowerShell om een Data Factory-pijplijn te m
 > * Gekoppelde services maakt en implementeert.
 > * Een pijplijn maakt en implementeert. 
 > * Een pijplijnuitvoering starten.
-> * Controleer de pijplijnuitvoering.
+> * De pijplijnuitvoering controleert.
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -63,7 +63,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     if __name__ == "__main__":
         main()
     ```
-2. Vervang **&lt;storageaccountname&gt;** door de naam van uw Azure Storage-account. Sla het bestand vervolgens op. 
+2. Vervang ** &lt;storageAccountName&gt; ** door de naam van uw Azure Storage-account. Sla het bestand vervolgens op. 
 3. Maak in de Azure Blob-opslag een container met de naam **adftutorial** als deze nog niet bestaat. 
 4. Maak een map met de naam **spark**.
 5. Maak in de map **spark** een submap met de naam **script**. 
@@ -132,8 +132,8 @@ Maak een JSON-bestand met behulp van de gewenste editor, kopieer de volgende JSO
 Werk de waarden voor de volgende eigenschappen bij in de definitie van de gekoppelde service: 
 
 - **hostSubscriptionId**. Vervang &lt;subscriptionID&gt; door de id van uw Azure-abonnement. Het HDInsight-cluster op aanvraag wordt gemaakt in dit abonnement. 
-- **tenant**. Vervang &lt;tenantID&gt; door de id van uw Azure-tenant. 
-- **servicePrincipalId**, **servicePrincipalKey**. Vervang &lt;servicePrincipalID&gt; en &lt;servicePrincipalKey&gt; door de id en de sleutel van de service-pincipal in de Azure Active-directory. Deze service-principal moet lid zijn van de rol Inzender van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-toepassing en service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md) voor details. De **Service-Principal-id** is gelijk aan de *toepassings-id* en een **Service-Principal-sleutel** is gelijk aan de waarde voor een *client geheim*.
+- **huurder**. Vervang &lt;tenantID&gt; door de id van uw Azure-tenant. 
+- **servicePrincipalId**, **servicePrincipalKey**. Vervang &lt;servicePrincipalID&gt; en &lt;servicePrincipalKey&gt; door de id en de sleutel van de service-pincipal in de Azure Active-directory. Deze service-principal moet lid zijn van de rol Inzender van het abonnement of de resourcegroep waarin het cluster is gemaakt. Zie [Een Azure Active Directory-toepassing en service-principal maken](../active-directory/develop/howto-create-service-principal-portal.md) voor details. De **hoofd-id van** de service is gelijk aan de *toepassings-id* en een **hoofdsleutel van de service** is gelijk aan de waarde voor een *clientgeheim.*
 - **clusterResourceGroup**. Vervang &lt;resourceGroupOfHDICluster&gt; door de naam van de resourcegroep waarin de HDInsight-cluster moet worden gemaakt. 
 
 > [!NOTE]
@@ -178,7 +178,7 @@ Houd rekening met de volgende punten:
 - entryFilePath verwijst naar het bestand WordCount_Spark.py in de submap script van de map spark. 
 
 
-## <a name="create-a-data-factory"></a>Een data factory maken 
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken 
 U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. Nu gaan we een gegevensfactory maken en de gekoppelde service en JSON-pijplijnbestanden implementeren met behulp van PowerShell-cmdlets. Voer de volgende PowerShell-opdrachten één voor één: 
 
 1. Stel één voor één de variabelen in.
@@ -188,7 +188,7 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
     $resourceGroupName = "ADFTutorialResourceGroup" 
     ```
 
-    **Data Factory naam. Moet globaal uniek zijn** 
+    **Gegevens fabriek naam. Moet wereldwijd uniek zijn** 
     ```powershell
     $dataFactoryName = "MyDataFactory09102017"
     ```
@@ -197,7 +197,7 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. Start **PowerShell**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+2. PowerShell **starten**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
     Voer de volgende opdracht uit en geef de gebruikersnaam en het wachtwoord op waarmee u zich aanmeldt bij Azure Portal:
         
@@ -209,7 +209,7 @@ U hebt een gekoppelde service en pijplijndefinities gemaakt in JSON-bestanden. N
     ```powershell
     Get-AzSubscription
     ```
-    Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. Vervang **SubscriptionId** door de id van uw Azure-abonnement:
+    Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. **Vervang SubscriptionId** door de id van uw Azure-abonnement:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -336,7 +336,7 @@ Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene naar de a
 > * Gekoppelde services maakt en implementeert.
 > * Een pijplijn maakt en implementeert. 
 > * Een pijplijnuitvoering starten.
-> * Controleer de pijplijnuitvoering.
+> * De pijplijnuitvoering controleert.
 
 Ga naar de volgende zelfstudie voor informatie over het transformeren van gegevens door een Hive-script uit te voeren in een Azure HDInsight-cluster in een virtueel netwerk. 
 

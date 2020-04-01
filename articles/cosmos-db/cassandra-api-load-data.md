@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Java-app voor het laden van voorbeeld gegevens in een Cassandra-API tabel in Azure Cosmos DB'
+title: 'Zelfstudie: Java-app om voorbeeldgegevens te laden in een Cassandra API-tabel in Azure Cosmos DB'
 description: Deze zelfstudie laat zien hoe u voorbeeldgegevens van een gebruiker laadt in een Cassandra-API-tabel in Azure Cosmos DB met behulp van een Java-toepassing.
 author: kanshiG
 ms.service: cosmos-db
@@ -10,10 +10,10 @@ ms.author: govindk
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 66c292bcb02e3b2b215cabe4968fa30a45422cef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75445654"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Zelfstudie: Voorbeeldgegevens laden in een Cassandra-API-tabel in Azure Cosmos DB
@@ -26,11 +26,11 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Gegevens laden in een Cassandra-tabel
 > * De app uitvoeren
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Dit artikel maakt deel uit van een meerdelige zelfstudie. Voordat u met dit document begint, moet u eerst [de Cassandra-API-account, de keyspace en de tabel maken](create-cassandra-api-account-java.md).   
+* Dit artikel maakt deel uit van een meerdelige zelfstudie. Voordat u met dit document begint, moet u [het Cassandra API-account, keyspace en de tabel maken.](create-cassandra-api-account-java.md)   
 
 ## <a name="load-data-into-the-table"></a>Gegevens laden in de tabel
 

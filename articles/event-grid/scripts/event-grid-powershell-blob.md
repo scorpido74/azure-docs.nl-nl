@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-abonneren op Blob Storage-account
-description: In dit artikel vindt u een voor beeld van een Azure PowerShell script dat laat zien hoe u zich kunt abonneren op Event Grid gebeurtenissen voor een Blob Storage-account.
+title: Azure PowerShell - abonneer u op Blob-opslagaccount
+description: In dit artikel wordt een voorbeeld van Azure PowerShell-script weergegeven waarin wordt weergegeven hoe u zich abonneren op gebeurtenisrastergebeurtenissen voor een Blob Storage-account.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: a8a0982ca118663cbf0f7e4d72412ce8feda3c4b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76721435"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>Abonneren op gebeurtenissen voor een Blob Storage-account met PowerShell
@@ -36,7 +36,7 @@ In dit script wordt de volgende opdracht gebruikt om het abonnement op de gebeur
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Hiermee wordt een Event Grid-abonnement gemaakt. |
+| [Nieuw-azeventgridabonnement](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Hiermee wordt een Event Grid-abonnement gemaakt. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

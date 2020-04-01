@@ -1,5 +1,5 @@
 ---
-title: Meldingen verzenden naar specifieke Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging | Microsoft Docs
+title: Meldingen verzenden naar specifieke Android-apparaten via Azure Notification Hubs en Google Cloud Messaging | Microsoft Documenten
 description: Leer hoe u pushmeldingen kunt verzenden naar specifieke Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging.
 services: notification-hubs
 documentationcenter: android
@@ -17,17 +17,17 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: aa2aa7b77bf174f4a2ca89408ee037b398a32e4d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387432"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127294"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelf studie: Push meldingen naar specifieke Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
+# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>Zelfstudie: Pushmeldingen verzenden naar specifieke Android-apparaten met Google Cloud Messaging (afgeschaft)
 
 > [!WARNING]
-> Sinds 10 april 2018 heeft Google afgeschaft Google Cloud Messaging (GCM). De GCM-server en de client-Api's zijn afgeschaft en worden verwijderd zodra 29 mei 2019. Zie [Veelgestelde vragen over GCM en FCM](https://developers.google.com/cloud-messaging/faq)voor meer informatie.
+> Vanaf 10 april 2018 heeft Google Google Cloud Messaging (GCM) afgeschaft. De GCM-server en client API's worden afgeschaft en worden al op 29 mei 2019 verwijderd. Zie [GCM en FCM veelgestelde vragen](https://developers.google.com/cloud-messaging/faq)voor meer informatie.
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -47,7 +47,7 @@ In deze zelfstudie voert u de volgende acties uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze zelf studie is gebaseerd op de app die u in de [zelf studie hebt gemaakt: Push meldingen naar Android-apparaten met behulp van Azure notification hubs en Google Cloud Messaging][get-started]. Voordat u met deze zelf studie begint, voltooit [u de zelf studie: Push meldingen naar Android-apparaten met behulp van Azure notification hubs en Google Cloud Messaging][get-started].
+Deze zelfstudie bouwt voort op de app die u hebt gemaakt in de zelfstudie [Pushmeldingen verzenden naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging][get-started]. Voltooi de zelfstudie [Pushmeldingen verzenden naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging][get-started] voordat u aan deze zelfstudie begint.
 
 ## <a name="add-category-selection-to-the-app"></a>Categorieselectie toevoegen aan de app
 

@@ -1,6 +1,6 @@
 ---
 title: Zelfstudie voor het instellen van wereldwijde distributie met Azure Cosmos DB met behulp van de Table-API
-description: Meer informatie over de werking van globale distributie in Azure Cosmos DB Table-API accounts en het configureren van de voorkeurs lijst met regio's
+description: Meer informatie over hoe globale distributie werkt in Azure Cosmos DB Table API-accounts en hoe u de voorkeurslijst met regio's configureert
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76900176"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Wereldwijde distributie met Azure Cosmos DB instellen met behulp van de Table-API
@@ -28,17 +28,17 @@ Dit artikel behandelt de volgende taken:
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Verbinding maken met een voorkeursregio met behulp van de Table-API
 
-Om gebruik te kunnen maken van de [wereld wijde distributie](distribute-data-globally.md), moeten client toepassingen de huidige locatie opgeven waar de toepassing wordt uitgevoerd. Dit doet u door de eigenschap `CosmosExecutorConfiguration.CurrentRegion` in te stellen. De eigenschap `CurrentRegion` moet één locatie bevatten. Elk client exemplaar kan hun eigen regio opgeven voor lees bewerkingen met lage latentie. De naam van de regio moet worden opgegeven met behulp van hun [weergave namen](https://msdn.microsoft.com/library/azure/gg441293.aspx) , zoals ' vs-West '. 
+Om te profiteren van de [globale distributie,](distribute-data-globally.md)moeten clienttoepassingen de huidige locatie opgeven waar hun toepassing wordt uitgevoerd. Dit wordt gedaan `CosmosExecutorConfiguration.CurrentRegion` door het instellen van de eigenschap. De `CurrentRegion` eigenschap moet één locatie bevatten. Elke clientinstantie kan zijn eigen regio opgeven voor lezen met een lage latentie. De regio moet worden benoemd met behulp van hun [weergavenamen](https://msdn.microsoft.com/library/azure/gg441293.aspx) zoals "West US". 
 
-De Azure Cosmos DB Table-API SDK kiest automatisch het beste eind punt om mee te communiceren op basis van de account configuratie en huidige regionale Beschik baarheid. Dit geeft een prioriteit aan de dichtstbijzijnde regio voor betere latentie aan clients. Nadat u de huidige eigenschap `CurrentRegion` hebt ingesteld, worden lees-en schrijf aanvragen als volgt omgeleid:
+De Azure Cosmos DB Table API SDK SDK kiest automatisch het beste eindpunt om mee te communiceren op basis van de accountconfiguratie en de huidige regionale beschikbaarheid. Het geeft prioriteit aan de dichtstbijzijnde regio om klanten een betere latentie te bieden. Nadat u de `CurrentRegion` huidige eigenschap hebt ingesteld, worden lees- en schrijfverzoeken als volgt gericht:
 
-* **Lees aanvragen:** Alle Lees aanvragen worden verzonden naar de geconfigureerde `CurrentRegion`. Op basis van de nabijheid selecteert de SDK automatisch een geo-gerepliceerde terugval regio voor hoge Beschik baarheid.
+* **Lees verzoeken:** Alle leesverzoeken worden verzonden `CurrentRegion`naar de geconfigureerde . Op basis van de nabijheid selecteert de SDK automatisch een fallback geo-gerepliceerde regio voor hoge beschikbaarheid.
 
-* **Schrijf aanvragen:** De SDK verzendt alle schrijf aanvragen automatisch naar de huidige schrijf regio. In een multi master-account zullen de huidige regio ook de schrijf aanvragen verwerken. Op basis van de nabijheid selecteert de SDK automatisch een geo-gerepliceerde terugval regio voor hoge Beschik baarheid.
+* **Schrijf aanvragen:** De SDK stuurt automatisch alle schrijfaanvragen naar het huidige schrijfgebied. In een multi master-account zal de huidige regio de schrijfverzoeken ook dienen. Op basis van de nabijheid selecteert de SDK automatisch een fallback geo-gerepliceerde regio voor hoge beschikbaarheid.
 
-Als u de eigenschap `CurrentRegion` niet opgeeft, gebruikt de SDK de huidige schrijf regio voor alle bewerkingen.
+Als u de `CurrentRegion` eigenschap niet opgeeft, gebruikt de SDK het huidige schrijfgebied voor alle bewerkingen.
 
-Bijvoorbeeld, als een Azure Cosmos-account zich in regio's ' vs-West ' en ' vs-Oost ' bevindt. Als ' vs-West ' de schrijf regio is en de toepassing aanwezig is in ' vs-Oost '. Als de eigenschap CurrentRegion niet is geconfigureerd, worden alle Lees-en schrijf aanvragen altijd doorgestuurd naar de regio vs-West. Als de eigenschap CurrentRegion is geconfigureerd, worden alle Lees aanvragen verzonden vanuit de regio VS-Oost.
+Als een Azure Cosmos-account zich bijvoorbeeld in de regio's West-VS en 'Oost-VS' bevindt. Als "West US" is het schrijven regio en de aanvraag is aanwezig in "Oost-VS". Als de eigenschap CurrentRegion niet is geconfigureerd, worden alle lees- en schrijfverzoeken altijd gericht naar de regio 'West-VS'. Als de eigenschap CurrentRegion is geconfigureerd, worden alle leesaanvragen weergegeven vanuit de regio 'Oost-VS'.
 
 ## <a name="next-steps"></a>Volgende stappen
 

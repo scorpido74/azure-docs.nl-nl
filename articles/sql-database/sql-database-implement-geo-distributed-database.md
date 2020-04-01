@@ -42,7 +42,7 @@ Als u de zelfstudie wilt voltooien, controleert u of u de volgende items hebt ge
 - Eén database in Azure SQL Database. Als u één gebruik wilt maken,
   - [Portal](sql-database-single-database-get-started.md)
   - [CLI](sql-database-cli-samples.md)
-  - [Powershell](sql-database-powershell-samples.md)
+  - [PowerShell](sql-database-powershell-samples.md)
 
   > [!NOTE]
   > De zelfstudie maakt gebruik van de *AdventureWorksLT-voorbeelddatabase.*
@@ -58,7 +58,7 @@ Als u de zelfstudie wilt voltooien, controleert u of u de volgende items hebt ge
 
 Maak met Azure PowerShell [failovergroepen](sql-database-auto-failover-group.md) tussen een bestaande Azure SQL-server en een nieuwe Azure SQL-server in een andere regio. Voeg vervolgens de voorbeelddatabase toe aan de failovergroep.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
@@ -317,7 +317,7 @@ Georeplicatie-instellingen kunnen ook worden gewijzigd in de**Azure-portal**door
 
 Voer de volgende scripts uit om een failover te simuleren en de toepassingsresultaten te observeren. Merk op hoe sommige inserts en selecties mislukken tijdens de databasemigratie.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 U de rol van de rampherstelserver tijdens de test controleren met de volgende opdracht:
 

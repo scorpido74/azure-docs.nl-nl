@@ -15,10 +15,10 @@ ms.date: 10/09/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 34526c53757690353ff3756b12ad9f8a5250bb0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75442326"
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>Voorbeelden van Azure PowerShell voor API Management
@@ -37,6 +37,6 @@ De volgende tabel bevat voorbeelden van scripts voor het werken met de API Manag
 |[API importeren](./scripts/powershell-import-api-and-add-to-product.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Importeert een API en voegt deze toe aan een APIM-product.|
 |**Beveiligen**||
 |[Back-end beveiligen](./scripts/powershell-secure-backend-with-mutual-certificate-authentication.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Dit voorbeeldscript beveiligt back-end met wederzijdse certificaatverificatie.|
-|**Beschermen**||
+|**Beveiligen**||
 |[Beleid voor frequentielimiet instellen](./scripts/powershell-setup-rate-limit-policy.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Paste een frequentielimiet toe op productniveau. |
 |||

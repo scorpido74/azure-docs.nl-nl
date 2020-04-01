@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76989078"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Een zelf-hostende Integration Runtime maken
 
-In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppelen aan een on-premises computer met de SQL Server database. De zelf-hostende Integration runtime is het onderdeel waarmee gegevens worden gekopieerd van SQL Server op uw computer naar Azure SQL database. 
+In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppelen aan een on-premises computer met de SQL Server database. De self-hosted integration runtime is de component die gegevens van SQL Server op uw machine kopieert naar Azure SQL-database. 
 
 1. Maak een variabele voor de naam van de Integration Runtime. Gebruik een unieke naam en noteer deze. U gaat deze verderop in de zelfstudie gebruiken. 
 
@@ -83,7 +83,7 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
 5. Kopieer een van de sleutels (zonder de dubbele aanhalingstekens) om de zelf-hostende Integration Runtime te registeren die u in de volgende stappen op uw computer gaat installeren.  
 
-## <a name="install-the-integration-runtime-tool"></a>Het hulp programma Integration runtime installeren
+## <a name="install-the-integration-runtime-tool"></a>Het hulpprogramma voor de runtime van de integratie installeren
 
 1. Als u de Integration Runtime al op uw computer heeft, verwijdert u deze met behulp van **Programma's toevoegen of verwijderen**. 
 
@@ -103,7 +103,7 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
     ![De Integration Runtime registreren](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
 
-9. Selecteer op de pagina **nieuw Integration runtime (zelf-hostend) knoop punt** **volt ooien**. 
+9. Selecteer Op de pagina **Nieuwe integratieruntime (Self-hosted) knooppunt** de optie **Voltooien**. 
 
 10. U ziet het volgende bericht wanneer de zelf-hostende Integration Runtime is geregistreerd:
 
@@ -131,7 +131,7 @@ In deze sectie kunt u een zelf-hostende Integration Runtime maken en deze koppel
 
     f. Voer de gebruikersnaam in.
 
-    g. Voer het wacht woord in dat is gekoppeld aan de gebruikers naam.
+    g. Voer het wachtwoord in dat is gekoppeld aan de gebruikersnaam.
 
     h. Selecteer **Test** om te controleren of Integration Runtime verbinding kan maken met SQL Server. U ziet een groen vinkje als het gelukt is om verbinding te maken. U ziet een foutbericht als er geen verbinding kan worden gemaakt. Los eventuele problemen op en zorg ervoor dat de Integration Runtime verbinding met SQL Server kan maken.    
 

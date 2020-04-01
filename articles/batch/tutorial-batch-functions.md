@@ -1,6 +1,6 @@
 ---
-title: Een batch-taak activeren met behulp van Azure Functions
-description: 'Zelf studie: OCR Toep assen op gescande documenten die worden toegevoegd aan een opslag-BLOB'
+title: Een batchtaak activeren met Azure-functies
+description: 'Zelfstudie : OCR toepassen op gescande documenten terwijl ze worden toegevoegd aan een opslagblob'
 author: LauraBrenner
 ms.service: batch
 ms.devlang: dotnet
@@ -9,81 +9,81 @@ ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc
 ms.openlocfilehash: a967fdc14b85f294ee11cbcc57a8d2280dba38e8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77017187"
 ---
-# <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Zelf studie: een batch-taak activeren met behulp van Azure Functions
+# <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Zelfstudie: Een batchtaak activeren met Azure-functies
 
-In deze zelf studie leert u hoe u een batch-taak kunt activeren met behulp van Azure Functions. We gaan een voor beeld bekijken van de documenten die aan een Azure Storage BLOB-container worden toegevoegd, bevatten optische teken herkenning (OCR) die via Azure Batch wordt toegepast. Om de OCR-verwerking te stroom lijnen, zullen we een Azure-functie configureren waarmee een batch-OCR-taak wordt uitgevoerd telkens wanneer een bestand wordt toegevoegd aan de BLOB-container.
+In deze zelfstudie leert u hoe u een batchtaak activeert met Azure-functies. We doorlopen een voorbeeld waarin documenten die zijn toegevoegd aan een Azure Storage blob-container hebben optische tekenherkenning (OCR) toegepast op hen via Azure Batch. Om de OCR-verwerking te stroomlijnen, configureren we een Azure-functie die een Batch OCR-taak uitvoert telkens wanneer een bestand aan de blobcontainer wordt toegevoegd.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* Een Azure Batch-account en een gekoppeld Azure Storage-account. Zie [een batch-account maken](quick-create-portal.md#create-a-batch-account) voor meer informatie over het maken en koppelen van accounts.
+* Een Azure-abonnement. Als je nog geen account hebt, maak je een [gratis account](https://azure.microsoft.com/free/) aan voordat je begint.
+* Een Azure Batch-account en een gekoppeld Azure Storage-account. Zie [Een batchaccount maken](quick-create-portal.md#create-a-batch-account) voor meer informatie over het maken en koppelen van accounts.
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
-* [Azure-opslagverkenner](https://azure.microsoft.com/features/storage-explorer/)
+* [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com).
+Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>Maak een batch-pool en een batch-taak met behulp van Batch Explorer
+## <a name="create-a-batch-pool-and-batch-job-using-batch-explorer"></a>Een batchgroep en batchtaak maken met Batch Explorer
 
-In deze sectie gebruikt u Batch Explorer om de batch-pool en batch-taak te maken waarmee OCR-taken worden uitgevoerd. 
+In deze sectie gebruikt u Batch Explorer om de batchgroep en batchtaak te maken waarmee OCR-taken worden uitgevoerd. 
 
-### <a name="create-a-pool"></a>Pool maken
+### <a name="create-a-pool"></a>Een groep maken
 
 1. Meld u aan bij Batch Explorer met uw Azure-referenties.
-1. Maak een pool door **Pools** te selecteren op de balk aan de linkerkant en klik vervolgens op de knop **toevoegen** boven het zoek formulier. 
-    1. Kies een ID en weergave naam. We gebruiken `ocr-pool` voor dit voor beeld.
-    1. Stel het schaal type in op **vaste grootte**en stel het toegewezen aantal knoop punten in op 3.
-    1. Selecteer **Ubuntu 18,04-LTS** als besturings systeem.
-    1. Kies `Standard_f2s_v2` als de grootte van de virtuele machine.
-    1. Schakel de begin taak in en voeg de opdracht `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`toe. Zorg ervoor dat u de gebruikers identiteit instelt als **standaard gebruiker van de taak (beheerder)** , zodat Start taken opdrachten kunnen bevatten met `sudo`.
+1. Maak een pool door **Pools** aan de linkerkant te selecteren en vervolgens de knop **Toevoegen** boven het zoekformulier. 
+    1. Kies een id en weergavenaam. We gebruiken `ocr-pool` voor dit voorbeeld.
+    1. Stel het schaaltype in op **Vaste grootte**en stel het aantal speciale knooppunten in op 3.
+    1. Selecteer **Ubuntu 18.04-LTS** als besturingssysteem.
+    1. Kies `Standard_f2s_v2` als de virtuele machinegrootte.
+    1. Schakel de starttaak in `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`en voeg de opdracht toe. Zorg ervoor dat u de gebruikersidentiteit instelt als **Taakstandaardgebruiker (Beheerder),** waarmee taken kunnen worden gestart om opdrachten op te nemen met `sudo`.
     1. Selecteer **OK**.
 ### <a name="create-a-job"></a>Een taak maken
 
-1. Maak een taak in de pool door **taken** te selecteren op de balk aan de linkerkant en vervolgens op de knop **toevoegen** boven het zoek formulier. 
-    1. Kies een ID en weergave naam. We gebruiken `ocr-job` voor dit voor beeld.
-    1. Stel de groep in op `ocr-pool`of de naam die u voor uw pool hebt gekozen.
+1. Maak een taak in de groep door **Vacatures** aan de linkerkant te selecteren en vervolgens de knop **Toevoegen** boven het zoekformulier. 
+    1. Kies een id en weergavenaam. We gebruiken `ocr-job` voor dit voorbeeld.
+    1. Stel het `ocr-pool`zwembad op , of welke naam u voor uw zwembad koos.
     1. Selecteer **OK**.
 
 
-## <a name="create-blob-containers"></a>BLOB-containers maken
+## <a name="create-blob-containers"></a>Blobcontainers maken
 
-Hier maakt u BLOB-containers waarmee de invoer-en uitvoer bestanden voor de OCR batch-taak worden opgeslagen.
+Hier maakt u blobcontainers die uw invoer- en uitvoerbestanden opslaan voor de ocrbatchtaak.
 
 1. Meld u aan bij Storage Explorer met uw Azure-referenties.
-1. Met het opslag account dat is gekoppeld aan uw batch-account, maakt u twee BLOB-containers (één voor invoer bestanden, één voor uitvoer bestanden) door de stappen te volgen in [een BLOB-container maken](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container).
+1. Maak met het opslagaccount dat is gekoppeld aan uw Batch-account twee blobcontainers (één voor invoerbestanden, één voor uitvoerbestanden) door de stappen te volgen bij [Een blobcontainer maken.](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container)
 
-In dit voor beeld heeft de invoer container de naam `input` en is de plaats waar alle documenten zonder OCR eerst worden geüpload voor verwerking. De uitvoer container heet `output` en is waar de batch-taak verwerkte documenten schrijft met OCR.  
-    * In dit voor beeld noemen we onze invoer container `input`en onze uitvoer container `output`.  
-    * De invoer container is waar alle documenten zonder OCR eerst worden geüpload.  
-    * De uitvoer container is waar de batch-taak documenten met OCR schrijft.  
+In dit voorbeeld wordt de `input` invoercontainer benoemd en worden alle documenten zonder OCR in eerste instantie geüpload voor verwerking. De uitvoercontainer `output` heeft de naam en is de plaats waar de batchtaak verwerkte documenten met OCR schrijft.  
+    * In dit voorbeeld noemen we onze `input`invoercontainer en `output`onze uitvoercontainer .  
+    * De invoercontainer is waar alle documenten zonder OCR in eerste instantie worden geüpload.  
+    * De uitvoercontainer is de plaats waar de batchtaak documenten met OCR schrijft.  
 
-Maak een gedeelde toegangs handtekening voor uw uitvoer container in Storage Explorer. Hiertoe klikt u met de rechter muisknop op de uitvoer container en selecteert u **Shared Access Signature ophalen...** . Controleer onder **machtigingen**de optie **schrijven**. Er zijn geen andere machtigingen nodig.  
+Maak een handtekening voor gedeelde toegang voor uw uitvoercontainer in Storage Explorer. Dit doe je door met de rechtermuisknop op de uitvoercontainer te klikken en **Gedeelde toegangshandtekening te selecteren...**. Controleer **Onder Machtigingen**de controle **Schrijven**. Er zijn geen andere machtigingen nodig.  
 
 ## <a name="create-an-azure-function"></a>Een Azure-functie maken
 
-In deze sectie maakt u de Azure-functie waarmee de OCR batch-taak wordt geactiveerd wanneer een bestand wordt geüpload naar de invoer container.
+In deze sectie maakt u de Azure-functie die de ocrbatch-taak activeert wanneer een bestand wordt geüpload naar uw invoercontainer.
 
-1. Volg de stappen in [een functie maken die wordt geactiveerd door Azure Blob-opslag](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function) om een functie te maken.
-    1. Wanneer u wordt gevraagd om een opslag account, gebruikt u hetzelfde opslag account dat u hebt gekoppeld aan uw batch-account.
-    1. Kies voor **runtime stack**.net. We schrijven onze functie in om C# gebruik te maken van de batch .NET SDK.
-1. Wanneer de functie voor BLOB-activering is gemaakt, gebruikt u de [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) en [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) van github in de functie.
-    * `run.csx` wordt uitgevoerd wanneer een nieuwe BLOB wordt toegevoegd aan de container van de invoer-blob.
-    * `function.proj` geeft een lijst van de externe bibliotheken in uw functie code, bijvoorbeeld de batch .NET SDK.
-1. Wijzig de waarden van de tijdelijke aanduidingen van de variabelen in de `Run()` functie van het `run.csx`-bestand om uw batch-en opslag referenties weer te geven. U vindt uw batch-en Storage-account referenties in de Azure Portal in de sectie **sleutels** van uw batch-account.
-    * Haal de referenties voor uw batch-en opslag account op in de Azure Portal in de sectie **sleutels** van uw batch-account. 
+1. Volg de stappen in [Een functie maken die wordt geactiveerd door Azure Blob-opslag](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function) om een functie te maken.
+    1. Gebruik hetzelfde opslagaccount als u aan uw Batch-account hebt gekoppeld wanneer u om een opslagaccount wordt gevraagd.
+    1. Kies voor **runtime stack**.NET. We schrijven onze functie in C# om gebruik te maken van de Batch .NET SDK.
+1. Zodra de blob-geactiveerde functie [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) is [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) gemaakt, gebruikt u de functie en van GitHub in de functie.
+    * `run.csx`wordt uitgevoerd wanneer een nieuwe blob wordt toegevoegd aan uw invoerblobcontainer.
+    * `function.proj`bevat de externe bibliotheken in uw functiecode, bijvoorbeeld de Batch .NET SDK.
+1. Wijzig de tijdelijke aanduidingswaarden van `Run()` de `run.csx` variabelen in de functie van het bestand om uw batch- en opslagreferenties weer te geven. U uw batch- en opslagaccountreferenties vinden in de Azure-portal in het gedeelte **Sleutels** van uw Batch-account.
+    * Haal uw batch- en opslagaccountreferenties op in de Azure-portal in het gedeelte **Sleutels** van uw Batch-account. 
 
 ## <a name="trigger-the-function-and-retrieve-results"></a>De functie activeren en resultaten ophalen
 
-Upload een of meer van de gescande bestanden uit de [`input_files`](https://github.com/Azure-Samples/batch-functions-tutorial/tree/master/input_files) Directory op github naar de invoer container. Controleer Batch Explorer om te bevestigen dat een taak wordt toegevoegd aan `ocr-pool` voor elk bestand. Na enkele seconden wordt het bestand met OCR toegepast toegevoegd aan de uitvoer container. Het bestand is vervolgens zichtbaar en kan worden opgehaald op Storage Explorer.
+Upload een of alle gescande [`input_files`](https://github.com/Azure-Samples/batch-functions-tutorial/tree/master/input_files) bestanden uit de directory op GitHub naar uw invoercontainer. Controleer Batch Explorer om te controleren `ocr-pool` of er voor elk bestand een taak wordt toegevoegd. Na enkele seconden wordt het bestand met OCR toegepast toegevoegd aan de uitvoercontainer. Het bestand is dan zichtbaar en kan worden opgehaald in Storage Explorer.
 
-Daarnaast kunt u het logboek bestand bekijken onder aan het venster van de Azure Functions-webeditor, waar u berichten ziet als dit voor elk bestand dat u uploadt naar uw invoer container:
+Bovendien u het logboekbestand onder aan het webeditorvenster Azure Functions bekijken, waar u berichten als deze ziet voor elk bestand dat u uploadt naar uw invoercontainer:
 
 ```
 2019-05-29T19:45:25.846 [Information] Creating job...
@@ -94,7 +94,7 @@ Daarnaast kunt u het logboek bestand bekijken onder aan het venster van de Azure
 2019-05-29T19:45:26.200 [Information] Adding OCR task <taskID> for <fileName> <size of fileName>...
 ```
 
-Als u de uitvoer bestanden van Storage Explorer wilt downloaden naar uw lokale computer, selecteert u eerst de gewenste bestanden en selecteert u vervolgens de **down load** op het bovenste lint. 
+Als u de uitvoerbestanden van Storage Explorer naar uw lokale machine wilt downloaden, selecteert u eerst de gewenste bestanden en selecteert u vervolgens het **downloaden** op het bovenste lint. 
 
 > [!TIP]
 > De gedownloade bestanden zijn doorzoekbaar als ze worden geopend in een PDF-lezer.
@@ -104,13 +104,13 @@ Als u de uitvoer bestanden van Storage Explorer wilt downloaden naar uw lokale c
 In deze zelfstudie hebt u het volgende geleerd: 
 
 > [!div class="checklist"]
-> * Batch Explorer gebruiken om Pools en taken te maken
-> * Storage Explorer gebruiken om BLOB-containers en een Shared Access Signature (SAS) te maken
-> * Een Azure-functie met Blob-activering maken
+> * Batch Explorer gebruiken om groepen en taken te maken
+> * Storage Explorer gebruiken om blobcontainers en een gedeelde toegangshandtekening (SAS) te maken
+> * Een Azure-functie met blobs maken
 > * Invoerbestanden uploaden naar Storage
 > * Taakuitvoering controleren
 > * Uitvoerbestanden ophalen
 
-* Zie [de voor beelden op github](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)voor meer voor beelden van het gebruik van de .net API om batch-workloads te plannen en te verwerken. 
+* Zie [de voorbeelden op GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)voor meer voorbeelden van het gebruik van de .NET API voor het plannen en verwerken van batchworkloads. 
 
-* Zie [de Azure functions documentatie](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings)voor meer Azure functions triggers die u kunt gebruiken om batch-workloads uit te voeren.
+* Zie [de documentatie azure-functies](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings)voor meer Azure-functies die u gebruiken om batchworkloads uit te voeren.

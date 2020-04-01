@@ -5,15 +5,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: sample
-origin.date: 12/26/2018
-ms.date: 03/04/2019
-author: rockboyfor
-ms.author: v-yeche
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
 ms.openlocfilehash: 28ee64f70cd281a2563a855fb1fca91f229ec7bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "61330595"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Een app bouwen met behulp van Node.js en de API voor MongoDB van Azure Cosmos DB 
@@ -40,7 +39,7 @@ Als u dit voorbeeld wilt gebruiken, moet u het volgende doen:
     var MongoClient = require('mongodb').MongoClient;
     var assert = require('assert');
     var ObjectId = require('mongodb').ObjectID;
-    var url = 'mongodb://<username>:<password>@<endpoint>.documents.azure.cn:10255/?ssl=true';
+    var url = 'mongodb://<username>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
 
     var insertDocument = function(db, callback) {
     db.collection('families').insertOne( {
@@ -63,7 +62,7 @@ Als u dit voorbeeld wilt gebruiken, moet u het volgende doen:
         callback();
     });
     };
-
+    
     var findFamilies = function(db, callback) {
     var cursor =db.collection('families').find( );
     cursor.each(function(err, doc) {
@@ -75,7 +74,7 @@ Als u dit voorbeeld wilt gebruiken, moet u het volgende doen:
         }
     });
     };
-
+    
     var updateFamilies = function(db, callback) {
     db.collection('families').updateOne(
         { "lastName" : "Andersen" },
@@ -90,7 +89,7 @@ Als u dit voorbeeld wilt gebruiken, moet u het volgende doen:
         callback();
     });
     };
-
+    
     var removeFamilies = function(db, callback) {
     db.collection('families').deleteMany(
         { "lastName": "Andersen" },
@@ -100,7 +99,7 @@ Als u dit voorbeeld wilt gebruiken, moet u het volgende doen:
         }
     );
     };
-
+    
     MongoClient.connect(url, function(err, client) {
     assert.equal(null, err);
     var db = client.db('familiesdb');
@@ -115,8 +114,8 @@ Als u dit voorbeeld wilt gebruiken, moet u het volgende doen:
     });
     });
     ```
-
-    **Optioneel**: Als u het **MongoDB Node.js 2.2-stuurprogramma** gebruikt, vervangt u het volgende codefragment:
+    
+    **Optioneel**: als u het **MongoDB Node.js 2.2-stuurprogramma** gebruikt, vervangt u het volgende codefragment:
 
     Oorspronkelijk:
 
@@ -135,7 +134,7 @@ Als u dit voorbeeld wilt gebruiken, moet u het volgende doen:
     });
     });
     ```
-
+    
     Moet worden vervangen door:
 
     ```javascript
@@ -152,28 +151,26 @@ Als u dit voorbeeld wilt gebruiken, moet u het volgende doen:
     });
     });
     ```
-
+    
 2. Wijzig de volgende variabelen in het bestand *app.js* volgens uw accountinstellingen (meer informatie over het zoeken naar uw [verbindingsreeks](connect-mongodb-account.md)):
 
     > [!IMPORTANT]
     > Voor het **MongoDB Node.js 3.0-stuurprogramma** is codering vereist van speciale tekens in het Cosmos DB-wachtwoord. Zorg ervoor dat u de tekens '=' codeert als %3D
     >
-    > Voorbeeld: Het wachtwoord *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* wordt gecodeerd naar *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D*
+    > Voorbeeld: het wachtwoord *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* wordt gecodeerd naar *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D*
     >
     > Voor het **MongoDB Node.js 2.2-stuurprogramma** is geen codering vereist van speciale tekens in het Cosmos DB-wachtwoord.
     >
     >
-
+   
     ```javascript
-    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.cn:10255/?ssl=true';
+    var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
-
+     
 3. Open uw favoriete terminal, voer **npm install mongodb --save** uit en voer uw app uit met **node app.js**
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het [gebruik van Studio 3T](mongodb-mongochef.md) met de API voor MongoDB van Azure Cosmos DB.
 - Meer informatie over het [gebruik van Robo 3T](mongodb-robomongo.md) met de API voor MongoDB van Azure Cosmos DB.
-- Verken [voorbeelden](mongodb-samples.md) van MongoDB met de API voor MongoDB van Azure Cosmos DB.
-
-<!-- Update_Description: update meta properties, wording update -->
+- Verken [voorbeelden](mongodb-samples.md) van MongoDB met de API van Azure Cosmos DB voor MongoDB.

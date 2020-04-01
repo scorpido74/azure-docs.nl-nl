@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: apparaten inrichten voor hubs met gelijke taak verdeling met behulp van Azure IoT Hub Device Provisioning Service'
-description: In deze zelf studie wordt gedemonstreerd hoe de Device Provisioning Service (DPS) automatische inrichting van het apparaat mogelijk maakt voor IoT-hubs met gelijke taak verdeling in azure Portal
+title: Zelfstudie - Apparaten inrichten in gebalanceerde hubs voor laden met Azure IoT Hub Device Provisioning Service
+description: Deze zelfstudie laat zien hoe DPS (Device Provisioning Service) automatische apparaatinrichting mogelijk maakt voor gebalanceerde IoT-hubs in Azure Portal
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,13 +9,13 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74976737"
 ---
-# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Zelf studie: apparaten inrichten voor IoT-hubs met gelijke taak verdeling
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Zelfstudie: Apparaten inrichten op iot-hubs met belastingsbalans
 
 In deze zelfstudie kunt u zien hoe u apparaten kunt inrichten voor meerdere IoT-hubs met gelijke taakverdeling met behulp van de Device Provisioning Service. In deze zelfstudie leert u het volgende:
 
@@ -25,7 +25,7 @@ In deze zelfstudie kunt u zien hoe u apparaten kunt inrichten voor meerdere IoT-
 > * Het toewijzingsbeleid van de Device Provisioning Service instellen op **gelijkmatige verdeling**
 > * De nieuwe IoT-hub koppelen aan de Device Provisioning Service
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -63,7 +63,7 @@ Koppel de Device Provisioning Service en IoT Hub zodat de Device Provisioning Se
 
 1. Klik op de pagina **Alle resources** op de Device Provisioning Service die u eerder hebt gemaakt.
 2. Klik op de pagina Device Provisioning Service op **Gekoppelde IoT-hubs**.
-3. Klik op **Add**.
+3. Klik op**toevoegen**.
 4. Geef op de pagina **Koppeling toevoegen aan IoT-hub** met behulp van de keuzerondjes aan of de gekoppelde IoT-hub zich in het huidige abonnement of in een ander abonnement bevindt. Kies vervolgens de naam van de IoT-hub in het vak **IoT-hub**.
 5. Klik op **Opslaan**.
 

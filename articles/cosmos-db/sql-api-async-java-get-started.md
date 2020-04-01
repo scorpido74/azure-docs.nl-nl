@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een Java-app maken met Azure Cosmos DB async-SDK voor het beheren van gegevens in een SQL-API-account'
+title: 'Zelfstudie: Een Java-app bouwen met Azure Cosmos DB Async Java SDK om gegevens in SQL API-account te beheren'
 description: In deze zelfstudie leert u hoe u SQL API-accounts kunt gebruiken voor het opslaan van en toegang krijgen tot gegevens in Azure Cosmos DB met behulp van een asynchrone Java-toepassing.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -10,13 +10,13 @@ ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 8704e399156b9cfc6b04ff47af49b956b597a539
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75444892"
 ---
-# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Zelf studie: een Java-app bouwen met de asynchrone Java-SDK voor het beheren van gegevens die zijn opgeslagen in een SQL-API-account
+# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Zelfstudie: Een Java-app bouwen met de Async Java SDK om gegevens te beheren die zijn opgeslagen in een SQL API-account
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -42,11 +42,11 @@ Zorg ervoor dat u over de volgende bronnen beschikt:
 
 * Een actief Azure-account. Als u nog geen account hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/). 
 
-* [Git](https://git-scm.com/downloads).
+* [Git.](https://git-scm.com/downloads)
 
 * [Java Development Kit (JDK) 8+](https://aka.ms/azure-jdks).
 
-* [Maven](https://maven.apache.org/download.cgi).
+* [Maven.](https://maven.apache.org/download.cgi)
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
 
@@ -54,7 +54,7 @@ Maak een Azure Cosmos-account door de volgende stappen uit te voeren:
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>De GitHub-opslagplaats klonen
+## <a name="clone-the-github-repository"></a><a id="GitClone"></a>Kloon de GitHub repository
 
 Kloon de GitHub-opslagplaats voor [Get Started with Azure Cosmos DB and Java](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) (Aan de slag met Azure Cosmos DB en Java). Voer bijvoorbeeld vanuit een lokale map het volgende uit als u het voorbeeldproject lokaal wilt ophalen.
 
@@ -75,7 +75,7 @@ De map bevat de map `pom.xml` en het bestand `src/main/java/com/microsoft/azure/
 </dependency>
 ```
 
-## <a id="Connect"></a>Verbinding maken met een Azure Cosmos-account
+## <a name="connect-to-an-azure-cosmos-account"></a><a id="Connect"></a>Verbinding maken met een Azure Cosmos-account
 
 Ga vervolgens terug naar de [Azure-portal](https://portal.azure.com) om uw eindpunt en primaire hoofdsleutel op te halen. Uw toepassing heeft het Azure Cosmos DB-eindpunt en de primaire sleutel nodig om te bepalen waarmee verbinding moet worden gemaakt en om ervoor te zorgen dat Azure Cosmos DB de verbinding van uw toepassing vertrouwt. Het bestand `AccountSettings.java` bevat de primaire sleutel en de URI-waarden. 
 
@@ -112,9 +112,9 @@ client = new AsyncDocumentClient.Builder()
          .build();
 ```
 
-## <a id="CreateDatabase"></a>Een database maken
+## <a name="create-a-database"></a><a id="CreateDatabase"></a>Een database maken
 
-Maak uw Azure Cosmos-data base met behulp van de methode `createDatabaseIfNotExists()` van de klasse DocumentClient. Een database is een logische container voor een JSON-documentopslag, gepartitioneerd in verzamelingen.
+Maak uw Azure Cosmos-database met de `createDatabaseIfNotExists()` methode van de klasse DocumentClient. Een database is een logische container voor een JSON-documentopslag, gepartitioneerd in verzamelingen.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 
@@ -156,7 +156,7 @@ private void createDatabaseIfNotExists() throws Exception
 }
 ```
 
-## <a id="CreateColl"></a>Een verzameling maken
+## <a name="create-a-collection"></a><a id="CreateColl"></a>Een verzameling maken
 
 U kunt een verzameling maken met de methode `createDocumentCollectionIfNotExists()` van de klasse DocumentClient. Een verzameling is een container van JSON-documenten en de bijbehorende JavaScript-toepassingslogica.
 
@@ -200,7 +200,7 @@ private void createDocumentCollectionIfNotExists() throws Exception
     }
 ```
 
-## <a id="CreateDoc"></a>JSON-documenten maken
+## <a name="create-json-documents"></a><a id="CreateDoc"></a>JSON-documenten maken
 
 Maak een document met de methode createDocument van de klasse DocumentClient. Documenten bestaan uit door gebruikers gedefinieerde (willekeurige) JSON-inhoud. U kunt nu een of meer documenten invoegen. Het bestand src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java definieert de familie waartoe de JSON-documenten behoren. 
 
@@ -220,7 +220,7 @@ public static Family getJohnsonFamilyDocument() {
     }
 ```
 
-## <a id="Query"></a>Query's uitvoeren op Azure Cosmos DB-resources
+## <a name="query-azure-cosmos-db-resources"></a><a id="Query"></a>Query's uitvoeren op Azure Cosmos DB-resources
 
 Azure Cosmos DB biedt ondersteuning voor uitgebreide query's voor de JSON-documenten die zijn opgeslagen in elke verzameling. De volgende voorbeeldcode laat zien hoe u query's kunt toepassen op documenten in Azure Cosmos DB met behulp van de SQL-syntaxis met de methode `queryDocuments`.
 
@@ -254,7 +254,7 @@ private void executeSimpleQueryAsyncAndRegisterListenerForResult(CountDownLatch 
 }
 ```
 
-## <a id="Run"></a>Uw Java-consoletoepassing uitvoeren
+## <a name="run-your-java-console-application"></a><a id="Run"></a>Uw Java-consoletoepassing uitvoeren
 
 Als u de toepassing in de console wilt uitvoeren, gaat u naar de projectmap en compileert u de code met Maven:
 

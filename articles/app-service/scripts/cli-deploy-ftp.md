@@ -1,19 +1,19 @@
 ---
-title: 'CLI: app-bestanden implementeren met FTP'
-description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voor beeld ziet u hoe u een app maakt en bestanden implementeert met FTP.
+title: 'CLI: App-bestanden implementeren met FTP'
+description: Meer informatie over het gebruik van de Azure CLI om de implementatie en het beheer van uw App Service-app te automatiseren. In dit voorbeeld ziet u hoe u een app maakt en bestanden met FTP implementeert.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/12/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 320f293073ce0a97cf4b73b420f38d91c5206013
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: ccef4443661f9227163b2bbe9cd8a6475f856caa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688361"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044884"
 ---
 # <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>Een App Service-app maken en bestanden implementeren met FTP met behulp van Azure CLI
 
@@ -37,13 +37,13 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-abonnement. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-plan. |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Hiermee maakt u een App Service-app. |
 | [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az-webapp-deployment-list-publishing-profiles) | Hiermee vraagt u de details op van beschikbare implementatieprofielen voor apps. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Meer voorbeelden van App Service CLI-scripts vindt u in de [documentatie van Azure App Service](../samples-cli.md).

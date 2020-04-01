@@ -1,7 +1,7 @@
 ---
-title: C#zelf studie over de paginering van zoek resultaten
+title: C# zelfstudie over pagination met zoekresultaten
 titleSuffix: Azure Cognitive Search
-description: In deze zelf studie wordt gedemonstreerd hoe de zoek resultaten worden gepagineerd. Het wordt gebouwd op basis van een bestaand project in hotels, met de knoppen voor de eerste, de volgende, de vorige, de laatste en de genummerde knop. Een tweede wissel systeem gebruikt oneindig schuiven, geactiveerd door een verticale schuif balk te verplaatsen naar de ondergrens.
+description: Deze tutorial toont paging van zoekresultaten. Het bouwt voort op een bestaand hotels project, met paging door de eerste, volgende, vorige, laatste en genummerde knoppen. Een tweede pagingsysteem maakt gebruik van oneindig scrollen, geactiveerd door een verticale schuifbalk naar de ondergrens te verplaatsen.
 manager: nitinme
 author: tchristiani
 ms.author: terrychr
@@ -9,44 +9,44 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77121517"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#zelf studie: paginering van zoek resultaten-Azure Cognitive Search
+# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# zelfstudie: paginatie met zoekresultaten - Azure Cognitive Search
 
-Meer informatie over het implementeren van twee verschillende wissel systemen, het eerst op basis van pagina nummers en de tweede op oneindig schuiven. Beide systemen van paging worden veel gebruikt en het selecteren van de juiste versie is afhankelijk van de gebruikers ervaring die u wilt gebruiken met de resultaten. In deze zelf studie worden de paginerings systemen gebouwd in het project dat in de [ C# zelf studie is gemaakt: uw eerste app-Azure-Cognitive Search](tutorial-csharp-create-first-app.md) zelf studie maken.
+Leer hoe u twee verschillende pagingsystemen implementeert, de eerste op basis van paginanummers en de tweede op oneindig scrollen. Beide systemen van paging worden op grote schaal gebruikt, en het selecteren van de juiste is afhankelijk van de gebruikerservaring die u zou willen met de resultaten. In deze zelfstudie worden de paging-systemen gebouwd in het project dat is gemaakt in de [C#-zelfstudie: Uw eerste app maken -](tutorial-csharp-create-first-app.md) Azure Cognitive Search-zelfstudie.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Uw app uitbreiden met genummerde paginering
-> * Uw app uitbreiden met oneindig schuiven
+> * Uw app uitbreiden met genummerde paging
+> * Uw app uitbreiden met oneindig scrollen
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
-U hebt de [ C# zelf studie: Maak uw eerste app-Azure-Cognitive Search](tutorial-csharp-create-first-app.md) project actief. Dit project kan uw eigen versie zijn of installeren vanaf GitHub: [Maak eerst een app](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Laat de [C#-zelfstudie: maak uw eerste app - Azure Cognitive Search-project](tutorial-csharp-create-first-app.md) operationeel. Dit project kan uw eigen versie zijn of het installeren vanuit GitHub: [Eerste app maken.](https://github.com/Azure-Samples/azure-search-dotnet-samples)
 
-## <a name="extend-your-app-with-numbered-paging"></a>Uw app uitbreiden met genummerde paginering
+## <a name="extend-your-app-with-numbered-paging"></a>Uw app uitbreiden met genummerde paging
 
-Genummerd wissel geheugen is het wissel systeem van de belangrijkste zoek machines voor Internet en de meeste andere Zoek websites. Genummerde wissels bevatten doorgaans een optie ' volgende ' en ' vorige ' naast een bereik van de pagina nummers. Ook de optie ' eerste pagina ' en ' laatste pagina ' zijn mogelijk ook beschikbaar. Deze opties geven een gebruiker de controle over het navigeren door middel van resultaten op basis van pagina's.
+Genummerde paging is de paging systeem van keuze van de belangrijkste internet zoekmachines en de meeste andere zoekwebsites. Genummerde paging bevat meestal een "volgende" en "vorige" optie in aanvulling op een bereik van de werkelijke paginanummers. Ook een "eerste pagina" en "laatste pagina" optie kan ook beschikbaar zijn. Deze opties geven een gebruiker zeker controle over het navigeren door pagina-gebaseerde resultaten.
 
-We voegen een systeem toe met de opties eerste, vorige, volgende en laatste, samen met pagina nummers die niet vanaf 1 worden gestart, maar in plaats daarvan de huidige pagina waarop de gebruiker zich bevindt (bijvoorbeeld als de gebruiker op pagina 10 zoekt), misschien pagina nummers 8 , 9, 10, 11 en 12 worden weer gegeven).
+We voegen een systeem toe dat de eerste, vorige, volgende en laatste opties bevat, samen met paginanummers die niet vanaf 1 beginnen, maar in plaats daarvan de huidige pagina omringen waarop de gebruiker zich bevindt (dus als de gebruiker bijvoorbeeld naar pagina 10 kijkt, worden paginanummers 8, 9, 10, 11 en 12 weergegeven).
 
-Het systeem is flexibel genoeg zodat het aantal zicht bare pagina nummers in een globale variabele kan worden ingesteld.
+Het systeem is flexibel genoeg om het aantal zichtbare paginanummers in een globale variabele in te stellen.
 
-Het systeem behandelt de meest linkse en meest rechtse pagina nummer knoppen als speciaal, wat betekent dat ze het wijzigen van het bereik van de weer gegeven pagina nummers kunnen activeren. Als bijvoorbeeld pagina nummers 8, 9, 10, 11 en 12 worden weer gegeven en de gebruiker op 8 klikt, wordt het bereik van de pagina nummers gewijzigd in 6, 7, 8, 9 en 10. En er is een vergelijk bare verschuiving naar rechts als deze 12 is geselecteerd.
+Het systeem behandelt de links-meeste en meest rechtse paginanummerknoppen als speciaal, wat betekent dat ze het wijzigen van het bereik van de weergegeven paginanummers activeren. Als bijvoorbeeld paginanummers 8, 9, 10, 11 en 12 worden weergegeven en de gebruiker op 8 klikt, wordt het bereik van paginanummers gewijzigd in 6, 7, 8, 9 en 10. En er is een gelijkaardige verschuiving aan het recht als zij 12 selecteerden.
 
-### <a name="add-paging-fields-to-the-model"></a>Wissel velden toevoegen aan het model
+### <a name="add-paging-fields-to-the-model"></a>Pagingvelden toevoegen aan het model
 
-Laat de algemene zoek pagina-oplossing open.
+Laat de basisoplossing voor de zoekpagina openen.
 
-1. Open het SearchData.cs-model bestand.
+1. Open het SearchData.cs-modelbestand.
 
-2. Voeg eerst enkele globale variabelen toe. In MVC worden globale variabelen in hun eigen statische klasse gedeclareerd. **ResultsPerPage** Hiermee stelt u het aantal resultaten per pagina in. **MaxPageRange** bepaalt het aantal zicht bare pagina nummers in de weer gave. **PageRangeDelta** bepaalt hoeveel pagina's links of rechts het pagina bereik moet worden verplaatst wanneer het meest linkse of het meest rechtse pagina nummer is geselecteerd. Dit laatste nummer is doorgaans ongeveer de helft van **MaxPageRange**. Voeg de volgende code toe aan de naam ruimte.
+2. Voeg eerst enkele globale variabelen toe. In MVC worden globale variabelen gedeclareerd in hun eigen statische klasse. **ResultsPerPage** stelt het aantal resultaten per pagina in. **MaxPageRange** bepaalt het aantal zichtbare paginanummers in de weergave. **PageRangeDelta** bepaalt hoeveel pagina's links of rechts het paginabereik moet worden verschoven, wanneer het meest-linkse of het meest rechtse paginanummer is geselecteerd. Typisch dit laatste nummer is ongeveer de helft van **MaxPageRange**. Voeg de volgende code toe aan de naamruimte.
 
     ```cs
     public static class GlobalVariables
@@ -77,9 +77,9 @@ Laat de algemene zoek pagina-oplossing open.
     ```
 
     >[!Tip]
-    >Als u dit project uitvoert op een apparaat met een kleiner scherm, zoals een laptop, kunt u **ResultsPerPage** wijzigen in 2.
+    >Als u dit project uitvoert op een apparaat met een kleiner scherm, zoals een laptop, u overwegen **ResultsPerPage** in 2 te wijzigen.
 
-3. Eigenschappen van paginering toevoegen aan de klasse **SearchData** , zeggen, na de eigenschap **brons** .
+3. Voeg bijvoorbeeld paging-eigenschappen toe aan de klasse **SearchData** na de eigenschap **searchText.**
 
     ```cs
         // The current page being displayed.
@@ -98,9 +98,9 @@ Laat de algemene zoek pagina-oplossing open.
         public string paging { get; set; }
     ```
 
-### <a name="add-a-table-of-paging-options-to-the-view"></a>Een tabel met wissel opties toevoegen aan de weer gave
+### <a name="add-a-table-of-paging-options-to-the-view"></a>Een tabel met pagingopties toevoegen aan de weergave
 
-1. Open het bestand index. cshtml en voeg de volgende code toe vóór de &lt;&gt;/body-tag voor sluiten. Deze nieuwe code bevat een tabel met wissel opties: eerste, vorige, 1, 2, 3, 4, 5, volgende, laatste.
+1. Open het bestand index.cshtml en voeg de &lt;volgende&gt; code toe vlak voor de afsluitende /bodytag. Deze nieuwe code presenteert een tabel met paging-opties: eerste, vorige, 1, 2, 3, 4, 5, volgende, laatste.
 
     ```cs
     @if (Model != null && Model.pageCount > 1)
@@ -181,11 +181,11 @@ Laat de algemene zoek pagina-oplossing open.
     }
     ```
 
-    We gebruiken een HTML-tabel om dingen netjes af te stemmen. Alle acties zijn echter afkomstig uit de @Html.ActionLink-instructies, elke aanroep van de controller met een **Nieuw** model dat is gemaakt met verschillende vermeldingen voor de **paginerings** eigenschap die u eerder hebt toegevoegd.
+    We gebruiken een HTML-tabel om dingen netjes uit te lijnen. Maar alle actie komt @Html.ActionLink uit de verklaringen, elke aanroepen van de controller met een **nieuw** model gemaakt met verschillende vermeldingen aan de **paging** eigenschap die we eerder toegevoegd.
 
-    De opties voor de eerste en laatste pagina verzenden geen teken reeksen zoals ' First ' en ' last ', maar worden in plaats daarvan de juiste pagina nummers verzonden.
+    De opties voor de eerste en laatste pagina verzenden geen tekenreeksen zoals 'eerste' en 'laatste', maar sturen in plaats daarvan de juiste paginanummers.
 
-2. Voeg enkele paginerings klassen toe aan de lijst met HTML-stijlen in het bestand Hotels. CSS. De **pageSelected** -klasse is er om de pagina te identificeren die de gebruiker momenteel bekijkt (door het getal vet in te scha kelen) in de lijst met pagina nummers.
+2. Voeg enkele pagingklassen toe aan de lijst met HTML-stijlen in het bestand hotels.css. De klasse **PageSelected** is er om de pagina te identificeren die de gebruiker momenteel bekijkt (door het getal vet te draaien) in de lijst met paginanummers.
 
     ```html
         .pageButton {
@@ -210,9 +210,9 @@ Laat de algemene zoek pagina-oplossing open.
         }
     ```
 
-### <a name="add-a-page-action-to-the-controller"></a>Een pagina actie toevoegen aan de controller
+### <a name="add-a-page-action-to-the-controller"></a>Een actie Pagina toevoegen aan de controller
 
-1. Open het HomeController.cs-bestand en voeg de **pagina** actie toe. Deze actie reageert op een van de geselecteerde pagina opties.
+1. Open het HomeController.cs-bestand en voeg de **actie Pagina** toe. Deze actie reageert op een van de geselecteerde paginaopties.
 
     ```cs
         public async Task<ActionResult> Page(SearchData model)
@@ -258,12 +258,12 @@ Laat de algemene zoek pagina-oplossing open.
         }
     ```
 
-    In de methode **RunQueryAsync** wordt nu een syntaxis fout weer gegeven, vanwege de derde para meter, die we in een bit zullen beleven.
+    De **RunQueryAsync-methode** toont nu een syntaxisfout vanwege de derde parameter, die we zo ver zullen komen.
 
     > [!Note]
-    > Met de **TempData** -aanroepen wordt een waarde (een **object**) opgeslagen in de tijdelijke opslag, hoewel deze opslag _slechts_ voor één aanroep wordt bewaard. Als er iets wordt opgeslagen in tijdelijke gegevens, is het beschikbaar voor de volgende aanroep van een controller actie, maar wordt het het meest zonder enige weg door de oproep. Als gevolg van deze korte levens duur slaan we de Zoek tekst en paginerings eigenschappen terug in de tijdelijke opslag elke en op elke aanroep van de **pagina**.
+    > De **TempData-aanroepen** slaan een waarde (een **object)** op in tijdelijke opslag, hoewel deze opslag _slechts_ één gesprek blijft bestaan. Als we iets op te slaan in tijdelijke gegevens, zal het beschikbaar zijn voor de volgende oproep tot een controller actie, maar zal zeker worden gegaan door de oproep na dat! Vanwege deze korte levensduur slaan we de zoektekst en paging-eigenschappen op in tijdelijke opslag elke oproep naar **Pagina.**
 
-2. De **index-actie (model)** moet zijn bijgewerkt om de tijdelijke variabelen op te slaan, en om de meest linkse pagina parameter toe te voegen aan de **RunQueryAsync** -aanroep.
+2. De actie **Index(model)** moet worden bijgewerkt om de tijdelijke variabelen op te slaan en de parameter de meest linkse pagina toe te voegen aan de **RunQueryAsync-aanroep.**
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -293,7 +293,7 @@ Laat de algemene zoek pagina-oplossing open.
         }
     ```
 
-3. De methode **RunQueryAsync** moet aanzienlijk worden bijgewerkt. We gebruiken de velden **overs Laan**, **boven**en **IncludeTotalResultCount** van de klasse **SearchParameters** om slechts één pagina aan resultaten aan te vragen, beginnend bij de instelling **overs Laan** . We moeten ook de paginerings variabelen voor onze weer gave berekenen. Vervang de volledige-methode door de volgende code.
+3. De **RunQueryAsync-methode** moet aanzienlijk worden bijgewerkt. We gebruiken de velden **Overslaan,** **Top**en **IncludeTotalResultCount** van de klasse **SearchParameters** om slechts één pagina met resultaten op te vragen, te beginnen bij de instelling **Overslaan.** We moeten ook de paging variabelen voor onze mening te berekenen. Vervang de hele methode door de volgende code.
 
     ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
@@ -352,7 +352,7 @@ Laat de algemene zoek pagina-oplossing open.
         }
     ```
 
-4. Ten slotte moeten we een kleine wijziging aanbrengen in de weer gave. De variabele **resultsList. results. Count** bevat nu het aantal resultaten dat op één pagina wordt geretourneerd (3 in ons voor beeld), niet het totale aantal. Omdat we de **IncludeTotalResultCount** instellen op True, bevat de variabele **resultsList. Count** nu het totale aantal resultaten. Zoek naar waar het aantal resultaten wordt weer gegeven in de weer gave en wijzig deze in de volgende code.
+4. Tot slot moeten we een kleine wijziging aanbrengen in het standpunt. De variabele **resultsList.Results.Count** bevat nu het aantal resultaten dat op één pagina wordt geretourneerd (3 in ons voorbeeld), niet het totale aantal. Omdat we het **IncludeTotalResultCount** op true hebben ingesteld, bevat de variabele **resultsList.Count** nu het totale aantal resultaten. Zoek dus waar het aantal resultaten in de weergave wordt weergegeven en wijzig deze in de volgende code.
 
     ```cs
             // Show the result count.
@@ -362,50 +362,50 @@ Laat de algemene zoek pagina-oplossing open.
     ```
 
     > [!Note]
-    > Er is een prestatie treffer, maar niet veel van één, door **IncludeTotalResultCount** in te stellen op True, omdat dit totaal moet worden berekend door Azure Cognitive Search. Met complexe gegevens sets is er een waarschuwing dat de geretourneerde waarde een _benadering_is. Voor onze Hotel gegevens is het nauw keurig.
+    > Er is een prestatiehit, maar meestal niet veel van een, door **IncludeTotalResultCount** in te stellen op true, omdat dit totaal moet worden berekend door Azure Cognitive Search. Bij complexe gegevenssets wordt gewaarschuwd dat de geretourneerde waarde een _benadering_is. Voor onze hotelgegevens is deze accuraat.
 
 ### <a name="compile-and-run-the-app"></a>De app compileren en uitvoeren
 
-Selecteer nu **starten zonder fout opsporing** (of druk op de toets F5).
+Selecteer nu **Starten zonder foutopsporing** (of druk op de F5-toets).
 
-1. Zoek naar tekst die veel resultaten oplevert (zoals ' WiFi '). Kunt u de resultaten van de pagina overzichtelijk door lopen?
+1. Zoek op een tekst die veel resultaten zal geven (zoals "wifi"). u pagina netjes door de resultaten?
 
-    ![Genummerde paginering via groeps resultaten](./media/tutorial-csharp-create-first-app/azure-search-numbered-paging.png)
+    ![Genummerde paging door "pool" resultaten](./media/tutorial-csharp-create-first-app/azure-search-numbered-paging.png)
 
-2. Klik op de meest rechtse en latere, meest linkse pagina nummers. Worden de pagina nummers op de juiste wijze aangepast om de pagina te centreren?
+2. Klik op de meest rechtse en later meest links-meeste paginanummers. Passen de paginanummers zich op de juiste manier aan om de pagina waarop u zich bevindt te centreren?
 
-3. Zijn de opties ' First ' en ' last ' nuttig? Sommige populaire webzoekopdrachten gebruiken deze opties en andere niet.
+3. Zijn de "eerste" en "laatste" opties nuttig? Sommige populaire zoekopdrachten op het web gebruiken deze opties, en anderen niet.
 
-4. Ga naar de laatste pagina met resultaten. De laatste pagina is de enige pagina die minder dan **ResultsPerPage** resultaten kan bevatten.
+4. Ga naar de laatste pagina met resultaten. De laatste pagina is de enige pagina die mogelijk minder dan **ResultsPerPage-resultaten** bevat.
 
-    ![De laatste pagina van ' WiFi ' wordt onderzocht](./media/tutorial-csharp-create-first-app/azure-search-pool-last-page.png)
+    ![Onderzoek laatste pagina van "wifi"](./media/tutorial-csharp-create-first-app/azure-search-pool-last-page.png)
 
-5. Typ ' stad ' en klik op zoeken. Er worden geen paginerings opties weer gegeven als er minder dan één pagina de resultaten heeft.
+5. Typ 'stad' en klik op zoeken. Er worden geen paging-opties weergegeven als er minder dan één pagina aan resultaten is.
 
-    ![Zoeken naar "stad"](./media/tutorial-csharp-create-first-app/azure-search-town.png)
+    ![Op zoek naar "stad"](./media/tutorial-csharp-create-first-app/azure-search-town.png)
 
-Sla dit project nu op en we proberen een alternatief te maken voor dit soort paginering.
+Nu op te slaan dit project en laten we proberen een alternatief voor deze vorm van paging.
 
-## <a name="extend-your-app-with-infinite-scrolling"></a>Uw app uitbreiden met oneindig schuiven
+## <a name="extend-your-app-with-infinite-scrolling"></a>Uw app uitbreiden met oneindig scrollen
 
-Oneindig schuiven wordt geactiveerd wanneer een gebruiker een verticale schuif balk schuift naar de laatste van de weer gegeven resultaten. Bij deze gebeurtenis wordt een aanroep naar de server gemaakt voor de volgende pagina met resultaten. Als er geen resultaten meer zijn, wordt er niets geretourneerd en verandert de verticale schuif balk niet. Als er meer resultaten zijn, worden deze toegevoegd aan de huidige pagina en wordt de schuif balk gewijzigd om aan te geven dat er meer resultaten beschikbaar zijn.
+Oneindig scrollen wordt geactiveerd wanneer een gebruiker een verticale schuifbalk naar de laatste van de weergegeven resultaten schuift. In dit geval wordt een oproep naar de server gemaakt voor de volgende pagina met resultaten. Als er geen resultaten meer zijn, wordt er niets geretourneerd en verandert de verticale schuifbalk niet. Als er meer resultaten zijn, worden deze toegevoegd aan de huidige pagina en wordt de schuifbalk gewijzigd om aan te geven dat er meer resultaten beschikbaar zijn.
 
-Het belang rijk punt is dat de pagina die wordt weer gegeven, niet wordt vervangen, maar wordt toegevoegd aan met de nieuwe resultaten. Een gebruiker kan altijd een back-up maken naar de eerste resultaten van de zoek opdracht.
+Het belangrijkste punt hier is dat de pagina die wordt weergegeven niet wordt vervangen, maar toegevoegd aan de nieuwe resultaten. Een gebruiker kan altijd terugscrollen naar de eerste resultaten van de zoekopdracht.
 
-Als u oneindig schuiven wilt implementeren, begint u met het project voordat een van de schuif balken van het pagina nummer is toegevoegd. Als dat zo is, maakt u een kopie van de basis pagina voor zoeken vanuit GitHub: [Maak eerst een app](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Als u oneindig scrollen wilt implementeren, beginnen we met het project voordat een van de paginanummerschuifelementen is toegevoegd. Dus, als het nodig is, maak een andere kopie van de basiszoekpagina van GitHub: [Maak de eerste app](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-### <a name="add-paging-fields-to-the-model"></a>Wissel velden toevoegen aan het model
+### <a name="add-paging-fields-to-the-model"></a>Pagingvelden toevoegen aan het model
 
-1. Voeg eerst een **paginerings** eigenschap toe aan de klasse **SearchData** (in het model bestand SearchData.cs).
+1. Voeg eerst een **eigenschap paging** toe aan de klasse **SearchData** (in het SearchData.cs-modelbestand).
 
     ```cs
         // Record if the next page is requested.
         public string paging { get; set; }
     ```
 
-    Deze variabele is een teken reeks die ' volgende ' bevat als de volgende pagina met resultaten moet worden verzonden of null is voor de eerste pagina van een zoek opdracht.
+    Deze variabele is een tekenreeks, die "volgende" bevat als de volgende pagina met resultaten moet worden verzonden of null moet zijn voor de eerste pagina van een zoekopdracht.
 
-2. Voeg in hetzelfde bestand, en binnen de naam ruimte, een globale variabele klasse met één eigenschap toe. In MVC worden globale variabelen in hun eigen statische klasse gedeclareerd. **ResultsPerPage** Hiermee stelt u het aantal resultaten per pagina in. 
+2. Voeg in hetzelfde bestand en binnen de naamruimte een algemene variabele klasse toe met één eigenschap. In MVC worden globale variabelen gedeclareerd in hun eigen statische klasse. **ResultsPerPage** stelt het aantal resultaten per pagina in. 
 
     ```cs
     public static class GlobalVariables
@@ -420,11 +420,11 @@ Als u oneindig schuiven wilt implementeren, begint u met het project voordat een
     }
     ```
 
-### <a name="add-a-vertical-scroll-bar-to-the-view"></a>Een verticale schuif balk aan de weer gave toevoegen
+### <a name="add-a-vertical-scroll-bar-to-the-view"></a>Een verticale schuifbalk toevoegen aan de weergave
 
-1. Zoek de sectie van het bestand index. cshtml waarin de resultaten worden weer gegeven (deze beginnen met de **@if (model! = null)** ).
+1. Zoek het gedeelte van het bestand index.cshtml met de resultaten (het begint met het ** @if (Model != null).**
 
-2. Vervang de sectie door de onderstaande code. De nieuwe sectie **&lt;div-&gt;** is rond het gebied dat schuifbaar moet worden, en voegt zowel een **overflow-y-** kenmerk als een aanroep naar een **onscrolle** -functie met de naam ' scrolled () ' toe, zoals u dat wilt.
+2. Vervang de sectie door de onderstaande code. De ** &lt;nieuwe&gt; div** sectie is rond het gebied dat moet worden scrollable, en voegt zowel een **overflow-y** attribuut en een aanroep aan een **onscroll** functie genaamd "scrolled()", zoals zo.
 
     ```cs
         @if (Model != null)
@@ -447,7 +447,7 @@ Als u oneindig schuiven wilt implementeren, begint u met het project voordat een
         }
     ```
 
-3. Voeg direct onder de lus, na de &lt;/div&gt; tag, de functie **scrolled** toe.
+3. Direct onder de lus, na de &lt;/div-tag,&gt; voegt u de **gescrollde** functie toe.
 
     ```javascript
         <script>
@@ -467,15 +467,15 @@ Als u oneindig schuiven wilt implementeren, begint u met het project voordat een
         </script>
     ```
 
-    De **if** -instructie in het script hierboven wordt getest om te controleren of de gebruiker naar de onderkant van de verticale schuif balk is geschoven. Als dat het geval is, wordt er een aanroep naar de **Start** controller gemaakt met de naam **volgende**. Er is geen andere informatie nodig voor de controller, de volgende pagina met gegevens wordt geretourneerd. Deze gegevens worden vervolgens opgemaakt met identieke HTML-stijlen als de oorspronkelijke pagina. Als er geen resultaten worden geretourneerd, wordt er niets toegevoegd en blijven de dingen ongewijzigd.
+    De **if-instructie** in het script hierboven wordt getest om te zien of de gebruiker naar de onderkant van de verticale schuifbalk is gebladerd. Als dit het wel is, wordt een oproep gedaan naar de **Home-controller** naar een actie genaamd **Next**. Er is geen andere informatie nodig door de controller, het zal de volgende pagina met gegevens retourneren. Deze gegevens worden vervolgens opgemaakt met identieke HTML-stijlen als de oorspronkelijke pagina. Als er geen resultaten worden geretourneerd, wordt er niets toegevoegd en blijven de dingen zoals ze zijn.
 
 ### <a name="handle-the-next-action"></a>De volgende actie afhandelen
 
-Er zijn slechts drie acties die moeten worden verzonden naar de controller: de eerste keer dat de app wordt uitgevoerd, waarmee **index ()** wordt aangeroepen, de eerste zoek opdracht van de gebruiker, die **index (model)** aanroept en vervolgens de volgende aanroepen voor meer resultaten via **volgende (model)** .
+Er zijn slechts drie acties die naar de controller moeten worden verzonden: de eerste run van de app, die **Index()** aanroept, de eerste zoekopdracht door de gebruiker, die **Index(model)** aanroept, en vervolgens de daaropvolgende oproepen om meer resultaten via **Next(model)**.
 
-1. Open het bestand van de start controller en verwijder de methode **RunQueryAsync** uit de oorspronkelijke zelf studie.
+1. Open het thuiscontrollerbestand en verwijder de **runqueryasync-methode** uit de oorspronkelijke zelfstudie.
 
-2. Vervang de actie **index (model)** door de volgende code. Nu wordt het veld voor het **wissel bestand** verwerkt wanneer het null is of is ingesteld op ' volgende ', en wordt de aanroep naar Azure Cognitive Search verwerkt.
+2. Vervang de actie **Index(model)** door de volgende code. Het behandelt nu het **pagingveld** wanneer het null is, of ingesteld op "volgende", en verwerkt de aanroep naar Azure Cognitive Search.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -537,9 +537,9 @@ Er zijn slechts drie acties die moeten worden verzonden naar de controller: de e
         }
     ```
 
-    Net als bij de genummerde wissel methode gebruiken we de Zoek instellingen voor **overs Laan** en **bovenaan** om alleen de gegevens op te vragen die we nodig hebben.
+    Net als bij de genummerde paging-methode gebruiken we de **zoekinstellingen Overslaan** en **Top** om alleen de gegevens op te vragen die we nodig hebben, wordt geretourneerd.
 
-3. Voeg de **volgende** actie toe aan de start controller. U ziet dat er een lijst wordt geretourneerd, waarbij elk Hotel twee elementen aan de lijst toevoegt: de naam van een hotel en een beschrijving van het hotel. Deze indeling is zo ingesteld dat deze overeenkomt met **de functie van de** geretourneerde gegevens in de weer gave.
+3. Voeg de actie **Volgende** toe aan de thuiscontroller. Let op hoe het een lijst retourneert, elk hotel voegt twee elementen toe aan de lijst: een hotelnaam en een hotelbeschrijving. Deze indeling komt overeen met het gebruik van de **geretourneerde** gegevens in de weergave.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -563,7 +563,7 @@ Er zijn slechts drie acties die moeten worden verzonden naar de controller: de e
         }
     ```
 
-4. Als er een syntaxis fout wordt **weer geven in de lijst&lt;teken reeks&gt;** , voegt u de volgende instructie toe **met behulp** van de instructies in de kop van het controller bestand.
+4. Als u een syntaxisfout opdeed op **de&lt;tekenreeks&gt;Lijst,** voegt u de volgende **gebruiksrichtlijn** toe aan het hoofd van het controllerbestand.
 
     ```cs
     using System.Collections.Generic;
@@ -571,34 +571,34 @@ Er zijn slechts drie acties die moeten worden verzonden naar de controller: de e
 
 ### <a name="compile-and-run-your-project"></a>Uw project compileren en uitvoeren
 
-Selecteer nu **starten zonder fout opsporing** (of druk op de toets F5).
+Selecteer nu **Starten zonder foutopsporing** (of druk op de F5-toets).
 
-1. Voer een term in die veel resultaten levert (zoals ' pool ') en test vervolgens de verticale schuif balk. Wordt een nieuwe pagina met resultaten geactiveerd?
+1. Voer een term in die veel resultaten geeft (zoals 'pool') en test vervolgens de verticale schuifbalk. Leidt het tot een nieuwe pagina met resultaten?
 
-    ![Oneindig schuiven door groeps resultaten](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
+    ![Oneindig scrollen door "pool" resultaten](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
 
     > [!Tip]
-    > Om ervoor te zorgen dat er op de eerste pagina een schuif balk wordt weer gegeven, moet de eerste pagina met de resultaten iets groter zijn dan de hoogte van het gebied waarin ze worden weer gegeven. In ons voor beeld **. box1** heeft een hoogte van 30 pixels, **. box2** heeft een hoogte van 100 pixels _en_ een ondermarge van 24 pixels. Elk item gebruikt dus 154 pixels. Drie vermeldingen worden 3 x 154 = 462 pixels. Om ervoor te zorgen dat een verticale schuif balk wordt weer gegeven, moet er een hoogte aan het weergave gebied worden ingesteld die kleiner is dan 462 pixels, zelfs 461 werkt. Dit probleem doet zich alleen voor op de eerste pagina, nadat u zeker weet dat er een schuif balk wordt weer gegeven. De regel die moet worden bijgewerkt is: **&lt;div id = "myDiv" Style = "width: 800px; Height: 450px; overflow-y: Scroll;" onscroll = "scrolled ()"&gt;** .
+    > Om ervoor te zorgen dat er een schuifbalk op de eerste pagina wordt weergegeven, moet de eerste pagina met resultaten de hoogte van het gebied waarin ze worden weergegeven iets overschrijden. In ons voorbeeld **.box1** heeft een hoogte van 30 pixels, **.box2** heeft een hoogte van 100 pixels _en_ een onderste marge van 24 pixels. Dus elk item maakt gebruik van 154 pixels. Drie vermeldingen nemen 3 x 154 = 462 pixels in. Om ervoor te zorgen dat er een verticale schuifbalk verschijnt, moet een hoogte van het weergavegebied worden ingesteld die kleiner is dan 462 pixels, zelfs 461 werkt. Dit probleem vindt alleen plaats op de eerste pagina, waarna een schuifbalk zeker wordt weergegeven. De te updaten regel is: ** &lt;div id="myDiv" style="width: 800px; height: 450px; overflow-y:&gt;scroll;" onscroll="scrolled()"**.
 
-2. Schuif omlaag naar de onderkant van de resultaten. U ziet nu alle informatie op de pagina met één weer gave. U kunt helemaal naar boven schuiven zonder server aanroepen te activeren.
+2. Scroll helemaal naar beneden naar de onderkant van de resultaten. Merk op hoe alle informatie nu op de pagina met één weergave staat. U helemaal terug naar de top scrollen zonder serveroproepen te activeren.
 
-Meer geavanceerde Infinite-schuif systemen kunnen gebruikmaken van het muis wiel of een soortgelijk ander mechanisme om het laden van een nieuwe pagina met resultaten te activeren. Deze zelf studies worden niet doorlopend herhaald, maar er is een zekere Charm, maar het voor komt dat er extra muis klikken worden gevermijdd. u kunt ook andere opties verder onderzoeken.
+Meer geavanceerde oneindige schuifsystemen kunnen het muiswiel of een soortgelijk ander mechanisme gebruiken om het laden van een nieuwe pagina met resultaten te activeren. We zullen niet nemen oneindig scrollen verder in deze tutorials, maar het heeft een bepaalde charme om het als het vermijdt extra muisklikken, en je zou willen om andere opties verder te onderzoeken!
 
 ## <a name="takeaways"></a>Opgedane kennis
 
-Houd rekening met de volgende Takeaways van dit project:
+Denk aan de volgende afhaalmaaltijden van dit project:
 
-* Genummerd pagineren is geschikt voor Zoek opdrachten waarbij de volg orde van de resultaten enigszins wille keurig is, wat inhoudt dat er iets van belang is voor uw gebruikers op de latere pagina's.
-* Oneindig schuiven is handig wanneer de volg orde van de resultaten bijzonder belang rijk is. Bijvoorbeeld, als de resultaten worden besteld op de afstand van het midden van een bestemmings plaats.
-* Genummerde paginering biedt een betere navigatie. Een gebruiker kan bijvoorbeeld onthouden dat er een interessant resultaat was op pagina 6, terwijl er geen eenvoudige referentie bestaat in oneindig schuiven.
-* Oneindig schuiven heeft een eenvoudig uiterlijk, Schuif omhoog en omlaag zonder fussy pagina nummers om op te klikken.
-* Een belang rijke functie van oneindig schuiven is dat er resultaten worden toegevoegd aan een bestaande pagina, waardoor die pagina niet wordt vervangen. Dit is efficiënt.
-* Tijdelijke opslag blijft behouden voor slechts één aanroep en moet opnieuw worden ingesteld zodat er nog meer aanroepen kunnen worden doorgevoerd.
+* Genummerde paging is goed voor zoekopdrachten waar de volgorde van de resultaten is enigszins willekeurig, wat betekent dat er misschien wel iets van belang voor uw gebruikers op de latere pagina's.
+* Oneindig scrollen is goed wanneer de volgorde van de resultaten is bijzonder belangrijk. Bijvoorbeeld als de resultaten worden besteld op de afstand van het centrum van een bestemmingsstad.
+* Genummerde paging zorgt voor een betere navigatie. Een gebruiker kan zich bijvoorbeeld herinneren dat er een interessant resultaat op pagina 6 stond, terwijl er geen eenvoudige verwijzing bestaat in oneindig scrollen.
+* Oneindig scrollen heeft een gemakkelijke aantrekkingskracht, scrollen op en neer met geen moeilijke pagina nummers om op te klikken.
+* Een belangrijk kenmerk van oneindig scrollen is dat de resultaten worden toegevoegd aan een bestaande pagina, niet ter vervanging van die pagina, die efficiënt is.
+* Tijdelijke opslag blijft bestaan voor slechts een gesprek, en moet worden gereset om extra gesprekken te overleven.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Paginering is fundamenteel voor Zoek opdrachten op internet. De volgende stap is het optimaliseren van de gebruikers ervaring door type-ahead Zoek opdrachten toe te voegen.
+Paging is van fundamenteel belang voor zoekopdrachten op internet. Met paging goed gedekt, de volgende stap is om de gebruikerservaring verder te verbeteren, door het toevoegen van type-ahead zoekopdrachten.
 
 > [!div class="nextstepaction"]
-> [C#Zelf studie: automatisch aanvullen en suggesties toevoegen-Azure Cognitive Search](tutorial-csharp-type-ahead-and-suggestions.md)
+> [C# Zelfstudie: automatisch aanvullen en suggesties toevoegen - Azure Cognitive Search](tutorial-csharp-type-ahead-and-suggestions.md)

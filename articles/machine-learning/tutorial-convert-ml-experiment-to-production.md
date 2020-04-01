@@ -1,40 +1,40 @@
 ---
-title: machine learning experiment code converteren naar productie code
+title: Machine learning-experimentcode converteren naar productiecode
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het converteren van machine learning experimentele code naar productie code met behulp van de MLOpsPython-code sjabloon.
+description: Meer informatie over het converteren van experimentele code voor machine learning naar productiecode met behulp van de MLOpsPython-codesjabloon.
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 5a7c4ce6d5868efef4cfb4fbe2183ec8337ff5b6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/13/2020
+ms.openlocfilehash: f40c2b5f7134458b3f8cb492652bebf14388634c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301842"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79477133"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Zelf studie: ML experimentele code converteren naar productie code
+# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Zelfstudie: ML-experimentele code converteren naar productiecode
 
-Een machine learning project vereist experimenten waarbij hypo Thesen worden getest met Agile-hulpprogram ma's zoals Jupyter Notebook met echte gegevens sets. Zodra het model klaar is voor productie, moet de model code in een opslag plaats voor productie code worden geplaatst. In sommige gevallen moet de model code worden geconverteerd naar python-scripts die in de productie code opslagplaats moeten worden geplaatst. In deze zelf studie wordt een aanbevolen benadering beschreven voor het exporteren van experimenten code naar python-scripts.
+Een machine learning-project vereist experimenten waarbij hypothesen worden getest met flexibele tools zoals Jupyter Notebook met behulp van echte datasets. Zodra het model klaar is voor productie, moet de modelcode in een opslagplaats voor productiecode worden geplaatst. In sommige gevallen moet de modelcode worden geconverteerd naar Python-scripts die in de opslagplaats van de productiecode moeten worden geplaatst. Deze zelfstudie behandelt een aanbevolen benadering voor het exporteren van experimenteercode naar Python-scripts.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 >
-> * Niet-essentiële code wissen
-> * Refactorion-Jupyter Notebook code in functions
-> * Python-scripts maken voor verwante taken
-> * Eenheids tests maken
+> * Schone niet-essentiële code
+> * Refactor Jupyter Notebook code in functies
+> * Python-scripts maken voor gerelateerde taken
+> * Eenheidstests maken
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Genereer de [MLOpsPython-sjabloon](https://github.com/microsoft/MLOpsPython/generate) en gebruik de `experimentation/Diabetes Ridge Regression Training.ipynb`-en `experimentation/Diabetes Ridge Regression Scoring.ipynb`-notitie blokken. Deze notitie blokken worden gebruikt als voor beeld van het converteren van experimenten naar productie.
-- Installeer nbconvert. Volg alleen de installatie-instructies onder sectie __Nbconvert installeren__ op de pagina [installatie](https://nbconvert.readthedocs.io/en/latest/install.html) .
+- Genereer de [SJABLOON MLOpsPython](https://github.com/microsoft/MLOpsPython/generate) en gebruik de `experimentation/Diabetes Ridge Regression Training.ipynb` en `experimentation/Diabetes Ridge Regression Scoring.ipynb` notebooks. Deze notitieblokken worden gebruikt als een voorbeeld van het omzetten van experimenten naar productie. U vindt deze [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation)notebooks op .
+- Installeer nbconvert. Volg alleen de installatie-instructies onder sectie __Het installeren van nbconvert__ op de [installatiepagina.](https://nbconvert.readthedocs.io/en/latest/install.html)
 
 ## <a name="remove-all-nonessential-code"></a>Alle niet-essentiële code verwijderen
 
-Sommige code die is geschreven tijdens het experiment, is alleen bedoeld voor experimentele doel einden. Daarom is de eerste stap om experimentele code te converteren naar productie code, om deze niet-essentiële code te verwijderen. Als u niet-essentiële code verwijdert, wordt de code ook eenvoudiger te onderhouden. In deze sectie verwijdert u code uit het `experimentation/Diabetes Ridge Regression Training.ipynb`-notitie blok. De instructies voor het afdrukken van de vorm van `X` en `y` en de cel waarmee `features.describe` worden aangeroepen, zijn alleen bedoeld voor het verkennen van gegevens en kunnen worden verwijderd. Na het verwijderen van de niet-essentiële code moet `experimentation/Diabetes Ridge Regression Training.ipynb` er als volgt uitzien:
+Sommige code geschreven tijdens experimenten is alleen bedoeld voor verkennende doeleinden. Daarom is de eerste stap om experimentele code om te zetten in productiecode is om deze niet-essentiële code te verwijderen. Het verwijderen van niet-essentiële code maakt de code ook beter te onderhouden. In deze sectie verwijdert u code `experimentation/Diabetes Ridge Regression Training.ipynb` uit het notitieblok. De instructies afdrukken `X` van `y` de vorm `features.describe` van en en de cel aanroepen zijn alleen voor data-exploratie en kan worden verwijderd. Na het verwijderen `experimentation/Diabetes Ridge Regression Training.ipynb` van niet-essentiële code, moet eruit zien als de volgende code zonder afwaardering:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -62,21 +62,21 @@ model_name = "sklearn_regression_model.pkl"
 joblib.dump(value=reg, filename=model_name)
 ```
 
-## <a name="refactor-code-into-functions"></a>Refactorion-code in functions
+## <a name="refactor-code-into-functions"></a>Refactorcode in functies
 
-Ten tweede moet de Jupyter-code worden gefactord in-functies. Het herstructureren van code in functions maakt het gemakkelijker om de eenheid te testen en maakt het eenvoudiger om de code te onderhouden. In deze sectie doet u het volgende:
+Ten tweede moet de Jupyter-code worden omgezet in functies. Refactoring code in functies maakt het testen van eenheden gemakkelijker en maakt de code meer onderhoudbaar. In deze sectie moet u refactor:
 
-- De diabetes (`experimentation/Diabetes Ridge Regression Training.ipynb`)
-- De diabetes (`experimentation/Diabetes Ridge Regression Scoring.ipynb`) van de geplooide groef-regressie
+- De Diabetes Ridge Regression`experimentation/Diabetes Ridge Regression Training.ipynb`Training notebook( )
+- De Diabetes Ridge Regression`experimentation/Diabetes Ridge Regression Scoring.ipynb`Scoring notebook( )
 
-### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Refactory, diabetes groef regressie-laptop in functions
+### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Refactor Diabetes Ridge Regression Training notebook in functies
 
-In `experimentation/Diabetes Ridge Regression Training.ipynb`voert u de volgende stappen uit:
+Voer `experimentation/Diabetes Ridge Regression Training.ipynb`in de volgende stappen uit:
 
-1. Maak een functie met de naam `train_model`, waarbij de para meters `data` en `alpha` worden gebruikt en een model wordt geretourneerd.
-1. Kopieer de code onder de koppen "Train model on training set" en "model op Validatieset valideren" in de functie `train_model`.
+1. Maak een `train_model`functie genaamd , `data` `alpha` die de parameters neemt en en retourneert een model.
+1. Kopieer de code onder de koppen 'Treinmodel op trainingsset' en `train_model` 'Model valideren op validatieset' naar de functie.
 
-De functie `train_model` moet eruitzien als de volgende code:
+De `train_model` functie moet er uitzien als de volgende code:
 
 ```python
 def train_model(data, alpha):
@@ -88,21 +88,21 @@ def train_model(data, alpha):
     return reg
 ```
 
-Zodra de functie `train_model` is gemaakt, vervangt u de code onder de koppen ' Train model on training set ' en ' validate model on Validation set ' door de volgende instructie:
+Zodra `train_model` de functie is gemaakt, vervangt u de code onder de koppen 'Treinmodel op trainingsset' en 'Model valideren op validatieset' door de volgende instructie:
 
 ```python
 reg = train_model(data, alpha)
 ```
 
-De vorige instructie roept de `train_model`-functie aan waarmee de `data` en `alpha` para meters worden door gegeven en het model wordt geretourneerd.
+De vorige instructie `train_model` roept `data` de `alpha` functie aan die de parameters doorgeeft en het model retourneert.
 
-In `experimentation/Diabetes Ridge Regression Training.ipynb`voert u de volgende stappen uit:
+Voer `experimentation/Diabetes Ridge Regression Training.ipynb`in de volgende stappen uit:
 
-1. Maak een nieuwe functie met de naam `main`, waarvoor geen para meters worden gebruikt en er niets wordt geretourneerd.
-1. Kopieer de code onder de koppen ' gegevens laden ', ' gegevens in trainings-en validatie sets splitsen ' en ' model opslaan ' in de functie `main`.
-1. Kopieer de zojuist gemaakte oproep naar `train_model` naar de `main`-functie.
+1. Maak een nieuwe `main`functie genaamd , die geen parameters neemt en niets retourneert.
+1. Kopieer de code onder de koppen 'Gegevens laden', 'Gegevens splitsen in trainings- en validatiesets' en 'Model opslaan' in de `main` functie.
+1. Kopieer de nieuw `train_model` gemaakte `main` aanroep naar de functie.
 
-De functie `main` moet eruitzien als de volgende code:
+De `main` functie moet er uitzien als de volgende code:
 
 ```python
 def main():
@@ -122,13 +122,13 @@ def main():
     joblib.dump(value=reg, filename=model_name)
 ```
 
-Zodra de functie `main` is gemaakt, vervangt u alle code onder de koppen gegevens laden, gegevens splitsen in trainings-en validatie sets en model opslaan samen met de zojuist gemaakte oproep naar `train_model` met de volgende instructie:
+Zodra `main` de functie is gemaakt, vervangt u alle code onder de koppen 'Gegevens laden', 'Gegevens splitsen in `train_model` trainings- en validatiesets' en 'Model opslaan' samen met de nieuw gemaakte aanroep met de volgende instructie:
 
 ```python
 main()
 ```
 
-Na het herstructureren moet `experimentation/Diabetes Ridge Regression Training.ipynb` eruitzien als de volgende code zonder de prijs:
+Na refactoring, `experimentation/Diabetes Ridge Regression Training.ipynb` moet eruit zien als de volgende code zonder de markdown:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -165,14 +165,14 @@ def main():
 main()
 ```
 
-### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Refactory diabetes groef, Score notebook van een regressie naar functions
+### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Refactor Diabetes Ridge Regression Scoring notebook in functies
 
-In `experimentation/Diabetes Ridge Regression Scoring.ipynb`voert u de volgende stappen uit:
+Voer `experimentation/Diabetes Ridge Regression Scoring.ipynb`in de volgende stappen uit:
 
-1. Maak een nieuwe functie met de naam `init`, waarvoor geen para meters worden gebruikt en niets kan worden geretourneerd.
-1. Kopieer de code onder de kop ' Model laden ' naar de functie `init`.
+1. Maak een nieuwe `init`functie genaamd , die geen parameters neemt en niets terug te keren.
+1. Kopieer de code onder de kop `init` 'Laadmodel' naar de functie.
 
-De functie `init` moet eruitzien als de volgende code:
+De `init` functie moet er uitzien als de volgende code:
 
 ```python
 def init():
@@ -181,23 +181,23 @@ def init():
     model = joblib.load(model_path)
 ```
 
-Zodra de functie `init` is gemaakt, vervangt u de code onder de kop ' load model ' door één aanroep naar `init` als volgt:
+Zodra `init` de functie is gemaakt, vervangt u alle code onder het `init` kopje "Laadmodel" als volgt:
 
 ```python
 init()
 ```
 
-In `experimentation/Diabetes Ridge Regression Scoring.ipynb`voert u de volgende stappen uit:
+Voer `experimentation/Diabetes Ridge Regression Scoring.ipynb`in de volgende stappen uit:
 
-1. Maak een nieuwe functie met de naam `run`, die `raw_data` en `request_headers` als para meters gebruikt en een woorden lijst met resultaten als volgt retourneert:
+1. Maak een nieuwe `run`functie `raw_data` genaamd `request_headers` , die neemt en als parameters en retourneert een woordenboek van de resultaten als volgt:
 
     ```python
     {"result": result.tolist()}
     ```
 
-1. Kopieer de code onder de koppen ' gegevens voorbereiden ' en ' Score gegevens ' in de functie `run`.
+1. Kopieer de code onder de koppen 'Gegevens voorbereiden' `run` en 'Gegevens scoren' in de functie.
 
-    De functie `run` moet eruitzien als de volgende code (Vergeet niet om de instructies te verwijderen waarmee de variabelen `raw_data` en `request_headers`worden ingesteld, die later worden gebruikt wanneer de functie `run` wordt aangeroepen):
+    De `run` functie moet er uitzien als de volgende code (Vergeet `request_headers`niet om de instructies `run` te verwijderen die de variabelen `raw_data` instellen en , die later worden gebruikt wanneer de functie wordt aangeroepen):
 
     ```python
     def run(raw_data, request_headers):
@@ -208,7 +208,7 @@ In `experimentation/Diabetes Ridge Regression Scoring.ipynb`voert u de volgende 
         return {"result": result.tolist()}
     ```
 
-Zodra de functie `run` is gemaakt, vervangt u alle code in de koppen ' gegevens voorbereiden ' en ' Score gegevens ' door de volgende code:
+Zodra `run` de functie is gemaakt, vervangt u alle code onder de koppen 'Gegevens voorbereiden' en 'Gegevens scoren' door de volgende code:
 
 ```python
 raw_data = '{"data":[[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}'
@@ -217,9 +217,9 @@ prediction = run(raw_data, request_header)
 print("Test result: ", prediction)
 ```
 
-Met de vorige code worden variabelen `raw_data` en `request_header`ingesteld, wordt de functie `run` aangeroepen met `raw_data` en `request_header`en worden de voor spellingen afgedrukt.
+De vorige code `raw_data` stelt `request_header`variabelen `run` in `raw_data` en `request_header`roept de functie aan met en , en drukt de voorspellingen af.
 
-Na het herstructureren moet `experimentation/Diabetes Ridge Regression Scoring.ipynb` eruitzien als de volgende code zonder de prijs:
+Na refactoring, `experimentation/Diabetes Ridge Regression Scoring.ipynb` moet eruit zien als de volgende code zonder de markdown:
 
 ```python
 import json
@@ -246,22 +246,22 @@ prediction = run(test_row, {})
 print("Test result: ", prediction)
 ```
 
-## <a name="combine-related-functions-in-python-files"></a>Gerelateerde functies in Python-bestanden combi neren
+## <a name="combine-related-functions-in-python-files"></a>Gerelateerde functies in Python-bestanden combineren
 
-Ten derde moeten verwante functies worden samengevoegd in Python-bestanden om het programma gemakkelijker te kunnen hergebruiken. In deze sectie maakt u python-bestanden voor de volgende notitie blokken:
+Ten derde moeten gerelateerde functies worden samengevoegd in Python-bestanden om het hergebruik van code beter te kunnen gebruiken. In deze sectie maakt u Python-bestanden voor de volgende notitieblokken:
 
-- De diabetes (`experimentation/Diabetes Ridge Regression Training.ipynb`)
-- De diabetes (`experimentation/Diabetes Ridge Regression Scoring.ipynb`) van de geplooide groef-regressie
+- De Diabetes Ridge Regression`experimentation/Diabetes Ridge Regression Training.ipynb`Training notebook( )
+- De Diabetes Ridge Regression`experimentation/Diabetes Ridge Regression Scoring.ipynb`Scoring notebook( )
 
-### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Een python-bestand maken voor de Diabetese groef-Oefen notitieblok
+### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Python-bestand maken voor het notitieblok Van de Diabetes Ridge Regression Training
 
-Converteer uw notitie blok naar een uitvoerbaar script door de volgende instructie uit te voeren in een opdracht prompt, die gebruikmaakt van het nbconvert-pakket en het pad van `experimentation/Diabetes Ridge Regression Training.ipynb`:
+Converteer uw notitieblok naar een uitvoerbaar script door de volgende instructie in een `experimentation/Diabetes Ridge Regression Training.ipynb`opdrachtprompt uit te voeren, waarin het pakket nbconvert en het pad van:
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
 ```
 
-Nadat het notitie blok naar `train.py`is geconverteerd, verwijdert u alle opmerkingen. Uw `train.py`-bestand moet er ongeveer uitzien als de volgende code:
+Zodra het notitieblok is `train.py`geconverteerd naar, verwijder alle opmerkingen. Uw `train.py` bestand moet er uitzien als de volgende code:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -297,17 +297,17 @@ def main():
 main()
 ```
 
-Het `train.py` bestand in de `diabetes_regression/training` Directory in de MLOpsPython-opslag plaats ondersteunt opdracht regel argumenten (te weten `build_id`, `model_name`en `alpha`). Ondersteuning voor opdracht regel argumenten kan worden toegevoegd aan uw `train.py`-bestand ter ondersteuning van dynamische model namen en `alpha` waarden, maar het is niet nodig om de code uit te voeren.
+Het `train.py` bestand in `diabetes_regression/training` de map in de MLOpsPython-repository `build_id` `model_name`ondersteunt `alpha`opdrachtregelargumenten (namelijk , en ). Ondersteuning voor opdrachtregelargumenten kan aan `train.py` uw bestand worden `alpha` toegevoegd om dynamische modelnamen en -waarden te ondersteunen, maar het is niet nodig dat de code succesvol wordt uitgevoerd.
 
-### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Een python-bestand maken voor de Diabetese-regressie
+### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Python-bestand maken voor het notitieblok 'Diabetes Ridge Regression Scoring'.
 
-Zet uw notitie blok om naar een uitvoerbaar script door de volgende instructie uit te voeren in een opdracht prompt die gebruikmaakt van het nbconvert-pakket en het pad van `experimentation/Diabetes Ridge Regression Scoring.ipynb`:
+Verkapt uw notitieblok tot een uitvoerbaar script door de volgende instructie uit te voeren `experimentation/Diabetes Ridge Regression Scoring.ipynb`in een opdrachtprompt die het nbconvert-pakket en het pad van :
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
 ```
 
-Nadat het notitie blok naar `score.py`is geconverteerd, verwijdert u alle opmerkingen. Uw `score.py`-bestand moet er ongeveer uitzien als de volgende code:
+Zodra het notitieblok is `score.py`geconverteerd naar, verwijder alle opmerkingen. Uw `score.py` bestand moet er uitzien als de volgende code:
 
 ```python
 import json
@@ -334,13 +334,13 @@ prediction = run(test_row, request_header)
 print("Test result: ", prediction)
 ```
 
-De functie `train_model` moet worden gewijzigd om een globaal variabelen model te instantiëren zodat het zichtbaar is in het hele script. Voeg de volgende instructie toe aan het begin van de functie `init`:
+De `train_model` functie moet worden aangepast om een globaal variabel model te instantiëren, zodat het zichtbaar is in het hele script. Voeg de volgende instructie toe `init` aan het begin van de functie:
 
 ```python
 global model
 ```
 
-Nadat u de voor gaande-instructie hebt toegevoegd, moet de functie `init` eruitzien als de volgende code:
+Na het toevoegen van `init` de vorige instructie moet de functie er uitzien als de volgende code:
 
 ```python
 def init():
@@ -352,19 +352,19 @@ def init():
     model = joblib.load(model_path)
 ```
 
-## <a name="create-unit-tests-for-each-python-file"></a>Eenheids tests maken voor elk python-bestand
+## <a name="create-unit-tests-for-each-python-file"></a>Eenheidstests maken voor elk Python-bestand
 
-Ten vierde moeten er eenheids tests worden gemaakt voor elk python-bestand, waardoor code robuuster en eenvoudiger te onderhouden is. In deze sectie maakt u een eenheids test voor een van de functies in `train.py`.
+Ten vierde moeten eenheidstests worden gemaakt voor elk Python-bestand, waardoor code robuuster en gemakkelijker te onderhouden is. In deze sectie maakt u een eenheidstest voor `train.py`een van de functies in .
 
-`train.py` bevat twee functies: `train_model` en `main`. Voor elke functie is een eenheids test vereist, maar er wordt slechts één eenheids test voor de functie `train_model` gemaakt met behulp van het Pytest-Framework in deze zelf studie. Pytest is niet het enige python-test raamwerk, maar het is een van de meest voorkomende. Ga naar [Pytest](https://pytest.org)voor meer informatie.
+`train.py`bevat twee `train_model` functies: en `main`. Elke functie heeft een eenheidstest nodig, maar we `train_model` maken slechts één eenheidstest voor de functie met behulp van het Pytest-framework in deze zelfstudie. Pytest is niet het enige Python-testframework, maar het is een van de meest gebruikte. Ga voor meer informatie naar [Pytest.](https://pytest.org)
 
-Een eenheids test bevat meestal drie hoofd acties:
+Een eenheidstest bevat meestal drie hoofdacties:
 
-- Object ordenen-benodigde objecten maken en instellen
-- Reageren op een object
-- Bevestiging wat er wordt verwacht
+- Object rangschikken - noodzakelijke objecten maken en instellen
+- Handelen op een object
+- Beweren wat er wordt verwacht
 
-Een gemeen schappelijke voor waarde voor `train_model` is wanneer `data` en een `alpha` waarde worden door gegeven. Het verwachte resultaat is dat de functies `Ridge.train` en `Ridge.predict` moeten worden aangeroepen. Omdat machine learning trainings methoden vaak niet snel worden uitgevoerd, wordt de oproep naar `Ridge.train` gesimuleerd. Omdat de geretourneerde waarde van `Ridge.train` een gesimuleerd object is, trekken we ook `Ridge.predict`. De eenheids test voor het `train_model` testen van `data` en een `alpha` waarde met het verwachte resultaat van `Ridge.train` en `Ridge.predict` functies die worden aangeroepen met behulp van decoderen en het Pytest-Framework moet er als volgt uitzien:
+Een veel `train_model` voorkomende `data` voorwaarde `alpha` voor is wanneer en een waarde worden doorgegeven. Het verwachte resultaat `Ridge.train` is `Ridge.predict` dat de en functies moeten worden aangeroepen. Aangezien machine learning trainingsmethoden vaak niet snel draaien, zal de oproep om `Ridge.train` te worden bespot. Omdat de retourwaarde van `Ridge.train` een bespot object `Ridge.predict`is, zullen we ook bespotten. De eenheidstest `train_model` voor `data` het `alpha` testen van het `Ridge.train` passeren `Ridge.predict` van en een waarde met het verwachte resultaat van en functies worden genoemd met behulp van mocking en de Pytest kader moet eruit zien als de volgende code:
 
 ```python
 import pytest
@@ -389,46 +389,46 @@ class TestTrain:
         mock_ridge_predict.assert_called()
 ```
 
-## <a name="use-your-own-model-with-mlopspython-code-template"></a>Uw eigen model gebruiken met MLOpsPython-code sjabloon
+## <a name="use-your-own-model-with-mlopspython-code-template"></a>Uw eigen model gebruiken met mlopsPython-codesjabloon
 
-Als u de stappen in deze hand leiding hebt volgen, hebt u een reeks scripts die betrekking hebben op de beschik bare Train/Score/test-scripts in de MLOpsPython-opslag plaats.  Op basis van de hierboven genoemde structuur worden de volgende stappen door lopen wat u nodig hebt om deze bestanden te gebruiken voor uw eigen machine learning project:
+Als u de stappen in deze handleiding hebt gevolgd, hebt u een reeks scripts die correleren met de trein/score/testscripts die beschikbaar zijn in de MLOpsPython-opslagplaats.  Volgens de hierboven genoemde structuur, zullen de volgende stappen doorlopen wat nodig is om deze bestanden te gebruiken voor uw eigen machine learning-project:
 
-1. Volg de hand leiding voor MLOpsPython [aan de slag](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md)
-2. Volg de MLOpsPython [Boots trap instructies](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) om het begin punt van het project te maken
-3. De trainings code vervangen
-4. De Score code vervangen
-5. De evaluatie code bijwerken
+1. Volg de mlopsPython [aan de slag](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) gids
+2. Volg de instructies voor de [bootstrap van](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) MLOpsPython om het beginpunt van uw project te maken
+3. De trainingscode vervangen
+4. De scorecode vervangen
+5. De evaluatiecode bijwerken
 
-### <a name="follow-the-getting-started-guide"></a>Volg de aan de slag-hand leiding
-Als u [de hand leiding aan de](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) slag hebt, moet u de ondersteunende infra structuur en pijp lijnen ondersteunen om MLOpsPython uit te voeren.
+### <a name="follow-the-getting-started-guide"></a>Volg de handleiding aan de slag
+Het volgen van de handleiding [Aan de slag](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) is noodzakelijk om de ondersteunende infrastructuur en pijplijnen te hebben om MLOpsPython uit te voeren.
 
-### <a name="follow-the-bootstrap-instructions"></a>Volg de Boots trap-instructies
+### <a name="follow-the-bootstrap-instructions"></a>Volg de bootstrap instructies
 
-De [Boots trap van de MLOpsPython-opslag plaats](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) gids helpt u de opslag plaats voor uw project snel voor te bereiden.
+De [Bootstrap van MLOpsPython repository](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) gids helpt je om snel de repository voor te bereiden op je project.
 
-**Opmerking:** Omdat het Boots trap script de naam van de diabetes_regression map wijzigt in de project naam van uw keuze, verwijzen we naar uw project als `[project name]` wanneer er paden betrokken zijn.
+**Let op:** Aangezien het script bootstrap de naam van de diabetes_regression map wijzigt naar de `[project name]` projectnaam van uw keuze, verwijzen we naar uw project als wanneer er paden bij betrokken zijn.
 
-### <a name="replace-training-code"></a>Trainings code vervangen
+### <a name="replace-training-code"></a>Trainingscode vervangen
 
-Het vervangen van de code die wordt gebruikt om het model te trainen en het verwijderen of vervangen van bijbehorende eenheids tests is vereist om de oplossing te laten werken met uw eigen code. Volg deze stappen specifiek:
+Het vervangen van de code die wordt gebruikt om het model te trainen en het verwijderen of vervangen van overeenkomstige unittests is vereist om de oplossing te laten functioneren met uw eigen code. Volg de volgende stappen specifiek:
 
-1. Vervang `[project name]/training/train.py`. Dit script traint uw model lokaal of op Azure ML compute.
-1. Testen of vervangen van trainings eenheden gevonden in `[project name]/training/test_train.py`
+1. Vervang `[project name]/training/train.py`. Dit script traint uw model lokaal of op de Azure ML compute.
+1. Testvan trainingseenheden verwijderen of vervangen`[project name]/training/test_train.py`
 
-### <a name="replace-score-code"></a>Score code vervangen
+### <a name="replace-score-code"></a>Scorecode vervangen
 
-Voor het model om realtime-Afleidings mogelijkheden te bieden, moet de Score code worden vervangen. De MLOpsPython-sjabloon gebruikt de Score code om het model te implementeren voor het uitvoeren van real-time scores op ACI-, AKS-of web-apps. Als u score wilt blijven gebruiken, moet u `[project name]/scoring/score.py`vervangen.
+Om het model real-time gevolgtrekkingsmogelijkheden te bieden, moet de scorecode worden vervangen. De MLOpsPython-sjabloon gebruikt de scorecode om het model te implementeren om realtime te scoren op ACI-, AKS- of Web-apps. Als je wilt blijven `[project name]/scoring/score.py`scoren, vervang dan .
 
-### <a name="update-evaluation-code"></a>Evaluatie code bijwerken
+### <a name="update-evaluation-code"></a>Evaluatiecode bijwerken
 
-De MLOpsPython-sjabloon gebruikt het evaluate_model script om de prestaties van het nieuwe getrainde model en het huidige productie model te vergelijken op basis van de gemiddelde fout. Als de prestaties van het pas getrainde model beter zijn dan het huidige productie model, worden de pijp lijnen voortgezet. Anders worden de pijp lijnen geannuleerd. Als u de evaluatie wilt blijven gebruiken, vervangt u alle exemplaren van `mse` in `[project name]/evaluate/evaluate_model.py` door de gewenste metrische gegevens.
+De MLOpsPython-sjabloon gebruikt het evaluate_model script om de prestaties van het nieuw getrainde model en het huidige productiemodel te vergelijken op basis van Gemiddelde kwadraatfout. Als de prestaties van het nieuw getrainde model beter zijn dan het huidige productiemodel, gaan de pijplijnen door. Anders worden de pijplijnen geannuleerd. Als u de evaluatie `mse` wilt `[project name]/evaluate/evaluate_model.py` behouden, vervangt u alle instanties van in door de gewenste statistiek.
 
-Als u de evaluatie wilt verwijderen, stelt u de DevOps pijplijn variabele `RUN_EVALUATION` in `.pipelines/[project name]-variables-template.yml` in `false`.
+Als u de evaluatie wilt verwijderen, stelt `RUN_EVALUATION` `.pipelines/[project name]-variables-template.yml` u `false`de variabele DevOps-pijplijn in op .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u weet hoe u kunt converteren van een experiment naar productie code, gebruikt u de volgende koppelingen voor meer informatie over het controleren van experimentele uitvoeringen en modellen die als webservices zijn geïmplementeerd:
+Nu u begrijpt hoe u converteren van een experiment naar productiecode, gebruikt u de volgende koppelingen om te leren hoe u experimentruns en modellen controleren die als webservices worden geïmplementeerd:
 
 > [!div class="nextstepaction"]
-> Het [experiment van Azure ml-experimenten en de metrische](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments) gegevens
-> [bewaken en verzamelen van data van ml-webservice-eind punten](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
+> [Azure ML-experiment uitvoeren en statistieken](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
+> [bewaken controleren en verzamelen van gegevens van ML-eindpunten voor webservice](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)

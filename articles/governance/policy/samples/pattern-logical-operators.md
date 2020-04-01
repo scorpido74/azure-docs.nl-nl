@@ -1,43 +1,43 @@
 ---
-title: 'Patroon: logische Opera tors in een beleids definitie'
-description: Dit Azure Policy patroon biedt voor beelden van het gebruik van logische Opera tors in een beleids definitie.
+title: 'Patroon: Logische operatoren in een beleidsdefinitie'
+description: Dit Azure-beleidspatroon bevat voorbeelden van het gebruik van de logische operatoren in een beleidsdefinitie.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 8e57efaea81848c6b2d0188dbf3f91e06ed74c67
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77172847"
 ---
-# <a name="azure-policy-pattern-logical-operators"></a>Azure Policy patroon: logische Opera tors
+# <a name="azure-policy-pattern-logical-operators"></a>Azure-beleidspatroon: logische operatoren
 
-Een beleids definitie kan verschillende voorwaardelijke instructies bevatten. Mogelijk hebt u elke instructie nodig om waar te zijn of wilt u deze alleen waar nodig hebben. Ter ondersteuning van deze behoeften heeft de taal [logische Opera tors](../concepts/definition-structure.md#logical-operators) voor **not**, **overzet**en **anyOf**. Ze zijn optioneel en kunnen worden genest om complexe scenario's te maken.
+Een beleidsdefinitie kan verschillende voorwaardelijke verklaringen bevatten. U elke verklaring nodig hebben om waar te zijn of slechts sommige van hen nodig hebben om waar te zijn. Om deze behoeften te ondersteunen, heeft de taal [logische operatoren](../concepts/definition-structure.md#logical-operators) voor **niet**, **allOf**, en **anyOf**. Ze zijn optioneel en kunnen worden genest om complexe scenario's te maken.
 
-## <a name="sample-1-one-logical-operator"></a>Voor beeld 1: één logische operator
+## <a name="sample-1-one-logical-operator"></a>Voorbeeld 1: Eén logische operator
 
-Met deze beleids definitie worden CosmosDB-accounts geëvalueerd om te zien of automatische failovers en meerdere schrijf locaties zijn geconfigureerd. Als dat niet het geval is, wordt de [controle](../concepts/effects.md#audit) geactiveerd en wordt er een logboek vermelding gemaakt wanneer de niet-compatibele resource wordt gemaakt of bijgewerkt.
+Met deze beleidsdefinitie worden CosmosDB-accounts geëvalueerd om te zien of automatische failovers en meerdere schrijflocaties zijn geconfigureerd. Als dit niet het [audit](../concepts/effects.md#audit) zo is, worden de controle-ups geactiveerd en maakt u een logboekvermelding wanneer de niet-compatibele bron wordt gemaakt of bijgewerkt.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json":::
 
-### <a name="sample-1-explanation"></a>Voor beeld 1: uitleg
+### <a name="sample-1-explanation"></a>Voorbeeld 1: Uitleg
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-1.json" range="6-22" highlight="3":::
 
-De **policyRule. If** -blok gebruikt één **overzet** om ervoor te zorgen dat alle drie de voor waarden waar zijn.
-Alleen wanneer aan al deze voor waarden wordt voldaan, wordt **de trigger geactiveerd.**
+De **policyRule.als** blok één **allOf** gebruikt om ervoor te zorgen dat alle drie de voorwaarden waar zijn.
+Pas wanneer al deze voorwaarden worden geëvalueerd tot waar, wordt het **auditeffect** geactiveerd.
 
-## <a name="sample-2-multiple-logical-operators"></a>Voor beeld 2: meerdere logische Opera tors
+## <a name="sample-2-multiple-logical-operators"></a>Voorbeeld 2: Meerdere logische operatoren
 
-Deze beleids definitie evalueert bronnen voor een naamgevings patroon. Als een resource niet overeenkomt, wordt deze [geweigerd](../concepts/effects.md#deny).
+Met deze beleidsdefinitie worden resources voor een naamgevingspatroon geëvalueerd. Als een resource niet overeenkomt, wordt [deze geweigerd.](../concepts/effects.md#deny)
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json":::
 
-### <a name="sample-2-explanation"></a>Voor beeld 2: uitleg
+### <a name="sample-2-explanation"></a>Voorbeeld 2: Uitleg
 
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json" range="7-21" highlight="2,3,9":::
 
-Deze **policyRule. If** -blok bevat ook één **overzet**, maar elke voor waarde wordt verpakt met de **niet** -logische operator. De voorwaardelijke waarde in de **niet** -logische operator evalueert eerst en evalueert vervolgens de **niet** om te bepalen of de volledige component True of False is. Als beide **niet** -logische Opera tors als waar worden geëvalueerd, wordt het beleid geactiveerd.
+Deze **policyRule.if** block bevat ook een **allOf,** maar elke voorwaarde is verpakt met de **niet** logische operator. De voorwaardelijke binnen de **niet** logische operator evalueert eerst en evalueert vervolgens de **niet** om te bepalen of de hele clausule waar of onwaar is. Als beide **niet** logische operatoren naar true worden geëvalueerd, wordt het beleidseffect geactiveerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

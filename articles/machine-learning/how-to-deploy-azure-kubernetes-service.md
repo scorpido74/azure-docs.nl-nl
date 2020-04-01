@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: db2e80ebb6cbe5f31f2d99a1403a15daf38fd877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722404"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475378"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Een model implementeren in een Azure Kubernetes Service-cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ Als u `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`dit instelt, hoeft h
 > [!WARNING]
 > Maak niet meerdere, gelijktijdige bijlagen in hetzelfde AKS-cluster vanuit uw werkruimte. Bijvoorbeeld het koppelen van één AKS-cluster aan een werkruimte met twee verschillende namen. Elke nieuwe bijlage breekt de vorige bestaande bijlage(en).
 >
-> Als u een AKS-cluster opnieuw wilt koppelen, bijvoorbeeld om SSL of andere clusterconfiguratie-instelling te wijzigen, moet u eerst de bestaande bijlage verwijderen met [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--).
+> Als u een AKS-cluster opnieuw wilt koppelen, bijvoorbeeld om TLS of andere clusterconfiguratie-instellingen te wijzigen, moet u eerst de bestaande bijlage verwijderen met [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--).
 
 Zie de volgende artikelen voor meer informatie over het maken van een AKS-cluster met de Azure CLI of portal:
 
@@ -348,7 +348,7 @@ print(token)
 * [Veilige experimenten en gevolgtrekking in een virtueel netwerk](how-to-enable-virtual-network.md)
 * [Een model implementeren met een aangepaste Docker-afbeelding](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning-webservices beveiligen met SSL](how-to-secure-web-service.md)
+* [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
 * [Een ML-model gebruiken dat is geïmplementeerd als webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning-modellen controleren met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)

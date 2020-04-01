@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-Azure Analysis Services rollen configureren | Microsoft Docs
-description: Meer informatie over het configureren van Azure Analysis Services beheerders-en gebruikers rollen met behulp van de Azure Portal of SQL Server Management Studio.
+title: Zelfstudie - Rollen azure analysis services configureren | Microsoft Documenten
+description: Meer informatie over het configureren van Azure Analysis Services-beheerders en gebruikersrollen met behulp van de Azure-portal of SQL Server Management Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273681"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder- en gebruikersrollen configureren
@@ -130,13 +130,13 @@ In deze taak gebruikt u de opdracht [Maken](https://docs.microsoft.com/analysis-
 ## <a name="verify-your-changes"></a>Uw wijzigingen verifiëren
 
 1. Klik in **Objectverkenner** op uw servernaam en klik vervolgens op **Vernieuwen** of druk op **F5**.
-2. Vouw **Databases** > **adventureworks** > **Rollen** uit. Controleer of het gebruikersaccount en de rolwijzigingen die u hebt toegevoegd in de voorgaande taken, worden weergegeven.   
+2. Databases **uitvouwen** > **adventureworks** > **Rollen**. Controleer of het gebruikersaccount en de rolwijzigingen die u hebt toegevoegd in de voorgaande taken, worden weergegeven.   
 
     ![Verifiëren in Objectverkenner](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Verwijder de accounts en rollen voor gebruikers of groepen wanneer u deze niet meer nodig hebt. Wanneer u gebruikersaccounts wilt verwijderen, gebruikt u  **Roleigenschappen** > **Lidmaatschap** of klikt u met de rechtermuisknop op een rol en klikt u vervolgens op **verwijderen**.
+Verwijder de accounts en rollen voor gebruikers of groepen wanneer u deze niet meer nodig hebt. Gebruik hiervoor het**lidmaatschap** **van Eigenschappen van rollen** > om gebruikersaccounts te verwijderen of klik met de rechtermuisknop op een rol en klik vervolgens op **Verwijderen**.
 
 
 ## <a name="next-steps"></a>Volgende stappen

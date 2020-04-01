@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Cherwell | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met Cherwell | Microsoft Documenten'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Cherwell.
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 05/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fde8c38722e39d530c2890ef9c9a045b28b6e49
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67105690"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>Zelfstudie: Azure Active Directory-integratie met Cherwell
@@ -33,13 +33,13 @@ De integratie van Cherwell met Azure AD heeft de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het configureren van Azure AD-integratie met Cherwell hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
 * Een abonnement op Cherwell waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
@@ -54,7 +54,7 @@ Voor het configureren van de integratie van Cherwell in Azure AD moet u Cherwell
 
 **Voer de volgende stappen uit om Cherwell toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -77,12 +77,12 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 
 Als u Azure AD-eenmalige aanmelding met Cherwell wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eenmalige aanmelding voor Cherwell configureren](#configure-cherwell-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Een testgebruiker maken in Cherwell](#create-cherwell-test-user)** : om in Cherwell een tegenhanger van Britta Simon te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor Cherwell configureren](#configure-cherwell-single-sign-on)**: als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Een testgebruiker maken in Cherwell](#create-cherwell-test-user)**: om in Cherwell een tegenhanger van Britta Simon te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -106,7 +106,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Cherwell moet u de v
 
     ![Domein- en URL-gegevens voor eenmalige aanmelding bij Cherwell](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.cherwellondemand.com/cherwellclient`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<companyname>.cherwellondemand.com/cherwellclient`
 
     > [!NOTE]
     > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteuningsteam van Cherwell](https://cherwellsupport.com/CherwellPortal) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -148,13 +148,13 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon** in.
+    a. Voer In het veld **Naam** **BrittaSimon**in .
   
-    b. In de **gebruikersnaam** veld, typt u `brittasimon\@yourcompanydomain.extension`. Bijvoorbeeld BrittaSimon@contoso.com.
+    b. Typ **User name** in het veld `brittasimon\@yourcompanydomain.extension`Gebruikersnaam de tekst . Bijvoorbeeld BrittaSimon@contoso.com.
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -176,22 +176,22 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst Gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen De optie **Britta Simon** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
 ### <a name="create-cherwell-test-user"></a>Een testgebruiker maken in Cherwell
 
-Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden bij Cherwell, moeten ze worden ingericht voor Cherwell. In het geval van Cherwell moeten de gebruikersaccounts worden gemaakt door uw [ondersteuningsteam van Cherwell](https://cherwellsupport.com/CherwellPortal).
+Om Azure AD-gebruikers in staat te stellen zich aan te melden bij Cherwell, moeten ze worden ingericht in Cherwell. In het geval van Cherwell moeten de gebruikersaccounts worden gemaakt door uw [ondersteuningsteam van Cherwell](https://cherwellsupport.com/CherwellPortal).
 
 > [!NOTE]
 > U kunt ook alle andere hulpprogramma's voor het creëren van Cherwell-gebruikersaccounts of API's van Cherwell gebruiken om Azure Active Directory-gebruikersaccounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Cherwell in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de Cherwell-instantie waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
@@ -199,6 +199,6 @@ Wanneer u op de tegel Cherwell in het toegangsvenster klikt, zou u automatisch m
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

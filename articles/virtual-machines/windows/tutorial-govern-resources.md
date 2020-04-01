@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-virtuele machines beheren met Power shell
+title: Zelfstudie - Virtuele machines beheren met PowerShell
 description: In deze zelfstudie leert u hoe u Azure PowerShell gebruikt voor het beheren van virtuele Azure-machines door RBAC, beleid, vergrendelingen en tags toe te passen
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,13 +14,13 @@ ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
 ms.openlocfilehash: fd7e7f14d076a6a9652e902c4dc0ec41665735ee
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75981747"
 ---
-# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Zelf studie: meer informatie over het beheer van virtuele Windows-machines met Azure PowerShell
+# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Zelfstudie: Meer informatie over windows-beheer van virtuele machines met Azure PowerShell
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -28,9 +28,9 @@ ms.locfileid: "75981747"
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
-## <a name="understand-scope"></a>Reikwijdte
+## <a name="understand-scope"></a>Bereik
 
 [!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
@@ -44,7 +44,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 De resourcegroep is momenteel leeg.
 
-## <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
+## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
 U wilt er zeker van zijn dat gebruikers in uw organisatie het juiste toegangsniveau tot deze resources hebben. U wilt gebruikers geen onbeperkte toegang verlenen, maar u moet er ook voor zorgen dat ze hun werk kunnen doen. Met [toegangsbeheer op basis van rollen](../../role-based-access-control/overview.md) kunt u beheren welke gebruikers gemachtigd zijn specifieke acties binnen een bepaald bereik uit te voeren.
 
@@ -68,7 +68,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-Als er een fout bericht wordt weer gegeven met de mede deling dat de **GUID van de Principal \<> niet voor komt in de Directory**, is de nieuwe groep niet door gegeven in de Azure Active Directory. Probeer de opdracht opnieuw uit te voeren.
+Als u een fout ontvangt met de vermelding **Principal \<guid> niet bestaat in de map,** heeft de nieuwe groep zich niet verspreid in Azure Active Directory. Probeer de opdracht opnieuw uit te voeren.
 
 Normaal gesproken herhaalt u het proces voor *Inzender voor netwerken* en *Inzender voor opslagaccounts* om ervoor te zorgen dat gebruikers worden toegewezen om de geïmplementeerde resources te beheren. In dit artikel kunt u deze stappen overslaan.
 
@@ -136,7 +136,7 @@ New-AzVm -ResourceGroupName "myResourceGroup" `
 
 Nadat de implementatie is voltooid, kunt u meer beheerinstellingen toepassen op de oplossing.
 
-## <a name="lock-resources"></a>Bronnen vergrendelen
+## <a name="lock-resources"></a>Resources vergrendelen
 
 Met [resourcevergrendelingen](../../azure-resource-manager/management/lock-resources.md) voorkomt u dat gebruikers in uw organisatie per ongeluk kritieke bronnen wijzigen of verwijderen. In tegenstelling tot toegangsbeheer op basis van rollen wordt met resourcevergrendelingen een beperking toegepast op alle gebruikers en rollen. U kunt de vergrendeling instellen op *CanNotDelete* of *ReadOnly*.
 
@@ -168,7 +168,7 @@ U ziet een fout met de melding dat de verwijderbewerking niet kan worden voltooi
 
 ## <a name="tag-resources"></a>Resources taggen
 
-U past [tags](../../azure-resource-manager/management/tag-resources.md) toe op uw Azure-resources om deze logisch te ordenen in categorieën. Elke tag bestaat uit een naam en een waarde. U kunt de naam Omgeving en de waarde Productie bijvoorbeeld toepassen op alle resources in de productie.
+U past [tags](../../azure-resource-manager/management/tag-resources.md) toe op uw Azure-resources om ze logisch te ordenen op categorieën. Elke tag bestaat uit een naam en een waarde. U kunt de naam Omgeving en de waarde Productie bijvoorbeeld toepassen op alle resources in de productie.
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
@@ -233,7 +233,7 @@ In deze zelfstudie hebt u een aangepaste installatiekopie voor een virtuele mach
 > * Kritieke resources beveiligt met vergrendelingen
 > * Resources tagt voor facturering en beheer
 
-Ga naar de volgende zelf studie voor meer informatie over het identificeren van wijzigingen en het beheren van pakket updates op een virtuele Linux-machine.
+Ga naar de volgende zelfstudie om meer te weten te komen over het identificeren van wijzigingen en het beheren van pakketupdates op een Virtuele Linux-machine.
 
 > [!div class="nextstepaction"]
 > [Virtuele machines beheren](tutorial-config-management.md)

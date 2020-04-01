@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met OpsGenie | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en OpsGenie.
+title: 'Zelfstudie: Azure Active Directory-integratie met OpsGenie | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en OpsGenie.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 446ac54d84f7b2b3bf3aaf6eaf5536f0dfb804fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67095755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Zelfstudie: Azure Active Directory-integratie met OpsGenie
 
-In deze zelfstudie leert u hoe u OpsGenie integreren met Azure Active Directory (Azure AD).
-OpsGenie integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u OpsGenie integreert met Azure Active Directory (Azure AD).
+De integratie van OpsGenie met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot OpsGenie heeft.
-* U kunt uw gebruikers worden automatisch aangemeld OpsGenie (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U in Azure AD bepalen wie toegang heeft tot OpsGenie.
+* U uw gebruikers automatisch laten aanmelden bij OpsGenie (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure AD-integratie configureren met OpsGenie, moet u de volgende items:
+Als u azure AD-integratie met OpsGenie wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Eenmalige aanmelding OpsGenie ingeschakeld abonnement
+* OpsGenie single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor OpsGenie **SP** gestart door SSO
+* OpsGenie ondersteunt **SP** geïnitieerde SSO
 
-## <a name="adding-opsgenie-from-the-gallery"></a>OpsGenie uit de galerie toe te voegen
+## <a name="adding-opsgenie-from-the-gallery"></a>OpsGenie toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van OpsGenie in Azure AD, moet u OpsGenie uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van OpsGenie in Azure AD wilt configureren, moet u OpsGenie vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen OpsGenie uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u OpsGenie vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van OpsGenie in Azure AD, moet u OpsGeni
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **OpsGenie**, selecteer **OpsGenie** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Selecteer **OpsGenie**in het zoekvak en selecteer **OpsGenie** in het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![OpsGenie in de lijst met resultaten](common/search-new-app.png)
+     ![OpsGenie in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met OpsGenie op basis van een testgebruiker met de naam **B. Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in OpsGenie tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met OpsGenie op basis van een testgebruiker genaamd **B. Simon**.
+Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in OpsGenie.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met OpsGenie, moet u de volgende bouwstenen voltooien:
+Als u Azure AD-singlesign-aan met OpsGenie wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding OpsGenie](#configure-opsgenie-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  - voor het testen van Azure AD eenmalige aanmelding met B. Simon.
-4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  - B. Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
-5. **[Maken van de testgebruiker OpsGenie](#create-opsgenie-test-user)**  : als u wilt een equivalent van B. Simon in OpsGenie die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer OpsGenie Single Sign-On](#configure-opsgenie-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkelvoudige aanmelding met B. Simon te testen.
+4. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B. Simon in staat te stellen azure AD-aanmelding te gebruiken.
+5. **[Maak OpsGenie-testgebruiker](#create-opsgenie-test-user)** - om een tegenhanger van B. Simon in OpsGenie te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Azure AD eenmalige aanmelding configureren met OpsGenie, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met OpsGenie te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **OpsGenie** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **OpsGenie-toepassingsintegratie** de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,15 +103,15 @@ Azure AD eenmalige aanmelding configureren met OpsGenie, moet u de volgende stap
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![OpsGenie domein en URL's, eenmalige aanmelding informatie](common/sp-signonurl.png)
+    ![OpsGenie Domain en URL's single sign-on informatie](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://app.opsgenie.com/auth/login`
+    Typ een URL in het tekstvak **AANmeldings-URL:**`https://app.opsgenie.com/auth/login`
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-6. Op de **OpsGenie instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer in de sectie **OpsGenie instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -121,35 +121,35 @@ Azure AD eenmalige aanmelding configureren met OpsGenie, moet u de volgende stap
 
     c. Afmeldings-URL
 
-### <a name="configure-opsgenie-single-sign-on"></a>OpsGenie voor eenmalige aanmelding configureren
+### <a name="configure-opsgenie-single-sign-on"></a>OpsGenie-aanmelding configureren
 
-1. Open een ander browserexemplaar, en vervolgens Meld u aan OpsGenie als beheerder.
+1. Open een andere browserinstantie en log in bij OpsGenie als beheerder.
 
-2. Klik op **instellingen**, en klik vervolgens op de **Single Sign On** tabblad.
+2. Klik **op Instellingen**en klik vervolgens op het tabblad Eén **aanmelding.**
    
     ![OpsGenie Single Sign-On](./media/opsgenie-tutorial/tutorial_opsgenie_06.png)
 
-3. Als u eenmalige aanmelding, schakelt **ingeschakeld**.
+3. Als u SSO wilt inschakelen, selecteert u **Ingeschakeld**.
    
-    ![Instellingen voor OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_07.png) 
+    ![OpsGenie-instellingen](./media/opsgenie-tutorial/tutorial_opsgenie_07.png) 
 
-4. In de **Provider** sectie, klikt u op de **Azure Active Directory** tabblad.
+4. Klik **in** de sectie Provider op het tabblad **Azure Active Directory.**
    
-    ![Instellingen voor OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_08.png) 
+    ![OpsGenie-instellingen](./media/opsgenie-tutorial/tutorial_opsgenie_08.png) 
 
-5. Voer de volgende stappen uit op de pagina van het dialoogvenster Azure Active Directory:
+5. Voer op de dialoogvensters Azure Active Directory de volgende stappen uit:
    
-    ![Instellingen voor OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_09.png)
+    ![OpsGenie-instellingen](./media/opsgenie-tutorial/tutorial_opsgenie_09.png)
     
-    a. In de **SAML 2.0-eindpunt** tekstvak plakken **aanmeldings-URL**waarde die u hebt gekopieerd vanuit Azure portal.
+    a. Plak in het **tekstvak SAML 2.0-eindpunt** **de URL-waarde van aanmelding**die u hebt gekopieerd uit de Azure-portal.
     
-    b. In de **metagegevens-Url:** tekstvak plakken **App-Url voor federatieve metagegevens** waarde die u hebt gekopieerd vanuit Azure portal.
+    b. Plak in het **tekstvak Metagegevens:** textbox de **url-waarde van app-federatie-metagegevens** die u hebt gekopieerd uit de Azure-portal.
     
-    c. Klik op **Wijzigingen opslaan**.
+    c. Klik **op Wijzigingen opslaan**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
-Het doel van deze sectie is het maken van een testgebruiker in Azure portal B. Simon genoemd.
+Het doel van deze sectie is het maken van een testgebruiker in de Azure-portal genaamd B. Simon.
 
 1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 
@@ -163,26 +163,26 @@ Het doel van deze sectie is het maken van een testgebruiker in Azure portal B. S
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. In de **naam** veld **B. Simon**.
+    a. Voer **in** het veld Naam **B. Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **bsimon@yourcompanydomain.extension** .  
+    b. In het veld **Gebruikersnaam** typt u **bsimon@yourcompanydomain.extension**.  
     Bijvoorbeeld: BSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u B. Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan OpsGenie.
+In deze sectie u B. Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot OpsGenie.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **OpsGenie**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **OpsGenie**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **OpsGenie**.
+2. Selecteer **OpsGenie**in de lijst met toepassingen .
 
-    ![De koppeling OpsGenie in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling OpsGenie in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -192,48 +192,48 @@ In deze sectie maakt inschakelen u B. Simon gebruiken Azure eenmalige aanmelding
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. In de **gebruikers en groepen** dialoogvenster Selecteer **B. Simon** in de lijst met gebruikers, en klik op de **Selecteer** knop aan de onderkant van het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **B. Simon** in de lijst Gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-opsgenie-test-user"></a>OpsGenie testgebruiker maken
+### <a name="create-opsgenie-test-user"></a>Testgebruiker OpsGenie maken
 
-Het doel van deze sectie is het maken van een gebruiker met de naam van B. Simon in OpsGenie. 
+Het doel van deze sectie is het creëren van een gebruiker genaamd B. Simon in OpsGenie. 
 
-1. In een browservenster, meld u aan bij uw tenant OpsGenie als beheerder.
+1. Log in een webbrowservenster in bij uw OpsGenie-tenant als beheerder.
 
-2. Navigeer naar de lijst met gebruikers door te klikken op **gebruikers** in het linkerdeelvenster.
+2. Navigeer naar de lijst Met gebruikers door te klikken op **Gebruikers** in het linkerdeelvenster.
    
-    ![Instellingen voor OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_10.png) 
+    ![OpsGenie-instellingen](./media/opsgenie-tutorial/tutorial_opsgenie_10.png) 
 
-3. Klik op **gebruiker toevoegen**.
+3. Klik **op Gebruiker toevoegen**.
 
 4. Voer in het dialoogvenster **Add User** de volgende stappen uit:
    
-    ![Instellingen voor OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
+    ![OpsGenie-instellingen](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
    
-    a. In de **e** tekstvak, typ het e-mailadres van B. Simon behandeld in Azure Active Directory.
+    a. Typ in het tekstvak **E-mail** het e-mailadres van B. Simon dat is geadresseerd in Azure Active Directory.
    
-    b. In de **volledige naam** tekstvak, type **B. Simon**.
+    b. Typ **B. Simon**in het tekstvak **Volledige naam** .
    
     c. Klik op **Opslaan**. 
 
 >[!NOTE]
->B. Steen ontvangt een e-mail met instructies voor het instellen van het profiel.
+>B. Simon krijgt een e-mail met instructies voor het instellen van hun profiel.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel OpsGenie in het toegangsvenster, moet u worden automatisch aangemeld bij de OpsGenie waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel OpsGenie in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de OpsGenie waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

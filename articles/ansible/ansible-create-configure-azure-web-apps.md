@@ -1,17 +1,17 @@
 ---
-title: 'Zelf studie: apps configureren in Azure App Service met behulp van Ansible'
-description: Meer informatie over het maken van een app in Azure App Service met Java 8 en de Tomcat-container runtime
+title: Zelfstudie - Apps configureren in Azure App Service met Ansible
+description: Meer informatie over het maken van een app in Azure App Service met Java 8 en de runtime van de Tomcat-container
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, web-app, Java
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156569"
 ---
-# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Zelf studie: apps in Azure App Service configureren met behulp van Ansible
+# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Zelfstudie: Apps configureren in Azure App Service met Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -21,21 +21,21 @@ ms.locfileid: "74156569"
 
 > [!div class="checklist"]
 >
-> * Een app maken in Azure App Service met Java 8 en de Tomcat-container runtime
+> * Een app maken in Azure App Service met Java 8 en de runtime van de Tomcat-container
 > * Een Azure Traffic Manager-profiel maken
-> * Een Traffic Manager-eind punt definiëren met behulp van de gemaakte app
+> * Een eindpunt voor Verkeersbeheer definiëren met de gemaakte app
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-basic-app-service"></a>Een eenvoudige app service maken
+## <a name="create-a-basic-app-service"></a>Een basisapp-service maken
 
-De Playbook-code in deze sectie definieert de volgende resources:
+De playbookcode in deze sectie definieert de volgende bronnen:
 
-* De Azure-resource groep waarbinnen het App Service plan en de app worden geïmplementeerd
-* App service op Linux met Java 8 en de Tomcat-container runtime
+* Azure-brongroep waarbinnen het App Service-abonnement en de app zijn geïmplementeerd
+* App service op Linux met Java 8 en de Tomcat container runtime
 
 Sla het volgende playbook op als `firstwebapp.yml`:
 
@@ -71,13 +71,13 @@ Sla het volgende playbook op als `firstwebapp.yml`:
               java_container_version: 8.5
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook firstwebapp.yml
 ```
 
-Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat u het draaiboek hebt uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
 ```Output
 PLAY [localhost] 
@@ -99,18 +99,18 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="create-an-app-and-use-azure-traffic-manager"></a>Een app maken en Azure Traffic Manager gebruiken
 
-Met [Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) kunt u bepalen hoe aanvragen van webclients worden gedistribueerd naar apps in azure app service. Wanneer App Service-eindpunten worden toegevoegd aan een Azure Traffic Manager-profiel, wordt met Traffic Manager de status van de App Service-apps bijgehouden. Statussen omvatten: actief, gestopt en verwijderd. Traffic Manager wordt gebruikt om te bepalen welke eind punten het verkeer moeten ontvangen.
+[Met Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) u bepalen hoe aanvragen van webclients worden gedistribueerd naar apps in Azure App Service. Wanneer App Service-eindpunten worden toegevoegd aan een Azure Traffic Manager-profiel, wordt met Traffic Manager de status van de App Service-apps bijgehouden. Statussen omvatten: actief, gestopt en verwijderd. Traffic Manager wordt gebruikt om te beslissen welke eindpunten het verkeer moeten ontvangen.
 
-In App Service wordt een app uitgevoerd in een [App Service-plan](/azure/app-service/overview-hosting-plans). Een App Service plan definieert een set reken resources voor het uitvoeren van een app. U kunt het App Service-plan en de web-app in verschillende groepen beheren.
+In App Service wordt een app uitgevoerd in een [App Service-plan](/azure/app-service/overview-hosting-plans). Een App-serviceplan definieert een set rekenbronnen die een app kan uitvoeren. U kunt het App Service-plan en de web-app in verschillende groepen beheren.
 
-De Playbook-code in deze sectie definieert de volgende resources:
+De playbookcode in deze sectie definieert de volgende bronnen:
 
-* De Azure-resource groep waarbinnen het App Service plan wordt geïmplementeerd
+* Azure-brongroep waarbinnen het App Service-abonnement is geïmplementeerd
 * App Service-plan
-* De Azure-resource groep waarbinnen de app is geïmplementeerd
-* App service op Linux met Java 8 en de Tomcat-container runtime
+* Azure-brongroep waarbinnen de app is geïmplementeerd
+* App service op Linux met Java 8 en de Tomcat container runtime
 * Traffic Manager-profiel
-* Traffic Manager eind punt met behulp van de gemaakte app
+* Eindpunt verkeersbeheer met de gemaakte app
 
 Sla het volgende playbook op als `webapp.yml`:
 
@@ -195,13 +195,13 @@ Sla het volgende playbook op als `webapp.yml`:
       target_resource_id: "{{ webapp.webapps[0].id }}"
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook webapp.yml
 ```
 
-Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat u het draaiboek hebt uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
 ```Output
 PLAY [localhost] 
@@ -244,4 +244,4 @@ localhost                  : ok=9    changed=6    unreachable=0    failed=0
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Zelf studie: apps schalen in Azure App Service met behulp van Ansible](/azure/ansible/ansible-scale-azure-web-apps)
+> [Zelfstudie: Apps schalen in Azure App Service met Ansible](/azure/ansible/ansible-scale-azure-web-apps)

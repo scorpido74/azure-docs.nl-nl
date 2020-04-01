@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 69a9bc912f2cd52e52ca6403187f993413539ecd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "60899896"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>Zelfstudie: Gegevens opvragen uit een Cassandra-API-account in Azure Cosmos DB
@@ -26,11 +26,11 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Gegevens opvragen uit een Cassandra-tabel
 > * De app uitvoeren
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Dit artikel maakt deel uit van een meerdelige zelfstudie. Begin pas met deze zelfstudie nadat u de stappen hebt voltooid voor het maken van het Cassandra-API-account, de keyspace en de tabel, en nadat de [voorbeeldgegevens zijn geladen in de tabel](cassandra-api-load-data.md). 
+* Dit artikel maakt deel uit van een meerdelige zelfstudie. Voordat u begint, moet u de vorige stappen uitvoeren om de Cassandra API-account, keyspace, tabel en [load sample gegevens in de tabel te](cassandra-api-load-data.md)maken. 
 
 ## <a name="query-data"></a>Querygegevens
 
@@ -107,7 +107,7 @@ Gebruik de volgende stappen om een query uit te voeren op gegevens van uw Cassan
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt de resourcegroep, het Azure Cosmos-account en alle gerelateerde resources verwijderen wanneer u ze niet meer nodig hebt. Als u deze wilt verwijderen, selecteert u de resourcegroep voor de virtuele machine en selecteert u **Verwijderen**. Vervolgens bevestigt u de naam van de resourcegroep die u wilt verwijderen.
+U kunt de resourcegroep, het Azure Cosmos-account en alle gerelateerde resources verwijderen wanneer u ze niet meer nodig hebt. Daarvoor selecteert u de resourcegroep voor de virtuele machine en selecteert u **Verwijderen**. Vervolgens bevestigt u de naam van de resourcegroep die u wilt verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

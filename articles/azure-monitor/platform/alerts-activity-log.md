@@ -205,7 +205,7 @@ De volgende velden zijn de opties die u gebruiken in de sjabloon Azure Resource 
 6. resourceGroep: naam van de resourcegroep voor de impactgevende resource in de gebeurtenis activiteitslogboek.
 7. resourceProvider: [uitleg azure resource providers en typen uitleg](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fazure-resource-manager%2Fmanagement%2Fresource-providers-and-types&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C90b7c2308c0647c0347908d7c9a2918d%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637199572373543634&sdata=4RjpTkO5jsdOgPdt%2F%2FDOlYjIFE2%2B%2BuoHq5%2F7lHpCwQw%3D&reserved=0). Zie [Resourceproviders voor Azure-services voor](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fazure-resource-manager%2Fmanagement%2Fazure-services-resource-providers&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C90b7c2308c0647c0347908d7c9a2918d%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637199572373553639&sdata=0ZgJPK7BYuJsRifBKFytqphMOxMrkfkEwDqgVH1g8lw%3D&reserved=0)een lijst die resourceproviders aan Azure-services toeinziet.
 8. status: tekenreeks die de status van de bewerking in de activiteitsgebeurtenis beschrijft. Bijvoorbeeld: Gestart, In uitvoering, Geslaagd, Mislukt, Actief, Opgelost
-9. subStatus: Meestal de HTTP-statuscode van de bijbehorende REST-aanroep, maar kan ook andere tekenreeksen bevatten die een substatus beschrijven.   Bijvoorbeeld: OK (HTTP-statuscode: 200), Gemaakt (HTTP-statuscode: 201), Geaccepteerd (HTTP-statuscode: 202), Geen inhoud (HTTP-statuscode: 204), Bad Request (HTTP-statuscode: 400), Niet gevonden (HTTP-statuscode: 404), Conflict (HTTP-statuscode: 409), Interne server Fout (HTTP-statuscode: 500), Service niet beschikbaar (HTTP-statuscode: 503), gatewaytime-out (HTTP-statuscode: 504).
+9. subStatus: Meestal de HTTP-statuscode van de bijbehorende REST-aanroep, maar kan ook andere tekenreeksen bevatten die een substatus beschrijven.   Bijvoorbeeld: OK (HTTP-statuscode: 200), Gemaakt (HTTP-statuscode: 201), Geaccepteerd (HTTP-statuscode: 202), geen inhoud (HTTP-statuscode: 204), bad request (HTTP-statuscode: 400), niet Gevonden (HTTP-statuscode: 404), Conflict (HTTP-statuscode: 409), interne serverfout (HTTP-statuscode: 500), Service niet beschikbaar (HTTP-statuscode: 503), Gateway Timeout (HTTP-statuscode: 504).
 10. resourceType: het type resource dat door de gebeurtenis is beïnvloed. Bijvoorbeeld: Microsoft.Resources/implementaties
 
 Bijvoorbeeld:
@@ -232,7 +232,7 @@ Meer informatie over de velden van het activiteitenlogboek vindt u [hier.](https
 > [!NOTE]
 > Het kan tot 5 minuten duren voordat de nieuwe waarschuwingsregel voor activiteitenlogboeken actief is.
 
-## <a name="rest-api"></a>REST API 
+## <a name="rest-api"></a>REST-API 
 De [API voor azure monitoractiviteitslogboekwaarschuwingen](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) is een REST-API. Het is volledig compatibel met de Azure Resource Manager REST API. Het kan worden gebruikt via PowerShell met behulp van de Resource Manager-cmdlet of de Azure CLI.
 
 ## <a name="powershell"></a>PowerShell
@@ -258,7 +258,7 @@ Waarschuwingen voor activiteitenlogboeken hebben speciale PowerShell-cmdlets bes
 - [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert): schakelt een bestaande activiteitslogboekwaarschuwing uit en stelt de tags in.
 - [Remove-AzActivityLogAlert:](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert)Verwijdert een waarschuwing voor het activiteitenlogboek.
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 Speciale Azure CLI-opdrachten onder de ingestelde waarschuwing voor [het AZ-monitorlogboek](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) zijn beschikbaar voor het beheren van waarschuwingsregels voor activiteitenlogboeken.
 

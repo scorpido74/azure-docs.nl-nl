@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 505c5f0786367feefa8ed11d4fbdd7d0ca85b8ef
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cf4967a05585cd6e1db83d469d30128cc253e6b4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79529727"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473664"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Snelstart: aanmelding voor Microsoft-identiteitsplatform toevoegen aan een ASP.NET web-app
 In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET web-app om persoonlijke accounts (hotmail.com, outlook.com, anderen) en werk- en schoolaccounts aan te melden vanuit een Azure Active Directory-instantie (Azure AD).  (Zie [hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
@@ -99,7 +99,7 @@ In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET web-a
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 
 ## <a name="more-information"></a>Meer informatie
 

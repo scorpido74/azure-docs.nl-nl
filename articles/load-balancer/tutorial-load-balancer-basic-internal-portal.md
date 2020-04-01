@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een interne load balancer maken-Azure Portal'
+title: 'Zelfstudie: Een interne load balancer maken - Azure-portal'
 titleSuffix: Azure Load Balancer
 description: In deze zelfstudie ziet u hoe u een interne Basic-load balancer kunt maken met behulp van de Azure-portal.
 services: load-balancer
@@ -16,21 +16,21 @@ ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 6f62771d707d1aebccbfaf809dee7d0dedf5fefa
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79096131"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Zelfstudie: Interne-verkeersbelasting verdelen met een Basic-load balancer in de Azure-portal
 
 Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines (VM's). U kunt de Azure-portal gebruiken om een Basic-load balancer te maken en intern verkeer over virtuele machines te verdelen. In deze zelfstudie wordt beschreven hoe u een interne load balancer, back-endservers en netwerkresources kunt maken in de prijscategorie Basic.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint. 
 
 Indien gewenst, kunt u deze stappen uitvoeren met behulp van de [Azure CLI](load-balancer-get-started-ilb-arm-cli.md) of [Azure PowerShell](load-balancer-get-started-ilb-arm-ps.md) in plaats van met de portal.
 
-Als u de stappen met behulp van deze zelfstudie wilt uitvoeren. moet u zich aanmelden bij de Azure-portal op [https://portal.azure.com](https://portal.azure.com).
+Als u de stappen wilt uitvoeren met deze [https://portal.azure.com](https://portal.azure.com)zelfstudie, meldt u zich aan bij de Azure-portal op .
 
 ## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>Een VNet, back-endservers en een test-VM maken
 
@@ -38,13 +38,13 @@ Eerst moet u een virtueel netwerk (VNet) maken. In het VNet maakt u twee virtuel
 
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-1. Selecteer **Een resource maken** > **Netwerken** > **Virtueel netwerk** linksboven in de portal.
+1. Selecteer linksboven**Networking** > in de portal de optie Een**virtueel netwerknetwerk voor** **bronnen** > maken .
    
 1. In het deelvenster **Virtueel netwerk maken** typt of selecteert u de volgende waarden:
    
-   - **Naam**: typ *MyVNet*.
-   - **ResourceGroup**: selecteer **Nieuwe maken**, voer vervolgens *MyResourceGroupLB* in en selecteer **OK**. 
-   - **Subnet** > **Naam**: typ *MyBackendSubnet*.
+   - **Naam**: Typ *MyVNet*.
+   - **Resourcegroep**: selecteer **Nieuwe maken**, voer vervolgens *MyResourceGroupLB* in en selecteer **OK**. 
+   - **Subnetnaam** > **Name**: Typ *MyBackendSubnet*.
    
 1. Selecteer **Maken**.
 
@@ -52,12 +52,12 @@ Eerst moet u een virtueel netwerk (VNet) maken. In het VNet maakt u twee virtuel
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 
-1. Selecteer **Een resource maken** > **Compute** > **Windows Server 2016 Datacenter** linksboven in de portal. 
+1. Selecteer linksboven in de portal **de** > optie Een resource**Compute** > **Windows Server 2016-datacenter maken**. 
    
 1. In **Een virtuele machine maken** typt of selecteert u de volgende waarden op het tabblad **Basisinformatie**:
-   - **Abonnement** > **Resourcegroep**: selecteer **MyResourceGroupLB** in de vervolgkeuzelijst.
-   - **Instantiedetails** > **Naam van virtuele machine**: typ *MyVM1*.
-   - **Instantiedetails** > **Beschikbaarheidsopties**: 
+   - **Abonnementsbrongroep** > **Resource Group**: devallijst en selecteer **MyResourceGroupLB**.
+   - **Instantie details** > **Virtuele machinenaam:** Typ *MyVM1*.
+   - **Opties voor** > **beschikbaarheid van instantiedetails:** 
      1. Selecteer **Beschikbaarheidsset** in de vervolgkeuzelijst. 
      2. Selecteer **Nieuwe maken**, typ *MyAvailabilitySet* en selecteer **OK**.
    
@@ -71,7 +71,7 @@ Eerst moet u een virtueel netwerk (VNet) maken. In het VNet maakt u twee virtuel
    1. Selecteer **Geavanceerd**. 
    1. In de vervolgkeuzelijst **Netwerkbeveiligingsgroep configureren** selecteert u **Geen**. 
    
-1. Selecteer het tabblad **Beheer** of selecteer **Volgende** > **Beheer**. Stel bij **Bewaking** **Diagnostische gegevens over opstarten** in op **Uit**.
+1. Selecteer het tabblad **Beheer** of selecteer **Volgende** > **Beheer**. Stel bij **Bewaking****Diagnostische gegevens over opstarten** in op **Uit**.
    
 1. Selecteer **Controleren + maken**.
    
@@ -85,23 +85,23 @@ Eerst moet u een virtueel netwerk (VNet) maken. In het VNet maakt u twee virtuel
 
 Maak met behulp van de portal een interne Basic-load balancer. De naam en het IP-adres die u maakt, worden automatisch geconfigureerd als de front-end van de load balancer.
 
-1. Selecteer **Een resource maken** > **Netwerken** > **Load Balancer** linksboven in het scherm.
+1. Selecteer linksboven in de portal **de** > optie Een**resource NetwerkloadBalancer****Networking** > maken .
    
-2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Controleren + maken**:
+2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Controleren + maken**:
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
     | Abonnement               | Selecteer uw abonnement.    |    
     | Resourcegroep         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLB* in het tekstvak.|
-    | Naam                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **VS - oost 2**.                                        |
     | Type          | selecteer **Intern**.                                        |
     | SKU           | Selecteer **Basic**.                          |
     | Virtueel netwerk           | Selecteer *MyVNet*.                          |    
-    | Toewijzing van IP-adres              | Selecteer **Statisch**.   |
+    | Toewijzing ip-adres              | Selecteer **Statisch**.   |
     | Privé IP-adres|typ een adres dat zich in de adresruimte van uw virtuele netwerk en subnet bevindt, bijvoorbeeld *10.3.0.7*.  |
 
-3. Klik op het tabblad **Controleren + Maken** op **Maken**. 
+3. Klik op het tabblad **Beoordelen en maken** op **Maken**. 
    
 
 ## <a name="create-basic-load-balancer-resources"></a>Resources voor een Basic-load balancer maken
@@ -120,11 +120,11 @@ De load balancer gebruikt een backend-adresgroep om verkeer te distribueren over
    
 1. Op de pagina **Een back-endpool toevoegen** typt of selecteert u de volgende waarden:
    
-   - **Naam**: typ *MyBackendPool*.
-   - **Gekoppeld aan**: vervolg keuzelijst en selecteer **virtuele machine**.
+   - **Naam:** Typ *MyBackendPool*.
+   - **Gekoppeld aan**: Vervolgkeuzelijst en selecteer **Virtuele machine**.
    
    
-1. Selecteer een **virtuele machine**. 
+1. Selecteer **Virtuele machine**. 
    1. Voeg **MyVM1** en **MyVM2** aan de back-endpool toe.
    2. Nadat u alle machines hebt toegevoegd, selecteert u in de vervolgkeuzelijst de bijbehorende **netwerk-IP-configuratie**. 
    
@@ -135,7 +135,7 @@ De load balancer gebruikt een backend-adresgroep om verkeer te distribueren over
    
    ![De back-endadresgroep toevoegen](./media/tutorial-load-balancer-basic-internal-portal/3-load-balancer-backend-02.png)
    
-1. Vouw op de pagina **Back-endpools** **MyBackendPool** uit en controleer of zowel **VM1** als **VM2** worden vermeld.
+1. Vouw op de pagina **Back-endpools****MyBackendPool** uit en controleer of zowel **VM1** als **VM2** worden vermeld.
 
 ### <a name="create-a-health-probe"></a>Een statustest maken
 
@@ -166,17 +166,17 @@ Een load balancer-regel bepaalt hoe het verkeer over de VM's wordt verdeeld. De 
 
 De load balancer-regel met de naam **myLoadBalancerRuleWeb** luistert op poort 80 van de front-end **LoadBalancerFrontEnd**. Met de regel wordt netwerkverkeer naar de back-endadresgroep **myBackEndPool** verzonden, ook op poort 80. 
 
-**Voor het maken van een load balancer-regel:**
+**Een load balancer-regel maken, gaat als volgt:**
 
 1. Selecteer **Alle resources** in het linkermenu en selecteer vervolgens **MyLoadBalancer** in de lijst met resources.
    
-1. Selecteer onder **Instellingen** **Taakverdelingsregels** en selecteer vervolgens **Toevoegen**.
+1. Selecteer onder **Instellingen****Taakverdelingsregels** en selecteer vervolgens **Toevoegen**.
    
 1. Op de pagina **Load balancer-regel toevoegen** typt of selecteert u de volgende waarden, als die er nog niet op voorkomen:
    
    - **Naam**: typ *MyLoadBalancerRule*.
    - **Frontend-IP-adres:** typ *LoadBalancerFrontEnd* als deze niet aanwezig is.
-   - **Protocol**: selecteer **TCP** .
+   - **Protocol**: selecteer **TCP**.
    - **Poort**: typ *80*.
    - **Back-endpoort**: typ *80*.
    - **Back-endpool**: selecteer **MyBackendPool**.
@@ -190,7 +190,7 @@ De load balancer-regel met de naam **myLoadBalancerRuleWeb** luistert op poort 8
 
 Installeer Internet Information Services (IIS) op de back-endservers en gebruik vervolgens MyTestVM om de load balancer met behulp van het privé IP-adres ervan te testen. Elke back-end-VM bedient een andere versie van de standaard IIS-webpagina, zodat u kunt zien dat de load balancer aanvragen over de twee virtuele machines verdeelt.
 
-Zoek in de portal op de **overzichtspagina** voor **MyLoadBalancer** naar het IP-adres onder **Privé IP-adres**. Beweeg de muisaanwijzer boven het adres en selecteer het pictogram **Kopiëren** om het te kopiëren. In dit voorbeeld is dat **10.3.0.7**. 
+Zoek in de portal op de **overzichtspagina** voor **MyLoadBalancer** naar het IP-adres onder **Privé IP-adres**. Beweeg de muisaanwijzer over het adres en selecteer het pictogram **Kopiëren** om het te kopiëren. In dit voorbeeld is dat **10.3.0.7**. 
 
 ### <a name="connect-to-the-vms-with-rdp"></a>Verbinding maken met de virtuele machines via Extern bureaublad (RDP)
 

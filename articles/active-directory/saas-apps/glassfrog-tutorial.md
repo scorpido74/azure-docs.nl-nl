@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met GlassFrog | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en GlassFrog.
+title: 'Zelfstudie: Azure Active Directory-integratie met GlassFrog | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en GlassFrog.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a816cd6df8351a9b9daefd569d1fad2ec0763832
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67101548"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>Zelfstudie: Azure Active Directory-integratie met GlassFrog
 
-In deze zelfstudie leert u hoe u GlassFrog integreren met Azure Active Directory (Azure AD).
-GlassFrog integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u GlassFrog integreert met Azure Active Directory (Azure AD).
+De integratie van GlassFrog met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot GlassFrog heeft.
-* U kunt uw gebruikers worden automatisch aangemeld GlassFrog (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U in Azure AD bepalen wie toegang heeft tot GlassFrog.
+* U uw gebruikers automatisch laten aanmelden bij GlassFrog (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met GlassFrog, moet u de volgende items:
+Als u Azure AD-integratie met GlassFrog wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Eenmalige aanmelding GlassFrog ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Abonnement met één aanmelding voor GlassFrog
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor GlassFrog **SP** gestart door SSO
+* GlassFrog ondersteunt **SP** geïnitieerde SSO
 
-## <a name="adding-glassfrog-from-the-gallery"></a>GlassFrog uit de galerie toe te voegen
+## <a name="adding-glassfrog-from-the-gallery"></a>GlassFrog toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van GlassFrog in Azure AD, moet u GlassFrog uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van GlassFrog in Azure AD wilt configureren, moet u GlassFrog uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen GlassFrog uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u GlassFrog uit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van GlassFrog in Azure AD, moet u GlassF
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **GlassFrog**, selecteer **GlassFrog** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Selecteer **GlassFrog**in het zoekvak , selecteer **GlassFrog** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![GlassFrog in de lijst met resultaten](common/search-new-app.png)
+     ![GlassFrog in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met GlassFrog op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in GlassFrog tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met GlassFrog op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in GlassFrog.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met GlassFrog, moet u de volgende bouwstenen voltooien:
+Als u Azure AD-singlesign-aan met GlassFrog wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding GlassFrog](#configure-glassfrog-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker GlassFrog](#create-glassfrog-test-user)**  : als u wilt een equivalent van Britta Simon in GlassFrog die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer GlassFrog Single Sign-On](#configure-glassfrog-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak GlassFrog-testgebruiker](#create-glassfrog-test-user)** - om een tegenhanger van Britta Simon in GlassFrog te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met GlassFrog, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met GlassFrog te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **GlassFrog** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **GlassFrog-toepassingsintegratie** de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,18 +103,18 @@ Voor het configureren van Azure AD eenmalige aanmelding met GlassFrog, moet u de
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![GlassFrog domein en URL's, eenmalige aanmelding informatie](common/sp-signonurl.png)
+    ![GlassFrog-domein- en URL's met eenmalige aanmelding](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://app.glassfrog.com/people/sso?org_id=<ORGANIZATIONID>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://app.glassfrog.com/people/sso?org_id=<ORGANIZATIONID>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [GlassFrog Client ondersteuningsteam](mailto:support@glassfrog.com) om de waarde. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [het ondersteuningsteam van GlassFrog Client](mailto:support@glassfrog.com) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **GlassFrog instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer in de sectie **GlassFrog instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -124,9 +124,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met GlassFrog, moet u de
 
     c. Afmeldings-URL
 
-### <a name="configure-glassfrog-single-sign-on"></a>GlassFrog voor eenmalige aanmelding configureren
+### <a name="configure-glassfrog-single-sign-on"></a>Glassfrog Single Sign-On configureren
 
-Het configureren van eenmalige aanmelding op **GlassFrog** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [GlassFrog ondersteuningsteam](mailto:support@glassfrog.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan **de GlassFrog-zijde** wilt configureren, moet u de gedownloade **XML met aalmetagegevens** van de Federatie en de juiste gekopieerde URL's van Azure-portal naar het [Ondersteuningsteam van GlassFrog](mailto:support@glassfrog.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -144,25 +144,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld brittasimon@yourcompanydomain.extensiontype gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan GlassFrog.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot GlassFrog.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **GlassFrog**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens GlassFrog**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **GlassFrog**.
+2. Selecteer **GlassFrog**in de lijst met toepassingen .
 
-    ![De koppeling GlassFrog in de lijst met toepassingen](common/all-applications.png)
+    ![De Koppeling GlassFrog in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -172,27 +172,27 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-glassfrog-test-user"></a>GlassFrog testgebruiker maken
+### <a name="create-glassfrog-test-user"></a>GlassFrog-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in GlassFrog. Werken met [GlassFrog ondersteuningsteam](mailto:support@glassfrog.com) om toe te voegen de gebruikers in het GlassFrog-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in GlassFrog. Werk samen met [het Ondersteuningsteam van GlassFrog](mailto:support@glassfrog.com) om de gebruikers toe te voegen aan het GlassFrog-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel GlassFrog in het toegangsvenster, moet u worden automatisch aangemeld bij de GlassFrog waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de Tegel GlassFrog in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de GlassFrog waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,14 +1,14 @@
 ---
 ms.openlocfilehash: 7b9954930c668e338cc289e948a5591c09ec2654
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76694231"
 ---
 ## <a name="provide-feedback-to-the-user"></a>Feedback geven aan de gebruiker
 
-U kunt code schrijven voor het verwerken van de gebeurtenis bijgewerkt met de sessie. Deze gebeurtenis wordt geactiveerd wanneer de sessie de inzichten van uw omgeving verg root. Als u dit doet, kunt u het volgende doen:
+U code schrijven om de sessiebijgewerkte gebeurtenis te verwerken. Deze gebeurtenis vuurt elke keer dat de sessie verbetert haar begrip van uw omgeving. Als u dit doet, u:
 
-- Gebruik de klasse `UserFeedback` om feedback te geven aan de gebruiker wanneer het apparaat wordt verplaatst en de sessie van de omgeving wordt bijgewerkt. Dit wilt doen
-- Bepaal op welk punt voldoende getraceerde ruimtelijke gegevens zich bevinden om ruimtelijke ankers te maken. U kunt dit bepalen op basis van `ReadyForCreateProgress` of `RecommendedForCreateProgress`. Als `ReadyForCreateProgress` hoger is dan 1, hebben we voldoende gegevens om een ruimtelijke ruimte in de Cloud op te slaan, maar we raden u aan te wachten tot `RecommendedForCreateProgress` groter is dan 1.
+- Gebruik `UserFeedback` de klasse om feedback te geven aan de gebruiker terwijl het apparaat wordt verplaatst en de sessie zijn omgevingsinformatie bijwerkt. Dit wilt doen
+- Bepaal op welk punt er voldoende bijgehouden ruimtelijke gegevens zijn om ruimtelijke ankers te creëren. U bepaalt dit `ReadyForCreateProgress` `RecommendedForCreateProgress`met een van beide of . Eenmaal `ReadyForCreateProgress` boven de 1 hebben we genoeg gegevens om een ruimtelijk `RecommendedForCreateProgress` anker in de cloud op te slaan, hoewel we u aanraden te wachten tot boven de 1.

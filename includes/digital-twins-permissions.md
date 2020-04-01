@@ -10,86 +10,86 @@ ms.topic: include
 ms.date: 02/03/2020
 ms.custom: include file
 ms.openlocfilehash: cfe3eb4c0ac1378b7c519b3b34094945612d8508
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77029269"
 ---
 >[!NOTE]
->Deze sectie bevat instructies voor de [registratie van Azure AD-apps](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
+>In deze sectie vindt u instructies voor [de registratie van Azure AD-app.This](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)section provides instructions for Azure AD app registration .
 
-1. Open in de [Azure Portal](https://portal.azure.com) **Azure Active Directory** in het menu uitbreidbaar links en open vervolgens het **app-registraties** deel venster. 
+1. Open Azure Active **Directory** in de [Azure-portal](https://portal.azure.com)in het uitvouwbare linkermenu en open vervolgens het deelvenster **App-registraties.** 
 
-    [het deel venster Azure Active Directory ![selecteren](./media/digital-twins-permissions/azure-portal-select-aad-pane.png)](./media/digital-twins-permissions/azure-portal-select-aad-pane.png#lightbox)
+    [![Het deelvenster Azure Active Directory selecteren](./media/digital-twins-permissions/azure-portal-select-aad-pane.png)](./media/digital-twins-permissions/azure-portal-select-aad-pane.png#lightbox)
 
-1. Selecteer de knop **+ nieuwe registratie** .
+1. Selecteer de knop **+ Nieuwe registratie.**
 
-    [![de knop nieuwe registratie selecteren](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
+    [![De knop Nieuwe registratie selecteren](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
 
 1. Geef een beschrijvende naam voor deze app-registratie op in het vak **Naam**. 
 
-    1. Voer `https://microsoft.com` in het tekstvak in bij **omleidings-URI (optioneel)** .     
+    1. Voer onder de sectie URI `https://microsoft.com` **(optioneel)** omleiden in het tekstvak.     
 
     1. Controleer welke accounts en tenants worden ondersteund door uw Azure Active Directory-app.
 
     1. Selecteer **Registreren**.
 
-    [deel venster ![maken](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
+    [![Deelvenster maken](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
-1. De Blade **verificatie** specificeert belang rijke instellingen voor verificatie configuratie. 
+1. Het **verificatieblad** geeft belangrijke verificatieconfiguratie-instellingen op. 
 
-    1. Voeg **omleidings-uri's** toe en configureer **toegangs tokens** door **+ een platform toe te voegen**.
+    1. Voeg **omleidings-URI's** toe en configureer **Toegangstokens** door **een platform toe te**voegen .
 
-    1. Selecteer **Ja** om op te geven dat de app een **open bare client**is.
+    1. Selecteer **Ja** om op te geven dat de app een **openbare client**is.
 
     1. Controleer welke accounts en tenants worden ondersteund door uw Azure Active Directory-app.
 
-    [configuratie-instelling ![open bare client](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+    [![Instelling voor openbare clientconfiguratie](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
-1. Nadat u het juiste platform hebt geselecteerd, configureert u de **omleidings-uri's** en **toegangs tokens** in het deel venster aan de rechter kant van de gebruikers interface.
+1. Nadat u het juiste platform hebt geselecteerd, configureert u uw **OMLEIDINGs-URI's** en **Toegangstokens** in het zijpaneel rechts van de gebruikersinterface.
 
-    1. **Omleidings-uri's** moeten overeenkomen met het adres dat is opgegeven door de verificatie aanvraag:
+    1. **Omleidings-URI's** moeten overeenkomen met het adres dat door de verificatieaanvraag wordt opgegeven:
 
-        * Voor apps die worden gehost in een lokale ontwikkel omgeving selecteert u **open bare client (mobiele & bureau blad)** . Zorg ervoor dat de **open bare client** is ingesteld op **Ja**.
-        * Voor apps met één pagina die worden gehost op Azure App Service, selecteert u **Web**.
+        * Selecteer **Openbare client (mobiel & desktop)** voor apps die worden gehost in een lokale ontwikkelingsomgeving. Zorg ervoor dat **u de openbare client instelt** op **Ja.**
+        * Selecteer **Web**voor apps met één pagina die worden gehost op Azure App Service .
 
-    1. Bepaal of een **Afmeldings-URL** geschikt is.
+    1. Bepaal of een **aanmeldings-URL** geschikt is.
 
-    1. Schakel de impliciete toekennings stroom in door **toegangs tokens** of **id-tokens**te controleren.
+    1. Schakel de impliciete subsidiestroom in door **Access-tokens** of **ID-tokens te**controleren.
                 
-    [omleidings-Uri's ![configureren](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+    [![Omleidings-URI's configureren](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
 
-    Klik op **configureren**en vervolgens op **Opslaan**.
+    Klik **op Configureren**en sla **op.**
 
-1.  Open het deel venster **overzicht** van de geregistreerde app en kopieer de waarden van de volgende entiteiten naar een tijdelijk bestand. U gebruikt deze waarden om uw voorbeeld toepassing te configureren in de volgende secties.
+1.  Open het **deelvenster Overzicht** van uw geregistreerde app en kopieer de waarden van de volgende entiteiten naar een tijdelijk bestand. U gebruikt deze waarden om uw voorbeeldtoepassing in de volgende secties te configureren.
 
-    - **Toepassings-ID (client)**
-    - **Directory-ID (Tenant)**
+    - **(Client-)id van de app**
+    - **(Tenant-)id van de map**
 
-    [Azure Active Directory toepassings-ID ![](./media/digital-twins-permissions/aad-app-reg-app-id.png)](./media/digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
+    [![Azure Active Directory-toepassings-id](./media/digital-twins-permissions/aad-app-reg-app-id.png)](./media/digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
 
-1. Open het deel venster **API-machtigingen** voor de registratie van uw app. Selecteer **+ een machtigings knop toevoegen** . Selecteer in het deel venster **API-machtigingen voor aanvragen** de **api's mijn organisatie tabblad gebruikt** en zoek vervolgens een van de volgende opties:
+1. Open het deelvenster **API-machtigingen** voor uw app-registratie. Selecteer **+ Een machtigingsknop toevoegen.** Selecteer in het venster **API-machtigingen aanvragen** het tabblad **API's dat mijn organisatie gebruikt** en zoek vervolgens naar een van de volgende opties:
     
-    1. `Azure Digital Twins`. Selecteer de **Azure Digital apparaatdubbels** -API.
+    1. `Azure Digital Twins`. Selecteer de **Azure Digital Twins** API.
 
-        [![Search-API of Azure Digital Apparaatdubbels](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
+        [![Zoek-API of Azure Digital Twins](./media/digital-twins-permissions/aad-aap-search-api-dt.png)](./media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
-    1. U kunt ook zoeken naar `Azure Smart Spaces Service`. Selecteer de **Azure Smart Spaces-service** -API.
+    1. U ook `Azure Smart Spaces Service`zoeken naar. Selecteer de **Azure Smart Spaces Service** API.
 
-        [![Search-API voor Azure Smart Spaces](./media/digital-twins-permissions/aad-app-search-api.png)](./media/digital-twins-permissions/aad-app-search-api.png#lightbox)
+        [![Zoeken api voor Azure Smart Spaces](./media/digital-twins-permissions/aad-app-search-api.png)](./media/digital-twins-permissions/aad-app-search-api.png#lightbox)
 
     > [!IMPORTANT]
-    > De naam en ID van de Azure AD-API die wordt weer gegeven, is afhankelijk van uw Tenant:
-    > * Test Tenant-en klant accounts moeten zoeken naar `Azure Digital Twins`.
-    > * Andere micro soft-accounts moeten zoeken naar `Azure Smart Spaces Service`.
+    > De naam en id van de Azure AD-API die worden weergegeven, is afhankelijk van uw tenant:
+    > * Test tenant en klantaccounts `Azure Digital Twins`moeten zoeken naar .
+    > * Andere Microsoft-accounts `Azure Smart Spaces Service`moeten zoeken naar .
 
-1. Een van de API'S wordt weer gegeven als **Azure Digital apparaatdubbels** in het deel venster **API-machtigingen voor aanvragen** nadat het is geselecteerd. Selecteer de vervolg keuzelijst **lezen** en schakel vervolgens het selectie vakje **lezen. schrijven** in. Selecteer de knop **machtigingen toevoegen** .
+1. Beide API's worden weergegeven als **Azure Digital Twins** in hetzelfde deelvenster voor **api-machtigingen voor aanvragen** nadat deze is geselecteerd. Schakel de vervolgkeuzelijst **Lezen** in en schakel het selectievakje **Lezen.schrijven** in. Selecteer de knop **Machtigingen toevoegen.**
 
     [![API-machtigingen toevoegen](./media/digital-twins-permissions/aad-app-req-permissions.png)](./media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
-1. Afhankelijk van de instellingen van uw organisatie moet u mogelijk extra stappen uitvoeren om beheerders toegang tot deze API te verlenen. Neem contact op met de beheerder voor meer informatie. Zodra de beheerders toegang is goedgekeurd, worden in het deel venster API- **machtigingen** uw machtigingen weer gegeven in de kolom **Administrator toestemming vereist** . 
+1. Afhankelijk van de instellingen van uw organisatie moet u mogelijk aanvullende stappen ondernemen om beheerders toegang te verlenen tot deze API. Neem contact op met uw beheerder voor meer informatie. Zodra de beheerderstoegang is goedgekeurd, worden in de kolom Vereist toestemming **voor beheerders** in het deelvenster **API-machtigingen** uw machtigingen weergegeven. 
 
-    [goed keuring van ![-beheerder](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [![Goedkeuring van toestemming voor beheerders](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
-    Controleer of **Azure Digital apparaatdubbels** wordt weer gegeven.
+    Controleer of **Azure Digital Twins** wordt weergegeven.

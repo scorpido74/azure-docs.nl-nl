@@ -11,15 +11,15 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.custom: sfrev
 ms.openlocfilehash: b3d922cb5a7cdf34e63731ab32f21c94d7b6bca0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76025020"
 ---
 # <a name="update-the-rdp-port-range-values"></a>De waarden voor het RDP-poortbereik bijwerken
 
-Met dit voorbeeldscript worden de waarden voor het RDP-poortbereik op de clusterknooppunt-VM's gewijzigd nadat het cluster is geïmplementeerd.  Azure PowerShell wordt gebruikt, zodat de onderliggende VM's niet uit en aan hoeven te worden gezet.  Met het script wordt de `Microsoft.Network/loadBalancers` resource in de resource groep van het cluster opgehaald en worden de `inboundNatPools.frontendPortRangeStart` en `inboundNatPools.frontendPortRangeEnd` waarden bijgewerkt. Pas de parameters zo nodig aan.
+Met dit voorbeeldscript worden de waarden voor het RDP-poortbereik op de clusterknooppunt-VM's gewijzigd nadat het cluster is geïmplementeerd.  Azure PowerShell wordt gebruikt, zodat de onderliggende VM's niet uit en aan hoeven te worden gezet.  Het script `Microsoft.Network/loadBalancers` krijgt de bron in de brongroep van het cluster en werkt de `inboundNatPools.frontendPortRangeStart` en `inboundNatPools.frontendPortRangeEnd` waarden bij. Pas de parameters zo nodig aan.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -18,16 +18,16 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 4ccf62dd8a249c9ba23bbb4510164b35a58db917
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72387403"
 ---
-# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Zelf studie: gelokaliseerde push meldingen verzenden naar Windows-apps met behulp van Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>Zelfstudie: Gelokaliseerde pushmeldingen naar Windows-apps verzenden met Azure Notification Hubs
 
 > [!div class="op_single_selector"]
-> * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+> * [Windows Store C #](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
 ## <a name="overview"></a>Overzicht
@@ -50,7 +50,7 @@ In deze zelfstudie leert u het volgende:
 
 De zelfstudie [Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) voltooien.
 
-In de zelfstudie [Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) bouwt u een app die gebruikmaakt van **tags** om zich te abonneren op meldingen voor verschillende nieuws**categorieën** . In deze zelfstudie gebruikt u de **sjabloon**-functie van Notification Hubs om eenvoudig **gelokaliseerde** meldingen van belangrijk nieuws te bezorgen.
+In de zelfstudie [Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) bouwt u een app die gebruikmaakt van **tags** om zich te abonneren op meldingen voor verschillende nieuws**categorieën **. In deze zelfstudie gebruikt u de **sjabloon**-functie van Notification Hubs om eenvoudig **gelokaliseerde** meldingen van belangrijk nieuws te bezorgen.
 
 In deze context zijn sjablonen een manier om de indeling op te geven waarin een specifiek apparaat een melding moet ontvangen. De sjabloon bepaalt de exacte indeling van de payload door te verwijzen naar eigenschappen die deel uitmaken van het bericht dat is verzonden door uw back-endapp. In deze zelfstudie verzendt de back-endtoepassing een bericht met alle ondersteunde talen:
 
@@ -196,7 +196,7 @@ Zie [Push Templates](notification-hubs-templates-cross-platform-push-messages.md
 
 ## <a name="run-the-uwp-application"></a>De UWP-toepassing uitvoeren
 
-1. Voer de Universeel Windows-platform-toepassing uit. Wacht tot u het bericht ziet dat de **registratie is gelukt**.
+1. Voer de toepassing Universal Windows Platform uit. Wacht tot u het bericht ziet dat de **registratie is gelukt**.
 
     ![Registratie van mobiele toepassing](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
 2. Selecteer de **categorieën** en **locale** (landinstelling), en klik op **Subscribe**. De app zet de geselecteerde categorieën om in tags en vraagt bij Notification Hubs een nieuwe apparaatregistratie aan voor de geselecteerde tags.
@@ -206,7 +206,7 @@ Zie [Push Templates](notification-hubs-templates-cross-platform-push-messages.md
 
     ![Abonnementsbericht](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
 
-## <a name="update-console-app-to-send-localized-notifications"></a>De console-app bijwerken om gelokaliseerde meldingen te verzenden
+## <a name="update-console-app-to-send-localized-notifications"></a>Console-app bijwerken om gelokaliseerde meldingen te verzenden
 
 Wanneer u sjabloonmeldingen verstuurt, hoeft u alleen een set eigenschappen op te geven. In deze zelfstudie verstuurt de back-endtoepassing de set eigenschappen met de gelokaliseerde versie van het actuele nieuws, bijvoorbeeld:
 

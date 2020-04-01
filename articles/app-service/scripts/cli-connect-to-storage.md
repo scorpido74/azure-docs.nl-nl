@@ -1,6 +1,6 @@
 ---
-title: 'CLI: een app verbinden met een opslag account'
-description: Meer informatie over het gebruik van de Azure CLI voor het automatiseren van de implementatie en het beheer van uw App Service-app. In dit voor beeld ziet u hoe u een app verbindt met een opslag account.
+title: 'CLI: Een app verbinden met een opslagaccount'
+description: Meer informatie over het gebruik van de Azure CLI om de implementatie en het beheer van uw App Service-app te automatiseren. In dit voorbeeld ziet u hoe u een app koppelt aan een opslagaccount.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: c8fcdae21e1f9b8508649c52480fa4a007a3325b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 92cb41552d246dd30a84ce7bc27573ab6dbb7dae
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688439"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058089"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account-using-cli"></a>Een App Service-app verbinden met een opslagaccount met behulp van CLI
 
@@ -39,8 +39,8 @@ Dit script maakt gebruik van de volgende opdrachten voor het maken van een resou
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-abonnement. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-plan. |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Hiermee maakt u een App Service-app. |
 | [`az storage account create`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) | Hiermee maakt u een opslagaccount. |
 | [`az storage account show-connection-string`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) | Hiermee haalt u de verbindingsreeks op voor een opslagaccount. |
@@ -48,6 +48,6 @@ Dit script maakt gebruik van de volgende opdrachten voor het maken van een resou
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Meer voorbeelden van App Service CLI-scripts vindt u in de [documentatie van Azure App Service](../samples-cli.md).

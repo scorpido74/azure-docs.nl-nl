@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65fc4ed25b0fd360de8e3b1439d1766485eb2e58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1d06ce83d50b6f0db84d1e423e66eae98f665d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688646"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477496"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certificaten en de app-serviceomgeving 
 
@@ -22,7 +22,7 @@ De ASE is een enkel tenantsysteem. Omdat het één tenant is, zijn er enkele fun
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE-certificaten 
 
-Als u een externe ASE gebruikt, worden uw apps bereikt op [appname]. [asename].p.azurewebsites.net. Standaard worden alle ASE's, zelfs ILB ASEs, gemaakt met certificaten die volgen op die indeling. Wanneer u een ILB ASE hebt, worden de apps bereikt op basis van de domeinnaam die u opgeeft bij het maken van de ILB ASE. Als de apps SSL kunnen ondersteunen, moet u certificaten uploaden. Verkrijg een geldig SSL-certificaat door gebruik te maken van interne certificaatautoriteiten, een certificaat te kopen bij een externe uitgever of een zelfondertekend certificaat te gebruiken. 
+Als u een externe ASE gebruikt, worden uw apps bereikt op [appname]. [asename].p.azurewebsites.net. Standaard worden alle ASE's, zelfs ILB ASEs, gemaakt met certificaten die volgen op die indeling. Wanneer u een ILB ASE hebt, worden de apps bereikt op basis van de domeinnaam die u opgeeft bij het maken van de ILB ASE. Om tls te ondersteunen, moet u certificaten uploaden om tls te ondersteunen. Verkrijg een geldig TLS/SSL-certificaat door gebruik te maken van interne certificaatautoriteiten, een certificaat te kopen bij een externe uitgever of een zelfondertekend certificaat te gebruiken. 
 
 Er zijn twee opties voor het configureren van certificaten met uw ILB ASE.  U een standaardcertificaat voor een joker instellen voor de ILB ASE of certificaten instellen voor de afzonderlijke webapps in de ASE.  Ongeacht de keuze die u maakt, moeten de volgende certificaatkenmerken correct zijn geconfigureerd:
 
@@ -58,7 +58,7 @@ Apps die worden gehost in een ASE, kunnen de app-centrische certificaatfuncties 
 - IP-gebaseerde SSL, die alleen wordt ondersteund met een externe ASE.  Een ILB ASE ondersteunt geen IP-gebaseerde SSL.
 - Door KeyVault gehoste certificaten 
 
-De instructies voor het uploaden en beheren van deze certificaten zijn beschikbaar in [Een SSL-certificaat toevoegen in Azure App Service.](../configure-ssl-certificate.md)  Als u gewoon certificaten configureert die overeenkomen met een aangepaste domeinnaam die u aan uw web-app hebt toegewezen, dan volstaan die instructies. Als u het certificaat uploadt voor een ILB ASE-webapp met de standaarddomeinnaam, geeft u de scm-site op in het SAN van het certificaat zoals eerder is opgemerkt. 
+De instructies voor het uploaden en beheren van deze certificaten zijn beschikbaar in [Een TLS/SSL-certificaat toevoegen in Azure App Service.](../configure-ssl-certificate.md)  Als u gewoon certificaten configureert die overeenkomen met een aangepaste domeinnaam die u aan uw web-app hebt toegewezen, dan volstaan die instructies. Als u het certificaat uploadt voor een ILB ASE-webapp met de standaarddomeinnaam, geeft u de scm-site op in het SAN van het certificaat zoals eerder is opgemerkt. 
 
 ## <a name="tls-settings"></a>TLS-instellingen 
 

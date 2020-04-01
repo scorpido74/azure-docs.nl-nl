@@ -98,7 +98,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
 
     ![Cloud Shell CLI in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure-portal Cloudshell PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
@@ -110,7 +110,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
 
     ![Bestand uploaden in Cloud Shell in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Bestand uploaden in Cloud Shell in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
@@ -124,7 +124,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
 
     ![Cloud Shell-lijstbestand in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Cloud Shell-lijstbestand in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
@@ -141,7 +141,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
     az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -161,7 +161,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
 
     ![Sjabloon implementeren in Cloud Shell in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Sjabloon implementeren in Cloud Shell in Azure Portal](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
@@ -180,7 +180,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen. Azure Cloud s
     az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

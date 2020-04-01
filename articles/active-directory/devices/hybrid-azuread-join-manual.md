@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239082"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Zelfstudie: Hybride Azure Active Directory-gekoppelde apparaten handmatig configureren
@@ -72,7 +72,7 @@ Voor Windows 10-apparaten met versie 1703 of eerder: als uw organisatie toegang 
 
 Vanaf Windows 10 1803 probeert een apparaat het koppelen van de hybride Azure AD te voltooien via de gesynchroniseerde computer of het gesynchroniseerde apparaat, zelfs als het via AD FS koppelen van de hybride Azure AD wordt uitgevoerd vanaf een apparaat in een federatief domein mislukt en Azure AD Connect is geconfigureerd om de computer-/apparaatobjecten te synchroniseren met Azure AD.
 
-Als u wilt controleren of het apparaat toegang heeft tot de bovenstaande micro soft-resources onder het systeem account, kunt u het verbindings script voor het [registreren van apparaten](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) gebruiken.
+Als u wilt controleren of het apparaat toegang heeft tot de bovenstaande Microsoft-bronnen onder het systeemaccount, u het script [Voor apparaatregistratieregistratie](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) testen gebruiken.
 
 ## <a name="verify-configuration-steps"></a>Configuratiestappen controleren
 
@@ -85,7 +85,7 @@ In de volgende tabel staat een overzicht van de stappen die vereist zijn voor uw
 | Serviceverbindingspunt configureren | ![Selecteren][1] | ![Selecteren][1] | ![Selecteren][1] |
 | Claimuitgifte instellen |     | ![Selecteren][1] | ![Selecteren][1] |
 | Niet-Windows 10-apparaten inschakelen |       |        | ![Selecteren][1] |
-| Gekoppelde apparaten verifiëren | ![Selecteren][1] | ![Selecteren][1] | [Kijk][1] |
+| Gekoppelde apparaten verifiëren | ![Selecteren][1] | ![Selecteren][1] | [Controleren][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Een serviceverbindingspunt configureren
 
@@ -140,8 +140,8 @@ Het volgende script toont een voorbeeld van hoe de cmdlet kan worden gebruikt. I
 De cmdlet `Initialize-ADSyncDomainJoinedComputerSync`:
 
 * Maakt gebruik van de Active Directory PowerShell-module en Azure AD DS-hulpprogramma's (Azure Active Directory Domain Services). Deze hulpprogramma's maken op hun beurt gebruik van Active Directory Web Services dat wordt uitgevoerd op een domeincontroller. Active Directory Web Services wordt ondersteund op domeincontrollers waarop Windows Server 2008 R2 of hoger wordt uitgevoerd.
-* Wordt alleen ondersteund door MSOnline PowerShell-module versie 1.1.166.0. Gebruik deze [koppeling](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/) om deze module te downloaden.
-* Als de AD DS-hulpprogram ma's niet zijn geïnstalleerd, mislukt `Initialize-ADSyncDomainJoinedComputerSync`. U kunt de AD DS-hulpprogram ma's installeren via Serverbeheer onder **functies** > **Remote Server Administration Tools** > **hulpprogram ma's voor functie beheer**.
+* Wordt alleen ondersteund door MSOnline PowerShell-module versie 1.1.166.0. Als u deze module wilt downloaden, gebruikt u [deze koppeling](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/).
+* Als de AD DS-gereedschappen `Initialize-ADSyncDomainJoinedComputerSync` niet zijn geïnstalleerd, mislukt dit. U de AD DS-hulpprogramma's installeren via Serverbeheer onder Hulpmiddelen **voor** > **functiebeheer**voor**externe servers.** > 
 
 Voor domeincontrollers waarop Windows Server 2008 of een eerdere versie wordt uitgevoerd, gebruikt u het volgende script om het serviceverbindingspunt te maken. In een configuratie met meerdere forests gebruikt u het volgende script om het serviceverbindingspunt te maken in elke forest waarin computers bestaan:
 
@@ -176,7 +176,7 @@ In een gefedereerde Azure AD-configuratie zijn apparaten afhankelijk van AD FS o
 
 Actuele Windows-apparaten verifiëren met behulp van Geïntegreerde Windows-verificatie bij een actief WS-Trust-eindpunt (versie 1.3 of 2005) dat wordt gehost door de on-premises federatieve service.
 
-Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen
+Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eindpunten inschakelen
 - `/adfs/services/trust/2005/windowstransport`
 - `/adfs/services/trust/13/windowstransport`
 - `/adfs/services/trust/2005/usernamemixed`
@@ -185,7 +185,7 @@ Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **ADFS/Services/Trust/2005/windowstransport** of **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
+> Zowel **adfs/services/trust/2005/windowstransport** of **adfs/services/trust/13/windowstransport** moet alleen worden ingeschakeld als intranet gerichte eindpunten en mogen NIET worden blootgesteld als extranetgerichte eindpunten via de Web Application Proxy. Zie [Windows-eindpunten voor WS-Trust uitschakelen op de proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van Windows-eindpunten voor WS-Trust. U zien welke eindpunten zijn ingeschakeld via de AD FS-beheerconsole onder > **Serviceeindpunten**. **Service**
 
 > [!NOTE]
 >Als u AD FS niet als uw on-premises federatieve service hebt, volgt u de instructies van uw leverancier om te verzekeren dat ze WS-Trust 1.3- of WS-Trust 2005-eindpunten ondersteunen en dat deze via het MEX-bestand (Metadata Exchange) worden gepubliceerd.
@@ -481,7 +481,7 @@ Het volgende script helpt u bij het maken van de eerder beschreven uitgiftetrans
 #### <a name="remarks"></a>Opmerkingen
 
 * Dit script voegt de regels aan de bestaande regels toe. Voer het script niet tweemaal uit, anders wordt de verzameling regels tweemaal toegevoegd. Zorg dat er geen overeenkomende regels voor deze claims bestaan (onder de overeenkomende voorwaarden) voordat u het script nogmaals uitvoert.
-* Als u meerdere geverifieerde domeinnamen hebt (zoals wordt weergegeven in de Azure AD-portal of via de cmdlet **Get-MsolDomain**), stelt u **$multipleVerifiedDomainNames** in het script in op **$true**. Zorg ook dat u een bestaande **issuerID**-claim verwijdert die mogelijk door Azure AD Connect of via een andere methode is gemaakt. Hier is een voorbeeld voor deze regel:
+* Als u meerdere geverifieerde domeinnamen hebt (zoals wordt weergegeven in de Azure AD-portal of via de cmdlet **Get-MsolDomain**), stelt u **$multipleVerifiedDomainNames** in het script in op **$true**. Zorg er ook voor dat u bestaande **issuerid-claim** verwijdert die mogelijk is gemaakt door Azure AD Connect of via andere middelen. Hier is een voorbeeld voor deze regel:
 
    ```
    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
@@ -501,9 +501,9 @@ Als sommige van uw domein-gekoppelde apparaten downlevel Windows-apparaten zijn,
 
 ### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Een beleid in Azure AD instellen om gebruikers in staat te stellen apparaten te registreren
 
-Om downlevel Windows-apparaten te registreren, moet u ervoor zorgen dat de instelling is ingeschakeld die gebruikers in staat stelt apparaten te registreren in Azure AD. In de Azure-portal vindt u deze instelling onder **Azure Active Directory** > **Gebruikers en groepen** > **Apparaatinstellingen**.
+Om downlevel Windows-apparaten te registreren, moet u ervoor zorgen dat de instelling is ingeschakeld die gebruikers in staat stelt apparaten te registreren in Azure AD. In de Azure-portal u deze instelling vinden onder Azure Active > **Directory-gebruikers en groepeert u** > **apparaatinstellingen**. **Azure Active Directory**
 
-Het volgende beleid moet worden ingesteld op **alle**: **gebruikers kunnen hun apparaten registreren bij Azure AD**.
+Het volgende beleid moet worden ingesteld op **Alles:** **gebruikers kunnen hun apparaten registreren bij Azure AD**.
 
 ![De knop Alles waarmee gebruikers apparaten kunnen registreren](./media/hybrid-azuread-join-manual/23.png)
 
@@ -523,17 +523,17 @@ Wanneer een dergelijke aanvraagt wordt ontvangen, moet de on-premises federatiev
 
 In AD FS moet u een uitgiftetransformatieregel toevoegen die wordt doorgegeven via de verificatiemethode. Ga als volgt te werk om deze regel toe te voegen:
 
-1. Ga in de AD FS-beheerconsole naar **AD FS** > **Vertrouwensrelaties** > **Relying Party-vertrouwensrelaties**.
+1. Ga in de beheerconsole ad fs naar **AD FS-vertrouwensrelaties** > **Trust Relationships** > **die vertrouwen op vertrouwensrelaties van partijen**.
 1. Klik met de rechtermuisknop op het object Relying Party-vertrouwensrelatie van het identiteitsplatform van Microsoft Office 365 en selecteer vervolgens **Claimregels bewerken**.
 1. Selecteer op het tabblad **Uitgiftetransformatieregels** de optie **Regel toevoegen**.
 1. Selecteer in de sjabloonlijst **Claimregel** de optie **Claim verzenden met een aangepaste regel**.
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Typ **Auth Method Claim Rule** in het vak **Naam claimregel**.
 1. Voer in het vak **Claimregel** de volgende regel in:
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. Voer de volgende PowerShell-opdracht uit op de federatieserver. Vervang **\<RPObjectName\>** door de naam van het Relying Party-object voor het object Relying Party-vertrouwensrelatie van Azure AD. Dit object heet meestal **Identiteitsplatform van Microsoft Office 365**.
+1. Voer de volgende PowerShell-opdracht uit op de federatieserver. Vervang ** \<RPObjectName\> ** door de naam van het object relying party voor uw Azure AD-vertrouwensobject voor relying party. Dit object heet meestal **Identiteitsplatform van Microsoft Office 365**.
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -545,7 +545,7 @@ Om certificaatprompts te vermijden wanneer gebruikers van geregistreerde apparat
 
 ### <a name="control-windows-down-level-devices"></a>Downlevel Windows-apparaten beheren
 
-Als u downlevel Windows-apparaten wilt registreren, dient u een Windows Installer-pakket (.msi) in het Downloadcentrum te downloaden en installeren. Zie de sectie [gecontroleerde validatie van hybride Azure AD-deelname op Windows-apparaten op het lagere niveau](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices)voor meer informatie.
+Als u downlevel Windows-apparaten wilt registreren, dient u een Windows Installer-pakket (.msi) in het Downloadcentrum te downloaden en installeren. Zie de sectie [Gecontroleerde validatie van hybride Azure AD join op Windows-apparaten op downniveau](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices)van Windows voor meer informatie.
 
 ## <a name="verify-joined-devices"></a>Gekoppelde apparaten verifiëren
 

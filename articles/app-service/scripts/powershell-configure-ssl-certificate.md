@@ -1,18 +1,18 @@
 ---
-title: 'Power shell: SSL uploaden en binden'
-description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. Dit voor beeld laat zien hoe u een aangepast SSL-certificaat verbindt met een app.
+title: 'PowerShell: SSL uploaden en binden'
+description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u een aangepast SSL-certificaat aan een app bindt.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: seodec18
-ms.openlocfilehash: 4e5e1835927b135037d416ebaca84157c851d361
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8422c4ef29366888a2bdd53c18462e6cfb680c78
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685600"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044567"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Een aangepast SSL-certificaat koppelen aan een web-app met PowerShell
 
@@ -44,8 +44,8 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Hiermee maakt u een App Service-abonnement. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Hiermee maakt u een App Service-plan. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Hiermee maakt u een webtoepassing. |
 | [Set-AzAppServicePlan](/powershell/module/az.websites/set-azappserviceplan) | Hiermee bewerkt u een App Service-plan om de prijscategorie te wijzigen. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Hiermee wijzigt u de configuratie van een web-app. |

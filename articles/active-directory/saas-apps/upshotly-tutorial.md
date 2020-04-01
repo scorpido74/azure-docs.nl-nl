@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: de integratie van eenmalige aanmelding (SSO) Azure Active Directory Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en een upprocedure.
+title: 'Zelfstudie: SSO-integratie (Single Sign-On) van Azure Active Directory (SSO) met Upshotly | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Upshotly.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,144 +16,144 @@ ms.date: 1/7/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f82b7ce417e79cef29c9e852ca15a8ea1e8d62f2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76268151"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upshotly"></a>Zelf studie: de integratie van eenmalige aanmelding (SSO) Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-upshotly"></a>Zelfstudie: SSO-integratie (Single Sign-On) van Azure Active Directory (SSO) met Upshotly
 
-In deze zelf studie leert u hoe u een upintegreert met Azure Active Directory (Azure AD). Wanneer u samenintegreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Upshotly integreren met Azure Active Directory (Azure AD). Wanneer u Upshotly integreert met Azure AD, u het als:
 
-* Controle in azure AD die toegang heeft tot een voor beeld.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer in Azure AD die toegang heeft tot Upshotly.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Upshotly met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Eenmalige aanmelding (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* Upshotly single sign-on (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* Biedt ondersteuning voor SSO van **SP en IDP** geïnitieerd
+* Upshotly ondersteunt **SP en IDP** geïnitieerd SSO
 
-## <a name="adding-upshotly-from-the-gallery"></a>Een updiagram toevoegen vanuit de galerie
+## <a name="adding-upshotly-from-the-gallery"></a>Upshotly toevoegen vanuit de galerij
 
-Als u de integratie van een samen voeging wilt configureren in azure AD, moet u een invoeg toepassing van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Upshotly in Azure AD wilt configureren, moet u Upshotly vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** een **Afdruk** in het zoekvak.
-1. Selecteer **een** voor beeld van het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **Omhoog in** het zoekvak in de sectie Toevoegen in de sectie Toevoegen in **de galerie.**
+1. Selecteer **Omhoog in** het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-upshotly"></a>Eenmalige aanmelding voor Azure AD vooraf instellen en testen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-upshotly"></a>Azure AD-aanmelding voor Upshotly configureren en testen
 
-Configureer en test Azure AD SSO met een een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker.
+Azure AD SSO configureren en testen met Upshotly met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u in Upshotly een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker.
 
-Als u Azure AD SSO wilt configureren en testen met behulp van, voert u de volgende bouw stenen uit:
+Als u Azure AD SSO wilt configureren en testen met Upshotly, voert u de volgende bouwstenen in:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. Eenmalige **[SSO configureren](#configure-upshotly-sso)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak een gebruiker](#create-upshotly-test-user)** voor een test op een andere wijze: als u een equivalent van B. Simon wilt maken, dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Configureer Upshotly SSO](#configure-upshotly-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    * **[Maak upshotly test gebruiker](#create-upshotly-test-user)** - om een tegenhanger van B.Simon in Upshotly die is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina voor de integratie van **de toepassing en** Selecteer de sectie voor het **beheren** van **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **Upshotly-toepassingsintegratie** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, wordt de toepassing vooraf geconfigureerd in de sectie **basis configuratie van SAML** en zijn de benodigde url's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
+1. Als u **de** toepassing in de **idp-modus** wilt configureren, is de toepassing vooraf geconfigureerd en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op de knop **Opslaan** te klikken.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://app.upshotly.com/api/sso/login/<companyID>`
 
     > [!NOTE]
-    > De waarde voor de aanmeldings-URL is niet echt. Deze waarden bijwerken met de werkelijke aanmeldings-URL. U krijgt de waarde **companyID** verderop in de zelf studie. Neem contact op met het [ondersteunings team voor clients](mailto:support@upshotly.com) voor query's. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde voor de aanmeldings-URL is niet echt. Werk deze waarden bij met de werkelijke aanmeldings-URL. U krijgt de **companyID** waarde uitgelegd later in de tutorial. Neem contact op met [het ondersteuningsteam van Upshotly Client](mailto:support@upshotly.com) voor query's. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Federation Metadata XML** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer de gewenste URL ('s) op basis van uw vereiste in het gedeelte een **upopname instellen** .
+1. Kopieer in de sectie **Upshotly** instellen de juiste URL(s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen.
+In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Upshotly.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijsttoepassingen.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **Omhooggeschoten**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
-## <a name="configure-upshotly-sso"></a>Eenmalige aanmelding configureren
+## <a name="configure-upshotly-sso"></a>Upshotly SSO configureren
 
-1. Meld u in een ander webbrowser venster aan bij uw bedrijfs site als beheerder.
+1. Meld u in een ander browservenster aan bij uw upshotly-bedrijfssite als beheerder.
 
-1. Klik op het **gebruikers profiel** en navigeer naar **admin > SSO** en voer de volgende stappen uit:
+1. Klik op het **gebruikersprofiel** en navigeer naar **beheerder > SSO** en voer de volgende stappen uit:
 
-    ![Een upconfiguratie](./media/upshotly-tutorial/config1.png)
+    ![Overschotende configuratie](./media/upshotly-tutorial/config1.png)
 
-    a. Kopieer de waarde van de **bedrijfs-id** en gebruik deze **bedrijfs-id** -waarde om de **bedrijfs-id** -waarde te vervangen die aanwezig is in de **aanmeldings-URL** in het gedeelte **basis configuratie van SAML** in de Azure Portal.
+    a. Kopieer de **bedrijfs-id-waarde** en gebruik deze **bedrijfs-id-waarde** ter vervanging van de **bedrijfs-id-waarde** die aanwezig is in de **URL aanmelden** in de sectie **BasisSAML-configuratie** in de Azure-portal.
 
-    b. Gedownloade **XML voor federatieve meta gegevens** van Azure Portal in Klad blok, kopieer de inhoud van XML met meta gegevens en plak deze in **XML-tekstvak voor meta gegevens** .
+    b. Open gedownloade **Federation metadata XML** van Azure portal naar Notepad, kopieer de inhoud van metagegevens XML en plak deze in **XML-metagegevens.**
 
-### <a name="create-upshotly-test-user"></a>Een test gebruiker maken
+### <a name="create-upshotly-test-user"></a>Upshotly testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in een upedge-Cloud. Werk samen met een [upteam voor client ondersteuning](mailto:support@upshotly.com) om de gebruikers toe te voegen in het upedge-Cloud platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd B.Simon in Upshotly Edge Cloud. Werk samen met [upshotly client support team](mailto:support@upshotly.com) om de gebruikers toe te voegen in het Upshotly Edge Cloud-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Test SSO 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel in het toegangs venster klikt, moet u automatisch worden aangemeld bij de afbeelding waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Omhoog geschoten in het access-paneel klikt, moet u automatisch worden aangemeld bij de Upshotly waarvoor u SSO instelt. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer het met Azure AD](https://aad.portal.azure.com/)
+- [Probeer upshotly met Azure AD](https://aad.portal.azure.com/)

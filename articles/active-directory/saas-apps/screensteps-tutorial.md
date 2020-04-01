@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met ScreenSteps | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ScreenSteps.
+title: 'Zelfstudie: Azure Active Directory-integratie met ScreenSteps | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ScreenSteps.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 864a9243a9f737506fd4d8cbc3940d7a86711f20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67091654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Zelfstudie: Azure Active Directory-integratie met ScreenSteps
 
-In deze zelfstudie leert u hoe u ScreenSteps integreren met Azure Active Directory (Azure AD).
-ScreenSteps integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u ScreenSteps integreert met Azure Active Directory (Azure AD).
+Het integreren van ScreenSteps met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot ScreenSteps heeft.
-* U kunt uw gebruikers worden automatisch aangemeld ScreenSteps (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U in Azure AD bepalen wie toegang heeft tot ScreenSteps.
+* U uw gebruikers automatisch laten inlogen op ScreenSteps (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met ScreenSteps, moet u de volgende items:
+Als u Azure AD-integratie wilt configureren met ScreenSteps, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* ScreenSteps eenmalige aanmelding ingeschakeld abonnement
+* Abonnement met één aanmelding met één aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor ScreenSteps **SP** gestart door SSO
+* ScreenSteps ondersteunt **SP** geïnitieerde SSO
 
-## <a name="adding-screensteps-from-the-gallery"></a>ScreenSteps uit de galerie toe te voegen
+## <a name="adding-screensteps-from-the-gallery"></a>Schermstappen toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van ScreenSteps in Azure AD, moet u ScreenSteps uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van ScreenSteps in Azure AD wilt configureren, moet u ScreenSteps uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen ScreenSteps uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u ScreenSteps uit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van ScreenSteps in Azure AD, moet u Scre
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **ScreenSteps**, selecteer **ScreenSteps** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Selecteer In het zoekvak **ScreenSteps**, selecteer **ScreenSteps** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![ScreenSteps in de lijst met resultaten](common/search-new-app.png)
+     ![Schermstappen in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met ScreenSteps op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in ScreenSteps tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met ScreenSteps op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in ScreenSteps.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met ScreenSteps, moet u de volgende bouwstenen voltooien:
+Als u Azure AD-single sign-aan wilt configureren en testen met ScreenSteps, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding ScreenSteps](#configure-screensteps-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker ScreenSteps](#create-screensteps-test-user)**  : als u wilt een equivalent van Britta Simon in ScreenSteps die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Schermstappen eenmalig aanmelden configureren](#configure-screensteps-single-sign-on)** - om de instellingen voor eenmalig aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[ScreenSteps-testgebruiker maken](#create-screensteps-test-user)** - om een tegenhanger van Britta Simon in ScreenSteps te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met ScreenSteps, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met ScreenSteps te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **ScreenSteps** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Schermstappen-toepassingsintegratie** de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,18 +103,18 @@ Voor het configureren van Azure AD eenmalige aanmelding met ScreenSteps, moet u 
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![ScreenSteps domein en URL's, eenmalige aanmelding informatie](common/sp-signonurl.png)
+    ![Schermstappen Domein- en URL's met eenmalige aanmeldingsgegevens](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<tenantname>.ScreenSteps.com`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<tenantname>.ScreenSteps.com`
 
     > [!NOTE]
-    > Deze waarde is niet echt. Deze waarde bijwerken met de werkelijke aanmeldings-URL, die verderop in deze zelfstudie wordt uitgelegd.
+    > Deze waarde is niet echt. Werk deze waarde bij met de werkelijke aanmeldings-URL, die later in deze zelfstudie wordt uitgelegd.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Op de **ScreenSteps instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer in de sectie **ScreenSteps instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -124,55 +124,55 @@ Voor het configureren van Azure AD eenmalige aanmelding met ScreenSteps, moet u 
 
     c. Afmeldings-URL
 
-### <a name="configure-screensteps-single-sign-on"></a>ScreenSteps voor eenmalige aanmelding configureren
+### <a name="configure-screensteps-single-sign-on"></a>Schermstappen eenmalig aanmelden configureren
 
-1. Meld u in een ander browservenster in uw bedrijf ScreenSteps site als beheerder.
+1. Log in een ander browservenster in op uw bedrijf Site ScreenSteps als beheerder.
 
 1. Klik op **Accountinstellingen**.
 
-    ![Accountbeheer](./media/screensteps-tutorial/ic778523.png "accountbeheer")
+    ![Accountbeheer](./media/screensteps-tutorial/ic778523.png "Accountbeheer")
 
-1. Klik op **Eenmalige aanmelding**.
+1. Klik **op Eén aanmelding**.
 
-    ![Externe verificatie](./media/screensteps-tutorial/ic778524.png "externe verificatie")
+    ![Verificatie op afstand](./media/screensteps-tutorial/ic778524.png "Verificatie op afstand")
 
-1. Klik op **Single Sign-on-eindpunt maken**.
+1. Klik **op Eén aanmeldingseindpunt maken**.
 
-    ![Externe verificatie](./media/screensteps-tutorial/ic778525.png "externe verificatie")
+    ![Verificatie op afstand](./media/screensteps-tutorial/ic778525.png "Verificatie op afstand")
 
-1. In de **één maken Aanmeldingseindpunt** sectie, voert u de volgende stappen uit:
+1. Voer in de sectie **Eén aanmeldingspunt** maken de volgende stappen uit:
 
-    ![Maken van een verificatie-eindpunt](./media/screensteps-tutorial/ic778526.png "een verificatie-eindpunt maken")
+    ![Een eindpunt voor verificatie maken](./media/screensteps-tutorial/ic778526.png "Een eindpunt voor verificatie maken")
 
-    a. In de **titel** tekstvak, typ een titel.
+    a. Typ een titel in het tekstvak **Titel.**
 
-    b. Uit de **modus** in de lijst met **SAML**.
+    b. Selecteer **SAML**in de lijst **Modus** .
 
-    c. Klik op **Create**.
+    c. Klik **op Maken**.
 
-1. **Bewerken** het nieuwe eindpunt.
+1. **Het** nieuwe eindpunt bewerken.
 
-    ![Bewerk eindpunt](./media/screensteps-tutorial/ic778528.png "eindpunt bewerken")
+    ![Eindpunt bewerken](./media/screensteps-tutorial/ic778528.png "Eindpunt bewerken")
 
-1. In de **bewerken één aanmelding eindpunt** sectie, voert u de volgende stappen uit:
+1. Voer in de sectie **Eén aanmeldingspunt** bewerken de volgende stappen uit:
 
-    ![Externe verificatie-eindpunt](./media/screensteps-tutorial/ic778527.png "externe verificatie-eindpunt")
+    ![Eindpunt voor externe verificatie](./media/screensteps-tutorial/ic778527.png "Eindpunt voor externe verificatie")
 
-    a. Klik op **nieuwe-SAML certificaatbestand uploaden**, en upload het certificaat dat u hebt gedownload vanuit Azure portal.
+    a. Klik **op Nieuw SAML-certificaatbestand uploaden**en upload vervolgens het certificaat, dat u hebt gedownload van de Azure-portal.
 
-    b. Plakken **aanmeldings-URL** waarde die u hebt gekopieerd vanuit de Azure portal in de **externe aanmeldings-URL** tekstvak.
+    b. De **URL-waarde van aanmelding plakken,** die u hebt gekopieerd van de Azure-portal naar het tekstvak voor extern **inlog-URL.Paste** Login URL value, which you have copied from the Azure portal into the Remote Login URL textbox.
 
-    c. Plakken **afmeldings-URL van** waarde die u hebt gekopieerd vanuit de Azure portal in de **URL voor afmelden** tekstvak.
+    c. De **URL-waarde van afmelden** plakken, die u vanuit de Azure-portal hebt gekopieerd naar het **tekstvak VOOR uitloggen URL.**
 
-    d. Selecteer een **groep** gebruikers toewijzen aan wanneer deze zijn ingericht.
+    d. Selecteer een **groep** waaraan gebruikers moeten worden toegewezen wanneer ze zijn ingericht.
 
-    e. Klik op **Bijwerken**.
+    e. Klik op **Update**.
 
-    f. Kopiëren de **URL voor SAML-consument** bij het Klembord en plak in op de **aanmeldings-URL** -tekstvak in **SAML-basisconfiguratie** sectie in Azure portal.
+    f. Kopieer de **URL van de SAML-consument** naar het klembord en plak in het tekstvak **VOOR aanmeldings-URL** in de sectie **BasisSAML-configuratie** in de Azure-portal.
 
-    g. Ga terug naar de **Single Sign-on Endpoint bewerken**.
+    g. Ga terug naar het **eindpunt voor eenmalig aanmelding bewerken**.
 
-    h. Klik op de **standaard voor account** knop met dit eindpunt voor alle gebruikers die zich bij ScreenSteps aanmelden. U kunt ook klikken op de **toevoegen aan de Site** knop met dit eindpunt voor specifieke sites in **ScreenSteps**.
+    h. Klik **op** de knop Standaard maken voor account om dit eindpunt te gebruiken voor alle gebruikers die zich aanmelden bij ScreenSteps. U ook op de knop **Toevoegen aan site** klikken om dit eindpunt te gebruiken voor specifieke sites in **ScreenSteps**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -190,26 +190,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan ScreenSteps.
+In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot ScreenSteps.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **ScreenSteps**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens ScreenSteps**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **ScreenSteps**.
+2. Selecteer **ScreenSteps**in de lijst met toepassingen .
 
-    ![De koppeling ScreenSteps in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Schermstappen in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -219,26 +219,26 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-screensteps-test-user"></a>ScreenSteps testgebruiker maken
+### <a name="create-screensteps-test-user"></a>Testgebruiker ScreenSteps maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in ScreenSteps. Werken met [ScreenSteps Client ondersteuningsteam](https://www.screensteps.com/contact) om toe te voegen de gebruikers in het ScreenSteps-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in ScreenSteps. Werk samen met [het ondersteuningsteam](https://www.screensteps.com/contact) van ScreenSteps Client om de gebruikers toe te voegen in het ScreenSteps-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel ScreenSteps in het toegangsvenster, moet u worden automatisch aangemeld bij de ScreenSteps waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel ScreenSteps in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de ScreenSteps waarvoor u SSO instelt. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

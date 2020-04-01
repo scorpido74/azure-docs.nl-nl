@@ -1,45 +1,45 @@
 ---
-title: 'Zelf studie: een hub-virtueel netwerk maken in azure met behulp van terraform'
-description: Zelf studie voor het maken van een hub-virtueel netwerk in azure dat fungeert als een algemeen verbindings punt tussen andere netwerken
+title: Zelfstudie - Een virtueel hubnetwerk maken in Azure met Terraform
+description: Zelfstudie die laat zien hoe u een virtueel hubnetwerk in Azure maakt dat fungeert als een gemeenschappelijk verbindingspunt tussen andere netwerken
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.openlocfilehash: 6669e90c3d12fcf55bcb1ad69c3b275c5117a8fc
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74159041"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Zelf studie: een hub virtueel netwerk maken in azure met behulp van terraform
+# <a name="tutorial-create-a-hub-virtual-network-in-azure-by-using-terraform"></a>Zelfstudie: Een virtueel hubnetwerk maken in Azure met Terraform
 
-Het virtuele netwerk van de hub fungeert als het centrale punt van connectiviteit met het on-premises netwerk. Het virtuele netwerk fungeert als host voor gedeelde services die worden gebruikt door workloads die worden gehost in de spoke-VM-netwerken. Voor demo doeleinden worden geen gedeelde services geïmplementeerd in deze zelf studie.
+Het virtuele hubnetwerk fungeert als het centrale verbindingspunt voor het on-premises netwerk. Het virtuele netwerk host gedeelde services die worden verbruikt door workloads die worden gehost in de gesproken virtuele netwerken. Voor demodoeleinden worden in deze zelfstudie geen gedeelde services geïmplementeerd.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Gebruik de HashiCorp-configuratie taal (HCL) voor het implementeren van het virtuele hub-netwerk in een hub-en-spoke-topologie.
-> * Gebruik terraform om een hub JumpBox virtuele machine te maken.
-> * Gebruik terraform voor het maken van een hub-gateway voor een virtueel particulier netwerk.
-> * Gebruik terraform om hub-en on-premises gateway verbindingen te maken.
+> * Gebruik de HashiCorp Configuration Language (HCL) om het virtuele hubnetwerk te implementeren in een hub-and-spoke topologie.
+> * Gebruik Terraform om een hub jumpbox virtuele machine te maken.
+> * Gebruik Terraform om een hub virtual private network gateway te maken.
+> * Gebruik Terraform om hub- en on-premises gatewayverbindingen te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. [Maak een hub-en-spoke hybride netwerk topologie met terraform in azure](./terraform-hub-spoke-introduction.md).
-1. [Een on-premises virtueel netwerk maken met terraform in azure](./terraform-hub-spoke-on-prem.md).
+1. [Maak een hybride netwerktopologie met hub en spoke met Terraform in Azure.](./terraform-hub-spoke-introduction.md)
+1. [Maak een on-premises virtueel netwerk met Terraform in Azure.](./terraform-hub-spoke-on-prem.md)
 
-## <a name="create-the-directory-structure"></a>De directorystructuur maken
+## <a name="create-the-directory-structure"></a>De mapstructuur maken
 
-Het hub-netwerk bestaat uit de volgende onderdelen:
+Het hubnetwerk bestaat uit de volgende componenten:
 
-- Een hub virtueel netwerk
-- Een hub van een virtuele netwerk gateway
-- Hub gateway-verbindingen 
+- Een virtueel hubnetwerk
+- Een virtuele hub-netwerkgateway
+- Hubgatewayverbindingen 
 
-Het volgende terraform-configuratie bestand definieert de resources:
+In het volgende terraform-configuratiebestand worden de bronnen gedefinieerd:
 
-1. Blader naar de [Azure-portal](https://portal.azure.com).
+1. Blader naar [Azure Portal](https://portal.azure.com).
 
-1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
+1. Azure [Cloud Shell openen](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
     ![Cloud Shell-prompt](./media/terraform-common/azure-portal-cloud-shell-button-min.png)
 
@@ -49,15 +49,15 @@ Het volgende terraform-configuratie bestand definieert de resources:
     cd clouddrive
     ```
 
-1. Wijzig de mappen in de nieuwe map.
+1. Mappen wijzigen in de nieuwe map.
 
     ```bash
     cd hub-spoke
     ```
 
-## <a name="declare-the-hub-virtual-network"></a>Het virtuele netwerk van de hub declareren
+## <a name="declare-the-hub-virtual-network"></a>Het virtuele hubnetwerk declareren
 
-Maak het terraform-configuratie bestand dat het virtuele netwerk van de hub declareert.
+Maak het terraform-configuratiebestand dat het virtuele hubnetwerk declareert.
 
 1. Maak in Cloud Shell een bestand met de naam `hub-vnet.tf`.
 
@@ -228,4 +228,4 @@ Maak het terraform-configuratie bestand dat het virtuele netwerk van de hub decl
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Een hub virtueel netwerk apparaat maken met terraform in azure](./terraform-hub-spoke-hub-nva.md)
+> [Een virtueel netwerktoestel voor hubs maken met Terraform in Azure](./terraform-hub-spoke-hub-nva.md)

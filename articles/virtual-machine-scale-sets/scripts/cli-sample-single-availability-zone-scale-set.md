@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-voor beelden-schaalset met één zone
-description: Met dit script maakt u een virtuele-machine schaalset van Azure waarop Ubuntu wordt uitgevoerd in één beschikbaarheids zone.
+title: Azure CLI-monsters - schaalset met één zone
+description: Met dit script wordt een Azure-set voor virtuele machineschaal gemaakt waarop Ubuntu in één beschikbaarheidszone wordt uitgevoerd.
 author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 64fbd715a21e801c4adac02f301ea91d3205fbbd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278737"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Een virtuele-machineschaalset met één zone maken met Azure CLI
@@ -43,6 +43,6 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 | [az group delete](/cli/azure/ad/group) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure/overview) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure/overview) voor meer informatie over de Azure CLI.
 
 U kunt extra Azure CLI-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor virtuele-machineschaalsets](../cli-samples.md).

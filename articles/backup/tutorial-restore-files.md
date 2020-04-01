@@ -1,14 +1,14 @@
 ---
-title: 'Zelf studie: bestanden herstellen naar een virtuele machine met Azure Backup'
+title: Zelfstudie - Bestanden herstellen naar een virtuele machine met Azure Backup
 description: Informatie over hoe u herstelacties op bestandsniveau uitvoert op een Azure-VM met Backup en Recovery Services.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74171725"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Bestanden herstellen naar een virtuele machine in Azure
@@ -202,4 +202,4 @@ In deze zelfstudie hebt u een herstelpunt met een VM verbonden en voor een webse
 Ga naar de volgende zelfstudie voor meer informatie over hoe u een back-up van een Windows-server naar Azure maakt.
 
 > [!div class="nextstepaction"]
-> [Back-up maken van een Windows-server naar Azure](tutorial-backup-windows-server-to-azure.md)
+> [Een back-up maken van een Windows-server naar Azure](tutorial-backup-windows-server-to-azure.md)

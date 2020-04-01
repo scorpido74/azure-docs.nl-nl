@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met muziek vereffenen | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Settling muziek.
+title: 'Zelfstudie: Azure Active Directory-integratie met Het regelen van muziek | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Het oplossen van muziek.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,44 +17,44 @@ ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08f084bc0231bceeaf2c7d87dc0a160cdf188978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090987"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>Zelfstudie: Azure Active Directory-integratie met muziek vereffenen
+# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>Zelfstudie: Azure Active Directory-integratie met Het regelen van muziek
 
-In deze zelfstudie leert u hoe u Settling muziek integreren met Azure Active Directory (Azure AD).
-Settling muziek integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u Het regelen van muziek integreert met Azure Active Directory (Azure AD).
+Het integreren van het oplossen van muziek met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang heeft tot vereffenen muziek.
-* U kunt uw gebruikers worden automatisch aangemeld vereffenen muziek (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U in Azure AD bepalen wie toegang heeft tot Het regelen van muziek.
+* U uw gebruikers automatisch laten aanmelden bij Het regelen van muziek (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met vereffenen muziek, moet u de volgende items:
+Als u Azure AD-integratie wilt configureren met Het regelen van muziek, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Abonnement vereffenen muziek eenmalige aanmelding ingeschakeld
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Abonnement met één aanmelding voor muziek regelen
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor muziek vereffenen **SP** gestart door SSO
+* Settling muziek ondersteunt **SP** geïnitieerde SSO
 
-## <a name="adding-settling-music-from-the-gallery"></a>Settling muziek toe te voegen uit de galerie
+## <a name="adding-settling-music-from-the-gallery"></a>Het toevoegen van Settling muziek uit de galerie
 
-Voor het configureren van de integratie van Settling muziek in Azure AD, moet u Settling muziek uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Het regelen van muziek in Azure AD wilt configureren, moet u Het regelen van muziek uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Settling muziek uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u Settling-muziek uit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -66,31 +66,31 @@ Voor het configureren van de integratie van Settling muziek in Azure AD, moet u 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **vereffenen muziek**, selecteer **vereffenen muziek** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Muziek vereffenen**in het zoekvak en selecteer **Muziek uit** het resultaatpaneel regelen en klik op Knop **Toevoegen** om de toepassing toe te voegen.
 
-    ![Muziek vereffenen in de lijst met resultaten](common/search-new-app.png)
+    ![Muziek in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met muziek op basis van een testgebruiker met de naam vereffenen **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in vereffenen muziek tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Settling-muziek op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppeling slinken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Het oplossen van muziek.
 
-Als u wilt configureren en testen van Azure AD eenmalige aanmelding met Settling muziek, u nodig hebt voor de volgende bouwstenen:
+Als u Azure AD-singlesign-aan wilt configureren en testen met Het regelen van muziek, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van Settling muziek Single Sign-On](#configure-settling-music-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Settling muziek testgebruiker](#create-settling-music-test-user)**  : als u wilt een equivalent van Britta Simon in vereffenen muziek die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Vereffeningsmuziek Eenmalig aanmelden configureren](#configure-settling-music-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak Het regelen van muziek test gebruiker](#create-settling-music-test-user)** - om een tegenhanger van Britta Simon in Het regelen van muziek die is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met vereffenen muziek, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD te configureren met Het regelen van muziek:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **vereffenen muziek** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de **integratiepagina Voor muziektoepassingen** de optie **Eén aanmelding .**
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,20 +104,20 @@ Voor het configureren van Azure AD eenmalige aanmelding met vereffenen muziek, m
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Muziek domein en URL's één aanmelding informatie vereffenen](common/sp-identifier.png)
+    ![Informatie over muziekdomein en URL's met één aanmelding](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.rakurakuseisan.jp/<USERACCOUNT>/`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.rakurakuseisan.jp/<USERACCOUNT>/`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.rakurakuseisan.jp/<USERACCOUNT>/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [vereffenen muziek Client ondersteuningsteam](https://rakurakuseisan.jp/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [Settling music Client support team](https://rakurakuseisan.jp/) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Op de **instellen vereffenen muziek** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer in de sectie **Muziek instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -127,33 +127,33 @@ Voor het configureren van Azure AD eenmalige aanmelding met vereffenen muziek, m
 
     c. Afmeldings-URL
 
-### <a name="configure-settling-music-single-sign-on"></a>Settling muziek eenmalige aanmelding configureren
+### <a name="configure-settling-music-single-sign-on"></a>Regelen van muziek Single Sign-On configureren
 
-1. In een ander browservenster, moet u zich aanmelden bij vereffenen muziek als een beveiligingsbeheerder.
+1. Meld u in een ander browservenster aan bij Muziek regelen als beveiligingsbeheerder.
 
-1. Boven op de pagina, klikt u op **management** tabblad.
+1. Klik boven aan de pagina op het tabblad **Beheer.**
 
-    ![Stap 1 muziek vereffenen](./media/settlingmusic-tutorial/tutorial_settlingmusic_step1.png)
+    ![Het regelen van muziekstap1](./media/settlingmusic-tutorial/tutorial_settlingmusic_step1.png)
 
-1. Klik op **systeeminstelling** tabblad.
+1. Klik op het tabblad **Systeeminstelling.**
 
-    ![Stap 2 muziek vereffenen](./media/settlingmusic-tutorial/tutorial_settlingmusic_step2.png)
+    ![Het regelen van muziekstap2](./media/settlingmusic-tutorial/tutorial_settlingmusic_step2.png)
 
-1. Schakel over naar **Security** tabblad.
+1. Ga naar het tabblad **Beveiliging.**
 
-    ![Stap 3 muziek vereffenen](./media/settlingmusic-tutorial/tutorial_settlingmusic_step3.png)
+    ![Het regelen van muziekstap3](./media/settlingmusic-tutorial/tutorial_settlingmusic_step3.png)
 
-1. Op de **eenmalige aanmelding instelling** sectie, voert u de volgende stappen uit:
+1. Voer in de sectie **Instelling Voor eenmalig aanmelden** de volgende stappen uit:
 
-    ![Muziek step5 vereffenen](./media/settlingmusic-tutorial/tutorial_settlingmusic_step4.png)
+    ![Het regelen van muziekstap5](./media/settlingmusic-tutorial/tutorial_settlingmusic_step4.png)
 
-    a. Klik op **om in te schakelen**.
+    a. Klik **op Inschakelen**.
 
-    b. In de **aanmeldings-URL van de ID-provider** tekstvak, plak de waarde van **aanmeldings-URL** die u hebt gekopieerd vanuit Azure portal.
+    b. Plak in de **login-URL van het** tekstvak ID-provider de waarde van **de aanmeldings-URL** die u hebt gekopieerd van azure-portal.
 
-    c. In de **afmeldings-URL van ID-provider** tekstvak, plak de waarde van **afmeldings-URL van** die u hebt gekopieerd vanuit Azure portal.
+    c. Plak in het **URL-tekstvak voor id-provider** de waarde van **de aanmeldings-URL** die u hebt gekopieerd uit azure-portal.
 
-    d. Klik op **bestand kiezen** het uploaden van de **certificaat (Base64)** die u hebt gedownload vormen van Azure portal.
+    d. Klik **op Bestand kiezen** om het certificaat **(Base64)** te uploaden dat u hebt gedownload van de Azure-portal.
 
     e. Klik op de knop **Opslaan**.
 
@@ -173,25 +173,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld `brittasimon@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon Azure eenmalige aanmelding gebruiken door het verlenen van toegang tot muziek vereffenen.
+In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Settling-muziek.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **vereffenen muziek**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer Vervolgens **Muziek regelen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **vereffenen muziek**.
+2. Selecteer **Muziek regelen**in de lijst met toepassingen .
 
-    ![De koppeling Settling muziek in de lijst met toepassingen](common/all-applications.png)
+    ![De muziekkoppeling Regelen in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -201,26 +201,26 @@ In deze sectie maakt inschakelen u Britta Simon Azure eenmalige aanmelding gebru
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-settling-music-test-user"></a>Settling muziek testgebruiker maken
+### <a name="create-settling-music-test-user"></a>De gebruiker van de muziektest maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in Settling muziek. Werken met [vereffenen muziek Client ondersteuningsteam](https://rakurakuseisan.jp/) om toe te voegen de gebruikers in het Settling muziek-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maak je een gebruiker genaamd Britta Simon in Settling muziek. Werk samen met [Settling music Client support team](https://rakurakuseisan.jp/) om de gebruikers toe te voegen in het Settling muziekplatform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Settling muziek in het toegangsvenster, moet u worden automatisch aangemeld bij de Settling muziek waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Muziek regelen in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Settling-muziek waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

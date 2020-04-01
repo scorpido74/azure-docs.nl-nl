@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een back-up maken van virtuele Linux-machines in de Azure Portal'
+title: Zelfstudie - Een back-up maken van virtuele Linux-machines in de Azure-portal
 description: In deze zelfstudie leert u hoe u Azure Portal gebruikt om uw virtuele Linux-machines te beschermen met Azure Backup.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2a53086b959f5b93d17d307a59682a44fe1f33a8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c8b29052b4ca1d3ccd6f1f9b6afba5177dbd6c8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034587"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066495"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Zelfstudie: Back-ups maken en bestanden herstellen voor virtuele Linux-machines in Azure
 
@@ -43,15 +43,15 @@ Wanneer de gegevensoverdracht is voltooid, wordt de momentopname verwijderd en w
 ## <a name="create-a-backup"></a>Een back-up maken
 U plant als volgt een dagelijkse back-up naar een Recovery Services-kluis:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 2. Selecteer **Virtuele machines** in het menu aan de linkerkant. 
 3. Selecteer in de lijst de virtuele machine waarvan u een back-up wilt maken.
-4. Klik in de sectie **Instellingen** van de VM-blade op **Back-up**. De blade **Back-up inschakelen** wordt geopend.
+4. Klik in de sectie **Instellingen** van de VM-blade op **Back-up**. Het **back-upblad inschakelen** wordt geopend.
 5. Klik in **Recovery Services-kluis** op **Nieuwe maken** en geef de naam op voor de nieuwe kluis. Een nieuwe kluis wordt gemaakt in dezelfde resourcegroep en op dezelfde locatie als de virtuele machine.
 6. Klik op **Back-upbeleid**. Handhaaf voor dit voorbeeld de standaardwaarden en klik op **OK**.
 7. Klik op de blade **Back-up inschakelen** op **Back-up inschakelen**. Hiermee maakt u een dagelijkse back-up op basis van het standaardschema.
 10. Klik op de blade **Back-up** op **Nu een back-up maken** om een initieel herstelpunt te maken.
-11. Klik op de blade **Nu een back-up maken** op het kalenderpictogram en selecteer in de kalender de laatste dag dat dit herstelpunt wordt bewaard. Klik vervolgens op **Back-up**.
+11. Klik in het **mes Back-up nu** op het agendapictogram, gebruik het agendabesturingselement om de laatste dag te selecteren waarop dit herstelpunt wordt bewaard en klik op **Back-up**.
 12. Op de blade **Backup** voor uw VM ziet u het aantal herstelpunten dat is voltooid.
 
     ![Herstelpunten](./media/tutorial-backup-vms/backup-complete.png)
@@ -64,7 +64,7 @@ Als u een bestand per ongeluk verwijdert of onbedoelde wijzigingen in een bestan
 
 In dit voorbeeld laten we zien hoe u de standaard-nginx-webpagina herstelt /var/www/html/index.nginx-debian.html. Het openbare IP-adres van de VM is in dit voorbeeld: *13.69.75.209*. U vindt het IP-adres van uw VM met behulp van:
 
- ```bash 
+ ```azurecli
  az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
  ```
 
@@ -78,6 +78,7 @@ In dit voorbeeld laten we zien hoe u de standaard-nginx-webpagina herstelt /var/
     ```bash
     ssh 13.69.75.209
     ```
+
 2. Verwijder /var/www/html/index.nginx-debian.html.
 
     ```bash
@@ -122,7 +123,7 @@ In dit voorbeeld laten we zien hoe u de standaard-nginx-webpagina herstelt /var/
     
 12. U krijgt het pad voor het koppelpunt via de uitvoer van het script. De uitvoer ziet er ongeveer als volgt uit:
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
                           
@@ -160,7 +161,7 @@ In dit voorbeeld laten we zien hoe u de standaard-nginx-webpagina herstelt /var/
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een back-up maken van een VM

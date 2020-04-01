@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met EAB Navigate IMPL | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en EAB Navigeer IMPL.
+title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met EAB Navigate IMPL | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en EAB Navigate IMPL.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,136 +17,136 @@ ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 465b41aaf3c3b16dcba489d1ea9ba951a3108c8e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77046587"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-impl"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met EAB Navigate IMPL
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-impl"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met EAB Navigate IMPL
 
-In deze zelf studie leert u hoe u EAB IMPL kunt integreren met Azure Active Directory (Azure AD). Wanneer u EAB in IMPL integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u EAB Navigate IMPL integreert met Azure Active Directory (Azure AD). Wanneer u EAB Navigate IMPL integreert met Azure AD, u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot EAB Navigeer IMPL.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij EAB om IMPL te navigeren met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer in Azure AD wie toegang heeft tot EAB Navigate IMPL.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij EAB Navigate IMPL met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* EAB navigeert IMPL-abonnement met eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* EAB Navigate IMPL single sign-on (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* EAB Navigate IMPL ondersteunt door **SP** GEÏNITIEERDe SSO
+* EAB Navigate IMPL ondersteunt **SP** geïnitieerde SSO
 
 > [!NOTE]
-> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
+> Id van deze toepassing is een vaste tekenreekswaarde, zodat slechts één instantie in één tenant kan worden geconfigureerd.
 
-## <a name="adding-eab-navigate-impl-from-the-gallery"></a>EAB-IMPL toevoegen vanuit de galerie
+## <a name="adding-eab-navigate-impl-from-the-gallery"></a>EAB Navigate IMPL toevoegen vanuit de galerie
 
-Als u de integratie van EAB naar Azure AD wilt configureren, moet u EAB IMPL van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van EAB Navigate IMPL wilt configureren in Azure AD, moet u EAB Navigate IMPL vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **EAB navigeren IMPL** in het zoekvak.
-1. Selecteer **EAB navigeren IMPL** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **EAB Navigate IMPL** in het zoekvak in de sectie **Toevoegen in de galeriesectie.**
+1. Selecteer **EAB Navigeer impl** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate-impl"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor EAB Navigate IMPL
+## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate-impl"></a>Azure AD-aanmelding voor EAB Navigate IMPL configureren en testen
 
-Azure AD SSO configureren en testen met EAB Navigeer IMPL met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in EAB Navigate IMPL.
+Azure AD SSO configureren en testen met EAB Navigate IMPL met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in EAB Navigate IMPL.
 
-Als u Azure AD SSO wilt configureren en testen met EAB Navigate IMPL, voltooit u de volgende bouw stenen:
+Als u Azure AD SSO wilt configureren en testen met EAB Navigate IMPL, voert u de volgende bouwstenen uit:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[EAB NAVIGATE IMPL SSO configureren](#configure-eab-navigate-impl-sso)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak EAB Navigeer IMPL test gebruiker](#create-eab-navigate-impl-test-user)** -om een soort tegen te gaan van B. Simon in EAB Navigeer naar IMPL dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Configureer Impl SSO van EAB Navigate](#configure-eab-navigate-impl-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    * **[EAB Navigate IMPL-testgebruiker](#create-eab-navigate-impl-test-user)** maken - om een tegenhanger van B.Simon in EAB Navigate IMPL te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **EAB navigeren IMPL** Application Integration de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina Impl-toepassingsintegratie **van EAB Navigate** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden: Voer in het tekstvak **id (Entiteits-ID)** precies de volgende waarde in: `https://impl.bouncer.eab.com`
+1. Voer in de sectie **BasisSAML-configuratie** de waarden in voor de volgende velden: Voer in het tekstvak **Id (Entity ID)** precies de volgende waarde in:`https://impl.bouncer.eab.com`
     
-    Voer in het tekstvak **antwoord-URL (assertion Consumer Service-URL)** de volgende waarden in als afzonderlijke rijen: `https://impl.bouncer.eab.com/sso/saml2/acs`
+    Voer in het tekstvak **Antwoord-URL (Bevestigingsconsumentenservice)** de volgende waarden in als afzonderlijke rijen:`https://impl.bouncer.eab.com/sso/saml2/acs`
     `https://impl.bouncer.eab.com/sso/saml2/acs/`
     
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.navigate.impl.eab.com/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.navigate.impl.eab.com/`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [EAB Navigeer IMPL client support team](mailto:EABTechSupport@eab.com) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [het ondersteuningsteam van EAB Navigate IMPL Client](mailto:EABTechSupport@eab.com) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
+1. Klik op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** op de knop Kopiëren om **de url van de appfederatie-metagegevens** te kopiëren en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan EAB Navigate IMPL.
+In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot EAB Navigate IMPL.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **EAB NAVIGATE IMPL**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **EAB Navigate IMPL**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
 ## <a name="configure-eab-navigate-impl-sso"></a>EAB Navigate IMPL SSO configureren
 
-Voor het configureren van eenmalige aanmelding op **EAB navigeert u IMPL** aan de zijde, moet u de URL voor de **federatieve meta gegevens** van de app naar [EAB navigeren IMPL ondersteunings team](mailto:EABTechSupport@eab.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **de Impl-kant van EAB Navigate,** moet u de url van de **app-federatie-metagegevens** verzenden naar [het ondersteuningsteam van EAB Navigate IMPL.](mailto:EABTechSupport@eab.com) Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-eab-navigate-impl-test-user"></a>EAB voor IMPL-test gebruiker maken
+### <a name="create-eab-navigate-impl-test-user"></a>Gebruiker eAB Navigate IMPL-test maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in EAB navigeert IMPL. Werk met [EAB Navigeer IMPL ondersteunings team](mailto:EABTechSupport@eab.com) om de gebruikers toe te voegen in het EAB IMPL-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd B.Simon in EAB Navigate IMPL. Werk samen met [het Ondersteuningsteam van EAB Navigate IMPL](mailto:EABTechSupport@eab.com) om de gebruikers toe te voegen aan het EAB Navigate IMPL-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Test SSO
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel EAB Navigate IMPL in het toegangs venster klikt, moet u automatisch worden aangemeld bij de EAB navigeren IMPL waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de impl-tegel EAB Navigate in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Impl navigeren eAB navigate waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer EAB in IMPL te navigeren met Azure AD](https://aad.portal.azure.com/)
+- [Probeer EAB Navigate IMPL met Azure AD](https://aad.portal.azure.com/)

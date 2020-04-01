@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: uw eerste relationele data base ontwerpen met behulp van SSMS'
+title: 'Zelfstudie: Uw eerste relationele database ontwerpen met SSMS'
 description: Leer hoe u uw eerste relationele database in een individuele database in Azure SQL Database kunt ontwerpen met behulp van SQL Server Management Studio.
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75459625"
 ---
-# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Zelf studie: een relationele data base ontwerpen in één data base in Azure SQL Database met behulp van SSMS
+# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Zelfstudie: Een relationele database ontwerpen in één database binnen Azure SQL Database met SSMS
 
 Azure SQL-database is een relationele DBaaS (database-as-a-service) in Microsoft Cloud (Azure). In deze zelfstudie leert u hoe u met Azure Portal en [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) de volgende taken uitvoert:
 
@@ -28,12 +28,12 @@ Azure SQL-database is een relationele DBaaS (database-as-a-service) in Microsoft
 > - Gegevens bulksgewijs laden met BCP
 > - Query uitvoeren op gegevens met SSMS
 
-*Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+*Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 > [!TIP]
-> De volgende Microsoft Learn module helpt u gratis te leren hoe u [een ASP.NET-toepassing kunt ontwikkelen en configureren die een query uitvoert op een Azure SQL database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), inclusief het maken van een eenvoudige data base.
+> Met de volgende Microsoft Learn-module u gratis leren hoe u [een ASP.NET-toepassing ontwikkelen en configureren die een Azure SQL-database opvraagt,](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)inclusief het maken van een eenvoudige database.
 > [!NOTE]
-> Voor deze zelfstudie wordt gebruikgemaakt van een individuele database. U kunt ook een gepoolde database in een elastische pool of een exemplaardatabase in een beheerd exemplaar gebruiken. Voor connectiviteit met een beheerd exemplaar raadpleegt u de volgende Managed instance Quick starts: Quick Start: [Configure Azure VM to Connect to a Azure SQL database Managed instance](sql-database-managed-instance-configure-vm.md) and [Quick Start: Configure an Point-to-site connection to a Azure SQL database Managed instance of on-premises](sql-database-managed-instance-configure-p2s.md).
+> Voor deze zelfstudie wordt gebruikgemaakt van een individuele database. U kunt ook een gepoolde database in een elastische pool of een exemplaardatabase in een beheerd exemplaar gebruiken. Zie deze beheerde instantie quickstarts voor connectiviteit met een beheerde instantie: [Quickstart: Configureer Azure VM om verbinding te maken met een Azure SQL Database Managed Instance](sql-database-managed-instance-configure-vm.md) en [Quickstart: Configureer een point-to-site-verbinding met een Azure SQL Database Managed Instance vanuit on-premises](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,7 +44,7 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-single-database"></a>Een lege individuele database maken
 
@@ -53,11 +53,11 @@ Een individuele Azure SQL-database wordt gemaakt met een gedefinieerde set reken
 Volg deze stappen om een lege individuele database te maken.
 
 1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**.
-2. Selecteer op de pagina **Nieuw** **Databases** in de sectie Azure Marketplace en klik vervolgens op **SQL Database** in de sectie **Aanbevolen**.
+2. Selecteer op de pagina **Nieuw****Databases** in de sectie Azure Marketplace en klik vervolgens op **SQL Database** in de sectie **Aanbevolen**.
 
    ![lege database maken](./media/sql-database-design-first-database/create-empty-database.png)
 
-3. Vul het formulier **SQL Database** in met de volgende informatie, zoals in de voorgaande afbeelding wordt weergegeven:
+3. Vul het **SQL Database-formulier** in met de volgende informatie, zoals weergegeven op de vorige afbeelding:
 
     | Instelling       | Voorgestelde waarde | Beschrijving |
     | ------------ | ------------------ | ------------------------------------------------- |
@@ -71,13 +71,13 @@ Volg deze stappen om een lege individuele database te maken.
     | Instelling       | Voorgestelde waarde | Beschrijving |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Servernaam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige servernamen. |
-    | **Aanmeldgegevens van serverbeheerder** | Een geldige naam | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige aanmeldingsnamen. |
+    | **Inloggen voor serverbeheerder** | Een geldige naam | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige aanmeldingsnamen. |
     | **Wachtwoord** | Een geldig wachtwoord | Uw wachtwoord moet uit minstens acht tekens bestaan en moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens. |
-    | **Locatie** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/) voor informatie over regio's. |
+    | **Locatie** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor informatie over regio's . |
 
     ![database-server maken](./media/sql-database-design-first-database/create-database-server.png)
 
-5. Klik op **Selecteren**.
+5. Klik **op Selecteren**.
 6. Klik op **Prijscategorie** om de servicelaag, het aantal DTU's of vCores en de hoeveelheid opslag op te geven. U kunt de opties bekijken voor de hoeveelheid DTU's/vCores en opslag die voor elke servicelaag beschikbaar zijn.
 
     Als u de servicelaag, het aantal DTU's of vCores en de hoeveelheid opslagruimte hebt geselecteerd, klikt u op **Toepassen**.
@@ -97,15 +97,15 @@ De service SQL Database maakt een IP-firewall op serverniveau. De firewall voork
 > [!IMPORTANT]
 > De service SQL Database communiceert via poort 1433. Als u verbinding met deze service probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. In dat geval kunt u geen verbinding maken met uw individuele database, tenzij de beheerder poort 1433 openstelt.
 
-1. Nadat de implementatie is voltooid, selecteert u **SQL-data bases** in het menu Azure portal of zoekt u naar een wille keurige pagina SQL-data *bases* en selecteert u deze.  
+1. Nadat de implementatie is voltooid, selecteert u **SQL-databases** in het Azure-portalmenu of zoekt en selecteert u *SQL-databases* op een pagina.  
 
-1. Selecteer *yourDatabase* op de pagina **SQL-data bases** . De overzichts pagina voor de data base wordt geopend, met de volledig gekwalificeerde **Server naam** (zoals `contosodatabaseserver01.database.windows.net`) en biedt opties voor verdere configuratie.
+1. Selecteer *uwDatabase* op de pagina **SQL-databases.** De overzichtspagina voor uw database wordt geopend, waarin `contosodatabaseserver01.database.windows.net`u de volledig gekwalificeerde **servernaam** (zoals ) toont en opties biedt voor verdere configuratie.
 
    ![servernaam](./media/sql-database-design-first-database/server-name.png)
 
 1. Kopieer vanuit SQL Server Management Studio deze volledig gekwalificeerde servernaam om verbinding te maken met de server en de databases.
 
-1. Klik op de werkbalk op **Serverfirewall instellen**. De pagina **Firewallinstellingen** voor de SQL Database-server wordt geopend.
+1. Klik op de werkbalk op **Serverfirewall instellen**. De pagina **Firewall-instellingen** voor de SQL Database-server wordt geopend.
 
    ![IP-firewallregel op serverniveau](./media/sql-database-design-first-database/server-firewall-rule.png)
 
@@ -141,7 +141,7 @@ Gebruik [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ss
 
     ![verbinding maken met database op server](./media/sql-database-design-first-database/options-connect-to-db.png)  
 
-4. Klik op **Connect** (Verbinden). Het venster **Objectverkenner** wordt geopend in SSMS.
+4. Klik op **Verbinden**. Het venster **Objectverkenner** wordt geopend in SSMS.
 
 5. In **Objectverkenner** vouwt u **Databases** en daarna *yourDatabase* uit om de objecten in de voorbeelddatabase weer te geven.
 
@@ -151,8 +151,8 @@ Gebruik [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ss
 
 Maak met [Transact-SQL](/sql/t-sql/language-reference) een databaseschema met vier tabellen die overeenkomen met belangrijke gegevens uit een studenteninformatiesysteem voor universiteiten:
 
-- Persoon
-- Cursus
+- Person
+- Course
 - Student
 - Tegoed
 

@@ -1,20 +1,20 @@
 ---
-title: Zelf studie-een schaalset voor virtuele Azure-machines maken met behulp van terraform
-description: Meer informatie over het gebruik van terraform voor het configureren en instellen van een schaalset voor virtuele Azure-machines.
+title: Zelfstudie - Een Azure-schaalset voor virtuele machines maken met Terraform
+description: Leer Terraform gebruiken om een Azure-schaalset voor virtuele machines te configureren en te versien.
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77472227"
 ---
-# <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Zelf studie: een schaalset voor virtuele Azure-machines maken met behulp van terraform
+# <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Zelfstudie: Een Azure-schaalset voor virtuele machines maken met Terraform
 
-Met [schaal sets voor virtuele Azure-machines](/azure/virtual-machine-scale-sets) kunt u identieke vm's configureren. Het aantal VM-exemplaren kan worden aangepast op basis van de vraag of een schema. Zie voor meer informatie [automatisch schalen van een schaalset voor virtuele machines in de Azure Portal](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal).
+[Met azure-eenvoudigmaquettes](/azure/virtual-machine-scale-sets) voor virtuele machines u identieke VM's configureren. Het aantal VM-exemplaren kan worden aangepast op basis van de vraag of een planning. Zie [Een virtuele machineschaal die is ingesteld in de Azure-portal automatisch schalen in de Azure-portal.](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal)
 
-In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overview) kunt gebruiken om de volgende taken uit te voeren:
+In deze zelfstudie leert u hoe u [Azure Cloud Shell](/azure/cloud-shell/overview) gebruiken om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Een Terraform-implementatie instellen
@@ -32,13 +32,13 @@ In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overvie
 
 - **Terraform installeren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](terraform-install-configure.md)
 
-- **Een SSH-sleutel paar maken**: Zie [een openbaar en persoonlijk SSH-sleutel paar maken en gebruiken voor Linux-vm's in azure](/azure/virtual-machines/linux/mac-create-ssh-keys)voor meer informatie.
+- **Een SSH-sleutelpaar maken:** zie Voor meer informatie [een SSH-openbaar en privésleutelpaar maken en gebruiken voor Linux-VM's in Azure.](/azure/virtual-machines/linux/mac-create-ssh-keys)
 
-## <a name="create-the-directory-structure"></a>De directorystructuur maken
+## <a name="create-the-directory-structure"></a>De mapstructuur maken
 
-1. Blader naar de [Azure-portal](https://portal.azure.com).
+1. Blader naar [Azure Portal](https://portal.azure.com).
 
-1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
+1. Azure [Cloud Shell openen](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
     ![Cloud Shell-prompt](./media/terraform-create-vm-scaleset-network-disks-hcl/azure-portal-cloud-shell-button-min.png)
 
@@ -48,13 +48,13 @@ In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overvie
     cd clouddrive
     ```
 
-1. Maak een directory met de naam `vmss`.
+1. Maak een map met de naam `vmss`.
 
     ```bash
     mkdir vmss
     ```
 
-1. Ga naar de nieuwe map:
+1. Maak de nieuwe directory de actieve directory:
 
     ```bash
     cd vmss
@@ -63,7 +63,7 @@ In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overvie
 ## <a name="create-the-variables-definitions-file"></a>Het definitiebestand voor variabelen maken
 In deze sectie definieert u de variabelen waarmee de met Terraform gemaakte resources worden aangepast.
 
-Voer de volgende stappen uit in de Azure Cloud Shell:
+Ga in de Azure Cloud Shell de volgende stappen uit:
 
 1. Maak een bestand met de naam `variables.tf`.
 
@@ -93,12 +93,12 @@ Voer de volgende stappen uit in de Azure Cloud Shell:
    }
    ```
 
-1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
+1. Sla het**&lt;** bestand op ( Ctrl>S ) en sluit de editor af**&lt;(Ctrl>Q).**
 
 ## <a name="create-the-output-definitions-file"></a>Het bestand met uitvoerdefinities maken
 In deze sectie maakt u het bestand dat de uitvoer na de implementatie beschrijft.
 
-Voer de volgende stappen uit in de Azure Cloud Shell:
+Ga in de Azure Cloud Shell de volgende stappen uit:
 
 1. Maak een bestand met de naam `output.tf`.
 
@@ -115,7 +115,7 @@ Voer de volgende stappen uit in de Azure Cloud Shell:
     }
    ```
 
-1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
+1. Sla het**&lt;** bestand op ( Ctrl>S ) en sluit de editor af**&lt;(Ctrl>Q).**
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>De netwerkinfrastructuur definiëren in een sjabloon
 In deze sectie maakt u de volgende netwerkinfrastructuur in een nieuwe Azure-resourcegroep:
@@ -124,7 +124,7 @@ In deze sectie maakt u de volgende netwerkinfrastructuur in een nieuwe Azure-res
   - Eén subnet met de adresruimte 10.0.2.0/24
   - Twee openbare IP-adressen. Eén hiervan wordt gebruikt door de load balancer van de virtuele-machineschaalset, en het andere wordt gebruikt om verbinding te maken met de SSH-jumpbox.
 
-Voer de volgende stappen uit in de Azure Cloud Shell:
+Ga in de Azure Cloud Shell de volgende stappen uit:
 
 1. Maak een bestand met de naam `vmss.tf` om de infrastructuur van de virtuele-machineschaalset te beschrijven.
 
@@ -173,10 +173,10 @@ Voer de volgende stappen uit in de Azure Cloud Shell:
    }
    ```
 
-1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
+1. Sla het**&lt;** bestand op ( Ctrl>S ) en sluit de editor af**&lt;(Ctrl>Q).**
 
 ## <a name="provision-the-network-infrastructure"></a>De netwerkinfrastructuur inrichten
-Voer de volgende stappen uit met behulp van de Azure Cloud Shell uit de map waarin u de configuratie bestanden hebt gemaakt (. tf):
+Als u de Azure Cloud Shell gebruikt vanuit de map waar u de configuratiebestanden hebt gemaakt (.tf), u de volgende stappen uitvoeren:
 
 1. Initialiseer Terraform.
 
@@ -190,11 +190,11 @@ Voer de volgende stappen uit met behulp van de Azure Cloud Shell uit de map waar
    terraform apply
    ```
 
-   Terraform vraagt u om een `location` waarde wanneer de `location` variabele in `variables.tf`is gedefinieerd, maar is nooit ingesteld. U kunt elke geldige locatie, bijvoorbeeld 'US - west', invoeren, gevolgd door Enter. (Plaats waarden die spaties bevatten tussen haakjes.)
+   Terraform vraagt u `location` om een `location` waarde als `variables.tf`de variabele is gedefinieerd in , maar het is nooit ingesteld. U kunt elke geldige locatie, bijvoorbeeld 'US - west', invoeren, gevolgd door Enter. (Plaats waarden die spaties bevatten tussen haakjes.)
 
-1. Terraform drukt de uitvoer af zoals gedefinieerd in het bestand `output.tf`. Zoals in de volgende scherm afbeelding wordt weer gegeven, heeft de FQDN de volgende vorm: `<ID>.<location>.cloudapp.azure.com`. De ID is een berekende waarde en locatie is de waarde die u opgeeft wanneer u terraform uitvoert.
+1. Terraform drukt de uitvoer af zoals gedefinieerd in het bestand `output.tf`. Zoals in de volgende schermafbeelding wordt weergegeven, neemt `<ID>.<location>.cloudapp.azure.com`de FQDN de volgende vorm aan: . De ID is een berekende waarde en locatie is de waarde die wordt verstrekt bij het uitvoeren van Terraform.
 
-   ![Virtuele-machine schaalset Fully Qualified Domain Name voor openbaar IP-adres](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
+   ![Virtuele machineschaal set volledig gekwalificeerde domeinnaam voor Openbaar IP-adres](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
 
 1. Selecteer in Azure Portal **Resourcegroepen** in het hoofdmenu.
 
@@ -211,7 +211,7 @@ In deze sectie leert u hoe u de volgende resources kunt toevoegen aan de sjabloo
 - Een virtuele machineschaalset die zich achter de load balancer bevindt die wordt uitgevoerd op het eerder in dit artikel geïmplementeerde VNET
 - [Nginx](https://nginx.org/) op de knooppunten van de virtuele-machineschaalset met [cloud-init](https://cloudinit.readthedocs.io/en/latest/).
 
-Voer in Cloud Shell de volgende stappen uit:
+Ga in Cloud Shell als volgt te werk:
 
 1. Open het configuratiebestand `vmss.tf`.
 
@@ -374,7 +374,7 @@ Voer in Cloud Shell de volgende stappen uit:
     }
     ```
 
-1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
+1. Sla het**&lt;** bestand op ( Ctrl>S ) en sluit de editor af**&lt;(Ctrl>Q).**
 
 1. Maak een Terraform-plan om de implementatie van de virtuele-machineschaalset te visualiseren. (U moet een wachtwoord van uw keuze opgeven, evenals de locatie voor uw resources.)
 
@@ -401,7 +401,7 @@ Voer in Cloud Shell de volgende stappen uit:
     ![Resultaten van bladeren naar de FQDN](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
 ## <a name="add-an-ssh-jumpbox"></a>Een SSH-jumpbox toevoegen
-Een SSH- *JumpBox* is een enkele server waarop u ' Jump ' kunt gebruiken om toegang te krijgen tot andere servers in het netwerk. In deze stap configureert u de volgende resources:
+Een SSH *jumpbox* is een enkele server die je "springen" door naar andere servers op het netwerk toegang. In deze stap configureert u de volgende resources:
 
 - Een netwerkinterface (of jumpbox) verbonden met hetzelfde subnet als de virtuele-machineschaalset.
 
@@ -493,7 +493,7 @@ Een SSH- *JumpBox* is een enkele server waarop u ' Jump ' kunt gebruiken om toeg
    }
    ```
 
-1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
+1. Sla het**&lt;** bestand op ( Ctrl>S ) en sluit de editor af**&lt;(Ctrl>Q).**
 
 1. Implementeer de jumpbox.
 
@@ -521,4 +521,4 @@ Het vernietigingsproces kan enkele minuten in beslag nemen.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Meer informatie over het gebruik van terraform in azure](/azure/terraform)
+> [Meer informatie over het gebruik van Terraform in Azure](/azure/terraform)

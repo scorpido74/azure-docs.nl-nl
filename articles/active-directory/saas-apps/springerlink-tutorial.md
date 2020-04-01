@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Springer-koppeling | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Springer-koppeling.
+title: 'Zelfstudie: Azure Active Directory-integratie met Springer Link | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Springer Link.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e93f6d1804dd32e9e0da2c9be98aa523a6faafa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67089704"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Zelfstudie: Azure Active Directory-integratie met Springer-koppeling
+# <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Zelfstudie: Azure Active Directory-integratie met Springer Link
 
-In deze zelfstudie leert u hoe u Springer-koppeling integreert met Azure Active Directory (Azure AD).
-Springer koppeling integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u Springer Link integreert met Azure Active Directory (Azure AD).
+De integratie van Springer Link met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot Springer-koppeling heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Springer-koppeling (Single Sign-On) inschakelen met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Springer Link.
+* U uw gebruikers automatisch laten aanmelden bij Springer Link (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Springer-koppeling, moet u de volgende items:
+Als u Azure AD-integratie wilt configureren met Springer Link, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Springer koppeling eenmalige aanmelding ingeschakeld abonnement
+* Abonnement met één aanmelding bij Springer Link
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Springer-koppeling ondersteunt **SP** en **IDP** gestart door SSO
+* Springer Link ondersteunt **SP** en **IDP** geïnitieerd sso
 
-## <a name="adding-springer-link-from-the-gallery"></a>Springer koppeling toe te voegen uit de galerie
+## <a name="adding-springer-link-from-the-gallery"></a>Springer Link toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Springer-koppeling in Azure AD, moet u Springer-koppeling in de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Springer Link in Azure AD wilt configureren, moet u Springer Link uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Springer-koppeling in de galerie, moet u de volgende stappen uitvoeren:**
+**Als u Springer Link vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van Springer-koppeling in Azure AD, moet
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Springer koppeling**, selecteer **Springer koppeling** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Springer Link**in het zoekvak , selecteer **Springer Link** uit het resultaatpaneel en klik op Knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Springer-koppeling in de lijst met resultaten](common/search-new-app.png)
+     ![Springer Link in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Springer-koppeling op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Springer koppeling tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Springer Link op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Springer Link.
 
-Als u wilt configureren en testen van Azure AD eenmalige aanmelding met Springer-koppeling, u nodig hebt voor de volgende bouwstenen:
+Als u Azure AD-singlesign-aan wilt configureren en testen met Springer Link, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Springer koppeling Single Sign-On](#configure-springer-link-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Springer koppeling testgebruiker](#create-springer-link-test-user)**  : als u wilt een equivalent van Britta Simon in Springer-koppeling die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Springer Link Single Sign-On](#configure-springer-link-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Springer Link-testgebruiker maken](#create-springer-link-test-user)** - om een tegenhanger van Britta Simon in Springer Link te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Springer-koppeling, kunt u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Springer Link te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Springer koppeling** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de integratiepagina van de **Springer Link-toepassing** de optie Enkele **aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -101,32 +101,32 @@ Voor het configureren van Azure AD eenmalige aanmelding met Springer-koppeling, 
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
+4. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
 
-    ![Springer koppeling domein en URL's, eenmalige aanmelding informatie](common/idp-relay.png)
+    ![Springer Link-domein en URL's meteenaanmelding](common/idp-relay.png)
 
-    a. In het tekstvak **Id** typt u een URL: `https://fsso.springer.com`
+    a. Typ een URL in het tekstvak **Id:**`https://fsso.springer.com`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL: `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
+    b. Typ een URL in het tekstvak **URL beantwoorden:**`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
     c. Klik op **Extra URL's instellen**.
 
     d. In het tekstvak **Relaystatus** typt u een URL: `https://link.springer.com`
 
-5. Als u wilt configureren van de toepassing in **SP** gestart modus, de volgende stap uitvoeren:
+5. Als u de toepassing in de door **SP** gestarte modus wilt configureren, voert u de volgende stap uit:
 
-    ![Springer koppeling domein en URL's, eenmalige aanmelding informatie](common/both-signonurl.png)
+    ![Springer Link-domein en URL's meteenaanmelding](common/both-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
 
     > [!NOTE]
-    > De waarde voor de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. `<entityID>` de Azure AD-id opgehaald uit de **Springer koppeling instellen** sectie, verderop in de zelfstudie wordt beschreven. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde voor de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. `<entityID>`is de Azure AD-id gekopieerd uit de sectie **Springer Link instellen,** die later in de zelfstudie wordt beschreven. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-6. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, klikt u op het kopieerpictogram om te kopiëren **App-Url voor federatieve metagegevens** en sla deze op uw computer.
+6. Klik op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** op het kopieerpictogram om **de url van de appfederatie-metagegevens** te kopiëren en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-7. Op de **Springer koppeling instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+7. Kopieer in de sectie **Springer Link instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -136,9 +136,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Springer-koppeling, 
 
     c. Afmeldings-URL
 
-### <a name="configure-springer-link-single-sign-on"></a>Springer koppeling eenmalige aanmelding configureren
+### <a name="configure-springer-link-single-sign-on"></a>Enkele aanmelding voor Springer Link configureren
 
-Het configureren van eenmalige aanmelding op **Springer koppeling** zijde, moet u voor het verzenden van de gekopieerde **App-Url voor federatieve metagegevens** en toepassing van de gekopieerde URL's van Azure portal om te [ondersteuningsteam Springer-koppeling ](mailto:identity@springernature.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de kant van **Springer Link,** moet u de **gekopieerde url van de appfederatie metagegevens** en de juiste gekopieerde URL's van Azure-portal naar [het ondersteuningsteam van Springer Link](mailto:identity@springernature.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -156,26 +156,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Springer koppeling.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Springer Link.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Springer koppeling**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Springer Link**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Springer koppeling**.
+2. Selecteer **Springer Link**in de lijst met toepassingen .
 
-    ![De koppeling Springer-koppeling in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Springer Link in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -185,27 +185,27 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-springer-link-test-user"></a>Testgebruiker Springer-koppeling maken
+### <a name="create-springer-link-test-user"></a>Testgebruiker Springer Link maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in Springer-koppeling. Werken met [Springer koppeling ondersteuningsteam](mailto:identity@springernature.com) om toe te voegen de gebruikers in het platform Springer-koppeling. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in Springer Link. Werk samen met [het Ondersteuningsteam van Springer Link](mailto:identity@springernature.com) om de gebruikers toe te voegen aan het Springer Link-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Springer-koppeling in het toegangsvenster, moet u worden automatisch aangemeld bij de Springer-koppeling waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Springer Link in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Springer-koppeling waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

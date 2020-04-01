@@ -40,7 +40,7 @@ Nadat u bent toegevoegd aan een inschrijvingsaccount dat is gekoppeld aan een ac
 
 Als u de volgende opdrachten wilt uitvoeren, moet u zijn aangemeld bij de *thuismap*van de eigenaar van het account, de map waarin abonnementen standaard zijn gemaakt.
 
-### <a name="rest"></a>[Rest](#tab/rest)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Verzoek om een lijst van alle inschrijvingsaccounts waartoe u toegang hebt:
 
@@ -75,7 +75,7 @@ Het API-antwoord bevat alle inschrijvingsaccounts waartoe u toegang hebt:
 
 Gebruik `principalName` de eigenschap om te bepalen aan welke account u abonnementen moet factureren. Kopieer `name` de van die rekening. Als u bijvoorbeeld abonnementen wilt maken SignUpEngineering@contoso.com onder het inschrijvingsaccount, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Deze id is de object-id van het inschrijvingsaccount. Plak deze waarde ergens zodat u deze kunt `enrollmentAccountObjectId`gebruiken in de volgende stap als .
 
-### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Open [Azure Cloud Shell](https://shell.azure.com/) en selecteer PowerShell.
 
@@ -129,7 +129,7 @@ Gebruik `principalName` de eigenschap om te bepalen aan welke account u abonneme
 
 In het volgende voorbeeld wordt een abonnement met de naam *Dev-teamabonnement* gemaakt in het inschrijvingsaccount dat in de vorige stap is geselecteerd. Het abonnementsaanbod is *MS-AZR-0017P* (reguliere Microsoft Enterprise Agreement). Het voegt ook optioneel twee gebruikers toe als RBAC-eigenaren voor het abonnement.
 
-### <a name="rest"></a>[Rest](#tab/rest)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Voer de volgende aanvraag uit en vervang `<enrollmentAccountObjectId>` door de `name` die u hebt gekopieerd tijdens de eerste stap (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Als u eigenaren wilt opgeven, leest u hoe u [gebruikersobject-id's krijgen.](grant-access-to-create-subscription.md#userObjectId)
 
@@ -158,7 +158,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 In het antwoord krijg `subscriptionOperation` je een object terug voor controle. Wanneer de aanmaak van `subscriptionOperation` het abonnement `subscriptionLink` is voltooid, retourneert het object een object met de abonnements-id.
 
-### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Installeer eerst deze previewmodule `Install-Module Az.Subscription -AllowPrerelease`door . Installeer een `-AllowPrerelease` recente versie van PowerShellGet van [Get PowerShellGet Module](/powershell/scripting/gallery/installing-psget)om er zeker van te zijn dat het werkt.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met ANAQUA | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ANAQUA.
+title: 'Zelfstudie: Azure Active Directory-integratie met ANAQUA | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ANAQUA.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,134 +17,134 @@ ms.date: 05/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 147ce4c898d29f08593019073d69bba78edb75b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67106876"
 ---
 # <a name="tutorial-integrate-anaqua-with-azure-active-directory"></a>Zelfstudie: ANAQUA integreren met Azure Active Directory
 
-In deze zelfstudie leert u hoe u ANAQUA integreert met Azure Active Directory (Azure AD). Wanneer u ANAQUA met Azure AD integreert, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u ANAQUA integreert met Azure Active Directory (Azure AD). Wanneer u ANAQUA integreert met Azure AD, u het als:
 
-* Beheren in Azure AD die toegang tot ANAQUA heeft.
-* Kunnen uw gebruikers worden automatisch aangemeld ANAQUA met hun Azure AD-accounts.
-* Beheer uw accounts in één centrale locatie - Azure portal.
+* Beheer in Azure AD wie toegang heeft tot ANAQUA.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij ANAQUA met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie voor meer informatie over de integratie van de SaaS-app met Azure AD, [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om te beginnen, hebt u de volgende items nodig:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/).
-* Ingeschakeld abonnement ANAQUA eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* ANAQUA single sign-on (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie hebt u configureren en testen van Azure AD-eenmalige aanmelding in een testomgeving. Biedt ondersteuning voor ANAQUA **SP en IDP** geïnitieerde eenmalige aanmelding en ondersteunt **Just In Time** inrichten van gebruikers.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving. ANAQUA ondersteunt **SP en IDP** geïnitieerd SSO en ondersteunt **Just In Time** gebruikersinrichting.
 
-## <a name="adding-anaqua-from-the-gallery"></a>ANAQUA uit de galerie toe te voegen
+## <a name="adding-anaqua-from-the-gallery"></a>Anaqua toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van ANAQUA in Azure AD, moet u ANAQUA uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van ANAQUA in Azure AD wilt configureren, moet u ANAQUA uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het navigatiedeelvenster links in de **Azure Active Directory** service.
-1. Navigeer naar **bedrijfstoepassingen** en selecteer vervolgens **alle toepassingen**.
-1. Nieuwe toepassing toevoegen, selecteert u **nieuwe toepassing**.
-1. In de **toevoegen vanuit de galerie** sectie, typt u **ANAQUA** in het zoekvak in.
-1. Selecteer **ANAQUA** van resultaten van het deelvenster en vervolgens de app toevoegen. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **ANAQUA** in het zoekvak in de sectie **Toevoegen in de galerie.**
+1. Selecteer **ANAQUA** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Configureren en testen van Azure AD-eenmalige aanmelding met ANAQUA met behulp van een testgebruiker met de naam **B. Simon**. Voor eenmalige aanmelding om te werken, moet u een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in ANAQUA vast te stellen.
+Azure AD SSO configureren en testen met ANAQUA met behulp van een testgebruiker genaamd **B. Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in ANAQUA.
 
-Als u wilt configureren en testen van Azure AD-eenmalige aanmelding met ANAQUA, voert u de volgende bouwstenen:
+Als u Azure AD SSO wilt configureren en testen met ANAQUA, voert u de volgende bouwstenen in:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-sso)**  zodat uw gebruikers deze functie wilt gebruiken.
-2. **[Configureren van ANAQUA](#configure-anaqua)**  de SSO-instellingen configureren op de kant van de toepassing.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  voor het testen van Azure AD eenmalige aanmelding met B. Simon.
-4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  B. Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
-5. **[Maken van de testgebruiker ANAQUA](#create-anaqua-test-user)**  hebben een equivalent van B. Simon in ANAQUA die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-sso)**  om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer ANAQUA](#configure-anaqua)** om de SSO-instellingen aan toepassingszijde te configureren.
+3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)** om Azure AD-eenmaligaanmelding met B. Simon te testen.
+4. **[Wijs de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)** toe om B. Simon in staat te stellen azure AD-aanmelding te gebruiken.
+5. **[Maak ANAQUA-testgebruiker](#create-anaqua-test-user)** om een tegenhanger van B. Simon in ANAQUA te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Test SSO](#test-sso)** om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD-eenmalige aanmelding configureren
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **ANAQUA** toepassingspagina integratie, vinden de **beheren** sectie en selecteer **eenmalige aanmelding**.
-1. Op de **selecteert u een methode voor eenmalige aanmelding** pagina, selecteert u **SAML**.
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, klikt u op het pictogram voor bewerken/pen voor **SAML-basisconfiguratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **ANAQUA-toepassingsintegratie** de sectie **Beheren** en selecteer **Enkele aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
+1. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.anaqua.com`
+    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://<SUBDOMAIN>.anaqua.com`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.anaqua.com/anaqua/Public/login.aspx`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.anaqua.com/anaqua/Public/login.aspx`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.anaqua.com/anaqua/Public/login.aspx`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [ANAQUA Client ondersteuningsteam](https://go.anaqua.com/contact-us) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [het ANAQUA Client Support Team](https://go.anaqua.com/contact-us) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, zoeken **federatieve metagegevens-XML** en selecteer **downloaden** voor het downloaden van het bestand met metagegevens en sla deze op uw computer.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Federation Metadata XML** en selecteer **Downloaden** om het metagegevensbestand te downloaden en op te slaan op uw computer.
 
    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Op de **ANAQUA instellen** sectie, kopieert u de juiste URL's op basis van uw behoeften.
+1. Kopieer in de sectie **ANAQUA instellen** de juiste URL(s) op basis van uw vereiste.
 
    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="configure-anaqua"></a>ANAQUA configureren
 
-Het configureren van eenmalige aanmelding op **ANAQUA** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [ANAQUA ondersteuningsteam](https://go.anaqua.com/contact-us). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan **anaqua-zijde** wilt configureren, moet u de gedownloade **XML met aalmetagegevens** van de Federatie en de juiste gekopieerde URL's van Azure-portal naar [het ANAQUA-ondersteuningsteam](https://go.anaqua.com/contact-us)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in Azure portal B. Simon genoemd.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal, **Azure Active Directory**, selecteer **gebruikers**, en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. In de **gebruiker** eigenschappen als volgt te werk:
-   1. Voer in het veld **Naam** `B. Simon` in.  
-   1. In de **gebruikersnaam** en voer de username@companydomain.extension. Bijvoorbeeld `BrittaSimon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+   1. Voer in het veld **Naam**`B. Simon` in.  
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon Azure eenmalige aanmelding door toegang te verlenen aan ANAQUA gebruiken.
+In deze sectie u B. Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot ANAQUA.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst met toepassingen, **ANAQUA**.
-1. Zoek in de pagina overzicht van de app, de **beheren** sectie en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **ANAQUA**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** dialoogvenster.
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. In de **gebruikers en groepen** dialoogvenster, selecteer **B. Simon** uit de lijst met gebruikers, klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Als u een waarde voor de rol in het SAML-verklaring verwacht de **rol selecteren** dialoogvenster, selecteer de juiste rol voor de gebruiker in de lijst en klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **In** het dialoogvenster Gebruikers en groepen **B. Simon** in de lijst Gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
-### <a name="create-anaqua-test-user"></a>ANAQUA testgebruiker maken
+### <a name="create-anaqua-test-user"></a>ANAQUA-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in ANAQUA. ANAQUA biedt ondersteuning voor just-in-time-gebruikersinrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in ANAQUA bestaat, wordt een nieuw gemaakt nadat verificatie.
+In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in ANAQUA. ANAQUA ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in ANAQUA, wordt er een nieuwe gemaakt na verificatie.
 
-### <a name="test-sso"></a>Test eenmalige aanmelding
+### <a name="test-sso"></a>Test SSO
 
-Wanneer u de tegel ANAQUA in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij de ANAQUA waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de ANAQUA-tegel in het toegangspaneel selecteert, moet u automatisch worden aangemeld bij de ANAQUA waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

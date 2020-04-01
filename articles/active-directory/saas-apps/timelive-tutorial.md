@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met TimeLive | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en TimeLive.
+title: 'Zelfstudie: Azure Active Directory-integratie met TimeLive | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en TimeLive.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,46 +16,46 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: a3f1e74b67d30fc5d0b994093f159de0cc833628
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>Zelfstudie: Azure Active Directory-integratie met TimeLive
 
-In deze zelfstudie leert u hoe u TimeLive integreren met Azure Active Directory (Azure AD).
-TimeLive integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u TimeLive integreert met Azure Active Directory (Azure AD).
+Het integreren van TimeLive met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot TimeLive heeft.
-* U kunt uw gebruikers worden automatisch aangemeld TimeLive (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U in Azure AD bepalen wie toegang heeft tot TimeLive.
+* U uw gebruikers automatisch laten aanmelden bij TimeLive (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met TimeLive, moet u de volgende items:
+Als u Azure AD-integratie met TimeLive wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Eenmalige aanmelding TimeLive ingeschakeld abonnement
+* TimeLive-abonnement met één aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor TimeLive **SP** gestart door SSO
+* TimeLive ondersteunt **SP** geïnitieerde SSO
 
-* Biedt ondersteuning voor TimeLive **Just In Time** inrichten van gebruikers
+* TimeLive ondersteunt **Just In Time-gebruikersinrichting**
 
-## <a name="adding-timelive-from-the-gallery"></a>TimeLive uit de galerie toe te voegen
+## <a name="adding-timelive-from-the-gallery"></a>TimeLive toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van TimeLive in Azure AD, moet u TimeLive uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van TimeLive in Azure AD wilt configureren, moet u TimeLive vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen TimeLive uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u TimeLive vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -67,31 +67,31 @@ Voor het configureren van de integratie van TimeLive in Azure AD, moet u TimeLiv
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **TimeLive**, selecteer **TimeLive** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. **Typ** **TimeLive**in het zoekvak in het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![TimeLive in de lijst met resultaten](common/search-new-app.png)
+     ![TimeLive in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met TimeLive op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in TimeLive tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met TimeLive op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in TimeLive.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met TimeLive, moet u de volgende bouwstenen voltooien:
+Als u Azure AD-single sign-aan met TimeLive wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding TimeLive](#configure-timelive-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker TimeLive](#create-timelive-test-user)**  : als u wilt een equivalent van Britta Simon in TimeLive die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[TimeLive Single Sign-On configureren](#configure-timelive-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[TimeLive-testgebruiker maken](#create-timelive-test-user)** - om een tegenhanger van Britta Simon in TimeLive te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met TimeLive, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met TimeLive te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **TimeLive** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **TimeLive-toepassingsintegratie** de optie **Eén aanmelding .**
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -105,20 +105,20 @@ Voor het configureren van Azure AD eenmalige aanmelding met TimeLive, moet u de 
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![TimeLive domein en URL's, eenmalige aanmelding informatie](common/sp-identifier.png)
+    ![TimeLive-domein- en URL's met eenmalige aanmelding](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<domainname>.livetecs.com/`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<domainname>.livetecs.com/`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<domainname>.livetecs.com/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [TimeLive Client ondersteuningsteam](mailto:support@livetecs.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [timelive client support team](mailto:support@livetecs.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Op de **TimeLive instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer in de sectie **TimeLive instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -128,31 +128,31 @@ Voor het configureren van Azure AD eenmalige aanmelding met TimeLive, moet u de 
 
     c. Afmeldings-URL
 
-### <a name="configure-timelive-single-sign-on"></a>TimeLive voor eenmalige aanmelding configureren
+### <a name="configure-timelive-single-sign-on"></a>TimeLive Single Sign-on configureren
 
-1. In een ander browservenster aanmelden bij uw bedrijf TimeLive site als beheerder.
+1. Meld u in een ander browservenster aan bij uw TimeLive-bedrijfssite als beheerder.
 
-2. Selecteer **voorkeuren** onder **beheeropties**.
+2. Selecteer **Voorkeuren** onder **Beheerdersopties**.
 
-    ![TimeLive configuratie](./media/timelive-tutorial/configure1.png)
+    ![TimeLive-configuratie](./media/timelive-tutorial/configure1.png)
 
-3. In de **toepassing voorkeur** sectie, voert u de volgende stappen uit:
+3. Voer in de sectie **Toepassingsvoorkeur** de volgende stappen uit:
     
-    ![TimeLive configuratie](./media/timelive-tutorial/configure2.png)
+    ![TimeLive-configuratie](./media/timelive-tutorial/configure2.png)
 
     a. Selecteer het tabblad **Security**.
 
-    b. Controleer **Schakel eenmalige aanmelding (SSO)** selectievakje.
+    b. Schakel het selectievakje **Eenmalig aanmelden inschakelen (SSO)** in.
 
-    c. Selecteer **SAML** in de vervolgkeuzelijst met kop **Meld u aan met behulp van eenmalige aanmelding (SSO) met**.
+    c. Selecteer **SAML** in het vervolgkeuzemenu met kop **Aanmelden met Enkele aanmelding (SSO) met**.
 
-    d. In de **URL voor SAML SSO-** , plakken **aanmeldings-URL** waarde die u hebt gekopieerd, vormen de Azure-portal.
+    d. In de **SAML SSO-URL**plakt u **de URL-waarde van inloginlogen** die u hebt gekopieerd, vorm de Azure-portal.
 
-    e. In de **externe afmeldings-URL van**, plakken **afmeldings-URL van** waarde die u hebt gekopieerd, vormen de Azure-portal.
+    e. In de **URL voor afmelding op afstand**, **URL-waarde plakken die** u hebt gekopieerd, vormen de Azure-portal.
 
-    f. Open het gedownloade **base-64 gecodeerde certificaat** vanuit Azure portal in Kladblok, Kopieer de inhoud en plak deze in de **X.509-certificaat** tekstvak.
+    f. Open het gedownloade **basis-64-certificaat van** Azure-portal in Kladblok, kopieer de inhoud en plak het vervolgens in het tekstvak **X.509-certificaat.**
 
-    g. Klik op **Bijwerken**.
+    g. Klik op **Update**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -170,25 +170,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld brittasimon@yourcompanydomain.extensiontype gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan TimeLive.
+In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot TimeLive.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **TimeLive**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **TimeLive**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **TimeLive**.
+2. Selecteer **TimeLive**in de lijst met toepassingen .
 
-    ![De koppeling TimeLive in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling TimeLive in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -198,27 +198,27 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-timelive-test-user"></a>TimeLive testgebruiker maken
+### <a name="create-timelive-test-user"></a>TimeLive-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in TimeLive. TimeLive biedt ondersteuning voor just-in-time-gebruikersinrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in TimeLive bestaat, wordt een nieuw gemaakt nadat verificatie.
+In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in TimeLive. TimeLive ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in TimeLive, wordt er een nieuwe gemaakt na verificatie.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel TimeLive in het toegangsvenster, moet u worden automatisch aangemeld bij de TimeLive waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel TimeLive in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de TimeLive waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

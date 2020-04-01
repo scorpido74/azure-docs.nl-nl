@@ -1,29 +1,29 @@
 ---
-title: Zelf studie-functies op basis van op rollen gebaseerde toegangs beheer (RBAC) configureren in azure Kubernetes service (AKS) met behulp van Ansible
-description: Meer informatie over het gebruik van Ansible voor het configureren van RBAC in azure Kubernetes service (AKS)-cluster
-keywords: ansible, azure, devops, bash, Cloud shell, Playbook, AKS, container, AKS, kubernetes, Azure Active Directory, RBAC
+title: Zelfstudie - RBAC-rollen (role-based access control) configureren in Azure Kubernetes Service (AKS) met Ansible
+description: Meer informatie over het gebruik van Ansible om RBAC te configureren in het AKS-cluster (Azure Kubernetes Service)
+keywords: ansible, azure, devops, bash, cloudshell, playbook, aks, container, aks, kubernetes, azure active directory, rbac
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76836963"
 ---
-# <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Zelf studie: functies op basis van op rollen gebaseerde toegangs beheer (RBAC) configureren in azure Kubernetes service (AKS) met behulp van Ansible
+# <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Zelfstudie: RBAC-rollen (role-based access control) configureren in Azure Kubernetes Service (AKS) met Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-AKS kan worden geconfigureerd om [Azure Active Directory (AD)](/azure/active-directory/) te gebruiken voor gebruikers verificatie. Eenmaal geconfigureerd, gebruikt u uw Azure AD-verificatie token om u aan te melden bij het AKS-cluster. De RBAC kan worden gebaseerd op de identiteit of het lidmaatschap van de Directory groep van een gebruiker.
+AKS kan worden geconfigureerd om [Azure Active Directory (AD)](/azure/active-directory/) te gebruiken voor gebruikersverificatie. Nadat u bent geconfigureerd, gebruikt u uw Azure AD-verificatietoken om u aan te melden bij het AKS-cluster. De RBAC kan worden gebaseerd op de identiteit van een gebruiker of directory group membership.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Een Azure AD-AKS-cluster maken
+> * Een AKS-cluster met Azure AD maken
 > * Een RBAC-rol in het cluster configureren
 
 ## <a name="prerequisites"></a>Vereisten
@@ -31,29 +31,29 @@ AKS kan worden geconfigureerd om [Azure Active Directory (AD)](/azure/active-dir
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Installeer de - van de RedHat** -open Shift-bibliotheek `pip install openshift`
+- **De RedHat OpenShift-bibliotheek installeren** - `pip install openshift`
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>Azure AD configureren voor AKS-verificatie
 
-Bij het configureren van Azure AD voor AKS-verificatie, worden twee Azure AD-toepassingen geconfigureerd. Deze bewerking moet worden uitgevoerd door een beheerder van een Azure-Tenant. Zie [Azure Active Directory integreren met AKS](/azure/aks/aad-integration#create-the-server-application)voor meer informatie. 
+Bij het configureren van Azure AD voor AKS-verificatie worden twee Azure AD-toepassingen geconfigureerd. Deze bewerking moet worden voltooid door een Azure-tenantbeheerder. Zie [Azure Active Directory integreren met AKS](/azure/aks/aad-integration#create-the-server-application)voor meer informatie. 
 
-Haal de volgende waarden op in de Azure-Tenant beheerder:
+Haal bij de Azure-tenantbeheerder de volgende waarden op:
 
-- Server app-geheim
-- Server App-ID
-- Client-App-ID 
+- Server-app geheim
+- Server-app-id
+- Client-app-id 
 - Tenant-id
 
-Deze waarden zijn nodig om de voorbeeld Playbook uit te voeren.  
+Deze waarden zijn nodig om het voorbeelddraaiboek uit te voeren.  
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
 In deze sectie maakt u een AKS met de [Azure AD-toepassing](#configure-azure-ad-for-aks-authentication).
 
-Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
+Hier volgen enkele belangrijke opmerkingen om rekening mee te houden bij het werken met de voorbeelddraaimap:
 
-- De Playbook laadt `ssh_key` van `~/.ssh/id_rsa.pub`. Als u het wijzigt, gebruikt u de indeling met één regel, te beginnen met ' ssh-rsa ' (zonder de aanhalings tekens).
-- De waarden `client_id` en `client_secret` worden geladen vanuit `~/.azure/credentials`, het standaard referentie bestand. U kunt deze waarden instellen voor uw service-principal of deze waarden laden vanuit omgevings variabelen:
+- Het draaiboek `ssh_key` `~/.ssh/id_rsa.pub`laadt van . Als u het wijzigt, gebruikt u de single-line indeling - te beginnen met "ssh-rsa" (zonder de aanhalingstekens).
+- De `client_id` `client_secret` waarden en waarden `~/.azure/credentials`worden geladen uit , dat is de standaard referentiebestand. U deze waarden instellen op uw serviceprincipal of deze waarden laden vanuit omgevingsvariabelen:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -115,29 +115,29 @@ Sla het volgende playbook op als `aks-create.yml`:
       dest: "aks-{{ name }}-kubeconfig"
 ```
 
-## <a name="get-the-azure-ad-object-id"></a>De object-ID van Azure AD ophalen
+## <a name="get-the-azure-ad-object-id"></a>De Azure AD-object-id
 
-Als u een RBAC-binding wilt maken, moet u eerst de object-ID van Azure AD ophalen. 
+Als u een RBAC-binding wilt maken, moet u eerst de Azure AD-object-id oppakken. 
 
-1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Voer in het zoek veld boven aan de pagina `Azure Active Directory`in. 
+1. Voer in het zoekveld boven aan `Azure Active Directory`de pagina . 
 
 1. Klik op `Enter`.
 
-1. Selecteer in het menu **beheren** de optie **gebruikers**.
+1. Selecteer **Gebruikers**in het menu **Beheren** .
 
-1. Zoek in het veld naam naar uw account.
+1. Zoek in het veld Naam naar uw account.
 
-1. Selecteer in de kolom **naam** de koppeling naar uw account.
+1. Selecteer **in** de kolom Naam de koppeling naar uw account.
 
-1. Kopieer de **object-id**in het gedeelte **identiteit** .
+1. Kopieer in de sectie **Identiteit** de **object-id**.
 
-    ![Kopieer de Azure AD-object-ID.](./media/ansible-aks-configure-rbac/ansible-aad-object-id.png)
+    ![Kopieer de Azure AD-object-id.](./media/ansible-aks-configure-rbac/ansible-aad-object-id.png)
 
 ## <a name="create-rbac-binding"></a>RBAC-binding maken
 
-In deze sectie maakt u een functie binding of cluster functie binding in AKS. 
+In deze sectie maakt u een rolbinding of clusterrolbinding in AKS. 
 
 Sla het volgende playbook op als `kube-role.yml`:
 
@@ -156,9 +156,9 @@ subjects:
   name: <your-aad-account>
 ```
 
-Vervang de tijdelijke aanduiding `<your-aad-account>` door de [object-id](#get-the-azure-ad-object-id)van uw Azure AD-Tenant.
+Vervang `<your-aad-account>` de tijdelijke aanduiding door uw Azure AD-tenantobject-id . [Object ID](#get-the-azure-ad-object-id)
 
-Sla de volgende Playbook op die uw nieuwe rol implementeert naar AKS-als `aks-kube-deploy.yml`:
+Sla het volgende draaiboek op - waarmee uw `aks-kube-deploy.yml`nieuwe rol wordt geïmplementeerd in AKS - als:
 
 ```yml
 - name: Apply role to AKS
@@ -167,9 +167,9 @@ Sla de volgende Playbook op die uw nieuwe rol implementeert naar AKS-als `aks-ku
       kubeconfig: "aks-{{ name }}-kubeconfig"
 ```
 
-## <a name="run-the-sample-playbook"></a>De voorbeeld Playbook uitvoeren
+## <a name="run-the-sample-playbook"></a>Het voorbeeldvan het voorbeelddraaiboek uitvoeren
 
-In deze sectie vindt u de volledige voorbeeld Playbook die de taken aanroept die in dit artikel worden gemaakt. 
+In deze sectie vindt u de volledige voorbeelddraaimap waarin de taken in dit artikel worden aangeschreven. 
 
 Sla het volgende playbook op als `aks-rbac.yml`:
 
@@ -198,32 +198,32 @@ Sla het volgende playbook op als `aks-rbac.yml`:
        include_tasks: aks-kube-deploy.yml
 ```
 
-Vervang in het gedeelte `vars` de volgende tijdelijke aanduidingen door uw Azure AD-gegevens:
+Vervang `vars` in de sectie de volgende tijdelijke aanduidingen door uw Azure AD-gegevens:
 
 - `<client id>`
 - `<server id>`
 - `<server secret>`
 - `<tenant id>`
 
-Voer de volledige Playbook uit met de opdracht `ansible-playbook`:
+Voer het volledige draaiboek uit met de `ansible-playbook` opdracht:
 
 ```bash
 ansible-playbook aks-rbac.yml
 ```
 
-## <a name="verify-the-results"></a>De resultaten controleren
+## <a name="verify-the-results"></a>De resultaten verifiëren
 
-In deze sectie gebruikt u kubectl om een lijst te maken met de knoop punten die in dit artikel worden gemaakt.
+In deze sectie gebruikt u de kubectllijst die de knooppunten in dit artikel maken.
 
-Voer de volgende opdracht in bij een terminal prompt:
+Voer de volgende opdracht in bij een terminalprompt:
 
 ```bash
 kubectl --kubeconfig aks-aksansibletest-kubeconfig-user get nodes
 ```
 
-Met deze opdracht wordt u naar een verificatie pagina geleid. Meld u aan met uw Azure-account.
+De opdracht leidt u naar een verificatiepagina. Meld u aan met uw Azure-account.
 
-Na verificatie worden de knoop punten op vergelijk bare wijze in kubectl weer gegeven als de volgende resultaten:
+Eenmaal geverifieerd, kubectl lijsten van de knooppunten op dezelfde manier als de volgende resultaten:
 
 ```txt
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XXXXXXXX to authenticate.
@@ -235,9 +235,9 @@ aks-nodepool1-33413200-2   Ready    agent   49m   v1.12.6
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
+Wanneer u niet meer nodig bent, verwijdert u de bronnen die in dit artikel zijn gemaakt. 
 
-Sla de volgende code op als `cleanup.yml`:
+Sla de volgende `cleanup.yml`code op als :
 
 ```yml
 ---
@@ -257,7 +257,7 @@ Sla de volgende code op als `cleanup.yml`:
             path: "aks-{{ name }}-kubeconfig"
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook cleanup.yml

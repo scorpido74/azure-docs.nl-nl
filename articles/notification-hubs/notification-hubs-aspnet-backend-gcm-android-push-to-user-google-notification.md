@@ -17,21 +17,21 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: b68d77bfdcf3fee0285b3c03ae0c598a3f6875c0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 709926671e1ad4d8beefaf0f1cff4c56b1948ca3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531136"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127370"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelf studie: Push meldingen naar specifieke Android-toepassings gebruikers met behulp van Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
+# <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Zelfstudie: Pushmelding verzenden naar specifieke Android-gebruikers met Azure Notification Hubs en Google Cloud Messaging (afgeschaft)
 
 > [!WARNING]
-> Sinds 10 april 2018 heeft Google afgeschaft Google Cloud Messaging (GCM). De GCM-server en de client-Api's zijn afgeschaft en worden verwijderd zodra 29 mei 2019. Zie [Veelgestelde vragen over GCM en FCM](https://developers.google.com/cloud-messaging/faq)voor meer informatie.
+> Vanaf 10 april 2018 heeft Google Google Cloud Messaging (GCM) afgeschaft. De GCM-server en client API's worden afgeschaft en worden al op 29 mei 2019 verwijderd. Zie [GCM en FCM veelgestelde vragen](https://developers.google.com/cloud-messaging/faq)voor meer informatie.
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-In deze zelfstudie wordt uitgelegd hoe u met Azure Notification Hubs pushmeldingen kunt verzenden aan een specifieke appgebruiker op een specifiek apparaat. Er wordt een WebAPI-back-end van ASP.NET gebruikt om clients te verifiëren en meldingen te genereren, zoals u kunt lezen in het artikel [Registering from your App Backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) (Registreren vanuit uw app-back-end). Deze zelfstudie bouwt voort op de meldingshub die u hebt gemaakt in de zelfstudie [Pushmeldingen verzenden naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md).
+In deze zelfstudie wordt uitgelegd hoe u met Azure Notification Hubs pushmeldingen kunt verzenden naar een specifieke app-gebruiker op een specifiek apparaat. Er wordt een WebAPI-back-end van ASP.NET gebruikt om clients te verifiëren en meldingen te genereren, zoals u kunt lezen in het artikel [Registering from your App Backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) (Registreren vanuit uw app-back-end). Deze zelfstudie bouwt voort op de meldingshub die u hebt gemaakt in de zelfstudie [Pushmeldingen verzenden naar Android-apparaten met behulp van Azure Notification Hubs en Google Cloud Messaging](notification-hubs-android-push-notification-google-gcm-get-started.md).
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -262,7 +262,7 @@ De volgende stap bestaat uit het bijwerken van de Android-toepassing die u hebt 
     }
     ```
 
-    Dit onderdeel implementeert de REST-aanroepen die nodig zijn om contact op te nemen met de app-back-end, om registratie voor pushmeldingen mogelijk te maken. Daarnaast wordt de *registrationIds* die is gemaakt door de meldingshub, lokaal opgeslagen. Zie [Registering from your App Backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) (Registreren vanuit uw app-back-end) voor meer informatie. Er wordt een autorisatie token gebruikt dat is opgeslagen in de lokale opslag wanneer u op de knop **Aanmelden** klikt.
+    Dit onderdeel implementeert de REST-aanroepen die nodig zijn om contact op te nemen met de app-back-end, om registratie voor pushmeldingen mogelijk te maken. Daarnaast wordt de *registrationIds* die is gemaakt door de meldingshub, lokaal opgeslagen. Zie [Registering from your App Backend](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) (Registreren vanuit uw app-back-end) voor meer informatie. Het maakt gebruik van een autorisatietoken dat is opgeslagen in lokale opslag wanneer u op de **knop Aanmelden** klikt.
 4. Verwijder in uw klasse het private-veld voor `NotificationHub` of maak er een commentaar van. Voeg vervolgens een veld toe voor de klasse `RegisterClient` en een tekenreeks voor het eindpunt van uw ASP.NET-back-end. Zorg ervoor dat u `<Enter Your Backend Endpoint>` vervangt door het eindpunt van de back-end dat u eerder hebt vastgesteld. Bijvoorbeeld `http://mybackend.azurewebsites.net`.
 
     ```java
@@ -324,7 +324,7 @@ De volgende stap bestaat uit het bijwerken van de Android-toepassing die u hebt 
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. Voeg vervolgens de volgende methoden toe voor het afhandelen **van de aanmeldings** knop gebeurtenis klikken en verzenden van push meldingen.
+9. Voeg vervolgens de volgende methoden toe om de knop **Aanmelden** te verwerken klik op gebeurtenis en het verzenden van pushmeldingen.
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -406,7 +406,7 @@ De volgende stap bestaat uit het bijwerken van de Android-toepassing die u hebt 
     }
     ```
 
-    De `login`-handler voor de knop **Aanmelden** genereert een basis verificatie token met behulp van de gebruikers naam en het wacht woord (dit is een token dat uw verificatie schema gebruikt). vervolgens wordt `RegisterClient` gebruikt om de back-end voor registratie aan te roepen.
+    De `login` handler voor de **knop Aanmelden** genereert een basisverificatietoken met behulp van de invoergebruikersnaam en `RegisterClient` -wachtwoord (het vertegenwoordigt een token dat uw verificatieschema gebruikt), en gebruikt vervolgens om de backend voor registratie aan te roepen.
 
     De methode `sendPush` roept de back-end aan om een beveiligde melding te activeren naar de gebruiker, op basis van de gebruikerstag. De Platform Notification Service die door `sendPush` wordt benaderd, is afhankelijk van de `pns`-tekenreeks die wordt doorgegeven.
 

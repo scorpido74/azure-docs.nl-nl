@@ -82,7 +82,7 @@ Zie de [site aks snelstartsjablonen][aks-quickstart-templates] voor meer AKS-voo
 
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen.
 
-    [![Implementeren naar Azure](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
+    [![Implementeren in Azure](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
 2. Typ of selecteer de volgende waarden.
 

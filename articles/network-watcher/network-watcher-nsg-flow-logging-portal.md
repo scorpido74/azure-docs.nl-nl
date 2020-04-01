@@ -16,10 +16,10 @@ ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: f3448765eecf4a586e13155903f1c093607781dc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76896451"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Zelfstudie: Logboekregistratie van netwerkverkeer naar en van een virtuele machine met de Azure Portal
@@ -28,7 +28,7 @@ ms.locfileid: "76896451"
 > - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure-CLI](network-watcher-nsg-flow-logging-cli.md)
-> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+> - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 Met een NSG (netwerkbeveiligingsgroep) kunt u inkomend verkeer naar en uitgaand verkeer van een VM (virtuele machine) filteren. U kunt netwerkverkeer dat via een NSG stroomt, vastleggen in een NSG-stroomlogboek van Network Watcher. In deze zelfstudie leert u het volgende:
@@ -40,13 +40,13 @@ Met een NSG (netwerkbeveiligingsgroep) kunt u inkomend verkeer naar en uitgaand 
 > * Logboekgegevens downloaden
 > * Logboekgegevens weergeven
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="create-a-vm"></a>Een virtuele machine maken
 
 1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
 2. Selecteer **Compute** en selecteer **Windows Server 2016 Datacenter** of een versie van **Ubuntu Server**.
-3. Voer de volgende informatie in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **OK**:
+3. Voer de volgende gegevens in of selecteer de volgende gegevens, accepteer de standaardinstellingen voor de overige instellingen en selecteer **OK:**
 
     |Instelling|Waarde|
     |---|---|
@@ -55,7 +55,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Abonnement| Selecteer uw abonnement.|
     |Resourcegroep| Selecteer **Nieuwe maken** en voer **myResourceGroup** in.|
-    |Locatie| Selecteer **US - oost**|
+    |Locatie| Selecteer **VS - oost**|
 
 4. Selecteer een grootte voor de virtuele machine en selecteer **Selecteren**.
 5. Accepteer onder **Instellingen** alle standaardwaarden en selecteer **OK**.
@@ -65,10 +65,10 @@ Het maken van de virtuele machine duurt een paar minuten. Ga pas verder met de r
 
 ## <a name="enable-network-watcher"></a>Network Watcher inschakelen
 
-Als u al een netwerk-watcher hebt ingeschakeld in de regio US - oost, ga dan verder met [Insights-provider registreren](#register-insights-provider).
+Als u al een netwerk-watcher hebt ingeschakeld in de regio VS - oost, ga dan verder met [Insights-provider registreren](#register-insights-provider).
 
 1. Selecteer in de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de resultaten.
-2. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **US - oost**, zoals wordt weergegeven in de volgende afbeelding:
+2. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **VS - oost**, zoals wordt weergegeven in de volgende afbeelding:
 
     ![Network Watcher inschakelen](./media/network-watcher-nsg-flow-logging-portal/enable-network-watcher.png)
 
@@ -81,7 +81,7 @@ Voor NSG-stroomlogboekregistratie is de **Microsoft.Insights**-provider vereist.
 1. Selecteer in de linkerbovenhoek van de portal de optie **Alle services**. Typ *Abonnementen* in het vak Filter. Wanneer **Abonnementen** in de zoekresultaten wordt weergegeven, selecteert u deze optie.
 2. Selecteer in de lijst met abonnementen het abonnement waarvoor u de provider wilt inschakelen.
 3. Selecteer **Resourceproviders** onder **Instellingen**.
-4. Controleer of de provider **microsoft.insights**de **STATUS** **Geregistreerd** heeft, zoals wordt weergegeven in de volgende afbeelding. Als de status **Niet geregistreerd** is, selecteer dan **Registreren**, rechts van de provider.
+4. Controleer of de provider **microsoft.insights**de **STATUS****Geregistreerd** heeft, zoals wordt weergegeven in de volgende afbeelding. Als de status **Niet geregistreerd** is, selecteer dan **Registreren**, rechts van de provider.
 
     ![Provider registreren](./media/network-watcher-nsg-flow-logging-portal/register-provider.png)
 
@@ -94,10 +94,10 @@ Voor NSG-stroomlogboekregistratie is de **Microsoft.Insights**-provider vereist.
     | Instelling        | Waarde                                                        |
     | ---            | ---   |
     | Name           | Mag 3 tot 24 tekens lang zijn, mag alleen kleine letters en cijfers bevatten en moet uniek zijn binnen alle Azure Storage-accounts.                                                               |
-    | Locatie       | Selecteer **US - oost**                                           |
-    | Resourcegroep | Selecteer **Bestaande gebruiken** en vervolgens **myResourceGroup** |
+    | Locatie       | Selecteer **Oost-VS**                                           |
+    | Resourcegroep | Selecteer **Bestaand gebruiken**en selecteer vervolgens **myResourceGroup** |
 
-    Het maken van het opslagaccount kan ongeveer een minuut duren. Ga pas verder met de resterende stappen wanneer het opslagaccount is gemaakt. In alle gevallen moet het opslag account zich in dezelfde regio bevinden als de NSG.
+    Het maken van het opslagaccount kan ongeveer een minuut duren. Ga pas verder met de resterende stappen wanneer het opslagaccount is gemaakt. In alle gevallen moet de opslagrekening zich in dezelfde regio bevinden als de NSG.
 4. Selecteer in de linkerbovenhoek van de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de zoekresultaten.
 5. Selecteer onder **LOGBOEKEN** de optie **NSG-stroomlogboeken**, zoals wordt weergegeven in de volgende afbeelding:
 
@@ -105,13 +105,13 @@ Voor NSG-stroomlogboekregistratie is de **Microsoft.Insights**-provider vereist.
 
 6. Selecteer de NSG met de naam **myVm-nsg**.
 7. Selecteer onder **Instellingen voor stroomlogboeken** de optie **Aan**.
-8. Selecteer de versie voor stroomlogboekregistratie. Versie 2 bevat statistieken over flow sessies (bytes en pakketten)
+8. Selecteer de versie voor stroomlogboekregistratie. Versie 2 bevat stroomsessiestatistieken (bytes en pakketten)
 
-   ![De versie van stroom logboeken selecteren](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+   ![Versie voor stroomlogboeken selecteren](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
 
 9. Selecteer het opslagaccount dat u in stap 3 hebt gemaakt.
    > [!NOTE]
-   > NSG-stroom logboeken werken niet met opslag accounts waarvoor een [hiërarchische naam ruimte](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) is ingeschakeld.
+   > NSG-stroomlogboeken werken niet met opslagaccounts waarop [hiërarchische naamruimte](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) is ingeschakeld.
 1. Selecteer in de linkerbovenhoek van de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de zoekresultaten.
 10. Stel **Bewaartermijn (dagen)** in op 5 en selecteer **Opslaan**.
 
@@ -123,12 +123,12 @@ Voor NSG-stroomlogboekregistratie is de **Microsoft.Insights**-provider vereist.
    ![Stroomlogboeken downloaden](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Selecteer het opslagaccount dat u hebt geconfigureerd in stap 2 van [NSG-stroomlogboek inschakelen](#enable-nsg-flow-log).
-4. Onder **BLOB service**selecteert u **blobs**en selecteert u vervolgens de container **Insights-logs-networksecuritygroupflowevent** .
-5. Navigeer in de container naar de maphiërarchie totdat u een bestand PT1H. json krijgt, zoals in de volgende afbeelding wordt weer gegeven. Logboek bestanden worden geschreven naar een mappen hiërarchie die volgt op de volgende naam Conventie: https://{storageAccountName}. blob. core. Windows. net/Insights-logs-networksecuritygroupflowevent/resourceId =/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y = {Year}/m = {maand}/d = {day}/h = {Hour}/m = 00/macAddress = {macAddress}/PT1H.json
+4. Selecteer **Blobs**onder **Blobservice**en selecteer vervolgens de container **insights-logs-networksecuritygroupflowevent.**
+5. Navigeer in de container door de maphiërarchie totdat u een PT1H.json-bestand hebt, zoals wordt weergegeven in de afbeelding die volgt. Logbestanden worden geschreven naar een maphiërarchie die de volgende naamgevingsconventie volgt: https://{storageAccountName}.blob.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/ABONNEMENTEN/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
-   ![Stroom logboek](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
+   ![Stroomlogboek](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
-6. Selecteer **...**  rechts van het bestand PT1H.json en selecteer **Downloaden**.
+6. Selecteer **... ** rechts van het bestand PT1H.json en selecteer **Downloaden**.
 
 ## <a name="view-flow-log"></a>Stroomlogboek weergeven
 
@@ -223,4 +223,4 @@ De waarde voor **mac** in de vorige uitvoer is het MAC-adres van de netwerkinter
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u NSG-stroomlogboekregistratie inschakelt voor een NSG. U hebt ook geleerd hoe u gegevens die zijn geregistreerd in een bestand, downloadt en bekijkt. De onbewerkte gegevens in het json-bestand zijn soms lastig te interpreteren. Als u gegevens van stroom logboeken wilt visualiseren, kunt u [Azure Traffic Analytics](traffic-analytics.md), [micro soft power bi](network-watcher-visualize-nsg-flow-logs-power-bi.md)en andere hulpprogram ma's gebruiken. U kunt alternatieve methoden proberen om NSG-stroom Logboeken in te scha kelen, zoals [Power shell](network-watcher-nsg-flow-logging-powershell.md), [Azure cli](network-watcher-nsg-flow-logging-cli.md), [rest API](network-watcher-nsg-flow-logging-rest.md) en [arm-sjablonen](network-watcher-nsg-flow-logging-azure-resource-manager.md).
+In deze zelfstudie hebt u geleerd hoe u NSG-stroomlogboekregistratie inschakelt voor een NSG. U hebt ook geleerd hoe u gegevens die zijn geregistreerd in een bestand, downloadt en bekijkt. De onbewerkte gegevens in het json-bestand zijn soms lastig te interpreteren. Als u stroomlogboeken wilt visualiseren, u [Azure Traffic Analytics,](traffic-analytics.md) [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)en andere hulpprogramma's gebruiken. U alternatieve methoden uitproberen om NSG-stroomlogboeken in te schakelen, zoals [PowerShell,](network-watcher-nsg-flow-logging-powershell.md) [Azure CLI,](network-watcher-nsg-flow-logging-cli.md) [REST API](network-watcher-nsg-flow-logging-rest.md) en [ARM-sjablonen.](network-watcher-nsg-flow-logging-azure-resource-manager.md)

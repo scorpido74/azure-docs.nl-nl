@@ -1,24 +1,24 @@
 ---
-title: Zelf studie-container register voorbereiden om installatie kopie te implementeren
+title: Zelfstudie - Containerregister voorbereiden om afbeelding te implementeren
 description: Zelfstudie voor Azure Container Instances, deel 2 van 3 - Azure-containerregister voorbereiden
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252161"
 ---
-# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Zelf studie: een Azure container Registry maken en een container installatie kopie pushen
+# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Zelfstudie: Een Azure-containerregister maken en een containerafbeelding pushen
 
 Dit is deel 2 van een zelfstudie met drie delen. In [deel één](container-instances-tutorial-prepare-app.md) van de zelfstudie hebt u een Docker-containerinstallatiekopie gemaakt voor een Node.js-webtoepassing. In deze zelfstudie pusht u de installatiekopie naar Azure Container Registry. Als u nog geen containerinstallatiekopie hebt gemaakt, gaat u terug naar [Zelfstudie 1: Containerinstallatiekopie maken](container-instances-tutorial-prepare-app.md).
 
-Azure Container Registry is uw privéregister van Docker in Azure. In deze zelf studie, deel twee van de reeks, kunt u:
+Azure Container Registry is uw privéregister van Docker in Azure. In deze tutorial, deel twee van de serie, u:
 
 > [!div class="checklist"]
-> * Een Azure Container Registry-exemplaar maken met de Azure CLI
+> * Een Azure Container Registry-instantie maken met de Azure CLI
 > * Een containerinstallatiekopie taggen voor het Azure Container Registry
 > * De installatiekopie uploaden naar het register
 
@@ -38,7 +38,7 @@ Een resourcegroep maken met de opdracht [az group create][az-group-create]. In h
 az group create --name myResourceGroup --location eastus
 ```
 
-Nadat u de resource groep hebt gemaakt, maakt u een Azure container Registry met de opdracht [AZ ACR Create][az-acr-create] . De containerregisternaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Vervang `<acrName>` door een unieke naam voor het register:
+Zodra u de resourcegroep hebt gemaakt, maakt u een Azure Container Registry met de opdracht [az acr create][az-acr-create]. De containerregisternaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Vervang `<acrName>` door een unieke naam voor het register:
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -93,7 +93,7 @@ Login Succeeded
 
 Als u een containerinstallatiekopie naar een privéregister zoals Azure Container Registry wilt pushen, moet u de installatiekopie eerst labelen met de volledige naam van de aanmeldingsserver van het register.
 
-Haal eerst de volledige naam van de aanmeldingsserver op voor uw Azure Container Registry. Voer de volgende opdracht [AZ ACR show][az-acr-show] uit en vervang `<acrName>` door de naam van het REGI ster dat u zojuist hebt gemaakt:
+Haal eerst de volledige naam van de aanmeldingsserver op voor uw Azure Container Registry. Voer de opdracht [az acr show][az-acr-show] uit en vervang `<acrName>` door de naam van het register dat u zojuist hebt gemaakt:
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
@@ -111,7 +111,7 @@ Result
 mycontainerregistry082.azurecr.io
 ```
 
-U kunt nu de lijst met uw lokale installatie kopieën weer geven met de opdracht [docker-installatie kopieën][docker-images] :
+Geef nu de lijst met lokale installatiekopieën weer met behulp van de opdracht [docker images][docker-images]:
 
 ```bash
 docker images
@@ -125,7 +125,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-Codeer de *ACI-zelf studie-app-* installatie kopie met de aanmeldings server van uw container register. Voeg ook het label `:v1` toe aan het eind van de installatiekopienaam om het versienummer van de installatiekopie aan te geven. Vervang `<acrLoginServer>` door het resultaat van de opdracht [AZ ACR show][az-acr-show] die u eerder hebt uitgevoerd.
+Tag de *aci-tutorial-app-afbeelding* met de login-server van uw containerregister. Voeg ook het label `:v1` toe aan het eind van de installatiekopienaam om het versienummer van de installatiekopie aan te geven. Vervang `<acrLoginServer>` door het resultaat van de opdracht [az acr show][az-acr-show] die u eerder hebt uitgevoerd.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -142,7 +142,7 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    
 
 ## <a name="push-image-to-azure-container-registry"></a>Installatiekopie pushen naar Azure Container Registry
 
-Nu u de installatie kopie van de *ACI-zelf studie-app* hebt gelabeld met de volledige naam van de aanmeldings server van uw persoonlijke REGI ster, kunt u de installatie kopie naar het REGI ster pushen met de opdracht [docker push][docker-push] . Vervang `<acrLoginServer>` door de volledige naam van de aanmeldingsserver die u in de vorige stap hebt verkregen.
+Nu u de *aci-tutorial-app-afbeelding* hebt getagd met de volledige naam van uw privéregister, u de afbeelding naar het register pushen met de [pushopdracht docker.][docker-push] Vervang `<acrLoginServer>` door de volledige naam van de aanmeldingsserver die u in de vorige stap hebt verkregen.
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -164,7 +164,7 @@ v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05
 
 ## <a name="list-images-in-azure-container-registry"></a>Installatiekopieën vermelden in Azure Container Registry
 
-Als u wilt controleren of de installatie kopie die u zojuist hebt gepusht, inderdaad in uw Azure container Registry staat, vermeldt u de installatie kopieën in uw REGI ster met de opdracht [AZ ACR Repository List][az-acr-repository-list] . Vervang `<acrName>` door de naam van het containerregister.
+Als u wilt controleren of de installatiekopie die u zojuist hebt gepusht, zich inderdaad in uw Azure Container Registry bevindt, geeft u de installatiekopieën in uw register weer met de opdracht [az acr repository list][az-acr-repository-list]. Vervang `<acrName>` door de naam van het containerregister.
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -182,7 +182,7 @@ Result
 aci-tutorial-app
 ```
 
-Als u de *Tags* voor een specifieke installatie kopie wilt zien, gebruikt u de opdracht [AZ ACR repository show-Tags][az-acr-repository-show-tags] .
+Gebruik de opdracht [az acr repository show-tags][az-acr-repository-show-tags] om de *labels* voor een specifieke installatiekopie te zien.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
@@ -202,7 +202,7 @@ v1
 In deze zelfstudie hebt u een Azure Container Registry voorbereid voor gebruik met Azure Container Instances en hebt u een containerinstallatiekopie naar het register gepusht. De volgende stappen zijn voltooid:
 
 > [!div class="checklist"]
-> * Een Azure Container Registry-exemplaar gemaakt met de Azure CLI
+> * Een Azure Container Registry-exemplaar maken met de Azure CLI
 > * Er is een containerinstallatiekopie getagd voor Azure Container Registry
 > * Er is een installatiekopie naar Azure Container Registry geüpload
 

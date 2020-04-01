@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SD-elementen | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SD-elementen.
+title: 'Zelfstudie: SSO-integratie (Azure Active Directory single sign-on) met SD-elementen | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SD Elements.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,193 +17,193 @@ ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a387659e2375444fd32cf731ab4bccc210b669a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74081685"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SD-elementen
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met SD Elements
 
-In deze zelf studie leert u hoe u SD-elementen integreert met Azure Active Directory (Azure AD). Wanneer u SD-elementen integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u SD-elementen integreren met Azure Active Directory (Azure AD). Wanneer u SD-elementen integreert met Azure AD, u het als:
 
-* Controle in azure AD die toegang heeft tot SD-elementen.
-* Uw gebruikers in staat stellen om automatisch te worden aangemeld bij SD-elementen met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer in Azure AD die toegang heeft tot SD-elementen.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij SD Elements met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* SD-elementen waarvoor het abonnement is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* SD Elements single sign-on (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* SD-elementen ondersteunen **IDP** GEÏNITIEERDe SSO
+* SD Elements ondersteunt **IDP** geïnitieerde SSO
 
-## <a name="adding-sd-elements-from-the-gallery"></a>SD-elementen uit de galerie toevoegen
+## <a name="adding-sd-elements-from-the-gallery"></a>SD-elementen toevoegen uit de galerie
 
-Als u de integratie van SD-elementen wilt configureren in azure AD, moet u SD-elementen uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van SD-elementen in Azure AD wilt configureren, moet u SD-elementen uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **SD-elementen** in het zoekvak.
-1. Selecteer **SD-elementen** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **SD-elementen** in het zoekvak in de sectie **Toevoegen in de galerie.**
+1. Selecteer **SD-elementen** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sd-elements"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor SD-elementen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sd-elements"></a>Azure AD-aanmelding voor SD-elementen configureren en testen
 
-Azure AD SSO configureren en testen met SD-elementen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SD-elementen.
+Azure AD SSO configureren en testen met SD-elementen met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in SD Elements.
 
-Als u Azure AD SSO wilt configureren en testen met SD-elementen, voltooit u de volgende bouw stenen:
+Als u Azure AD SSO wilt configureren en testen met SD-elementen, voert u de volgende bouwstenen uit:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Configureren van SD-elementen SSO](#configure-sd-elements-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak SD-elementen test gebruiker](#create-sd-elements-test-user)** -om een soort equivalent van B. Simon te hebben in SD-elementen die zijn gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[SD Elements SSO configureren](#configure-sd-elements-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    * **[Testgebruiker SD-elementen maken](#create-sd-elements-test-user)** - om een tegenhanger van B.Simon in SD-elementen te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina **SD-elementen** voor de integratie van de toepassing en selecteer de sectie voor het **beheren** van **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **SD** Elements-toepassingsintegratie de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer op de pagina **eenmalige aanmelding met SAML instellen** de waarden in voor de volgende velden:
+1. Voer op de pagina **Eén aanmelding instellen met SAML** de waarden in voor de volgende velden:
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<tenantname>.sdelements.com/sso/saml2/metadata`
+    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://<tenantname>.sdelements.com/sso/saml2/metadata`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<tenantname>.sdelements.com/sso/saml2/acs/`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<tenantname>.sdelements.com/sso/saml2/acs/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met [SD-elementen client ondersteunings team](mailto:support@sdelements.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met [het ondersteuningsteam van SD Elements](mailto:support@sdelements.com) Client om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. De toepassing SD-elementen verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. De toepassing SD Elements verwacht dat de SAML-beweringen in een specifieke indeling zijn, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![installatiekopie](common/default-attributes.png)
 
-1. Behalve hierboven verwachtte de toepassing SD-elementen nog maar weinig kenmerken om te worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+1. Naast bovenstaande, SD Elements applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw vereisten.
 
-    | Naam |  Bronkenmerk|
+    | Name |  Bronkenmerk|
     | --- | --- |
     | e-mail |user.mail |
     | firstname |user.givenname |
     | lastname |user.surname |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Op de sectie **SD-elementen instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. Kopieer in de sectie **SD-elementen instellen** de juiste URL(s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot SD-elementen.
+In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot SD Elements.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **SD-elementen**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **SD-elementen**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
-## <a name="configure-sd-elements-sso"></a>SSO-elementen configureren
+## <a name="configure-sd-elements-sso"></a>SD-elementen SSO configureren
 
-1. Als u eenmalige aanmelding wilt inschakelen, neemt u contact op met het [ondersteunings team](mailto:support@sdelements.com) van de SD-elementen en geeft u het gedownloade certificaat bestand.
+1. Als u eenmalige aanmelding wilt inschakelen, neemt u contact op met uw [ondersteuningsteam voor SD Elements](mailto:support@sdelements.com) en geeft u hen het gedownloade certificaatbestand.
 
-1. Meld u in een ander browser venster aan bij uw SD-elementen Tenant als beheerder.
+1. Meld je in een ander browservenster aan bij de tenant van SD Elements als beheerder.
 
-1. Klik in het menu aan de bovenkant op **systeem**en vervolgens op **eenmalige aanmelding**.
+1. Klik in het menu bovenaan op **Systeem**en vervolgens **op Eén aanmelding**.
 
     ![Eenmalige aanmelding configureren](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
-1. Voer de volgende stappen uit in het dialoog venster **instellingen voor eenmalige aanmelding** :
+1. Voer in het dialoogvenster **Instellingen voor aanmelding** smaken de volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
 
     a. Selecteer **SAML**als **SSO-type**.
 
-    b. Plak de waarde van de **Azure ad-id**die u van Azure Portal hebt gekopieerd in het tekstvak id **-provider entiteits-** id's.
+    b. Plak in het tekstvak **Identiteitsprovider-id** de waarde van **Azure AD-id**, die u hebt gekopieerd van Azure-portal.
 
-    c. Plak in het tekstvak **ID-provider single sign-on Service** de waarde van de **aanmeldings-URL**die u van Azure Portal hebt gekopieerd.
+    c. Plak in het tekstvak **Single Sign-On Service** van de identiteitsprovider de waarde van **de aanmeldings-URL**, die u hebt gekopieerd van azure-portal.
 
     d. Klik op **Opslaan**.
 
-### <a name="create-sd-elements-test-user"></a>Test gebruiker van SD-elementen maken
+### <a name="create-sd-elements-test-user"></a>Testgebruiker SD-elementen maken
 
-Het doel van deze sectie is het maken van een gebruiker met de naam B. Simon in SD-elementen. In het geval van SD-elementen maken gebruikers van SD-elementen een hand matige taak.
+Het doel van deze sectie is het creëren van een gebruiker genaamd B.Simon in SD Elements. In het geval van SD Elements is het maken van SD Elements-gebruikers een handmatige taak.
 
-**Als u B. Simon wilt maken in SD-elementen, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit om B.Simon in SD-elementen te maken:**
 
-1. Meld u in een webbrowser venster aan bij de bedrijfs site van de SD-elementen als beheerder.
+1. Meld u in een webbrowservenster aan op uw bedrijfssite van SD Elements als beheerder.
 
-1. Klik in het menu aan de bovenkant op **gebruikers beheer**en vervolgens op **gebruikers**.
+1. Klik in het menu bovenaan op **Gebruikersbeheer**en vervolgens **op Gebruikersgebruik**.
 
-    ![Een test gebruiker met SD-elementen maken](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
+    ![Een testgebruiker voor SD-elementen maken](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
 1. Klik op **Add New User**.
 
-    ![Een test gebruiker met SD-elementen maken](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
+    ![Een testgebruiker voor SD-elementen maken](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
-1. Voer de volgende stappen uit in het dialoog venster **nieuwe gebruiker toevoegen** :
+1. Voer in het dialoogvenster **Nieuwe gebruiker toevoegen** de volgende stappen uit:
 
-    ![Een test gebruiker met SD-elementen maken](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
+    ![Een testgebruiker voor SD-elementen maken](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
 
-    a. Voer in het tekstvak **e-mail** het e-mail adres van de gebruiker in, zoals **b.simon@contoso.com** .
+    a. Voer in het **e-mailtekstvak** de **b.simon@contoso.com**e-mail van de gebruiker in, zoals .
 
-    b. Voer in het tekstvak **voor de voor naam** de voor naam van de gebruiker in, zoals **B.** .
+    b. Voer in het tekstvak **Voornaam** de voornaam van de gebruiker in, zoals **B.**.
 
     c. Voer in het tekstvak **Achternaam** de achternaam van de gebruiker in, zoals **Simon**.
 
-    d. Als **rol**selecteert u **gebruiker**.
+    d. Selecteer **Gebruiker** **als rol**.
 
     e. Klik op **Gebruiker maken**.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Test SSO 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel SD-elementen in het toegangs venster klikt, moet u automatisch worden aangemeld bij de SD-elementen waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel SD-elementen in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de SD-elementen waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer SD-elementen uit met Azure AD](https://aad.portal.azure.com/)
+- [SD-elementen uitproberen met Azure AD](https://aad.portal.azure.com/)

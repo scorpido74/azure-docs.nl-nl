@@ -10,10 +10,10 @@ ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: 9e69b66c7cee5a6e012ad7ed2477556fa840bfb5
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78402066"
 ---
 # <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(AFGESCHAFT) ACR met een DC/OS-cluster gebruiken om uw toepassing te implementeren
@@ -127,7 +127,7 @@ Maak een container van de Ubuntu-installatiekopie.
 docker run ubuntu --name base-image
 ```
 
-Leg de container nu vast in een nieuwe installatiekopie. De naam van de installatie kopie moet de `loginServer` naam van het container register bevatten met een notatie van `loginServer/imageName`.
+Leg de container nu vast in een nieuwe installatiekopie. De afbeeldingsnaam moet `loginServer` de naam van het `loginServer/imageName`containerregister bevatten met een opmaak van .
 
 ```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo

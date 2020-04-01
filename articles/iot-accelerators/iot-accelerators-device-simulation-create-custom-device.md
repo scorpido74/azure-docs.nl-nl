@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "61450549"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Zelfstudie: Een aangepast gesimuleerd apparaat maken
@@ -28,7 +28,7 @@ In deze zelfstudie hebt u:
 > * Een apparaatmodel klonen
 > * Een apparaatmodel verwijderen
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -60,7 +60,7 @@ In deze zelfstudie maakt u een gesimuleerde koelkast die zowel temperatuur- en v
 
 Vul het formulier in met de volgende gegevens:
 
-| Instelling             | Value                                                |
+| Instelling             | Waarde                                                |
 | ------------------- | ---------------------------------------------------- |
 | Naam van apparaatmodel   | Koelkast                                         |
 | Modelbeschrijving   | Een koelkast met temperatuur- en vochtigheidssensoren |

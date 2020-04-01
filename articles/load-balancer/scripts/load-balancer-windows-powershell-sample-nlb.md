@@ -1,5 +1,5 @@
 ---
-title: Taak verdeling van verkeer naar Vm's voor HA-Azure PowerShell
+title: Load balance verkeer naar VM's voor HA - Azure PowerShell
 titleSuffix: Azure Load Balancer
 description: In dit Azure PowerShell-voorbeeldscript ziet u hoe u verkeer kunt verdelen naar virtuele machines voor hoge beschikbaarheid
 services: load-balancer
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
 ms.openlocfilehash: ccc9ed364ce7ec5b18d04a71a8215675f7876b81
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74075908"
 ---
 # <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure PowerShell-voorbeeldscript: Verkeer verdelen naar virtuele machines voor hoge beschikbaarheid
@@ -43,7 +43,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

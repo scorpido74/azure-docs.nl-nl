@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: taak verdeling virtuele Windows-machines in azure'
+title: Zelfstudie - Virtuele machines voor laadbalans Windows in Azure
 description: In deze zelfstudie leert u hoe u Azure PowerShell kunt gebruiken om een load balancer te maken voor een maximaal beschikbare en veilige toepassing op drie virtuele Windows-machines
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 05a796d7bbe08f8e560c6545f3ed37c0f54b9cf9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74067864"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>Zelfstudie: Taakverdelingen maken voor virtuele Windows-machines in Azure om een maximaal beschikbare toepassing te maken met Azure PowerShell
@@ -47,10 +47,10 @@ Om de verkeersstroom te regelen, definieert u load balancer-regels voor specifie
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="create-azure-load-balancer"></a>Azure-load balancer maken
-In dit gedeelte wordt beschreven hoe u elk onderdeel van de load balancer kunt maken en configureren. Voordat u een load balancer kunt maken, moet u eerst een resourcegroep maken met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupLoadBalancer* gemaakt op de locatie *VS Oost*:
+In dit gedeelte wordt beschreven hoe u elk onderdeel van de load balancer kunt maken en configureren. Voordat u een load balancer kunt maken, moet u eerst een resourcegroep maken met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroupLoadBalancer* op de *EastUS-locatie* ge:
 
 ```azurepowershell-interactive
 New-AzResourceGroup `

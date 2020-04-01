@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: apparaat instellen voor Azure IoT Hub Device Provisioning Service'
-description: In deze zelf studie wordt uitgelegd hoe u een apparaat kunt instellen om in te richten via de IoT Hub Device Provisioning Service (DPS) tijdens het proces voor het produceren van apparaten
+title: Zelfstudie - Apparaat instellen voor de Azure IoT Hub Device Provisioning Service
+description: In deze zelfstudie ziet u hoe u apparaat instellen voor inlevering via de IoT Hub Device Provisioning Service (DPS) tijdens het productieproces van het apparaat
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -10,13 +10,13 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 6ff732888e416fcd51216070b3b30ed37b79e92c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239488"
 ---
-# <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Zelf studie: een apparaat instellen voor inrichten met behulp van de Azure IoT Hub Device Provisioning Service
+# <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Zelfstudie: Een apparaat instellen voor inrichten met de Azure IoT Hub Device Provisioning Service
 
 In de vorige zelfstudie hebt u geleerd hoe u Azure IoT Hub Device Provisioning Service kunt instellen om apparaten automatisch in te richten in uw IoT-hub. In deze zelfstudie ziet u hoe u uw apparaat kunt instellen tijdens het fabriceren van het apparaat, en ervoor zorgt dat het automatisch kan worden ingericht met IoT Hub. Uw apparaat wordt ingericht op basis van het bijbehorende [Attestation-mechanisme](concepts-device.md#attestation-mechanism) na de eerste keer opstarten en verbinden met de inrichtingsservice. Deze zelfstudie bestaat uit de volgende taken:
 
@@ -27,7 +27,7 @@ In de vorige zelfstudie hebt u geleerd hoe u Azure IoT Hub Device Provisioning S
 
 Voor deze zelfstudie wordt ervan uitgegaan dat u al een Device Provisioning Service-instantie en een IoT-hub hebt gemaakt met behulp van de instructies in de vorige zelfstudie [Cloudresources instellen](tutorial-set-up-cloud.md).
 
-In deze zelfstudie wordt gebruikgemaakt van de [Azure IoT SDKs and libraries for C](https://github.com/Azure/azure-iot-sdk-c)-opslagplaats (Azure IoT SDK’s en bibliotheken voor C), die de SDK van de Device Provisioning Service-client voor C bevat. De SDK biedt momenteel ondersteuning voor TPM en X.509 voor apparaten die worden uitgevoerd in Windows- of Ubuntu-implementaties. Deze zelf studie is gebaseerd op het gebruik van een Windows Development-client, die ook basis kennis van Visual Studio afneemt. 
+In deze zelfstudie wordt gebruikgemaakt van de [Azure IoT SDKs and libraries for C](https://github.com/Azure/azure-iot-sdk-c)-opslagplaats (Azure IoT SDK’s en bibliotheken voor C), die de SDK van de Device Provisioning Service-client voor C bevat. De SDK biedt momenteel ondersteuning voor TPM en X.509 voor apparaten die worden uitgevoerd in Windows- of Ubuntu-implementaties. Deze zelfstudie is gebaseerd op het gebruik van een Windows-ontwikkelclient, die ook een basisvaardigheid met Visual Studio aanneemt. 
 
 Als u niet bekend bent met het proces van automatische inrichting, bekijkt u de [Concepten voor automatische inrichting](concepts-auto-provisioning.md) voordat u verdergaat. 
 
@@ -36,23 +36,23 @@ Als u niet bekend bent met het proces van automatische inrichting, bekijkt u de 
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende vereisten gelden voor een Windows-ontwikkel omgeving. Voor Linux of macOS raadpleegt u de desbetreffende sectie in [uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) in de SDK-documentatie.
+De volgende voorwaarden zijn voor een Windows-ontwikkelomgeving. Zie voor Linux of macOS de juiste sectie in [Uw ontwikkelomgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) in de SDK-documentatie.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 met de [' Desktop Development C++](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) '-werk belasting ingeschakeld. Visual Studio 2015 en Visual Studio 2017 worden ook ondersteund.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 met de ['Desktop development with C++'](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) workload enabled. Ook Visual Studio 2015 en Visual Studio 2017 worden ondersteund.
 
 * Meest recente versie van [Git](https://git-scm.com/download/) geïnstalleerd.
 
 ## <a name="build-a-platform-specific-version-of-the-sdk"></a>Een platformspecifieke versie van de SDK bouwen
 
-De SDK van de Device Provisioning Service-client helpt u bij het implementeren van de software voor apparaatregistratie. Maar voordat u deze kunt gebruiken, moet u een versie van de SDK bouwen die specifiek is voor uw ontwikkelclientplatform en attestation- mechanisme. In deze zelf studie bouwt u een SDK die gebruikmaakt van Visual Studio op een Windows-ontwikkel platform voor een ondersteund type Attestation:
+De SDK van de Device Provisioning Service-client helpt u bij het implementeren van de software voor apparaatregistratie. Maar voordat u deze kunt gebruiken, moet u een versie van de SDK bouwen die specifiek is voor uw ontwikkelclientplatform en attestation- mechanisme. In deze zelfstudie bouwt u een SDK die Visual Studio gebruikt op een Windows-ontwikkelingsplatform, voor een ondersteund type attest:
 
-1. Down load het [cmake build-systeem](https://cmake.org/download/).
+1. Download het [CMake-buildsysteem.](https://cmake.org/download/)
 
     Het is belangrijk dat de vereisten voor Visual Studio met (Visual Studio en de workload Desktopontwikkeling met C++) op uw computer zijn geïnstalleerd **voordat** de `CMake`-installatie wordt gestart. Zodra aan de vereisten is voldaan en de download is geverifieerd, installeert u het CMake-bouwsysteem.
 
-2. Zoek de code naam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
+2. Zoek de tagnaam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
 
-3. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdrachten uit om de nieuwste versie van de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen. Gebruik het label dat u in de vorige stap hebt gevonden als waarde voor de para meter `-b`:
+3. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdrachten uit om de nieuwste versie van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-repository te klonen. Gebruik de tag die u in de `-b` vorige stap hebt gevonden als de waarde voor de parameter:
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -62,7 +62,7 @@ De SDK van de Device Provisioning Service-client helpt u bij het implementeren v
 
     Deze bewerking kan enkele minuten in beslag nemen.
 
-4. Maak de submap `cmake` in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit in de map `azure-iot-sdk-c`:
+4. Maak de submap `cmake` in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten `azure-iot-sdk-c` uit de map uit:
 
     ```cmd/sh
     mkdir cmake
@@ -133,9 +133,9 @@ Afhankelijk van of u de SDK bouwt om gebruik te maken van attestation voor een g
 
   1. In het deelvenster *Solution Explorer* van Visual Studio gaat u naar de map **Inrichten\_Extra**. Klik met de rechtermuisknop op het**dice\_device\_enrollment**-project en selecteer **Set as Startup Project**. 
   
-  1. Voer de oplossing uit met behulp van een van de twee opdrachten Start in het menu Debug. Voer in het uitvoervenster **i** in voor individuele registratie wanneer hierom wordt gevraagd. In het uitvoervenster wordt een lokaal gegenereerd X.509-certificaat weergegeven voor uw gesimuleerde apparaat. Kopieer de uitvoer naar Klembord vanaf *-----BEGIN CERTIFICATE-----* tot en met de eerste *-----END CERTIFICATE-----* , en zorg ervoor dat deze beide regels ook zijn opgenomen. U hebt alleen het eerste certificaat uit het uitvoervenster nodig.
+  1. Voer de oplossing uit met behulp van een van de twee opdrachten Start in het menu Debug. Voer in het uitvoervenster **i** in voor individuele registratie wanneer hierom wordt gevraagd. In het uitvoervenster wordt een lokaal gegenereerd X.509-certificaat weergegeven voor uw gesimuleerde apparaat. Kopieer de uitvoer naar Klembord vanaf *-----BEGIN CERTIFICATE-----* tot en met de eerste *-----END CERTIFICATE-----*, en zorg ervoor dat deze beide regels ook zijn opgenomen. U hebt alleen het eerste certificaat uit het uitvoervenster nodig.
  
-  1. Maak een bestand met de naam **_X509testcert.pem_** , open het in een teksteditor naar keuze en kopieer de inhoud van het Klembord naar dit bestand. Sla het bestand op. U gebruikt dit bestand later voor apparaatinschrijving. Wanneer de registratiesoftware wordt uitgevoerd, maakt deze gebruik van hetzelfde certificaat tijdens de automatische inrichting.    
+  1. Maak een bestand met de naam **_X509testcert.pem_**, open het in een teksteditor naar keuze en kopieer de inhoud van het Klembord naar dit bestand. Sla het bestand op. U gebruikt dit bestand later voor apparaatinschrijving. Wanneer de registratiesoftware wordt uitgevoerd, maakt deze gebruik van hetzelfde certificaat tijdens de automatische inrichting.    
 
 Deze beveiligingsartefacten zijn vereist tijdens de inschrijving van het apparaat voor Device Provisioning Service. De inrichtingsservice wacht tot het apparaat op enig moment later is opgestart en verbonden met de service. Als het apparaat voor de eerste keer wordt opgestart, communiceert de Client SDK-logica met de chip (of simulator) om de beveiligingsartefacten te extraheren uit het apparaat, en wordt de registratie bij Device Provisioning Service geverifieerd. 
 
@@ -146,7 +146,7 @@ De laatste stap is het schrijven van een registratietoepassing die gebruikmaakt 
 > [!NOTE]
 > Voor deze stap wordt ervan uitgegaan dat u een gesimuleerd apparaat gebruikt, gerealiseerd door het uitvoeren van een SDK-voorbeeldtoepassing voor registratie vanuit uw werkstation. Dezelfde concepten zijn echter van toepassing als u een registratietoepassing bouwt die moet worden geïmplementeerd op een fysiek apparaat. 
 
-1. Selecteer in Azure Portal de blade **Overzicht** voor Device Provisioning Service en kopieer de waarde bij **_Id-bereik_** . Het *Id-bereik* wordt gegenereerd met de service en is gegarandeerd uniek. Het is onveranderbaar en wordt gebruikt als een unieke identificatie van de registratie-id's.
+1. Selecteer in Azure Portal de blade **Overzicht** voor Device Provisioning Service en kopieer de waarde bij **_Id-bereik_**. Het *Id-bereik* wordt gegenereerd met de service en is gegarandeerd uniek. Het is onveranderbaar en wordt gebruikt als een unieke identificatie van de registratie-id's.
 
     ![Device Provisioning Service-eindpuntgegevens uit de portalblade extraheren](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
@@ -202,11 +202,11 @@ Mogelijk moet u ook de Device Provisioning Service-clientoepassing voor registra
 
 Op dit punt worden Device Provisioning Service en IoT Hub mogelijk uitgevoerd in de portal. Als u de installatie van apparaatinrichting wilt afbreken, en/of de afronding van deze reeks zelfstudies wilt uitstellen, raden we u aan ze uit te schakelen om onnodige kosten te vermijden.
 
-1. Klik in het linkermenu in Azure Portal op **All resources** en selecteer uw Device Provisioning-service. Klik bovenaan de blade **Alle resources** op **Verwijderen**.  
-1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer vervolgens uw IoT-hub. Klik bovenaan de blade **Alle resources** op **Verwijderen**.  
+1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer uw Device Provisioning Service. Klik bovenaan de blade **All resources** op **Delete**.  
+1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer vervolgens uw IoT-hub. Klik bovenaan de blade **All resources** op **Delete**.  
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Platformspecifieke SDK van de Device Provisioning Service-client bouwen

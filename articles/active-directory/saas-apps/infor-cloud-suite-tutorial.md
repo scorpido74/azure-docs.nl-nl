@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Infor CloudSuite | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Infor CloudSuite.
+title: 'Zelfstudie: Azure Active Directory-integratie met Infor CloudSuite | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Infor CloudSuite.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,45 +17,45 @@ ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9bb3d260b808e61f15ec85752c299bfeb3ab6fd
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67588559"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>Zelfstudie: Azure Active Directory-integratie met Infor CloudSuite
 
-In deze zelfstudie leert u hoe u Infor CloudSuite integreren met Azure Active Directory (Azure AD).
-Infor CloudSuite integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe U Infor CloudSuite integreren met Azure Active Directory (Azure AD).
+De integratie van Infor CloudSuite met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot Infor CloudSuite heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Infor CloudSuite (Single Sign-On) inschakelen met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Infor CloudSuite.
+* U uw gebruikers automatisch laten aanmelden bij Infor CloudSuite (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Infor CloudSuite, moet u de volgende items:
+Als u Azure AD-integratie wilt configureren met Infor CloudSuite, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Eenmalige aanmelding Infor CloudSuite ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Infor CloudSuite-abonnement met één aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Infor CloudSuite **SP en IDP** gestart door SSO
-* Biedt ondersteuning voor Infor CloudSuite **Just In Time** inrichten van gebruikers
+* Infor CloudSuite ondersteunt **SP en IDP** geïnitieerde SSO
+* Infor CloudSuite ondersteunt **Just In Time** gebruikersinrichting
 
-## <a name="adding-infor-cloudsuite-from-the-gallery"></a>Infor CloudSuite uit de galerie toe te voegen
+## <a name="adding-infor-cloudsuite-from-the-gallery"></a>Infor CloudSuite toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Infor CloudSuite in Azure AD, moet u Infor CloudSuite uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Infor CloudSuite in Azure AD wilt configureren, moet u Infor CloudSuite vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Infor CloudSuite uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om Infor CloudSuite vanuit de galerie toe te voegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -67,31 +67,31 @@ Voor het configureren van de integratie van Infor CloudSuite in Azure AD, moet u
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Infor CloudSuite**, selecteer **Infor CloudSuite** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Infor CloudSuite**in het zoekvak , selecteer **Infor CloudSuite** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-    ![Infor CloudSuite in de lijst met resultaten](common/search-new-app.png)
+    ![Infor CloudSuite in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie maakt u configureert en test Azure AD eenmalige aanmelding met Infor CloudSuite op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Infor CloudSuite tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Infor CloudSuite op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Infor CloudSuite.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met Infor CloudSuite, moet u de volgende bouwstenen voltooien:
+Als u Azure AD single sign-on met Infor CloudSuite wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Infor CloudSuite Single Sign-On](#configure-infor-cloudsuite-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker Infor CloudSuite](#create-infor-cloudsuite-test-user)**  : als u wilt een equivalent van Britta Simon in Infor CloudSuite die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Infor CloudSuite Single Sign-On](#configure-infor-cloudsuite-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak Infor CloudSuite-testgebruiker](#create-infor-cloudsuite-test-user)** - om een tegenhanger van Britta Simon in Infor CloudSuite te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Infor CloudSuite, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Infor CloudSuite te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Infor CloudSuite** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Infor CloudSuite-toepassingsintegratie** de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,11 +103,11 @@ Voor het configureren van Azure AD eenmalige aanmelding met Infor CloudSuite, mo
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
+4. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
 
-    ![Infor CloudSuite domein en URL's, eenmalige aanmelding informatie](common/idp-intiated.png)
+    ![Infor CloudSuite-domein- en URL's met eenmalige aanmeldingsgegevens](common/idp-intiated.png)
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon:
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: 
 
     | | |
     |-|-|
@@ -117,7 +117,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Infor CloudSuite, mo
     | `http://mingle-sso.se2.inforcloudsuite.com`|
     | |
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon:
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: 
 
     | | |
     |-|-|
@@ -129,9 +129,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Infor CloudSuite, mo
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Infor CloudSuite domein en URL's, eenmalige aanmelding informatie](common/metadata-upload-additional-signon.png)
+    ![Infor CloudSuite-domein- en URL's met eenmalige aanmeldingsgegevens](common/metadata-upload-additional-signon.png)
 
-    Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon:
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: 
 
     | | |
     |-|-|
@@ -141,13 +141,13 @@ Voor het configureren van Azure AD eenmalige aanmelding met Infor CloudSuite, mo
     | `https://mingle-portal.se2.inforcloudsuite.com/Tenant-Name/`|
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [Infor CloudSuite Client ondersteuningsteam](mailto:support@infor.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [het ondersteuningsteam van Infor CloudSuite Client](mailto:support@infor.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-7. Op de **stellen Infor CloudSuite** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+7. Kopieer in de sectie **Infor CloudSuite instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -157,9 +157,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Infor CloudSuite, mo
 
     c. Afmeldings-URL
 
-### <a name="configure-infor-cloudsuite-single-sign-on"></a>Configureer Infor CloudSuite Single Sign-On
+### <a name="configure-infor-cloudsuite-single-sign-on"></a>Infor CloudSuite-aanmelding configureren
 
-Het configureren van eenmalige aanmelding op **Infor CloudSuite** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [Infor CloudSuite ondersteuning voor team](mailto:support@infor.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan **de Infor CloudSuite-kant,** moet u de gedownloade **XML met aalmetagegevens van federatiemetagegevens** en de juiste gekopieerde URL's van Azure-portal naar [het Infor CloudSuite-ondersteuningsteam](mailto:support@infor.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -177,25 +177,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld `brittasimon@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Infor CloudSuite.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Infor CloudSuite.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Infor CloudSuite**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Infor CloudSuite**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Infor CloudSuite**.
+2. Selecteer **Infor CloudSuite in**de lijst met toepassingen.
 
-    ![De koppeling Infor CloudSuite in de lijst met toepassingen](common/all-applications.png)
+    ![De Infor CloudSuite-koppeling in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -205,26 +205,26 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-infor-cloudsuite-test-user"></a>Infor CloudSuite testgebruiker maken
+### <a name="create-infor-cloudsuite-test-user"></a>Infor CloudSuite-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Infor CloudSuite. Infor CloudSuite biedt ondersteuning voor just-in-time-gebruikersinrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in Infor CloudSuite bestaat, wordt een nieuw gemaakt nadat verificatie. Als u maken van een gebruiker handmatig wilt, neem dan contact op met [Infor CloudSuite ondersteuningsteam](mailto:support@infor.com).
+In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in Infor CloudSuite. Infor CloudSuite ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Infor CloudSuite, wordt er een nieuwe gemaakt na verificatie. Als u handmatig een gebruiker wilt maken, neemt u contact op met [het ondersteuningsteam van Infor CloudSuite.](mailto:support@infor.com)
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Infor CloudSuite in het toegangsvenster, moet u worden automatisch aangemeld bij de Infor CloudSuite waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Infor CloudSuite in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Infor CloudSuite waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

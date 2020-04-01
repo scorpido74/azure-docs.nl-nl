@@ -157,7 +157,7 @@ De voorgaande code gebruikt de volgende Azure CLI-opdrachten:
 
 Zie [Azure CLI-voorbeelden](../sql-database-cli-samples.md)voor meer Azure SQL Database Azure CLI-voorbeelden .
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 U een Azure-brongroep, SQL-server en één database maken met Windows PowerShell. Als u de Azure Cloud Shell niet wilt gebruiken, [installeert u de Azure PowerShell-module](/powershell/azure/install-az-ps).
 

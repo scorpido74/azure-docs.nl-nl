@@ -38,7 +38,7 @@ In dit artikel worden stappen beschreven voor het verkrijgen van referenties voo
 - Een Azure-account. Als u geen account hebt, begint u met een [gratis proefversie van Azure.](https://azure.microsoft.com/pricing/free-trial/) 
 - Een Media Services-account. Zie [Een Azure Media Services-account maken met de Azure-portal](create-account-howto.md)voor meer informatie.
 
-## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 ### <a name="api-access"></a>API-toegang 
 

@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met virtuele netwerken met VNet-peering-zelf studie-Azure Portal
+title: Virtuele netwerken verbinden met VNet-peering - zelfstudie - Azure-portal
 description: In deze zelfstudie leert u hoe u virtuele netwerken kunt verbinden met virtueel-netwerkpeering met behulp van Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
@@ -14,10 +14,10 @@ ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201295"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Zelfstudie: virtuele netwerken verbinden met virtueel-netwerkpeering met behulp van Azure Portal
@@ -28,37 +28,37 @@ U kunt virtuele netwerken met elkaar verbinden met virtueel-netwerk peering. Dez
 > * Twee virtuele netwerken maken
 > * Twee virtuele netwerken koppelen met virtueel-netwerkpeering
 > * Een virtuele machine (VM) implementeren op elk van de virtuele netwerken
-> * Communiceren tussen VM's
+> * Communicatie tussen virtuele machines
 
 U kunt deze zelfstudie desgewenst volgen met behulp van de [Azure CLI](tutorial-connect-virtual-networks-cli.md) of [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md).
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-Meld u aan bij de Azure-portal op https://portal.azure.com.
+Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-virtual-networks"></a>Virtuele netwerken maken
 
 1. Selecteer **Een resource maken** in de Azure-portal.
 2. Selecteer **Netwerken** en selecteer vervolgens **Virtueel netwerk**.
-3. Voer op het tabblad **basis beginselen** de volgende informatie in of Selecteer deze en accepteer de standaard waarden voor de overige instellingen:
+3. Voer op het tabblad **Basisbeginselen** de volgende gegevens in of selecteer en accepteer de standaardinstellingen voor de overige instellingen:
 
     |Instelling|Waarde|
     |---|---|
     |Abonnement| Selecteer uw abonnement.|
     |Resourcegroep| Selecteer **Nieuwe maken** en voer *myResourceGroup* in.|
-    |Regio| Selecteer **US - oost**.|
-    |Naam|myVirtualNetwork1|
+    |Regio| Selecteer **Oost-VS**.|
+    |Name|myVirtualNetwork1|
 
-4. Voer op het tabblad **IP-adressen** 10.0.0.0/16 in voor het veld **adres ruimte** . Klik hieronder op de knop **subnet toevoegen** en voer *Subnet1* in voor het **subnet naam** en 10.0.0.0/24 voor het **adres bereik**van het subnet.
-5. Selecteer **controleren + maken** en selecteer vervolgens **maken**.
+4. Voer op het tabblad **IP-adressen** 10.0.0.0/16 in voor het veld **Adresruimte.** Klik hieronder **op subnet toevoegen** en voer *Subnet1* in voor **SubnetNaam** en 10.0.0.0/24 voor **subnetadresbereik**.
+5. Selecteer **Controleren + Maken** en selecteer Vervolgens **Maken**.
    
 5. Volg de stappen 1-5 nogmaals, maar dan met de volgende wijzigingen:
 
     |Instelling|Waarde|
     |---|---|
-    |Naam|myVirtualNetwork2|
+    |Name|myVirtualNetwork2|
     |Adresruimte|10.1.0.0/16|
     |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
     |Subnetnaam | Subnet2|
@@ -67,7 +67,7 @@ Meld u aan bij de Azure-portal op https://portal.azure.com.
 ## <a name="peer-virtual-networks"></a>Peering van virtuele netwerken
 
 1. Begin in het zoekvak bovenaan Azure Portal *MyVirtualNetwork1* te typen. Wanneer **myVirtualNetwork1** wordt weergegeven in de zoekresultaten, selecteert u dit.
-2. Selecteer **peerings**onder **instellingen**en selecteer vervolgens **toevoegen**, zoals wordt weer gegeven in de volgende afbeelding:
+2. Selecteer **Peerings**, onder **Instellingen**en selecteer **Toevoegen,** zoals weergegeven in de volgende afbeelding:
 
     ![Peering maken](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 
@@ -75,14 +75,14 @@ Meld u aan bij de Azure-portal op https://portal.azure.com.
 
     |Instelling|Waarde|
     |---|---|
-    |Naam van de peering van myVirtualNetwork1 naar extern virtueel netwerk|myVirtualNetwork1-myVirtualNetwork2-wanneer de pagina voor het eerst wordt geladen, ziet u hier de zin ' extern virtueel netwerk '. Nadat u het externe virtuele netwerk hebt gekozen, wordt de zin "extern virtueel netwerk" vervangen door de naam van het externe virtuele netwerk.|
+    |Naam van het peering van myVirtualNetwork1 naar extern virtueel netwerk|myVirtualNetwork1-myVirtualNetwork2 - Wanneer de pagina voor het eerst wordt geladen, ziet u hier de zinsnede "extern virtueel netwerk". Nadat u het externe virtuele netwerk hebt gekozen, wordt de zinsnede "extern virtueel netwerk" vervangen door de naam van het externe virtuele netwerk.|
     |Abonnement| Selecteer uw abonnement.|
-    |Virtueel netwerk|myVirtualNetwork2: als u het virtuele netwerk *MyVirtualNetwork2* wilt selecteren, selecteert u **virtueel netwerk**en selecteert u vervolgens **myVirtualNetwork2 (myResourceGroup)** . U kunt een virtueel netwerk in dezelfde regio of in een andere regio selecteren.|
-    |De naam van de peering van myVirtualNetwork2 naar myVirtualNetwork1|myVirtualNetwork2-myVirtualNetwork1|
+    |Virtueel netwerk|myVirtualNetwork2 - Als u het virtuele *netwerk myVirtualNetwork2* wilt selecteren, selecteert u **Virtueel netwerk**en selecteert u **myVirtualNetwork2 (myResourceGroup)**. U kunt een virtueel netwerk in dezelfde regio of in een andere regio selecteren.|
+    |Naam van het peering van myVirtualNetwork2 naar myVirtualNetwork1|myVirtualNetwork2-myVirtualNetwork1|
 
     ![Peering-instellingen](./media/tutorial-connect-virtual-networks-portal/peering-settings-bidirectional.png)
 
-    De **peering-status** is *verbonden*, zoals wordt weer gegeven in de volgende afbeelding:
+    De **PEERING-STATUS** is *verbonden,* zoals in de volgende afbeelding wordt weergegeven:
 
     ![Peeringstatus](./media/tutorial-connect-virtual-networks-portal/peering-status-connected.png)
 
@@ -101,22 +101,22 @@ Maak een VM in elk virtueel netwerk, zodat u er in een latere stap tussen kunt c
     |Instelling|Waarde|
     |---|---|
     |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
-    |Naam|myVm1|
-    |Locatie| Selecteer **US - oost**.|
+    |Name|myVm1|
+    |Locatie| Selecteer **Oost-VS**.|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
    
-4. Selecteer een VM-grootte voor de optie **grootte** .
-5. Selecteer de volgende waarden voor onder **netwerken**:
+4. Selecteer een VM-grootte voor de optie **Grootte.**
+5. Selecteer de volgende waarden voor onder **Netwerken:**
 
     |Instelling|Waarde|
     |---|---|
-    |Virtueel netwerk| myVirtualNetwork1-als dit nog niet is geselecteerd, selecteert u **virtueel netwerk** en selecteert u vervolgens **myVirtualNetwork1**.|
-    |Subnet| Subnet1-als dit nog niet is geselecteerd, selecteert u **subnet** en selecteert u vervolgens **Subnet1**.|
+    |Virtueel netwerk| myVirtualNetwork1 - Als deze nog niet is geselecteerd, selecteert u **Virtueel netwerk** en selecteert u **myVirtualNetwork1**.|
+    |Subnet| Subnet1 - Als deze nog niet is geselecteerd, selecteert u **Subnet** en selecteert u **Subnet1**.|
    
-6. Selecteer **netwerken**. Kies **geselecteerde poorten toestaan** voor de optie **open bare binnenkomende poorten** . Kies **RDP** voor de optie **binnenkomende poorten selecteren** hieronder. 
+6. Selecteer **Netwerken**. Kies **Geselecteerde poorten toestaan** voor de optie Openbare **binnenkomende poorten.** Kies **RDP** voor de optie **Binnenkomende poorten selecteren** hieronder. 
 
-7. Selecteer de knop **controleren + maken** in de onderste, linkerbenedenhoek om de VM-implementatie te starten.
+7. Selecteer de knop **Controleren + Maken** in de onderste, linkerhoek om de VM-implementatie te starten.
 
 ### <a name="create-the-second-vm"></a>De tweede VM maken
 
@@ -124,15 +124,15 @@ Volg de stappen 1-6 nogmaals, met de volgende wijzigingen:
 
 |Instelling|Waarde|
 |---|---|
-|Naam | myVm2|
+|Name | myVm2|
 |Virtueel netwerk | myVirtualNetwork2|
 
 Het maken van de VM's duurt enkele minuten. Ga niet verder met de overige stappen voordat beide VM's zijn gemaakt.
 
-## <a name="communicate-between-vms"></a>Communiceren tussen VM's
+## <a name="communicate-between-vms"></a>Communicatie tussen virtuele machines
 
 1. Begin in het vak *Zoeken* bovenaan de portal *myVm1* te typen. Wanneer **myVm1** wordt weergegeven in de zoekresultaten, selecteert u deze.
-2. Maak een externe bureaubladverbinding met *myVm1*  door **Verbinding maken** te kiezen, zoals in de volgende afbeelding:
+2. Maak een externe bureaubladverbinding met *myVm1 * door **Verbinding maken** te kiezen, zoals in de volgende afbeelding:
 
     ![Verbinding maken met de virtuele machine](./media/tutorial-connect-virtual-networks-portal/connect-to-virtual-machine.png)  
 
@@ -167,7 +167,7 @@ Wanneer u deze niet langer nodig hebt, verwijdert u de resourcegroep en alle res
 
 1. Voer *myResourceGroup* in het vak **Zoeken** bovenaan de portal in. Wanneer u **myResourceGroup** ziet in de zoekresultaten, selecteert u deze.
 2. Selecteer **Resourcegroep verwijderen**.
-3. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM:** en selecteer **Verwijderen**.
+3. Typ *myResourceGroup* voor **TYPE DE NAAM VAN DE RESOURCEGROEP:** en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

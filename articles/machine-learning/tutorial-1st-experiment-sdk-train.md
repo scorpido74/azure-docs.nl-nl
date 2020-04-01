@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: uw eerste Azure ML-model trainen in python'
+title: 'Zelfstudie: Train uw eerste Azure ML-model in Python'
 titleSuffix: Azure Machine Learning
-description: In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning en traint u een eenvoudig scikit model op basis van de diabetes-gegevensset.
+description: In deze zelfstudie leert u de fundamentele ontwerppatronen in Azure Machine Learning en traint u een eenvoudig scikit-learn-model op basis van de gegevensset voor diabetes.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,60 +11,60 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238676"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Zelf studie: uw eerste ML model trainen
+# <a name="tutorial-train-your-first-ml-model"></a>Zelfstudie: Train je eerste ML-model
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Deze zelfstudie is **deel twee van een tweedelige reeks**. In de vorige zelf studie hebt u [een werk ruimte gemaakt en een ontwikkel omgeving gekozen](tutorial-1st-experiment-sdk-setup.md). In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning en traint u een eenvoudig scikit model op basis van de diabetes-gegevensset. Na het volt ooien van deze zelf studie beschikt u over de praktische kennis van de SDK voor het uitbreiden van meer complexe experimenten en werk stromen.
+Deze zelfstudie is **deel twee van een tweedelige reeks**. In de vorige zelfstudie hebt u [een werkruimte gemaakt en een ontwikkelomgeving gekozen.](tutorial-1st-experiment-sdk-setup.md) In deze zelfstudie leert u de fundamentele ontwerppatronen in Azure Machine Learning en traint u een eenvoudig scikit-learn-model op basis van de gegevensset voor diabetes. Na het voltooien van deze tutorial heb je de praktische kennis van de SDK om op te schalen naar het ontwikkelen van complexere experimenten en workflows.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Uw werk ruimte verbinden en een experiment maken
-> * Gegevens laden en scikit trainen-informatie over modellen
-> * Trainings resultaten weer geven in de portal
+> * Uw werkruimte verbinden en een experiment maken
+> * Gegevens laden en scikit-learn-modellen trainen
+> * Bekijk de trainingsresultaten in de portal
 > * Het beste model ophalen
 
 ## <a name="prerequisites"></a>Vereisten
 
-De enige vereiste is om deel één van deze zelf studie, [installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md)uit te voeren.
+De enige voorwaarde is om deel één van deze zelfstudie, [setup-omgeving en werkruimte](tutorial-1st-experiment-sdk-setup.md)uit te voeren.
 
-In dit gedeelte van de zelf studie voert u de code uit in de voor beelden van Jupyter *-notebook-zelf studies/Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* , die aan het einde van deel 1 wordt geopend. In dit artikel wordt uitgelegd hoe dezelfde code in het notitie blok zich bevindt.
+In dit deel van de zelfstudie voert u de code uit in de *voorbeeldhandleiding en jupyter-notebooktutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* die aan het einde van deel één is geopend. Dit artikel loopt door dezelfde code die in het notitieblok staat.
 
-## <a name="open-the-notebook"></a>Open het notitie blok
+## <a name="open-the-notebook"></a>Het notitieblok openen
 
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com/).
+1. Meld u aan bij [Azure Machine Learning studio](https://ml.azure.com/).
 
-1. Open de **zelf studie-1ste experiment-SDK-Train. ipynb** in uw map, zoals weer gegeven in [deel één](tutorial-1st-experiment-sdk-setup.md#open).
+1. Open de **tutorial-1st-experiment-sdk-train.ipynb** in uw map zoals weergegeven in [deel een](tutorial-1st-experiment-sdk-setup.md#open).
 
 
 > [!Warning]
-> Maak **geen** *Nieuw* notitie blok in de Jupyter-interface. De notebook *zelf studies/Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* is inclusief **alle code en gegevens die nodig zijn** voor deze zelf studie.
+> Maak **geen** *nieuwe* notebook in de Jupyter-interface! De notebook *tutorials / create-first-ml-experiment / tutorial-1st-experiment-sdk-train.ipynb* is inclusief **alle code en gegevens die nodig zijn** voor deze tutorial.
 
-## <a name="connect-workspace-and-create-experiment"></a>Verbinding maken met werk ruimte en experiment maken
+## <a name="connect-workspace-and-create-experiment"></a>Werkruimte verbinden en experiment maken
 
 > [!Important]
-> De rest van dit artikel bevat dezelfde inhoud als u ziet in het notitie blok.  
+> De rest van dit artikel bevat dezelfde inhoud als u in het notitieblok ziet.  
 >
-> Schakel nu over naar het Jupyter-notebook als u wilt lezen tijdens het uitvoeren van de code. 
-> Als u één code-cel in een notitie blok wilt uitvoeren, klikt u op de cel code en drukt u op **SHIFT + ENTER**. U kunt ook het hele notitie blok uitvoeren door **alles uitvoeren** op de bovenste werk balk te kiezen.
+> Schakel nu over naar het Jupyter-notitieblok als u wilt meelezen terwijl u de code uitvoert. 
+> Als u één codecel in een notitieblok wilt uitvoeren, klikt u op de codecel en klikt u op **Shift+Enter**. Of voer het hele notitieblok uit door **Alles uitvoeren** vanaf de bovenste werkbalk te kiezen.
 
-Importeer de `Workspace`-klasse en laad uw abonnements gegevens vanuit het bestand `config.json` met behulp van de functie `from_config().` deze zoekt standaard naar het JSON-bestand in de huidige map, maar u kunt ook een pad-para meter opgeven om naar het bestand te verwijzen met `from_config(path="your/file/path")`. In een Cloud notebook server bevindt het bestand zich automatisch in de hoofdmap.
+Importeer `Workspace` de klasse en laad uw `config.json` abonnementsgegevens `from_config().` uit het bestand met de functie Dit zoekt standaard naar het JSON-bestand in `from_config(path="your/file/path")`de huidige map, maar u ook een padparameter opgeven die u naar het bestand wilt aanwijzen met behulp van. In een cloudnotebookserver bevindt het bestand zich automatisch in de hoofdmap.
 
-Als met de volgende code wordt gevraagd om extra verificatie, plakt u de koppeling eenvoudigweg in een browser en voert u het verificatie token in.
+Als de volgende code om aanvullende verificatie vraagt, plakt u de koppeling in een browser en voert u het verificatietoken in.
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-Maak nu een experiment in uw werk ruimte. Een experiment is een andere Foundational Cloud resource die een verzameling experimenten vertegenwoordigt (afzonderlijke model uitvoeringen). In deze zelf studie gebruikt u het experiment om uitvoeringen te maken en uw model training te volgen in de Azure Machine Learning Studio. Para meters bevatten uw werkruimte referentie en een teken reeks naam voor het experiment.
+Maak nu een experiment in uw werkruimte. Een experiment is een andere fundamentele cloudbron die een verzameling proefversies vertegenwoordigt (afzonderlijke modeluitvoeringen). In deze zelfstudie gebruikt u het experiment om oplages te maken en uw modeltraining bij te houden in de Azure Machine Learning-studio. Parameters omvatten uw werkruimteverwijzing en een tekenreeksnaam voor het experiment.
 
 
 ```python
@@ -72,9 +72,9 @@ from azureml.core import Experiment
 experiment = Experiment(workspace=ws, name="diabetes-experiment")
 ```
 
-## <a name="load-data-and-prepare-for-training"></a>Gegevens laden en trainingen voorbereiden
+## <a name="load-data-and-prepare-for-training"></a>Gegevens laden en voorbereiden op training
 
-Voor deze zelf studie gebruikt u de gegevensset diabetes, die functies als Age, gender en BMI gebruikt om de voortgang van diabetes ziekten te voors pellen. Laad de gegevens uit de klasse [Azure open data sets](https://azure.microsoft.com/services/open-datasets/) en splits deze in trainings-en test sets met `train_test_split()`. Met deze functie worden de gegevens gescheiden, zodat het model ongebruikte gegevens heeft om de volgende training te testen.
+Voor deze zelfstudie gebruikt u de gegevensset voor diabetes, die functies als leeftijd, geslacht en BMI gebruikt om de progressie van diabetesziekten te voorspellen. Laad de gegevens uit de klasse [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) en `train_test_split()`spliter deze op in trainings- en testsets met behulp van . Deze functie scheidt de gegevens, zodat het model heeft onzichtbare gegevens te gebruiken voor het testen na de training.
 
 
 ```python
@@ -89,9 +89,9 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ## <a name="train-a-model"></a>Een model trainen
 
-Training voor een eenvoudig scikit model kan eenvoudig lokaal worden gedaan voor kleinschalige trainingen, maar bij het ontwikkelen van veel iteraties met tien tallen verschillende functie permutaties en afstemming-instellingen is het eenvoudig om te zien welke modellen u hebt getraind en hoe u ze zijn getraind. In het volgende ontwerp patroon ziet u hoe u de SDK kunt gebruiken om uw training eenvoudig bij te houden in de Cloud.
+Het trainen van een eenvoudig scikit-learn-model kan gemakkelijk lokaal worden gedaan voor kleinschalige training, maar bij het trainen van veel iteraties met tientallen verschillende functiepermutaties en hyperparameter-instellingen, is het gemakkelijk om uit het oog te verliezen welke modellen je hebt getraind en hoe je ze hebt getraind. Het volgende ontwerppatroon laat zien hoe je de SDK gebruiken om je training in de cloud eenvoudig bij te houden.
 
-Bouw een script dat in een lus geplooide modellen via verschillende afstemming alpha-waarden.
+Bouw een script dat nokmodellen traint in een lus door verschillende hyperparameter alfawaarden.
 
 
 ```python
@@ -120,36 +120,36 @@ for alpha in alphas:
     run.complete()
 ```
 
-Met de bovenstaande code worden de volgende handelingen uitgevoerd:
+De bovenstaande code bereikt het volgende:
 
-1. Voor elke alpha afstemming-waarde in de matrix `alphas` wordt een nieuwe uitvoering binnen het experiment gemaakt. De waarde alpha wordt vastgelegd om onderscheid te maken tussen elke uitvoering.
-1. Bij elke uitvoering wordt een Ploois model geïnstantieerd, getraind en gebruikt voor het uitvoeren van voor spellingen. Het basis-gemiddelde-kwadraat-fout wordt berekend voor de werkelijke versus voorspelde waarden en vervolgens geregistreerd bij de uitvoering. Op dit moment bevat de uitvoering meta gegevens die zijn gekoppeld aan de alpha-waarde en de rmse nauw keurigheid.
-1. Vervolgens wordt het model voor elke uitvoering geserialiseerd en geüpload naar de uitvoering. Hierdoor kunt u het model bestand downloaden uit de uitvoering in de portal.
-1. Aan het einde van elke iteratie wordt de uitvoering voltooid door het aanroepen van `run.complete()`.
+1. Voor elke alfahyperparameterwaarde `alphas` in de array wordt een nieuwe run gemaakt binnen het experiment. De alfawaarde wordt geregistreerd om onderscheid te maken tussen elke run.
+1. In elke run wordt een Ridge-model geinstantieerd, getraind en gebruikt om voorspellingen uit te voeren. De fout root-gemiddelde-kwadraat wordt berekend voor de werkelijke versus voorspelde waarden en vervolgens aangemeld bij de run. Op dit punt de run heeft metadata bevestigd voor zowel de alfa waarde en de rmse nauwkeurigheid.
+1. Vervolgens wordt het model voor elke run geserialiseerd en geüpload naar de run. Hiermee u het modelbestand downloaden van de run in de portal.
+1. Aan het einde van elke iteratie `run.complete()`wordt de run voltooid door aan te roepen .
 
-Nadat de training is voltooid, roept u de `experiment`-variabele aan om een koppeling naar het experiment in de portal op te halen.
+Nadat de training is `experiment` voltooid, belt u de variabele om een koppeling naar het experiment in de portal op te halen.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Naam</th><th>Werkruimte</th><th>Rapport pagina</th><th>Pagina docs</th></tr><tr><td>diabetes-experiment</td><td>uw-werkruimte naam</td><td>Koppeling naar Azure Portal</td><td>Koppeling naar documentatie</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Werkruimte</th><th>Rapportpagina</th><th>Documentenpagina</th></tr><tr><td>diabetes-experiment</td><td>uw naam van uw werkruimte</td><td>Koppeling naar Azure-portal</td><td>Koppeling naar documentatie</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>Trainings resultaten weer geven in Portal
+## <a name="view-training-results-in-portal"></a>Trainingsresultaten weergeven in portal
 
-Als u de **koppeling naar Azure Portal** volgt, gaat u naar de hoofd pagina van het experiment. Hier ziet u alle afzonderlijke uitvoeringen in het experiment. Eventuele aangepaste waarden (`alpha_value` en `rmse`, in dit geval) zijn velden voor elke uitvoering, en worden ook beschikbaar voor de grafieken en tegels boven aan de pagina experimenteren. Als u een vastgelegde metriek wilt toevoegen aan een grafiek of tegel, houdt u de muis aanwijzer over, klikt u op de knop bewerken en zoekt u de metrische gegevens van de aangepaste Logboeken.
+Na de **Koppeling naar Azure-portal** gaat u naar de hoofdexperimentpagina. Hier zie je alle individuele runs in het experiment. Alle op maat`alpha_value` geregistreerde `rmse`waarden (en in dit geval) worden velden voor elke run en worden ook beschikbaar voor de grafieken en tegels boven aan de experimentpagina. Als u een aangemelde statistiek wilt toevoegen aan een grafiek of tegel, plaats je er boven, klik je op de knop Bewerken en zoek je de statistiek die is aangepast.
 
-Wanneer trainings modellen worden geschaald op honderden en duizenden afzonderlijke uitvoeringen, kunt u op deze pagina eenvoudig elk model zien dat u hebt getraind, in het bijzonder hoe ze zijn getraind en hoe uw unieke metrische gegevens in de loop van de tijd zijn veranderd.
+Wanneer u modellen op schaal traint over honderden en duizenden afzonderlijke uitvoeringen, u met deze pagina eenvoudig elk model zien dat u hebt getraind, met name hoe ze zijn opgeleid en hoe uw unieke statistieken in de loop van de tijd zijn veranderd.
 
-![Hoofd proef pagina in de portal](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+![Pagina Hoofdexperiment in Portal](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
 
-Als u op een koppeling met een uitvoerings nummer klikt in de kolom `RUN NUMBER`, gaat u naar de pagina voor elke afzonderlijke uitvoering. Op de standaard tabblad **Details** ziet u meer gedetailleerde informatie over elke uitvoering. Ga naar het tabblad **uitvoer** en u ziet het `.pkl` bestand voor het model dat tijdens elke trainings herhaling naar de uitvoering is geüpload. Hier kunt u het model bestand downloaden in plaats van het hand matig opnieuw te hoeven trainen.
+Als u op een koppeling `RUN NUMBER` runnummer in de kolom klikt, gaat u naar de pagina voor elke afzonderlijke uitvoering. Op het tabblad **Standaardgegevens** vindt u meer gedetailleerde informatie over elke run. Navigeer naar het tabblad **Uitvoer** en `.pkl` u ziet het bestand voor het model dat tijdens elke trainingsiteratie naar de run is geüpload. Hier u het modelbestand downloaden, in plaats van het handmatig om te scholen.
 
 ![Pagina Details uitvoeren in Portal](./media/tutorial-1st-experiment-sdk-train/model-download.png)
 
-## <a name="get-the-best-model"></a>Het beste model ophalen
+## <a name="get-the-best-model"></a>Krijg het beste model
 
-U kunt niet alleen model bestanden downloaden van het experiment in de portal, maar ook via een programma downloaden. Met de volgende code wordt elke uitvoering in het experiment herhaald en worden de metrische uitvoerings gegevens en de details van de uitvoering (die de run_id bevat) weer gegeven. Hiermee wordt de beste uitvoering bijgehouden, in dit geval de uitvoering met het laagste basis-gemiddelde-kwadraat-fout.
+Naast de mogelijkheid om modelbestanden van het experiment in de portal te downloaden, u ze ook programmatisch downloaden. De volgende code wordt herhaald door elke run in het experiment, en toegang tot zowel de geregistreerde run metrics en de run details (die de run_id bevat). Dit houdt bij van de beste run, in dit geval de run met de laagste root-mean-kwadraat-fout.
 
 ```python
 minimum_rmse_runid = None
@@ -177,7 +177,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-Gebruik de beste run-ID om de afzonderlijke uitvoering op te halen met behulp van de `Run`-constructor en het experiment-object. Roep vervolgens `get_file_names()` aan om alle bestanden te zien die via deze uitvoering kunnen worden gedownload. In dit geval hebt u slechts één bestand geüpload voor elke run tijdens de training.
+Gebruik de beste run-ID om `Run` de afzonderlijke run op te halen met behulp van de constructor samen met het experimentobject. Bel `get_file_names()` vervolgens om alle bestanden te zien die beschikbaar zijn om te downloaden van deze run. In dit geval hebt u slechts één bestand geüpload voor elke run tijdens de training.
 
 ```python
 from azureml.core import Run
@@ -187,7 +187,7 @@ print(best_run.get_file_names())
 
     ['model_alpha_0.1.pkl']
 
-Roep `download()` aan voor het uitvoerings object, waarbij u de naam van het model bestand opgeeft dat u wilt downloaden. Deze functie wordt standaard gedownload naar de huidige map.
+Roep `download()` het run-object aan en geef de modelbestandsnaam op die moet worden gedownload. Standaard wordt deze functie gedownload naar de huidige map.
 
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")
@@ -195,9 +195,9 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning zelf studies uit te voeren.
+Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning-zelfstudies uit te voeren.
 
-### <a name="stop-the-compute-instance"></a>Het reken exemplaar stoppen
+### <a name="stop-the-compute-instance"></a>De rekeninstantie stoppen
 
 [!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
 
@@ -205,16 +205,16 @@ Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning zelf 
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-U kunt de resourcegroep ook bewaren en slechts één werkruimte verwijderen. Bekijk de eigenschappen van de werkruimte en selecteer **Verwijderen**.
+U kunt de resourcegroep ook bewaren en slechts één werkruimte verwijderen. Geef de eigenschappen van de werkruimte weer en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u de volgende taken uitvoeren:
+In deze zelfstudie hebt u de volgende taken uitgevoerd:
 
 > [!div class="checklist"]
-> * Uw werk ruimte verbonden en een experiment hebben gemaakt
-> * Geladen gegevens en getrainde scikit-leer modellen
-> * Bekijk de resultaten van de training in de portal en de opgehaalde modellen
+> * Uw werkruimte verbonden en een experiment gemaakt
+> * Geladen gegevens en getrainde scikit-learn-modellen
+> * Bekeken trainingsresultaten in de portal en opgehaalde modellen
 
 [Uw model implementeren](tutorial-deploy-models-with-aml.md) met Azure Machine Learning.
-Meer informatie over het ontwikkelen van [geautomatiseerde machine learning](tutorial-auto-train-models.md) experimenten.
+Leer hoe u [geautomatiseerde machine learning-experimenten](tutorial-auto-train-models.md) ontwikkelen.

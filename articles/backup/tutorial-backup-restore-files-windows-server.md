@@ -1,14 +1,14 @@
 ---
-title: 'Zelf studie: items herstellen naar Windows Server'
-description: In deze zelf studie leert u hoe u de MARS-agent (Microsoft Azure Recovery Services agent) kunt gebruiken voor het herstellen van items van Azure naar een Windows-Server.
+title: 'Zelfstudie: Items herstellen naar Windows Server'
+description: In deze zelfstudie leert u hoe u de MARS-agent (Microsoft Azure Recovery Services Agent) gebruikt om items van Azure naar een Windows Server te herstellen.
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
 ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78672949"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Bestanden herstellen van Azure naar een Windows-server
@@ -37,7 +37,7 @@ Er wordt een handige gebruikersinterfacewizard met de naam Microsoft Azure Backu
 
 3. Selecteer op de pagina **Aan de slag** pagina **Deze server (servernaam)** en klik op **Volgende**.
 
-4. Selecteer op de pagina **Selecteer herstelmodus** **Afzonderlijke bestanden en mappen** en klik op **Volgende** om het proces voor het selecteren van een herstelpunt te starten.
+4. Selecteer op de pagina **Selecteer herstelmodus****Afzonderlijke bestanden en mappen** en klik op **Volgende** om het proces voor het selecteren van een herstelpunt te starten.
 
 5. Selecteer op de pagina **Selecteer volume en datum** het volume dat de bestanden of mappen bevat die u wilt herstellen en klik op **Koppelen**. Selecteer een datum en selecteer in de vervolgkeuzelijst een tijd die overeenkomt met een herstelpunt. **Vet** weergegeven datums geven aan dat er ten minste één herstelpunt beschikbaar is op die dag.
 

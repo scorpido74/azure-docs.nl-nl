@@ -2,13 +2,13 @@
 title: Verbeter kennisbank - QnA Maker
 description: Verbeter de kwaliteit van je kennisbank met actief leren. Bestaande vragen controleren, accepteren of weigeren, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 8b2176731ce456b70521cc9208435d0b19943ab8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053070"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474882"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Accepteer actieve leervragen in de kennisbank
 
@@ -203,7 +203,7 @@ In de [azure bot-steekproef](https://aka.ms/activelearningsamplebot)zijn beide a
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Voorbeeld C#-code voor Trein-API met Bot Framework 4.x
 
-De volgende code illustreert hoe u informatie terugsturen naar QnA Maker met de Train API. Dit [volledige codevoorbeeld](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-activelearning/csharp_dotnetcore) is beschikbaar op GitHub.
+De volgende code illustreert hoe u informatie terugsturen naar QnA Maker met de Train API.
 
 ```csharp
 public class FeedbackRecords
@@ -266,7 +266,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 
 ### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Voorbeeld Node.js-code voor Trein-API met Bot Framework 4.x
 
-De volgende code illustreert hoe u informatie terugsturen naar QnA Maker met de Train API. Dit [volledige codevoorbeeld](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) is beschikbaar op GitHub.
+De volgende code illustreert hoe u informatie terugsturen naar QnA Maker met de Train API.
 
 ```javascript
 async callTrain(stepContext){

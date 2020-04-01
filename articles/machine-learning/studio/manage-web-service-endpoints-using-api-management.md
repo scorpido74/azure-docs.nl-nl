@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218013"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473467"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Azure Machine Learning Studio (klassieke) webservices beheren met API-beheer
 
@@ -217,7 +217,7 @@ Klik **op Ja** om het experiment te publiceren.
 ![ja-om te publiceren](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>De webservice testen
-Een AzureML-webservice bestaat uit RSS-eindpunten (request/response service) en BES (batch execution service). RSS is voor synchrone uitvoering. BES is voor asynchrone taakuitvoering. Als u uw webservice wilt testen met de onderstaande voorbeeldpython-bron, moet u mogelijk de Azure SDK voor Python downloaden en installeren (zie: [Python installeren).](/azure/python/python-sdk-azure-install)
+Een AzureML-webservice bestaat uit RSS-eindpunten (request/response service) en BES (batch execution service). RSS is voor synchrone uitvoering. BES is voor asynchrone taakuitvoering. Als u uw webservice wilt testen met de onderstaande voorbeeldpython-bron, moet u mogelijk de Azure SDK voor Python downloaden en installeren (zie: [Python installeren).](/azure/developer/python/azure-sdk-install)
 
 U hebt ook de **werkruimte,** **service**en **api_key** van uw experiment nodig voor de onderstaande voorbeeldbron. U de werkruimte en service vinden door op **Aanvraag/antwoord** of **Batch-uitvoering** te klikken voor uw experiment in het dashboard van de webservice.
 

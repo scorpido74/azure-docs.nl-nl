@@ -1,6 +1,6 @@
 ---
-title: 'CLI-voor beeld: twee virtuele machines maken met een interne en externe NSG'
-description: Maak twee virtuele machines met interne en externe NSG om netwerk verkeer te beveiligen met behulp van de Azure CLI.
+title: "CLI-voorbeeld: twee VM's maken met een interne en externe NSG"
+description: Maak twee VM's met interne en externe NSG om netwerkverkeer te beveiligen met behulp van de Azure CLI.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -17,15 +17,15 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 3e3d1fe3bf464892934198d06b602a5b8bcafb67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458393"
 ---
-# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Netwerk verkeer tussen virtuele machines beveiligen met behulp van een NSG
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Veilig netwerkverkeer tussen virtuele machines met behulp van een NSG
 
-Met dit script worden twee virtuele machines gemaakt en wordt binnenkomend verkeer op beide beveiligd. Eén virtuele machine is toegankelijk via internet en heeft een netwerkbeveiligingsgroep (NSG) die is geconfigureerd voor verkeer op poort 22 en 80. De tweede virtuele machine is niet toegankelijk via internet en heeft een NSG die zo is geconfigureerd dat alleen verkeer van de eerste virtuele machine wordt toegelaten.
+Met dit script worden twee virtuele machines gemaakt en wordt het binnenkomende verkeer naar beide machines beveiligd. Eén virtuele machine is toegankelijk via internet en heeft een netwerkbeveiligingsgroep (NSG) die is geconfigureerd voor verkeer op poort 22 en 80. De tweede virtuele machine is niet toegankelijk via internet en heeft een NSG die zo is geconfigureerd dat alleen verkeer van de eerste virtuele machine wordt toegelaten.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

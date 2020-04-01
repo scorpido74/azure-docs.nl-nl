@@ -24,7 +24,7 @@ ms.locfileid: "79456961"
 
 > [!div class="op_single_selector"]
 > * [Azure-portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [Powershell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure-CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Sjabloon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 

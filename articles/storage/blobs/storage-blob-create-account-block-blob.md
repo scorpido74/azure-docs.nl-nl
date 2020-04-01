@@ -31,7 +31,7 @@ Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.mic
 
 Geen.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Voor dit artikel voor how-to's is de Azure PowerShell-module Az-versie 1.2.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om uw huidige versie te vinden. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
@@ -64,7 +64,7 @@ U kunt Azure CLI ook lokaal installeren en gebruiken. Dit how-to-artikel vereist
 
 Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Meld u met de `Connect-AzAccount` opdracht aan bij uw Azure-abonnement en volg de aanwijzingen op het scherm om te verifiëren.
 

@@ -1,19 +1,19 @@
 ---
-title: 'Power shell: back-up terugzetten naar een ander abonnement'
-description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u een back-up herstelt in een ander abonnement.
+title: 'PowerShell: Back-up herstellen naar een ander abonnement'
+description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u een back-up in een ander abonnement herstellen.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 8168fbedd1a639dce0ab8bd076e14ab24e2f6d1e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 4a22148d4151fd3c80c7be439b5dd281200e5456
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685823"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044577"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>Een web-app terugzetten vanuit een back-up in een ander abonnement met behulp van PowerShell
 

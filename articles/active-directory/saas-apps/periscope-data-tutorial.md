@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met peri Scope-gegevens | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met Periscope-gegevens | Microsoft Documenten'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Periscope Data.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: ffa0176c4dde6334e70b9a56b066a677d1610b48
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160196"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Zelf studie: integratie Azure Active Directory met peri Scope-gegevens
+# <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Zelfstudie: Azure Active Directory-integratie met Periscope-gegevens
 
 In deze zelfstudie leert u hoe u Periscope Data kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Periscope Data met Azure Active Directory biedt de volgende voordelen:
@@ -32,7 +32,7 @@ De integratie van Periscope Data met Azure Active Directory biedt de volgende vo
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -53,7 +53,7 @@ Voor het configureren van de integratie van Periscope Data met Microsoft Azure A
 
 **Als u Periscope Data wilt toevoegen uit de galerie, moet u de volgende stappen uitvoeren:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -76,12 +76,12 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 
 Om eenmalige aanmelding met Azure Active Directory bij Periscope Data te testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eenmalige aanmelding voor Periscope Data configureren](#configure-periscope-data-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wil configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Testgebruiker voor Periscope Data maken](#create-periscope-data-test-user)** : als u een tegenhanger van Britta Simon in Periscope Data wilt hebben die is gekoppeld aan de Azure Active Directory-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding voor Periscope Data configureren](#configure-periscope-data-single-sign-on)**: als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wil configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker voor Periscope Data maken](#create-periscope-data-test-user)**: als u een tegenhanger van Britta Simon in Periscope Data wilt hebben die is gekoppeld aan de Azure Active Directory-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -89,7 +89,7 @@ In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakel
 
 Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directory wilt configureren voor Periscope Data:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/) **Eenmalige aanmelding** op de integratiepagina van de toepassing **Periscope Data**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)**Eenmalige aanmelding** op de integratiepagina van de toepassing **Periscope Data**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -112,7 +112,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
     | `https://app.periscopedata.com/` |
     | `https://app.periscopedata.com/app/<SITENAME>` |
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://app.periscopedata.com/<SITENAME>/sso`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://app.periscopedata.com/<SITENAME>/sso`
 
     > [!NOTE]
     > De waarde van de aanmeldings-URL is niet echt. Werk de waarden bij met de werkelijke aanmeldings-URL. Neem contact op met [clientondersteuningsteam bij Periscope Data](mailto:support@periscopedata.com) om deze waarde op te halen en de id-waarde die u ontvangt van de sectie **Configureren van eenmalige aanmelding bij Periscope Data** die later in de zelfstudie wordt uitgelegd. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -125,7 +125,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
 1. Meld u in een ander browservenster bij Periscope Data aan als beveiligingsbeheerder.
 
-2. Open het tandwielmenu linksonder en open het menu **Facturering** > **Beveiliging** en voer de volgende stappen uit. Alleen beheerders hebben toegang tot deze instellingen.
+2. Open het tandwielmenu linksonder en open het menu > **Factureringsbeveiliging** en voer de volgende stappen uit. **Billing** Alleen beheerders hebben toegang tot deze instellingen.
 
     ![Informatie voor Periscope Data configureren](./media/periscope-data-tutorial/configure01.png)
 
@@ -137,9 +137,9 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
     d. Zoek de code **SingleLogoutService** en plak de **Locatie**-waarde in het tekstvak **SLO URL**.
 
-    e. Kopieer de **id** -waarde voor uw exemplaar en plak deze in de sectie **id (Entiteits-ID)** van **basis-SAML-configuratie** op Azure Portal.
+    e. Kopieer de **id-waarde** voor uw instantie en plak deze in het tekstvak **Id (Entity ID)** van de sectie **BasisSAML-configuratie** op azure-portal.
 
-    f. Zoek de eerste tag van het XML-bestand, kopieer de waarde van **entityID** en plak deze in het tekstvak voor de **Uitgever** .
+    f. Zoek de eerste tag van het XML-bestand, kopieer de waarde van **entityID** en plak deze in het tekstvak **Van de uitgever.**
 
     g. Zoek de tag **IDPSSODescriptor** met SAML-protocol. In deze sectie vindt u de tag **KeyDescriptor** met **use=signing**. Kopieer de waarde van **X509Certificate** en plak deze in het tekstvak **Certificaat**.
 
@@ -165,14 +165,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In het **veld Type Gebruikersnaam** **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -186,7 +186,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Periscope Data in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -194,9 +194,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -204,7 +204,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 Als u wilt dat gebruikers van Azure Active Directory zich kunnen aanmelden bij Periscope Data, moeten ze worden ingericht voor Periscope Data. In het geval van Periscope Data is dat een handmatige taak.
 
-**Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
+**Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
 
 1. Meld u aan bij Periscope Data als beheerder.
 
@@ -218,11 +218,11 @@ Als u wilt dat gebruikers van Azure Active Directory zich kunnen aanmelden bij P
 
     a. Voer in het tekstvak **Voornaam** de voornaam van de gebruiker in, zoals **Britta**.
 
-    b. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker, zoals **Simon**.
+    b. Voer in het tekstvak **Achternaam** de achternaam van de gebruiker in, zoals **Simon**.
 
-    c. Voer in het tekstvak **e-mail** het e-mail adres van de gebruiker in, zoals **brittasimon\@contoso.com**.
+    c. Voer in het tekstvak **E-mail** de e-mail van de gebruiker in, zoals **\@brittasimon contoso.com**.
 
-    d. Klik op **TOEVOEGEN**.
+    d. Klik **op TOEVOEGEN**.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
@@ -230,11 +230,11 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Periscope Data in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Periscope Data waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

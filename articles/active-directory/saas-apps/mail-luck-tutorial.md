@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met een succes. | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en de kans op berichten.
+title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Mail Luck! | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Mail Luck!.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,132 +17,132 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: daf86270224d2a76eb124e879594ac2588b46776
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72969817"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mail-luck"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met een succes.
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mail-luck"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Mail Luck!
 
-In deze zelf studie leert u hoe u het succes van E-mail kunt integreren. met Azure Active Directory (Azure AD). Wanneer u een succes van E-mail integreert. met Azure AD kunt u het volgende doen:
+In deze tutorial leer je hoe je Mail Luck integreren! met Azure Active Directory (Azure AD). Wanneer u Mail Luck integreert! met Azure AD u het als nog niet doen:
 
-* Besturings element in azure AD met toegang tot de kans op berichten.
-* Uw gebruikers in staat stellen om automatisch te worden aangemeld voor een succes. met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer in Azure AD die toegang heeft tot Mail Luck!.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Mail Luck! met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Er is een e-mail bericht. eenmalige aanmelding (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* Mail Luck! eenmalige aanmelding (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* Er is een e-mail bericht. ondersteunt door **SP** geïnitieerde eenmalige aanmelding
+* Mail Luck! ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-mail-luck-from-the-gallery"></a>Er wordt een e-mail bericht toegevoegd. vanuit de galerie
+## <a name="adding-mail-luck-from-the-gallery"></a>Het toevoegen van Mail Luck! vanuit de galerie
 
-De integratie van de kans op berichten configureren. in azure AD, moet u een e-mail bericht toevoegen. toevoegen aan de lijst met beheerde SaaS-apps.
+Om de integratie van Mail Luck te configureren! in Azure AD, moet u Mail Luck toevoegen! toevoegen aan de lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. In de sectie **toevoegen vanuit de galerie** typt u de **kans e-mail berichten.** in het zoekvak.
-1. Selecteer **e-mail kans.** vanuit het paneel resultaten en vervolgens de app toe te voegen. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ Mail Luck in de sectie **Toevoegen vanuit de galerij!** **Mail Luck!** in het zoekvak.
+1. Selecteer **Mail Luck!** van het deelvenster Resultaten en voeg vervolgens de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-mail-luck"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor het succes van een e-mail bericht.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-mail-luck"></a>Azure AD-singlesign-on configureren en testen voor Mail Luck!
 
-U kunt Azure AD SSO configureren en testen met succes. een test gebruiker gebruiken met de naam **B. Simon**. Voor een goede werking van SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de afdruk.
+Configureer en test Azure AD SSO met Mail Luck! met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Mail Luck!.
 
-Als u Azure AD SSO wilt configureren en testen met een succes bericht, voltooit u de volgende bouw stenen:
+Als u Azure AD SSO wilt configureren en testen met Mail Luck!, voert u de volgende bouwstenen in:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[E-mail kans configureren SSO](#configure-mail-luck-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak kans op een e-mail! test gebruiker](#create-mail-luck-test-user)** : als u een tegen hanger hebt van B. Simon in het e-mail bericht. die is gekoppeld aan de weergave van de gebruiker in Azure AD.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Configureer Mail Luck! SSO](#configure-mail-luck-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    * **[Maak Mail Luck! test gebruiker](#create-mail-luck-test-user)** - om een tegenhanger van B.Simon in Mail Luck hebben! die is gekoppeld aan de weergave van de gebruiker in Azure AD.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. In de [Azure Portal](https://portal.azure.com/), op het wegdoen van de **mail.** de pagina Toepassings integratie, zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. In de [Azure portal,](https://portal.azure.com/)op de **Mail Luck!** pagina met toepassingsintegratie, zoek de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
+1. Voer in de sectie **BasisSAML-configuratie** de waarden in voor de volgende velden:
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/sign_in`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Contact opnemen met [mail. Ondersteunings team](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi) van de client om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [Mail Luck! Client support team](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
+1. Klik op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** op de knop Kopiëren om **de url van de appfederatie-metagegevens** te kopiëren en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding van Azure door toegang te verlenen tot de kans op berichten.
+In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Mail Luck!.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **e-mail kans!** .
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **Mail Luck**in de lijst met toepassingen! .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
-## <a name="configure-mail-luck-sso"></a>E-mail kans configureren SSO
+## <a name="configure-mail-luck-sso"></a>Configureer Mail Luck! SSO
 
-Voor het configureren van eenmalige aanmelding bij een **e-mail bericht.** u moet de URL voor de **federatieve meta gegevens** van de app verzenden om het [e-mail adres te kunnen opsturen! ondersteunings team](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Eenmalige aanmelding configureren op **Mail Luck!** kant, moet u de **App Federation Metadata Url** sturen naar Mail [Luck! support team](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-mail-luck-test-user"></a>Maak een succes. voor Aha! maken
+### <a name="create-mail-luck-test-user"></a>Maak Mail Luck! voor Aha! maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in mail. Werk samen met het succes van de [e-mail! ondersteunings team](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi) om de gebruikers toe te voegen in de kans op berichten. onafhankelijk. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd B.Simon in Mail Luck!. Werk samen met [Mail Luck! support team](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi) om de gebruikers toe te voegen in de Mail Luck! Platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Test SSO
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de kans op berichten klikt tegel in het toegangs venster, moet u automatisch worden aangemeld bij het succes van de mail. waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u klikt op de Mail Luck! tegel in het toegangspaneel, moet u automatisch worden aangemeld bij de Mail Luck! waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer het opnieuw. met Azure AD](https://aad.portal.azure.com/)
+- [Probeer Mail Luck! met Azure AD](https://aad.portal.azure.com/)

@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met ContractSafe Saml2 SSO | Microsoft Docs'
+title: 'Zelfstudie: SSO-integratie (Azure Active Directory single sign-on) met ContractSafe Saml2 SSO | Microsoft Documenten'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ContractSafe Saml2 SSO.
 services: active-directory
 documentationCenter: na
@@ -16,144 +16,144 @@ ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77185617"
 ---
-# <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Zelf studie: Azure Active Directory eenmalige aanmelding (SSO) integreren met ContractSafe Saml2 SSO
+# <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integreren met ContractSafe Saml2 SSO
 
-In deze zelf studie leert u hoe u ContractSafe Saml2 SSO integreert met Azure Active Directory (Azure AD). Wanneer u ContractSafe Saml2 SSO integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u ContractSafe Saml2 SSO integreert met Azure Active Directory (Azure AD). Wanneer u ContractSafe Saml2 SSO integreert met Azure AD, u het als:
 
-* Bepaal wie toegang heeft tot ContractSafe Saml2 SSO in azure AD.
+* Bepaal wie toegang heeft tot ContractSafe Saml2 SSO in Azure AD.
 * Stel uw gebruikers in staat om zich automatisch aan te melden bij ContractSafe Saml2 SSO met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory voor](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)meer informatie over de integratie van de App Voor software as a service (SaaS) met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Om aan de slag te gaan, hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Een ContractSafe Saml2 SSO-abonnement waarvoor SSO is ingeschakeld.
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* Een ContractSafe Saml2 SSO-abonnement met SSO ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. ContractSafe Saml2 SSO ondersteunt door **IDP**geïnitieerde SSO.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving. ContractSafe Saml2 SSO ondersteunt **IDP**-geïnitieerde SSO.
 
 ## <a name="add-contractsafe-saml2-sso-from-the-gallery"></a>ContractSafe Saml2 SSO toevoegen vanuit de galerie
 
-Als u de integratie van ContractSafe Saml2 SSO wilt configureren in azure AD, moet u ContractSafe Saml2 SSO vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van ContractSafe Saml2 SSO in Azure AD wilt configureren, moet u ContractSafe Saml2 SSO vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
 1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ **ContractSafe SAML2 SSO** in het zoekvak in de sectie **toevoegen vanuit de galerie** .
-1. Selecteer **ContractSafe SAML2 SSO** in het deel venster resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **ContractSafe Saml2 SSO** in het zoekvak in de sectie **Toevoegen vanuit de galerie.**
+1. Selecteer **ContractSafe Saml2 SSO** in het resultatenpaneel en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 ## <a name="configure-and-test-azure-ad-sso-for-contractsafe-saml2-sso"></a>Azure AD SSO configureren en testen voor ContractSafe Saml2 SSO
 
-Azure AD SSO met ContractSafe Saml2 SSO configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in ContractSafe Saml2 SSO.
+Azure AD SSO configureren en testen met ContractSafe Saml2 SSO met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in ContractSafe Saml2 SSO.
 
-Als u Azure AD SSO wilt configureren en testen met ContractSafe Saml2 SSO, voltooit u de volgende bouw stenen:
+Als u Azure AD SSO wilt configureren en testen met ContractSafe Saml2 SSO, voert u de volgende bouwstenen uit:
 
 1. [Configureer Azure AD SSO](#configure-azure-ad-sso) zodat uw gebruikers deze functie kunnen gebruiken.
-   * [Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user) om Azure AD SSO te testen met behulp van het account **B. Simon** .
-   * [Wijs de gebruiker van Azure AD-test](#assign-the-azure-ad-test-user) toe om **B. Simon** in te scha kelen voor gebruik met Azure AD SSO.
+   * [Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user) om Azure AD SSO te testen met het **B.Simon-account.**
+   * [Wijs de Azure AD-testgebruiker](#assign-the-azure-ad-test-user) toe om **B.Simon** in staat te stellen Azure AD SSO te gebruiken.
 
-1. [CONFIGUREER SSO van ContractSafe Saml2](#configure-contractsafe-saml2-sso) om de SSO-instellingen aan de kant van de toepassing te configureren.
-   * [Maak een ContractSafe SAML2 SSO-test gebruiker](#create-a-contractsafe-saml2-sso-test-user) voor een tegen hanger van **B. Simon** in ContractSafe Saml2 SSO die is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. [Configureer ContractSafe Saml2 SSO](#configure-contractsafe-saml2-sso) om de SSO-instellingen aan toepassingszijde te configureren.
+   * [Maak een ContractSafe Saml2 SSO-testgebruiker](#create-a-contractsafe-saml2-sso-test-user) om een tegenhanger van **B.Simon** in ContractSafe Saml2 SSO te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
 2. [Test SSO](#test-sso) om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Voer de volgende stappen uit om Azure AD SSO in te scha kelen in de Azure Portal:
+Volg de volgende stappen om Azure AD SSO in te schakelen in de Azure-portal:
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **ContractSafe Saml2 SSO** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** het pictogram bewerken (pen) voor de **basis configuratie van SAML** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina **ContractSafe Saml2 SSO-toepassingsintegratie** de sectie **Beheren** en selecteer **eenmalige aanmelding.**
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Selecteer op de pagina **Eén aanmelding instellen met SAML** het pictogram bewerken (pen) voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer op de pagina **eenmalige aanmelding met SAML instellen** de volgende waarden in de bijbehorende velden in:
+1. Voer op de pagina **Eén aanmelding instellen met SAML** de volgende waarden in de bijbehorende velden in:
 
-    a. Voer in het tekstvak **id** een URL in met de volgende indeling: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    a. Voer **in** het tekstvak Id een URL in met de volgende indeling:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
-    b. Voer in het tekstvak **antwoord-URL** een URL in met de volgende indeling: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    b. Voer in het tekstvak **URL beantwoorden** een URL in met de volgende indeling:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [ondersteunings team van de ContractSafe SAML2 SSO-client](mailto:support@contractsafe.com) om deze waarden op te halen. U kunt ook verwijzen naar de indelingen die worden weer gegeven in de sectie **basis configuratie van SAML** in de Azure Portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [Ondersteuningsteam van ContractSafe Saml2 SSO Client](mailto:support@contractsafe.com) om deze waarden te krijgen. U ook verwijzen naar de indelingen die worden weergegeven in de sectie **BasisSAML-configuratie** in de Azure-portal.
 
-1. ContractSafe Saml2 SSO verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. ContractSafe Saml2 SSO verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![Algemene standaard kenmerken](common/default-attributes.png)
+    ![Algemene standaardkenmerken](common/default-attributes.png)
 
-1. Naast de standaard kenmerken verwacht de SSO-toepassing ContractSafe Saml2 nog enkele kenmerken die in het SAML-antwoord worden door gegeven. Deze kenmerken zijn vooraf ingevuld, maar u kunt ze controleren aan de hand van uw vereisten. De volgende lijst bevat de extra kenmerken.
+1. Naast de standaardkenmerken verwacht de ContractSafe Saml2 SSO-toepassing dat er nog een paar kenmerken worden doorgegeven in de SAML-respons. Deze kenmerken zijn vooraf ingevuld, maar u ze bekijken op basis van uw vereisten. In de volgende lijst worden de extra kenmerken weergegeven.
 
-    | Naam | Bronkenmerk|
+    | Name | Bronkenmerk|
     | ---------------| --------------- |
-    | e-mail adres | user.userprincipalname |
-    | e-mail | User. onpremisesuserprincipalname |
+    | e-mailnaam | user.userprincipalname |
+    | e-mail | user.onpremisesuserprincipalname |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML**. Selecteer **downloaden** om het certificaat te downloaden en sla het op uw computer op.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de xml **met aalmetagegevens**van federatie . Selecteer **Downloaden** om het certificaat te downloaden en sla het op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer de gewenste URL ('s) in het gedeelte **SSO van ContractSafe Saml2 instellen** op basis van uw vereiste.
+1. Kopieer in de sectie **ContractSafe Saml2 SSO** instellen de juiste URL(s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ## <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam **B. Simon**.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd **B.Simon**.
 
-1. Selecteer **Azure Active Directory**in het linkerdeel venster van de Azure Portal. Selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer Azure Active Directory in het linkerdeelvenster in de **Azure-portal**. Selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** een e-mail adres in met de `username@companydomain.extension` indeling. Een voorbeeld is `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Voer in het veld **Gebruikersnaam** een `username@companydomain.extension` e-mailadres in de indeling in. Een voorbeeld is `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
    1. Selecteer **Maken**.
 
 ## <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u **B. Simon** in om Azure SSO te gebruiken door toegang te verlenen aan CONTRACTSAFE Saml2 SSO.
+In deze sectie u **B.Simon** Azure SSO laten gebruiken door toegang te verlenen tot ContractSafe Saml2 SSO.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **ContractSafe SAML2 SSO**.
-1. Zoek de sectie **beheren** op de pagina overzicht van de app en selecteer vervolgens **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **ContractSafe Saml2 SSO**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **vervolgens Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-   ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+   ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst **gebruikers** . Selecteer vervolgens de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens de knop **selecteren** onder aan het scherm.
-1. Selecteer de knop **toewijzen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst **Gebruikers.** Selecteer vervolgens de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies vervolgens de knop **Selecteren** onder aan het scherm.
+1. Selecteer in het dialoogvenster **Toewijzing toevoegen** de knop **Toewijzen.**
 
 ## <a name="configure-contractsafe-saml2-sso"></a>ContractSafe Saml2 SSO configureren
 
-Als u SSO wilt configureren op de **ContractSafe SAML2 SSO** -zijde, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van de Azure Portal naar het [ondersteunings team ContractSafe Saml2 SSO](mailto:support@contractsafe.com). Het team is verantwoordelijk voor het instellen van de SAML SSO-verbinding aan beide zijden.
+Als u SSO wilt configureren aan de **Kant van ContractSafe Saml2 SSO,** moet u de gedownloade **Xml met aalmetagegevens** van de Federatie en de juiste gekopieerde URL's van de Azure-portal naar het [Ondersteuningsteam van ContractSafe Saml2 SSO](mailto:support@contractsafe.com)verzenden. Het team is verantwoordelijk voor het goed instellen van de SAML SSO-verbinding aan beide zijden.
 
-## <a name="create-a-contractsafe-saml2-sso-test-user"></a>Een ContractSafe Saml2 SSO-test gebruiker maken
+## <a name="create-a-contractsafe-saml2-sso-test-user"></a>Een ContractSafe Saml2 SSO-testgebruiker maken
 
-Maak een gebruiker met de naam B. Simon in ContractSafe Saml2 SSO. Werk met het [ContractSafe SAML2 SSO-ondersteunings team](mailto:support@contractsafe.com) om de gebruikers toe te voegen in het SSO-platform ContractSafe Saml2. Gebruikers moeten worden gemaakt en geactiveerd voordat u SSO kunt gebruiken.
+Maak een gebruiker genaamd B.Simon in ContractSafe Saml2 SSO. Werk samen met het [ContractSafe Saml2 SSO-ondersteuningsteam](mailto:support@contractsafe.com) om de gebruikers toe te voegen aan het ContractSafe Saml2 SSO-platform. Gebruikers moeten worden gemaakt en geactiveerd voordat u SSO gebruikt.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Test SSO
 
-Test uw Azure AD SSO-configuratie met behulp van het toegangs venster. Wanneer u de SSO-tegel ContractSafe Saml2 in het toegangs venster selecteert, moet u automatisch worden aangemeld bij de ContractSafe Saml2 SSO waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Test uw Azure AD SSO-configuratie met behulp van het Access-paneel. Wanneer u de ContractSafe Saml2 SSO-tegel selecteert in het toegangspaneel, moet u automatisch worden aangemeld bij de ContractSafe Saml2 SSO waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer ContractSafe Saml2 SSO uit met Azure AD](https://aad.portal.azure.com/)
+- [Probeer ContractSafe Saml2 SSO met Azure AD](https://aad.portal.azure.com/)

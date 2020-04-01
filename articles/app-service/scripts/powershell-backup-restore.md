@@ -1,19 +1,19 @@
 ---
-title: 'Power shell: back-up van een app herstellen'
-description: Meer informatie over het gebruik van Azure PowerShell voor het automatiseren van de implementatie en het beheer van App Service. In dit voor beeld ziet u hoe u een app terugzet vanuit een back-up.
+title: 'PowerShell: een back-up van een app herstellen'
+description: Meer informatie over het gebruik van Azure PowerShell om de implementatie en het beheer van App Service te automatiseren. In dit voorbeeld ziet u hoe u een app herstellen van een back-up.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 026c275ce4bc85ff3f964bfbb175cc01ff611df0
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: a10a451bff73c081d9b0c95c494acb8b2051bd84
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685775"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057730"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-azure-powershell"></a>Een web-app terugzetten vanuit een back-up met Azure PowerShell
 

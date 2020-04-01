@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met behulp van Hive in azure Virtual Network
+title: Gegevens transformeren met Hive in Azure Virtual Network
 description: Deze zelfstudie biedt stapsgewijze instructies voor het transformeren van gegevens met behulp van Hive-activiteit in Azure Data Factory.
 services: data-factory
 ms.service: data-factory
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: ab8df188027ada2119334e058ffc5a10cca23914
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75439158"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Gegevens in een virtueel Azure-netwerk transformeren met behulp van Hive-activiteit in Azure Data Factory
@@ -30,14 +30,14 @@ In deze zelfstudie gebruikt u Azure PowerShell om een Data Factory-pijplijn te m
 > * De pijplijnuitvoering controleren. 
 > * De uitvoer controleren. 
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis](https://azure.microsoft.com/free/) account voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - **Azure Storage-account**. U maakt een Hive-script en uploadt dit script naar de Azure-opslag. De uitvoer van het Hive-script wordt opgeslagen in dit opslagaccount. In dit voorbeeld gebruikt het HDInsight-cluster dit Azure Storage-account als primaire opslag. 
-- **Een virtueel Azure-netwerk.** Als u geen virtueel Azure-netwerk hebt, maakt u er een door [deze instructies](../virtual-network/quick-create-portal.md) te volgen. In dit voorbeeld bevindt HDInsight zich in een virtueel Azure-netwerk. Hier volgt een voorbeeldconfiguratie van Azure Virtual Network. 
+- **Azure Virtual Network.** Als u geen virtueel Azure-netwerk hebt, maakt u er een door [deze instructies](../virtual-network/quick-create-portal.md) te volgen. In dit voorbeeld bevindt HDInsight zich in een virtueel Azure-netwerk. Hier volgt een voorbeeldconfiguratie van Azure Virtual Network. 
 
     ![Virtueel netwerk maken](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
 - **HDInsight-cluster.** Maak een HDInsight-cluster en koppel dit aan het virtuele netwerk dat u in de vorige stap hebt gemaakt, door de instructies in dit artikel te volgen: [Azure HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Hier volgt een voorbeeldconfiguratie van HDInsight in een virtueel netwerk. 
@@ -69,7 +69,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
   
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 
 1. Stel de naam van de resourcegroup in. Als onderdeel van deze zelfstudie gaat u een resourcegroep maken. U kunt echter ook een bestaande resourcegroep gebruiken als u dat wilt. 
@@ -91,7 +91,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. Start **PowerShell**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+2. PowerShell **starten**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
     Voer de volgende opdracht uit en geef de gebruikersnaam en het wachtwoord op waarmee u zich aanmeldt bij Azure Portal:
         
@@ -103,7 +103,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     ```powershell
     Get-AzSubscription
     ```
-    Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. Vervang **SubscriptionId** door de id van uw Azure-abonnement:
+    Voer de volgende opdracht uit om het abonnement te selecteren waarmee u wilt werken. **Vervang SubscriptionId** door de id van uw Azure-abonnement:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -184,7 +184,7 @@ Maak een JSON-bestand met behulp van de gewenste editor, kopieer de volgende JSO
 }
 ```
 
-Vervang **&lt;accountname&gt; en &lt;accountkey&gt;** door de naam en de sleutel van uw Azure Storage-account.
+Vervang ** &lt;&gt; accountnaam &lt;en&gt; accountsleutel** door de naam en sleutel van uw Azure Storage-account.
 
 ### <a name="hdinsight-linked-service"></a>Gekoppelde HDInsight-service
 
@@ -218,7 +218,7 @@ Maak een JSON-bestand met behulp van de gewenste editor, kopieer de volgende JSO
 Werk de waarden voor de volgende eigenschappen bij in de definitie van de gekoppelde service:
 
 - **userName**. Gebruikersnaam voor de clusteraanmelding die u hebt opgegeven toen u het cluster maakte. 
-- **password**. Het wachtwoord voor de gebruiker.
+- **wachtwoord**. Het wachtwoord voor de gebruiker.
 - **clusterUri**. Geef de URL van uw HDInsight-cluster op in de volgende indeling: `https://<clustername>.azurehdinsight.net`.  In dit artikel wordt ervan uitgegaan dat u via internet toegang hebt tot het cluster. U kunt bijvoorbeeld verbinding met het cluster maken op `https://clustername.azurehdinsight.net`. Dit adres maakt gebruik van de openbare gateway. Deze is niet beschikbaar als u NSG's (netwerkbeveiligingsgroepen) of door de gebruiker gedefinieerde routes hebt gebruikt om de toegang via internet te beperken. U moet het virtuele Azure-netwerk zo configureren dat de URL kan worden omgezet in het privé-IP-adres van de gateway die wordt gebruikt door HDInsight. Zo zorgt u ervoor dat Data Factory taken kan verzenden naar HDInsight-clusters in het virtuele Azure-netwerk.
 
   1. Open in Azure Portal het virtuele netwerk waarin het HDInsight-cluster zich bevindt. Open de netwerkinterface met de naam die begint met `nic-gateway-0`. Noteer het bijbehorende privé IP-adres. Bijvoorbeeld: 10.6.0.15. 

@@ -8,17 +8,17 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 4212277dbdf29705152832f3830692b43b8d1297
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78402810"
 ---
 # <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(AFGESCHAFT) Zelfstudie voor Azure Container Service: DC/OS beheren
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS biedt een gedistribueerd platform voor het uitvoeren van moderne toepassingen in containers. Met Azure Container Service kunt u eenvoudig en snel een DC/OS-cluster inrichten dat gereed is voor productie. Deze Quick Start bevat de basis stappen die nodig zijn om een DC/OS-cluster te implementeren en basis werkbelasting uit te voeren.
+DC/OS biedt een gedistribueerd platform voor het uitvoeren van moderne toepassingen in containers. Met Azure Container Service kunt u eenvoudig en snel een DC/OS-cluster inrichten dat gereed is voor productie. Met deze quickstart worden basisstappen beschreven die nodig zijn om een DC/OS-cluster te implementeren en de basiswerkbelasting uit te voeren.
 
 > [!div class="checklist"]
 > * Een ACS DC/OS-cluster maken

@@ -1,6 +1,6 @@
 ---
-title: Voor beeld van Azure CLI-script-App Service integreren met Application Gateway | Microsoft Docs
-description: Voor beeld van Azure CLI-script-App Service integreren met Application Gateway
+title: Voorbeeld van Azure CLI-script - App Service integreren met Application Gateway | Microsoft Documenten
+description: Voorbeeld van Azure CLI-script - App Service integreren met application gateway
 services: appservice
 documentationcenter: appservice
 author: madsd
@@ -17,21 +17,21 @@ ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
 ms.openlocfilehash: ee5e50bdba0a798d335641dc8a0c7ae69832d8f6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74979852"
 ---
-# <a name="integrate-app-service-with-application-gateway-using-cli"></a>App Service integreren met Application Gateway met behulp van CLI
+# <a name="integrate-app-service-with-application-gateway-using-cli"></a>App-service integreren met Application Gateway met CLI
 
-Met dit voorbeeld script maakt u een Azure App Service web-app, een Azure Virtual Network en een Application Gateway. Vervolgens wordt het verkeer voor de web-app beperkt tot alleen afkomstig uit het Application Gateway subnet.
+Met dit voorbeeldscript wordt een Azure App Service-web-app, een Azure Virtual Network en een Application Gateway gemaakt. Het beperkt vervolgens het verkeer voor de web-app om alleen afkomstig zijn van de Application Gateway subnet.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure CLI versie 2.0.74 of hoger nodig. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u Azure CLI-versie 2.0.74 of hoger nodig. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -45,19 +45,19 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [`az group create`](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [`az group create`](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [`az network vnet create`](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) | Hiermee maakt u een virtueel netwerk. |
 | [`az network public-ip create`](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) | Hiermee maakt u een openbaar IP-adres. |
-| [`az network public-ip show`](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) | Details van een openbaar IP-adres weer geven. |
-| [`az appservice plan create`](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-abonnement. |
-| [`az webapp create`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Hiermee maakt u een App Service web-app. |
-| [`az webapp show`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-show) | Details van een App Service web-app weer geven. |
-| [`az webapp config access-restriction add`](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest#az-webapp-config-access-restriction-add) | Hiermee voegt u een toegangs beperking toe aan de App Service web-app. |
-| [`az network application-gateway create`](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-create) | Hiermee maakt u een Application Gateway. |
+| [`az network public-ip show`](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) | Details van een openbaar IP-adres weergeven. |
+| [`az appservice plan create`](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Hiermee maakt u een App Service-plan. |
+| [`az webapp create`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Hiermee maakt u een app-serviceweb-app. |
+| [`az webapp show`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-show) | Details van een app-service-web-app weergeven. |
+| [`az webapp config access-restriction add`](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest#az-webapp-config-access-restriction-add) | Hiermee voegt u een toegangsbeperking toe aan de web-app App Service. |
+| [`az network application-gateway create`](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-create) | Hiermee maakt u een toepassingsgateway. |
 | [`az network application-gateway http-settings update`](https://docs.microsoft.com/cli/azure/network/application-gateway/http-settings?view=azure-cli-latest#az-network-application-gateway-http-settings-update) | Updates Application Gateway HTTP-instellingen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Meer voorbeelden van App Service CLI-scripts vindt u in de [documentatie van Azure App Service](../samples-cli.md).

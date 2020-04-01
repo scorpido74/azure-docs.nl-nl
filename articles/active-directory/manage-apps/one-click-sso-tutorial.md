@@ -1,6 +1,6 @@
 ---
-title: Configuratie van één klik, eenmalige aanmelding (SSO) van uw Azure Marketplace-toepassing | Microsoft Docs
-description: Stappen voor één klik configuratie van eenmalige aanmelding voor uw toepassing vanuit Azure Marketplace.
+title: SSO-configuratie (met één klik) van uw Azure Marketplace-toepassing | Microsoft Documenten
+description: Stappen voor configuratie met één klik voor Uw toepassing vanuit azure marketplace.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,73 +17,73 @@ ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67872431"
 ---
-# <a name="one-click-app-configuration-of-single-sign-on"></a>Met één klik appconfiguratie van eenmalige aanmelding
+# <a name="one-click-app-configuration-of-single-sign-on"></a>Configuratie van een app met één klik van één aanmelding
 
- In deze zelfstudie leert u hoe u voor het uitvoeren van één klik, eenmalige aanmelding (SSO) configuratie voor SAML-ondersteuning, Azure Active Directory (Azure AD)-toepassingen vanuit Azure Marketplace.
+ In deze zelfstudie leert u hoe u sso-toepassingen (met één klik, enkele aanmeldingsconfiguratie) uitvoert voor SAML-ondersteunende Azure Active Directory-toepassingen (Azure AD) vanuit de Azure Marketplace.
 
-## <a name="introduction-to-one-click-sso"></a>Inleiding tot één muisklik eenmalige aanmelding
+## <a name="introduction-to-one-click-sso"></a>Inleiding tot SSO met één klik
 
-De functie voor één muisklik SSO is ontworpen voor het configureren van eenmalige aanmelding voor Azure Marketplace-apps die ondersteuning bieden voor SAML-protocol. Op de configuratiepagina van Azure AD-eenmalige aanmelding kunt deze optie u de Azure AD-metagegevens automatisch configureren aan de toepassing. In op deze manier kunt u snel instellen van eenmalige aanmelding met een minimale inspanning voor handmatige.
+De SSO-functie met één klik is ontworpen om eenmalige aanmelding te configureren voor Azure Marketplace-apps die het SAML-protocol ondersteunen. Met deze optie u op de configuratiepagina van Azure AD-sSO de Azure AD-metagegevens aan de toepassingszijde automatisch configureren. Op deze manier u SSO snel instellen met minimale handmatige inspanning.
 
-## <a name="advantages-of-one-click-sso"></a>Voordelen van één muisklik eenmalige aanmelding
+## <a name="advantages-of-one-click-sso"></a>Voordelen van SSO met één klik
 
-- Snelle SSO-configuratie van Azure Marketplace-toepassingen waarvoor handmatige installatie op de toepassing aan clientzijde.
-- SSO-configuratie, efficiënter en nauwkeurige.
-- Geen communicatie van de partner of ondersteuning nodig is voor installatie. De gebruikersinterface van biedt de toepassing voor SAML-configuratie.
+- Snelle SSO-configuratie van Azure Marketplace-toepassingen waarvoor handmatige installatie aan toepassingszijde vereist is.
+- Efficiëntere en nauwkeurigere SSO-configuratie.
+- Geen partnercommunicatie of ondersteuning die nodig is voor het instellen. De toepassing biedt de gebruikersinterface voor SAML-configuratie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een actief abonnement van de toepassing te configureren met eenmalige aanmelding. U moet ook beheerdersreferenties.
-- De **mijn Apps beveiligde aanmelding extensie** van Microsoft is geïnstalleerd in de browser. Zie voor meer informatie, [toegang en gebruik apps op de portal mijn Apps](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+- Een actief abonnement van de toepassing om te configureren met SSO. U hebt ook beheerdersreferenties nodig.
+- De **aangemeldsextensie Mijn apps secure** van Microsoft is geïnstalleerd in de browser. Zie [Apps openen en gebruiken op de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)voor meer informatie.
 
-## <a name="one-click-sso-configuration-steps"></a>Stappen voor het configureren van eenmalige aanmelding één klik
+## <a name="one-click-sso-configuration-steps"></a>SSO-configuratiestappen met één klik
 
-1. De toepassing toevoegen vanuit de Azure Marketplace.
+1. Voeg de toepassing toe vanuit de Azure Marketplace.
 
-2. Selecteer **eenmalige aanmelding**.
+2. Selecteer **Eenmalig aanmelden**.
 
-3. Selecteer **eenmalige aanmelding inschakelen**.
+3. Selecteer **Eén aanmelding inschakelen**.
 
-4. Vullen van de van de verplichte configuratiewaarden in de **SAML-basisconfiguratie** sectie.
+4. Vul de verplichte configuratiewaarden in de sectie **BasisSAML-configuratie** in.
 
     > [!NOTE]
-    > Als de toepassing aangepaste claims die u wilt configureren heeft, kunt u ze voordat u één muisklik SSO verwerken.
+    > Als de toepassing aangepaste claims heeft die u moet configureren, moet u deze afhandelen voordat u Met één klik SSO uitvoert.
 
-5. Als de functie voor één muisklik eenmalige aanmelding beschikbaar voor uw Azure Marketplace-toepassing is, ziet u de volgende scherm. Mogelijk hebt u voor het installeren van de **mijn Apps beveiligde aanmelding browserextensie** hiervoor **de extensie installeren**.
+5. Als de SSO-functie met één klik beschikbaar is voor uw Azure Marketplace-toepassing, ziet u het volgende scherm. Mogelijk moet u de **browserextensie Mijn apps Secure Sign-in** installeren door **de extensie Installeren**te selecteren.
 
-   ![Mijn Apps beveiligen Sign-in de browser-extensie installeren](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
+   ![De veilige aanmeldingsbrowserextensie Mijn apps installeren](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. Nadat u de extensie aan de browser toevoegen, selecteert u **Setup \<toepassingsnaam\>** . Nadat u bent omgeleid naar de beheerportal van de toepassing, moet u zich aanmelden als beheerder.
+6. Nadat u de extensie aan de browser hebt toegevoegd, selecteert u **De naam \<\>van de toepassing instellen**. Nadat u bent doorgestuurd naar de portal voor toepassingsbeheer, meldt u zich aan als beheerder.
 
-   ![De naam van de Setup-toepassing](./media/one-click-sso-tutorial/setup-sso.png)
+   ![Naam van de toepassing instellen](./media/one-click-sso-tutorial/setup-sso.png)
 
-7. De Browseruitbreiding configureert automatisch de eenmalige aanmelding op de toepassing. Om te bevestigen **Ja**.
+7. De browserextensie configureert Automatisch SSO op de toepassing. Bevestig door **Ja**te selecteren .
 
-   ![Opslaan van de gegevens automatisch ingevuld](./media/one-click-sso-tutorial/save-autopopulate.png)
+   ![De automatisch ingevulde gegevens opslaan](./media/one-click-sso-tutorial/save-autopopulate.png)
 
    > [!NOTE]
-   > Als de configuratie van eenmalige aanmelding voor uw toepassing extra stappen uitvoeren vereist, de prompts om uit te voeren van de stappen te volgen.
+   > Als de SSO-configuratie voor uw toepassing extra stappen vereist, volgt u de aanwijzingen om de stappen uit te voeren.
 
-8. Nadat de configuratie is voltooid, selecteert u **OK** de wijzigingen op te slaan.
+8. Nadat de configuratie is voltooid, selecteert u **OK** om de wijzigingen op te slaan.
 
-   ![Sla de gegevens automatisch ingevuld](./media/one-click-sso-tutorial/save-data.png)
+   ![De automatisch ingevulde gegevens opslaan](./media/one-click-sso-tutorial/save-data.png)
 
-9. Er wordt een bevestigingsvenster weergegeven zodat u weet dat de SSO-instellingen zijn geconfigureerd.
+9. Er wordt een bevestigingsvenster weergegeven om u te laten weten dat de SSO-instellingen zijn geconfigureerd.
 
-   ![Eenmalige aanmelding geconfigureerd](./media/one-click-sso-tutorial/sso-configured.png)
+   ![SSO geconfigureerd](./media/one-click-sso-tutorial/sso-configured.png)
 
-10. Nadat de configuratie voltooid is, bent u afgemeld bij de toepassing en geretourneerd naar de Azure-portal.
+10. Nadat de configuratie is geslaagd, bent u afgemeld bij de toepassing en teruggestuurd naar de Azure-portal.
 
-11. U kunt selecteren **testen** voor het testen van eenmalige aanmelding.
+11. U **Testen** selecteren om eenmalige aanmelding te testen.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-* [Wat is de extensie van de browser mijn Apps beveiligde aanmelding?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
+* [Wat is de browserextensie Mijn apps Secure Sign-in?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
  

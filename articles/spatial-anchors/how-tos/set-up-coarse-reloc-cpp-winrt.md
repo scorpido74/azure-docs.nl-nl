@@ -1,6 +1,6 @@
 ---
-title: Ruwe Herlokalisatie in C++/WinRT
-description: Uitgebreide uitleg over het maken en vinden van ankers met ruwe Herlokalisatie in C++/WinRT.
+title: Grove herlokalisatie in C++/WinRT
+description: Diepgaande uitleg over het maken en lokaliseren van ankers met grove herlokalisatie in C++/WinRT.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -9,32 +9,32 @@ ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76548285"
 ---
-# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>Ankers maken en vinden met ruwe Herlokalisatie in C++/WinRT
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>Ankers maken en lokaliseren met grove herlokalisatie in C++/WinRT
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
 > * [Objective-C](set-up-coarse-reloc-objc.md)
 > * [Swift](set-up-coarse-reloc-swift.md)
-> * [Android java](set-up-coarse-reloc-java.md)
+> * [Android Java](set-up-coarse-reloc-java.md)
 > * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 
-Ruimtelijke ankers van Azure kunnen worden gekoppeld aan een apparaat, positionerings sensor gegevens met de ankers die u maakt. Deze gegevens kunnen ook worden gebruikt om snel te bepalen of er ankers zich in de buurt van uw apparaat bevinden. Zie [Grove relokalisatie](../concepts/coarse-reloc.md)voor meer informatie.
+Azure Spatial Anchors kunnen sensorgegevens op het apparaat koppelen aan de ankers die u maakt. Deze gegevens kunnen ook worden gebruikt om snel te bepalen of er ankers in de buurt van uw apparaat zijn. Zie [Grof herlokalisatie](../concepts/coarse-reloc.md)voor meer informatie .
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u over het volgende beschikt om deze hand leiding te volt ooien:
+Om deze gids te voltooien, zorg ervoor dat je:
 
-- Basis kennis van C++ en de <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows runtime-api's</a>.
-- Lees het [overzicht van ruimtelijke ankers in azure](../overview.md).
-- Een van de Quick starts van [5 minuten](../index.yml)is voltooid.
-- Lees de [instructies voor het maken en zoeken naar ankers](../create-locate-anchors-overview.md).
+- Basiskennis over C++ en de <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows Runtime API's.</a>
+- Lees het [overzicht van Azure Spatial Anchors](../overview.md).
+- Voltooid een van de [5 minuten Quickstarts](../index.yml).
+- Lees door de [pagina 'Ankeren maken en lokaliseren' how-to](../create-locate-anchors-overview.md).
 
 [!INCLUDE [Configure Provider](../../../includes/spatial-anchors-set-up-coarse-reloc-configure-provider.md)]
 

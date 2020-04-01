@@ -1,140 +1,140 @@
 ---
-title: Aan de slag met Azure Monitor Log Analytics | Microsoft Docs
-description: In dit artikel vindt u een zelf studie over het gebruik van Log Analytics in de Azure Portal om query's te schrijven.
+title: "Zelfstudie: Aan de slag met query's voor Logboekanalyse"
+description: Lees in deze zelfstudie hoe u Azure Monitor-logboekquery's schrijft en beheert met Behulp van Log Analytics in de Azure-portal.
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 07/19/2019
-ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/17/2020
+ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239586"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80055470"
 ---
-# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Aan de slag met Log Analytics in Azure Monitor
+# <a name="tutorial-get-started-with-log-analytics-queries"></a>Zelfstudie: Aan de slag met query's voor Logboekanalyse
 
-> [!NOTE]
-> U kunt deze oefening in uw eigen omgeving door lopen als u gegevens verzamelt van ten minste één virtuele machine. Als dat niet het geval is, gebruikt u onze [demo omgeving](https://portal.loganalytics.io/demo), die veel voorbeeld gegevens bevat.
+In deze zelfstudie ziet u hoe u Log Analytics gebruiken voor het schrijven, uitvoeren en beheren van Azure Monitor-logboekquery's in de Azure-portal. U Logboekanalysequery's gebruiken om naar termen te zoeken, trends te identificeren, patronen te analyseren en veel andere inzichten uit uw gegevens te bieden. 
 
-In deze zelf studie leert u hoe u Log Analytics in de Azure Portal kunt gebruiken om Azure Monitor logboek query's te schrijven. U leert het volgende:
+In deze zelfstudie leert u hoe u Log Analytics gebruiken om:
 
-- Log Analytics gebruiken om een eenvoudige query te schrijven
-- Inzicht in het schema van uw gegevens
-- Resultaten filteren, sorteren en groeperen
-- Een tijds bereik Toep assen
-- Grafieken maken
-- Query's opslaan en laden
-- Query's exporteren en delen
+> [!div class="checklist"]
+> * Het logboekgegevensschema begrijpen
+> * Eenvoudige query's schrijven en uitvoeren en het tijdsbereik voor query's wijzigen
+> * Queryresultaten filteren, sorteren en groeperen
+> * Visuals van queryresultaten weergeven, wijzigen en delen
+> * Query's en resultaten opslaan, laden, exporteren en kopiëren
 
-Zie [aan de slag met logboek query's in azure monitor](get-started-queries.md)voor een zelf studie over het schrijven van logboek query's.<br>
-Zie [overzicht van logboek query's in azure monitor](log-query-overview.md)voor meer informatie over logboek query's.
+Zie [Overzicht van logboekquery's in Azure Monitor](log-query-overview.md)voor meer informatie over logboekquery's.<br/>
+Zie [Aan de slag met logboekquery's in Azure Monitor](get-started-queries.md)voor een gedetailleerde zelfstudie over het schrijven van logboekquery's.
 
-## <a name="meet-log-analytics"></a>Voldoen aan Log Analytics
-Log Analytics is een webprogramma dat wordt gebruikt om Azure Monitor-logboek query's te schrijven en uit te voeren. Open het door **Logboeken** te selecteren in het menu Azure monitor. Deze begint met een nieuwe lege query.
+## <a name="open-log-analytics"></a>Logboekanalyse openen
+Als u Log Analytics wilt gebruiken, moet u zijn aangemeld bij een Azure-account. Als u geen Azure-account hebt, [maakt u er gratis een.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-![Startpagina](media/get-started-portal/homepage.png)
+Om de meeste stappen in deze zelfstudie te voltooien, u [deze demo-omgeving](https://portal.loganalytics.io/demo)gebruiken, die veel voorbeeldgegevens bevat. Met de demo-omgeving u geen query's opslaan of resultaten vastmaken aan een dashboard.
 
-## <a name="firewall-requirements"></a>Firewall vereisten
-Als u Log Analytics wilt gebruiken, moet uw browser toegang hebben tot de volgende adressen. Als uw browser toegang heeft tot de Azure Portal via een firewall, moet u toegang tot deze adressen inschakelen.
-
-| Uri | IP | Poorten |
-|:---|:---|:---|
-| portal.loganalytics.io | Dynamisch | 80,443 |
-| api.loganalytics.io | Dynamisch | 80,443 |
-| docs.loganalytics.io | Dynamisch | 80,443 |
-
-## <a name="basic-queries"></a>Eenvoudige query's
-Query's kunnen worden gebruikt om termen te zoeken, trends te identificeren, patronen te analyseren en veel andere inzichten te bieden op basis van uw gegevens. Beginnen met een basis query:
-
-```Kusto
-Event | search "error"
-```
-
-Met deze query wordt de _gebeurtenis_ tabel doorzocht op records die de term _fout_ bevatten in een wille keurige eigenschap.
-
-Query's kunnen beginnen met een tabel naam of een [Zoek](/azure/kusto/query/searchoperator) opdracht. Het bovenstaande voor beeld begint met de _gebeurtenis_tabel naam, waarmee alle records uit de gebeurtenis tabel worden opgehaald. Het sluis teken (|) scheidt opdrachten, waardoor de uitvoer van de eerste opdracht als de invoer van de volgende opdrachten fungeert. U kunt elk gewenst aantal opdrachten toevoegen aan één query.
-
-Een andere manier om dezelfde query te schrijven, is:
-
-```Kusto
-search in (Event) "error"
-```
-
-In dit voor beeld is het bereik van de **Zoek opdracht** naar de _gebeurtenis_ tabel en worden alle records in de tabel doorzocht op de _fout_term.
-
-## <a name="running-a-query"></a>Een query uitvoeren
-Voer een query uit door op de knop **uitvoeren** te klikken of op **SHIFT + ENTER**te drukken. Houd rekening met de volgende details die bepalen welke code wordt uitgevoerd en welke gegevens worden geretourneerd:
-
-- Regel einden: een enkele onderbreking zorgt ervoor dat uw query gemakkelijker te lezen is. Meerdere regel einden worden in afzonderlijke query's gesplitst.
-- Cursor: plaats de cursor ergens in de query om deze uit te voeren. De huidige query wordt als code beschouwd totdat een lege regel wordt gevonden.
-- Tijds bereik: een tijds bereik van de _laatste 24 uur_ wordt standaard ingesteld. Als u een ander bereik wilt gebruiken, gebruikt u de tijd kiezer of voegt u een expliciet tijds bereik filter toe aan uw query.
-
+U ook uw eigen omgeving gebruiken als u Azure Monitor gebruikt om logboekgegevens te verzamelen op ten minste één Azure-bron. Als u een werkruimte Logboekanalyse wilt openen, selecteert u **logboeken**in de linkernavigatie van Azure Monitor . 
 
 ## <a name="understand-the-schema"></a>Informatie over het schema
-Het schema is een verzameling tabellen die visueel worden gegroepeerd onder een logische categorie. Diverse categorieën zijn van bewakings oplossingen. De categorie _LogManagement_ bevat algemene gegevens, zoals Windows-en syslog-gebeurtenissen, prestatie gegevens en Heartbeats van agents.
+Een *schema* is een verzameling tabellen gegroepeerd onder logische categorieën. Het Demo-schema bevat verschillende categorieën van monitoringoplossingen. De categorie **LogManagement** bevat bijvoorbeeld Windows- en Syslog-gebeurtenissen, prestatiegegevens en agentheartbeats.
+
+De schematabellen worden weergegeven op het tabblad **Tabellen** van de werkruimte Log Analytics. De tabellen bevatten kolommen, elk met een gegevenstype dat wordt weergegeven door het pictogram naast de kolomnaam. De tabel **Gebeurtenis** bevat bijvoorbeeld tekstkolommen zoals **Computer** en numerieke kolommen zoals **Gebeurteniscategorie**.
 
 ![Schema](media/get-started-portal/schema.png)
 
-In elke tabel worden gegevens geordend in kolommen met verschillende gegevens typen, zoals wordt aangegeven door de pictogrammen naast de naam van de kolom. Bijvoorbeeld, de _gebeurtenis_ tabel die in de scherm afbeelding wordt weer gegeven, bevat kolommen zoals een _computer_ die tekst is, _EventCategory_ die een getal is en _TimeGenerated_ de datum/tijd.
+## <a name="write-and-run-basic-queries"></a>Basisquery's schrijven en uitvoeren
 
-## <a name="filter-the-results"></a>De resultaten filteren
-Begin met het ophalen van alles in de _gebeurtenis_ tabel.
+Log Analytics wordt geopend met een nieuwe lege query in de **queryeditor**.
+
+![Log Analytics](media/get-started-portal/homepage.png)
+
+### <a name="write-a-query"></a>Een query schrijven
+Azure Monitor-logboekquery's gebruiken een versie van de Kusto-querytaal. Query's kunnen beginnen met een tabelnaam of een [zoekopdracht.](/azure/kusto/query/searchoperator) 
+
+Met de volgende query worden alle records uit de **gebeurtenistabel** opgehaald:
 
 ```Kusto
 Event
 ```
 
-Log Analytics resultaten automatisch bereiken:
+Het pipe -teken (|) scheidt opdrachten, zodat de uitvoer van de eerste opdracht de invoer van de volgende opdracht is. U een willekeurig aantal opdrachten aan één query toevoegen. Met de volgende query worden de records uit de **gebeurtenistabel** opgehaald en wordt deze vervolgens doorzocht naar de **termfout** in een eigenschap:
 
-- Tijds bereik: standaard zijn query's beperkt tot de afgelopen 24 uur.
-- Aantal resultaten: de resultaten zijn beperkt tot Maxi maal 10.000 records.
+```Kusto
+Event 
+| search "error"
+```
 
-Deze query is zeer algemeen en er worden te veel resultaten geretourneerd om nuttig te zijn. U kunt de resultaten filteren door middel van de tabel elementen of door expliciet een filter toe te voegen aan de query. Het filteren van resultaten via de tabel elementen is van toepassing op de bestaande resultatenset, terwijl een filter op de query zelf een nieuwe gefilterde resultatenset retourneert, waardoor nauw keurigere resultaten kunnen worden verkregen.
+Een regeleinde maakt query's gemakkelijker te lezen. Meer dan één regeleinde splitst de query op in afzonderlijke query's.
 
-### <a name="add-a-filter-to-the-query"></a>Een filter toevoegen aan de query
-Er staat een pijl links van elke record. Klik op deze pijl om de details voor een bepaalde record openen.
+Een andere manier om dezelfde query te schrijven is:
 
-Beweeg de muis aanwijzer boven een kolom naam voor de pictogrammen ' + ' en '-' om weer te geven. Als u een filter wilt toevoegen waarmee alleen records met dezelfde waarde worden geretourneerd, klikt u op het plus teken (+). Klik op-om records met deze waarde uit te sluiten en klik vervolgens op **uitvoeren** om de query opnieuw uit te voeren.
+```Kusto
+search in (Event) "error"
+```
 
-![Filter aan query toevoegen](media/get-started-portal/add-filter.png)
+In het tweede voorbeeld zoekt de **zoekopdracht** alleen records in de tabel **Gebeurtenissen** voor de term **fout**.
 
-### <a name="filter-through-the-table-elements"></a>De tabel elementen filteren
-We gaan nu de aandacht richten op gebeurtenissen met een Ernst _fout_. Dit is opgegeven in een kolom met de naam _EventLevelName_. U moet naar rechts schuiven om deze kolom weer te geven.
+Log Analytics beperkt query's standaard tot een tijdsbereik van de afgelopen 24 uur. Als u een ander tijdsbereik wilt instellen, u een expliciet **TimeGenerated-filter** aan de query toevoegen of het **besturingselement Tijdbereik** gebruiken.
 
-Klik op het filter pictogram naast de kolom Titel en selecteer in het pop-upvenster waarden die _beginnen met_ de tekst _fout_:
+### <a name="use-the-time-range-control"></a>Het besturingselement Tijdbereik gebruiken
+Als u het besturingselement **Tijdbereik** wilt gebruiken, selecteert u deze in de bovenste balk en selecteert u een waarde in de vervolgkeuzelijst of selecteert **u Aangepast** om een aangepast tijdbereik te maken.
 
-![Filteren](media/get-started-portal/filter.png)
+![Tijdkiezer](media/get-started-portal/time-picker.png)
 
+- Tijdbereikwaarden bevinden zich in UTC, wat anders kan zijn dan uw lokale tijdzone.
+- Als de query expliciet een filter instelt voor **TimeGenerated,** wordt het tijdkiezerbesturingselement **Inquery instellen**weergegeven en is uitgeschakeld om een conflict te voorkomen.
 
-## <a name="sort-and-group-results"></a>Resultaten sorteren en groeperen
-De resultaten worden nu beperkt zodat er alleen fout gebeurtenissen van SQL Server worden opgenomen, die in de afgelopen 24 uur zijn gemaakt. De resultaten worden echter op geen enkele manier gesorteerd. Als u de resultaten wilt sorteren op een specifieke kolom, zoals _tijds tempel_ , klikt u op de kolom Titel. Met één klik kunt u in oplopende volg orde sorteren terwijl een tweede klik aflopend wordt gesorteerd.
+### <a name="run-a-query"></a>Een query uitvoeren
+Als u een query wilt uitvoeren, plaatst u de cursor ergens in de query en selecteert u **Uitvoeren** in de bovenste balk of drukt u op **Shift**+**Enter**. De query wordt uitgevoerd totdat er een lege regel wordt gevonden.
+
+## <a name="filter-results"></a>Resultaten filteren
+Log Analytics beperkt de resultaten tot maximaal 10.000 records. Een algemene `Event` query zoals retourneert te veel resultaten om nuttig te zijn. U queryresultaten filteren door de tabelelementen in de query te beperken of door expliciet een filter toe te voegen aan de resultaten. Als u door de tabelelementen filtert, wordt een nieuwe resultaatset geretourneerd, terwijl een expliciet filter van toepassing is op de bestaande resultaatset.
+
+### <a name="filter-by-restricting-table-elements"></a>Filteren door tabelelementen te beperken
+Ga `Event` als u queryresultaten filtert naar **foutgebeurtenissen** door tabelelementen in de query te beperken:
+
+1. Selecteer in de queryresultaten de vervolgkeuzepijl naast een record met **fout** in de kolom **EventLevelName.** 
+   
+1. Plaats in de uitgebreide details de bovenzet en selecteer de **...** naast **EventLevelName**en selecteer **Vervolgens 'Fout opnemen'**. 
+   
+   ![Filter toevoegen aan query](media/get-started-portal/add-filter.png)
+   
+1. De query in de **queryeditor** is nu gewijzigd in:
+   
+   ```Kusto
+   Event
+   | where EventLevelName == "Error"
+   ```
+   
+1. Selecteer **Uitvoeren** om de nieuwe query uit te voeren.
+
+### <a name="filter-by-explicitly-filtering-results"></a>Filteren door resultaten expliciet te filteren
+Ga als `Event` u de queryresultaten filteren op **foutgebeurtenissen** door de queryresultaten te filteren:
+
+1. Selecteer in de queryresultaten het pictogram **Filter** naast de kolomkop **EventLevelName**. 
+   
+1. Selecteer in het eerste veld van het pop-upvenster **Is gelijk aan**en voer in het volgende veld *fout*in . 
+   
+1. Selecteer **Filter**.
+   
+   ![Filteren](media/get-started-portal/filter.png)
+
+## <a name="sort-group-and-select-columns"></a>Kolommen sorteren, groeperen en selecteren
+Als u queryresultaten wilt sorteren op een specifieke kolom, zoals **TimeGenerated [UTC],** selecteert u de kolomkop. Selecteer de kop opnieuw om te schakelen tussen oplopende en aflopende volgorde.
 
 ![Kolom sorteren](media/get-started-portal/sort-column.png)
 
-Een andere manier om de resultaten te organiseren is per groep. Als u resultaten wilt groeperen op een specifieke kolom, sleept u de kolomkop naar boven de andere kolommen. Als u subgroepen wilt maken, sleept u ook andere kolommen de bovenste balk.
+Een andere manier om resultaten te organiseren is per groep. Als u resultaten wilt groeperen op een specifieke kolom, sleept u de kolomkop naar de balk boven de resultatentabel met het label **Sleep een kolomkop en zet u deze hier neer om te groeperen op die kolom**. Als u subgroepen wilt maken, sleept u andere kolommen naar de bovenste balk. U de hiërarchie en het sorteren van de groepen en subgroepen in de balk opnieuw rangschikken.
 
 ![Groepen](media/get-started-portal/groups.png)
 
-## <a name="select-columns-to-display"></a>Kolommen selecteren om weer te geven
-De resultaten tabel bevat vaak veel kolommen. Het kan voor komen dat sommige van de geretourneerde kolommen standaard niet worden weer gegeven of dat u een aantal kolommen wilt verwijderen die worden weer gegeven. Als u de kolommen wilt selecteren die u wilt weer geven, klikt u op de knop kolommen:
+Als u kolommen in de resultaten wilt verbergen of weergeven, selecteert u **Kolommen** boven de tabel en selecteert of schakelt u de gewenste kolommen uit de vervolgkeuzelijst uit of uit.
 
 ![Kolommen selecteren](media/get-started-portal/select-columns.png)
 
-
-## <a name="select-a-time-range"></a>Een tijds bereik selecteren
-Log Analytics past standaard het tijds bereik van de _laatste 24 uur_ toe. Als u een ander bereik wilt gebruiken, selecteert u een andere waarde door middel van de tijd kiezer en klikt u op **uitvoeren**. Naast de vooraf ingestelde waarden, kunt u de optie _aangepast tijds bereik_ gebruiken om een absoluut bereik voor uw query te selecteren.
-
-![Tijd kiezer](media/get-started-portal/time-picker.png)
-
-Wanneer u een aangepast tijds bereik selecteert, zijn de geselecteerde waarden in UTC. Dit kan afwijken van uw lokale tijd zone.
-
-Als de query expliciet een filter voor _TimeGenerated_bevat, wordt in de titel van de tijd kiezer de _set in de query_weer gegeven. Hand matige selectie wordt uitgeschakeld om conflicten te voor komen.
-
-
-## <a name="charts"></a>Diagrammen
-Naast het retour neren van resultaten in een tabel, kunnen query resultaten in visuele indelingen worden weer gegeven. Gebruik de volgende query als voor beeld:
+## <a name="view-and-modify-charts"></a>Grafieken weergeven en wijzigen
+U queryresultaten ook in visuele indelingen bekijken. Voer als voorbeeld de volgende query in:
 
 ```Kusto
 Event 
@@ -143,58 +143,65 @@ Event
 | summarize count() by Source 
 ```
 
-Standaard worden de resultaten weer gegeven in een tabel. Klik op _grafiek_ om de resultaten in een grafische weer gave te bekijken:
+Standaard worden de resultaten weergegeven in een tabel. Selecteer **Grafiek** boven de tabel om de resultaten in een grafische weergave weer te geven.
 
-![Staaf diagram](media/get-started-portal/bar-chart.png)
+![Staafdiagram](media/get-started-portal/bar-chart.png)
 
-De resultaten worden weer gegeven in een gestapeld staaf diagram. Klik op _gestapelde kolom_ en selecteer _cirkel_ om een andere weer gave van de resultaten weer te geven:
+De resultaten worden weergegeven in een gestapeld staafdiagram. Selecteer andere opties zoals **Gestapelde kolom** of **cirkel** om andere weergaven van de resultaten weer te geven.
 
-![Cirkel diagram](media/get-started-portal/pie-chart.png)
+![Cirkeldiagram](media/get-started-portal/pie-chart.png)
 
-Verschillende eigenschappen van de weer gave, zoals x-en y-assen, of groeperings-en splits voorkeuren, kunnen hand matig worden gewijzigd vanuit de controle balk.
+U de eigenschappen van de weergave, zoals x- en y-assen of voorkeuren voor groeperen en splitsen, handmatig wijzigen vanaf de besturingselementbalk.
 
-U kunt ook de gewenste weer gave in de query zelf instellen met behulp van de operator render.
+U ook de gewenste weergave in de query zelf instellen met behulp van de [renderoperator.](/azure/kusto/query/renderoperator)
 
-### <a name="smart-diagnostics"></a>Slimme diagnostische gegevens
-Als er sprake is van een plotselinge Prikker of stap in uw gegevens, ziet u mogelijk een gemarkeerd punt op de regel. Dit geeft aan dat _slimme diagnostische gegevens_ een combi natie van eigenschappen heeft geïdentificeerd waarmee de onverwachte wijziging wordt gefilterd. Klik op het punt om meer details te krijgen over het filter en om de gefilterde versie te bekijken. Zo kunt u zien wat de wijziging heeft veroorzaakt:
-
-![Slimme diagnostische gegevens](media/get-started-portal/smart-diagnostics.png)
-
-## <a name="pin-to-dashboard"></a>Vastmaken aan dashboard
-Als u een diagram of tabel wilt vastmaken aan een van uw gedeelde Azure-Dash boards, klikt u op het speld pictogram. Houd er rekening mee dat dit pictogram wordt verplaatst naar de bovenkant van het Log Analytics venster, en dat verschilt van de onderstaande scherm afbeelding.
+## <a name="pin-results-to-a-dashboard"></a>Resultaten vastmaken aan een dashboard
+Als u een resultatentabel of grafiek van Log Analytics wilt vastmaken aan een gedeeld Azure-dashboard, selecteert u **Vastmaken aan dashboard** op de bovenste balk. 
 
 ![Vastmaken aan dashboard](media/get-started-portal/pin-dashboard.png)
 
-Bepaalde vereenvoudigingen worden toegepast op een grafiek wanneer u deze vastmaakt aan een dash board:
+Selecteer of maak in het **deelvenster Vastmaken aan een ander dashboard** een gedeeld dashboard waaraan u wilt **vastmaken**en selecteer Toepassen . De tabel of grafiek wordt weergegeven op het geselecteerde Azure-dashboard.
 
-- Tabel kolommen en rijen: als u een tabel wilt vastmaken aan het dash board, moet deze vier of minder kolommen bevatten. Alleen de bovenste zeven rijen worden weer gegeven.
-- Tijds beperking: Query's worden automatisch beperkt tot de afgelopen veer tien dagen.
-- Beperking voor het aantal bakken: als u een grafiek met een groot aantal afzonderlijke opslag locaties weergeeft, worden minder gevulde opslag locaties automatisch gegroepeerd in één _andere_ opslag locatie.
+![Grafiek vastgemaakt aan dashboard](media/get-started-portal/pin-dashboard2.png)
 
-## <a name="save-queries"></a>Query's opslaan
-Wanneer u een nuttige query hebt gemaakt, wilt u deze mogelijk opslaan of met anderen delen. Het pictogram **Opslaan** bevindt zich op de bovenste balk.
+Een tabel of grafiek die u vastmaakt aan een gedeeld dashboard, heeft de volgende vereenvoudigingen: 
 
-U kunt de volledige query pagina of een enkele query opslaan als een functie. Functies zijn query's waarnaar ook kan worden verwezen door andere query's. Als u een query als een functie wilt opslaan, moet u een functie alias opgeven. Dit is de naam die wordt gebruikt om deze query aan te roepen wanneer ernaar wordt verwezen door andere query's.
+- Gegevens zijn beperkt tot de afgelopen 14 dagen.
+- Een tabel toont slechts maximaal vier kolommen en de bovenste zeven rijen.
+- Grafieken met veel afzonderlijke categorieën groeperen automatisch minder bevolkte categorieën in één **andere** opslaglocatie.
 
-![De functie opslaan](media/get-started-portal/save-function.png)
+## <a name="save-load-or-export-queries"></a>Query's opslaan, laden of exporteren
+Zodra u een query hebt gemaakt, u de query of resultaten opslaan of delen met anderen. 
 
->[!NOTE]
->De volgende tekens worden ondersteund: `a–z, A–Z, 0-9, -, _, ., <space>, (, ), |` in het veld **naam** bij het opslaan of bewerken van de opgeslagen query.
+### <a name="save-queries"></a>Query's opslaan
+Ga als lid van het nieuwe bedrijf naar een query:
 
-Log Analytics query's worden altijd opgeslagen naar een geselecteerde werk ruimte en gedeeld met andere gebruikers van die werk ruimte.
+1. Selecteer **Opslaan** op de bovenste balk.
+   
+1. Geef de query in het dialoogvenster **Opslaan** een **naam**met de tekens a-z, A–Z, 0-9, ruimte, koppelteken, underscore, periode, haakjes of pijp. 
+   
+1. Selecteer of u de query wilt opslaan als **query** of **functie**. Functies zijn query's waarnaar andere query's kunnen worden verwezen. 
+   
+   Als u een query als functie wilt opslaan, geeft u een **functiealias**op, een korte naam die andere query's kunnen gebruiken om deze query aan te roepen.
+   
+1. Geef een **categorie** op die **queryverkenner** voor de query gebruiken.
+   
+1. Selecteer **Opslaan**.
+   
+   ![Opslaan, functie](media/get-started-portal/save-function.png)
 
-## <a name="load-queries"></a>Query's laden
-Het pictogram query Verkenner bevindt zich in de rechter bovenhoek. Hiermee worden alle opgeslagen query's per categorie weer gegeven. U kunt hiermee ook specifieke query's markeren als favorieten om ze in de toekomst snel te vinden. Dubbel klik op een opgeslagen query om deze toe te voegen aan het huidige venster.
+### <a name="load-queries"></a>Query's laden
+Als u een opgeslagen query wilt laden, selecteert u **Queryverkenner** rechtsboven. Het deelvenster **Queryverkenner** wordt geopend en geeft alle query's per rubriek weer. Vouw de categorieën uit of voer een querynaam in de zoekbalk in en selecteer vervolgens een query om deze in de **queryeditor**te laden. U een query markeren als **favoriet** door de ster naast de querynaam te selecteren.
 
-![Query Verkenner](media/get-started-portal/query-explorer.png)
+![Queryverkenner](media/get-started-portal/query-explorer.png)
 
-## <a name="export-and-share-as-link"></a>Exporteren en delen als koppeling
-Log Analytics ondersteunt verschillende methoden voor exporteren:
+### <a name="export-and-share-queries"></a>Query's exporteren en delen
+Als u een query wilt exporteren, selecteert u **Exporteren** op de bovenste balk en selecteert u **Exporteren naar CSV - alle kolommen**, Exporteren naar CSV - weergegeven **kolommen**of Exporteren naar Power **BI (M-query)** in de vervolgkeuzelijst.
 
-- Excel: Sla de resultaten op als een CSV-bestand.
-- Power BI: Exporteer de resultaten naar Power BI. Zie [Azure monitor logboek gegevens importeren in Power bi](../../azure-monitor/platform/powerbi.md) voor meer informatie.
-- Een koppeling delen: de query zelf kan worden gedeeld als een koppeling die vervolgens kan worden verzonden en uitgevoerd door andere gebruikers die toegang hebben tot dezelfde werk ruimte.
+Als u een koppeling naar een query wilt delen, selecteert u **Koppeling kopiëren** op de bovenste balk en selecteert u Vervolgens Koppeling kopiëren **naar query,** **Querytekst kopiëren**of **Queryresultaten kopiëren** om naar het klembord te kopiëren. U de querykoppeling verzenden naar anderen die toegang hebben tot dezelfde werkruimte.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [schrijven van Azure monitor-logboek query's](get-started-queries.md).
+Ga naar de volgende zelfstudie voor meer informatie over het schrijven van Azure Monitor-logboekquery's.
+> [!div class="nextstepaction"]
+> [Azure Monitor-logboekquery's schrijven](get-started-queries.md)

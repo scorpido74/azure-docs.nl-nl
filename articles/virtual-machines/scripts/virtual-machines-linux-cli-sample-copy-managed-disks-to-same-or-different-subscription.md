@@ -1,6 +1,6 @@
 ---
-title: Managed disks kopiëren naar een abonnement-CLI-voor beeld
-description: Voor beeld van Azure CLI-script-beheerde schijven kopiëren (of verplaatsen) naar hetzelfde of een ander abonnement
+title: Beheerde schijven kopiëren naar het eenabonnement - CLI-voorbeeld
+description: Voorbeeld van Azure CLI Script - Beheerde schijven kopiëren (of verplaatsen) naar hetzelfde of een ander abonnement
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -17,10 +17,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 7ccdec703781a4e48870d5b4c27ec9d23de71dd0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458576"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Beheerde schijven kopiëren naar hetzelfde of een ander abonnement met CLI

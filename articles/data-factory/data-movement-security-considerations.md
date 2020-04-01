@@ -143,7 +143,7 @@ In de volgende tabel worden de aanbevelingen voor runtime-configuratie van netwe
 
 De volgende afbeeldingen tonen het gebruik van zelf gehoste invoerruntime voor het verplaatsen van gegevens tussen een on-premises database en Azure-services met behulp van ExpressRoute en IPSec VPN (met Azure Virtual Network):
 
-**ExpressRoute ExpressRoute**
+**ExpressRoute**
 
 ![ExpressRoute gebruiken met gateway](media/data-movement-security-considerations/express-route-for-gateway.png) 
 

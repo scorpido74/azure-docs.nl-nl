@@ -1,5 +1,6 @@
 ---
-title: Toegang tot opslag-blobs met behulp van een Azure CDN aangepast domein via HTTPS
+title: Toegang tot opslagblobs met een aangepast Azure CDN-domein via HTTPS
+description: Meer informatie over het toevoegen van een aangepast Azure CDN-domein en https inschakelen op dat domein voor uw aangepaste blobopslageindpunt.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -14,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: be09229136289e343856f1e2ba61cda63730d21f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279120"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80053966"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Zelfstudie: Toegang tot opslagblobs met een aangepast Azure CDN-domein via HTTPS
 
@@ -43,15 +44,15 @@ Azure CDN negeert eventuele beperkingen die zijn toegevoegd aan het SAS-token. Z
 Als u meerdere SAS-URL's voor hetzelfde blob-eindpunt maakt, kunt u overwegen om het cachen van queryreeksen in te schakelen. Hiermee zorgt u ervoor dat elke URL als een unieke entiteit wordt beschouwd. Zie [Cachegedrag in Azure CDN bepalen met queryreeksen](cdn-query-string.md) voor meer informatie.
 
 ## <a name="http-to-https-redirection"></a>HTTP-naar-HTTPS-omleiding
-U kunt ervoor kiezen om HTTP-verkeer om te leiden naar HTTPS door een regel voor URL-omleiding te maken met de [Standard regel engine](cdn-standard-rules-engine.md) of de [Verizon Premium-regels engine](cdn-verizon-premium-rules-engine.md). De standaard regels-engine is alleen beschikbaar voor Azure CDN van micro soft-profielen, maar de betaal kracht-engine van Verizon Premium is alleen beschikbaar via Azure CDN Premium van Verizon-profielen.
+U ervoor kiezen om HTTP-verkeer om te leiden naar HTTPS door een URL-omleidingsregel te maken met de [standaardregelsengine](cdn-standard-rules-engine.md) of de [Verizon Premium-regelsengine.](cdn-verizon-premium-rules-engine.md) Standard Rules engine is alleen beschikbaar voor Azure CDN van Microsoft-profielen, terwijl Verizon premium rules engine is alleen beschikbaar vanaf Azure CDN Premium van Verizon profielen.
 
-![Micro soft-omleidings regel](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
+![Microsoft-omleidingsregel](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-In de bovenstaande regel, waardoor de hostnaam, het pad, de query reeks en het fragment worden uitgevoerd, zullen de binnenkomende waarden worden gebruikt in de omleiding. 
+Als u hostnaam, pad, querytekenreeks en fragment achterlaat, worden de binnenkomende waarden gebruikt in de omleiding. 
 
-![Verizon-omleidings regel](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Verizon redirect regel](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
 
-In de bovenstaande regel verwijst *CDN-endpoint-name* naar de naam die u hebt geconfigureerd voor uw CDN-eind punt, die u kunt selecteren in de vervolg keuzelijst. De waarde voor *origin-path* verwijst naar het pad binnen het opslagaccount van herkomst waarin de statische inhoud zich bevindt. Als u alle statische inhoud in één container host, vervangt u *origin-path* door de naam van die container.
+In de bovenstaande regel verwijst *cdn-endpoint-name* naar de naam die u hebt geconfigureerd voor uw CDN-eindpunt, die u selecteren in de vervolgkeuzelijst. De waarde voor *origin-path* verwijst naar het pad binnen het opslagaccount van herkomst waarin de statische inhoud zich bevindt. Als u alle statische inhoud in één container host, vervangt u *origin-path* door de naam van die container.
 
 ## <a name="pricing-and-billing"></a>Prijzen en facturering
 Als u via Azure CDN toegang hebt tot blobs, betaalt u [Blob-opslagprijzen](https://azure.microsoft.com/pricing/details/storage/blobs/) voor verkeer tussen de POP-servers en de herkomst (Blob-opslag) en [Azure CDN-prijzen](https://azure.microsoft.com/pricing/details/cdn/) voor gegevens die worden geraadpleegd vanaf de POP-servers.

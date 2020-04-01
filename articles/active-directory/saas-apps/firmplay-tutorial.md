@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met FirmPlay - werknemer Advocacy voor werving | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en FirmPlay - ondersteuning voor werving werknemer.
+title: 'Zelfstudie: Azure Active Directory-integratie met FirmPlay - Werknemersbelangenbehartiging voor werving | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en FirmPlay - Employee Advocacy for Recruiting.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 2bdc3a13582f079cc9325ef1c6949c3ae10138eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67102528"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Zelfstudie: Azure Active Directory-integratie met FirmPlay - ondersteuning voor werving werknemer
+# <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Zelfstudie: Azure Active Directory-integratie met FirmPlay - Werknemersbelangenbehartiging voor werving
 
-In deze zelfstudie leert u hoe u integreert FirmPlay - werknemer Advocacy voor werving met Azure Active Directory (Azure AD).
-Integratie van FirmPlay - werknemer Advocacy voor werving met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u FirmPlay - Employee Advocacy for Recruiting integreert met Azure Active Directory (Azure AD).
+Integratie van FirmPlay - Employee Advocacy for Recruiting with Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot FirmPlay - ondersteuning voor werving werknemer heeft.
-* U kunt uw gebruikers worden automatisch aangemeld FirmPlay - ondersteuning voor werving (Single Sign-On) met hun Azure AD-accounts werknemer kunt inschakelen.
+* U in Azure AD bepalen wie toegang heeft tot FirmPlay - Employee Advocacy for Recruiting.
+* U uw gebruikers automatisch laten aanmelden bij FirmPlay - Employee Advocacy for Recruiting (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met FirmPlay - werknemer Advocacy voor werving, moet u de volgende items:
+Als u azure AD-integratie wilt configureren met FirmPlay - Werknemersbelangenbehartiging voor werving, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* FirmPlay - ondersteuning voor eenmalige aanmelding werving werknemer ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* FirmPlay - Employee Advocacy for Recruiting single sign-on enabled subscription FirmPlay - Employee Advocacy for Recruiting single sign-on enabled subscription FirmPlay - Employee Advocacy for Recruiting single sign-on enabled subscription FirmPlay
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* FirmPlay - werknemer Advocacy voor werving ondersteunt **SP** gestart door SSO
+* FirmPlay - Employee Advocacy for Recruiting ondersteunt **SP** geïnitieerde SSO
 
-## <a name="adding-firmplay---employee-advocacy-for-recruiting-from-the-gallery"></a>FirmPlay - werknemer Advocacy voor werving uit de galerie toevoegen
+## <a name="adding-firmplay---employee-advocacy-for-recruiting-from-the-gallery"></a>FirmPlay toevoegen - Employee Advocacy voor rekrutering vanuit de galerie
 
-Voor het configureren van de integratie van FirmPlay - werknemer Advocacy voor werving in Azure AD, moet u FirmPlay - werknemer Advocacy voor werving uit de galerie aan de lijst met beheerde SaaS-apps toevoegen.
+Om de integratie van FirmPlay te configureren - Employee Advocacy for Recruiting in Azure AD, moet u FirmPlay - Employee Advocacy for Recruiting from the gallery toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen, FirmPlay - werknemer Advocacy voor werving uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om FirmPlay toe te voegen - Employee Advocacy for Recruiting from the gallery:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van FirmPlay - werknemer Advocacy voor w
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **FirmPlay - werknemer Advocacy voor werving**, selecteer **FirmPlay - werknemer Advocacy voor werving** van resultaat deelvenster klik vervolgens op **toevoegen** knop de toepassing toevoegen.
+4. Typ in het zoekvak **FirmPlay - Employee Advocacy for Recruiting**, selecteer **FirmPlay - Employee Advocacy for Recruiting** from result panel en klik op Knop **toevoegen** om de toepassing toe te voegen.
 
-     ![FirmPlay - werknemer Advocacy voor werving in de lijst met resultaten](common/search-new-app.png)
+     ![FirmPlay - Employee Advocacy for Recruiting in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met FirmPlay - ondersteuning voor werving werknemer op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding in om te werken, een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in FirmPlay - moet werknemer Advocacy voor werving tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met FirmPlay - Employee Advocacy for Recruiting op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding op het werk moet een koppelingsrelatie worden vastgesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in FirmPlay - Employee Advocacy for Recruiting.
 
-Als u wilt configureren en testen van Azure AD eenmalige aanmelding met FirmPlay - werknemer Advocacy voor werving, u nodig hebt voor de volgende bouwstenen:
+Als u Azure AD single sign-on wilt configureren en testen met FirmPlay - Employee Advocacy for Recruiting, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer FirmPlay - werknemer Advocacy voor werving Single Sign-On](#configure-firmplay---employee-advocacy-for-recruiting-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak FirmPlay - ondersteuning voor de testgebruiker werving werknemer](#create-firmplay---employee-advocacy-for-recruiting-test-user)**  - dat een equivalent van Britta Simon in FirmPlay - werknemer ondersteuning voor het werven van die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer FirmPlay - Employee Advocacy for Recruiting Single Sign-On](#configure-firmplay---employee-advocacy-for-recruiting-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak FirmPlay - Employee Advocacy for Recruiting test user](#create-firmplay---employee-advocacy-for-recruiting-test-user)** - om een tegenhanger van Britta Simon in FirmPlay te hebben - Employee Advocacy for Recruiting die is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met FirmPlay - werknemer Advocacy voor werving, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om azure AD single sign-on te configureren met FirmPlay - Employee Advocacy for Recruiting:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **FirmPlay - werknemer Advocacy voor werving** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [azure-portal](https://portal.azure.com/)op de pagina **FirmPlay - Employee Advocacy for** Recruiting-toepassingsintegratie de optie **Enkele aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,18 +103,18 @@ Voor het configureren van Azure AD eenmalige aanmelding met FirmPlay - werknemer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![FirmPlay - werknemer Advocacy voor werven van domein en URL's één aanmeldings-informatie](common/sp-signonurl.png)
+    ![FirmPlay - Employee Advocacy voor het werven van domein en URL's single sign-on informatie](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<your-subdomain>.firmplay.com/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<your-subdomain>.firmplay.com/`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [FirmPlay - werknemer Advocacy voor werven van Client-ondersteuningsteam](mailto:engineering@firmplay.com) om de waarde. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [FirmPlay - Employee Advocacy for Recruiting Client support team](mailto:engineering@firmplay.com) om de waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Op de **FirmPlay - werknemer Advocacy voor werving instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer in de sectie **FirmPlay instellen - Werknemersbelangenbehartiging voor werving,** de juiste URL(s) volgens uw eis.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -124,9 +124,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met FirmPlay - werknemer
 
     c. Afmeldings-URL
 
-### <a name="configure-firmplay---employee-advocacy-for-recruiting-single-sign-on"></a>FirmPlay - werknemer ondersteuning voor het werven van eenmalige aanmelding configureren
+### <a name="configure-firmplay---employee-advocacy-for-recruiting-single-sign-on"></a>FirmPlay configureren - Employee Advocacy voor het werven van single sign-on
 
-Het configureren van eenmalige aanmelding op **FirmPlay - werknemer Advocacy voor werving** zijde, moet u voor het verzenden van de gedownloade **certificaat (Base64)** en de juiste URL's opgehaald uit Azure portal om te [ FirmPlay - ondersteuning voor het ondersteuningsteam werving werknemer](mailto:engineering@firmplay.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **FirmPlay - Employee Advocacy for** Recruiting-kant, moet u het gedownloade **certificaat (Base64)** en de juiste gekopieerde URL's van Azure-portal naar [FirmPlay - Employee Advocacy for Recruiting support team](mailto:engineering@firmplay.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -144,25 +144,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld brittasimon@yourcompanydomain.extensiontype gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan FirmPlay - werknemer Advocacy voor werving.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot FirmPlay - Employee Advocacy for Recruiting.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **FirmPlay - werknemer Advocacy voor werving**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen,** selecteer **Alle toepassingen**en selecteer **vervolgens FirmPlay - Employee Advocacy for Recruiting**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **FirmPlay - werknemer Advocacy voor werving**.
+2. Selecteer **FirmPlay - Employee Advocacy for Recruiting**in de lijst met toepassingen.
 
-    ![De FirmPlay - werknemer Advocacy voor werving koppeling in de lijst met toepassingen](common/all-applications.png)
+    ![De FirmPlay - Employee Advocacy for Recruiting link in de lijst met toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -172,27 +172,27 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-firmplay---employee-advocacy-for-recruiting-test-user"></a>FirmPlay - werknemer Advocacy voor werving testgebruiker maken
+### <a name="create-firmplay---employee-advocacy-for-recruiting-test-user"></a>FirmPlay maken - Employee Advocacy voor het werven van testgebruiker
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in FirmPlay - ondersteuning voor werving werknemer. Werken met [FirmPlay - ondersteuning voor het ondersteuningsteam werving werknemer](mailto:engineering@firmplay.com) om toe te voegen de gebruikers in de FirmPlay - werknemer Advocacy voor werving platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in FirmPlay - Employee Advocacy for Recruiting. Werk samen met [FirmPlay - Employee Advocacy for Recruiting support team](mailto:engineering@firmplay.com) om de gebruikers toe te voegen in het FirmPlay - Employee Advocacy for Recruiting platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u klikt op de FirmPlay - werknemer Advocacy werving tegel in het toegangsvenster, u moet worden automatisch aangemeld bij de FirmPlay - werknemer Advocacy voor werving voor dat u een SSO instellen. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel FirmPlay - Employee Advocacy for Recruiting in het Access Panel klikt, moet u automatisch worden aangemeld bij de FirmPlay - Employee Advocacy for Recruiting waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

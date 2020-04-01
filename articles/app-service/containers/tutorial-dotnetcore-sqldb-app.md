@@ -126,7 +126,7 @@ Maak een [firewallregel op Azure SQL Database-serverniveau](../../sql-database/s
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
-### <a name="create-a-database"></a>Database maken
+### <a name="create-a-database"></a>Een database maken
 
 Maak een database met een [prestatieniveau van S0](../../sql-database/sql-database-service-tiers-dtu.md) op de server met de opdracht [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create).
 

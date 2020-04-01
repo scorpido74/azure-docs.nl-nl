@@ -1,5 +1,5 @@
 ---
-title: Voor beelden van Azure CLI-apps installeren
+title: Azure CLI-voorbeelden - Apps installeren
 description: Met dit script maakt u een virtuele-machineschaalset die in Ubuntu wordt uitgevoerd en die de Custom Script-extensie gebruikt voor het installeren van een eenvoudige webtoepassing.
 author: cynthn
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 12925c06c8b0fbe0e223623584f7496bf34d3618
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278757"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-the-azure-cli"></a>Apps installeren in een virtuele-machineschaalset met de Azure CLI
@@ -46,6 +46,6 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 | [az group delete](/cli/azure/ad/group) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure/overview) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure/overview) voor meer informatie over de Azure CLI.
 
 U kunt extra Azure CLI-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor virtuele-machineschaalsets](../cli-samples.md).

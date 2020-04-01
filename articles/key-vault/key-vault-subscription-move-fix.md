@@ -1,5 +1,5 @@
 ---
-title: De Tenant-ID van de sleutel kluis wijzigen nadat een abonnement is verplaatst-Azure Key Vault | Microsoft Docs
+title: De key vault tenant ID wijzigen na een verhuizing van een abonnement - Azure Key Vault | Microsoft Documenten
 description: Meer informatie over het overschakelen op een ander tenant-ID voor een Key Vault nadat een abonnement is verplaatst naar een andere tenant
 services: key-vault
 author: amitbapat
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 4531d3bdeab96cb4a753060d59d07e155f4a358e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b262823323e9491965bc16818220b2f80cf236a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197331"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79457301"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>De tenant-ID van de Key Vault wijzigen na een verplaatsing van een abonnement
 
@@ -24,13 +24,13 @@ ms.locfileid: "78197331"
 
 Wanneer u een nieuwe Key Vault maakt in een abonnement, is het automatisch gekoppeld aan de tenant-ID van Azure Active Directory voor dit abonnement. Alle vermeldingen van het toegangsbeleid zijn ook gekoppeld aan deze tenant-ID. 
 
-Als u uw Azure-abonnement van Tenant A naar Tenant B verplaatst, zijn uw bestaande sleutel kluizen niet toegankelijk voor de principals (gebruikers en toepassingen) in Tenant B. U moet het volgende doen om dit probleem op te lossen:
+Als u uw Azure-abonnement verplaatst van tenant A naar tenant B, zijn uw bestaande sleutelkluizen niet toegankelijk voor de principals (gebruikers en toepassingen) in tenant B. Als u dit probleem wilt oplossen, moet u het:
 
-* Wijzig de Tenant-ID die is gekoppeld aan alle bestaande sleutel kluizen in het abonnement op Tenant B.
+* Wijzig de tenant-id die is gekoppeld aan alle bestaande sleutelkluizen in het abonnement op tenant B.
 * Alle bestaande vermeldingen van het toegangsbeleid te verwijderen.
-* Nieuwe beleids regels voor toegang toevoegen die zijn gekoppeld aan Tenant B.
+* Voeg nieuwe toegangsbeleidsvermeldingen toe die zijn gekoppeld aan tenant B.
 
-Als u bijvoorbeeld sleutel kluis myvault hebt in een abonnement dat is verplaatst van Tenant A naar Tenant B, kunt u Azure PowerShell gebruiken om de Tenant-ID te wijzigen en het oude toegangs beleid te verwijderen.
+Als u bijvoorbeeld 'myvault' in een abonnement hebt dat is verplaatst van tenant A naar tenant B, u Azure PowerShell gebruiken om de tenant-id te wijzigen en oude toegangsbeleidsregels te verwijderen.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription
@@ -43,21 +43,21 @@ $vault.Properties.AccessPolicies = @()                                     # Acc
 Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Modifies the key vault's properties.
 ````
 
-U kunt ook de Azure CLI gebruiken.
+U de Azure CLI ook gebruiken.
 
 ```azurecli
-az account set <your-subscriptionId>                                       # Select your Azure Subscription
+az account set -s <your-subscriptionId>                                    # Select your Azure Subscription
 tenantId=$(az account show --query tenantId)                               # Get your tenantId
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
 
-Nu de kluis is gekoppeld aan de juiste Tenant-ID en de oude vermeldingen van het toegangs beleid worden verwijderd, stelt u nieuwe vermeldingen voor het toegangs beleid in met de Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) cmdlet of de Azure cli [AZ set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) opdracht.
+Nu uw kluis is gekoppeld aan de juiste tenant-id en oude toegangsbeleidsvermeldingen zijn verwijderd, stelt u nieuwe toegangsbeleidsvermeldingen in met de cmdlet Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) of de opdracht Azure CLI [az keyvault-setbeleidsbeleids.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)
 
-Als u een beheerde identiteit voor Azure-resources gebruikt, moet u deze ook bijwerken naar de nieuwe Azure AD-Tenant. Zie voor meer informatie over beheerde identiteiten [Key Vault verificatie bieden met een beheerde identiteit](managed-identity.md).
+Als u een beheerde identiteit voor Azure-bronnen gebruikt, moet u deze ook bijwerken naar de nieuwe Azure AD-tenant. Zie [Key Vault-verificatie met een beheerde identiteit opgeven voor](managed-identity.md)meer informatie over beheerde identiteiten.
 
 
-Als u MSI gebruikt, moet u ook de MSI-identiteit bijwerken omdat de oude identiteit niet meer in de juiste AAD-Tenant voor komt.
+Als u MSI gebruikt, moet u ook de MSI-identiteit bijwerken, omdat de oude identiteit niet langer in de juiste AAD-tenant staat.
 
 ## <a name="next-steps"></a>Volgende stappen
 

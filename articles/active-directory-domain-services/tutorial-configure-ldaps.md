@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 636f2e6139ad081d1e2fc67462a74cb7e18e3ff0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481531"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475846"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Beveiligde LDAP configureren voor een beheerd Azure Active Directory Domain Services-domein
 
@@ -114,13 +114,13 @@ Deze twee sleutels, de *privé-* en *openbare* sleutels, zorgen ervoor dat allee
 
 Voordat u het digitale certificaat gebruiken dat in de vorige stap met uw door Azure AD DS beheerde domein is gemaakt, exporteert u het certificaat naar een *. PFX-certificaatbestand* met de privésleutel.
 
-1. Als u het dialoogvenster *Uitvoeren* wilt openen, selecteert u de **Windows-** en **R-toetsen.**
+1. Als u het dialoogvenster *Uitvoeren* wilt openen, selecteert u de **Windows R-toetsen.** + **R**
 1. Open de Microsoft Management Console (MMC) door **mmc** in te voeren in het dialoogvenster *Uitvoeren* en selecteer **OK**.
-1. Klik op de prompt **gebruikersaccountbeheer** op **Ja** om MMC als beheerder te starten.
-1. Klik **in** het menu Bestand op **Module toevoegen/verwijderen...**
+1. Selecteer op de prompt **gebruikersaccountbeheer** **ja** om MMC als beheerder te starten.
+1. Selecteer Inhet menu **Bestand** de optie **Module toevoegen/verwijderen...**
 1. Kies **in** de wizard Certificaten de optie **Computeraccount**en selecteer **Volgende**.
 1. Kies **op** de pagina Computer selecteren de optie **Lokale computer: (de computer waarop deze console wordt uitgevoerd)** en selecteer **Voltooien**.
-1. Klik in het dialoogvenster **Inlijnen toevoegen of verwijderen** op **OK** om de module certificaten toe te voegen aan MMC.
+1. Selecteer **OK** om de module certificaten toe te voegen aan MMC in het dialoogvenster **Module toevoegen of verwijderen.**
 1. Vouw **consoleroot**uit in het MMC-venster. Selecteer **Certificaten (lokale computer)** en vouw vervolgens het **persoonlijke** knooppunt uit, gevolgd door het knooppunt **Certificaten.**
 
     ![Het archief voor persoonlijke certificaten openen in de Microsoft Management Console](./media/tutorial-configure-ldaps/open-personal-store.png)
@@ -177,9 +177,6 @@ De *. CER-certificaatbestand* kan nu worden gedistribueerd naar clientcomputers 
 Met een digitaal certificaat dat is gemaakt en geëxporteerd dat de privésleutel bevat en de clientcomputer die is ingesteld om de verbinding te vertrouwen, u nu beveiligde LDAP inschakelen op uw door Azure AD DS beheerde domein. Voer de volgende configuratiestappen uit om beveiligde LDAP in te schakelen op een door Azure AD DS beheerd domein:
 
 1. Voer in de [Azure-portal](https://portal.azure.com) *domeinservices* in in het vak **Zoekbronnen.** Selecteer **Azure AD Domain Services** in het zoekresultaat.
-
-    ![Uw door Azure AD DS beheerde domein zoeken en selecteren in de Azure-portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
-
 1. Kies uw beheerde domein, zoals *aaddscontoso.com*.
 1. Kies aan de linkerkant van het Azure AD DS-venster De optie **Beveiligde LDAP**.
 1. Standaard is beveiligde LDAP-toegang tot uw beheerde domein uitgeschakeld. Schakel **Secure LDAP** in om in te schakelen om in te **schakelen.**
@@ -235,10 +232,10 @@ Als beveiligde LDAP-toegang via internet is ingeschakeld, werkt u de DNS-zone bi
 
 Configureer uw externe DNS-provider om een hostrecord te maken, zoals *ldaps,* om dit externe IP-adres op te lossen. Als u eerst lokaal wilt testen op uw machine, u een vermelding maken in het Windows-hosts-bestand. Als u het hosts-bestand op uw lokale machine wilt bewerken, opent u *Kladblok* als beheerder en opent u het bestand *C:\Windows\System32\drivers\etc*
 
-In het volgende voorbeeld DNS-vermelding, met uw externe DNS-provider of in het lokale hosts-bestand, wordt het verkeer voor *ldaps.aaddscontoso.com* naar het externe IP-adres van *40.121.19.239*opgelost:
+In het volgende voorbeeld DNS-vermelding, met uw externe DNS-provider of in het lokale hosts-bestand, wordt het verkeer voor *ldaps.aaddscontoso.com* naar het externe *IP-adres van 168.62.205.103*opgelost:
 
 ```
-40.121.19.239    ldaps.aaddscontoso.com
+168.62.205.103    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>Query's testen naar het beheerde domein
@@ -261,7 +258,7 @@ Ga als een opgaover naar de objecten die zijn opgeslagen in uw door Azure AD DS 
 1. Selecteer de **menuoptie Weergave** en kies **Vervolgens Structuur**.
 1. Laat het *veld BaseDN* leeg en selecteer **OK**.
 1. Kies een container, zoals *AADDC-gebruikers,* selecteer de container vervolgens met de rechtermuisknop en kies **Zoeken**.
-1. Verlaat de vooraf ingevulde velden set en selecteer **Uitvoeren**. De resultaten van de query worden weergegeven in het rechtervenster.
+1. Verlaat de vooraf ingevulde velden set en selecteer **Uitvoeren**. De resultaten van de query worden weergegeven in het rechtervenster, zoals weergegeven in de volgende voorbeelduitvoer:
 
     ![Zoeken naar objecten in uw door Azure AD DS beheerde domein met LDP.exe](./media/tutorial-configure-ldaps/ldp-query.png)
 
@@ -273,7 +270,7 @@ Als u een DNS-vermelding hebt toegevoegd aan het lokale hosts-bestand van uw com
 
 1. Open *Notepad op* uw lokale machine als beheerder
 1. Bladeren naar en open het bestand *C:\Windows\System32\drivers\etc*
-1. Verwijder de regel voor de record die u hebt toegevoegd, zoals`40.121.19.239    ldaps.aaddscontoso.com`
+1. Verwijder de regel voor de record die u hebt toegevoegd, zoals`168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>Volgende stappen
 

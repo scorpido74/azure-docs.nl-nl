@@ -9,15 +9,15 @@ ms.date: 02/02/2018
 ms.author: msangapu
 ms.custom: include file
 ms.openlocfilehash: 9236ac2c48443157e736e4b7e0a11c65a3191308
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78202557"
 ---
-Een [web-app](../articles/app-service/containers/app-service-linux-intro.md) maken in het App Service-plan `myAppServicePlan`. 
+Maak een [web-app](../articles/app-service/containers/app-service-linux-intro.md) in het `myAppServicePlan` App Service-abonnement. 
 
-In Cloud Shell kunt u de opdracht [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) gebruiken. Vervang in het volgende voorbeeld `<app-name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`). De runtime is ingesteld op `PHP|7.3`. Voer [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) uit als u alle ondersteunde runtimes wilt zien. 
+In de Cloud Shell kunt [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) u de opdracht gebruiken. Vervang in het volgende voorbeeld `<app-name>` door een unieke naam (geldige tekens zijn `a-z`, `0-9`, en `-`). De runtime is ingesteld op `PHP|7.3`. Voer alle ondersteunde runtimes [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)uit om alle ondersteunde runtimes te bekijken. 
 
 ```azurecli-interactive
 # Bash

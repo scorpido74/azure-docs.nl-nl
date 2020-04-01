@@ -69,7 +69,7 @@ Network Interfaces                 1 24000
 Network Watchers                   1     1
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 Als u CLI-opdrachten (Azure Command-line interface) gebruikt om taken in dit artikel uit te voeren, voert u de opdrachten uit in de [Azure Cloud Shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Dit artikel vereist de Azure CLI-versie 2.0.32 of hoger. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). Als u de Azure CLI lokaal uitvoert, moet `az login` u ook worden uitgevoerd om u aan te melden bij Azure.
 

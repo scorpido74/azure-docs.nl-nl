@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: gebeurtenissen analyseren in Time Series Insights-Azure Digital Apparaatdubbels | Microsoft Docs'
+title: 'Zelfstudie: Gebeurtenissen analyseren in Time Series Insights - Azure Digital Twins| Microsoft Documenten'
 description: Leer hoe u met behulp van de stappen in deze zelfstudie gebeurtenissen uit Azure Digital Twins-ruimten kunt visualiseren en analyseren met Azure Time Series Insights.
 services: digital-twins
 ms.author: alinast
@@ -10,13 +10,13 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
 ms.openlocfilehash: 38bd1755ed87050cf8b91a0a82f6e5f1d2af9db5
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75933875"
 ---
-# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Zelf studie: gebeurtenissen in azure Digital Apparaatdubbels visualiseren en analyseren met behulp van Time Series Insights
+# <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Zelfstudie: Gebeurtenissen van Azure Digital Twins visualiseren en analyseren met behulp van Time Series Insights
 
 Nadat u het Azure Digital Twins-exemplaar hebt geïmplementeerd, de ruimten hebt ingericht, en een aangepaste functie hebt geïmplementeerd om specifieke voorwaarden te bewaken, kunt u de gebeurtenissen en gegevens visualiseren die afkomstig zijn uit deze ruimten. Op deze manier kunt u eventuele trends en afwijkingen detecteren.
 
@@ -36,11 +36,11 @@ In deze zelfstudie wordt ervan uitgegaan dat u de Azure Digital Twins-installati
 
 - Een [Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Een actief exemplaar van Digital Twins.
-- De gedownloade en uitgepakte [Digital Twins C#-voorbeelden](https://github.com/Azure-Samples/digital-twins-samples-csharp) op een werkcomputer.
+- De [Digital Twins C# samples](https://github.com/Azure-Samples/digital-twins-samples-csharp) gedownload en geëxtraheerd op je werkmachine.
 - [.NET Core SDK-versie 2.1.403 of hoger](https://www.microsoft.com/net/download) op een ontwikkelcomputer om het voorbeeld uit te voeren. Voer `dotnet --version` uit om te controleren of de juiste versie is geïnstalleerd.
 
 > [!TIP]
-> Gebruik een unieke Digital Apparaatdubbels-exemplaar naam als u een nieuw exemplaar inricht.
+> Gebruik een unieke digital twins-instantienaam als u een nieuw exemplaar indient.
 
 ## <a name="stream-data-by-using-event-hubs"></a>Gegevens streamen met Event Hubs
 
@@ -48,22 +48,22 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
 
 ### <a name="create-an-event-hub"></a>Een Event Hub maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Een resource maken** in het linkerdeelvenster.
 
 1. Zoek en selecteer **Event Hubs**. Selecteer **Maken**.
 
-    [![een Event Hubs-naam ruimte maken](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png#lightbox)
+    [![Naamruimte voor gebeurtenishubs maken](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hubs.png#lightbox)
 
 1. Voer een **naam** in voor de naamruimte van de Event Hub. Kies **Standard** voor **Prijscategorie**, uw **Abonnement**, de **Resourcegroep** die u hebt gebruikt voor het Digital Twins-exemplaar, en de **Locatie**. Selecteer **Maken**.
 
-1. Selecteer in de implementatie van de Event Hubs naam ruimte het deel venster **overzicht** en selecteer vervolgens **naar resource**.
+1. Selecteer in de implementatie van de naamruimte van Gebeurtenishubs het deelvenster **Overzicht** en selecteer **Ga naar resource**.
 
-    [Event Hubs naam ruimte ![na implementatie](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png)](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png#lightbox)
+    [![Event Hubs-naamruimte na implementatie](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png)](./media/tutorial-facilities-analyze/tutorial-event-hub-ns.png#lightbox)
 
 1. Selecteer bovenaan in het deelvenster **Overzicht** van de Event Hubs-naamruimte de knop **Event Hub**.
-    [knop voor ![Event hub](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png#lightbox)
+    [![Knop Gebeurtenishub](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png)](./media/tutorial-facilities-analyze/tutorial-create-event-hub.png#lightbox)
 
 1. Voer een **naam** in voor de Event Hub en selecteer **Maken**.
 
@@ -71,18 +71,18 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
 
 1. Selecteer bovenaan de knop **Consumentengroep** en voer een naam in voor de consumentengroep, bijvoorbeeld **tsievents**. Selecteer **Maken**.
 
-    [Event hub-consumenten groep ![](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
+    [![Event Hub-consumentengroep](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
    Nadat de consumenten groep is gemaakt, wordt deze weergegeven in de lijst onderaan het deelvenster **Overzicht** van de Event Hub.
 
 1. Open het deelvenster **Beleid voor gedeelde toegang** voor de Event Hub en selecteer de knop **Toevoegen**. Voer **ManageSend** in als de naam van het beleid, controleer of alle selectievakjes zijn ingeschakeld en selecteer **Maken**.
 
-    [verbindings reeksen voor de Event hub ![](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
+    [![Event Hub-verbindingsreeksen](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
     > [!TIP]
-    > Controleer of u een SAS-beleid maakt voor uw Event Hub-exemplaar in plaats van uw naam ruimte.
+    > Controleer of u een SAS-beleid maakt voor uw gebeurtenishub-instantie in plaats van uw naamruimte.
 
-1. Open het **ManageSend** -beleid dat u hebt gemaakt en kopieer de waarden voor de **verbindings reeks: primaire sleutel** en **verbindings reeks-secundaire sleutel** naar een tijdelijk bestand. U hebt deze waarden in de volgende sectie nodig om een eindpunt te maken voor de Event Hub.
+1. Open het beleid **ManageSend** dat u hebt gemaakt en kopieer de waarden voor **verbindingstekenreeks— primaire toets** en **verbindingstekenreeks— secundaire toets** naar een tijdelijk bestand. U hebt deze waarden in de volgende sectie nodig om een eindpunt te maken voor de Event Hub.
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>Eindpunt maken voor de Event Hub
 
@@ -108,13 +108,13 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
       path: Name_of_your_Event_Hub
     ```
 
-1. Vervang de tijdelijke aanduidingen `Primary_connection_string_for_your_event_hub` door de waarde van de **verbindings reeks: primaire sleutel** voor de Event hub. Zorg ervoor dat de indeling van deze verbindingsreeks er als volgt uitziet:
+1. Vervang de `Primary_connection_string_for_your_event_hub` tijdelijke aanduidingen door de waarde van **verbindingstekenreeks— primaire sleutel** voor de gebeurtenishub. Zorg ervoor dat de indeling van deze verbindingsreeks er als volgt uitziet:
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Vervang de tijdelijke aanduidingen `Secondary_connection_string_for_your_event_hub` door de waarde van de **verbindings reeks: secundaire sleutel** voor de Event hub. Zorg ervoor dat de indeling van deze verbindingsreeks er als volgt uitziet: 
+1. Vervang de `Secondary_connection_string_for_your_event_hub` tijdelijke aanduidingen door de waarde van **verbindingstekenreeks: secundaire toets** voor de gebeurtenishub. Zorg ervoor dat de indeling van deze verbindingsreeks er als volgt uitziet: 
 
    ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
@@ -133,39 +133,39 @@ Gebruik de service [Event Hubs](../event-hubs/event-hubs-about.md) om een pijpli
 
    Hiermee worden twee eindpunten gemaakt voor de Event Hub.
 
-   [![eind punten voor Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
+   [![Eindpunten voor Event Hubs](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Analyseren met Time Series Insights
 
 1. Selecteer in het linkerdeelvenster van de [Azure-portal](https://portal.azure.com) de optie **Een resource maken**. 
 
-1. Zoek en selecteer een **Time Series Insights** algemene beschik BAARHEID (ga)-resource. Selecteer **Maken**.
+1. Zoek naar en selecteer een **GA-bron (Time Series Insights** General Availability). Selecteer **Maken**.
 
-1. Voer een **naam** in voor het Time Series Insights-exemplaar en selecteer vervolgens uw **abonnement**. Selecteer de **Resourcegroep** die u hebt gebruikt voor het Digital Twins-exemplaar, en uw **Locatie**. Selecteer **volgende: knop gebeurtenis bron** of het tabblad **gebeurtenis bron** .
+1. Voer een **naam** in voor het Time Series Insights-exemplaar en selecteer vervolgens uw **abonnement**. Selecteer de **Resourcegroep** die u hebt gebruikt voor het Digital Twins-exemplaar, en uw **Locatie**. Selecteer **Volgende: gebeurtenisbron** of het tabblad **Gebeurtenisbron.**
 
-    [![selecties voor het maken van een Time Series Insights instantie](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png)](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png#lightbox)
+    [![Selecties voor het maken van een Time Series Insights-exemplaar](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png)](./media/tutorial-facilities-analyze/tutorial-create-tsi-environment.png#lightbox)
 
-1. Voer op het tabblad **gebeurtenis bron** een **naam**in, selecteer **Event hub** als **bron type**en zorg ervoor dat de andere waarden correct worden geselecteerd om te verwijzen naar de Event hub die u hebt gemaakt. Selecteer **ManageSend** voor de naam van het **toegangs beleid van de Event hub**en selecteer vervolgens de Consumer groep die u hebt gemaakt in de vorige sectie voor de **Event hub-consumenten groep**. Selecteer **Controleren + maken**.
+1. Voer op het tabblad **Gebeurtenisbron** een **naam**in, selecteer **Gebeurtenishub** als **brontype**en controleer of de andere waarden correct zijn geselecteerd om te verwijzen naar de gebeurtenishub die u hebt gemaakt. Selecteer De naam van **het toegangsbeleid voor** **Beheren** voor gebeurtenishub en selecteer vervolgens de consumentengroep die u in de vorige sectie voor **de consumentengroep Van Event Hub**hebt gemaakt. Selecteer **Controleren + maken**.
 
-    [![selecties voor het maken van een gebeurtenis bron](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png)](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png#lightbox)
+    [![Selecties voor het maken van een gebeurtenisbron](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png)](./media/tutorial-facilities-analyze/tutorial-tsi-event-source.png#lightbox)
 
-1. Controleer in het deel venster **beoordelen en maken** de gegevens die u hebt ingevoerd en selecteer **maken**.
+1. Controleer in het deelvenster **Controleren + Maken** de ingevoerde gegevens en selecteer **Maken**.
 
-1. Selecteer in het deel venster implementatie de Time Series Insights resource die u hebt gemaakt. Hiermee opent u het deel venster **overzicht** voor uw time series Insights omgeving.
+1. Selecteer in het implementatievenster de resource Time Series Insights die u hebt gemaakt. Hiermee wordt het **overzichtsvenster** voor uw Time Series Insights-omgeving geopend.
 
-1. Selecteer de knop **naar een omgeving** bovenaan. Als u een waarschuwing voor gegevenstoegang te zien krijgt, opent u het deelvenster **Beleid voor gegevenstoegang** voor het Time Series Insights-exemplaar en selecteert u **Toevoegen**. Vervolgens selecteert u de rol **Inzender** en selecteert u de juiste gebruiker.
+1. Selecteer bovenaan de knop **Ga naar omgeving.** Als u een waarschuwing voor gegevenstoegang te zien krijgt, opent u het deelvenster **Beleid voor gegevenstoegang** voor het Time Series Insights-exemplaar en selecteert u **Toevoegen**. Vervolgens selecteert u de rol **Inzender** en selecteert u de juiste gebruiker.
 
 1. Met de knop **Ga naar omgeving** wordt de [Time Series Insights-verkenner](../time-series-insights/time-series-insights-explorer.md) geopend. Als hier geen gebeurtenissen worden weergegeven, simuleert u apparaatgebeurtenissen door naar het project **device-connectivity** van het Digital Twins-voorbeeld te gaan en `dotnet run` uit te voeren.
 
-1. Nadat een aantal gesimuleerde gebeurtenissen is gegenereerd, gaar u terug naar de Time Series Insights-verkenner en selecteert u bovenaan de knop Vernieuwen. Uw analytische diagrammen die worden gemaakt voor uw gesimuleerde sensor gegevens worden weer gegeven. 
+1. Nadat een aantal gesimuleerde gebeurtenissen is gegenereerd, gaar u terug naar de Time Series Insights-verkenner en selecteert u bovenaan de knop Vernieuwen. Uw analytische grafieken die worden gemaakt voor uw gesimuleerde sensorgegevens worden weergegeven. 
 
-    [![grafiek in de Time Series Insights Explorer](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png)](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png#lightbox)
+    [![Grafiek met de Time Series Insights-verkenner](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png)](./media/tutorial-facilities-analyze/tsi-explorer-with-adt-telemetry.png#lightbox)
 
 1. In de Time Series Insights-verkenner kunt u vervolgens grafieken en heatmaps genereren voor verschillende gebeurtenissen en gegevens van de ruimten, sensoren en andere resources. Gebruik de vervolgkeuzelijsten **MEASURE** en **SPLIT BY** aan de linkerkant om uw eigen visualisaties te maken. 
 
    Selecteer bijvoorbeeld **Gebeurtenissen** voor **MEASURE** en **DigitalTwins-SensorHardwareId** voor **SPLIT BY** om een heatmap te genereren voor elke sensor. De heatmap ziet er ongeveer uit als op de volgende afbeelding:
 
-   [![heatmap in de Time Series Insights Explorer](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
+   [![Heatmap in de Time Series Insights-verkenner](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

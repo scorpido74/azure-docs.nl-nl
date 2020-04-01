@@ -1,6 +1,6 @@
 ---
-title: Azure Storage voor beelden met behulp van python | Microsoft Docs
-description: Voorbeeld code en toepassingen voor Azure Storage weer geven, downloaden en uitvoeren. Ontdek aan de slag met voor beelden voor blobs, wacht rijen, tabellen en bestanden, met behulp van de python Storage-client bibliotheken.
+title: Azure Storage-voorbeelden met Python | Microsoft Documenten
+description: Voorbeeldcode en -toepassingen voor Azure Storage weergeven, downloaden en uitvoeren. Ontdek aan de slag met voorbeelden voor blobs, wachtrijen, tabellen en bestanden met behulp van de opslagclientbibliotheken van Python.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/13/2020
@@ -8,50 +8,50 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: fc3079d316a252bc5a658017cb6b04fe6ef20c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77485825"
 ---
-# <a name="azure-storage-samples-using-v12-python-client-libraries"></a>Azure Storage voor beelden met behulp van V12 python-client bibliotheken
+# <a name="azure-storage-samples-using-v12-python-client-libraries"></a>Azure Storage-voorbeelden met v12 Python-clientbibliotheken
 
-In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag plaatsen en de scenario's die in elk voor beeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeld code in GitHub weer te geven.
+De volgende tabellen geven een overzicht van onze monsters repository en de scenario's die in elk monster. Klik op de koppelingen om de bijbehorende voorbeeldcode in GitHub weer te geven.
 
 > [!NOTE]
-> In deze voor beelden wordt de nieuwste Azure Storage .NET V12-bibliotheek gebruikt. Zie voor de verouderde v 2.1-code [Azure Storage: aan de slag met Azure Storage in python](https://github.com/Azure-Samples/storage-blob-python-getting-started) in de GitHub-opslag plaats.
+> Deze voorbeelden maken gebruik van de nieuwste Azure Storage .NET v12-bibliotheek. Zie [Azure Storage: Aan de slag met Azure Storage in Python](https://github.com/Azure-Samples/storage-blob-python-getting-started) in de GitHub-repository voor oudere v2.1-code.
 
-## <a name="blob-samples"></a>BLOB-voor beelden
+## <a name="blob-samples"></a>Blob-voorbeelden
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::
-      [Een BLOB-serviceclient maken met behulp van een connection string](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L45)
+      [Blobserviceclient maken met een verbindingstekenreeks](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L45)
    :::column-end:::
    :::column span="":::
-      [Een container-client maken met behulp van een connection string](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L50)
+      [Containerclient maken met een verbindingstekenreeks](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L50)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Een BLOB-client maken met behulp van een connection string](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L56)
+      [Blobclient maken met een verbindingstekenreeks](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L56)
    :::column-end:::
    :::column span="":::
-      [Een BLOB-serviceclient maken met behulp van een gedeelde toegangs sleutel](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L66)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [BLOB-client maken op basis van URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L75)
-   :::column-end:::
-   :::column span="":::
-      [SAS-URL van BLOB-client maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L80)
+      [Blob-serviceclient maken met een gedeelde toegangssleutel](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L66)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Een BLOB-serviceclient maken met behulp van ClientSecretCredential](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L88)
+      [Blob-client maken vanuit URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L75)
+   :::column-end:::
+   :::column span="":::
+      [Url van blobclient SAS maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L80)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Blob-serviceclient maken met ClientSecretCredential](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L88)
    :::column-end:::
    :::column span="":::
       [SAS-token maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L110)
@@ -59,10 +59,10 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Een BLOB-serviceclient maken met behulp van Azure-identiteit](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L125)
+      [Blob-serviceclient maken met Azure Identity](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_authentication.py#L125)
    :::column-end:::
    :::column span="":::
-      [BLOB-moment opname maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L56)
+      [Blob-momentopname maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L56)
    :::column-end:::
 :::row-end:::
 
@@ -70,39 +70,39 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 
 :::row:::
    :::column span="":::
-      [Gegevens van BLOB service-account ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L30)
+      [Accountgegevens van blobservice's opvragen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L30)
    :::column-end:::
    :::column span="":::
-      [Eigenschappen van BLOB-service instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L41)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Eigenschappen van BLOB-service ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L61)
-   :::column-end:::
-   :::column span="":::
-      [Statistieken van BLOB-service ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L71)
+      [Blobservice-eigenschappen instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Container maken met Service-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L82)
+      [Blob-serviceeigenschappen opdoen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L61)
    :::column-end:::
    :::column span="":::
-      [Containers weer geven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L90)
+      [Ontvang blobservicestatistieken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L71)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Container verwijderen met Service-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L103)
+      [Container maken met serviceclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L82)
    :::column-end:::
    :::column span="":::
-      [Container-client ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L117)
+      [Containers weergeven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L90)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Container verwijderen met serviceclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L103)
+   :::column-end:::
+   :::column span="":::
+      [Containerclient ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L117)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [BLOB-client ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L130)
+      [Blob-client krijgen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_service.py#L130)
    :::column-end:::
 :::row-end:::
 
@@ -110,39 +110,39 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 
 :::row:::
    :::column span="":::
-      [Container-client maken vanuit service](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L35)
+      [Containerclient maken vanuit service](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L35)
    :::column-end:::
    :::column span="":::
-      [Container-client maken met SAS-URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L44)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Container maken met container client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L52)
-   :::column-end:::
-   :::column span="":::
-      [Container eigenschappen ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L56)
+      [Containerclient maken met SAS-URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L44)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Container verwijderen met container client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L61)
+      [Container maken met containerclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L52)
    :::column-end:::
    :::column span="":::
-      [Lease verkrijgen bij container](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L80)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Meta gegevens van container instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L101)
-   :::column-end:::
-   :::column span="":::
-      [Toegangs beleid voor container instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L128)
+      [Containereigenschappen ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Toegangs beleid voor container ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L141)
+      [Container verwijderen met containerclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L61)
+   :::column-end:::
+   :::column span="":::
+      [Lease op container verwerven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L80)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Containermetagegevens instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L101)
+   :::column-end:::
+   :::column span="":::
+      [Beleid voor containertoegang instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L128)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Beleid voor containertoegang](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L141)
    :::column-end:::
    :::column span="":::
       [SAS-token genereren](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L145)
@@ -150,18 +150,18 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Container-client maken met SAS-token](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L158)
+      [Containerclient maken met SAS-token](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L158)
    :::column-end:::
    :::column span="":::
-      [BLOB uploaden naar container](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L182)
+      [Blob uploaden naar container](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L182)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Blobs in container weer geven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L189)
+      [Blobs in container weergeven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L189)
    :::column-end:::
    :::column span="":::
-      [BLOB-client ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L213)
+      [Blob-client krijgen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_containers.py#L213)
    :::column-end:::
 :::row-end:::
 
@@ -169,23 +169,23 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 
 :::row:::
    :::column span="":::
-      [Een BLOB uploaden](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L68)
+      [Een blob uploaden](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L68)
    :::column-end:::
    :::column span="":::
-      [Een BLOB downloaden](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L74)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [BLOB verwijderen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L80)
-   :::column-end:::
-   :::column span="":::
-      [BLOB verwijderen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L100)
+      [Een blob downloaden](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L74)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [BLOB-eigenschappen ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L105)
+      [Blob verwijderen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_hello_world.py#L80)
+   :::column-end:::
+   :::column span="":::
+      [Blob verwijderen ongedaan maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L100)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Blob-eigenschappen opmaken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L105)
    :::column-end:::
    :::column span="":::
       [Meerdere blobs verwijderen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L133)
@@ -193,19 +193,19 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 :::row-end:::
 :::row:::
    :::column span="":::
-      [BLOB kopiëren van URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L193)
+      [Blob kopiëren van URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L193)
    :::column-end:::
    :::column span="":::
-      [Kopiëren van BLOB van URL afbreken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L205)
+      [Kopie blob afbreken van URL](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L205)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Lease verkrijgen op BLOB](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L167)
+      [Lease op blob verwerven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/samples/blob_samples_common.py#L167)
    :::column-end:::
 :::row-end:::
 
-## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2-voor beelden
+## <a name="data-lake-storage-gen2-samples"></a>Gegevens Lake Storage Gen2-monsters
 
 ### <a name="data-lake-service"></a>Data Lake-service
 
@@ -219,10 +219,10 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 
 :::row:::
    :::column span="":::
-      [Een File System-client maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L74)
+      [Bestandssysteemclient maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L74)
    :::column-end:::
    :::column span="":::
-      [Bestands systeem verwijderen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L81)
+      [Bestandssysteem verwijderen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L81)
    :::column-end:::
 :::row-end:::
 
@@ -230,23 +230,23 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 
 :::row:::
    :::column span="":::
-      [Directory-client maken](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L14)
+      [Directoryclient maken](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L14)
    :::column-end:::
    :::column span="":::
-      [Mapmachtigingen ophalen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L19)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Mapmachtigingen instellen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L23)
-   :::column-end:::
-   :::column span="":::
-      [Naam van map wijzigen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L19)
+      [Adreslijstmachtigingen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L19)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Mapeigenschappen ophalen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L25)
+      [Adreslijstmachtigingen instellen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L23)
+   :::column-end:::
+   :::column span="":::
+      [Naamvan naam wijzigen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L19)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Directory-eigenschappen oppakken](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L25)
    :::column-end:::
    :::column span="":::
       [Map verwijderen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_directory.py#L29)
@@ -257,7 +257,7 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 
 :::row:::
    :::column span="":::
-      [Bestands-client maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L13)
+      [Bestandsclient maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_upload_download.py#L13)
    :::column-end:::
    :::column span="":::
       [Bestand maken](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L45)
@@ -265,10 +265,10 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Bestands machtigingen ophalen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L35)
+      [Bestandsmachtigingen downloaden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L35)
    :::column-end:::
    :::column span="":::
-      [Bestands machtigingen instellen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L38)
+      [Bestandsmachtigingen instellen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control.py#L38)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -280,16 +280,16 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-files-samples"></a>Azure Files-voor beelden
+## <a name="azure-files-samples"></a>Voorbeelden van Azure-bestanden
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::
-      [Share service-client maken op basis van connection string](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L42)
+      [Share serviceclient maken op verbindingstekenreeks](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L42)
    :::column-end:::
    :::column span="":::
-      [Share service-client maken op basis van account en toegangs sleutel](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L49)
+      [Share serviceclient maken vanaf account en toegangssleutel](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_authentication.py#L49)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -298,7 +298,7 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
    :::column-end:::
 :::row-end:::
 
-### <a name="file-service"></a>Bestands service
+### <a name="file-service"></a>Bestandsservice
 
 :::row:::
    :::column span="":::
@@ -310,15 +310,15 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Shares maken met de File Service-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L77)
+      [Shares maken met bestandsserviceclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L77)
    :::column-end:::
    :::column span="":::
-      [Shares weer geven met behulp van de File Service-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L81)
+      [Aandelen aanbieden met behulp van bestandsserviceclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L81)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Shares verwijderen met de File Service-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L91)
+      [Aandelen verwijderen met bestandsserviceclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L91)
    :::column-end:::
 :::row-end:::
 
@@ -326,34 +326,34 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 
 :::row:::
    :::column span="":::
-      [Share-client maken op basis van connection string](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L52)
+      [Share-client maken op verbindingstekenreeks](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L52)
    :::column-end:::
    :::column span="":::
-      [Share-client ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L96)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Share maken met behulp van de bestands share-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L39)
-   :::column-end:::
-   :::column span="":::
-      [Moment opname van de share maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L43)
+      [Deelclient krijgen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_service.py#L96)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Share verwijderen met file share-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L47)
+      [Delen maken met de client voor bestandsshare](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L39)
    :::column-end:::
    :::column span="":::
-      [Share quotum instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L61)
+      [Momentopname delen maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L43)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Meta gegevens van share instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L66)
+      [Delen verwijderen met behulp van de client voor bestandsshare](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L47)
    :::column-end:::
    :::column span="":::
-      [Eigenschappen van share ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_hello_world.py#L47)
+      [Aandelenquotum instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L61)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Metagegevens voor delen instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L66)
+   :::column-end:::
+   :::column span="":::
+      [Eigenschappen voor delen ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_hello_world.py#L47)
    :::column-end:::
 :::row-end:::
 
@@ -369,7 +369,7 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Bestand uit map verwijderen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L55)
+      [Bestand verwijderen uit map](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L55)
    :::column-end:::
    :::column span="":::
       [Map verwijderen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L60)
@@ -380,7 +380,7 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
       [Submap maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L80)
    :::column-end:::
    :::column span="":::
-      [Mappen en bestanden weer geven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L96)
+      [Lijstmappen en bestanden](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L96)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -388,12 +388,12 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
       [Submap verwijderen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L104)
    :::column-end:::
    :::column span="":::
-      [Subdirectory-client ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L121)
+      [Submap-client ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_directory.py#L121)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Bestanden in de map weer geven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L87)
+      [Bestanden in map weergeven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_share.py#L87)
    :::column-end:::
 :::row-end:::
 
@@ -401,7 +401,7 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 
 :::row:::
    :::column span="":::
-      [Bestands-client maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_hello_world.py#L65)
+      [Bestandsclient maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_hello_world.py#L65)
    :::column-end:::
    :::column span="":::
       [Bestand maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-share/samples/file_samples_client.py#L48)
@@ -424,48 +424,48 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
    :::column-end:::
 :::row-end:::
 
-## <a name="queue-samples"></a>Wachtrij voorbeelden
+## <a name="queue-samples"></a>Wachtrijvoorbeelden
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 :::row:::
    :::column span="":::
-      [Verifiëren met behulp van connection string](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L50)
+      [Verifiëren met verbindingstekenreeks](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L50)
    :::column-end:::
    :::column span="":::
-      [Client token voor wachtrij service maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L69)
+      [Clienttoken voor wachtrijservice maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L69)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Een wachtrij client maken op basis van connection string](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L35)
+      [Wachtrijclient maken op verbindingstekenreeks](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L35)
    :::column-end:::
    :::column span="":::
-      [SAS-token van de wachtrij-client genereren](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L61)
+      [SAS-token voor wachtrijclient genereren](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L61)
    :::column-end:::
 :::row-end:::
 
-### <a name="queue-service"></a>Queue-service
+### <a name="queue-service"></a>Wachtrijservice
 
 :::row:::
    :::column span="":::
-      [Wachtrij service-client maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L60)
+      [Wachtrijserviceclient maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_authentication.py#L60)
    :::column-end:::
    :::column span="":::
-      [Eigenschappen van wachtrij service instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L35)
+      [Eigenschappen van wachtrijservice instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L35)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Eigenschappen van wachtrij service ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L67)
+      [Eigenschappen van wachtrijservice opbrengen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L67)
    :::column-end:::
    :::column span="":::
-      [Wachtrij maken met Service-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L76)
+      [Wachtrij maken met serviceclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L76)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Wachtrij verwijderen met Service-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L94)
+      [Wachtrij verwijderen met serviceclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L94)
    :::column-end:::
 :::row-end:::
 
@@ -473,31 +473,31 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 
 :::row:::
    :::column span="":::
-      [Wachtrij-client maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L72)
+      [Wachtrijclient maken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L72)
    :::column-end:::
    :::column span="":::
-      [Meta gegevens van de wachtrij instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L95)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Wachtrij-eigenschappen ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L100)
-   :::column-end:::
-   :::column span="":::
-      [Wachtrij maken met Queue-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L45)
+      [Metagegevens voor wachtrijen instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L95)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Wachtrij verwijderen met Queue-client](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L62)
+      [Wachtrijeigenschappen ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L100)
    :::column-end:::
    :::column span="":::
-      [Wacht rijen weer geven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L81)
+      [Wachtrij maken met wachtrijclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L45)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Wachtrij verwijderen met wachtrijclient](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_hello_world.py#L62)
+   :::column-end:::
+   :::column span="":::
+      [Wachtrijen weergeven](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L81)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Wachtrij-client ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L103)
+      [Wachtrijclient ophalen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_service.py#L103)
    :::column-end:::
 :::row-end:::
 
@@ -513,10 +513,10 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Bericht bekijken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L197)
+      [Peek-bericht](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L197)
    :::column-end:::
    :::column span="":::
-      [Bericht bijwerken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L222)
+      [Updatebericht](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L222)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -529,12 +529,12 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Toegangs beleid voor berichten instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L47)
+      [Beleid voor berichttoegangs instellen](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-queue/samples/queue_samples_message.py#L47)
    :::column-end:::
 :::row-end:::
 
 
-## <a name="table-samples-sdk-v21"></a>Tabel voorbeelden (SDK v 2.1)
+## <a name="table-samples-sdk-v21"></a>Tabelvoorbeelden (SDK v2.1)
 
 :::row:::
    :::column span="":::
@@ -546,18 +546,18 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Entiteit invoegen/samen voegen/vervangen](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L57)
+      [Entiteit invoegen/samenvoegen/vervangen](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L57)
    :::column-end:::
    :::column span="":::
-      [Entiteiten opvragen](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L62)
+      [Queryentiteiten](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L62)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Query tabellen](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py)
+      [Querytabellen](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py)
    :::column-end:::
    :::column span="":::
-      [Tabel-ACL/eigenschappen](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_advanced_samples.py#L138)
+      [Tabel ACL/eigenschappen](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_advanced_samples.py#L138)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -566,31 +566,31 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Voorbeeld bibliotheken van Azure-code
+## <a name="azure-code-sample-libraries"></a>Voorbeeldbibliotheken voor Azure-code
 
-Als u de complete python-voorbeeld bibliotheken wilt bekijken, gaat u naar:
+Ga naar:
 
-* [Voor beelden van Azure Blob-code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
-* [Voor beelden van Azure Data Lake code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
-* [Voor beelden van Azure Files code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share/samples)
-* [Voor beelden van Azure-wachtrij code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
+* [Azure blobcodevoorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+* [Codevoorbeelden azure Data Lake](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
+* [Voorbeelden van Azure Files-code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share/samples)
+* [Voorbeelden van Azure-wachtrijcode](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
 
-U kunt de GitHub-opslag plaats voor elke tape wisselaar door bladeren en klonen.
+U de GitHub-opslagplaats voor elke bibliotheek bladeren en klonen.
 
-## <a name="getting-started-guides"></a>Aan de slag-hand leidingen
+## <a name="getting-started-guides"></a>Aan de slag met hulplijnen
 
-Bekijk de volgende hand leidingen als u op zoek bent naar instructies voor het installeren en aan de slag met de Azure Storage-client bibliotheken.
+Bekijk de volgende handleidingen als u op zoek bent naar instructies over het installeren en aan de slag gaan met de Azure Storage-clientbibliotheken.
 
-* [Aan de slag met Azure Blob service in python](../blobs/storage-quickstart-blobs-python.md)
-* [Aan de slag met Azure Queue service in python](../queues/storage-quickstart-queues-python.md)
-* [Aan de slag met Azure Table service in python](../../cosmos-db/table-storage-how-to-use-python.md)
-* [Aan de slag met Azure File Service in python](../files/storage-python-how-to-use-file-storage.md)
+* [Aan de slag met Azure Blob-service in Python](../blobs/storage-quickstart-blobs-python.md)
+* [Aan de slag met Azure Queue Service in Python](../queues/storage-quickstart-queues-python.md)
+* [Aan de slag met Azure Table Service in Python](../../cosmos-db/table-storage-how-to-use-python.md)
+* [Aan de slag met Azure File Service in Python](../files/storage-python-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor informatie over voor beelden voor andere talen:
+Voor informatie over monsters voor andere talen:
 
-* .NET: voor [beelden Azure Storage met .net](storage-samples-dotnet.md)
-* Java: [Azure Storage voor beelden met behulp van Java](storage-samples-java.md)
-* Java script/node. js: [Azure Storage voor beelden met behulp van Java script](storage-samples-javascript.md)
-* Alle andere talen: [Azure Storage](storage-samples.md) -voor beelden
+* .NET: [Azure Storage-voorbeelden met .NET](storage-samples-dotnet.md)
+* Java: [Azure Storage-voorbeelden met Java](storage-samples-java.md)
+* JavaScript/Node.js: [Azure Storage-voorbeelden met JavaScript](storage-samples-javascript.md)
+* Alle andere talen: [azure storage-voorbeelden](storage-samples.md)

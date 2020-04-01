@@ -89,7 +89,7 @@ Back-ups die vóór de bewaarperiode plaatsvinden, worden automatisch verwijderd
 Azure SQL Database berekent uw totale back-upopslag in bewaarbehoud als een cumulatieve waarde. Elk uur wordt deze waarde gerapporteerd aan de Azure-factureringspijplijn, die verantwoordelijk is voor het aggregeren van dit uurgebruik om uw verbruik aan het einde van elke maand te berekenen. Nadat de database is verwijderd, neemt het verbruik af naarmate back-ups ouder worden. Nadat back-ups ouder zijn geworden dan de bewaarperiode, stopt de facturering.
 
    > [!IMPORTANT]
-   > Back-ups van een database worden bewaard voor de opgegeven bewaarperiode, zelfs als de database is verwijderd. Hoewel het laten vallen en opnieuw maken van een database vaak kan besparen op opslag- en rekenkosten, kan dit de kosten voor back-upopslag verhogen omdat Microsoft een back-up behoudt voor de opgegeven bewaarperiode (die minimaal 7 dagen is) voor elke verloren database, tijd dat het valt.
+   > Back-ups van een database worden bewaard voor de opgegeven bewaarperiode, zelfs als de database is verwijderd. Hoewel het laten vallen en opnieuw maken van een database vaak kan besparen op opslag- en rekenkosten, kan dit de kosten voor back-upopslag verhogen omdat Microsoft een back-up behoudt voor de opgegeven bewaarperiode (die minimaal 7 dagen is) voor elke verloren database, elke keer dat deze wordt verwijderd.
 
 ### <a name="monitor-consumption"></a>Verbruik controleren
 

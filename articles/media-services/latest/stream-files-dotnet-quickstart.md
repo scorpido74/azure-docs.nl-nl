@@ -1,6 +1,6 @@
 ---
 title: Videobestanden streamen met Azure Media Services - .NET | Microsoft Docs
-description: Volg de stappen in deze zelf studie om een nieuw Azure Media Services-account te maken, een bestand te coderen en te streamen naar Azure Media Player.
+description: Volg de stappen van deze zelfstudie om een nieuw Azure Media Services-account te maken, een bestand te coderen en te streamen naar Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,18 +14,18 @@ ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: df4092ecc3f7d075f1a2821854cdb668ee2cebe5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77191211"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Zelf studie: een extern bestand coderen op basis van URL en de video-.NET streamen
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Zelfstudie: Een extern bestand coderen op basis van URL en de video streamen - .NET
 
-In deze zelf studie leert u hoe eenvoudig het is om Video's te coderen en te streamen op een groot aantal verschillende browsers en apparaten met behulp van Azure Media Services. De invoerinhoud kan worden opgegeven met HTTPS-URL's, SAS-URL's of paden naar bestanden in Azure Blob-opslag.
+In deze zelfstudie ziet u hoe eenvoudig het is om video's te coderen en te streamen op een breed scala aan browsers en apparaten die Azure Media Services gebruiken. De invoerinhoud kan worden opgegeven met HTTPS-URL's, SAS-URL's of paden naar bestanden in Azure Blob-opslag.
 Met het voorbeeld in dit onderwerp wordt inhoud gecodeerd die u toegankelijk maakt via een HTTPS-URL. Op dit moment biedt AMS v3 geen ondersteuning voor gesegmenteerde overdrachtscodering via HTTPS-URL's.
 
-Aan het einde van de zelf studie kunt u een video streamen.  
+Tegen het einde van de tutorial zul je in staat zijn om een video te streamen.  
 
 ![De video afspelen](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -47,7 +47,7 @@ Gebruik de volgende opdracht om een GitHub-opslagplaats te klonen op uw computer
 
 Het voorbeeld bevindt zich in de map [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).
 
-Open [appSettings. json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) in het gedownloade project. Vervang de waarden door referenties die u hebt verkregen via [toegang tot API's](access-api-cli-how-to.md).
+Open [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) in uw gedownloade project. Vervang de waarden door referenties die u hebt verkregen via [toegang tot API's](access-api-cli-how-to.md).
 
 In het voorbeeld worden de volgende acties uitgevoerd:
 
@@ -65,8 +65,8 @@ Als u meer wilt weten over de werking van de functies in het voorbeeld, bekijkt 
 
 Wanneer u de app uitvoert, worden URL's weergegeven die kunnen worden gebruikt om de video met verschillende protocollen af te spelen. 
 
-1. Druk op Ctrl+F5 om de toepassing *EncodeAndStreamFiles* uit te voeren.
-2. Kies het **HLS**-protocol van Apple (eindigt op *manifest(format=m3u8-aapl)* ) en kopieer de streaming-URL uit de console.
+1. Druk op Ctrl + F5 om de toepassing *EncodeAndStreamFiles* uit te voeren.
+2. Kies het **HLS**-protocol van Apple (eindigt op *manifest(format=m3u8-aapl)*) en kopieer de streaming-URL uit de console.
 
 ![Uitvoer](./media/stream-files-tutorial-with-api/output.png)
 
@@ -79,7 +79,7 @@ In dit artikel gebruiken we Azure Media Player om de stream te testen.
 > [!NOTE]
 > Als een speler wordt gehost op een https-site, moet u de URL bijwerken naar 'https'.
 
-1. Open een browser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+1. Open een webbrowser en [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)navigeer naar .
 2. Plak in het vak **URL:** een van de streaming URL's die u hebt verkregen door het uitvoeren van de toepassing. 
  
      U kunt de URL plakken in de HLS-, Dash-, of Smooth-indeling. Azure Media Player schakelt over op naar een geschikt streaming-protocol zodat de stream automatisch op uw apparaat wordt afgespeeld.
@@ -89,7 +89,7 @@ Azure Media Player kan worden gebruikt voor testdoeleinden, maar mag niet worden
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een van de resources in de resource groep niet meer nodig hebt, met inbegrip van de Media Services-en opslag accounts die u voor deze zelf studie hebt gemaakt, verwijdert u de resource groep.
+Als u geen van de resources in uw resourcegroep meer nodig hebt, inclusief de Media Services en opslagaccounts die u voor deze zelfstudie hebt gemaakt, verwijdert u de brongroep.
 
 Voer de volgende CLI-opdracht uit:
 
@@ -107,7 +107,7 @@ De zelfstudie [Bestanden uploaden, coderen en streamen](stream-files-tutorial-wi
 
 Zie [Foutcodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
-## <a name="multithreading"></a>Multi-threading
+## <a name="multithreading"></a>Multithreading
 
 De SDK's van Azure Media Services v3 zijn niet thread-safe. Als u werkt met een multi-threaded toepassing, moet u per thread een nieuw AzureMediaServicesClient-object genereren.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met hive | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Hive | Microsoft Documenten'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Hive.
 services: active-directory
 documentationCenter: na
@@ -16,90 +16,90 @@ ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb4b19a20b70f8bca1968b6ff7162ca273a3da67
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77050296"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hive"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met hive
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hive"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met Hive
 
-In deze zelf studie leert u hoe u een component integreert met Azure Active Directory (Azure AD). Wanneer u een component integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Hive integreert met Azure Active Directory (Azure AD). Wanneer u Hive integreert met Azure AD, u het:
 
-* Controle in azure AD die toegang heeft tot de component.
-* Uw gebruikers in staat stellen om automatisch te worden aangemeld bij een Hive met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer in Azure AD die toegang heeft tot Hive.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Hive met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Eenmalige aanmelding van het Hive-abonnement (SSO).
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* Hive single sign-on (SSO) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* -Hive ondersteunt SSO die door **SP en IDP** is gestart
-* Hive ondersteunt **just-in-time** -gebruikers inrichting
-* Zodra u de component hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Hive ondersteunt **SP en IDP** geïnitieerd sso
+* Hive ondersteunt **Just In Time** gebruikersinrichting
+* Zodra u de Hive configureert, u sessiebesturingselementen afdwingen, die exfiltratie en infiltratie van de gevoelige gegevens van uw organisatie in realtime beschermen. Sessiebesturingselementen zijn van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-hive-from-the-gallery"></a>Hive toevoegen vanuit de galerie
 
-Als u de integratie van de component wilt configureren in azure AD, moet u een component uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Hive in Azure AD wilt configureren, moet u Hive uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie de** **component** in het zoekvak.
-1. Selecteer **Hive** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **Hive** in het zoekvak in de sectie **Toevoegen in de galeriesectie.**
+1. Selecteer **Hive** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-hive"></a>Eenmalige aanmelding voor Azure AD voor Hive configureren en testen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-hive"></a>Azure AD-aanmelding voor Hive configureren en testen
 
-Azure AD SSO met hive configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Hive.
+Azure AD SSO configureren en testen met Hive met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Hive.
 
-Als u Azure AD SSO met hive wilt configureren en testen, voert u de volgende bouw stenen uit:
+Als u Azure AD SSO met Hive wilt configureren en testen, voert u de volgende bouwstenen in:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Hive SSO configureren](#configure-hive-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Hive-test gebruiker maken](#create-hive-test-user)** : als u een equivalent van B. Simon in Hive wilt hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Configureer Hive SSO](#configure-hive-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    * **[Hive-testgebruiker maken](#create-hive-test-user)** - om een tegenhanger van B.Simon in Hive te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina **Hive** -toepassings integratie de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de **integratiepagina van hive-toepassingen** de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+1. Voer in de sectie **BasisSAML-configuratie** de waarden voor de volgende velden in als u de toepassing in de **idp-modus** wilt configureren:
 
-    a. In het tekstvak **Id** typt u deze URL: `https://hive.com`
+    a. Typ de URL in het tekstvak **Id:**`https://hive.com`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://app.hive.com/sso/saml/${workspaceId}`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://app.hive.com/sso/saml/${workspaceId}`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://app.hive.com/sso/saml/${workspaceId}`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://app.hive.com/sso/saml/${workspaceId}`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. U krijgt de `{workspaceId}` verderop in de zelf studie beschreven. Neem contact op met het [client ondersteunings team](https://help.hive.com) van de Hive om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. U krijgt `{workspaceId}` de uitleg later in de tutorial. Neem contact op met [hive client support team](https://help.hive.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Voor de Hive-toepassing worden de SAML-beweringen in een specifieke indeling verwacht. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. Hive-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![image](common/default-attributes.png)
+    ![installatiekopie](common/default-attributes.png)
 
-1. In aanvulling op hierboven verwachtte component toepassing nog maar weinig kenmerken om te worden door gegeven in een SAML-respons die hieronder wordt weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+1. Naast bovenstaande, Hive applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie die hieronder worden weergegeven. Deze kenmerken zijn ook vooraf ingevuld, maar u ze bekijken volgens uw vereisten.
 
     | Name | Bronkenmerk|
     | ------------ | --------- |
@@ -107,82 +107,82 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     | achternaam | user.surname |
     | e-mail | user.mail |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** **certificaat** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Op de sectie **Hive instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. Kopieer in de sectie **Hive instellen** de juiste URL(s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding van Azure door toegang te verlenen aan de component.
+In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Hive.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer **Hive**in de lijst toepassingen.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **Hive**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
 ## <a name="configure-hive-sso"></a>Hive SSO configureren
 
-1. Meld u in een ander webbrowser venster als beheerder aan bij de Hive-website.
+1. Meld u in een ander browservenster aan bij de hive-website als beheerder.
 
-1. Klik op het **gebruikers profiel** en klik op **uw werk ruimte**.
+1. Klik op het **gebruikersprofiel** en klik op **Uw werkruimte**.
 
     ![Hive-configuratie](./media/hive-tutorial/configure1.png)
 
-1. Klik op **auth** en voer de volgende stappen uit:
+1. Klik **op Auth** en voer de volgende stappen uit:
 
     ![Hive-configuratie](./media/hive-tutorial/configure2.png)
 
-    a. Kopieer **uw werk ruimte-id** en voeg deze toe aan de URL van de **aanmelding** en de **antwoord-URL** in het **gedeelte basis configuratie van SAML** in het Azure Portal.
+    a. Kopieer **uw werkruimte-id** en sluit deze toe aan de URL van **SignOn** en **antwoord** in de **sectie BasisSAML-configuratie** in de Azure-portal.
 
-    b. Plak in het tekstvak **SAML SSO URL** de waarde van de **aanmeldings-URL** , die u hebt gekopieerd uit de Azure Portal.
+    b. Plak in het tekstvak **SAML SSO URL** de **URL-waarde van aanmelding,** die u hebt gekopieerd van de Azure-portal.
 
-    c. Plak in het tekstvak voor de uitgever van de **identiteits provider** de **Azure ad-id** -waarde die u van de Azure Portal hebt gekopieerd.
+    c. Plak in het tekstvak van de **identiteitsprovideruitgever** de waarde **van Azure AD-id,** die u hebt gekopieerd van de Azure-portal.
 
-    d. Open het gedownloade **certificaat bestand (base64)** van Azure Portal in Klad blok, kopieer de inhoud ervan en plak het tekstvak van het **certificaat** en sla de wijzigingen op.
+    d. Open het gedownloade **certificaatbestand (Base64)** van Azure-portal in Kladblok, kopieer de inhoud ervan en plak in **het tekstvak certificaat** en sla de wijzigingen op.
 
-### <a name="create-hive-test-user"></a>Component test gebruiker maken
+### <a name="create-hive-test-user"></a>Hive-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Hive. Hive ondersteunt just-in-time-gebruikers inrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Hive, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker genaamd B.Simon gemaakt in Hive. Hive ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Hive, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Test SSO 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u klikt op de Hive-tegel in het toegangs venster, moet u automatisch worden aangemeld bij de Hive waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de hive-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Hive waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Hive met Azure AD](https://aad.portal.azure.com/)
+- [Hive uitproberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

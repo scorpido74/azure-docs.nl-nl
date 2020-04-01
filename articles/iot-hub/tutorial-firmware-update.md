@@ -1,6 +1,6 @@
 ---
 title: Apparaatfirmware bijwerken via Azure IoT Hub | Microsoft Docs
-description: Meer informatie over het implementeren van een update proces voor de firmware van een apparaat dat kan worden geactiveerd vanuit een back-endtoepassing die is verbonden met uw IoT-hub.
+description: Meer informatie over het implementeren van een proces voor het bijwerken van de apparaatfirmware die kan worden geactiveerd vanuit een back-endtoepassing die is verbonden met uw IoT-hub.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.custom: mvc
 ms.openlocfilehash: fdd2eb2ca1a0e6b93cd3f7a75beeb8057a4ea19c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78674369"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Zelfstudie: een apparaatfirmware-updateproces implementeren
@@ -34,13 +34,13 @@ In deze zelfstudie voert u de volgende taken uit:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Node.js. U hebt node. js V10 toevoegen. x. x of hoger nodig op uw ontwikkel machine.
+De twee voorbeeldtoepassingen die u uitvoert in deze snelstartgids zijn geschreven in Node.js. Je hebt Node.js v10.x.x of hoger op je ontwikkelmachine nodig.
 
-U kunt Node.js voor meerdere platforms downloaden van [nodejs.org](https://nodejs.org).
+Je Node.js voor meerdere platforms downloaden vanaf [nodejs.org.](https://nodejs.org)
 
 Gebruik de volgende opdracht om de huidige versie van Node.js op uw ontwikkelcomputer te controleren:
 
@@ -50,7 +50,7 @@ node --version
 
 Download het Node.js-voorbeeldproject van https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip en pak het ZIP-archief uit.
 
-Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+Zorg ervoor dat poort 8883 is geopend in uw firewall. Het apparaatvoorbeeld in deze zelfstudie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs- en educatieve netwerkomgevingen. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="set-up-azure-resources"></a>Azure-resources instellen
 
@@ -185,7 +185,7 @@ De volgende schermafbeelding toont de uitvoer van de back-endtoepassing en benad
 
 ![Back-endtoepassing](./media/tutorial-firmware-update/BackEnd2.png)
 
-Omdat automatische apparaatconfiguratie op het moment van maken en vervolgens om de vijf minuten wordt uitgevoerd, ziet u mogelijk niet elke status update die naar de back-end-toepassing is verzonden. U kunt de metrische gegevens ook bekijken in de portal in de sectie **Apparaatbeheer -> IoT-apparaatconfiguratie** van uw IoT-hub:
+Omdat automatische apparaatconfiguraties worden uitgevoerd op het moment van creatie en vervolgens om de vijf minuten, ziet u mogelijk niet elke statusupdate die naar de back-endtoepassing wordt verzonden. U kunt de metrische gegevens ook bekijken in de portal in de sectie **Apparaatbeheer -> IoT-apparaatconfiguratie** van uw IoT-hub:
 
 ![Configuratie weergeven in portal](./media/tutorial-firmware-update/portalview.png)
 

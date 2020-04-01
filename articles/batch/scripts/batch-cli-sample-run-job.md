@@ -1,5 +1,5 @@
 ---
-title: Voor beeld van Azure CLI-script-een batch-taak uitvoeren
+title: Voorbeeld van Azure CLI Script - Batchtaak uitvoeren
 description: Met dit script maakt u een Batch-job en voegt u een reeks taken toe aan de job. U ziet ook hoe u een job en de taken daarvan kunt bewaken.
 services: batch
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/12/2019
 ms.author: labrenne
 ms.openlocfilehash: 8062f42d5b7d2c718502ee2e4a8c035919b9182d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77023103"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI-voorbeeld: een job en taken uitvoeren met Azure Batch
@@ -27,7 +27,7 @@ Met dit script maakt u een Batch-job en voegt u een reeks taken toe aan de job. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0.20 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0.20 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). 
 
 ## <a name="example-script"></a>Voorbeeldscript
 
@@ -60,4 +60,4 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.

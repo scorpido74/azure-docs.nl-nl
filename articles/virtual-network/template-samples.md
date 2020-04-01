@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
 ms.openlocfilehash: 5971b3251812ea4193e71173943ffc0d48207567
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75975354"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>Voorbeeldsjablonen van Azure Resource Manager voor virtueel netwerk
@@ -36,4 +36,4 @@ Zie [Microsoft.Network resource types](/azure/templates/microsoft.network/allver
 |[Hiermee maakt u een service-eindpunt voor het virtuele netwerk voor Azure Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-2subnets-service-endpoints-storage-integration)|Hiermee maakt u een nieuw virtueel netwerk met twee subnetten en een netwerkinterface in elk subnet. Hiermee activeert u een service-eindpunt naar Azure Storage voor een van de subnetten en beveiligt u een nieuw opslagaccount op dat subnet.|
 |[Verbinden van twee virtuele netwerken](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-to-vnet-peering)| Hiermee maakt u twee virtuele netwerken en een virtueel peering-netwerk ertussen.|
 |[Een virtuele machine met meerdere IP-adressen maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-ipconfig)| Hiermee maakt u een Windows- of Linux-VM met meerdere IP-adressen.|
-|[Virtueel netwerk met dubbele stack van IPv4 + IPv6 configureren](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|Hiermee wordt een virtueel netwerk met dubbele stack (IPv4 + IPv6) geïmplementeerd met twee virtuele machines en een Azure Basic-Load Balancer met open bare IPv4-en IPv6-adressen. |
+|[IPv4 + IPv6 dual stack virtueel netwerk configureren](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|Implementeert dual-stack (IPv4+IPv6) virtueel netwerk met twee VM's en een Azure Basic Load Balancer met IPv4- en IPv6-openbare IP-adressen. |

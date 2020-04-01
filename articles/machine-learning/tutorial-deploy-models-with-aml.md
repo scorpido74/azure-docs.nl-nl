@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie voor installatie kopie classificatie: modellen implementeren'
+title: 'Zelfstudie voor afbeeldingsclassificatie: modellen implementeren'
 titleSuffix: Azure Machine Learning
-description: Deze zelf studie laat zien hoe u Azure Machine Learning kunt gebruiken om een installatie kopie-classificatie model te implementeren met scikit-Learn in een python Jupyter-notebook. Deze zelfstudie is deel 2 van een tweedelige reeks.
+description: In deze zelfstudie, tweede van een tweedelige serie, wordt uitgelegd hoe u Azure Machine Learning gebruiken om een afbeeldingsclassificatiemodel te implementeren met scikit-learn in een Python Jupyter-notitieblok.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,19 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116501"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80159066"
 ---
-# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelf studie: een classificatie model voor een installatie kopie implementeren in Azure Container Instances
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelfstudie: Een afbeeldingsclassificatiemodel implementeren in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Deze zelfstudie is **deel twee van een tweedelige reeks**. In de [vorige zelfstudie](tutorial-train-models-with-aml.md) hebt u Machine Learning-modellen getraind en vervolgens een model geregistreerd in uw werkruimte in de cloud.  
+Deze zelfstudie is **deel twee van een tweedelige reeks**. In de [vorige zelfstudie](tutorial-train-models-with-aml.md) hebt u Machine Learning-modellen getraind en vervolgens een model geregistreerd in uw werkruimte in de cloud.  Nu bent u klaar om het model te implementeren als een webservice. Een webservice is een installatiekopie, in dit geval een Docker-installatiekopie. De service omvat de scoringlogica en het model zelf. 
 
-Nu kunt u het model als een webservice implementeren in [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). Een webservice is een installatiekopie, in dit geval een Docker-installatiekopie. De service omvat de scoringlogica en het model zelf. 
-
-In dit gedeelte van de zelf studie gebruikt u Azure Machine Learning voor de volgende taken:
+In dit deel van de zelfstudie gebruikt u Azure Machine Learning voor de volgende taken:
 
 > [!div class="checklist"]
 > * Uw testomgeving instellen
@@ -36,21 +34,21 @@ In dit gedeelte van de zelf studie gebruikt u Azure Machine Learning voor de vol
 Container Instances is een uitstekende oplossing voor het testen en inzicht krijgen in de werkstroom. Voor schaalbare productie-implementaties is het misschien beter om Azure Kubernetes Service te gebruiken. Zie [Modellen implementeren met de Azure Machine Learning-service](how-to-deploy-and-where.md) voor meer informatie.
 
 >[!NOTE]
-> De code in dit artikel is getest met Azure Machine Learning SDK-versie 1.0.41.
+> Code in dit artikel is getest met Azure Machine Learning SDK versie 1.0.41.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u het notitie blok wilt uitvoeren, voltooit u eerst de model training in [zelf studie (deel 1): een classificatie model voor een installatie kopie trainen](tutorial-train-models-with-aml.md).   Open vervolgens het notebook *IMG-classificatie-part2-Deploy. ipynb* in uw gekloonde *zelf studies/image-classificatie-mnist-data-* map.
+Als u het notitieblok wilt uitvoeren, voltooit u eerst de modeltraining in [Zelfstudie (deel 1): Een afbeeldingsclassificatiemodel trainen](tutorial-train-models-with-aml.md).   Open vervolgens het *img-classification-part2-deploy.ipynb-notitieblok* in uw gekloonde *tutorials/map image-classification-mnist-data.*
 
-Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt gebruiken in uw eigen [lokale omgeving](how-to-configure-environment.md#local).  Zorg ervoor dat u `matplotlib` en `scikit-learn` hebt geïnstalleerd in uw omgeving. 
+Deze zelfstudie is ook beschikbaar op [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u het wilt gebruiken op uw eigen [lokale omgeving.](how-to-configure-environment.md#local)  Zorg ervoor dat `matplotlib` `scikit-learn` u hebt geïnstalleerd en in uw omgeving. 
 
 > [!Important]
-> De rest van dit artikel bevat dezelfde inhoud als u ziet in het notitie blok.  
+> De rest van dit artikel bevat dezelfde inhoud als u in het notitieblok ziet.  
 >
-> Schakel nu over naar het Jupyter-notebook als u wilt lezen tijdens het uitvoeren van de code.
-> Als u één code-cel in een notitie blok wilt uitvoeren, klikt u op de cel code en drukt u op **SHIFT + ENTER**. U kunt ook het hele notitie blok uitvoeren door **alles uitvoeren** op de bovenste werk balk te kiezen.
+> Schakel nu over naar het Jupyter-notitieblok als u wilt meelezen terwijl u de code uitvoert.
+> Als u één codecel in een notitieblok wilt uitvoeren, klikt u op de codecel en klikt u op **Shift+Enter**. Of voer het hele notitieblok uit door **Alles uitvoeren** vanaf de bovenste werkbalk te kiezen.
 
-## <a name="start"></a>Stel de omgeving in
+## <a name="set-up-the-environment"></a><a name="start"></a>De omgeving instellen
 
 Begin met het instellen van een testomgeving.
 
@@ -227,7 +225,7 @@ def run(raw_data):
 
 ### <a name="create-environment-file"></a>Omgevingsbestand maken
 
-Maak vervolgens een omgevingsbestand, met de naam **myenv.yml**, waarin alle pakketafhankelijkheden van het script zijn opgenomen. Dit bestand wordt gebruikt om ervoor te zorgen dat al die afhankelijkheden in de Docker-installatiekopie worden geïnstalleerd. Voor dit model zijn `scikit-learn` en `azureml-sdk` nodig. Alle aangepaste omgevings bestanden moeten de waarden van azureml-standaard met versie > = 1.0.45 als een PIP-afhankelijkheid vermelden. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten.
+Maak vervolgens een omgevingsbestand, met de naam **myenv.yml**, waarin alle pakketafhankelijkheden van het script zijn opgenomen. Dit bestand wordt gebruikt om ervoor te zorgen dat al die afhankelijkheden in de Docker-installatiekopie worden geïnstalleerd. Voor dit model zijn `scikit-learn` en `azureml-sdk` nodig. Alle aangepaste omgevingsbestanden moeten azureml-standaardinstellingen met verion >= 1,0,45 als pip-afhankelijkheid vermelden. Dit pakket bevat de functionaliteit die nodig is om het model als webservice te hosten.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -274,7 +272,7 @@ Configureer en implementeer de installatiekopie. De volgende code doorloopt de v
 1. Start een Container Instances-container met behulp van de installatiekopie.
 1. Haal het HTTP-eindpunt van de webservice op.
 
-Houd er rekening mee dat als u uw eigen omgevings bestand definieert, de standaard waarden van azureml en Version > = 1.0.45 als een PIP-afhankelijkheid. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten.
+Houd er rekening mee dat als u uw eigen omgevingsbestand definieert, u azureml-standaardinstellingen moet vermelden met versie >= 1.0,45 als pip-afhankelijkheid. Dit pakket bevat de functionaliteit die nodig is om het model als webservice te hosten.
 
 ```python
 %%time
@@ -299,7 +297,6 @@ Haal het HTTP-eindpunt van de scoring-webservice op, die REST-clientaanroepen ac
 ```python
 print(service.scoring_uri)
 ```
-
 
 ## <a name="test-the-deployed-service"></a>De geïmplementeerde service testen
 
@@ -387,7 +384,7 @@ service.delete()
 
 ## <a name="next-steps"></a>Volgende stappen
 
-+ Meer informatie over de [implementatie opties voor Azure machine learning](how-to-deploy-and-where.md).
++ Meer informatie over alle [implementatieopties voor Azure Machine Learning](how-to-deploy-and-where.md).
 + Meer informatie over het [maken van clients voor de webservice](how-to-consume-web-service.md).
 +  Doe asynchroon [voorspellingen op grote hoeveelheden gegevens](how-to-use-parallel-run-step.md).
 + Bewaak uw Azure Machine Learning-modellen met [Application Insights](how-to-enable-app-insights.md).

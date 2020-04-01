@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc1863ff4200ee4cca94f18e3adfffa7ea42db96
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613190"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475937"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Beleid voor het vergrendelen van wachtwoorden en wachtwoorden voor beheerde domeinen
 
@@ -105,20 +105,20 @@ Als u een aangepast wachtwoordbeleid wilt maken, gebruikt u de Active Directory-
     * Instellingen zoals complexiteit van wachtwoorden, leeftijd of vervaldatum alleen voor gebruikers die handmatig zijn gemaakt in een door Azure AD DS beheerd domein.
     * Instellingen voor accountuitsluiting zijn van toepassing op alle gebruikers, maar worden alleen van kracht binnen het beheerde domein en niet in Azure AD zelf.
 
-    ![Een aangepast fijnkorrelig wachtwoordbeleid maken](./media/how-to/custom-fgpp.png)
+    ![Een aangepast fijnkorrelig wachtwoordbeleid maken](./media/password-policy/custom-fgpp.png)
 
 1. Schakel **de**controle Protect from accidental deletion uit. Als deze optie is geselecteerd, u de FGPP niet opslaan.
 1. Selecteer **in** de sectie Direct van toepassing op de knop **Toevoegen.** Selecteer **in het** dialoogvenster Gebruikers of groepen selecteren de knop **Locaties.**
 
-    ![Selecteer de gebruikers en groepen om het wachtwoordbeleid toe te passen op](./media/how-to/fgpp-applies-to.png)
+    ![Selecteer de gebruikers en groepen om het wachtwoordbeleid toe te passen op](./media/password-policy/fgpp-applies-to.png)
 
 1. Wachtwoordbeleid kan alleen worden toegepast op groepen. Vouw in het dialoogvenster **Locaties** de domeinnaam uit, zoals *aaddscontoso.com,* en selecteer vervolgens een organisatie-eenheid, zoals **AADDC-gebruikers**. Als u een aangepaste organisatie-eenheid hebt die een groep gebruikers bevat die u wilt toepassen, selecteert u die organisatie-eenheid.
 
-    ![Selecteer de organisatie-eenheid waartoe de groep behoort](./media/how-to/fgpp-container.png)
+    ![Selecteer de organisatie-eenheid waartoe de groep behoort](./media/password-policy/fgpp-container.png)
 
 1. Typ de naam van de groep waarop u het beleid wilt toepassen en selecteer **Namen controleren** om te valideren of de groep bestaat.
 
-    ![Zoeken naar en selecteer de groep die FGPP wilt toepassen](./media/how-to/fgpp-apply-group.png)
+    ![Zoeken naar en selecteer de groep die FGPP wilt toepassen](./media/password-policy/fgpp-apply-group.png)
 
 1. Als u de naam van de groep die u nu hebt geselecteerd, nu weergeeft in de sectie **Direct van toepassing op,** selecteert u **OK** om uw aangepaste wachtwoordbeleid op te slaan.
 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.openlocfilehash: a046f97dccdcc4a9cb9fe180447c1ff9a316f0df
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73720813"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL-zelfstudie: een SQL-API Java-consoletoepassing maken
@@ -49,16 +49,16 @@ Zorg ervoor dat u over de volgende zaken beschikt:
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Git](https://git-scm.com/downloads).
+* [Git.](https://git-scm.com/downloads)
 * [Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks).
-* [Maven](https://maven.apache.org/download.cgi).
+* [Maven.](https://maven.apache.org/download.cgi)
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>Stap 1: een Azure Cosmos DB-account maken
 Begin met het maken van een Azure Cosmos DB-account. Als u al een account hebt dat u wilt gebruiken, kunt u verder naar de stap [Het GitHub-project klonen](#GitClone). Als u de Azure Cosmos DB-emulator gebruikt, volgt u de stappen in [Azure Cosmos DB-emulator](local-emulator.md) om de emulator in te stellen en meteen naar [Het GitHub-project klonen](#GitClone) te gaan.
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>Stap 2: het GitHub-project klonen
+## <a name="step-2-clone-the-github-project"></a><a id="GitClone"></a>Stap 2: het GitHub-project klonen
 Kloon eerst de GitHub-opslagplaats voor [Get Started with Azure Cosmos DB and Java](https://github.com/Azure-Samples/documentdb-java-getting-started) (Aan de slag met Azure Cosmos DB en Java). Voer bijvoorbeeld vanuit een lokale map het volgende uit als u het voorbeeldproject lokaal wilt ophalen.
 
     git clone git@github.com:Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -73,10 +73,10 @@ De map bevat een `pom.xml` voor het project en een `src`-map met Java-broncode, 
         <version>LATEST</version>
     </dependency>
 
-## <a id="Connect"></a>Stap 3: verbinding maken met een Azure Cosmos DB-account
+## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>Stap 3: verbinding maken met een Azure Cosmos DB-account
 Ga vervolgens terug naar de [Azure-portal](https://portal.azure.com) om uw eindpunt en primaire hoofdsleutel op te halen. Uw toepassing heeft het Azure Cosmos DB-eindpunt en de primaire sleutel nodig om te bepalen waarmee verbinding moet worden gemaakt en om ervoor te zorgen dat Azure Cosmos DB de verbinding van uw toepassing vertrouwt.
 
-Ga in Azure Portal naar uw Azure Cosmos DB-account en klik daarna op **Sleutels**. Kopieer in de portal de URI en plak deze in `https://FILLME.documents.azure.com` in het bestand Program.java. Kopieer vervolgens de PRIMAIRE SLEUTEL van de portal en plak deze in `FILLME`.
+Navigeer in de Azure-portal naar uw Azure Cosmos DB-account en klik vervolgens op **Sleutels**. Kopieer in de portal de URI en plak deze in `https://FILLME.documents.azure.com` in het bestand Program.java. Kopieer vervolgens de PRIMAIRE SLEUTEL van de portal en plak deze in `FILLME`.
 
     this.client = new DocumentClient(
         "https://FILLME.documents.azure.com",
@@ -84,7 +84,7 @@ Ga in Azure Portal naar uw Azure Cosmos DB-account en klik daarna op **Sleutels*
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 
-![Scherm afbeelding van de Azure Portal die door de NoSQL-zelf studie wordt gebruikt om een Java-Console toepassing te maken. Schermopname van Azure Portal waarin een Azure Cosmos DB-account wordt weergegeven met de hub ACTIEF gemarkeerd. Verder is de knop SLEUTELS gemarkeerd op de Azure Cosmos DB-accountblade en zijn de waarden URI, PRIMAIRE SLEUTEL en SECUNDAIRE SLEUTEL gemarkeerd op de blade Sleutels][keys]
+![Schermafbeelding van de Azure-portal die wordt gebruikt door de NoSQL-zelfstudie om een Java-consoletoepassing te maken. Schermopname van Azure Portal waarin een Azure Cosmos DB-account wordt weergegeven met de hub ACTIEF gemarkeerd. Verder is de knop SLEUTELS gemarkeerd op de Azure Cosmos DB-accountblade en zijn de waarden URI, PRIMAIRE SLEUTEL en SECUNDAIRE SLEUTEL gemarkeerd op de blade Sleutels][keys]
 
 ## <a name="step-4-create-a-database"></a>Stap 4: een database maken
 Uw Azure Cosmos DB-[database](databases-containers-items.md#azure-cosmos-databases) kan worden gemaakt met de methode [createDatabase](/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase) van de klasse **DocumentClient**. Een database is een logische container voor een JSON-documentopslag, gepartitioneerd in verzamelingen.
@@ -93,7 +93,7 @@ Uw Azure Cosmos DB-[database](databases-containers-items.md#azure-cosmos-databas
     database.setId("familydb");
     this.client.createDatabase(database, null);
 
-## <a id="CreateColl"></a>Stap 5: een verzameling maken
+## <a name="step-5-create-a-collection"></a><a id="CreateColl"></a>Stap 5: een verzameling maken
 > [!WARNING]
 > Met **createCollection** maakt u een nieuwe verzameling met gereserveerde doorvoer, wat gevolgen heeft voor de kosten. Zie onze [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie.
 > 
@@ -112,8 +112,8 @@ U kunt een verzameling maken met de methode [createCollection](/java/api/com.mic
 
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
-## <a id="CreateDoc"></a>Stap 6: JSON-documenten maken
-U kunt een document maken met de methode [createDocument](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument) van de klasse **DocumentClient**. Documenten bestaan uit door gebruikers gedefinieerde (willekeurige) JSON-inhoud. U kunt nu een of meer documenten invoegen. Als u al gegevens hebt die u in de database wilt opslaan, kunt u het [hulpprogramma voor gegevensmigratie](import-data.md) van Azure Cosmos DB gebruiken voor het importeren van gegevens in een database.
+## <a name="step-6-create-json-documents"></a><a id="CreateDoc"></a>Stap 6: JSON-documenten maken
+Een document kan worden gemaakt met behulp van de [createDocument-methode](/java/api/com.microsoft.azure.documentdb.documentclient.createdocument) van de klasse **DocumentClient.** Documenten bestaan uit door gebruikers gedefinieerde (willekeurige) JSON-inhoud. U kunt nu een of meer documenten invoegen. Als u al gegevens hebt die u in de database wilt opslaan, kunt u het [hulpprogramma voor gegevensmigratie](import-data.md) van Azure Cosmos DB gebruiken voor het importeren van gegevens in een database.
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();
@@ -135,7 +135,7 @@ U kunt een document maken met de methode [createDocument](/java/api/com.microsof
 
 ![Diagram waarin u de hiërarchische relatie ziet tussen het account, de online database, de verzameling en de documenten die in de NoSQL-zelfstudie worden gebruikt om een Java-consoletoepassing te maken](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>Stap 7: query's uitvoeren op Azure Cosmos DB-resources
+## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>Stap 7: query's uitvoeren op Azure Cosmos DB-resources
 Azure Cosmos DB biedt ondersteuning voor uitgebreide [query's](how-to-sql-query.md) op de JSON-documenten die zijn opgeslagen in elke verzameling.  De volgende voorbeeldcode laat zien hoe u query's kunt toepassen op documenten in Azure Cosmos DB met behulp van de SQL-syntaxis met de methode [queryDocuments](/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments).
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
@@ -148,7 +148,7 @@ Azure Cosmos DB biedt ondersteuning voor uitgebreide [query's](how-to-sql-query.
         System.out.println(String.format("\tRead %s", family));
     }
 
-## <a id="ReplaceDocument"></a>Stap 8: JSON-document vervangen
+## <a name="step-8-replace-json-document"></a><a id="ReplaceDocument"></a>Stap 8: JSON-document vervangen
 Azure Cosmos DB ondersteunt het bijwerken van JSON-documenten met behulp van de methode [replaceDocument](/java/api/com.microsoft.azure.documentdb.documentclient.replacedocument).
 
     // Update a property
@@ -159,17 +159,17 @@ Azure Cosmos DB ondersteunt het bijwerken van JSON-documenten met behulp van de 
         andersenFamily,
         null);
 
-## <a id="DeleteDocument"></a>Stap 9: JSON-document verwijderen
+## <a name="step-9-delete-json-document"></a><a id="DeleteDocument"></a>Stap 9: JSON-document verwijderen
 Azure Cosmos DB ondersteunt ook het verwijderen van JSON-documenten met behulp van de methode [deleteDocument](/java/api/com.microsoft.azure.documentdb.documentclient.deletedocument).  
 
     this.client.delete("/dbs/familydb/colls/familycoll/docs/Andersen.1", null);
 
-## <a id="DeleteDatabase"></a>Stap 10: de database verwijderen
+## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>Stap 10: de database verwijderen
 Als u de gemaakte database verwijdert, worden de database en alle onderliggende resources (verzamelingen, documenten enz.) verwijderd.
 
     this.client.deleteDatabase("/dbs/familydb", null);
 
-## <a id="Run"></a>Stap 11: uw Java-consoletoepassing volledig uitvoeren
+## <a name="step-11-run-your-java-console-application-all-together"></a><a id="Run"></a>Stap 11: uw Java-consoletoepassing volledig uitvoeren
 Als u de toepassing in de console wilt uitvoeren, gaat u naar de projectmap en compileert u de code met Maven:
     
     mvn package
@@ -182,7 +182,7 @@ Gefeliciteerd! U hebt de NoSQL-zelfstudie voltooid en beschikt nu over een werke
 
 ## <a name="next-steps"></a>Volgende stappen
 * Wilt u een zelfstudie voor Java-web-apps volgen? Zie [Build a web application with Java using Azure Cosmos DB](sql-api-java-application.md) (Een Java-web-app maken met Azure Cosmos DB).
-* Leer hoe het [bewaken van een Azure Cosmos DB-account](monitor-accounts.md) werkt.
+* Meer informatie over het [bewaken van een Azure Cosmos DB-account](monitor-accounts.md).
 * Voer query's uit op onze voorbeeldgegevensset in de [Queryspeelplaats](https://www.documentdb.com/sql/demo).
 
 [keys]: media/sql-api-get-started/nosql-tutorial-keys.png

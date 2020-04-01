@@ -267,6 +267,6 @@ Wanneer u de stappen in de zelfstudie hebt voltooid, zijn toegewezen HSM-resourc
 
 * [Hoge beschikbaarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)
-* [Networking](networking.md)
-* [Monitoring](monitoring.md)
+* [Netwerken](networking.md)
+* [Bewaking](monitoring.md)
 * [Ondersteuning](supportability.md)
