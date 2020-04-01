@@ -1,157 +1,157 @@
 ---
-title: 'Zelf studie: virtuele netwerken configureren voor Azure AD Domain Services | Microsoft Docs'
-description: In deze zelf studie leert u hoe u een subnet van een virtueel netwerk van Azure of netwerk peering kunt maken en configureren voor een Azure Active Directory Domain Services-exemplaar met behulp van de Azure Portal.
+title: Zelfstudie - Virtuele netwerken configureren voor Azure AD Domain Services | Microsoft Documenten
+description: In deze zelfstudie leert u hoe u een subnet of netwerkpeering van een Azure Active Directory Domain Services maakt en configureert voor een Azure Active Directory Domain Services-instantie met behulp van de Azure-portal.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: af284e4c10487123c8c2a2105a25a2285ae0aa99
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172655"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474343"
 ---
-# <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>Zelf studie: virtuele netwerken voor een Azure Active Directory Domain Services-exemplaar configureren
+# <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>Zelfstudie: Virtuele netwerken configureren voor een Azure Active Directory Domain Services-exemplaar
 
-Om verbinding te kunnen maken met gebruikers en toepassingen, wordt een beheerd domein van Azure Active Directory Domain Services (Azure AD DS) geïmplementeerd in een subnet van een virtueel netwerk in Azure. Dit subnet van het virtuele netwerk moet alleen worden gebruikt voor de beheerde domein resources van het Azure-platform. Wanneer u uw eigen Vm's en toepassingen maakt, mogen ze niet worden geïmplementeerd in hetzelfde subnet van het virtuele netwerk. In plaats daarvan moet u uw toepassingen maken en implementeren in een afzonderlijk subnet van het virtuele netwerk of in een afzonderlijk virtueel netwerk dat is gekoppeld aan het Azure AD DS virtuele netwerk.
+Om connectiviteit te bieden aan gebruikers en toepassingen, wordt een azure Active Directory Domain Services (Azure AD DS)-beheerd domein geïmplementeerd in een subnet van het Azure-virtuele netwerk. Dit virtuele netwerksubnet mag alleen worden gebruikt voor de beheerde domeinbronnen die worden geleverd door het Azure-platform. Als u uw eigen VM's en toepassingen maakt, mogen deze niet worden geïmplementeerd in hetzelfde virtuele netwerksubnet. In plaats daarvan moet u uw toepassingen maken en implementeren in een afzonderlijk virtueel netwerksubnet of in een afzonderlijk virtueel netwerk dat is gekeken naar het virtuele Azure AD DS-netwerk.
 
-In deze zelf studie leert u hoe u een toegewezen virtueel netwerk subnet maakt en configureert, of hoe u een ander netwerk peert naar het virtuele netwerk van het Azure AD DS beheerde domein.
+In deze zelfstudie ziet u hoe u een speciaal virtueel netwerksubnet maakt en configureert of hoe u een ander netwerk peeren met het virtuele netwerk van het azure AD DS-beheerde domein.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Meer informatie over de connectiviteits opties voor virtuele netwerken voor bronnen die lid zijn van een domein aan Azure AD DS
-> * Een IP-adres bereik en een extra subnet maken in het virtuele netwerk van Azure AD DS
-> * Configureer peering van het virtuele netwerk in een netwerk dat losstaat van Azure AD DS
+> * Inzicht in de opties voor virtuele netwerkconnectiviteit voor met domeinen verbonden resources voor Azure AD DS
+> * Een IP-adresbereik en extra subnet maken in het virtuele Azure AD DS-netwerk
+> * Virtuele netwerkpeering configureren naar een netwerk dat gescheiden is van Azure AD DS
 
-Als u nog geen abonnement op Azure hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt ooien:
+Als u deze zelfstudie wilt voltooien, hebt u de volgende bronnen en bevoegdheden nodig:
 
 * Een actief Azure-abonnement.
-    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een Azure Active Directory Tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises Directory of een alleen-Cloud Directory.
-    * Als dat nodig is, [maakt u een Azure Active Directory-Tenant][create-azure-ad-tenant] of [koppelt u een Azure-abonnement aan uw account][associate-azure-ad-tenant].
-* U hebt *globale beheerders* bevoegdheden nodig in uw Azure AD-Tenant om Azure AD DS in te scha kelen.
-* U hebt *Inzender* bevoegdheden nodig in uw Azure-abonnement om de vereiste Azure AD DS-resources te maken.
-* Een Azure Active Directory Domain Services beheerd domein ingeschakeld en geconfigureerd in uw Azure AD-Tenant.
-    * Als dat nodig is, [maakt en configureert][create-azure-ad-ds-instance]de eerste zelf studie een Azure Active Directory Domain Services-exemplaar.
+    * Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)aan .
+* Een Azure Active Directory-tenant die is gekoppeld aan uw abonnement, gesynchroniseerd met een on-premises directory of een map met alleen wolken.
+    * Maak indien nodig [een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account.][associate-azure-ad-tenant]
+* U hebt *algemene beheerdersrechten* nodig in uw Azure AD-tenant om Azure AD DS in te schakelen.
+* U hebt *inzenderbevoegdheden* in uw Azure-abonnement nodig om de vereiste Azure AD DS-resources te maken.
+* Een beheerd azure Directory Domain Services-domein is ingeschakeld en geconfigureerd in uw Azure AD-tenant.
+    * Indien nodig maakt [en configureert][create-azure-ad-ds-instance]de eerste zelfstudie een Azure Active Directory Domain Services-exemplaar .
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-In deze zelf studie maakt en configureert u het Azure AD DS-exemplaar met behulp van de Azure Portal. Meld u eerst aan bij de [Azure Portal](https://portal.azure.com)om aan de slag te gaan.
+In deze zelfstudie maakt en configureert u het Azure AD DS-exemplaar met behulp van de Azure-portal. Meld u eerst aan bij de [Azure-portal](https://portal.azure.com)om aan de slag te gaan.
 
-## <a name="application-workload-connectivity-options"></a>Connectiviteits opties voor toepassings werkbelasting
+## <a name="application-workload-connectivity-options"></a>Opties voor toepassingsworkloadconnectiviteit
 
-In de vorige zelf studie is een door Azure AD DS beheerd domein gemaakt dat enkele standaard configuratie opties voor het virtuele netwerk heeft gebruikt. Met deze standaard opties hebt u een virtueel Azure-netwerk en een virtueel netwerk subnet gemaakt. De Azure AD DS domein controllers die de beheerde domein services bieden, zijn verbonden met dit subnet van het virtuele netwerk.
+In de vorige zelfstudie is een door Azure AD DS beheerd domein gemaakt dat gebruik maakte van een aantal standaardconfiguratieopties voor het virtuele netwerk. Met deze standaardopties is een extern azure-netwerk en een virtueel netwerksubnet gemaakt. De Azure AD DS-domeincontrollers die de beheerde domeinservices leveren, zijn verbonden met dit virtuele netwerksubnet.
 
-Wanneer u virtuele machines maakt en uitvoert die het door Azure AD DS beheerde domein moeten gebruiken, moet er een netwerk verbinding worden gegeven. Deze netwerk verbinding kan op een van de volgende manieren worden gegeven:
+Wanneer u VM's maakt en uitvoert die het door Azure AD DS beheerde domein moeten gebruiken, moet er netwerkconnectiviteit worden verstrekt. Deze netwerkconnectiviteit kan op een van de volgende manieren worden geboden:
 
-* Maak een aanvullend subnet voor het virtuele netwerk in het virtuele netwerk van de standaard Azure AD DS beheerde domein. In dit extra subnet maakt en verbindt u uw virtuele machines.
-    * Aangezien de Vm's deel uitmaken van hetzelfde virtuele netwerk, kunnen ze automatisch naam omzetting uitvoeren en communiceren met de Azure AD DS-domein controllers.
-* Configureer Azure Virtual Network-peering van het virtuele netwerk van het Azure AD DS beheerde domein naar een of meer afzonderlijke virtuele netwerken. Met deze afzonderlijke virtuele netwerken maakt en verbindt u uw virtuele machines.
-    * Wanneer u peering voor het virtuele netwerk configureert, moet u ook DNS-instellingen configureren om de naam omzetting terug te zetten op de domein controllers van Azure AD DS.
+* Maak een extra virtueel netwerksubnet in het virtuele netwerk van het standaard Azure AD DS-beheerde domein. In dit aanvullende subnet maakt en verbindt u uw VM's.
+    * Aangezien de VM's deel uitmaken van hetzelfde virtuele netwerk, kunnen ze automatisch naamomzetting uitvoeren en communiceren met de Azure AD DS-domeincontrollers.
+* Configureer het virtuele Azure-netwerkpeering van het virtuele netwerk van het Azure AD DS-beheerde domein naar een of meer afzonderlijke virtuele netwerken. Deze afzonderlijke virtuele netwerken zijn waar u uw VM's maakt en verbindt.
+    * Wanneer u virtuele netwerkpeering configureert, moet u ook DNS-instellingen configureren om naamomzetting terug te gebruiken naar de Azure AD DS-domeincontrollers.
 
-Meestal gebruikt u een van deze opties voor netwerk connectiviteit. De keuze is vaak uitvallend op de manier waarop u de afzonderlijke Azure-resources wilt beheren. Als u Azure AD DS en verbonden Vm's als één groep resources wilt beheren, kunt u een aanvullend subnet van het virtuele netwerk voor virtuele machines maken. Als u het beheer van Azure AD DS wilt scheiden en vervolgens alle verbonden Vm's, kunt u gebruikmaken van virtuele netwerk peering. U kunt er ook voor kiezen om virtuele netwerk-peering te gebruiken om verbinding te maken met bestaande Vm's in uw Azure-omgeving die zijn verbonden met een bestaand virtueel netwerk.
+Meestal gebruikt u slechts één van deze netwerkconnectiviteitsopties. De keuze is vaak aan de manier waarop u uw Azure-resources wilt beheren. Als u Azure AD DS en verbonden VM's als één groep resources wilt beheren, u een extra virtueel netwerksubnet voor VM's maken. Als u het beheer van Azure AD DS en vervolgens alle verbonden VM's wilt scheiden, u virtuele netwerkpeering gebruiken. U er ook voor kiezen om virtuele netwerkpeering te gebruiken om connectiviteit te bieden met bestaande VM's in uw Azure-omgeving die zijn verbonden met een bestaand virtueel netwerk.
 
-In deze zelf studie hoeft u slechts één van deze connectiviteits opties voor virtuele netwerken te configureren.
+In deze zelfstudie hoeft u slechts één van deze virtuele netwerkconnectiviteitsopties te configureren.
 
-Zie [netwerk overwegingen voor Azure Active Directory Domain Services] [netwerk-overwegingen] voor meer informatie over het plannen en configureren van het virtuele netwerk.
+Zie [netwerkoverwegingen voor Azure Active Directory Domain Services][netwerkoverwegingen] voor meer informatie over het plannen en configureren van het virtuele netwerk.
 
-## <a name="create-a-virtual-network-subnet"></a>Een subnet van een virtueel netwerk maken
+## <a name="create-a-virtual-network-subnet"></a>Een virtueel netwerksubnet maken
 
-Het virtuele Azure-netwerk dat is gemaakt met het beheerde domein van Azure AD DS bevat standaard één subnet van het virtuele netwerk. Dit subnet van het virtuele netwerk mag alleen worden gebruikt door het Azure-platform voor het leveren van beheerde domein Services. Als u uw eigen virtuele machines in dit virtuele Azure-netwerk wilt maken en gebruiken, maakt u een extra subnet.
+Het Azure virtuele netwerk dat is gemaakt met het door Azure AD DS beheerde domein, bevat standaard één virtueel netwerksubnet. Dit virtuele netwerksubnet mag alleen door het Azure-platform worden gebruikt om beheerde domeinservices te leveren. Als u uw eigen VM's wilt maken en gebruiken in dit virtuele Azure-netwerk, maakt u een extra subnet.
 
-Voer de volgende stappen uit om een subnet van een virtueel netwerk te maken voor Vm's en toepassings werkbelastingen:
+Voer de volgende stappen uit om een virtueel netwerksubnet voor VM's en toepassingsworkloads te maken:
 
-1. Selecteer in de Azure Portal de resource groep van uw door Azure AD DS beheerd domein, zoals *myResourceGroup*. Kies in de lijst met resources het standaard virtuele netwerk, zoals *aadds-vnet*.
-1. Selecteer in het menu aan de linkerkant van het venster virtueel netwerk **adres ruimte**. Het virtuele netwerk wordt gemaakt met één adres ruimte van *10.0.1.0/24*, dat wordt gebruikt door het standaard subnet.
+1. Selecteer in de Azure-portal de brongroep van uw door Azure AD DS beheerde domein, zoals *myResourceGroup.* Kies in de lijst met bronnen het standaard virtuele netwerk, zoals *aadds-vnet.*
+1. Selecteer **Adresruimte**in het linkermenu van het virtuele netwerkvenster . Het virtuele netwerk wordt gemaakt met een enkele adresruimte van *10.0.2.0/24*, die wordt gebruikt door het standaardsubnet.
 
-    Voeg een extra IP-adres bereik toe aan het virtuele netwerk. De grootte van dit adres bereik en het daad werkelijke IP-adres bereik dat moet worden gebruikt, is afhankelijk van andere netwerk bronnen die al zijn geïmplementeerd. Het IP-adres bereik mag niet overlappen met de bestaande adresbereiken in uw Azure-of on-premises omgeving. Zorg ervoor dat u de grootte van het IP-adres bereik groot genoeg hebt voor het aantal Vm's dat u naar verwachting in het subnet wilt implementeren.
+    Voeg een extra IP-adresbereik toe aan het virtuele netwerk. De grootte van dit adresbereik en het werkelijke IP-adresbereik dat moet worden gebruikt, is afhankelijk van andere netwerkbronnen die al zijn geïmplementeerd. Het IP-adresbereik mag niet overlappen met bestaande adresbereiken in uw Azure- of on-premises omgeving. Zorg ervoor dat u het IP-adresbereik groot genoeg maakt voor het aantal VM's dat u in het subnet verwacht te implementeren.
 
-    In het volgende voor beeld wordt een extra IP-adres bereik van *10.0.2.0/24* toegevoegd. Wanneer u klaar bent, selecteert u **Opslaan**.
+    In het volgende voorbeeld wordt een extra IP-adresbereik van *10.0.3.0/24* toegevoegd. Wanneer u klaar bent, selecteert **u Opslaan**.
 
-    ![Voeg een extra IP-adres bereik toe voor het virtuele netwerk in de Azure Portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
+    ![Een extra IP-adresbereik voor virtuele netwerken toevoegen aan de Azure-portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
-1. Selecteer vervolgens in het menu aan de linkerkant van het venster virtueel netwerk **subnetten**en kies vervolgens **+ subnet** om een subnet toe te voegen.
-1. Voer een naam in voor het subnet, zoals *werk belastingen*. Indien nodig werkt u het **adres bereik** bij als u een subset wilt gebruiken van het IP-adres bereik dat is geconfigureerd voor het virtuele netwerk in de vorige stappen. Behoud de standaard waarden voor opties, zoals de netwerk beveiligings groep, de route tabel en service-eind punten.
+1. Selecteer vervolgens in het linkermenu van het virtuele netwerkvenster **Subnetten**en kies **+ Subnet** om een subnet toe te voegen.
+1. Voer een naam in voor het subnet, zoals *werkbelastingen*. Werk indien nodig het **adresbereik** bij als u in de vorige stappen een subset wilt gebruiken van het IP-adresbereik dat is geconfigureerd voor het virtuele netwerk. Voor nu, laat de standaardinstellingen voor opties zoals netwerk beveiliging groep, route tabel, service eindpunten.
 
-    In het volgende voor beeld wordt een subnet gemaakt met de naam *workloads* die het IP-adres bereik *10.0.2.0/24* gebruikt:
+    In het volgende voorbeeld wordt een subnet met de naam *workloads* gemaakt dat het *IP-adresbereik van 10.0.3.0/24* gebruikt:
 
-    ![Voeg een extra subnet met virtuele netwerken toe aan de Azure Portal](./media/tutorial-configure-networking/add-vnet-subnet.png)
+    ![Een extra virtueel netwerksubnet toevoegen aan de Azure-portal](./media/tutorial-configure-networking/add-vnet-subnet.png)
 
-1. Wanneer u klaar bent, selecteert u **OK**. Het kan even duren voordat het subnet van het virtuele netwerk is gemaakt.
+1. Wanneer u klaar bent, selecteert u **OK**. Het duurt een paar momenten om het virtuele netwerk subnet te maken.
 
-Wanneer u een VM maakt die het beheerde domein van Azure AD DS moet gebruiken, moet u dit subnet van het virtuele netwerk selecteren. Maak geen Vm's in het standaard *aadds-subnet*. Als u een ander virtueel netwerk selecteert, is er geen verbinding met het netwerk en DNS-omzetting om het door Azure AD DS beheerde domein te bereiken tenzij u peering voor het virtuele netwerk configureert.
+Wanneer u een VM maakt die het beheerde Azure AD DS-domein moet gebruiken, moet u dit virtuele netwerksubnet selecteren. Maak geen VM's in het standaard *subnet aadds-subnet*. Als u een ander virtueel netwerk selecteert, is er geen netwerkverbinding en DNS-resolutie om het beheerde Azure AD DS-domein te bereiken, tenzij u virtuele netwerkpeering configureert.
 
-## <a name="configure-virtual-network-peering"></a>Peering voor het virtuele netwerk configureren
+## <a name="configure-virtual-network-peering"></a>Virtueel netwerkpeering configureren
 
-Mogelijk hebt u een bestaand virtueel Azure-netwerk voor Vm's, of wilt u uw Azure AD DS beheerde domein-virtueel netwerk gescheiden laten blijven. Als u het beheerde domein wilt gebruiken, hebben Vm's in andere virtuele netwerken een manier nodig om te communiceren met de Azure AD DS-domein controllers. Deze connectiviteit kan worden gegeven met behulp van peering van het virtuele netwerk van Azure.
+U hebt mogelijk een bestaand Virtueel Azure-netwerk voor VM's of wilt uw azure AD DS-beheerde domein gescheiden houden. Als u het beheerde domein wilt gebruiken, hebben VM's in andere virtuele netwerken een manier nodig om te communiceren met de Azure AD DS-domeincontrollers. Deze connectiviteit kan worden geleverd met behulp van Azure virtual network peering.
 
-Met de peering van het virtuele netwerk van Azure zijn twee virtuele netwerken met elkaar verbonden, zonder dat hiervoor een VPN-apparaat (virtueel particulier netwerk) nodig is. Met Network-peering kunt u snel virtuele netwerken verbinden en netwerk verkeer definiëren in uw Azure-omgeving. Zie [overzicht van Azure Virtual Network-peering][peering-overview]voor meer informatie over peering.
+Met Azure virtual network peering zijn twee virtuele netwerken met elkaar verbonden, zonder dat er een VPN-apparaat (virtual private network) nodig is. Met netwerkpeering u snel virtuele netwerken verbinden en verkeersstromen in uw Azure-omgeving definiëren. Zie overzicht van azure [virtual network peering][peering-overview]voor meer informatie over peering.
 
-Voer de volgende stappen uit om een virtueel netwerk te koppelen aan het virtuele netwerk van Azure AD DS beheerde domein:
+Voer de volgende stappen uit om een virtueel netwerk te peeren naar het virtuele azure AD DS-netwerk van het Azure AD DS-beheerde domein:
 
-1. Kies het virtuele standaard netwerk dat u hebt gemaakt voor uw Azure AD DS-exemplaar met de naam *aadds-vnet*.
-1. Selecteer in het menu aan de linkerkant van het venster virtueel netwerk de optie **peerings**.
-1. Als u een peering wilt maken, selecteert u **+ toevoegen**. In het volgende voor beeld wordt de standaard *aadds-vnet* gekoppeld aan een virtueel netwerk met de naam *myVnet*. Configureer de volgende instellingen met uw eigen waarden:
+1. Kies het standaard virtuele netwerk dat is gemaakt voor uw Azure AD DS-exemplaar met de naam *aadds-vnet*.
+1. Selecteer **Peerings**in het linkermenu van het virtuele netwerkvenster .
+1. Als u een peering wilt maken, selecteert u **+ Toevoegen**. In het volgende voorbeeld wordt de *standaardaadds-vnet* gekeken naar een virtueel netwerk met de naam *myVnet*. Configureer de volgende instellingen met uw eigen waarden:
 
-    * **Naam van de peering van aadds-vnet naar extern virtueel netwerk**: een beschrijvende id van de twee netwerken, zoals *aadds-vnet-naar-myvnet*
-    * **Implementatie type van virtueel netwerk**: *Resource Manager*
-    * **Abonnement**: het abonnement van het virtuele netwerk waarmee u een peer wilt, zoals *Azure*
-    * **Virtueel netwerk**: het virtuele netwerk waarmee u een peer wilt, zoals *myVnet*
-    * **Naam van de peering van myVnet naar aadds-vnet**: een beschrijvende id van de twee netwerken, zoals *myVnet-to-aadds-vnet*
+    * **Naam van het peering van aadds-vnet naar extern virtueel netwerk:** een beschrijvende id van de twee netwerken, zoals *aadds-vnet-to-myvnet*
+    * **Type virtuele netwerkimplementatie**: *Resourcemanager*
+    * **Abonnement:** het abonnement van het virtuele netwerk waarnaar u wilt peeren, zoals *Azure*
+    * **Virtueel netwerk**: het virtuele netwerk waarnaar u wilt peeren, zoals *myVnet*
+    * **Naam van het peering van myVnet naar aadds-vnet**: Een beschrijvende id van de twee netwerken, zoals *myvnet-to-aadds-vnet*
 
-    ![Configureer peering voor het virtuele netwerk in de Azure Portal](./media/tutorial-configure-networking/create-peering.png)
+    ![Virtueel netwerkpeeren configureren in de Azure-portal](./media/tutorial-configure-networking/create-peering.png)
 
-    Laat alle andere standaard waarden voor toegang tot het virtuele netwerk of doorgestuurd verkeer, tenzij u specifieke vereisten voor uw omgeving hebt, en selecteer vervolgens **OK**.
+    Laat alle andere standaardinstellingen voor virtuele netwerktoegang of doorgestuurd verkeer achter, tenzij u specifieke vereisten voor uw omgeving hebt en selecteer **OK**.
 
-1. Het duurt enkele minuten om de peering te maken op zowel het virtuele Azure AD DS-netwerk als het virtuele netwerk dat u hebt geselecteerd. Wanneer u klaar bent, zijn de **peering status** rapporten *verbonden*, zoals wordt weer gegeven in het volgende voor beeld:
+1. Het duurt even om het peering te maken op zowel het virtuele Azure AD DS-netwerk als het virtuele netwerk dat u hebt geselecteerd. Wanneer u klaar bent, worden de **peeringstatusrapporten** *Verbonden,* zoals weergegeven in het volgende voorbeeld:
 
-    ![Verbonden netwerken aangesloten in de Azure Portal](./media/tutorial-configure-networking/connected-peering.png)
+    ![Met succes verbonden peered-netwerken in de Azure-portal](./media/tutorial-configure-networking/connected-peering.png)
 
-Voordat Vm's in het gekoppelde virtuele netwerk het beheerde domein van Azure AD DS kunnen gebruiken, moet u de DNS-servers configureren om de juiste naam omzetting mogelijk te maken.
+Voordat VM's in het gepeerde virtuele netwerk het door Azure AD DS beheerde domein kunnen gebruiken, configureert u de DNS-servers om de juiste naamomzetting mogelijk te maken.
 
-### <a name="configure-dns-servers-in-the-peered-virtual-network"></a>DNS-servers configureren in het gekoppelde virtuele netwerk
+### <a name="configure-dns-servers-in-the-peered-virtual-network"></a>DNS-servers configureren in het virtuele netwerk met peered
 
-Voor Vm's en toepassingen in het gekoppelde virtuele netwerk om te communiceren met het door Azure AD DS beheerde domein, moeten de DNS-instellingen worden bijgewerkt. De IP-adressen van de Azure AD DS domein controllers moeten worden geconfigureerd als de DNS-servers in het gekoppelde virtuele netwerk. Er zijn twee manieren om de domein controllers te configureren als DNS-servers voor het gekoppelde virtuele netwerk:
+Voor VM's en toepassingen in het virtuele netwerk met peered om met het beheerde Azure AD DS-domein te praten, moeten de DNS-instellingen worden bijgewerkt. De IP-adressen van de Azure AD DS-domeincontrollers moeten zijn geconfigureerd als de DNS-servers in het virtuele netwerk met peered. Er zijn twee manieren om de domeincontrollers te configureren als DNS-servers voor het peered virtuele netwerk:
 
-* Configureer de DNS-servers van het virtuele netwerk van Azure voor het gebruik van de Azure AD DS-domein controllers.
-* Configureer de bestaande DNS-server die in gebruik is in het gekoppelde virtuele netwerk voor het door sturen van voorwaardelijke DNS om query's naar het door Azure AD DS beheerde domein te leiden. Deze stappen variëren afhankelijk van de bestaande DNS-server die in gebruik is.
+* Configureer de DNS-servers van het Azure Virtual Network om de Azure AD DS-domeincontrollers te gebruiken.
+* Configureer de bestaande DNS-server die wordt gebruikt op het virtuele netwerk met peered om voorwaardelijke DNS-forwarding te gebruiken om query's naar het beheerde Azure AD DS-beheerde domein te leiden. Deze stappen zijn afhankelijk van de bestaande DNS-server die in gebruik is.
 
-In deze zelf studie gaan we de DNS-servers van het virtuele Azure-netwerk configureren om alle query's door te sturen naar de Azure AD DS-domein controllers.
+Laten we in deze zelfstudie de DNS-servers van het Azure-virtuele netwerk configureren om alle query's naar de Azure AD DS-domeincontrollers te leiden.
 
-1. Selecteer in de Azure Portal de resource groep van het gekoppelde virtuele netwerk, bijvoorbeeld *myResourceGroup*. Kies in de lijst met resources het gekoppelde virtuele netwerk, zoals *myVnet*.
-1. Selecteer in het menu aan de linkerkant van het venster virtueel netwerk de optie **DNS-servers**.
-1. Een virtueel netwerk maakt standaard gebruik van de ingebouwde door Azure verschafte DNS-servers. Kies voor het gebruik van **aangepaste** DNS-servers. Voer de IP-adressen in voor de Azure AD DS domein controllers, die meestal *10.0.1.4* en *10.0.1.5*zijn. Bevestig deze IP-adressen in het **overzichts** venster van uw Azure AD DS beheerde domein in de portal.
+1. Selecteer in de Azure-portal de brongroep van het virtuele netwerk met peered, zoals *myResourceGroup.* Kies in de lijst met bronnen het peered virtuele netwerk, zoals *myVnet.*
+1. Selecteer **DNS-servers**in het linkermenu van het virtuele netwerkvenster.
+1. Standaard maakt een virtueel netwerk gebruik van de ingebouwde door Azure geleverde DNS-servers. Kies voor **aangepaste** DNS-servers. Voer de IP-adressen in voor de Azure AD DS-domeincontrollers, die meestal *10.0.2.4* en *10.0.2.5*zijn. Bevestig deze IP-adressen in het **overzichtsvenster** van uw door Azure AD DS beheerde domein in de portal.
 
-    ![De DNS-servers van het virtuele netwerk configureren voor het gebruik van de Azure AD DS-domein controllers](./media/tutorial-configure-networking/custom-dns.png)
+    ![De DNS-servers van het virtuele netwerk configureren om de Azure AD DS-domeincontrollers te gebruiken](./media/tutorial-configure-networking/custom-dns.png)
 
-1. Wanneer u klaar bent, selecteert u **Opslaan**. Het duurt enkele minuten om de DNS-servers voor het virtuele netwerk bij te werken.
-1. Als u de bijgewerkte DNS-instellingen wilt Toep assen op de virtuele machines, start u Vm's die zijn verbonden met het gekoppelde virtuele netwerk opnieuw op.
+1. Wanneer u klaar bent, selecteert **u Opslaan**. Het duurt even om de DNS-servers voor het virtuele netwerk bij te werken.
+1. Als u de bijgewerkte DNS-instellingen wilt toepassen op de VM's, start u VM's opnieuw die zijn aangesloten op het virtuele netwerk met peered.
 
-Wanneer u een virtuele machine maakt die het beheerde domein van Azure AD DS moet gebruiken, moet u dit gekoppelde virtuele netwerk selecteren. Als u een ander virtueel netwerk selecteert, is er geen verbinding met het netwerk en DNS-omzetting om het beheerde domein van Azure AD DS te bereiken.
+Wanneer u een VM maakt die het beheerde Azure AD DS-beheerde domein moet gebruiken, moet u dit virtuele netwerk met peered selecteren. Als u een ander virtueel netwerk selecteert, is er geen netwerkverbinding en DNS-resolutie om het door Azure AD DS beheerde domein te bereiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Meer informatie over de connectiviteits opties voor virtuele netwerken voor bronnen die lid zijn van een domein aan Azure AD DS
-> * Een IP-adres bereik en een extra subnet maken in het virtuele netwerk van Azure AD DS
-> * Configureer peering van het virtuele netwerk in een netwerk dat losstaat van Azure AD DS
+> * Inzicht in de opties voor virtuele netwerkconnectiviteit voor met domeinen verbonden resources voor Azure AD DS
+> * Een IP-adresbereik en extra subnet maken in het virtuele Azure AD DS-netwerk
+> * Virtuele netwerkpeering configureren naar een netwerk dat gescheiden is van Azure AD DS
 
-Als u dit beheerde domein in actie wilt zien, maakt u een virtuele machine en voegt u deze toe aan het domein.
+Als u dit beheerde domein in actie wilt zien, maakt en sluit u een virtuele machine aan het domein aan.
 
 > [!div class="nextstepaction"]
-> [Een virtuele machine met Windows Server toevoegen aan uw beheerde domein](join-windows-vm.md)
+> [Een virtuele windows server-machine aansluiten bij uw beheerde domein](join-windows-vm.md)
 
 <!-- INTERNAL LINKS --> 
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

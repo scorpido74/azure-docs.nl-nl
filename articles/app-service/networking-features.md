@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bc3d35830d833c0223a400140c53e583d2f6ed37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475422"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474902"
 ---
 # <a name="app-service-networking-features"></a>App Service-netwerkfuncties
 
@@ -81,7 +81,7 @@ Wanneer u een toegewezen adres voor apps gebruikt, gaat uw verkeer nog steeds do
 * Ondersteuning voor IP-gebaseerde SSL-behoeften voor uw app
 * Stel een speciaal adres in voor uw app dat niet met iets anders wordt gedeeld
 
-U leren hoe u een adres in stelt in uw app met de zelfstudie over [HET configureren van IP-gebaseerde SSL.][appassignedaddress] 
+U meer informatie krijgen over het instellen van een adres in uw app met de zelfstudie over [Een TLS/SSL-certificaat toevoegen in Azure App Service.][appassignedaddress] 
 
 ### <a name="access-restrictions"></a>Toegangsbeperkingen 
 

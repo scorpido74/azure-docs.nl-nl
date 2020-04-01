@@ -3,12 +3,12 @@ title: Back-up hyper-v virtuele machines met MABS
 description: Dit artikel bevat de procedures voor het maken van back-ups en herstel van virtuele machines met Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255052"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420402"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Back-ups maken van virtuele Hyper-V-machines met Azure Backup Server
 
@@ -99,83 +99,6 @@ Dit zijn de voorwaarden voor het maken van back-ups van virtuele Hyper-V-machine
 9. Selecteer op de pagina **Opties voor consistentiecontrole** hoe u consistentiecontroles wilt automatiseren. U kunt instellen dat er alleen een controle wordt uitgevoerd als de gerepliceerde gegevens inconsistent worden, of volgens een planning. Als u geen automatische consistentiecontroles wilt configureren, kunt u op elk gewenst moment een handmatige controle uitvoeren door met de rechtermuisknop op de beveiligingsgroep te klikken en **Consistentiecontrole uitvoeren** te selecteren.
 
     Wanneer u de beveiligingsgroep hebt gemaakt, wordt er een eerste replica van de gegevens gemaakt met de methode die u hebt geselecteerd. Na de eerste replicatie wordt elke back-up uitgevoerd op basis van de instellingen van de beveiligingsgroep. Als u een back-upgegevens wilt herstellen, moet u het volgende noteren:
-
-## <a name="back-up-virtual-machines-configured-for-live-migration"></a>Een back-up maken van virtuele machines die voor livemigratie zijn geconfigureerd
-
-Wanneer virtuele machines betrokken zijn bij live migratie, blijft MABS de virtuele machines beschermen zolang het MABS-beveiligingsmiddel op de Hyper-V-host is geïnstalleerd. De manier waarop MABS de virtuele machines beschermt, is afhankelijk van het type live migratie.
-
-**Live migratie binnen een cluster** - Wanneer een virtuele machine wordt gemigreerd binnen een cluster detecteert MABS de migratie en maakt een back-up van de virtuele machine van het nieuwe clusterknooppunt zonder enige vereiste voor tussenkomst van de gebruiker. Omdat de opslaglocatie niet is gewijzigd, gaat MABS verder met express volledige back-ups.
-
-**Live migratie buiten het cluster** - Wanneer een virtuele machine wordt gemigreerd tussen stand-alone servers, verschillende clusters of tussen een stand-alone server en een cluster, detecteert MABS de migratie en kan een back-up maken van de virtuele machine zonder tussenkomst van de gebruiker.
-
-### <a name="requirements-for-maintaining-protection"></a>Vereisten voor het onderhouden van beveiliging
-
-Hier volgen de vereisten voor het onderhouden van beveiliging tijdens livemigratie:
-
-- De Hyper-V-hosts voor de virtuele machines moeten zich bevinden in een System Center VMM-cloud, op een VMM-server, die ten minste System Center 2012 met SP1 uitvoert.
-
-- De MABS-beveiligingsagent moet op alle Hyper-V-hosts worden geïnstalleerd.
-
-- MABS-servers moeten zijn aangesloten op de VMM-server. Alle Hyper-V-hostservers in de VMM-cloud moeten ook zijn aangesloten op de MABS-servers. Hierdoor kan MABS communiceren met de VMM-server, zodat MABS kan achterhalen op welke Hyper-V-hostserver de virtuele machine momenteel draait, en om een nieuwe back-up te maken van die Hyper-V-server. Als er geen verbinding kan worden gemaakt met de Hyper-V-server, mislukt de back-up met een bericht dat de MABS-beveiligingsagent onbereikbaar is.
-
-- Alle MABS-servers, VMM-servers en Hyper-V-hostservers moeten zich in hetzelfde domein bevinden.
-
-### <a name="details-about-live-migration"></a>Meer informatie over livemigratie
-
-Let op het volgende wanneer u een back-up maakt tijdens een livemigratie:
-
-- Als een live migratie opslag overbrengt, voert MABS een volledige consistentiecontrole van de virtuele machine uit en gaat vervolgens verder met uitdrukkelijke volledige back-ups. Wanneer er live-migratie van opslag plaatsvindt, reorganiseert Hyper-V de virtuele harde schijf (VHD) of VHDX, wat een eenmalige piek veroorzaakt in de grootte van de MABS-back-upgegevens.
-
-- Schakel op de VM-host automatische koppeling in om virtuele beveiliging in te schakelen en schakel TCP Chimney Offload uit.
-
-- MABS gebruikt poort 6070 als standaardpoort voor het hosten van de DPM-VMM Helper-service. Het register wijzigen:
-
-    1. Ga naar **HKLM\Software\Microsoft\Microsoft Data Protection Manager\Configuration**.
-    2. Maak een 32-bits DWORD-waarde: DpmVmmHelperServicePort en schrijf het bijgewerkte poortnummer als onderdeel van de registersleutel.
-    3. Open ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` en wijzig het poortnummer van 6070 in het nieuwe poortnummer. Bijvoorbeeld: ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
-    4. Start de DPM-VMM Helper-service en de DPM-service opnieuw.
-
-### <a name="set-up-protection-for-live-migration"></a>Beveiliging voor livemigratie instellen
-
-Beveiliging voor livemigratie instellen:
-
-1. Stel de MABS-server en de bijbehorende opslag in en installeer de MABS-beveiligingsagent op elke Hyper-V-hostserver of clusterknooppunt in de VMM-cloud. Als u SMB-opslag in een cluster gebruikt, installeert u de MABS-beveiligingsagent op alle clusterknooppunten.
-
-2. Installeer de VMM-console als clientcomponent op de MABS-server, zodat MABS kan communiceren met de VMM-server. De console moet dezelfde versie hebben als de versie op de VMM-server.
-
-3. Wijs het MABSMachineName$-account toe als een alleen-lezen beheerdersaccount op de VMM-beheerserver.
-
-4. Verbind alle Hyper-V-hostservers met alle `Set-DPMGlobalProperty` MABS-servers met de PowerShell-cmdlet. De cmdlet accepteert meerdere MABS-servernamen. Gebruik de notatie `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Zie [Set-DPMGlobalProperty voor](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019)meer informatie.
-
-5. Wanneer alle virtuele machines op de Hyper-V-hosts in de VMM-clouds zijn gedetecteerd in VMM, stelt u een beveiligingsgroep in en voegt u de virtuele machines toe die u wilt beveiligen. Automatische consistentiecontroles moeten worden ingeschakeld op het niveau van de beschermingsgroep voor bescherming in het kader van mobiliteitsscenario's voor virtuele machines.
-
-6. Nadat de instellingen zijn geconfigureerd, wanneer een virtuele machine van het ene cluster naar het andere migreert, gaan alle back-ups gewoon door. U kunt als volgt controleren of livemigratie zoals verwacht is ingeschakeld:
-
-   1. Controleer of de DPM-VMM Helper Service wordt uitgevoerd. Als dat niet zo is, begin het dan.
-
-   2. Open Microsoft SQL Server Management Studio en maak verbinding met de instantie die de MABS-database (DPMDB) host. Voer de volgende query uit voor DPMDB: `SELECT TOP 1000 [PropertyName] ,[PropertyValue] FROM[DPMDB].[dbo].[tbl_DLS_GlobalSetting]`.
-
-      Deze query bevat `KnownVMMServer`een eigenschap genaamd . Deze waarde moet overeenkomen met de waarde die u hebt opgegeven met de cmdlet `Set-DPMGlobalProperty`.
-
-   3. Voer de volgende query uit om de parameter *VMMIdentifier* te valideren in `PhysicalPathXML` voor een bepaalde virtuele machine. Vervang `VMName` door de naam van de virtuele machine.
-
-      ```sql
-      select cast(PhysicalPath as XML) from tbl_IM_ProtectedObject where DataSourceId in (select datasourceid from tbl_IM_DataSource   where DataSourceName like '%<VMName>%')
-      ```
-
-   4. Open het XML-bestand dat wordt geretourneerd door deze query en controleer of het veld *VMMIdentifier* een waarde bevat.
-
-### <a name="run-manual-migration"></a>Handmatige migratie uitvoeren
-
-Nadat u de stappen in de vorige secties hebt voltooid en de taak MABS-overzichtsbeheer is voltooid, is migratie ingeschakeld. Standaard wordt deze taak elk etmaal vanaf middernacht uitgevoerd. Als u een handmatige migratie wilt uitvoeren om te controleren of alles werkt zoals verwacht, gaat u als volgt te werk:
-
-1. Open SQL Server Management Studio en maak verbinding met de instantie die de MABS-database host.
-
-2. Voer de volgende query uit: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. Met deze query wordt de **ScheduleID** geretourneerd. Noteer deze ID omdat u deze in de volgende stap nodig hebt.
-
-3. Vouw in SQL Server Management Studio **SQL Server Agent** en **Taken** uit. Klik met de rechtermuisknop op de **ScheduleID** die u hebt genoteerd en selecteer **Taak starten bij stap**.
-
-De back-upprestaties worden beïnvloed wanneer de taak wordt uitgevoerd. Hoe lang de taak duurt, is afhankelijk van de grootte en schaal van uw implementatie.
 
 ## <a name="back-up-replica-virtual-machines"></a>Een back-up maken van virtuele replicamachines
 

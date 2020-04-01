@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 09/28/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a852807ab685e85b76d26e5b39c99a32f645bbd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e12ad66c635632b29b70000b6e227ddcbb5357b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71838165"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80501871"
 ---
-Door de gebruiker gedefinieerde routes met een bestemming 0.0.0/0 en NSG's op het GatewaySubnet **worden niet ondersteund.** Gateways die met deze configuratie zijn gemaakt, worden geblokkeerd voor de creatie. Gateways vereisen toegang tot de beheercontrollers om goed te kunnen functioneren.
+Door de gebruiker gedefinieerde routes met een bestemming 0.0.0/0 en NSG's op het GatewaySubnet **worden niet ondersteund.** Gateways die met deze configuratie zijn gemaakt, worden geblokkeerd voor de creatie. Gateways vereisen toegang tot de beheercontrollers om goed te kunnen functioneren. [BGP-routepropagatie](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol]) moet worden ingesteld op 'Ingeschakeld' op het GatewaySubnet om de beschikbaarheid van de gateway te garanderen. Als dit is ingesteld op uitgeschakeld, werkt de gateway niet.

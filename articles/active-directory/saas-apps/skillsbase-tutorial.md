@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met vaardigheden Base | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en vaardigheden Base.
+title: 'Zelfstudie: Azure Active Directory-integratie met Skills Base | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Skills Base.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,45 +16,45 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a088675bc1610daf275bac77ae222f0e664afd67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67090549"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Zelfstudie: Azure Active Directory-integratie met vaardigheden
+# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Zelfstudie: Azure Active Directory-integratie met Skills Base
 
-In deze zelfstudie leert u hoe u vaardigheden Base integreren met Azure Active Directory (Azure AD).
-Base vaardigheden integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u Skills Base integreren met Azure Active Directory (Azure AD).
+Het integreren van Skills Base met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot vaardigheden Base heeft.
-* U kunt uw gebruikers worden automatisch aangemeld op basis van de vaardigheden (Single Sign-On) inschakelen met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Skills Base.
+* U uw gebruikers automatisch laten aanmelden bij Skills Base (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met vaardigheden, moet u de volgende items:
+Als u azure AD-integratie met Skills Base wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Vaardigheden Base eenmalige aanmelding ingeschakeld abonnement
+* Abonnement met één aanmelding met één aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Vaardigheden Base ondersteunt **SP** gestart door SSO
-* Vaardigheden Base ondersteunt **Just In Time** inrichten van gebruikers
+* Skills Base ondersteunt **SP** geïnitieerde SSO
+* Skills Base ondersteunt **Just In Time** gebruikersinrichting
 
-## <a name="adding-skills-base-from-the-gallery"></a>Vaardigheden Base uit de galerie toe te voegen
+## <a name="adding-skills-base-from-the-gallery"></a>Skills Base toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van vaardigheden Base in Azure AD, moet u vaardigheden Base uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Skills Base in Azure AD wilt configureren, moet u Skills Base uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen vaardigheden Base uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om vaardighedenbasis uit de galerie toe te voegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -66,31 +66,31 @@ Voor het configureren van de integratie van vaardigheden Base in Azure AD, moet 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **vaardigheden Base**, selecteer **vaardigheden Base** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **vaardighedenbasis**in het zoekvak , selecteer **vaardighedenbasis** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![Vaardigheden Base in de lijst met resultaten](common/search-new-app.png)
+     ![Skills Base in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met vaardigheden op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in de vaardigheden Base tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Skills Base op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Skills Base.
 
-Als u wilt configureren en testen van Azure AD eenmalige aanmelding met vaardigheden, u nodig hebt voor de volgende bouwstenen:
+Als u Azure AD single sign-on met Skills Base wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van vaardigheden Base Single Sign-On](#configure-skills-base-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak vaardigheden Base testgebruiker](#create-skills-base-test-user)**  : als u wilt een equivalent van Britta Simon in vaardigheden basis, die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Vaardigheden Base Single Sign-On](#configure-skills-base-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak de testgebruiker](#create-skills-base-test-user)** van Skills Base - om een tegenhanger van Britta Simon in Skills Base te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met vaardigheden, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om azure AD-enkele aanmelding met Skills Base te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **vaardigheden Base** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Integratie van de Vaardigheden Basis-toepassing** de optie Eén **aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,18 +104,18 @@ Voor het configureren van Azure AD eenmalige aanmelding met vaardigheden, moet u
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Vaardigheden Base domein en URL's, eenmalige aanmelding informatie](common/sp-signonurl.png)
+    ![Informatie over vaardighedenbasisdomein en URL's met eenmalige aanmelding](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://app.skills-base.com/o/<customer-unique-key>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://app.skills-base.com/o/<customer-unique-key>`
 
     > [!NOTE]
-    > U kunt de aanmeldings-URL ophalen van vaardigheden Base-toepassing. Neem aanmelden als beheerder en beheerder naar Instellingen ->-exemplaar > details -> snelkoppeling. Kopieer de aanmeldings-URL en plak deze in bovenstaande tekstvak.
+    > Je de aanmeldings-URL krijgen van de toepassing Skills Base. Log in als beheerder en ga naar Instellingen-> Instellingen-> Instantie--> snelkoppeling. Kopieer de aanmeldings-URL en plak deze in het bovenstaande tekstvak.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **instellen op basis van de vaardigheden** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer in de sectie **Vaardighedenbasis instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -125,26 +125,26 @@ Voor het configureren van Azure AD eenmalige aanmelding met vaardigheden, moet u
 
     c. Afmeldings-URL
 
-### <a name="configure-skills-base-single-sign-on"></a>Configureren van vaardigheden Base Single Sign-On
+### <a name="configure-skills-base-single-sign-on"></a>Basisbasisbasis-aan-melding configureren
 
-1. In een ander browservenster, meld u aan bij de vaardigheden Base als een beveiligingsbeheerder.
+1. Log in een ander browservenster in bij Skills Base als beveiligingsbeheerder.
 
-2. In het menu aan de linkerkant onder **ADMIN** klikt u op **verificatie**.
+2. Klik aan de linkerkant van het menu onder **ADMIN** op **Verificatie**.
 
     ![De beheerder](./media/skillsbase-tutorial/tutorial_skillsbase_auth.png)
 
-3. Op de **verificatie** pagina, selecteert u eenmalige aanmelding als **SAML 2**.
+3. Selecteer op de **verificatiepagina** Single Sign-On als **SAML 2**.
 
     ![Eenmalig](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
-4. Op de **verificatie** pagina, voert u de volgende stappen uit:
+4. Voer op de **verificatiepagina** de volgende stappen uit:
 
     ![Eenmalig](./media/skillsbase-tutorial/tutorial_skillsbase_save.png)
 
-    a. Klik op **Update IdP metagegevens** naast **Status** optie en plak de inhoud van Metadata-XML die u hebt gedownload van Azure portal in het tekstvak opgegeven.
+    a. Klik op de knop **IdP-metagegevens** bijwerken naast de optie **Status** en plak de inhoud van metagegevens XML die u hebt gedownload van de Azure-portal in het opgegeven tekstvak.
 
     > [!Note]
-    > U kunt ook valideren idp metagegevens via de **metagegevens validator** hulpprogramma als gemarkeerd in de bovenstaande schermafbeelding.
+    > U ook idp-metagegevens valideren via het hulpprogramma **voor metagegevensvalidator** zoals hierboven gemarkeerd in de schermafbeelding.
 
     b. Klik op **Opslaan**.
 
@@ -164,26 +164,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen op basis van de vaardigheden.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Skills Base.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **vaardigheden Base**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **vervolgens Vaardighedenbasis**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **vaardigheden Base**.
+2. Selecteer **Vaardighedenbasis**in de lijst met toepassingen .
 
-    ![De vaardigheden Base-koppeling in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Skills Base in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -193,29 +193,29 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-skills-base-test-user"></a>Vaardigheden Base testgebruiker maken
+### <a name="create-skills-base-test-user"></a>Gebruikers van skills base-test maken
 
-In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in vaardigheden Base. Vaardigheden Base ondersteunt just-in-time-gebruikersinrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in de vaardigheden Base bestaat, wordt een nieuw gemaakt nadat verificatie.
+In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in Skills Base. Skills Base ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Skills Base, wordt er een nieuwe gemaakt na verificatie.
 
 > [!Note]
-> Als u een gebruiker handmatig hebt gemaakt moet, volgt u de instructies [hier](http://wiki.skills-base.net/index.php?title=Adding_people_and_enabling_them_to_log_in).
+> Als u handmatig een gebruiker wilt maken, volgt u de instructies [hier.](http://wiki.skills-base.net/index.php?title=Adding_people_and_enabling_them_to_log_in)
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel vaardigheden Base in het toegangsvenster, moet u worden automatisch aangemeld bij de vaardigheden Base waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Vaardighedenbasis in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de vaardighedenbasis waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

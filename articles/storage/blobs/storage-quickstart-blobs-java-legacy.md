@@ -7,12 +7,12 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 373875aee836485bb994d81e0945cec3a9b088eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7986add466bc42b092763acfeceebc8a6523bbe
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76906489"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473983"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Snelstart: blobs beheren met Java v8 SDK
 
@@ -91,13 +91,13 @@ Als eerste moeten verwijzingen worden gemaakt naar objecten die worden gebruikt 
 
     Het object e **CloudStorageAccount** is een voorstelling van uw opslagaccount en biedt u de mogelijkheid om via programmacode eigenschappen van het opslagaccount in te stellen en op te vragen. Met behulp van het object **CloudStorageAccount** kunt u een instantie van **CloudBlobClient** maken, die nodig is voor toegang tot de blob-service.
 
-* Maak een instantie van het object **CloudBlobClient**, dat naar de [Blob-service](/java/api/com.microsoft.azure.storage.blob._cloud_blob_client) in uw opslagaccount wijst.
+* Maak een instantie van het object **CloudBlobClient**, dat naar de [Blob-service](/java/api/com.microsoft.azure.storage.blob.cloudblobclient) in uw opslagaccount wijst.
 
     **CloudBlobClient** biedt een toegangspunt voor de blob-service, zodat u via programmacode eigenschappen van Blob Storage kunt instellen en opvragen. Met behulp van **CloudBlobClient** kunt u een instantie van het object **CloudBlobContainer** maken, die nodig is voor het maken van containers.
 
-* Maak een instantie van het object [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container), die de container voorstelt die u raadpleegt. Gebruik containers om uw blobs te organiseren op een wijze die lijkt op het gebruik van mappen op uw computer om uw bestanden te organiseren.
+* Maak een instantie van het object [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer), die de container voorstelt die u raadpleegt. Gebruik containers om uw blobs te organiseren op een wijze die lijkt op het gebruik van mappen op uw computer om uw bestanden te organiseren.
 
-    Zodra u de **CloudBlobContainer** hebt, kunt u een instantie maken van het object [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob) dat verwijst naar de specifieke blob waarin u bent geïnteresseerd. U kunt bewerkingen uitvoeren zoals uploaden, downloaden en kopiëren.
+    Zodra u de **CloudBlobContainer hebt,** u een instantie van het [CloudBlockBlob-object](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) maken dat verwijst naar de specifieke blob waarin u geïnteresseerd bent en een upload-, download-, kopieer- of andere bewerking uitvoeren.
 
 > [!IMPORTANT]
 > Containernamen moeten uit kleine letters bestaan. Zie [Naamgeving van en verwijzen naar containers, blobs en metagegevens](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) voor meer informatie over containers.
@@ -106,7 +106,7 @@ Als eerste moeten verwijzingen worden gemaakt naar objecten die worden gebruikt 
 
 In deze sectie gaat u een exemplaar maken van de objecten, een nieuwe container maken en vervolgens machtigingen instellen voor de container, zodat de blobs openbaar zijn en via slechts een URL kunnen worden geopend. De container heeft de naam **quickstartcontainer**.
 
-In dit voorbeeld wordt [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.createifnotexists) gebruikt omdat we bij elke nieuwe uitvoering van het voorbeeld een nieuwe container willen maken. In een productieomgeving waarin u overal in een toepassing dezelfde container gebruikt, is het beter om **CreateIfNotExists** maar één keer aan te roepen. U kunt de container ook vooraf maken, zodat u dit niet in de code hoeft te doen.
+In dit voorbeeld wordt [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists) gebruikt omdat we bij elke nieuwe uitvoering van het voorbeeld een nieuwe container willen maken. In een productieomgeving waarin u overal in een toepassing dezelfde container gebruikt, is het beter om **CreateIfNotExists** maar één keer aan te roepen. U kunt de container ook vooraf maken, zodat u dit niet in de code hoeft te doen.
 
 ```java
 // Parse the connection string and create a blob client to interact with Blob storage
@@ -121,7 +121,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>Blobs uploaden naar de container
 
-Als u een bestand wilt uploaden naar een blokblob, krijgt u een verwijzing naar de blob in de doelcontainer. Zodra u de blobverwijzing hebt, kunt u er gegevens naar uploaden met behulp van [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload). Met deze bewerking wordt de blob gemaakt als deze nog niet bestaat, of overschreven als deze wel al bestaat.
+Als u een bestand wilt uploaden naar een blokblob, krijgt u een verwijzing naar de blob in de doelcontainer. Zodra u de blobverwijzing hebt, kunt u er gegevens naar uploaden met behulp van [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblockblob.upload). Met deze bewerking wordt de blob gemaakt als deze nog niet bestaat, of overschreven als deze wel al bestaat.
 
 Met de voorbeeldcode wordt een lokaal bestand gemaakt voor het uploaden en downloaden, waarmee het bestand dat moet worden geüpload als **bron** en de naam van de blob in **blob** worden opgeslagen. In het volgende voorbeeld wordt het bestand geüpload naar de container met de naam **quickstartcontainer**.
 
@@ -141,13 +141,13 @@ System.out.println("Uploading the sample file ");
 blob.uploadFromFile(sourceFile.getAbsolutePath());
 ```
 
-Er zijn verschillende methoden voor `upload`, waaronder [upload](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload), [uploadBlock](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadblock), [uploadFullBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadfullblob), [uploadStandardBlobTier](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadstandardblobtier) en [uploadText](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadtext) die u kunt gebruiken met Blob Storage. Als u bijvoorbeeld een tekenreeks hebt, kunt u de methode `UploadText` gebruiken in plaats van de methode `Upload`.
+Er zijn verschillende methoden voor `upload`, waaronder [upload](/java/api/com.microsoft.azure.storage.blob.cloudblockblob.upload), [uploadBlock](/java/api/com.microsoft.azure.storage.blob.cloudblockblob.uploadblock), [uploadFullBlob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob.uploadfullblob), [uploadStandardBlobTier](/java/api/com.microsoft.azure.storage.blob.cloudblockblob.uploadstandardblobtier) en [uploadText](/java/api/com.microsoft.azure.storage.blob.cloudblockblob.uploadtext) die u kunt gebruiken met Blob Storage. Als u bijvoorbeeld een tekenreeks hebt, kunt u de methode `UploadText` gebruiken in plaats van de methode `Upload`.
 
 Blok-bobs kunnen bestaan uit elk type tekstbestand of binair bestand. Pagina-blobs worden hoofdzakelijk gebruikt voor de VHD-bestanden die worden gebruikt als back-up voor IaaS-VM's. Gebruik toevoeg-blobs voor logboekregistratie, bijvoorbeeld wanneer u gegevens wilt wegschrijven naar een bestand en vervolgens gegevens wilt blijven toevoegen. De meeste objecten die worden opgeslagen in Blob-opslag, zijn blok-blobs.
 
 ### <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-U kunt een lijst met bestanden in de container opvragen met behulp van [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs). Met de volgende code wordt de lijst met blobs opgehaald en doorlopen, waarbij de URI‘s van de gevonden blobs worden weergegeven. U kunt de URL uit het opdrachtvenster kopiëren en in een browser plakken om het bestand weer te geven.
+U kunt een lijst met bestanden in de container opvragen met behulp van [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobs). Met de volgende code wordt de lijst met blobs opgehaald en doorlopen, waarbij de URI‘s van de gevonden blobs worden weergegeven. U kunt de URL uit het opdrachtvenster kopiëren en in een browser plakken om het bestand weer te geven.
 
 ```java
 //Listing contents of container
@@ -158,7 +158,7 @@ for (ListBlobItem blobItem : container.listBlobs()) {
 
 ### <a name="download-blobs"></a>Blobs downloaden
 
-Download blobs naar uw lokale schijf met behulp van [CloudBlob.DownloadToFile](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob.downloadtofile).
+Download blobs naar uw lokale schijf met behulp van [CloudBlob.DownloadToFile](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblob.downloadtofile).
 
 Met de volgende code wordt de blob gedownload die in een eerdere sectie is geüpload, waarbij het achtervoegsel '_DOWNLOADED' wordt toegevoegd aan de blobnaam, zodat u beide bestanden op de lokale schijf kunt zien.
 
@@ -173,7 +173,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de blobs die u hebt geüpload niet meer nodig hebt, u de hele container verwijderen met [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists). Met deze methode worden ook de bestanden in de container verwijderd.
+Als u de blobs die u hebt geüpload niet meer nodig hebt, u de hele container verwijderen met [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists). Met deze methode worden ook de bestanden in de container verwijderd.
 
 ```java
 try {

@@ -1,22 +1,14 @@
 ---
 title: 'Zelfstudie: gestructureerde gegevens extraheren met door de machine geleerde entiteit - LUIS'
-titleSuffix: Azure Cognitive Services
 description: Haal gestructureerde gegevens uit een utterance met behulp van de door de machine geleerde entiteit. Als u de extractienauwkeurigheid wilt verhogen, voegt u subcomponenten toe met beschrijvingen en beperkingen.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: e1709a5e86c8fed8d7f724ad1b105bd02df9fa56
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 03/31/2020
+ms.openlocfilehash: f521e634c129aaf03ee341328721bd89723e8264
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75381763"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478341"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Zelfstudie: Gestructureerde gegevens extraheren uit de uiting van de gebruiker met door machines geleerde entiteiten in Language Understanding (LUIS)
 
@@ -44,19 +36,19 @@ De door de machine geleerde entiteit ondersteunt het [modeldecompositieconcept](
 
 Deze zelfstudie voegt een door de machine geleerde entiteit toe om gegevens uit een utterance te extraheren.
 
-Het doel van een entiteit is om de te extraheren gegevens te definiëren. Dit omvat het geven van de gegevens een naam, een type (indien mogelijk), een resolutie van de gegevens als er ambiguïteit, en de exacte tekst die deel uitmaakt van de gegevens.
+De entiteit definieert de gegevens die binnen de utterance moeten worden geëxtraheerd. Dit omvat het geven van de gegevens een naam, een type (indien mogelijk), een resolutie van de gegevens als er ambiguïteit, en de exacte tekst die deel uitmaakt van de gegevens.
 
-Als u de entiteit wilt definiëren, moet u de entiteit maken en vervolgens de tekst labelen die de entiteit in de voorbeeldutterance vertegenwoordigt. Deze gelabelde voorbeelden leren LUIS wat de entiteit is en waar deze kan worden gevonden in een utterance.
+Als u de entiteit wilt definiëren, moet u de entiteit maken en vervolgens de tekst labelen die de entiteit in de voorbeelduitingen binnen alle intenties vertegenwoordigt. Deze gelabelde voorbeelden leren LUIS wat de entiteit is en waar deze kan worden gevonden in een utterance.
 
 ## <a name="entity-decomposability-is-important"></a>Entiteitsontmetbaarheid is belangrijk
 
-Entiteitsontmetbaarheid is belangrijk voor zowel intentievoorspelling als voor gegevensextractie.
+Entiteitsontmetbaarheid is belangrijk voor zowel intentievoorspelling als voor gegevensextractie met de entiteit.
 
 Begin met een door machines geleerde entiteit, die de entiteit op het begin- en het hoogste niveau is voor gegevensextractie. Ontleed vervolgens de entiteit in de onderdelen die de clienttoepassing nodig heeft.
 
 Hoewel u mogelijk niet weet hoe gedetailleerd u uw entiteit wilt hebben wanneer u uw app begint, is het een beste manier om te beginnen met een door machines geleerde entiteit en vervolgens te ontleden met subcomponenten naarmate uw app rijpt.
 
-In de praktijk maakt u een door de machine geleerde entiteit om een bestelling voor een pizza-app weer te geven. De bestelling moet alle onderdelen die nodig zijn om de bestelling fullfil. Om te beginnen zal de entiteit ordergerelateerde tekst extraheren, grootte en hoeveelheid eruit trekken.
+Hierin maakt u een door de machine geleerde entiteit om een bestelling voor een pizza-app weer te geven. De bestelling moet alle onderdelen die nodig zijn om de bestelling fullfil. Om te beginnen zal de entiteit ordergerelateerde tekst extraheren, grootte en hoeveelheid eruit trekken.
 
 Een `Please deliver one large cheese pizza to me` uiting `one large cheese pizza` voor moet extraheren als `1` `large`de volgorde, dan ook extraheren en .
 
@@ -92,7 +84,7 @@ Als u details wilt extraheren over een pizzaorder, maakt u een entiteit op het h
     ![Structuur toevoegen aan entiteit](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. Voeg in het vak Een machine geleerde entiteit `Size` **maken** in het vak **Structuur** toe en selecteer Enter.
-1. Als u een **beschrijving**wilt `+` toevoegen, selecteert u de in het gebied **Descriptoren voor Grootte** en selecteert u **Vervolgens Nieuwe woordgroeplijst maken**.
+1. Als u een **beschrijving**wilt `+` toevoegen, selecteert u het gebied in het gebied **Descriptoren** en selecteert u **Vervolgens Nieuwe woordgroeplijst maken**.
 
 1. Voer in het vak Nieuwe **woordgroep descriptor maken** `small`de `medium`naam `large` `SizeDescriptor` in en voer waarden in van: , en . Wanneer het vak **Suggesties** wordt `extra large`invult, selecteert u en `xl`. Selecteer **Gereed** om de lijst met nieuwe woordgroepen te maken.
 
@@ -108,7 +100,7 @@ Als u details wilt extraheren over een pizzaorder, maakt u een entiteit op het h
 
     ![Label de grootteentiteit voor tekst in de utterance.](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
 
-    De regel is effen onder de tekst omdat zowel de etikettering als de voorspelling overeenkomen omdat u de tekst expliciet hebt gelabeld.
+    De regel is effen onder de tekst omdat zowel de etikettering als de voorspelling overeenkomen omdat u de tekst _expliciet_ hebt gelabeld.
 
 1. Label `Order` de entiteit in de resterende uitingen samen met de grootteentiteit. De vierkante haakjes in de tekst `Order` geven `Size` de gelabelde entiteit en de entiteit binnenaan aan.
 
@@ -132,7 +124,7 @@ Als u details wilt extraheren over een pizzaorder, maakt u een entiteit op het h
     |--|
     |`pickup XL meat lovers pizza`|
 
-    De algemene topentiteit wordt `Order` gelabeld `Size` en de subcomponent is ook gelabeld met stippellijnen. Dit is een succesvolle voorspelling.
+    De algemene topentiteit wordt `Order` gelabeld `Size` en de subcomponent is ook gelabeld met stippellijnen.
 
     ![Nieuwe voorbeeldutterance voorspeld met entiteit](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
@@ -160,20 +152,20 @@ Begin met het toevoegen van de vooraf gebouwde nummerentiteit aan de app.
 
 ## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>Subcomponententiteit maken met beperking om gegevens te extraheren
 
-De `Order` entiteit moet `Quantity` een subcomponent hebben om te bepalen hoeveel van een artikel in de volgorde staat. De hoeveelheid moet worden beperkt tot een getal, zodat de geëxtraheerde gegevens onmiddellijk bruikbaar zijn voor de clienttoepassing.
+De `Order` entiteit moet `Quantity` een subcomponent hebben om te bepalen hoeveel van een artikel in de volgorde staat. De hoeveelheid moet worden beperkt tot een getal, zodat de uitgepakte gegevens onmiddellijk op naam beschikbaar zijn voor de clienttoepassing.
 
 Een beperking wordt toegepast als een tekstovereenkomst, hetzij met exacte matching (zoals een lijstentiteit) of via reguliere expressies (zoals een entiteit met reguliere expressies of een vooraf gebouwde entiteit).
 
 Door een beperking te gebruiken, wordt alleen tekst die overeenkomt met die beperking, geëxtraheerd.
 
 1. Selecteer **Entiteiten** en `Order` selecteer vervolgens de entiteit.
-1. Selecteer **+ Component toevoegen** `Quantity` en voer de naam in en selecteer Enter om de nieuwe entiteit aan de app toe te voegen.
-1. Selecteer na de succesmelding de `Quantity` subcomponent en selecteer vervolgens het potlood Beperking.
+1. Selecteer **+ Component toevoegen** `Quantity` en voer de naam in en `Order` selecteer Enter om de nieuwe subcomponent aan de entiteit toe te voegen.
+1. Selecteer na de succesmelding in de **geavanceerde opties**het potlood Beperking.
 1. Selecteer in de vervolgkeuzelijst het vooraf gebouwde getal.
 
     ![Maak een entiteit met vooraf opgebouwd nummer als beperking.](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
 
-    De `Quantity` entiteit wordt toegepast als en alleen als er tekst wordt gevonden die overeenkomt met de vooraf gebouwde getalentiteit.
+    De `Quantity` entiteit wordt toegepast wanneer tekst overeenkomt met de vooraf gebouwde getalentiteit.
 
     De entiteit met de beperking wordt gemaakt, maar nog niet toegepast op de voorbeelduitingen.
 
@@ -182,7 +174,7 @@ Door een beperking te gebruiken, wordt alleen tekst die overeenkomt met die bepe
 
 ## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>Voorbeeldvan label om LUIS over de entiteit te leren
 
-1. Selecteer **Intents** in de navigatie links en selecteer vervolgens de intentie **OrderPizza.** De drie getallen in de volgende uitingen worden gelabeld, maar staan visueel onder de `Order` entiteitsregel. Dit lagere niveau betekent dat de entiteiten worden `Order` gevonden, maar niet worden beschouwd als afgezien van de entiteit.
+1. Selecteer **Intents** in de navigatie links en selecteer vervolgens de intentie **OrderPizza.** De drie getallen in de volgende uitingen worden gelabeld, maar staan visueel onder de `Order` entiteitsregel. Dit lagere niveau betekent dat de entiteiten worden `Order` gevonden, maar niet worden beschouwd als een deel van de entiteit.
 
     ![Vooraf opgebouwd nummer wordt gevonden, maar nog niet beschouwd als afgezien van de entiteit Order.](media/tutorial-machine-learned-entity/prebuilt-number-not-part-of-order-entity.png)
 
@@ -192,7 +184,7 @@ Door een beperking te gebruiken, wordt alleen tekst die overeenkomt met die bepe
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>De app trainen om de entiteitswijzigingen toe te passen op de app
 
-Selecteer **Trainen** om de app te trainen met deze nieuwe uitingen.
+Selecteer **Trainen** om de app te trainen met deze nieuwe uitingen. Na de `Quantity` training wordt de subcomponent `Order` correct voorspeld in het onderdeel. Deze juiste voorspelling wordt aangegeven met een vaste lijn.
 
 ![Train de app en bekijk vervolgens de voorbeelduitingen.](media/tutorial-machine-learned-entity/trained-example-utterances.png)
 
@@ -213,7 +205,7 @@ Test de app met het interactieve **testpaneel.** Met dit proces u een nieuwe utt
 
     De grootte is correct geïdentificeerd. Houd er rekening mee `OrderPizza` dat de voorbeelduitingen in `medium` de intentie geen voorbeeld hebben van `SizeDescriptor` als grootte, maar wel een beschrijving van een woordgroeplijst met medium.
 
-    De hoeveelheid is niet correct voorspeld. Als u dit wilt oplossen, u meer voorbeelduitingen toevoegen met `Quantity` dat woord om de hoeveelheid aan te geven en dat woord als een entiteit te labelen.
+    De hoeveelheid is niet correct voorspeld. U dit oplossen in uw clienttoepassing door de grootte standaard te plaatsen op één (1) als er geen grootte wordt geretourneerd in de LUIS-voorspelling.
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>De app publiceren om deze te openen vanaf het HTTP-eindpunt
 
@@ -223,7 +215,7 @@ Test de app met het interactieve **testpaneel.** Met dit proces u een nieuwe utt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Ga naar het einde van de URL in het adres en voer dezelfde query in als u in het interactieve testpaneel hebt ingevoerd.
+1. Ga naar het einde van de URL in het adres en vervang _YOUR_QUERY_HERE_ door dezelfde query als u in het interactieve testpaneel hebt ingevoerd.
 
     `deliver a medium veggie pizza`
 

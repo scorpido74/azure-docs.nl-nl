@@ -1,21 +1,21 @@
 ---
-title: 'Zelfstudie: afbeelding uploaden voor Bing Visual Search'
+title: 'Zelfstudie: Afbeelding uploaden met de Bing Visual Search API'
 titleSuffix: Azure Cognitive Services
-description: Hierin wordt het proces geanalyseerd waarmee een afbeelding naar Bing wordt geüpload om er inzichten over te verkrijgen en vervolgens het antwoord wordt geparseerd en weergegeven.
+description: Meer informatie over het uploaden van een afbeelding naar Bing, er inzicht in krijgen en het antwoord weergeven.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/31/2020
 ms.author: scottwhi
-ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ecd1ab5e613bb326b65f6aa50f3f85172bc334ac
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74689183"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477932"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Zelfstudie: Afbeeldingen uploaden naar de Bing Visual Search API
 

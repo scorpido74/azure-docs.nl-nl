@@ -64,7 +64,7 @@ Azure Blob-connector ondersteunt de volgende verificatietypen, verwijzen naar de
 - [Beheerde identiteiten voor Azure-bronverificatie](#managed-identity)
 
 >[!NOTE]
->Wanneer u PolyBase gebruikt om gegevens in SQL Data Warehouse te laden, moet u, als uw bron- of faseringsblobopslag is geconfigureerd met Virtual Network-eindpunt, beheerde identiteitsverificatie gebruiken zoals vereist door PolyBase en zelfgehoste integratieruntime met versie gebruiken 3.18 of hoger. Zie de sectie [beheerde identiteitsverificatie](#managed-identity) met meer configuratievereisten.
+>Wanneer u PolyBase gebruikt om gegevens in SQL Data Warehouse te laden, moet u, als uw bron- of faseringsblobopslag is geconfigureerd met Virtual Network-eindpunt, beheerde identiteitsverificatie gebruiken zoals vereist door PolyBase en Zelfgehoste Integratieruntime gebruiken met versie 3.18 of hoger. Zie de sectie [beheerde identiteitsverificatie](#managed-identity) met meer configuratievereisten.
 
 >[!NOTE]
 >HDInsights- en Azure Machine Learning-activiteiten ondersteunen alleen azure blob-opslagaccountsleutelverificatie.

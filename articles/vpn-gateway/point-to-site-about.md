@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 381aad5d0a56362d9966ed54b931a8478f2f6bf2
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500607"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410491"
 ---
 # <a name="about-point-to-site-vpn"></a>Over Point-to-Site VPN
 
@@ -22,9 +22,9 @@ Met een point-to-site-VPN-gatewayverbinding (P2S) kunt u vanaf een afzonderlijke
 
 Point-to-site VPN kan een van de volgende protocollen gebruiken:
 
-* **OpenVPN® Protocol**, een SSL/TLS gebaseerd VPN-protocol. Een SSL VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls TCP-poort 443 uitgaand openen, die SSL gebruikt. OpenVPN kan worden gebruikt om verbinding te maken vanaf Android, iOS (versies 11.0 en hoger), Windows, Linux en Mac-apparaten (OSX-versies 10.13 en hoger).
+* **OpenVPN® Protocol**, een SSL/TLS gebaseerd VPN-protocol. Een TLS VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls TCP-poort 443 uitgaand openen, die TLS gebruikt. OpenVPN kan worden gebruikt om verbinding te maken vanaf Android, iOS (versies 11.0 en hoger), Windows, Linux en Mac-apparaten (OSX-versies 10.13 en hoger).
 
-* Secure Socket Tunneling Protocol (SSTP), een eigen SSL-gebaseerd VPN-protocol. Een SSL VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls TCP-poort 443 uitgaand openen, die SSL gebruikt. SSTP wordt alleen ondersteund op Windows-apparaten. Azure ondersteunt alle versies van Windows met SSTP (Windows 7 en hoger).
+* Secure Socket Tunneling Protocol (SSTP), een eigen TLS-gebaseerd VPN-protocol. Een TLS VPN-oplossing kan firewalls binnendringen, omdat de meeste firewalls TCP-poort 443 uitgaand openen, die TLS gebruikt. SSTP wordt alleen ondersteund op Windows-apparaten. Azure ondersteunt alle versies van Windows met SSTP (Windows 7 en hoger).
 
 * IKEv2 VPN, een op standaarden gebaseerde IPsec VPN-oplossing. IKEv2 VPN kan worden gebruikt om verbinding te maken vanaf Mac-apparaten (OSX-versie 10.11 en hoger).
 
@@ -141,7 +141,7 @@ Het zip-bestand bevat ook de waarden van enkele belangrijke instellingen aan de 
 ## <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Welk TLS-beleid is geconfigureerd op VPN-gateways voor P2S?
 **TLS**
 
-|**Beleid** |
+|**Beleidsregels** |
 |---| 
 |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 |
 |TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 |

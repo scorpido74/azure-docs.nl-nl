@@ -1,5 +1,5 @@
 ---
-title: Een web-app maken met de seingevings service en GitHub-verificatie
+title: Web-app maken met SignalR Service en GitHub-verificatie
 description: Azure CLI-voorbeeldscript - Een web-app maken die gebruikmaakt van de service SignalR en GitHub-verificatie
 author: sffamily
 ms.service: signalr
@@ -9,10 +9,10 @@ ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: d30804d132eec3c9f324413acd68014d1adaa710
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158043"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>Een web-app maken die gebruikmaakt van de service SignalR en GitHub-verificatie
@@ -103,7 +103,7 @@ Noteer de naam die wordt gegenereerd voor de nieuwe resourcegroep. Deze naam wor
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht. In dit script worden de volgende opdrachten gebruikt:
+Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht. In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|

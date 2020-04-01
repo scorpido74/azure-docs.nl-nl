@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-Azure Security Center gebruiken voor Windows-Vm's in azure
+title: Zelfstudie - Azure Security Center voor Windows VM's gebruiken in Azure
 description: In deze zelfstudie krijgt u informatie over de functies van Azure Security Center die helpen uw virtuele Windows-machines in Azure te beschermen en te beveiligen.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6b763d08dc898566bfe0d7a28bf6471d4edf4c59
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74064956"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Windows-machines te controleren
@@ -32,7 +32,7 @@ Met Azure Security Center kunt u meer inzicht krijgen in de beveiliging van uw A
 > * Problemen met de configuratiestatus kunt weergeven en oplossen
 > * Gedetecteerde bedreigingen controleren
 
-## <a name="security-center-overview"></a>Security Center-overzicht
+## <a name="security-center-overview"></a>Overzicht van Security Center
 
 Security Center identificeert mogelijke configuratieproblemen voor virtuele machine (VM's) en gerichte beveiligingsrisico's. Dit kan het volgende omvatten: virtuele machines waarbij netwerkbeveiligingsgroepen ontbreken, niet-versleutelde schijven en RDP-beveiligingsaanvallen (Remote Desktop Protocol). De informatie wordt op het Security Center-dashboard in duidelijke grafieken weergegeven.
 
@@ -104,14 +104,14 @@ Wanneer aanbevelingen worden doorgevoerd, worden ze als opgelost gemarkeerd.
 
 ## <a name="view-detected-threats"></a>Gedetecteerde bedreigingen bekijken
 
-Security Center geeft naast aanbevelingen voor resourceconfiguratie ook meldingen voor geconstateerde bedreigingen weer. De functie voor beveiligingsmeldingen combineert de verzamelde gegevens van elke VM, Azure-netwerklogboeken en gekoppelde partneroplossingen om bedreigingen voor Azure-resources te detecteren. Zie [How Security Center bedreigingen detecteren?](../../security-center/security-center-alerts-overview.md#detect-threats)voor uitgebreide informatie over de detectie mogelijkheden van Security Center bedreigingen.
+Security Center geeft naast aanbevelingen voor resourceconfiguratie ook meldingen voor geconstateerde bedreigingen weer. De functie voor beveiligingsmeldingen combineert de verzamelde gegevens van elke VM, Azure-netwerklogboeken en gekoppelde partneroplossingen om bedreigingen voor Azure-resources te detecteren. Zie Hoe detecteert Security Center bedreigingen voor diepgaande informatie over de detectiemogelijkheden van beveiligingscentrum [voor bedreigingen?](../../security-center/security-center-alerts-overview.md#detect-threats)
 
 De functie voor beveiligingsmeldingen vereist dat de Security Center-prijscategorie wordt verhoogd van *Gratis* naar *Standard*. Er is een **gratis proefversie** beschikbaar wanneer u naar deze hogere prijscategorie overstapt. 
 
 De prijscategorie wijzigen:  
 
 1. Klik in het Security Center-dashboard op **Beveiligingsbeleid** en selecteer vervolgens uw abonnement.
-2. Selecteer **Prijscategorie**.
+2. Selecteer **Prijsniveau**.
 3. Selecteer **Standard** en klik vervolgens op **Opslaan** boven in de blade.
 
 

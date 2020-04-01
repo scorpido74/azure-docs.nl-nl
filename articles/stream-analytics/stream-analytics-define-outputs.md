@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e0b4bcac8494f136dde21b03422e12b72cecb8f3
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4517f85fae278bd8bc15a9586d9dc0202e7dfe56
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366447"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475228"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Inzicht krijgen in uitvoer vanuit Azure Stream Analytics
 
@@ -188,7 +188,7 @@ In de volgende tabel worden de eigenschapsnamen en hun beschrijvingen voor het m
 | Tabelnaam |De naam van de tafel. De tabel wordt gemaakt als deze niet bestaat. |
 | Partitiesleutel |De naam van de uitvoerkolom die de partitiesleutel bevat. De partitiesleutel is een unieke id voor de partitie in een tabel die het eerste deel van de primaire sleutel van een entiteit vormt. Het is een tekenreekswaarde die tot 1 KB groot kan zijn. |
 | Rijtoets |De naam van de uitvoerkolom die de rijsleutel bevat. De rijsleutel is een unieke id voor een entiteit binnen een partitie. Het vormt het tweede deel van de primaire sleutel van een entiteit. De rijsleutel is een tekenreekswaarde die maximaal 1 KB groot kan zijn. |
-| Batchgrootte |Het aantal records voor een batchbewerking. De standaardwaarde (100) is voldoende voor de meeste taken. Zie de [spec van tabelbatchbewerking](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) voor meer informatie over het wijzigen van deze instelling. |
+| Batchgrootte |Het aantal records voor een batchbewerking. De standaardwaarde (100) is voldoende voor de meeste taken. Zie de [spec van tabelbatchbewerking](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation) voor meer informatie over het wijzigen van deze instelling. |
 
 ## <a name="service-bus-queues"></a>Service Bus-wachtrijen
 
@@ -342,18 +342,18 @@ Azure Stream Analytics maakt gebruik van batches van variabele grootte om gebeur
 
 In de volgende tabel worden enkele overwegingen voor outputbatching uitgelegd:
 
-| Uitvoertype | Maximale berichtgrootte | Optimalisatie van batchgrootte |
+| Uitvoertype |    Maximale berichtgrootte | Optimalisatie van batchgrootte |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | Zie [Limieten voor gegevensmeeropslag](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits). | Gebruik tot 4 MB per schrijfbewerking. |
 | Azure SQL Database | Configureerbaar met het aantal Max-batch.Configureable using Max batch count. Standaard 10.000 maximale en 100 minimale rijen per bulkinvoeging.<br />Zie [Azure SQL-limieten](../sql-database/sql-database-resource-limits.md). |  Elke batch wordt in eerste instantie bulk ingevoegd met maximale batch tellen. Batch wordt in tweeën gesplitst (tot minimaal batchaantal) op basis van opnieuw te proberen fouten van SQL. |
 | Azure Blob Storage | Zie [Azure Storage-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | De maximale blobblokgrootte is 4 MB.<br />Het maximale aantal blobbocks is 50.000. |
-| Azure Event Hubs  | 256 KB of 1 MB per bericht. <br />Zie [Limieten voor gebeurtenishubs](../event-hubs/event-hubs-quotas.md). |  Wanneer de invoer/uitvoerpartitionering niet is uitgelijnd, wordt `EventData` elke gebeurtenis afzonderlijk verpakt en verzonden in een batch van maximaal de maximale berichtgrootte. Dit gebeurt ook als [aangepaste metagegevenseigenschappen](#custom-metadata-properties-for-output) worden gebruikt. <br /><br />  Wanneer invoer-/uitvoerpartitionering is uitgelijnd, worden meerdere `EventData` gebeurtenissen in één instantie verpakt, tot de maximale berichtgrootte, en verzonden. |
+| Azure Event Hubs    | 256 KB of 1 MB per bericht. <br />Zie [Limieten voor gebeurtenishubs](../event-hubs/event-hubs-quotas.md). |    Wanneer de invoer/uitvoerpartitionering niet is uitgelijnd, wordt `EventData` elke gebeurtenis afzonderlijk verpakt en verzonden in een batch van maximaal de maximale berichtgrootte. Dit gebeurt ook als [aangepaste metagegevenseigenschappen](#custom-metadata-properties-for-output) worden gebruikt. <br /><br />  Wanneer invoer-/uitvoerpartitionering is uitgelijnd, worden meerdere `EventData` gebeurtenissen in één instantie verpakt, tot de maximale berichtgrootte, en verzonden.    |
 | Power BI | Zie [Power BI Rest API-limieten](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure Table Storage | Zie [Azure Storage-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | De standaardinstelling is 100 entiteiten per afzonderlijke transactie. U het zo nodig configureren naar een kleinere waarde. |
-| Azure Service Bus-wachtrij   | 256 KB per bericht voor Standaardlaag, 1 MB voor Premium-laag.<br /> Zie [ServiceBus-limieten](../service-bus-messaging/service-bus-quotas.md). | Gebruik één gebeurtenis per bericht. |
+| Azure Service Bus-wachtrij    | 256 KB per bericht voor Standaardlaag, 1 MB voor Premium-laag.<br /> Zie [ServiceBus-limieten](../service-bus-messaging/service-bus-quotas.md). | Gebruik één gebeurtenis per bericht. |
 | Azure Service Bus-onderwerp | 256 KB per bericht voor Standaardlaag, 1 MB voor Premium-laag.<br /> Zie [ServiceBus-limieten](../service-bus-messaging/service-bus-quotas.md). | Gebruik één gebeurtenis per bericht. |
-| Azure Cosmos DB   | Zie [Azure Cosmos DB-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). | Batchgrootte en schrijffrequentie worden dynamisch aangepast op basis van Azure Cosmos DB-antwoorden. <br /> Er zijn geen vooraf bepaalde beperkingen van Stream Analytics. |
-| Azure Functions   | | De standaardbatchgrootte is 262.144 bytes (256 KB). <br /> Het standaardaantal gebeurtenissen per batch is 100. <br /> De batchgrootte is configureerbaar en kan worden verhoogd of verlaagd in de [uitvoeropties](#azure-functions)van Stream Analytics.
+| Azure Cosmos DB    | Zie [Azure Cosmos DB-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). | Batchgrootte en schrijffrequentie worden dynamisch aangepast op basis van Azure Cosmos DB-antwoorden. <br /> Er zijn geen vooraf bepaalde beperkingen van Stream Analytics. |
+| Azure Functions    | | De standaardbatchgrootte is 262.144 bytes (256 KB). <br /> Het standaardaantal gebeurtenissen per batch is 100. <br /> De batchgrootte is configureerbaar en kan worden verhoogd of verlaagd in de [uitvoeropties](#azure-functions)van Stream Analytics.
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/15/2020
-ms.openlocfilehash: 759ea9800a0ed051fed887adfb10b06f7a53b72f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 796b37f98fed7e389fa71a15b5e6697a14db1a16
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529200"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397196"
 ---
 # <a name="microsoft-flow-connector-preview-usage-examples"></a>Voorbeelden van gebruiksvoorbeelden van Microsoft Flow-connector (Preview)
 
@@ -119,7 +119,9 @@ Visualiseer deze informatie als een cirkeldiagram en e-mail deze naar het team.
     * Plaats in het veld *Hoofdlichaam* de vereiste hoofdtekst zodat het gevisualiseerde resultaat van de query in de hoofdtekst van de e-mail wordt opgenomen.
     * Als u een bijlage aan de e-mail wilt toevoegen, voegt u bijlagenaam en bijlageinhoud toe.
     
-    ![Meerdere bijlagen e-mailen](./media/flow-usage/flow-emailmultipleattachments.png)
+    ![Meerdere bijlagen e-mailen](./media/flow-usage/flow-email-multiple-attachments.png)
+
+    Zie [E-mailkusto-queryresultaten](flow.md#email-kusto-query-results)voor volledige instructies over het maken van een e-mailactie. 
 
 Resultaten:
 

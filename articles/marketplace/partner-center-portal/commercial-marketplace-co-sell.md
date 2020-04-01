@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/06/2019
-ms.openlocfilehash: 3b0b38b767495b1a06405f0d41222b73baee8d53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277070"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475153"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Optie voor co-verkoop in partnercentrum
 
@@ -22,11 +22,11 @@ De optie voor co-verkoop in partnercentrum is momenteel beschikbaar voor sommige
 
 | **Aanbiedingstype** | **Pagina voor co-verkoop beschikbaar in partnercentrum** |
 |    -----------------------    |    -----------------------------  |
-| Software as a Service (SaaS) |     Algemene beschikbaarheid rond februari 2020      |
+| Software as a Service (SaaS) |     Algemene beschikbaarheid rond april 2020     |
 | Dynamics 365 voor customer engagement & PowerApps      |     Nu verkrijgbaar      |
 | Dynamics 365 for Operations     |     Nu verkrijgbaar       |
-| Dynamics 365 Business Central      |  Algemene beschikbaarheid rond februari 2020     |
-| Azure Application     |     Algemene beschikbaarheid rond februari 2020     |
+| Dynamics 365 Business Central      |  Algemene beschikbaarheid rond april 2020    |
+| Azure Application     |     Algemene beschikbaarheid rond april 2020     |
 | Virtuele Azure-machine      |     Te worden aangekondigd       |
 | Azure-container     |     Te worden aangekondigd       |
 | Adviesservice      |     Te worden aangekondigd       |

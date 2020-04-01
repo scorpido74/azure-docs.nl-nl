@@ -1,20 +1,20 @@
 ---
-title: Power shell-script voor het bijwerken van RU/s voor Azure Cosmos DB Table-API
-description: Meer informatie over het gebruik van een Power shell-script voor het bijwerken van de door Voer voor een Data Base of een container in Azure Cosmos DB Table-API-account
+title: PowerShell-script om RU/s bij te werken voor Azure Cosmos DB Table API
+description: Meer informatie over het gebruik van een PowerShell-script om de doorvoer voor een database of een container in Azure Cosmos DB Table API-account bij te werken
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 37e7ab82a42b8bcd633e0c083e1a3f51505a95cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 101e9e5591198b84bb9bba886249b0784cc6b43e
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444909"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365940"
 ---
-# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Update RU/s voor een tabel voor Azure Cosmos DB-Table-API
+# <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>RU/s bijwerken voor een tabel voor Azure Cosmos DB - Tabel-API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,9 +38,9 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure-resources**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resource groepen**| |
+|**Azure Cosmos DB**| |
+| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Hiermee maakt of werkt u een Cosmos DB Table API-tabel uit. |
+|**Azure-brongroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

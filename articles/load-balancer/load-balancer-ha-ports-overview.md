@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5ada709350802344bfa65cce269735baa416edf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234449"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476974"
 ---
 # <a name="high-availability-ports-overview"></a>Overzicht van poorten met hoge beschikbaarheid
 
@@ -95,7 +95,7 @@ U *één* openbare standaardloadbalancerbron configureren voor de back-endresour
 ## <a name="limitations"></a>Beperkingen
 
 - Ha-poorten load-balancing regels zijn alleen beschikbaar voor interne Standard Load Balancer.
-- Het combineren van een HA-poortregel voor het balanceren van de laadbalans en een regel voor het balanceren van de niet-HA-poorten wordt niet ondersteund.
+- Het combineren van een HA-poorten load-balancing regel en een niet-HA poorten load-balancing regel die naar dezelfde backend ipconfigurations wordt ondersteund.
 - Bestaande IP-fragmenten worden doorgestuurd door HA-poorten load-balancing regels naar dezelfde bestemming als eerste pakket.  IP-fragmentatie van een UDP- of TCP-pakket wordt niet ondersteund.
 - Flowsymmetrie (voornamelijk voor NVA-scenario's) wordt alleen ondersteund met backend-instantie en één NIC (en enkele IP-configuratie) wanneer deze worden gebruikt zoals in het bovenstaande diagram en met ha-poorten load-balancing-regels. Het is niet voorzien in een ander scenario. Dit betekent dat twee of meer Load Balancer-resources en hun respectieve regels onafhankelijke beslissingen nemen en nooit worden gecoördineerd. Zie de beschrijving en het diagram voor [virtuele netwerkapparaten.](#nva) Wanneer u meerdere NIC's gebruikt of de NVA insandwicht tussen een openbare en interne load balancer, is flowsymmetrie niet beschikbaar.  Mogelijk u dit omzeilen door de instroom naar het IP-apparaat te achterhalen door nat'ing te gebruiken om antwoorden op dezelfde NVA te laten aankomen.  We raden echter ten zeerste aan om één NIC te gebruiken en de referentiearchitectuur in het bovenstaande diagram te gebruiken.
 

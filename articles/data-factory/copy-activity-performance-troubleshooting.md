@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531449"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421042"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problemen met de prestaties van kopieeractiviteiten oplossen
 
@@ -88,7 +88,7 @@ Wanneer de prestaties van de kopieeractiviteit niet aan uw verwachting voldoen, 
 
   - Controleer uw kopieerbron en gootsteenpatroon: 
 
-    - Als uw kopieerpatroon groter is dan 4 Gegevensintegratie-eenheden (DIU's) - raadpleeg [deze sectie](copy-activity-performance.md#data-integration-units) over details, over het algemeen u proberen diu's te verhogen om betere prestaties te krijgen. 
+    - Als uw kopieerpatroon groter is dan 4 Gegevensintegratie-eenheden (DIU's) - raadpleeg [deze sectie](copy-activity-performance-features.md#data-integration-units) over details, over het algemeen u proberen diu's te verhogen om betere prestaties te krijgen. 
 
     - Anders u overwegen om één grote gegevensset op te splitsen in verschillende kleinere gegevenssets en deze kopieertaken gelijktijdig te laten uitvoeren, elk deelt een deel van de gegevens aan. U dit doen met Lookup /GetMetadata + ForEach + Copy. Raadpleeg [Bestanden uit meerdere containers](solution-template-copy-files-multiple-containers.md)kopiëren, [Gegevens migreren van Amazon S3 naar ADLS Gen2](solution-template-migration-s3-azure.md)of [Bulkkopiëren met een configuratietabeloplossingssjablonen](solution-template-bulk-copy-with-control-table.md) als algemeen voorbeeld.
 
@@ -102,7 +102,7 @@ Wanneer de prestaties van de kopieeractiviteit niet aan uw verwachting voldoen, 
 
   - Controleer uw kopieerbron en gootsteenpatroon: 
 
-    - Als uw kopieerpatroon groter is dan 4 Gegevensintegratie-eenheden (DIU's) - raadpleeg [deze sectie](copy-activity-performance.md#data-integration-units) over details, over het algemeen u proberen diu's te verhogen om betere prestaties te krijgen. 
+    - Als uw kopieerpatroon groter is dan 4 Gegevensintegratie-eenheden (DIU's) - raadpleeg [deze sectie](copy-activity-performance-features.md#data-integration-units) over details, over het algemeen u proberen diu's te verhogen om betere prestaties te krijgen. 
 
     - Anders, geleidelijk afstemmen van de [parallelle kopieën,](copy-activity-performance-features.md)merk op dat te veel parallelle kopieën zelfs pijn kunnen doen aan de prestaties.
 

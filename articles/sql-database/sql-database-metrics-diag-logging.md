@@ -25,7 +25,7 @@ In dit artikel vindt u meer informatie over de prestatiestatistieken en bronlogb
 Je leert ook over de bestemmingen waarnaar je deze diagnostische telemetrie streamen en hoe je kiezen tussen deze keuzes. Uw bestemmingsopties zijn:
 
 - [Log Analytics en SQL Analytics](#stream-into-sql-analytics)
-- [Gebeurtenishubs](#stream-into-event-hubs)
+- [Event Hubs](#stream-into-event-hubs)
 - [Azure Storage](#stream-into-azure-storage)
 
 ## <a name="diagnostic-telemetry-for-export-for-azure-sql-database"></a>Diagnostische telemetrie voor exporteren voor Azure SQL Database
@@ -79,7 +79,7 @@ U metrische gegevens en diagnostische telemetrielogboekregistratie inschakelen e
 
 - Azure Portal
 - PowerShell
-- Azure-CLI
+- Azure CLI
 - Azure Monitor REST API
 - Azure Resource Manager-sjabloon
 
@@ -95,7 +95,7 @@ U het menu **Diagnostische instellingen** in de Azure-portal gebruiken om stream
 
 Selecteer een van de volgende tabbladen voor stapsgewijze richtlijnen voor het configureren van de streaming-export van diagnostische telemetrie in de Azure-portal en voor scripts voor het uitvoeren van hetzelfde met PowerShell en de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 ### <a name="elastic-pools"></a>Pools voor Elastic Database
 
@@ -225,7 +225,7 @@ Voer de volgende stappen uit om het streamen van diagnostische telemetrie voor e
 > [!TIP]
 > Herhaal deze stappen voor elke instantiedatabase die u wilt controleren.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -438,13 +438,13 @@ Raadpleeg de volgende tabellen voor meer informatie over basisstatistieken per r
 
 #### <a name="basic-metrics-for-elastic-pools"></a>Basisstatistieken voor elastische pools
 
-|**Resource**|**Statistieken**|
+|**Resource**|**Metrische gegevens**|
 |---|---|
 |Elastische pool|eDTU-percentage, eDTU-limiet, eDTU-limiet, CPU-percentage, leespercentage voor fysieke gegevens, percentage logboekschrijfpunten, sessiespercentage, werknemerspercentage, opslag, opslagpercentage, opslaglimiet, XTP-opslagpercentage |
 
 #### <a name="basic-metrics-for-single-and-pooled-databases"></a>Basisstatistieken voor afzonderlijke en samengevoegde databases
 
-|**Resource**|**Statistieken**|
+|**Resource**|**Metrische gegevens**|
 |---|---|
 |Eenenpooldatabase|DTU-percentage, DTU-limiet, DTU-limiet, CPU-percentage, fysiek leespercentage voor gegevens, schrijfpercentage van logboeken, Geslaagd/mislukt/geblokkeerd door firewallverbindingen, sessiespercentage, werknemerspercentage, opslag, opslagpercentage, XTP-opslagpercentage en impasses |
 

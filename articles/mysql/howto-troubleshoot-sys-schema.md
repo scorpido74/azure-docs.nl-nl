@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 3/18/2020
-ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.date: 3/30/2020
+ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067867"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411096"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Hoe sys_schema te gebruiken voor prestatieafstemming en databaseonderhoud in Azure Database voor MySQL
 
@@ -60,6 +60,9 @@ In dit voorbeeld heeft Azure Database voor MySQL 53 minuten besteed aan het door
 ## <a name="database-maintenance"></a>Databaseonderhoud
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
+
+[!IMPORTANT]
+> Het opvragen van deze weergave kan van invloed zijn op de prestaties. Het wordt aanbevolen om deze probleemoplossing uit te voeren tijdens kantooruren buiten de spits.
 
 De InnoDB buffer pool bevindt zich in het geheugen en is het belangrijkste cachemechanisme tussen de DBMS en de opslag. De grootte van de InnoDB-buffergroep is gekoppeld aan de prestatielaag en kan niet worden gewijzigd tenzij een ander product SKU wordt gekozen. Net als bij het geheugen in uw besturingssysteem, worden oude pagina's verwisseld om ruimte te maken voor versere gegevens. Als u wilt weten welke tabellen het grootste deel van het InnoDB-bufferpoolgeheugen verbruiken, u de *weergave sys.innodb_buffer_stats_by_table* opvragen.
 

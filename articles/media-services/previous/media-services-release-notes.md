@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183292"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474843"
 ---
 # <a name="azure-media-services-release-notes"></a>Notities vrijgeven van Azure Media Services
 
@@ -344,9 +344,9 @@ De [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediase
 * Relatieve verschuivingen voor BeginDatum en Vervaldatum in de PlayReady-licentiesjabloon zijn toegevoegd.
 
 ## <a name="november-2014-release"></a><a id="november_changes_14"></a>Release november 2014
-* U Media Services nu gebruiken om live FMP4-inhoud (Smooth Streaming) in te nemen via een SSL-verbinding. Als u SSL wilt innemen, moet u de inname van DE URL bijwerken naar HTTPS. Op dit moment ondersteunt Media Services geen SSL met aangepaste domeinen. Zie Werken met Live [Streaming van Azure Media Services](https://msdn.microsoft.com/library/azure/dn783466.aspx)voor meer informatie over live streaming.
-* Momenteel u geen RTMP-livestream opnemen via een SSL-verbinding.
-* U alleen via SSL streamen als het streamingeindpunt van waaruit u uw inhoud levert, is gemaakt na 10 september 2014. Als uw streaming-URL's zijn gebaseerd op de streamingeindpunten die na 10 september 2014 zijn gemaakt, bevat de URL 'streaming.mediaservices.windows.net' (de nieuwe indeling). Streaming-URL's die 'origin.mediaservices.windows.net' (de oude indeling) bevatten, ondersteunen geen SSL. Als uw URL in de oude indeling is en u via SSL wilt streamen, [maakt u een nieuw streamingeindpunt.](media-services-portal-manage-streaming-endpoints.md) Als u uw inhoud wilt streamen via SSL, gebruikt u URL's op basis van het nieuwe streamingeindpunt.
+* U Media Services nu gebruiken om live Smooth Streaming (fMP4) content in te nemen via een TLS-verbinding. Als u TLS wilt innemen, moet u de inname van DE URL bijwerken naar HTTPS. Op dit moment ondersteunt Media Services TLS niet met aangepaste domeinen. Zie Werken met Live [Streaming van Azure Media Services](https://msdn.microsoft.com/library/azure/dn783466.aspx)voor meer informatie over live streaming.
+* Momenteel u geen RTMP-livestream opnemen via een TLS-verbinding.
+* Je alleen via TLS streamen als het streaming-eindpunt van waaruit je je content levert, is gemaakt na 10 september 2014. Als uw streaming-URL's zijn gebaseerd op de streamingeindpunten die na 10 september 2014 zijn gemaakt, bevat de URL 'streaming.mediaservices.windows.net' (de nieuwe indeling). Streaming-URL's die 'origin.mediaservices.windows.net' (de oude indeling) bevatten, ondersteunen geen TLS. Als uw URL in de oude indeling is en u via TLS wilt streamen, [maakt u een nieuw streamingeindpunt.](media-services-portal-manage-streaming-endpoints.md) Als u uw inhoud via TLS wilt streamen, gebruikt u URL's op basis van het nieuwe streamingeindpunt.
 
 ### <a name="media-services-net-sdk"></a><a id="oct_sdk"></a>Media Services .NET SDK
 De Media Services SDK voor .NET-extensies is nu versie 2.0.0.3.
@@ -601,7 +601,7 @@ De volgende functionaliteit was nieuw in de release van de SDK in november:
 [Connect to Media Services with the Media Services SDK for .NET]: https://msdn.microsoft.com/library/azure/jj129571.aspx
 [Media Services .NET SDK extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [Azure SDK tools]: https://github.com/Azure/azure-sdk-tools
-[GitHub GitHub]: https://github.com/Azure/azure-sdk-for-media-services
+[GitHub]: https://github.com/Azure/azure-sdk-for-media-services
 [Manage Media Services assets across multiple Storage accounts]: https://msdn.microsoft.com/library/azure/dn271889.aspx
 [Handle Media Services job notifications]: https://msdn.microsoft.com/library/azure/dn261241.aspx
 

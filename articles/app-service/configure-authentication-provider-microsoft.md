@@ -1,22 +1,22 @@
 ---
 title: Microsoft-verificatie configureren
-description: Meer informatie over het configureren van Microsoft-accountverificatie als identiteitsprovider voor uw App Service-app.
+description: Meer informatie over het configureren van Microsoft-accountverificatie als identiteitsprovider voor uw App Service- of Azure-functie-app.
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
-ms.custom: seodec18
-ms.openlocfilehash: 95c603d4a10eb0e4d0817e20755c0f9b36baa96f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ea745aa00f8990a2d1232a19780fdc70e2f78996
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842330"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437963"
 ---
-# <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Uw App Service-app configureren om aantemelding voor Microsoft-account te gebruiken
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Uw App Service- of Azure-functie-app configureren om aantemelding voor Microsoft-account te gebruiken
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-In dit onderwerp ziet u hoe u Azure App Service configureert om AAD te gebruiken om persoonlijke aanmeldingen van Microsoft-accountteondersteunen.
+In dit onderwerp ziet u hoe u Azure App Service of Azure-functies configureert om AAD te gebruiken om persoonlijke aanmeldingen van Microsoft-accounten te ondersteunen.
 
 > [!NOTE]
 > Zowel persoonlijke Microsoft-accounts als organisatieaccounts maken gebruik van de AAD-identiteitsprovider. Op dit moment is het niet mogelijk om deze identiteitsprovider te configureren om beide soorten aanmeldingen te ondersteunen.
@@ -61,4 +61,4 @@ U bent nu klaar om Microsoft-account te gebruiken voor verificatie in uw app.
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure-portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

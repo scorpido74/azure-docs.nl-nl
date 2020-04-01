@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/19/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: f853d6d59a4c23b7b52a2a0ba800ace58c997f6e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1ac508fc9fee07482e475c46e1db262c8bfa1a12
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481582"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476240"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Zelfstudie: Een virtuele windows server-machine aansluiten bij een beheerd domein
 
@@ -76,8 +76,6 @@ Als u al een VM hebt waaraan u wilt deelnemen aan het domein, gaat u naar de sec
 
     RDP mag alleen worden ingeschakeld wanneer dat nodig is, en beperkt tot een reeks geautoriseerde IP-bereiken. Deze configuratie helpt de beveiliging van de VM te verbeteren en vermindert het gebied voor mogelijke aanvallen. Of maak en gebruik een Azure Bastion-host die alleen toegang via de Azure-portal via TLS mogelijk maakt. In de volgende stap van deze zelfstudie gebruikt u een Azure Bastion-host om veilig verbinding te maken met de VM.
 
-    Schakel vooralsnog directe RDP-verbindingen met de VM uit.
-
     Selecteer *Geen onder* **Openbare binnenkomende poorten**.
 
 1. Als u klaar bent, selecteert u **Volgende: schijven**.
@@ -96,22 +94,23 @@ Als u al een VM hebt waaraan u wilt deelnemen aan het domein, gaat u naar de sec
 
     ![Kies voor het beheren van de subnetconfiguratie in de Azure-portal](./media/join-windows-vm/manage-subnet.png)
 
-1. Selecteer **Adresruimte**in het linkermenu van het virtuele netwerkvenster . Het virtuele netwerk wordt gemaakt met een enkele adresruimte van *10.0.1.0/24*, die wordt gebruikt door het standaardsubnet.
+1. Selecteer **Adresruimte**in het linkermenu van het virtuele netwerkvenster . Het virtuele netwerk wordt gemaakt met een enkele adresruimte van *10.0.2.0/24*, die wordt gebruikt door het standaardsubnet. Andere subnetten, zoals voor *workloads* of Azure Bastion, kunnen ook al bestaan.
 
     Voeg een extra IP-adresbereik toe aan het virtuele netwerk. De grootte van dit adresbereik en het werkelijke IP-adresbereik dat moet worden gebruikt, is afhankelijk van andere netwerkbronnen die al zijn geïmplementeerd. Het IP-adresbereik mag niet overlappen met bestaande adresbereiken in uw Azure- of on-premises omgeving. Zorg ervoor dat u het IP-adresbereik groot genoeg maakt voor het aantal VM's dat u in het subnet verwacht te implementeren.
 
-    In het volgende voorbeeld wordt een extra IP-adresbereik van *10.0.2.0/24* toegevoegd. Wanneer u klaar bent, selecteert **u Opslaan**.
+    In het volgende voorbeeld wordt een extra IP-adresbereik van *10.0.5.0/24* toegevoegd. Wanneer u klaar bent, selecteert **u Opslaan**.
 
-    ![Een extra IP-adresbereik voor virtuele netwerken toevoegen aan de Azure-portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
+    ![Een extra IP-adresbereik voor virtuele netwerken toevoegen aan de Azure-portal](./media/join-windows-vm/add-vnet-address-range.png)
 
 1. Selecteer vervolgens in het linkermenu van het virtuele netwerkvenster **Subnetten**en kies **+ Subnet** om een subnet toe te voegen.
 
-1. Selecteer **+ Subnet**en voer vervolgens een naam in voor het subnet, zoals *beheer*. Geef een **ADRESbereik (CIDR-blok)** op, zoals *10.0.2.0/24*. Zorg ervoor dat dit IP-adresbereik niet overlapt met andere bestaande Azure- of on-premises adresbereiken. Laat de andere opties als standaardwaarden staan en selecteer **OK**.
+1. Selecteer **+ Subnet**en voer vervolgens een naam in voor het subnet, zoals *beheer*. Geef een **ADRESbereik (CIDR-blok)** op, zoals *10.0.5.0/24*. Zorg ervoor dat dit IP-adresbereik niet overlapt met andere bestaande Azure- of on-premises adresbereiken. Laat de andere opties als standaardwaarden staan en selecteer **OK**.
 
     ![Een subnetconfiguratie maken in de Azure-portal](./media/join-windows-vm/create-subnet.png)
 
 1. Het duurt een paar seconden om het subnet te maken. Zodra deze is gemaakt, selecteert u de *X* om het subnetvenster te sluiten.
 1. Terug in het **deelvenster Netwerken** om een vm te maken, kiest u het subnet dat u hebt gemaakt in het vervolgkeuzemenu, zoals *beheer*. Controleer nogmaals of u het juiste subnet kiest en uw VM niet implementeert in hetzelfde subnet als uw door Azure AD DS beheerde domein.
+1. Selecteer *Geen* **voor openbaar IP**in het vervolgkeuzemenu, omdat u Azure Bastion gebruikt om verbinding te maken met het beheer en er geen openbaar IP-adres hoeft te worden toegewezen.
 1. Laat de andere opties als standaardwaarden achter en selecteer **Beheer**.
 1. **Stel Opstartdiagnose** *in op Uit*. Laat de andere opties als standaardwaarden staan en selecteer **Controleren + maken**.
 1. Controleer de VM-instellingen en selecteer **Vervolgens Maken**.

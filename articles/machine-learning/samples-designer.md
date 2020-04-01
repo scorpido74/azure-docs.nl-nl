@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: sample
 author: peterclu
 ms.author: peterlu
-ms.date: 03/10/2020
-ms.openlocfilehash: 82476b9cc8d92c815df602496ed3dcb33014a4fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/29/2020
+ms.openlocfilehash: f9a8b0a4c51024d91e517db2f6ae10a4dba62384
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037400"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389338"
 ---
 # <a name="designer-sample-pipelines"></a>Voorbeeldpijplijnen voor ontwerpers
 
@@ -30,6 +30,8 @@ Gebruik de ingebouwde voorbeelden in Azure Machine Learning-ontwerper om snel aa
 
 De ontwerper slaat een kopie van de voorbeeldpijplijnen op in uw werkruimte in uw studio. U de pijplijn bewerken om deze aan te passen aan uw behoeften en deze op te slaan als uw eigen pijplijn. Gebruik ze als uitgangspunt om uw projecten een vliegende start te geven.
 
+### <a name="open-a-sample-pipeline"></a>Een voorbeeldpijplijn openen
+
 1. Meld u aan bij <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a>en selecteer de werkruimte waarmee u wilt werken.
 
 1. Selecteer **Ontwerper**.
@@ -37,6 +39,31 @@ De ontwerper slaat een kopie van de voorbeeldpijplijnen op in uw werkruimte in u
 1. Selecteer een voorbeeldpijplijn onder de sectie **Nieuwe pijplijn.**
 
     Selecteer **Meer voorbeelden weergeven** voor een volledige lijst met voorbeelden.
+
+### <a name="submit-a-pipeline-run"></a>Een pijplijnrun verzenden
+
+Als u een pijplijn wilt uitvoeren, moet u eerst het standaard gegevensdoel instellen om de pijplijn op uit te voeren.
+
+1. Selecteer in het deelvenster **Instellingen** rechts van het canvas de optie **Rekendoel selecteren**.
+
+1. Selecteer in het dialoogvenster dat wordt weergegeven een bestaand rekendoel of maak een nieuw doel. Selecteer **Opslaan**.
+
+1. Selecteer **Verzenden** boven aan het canvas om een pijplijnrun in te dienen.
+
+Afhankelijk van de voorbeeldpijplijn en rekeninstellingen kan het enige tijd duren voordat de uitvoering en de berekeningsinstellingen zijn voltooid. De standaardcompute-instellingen hebben een minimale nodegrootte van 0, wat betekent dat de ontwerper resources moet toewijzen nadat deze niet is inactief. Herhaalde pijplijnuitvoeringen nemen minder tijd in beslag omdat de compute resources al zijn toegewezen. Daarnaast gebruikt de ontwerper in de cache resultaten voor elke module om de efficiëntie verder te verbeteren.
+
+
+### <a name="review-the-results"></a>De resultaten bekijken
+
+Nadat de pijplijn is uitgevoerd, u de pijplijn bekijken en de uitvoer voor elke module bekijken voor meer informatie.
+
+Gebruik de volgende stappen om module-uitgangen weer te geven:
+
+1. Selecteer een module in het canvas.
+
+1. Selecteer **Uitvoer + logboeken**in het deelvenster moduledetails rechts van het canvas. Selecteer het ![pictogram](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) grafiekpictogram visualiseren om de resultaten van elke module te zien. 
+
+Gebruik de voorbeelden als uitgangspunt voor enkele van de meest voorkomende machine learning-scenario's.
 
 ## <a name="regression-samples"></a>Regressiemonsters
 

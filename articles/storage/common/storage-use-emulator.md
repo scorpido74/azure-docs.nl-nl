@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 1f13efeb5c2ebcb8b23dea6f9ae997039972f089
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 997aa9d96f2f52331865fd15d97443d74bb8bc1f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72428316"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398016"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>De Azure-opslagemulator gebruiken voor ontwikkeling en testen
 
@@ -325,6 +325,6 @@ Er zijn geen verschillen die specifiek zijn voor wachtrijopslag in de emulator.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Evalueer de cross-platform, community-maintained open-source storage emulator [Azurite.](https://github.com/arafato/azurite) 
+* Evalueer de cross-platform, community-maintained open-source storage emulator [Azurite.](https://github.com/azure/azurite) 
 * [Azure Storage-voorbeelden met .NET](../storage-samples-dotnet.md) bevatten koppelingen naar verschillende codevoorbeelden die u gebruiken bij het ontwikkelen van uw toepassing.
 * U de [Microsoft Azure Storage Explorer](https://storageexplorer.com) gebruiken om te werken met bronnen in uw cloudopslagaccount en in de opslagemulator.

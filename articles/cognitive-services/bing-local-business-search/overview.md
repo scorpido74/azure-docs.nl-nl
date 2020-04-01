@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: overview
-ms.date: 11/29/2019
+ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 4e08596e8cf71bbb0e88abdc51f5d8e69972464d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0006761126eb1d561da7eeff97e8a9928d62ddb0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74665252"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478932"
 ---
 # <a name="what-is-bing-local-business-search"></a>Wat is Bing Local Business Search?
 De Bing Local Business Search API is een RESTful-service waarmee uw toepassingen informatie over lokale bedrijven kunnen vinden op basis van zoekopdrachten. Bijvoorbeeld, `q=<business-name> in Redmond, Washington`of `q=Italian restaurants near me`. 
@@ -44,4 +44,4 @@ Bel de Bing Local Business Search API vanuit elke programmeertaal die HTTP-verzo
 - [Query en antwoord](local-search-query-response.md)
 - [Zoeken in lokaal bedrijf snel gestart](quickstarts/local-quickstart.md)
 - [Referentie voor de Bing-API voor zoeken naar lokale bedrijven](local-search-reference.md)
-- [Gebruiks- en weergavevereisten](use-display-requirements.md)
+- [Vereisten voor gebruik en weergave](use-display-requirements.md)

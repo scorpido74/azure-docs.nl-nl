@@ -1,5 +1,5 @@
 ---
-title: Taak verdeling van verkeer naar Vm's voor HA-Azure CLI-Azure Load Balancer
+title: Load balance verkeer naar VM's voor HA - Azure CLI - Azure Load Balancer
 description: In dit Azure CLI-voorbeeldscript ziet u hoe u verkeer kunt verdelen naar virtuele machines voor hoge beschikbaarheid
 services: load-balancer
 documentationcenter: load-balancer
@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
 ms.openlocfilehash: c0bfb5705989c99d3626d6e728b764e94f83fffe
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74048915"
 ---
 # <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI-voorbeeldscript: Verkeer verdelen naar virtuele machines voor hoge beschikbaarheid
@@ -40,7 +40,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine, een beschikbaarheidsset, een load balancer en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

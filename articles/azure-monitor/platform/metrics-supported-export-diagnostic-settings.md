@@ -3,14 +3,14 @@ title: Azure Monitor-platformstatistieken die kunnen worden geëxporteerd via di
 description: Lijst met statistieken die beschikbaar zijn voor elk resourcetype met Azure Monitor.
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661359"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422113"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor-platformstatistieken die kunnen worden geëxporteerd via diagnostische instellingen
 
@@ -24,7 +24,9 @@ Vanwege fijne kneepjes in de Azure Monitor-backend zijn niet alle statistieken e
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Wijzigen in gedrag voor NULLs en Nulwaarden 
  
-Voor de platformstatistieken die via diagnostische instellingen kunnen worden geëxporteerd, zijn er een paar statistieken waarvoor Azure Monitor '0s' interpreteert als 'Nulls'. Dit heeft enige verwarring veroorzaakt tussen echte '0s' (uitgezonden door resource) en geïnterpreteerd '0s' (Nulls). Vanaf **1 april 2020** worden platformstatistieken die via diagnostische instellingen worden geëxporteerd, niet langer '0s' geëxporteerd, tenzij ze echt zijn uitgestoten door de onderliggende bron. Opmerking:
+Voor de platformstatistieken die via diagnostische instellingen kunnen worden geëxporteerd, zijn er een paar statistieken waarvoor Azure Monitor '0s' interpreteert als 'Nulls'. Dit heeft enige verwarring veroorzaakt tussen echte '0s' (uitgezonden door resource) en geïnterpreteerd '0s' (Nulls). Binnenkort zal er een wijziging plaatsvinden en platformstatistieken die via diagnostische instellingen worden geëxporteerd, exporteren niet langer '0s' tenzij ze echt zijn uitgezonden door de onderliggende bron. De wijziging stond gepland voor 1 april 2020, maar is vertraagd als gevolg van prioriteitsverschuivingen als gevolg van COVID-19. 
+
+Opmerking:
 
 1.  Als u een resourcegroep of een specifieke resource verwijdert, worden metrische gegevens uit de uitgevoerde resources niet langer verzonden naar exportbestemmingen voor diagnostische instellingen. Dat wil zeggen dat het niet meer wordt weergegeven in gebeurtenishubs, opslagaccounts en logboekanalysewerkruimten.
 2.  Deze verbetering zal beschikbaar zijn in alle publieke en private clouds.
@@ -49,7 +51,7 @@ De tabel bevat de volgende kolommen.
 > De onderstaande tabel kan een horizontale schuifbalk aan de onderkant hebben. Als u denkt dat u informatie mist, controleert u of de schuifbalk helemaal naar links staat.  
 
 
-| Exporteerbaar via diagnostische instellingen?  | Zendt NULLs uit |  ResourceType  |  Gegevens  |  MetricDisplayName  |  Eenheid  |  AggregatieType | 
+| Exporteerbaar via diagnostische instellingen?  | Al NULLs uitstoten |  ResourceType  |  Gegevens  |  MetricDisplayName  |  Eenheid  |  AggregatieType | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | Ja****  | Nee |  Microsoft.AnalysisServices/servers  |  Schonerestroomprijs  |  Geheugen: Schonere huidige prijs  |  Count  |  Average | 
 | Ja****  | Nee |  Microsoft.AnalysisServices/servers  |  CleanerMemoryNonshrinkable CleanerMemory  |  Geheugen: Schoner geheugen niet krimpend  |  Bytes  |  Average | 

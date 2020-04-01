@@ -4,12 +4,12 @@ description: Meer informatie over het instellen en configureren van de reverse p
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645443"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476670"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Omgekeerde proxy instellen en configureren in Azure Service Fabric
 Reverse proxy is een optionele Azure Service Fabric-service waarmee microservices die worden uitgevoerd in een Service Fabric-cluster kunnen worden ontdekt en communiceren met andere services met http-eindpunten. Zie [Proxy omkeren in Azure Service Fabric](service-fabric-reverseproxy.md)voor meer informatie. In dit artikel ziet u hoe u omgekeerde proxy in uw cluster instelt en configureert. 
@@ -23,7 +23,7 @@ Als u de omgekeerde proxy wilt configureren wanneer u [een cluster maakt met Azu
 1. Selecteer in **stap 2: clusterconfiguratie**onder **knooppunttypeconfiguratie**de optie **Omgekeerde proxy inschakelen**.
 
    ![Omgekeerde proxy inschakelen op portal](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (Optioneel) Als u een veilige omgekeerde proxy wilt configureren, moet u een SSL-certificaat configureren. Selecteer in **stap 3: Beveiliging**, op **Clusterbeveiligingsinstellingen configureren**onder **Configuratietype**, selecteer **Aangepast**. Selecteer vervolgens onder **Reverse Proxy SSL-certificaat**de optie **Een SSL-certificaat opnemen voor omgekeerde proxy** en voer uw certificaatgegevens in.
+2. (Optioneel) Als u een veilige omgekeerde proxy wilt configureren, moet u een TLS/SSL-certificaat configureren. Selecteer in **stap 3: Beveiliging**, op **Clusterbeveiligingsinstellingen configureren**onder **Configuratietype**, selecteer **Aangepast**. Selecteer vervolgens onder **Reverse Proxy SSL-certificaat**de optie **Een SSL-certificaat opnemen voor omgekeerde proxy** en voer uw certificaatgegevens in.
 
    ![Beveiligde omgekeerde proxy configureren op portal](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -74,7 +74,7 @@ Nadat u een resourcemanagersjabloon hebt, u de omgekeerde proxy inschakelen met 
         ...
     }
     ```
-3. Als u SSL-certificaten op de poort wilt configureren voor de omgekeerde proxy, voegt u het certificaat toe aan de eigenschap ***reverseProxyCertificate*** in de sectie **Microsoft.ServiceFabric/clusters** [Resourcetype](../resource-group-authoring-templates.md).
+3. Als u TLS/SSL-certificaten in de poort wilt configureren voor de omgekeerde proxy, voegt u het certificaat toe aan de eigenschap ***reverseProxyCertificate*** in de sectie **Microsoft.ServiceFabric/clusters** [Resource type](../resource-group-authoring-templates.md).
 
     ```json
     {

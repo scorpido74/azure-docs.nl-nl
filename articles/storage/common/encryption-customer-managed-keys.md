@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6a3447a88aea1087c7ec327a956044ea94e793e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b5712094b9821dfa041cd5ba8617e86f7231bde
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79410036"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478017"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Door de klant beheerde sleutels gebruiken met Azure Key Vault om Azure Storage-versleuteling te beheren
 
@@ -51,7 +51,7 @@ Door de klant beheerde sleutels kunnen alleen worden ingeschakeld op bestaande o
 
 Wanneer u een door de klant beheerde sleutel configureert, wordt in Azure Storage de hoofdgegevensversleutelingssleutel voor het account verpakt met de door de klant beheerde sleutel in de bijbehorende sleutelkluis. Het inschakelen van door de klant beheerde sleutels heeft geen invloed op de prestaties en wordt onmiddellijk van kracht.
 
-Wanneer u de sleutel wijzigt die wordt gebruikt voor Azure Storage-versleuteling door door klanten beheerde sleutels in te schakelen of uit te schakelen, de sleutelversie bij te werken of een andere sleutel op te geven, verandert de versleuteling van de hoofdsleutel, maar de gegevens in uw Azure Storage-account niet opnieuw moeten worden versleuteld.
+Wanneer u de sleutel wijzigt die wordt gebruikt voor Azure Storage-versleuteling door door klanten beheerde sleutels in te schakelen of uit te schakelen, de sleutelversie bij te werken of een andere sleutel op te geven, verandert de versleuteling van de hoofdsleutel, maar hoeven de gegevens in uw Azure Storage-account niet opnieuw te worden versleuteld.
 
 Wanneer u beheerde sleutels van klanten in- of uitschakelt of uitschakelt, of wanneer u de sleutel of de sleutelversie wijzigt, verandert de beveiliging van de hoofdversleutelingssleutel, maar hoeven de gegevens in uw Azure Storage-account niet opnieuw te worden versleuteld.
 
@@ -68,7 +68,7 @@ Zie een van de volgende artikelen voor meer informatie over het gebruik van door
 
 Als u door klanten beheerde sleutels voor een opslagaccount wilt inschakelen, moet u een Azure Key Vault gebruiken om uw sleutels op te slaan. U moet zowel de eigenschappen **Soft Delete** als Do **Not Purge** inschakelen op de sleutelkluis.
 
-Alleen RSA-sleutels van grootte 2048 worden ondersteund met Azure Storage-versleuteling. Zie **Key Vault-sleutels** in [Over Azure Key Vault-sleutels, -geheimen en -certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
+Alleen 2048-bits RSA- en RSA-HSM-sleutels worden ondersteund met Azure Storage-versleuteling. Zie **Key Vault-sleutels** in [Over Azure Key Vault-sleutels, -geheimen en -certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
 
 ## <a name="rotate-customer-managed-keys"></a>Door de klant beheerde sleutels roteren
 

@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
-ms.author: cherylmc
-ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/26/2020
+ms.author: osamaz
+ms.openlocfilehash: 5304aefaf3ad70bb552b4b0d1b26fcce9867c9c0
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74076671"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397733"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Routerconfiguratievoorbeelden voor het instellen en beheren van routering
 Deze pagina biedt interface- en routeringsconfiguratievoorbeelden voor routers uit de Cisco IOS-XE- en Juniper MX-serie wanneer u met ExpressRoute werkt. Deze zijn uitsluitend bedoeld als monsters voor begeleiding en mogen niet worden gebruikt zoals het is. U met uw leverancier samenwerken om de juiste configuraties voor uw netwerk te bedenken. 
@@ -91,6 +91,25 @@ U routekaarten en voorvoegingslijsten gebruiken om voorvoegsels te filteren die 
     !
     route-map <MS_Prefixes_Inbound> permit 10
      match ip address prefix-list <MS_Prefixes>
+    !
+
+### <a name="5-configuring-bfd"></a>5. BFD configureren
+
+U configureert BFD op twee plaatsen. Een op interface niveau en andere op BGP-niveau. Het voorbeeld hieronder is voor QinQ interface. 
+
+    interface GigabitEthernet<Interface_Number>.<Number>
+     bfd interval 300 min_rx 300 multiplier 3
+     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+     ip address <IPv4_Address><Subnet_Mask>
+    
+    router bgp <Customer_ASN>
+     bgp log-neighbor-changes
+     neighbor <IP#2_used_by_Azure> remote-as 12076
+     !        
+     address-family ipv4
+      neighbor <IP#2_used_by_Azure> activate
+      neighbor <IP#2_used_by_Azure> fall-over bfd
+     exit-address-family
     !
 
 
@@ -173,7 +192,7 @@ U uw router configureren om bepaalde voorvoegsels aan Microsoft te adverteren. U
     }
 
 
-### <a name="4-route-maps"></a>4. Routekaarten
+### <a name="4-route-policies"></a>4. Routebeleid
 U routekaarten en voorvoegingslijsten gebruiken om voorvoegsels te filteren die in uw netwerk worden gepropageerd. U het onderstaande voorbeeld gebruiken om de taak uit te voeren. Zorg ervoor dat u de juiste voorvoegsellijsten hebt ingesteld.
 
     policy-options {
@@ -203,6 +222,24 @@ U routekaarten en voorvoegingslijsten gebruiken om voorvoegsels te filteren die 
         }                                   
     }
 
+### <a name="4-configuring-bfd"></a>4. BFD configureren
+U configureert BFD alleen onder de sectie Protocol BGP.
+
+    protocols {
+        bgp { 
+            group <Group_Name> { 
+                peer-as 12076;              
+                neighbor <IP#2_used_by_Azure>;
+                bfd-liveness-detection {
+                       minimum-interval 3000;
+                       multiplier 3;
+                }
+            }                               
+        }                                   
+    }
+
 ## <a name="next-steps"></a>Volgende stappen
 Zie de [Veelgestelde vragen over ExpressRoute](expressroute-faqs.md) voor meer informatie.
+
+
 

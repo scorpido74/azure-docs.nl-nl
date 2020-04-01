@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251035"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476555"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Werken met kanalen die multi-bitrate live stream ontvangen van on-premises encoders
 
@@ -112,7 +112,7 @@ Een kanaal biedt een invoereindpunt (inname VAN URL) dat u opgeeft in de live en
 
 U de inname URL's krijgen wanneer u het kanaal maakt. Om deze URL's te krijgen, hoeft het kanaal niet in de **status Actief** te zijn. Wanneer u klaar bent om gegevens naar het kanaal te duwen, moet het kanaal in de **status Actief** zijn. Nadat het kanaal gegevens begint in te nemen, u een voorbeeld van uw stream bekijken via de url van het voorbeeld.
 
-Je hebt een optie om een gefragmenteerde MP4 -livestream (Smooth Streaming) in te nemen via een SSL-verbinding. Als u SSL wilt innemen, moet u de inname van DE URL bijwerken naar HTTPS. Op dit moment u RTMP niet via SSL innemen.
+Je hebt een optie om een gefragmenteerde MP4 (Smooth Streaming) live stream in te nemen via een TLS-verbinding. Als u TLS wilt innemen, moet u de inname van DE URL bijwerken naar HTTPS. Op dit moment u RTMP niet innemen via TLS.
 
 #### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>Hoofdframeinterval
 Wanneer u een on-premises live-encoder gebruikt om multibitratestream te genereren, geeft het hoofdframeinterval de duur aan van de groep afbeeldingen (GOP) zoals die door die externe encoder wordt gebruikt. Nadat het kanaal deze binnenkomende stream heeft ontvangen, u uw live stream leveren aan toepassingen voor het afspelen van klanten in een van de volgende indelingen: Smooth Streaming, Dynamic Adaptive Streaming over HTTP (DASH) en HTTP Live Streaming (HLS). Wanneer u live streaming doet, wordt HLS altijd dynamisch verpakt. Media Services berekent standaard automatisch de hls-segmentverpakkingsverhouding (fragmenten per segment) op basis van het hoofdframeinterval dat wordt ontvangen van de live-encoder.

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73748551"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478305"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Problemen met de configuratieserver oplossen
 
@@ -42,7 +42,7 @@ De bronmachine registreert zich bij de configuratieserver wanneer u de mobilitei
     3. Controleer of de mappen die worden vermeld in [uitsluitingvan de siteherstelmap van antivirusprogramma's,](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) zijn uitgesloten van de antivirussoftware.
     4. Wanneer netwerkproblemen zijn opgelost, probeert u de registratie opnieuw door de richtlijnen in [De bronmachine registreren met de configuratieserver](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)te volgen.
 
-6. Als de aanmaning van de **tekenreekspost: (7) - Geen verbinding met de server** is gevonden, zoekt u in hetzelfde logboekbestand naar de **tekenreeksaanvraag: (60) - Peer-certificaat kan niet worden geverifieerd met bepaalde CA-certificaten**. Deze fout kan optreden omdat het configuratieservercertificaat is verlopen of de bronmachine geen TLS 1.0- of hoger SSL-protocollen ondersteunt. Het kan ook optreden als een firewall SSL-communicatie tussen de bronmachine en de configuratieserver blokkeert. Als de tekenreeks wordt gevonden: 
+6. Als de aanmaning van de **tekenreekspost: (7) - Geen verbinding met de server** is gevonden, zoekt u in hetzelfde logboekbestand naar de **tekenreeksaanvraag: (60) - Peer-certificaat kan niet worden geverifieerd met bepaalde CA-certificaten**. Deze fout kan optreden omdat het configuratieservercertificaat is verlopen of de bronmachine geen TLS 1.0- of latere protocollen ondersteunt. Het kan ook optreden als een firewall tls-communicatie tussen de bronmachine en de configuratieserver blokkeert. Als de tekenreeks wordt gevonden: 
     1. Als u dit wilt oplossen, maakt u verbinding met het IP-adres van de configuratieserver met behulp van een webbrowser op de bronmachine. Gebruik het URI-https:\/ \/<-configuratieserver IP-adres\>:443/. Zorg ervoor dat de bronmachine de configuratieserver kan bereiken via poort 443.
     2. Controleer of er firewallregels op de bronmachine moeten worden toegevoegd of verwijderd om de bronmachine met de configuratieserver te laten praten. Vanwege de verscheidenheid aan firewallsoftware die mogelijk in gebruik is, kunnen we niet alle vereiste firewallconfiguraties vermelden. Werk samen met uw netwerkbeheerders om verbindingsproblemen te deblokkeren.
     3. Controleer of de mappen die worden vermeld in [uitsluitingvan de siteherstelmap van antivirusprogramma's,](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) zijn uitgesloten van de antivirussoftware.  

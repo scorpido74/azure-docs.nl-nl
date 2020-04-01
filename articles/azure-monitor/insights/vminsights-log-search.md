@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 71258b04bad9a7aec4e86564d51d1d6f3f8cac76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283800"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396930"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Logboeken opvragen vanuit Azure Monitor voor VM's
 
@@ -265,7 +265,7 @@ let Today = now(); VMComputer | extend DaysSinceBoot = Today - BootTime | summar
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Overzicht van Azure VM's op afbeelding, locatie en SKU
 
 ```kusto
-VMComputer | where AzureLocation != "" | summarize by ComputerName, AzureImageOffering, AzureLocation, AzureImageSku
+VMComputer | where AzureLocation != "" | summarize by Computer, AzureImageOffering, AzureLocation, AzureImageSku
 ```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>De fysieke geheugencapaciteit van alle beheerde computers weergeven
@@ -283,7 +283,7 @@ VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId | project Comput
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Alle processen zoeken met 'sql' in de opdrachtregel
 
 ```kusto
-VMComputer | where CommandLine contains_cs "sql" | summarize arg_max(TimeGenerated, *) by _ResourceId
+VMProcess | where CommandLine contains_cs "sql" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Een machine zoeken (meest recente record) op resourcenaam
@@ -307,7 +307,7 @@ VMProcess | where Machine == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summariz
 ### <a name="list-all-computers-running-sql-server"></a>Alle computers met SQL Server weergeven
 
 ```kusto
-VMComputer | where AzureResourceName in ((search in (VMProcess) "\*sql\*" | distinct Machine)) | distinct Computer
+VMComputer | where AzureResourceName in ((search in (VMProcess) "*sql*" | distinct Machine)) | distinct Computer
 ```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Alle unieke productversies van curl in mijn datacenter weergeven
@@ -319,7 +319,7 @@ VMProcess | where ExecutableName == "curl" | distinct ProductVersion
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Een computergroep maken van alle computers waarop CentOS wordt uitgevoerd
 
 ```kusto
-VMComputer | where OperatingSystemFullName contains_cs "CentOS" | distinct ComputerName
+VMComputer | where OperatingSystemFullName contains_cs "CentOS" | distinct Computer
 ```
 
 ### <a name="bytes-sent-and-received-trends"></a>Verzonden bytes en ontvangen trends

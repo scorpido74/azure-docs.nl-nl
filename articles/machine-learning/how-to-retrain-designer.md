@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: 264b169eefde18880f50feae2554aa3ca7037b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8791e933882832dc7b0037c860a4c4e1e9a54c7
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368159"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389032"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met de Azure Machine Learning-ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -54,14 +54,14 @@ Om een model om te scholen, hebt u een eerste model nodig. In deze sectie leert 
    In dit voorbeeld worden de gegevens opgeslagen in een [Azure-gegevensarchief.](how-to-access-data.md) Als u nog geen datastore hebt, u er nu een maken door **Nieuw gegevensarchief te**selecteren.
 
 1. Geef het pad naar uw gegevens op. U ook **Pad bladeren** selecteren om naar uw gegevensarchief te bladeren. 
-1. Selecteer **Uitvoeren** boven aan het canvas.
+1. Selecteer **Verzenden** boven aan het canvas.
     
    > [!NOTE]
    > Als u al een standaardcompute voor dit pijplijnconcept hebt ingesteld, wordt de pijplijn automatisch uitgevoerd. Anders u de aanwijzingen in het instellingenvenster volgen om er nu een in te stellen.
 
 ### <a name="find-your-trained-model"></a>Vind uw getrainde model
 
-De ontwerper slaat alle pijplijnuitvoer, inclusief getrainde modellen, op in het standaardopslagaccount. U ook rechtstreeks toegang krijgen tot het getrainde model in de ontwerper:
+De ontwerper slaat alle pijplijnuitvoer, inclusief getrainde modellen, op in het standaardopslagaccount. U echter ook rechtstreeks toegang krijgen tot getrainde modellen in de ontwerper:
 
 1. Wacht tot de pijplijn is voltooid.
 1. Selecteer de module **Train Model**.

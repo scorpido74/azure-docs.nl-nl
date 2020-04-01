@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 03/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 89240102837b65ed2a09d9f4865ad47ee5d5afa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154556"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473168"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Foutcodes azure AD-verificatie en autorisatie
 
@@ -148,7 +148,7 @@ Zoek op het numerieke deel van de geretourneerde foutcode.  Als u bijvoorbeeld d
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - De gebruiker of beheerder heeft geen toestemming gegeven om de toepassing te gebruiken met ID X. Stuur een interactieve autorisatieaanvraag voor deze gebruiker en bron. |
 | AADSTS65004 | UserDeclinedConsent - Gebruiker weigerde toestemming om toegang te krijgen tot de app. Laat de gebruiker zich opnieuw aanmelden en toestemming geven voor de app|
-| AADSTS65005 | Verkeerd geconfigureerde toepassing - De lijst met vereiste brontoegang voor apps bevat geen apps die door de bron kunnen worden ontdekt of de client-app heeft toegang gevraagd tot resource, die niet is opgegeven in de vereiste lijst met brontoegang of graph-service die slecht is geretourneerd aanvraag of resource niet gevonden. Als de app SAML ondersteunt, hebt u de app mogelijk geconfigureerd met de verkeerde id (entiteit). Probeer de resolutie die voor SAML wordt vermeld via de onderstaande link:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | Verkeerd geconfigureerde toepassing - De lijst met vereiste brontoegang voor apps bevat geen apps die door de bron kunnen worden ontdekt of De client-app heeft toegang tot resource aangevraagd, die niet is opgegeven in de vereiste lijst met brontoegang of de graph-service die slecht verzoek of bron heeft geretourneerd. Als de app SAML ondersteunt, hebt u de app mogelijk geconfigureerd met de verkeerde id (entiteit). Probeer de resolutie die voor SAML wordt vermeld via de onderstaande link:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | ActornotvalidserviceIdentity |
 | AADSTS70000 | Ongeldige subsidie - Verificatie is mislukt. Het vernieuwingstoken is niet geldig. De fout kan te wijten zijn aan de volgende redenen:<ul><li>Tokenbindingskop is leeg</li><li>Tokenbindinghash komt niet overeen</li></ul> |
 | AADSTS70001 | Onbevoegde Client - De toepassing is uitgeschakeld. |
@@ -271,6 +271,8 @@ Zoek op het numerieke deel van de geretourneerde foutcode.  Als u bijvoorbeeld d
 | AADSTS700020 | InteractieVereist - De toegangssubsidie vereist interactie. |
 | AADSTS700022 | OngeldigMultipleResourcesScope - De opgegeven waarde voor het bereik van de invoerparameter is niet geldig omdat deze meer dan één resource bevat. |
 | AADSTS700023 | Ongeldige ResourcelessScope - De opgegeven waarde voor het bereik van de invoerparameter is niet geldig wanneer u een toegangstoken aanvraagt. |
+| AADSTS700022| InvalidClientSecretExpiredKeysProvided - De meegeleverde clientgeheime sleutels zijn verlopen. Ga naar de Azure Portal om nieuwe sleutels voor uw app te maken of overweeg certificaatreferenties te gebruiken voor extra beveiliging:https://aka.ms/certCreds |
+| AADSTS700005 | Ongeldig GrantRedeemAgainstWrongTenant - Mits Autorisatiecode is bedoeld om te gebruiken tegen andere tenant, dus afgewezen. OAuth2-autorisatiecode moet worden ingewisseld tegen dezelfde tenant waarvoor het is aangeschaft (/gewone of /{tenant-ID} naar gelang van het geval) |
 | AADSTS1000000 | UserNotBoundError - De Binding API vereist dat de Azure AD-gebruiker ook verifieert met een externe IDP, wat nog niet is gebeurd. |
 | AADSTS1000002 | BindCompleteInterruptError - De binding is voltooid, maar de gebruiker moet worden geïnformeerd. |
 | AADSTS7000112 | Ongeautoriseerde ClientApplicationDisabled - De toepassing is uitgeschakeld. |

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/28/2019
-ms.openlocfilehash: c32731ce2de2b0f886a1e21ee8ccad3996e395eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2019
+ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480263"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411437"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboekquery's optimaliseren in Azure Monitor
 Azure Monitor Logs gebruikt [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboekgegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters voor u en optimaliseert ze voor uw logboekanalysewerk. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarmee de werkruimtegegevens worden opgeslagen. Zowel Azure Monitor Logs als Azure Data Explorer maakt gebruik van veel automatische queryoptimalisatiemechanismen. Hoewel automatische optimalisaties een aanzienlijke boost bieden, zijn ze in sommige gevallen waarin u uw queryprestaties drastisch verbeteren. In dit artikel worden de prestatieoverwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -57,7 +57,7 @@ Queryverwerkingstijd wordt besteed aan:
 - Het ophalen van gegevens – het ophalen van oude gegevens kost meer tijd dan het ophalen van recente gegevens.
 - Gegevensverwerking – logica en evaluatie van de gegevens. 
 
-Anders dan de tijd die wordt besteed in de queryverwerkingsknooppunten, is er extra tijd die wordt besteed door Azure Monitor Logs om: verifieer de gebruiker en controleer of ze toegang hebben tot deze gegevens, zoek het gegevensarchief, ontleed de query en wijs de queryverwerking toe en wijs de queryverwerking toe Knooppunten. Deze tijd is niet opgenomen in de query totale CPU-tijd.
+Anders dan de tijd die wordt besteed aan de queryverwerkingsknooppunten, is er extra tijd die wordt besteed door Azure Monitor Logs om: verifieer de gebruiker en controleer of ze toegang hebben tot deze gegevens, zoek het gegevensarchief, ontleed de query en wijs de queryverwerkingsknooppunten toe. Deze tijd is niet opgenomen in de query totale CPU-tijd.
 
 ### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>Vroege filtering van records voorafgaand aan het gebruik van hoge CPU-functies
 
@@ -155,6 +155,21 @@ Heartbeat
 
 > [!NOTE]
 > Deze indicator presenteert alleen CPU van de directe cluster. In multi-regio query, zou het vertegenwoordigen slechts een van de regio's. In query's met meerdere werkruimten bevat deze mogelijk niet alle werkruimten.
+
+### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Vermijd volledige XML en JSON-ontleden wanneer snaarparsing werkt
+Volledige parsing van een XML- of JSON-object kan hoge CPU- en geheugenbronnen verbruiken. In veel gevallen, wanneer slechts één of twee parameters nodig zijn en de XML- of JSON-objecten eenvoudig zijn, is het gemakkelijker om ze te ontleden als tekenreeksen met behulp van de [parse-operator](/azure/kusto/query/parseoperator) of andere [tekstparsingtechnieken](/azure/azure-monitor/log-query/parse-text). De prestatieverbetering zal belangrijker zijn naarmate het aantal records in het OBJECT XML of JSON toeneemt. Het is van essentieel belang wanneer het aantal records tientallen miljoenen bereikt.
+
+De volgende query retourneert bijvoorbeeld exact dezelfde resultaten als de bovenstaande query's zonder volledige XML-parsing uit te voeren. Houd er rekening mee dat het een aantal veronderstellingen maakt over de XML-bestandsstructuur, zoals dat FilePath-element komt na FileHash en geen van hen heeft kenmerken. 
+
+```Kusto
+//even more efficient
+SecurityEvent
+| where EventID == 8002 //Only this event have FileHash
+| where EventData !has "%SYSTEM32" //Early removal of unwanted records
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| summarize count() by FileHash, FilePath
+| where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
+```
 
 
 ## <a name="data-used-for-processed-query"></a>Gegevens die worden gebruikt voor verwerkte query's

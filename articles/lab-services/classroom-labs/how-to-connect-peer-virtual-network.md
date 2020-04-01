@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: d2115b1dc7e9f3150e44eb5ee9417e88ebeaa279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56c31e03eeec0c81207dc402e864eadec2d768bd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370835"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474071"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Het netwerk van uw lab verbinden met een virtueel netwerk van collega's in Azure Lab Services 
 In dit artikel vindt u informatie over het peering van uw labsnetwerk met een ander netwerk. 
@@ -38,6 +38,8 @@ Bepaalde on-premises netwerken zijn verbonden met Azure Virtual Network via [Exp
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Configureren op het moment van het maken van labaccount
 Tijdens het maken van een nieuw labaccount u een bestaand virtueel netwerk kiezen dat wordt weergegeven in de vervolgkeuzelijst **Peer virtueel netwerk** op het tabblad **Geavanceerd.** Het geselecteerde virtuele netwerk is verbonden (peered) met laboratoria die onder het labaccount zijn gemaakt. Alle virtuele machines in laboratoria die zijn gemaakt na het maken van deze verandering zou toegang hebben tot de middelen op de peered virtuele netwerk. 
+
+Er is ook een bepaling om **adres bereik** van virtuele machines voor de laboratoria te bieden. Als het adresbereik wordt opgegeven, worden alle virtuele machines in de labs onder het labaccount in dat adresbereik gemaakt. Het adresbereik moet zich in CIDR-notatie bevinden (bijvoorbeeld 10.20.0.0/20) en niet overlappen met bestaande adresbereiken. Bij het verstrekken van een adresbereik is het belangrijk om na te denken over het aantal virtuele machines dat in de laboratoria wordt gemaakt en een adresbereik te bieden om dat mogelijk te maken. Voor een bepaald bereik wordt het aantal laboratoria dat het kan huisvesten weergegeven.
 
 ![VNet selecteren om te peeren](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 

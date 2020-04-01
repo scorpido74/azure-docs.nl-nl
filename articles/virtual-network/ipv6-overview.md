@@ -1,5 +1,5 @@
 ---
-title: Overzicht van IPv6 voor Azure Virtual Network (Voorbeeld)
+title: Overzicht van IPv6 voor Het Virtuele Netwerk van Azure
 titlesuffix: Azure Virtual Network
 description: IPv6-beschrijving van IPv6-eindpunten en gegevenspaden in een virtueel Azure-netwerk.
 services: virtual-network
@@ -10,24 +10,22 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 12/19/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03b279ead6b1f5d26ae92b63a8780a61dfd711bb
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780076"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420573"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Wat is IPv6 voor Azure Virtual Network? (Preview)
+# <a name="what-is-ipv6-for-azure-virtual-network"></a>Wat is IPv6 voor Azure Virtual Network?
 
 Met IPv6 voor Azure Virtual Network (VNet) u toepassingen in Azure hosten met IPv6- en IPv4-connectiviteit, zowel binnen een virtueel netwerk als van en naar internet. Door de uitputting van openbare IPv4-adressen worden nieuwe netwerken voor mobiliteit en Internet of Things (IoT) vaak gebouwd op IPv6. Zelfs lang gevestigde ISP en mobiele netwerken worden omgezet in IPv6. IPv4-only diensten kunnen zich in zowel bestaande als opkomende markten in een echt nadeel bevinden. Dual stack IPv4/IPv6-connectiviteit stelt azure-gehoste services in staat om deze technologiekloof te overbruggen met wereldwijd beschikbare, dual-stackservices die gemakkelijk verbinding maken met zowel de bestaande IPv4- als deze nieuwe IPv6-apparaten en -netwerken.
 
 Dankzij de originele IPv6-connectiviteit van Azure is het eenvoudig om iPv4/IPv6-internetverbinding (Dual Stack) te bieden voor toepassingen die in Azure worden gehost. Het zorgt voor eenvoudige implementatie van VM's met load balanced IPv6-connectiviteit voor zowel inkomende als uitgaande gestarte verbindingen. Deze functie is nog steeds beschikbaar en meer informatie is [hier](../load-balancer/load-balancer-ipv6-overview.md)beschikbaar.
 IPv6 voor het virtuele netwerk van Azure is veel vollediger: volledige IPv6-oplossingsarchitecturen kunnen worden geïmplementeerd in Azure.
 
-> [!Important]
-> IPv6 voor Azure Virtual Network is momenteel in openbare preview. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In het volgende diagram wordt een eenvoudige implementatie van De Dubbele Stapel (IPv4/IPv6) in Azure weergegeven:
 
@@ -74,7 +72,7 @@ IPv6 voor Azure VNET is een fundamentele functieset waarmee klanten dual stack-t
 
 ## <a name="limitations"></a>Beperkingen
 De huidige IPv6 voor Azure virtual network release heeft de volgende beperkingen:
-- IPv6 voor azure virtual network (Preview) is beschikbaar in alle wereldwijde Azure-regio's, maar alleen in Global Azure, nog niet in overheidsclouds.
+- IPv6 voor azure virtueel netwerk is beschikbaar in alle wereldwijde Azure-regio's, maar alleen in Global Azure- nog niet in overheidsclouds.
 - ExpressRoute- en VPN-gateways kunnen niet worden gebruikt in een VNET met IPv6 ingeschakeld, direct of peered met "UseRemoteGateway". 
 - Het Azure-platform (AKS, enz.) biedt geen ondersteuning voor IPv6-communicatie voor containers.  
 

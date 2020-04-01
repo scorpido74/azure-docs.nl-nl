@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka gebeurtenissen van Azure Event Hubs-proces
-description: 'Zelf studie: in dit artikel wordt beschreven hoe u Kafka-gebeurtenissen verwerkt die via event hubs worden opgenomen met behulp van Azure Stream Analytics'
+title: Azure Event Hubs - Apache Kafka-gebeurtenissen verwerken
+description: 'Zelfstudie: In dit artikel wordt uitgelegd hoe u Kafka-gebeurtenissen verwerkt die via gebeurtenishubs worden ingenomen met Azure Stream Analytics'
 services: event-hubs
 documentationcenter: ''
 author: spelluru
@@ -13,21 +13,21 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 8047ac5d3db2db230a00583e888a4afea3b282b9
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 054b5c7d13df39de4fa57167e0363c0b4acf9b08
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969377"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80280742"
 ---
-# <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zelf studie: Apache Kafka voor Event Hubs gebeurtenissen verwerken met Stream Analytics 
-In dit artikel laat zien hoe gegevens streamen naar Event Hubs waarvoor Kafka is ingeschakeld en met Azure Stream Analytics te verwerken. Dit leidt u door de volgende stappen uit: 
+# <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zelfstudie: Apache Kafka verwerken voor gebeurtenissen in eventhubs met streamanalyses 
+In dit artikel ziet u hoe u gegevens streamen naar gebeurtenishubs en deze verwerken met Azure Stream Analytics. Het leidt u door de volgende stappen: 
 
-1. Maak een Kafka ingeschakeld Event Hubs-naamruimte.
-2. Maak een Kafka-client die berichten naar de event hub verzendt.
-3. Maak een Stream Analytics-taak die gegevens van de event hub naar een Azure blob-opslag kopieert. 
+1. Maak een naamruimte voor gebeurtenissenhubs met Kafka.Create a Kafka enabled Event Hubs namespace.
+2. Maak een Kafka-client die berichten naar de gebeurtenishub verzendt.
+3. Maak een Stream Analytics-taak die gegevens van de gebeurtenishub kopieert naar een Azure blob-opslag. 
 
-U hoeft niet te wijzigen van uw clients protocol of uw eigen clusters worden uitgevoerd wanneer u het Kafka-eindpunt beschikbaar is gemaakt door een event hub. Azure Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html) en hoger. 
+U hoeft uw protocolclients niet te wijzigen of uw eigen clusters uit te voeren wanneer u het Kafka-eindpunt gebruikt dat wordt blootgesteld door een gebeurtenishub. Azure Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html) en boven. 
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -36,22 +36,22 @@ Zorg ervoor dat u aan de volgende vereisten voldoet om deze snelstart uit te voe
 
 * Een Azure-abonnement. Als u nog geen account hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
-* [Download](https://maven.apache.org/download.cgi) en [installeer](https://maven.apache.org/install.html) een binair Maven-archief.
+* [Download](https://maven.apache.org/download.cgi) en [installeer](https://maven.apache.org/install.html) een Maven binair archief.
 * [Git](https://www.git-scm.com/)
-* Een **Azure Storage-account**. Als u er nog geen hebt, [maakt u er een](../storage/common/storage-account-create.md) voordat u verder gaat. De uitvoergegevens worden opgeslagen in een Azure blob-opslag van de Stream Analytics-taak in dit scenario. 
+* Een **Azure Storage-account**. Als u er geen hebt, [maakt u er een](../storage/common/storage-account-create.md) voordat u verder gaat. De taak Stream Analytics in deze walkthrough slaat de uitvoergegevens op in een Azure blob-opslag. 
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken waarvoor Kafka is ingeschakeld
-Wanneer u een **standaardlaag Event hubs** naam ruimte maakt, wordt het Kafka-eind punt voor de naam ruimte automatisch ingeschakeld. U kunt gebeurtenissen streamen vanuit uw toepassingen die gebruikmaken van het Kafka-protocol in de standaardlaag Event Hubs. Volg de stapsgewijze instructies in het **artikel** [een event hub maken met behulp van Azure Portal](event-hubs-create.md) om een standaardlaag Event hubs naam ruimte te maken. 
+Wanneer u een naamruimte voor **standaardgebeurtenishubs** maakt, wordt het Kafka-eindpunt voor de naamruimte automatisch ingeschakeld. U gebeurtenissen streamen vanuit uw toepassingen die het Kafka-protocol gebruiken naar gebeurtenishubs met standaardniveau. Volg stapsgewijze instructies in de [gebeurtenishub maken met Azure-portal](event-hubs-create.md) om een naamruimte voor **standaardniveaugebeurtenishubs** te maken. 
 
 > [!NOTE]
-> Event Hubs voor Kafka is alleen beschikbaar in de lagen **Standard** en **dedicated** . De laag **basis** biedt geen ondersteuning voor Kafka op Event hubs.
+> Event Hubs voor Kafka is alleen beschikbaar op **standaard** en **dedicated** lagen. De **basislaag** biedt geen ondersteuning voor Kafka op gebeurtenishubs.
 
-## <a name="send-messages-with-kafka-in-event-hubs"></a>Berichten verzenden met Kafka in Event Hubs
+## <a name="send-messages-with-kafka-in-event-hubs"></a>Berichten verzenden met Kafka in gebeurtenishubs
 
-1. Kloon de [Azure Event hubs voor de Kafka-opslag plaats](https://github.com/Azure/azure-event-hubs-for-kafka) naar uw computer.
-2. Navigeer naar de map: `azure-event-hubs-for-kafka/quickstart/java/producer`. 
-4. Werk de configuratie gegevens voor de producent bij in `src/main/resources/producer.config`. Geef de **naam** en **Connection String** op voor de **Event hub naam ruimte**. 
+1. Kloon de [Azure Event Hubs voor Kafka-opslagplaats naar](https://github.com/Azure/azure-event-hubs-for-kafka) uw machine.
+2. Navigeer naar de `azure-event-hubs-for-kafka/quickstart/java/producer`map: . 
+4. Werk de configuratiegegevens voor `src/main/resources/producer.config`de producent bij in . Geef de **naam** en **verbindingstekenreeks** op voor de **naamruimte van**de gebeurtenishub . 
 
     ```xml
     bootstrap.servers={EVENT HUB NAMESPACE}.servicebus.windows.net:9093
@@ -60,115 +60,115 @@ Wanneer u een **standaardlaag Event hubs** naam ruimte maakt, wordt het Kafka-ei
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
 
-5. Navigeer naar `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/`en open **TestDataReporter. java** -bestand in een editor naar keuze. 
-6. Opmerkingen bij de volgende coderegel:
+5. Navigeer `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/`naar en open **TestDataReporter.java-bestand** in een editor naar keuze. 
+6. Reageer op de volgende regel code:
 
     ```java
                 //final ProducerRecord<Long, String> record = new ProducerRecord<Long, String>(TOPIC, time, "Test Data " + i);
     ```
-3. Voeg de volgende regel code in plaats van de opmerkingen code: 
+3. Voeg de volgende coderegel toe in plaats van de opmerkingscode: 
 
     ```java
                 final ProducerRecord<Long, String> record = new ProducerRecord<Long, String>(TOPIC, time, "{ \"eventData\": \"Test Data " + i + "\" }");            
     ```
 
-    Deze code verzendt de gebeurtenis gegevens in **JSON** -indeling. Wanneer u de invoer voor een Stream Analytics-taak configureert, kunt u JSON opgeven als de notatie voor de invoergegevens. 
-7. **Voer de producent uit** en stroom naar Kafka ingeschakelde Event hubs. Schakel op een Windows-computer, wanneer u een **node. js-opdracht prompt**gebruikt, over naar de map `azure-event-hubs-for-kafka/quickstart/java/producer` voordat u deze opdrachten uitvoert. 
+    Deze code verzendt de gebeurtenisgegevens in **JSON-indeling.** Wanneer u invoer configureert voor een Stream Analytics-taak, geeft u JSON op als de indeling voor de invoergegevens. 
+7. **Voer de producent** uit en stream naar Event Hubs. Ga op een Windows-machine bij het gebruik van `azure-event-hubs-for-kafka/quickstart/java/producer` een **opdrachtprompt Node.js**naar de map voordat u deze opdrachten uitvoert. 
    
     ```shell
     mvn clean package
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
 
-## <a name="verify-that-event-hub-receives-the-data"></a>Controleer of dat de gegevens worden ontvangen die event hub
+## <a name="verify-that-event-hub-receives-the-data"></a>Controleren of de gebeurtenishub de gegevens ontvangt
 
-1. Selecteer **Event hubs** onder **entities**. Controleer of er een Event Hub met de naam **test**wordt weer geven. 
+1. Selecteer **gebeurtenishubs** onder **ENTITEITEN**. Controleer of u een gebeurtenishub met de naam **test**ziet . 
 
-    ![Event hub - testen](./media/event-hubs-kafka-stream-analytics/test-event-hub.png)
-2. Bevestig dat u berichten die naar de event hub. 
+    ![Gebeurtenishub - test](./media/event-hubs-kafka-stream-analytics/test-event-hub.png)
+2. Controleer of er berichten binnenkomen in de gebeurtenishub. 
 
-    ![Event hub - berichten](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
+    ![Gebeurtenishub - berichten](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
 
-## <a name="process-event-data-using-a-stream-analytics-job"></a>Gebeurtenis-gegevens verwerken met behulp van een Stream Analytics-taak
-In deze sectie maakt u een Azure Stream Analytics-taak. De Kafka-client verzendt gebeurtenissen naar de event hub. U maakt een Stream Analytics-taak die gebeurtenis gegevens als invoer en levert deze naar een Azure blob-opslag. Als u geen **Azure Storage account**hebt, maakt u er [een](../storage/common/storage-account-create.md).
+## <a name="process-event-data-using-a-stream-analytics-job"></a>Gebeurtenisgegevens verwerken met een streamanalytics-taak
+In deze sectie maakt u een Azure Stream Analytics-taak. De Kafka-client stuurt gebeurtenissen naar de gebeurtenishub. U maakt een Stream Analytics-taak die gebeurtenisgegevens als invoer en uitvoer naar een Azure blob-opslag brengt. Als u geen **Azure Storage-account hebt,** [maakt u er een.](../storage/common/storage-account-create.md)
 
-De query in de Stream Analytics-taak wordt doorgegeven via de gegevens zonder de uitvoering van alle analyses. U kunt een query maken die de invoergegevens transformeert om uitvoergegevens in een andere indeling of met de verworven inzichten te produceren.  
+De query in de taak Stream Analytics gaat door de gegevens zonder analyses uit te voeren. U een query maken die de invoergegevens transformeert om uitvoergegevens in een andere indeling of met verkregen inzichten te produceren.  
 
 ### <a name="create-a-stream-analytics-job"></a>Een Stream Analytics-taak maken 
 
-1. Selecteer **+ een resource maken** in de [Azure Portal](https://portal.azure.com).
-2. Selecteer **analyse** in het menu van **Azure Marketplace** en selecteer **Stream Analytics taak**. 
-3. Voer op de pagina **nieuw stream Analytics** de volgende acties uit: 
+1. Selecteer **+ Een resource maken** in de [Azure-portal](https://portal.azure.com).
+2. Selecteer **Analytics** in het Azure **Marketplace-menu** en selecteer **de taak Stream Analytics**. 
+3. Ga op de pagina **New Stream Analytics** de volgende acties uitvoeren: 
     1. Voer een **naam** in voor de taak. 
     2. Selecteer uw **abonnement**.
-    3. Selecteer **nieuwe maken** voor de **resource groep** en voer de naam in. U kunt ook **een bestaande** resource groep gebruiken. 
+    3. Selecteer **Nieuw maken** voor de **resourcegroep** en voer de naam in. U ook een bestaande resourcegroep **gebruiken.** 
     4. Selecteer een **locatie** voor de taak.
-    5. Selecteer **maken** om de taak te maken. 
+    5. Selecteer **Maken** om de taak te maken. 
 
-        ![Nieuwe Stream Analytics-taak](./media/event-hubs-kafka-stream-analytics/new-stream-analytics-job.png)
+        ![Nieuwe functie Stream Analytics](./media/event-hubs-kafka-stream-analytics/new-stream-analytics-job.png)
 
 ### <a name="configure-job-input"></a>Taakinvoer configureren
 
-1. Selecteer in het meldings bericht **naar resource gaan** om de pagina **Stream Analytics taak** weer te geven. 
-2. Selecteer **invoer** in het gedeelte **taak topologie** in het menu links.
-3. Selecteer **stroom invoer toevoegen**en selecteer vervolgens **Event hub**. 
+1. Selecteer in het meldingsbericht **Ga naar resource om** de **vacaturepagina Stream Analytics** weer te geven. 
+2. Selecteer **Invoer** in de sectie **TAAKTOPOLOGIE** in het linkermenu.
+3. Selecteer **Streaminvoer toevoegen**en selecteer **vervolgens Gebeurtenishub**. 
 
-    ![Event hub als invoer toevoegen](./media/event-hubs-kafka-stream-analytics/select-event-hub-input.png)
-4. Voer op de pagina **Event hub-invoer** configuratie de volgende acties uit: 
+    ![Gebeurtenishub toevoegen als invoer](./media/event-hubs-kafka-stream-analytics/select-event-hub-input.png)
+4. Voer op de configuratiepagina **van de gebeurtenishub** de volgende acties uit: 
 
     1. Geef een **alias** op voor de invoer. 
     2. Selecteer uw **Azure-abonnement**.
-    3. Selecteer de **Event hub naam ruimte** die u eerder hebt gemaakt. 
-    4. Selecteer **testen** voor de **Event hub**. 
+    3. Selecteer de **naamruimte van** de gebeurtenishub die u eerder hebt gemaakt. 
+    4. Selecteer **test** voor de **gebeurtenishub**. 
     5. Selecteer **Opslaan**. 
 
-        ![Event hub invoer configuratie](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
+        ![Configuratie van gebeurtenishubinvoer](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
 
 ### <a name="configure-job-output"></a>Taakuitvoer configureren 
 
-1. Selecteer **uitvoer** in het gedeelte **taak topologie** in het menu. 
-2. Selecteer **+ toevoegen** op de werk balk en selecteer **Blob Storage**
-3. Voer de volgende acties op de pagina Blob storage-uitvoer instellingen: 
-    1. Geef een **alias** voor de uitvoer op. 
-    2. Selecteer uw Azure-**abonnement**. 
+1. Selecteer **Uitvoer** in de sectie **TAAKTOPOLOGIE** in het menu. 
+2. Selecteren **+ Toevoegen** op de werkbalk en **Blob-opslag** selecteren
+3. Ga op de pagina Opslaginstellingen van blobs de volgende acties uitvoeren: 
+    1. Geef een **alias** op voor de uitvoer. 
+    2. Selecteer uw **Azure-abonnement**. 
     3. Selecteer uw **Azure Storage-account**. 
-    4. Voer een **naam in voor de container** waarin de uitvoer gegevens van de stream Analytics query worden opgeslagen.
+    4. Voer een **naam in voor de container** waarmee de uitvoergegevens uit de query Stream Analytics worden opgeslagen.
     5. Selecteer **Opslaan**.
 
-        ![Configuratie van BLOB Storage-uitvoer](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
+        ![Opslagconfiguratie blobopslag](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
  
 
 ### <a name="define-a-query"></a>Een query definiëren
-Nadat u een Stream Analytics-taak zodanig hebt ingesteld dat een binnenkomende gegevensstroom kan worden gelezen, is de volgende stap het maken van een transformatie waarmee gegevens in real-time worden geanalyseerd. U definieert de transformatie-query met [Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). In dit scenario definieert u een query die wordt doorgegeven via de gegevens zonder uit te voeren van een transformatie.
+Nadat u een Stream Analytics-taak zodanig hebt ingesteld dat een binnenkomende gegevensstroom kan worden gelezen, is de volgende stap het maken van een transformatie waarmee gegevens in real-time worden geanalyseerd. U definieert de transformatie-query met [Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). In deze walkthrough definieert u een query die door de gegevens gaat zonder een transformatie uit te voeren.
 
-1. Selecteer **query**.
-2. Vervang in het query venster `[YourOutputAlias]` door de uitvoer alias die u eerder hebt gemaakt.
-3. Vervang `[YourInputAlias]` door de invoer alias die u eerder hebt gemaakt. 
+1. Selecteer **Query**.
+2. Vervang in `[YourOutputAlias]` het queryvenster de uitvoeralias die u eerder hebt gemaakt.
+3. Vervang `[YourInputAlias]` door de invoeralias die u eerder hebt gemaakt. 
 4. Selecteer **Opslaan** op de werkbalk. 
 
-    ![Query's uitvoeren](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![Query’s uitvoeren](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
-### <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
+### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
 
-1. Selecteer **overzicht** in het menu links. 
+1. Selecteer **Overzicht** in het linkermenu. 
 2. Selecteer **Starten**. 
 
-    ![Startmenu](./media/event-hubs-kafka-stream-analytics/start-menu.png)
-1. Selecteer op de pagina **taak starten** de optie **starten**. 
+    ![Het menu Start](./media/event-hubs-kafka-stream-analytics/start-menu.png)
+1. Selecteer Op de taakpagina **Starten** de optie **Start**. 
 
-    ![Startpagina van de taak](./media/event-hubs-kafka-stream-analytics/start-job-page.png)
-1. Wacht tot de status van de taak is gewijzigd van **begint** met **uitvoeren**. 
+    ![Taakpagina starten](./media/event-hubs-kafka-stream-analytics/start-job-page.png)
+1. Wacht tot de status van de taak verandert **van Start** naar **start**. 
 
-    ![Taakstatus - uitgevoerd](./media/event-hubs-kafka-stream-analytics/running.png)
+    ![Functiestatus - uitvoeren](./media/event-hubs-kafka-stream-analytics/running.png)
 
-## <a name="test-the-scenario"></a>Testen van het scenario
-1. Voer de **Kafka-producent** opnieuw uit om gebeurtenissen naar het event hub te verzenden. 
+## <a name="test-the-scenario"></a>Het scenario testen
+1. Voer de **Kafka-producent** opnieuw uit om evenementen naar de gebeurtenishub te verzenden. 
 
     ```shell
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
-1. Controleer of er **uitvoer gegevens** worden weer gegeven in de **Azure Blob-opslag**. U ziet een JSON-bestand in de container met 100 rijen die lijkt op het volgende voorbeeldrijen: 
+1. Controleer of er **uitvoergegevens** worden gegenereerd in de **Azure Blob-opslag.** U ziet een JSON-bestand in de container met 100 rijen die lijken op de volgende voorbeeldrijen: 
 
     ```
     {"eventData":"Test Data 0","EventProcessedUtcTime":"2018-08-30T03:27:23.1592910Z","PartitionId":0,"EventEnqueuedUtcTime":"2018-08-30T03:27:22.9220000Z"}
@@ -176,20 +176,20 @@ Nadat u een Stream Analytics-taak zodanig hebt ingesteld dat een binnenkomende g
     {"eventData":"Test Data 2","EventProcessedUtcTime":"2018-08-30T03:27:23.3936511Z","PartitionId":0,"EventEnqueuedUtcTime":"2018-08-30T03:27:22.9220000Z"}
     ```
 
-    De Azure Stream Analytics-taak invoergegevens van de event hub worden ontvangen en opgeslagen in de Azure blob-opslag in dit scenario. 
+    De taak Azure Stream Analytics heeft invoergegevens ontvangen van de gebeurtenishub en deze opgeslagen in de Azure blob-opslag in dit scenario. 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd u hoe u kunt streamen naar Event Hubs waarvoor Kafka is ingeschakeld zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Zie het volgende onderwerp voor meer informatie over Event Hubs en Event Hubs voor Kafka:  
+In dit artikel heb je geleerd hoe je streamen naar Event Hubs zonder je protocolclients te wijzigen of je eigen clusters uit te voeren. Zie het volgende onderwerp voor meer informatie over Event Hubs en Event Hubs voor Kafka:  
 
 - [Meer informatie over Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Event Hubs maken waarvoor Kafka is ingeschakeld](event-hubs-create-kafka-enabled.md)
+- [Event Hubs maken waarvoor Kafka is ingeschakeld](event-hubs-create.md)
 - [Streamen naar Event Hubs vanaf uw Kafka-toepassingen](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Een Kafka-broker spiegelen in een event hub waarvoor Kafka is ingeschakeld](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Connect Apache Spark to a Kafka-enabled event hub](event-hubs-kafka-spark-tutorial.md) (Apache Spark verbinden met een Event Hub waarvoor Kafka is ingeschakeld)
-- [Apache Flink verbinden met een Event Hub waarvoor Kafka is ingeschakeld](event-hubs-kafka-flink-tutorial.md)
-- [Integrate Kafka Connect with a Kafka-enabled event hub](event-hubs-kafka-connect-tutorial.md) (Kafka Connect integreren met een Event Hub waarvoor Kafka is ingeschakeld)
-- [Akka Streams verbinden met een Event Hub waarvoor Kafka is ingeschakeld](event-hubs-kafka-akka-streams-tutorial.md)
+- [Een Kafka-broker spiegelen in een Event Hub](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Apache Spark aan een Event Hub koppelen](event-hubs-kafka-spark-tutorial.md)
+- [Apache Flink aan een Event Hub koppelen](event-hubs-kafka-flink-tutorial.md)
+- [Integreer Kafka Connect met een gebeurtenishub](event-hubs-kafka-connect-tutorial.md)
+- [Akka Streams verbinden met een gebeurtenishub](event-hubs-kafka-akka-streams-tutorial.md)
 - [Explore samples on our GitHub](https://github.com/Azure/azure-event-hubs-for-kafka) (Voorbeelden bekijken op GitHub) 

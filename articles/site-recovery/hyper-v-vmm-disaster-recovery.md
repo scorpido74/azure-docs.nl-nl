@@ -4,16 +4,15 @@ description: Informatie over het instellen van herstel na noodgevallen voor Hype
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74132989"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437511"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Herstel na noodgevallen instellen voor Hyper-V-VM's naar een secundaire on-premises site
 
@@ -45,7 +44,7 @@ Bij [netwerktoewijzing](hyper-v-vmm-network-mapping.md) worden on-premises VMM-n
 
 - Virtuele machines worden verbonden met de juiste VM-doelnetwerken na een failover. 
 - Gerepliceerde VM's worden optimaal op Hyper-V-doelhostservers geplaatst. 
-- Als u geen netwerktoewijzing configureert, worden gerepliceerde virtuele machines na een failover niet verbonden met een VM-netwerk.
+- Als u netwerktoewijzing niet configureert, worden replica-VM's niet meer verbonden met een VM-netwerk na een failover.
 
 Bereid VMM als volgt voor:
 

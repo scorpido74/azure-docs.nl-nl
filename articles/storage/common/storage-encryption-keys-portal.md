@@ -10,12 +10,12 @@ ms.date: 03/19/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bef3b53a160f17248c1a26e97bc85a86843cb3c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7878cae7bc6aabf1db58bfd63338955b9e830d3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061197"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478235"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van de Azure-portal
 
@@ -32,7 +32,7 @@ Zie de secties getiteld **Soft-delete** en **Inschakelen van zuiveringsbeveiligi
 - [Soft-delete gebruiken met PowerShell](../../key-vault/key-vault-soft-delete-powershell.md).
 - [Soft-delete gebruiken met CLI](../../key-vault/key-vault-soft-delete-cli.md).
 
-Alleen RSA-sleutels van grootte 2048 worden ondersteund met Azure Storage-versleuteling. Zie **Key Vault-sleutels** in [Over Azure Key Vault-sleutels, -geheimen en -certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
+Alleen 2048-bits RSA- en RSA-HSM-sleutels worden ondersteund met Azure Storage-versleuteling. Zie **Key Vault-sleutels** in [Over Azure Key Vault-sleutels, -geheimen en -certificaten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)voor meer informatie over sleutels.
 
 ## <a name="enable-customer-managed-keys"></a>Door de klant beheerde sleutels inschakelen
 

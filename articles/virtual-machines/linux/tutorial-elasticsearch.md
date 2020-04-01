@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 4d6dce952eca3d528a310685106a017dd7e3b80f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66166024"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066550"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>De Elastic Stack installeren op een virtuele machine in Azure
 
@@ -37,7 +37,7 @@ In deze zelfstudie leert u het volgende:
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.4 of nieuwer uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.4 of nieuwer uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -45,7 +45,7 @@ Een resourcegroep maken met de opdracht [az group create](/cli/azure/group). Een
 
 In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -55,7 +55,7 @@ Maak een VM met de opdracht [az vm create](/cli/azure/vm).
 
 In het volgende voorbeeld wordt een VM gemaakt met de naam *myVM* en worden er SSH-sleutels gemaakt, als deze nog niet bestaan op een standaardsleutellocatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
@@ -66,7 +66,7 @@ az vm create \
 
 Wanneer de virtuele machine is gemaakt, toont de Azure CLI informatie die lijkt op de informatie in het volgende voorbeeld. Noteer het `publicIpAddress`. Dit adres wordt gebruikt voor toegang tot de virtuele machine.
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -81,7 +81,7 @@ Wanneer de virtuele machine is gemaakt, toont de Azure CLI informatie die lijkt 
 
 ## <a name="ssh-into-your-vm"></a>SSH in uw virtuele machine
 
-Als u het openbare IP-adres van uw VM niet weet, voert u de opdracht [az network public-ip list](/cli/azure/network/public-ip) uit:
+Als u het openbare IP-adres van uw vm nog niet kent, voert u de opdracht [openbare-ip-lijst van het AZ-netwerk](/cli/azure/network/public-ip) uit:
 
 ```azurecli-interactive
 az network public-ip list --resource-group myResourceGroup --query [].ipAddress

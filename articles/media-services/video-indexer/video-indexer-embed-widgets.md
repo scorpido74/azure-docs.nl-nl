@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
-ms.translationtype: HT
+ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389372"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411614"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video-indexerwidgets insluiten in uw apps
 
@@ -66,16 +66,12 @@ U de widget Editor gebruiken om nieuwe projecten te maken en de inzichten van ee
 
 1. Meld u aan bij de website [van Video Indexer.](https://www.videoindexer.ai/)
 2. Selecteer de video waarmee u wilt werken.
-3. Selecteer de knop **Insluiten** die onder de video wordt weergegeven.
-
-    ![Knop Insluiten in video-indexer](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
+3. Selecteer de insluitknop (**</>**) die onder de video wordt weergegeven.
 
     Nadat u de knop **Insluiten** hebt geselecteerd, u de widget selecteren die u in uw app wilt insluiten.
 4. Selecteer het gewenste type widget **(Cognitive Insights,** **Player**of **Editor).**
- 
-5. Kopieer de insluitcode en voeg deze toe aan uw app.
-
-    ![Code insluiten voor app—Video-indexer](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+5. Kopieer de insluitcode (wordt weergegeven in **De ingesloten code kopiëren** in het dialoogvenster Delen & **insluiten).**
+6. Voeg de code toe aan uw app.
 
 > [!NOTE]
 > Als u problemen hebt met het `location` delen van uw video-URL's, voegt u de parameter toe aan de koppeling. De parameter moet worden ingesteld op de [Azure-gebieden waarin VideoIndexer bestaat](regions.md). Bijvoorbeeld: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
@@ -239,7 +235,7 @@ Als u bijvoorbeeld een widget wilt insluiten die alleen personen en trefwoordeni
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-De titel van het iframe-venster `&title=<YourTitle>` kan ook worden aangepast door de iframe-URL te verstrekken. (Hiermee wordt de <title> HTML-waarde aangepast).
+De titel van het iframe-venster `&title=<YourTitle>` kan ook worden aangepast door de iframe-URL te verstrekken. (Hiermee wordt de `<title>` HTML-waarde aangepast).
    
 Als u bijvoorbeeld uw iframevenster de titel 'MyInsights' wilt geven, ziet de URL er als volgt uit:
 
@@ -257,7 +253,7 @@ Bijvoorbeeld:
 
 Standaard heeft Video Indexer-speler automatisch ondertiteling gegenereerd die zijn gebaseerd op het transcript van de video. Het transcript wordt uit de video gehaald met de brontaal die is geselecteerd toen de video werd geüpload.
 
-Als u wilt insluiten met een andere taal, u &captions=< Language Code > toevoegen aan de URL van de insluitende speler. Als u wilt dat de bijschriften standaard worden weergegeven, u &showCaptions=true doorgeven.
+Als u wilt insluiten met een `&captions=<Language Code>` andere taal, u toevoegen aan de URL van de speler insluiten. Als u wilt dat de bijschriften standaard worden weergegeven, u &showCaptions=true doorgeven.
 
 De insluit-URL ziet er dan als volgt uit:
 

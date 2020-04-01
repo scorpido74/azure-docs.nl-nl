@@ -51,7 +51,7 @@ Kies een of beide van de volgende scriptomgevingen om VHD's en VM's te beheren:
 Daarnaast raden we aan om de volgende tools toe te voegen aan je ontwikkelomgeving: 
 
 -   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Visual Studio-code](https://code.visualstudio.com/)
+-   [Visual Studio Code](https://code.visualstudio.com/)
     *   Extensie: [Azure Resource Manager-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     *   Uitbreiding: [Verfraaien](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
     *   Uitbreiding: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)

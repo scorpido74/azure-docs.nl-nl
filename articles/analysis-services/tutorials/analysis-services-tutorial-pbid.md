@@ -1,17 +1,17 @@
 ---
-title: Zelf studie-Azure Analysis Services verbinden met Power BI Desktop | Microsoft Docs
+title: Zelfstudie - Azure Analysis Services verbinden met Power BI Desktop | Microsoft Documenten
 author: minewiskan
-description: Informatie over het ophalen van een Analysis Services server naam uit de Azure Portal en vervolgens verbinding maken met de server met behulp van Power BI Desktop.
+description: Meer informatie over het ophalen van een Analysis Services-servernaam van de Azure-portal en vervolgens verbinding maken met de server met Power BI Desktop.
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73572323"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Zelfstudie: Verbinden met Power BI Desktop
@@ -43,7 +43,7 @@ In **Azure Portal** > server > **Overview** > **Servernaam**,kopieer de serverna
 
 ## <a name="connect-in-power-bi-desktop"></a>Verbinden maken in Power BI Desktop
 
-1. Klik in Power BI Desktop op **Gegevens ophalen** > **Azure** > **Azure Analysis Services-database**.
+1. Klik in Power BI Desktop op Gegevens**azure** >  > **Azure Analysis Services-database** **opvragen**.
 
    ![Verbinding maken in Gegevens ophalen](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aasserver.png)
 
@@ -59,7 +59,7 @@ In **Azure Portal** > server > **Overview** > **Servernaam**,kopieer de serverna
 
    ![Visualisaties](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. Selecteer in de tabel **VELDEN** > **Internetverkoop** de metingen voor **Totaal internetverkoop**  en **Marge**. Selecteer **Productcategorienaam** in de tabel **Productcategorie**.
+5. Selecteer in **de** > tabel**Fields Internet Sales** de optie Internet **Verkooptotaal** en **Margemetingen.** Selecteer **Productcategorienaam** in de tabel **Productcategorie**.
 
    ![Rapport voltooien](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 
@@ -70,4 +70,4 @@ In **Azure Portal** > server > **Overview** > **Servernaam**,kopieer de serverna
 Als u het rapport niet meer nodig hebt, slaat u het niet op of verwijdert u het bestand als u het rapport wel hebt opgeslagen.
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u geleerd hoe u Power BI Desktop gebruikt om verbinding te maken met een gegevensmodel op een server en een basisrapport te maken. Als u niet bekend bent met het maken van een gegevens model, raadpleegt u de [zelf studie Adventure Works Internet Sales tabellaire Data Modeling](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) in de SQL Server Analysis Services docs.
+In deze zelfstudie hebt u geleerd hoe u Power BI Desktop gebruikt om verbinding te maken met een gegevensmodel op een server en een basisrapport te maken. Als u niet bekend bent met het maken van een gegevensmodel, raadpleegt u de zelfstudie voor [het modelleren van gegevensmodellering van Adventure Works Internet Sales](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) in de documenten SQL Server Analysis Services.

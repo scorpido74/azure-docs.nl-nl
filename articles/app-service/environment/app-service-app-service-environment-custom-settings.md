@@ -1,18 +1,18 @@
 ---
 title: Aangepaste instellingen configureren
-description: Instellingen configureren die van toepassing zijn op de hele Azure App Service omgeving. Meer informatie over hoe u dit doet met Azure Resource Manager sjablonen.
+description: Configureer instellingen die van toepassing zijn op de gehele Azure App Service-omgeving. Meer informatie over hoe u dit doen met Azure Resource Manager-sjablonen.
 author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: 42a06724274288955b11c3daf9cbf33d72ddf75d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 25393007a3cc878737ea5927cb65bcf7ef945313
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430488"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057568"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Aangepaste configuratie-instellingen voor App Service Environment-omgevingen
 ## <a name="overview"></a>Overzicht
@@ -47,7 +47,7 @@ Het kenmerk **clusterSettings** kan worden opgenomen in een Resource Manager-sja
 ## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Een App Service Environment-omgeving bijwerken met behulp van Azure Resource Explorer
 U kunt de App Service Environment-omgeving ook bijwerken met behulp van [Azure Resource Explorer](https://resources.azure.com).  
 
-1. In Resource Explorer gaat u naar het knooppunt voor de App Service Environment-omgeving (**subcriptions** > **resourceGroups** > **providers** > **Microsoft.Web** > **hostingEnvironments**). Klik vervolgens op de specifieke App Service Environment-omgeving die u wilt bijwerken.
+1. Ga in Resource Explorer naar het knooppunt voor de App-serviceomgeving **(abonnementen** > **resourceGroups** > **providers** > **Microsoft.Web** > **hostingEnvironments).** Klik vervolgens op de specifieke App Service Environment-omgeving die u wilt bijwerken.
 2. Klik in het rechterdeelvenster op **Read/Write** (Lezen/Schrijven) in de bovenste werkbalk om interactieve bewerkingen in Resource Explorer toe te staan.  
 3. Klik op de blauwe knop **Edit** (Bewerken) zodat de Resource Manager-sjabloon kan worden bewerkt.
 4. Schuif omlaag naar het einde van het rechterdeelvenster. Het kenmerk **clusterSettings** staat helemaal onderaan, waar u de waarde ervan kunt invoeren of bijwerken.
@@ -59,7 +59,7 @@ In een App Service Environment-omgeving met vier front-ends duurt het ongeveer t
 
 ## <a name="enable-internal-encryption"></a>Interne versleuteling inschakelen
 
-De App Service Environment fungeert als een zwart kader systeem waarin u de interne onderdelen of de communicatie binnen het systeem niet kunt zien. Voor een hogere door Voer is versleuteling niet standaard ingeschakeld tussen interne onderdelen. Het systeem is veilig omdat het verkeer volledig niet toegankelijk is om te worden bewaakt of geopend. Als u een nalevings vereiste hebt waarbij het gegevenspad volledig moet worden versleuteld van het end-to-end, is het mogelijk om dit in te scha kelen met een clusterSetting.  
+De App Service Environment werkt als een black box systeem waar u de interne componenten of de communicatie binnen het systeem niet zien. Om een hogere doorvoer mogelijk te maken, is versleuteling niet standaard ingeschakeld tussen interne componenten. Het systeem is veilig omdat het verkeer volledig ontoegankelijk is voor het toezicht of de toegang tot het systeem. Als u echter een nalevingsvereiste hebt waarvoor volledige versleuteling van het gegevenspad van afgelopen tijd vereist is, is er een manier om dit in te schakelen met een clusterInstelling.  
 
         "clusterSettings": [
             {
@@ -68,7 +68,7 @@ De App Service Environment fungeert als een zwart kader systeem waarin u de inte
             }
         ],
  
-Nadat de InternalEncryption clusterSetting is ingeschakeld, kan dit gevolgen hebben voor de prestaties van uw systeem. Wanneer u de wijziging aanbrengt om InternalEncryption in te scha kelen, heeft uw ASE een instabiele status totdat de wijziging volledig is door gegeven. Het volt ooien van de wijziging kan enkele uren duren, afhankelijk van het aantal instanties dat u in uw ASE hebt. We raden u ten zeerste aan dit niet in te scha kelen op een ASE terwijl deze in gebruik is. Als u dit wilt inschakelen op een actief gebruikte ASE, wordt u ten zeerste aangeraden om verkeer door te sturen naar een back-upomgeving totdat de bewerking is voltooid. 
+Nadat de InternalEncryption-clusterInstelling is ingeschakeld, kan dit gevolgen hebben voor de prestaties van uw systeem. Wanneer u de wijziging aanbrengt om InternalEncryption in te schakelen, bevindt uw ASE zich in een instabiele toestand totdat de wijziging volledig is gepropageerd. Volledige verspreiding van de wijziging kan een paar uur in beslag nemen, afhankelijk van het aantal exemplaren dat u in uw ASE hebt. We raden u ten zeerste aan dit niet in te schakelen op een ASE terwijl deze in gebruik is. Als u dit moet inschakelen op een actief gebruikte ASE, raden we u ten zeerste aan om verkeer om te leiden naar een back-upomgeving totdat de bewerking is voltooid. 
 
 ## <a name="disable-tls-10-and-tls-11"></a>TLS 1.0 en TLS 1.1 uitschakelen
 

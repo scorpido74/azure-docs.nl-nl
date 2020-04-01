@@ -1,17 +1,17 @@
 ---
-title: 'Zelf studie: apps schalen in Azure App Service met behulp van Ansible'
+title: Zelfstudie - Apps schalen in Azure App Service met Ansible
 description: Meer informatie over het opschalen van een app in Azure App Service
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, web-app, schalen, Java
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155911"
 ---
-# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Zelf studie: apps schalen in Azure App Service met behulp van Ansible
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Zelfstudie: Apps schalen in Azure App Service met Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -22,22 +22,22 @@ ms.locfileid: "74155911"
 > [!div class="checklist"]
 >
 > * Gegevens van een bestaand App Service-plan ophalen
-> * Het App Service plan omhoog schalen naar S2 met drie werk rollen
+> * Het App-serviceplan opschalen naar S2 met drie werknemers
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Azure app service-app** : als u geen Azure app service app hebt, [configureert u een app in azure app service met behulp van Ansible](ansible-create-configure-azure-web-apps.md).
+- **Azure App Service-app** - Als u geen Azure App Service-app hebt, [configureert u een app in Azure App Service met Ansible](ansible-create-configure-azure-web-apps.md).
 
-## <a name="scale-up-an-app"></a>Een app omhoog schalen
+## <a name="scale-up-an-app"></a>Een app opschalen
 
-Er zijn twee werk stromen voor schalen: *Omhoog schalen* en *uitschalen*.
+Er zijn twee werkstromen voor schalen: *opschalen* en *uitschalen.*
 
-**Omhoog schalen:** Zo kunt u meer resources opschalen. Deze resources zijn onder andere CPU, geheugen, schijf ruimte, Vm's en meer. U kunt een app omhoog schalen door de prijs categorie te wijzigen van het App Service plan waartoe de app behoort. 
-**Uitschalen:** Als u wilt uitschalen, kunt u het aantal VM-exemplaren verhogen waarop uw app wordt uitgevoerd. Afhankelijk van de prijs categorie van uw App Service-abonnement kunt u uitschalen tot Maxi maal 20 exemplaren. Automatisch [schalen](/azure/azure-monitor/platform/autoscale-get-started) biedt u de mogelijkheid om het aantal exemplaren te schalen op basis van vooraf gedefinieerde regels en schema's.
+**Opschalen:** Opschalen betekent meer middelen verwerven. Deze bronnen omvatten CPU, geheugen, schijfruimte, VM's en meer. U schaalt een app op door de prijscategorie van het App Service-abonnement waartoe de app behoort, te wijzigen. 
+**Uitschalen:** Het uitschalen betekent het aantal VM-exemplaren dat uw app uitvoert verhogen. Afhankelijk van de prijscategorie app-service-abonnement u uitschalen naar maar liefst 20 exemplaren. [Met automatisch schalen](/azure/azure-monitor/platform/autoscale-get-started) u het aantal instance's automatisch schalen op basis van vooraf gedefinieerde regels en schema's.
 
-De Playbook-code in deze sectie definieert de volgende bewerking:
+De playbookcode in deze sectie definieert de volgende bewerking:
 
 * Gegevens van een bestaand App Service-plan ophalen
 * Het App service-plan bijwerken naar S2 met drie workers
@@ -80,13 +80,13 @@ Sla het volgende playbook op als `webapp_scaleup.yml`:
       var: facts.appserviceplans[0].sku
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat u het draaiboek hebt uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
 ```Output
 PLAY [localhost] 

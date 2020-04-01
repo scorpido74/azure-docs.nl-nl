@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: ea0a9de5dde02b45ae34e3e98e24b31fd01fa713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235827"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421252"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Gegevens uit Azure Data Lake Storage Gen1 kopiëren naar Gen2 met Azure Data Factory
 
@@ -146,7 +146,7 @@ Zie [Uw big data analytics-oplossingen upgraden van Azure Data Lake Storage Gen1
 
 Gebruik een proof of concept om de end-to-end oplossing te verifiëren en de kopieerdoorvoer in uw omgeving te testen. Belangrijke proof-of-concept stappen: 
 
-1. Maak één Data Factory-pijplijn met één kopieeractiviteit om verschillende inhoudsvan gegevens uit Data Lake Storage Gen1 naar Data Lake Storage Gen2 te kopiëren om een basislijn voor kopieerprestaties te krijgen. Begin met [data-integratie-eenheden (DIU's)](copy-activity-performance.md#data-integration-units) als 128. 
+1. Maak één Data Factory-pijplijn met één kopieeractiviteit om verschillende inhoudsvan gegevens uit Data Lake Storage Gen1 naar Data Lake Storage Gen2 te kopiëren om een basislijn voor kopieerprestaties te krijgen. Begin met [data-integratie-eenheden (DIU's)](copy-activity-performance-features.md#data-integration-units) als 128. 
 2. Op basis van de kopieerdoorvoer die u in stap 1 krijgt, berekent u de geschatte tijd die nodig is voor de volledige gegevensmigratie. 
 3. (Optioneel) Maak een besturingselementtabel en definieer het bestandsfilter om de bestanden te partitioneren die moeten worden gemigreerd. De manier om de bestanden te partitioneren is door: 
 

@@ -1,5 +1,5 @@
 ---
-title: Grote hoeveel heden wille keurige gegevens downloaden uit Azure Storage | Microsoft Docs
+title: Grote hoeveelheden willekeurige gegevens downloaden uit Azure Storage | Microsoft Documenten
 description: Informatie over het gebruik van de Azure SDK om grote hoeveelheden willekeurige gegevens uit een Azure Storage-account te downloaden
 author: roygara
 ms.service: storage
@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: b3fe9c7481e79b8eeda9f18e9a036fa8c72e658d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75372088"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Grote hoeveelheden willekeurige gegevens downloaden uit Azure Storage
@@ -27,7 +27,7 @@ In deel drie van de serie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze zelf studie moet u de vorige hand leiding voor opslag hebben voltooid: [grote hoeveel heden wille keurige gegevens parallel naar Azure Storage uploaden][previous-tutorial].
+Voor het volgen van deze zelfstudie moet u de vorige zelfstudie over opslag: [Upload large amounts of random data in parallel to Azure storage][previous-tutorial] (Grote hoeveelheden willekeurige gegevens parallel uploaden naar Azure Storage).
 
 ## <a name="remote-into-your-virtual-machine"></a>Extern verbinding maken met uw virtuele machine
 

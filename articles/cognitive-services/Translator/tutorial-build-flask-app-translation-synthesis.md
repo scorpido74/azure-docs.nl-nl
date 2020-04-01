@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: b41b68725b6747cbada13a9acc321724b3f89d67
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5034dafa015054e9e9d0804088f345929815b974
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118572"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397938"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Zelfstudie: Een Flask-app bouwen met Azure Cognitive Services
 
@@ -239,7 +239,7 @@ Hoewel deze voorbeelden illustreren hoe html-pagina's voor een gebruiker kunnen 
    flask run
    ```
 
-4. Open een browser en navigeer naar de opgegeven URL. U ziet uw app met één pagina. Druk op **Ctrl + c** om de app te doden.
+4. Open een browser en navigeer naar de opgegeven URL. U ziet uw app met één pagina. Druk op **Ctrl + C** om de app te doden.
 
 ## <a name="translate-text"></a>Tekst vertalen
 
@@ -780,7 +780,7 @@ Nu u een functie hebt om tekst-naar-spraak om te zetten en een route in uw Flask
        <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
-       <option value="(en-US, Jessa24kRUS)">English (US) | Female | Jessa24kRUS</option>
+       <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
        <option value="(en-US, Guy24kRUS)">English (US) | Male | Guy24kRUS</option>
        <option value="(en-IE, Sean)">English (IE) | Male | Sean</option>
        <option value="(fr-FR, Julie, Apollo)">French | Female | Julie, Apollo</option>

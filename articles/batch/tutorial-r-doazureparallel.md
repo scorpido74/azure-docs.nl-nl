@@ -12,10 +12,10 @@ ms.date: 01/23/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77025840"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Zelfstudie: Parallelle R-simulatie uitvoeren met Azure Batch 
@@ -36,11 +36,11 @@ In deze zelfstudie wordt uitgelegd hoe u een Batch-pool implementeert en een par
 
 * [RStudio](https://www.rstudio.com/), de commerciële versie of de open-source versie [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop). 
 
-* Een Azure Batch-account en een Azure Storage-account. Raadpleeg de Batch-snelstartgidsen via de [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies over het maken van deze accounts. 
+* Een Azure Batch-account en een Azure Storage-account. Zie de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies over het maken van deze accounts. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
+Meld u aan bij [https://portal.azure.com](https://portal.azure.com)de Azure-portal op .
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>doAzureParallel installeren
@@ -226,7 +226,7 @@ closingPrices_p <- foreach(i = 1:100, .combine='c', .options.azure = opt) %dopar
 end_p <- Sys.time() 
 ```
 
-De simulatie distribueert taken naar de knooppunten in de Batch-pool. U ziet de activiteit in de heatmap voor de toepassingen in de Azure Portal. Ga naar **Batch-accounts** > *myBatchAccount*. Klik op **Pools** > *myPoolName*. 
+De simulatie distribueert taken naar de knooppunten in de Batch-pool. U ziet de activiteit in de heatmap voor de toepassingen in de Azure Portal. Ga naar **Batch-accounts** > *myBatchAccount*. Klik op*MijnPoolnaam* **zwembaden** > . 
 
 ![Heatmap van pool waarin parallelle R-taken worden uitgevoerd](media/tutorial-r-doazureparallel/pool.png)
 

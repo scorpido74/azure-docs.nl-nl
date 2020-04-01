@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df7db30e987c408ff158acfc468010948c821b8d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020162"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397537"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI-sjablonen en bestandsoverdracht gebruiken
 
@@ -28,7 +28,7 @@ Json-sjabloonbestanden maken en gebruiken met de Azure CLI om batchgroepen, take
 
 Met een extensie voor de Azure CLI kan Batch end-to-end worden gebruikt door gebruikers die geen ontwikkelaars zijn. Met alleen CLI-opdrachten u een groep maken, invoergegevens uploaden, taken en bijbehorende taken maken en de resulterende uitvoergegevens downloaden. Er is geen extra code vereist. Voer de CLI-opdrachten rechtstreeks uit of integreer ze in scripts.
 
-Batchsjablonen bouwen voort op de [bestaande Batch-ondersteuning in de Azure CLI](batch-cli-get-started.md#json-files-for-resource-creation) voor JSON-bestanden om eigenschapswaarden op te geven bij het maken van pools, taken, taken en andere items. Batchsjablonen voegen de volgende mogelijkheden toe:
+Batchsjablonen bouwen voort op de bestaande Batch-ondersteuning in de [Azure CLI](batch-cli-get-started.md#json-files-for-resource-creation) voor JSON-bestanden om eigenschapswaarden op te geven bij het maken van pools, taken, taken en andere items. Batchsjablonen voegen de volgende mogelijkheden toe:
 
 -   Parameters kunnen worden gedefinieerd. Wanneer de sjabloon wordt gebruikt, worden alleen de parameterwaarden opgegeven om het item te maken, waarbij andere eigenschapswaarden van het item zijn opgegeven in de sjabloontekst. Een gebruiker die Batch en de toepassingen begrijpt die door Batch moeten worden uitgevoerd, kan sjablonen maken, waarbij de waarden van de groep, taak en taakeigenschap worden opgegeven. Een gebruiker die minder bekend is met Batch en/of de toepassingen hoeft alleen de waarden voor de gedefinieerde parameters op te geven.
 
@@ -68,7 +68,7 @@ Azure Batch-sjablonen zijn vergelijkbaar met Azure Resource Manager-sjablonen, i
 
 -   **Parameters**
 
-    -   Toestaan dat eigenschapswaarden worden opgegeven in een hoofdsectie, waarbij alleen parameterwaarden moeten worden opgegeven wanneer de sjabloon wordt gebruikt. De volledige definitie voor een pool kan bijvoorbeeld in het lichaam worden geplaatst en slechts één parameter die is gedefinieerd voor pool-id; alleen een pool-ID-tekenreeks hoeft daarom te worden geleverd om een pool te maken.
+    -   Toestaan dat eigenschapswaarden worden opgegeven in een hoofdsectie, waarbij alleen parameterwaarden moeten worden opgegeven wanneer de sjabloon wordt gebruikt. Zo kan bijvoorbeeld de volledige definitie voor een pool in het `poolId`lichaam worden geplaatst en slechts één parameter worden gedefinieerd voor ; alleen een pool-ID-tekenreeks hoeft daarom te worden geleverd om een pool te maken.
         
     -   De sjabloonbody kan worden geschreven door iemand met kennis van Batch en de toepassingen die door Batch moeten worden uitgevoerd; alleen waarden voor de door de auteur gedefinieerde parameters moeten worden opgegeven wanneer de sjabloon wordt gebruikt. Een gebruiker zonder de diepgaande batch- en/of applicatiekennis kan daarom de sjablonen gebruiken.
 

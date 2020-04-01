@@ -26,7 +26,7 @@ ms.locfileid: "80336642"
 # <a name="tutorial-send-push-notifications-to-swift-ios-apps-using-notification-hubs-rest-api"></a>Zelfstudie: Pushmeldingen verzenden naar Swift iOS-apps met de Notification Hubs REST API
 
 > [!div class="op_single_selector"]
-> * [Doelstelling-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+> * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
 In deze zelfstudie gebruikt u Azure Notification Hubs om meldingen naar een Swift-gebaseerde iOS-toepassing te pushen met behulp van de [REST API.](/rest/api/notificationhubs/) U maakt ook een lege iOS-app die pushmeldingen ontvangt met behulp van de [Apple Push Notification-service (APNs).](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)

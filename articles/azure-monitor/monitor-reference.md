@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249163"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408492"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt gecontroleerd door Azure Monitor?
 In dit artikel worden de verschillende toepassingen en services beschreven die worden gecontroleerd door Azure Monitor. 
@@ -26,7 +26,7 @@ Inzichten bieden een op maat gemaakte monitoringervaring voor bepaalde toepassin
 | Inzicht | Beschrijving |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | Extensible Application Performance Management (APM) service om uw live webapplicatie op elk platform te monitoren. |
-| [Azure Monitor voor containers](insights/container-insights-overview.md) | Bewaakt de prestaties van containerworkloads die zijn geïmplementeerd in Azure Container Instances of beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes Service (AKS). |
+| [Azure-monitor voor containers](insights/container-insights-overview.md) | Bewaakt de prestaties van containerworkloads die zijn geïmplementeerd in Azure Container Instances of beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes Service (AKS). |
 | [Azure Monitor voor Cosmos DB (voorbeeld)](insights/cosmosdb-insights-overview.md) | Biedt een overzicht van de algehele prestaties, fouten, capaciteit en operationele status van al uw Azure Cosmos DB-resources in een uniforme interactieve ervaring. |
 | [Azure Monitor voor netwerken (voorbeeld)](insights/network-insights-overview.md) | Biedt een uitgebreid overzicht van de status en statistieken voor al uw netwerkbronnen. De geavanceerde zoekmogelijkheid helpt u bij het identificeren van resourceafhankelijkheden, waardoor scenario's zoals het identificeren van bronnen die uw website hosten, worden geïdentificeerd door simpelweg naar de naam van uw website te zoeken. |
 [Azure-monitor voor resourcegroepen (voorbeeld)](insights/resource-group-insights.md) |  Triage en diagnose van eventuele problemen van uw individuele resources tegenkomen, terwijl het aanbieden van context met betrekking tot de gezondheid en prestaties van de resource groep als geheel. |
@@ -70,14 +70,14 @@ In de volgende tabel worden Azure-services en de gegevens die ze verzamelen in A
 |Attestation Service | Nee | Nee | Nee |  |
 |Automation | Ja | Ja | Nee |  |
 |Azure Service Manager (RDFE) | Nee | Nee | Nee |  |
-|Back-up | Nee | Ja | Nee |  |
+|Backup | Nee | Ja | Nee |  |
 |Bastion | Nee | Nee | Nee |  |
 |Batch | Ja | Ja | Nee |  |
 |Batch AI | Nee | Nee | Nee |  |
 |Blockchain Service | Nee | Ja | Nee |  |
 |Blueprints | Nee | Nee | Nee |  |
 |Bot-service | Nee | Nee | Nee |  |
-|Cloudservices | Ja | Ja | Nee | Agent die nodig is om gastbesturingssysteem en workflows te controleren.  |
+|Cloud Services | Ja | Ja | Nee | Agent die nodig is om gastbesturingssysteem en workflows te controleren.  |
 |Cloud Shell | Nee | Nee | Nee |  |
 |Cognitive Services | Ja | Ja | Nee |  |
 |Container Instances | Ja | Nee | Nee |  |
@@ -117,7 +117,7 @@ In de volgende tabel worden Azure-services en de gegevens die ze verzamelen in A
 |IoT Hub | Ja | Ja | Nee |  |
 |Key Vault | Ja | Ja | Nee |  |
 |Kubernetes Service (AKS) | Nee | Nee | [Ja](insights/container-insights-overview.md)  |  |
-|Load balancer | Ja | Ja | Nee |  |
+|Load Balancer | Ja | Ja | Nee |  |
 |Logic Apps | Ja | Ja | Nee |  |
 |Machine Learning-service | Nee | Nee | Nee |  |
 |Managed Applications  | Nee | Nee | Nee |  |
@@ -161,7 +161,7 @@ In de volgende tabel worden Azure-services en de gegevens die ze verzamelen in A
 |Tina | Nee | Nee | Nee |  |
 |Traffic Manager | Ja | Ja | Nee |  |
 |Universele afdruk | Nee | Nee | Nee |  |
-|Schaalsets voor virtuele machines | Nee | Ja | [Ja](insights/vminsights-overview.md) | Agent die nodig is om gastbesturingssysteem en workflows te controleren. |
+|Virtual Machine Scale Sets | Nee | Ja | [Ja](insights/vminsights-overview.md) | Agent die nodig is om gastbesturingssysteem en workflows te controleren. |
 |Virtuele machines | Ja | Ja | [Ja](insights/vminsights-overview.md) | Agent die nodig is om gastbesturingssysteem en workflows te controleren. |
 |Virtual Network | Ja | Ja | [Ja](insights/network-insights-overview.md) |  |
 |Virtueel netwerk - NSG-stroomlogboeken | Nee | Ja | Nee |  |
@@ -198,7 +198,7 @@ Er zijn andere oplossingen beschikbaar voor het bewaken van verschillende toepas
 |:---|:---|
 | [Active Directory-statuscontrole](insights/ad-assessment.md) | Beoordeel het risico en de status van uw Active Directory-omgevingen. |
 | [Active Directory-replicatiestatus](insights/ad-replication-status.md) | Controleert uw Active Directory-omgeving regelmatig op replicatiefouten. |
-| [Analyse van activiteitenlogboeken](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Analyseer logboekvermeldingen van activiteiten met vooraf gedefinieerde logboekquery's en -weergaven. |
+| [Analyse van activiteitenlogboeken](platform/activity-log-view.md#azure-portal) | Activiteitslogboekvermeldingen weergeven. |
 | [DNS Analytics (voorbeeld)](insights/dns-analytics.md) | Verzamelt, analyseert en correleert Windows DNS analytische en auditlogs en andere gerelateerde gegevens van uw DNS-servers. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Verzamel, bekijk en analyseer uw cloud foundry-systeemstatus- en prestatiestatistieken voor meerdere implementaties. |
 | [Containers](insights/containers.md) | Docker- en Windows-containerhosts weergeven en beheren. |

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a9917010b7301bf70c3bebf68c35d82f4839e0f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255832"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409050"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -25,7 +25,7 @@ Azure SQL Database is gebaseerd op SQL Server Database Engine-architectuur die i
 -  Hyperscale
 -  Bedrijfskritisch/Premium
 
-De hyperscale-servicelaag in Azure SQL Database is de nieuwste servicelaag in het op vCore gebaseerde inkoopmodel. Deze servicelaag is een zeer schaalbare opslag- en rekenprestatieslaag die gebruikmaakt van de Azure-architectuur om de opslag- en rekenbronnen voor een Azure SQL-database aanzienlijk verder te schalen dan de limieten die beschikbaar zijn voor algemeen gebruik en bedrijf Kritieke servicelagen.
+De hyperscale-servicelaag in Azure SQL Database is de nieuwste servicelaag in het op vCore gebaseerde inkoopmodel. Deze servicelaag is een zeer schaalbare opslag- en rekenprestatieslaag die gebruikmaakt van de Azure-architectuur om de opslag- en rekenresources voor een Azure SQL-database aanzienlijk verder te schalen dan de limieten die beschikbaar zijn voor de servicelagen Algemeen Doel en Bedrijfskritieke.
 
 > 
 > [!NOTE]
@@ -96,7 +96,7 @@ Paginaservers zijn systemen die een geschaalde opslagengine vertegenwoordigen.  
 
 ### <a name="log-service"></a>Logboekservice
 
-De logboekservice accepteert logboekrecords van de primaire compute-replica, blijft deze in een duurzame cache en stuurt de logboekrecords door naar de rest van compute-replica's (zodat ze hun caches kunnen bijwerken) en de relevante paginaserver(s), zodat de gegevens kunnen worden bijgewerkt Er. Op deze manier worden alle gegevenswijzigingen van de primaire compute-replica via de logboekservice gepropageerd naar alle secundaire compute replica's en paginaservers. Ten slotte worden de logboekrecords naar langdurige opslag in Azure Storage gepusht, wat een vrijwel oneindige opslagopslagplaats is. Dit mechanisme verwijdert de noodzaak voor frequente logboekafvloeiing. De logboekservice heeft ook lokale cache om de toegang tot logboekrecords te versnellen.
+De logboekservice accepteert logboekrecords van de primaire compute-replica, houdt deze voort in een duurzame cache en stuurt de logboekrecords door naar de rest van compute-replica's (zodat ze hun caches kunnen bijwerken) en de relevante paginaserver(s), zodat de gegevens daar kunnen worden bijgewerkt. Op deze manier worden alle gegevenswijzigingen van de primaire compute-replica via de logboekservice gepropageerd naar alle secundaire compute replica's en paginaservers. Ten slotte worden de logboekrecords naar langdurige opslag in Azure Storage gepusht, wat een vrijwel oneindige opslagopslagplaats is. Dit mechanisme verwijdert de noodzaak voor frequente logboekafvloeiing. De logboekservice heeft ook lokale cache om de toegang tot logboekrecords te versnellen.
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -205,8 +205,7 @@ Dit zijn de huidige beperkingen voor de hyperscale-servicelaag vanaf GA.  We zij
 | Probleem | Beschrijving |
 | :---- | :--------- |
 | In het deelvenster Back-ups beheren voor een logische server worden geen Hyperscale-databases weergegeven die worden gefilterd uit SQL-server  | Hyperscale heeft een aparte methode voor het beheren van back-ups, en als zodanig de lange termijn retentie en point in time back-up retentie-instellingen niet van toepassing / worden ongeldig gemaakt. Hyperscale-databases worden dus niet weergegeven in het deelvenster Back-up beheren. |
-| Terugzetten naar eerder tijdstip | Zodra een database is gemigreerd naar de hyperscale-servicelaag, wordt herstellen naar een point-in-time voorafgaand aan de migratie niet ondersteund.|
-| Herstellen van niet-Hyperscale DB naar Hyperscale en vice versa | U een Hyperscale-database niet herstellen in een niet-Hyperscale-database en u een niet-Hyperscale-database ook niet terugzetten in een Hyperscale-database.|
+| Terugzetten naar eerder tijdstip | U een Hyperscale-database herstellen in een niet-Hyperscale-database, binnen de bewaarperiode van niet-hyperscale-database. U een niet-Hyperscale-database niet herstellen in een Hyperscale-database.|
 | Als een database een of meer gegevensbestanden groter dan 1 TB heeft, mislukt migratie | In sommige gevallen kan het mogelijk zijn om te werken rond dit probleem door het krimpen van de grote bestanden te worden minder dan 1 TB. Als u een database migreert die tijdens het migratieproces wordt gebruikt, moet u ervoor zorgen dat geen enkel bestand groter wordt dan 1 TB. Gebruik de volgende query om de grootte van databasebestanden te bepalen. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Beheerd exemplaar | Azure SQL Database Managed Instance wordt momenteel niet ondersteund met Hyperscale-databases. |
 | Elastische pools |  Elastic Pools worden momenteel niet ondersteund met SQL Database Hyperscale.|

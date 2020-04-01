@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: ea0fa0e9d4e475a8496d1ee52b4cdfea11a13d8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cf961b00c4823d0c9efcf44b0db7bb75a80d3dfa
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544101"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474331"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Wat is Azure Active Directory Domain Services?
 
@@ -51,7 +51,7 @@ Azure AD DS biedt alternatieven voor de noodzaak om VPN-verbindingen te maken te
 
 ## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS-functies en -voordelen
 
-Azure AD DS is volledig compatibel met een traditionele AD DS-omgeving voor bewerkingen zoals domeinjoin, secure LDAP (LDAPS), Groepsbeleid en DNS-beheer en LDAP-bindings- en leesondersteuning om identiteitsservices te leveren aan toepassingen en VM's in de cloud. LDAP-schrijfondersteuning is beschikbaar voor objecten die zijn gemaakt in het beheerde Azure AD DS-domein, maar niet voor resources die zijn gesynchroniseerd vanuit Azure AD. De volgende functies van Azure AD DS vereenvoudigen de implementatie- en beheerbewerkingen:
+Azure AD DS is volledig compatibel met een traditionele AD DS-omgeving voor bewerkingen zoals domeinjoin, secure LDAP (LDAPS), Groepsbeleid, DNS-beheer en LDAP-bindings- en leesondersteuning om identiteitsservices te leveren aan toepassingen en VM's in de cloud. LDAP-schrijfondersteuning is beschikbaar voor objecten die zijn gemaakt in het beheerde Azure AD DS-domein, maar niet voor resources die zijn gesynchroniseerd vanuit Azure AD. De volgende functies van Azure AD DS vereenvoudigen de implementatie- en beheerbewerkingen:
 
 * **Vereenvoudigde implementatie-ervaring:** Azure AD DS is ingeschakeld voor uw Azure AD-tenant met één wizard in de Azure-portal.
 * **Geïntegreerd met Azure AD:** Gebruikersaccounts, groepslidmaatschappen en referenties zijn automatisch beschikbaar via uw Azure AD-tenant. Nieuwe gebruikers, groepen of wijzigingen in kenmerken van uw Azure AD-tenant of uw on-premises AD DS-omgeving worden automatisch gesynchroniseerd met Azure AD DS.
@@ -71,7 +71,7 @@ Voor hybride omgevingen waarop AD DS on-premises wordt uitgevoerd, hoeft u ad-re
 
 ## <a name="how-does-azure-ad-ds-work"></a>Hoe werkt Azure AD DS?
 
-Als u identiteitsservices wilt leveren, maakt Azure een AD DS-exemplaar op een virtueel netwerk naar keuze. Achter de schermen wordt een paar Windows Server-domeincontrollers gemaakt die worden uitgevoerd op Azure VM's. U hoeft deze domeincontrollers niet te beheren, configureren of bijwerken. Het Azure-platform beheert de domeincontrollers als onderdeel van de Azure AD DS-service.
+Als u identiteitsservices wilt leveren, maakt Azure een AD DS-exemplaar op een virtueel netwerk naar keuze. Achter de schermen worden een paar Windows Server-domeincontrollers gemaakt die worden uitgevoerd op Azure VM's. U hoeft deze domeincontrollers niet te beheren, configureren of bijwerken. Het Azure-platform beheert de domeincontrollers als onderdeel van de Azure AD DS-service.
 
 Het beheerde Azure AD DS-domein is geconfigureerd om een eenrichtingssynchronisatie uit Te voeren vanuit Azure AD om toegang te bieden tot een centrale set gebruikers, groepen en referenties. U resources rechtstreeks maken in het beheerde Azure AD DS-domein, maar ze worden niet gesynchroniseerd met Azure AD. Toepassingen, services en VM's in Azure die verbinding maken met dit virtuele netwerk kunnen vervolgens gebruik maken van algemene AD DS-functies zoals domeinjoin, groepsbeleid, LDAP en Kerberos / NTLM-verificatie.
 

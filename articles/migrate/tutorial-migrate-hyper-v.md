@@ -3,13 +3,15 @@ title: Hyper-V VM's migreren naar Azure met Migratie van Azure-migratie servermi
 description: Meer informatie over het migreren van on-premises Hyper-V VM's naar Azure met Azure Migrate Server Migration
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2b9ed56186649b7644adbd1237ad74af50474cc5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- MVC
+- fasttrack-edit
+ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80279705"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422682"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V-VM's migreren naar Azure 
 
@@ -62,7 +64,7 @@ Als u de tweede zelfstudie hebt gevolgd en al een Azure Migrate-project hebt, vo
 
 4. Selecteer **Azure Migrate: Hulpprogramma Voor servermigratie** > **toevoegen** in de lijst met hulpprogramma's voor hulpprogramma voor hulpprogramma voor hulpprogramma voor het migreren
 
-    ![Servermigratie, gereedschap](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
+    ![Hulpprogramma voor de migratie van servers](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Het Azure Migrate-toestel instellen

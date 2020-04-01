@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: ead0ac04fbd2244fce97dd043ebd44f24fb0f67f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054924"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80395790"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics-werkruimte verwijderen en herstellen
 
@@ -56,6 +56,17 @@ U een werkruimte verwijderen met [PowerShell,](https://docs.microsoft.com/powers
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+### <a name="troubleshooting"></a>Problemen oplossen
+
+U moet over machtigingen voor 'Log Analytics Contributor' beschikken om de werkruimte Log Analytics te verwijderen.<br>
+Als u een foutbericht *'Deze werkruimtenaam is al in gebruik'* krijgt bij het maken van een werkruimte, kan dit zijn omdat:
+* De naam van de werkruimte is niet beschikbaar en wordt gebruikt door iemand in uw organisatie of door een andere klant.
+* De werkruimte is in de afgelopen 14 dagen verwijderd en de naam ervan is gereserveerd voor de periode voor het verwijderen van soft delete. Voer de volgende stappen uit om de werkruimte eerst te herstellen en de werkruimte definitief te verwijderen en deze onmiddellijk te verwijderen en een nieuwe werkruimte met dezelfde naam te maken:<br>
+   1. [Herstel](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) uw werkruimte.
+   2. Uw werkruimte [permanent verwijderen.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
+   3. Maak een nieuwe werkruimte met dezelfde werkruimtenaam.
+
 
 ## <a name="permanent-workspace-delete"></a>Permanente werkruimte verwijderen
 De methode voor het verwijderen van soft delete past mogelijk niet in sommige scenario's, zoals ontwikkeling en testen, waarbij u een implementatie met dezelfde instellingen en de naam van de werkruimte moet herhalen. In dergelijke gevallen u uw werkruimte permanent verwijderen en de periode voor het verwijderen van soft delete overschrijven. Met de bewerking permanente werkruimteverwijderen wordt de naam van de werkruimte vrijgegeven en u een nieuwe werkruimte maken met dezelfde naam.

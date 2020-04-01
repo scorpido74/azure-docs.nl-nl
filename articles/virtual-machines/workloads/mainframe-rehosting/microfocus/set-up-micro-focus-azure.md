@@ -8,22 +8,25 @@ ms.author: edprice
 manager: edprice
 editor: edprice
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 03/30/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: a5426c3cd7552b24739f9a20e01d5a4b42bd383c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3fa5faccf17df17bc4f7cc2d8b023b868fdbe1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68834569"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411200"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Micro Focus Enterprise Server 4.0 en Enterprise Developer 4.0 installeren op Azure
 
 In dit artikel ziet u hoe [u Micro Focus Enterprise Server 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/) en Micro Focus Enterprise Developer [4.0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) inStelt op Azure.
 
 Een veelvoorkomende werkbelasting op Azure is een ontwikkel- en testomgeving. Dit scenario komt vaak voor omdat het zo kosteneffectief en gemakkelijk te implementeren en af te bouwen is. Met Enterprise Server heeft Micro Focus een van de grootste mainframe rehostingplatforms gecreëerd die beschikbaar zijn. U z/OS-workloads uitvoeren op een goedkoper x86-platform op Azure met behulp van virtuele Windows- of Linux-virtuele machines (VM's).
+
+> [!NOTE]
+> Binnenkort beschikbaar: instructies voor het instellen van [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) op Azure VM's.
 
 Deze instelling maakt gebruik van Azure VM's waarop de Windows Server 2016-afbeelding wordt uitgevoerd vanuit de Azure Marketplace met Microsoft SQL Server 2017 die al is geïnstalleerd. Deze instelling is ook van toepassing op Azure Stack.
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 752334e3d594b1f95786aecaca134b74c4e264d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688699"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477793"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Een app-serviceomgeving v1 maken 
 
@@ -45,7 +45,7 @@ Als u een App Service-omgeving v1 wilt maken, u zoeken in de Azure Marketplace f
 3. Een nieuwe resourcegroep selecteren of opgeven. De resourcegroep die voor uw ASE wordt gebruikt, moet dezelfde zijn die wordt gebruikt voor uw VNet. Als u een reeds bestaand VNet selecteert, wordt de selectie van de brongroep voor uw ASE bijgewerkt om die van uw VNet weer te geven.
    
     ![][2]
-4. Maak uw selecties voor virtueel netwerk en locatie. U ervoor kiezen om een nieuwe VNet te maken of een reeds bestaande VNet te selecteren. Als u een nieuw VNet selecteert, u een naam en locatie opgeven. De nieuwe VNet heeft het adresbereik 192.168.250.0/23 en een subnet met de naam **standaard** dat wordt gedefinieerd als 192.168.250.0/24. U ook gewoon een reeds bestaande Classic of Resource Manager VNet selecteren. De VIP-typeselectie bepaalt of uw ASE rechtstreeks toegankelijk is vanaf het internet (Extern) of dat deze een Internal Load Balancer (ILB) gebruikt. Lees voor meer informatie over deze informatie [Een interne load balancer gebruiken met een app-serviceomgeving][ILBASE]. Als u een VIP-type Extern selecteert, u selecteren met hoeveel externe IP-adressen het systeem is gemaakt voor IPSSL-doeleinden. Als u Intern selecteert, moet u het subdomein opgeven dat uw ASE zal gebruiken. ATO's kunnen worden geïmplementeerd in virtuele netwerken die gebruik maken *van* openbare adresbereiken *of* RFC1918-adresruimten (d.w.z. privéadressen). Om een virtueel netwerk met een openbaar adresbereik te gebruiken, moet u het VNet van tevoren maken. Wanneer u een reeds bestaand VNet selecteert, moet u tijdens het maken van ASE een nieuw subnet maken. **U geen vooraf gemaakt subnet in de portal gebruiken. U een ASE maken met een reeds bestaand subnet als u uw ASE maakt met behulp van een resourcemanagersjabloon.** Als u een ASE wilt maken op basis van een sjabloon, gebruikt u de informatie hier, [Maakt u een app-serviceomgeving van sjabloon][ILBAseTemplate] en hier een [ILB-appserviceomgeving maken op basis van sjabloon][ASEfromTemplate].
+4. Maak uw selecties voor virtueel netwerk en locatie. U ervoor kiezen om een nieuwe VNet te maken of een reeds bestaande VNet te selecteren. Als u een nieuw VNet selecteert, u een naam en locatie opgeven. De nieuwe VNet heeft het adresbereik 192.168.250.0/23 en een subnet met de naam **standaard** dat wordt gedefinieerd als 192.168.250.0/24. U ook gewoon een reeds bestaande Classic of Resource Manager VNet selecteren. De VIP-typeselectie bepaalt of uw ASE rechtstreeks toegankelijk is vanaf het internet (Extern) of dat deze een Internal Load Balancer (ILB) gebruikt. Lees voor meer informatie over deze informatie [Een interne load balancer gebruiken met een app-serviceomgeving][ILBASE]. Als u een VIP-type Extern selecteert, u selecteren met hoeveel externe IP-adressen het systeem is gemaakt voor IP SSL-doeleinden. Als u Intern selecteert, moet u het subdomein opgeven dat uw ASE zal gebruiken. ATO's kunnen worden geïmplementeerd in virtuele netwerken die gebruik maken *van* openbare adresbereiken *of* RFC1918-adresruimten (d.w.z. privéadressen). Om een virtueel netwerk met een openbaar adresbereik te gebruiken, moet u het VNet van tevoren maken. Wanneer u een reeds bestaand VNet selecteert, moet u tijdens het maken van ASE een nieuw subnet maken. **U geen vooraf gemaakt subnet in de portal gebruiken. U een ASE maken met een reeds bestaand subnet als u uw ASE maakt met behulp van een resourcemanagersjabloon.** Als u een ASE wilt maken op basis van een sjabloon, gebruikt u de informatie hier, [Maakt u een app-serviceomgeving van sjabloon][ILBAseTemplate] en hier een [ILB-appserviceomgeving maken op basis van sjabloon][ASEfromTemplate].
 
 ### <a name="details"></a>Details
 Een ASE is gemaakt met 2 front ends en 2 werknemers. De fronteinden fungeren als de HTTP/HTTPS-eindpunten en verzenden verkeer naar de werknemers die de rollen zijn die uw apps hosten. U het aantal na het maken van ASE aanpassen en zelfs automatische schaalregels instellen voor deze resourcegroepen. Voor meer informatie over handmatig schalen, beheer en bewaking van een App Service-omgeving vindt u hier: [Een App-serviceomgeving configureren][ASEConfig] 

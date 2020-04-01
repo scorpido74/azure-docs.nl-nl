@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: aa9ffc48d9b1374fa510f450bab2c66641421446
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76773497"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478650"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Snelstart: Azure Service Bus-wachtrijen gebruiken met Python
 
@@ -32,7 +32,7 @@ Zie [ServiceBus-bibliotheken voor Python voor](/python/api/overview/azure/servic
 ## <a name="prerequisites"></a>Vereisten
 - Een Azure-abonnement. U uw [Visual Studio- of MSDN-abonneevoordelen](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
 - Een naamruimte voor servicebus die is gemaakt door de stappen te volgen bij [Quickstart: gebruik de Azure-portal om een servicebusonderwerp en -abonnementen te maken.](service-bus-quickstart-topics-subscriptions-portal.md) Kopieer de tekenreeks voor de primaire verbinding vanuit het scherm **Beleid voor gedeelde toegang** om later in dit artikel te gebruiken. 
-- Python 3,4x of hoger, met het [Python Azure Service Bus-pakket][Python Azure Service Bus package] geïnstalleerd. Zie de [Python-installatiehandleiding](/azure/python/python-sdk-azure-install)voor meer informatie. 
+- Python 3,4x of hoger, met het [Python Azure Service Bus-pakket][Python Azure Service Bus package] geïnstalleerd. Zie de [Python-installatiehandleiding](/azure/developer/python/azure-sdk-install)voor meer informatie. 
 
 ## <a name="create-a-queue"></a>Een wachtrij maken
 

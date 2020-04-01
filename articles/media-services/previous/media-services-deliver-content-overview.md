@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264675"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476735"
 ---
 # <a name="deliver-content-to-customers"></a>Content leveren aan klanten
 Wanneer u uw streaming- of video-on-demand-inhoud aan klanten levert, is het uw doel om video van hoge kwaliteit aan verschillende apparaten te leveren onder verschillende netwerkomstandigheden.
@@ -40,7 +40,7 @@ Dit artikel geeft een overzicht van belangrijke content delivery concepten.
 Zie Bekende problemen [controleren](media-services-deliver-content-overview.md#known-issues)om bekende problemen te controleren.
 
 ## <a name="dynamic-packaging"></a>Dynamische verpakking
-Met de dynamische verpakking die Media Services biedt, u uw adaptieve bitrate MP4- of Smooth Streaming-gecodeerde inhoud leveren in streamingformaten die worden ondersteund door Media Services (MPEG-DASH, HLS, Smooth Streaming,) zonder dat u opnieuw hoeft te verpakken in deze streamingformaten. Wij raden u aan uw content te leveren met een dynamische verpakking.
+Met de dynamische verpakking die Media Services biedt, u uw adaptieve bitrate MP4- of Smooth Streaming-gecodeerde inhoud leveren in streamingformaten die worden ondersteund door Media Services (MPEG-DASH, HLS, Smooth Streaming),) zonder opnieuw te hoeven verpakken in deze streaming-indelingen. Wij raden u aan uw content te leveren met een dynamische verpakking.
 
 Om te profiteren van dynamische verpakking, moet u uw mezzanine (bron) bestand coderen in een set van adaptive-bitrate MP4-bestanden of adaptieve bitrate Smooth Streaming-bestanden.
 
@@ -82,10 +82,10 @@ Dankzij adaptieve bitrate-technologieën kunnen videospelertoepassingen de netwe
 Als u gebruikers streaming-URL's wilt bieden, moet u eerst een OnDemandOrigin-locator maken. Als u de locator maakt, krijgt u het basispad naar het element dat de inhoud bevat die u wilt streamen. Om deze inhoud te kunnen streamen, moet u dit pad echter verder wijzigen. Als u een volledige URL wilt maken voor het streamingmanifestbestand, moet u de padwaarde van de locator en de manifestnaam (filename.ism) toevoegen. Voeg **vervolgens /Manifest** en een geschikte indeling (indien nodig) toe aan het zoekpad.
 
 > [!NOTE]
-> U uw inhoud ook streamen via een SSL-verbinding. Zorg ervoor dat je streaming-URL's beginnen met HTTPS. Houd er rekening mee dat AMS momenteel geen SSL ondersteunt met aangepaste domeinen.  
+> U uw inhoud ook streamen via een TLS-verbinding. Zorg ervoor dat je streaming-URL's beginnen met HTTPS. Houd er rekening mee dat AMS momenteel geen TLS ondersteunt met aangepaste domeinen.  
 > 
 
-U alleen streamen via SSL als het streamingeindpunt van waaruit u uw inhoud levert, is gemaakt na 10 september 2014. Als uw streaming-URL's zijn gebaseerd op de streamingeindpunten die na 10 september 2014 zijn gemaakt, bevat de URL 'streaming.mediaservices.windows.net'. Streaming-URL's die 'origin.mediaservices.windows.net' (de oude indeling) bevatten, ondersteunen geen SSL. Als uw URL in de oude indeling is en u wilt kunnen streamen via SSL, maakt u een nieuw streamingeindpunt. Gebruik URL's op basis van het nieuwe streaming-eindpunt om uw inhoud via SSL te streamen.
+Je alleen via TLS streamen als het streaming-eindpunt van waaruit je je content levert, is gemaakt na 10 september 2014. Als uw streaming-URL's zijn gebaseerd op de streamingeindpunten die na 10 september 2014 zijn gemaakt, bevat de URL 'streaming.mediaservices.windows.net'. Streaming-URL's die 'origin.mediaservices.windows.net' (de oude indeling) bevatten, ondersteunen geen TLS. Als uw URL in de oude indeling is en u via TLS wilt kunnen streamen, maakt u een nieuw streamingeindpunt. Gebruik URL's op basis van het nieuwe streaming-eindpunt om uw inhoud via TLS te streamen.
 
 ## <a name="streaming-url-formats"></a><a id="URLs"/>URL-indelingen voor streaming
 
@@ -155,7 +155,7 @@ Een streamingeindpunt vertegenwoordigt een streamingservice die inhoud rechtstre
 
 ## <a name="known-issues"></a>Bekende problemen
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Wijzigingen in de manifestversie voor vloeiend streamen
-Vóór de release van de service van juli 2016 - toen assets geproduceerd door Media Encoder Standard, Media Encoder Premium Workflow of de eerdere Azure Media Encoder werden gestreamd met behulp van dynamische verpakking - zou het Smooth Streaming-manifest worden geretourneerd aan de versie 2.0. In versie 2.0 gebruiken de fragmentduur geen de zogenaamde repeat ('r') tags. Bijvoorbeeld:
+Vóór de release van de service van juli 2016 - toen assets geproduceerd door Media Encoder Standard, Media Encoder Premium Workflow of de eerdere Azure Media Encoder werden gestreamd met behulp van dynamische verpakking - zou het Smooth Streaming manifest dat is geretourneerd in overeenstemming zijn met versie 2.0. In versie 2.0 gebruiken de fragmentduur geen de zogenaamde repeat ('r') tags. Bijvoorbeeld:
 
 
     <?xml version="1.0" encoding="UTF-8"?>

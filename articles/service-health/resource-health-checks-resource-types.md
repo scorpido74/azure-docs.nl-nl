@@ -3,12 +3,12 @@ title: Ondersteunde resourcetypen via Azure Resource Health | Microsoft Document
 description: Ondersteunde resourcetypen via Azure Resource-status
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258302"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478903"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resourcetypen en statuscontroles in Azure-bronstatus
 Hieronder vindt u een volledige lijst van alle controles die worden uitgevoerd via resourcestatus door resourcetypen.
@@ -47,6 +47,11 @@ Hieronder vindt u een volledige lijst van alle controles die worden uitgevoerd v
 |Uitgevoerde controles|
 |---|
 |<ul><li>Kan het account worden bereikt vanuit het datacenter?</li><li>Is de Cognitive Services Resource Provider beschikbaar?</li><li>Is de cognitieve service beschikbaar in de juiste regio?</li><li>Kunnen leesbewerkingen worden uitgevoerd op het opslagaccount met de resourcemetagegevens?</li><li>Is het API-aanroepquotum bereikt?</li><li>Is de API-leeslimiet bereikt?</li></ul>|
+
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroepen/hosts
+|Uitgevoerde controles|
+|---|
+|<ul><li>Is de host up and running</li><li>Is de host hardware gedegradeerd?</li><li>Is de host deallocated?</li><li>Is de host hardware service genezen naar verschillende hardware?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Uitgevoerde controles|

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 10/22/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75422656"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410601"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Zelfstudie: Uw eerste toegangspakket maken in Azure AD-rechtenbeheer
 
@@ -84,79 +84,83 @@ Een *toegangspakket* is een bundel van resources die een team of project nodig h
 
 1. Klik in de Azure-portal in de linkernavigatie op **Azure Active Directory**.
 
-1. Klik in het linkermenu op **Identiteitsbeheer**
+2. Klik in het linkermenu op **Identiteitsbeheer**
 
-1. Klik in het linkermenu op **Toegangspakketten**.  Als u **Access geweigerd**ziet, moet u ervoor zorgen dat er een Azure AD Premium P2-licentie aanwezig is in uw directory.
+3. Klik in het linkermenu op **Toegangspakketten**.  Als u **Access geweigerd**ziet, moet u ervoor zorgen dat er een Azure AD Premium P2-licentie aanwezig is in uw directory.
 
-1. Klik **op Nieuw toegangspakket**.
+4. Klik **op Nieuw toegangspakket**.
 
     ![Rechtenbeheer in de Azure-portal](./media/entitlement-management-shared/access-packages-list.png)
 
-1. Typ op het tabblad **Basisbeginselen** het toegangspakket voor **marketingcampagne** en beschrijving **Toegang tot bronnen voor de campagne**.
+5. Typ op het tabblad **Basisbeginselen** het toegangspakket voor **marketingcampagne** en beschrijving **Toegang tot bronnen voor de campagne**.
 
-1. Laat de vervolgkeuzelijst **Catalogus** instellen op **Algemeen**.
+6. Laat de vervolgkeuzelijst **Catalogus** instellen op **Algemeen**.
 
     ![Nieuw toegangspakket - tabblad Basisbeginselen](./media/entitlement-management-access-package-first/basics.png)
 
-1. Klik **op Volgende** om het tabblad **Resourcerollen** te openen.
+7. Klik **op Volgende** om het tabblad **Resourcerollen** te openen.
 
     Selecteer op dit tabblad de resources en de resourcerol die u in het toegangspakket wilt opnemen.
 
-1. Klik **op Groepen en Teams**.
+8. Klik **op Groepen en Teams**.
 
-1. Zoek en selecteer in het deelvenster Groepen selecteren de groep **Marketingresources** die u eerder hebt gemaakt.
+9. Zoek en selecteer in het deelvenster Groepen selecteren de groep **Marketingresources** die u eerder hebt gemaakt.
 
     Standaard ziet u groepen binnen en buiten de **algemene** catalogus. Wanneer u een groep buiten **de** algemene catalogus selecteert, wordt deze toegevoegd aan de **algemene** catalogus.
 
     ![Nieuw toegangspakket - tabblad Resourcerollen](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-1. Klik **op Selecteren** om de groep aan de lijst toe te voegen.
+10. Klik **op Selecteren** om de groep aan de lijst toe te voegen.
 
-1. Selecteer **Lid**in de vervolgkeuzelijst **Rol** .
+11. Selecteer **Lid**in de vervolgkeuzelijst **Rol** .
 
     ![Nieuw toegangspakket - tabblad Resourcerollen](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. Klik **op Volgende** om het tabblad Aanvragen te **openen.**
+    >[!NOTE]
+    > Bij het gebruik van [dynamische groepen](../users-groups-roles/groups-create-rule.md) ziet u geen andere rollen beschikbaar naast de eigenaar. Dit is standaard.
+    > ![Overzicht van scenario's](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+
+12. Klik **op Volgende** om het tabblad Aanvragen te **openen.**
 
     Op dit tabblad maakt u een aanvraagbeleid. Een *beleid* definieert de regels of vangrails om toegang te krijgen tot een toegangspakket. U maakt een beleid waarmee een specifieke gebruiker in de bronmap dit toegangspakket kan aanvragen.
 
-1. Klik **in** de sectie Gebruikers die toegang kunnen aanvragen op Gebruikers in uw **map** en klik vervolgens op Specifieke gebruikers **en groepen**.
+13. Klik **in** de sectie Gebruikers die toegang kunnen aanvragen op Gebruikers in uw **map** en klik vervolgens op Specifieke gebruikers **en groepen**.
 
     ![Nieuw toegangspakket - tabblad Aanvragen](./media/entitlement-management-access-package-first/requests.png)
 
-1. Klik **op Gebruikers en groepen toevoegen**.
+14. Klik **op Gebruikers en groepen toevoegen**.
 
-1. Selecteer in het deelvenster Gebruikers en groepen selecteren de **gebruiker Requestor1** die u eerder hebt gemaakt.
+15. Selecteer in het deelvenster Gebruikers en groepen selecteren de **gebruiker Requestor1** die u eerder hebt gemaakt.
 
     ![Nieuw toegangspakket - Tabblad Aanvragen - Gebruikers en groepen selecteren](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-1. Klik **op Selecteren**.
+16. Klik **op Selecteren**.
 
-1. Schuif omlaag naar de secties **Goedkeuring** en **Aanvragen inschakelen.**
+17. Schuif omlaag naar de secties **Goedkeuring** en **Aanvragen inschakelen.**
 
-1. Goedkeuring **vereisen** instellen op **Nee**.
+18. Goedkeuring **vereisen** instellen op **Nee**.
 
-1. Klik op **Ja** inschakelen **voor**Aanvragen inschakelen om dit toegangspakket te kunnen aanvragen zodra het is gemaakt.
+19. Klik op **Ja** inschakelen **voor**Aanvragen inschakelen om dit toegangspakket te kunnen aanvragen zodra het is gemaakt.
 
     ![Nieuw toegangspakket - Tabblad Aanvragen - Aanvragen en Aanvragen inschakelen](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-1. Klik **op Volgende** om het tabblad **Levenscyclus** te openen.
+20. Klik **op Volgende** om het tabblad **Levenscyclus** te openen.
 
-1. Stel **in** de sectie Verloop de **toewijzingen van toegangspakketten in die verlopen** **in aantal dagen**.
+21. Stel **in** de sectie Verloop de **toewijzingen van toegangspakketten in die verlopen** **in aantal dagen**.
 
-1. Stel **toewijzingen verlopen na** **30** dagen.
+22. Stel **toewijzingen verlopen na** **30** dagen.
 
     ![Nieuw toegangspakket - tabblad Levenscyclus](./media/entitlement-management-access-package-first/lifecycle.png)
 
-1. Klik **op Volgende** om het tabblad Controleren + Maken **te** openen.
+23. Klik **op Volgende** om het tabblad Controleren + Maken **te** openen.
 
     ![Nieuw toegangspakket - Tabblad Controleren + Maken](./media/entitlement-management-access-package-first/review-create.png)
 
     Na een paar ogenblikken ziet u een melding dat het toegangspakket is gemaakt.
 
-1. Klik in het linkermenu van het toegangspakket marketingcampagne op **Overzicht**.
+24. Klik in het linkermenu van het toegangspakket marketingcampagne op **Overzicht**.
 
-1. Kopieer de **koppeling Mijn Access-portal**.
+25. Kopieer de **koppeling Mijn Access-portal**.
 
     Je gebruikt deze link voor de volgende stap.
 

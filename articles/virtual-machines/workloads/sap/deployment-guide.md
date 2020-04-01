@@ -442,7 +442,7 @@ De wizard begeleidt u bij het instellen van de vereiste parameters om de virtuel
      * **Netwerkbeveiligingsgroep:** zie [Netwerkverkeerstroom beheren met netwerkbeveiligingsgroepen][virtual-networks-nsg]voor meer informatie.
    * **Extensies:** U virtuele machine-extensies installeren door ze toe te voegen aan de implementatie. U hoeft in deze stap geen extensies toe te voegen. De extensies die nodig zijn voor SAP-ondersteuning worden later geïnstalleerd. Zie hoofdstuk [Configureer de Azure Extension voor SAP][deployment-guide-4.5] in deze handleiding.
    * **Hoge beschikbaarheid**: Selecteer een beschikbaarheidsset of voer de parameters in om een nieuwe beschikbaarheidsset te maken. Zie [Azure-beschikbaarheidssets][planning-guide-3.2.3]voor meer informatie .
-   * **Monitoring**
+   * **Bewaking**
      * **Opstartdiagnostiek**: U **Uitschakelen** selecteren voor opstartdiagnose.
      * **GastOS-diagnose:** U **Uitschakelen** selecteren voor het controleren van diagnoses.
 
@@ -545,7 +545,7 @@ U gebruikt verschillende stappen om een privéafbeelding voor Linux te maken dan
 >
 
 ---
-U een aangepaste afbeelding voorbereiden en maken en deze vervolgens gebruiken om meerdere nieuwe VM's te maken. Dit wordt beschreven in [de planning en implementatie van Azure Virtual Machines voor SAP NetWeaver.][planning-guide] Stel uw database-inhoud in met SAP Software Provisioning Manager om een nieuw SAP-systeem te installeren (herstelt een databaseback-up van een schijf die is gekoppeld aan de virtuele machine) of door een databaseback-up rechtstreeks te herstellen vanuit Azure-opslag, als uw DBMS ondersteunt. Zie [Azure Virtual Machines DBMS-implementatie voor SAP NetWeaver voor][dbms-guide]meer informatie. Als u al een SAP-systeem op uw on-premises VM hebt geïnstalleerd (met name voor tweelaagse systemen), u de SAP-systeeminstellingen aanpassen na de implementatie van de Azure VM met behulp van de systeemnaamprocedure die wordt ondersteund door SAP Software Provisioning Manager (SAP Note [1619720]). Anders u de SAP-software installeren nadat u de Azure VM hebt geïmplementeerd.
+U een aangepaste afbeelding voorbereiden en maken en deze vervolgens gebruiken om meerdere nieuwe VM's te maken. Dit wordt beschreven in [de planning en implementatie van Azure Virtual Machines voor SAP NetWeaver.][planning-guide] Stel uw database-inhoud in met SAP Software Provisioning Manager om een nieuw SAP-systeem te installeren (herstelt een databaseback-up van een schijf die is gekoppeld aan de virtuele machine) of door een databaseback-up rechtstreeks te herstellen vanuit Azure-opslag, als uw DBMS dit ondersteunt. Zie [Azure Virtual Machines DBMS-implementatie voor SAP NetWeaver voor][dbms-guide]meer informatie. Als u al een SAP-systeem op uw on-premises VM hebt geïnstalleerd (met name voor tweelaagse systemen), u de SAP-systeeminstellingen aanpassen na de implementatie van de Azure VM met behulp van de systeemnaamprocedure die wordt ondersteund door SAP Software Provisioning Manager (SAP Note [1619720]). Anders u de SAP-software installeren nadat u de Azure VM hebt geïmplementeerd.
 
 In het volgende stroomdiagram ziet u de SAP-specifieke reeks stappen voor het implementeren van een VM vanuit een aangepaste afbeelding:
 
@@ -581,7 +581,7 @@ De wizard begeleidt u bij het instellen van de vereiste parameters om de virtuel
      * **Netwerkbeveiligingsgroep:** zie [Netwerkverkeerstroom beheren met netwerkbeveiligingsgroepen][virtual-networks-nsg]voor meer informatie.
    * **Extensies:** U virtuele machine-extensies installeren door ze toe te voegen aan de implementatie. U hoeft in deze stap geen extensie toe te voegen. De extensies die nodig zijn voor SAP-ondersteuning worden later geïnstalleerd. Zie hoofdstuk [Configureer de Azure Extension voor SAP][deployment-guide-4.5] in deze handleiding.
    * **Hoge beschikbaarheid**: Selecteer een beschikbaarheidsset of voer de parameters in om een nieuwe beschikbaarheidsset te maken. Zie [Azure-beschikbaarheidssets][planning-guide-3.2.3]voor meer informatie .
-   * **Monitoring**
+   * **Bewaking**
      * **Opstartdiagnostiek**: U **Uitschakelen** selecteren voor opstartdiagnose.
      * **GastOS-diagnose:** U **Uitschakelen** selecteren voor het controleren van diagnoses.
 

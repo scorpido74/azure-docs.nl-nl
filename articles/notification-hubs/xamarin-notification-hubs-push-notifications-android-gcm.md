@@ -1,5 +1,5 @@
 ---
-title: Push meldingen verzenden naar Xamarin. Android-apps met behulp van Azure Notification Hubs | Microsoft Docs
+title: Pushmeldingen verzenden naar Xamarin.Android-apps met Azure Notification Hubs | Microsoft Documenten
 description: In deze zelfstudie leert u hoe u met Azure Notification Hubs pushmeldingen verzendt naar een Xamarin.Android-toepassing.
 author: sethmanheim
 manager: femila
@@ -18,19 +18,19 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
 ms.openlocfilehash: 0e4354fa7466efcf27f430bbce7edb30bb9a304c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72387654"
 ---
-# <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar Xamarin. Android-apps met Notification Hubs
+# <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar Xamarin.Android-apps met behulp van Meldingenhubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Overzicht
 
-In deze zelfstudie wordt gedemonstreerd hoe u met Azure Notification Hubs pushmeldingen verzendt naar een Xamarin.Android-toepassing. U maakt een lege Xamarin.Android-app die pushmeldingen ontvangt via Firebase Cloud Messaging (FCM). U gebruikt u de Notification Hub om pushmeldingen uit te zenden naar alle apparaten waarop uw app wordt uitgevoerd. De voltooide code is beschikbaar in het [Notification hubs-app](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/Xamarin/GetStartedXamarinAndroid) -voor beeld.
+In deze zelfstudie wordt gedemonstreerd hoe u met Azure Notification Hubs pushmeldingen verzendt naar een Xamarin.Android-toepassing. U maakt een lege Xamarin.Android-app die pushmeldingen ontvangt via Firebase Cloud Messaging (FCM). U gebruikt u de Notification Hub om pushmeldingen uit te zenden naar alle apparaten waarop uw app wordt uitgevoerd. De voltooide code is beschikbaar in het [NotificationHubs-app](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/Xamarin/GetStartedXamarinAndroid)-voorbeeld.
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -54,10 +54,10 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-### <a name="configure-gcmfcm-settings-for-the-notification-hub"></a>Instellingen voor GCM/FCM configureren voor de notification hub
+### <a name="configure-gcmfcm-settings-for-the-notification-hub"></a>GCM/FCM-instellingen configureren voor de meldingshub
 
-1. Selecteer **Google (GCM/FCM)/** in de sectie **instellingen** in het menu links.
-2. Voer de **Server sleutel** in die u hebt genoteerd in de Google Firebase-console.
+1. Selecteer **Google (GCM/FCM)/** in de sectie **Instellingen** in het linkermenu.
+2. Voer de **serversleutel** in die u hebt opgemerkt vanaf de Google Firebase-console.
 3. Selecteer **Opslaan** op de werkbalk.
 
     ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
@@ -69,30 +69,30 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Visual Studio-project maken en NuGet-pakketten toevoegen
 
 > [!NOTE]
-> De stappen die in deze zelf studie worden beschreven, zijn voor Visual Studio 2017. 
+> De stappen die in deze zelfstudie zijn vastgelegd, zijn voor Visual Studio 2017. 
 
-1. Open in Visual Studio het menu **File** en selecteer **New** en vervolgens **Project**. Voer in het venster **New Project** de volgende stappen uit:
-    1. Vouw **geïnstalleerd**, **Visual C#** en klik vervolgens op **Android**.
-    2. Selecteer **Android-app (Xamarin)** in de lijst.
+1. Open in Visual Studio het menu **File** en selecteer **New** en vervolgens **Project**. Ga in het venster **Nieuw project** als volgt te werk:
+    1. Uitvouwen **Geïnstalleerd**, **Visual C#** en klik vervolgens op **Android**.
+    2. Selecteer **Android App (Xamarin)** in de lijst.
     3. Voer een **naam** in voor het project.
     4. Selecteer een **locatie** voor het project.
     5. Selecteer **OK**
 
         ![Het dialoogvenster Nieuw project](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)
-2. In het dialoog venster **nieuwe Android-app** selecteert u **lege app**en selecteert u **OK**.
+2. Selecteer in het dialoogvenster **Nieuwe Android-app** de optie **Lege app**en selecteer **OK**.
 
     ![Het dialoogvenster Nieuw project](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
 3. Vouw in het venster **Solution Explorer** het item **Properties** uit en klik op **AndroidManifest.xml**. Wijzig de naam van het pakket zodat deze overeenkomt met de pakketnaam die u hebt ingevoerd tijdens het toevoegen van Firebase Cloud Messaging aan uw project in Google Firebase Console.
 
     ![Pakketnaam in GCM](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
-4. Stel de Android-doel versie voor het project in op **android 9,0 (cirkel)** door de volgende stappen uit te voeren: 
-    1. Klik met de rechter muisknop op het project en selecteer **Eigenschappen**. 
-    1. Selecteer voor het **compileren met behulp van Android-versie: (Target Framework)** het veld **Android 9,0 (cirkel)** . 
-    1. Selecteer **Ja** in het bericht venster om door te gaan met het wijzigen van het doel raamwerk.
-1. Voeg de vereiste NuGet-pakketten aan het project toe door de volgende stappen uit te voeren:
-    1. Klik met de rechtermuisknop op het project en selecteer **Manage NuGet Packages...** .
-    1. Ga naar het tabblad **geïnstalleerd** , selecteer **Xamarin. Android. support. Design**en selecteer **bijwerken** in het rechterdeel venster om het pakket bij te werken naar de meest recente versie.
-    1. Ga naar het tabblad **Bladeren** . Zoek naar **Xamarin. GooglePlayServices. base**. Selecteer **Xamarin.GooglePlayServices.Base** in de lijst met resultaten. Selecteer vervolgens **Install**.
+4. Stel de beoogde Android-versie voor het project in op **Android 9.0 (pie)** door de volgende stappen te volgen: 
+    1. Klik met de rechtermuisknop op uw project en selecteer **Eigenschappen**. 
+    1. Selecteer **Android 9.0 (Pie)** voor het veld **Compileren met Android-versie: (Doelkader).** 
+    1. Selecteer **Ja** in het berichtvak om door te gaan met het wijzigen van het doelkader.
+1. Voeg de vereiste NuGet-pakketten toe aan het project door de volgende stappen te volgen:
+    1. Klik met de rechtermuisknop op uw project en selecteer **NuGet-pakketten beheren...**.
+    1. Ga naar het tabblad **Geïnstalleerd,** selecteer **Xamarin.Android.Support.Design**en selecteer **Bijwerken** in het rechterdeelvenster om het pakket bij te werken naar de nieuwste versie.
+    1. Ga naar het tabblad **Bladeren.** Zoek naar **Xamarin.GooglePlayServices.Base**. Selecteer **Xamarin.GooglePlayServices.Base** in de lijst met resultaten. Selecteer vervolgens **Install**.
 
         ![Google Play Services NuGet](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
     6. Zoek in het venster **NuGet Package Manager** naar **Xamarin.Firebase.Messaging**. Selecteer **Xamarin.Firebase.Messaging** in de lijst met resultaten. Selecteer vervolgens **Install**.
@@ -124,7 +124,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
     </receiver>
     ```
 
-2. Voeg de volgende instructies toe **vóór het toepassings** element.
+2. Voeg de volgende instructies **toe vóór het toepassingselement.**
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET" />
@@ -135,8 +135,8 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
 
 3. Verzamel de volgende informatie voor uw Android-app en Notification Hub:
 
-   * **Verbindingsreeks voor luisteren**: kies op het dashboard in [Azure-portal] de optie **Verbindingsreeksen weergeven**. Kopieer de verbindingsreeks `DefaultListenSharedAccessSignature` voor deze waarde.
-   * **Hubnaam**: de naam van uw hub in [Azure-portal]. Bijvoorbeeld *mynotificationhub2*.
+   * **Verbindingsreeks voor luisteren**: kies op het dashboard in [Azure Portal] de optie **Verbindingsreeksen weergeven**. Kopieer de verbindingsreeks `DefaultListenSharedAccessSignature` voor deze waarde.
+   * **Hubnaam**: de naam van uw hub in [Azure Portal]. Bijvoorbeeld *mynotificationhub2*.
 4. Klik in het venster **Solution Explorer** met de rechtermuisknop op uw **project**, selecteer **Add** en vervolgens **Class**.
 5. Maak een klasse `Constants.cs` voor uw Xamarin-project en definieer de volgende constantewaarden in de klasse. Vervang de tijdelijke aanduidingen door de waarden.
 
@@ -155,14 +155,14 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
     using Android.Gms.Common;
     ```
 
-7. Voeg de volgende eigenschappen toe aan de klasse MainActivity. De code variabele wordt gebruikt voor het weer geven van een waarschuwings venster wanneer de app wordt uitgevoerd:
+7. Voeg de volgende eigenschappen toe aan de klasse MainActivity. De TAG-variabele wordt gebruikt om een waarschuwingsdialoogvenster weer te geven wanneer de app wordt uitgevoerd:
 
     ```csharp
     public const string TAG = "MainActivity";
     internal static readonly string CHANNEL_ID = "my_notification_channel";
     ```
 
-8. Voeg de volgende methode toe aan de klasse MainActivity. Hiermee wordt gecontroleerd of **Google play services** beschikbaar zijn op het apparaat.
+8. Voeg de volgende methode toe aan de klasse MainActivity. Er wordt gecontroleerd of **Google Play Services** beschikbaar zijn op het apparaat.
 
     ```csharp
     public bool IsPlayServicesAvailable()
@@ -185,7 +185,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
     }
     ```
 
-9. Voeg de volgende methode toe aan de klasse MainActivity om een meldings kanaal te maken.
+9. Voeg de volgende methode toe aan de klasse MainActivity waarmee een meldingskanaal wordt gemaakt.
 
     ```csharp
     private void CreateNotificationChannel()
@@ -229,7 +229,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
     CreateNotificationChannel();
     ```
 
-15. Voeg een klasse met de naam `MyFirebaseMessagingService` toe aan uw project. 
+15. Voeg een `MyFirebaseMessagingService` klasse toe die aan uw project is vernoemd. 
 16. Voeg de volgende using-instructies toe aan `MyFirebaseMessagingService.cs`.
 
     ```csharp
@@ -248,7 +248,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
     public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
 
-18. Voeg de volgende code toe aan `MyFirebaseMessagingService.cs` om ontvangen berichten te verwerken. 
+18. Voeg de volgende `MyFirebaseMessagingService.cs` code toe aan het verwerken van ontvangen berichten. 
 
     ```csharp
         const string TAG = "MyFirebaseMsgService";
@@ -292,7 +292,7 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
         }
     ```
 
-19. Voeg de volgende methoden toe aan de klasse MyFirebaseMessagingService om het FCM-registratie token te ontvangen en te verzenden naar het Notification Hubs-exemplaar (hub). 
+19. Voeg de volgende methoden toe aan de klasse MyFirebaseMessagingService om het FCM-registratietoken te ontvangen en naar de instantie Meldinghubs (hub) te verzenden. 
 
     ```csharp
         public override void OnNewToken(string token)
@@ -314,15 +314,15 @@ De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindi
         }
     ```
 1. **Compileer** het nieuwe project.
-1. **Voer uw app uit** op uw apparaat of in een geladen emulator.
+1. **Uw** app uitvoeren op uw apparaat of geladen emulator
 
 ## <a name="send-test-notification-from-the-azure-portal"></a>Testmeldingen verzenden vanuit Azure Portal
 
-U kunt ontvangst van meldingen in uw app testen met de optie **Test verzenden** in [Azure-portal]. Er wordt dan een pushmelding als test naar uw apparaat verzonden.
+U kunt ontvangst van meldingen in uw app testen met de optie **Test verzenden** in [Azure Portal]. Er wordt dan een pushmelding als test naar uw apparaat verzonden.
 
 ![Azure Portal - Test verzenden](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
-Pushmeldingen worden gewoonlijk in een back-endservice zoals Mobile Services of ASP.NET verzonden via een compatibele bibliotheek. Als er geen bibliotheek beschikbaar is voor uw back-end, kunt u de REST API ook rechtstreeks gebruiken om meldings berichten te verzenden.
+Pushmeldingen worden gewoonlijk in een back-endservice zoals Mobile Services of ASP.NET verzonden via een compatibele bibliotheek. Als een bibliotheek niet beschikbaar is voor uw back-end, u de REST-API ook rechtstreeks gebruiken om meldingsberichten te verzenden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -361,7 +361,7 @@ In deze zelfstudie hebt u meldingen uitgezonden naar al uw Android-apparaten die
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio met Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio voor Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
-[Azure-portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx

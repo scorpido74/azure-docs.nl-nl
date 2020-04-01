@@ -11,21 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5dc231febc2e9b605b9e7f603f5d036b8a2c62eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3f9b32ea55f0ceebf08b22ccc7e2ceec0b6227e
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240762"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420793"
 ---
-# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli-preview"></a>IPv6 toevoegen aan een IPv4-toepassing in het virtuele Azure-netwerk - Azure CLI (Preview)
+# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>IPv6 toevoegen aan een IPv4-toepassing in het virtuele Azure-netwerk - Azure CLI
 
 In dit artikel ziet u hoe u IPv6-adressen toevoegt aan een toepassing die iPv4-openbaar IP-adres gebruikt in een virtueel Azure-netwerk voor een standaardbelastingsbalansr met Azure CLI. De in-place upgrade omvat een virtueel netwerk en subnet, een Standard Load Balancer met IPv4 + IPV6 frontend configuraties, VM's met NIC's die een IPv4 + IPv6 configuraties, netwerk beveiliging groep, en openbare IP's hebben.
 
-> [!Important]
-> IPv6-ondersteuning voor Azure Virtual Network is momenteel in openbare preview. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -33,29 +31,6 @@ Als u ervoor kiest om Azure CLI lokaal te installeren en te gebruiken, moet u vo
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="register-the-service"></a>De service registreren
-
-Voordat u een dual stack-toepassing implementeert in Azure, moet u uw abonnement voor deze voorbeeldfunctie configureren met de volgende Azure CLI:
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Het duurt maximaal 30 minuten voordat de functieregistratie is voltooid. U uw registratiestatus controleren door de volgende opdracht Azure CLI uit te voeren:
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Voer de volgende opdracht uit nadat de registratie is voltooid:
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>Een Load Balancer van het type Standard maken
 In dit artikel wordt ervan uitgegaan dat u een StandaardLoad Balancer hebt geïmplementeerd zoals beschreven in [Quickstart: Een standaardloadbalancer maken - Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md).
 
 ## <a name="create-ipv6-addresses"></a>IPv6-adressen maken
@@ -173,8 +148,6 @@ U het virtuele IPv6-dual stack-netwerk in Azure-portal als volgt bekijken:
 
   ![IPv6 dual stack virtueel netwerk in Azure](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Het virtuele IPv6 voor Azure-netwerk is beschikbaar in de Azure-portal in alleen-lezen voor deze preview-release.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

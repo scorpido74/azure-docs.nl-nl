@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687141"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476892"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Uw ILB App Service-omgeving integreren met Azure Application Gateway #
 
@@ -20,7 +20,7 @@ De [App Service-omgeving](./intro.md) is een implementatie van Azure App Service
 
 Firewalls voor webapplicaties helpen uw webapplicaties te beveiligen door binnenkomend webverkeer te inspecteren om SQL-injecties, Cross-Site Scripting, malware-uploads & toepassing DDoS en andere aanvallen te blokkeren. Het inspecteert ook de reacties van de back-end webservers voor Data Loss Prevention (DLP). U een WAF-apparaat ophalen van de Azure-marktplaats of u de [Azure Application Gateway gebruiken.][appgw]
 
-De Azure Application Gateway is een virtueel toestel dat layer 7 load balancing, SSL offloading en Web Application Firewall (WAF) bescherming biedt. Het kan luisteren op een openbaar IP-adres en routeverkeer naar het eindpunt van uw toepassing. De volgende informatie beschrijft hoe u een WAF-geconfigureerde toepassingsgateway integreren met een app in een ILB-appserviceomgeving.  
+De Azure Application Gateway is een virtueel toestel dat layer 7 load balancing, TLS/SSL offloading en WAF-beveiliging (Web Application) biedt. Het kan luisteren op een openbaar IP-adres en routeverkeer naar het eindpunt van uw toepassing. De volgende informatie beschrijft hoe u een WAF-geconfigureerde toepassingsgateway integreren met een app in een ILB-appserviceomgeving.  
 
 De integratie van de applicatiegateway met de ILB App Service Environment is op app-niveau. Wanneer u de toepassingsgateway configureert met uw ILB-appserviceomgeving, doet u dit voor specifieke apps in uw ILB-appserviceomgeving. Deze techniek maakt het hosten van veilige multitenant-applicaties mogelijk in één ILB-appserviceomgeving.  
 

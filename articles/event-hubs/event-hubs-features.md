@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76ab92285cace284c187109ca48c6634777ebbc0
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79281481"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398323"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Functies en terminologie in Azure Event Hubs
 
@@ -108,6 +108,13 @@ Een *verschuiving* is de positie van een gebeurtenis binnen een partitie. U kunt
 *Het plaatsen van controlepunten* is een proces waarbij lezers hun positie binnen de gebeurtenisvolgorde van een partitie markeren of vastleggen. Het plaatsen van controlepunten is de verantwoordelijkheid van de consumer en vindt plaats per partitie binnen een consumergroep. Deze verantwoordelijkheid houdt in dat elke partitielezer voor elke consumergroep de huidige positie in de gebeurtenisstroom moet bijhouden en de service kan informeren wanneer de gegevensstroom is voltooid.
 
 Als een lezer van een partitie is losgekoppeld en er vervolgens weer verbinding wordt gemaakt, begint het lezen bij het controlepunt dat eerder is verzonden door de laatste lezer van de betreffende partitie in de consumergroep. Wanneer de lezer verbinding maakt, passeert deze de verschuiving naar de gebeurtenishub om de locatie op te geven waar u moet beginnen met lezen. Op deze manier kunt u het plaatsen van controlepunten gebruiken om gebeurtenissen te markeren als 'voltooid' door downstream-toepassingen. Bovendien beschikt u met controlepunten over tolerantie bij een failover tussen lezers die op verschillende apparaten worden uitgevoerd. Het is mogelijk om terug te keren naar de oudere gegevens door een lagere offset van dit controlepuntproces op te geven. Via dit mechanisme zorgt het plaatsen van controlepunten voor failover-tolerantie en voor herhaling van gebeurtenisstromen.
+
+> [!NOTE]
+> Als u Azure Blob Storage gebruikt als controlepuntopslag in een omgeving die een andere versie van Storage Blob SDK ondersteunt dan die welke doorgaans beschikbaar is op Azure, moet u code gebruiken om de API-versie van de opslagservice te wijzigen in de specifieke versie die wordt ondersteund door die omgeving. Als u bijvoorbeeld Gebeurtenishubs uitvoert [op een Azure Stack Hub-versie 2002,](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)is versie 2017-11-09 de hoogst beschikbare versie voor de opslagservice. In dit geval moet u code gebruiken om de API-versie van de opslagservice te targeten op 2017-11-09. Zie deze voorbeelden op GitHub voor een voorbeeld over het targeten van een specifieke Storage API-versie: 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) of [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
 
 ### <a name="common-consumer-tasks"></a>Algemene taken voor consumers
 

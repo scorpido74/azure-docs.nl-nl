@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: fedc1f6ce8fbaeaf0d2cae3a1b04169192868e61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6683c1b78b0e7ecba162026708c83843e2c08180
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270691"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478886"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Verbinding maken met virtuele Azure-netwerken vanuit Azure Logic Apps met behulp van een integratieserviceomgeving (ISE)
 
@@ -32,7 +32,7 @@ In dit artikel ziet u hoe u deze taken voltooien met behulp van de Azure-portal:
 * Maak uw ISE.
 * Voeg extra capaciteit toe aan uw ISE.
 
-U ook een ISE maken met behulp van de Logic Apps REST API, inclusief het instellen van door de klant beheerde sleutels:
+U ook een ISE maken met behulp van de [sjabloon Voor snelstartvan Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) of met de LOGIC Apps REST API, inclusief het instellen van door de klant beheerde sleutels:
 
 * [Een integratieserviceomgeving (ISE) maken met de Logic Apps REST API](../logic-apps/create-integration-service-environment-rest-api.md)
 * [Door de klant beheerde sleutels instellen om gegevens in rust te versleutelen voor ISE's](../logic-apps/customer-managed-keys-integration-service-environment.md)

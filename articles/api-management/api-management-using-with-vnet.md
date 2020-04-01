@@ -161,7 +161,7 @@ Hieronder volgt een lijst met veelvoorkomende foutieve configuratieproblemen die
       - SMTP-relais
       - Ontwikkelaarsportal CAPTCHA
 
-## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Probleemoplossing
+## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Problemen oplossen
 * **Initiële installatie:** Wanneer de eerste implementatie van API Management-service in een subnet niet slaagt, wordt geadviseerd om eerst een virtuele machine in hetzelfde subnet te implementeren. Volgende externe desktop in de virtuele machine en valideren dat er connectiviteit is met een van elke bron hieronder in uw Azure-abonnement
     * Blob azure-opslag
     * Azure SQL Database

@@ -1,6 +1,6 @@
 ---
-title: Managed disks kopiëren naar een abonnement-Power shell-voor beeld
-description: 'Azure PowerShell script voorbeeld: beheerde schijven kopiëren (of verplaatsen) naar hetzelfde of een ander abonnement'
+title: Beheerde schijven kopiëren naar een abonnement - PowerShell-voorbeeld
+description: Voorbeeld van Azure PowerShell Script - Beheerde schijven kopiëren (of verplaatsen) naar hetzelfde of een ander abonnement
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
 ms.openlocfilehash: 9e655ce33c8952acab7228f4caae81f09c2d56ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75375896"
 ---
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>Met PowerShell beheerde schijven kopiëren naar hetzelfde of een ander abonnement

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 698fab470cdc8b8d04fa4319fd71c31b58d1c5a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066879"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478147"
 ---
 # <a name="custom-script-extension-for-windows"></a>Aangepaste scriptextensie voor Windows
 
@@ -106,7 +106,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 > Slechts één versie van een extensie kan op een bepaald moment op een VM worden geïnstalleerd, waarbij aangepaste script tweekeer wordt opgegeven in dezelfde Resource Manager-sjabloon voor dezelfde VM, mislukt.
 
 > [!NOTE]
-> We kunnen dit schema gebruiken in de VirtualMachine-bron of als een zelfstandige bron. De naam van de resource moet in deze indeling "virtualMachineName/extensionName" zijn, als deze extensie wordt gebruikt als een zelfstandige bron in de ARM-sjabloon. 
+> We kunnen dit schema gebruiken in de VirtualMachine-bron of als een zelfstandige bron. De naam van de resource moet in deze indeling "virtualMachineName/extensionName" zijn, als deze extensie wordt gebruikt als een zelfstandige bron in de ARM-sjabloon.
 
 ### <a name="property-values"></a>Eigenschapswaarden
 
@@ -146,6 +146,8 @@ Het gebruik van openbare instellingen is misschien handig voor het opsporen van 
 Openbare instellingen worden in duidelijke tekst naar de VM gestuurd waar het script wordt uitgevoerd.  Beveiligde instellingen worden versleuteld met een sleutel die alleen bekend is bij azure en de VM. De instellingen worden opgeslagen in de VM als ze werden verzonden, dat wil zeggen, als de instellingen zijn versleuteld ze zijn opgeslagen versleuteld op de VM. Het certificaat dat wordt gebruikt om de versleutelde waarden te decoderen, wordt opgeslagen op de VM en wordt gebruikt om instellingen (indien nodig) te decoderen tijdens runtime.
 
 ####  <a name="property-managedidentity"></a>Eigenschap: managedIdentity
+> [!NOTE]
+> Deze eigenschap **mag** alleen in beveiligde instellingen worden opgegeven.
 
 CustomScript (versie 1.10 vanaf daarentegen) ondersteunt [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het downloaden van bestanden(en) van URL's die in de instelling 'fileUris' worden gegeven. Hiermee heeft CustomScript toegang tot privéblobs of containers van Azure Storage zonder dat de gebruiker geheimen zoals SAS-tokens of opslagaccountsleutels hoeft door te geven.
 
@@ -268,7 +270,7 @@ Als u [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
 ```
-## <a name="virtual-machine-scale-sets"></a>Schaalsets voor virtuele machines
+## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 Zie [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0) voor het implementeren van de aangepaste scriptextensie op een schaalset
 

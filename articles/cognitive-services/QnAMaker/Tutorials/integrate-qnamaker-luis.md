@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c01f5f41e61cd65855789bb753a7a297fe475885
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71802794"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396347"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Gebruik bot met QnA Maker en LUIS om uw kennisbank te distribueren
 Naarmate uw QnA Maker-kennisbank groot wordt, wordt het moeilijk om deze te onderhouden als een enkele monolithische set en is er een noodzaak om de kennisbasis in kleinere logische brokken te splitsen.
@@ -37,13 +37,13 @@ In het bovenstaande scenario krijgt QnA Maker eerst de bedoeling van de binnenko
 1. [Een app maken](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
 1. [Voeg een intentie toe](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) voor elke QnA Maker-kennisbank. De voorbeelduitingen moeten overeenkomen met vragen in de kennisbanken van QnA Maker.
 1. [Train de LUIS-app](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) en [publiceer de LUIS-app](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp) uw LUIS-app.
-1. Noteer in de sectie **Beheren** uw LUIS-app-id, LUIS-eindpuntsleutel en [aangepaste domeinnaam](../../cognitive-services-custom-subdomains.md). U zult deze waarden later nodig hebben. 
+1. Noteer in de sectie **Beheren** uw LUIS-app-id, LUIS-eindpuntsleutel en [aangepaste domeinnaam](../../cognitive-services-custom-subdomains.md). U zult deze waarden later nodig hebben.
 
 ## <a name="create-qna-maker-knowledge-bases"></a>Maak kennisbanken van QnA Maker
 
 1. Meld u aan bij [QnA Maker](https://qnamaker.ai).
 1. [Maak](https://www.qnamaker.ai/Create) een kennisbasis voor elke intentie in de LUIS-app.
-1. Test en publiceer de kennisbanken. Wanneer u elke KB publiceert, noteer dan de KB-id, de bronnaam (aangepast subdomein vóór _azurewebsites.net/qnamaker)_ en de eindpuntsleutel voor autorisatie. U zult deze waarden later nodig hebben. 
+1. Test en publiceer de kennisbanken. Wanneer u elke KB publiceert, noteer dan de KB-id, de bronnaam (aangepast subdomein vóór _azurewebsites.net/qnamaker)_ en de eindpuntsleutel voor autorisatie. U zult deze waarden later nodig hebben.
 
     In dit artikel wordt ervan uitgegaan dat de KB's allemaal zijn gemaakt in hetzelfde Azure QnA Maker-abonnement.
 
@@ -60,7 +60,7 @@ In het bovenstaande scenario krijgt QnA Maker eerst de bedoeling van de binnenko
 
 ## <a name="change-code-in-basicluisdialogcs"></a>Code wijzigen in BasicLuisDialog.cs
 1. Selecteer **Build** in de sectie Bot Beheer van de **Build**navigatie met de web-app bot in de Azure-portal.
-2. Selecteer **Online codeeditor openen**. Er wordt een nieuw browsertabblad geopend met de online bewerkingsomgeving. 
+2. Selecteer **Online codeeditor openen**. Er wordt een nieuw browsertabblad geopend met de online bewerkingsomgeving.
 3. Selecteer in de sectie **WWWROOT** de map **Dialogen** en open **BasicLuisDialog.cs**.
 4. Afhankelijkheden toevoegen aan de **BasicLuisDialog.cs** bovenkant van het BasicLuisDialog.cs-bestand:
 
@@ -155,7 +155,7 @@ In het bovenstaande scenario krijgt QnA Maker eerst de bedoeling van de binnenko
     ```
 
 
-7. Wijzig de klasse BasicLuisDialog. Elke LUIS-intentie moet een methode hebben die is versierd met **LuisIntent.** De parameter voor de decoratie is de werkelijke LUIS-intentienaam. De methodenaam die is _ingericht, moet_ de luis-intentienaam zijn voor leesbaarheid en onderhoud, maar hoeft niet hetzelfde te zijn bij het ontwerp of de looptijd.  
+7. Wijzig de klasse BasicLuisDialog. Elke LUIS-intentie moet een methode hebben die is versierd met **LuisIntent.** De parameter voor de decoratie is de werkelijke LUIS-intentienaam. De methodenaam die is _ingericht, moet_ de luis-intentienaam zijn voor leesbaarheid en onderhoud, maar hoeft niet hetzelfde te zijn bij het ontwerp of de looptijd.
 
     ```csharp
     [Serializable]
@@ -170,7 +170,7 @@ In het bovenstaande scenario krijgt QnA Maker eerst de bedoeling van de binnenko
         // assumes all KBs are created with same Azure service
         static string qnamaker_endpointKey = "<QnA Maker endpoint KEY>";
         static string qnamaker_resourceName = "my-qnamaker-s0-s";
-        
+
         // QnA Maker Human Resources Knowledge base
         static string HR_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
 
@@ -240,4 +240,4 @@ Selecteer in de Azure-portal **Testen in webchat** om de bot te testen. Typ beri
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een bedrijfscontinuïteitsplan maken voor QnA Maker](../How-To/business-continuity-plan.md)
+> [Integreer uw kennisbank met een Power Virtual Agent](integrate-with-power-virtual-assistant-fallback-topic.md)

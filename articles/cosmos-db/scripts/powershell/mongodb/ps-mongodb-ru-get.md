@@ -1,20 +1,20 @@
 ---
-title: Power shell-script voor het ophalen van door Voer (RU/s) voor de API van Azure Cosmos DB voor MongoDB
-description: Azure PowerShell script-Azure Cosmos DB de door Voer (RU/s) voor de MongoDB-API ophalen
+title: PowerShell-script om doorvoer (RU/s) voor Azure Cosmos DB's API voor MongoDB te krijgen
+description: Azure PowerShell-script - Azure Cosmos DB Get Throughput (RU/s) voor MongoDB API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: d7cd068722a1dcc99b909020fa5bae34ae4a4768
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 25ed59b73f3b508fd29a964bb6b981049957143f
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441391"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365665"
 ---
-# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>De door Voer (RU/s) voor een Data Base of verzameling voor de Azure Cosmos DB-MongoDB-API ophalen
+# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Ontvang doorvoer (RU/s) voor een database of verzameling voor Azure Cosmos DB - MongoDB API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,9 +38,10 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure-resources**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resource groepen**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBMongoDBDatabaseDoorvoer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput) | Hier krijgt u de doorvoerwaarde van de opgegeven MongoDB API-database. |
+| [Get-AzCosmosDBMongoDBCollectionDoorvoer](hhttps://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | Hier krijgt u de doorvoerwaarde van de opgegeven MongoDB API-verzameling. |
+|**Azure-brongroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-voorbeeldscript - Een SignalR-service maken
-description: Meer informatie over het voorbeeld script voor het maken van een nieuwe Azure signalerings service in een nieuwe resource groep met een wille keurige naam.
+description: Leer door het voorbeeldscript te volgen om een nieuwe Azure SignalR-service te maken in een nieuwe brongroep, met een willekeurige naam.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: 45958f020f2e5dbdb0a50f0190aff78568865f74
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74158075"
 ---
 # <a name="create-a-signalr-service"></a>Een SignalR-service maken 
@@ -65,7 +65,7 @@ Noteer de naam die wordt gegenereerd voor de nieuwe resourcegroep. U hebt deze n
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht. In dit script worden de volgende opdrachten gebruikt:
+Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht. In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|

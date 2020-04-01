@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: toepassingen installeren op een Windows-VM in azure'
+title: Zelfstudie - Toepassingen installeren op een Windows-vm in Azure
 description: In deze zelfstudie leert u hoe u de aangepaste scriptextensie gebruikt om scripts uit te voeren scripts en toepassingen te implementeren op virtuele Windows-machines in Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 610f8efad473b5f4bed1abc6b2c063ec0ead66ed
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74065370"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Zelfstudie: Toepassingen implementeren op een virtuele Windows-machine in Azure met de aangepaste scriptextensie
@@ -35,7 +35,7 @@ Om virtuele machines (VM's) snel en consistent te configureren, kunt u de [Aange
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U Cloud Shell ook starten op [https://shell.azure.com/powershell](https://shell.azure.com/powershell)een apart browsertabblad door naar. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="custom-script-extension-overview"></a>Overzicht aangepaste scriptextensie
 Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd op virtuele machines in Azure. Deze uitbreiding is handig voor post-implementatieconfiguraties, software-installaties of andere configuratie-/beheertaken. Scripts kunnen worden gedownload uit Azure Storage of GitHub, of worden geleverd in Azure Portal tijdens de uitvoering van extensies.

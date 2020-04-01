@@ -238,7 +238,7 @@ Gebruik de naam 'waarde' van de statistiek (niet de 'gelokaliseerde waarde') voo
 
 **Methode**: GET
 
-**Vraag URI**\:: https -management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name} {resource-name} {resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&resultType=metadata&api-versie=*{apiVersion }*
+**Vraag URI**\:: https /management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name} {resource-name} {resource-name} {resource-name} {resource-name} {resource-name} {resource-name} {resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&resultType=metadata&api-versie=*{apiVersion}*
 
 Als u bijvoorbeeld de lijst met dimensiewaarden wilt ophalen die zijn uitgestoten voor de dimensie 'API-naam' voor de statistiek 'Transacties', waarbij de geotypedimensie = 'Primair' gedurende het opgegeven tijdsbereik, de aanvraag als volgt is:
 
@@ -311,7 +311,7 @@ Gebruik de naam 'waarde' van de statistiek (niet de 'gelokaliseerde waarde') voo
 
 **Methode**: GET
 
-**Aanvraag**URI https://management.azure.com/subscriptions/: *{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&interval=*{timeGrain}*&aggregatie=*{aggreation}*&api-versie=*{ apiVersion}*
+**Aanvraag**URI https://management.azure.com/subscriptions/: *{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&interval=*{timeGrain}*&aggregatie=*{aggreation}*&api-versie=*{Version api}*
 
 Als u bijvoorbeeld de top 3 API's, in dalende waarde, wilt ophalen met het aantal 'Transacties' tijdens een bereik van 5 min, waarbij het GeotType 'Primair' was, is de aanvraag als volgt:
 
@@ -651,7 +651,7 @@ PlanId         :
 Version        : 08586982649483762729
 ```
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 Als u de bron-id voor een Azure Storage-account wilt ophalen met de Azure CLI, voert u de `az storage account show` opdracht uit, zoals in het volgende voorbeeld wordt weergegeven:
 

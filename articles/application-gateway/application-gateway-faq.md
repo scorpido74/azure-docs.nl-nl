@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 242fc115c5b2324c770de480fb19985e8b874893
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371251"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411018"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -353,11 +353,11 @@ Momenteel kan één exemplaar van Ingress Controller alleen aan één Applicatio
 
 Application Gateway biedt drie logboeken: 
 
-* **ApplicationGatewayAccessLog**: Het toegangslogboek bevat elk verzoek dat wordt ingediend bij de frontend van de toepassingsgateway. De gegevens omvatten het IP-adres van de beller, de gevraagde URL, de reactielatentie, de retourcode en de bytes in en uit. Het toegangslogboek wordt elke 300 seconden verzameld. Het bevat één record per toepassingsgateway.
+* **ApplicationGatewayAccessLog**: Het toegangslogboek bevat elk verzoek dat wordt ingediend bij de frontend van de toepassingsgateway. De gegevens omvatten het IP-adres van de beller, de gevraagde URL, de reactielatentie, de retourcode en de bytes in en uit. Het bevat één record per toepassingsgateway.
 * **ApplicationGatewayPerformanceLog:** Het prestatielogboek legt prestatiegegevens vast voor elke toepassingsgateway. Informatie omvat de doorvoer in bytes, totale aanvragen die worden weergegeven, het aantal mislukte aanvragen en het aantal gezonde en ongezonde backend-instantie.
 * **ApplicationGatewayFirewallLog:** Voor toepassingsgateways die u configureert met WAF, bevat het firewalllogboek aanvragen die worden geregistreerd via de detectiemodus of preventiemodus.
 
-Zie [Backend-status, diagnostische logboeken en statistieken voor Application Gateway voor](application-gateway-diagnostics.md)meer informatie.
+Alle logs worden elke 60 seconden verzameld. Zie [Backend-status, diagnostische logboeken en statistieken voor Application Gateway voor](application-gateway-diagnostics.md)meer informatie.
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Hoe weet ik of mijn backend poolleden gezond zijn?
 

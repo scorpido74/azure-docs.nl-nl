@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 2148ce41267627d9d6e0437897a99a8dbdbe0746
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382763"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474041"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database configureren voor MySQL-gegevens-in-replicatie
 
-In dit artikel leert u hoe u Gegevens-in-replicatie inde Azure Database for MySQL-service instelt door de hoofd- en replicaservers te configureren. Met data-in-replicatie u gegevens van een hoofd-MySQL-server die on-premises, in virtuele machines of databaseservices wordt gehost door andere cloudproviders, synchroniseren met een replica in de Azure Database for MySQL-service. 
+In dit artikel wordt beschreven hoe u Gegevens-in-replicatie in Azure Database voor MySQL instelt door de hoofd- en replicaservers te configureren. In dit artikel wordt ervan uitgegaan dat u enige eerdere ervaring hebt met MySQL-servers en -databases.
 
-In dit artikel wordt ervan uitgegaan dat u ten minste enige eerdere ervaring hebt met MySQL-servers en -databases.
+Als u een replica wilt maken in de Azure Database for MySQL-service, synchroniseert Gegevensreplicatie gegevens van een on-premises hoofd-MySQL-server, in virtuele machines (VM's) of in clouddatabaseservices.
 
 Bekijk de [beperkingen en vereisten](concepts-data-in-replication.md#limitations-and-considerations) van de replicatie van gegevens voordat u de stappen in dit artikel uitvoert.
 
@@ -47,7 +47,7 @@ De volgende stappen bereiden en configureren van de MySQL-server die on-premises
 
    Zorg er bijvoorbeeld voor dat de hoofdserver zowel binnenkomend als uitgaand verkeer toestaat op poort 3306 en dat de hoofdserver een **openbaar IP-adres**heeft, dat de DNS openbaar toegankelijk is of een volledig gekwalificeerde domeinnaam (FQDN) heeft. 
    
-   Test de connectiviteit met de hoofdserver door te proberen verbinding te maken vanuit een hulpprogramma zoals de MySQL-opdrachtregel die wordt gehost op een andere machine of vanuit de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) die beschikbaar is in de Azure-portal 
+   Test de connectiviteit met de hoofdserver door te proberen verbinding te maken vanuit een hulpprogramma zoals de MySQL-opdrachtregel die wordt gehost op een andere machine of vanuit de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) die beschikbaar is in de Azure-portal.
 
 2. Binaire logboekregistratie inschakelen
 
@@ -71,7 +71,7 @@ De volgende stappen bereiden en configureren van de MySQL-server die on-premises
 
 4. Een nieuwe replicatierol maken en machtigingen instellen
 
-   Maak een gebruikersaccount op de hoofdserver dat is geconfigureerd met replicatiebevoegdheden. Dit kan via SQL-opdrachten of een tool zoals MySQL Workbench. Overweeg of u van plan bent te repliceren met SSL, omdat dit moet worden opgegeven bij het maken van de gebruiker. Raadpleeg de MySQL-documentatie om te begrijpen hoe [u gebruikersaccounts toevoegt](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) aan uw hoofdserver. 
+   Maak een gebruikersaccount op de hoofdserver dat is geconfigureerd met replicatiebevoegdheden. Dit kan via SQL-opdrachten of een tool zoals MySQL Workbench. Overweeg of u van plan bent te repliceren met SSL, omdat dit moet worden opgegeven bij het maken van de gebruiker. Raadpleeg de MySQL-documentatie om te begrijpen hoe [u gebruikersaccounts toevoegt](https://dev.mysql.com/doc/refman/5.7/en/user-names.html) aan uw hoofdserver. 
 
    In de onderstaande opdrachten heeft de nieuwe replicatierol die is gemaakt toegang tot het model vanaf elke machine, niet alleen de machine die de master zelf host. Dit wordt gedaan door "syncuser@'%'" op te geven in de opdracht Gebruiker maken. Zie de MySQL-documentatie voor meer informatie over [het opgeven van accountnamen](https://dev.mysql.com/doc/refman/5.7/en/account-names.html).
 

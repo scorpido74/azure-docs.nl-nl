@@ -1,6 +1,6 @@
 ---
 title: Transparent Data Encryption
-description: Een overzicht van transparante gegevensversleuteling voor SQL Database en SQL Analytics in Azure Synapse. Het document behandelt de voordelen en de opties voor configuratie, waaronder service-beheerde transparante gegevensversleuteling en Bring Your Own Key.
+description: Een overzicht van transparante gegevensversleuteling voor SQL Database en Synapse SQL in Azure Synapse Analytics. Het document behandelt de voordelen en de opties voor configuratie, waaronder service-beheerde transparante gegevensversleuteling en Bring Your Own Key.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,18 +12,18 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/06/2020
-ms.openlocfilehash: 5bbb537ef6545852423bf5315b7636671c598fdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 982a59f1eb8717e2fe2d86728cdae731c919aaf0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255637"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476964"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-azure-synapse"></a>Transparante gegevensversleuteling voor SQL Database en Azure Synapse
 
-Transparante gegevensversleuteling (TDE) helpt Azure SQL Database, Azure SQL Managed Instance en Azure Synapse te beschermen tegen de dreiging van kwaadaardige offline activiteit door gegevens in rust te versleutelen. Het voert in realtime versleuteling en ontsleuteling van de database, bijbehorende back-ups en transactielogboekbestanden 'at-rest' uit, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. Standaard wordt TDE ingeschakeld voor alle nieuw geïmplementeerde Azure SQL-databases. TDE kan niet worden gebruikt om de logische **hoofddatabase** in SQL Database te versleutelen.  De **hoofddatabase** bevat objecten die nodig zijn om de TDE-bewerkingen in de gebruikersdatabases uit te voeren.
+Transparante gegevensversleuteling (TDE) helpt Azure SQL Database, Azure SQL Managed Instance en Synapse SQL in Azure Synapse Analytics te beschermen tegen de dreiging van kwaadaardige offline activiteit door gegevens in rust te versleutelen. Het voert in realtime versleuteling en ontsleuteling van de database, bijbehorende back-ups en transactielogboekbestanden 'at-rest' uit, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. Standaard wordt TDE ingeschakeld voor alle nieuw geïmplementeerde Azure SQL-databases. TDE kan niet worden gebruikt om de logische **hoofddatabase** in SQL Database te versleutelen.  De **hoofddatabase** bevat objecten die nodig zijn om de TDE-bewerkingen in de gebruikersdatabases uit te voeren.
 
-TDE moet handmatig worden ingeschakeld voor oudere databases van Azure SQL Database, Azure SQL Managed Instance of Azure Azure Synapse.
+TDE moet handmatig worden ingeschakeld voor oudere databases van Azure SQL Database, Azure SQL Managed Instance of Azure Synapse.
 Beheerde instantiedatabases die zijn gemaakt door middel van herstel, erft de versleutelingsstatus van de brondatabase.
 
 Transparante gegevensversleuteling versleutelt de opslag van een hele database met behulp van een symmetrische sleutel genaamd de databaseversleutelingssleutel. Deze database encryptie sleutel wordt beschermd door de transparante data encryptie beschermer. De protector is een servicebeheerd certificaat (door de service beheerde transparante gegevensversleuteling) of een asymmetrische sleutel die is opgeslagen in Azure Key Vault (Bring Your Own Key). U stelt de transparante gegevensversleutelingsbeveiliging in op serverniveau voor Azure SQL Database en Azure Synapse, en instantieniveau voor Azure SQL Managed Instance. De term *server* verwijst zowel naar server als instantie in dit document, tenzij anders vermeld.
@@ -85,7 +85,7 @@ U stelt de transparante sleutel voor gegevensversleuteling, ook wel bekend als d
 
 ![Transparante gegevensversleuteling met Bring Your Own Key-ondersteuning](./media/transparent-data-encryption-azure-sql/tde-byok-support.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Beheer transparante gegevensversleuteling met PowerShell.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

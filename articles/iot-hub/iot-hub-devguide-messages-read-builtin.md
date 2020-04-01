@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2674ca0f4808cb6f01781565e57369ca5d3ac37
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284601"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478783"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Apparaat-naar-cloud-berichten lezen van het geïntegreerde eindpunt
 
@@ -24,7 +24,7 @@ Standaard worden berichten doorgestuurd naar het ingebouwde servicegerichte eind
 | **Aantal partities** | Stel deze eigenschap in bij het maken om het aantal [partities](../event-hubs/event-hubs-features.md#partitions) voor inname van gebeurtenisvan apparaat tot cloud te definiëren. |
 | **Bewaartijd**  | Deze eigenschap geeft aan hoe lang berichten in dagen worden bewaard door IoT Hub. De standaardinstelling is één dag, maar kan worden verhoogd tot zeven dagen. |
 
-IoT Hub maakt het mogelijk om gegevens maximaal 7 dagen te bewaren in de ingebouwde Event Hubs. U de bewaartijd instellen tijdens het maken van uw IoT Hub. De bewaartijd van gegevens in IoT Hub is afhankelijk van uw IoT-hublaag en eenheidstype. In termen van grootte kunnen de ingebouwde gebeurtenishubs berichten van de maximale berichtgrootte tot ten minste 24 uur quotum behouden. Voor IoT Hub van 1 S1-eenheid biedt bijvoorbeeld voldoende opslagruimte om elk ten minste 400K-berichten van elk 4k-formaat te behouden. Als uw apparaten kleinere berichten verzenden, kunnen ze langer (tot 7 dagen) worden bewaard, afhankelijk van hoeveel opslagruimte wordt verbruikt. Wij garanderen minimaal het bewaren van de gegevens voor de opgegeven bewaartijd.
+IoT Hub maakt het mogelijk om gegevens maximaal 7 dagen te bewaren in de ingebouwde Event Hubs. U de bewaartijd instellen tijdens het maken van uw IoT Hub. De bewaartijd van gegevens in IoT Hub is afhankelijk van uw IoT-hublaag en eenheidstype. In termen van grootte kunnen de ingebouwde gebeurtenishubs berichten van de maximale berichtgrootte tot ten minste 24 uur quotum behouden. Voor IoT Hub van 1 S1-eenheid biedt bijvoorbeeld voldoende opslagruimte om elk ten minste 400K-berichten van elk 4k-formaat te behouden. Als uw apparaten kleinere berichten verzenden, kunnen ze langer (tot 7 dagen) worden bewaard, afhankelijk van hoeveel opslagruimte wordt verbruikt. Wij garanderen minimaal het bewaren van de gegevens voor de opgegeven bewaartijd. Berichten verlopen en zijn niet toegankelijk nadat de bewaartijd is verstreken. 
 
 Met IoT Hub u ook consumentengroepen beheren op het ingebouwde device-to-cloud-eindpunt. U maximaal 20 consumentengroepen hebben voor elke IoT-hub.
 
@@ -62,9 +62,9 @@ De SDK's die u gebruiken om verbinding te maken met het ingebouwde Event Hub-com
 
 | Taal | SDK | Voorbeeld | Opmerkingen |
 | -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Quickstart](quickstart-send-telemetry-dotnet.md) | Gebruikt informatie die compatibel is met gebeurtenishubs |
- Java | https://github.com/Azure/azure-event-hubs-java | [Quickstart](quickstart-send-telemetry-java.md) | Gebruikt informatie die compatibel is met gebeurtenishubs |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [Quickstart](quickstart-send-telemetry-node.md) | Maakt gebruik van de verbindingstekenreeks van IoT-hub |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Snelstartgids](quickstart-send-telemetry-dotnet.md) | Gebruikt informatie die compatibel is met gebeurtenishubs |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Snelstartgids](quickstart-send-telemetry-java.md) | Gebruikt informatie die compatibel is met gebeurtenishubs |
+| Node.js | https://github.com/Azure/azure-event-hubs-node | [Snelstartgids](quickstart-send-telemetry-node.md) | Maakt gebruik van de verbindingstekenreeks van IoT-hub |
 | Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | Maakt gebruik van de verbindingstekenreeks van IoT-hub |
 
 De productintegraties die u gebruiken met het ingebouwde Event Hub-compatibele eindpunt dat IoT Hub blootlegt, zijn:

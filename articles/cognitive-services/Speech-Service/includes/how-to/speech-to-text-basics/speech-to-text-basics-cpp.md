@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: dapine
-ms.openlocfilehash: 8392e03f272c6db2bb384c8031cb975bca53d530
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0c0fa3e07e0cdae6ce28fcd1521b63cb2575767f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79372800"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80501955"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,7 +37,7 @@ Er zijn een paar manieren waarop [`SpeechConfig`](https://docs.microsoft.com/cpp
 * Met een host: geef een hostadres door. Een sleutel- of autorisatietoken is optioneel.
 * Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) hoe een wordt gemaakt met behulp van een sleutel en regio.
+Laten we eens kijken [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) hoe een wordt gemaakt met behulp van een sleutel en regio. Zie de [pagina regioondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
 
 ```cpp
 auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");

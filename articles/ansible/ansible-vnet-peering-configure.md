@@ -1,44 +1,44 @@
 ---
-title: Zelf studie-de peering van het virtuele Azure-netwerk configureren met behulp van Ansible
-description: Meer informatie over het gebruik van Ansible voor het verbinden van virtuele netwerken met peering op virtueel netwerk.
-keywords: ansible, azure, devops, bash, Playbook, netwerken, peering
+title: Zelfstudie - Azure virtual network peering configureren met Ansible
+description: Meer informatie over het gebruik van Ansible om virtuele netwerken te verbinden met virtuele netwerkpeering.
+keywords: ansible, azure, devops, bash, playbook, netwerken, peering
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 78699a005d721b46a88a26452f5db68438793d34
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155724"
 ---
-# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Zelf studie: Azure Virtual Network-peering configureren met behulp van Ansible
+# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Zelfstudie: Azure virtual network peering configureren met Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-Met [peering voor virtuele netwerken (VNet)](/azure/virtual-network/virtual-network-peering-overview) kunt u naadloos verbinding maken tussen twee virtuele netwerken van Azure. Als de twee virtuele netwerken zijn gekoppeld, worden deze als één voor connectiviteits doeleinden weer gegeven. 
+[Met Virtual Network (VNet)](/azure/virtual-network/virtual-network-peering-overview) u twee virtuele Azure-netwerken naadloos met elkaar verbinden. Eenmaal peered, de twee virtuele netwerken verschijnen als een voor connectiviteit doeleinden. 
 
-Verkeer wordt gerouteerd tussen virtuele machines in hetzelfde virtuele netwerk via privé-IP-adressen. Ook verkeer tussen virtuele machines in een gekoppeld virtueel netwerk wordt doorgestuurd via de micro soft backbone-infra structuur. Als gevolg hiervan kunnen Vm's in verschillende virtuele netwerken met elkaar communiceren.
+Verkeer wordt omgeleid tussen VM's in hetzelfde virtuele netwerk via privé-IP-adressen. Op dezelfde manier wordt het verkeer tussen VM's in een peered virtueel netwerk omgeleid via de Microsoft-backbone-infrastructuur. Hierdoor kunnen VM's in verschillende virtuele netwerken met elkaar communiceren.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Twee virtuele netwerken maken
-> * De twee virtuele netwerken peeren
-> * De peering tussen de twee netwerken verwijderen
+> * Peer de twee virtuele netwerken
+> * Het peering tussen de twee netwerken verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-two-resource-groups"></a>Twee resource groepen maken
+## <a name="create-two-resource-groups"></a>Twee resourcegroepen maken
 
 Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgende:
+De voorbeeldcode van de playbook in deze sectie wordt gebruikt om:
 
-- Twee resource groepen maken 
+- Twee resourcegroepen maken 
 
 ```yml
   - name: Create a resource group
@@ -53,10 +53,10 @@ De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgend
 
 ## <a name="create-the-first-virtual-network"></a>Het eerste virtuele netwerk maken
 
-De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgende:
+De voorbeeldcode van de playbook in deze sectie wordt gebruikt om:
 
 - Een virtueel netwerk maken
-- Een subnet binnen het virtuele netwerk maken
+- Een subnet maken binnen het virtuele netwerk
 
 ```yml
   - name: Create first virtual network
@@ -74,10 +74,10 @@ De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgend
 
 ## <a name="create-the-second-virtual-network"></a>Het tweede virtuele netwerk maken
 
-De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgende:
+De voorbeeldcode van de playbook in deze sectie wordt gebruikt om:
 
 - Een virtueel netwerk maken
-- Een subnet binnen het virtuele netwerk maken
+- Een subnet maken binnen het virtuele netwerk
 
 ```yml
   - name: Ceate second virtual network
@@ -93,12 +93,12 @@ De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgend
       virtual_network: "{{ vnet_name2 }}"
 ```
 
-## <a name="peer-the-two-virtual-networks"></a>De twee virtuele netwerken peeren
+## <a name="peer-the-two-virtual-networks"></a>Peer de twee virtuele netwerken
 
-De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgende:
+De voorbeeldcode van de playbook in deze sectie wordt gebruikt om:
 
-- Peering op virtueel netwerk initialiseren
-- Peer twee eerder gemaakte virtuele netwerken
+- Tuurwerk van virtuele netwerken
+- Peer twee eerder gemaakt virtuele netwerken
 
 ```yml
   - name: Initial vnet peering
@@ -124,11 +124,11 @@ De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgend
       allow_forwarded_traffic: true
 ```
 
-## <a name="delete-the-virtual-network-peering"></a>De peering voor het virtuele netwerk verwijderen
+## <a name="delete-the-virtual-network-peering"></a>Het virtuele netwerk peering verwijderen
 
-De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgende:
+De voorbeeldcode van de playbook in deze sectie wordt gebruikt om:
 
-- De peering tussen de twee eerder gemaakte virtuele netwerken verwijderen
+- Verwijder het peering tussen de twee eerder gemaakte virtuele netwerken
 
 ```yml
   - name: Delete vnet peering
@@ -139,12 +139,12 @@ De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgend
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>De voor beeld-Playbook ophalen
+## <a name="get-the-sample-playbook"></a>Download het voorbeeld van het draaiboek
 
-Er zijn twee manieren om de volledige voorbeeld Playbook te verkrijgen:
+Er zijn twee manieren om het volledige voorbeeld playbook te krijgen:
 
-- [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) en sla deze op `vnet_peering.yml`.
-- Maak een nieuw bestand met de naam `vnet_peering.yml` en kopieer het naar de volgende inhoud:
+- [Download het playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) en `vnet_peering.yml`sla het op in .
+- Maak een nieuw `vnet_peering.yml` bestand met de naam en kopieer de volgende inhoud:
 
 ```yml
 - hosts: localhost
@@ -225,21 +225,21 @@ Er zijn twee manieren om de volledige voorbeeld Playbook te verkrijgen:
       state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>De voorbeeld Playbook uitvoeren
+## <a name="run-the-sample-playbook"></a>Het voorbeeldvan het voorbeelddraaiboek uitvoeren
 
-De voor beeld-Playbook-code in deze sectie wordt gebruikt om verschillende functies te testen die in deze zelf studie worden weer gegeven.
+De voorbeeld playbook code in deze sectie wordt gebruikt om verschillende functies te testen die tijdens deze zelfstudie worden weergegeven.
 
-Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
+Hier volgen enkele belangrijke opmerkingen om rekening mee te houden bij het werken met de voorbeelddraaimap:
 
-- Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
+- Vervang `vars` in de `{{ resource_group_name }}` sectie de tijdelijke aanduiding door de naam van uw resourcegroep.
 
-Voer de Playbook uit met behulp van de ansible-Playbook opdracht:
+Voer het draaiboek uit met de opdracht ansible-playbook:
 
 ```bash
 ansible-playbook vnet_peering.yml
 ```
 
-Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat u het draaiboek hebt uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
 ```Output
 PLAY [localhost] 
@@ -288,11 +288,11 @@ localhost                  : ok=12   changed=9    unreachable=0    failed=0    s
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt. 
+Wanneer u niet meer nodig bent, verwijdert u de bronnen die in dit artikel zijn gemaakt. 
 
-De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgende:
+De voorbeeldcode van de playbook in deze sectie wordt gebruikt om:
 
-- De twee eerder gemaakte resource groepen verwijderen
+- De twee eerder gemaakte resourcesgroepen verwijderen
 
 Sla het volgende playbook op als `cleanup.yml`:
 
@@ -315,13 +315,13 @@ Sla het volgende playbook op als `cleanup.yml`:
         state: absent
 ```
 
-Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
+Hier volgen enkele belangrijke opmerkingen om rekening mee te houden bij het werken met de voorbeelddraaimap:
 
-- Vervang de tijdelijke aanduiding `{{ resource_group_name-1 }}` door de naam van de eerste resource groep die is gemaakt.
-- Vervang de tijdelijke aanduiding `{{ resource_group_name-2 }}` door de naam van de tweede resource groep die is gemaakt.
-- Alle resources binnen de twee opgegeven resource groepen worden verwijderd.
+- Vervang `{{ resource_group_name-1 }}` de tijdelijke aanduiding door de naam van de eerste resourcegroep die is gemaakt.
+- Vervang `{{ resource_group_name-2 }}` de tijdelijke aanduiding door de naam van de tweede resourcegroep die is gemaakt.
+- Alle bronnen binnen de twee opgegeven resourcegroepen worden verwijderd.
 
-Voer de Playbook uit met behulp van de ansible-Playbook opdracht:
+Voer het draaiboek uit met de opdracht ansible-playbook:
 
 ```bash
 ansible-playbook cleanup.yml

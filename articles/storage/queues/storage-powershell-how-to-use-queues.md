@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: bd2f372bdcb949b64f748d186a9b060bb9cbec4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96828a854c340b89c26023ce60f9c85dd1bb4cdd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087072"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473928"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-bewerkingen uitvoeren met Azure PowerShell
 
@@ -103,7 +103,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>Een bericht toevoegen aan een wachtrij
 
-Bewerkingen die van invloed zijn op de werkelijke berichten in de wachtrij, gebruiken de .NET-opslagclientbibliotheek zoals weergegeven in PowerShell. Als u een bericht aan een wachtrij wilt toevoegen, maakt u een nieuw exemplaar van het berichtobject, de klasse [Microsoft.Azure.Storage.Queue.CloudQueueMessage.](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) Daarna roept u de methode [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage) aan. Een CloudQueueMessage kan worden gemaakt vanuit een tekenreeks (in UTF-8-indeling) of een bytematrix.
+Bewerkingen die van invloed zijn op de werkelijke berichten in de wachtrij, gebruiken de .NET-opslagclientbibliotheek zoals weergegeven in PowerShell. Als u een bericht aan een wachtrij wilt toevoegen, maakt u een nieuw exemplaar van het berichtobject, de klasse [Microsoft.Azure.Storage.Queue.CloudQueueMessage.](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) Daarna roept u de methode [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) aan. Een CloudQueueMessage kan worden gemaakt vanuit een tekenreeks (in UTF-8-indeling) of een bytematrix.
 
 In het volgende voorbeeld wordt uitgelegd hoe u een bericht aan uw wachtrij toevoegt.
 

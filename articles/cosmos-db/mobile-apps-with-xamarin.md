@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: mobiele toepassingen bouwen met Xamarin en Azure Cosmos DB'
-description: 'Zelf studie: een zelf studie voor het maken van een Xamarin iOS-, Android-of Forms-toepassing met behulp van Azure Cosmos DB. Azure Cosmos DB is een snelle clouddatabase op wereldwijde schaal voor mobiele apps.'
+title: 'Zelfstudie: Mobiele toepassingen bouwen met Xamarin en Azure Cosmos DB'
+description: 'Zelfstudie: een zelfstudie die een Xamarin iOS-, Android- of Formulieren-toepassing maakt met Azure Cosmos DB. Azure Cosmos DB is een snelle clouddatabase op wereldwijde schaal voor mobiele apps.'
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: dotnet
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73720884"
 ---
-# <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Zelf studie: mobiele toepassingen bouwen met Xamarin en Azure Cosmos DB
+# <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Zelfstudie: Mobiele toepassingen bouwen met Xamarin en Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -35,7 +35,7 @@ Azure Cosmos DB biedt de volgende belangrijke mogelijkheden voor ontwikkelaars v
 
 * Uitgebreide query's via schemaloze gegevens. Azure Cosmos DB slaat gegevens op als schemaloze JSON-documenten in heterogene verzamelingen. Het biedt [uitgebreide en snelle query's](how-to-sql-query.md) zonder u zorgen te hoeven maken over schema's of indexen.
 * Snelle doorvoer. Het duurt slechts enkele milliseconden om documenten te lezen en te schrijven met Azure Cosmos DB. Ontwikkelaars kunnen de doorvoer selecteren die ze nodig hebben. Azure Cosmos DB biedt ze dan een SLA voor een beschikbaarheid van 99,99% voor alle accounts voor één regio en alle accounts voor meerdere regio's met soepele consistentie en leesbeschikbaarheid van 99,999% voor alle databaseaccounts voor meerdere regio's.
-* Schalen zonder enige beperking. Uw Azure Cosmos-containers [groeien als uw app groeit](partition-data.md). U kunt beginnen met een kleine gegevensgrootte en honderden aanvragen per seconde doorvoeren. Uw verzamelingen of databases kunnen uitgroeien tot vele petabytes aan gegevens en bijbehorende grote doorvoer met honderden miljoenen aanvragen per seconde.
+* Schalen zonder enige beperking. Uw Azure Cosmos-containers [groeien naarmate uw app groeit.](partition-data.md) U kunt beginnen met een kleine gegevensgrootte en honderden aanvragen per seconde doorvoeren. Uw verzamelingen of databases kunnen uitgroeien tot vele petabytes aan gegevens en bijbehorende grote doorvoer met honderden miljoenen aanvragen per seconde.
 * Wereldwijd verspreid. Gebruikers van mobiele apps zijn onderweg, overal ter wereld. Azure Cosmos DB is een [wereldwijd gedistribueerde database](distribute-data-globally.md). Klik op de kaart om uw gegevens toegankelijk te maken voor uw gebruikers.
 * Ingebouwde uitgebreide autorisatie. Met Azure Cosmos DB kunt u eenvoudig populaire patronen implementeren zoals [gegevens per gebruiker](https://aka.ms/documentdb-xamarin-todouser) of gedeelde gegevens van meerdere gebruikers, zonder ingewikkelde aangepaste autorisatiecode.
 * Georuimtelijke query's. Veel mobiele apps bieden tegenwoordig ervaringen met geografische context. Met eersteklas ondersteuning voor [georuimtelijke typen](geospatial.md) kunt u met Azure Cosmos DB deze ervaringen heel eenvoudig tot stand brengen.
@@ -45,7 +45,7 @@ Azure Cosmos DB biedt de volgende belangrijke mogelijkheden voor ontwikkelaars v
 In de volgende zelfstudie leest u hoe u een mobiele toepassing bouwt met Xamarin en Azure Cosmos DB. U vindt de volledige broncode voor de zelfstudie op [Xamarin en Azure Cosmos DB op GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
 
 ### <a name="get-started"></a>Aan de slag
-U kunt eenvoudig aan de slag met Azure Cosmos DB. Ga naar Azure Portal en maak een nieuw Azure Cosmos DB-account. Klik op het tabblad **Quick Start** . down load het voor beeld van een taken lijst Xamarin-formulieren dat al is verbonden met uw Azure Cosmos DB-account. 
+U kunt eenvoudig aan de slag met Azure Cosmos DB. Ga naar Azure Portal en maak een nieuw Azure Cosmos DB-account. Klik op het tabblad **Snel begin.** Download het voorbeeld van de to-do lijst xamarin-formulieren die al is verbonden met uw Azure Cosmos DB-account. 
 
 ![Azure Cosmos DB Snel starten voor mobiele apps](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
 

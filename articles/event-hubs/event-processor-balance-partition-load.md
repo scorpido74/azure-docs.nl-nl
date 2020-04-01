@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 1244fe64d0c23782fdae7a0f92415bada4bef55a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907654"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398302"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Verdelingsbelasting in evenwicht brengen in meerdere exemplaren van uw toepassing
 Als u uw toepassing voor het verwerken van gebeurtenissen wilt schalen, u meerdere exemplaren van de toepassing uitvoeren en de belasting onderling in evenwicht brengen. In de oudere versies kon je met [EventProcessorHost](event-hubs-event-processor-host.md) de belasting tussen meerdere exemplaren van je programma en checkpointgebeurtenissen balanceren wanneer je ze ontvangen. In de nieuwere versies (5.0 vanaf), **EventProcessorClient** (.NET en Java), of **EventHubConsumerClient** (Python en JavaScript) u hetzelfde doen. Het ontwikkelingsmodel wordt eenvoudiger gemaakt door gebruik te maken van evenementen. Je abonneert je op de evenementen waarin je geïnteresseerd bent door een gebeurtenishandler te registreren.
 
-In dit artikel wordt een voorbeeldscenario beschreven voor het gebruik van meerdere instanties om gebeurtenissen van een gebeurtenishub te lezen en u vervolgens details te geven over functies van de gebeurtenisprocessorclient, waarmee u gebeurtenissen van meerdere partities tegelijk ontvangen en het saldo met andere consumenten die dezelfde eventhub en consumentengroep gebruiken.
+In dit artikel wordt een voorbeeldscenario beschreven voor het gebruik van meerdere instanties om gebeurtenissen van een gebeurtenishub te lezen en u vervolgens details te geven over functies van de gebeurtenisprocessorclient, waarmee u gebeurtenissen van meerdere partities tegelijk ontvangen en de balans laden met andere consumenten die dezelfde gebeurtenishub en consumentengroep gebruiken.
 
 > [!NOTE]
 > De sleutel tot schaal voor Event Hubs is het idee van verdeelde consumenten. In tegenstelling tot het patroon van de [concurrerende consumenten](https://msdn.microsoft.com/library/dn568101.aspx) maakt het verdeelde consumentenpatroon een grote schaal mogelijk door het geschilknelpunt weg te nemen en het parallellisme van de end-to-end te vergemakkelijken.
@@ -82,6 +82,13 @@ Wij raden u aan om dingen relatief snel te doen. Dat wil zeggen, doe zo weinig m
 Als een gebeurtenisprocessor de verbinding met een partitie verbreekt, kan een andere instantie de verwerking van de partitie hervatten bij het controlepunt dat eerder is vastgelegd door de laatste processor van die partitie in die consumentengroep. Wanneer de processor verbinding maakt, wordt de verschuiving doorgegeven aan de gebeurtenishub om de locatie op te geven waar u moet beginnen met lezen. Op deze manier u controlepunten gebruiken om zowel gebeurtenissen als 'voltooid' te markeren door downstreamtoepassingen als om tolerantie te bieden wanneer een gebeurtenisprocessor uitvalt. Het is mogelijk om terug te keren naar de oudere gegevens door een lagere offset van dit controlepuntproces op te geven. 
 
 Wanneer het controlepunt wordt uitgevoerd om een gebeurtenis als verwerkt te markeren, wordt een item in het controlepuntarchief toegevoegd of bijgewerkt met het verschuivings- en volgnummer van de gebeurtenis. Gebruikers moeten beslissen over de frequentie van het bijwerken van het controlepunt. Bijwerken na elke met succes verwerkte gebeurtenis kan gevolgen hebben voor prestaties en kosten, omdat het een schrijfbewerking activeert naar het onderliggende controlepuntarchief. Ook is het controleren van elke gebeurtenis een indicatie van een berichtenpatroon in de wachtrij waarvoor een wachtrij voor servicebus een betere optie is dan een gebeurtenishub. Het idee achter Event Hubs is dat je "ten minste eenmaal" levering op grote schaal krijgt. Door uw downstreamsystemen idempotent te maken, is het gemakkelijk om te herstellen van storingen of opnieuw opstarten die resulteren in dezelfde gebeurtenissen die meerdere keren worden ontvangen.
+
+> [!NOTE]
+> Als u Azure Blob Storage gebruikt als controlepuntopslag in een omgeving die een andere versie van Storage Blob SDK ondersteunt dan die welke doorgaans beschikbaar is op Azure, moet u code gebruiken om de API-versie van de opslagservice te wijzigen in de specifieke versie die wordt ondersteund door die omgeving. Als u bijvoorbeeld Gebeurtenishubs uitvoert [op een Azure Stack Hub-versie 2002,](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)is versie 2017-11-09 de hoogst beschikbare versie voor de opslagservice. In dit geval moet u code gebruiken om de API-versie van de opslagservice te targeten op 2017-11-09. Zie deze voorbeelden op GitHub voor een voorbeeld over het targeten van een specifieke Storage API-versie: 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) of [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
 
 ## <a name="thread-safety-and-processor-instances"></a>Thread-beveiliging en processorinstanties
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c4d34a6db774712e13ea86d38ae48a543a07a8bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e60d3f0221bce836f49e87a96c762e68cf8a60ad
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79529761"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473684"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Snelstart: aanmelden bij Microsoft toevoegen aan een web-app van ASP.NET Core
 In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-webapp persoonlijke accounts (hotmail.com, outlook.com, anderen) en werk- en schoolaccounts uit een Azure AD-exemplaar (Azure AD) kan aanmelden. (Zie [hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
@@ -75,7 +75,7 @@ In deze snelstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET Core-
 > We hebben uw project geconfigureerd met waarden van de eigenschappen van uw app en het is klaar om te worden uitgevoerd. 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project uitvoeren
 > 1. Pak het zip-bestand uit in een lokale map in de hoofdmap (bijvoorbeeld **C:\Azure-Samples**)
@@ -165,7 +165,7 @@ U kunt een controller of controllermethoden beveiligen met behulp van het kenmer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de GitHub repo voor deze ASP.NET Core-zelfstudie voor meer informatie, inclusief instructies over het toevoegen van verificatie aan een gloednieuwe ASP.NET Core Web-toepassing, hoe u Microsoft Graph aanroepen en andere Microsoft API's, hoe u uw eigen API's bellen, hoe u toevoegen autorisatie, hoe u zich aanmelden bij gebruikers in nationale clouds, of met sociale identiteiten en meer:
+Bekijk de GitHub repo voor deze ASP.NET Core-zelfstudie voor meer informatie, inclusief instructies over het toevoegen van verificatie aan een gloednieuwe ASP.NET Core-webtoepassing, hoe u Microsoft Graph aanroepen en andere Microsoft API's, hoe u uw eigen API's bellen, hoe u autorisatie toevoegen, hoe u zich aanmelden bij gebruikers in nationale clouds of met sociale identiteiten en meer :
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web App-zelfstudie](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

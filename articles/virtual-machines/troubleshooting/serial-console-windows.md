@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266999"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410121"
 ---
 # <a name="azure-serial-console-for-windows"></a>Azure Serial Console voor Windows
 
@@ -60,7 +60,7 @@ Als u de seriële console voor Windows VM's/virtuele machineschaalset die vóór
 
 1. Verbinding maken met uw virtuele Windows-machine met Extern bureaublad
 1. Voer vanuit een opdrachtprompt de volgende opdrachten uit:
-    - `bcdedit /ems {current} on`
+    - `bcdedit /ems {current} on`, `bcdedit /ems '{current}' on` of als u PowerShell gebruikt
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 1. Start het systeem opnieuw op om de SAC-console in te schakelen.
 
@@ -102,15 +102,15 @@ Als u vragen voor het opstarten van Windows moet inschakelen om weer te geven in
 
     ![Verbinding maken met SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.  Voer `cmd` in om een kanaal te maken met een CMD-instantie.
+1.    Voer `cmd` in om een kanaal te maken met een CMD-instantie.
 
-1.  Voer `ch -si 1` sneltoetstoetsen in of druk op `<esc>+<tab>` om over te schakelen naar het kanaal waarop de CMD-instantie wordt uitgevoerd.
+1.    Voer `ch -si 1` sneltoetstoetsen in of druk op `<esc>+<tab>` om over te schakelen naar het kanaal waarop de CMD-instantie wordt uitgevoerd.
 
-1.  Druk op **Enter**en voer aanmeldingsreferenties in met beheerdersmachtigingen.
+1.    Druk op **Enter**en voer aanmeldingsreferenties in met beheerdersmachtigingen.
 
-1.  Nadat u geldige referenties hebt ingevoerd, wordt de CMD-instantie geopend.
+1.    Nadat u geldige referenties hebt ingevoerd, wordt de CMD-instantie geopend.
 
-1.  Als u een PowerShell-instantie wilt starten, voert u `PowerShell` de CMD-instantie in en drukt u op **Enter**.
+1.    Als u een PowerShell-instantie wilt starten, voert u `PowerShell` de CMD-instantie in en drukt u op **Enter**.
 
     ![PowerShell-exemplaar openen](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

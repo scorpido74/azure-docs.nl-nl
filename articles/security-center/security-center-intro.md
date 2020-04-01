@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 11201d6560319dd34ec829f1fb34bd13d45011d7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77918754"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435826"
 ---
 # <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 
@@ -49,7 +49,7 @@ Met Security Center kunt u zich tegen deze bedreigingen beveiligen. Het biedt na
 
 Omdat Security Center standaard deel uitmaakt van Azure, worden PaaS-services in Azure, zoals Service Fabric, SQL-databases en opslagaccounts, gecontroleerd en beveiligd door Security Center zonder dat er een implementatie aan te pas komt.
 
-Security Center beveiligt bovendien andere servers dan Azure-servers en virtuele machines in de cloud of on-premises, voor zowel Windows- als Linux-servers, door hierop de Microsoft Monitoring Agent te installeren. Azure-VM's worden automatisch ingericht in Security Center.
+Bovendien beschermt Security Center niet-Azure-servers en virtuele machines in de cloud of on-premises, voor zowel Windows- als Linux-servers, door de loganalyse-agent erop te installeren. Azure-VM's worden automatisch ingericht in Security Center.
 
 De gebeurtenissen die worden verzameld bij de agents en van Azure zijn gecorreleerd in de engine voor beveiligingsanalyse om u op maat gemaakte aanbevelingen te bieden (verhardingstaken), die u moet volgen om ervoor te zorgen dat uw workloads veilig zijn en beveiligingswaarschuwingen. U moet zulke waarschuwingen zo snel mogelijk onderzoeken om ervoor te zorgen dat uw workloads niet het doelwit worden van schadelijke aanvallen.
 
@@ -129,11 +129,11 @@ Security Center beschikt over mogelijkheden waarmee u de gegevens in Azure SQL a
 
 ### <a name="protect-iot-and-hybrid-cloud-workloads"></a>IoT- en hybride cloudworkloads beschermen
 
-Azure Security Center for IoT (Internet of Things) vereenvoudigt de bescherming van hybride workloads door uniforme zichtbaarheid en controle, adaptieve bedreigingspreventie en intelligente bescherming en respons van bedreigingen te bieden voor workloads die op edge, on-premises worden uitgevoerd, in Azure en in andere clouds. Zie [Azure Security Center for IoT voor](https://docs.microsoft.com/azure/asc-for-iot/)meer informatie.
+Azure Security Center for IoT (Internet of Things) vereenvoudigt de bescherming van hybride workloads door uniforme zichtbaarheid en controle, adaptieve bedreigingspreventie en intelligente bescherming en respons van bedreigingen te bieden voor workloads die op edge, on-premises, in Azure en in andere clouds worden uitgevoerd. Zie [Azure Security Center for IoT voor](https://docs.microsoft.com/azure/asc-for-iot/)meer informatie.
 
 ## <a name="get-secure-faster"></a>Uw infrastructuur sneller beveiligen
 
-Native Azure-integratie (inclusief Azure Policy en Azure Monitor-logboeken) in combinatie met naadloze integratie met andere Microsoft-beveiligingsoplossingen, zoals Microsoft Cloud App Security en Windows Defender Advanced Threat Protection, zorgen ervoor dat u beveiligingsoplossing is uitgebreid en eenvoudig aan boord en uit te rollen.
+Native Azure-integratie (inclusief Azure Policy en Azure Monitor-logboeken) in combinatie met naadloze integratie met andere Microsoft-beveiligingsoplossingen, zoals Microsoft Cloud App Security en Windows Defender Advanced Threat Protection, zorgen ervoor dat uw beveiligingsoplossing uitgebreid is en eenvoudig aan boord kan worden gemaakt en uitte.
 
 Bovendien kunt u de volledige oplossing tot buiten Azure uitbreiden naar workloads die worden uitgevoerd in andere clouds en on-premises datacenters.
 

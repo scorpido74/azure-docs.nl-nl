@@ -4,12 +4,12 @@ description: De samengestelde lijst met de meest gestelde vragen over de QnA Mak
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: e002efe74bf7bcd3d944b01b0a25a731a2db3f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284259"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474955"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Probleemoplossing voor QnA Maker
 
@@ -30,7 +30,7 @@ Meer informatie over [prijsniveaus](Concepts/azure-resources.md).
 <details>
 <summary><b>Hoe krijg je het QnAMaker-serviceeindpunt</b></summary>
 
-**Antwoord:** QnAMaker service eindpunt is handig voor het opsporen van doeleinden wanneer u contact opnemen met QnAMaker Support of UserVoice. Het eindpunt is een URL https://your-resource-name.azurewebsites.netin dit formulier: .
+**Antwoord:** QnAMaker service eindpunt is handig voor het opsporen van doeleinden wanneer u contact opnemen met QnAMaker Support of UserVoice. Het eindpunt is een URL `https://your-resource-name.azurewebsites.net`in dit formulier: .
 
 1. Ga naar uw QnAMaker-service (resourcegroep) in de [Azure-portal](https://portal.azure.com)
 

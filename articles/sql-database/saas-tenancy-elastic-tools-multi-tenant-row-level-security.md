@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a5fe5d6d4076c5d82d33737d05bb95ede0a89c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73822020"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398326"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Multi-tenant toepassingen met elastische databasetools en beveiliging op rijniveau
 
@@ -253,7 +253,7 @@ GO
 ```
 
 > [!TIP]
-> In een complex project moet u mogelijk het predicaat op honderden tabellen toevoegen, wat vervelend kan zijn. Er is een helper-procedure die automatisch een beveiligingsbeleid genereert en een predicaat toevoegt voor alle tabellen in een schema. Zie het blogbericht op [Row-Level Security toepassen op alle tabellen - helperscript (blog).](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-to-all-tables-helper-script)
+> In een complex project moet u mogelijk het predicaat op honderden tabellen toevoegen, wat vervelend kan zijn. Er is een helper-procedure die automatisch een beveiligingsbeleid genereert en een predicaat toevoegt voor alle tabellen in een schema. Zie het blogbericht op [Row-Level Security toepassen op alle tabellen - helperscript (blog).](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360)
 
 Als u de voorbeeldtoepassing opnieuw uitvoert, zien huurders alleen rijen die bij hen horen. Bovendien kan de toepassing geen rijen invoegen die behoren tot andere tenants dan die welke momenteel zijn verbonden met de sharddatabase. Ook kan de app de TenantId niet bijwerken in rijen die kan worden gezien. Als de app dit ook probeert te doen, wordt een DbUpdateException verhoogd.
 

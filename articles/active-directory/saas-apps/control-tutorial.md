@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met het besturingselement | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en controle van de bedrijfscontinuïteit te waarborgen.
+title: 'Zelfstudie: Azure Active Directory-integratie met besturingselement | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Continuïteitsbeheer.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,132 +17,132 @@ ms.date: 05/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5a3383c6c79f3cde901c244eafb39bb0f479176
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67164915"
 ---
-# <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Zelfstudie: Besturingselement voor bedrijfscontinuïteit met Azure Active Directory integreren
+# <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>Zelfstudie: Continuïteitsbeheer integreren met Azure Active Directory
 
-In deze zelfstudie leert u hoe bedrijfscontinuïteit besturingselement (beheer) integreren met Azure Active Directory (Azure AD). Wanneer u een besturingselement met Azure AD integreert, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Continuïteitsbeheer (Beheer) integreren met Azure Active Directory (Azure AD). Wanneer u Besturingselement integreert met Azure AD, u het als:
 
-* Beheren in Azure AD die toegang tot het besturingselement heeft.
-* Kunnen uw gebruikers worden automatisch aangemeld om te bepalen met hun Azure AD-accounts.
-* Beheer uw accounts in één centrale locatie - Azure portal.
+* Beheren in Azure AD die toegang heeft tot Beheer.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Beheer met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie voor meer informatie over de integratie van de SaaS-app met Azure AD, [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om te beginnen, hebt u de volgende items nodig:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, krijgt u de gratis proefversie van één maand [hier](https://azure.microsoft.com/pricing/free-trial/).
-* Een besturingselement voor eenmalige aanmelding (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als je geen abonnement hebt, kun je [hier](https://azure.microsoft.com/pricing/free-trial/)een gratis proefperiode van een maand krijgen.
+* Een abonnement met eenmalige aanmelding (SSO) van Control.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie hebt u configureren en testen van Azure AD-eenmalige aanmelding in een testomgeving. Ondersteunt het besturingselement **SP** gestart door SSO.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving. Control ondersteunt **SP** geïnitieerde SSO.
 
-## <a name="adding-control-from-the-gallery"></a>Besturingselement toe te voegen uit de galerie
+## <a name="adding-control-from-the-gallery"></a>Besturingselement toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van besturingselement in Azure AD, moet u vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Control in Azure AD wilt configureren, moet u Besturingselement vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het navigatiedeelvenster links in de **Azure Active Directory** service.
-1. Navigeer naar **bedrijfstoepassingen** en selecteer vervolgens **alle toepassingen**.
-1. Nieuwe toepassing toevoegen, selecteert u **nieuwe toepassing**.
-1. In de **toevoegen vanuit de galerie** sectie, typt u **besturingselement** in het zoekvak in.
-1. Selecteer **besturingselement** van resultaten van het deelvenster en vervolgens de app toevoegen. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **Besturingselement** in het zoekvak in de sectie **Toevoegen in de sectie Toevoegen in de galerie.**
+1. Selecteer **Beheer** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Configureren en testen van Azure AD-eenmalige aanmelding met een testgebruiker met de naam uit met **Britta Simon**. Voor eenmalige aanmelding om te werken, moet u tot stand brengen van een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in het besturingselement.
+Azure AD SSO configureren en testen met besturingselement met behulp van een testgebruiker genaamd **Britta Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Control.
 
-Als u wilt configureren en testen van Azure AD-eenmalige aanmelding met het besturingselement, voert u de volgende bouwstenen:
+Als u Azure AD SSO met Control wilt configureren en testen, voert u de volgende bouwstenen in:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-sso)**  : als u wilt dat uw gebruikers kunnen deze functie gebruiken.
-2. **[Besturingselement SSO configureren](#configure-control-sso)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Besturingselement testgebruiker maken](#create-control-test-user)**  : als u wilt een equivalent van Britta Simon hebben in het besturingselement dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-sso)**  : als u wilt controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[BesturingselementSSO configureren](#configure-control-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Beheertestgebruiker](#create-control-test-user)** maken - om een tegenhanger van Britta Simon in Control te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD-eenmalige aanmelding configureren
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **besturingselement** toepassingspagina integratie, vinden de **beheren** sectie en selecteer **eenmalige aanmelding**.
-1. Op de **selecteert u een methode voor eenmalige aanmelding** pagina, selecteert u **SAML**.
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, klikt u op het pictogram voor bewerken/pen voor **SAML-basisconfiguratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de pagina De integratie **van de toepassing beheren** de sectie **Beheren** en selecteer **Enkele aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Op de **SAML-basisconfiguratie** pagina, voert u de waarden voor het volgende veld:
+1. Voer op de pagina **BasisSAML-configuratie** de waarden in voor het volgende veld:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.continuity.net/auth/saml`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.continuity.net/auth/saml`
 
     > [!Note]
-    > De waarde is niet echt. Werk de waarde bij met de juiste subdomein. Kan de SSO-subdomein worden geconfigureerd op [besturingselement verificatiestrategieën](https://control.continuity.net/settings/account_profile#tab/security). U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met het juiste subdomein. Uw SSO-subdomein kan worden geconfigureerd bij [Verificatiestrategieën voor controle](https://control.continuity.net/settings/account_profile#tab/security). U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. Klik in de sectie **SAML-handtekeningcertificaat** op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
 
     ![SAML-handtekeningcertificaat bewerken](common/edit-certificate.png)
 
-1. Kopieer in de sectie **SAML-handtekeningcertificaat** de waarde voor **VINGERAFDRUK** en sla deze op de computer op.
+1. Kopieer in de sectie **SAML-ondertekeningscertificaat** de **duimafdruk** en sla deze op uw computer op.
 
     ![Waarde van vingerafdruk kopiëren](common/copy-thumbprint.png)
 
-1. Op de **besturingselement instellen** sectie, kopieert u de aanmeldings-URL en sla deze op uw computer.
+1. Kopieer in de sectie **Besturingselement instellen** de URL van aanmelding en sla deze op uw computer op.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-control-sso"></a>Besturingselement voor eenmalige aanmelding configureren
+### <a name="configure-control-sso"></a>Besturingselement SSO configureren
 
-Het configureren van eenmalige aanmelding op de **besturingselement** zijde, moet u de instellingen voor verificatie met eenmalige aanmelding bij bijwerken [besturingselement verificatiestrategieën](https://control.continuity.net/settings/account_profile#tab/security). Update **URL voor SAML SSO-** met de **aanmeldings-URL** en **certificaat vingerafdruk** met de **vingerafdrukwaarde** vanuit Azure portal.
+Als u eenmalige aanmelding wilt configureren aan de **Besturingszijde,** moet u de instellingen voor één aanmeldingsverificatie bijwerken bij [Verificatiestrategieën voor controle](https://control.continuity.net/settings/account_profile#tab/security). Update **de SAML SSO-URL** bij met de **url van aanmelding** en **certificaatvingerafdruk** met de **waarde Duimafdruk** van de Azure-portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in Azure portal Britta Simon genoemd.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd Britta Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal, **Azure Active Directory**, selecteer **gebruikers**, en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. In de **gebruiker** eigenschappen als volgt te werk:
-   1. Voer in het veld **Naam** `Britta Simon` in.  
-   1. In de **gebruikersnaam** en voer de username@companydomain.extension. Bijvoorbeeld `BrittaSimon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
+   1. Voer in het veld **Naam**`Britta Simon` in.  
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen om te bepalen.
+In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Control.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst met toepassingen, **besturingselement**.
-1. Zoek in de pagina overzicht van de app, de **beheren** sectie en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **Besturingselement**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** dialoogvenster.
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. In de **gebruikers en groepen** dialoogvenster, selecteer **Britta Simon** uit de lijst met gebruikers, klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Als u een waarde voor de rol in het SAML-verklaring verwacht de **rol selecteren** dialoogvenster, selecteer de juiste rol voor de gebruiker in de lijst en klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **In** het dialoogvenster Gebruikers en groepen De optie **Britta Simon** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
-### <a name="create-control-test-user"></a>Besturingselement testgebruiker maken
+### <a name="create-control-test-user"></a>De testgebruiker van besturingselementmaken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in besturingselement. Werken met [besturingselement ondersteuningsteam](mailto:help@continuity.net) om toe te voegen de gebruikers in het besturingselement-platform. Gebruik Britta Simon van Azure AD **gebruikersnaam** voor het vullen van haar **Identity Provider gebruikers-ID** in besturingselement. Gebruikers moeten worden gemaakt, en de bijbehorende **Identity Provider gebruikers-ID** instellen in een besturingselement voordat eenmalige aanmelding kan worden gebruikt.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in Control. Werk samen met [het ondersteuningsteam van Control](mailto:help@continuity.net) om de gebruikers toe te voegen aan het Control-platform. Gebruik de Azure **AD-gebruikersnaam** van Britta Simon om haar gebruikersnaam van de **identiteitsprovider** in Control in te vullen. Gebruikers moeten worden gemaakt en hun **gebruikersnaam van de identiteitsprovider** instellen, in Control voordat ze eenmalige aanmelding kunnen gebruiken.
 
-### <a name="test-sso"></a>Test eenmalige aanmelding
+### <a name="test-sso"></a>Test SSO
 
-Wanneer u de tegel besturingselement in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij het besturingselement waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de besturingselementtegel in het Toegangspaneel selecteert, moet u automatisch worden aangemeld bij het besturingselement waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

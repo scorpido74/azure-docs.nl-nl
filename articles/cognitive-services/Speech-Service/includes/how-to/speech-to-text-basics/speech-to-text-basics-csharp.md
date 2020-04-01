@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: c3c24a803a9fe2774f52cbb1e2cef04191d7995d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 46ffe61028e40b17d31ceba34ee58b8f25c0c471
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79372814"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80501831"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,7 +39,7 @@ Er zijn een paar manieren waarop [`SpeechConfig`](https://docs.microsoft.com/dot
 * Met een host: geef een hostadres door. Een sleutel- of autorisatietoken is optioneel.
 * Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) hoe een wordt gemaakt met behulp van een sleutel en regio.
+Laten we eens kijken [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) hoe een wordt gemaakt met behulp van een sleutel en regio. Zie de [pagina regioondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
 
 ```csharp
 var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");

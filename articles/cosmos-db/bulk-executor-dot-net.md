@@ -6,17 +6,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/01/2019
+ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40ef05107f20a3396f6710f894a2dbad2d7fa6c9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246875"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478842"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>De bulkexecutor .NET-bibliotheek gebruiken om bulkbewerkingen uit te voeren in Azure Cosmos DB
+
+> [!NOTE]
+> Deze bulkexecutorbibliotheek die in dit artikel wordt beschreven, wordt onderhouden voor toepassingen met de .NET SDK 2.x-versie. Voor nieuwe toepassingen u de **bulkondersteuning** gebruiken die rechtstreeks beschikbaar is met de [.NET SDK-versie 3.x](tutorial-sql-api-dotnet-bulk-import.md) en waarvoor geen externe bibliotheek nodig is. 
+
+> Als u momenteel de bibliotheek voor bulkuitvoermiddelen gebruikt en van plan bent te migreren naar bulkondersteuning op de nieuwere SDK, gebruikt u de stappen in de [migratiehandleiding](how-to-migrate-from-bulk-executor-library.md) om uw toepassing te migreren.
 
 Deze zelfstudie bevat instructies over het gebruik van de bulkexecutor .NET-bibliotheek om documenten te importeren en bij te werken naar een Azure Cosmos-container. Zie het overzichtsartikel voor [bulkexecutorlibrary](bulk-executor-overview.md) voor meer informatie over de bibliotheek voor bulkuitvoerbedrijven en hoe deze u helpt gebruik te maken van enorme doorvoer en opslag. In deze zelfstudie ziet u een voorbeeld .NET-toepassing die willekeurig gegenereerde documenten importeert in een Azure Cosmos-container. Na het importeren ziet u hoe u de geïmporteerde gegevens in bulk bijwerken door patches op te geven als bewerkingen die u op specifieke documentvelden wilt uitvoeren.
 

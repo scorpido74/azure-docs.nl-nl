@@ -1,22 +1,22 @@
 ---
 title: Wat is de Bing Webzoekopdrachten-API?
 titleSuffix: Azure Cognitive Services
-description: De Bing Webzoekopdrachten-API is een RESTful-service die directe antwoorden op gebruikersquery's biedt. Zoekresultaten kunnen eenvoudig zo worden geconfigureerd dat deze webpagina's, afbeeldingen, video's, nieuws, vertalingen en meer bevatten. Resultaten worden gegeven als JSON en zijn gebaseerd op zoekrelevantie en uw Bing Webzoekopdrachten-abonnementen.
+description: De Bing Web Search API is een RESTful-service die direct antwoord geeft op zoekopdrachten op het web. Configureer resultaten met webpagina's, afbeeldingen, video's, nieuws en meer. Resultaten worden gegeven als JSON en zijn gebaseerd op zoekrelevantie en uw Bing Webzoekopdrachten-abonnementen.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5ea98a4ef759937c5962dc86f0384051b8fa0bb3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77650279"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477461"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Wat is de Bing Webzoekopdrachten-API?
 

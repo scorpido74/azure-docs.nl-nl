@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: c2f3272beb463a16f9488139b6c3a45febae6493
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1d73f974e2452c225220bc6f610568a2cded9887
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79529631"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473637"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snelstart: aanmelden met Microsoft toevoegen aan een Java-web-app
 
@@ -100,6 +100,10 @@ Om dit voorbeeld uit te voeren heb je het volgende nodig:
    
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [Het codevoorbeeld downloaden](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-code-sample"></a>Stap 3: Het codevoorbeeld configureren

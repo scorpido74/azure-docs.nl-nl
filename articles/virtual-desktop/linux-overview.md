@@ -8,23 +8,31 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 967fd1fa182b7c8e581fd74cc287c5a6ba0e4038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127821"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422417"
 ---
 # <a name="linux-support"></a>Linux Support
 
-U de Linux SDK voor Windows Virtual Desktop gebruiken om een zelfstandige Windows Virtual Desktop-client te bouwen. U het ook gebruiken om Windows Virtual Desktop-ondersteuning in te schakelen op uw clienttoepassing. Deze snelle gids zal uitleggen wat de Linux SDK is en hoe te beginnen met het gebruik ervan.
+Partners kunnen de Linux SDK voor Windows Virtual Desktop gebruiken om een zelfstandige Windows Virtual Desktop-client te bouwen. U het ook gebruiken om Windows Virtual Desktop-ondersteuning in te schakelen op uw clienttoepassing. Deze snelle gids zal uitleggen wat de Linux SDK is en hoe te beginnen met het gebruik ervan.
+
+## <a name="connect-with-your-linux-device"></a>Verbinding maken met uw Linux-apparaat
+
+De volgende partners hebben Windows Virtual Desktop-clients goedgekeurd voor Linux-apparaten.
+
+|Partner|Partnerdocumentatie|Ondersteuning van partners|
+|:------|:--------------------|:--------------|
+|![IGEL-logo](./media/partners/igel.png)|[IGEL-clientdocumentatie](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[Ondersteuning voor IGEL](https://www.igel.com/support/)|
 
 ## <a name="what-is-the-linux-sdk"></a>Wat is de Linux SDK?
 
 U de SDK-API's gebruiken om bronfeeds op te halen, verbinding te maken met desktop- of externe toepassingssessies en veel van de omleidingen te gebruiken die onze first-party clients ondersteunen.
 
 > [!NOTE]
-> De SDK is momenteel in ontwikkeling. We werken dit document bij met instructies om toegang te krijgen tot de SDK wanneer het beschikbaar is.
+> De SDK is momenteel in ontwikkeling. We werken dit document bij met instructies om toegang te krijgen tot de SDK wanneer het algemeen beschikbaar is.
 
 ### <a name="supported-linux-distributions"></a>Ondersteunde Linux-distributies
 

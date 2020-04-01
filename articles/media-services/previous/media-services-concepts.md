@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162902"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475244"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-concepten 
 
@@ -166,7 +166,7 @@ Wanneer u met Media Services werkt, is het raadzaam om uw mezzaninebestanden te 
 ### <a name="streaming-endpoint"></a>Streaming-eindpunt
 Een StreamingEndpoint vertegenwoordigt een streamingservice die inhoud rechtstreeks kan leveren aan een clientplayertoepassing of aan een CONTENT Delivery Network (CDN) voor verdere distributie (Azure Media Services biedt nu de Azure CDN-integratie.) De uitgaande stream van een streaming endpoint-service kan een live stream zijn, of een video on-demand Asset in uw Media Services-account. Klanten van Media Services kiezen ofwel een **Standard**-streaming-eindpunt of een of meer Premium-**streaming**-eindpunten, afhankelijk van hun behoeften. Standaard streaming endpoint is geschikt voor de meeste streaming workloads. 
 
-Standard-streaming-eindpunten zijn geschikt voor de meeste streaming-workloads. Standaard streaming eindpunten bieden de flexibiliteit om uw inhoud te leveren aan vrijwel elk apparaat door middel van dynamische verpakking in HLS, MPEG-DASH, en Smooth Streaming, evenals dynamische encryptie voor Microsoft PlayReady, Google Widevine, Apple Fairplay, en AES128.  Ze schalen ook van zeer klein naar zeer groot publiek met duizenden gelijktijdige kijkers via Azure CDN-integratie. Als u een geavanceerde workload hebt of als uw vereisten voor streamingcapaciteit niet passen bij de standaard doelen voor streaming endpoint-doorvoer of als u de capaciteit van de StreamingEndpoint-service wilt beheren om aan de groeiende bandbreedtebehoeften te voldoen, wordt het aanbevolen om schaaleenheden toe te wijzen (ook wel premium streaming-eenheden genoemd).
+Standard-streaming-eindpunten zijn geschikt voor de meeste streaming-workloads. Standaard streaming eindpunten bieden de flexibiliteit om uw inhoud te leveren aan vrijwel elk apparaat door middel van dynamische verpakking in HLS, MPEG-DASH, en Smooth Streaming, evenals dynamische encryptie voor Microsoft PlayReady, Google Widevine, Apple Fairplay, en AES128.  Ze schalen ook van zeer klein naar zeer groot publiek met duizenden gelijktijdige kijkers via Azure CDN-integratie. Als u een geavanceerde workload hebt of als uw vereisten voor streamingcapaciteit niet passen bij de standaard doorvoerdoelen voor streaming-eindpunten of als u de capaciteit van de StreamingEndpoint-service wilt beheren om aan de groeiende bandbreedtebehoeften te voldoen, wordt het aanbevolen om schaaleenheden toe te wijzen (ook wel premium streaming-eenheden genoemd).
 
 Het wordt aanbevolen om dynamische verpakkingen en/of dynamische encryptie te gebruiken.
 
@@ -180,7 +180,7 @@ Standaard kun je maximaal 2 streaming eindpunten in je Media Services-account he
 Er worden alleen kosten in rekening gebracht wanneer uw StreamingEndpoint in de werktoestand is.
 
 ### <a name="asset-delivery-policy"></a>Beleid voor het leveren van activa
-Een van de stappen in de mediaservices-werkstroom voor het leveren van inhoud is het configureren van [leveringsbeleid voor assets](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)die u wilt streamen. Het beleid voor het leveren van activa vertelt Media Services hoe u wilt dat uw asset wordt geleverd: in welk streamingprotocol moet uw asset dynamisch worden verpakt (bijvoorbeeld MPEG DASH, HLS, Smooth Streaming of alles), ongeacht of u dynamisch wilt versleutelen uw asset en hoe (envelop of gemeenschappelijke encryptie).
+Een van de stappen in de mediaservices-werkstroom voor het leveren van inhoud is het configureren van [leveringsbeleid voor assets](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)die u wilt streamen. Het beleid voor de levering van activa vertelt Media Services hoe u wilt dat uw asset wordt geleverd: in welk streamingprotocol moet uw asset dynamisch worden verpakt (bijvoorbeeld MPEG DASH, HLS, Smooth Streaming of alles), ongeacht of u uw asset dynamisch wilt versleutelen en hoe (envelop of gemeenschappelijke versleuteling).
 
 Als u een opslagversleuteld activum hebt, verwijdert de streamingserver voordat uw asset kan worden gestreamd, de opslagversleuteling en streamt de inhoud met behulp van het opgegeven leveringsbeleid. Als u bijvoorbeeld uw asset versleuteld wilt leveren met De Versleutelingscode (Advanced Encryption Standard) stelt u het beleidstype in op DynamicEnvelopeEncryption. Als u opslagversleuteling wilt verwijderen en het item wilt streamen in de foutvorm, stelt u het beleidstype in op NoDynamicEncryption.
 
@@ -197,10 +197,10 @@ http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba01
 ### <a name="streaming-urls"></a>URL's voor streaming
 Uw inhoud streamen naar clients. Als u gebruikers streaming-URL's wilt bieden, moet u eerst een OnDemandOrigin-locator maken. Als u de locator maakt, krijgt u het basispad naar het element dat de inhoud bevat die u wilt streamen. Om deze inhoud te kunnen streamen, moet u dit pad echter verder wijzigen. Als u een volledige URL wilt maken voor het streamingmanifestbestand, moet u de padwaarde van de locator en de manifestnaam (filename.ism) toevoegen. Voeg vervolgens /Manifest en een geschikte indeling (indien nodig) toe aan het zoekpad.
 
-U uw inhoud ook streamen via een SSL-verbinding. Zorg ervoor dat je streaming-URL's beginnen met HTTPS. Op dit moment ondersteunt AMS geen SSL met aangepaste domeinen.  
+U uw inhoud ook streamen via een TLS-verbinding. Zorg ervoor dat je streaming-URL's beginnen met HTTPS. Op dit moment ondersteunt AMS TLS niet met aangepaste domeinen.  
 
 >[!NOTE]
->U alleen streamen via SSL als het streamingeindpunt van waaruit u uw inhoud levert, is gemaakt na 10 september 2014. Als uw streaming-URL's zijn gebaseerd op de streaming eindpunten die na 10 september zijn gemaakt, bevat de URL 'streaming.mediaservices.windows.net' (de nieuwe indeling). Streaming-URL's die 'origin.mediaservices.windows.net' (de oude indeling) bevatten, ondersteunen geen SSL. Als uw URL in de oude indeling is en u wilt kunnen streamen via SSL, maakt u een nieuw streamingeindpunt. Gebruik URL's die zijn gemaakt op basis van het nieuwe streaming-eindpunt om uw inhoud via SSL te streamen.
+>Je alleen via TLS streamen als het streaming-eindpunt van waaruit je je content levert, is gemaakt na 10 september 2014. Als uw streaming-URL's zijn gebaseerd op de streaming eindpunten die na 10 september zijn gemaakt, bevat de URL 'streaming.mediaservices.windows.net' (de nieuwe indeling). Streaming-URL's die 'origin.mediaservices.windows.net' (de oude indeling) bevatten, ondersteunen geen TLS. Als uw URL in de oude indeling is en u via TLS wilt kunnen streamen, maakt u een nieuw streamingeindpunt. Gebruik URL's die zijn gemaakt op basis van het nieuwe streaming-eindpunt om uw inhoud via TLS te streamen.
 
 In de volgende lijst worden verschillende streamingformaten beschreven en worden voorbeelden gegeven:
 

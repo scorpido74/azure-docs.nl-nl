@@ -1,5 +1,5 @@
 ---
-title: Jenkins configureren voor een Java-app op Service Fabric in azure
+title: Jenkins configureren voor een Java-app op ServiceFabric in Azure
 description: Deze zelfstudie geeft u informatie over het instellen van continue integratie met Jenkins voor het implementeren van een Java Service Fabric-toepassing.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75376645"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Zelfstudie: Een Jenkins-omgeving configureren om CI/CD in te schakelen voor een Java-toepassing voor Service Fabric
@@ -85,11 +85,11 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
 
    a. Selecteer in het algemene gedeelte het selectievakje voor **GitHub project** en geef de URL van het GitHub-project. Dit is de URL waarop de Service Fabric Java-toepassing wordt gehost die u wilt integreren met de CI-/CD-stroom van Jenkins (Continue integratie, Continue implementatie), bijvoorbeeld ``https://github.com/testaccount/dev_test``.
 
-   b. Selecteer onder de sectie **Broncodebeheer** de optie **Git**. Geef de opslagplaats-URL op waarop de Service Fabric Java-toepassing wordt gehost die u wilt integreren met de CI-/CD-stroom van Jenkins, (bijvoorbeeld *https://github.com/testaccount/dev_test.git* ). U kunt hier ook opgeven welke vertakking u wilt maken, bijvoorbeeld **/master**.
+   b. Selecteer onder de sectie **Broncodebeheer** de optie **Git**. Geef de url van de opslagplaats op die de Java-toepassing ServiceFabric host die *https://github.com/testaccount/dev_test.git*u wilt integreren met de Jenkins CI/CD-stroom (bijvoorbeeld). U kunt hier ook opgeven welke vertakking u wilt maken, bijvoorbeeld **/master**.
 
 1. Configureer uw *GitHub* (waar de opslagplaats wordt gehost), zodat deze kan communiceren met Jenkins. Voer de volgende stappen uit:
 
-   a. Ga naar de pagina van de GitHub-opslagplaats. Ga naar **Instellingen** > **Integraties en services**.
+   a. Ga naar de pagina van de GitHub-opslagplaats. Ga naar **Instellingen** > **integraties en services**.
 
    b. Selecteer **Add Service**, typ **Jenkins** en selecteer de **Jenkins-GitHub-invoegtoepassing**.
 
@@ -160,7 +160,7 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
     </ApplicationManifest>
     ```
 
-1. Update het **Versie**-veld in het **ServiceManifest** en het **Versie**-veld in de **CodePackage**-code in het bestand  *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* naar **2.0.0**.
+1. Update het **Versie**-veld in het **ServiceManifest** en het **Versie**-veld in de **CodePackage**-code in het bestand * Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* naar **2.0.0**.
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">

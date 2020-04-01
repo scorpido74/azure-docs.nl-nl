@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7b38ad40977e1042032210d3a82a73ff6169adc
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279154"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411065"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-endstatus- en diagnostische logboeken voor application gateway
 
@@ -96,9 +96,9 @@ In het volgende fragment ziet u een voorbeeld van het antwoord:
 U verschillende typen logboeken in Azure gebruiken om toepassingsgateways te beheren en op te lossen. Via de portal kunt u toegang verkrijgen tot sommige van deze logboeken. Alle logboeken kunnen worden geëxtraheerd uit Azure Blob-opslag en worden weergegeven in verschillende hulpprogramma's, zoals [Azure Monitor-logboeken,](../azure-monitor/insights/azure-networking-analytics.md)Excel en Power BI. In de volgende lijst vindt u meer informatie over de verschillende typen logboeken:
 
 * **Activiteitenlogboek:** U [Azure-activiteitslogboeken](../monitoring-and-diagnostics/insights-debugging-with-events.md) (voorheen bekend als operationele logboeken en controlelogboeken) gebruiken om alle bewerkingen weer te geven die zijn verzonden naar uw Azure-abonnement en hun status. Activiteitenlogboekitems worden standaard verzameld en kunnen in de Azure-portal worden bekeken.
-* **Toegangslogboek:** U dit logboek gebruiken om toegangspatronen van de toepassingsgateway weer te geven en belangrijke informatie te analyseren. Dit omvat het IP-adres van de beller, de gevraagde URL, de reactielatentie, de retourcode en bytes in en uit. Elke 300 seconden wordt een toegangslogboek verzameld. Dit logboek bevat één record per exemplaar van Application Gateway. De instantie Application Gateway wordt geïdentificeerd door de eigenschap instanceId.
+* **Toegangslogboek:** U dit logboek gebruiken om toegangspatronen van de toepassingsgateway weer te geven en belangrijke informatie te analyseren. Dit omvat het IP-adres van de beller, de gevraagde URL, de reactielatentie, de retourcode en bytes in en uit. Elke 60 seconden wordt een toegangslogboek verzameld. Dit logboek bevat één record per exemplaar van Application Gateway. De instantie Application Gateway wordt geïdentificeerd door de eigenschap instanceId.
 * **Prestatielogboek:** U dit logboek gebruiken om te bekijken hoe toepassingsgateway-exemplaren presteren. In dit logboek worden prestatiegegevens voor elk exemplaar vastgelegd, inclusief totale aanvragen die worden ontvangen, doorvoer in bytes, totale aanvragen die worden weergegeven, het aantal mislukte aanvragen en het aantal gezonde en ongezonde back-end-instantie. Elke 60 seconden wordt een prestatielogboek verzameld. Het prestatielogboek is alleen beschikbaar voor de v1 SKU. Gebruik voor de v2 SKU [Metrics](application-gateway-metrics.md) voor prestatiegegevens.
-* **Firewalllogboek:** U dit logboek gebruiken om de aanvragen weer te geven die zijn vastgelegd via de detectie- of preventiemodus van een toepassingsgateway die is geconfigureerd met de firewall van de webtoepassing.
+* **Firewalllogboek:** U dit logboek gebruiken om de aanvragen weer te geven die zijn vastgelegd via de detectie- of preventiemodus van een toepassingsgateway die is geconfigureerd met de firewall van de webtoepassing. Firewall logs worden verzameld om de 60 seconden. 
 
 > [!NOTE]
 > Logboeken zijn alleen beschikbaar voor resources die zijn geïmplementeerd in het implementatiemodel van Azure Resource Manager. U logboeken niet gebruiken voor resources in het klassieke implementatiemodel. Zie het [artikel Understanding Resource Manager-implementatie en het klassieke implementatieartikel](../azure-resource-manager/management/deployment-models.md) voor een beter begrip van de twee modellen.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/01/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7ca6882aea7225dcb97c9f913267b2543de07fef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133126"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477634"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service-omgeving gebruiken
 
@@ -88,7 +88,7 @@ In een ASE u een App Service-abonnement tot 100 exemplaren schalen. Een ASE kan 
 
 ## <a name="ip-addresses"></a>IP-adressen
 
-App Service kan een speciaal IP-adres toewijzen aan een app. Deze mogelijkheid is beschikbaar nadat u SSL op BASIS van IP hebt geconfigureerd, zoals beschreven in [Een bestaand aangepast SSL-certificaat binden aan Azure App Service.][ConfigureSSL] In een ILB ASE u niet meer IP-adressen toevoegen die kunnen worden gebruikt voor IP-gebaseerde SSL.
+App Service kan een speciaal IP-adres toewijzen aan een app. Deze mogelijkheid is beschikbaar nadat u SSL op BASIS van IP hebt geconfigureerd, zoals beschreven in [Een bestaand aangepast TLS/SSL-certificaat binden aan Azure App Service.][ConfigureSSL] In een ILB ASE u niet meer IP-adressen toevoegen die kunnen worden gebruikt voor IP-gebaseerde SSL.
 
 Met een externe ASE u IP-gebaseerde SSL voor uw app op dezelfde manier configureren als in de multitenant App Service. Er is altijd een reserveadres in de ASE, tot 30 IP-adressen. Elke keer dat u een gebruik maakt, wordt een ander toegevoegd, zodat een adres altijd direct beschikbaar is. Er is een vertraging nodig om een ander IP-adres toe te wijzen. Deze vertraging voorkomt dat er snel achter elkaar IP-adressen worden toegevoegd.
 

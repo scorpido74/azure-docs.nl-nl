@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/15/2020
-ms.openlocfilehash: 7745888dcaa1324d4a9d956e93d0504c8da8c026
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/25/2020
+ms.openlocfilehash: 198b78d5bab15057fdb6c7f6d4e8fff9f77d496e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501779"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397109"
 ---
 # <a name="microsoft-flow-connector-preview"></a>Microsoft Flow-connector (voorbeeld)
 
@@ -37,7 +37,7 @@ Zie [voorbeelden voor het gebruik van Microsoft Flow-connectoren](flow-usage.md)
 
 ![Het dialoogvenster Aanmelden](./media/flow/flow-signin.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 U verifiëren met gebruikersreferenties of een AAD-toepassing.
 
@@ -116,7 +116,7 @@ Gebruik de opdracht Besturingselement uitvoeren en visualiseer resultaten actie 
 ### <a name="run-query-and-list-results"></a>Query- en lijstresultaten uitvoeren
 
 > [!Note]
-> Als uw query begint met een punt (wat betekent dat het een [besturingsopdracht](https://docs.microsoft.com/azure/kusto/management/index)is), gebruikt u [De opdracht Besturingselement uitvoeren en de resultaten visualiseren](#run-control-command-and-visualize-results)
+> Als uw query begint met een punt (wat betekent dat het een [besturingselementopdracht](https://docs.microsoft.com/azure/kusto/management/index)is), gebruikt u [De opdracht Besturingselement uitvoeren en de resultaten visualiseren.](#run-control-command-and-visualize-results)
 
 Met deze actie wordt een query naar het Kusto-cluster verzenden. De acties die daarna worden toegevoegd, herhalen over elke regel van de resultaten van de query.
 
@@ -130,7 +130,7 @@ In het volgende voorbeeld wordt elke minuut een query geactiveerd en wordt een e
 ### <a name="run-query-and-visualize-results"></a>Query's uitvoeren en resultaten visualiseren
         
 > [!Note]
-> Als uw query begint met een punt (wat betekent dat het een [besturingsopdracht](https://docs.microsoft.com/azure/kusto/management/index)is), gebruikt u [De opdracht Besturingselement uitvoeren en de resultaten visualiseren](#run-control-command-and-visualize-results)
+> Als uw query begint met een punt (wat betekent dat het een [besturingselementopdracht](https://docs.microsoft.com/azure/kusto/management/index)is), gebruikt u [De opdracht Besturingselement uitvoeren en de resultaten visualiseren.](#run-control-command-and-visualize-results)
         
 Gebruik de actie Query uitvoeren en visualiseer resultaten om het resultaat van Kusto-query's te visualiseren als een tabel of grafiek. Gebruik deze stroom bijvoorbeeld om dagelijkse ICM-rapporten per e-mail te ontvangen. 
     
@@ -147,17 +147,21 @@ U een stap in elke stroom opnemen om rapporten per e-mail naar elk e-mailadres t
 
 1. Selecteer **+ Nieuwe stap** om een nieuwe stap aan uw stroom toe te voegen.
 1. Voer in het zoekveld Office 365 in en selecteer **Office 365 Outlook**.
-1. Selecteer **Een e-mailbericht verzenden**.
+1. Selecteer **Een e-mail verzenden (V2)**.
 1. Voer het e-mailadres in waar u het e-mailrapport wilt verzenden.
 1. Voer het onderwerp van de e-mail in.
-1. Selecteer In het veld *Lichaam* in het veld Dynamische inhoud de optie **Lichaam**.
+1. Selecteer **de codeweergave**.
+1. Plaats de cursor in het veld *Hoofdlichaam* en selecteer **Dynamische inhoud toevoegen**.
+1. Selecteer **BodyHtml**.
+    ![Een e-mailbericht versturen](./media/flow/flow-send-email.png)
 1. Selecteer **Geavanceerde opties weergeven**.
 1. Selecteer *bijlagenaam* in het veld **Attachment Name**Naam van bijlagen -1 .
 1. Selecteer *bijlageinhoud* in het **Attachment Content**veld Inhoud bijlagen .
+1. Voeg indien nodig meer bijlagen toe. 
 1. Stel indien nodig het belangniveau in.
 1. Selecteer **Opslaan**.
 
-![Een e-mailbericht versturen](./media/flow/flow-sendemail.png)
+![Een e-mailbericht versturen](./media/flow/flow-add-attachments.png)
 
 ## <a name="check-if-your-flow-succeeded"></a>Controleren of uw stroom is geslaagd
 

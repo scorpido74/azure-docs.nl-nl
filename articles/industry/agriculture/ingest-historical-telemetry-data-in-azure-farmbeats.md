@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b0b9d62e8761cfb67d0642d8e5a97e7d1f05af12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a5e89f256b562ce5f702e9ff1388cb4d021bf5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064455"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437692"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -37,37 +37,48 @@ Volg deze stappen:
 > [!NOTE]
 > U moet een beheerder zijn om de volgende stappen uit te voeren.
 
-1. Download het [zip-bestand](https://aka.ms/farmbeatspartnerscriptv2)en haal het naar uw lokale schijf. Er zal één bestand in het zip-bestand zitten.
+1. Meld u aan bij https://portal.azure.com/.
 
-2. Meld u https://portal.azure.com/ aan en ga naar **Azure Active Directory** > **App-registraties**.
+2. **Als u op FarmBeats versie 1.2.7 of hoger bent, slaat u de stappen a, b en c over en gaat u naar stap 3.** U de FarmBeats-versie controleren door het pictogram **Instellingen** in de rechterbovenhoek van de FarmBeats-gebruikersinterface te selecteren.
 
-3. Selecteer de **appregistratie** die is gemaakt als onderdeel van uw FarmBeats-implementatie. Het heeft dezelfde naam als uw FarmBeats Datahub.
+      a.  Ga naar **Azure Active Directory** > **App-registraties**
 
-4. Selecteer **Een API bloot>** Selecteer **Een clienttoepassing toevoegen** en voer **04b07795-8ddb-461a-bbee-02f9e1bf7b46** in en controleer **Scope toestaan**. Dit geeft toegang tot de Azure CLI (Cloud Shell) om de volgende stappen uit te voeren:
+      b. Selecteer de **appregistratie** die is gemaakt als onderdeel van uw FarmBeats-implementatie. Het heeft dezelfde naam als uw FarmBeats datahub.
 
-5. Open Cloud Shell. Deze optie is beschikbaar op de werkbalk in de rechterbovenhoek van de Azure-portal.
+      c. Selecteer **Een API blootmaken** > selecteer **Een clienttoepassing toevoegen** en voer **04b07795-8ddb-461a-bbee-02f9e1bf7b46** in en controleer **Scope toestaan**. Dit geeft toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren:
+
+3. Open Cloud Shell. Deze optie is beschikbaar op de werkbalk in de rechterbovenhoek van de Azure-portal.
 
     ![Werkbalk Azure-portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. Zorg ervoor dat de omgeving is ingesteld op **PowerShell**. Standaard is het ingesteld op Bash.
+4. Zorg ervoor dat de omgeving is ingesteld op **PowerShell**. Standaard is het ingesteld op Bash.
 
     ![PowerShell-werkbalkinstelling](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. Upload het bestand vanaf stap 1 in uw Cloud Shell-exemplaar.
+5. Ga naar je thuisgids.
 
-    ![Knop Werkbalk uploaden](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ```azurepowershell-interactive 
+    cd  
+    ```
 
-8. Ga naar de map waar het bestand is geüpload. Standaard worden bestanden geüpload naar de thuismap onder de gebruikersnaam.
+6. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw thuismap.
 
-9. Voer het volgende script uit. Het script vraagt om de tenant-id, die kan worden verkregen op de pagina **Azure Active Directory** > **Overview.**
+    ```azurepowershell-interactive 
 
-    ```azurepowershell-interactive
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
+
+    ```
+
+7. Voer het volgende script uit. Het script vraagt om de tenant-id, die kan worden verkregen op de pagina **Azure Active Directory** > **Overview.**
+
+    ```azurepowershell-interactive 
 
     ./generatePartnerCredentials.ps1   
 
     ```
 
-10. Volg de instructies op het scherm om de waarden vast te leggen voor **API-eindpunt,** **tenant-id,** **client-id,** **clientgeheim**en **EventHub-verbindingstekenreeks**.
+8. Volg de instructies op het scherm om de waarden vast te leggen voor **API-eindpunt,** **tenant-id,** **client-id,** **clientgeheim**en **EventHub-verbindingstekenreeks**.
+
 
 ## <a name="create-device-or-sensor-metadata"></a>Apparaat- of sensormetagegevens maken
 
@@ -108,8 +119,8 @@ Volg deze stappen:
 |     Productcode| Productcode of modelnaam of -nummer. Bijvoorbeeld RS-CO2-N01. |
 |       SensorMaatregelen > naam       | Naam van de sensormeting. Alleen kleine letters worden ondersteund. Voor metingen uit verschillende dieptes moet u de diepte opgeven. Bijvoorbeeld soil_moisture_15cm. Deze naam moet overeenkomen met de telemetriegegevens.  |
 |          Sensormaatregelen > DataType       |Telemetriegegevenstype. Momenteel wordt dubbel ondersteund.|
-|    Sensormaatregelen > type    |Meettype van de telemetriegegevens van de sensor. De systeemgedefinieerde types zijn AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitraat, O2, PH, Fosfaat, PointInTime, Kalium, Druk, Regenmeter, Relatieve Vochtigheid, Zoutgehalte, SoilMoisture, Bodemtemperatuur, zonnestraling, toestand, timeduration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Als u meer wilt toevoegen, raadpleegt u de /ExtendedType API.|
-|        SensorMaatregelen >-eenheid              | Eenheid van sensor telemetriegegevens. De systeemgedefinieerde eenheden zijn NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercurius, PSI, Millimeter, Centimeter, Meter, Inch, Feet, Mile, Kilometer, MilesPerhour, MilesPerSeconde, KMPerSeconde, MeterPeruur, MeterPeruur, MeterPerSeconde, Graad, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, Volumetricwatercontent, percentage, PartsPermillion, MicroMol, MicroMol, MicroMolesPerliter, SiemensPerSquareMeter MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSeconde, InchesPerHour Om meer toe te voegen, verwijzen naar de /ExtendedType API.|
+|    Sensormaatregelen > type    |Meettype van de telemetriegegevens van de sensor. De systeemgedefinieerde types zijn AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitraat, O2, PH, Fosfaat, PointInTime, Kalium, Druk, Regenmeter, RelatieveVochtigheid, Zoutgehalte, BodemVocht, BodemTemperatuur, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Als u meer wilt toevoegen, raadpleegt u de /ExtendedType API.|
+|        SensorMaatregelen >-eenheid              | Eenheid van sensor telemetriegegevens. De systeemgedefinieerde eenheden zijn NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, MilliMeter, CentiMeter, Meter, Inch, Feet, Mile, Kilometer, MilesPerHour, MilesPerSeconde, KMPerhour, KMPerseconde, MeterPeruur, MeterperSeconde, Graad, WattperSquareMeter, KiloPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, Milliliter, Seconden, UnixTimestamp, MicroMolPerMeterSquaredPerSeconde, InchesPerHour Om meer toe te voegen, verwijzen naar de /ExtendTypeed API.|
 |    Sensormaatregelen > AggregationType    |  Waarden kunnen geen, gemiddeld, maximum, minimum of StandaardAfwijking zijn.  |
 |          Name            | Naam om een resource te identificeren. Bijvoorbeeld de modelnaam of productnaam.  |
 |    Beschrijving        | Geef een zinvolle beschrijving van het model.|
@@ -130,7 +141,7 @@ Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over o
 
 Als u een API-aanvraag wilt indienen, combineert u de methode HTTP (POST), de URL naar de API-service en de URI naar een bron om gegevens op te vragen, te maken of een aanvraag te verwijderen. Vervolgens voegt u een of meer HTTP-aanvraagkoppen toe. De URL naar de API-service is het API-eindpunt,\<dat wil zeggen de URL van Datahub (https:// yourdatahub>.azurewebsites.net).  
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 FarmBeats Datahub maakt gebruik van verificatie aan toonder, waarvoor de volgende referenties nodig zijn die in de vorige sectie zijn gegenereerd:
 
@@ -351,11 +362,11 @@ Converteer de historische sensorgegevensindeling naar een canonieke indeling die
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }
@@ -429,11 +440,11 @@ Hier is een voorbeeld van een telemetriebericht:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

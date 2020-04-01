@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257743"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478952"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Fouten oplossen bij het mislukken van VMware VM of fysieke machine naar Azure
 
@@ -128,7 +128,7 @@ Dit is normaal gesproken geen reden tot bezorgdheid en kan meestal worden genege
 
 Dit probleem wordt aangegeven wanneer u de datastore in Azure de portal niet zien wanneer u de virtuele machine probeert te beveiligen die een failover heeft ervaren. Dit komt omdat het masterdoel niet wordt herkend als een virtuele machine onder vCenters die zijn toegevoegd aan Azure Site Recovery.
 
-Zie [Machines opnieuw beveiligen en opnieuw opslaan naar een on-premises site na een fail-over naar Azure voor](vmware-azure-reprotect.md)meer informatie over het opnieuw beveiligen van een vitualmachine.
+Zie [Machines opnieuw beveiligen en weergeven naar een on-premises site na een fail-over naar Azure voor](vmware-azure-reprotect.md)meer informatie over het opnieuw beveiligen van een virtuele machine.
 
 Ga als ander op zoek naar het probleem:
 
@@ -138,7 +138,7 @@ Maak handmatig het masterdoel in het vCenter dat uw bronmachine beheert. De data
 > 
 > Het kan tot 30 minuten duren voordat de detectie- en vernieuwingsbewerkingen zijn voltooid. 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Linux Master Target registratie met CS mislukt met een SSL-fout 35 
+## <a name="linux-master-target-registration-with-cs-fails-with-a-tls-error-35"></a>Linux Master Target registratie met CS mislukt met een TLS-fout 35 
 
 De Azure Site Recovery Master Target-registratie met de configuratieserver mislukt omdat de geverifieerde proxy is ingeschakeld op het hoofddoel. 
  

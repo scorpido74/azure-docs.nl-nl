@@ -4,19 +4,18 @@ description: Meer informatie over enkele overwegingen en bronnen voor het ontwer
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
-ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264191"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408836"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Overwegingen voor virtueel netwerkontwerp en configuratieopties voor Azure AD Domain Services
 
@@ -76,7 +75,7 @@ U een virtueel netwerk op dezelfde manier verbinden met een ander virtueel netwe
 
 ![Virtuele netwerkconnectiviteit met behulp van een VPN-gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
-Lees [Een VNet-naar-VNet VPN-gatewayverbinding configureren met behulp van de Azure-portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)voor meer informatie over het gebruik van virtual private networking.
+Lees [Een VNet-naar-VNet VPN-gatewayverbinding configureren met behulp van de Azure-portal](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)voor meer informatie over het gebruik van virtual private networking.
 
 ## <a name="name-resolution-when-connecting-virtual-networks"></a>Naamresolutie bij het verbinden van virtuele netwerken
 
@@ -97,11 +96,11 @@ Een door Azure AD DS beheerd domein maakt een aantal netwerkbronnen tijdens de i
 | Regels voor load balancers                     | Wanneer een door Azure AD DS beheerd domein is geconfigureerd voor beveiligde LDAP op TCP-poort 636, worden drie regels gemaakt en gebruikt op een load balancer om het verkeer te distribueren. |
 
 > [!WARNING]
-> Verwijder geen van de netwerkbronnen die zijn gemaakt door Azure AD DS. Als u een van de netwerkbronnen verwijdert, treedt er een azure AD DS-servicestoring op.
+> Verwijder of wijzig geen van de netwerkbronnen die zijn gemaakt door Azure AD DS, zoals het handmatig configureren van de load balancer of regels. Als u een van de netwerkbronnen verwijdert of wijzigt, kan er een uitval van de Azure AD DS-service optreden.
 
 ## <a name="network-security-groups-and-required-ports"></a>Netwerkbeveiligingsgroepen en vereiste poorten
 
-Een [netwerkbeveiligingsgroep (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) bevat een lijst met regels die netwerkverkeer toestaan of weigeren voor verkeer in een virtueel Azure-netwerk. Er wordt een netwerkbeveiligingsgroep gemaakt wanneer u Azure AD DS implementeert met een set regels waarmee de service verificatie- en beheerfuncties kan bieden. Deze standaardnetwerkbeveiligingsgroep is gekoppeld aan het virtuele netwerksubnet waaruw Door Azure AD DS beheerde domein in is geïmplementeerd.
+Een [netwerkbeveiligingsgroep (NSG)](../virtual-network/virtual-networks-nsg.md) bevat een lijst met regels die netwerkverkeer toestaan of weigeren voor verkeer in een virtueel Azure-netwerk. Er wordt een netwerkbeveiligingsgroep gemaakt wanneer u Azure AD DS implementeert met een set regels waarmee de service verificatie- en beheerfuncties kan bieden. Deze standaardnetwerkbeveiligingsgroep is gekoppeld aan het virtuele netwerksubnet waaruw Door Azure AD DS beheerde domein in is geïmplementeerd.
 
 De volgende regels voor netwerkbeveiligingsgroepen zijn vereist voor Azure AD DS om verificatie- en beheerservices te bieden. Bewerk of verwijder deze regels voor netwerkbeveiliging niet voor het virtuele netwerksubnet waaruw Door Azure AD DS beheerde domein in is geïmplementeerd.
 

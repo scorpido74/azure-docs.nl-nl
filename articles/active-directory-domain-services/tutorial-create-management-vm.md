@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 63c5f068adab58c901acf5fd26261d57e1183f0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09fcf88c6dfe90380f387c6d72c751634f5b1606
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481514"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475733"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Een beheer-vm maken om een beheerd Azure Directory Domain Services-beheerd domein te configureren en te beheren
 
@@ -89,7 +89,6 @@ Maak als volgt verbinding met de WINDOWS Server VM om aan de slag te gaan:
 
     ![Verbinding maken met de virtuele machine van Windows met Bastion in de Azure-portal](./media/join-windows-vm/connect-to-vm.png)
 
-    U ook [een Azure Bastion-host (momenteel in preview) maken en gebruiken][azure-bastion] om alleen toegang via de Azure-portal via TLS toe te staan.
 1. Voer de referenties voor uw vm in en selecteer **Verbinding maken**.
 
    ![Verbinding maken via de Bastion-host in de Azure-portal](./media/join-windows-vm/connect-to-bastion.png)

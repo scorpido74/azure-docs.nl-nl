@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 07a96fdd6350d8db38a92c23e510afb05f7416fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1837d342c4476633ee33a8579abe7389ac9bbddf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277750"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476829"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Instanties beheren in Duurzame functies in Azure
 
@@ -42,9 +42,9 @@ De volgende code is een voorbeeldfunctie waarmee een nieuwe instantie voor orkes
 # <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
-[FunctionName("HelloWorldManualStart")]
+[FunctionName("HelloWorldQueueTrigger")]
 public static async Task Run(
-    [ManualTrigger] string input,
+    [QueueTrigger("start-queue")] string input,
     [DurableClient] IDurableOrchestrationClient starter,
     ILogger log)
 {
@@ -161,7 +161,7 @@ Deze methode `null` retourneert `undefined` (.NET) of (JavaScript) als de instan
 [FunctionName("GetStatus")]
 public static async Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [ManualTrigger] string instanceId)
+    [QueueTrigger("check-status-queue")] string instanceId)
 {
     DurableOrchestrationStatus status = await client.GetStatusAsync(instanceId);
     // do something based on the current status.
@@ -363,7 +363,7 @@ U `TerminateAsync` de (.NET) `terminate` of de (JavaScript)-methode van de [orch
 [FunctionName("TerminateInstance")]
 public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [ManualTrigger] string instanceId)
+    [QueueTrigger("terminate-queue")] string instanceId)
 {
     string reason = "It was time to be done.";
     return client.TerminateAsync(instanceId, reason);
@@ -428,7 +428,7 @@ De parameters `RaiseEventAsync` voor (.NET) en `raiseEvent` (JavaScript) zijn al
 [FunctionName("RaiseEvent")]
 public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [ManualTrigger] string instanceId)
+    [QueueTrigger("event-queue")] string instanceId)
 {
     int[] eventData = new int[] { 1, 2, 3 };
     return client.RaiseEventAsync(instanceId, "MyEvent", eventData);
@@ -622,7 +622,7 @@ Stel dat u een werkstroom hebt met een reeks [menselijke goedkeuringen.](durable
 [FunctionName("RewindInstance")]
 public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [ManualTrigger] string instanceId)
+    [QueueTrigger("rewind-queue")] string instanceId)
 {
     string reason = "Orchestrator failed and needs to be revived.";
     return client.RewindAsync(instanceId, reason);
@@ -674,7 +674,7 @@ Deze methode heeft twee overbelastingen. De eerste overbelasting zuivert geschie
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
     [DurableClient] IDurableOrchestrationClient client,
-    [ManualTrigger] string instanceId)
+    [QueueTrigger("purge-queue")] string instanceId)
 {
     return client.PurgeInstanceHistoryAsync(instanceId);
 }

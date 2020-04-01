@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 357075caaf91769026deb839e038e5d42fb63a38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054691"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477977"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Logboekanalysewerkruimte beheren met Azure Resource Manager-sjablonen
 
@@ -48,6 +48,9 @@ In de volgende tabel vindt u de API-versie voor de resources die in dit voorbeel
 
 In het volgende voorbeeld wordt een werkruimte gemaakt met behulp van een sjabloon van uw lokale machine. De JSON-sjabloon is zo geconfigureerd dat alleen de naam en locatie van de nieuwe werkruimte vereist zijn. Het gebruikt waarden die zijn opgegeven voor andere werkruimteparameters, zoals [de toegangscontrolemodus,](design-logs-deployment.md#access-control-mode)de prijscategorie, de retentie en het capaciteitsreserveringsniveau.
 
+> [!WARNING]
+> Met de volgende sjabloon wordt een werkruimte Log Analytics gemaakt en wordt het verzamelen van gegevens geconfigureerd. Dit kan uw factureringsinstellingen wijzigen. Controleer [Gebruik en kosten beheren met Azure Monitor-logboeken](manage-cost-storage.md) om inzicht te krijgen in facturering voor gegevens die zijn verzameld in een werkruimte log Analytics voordat u deze toepast in uw Azure-omgeving.
+
 Voor capaciteitsreservering definieert u een geselecteerde capaciteitsreservering voor het `CapacityReservation` opnemen van gegevens door `capacityReservationLevel`de SKU en een waarde in GB voor de eigenschap op te geven. In de volgende lijst worden de ondersteunde waarden en het gedrag beschreven bij het configureren ervan.
 
 - Zodra u de reserveringslimiet hebt ingesteld, u niet binnen 31 dagen overschakelen naar een andere SKU.
@@ -75,7 +78,7 @@ Voor capaciteitsreservering definieert u een geselecteerde capaciteitsreserverin
               "description": "Specifies the name of the workspace."
             }
         },
-      "pricingTier": {
+      "sku": {
         "type": "string",
         "allowedValues": [
           "pergb2018",
@@ -131,7 +134,7 @@ Voor capaciteitsreservering definieert u een geselecteerde capaciteitsreserverin
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-          "name": "[parameters('pricingTier')]"
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -145,15 +148,15 @@ Voor capaciteitsreservering definieert u een geselecteerde capaciteitsreserverin
     }
     ```
 
-> [Informatie] voor capaciteitsreserveringsinstellingen, gebruik deze eigenschappen onder "sku":
+   >[!NOTE]
+   >Gebruik deze eigenschappen voor capaciteitsreserveringsinstellingen onder 'sku':
+   >* "naam": "CapacityReservation",
+   >* "capacityReservationLevel": 100
 
->   "naam": "CapacityReservation",
+2. Bewerk de sjabloon om aan uw vereisten te voldoen. Overweeg een [resourcebeheerbestand te](../../azure-resource-manager/templates/parameter-files.md) maken in plaats van parameters door te geven als inlinewaarden. Bekijk [de sjabloonverwijzing microsoft.operationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) om te zien welke eigenschappen en waarden worden ondersteund. 
 
->   "capacityReservationLevel": 100
-
-
-2. Bewerk de sjabloon om aan uw vereisten te voldoen. Bekijk [de sjabloonverwijzing microsoft.operationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) om te zien welke eigenschappen en waarden worden ondersteund. 
 3. Sla dit bestand op als **deploylaworkspacetemplate.json** in een lokale map.
+
 4. U kunt deze sjabloon nu implementeren. U gebruikt PowerShell of de opdrachtregel om de werkruimte te maken en de naam en locatie van de werkruimte op te geven als onderdeel van de opdracht. De naam van de werkruimte moet wereldwijd uniek zijn voor alle Azure-abonnementen.
 
    * Voor PowerShell gebruiken de volgende opdrachten uit de map met de sjabloon:
@@ -197,7 +200,7 @@ In het volgende voorbeeld van een sjabloon ziet u hoe u:
         "description": "Workspace name"
       }
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "allowedValues": [
         "PerGB2018",
@@ -306,7 +309,7 @@ In het volgende voorbeeld van een sjabloon ziet u hoe u:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('sku')]"
         }
       },
       "resources": [
@@ -605,7 +608,7 @@ In het volgende voorbeeld van een sjabloon ziet u hoe u:
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
     },

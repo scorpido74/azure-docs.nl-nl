@@ -4,21 +4,21 @@ description: Meer informatie over Azure Analysis Services, een volledig beheerd 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/20/2020
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7eb46e0eda1cd702f26829fac49ffe0e7916626f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240602"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410382"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services is een volledig beheerd platform als een service (PaaS) dat gegevensmodellen van ondernemingsklasse in de cloud levert. Gebruik geavanceerde mashup- en modelleringsfuncties om gegevens uit meerdere gegevensbronnen te verfijnen en te combineren, metrische gegevens te definiëren, en uw gegevens te beveiligen in één vertrouwd tabellarisch semantisch gegevensmodel. Het gegevensmodel biedt gebruikers een eenvoudigere en snellere manier om door enorme hoeveelheden gegevens te bladeren voor ad hoc gegevensanalyse.
+Azure Analysis Services is een volledig beheerd platform als een service (PaaS) dat gegevensmodellen van ondernemingsklasse in de cloud levert. Gebruik geavanceerde mashup- en modelleringsfuncties om gegevens uit meerdere gegevensbronnen te verfijnen en te combineren, metrische gegevens te definiëren, en uw gegevens te beveiligen in één vertrouwd tabellarisch semantisch gegevensmodel. Het gegevensmodel biedt gebruikers een eenvoudigere en snellere manier om ad hoc gegevensanalyse uit te voeren met behulp van tools zoals Power BI en Excel.
 
 ![Gegevensbronnen](./media/analysis-services-overview/aas-overview-overall.png)
 
@@ -38,7 +38,7 @@ Azure Analysis Services is beschikbaar in de servicelagen **Developer**, **Basic
 
 ### <a name="developer-tier"></a>Developer-laag
 
-Deze laag wordt aanbevolen voor evaluatie-, ontwikkelings- en testscenario's. Eén abonnement bevat alle functionaliteit van de Standard-laag, maar heeft beperkte verwerkingskracht, QPU's en geheugengrootte. Uitschalen van queryreplica’s *is niet beschikbaar* voor deze laag. Voor deze laag is geen SLA beschikbaar.
+Deze laag wordt aanbevolen voor evaluatie-, ontwikkelings- en testscenario's. Eén abonnement bevat alle functionaliteit van de Standard-laag, maar heeft beperkte verwerkingskracht, QPU's en geheugengrootte. De scale-out van *queryreplica's is niet beschikbaar* voor deze laag. Voor deze laag is geen SLA beschikbaar.
 
 |Plannen  |QPU's  |Geheugen (GB)  |
 |---------|---------|---------|
@@ -161,7 +161,7 @@ Op serverniveau biedt Analysis Services firewall, Azure-verificatie, serverbehee
 
 De firewall van Azure Analysis Services blokkeert alle clientverbindingen behalve die met IP-adressen die zijn opgegeven in regels. Firewall-beveiliging is standaard niet ingeschakeld voor nieuwe servers. Het verdient aanbeveling om onmiddellijk nadat de server is gemaakt de firewallbeveiliging in te schakelen en de regels te configureren als onderdeel van een serverinrichtingsscript of in de portal. Configureer regels voor toegestane IP-adressen als individuele client-IP-adressen of als een bereik. Verbindingen van Power BI (service) kunnen ook worden toegestaan of geblokkeerd. Configureer de firewall en regels in de portal of met behulp van PowerShell. Zie [Configure a server firewall](analysis-services-qs-firewall.md) (een serverfirewall configureren) voor meer informatie.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Gebruikersverificatie wordt afgehandeld door [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Bij het inloggen gebruiken gebruikers de identiteit van een organisatie-account met op rollen gebaseerde toegang tot de database. Gebruikers-id's moeten lid zijn van de standaard Azure Active Directory voor het abonnement waarin de server is ondergebracht. Raadpleeg voor meer informatie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md).
 
@@ -208,6 +208,10 @@ Microsoft Analysis Services Projects is beschikbaar als een gratis installeerbaa
 
 Servers en modeldatabases beheert u met behulp van [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Maak verbinding met uw servers in de cloud. Voer rechtstreeks vanuit het XMLA-queryvenster TMSL-scripts uit en automatiseer taken met behulp van TMSL-scripts en PowerShell. Omdat er in hoog tempo nieuwe functies en mogelijkheden worden toegevoegd, wordt SSMS maandelijks bijgewerkt.
 
+### <a name="open-source-tools"></a>Open-source-hulpprogramma's
+
+Analysis Services heeft een levendige community van ontwikkelaars die tools maken. Zorg ervoor dat u [tabular Editor](https://tabulareditor.github.io/), een open-source tool voor het maken, onderhouden en beheren van tabelmodellen met behulp van een intuïtieve, lichtgewicht editor. [DAX Studio](https://daxstudio.org/), is een geweldige open-source tool voor DAX authoring, diagnose, performance tuning en analyse.
+
 ### <a name="powershell"></a>PowerShell
 
 Beheertaken voor serverresources, zoals het maken van serverresources, het onderbreken of hervatten van serverbewerkingen of het wijzigen van het serviceniveau (de servicelaag), maken gebruik van Azure PowerShell-cmdlets. Voor andere databasebeheertaken, zoals het toevoegen of verwijderen van roltoewijzingen, het toepassen van bewerkingen of het uitvoeren van TMSL-scripts, gebruikt u de cmdlets van de SQL Server-module. Zie [Azure Analysis Services beheren met PowerShell](analysis-services-powershell.md) voor meer informatie.
@@ -232,19 +236,15 @@ Azure Analysis Services ondersteunt ook het gebruik van [DMV's (dynamische behee
 
 Specifieke documentatie bij Azure Analysis Services is hier opgenomen. Gebruik de inhoudsopgave aan de linkerkant van uw browserscherm om artikelen te zoeken. 
 
-Omdat tabelmodellen van Azure Analysis Services vrijwel hetzelfde zijn als tabelmodellen in SQL Server Analysis Services, is er een uitgebreide bibliotheek met handleidingen voor gedeelde gegevensmodellering, conceptuele, procedurele, ontwikkelaars- en referentieartikelen in [SQL Server Analysis Services-documentatie.](https://docs.microsoft.com/analysis-services/analysis-services-overview) Bij artikelen in de documentatie van SQL Server Analysis Services wordt aangegeven of ze ook van toepassing zijn op Azure Analysis Services door de banner VAN TOEPASSING OP onder de titel.
+Omdat tabelmodellen in Azure Analysis Services vrijwel hetzelfde zijn als tabelmodellen in SQL Server Analysis Services en Power BI Premium-gegevenssets, is er een uitgebreide bibliotheek met handleidingen voor het modelleren van gedeelde gegevens, conceptuele, procedurele, ontwikkelaars en referentieartikelen in [analysis services-documentatie.](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current) Artikelen in de gemeenschappelijke Analysis Services-documentatie geven aan of ze ook van toepassing zijn op Azure Analysis Services door een banner VAN TOEPASSING OP onder de titel. U de versiekiezer boven de inhoudsopgave ook gebruiken om alleen de artikelen te zien die van toepassing zijn op het platform dat u gebruikt.
 
 ![Gedeelde documentatie](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>U kunt bijdragen!
 
-Analysis Services-documentatie, zoals dit artikel, is open source. Als u een GitHub-account hebt, kunt u een artikel bewerken door op Edit (potlood) in de rechterbovenhoek van uw browserscherm te klikken. Gebruik de editor in de browser en klik vervolgens op Propose file change (bestandswijziging voorstellen). 
+Analysis Services-documentatie, zoals dit artikel, is open source. Zie de [handleiding voor bijdragen van documenten](https://docs.microsoft.com/contribute/)voor meer informatie over hoe u bijdragen. 
 
-![Gedeelde documentatie](./media/analysis-services-overview/aas-overview-edit.png)
-
-Uw bijdrage wordt beoordeeld door het documentatieteam en indien deze wordt goedgekeurd, wordt de naam van uw GitHub-account weergegeven als bijdrager. Zie de [handleiding voor bijdragers aan documenten](https://docs.microsoft.com/contribute/) voor meer informatie.
-
-In de documentatie van Azure Analysis Services wordt ook gebruikgemaakt van [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs). U kunt feedback geven over het product of de documentatie. Gebruik **Feedback** onderaan een artikel. GitHub Issues zijn nog niet ingeschakeld voor SQL Server Analysis Services-documentatie. 
+In de documentatie van Azure Analysis Services wordt ook gebruikgemaakt van [GitHub Issues](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs). U kunt feedback geven over het product of de documentatie. Gebruik **Feedback** onderaan een artikel. GitHub-problemen zijn niet ingeschakeld voor de gemeenschappelijke Analysis Services-documentatie. 
 
 ## <a name="blogs"></a>Blogs
 

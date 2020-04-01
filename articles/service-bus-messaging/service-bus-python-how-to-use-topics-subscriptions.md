@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76774547"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478066"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Snelstart: ServiceBus-onderwerpen en abonnementen gebruiken met Python
 
@@ -35,7 +35,7 @@ In dit artikel wordt beschreven hoe u Python gebruiken met azure servicebus-onde
 ## <a name="prerequisites"></a>Vereisten
 - Een Azure-abonnement. U uw [Visual Studio- of MSDN-abonneevoordelen](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
 - Een naamruimte voor servicebus die is gemaakt door de stappen te volgen bij [Quickstart: gebruik de Azure-portal om een servicebusonderwerp en -abonnementen te maken.](service-bus-quickstart-topics-subscriptions-portal.md) Kopieer de naamnaam naamruimte, de naam van gedeelde toegangssleutel en de primaire sleutelwaarde vanuit het scherm **Beleid voor gedeelde toegang** om later in deze quickstart te gebruiken. 
-- Python 3,4x of hoger, met het [Azure Python SDK-pakket][Azure Python package] geïnstalleerd. Zie de [Python-installatiehandleiding](/azure/python/python-sdk-azure-install)voor meer informatie.
+- Python 3,4x of hoger, met het [Azure Python SDK-pakket][Azure Python package] geïnstalleerd. Zie de [Python-installatiehandleiding](/azure/developer/python/azure-sdk-install)voor meer informatie.
 
 ## <a name="create-a-servicebusservice-object"></a>Een ServiceBusService-object maken
 

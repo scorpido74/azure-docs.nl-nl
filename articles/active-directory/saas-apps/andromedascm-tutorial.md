@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Andromeda | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Andromeda.
+title: 'Zelfstudie: Azure Active Directory-integratie met Andromeda | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Andromeda.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,45 +17,45 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68fa570ecfbafe2000bfa6eb9fa159dff48219a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67107075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Zelfstudie: Azure Active Directory-integratie met Andromeda
 
-In deze zelfstudie leert u hoe u Andromeda integreren met Azure Active Directory (Azure AD).
-Andromeda integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u Andromeda integreert met Azure Active Directory (Azure AD).
+De integratie van Andromeda met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot Andromeda heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Andromeda (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U in Azure AD bepalen wie toegang heeft tot Andromeda.
+* U uw gebruikers automatisch laten aanmelden bij Andromeda (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Andromeda, moet u de volgende items:
+Als u de AD-integratie met Andromeda wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Eenmalige aanmelding Andromeda ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Andromeda single sign-on enabled subscription Andromeda single sign-on enabled
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Andromeda **SP en IDP** gestart door SSO
-* Biedt ondersteuning voor Andromeda **Just In Time** inrichten van gebruikers
+* Andromeda ondersteunt **SP en IDP** geïnitieerd sso
+* Andromeda ondersteunt **Just In Time-gebruikersinrichting**
 
-## <a name="adding-andromeda-from-the-gallery"></a>Andromeda uit de galerie toe te voegen
+## <a name="adding-andromeda-from-the-gallery"></a>Andromeda toevoegen vanuit de galerij
 
-Voor het configureren van de integratie van Andromeda in Azure AD, moet u Andromeda uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Andromeda in Azure AD wilt configureren, moet u Andromeda vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Andromeda uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u Andromeda vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -67,31 +67,31 @@ Voor het configureren van de integratie van Andromeda in Azure AD, moet u Androm
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Andromeda**, selecteer **Andromeda** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Andromeda**in het zoekvak , selecteer **Andromeda** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-    ![Andromeda in de lijst met resultaten](common/search-new-app.png)
+    ![Andromeda in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Andromeda op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Andromeda tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on with Andromeda op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding om te werken, moet een koppeling slinken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Andromeda worden vastgesteld.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met Andromeda, moet u de volgende bouwstenen voltooien:
+Als u Azure AD-single sign-on met Andromeda wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding Andromeda](#configure-andromeda-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker Andromeda](#create-andromeda-test-user)**  : als u wilt een equivalent van Britta Simon in Andromeda die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Andromeda Single Sign-On](#configure-andromeda-single-sign-on)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak Andromeda-testgebruiker](#create-andromeda-test-user)** - om een tegenhanger van Britta Simon in Andromeda te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Andromeda, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Andromeda te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Andromeda** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Andromeda-toepassingsintegratie** de optie Eén **aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,46 +103,46 @@ Voor het configureren van Azure AD eenmalige aanmelding met Andromeda, moet u de
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
+4. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
 
-    ![Andromeda domein en URL's, eenmalige aanmelding informatie](common/idp-intiated.png)
+    ![Informatie over Andromeda-domein en URL's met eenmalige aanmelding](common/idp-intiated.png)
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<tenantURL>.ngcxpress.com/`
+    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://<tenantURL>.ngcxpress.com/`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Andromeda domein en URL's, eenmalige aanmelding informatie](common/metadata-upload-additional-signon.png)
+    ![Informatie over Andromeda-domein en URL's met eenmalige aanmelding](common/metadata-upload-additional-signon.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. U kunt de waarde wordt bijgewerkt met de werkelijke-id, de antwoord-URL en aanmeldings-URL die later in de zelfstudie wordt uitgelegd.
+    > Dit zijn geen echte waarden. U werkt de waarde bij met de werkelijke id, url voor antwoorden en de URL van aanmelding die later in de zelfstudie wordt uitgelegd.
 
-6. Andromeda toepassing verwacht het SAML-asserties ondertekend in een specifieke indeling. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
+6. Andromeda applicatie verwacht dat de SAML beweringen in een specifiek formaat. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op de knop **Bewerken** om het dialoogvenster **Gebruikerskenmerken** te openen.
 
-    ![image](common/edit-attribute.png)
+    ![installatiekopie](common/edit-attribute.png)
 
     > [!Important]
-    > Wissen van de naamruimte-definities tijdens deze instellen.
+    > De NameSpace-definities wissen tijdens het instellen van deze definities.
 
 7. Bewerk in het gedeelte **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** de claims met het **pictogram Bewerken** of voeg de claims toe door met **Nieuwe claim toevoegen** het kenmerk van het SAML-token te configureren, zoals wordt weergegeven in de bovenstaande afbeelding. Hierna voert u de volgende stappen uit: 
 
     | Name | Bronkenmerk|
     | ------ | -----------|
-    | role        | Specifieke App-rol |
-    | type        | App-Type |
-    | Bedrijf       | CompanyName |
+    | role        | App-specifieke rol |
+    | type        | App-type |
+    | bedrijf       | CompanyName |
 
     > [!NOTE]
-    > Er zijn geen echte waarden. Deze waarden zijn alleen voor de demo-doel, gebruik de functies van uw organisatie.
+    > Er zijn geen echte waarden. Deze waarden zijn alleen voor demodoeleinden, gebruik uw organisatierollen.
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![installatiekopie](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![installatiekopie](common/new-attribute-details.png)
 
     b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
 
@@ -160,7 +160,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Andromeda, moet u de
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-9. Op de **Andromeda instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+9. Kopieer in de sectie **Andromeda instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -170,37 +170,37 @@ Voor het configureren van Azure AD eenmalige aanmelding met Andromeda, moet u de
 
     c. Afmeldings-URL
 
-### <a name="configure-andromeda-single-sign-on"></a>Configureer Andromeda Single Sign-On
+### <a name="configure-andromeda-single-sign-on"></a>Andromeda Single Sign-On configureren
 
-1. Aanmelding bij uw bedrijf Andromeda site als administrator.
+1. Meld u aan op uw Andromeda-bedrijfssite als beheerder.
 
-2. Klik boven aan de menubalk op **Admin** en navigeer naar **beheer**.
+2. Klik boven aan de menubalk op **Beheerder** en navigeer naar **Beheer**.
 
-    ![Andromeda beheerder](./media/andromedascm-tutorial/tutorial_andromedascm_admin.png)
+    ![Andromeda-beheerder](./media/andromedascm-tutorial/tutorial_andromedascm_admin.png)
 
-3. Aan de linkerkant van de werkbalk onder **Interfaces** sectie, klikt u op **SAML-configuratie**.
+3. Klik aan de linkerkant van de **gereedschapsbalk** onder sectie Interfaces op **SAML-configuratie**.
 
     ![Andromeda saml](./media/andromedascm-tutorial/tutorial_andromedascm_saml.png)
 
-4. Op de **SAML-configuratie** pagina sectie, voert u de volgende stappen uit:
+4. Voer op de pagina **SAML-configuratie** de volgende stappen uit:
 
     ![Andromeda config](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a. Controleer **inschakelen van eenmalige aanmelding met SAML**.
+    a. Schakel **SSO in met SAML**in.
 
-    b. Onder **Andromeda informatie** sectie, Kopieer de **SP identiteit** waarde en plak deze in de **id** tekstvak van **basisconfiguratie van SAML** sectie.
+    b. Kopieer onder de sectie **Andromeda-informatie** de **SP-identiteitswaarde** en plak deze in het **tekstvak Identifier** van de sectie **BasisSAML-configuratie.**
 
-    c. Kopiëren de **consument URL** waarde en plak deze in de **antwoord-URL** tekstvak van **SAML-basisconfiguratie** sectie.
+    c. Kopieer de **URL-waarde van de consument** en plak deze in het tekstvak **van** de URL van **BasisSAML-configuratie.**
 
-    d. Kopieer de **aanmeldings-URL** waarde en plak deze in de **aanmeldings-URL** tekstvak van **SAML-basisconfiguratie** sectie.
+    d. Kopieer de **waarde van de aanmeldings-URL** en plak deze in het tekstvak **URL** van **BasisSAML-configuratie.**
 
-    e. Onder **SAML-identiteitsprovider** sectie, typt u de naam van uw id-provider.
+    e. Typ onder de sectie **SAML Identity Provider** uw IDP-naam.
 
-    f. In de **eenmalige aanmelding op eindpunt** tekstvak, plak de waarde van **aanmeldings-URL** die u hebt gekopieerd vanuit Azure portal.
+    f. Plak in het tekstvak **Voor een teken op eindpunt** de waarde van de **aanmeldings-URL** die u hebt gekopieerd van de Azure-portal.
 
-    g. Open het gedownloade **Base64-gecodeerd certificaat** vanuit Azure portal in Kladblok, plak deze in de **X 509 certificaat** tekstvak.
+    g. Open het gedownloade **Base64-certificaat** van Azure-portal in kladblok en plak het in het tekstvak **X 509-certificaat.**
     
-    h. De volgende kenmerken met de betreffende waarde te vergemakkelijken SSO-aanmelding van Azure AD worden toegewezen. De **gebruikers-ID** kenmerk is vereist voor het aanmelden. Voor het inrichten, **e**, **bedrijf**, **UserType**, en **rol** zijn vereist. In deze sectie definiëren we kenmerken toewijzen (naam en de waarden) die gerelateerd aan die zijn gedefinieerd in Azure portal
+    h. Breng de volgende kenmerken in kaart met de respectievelijke waarde om SSO-aanmelding vanuit Azure AD te vergemakkelijken. Het kenmerk **Gebruikersnaam** is vereist voor het inloggen. Voor inrichten zijn **e-mail,** **bedrijf,** **usertype**en **rol** vereist. In deze sectie definiëren we toewijzingvan kenmerken (naam en waarden) die correleren met de kenmerken die zijn gedefinieerd in azure-portal
 
     ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
 
@@ -222,25 +222,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld `brittasimon@yourcompanydomain.extension`type gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Andromeda.
+In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot Andromeda.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Andromeda**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Andromeda**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Andromeda**.
+2. Selecteer **Andromeda**in de lijst met toepassingen .
 
-    ![De koppeling Andromeda in de lijst met toepassingen](common/all-applications.png)
+    ![De Andromeda-koppeling in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -250,26 +250,26 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-andromeda-test-user"></a>Andromeda testgebruiker maken
+### <a name="create-andromeda-test-user"></a>Andromeda-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Andromeda. Andromeda biedt ondersteuning voor just-in-time-gebruikersinrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in Andromeda bestaat, wordt een nieuw gemaakt nadat verificatie. Als u maken van een gebruiker handmatig wilt, neem dan contact op met [Andromeda Client ondersteuningsteam](https://www.ngcsoftware.com/support/).
+In deze sectie, een gebruiker genaamd Britta Simon is gemaakt in Andromeda. Andromeda ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Andromeda, wordt er een nieuwe gemaakt na verificatie. Als u handmatig een gebruiker wilt maken, neemt u contact op met [het ondersteuningsteam van Andromeda Client.](https://www.ngcsoftware.com/support/)
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Andromeda in het toegangsvenster, moet u worden automatisch aangemeld bij de Andromeda waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de Andromeda-tegel in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Andromeda waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

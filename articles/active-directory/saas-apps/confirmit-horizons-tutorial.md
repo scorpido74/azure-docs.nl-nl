@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Confirmit horizon | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Confirmit horizon.
+title: 'Zelfstudie: Azure Active Directory-integratie met Confirmit Horizons | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Confirmit Horizons.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,46 +16,46 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 6127f149141db275c4b13c25fd6fbd0241b3e404
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67105040"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Zelfstudie: Azure Active Directory-integratie met Confirmit horizon
+# <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Zelfstudie: Azure Active Directory-integratie met Confirmit Horizons
 
-In deze zelfstudie leert u hoe u Confirmit horizon integreren met Azure Active Directory (Azure AD).
-Confirmit horizon integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe u Confirmit Horizons integreert met Azure Active Directory (Azure AD).
+De integratie van Confirmit Horizons met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot Confirmit horizon heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Confirmit horizon (Single Sign-On) inschakelen met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot Confirmit Horizons.
+* U uw gebruikers automatisch laten aanmelden bij Confirmit Horizons (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Confirmit horizon, moet u de volgende items:
+Als u azure AD-integratie wilt configureren met Confirmit Horizons, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Confirmit horizon eenmalige aanmelding ingeschakeld abonnement
+* Bevestig het abonnement met één aanmelding voor Horizons
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Confirmit horizon **SP en IDP** gestart door SSO
+* Confirmit Horizons ondersteunt **SP en IDP** geïnitieerde SSO
 
-* Biedt ondersteuning voor Confirmit horizon **Just In Time** inrichten van gebruikers
+* Confirmit Horizons ondersteunt **Just In Time-gebruikersinrichting**
 
-## <a name="adding-confirmit-horizons-from-the-gallery"></a>Confirmit horizon uit de galerie toe te voegen
+## <a name="adding-confirmit-horizons-from-the-gallery"></a>Confirmit Horizons toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Confirmit horizon in Azure AD, moet u Confirmit horizon uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Confirmit Horizons in Azure AD wilt configureren, moet u Confirmit Horizons vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Confirmit horizon uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om Confirmit Horizons uit de galerie toe te voegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -67,31 +67,31 @@ Voor het configureren van de integratie van Confirmit horizon in Azure AD, moet 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Confirmit horizon**, selecteer **Confirmit horizon** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ in het zoekvak **Confirmit Horizons**, selecteer **Horizonbevestigen** in het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![Confirmit horizon in de lijst met resultaten](common/search-new-app.png)
+     ![Bevestig het Horizonnen in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Confirmit horizon op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Confirmit horizon tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met Confirmit Horizons op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Confirmit Horizons.
 
-Als u wilt configureren en testen van Azure AD eenmalige aanmelding met Confirmit horizon, u nodig hebt voor de volgende bouwstenen:
+Als u Azure AD-singlesign-aan wilt configureren en testen met Confirmit Horizons, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Confirmit horizon Single Sign-On](#configure-confirmit-horizons-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Confirmit horizon testgebruiker](#create-confirmit-horizons-test-user)**  : als u wilt een equivalent van Britta Simon in Confirmit horizon die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Confirmit Horizons Single Sign-On configureren](#configure-confirmit-horizons-single-sign-on)** om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak de testgebruiker Bevestigen horizons](#create-confirmit-horizons-test-user)** - om een tegenhanger van Britta Simon te hebben in Confirmit Horizons die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Confirmit horizon, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Confirmit Horizons te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Confirmit horizon** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Integratie van de Confirmit Horizons-toepassing** de optie Eén **aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,11 +103,11 @@ Voor het configureren van Azure AD eenmalige aanmelding met Confirmit horizon, m
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
+4. Voer in de sectie **BasisSAML-configuratie** de volgende stappen uit als u de toepassing in de **idp-modus** wilt configureren:
 
-    ![Confirmit horizon domein en URL's, eenmalige aanmelding informatie](common/idp-intiated.png)
+    ![Bevestigde informatie over het Horizonnen-domein en URL's met eenmalige aanmelding](common/idp-intiated.png)
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon:
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: 
 
     | |
     |--|
@@ -118,7 +118,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Confirmit horizon, m
     | `https://sso.us.confirmit.com/<UNIQUEID>` |
     | |
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon:
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: 
 
     | |
     |--|
@@ -131,9 +131,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Confirmit horizon, m
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    ![Confirmit horizon domein en URL's, eenmalige aanmelding informatie](common/metadata-upload-additional-signon.png)
+    ![Bevestigde informatie over het Horizonnen-domein en URL's met eenmalige aanmelding](common/metadata-upload-additional-signon.png)
 
-    Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon:
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: 
 
     | |
     |--|
@@ -145,15 +145,15 @@ Voor het configureren van Azure AD eenmalige aanmelding met Confirmit horizon, m
     | | 
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [Confirmit horizon Client ondersteuningsteam](mailto:support@confirmit.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [het ondersteuningsteam van Confirmit Horizons Client](mailto:support@confirmit.com) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-### <a name="configure-confirmit-horizons-single-sign-on"></a>Confirmit horizon eenmalige aanmelding configureren
+### <a name="configure-confirmit-horizons-single-sign-on"></a>Confirmit Horizons Single Sign-On configureren
 
-Het configureren van eenmalige aanmelding op **Confirmit horizon** zijde, moet u voor het verzenden van de **App-Url voor federatieve metagegevens** naar [Confirmit horizon ondersteuningsteam](mailto:support@confirmit.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de **Kant van Confirmit Horizons,** moet u de url van de **metagegevens** van de appfederatie verzenden naar [het ondersteuningsteam van Confirmit Horizons.](mailto:support@confirmit.com) Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -171,26 +171,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon** in.
+    a. Voer In het veld **Naam** **BrittaSimon**in .
   
-    b. In de **gebruikersnaam** veld, typt u **brittasimon@yourcompanydomain.extension**  
+    b. Typ in het veld **Gebruikersnaam****brittasimon@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen tot Confirmit termijn.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Confirmit Horizons.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Confirmit horizon**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Confirmit Horizons**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Confirmit horizon**.
+2. Selecteer in de lijst met toepassingen de optie **Horizon bevestigen**.
 
-    ![De Confirmit horizon-koppeling in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Confirmit Horizons in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -200,27 +200,27 @@ In deze sectie schakelt u Britta Simon gebruiken Azure eenmalige aanmelding door
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+7. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
-### <a name="create-confirmit-horizons-test-user"></a>Confirmit horizon testgebruiker maken
+### <a name="create-confirmit-horizons-test-user"></a>Testgebruiker Bevestigen Horizons maken
 
-In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Confirmit horizon. Confirmit horizon biedt ondersteuning voor just-in-time-gebruikersinrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in Confirmit horizon bestaat, wordt een nieuw gemaakt nadat verificatie.
+In deze sectie wordt een gebruiker genaamd Britta Simon gemaakt in Confirmit Horizons. Confirmit Horizons ondersteunt just-in-time gebruikersinrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Confirmit Horizons, wordt er een nieuwe gemaakt na verificatie.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Confirmit horizon in het toegangsvenster, moet u worden automatisch aangemeld bij de Confirmit horizon waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Horizons bevestigen klikt in het toegangspaneel, moet u automatisch worden aangemeld bij de Confirmit Horizons waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

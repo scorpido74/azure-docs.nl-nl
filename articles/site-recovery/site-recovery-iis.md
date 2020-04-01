@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954671"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478285"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Noodherstel instellen voor een op meerdere niveaus IIS-gebaseerde webtoepassing
 
 Applicatiesoftware is de motor van de bedrijfsproductiviteit in een organisatie. Verschillende webapplicaties kunnen verschillende doeleinden in een organisatie dienen. Sommige toepassingen, zoals toepassingen die worden gebruikt voor salarisverwerking, financiële toepassingen en klantgerichte websites, kunnen van cruciaal belang zijn voor een organisatie. Om productiviteitsverlies te voorkomen, is het belangrijk dat de organisatie deze toepassingen continu operationeel heeft. Wat nog belangrijker is, het hebben van deze toepassingen consistent beschikbaar kan helpen voorkomen dat schade aan het merk of imago van de organisatie.
 
-Kritieke webtoepassingen worden meestal ingesteld als toepassingen met meerdere lagen: het web, de database en de toepassing bevinden zich op verschillende niveaus. De toepassingen kunnen niet alleen over verschillende lagen worden verspreid, maar ook meerdere servers in elke laag gebruiken om het verkeer te laden. Bovendien kunnen de toewijzingen tussen verschillende lagen en op de webserver gebaseerd zijn op statische IP-adressen. Bij failover moeten sommige van deze toewijzingen worden bijgewerkt, vooral als meerdere websites op de webserver zijn geconfigureerd. Als webtoepassingen SSL gebruiken, moet u certificaatbindingen bijwerken.
+Kritieke webtoepassingen worden meestal ingesteld als toepassingen met meerdere lagen: het web, de database en de toepassing bevinden zich op verschillende niveaus. De toepassingen kunnen niet alleen over verschillende lagen worden verspreid, maar ook meerdere servers in elke laag gebruiken om het verkeer te laden. Bovendien kunnen de toewijzingen tussen verschillende lagen en op de webserver gebaseerd zijn op statische IP-adressen. Bij failover moeten sommige van deze toewijzingen worden bijgewerkt, vooral als meerdere websites op de webserver zijn geconfigureerd. Als webtoepassingen TLS gebruiken, moet u certificaatbindingen bijwerken.
 
 Traditionele herstelmethoden die niet zijn gebaseerd op replicatie, omvatten een back-up van verschillende configuratiebestanden, registerinstellingen, bindingen, aangepaste componenten (COM of .NET), inhoud en certificaten. Bestanden worden hersteld via een reeks handmatige stappen. De traditionele herstelmethoden voor het maken van back-ups en het handmatig herstellen van bestanden zijn omslachtig, foutgevoelig en niet schaalbaar. U bijvoorbeeld gemakkelijk vergeten een back-up van certificaten te maken. Na failover, je bent vertrokken met geen andere keuze dan om nieuwe certificaten te kopen voor de server.
 
@@ -118,22 +118,22 @@ Elke site bestaat uit bindende informatie. De bindende informatie omvat het type
 >
 > Als u de sitebinding instelt op **Alle niet-toegewezen,** hoeft u deze bindende nafailer niet bij te werken. Als het IP-adres dat aan een site is gekoppeld, niet wordt gewijzigd na de failover, hoeft u de sitebinding niet bij te werken. (Het bewaren van het IP-adres is afhankelijk van de netwerkarchitectuur en subnetten die aan de primaire en herstelsites zijn toegewezen. Het bijwerken ervan is mogelijk niet haalbaar voor uw organisatie.)
 
-![Schermafbeelding van het instellen van de SSL-binding](./media/site-recovery-iis/sslbinding.png)
+![Schermafbeelding van het instellen van de TLS/SSL-binding](./media/site-recovery-iis/sslbinding.png)
 
 Als u het IP-adres aan een site hebt gekoppeld, werkt u alle sitebindingen bij met het nieuwe IP-adres. Als u de sitebindingen wilt wijzigen, voegt u na groep 3 een [IIS-weblaagupdatescript](https://aka.ms/asr-web-tier-update-runbook-classic) toe in het herstelplan.
 
 #### <a name="update-the-load-balancer-ip-address"></a>Het IP-adres van de load balancer bijwerken
 Als u een virtuele ARR-machine hebt, voegt u na groep 4 een [IIS ARR-failoverscript](https://aka.ms/asr-iis-arrtier-failover-script-classic) toe om het IP-adres bij te werken.
 
-#### <a name="ssl-certificate-binding-for-an-https-connection"></a>SSL-certificaatbinding voor een HTTPS-verbinding
-Een website kan een bijbehorend SSL-certificaat hebben dat zorgt voor een veilige communicatie tussen de webserver en de browser van de gebruiker. Als de website een HTTPS-verbinding heeft en ook een bijbehorende HTTPS-site heeft die is gekoppeld aan het IP-adres van de IIS-server met een SSL-certificaatbinding, moet u een nieuwe sitebinding voor het certificaat toevoegen met het IP-adres van de virtuele machine van IIS na de failover.
+#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>TLS/SSL-certificaatbinding voor een HTTPS-verbinding
+Een website kan een bijbehorend TLS/SSL-certificaat hebben dat zorgt voor een veilige communicatie tussen de webserver en de browser van de gebruiker. Als de website een HTTPS-verbinding heeft en ook een bijbehorende HTTPS-site heeft die bindend is voor het IP-adres van de IIS-server met een TLS/SSL-certificaatbinding, moet u een nieuwe sitebinding voor het certificaat toevoegen met het IP-adres van de virtuele machine van IIS na de failover.
 
-Het SSL-certificaat kan worden afgegeven tegen deze onderdelen:
+Het TLS/SSL-certificaat kan worden uitgegeven tegen deze onderdelen:
 
 * De volledig gekwalificeerde domeinnaam van de website.
 * De naam van de server.
 * Een wildcardcertificaat voor de domeinnaam.  
-* Een IP-adres. Als het SSL-certificaat wordt uitgegeven tegen het IP-adres van de IIS-server, moet een ander SSL-certificaat worden uitgegeven tegen het IP-adres van de IIS-server op de Azure-site. Er moet een extra SSL-binding voor dit certificaat worden gemaakt. Daarom raden we aan om geen SSL-certificaat te gebruiken dat is uitgegeven tegen het IP-adres. Deze optie wordt minder veel gebruikt en zal binnenkort worden afgeschaft in overeenstemming met nieuwe certificaat autoriteit / browser forum wijzigingen.
+* Een IP-adres. Als het TLS/SSL-certificaat wordt uitgegeven tegen het IP-adres van de IIS-server, moet een ander TLS/SSL-certificaat worden uitgegeven tegen het IP-adres van de IIS-server op de Azure-site. Er moet een extra TLS-binding voor dit certificaat worden gemaakt. Daarom raden we aan om geen TLS/SSL-certificaat te gebruiken dat is uitgegeven tegen het IP-adres. Deze optie wordt minder veel gebruikt en zal binnenkort worden afgeschaft in overeenstemming met nieuwe certificaat autoriteit / browser forum wijzigingen.
 
 #### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>De afhankelijkheid tussen de weblaag en de toepassingslaag bijwerken
 Als u een toepassingsspecifieke afhankelijkheid hebt die is gebaseerd op het IP-adres van de virtuele machines, moet u deze afhankelijkheid na failover bijwerken.

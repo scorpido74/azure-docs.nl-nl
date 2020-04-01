@@ -15,16 +15,16 @@ ms.date: 04/20/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 5330c99f4d42f591944ddc5c58ac98bea6387da5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74278153"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Zelfstudie: regels voor Azure CDN-caching instellen
 
 > [!NOTE] 
-> Cache regels zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -profielen. Voor **Azure CDN van micro soft** -profielen moet u de [Standard Rules engine](cdn-standard-rules-engine-reference.md) gebruiken voor **Azure CDN Premium van Verizon** -profielen. u moet de [regel engine van Verizon Premium](cdn-rules-engine.md) gebruiken in de portal **beheren** voor vergelijk bare functionaliteit.
+> Caching-regels zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en Azure **CDN Standard van Akamai-profielen.** Voor **Azure CDN van Microsoft-profielen** moet u de [standaardregelsengine](cdn-standard-rules-engine-reference.md) voor **Azure CDN Premium van Verizon-profielen** gebruiken, moet u de [Verizon Premium-regelsengine](cdn-rules-engine.md) in de portal **Beheren** gebruiken voor vergelijkbare functionaliteit.
  
 
 In deze zelfstudie wordt beschreven hoe u regels voor Azure CDN-caching (Content Delivery Network) kunt gebruiken om het standaardgedrag van de cacheverlooptijd in te stellen of te wijzigen, zowel globaal als aangepast, zoals een URL-pad en bestandsextensie. Azure CDN biedt twee typen regels voor opslaan in cache:
@@ -75,7 +75,7 @@ U maakt als volgt een globale regel voor opslaan in cache:
 
 U maakt als volgt een aangepaste regel voor opslaan in cache:
 
-1. Stel onder **Aangepaste regels voor opslaan in cache** **Voorwaarde voor overeenkomst** in op **Pad** en **Overeenkomende waarde** op `/images/*.jpg`.
+1. Stel onder **Aangepaste regels voor opslaan in cache****Voorwaarde voor overeenkomst** in op **Pad** en **Overeenkomende waarde** op `/images/*.jpg`.
     
 2. Stel **Cachinggedrag** in op **Overschrijven** en voer in het veld **Dagen** 30 in.
        
@@ -92,7 +92,7 @@ In de voorgaande stappen hebt u regels voor opslaan in cache gemaakt. Als u deze
 
 2. Selecteer in het linkerdeelvenster onder Instellingen de optie **Regels voor opslaan in cache**.
 
-3. Stel onder **Globale regels voor opslaan in cache** **Cachinggedrag** in op **Niet ingesteld**.
+3. Stel onder **Globale regels voor opslaan in cache****Cachinggedrag** in op **Niet ingesteld**.
  
 4. Selecteer onder **Aangepaste regels voor opslaan in cache** het selectievakje naast de regel die u wilt verwijderen.
 
@@ -103,7 +103,7 @@ In de voorgaande stappen hebt u regels voor opslaan in cache gemaakt. Als u deze
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > - De pagina Regels voor opslaan in cache openen.

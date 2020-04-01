@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 48cb1ca1427ece0ee30a124b20d3918f1ace47eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4944fd36359f35ff516aa149b357a7cda042fdae
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78274137"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477043"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Ondersteuning voor natuurlijke taal voor Azure Cognitive Services
 
@@ -28,9 +28,9 @@ Deze cognitieve services zijn taalagnostisch en hebben geen beperkingen op basis
 
 ## <a name="vision"></a>Vision
 
-* [Computer Visie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/faq)
+* [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/faq)
 * [Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
-
+* [Ink Recognizer](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/language-support)
 ## <a name="speech"></a>Speech
 
 * [Aangepaste spraak](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/customspeech-how-to-topics/cognitive-services-custom-speech-change-locale)
@@ -50,10 +50,10 @@ Deze cognitieve services zijn taalagnostisch en hebben geen beperkingen op basis
 
 * [Bing Webzoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/supported-countries-markets)
 * [Bing Afbeeldingen zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/supported-countries-markets)
-* [Bing Nieuws Zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/supported-countries-markets)
+* [Zoeken in Bing Nieuws](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/supported-countries-markets)
 * [Bing Automatische suggesties](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest/bing-autosuggest-supported-languages)
-* [Bing Visueel zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/supported-countries-markets)
-* [Aangepast zoeken met Bing](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/supported-countries-markets)
+* [Bing Visuele zoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/supported-countries-markets)
+* [Bing Aangepaste zoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/supported-countries-markets)
 
 ## <a name="decision"></a>Besluit
 

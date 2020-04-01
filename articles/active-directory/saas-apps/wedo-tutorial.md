@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met WEDO | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met WEDO | Microsoft Documenten'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en WEDO.
 services: active-directory
 documentationCenter: na
@@ -16,75 +16,75 @@ ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ce7ffb389a585511883c3b35de3773ae37342b8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76992371"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met WEDO
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>Zelfstudie: Azure Active Directory single sign-on (SSO) integratie met WEDO
 
-In deze zelf studie leert u hoe u WEDO integreert met Azure Active Directory (Azure AD). Wanneer u WEDO integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u WEDO integreert met Azure Active Directory (Azure AD). Wanneer u WEDO integreert met Azure AD, u het:
 
-* Controle in azure AD die toegang heeft tot WEDO.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij WEDO met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheer in Azure AD die toegang heeft tot WEDO.
+* Stel uw gebruikers in staat om automatisch te worden aangemeld bij WEDO met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over de integratie van de SaaS-app met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+Om aan de slag te gaan, heb je de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* WEDO-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO). Neem contact op met het [ondersteunings team van WEDO](mailto:info@wedo.swiss) om een SSO-abonnement op te halen.
+* Een Azure AD-abonnement Wanneer je nog geen abonnement hebt kun je gratis een [account aanmaken.](https://azure.microsoft.com/free/)
+* WeDO single sign-on (SSO) ingeschakeld abonnement. Neem contact op met [wedo client support team](mailto:info@wedo.swiss) om een SSO abonnement te krijgen.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u Azure AD SSO in een testomgeving.
 
-* WEDO ondersteunt SSO die door **SP en IDP** is geïnitieerd
+* WEDO steunt **SP en IDP** geïnitieerd sso
 
-* [Zodra u de WEDO hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* [Zodra u de WEDO configureert, u sessiecontroles afdwingen, die exfiltratie en infiltratie van de gevoelige gegevens van uw organisatie in realtime beschermen. Sessiebesturingselementen zijn van voorwaardelijke toegang. Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-wedo-from-the-gallery"></a>WEDO toevoegen uit de galerie
+## <a name="adding-wedo-from-the-gallery"></a>WeDO toevoegen vanuit de galerie
 
-Als u de integratie van WEDO in azure AD wilt configureren, moet u WEDO uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van WEDO in Azure AD wilt configureren, moet u WEDO vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **WEDO** in het zoekvak.
-1. Selecteer **WEDO** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory-service.**
+1. Navigeer naar **Ondernemingstoepassingen** en selecteer **Alle toepassingen**.
+1. Als u nieuwe toepassingen wilt toevoegen, selecteert u **Nieuwe toepassing**.
+1. Typ **WEDO** in het zoekvak in de sectie **Toevoegen in de galerie.**
+1. Selecteer **WEDO** in het deelvenster Resultaten en voeg de app toe. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-wedo"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor WEDO
+## <a name="configure-and-test-azure-ad-single-sign-on-for-wedo"></a>Azure AD-aanmelding voor WEDO configureren en testen
 
-Azure AD SSO met WEDO configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in WEDO.
+Azure AD SSO configureren en testen met WEDO met behulp van een testgebruiker genaamd **B.Simon**. Als SSO kan werken, moet u een koppelingsrelatie tot stand brengen tussen een Azure AD-gebruiker en de gerelateerde gebruiker in WEDO.
 
-Als u Azure AD SSO wilt configureren en testen met WEDO, voltooit u de volgende bouw stenen:
+Als u Azure AD SSO wilt configureren en testen met WEDO, voert u de volgende bouwstenen in:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[WEDO SSO configureren](#configure-wedo-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak een WEDO-test gebruiker](#create-wedo-test-user)** -om een equivalent van B. Simon in WEDO te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** - zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** - om Azure AD-enkele aanmelding te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** - om B.Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Wedo SSO configureren](#configure-wedo-sso)** - om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+    * **[Wedo-testgebruiker maken](#create-wedo-test-user)** - om een tegenhanger van B.Simon in WEDO te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Test SSO](#test-sso)** - om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om Azure AD SSO in te schakelen in de Azure-portal.
 
-1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **WEDO** de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/)op de **wedo-pagina** voor applicatie-integratie de sectie **Beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer **SAML**op de pagina **Eén aanmeldingsmethode** selecteren .
+1. Klik op de pagina **Eén aanmelding instellen met SAML** op het pictogram bewerken/pen voor **BasisSAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+1. Voer in de sectie **BasisSAML-configuratie** de waarden voor de volgende velden in als u de toepassing in de **idp-modus** wilt configureren:
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.wedo.swiss/sp/acs`
+    a. Typ **in** het tekstvak Id een URL met het volgende patroon:`https://<SUBDOMAIN>.wedo.swiss/sp/acs`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.wedo.swiss/sp/acs`
 
@@ -93,116 +93,116 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.wedo.swiss/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team van WEDO-clients](mailto:info@wedo.swiss) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [wedo client support team](mailto:info@wedo.swiss) om deze waarden te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. De WEDO-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. WeDO-toepassing verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     | Name | Bronkenmerk|
     | ------------ | --------- |
-    | e-mail | Gebruiker. e-mail adres |
-    | voornaam | User. firstName |
-    | achternaam | User. lasttName |
-    | Gebruikersnaam | User. userName |
+    | e-mail | user.email |
+    | voornaam | user.firstName |
+    | achternaam | user.lasttName |
+    | userName | user.userName |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Federation Metadata XML** en selecteer **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Op de sectie **WEDO instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. Kopieer in de sectie **WeDO instellen** de juiste URL(s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie maakt u een testgebruiker in de Azure-portal genaamd B.Simon.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeelvenster in de Azure-portal **Azure Active Directory,** selecteer **Gebruikers**en selecteer **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Voer **in** de eigenschappen gebruiker de volgende stappen uit:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Voer **in** het veld username@companydomain.extensionGebruikersnaam de . Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
+   1. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan WEDO.
+In deze sectie u B.Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot WEDO.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **WEDO**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**en selecteer **Alle toepassingen**.
+1. Selecteer **WEDO**in de lijst met toepassingen .
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het dialoogvenster **Toewijzing toevoegen.**
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer **B.Simon** in het dialoogvenster **Gebruikers en groepen** in de lijst Gebruikers en klik vervolgens op de knop **Selecteren** onder aan het scherm.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
+1. Klik **in** het dialoogvenster Toewijzing toevoegen op de knop **Toewijzen.**
 
 ## <a name="configure-wedo-sso"></a>WEDO SSO configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in WEDO.
+Volg deze stappen om Azure AD SSO in WEDO in te schakelen.
 
-1. Meld u aan bij [WEDO](https://login.wedo.swiss/). U moet de **rol beheerder**hebben.
-1. Selecteer in de profiel instellingen de menu **verificatie** in de sectie **netwerk instellingen**.
-1. Voer de volgende stappen uit op de pagina **SAML-verificatie** :
+1. Log [hier](https://login.wedo.swiss/)in U moet **een beheerdersrol**hebben.
+1. Selecteer in de profielinstellingen het menu **Verificatie** in de sectie **Netwerkinstellingen**.
+1. Voer op de pagina **SAML-verificatie** de volgende stappen uit:
 
-   ![Koppeling voor SAML-verificatie](media/wedo-tutorial/network-security-authentification.png)
+   ![KOPPELING SAML-verificatie](media/wedo-tutorial/network-security-authentification.png)
 
-   a. Schakel **SAML-verificatie**in.
+   a. **SAML-verificatie**inschakelen .
 
-   b. Selecteer het tabblad **meta gegevens van de identiteits provider (XML)** .
+   b. Selecteer het tabblad **Metagegevens van de identiteitsprovider (XML).**
 
-   c. Open het gedownloade **XML-bestand met federatieve meta gegevens** van Azure Portal naar Klad blok en kopieer de inhoud van XML met meta gegevens en plak het in het tekstvak **X. 509-certificaat** .
+   c. Open de gedownloade **Federation Metadata XML** van Azure portal in Notepad en kopieer de inhoud van metagegevens XML en plak deze in het tekstvak van **x.509-certificaat.**
 
    d. Klik op **Opslaan**
 
-### <a name="create-wedo-test-user"></a>WEDO-test gebruiker maken
+### <a name="create-wedo-test-user"></a>Wedo-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in WEDO met de naam Bob Simon. Informatie moet overeenkomen met *een Azure AD-test gebruiker maken*.
+In deze sectie maakt u een testgebruiker in WEDO genaamd Bob Simon. Informatie moet overeenkomen met *een Azure AD-testgebruiker maken.*
 
-1. Selecteer **gebruikers** uit de sectie *netwerk instellingen* van de profiel instelling in WEDO.
-1. Klik op **Gebruiker toevoegen**.
-1. Vul in het pop-upvenster gebruiker toevoegen de gegevens van de gebruiker in
+1. Selecteer **Gebruikers** in de sectie *Netwerkinstellingen* in de instelling Profiel in WEDO.
+1. Klik **op Gebruiker toevoegen**.
+1. Vul in de pop-up Gebruiker toevoegen de gegevens van de gebruiker in
 
-    a. Voor naam `B`.
+    a. Voornaam. `B`
 
-    b. Achternaam `Simon`.
+    b. `Simon`Achternaam.
 
-    c. Voer de e-mail `username@companydomain.extension`in. Bijvoorbeeld `B.Simon@contoso.com`. Het is verplicht om e-mail te hebben met hetzelfde domein als de korte naam van uw bedrijf.
+    c. Voer de `username@companydomain.extension`e-mail in . Bijvoorbeeld `B.Simon@contoso.com`. Het is verplicht om e-mail te hebben met hetzelfde domein als uw bedrijfskorte naam.
 
-    d. Gebruikers type `User`.
+    d. Gebruikerstype `User`.
 
-    e. Klik op **Gebruiker maken**.
+    e. Klik **op Gebruiker maken**.
 
-    f. Klik op de pagina *teams selecteren* op **Opslaan**.
+    f. Klik *op* de pagina Teams selecteren op **Opslaan**.
 
-    g.  Klik op de pagina *gebruikers uitnodigen* op **Ja**.
+    g.  Klik *op* de pagina Gebruiker uitnodigen op **Ja**.
 
-1. De gebruiker valideren met behulp van de koppeling die u per e-mail hebt ontvangen
+1. De gebruiker valideren met de koppeling die u per e-mail hebt ontvangen
 
 > [!NOTE]
-> Als u een valse gebruiker wilt maken (e-mail hierboven is niet in uw netwerk aanwezig), neemt u contact op met [onze ondersteuning](mailto:info@wedo.swiss) om de gebruiker * te valideren.
+> Als u een nepgebruiker wilt maken (e-mail hierboven bestaat niet in uw netwerk), neemt u contact op met [onze ondersteuning](mailto:info@wedo.swiss) om de gebruiker te valideren*.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Test SSO
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel WEDO in het toegangs venster klikt, moet u automatisch worden aangemeld bij de WEDO waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de WEDO-tegel in het access panel klikt, moet u automatisch worden aangemeld bij de WEDO waarvoor u SSO instelt. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer WEDO met Azure AD](https://aad.portal.azure.com/)
+- [WeDO uitproberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [WEDO beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Hoe wedo te beschermen met geavanceerde zichtbaarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

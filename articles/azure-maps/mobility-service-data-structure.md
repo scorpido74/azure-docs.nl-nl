@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 30696c5dcb3353ea468aa78dbc107dae4d292edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334448"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478703"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Gegevensstructuren in Azure Maps Mobility Service
 
@@ -31,13 +31,13 @@ De `metroID` ID van een metrogebied kan worden gebruikt om de [Get Metro Area In
 
 ## <a name="stop-ids"></a>ID's stoppen
 
-Transitstops kunnen worden aangeduid met twee typen id's, de [GFTS-id (General Transit Feed Specification)](https://gtfs.org/) en de stop-ID van Azure Maps. De GFTS-id wordt de stopKey genoemd en de stop-id van Azure Maps wordt stopID genoemd. Wanneer u vaak verwijst naar transitstops, wordt u aangemoedigd om de stop-ID van Azure Maps te gebruiken. stopID is stabieler en waarschijnlijk hetzelfde blijven zolang de fysieke stop bestaat. De GTFS-stop-ID wordt vaker bijgewerkt. GTFS-stop-ID kan bijvoorbeeld worden bijgewerkt per verzoek van de GTFS-provider of wanneer een nieuwe GTFS-versie wordt uitgebracht. Hoewel de fysieke stop geen verandering had, kan de GTFS-stop-ID veranderen.
+Transitstops kunnen worden aangeduid met twee typen id's, de [GFTS-id (General Transit Feed Specification)](http://gtfs.org/) en de stop-ID van Azure Maps. De GFTS-id wordt de stopKey genoemd en de stop-id van Azure Maps wordt stopID genoemd. Wanneer u vaak verwijst naar transitstops, wordt u aangemoedigd om de stop-ID van Azure Maps te gebruiken. stopID is stabieler en waarschijnlijk hetzelfde blijven zolang de fysieke stop bestaat. De GTFS-stop-ID wordt vaker bijgewerkt. GTFS-stop-ID kan bijvoorbeeld worden bijgewerkt per verzoek van de GTFS-provider of wanneer een nieuwe GTFS-versie wordt uitgebracht. Hoewel de fysieke stop geen verandering had, kan de GTFS-stop-ID veranderen.
 
 Om te beginnen u doorvoerstops in de buurt aanvragen met [de TransitAPI in de buurt](https://aka.ms/AzureMapsMobilityNearbyTransit)in de buurt.
 
 ## <a name="line-groups-and-lines"></a>Lijngroepen en -lijnen
 
-Mobility Service maakt gebruik van een parallel gegevensmodel voor lijnen en lijngroepen. Dit model wordt gebruikt om beter om te gaan met wijzigingen die zijn overgenomen van [GTFS-routes](https://gtfs.org/) en de reisgegevens.
+Mobility Service maakt gebruik van een parallel gegevensmodel voor lijnen en lijngroepen. Dit model wordt gebruikt om beter om te gaan met wijzigingen die zijn overgenomen van [GTFS-routes](http://gtfs.org/) en de reisgegevens.
 
 
 ### <a name="line-groups"></a>Lijngroepen

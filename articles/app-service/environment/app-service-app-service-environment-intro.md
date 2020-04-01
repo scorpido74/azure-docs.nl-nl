@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687365"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478725"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Inleiding tot App Service Environment v1
 
@@ -48,7 +48,7 @@ Alle compute resources in een App Service-omgeving zijn uitsluitend gewijd aan �
 
 Een App Service-omgeving bestaat uit een front-end compute resource pool, evenals een tot drie werknemer compute resource pools.
 
-De front-end pool bevat compute resources die verantwoordelijk zijn voor SSL-beëindiging en automatische taakverdeling van app-aanvragen binnen een App Service-omgeving.
+De front-end pool bevat compute resources die verantwoordelijk zijn voor TLS-beëindiging en automatische taakverdeling van app-aanvragen binnen een App Service-omgeving.
 
 Elke groep werknemers bevat rekenresources die zijn toegewezen aan [App-serviceplannen][AppServicePlan], die op hun beurt een of meer Azure App Service-apps bevatten.  Aangezien er maximaal drie verschillende werknemersgroepen in een App-serviceomgeving kunnen zijn, hebt u de flexibiliteit om verschillende rekenresources voor elke werknemersgroep te kiezen.  
 

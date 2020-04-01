@@ -1,84 +1,69 @@
 ---
 title: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics
-description: In deze zelfstudie voert u geavanceerde querymechanismen uit met door de gebruiker gedefinieerde JavaScript-functies
-author: rodrigoamicrosoft
+description: Dit artikel is een inleiding tot JavaScript-door de gebruiker gedefinieerde functies in Stream Analytics.
+author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
-ms.date: 04/01/2018
-ms.openlocfilehash: feb0361b460f5b18b5a8aaa585332e2179023458
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.date: 03/23/2020
+ms.openlocfilehash: 58d750b47f3f6a2bcfbf23399ca249131e7876ae
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851177"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80235396"
 ---
-# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Zelfstudie: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics
+# <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>JavaScript-door de gebruiker gedefinieerde functies in Azure Stream Analytics
  
-Azure Stream Analytics ondersteunt door de gebruiker gedefinieerde functies die zijn geschreven in JavaScript. Met de uitgebreide set van **String**-, **RegExp**-, **Math**-, **Array**- en **Date**-methoden van JavaScript kunt u gemakkelijker complexe gegevenstransformaties maken met Stream Analytics-taken.
+Azure Stream Analytics ondersteunt door de gebruiker gedefinieerde functies die zijn geschreven in JavaScript. Met de uitgebreide set **reeks tekenreeks-,** **RegExp-,** **Math-,** **Array-** en **Date-methoden** die JavaScript biedt, worden complexe gegevenstransformaties met Stream Analytics-taken gemakkelijker te maken.
 
-In deze zelfstudie leert u het volgende:
+## <a name="overview"></a>Overzicht
 
-> [!div class="checklist"]
-> * Een door de gebruiker gedefinieerde JavaScript-functie definiëren
-> * De functie toevoegen aan de portal
-> * Een query definiëren die de functie uitvoert
-
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-
-## <a name="javascript-user-defined-functions"></a>Door de gebruiker gedefinieerde JavaScript-functies
-Door de gebruiker gedefinieerde JavaScript-functies ondersteunen staatloze, scalaire rekenfuncties die geen externe verbinding nodig hebben. De resultaatwaarde van een functie mag alleen een scalaire (enkelvoudige) waarde zijn. Nadat u een door de gebruiker gedefinieerde JavaScript-functie aan een taak hebt toegevoegd, kunt u de functie overal in de query als een ingebouwde scalaire functie gebruiken.
+JavaScript-door de gebruiker gedefinieerde functies ondersteunen stateloze, alleen compute-scalaire functies waarvoor geen externe connectiviteit vereist is. De resultaatwaarde van een functie mag alleen een scalaire (enkelvoudige) waarde zijn. Nadat u een door de gebruiker gedefinieerde JavaScript-functie aan een taak hebt toegevoegd, kunt u de functie overal in de query als een ingebouwde scalaire functie gebruiken.
 
 Hier volgen enkele scenario's waarin door de gebruiker gedefinieerde JavaScript-functies mogelijk interessant kunnen zijn:
 * Het parseren en manipuleren van tekenreeksen die functies met reguliere expressies bevatten, bijvoorbeeld **Regexp_Replace()** en **Regexp_Extract()**
 * Het (de)coderen van gegevens, bijvoorbeeld bij een conversie van binair naar hexadecimaal
-* Het uitvoeren van rekenkundige berekeningen met **Math**-functies van JavaScript
-* Het uitvoeren van matrixbewerkingen zoals sorteren, samenvoegen, zoeken en vullen
+* Mathematic-berekeningen uitvoeren met **JavaScript-wiskundige** functies
+* Arraybewerkingen uitvoeren zoals sorteren, lid worden, zoeken en invullen
 
-Hier volgen enkele dingen die u met een door de gebruiker gedefinieerde JavaScript-functie niet kunt doen in Stream Analytics:
-* Externe REST-eindpunten aanroepen, bijvoorbeeld, het uitvoeren van een reverse IP-lookup of het ophalen van referentiegegevens uit een externe bron
+Hier volgen enkele dingen die u niet doen met een JavaScript-functie die door de gebruiker is gedefinieerd in Stream Analytics:
+* Roep externe REST-eindpunten uit, bijvoorbeeld door reverse IP-lookup te doen of referentiegegevens uit een externe bron te halen
 * Serialisatie of deserialisatie van gebeurtenissen met aangepaste indeling uitvoeren voor invoer/uitvoer
 * Aangepaste combinaties maken
 
-Hoewel functies als **Date.GetDate()** of **Math.random()** niet zijn geblokkeerd in de definitie van functies, kunt u ze beter niet gebruiken. Deze functies resulteren **niet** telkens wanneer u ze aanroept hetzelfde resultaat. Bovendien houdt de Azure Stream Analytics-service geen logboek bij van functieaanroepen en de geretourneerde resultaten. Als een functie verschillende resultaten voor dezelfde gebeurtenissen retourneert, wordt herhaalbaarheid niet gegarandeerd wanneer een taak door u of door de Stream Analytics-service opnieuw wordt gestart.
+Hoewel functies zoals **Date.GetDate()** of **Math.random()** niet worden geblokkeerd in de definitie van functies, moet u voorkomen dat u ze gebruikt. Deze functies geven **niet** hetzelfde resultaat elke keer dat u ze belt en de Azure Stream Analytics-service houdt geen logboek bij van functieaanroepen en geretourneerde resultaten. Als een functie een ander resultaat op dezelfde gebeurtenissen retourneert, is herhaalbaarheid niet gegarandeerd wanneer een taak opnieuw wordt gestart door u of door de Stream Analytics-service.
 
-## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Een door de gebruiker gedefinieerde JavaScript-functie toevoegen in Azure Portal
-Voer de volgende stappen uit om een door de gebruiker gedefinieerde Java script-functie te maken onder een bestaande Stream Analytics-taak:
+## <a name="add-a-javascript-user-defined-function-to-your-job"></a>Een door javascript-gebruiker gedefinieerde functie toevoegen aan uw taak
 
 > [!NOTE]
-> Deze stappen werken aan de Stream Analytics taken die zijn geconfigureerd om te worden uitgevoerd in de Cloud. Als uw Stream Analytics-taak is geconfigureerd om te worden uitgevoerd op Azure IoT Edge, gebruikt u in plaats daarvan Visual Studio en [schrijft C#u de door de gebruiker gedefinieerde functie met ](stream-analytics-edge-csharp-udf.md).
+> Deze stappen werken op de Stream Analytics-taken die zijn geconfigureerd om in de cloud uit te voeren. Als uw Stream [Analytics-taak](stream-analytics-edge-csharp-udf.md)is geconfigureerd om uit te voeren op Azure IoT Edge, gebruikt u Visual Studio en schrijft u de door de gebruiker gedefinieerde functie met C# .
 
-1.  Zoek uw Stream Analytics-taak in Azure Portal.
+Als u een JavaScript-gebruikersgedefinieerde functie wilt maken in uw functie Stream Analytics, selecteert u **Functies** onder **Taaktopologie**. Selecteer vervolgens **JavaScript UDF** in het vervolgkeuzemenu **+Toevoegen.** 
 
-2. Selecteer **functies**onder de kop **taak topologie** . Er wordt een lege functielijst weergegeven.
+![JavaScript UDF toevoegen](./media/javascript/stream-analytics-jsudf-add.png)
 
-3.  Als u een nieuwe door de gebruiker gedefinieerde functie wilt maken, selecteert u **+ toevoegen**.
+U moet vervolgens de volgende eigenschappen opgeven en **Opslaan**selecteren.
 
-4.  Selecteer in de blade **Nieuwe functie** bij **Functietype** de optie **JavaScript**. In de editor wordt een standaardfunctiesjabloon weergegeven.
+|Eigenschap|Beschrijving|
+|--------|-----------|
+|Functiealias|Voer een naam in om de functie in uw query aan te roepen.|
+|Uitvoertype|Tekst die wordt geretourneerd door uw JavaScript-door de gebruiker gedefinieerde functie naar uw Stream Analytics-query.|
+|Functiedefinitie|Implementatie van uw JavaScript-functie die wordt uitgevoerd telkens wanneer uw UDF wordt aangeroepen vanuit uw zoekopdracht.|
 
-5.  Voer bij **UDF-alias** **hex2Int** in en verander de functie-implementatie als volgt:
+## <a name="test-and-troubleshoot-javascript-udfs"></a>JavaScript UDF's testen en oplossen 
 
-    ```javascript
-    // Convert Hex value to integer.
-    function hex2Int(hexValue) {
-        return parseInt(hexValue, 16);
-    }
-    ```
+U uw JavaScript UDF-logica in elke browser testen en debuggen. Het opsporen en testen van de logica van deze door de gebruiker gedefinieerde functies wordt momenteel niet ondersteund in de Stream Analytics-portal. Zodra de functie werkt zoals verwacht, u deze toevoegen aan de streamanalytics-taak zoals hierboven vermeld en deze vervolgens rechtstreeks vanuit uw query aanroepen. U uw querylogica testen met JavaScript UDF met behulp van [Stream Analytics-hulpprogramma's voor Visual Studio.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)
 
-6.  Selecteer **Opslaan**. Uw functie wordt weergegeven in de lijst met functies.
-7.  Selecteer de nieuwe **hex2Int**-functie en controleer de functiedefinitie. Alle functies hebben een functiealias waaraan het voorvoegsel **UDF** is toegevoegd. U moet *het voorvoegsel opnemen* wanneer u de functie aanroept in de Stream Analytics-query. In dat geval roept u **UDF.hex2Int** aan.
-
-## <a name="testing-javascript-udfs"></a>Java script-Udf's testen 
-U kunt uw Java script UDF-logica testen en fouten opsporen in een browser. Fout opsporing en testen van de logica van deze door de gebruiker gedefinieerde functies wordt momenteel niet ondersteund in de Stream Analytics Portal. Zodra de functie werkt zoals verwacht, kunt u deze toevoegen aan de Stream Analytics-taak zoals hierboven wordt vermeld en vervolgens rechtstreeks vanuit uw query aanroepen.
+JavaScript-runtime-fouten worden beschouwd als onherstelbaar en worden weergegeven via het activiteitenlogboek. U haalt het logboek op door in Azure Portal naar uw project te gaan en **Activiteitenlogboek** te selecteren.
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Een door de gebruiker gedefinieerde JavaScript-functie in een query aanroepen
 
-1. Selecteer in de query-editor onder de kop **taak topologie** de optie **query**.
-2.  Bewerk de query en roep de door de gebruiker gedefinieerde functie als volgt aan:
+U uw JavaScript-functie eenvoudig aanroepen in uw query met behulp van de functiealias die vooraf is gekoppeld **aan udf.** Hier is een voorbeeld van een JavaScript UDF die hexadecimale waarden omzet naar een geheel getal dat wordt aangeroepen in een Stream Analytics-query.
 
-    ```SQL
+```SQL
     SELECT
         time,
         UDF.hex2Int(offset) AS IntOffset
@@ -86,13 +71,10 @@ U kunt uw Java script UDF-logica testen en fouten opsporen in een browser. Fout 
         output
     FROM
         InputStream
-    ```
-
-3.  Als u het voorbeeldgegevensbestand wilt uploaden, klik dan met de rechtermuisknop op de taakinvoer.
-4.  Als u de query wilt testen, selecteert u **Testen**.
-
+```
 
 ## <a name="supported-javascript-objects"></a>Ondersteunde JavaScript-objecten
+
 Door de gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics ondersteunen standaard ingebouwde JavaScript-objecten. Zie [Algemene objecten](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects) voor een lijst van deze objecten.
 
 ### <a name="stream-analytics-and-javascript-type-conversion"></a>Typeconversie van Stream Analytics en JavaScript
@@ -109,9 +91,7 @@ Record | Object
 Matrix | Matrix
 NULL | Null
 
-
 Hier volgen JavaScript-naar-Stream Analytics-conversies:
-
 
 Javascript | Stream Analytics
 --- | ---
@@ -123,14 +103,12 @@ Matrix | Matrix
 Null, niet gedefinieerd | NULL
 Elk ander type (bijvoorbeeld een functie of fout) | Niet ondersteund (resulteert in een runtime-fout)
 
-Java script-taal is hoofdletter gevoelig en behuizing van de object velden in Java script-code moeten overeenkomen met de behuizing van de velden in de binnenkomende gegevens. Houd er rekening mee dat taken met compatibiliteits niveau 1,0 velden van SQL SELECT-instructie worden geconverteerd naar kleine letters. Onder compatibiliteits niveau 1,1 en hoger, hebben velden uit de SELECT-instructie hetzelfde hoofdletter gebruik dat is opgegeven in de SQL-query.
-
-## <a name="troubleshooting"></a>Problemen oplossen
-JavaScript-runtime-fouten worden beschouwd als onherstelbaar en worden weergegeven via het activiteitenlogboek. U haalt het logboek op door in Azure Portal naar uw project te gaan en **Activiteitenlogboek** te selecteren.
+JavaScript-taal is hoofdlettergevoelig en de behuizing van de objectvelden in JavaScript-code moet overeenkomen met de behuizing van de velden in de binnenkomende gegevens. Taken met compatibiliteitsniveau 1.0 worden van SQL SELECT-instructie omgezet in kleine letters. Onder compatibiliteitsniveau 1.1 en hoger hebben velden van de select-instructie dezelfde behuizing als opgegeven in de SQL-query.
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Andere door de gebruiker gedefinieerde JavaScript-functiepatronen
 
 ### <a name="write-nested-json-to-output"></a>Geneste JSON naar uitvoer schrijven
+
 Als u een follow-up verwerkingsstap hebt die de uitvoer van een Stream Analytics-taak gebruikt als invoer, als die invoer een JSON-indeling vereist, kunt u een JSON-tekenreeks naar uitvoer schrijven. In het volgende voorbeeld wordt de functie **JSON.stringify()** aangeroepen om alle naam-/waarde-paren van de invoer te verpakken en als één tekenreekswaarde in de uitvoer te schrijven.
 
 **Definitie van een door de gebruiker gedefinieerde JavaScript-functie:**
@@ -154,19 +132,7 @@ FROM
     input PARTITION BY PARTITIONID
 ```
 
-## <a name="clean-up-resources"></a>Resources opschonen
-
-Wanneer u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep, de streamingtaak en alle gerelateerde resources. Door de taak te verwijderen, voorkomt u dat de streaming-eenheden die door de taak worden verbruikt, in rekening worden gebracht. Als u denkt dat u de taak in de toekomst nog gaat gebruiken, kunt u deze stoppen en later opnieuw starten wanneer dat nodig is. Als u deze taak niet meer gaat gebruiken, verwijdert u alle resources die in deze snelstart zijn gemaakt. Daarvoor voert u de volgende stappen uit:
-
-1. Klik in het menu aan de linkerkant in Azure Portal op **Resourcegroepen** en klik vervolgens op de resource die u hebt gemaakt.  
-2. Klik op de pagina van uw resourcegroep op **Verwijderen**, typ de naam van de resource die u wilt verwijderen in het tekstvak en klik vervolgens op **Verwijderen**.
-
-## <a name="get-help"></a>Help opvragen
-Meer hulp vindt u mogelijk op het [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
-
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een Stream Analytics-taak gemaakt waarmee een eenvoudige door de gebruiker gedefinieerde JavaScript-functie wordt uitgevoerd. Voor meer informatie over Stream Analytics gaat u verder met de artikelen over realtime scenario's:
-
-> [!div class="nextstepaction"]
-> [Analyse van realtime Twitter-gevoel in Azure Stream Analytics](stream-analytics-twitter-sentiment-analysis-trends.md)
+* [Machine Learning UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
+* [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)

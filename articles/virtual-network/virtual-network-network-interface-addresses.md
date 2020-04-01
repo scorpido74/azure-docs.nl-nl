@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5655a58c3538ac47e8649619b079dc46ee01242
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244964"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473231"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>IP-adressen voor Azure-netwerkinterfaces toevoegen, wijzigen en verwijderen
 
@@ -78,7 +78,7 @@ Mogelijk moet u de toewijzingsmethode van een IPv4-adres wijzigen, het statische
 6. Selecteer **Opslaan**.
 
 >[!NOTE]
->Als de primaire netwerkinterface meerdere IP-configuraties heeft en u het privé-IP-adres van de primaire IP-configuratie wijzigt, moet u de primaire en secundaire IP-adressen handmatig opnieuw toewijzen aan de netwerkinterface binnen Windows (niet vereist voor Linux) . Zie [Meerdere IP-adressen toewijzen aan virtuele machines](virtual-network-multiple-ip-addresses-portal.md#os-config)als u handmatig IP-adressen wilt toewijzen aan een netwerkinterface binnen een besturingssysteem. Voor speciale overwegingen raadpleegt u privé-IP-adressen [private](#private) voordat u handmatig IP-adressen toevoegt aan een besturingssysteem voor virtuele machines. Voeg geen openbare IP-adressen toe aan het besturingssysteem voor virtuele machines.
+>Als de primaire netwerkinterface meerdere IP-configuraties heeft en u het privé-IP-adres van de primaire IP-configuratie wijzigt, moet u de primaire en secundaire IP-adressen handmatig opnieuw toewijzen aan de netwerkinterface binnen Windows (niet vereist voor Linux). Zie [Meerdere IP-adressen toewijzen aan virtuele machines](virtual-network-multiple-ip-addresses-portal.md#os-config)als u handmatig IP-adressen wilt toewijzen aan een netwerkinterface binnen een besturingssysteem. Voor speciale overwegingen raadpleegt u privé-IP-adressen [private](#private) voordat u handmatig IP-adressen toevoegt aan een besturingssysteem voor virtuele machines. Voeg geen openbare IP-adressen toe aan het besturingssysteem voor virtuele machines.
 
 **Opdrachten**
 
@@ -120,7 +120,7 @@ Naast een primaire IP-configuratie kan een netwerkinterface nul of meer secundai
 
 - Er moet een privé-IPv4- of IPv6-adres aan zijn toegewezen. Als het adres IPv6 is, kan de netwerkinterface slechts één secundaire IP-configuratie hebben. Als het adres IPv4 is, kan de netwerkinterface meerdere secundaire IP-configuraties hebben toegewezen. Zie het artikel [Azure limits](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor meer informatie over het aantal private en openbare IPv4-adressen dat aan een netwerkinterface kan worden toegewezen.
 - Kan ook een openbaar IPv4- of IPv6-adres toegewezen hebben. Het toewijzen van meerdere IPv4-adressen aan een netwerkinterface is handig in scenario's zoals:
-  - Het hosten van meerdere websites of services met verschillende IP-adressen en SSL-certificaten op één server.
+  - Hosting van meerdere websites of services met verschillende IP-adressen en TLS/SSL-certificaten op één server.
   - Een virtuele machine die dienst doet als een virtueel netwerktoestel, zoals een firewall of load balancer.
   - De mogelijkheid om een van de privé-IPv4-adressen voor een van de netwerkinterfaces toe te voegen aan een back-endpool van Azure Load Balancer. In het verleden kon alleen het primaire IPv4-adres voor de primaire netwerkinterface worden toegevoegd aan een back-endpool. Zie het artikel [Load balancing multiple IP-configuraties](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over het laden van meerdere IPv4-configuraties. 
   - De mogelijkheid om balans te laden op één IPv6-adres dat is toegewezen aan een netwerkinterface. Zie het artikel [IPv6-adressen laden](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over het laden van saldo naar een privé-IPv6-adres.
@@ -136,7 +136,7 @@ Met [privé-IPv4-](#ipv4) of IPv6-adressen kan een virtuele machine communiceren
 Standaard wijzen de Azure DHCP-servers het privé IPv4-adres voor de [primaire IP-configuratie](#primary) van de Azure-netwerkinterface toe aan de netwerkinterface binnen het besturingssysteem voor virtuele machines. Tenzij nodig, moet u nooit handmatig het IP-adres van een netwerkinterface instellen binnen het besturingssysteem van de virtuele machine.
 
 > [!WARNING]
-> Als het IPv4-adres dat is ingesteld als het primaire IP-adres van een netwerkinterface binnen het besturingssysteem van een virtuele machine, steeds anders is dan het privé-IPv4-adres dat is toegewezen aan de primaire IP-configuratie van de primaire netwerkinterface die is gekoppeld aan een virtuele machine binnen Azure verliest u de verbinding met de virtuele machine.
+> Als het IPv4-adres dat is ingesteld als het primaire IP-adres van een netwerkinterface binnen het besturingssysteem van een virtuele machine, steeds anders is dan het privé-IPv4-adres dat is toegewezen aan de primaire IP-configuratie van de primaire netwerkinterface die is gekoppeld aan een virtuele machine binnen Azure, verliest u de verbinding met de virtuele machine.
 
 Er zijn scenario's waarin het nodig is om handmatig het IP-adres van een netwerkinterface in te stellen binnen het besturingssysteem van de virtuele machine. U moet bijvoorbeeld handmatig de primaire en secundaire IP-adressen van een Windows-besturingssysteem instellen wanneer u meerdere IP-adressen toevoegt aan een virtuele Azure-machine. Voor een Virtuele Linux-machine hoeft u mogelijk alleen de secundaire IP-adressen handmatig in te stellen. Zie [IP-adressen toevoegen aan een VM-besturingssysteem](virtual-network-multiple-ip-addresses-portal.md#os-config) voor meer informatie. Als u ooit het adres wilt wijzigen dat is toegewezen aan een IP-configuratie, wordt u aangeraden:
 

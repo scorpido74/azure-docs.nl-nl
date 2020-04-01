@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e422284b871214dbeca31b5dd17b9177a18ad3c8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71720243"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478107"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Richtlijnen voor verantwoorde implementatie van Personalizer
 
@@ -25,7 +25,7 @@ Deze richtlijnen zijn niet bedoeld als juridisch advies en u dient er afzonderli
 
 Ook bij het ontwerpen van uw toepassing met behulp van Personalizer, moet u rekening houden met een brede set van verantwoordelijkheden die u hebt bij het ontwikkelen van een data-centric AI-systeem, met inbegrip van ethiek, privacy, veiligheid, veiligheid, inclusie, transparantie en verantwoording. U hier meer over lezen in de [sectie Aanbevolen lezen.](#recommended-reading)
 
-U de volgende inhoud gebruiken als een startchecklist en deze aanpassen en verfijnen aan uw scenario. Dit document bevat twee hoofdsecties: de eerste is gewijd aan het benadrukken van overwegingen voor verantwoord gebruik bij het kiezen van scenario's, functies en beloningen voor Personalizer. De tweede nemen van een set van waarden Microsoft is van mening moet worden overwogen bij het bouwen van AI-systemen, en biedt bruikbare suggesties en risico's over hoe uw gebruik van Personalizer hen beïnvloedt. 
+U de volgende inhoud gebruiken als een startchecklist en deze aanpassen en verfijnen aan uw scenario. Dit document bevat twee hoofdsecties: de eerste is gewijd aan het benadrukken van overwegingen voor verantwoord gebruik bij het kiezen van scenario's, functies en beloningen voor Personalizer. De tweede nemen van een set van waarden Microsoft is van mening moet worden overwogen bij het bouwen van AI-systemen, en biedt bruikbare suggesties en risico's over hoe uw gebruik van Personalizer hen beïnvloedt.
 
 
 ## <a name="your-responsibility"></a>Uw verantwoordelijkheid
@@ -42,18 +42,18 @@ Microsoft zet voortdurend in op de tools en documenten om u te helpen deze veran
 Het implementeren van Personalizer kan van grote waarde zijn voor uw gebruikers en uw bedrijf. Als u Personalizer op een verantwoorde manier wilt implementeren, moet u eerst de volgende richtlijnen overwegen wanneer:
 
 * Het kiezen van use cases om personalisatie toe te passen.
-* [Beloningsfuncties](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-rewards.md)bouwen.
-* Kiezen welke [functies](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-features.md) over de context en mogelijke acties die u zal gebruiken voor personalisatie.
+* [Beloningsfuncties](concept-rewards.md)bouwen.
+* Kiezen welke [functies](concepts-features.md) over de context en mogelijke acties die u zal gebruiken voor personalisatie.
 
 
 ## <a name="choosing-use-cases-for-personalizer"></a>Use cases kiezen voor Personalizer
 
-Het gebruik van een service die leert om inhoud en gebruikersinterfaces te personaliseren is nuttig. Het kan ook verkeerd worden toegepast als de manier waarop de personalisatie negatieve bijwerkingen in de echte wereld creëert, ook als gebruikers zich niet bewust zijn van content personalisatie. 
+Het gebruik van een service die leert om inhoud en gebruikersinterfaces te personaliseren is nuttig. Het kan ook verkeerd worden toegepast als de manier waarop de personalisatie negatieve bijwerkingen in de echte wereld creëert, ook als gebruikers zich niet bewust zijn van content personalisatie.
 
-Voorbeelden van gebruik van Personalizer met een verhoogd potentieel voor negatieve bijwerkingen of een gebrek aan transparantie zijn scenario's waarin de "beloning" afhankelijk is van veel complexe factoren op lange termijn die, wanneer over-vereenvoudigd in een onmiddellijke beloning ongunstig kan zijn resultaten voor individuen. Deze hebben de neiging om te worden beschouwd als "consequente" keuzes, of keuzes die een risico van schade te betrekken. Bijvoorbeeld: 
+Voorbeelden van gebruik van Personalizer met verhoogde mogelijkheden voor negatieve bijwerkingen of een gebrek aan transparantie omvatten scenario's waarin de "beloning" afhankelijk is van veel complexe factoren op lange termijn die, wanneer over-vereenvoudigd in een onmiddellijke beloning ongunstige resultaten voor individuen kan hebben. Deze hebben de neiging om te worden beschouwd als "consequente" keuzes, of keuzes die een risico van schade te betrekken. Bijvoorbeeld:
 
 
-* **Financiën**: Het personaliseren van aanbiedingen op lening, financiële en verzekeringsproducten, waarbij risicofactoren zijn gebaseerd op gegevens die de individuen niet kennen, niet kunnen verkrijgen of niet kunnen betwisten. 
+* **Financiën**: Het personaliseren van aanbiedingen op lening, financiële en verzekeringsproducten, waarbij risicofactoren zijn gebaseerd op gegevens die de individuen niet kennen, niet kunnen verkrijgen of niet kunnen betwisten.
 * **Onderwijs**: Het personaliseren van rangen voor schoolcursussen en onderwijsinstellingen waar aanbevelingen vooroordelen kunnen uitdragen en het bewustzijn van gebruikers over andere opties kunnen verminderen.
 * **Democratie en burgerparticipatie**: Het personaliseren van inhoud voor gebruikers met als doel het beïnvloeden van meningen is consequent en manipulatief.
 * **Evaluatie van de beloning**van derden : Het personaliseren van items waarbij de beloning is gebaseerd op een laatste evaluatie door derden van de gebruiker, in plaats van een beloning te hebben die wordt gegenereerd door het eigen gedrag van de gebruiker.
@@ -85,8 +85,8 @@ Pas de volgende praktijken toe bij het kiezen van functies die u in contexten en
 * Denk aan de wettigheid en ethiek van het gebruik van bepaalde functies voor sommige toepassingen, en of onschuldig uitziende functies volmachten kunnen zijn voor anderen die u wilt of moet vermijden,
 * Wees transparant voor gebruikers dat algoritmen en gegevensanalyse worden gebruikt om de opties die ze zien te personaliseren.
 * Vraag jezelf af: Zou mijn gebruikers zorg en blij zijn als ik deze informatie gebruikt om de inhoud voor hen te personaliseren? Zou ik me op mijn gemak voelen om hen te laten zien hoe de beslissing is genomen om bepaalde items te markeren of te verbergen?
-* Gebruik gedrags- in plaats van classificatie- of segmentatiegegevens op basis van andere kenmerken. Demografische informatie werd traditioneel gebruikt door detailhandelaren om historische redenen - demografische kenmerken leek eenvoudig te verzamelen en te handelen op vóór een digitaal tijdperk, maar vraag me af hoe relevant demografische informatie is wanneer u daadwerkelijk interactie, contextuele en historische gegevens die nauwer verband houden met de voorkeuren en identiteit van gebruikers.
-* Bedenk hoe u voorkomen dat functies worden 'vervalst' door kwaadwillende gebruikers, wat, als ze in grote aantallen worden uitgebuit, ertoe kunnen leiden dat personalizer op misleidende manieren wordt getraind om bepaalde klassen gebruikers doelbewust te verstoren, in verlegenheid te brengen en lastig te vallen. 
+* Gebruik gedrags- in plaats van classificatie- of segmentatiegegevens op basis van andere kenmerken. Demografische informatie werd traditioneel gebruikt door detailhandelaren om historische redenen - demografische kenmerken leken eenvoudig te verzamelen en te handelen vóór een digitaal tijdperk, maar vraag me af hoe relevant demografische informatie is wanneer u werkelijke interactie, contextuele en historische gegevens hebt die nauwer verband houden met de voorkeuren en identiteit van gebruikers.
+* Bedenk hoe u voorkomen dat functies worden 'vervalst' door kwaadwillende gebruikers, wat, als ze in grote aantallen worden uitgebuit, ertoe kunnen leiden dat personalizer op misleidende manieren wordt getraind om bepaalde klassen gebruikers doelbewust te verstoren, in verlegenheid te brengen en lastig te vallen.
 * Indien nodig en haalbaar, ontwerpt u uw toepassing zodat uw gebruikers zich kunnen aanmelden of afmelden voor het gebruik van bepaalde persoonlijke functies. Deze kunnen worden gegroepeerd, zoals 'Locatiegegevens', 'Apparaatgegevens', 'Aankoopgeschiedenis in het verleden' enz.
 
 
@@ -101,13 +101,13 @@ Bijvoorbeeld, belonen op klikken zal de Personalizer Service klikken op de koste
 Als contrasterend voorbeeld wil een nieuwssite mogelijk beloningen instellen die gekoppeld zijn aan iets dat zinvoller is dan klikken, zoals 'Heeft de gebruiker genoeg tijd besteed aan het lezen van de inhoud?' "Hebben ze op relevante artikelen of referenties geklikt?". Met Personalizer is het eenvoudig om statistieken nauw aan beloningen te koppelen. Maar wees voorzichtig niet te verwarren op korte termijn betrokkenheid van de gebruiker met goede resultaten.
 
 ### <a name="unintended-consequences-from-reward-scores"></a>Onbedoelde gevolgen van beloningsscores
-Beloningsscores kunnen worden opgebouwd met de beste bedoelingen, maar kunnen nog steeds onverwachte gevolgen of onbedoelde resultaten opleveren voor de manier waarop Personalizer inhoud rangschikt. 
+Beloningsscores kunnen worden opgebouwd met de beste bedoelingen, maar kunnen nog steeds onverwachte gevolgen of onbedoelde resultaten opleveren voor de manier waarop Personalizer inhoud rangschikt.
 
 Bekijk de volgende voorbeelden:
 
 * Belonen video-inhoud personalisatie op het percentage van de video lengte bekeken zal waarschijnlijk de neiging om kortere video's rang.
 * Het belonen van sociale media-aandelen, zonder sentimentanalyse van hoe het wordt gedeeld of de inhoud zelf, kan leiden tot het rangschikken van aanstootgevende, ongemodereerde of opruiende inhoud, die veel "betrokkenheid" heeft, maar weinig waarde toevoegt.
-* Het belonen van de actie op gebruikersinterface-elementen die gebruikers niet verwachten te veranderen, kan interfereren met de bruikbaarheid en voorspelbaarheid van de gebruikersinterface, waar knoppen verrassend van locatie of doel veranderen zonder waarschuwing, waardoor het moeilijker wordt voor bepaalde groepen gebruikers om productief te blijven.
+* Het belonen van de actie op gebruikersinterface-elementen die gebruikers niet verwachten te veranderen, kan interfereren met de bruikbaarheid en voorspelbaarheid van de gebruikersinterface, waar knoppen verrassend van locatie of doel veranderen zonder waarschuwing, waardoor het voor bepaalde groepen gebruikers moeilijker wordt om productief te blijven.
 
 Implementeer deze best practices:
 
@@ -122,7 +122,7 @@ Hieronder volgen ontwerpgebieden voor verantwoorde implementaties van AI. Meer i
 ![AI-waarden uit toekomstige berekende](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
 ### <a name="accountability"></a>Verantwoordelijkheid
-*Mensen die AI-systemen ontwerpen en implementeren, moeten verantwoordelijk zijn voor de werking van hun systemen.* 
+*Mensen die AI-systemen ontwerpen en implementeren, moeten verantwoordelijk zijn voor de werking van hun systemen.*
 
 * Maak interne richtlijnen voor het implementeren van personalizer, documenteren en communiceren naar uw team, leidinggevenden en leveranciers.
 * Voer periodieke beoordelingen uit van hoe beloningsscores worden berekend, voer offline evaluaties uit om te zien welke functies van invloed zijn op Personalizer en gebruik de resultaten om onnodige en onnodige functies te elimineren.
@@ -155,9 +155,9 @@ Hieronder volgen ontwerpgebieden voor verantwoorde implementaties van AI. Meer i
 *AI-systemen moeten veilig zijn en de privacy respecteren.* Bij gebruik van Personalizer:
 
 * *Informeer gebruikers vooraf over de gegevens die worden verzameld en hoe deze worden gebruikt en verkrijg vooraf hun toestemming*, volgens uw lokale en brancheregelgeving.
-* *Zorg voor privacybeschermende gebruikerscontroles.* Voor toepassingen die persoonlijke gegevens opslaan, u overwegen een eenvoudig te vinden knop te bieden voor functies zoals: 
-   * `Show me all you know about me`    
-   * `Forget my last interaction` 
+* *Zorg voor privacybeschermende gebruikerscontroles.* Voor toepassingen die persoonlijke gegevens opslaan, u overwegen een eenvoudig te vinden knop te bieden voor functies zoals:
+   * `Show me all you know about me`
+   * `Forget my last interaction`
    * `Delete all you know about me`
 
 In sommige gevallen kunnen deze wettelijk verplicht zijn. Houd rekening met de afwegingen in omscholingsmodellen, zodat ze geen sporen van verwijderde gegevens bevatten.
@@ -165,7 +165,7 @@ In sommige gevallen kunnen deze wettelijk verplicht zijn. Houd rekening met de a
 ### <a name="inclusiveness"></a>Inclusiviteit
 *Een breed scala aan menselijke behoeften en ervaringen*aanpakken.
 * *Bied gepersonaliseerde ervaringen voor interfaces met toegankelijkheid.* De efficiëntie die voortkomt uit een goede personalisatie - toegepast om de hoeveelheid inspanning, beweging en onnodige herhaling in interacties te verminderen - kan vooral gunstig zijn voor mensen met een handicap.
-* *Toepassingsgedrag aanpassen aan context*. U Personalizer gebruiken om tussen intenties in een chatbot te disambiguate, bijvoorbeeld omdat de juiste interpretatie contextueel kan zijn en één maat mogelijk niet allemaal past. 
+* *Toepassingsgedrag aanpassen aan context*. U Personalizer gebruiken om tussen intenties in een chatbot te disambiguate, bijvoorbeeld omdat de juiste interpretatie contextueel kan zijn en één maat mogelijk niet allemaal past.
 
 
 ## <a name="proactive-readiness-for-increased-data-protection-and-governance"></a>Proactieve bereidheid voor meer gegevensbescherming en governance
@@ -185,7 +185,7 @@ Overweeg methoden te maken voor teamleden, gebruikers en bedrijfseigenaren om zo
 Elke persoon denken over bijwerkingen van het gebruik van een technologie wordt beperkt door hun perspectief en levenservaring. Breid het beschikbare meningenaanbod uit door meer uiteenlopende stemmen in uw teams, gebruikers of adviesraden te brengen; zodanig dat het mogelijk is en aangemoedigd voor hen om zich uit te spreken. Overweeg trainings- en leermateriaal om de teamkennis op dit gebied verder uit te breiden en om mogelijkheden toe te voegen om complexe en gevoelige onderwerpen te bespreken.
 
 Overweeg taken met betrekking tot verantwoord gebruik te behandelen, net als andere crosscutting-taken in de levenscyclus van de toepassing, zoals taken die verband houden met gebruikerservaring, beveiliging of DevOps. Deze taken en hun vereisten kunnen geen bijzaak zijn. Verantwoord gebruik moet worden besproken en geverifieerd gedurende de levenscyclus van de toepassing.
- 
+
 ## <a name="questions-and-feedback"></a>Vragen en feedback
 
 Microsoft zet zich voortdurend in voor hulpprogramma's en documenten om u te helpen deze verantwoordelijkheden op te nemen. Ons team nodigt u uit om [feedback te geven aan Microsoft](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) als u denkt dat extra tools, productfuncties en documenten u zouden helpen bij het implementeren van deze richtlijnen voor het gebruik van Personalizer.

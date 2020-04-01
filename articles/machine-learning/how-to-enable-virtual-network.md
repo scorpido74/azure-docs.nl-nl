@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 01/13/2020
-ms.openlocfilehash: c813e8a27a7f85eccff2c23d9ffdcfa4a1442f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282831"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437344"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten en inference-taken beveiligen binnen een Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Als u een Azure-opslagaccount wilt gebruiken voor de werkruimte in een virtueel 
     - Selecteer __onder Virtuele netwerken__de bestaande virtuele __netwerkkoppeling toevoegen.__ Met deze actie wordt het virtuele netwerk toegevoegd waar uw gegevens bevindt (zie stap 1).
 
         > [!IMPORTANT]
-        > Het opslagaccount moet zich in hetzelfde virtuele netwerk bevinden als de rekeninstanties of clusters die worden gebruikt voor training of gevolgtrekking.
+        > Het opslagaccount moet zich in hetzelfde virtuele netwerk en subnet bevinden als de rekeninstanties of clusters die worden gebruikt voor training of gevolgtrekking.
 
     - Schakel het selectievakje __Vertrouwde Microsoft-services toestaan om toegang te krijgen tot dit opslagaccount__ in.
 
@@ -180,8 +180,6 @@ Als u de standaardregels voor uitgaande regels niet wilt gebruiken en u de uitga
    - Azure Storage, met behulp van __Service Tag__ of __Storage.RegionName__. Waar `{RegionName}` is de naam van een Azure-gebied.
    - Azure Container Registry, met behulp van __Service Tag__ van __AzureContainerRegistry.RegionName__. Waar `{RegionName}` is de naam van een Azure-gebied.
    - Azure Machine Learning, met behulp van __servicetag__ van __AzureMachineLearning__
-   
-- Voeg voor een __rekeninstantie__ook de volgende items toe:
    - Azure Resource Manager, met behulp van __Service Tag__ van __AzureResourceManager__
    - Azure Active Directory, met behulp van __ServiceTag__ van __AzureActiveDirectory__
 
@@ -242,19 +240,19 @@ Zie [Een Azure Batch-groep maken in een virtueel netwerk](../batch/batch-virtual
 
 Als u een Machine Learning Compute-cluster wilt maken, gebruikt u de volgende stappen:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com)uw Azure Machine Learning-werkruimte.
+1. Meld u aan bij [Azure Machine Learning studio](https://ml.azure.com/)en selecteer vervolgens uw abonnement en werkruimte.
 
-1. Selecteer __berekenen__in de sectie __Toepassing__ en selecteer Vervolgens __Berekenen toevoegen__.
+1. Selecteer __Berekenen__ aan de linkerkant.
 
-1. Ga als volgt te werk om deze rekenbron te configureren voor het gebruik van een virtueel netwerk:
+1. Selecteer __Clusters trainen__ in het __+__ midden en selecteer .
 
-    a. Selecteer __Geavanceerd voor__ __netwerkconfiguratie__.
+1. Vouw in het dialoogvenster __Nieuw trainingscluster__ de sectie __Geavanceerde instellingen__ uit.
 
-    b. Selecteer in de vervolgkeuzelijst __Resourcegroep__ de brongroep die het virtuele netwerk bevat.
+1. Als u deze rekenbron wilt configureren om een virtueel netwerk te gebruiken, voert u de volgende acties uit in de sectie __Virtueel netwerk configureren:__
 
-    c. Selecteer in de vervolgkeuzelijst __Virtueel netwerk__ het virtuele netwerk dat het subnet bevat.
-
-    d. Selecteer in de vervolgkeuzelijst __Subnet__ het subnet dat u wilt gebruiken.
+    1. Selecteer in de vervolgkeuzelijst __Resourcegroep__ de brongroep die het virtuele netwerk bevat.
+    1. Selecteer in de vervolgkeuzelijst __Virtueel netwerk__ het virtuele netwerk dat het subnet bevat.
+    1. Selecteer in de vervolgkeuzelijst __Subnet__ het subnet dat u wilt gebruiken.
 
    ![De virtuele netwerkinstellingen voor Machine Learning Compute](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
@@ -356,29 +354,25 @@ Als u AKS in een virtueel netwerk aan uw werkruimte wilt toevoegen, gebruikt u d
 >
 > De AKS-instantie en het virtuele Azure-netwerk moeten zich in dezelfde regio bevinden. Als u het Azure Storage-account(s) dat door de werkruimte in een virtueel netwerk wordt gebruikt, beveiligt, moeten deze zich in hetzelfde virtuele netwerk bevinden als het AKS-exemplaar.
 
-1. Controleer in de [Azure-portal](https://portal.azure.com)of de NSG die het virtuele netwerk beheert, een binnenkomende regel heeft die is ingeschakeld voor Azure Machine Learning door __AzureMachineLearning__ als BRON te **gebruiken.**
+> [!WARNING]
+> Azure Machine Learning biedt geen ondersteuning voor het gebruik van een Azure Kubernetes-service waarmee een privékoppeling is ingeschakeld.
 
-    [![Deelvenster Gegevens toevoegen aan Azure Machine Learning](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
+1. Meld u aan bij [Azure Machine Learning studio](https://ml.azure.com/)en selecteer vervolgens uw abonnement en werkruimte.
 
-1. Selecteer uw Azure Machine Learning-werkruimte.
+1. Selecteer __Berekenen__ aan de linkerkant.
 
-1. Selecteer __berekenen__in de sectie __Toepassing__ en selecteer Vervolgens __Berekenen toevoegen__.
+1. Selecteer __Inference-clusters__ in het __+__ midden en selecteer .
 
-1. Ga als volgt te werk om deze rekenbron te configureren voor het gebruik van een virtueel netwerk:
+1. Selecteer __geavanceerd__ onder __Netwerkconfiguratie__in het dialoogvenster __Nieuw inferencecluster__ .
 
-    - Selecteer __Geavanceerd voor__ __netwerkconfiguratie__.
+1. Als u deze rekenbron wilt configureren om een virtueel netwerk te gebruiken, voert u de volgende acties uit:
 
-    - Selecteer in de vervolgkeuzelijst __Resourcegroep__ de brongroep die het virtuele netwerk bevat.
-
-    - Selecteer in de vervolgkeuzelijst __Virtueel netwerk__ het virtuele netwerk dat het subnet bevat.
-
-    - Selecteer in de vervolgkeuzelijst __Subnet__ het subnet.
-
-    - Voer in het vak __Kubernetes Service-adresbereik__ het bereik van de Kubernetes-serviceadres in. Dit adresbereik maakt gebruik van een CIDR-notatie-IP-bereik (Classless Inter-Domain Routing) om de IP-adressen te definiëren die beschikbaar zijn voor het cluster. Het mag niet overlappen met subnet IP-bereiken (bijvoorbeeld 10.0.0.0/16).
-
-    - Voer in het __IP-adresvak van kubernetes DNS-service__ het IP-adres van de Kubernetes DNS-service in. Dit IP-adres wordt toegewezen aan de Kubernetes DNS-service. Het moet binnen het bereik van de Kubernetes-serviceadres (bijvoorbeeld 10.0.0.10) liggen.
-
-    - Voer in de __dockerbrugvak__ het dockerbrugadres in. Dit IP-adres is toegewezen aan Docker Bridge. Het mag zich niet in subnet-IP-bereiken bevinden of het bereik van de Kubernetes-serviceadres (bijvoorbeeld 172.17.0.1/16).
+    1. Selecteer in de vervolgkeuzelijst __Resourcegroep__ de brongroep die het virtuele netwerk bevat.
+    1. Selecteer in de vervolgkeuzelijst __Virtueel netwerk__ het virtuele netwerk dat het subnet bevat.
+    1. Selecteer in de vervolgkeuzelijst __Subnet__ het subnet.
+    1. Voer in het vak __Kubernetes Service-adresbereik__ het bereik van de Kubernetes-serviceadres in. Dit adresbereik maakt gebruik van een CIDR-notatie-IP-bereik (Classless Inter-Domain Routing) om de IP-adressen te definiëren die beschikbaar zijn voor het cluster. Het mag niet overlappen met subnet IP-bereiken (bijvoorbeeld 10.0.0.0/16).
+    1. Voer in het __IP-adresvak van kubernetes DNS-service__ het IP-adres van de Kubernetes DNS-service in. Dit IP-adres wordt toegewezen aan de Kubernetes DNS-service. Het moet binnen het bereik van de Kubernetes-serviceadres (bijvoorbeeld 10.0.0.10) liggen.
+    1. Voer in de __dockerbrugvak__ het dockerbrugadres in. Dit IP-adres is toegewezen aan Docker Bridge. Het mag zich niet in subnet-IP-bereiken bevinden of het bereik van de Kubernetes-serviceadres (bijvoorbeeld 172.17.0.1/16).
 
    ![Azure Machine Learning: computer learning Compute virtual network settings Azure Machine Learning: Machine Learning Compute Virtual Network settings Azure Machine Learning: Machine Learning Compute](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
@@ -445,7 +439,7 @@ except:
     prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
     # Create compute target
-    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
     
@@ -466,7 +460,7 @@ De inhoud `body.json` van het bestand waarnaar de opdracht verwijst, is vergelij
 
 ```json
 { 
-    "location": “<region>”, 
+    "location": "<region>", 
     "properties": { 
         "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
         "computeType": "AKS", 
@@ -504,7 +498,102 @@ Zie [Azure Firewall implementeren en configureren](/azure/firewall/tutorial-fire
 
 ## <a name="use-azure-container-registry"></a>Azure Container Registry gebruiken
 
-Wanneer u een virtueel netwerk met Azure Machine Learning gebruikt, plaatst u het Azure Container Registry voor de werkruimte __niet__ in het virtuele netwerk. Deze configuratie wordt niet ondersteund.
+> [!IMPORTANT]
+> Azure Container Registry (ACR) kan in een virtueel netwerk worden geplaatst, maar u moet wel aan de volgende voorwaarden voldoen:
+>
+> * Uw Azure Machine Learning-werkruimte moet Enterprise-editie zijn. Zie Upgraden naar [Enterprise-editie](how-to-manage-workspace.md#upgrade)voor informatie over upgraden.
+> * Uw Azure Container Registry moet Premium-versie zijn. Zie [SKU's wijzigen voor](/azure/container-registry/container-registry-skus#changing-skus)meer informatie over upgraden.
+> * Uw Azure Container Registry moet zich in hetzelfde virtuele netwerk en subnet bevinden als de opslagaccount- en rekendoelen die worden gebruikt voor training of gevolgtrekking.
+> * Uw Azure Machine Learning-werkruimte moet een [Azure Machine Learning-compute cluster](how-to-set-up-training-targets.md#amlcompute)bevatten.
+>
+>     Wanneer ACR zich achter een virtueel netwerk bevindt, kan Azure Machine Learning het niet gebruiken om Docker-afbeeldingen rechtstreeks te bouwen. In plaats daarvan wordt het compute cluster gebruikt om de afbeeldingen te bouwen.
+
+1. Als u de naam van het Azure Container Registry voor uw werkruimte wilt vinden, gebruikt u een van de volgende methoden:
+
+    __Azure Portal__
+
+    In het overzichtsgedeelte van uw werkruimte wordt de __registerwaarde__ gekoppeld aan het Azure Container Registry.
+
+    ![Azure-containerregister voor de werkruimte](./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png)
+
+    __Azure-CLI__
+
+    Als u [de Machine Learning-extensie voor Azure](reference-azure-machine-learning-cli.md) `az ml workspace show` CLI hebt geïnstalleerd, u de opdracht gebruiken om de werkruimtegegevens weer te geven.
+
+    ```azurecli-interactive
+    az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
+    ```
+
+    Met deze opdracht wordt `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"`een waarde geretourneerd die vergelijkbaar is met . Het laatste deel van de tekenreeks is de naam van het Azure Container Registry voor de werkruimte.
+
+1. Als u de toegang tot uw virtuele netwerk wilt beperken, gebruikt u de stappen in [Netwerktoegang configureren voor register.](../container-registry/container-registry-vnet.md#configure-network-access-for-registry) Wanneer u het virtuele netwerk toevoegt, selecteert u het virtuele netwerk en subnet voor uw Azure Machine Learning-resources.
+
+1. Gebruik de Azure Machine Learning Python SDK om een compute cluster te configureren om dockerafbeeldingen te maken. In het volgende codefragment wordt uitgelegd hoe u dit doen:
+
+    ```python
+    from azureml.core import Workspace
+    # Load workspace from an existing config file
+    ws = Workspace.from_config()
+    # Update the workspace to use an existing compute cluster
+    ws.update(image_build_compute = 'mycomputecluster')
+    ```
+
+    > [!IMPORTANT]
+    > Uw opslagaccount, compute cluster en Azure Container Registry moeten allemaal in hetzelfde subnet van het virtuele netwerk staan.
+    
+    Zie de methodeverwijzing [update().](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-)
+
+1. Als u Private Link gebruikt voor uw Azure Machine Learning-werkruimte en het Azure Container Registry voor uw werkruimte in een virtueel netwerk plaatst, moet u ook de volgende sjabloon Azure Resource Manager toepassen. Met deze sjabloon kan uw werkruimte communiceren met ACR via de Private Link.
+
+    ```json
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "keyVaultArmId": {
+        "type": "string"
+        },
+        "workspaceName": {
+        "type": "string"
+        },
+        "containerRegistryArmId": {
+        "type": "string"
+        },
+        "applicationInsightsArmId": {
+        "type": "string"
+        },
+        "storageAccountArmId": {
+        "type": "string"
+        },
+        "location": {
+        "type": "string"
+        }
+    },
+    "resources": [
+        {
+        "type": "Microsoft.MachineLearningServices/workspaces",
+        "apiVersion": "2019-11-01",
+        "name": "[parameters('workspaceName')]",
+        "location": "[parameters('location')]",
+        "identity": {
+            "type": "SystemAssigned"
+        },
+        "sku": {
+            "tier": "enterprise",
+            "name": "enterprise"
+        },
+        "properties": {
+            "sharedPrivateLinkResources":
+    [{"Name":"Acr","Properties":{"PrivateLinkResourceId":"[concat(parameters('containerRegistryArmId'), '/privateLinkResources/registry')]","GroupId":"registry","RequestMessage":"Approve","Status":"Pending"}}],
+            "keyVault": "[parameters('keyVaultArmId')]",
+            "containerRegistry": "[parameters('containerRegistryArmId')]",
+            "applicationInsights": "[parameters('applicationInsightsArmId')]",
+            "storageAccount": "[parameters('storageAccountArmId')]"
+        }
+        }
+    ]
+    }
+    ```
 
 ## <a name="next-steps"></a>Volgende stappen
 

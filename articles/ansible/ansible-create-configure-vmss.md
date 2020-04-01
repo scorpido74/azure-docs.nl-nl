@@ -1,17 +1,17 @@
 ---
-title: 'Zelf studie: virtuele-machine schaal sets configureren in azure met behulp van Ansible'
-description: Meer informatie over het gebruik van Ansible voor het maken en configureren van virtuele-machine schaal sets in azure
+title: Zelfstudie - Virtuele machineschaalsets configureren in Azure met Ansible
+description: Meer informatie over het gebruik van Ansible voor het maken en configureren van virtuele machineschaalsets in Azure
 keywords: ansible, azure, devops, bash, playbook, virtuele machine, schaalset voor virtuele machines, vmss
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: e1cc40459988fb9bc38e3dbbcde563cebb531e3d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156550"
 ---
-# <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Zelf studie: virtuele-machine schaal sets configureren in azure met behulp van Ansible
+# <a name="tutorial-configure-virtual-machine-scale-sets-in-azure-using-ansible"></a>Zelfstudie: Virtuele machineschaalsets configureren in Azure met Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -23,7 +23,7 @@ ms.locfileid: "74156550"
 >
 > * De resources voor een virtuele machine configureren
 > * Een schaalset configureren
-> * De schaalset schalen door het aantal VM-exemplaren te verhogen 
+> * Schaal de schaal die is ingesteld door de VM-exemplaren te verhogen 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,20 +32,20 @@ ms.locfileid: "74156550"
 
 ## <a name="configure-a-scale-set"></a>Een schaalset configureren
 
-De Playbook-code in deze sectie definieert de volgende resources:
+De playbookcode in deze sectie definieert de volgende bronnen:
 
-* De **resource groep** waarin al uw resources worden geïmplementeerd.
+* **Resourcegroep** waarin al uw resources worden geïmplementeerd.
 * **Virtueel netwerk** in de adresruimte 10.0.0.0/16
 * **Subnet** binnen het virtuele netwerk
 * **Openbaar IP-adres** waarmee u toegang krijgt tot resources via internet
-* **Netwerk beveiligings groep** die de stroom van netwerk verkeer in en uit uw schaalset beheert
+* **Netwerkbeveiligingsgroep** die de stroom van netwerkverkeer in en uit uw schaalset regelt
 * **Load balancer** waarmee verkeer wordt verdeeld over een reeks gedefinieerde virtuele machines met behulp van load balancer-regels
 * **Schaalset voor virtuele machines** waarin alle gemaakte resources worden gebruikt
 
-Er zijn twee manieren om de voorbeeld Playbook te verkrijgen:
+Er zijn twee manieren om het voorbeeld playbook te krijgen:
 
-* [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) en sla deze op `vmss-create.yml`.
-* Maak een nieuw bestand met de naam `vmss-create.yml` en kopieer het naar de volgende inhoud:
+* [Download het playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml) en `vmss-create.yml`sla het op in .
+* Maak een nieuw `vmss-create.yml` bestand met de naam en kopieer de volgende inhoud:
 
 ```yml
 - hosts: localhost
@@ -141,17 +141,17 @@ Er zijn twee manieren om de voorbeeld Playbook te verkrijgen:
             caching: ReadOnly
 ```
 
-Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
+Zie de volgende opmerkingen voordat u het draaiboek uitvoert:
 
-* Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ admin_password }}` door uw eigen wacht woord.
+* Vervang `vars` in de `{{ admin_password }}` sectie de tijdelijke aanduiding door uw eigen wachtwoord.
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook vmss-create.yml
 ```
 
-Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat u het draaiboek hebt uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
 ```Output
 PLAY [localhost] 
@@ -185,23 +185,23 @@ localhost                  : ok=8    changed=7    unreachable=0    failed=0
 
 ```
 
-## <a name="view-the-number-of-vm-instances"></a>Het aantal VM-exemplaren weer geven
+## <a name="view-the-number-of-vm-instances"></a>Het aantal VM-exemplaren weergeven
 
-De [geconfigureerde schaalset](#configure-a-scale-set) heeft momenteel twee exemplaren. De volgende stappen worden gebruikt om de waarde te bevestigen:
+De [geconfigureerde schaalset](#configure-a-scale-set) heeft momenteel twee exemplaren. De volgende stappen worden gebruikt om die waarde te bevestigen:
 
-1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Ga naar de schaalset die u hebt geconfigureerd.
+1. Navigeer naar de schaalset die u hebt geconfigureerd.
 
-1. U ziet de naam van de schaalset met het aantal exemplaren tussen haakjes: `Standard_DS1_v2 (2 instances)`
+1. U ziet de naam van de schaalset met het aantal exemplaren tussen haakjes:`Standard_DS1_v2 (2 instances)`
 
-1. U kunt ook het aantal exemplaren controleren met de [Azure Cloud shell](https://shell.azure.com/) door de volgende opdracht uit te voeren:
+1. U ook het aantal exemplaren verifiëren met de [Azure Cloud Shell](https://shell.azure.com/) door de volgende opdracht uit te voeren:
 
     ```azurecli-interactive
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 
     ```
 
-    De resultaten van het uitvoeren van de Azure CLI-opdracht in Cloud Shell tonen dat drie instanties nu bestaan: 
+    De resultaten van het uitvoeren van de opdracht Azure CLI in Cloud Shell tonen aan dat er nu drie exemplaren bestaan: 
 
     ```bash
     {
@@ -209,14 +209,14 @@ De [geconfigureerde schaalset](#configure-a-scale-set) heeft momenteel twee exem
     }
     ```
 
-## <a name="scale-out-a-scale-set"></a>Een schaalset uitschalen
+## <a name="scale-out-a-scale-set"></a>Een schaalset schalen
 
-De Playbook-code in deze sectie haalt informatie op over de schaalset en wijzigt de capaciteit van twee naar drie.
+De playbook-code in deze sectie haalt informatie op over de schaalset en wijzigt de capaciteit van twee naar drie.
 
-Er zijn twee manieren om de voorbeeld Playbook te verkrijgen:
+Er zijn twee manieren om het voorbeeld playbook te krijgen:
 
-* [Down load de Playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) en sla deze op `vmss-scale-out.yml`.
-* Maak een nieuw bestand met de naam `vmss-scale-out.yml` en kopieer het naar de volgende inhoud:
+* [Download het playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml) en `vmss-scale-out.yml`sla het op in .
+* Maak een nieuw `vmss-scale-out.yml` bestand met de naam en kopieer de volgende inhoud:
 
 ```yml
 - hosts: localhost
@@ -243,13 +243,13 @@ Er zijn twee manieren om de voorbeeld Playbook te verkrijgen:
       azure_rm_virtualmachinescaleset: "{{ body }}"
 ```
 
-Voer de Playbook uit met de opdracht `ansible-playbook`:
+Voer de playbook `ansible-playbook` uit met de opdracht:
 
 ```bash
 ansible-playbook vmss-scale-out.yml
 ```
 
-Nadat de Playbook is uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
+Nadat u het draaiboek hebt uitgevoerd, ziet u uitvoer die vergelijkbaar is met de volgende resultaten:
 
 ```Output
 PLAY [localhost] 
@@ -285,15 +285,15 @@ PLAY RECAP
 localhost                  : ok=5    changed=1    unreachable=0    failed=0
 ```
 
-## <a name="verify-the-results"></a>De resultaten controleren
+## <a name="verify-the-results"></a>De resultaten verifiëren
 
-Controleer uw resultaten van uw werk via de Azure Portal:
+Controleer uw resultaten van uw werk via de Azure-portal:
 
-1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Ga naar de schaalset die u hebt geconfigureerd.
+1. Navigeer naar de schaalset die u hebt geconfigureerd.
 
-1. U ziet de naam van de schaalset met het aantal exemplaren tussen haakjes: `Standard_DS1_v2 (3 instances)` 
+1. U ziet de naam van de schaalset met het aantal exemplaren tussen haakjes:`Standard_DS1_v2 (3 instances)` 
 
 1. U kunt de wijziging ook verifiëren in [Azure Cloud Shell](https://shell.azure.com/) door de volgende opdracht uit te voeren:
 
@@ -301,7 +301,7 @@ Controleer uw resultaten van uw werk via de Azure Portal:
     az vmss show -n myScaleSet -g myResourceGroup --query '{"capacity":sku.capacity}' 
     ```
 
-    De resultaten van het uitvoeren van de Azure CLI-opdracht in Cloud Shell tonen dat drie instanties nu bestaan: 
+    De resultaten van het uitvoeren van de opdracht Azure CLI in Cloud Shell tonen aan dat er nu drie exemplaren bestaan: 
 
     ```bash
     {
@@ -312,4 +312,4 @@ Controleer uw resultaten van uw werk via de Azure Portal:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Zelf studie: Apps implementeren in schaal sets voor virtuele machines in azure met behulp van Ansible](./ansible-deploy-app-vmss.md)
+> [Zelfstudie: Apps implementeren voor virtuele machineschaalsets in Azure met Ansible](./ansible-deploy-app-vmss.md)

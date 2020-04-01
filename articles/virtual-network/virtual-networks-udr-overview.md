@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280064"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477877"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routering van verkeer in virtuele netwerken
 
@@ -122,7 +122,7 @@ Een on-premises netwerkgateway kan via BGP (Border Gateway Protocol) routes uitw
 
 Wanneer u routes met Azure uitwisselt via BGP, wordt er voor elk geadverteerd voorvoegsel een afzonderlijke route toegevoegd aan de routetabel van alle subnetten in een virtueel netwerk. De route wordt toegevoegd met *Gateway van virtueel netwerk* als de bron en het 'volgende hoptype'. 
 
-DE ER- en VPN-gatewayroutepropagatie kan worden uitgeschakeld op een subnet met behulp van een eigenschap op een routetabel. Wanneer u routes uitwisselt met Azure met BGP, worden routes niet toegevoegd aan de routetabel van alle subnetten waarbij de verspreiding van de virtuele netwerkgatewayroute is uitgeschakeld. Connectiviteit met VPN-verbindingen wordt bereikt met behulp van [aangepaste routes](#custom-routes) met een volgend hoptype van *Virtueel-netwerkgateway*. Zie Het [uitschakelen van de verspreiding van virtuele netwerkgatewayroutes](manage-route-table.md#create-a-route-table)voor meer informatie.
+DE ER- en VPN-gatewayroutepropagatie kan worden uitgeschakeld op een subnet met behulp van een eigenschap op een routetabel. Wanneer u routes uitwisselt met Azure met BGP, worden routes niet toegevoegd aan de routetabel van alle subnetten waarbij de verspreiding van de virtuele netwerkgatewayroute is uitgeschakeld. Connectiviteit met VPN-verbindingen wordt bereikt met behulp van [aangepaste routes](#custom-routes) met een volgend hoptype van *Virtueel-netwerkgateway*. **Routepropagatie mag niet worden uitgeschakeld op het GatewaySubnet. De gateway werkt niet met deze instelling uitgeschakeld.** Zie Het [uitschakelen van de verspreiding van virtuele netwerkgatewayroutes](manage-route-table.md#create-a-route-table)voor meer informatie.
 
 ## <a name="how-azure-selects-a-route"></a>Hoe Azure een route selecteert
 

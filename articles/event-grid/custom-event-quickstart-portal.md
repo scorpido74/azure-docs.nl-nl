@@ -100,7 +100,7 @@ Nu gaan we een gebeurtenis activeren om te zien hoe het bericht via Event Grid n
 Het eerste voorbeeld maakt gebruik van Azure CLI. In dit voorbeeld worden de URL en de sleutel voor het aangepaste onderwerp, plus de voorbeeldgegevens van de gebeurtenis opgehaald. Gebruik de naam van het aangepaste onderwerp voor `<topic name>`. Hiermee worden voorbeeldgebeurtenisgegevens gemaakt. Het element `data` van de JSON is de nettolading van de gebeurtenis. Elke juist opgemaakte JSON kan in dit veld worden ingevoerd. U kunt het onderwerpveld ook gebruiken voor geavanceerd routeren en filteren. CURL is een hulpprogramma waarmee HTTP-aanvragen worden verzonden.
 
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 1. Selecteer **Cloud Shell**in de Azure-portal . Selecteer **Bash** in de linkerbovenhoek van het Venster Cloud Shell. 
 
     ![Cloud Shell - Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
