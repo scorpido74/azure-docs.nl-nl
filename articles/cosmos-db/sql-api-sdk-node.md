@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70207955"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411271"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK voor SQL API: notities en bronnen vrijgeven
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70207955"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Rest](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Bulkexecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -35,7 +35,7 @@ ms.locfileid: "70207955"
 |SDK downloaden  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |API-documentatie  |  [JavaScript SDK-referentiedocumentatie](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Installatie-instructies voor SDK  |  [Installatie-instructies](https://github.com/Azure/azure-cosmos-js#installation)
-|Bijdragen aan SDK | [GitHub GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
+|Bijdragen aan SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | Voorbeelden | [Node.js code samples](sql-api-nodejs-samples.md)
 | Zelfstudie aan de slag | [Aan de slag met de JavaScript SDK](sql-api-nodejs-get-started.md)
 | Zelfstudie voor web-apps | [Een Node.js-webtoepassing bouwen met Azure Cosmos DB](sql-api-nodejs-application.md)
@@ -318,7 +318,7 @@ Niet altijd de meest zichtbare veranderingen, maar ze helpen ons team schip bete
 ### <a name=""></a><a name="1.11.0"/>1.11.0</a>
 * De ondersteuning voor aggregatiequery's toegevoegd (COUNT, MIN, MAX, SOM en AVG).
 * Toegevoegd de optie voor het regelen van de mate van parallellisme voor cross partitie query's.
-* De optie toegevoegd voor het uitschakelen van SSL-verificatie wanneer u deze uitvoert tegen Azure Cosmos DB Emulator.
+* De optie toegevoegd voor het uitschakelen van TLS-verificatie wanneer u deze uitvoert tegen Azure Cosmos DB Emulator.
 * Verlaagde minimale doorvoer op partitieverzamelingen van 10.100 RU/s naar 2500 RU/s.
 * Fixed the continuation token bug for single partition collection. GitHub probleem #107.
 * Fixed the executeStoredProcedure bug in handling 0 as single param. GitHub probleem #155.
@@ -328,7 +328,7 @@ Niet altijd de meest zichtbare veranderingen, maar ze helpen ons team schip bete
 * Kleine code opruimen.
 
 ### <a name=""></a><a name="1.10.1"/>1.10.1</a>
-* SSL-verificatie uitschakelen wanneer u de SDK gebruikt om de emulator (hostname=localhost) te targeten.
+* TLS-verificatie uitschakelen wanneer u de SDK gebruikt om de emulator (hostname=localhost) te targeten.
 * Added support for enabling script logging during stored procedure execution.
 
 ### <a name=""></a><a name="1.10.0"/>1.10.0</a>

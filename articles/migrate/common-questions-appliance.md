@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure-toestel migreren
 description: Antwoorden op veelgestelde vragen over het Azure Migrate-toestel.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 2ef7de3b31cb11a71ec9379232fc5ff1022cf666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336976"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437598"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate appliance: veelgestelde vragen
 
@@ -94,6 +94,9 @@ Nee. Er is een één-op-één toewijzing tussen een [Azure Migrate-toestel](migr
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Kan een Azure Migrate-project meerdere apparaten hebben?
 Aan een project kunnen meerdere apparaten zijn gekoppeld. Een toestel kan echter slechts aan één project worden gekoppeld. 
+
+## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Kan het Azure Migrate appliance/Replication toestel verbinding maken met hetzelfde vCenter?
+Ja. U zowel het Azure Migrate-toestel (dat wordt gebruikt voor beoordeling en agentloze VMware-migratie) als het replicatietoestel (dat wordt gebruikt voor op agentgebaseerde migratie van VMware VM's) toevoegen aan dezelfde vCenter-server.
 
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Hoeveel VM's of servers kan ik ontdekken met een toestel?

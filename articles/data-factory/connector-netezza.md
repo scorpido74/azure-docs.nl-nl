@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7e17f7c4493560bd6118b8d4837fd795a6ab0c8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244535"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422867"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Gegevens uit Netezza kopiëren met Azure Data Factory
 
@@ -158,7 +158,7 @@ Als u gegevens uit Netezza wilt kopiëren, stelt u het **brontype** in Activitei
 |:--- |:--- |:--- |
 | type | De **eigenschap type** van de bron Kopieeractiviteit moet worden ingesteld op **NetezzaSource**. | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Voorbeeld: `"SELECT * FROM MyTable"` | Nee (als 'tabelNaam' in de gegevensset is opgegeven) |
-| partitieOpties | Hiermee geeft u de opties voor gegevenspartitionering op die worden gebruikt om gegevens uit Netezza te laden. <br>Waarden toestaan zijn: **Geen** (standaard), **DataSlice**en **DynamicRange**.<br>Wanneer een partitieoptie is ingeschakeld (dat wil zeggen), `None`wordt de mate van parallellisme om [`parallelCopies`](copy-activity-performance.md#parallel-copy) tegelijkertijd gegevens uit een Netezza-database te laden, beheerd door de kopieeractiviteit in te stellen. | Nee |
+| partitieOpties | Hiermee geeft u de opties voor gegevenspartitionering op die worden gebruikt om gegevens uit Netezza te laden. <br>Waarden toestaan zijn: **Geen** (standaard), **DataSlice**en **DynamicRange**.<br>Wanneer een partitieoptie is ingeschakeld (dat wil zeggen), `None`wordt de mate van parallellisme om [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) tegelijkertijd gegevens uit een Netezza-database te laden, beheerd door de kopieeractiviteit in te stellen. | Nee |
 | partitieInstellingen | Geef de groep van de instellingen voor gegevenspartitionering op. <br>Toepassen wanneer de partitieoptie niet `None`is . | Nee |
 | partitionColumnName | Geef de naam op van de bronkolom **in het gehele getaltype** die wordt gebruikt door bereikverdeling voor parallelle kopie. Als dit niet is opgegeven, wordt de primaire sleutel van de tabel automatisch gedetecteerd en gebruikt als partitiekolom. <br>Toepassen wanneer de `DynamicRange`partitieoptie is . Als u een query gebruikt om `?AdfRangePartitionColumnName` de brongegevens op te halen, haakt u de WHERE-clausule aan. Zie voorbeeld in Parallelle kopie van de sectie [Netezza.](#parallel-copy-from-netezza) | Nee |
 | partitieUpperBound | De maximale waarde van de partitiekolom om gegevens uit te kopiëren. <br>Toepassen wanneer partitieoptie is `DynamicRange`. Als u query's gebruikt `?AdfRangePartitionUpbound` om brongegevens op te halen, haakt u de WHERE-component aan. Zie bijvoorbeeld de [sectie Parallel van Netezza.](#parallel-copy-from-netezza) | Nee |
@@ -202,7 +202,7 @@ De Data Factory Netezza-connector biedt ingebouwde gegevenspartitionering om geg
 
 ![Schermafbeelding van partitieopties](./media/connector-netezza/connector-netezza-partition-options.png)
 
-Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit op uw Netezza-bron om gegevens te laden op partities. De parallelle graad wordt [`parallelCopies`](copy-activity-performance.md#parallel-copy) gecontroleerd door de instelling voor de kopieeractiviteit. Als u bijvoorbeeld `parallelCopies` op vier instelt, genereert en voert Data Factory tegelijkertijd vier query's uit op basis van de opgegeven partitieoptie en -instellingen en haalt elke query een gedeelte gegevens op uit uw Netezza-database.
+Wanneer u gepartitioneerde kopie inschakelt, voert Data Factory parallelle query's uit op uw Netezza-bron om gegevens te laden op partities. De parallelle graad wordt [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) gecontroleerd door de instelling voor de kopieeractiviteit. Als u bijvoorbeeld `parallelCopies` op vier instelt, genereert en voert Data Factory tegelijkertijd vier query's uit op basis van de opgegeven partitieoptie en -instellingen en haalt elke query een gedeelte gegevens op uit uw Netezza-database.
 
 U wordt voorgesteld om parallelle kopiëren met gegevenspartitionering in te schakelen, vooral wanneer u grote hoeveelheden gegevens uit uw Netezza-database laadt. De volgende zijn voorgestelde configuraties voor verschillende scenario's. Bij het kopiëren van gegevens naar het gegevensarchief in bestanden wordt aanbevolen om naar een map te schrijven als meerdere bestanden (geef alleen de naam van de map op), in welk geval de prestaties beter zijn dan naar één bestand te schrijven.
 

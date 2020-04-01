@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 25be48e9caed446be3a86a11143ce3040808065a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294294"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478965"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>De configuratieserver beheren voor herstel van de fysieke serverramp
 
@@ -290,8 +290,8 @@ Upgrade de server als volgt:
 > [!NOTE]
 > De optie **-Force** in de Remove-AzSiteRecoveryFabric kan worden gebruikt om het verwijderen/verwijderen van de configuratieserver te forceren.
 
-## <a name="renew-ssl-certificates"></a>SSL-certificaten vernieuwen
-De configuratieserver heeft een ingebouwde webserver, die activiteiten van de Mobiliteitsservice, processervers en hoofddoelservers die ermee zijn verbonden orkestreert. De webserver gebruikt een SSL-certificaat om clients te verifiëren. Het certificaat verloopt na drie jaar en kan te huur worden verlengd.
+## <a name="renew-tlsssl-certificates"></a>TLS/SSL-certificaten verlengen
+De configuratieserver heeft een ingebouwde webserver, die activiteiten van de Mobiliteitsservice, processervers en hoofddoelservers die ermee zijn verbonden orkestreert. De webserver gebruikt een TLS/SSL-certificaat om clients te verifiëren. Het certificaat verloopt na drie jaar en kan te huur worden verlengd.
 
 ### <a name="check-expiry"></a>Verlopen controleren
 

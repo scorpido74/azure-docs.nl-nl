@@ -5,19 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 51b800dde140affd222f2bdb341c0fbf3a57d8cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/30/2020
+ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530152"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422474"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Gegevens-in-replicatie configureren in Azure-database voor MariaDB
 
 In dit artikel wordt beschreven hoe u Gegevens-in-replicatie in Azure Database voor MariaDB instelt door de hoofd- en replicaservers te configureren. In dit artikel wordt ervan uitgegaan dat u enige ervaring hebt met MariaDB-servers en -databases.
 
 Als u een replica wilt maken in de Azure Database for MariaDB-service, synchroniseert Gegevens-in-replicatie gegevens van een on-premises master MariaDB-server, in virtuele machines (VM's) of in clouddatabaseservices.
+
+Bekijk de [beperkingen en vereisten](concepts-data-in-replication.md#limitations-and-considerations) van de replicatie van gegevens voordat u de stappen in dit artikel uitvoert.
 
 > [!NOTE]
 > Als uw hoofdserver versie 10.2 of nieuwer is, raden we u aan Gegevens-in-replicatie in te stellen met behulp van [Global Transaction ID](https://mariadb.com/kb/en/library/gtid/).
@@ -36,11 +38,21 @@ Als u een replica wilt maken in de Azure Database for MariaDB-service, synchroni
     
     Gebruikersaccounts worden niet gerepliceerd van de hoofdserver naar de replicaserver. Als u gebruikers toegang wilt bieden tot de replicaserver, moet u handmatig alle accounts en bijbehorende bevoegdheden maken op de nieuw gemaakte Azure Database voor MariaDB-server.
 
+3. Voeg het IP-adres van de hoofdserver toe aan de firewallregels van de replica. 
+
+   Firewallregels bijwerken met de [Azure-portal](howto-manage-firewall-portal.md) of [Azure CLI](howto-manage-firewall-cli.md).
+
 ## <a name="configure-the-master-server"></a>De hoofdserver configureren
 
 De volgende stappen bereiden en configureren van de on-premises MariaDB-server, in een vm of in een clouddatabaseservice voor gegevensreplicatie. De MariaDB-server is de stramien in gegevensreplicatie.
 
-1. Schakel binaire logboekregistratie in.
+1. Controleer de vereisten van de [hoofdserver](concepts-data-in-replication.md#requirements) voordat u verdergaat. 
+
+   Zorg er bijvoorbeeld voor dat de hoofdserver zowel binnenkomend als uitgaand verkeer toestaat op poort 3306 en dat de hoofdserver een **openbaar IP-adres**heeft, dat de DNS openbaar toegankelijk is of een volledig gekwalificeerde domeinnaam (FQDN) heeft. 
+   
+   Test de connectiviteit met de hoofdserver door te proberen verbinding te maken vanuit een hulpprogramma zoals de MySQL-opdrachtregel die wordt gehost op een andere machine of vanuit de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) die beschikbaar is in de Azure-portal.
+
+2. Schakel binaire logboekregistratie in.
     
     Voer de volgende opdracht in om te zien of binaire logboekregistratie is ingeschakeld op het stramien:
 
@@ -52,7 +64,7 @@ De volgende stappen bereiden en configureren van de on-premises MariaDB-server, 
 
    Als `log_bin` de `OFF`waarde wordt geretourneerd, bewerk het `log_bin=ON` **bestand my.cnf** zodat binaire logboekregistratie wordt ingeschakeld. Start de server opnieuw op om de wijziging van kracht te laten worden.
 
-2. Hoofdserverinstellingen configureren.
+3. Hoofdserverinstellingen configureren.
 
     Met replicatie in gegevens `lower_case_table_names` moet de parameter consistent zijn tussen de stramien- en replicaservers. De `lower_case_table_names` parameter is `1` standaard ingesteld op Azure Database voor MariaDB.
 
@@ -60,7 +72,7 @@ De volgende stappen bereiden en configureren van de on-premises MariaDB-server, 
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. Maak een nieuwe replicatierol en stel machtigingen in.
+4. Maak een nieuwe replicatierol en stel machtigingen in.
 
    Maak een gebruikersaccount op de hoofdserver die is geconfigureerd met replicatiebevoegdheden. U een account maken met SQL-opdrachten of MySQL Workbench. Als u van plan bent te repliceren met SSL, moet u dit opgeven wanneer u het gebruikersaccount maakt.
    
@@ -105,7 +117,7 @@ De volgende stappen bereiden en configureren van de on-premises MariaDB-server, 
    ![Replicatieslave](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. Stel de hoofdserver in op alleen-lezen modus.
+5. Stel de hoofdserver in op alleen-lezen modus.
 
    Voordat u een database dumpt, moet de server in de alleen-lezen modus worden geplaatst. In de alleen-lezenmodus kan de master geen schrijftransacties verwerken. Om de impact van het bedrijf te voorkomen, plant u het alleen-lezen venster tijdens een daluren.
 
@@ -114,7 +126,7 @@ De volgende stappen bereiden en configureren van de on-premises MariaDB-server, 
    SET GLOBAL read_only = ON;
    ```
 
-5. Download de huidige binaire logboekbestandsnaam en -verschuiving.
+6. Download de huidige binaire logboekbestandsnaam en -verschuiving.
 
    Voer de opdracht [`show master status`](https://mariadb.com/kb/en/library/show-master-status/)uit om de huidige binaire logboekbestandsnaam en -verschuiving te bepalen.
     
@@ -127,7 +139,7 @@ De volgende stappen bereiden en configureren van de on-premises MariaDB-server, 
 
    Let op de binaire bestandsnaam, omdat deze in latere stappen wordt gebruikt.
    
-6. Krijg de GTID-positie (optioneel, nodig voor replicatie met GTID).
+7. Krijg de GTID-positie (optioneel, nodig voor replicatie met GTID).
 
    Voer de [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) functie uit om de GTID-positie voor de bijbehorende binlog-bestandsnaam en -verschuiving te krijgen.
   
@@ -196,7 +208,7 @@ De volgende stappen bereiden en configureren van de on-premises MariaDB-server, 
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
-       PLACE YOUR PUBLIC KEY CERTIFICATE'S CONTEXT HERE
+       PLACE YOUR PUBLIC KEY CERTIFICATE\'S CONTEXT HERE
        -----END CERTIFICATE-----'
        ```
 

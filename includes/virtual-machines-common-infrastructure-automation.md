@@ -4,19 +4,19 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77608746"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419197"
 ---
 Als u virtuele Azure-machines (VM's) op een consistente manier op schaal wilt maken en beheren, wordt een of andere vorm van automatisering meestal gewenst. Er zijn veel tools en oplossingen waarmee u de volledige implementatie- en beheerlevenscyclus van azure-infrastructuur automatiseren. In dit artikel worden enkele hulpprogramma's voor infrastructuurautomatisering geïntroduceerd die u in Azure gebruiken. Deze tools passen vaak in een van de volgende benaderingen:
 
 - De configuratie van VM's automatiseren
-    - Tools omvatten [Ansible](#ansible), [Chef,](#chef)en [Puppet](#puppet).
+    - De hulpprogramma's omvatten [ansible](#ansible), [chef,](#chef) [puppet](#puppet)en [Azure Resource Manager-sjabloon](#azure-resource-manager-template).
     - Tools die specifiek zijn voor [VM-aanpassing omvatten cloud-init](#cloud-init) voor Linux VM's, [PowerShell Desired State Configuration (DSC)](#powershell-dsc)en de [Azure Custom Script-extensie](#azure-custom-script-extension) voor alle Azure VM's.
- 
+
 - Infrastructuurbeheer automatiseren
     - Tools omvatten [Packer](#packer) om aangepaste VM-imagebuilds te automatiseren en [Terraform](#terraform) om het infrastructuurbouwproces te automatiseren.
     - [Azure Automation](#azure-automation) kan acties uitvoeren in uw Azure- en on-premises infrastructuur.
@@ -56,7 +56,8 @@ Leer hoe u het volgende doet:
 
 Cloud-init werkt ook in distributies. U gebruikt bijvoorbeeld niet **apt-get install** of **yum install** om een pakket te installeren. In plaats daarvan kunt u een lijst definiëren met te installeren pakketten. Cloud-init maakt automatisch gebruik van het hulpprogramma voor systeemeigen pakketbeheer voor de distro die u selecteert.
 
-We werken actief samen met onze goedgekeurde Linux distro-partners om cloud-init-afbeeldingen beschikbaar te hebben in de Azure-marktplaats. Deze afbeeldingen zorgen ervoor dat uw cloud-init-implementaties en -configuraties naadloos werken met VM's en virtuele machineschaalsets. Meer informatie over cloud-init op Azure:
+We werken actief samen met onze goedgekeurde Linux distro-partners om cloud-init-afbeeldingen beschikbaar te hebben in de Azure-marktplaats. Deze afbeeldingen zorgen ervoor dat uw cloud-init-implementaties en -configuraties naadloos werken met VM's en virtuele machineschaalsets.
+Meer informatie over cloud-init op Azure:
 
 - [Cloud-init-ondersteuning voor Virtuele Linux-machines in Azure](../articles/virtual-machines/linux/using-cloud-init.md)
 - [Probeer een zelfstudie over geautomatiseerde VM-configuratie met behulp van cloud-init](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md).
@@ -75,7 +76,7 @@ Leer hoe u het volgende doet:
 
 
 ## <a name="azure-custom-script-extension"></a>Aangepaste scriptextensie voor Azure
-De Azure Custom Script-extensie voor [Linux](../articles/virtual-machines/linux/extensions-customscript.md) of [Windows](../articles/virtual-machines/windows/extensions-customscript.md) downloadt en voert scripts uit op Azure VM's. U de extensie gebruiken wanneer u een vm maakt of wanneer de vm in gebruik is. 
+De Azure Custom Script-extensie voor [Linux](../articles/virtual-machines/linux/extensions-customscript.md) of [Windows](../articles/virtual-machines/windows/extensions-customscript.md) downloadt en voert scripts uit op Azure VM's. U de extensie gebruiken wanneer u een vm maakt of wanneer de vm in gebruik is.
 
 Scripts kunnen worden gedownload van Azure-opslag of een openbare locatie, zoals een GitHub-opslagplaats. Met de aangepaste scriptextensie u scripts schrijven in elke taal die op de bron-VM wordt uitgevoerd. Deze scripts kunnen worden gebruikt om toepassingen te installeren of de VM naar wens te configureren. Om referenties te beveiligen, kunnen gevoelige informatie zoals wachtwoorden worden opgeslagen in een beveiligde configuratie. Deze referenties worden alleen gedecodeerd in de VM.
 
@@ -130,6 +131,17 @@ Leer hoe u het volgende doet:
 
 - [Maak een ontwikkelinfrastructuur op een Linux-VM in Azure met Jenkins, GitHub en Docker.](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md)
 
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
+[Azure Resource Manager](../articles/azure-resource-manager/templates/overview.md) is de implementatie- en beheerservice voor Azure. Het biedt een beheerlaag waarmee u resources in uw Azure-abonnement maken, bijwerken en verwijderen. U gebruikt beheerfuncties, zoals toegangscontrole, vergrendelingen en tags, om uw resources na implementatie te beveiligen en te ordenen.
+
+Leer hoe u het volgende doet:
+
+- [Implementeer spotVM's met behulp van een resourcemanagersjabloon](../articles/virtual-machines/linux/spot-template.md).
+- [Een Azure Virtual Machine implementeren met C# en een resourcemanagersjabloon](../articles/virtual-machines/windows/csharp-template.md).
+- [Maak een virtuele Windows-machine op basis van een resourcemanagersjabloon.](../articles/virtual-machines/windows/ps-template.md)
+- [Download de sjabloon voor een vm](../articles/virtual-machines/windows/download-template.md).
+- [Maak een azure image builder-sjabloon](../articles/virtual-machines/linux/image-builder-json.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 Er zijn veel verschillende opties om infrastructuurautomatiseringstools in Azure te gebruiken. U heeft de vrijheid om de oplossing te gebruiken die het beste past bij uw behoeften en omgeving. Als u aan de slag wilt gaan en een aantal van de tools wilt uitproberen die zijn ingebouwd in Azure, ziet u hoe u de aanpassing van een [Linux-](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) of [Windows-vm](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) automatiseren.

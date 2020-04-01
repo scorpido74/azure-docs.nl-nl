@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e348180eb94c1703ceecf2f2b00ab942ba5ff0ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536323"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435352"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreigingen in Azure Security Center
 
@@ -73,9 +73,9 @@ Azure Security Center integreert met Azure-services om uw Windows-apparaten te b
 
 Security Center verzamelt auditrecords van Linux-machines met behulp van **gecontroleerde**, een van de meest voorkomende Linux-controleframeworks. gecontroleerd leven in de hoofdlijn kernel. 
 
-* **Linux gecontroleerde waarschuwingen en Microsoft Monitoring Agent (MMA) integratie** <a name="linux-auditd"></a> - Het gecontroleerde systeem bestaat uit een subsysteem op kernelniveau, dat verantwoordelijk is voor het monitoren van systeemoproepen. Het filtert ze door een opgegeven regelset en schrijft berichten voor hen naar een socket. Security Center integreert functionaliteiten van het gecontroleerde pakket binnen de Microsoft Monitoring Agent (MMA). Deze integratie maakt het verzamelen van gecontroleerde gebeurtenissen in alle ondersteunde Linux-distributies mogelijk, zonder enige vereiste.  
+* **Linux gecontroleerde waarschuwingen en Log Analytics agent integratie** <a name="linux-auditd"></a> - Het gecontroleerde systeem bestaat uit een subsysteem op kernelniveau, dat verantwoordelijk is voor het monitoren van systeemoproepen. Het filtert ze door een opgegeven regelset en schrijft berichten voor hen naar een socket. Security Center integreert functionaliteiten van het gecontroleerde pakket binnen de Log Analytics-agent. Deze integratie maakt het verzamelen van gecontroleerde gebeurtenissen in alle ondersteunde Linux-distributies mogelijk, zonder enige vereiste.
 
-    gecontroleerde records worden verzameld, verrijkt en samengevoegd tot gebeurtenissen met behulp van de Linux MMA-agent. Security Center voegt voortdurend nieuwe analyses toe die Linux-signalen gebruiken om kwaadaardig gedrag op cloud- en on-premises Linux-machines te detecteren. Net als bij Windows-mogelijkheden omvatten deze analyses verdachte processen, dubieuze aanmeldingspogingen, het laden van kernelmodules en andere activiteiten. Deze activiteiten kunnen aangeven dat een machine wordt aangevallen of is geschonden.  
+    gecontroleerde records worden verzameld, verrijkt en samengevoegd tot gebeurtenissen met behulp van de Log Analytics-agent voor Linux-agent. Security Center voegt voortdurend nieuwe analyses toe die Linux-signalen gebruiken om kwaadaardig gedrag op cloud- en on-premises Linux-machines te detecteren. Net als bij Windows-mogelijkheden omvatten deze analyses verdachte processen, dubieuze aanmeldingspogingen, het laden van kernelmodules en andere activiteiten. Deze activiteiten kunnen aangeven dat een machine wordt aangevallen of is geschonden.  
 
     Zie de [referentietabel met waarschuwingen voor](alerts-reference.md#alerts-linux)een lijst met de Linux-waarschuwingen .
 

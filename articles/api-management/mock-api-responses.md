@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067945"
 ---
 # <a name="mock-api-responses"></a>Gesimuleerde antwoorden van een API
@@ -39,9 +39,9 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
++ Leer de [terminologie van Azure API Management](api-management-terminology.md).
 + Inzicht in het [beleidsconcept in Azure API Management](api-management-howto-policies.md).
-+ Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
++ Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Een test-API maken 
 
@@ -63,11 +63,11 @@ De stappen in deze sectie laten zien hoe u een lege API zonder back-end maakt. O
 1. Selecteer de API die u in de vorige stap hebt gemaakt.
 2. Klik op **+ Bewerking toevoegen**.
 
-    | Instelling             | Value                             | Description                                                                                                                                                                                   |
+    | Instelling             | Waarde                             | Beschrijving                                                                                                                                                                                   |
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **Weergavenaam**    | *Testaanroep*                       | Deze naam wordt weergegeven in de **ontwikkelaarsportal**.                                                                                                                                       |
     | **URL** (HTTP-woord) | GET                               | U kunt kiezen uit een van de vooraf gedefinieerde HTTP-woorden.                                                                                                                                         |
-    | **URL**             | */test*                           | Een URL-pad voor de API.                                                                                                                                                                       |
+    | **Url**             | */test*                           | Een URL-pad voor de API.                                                                                                                                                                       |
     | **Beschrijving**     |                                   | Geef een beschrijving van de bewerking die wordt gebruikt voor documentatie voor de ontwikkelaars met behulp van deze API in de **ontwikkelaarsportal**.                                                    |
     | Tabblad **Query**       |                                   | U kunt queryparameters toevoegen. Naast het invoeren van een naam en beschrijving, kunt u waarden opgeven die kunnen worden toegewezen aan deze parameter. Een van de waarden kan worden gemarkeerd als standaardwaarde (optioneel). |
     | Tabblad **Aanvraag**     |                                   | U kunt aanvraaginhoudstypen, voorbeelden en schema's definiëren.                                                                                                                                  |
@@ -78,7 +78,7 @@ De stappen in deze sectie laten zien hoe u een lege API zonder back-end maakt. O
 5. Selecteer **200 OK** uit de lijst.
 6. Selecteer **+ Weergave toevoegen** onder de kop **Representaties** aan de rechterkant.
 7. Voer '*application/json*' in het zoekvak in en selecteer het inhoudstype **application/json**.
-8. Voer in het tekstvak **Voorbeeld** `{ "sampleField" : "test" }` in.
+8. Voer in het tekstvak **Voorbeeld**`{ "sampleField" : "test" }` in.
 9. Selecteer **Maken**.
 
 ## <a name="enable-response-mocking"></a>Antwoordsimulatie inschakelen
@@ -121,7 +121,7 @@ De stappen in deze sectie laten zien hoe u een lege API zonder back-end maakt. O
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een test-API maken

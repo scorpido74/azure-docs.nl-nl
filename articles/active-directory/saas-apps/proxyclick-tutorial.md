@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Proxyclick | Microsoft Docs'
-description: In deze zelfstudie leert u hoe het configureren van eenmalige aanmelding tussen Azure Active Directory en Proxyclick.
+title: 'Zelfstudie: Azure Active Directory-integratie met Proxyclick | Microsoft Documenten'
+description: In deze zelfstudie leert u hoe u eenmalige aanmelding tussen Azure Active Directory en Proxyclick configureert.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,194 +16,194 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 6a4d1c8a390ebd1194d14c057bb32d3111bf39be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093499"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Zelfstudie: Azure Active Directory-integratie met Proxyclick
 
 In deze zelfstudie leert u hoe u Proxyclick integreert met Azure Active Directory (Azure AD).
-Deze integratie biedt de volgende voordelen:
+Deze integratie biedt deze voordelen:
 
-* U kunt Azure AD om te bepalen wie toegang tot Proxyclick heeft gebruiken.
-* U kunt uw gebruikers kunnen automatisch worden aangemeld bij Proxyclick (eenmalige aanmelding) met hun Azure AD-accounts inschakelen.
-* U kunt uw accounts in één centrale locatie kunt beheren: de Azure-portal.
+* U Azure AD gebruiken om te bepalen wie toegang heeft tot Proxyclick.
+* U uw gebruikers automatisch laten inloggen op Proxyclick (eenmalige aanmelding) met hun Azure AD-accounts.
+* U uw accounts beheren op één centrale locatie: de Azure-portal.
 
 Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Proxyclick, moet u beschikken over:
+Als u Azure AD-integratie met Proxyclick wilt configureren, moet u het:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u zich aanmelden voor een [proefversie van één maand](https://azure.microsoft.com/pricing/free-trial/).
-* Een Proxyclick-abonnement met eenmalige aanmelding ingeschakeld.
+* Een Azure AD-abonnement Als u geen Azure [AD-omgeving](https://azure.microsoft.com/pricing/free-trial/)hebt, u zich aanmelden voor een proefversie van één maand.
+* Een Proxyclick-abonnement dat één aanmelding heeft ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie configureert en Azure AD eenmalige aanmelding testen in een testomgeving.
+In deze zelfstudie configureert en test u Azure AD single sign-on in een testomgeving.
 
-* Proxyclick ondersteunt SP geïnitieerde en IdP gestart door SSO.
+* Proxyclick ondersteunt door SP geïnitieerde en IdP-geïnitieerde SSO.
 
-## <a name="add-proxyclick-from-the-gallery"></a>Proxyclick uit de galerie toevoegen
+## <a name="add-proxyclick-from-the-gallery"></a>Proxyclick toevoegen vanuit de galerie
 
-Als u de integratie van Proxyclick in Azure AD instelt, moet u Proxyclick uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Proxyclick in Azure AD wilt instellen, moet u Proxyclick vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer in het linkerdeelvenster **Azure Active Directory**:
+1. Selecteer azure **active directory**in de [Azure-portal](https://portal.azure.com)in het linkerdeelvenster:
 
     ![Selecteer Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfstoepassingen** > **alle toepassingen**:
+2. Ga naar **Enterprise-toepassingen** > **Alle toepassingen:**
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u wilt een toepassing hebt toegevoegd, selecteert u **nieuwe toepassing** aan de bovenkant van het venster:
+3. Als u een toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** boven aan het venster:
 
     ![Nieuwe toepassing selecteren](common/add-new-app.png)
 
-4. Voer in het zoekvak **Proxyclick**. Selecteer **Proxyclick** in de zoekresultaten en selecteer vervolgens **toevoegen**.
+4. Voer **proxyklik**in in het zoekvak . Selecteer **Proxyclick** in de zoekresultaten en selecteer **Toevoegen**.
 
      ![Zoekresultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie maakt u configureren en testen van Azure AD eenmalige aanmelding met Proxyclick met behulp van een testgebruiker met de naam Britta Simon.
-Om in te schakelen eenmalige aanmelding, moet u een relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Proxyclick vast te stellen.
+In deze sectie configureert en test u Azure AD single sign-on met Proxyclick met behulp van een testgebruiker genaamd Britta Simon.
+Als u eenmalige aanmelding wilt inschakelen, moet u een relatie tot stand brengen tussen een Azure AD-gebruiker en de desbetreffende gebruiker in Proxyclick.
 
-Als u wilt configureren en Azure AD eenmalige aanmelding met Proxyclick testen, moet u deze stappen:
+Als u Azure AD-enkele aanmelding met Proxyclick wilt configureren en testen, moet u de volgende stappen uitvoeren:
 
-1. **[Azure AD eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**  om in te schakelen van de functie voor uw gebruikers.
-2. **[Configureren van eenmalige aanmelding Proxyclick](#configure-proxyclick-single-sign-on)**  aan de toepassing.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  voor het testen van Azure AD eenmalige aanmelding.
-4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  zodat Azure AD eenmalige aanmelding voor de gebruiker.
-5. **[Maak een testgebruiker Proxyclick](#create-a-proxyclick-test-user)**  dat gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**  om te controleren of de configuratie werkt.
+1. **[Configureer de single sign-on van Azure AD](#configure-azure-ad-single-sign-on)** om de functie voor uw gebruikers in te schakelen.
+2. **[Proxyclick single sign-on](#configure-proxyclick-single-sign-on)** configureren aan de toepassingszijde.
+3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)** om azure AD-enkele aanmelding te testen.
+4. **[Wijs de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)** toe om azure AD-enkele aanmelding voor de gebruiker in te schakelen.
+5. **[Maak een proxyclick-testgebruiker](#create-a-proxyclick-test-user)** die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Test eenmalige aanmelding](#test-single-sign-on)** om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
-In deze sectie schakelt u Azure AD eenmalige aanmelding in de Azure-portal.
+In deze sectie schakelt u Azure AD single sign-on in de Azure-portal in.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Proxyclick, de volgende stappen uitvoeren:
+Ga als volgt te werk om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD met Proxyclick te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/), selecteert u op de pagina Proxyclick toepassingen integratie **eenmalige aanmelding**:
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina Proxyclick-toepassingsintegratie de optie **Eén aanmelding:**
 
-    ![Schakel eenmalige aanmelding](common/select-sso.png)
+    ![Eén aanmelding selecteren](common/select-sso.png)
 
-2. In de **selecteert u een methode voor eenmalige aanmelding** in het dialoogvenster, selecteer **SAML/WS-Federation** modus voor eenmalige aanmelding inschakelen:
+2. Selecteer in het dialoogvenster **Een enkele aanmeldingsmethode** selecteren de **SAML/WS-Fed-modus** om eenmalige aanmelding in te schakelen:
 
-    ![Selecteer een methode voor eenmalige aanmelding](common/select-saml-option.png)
+    ![Eén aanmeldingsmethode selecteren](common/select-saml-option.png)
 
-3. Op de **instellen van eenmalige aanmelding met SAML** weergeeft, schakelt de **bewerken** pictogram opent de **SAML-basisconfiguratie** in het dialoogvenster:
+3. Selecteer op de pagina **Eén aanmelding instellen met SAML** het pictogram **Bewerken** om het dialoogvenster **BasisSAML-configuratie** te openen:
 
-    ![Pictogram bewerken](common/edit-urls.png)
+    ![Bewerkpictogram](common/edit-urls.png)
 
-4. In de **SAML-basisconfiguratie** in het dialoogvenster, als u wilt configureren van de toepassing in de modus voor IdP gestart door de volgende stappen uitvoeren.
+4. Als u de toepassing in de idp-startmodus wilt configureren, neemt u in het dialoogvenster **BasisSAML-configuratie** de volgende stappen.
 
-    ![In het dialoogvenster van Basic SAML-configuratie](common/idp-intiated.png)
+    ![Dialoogvenster BasisSAML-configuratie](common/idp-intiated.png)
 
-    1. In de **id** vak, een URL opgeven in dit patroon:
+    1. Voer in het vak **Id** een URL in dit patroon in:
    
        `https://saml.proxyclick.com/init/<companyId>`
 
-    1. In de **antwoord-URL** vak, een URL opgeven in dit patroon:
+    1. Voer in het vak **URL van antwoord** een URL in dit patroon in:
 
        `https://saml.proxyclick.com/consume/<companyId>`
 
-5. Als u configureren van de toepassing in de modus SP geïnitieerde wilt, selecteert u **extra URL's instellen**. In de **aanmeldings-URL** vak, een URL opgeven in dit patroon:
+5. Als u de toepassing wilt configureren in de door SP geïnitieerde modus, selecteert u **Extra URL's instellen**. Voer in het vak **Aanmelding smaken van URL** een URL in dit patroon in:
    
    `https://saml.proxyclick.com/init/<companyId>`
 
-    ![Proxyclick domein en URL's, eenmalige aanmelding informatie](common/metadata-upload-additional-signon.png)
+    ![Informatie over proxyclick-domein en URL's met eenmalige aanmelding](common/metadata-upload-additional-signon.png)
 
     
 
     > [!NOTE]
-    > Deze waarden zijn tijdelijke aanduidingen. U moet gebruiken de werkelijke-id, antwoord-URL en aanmeldings-URL. Stappen voor het ophalen van deze waarden worden later in deze zelfstudie beschreven.
+    > Deze waarden zijn tijdelijke aanduidingen. U moet de werkelijke id, de URL van het antwoord en de url van aanmelding gebruiken. Stappen voor het verkrijgen van deze waarden worden later beschreven in deze zelfstudie.
 
-6. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, selecteer de **downloaden** koppelen naast **certificaat (Base64)** , overeenkomstig uw vereisten en sla het certificaat op uw computer:
+6. Selecteer op de pagina **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de koppeling **Downloaden** naast **Certificaat (Base64)** en sla het certificaat op uw computer op:
 
     ![De koppeling om het certificaat te downloaden](common/certificatebase64.png)
 
-7. In de **Proxyclick instellen** sectie, kopieert u de juiste URL's, op basis van uw vereisten:
+7. Kopieer in de sectie **Proxyclick instellen** de juiste URL's op basis van uw vereisten:
 
-    ![De configuratie van URL's kopiëren](common/copy-configuration-urls.png)
+    ![De configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
     1. **Aanmeldings-URL**.
 
-    1. **Azure AD Identifier**.
+    1. **Azure AD-id**.
 
-    1. **Afmeldings-URL van**.
+    1. **Url van afmelden**.
 
-### <a name="configure-proxyclick-single-sign-on"></a>Proxyclick eenmalige aanmelding configureren
+### <a name="configure-proxyclick-single-sign-on"></a>Proxyclick-aanmelding configureren
 
-1. In een nieuw browservenster aanmelden bij uw bedrijf Proxyclick site als een beheerder.
+1. Meld u in een nieuw browservenster aan bij uw proxyclick-bedrijfssite als beheerder.
 
-2. Selecteer **& Accountinstellingen**:
+2. Selecteer **Instellingen voor account&:**
 
-    ![Selecteer het Account en -instellingen](./media/proxyclick-tutorial/configure1.png)
+    ![Accountinstellingen & selecteren](./media/proxyclick-tutorial/configure1.png)
 
-3. Schuif omlaag naar de **integraties** sectie en selecteer **SAML**:
+3. Schuif omlaag naar de sectie **Integraties** en selecteer **SAML:**
 
-    ![Selecteer SAML](./media/proxyclick-tutorial/configure2.png)
+    ![SAML selecteren](./media/proxyclick-tutorial/configure2.png)
 
-4. In de **SAML** sectie, de volgende stappen uitvoeren.
+4. Neem in de sectie **SAML** de volgende stappen.
 
-    ![Sectie voor SAML](./media/proxyclick-tutorial/configure3.png)
+    ![SAML-sectie](./media/proxyclick-tutorial/configure3.png)
 
-    1. Kopiëren de **URL voor SAML-consument** waarde en plak deze in de **antwoord-URL** vak de **SAML-basisconfiguratie** in het dialoogvenster in de Azure-portal.
+    1. Kopieer de **URL-waarde van SAML-consument** en plak deze in het vak **URL van antwoord** in het dialoogvenster **BasisSAML-configuratie** in de Azure-portal.
 
-    1. Kopiëren de **Omleidings-URL voor SAML SSO-** waarde en plak deze in de **aanmeldings-URL** en **id** dialoogvensters in de **SAML-basisconfiguratie** in het dialoogvenster in Azure portal.
+    1. Kopieer de **URL-waarde van SAML SSO Redirect** en plak deze in de vakken **Aanmelden op URL** en **Id** in het dialoogvenster **BasisSAML-configuratie** in de Azure-portal.
 
-    1. In de **SAML-aanvraag methode** in de lijst met **HTTP-omleiding**.
+    1. Selecteer **HTTP Redirect**in de lijst **SAML-aanvraagmethode** .
 
-    1. In de **verlener** vak, plak de **Azure AD-id** waarde die u hebt gekopieerd uit de Azure-portal.
+    1. Plak in het vak **Uitgever** de Azure **AD-id-waarde** die u hebt gekopieerd vanuit de Azure-portal.
 
-    1. In de **eindpunt-URL voor SAML 2.0** vak, plak de **aanmeldings-URL** waarde die u hebt gekopieerd uit de Azure-portal.
+    1. Plak in het vak **SAML 2.0-eindpunt URL** de **url-waarde aanmelding** die u hebt gekopieerd uit de Azure-portal.
 
-    1. Open in Kladblok, het certificaatbestand dat u hebt gedownload van de Azure-portal. Plak de inhoud van dit bestand in de **certificaat** vak.
+    1. Open in Kladblok het certificaatbestand dat u hebt gedownload van de Azure-portal. Plak de inhoud van dit bestand in het vak **Certificaat.**
 
     1. Selecteer **Save changes**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker Britta Simon met de naam in Azure portal.
+In deze sectie maakt u een testgebruiker met de naam Britta Simon in de Azure-portal.
 
-1. Selecteer in de Azure portal, **Azure Active Directory** selecteren in het linkerdeelvenster **gebruikers**, en selecteer vervolgens **alle gebruikers**:
+1. Selecteer in de Azure-portal **Azure Active Directory** in het linkerdeelvenster, selecteer **Gebruikers**en selecteer **Alle gebruikers:**
 
-    ![Selecteer alle gebruikers](common/users.png)
+    ![Selecteer Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm:
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm:
 
     ![Nieuwe gebruiker selecteren](common/new-user.png)
 
-3. In de **gebruiker** dialoogvenster vak, voer de volgende stappen uit.
+3. Neem **in** het dialoogvenster Gebruiker de volgende stappen.
 
-    ![In het dialoogvenster](common/user-properties.png)
+    ![Dialoogvenster Gebruiker](common/user-properties.png)
 
-    1. Voer in het vak **Naam** **Britta Simon**in.
+    1. Voer in het vak **Naam****Britta Simon**in.
   
-    1. In de **gebruikersnaam** Voer **BrittaSimon @\<uwbedrijfsdomein >.\< extensie >** . (Bijvoorbeeld BrittaSimon@contoso.com.)
+    1. Voer in het vak **Gebruikersnaam** **BrittaSimon@\<uw\< bedrijfsdomein in>. uitbreiding>**. (Bijvoorbeeld .) BrittaSimon@contoso.com
 
-    1. Selecteer **wachtwoord weergeven**, en noteer de waarde in de **wachtwoord** vak.
+    1. Selecteer **Wachtwoord weergeven**en noteer de waarde in het vak **Wachtwoord.**
 
     1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Britta Simon Azure eenmalige aanmelding door haar toegang verlenen tot Proxyclick gebruiken.
+In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door haar toegang te verlenen tot Proxyclick.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**, en selecteer vervolgens **Proxyclick**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen,** selecteer **Alle toepassingen**en selecteer **Proxyclick**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen **Proxyclick**.
+2. Selecteer **Proxyclick**in de lijst met toepassingen .
 
-    ![Lijst met toepassingen](common/all-applications.png)
+    ![Lijst van aanvragen](common/all-applications.png)
 
-3. Selecteer in het linkerdeelvenster **gebruikers en groepen**:
+3. Selecteer in het linkerdeelvenster **gebruikers en groepen:**
 
     ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
 
@@ -211,51 +211,51 @@ In deze sectie schakelt u Britta Simon Azure eenmalige aanmelding door haar toeg
 
     ![Gebruiker toevoegen selecteren](common/add-assign-user.png)
 
-5. In de **gebruikers en groepen** in het dialoogvenster, selecteer **Britta Simon** in de lijst met gebruikers, en klik op de **Selecteer** knop aan de onderkant van het venster.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen de optie **Britta Simon** in de gebruikerslijst en klik op de knop **Selecteren** onder aan het venster.
 
-6. Als u een waarde voor de rol in het SAML-verklaring verwacht in de **rol selecteren** dialoogvenster Selecteer de juiste rol voor de gebruiker in de lijst. Klik op de **Selecteer** knop aan de onderkant van het venster.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik op de knop **Selecteren** onder aan het venster.
 
 7. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
-### <a name="create-a-proxyclick-test-user"></a>Maak een testgebruiker Proxyclick
+### <a name="create-a-proxyclick-test-user"></a>Een proxyclick-testgebruiker maken
 
-Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden bij Proxyclick, moet u toe te voegen aan Proxyclick. U moet deze handmatig toevoegen.
+Als u Azure AD-gebruikers wilt laten inloggen bij Proxyclick, moet u deze toevoegen aan Proxyclick. Je moet ze handmatig toevoegen.
 
-Voor het maken van een gebruikersaccount, de volgende stappen uitvoeren:
+Als u een gebruikersaccount wilt maken, neemt u de volgende stappen:
 
-1. Aanmelden bij uw bedrijf Proxyclick site als een beheerder.
+1. Meld u aan bij uw proxyclick-bedrijfssite als beheerder.
 
-1. Selecteer **collega's** aan de bovenkant van het venster:
+1. Selecteer **Collega's** boven aan het venster:
 
     ![Collega's selecteren](./media/proxyclick-tutorial/user1.png)
 
-1. Selecteer **collega toevoegen**:
+1. Selecteer **Collega toevoegen:**
 
-    ![Selecteer toevoegen collega](./media/proxyclick-tutorial/user2.png)
+    ![Collega toevoegen selecteren](./media/proxyclick-tutorial/user2.png)
 
-1. In de **toevoegen van een collega** sectie, de volgende stappen uitvoeren.
+1. Neem **in** de sectie Een collega toevoegen de volgende stappen.
 
-    ![Een collega sectie toevoegen](./media/proxyclick-tutorial/user3.png)
+    ![Een collega-sectie toevoegen](./media/proxyclick-tutorial/user3.png)
 
-    1. In de **e** voert u het e-mailadres van de gebruiker. In dit geval **brittasimon\@contoso.com**.
+    1. Voer in het vak **E-mail** het e-mailadres van de gebruiker in. In dit geval, **brittasimon\@contoso.com**.
 
-    1. In de **voornaam** voert u de voornaam van de gebruiker. In dit geval **Julia**.
+    1. Voer in het vak **Voornaam** de voornaam van de gebruiker in. In dit geval, **Britta.**
 
-    1. In de **achternaam** voert u de achternaam van de gebruiker. In dit geval **Simon**.
+    1. Voer in het vak **Achternaam** de achternaam van de gebruiker in. In dit geval, **Simon.**
 
-    1. Selecteer **Add User**.
+    1. Selecteer **Gebruiker toevoegen**.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-Nu moet u uw configuratie Azure AD eenmalige aanmelding testen met behulp van het toegangsvenster.
+Nu moet u uw Azure AD-configuratie met eenmalige aanmelding testen met behulp van het Access-paneel.
 
-Wanneer u de tegel Proxyclick in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij de Proxyclick-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie voor meer informatie over het toegangsvenster, [toegang en gebruik apps op de portal mijn Apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wanneer u de tegel Proxyclick selecteert in het access-paneel, moet u automatisch worden aangemeld bij het exemplaar Proxyclick waarvoor u SSO hebt ingesteld. Zie [Apps openen en gebruiken op de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie over het toegangspaneel.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

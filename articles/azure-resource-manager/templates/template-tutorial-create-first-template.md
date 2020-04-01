@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ace76b9a13f44c14e348a0338ca01dd6b3948ce3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b05bccf10ef5f273a74ca49e02162fd0408230f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369928"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411723"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren
 
@@ -79,7 +79,7 @@ Gefeliciteerd, je hebt je eerste sjabloon gemaakt.
 
 Als u wilt beginnen te werken met Azure PowerShell/Azure CLI, meldt u zich aan met uw Azure-referenties.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
@@ -96,7 +96,7 @@ az login
 
 Wanneer u een sjabloon implementeert, geeft u een resourcegroep op die de bronnen bevat. Maak de resourcegroep met Azure CLI of Azure PowerShell voordat u de opdracht Implementatie uitvoert. Selecteer de tabbladen in de volgende codesectie om te kiezen tussen Azure PowerShell en Azure CLI. De CLI-voorbeelden in dit artikel zijn geschreven voor de Bash-shell.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -118,14 +118,14 @@ az group create \
 
 Als u de sjabloon wilt implementeren, gebruikt u Azure CLI of Azure PowerShell. Gebruik de resourcegroep die u hebt gemaakt. Geef een naam aan de implementatie, zodat u deze gemakkelijk identificeren in de implementatiegeschiedenis. Maak voor het gemak ook een variabele die het pad opslaat naar het sjabloonbestand. Deze variabele maakt het eenvoudiger voor u om de implementatieopdrachten uit te voeren omdat u het pad niet elke keer opnieuw hoeft te typen wanneer u implementeert.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
 New-AzResourceGroupDeployment `
   -Name blanktemplate `
   -ResourceGroupName myResourceGroup `
-  -TemplateFile $templateFile
+  -TemplateFile $templateFile 
 ```
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
@@ -144,7 +144,7 @@ az deployment group create \
 
 De opdracht Implementatie retourneert resultaten. Zoek `ProvisioningState` naar om te zien of de implementatie is geslaagd.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![PowerShell-status voor het inrichten van powerShell-implementatie](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
@@ -153,6 +153,9 @@ De opdracht Implementatie retourneert resultaten. Zoek `ProvisioningState` naar 
 ![Azure CLI-implementatieinrichtingsstatus](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
+
+> [!NOTE]
+> Als de implementatie is mislukt, gebruikt u de **foutopsporingsschakelaar** met de opdracht implementatie om de foutopsporingslogboeken weer te geven.  U ook de **verbose-schakelaar** gebruiken om de volledige foutopsporingslogboeken weer te geven.
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 

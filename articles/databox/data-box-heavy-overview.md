@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70142914"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437781"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Wat is Azure Data Box Heavy?
 
@@ -116,7 +116,7 @@ Ga voor de meest recente informatie over de beschikbaarheid van regio's voor Dat
 
 Volg de volgende stappen om je aan te melden voor Data Box Heavy:
 
-1. Meld u aan bij Azure Portal op: https://portal.azure.com.
+1. [Meld u aan bij de Azure-portal](https://portal.azure.com).
 2. Klik **op + Een resource maken** om een nieuwe bron te maken. Zoek naar **Azure Data Box**. Selecteer de **Azure Data Box**-service.
 3. Klik **op Maken**.
 4. Kies het abonnement dat u wilt gebruiken voor Data Box Heavy. Selecteer de regio waar u de Data Box Heavy-resource wilt implementeren. Klik bij de optie **Data Box Heavy** op **Registreren**.

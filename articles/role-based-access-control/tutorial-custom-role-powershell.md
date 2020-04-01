@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een aangepaste rol maken voor Azure-resources met Azure PowerShell'
-description: Ga aan de slag met het maken van een aangepaste rol voor Azure-resources met behulp van Azure PowerShell in deze zelf studie.
+title: 'Zelfstudie: Een aangepaste rol voor Azure-resources maken met Azure PowerShell'
+description: Ga aan de slag met het maken van een aangepaste rol voor Azure-resources met Azure PowerShell in deze zelfstudie.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: d337e31f554c0aabbb94771aa7bfca4afb19a431
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77138280"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure PowerShell
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Zelfstudie: Een aangepaste rol maken voor Azure-resources met Azure PowerShell
 
-Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure PowerShell een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheersvenster van een abonnement te zien en ook om ondersteuningstickets te openen.
+Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure PowerShell een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheervenster van een abonnement te zien en ook om ondersteuningstickets te openen.
 
 In deze zelfstudie leert u het volgende:
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 > * Een aangepaste rol bijwerken
 > * Een aangepaste rol verwijderen
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: d7d697e3ea4b1b683275d53f6e407396f474b37b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7bb9d3ce4c80761362c1ea564f6a632bc7a7f68a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77462017"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398289"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Gebeurtenissen verzenden naar en ontvangen van gebeurtenissen vanuit Azure Event Hubs - .NET Core (Azure.Messaging.EventHubs) 
 In deze snelle start ziet u hoe u gebeurtenissen verzendt naar en ontvangt vanuit een gebeurtenishub met behulp van de **Azure.Messaging.EventHubs** .NET Core-bibliotheek. 
@@ -34,7 +34,7 @@ Als u nieuw bent in Azure Event Hubs, raadpleegt u [het overzicht van gebeurteni
 Voor het voltooien van deze snelstart moet aan de volgende vereisten worden voldaan:
 
 - **Microsoft Azure-abonnement**. Als u Azure-services wilt gebruiken, waaronder Azure Event Hubs, hebt u een abonnement nodig.  Als u geen bestaand Azure-account hebt, u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/) of uw voordelen voor MSDN-abonnees gebruiken wanneer u een [account maakt.](https://azure.microsoft.com)
-- **Microsoft Visual Studio 2019**. De Azure Event Hubs-clientbibliotheek maakt gebruik van nieuwe functies die zijn geïntroduceerd in C# 8.0.  U de bibliotheek nog steeds gebruiken met oudere versies van C#, maar een deel van de functionaliteit ervan is niet beschikbaar.  Als u deze functies wilt inschakelen, moet u [zich richten op .NET Core 3.0](/dotnet/standard/frameworks#how-to-specify-target-frameworks) of [de taalversie opgeven die](/dotnet/csharp/language-reference/configure-language-version#override-a-default) u wilt gebruiken (8.0 of hoger). Als u Visual Studio gebruikt, zijn versies voorafgaand aan Visual Studio 2019 niet compatibel met de tools die nodig zijn om C# 8.0-projecten te bouwen. Visual Studio 2019, inclusief de gratis Community-editie, is [hier](https://visualstudio.microsoft.com/vs/) te downloaden
+- **Microsoft Visual Studio 2019**. De Azure Event Hubs-clientbibliotheek maakt gebruik van nieuwe functies die zijn geïntroduceerd in C# 8.0.  U de bibliotheek nog steeds gebruiken met oudere versies van C#, maar een deel van de functionaliteit ervan is niet beschikbaar.  Als u deze functies wilt inschakelen, moet u [zich richten op .NET Core 3.0](/dotnet/standard/frameworks#how-to-specify-target-frameworks) of [de taalversie opgeven die](/dotnet/csharp/language-reference/configure-language-version#override-a-default) u wilt gebruiken (8.0 of hoger). Als u Visual Studio gebruikt, zijn versies vóór Visual Studio 2019 niet compatibel met de tools die nodig zijn om C# 8.0-projecten te bouwen. Visual Studio 2019, inclusief de gratis Community-editie, is [hier](https://visualstudio.microsoft.com/vs/) te downloaden
 - **Maak een naamruimte voor gebeurtenishubs en een gebeurtenishub**. De eerste stap is om de [Azure-portal](https://portal.azure.com) te gebruiken om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die uw toepassing nodig heeft om te communiceren met de gebeurtenishub. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Download vervolgens de **verbindingstekenreeks voor de naamruimte van gebeurtenishubs** door instructies uit het artikel te volgen: [Verbindingstekenreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de verbindingstekenreeks later in deze snelstart.
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden 
@@ -118,6 +118,9 @@ In deze sectie ziet u hoe u een .NET Core-consoletoepassing maakt om gebeurtenis
 In deze sectie ziet u hoe u een .NET Core-consoletoepassing schrijft die berichten ontvangt van een gebeurtenishub met behulp van een gebeurtenisprocessor. De gebeurtenisprocessor vereenvoudigt het ontvangen van gebeurtenissen van gebeurtenishubs door permanente controlepunten en parallelle ontvangsts van die gebeurtenishubs te beheren. Een gebeurtenisprocessor is gekoppeld aan een specifieke gebeurtenishub en een consumentengroep. Het ontvangt gebeurtenissen van meerdere partities in de gebeurtenishub, waardoor ze worden doorgedeeld aan een handlergemachtigde voor verwerking met behulp van code die u opgeeft. 
 
 
+> [!NOTE]
+> Als u op Azure Stack Hub werkt, kan dat platform een andere versie van Storage Blob SDK ondersteunen dan die welke doorgaans beschikbaar zijn op Azure. Als u bijvoorbeeld op [Azure Stack Hub-versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)draait, is de hoogst beschikbare versie voor de opslagservice versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie 2017-11-09 van de opslagservice te targeten. Zie [dit voorbeeld op GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)voor een voorbeeld over het targeten van een specifieke Storage API-versie. Voor meer informatie over de Azure Storage-serviceversies die worden ondersteund op Azure Stack Hub, raadpleegt u [Azure Stack Hub-opslag: verschillen en overwegingen](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Een Azure Storage en een blobcontainer maken
 In deze snelstart gebruikt u Azure Storage als controlepuntarchief. Volg deze stappen om een Azure Storage-account te maken. 
 
@@ -125,7 +128,7 @@ In deze snelstart gebruikt u Azure Storage als controlepuntarchief. Volg deze st
 2. [Een blob-container maken](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [De verbindingstekenreeks naar het opslagaccount weerleggen](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
-    Noteer de verbindingstekenreeks en de containernaam. U gebruikt ze in de ontvangstcode. 
+    Noteer de verbindingstekenreeks en de containernaam. Je gebruikt ze in de ontvangstcode. 
 
 
 ### <a name="create-a-project-for-the-receiver"></a>Een project maken voor de ontvanger

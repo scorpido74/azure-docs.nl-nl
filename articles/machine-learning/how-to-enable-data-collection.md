@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c481a2e12d83e865025cd90e59e0eba572ad9a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771390"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475442"
 ---
 # <a name="collect-data-for-models-in-production"></a>Gegevens verzamelen voor modellen in productie
 
@@ -129,11 +129,7 @@ Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw 
 
    ![De service bewerken](././media/how-to-enable-data-collection/EditService.PNG)
 
-1. Selecteer **modelverzameling inschakelen**in **geavanceerde instellingen**.
-
-    [![Gegevensverzameling selecteren](./media/how-to-enable-data-collection/CheckDataCollection.png)](././media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
-
-   U ook **AppInsights-diagnose inschakelen** selecteren om de status van uw service bij te houden.
+1. Selecteer in **Geavanceerde instellingen**de optie **Application Insights-diagnostiek en gegevensverzameling inschakelen.**
 
 1. Selecteer **Bijwerken** om de wijzigingen toe te passen.
 
@@ -151,9 +147,7 @@ U op elk gewenst moment stoppen met het verzamelen van gegevens. Gebruik Python-
 
    [![De optie Bewerken selecteren](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-1. Schakel in **geavanceerde instellingen** **modelgegevensverzameling in schakelen**uit.
-
-    [![Het selectievakje Gegevensverzameling uitschakelen](./media/how-to-enable-data-collection/UncheckDataCollection.png)](././media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+1. In **Geavanceerde instellingen**u de diagnose en **gegevensverzameling van Application Insights inschakelen.**
 
 1. Selecteer **Bijwerken** om de wijziging toe te passen.
 

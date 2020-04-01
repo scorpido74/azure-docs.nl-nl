@@ -3,12 +3,12 @@ title: Onderwerpen voor geavanceerde upgrade van toepassingen
 description: Dit artikel behandelt een aantal geavanceerde onderwerpen met betrekking tot het upgraden van een Service Fabric-toepassing.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845424"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422814"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade servicefabric-toepassing: geavanceerde onderwerpen
 
@@ -20,9 +20,9 @@ Op dezelfde manier kunnen servicetypen uit een toepassing worden verwijderd als 
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Voorkom dat de verbinding daalt tijdens geplande downtime van de geplande servicezonder service (preview)
 
-Voor geplande stateless instance downtimes, zoals application/cluster upgrade of node deactivation, kunnen verbindingen worden verwijderd als gevolg van het blootgestelde eindpunt dat wordt verwijderd nadat het naar beneden is.
+Voor geplande stateless instance downtimes, zoals application/cluster upgrade of node deactivation, kunnen verbindingen worden verwijderd als gevolg van het blootgestelde eindpunt wordt verwijderd nadat de instantie uitvalt, wat resulteert in gedwongen verbindingssluitingen.
 
-Om dit te voorkomen, configureert u de functie *RequestDrain* (preview) door een vertragingsduur voor een *replica-instantie toe te* voegen in de serviceconfiguratie. Dit zorgt ervoor dat het eindpunt dat wordt geadverteerd door de instantie staatloos wordt verwijderd *voordat* de vertragingstimer wordt gestart voor het sluiten van de instantie. Met deze vertraging kunnen bestaande aanvragen gracieus worden afgetapt voordat de instantie daadwerkelijk naar beneden gaat. Clients worden op de hoogte gesteld van de eindpuntwijziging via de callback-functie, zodat ze het eindpunt opnieuw kunnen oplossen en kunnen voorkomen dat nieuwe aanvragen naar de instantie worden verzonden.
+Om dit te voorkomen, configureert u de functie *RequestDrain* (preview) door een *instantie afsluitingsduur* toe te voegen aan de serviceconfiguratie om afvoer mogelijk te maken tijdens het ontvangen van aanvragen van andere services binnen het cluster en gebruikt u Reverse Proxy of gebruikt u resolve API met meldingsmodel voor het bijwerken van eindpunten. Dit zorgt ervoor dat het eindpunt dat door de instantie staatloos wordt *geadverteerd,* wordt verwijderd voordat de vertraging begint voordat de instantie wordt gesloten. Met deze vertraging kunnen bestaande aanvragen gracieus worden afgetapt voordat de instantie daadwerkelijk naar beneden gaat. Clients worden op de hoogte gesteld van de wijziging van het eindpunt door een callback-functie op het moment van het starten van de vertraging, zodat ze het eindpunt opnieuw kunnen oplossen en kunnen voorkomen dat nieuwe aanvragen naar de instantie worden verzonden die naar beneden gaat.
 
 ### <a name="service-configuration"></a>Serviceconfiguratie
 
@@ -50,24 +50,8 @@ Er zijn verschillende manieren om de vertraging aan de servicezijde te configure
 
 ### <a name="client-configuration"></a>Clientconfiguratie
 
-Als u een melding wilt ontvangen wanneer een eindpunt`ServiceManager_ServiceNotificationFilterMatched`is gewijzigd, kunnen klanten een callback registreren ( ) als volgt: 
-
-```csharp
-    var filterDescription = new ServiceNotificationFilterDescription
-    {
-        Name = new Uri(serviceName),
-        MatchNamePrefix = true
-    };
-    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
-    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
-
-private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
-{
-      // Resolve service to get a new endpoint list
-}
-```
-
-De wijzigingsmelding is een indicatie dat de eindpunten zijn gewijzigd, dat de client de eindpunten opnieuw moet oplossen en geen gebruik moet maken van de eindpunten die niet meer worden geadverteerd omdat ze binnenkort naar beneden gaan.
+Als u een melding wilt ontvangen wanneer een eindpunt is gewijzigd, moeten clients een callback registreren zie [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
+De wijzigingsmelding is een indicatie dat de eindpunten zijn gewijzigd, dat de client de eindpunten opnieuw moet oplossen en geen gebruik moet maken van de eindpunten die niet meer worden geadverteerd, omdat ze binnenkort naar beneden zullen gaan.
 
 ### <a name="optional-upgrade-overrides"></a>Optionele upgradeoverschrijvingen
 
@@ -80,6 +64,16 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 ```
 
 De vertragingsduur is alleen van toepassing op de ingeroepen upgrade-instantie en verandert anders geen afzonderlijke configuratie van servicevertraging. U dit bijvoorbeeld gebruiken om `0` een vertraging op te geven om vooraf geconfigureerde upgradevertragingen over te slaan.
+
+> [!NOTE]
+> De instelling voor het aftappen van aanvragen wordt niet gehonoreerd voor aanvragen van Azure Load balancer. De instelling wordt niet gehonoreerd als de oproepservice gebruik maakt van op klachten gebaseerde oplossing.
+>
+>
+
+> [!NOTE]
+> Deze functie kan worden geconfigureerd in bestaande services met behulp van Update-ServiceFabricService-cmdlet zoals hierboven vermeld, wanneer de versie van de clustercode 7.1.XXX of hoger is.
+>
+>
 
 ## <a name="manual-upgrade-mode"></a>Handmatige upgrademodus
 

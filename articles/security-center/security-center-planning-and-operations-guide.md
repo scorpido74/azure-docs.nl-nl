@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282690"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435616"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Plannings- en bedieningsgids voor Azure Security Center
 Deze handleiding is voor IT-professionals, IT-architecten, informatiebeveiligingsanalisten en cloudbeheerders die van plan zijn Azure Security Center te gebruiken.
@@ -131,15 +131,15 @@ In Security Center wordt voor elk van uw Azure-abonnementen automatisch een stan
 Voordat u beleidsregels voor veiligheid configureert, moet u elk van de [aanbevelingen voor beveiliging](https://docs.microsoft.com/azure/security-center/security-center-recommendations) controleren en bepalen of deze beleidsregels geschikt zijn voor uw verschillende abonnementen en resourcegroepen. Het is ook belangrijk om te begrijpen welke actie moet worden ondernomen om aan de slag te gaan met beveiligingsaanbevelingen en wie in uw organisatie verantwoordelijk is voor het controleren op nieuwe aanbevelingen en het nemen van de benodigde stappen.
 
 ## <a name="data-collection-and-storage"></a>Gegevensverzameling en -opslag
-Azure Security Center gebruikt de Microsoft Monitoring Agent – dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service – om beveiligingsgegevens van uw virtuele machines te verzamelen. [Gegevens die worden verzameld](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) van deze agent worden opgeslagen in uw Log Analytics-werkruimte(n).
+Azure Security Center gebruikt de Log Analytics-agent – dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service – om beveiligingsgegevens van uw virtuele machines te verzamelen. [Gegevens die worden verzameld](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) van deze agent worden opgeslagen in uw Log Analytics-werkruimte(n).
 
 ### <a name="agent"></a>Agent
 
-Als automatisch inrichten is ingeschakeld in het beveiligingsbeleid, wordt de Microsoft Monitoring Agent (voor [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) of [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)) geïnstalleerd op alle ondersteunde virtuele machines van Azure en op nieuwe virtuele machines die worden gemaakt. Als de Microsoft Monitoring Agent al op de virtuele machine of computer is geïnstalleerd, maakt Azure Security Center gebruik van de huidige geïnstalleerde agent. Het proces van de agent is ontworpen om niet-invasief te zijn en minimale invloed te hebben op de prestaties van de virtuele machine.
+Wanneer automatische inrichting is ingeschakeld in het beveiligingsbeleid, wordt de agent Log Analytics (voor [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) of [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)geïnstalleerd op alle ondersteunde Azure VM's en alle nieuwe die zijn gemaakt. Als de VM of computer de loganalytics-agent al heeft geïnstalleerd, maakt Azure Security Center gebruik van de huidige geïnstalleerde agent. Het proces van de agent is ontworpen om niet-invasief te zijn en minimale invloed te hebben op de prestaties van de virtuele machine.
 
-De Microsoft Monitoring Agent voor Windows vereist TCP-poort 443. Zie de [Handleiding voor het oplossen van problemen met Azure Security Center](security-center-troubleshooting-guide.md) voor meer informatie.
+De Log Analytics-agent voor Windows vereist tcp-poort 443. Zie de [Handleiding voor het oplossen van problemen met Azure Security Center](security-center-troubleshooting-guide.md) voor meer informatie.
 
-Als u gegevensverzameling op een bepaald moment wilt uitschakelen, kunt u dat doen in het beveiligingsbeleid. Omdat de Microsoft Monitoring Agent echter kan worden gebruikt door andere Azure-beheer- en bewakingsservices, wordt de agent niet automatisch verwijderd wanneer u het verzamelen van gegevens uitschakelt in Security Center. U kunt de agent indien nodig echter handmatig verwijderen.
+Als u gegevensverzameling op een bepaald moment wilt uitschakelen, kunt u dat doen in het beveiligingsbeleid. Omdat de Log Analytics-agent echter kan worden gebruikt door andere Azure-beheer- en bewakingsservices, wordt de agent niet automatisch verwijderd wanneer u het verzamelen van gegevens uitschakelt in security center. U kunt de agent indien nodig echter handmatig verwijderen.
 
 > [!NOTE]
 > Lees de [veelgestelde vragen over Azure Security Center](faq-vms.md) (Engelstalig) als u een lijst met ondersteunde virtuele machines nodig hebt.
@@ -148,7 +148,7 @@ Als u gegevensverzameling op een bepaald moment wilt uitschakelen, kunt u dat do
 
 Een werkruimte is een Azure-resource die als een container voor gegevens fungeert. U of andere leden van uw organisatie kunnen meerdere werkruimten gebruiken om verschillende gegevenssets te beheren die worden verzameld uit de gehele of delen van uw IT-infrastructuur.
 
-Gegevens die (namens Azure Security Center) via de Microsoft Monitoring Agent worden verzameld, worden opgeslagen in een bestaande Log Analytics-werkruimte die is gekoppeld aan uw Azure-abonnement, of in een nieuwe werkruimte, rekening houdend met de geolocatie van de virtuele machine.
+Gegevens die worden verzameld van de Log Analytics-agent (namens Azure Security Center) worden opgeslagen in een bestaande Log Analytics-werkruimte(s) die zijn gekoppeld aan uw Azure-abonnement of een nieuwe werkruimte(s), rekening houdend met de geo van de VM.
 
 In Azure Portal kunt u bladeren om een overzicht te zien van uw Log Analytics-werkruimten, inclusief alle werkruimten die door Azure Security Center zijn gemaakt. Er wordt een gerelateerde resourcegroep gemaakt voor nieuwe werkruimten. Beide volgen deze naamconventie:
 

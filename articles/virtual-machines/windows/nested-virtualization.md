@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 16f5bed5a2342bb1d120d0d3dc853e0bc44376dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d127d3f9e66b7d2d40aa420e2116fee17d996514
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033127"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437295"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Geneste virtualisatie inschakelen in een Azure VM
 
@@ -26,7 +26,7 @@ In dit artikel wordt hyper-v op een Azure VM ingeschakeld en wordt de internetve
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Een Azure VM met nestingmaken
 
-Maak een nieuwe Windows Server 2016 Azure VM.  Voor snel naslagwerk ondersteunen alle virtuele v3-machines geneste virtualisatie. Voor een volledige lijst met virtuele machineformaten die nesten ondersteunen, raadpleegt u het [artikel Azure Compute Unit](acu.md).
+Maak een nieuwe Windows Server 2016 Azure VM. Voor een volledige lijst met virtuele machineformaten die nesten ondersteunen, raadpleegt u het [artikel Azure Compute Unit](acu.md).
 
 Vergeet niet om een VM-grootte te kiezen die groot genoeg is om de eisen van een gastvirtuele machine te ondersteunen. In dit voorbeeld gebruiken we een Azure VM van D3_v3 grootte. 
 

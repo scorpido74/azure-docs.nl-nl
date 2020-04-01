@@ -4,12 +4,12 @@ description: Meer informatie over het maken en beheren van meerdere knooppuntgro
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 2045cb9a175bead3abf5b53120b9fe381a17b04b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047730"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422316"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppuntgroepen voor een cluster maken en beheren in Azure Kubernetes Service (AKS)
 
@@ -33,8 +33,8 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * Het AKS-cluster moet de Standaard SKU-loadbalancer gebruiken om meerdere knooppuntgroepen te gebruiken, de functie wordt niet ondersteund met Basis-SKU-loadbalancers.
 * Het AKS-cluster moet virtuele machineschaalsets voor de knooppunten gebruiken.
 * De naam van een knooppuntgroep mag alleen alfanumerieke tekens voor kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppuntpools moet de lengte tussen 1 en 12 tekens liggen, voor Windows-knooppuntgroepen moet de lengte tussen 1 en 6 tekens liggen.
-* Alle knooppuntgroepen moeten zich in hetzelfde virtuele netwerk en subnet bevinden.
-* Bij het maken van meerdere knooppuntgroepen in clustermaaktijd moeten alle Kubernetes-versies die door knooppuntgroepen worden gebruikt, overeenkomen met de versie die is ingesteld voor het beheervlak. Deze versie kan worden bijgewerkt nadat het cluster is ingericht met behulp van bewerkingen per knooppuntgroep.
+* Alle knooppuntgroepen moeten zich in hetzelfde virtuele netwerk bevinden.
+* Bij het maken van meerdere knooppuntgroepen in clustermaaktijd moeten alle Kubernetes-versies die door knooppuntgroepen worden gebruikt, overeenkomen met de versie die is ingesteld voor het beheervlak. Dit kan worden bijgewerkt nadat het cluster is ingericht met behulp van bewerkingen per knooppuntgroep.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
@@ -120,6 +120,29 @@ In de volgende voorbeelduitvoerwordt weergegeven dat *mynodepool* is gemaakt met
 
 > [!TIP]
 > Als er geen *VmSize* is opgegeven wanneer u een knooppuntgroep toevoegt, wordt de standaardgrootte *Standard_DS2_v3* voor Windows-knooppuntgroepen en *Standard_DS2_v2* voor Linux-knooppuntgroepen. Als er geen *OrchestratorVersion* is opgegeven, wordt deze standaard ingesteld op dezelfde versie als het besturingsvlak.
+
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Een knooppuntgroep toevoegen met een uniek subnet (voorbeeld)
+
+Een werkbelasting vereist mogelijk het splitsen van knooppunten van een cluster in afzonderlijke groepen voor logische isolatie. Deze isolatie kan worden ondersteund met afzonderlijke subnetten die zijn gewijd aan elke knooppuntgroep in het cluster. Dit kan voldoen aan vereisten, zoals het hebben van niet-aaneengesloten virtuele netwerkadresruimte om te splitsen over knooppuntgroepen.
+
+#### <a name="limitations"></a>Beperkingen
+
+* Alle subnetten die aan nodepools zijn toegewezen, moeten tot hetzelfde virtuele netwerk behoren.
+* Systeempods moeten toegang hebben tot alle knooppunten in het cluster om kritieke functionaliteit te bieden, zoals DNS-resolutie via coreDNS.
+* Toewijzing van een uniek subnet per knooppuntgroep is beperkt tot Azure CNI tijdens preview.
+* Het gebruik van netwerkbeleid met een uniek subnet per knooppuntgroep wordt niet ondersteund tijdens preview.
+
+Als u een knooppuntgroep met een speciaal subnet wilt maken, geeft u de subnetbron-id als extra parameter door bij het maken van een knooppuntgroep.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --node-count 3 \
+    --kubernetes-version 1.15.5
+    --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
+```
 
 ## <a name="upgrade-a-node-pool"></a>Een knooppuntgroep upgraden
 
@@ -695,18 +718,22 @@ az group deployment create \
 
 Het kan enkele minuten duren voordat uw AKS-cluster wordt bijgewerkt, afhankelijk van de instellingen en bewerkingen van de knooppuntgroep die u definieert in de sjabloon Resourcemanager.
 
-## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Een openbaar IP per knooppunt toewijzen in een knooppuntgroep
+## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Een openbaar IP per knooppunt toewijzen voor een knooppuntgroep (voorbeeld)
 
 > [!WARNING]
 > Tijdens de preview van het toewijzen van een openbaar IP per knooppunt, kan het niet worden gebruikt met de *Standard Load Balancer SKU in AKS* vanwege mogelijke regels voor load balancer die in strijd zijn met VM-provisioning. Als gevolg van deze beperking worden Windows-agentpools niet ondersteund met deze voorbeeldfunctie. Terwijl u in de preview zit, moet u de *Basic Load Balancer SKU* gebruiken als u een openbaar IP per knooppunt moet toewijzen.
 
-AKS-knooppunten hebben geen eigen openbare IP-adressen nodig voor communicatie. Sommige scenario's vereisen echter dat knooppunten in een knooppuntgroep hun eigen openbare IP-adressen hebben. Een voorbeeld is gaming, waarbij een console een directe verbinding moet maken met een virtuele cloudmachine om hop te minimaliseren. Dit scenario kan worden bereikt door u te registreren voor een aparte preview-functie, Node Public IP (preview).
+AKS-knooppunten hebben geen eigen openbare IP-adressen nodig voor communicatie. Scenario's vereisen echter mogelijk knooppunten in een knooppuntgroep om hun eigen specifieke openbare IP-adressen te ontvangen. Een veelvoorkomend scenario is voor gamingworkloads, waarbij een console een directe verbinding moet maken met een virtuele cloudmachine om hop te minimaliseren. Dit scenario kan worden bereikt op AKS door u te registreren voor een preview-functie, Node Public IP (preview).
+
+Registreer u voor de IP-functie Knooppunt openbaar door de volgende opdracht Azure CLI uit te geven.
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Na succesvolle registratie implementeert u een Azure [above](#manage-node-pools-using-a-resource-manager-template) Resource Manager-sjabloon volgens `enableNodePublicIP` dezelfde instructies als hierboven en voegt u de eigenschap booleaanse waarde toe aan agentPoolProfiles. Stel de `true` waarde in op standaardinstelling als `false` of deze niet is opgegeven. Deze eigenschap is een eigenschap die alleen create-time is en een minimale API-versie van 2019-06-01 vereist. Dit kan worden toegepast op zowel Linux- als Windows-knooppuntgroepen.
+Na succesvolle registratie implementeert u een Azure [above](#manage-node-pools-using-a-resource-manager-template) Resource Manager-sjabloon volgens `enableNodePublicIP` dezelfde instructies als hierboven en voegt u de booleaanse eigenschap toe aan agentPoolProfiles. Stel de `true` waarde in op standaardinstelling als `false` of deze niet is opgegeven. 
+
+Deze eigenschap is een eigenschap die alleen create-time is en een minimale API-versie van 2019-06-01 vereist. Dit kan worden toegepast op zowel Linux- als Windows-knooppuntgroepen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

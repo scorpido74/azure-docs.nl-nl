@@ -5,12 +5,12 @@ ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
 ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
-ms.openlocfilehash: 200effab70b369d69b4e89b1901578ecfe1a1b87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684102"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437901"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure App Service-verkeer beheren met Azure Traffic Manager
 > [!NOTE]
@@ -32,7 +32,7 @@ Azure Traffic Manager gebruikt vier verschillende routeringsmethoden. Deze metho
 Zie [Routeringsmethoden voor verkeersbeheer](../traffic-manager/traffic-manager-routing-methods.md)voor meer informatie .
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>App Service- en Traffic Manager-profielen
-Als u het beheer van app-appverkeer van App Service wilt configureren, maakt u een profiel in Azure Traffic Manager dat een van de vier eerder beschreven taakverdelingsmethoden gebruikt en voegt u vervolgens de eindpunten (in dit geval App Service) toe waarvoor u verkeer wilt beheren naar de Profiel. Uw app-status (uitgevoerd, gestopt of verwijderd) wordt regelmatig naar het profiel gecommuniceerd, zodat Azure Traffic Manager het verkeer dienovereenkomstig kan leiden.
+Als u het beheer van app-appverkeer voor App-services wilt configureren, maakt u een profiel in Azure Traffic Manager dat een van de vier eerder beschreven taakverdelingsmethoden gebruikt en voegt u vervolgens de eindpunten (in dit geval App Service) toe waarvoor u verkeer aan het profiel wilt beheren. Uw app-status (uitgevoerd, gestopt of verwijderd) wordt regelmatig naar het profiel gecommuniceerd, zodat Azure Traffic Manager het verkeer dienovereenkomstig kan leiden.
 
 Houd bij het gebruik van Azure-beheer rekening met de volgende punten:
 
@@ -41,8 +41,9 @@ Houd bij het gebruik van Azure-beheer rekening met de volgende punten:
 * U slechts één eindpunt van de app-service per regio opgeven in een profiel. Wanneer u een app selecteert als eindpunt voor één regio, zijn de overige apps in die regio niet beschikbaar voor selectie voor dat profiel.
 * De eindpunten van de App-service die u opgeeft in een Azure Traffic Manager-profiel, worden weergegeven onder de sectie **Domeinnamen** op de pagina Configureren voor de app in het profiel, maar kunnen daar niet worden geconfigureerd.
 * Nadat u een app aan een profiel hebt toegevoegd, wordt op de URL van de **site** op het dashboard van de portalpagina van de app de aangepaste domein-URL van de app weergegeven als u er een hebt ingesteld. Anders wordt de URL van het Traffic `contoso.trafficmanager.net`Manager-profiel weergegeven (bijvoorbeeld ). Zowel de directe domeinnaam van de app als de URL van Traffic Manager zijn zichtbaar op de pagina Configureren van de app onder de sectie **Domeinnamen.**
-* Uw aangepaste domeinnamen werken zoals verwacht, maar naast het toevoegen ervan aan uw apps, moet u ook uw DNS-kaart configureren om naar de URL van Traffic Manager te wijzen. Zie [Een bestaande aangepaste DNS-naam toewijzen aan Azure App Service](app-service-web-tutorial-custom-domain.md)voor informatie over het instellen van een aangepast domein voor een App Service-app.
+* Uw aangepaste domeinnamen werken zoals verwacht, maar naast het toevoegen ervan aan uw apps, moet u ook uw DNS-kaart configureren om naar de URL van Traffic Manager te wijzen. Zie [Een aangepaste domeinnaam configureren in Azure App Service met Traffic Manager-integratie](configure-domain-traffic-manager.md)voor informatie over het instellen van een aangepast domein voor een App Service-app.
 * U alleen apps die zich in de standaard- of premiummodus bevinden toevoegen aan een Azure Traffic Manager-profiel.
+* Als u een app toevoegt aan een Traffic Manager-profiel, wordt de app opnieuw gestart.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [Traffic Manager Overview](../traffic-manager/traffic-manager-overview.md)voor een conceptueel en technisch overzicht van Azure Traffic Manager.

@@ -1,5 +1,5 @@
 ---
-title: Een IPv6 dual stack-toepassing implementeren in het virtuele Azure-netwerk - Resource Manger-sjabloon (voorbeeld)
+title: Een IPv6 dual stack-toepassing implementeren in het virtuele Azure-netwerk - Resource Manger-sjabloon
 titlesuffix: Azure Virtual Network
 description: In dit artikel ziet u hoe u een IPv6 dual stack-toepassing implementeert met Standard Load Balancer in het virtuele Azure-netwerk met behulp van VM-sjablonen voor Azure Resource Manager.
 services: virtual-network
@@ -10,18 +10,18 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f9531b5d1decfd462a82b9d389c5af519591c83
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70012856"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420649"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Een IPv6 dual stack-toepassing implementeren in het virtuele Azure-netwerk - Sjabloon (voorbeeld)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>Een IPv6 dual stack-toepassing implementeren in het virtuele Azure-netwerk - Sjabloon
 
-In dit artikel vindt u een lijst met IPv6-configuratietaken met het gedeelte van de VM-sjabloon Azure Resource Manager dat van toepassing is op. Gebruik de in dit artikel beschreven sjabloon om een IPv4 + IPv6-toepassing (Dual Stack + IPv6) te implementeren met behulp van Standard Load Balancer in Azure die een virtueel dual stack-netwerk met IPv4- en IPv6-subnetten bevat, een Standaard Load Balancer met dubbele (IPv4 + IPv6) front-end-end VM's met NIC's met een dubbele IP-configuratie, netwerkbeveiligingsgroep en openbare IP's. 
+In dit artikel vindt u een lijst met IPv6-configuratietaken met het gedeelte van de VM-sjabloon Azure Resource Manager dat van toepassing is op. Gebruik de in dit artikel beschreven sjabloon om een Dual Stack (IPv4 + IPv6)-toepassing te implementeren met behulp van Standard Load Balancer in Azure die een virtueel dual stack-netwerk met IPv4- en IPv6-subnetten bevat, een StandaardLoad Balancer met dubbele (IPv4 + IPv6) front-endconfiguraties, VM's met NIC's met een dubbele IP-configuratie, netwerkbeveiligingsgroep en openbare IP-adressen. 
 
 ## <a name="required-configurations"></a>Vereiste configuraties
 

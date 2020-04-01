@@ -1,5 +1,5 @@
 ---
-title: De hoek-app-gebruikers interface maken met de API van Azure Cosmos DB voor MongoDB (part3)
+title: De gebruikersinterface van de Hoekige app maken met de API van Azure Cosmos DB voor MongoDB (deel3)
 description: Deel 3 van de serie zelfstudies voor het maken van een MongoDB-app met Angular en Node op Azure Cosmos DB, waarbij gebruik wordt gemaakt van dezelfde API's als voor MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75444742"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - De gebruikersinterface maken met Angular
@@ -503,4 +503,4 @@ In dit deel van de zelfstudie hebt u het volgende gedaan:
 U kunt doorgaan met het volgende deel van de zelfstudie om een Azure Cosmos DB-account te maken.
 
 > [!div class="nextstepaction"]
-> [Een Azure Cosmos DB-account maken met de Azure CLI](tutorial-develop-mongodb-nodejs-part4.md)
+> [Een Azure Cosmos DB account maken met de Azure CLI](tutorial-develop-mongodb-nodejs-part4.md)

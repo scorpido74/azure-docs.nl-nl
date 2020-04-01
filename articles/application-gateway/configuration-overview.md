@@ -197,7 +197,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 WebSocket-ondersteuning is standaard ingeschakeld. Er is geen door de gebruiker configureerbare instelling om deze in te schakelen of uit te schakelen. U WebSockets gebruiken met zowel HTTP- als HTTPS-listeners.
 
-### <a name="custom-error-pages"></a>Aangepaste foutenpagina's
+### <a name="custom-error-pages"></a>Aangepaste foutpagina's
 
 U aangepaste fouten definiëren op globaal niveau of op listenerniveau. Maar het maken van aangepaste foutpagina's op mondiaal niveau vanuit de Azure-portal wordt momenteel niet ondersteund. U een aangepaste foutpagina configureren voor een firewallfout van 403 webtoepassingen of een 502-onderhoudspagina op listenerniveau. U moet ook een openbaar toegankelijke blob-URL opgeven voor de opgegeven foutstatuscode. Zie voor meer informatie [Aangepaste foutpagina's maken voor Application Gateway](https://docs.microsoft.com/azure/application-gateway/custom-error).
 
@@ -296,7 +296,7 @@ De toepassingsgateway leidt het verkeer naar de back-endservers met behulp van d
 
 ### <a name="cookie-based-affinity"></a>Affiniteit op basis van cookies
 
-Azure Application Gateway maakt gebruik van gatewaybeheerde cookies voor het onderhouden van gebruikerssessies. Wanneer een gebruiker het eerste verzoek naar Application Gateway verzendt, stelt deze een affiniteitscookie in het antwoord in met een hashwaarde die de sessiedetails bevat, zodat de volgende aanvragen met de affiniteitscookie worden doorgestuurd naar dezelfde backendserver voor vasthoudend heid. 
+Azure Application Gateway maakt gebruik van gatewaybeheerde cookies voor het onderhouden van gebruikerssessies. Wanneer een gebruiker het eerste verzoek naar Application Gateway verzendt, stelt deze een affiniteitscookie in het antwoord in met een hashwaarde die de sessiedetails bevat, zodat de volgende aanvragen met de affiniteitscookie naar dezelfde backendserver worden doorgestuurd om plakkerigheid te behouden. 
 
 Deze functie is handig wanneer u een gebruikerssessie op dezelfde server wilt houden en wanneer de sessiestatus lokaal op de server wordt opgeslagen voor een gebruikerssessie. Als de toepassing geen cookiegebaseerde affiniteit aankan, u deze functie niet gebruiken. Om het te gebruiken, moet u ervoor zorgen dat de clients cookies ondersteunen.
 

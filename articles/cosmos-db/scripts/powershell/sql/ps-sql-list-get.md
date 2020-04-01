@@ -1,20 +1,20 @@
 ---
-title: Power shell-script voor het weer geven en ophalen van bewerkingen voor de SQL-API (kern) van Azure Cosmos DB
-description: Azure PowerShell script-Azure Cosmos DB lijst en Get-bewerkingen voor SQL (kern)-API
+title: PowerShell-script om Azure Cosmos DB SQL API-bronnen weer te geven en te krijgen
+description: Azure PowerShell-script - Azure Cosmos DB-lijst en bewerkingen voor SQL API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1590136aa000538f6d176364fca22b353d4a48a0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51880e12f5f422acc0df05fa40da5f40f0ede3d3
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445007"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365967"
 ---
-# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Data bases en containers voor de API van Azure Cosmos DB-SQL (core) weer geven en ophalen
+# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Databases en containers weergeven en openen voor Azure Cosmos DB - SQL (Core) API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75445007"
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-list-get.ps1 "List or get databases or containers for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-list-get.ps1 "List and get databases and containers for SQL API")]
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
@@ -38,9 +38,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-|**Azure-resources**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Hiermee maakt u een resource. |
-|**Azure-resource groepen**| |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Hiermee worden Cosmos DB-accounts vermeld of wordt een opgegeven Cosmos DB-account weergegeven. |
+| [Get-azcosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase) | Hiermee worden Cosmos DB-databases in een account vermeld of wordt een opgegeven Cosmos DB-database in een account weergegeven. |
+| [Get-azcosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Hiermee worden Cosmos DB-containers in een database weergegeven of wordt een opgegeven Cosmos DB-container in een database weergegeven. |
+|**Azure-brongroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d26dc55cfd0f2ef0bb78e4153fffe3f1cb910b73
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251607"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474866"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platforms en tools voor data science projecten
 
@@ -49,7 +49,7 @@ Het bevat ook **ML- en AI-tools** zoals xgboost, mxnet en Vowpal Wabbit.
 
 Momenteel is DSVM beschikbaar in **Windows-** en **Linux CentOS-besturingssystemen.** Kies de grootte van uw DSVM (aantal CPU-cores en de hoeveelheid geheugen) op basis van de behoeften van de data science-projecten die u ervan van plan bent uit te voeren. 
 
-Zie [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) op de Azure Marketplace voor meer informatie over de Windows-editie van DSVM. Voor de Linux-editie van de DSVM, zie [Linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+Zie [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) op de Azure Marketplace voor meer informatie over de Windows-editie van DSVM. Voor de Linux-editie van de DSVM, zie [Linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu).
 
 Zie 10 dingen die u doen op de Virtuele Machine voor gegevenswetenschap op de DSVM voor meer informatie over het efficiënt uitvoeren van enkele van de algemene taken op het gebied van [gegevenswetenschap op de](../data-science-virtual-machine/vm-do-ten-things.md) DSVM
 

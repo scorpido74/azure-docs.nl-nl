@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Integratie met geoptimaliseerde Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Optima Lise ring.
+title: 'Zelfstudie: Azure Active Directory-integratie met Optimizely | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Optimizely.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,44 +16,44 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e25c615e040dd4359e278b95045fbc71ca60ef1
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943957"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Zelfstudie: Integratie met optimalisatie Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Zelfstudie: Azure Active Directory-integratie met Optimizely
 
-In deze zelf studie leert u hoe u optimaliseert met Azure Active Directory (Azure AD).
-Het integreren van optimaliseert met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Optimizely integreren met Azure Active Directory (Azure AD).
+Het integreren van Optimizely met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft om te optimaliseren.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld voor een optimale (eenmalige aanmelding) met hun Azure AD-accounts.
-* U kunt uw accounts in één centrale locatie - Azure portal beheren.
+* U in Azure AD bepalen wie toegang heeft tot Optimizely.
+* U uw gebruikers automatisch laten inloggen op Optimizely (Single Sign-On) met hun Azure AD-accounts.
+* U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met optimalisatie wilt configureren, hebt u de volgende items nodig:
+Als u azure AD-integratie met Optimizely wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding optimaliseren
+* Abonnement met één aanmelding optimaliseren
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Optimaliseert ondersteuning voor door **SP** GEÏNITIEERDe SSO
+* Optimizely ondersteunt **SP** geïnitieerde SSO
 
 ## <a name="adding-optimizely-from-the-gallery"></a>Optimaliseren toevoegen vanuit de galerie
 
-Als u de integratie van optimaliseert naar Azure AD wilt configureren, moet u optimaliseren vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Optimizely in Azure AD wilt configureren, moet u Optimizely vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om een optimalisatie van de galerie toe te voegen:**
+**Voer de volgende stappen uit om Optimaliseren vanuit de galerie toe te voegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Als u de integratie van optimaliseert naar Azure AD wilt configureren, moet u op
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Nieuwe toepassing toevoegen, klikt u op **nieuwe toepassing** knop boven aan het dialoogvenster.
+3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
 
-    ![De knop nieuwe toepassing](common/add-new-app.png)
+    ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **optimaliseren**, selecteer **optimaliseren** uit het paneel resultaten en klik vervolgens op **toevoegen** om de toepassing toe te voegen.
+4. Typ **optimaliseren**in het zoekvak , selecteer **Optimaliseren** uit het resultaatpaneel en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![Optimaliseer in de lijst met resultaten](common/search-new-app.png)
+     ![Optimaliseren in de resultatenlijst](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configureren en Azure AD eenmalige aanmelding testen
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met optimalisatie op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker worden gemaakt.
+In deze sectie configureert en test u Azure AD single sign-on met Optimizely op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding aan het werk moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Optimizely.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met optimalisatie, moet u de volgende bouw stenen volt ooien:
+Als u Azure AD-singlesign-aan met Optimizely wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**  : als u wilt dat uw gebruikers kunnen deze functie gebruiken.
-2. **[Configureer eenmalige aanmelding configureren](#configure-optimizely-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  - voor het testen van Azure AD eenmalige aanmelding met Britta Simon.
-4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  - Britta Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
-5. **[Gebruikers met een geoptimaliseerde test maken](#create-optimizely-test-user)** : als u een koppeling van Julia Simon in optimalisatie wilt hebben die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**  : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer optimizely Single Sign-On](#configure-optimizely-single-sign-on)** - om de instellingen voor eenmalig aanmelden aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak optimizely test gebruiker](#create-optimizely-test-user)** - om een tegenhanger van Britta Simon in Optimizely die is gekoppeld aan de Azure AD vertegenwoordiging van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met optimalisatie:
+Voer de volgende stappen uit om de volgende stappen uit te voeren als u de enkele aanmelding van Azure AD met Optimizely wilt configureren:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **optimalisatie** van de toepassings integratie de optie **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Optimizely-toepassingsintegratie** de optie **Eén aanmelding**.
 
-    ![Koppeling voor eenmalige aanmelding configureren](common/select-sso.png)
+    ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
 2. In het dialoogvenster **Een methode voor eenmalige aanmelding selecteren** selecteert u de modus **SAML/WS-Federation** om eenmalige aanmelding in te schakelen.
 
@@ -103,30 +103,30 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over geoptimaliseerde domein-en URL-eenmalige aanmelding](common/sp-identifier.png)
+    ![Informatie over domein- en URL's optimaliseren](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://app.optimizely.net/<instance name>`
 
-    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `urn:auth0:optimizely:contoso`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `urn:auth0:optimizely:contoso`
 
     > [!NOTE]
-    > Dit zijn niet de echte waarden. U werkt de waarde bij met de werkelijke aanmeldings-URL en-id, die verderop in de zelf studie wordt uitgelegd. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn niet de echte waarden. U werkt de waarde bij met de werkelijke URL en id aanmelding, die later in de zelfstudie wordt uitgelegd. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Uw optimalisatie toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op pictogram **bewerken** om het dialoog venster **gebruikers kenmerken** te openen.
+5. Uw toepassing Optimizely verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerktoewijzingen moet toevoegen aan uw SAML-tokenkenmerkenconfiguratie. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik **op Pictogram Bewerken** om het dialoogvenster **Gebruikerskenmerken te** openen.
 
-    ![image](common/edit-attribute.png)
+    ![installatiekopie](common/edit-attribute.png)
 
-6. In aanvulling op de bovenstaande, verwacht een geoptimaliseerde toepassing nog maar weinig kenmerken om te worden door gegeven in het SAML-antwoord. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
+6. Naast bovenstaande, Optimizely applicatie verwacht weinig meer attributen worden teruggegeven in SAML reactie. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
 
     | Name | Bronkenmerk |
     | ---------------| --------------- |
-    | email | user.mail |
+    | e-mail | user.mail |
     
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](common/new-save-attribute.png)
+    ![installatiekopie](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![installatiekopie](common/new-attribute-details.png)
 
     b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
 
@@ -142,9 +142,9 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
-    ![De downloadkoppeling certificaat](common/certificatebase64.png)
+    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Kopieer op de sectie **optimaliseerbaar instellen** de juiste URL ('s) volgens uw vereiste.
+6. Kopieer in de sectie **Optimaliseren instellen** de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -152,31 +152,31 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     b. Azure AD-id
 
-    c. URL voor afmelden
+    c. Afmeldings-URL
 
-### <a name="configure-optimizely-single-sign-on"></a>Eenmalige aanmelding configureren
+### <a name="configure-optimizely-single-sign-on"></a>Optimaliseeroptimaliserende aanmelding configureren
 
-1. Voor het configureren van eenmalige aanmelding op een geoptimaliseerde zijde, neemt u contact op met uw optimalisatie account manager en verstrekt u het gedownloade **certificaat (base64)** en de juiste gekopieerde url's.
+1. Als u eenmalige aanmelding wilt configureren aan de kant **van Optimizely,** neemt u contact op met uw Optimizely-accountmanager en verstrekt u het gedownloade **certificaat (Base64)** en de juiste gekopieerde URL's.
 
-2. Als reactie op uw e-mail adres biedt optimaliseert u de aanmeldings-URL (door SP geïnitieerde SSO) en de id-waarden (service provider entiteit-ID).
+2. Als reactie op uw e-mail biedt Optimizely u de URL (SP-geïnitieerde SSO) en de waarden van de Id (Service Provider Entity ID).
 
-    a. Kopieer de door de **SP geïnitieerde SSO-URL** die u hebt gemaakt door optimalisatie en plak deze in het tekstvak **voor de aanmeldings-URL** in het gedeelte basis-SAML- **configuratie** op Azure Portal.
+    a. Kopieer de **door SP geïnitieerde SSO-URL** van Optimizely en plak in het tekstvak **URL ondertekenen** in de sectie **BasisSAML-configuratie** op Azure-portal.
 
-    b. Kopieer de **entiteits-id van de service provider** die u hebt gekregen door optimalisatie en plak deze in het tekstvak **id** in de sectie **basis configuratie van SAML** op Azure Portal.
+    b. Kopieer de **entiteits-id** van de serviceprovider die door Optimizely wordt geleverd en plak in het tekstvak **Identifier** in de sectie **BasisSAML-configuratie** op Azure-portal.
 
-3. Meld u in een ander browser venster aan bij uw geoptimaliseerde toepassing.
+3. Meld u in een ander browservenster aan bij uw toepassing Optimizely.
 
-4. Klik in de rechter bovenhoek op account naam en vervolgens op **account instellingen**.
+4. Klik rechtsboven op je accountnaam en vervolgens **op Accountinstellingen**.
 
-    ![Eenmalige aanmelding voor Azure AD](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Azure AD-aanmelding](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
-5. Schakel op het tabblad account het selectie vakje **SSO inschakelen** onder eenmalige aanmelding in het gedeelte **overzicht** in.
+5. Schakel op het tabblad Account het selectievakje **SSO inschakelen** in de sectie **Overzicht** in.
   
-    ![Eenmalige aanmelding voor Azure AD](./media/optimizely-tutorial/tutorial_optimizely_10.png)
+    ![Azure AD-aanmelding](./media/optimizely-tutorial/tutorial_optimizely_10.png)
 
-6. Klik op **Opslaan**
+6. Klik **op Opslaan**
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
@@ -192,26 +192,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om gebruik te maken van eenmalige aanmelding van Azure door de toegang te verlenen.
+In deze sectie stelt u Britta Simon in staat om Azure single sign-on te gebruiken door toegang te verlenen tot Optimizely.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **optimaliseren**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens Optimaliseren**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **optimaliseren**.
+2. Selecteer **Optimaliseren**in de lijst met toepassingen .
 
-    ![De koppeling optimaliseren in de lijst toepassingen](common/all-applications.png)
+    ![De koppeling Optimaliseren in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -221,39 +221,39 @@ In deze sectie schakelt u Julia Simon in om gebruik te maken van eenmalige aanme
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-optimizely-test-user"></a>Gebruiker voor geoptimaliseerde test maken
+### <a name="create-optimizely-test-user"></a>Gebruikers van optimizely-test maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in optimaliseert.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in Optimizely.
 
-1. Selecteer op de start pagina tabblad **samen** werkers.
+1. Selecteer op de startpagina het tabblad **Bijdragers.**
 
-2. Klik op **nieuwe samen werker**om een nieuwe samen werker aan het project toe te voegen.
+2. Als u een nieuwe medewerker aan het project wilt toevoegen, klikt u op **Nieuwe medewerker**.
    
-    ![Het maken van een Azure AD-testgebruiker](./media/optimizely-tutorial/create_aaduser_10.png)
+    ![Een Azure AD-testgebruiker maken](./media/optimizely-tutorial/create_aaduser_10.png)
 
-3. Vul het e-mail adres in en wijs hieraan een rol toe. Klik op **Uitnodigen**.
+3. Vul het e-mailadres in en wijs ze een rol toe. Klik op **Uitnodigen**.
 
-    ![Het maken van een Azure AD-testgebruiker](./media/optimizely-tutorial/create_aaduser_11.png)
+    ![Een Azure AD-testgebruiker maken](./media/optimizely-tutorial/create_aaduser_11.png)
 
-4. Ze ontvangen een uitnodiging voor e-mail. Wanneer u het e-mail adres gebruikt, moet u zich bij een optimale aanmelding aanmelden.
+4. Ze ontvangen een e-mail uitnodiging. Met behulp van het e-mailadres moeten ze zich aanmelden bij Optimizely.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel optimaliseren in het toegangs venster klikt, wordt u automatisch aangemeld bij de optimalisatie waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Optimaliseren in het toegangspaneel klikt, moet u automatisch worden aangemeld bij de Optie e.e. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

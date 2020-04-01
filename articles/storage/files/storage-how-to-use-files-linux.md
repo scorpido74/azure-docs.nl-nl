@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2dc78c25c2cf63a510b9451c8d694795cd8a91eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72264755d5f0379f0ffb07852f48885126a36898
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060950"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411594"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Files gebruiken met Linux
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestandsshares kunnen worden gemonteerd in Linux-distributies met behulp van de [SMB-kernelclient.](https://wiki.samba.org/index.php/LinuxCIFS) In dit artikel worden twee manieren weergegeven om een `mount` Azure-bestandsshare te monteren: `/etc/fstab`on-demand met de opdracht en op start starten door een item te maken in .
@@ -194,10 +194,57 @@ Wanneer u klaar bent met het gebruik `sudo umount $mntPath` van de Azure-bestand
     > [!Note]  
     > De bovenstaande mount commando mounts met SMB 3.0. Als uw Linux-distributie smb 3.0 niet ondersteunt met versleuteling of als deze alleen SMB 2.1 ondersteunt, u alleen vanuit een Azure VM worden gemonteerd in dezelfde regio als het opslagaccount. Als u uw Azure-bestandsshare wilt monteren op een Linux-distributie die SMB 3.0 niet ondersteunt met versleuteling, moet u [versleuteling tijdens het transport uitschakelen voor het opslagaccount.](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
+### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>Autofs gebruiken om de Azure-bestandsshare(s) automatisch te monteren
+
+1. **Zorg ervoor dat het autofs-pakket is geïnstalleerd.**  
+
+    Het autofs pakket kan worden geïnstalleerd met behulp van de package manager op de Linux distributie van uw keuze. 
+
+    Gebruik **op Ubuntu-** en **Debian-gebaseerde** distributies de `apt` package manager:
+    ```bash
+    sudo apt update
+    sudo apt install autofs
+    ```
+    Op **Fedora**, **Red Hat Enterprise Linux 8+** en **CentOS 8 +**, gebruik maken van de `dnf` package manager:
+    ```bash
+    sudo dnf install autofs
+    ```
+    Op oudere versies van **Red Hat Enterprise** `yum` Linux en **CentOS,** gebruik maken van de package manager:
+    ```bash
+    sudo yum install autofs 
+    ```
+    Gebruik **bij openSUSE**de `zypper` package manager:
+    ```bash
+    sudo zypper install autofs
+    ```
+2. **Maak een bevestigingspunt voor het aandeel(en):**
+   ```bash
+    sudo mkdir /fileshares
+    ```
+3. **Een nieuw aangepast configuratiebestand voor autofs kreta**
+    ```bash
+    sudo vi /etc/auto.fileshares
+    ```
+4. **De volgende vermeldingen toevoegen aan /etc/auto.fileshares**
+   ```bash
+   echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
+   ```
+5. **De volgende vermelding toevoegen aan /etc/auto.master**
+   ```bash
+   /fileshares /etc/auto.fileshares --timeout=60
+   ```
+6. **Autofs opnieuw starten**
+    ```bash
+    sudo systemctl restart autofs
+    ```
+7.  **Toegang tot de map die is aangewezen voor het aandeel**
+    ```bash
+    cd /fileshares/$filesharename
+    ```
 ## <a name="securing-linux"></a>Linux beveiligen
 Om een Azure-bestandsshare op Linux te kunnen monteren, moet poort 445 toegankelijk zijn. Veel organisaties blokkeren poort 445 vanwege de beveiligingsrisico's die bij SMB 1 horen. SMB 1, ook bekend als CIFS (Common Internet File System), is een legacy bestandssysteem protocol opgenomen met veel Linux-distributies. SMB 1 is een verouderd, inefficiënt en bovenal onveilig protocol. Het goede nieuws is dat Azure Files geen SMB 1 ondersteunt, en te beginnen met Linux-kernelversie 4.18 maakt Linux het mogelijk om SMB 1 uit te schakelen. We [raden je altijd ten zeerste aan](https://aka.ms/stopusingsmb1) om de SMB 1 uit te schakelen op uw Linux-clients voordat u smb-bestandsshares in productie gebruikt.
 
-Beginnend met Linux kernel 4.18, de `cifs` SMB kernel module, opgeroepen om legacy redenen, onthult een `disable_legacy_dialects`nieuwe module parameter (vaak aangeduid als *parm* door verschillende externe documentatie), genaamd . Hoewel geïntroduceerd in Linux kernel 4.18, sommige leveranciers hebben backported deze verandering naar oudere kernels die zij ondersteunen. Voor het gemak, de volgende tabel details van de beschikbaarheid van deze module parameter op gemeenschappelijke Linux-distributies.
+Beginnend met Linux kernel 4.18, de `cifs` SMB kernel module, opgeroepen om legacy redenen, onthult een nieuwe `disable_legacy_dialects`module parameter (vaak aangeduid als *parm* door verschillende externe documentatie), genaamd . Hoewel geïntroduceerd in Linux kernel 4.18, sommige leveranciers hebben backported deze verandering naar oudere kernels die zij ondersteunen. Voor het gemak, de volgende tabel details van de beschikbaarheid van deze module parameter op gemeenschappelijke Linux-distributies.
 
 | Distributie | Kan SMB 1 uitschakelen |
 |--------------|-------------------|
@@ -281,6 +328,6 @@ De groep Azure Files for Linux-gebruikers biedt een forum voor feedback terwijl 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie over Azure Files:
 
-* [Implementatie van Azure Files plannen](storage-files-planning.md)
+* [Planning voor de implementatie van Azure Files](storage-files-planning.md)
 * [Veelgestelde vragen](../storage-files-faq.md)
-* [Probleemoplossing](storage-troubleshoot-linux-file-connection-problems.md)
+* [Problemen oplossen](storage-troubleshoot-linux-file-connection-problems.md)

@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067472"
 ---
 # <a name="transform-and-protect-your-api"></a>Uw API transformeren en beveiligen
@@ -39,10 +39,10 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
--   Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
+-   Leer de [terminologie van Azure API Management](api-management-terminology.md).
 -   Inzicht in het [beleidsconcept in Azure API Management](api-management-howto-policies.md).
--   Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
--   Voltooi ook de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
+-   Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
+-   Voltooi tevens de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -74,13 +74,13 @@ Het oorspronkelijke antwoord moet er als volgt uitzien:
 1. Selecteer **Demo Conference API**.
 2. Selecteer boven in het scherm het tabblad **Ontwerp**.
 3. Selecteer **Alle bewerkingen**.
-4. Klik in de sectie **Uitgaande verwerking** op het pictogram **</>** .
-5. Plaats de cursor in het **&lt;uitgaande&gt;** element.
+4. Klik in de sectie **Uitgaande verwerking** op het pictogram **</>**.
+5. Plaats de cursor ** &lt;&gt; ** in het uitgaande element.
 6. Klik in het rechtervenster onder **Transformatiebeleid** twee keer op **+ HTTP-header instellen** (om twee beleidsfragmenten in te voegen).
 
    ![Beleidsregels](./media/transform-api/transform-api.png)
 
-7. Wijzig uw  **\<uitgaande >** code zodat deze er als volgt uitziet:
+7. Wijzig ** \<** uw uitgaande>code om er als volgt uit te zien:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -111,24 +111,24 @@ Het oorspronkelijke antwoord zien:
 1.  Selecteer **Demo Conference API**.
 2.  Selecteer **Alle bewerkingen**.
 3.  Selecteer boven in het scherm het tabblad **Ontwerp**.
-4.  Klik in de sectie **Uitgaande verwerking** op het pictogram **</>** .
-5.  Plaats de cursor in het **&lt;uitgaande&gt;** element.
+4.  Klik in de sectie **Uitgaande verwerking** op het pictogram **</>**.
+5.  Plaats de cursor ** &lt;&gt; ** in het uitgaande element.
 6.  Klik in het rechtervenster onder **Transformatiebeleid** twee keer op **+ Tekenreeks in hoofdtekst zoeken en vervangen**.
-7.  Wijzig de **find-and-replace**-code (in het **\<uitgaande element\>** ) om de URL te vervangen zodat deze overeenkomt met de APIM-gateway. Bijvoorbeeld:
+7.  Wijzig de **find-and-replace**-code (in het **\<uitgaande element\>**) om de URL te vervangen zodat deze overeenkomt met de APIM-gateway. Bijvoorbeeld:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Een API beveiligen door beleid voor frequentielimieten toe te voegen
 
-In deze sectie wordt beschreven hoe u beveiliging voor uw back-end-API kunt toevoegen door frequentielimieten te configureren. U kunt bijvoorbeeld het aantal aanroepen voor de API beperken, zodat deze niet wordt overbelast door ontwikkelaars. In dit voorbeeld is de limiet ingesteld op 3 aanroepen per 15 seconden voor elke abonnements-id. Na 15 seconden kan een ontwikkelaar de API opnieuw proberen aan te roepen.
+In deze sectie wordt beschreven hoe u beveiliging voor uw back-end-API kunt toevoegen door frequentielimieten te configureren. U kunt bijvoorbeeld het aantal aanroepen voor de API beperken, zodat deze niet wordt overbelast door ontwikkelaars. In dit voorbeeld wordt de limiet ingesteld op 3 aanroepen per 15 seconden voor elk abonnement-id. Na 15 seconden kan een ontwikkelaar opnieuw proberen de API aan te roepen.
 
 ![Beleid voor binnenkomende verwerking instellen](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
 1.  Selecteer **Demo Conference API**.
 2.  Selecteer **Alle bewerkingen**.
 3.  Selecteer boven in het scherm het tabblad **Ontwerp**.
-4.  Klik in de sectie **Binnenkomende verwerking** op het pictogram **</>** .
-5.  Plaats de cursor in het **&lt;binnenkomende&gt;** element.
+4.  Klik in de sectie **Binnenkomende verwerking** op het pictogram **</>**.
+5.  Plaats de cursor in het ** &lt;binnenkomende&gt; ** element.
 6.  Klik in het rechtervenster onder **Toegang tot beperkingsbeleid** op **+ Aantal oproepen per sleutel beperken**.
 7.  Wijzig uw **rate-limit-by-key**-code (in het **\<inkomende\>** element) in de volgende code:
 
@@ -193,7 +193,7 @@ In de rest van deze sectie worden de beleidstransformaties getest die u in dit a
 
 5. Wacht ongeveer 15 seconden en druk opnieuw op **Verzenden**. Deze keer ontvangt u, als het goed is, het antwoord **200 OK**.
 
-    ![Beperken](./media/transform-api/test-throttling.png)
+    ![Beperking](./media/transform-api/test-throttling.png)
 
 ## <a name="video"></a>Video
 
@@ -201,7 +201,7 @@ In de rest van deze sectie worden de beleidstransformaties getest die u in dit a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 >

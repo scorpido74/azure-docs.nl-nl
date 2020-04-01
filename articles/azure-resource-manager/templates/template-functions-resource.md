@@ -2,13 +2,13 @@
 title: Sjabloonfuncties - resources
 description: Beschrijft de functies die u moet gebruiken in een Azure Resource Manager-sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e9e1d700282652304f0bede5e697ba8625f5a5d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156290"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478274"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resourcefuncties voor ARM-sjablonen
 
@@ -170,8 +170,8 @@ De mogelijke toepassingen van lijst* worden weergegeven in de volgende tabel.
 | Microsoft.DocumentDB/databaseAccounts | [lijstSleutels](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [lijstDomeinaanbevelingen](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [lijstOvereenkomsten](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/domeinen | [lijstSleutels](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/onderwerpen | [lijstSleutels](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft.EventGrid/domeinen | [lijstSleutels](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/onderwerpen | [lijstSleutels](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
 | Microsoft.EventHub/naamruimten/autorisatieregels | [lijstsleutels](/rest/api/eventhub/namespaces/listkeys) |
 | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [lijstsleutels](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
 | Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [lijstsleutels](/rest/api/eventhub/eventhubs/listkeys) |

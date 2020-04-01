@@ -3,12 +3,12 @@ title: Een Azure Service Fabric-clusterimplementatie plannen
 description: Meer informatie over het plannen en voorbereiden van een implementatie van een productieservicefabriccluster naar Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78193473"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422287"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Een clusterimplementatie plannen en voorbereiden
 
@@ -86,6 +86,16 @@ Kortstondige OS-schijven is geen specifieke functie voor servicefabric, maar eer
             }
         }
     ```
+
+> [!NOTE]
+> Gebruikerstoepassingen mogen geen afhankelijkheid/bestand/artefact op de OS-schijf hebben, omdat de osschijf verloren zou gaan in het geval van een os-upgrade.
+> Daarom is het niet aan te raden om [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) te gebruiken met kortstondige schijven.
+>
+
+> [!NOTE]
+> Bestaande niet-kortstondige VMSS kan niet worden geüpgraded om kortstondige schijven te gebruiken.
+> Als u wilt migreren, moeten gebruikers een nieuw nodeType met tijdelijke schijven [toevoegen](./virtual-machine-scale-set-scale-node-type-scale-out.md) en de workloads verplaatsen naar het nieuwe knooppunt & het bestaande knooppunt [verwijderen.](./service-fabric-how-to-remove-node-type.md)
+>
 
 Zie [Efemere OS-schijven voor Azure VM's voor](../virtual-machines/windows/ephemeral-os-disks.md) meer informatie en verdere configuratieopties 
 

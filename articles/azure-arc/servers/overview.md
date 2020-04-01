@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 85a6f8dcb9f551d81a607adc9ae482f4025d804f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
-ms.translationtype: HT
+ms.openlocfilehash: 5ffe845178fffc252e95794bfb58801c9bff16a7
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366362"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411230"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Wat is Azure Arc voor servers (voorbeeld)
 
@@ -147,7 +147,7 @@ De Azure Connected Machine-agent voor Windows en Linux kan handmatig of automati
 
 ### <a name="agent-status"></a>Agentstatus
 
-De agent Connected Machine stuurt elke 5 minuten een regelmatig heartbeatbericht naar de service. Als er gedurende 15 minuten geen wordt ontvangen, wordt de machine als offline beschouwd en wordt de status automatisch gewijzigd in **Losgekoppeld** in de portal. Na ontvangst van een volgend heartbeatbericht van de agent Verbonden machine wordt de status automatisch gewijzigd in **Verbonden**.
+De agent Connected Machine stuurt elke 5 minuten een regelmatig heartbeatbericht naar de service. Als de service deze hartslagberichten van een machine niet meer ontvangt, wordt die machine als offline beschouwd en wordt de status automatisch binnen 15 tot 30 minuten gewijzigd in **Losgekoppeld** in de portal. Na ontvangst van een volgend heartbeatbericht van de agent Verbonden machine wordt de status automatisch gewijzigd in **Verbonden**.
 
 ## <a name="install-and-configure-agent"></a>Agent installeren en configureren
 

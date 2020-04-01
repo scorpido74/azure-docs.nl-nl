@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 9857de0470baa35dcc8005e1622e5e593da95751
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d15d53816d916bd28841aae39255685524faa2d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128351"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477865"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data science met een Linux Data Science Virtual Machine in Azure
 
@@ -29,7 +29,7 @@ In deze walkthrough analyseren we de [spambase](https://archive.ics.uci.edu/ml/d
 Voordat u een Linux DSVM gebruiken, moet u de volgende vereisten hebben:
 
 * **Azure-abonnement**. Zie [Uw gratis Azure-account vandaag nog maken](https://azure.microsoft.com/free/)als u een Azure-abonnement wilt afsluiten.
-* [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Zie De Virtuele Machine van [Linux Data Science inrichten](linux-dsvm-intro.md)voor informatie over het inrichten van de virtuele machine.
+* [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu). Zie De Virtuele Machine van [Linux Data Science inrichten](linux-dsvm-intro.md)voor informatie over het inrichten van de virtuele machine.
 * [**X2Go**](https://wiki.x2go.org/doku.php) geïnstalleerd op uw computer met een open XFCE-sessie. Zie [De X2Go-client installeren en configureren](linux-dsvm-intro.md#x2go)voor meer informatie.
 * Voor een soepelere scrollervaring schakelt u in de Firefox-webbrowser `gfx.xrender.enabled` van `about:config`de DSVM de vlag in . [Meer informatie](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Overweeg ook `mousewheel.enable_pixel_scrolling` `False`om . [Meer informatie](https://support.mozilla.org/questions/981140).
 * **Azure Machine Learning-account**. Als u er nog geen hebt, meldt u zich aan voor een nieuw account op de [startpagina van Azure Machine Learning.](https://azure.microsoft.com/free/services/machine-learning//)

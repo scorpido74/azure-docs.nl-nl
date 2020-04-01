@@ -3,12 +3,12 @@ title: Overzicht van runtime-versies van Azure Functions
 description: Azure Functions ondersteunt meerdere versies van de runtime. Leer de verschillen tussen hen en hoe u degene kiest die bij u geschikt is.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e90752e89be7e381b06f8a87f76f123f0e4a8e3a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276554"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422481"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Overzicht van runtime-versies van Azure Functions
 
@@ -18,7 +18,7 @@ De belangrijkste versies van de runtime van Azure-functies zijn gerelateerd aan 
 | --------------- | ------------- | ------------ |
 | 3.x | Algemene beschikbaarheid | .NET Core 3.1 | 
 | 2.x | Algemene beschikbaarheid | .NET Core 2.2 |
-| 1.x | GA<sup>2</sup> | .NET Framework 4.6<sup>3</sup> |
+| 1.x | GA<sup>2</sup> | .NET Framework 4.7.2<sup>3</sup> |
 
 <sup>1</sup> GA-releases worden ondersteund voor productiescenario's.   
 <sup>2</sup> Versie 1.x is in onderhoudsmodus. Verbeteringen worden alleen in latere versies geleverd.   
@@ -84,7 +84,7 @@ Azure Functions versie 3.x is zeer backwards compatibel met versie 2.x.  Veel ap
 
 Hieronder volgen de wijzigingen waar u rekening mee moet houden voordat u een 2.x-app upgradet naar 3.x.
 
-#### <a name="javascript"></a>JavaScript
+#### <a name="javascript"></a>Javascript
 
 * Uitvoerbindingen die `context.done` via- of retourwaarden zijn `context.bindings`toegewezen, gedragen zich nu hetzelfde als instellen in .
 
@@ -206,4 +206,4 @@ Zie de volgende bronnen voor meer informatie:
 
 * [Azure-functies lokaal programmeren en testen](functions-run-local.md)
 * [Azure-versies voor runtime targeten](set-runtime-version.md)
-* [Opmerkingen vrijgeven](https://github.com/Azure/azure-functions-host/releases)
+* [Releaseopmerkingen](https://github.com/Azure/azure-functions-host/releases)

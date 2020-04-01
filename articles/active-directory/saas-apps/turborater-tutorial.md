@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met TurboRater | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en TurboRater.
+title: 'Zelfstudie: Azure Active Directory-integratie met TurboRater | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en TurboRater.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,187 +16,187 @@ ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
 ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088277"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Zelfstudie: Azure Active Directory-integratie met TurboRater
 
-In deze zelfstudie leert u hoe u TurboRater integreren met Azure Active Directory (Azure AD).
+In deze zelfstudie leert u hoe u TurboRater integreert met Azure Active Directory (Azure AD).
 
-TurboRater integreren met Azure AD biedt u de volgende voordelen:
+De integratie van TurboRater met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot TurboRater heeft.
-* U kunt uw gebruikers kunnen automatisch worden aangemeld bij TurboRater (eenmalige aanmelding) met hun Azure AD-accounts inschakelen.
-* U kunt uw accounts in één centrale locatie kunt beheren: de Azure-portal.
+* U in Azure AD bepalen wie toegang heeft tot TurboRater.
+* U uw gebruikers automatisch laten inloggen op TurboRater (single sign-on) met hun Azure AD-accounts.
+* U uw accounts beheren op één centrale locatie: de Azure-portal.
 
-Zie voor meer informatie over software als een service (SaaS)-app-integratie met Azure AD [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory voor](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)meer informatie over de integratie van de App Voor software as a service (SaaS) met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met TurboRater, moet u de volgende items:
+Als u azure AD-integratie met TurboRater wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* Een abonnement TurboRater met eenmalige aanmelding ingeschakeld.
+* Een Azure AD-abonnement Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
+* Een TurboRater-abonnement met enkele aanmelding ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-TurboRater biedt ondersteuning voor IDP gestart door eenmalige aanmelding (SSO).
+TurboRater ondersteunt IDP-geïnitieerde single sign-on (SSO).
 
-## <a name="add-turborater-from-the-azure-marketplace"></a>TurboRater toevoegen in Azure Marketplace
+## <a name="add-turborater-from-the-azure-marketplace"></a>TurboRater toevoegen vanuit de Azure Marketplace
 
-Voor het configureren van de integratie van TurboRater in Azure AD, moet u TurboRater vanuit Azure Marketplace toevoegen aan uw lijst met beheerde SaaS-apps:
+Als u de integratie van TurboRater in Azure AD wilt configureren, moet u TurboRater van de Azure Marketplace toevoegen aan uw lijst met beheerde SaaS-apps:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com?azure-portal=true).
 1. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
 
-    ![De Azure Active Directory-optie](common/select-azuread.png)
+    ![De optie Azure Active Directory](common/select-azuread.png)
 
 1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
-    ![De Enterprise-optie voor toepassingen](common/enterprise-applications.png)
+    ![De optie Enterprise-toepassingen](common/enterprise-applications.png)
 
-1. Als u wilt een nieuwe toepassing toevoegen, selecteert u **+ nieuwe toepassing** aan de bovenkant van het deelvenster.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **+ Nieuwe toepassing** boven aan het deelvenster.
 
-    ![De nieuwe optie voor de App](common/add-new-app.png)
+    ![De optie Nieuwe toepassing](common/add-new-app.png)
 
-1. Voer in het zoekvak **TurboRater**. Selecteer in de lijst met zoekresultaten **TurboRater**, en selecteer vervolgens **toevoegen** om toe te voegen van de toepassing.
+1. Voer in het zoekvak **TurboRater**in. Selecteer In de zoekresultaten **TurboRater**en selecteer vervolgens **Toevoegen** om de toepassing toe te voegen.
 
-    ![TurboRater in de lijst met resultaten](common/search-new-app.png)
+    ![TurboRater in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met TurboRater op basis van een testgebruiker met de naam **B Simon**. Voor eenmalige aanmelding om te werken, moet u een koppeling tussen een Azure AD-gebruiker en de gerelateerde gebruiker maken in TurboRater.
+In deze sectie configureert en test u Azure AD single sign-on met TurboRater op basis van een testgebruiker met de naam **B Simon**. Voor eenmalige aanmelding aan het werk moet u een koppeling maken tussen een Azure AD-gebruiker en de gerelateerde gebruiker in TurboRater.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met TurboRater, moet u de volgende bouwstenen voltooien:
+Als u Azure AD-single sign-on met TurboRater wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**  zodat uw gebruikers deze functie wilt gebruiken.
-1. **[Configureren van eenmalige aanmelding TurboRater](#configure-turborater-single-sign-on)**  de instellingen voor eenmalige aanmelding configureren aan de toepassing.
-1. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  voor het testen van Azure AD eenmalige aanmelding met B. Simon.
-1. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  B. Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
-1. **[Maak een testgebruiker TurboRater](#create-a-turborater-test-user)**  zodat er een gebruiker met de naam B. Simon in TurboRater die gekoppeld aan de Azure AD-gebruiker met de naam B. Simon.
-1. **[Eenmalige aanmelding testen](#test-single-sign-on)**  om te controleren of de configuratie werkt.
+1. **[Configureer azure AD single sign-on](#configure-azure-ad-single-sign-on)** om uw gebruikers in staat te stellen deze functie te gebruiken.
+1. **[Configureer TurboRater single sign-on](#configure-turborater-single-sign-on)** om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+1. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)** om Azure AD-eenmaligaanmelding met B. Simon te testen.
+1. **[Wijs de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)** toe om B. Simon in staat te stellen azure AD-aanmelding te gebruiken.
+1. **[Maak een TurboRater-testgebruiker](#create-a-turborater-test-user)** zodat er een gebruiker is met de naam B. Simon in TurboRater die is gekoppeld aan de Azure AD-gebruiker genaamd B. Simon.
+1. **[Test eenmalige aanmelding](#test-single-sign-on)** om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met TurboRater, voert u de volgende stappen uit:
+Voer de volgende stappen uit om azure AD single sign-on met TurboRater te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **TurboRater** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina Met de integratie **van de TurboRater-toepassing** de optie **Enkele aanmelding**.
 
-    ![Optie voor eenmalige aanmelding configureren](common/select-sso.png)
+    ![Optie eenmalig aanmelden configureren](common/select-sso.png)
 
-1. Op de **selecteert u een methode voor eenmalige aanmelding** deelvenster Selecteer **SAML/WS-Federation** modus voor eenmalige aanmelding inschakelen.
+1. Selecteer in het deelvenster **Eenmalige aanmeldingsmethode** de **SAML/WS-Fed-modus** om eenmalige aanmelding in te schakelen.
 
     ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
 
-1. Op de **instellen van eenmalige aanmelding met SAML** weergeeft, schakelt **bewerken** (het potloodpictogram) te openen de **SAML-basisconfiguratie** deelvenster.
+1. **Selecteer** bewerken (het potloodpictogram) op de pagina Eén aanmelding instellen met SAML om het deelvenster **BasisSAML-configuratie** te openen. **Set up Single Sign-On with SAML**
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In de **SAML-basisconfiguratie** in het deelvenster de volgende stappen uit:
+1. Ga in het deelvenster **BasisSAML-configuratie** de volgende stappen uit:
 
-    ![TurboRater domein en URL's, eenmalige aanmelding informatie](common/idp-intiated.png)
+    ![TurboRater-domein- en URL's met eenmalige aanmelding](common/idp-intiated.png)
 
-    1. In de **id (entiteits-ID)** voert u een URL:
+    1. Voer in het vak **Id (Entity ID)** een URL in:
 
        `https://www.itcdataservices.com`
 
-    1. In de **antwoord-URL (URL van de Bevestigingsconsumerservice)** voert u een URL met behulp van het volgende patroon:
+    1. Voer in het vak URL van de **antwoord-URL (Bevestigingsconsumentenservice)** een URL in met het volgende patroon:
 
        | Omgeving | URL |
        | ---------------| --------------- |
-       | Testen  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
+       | Test  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
        | Live  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Als u deze waarden, neem contact op met de [TurboRater ondersteuningsteam](https://www.getitc.com/support). U kunt ook verwijzen naar de patronen die wordt weergegeven in de **SAML-basisconfiguratie** deelvenster in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [Ondersteuningsteam van TurboRater](https://www.getitc.com/support)om aan deze waarden te komen. U ook verwijzen naar de patronen die worden weergegeven in het deelvenster **BasisSAML-configuratie** in de Azure-portal.
 
-1. Op de **instellen van eenmalige aanmelding met SAML** deelvenster in de **SAML-handtekeningcertificaat** sectie, selecteer **downloaden** voor het downloaden van de **federatieve metagegevens-XML**  uit de opgegeven opties en bewaar deze op uw computer.
+1. Selecteer in het deelvenster **Eén aanmelding instellen met SAML** in de sectie **SAML-ondertekeningscertificaat** de optie **Downloaden** om de **Federation Metadata XML** uit de opgegeven opties te downloaden en op te slaan op uw computer.
 
-    ![De optie voor het downloaden van federatieve metagegevens-XML](common/metadataxml.png)
+    ![De optie XML-download met federatiemetagegevens](common/metadataxml.png)
 
-1. In de **TurboRater instellen** sectie, Kopieer de URL of URL's die u nodig hebt:
+1. Kopieer in de sectie **TurboRater instellen** de URL of URL's die u nodig hebt:
 
    * **Aanmeldings-URL**
-   * **Azure AD Identifier**
+   * **Azure AD-id**
    * **Afmeldings-URL**
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-turborater-single-sign-on"></a>TurboRater eenmalige aanmelding configureren
+### <a name="configure-turborater-single-sign-on"></a>TurboRater-aanmelding configureren
 
-Voor het configureren van eenmalige aanmelding aan de TurboRater, die u nodig hebt voor het verzenden van het gedownloade federatieve metagegevens van XML-bestand en de juiste URL's gekopieerd vanuit Azure portal naar de [TurboRater ondersteuningsteam](https://www.getitc.com/support). Het team TurboRater zorgt u ervoor dat de SAML SSO-verbinding aan beide zijden juist is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de TurboRater-kant, moet u de gedownloade Federation Metadata XML en de juiste gekopieerde URL's van de Azure-portal naar het [TurboRater-ondersteuningsteam](https://www.getitc.com/support)verzenden. Het TurboRater-team zorgt ervoor dat de SAML SSO-verbinding aan beide kanten goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in de Azure-portal.
 
-1. Selecteer in de Azure-portal aan de linkerkant **Azure Active Directory**   > **Gebruikers** > **Alle gebruikers**.
+1. Selecteer in de Azure-portal in het linkerdeelvenster de optie **Azure Active Directory**   > **Users** > **All users All users**.
 
-    ![De gebruikers- en 'Alle gebruikers' opties](common/users.png)
+    ![De opties Gebruikers en 'Alle gebruikers'](common/users.png)
 
-1. Aan de bovenkant van het scherm, selecteer **+ nieuwe gebruiker**.
+1. Selecteer boven aan het scherm **+ Nieuwe gebruiker**.
 
-    ![Nieuwe Gebruikersoptie](common/new-user.png)
+    ![Nieuwe gebruikersoptie](common/new-user.png)
 
-1. In de **gebruiker** in het deelvenster de volgende stappen uit:
+1. Ga **in** het deelvenster Gebruiker de volgende stappen uit:
 
-    ![De gebruiker-deelvenster](common/user-properties.png)
+    ![Het deelvenster Gebruiker](common/user-properties.png)
 
-    1. In de **naam** Voer **BSimon**.
+    1. Voer **in** het vak Naam **BSimon**in .
   
-    1. In de **gebruikersnaam** Voer **BSimon\@\<uwbedrijfsdomein >.\< extensie >** . Bijvoorbeeld, **BSimon\@contoso.com**.
+    1. Voer **in** het vak Gebruikersnaam **BSimon\@\<uw\< bedrijfsdomein in>. uitbreiding>**. Bijvoorbeeld, **BSimon\@contoso.com**.
 
-    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord.**
 
     1. Selecteer **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u B. Simon Azure eenmalige aanmelding gebruiken door hun toegang verlenen tot TurboRater.
+In deze sectie stelt u B. Simon in staat om Azure single sign-on te gebruiken door hun toegang tot TurboRater te verlenen.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen** > **alle toepassingen** > **TurboRater**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen** > **Alle toepassingen** > **TurboRater**.
 
-    ![Deelvenster voor Enterprise applications](common/enterprise-applications.png)
+    ![Deelvenster Ondernemingstoepassingen](common/enterprise-applications.png)
 
-1. Selecteer in de lijst met toepassingen, **TurboRater**.
+1. Selecteer **TurboRater**in de lijst met toepassingen .
 
-    ![TurboRater in de lijst met toepassingen](common/all-applications.png)
+    ![TurboRater in de lijst van toepassingen](common/all-applications.png)
 
-1. In het linkerdeelvenster onder **beheren**, selecteer **gebruikers en groepen**.
+1. Selecteer in het linkerdeelvenster onder **BEHEREN**de optie **Gebruikers en groepen**.
 
     ![De optie 'Gebruikers en groepen'](common/users-groups-blade.png)
 
-1. Selecteer **+ gebruiker toevoegen**, en selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** deelvenster.
+1. Selecteer **+ Gebruiker toevoegen**en selecteer vervolgens Gebruikers en **groepen** in het deelvenster **Toewijzing toevoegen.**
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-1. In de **gebruikers en groepen** venster **B. Simon** in de **gebruikers** lijst en kies vervolgens **Selecteer** aan de onderkant van het deelvenster.
+1. Selecteer **In** het deelvenster Gebruikers en groepen de optie **B. Simon** in de lijst **Gebruikers** en kies Selecteer Selecteer onder aan het deelvenster **Selecteren.**
 
-1. Als u verwacht een waarde voor de rol in het SAML-verklaring, klikt u vervolgens de **rol selecteren** deelvenster, selecteert u de juiste rol voor de gebruiker in de lijst. Kies aan de onderkant van het deelvenster **Selecteer**.
+1. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het deelvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Kies onder aan het deelvenster **selecteren**.
 
-1. In de **toevoegen toewijzing** venster **toewijzen**.
+1. Selecteer **Toewijzing toewijzen** in het deelvenster Toewijzing **toevoegen**.
 
-### <a name="create-a-turborater-test-user"></a>Maak een testgebruiker TurboRater
+### <a name="create-a-turborater-test-user"></a>Een TurboRater-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam van B. Simon in TurboRater. Werken met de [TurboRater ondersteuningsteam](https://www.getitc.com/support) B. Simon toevoegen als een gebruiker in TurboRater. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd B. Simon in TurboRater. Werk samen met het [TurboRater support team](https://www.getitc.com/support) om B. Simon toe te voegen als gebruiker in TurboRater. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie kunt u uw configuratie Azure AD eenmalige aanmelding testen met behulp van de portal mijn Apps.
+In deze sectie test u uw Azure AD-configuratie met eenmalige aanmelding met de portal Mijn apps.
 
-Wanneer u selecteert **TurboRater** in de portal mijn Apps u moet worden automatisch aangemeld bij de TurboRater-abonnement waarvoor u van eenmalige aanmelding instellen. Zie voor meer informatie over de portal mijn Apps [toegang en gebruik apps op de portal mijn Apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wanneer u **TurboRater** selecteert in de My Apps-portal, moet u automatisch worden aangemeld bij het TurboRater-abonnement waarvoor u eenmalige aanmelding instelt. Zie Apps openen en gebruiken [op de portal Mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie over de portal Mijn apps.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Lijst met zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-* [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 * [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

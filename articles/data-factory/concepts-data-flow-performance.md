@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 95a60abef283984d66736358d2d02048f08d700d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246990"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409846"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Prestaties en tuninggids voor gegevensstromen in kaart brengen
 
@@ -69,7 +69,7 @@ Als u foutopsporing inschakelt, wordt standaard de runtime van Azure Integration
 
 Onder **Bronopties** in de brontransformatie kunnen de volgende instellingen de prestaties beïnvloeden:
 
-* Batchgrootte instrueert ADF om gegevens in sets in het geheugen op te slaan in plaats van rij voor rij. Batchgrootte is een optionele instelling en u geen resources meer hebben op de compute nodes als ze niet goed zijn groot.
+* Batchgrootte instrueert ADF om gegevens op te slaan in sets in Spark-geheugen in plaats van rij voor rij. Batchgrootte is een optionele instelling en u geen resources meer hebben op de compute nodes als ze niet goed zijn groot. Als u deze eigenschap niet instelt, worden de standaardwaarden voor spark-cachingbatch gebruikt.
 * Als u een query instelt, u rijen bij de bron filteren voordat ze in Gegevensstroom aankomen voor verwerking. Dit kan de eerste gegevensverzameling sneller maken. Als u een query gebruikt, u optionele queryhints toevoegen voor uw Azure SQL DB, zoals LEZEN NIET-VASTGELEGD.
 * Lees niet-vastgelegd biedt snellere queryresultaten over brontransformatie
 
@@ -77,7 +77,7 @@ Onder **Bronopties** in de brontransformatie kunnen de volgende instellingen de 
 
 ### <a name="sink-batch-size"></a>Batchgrootte gootsteen
 
-Als u verwerking van uw gegevensstromen rij voor rij wilt voorkomen, stelt u **batchgrootte** in op het tabblad Instellingen voor Azure SQL DB en Azure SQL DW-sinks. Als batchgrootte is ingesteld, verwerkt ADF databaseschrijft in batches op basis van de opgegeven grootte.
+Als u verwerking van uw gegevensstromen rij voor rij wilt voorkomen, stelt u **batchgrootte** in op het tabblad Instellingen voor Azure SQL DB en Azure SQL DW-sinks. Als batchgrootte is ingesteld, verwerkt ADF databaseschrijft in batches op basis van de opgegeven grootte. Als u deze eigenschap niet instelt, worden de standaardwaarden voor spark-cachingbatch gebruikt.
 
 ![Sink](media/data-flow/sink4.png "Sink")
 

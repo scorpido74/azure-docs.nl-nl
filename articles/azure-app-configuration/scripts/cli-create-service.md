@@ -1,7 +1,7 @@
 ---
-title: Voor beeld van Azure CLI-script-een Azure-app configuratie archief maken
+title: Voorbeeld van Azure CLI Script - Een Azure App Configuration Store maken
 titleSuffix: Azure App Configuration
-description: Een Azure CLI-script gebruiken om een Azure-app configuratie archief te maken
+description: Azure CLI Script gebruiken om een Azure App Configuration Store te maken
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,15 +9,15 @@ ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
 ms.openlocfilehash: 667cf9545d87bd9277c59d066933710339b6c079
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77623089"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Een Azure App-configuratiearchief maken
 
-Met dit voorbeeld script maakt u een nieuw exemplaar van Azure-app configuratie in een nieuwe resource groep.
+Met dit voorbeeldscript wordt een nieuw exemplaar van Azure App-configuratie gemaakt in een nieuwe brongroep.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,16 +64,16 @@ Noteer de naam die wordt gegenereerd voor de nieuwe resourcegroep. U hebt deze n
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt om een nieuwe resource groep en een app-configuratie archief te maken. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+Dit script gebruikt de volgende opdrachten om een nieuwe brongroep en een app-configuratiearchief te maken. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [az appconfig create](/cli/azure/appconfig#az-appconfig-create) | Hiermee maakt u een app-configuratie opslag resource. |
-| [AZ appconfig Credential List](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Lijst met toegangs sleutels voor een app-configuratie archief. |
+| [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
+| [az appconfig create](/cli/azure/appconfig#az-appconfig-create) | Hiermee maakt u een bron voor het App-configuratiearchief. |
+| [az appconfig referentielijst](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Lijsttoegangssleutels voor een App Configuration Store. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Extra CLI-script voorbeelden voor configuratie van apps vindt u in de voor beelden van de [Azure-app configuratie-cli](../cli-samples.md).
+Aanvullende CLI-scriptvoorbeelden voor app-configuratie zijn te vinden in de [bemonsteringen van Azure App Configuration CLI.](../cli-samples.md)

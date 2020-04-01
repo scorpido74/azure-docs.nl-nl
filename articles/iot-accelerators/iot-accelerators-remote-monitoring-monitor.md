@@ -1,5 +1,5 @@
 ---
-title: Apparaten bewaken in de oplossing voor bewaking op afstand-Azure | Microsoft Docs
+title: Monitor apparaten in de oplossing voor bewaking op afstand - Azure | Microsoft Documenten
 description: In deze zelfstudie leert u hoe u uw IoT-apparaten kunt bewaken met behulp van de verbetering voor de externe bewakingsoplossing.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73890874"
 ---
 # <a name="tutorial-monitor-your-iot-devices"></a>Zelfstudie: Uw IoT-apparaten bewaken
@@ -31,7 +31,7 @@ In deze zelfstudie hebt u:
 > * Meldingen van uw apparaten weergeven
 > * De systeem-KPI's weergeven
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -39,11 +39,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Gebruik filters om te selecteren welke verbonden apparaten worden weergegeven op de pagina **Dashboard**. Om alleen de **Truck**-apparaten weer te geven, kiest u het ingebouwde **Trucks**-filter in de vervolgkeuzelijst met filters:
 
-[![Filteren op trucks in het dashboard](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
+[![Filter voor vrachtwagens op het dashboard](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckfilter-expanded.png#lightbox)
 
 Wanneer u een filter toepast, worden alleen de apparaten die voldoen aan de filtervoorwaarden weergegeven op de kaart en in het deelvenster Telemetrie. U kunt zien dat er twee trucks zijn verbonden met de oplossingsversnellers, waaronder vrachtwagen-02:
 
-[![Alleen trucks worden weergegeven op de kaart](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
+[![Alleen vrachtwagens worden op de kaart weergegeven](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtruckmap-expanded.png#lightbox)
 
 Als u filters wilt maken, bewerken en verwijderen, klikt u op **Apparaatgroepen beheren**.
 
@@ -51,11 +51,11 @@ Als u filters wilt maken, bewerken en verwijderen, klikt u op **Apparaatgroepen 
 
 De oplossingsversneller plot in realtime telemetrie in de grafiek op de pagina **Dashboard**. Boven in de telemetriegrafiek ziet u de beschikbare telemetrietypen voor de apparaten, waaronder truck-02, die met het huidige filter zijn geselecteerd. Standaard wordt in de grafiek de breedtegraad van de trucks weergegeven, en truck-02 lijkt stil te staan:
 
-[![Telemetrietypen voor trucks](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
+[![Vrachtwagentelemetrietypen](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardtelemetryview-expanded.png#lightbox)
 
 Als u voor de trucks temperatuurtelemetrie wilt weergeven, klikt u op **Temperatuur**: U kunt zien hoe de temperatuur voor truck-02 in het afgelopen uur is veranderd:
 
-[![Temperatuurtelemetrie voor trucks geplot](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
+[![De temperatuurtelemetrieperceel van de vrachtwagen](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardselecttelemetry-expanded.png#lightbox)
 
 ## <a name="view-the-map"></a>De kaart weergeven
 
@@ -67,13 +67,13 @@ Als u de details voor truck-02 wilt bekijken, zoomt en pant u de kaart om naar d
 * Methoden die door het apparaat worden ondersteund
 * Apparaateigenschappen
 
-[![Apparaatdetails weergeven in het dashboard](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-expanded.png#lightbox)
+[![Apparaatgegevens weergeven op het dashboard](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboarddevicedetail-expanded.png#lightbox)
 
 ## <a name="view-alerts"></a>Waarschuwingen weergeven
 
-Het deelvenster **Waarschuwingen** geeft gedetailleerde informatie over de meest recente meldingen van uw apparaten weer. De waarschuwingen voor truck-02 geven aan dat de temperatuur van de lading hoger dan normaal is:
+In het deelvenster **Waarschuwingen** worden gedetailleerde informatie weergegeven over de meest recente waarschuwingen van uw apparaten. De waarschuwingen voor truck-02 geven aan dat de temperatuur van de lading hoger dan normaal is:
 
-[![Apparaatmeldingen in het dashboard bekijken](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
+[![Apparaatwaarschuwingen weergeven op het dashboard](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-inline.png)](./media/iot-accelerators-remote-monitoring-monitor/dashboardsystemalarms-expanded.png#lightbox)
 
 U kunt een filter gebruiken om de tijdsduur voor recente meldingen aan te passen. Standaard worden in het deelvenster waarschuwingen van het afgelopen uur weergegeven.
 

@@ -1,5 +1,5 @@
 ---
-title: RUWE functies toevoegen aan een hoek-app met de API van Azure Cosmos DB voor MongoDB
+title: CRUD-functies toevoegen aan een Angular-app met azure cosmos DB's API voor MongoDB
 description: Deel 6 van de serie zelfstudies voor het maken van een MongoDB-app met Angular en Node op Azure Cosmos DB, waarbij gebruik wordt gemaakt van dezelfde API's als voor MongoDB
 author: johnpapa
 ms.service: cosmos-db
@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75441108"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - CRUD-functies toevoegen aan de app
@@ -86,7 +86,7 @@ Voltooi de stappen in [deel 5](tutorial-develop-mongodb-nodejs-part5.md) van de 
 
 5. Controleer of alles werkt door de app uit te voeren. Sla uw wijzigingen op in Visual Studio Code, selecteer aan de linkerkant de knop **Fouten opsporen**![pictogram Fouten opsporen in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) en selecteer vervolgens de knop **Start Debugging**![pictogram Start Debugging in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
 
-6. Ga terug naar de internetbrowser en open het tabblad Netwerk in de hulpmiddelen voor ontwikkelaars door op F12 te drukken (op de meeste computers). Ga naar [http://localhost:3000](http://localhost:3000) om de aanroepen te bekijken die via het netwerk zijn gedaan.
+6. Ga terug naar de internetbrowser en open het tabblad Netwerk in de hulpmiddelen voor ontwikkelaars door op F12 te drukken (op de meeste computers). Navigeer [http://localhost:3000](http://localhost:3000) naar om de gesprekken via het netwerk te bekijken.
 
     ![Tabblad Netwerk in Chrome met een overzicht van de netwerkactiviteit](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 

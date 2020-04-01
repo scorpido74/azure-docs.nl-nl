@@ -1,5 +1,5 @@
 ---
-title: Fouten opsporen in een Java-app op een lokaal Service Fabric cluster
+title: Een Java-app debuggen op een lokaal cluster van servicefabric
 description: In deze zelfstudie vindt u informatie over het opsporen van fouten en logboeken ophalen uit een Service Fabric Java-toepassing die wordt uitgevoerd op een lokaal cluster.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: c664b586260957138249028e4d521c29b411d56d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75465380"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Zelfstudie: Fouten opsporen in een Java-toepassing die is geïmplementeerd op een lokale Service Fabric-cluster
@@ -40,13 +40,13 @@ Voor u met deze zelfstudie begint:
 
 ## <a name="download-the-voting-sample-application"></a>De voorbeeldtoepassing om te stemmen downloaden
 
-Als u in [deel één van deze zelfstudiereeks](service-fabric-tutorial-create-java-app.md) niet de voorbeeldtoepassing om te stemmen hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de opslagplaats van de voorbeeld-app te klonen op uw lokale computer.
+Als u niet bouwen van de stemming voorbeeld applicatie in [deel een van deze tutorial serie,](service-fabric-tutorial-create-java-app.md)u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de opslagplaats van de voorbeeld-app te klonen op uw lokale computer.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 ```
 
-[Bouw en implementeer](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) de toepassing in het lokale ontwikkel cluster.
+[Bouw en implementeer](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) de toepassing in het cluster lokale ontwikkeling.
 
 ## <a name="debug-java-application-using-eclipse"></a>Fouten opsporen in de Java-toepassing met behulp van Eclipse
 
@@ -56,7 +56,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 3. Kies in het venster Import Projects de optie **Select root directory** en selecteer de map **Voting**. Als u zelfstudie reeks één hebt gevolgd, bevindt de map **Voting** zich in de map **Eclipse-workspace**.
 
-4. Werk entryPoint.sh bij van de service waar u fouten wilt opsporen, zodat dit het Java-proces met de parameters voor foutopsporing op afstand begint. Voor deze zelf studie wordt de stateless front-end gebruikt: *stem/VotingApplication/VotingWebPkg/code/entry point. sh*. Poort 8001 is ingesteld voor fout opsporing in dit voor beeld.
+4. Werk entryPoint.sh bij van de service waar u fouten wilt opsporen, zodat dit het Java-proces met de parameters voor foutopsporing op afstand begint. Voor deze tutorial wordt de stateless front-end gebruikt: *Voting/VotingApplication/VotingWebPkg/Code/entryPoint.sh*. Poort 8001 is ingesteld voor foutopsporing in dit voorbeeld.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingWeb.jar
@@ -82,15 +82,15 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 10. Selecteer in de Eclipse IDE **Run -> Debug Configurations -> Remote Java Application**, klik op de **Voting**-configuratie die u hebt gemaakt en klik op **Debug**.
 
-11. Ga naar uw webbrowser en open **localhost: 8080**. Hiermee wordt automatisch op het onderbrekings punt en de verduistering geklikt, wordt het **debug-perspectief**ingevoerd.
+11. Ga naar uw webbrowser en krijg toegang tot **localhost:8080.** Dit zal automatisch het breekpunt raken en Eclipse zal het **Debug-perspectief**invoeren.
 
-Nu kunt u dezelfde stappen Toep assen om een Service Fabric toepassing in een eclips op te sporen.
+Nu u dezelfde stappen toepassen om elke Service Fabric-toepassing in Eclipse te debuggen.
 
 ## <a name="redirect-application-logs-to-custom-location"></a>Toepassingslogboeken omleiden naar aangepaste locatie
 
 De volgende stappen doorlopen het omleiden van de toepassingslogboeken van de standaardlocatie */var/log/syslog* naar een aangepaste locatie.
 
-1. Op dit moment ondersteunen toepassingen die worden uitgevoerd in Service Fabric Linux-clusters alleen het ophalen van één logboek bestand. Als u een toepassing zo wilt instellen dat de logboeken altijd naar */tmp/mysfapp0.0.log*gaan, maakt u een bestand met de naam logging. Properties in de volgende locatie *stem/VotingApplication/VotingWebPkg/code/logging. Properties* en voegt u de volgende inhoud toe.
+1. Momenteel ondersteunen toepassingen die worden uitgevoerd in Service Fabric Linux-clusters alleen het oppakken van één logbestand. Als u een toepassing wilt instellen zodat de logboeken altijd naar */tmp/mysfapp0.0.log*gaan, maakt u een bestand met de naam logging.properties op de volgende locatie *Voting/VotingApplication/VotingWebPkg/Code/logging.properties* en voegt u de volgende inhoud toe.
 
     ```
     handlers = java.util.logging.FileHandler
@@ -109,7 +109,7 @@ De volgende stappen doorlopen het omleiden van de toepassingslogboeken van de st
     -Djava.util.logging.config.file=logging.properties
     ```
 
-    In het volgende voor beeld ziet u een voor beeld van de uitvoering van het fout opsporingsprogramma, vergelijkbaar met de uitvoering in de vorige sectie.
+    In het volgende voorbeeld wordt een voorbeelduitvoering weergegeven met de foutopsporing die is gekoppeld, vergelijkbaar met de uitvoering in de vorige sectie.
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar

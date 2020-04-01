@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5d8966c492bd77eaa4d18c8a8b9ac524b8864027
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 150801fe66da1ea8c6f10d437c6d7616a77b544e
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371744"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411011"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Zelfstudie: uitvoer toevoegen aan uw ARM-sjabloon
 
@@ -52,7 +52,7 @@ U bent klaar om de sjabloon te implementeren en de geretourneerde waarde te beki
 
 Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de **variabele templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals wordt weergegeven in de [eerste zelfstudie.](template-tutorial-create-first-template.md#deploy-template)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -89,6 +89,9 @@ In de uitvoer voor de opdracht implementatie ziet u een object dat vergelijkbaar
     "file": "https://storeluktbfkpjjrkm.file.core.windows.net/"
 }
 ```
+
+> [!NOTE]
+> Als de implementatie is mislukt, gebruikt u de **foutopsporingsschakelaar** met de opdracht implementatie om de foutopsporingslogboeken weer te geven.  U ook de **verbose-schakelaar** gebruiken om de volledige foutopsporingslogboeken weer te geven.
 
 ## <a name="review-your-work"></a>Bekijk uw werk
 

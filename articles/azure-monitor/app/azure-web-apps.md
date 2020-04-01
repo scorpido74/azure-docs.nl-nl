@@ -3,12 +3,12 @@ title: Prestaties azure-app-services bewaken | Microsoft Documenten
 description: Toepassingsprestatiebewaking voor Azure-app-services. Laad- en responstijd in grafieken, afhankelijkheidsgegevens en stel waarschuwingen in op prestaties.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2ec503829d3e6edd7b2b6f6b36314db8a205a8cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297610"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437201"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
@@ -28,7 +28,7 @@ Er zijn twee manieren om toepassingsbewaking voor gehoste Azure-toepassingen in 
 
     * Deze aanpak is veel meer aanpasbaar, maar het vereist [het toevoegen van een afhankelijkheid van de Application Insights SDK NuGet-pakketten.](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) Deze methode betekent ook dat u de updates voor de nieuwste versie van de pakketten zelf moet beheren.
 
-    * Als u aangepaste API-aanroepen moet maken om gebeurtenissen/afhankelijkheden bij te houden die niet standaard zijn vastgelegd met agentgebaseerde bewaking, moet u deze methode gebruiken. Bekijk de [API voor aangepaste gebeurtenissen en statistieken artikel](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) voor meer informatie.
+    * Als u aangepaste API-aanroepen moet maken om gebeurtenissen/afhankelijkheden bij te houden die niet standaard zijn vastgelegd met agentgebaseerde bewaking, moet u deze methode gebruiken. Bekijk de [API voor aangepaste gebeurtenissen en statistieken artikel](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) voor meer informatie. Dit is momenteel ook de enige ondersteunde optie voor Linux-gebaseerde workloads.
 
 > [!NOTE]
 > Als zowel agent-gebaseerde monitoring als handmatige SDK-gebaseerde instrumentatie wordt gedetecteerd, worden alleen de handmatige instrumentatie-instellingen gehonoreerd. Dit is om te voorkomen dat dubbele gegevens worden verzonden. Bekijk de [sectie probleemoplossing](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) hieronder voor meer informatie hierover.

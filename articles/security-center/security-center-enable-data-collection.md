@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 5236fd89ed99ca14bb7fc24e40ef79e12e5177d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61d0a57c541837ab3aebf65e47d757f7ecbe7e40
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245497"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435985"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Gegevensverzameling in Azure Security Center
 Security Center verzamelt gegevens van uw Virtuele Azure-machines (VM's), virtuele machineschaalsets, IaaS-containers en niet-Azure-computers (inclusief on-premises) computers om te controleren op beveiligingsproblemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics Agent, die verschillende beveiligingsconfiguraties en gebeurtenislogboeken van de machine leest en de gegevens kopieert naar uw werkruimte voor analyse. Voorbeelden van dergelijke gegevens zijn: type en versie van het besturingssysteem, logboeken van het besturingssysteem (Windows-gebeurtenislogboeken), het uitvoeren van processen, machinenaam, IP-adressen en ingelogde gebruiker. De Log Analytics Agent kopieert ook crashdumpbestanden naar uw werkruimte.
@@ -306,7 +306,7 @@ U de Log Analytics Agent handmatig installeren, zodat Security Center beveiligin
 
 - Ga als volgt te werk om problemen met niet-bewaakte VM's en computers te identificeren:
 
-    Een VM of computer wordt niet gecontroleerd door Security Center als de machine de Microsoft Monitoring Agent-extensie niet uitvoert. Een machine kan al een lokale agent hebben geïnstalleerd, bijvoorbeeld de OMS-direct agent of de System Center Operations Manager-agent. Machines met deze agents worden geïdentificeerd als niet-gecontroleerd omdat deze agents niet volledig worden ondersteund in Security Center. De Microsoft Monitoring Agent-extensie is vereist om volledig te profiteren van alle mogelijkheden van Security Center.
+    Een VM of computer wordt niet gecontroleerd door Security Center als de machine de extensie Log Analytics-agent niet uitvoert. Een machine kan al een lokale agent hebben geïnstalleerd, bijvoorbeeld de OMS-direct agent of de System Center Operations Manager-agent. Machines met deze agents worden geïdentificeerd als niet-gecontroleerd omdat deze agents niet volledig worden ondersteund in Security Center. Om volledig te kunnen profiteren van alle mogelijkheden van het Security Center, is de extensie van de Log Analytics-agent vereist.
 
     Zie [Statusproblemen](security-center-troubleshooting-guide.md#mon-agent)van de agent controleren voor meer informatie over de redenen waarom Beveiligingscentrum niet kan controleren dat vm's en computers zijn geïnitialiseerd voor automatische provisioning.
 

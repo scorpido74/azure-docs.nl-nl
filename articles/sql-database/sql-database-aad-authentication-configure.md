@@ -1,32 +1,54 @@
 ---
 title: Azure Active Directory-verificatie configureren
-description: Lees hoe u verbinding maken met SQL Database, beheerde instantie en SQL Data Warehouse met Azure Active Directory Authentication - na het configureren van Azure AD.
+description: Meer informatie over het maken van verbinding met SQL Database, beheerde instantie en Azure Synapse Analytics met Azure Active Directory Authentication - na het configureren van Azure AD.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: data warehouse
+ms.custom: azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 01/07/2020
-ms.openlocfilehash: 881c7076d5131746c730757a07da6fb938429c38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/27/2020
+ms.openlocfilehash: 0e244ea185011bbb7d9f0facad399bb9b577bbc2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125041"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419840"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Verificatie van Azure Active Directory configureren en beheren met SQL
 
-In dit artikel ziet u hoe u Azure AD maakt en invult en vervolgens Azure AD gebruikt met Azure [SQL Database](sql-database-technical-overview.md), [beheerde instantie](sql-database-managed-instance.md)en SQL Data [Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Zie [Azure Active Directory Authentication](sql-database-aad-authentication.md)voor een overzicht .
+In dit artikel ziet u hoe u Azure AD maakt en invult en vervolgens Azure AD gebruikt met Azure [SQL Database (SQL DB),](sql-database-technical-overview.md) [beheerde instantie (MI)](sql-database-managed-instance.md)en [Azure Synapse Analytics (voorheen Azure SQL Data Warehouse).](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Zie [Azure Active Directory Authentication](sql-database-aad-authentication.md)voor een overzicht .
 
 > [!NOTE]
-> Dit artikel is van toepassing op Azure SQL-server en op zowel SQL Database- als SQL Data Warehouse-databases die zijn gemaakt op de Azure SQL-server. Voor het gemak wordt de term 'SQL Database' gebruikt wanneer er wordt verwezen naar zowel SQL Database als SQL Data Warehouse.
+> Dit artikel is van toepassing op Azure SQL-server en op zowel SQL Database als Azure Synapse. Voor de eenvoud wordt SQL Database gebruikt bij het verwijzen naar zowel SQL Database als Azure Synapse.
 
 > [!IMPORTANT]  
 > Verbinding maken met SQL Server die wordt uitgevoerd op een Azure VM wordt niet ondersteund met een Azure Active Directory-account. Gebruik in plaats daarvan een Active Directory-account voor een domein.
+
+## <a name="azure-ad-authentication-methods"></a>Azure AD-verificatiemethoden
+
+Azure AD-verificatie ondersteunt de volgende verificatiemethoden:
+
+- Azure AD-cloud-identiteiten
+- Hybride azure-identiteiten van AD die ondersteuning bieden voor:
+  - Cloudverificatie met twee opties in combinatie met naadloze single sign-on (SSO)
+    - Azure AD-verificatie van wachtwoordhash
+    - Azure AD-verificatie voor doorgeefgegevens
+  - Federatieve verificatie
+
+Voor meer informatie over Azure AD-verificatiemethoden en welke te kiezen zie het artikel:
+- [De juiste verificatiemethode kiezen voor uw azure Active Directory hybride identiteitsoplossing](../active-directory/hybrid/choose-ad-authn.md)
+
+Zie de volgende artikelen voor meer informatie over hybride azure-identiteiten van AD, de installatie en synchronisatie:
+
+- Wachtwoordhashverificatie - [Synchronisatie van wachtwoordhash implementeren met Azure AD Connect-synchronisatie](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
+- Verificatie doorgeven - [Azure Active Directory Pass-Through-verificatie](../active-directory/hybrid/how-to-connect-pta-quick-start.md)
+- Federatieve verificatie - [Active Directory Federation Services implementeren in Azure](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) en Azure AD Connect en [federatie](../active-directory/hybrid/how-to-connect-fed-whatis.md)
+
+Alle bovenstaande verificatiemethoden worden ondersteund voor SQL DB (single database- en databasepools), beheerde instantie en Azure Synapse.
 
 ## <a name="create-and-populate-an-azure-ad"></a>Een Azure-AD maken en invullen
 
@@ -45,7 +67,7 @@ Zie [Uw on-premises identiteiten integreren met Azure Active Directory](../activ
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Een Azure AD-beheerder voor Azure SQL-server maken
 
-Elke Azure SQL-server (die een SQL Database of SQL Data Warehouse host) begint met één serverbeheerdersaccount dat de beheerder is van de gehele Azure SQL-server. Er moet een tweede SQL Server-beheerder worden gemaakt, dat is een Azure AD-account. Deze principal wordt gemaakt als een opgenomen databasegebruiker in de hoofddatabase. Als beheerders zijn de serverbeheerdersaccounts lid van de **db_owner** rol in elke gebruikersdatabase en voeren ze elke gebruikersdatabase in als de **dbo-gebruiker.** Zie [Databases en Aanmeldingen beheren in Azure SQL Database](sql-database-manage-logins.md)voor meer informatie over de serverbeheerdersaccounts.
+Elke Azure SQL-server (die een SQL Database of Azure Synapse host) begint met één serverbeheerdersaccount dat de beheerder is van de gehele Azure SQL-server. Er moet een tweede SQL Server-beheerder worden gemaakt, dat is een Azure AD-account. Deze principal wordt gemaakt als een opgenomen databasegebruiker in de hoofddatabase. Als beheerders zijn de serverbeheerdersaccounts lid van de **db_owner** rol in elke gebruikersdatabase en voeren ze elke gebruikersdatabase in als de **dbo-gebruiker.** Zie [Databases en Aanmeldingen beheren in Azure SQL Database](sql-database-manage-logins.md)voor meer informatie over de serverbeheerdersaccounts.
 
 Wanneer u Azure Active Directory gebruikt met georeplicatie, moet de Azure Active Directory-beheerder zijn geconfigureerd voor zowel de primaire als de secundaire servers. Als een server geen Azure Active Directory-beheerder heeft, worden azure Active Directory-aanmeldingen en gebruikers ontvangen een fout 'Kan geen verbinding maken' met server.
 
@@ -176,7 +198,7 @@ Als aanbevolen praktijk voor bestaande Azure AD-beheerders voor MI die vóór GA
 
 ### <a name="powershell-for-sql-managed-instance"></a>PowerShell voor SQL-beheerde instantie
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Als u PowerShell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en uitgevoerd. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor gedetailleerde informatie.
 
@@ -232,13 +254,13 @@ Zie az sql mi voor meer informatie over [CLI-opdrachten.](/cli/azure/sql/mi)
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Een Azure Active Directory-beheerder voor uw Azure SQL Database-server inrichten
 
 > [!IMPORTANT]
-> Volg deze stappen alleen als u een Azure SQL Database-server of Data Warehouse indient.
+> Volg deze stappen alleen als u een Azure SQL Database-server of Azure Synapse Analytics indient.
 
 In de volgende twee procedures ziet u hoe u een Azure Active Directory-beheerder indient voor uw Azure SQL-server in de Azure-portal en met PowerShell.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Ga naar de [Azure-portal](https://portal.azure.com/) en selecteer in de rechterbovenhoek uw verbinding om een lijst met mogelijke Active Directories weer te geven. Kies de juiste Active Directory als de standaard-Azure AD. In deze stap wordt de aan het abonnement gekoppelde Active Directory gekoppeld aan de Azure SQL-server, zodat u zeker weet dat hetzelfde abonnement wordt gebruikt voor zowel Azure AD als SQL Server. (De Azure SQL-server kan Azure SQL Database of Azure SQL Data Warehouse hosten.)
+1. Ga naar de [Azure-portal](https://portal.azure.com/) en selecteer in de rechterbovenhoek uw verbinding om een lijst met mogelijke Active Directories weer te geven. Kies de juiste Active Directory als de standaard-Azure AD. In deze stap wordt de aan het abonnement gekoppelde Active Directory gekoppeld aan de Azure SQL-server, zodat u zeker weet dat hetzelfde abonnement wordt gebruikt voor zowel Azure AD als SQL Server. (De Azure SQL-server kan host zijn van Azure SQL Database of Azure Synapse.)
 
     ![ad-kiezen][8]
 
@@ -255,7 +277,7 @@ In de volgende twee procedures ziet u hoe u een Azure Active Directory-beheerder
 
     ![SQL-servers stellen Active Directory-beheerder in](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
-5. Zoek op de pagina **Beheerder toevoegen** een gebruiker. Selecteer de gebruiker of groep die beheerder moet zijn en selecteer **Selecteren**. (Op de pagina Active Directory-beheerder ziet u alle leden en groepen van uw Active Directory.) Gebruikers of groepen die grijs zijn gekleurd, kunnen niet worden geselecteerd omdat ze niet worden ondersteund als beheerders voor Azure AD. (Zie de lijst met ondersteunde beheerders in de sectie **Azure AD-functies en -beperkingen** van [Azure Active Directory Authentication gebruiken voor verificatie met SQL Database of SQL Data Warehouse](sql-database-aad-authentication.md).) RBAC (Role-based access control) is alleen van toepassing op de portal en wordt niet gepropageerd naar SQL Server.
+5. Zoek op de pagina **Beheerder toevoegen** een gebruiker. Selecteer de gebruiker of groep die beheerder moet zijn en selecteer **Selecteren**. (Op de pagina Active Directory-beheerder ziet u alle leden en groepen van uw Active Directory.) Gebruikers of groepen die grijs zijn gekleurd, kunnen niet worden geselecteerd omdat ze niet worden ondersteund als beheerders voor Azure AD. (Zie de lijst met ondersteunde beheerders in de sectie **Azure AD-onderdelen en -beperkingen** van [Azure Active Directory Authentication gebruiken voor verificatie met SQL Database of Azure Synapse](sql-database-aad-authentication.md).) RBAC (Role-based access control) is alleen van toepassing op de portal en wordt niet gepropageerd naar SQL Server.
 
     ![Azure Active Directory-beheerder selecteren](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
@@ -270,22 +292,22 @@ Het wijzigen van de beheerder kan enkele minuten duren. Vervolgens wordt de nieu
 
 Als u een beheerder later wilt verwijderen, selecteert u boven aan de pagina **Active Directory-beheer** de optie **Beheerder verwijderen**en selecteert u **Opslaan**.
 
-### <a name="powershell-for-azure-sql-database-and-azure-sql-data-warehouse"></a>PowerShell voor Azure SQL Database en Azure SQL Data Warehouse
+### <a name="powershell-for-azure-sql-database-and-azure-synapse"></a>PowerShell voor Azure SQL Database en Azure Synapse
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Als u PowerShell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en uitgevoerd. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor gedetailleerde informatie. Als u een Azure AD-beheerder wilt inrichten, voert u de volgende Azure PowerShell-opdrachten uit:
 
 - Connect-AzAccount
 - Select-AzAbonnement
 
-Cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheer voor Azure SQL Database en Azure SQL Data Warehouse:
+Cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheer voor Azure SQL Database en Azure Synapse:
 
 | Naam van cmdlet | Beschrijving |
 | --- | --- |
-| [Set-azsqlserverActiveDirectoryAdministrator instellen](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Voorziet een Azure Active Directory-beheerder voor Azure SQL Server of Azure SQL Data Warehouse. (Moet van het huidige abonnement zijn) |
-| [Remove-azsqlserverActiveDirectoryadministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Hiermee verwijdert u een Azure Active Directory-beheerder voor Azure SQL-server of Azure SQL Data Warehouse. |
-| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Retourneert informatie over een Azure Active Directory-beheerder die momenteel is geconfigureerd voor de Azure SQL-server of Azure SQL Data Warehouse. |
+| [Set-azsqlserverActiveDirectoryAdministrator instellen](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Voorziet een Azure Active Directory-beheerder voor Azure SQL Server of Azure Synapse. (Moet van het huidige abonnement zijn) |
+| [Remove-azsqlserverActiveDirectoryadministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Hiermee verwijdert u een Azure Active Directory-beheerder voor Azure SQL-server of Azure Synapse. |
+| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Retourneert informatie over een Azure Active Directory-beheerder die momenteel is geconfigureerd voor de Azure SQL-server of Azure Synapse. |
 
 Gebruik PowerShell-opdrachthulp om meer informatie voor elk van deze opdrachten te bekijken. Bijvoorbeeld `get-help Set-AzSqlServerActiveDirectoryAdministrator`.
 
@@ -328,10 +350,10 @@ U een Azure AD-beheerder inrichten door de volgende CLI-opdrachten aan te roepen
 
 | Opdracht | Beschrijving |
 | --- | --- |
-|[az sql server ad-admin maken](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Voorziet een Azure Active Directory-beheerder voor Azure SQL Server of Azure SQL Data Warehouse. (Moet van het huidige abonnement zijn) |
-|[az sql server ad-admin verwijderen](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Hiermee verwijdert u een Azure Active Directory-beheerder voor Azure SQL-server of Azure SQL Data Warehouse. |
-|[az sql server ad-admin lijst](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | Retourneert informatie over een Azure Active Directory-beheerder die momenteel is geconfigureerd voor de Azure SQL-server of Azure SQL Data Warehouse. |
-|[update az sql server ad-admin](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | Werkt de Active Directory-beheerder bij voor een Azure SQL-server of Azure SQL Data Warehouse. |
+|[az sql server ad-admin maken](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Voorziet een Azure Active Directory-beheerder voor Azure SQL Server of Azure Synapse. (Moet van het huidige abonnement zijn) |
+|[az sql server ad-admin verwijderen](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Hiermee verwijdert u een Azure Active Directory-beheerder voor Azure SQL-server of Azure Synapse. |
+|[az sql server ad-admin lijst](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | Retourneert informatie over een Azure Active Directory-beheerder die momenteel is geconfigureerd voor de Azure SQL-server of Azure Synapse. |
+|[update az sql server ad-admin](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | Werkt de Active Directory-beheerder bij voor een Azure SQL-server of Azure Synapse. |
 
 Zie az sql server voor meer informatie over [CLI-opdrachten.](/cli/azure/sql/server)
 
@@ -342,7 +364,7 @@ Zie az sql server voor meer informatie over [CLI-opdrachten.](/cli/azure/sql/ser
 
 ## <a name="configure-your-client-computers"></a>Uw clientcomputers configureren
 
-Op alle clientmachines, waarvan uw toepassingen of gebruikers verbinding maken met Azure SQL Database of Azure SQL Data Warehouse met Azure AD-identiteiten, moet u de volgende software installeren:
+Op alle clientmachines, waarvan uw toepassingen of gebruikers verbinding maken met Azure SQL Database of Azure Synapse met Azure AD-identiteiten, moet u de volgende software installeren:
 
 - .NET Framework 4.6 [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx)of hoger van .
 - Azure Active Directory Authentication Library for SQL Server *(ADAL. DLL*). Hieronder vindt u de downloadlinks om de nieuwste SSMS-, ODBC- en OLE DB-stuurprogramma te installeren die de *ADAL bevat. DLL* bibliotheek.
@@ -365,7 +387,7 @@ U aan deze vereisten voldoen door:
 Voor verificatie met Azure Active Directory is vereist dat databasegebruikers als gebruikers van ingesloten databases worden gemaakt. Een gebruiker van een ingesloten database op basis van een Azure AD-identiteit is een databasegebruiker die zich niet kan aanmelden bij de hoofddatabase en die wordt verwezen naar een identiteit in de Azure AD-directory die aan de database is gekoppeld. De Azure AD-identiteit kan een individueel gebruikersaccount of een groep zijn. Zie [Contained Database Users- Making Your Database Portable](https://msdn.microsoft.com/library/ff929188.aspx) (Gebruikers van ingesloten databases: een draagbare database maken) voor meer informatie over gebruikers van ingesloten databases.
 
 > [!NOTE]
-> Databasegebruikers kunnen niet in de Azure-portal worden gemaakt (met uitzondering van beheerders). RBAC-rollen worden niet doorgegeven aan SQL Server, SQL Database of SQL Data Warehouse. Azure RBAC-rollen worden gebruikt voor het beheren van Azure-resources en zijn niet van toepassing op databasemachtigingen. Bijvoorbeeld: de rol **Inzender voor SQL Server** verleent geen toegang om verbinding te maken met SQL Database of SQL Data Warehouse. De toestemming tot het verlenen van toegang moet rechtstreeks plaatsvinden in de database met behulp van Transact-SQL-instructies.
+> Databasegebruikers kunnen niet in de Azure-portal worden gemaakt (met uitzondering van beheerders). RBAC-rollen worden niet gepropageerd naar SQL Server, SQL Database of Azure Synapse. Azure RBAC-rollen worden gebruikt voor het beheren van Azure-resources en zijn niet van toepassing op databasemachtigingen. De rol **SQL Server Contributor** verleent bijvoorbeeld geen toegang tot verbinding met de SQL Database of Azure Synapse. De toestemming tot het verlenen van toegang moet rechtstreeks plaatsvinden in de database met behulp van Transact-SQL-instructies.
 
 > [!WARNING]
 > Speciale tekens als de dubbele punt `:` of de ampersand `&` worden niet ondersteund indien deze worden opgenomen als gebruikersnamen in de instructies T-SQL CREATE LOGIN of CREATE USER.
@@ -417,7 +439,7 @@ Een federatief domeingebruikersaccount dat als externe gebruiker in een beheerd 
 > [!NOTE]
 > Azure AD-gebruikers worden in de metagegevens van de database gemarkeerd met het type E (EXTERNAL_USER) en voor groepen met het type X (EXTERNAL_GROUPS). Zie [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) voor meer informatie.
 
-## <a name="connect-to-the-user-database-or-data-warehouse-by-using-ssms-or-ssdt"></a>Verbinding maken met de gebruikersdatabase of het gegevensmagazijn met Behulp van SSMS of SSDT  
+## <a name="connect-to-the-user-database-or-azure-synapse-by-using-ssms-or-ssdt"></a>Verbinding maken met de gebruikersdatabase of Azure Synapse met SSMS of SSDT  
 
 Als u wilt bevestigen dat de Azure AD-beheerder goed is ingesteld, maakt u verbinding met de **hoofddatabase** met het Azure AD-beheerdersaccount.
 Als u een azure AD-gebaseerde databasegebruiker (anders dan de serverbeheerder die eigenaar is van de database) wilt inrichten, maakt u verbinding met de database met een Azure AD-identiteit die toegang heeft tot de database.
@@ -427,35 +449,41 @@ Als u een azure AD-gebaseerde databasegebruiker (anders dan de serverbeheerder d
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Een Azure AD-identiteit gebruiken om verbinding te maken met SSMS of SSDT
 
-In de volgende procedures ziet u hoe u verbinding maakt met een SQL-database met een Azure AD-identiteit met SQL Server Management Studio of SQL Server Database Tools.
+In de volgende procedures ziet u hoe u verbinding maakt met een SQL-database met een Azure AD-identiteit met SQL Server Management Studio of SQL Server Database Tools. 
 
 ### <a name="active-directory-integrated-authentication"></a>Geïntegreerde active directory-verificatie
 
-Gebruik deze methode als u bent aangemeld bij Windows met uw Azure Active Directory-referenties van een federatief domein.
+Gebruik deze methode als u bent aangemeld bij Windows met behulp van uw Azure Active Directory-referenties van een federatief domein of een beheerd domein dat is geconfigureerd voor naadloze eenmalige aanmelding voor verificatie van doorgeef- en wachtwoordhash. Zie [Azure Active Directory Seamless Single Sign-On](../active-directory/hybrid/how-to-connect-sso.md)voor meer informatie.
 
-1. Start Management Studio of Data Tools en selecteer in het dialoogvenster **Verbinding maken met server** (of Verbinding maken met **databaseengine)** in het vak **Verificatie** de optie Active Directory **- Integrated**. Er is geen wachtwoord nodig of kan worden ingevoerd omdat uw bestaande referenties worden gepresenteerd voor de verbinding.
+1. Start Management Studio of Data Tools en selecteer in het dialoogvenster **Verbinding maken met server** (of Verbinding maken met **databaseengine)** in het vak **Verificatie** de optie Azure Active Directory **- Integrated**. Er is geen wachtwoord nodig of kan worden ingevoerd omdat uw bestaande referenties worden gepresenteerd voor de verbinding.
 
     ![Ad-geïntegreerde verificatie selecteren][11]
 
-2. Selecteer de knop **Opties** en typ op de pagina **Verbindingseigenschappen** in het vak **Verbinding maken met de database** de naam van de gebruikersdatabase waarmee u verbinding wilt maken. (De **optie AD-domeinnaam of tenant-id**wordt alleen ondersteund voor **Universal met MFA-verbindingsopties,** anders wordt deze grijs weergegeven.)  
+2. Selecteer de knop **Opties** en typ op de pagina **Verbindingseigenschappen** in het vak **Verbinding maken met de database** de naam van de gebruikersdatabase waarmee u verbinding wilt maken. Zie voor meer informatie het artikel [Multi-factor AAD auth](sql-database-ssms-mfa-authentication.md#azure-ad-domain-name-or-tenant-id-parameter) over de verschillen tussen de verbindingseigenschappen voor SSMS 17.x en 18.x. 
 
     ![De databasenaam selecteren][13]
 
-## <a name="active-directory-password-authentication"></a>Verificatie van Active Directory-wachtwoord
+### <a name="active-directory-password-authentication"></a>Verificatie van Active Directory-wachtwoord
 
 Gebruik deze methode wanneer u verbinding maakt met een hoofdnaam van Azure AD met het beheerde Azure AD-domein. U het ook gebruiken voor federatieve accounts zonder toegang tot het domein, bijvoorbeeld wanneer u op afstand werkt.
 
-Gebruik deze methode om te verifiëren bij SQL DB/DW met Azure AD voor native of federatieve Azure AD-gebruikers. Een native gebruiker is een gebruiker die expliciet is gemaakt in Azure AD en wordt geverifieerd met behulp van gebruikersnaam en wachtwoord, terwijl een federatieve gebruiker een Windows-gebruiker is wiens domein wordt gefedereerd met Azure AD. De laatste methode (met behulp van gebruiker & wachtwoord) kan worden gebruikt wanneer een gebruiker zijn windows-referentie wil gebruiken, maar zijn lokale machine is niet verbonden met het domein (bijvoorbeeld met behulp van een externe toegang). In dit geval kan een Windows-gebruiker zijn domeinaccount en wachtwoord aangeven en kan hij zich verifiëren bij SQL DB/DW met behulp van federatieve referenties.
+Gebruik deze methode om te verifiëren voor SQL DB of MI met Azure AD-gebruikers van de cloud of gebruikers die hybride azure-identiteiten van Azure AD gebruiken. Deze methode ondersteunt gebruikers die hun Windows-referentie willen gebruiken, maar hun lokale machine is niet verbonden met het domein (bijvoorbeeld met behulp van externe toegang). In dit geval kan een Windows-gebruiker zijn domeinaccount en wachtwoord aangeven en kan hij zich verifiëren bij SQL DB, MI of Azure Synapse.
 
-1. Start Management Studio of Data Tools en selecteer in het dialoogvenster **Verbinding maken met server** (of Verbinding maken met **databaseengine)** in het vak **Verificatie** de optie Active Directory **- Password**.
+1. Start Management Studio of Data Tools en selecteer in het dialoogvenster **Verbinding maken met server** (of Verbinding maken met **databaseengine)** in het vak **Verificatie** de optie Azure Active Directory **- Password**.
 
-2. Typ **in** het vak Gebruikersnaam uw Azure Active Directory-gebruikersnaam in de **indeling gebruikersnaam\@domain.com**. Gebruikersnamen moeten een account zijn uit de Azure Active Directory of een account van een domeindat wordt gebruikt met de Azure Active Directory.
+2. Typ **in** het vak Gebruikersnaam uw Azure Active Directory-gebruikersnaam in de **indeling gebruikersnaam\@domain.com**. Gebruikersnamen moeten een account zijn van Azure Active Directory of een account uit een beheerd of federatief domein met Azure Active Directory.
 
-3. Typ **in** het vak Wachtwoord uw gebruikerswachtwoord voor het Azure Active Directory-account of het federatieve domeinaccount.
+3. Typ **in** het vak Wachtwoord uw gebruikerswachtwoord voor het Azure Active Directory-account of beheerd/gefedereerd domeinaccount.
 
     ![Ad-wachtwoordverificatie selecteren][12]
 
 4. Selecteer de knop **Opties** en typ op de pagina **Verbindingseigenschappen** in het vak **Verbinding maken met de database** de naam van de gebruikersdatabase waarmee u verbinding wilt maken. (Zie de afbeelding in de vorige optie.)
+
+### <a name="active-directory-interactive-authentication"></a>Interactieve Active Directory-verificatie
+
+Gebruik deze methode voor interactieve verificatie met of zonder multi-factor authenticatie (MFA), waarbij wachtwoord interactief wordt aangevraagd. Deze methode kan worden gebruikt om te verifiëren voor SQL DB, MI en Azure Synapse voor Azure AD-identiteitsgebruikers met alleen Azure-cloud of gebruikers die hybride azure-identiteiten gebruiken.
+
+Zie [Multi-factor AAD-verificatie gebruiken met Azure SQL Database en Azure Synapse Analytics (SSMS-ondersteuning voor MFA) voor](sql-database-ssms-mfa-authentication.md)meer informatie.
 
 ## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>Een Azure AD-identiteit gebruiken om verbinding te maken vanuit een clienttoepassing
 
@@ -463,9 +491,14 @@ In de volgende procedures ziet u hoe u verbinding maakt met een SQL-database met
 
 ### <a name="active-directory-integrated-authentication"></a>Geïntegreerde active directory-verificatie
 
-Als u geïntegreerde Windows-verificatie wilt gebruiken, moet de Active Directory van uw domein worden gefedereerd met Azure Active Directory. Uw clienttoepassing (of een service) die verbinding maakt met de database, moet worden uitgevoerd op een door een domein verbonden machine onder de domeinreferenties van een gebruiker.
+Als u geïntegreerde Windows-verificatie wilt gebruiken, moet de Active Directory van uw domein worden gefedereerd met Azure Active Directory of moet het een beheerd domein zijn dat is geconfigureerd voor naadloze eenmalige aanmelding voor verificatie van doorgeef- of wachtwoordhash. Zie [Azure Active Directory Seamless Single Sign-On](../active-directory/hybrid/how-to-connect-sso.md)voor meer informatie.
 
-Als u verbinding wilt maken met een database met geïntegreerde verificatie en een Azure AD-identiteit, moet het trefwoord Verificatie in de tekenreeks voor databaseverbinding zijn ingesteld op Active Directory Integrated. In het volgende C#-codevoorbeeld wordt ADO .NET gebruikt.
+> [!NOTE]
+> [MSAL.NET (Microsoft.Identity.Client)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap) voor geïntegreerde Windows-verificatie wordt niet ondersteund voor naadloze single sign-on voor pass-through en password hash authenticatie.
+
+Uw clienttoepassing (of een service) die verbinding maakt met de database, moet worden uitgevoerd op een door een domein verbonden machine onder de domeinreferenties van een gebruiker.
+
+Als u verbinding wilt maken met een database met geïntegreerde verificatie en een `Active Directory Integrated`Azure AD-identiteit, moet het trefwoord Verificatie in de tekenreeks voor databaseverbinding worden ingesteld op . In het volgende C#-codevoorbeeld wordt ADO .NET gebruikt.
 
 ```csharp
 string ConnectionString = @"Data Source=n9lxnyuzhv.database.windows.net; Authentication=Active Directory Integrated; Initial Catalog=testdb;";
@@ -477,7 +510,7 @@ Het trefwoord `Integrated Security=True` verbindingstekenreeks wordt niet onders
 
 ### <a name="active-directory-password-authentication"></a>Verificatie van Active Directory-wachtwoord
 
-Als u verbinding wilt maken met een database met geïntegreerde verificatie en een Azure AD-identiteit, moet het trefwoord Verificatie zijn ingesteld op Active Directory Password. De verbindingstekenreeks moet gebruikers-id/UID en Password/PWD-trefwoorden en -waarden bevatten. In het volgende C#-codevoorbeeld wordt ADO .NET gebruikt.
+Als u verbinding wilt maken met een database met alleen Azure AD-gebruikersaccounts voor identiteitsgebruikers `Active Directory Password`of gebruikers van azure AD-identiteiten, moet het trefwoord Verificatie zijn ingesteld op . De verbindingstekenreeks moet gebruikers-id/UID en Password/PWD-trefwoorden en -waarden bevatten. In het volgende C#-codevoorbeeld wordt ADO .NET gebruikt.
 
 ```csharp
 string ConnectionString =
@@ -490,7 +523,7 @@ Meer informatie over Azure AD-verificatiemethoden met behulp van de democodevoor
 
 ## <a name="azure-ad-token"></a>Azure AD-token
 
-Met deze verificatiemethode kunnen services op het middenniveau verbinding maken met Azure SQL Database of Azure SQL Data Warehouse door een token te verkrijgen van Azure Active Directory (AAD). Het maakt geavanceerde scenario's mogelijk, waaronder verificatie op basis van certificaten. U moet vier basisstappen uitvoeren om Azure AD-tokenverificatie te gebruiken:
+Met deze verificatiemethode kunnen services op het middenniveau [JSON Web Tokens (JWT)](../active-directory/develop/id-tokens.md) worden verkregen om verbinding te maken met Azure SQL Database of Azure Synapse door een token te verkrijgen van Azure Active Directory (AAD). Met deze methode kunnen verschillende toepassingsscenario's worden toegepast, waaronder serviceidentiteiten, serviceprincipals en toepassingen met behulp van verificatie op basis van certificaten. U moet vier basisstappen uitvoeren om Azure AD-tokenverificatie te gebruiken:
 
 1. Registreer uw toepassing bij Azure Active Directory en ontvang de client-id voor uw code.
 2. Maak een databasegebruiker die de toepassing vertegenwoordigt. (Eerder voltooid in stap 6.)

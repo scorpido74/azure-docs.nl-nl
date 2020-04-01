@@ -1,26 +1,26 @@
 ---
-title: 'Snelstartgids: een Linux ASP.NET Core-app uitvoeren'
-description: Ga aan de slag met Linux-apps op Azure App Service door uw eerste ASP.NET Core-app te implementeren in een Linux-container in App Service.
+title: 'Snelstart: Een Linux-ASP.NET Core-app uitvoeren'
+description: Ga aan de slag met Linux-apps in Azure App Service door uw eerste ASP.NET Core-app te implementeren in een Linux-container in App Service.
 keywords: azure app service, web-app, dotnet, core, linux, oss
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
 ms.tgt_pltfrm: linux
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: a23ad0fbe55367552c0747c6199328130fd194d4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: bd8cb11f5d4881eed4cb4371a7d85fc26818a651
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524118"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046208"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Een ASP.NET Core-app maken in App Service op Linux
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie _Een ASP.NET Core-app maken in Azure_ om een app te implementeren in App Service op [Windows](../app-service-web-get-started-dotnet.md).
+> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie [Een ASP.NET Core-app maken in Azure](../app-service-web-get-started-dotnet.md) om een app te implementeren in App Service op _Windows_.
 >
 
-[App Service onder Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. Deze quickstart laat zien hoe u een [.NET Core](https://docs.microsoft.com/aspnet/core/)-app maakt in App Service on Linux. U maakt de app via de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) en gebruikt Git om de .NET Core-code in de app te implementeren.
+[Azure App Service on Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. Deze quickstart laat zien hoe u een [.NET Core](https://docs.microsoft.com/aspnet/core/)-app maakt in App Service on Linux. U maakt de app via de [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) en gebruikt Git om de .NET Core-code in de app te implementeren.
 
 ![Voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -30,7 +30,7 @@ U kunt de stappen in dit artikel volgen met behulp van een Mac-, Windows- of Lin
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstartgids:
+Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 * <a href="https://git-scm.com/" target="_blank">Git installeren</a>
 * <a href="https://www.microsoft.com/net/core/" target="_blank">.NET Core installeren</a>
@@ -86,7 +86,7 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-Blader naar de app die u net hebt gemaakt. Vervang _&lt;app-naam >_ door de naam van uw app.
+Blader naar de app die u net hebt gemaakt. Vervang _ &lt;de app-naam>_ door de naam van uw app.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -156,7 +156,7 @@ git commit -am "updated output"
 git push azure master
 ```
 
-Als de implementatie is voltooid, gaat u terug naar het browservenster dat is geopend in de stap **Bladeren naar de app** en klikt u op Vernieuwen.
+Zodra de implementatie is voltooid, schakelt u terug naar het browservenster dat is geopend in de stap **Bladeren naar de app** en druk je op Vernieuwen.
 
 ![Bijgewerkte voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
@@ -179,7 +179,7 @@ Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: app ASP.NET Core met SQL Database](tutorial-dotnetcore-sqldb-app.md)
+> [Zelfstudie: ASP.NET Core-app met SQL-database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core-app configureren](configure-language-dotnetcore.md)

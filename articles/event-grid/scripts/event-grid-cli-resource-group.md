@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld van Azure CLI-script - abonneren op resourcegroep | Microsoft Docs
-description: Dit artikel bevat een voor beeld van een Azure CLI-script dat laat zien hoe u zich abonneert op Azure Event Grid gebeurtenissen voor een resource groep.
+description: In dit artikel wordt een voorbeeld van Azure CLI-script weergegeven waarin wordt weergegeven hoe u zich abonneren op Azure Event Grid-gebeurtenissen voor een resourcegroep.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: ff5f317bafd5c59ea4bba8bb6a23b60881cd218f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76720791"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>Abonneren op gebeurtenissen voor een resourcegroep met Azure CLI

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255429"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473932"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Checklist voor prestaties en schaalbaarheid voor Blob-opslag
 
@@ -125,7 +125,7 @@ Bandbreedte en de kwaliteit van de netwerkkoppeling spelen een belangrijke rol i
 
 #### <a name="throughput"></a>Doorvoer
 
-Voor bandbreedte is het probleem vaak de mogelijkheden van de client. Grotere Azure-exemplaren hebben NIC's met een grotere capaciteit, dus u moet overwegen een grotere instantie of meer VM's te gebruiken als u hogere netwerklimieten van één machine nodig hebt. Als u azure-opslag opent vanuit een on-premises toepassing, geldt dezelfde regel: inzicht krijgen in de netwerkmogelijkheden van het clientapparaat en de netwerkconnectiviteit met de Azure Storage-locatie en deze indien nodig verbeteren of uw ontwerp om binnen hun mogelijkheden te werken.
+Voor bandbreedte is het probleem vaak de mogelijkheden van de client. Grotere Azure-exemplaren hebben NIC's met een grotere capaciteit, dus u moet overwegen een grotere instantie of meer VM's te gebruiken als u hogere netwerklimieten van één machine nodig hebt. Als u azure-opslag opent vanuit een on-premises toepassing, geldt dezelfde regel: begrijp de netwerkmogelijkheden van het clientapparaat en de netwerkconnectiviteit met de Azure Storage-locatie en verbeter deze indien nodig of ontwerp uw toepassing om binnen hun mogelijkheden te werken.
 
 #### <a name="link-quality"></a>Koppelingskwaliteit
 
@@ -267,7 +267,7 @@ Als u blobs snel wilt uploaden, bepaalt u eerst of u één blob of veel uploadt.
 Als u één grote blob snel wilt uploaden, kan een clienttoepassing de blokken of pagina's parallel uploaden, rekening houdend met de schaalbaarheidsdoelen voor afzonderlijke blobs en het opslagaccount als geheel. De Azure Storage-clientbibliotheken ondersteunen het gelijktijdig uploaden. U bijvoorbeeld de volgende eigenschappen gebruiken om het aantal gelijktijdige aanvragen op te geven dat is toegestaan in .NET of Java. Clientbibliotheken voor andere ondersteunde talen bieden vergelijkbare opties.
 
 - Stel voor .NET de eigenschap [BlobRequestOptions.ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount) in.
-- Voor Java/Android belt u de methode [BlobRequestOptions.setConcurrentRequestCount (laatste integer concurrentRequestCount).](/java/api/com.microsoft.azure.storage.blob._blob_request_options.setconcurrentrequestcount)
+- Voor Java/Android belt u de methode [BlobRequestOptions.setConcurrentRequestCount (laatste integer concurrentRequestCount).](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount)
 
 ### <a name="upload-many-blobs-quickly"></a>Upload snel veel blobs
 

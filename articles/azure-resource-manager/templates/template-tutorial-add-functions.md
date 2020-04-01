@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6bb95d5a8022c6ac94dd8b7c777c65ff5e20617a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4984b286bf031b66272919a487d09a90f972ce0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369921"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410964"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Zelfstudie: sjabloonfuncties toevoegen aan uw ARM-sjabloon
 
@@ -48,7 +48,7 @@ In de vorige zelfstudies hebt u een opslagaccount in Oost-VS gemaakt, maar uw br
 
 Zie [Resourcegroep maken](template-tutorial-create-first-template.md#create-resource-group)als u de resourcegroep niet hebt gemaakt. In het voorbeeld wordt ervan uitgegaan dat u de **variabele templateFile** hebt ingesteld op het pad naar het sjabloonbestand, zoals wordt weergegeven in de [eerste zelfstudie.](template-tutorial-create-first-template.md#deploy-template)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -71,6 +71,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Als de implementatie is mislukt, gebruikt u de **foutopsporingsschakelaar** met de opdracht implementatie om de foutopsporingslogboeken weer te geven.  U ook de **verbose-schakelaar** gebruiken om de volledige foutopsporingslogboeken weer te geven.
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 

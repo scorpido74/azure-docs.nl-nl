@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445163"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410008"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Hoe leesbewerking wereldwijd te distribueren met behulp van Azure Cosmos DB's API voor MongoDB
 
@@ -86,7 +86,7 @@ Raadpleeg de gedetailleerde [mongoDB Leesvoorkeur-gedragsdocumentatie](https://d
 Op basis van veelvoorkomende scenario's raden we u aan de volgende instellingen te gebruiken:
 
 1. Als **er een lage latentie wordt gelezen,** gebruikt u de voorkeursmodus **NEAREST** lezen. Met deze instelling worden de leesbewerkingen naar de dichtstbijzijnde beschikbare regio doorgestoofd. Houd er rekening mee dat als het dichtstbijzijnde gebied het WRITE-gebied is, deze bewerkingen naar dat gebied zijn gericht.
-2. Als **een hoge beschikbaarheid en geodistributie van reads** vereist zijn (latentie is geen beperking), gebruikt u de voorkeursmodus **SECUNDAIRe voorkeur** voor lezen. Met deze instelling worden leesbewerkingen naar een beschikbare LEES-regio geherleiden. Als er geen LEES-regio beschikbaar is, worden aanvragen doorgestuurd naar het WRITE-gebied.
+2. Als **een hoge beschikbaarheid en geodistributie van reads** vereist zijn (latentie is geen beperking), gebruikt u de voorkeursmodus PRIMAIRE **VOORKEUR** of **SECUNDAIRe VOORKEUR.** Met deze instelling worden leesbewerkingen naar respectievelijk een beschikbare WRITE- of LEES-regio gestuurd. Als de regio niet beschikbaar is, worden aanvragen naar het volgende beschikbare gebied geleid volgens het leesvoorkeursgedrag.
 
 In het volgende fragment van de voorbeeldtoepassing ziet u hoe u de voorkeur voor nearest lezen in NodeJS configureert:
 

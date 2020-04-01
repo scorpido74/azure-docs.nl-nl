@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 48fd4b0e6f0351cd46fc4063785d961867637e0c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 8234bb82ba1f4ff9bd7aea9887121d9c703ac4a3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80060639"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473288"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuele netwerken ontwerpen met NAT-gatewaybronnen
 
@@ -39,7 +39,7 @@ Het configureren en gebruiken van NAT-gateway wordt opzettelijk eenvoudig gemaak
 NAT-gatewaybron:
 - Regionale of zonale NAT-gatewaybron (zone-geïsoleerd) maken,
 - IP-adressen toewijzen,
-- Tcp idle time-out wijzigen (optioneel).
+- Wijzig indien nodig een idle time-out van TCP (optioneel).  Controleer [timers](#timers) <ins>voordat</ins> u de standaardinstelling wijzigt.
 
 Virtueel netwerk:
 - Configureer virtueel netwerksubnet om een NAT-gateway te gebruiken.
@@ -178,27 +178,50 @@ NAT-gateways hebben voorrang op uitgaande scenario's van het subnet. Basic load 
 
 ### <a name="availability-zones"></a>Beschikbaarheidszones
 
-Zelfs zonder beschikbaarheidszones is NAT veerkrachtig en kan het meerdere storingen in infrastructuuronderdelen overleven. Wanneer beschikbaarheidszones deel uitmaken van uw scenario, moet u NAT configureren voor een specifieke zone.  De bewerkingen van het controlevlak en het gegevensvlak zijn beperkt tot de opgegeven zone. Als u niet in een andere zone dan waar uw scenario bestaat, wordt verwacht dat dit geen gevolgen heeft voor NAT. Uitgaand verkeer van virtuele machines in dezelfde zone mislukt vanwege zoneisolatie.
+#### <a name="zone-isolation-with-zonal-stacks"></a>Zone isolatie met zonale stapels
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Nat van virtueel netwerk met beschikbaarheidszones">
+  <img src="media/nat-overview/az-directions.svg" width="425" title="Nat van virtueel netwerk met zoneisolatie, waardoor meerdere "zonal stacks"">
 </p>
 
-*Figuur: Virtual Network NAT met beschikbaarheidszones*
+*Figuur: Virtual Network NAT met zoneisolatie, waarbij meerdere "zonale stapels" worden gemaakt*
 
-Voor een nat-gateway in de zone zijn IP-adressen vereist die overeenkomen met de zone van de NAT-gateway. NAT-gatewaybronnen met IP-adressen uit een andere zone of zonder zone worden niet ondersteund.
+Zelfs zonder beschikbaarheidszones is NAT veerkrachtig en kan het meerdere storingen in infrastructuuronderdelen overleven.  Beschikbaarheidszones bouwen voort op deze tolerantie met zoneisolatiescenario's voor NAT.
 
-Virtuele netwerken en subnetten zijn regionaal en niet zonale uitgelijnd. Een VM moet zich in dezelfde zone als NAT-gateway bevinden voor een zole belofte van uitgaande verbindingen. Zoneisolatie wordt gemaakt door een zonale "stack" per beschikbaarheidszone te maken. Een zonale belofte zal niet bestaan bij het oversteken van zones van een zonale NAT gateway of het gebruik van een regionale NAT gateway met zonale VM's.
+Virtuele netwerken en hun subnetten zijn regionale constructies.  Subnetten zijn niet beperkt tot een zone.
 
-Wanneer u virtuele machineschaalsets implementeert voor gebruik met NAT, implementeert u een zonale schaalset op het eigen subnet en koppelt u de overeenkomende zone NAT-gateway aan dat subnet. Als u zone-spanningsschaalsets gebruikt (een schaal die in twee of meer zones is ingesteld), geeft NAT geen zonale belofte.  NAT ondersteunt geen zoneredundantie.  Alleen regionale of zone-isolatie wordt ondersteund.
+Er bestaat een zonale belofte voor zoneisolatie wanneer een virtuele machine-instantie die een NAT-gatewaybron gebruikt, zich in dezelfde zone bevindt als de NAT-gatewaybron en de openbare IP-adressen. Het patroon dat u wilt gebruiken voor zoneisolatie is het maken van een "zonale stack" per beschikbaarheidszone.  Deze "zonale stack" bestaat uit virtuele machine-exemplaren, NAT-gatewaybronnen, openbaar IP-adres en/of voorvoegselbronnen op een subnet waarvan wordt aangenomen dat deze alleen dezelfde zone bedient.   De bewerkingen en gegevensvlak worden vervolgens uitgelijnd met en beperkt tot de opgegeven zone. 
+
+Als u niet in een andere zone dan waar uw scenario bestaat, wordt verwacht dat dit geen gevolgen heeft voor NAT. Uitgaand verkeer van virtuele machines in dezelfde zone mislukt vanwege zoneisolatie.  
+
+#### <a name="integrating-inbound-endpoints"></a>Binnenkomende eindpunten integreren
+
+Als voor uw scenario binnenkomende eindpunten vereist zijn, hebt u twee opties:
+
+| Optie | Patroon | Voorbeeld | Pro | Con |
+|---|---|---|---|---|
+| (1) | **Lijn** de binnenkomende eindpunten uit met de respectievelijke **zonale stapels** die u maakt voor uitgaande. | Maak een standaard load balancer met zonale frontend. | Hetzelfde gezondheidsmodel en de foutmodus voor binnenkomend en uitgaand. Eenvoudiger te bedienen. | Individuele IP-adressen per zone moeten mogelijk worden gemaskeerd met een gemeenschappelijke DNS-naam. |
+| (2) | **De** zonale stapels bedekken met een binnenkomend eindpunt **voor de verschillende zones.** | Maak een standaard load balancer met zone-redundante frontend. | Eén IP-adres voor binnenkomend eindpunt. | Verschillende gezondheidsmodel- en foutmodi voor binnenkomend en uitgaand.  Complexer om te werken. |
+
+>[!NOTE]
+> Voor een nat-gateway in de zone zijn IP-adressen vereist die overeenkomen met de zone van de NAT-gateway. NAT-gatewaybronnen met IP-adressen uit een andere zone of zonder zone zijn niet toegestaan.
+
+#### <a name="cross-zone-outbound-scenarios-not-supported"></a>Uitgaande scenario's voor verschillende zones worden niet ondersteund
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="Zone-spanning Virtual Network NAT">
+  <img src="media/nat-overview/az-directions2.svg" width="425" title="Nat van virtueel netwerk is niet compatibel met subnet met een zonespanning">
 </p>
 
-*Figuur: Zone-spanning Virtual Network NAT*
+*Afbeelding: Nat van virtueel netwerk niet compatibel met subnet met zonespanning*
 
-De eigenschap zones is niet veranderlijk.  Herschikken van NAT-gatewayresource met de beoogde regionale of zonevoorkeur.
+U een zonale belofte met NAT-gatewaybronnen niet bereiken wanneer virtuele machine-exemplaren in meerdere zones binnen hetzelfde subnet worden geïmplementeerd.   En zelfs als er meerdere zonale NAT-gateways aan een subnet waren gekoppeld, zou de virtuele machine-instantie niet weten welke NAT-gatewaybron moet worden geselecteerd.
+
+Een zonale belofte bestaat niet wanneer a) de zone van een virtuele machine instantie en de zones van een zonale NAT gateway zijn niet uitgelijnd, of b) een regionale NAT gateway bron wordt gebruikt met zonale virtuele machine exemplaren.
+
+Hoewel het scenario lijkt te werken, is het gezondheidsmodel en de foutmodus niet gedefinieerd vanuit het oogpunt van de beschikbaarheidszone. Overweeg te gaan met zonale stapels of alle regionale plaats.
+
+>[!NOTE]
+>De eigenschap zones van een NAT-gatewaybron is niet mutable.  Herschikken van NAT-gatewayresource met de beoogde regionale of zonevoorkeur.
 
 >[!NOTE] 
 >IP-adressen op zichzelf zijn niet zone-redundant als er geen zone is opgegeven.  De frontend van een [Standaard Load Balancer is zone-redundant](../load-balancer/load-balancer-standard-availability-zones.md#frontend) als er geen IP-adres wordt gemaakt in een specifieke zone.  Dit geldt niet voor NAT.  Alleen regionale of zone-isolatie wordt ondersteund.
@@ -255,11 +278,9 @@ Zodra een SNAT-poort wordt uitgebracht, is deze beschikbaar voor gebruik door el
 
 ### <a name="scaling"></a>Schalen
 
-NAT heeft voldoende SNAT-poortvoorraad nodig voor het volledige uitgaande scenario. Het schalen van NAT is in de eerste plaats een functie voor het beheren van de gedeelde, beschikbare SNAT-poortvoorraad. Er moet voldoende voorraad bestaan om de piekstroom voor uitgaande stroom aan te pakken voor alle subnetten die zijn gekoppeld aan een NAT-gatewaybron.
+Het schalen van NAT is in de eerste plaats een functie voor het beheren van de gedeelde, beschikbare SNAT-poortvoorraad. NAT heeft voldoende SNAT-poortvoorraad nodig voor verwachte piekuitgaande stromen voor alle subnetten die zijn gekoppeld aan een NAT-gatewaybron.  U openbare IP-adresbronnen, openbare IP-voorvoegselbronnen of beide gebruiken om SNAT-poortvoorraad te maken.
 
-SNAT brengt meerdere privéadressen in kaart op één openbaar adres en gebruikt meerdere openbare IP's om te schalen.
-
-Een NAT-gatewaybron gebruikt 64.000 poorten (SNAT-poorten) van een openbaar IP-adres.  Deze SNAT-poorten worden de beschikbare voorraad voor de private to public flow mapping. En het toevoegen van meer openbare IP-adressen verhoogt de beschikbare voorraad SNAT-poorten. NAT-gatewaybronnen kunnen worden opgeschaald naar 16 IP-adressen en 1M SNAT-poorten.  TCP en UDP zijn afzonderlijke SNAT-poortvoorraden en zijn niet gerelateerd.
+SNAT brengt privéadressen in kaart aan een of meer openbare IP-adressen, herschrijft bronadres en bronpoort in de processen. Een NAT-gatewaybron gebruikt 64.000 poorten (SNAT-poorten) per geconfigureerd openbaar IP-adres voor deze vertaling. NAT-gatewaybronnen kunnen worden opgeschaald naar 16 IP-adressen en 1M SNAT-poorten. Als er een openbare IP-voorvoegselbron wordt verstrekt, biedt elk IP-adres in het voorvoegsel snat-poortvoorraad. En het toevoegen van meer openbare IP-adressen verhoogt de beschikbare voorraad SNAT-poorten. TCP en UDP zijn afzonderlijke SNAT-poortvoorraden en zijn niet gerelateerd.
 
 NAT-gatewaybronnen hergebruiken bronpoorten opportunistisch. Voor schaaldoeleinden moet u ervan uitgaan dat voor elke stroom een nieuwe SNAT-poort nodig is en moet u het totale aantal beschikbare IP-adressen voor uitgaand verkeer schalen.
 
@@ -268,6 +289,9 @@ NAT-gatewaybronnen hergebruiken bronpoorten opportunistisch. Voor schaaldoeleind
 NAT-gatewaybronnen werken samen met IP- en IP-transportheaders van UDP- en TCP-stromen en zijn agnostisch voor payloads van toepassingslagen.  Andere IP-protocollen worden niet ondersteund.
 
 ### <a name="timers"></a>Timers
+
+>[!IMPORTANT]
+>Lange idle timer kan onnodig verhogen kans op SNAT uitputting. Hoe langer een timer u opgeeft, hoe langer NAT-poorten vasthouden totdat ze uiteindelijk een time-out hebben. Als uw stromen niet actief zijn, zullen ze uiteindelijk toch mislukken en onnodig snat-poortvoorraad verbruiken.  Stromen die mislukken op 2 uur zou zijn mislukt bij de standaard 4 minuten ook. Het verhogen van de idle time-out is een laatste redmiddel optie die spaarzaam moet worden gebruikt. Als een stroom nooit inactief gaat, wordt deze niet beïnvloed door de niet-actieve timer.
 
 TCP idle time-out kan worden aangepast van 4 minuten (standaard) tot 120 minuten (2 uur) voor alle stromen.  Bovendien u de niet-actieve timer opnieuw instellen met verkeer op de stroom.  Een aanbevolen patroon voor het vernieuwen van lange idle verbindingen en endpoint liveness detectie is TCP keepalives.  TCP-keepalives worden weergegeven als dubbele ACK's naar de eindpunten, zijn laag overhead en onzichtbaar voor de toepassingslaag.
 
@@ -294,7 +318,7 @@ Een SNAT-poort is na 5 seconden beschikbaar voor hergebruik naar hetzelfde doel-
 
 ## <a name="feedback"></a>Feedback
 
-We willen weten hoe we de service kunnen verbeteren. Voorstellen en stemmen over wat we moeten bouwen volgende op [UserVoice voor NAT](https://aka.ms/natuservoice).
+We willen weten hoe we de service kunnen verbeteren. Ontbreekt er een mogelijkheid? Maak uw zaak voor wat we moeten bouwen volgende op [UserVoice voor NAT](https://aka.ms/natuservoice).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -303,20 +327,20 @@ We willen weten hoe we de service kunnen verbeteren. Voorstellen en stemmen over
 * Meer informatie over [het oplossen van PROBLEMEN met NAT-gatewaybronnen](troubleshoot-nat.md).
 * Zelfstudie voor het valideren van NAT Gateway
   - [Azure-CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [Powershell](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
   - [Portal](tutorial-create-validate-nat-gateway-cli.md)
 * Snel aan de slag voor het implementeren van een NAT-gatewaybron
   - [Azure-CLI](./quickstart-create-nat-gateway-cli.md)
-  - [Powershell](./quickstart-create-nat-gateway-powershell.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
   - [Portal](./quickstart-create-nat-gateway-portal.md)
   - [Sjabloon](./quickstart-create-nat-gateway-template.md)
 * Meer informatie over NAT-gatewaybron-API
   - [REST-API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Azure-CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
-  - [Powershell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
-
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * Meer informatie over [beschikbaarheidszones](../availability-zones/az-overview.md).
 * Meer informatie over [standaard load balancer](../load-balancer/load-balancer-standard-overview.md).
 * Meer informatie over [beschikbaarheidszones en standaard load balancer.](../load-balancer/load-balancer-standard-availability-zones.md)
+* [Vertel ons wat we nu moeten bouwen voor Virtual Network NAT in UserVoice.](https://aka.ms/natuservoice)
 
 

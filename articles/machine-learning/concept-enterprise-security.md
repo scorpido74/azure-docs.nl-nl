@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/09/2020
-ms.openlocfilehash: d945540a769f01c33ca3d3e467fe7c983fb5e286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80287353"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437493"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Bedrijfsbeveiliging voor Azure Machine Learning
 
@@ -26,7 +26,7 @@ Wanneer u een cloudservice gebruikt, is het best practice om de toegang te beper
 > [!NOTE]
 > De informatie in dit artikel werkt met de Azure Machine Learning Python SDK-versie 1.0.83.1 of hoger.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Meervoudige verificatie wordt ondersteund als Azure Active Directory (Azure AD) is geconfigureerd om deze te gebruiken. Hier is het verificatieproces:
 
@@ -107,6 +107,28 @@ Azure Machine Learning is afhankelijk van andere Azure-services voor rekenbronne
 
 Zie [Experimenten en gevolgtrekkingen uitvoeren in een virtueel netwerk](how-to-enable-virtual-network.md)voor meer informatie.
 
+U Azure Private Link ook inschakelen voor uw werkruimte. Met Private Link u de communicatie beperken tot uw werkruimte vanuit een Azure Virtual Network. Zie [Privékoppeling configureren](how-to-configure-private-link.md)voor meer informatie.
+
+> [!TIP]
+> U virtueel netwerk en Privékoppeling combineren om de communicatie tussen uw werkruimte en andere Azure-bronnen te beschermen. Voor sommige combinaties is echter een werkruimte voor de Enterprise-editie vereist. Gebruik de volgende tabel om te begrijpen welke scenario's enterprise-editie vereisen:
+>
+> | Scenario | Enterprise</br>Edition | Basic</br>Edition |
+> | ----- |:-----:|:-----:| 
+> | Geen virtueel netwerk of private link | ✔ | ✔ |
+> | Werkruimte zonder privékoppeling. Andere resources (behalve Azure Container Registry) in een virtueel netwerk | ✔ | ✔ |
+> | Werkruimte zonder privékoppeling. Andere bronnen met Private Link | ✔ | |
+> | Werkruimte met privékoppeling. Andere resources (behalve Azure Container Registry) in een virtueel netwerk | ✔ | ✔ |
+> | Werkruimte en andere bronnen met Private Link | ✔ | |
+> | Werkruimte met privékoppeling. Andere bronnen zonder Private Link of virtueel netwerk | ✔ | ✔ |
+> | Azure Container Registry in een virtueel netwerk | ✔ | |
+> | Door de klant beheerde sleutels voor werkruimte | ✔ | |
+> 
+
+> [!WARNING]
+> De voorbeeldpreview van Azure Machine Learning compute instances wordt niet ondersteund in een werkruimte waarin Private Link is ingeschakeld.
+> 
+> Azure Machine Learning biedt geen ondersteuning voor het gebruik van een Azure Kubernetes-service waarmee een privékoppeling is ingeschakeld. In plaats daarvan u Azure Kubernetes Service gebruiken in een virtueel netwerk. Zie [Secure Azure ML-experimenten en inference-taken binnen een Azure Virtual Network](how-to-enable-virtual-network.md)voor meer informatie.
+
 ## <a name="data-encryption"></a>Gegevensversleuteling
 
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
@@ -123,6 +145,8 @@ Azure Machine Learning slaat momentopnamen, uitvoer en logboeken op in het Azure
 Zie [Azure Storage-versleuteling met door de klant beheerde sleutels in Azure Key Vault](../storage/common/storage-encryption-keys-portal.md)voor informatie over het gebruik van uw eigen sleutels voor gegevens die zijn opgeslagen in Azure Blob-opslag.
 
 Trainingsgegevens worden doorgaans ook opgeslagen in Azure Blob-opslag, zodat deze toegankelijk zijn voor trainingscomputetargets. Deze opslag wordt niet beheerd door Azure Machine Learning, maar is gemonteerd om doelen te berekenen als een extern bestandssysteem.
+
+Als u uw sleutel moet __draaien of intrekken,__ u dit op elk gewenst moment doen. Bij het roteren van een sleutel gebruikt het opslagaccount de nieuwe sleutel (nieuwste versie) om gegevens in rust te versleutelen. Bij het intrekken (uitschakelen) van een sleutel zorgt de opslagaccount voor falende aanvragen. Het duurt meestal een uur voor de rotatie of intrekking effectief te zijn.
 
 Zie [Toegangssleutels voor opslagopnieuw genereren](how-to-change-storage-access-key.md)voor informatie over het regenereren van de toegangssleutels.
 
@@ -157,6 +181,8 @@ Deze instantie Cosmos DB wordt gemaakt in een door Microsoft beheerde brongroep 
 > * Als u deze instantie Cosmos DB moet verwijderen, moet u de Azure Machine Learning-werkruimte verwijderen die deze gebruikt. 
 > * De [__standaardaanvraageenheden__](../cosmos-db/request-units.md) voor dit Cosmos DB-account zijn ingesteld op __8000__. Het wijzigen van deze waarde wordt niet ondersteund. 
 
+Als u uw sleutel moet __draaien of intrekken,__ u dit op elk gewenst moment doen. Bij het roteren van een sleutel zal Cosmos DB de nieuwe sleutel (nieuwste versie) gaan gebruiken om gegevens in rust te versleutelen. Bij het intrekken (uitschakelen) van een sleutel, Cosmos DB zorgt voor falende verzoeken. Het duurt meestal een uur voor de rotatie of intrekking effectief te zijn.
+
 Zie [Door klanten beheerde sleutels configureren voor uw Azure Cosmos DB-account voor](../cosmos-db/how-to-setup-cmk.md)meer informatie over door de klant beheerde sleutels.
 
 #### <a name="azure-container-registry"></a>Azure Container Registry
@@ -172,7 +198,21 @@ Zie de volgende artikelen voor een voorbeeld van het maken van een werkruimte me
 
 #### <a name="azure-container-instance"></a>Azure Container Instance
 
-Azure Container Instance biedt geen ondersteuning voor schijfversleuteling. Als u schijfversleuteling nodig hebt, raden we u aan in plaats daarvan [te implementeren in een Azure Kubernetes Service-exemplaar.](how-to-deploy-azure-kubernetes-service.md) In dit geval u ook de ondersteuning van Azure Machine Learning voor op rollen gebaseerde toegangsbesturingselementen gebruiken om implementaties naar een Azure Container Instance in uw abonnement te voorkomen.
+U een geïmplementeerde ACI-bron (Azure Container Instance) versleutelen met behulp van door de klant beheerde sleutels. De door de klant beheerde sleutel die voor ACI wordt gebruikt, kan worden opgeslagen in de Azure Key Vault voor uw werkruimte. Zie [Gegevens versleutelen met een door de klant beheerde sleutel voor](../container-instances/container-instances-encrypt-data.md#generate-a-new-key)informatie over het genereren van een sleutel.
+
+Als u de sleutel wilt gebruiken bij het implementeren van `AciWebservice.deploy_configuration()`een model in Azure Container Instance, maakt u een nieuwe implementatieconfiguratie met behulp van . Geef de belangrijkste informatie op met behulp van de volgende parameters:
+
+* `cmk_vault_base_url`: De URL van de sleutelkluis die de sleutel bevat.
+* `cmk_key_name`: De naam van de sleutel.
+* `cmk_key_version`: De versie van de sleutel.
+
+Zie de volgende artikelen voor meer informatie over het maken en gebruiken van een implementatieconfiguratie:
+
+* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) referentie
+* [Waar en hoe u implementeert](how-to-deploy-and-where.md)
+* [Een model implementeren in Azure Container Instances](how-to-deploy-azure-container-instance.md)
+
+Zie Gegevens versleutelen met een door de [klant beheerde sleutel voor](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key)meer informatie over het gebruik van een door de klant beheerde sleutel met ACI.
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 

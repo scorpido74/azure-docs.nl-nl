@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met voorzien CX Suite | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en CX Suite voorzien.
+title: 'Zelfstudie: Azure Active Directory-integratie met ForeSee CX Suite | Microsoft Documenten'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ForeSee CX Suite.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,46 +16,46 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67550396"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Zelfstudie: Azure Active Directory-integratie met CX Suite voorzien
+# <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Zelfstudie: Azure Active Directory-integratie met ForeSee CX Suite
 
-In deze zelfstudie leert u hoe u om te voorzien CX Suite integreren met Azure Active Directory (Azure AD).
-Met CX Suite voorzien integreren met Azure AD biedt u de volgende voordelen:
+In deze zelfstudie leert u hoe U ForeSee CX Suite integreren met Azure Active Directory (Azure AD).
+De integratie van ForeSee CX Suite met Azure AD biedt u de volgende voordelen:
 
-* U kunt beheren in Azure AD die toegang tot CX Suite voorzien heeft.
-* U kunt uw gebruikers worden automatisch aangemeld met CX Suite voorzien (Single Sign-On) inschakelen met hun Azure AD-accounts.
+* U in Azure AD bepalen wie toegang heeft tot ForeSee CX Suite.
+* U uw gebruikers automatisch laten inloggen op ForeSee CX Suite (Single Sign-On) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als u geen Azure-abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met CX Suite voorzien, moet u de volgende items:
+Als u Azure AD-integratie wilt configureren met ForeSee CX Suite, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Voorzien CX Suite eenmalige aanmelding ingeschakeld-abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, u een [gratis account](https://azure.microsoft.com/free/) krijgen
+* Voorteken CX Suite-abonnement met één aanmelding
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* CX Suite ondersteunt voorzien **SP** gestart door SSO
+* ForeSee CX Suite ondersteunt **DOOR SP** geïnitieerde SSO
 
-* CX Suite ondersteunt voorzien **Just In Time** inrichten van gebruikers
+* ForeSee CX Suite ondersteunt **Just In Time** gebruikersinrichting
 
-## <a name="adding-foresee-cx-suite-from-the-gallery"></a>CX Suite voorzien in de galerie toevoegen
+## <a name="adding-foresee-cx-suite-from-the-gallery"></a>ForeSee CX Suite toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van CX Suite voorzien in Azure AD, moet u voorzien CX Suite uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van ForeSee CX Suite in Azure AD wilt configureren, moet u ForeSee CX Suite vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen CX Suite voorzien in de galerie, moet u de volgende stappen uitvoeren:**
+**Als u ForeSee CX Suite vanuit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -67,31 +67,31 @@ Voor het configureren van de integratie van CX Suite voorzien in Azure AD, moet 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **voorzien CX Suite**, selecteer **voorzien CX Suite** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Selecteer **ForeSee** **CX**Suite in het zoekvak en klik op **Knop Toevoegen** om de toepassing toe te voegen.
 
-     ![Met CX Suite voorzien in de lijst met resultaten](common/search-new-app.png)
+     ![ForeSee CX Suite in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met voorzien CX Suite op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in voorzien CX Suite tot stand worden gebracht.
+In deze sectie configureert en test u Azure AD single sign-on met ForeSee CX Suite op basis van een testgebruiker genaamd **Britta Simon**.
+Voor eenmalige aanmelding om te werken, moet een koppelingsrelatie worden ingesteld tussen een Azure AD-gebruiker en de gerelateerde gebruiker in ForeSee CX Suite.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met CX Suite voorzien, moet u de volgende bouwstenen voltooien:
+Als u Azure AD-singlesign-aan wilt configureren en testen met ForeSee CX Suite, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer voorzien CX Suite Single Sign-On](#configure-foresee-cx-suite-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak voorzien CX Suite testgebruiker](#create-foresee-cx-suite-test-user)**  : als u wilt een equivalent van Britta Simon in voorzien CX Suite die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[ForeSee CX Suite Single Sign-On configureren](#configure-foresee-cx-suite-single-sign-on)** om de instellingen voor één aanmelding aan de toepassingszijde te configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Maak De cx suite-testgebruiker van ForeSee](#create-foresee-cx-suite-test-user)** maken - om een tegenhanger van Britta Simon in ForeSee CX Suite te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met CX Suite voorzien, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om de volgende stappen uit te voeren om de enkele aanmelding van Azure AD te configureren met ForeSee CX Suite:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **voorzien CX Suite** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure-portal](https://portal.azure.com/)op de pagina **Voorzien CX** Suite-toepassingsintegratie de optie **Eén aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -113,22 +113,22 @@ Voor het configureren van Azure AD eenmalige aanmelding met CX Suite voorzien, m
 
     ![Metagegevensbestand kiezen](common/browse-upload-metadata.png)
 
-    c. Nadat het bestand met metagegevens is geüpload, de **id** wordt automatisch ingevuld in de sectie SAML-basisconfiguratie.
+    c. Nadat het metagegevensbestand is geüpload, wordt de **id-waarde** automatisch ingevuld in de sectie BasisSAML-configuratie.
 
-    ![Met CX Suite domein en URL's één aanmelding informatie voorzien](common/sp-identifier.png)
+    ![Voorzien CX Suite-domein en URL's met eenmalige aanmeldingsgegevens](common/sp-identifier.png)
 
-    a. Typ een URL in het tekstvak **Aanmeldings-URL**: `https://cxsuite.foresee.com/`
+    a. Typ een URL in het tekstvak **AANmeldings-URL:**`https://cxsuite.foresee.com/`
 
-    b. In de **id** tekstvak, een URL met behulp van het volgende patroon: https:\//www.okta.com/saml2/service-provider/\<UniqueID >
+    b. Typ in het tekstvak **Identifier** een URL met\/het\<volgende patroon: https: www.okta.com/saml2/service-provider/ UniqueID>
 
     > [!Note]
-    > Als de **id** waarde krijg niet automatisch polulated, vul in de bovenstaande patroon waarde handmatig op. De id-waarde is niet echt. Werk deze waarde bij met de werkelijke id. Neem contact op met [voorzien CX Suite Client ondersteuningsteam](mailto:support@foresee.com) deze waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Als de **id-waarde** niet automatisch wordt gepolueerd, vul dan handmatig de waarde in volgens bovenstaand patroon. De id-waarde is niet echt. Werk deze waarde bij met de werkelijke id. Neem contact op met [het ondersteuningsteam van ForeSee CX Suite Client](mailto:support@foresee.com) om deze waarde te krijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **voorzien CX Suite instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer in de sectie **ForeSee CX Suite** instellen de juiste URL(s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -138,9 +138,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met CX Suite voorzien, m
 
     c. Afmeldings-URL
 
-### <a name="configure-foresee-cx-suite-single-sign-on"></a>Configureer voorzien CX Suite Single Sign-On
+### <a name="configure-foresee-cx-suite-single-sign-on"></a>ForeSee CX Suite Single Sign-On configureren
 
-Het configureren van eenmalige aanmelding op **voorzien CX Suite** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [voorzien CX Suite-ondersteuning team](mailto:support@foresee.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **de Kant van ForeSee CX Suite,** moet u de gedownloade **XML met federatiemetagegevens** en de juiste gekopieerde URL's van Azure-portal naar [het ForeSee CX Suite-ondersteuningsteam](mailto:support@foresee.com)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -158,25 +158,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam** **Britta Simon**in.
+    a. Voer in het veld **Naam****Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In **User name** het veld brittasimon@yourcompanydomain.extensiontype gebruikersnaam . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik **op Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen om te voorzien CX Suite.
+In deze sectie u Britta Simon inschakelen om Azure single sign-on te gebruiken door toegang te verlenen tot ForeSee CX Suite.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **voorzien CX Suite**.
+1. Selecteer in de Azure-portal **Enterprise-toepassingen**, selecteer **Alle toepassingen**en selecteer **Vervolgens ForeSee CX Suite**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **voorzien CX Suite**.
+2. Selecteer **ForeSee CX Suite**in de lijst met toepassingen .
 
-    ![De koppeling CX Suite voorzien in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling ForeSee CX Suite in de lijst Toepassingen](common/all-applications.png)
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -186,27 +186,27 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+5. Selecteer **In** het dialoogvenster Gebruikers en groepen **Britta Simon** in de lijst Gebruikers en klik je op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een rolwaarde verwacht in de SAML-bewering, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **Selecteren** onder aan het scherm.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-foresee-cx-suite-test-user"></a>Met CX Suite voorzien testgebruiker maken
+### <a name="create-foresee-cx-suite-test-user"></a>Gebruiker van ForeSee CX Suite-test maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in CX Suite voorzien. Werken met [voorzien CX Suite ondersteuningsteam](mailto:support@foresee.com) om toe te voegen de gebruikers of het domein dat moet worden toegevoegd aan een acceptatielijst voor het platform CX Suite voorzien. Als het domein is toegevoegd door het team, krijgen automatisch gebruikers ingericht voor het platform CX Suite voorzien. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker genaamd Britta Simon in ForeSee CX Suite. Werk samen met [het Ondersteuningsteam van ForeSee CX Suite](mailto:support@foresee.com) om de gebruikers of het domein toe te voegen dat moet worden toegevoegd aan een lijst met toegestane personen voor het ForeSee CX Suite-platform. Als het domein door het team wordt toegevoegd, worden gebruikers automatisch ingericht op het ForeSee CX Suite-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel CX Suite voorzien in het toegangsvenster, moet u worden automatisch aangemeld bij de CX voorzien Suite waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel ForeSee CX Suite in het toegangspaneel klikt, moet u automatisch zijn aangemeld bij de ForeSee CX Suite waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [Wat is toepassingstoegang en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

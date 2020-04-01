@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 70e8bf95022f88dab54fa13769df4b051cf41c92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b55c351927a56afce697d07f41bfbe668144d68d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247143"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475515"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning release notes Azure Machine Learning release notes Azure Machine Learning release notes Azure Machine
 
@@ -624,7 +624,7 @@ Azure Machine Learning is nu een bronprovider voor gebeurtenisraster, u machine 
     + Fixed a bug in run.get_metrics where requests would fail if a run had too many children
     + Fixed a bug in [run.get_metrics](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run#get-metrics-name-none--recursive-false--run-type-none--populate-false-) where requests would fail if a run had too many children
     + Ondersteuning toegevoegd voor verificatie op arcadia-cluster.
-    + Als u een experimentobject maakt, wordt of maakt u het experiment in de Azure Machine Learning-werkruimte voor het bijhouden van geschiedenis. De experiment-id en de gearchiveerde tijd worden ingevuld in het object Experiment bij het maken. Voorbeeld: experiment = experiment(werkruimte, 'Nieuw experiment') experiment_id = experiment.id archief() en reactiveren() zijn functies die kunnen worden opgeroepen voor een experiment om het experiment te verbergen en te herstellen van wordt weergegeven in de UX of standaard geretourneerd in een gesprek om experimenten op te sommen. Als een nieuw experiment wordt gemaakt met dezelfde naam als een gearchiveerd experiment, u de naam van het gearchiveerde experiment wijzigen wanneer u het opnieuw activeert door een nieuwe naam door te geven. Er kan slechts één actief experiment met een bepaalde naam zijn. Voorbeeld: experiment1 = Experiment(werkruimte, 'Actief Experiment') experiment1.archive() # Nieuw actief experiment maken met dezelfde naam als het gearchiveerde. experiment2. = Experiment(werkruimte, "Actief Experiment") experiment1.reactivate(new_name="Previous Active Experiment") De lijst met statische methoden() op Experiment kan een naamfilter en viewtype-filter nemen. ViewType-waarden zijn 'ACTIVE_ONLY', 'ARCHIVED_ONLY' en 'ALLES':archived_experiments = Experiment.list(werkruimte, view_type="ARCHIVED_ONLY") all_first_experiments = Experiment.list(werkruimte, naam="Eerste experiment", view_type="ALLES")
+    + Als u een experimentobject maakt, wordt of maakt u het experiment in de Azure Machine Learning-werkruimte voor het bijhouden van geschiedenis. De experiment-id en de gearchiveerde tijd worden ingevuld in het object Experiment bij het maken. Voorbeeld: experiment = experiment(werkruimte, "Nieuw experiment") experiment_id = experiment.id archief() en reactiveren() zijn functies die kunnen worden opgeroepen voor een experiment om het experiment te verbergen en te herstellen van wordt weergegeven in de UX of standaard geretourneerd in een aanroep om experimenten weer te geven. Als een nieuw experiment wordt gemaakt met dezelfde naam als een gearchiveerd experiment, u de naam van het gearchiveerde experiment wijzigen wanneer u het opnieuw activeert door een nieuwe naam door te geven. Er kan slechts één actief experiment met een bepaalde naam zijn. Voorbeeld: experiment1 = Experiment(werkruimte, 'Actief Experiment') experiment1.archive() # Nieuw actief experiment maken met dezelfde naam als het gearchiveerde. experiment2. = Experiment(werkruimte, "Actief Experiment") experiment1.reactivate(new_name="Previous Active Experiment") De lijst met statische methoden() op Experiment kan een naamfilter en viewtype-filter nemen. ViewType-waarden zijn 'ACTIVE_ONLY', 'ARCHIVED_ONLY' en 'ALLES':archived_experiments = Experiment.list(werkruimte, view_type="ARCHIVED_ONLY") all_first_experiments = Experiment.list(werkruimte, naam="Eerste experiment", view_type="ALLES")
     + Ondersteuning voor het gebruik van de omgeving voor modelimplementatie en service-update
   + **azureml-datadrift**
     + Het kenmerk van De show van de klasse DataDriftDector ondersteunt geen optie 'with_details' meer. Het kenmerk Show presenteert alleen de gegevensdriftcoëfficiënt en de bijdrage van gegevensdrift van functiekolommen.
@@ -798,8 +798,8 @@ Het tabblad Experiment in de [nieuwe werkruimteportal](https://ml.azure.com) is 
     + Uitzondering dat de kolom tijdstempel niet kan worden gevonden, wordt weggegooid als de tijdsgerelateerde API wordt aangeroepen zonder dat de stempelkolom met fijne tijdstempel is toegewezen of de toegewezen tijdstempelkolommen worden verwijderd.
     + Kolommen met tijdsseries moeten worden toegewezen met kolom waarvan het type Datum is, anders wordt een uitzondering verwacht
     + Tijdssserialen kolommen toewijzen API 'with_timestamp_columns' kan nemen Geen waarde fijne / grove tijdstempel kolom naam, die eerder toegewezen tijdstempel kolommen zal wissen.
-    + Uitzondering wordt weggegooid wanneer grofkorrelige of fijnkorrelige tijdstempelkolom wordt verwijderd met vermelding voor de gebruiker dat laten vallen kan worden gedaan na het uitsluiten van tijdstempelkolom in de lijst met droppings of with_time_stamp met Geen waarde aanroepen om tijdstempel vrij te geven Kolommen
-    + Er wordt een uitzondering gemaakt wanneer grofkorrelige of fijnkorrelige tijdstempelkolom niet is opgenomen in de lijst met keepkolommen met vermelding voor de gebruiker dat het bijhouden kan worden gedaan na het opnemen van tijdstempelkolom in de lijst met kolom bijhouden of with_time_stamp met Geen waarde om tijdstempelkolommen vrij te geven.
+    + Uitzondering wordt weggegooid wanneer grofkorrelige of fijnkorrelige tijdstempelkolom wordt verwijderd met vermelding voor de gebruiker dat laten vallen kan worden gedaan nadat u de tijdstempelkolom in de lijst hoeft uit te sluiten of with_time_stamp met Geen-waarde oproept om tijdstempelkolommen vrij te geven
+    + Er wordt een uitzondering gemaakt wanneer grofkorrelige of fijnkorrelige tijdstempelkolom niet is opgenomen in de lijst met keepkolommen met vermelding voor de gebruiker dat het bijhouden kan worden gedaan na het opnemen van tijdstempelkolom in de lijst met kolom bijhouden of with_time_stamp met Geen-waarde om tijdstempelkolommen vrij te geven.
     + Logboekregistratie toegevoegd voor de grootte van een geregistreerd model.
   + **azureml-explain-model**
     + Fixed warning printed to console when "packaging" python package is not installed: "Using older than supported version of lightgbm, please upgrade to version greater than 2.2.1" Fixed warning printed to console when "packaging" python package is not installed: "Using older than supported version of lightgbm, please upgrade to version greater than 2.2.1" Fixed warning printed to console when "packaging" python package is not installed: "Using older than supported version of lightgbm, please upgrade to version greater than 2.2.1" Fixed warning
@@ -925,13 +925,13 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Bijgewerkte interface om `RawDataContext` een te maken `AutoMLBaseSettings` om alleen de gegevens en het object nodig te hebben.
     +  Laat AutoML-gebruikers trainingsseries die niet lang genoeg zijn bij het voorspellen, laten vallen. - Laat AutoML-gebruikers korrels uit de testset laten vallen die niet bestaat in de trainingsset bij het voorspellen.
   + **azure-cli-ml**
-    + U nu het SSL-certificaat bijwerken voor het scoreeindpunt dat is geïmplementeerd op het AKS-cluster, zowel voor microsoft gegenereerd als voor het certificaat van de klant.
+    + U nu het TLS/SSL-certificaat bijwerken voor het scoreeindpunt dat is geïmplementeerd op het AKS-cluster, zowel voor microsoft gegenereerd als voor het certificaat van de klant.
   + **azureml-automl-core**
     + Probleem opgelost in AutoML waarbij rijen met ontbrekende labels niet goed zijn verwijderd.
     + Verbeterde foutregistratie in AutoML; volledige foutmeldingen worden nu altijd naar het logboekbestand geschreven.
     + AutoML heeft haar pakketvasten `azureml-defaults` `azureml-explain-model`bijgewerkt `azureml-dataprep`met , en . AutoML waarschuwt niet langer voor foutmatches `azureml-train-automl` op pakketten (behalve voor pakket).
     + Fixed an `timeseries` issue in where cv splits are of unequal size causing bin calculation to fail.
-    + Bij het uitvoeren van ensemble iteratie voor de Cross-Validation training type, als we uiteindelijk problemen hebben met het downloaden van de modellen getraind op de hele dataset, hadden we een inconsistentie tussen het model gewichten en de modellen die werden ingevoerd in de stemming Ensemble.
+    + Bij het uitvoeren van ensemble iteratie voor de Cross-Validation training type, als we uiteindelijk problemen met het downloaden van de modellen getraind op de hele dataset, waren we met een inconsistentie tussen het model gewichten en de modellen die werden ingevoerd in de stemming ensemble.
     + Fixed the error, raised when training and/or validation labels (y and y_valid) are provided in the form of pandas dataframe but not as numpy array.
     + Probleem met de prognosetaken opgelost toen er geen probleem werd aangetroffen in de Booleaanse kolommen met invoertabellen.
     + Laat AutoML-gebruikers trainingsseries die niet lang genoeg zijn bij het voorspellen, laten vallen. - Laat AutoML-gebruikers korrels uit de testset laten vallen die niet bestaat in de trainingsset bij het voorspellen.
@@ -956,7 +956,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Ondersteund bij het importeren van HTTP csv/tsv-bestanden in de gegevensset python SDK.
     + De methode Workspace.setup() afgeschaft. Waarschuwingsbericht weergegeven aan gebruikers stelt voor om create() of get()/from_config() in plaats daarvan te gebruiken.
     + Added Environment.add_private_pip_wheel(), waarmee u privé-aangepaste python-pakketten `whl`naar de werkruimte uploaden en ze veilig gebruiken om de omgeving te bouwen/materialiseren.
-    + U nu het SSL-certificaat bijwerken voor het scoreeindpunt dat is geïmplementeerd op het AKS-cluster, zowel voor microsoft gegenereerd als voor het certificaat van de klant.
+    + U nu het TLS/SSL-certificaat bijwerken voor het scoreeindpunt dat is geïmplementeerd op het AKS-cluster, zowel voor microsoft gegenereerd als voor het certificaat van de klant.
   + **azureml-explain-model**
     + Parameter toegevoegd om een model-ID toe te voegen aan uitleg over uploaden.
     + Toegevoegd `is_raw` tagging aan uitleg in het geheugen en uploaden.
@@ -1877,7 +1877,7 @@ Bekijk [de lijst met bekende problemen](resource-known-issues.md) om meer te wet
   * log_table() en log_row() worden ondersteund in De details van Run.
   * Maak automatisch grafieken voor tabellen en rijen met 1, 2 of 3 numerieke kolommen en een optionele categorische kolom.
 
-+ **Geautomatiseerde Machine Learning**
++ **Geautomatiseerde machine learning**
   * Verbeterde foutafhandeling en documentatie
   * Problemen met het ophalen van vaste uitvoeringen.
   * Probleem met blijven uitvoeren opgelost.
